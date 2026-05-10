@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>متشابهات القرآن الكريم</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>متشابهات القرآن الكريم</h1>
+    <p class="sub">بحث + فلترة + إضافة متشابهات من مرجع القرآن</p>
+    <div class="header-line"></div>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot ld-u"></span>فريدة في القرآن</div>
+    <div class="legend-item"><span class="legend-dot ld-d"></span>اختلاف في اللفظ</div>
+    <div class="legend-item"><span class="legend-dot ld-a"></span>زيادة في الآية</div>
+    <div class="legend-item"><span class="legend-dot ld-s"></span>لفظ مشترك</div>
+  </div>
+
+ <section class="filter-bar">
+  <div class="filter-header">
+    <span class="filter-title">🔍 تصفية حسب السورة</span>
+    <span class="filter-status" id="filterStatus">اختر سورة لعرض متشابهاتها فقط</span>
+    <button class="filter-clear" id="clearSurahBtn" onclick="clearSurahFilter()">عرض الكل</button>
+  </div>
+
+  <div id="surahFilterGrid" class="surah-grid"></div>
+</section>
+  <section class="search-panel">
+    <input id="searchInput" type="text" placeholder="ابحث في المتشابهات..." oninput="runSearch()">
+    <button onclick="clearSearch()">إلغاء</button>
+    <button class="primary-btn" onclick="openAddModal()">+ إضافة متشابه</button>
+    <button onclick="expandAll()">فتح الكل</button>
+    <button onclick="collapseAll()">طي الكل</button>
+    <button onclick="downloadDataJS()">تحميل data.js</button>
+    <span id="counter"></span>
+  </section>
+
+  <main id="app" class="main"></main>
+
+  <div id="addModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>إضافة متشابه جديد</h2>
+        <button class="close-btn" onclick="closeAddModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <label>عنوان المتشابه</label>
+        <input id="newTitle" class="full-input" placeholder="مثال: الرجفة / الصيحة">
+
+        <div class="grid-3">
+          <div>
+            <label>السورة</label>
+            <select id="newSurah" onchange="onSurahChange()"></select>
+          </div>
+          <div>
+            <label>رقم الآية</label>
+            <select id="newAyah" onchange="previewSelectedAyah()"></select>
+          </div>
+          <div>
+            <label>نوع التلوين</label>
+            <select id="newType">
+              <option value="shared">shared - مشترك</option>
+              <option value="diff">diff - اختلاف</option>
+              <option value="addition">addition - زيادة</option>
+              <option value="unique">unique - فريدة</option>
+              <option value="normal">normal - عادي</option>
+            </select>
+          </div>
+        </div>
+
+        <label>وصف قصير للآية / Label</label>
+        <input id="newLabel" class="full-input" placeholder="مثال: قوم صالح / زيادة فكذبوه">
+
+        <label>نص الآية من quran-reference.js</label>
+        <textarea id="ayahPreview" class="ayah-preview" readonly></textarea>
+
+        <label>تحديد جزء من الآية فقط - اختياري</label>
+        <textarea id="selectedPart" class="ayah-preview" placeholder="لو تركته فارغًا سيتم استخدام نص الآية كاملًا"></textarea>
+
+        <div class="modal-actions">
+          <button class="primary-btn" onclick="addVerseToDraft()">إضافة الآية للمجموعة</button>
+          <button onclick="clearDraftVerses()">مسح الآيات المؤقتة</button>
+        </div>
+
+        <h3>الآيات المضافة مؤقتًا</h3>
+        <div id="draftVerses" class="draft-box">لا توجد آيات مضافة بعد.</div>
+
+        <label>ملاحظة</label>
+        <textarea id="newNote" class="ayah-preview" placeholder="ملاحظة الحفظ أو الربط"></textarea>
+
+        <label>فائدة فريدة / إضافية</label>
+        <textarea id="newUnote" class="ayah-preview" placeholder="اختياري"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="primary-btn" onclick="createNewGroup()">حفظ في الصفحة</button>
+        <button onclick="downloadDataJS()">تحميل data.js بعد الإضافة</button>
+        <button onclick="closeAddModal()">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="quran-reference.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
