@@ -896,3 +896,45 @@ body{
   font-weight:700;
   margin:0 2px;
 }
+.edit-verse-actions{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.edit-verse-actions button{
+  padding:4px 9px;
+  border-radius:7px;
+  border:1px solid var(--border);
+  background:#EEF2F7;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.edit-verse-actions button:hover{
+  background:var(--gold);
+  color:#fff;
+  border-color:var(--gold);
+}
+
+.ayah-fill-actions{
+  margin:8px 0;
+  display:flex;
+  justify-content:flex-start;
+}
+
+.ayah-fill-actions button{
+  padding:5px 12px;
+  border-radius:7px;
+  border:1px solid var(--border);
+  background:#EEF2F7;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.ayah-fill-actions button:hover{
+  background:var(--gold);
+  color:#fff;
+  border-color:var(--gold);
+}

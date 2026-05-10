@@ -565,22 +565,184 @@ function createNewGroup() {
 ========================= */
 
 function downloadDataJS() {
-  const blob = new Blob(
-    ["const DATA = " + JSON.stringify(DATA, null, 2) + ";"],
-    {
-      type: "application/javascript;charset=utf-8"
-    }
-  );
+  const content =
+    "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
 
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "data.js";
-  a.click();
+  // Try normal download first
+  try {
+    const blob = new Blob([content], {
+      type: "application/javascript;charset=utf-8"
+    });
+
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "data.js";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    setTimeout(function () {
+      showDataExportFallback(content);
+    }, 800);
+
+  } catch (e) {
+    showDataExportFallback(content);
+  }
 }
 
-/* =========================
-   EDIT EXISTING GROUP
+function showDataExportFallback(content) {
+  if (document.getElementById("exportDataModal")) return;
+
+  const modal = document.createElement("div");
+  modal.id = "exportDataModal";
+  modal.className = "modal-backdrop open";
+
+  modal.innerHTML = `
+    <div class="modal edit-modal">
+      <div class="modal-header">
+        <h2>تصدير data.js</h2>
+        <button class="close-btn" onclick="closeDataExportModal()">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p style="margin-bottom:10px;color:#3A4A60">
+          إذا لم يتم تحميل الملف تلقائيًا في Documents، انسخ النص التالي واحفظه باسم:
+          <b>data.js</b>
+        </p>
+
+        <textarea id="exportDataText" class="ayah-preview" style="min-height:300px; direction:ltr; text-align:left; font-family:monospace;"></textarea>
+
+        <div class="modal-actions">
+          <button class="primary-btn" onclick="copyExportData()">Copy data.js</button>
+          <button onclick="selectExportData()">Select All</button>
+          <button onclick="closeDataExportModal()">إغلاق</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const txt = document.getElementById("exportDataText");
+  txt.value = content;
+}
+
+function copyExportData() {
+  const txt = document.getElementById("exportDataText");
+  if (!txt) return;
+
+  txt.focus();
+  txt.select();
+
+  try {
+    document.execCommand("copy");
+    alert("تم نسخ محتوى data.js");
+  } catch (e) {
+    alert("لم يتم النسخ تلقائيًا. استخدم Select All ثم Copy يدويًا.");
+  }
+}
+
+function selectExportData() {
+  const txt = document.getElementById("exportDataText");
+  if (!txt) return;
+
+  txt.focus();
+  txt.select();
+}
+
+function closeDataExportModal() {
+  const modal = document.getElementById("exportDataModal");
+  if (modal) modal.remove();
+}
+
+ /* =========================
+   EDIT EXISTING GROUP - DROPDOWN + SORT
 ========================= */
+
+function toEnglishDigits(value) {
+  return safeText(value)
+    .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d))
+    .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
+}
+
+function getSurahNoByName(surahName) {
+  const names =
+    typeof SURAH_NAMES !== "undefined"
+      ? SURAH_NAMES
+      : {};
+
+  const target = safeText(surahName).trim();
+
+  for (const no in names) {
+    if (names[no] === target) {
+      return Number(no);
+    }
+  }
+
+  return 9999;
+}
+
+function getAyahNoValue(value) {
+  const n = Number(toEnglishDigits(value));
+  return isNaN(n) ? 9999 : n;
+}
+
+function buildEditSurahOptions(selectedSurah) {
+  const names =
+    typeof SURAH_NAMES !== "undefined"
+      ? SURAH_NAMES
+      : {};
+
+  let html = "";
+
+  Object.keys(names).forEach(no => {
+    const name = names[no];
+    const selected = name === selectedSurah ? "selected" : "";
+
+    html += `
+      <option value="${escapeAttr(name)}" data-surah-no="${no}" ${selected}>
+        ${no} - ${name}
+      </option>
+    `;
+  });
+
+  // If old data contains a surah name not found in SURAH_NAMES
+  if (selectedSurah && !Object.values(names).includes(selectedSurah)) {
+    html =
+      `<option value="${escapeAttr(selectedSurah)}" selected>${selectedSurah}</option>` +
+      html;
+  }
+
+  return html;
+}
+
+function buildEditAyahOptions(selectedSurah, selectedAyah) {
+  const surahNo = getSurahNoByName(selectedSurah);
+  const selectedAyahNo = getAyahNoValue(selectedAyah);
+
+  if (typeof getSurahAyahs === "undefined") {
+    return `<option value="${escapeAttr(selectedAyah)}">${escapeHtml(selectedAyah)}</option>`;
+  }
+
+  const ayahs = getSurahAyahs(surahNo);
+
+  if (!ayahs || !ayahs.length) {
+    return `<option value="${escapeAttr(selectedAyah)}">${escapeHtml(selectedAyah)}</option>`;
+  }
+
+  return ayahs.map(a => {
+    const selected =
+      Number(a.ayahNo) === Number(selectedAyahNo)
+        ? "selected"
+        : "";
+
+    return `
+      <option value="${a.ayahNo}" ${selected}>
+        ${a.ayahNo}
+      </option>
+    `;
+  }).join("");
+}
 
 function ensureEditModal() {
   if (document.getElementById("editModal")) return;
@@ -601,11 +763,13 @@ function ensureEditModal() {
         <input id="editTitle" class="full-input">
 
         <label>الآيات</label>
-        <div id="editVersesBox"></div>
 
         <div class="modal-actions">
-          <button class="primary-btn" onclick="addBlankEditVerse()">+ إضافة آية فارغة</button>
+          <button class="primary-btn" onclick="addBlankEditVerse()">+ إضافة آية</button>
+          <button onclick="sortEditVersesByMushaf()">ترتيب حسب المصحف</button>
         </div>
+
+        <div id="editVersesBox"></div>
 
         <label>ملاحظة</label>
         <textarea id="editNote" class="ayah-preview"></textarea>
@@ -653,7 +817,6 @@ function closeEditModal() {
 
 function renderEditVerses(verses) {
   const box = document.getElementById("editVersesBox");
-
   if (!box) return;
 
   box.innerHTML = verses.map((v, vi) => `
@@ -661,18 +824,27 @@ function renderEditVerses(verses) {
 
       <div class="edit-verse-header">
         <b>آية ${vi + 1}</b>
-        <button class="remove-small" onclick="removeEditVerse(${vi})">حذف الآية</button>
+
+        <div class="edit-verse-actions">
+          <button onclick="moveEditVerseUp(${vi})">↑</button>
+          <button onclick="moveEditVerseDown(${vi})">↓</button>
+          <button class="remove-small" onclick="removeEditVerse(${vi})">حذف الآية</button>
+        </div>
       </div>
 
       <div class="grid-3">
         <div>
           <label>السورة</label>
-          <input class="edit-surah full-input" value="${escapeAttr(v.surah)}">
+          <select class="edit-surah full-input" onchange="onEditSurahChange(${vi})">
+            ${buildEditSurahOptions(v.surah)}
+          </select>
         </div>
 
         <div>
           <label>رقم الآية</label>
-          <input class="edit-ayah full-input" value="${escapeAttr(v.ayah)}">
+          <select class="edit-ayah full-input" onchange="fillEditAyahFromReference(${vi})">
+            ${buildEditAyahOptions(v.surah, v.ayah)}
+          </select>
         </div>
 
         <div>
@@ -681,7 +853,12 @@ function renderEditVerses(verses) {
         </div>
       </div>
 
+      <div class="ayah-fill-actions">
+        <button onclick="fillEditAyahFromReference(${vi})">ملء نص الآية من المرجع</button>
+      </div>
+
       <label>أجزاء النص</label>
+
       <div class="edit-parts-box">
         ${(v.parts || []).map((p, pi) => renderEditPart(p, vi, pi)).join("")}
       </div>
@@ -710,6 +887,68 @@ function renderEditPart(p, vi, pi) {
       <button class="remove-small" onclick="removeEditPart(${vi}, ${pi})">حذف</button>
     </div>
   `;
+}
+
+function onEditSurahChange(verseIndex) {
+  const verses = collectEditVersesFromDOM();
+
+  const card = document.querySelectorAll("#editVersesBox .edit-verse-card")[verseIndex];
+  if (!card) return;
+
+  const surah = card.querySelector(".edit-surah")?.value || "";
+  const ayahSelect = card.querySelector(".edit-ayah");
+
+  const ayahs = getSurahAyahs(getSurahNoByName(surah));
+
+  ayahSelect.innerHTML = ayahs.map(a => `
+    <option value="${a.ayahNo}">
+      ${a.ayahNo}
+    </option>
+  `).join("");
+
+  // Update collected verses with new surah and first ayah
+  verses[verseIndex].surah = surah;
+  verses[verseIndex].ayah = ayahSelect.value;
+
+  renderEditVerses(verses);
+
+  // Fill ayah text after changing surah
+  fillEditAyahFromReference(verseIndex);
+}
+
+function fillEditAyahFromReference(verseIndex) {
+  const verses = collectEditVersesFromDOM();
+
+  if (!verses[verseIndex]) return;
+
+  const surah = verses[verseIndex].surah;
+  const ayah = verses[verseIndex].ayah;
+
+  const a = getAyah(getSurahNoByName(surah), getAyahNoValue(ayah));
+
+  if (!a) {
+    alert("لم يتم العثور على الآية في quran-reference.js");
+    return;
+  }
+
+  // Keep the first selected type if exists
+  const currentType =
+    verses[verseIndex].parts &&
+    verses[verseIndex].parts[0] &&
+    verses[verseIndex].parts[0].type
+      ? verses[verseIndex].parts[0].type
+      : "normal";
+
+  verses[verseIndex].surah = a.surah;
+  verses[verseIndex].ayah = a.ayahNo;
+  verses[verseIndex].parts = [
+    {
+      type: currentType,
+      text: a.text
+    }
+  ];
+
+  renderEditVerses(verses);
 }
 
 function collectEditVersesFromDOM() {
@@ -781,6 +1020,8 @@ function saveEditGroup() {
   };
 
   closeEditModal();
+
+  buildSurahFilterBar();
   applyAllFilters();
 
   alert("تم تعديل المجموعة داخل الصفحة. لتحفظ التعديل نهائيًا اضغط تحميل data.js واستبدل الملف القديم.");
@@ -788,23 +1029,25 @@ function saveEditGroup() {
 
 function removeEditVerse(verseIndex) {
   const verses = collectEditVersesFromDOM();
-
   verses.splice(verseIndex, 1);
-
   renderEditVerses(verses);
 }
 
 function addBlankEditVerse() {
   const verses = collectEditVersesFromDOM();
 
+  const firstSurahNo = 1;
+  const firstSurahName = SURAH_NAMES[firstSurahNo];
+  const firstAyah = getAyah(firstSurahNo, 1);
+
   verses.push({
-    surah: "",
-    ayah: "",
+    surah: firstSurahName,
+    ayah: 1,
     label: "",
     parts: [
       {
         type: "normal",
-        text: ""
+        text: firstAyah ? firstAyah.text : ""
       }
     ]
   });
@@ -845,6 +1088,48 @@ function removeEditPart(verseIndex, partIndex) {
 
   renderEditVerses(verses);
 }
+
+function moveEditVerseUp(index) {
+  const verses = collectEditVersesFromDOM();
+
+  if (index <= 0) return;
+
+  const temp = verses[index - 1];
+  verses[index - 1] = verses[index];
+  verses[index] = temp;
+
+  renderEditVerses(verses);
+}
+
+function moveEditVerseDown(index) {
+  const verses = collectEditVersesFromDOM();
+
+  if (index >= verses.length - 1) return;
+
+  const temp = verses[index + 1];
+  verses[index + 1] = verses[index];
+  verses[index] = temp;
+
+  renderEditVerses(verses);
+}
+
+function sortEditVersesByMushaf() {
+  const verses = collectEditVersesFromDOM();
+
+  verses.sort((a, b) => {
+    const surahA = getSurahNoByName(a.surah);
+    const surahB = getSurahNoByName(b.surah);
+
+    if (surahA !== surahB) {
+      return surahA - surahB;
+    }
+
+    return getAyahNoValue(a.ayah) - getAyahNoValue(b.ayah);
+  });
+
+  renderEditVerses(verses);
+}
+
 
 /* =========================
    INITIAL LOAD
