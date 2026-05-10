@@ -9,7 +9,7 @@
 <body>
   <header class="site-header">
     <h1>متشابهات القرآن الكريم</h1>
-    <p class="sub">بحث + فلترة + إضافة + تعديل + حذف — مرجع القرآن الكريم كامل</p>
+    <p class="sub">بحث + فلترة + إضافة + تعديل + حذف — حفظ تلقائي</p>
     <div class="header-line"></div>
   </header>
 
@@ -18,6 +18,13 @@
     <div class="legend-item"><span class="legend-dot ld-d"></span>اختلاف في اللفظ</div>
     <div class="legend-item"><span class="legend-dot ld-a"></span>زيادة في الآية</div>
     <div class="legend-item"><span class="legend-dot ld-s"></span>لفظ مشترك</div>
+  </div>
+
+  <!-- STORAGE BAR -->
+  <div class="storage-bar">
+    <span id="storageBadge" class="storage-badge">⏳ جاري التحميل...</span>
+    <button class="reset-btn" onclick="clearLocalStorage()">↺ إعادة ضبط</button>
+    <span class="storage-hint">التعديلات تُحفظ تلقائياً في المتصفح — اضغط "تحميل data.js" لحفظ في Files</span>
   </div>
 
   <section class="filter-bar">
@@ -35,7 +42,7 @@
     <button class="primary-btn" onclick="openAddModal()">+ إضافة متشابه</button>
     <button onclick="expandAll()">فتح الكل</button>
     <button onclick="collapseAll()">طي الكل</button>
-    <button onclick="downloadDataJS()">تحميل data.js</button>
+    <button onclick="downloadDataJS()">📤 تحميل data.js</button>
     <span id="counter"></span>
   </section>
 
@@ -51,7 +58,6 @@
       <div class="modal-body">
         <label>عنوان المتشابه</label>
         <input id="newTitle" class="full-input" placeholder="مثال: الرجفة / الصيحة">
-
         <div class="grid-3">
           <div>
             <label>السورة</label>
@@ -72,33 +78,26 @@
             </select>
           </div>
         </div>
-
         <label>وصف قصير للآية / Label</label>
         <input id="newLabel" class="full-input" placeholder="مثال: قوم صالح / زيادة فكذبوه">
-
         <label>نص الآية من quran-reference.js</label>
         <textarea id="ayahPreview" class="ayah-preview" readonly></textarea>
-
         <label>تحديد جزء من الآية فقط - اختياري</label>
         <textarea id="selectedPart" class="ayah-preview" placeholder="لو تركته فارغًا سيتم استخدام نص الآية كاملًا"></textarea>
-
         <div class="modal-actions">
           <button class="primary-btn" onclick="addVerseToDraft()">إضافة الآية للمجموعة</button>
           <button onclick="clearDraftVerses()">مسح الآيات المؤقتة</button>
         </div>
-
         <h3>الآيات المضافة مؤقتًا</h3>
         <div id="draftVerses" class="draft-box">لا توجد آيات مضافة بعد.</div>
-
         <label>ملاحظة</label>
         <textarea id="newNote" class="ayah-preview" placeholder="ملاحظة الحفظ أو الربط"></textarea>
-
         <label>فائدة فريدة / إضافية</label>
         <textarea id="newUnote" class="ayah-preview" placeholder="اختياري"></textarea>
       </div>
       <div class="modal-footer">
         <button class="primary-btn" onclick="createNewGroup()">حفظ في الصفحة</button>
-        <button onclick="downloadDataJS()">تحميل data.js بعد الإضافة</button>
+        <button onclick="downloadDataJS()">📤 تحميل data.js</button>
         <button onclick="closeAddModal()">إغلاق</button>
       </div>
     </div>

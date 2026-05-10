@@ -7,6 +7,115 @@ let draftVerses = [];
 let editGroupIndex = null;
 
 /* =========================
+   PERSISTENT STORAGE
+   localStorage + File System Access API
+========================= */
+
+const LS_KEY = "mutashabihat_data";
+let fileHandle = null;  // File System Access API handle
+
+// Auto-save DATA to localStorage
+function autoSaveToLocalStorage() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(DATA));
+    updateStorageStatus("saved");
+  } catch(e) {
+    console.warn("localStorage save failed:", e);
+  }
+}
+
+// Load from localStorage on startup (overrides data.js if found)
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(LS_KEY);
+    if (!saved) return false;
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed) || !parsed.length) return false;
+    DATA.length = 0;
+    parsed.forEach(function(g) { DATA.push(g); });
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+// Show storage status badge
+function updateStorageStatus(state) {
+  const badge = document.getElementById("storageBadge");
+  if (!badge) return;
+  if (state === "saved") {
+    badge.textContent = "✓ محفوظ في المتصفح";
+    badge.style.color = "var(--shared, #1B5E30)";
+  } else if (state === "linked") {
+    badge.textContent = "🔗 data.js مرتبط (PC)";
+    badge.style.color = "#0D47A1";
+  } else if (state === "writing") {
+    badge.textContent = "⏳ جاري الكتابة...";
+    badge.style.color = "#B45309";
+  }
+}
+
+// File System Access API — Link data.js file (PC Chrome)
+async function linkDataFile() {
+  if (!("showOpenFilePicker" in window)) {
+    alert("File System Access API غير مدعوم في هذا المتصفح.\nاستخدم Chrome على الكمبيوتر.");
+    return;
+  }
+  try {
+    const [handle] = await window.showOpenFilePicker({
+      types: [{ description: "JavaScript", accept: { "application/javascript": [".js"] } }],
+      suggestedName: "data.js"
+    });
+    fileHandle = handle;
+    updateStorageStatus("linked");
+    localStorage.setItem("mutashabihat_file_linked", "true");
+    alert("تم ربط data.js بنجاح!\nمن الآن، كل تعديل سيُحفظ تلقائياً في الملف مباشرة.");
+  } catch(e) {
+    if (e.name !== "AbortError") console.error(e);
+  }
+}
+
+// Write directly to linked file
+async function writeToLinkedFile() {
+  if (!fileHandle) return false;
+  try {
+    updateStorageStatus("writing");
+    const content = "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
+    const writable = await fileHandle.createWritable();
+    await writable.write(content);
+    await writable.close();
+    updateStorageStatus("linked");
+    return true;
+  } catch(e) {
+    console.error("File write failed:", e);
+    fileHandle = null;
+    updateStorageStatus("saved");
+    return false;
+  }
+}
+
+// Master save: localStorage + linked file (if any)
+async function masterSave() {
+  autoSaveToLocalStorage();
+  if (fileHandle) {
+    await writeToLinkedFile();
+  }
+}
+
+// Clear localStorage (reset to data.js original)
+function clearLocalStorage() {
+  const confirmed = confirm(
+    "هل تريد مسح التغييرات المحفوظة في المتصفح والرجوع إلى data.js الأصلي؟\n\nملاحظة: سيتم إعادة تحميل الصفحة."
+  );
+  if (!confirmed) return;
+  localStorage.removeItem(LS_KEY);
+  localStorage.removeItem("mutashabihat_file_linked");
+  fileHandle = null;
+  location.reload();
+}
+
+
+/* =========================
    TEXT / DISPLAY HELPERS
 ========================= */
 
@@ -553,11 +662,11 @@ function createNewGroup() {
   document.getElementById("newUnote").value = "";
 
   closeAddModal();
-
+  masterSave();
   buildSurahFilterBar();
   applyAllFilters();
 
-  alert("تمت الإضافة داخل الصفحة. لتحفظها نهائيًا اضغط تحميل data.js واستبدل الملف القديم.");
+  alert("تمت الإضافة وحُفظت تلقائياً.\nاضغط تحميل data.js لحفظها في Files/iCloud.");
 }
 
 /* =========================
@@ -565,27 +674,37 @@ function createNewGroup() {
 ========================= */
 
 function downloadDataJS() {
-  const content =
-    "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
+  const content = "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
+  const blob = new Blob([content], { type: "application/javascript;charset=utf-8" });
 
-  // Try normal download first
+  // iOS Safari: use Web Share API (shows Files / iCloud / AirDrop)
+  if (navigator.canShare && navigator.share) {
+    const file = new File([blob], "data.js", { type: "application/javascript" });
+    if (navigator.canShare({ files: [file] })) {
+      navigator.share({
+        files: [file],
+        title: "data.js — متشابهات القرآن"
+      })
+      .then(function() {
+        updateStorageStatus("saved");
+      })
+      .catch(function(e) {
+        if (e.name !== "AbortError") showDataExportFallback(content);
+      });
+      return;
+    }
+  }
+
+  // PC Chrome / other browsers: direct download
   try {
-    const blob = new Blob([content], {
-      type: "application/javascript;charset=utf-8"
-    });
-
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "data.js";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-
-    setTimeout(function () {
-      showDataExportFallback(content);
-    }, 800);
-
-  } catch (e) {
+    setTimeout(function() { showDataExportFallback(content); }, 800);
+  } catch(e) {
     showDataExportFallback(content);
   }
 }
@@ -1021,11 +1140,11 @@ function saveEditGroup() {
   };
 
   closeEditModal();
-
+  masterSave();
   buildSurahFilterBar();
   applyAllFilters();
 
-  alert("تم تعديل المجموعة داخل الصفحة. لتحفظ التعديل نهائيًا اضغط تحميل data.js واستبدل الملف القديم.");
+  alert("تم التعديل وحُفظ تلقائياً.\nاضغط تحميل data.js لحفظ في Files/iCloud.");
 }
 
 function removeEditVerse(verseIndex) {
@@ -1142,27 +1261,18 @@ function deleteEditGroup() {
     alert("لا توجد مجموعة مفتوحة للحذف");
     return;
   }
-
   const g = DATA[editGroupIndex];
   const confirmed = confirm(
-    'هل أنت متأكد من حذف المجموعة:\n"' + safeText(g.title) + '"\n\nلا يمكن التراجع عن هذه العملية إلا بإغلاق الصفحة دون حفظ data.js.'
+    'هل أنت متأكد من حذف المجموعة:\n"' + safeText(g.title) + '"\n\nسيتم الحفظ التلقائي بعد الحذف.'
   );
-
   if (!confirmed) return;
-
-  // Remove the group
   DATA.splice(editGroupIndex, 1);
-
-  // Renumber all IDs sequentially
-  DATA.forEach(function(group, i) {
-    group.id = i + 1;
-  });
-
+  DATA.forEach(function(group, i) { group.id = i + 1; });
   closeEditModal();
+  masterSave();
   buildSurahFilterBar();
   applyAllFilters();
-
-  alert("تم حذف المجموعة وإعادة ترقيم البيانات. اضغط تحميل data.js لحفظ التغيير نهائيًا.");
+  alert("تم الحذف وإعادة الترقيم وحُفظ تلقائياً.\nاضغط تحميل data.js لحفظ في Files/iCloud.");
 }
 
 /* =========================
@@ -1172,13 +1282,20 @@ function deleteEditGroup() {
 window.addEventListener("DOMContentLoaded", function () {
   if (typeof DATA === "undefined") {
     const app = document.getElementById("app");
-
     if (app) {
-      app.innerHTML =
-        '<div class="group"><div class="group-body" style="display:block;color:red">خطأ: ملف data.js غير مقروء.</div></div>';
+      app.innerHTML = '<div class="group"><div class="group-body" style="display:block;color:red">خطأ: ملف data.js غير مقروء.</div></div>';
     }
-
     return;
+  }
+
+  // Try loading from localStorage first
+  const fromLS = loadFromLocalStorage();
+  if (fromLS) {
+    const badge = document.getElementById("storageBadge");
+    if (badge) {
+      badge.textContent = "✓ مُحمَّل من localStorage";
+      badge.style.color = "var(--shared, #1B5E30)";
+    }
   }
 
   buildSurahFilterBar();

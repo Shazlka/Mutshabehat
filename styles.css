@@ -938,3 +938,68 @@ body{
   color:#fff;
   border-color:var(--gold);
 }
+
+/* ===========================
+   STORAGE BAR
+=========================== */
+.storage-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F0F6FF;
+  border-bottom: 1px solid #C8D8EE;
+  padding: 7px 14px;
+  flex-wrap: wrap;
+  font-size: .82rem;
+}
+
+.storage-badge {
+  font-weight: 800;
+  min-width: 140px;
+}
+
+.link-btn {
+  padding: 5px 14px;
+  border-radius: 8px;
+  border: 1px solid #0D47A1;
+  background: #E8F0FE;
+  color: #0D47A1;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  transition: all .15s;
+}
+
+.link-btn:hover {
+  background: #0D47A1;
+  color: #fff;
+}
+
+.reset-btn {
+  padding: 5px 14px;
+  border-radius: 8px;
+  border: 1px solid #B45309;
+  background: #FFF7ED;
+  color: #B45309;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .82rem;
+  transition: all .15s;
+}
+
+.reset-btn:hover {
+  background: #B45309;
+  color: #fff;
+}
+
+.storage-hint {
+  color: #6B7A90;
+  margin-right: auto;
+  font-size: .78rem;
+}
+
+@media(max-width: 700px) {
+  .storage-hint { display: none; }
+  .storage-bar { padding: 6px 10px; gap: 7px; }
+}
