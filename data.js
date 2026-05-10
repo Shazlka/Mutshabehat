@@ -124,7 +124,7 @@ const DATA = [
         "parts": [
           {
             "type": "addition",
-            "text": "فَكَذَّبُوهُ"
+            "text": "فَكَذَّبُوهُ "
           },
           {
             "type": "shared",
