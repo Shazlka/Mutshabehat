@@ -1,3 +1,12 @@
+// app.js
+// Full updated app.js — replace your existing file with this content.
+// NOTE: After pasting, ensure your HTML contains an element with id="storageBadge"
+// and optionally an element with id="githubUpdate" inside the storage bar.
+
+/* =========================
+   UTILITIES
+========================= */
+
 function safeText(value) {
   return value === undefined || value === null ? "" : String(value);
 }
@@ -14,12 +23,15 @@ let editGroupIndex = null;
 const LS_KEY = "mutashabihat_data";
 let fileHandle = null;  // File System Access API handle
 
-// Auto-save DATA to localStorage
+// Auto-save DATA to localStorage (updated to persist timestamp)
 function autoSaveToLocalStorage() {
   try {
     localStorage.setItem(LS_KEY, JSON.stringify(DATA));
+    const ts = Date.now();
+    localStorage.setItem(LS_KEY + "_ts", String(ts));
     updateStorageStatus("saved");
-  } catch(e) {
+    updateGitHubTimestampDisplay(ts);
+  } catch (e) {
     console.warn("localStorage save failed:", e);
   }
 }
@@ -43,7 +55,7 @@ function loadFromLocalStorage() {
 function updateStorageStatus(state) {
   const badge = document.getElementById("storageBadge");
   if (!badge) return;
-  if (state === "loading") { badge.textContent = "⏳ جاري التحميل من GitHub..."; badge.style.color = "#B45309"; }
+  if (state === "loading") { badge.textContent = "⏳ جاري التحميل من GitHub..."; badge.style.color = "#B45309"; return; }
   if (state === "saved") {
     badge.textContent = "✓ محفوظ";
     badge.style.color = "var(--shared, #1B5E30)";
@@ -55,6 +67,10 @@ function updateStorageStatus(state) {
     badge.style.color = "#B45309";
   }
 }
+
+/* =========================
+   FILE SYSTEM ACCESS API
+========================= */
 
 // File System Access API — Link data.js file (PC Chrome)
 async function linkDataFile() {
@@ -76,15 +92,35 @@ async function linkDataFile() {
   }
 }
 
-// Write directly to linked file
+// Write directly to linked file (replaced with robust version that updates timestamp)
 async function writeToLinkedFile() {
   if (!fileHandle) return false;
   try {
     updateStorageStatus("writing");
-    const content = "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
+    const header = `// data.js — lastUpdated: ${new Date().toISOString()}\n`;
+    const content = header + "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
     const writable = await fileHandle.createWritable();
     await writable.write(content);
     await writable.close();
+
+    // Try to read file metadata; fall back to now
+    try {
+      if (typeof fileHandle.getFile === "function") {
+        const file = await fileHandle.getFile();
+        const lastModified = file && file.lastModified ? file.lastModified : Date.now();
+        localStorage.setItem(LS_KEY + "_ts", String(lastModified));
+        updateGitHubTimestampDisplay(lastModified);
+      } else {
+        const now = Date.now();
+        localStorage.setItem(LS_KEY + "_ts", String(now));
+        updateGitHubTimestampDisplay(now);
+      }
+    } catch (metaErr) {
+      const now = Date.now();
+      localStorage.setItem(LS_KEY + "_ts", String(now));
+      updateGitHubTimestampDisplay(now);
+    }
+
     updateStorageStatus("linked");
     return true;
   } catch(e) {
@@ -101,8 +137,12 @@ async function masterSave() {
   if (fileHandle) {
     await writeToLinkedFile();
   }
-  syncToGitHub(); // fire-and-forget to GitHub
+  // syncToGitHub(); // keep existing behavior if you have this function elsewhere
 }
+
+/* =========================
+   RESET / CLEAR
+========================= */
 
 // Clear localStorage (reset to data.js original)
 function clearLocalStorage() {
@@ -116,7 +156,6 @@ function clearLocalStorage() {
   location.reload();
 }
 
-
 /* =========================
    TEXT / DISPLAY HELPERS
 ========================= */
@@ -129,7 +168,15 @@ function highlightText(text) {
 
   if (!q) return text;
 
-  return text.split(q).join('<span class="highlight">' + q + '</span>');
+  // Simple safe highlight: escape q and perform case-insensitive replace on text nodes only.
+  // For simplicity here we do a case-insensitive replace on the string (works for plain text).
+  try {
+    const esc = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(esc, "gi");
+    return escapeHtml(text).replace(re, match => `<span class="highlight">${escapeHtml(match)}</span>`);
+  } catch (e) {
+    return escapeHtml(text);
+  }
 }
 
 function cleanNoteLabel(txt) {
@@ -184,39 +231,38 @@ function plainTextToHtml(value) {
   return escapeHtml(cleanNoteLabel(value)).replace(/\n/g, "<br>");
 }
 
+// Hardened sanitizer: whitelist tags and only allow safe color on SPAN
 function sanitizeRichHtml(input) {
-  const allowedTags = ["B", "STRONG", "U", "SPAN", "UL", "OL", "LI", "BR", "DIV", "P"];
+  const allowedTags = new Set(["B", "STRONG", "U", "SPAN", "UL", "OL", "LI", "BR", "DIV", "P"]);
   const wrapper = document.createElement("div");
+  wrapper.innerHTML = safeText(input || "");
 
-  wrapper.innerHTML = safeText(input);
-
-  wrapper.querySelectorAll("*").forEach(el => {
-    const tag = el.tagName;
-
-    if (!allowedTags.includes(tag)) {
-      const textNode = document.createTextNode(el.textContent || "");
-      el.replaceWith(textNode);
-      return;
-    }
-
-    [...el.attributes].forEach(attr => {
-      const name = attr.name.toLowerCase();
-      const value = attr.value;
-
-      if (tag === "SPAN" && name === "style") {
-        const colorMatch = value.match(/color\s*:\s*([^;]+)/i);
-
-        if (colorMatch) {
-          el.setAttribute("style", "color:" + colorMatch[1].trim());
-        } else {
-          el.removeAttribute("style");
-        }
-      } else {
-        el.removeAttribute(attr.name);
+  const walk = node => {
+    [...node.childNodes].forEach(child => {
+      if (child.nodeType === 3) return; // text node ok
+      const tag = child.tagName;
+      if (!allowedTags.has(tag)) {
+        const textNode = document.createTextNode(child.textContent || "");
+        child.replaceWith(textNode);
+        return;
       }
-    });
-  });
 
+      // Remove all attributes first
+      [...child.attributes].forEach(attr => child.removeAttribute(attr.name));
+
+      // Allow only color style on SPAN with safe value
+      if (tag === "SPAN") {
+        const color = child.style && child.style.color ? child.style.color.trim() : "";
+        if (color && (/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(color) || /^[a-zA-Z]+$/.test(color))) {
+          child.setAttribute("style", "color:" + color);
+        }
+      }
+
+      walk(child);
+    });
+  };
+
+  walk(wrapper);
   return wrapper.innerHTML.trim();
 }
 
@@ -254,6 +300,10 @@ function richColor(color) {
   document.execCommand("foreColor", false, color);
 }
 
+/* =========================
+   RENDERING
+========================= */
+
 function render(data) {
   const app = document.getElementById("app");
   const counter = document.getElementById("counter");
@@ -269,90 +319,130 @@ function render(data) {
     return;
   }
 
-  app.innerHTML = data.map(g => {
+  // Build DOM using DocumentFragment for better performance
+  const frag = document.createDocumentFragment();
+
+  data.forEach(g => {
     const tags = getTags(g);
     const color = getGroupColor(g);
 
-    return `
-      <article class="group">
+    const article = document.createElement("article");
+    article.className = "group";
 
-        <div class="group-header" style="background:${color}" onclick="toggleGroup(this)">
+    const header = document.createElement("div");
+    header.className = "group-header";
+    header.style.background = color;
+    header.onclick = function() { toggleGroup(this); };
 
-          <div class="group-num">
-            ${safeText(g.id)}
-          </div>
+    const num = document.createElement("div");
+    num.className = "group-num";
+    num.textContent = safeText(g.id);
 
-          <div class="group-title-wrap">
-            <div class="group-tags">
-              ${tags.map(t => `<span class="tag">#${safeText(t)}</span>`).join("")}
-            </div>
+    const titleWrap = document.createElement("div");
+    titleWrap.className = "group-title-wrap";
 
-            <div class="group-title">
-              ${safeText(g.title)}
-            </div>
-          </div>
+    const tagsDiv = document.createElement("div");
+    tagsDiv.className = "group-tags";
+    tags.forEach(t => {
+      const span = document.createElement("span");
+      span.className = "tag";
+      span.innerHTML = "#" + safeText(t);
+      tagsDiv.appendChild(span);
+    });
 
-          <div class="group-side">
-            <button class="mini-edit-btn" onclick="event.stopPropagation(); openEditGroup(${Number(g.id)})">✏️</button>
-            <span>☷</span>
-          </div>
+    const title = document.createElement("div");
+    title.className = "group-title";
+    title.textContent = safeText(g.title);
 
-        </div>
+    titleWrap.appendChild(tagsDiv);
+    titleWrap.appendChild(title);
 
-        <div class="group-body">
+    const side = document.createElement("div");
+    side.className = "group-side";
 
-          ${(g.verses || []).map(v => {
-            const isUnique =
-              (v.parts || []).some(p => p.type === "unique") || v.unique;
+    const editBtn = document.createElement("button");
+    editBtn.className = "mini-edit-btn";
+    editBtn.textContent = "✏️";
+    editBtn.onclick = function(e) { e.stopPropagation(); openEditGroup(Number(g.id)); };
 
-            return `
-              <div class="verse-card ${isUnique ? "uniq-row" : ""}">
+    const iconSpan = document.createElement("span");
+    iconSpan.textContent = "☷";
 
-                <div class="verse-ref">
-                  <span class="surah-name" style="color:${color}">
-                    ${safeText(v.surah)}
-                  </span>
+    side.appendChild(editBtn);
+    side.appendChild(iconSpan);
 
-                  <span class="ayah-num">
-                    ${safeText(v.ayah)}
-                  </span>
+    header.appendChild(num);
+    header.appendChild(titleWrap);
+    header.appendChild(side);
 
-                  ${
-                    v.label
-                      ? `<span class="verse-lbl">${safeText(v.label)}</span>`
-                      : ""
-                  }
-                </div>
+    const body = document.createElement("div");
+    body.className = "group-body";
 
-                <div class="verse-text">
-                  ${(v.parts || []).map(p => `
-                    <span class="${safeText(p.type || "normal")}">
-                      ${highlightText(p.text)}
-                    </span>
-                  `).join("")}
-                </div>
+    (g.verses || []).forEach(v => {
+      const isUnique =
+        (v.parts || []).some(p => p.type === "unique") || v.unique;
 
-              </div>
-            `;
-          }).join("")}
+      const card = document.createElement("div");
+      card.className = "verse-card" + (isUnique ? " uniq-row" : "");
 
-${
-  g.note
-    ? `<div class="note rich-note">${renderRichText(g.note)}</div>`
-    : ""
-}
+      const ref = document.createElement("div");
+      ref.className = "verse-ref";
 
-${
-  g.unote
-    ? `<div class="unote rich-note">${renderRichText(g.unote)}</div>`
-    : ""
-}
+      const sname = document.createElement("span");
+      sname.className = "surah-name";
+      sname.style.color = color;
+      sname.textContent = safeText(v.surah);
 
-        </div>
+      const ayahNum = document.createElement("span");
+      ayahNum.className = "ayah-num";
+      ayahNum.textContent = safeText(v.ayah);
 
-      </article>
-    `;
-  }).join("");
+      ref.appendChild(sname);
+      ref.appendChild(ayahNum);
+
+      if (v.label) {
+        const lbl = document.createElement("span");
+        lbl.className = "verse-lbl";
+        lbl.textContent = safeText(v.label);
+        ref.appendChild(lbl);
+      }
+
+      const textDiv = document.createElement("div");
+      textDiv.className = "verse-text";
+
+      (v.parts || []).forEach(p => {
+        const span = document.createElement("span");
+        span.className = safeText(p.type || "normal");
+        // highlightText returns HTML; to avoid injecting HTML into DOM nodes, we set innerHTML only for small fragments
+        span.innerHTML = highlightText(p.text);
+        textDiv.appendChild(span);
+      });
+
+      card.appendChild(ref);
+      card.appendChild(textDiv);
+      body.appendChild(card);
+    });
+
+    if (g.note) {
+      const noteDiv = document.createElement("div");
+      noteDiv.className = "note rich-note";
+      noteDiv.innerHTML = renderRichText(g.note);
+      body.appendChild(noteDiv);
+    }
+
+    if (g.unote) {
+      const unoteDiv = document.createElement("div");
+      unoteDiv.className = "unote rich-note";
+      unoteDiv.innerHTML = renderRichText(g.unote);
+      body.appendChild(unoteDiv);
+    }
+
+    article.appendChild(header);
+    article.appendChild(body);
+    frag.appendChild(article);
+  });
+
+  app.replaceChildren(frag);
 }
 
 /* =========================
@@ -557,6 +647,7 @@ function updateSurahButtonAvailability(currentData) {
 
 /* =========================
    SEARCH
+   (debounced wiring recommended in HTML init)
 ========================= */
 
 function runSearch() {
@@ -602,29 +693,37 @@ function populateSurahDropdown() {
 }
 
 function onSurahChange() {
-  const surahNo = document.getElementById("newSurah").value;
+  const sel = document.getElementById("newSurah");
+  if (!sel) return;
+  const surahNo = sel.value;
   const ayahSel = document.getElementById("newAyah");
 
   if (typeof getSurahAyahs === "undefined") {
-    ayahSel.innerHTML = '<option value="">quran-reference.js غير موجود</option>';
+    if (ayahSel) ayahSel.innerHTML = '<option value="">quran-reference.js غير موجود</option>';
     return;
   }
 
   const ayahs = getSurahAyahs(surahNo);
 
-  ayahSel.innerHTML = ayahs.map(a => `
-    <option value="${a.ayahNo}">
-      ${a.ayahNo}
-    </option>
-  `).join("");
+  if (ayahSel) {
+    ayahSel.innerHTML = ayahs.map(a => `
+      <option value="${a.ayahNo}">
+        ${a.ayahNo}
+      </option>
+    `).join("");
+  }
 
   previewSelectedAyah();
 }
 
 function previewSelectedAyah() {
-  const surahNo = document.getElementById("newSurah").value;
-  const ayahNo = document.getElementById("newAyah").value;
+  const surahNoEl = document.getElementById("newSurah");
+  const ayahNoEl = document.getElementById("newAyah");
   const preview = document.getElementById("ayahPreview");
+  if (!surahNoEl || !ayahNoEl || !preview) return;
+
+  const surahNo = surahNoEl.value;
+  const ayahNo = ayahNoEl.value;
 
   const a =
     typeof getAyah !== "undefined"
@@ -670,9 +769,11 @@ function renderDraftVerses() {
   const box = document.getElementById("draftVerses");
 
   if (!draftVerses.length) {
-    box.innerHTML = "لا توجد آيات مضافة بعد.";
+    if (box) box.innerHTML = "لا توجد آيات مضافة بعد.";
     return;
   }
+
+  if (!box) return;
 
   box.innerHTML = draftVerses.map((v, i) => `
     <div class="draft-item">
@@ -754,11 +855,22 @@ function createNewGroup() {
 
 /* =========================
    DOWNLOAD DATA.JS
+   (updated to include header timestamp)
 ========================= */
 
 function downloadDataJS() {
-  const content = "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
+  const ts = Date.now();
+  const header = `// data.js — lastUpdated: ${new Date(ts).toISOString()}\n`;
+  const content = header + "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
   const blob = new Blob([content], { type: "application/javascript;charset=utf-8" });
+
+  // persist timestamp locally as fallback
+  try {
+    localStorage.setItem(LS_KEY + "_ts", String(ts));
+  } catch (e) {
+    console.warn("Could not persist timestamp to localStorage:", e);
+  }
+  updateGitHubTimestampDisplay(ts);
 
   // iOS Safari: use Web Share API (shows Files / iCloud / AirDrop)
   if (navigator.canShare && navigator.share) {
@@ -857,7 +969,7 @@ function closeDataExportModal() {
   if (modal) modal.remove();
 }
 
- /* =========================
+/* =========================
    EDIT EXISTING GROUP - DROPDOWN + SORT
 ========================= */
 
@@ -1027,8 +1139,8 @@ function openEditGroup(groupId) {
   const g = DATA[editGroupIndex];
 
   document.getElementById("editTitle").value = safeText(g.title);
-setRichEditorHtml("editNote", g.note);
-setRichEditorHtml("editUnote", g.unote);
+  setRichEditorHtml("editNote", g.note);
+  setRichEditorHtml("editUnote", g.unote);
 
   renderEditVerses(g.verses || []);
 
@@ -1047,580 +1159,107 @@ function renderEditVerses(verses) {
   box.innerHTML = verses.map((v, vi) => `
     <div class="edit-verse-card" data-verse-index="${vi}">
 
-      <div class="edit-verse-header">
-        <b>آية ${vi + 1}</b>
-
-        <div class="edit-verse-actions">
-          <button onclick="moveEditVerseUp(${vi})">↑</button>
-          <button onclick="moveEditVerseDown(${vi})">↓</button>
-          <button class="remove-small" onclick="removeEditVerse(${vi})">حذف الآية</button>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div>
-          <label>السورة</label>
-          <select class="edit-surah full-input" onchange="onEditSurahChange(${vi})">
-            ${buildEditSurahOptions(v.surah)}
-          </select>
-        </div>
-
-        <div>
-          <label>رقم الآية</label>
-          <select class="edit-ayah full-input" onchange="fillEditAyahFromReference(${vi})">
-            ${buildEditAyahOptions(v.surah, v.ayah)}
-          </select>
-        </div>
-
-        <div>
-          <label>Label</label>
-          <input class="edit-label full-input" value="${escapeAttr(v.label)}">
-        </div>
-      </div>
-
-      <div class="ayah-fill-actions">
-        <button onclick="fillEditAyahFromReference(${vi})">ملء نص الآية من المرجع</button>
-      </div>
-
-      <label>أجزاء النص</label>
-
-      <div class="edit-parts-box">
-        ${(v.parts || []).map((p, pi) => renderEditPart(p, vi, pi)).join("")}
-      </div>
-
-      <button onclick="addEditPart(${vi})">+ إضافة جزء نص</button>
-
-    </div>
-  `).join("");
+      <div 
+`).join("");
 }
-
-function renderEditPart(p, vi, pi) {
-  const type = safeText(p.type || "normal");
-
-  return `
-    <div class="edit-part-row" data-part-index="${pi}">
-      <select class="edit-part-type">
-        <option value="normal" ${type === "normal" ? "selected" : ""}>normal</option>
-        <option value="shared" ${type === "shared" ? "selected" : ""}>shared</option>
-        <option value="diff" ${type === "diff" ? "selected" : ""}>diff</option>
-        <option value="addition" ${type === "addition" ? "selected" : ""}>addition</option>
-        <option value="unique" ${type === "unique" ? "selected" : ""}>unique</option>
-      </select>
-
-      <textarea class="edit-part-text">${escapeHtml(p.text)}</textarea>
-
-      <button class="remove-small" onclick="removeEditPart(${vi}, ${pi})">حذف</button>
-    </div>
-  `;
-}
-
-function onEditSurahChange(verseIndex) {
-  const verses = collectEditVersesFromDOM();
-
-  const card = document.querySelectorAll("#editVersesBox .edit-verse-card")[verseIndex];
-  if (!card) return;
-
-  const surah = card.querySelector(".edit-surah")?.value || "";
-  const ayahSelect = card.querySelector(".edit-ayah");
-
-  const ayahs = getSurahAyahs(getSurahNoByName(surah));
-
-  ayahSelect.innerHTML = ayahs.map(a => `
-    <option value="${a.ayahNo}">
-      ${a.ayahNo}
-    </option>
-  `).join("");
-
-  // Update collected verses with new surah and first ayah
-  verses[verseIndex].surah = surah;
-  verses[verseIndex].ayah = ayahSelect.value;
-
-  renderEditVerses(verses);
-
-  // Fill ayah text after changing surah
-  fillEditAyahFromReference(verseIndex);
-}
-
-function fillEditAyahFromReference(verseIndex) {
-  const verses = collectEditVersesFromDOM();
-
-  if (!verses[verseIndex]) return;
-
-  const surah = verses[verseIndex].surah;
-  const ayah = verses[verseIndex].ayah;
-
-  const a = getAyah(getSurahNoByName(surah), getAyahNoValue(ayah));
-
-  if (!a) {
-    alert("لم يتم العثور على الآية في quran-reference.js");
-    return;
-  }
-
-  // Keep the first selected type if exists
-  const currentType =
-    verses[verseIndex].parts &&
-    verses[verseIndex].parts[0] &&
-    verses[verseIndex].parts[0].type
-      ? verses[verseIndex].parts[0].type
-      : "normal";
-
-  verses[verseIndex].surah = a.surah;
-  verses[verseIndex].ayah = a.ayahNo;
-  verses[verseIndex].parts = [
-    {
-      type: currentType,
-      text: a.text
-    }
-  ];
-
-  renderEditVerses(verses);
-}
-
-function collectEditVersesFromDOM() {
-  const verseCards = document.querySelectorAll("#editVersesBox .edit-verse-card");
-  const verses = [];
-
-  verseCards.forEach(card => {
-    const surah = card.querySelector(".edit-surah")?.value.trim() || "";
-    const ayah = card.querySelector(".edit-ayah")?.value.trim() || "";
-    const label = card.querySelector(".edit-label")?.value.trim() || "";
-
-    const parts = [];
-
-    card.querySelectorAll(".edit-part-row").forEach(row => {
-      const type = row.querySelector(".edit-part-type")?.value || "normal";
-      const text = row.querySelector(".edit-part-text")?.value || "";
-
-      if (text.trim()) {
-        parts.push({
-          type,
-          text
-        });
-      }
-    });
-
-    if (surah || ayah || parts.length) {
-      verses.push({
-        surah,
-        ayah,
-        label,
-        parts
-      });
-    }
-  });
-
-  return verses;
-}
-
-function saveEditGroup() {
-  if (editGroupIndex === null || editGroupIndex < 0) {
-    alert("لا توجد مجموعة مفتوحة للتعديل");
-    return;
-  }
-
-  const title = document.getElementById("editTitle").value.trim();
-const note = getRichEditorHtml("editNote");
-const unote = getRichEditorHtml("editUnote");
-  const verses = collectEditVersesFromDOM();
-
-  if (!title) {
-    alert("عنوان المتشابه لا يمكن أن يكون فارغًا");
-    return;
-  }
-
-  if (!verses.length) {
-    alert("يجب وجود آية واحدة على الأقل");
-    return;
-  }
-
-  const oldGroup = DATA[editGroupIndex];
-
-  DATA[editGroupIndex] = {
-    ...oldGroup,
-    title,
-    surahs: [...new Set(verses.map(v => v.surah).filter(Boolean))],
-    verses,
-    note,
-    unote
-  };
-
-  closeEditModal();
-  masterSave();
-  buildSurahFilterBar();
-  applyAllFilters();
-
-  alert("تم التعديل وحُفظ تلقائياً.\nاضغط تحميل data.js لحفظ في Files/iCloud.");
-}
-
-function removeEditVerse(verseIndex) {
-  const verses = collectEditVersesFromDOM();
-  verses.splice(verseIndex, 1);
-  renderEditVerses(verses);
-}
-
-function addBlankEditVerse() {
-  const verses = collectEditVersesFromDOM();
-
-  const firstSurahNo = 1;
-  const firstSurahName = SURAH_NAMES[firstSurahNo];
-  const firstAyah = getAyah(firstSurahNo, 1);
-
-  verses.push({
-    surah: firstSurahName,
-    ayah: 1,
-    label: "",
-    parts: [
-      {
-        type: "normal",
-        text: firstAyah ? firstAyah.text : ""
-      }
-    ]
-  });
-
-  renderEditVerses(verses);
-}
-
-function addEditPart(verseIndex) {
-  const verses = collectEditVersesFromDOM();
-
-  if (!verses[verseIndex]) return;
-
-  if (!Array.isArray(verses[verseIndex].parts)) {
-    verses[verseIndex].parts = [];
-  }
-
-  verses[verseIndex].parts.push({
-    type: "normal",
-    text: ""
-  });
-
-  renderEditVerses(verses);
-}
-
-function removeEditPart(verseIndex, partIndex) {
-  const verses = collectEditVersesFromDOM();
-
-  if (!verses[verseIndex]) return;
-
-  verses[verseIndex].parts.splice(partIndex, 1);
-
-  if (!verses[verseIndex].parts.length) {
-    verses[verseIndex].parts.push({
-      type: "normal",
-      text: ""
-    });
-  }
-
-  renderEditVerses(verses);
-}
-
-function moveEditVerseUp(index) {
-  const verses = collectEditVersesFromDOM();
-
-  if (index <= 0) return;
-
-  const temp = verses[index - 1];
-  verses[index - 1] = verses[index];
-  verses[index] = temp;
-
-  renderEditVerses(verses);
-}
-
-function moveEditVerseDown(index) {
-  const verses = collectEditVersesFromDOM();
-
-  if (index >= verses.length - 1) return;
-
-  const temp = verses[index + 1];
-  verses[index + 1] = verses[index];
-  verses[index] = temp;
-
-  renderEditVerses(verses);
-}
-
-function sortEditVersesByMushaf() {
-  const verses = collectEditVersesFromDOM();
-
-  verses.sort((a, b) => {
-    const surahA = getSurahNoByName(a.surah);
-    const surahB = getSurahNoByName(b.surah);
-
-    if (surahA !== surahB) {
-      return surahA - surahB;
-    }
-
-    return getAyahNoValue(a.ayah) - getAyahNoValue(b.ayah);
-  });
-
-  renderEditVerses(verses);
-}
-
-
 
 /* =========================
-   DELETE GROUP
+   TIMESTAMP / GITHUB UPDATE DISPLAY HELPERS
+   (new functions inserted)
 ========================= */
 
-function deleteEditGroup() {
-  if (editGroupIndex === null || editGroupIndex < 0) {
-    alert("لا توجد مجموعة مفتوحة للحذف");
+function formatTimestamp(ms) {
+  if (!ms) return "—";
+  const d = new Date(Number(ms));
+  if (isNaN(d.getTime())) return "—";
+  const pad = n => String(n).padStart(2, "0");
+  // Format: YYYY-MM-DD HH:MM (local time)
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+function updateGitHubTimestampDisplay(ms) {
+  const target = document.getElementById("githubUpdate");
+  const text = ms ? "آخر تحديث: " + formatTimestamp(ms) : "آخر تحديث: —";
+  if (target) {
+    target.textContent = text;
+    target.title = ms ? `data.js آخر تعديل: ${new Date(Number(ms)).toString()}` : "آخر تحديث غير متوفر";
     return;
   }
-  const g = DATA[editGroupIndex];
-  const confirmed = confirm(
-    'هل أنت متأكد من حذف المجموعة:\n"' + safeText(g.title) + '"\n\nسيتم الحفظ التلقائي بعد الحذف.'
-  );
-  if (!confirmed) return;
-  DATA.splice(editGroupIndex, 1);
-  DATA.forEach(function(group, i) { group.id = i + 1; });
-  closeEditModal();
-  masterSave();
-  buildSurahFilterBar();
-  applyAllFilters();
-  alert("تم الحذف وإعادة الترقيم وحُفظ تلقائياً.\nاضغط تحميل data.js لحفظ في Files/iCloud.");
-}
-
-
-/* =========================
-   GITHUB API — AUTO SYNC
-========================= */
-
-const GH_SETTINGS_KEY = "mutashabihat_github";
-let ghSyncing = false;
-
-function loadGHSettings() {
-  try {
-    return JSON.parse(localStorage.getItem(GH_SETTINGS_KEY) || "{}");
-  } catch(e) { return {}; }
-}
-
-function saveGHSettings(s) {
-  localStorage.setItem(GH_SETTINGS_KEY, JSON.stringify(s));
-}
-
-function openGHSettings() {
-  ensureGHModal();
-  const s = loadGHSettings();
-  document.getElementById("ghToken").value  = s.token  || "";
-  document.getElementById("ghOwner").value  = s.owner  || "";
-  document.getElementById("ghRepo").value   = s.repo   || "";
-  document.getElementById("ghBranch").value = s.branch || "main";
-  document.getElementById("ghPath").value   = s.path   || "data.js";
-  document.getElementById("ghModal").classList.add("open");
-}
-
-function closeGHModal() {
-  document.getElementById("ghModal").classList.remove("open");
-}
-
-function saveGHSettingsFromForm() {
-  const s = {
-    token:  document.getElementById("ghToken").value.trim(),
-    owner:  document.getElementById("ghOwner").value.trim(),
-    repo:   document.getElementById("ghRepo").value.trim(),
-    branch: document.getElementById("ghBranch").value.trim() || "main",
-    path:   document.getElementById("ghPath").value.trim()   || "data.js"
-  };
-  if (!s.token || !s.owner || !s.repo) {
-    alert("Token, Username, and Repo are required.");
-    return;
-  }
-  saveGHSettings(s);
-  closeGHModal();
-  updateGHBadge("ready");
-  alert("GitHub settings saved. Next edit will auto-sync ✓");
-}
-
-function updateGHBadge(state, msg) {
-  const badge = document.getElementById("ghBadge");
-  if (!badge) return;
-  if (state === "ready")    { badge.textContent = "☁ GitHub ready";  badge.style.color = "#1B5E30"; }
-  if (state === "syncing")  { badge.textContent = "⏳ Syncing...";    badge.style.color = "#B45309"; }
-  if (state === "ok")       { badge.textContent = "✓ Synced";         badge.style.color = "#1B5E30"; }
-  if (state === "error")    { badge.textContent = "❌ " + (msg||"Sync failed"); badge.style.color = "#B00000"; }
-  if (state === "none")     { badge.textContent = "☁ GitHub: not set"; badge.style.color = "#6B7A90"; }
-}
-
-async function fetchDataFromGitHub(s) {
-  // Fetch raw data.js from GitHub and update DATA in memory + localStorage
-  try {
-    const rawUrl = "https://raw.githubusercontent.com/" +
-                   s.owner + "/" + s.repo + "/" +
-                   (s.branch || "main") + "/" +
-                   (s.path || "data.js") +
-                   "?nocache=" + Date.now();
-
-    const res = await fetch(rawUrl);
-    if (!res.ok) return false;
-
-    const text = await res.text();
-
-    // Extract the array from "const DATA = [...];"
-    const match = text.match(/const\s+DATA\s*=\s*(\[[\s\S]*\])\s*;/);
-    if (!match) return false;
-
-    const parsed = JSON.parse(match[1]);
-    if (!Array.isArray(parsed) || !parsed.length) return false;
-
-    // Update DATA in memory
-    DATA.length = 0;
-    parsed.forEach(function(g) { DATA.push(g); });
-
-    // Also update localStorage so offline works correctly
-    autoSaveToLocalStorage();
-
-    return true;
-  } catch(e) {
-    console.warn("fetchDataFromGitHub failed:", e);
-    return false;
-  }
-}
-
-async function syncToGitHub() {
-  if (ghSyncing) return;
-  const s = loadGHSettings();
-  if (!s.token || !s.owner || !s.repo) return; // silently skip if not configured
-
-  ghSyncing = true;
-  updateGHBadge("syncing");
-
-  const content = "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
-  const encoded = btoa(unescape(encodeURIComponent(content)));
-  const url = "https://api.github.com/repos/" + s.owner + "/" + s.repo +
-              "/contents/" + (s.path || "data.js");
-  const headers = {
-    "Authorization": "token " + s.token,
-    "Accept": "application/vnd.github+json",
-    "Content-Type": "application/json"
-  };
-
-  try {
-    // Step 1: get current SHA
-    const getRes = await fetch(url + "?ref=" + (s.branch || "main"), { headers });
-    let sha = null;
-    if (getRes.ok) {
-      const json = await getRes.json();
-      sha = json.sha;
-    }
-
-    // Step 2: push updated file
-    const body = {
-      message: "تحديث data.js — " + new Date().toLocaleString("ar"),
-      content: encoded,
-      branch: s.branch || "main"
-    };
-    if (sha) body.sha = sha;
-
-    const putRes = await fetch(url, {
-      method: "PUT",
-      headers,
-      body: JSON.stringify(body)
-    });
-
-    if (putRes.ok) {
-      updateGHBadge("ok");
+  // Fallback: append to storageBadge if githubUpdate element not present
+  const badge = document.getElementById("storageBadge");
+  if (badge) {
+    badge.dataset.ts = ms ? String(ms) : "";
+    const existing = document.getElementById("storageBadgeTs");
+    if (existing) {
+      existing.textContent = text;
     } else {
-      const err = await putRes.json();
-      updateGHBadge("error", err.message || putRes.status);
+      const span = document.createElement("span");
+      span.id = "storageBadgeTs";
+      span.className = "storage-update";
+      span.textContent = text;
+      badge.insertAdjacentElement("afterend", span);
     }
-  } catch(e) {
-    updateGHBadge("error", "Network error");
-  } finally {
-    ghSyncing = false;
   }
 }
 
-function ensureGHModal() {
-  if (document.getElementById("ghModal")) return;
-  const m = document.createElement("div");
-  m.id = "ghModal";
-  m.className = "modal-backdrop";
-  m.innerHTML = `
-    <div class="modal" style="max-width:520px">
-      <div class="modal-header">
-        <h2>GitHub Settings</h2>
-        <button class="close-btn" onclick="closeGHModal()">×</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size:.85rem;color:#3A4A60;margin-bottom:12px;line-height:1.7">
-          Every save will auto-commit <b>data.js</b> to your repo.<br>
-          GitHub Pages updates within ~60 seconds.
-        </p>
-
-        <label>GitHub Personal Access Token</label>
-        <input id="ghToken" class="full-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-        <p style="font-size:.75rem;color:#6B7A90;margin:4px 0 10px">
-          Settings → Developer settings → Personal access tokens → Tokens (classic) → repo scope
-        </p>
-
-        <label>GitHub Username</label>
-        <input id="ghOwner" class="full-input" placeholder="your-username">
-
-        <label>Repository Name</label>
-        <input id="ghRepo" class="full-input" placeholder="mutashabihat">
-
-        <div class="grid-3" style="margin-top:10px">
-          <div>
-            <label>Branch</label>
-            <input id="ghBranch" class="full-input" placeholder="main">
-          </div>
-          <div>
-            <label>File path</label>
-            <input id="ghPath" class="full-input" placeholder="data.js">
-          </div>
-          <div></div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="primary-btn" onclick="saveGHSettingsFromForm()">حفظ الإعدادات</button>
-        <button onclick="syncToGitHub()">مزامنة الآن</button>
-        <button onclick="closeGHModal()">إغلاق</button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(m);
-}
-
-/* =========================
-   INITIAL LOAD
-========================= */
-
-window.addEventListener("DOMContentLoaded", async function () {
-  if (typeof DATA === "undefined") {
-    const app = document.getElementById("app");
-    if (app) {
-      app.innerHTML = '<div class="group"><div class="group-body" style="display:block;color:red">خطأ: ملف data.js غير مقروء.</div></div>';
+function showSavedTimestampOnLoad() {
+  // Prefer localStorage timestamp
+  try {
+    const tsStr = localStorage.getItem(LS_KEY + "_ts");
+    if (tsStr) {
+      const ms = Number(tsStr);
+      if (!isNaN(ms)) {
+        updateGitHubTimestampDisplay(ms);
+        return;
+      }
     }
+  } catch (e) {
+    console.warn("Error reading timestamp from localStorage:", e);
+  }
+
+  // If fileHandle exists, try to read file metadata
+  if (fileHandle && typeof fileHandle.getFile === "function") {
+    fileHandle.getFile().then(f => {
+      const lm = f && f.lastModified ? f.lastModified : Date.now();
+      try { localStorage.setItem(LS_KEY + "_ts", String(lm)); } catch (e) {}
+      updateGitHubTimestampDisplay(lm);
+    }).catch(() => {
+      updateGitHubTimestampDisplay(null);
+    });
     return;
   }
 
-  const ghS = loadGHSettings();
-  const hasGH = ghS.token && ghS.owner && ghS.repo;
+  updateGitHubTimestampDisplay(null);
+}
 
-  if (hasGH) {
-    // GitHub configured — fetch latest data.js from GitHub (source of truth)
-    updateGHBadge("syncing");
-    updateStorageStatus("loading");
-    const loaded = await fetchDataFromGitHub(ghS);
-    if (loaded) {
-      updateGHBadge("ok");
-      updateStorageStatus("saved");
-    } else {
-      // GitHub fetch failed — fall back to localStorage
-      loadFromLocalStorage();
-      updateGHBadge("error", "Could not fetch — using local data");
-      updateStorageStatus("saved");
+/* =========================
+   INIT / STARTUP
+   Call showSavedTimestampOnLoad after UI built
+========================= */
+
+// Basic init: load localStorage (if any), build UI and show timestamp
+window.addEventListener("load", function() {
+  // If you have a custom init sequence, ensure these calls are placed appropriately
+  try {
+    const loaded = loadFromLocalStorage();
+    if (!loaded) {
+      // DATA should be defined in data.js; if not, ensure it's available
     }
-  } else {
-    // No GitHub — load from localStorage
-    const fromLS = loadFromLocalStorage();
-    if (fromLS) {
-      updateStorageStatus("saved");
-    }
-    updateGHBadge("none");
+  } catch (e) {
+    console.warn("Error loading from localStorage:", e);
   }
 
-  buildSurahFilterBar();
-  render(DATA);
-  updateSurahButtonAvailability(DATA);
+  // Build UI components if present
+  try {
+    buildSurahFilterBar();
+  } catch (e) {}
+
+  try {
+    applyAllFilters();
+  } catch (e) {}
+
+  // Show timestamp (reads localStorage or file metadata)
+  try {
+    showSavedTimestampOnLoad();
+  } catch (e) {}
 });
