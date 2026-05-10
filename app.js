@@ -782,6 +782,7 @@ function ensureEditModal() {
         <button class="primary-btn" onclick="saveEditGroup()">حفظ التعديل</button>
         <button onclick="closeEditModal()">إغلاق</button>
         <button onclick="downloadDataJS()">تحميل data.js</button>
+        <button class="remove-small" onclick="deleteEditGroup()" style="margin-right:auto">🗑 حذف المجموعة</button>
       </div>
     </div>
   `;
@@ -1130,6 +1131,39 @@ function sortEditVersesByMushaf() {
   renderEditVerses(verses);
 }
 
+
+
+/* =========================
+   DELETE GROUP
+========================= */
+
+function deleteEditGroup() {
+  if (editGroupIndex === null || editGroupIndex < 0) {
+    alert("لا توجد مجموعة مفتوحة للحذف");
+    return;
+  }
+
+  const g = DATA[editGroupIndex];
+  const confirmed = confirm(
+    'هل أنت متأكد من حذف المجموعة:\n"' + safeText(g.title) + '"\n\nلا يمكن التراجع عن هذه العملية إلا بإغلاق الصفحة دون حفظ data.js.'
+  );
+
+  if (!confirmed) return;
+
+  // Remove the group
+  DATA.splice(editGroupIndex, 1);
+
+  // Renumber all IDs sequentially
+  DATA.forEach(function(group, i) {
+    group.id = i + 1;
+  });
+
+  closeEditModal();
+  buildSurahFilterBar();
+  applyAllFilters();
+
+  alert("تم حذف المجموعة وإعادة ترقيم البيانات. اضغط تحميل data.js لحفظ التغيير نهائيًا.");
+}
 
 /* =========================
    INITIAL LOAD

@@ -9,7 +9,7 @@
 <body>
   <header class="site-header">
     <h1>متشابهات القرآن الكريم</h1>
-    <p class="sub">بحث + فلترة + إضافة متشابهات من مرجع القرآن</p>
+    <p class="sub">بحث + فلترة + إضافة + تعديل + حذف — مرجع القرآن الكريم كامل</p>
     <div class="header-line"></div>
   </header>
 
@@ -20,15 +20,15 @@
     <div class="legend-item"><span class="legend-dot ld-s"></span>لفظ مشترك</div>
   </div>
 
- <section class="filter-bar">
-  <div class="filter-header">
-    <span class="filter-title">🔍 تصفية حسب السورة</span>
-    <span class="filter-status" id="filterStatus">اختر سورة لعرض متشابهاتها فقط</span>
-    <button class="filter-clear" id="clearSurahBtn" onclick="clearSurahFilter()">عرض الكل</button>
-  </div>
+  <section class="filter-bar">
+    <div class="filter-header">
+      <span class="filter-title">🔍 تصفية حسب السورة</span>
+      <span class="filter-status" id="filterStatus">اختر سورة لعرض متشابهاتها فقط</span>
+      <button class="filter-clear" id="clearSurahBtn" onclick="clearSurahFilter()">عرض الكل</button>
+    </div>
+    <div id="surahFilterGrid" class="surah-grid"></div>
+  </section>
 
-  <div id="surahFilterGrid" class="surah-grid"></div>
-</section>
   <section class="search-panel">
     <input id="searchInput" type="text" placeholder="ابحث في المتشابهات..." oninput="runSearch()">
     <button onclick="clearSearch()">إلغاء</button>
@@ -41,6 +41,7 @@
 
   <main id="app" class="main"></main>
 
+  <!-- ADD MODAL -->
   <div id="addModal" class="modal-backdrop">
     <div class="modal">
       <div class="modal-header">
