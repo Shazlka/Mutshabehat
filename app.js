@@ -43,8 +43,9 @@ function loadFromLocalStorage() {
 function updateStorageStatus(state) {
   const badge = document.getElementById("storageBadge");
   if (!badge) return;
+  if (state === "loading") { badge.textContent = "⏳ جاري التحميل من GitHub..."; badge.style.color = "#B45309"; }
   if (state === "saved") {
-    badge.textContent = "✓ محفوظ في المتصفح";
+    badge.textContent = "✓ محفوظ";
     badge.style.color = "var(--shared, #1B5E30)";
   } else if (state === "linked") {
     badge.textContent = "🔗 data.js مرتبط (PC)";
@@ -1337,6 +1338,41 @@ function updateGHBadge(state, msg) {
   if (state === "none")     { badge.textContent = "☁ GitHub: not set"; badge.style.color = "#6B7A90"; }
 }
 
+async function fetchDataFromGitHub(s) {
+  // Fetch raw data.js from GitHub and update DATA in memory + localStorage
+  try {
+    const rawUrl = "https://raw.githubusercontent.com/" +
+                   s.owner + "/" + s.repo + "/" +
+                   (s.branch || "main") + "/" +
+                   (s.path || "data.js") +
+                   "?nocache=" + Date.now();
+
+    const res = await fetch(rawUrl);
+    if (!res.ok) return false;
+
+    const text = await res.text();
+
+    // Extract the array from "const DATA = [...];"
+    const match = text.match(/const\s+DATA\s*=\s*(\[[\s\S]*\])\s*;/);
+    if (!match) return false;
+
+    const parsed = JSON.parse(match[1]);
+    if (!Array.isArray(parsed) || !parsed.length) return false;
+
+    // Update DATA in memory
+    DATA.length = 0;
+    parsed.forEach(function(g) { DATA.push(g); });
+
+    // Also update localStorage so offline works correctly
+    autoSaveToLocalStorage();
+
+    return true;
+  } catch(e) {
+    console.warn("fetchDataFromGitHub failed:", e);
+    return false;
+  }
+}
+
 async function syncToGitHub() {
   if (ghSyncing) return;
   const s = loadGHSettings();
@@ -1446,7 +1482,7 @@ function ensureGHModal() {
    INITIAL LOAD
 ========================= */
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", async function () {
   if (typeof DATA === "undefined") {
     const app = document.getElementById("app");
     if (app) {
@@ -1455,25 +1491,33 @@ window.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Try loading from localStorage first
-  const fromLS = loadFromLocalStorage();
-  if (fromLS) {
-    const badge = document.getElementById("storageBadge");
-    if (badge) {
-      badge.textContent = "✓ مُحمَّل من localStorage";
-      badge.style.color = "var(--shared, #1B5E30)";
+  const ghS = loadGHSettings();
+  const hasGH = ghS.token && ghS.owner && ghS.repo;
+
+  if (hasGH) {
+    // GitHub configured — fetch latest data.js from GitHub (source of truth)
+    updateGHBadge("syncing");
+    updateStorageStatus("loading");
+    const loaded = await fetchDataFromGitHub(ghS);
+    if (loaded) {
+      updateGHBadge("ok");
+      updateStorageStatus("saved");
+    } else {
+      // GitHub fetch failed — fall back to localStorage
+      loadFromLocalStorage();
+      updateGHBadge("error", "Could not fetch — using local data");
+      updateStorageStatus("saved");
     }
+  } else {
+    // No GitHub — load from localStorage
+    const fromLS = loadFromLocalStorage();
+    if (fromLS) {
+      updateStorageStatus("saved");
+    }
+    updateGHBadge("none");
   }
 
   buildSurahFilterBar();
   render(DATA);
   updateSurahButtonAvailability(DATA);
-
-  // Init GitHub badge
-  const ghS = loadGHSettings();
-  if (ghS.token && ghS.owner && ghS.repo) {
-    updateGHBadge("ready");
-  } else {
-    updateGHBadge("none");
-  }
 });
