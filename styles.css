@@ -1008,3 +1008,101 @@ body{
   color: var(--border);
   font-size: 1.1rem;
 }
+/* =========================
+   RICH TEXT NOTES EDITOR
+========================= */
+
+.rich-note{
+  white-space:normal;
+}
+
+.rich-note div,
+.rich-note p{
+  margin:3px 0;
+}
+
+.rich-note ul,
+.rich-note ol{
+  margin:6px 26px 6px 0;
+  padding:0;
+}
+
+.rich-note li{
+  margin:3px 0;
+}
+
+.rich-toolbar{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  align-items:center;
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:6px;
+  margin:6px 0;
+}
+
+.rich-toolbar button{
+  padding:5px 10px;
+  border-radius:7px;
+  border:1px solid var(--border);
+  background:#EEF2F7;
+  cursor:pointer;
+  font-family:Arial,Tahoma,sans-serif;
+  font-weight:700;
+}
+
+.rich-toolbar button:hover{
+  background:var(--gold);
+  color:#fff;
+  border-color:var(--gold);
+}
+
+.rich-editor{
+  width:100%;
+  min-height:110px;
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#F8FAFC;
+  direction:rtl;
+  text-align:right;
+  font-family:Arial,Tahoma,sans-serif;
+  font-size:1rem;
+  line-height:1.8;
+  outline:none;
+  overflow:auto;
+}
+
+.rich-editor:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px rgba(201,168,76,.15);
+}
+
+.rich-editor ul,
+.rich-editor ol{
+  margin:6px 26px 6px 0;
+  padding:0;
+}
+
+.rich-editor li{
+  margin:3px 0;
+}
+
+.color-green{
+  color:#1B5E30!important;
+}
+
+.color-blue{
+  color:#0D47A1!important;
+}
+
+.color-red{
+  color:#B00000!important;
+}
+
+.color-orange{
+  color:#B45309!important;
+}
+

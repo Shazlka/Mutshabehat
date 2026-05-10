@@ -172,6 +172,87 @@ function escapeAttr(value) {
 /* =========================
    MAIN RENDER
 ========================= */
+/* =========================
+   RICH TEXT NOTES HELPERS
+========================= */
+
+function isRichHtml(value) {
+  return /<\/?(br|b|strong|u|span|ul|ol|li|div|p)\b/i.test(safeText(value));
+}
+
+function plainTextToHtml(value) {
+  return escapeHtml(cleanNoteLabel(value)).replace(/\n/g, "<br>");
+}
+
+function sanitizeRichHtml(input) {
+  const allowedTags = ["B", "STRONG", "U", "SPAN", "UL", "OL", "LI", "BR", "DIV", "P"];
+  const wrapper = document.createElement("div");
+
+  wrapper.innerHTML = safeText(input);
+
+  wrapper.querySelectorAll("*").forEach(el => {
+    const tag = el.tagName;
+
+    if (!allowedTags.includes(tag)) {
+      const textNode = document.createTextNode(el.textContent || "");
+      el.replaceWith(textNode);
+      return;
+    }
+
+    [...el.attributes].forEach(attr => {
+      const name = attr.name.toLowerCase();
+      const value = attr.value;
+
+      if (tag === "SPAN" && name === "style") {
+        const colorMatch = value.match(/color\s*:\s*([^;]+)/i);
+
+        if (colorMatch) {
+          el.setAttribute("style", "color:" + colorMatch[1].trim());
+        } else {
+          el.removeAttribute("style");
+        }
+      } else {
+        el.removeAttribute(attr.name);
+      }
+    });
+  });
+
+  return wrapper.innerHTML.trim();
+}
+
+function renderRichText(value) {
+  const cleaned = cleanNoteLabel(value);
+
+  if (!cleaned) return "";
+
+  if (isRichHtml(cleaned)) {
+    return sanitizeRichHtml(cleaned);
+  }
+
+  return plainTextToHtml(cleaned);
+}
+
+function setRichEditorHtml(id, value) {
+  const editor = document.getElementById(id);
+  if (!editor) return;
+
+  editor.innerHTML = renderRichText(value);
+}
+
+function getRichEditorHtml(id) {
+  const editor = document.getElementById(id);
+  if (!editor) return "";
+
+  return sanitizeRichHtml(editor.innerHTML.trim());
+}
+
+function richCommand(command, value = null) {
+  document.execCommand(command, false, value);
+}
+
+function richColor(color) {
+  document.execCommand("foreColor", false, color);
+}
 
 function render(data) {
   const app = document.getElementById("app");
@@ -255,17 +336,17 @@ function render(data) {
             `;
           }).join("")}
 
-          ${
-            g.note
-              ? `<div class="note">${cleanNoteLabel(g.note)}</div>`
-              : ""
-          }
+${
+  g.note
+    ? `<div class="note rich-note">${renderRichText(g.note)}</div>`
+    : ""
+}
 
-          ${
-            g.unote
-              ? `<div class="unote">${cleanNoteLabel(g.unote)}</div>`
-              : ""
-          }
+${
+  g.unote
+    ? `<div class="unote rich-note">${renderRichText(g.unote)}</div>`
+    : ""
+}
 
         </div>
 
@@ -893,10 +974,32 @@ function ensureEditModal() {
         <div id="editVersesBox"></div>
 
         <label>ملاحظة</label>
-        <textarea id="editNote" class="ayah-preview"></textarea>
 
-        <label>فائدة فريدة / إضافية</label>
-        <textarea id="editUnote" class="ayah-preview"></textarea>
+<div class="rich-toolbar">
+  <button type="button" onmousedown="event.preventDefault(); richCommand('bold')">B</button>
+  <button type="button" onmousedown="event.preventDefault(); richCommand('underline')">U</button>
+  <button type="button" onmousedown="event.preventDefault(); richCommand('insertUnorderedList')">• List</button>
+  <button type="button" class="color-green" onmousedown="event.preventDefault(); richColor('#1B5E30')">أخضر</button>
+  <button type="button" class="color-blue" onmousedown="event.preventDefault(); richColor('#0D47A1')">أزرق</button>
+  <button type="button" class="color-red" onmousedown="event.preventDefault(); richColor('#B00000')">أحمر</button>
+  <button type="button" class="color-orange" onmousedown="event.preventDefault(); richColor('#B45309')">برتقالي</button>
+</div>
+
+<div id="editNote" class="rich-editor" contenteditable="true"></div>
+
+<label>فائدة فريدة / إضافية</label>
+
+<div class="rich-toolbar">
+  <button type="button" onmousedown="event.preventDefault(); richCommand('bold')">B</button>
+  <button type="button" onmousedown="event.preventDefault(); richCommand('underline')">U</button>
+  <button type="button" onmousedown="event.preventDefault(); richCommand('insertUnorderedList')">• List</button>
+  <button type="button" class="color-green" onmousedown="event.preventDefault(); richColor('#1B5E30')">أخضر</button>
+  <button type="button" class="color-blue" onmousedown="event.preventDefault(); richColor('#0D47A1')">أزرق</button>
+  <button type="button" class="color-red" onmousedown="event.preventDefault(); richColor('#B00000')">أحمر</button>
+  <button type="button" class="color-orange" onmousedown="event.preventDefault(); richColor('#B45309')">برتقالي</button>
+</div>
+
+<div id="editUnote" class="rich-editor" contenteditable="true"></div>
       </div>
 
       <div class="modal-footer">
@@ -924,8 +1027,8 @@ function openEditGroup(groupId) {
   const g = DATA[editGroupIndex];
 
   document.getElementById("editTitle").value = safeText(g.title);
-  document.getElementById("editNote").value = safeText(cleanNoteLabel(g.note));
-  document.getElementById("editUnote").value = safeText(cleanNoteLabel(g.unote));
+setRichEditorHtml("editNote", g.note);
+setRichEditorHtml("editUnote", g.unote);
 
   renderEditVerses(g.verses || []);
 
@@ -1116,8 +1219,8 @@ function saveEditGroup() {
   }
 
   const title = document.getElementById("editTitle").value.trim();
-  const note = document.getElementById("editNote").value.trim();
-  const unote = document.getElementById("editUnote").value.trim();
+const note = getRichEditorHtml("editNote");
+const unote = getRichEditorHtml("editUnote");
   const verses = collectEditVersesFromDOM();
 
   if (!title) {
