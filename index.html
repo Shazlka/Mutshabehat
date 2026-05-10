@@ -30,6 +30,15 @@
     <span class="storage-hint">Every save auto-syncs to GitHub Pages (~60 sec to go live)</span>
   </div>
 
+  <!-- MODE TOOLBAR -->
+  <div class="mode-toolbar">
+    <span style="font-size:.82rem;color:#6B7A90;font-weight:700;">View:</span>
+    <button id="mushafBtn" class="mode-btn" onclick="toggleMushafMode()">📖 Mushaf Mode</button>
+    <button id="autoDiffBtn" class="mode-btn" onclick="toggleAutoDiff()">⚡ Auto-Diff</button>
+    <button id="repeatBtn" class="mode-btn" onclick="toggleRepeatHighlight()">🔁 Repeated</button>
+    <span class="storage-hint" style="font-size:.75rem">Swipe right/left on mobile to open/close groups</span>
+  </div>
+
   <section class="filter-bar">
     <div class="filter-header">
       <span class="filter-title">🔍 تصفية حسب السورة</span>
@@ -48,6 +57,8 @@
     <button onclick="downloadDataJS()">📤 Export data.js</button>
     <span id="counter"></span>
   </section>
+
+  <p class="swipe-hint">← اسحب يميناً لفتح المجموعة | اسحب يساراً للإغلاق →</p>
 
   <main id="app" class="main"></main>
 
