@@ -100,6 +100,7 @@ async function masterSave() {
   if (fileHandle) {
     await writeToLinkedFile();
   }
+  syncToGitHub(); // fire-and-forget to GitHub
 }
 
 // Clear localStorage (reset to data.js original)
@@ -1275,6 +1276,172 @@ function deleteEditGroup() {
   alert("تم الحذف وإعادة الترقيم وحُفظ تلقائياً.\nاضغط تحميل data.js لحفظ في Files/iCloud.");
 }
 
+
+/* =========================
+   GITHUB API — AUTO SYNC
+========================= */
+
+const GH_SETTINGS_KEY = "mutashabihat_github";
+let ghSyncing = false;
+
+function loadGHSettings() {
+  try {
+    return JSON.parse(localStorage.getItem(GH_SETTINGS_KEY) || "{}");
+  } catch(e) { return {}; }
+}
+
+function saveGHSettings(s) {
+  localStorage.setItem(GH_SETTINGS_KEY, JSON.stringify(s));
+}
+
+function openGHSettings() {
+  ensureGHModal();
+  const s = loadGHSettings();
+  document.getElementById("ghToken").value  = s.token  || "";
+  document.getElementById("ghOwner").value  = s.owner  || "";
+  document.getElementById("ghRepo").value   = s.repo   || "";
+  document.getElementById("ghBranch").value = s.branch || "main";
+  document.getElementById("ghPath").value   = s.path   || "data.js";
+  document.getElementById("ghModal").classList.add("open");
+}
+
+function closeGHModal() {
+  document.getElementById("ghModal").classList.remove("open");
+}
+
+function saveGHSettingsFromForm() {
+  const s = {
+    token:  document.getElementById("ghToken").value.trim(),
+    owner:  document.getElementById("ghOwner").value.trim(),
+    repo:   document.getElementById("ghRepo").value.trim(),
+    branch: document.getElementById("ghBranch").value.trim() || "main",
+    path:   document.getElementById("ghPath").value.trim()   || "data.js"
+  };
+  if (!s.token || !s.owner || !s.repo) {
+    alert("Token, Username, and Repo are required.");
+    return;
+  }
+  saveGHSettings(s);
+  closeGHModal();
+  updateGHBadge("ready");
+  alert("GitHub settings saved. Next edit will auto-sync ✓");
+}
+
+function updateGHBadge(state, msg) {
+  const badge = document.getElementById("ghBadge");
+  if (!badge) return;
+  if (state === "ready")    { badge.textContent = "☁ GitHub ready";  badge.style.color = "#1B5E30"; }
+  if (state === "syncing")  { badge.textContent = "⏳ Syncing...";    badge.style.color = "#B45309"; }
+  if (state === "ok")       { badge.textContent = "✓ Synced";         badge.style.color = "#1B5E30"; }
+  if (state === "error")    { badge.textContent = "❌ " + (msg||"Sync failed"); badge.style.color = "#B00000"; }
+  if (state === "none")     { badge.textContent = "☁ GitHub: not set"; badge.style.color = "#6B7A90"; }
+}
+
+async function syncToGitHub() {
+  if (ghSyncing) return;
+  const s = loadGHSettings();
+  if (!s.token || !s.owner || !s.repo) return; // silently skip if not configured
+
+  ghSyncing = true;
+  updateGHBadge("syncing");
+
+  const content = "const DATA = " + JSON.stringify(DATA, null, 2) + ";";
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+  const url = "https://api.github.com/repos/" + s.owner + "/" + s.repo +
+              "/contents/" + (s.path || "data.js");
+  const headers = {
+    "Authorization": "token " + s.token,
+    "Accept": "application/vnd.github+json",
+    "Content-Type": "application/json"
+  };
+
+  try {
+    // Step 1: get current SHA
+    const getRes = await fetch(url + "?ref=" + (s.branch || "main"), { headers });
+    let sha = null;
+    if (getRes.ok) {
+      const json = await getRes.json();
+      sha = json.sha;
+    }
+
+    // Step 2: push updated file
+    const body = {
+      message: "تحديث data.js — " + new Date().toLocaleString("ar"),
+      content: encoded,
+      branch: s.branch || "main"
+    };
+    if (sha) body.sha = sha;
+
+    const putRes = await fetch(url, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify(body)
+    });
+
+    if (putRes.ok) {
+      updateGHBadge("ok");
+    } else {
+      const err = await putRes.json();
+      updateGHBadge("error", err.message || putRes.status);
+    }
+  } catch(e) {
+    updateGHBadge("error", "Network error");
+  } finally {
+    ghSyncing = false;
+  }
+}
+
+function ensureGHModal() {
+  if (document.getElementById("ghModal")) return;
+  const m = document.createElement("div");
+  m.id = "ghModal";
+  m.className = "modal-backdrop";
+  m.innerHTML = `
+    <div class="modal" style="max-width:520px">
+      <div class="modal-header">
+        <h2>GitHub Settings</h2>
+        <button class="close-btn" onclick="closeGHModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:.85rem;color:#3A4A60;margin-bottom:12px;line-height:1.7">
+          Every save will auto-commit <b>data.js</b> to your repo.<br>
+          GitHub Pages updates within ~60 seconds.
+        </p>
+
+        <label>GitHub Personal Access Token</label>
+        <input id="ghToken" class="full-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+        <p style="font-size:.75rem;color:#6B7A90;margin:4px 0 10px">
+          Settings → Developer settings → Personal access tokens → Tokens (classic) → repo scope
+        </p>
+
+        <label>GitHub Username</label>
+        <input id="ghOwner" class="full-input" placeholder="your-username">
+
+        <label>Repository Name</label>
+        <input id="ghRepo" class="full-input" placeholder="mutashabihat">
+
+        <div class="grid-3" style="margin-top:10px">
+          <div>
+            <label>Branch</label>
+            <input id="ghBranch" class="full-input" placeholder="main">
+          </div>
+          <div>
+            <label>File path</label>
+            <input id="ghPath" class="full-input" placeholder="data.js">
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="primary-btn" onclick="saveGHSettingsFromForm()">حفظ الإعدادات</button>
+        <button onclick="syncToGitHub()">مزامنة الآن</button>
+        <button onclick="closeGHModal()">إغلاق</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(m);
+}
+
 /* =========================
    INITIAL LOAD
 ========================= */
@@ -1301,4 +1468,12 @@ window.addEventListener("DOMContentLoaded", function () {
   buildSurahFilterBar();
   render(DATA);
   updateSurahButtonAvailability(DATA);
+
+  // Init GitHub badge
+  const ghS = loadGHSettings();
+  if (ghS.token && ghS.owner && ghS.repo) {
+    updateGHBadge("ready");
+  } else {
+    updateGHBadge("none");
+  }
 });

@@ -9,7 +9,7 @@
 <body>
   <header class="site-header">
     <h1>متشابهات القرآن الكريم</h1>
-    <p class="sub">بحث + فلترة + إضافة + تعديل + حذف — حفظ تلقائي</p>
+    <p class="sub">بحث + فلترة + إضافة + تعديل + حذف — حفظ تلقائي + GitHub Sync</p>
     <div class="header-line"></div>
   </header>
 
@@ -20,11 +20,14 @@
     <div class="legend-item"><span class="legend-dot ld-s"></span>لفظ مشترك</div>
   </div>
 
-  <!-- STORAGE BAR -->
+  <!-- STORAGE + GITHUB BAR -->
   <div class="storage-bar">
-    <span id="storageBadge" class="storage-badge">⏳ جاري التحميل...</span>
-    <button class="reset-btn" onclick="clearLocalStorage()">↺ إعادة ضبط</button>
-    <span class="storage-hint">التعديلات تُحفظ تلقائياً في المتصفح — اضغط "تحميل data.js" لحفظ في Files</span>
+    <span id="storageBadge" class="storage-badge">⏳ Loading...</span>
+    <span class="bar-divider">|</span>
+    <span id="ghBadge" class="storage-badge">☁ GitHub: not set</span>
+    <button class="link-btn" onclick="openGHSettings()">⚙ GitHub</button>
+    <button class="reset-btn" onclick="clearLocalStorage()">↺ Reset</button>
+    <span class="storage-hint">Every save auto-syncs to GitHub Pages (~60 sec to go live)</span>
   </div>
 
   <section class="filter-bar">
@@ -42,7 +45,7 @@
     <button class="primary-btn" onclick="openAddModal()">+ إضافة متشابه</button>
     <button onclick="expandAll()">فتح الكل</button>
     <button onclick="collapseAll()">طي الكل</button>
-    <button onclick="downloadDataJS()">📤 تحميل data.js</button>
+    <button onclick="downloadDataJS()">📤 Export data.js</button>
     <span id="counter"></span>
   </section>
 
@@ -97,7 +100,7 @@
       </div>
       <div class="modal-footer">
         <button class="primary-btn" onclick="createNewGroup()">حفظ في الصفحة</button>
-        <button onclick="downloadDataJS()">📤 تحميل data.js</button>
+        <button onclick="downloadDataJS()">📤 Export data.js</button>
         <button onclick="closeAddModal()">إغلاق</button>
       </div>
     </div>

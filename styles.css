@@ -1003,3 +1003,8 @@ body{
   .storage-hint { display: none; }
   .storage-bar { padding: 6px 10px; gap: 7px; }
 }
+
+.bar-divider {
+  color: var(--border);
+  font-size: 1.1rem;
+}
