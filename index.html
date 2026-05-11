@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>متشابهات القرآن الكريم</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=fonts-full-final-20260509-01">
 </head>
-<body>
+<body data-theme="quran-classic" data-font-preset="classic-quran">
   <header class="site-header">
     <h1>متشابهات القرآن الكريم</h1>
     <p class="sub">بحث + فلترة + إضافة + تعديل + حذف — حفظ تلقائي + GitHub Sync</p>
@@ -20,34 +20,45 @@
     <div class="legend-item"><span class="legend-dot ld-s"></span>لفظ مشترك</div>
   </div>
 
-  <!-- STORAGE + GITHUB BAR -->
+  <!-- STORAGE + SETTINGS BAR -->
   <div class="storage-bar">
     <span id="storageBadge" class="storage-badge">⏳ Loading...</span>
     <span class="bar-divider">|</span>
     <span id="ghBadge" class="storage-badge">☁ GitHub: not set</span>
-    <button class="link-btn" onclick="openGHSettings()">⚙ GitHub</button>
-    <button class="reset-btn" onclick="clearLocalStorage()">↺ Reset</button>
-    <span class="storage-hint">Every save auto-syncs to GitHub Pages (~60 sec to go live)</span>
+    <button class="settings-btn" onclick="openAppSettings()">⚙ Settings</button>
+    <span id="themeBadge" class="storage-badge theme-badge">🎨 Quran Classic</span>
+    <span id="fontBadge" class="storage-badge theme-badge">🔤 Classic Quran</span>
   </div>
 
-  <!-- MODE TOOLBAR -->
-  <div class="mode-toolbar">
-    <span style="font-size:.82rem;color:#6B7A90;font-weight:700;">View:</span>
-    <button id="mushafBtn" class="mode-btn" onclick="toggleMushafMode()">📖 Mushaf Mode</button>
-    <button id="autoDiffBtn" class="mode-btn" onclick="toggleAutoDiff()">⚡ Auto-Diff</button>
-    <button id="repeatBtn" class="mode-btn" onclick="toggleRepeatHighlight()">🔁 Repeated</button>
-    <span class="storage-hint" style="font-size:.75rem">Swipe right/left on mobile to open/close groups</span>
-  </div>
-
-  <section class="filter-bar">
-    <div class="filter-header">
-      <span class="filter-title">🔍 تصفية حسب السورة</span>
-      <span class="filter-status" id="filterStatus">اختر سورة لعرض متشابهاتها فقط</span>
-      <button class="filter-clear" id="clearSurahBtn" onclick="clearSurahFilter()">عرض الكل</button>
+  <section class="filter-bar pro-surah-filter" id="surahFilterSection">
+    <div class="filter-compact-row">
+      <div class="filter-title-block">
+        <span class="filter-title">🔍 تصفية حسب السورة</span>
+        <span class="filter-status" id="filterStatus">المعروض الآن: كل السور</span>
+      </div>
+      <div id="selectedSurahChip" class="selected-surah-chip hidden"></div>
+      <div class="filter-main-actions">
+        <button class="filter-toggle-btn active" id="onlyResultsBtn" onclick="toggleOnlyWithResults()">بها نتائج فقط</button>
+        <button class="filter-clear" id="clearSurahBtn" onclick="clearSurahFilter()">عرض الكل</button>
+        <button class="filter-expand-btn" id="surahFilterToggleBtn" onclick="toggleSurahFilterPanel()">فتح الفلتر ▾</button>
+      </div>
     </div>
-    <div id="surahFilterGrid" class="surah-grid"></div>
+    <div class="filter-panel collapsed" id="surahFilterPanel">
+      <div class="surah-filter-tools">
+        <input id="surahFilterSearch" class="surah-filter-search" type="text" placeholder="ابحث باسم السورة أو رقمها..." oninput="runSurahFilterSearch()">
+        <div class="range-tabs" id="surahRangeTabs">
+          <button class="range-tab active" data-range="all" onclick="setSurahRange('all')">الكل</button>
+          <button class="range-tab" data-range="1-30" onclick="setSurahRange('1-30')">1-30</button>
+          <button class="range-tab" data-range="31-60" onclick="setSurahRange('31-60')">31-60</button>
+          <button class="range-tab" data-range="61-90" onclick="setSurahRange('61-90')">61-90</button>
+          <button class="range-tab" data-range="91-114" onclick="setSurahRange('91-114')">91-114</button>
+        </div>
+      </div>
+      <div class="top-surahs-section" id="topSurahsSection"><div class="mini-section-title">الأكثر وجودًا</div><div id="topSurahGrid" class="top-surah-grid"></div></div>
+      <div class="surah-section-head"><span class="mini-section-title">كل السور</span><span id="surahFilterCount" class="surah-filter-count"></span></div>
+      <div id="surahFilterGrid" class="surah-grid professional-surah-grid"></div>
+    </div>
   </section>
-
   <section class="search-panel">
     <input id="searchInput" type="text" placeholder="ابحث في المتشابهات..." oninput="runSearch()">
     <button onclick="clearSearch()">إلغاء</button>
@@ -57,8 +68,6 @@
     <button onclick="downloadDataJS()">📤 Export data.js</button>
     <span id="counter"></span>
   </section>
-
-  <p class="swipe-hint">← اسحب يميناً لفتح المجموعة | اسحب يساراً للإغلاق →</p>
 
   <main id="app" class="main"></main>
 
@@ -117,8 +126,8 @@
     </div>
   </div>
 
-  <script src="data.js"></script>
-  <script src="quran-reference.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=fonts-full-final-20260509-01"></script>
+  <script src="quran-reference.js?v=fonts-full-final-20260509-01"></script>
+  <script src="app.js?v=fonts-full-final-20260509-01"></script>
 </body>
 </html>
