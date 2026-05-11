@@ -1972,7 +1972,7 @@ const DATA = [
       {
         "surah": "يونس",
         "ayah": "73",
-        "label": "نوح",
+        "label": "قصة نوح",
         "parts": [
           {
             "type": "normal",
@@ -1991,7 +1991,7 @@ const DATA = [
       {
         "surah": "الأنبياء",
         "ayah": "76",
-        "label": "نوح",
+        "label": "قصة نوح",
         "parts": [
           {
             "type": "normal",
@@ -2010,7 +2010,7 @@ const DATA = [
       {
         "surah": "الأنبياء",
         "ayah": "71",
-        "label": "لوط",
+        "label": "قصة لوط",
         "parts": [
           {
             "type": "addition",
@@ -2025,7 +2025,7 @@ const DATA = [
       {
         "surah": "الأنبياء",
         "ayah": "74",
-        "label": "لوط",
+        "label": "قصة لوط",
         "parts": [
           {
             "type": "normal",
@@ -2044,7 +2044,7 @@ const DATA = [
       {
         "surah": "الأنبياء",
         "ayah": "88",
-        "label": "يونس",
+        "label": "قصة يونس",
         "parts": [
           {
             "type": "normal",
@@ -2063,7 +2063,7 @@ const DATA = [
       {
         "surah": "الشعراء",
         "ayah": "170",
-        "label": "لوط",
+        "label": "قصة لوط",
         "parts": [
           {
             "type": "diff",
@@ -2078,7 +2078,7 @@ const DATA = [
       {
         "surah": "الصافات",
         "ayah": "76",
-        "label": "نوح",
+        "label": "قصة نوح",
         "parts": [
           {
             "type": "addition",
