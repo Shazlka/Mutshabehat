@@ -257,13 +257,13 @@ function render(data) {
 
           ${
             g.note
-              ? `<div class="note">${cleanNoteLabel(g.note)}</div>`
+              ? `<div class="note">${typeof rtNormalizeStored==="function"?rtNormalizeStored(g.note):cleanNoteLabel(g.note)}</div>`
               : ""
           }
 
           ${
             g.unote
-              ? `<div class="unote">${cleanNoteLabel(g.unote)}</div>`
+              ? `<div class="unote">${typeof rtNormalizeStored==="function"?rtNormalizeStored(g.unote):cleanNoteLabel(g.unote)}</div>`
               : ""
           }
 
@@ -286,13 +286,98 @@ function expandAll() {
   document.querySelectorAll(".group").forEach(g => {
     g.classList.add("open");
   });
+ updateToggleAllButton();
 }
 
 function collapseAll() {
   document.querySelectorAll(".group").forEach(g => {
     g.classList.remove("open");
   });
+ updateToggleAllButton();
 }
+
+/* =========================
+ TOGGLE OPEN/CLOSE (single button)
+ - Normal modes: toggle all groups open/closed
+ - Group by Surah mode: toggle all Surah sections open/closed
+========================= */
+function isGroupBySurahMode() {
+  try {
+    return (typeof gbGetMode === 'function') && gbGetMode() === 'group-surah';
+  } catch (e) {
+    return false;
+  }
+}
+
+function updateToggleAllButton() {
+  const btn = document.getElementById('toggleAllBtn');
+  if (!btn) return;
+
+  if (isGroupBySurahMode()) {
+    const sections = Array.from(document.querySelectorAll('.surah-section'));
+    if (!sections.length) {
+      btn.textContent = 'فتح الكل';
+      return;
+    }
+    const allExpanded = sections.every(s => !s.classList.contains('collapsed'));
+    btn.textContent = allExpanded ? 'طي الكل' : 'فتح الكل';
+    return;
+  }
+
+  const groups = Array.from(document.querySelectorAll('.group'));
+  if (!groups.length) {
+    btn.textContent = 'فتح الكل';
+    return;
+  }
+  const allOpen = groups.every(g => g.classList.contains('open'));
+  btn.textContent = allOpen ? 'طي الكل' : 'فتح الكل';
+}
+
+function expandAllSurahSections() {
+  const sections = Array.from(document.querySelectorAll('.surah-section'));
+  if (!sections.length) return;
+  sections.forEach(s => s.classList.remove('collapsed'));
+  if (typeof gbSaveCollapsed === 'function') {
+    gbSaveCollapsed(new Set());
+  }
+}
+
+function collapseAllSurahSections() {
+  const sections = Array.from(document.querySelectorAll('.surah-section'));
+  if (!sections.length) return;
+  sections.forEach(s => s.classList.add('collapsed'));
+  if (typeof gbSaveCollapsed === 'function') {
+    const set = new Set(sections.map(s => String(s.id)).filter(Boolean));
+    gbSaveCollapsed(set);
+  }
+}
+
+function toggleAllSurahSections() {
+  const sections = Array.from(document.querySelectorAll('.surah-section'));
+  if (!sections.length) return;
+  const anyExpanded = sections.some(s => !s.classList.contains('collapsed'));
+  if (anyExpanded) {
+    collapseAllSurahSections();
+  } else {
+    expandAllSurahSections();
+  }
+}
+
+function toggleAll() {
+  if (isGroupBySurahMode()) {
+    toggleAllSurahSections();
+  } else {
+    const groups = Array.from(document.querySelectorAll('.group'));
+    const allOpen = groups.length && groups.every(g => g.classList.contains('open'));
+    if (allOpen) {
+      collapseAll();
+    } else {
+      expandAll();
+    }
+  }
+  updateToggleAllButton();
+}
+
 
 /* =========================
    SURAH FILTER BAR
@@ -865,6 +950,17 @@ function buildEditAyahOptions(selectedSurah, selectedAyah) {
   }).join("");
 }
 
+
+/* ========================= RICH TEXT NOTES ========================= */
+let __rtActiveEditorId=null;
+function rtSetActive(id){__rtActiveEditorId=id}
+function rtExec(cmd,value){try{const id=__rtActiveEditorId;const el=id?document.getElementById(id):null;if(el)el.focus();document.execCommand(cmd,false,value||null)}catch(e){}}
+function rtApplyColor(color){rtExec('foreColor',color)}
+function rtLooksLikeHtml(s){s=safeText(s);return /<\s*\/?\s*(b|strong|u|span|br|div|p|ul|ol|li|font)\b/i.test(s)}
+function rtTextToHtml(s){return escapeHtml(s).replace(/\r\n/g,'\n').replace(/\n/g,'<br>')}
+function sanitizeRichText(html){html=safeText(html);if(!html)return'';html=html.replace(/<\s*(script|style)[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi,'');html=html.replace(/\son\w+\s*=\s*(['"]).*?\1/gi,'');return html}
+function rtNormalizeStored(val){val=safeText(val);val=cleanNoteLabel(val);if(!val)return'';if(rtLooksLikeHtml(val))return sanitizeRichText(val);return rtTextToHtml(val)}
+
 function ensureEditModal() {
   if (document.getElementById("editModal")) return;
 
@@ -876,6 +972,7 @@ function ensureEditModal() {
     <div class="modal edit-modal">
       <div class="modal-header">
         <h2>تعديل المتشابه</h2>
+        <div class="header-actions"><button class="hdr-btn hdr-primary" onclick="saveEditGroup()">💾 حفظ</button><button class="hdr-btn" onclick="closeEditModal()">✕ إغلاق</button></div>
         <button class="close-btn" onclick="closeEditModal()">×</button>
       </div>
 
@@ -893,10 +990,10 @@ function ensureEditModal() {
         <div id="editVersesBox"></div>
 
         <label>ملاحظة</label>
-        <textarea id="editNote" class="ayah-preview"></textarea>
+        <div class="rt-box"><div class="rt-toolbar"><button class="rt-btn" onclick="rtExec('bold')"><b>B</b></button><button class="rt-btn" onclick="rtExec('underline')"><u>U</u></button><button class="rt-btn" onclick="rtExec('insertUnorderedList')">• قائمة</button><span class="rt-sep"></span><input class="rt-color" type="color" value="#0D47A1" onchange="rtApplyColor(this.value)" title="لون الخط"><button class="rt-btn" onclick="rtExec('removeFormat')">مسح تنسيق</button></div><div id="editNoteEditor" class="rt-editor" contenteditable="true" onfocus="rtSetActive('editNoteEditor')"></div></div>
 
         <label>فائدة فريدة / إضافية</label>
-        <textarea id="editUnote" class="ayah-preview"></textarea>
+        <div class="rt-box"><div class="rt-toolbar"><button class="rt-btn" onclick="rtExec('bold')"><b>B</b></button><button class="rt-btn" onclick="rtExec('underline')"><u>U</u></button><button class="rt-btn" onclick="rtExec('insertUnorderedList')">• قائمة</button><span class="rt-sep"></span><input class="rt-color" type="color" value="#B00000" onchange="rtApplyColor(this.value)" title="لون الخط"><button class="rt-btn" onclick="rtExec('removeFormat')">مسح تنسيق</button></div><div id="editUnoteEditor" class="rt-editor" contenteditable="true" onfocus="rtSetActive('editUnoteEditor')"></div></div>
       </div>
 
       <div class="modal-footer">
@@ -924,8 +1021,8 @@ function openEditGroup(groupId) {
   const g = DATA[editGroupIndex];
 
   document.getElementById("editTitle").value = safeText(g.title);
-  document.getElementById("editNote").value = safeText(cleanNoteLabel(g.note));
-  document.getElementById("editUnote").value = safeText(cleanNoteLabel(g.unote));
+  var _nEd=document.getElementById('editNoteEditor');if(_nEd)_nEd.innerHTML=rtNormalizeStored(g.note);
+  var _uEd=document.getElementById('editUnoteEditor');if(_uEd)_uEd.innerHTML=rtNormalizeStored(g.unote);
 
   renderEditVerses(g.verses || []);
 
@@ -1116,8 +1213,8 @@ function saveEditGroup() {
   }
 
   const title = document.getElementById("editTitle").value.trim();
-  const note = document.getElementById("editNote").value.trim();
-  const unote = document.getElementById("editUnote").value.trim();
+  const note = sanitizeRichText(document.getElementById('editNoteEditor')?.innerHTML||'').trim();
+  const unote = sanitizeRichText(document.getElementById('editUnoteEditor')?.innerHTML||'').trim();
   const verses = collectEditVersesFromDOM();
 
   if (!title) {
@@ -1490,7 +1587,7 @@ function ensureAppSettingsModal(){if(document.getElementById("appSettingsModal")
 function fillAppSettingsForm(){const gh=typeof loadGHSettings==="function"?loadGHSettings():{};const set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v||""};set("settingsThemeSelect",localStorage.getItem(THEME_STORAGE_KEY)||"quran-classic");set("settingsFontPresetSelect",localStorage.getItem(FONT_STORAGE_KEY)||"classic-quran");set("settingsGhToken",gh.token);set("settingsGhOwner",gh.owner);set("settingsGhRepo",gh.repo);set("settingsGhBranch",gh.branch||"main");set("settingsGhPath",gh.path||"data.js")}
 function saveAppSettings(){applyTheme(document.getElementById("settingsThemeSelect")?.value||"quran-classic");applyFontPreset(document.getElementById("settingsFontPresetSelect")?.value||"classic-quran");const token=document.getElementById("settingsGhToken")?.value.trim()||"",owner=document.getElementById("settingsGhOwner")?.value.trim()||"",repo=document.getElementById("settingsGhRepo")?.value.trim()||"",branch=document.getElementById("settingsGhBranch")?.value.trim()||"main",path=document.getElementById("settingsGhPath")?.value.trim()||"data.js";if(token||owner||repo){if(!token||!owner||!repo){closeAppSettings();return}saveGHSettings({token,owner,repo,branch,path});updateGHBadge("ready")}closeAppSettings()}
 let surahFilterPanelOpen=false,showOnlySurahsWithResults=true,activeSurahRange="all",surahFilterSearchText="";function getCountBadgeClass(c){if(!c)return"zero";if(c>=10)return"high";if(c>=4)return"medium";return"low"}function getRangeBounds(r){if(r==="1-30")return[1,30];if(r==="31-60")return[31,60];if(r==="61-90")return[61,90];if(r==="91-114")return[91,114];return[1,114]}function toggleSurahFilterPanel(){surahFilterPanelOpen=!surahFilterPanelOpen;document.getElementById("surahFilterPanel")?.classList.toggle("collapsed",!surahFilterPanelOpen);const b=document.getElementById("surahFilterToggleBtn");if(b)b.textContent=surahFilterPanelOpen?"إغلاق الفلتر ▴":"فتح الفلتر ▾"}function toggleOnlyWithResults(){showOnlySurahsWithResults=!showOnlySurahsWithResults;document.getElementById("onlyResultsBtn")?.classList.toggle("active",showOnlySurahsWithResults);renderSurahFilterButtons()}function runSurahFilterSearch(){surahFilterSearchText=document.getElementById("surahFilterSearch")?.value.trim()||"";renderSurahFilterButtons()}function setSurahRange(r){activeSurahRange=r||"all";document.querySelectorAll(".range-tab").forEach(b=>b.classList.toggle("active",b.dataset.range===activeSurahRange));renderSurahFilterButtons()}function buildSurahFilterBar(){renderSurahFilterButtons();updateSelectedSurahChip()}function renderSurahPill(no,name,count,cls){const active=selectedSurahFilter===name?"active":"",zero=count?"":"zero-count",bc=getCountBadgeClass(count);return`<button class="${cls||"pro-surah-pill"} ${active} ${zero}" data-surah="${escapeAttr(name)}" data-count="${count}" onclick="filterBySurah('${escapeAttr(name)}')"><span class="surah-no-badge">${Number(no).toLocaleString('en-US')}</span><span class="surah-name-text">${safeText(name)}</span><span class="surah-count-badge ${bc}">${Number(count).toLocaleString('en-US')}</span></button>`}function renderSurahFilterButtons(){const grid=document.getElementById("surahFilterGrid"),top=document.getElementById("topSurahGrid"),cnt=document.getElementById("surahFilterCount");if(!grid)return;const names=typeof SURAH_NAMES!=="undefined"?SURAH_NAMES:getDefaultSurahNames(),counts=getSurahGroupCounts(DATA),q=safeText(surahFilterSearchText).toLowerCase(),b=getRangeBounds(activeSurahRange);const items=Object.keys(names).map(no=>({no:+no,name:names[no],count:counts[names[no]]||0}));const topItems=items.filter(i=>i.count>0).sort((a,b)=>b.count-a.count||a.no-b.no).slice(0,8);if(top)top.innerHTML=topItems.map(i=>renderSurahPill(i.no,i.name,i.count,"top-surah-pill")).join("");const vis=items.filter(i=>i.no>=b[0]&&i.no<=b[1]&&(!showOnlySurahsWithResults||i.count>0||selectedSurahFilter===i.name)&&(!q||String(i.no).includes(q)||safeText(i.name).toLowerCase().includes(q)));grid.innerHTML=vis.length?vis.map(i=>renderSurahPill(i.no,i.name,i.count,"pro-surah-pill")).join(""):`<div class="no-results" style="padding:18px">لا توجد سور مطابقة</div>`;if(cnt)cnt.textContent="المعروض: "+vis.length+" من 114 سورة";updateSurahButtonAvailability(getSearchOnlyFilteredData())}function updateSelectedSurahChip(){const chip=document.getElementById("selectedSurahChip"),st=document.getElementById("filterStatus");if(!chip)return;if(!selectedSurahFilter){chip.classList.add("hidden");chip.innerHTML="";if(st)st.textContent="المعروض الآن: كل السور";return}const c=getSurahGroupCounts(DATA)[selectedSurahFilter]||0;chip.classList.remove("hidden");chip.innerHTML=`<span>السورة المختارة: ${safeText(selectedSurahFilter)}</span><span class="surah-count-badge ${getCountBadgeClass(c)}">${Number(c).toLocaleString('en-US')}</span><button onclick="clearSurahFilter()">×</button>`;if(st)st.textContent="المعروض الآن: "+selectedSurahFilter}function filterBySurah(s){selectedSurahFilter=s;updateSelectedSurahChip();renderSurahFilterButtons();applyAllFilters()}function clearSurahFilter(){selectedSurahFilter=null;updateSelectedSurahChip();renderSurahFilterButtons();applyAllFilters()}function updateSurahButtonAvailability(d){const a=new Set();(Array.isArray(d)?d:[]).forEach(g=>getTags(g).forEach(s=>a.add(s)));document.querySelectorAll(".pro-surah-pill,.top-surah-pill").forEach(btn=>btn.classList.toggle("no-match",!(a.has(btn.dataset.surah)||selectedSurahFilter===btn.dataset.surah)))}
-function renderEditPart(p,vi,pi){const type=safeText((p&&p.type)||"normal"),text=p&&p.text!==undefined?p.text:"";return`<div class="edit-part-row" data-part-index="${pi}"><select class="edit-part-type"><option value="normal" ${type==="normal"?"selected":""}>normal</option><option value="shared" ${type==="shared"?"selected":""}>shared</option><option value="diff" ${type==="diff"?"selected":""}>diff</option><option value="addition" ${type==="addition"?"selected":""}>addition</option><option value="unique" ${type==="unique"?"selected":""}>unique</option></select><textarea class="edit-part-text" placeholder="اكتب جزء الآية هنا...">${escapeHtml(text)}</textarea><div class="part-action-bar"><button class="move-part-btn" onclick="moveEditPartUp(${vi},${pi})">↑ أعلى</button><button class="move-part-btn" onclick="moveEditPartDown(${vi},${pi})">↓ أسفل</button><button class="insert-part-btn" onclick="insertEditPartAbove(${vi},${pi})">+ فوق</button><button class="insert-part-btn" onclick="insertEditPartBelow(${vi},${pi})">+ تحت</button><button class="remove-small" onclick="removeEditPart(${vi},${pi})">حذف</button></div></div>`}function collectEditVersesFromDOM(){const cards=document.querySelectorAll("#editVersesBox .edit-verse-card"),verses=[];cards.forEach(card=>{const surah=(card.querySelector(".edit-surah")?.value||"").trim(),ayah=(card.querySelector(".edit-ayah")?.value||"").trim(),label=(card.querySelector(".edit-label")?.value||"").trim(),parts=[];card.querySelectorAll(".edit-part-row").forEach(row=>parts.push({type:row.querySelector(".edit-part-type")?.value||"normal",text:row.querySelector(".edit-part-text")?.value||""}));if(!parts.length)parts.push({type:"normal",text:""});if(surah&&ayah)verses.push({surah,ayah,label,parts})});return verses}function cleanEmptyEditPartsBeforeSave(vs){return vs.map(v=>{const parts=(v.parts||[]).filter(p=>safeText(p.text).trim()!=="");return{...v,parts:parts.length?parts:[{type:"normal",text:""}]}}).filter(v=>v.surah&&v.ayah&&(v.parts||[]).some(p=>safeText(p.text).trim()!==""))}function moveEditPartUp(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi]||pi<=0)return;[vs[vi].parts[pi-1],vs[vi].parts[pi]]=[vs[vi].parts[pi],vs[vi].parts[pi-1]];renderEditVerses(vs)}function moveEditPartDown(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi]||pi>=vs[vi].parts.length-1)return;[vs[vi].parts[pi+1],vs[vi].parts[pi]]=[vs[vi].parts[pi],vs[vi].parts[pi+1]];renderEditVerses(vs)}function insertEditPartAbove(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.splice(pi,0,{type:"normal",text:""});renderEditVerses(vs)}function insertEditPartBelow(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.splice(pi+1,0,{type:"normal",text:""});renderEditVerses(vs)}function addEditPart(vi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.push({type:"normal",text:""});renderEditVerses(vs)}function removeEditPart(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.splice(pi,1);if(!vs[vi].parts.length)vs[vi].parts.push({type:"normal",text:""});renderEditVerses(vs)}function saveEditGroup(){if(editGroupIndex===null||editGroupIndex<0){return}const title=document.getElementById("editTitle").value.trim(),note=document.getElementById("editNote").value.trim(),unote=document.getElementById("editUnote").value.trim(),verses=cleanEmptyEditPartsBeforeSave(collectEditVersesFromDOM());if(!title||!verses.length)return;const oldGroup=DATA[editGroupIndex];DATA[editGroupIndex]={...oldGroup,title,surahs:[...new Set(verses.map(v=>v.surah).filter(Boolean))],verses,note,unote};closeEditModal();masterSave();buildSurahFilterBar();applyAllFilters()}
+function renderEditPart(p,vi,pi){const type=safeText((p&&p.type)||"normal"),text=p&&p.text!==undefined?p.text:"";return`<div class="edit-part-row" data-part-index="${pi}"><select class="edit-part-type"><option value="normal" ${type==="normal"?"selected":""}>normal</option><option value="shared" ${type==="shared"?"selected":""}>shared</option><option value="diff" ${type==="diff"?"selected":""}>diff</option><option value="addition" ${type==="addition"?"selected":""}>addition</option><option value="unique" ${type==="unique"?"selected":""}>unique</option></select><textarea class="edit-part-text" placeholder="اكتب جزء الآية هنا...">${escapeHtml(text)}</textarea><div class="part-action-bar"><button class="move-part-btn" onclick="moveEditPartUp(${vi},${pi})">↑ أعلى</button><button class="move-part-btn" onclick="moveEditPartDown(${vi},${pi})">↓ أسفل</button><button class="insert-part-btn" onclick="insertEditPartAbove(${vi},${pi})">+ فوق</button><button class="insert-part-btn" onclick="insertEditPartBelow(${vi},${pi})">+ تحت</button><button class="remove-small" onclick="removeEditPart(${vi},${pi})">حذف</button></div></div>`}function collectEditVersesFromDOM(){const cards=document.querySelectorAll("#editVersesBox .edit-verse-card"),verses=[];cards.forEach(card=>{const surah=(card.querySelector(".edit-surah")?.value||"").trim(),ayah=(card.querySelector(".edit-ayah")?.value||"").trim(),label=(card.querySelector(".edit-label")?.value||"").trim(),parts=[];card.querySelectorAll(".edit-part-row").forEach(row=>parts.push({type:row.querySelector(".edit-part-type")?.value||"normal",text:row.querySelector(".edit-part-text")?.value||""}));if(!parts.length)parts.push({type:"normal",text:""});if(surah&&ayah)verses.push({surah,ayah,label,parts})});return verses}function cleanEmptyEditPartsBeforeSave(vs){return vs.map(v=>{const parts=(v.parts||[]).filter(p=>safeText(p.text).trim()!=="");return{...v,parts:parts.length?parts:[{type:"normal",text:""}]}}).filter(v=>v.surah&&v.ayah&&(v.parts||[]).some(p=>safeText(p.text).trim()!==""))}function moveEditPartUp(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi]||pi<=0)return;[vs[vi].parts[pi-1],vs[vi].parts[pi]]=[vs[vi].parts[pi],vs[vi].parts[pi-1]];renderEditVerses(vs)}function moveEditPartDown(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi]||pi>=vs[vi].parts.length-1)return;[vs[vi].parts[pi+1],vs[vi].parts[pi]]=[vs[vi].parts[pi],vs[vi].parts[pi+1]];renderEditVerses(vs)}function insertEditPartAbove(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.splice(pi,0,{type:"normal",text:""});renderEditVerses(vs)}function insertEditPartBelow(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.splice(pi+1,0,{type:"normal",text:""});renderEditVerses(vs)}function addEditPart(vi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.push({type:"normal",text:""});renderEditVerses(vs)}function removeEditPart(vi,pi){const vs=collectEditVersesFromDOM();if(!vs[vi])return;vs[vi].parts.splice(pi,1);if(!vs[vi].parts.length)vs[vi].parts.push({type:"normal",text:""});renderEditVerses(vs)}function saveEditGroup(){if(editGroupIndex===null||editGroupIndex<0){return}const title=document.getElementById("editTitle").value.trim(),note=sanitizeRichText(document.getElementById('editNoteEditor')?.innerHTML||'').trim(),unote=sanitizeRichText(document.getElementById('editUnoteEditor')?.innerHTML||'').trim(),verses=cleanEmptyEditPartsBeforeSave(collectEditVersesFromDOM());if(!title||!verses.length)return;const oldGroup=DATA[editGroupIndex];DATA[editGroupIndex]={...oldGroup,title,surahs:[...new Set(verses.map(v=>v.surah).filter(Boolean))],verses,note,unote};closeEditModal();masterSave();buildSurahFilterBar();applyAllFilters()}
 
 /* =========================
    INITIAL LOAD
@@ -1537,3 +1634,199 @@ window.addEventListener("DOMContentLoaded", async function () {
   render(DATA);
   updateSurahButtonAvailability(DATA);
 });
+
+/* =========================
+   ADDON: GROUP BY SURAH + FLOATING TOP BUTTON
+   Version: groupby-surah-floating-top-20260509-01
+========================= */
+var GB_SURAH_MODE_KEY = "mutashabihat_group_display_mode";
+var GB_COLLAPSED_KEY = "mutashabihat_collapsed_surah_sections_v4";
+var GB_MODES = {
+  "original": "Original Order — الترتيب الأصلي",
+  "sort-surah": "Sort by Surah — ترتيب حسب السورة",
+  "group-surah": "Group by Surah — تجميع حسب السورة",
+  "newest": "Newest First — الأحدث أولاً",
+  "most-verses": "Most Verses First — الأكثر آيات"
+};
+
+function gbText(v){ return (v === undefined || v === null) ? "" : String(v); }
+function gbEsc(v){ return gbText(v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\"/g,"&quot;"); }
+function gbSurahNames(){
+  if (typeof SURAH_NAMES !== "undefined") return SURAH_NAMES;
+  if (typeof getDefaultSurahNames === "function") return getDefaultSurahNames();
+  return {};
+}
+function gbSurahNo(name){
+  const names = gbSurahNames();
+  const target = gbText(name).trim();
+  for (const no in names) {
+    if (gbText(names[no]).trim() === target) return Number(no);
+  }
+  return 9999;
+}
+function gbTags(g){
+  if (typeof getTags === "function") return getTags(g);
+  let arr = Array.isArray(g.surahs) ? g.surahs.filter(Boolean) : [];
+  if (!arr.length && Array.isArray(g.verses)) arr = [...new Set(g.verses.map(v => v.surah).filter(Boolean))];
+  return arr;
+}
+function gbAllSurahs(g){
+  return gbTags(g).slice().sort((a,b) => gbSurahNo(a) - gbSurahNo(b));
+}
+function gbPrimaryNo(g){
+  const arr = gbAllSurahs(g);
+  return arr.length ? gbSurahNo(arr[0]) : 9999;
+}
+function gbFirstAyahNo(g){
+  const nums = (g.verses || []).map(v => parseInt(v.ayah, 10)).filter(n => !isNaN(n));
+  return nums.length ? Math.min(...nums) : 9999;
+}
+function gbGetMode(){
+  return localStorage.getItem(GB_SURAH_MODE_KEY) || "group-surah";
+}
+function setGroupDisplayMode(mode){
+  const value = GB_MODES[mode] ? mode : "group-surah";
+  localStorage.setItem(GB_SURAH_MODE_KEY, value);
+  const sel = document.getElementById("groupDisplaySelect");
+  if (sel) sel.value = value;
+  if (typeof applyAllFilters === "function") applyAllFilters();
+  else if (typeof DATA !== "undefined") render(DATA);
+  updateToggleAllButton();
+}
+function gbSort(data, mode){
+  const arr = (Array.isArray(data) ? data : []).slice();
+  if (mode === "sort-surah" || mode === "group-surah") {
+    arr.sort((a,b) => gbPrimaryNo(a) - gbPrimaryNo(b) || gbFirstAyahNo(a) - gbFirstAyahNo(b) || (Number(a.id)||0) - (Number(b.id)||0));
+  } else if (mode === "newest") {
+    arr.sort((a,b) => (Number(b.id)||0) - (Number(a.id)||0));
+  } else if (mode === "most-verses") {
+    arr.sort((a,b) => ((b.verses||[]).length) - ((a.verses||[]).length) || gbPrimaryNo(a) - gbPrimaryNo(b));
+  }
+  return arr;
+}
+function gbGroupedByAllSurahs(data){
+  const map = new Map();
+  (data || []).forEach(g => {
+    const surahs = gbAllSurahs(g);
+    (surahs.length ? surahs : ["غير محدد"]).forEach(name => {
+      const no = gbSurahNo(name);
+      const key = String(no).padStart(3,"0") + "-" + name;
+      if (!map.has(key)) map.set(key, { name, no, items: [], anchor: "surah-section-" + no });
+      map.get(key).items.push(g);
+    });
+  });
+  return Array.from(map.values()).sort((a,b) => a.no - b.no);
+}
+function gbCollapsedSet(){
+  try { return new Set(JSON.parse(localStorage.getItem(GB_COLLAPSED_KEY) || "[]").map(String)); }
+  catch(e){ return new Set(); }
+}
+function gbSaveCollapsed(set){
+  localStorage.setItem(GB_COLLAPSED_KEY, JSON.stringify(Array.from(set)));
+}
+function toggleSurahSection(anchor, event){
+  if (event) event.stopPropagation();
+  const section = document.getElementById(anchor);
+  if (!section) return;
+  section.classList.toggle("collapsed");
+  const set = gbCollapsedSet();
+  if (section.classList.contains("collapsed")) set.add(String(anchor));
+  else set.delete(String(anchor));
+  gbSaveCollapsed(set);
+  updateToggleAllButton();
+}
+function ensureGroupDisplayToolbar(data){
+  const appEl = document.getElementById("app");
+  if (!appEl) return;
+  let toolbar = document.getElementById("groupDisplayToolbar");
+  if (!toolbar) {
+    toolbar = document.createElement("div");
+    toolbar.id = "groupDisplayToolbar";
+    toolbar.className = "group-display-toolbar";
+    toolbar.innerHTML = '<label>طريقة عرض المجموعات</label><select id="groupDisplaySelect" class="group-display-select"></select><div id="surahIndexBar" class="surah-index-bar"></div>';
+    appEl.parentNode.insertBefore(toolbar, appEl);
+    const select = toolbar.querySelector("#groupDisplaySelect");
+    Object.keys(GB_MODES).forEach(k => {
+      const option = document.createElement("option");
+      option.value = k;
+      option.textContent = GB_MODES[k];
+      select.appendChild(option);
+    });
+    select.addEventListener("change", function(){ setGroupDisplayMode(this.value); });
+  }
+  const select = document.getElementById("groupDisplaySelect");
+  if (select) select.value = gbGetMode();
+  const indexBar = document.getElementById("surahIndexBar");
+  if (!indexBar) return;
+  if (gbGetMode() === "group-surah") {
+    const sections = gbGroupedByAllSurahs(gbSort(data, "group-surah"));
+    indexBar.innerHTML = sections.map(s => `<button type="button" class="surah-index-link" onclick="document.getElementById('${s.anchor}').scrollIntoView({behavior:'smooth',block:'start'})"><span>${gbEsc(s.name)}</span><span class="idx-count">(${s.items.length})</span></button>`).join("");
+  } else {
+    indexBar.innerHTML = "";
+  }
+}
+function gbGroupCard(g){
+  const tags = gbTags(g);
+  const color = (typeof getGroupColor === "function") ? getGroupColor(g) : (g.color || g.headerColor || "#1A4A7E");
+  return `
+    <article class="group" data-group-id="${gbEsc(g.id)}">
+      <div class="group-header" style="background:${color}" onclick="toggleGroup(this)">
+        <div class="group-num">${gbEsc(g.id)}</div>
+        <div class="group-title-wrap">
+          <div class="group-tags">${tags.map(t => `<span class="tag">#${gbEsc(t)}</span>`).join("")}</div>
+          <div class="group-title">${gbEsc(g.title)}</div>
+        </div>
+        <div class="group-side">
+          <button class="mini-edit-btn" onclick="event.stopPropagation(); openEditGroup(${Number(g.id)})">✏️</button>
+          <span>☷</span>
+        </div>
+      </div>
+      <div class="group-body">
+        ${(g.verses || []).map(v => {
+          const isUnique = (v.parts || []).some(p => p.type === "unique") || v.unique;
+          return `<div class="verse-card ${isUnique ? "uniq-row" : ""}">
+            <div class="verse-ref">
+              <span class="surah-name" style="color:${color}">${gbEsc(v.surah)}</span>
+              <span class="ayah-num">${gbEsc(v.ayah)}</span>
+              ${v.label ? `<span class="verse-lbl">${gbEsc(v.label)}</span>` : ""}
+            </div>
+            <div class="verse-text">${(v.parts || []).map(p => `<span class="${gbEsc(p.type || "normal")}">${typeof highlightText === "function" ? highlightText(p.text) : gbEsc(p.text)}</span>`).join("")}</div>
+          </div>`;
+        }).join("")}
+        ${g.note ? `<div class="note">${typeof rtNormalizeStored === "function" ? rtNormalizeStored(g.note) : gbEsc(g.note)}</div>` : ""}
+        ${g.unote ? `<div class="unote">${typeof rtNormalizeStored === "function" ? rtNormalizeStored(g.unote) : gbEsc(g.unote)}</div>` : ""}
+      </div>
+    </article>`;
+}
+function render(data){
+  const app = document.getElementById("app");
+  const counter = document.getElementById("counter");
+  if (!app) return;
+  const list = Array.isArray(data) ? data : [];
+  if (counter) counter.textContent = "عدد النتائج: " + list.length;
+  if (!list.length) {
+    app.innerHTML = '<div class="no-results">لا توجد نتائج</div>';
+    ensureGroupDisplayToolbar([]);
+    return;
+  }
+  const mode = gbGetMode();
+  const sorted = gbSort(list, mode);
+  ensureGroupDisplayToolbar(sorted);
+  if (mode === "group-surah") {
+    const collapsed = gbCollapsedSet();
+    const sections = gbGroupedByAllSurahs(sorted);
+    app.innerHTML = sections.map(section => {
+      const isCollapsed = collapsed.has(String(section.anchor));
+      return `<section class="surah-section ${isCollapsed ? "collapsed" : ""}" id="${section.anchor}">
+        <div class="surah-section-header" onclick="toggleSurahSection('${section.anchor}', event)">
+          <div class="surah-section-title">📖 سورة ${gbEsc(section.name)}</div>
+          <div class="surah-section-count">${section.items.length} مجموعة</div>
+        </div>
+        <div class="surah-section-groups">${section.items.map(g => gbGroupCard(g)).join("")}</div>
+      </section>`;
+    }).join("");
+  } else {
+    app.innerHTML = sorted.map(g => gbGroupCard(g)).join("");
+  }
+  updateToggleAllButton();
+}

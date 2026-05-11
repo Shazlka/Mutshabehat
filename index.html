@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>متشابهات القرآن الكريم</title>
-  <link rel="stylesheet" href="styles.css?v=fix-ayahnumbers-fontsettings-clean-20260509-01">
+  <link rel="stylesheet" href="styles.css?v=groupby-surah-floating-top-20260509-01">
 </head>
 <body data-theme="quran-classic" data-font-preset="classic-quran">
   <header class="site-header">
@@ -69,8 +69,8 @@
     <input id="searchInput" type="text" placeholder="ابحث في المتشابهات..." oninput="runSearch()">
     <button onclick="clearSearch()">إلغاء</button>
     <button class="primary-btn" onclick="openAddModal()">+ إضافة متشابه</button>
-    <button onclick="expandAll()">فتح الكل</button>
-    <button onclick="collapseAll()">طي الكل</button>
+    <button id="toggleAllBtn" onclick="toggleAll()">فتح الكل</button>
+    
     <button onclick="downloadDataJS()">📤 Export data.js</button>
     <span id="counter"></span>
   </section>
@@ -132,8 +132,9 @@
     </div>
   </div>
 
-  <script src="data.js?v=fix-ayahnumbers-fontsettings-clean-20260509-01"></script>
-  <script src="quran-reference.js?v=fix-ayahnumbers-fontsettings-clean-20260509-01"></script>
-  <script src="app.js?v=fix-ayahnumbers-fontsettings-clean-20260509-01"></script>
+  <script src="data.js?v=groupby-surah-floating-top-20260509-01"></script>
+  <script src="quran-reference.js?v=groupby-surah-floating-top-20260509-01"></script>
+  <script src="app.js?v=groupby-surah-floating-top-20260509-01"></script>
+  <button id="floatingTopBtn" class="floating-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="العودة للأعلى">↑</button>
 </body>
 </html>
