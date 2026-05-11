@@ -1830,3 +1830,95 @@ function render(data){
   }
   updateToggleAllButton();
 }
+
+/* =========================================================
+ ADDON: FAVORITE + COMPLETED ICONS FOR EACH GROUP
+ Version: favorite-completed-20260511-01
+========================================================= */
+function groupFlagBool(value) {
+  return value === true || value === "true" || value === 1 || value === "1";
+}
+function findGroupById(groupId) {
+  if (typeof DATA === "undefined" || !Array.isArray(DATA)) return null;
+  return DATA.find(g => Number(g.id) === Number(groupId)) || null;
+}
+function toggleGroupFavorite(groupId) {
+  const g = findGroupById(groupId);
+  if (!g) return;
+  g.favorite = !groupFlagBool(g.favorite);
+  if (typeof masterSave === "function") masterSave();
+  if (typeof buildSurahFilterBar === "function") buildSurahFilterBar();
+  if (typeof applyAllFilters === "function") applyAllFilters();
+  else if (typeof render === "function") render(DATA);
+}
+function toggleGroupCompleted(groupId) {
+  const g = findGroupById(groupId);
+  if (!g) return;
+  g.completed = !groupFlagBool(g.completed);
+  if (typeof masterSave === "function") masterSave();
+  if (typeof buildSurahFilterBar === "function") buildSurahFilterBar();
+  if (typeof applyAllFilters === "function") applyAllFilters();
+  else if (typeof render === "function") render(DATA);
+}
+function getGroupStatusClasses(g) {
+  const fav = groupFlagBool(g.favorite);
+  const done = groupFlagBool(g.completed);
+  return (fav ? " is-favorite" : "") + (done ? " is-completed" : "");
+}
+function renderGroupActionIcons(g) {
+  const id = Number(g.id);
+  const fav = groupFlagBool(g.favorite);
+  const done = groupFlagBool(g.completed);
+  return `
+    <button class="group-status-btn favorite-btn ${fav ? "active" : ""}"
+      type="button"
+      onclick="event.stopPropagation(); toggleGroupFavorite(${id})"
+      title="${fav ? "إزالة من المفضلة" : "إضافة إلى المفضلة"}"
+      aria-label="${fav ? "إزالة من المفضلة" : "إضافة إلى المفضلة"}"
+      aria-pressed="${fav ? "true" : "false"}">★</button>
+    <button class="group-status-btn completed-btn ${done ? "active" : ""}"
+      type="button"
+      onclick="event.stopPropagation(); toggleGroupCompleted(${id})"
+      title="${done ? "إلغاء علامة مكتمل" : "وضع علامة مكتمل"}"
+      aria-label="${done ? "إلغاء علامة مكتمل" : "وضع علامة مكتمل"}"
+      aria-pressed="${done ? "true" : "false"}">✓</button>
+  `;
+}
+
+/* Override the latest group-card renderer so icons appear in all display modes */
+function gbGroupCard(g){
+ const tags = gbTags(g);
+ const color = (typeof getGroupColor === "function") ? getGroupColor(g) : (g.color || g.headerColor || "#1A4A7E");
+ const statusClasses = getGroupStatusClasses(g);
+ return `
+ <article class="group${statusClasses}" data-group-id="${gbEsc(g.id)}">
+ <div class="group-header" style="background:${color}" onclick="toggleGroup(this)">
+ <div class="group-num">${gbEsc(g.id)}</div>
+ <div class="group-title-wrap">
+ <div class="group-tags">${tags.map(t => `<span class="tag">#${gbEsc(t)}</span>`).join("")}</div>
+ <div class="group-title">${gbEsc(g.title)}</div>
+ </div>
+ <div class="group-side">
+ ${renderGroupActionIcons(g)}
+ <button class="mini-edit-btn" onclick="event.stopPropagation(); openEditGroup(${Number(g.id)})">✏️</button>
+ <span>☷</span>
+ </div>
+ </div>
+ <div class="group-body">
+ ${(g.verses || []).map(v => {
+ const isUnique = (v.parts || []).some(p => p.type === "unique") || v.unique;
+ return `<div class="verse-card ${isUnique ? "uniq-row" : ""}">
+ <div class="verse-ref">
+ <span class="surah-name" style="color:${color}">${gbEsc(v.surah)}</span>
+ <span class="ayah-num">${gbEsc(v.ayah)}</span>
+ ${v.label ? `<span class="verse-lbl">${gbEsc(v.label)}</span>` : ""}
+ </div>
+ <div class="verse-text">${(v.parts || []).map(p => `<span class="${gbEsc(p.type || "normal")}">${typeof highlightText === "function" ? highlightText(p.text) : gbEsc(p.text)}</span>`).join("")}</div>
+ </div>`;
+ }).join("")}
+ ${g.note ? `<div class="note">${typeof rtNormalizeStored === "function" ? rtNormalizeStored(g.note) : gbEsc(g.note)}</div>` : ""}
+ ${g.unote ? `<div class="unote">${typeof rtNormalizeStored === "function" ? rtNormalizeStored(g.unote) : gbEsc(g.unote)}</div>` : ""}
+ </div>
+ </article>`;
+}
+

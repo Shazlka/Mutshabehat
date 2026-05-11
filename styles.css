@@ -1274,3 +1274,93 @@ body[data-theme="quran-classic"]{--header1:#0D2B4E;--header2:#1A4A7E;--header3:#
 .rt-editor ul,.rt-editor ol{margin:6px 18px 6px 0;padding-right:18px}
 .rt-editor li{margin:3px 0}
 @media(max-width:700px){.header-actions{width:100%;justify-content:space-between;margin-right:0}.header-actions .hdr-btn{flex:1;text-align:center}}
+
+/* =========================================================
+ ADDON: FAVORITE + COMPLETED ICONS FOR EACH GROUP
+ Version: favorite-completed-20260511-01
+========================================================= */
+.group-side{
+  min-width:150px!important;
+  gap:7px!important;
+  padding:0 8px!important;
+  flex-wrap:nowrap!important;
+}
+.group-status-btn{
+  width:32px!important;
+  height:32px!important;
+  border-radius:50%!important;
+  border:1.5px solid rgba(255,255,255,.34)!important;
+  background:rgba(255,255,255,.13)!important;
+  color:rgba(255,255,255,.84)!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  cursor:pointer!important;
+  font-family:var(--font-ui,Arial,sans-serif)!important;
+  font-size:1.03rem!important;
+  font-weight:900!important;
+  line-height:1!important;
+  box-shadow:0 2px 7px rgba(0,0,0,.12)!important;
+  transition:transform .14s ease, background .14s ease, color .14s ease, border-color .14s ease, box-shadow .14s ease!important;
+}
+.group-status-btn:hover{
+  transform:translateY(-1px) scale(1.04)!important;
+  background:rgba(255,255,255,.24)!important;
+  color:#fff!important;
+}
+.favorite-btn.active{
+  background:#FFD54F!important;
+  color:#5A3A00!important;
+  border-color:#FFE082!important;
+  box-shadow:0 0 0 3px rgba(255,213,79,.22),0 2px 9px rgba(0,0,0,.18)!important;
+}
+.completed-btn.active{
+  background:#22C55E!important;
+  color:#fff!important;
+  border-color:#86EFAC!important;
+  box-shadow:0 0 0 3px rgba(34,197,94,.22),0 2px 9px rgba(0,0,0,.18)!important;
+}
+.group.is-completed .group-header{
+  filter:saturate(.92) brightness(.96);
+}
+.group.is-completed .group-title::after{
+  content:"  ✓ مكتمل";
+  display:inline-flex;
+  align-items:center;
+  margin-right:8px;
+  padding:1px 8px;
+  border-radius:999px;
+  background:rgba(34,197,94,.18);
+  border:1px solid rgba(134,239,172,.35);
+  color:#fff;
+  font-family:var(--font-ui,Arial,sans-serif);
+  font-size:.72rem;
+  font-weight:900;
+  vertical-align:middle;
+}
+.group.is-favorite .group-title::before{
+  content:"★ ";
+  color:#FFD54F;
+  text-shadow:0 1px 2px rgba(0,0,0,.22);
+}
+@media(max-width:700px){
+  .group-side{
+    min-width:118px!important;
+    gap:4px!important;
+    padding:0 5px!important;
+  }
+  .group-status-btn{
+    width:27px!important;
+    height:27px!important;
+    font-size:.9rem!important;
+  }
+  .mini-edit-btn{
+    padding:3px 6px!important;
+  }
+  .group.is-completed .group-title::after{
+    display:block;
+    width:max-content;
+    margin:5px 0 0 0;
+  }
+}
+
