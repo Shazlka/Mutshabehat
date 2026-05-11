@@ -2028,7 +2028,7 @@ const DATA = [
         "label": "لوط",
         "parts": [
           {
-            "type": "diff",
+            "type": "addition",
             "text": "وَنَجَّيۡنَٰهُ"
           },
           {
@@ -2047,7 +2047,7 @@ const DATA = [
             "text": "وَلُوطًا ءَاتَيۡنَٰهُ حُكۡمٗا وَعِلۡمٗا"
           },
           {
-            "type": "diff",
+            "type": "addition",
             "text": " وَنَجَّيۡنَٰهُ"
           },
           {
@@ -2066,7 +2066,7 @@ const DATA = [
             "text": "فَٱسۡتَجَبۡنَا لَهُۥ "
           },
           {
-            "type": "diff",
+            "type": "addition",
             "text": "وَنَجَّيۡنَٰهُ "
           },
           {
@@ -2081,7 +2081,7 @@ const DATA = [
         "label": "",
         "parts": [
           {
-            "type": "diff",
+            "type": "addition",
             "text": "وَنَجَّيۡنَٰهُ "
           },
           {
