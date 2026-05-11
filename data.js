@@ -2792,11 +2792,11 @@ const DATA = [
         "label": "",
         "parts": [
           {
-            "type": "diff",
+            "type": "unique",
             "text": "وَوُفِّيَتۡ "
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": "كُلُّ نَفۡسٖ "
           },
           {
@@ -2804,7 +2804,7 @@ const DATA = [
             "text": "مَّا عَمِلَتۡ "
           },
           {
-            "type": "normal",
+            "type": "diff",
             "text": "وَهُوَ أَعۡلَمُ بِمَا يَفۡعَلُونَ"
           }
         ]
