@@ -2092,7 +2092,8 @@ const DATA = [
       }
     ],
     "note": "<div><ul><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">يونس/الانبياء/الشعراء: فنجيناه — باقي القرآن: فأنجيناه</span><br></li><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">الأنبياء / الصافات : ونجيناه&nbsp;</span><br></li><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">في الأنبياء قصة نوح فقط (فنجيناه) سبقها (فاستجبنا له) سرعة الإستجابة من الله عز وجل وباقي صورة الأنبياء (ونجيناه)</span></li></ul></div><div><br></div>",
-    "unote": ""
+    "unote": "",
+    "completed": true
   },
   {
     "id": 28,
@@ -2203,7 +2204,8 @@ const DATA = [
       }
     ],
     "note": "",
-    "unote": "فريدة في القرآن مريم: لأبيه فقط — العنكبوت: لقومه فقط — الثلاث: لأبيه وقومه"
+    "unote": "فريدة في القرآن مريم: لأبيه فقط — العنكبوت: لقومه فقط — الثلاث: لأبيه وقومه",
+    "completed": true
   },
   {
     "id": 29,
