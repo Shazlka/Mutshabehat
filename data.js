@@ -3995,7 +3995,7 @@ const DATA = [
             "text": "قَدۡ بَيَّنَّا ٱلۡأٓيَٰتِ"
           },
           {
-            "type": "diff",
+            "type": "addition",
             "text": " لِقَوۡمٖ يُوقِنُونَ"
           }
         ]
@@ -4014,7 +4014,7 @@ const DATA = [
             "text": "قَدۡ بَيَّنَّا"
           },
           {
-            "type": "diff",
+            "type": "addition",
             "text": " لَكُمُ"
           },
           {
