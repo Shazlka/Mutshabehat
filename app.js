@@ -1832,8 +1832,199 @@ function render(data){
 }
 
 /* =========================================================
+ ADDON: QURAN REFERENCE SEARCH IN ADD + EDIT WINDOWS
+ Version: quran-reference-search-20260511-02
+========================================================= */
+function qrsNormalizeArabic(value){
+  return safeText(value)
+    .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, "")
+    .replace(/[إأآا]/g, "ا")
+    .replace(/ى/g, "ي")
+    .replace(/ة/g, "ه")
+    .replace(/ؤ/g, "و")
+    .replace(/ئ/g, "ي")
+    .trim();
+}
+function qrsGetSurahName(no){
+  const names = typeof SURAH_NAMES !== "undefined" ? SURAH_NAMES : (typeof getDefaultSurahNames === "function" ? getDefaultSurahNames() : {});
+  return names[no] || "";
+}
+function qrsSearchInQuranReference(query, maxResults){
+  const q = safeText(query).trim();
+  const qn = qrsNormalizeArabic(q);
+  const limit = maxResults || 300;
+  const results = [];
+  if (!q || !qn) return results;
+  if (typeof getSurahAyahs === "undefined") return results;
+  for (let s = 1; s <= 114; s++){
+    let ayahs = [];
+    try { ayahs = getSurahAyahs(s) || []; } catch(e) { ayahs = []; }
+    for (const a of ayahs){
+      const text = safeText(a.text);
+      const rawMatch = text.includes(q);
+      const normMatch = qrsNormalizeArabic(text).includes(qn);
+      if (rawMatch || normMatch){
+        results.push({
+          surahNo: s,
+          surah: safeText(a.surah || qrsGetSurahName(s)),
+          ayah: safeText(a.ayahNo || a.ayah || ""),
+          text
+        });
+        if (results.length >= limit) return results;
+      }
+    }
+  }
+  return results;
+}
+function qrsHighlight(text, query){
+  text = safeText(text);
+  query = safeText(query).trim();
+  if (!query) return escapeHtml(text);
+  const escaped = escapeHtml(text);
+  try {
+    const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return escaped.replace(new RegExp(safeQuery, "g"), '<mark class="qrs-mark">' + escapeHtml(query) + '</mark>');
+  } catch(e){
+    return escaped;
+  }
+}
+function qrsEnsurePanel(mode){
+  const isEdit = mode === "edit";
+  const host = isEdit ? document.getElementById("editVersesBox") : document.getElementById("draftVerses");
+  if (!host) return;
+  const panelId = isEdit ? "qrsEditPanel" : "qrsAddPanel";
+  if (document.getElementById(panelId)) return;
+  const panel = document.createElement("div");
+  panel.id = panelId;
+  panel.className = "qrs-panel";
+  panel.innerHTML = `
+    <div class="qrs-title">🔎 البحث في quran-reference.js</div>
+    <div class="qrs-search-row">
+      <input id="${panelId}Input" class="qrs-input" type="text" placeholder="اكتب كلمة أو جزء من آية للبحث..." oninput="qrsRunSearch('${mode}')">
+      <button type="button" class="qrs-btn" onclick="qrsRunSearch('${mode}')">بحث</button>
+      <button type="button" class="qrs-btn qrs-clear" onclick="qrsClearSearch('${mode}')">مسح</button>
+    </div>
+    <div class="qrs-hint">اختر أي نتيجة بعلامة ✓ لإضافتها مباشرة إلى قسم الآيات مع اسم السورة ورقم الآية.</div>
+    <div id="${panelId}Count" class="qrs-count"></div>
+    <div id="${panelId}Results" class="qrs-results"></div>
+  `;
+  const label = document.createElement("label");
+  label.className = "qrs-label";
+  label.textContent = "إضافة آيات بالبحث من المرجع";
+  host.parentNode.insertBefore(label, host);
+  host.parentNode.insertBefore(panel, host);
+}
+function qrsRunSearch(mode){
+  const isEdit = mode === "edit";
+  const panelId = isEdit ? "qrsEditPanel" : "qrsAddPanel";
+  const input = document.getElementById(panelId + "Input");
+  const resultsBox = document.getElementById(panelId + "Results");
+  const countBox = document.getElementById(panelId + "Count");
+  if (!input || !resultsBox) return;
+  const query = input.value.trim();
+  if (!query){
+    resultsBox.innerHTML = "";
+    if (countBox) countBox.textContent = "";
+    return;
+  }
+  if (typeof getSurahAyahs === "undefined"){
+    resultsBox.innerHTML = '<div class="qrs-empty">ملف quran-reference.js غير مقروء أو غير محمل.</div>';
+    if (countBox) countBox.textContent = "";
+    return;
+  }
+  const results = qrsSearchInQuranReference(query, 300);
+  if (countBox) countBox.textContent = "عدد النتائج: " + results.length + (results.length >= 300 ? " / تم عرض أول 300 نتيجة" : "");
+  if (!results.length){
+    resultsBox.innerHTML = '<div class="qrs-empty">لا توجد نتائج مطابقة.</div>';
+    return;
+  }
+  resultsBox.innerHTML = results.map((r) => {
+    const payload = encodeURIComponent(JSON.stringify(r));
+    return `
+      <label class="qrs-result-row">
+        <input type="checkbox" class="qrs-check" onchange="qrsToggleResult('${mode}', '${payload}', this)">
+        <div class="qrs-result-content">
+          <div class="qrs-ref"><span>${escapeHtml(r.surah)}</span><span class="qrs-ayah">${escapeHtml(r.ayah)}</span></div>
+          <div class="qrs-text">${qrsHighlight(r.text, query)}</div>
+        </div>
+      </label>
+    `;
+  }).join("");
+}
+function qrsClearSearch(mode){
+  const panelId = mode === "edit" ? "qrsEditPanel" : "qrsAddPanel";
+  const input = document.getElementById(panelId + "Input");
+  const resultsBox = document.getElementById(panelId + "Results");
+  const countBox = document.getElementById(panelId + "Count");
+  if (input) input.value = "";
+  if (resultsBox) resultsBox.innerHTML = "";
+  if (countBox) countBox.textContent = "";
+}
+function qrsToggleResult(mode, encodedPayload, checkbox){
+  if (!checkbox || !checkbox.checked) return;
+  let item = null;
+  try { item = JSON.parse(decodeURIComponent(encodedPayload)); } catch(e){ item = null; }
+  if (!item) return;
+  if (mode === "edit") qrsAddToEditVerses(item, checkbox);
+  else qrsAddToDraftVerses(item, checkbox);
+}
+function qrsAddToDraftVerses(item, checkbox){
+  if (!Array.isArray(draftVerses)) draftVerses = [];
+  const exists = draftVerses.some(v => safeText(v.surah) === safeText(item.surah) && safeText(v.ayah) === safeText(item.ayah));
+  if (!exists){
+    draftVerses.push({
+      surah: item.surah,
+      ayah: item.ayah,
+      label: "",
+      parts: [{ type: "normal", text: item.text }]
+    });
+    if (typeof renderDraftVerses === "function") renderDraftVerses();
+  }
+  if (checkbox){
+    checkbox.disabled = true;
+    const row = checkbox.closest(".qrs-result-row");
+    if (row) row.classList.add("qrs-added");
+  }
+}
+function qrsAddToEditVerses(item, checkbox){
+  if (typeof collectEditVersesFromDOM !== "function" || typeof renderEditVerses !== "function") return;
+  const verses = collectEditVersesFromDOM();
+  const exists = verses.some(v => safeText(v.surah) === safeText(item.surah) && safeText(v.ayah) === safeText(item.ayah));
+  if (!exists){
+    verses.push({
+      surah: item.surah,
+      ayah: item.ayah,
+      label: "",
+      parts: [{ type: "normal", text: item.text }]
+    });
+    renderEditVerses(verses);
+    qrsEnsurePanel("edit");
+  }
+  if (checkbox){
+    checkbox.disabled = true;
+    const row = checkbox.closest(".qrs-result-row");
+    if (row) row.classList.add("qrs-added");
+  }
+}
+if (typeof openAddModal === "function" && !window.__qrsOriginalOpenAddModal){
+  window.__qrsOriginalOpenAddModal = openAddModal;
+  openAddModal = function(){
+    window.__qrsOriginalOpenAddModal();
+    qrsEnsurePanel("add");
+  };
+}
+if (typeof openEditGroup === "function" && !window.__qrsOriginalOpenEditGroup){
+  window.__qrsOriginalOpenEditGroup = openEditGroup;
+  openEditGroup = function(groupId){
+    window.__qrsOriginalOpenEditGroup(groupId);
+    qrsEnsurePanel("edit");
+  };
+}
+
+
+/* =========================================================
  ADDON: FAVORITE + COMPLETED ICONS FOR EACH GROUP
- Version: favorite-completed-20260511-01
+ Version: favorite-completed-20260511-02
 ========================================================= */
 function groupFlagBool(value) {
   return value === true || value === "true" || value === 1 || value === "1";
@@ -1884,8 +2075,6 @@ function renderGroupActionIcons(g) {
       aria-pressed="${done ? "true" : "false"}">✓</button>
   `;
 }
-
-/* Override the latest group-card renderer so icons appear in all display modes */
 function gbGroupCard(g){
  const tags = gbTags(g);
  const color = (typeof getGroupColor === "function") ? getGroupColor(g) : (g.color || g.headerColor || "#1A4A7E");
