@@ -1971,7 +1971,7 @@ const DATA = [
       {
         "surah": "يونس",
         "ayah": "73",
-        "label": "",
+        "label": "نوح",
         "parts": [
           {
             "type": "normal",
@@ -1990,7 +1990,7 @@ const DATA = [
       {
         "surah": "الأنبياء",
         "ayah": "76",
-        "label": "",
+        "label": "نوح",
         "parts": [
           {
             "type": "normal",
@@ -2009,7 +2009,7 @@ const DATA = [
       {
         "surah": "الشعراء",
         "ayah": "170",
-        "label": "",
+        "label": "لوط",
         "parts": [
           {
             "type": "diff",
