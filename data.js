@@ -2025,7 +2025,7 @@ const DATA = [
       {
         "surah": "الأنبياء",
         "ayah": "74",
-        "label": "",
+        "label": "لوط",
         "parts": [
           {
             "type": "normal",
@@ -2044,7 +2044,7 @@ const DATA = [
       {
         "surah": "الأنبياء",
         "ayah": "88",
-        "label": "",
+        "label": "يونس",
         "parts": [
           {
             "type": "normal",
@@ -2078,7 +2078,7 @@ const DATA = [
       {
         "surah": "الصافات",
         "ayah": "76",
-        "label": "",
+        "label": "نوح",
         "parts": [
           {
             "type": "addition",
@@ -2091,7 +2091,7 @@ const DATA = [
         ]
       }
     ],
-    "note": "يونس/الانبياء/الشعراء: فنجيناه — باقي القرآن: فأنجيناه",
+    "note": "<div><ul><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">يونس/الانبياء/الشعراء: فنجيناه — باقي القرآن: فأنجيناه</span><br></li><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">الأنبياء / الصافات : ونجيناه&nbsp;</span><br></li><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">في الأنبياء قصة نوح فقط (فنجيناه) سبقها (فاستجبنا له) سرعة الإستجابة من الله عز وجل وباقي صورة الأنبياء (ونجيناه)</span></li></ul></div><div><br></div>",
     "unote": ""
   },
   {
