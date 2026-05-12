@@ -675,3 +675,9 @@ These are referenced by `index.html` and must remain in the same folder when run
 - Legend color code now matches the actual ayah highlight colors.
 - Visual comparison now opens in a separate popup preview window instead of below the group.
 - Surah filter now supports multi-selection instead of single selection only.
+
+
+#### Release Note — V55
+- Repaired PC layout with a full desktop-only override pack.
+- Kept mobile hamburger menu and mobile group preview modal scoped to screens up to 700px.
+- Removed duplicate Settings button from storage toolbar and moved GitHub status to legend line.

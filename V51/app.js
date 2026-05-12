@@ -2887,3 +2887,22 @@ function gbGroupCard(g){
 
   document.addEventListener('DOMContentLoaded',function(){loadMulti();setTimeout(function(){window.updateSelectedSurahChip();window.renderSurahFilterButtons();window.applyAllFilters();},250);});
 })();
+
+
+/* =========================================================
+ V55 MOBILE MENU + GROUP MODAL PACK
+========================================================= */
+(function(){
+ if(window.__V55_MOBILE_UI__) return; window.__V55_MOBILE_UI__=true;
+ function isMobileView(){return window.matchMedia && window.matchMedia('(max-width: 700px)').matches;}
+ function closeIfMenu(){document.getElementById('v55MobileMenu')?.classList.remove('open');}
+ window.v55CallAndClose=function(fnName){closeIfMenu();try{const fn=window[fnName];if(typeof fn==='function')fn();}catch(e){console.warn('Mobile menu action failed:',fnName,e);}};
+ function ensureMobileMenu(){if(document.getElementById('v55MobileMenu'))return;const m=document.createElement('div');m.id='v55MobileMenu';m.className='mobile-menu-backdrop';m.innerHTML=`<aside class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="قائمة الخيارات"><div class="mobile-menu-head"><span>القائمة</span><button class="mobile-menu-close" type="button" onclick="closeMobileMenu()">×</button></div><div class="mobile-menu-grid"><button class="primary-mobile-action" type="button" onclick="v55CallAndClose('openAddModal')">+ إضافة متشابه</button><button type="button" onclick="v55CallAndClose('showBrowse')">المتشابهات</button><button type="button" onclick="v55CallAndClose('showDashboard')">الإحصائيات</button><button type="button" onclick="v55CallAndClose('openAppSettings')">الإعدادات</button><button type="button" onclick="v55CallAndClose('v34OpenAdvancedSearch')">بحث متقدم</button><button type="button" onclick="v55CallAndClose('v38OpenMergeModal')">دمج المجموعات</button><button type="button" onclick="v55CallAndClose('v38OpenDuplicates')">كشف التكرار</button><button type="button" onclick="v55CallAndClose('v36OpenReleaseNotes')">Release Note</button><button type="button" onclick="v55CallAndClose('downloadDataJS')">Export data.js</button><button type="button" onclick="v55CallAndClose('toggleTheme')">تبديل الوضع الليلي</button></div></aside>`;m.addEventListener('click',e=>{if(e.target===m)closeMobileMenu();});document.body.appendChild(m);}
+ window.openMobileMenu=function(){ensureMobileMenu();document.getElementById('v55MobileMenu').classList.add('open');};
+ window.closeMobileMenu=function(){document.getElementById('v55MobileMenu')?.classList.remove('open');};
+ function ensureMobileGroupModal(){if(document.getElementById('v55MobileGroupModal'))return;const m=document.createElement('div');m.id='v55MobileGroupModal';m.className='modal-backdrop mobile-group-modal';m.innerHTML=`<div class="modal edit-modal"><div class="modal-header"><h2 id="v55MobileGroupTitle">تفاصيل المجموعة</h2><button class="close-btn" type="button" onclick="closeMobileGroupModal()">×</button></div><div id="v55MobileGroupBody" class="modal-body mobile-group-preview-body"></div></div>`;m.addEventListener('click',e=>{if(e.target===m)closeMobileGroupModal();});document.body.appendChild(m);}
+ window.closeMobileGroupModal=function(){document.getElementById('v55MobileGroupModal')?.classList.remove('open');};
+ window.openMobileGroupModalFromHeader=function(header){if(!header)return;const group=header.closest('.group');if(!group)return;ensureMobileGroupModal();const clone=group.cloneNode(true);clone.classList.add('open');clone.querySelectorAll('[onclick]').forEach(el=>{const oc=el.getAttribute('onclick')||'';if(oc.includes('toggleGroup'))el.removeAttribute('onclick');});const title=group.querySelector('.group-title')?.textContent?.trim()||'تفاصيل المجموعة';const titleEl=document.getElementById('v55MobileGroupTitle');const bodyEl=document.getElementById('v55MobileGroupBody');if(titleEl)titleEl.textContent=title;if(bodyEl){bodyEl.innerHTML='';bodyEl.appendChild(clone);}document.getElementById('v55MobileGroupModal').classList.add('open');};
+ function wrapToggle(){const current=window.toggleGroup;if(current&&current.__v55Wrapped)return;const wrapped=function(header){if(isMobileView()){window.openMobileGroupModalFromHeader(header);return;}if(typeof current==='function')return current.apply(this,arguments);header?.parentElement?.classList.toggle('open');};wrapped.__v55Wrapped=true;window.toggleGroup=wrapped;}
+ wrapToggle();window.addEventListener('DOMContentLoaded',function(){ensureMobileMenu();setTimeout(wrapToggle,900);});
+})();

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>متشابهات القرآن الكريم</title>
-  <link rel="stylesheet" href="styles.css?v=Mutashabihat_v51_ui_filter_compare_refinement">
+  <link rel="stylesheet" href="styles.css?v=Mutashabihat_v55_pc_view_repaired">
 </head>
 <body data-theme="quran-classic" data-font-preset="classic-quran">
   <header class="app-header">
@@ -31,6 +31,7 @@
       <button class="add-top-btn" type="button" onclick="openAddModal()">+ إضافة</button>
       <button class="theme-round" type="button" onclick="toggleTheme()">◐</button>
     </div>
+    <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" onclick="openMobileMenu()" aria-label="فتح القائمة" title="القائمة">☰</button>
   </div>
 </header>
 
@@ -40,15 +41,13 @@
     <div class="legend-item"><span class="legend-dot ld-d"></span>اختلاف في اللفظ</div>
     <div class="legend-item"><span class="legend-dot ld-a"></span>زيادة في الآية</div>
     <div class="legend-item"><span class="legend-dot ld-s"></span>لفظ مشترك</div>
+    <div class="legend-github-wrap"><span id="ghBadge" class="storage-badge legend-gh-badge">☁ GitHub: not set</span></div>
   </div>
 
 
 <!-- STORAGE + SETTINGS BAR -->
   <div class="storage-bar app-toolbar-clean">
     <span id="storageBadge" class="storage-badge">⏳ Loading...</span>
-    <span class="bar-divider">|</span>
-    <span id="ghBadge" class="storage-badge">☁ GitHub: not set</span>
-    <button class="settings-btn toolbar-settings-left" onclick="openAppSettings()">Settings ⚙</button>
     <span id="themeBadge" class="storage-badge theme-badge toolbar-hidden-badge" aria-hidden="true"></span>
     <span id="fontBadge" class="storage-badge theme-badge toolbar-hidden-badge" aria-hidden="true"></span>
   </div>
@@ -156,9 +155,9 @@
   </div>
 
   <div id="modalRoot"></div>
-  <script src="data.js?v=Mutashabihat_v51_ui_filter_compare_refinement"></script>
-  <script src="quran-reference.js?v=Mutashabihat_v51_ui_filter_compare_refinement"></script>
-  <script src="app.js?v=Mutashabihat_v51_ui_filter_compare_refinement"></script>
+  <script src="data.js?v=Mutashabihat_v55_pc_view_repaired"></script>
+  <script src="quran-reference.js?v=Mutashabihat_v55_pc_view_repaired"></script>
+  <script src="app.js?v=Mutashabihat_v55_pc_view_repaired"></script>
   <button id="floatingTopBtn" class="floating-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="العودة للأعلى">↑</button>
 <!-- V49: V38 feature logic preserved; V44 professional UI applied. -->
 </body>
