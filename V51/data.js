@@ -11912,7 +11912,7 @@ const DATA = [
     "note": "(ولو كره المجرمون) قبلها ليحق الحق أو يحق الله الحق<div>(ولو كره الكافرون) موضعين متشابهين التوبة والصف وموضع التوبة فيه زيادات</div><div>(ولو كره المشركون) بداية الآية (هو الذي أرسل رسوله)</div><div>موضع غافر (ولو كره الكافرون)</div>",
     "unote": "",
     "completed": true,
-    "locked": false
+    "locked": true
   },
   {
     "id": 151,
@@ -11977,12 +11977,12 @@ const DATA = [
         ]
       }
     ],
-    "note": "موضع الصف مختصر وموضع التوبه به كل الزيادات&amp;nbsp;",
+    "note": "موضع الصف مختصر وموضع التوبه به كل الزيادات",
     "unote": "",
     "completed": true,
     "color": "#982abc",
     "headerColor": "#982abc",
-    "locked": false
+    "locked": true
   },
   {
     "id": 152,
@@ -12027,6 +12027,7 @@ const DATA = [
     "unote": "",
     "color": "#e60000",
     "headerColor": "#e60000",
-    "completed": true
+    "completed": true,
+    "locked": true
   }
 ];
