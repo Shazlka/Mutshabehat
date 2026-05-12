@@ -12049,6 +12049,9 @@ const DATA = [
     ],
     "note": "موضع الصف مختصر وموضع التوبه به كل الزيادات&amp;nbsp;",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "color": "#982abc",
+    "headerColor": "#982abc",
+    "locked": true
   }
 ];
