@@ -11311,7 +11311,8 @@ const DATA = [
       }
     ],
     "note": "",
-    "unote": ""
+    "unote": "",
+    "favorite": true
   },
   {
     "id": 145,
