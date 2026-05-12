@@ -11649,7 +11649,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 149,
@@ -12047,11 +12048,8 @@ const DATA = [
         ]
       }
     ],
-    "note": "موضع الصف مختصر وموضع التوبه به كل الزيادات&amp;nbsp;",
+    "note": "موضع الصف مختصر وموضع التوبه به كل الزيادات&nbsp;",
     "unote": "",
-    "completed": true,
-    "color": "#982abc",
-    "headerColor": "#982abc",
-    "locked": true
+    "completed": true
   }
 ];
