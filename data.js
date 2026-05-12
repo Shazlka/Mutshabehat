@@ -12040,6 +12040,7 @@ const DATA = [
       }
     ],
     "note": "موضع الصف مختصر وموضع التوبه به كل الزيادات&nbsp;",
-    "unote": ""
+    "unote": "",
+    "completed": true
   }
 ];
