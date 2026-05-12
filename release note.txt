@@ -1,31 +1,75 @@
-# Release Note — V36
+## Release Note — V38
 
-Source files used: Mutashabihat_v36.zip, containing index.html, styles.css, app.js, and release note.txt.
+Source files used: Mutashabihat_v38.zip, containing index.html, styles.css, app.js, and release note.txt.
 
-## V36 New Features
+### V38 Restore Scope
+- Restored all features reported as removed after version 34.
+- This version keeps the V37 edit-search improvements and adds a complete V38 restore layer for Add Group, Modification/Edit Group, group cards, and management tools.
 
-### Settings Window
-- Added a **Release Note icon/button** inside Settings.
-- Pressing the Release Note button opens a dedicated modal window showing the full release note list.
-- The Release Note modal loads `release note.txt` when available.
-- If browser security blocks loading `release note.txt`, the app uses an embedded fallback copy of the release note.
-- Release Note modal includes a Copy button to copy the full release note text.
+### Add Group Window
+- Restored smart Quran search from `quran-reference.js`.
+- Added search bar in Add New Group.
+- Search ignores tashkeel, hamza differences, and common Arabic letter variations.
+- Search results are ordered with exact matches first and normalized/non-exact matches after.
+- Each search result includes checkbox, Surah name, Ayah number, ayah text, Add full ayah, and Add selected text.
+- Selecting a checkbox automatically adds the ayah to the draft.
+- Deselecting a checkbox automatically removes the ayah from the draft.
+- Restored live ayah preview.
+- Restored group color picker and color preview.
+- Restored auto-generate group title.
+
+### Modification / Edit Group Window
+- Restored smart Quran search from `quran-reference.js`.
+- Added search bar in Modification/Edit Group.
+- Search ignores tashkeel, hamza differences, and common Arabic letter variations.
+- Search results are ordered with exact matches first and normalized/non-exact matches after.
+- Each search result includes checkbox, Surah name, Ayah number, ayah text, Add full ayah, and Add selected text.
+- Selecting a checkbox automatically adds the ayah to the group being edited.
+- Deselecting a checkbox automatically removes the ayah from the group being edited.
+- Restored live ayah preview in Modification window.
+- Restored group color picker and color preview.
+- Restored auto-generate group title.
+
+### Group Card Window
+- Restored improved lock icon with locked/unlocked status.
+- Locked groups cannot be saved, deleted, or merged until unlocked.
+- Restored visual inline compare function inside the group body.
+- Compare highlights shared/same words and different words with different colors.
+
+### Management Tools
+- Restored floating/draggable behavior for all modal windows.
+- Restored Merge Groups window.
+- Restored Duplicate Detection window.
+
+---
+
+# Release Note — V37
+
+Source files used: Mutashabihat_v37.zip, containing index.html, styles.css, app.js, and release note.txt.
+
+## V37 New Features
+
+### Modification / Edit Group Window
+- Improved Quran search header in the Modification window.
+- While typing a search word, the search header now shows:
+  - Exact match count.
+  - Close / normalized match count.
+  - Total result count.
+- Search result ayah text now highlights the searched word to make it easier to see.
+- Exact matches are highlighted with a yellow mark.
+- Close / normalized matches are highlighted with an orange mark.
+- Close matching continues to ignore:
+  - tashkeel
+  - hamza differences
+  - common Arabic letter variations
+
+### Group Card Window
+- Removed the small list / handle icon from the group action area.
+- The removed icon is the small stacked-line handle shown beside the edit/check/star/compare/lock icons.
 
 ### Mobile Group Card Layout
-- In mobile view, group action icons are moved **below the group title**.
-- Desktop / iPad large screen behavior remains unchanged, with icons on the left side.
-- Mobile group header layout now uses a two-row structure:
-  - first row: group number + group title
-  - second row: favorite / completed / lock / compare / edit icons
-
-### Release Package Rule
-- Starting from V36, each version package includes 4 files:
-  - `index.html`
-  - `styles.css`
-  - `app.js`
-  - `release note.txt`
-- Before generating each next version, the previous release note shall be checked to confirm all listed features are still applied.
-- New features added in the new version shall be documented in the next `release note.txt`.
+- Maintained V36 mobile behavior where group action icons appear below the group title.
+- Desktop / large screen layout remains unchanged except that the old handle icon is hidden.
 
 ---
 
