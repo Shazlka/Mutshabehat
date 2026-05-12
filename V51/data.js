@@ -12026,6 +12026,7 @@ const DATA = [
     "note": "",
     "unote": "",
     "color": "#e60000",
-    "headerColor": "#e60000"
+    "headerColor": "#e60000",
+    "completed": true
   }
 ];
