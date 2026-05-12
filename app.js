@@ -2166,297 +2166,63 @@ function gbGroupCard(g){
 
 
 /* =========================================================
-   RESTORE PACK: V35 restores features removed after V34
-   - Live ayah preview in Add/Edit
-   - Color preview in Add/Edit
-   - Visual inline compare
-   - Improved lock icon
-   - Floating/draggable windows
-   - Merge groups
-   - Duplicate detection
-   - Auto-generate title
-   - Quran-reference smart search in Add/Edit
-   Version: restore-v35-20260512-01
+   COMPACT RESTORE PACK V35 FEATURES
 ========================================================= */
 (function(){
-  if(window.__RESTORE_V35__) return;
-  window.__RESTORE_V35__ = true;
-
-  const TYPE_LABELS = {normal:'عادي', shared:'مشترك', diff:'اختلاف', addition:'زيادة', unique:'فريدة'};
-  const DEFAULT_COLOR = '#1A4A7E';
-  const V35_COLORS = ['#1A4A7E','#0D47A1','#2563EB','#007AFF','#1B5E30','#34C759','#4CAF50','#C9A84C','#B45309','#FF9500','#B00000','#E60000','#FF3B30','#6D28D9','#7C3AED','#0F766E','#32D3C8','#17212B','#3A4A60','#8A5C00'];
-
-  function t(v){ return v===undefined || v===null ? '' : String(v); }
-  function esc(v){ return t(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function bool(v){ return v===true || v==='true' || v===1 || v==='1'; }
-  function getAllGroups(){ return (typeof DATA !== 'undefined' && Array.isArray(DATA)) ? DATA : []; }
-  function names(){ return typeof SURAH_NAMES !== 'undefined' ? SURAH_NAMES : (typeof getDefaultSurahNames==='function'?getDefaultSurahNames():{}); }
-  function surahNoByName(name){ const ns=names(); name=t(name).trim(); for(const n in ns){ if(t(ns[n]).trim()===name) return Number(n); } return 9999; }
-  function ayahNo(v){ const n=Number(t(v).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d))); return isNaN(n)?9999:n; }
-  function getVerseText(v){ return (v && Array.isArray(v.parts)) ? v.parts.map(p=>t(p.text)).join(' ') : ''; }
-  function normArabic(v){
-    return t(v)
-      .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g,'')
-      .replace(/[إأآٱا]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه')
-      .replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ـ/g,'')
-      .replace(/\s+/g,' ').trim();
-  }
-  function currentPaletteColor(i){ return V35_COLORS[Math.abs(Number(i)||0)%V35_COLORS.length]; }
-  function saveRefresh(){ if(typeof masterSave==='function') masterSave(); if(typeof buildSurahFilterBar==='function') buildSurahFilterBar(); if(typeof applyAllFilters==='function') applyAllFilters(); else if(typeof render==='function') render(getAllGroups()); }
-
-  /* ---------- Floating / draggable modal windows ---------- */
-  function makeModalDraggable(modal){
-    if(!modal || modal.dataset.v35Draggable==='1') return;
-    const header = modal.querySelector('.modal-header');
-    if(!header) return;
-    modal.dataset.v35Draggable='1';
-    header.classList.add('v35-drag-handle');
-    let dragging=false, startX=0, startY=0, startLeft=0, startTop=0;
-    function point(e){ const p=e.touches?e.touches[0]:e; return {x:p.clientX,y:p.clientY}; }
-    function down(e){
-      if(e.target.closest('button,input,select,textarea,[contenteditable="true"]')) return;
-      const p=point(e); const r=modal.getBoundingClientRect();
-      dragging=true; startX=p.x; startY=p.y; startLeft=r.left; startTop=r.top;
-      modal.classList.add('v35-floating-modal');
-      modal.style.left=startLeft+'px'; modal.style.top=startTop+'px'; modal.style.right='auto'; modal.style.margin='0'; modal.style.transform='none';
-      document.addEventListener('mousemove',move); document.addEventListener('mouseup',up);
-      document.addEventListener('touchmove',move,{passive:false}); document.addEventListener('touchend',up);
-    }
-    function move(e){
-      if(!dragging) return; if(e.cancelable) e.preventDefault();
-      const p=point(e), w=window.innerWidth, h=window.innerHeight, r=modal.getBoundingClientRect();
-      let l=startLeft+(p.x-startX), top=startTop+(p.y-startY);
-      l=Math.max(8,Math.min(l,w-r.width-8)); top=Math.max(8,Math.min(top,h-60));
-      modal.style.left=l+'px'; modal.style.top=top+'px';
-    }
-    function up(){ dragging=false; document.removeEventListener('mousemove',move); document.removeEventListener('mouseup',up); document.removeEventListener('touchmove',move); document.removeEventListener('touchend',up); }
-    header.addEventListener('mousedown',down); header.addEventListener('touchstart',down,{passive:true});
-  }
-  function makeAllModalsDraggable(){ document.querySelectorAll('.modal').forEach(makeModalDraggable); }
-  new MutationObserver(()=>makeAllModalsDraggable()).observe(document.body,{childList:true,subtree:true});
-  setTimeout(makeAllModalsDraggable,500);
-
-  /* ---------- Live preview + color preview ---------- */
-  function colorControlHtml(id, value){
-    const color=value || DEFAULT_COLOR;
-    return `<div class="v35-color-row"><label>لون المجموعة</label><input id="${id}" class="v35-color-picker" type="color" value="${esc(color)}" oninput="v35UpdateColorPreview('${id}')"><span id="${id}Preview" class="v35-color-preview" style="background:${esc(color)}">معاينة اللون</span></div>`;
-  }
-  window.v35UpdateColorPreview=function(id){ const inp=document.getElementById(id), p=document.getElementById(id+'Preview'); if(inp&&p){ p.style.background=inp.value; p.textContent='معاينة اللون '+inp.value; } };
-  function ensureAddEnhancements(){
-    const title=document.getElementById('newTitle'); if(!title) return;
-    if(!document.getElementById('newColor')) title.insertAdjacentHTML('afterend', colorControlHtml('newColor', currentPaletteColor(getAllGroups().length)));
-    if(!document.getElementById('v35AddAutoTitleBtn')) title.insertAdjacentHTML('afterend','<button id="v35AddAutoTitleBtn" type="button" class="v35-mini-action" onclick="v35AutoGenerateAddTitle()">توليد عنوان تلقائي</button>');
-    const prev=document.getElementById('ayahPreview');
-    if(prev && !document.getElementById('v35AddLivePreview')) prev.insertAdjacentHTML('afterend','<div id="v35AddLivePreview" class="v35-live-preview">معاينة مباشرة للآية المختارة</div>');
-    ensureQuranSearch('add');
-    v35UpdateAddLivePreview();
-  }
-  window.v35UpdateAddLivePreview=function(){
-    const preview=document.getElementById('ayahPreview'), box=document.getElementById('v35AddLivePreview'), type=document.getElementById('newType')?.value||'normal';
-    if(box && preview) box.innerHTML = `<b>معاينة مباشرة:</b><div class="verse-text"><span class="${esc(type)}">${esc(preview.value)}</span></div>`;
-  };
-  const oldPreviewSelectedAyah = window.previewSelectedAyah;
-  window.previewSelectedAyah=function(){ if(typeof oldPreviewSelectedAyah==='function') oldPreviewSelectedAyah.apply(this,arguments); setTimeout(v35UpdateAddLivePreview,10); };
-  document.addEventListener('input',e=>{ if(e.target && (e.target.id==='selectedPart'||e.target.id==='newType')) v35UpdateAddLivePreview(); });
-
-  window.v35AutoGenerateAddTitle=function(){
-    const title=document.getElementById('newTitle'); if(!title) return;
-    const list=(window.draftVerses||draftVerses||[]);
-    const surahs=[...new Set(list.map(v=>v.surah).filter(Boolean))];
-    const ayahs=list.map(v=>v.ayah).filter(Boolean);
-    title.value = list.length ? `متشابه ${surahs.join(' / ')} — ${ayahs.join('، ')}` : 'متشابه جديد';
-  };
-
-  const oldOpenAdd=window.openAddModal;
-  window.openAddModal=function(){ const r=typeof oldOpenAdd==='function'?oldOpenAdd.apply(this,arguments):undefined; setTimeout(ensureAddEnhancements,80); return r; };
-
-  const oldCreate=window.createNewGroup;
-  window.createNewGroup=function(){
-    if(!document.getElementById('newTitle') || !document.getElementById('newColor')) return typeof oldCreate==='function'?oldCreate.apply(this,arguments):undefined;
-    const title=document.getElementById('newTitle').value.trim();
-    const color=document.getElementById('newColor').value || currentPaletteColor(getAllGroups().length);
-    const before=getAllGroups().length;
-    const r=typeof oldCreate==='function'?oldCreate.apply(this,arguments):undefined;
-    const data=getAllGroups();
-    if(data.length>before){ data[data.length-1].color=color; data[data.length-1].headerColor=color; saveRefresh(); }
-    return r;
-  };
-
-  function ensureEditEnhancements(){
-    const editTitle=document.getElementById('editTitle'); if(!editTitle || editTitle.dataset.v35Enhanced==='1') { ensureQuranSearch('edit'); return; }
-    editTitle.dataset.v35Enhanced='1';
-    const g=getAllGroups()[editGroupIndex] || {};
-    editTitle.insertAdjacentHTML('afterend','<button id="v35EditAutoTitleBtn" type="button" class="v35-mini-action" onclick="v35AutoGenerateEditTitle()">توليد عنوان تلقائي</button>'+colorControlHtml('editColor', g.color||g.headerColor||DEFAULT_COLOR));
-    ensureQuranSearch('edit');
-    renderEditLivePreviews();
-  }
-  window.v35AutoGenerateEditTitle=function(){
-    const title=document.getElementById('editTitle'); if(!title) return;
-    const verses=typeof collectEditVersesFromDOM==='function'?collectEditVersesFromDOM():[];
-    const surahs=[...new Set(verses.map(v=>v.surah).filter(Boolean))];
-    const ayahs=verses.map(v=>v.ayah).filter(Boolean);
-    title.value = verses.length ? `متشابه ${surahs.join(' / ')} — ${ayahs.join('، ')}` : 'متشابه جديد';
-  };
-  function renderEditLivePreviews(){
-    document.querySelectorAll('#editVersesBox .edit-verse-card').forEach((card,i)=>{
-      if(!card.querySelector('.v35-edit-live-preview')){
-        const actions=card.querySelector('.ayah-fill-actions') || card.querySelector('.edit-parts-box');
-        if(actions) actions.insertAdjacentHTML('afterend',`<div class="v35-edit-live-preview" id="v35EditLivePreview${i}"></div>`);
-      }
-      const v=(typeof collectEditVersesFromDOM==='function'?collectEditVersesFromDOM():[])[i];
-      const box=card.querySelector('.v35-edit-live-preview');
-      if(box && v) box.innerHTML=`<b>معاينة مباشرة:</b><div class="verse-text">${(v.parts||[]).map(p=>`<span class="${esc(p.type||'normal')}">${esc(p.text)}</span>`).join(' ')}</div>`;
-    });
-  }
-  const oldRenderEdit=window.renderEditVerses;
-  window.renderEditVerses=function(){ const r=typeof oldRenderEdit==='function'?oldRenderEdit.apply(this,arguments):undefined; setTimeout(renderEditLivePreviews,20); return r; };
-  const oldOpenEdit=window.openEditGroup;
-  window.openEditGroup=function(){ const r=typeof oldOpenEdit==='function'?oldOpenEdit.apply(this,arguments):undefined; setTimeout(ensureEditEnhancements,120); return r; };
-  document.addEventListener('input',e=>{ if(e.target && (e.target.classList.contains('edit-part-text')||e.target.classList.contains('edit-part-type'))) setTimeout(renderEditLivePreviews,20); });
-
-  /* ---------- Smart quran-reference search in Add/Edit ---------- */
-  function allAyahs(){
-    const out=[], ns=names();
-    if(typeof getSurahAyahs!=='function') return out;
-    Object.keys(ns).forEach(no=>{ (getSurahAyahs(no)||[]).forEach(a=>out.push({surahNo:Number(no), surah:a.surah||ns[no], ayahNo:a.ayahNo, text:a.text||''})); });
-    return out;
-  }
-  function quranSearch(q){
-    const exact=t(q).trim(), nq=normArabic(q); if(!exact) return [];
-    const rows=allAyahs().map(a=>{ const text=t(a.text); const exactHit=text.includes(exact); const normHit=normArabic(text).includes(nq); return {...a, exactHit, normHit}; })
-      .filter(a=>a.exactHit||a.normHit)
-      .sort((a,b)=>(b.exactHit-a.exactHit)||a.surahNo-b.surahNo||Number(a.ayahNo)-Number(b.ayahNo));
-    return rows.slice(0,80);
-  }
-  function ensureQuranSearch(mode){
-    const body=document.querySelector(mode==='add'?'#addModal .modal-body':'#editModal .modal-body'); if(!body) return;
-    const id=mode==='add'?'v35AddQuranSearch':'v35EditQuranSearch';
-    if(document.getElementById(id)) return;
-    const html=`<div id="${id}" class="v35-quran-search-box" data-mode="${mode}">
-      <div class="v35-search-title">بحث في quran-reference.js</div>
-      <input class="full-input v35-quran-search-input" placeholder="اكتب كلمة أو جزء من آية — يتجاهل التشكيل والهمزات..." oninput="v35RunQuranSearch('${mode}', this.value)">
-      <div class="v35-search-hint">الترتيب: النتائج المطابقة حرفيًا أولًا، ثم المطابقة بعد التطبيع.</div>
-      <div id="${id}Results" class="v35-quran-results"></div>
-    </div>`;
-    body.insertAdjacentHTML('afterbegin',html);
-  }
-  window.v35RunQuranSearch=function(mode,q){
-    const res=document.getElementById(mode==='add'?'v35AddQuranSearchResults':'v35EditQuranSearchResults'); if(!res) return;
-    const rows=quranSearch(q);
-    res.innerHTML = rows.length ? rows.map(a=>{
-      const key=`${a.surahNo}:${a.ayahNo}`;
-      return `<div class="v35-result-row" data-key="${key}">
-        <label class="v35-result-check"><input type="checkbox" onchange="v35ToggleSearchAyah('${mode}', this, ${a.surahNo}, ${a.ayahNo})"> إضافة/إزالة</label>
-        <div class="v35-result-meta"><b>${esc(a.surah)}</b> <span>${esc(a.ayahNo)}</span> ${a.exactHit?'<em>مطابق حرفيًا</em>':'<em>مطابق بعد التطبيع</em>'}</div>
-        <div class="v35-result-text">${esc(a.text)}</div>
-        <div class="v35-result-actions"><button type="button" onclick="v35AddSearchAyah('${mode}', ${a.surahNo}, ${a.ayahNo}, 'full')">Add full ayah</button><button type="button" onclick="v35AddSearchAyah('${mode}', ${a.surahNo}, ${a.ayahNo}, 'selected')">Add selected text</button></div>
-      </div>`;
-    }).join('') : '<div class="v35-no-results">لا توجد نتائج</div>';
-  };
-  function buildVerseFromAyah(surahNo, ayahNo, selectedText){
-    const a=typeof getAyah==='function'?getAyah(surahNo, ayahNo):null; if(!a) return null;
-    return {surah:a.surah, ayah:a.ayahNo, label:'', parts:[{type:'normal', text:selectedText||a.text}]};
-  }
-  function selectedTextOrFull(a){ const s=(window.getSelection&&window.getSelection().toString().trim())||''; return s || (a?a.text:''); }
-  window.v35AddSearchAyah=function(mode,surahNo,ayahNo,kind){
-    const a=typeof getAyah==='function'?getAyah(surahNo, ayahNo):null; if(!a) return;
-    const text=kind==='selected'?selectedTextOrFull(a):a.text;
-    const verse=buildVerseFromAyah(surahNo,ayahNo,text); if(!verse) return;
-    if(mode==='add'){
-      draftVerses.push(verse); if(typeof renderDraftVerses==='function') renderDraftVerses(); v35AutoGenerateAddTitle();
-    } else {
-      const verses=typeof collectEditVersesFromDOM==='function'?collectEditVersesFromDOM():[]; verses.push(verse); if(typeof renderEditVerses==='function') renderEditVerses(verses);
-    }
-  };
-  window.v35ToggleSearchAyah=function(mode,chk,surahNo,ayahNo){
-    if(chk.checked){ v35AddSearchAyah(mode,surahNo,ayahNo,'full'); return; }
-    if(mode==='add'){
-      const a=typeof getAyah==='function'?getAyah(surahNo, ayahNo):null; if(!a) return;
-      const idx=draftVerses.findIndex(v=>t(v.surah)===t(a.surah)&&Number(v.ayah)===Number(a.ayahNo)); if(idx>-1){ draftVerses.splice(idx,1); if(typeof renderDraftVerses==='function') renderDraftVerses(); }
-    } else {
-      const a=typeof getAyah==='function'?getAyah(surahNo, ayahNo):null; if(!a) return;
-      const verses=(typeof collectEditVersesFromDOM==='function'?collectEditVersesFromDOM():[]).filter(v=>!(t(v.surah)===t(a.surah)&&Number(v.ayah)===Number(a.ayahNo)));
-      if(typeof renderEditVerses==='function') renderEditVerses(verses);
-    }
-  };
-
-  /* ---------- Lock icon improved + lock protection ---------- */
-  window.v35ToggleLock=function(groupId){ const g=(typeof findGroupById==='function'?findGroupById(groupId):getAllGroups().find(x=>Number(x.id)===Number(groupId))); if(!g) return; g.locked=!bool(g.locked); saveRefresh(); };
-  function lockBtn(g){ const locked=bool(g.locked); return `<button class="group-status-btn lock-btn ${locked?'active':''}" type="button" onclick="event.stopPropagation(); v35ToggleLock(${Number(g.id)})" title="${locked?'مقفلة - اضغط لفتح القفل':'مفتوحة - اضغط للقفل'}">${locked?'🔒':'🔓'}</button>`; }
-  const oldGbCard=window.gbGroupCard;
-  if(typeof oldGbCard==='function'){
-    window.gbGroupCard=function(g){
-      let html=oldGbCard(g);
-      html=html.replace('<article class="group', `<article class="group${bool(g.locked)?' is-locked':''}`);
-      html=html.replace('<div class="group-side">', `<div class="group-side">${lockBtn(g)}<button class="group-status-btn compare-btn" type="button" onclick="event.stopPropagation(); v35CompareGroupInline(${Number(g.id)})" title="مقارنة مرئية">≋</button>`);
-      return html;
-    };
-  }
-  const oldSaveEdit=window.saveEditGroup;
-  window.saveEditGroup=function(){
-    const g=getAllGroups()[editGroupIndex]; if(g && bool(g.locked)){ alert('هذه المجموعة مقفلة. افتح القفل قبل التعديل.'); return; }
-    const color=document.getElementById('editColor')?.value;
-    const idx=editGroupIndex;
-    const r=typeof oldSaveEdit==='function'?oldSaveEdit.apply(this,arguments):undefined;
-    if(color && getAllGroups()[idx]){ getAllGroups()[idx].color=color; getAllGroups()[idx].headerColor=color; saveRefresh(); }
-    return r;
-  };
-  const oldDelete=window.deleteEditGroup;
-  window.deleteEditGroup=function(){ const g=getAllGroups()[editGroupIndex]; if(g && bool(g.locked)){ alert('هذه المجموعة مقفلة. افتح القفل قبل الحذف.'); return; } return typeof oldDelete==='function'?oldDelete.apply(this,arguments):undefined; };
-
-  /* ---------- Visual inline comparison ---------- */
-  function tokenize(s){ return normArabic(s).split(/\s+/).filter(Boolean); }
-  function diffVisual(base, other){
-    const b=new Set(tokenize(base));
-    return t(other).split(/(\s+)/).map(tok=>{ if(/^\s+$/.test(tok)) return tok; return b.has(normArabic(tok))?`<span class="v35-same">${esc(tok)}</span>`:`<span class="v35-diff">${esc(tok)}</span>`; }).join('');
-  }
-  window.v35CompareGroupInline=function(groupId){
-    const card=document.querySelector(`.group[data-group-id="${groupId}"]`); const g=(typeof findGroupById==='function'?findGroupById(groupId):getAllGroups().find(x=>Number(x.id)===Number(groupId))); if(!card||!g) return;
-    let panel=card.querySelector('.v35-compare-panel'); if(panel){ panel.remove(); return; }
-    const verses=g.verses||[]; const base=getVerseText(verses[0]||{});
-    panel=document.createElement('div'); panel.className='v35-compare-panel';
-    panel.innerHTML=`<div class="v35-compare-title">مقارنة مرئية داخلية <span class="v35-same">مشترك</span> <span class="v35-diff">مختلف</span></div>` + verses.map((v,i)=>`<div class="v35-compare-line"><b>${esc(v.surah)} ${esc(v.ayah)}</b><div>${i===0?`<span class="v35-base">${esc(getVerseText(v))}</span>`:diffVisual(base,getVerseText(v))}</div></div>`).join('');
-    (card.querySelector('.group-body')||card).appendChild(panel); card.classList.add('open');
-  };
-
-  /* ---------- Merge groups ---------- */
-  function ensureMergeModal(){
-    if(document.getElementById('v35MergeModal')) return;
-    const m=document.createElement('div'); m.id='v35MergeModal'; m.className='modal-backdrop';
-    m.innerHTML=`<div class="modal"><div class="modal-header"><h2>دمج المجموعات</h2><button class="close-btn" onclick="v35CloseMergeModal()">×</button></div><div class="modal-body"><p class="v35-search-hint">اختر المجموعة الأساسية ثم المجموعة التي سيتم دمجها داخلها. سيتم نقل الآيات والملاحظات ثم حذف المجموعة الثانية وإعادة الترقيم.</p><label>المجموعة الأساسية</label><select id="v35MergeA" class="full-input"></select><label>المجموعة المراد دمجها</label><select id="v35MergeB" class="full-input"></select></div><div class="modal-footer"><button class="primary-btn" onclick="v35DoMergeGroups()">دمج الآن</button><button onclick="v35CloseMergeModal()">إغلاق</button></div></div>`;
-    document.body.appendChild(m);
-  }
-  function fillGroupSelects(){ const opts=getAllGroups().map(g=>`<option value="${Number(g.id)}">${esc(g.id)} - ${esc(g.title)}</option>`).join(''); ['v35MergeA','v35MergeB'].forEach(id=>{const s=document.getElementById(id); if(s)s.innerHTML=opts;}); }
-  window.v35OpenMergeModal=function(){ ensureMergeModal(); fillGroupSelects(); document.getElementById('v35MergeModal').classList.add('open'); setTimeout(makeAllModalsDraggable,20); };
-  window.v35CloseMergeModal=function(){ document.getElementById('v35MergeModal')?.classList.remove('open'); };
-  window.v35DoMergeGroups=function(){
-    const aId=Number(document.getElementById('v35MergeA')?.value), bId=Number(document.getElementById('v35MergeB')?.value); if(!aId||!bId||aId===bId){alert('اختر مجموعتين مختلفتين');return;}
-    const data=getAllGroups(), a=data.find(g=>Number(g.id)===aId), b=data.find(g=>Number(g.id)===bId); if(!a||!b)return;
-    if(bool(a.locked)||bool(b.locked)){alert('لا يمكن دمج مجموعة مقفلة. افتح القفل أولًا.');return;}
-    a.verses=[...(a.verses||[]),...(b.verses||[])]; a.surahs=[...new Set([...(a.surahs||[]),...(b.surahs||[])])];
-    if(b.note) a.note=[a.note,b.note].filter(Boolean).join('<br>'); if(b.unote) a.unote=[a.unote,b.unote].filter(Boolean).join('<br>');
-    const idx=data.indexOf(b); if(idx>-1) data.splice(idx,1); data.forEach((g,i)=>g.id=i+1); v35CloseMergeModal(); saveRefresh();
-  };
-
-  /* ---------- Duplicate detection ---------- */
-  function groupKey(g){ return (g.verses||[]).map(v=>`${v.surah}:${v.ayah}`).sort().join('|'); }
-  window.v35OpenDuplicates=function(){
-    const buckets={}; getAllGroups().forEach(g=>{ const keys=[normArabic(g.title), groupKey(g)].filter(Boolean); keys.forEach(k=>{buckets[k]=buckets[k]||[]; buckets[k].push(g);}); });
-    const dups=Object.values(buckets).filter(arr=>arr.length>1);
-    let m=document.getElementById('v35DupModal'); if(!m){ m=document.createElement('div'); m.id='v35DupModal'; m.className='modal-backdrop'; document.body.appendChild(m); }
-    m.innerHTML=`<div class="modal edit-modal"><div class="modal-header"><h2>كشف التكرار</h2><button class="close-btn" onclick="document.getElementById('v35DupModal').classList.remove('open')">×</button></div><div class="modal-body">${dups.length?dups.map(arr=>`<div class="v35-dup-block">${arr.map(g=>`<div><b>${esc(g.id)}</b> - ${esc(g.title)} <button onclick="openEditGroup(${Number(g.id)})">تعديل</button></div>`).join('')}</div>`).join(''):'<div class="v35-no-results">لا توجد مجموعات مكررة حسب العنوان أو نفس الآيات.</div>'}</div><div class="modal-footer"><button onclick="document.getElementById('v35DupModal').classList.remove('open')">إغلاق</button></div></div>`;
-    m.classList.add('open'); setTimeout(makeAllModalsDraggable,20);
-  };
-
-  /* ---------- Add management buttons beside main search ---------- */
-  function ensureToolbarButtons(){
-    const panel=document.querySelector('.search-panel'); if(!panel || document.getElementById('v35MergeBtn')) return;
-    const btns=document.createElement('span'); btns.className='v35-toolbar-buttons';
-    btns.innerHTML='<button id="v35MergeBtn" type="button" onclick="v35OpenMergeModal()">دمج المجموعات</button><button id="v35DupBtn" type="button" onclick="v35OpenDuplicates()">كشف التكرار</button>';
-    panel.appendChild(btns);
-  }
-  function init(){ ensureToolbarButtons(); ensureAddEnhancements(); ensureEditEnhancements(); makeAllModalsDraggable(); }
-  window.addEventListener('DOMContentLoaded',()=>setTimeout(init,900));
-  setTimeout(init,1400);
+ if(window.__COMPACT_V35_RESTORE__) return; window.__COMPACT_V35_RESTORE__=true;
+ const colors=['#1A4A7E','#0D47A1','#1B5E30','#C9A84C','#B45309','#B00000','#6D28D9','#0F766E'];
+ function t(v){return v==null?'':String(v)}
+ function esc(v){return t(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+ function bool(v){return v===true||v==='true'||v===1||v==='1'}
+ function norm(v){return t(v).replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g,'').replace(/[إأآٱا]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ـ/g,'').replace(/\s+/g,' ').trim()}
+ function all(){return typeof DATA!='undefined'&&Array.isArray(DATA)?DATA:[]}
+ function save(){if(typeof masterSave==='function')masterSave(); if(typeof buildSurahFilterBar==='function')buildSurahFilterBar(); if(typeof applyAllFilters==='function')applyAllFilters(); else if(typeof render==='function')render(all())}
+ function getText(v){return (v.parts||[]).map(p=>t(p.text)).join(' ')}
+ function allAyahs(){const out=[], ns=typeof SURAH_NAMES!='undefined'?SURAH_NAMES:{}; if(typeof getSurahAyahs!='function')return out; Object.keys(ns).forEach(no=>(getSurahAyahs(no)||[]).forEach(a=>out.push({surahNo:+no,surah:a.surah||ns[no],ayahNo:a.ayahNo,text:a.text||''}))); return out}
+ function searchAyahs(q){const nq=norm(q), ex=t(q).trim(); if(!ex)return[]; return allAyahs().map(a=>({...a,exact:t(a.text).includes(ex),nmatch:norm(a.text).includes(nq)})).filter(a=>a.exact||a.nmatch).sort((a,b)=>(b.exact-a.exact)||a.surahNo-b.surahNo||a.ayahNo-b.ayahNo).slice(0,80)}
+ function verse(no,ay,txt){const a=typeof getAyah==='function'?getAyah(no,ay):null; return a?{surah:a.surah,ayah:a.ayahNo,label:'',parts:[{type:'normal',text:txt||a.text}]}:null}
+ function addSearchBox(mode){const body=document.querySelector(mode==='add'?'#addModal .modal-body':'#editModal .modal-body'); if(!body||document.getElementById('v35Search_'+mode))return; body.insertAdjacentHTML('afterbegin',`<div id="v35Search_${mode}" class="v35-quran-search-box"><b>بحث في quran-reference.js</b><input class="full-input" placeholder="بحث بدون تشكيل أو همزات..." oninput="v35SearchRun('${mode}',this.value)"><div id="v35SearchRes_${mode}" class="v35-quran-results"></div></div>`)}
+ window.v35SearchRun=function(mode,q){const box=document.getElementById('v35SearchRes_'+mode); if(!box)return; const rows=searchAyahs(q); box.innerHTML=rows.length?rows.map(a=>`<div class="v35-result-row"><label><input type="checkbox" onchange="v35ToggleAyah('${mode}',this,${a.surahNo},${a.ayahNo})"> إضافة/إزالة</label><div><b>${esc(a.surah)}</b> <span>${esc(a.ayahNo)}</span> ${a.exact?'<em>Exact</em>':'<em>Normalized</em>'}</div><div class="v35-result-text">${esc(a.text)}</div><button onclick="v35AddAyah('${mode}',${a.surahNo},${a.ayahNo},false)">Add full ayah</button><button onclick="v35AddAyah('${mode}',${a.surahNo},${a.ayahNo},true)">Add selected text</button></div>`).join(''):'<div class="no-results">لا توجد نتائج</div>'}
+ window.v35AddAyah=function(mode,no,ay,sel){const a=getAyah(no,ay), s=(sel&&window.getSelection)?window.getSelection().toString().trim():''; const v=verse(no,ay,s||a.text); if(!v)return; if(mode==='add'){draftVerses.push(v); if(typeof renderDraftVerses==='function')renderDraftVerses(); v35AutoTitleAdd()}else{const vs=typeof collectEditVersesFromDOM==='function'?collectEditVersesFromDOM():[]; vs.push(v); if(typeof renderEditVerses==='function')renderEditVerses(vs)}}
+ window.v35ToggleAyah=function(mode,chk,no,ay){if(chk.checked){v35AddAyah(mode,no,ay,false);return} const a=getAyah(no,ay); if(mode==='add'){const i=draftVerses.findIndex(v=>v.surah===a.surah&&+v.ayah===+a.ayahNo); if(i>-1)draftVerses.splice(i,1); if(typeof renderDraftVerses==='function')renderDraftVerses()}else{let vs=collectEditVersesFromDOM().filter(v=>!(v.surah===a.surah&&+v.ayah===+a.ayahNo)); renderEditVerses(vs)}}
+ function addColorAndPreviewAdd(){const title=document.getElementById('newTitle'); if(!title)return; if(!document.getElementById('newColor'))title.insertAdjacentHTML('afterend',`<button onclick="v35AutoTitleAdd()">توليد عنوان تلقائي</button><div class="v35-color-row"><label>لون المجموعة</label><input id="newColor" type="color" value="${colors[all().length%colors.length]}"><span>معاينة اللون</span></div>`); if(!document.getElementById('v35AddPreview'))document.getElementById('ayahPreview')?.insertAdjacentHTML('afterend','<div id="v35AddPreview" class="v35-live-preview"></div>'); v35LiveAdd(); addSearchBox('add')}
+ window.v35LiveAdd=function(){const b=document.getElementById('v35AddPreview'), p=document.getElementById('ayahPreview'), ty=document.getElementById('newType')?.value||'normal'; if(b&&p)b.innerHTML=`<b>معاينة مباشرة:</b><div class="verse-text"><span class="${ty}">${esc(p.value)}</span></div>`}
+ window.v35AutoTitleAdd=function(){const el=document.getElementById('newTitle'); if(el)el.value=draftVerses.length?'متشابه '+[...new Set(draftVerses.map(v=>v.surah))].join(' / '):'متشابه جديد'}
+ const oldPrev=window.previewSelectedAyah; window.previewSelectedAyah=function(){if(oldPrev)oldPrev.apply(this,arguments); setTimeout(v35LiveAdd,20)}
+ const oldAdd=window.openAddModal; window.openAddModal=function(){const r=oldAdd?oldAdd.apply(this,arguments):undefined; setTimeout(addColorAndPreviewAdd,80); return r}
+ const oldCreate=window.createNewGroup; window.createNewGroup=function(){const c=document.getElementById('newColor')?.value; const before=all().length; const r=oldCreate?oldCreate.apply(this,arguments):undefined; if(c&&all().length>before){all()[all().length-1].color=c; all()[all().length-1].headerColor=c; save()} return r}
+ function editEnhance(){const title=document.getElementById('editTitle'); if(!title)return; const g=all()[editGroupIndex]||{}; if(!document.getElementById('editColor'))title.insertAdjacentHTML('afterend',`<button onclick="v35AutoTitleEdit()">توليد عنوان تلقائي</button><div class="v35-color-row"><label>لون المجموعة</label><input id="editColor" type="color" value="${g.color||g.headerColor||'#1A4A7E'}"><span>معاينة اللون</span></div>`); addSearchBox('edit'); liveEdit()}
+ function liveEdit(){document.querySelectorAll('#editVersesBox .edit-verse-card').forEach((c,i)=>{if(!c.querySelector('.v35-edit-live-preview'))c.insertAdjacentHTML('beforeend',`<div class="v35-edit-live-preview"></div>`); const v=collectEditVersesFromDOM()[i]; const b=c.querySelector('.v35-edit-live-preview'); if(v&&b)b.innerHTML=`<b>معاينة مباشرة:</b><div class="verse-text">${(v.parts||[]).map(p=>`<span class="${p.type}">${esc(p.text)}</span>`).join(' ')}</div>`})}
+ window.v35AutoTitleEdit=function(){const el=document.getElementById('editTitle'),vs=collectEditVersesFromDOM(); if(el)el.value=vs.length?'متشابه '+[...new Set(vs.map(v=>v.surah))].join(' / '):'متشابه جديد'}
+ const oldOpenEdit=window.openEditGroup; window.openEditGroup=function(){const r=oldOpenEdit?oldOpenEdit.apply(this,arguments):undefined; setTimeout(editEnhance,120); return r}
+ const oldRenderEdit=window.renderEditVerses; window.renderEditVerses=function(){const r=oldRenderEdit?oldRenderEdit.apply(this,arguments):undefined; setTimeout(liveEdit,30); return r}
+ window.v35ToggleLock=function(id){const g=all().find(x=>+x.id===+id); if(g){g.locked=!bool(g.locked); save()}}
+ window.v35CompareGroupInline=function(id){const card=document.querySelector(`.group[data-group-id="${id}"]`),g=all().find(x=>+x.id===+id); if(!card||!g)return; const old=card.querySelector('.v35-compare-panel'); if(old){old.remove();return} const base=getText((g.verses||[])[0]||{}), set=new Set(norm(base).split(/\s+/)); const pan=document.createElement('div'); pan.className='v35-compare-panel'; pan.innerHTML='<b>مقارنة مرئية</b>'+(g.verses||[]).map((v,i)=>`<div><b>${esc(v.surah)} ${esc(v.ayah)}</b><div>${i?getText(v).split(/(\s+)/).map(w=>/^\s+$/.test(w)?w:(set.has(norm(w))?`<span class="v35-same">${esc(w)}</span>`:`<span class="v35-diff">${esc(w)}</span>`)).join(''):`<span class="v35-base">${esc(getText(v))}</span>`}</div></div>`).join(''); card.querySelector('.group-body').appendChild(pan); card.classList.add('open')}
+ const baseCard=window.gbGroupCard; if(baseCard)window.gbGroupCard=function(g){let h=baseCard(g); h=h.replace('<article class="group',`<article class="group${bool(g.locked)?' is-locked':''}`); h=h.replace('<div class="group-side">',`<div class="group-side"><button class="group-status-btn lock-btn ${bool(g.locked)?'active':''}" onclick="event.stopPropagation();v35ToggleLock(${+g.id})">${bool(g.locked)?'🔒':'🔓'}</button><button class="group-status-btn compare-btn" onclick="event.stopPropagation();v35CompareGroupInline(${+g.id})">≋</button>`); return h}
+ window.v35OpenMergeModal=function(){let m=document.getElementById('v35MergeModal')||document.body.appendChild(document.createElement('div')); m.id='v35MergeModal'; m.className='modal-backdrop open'; const opts=all().map(g=>`<option value="${+g.id}">${esc(g.id)} - ${esc(g.title)}</option>`).join(''); m.innerHTML=`<div class="modal"><div class="modal-header"><h2>دمج المجموعات</h2><button class="close-btn" onclick="v35MergeModal.classList.remove('open')">×</button></div><div class="modal-body"><select id="v35ma" class="full-input">${opts}</select><select id="v35mb" class="full-input">${opts}</select></div><div class="modal-footer"><button onclick="v35DoMerge()">دمج الآن</button></div></div>`}
+ window.v35DoMerge=function(){const a=all().find(g=>+g.id===+v35ma.value),b=all().find(g=>+g.id===+v35mb.value); if(!a||!b||a===b)return; if(bool(a.locked)||bool(b.locked)){alert('مجموعة مقفلة');return} a.verses=[...(a.verses||[]),...(b.verses||[])]; a.surahs=[...new Set([...(a.surahs||[]),...(b.surahs||[])])]; all().splice(all().indexOf(b),1); all().forEach((g,i)=>g.id=i+1); v35MergeModal.classList.remove('open'); save()}
+ window.v35OpenDuplicates=function(){const bucket={}; all().forEach(g=>{const k=norm(g.title)+'|'+(g.verses||[]).map(v=>v.surah+':'+v.ayah).sort().join(','); (bucket[k]=bucket[k]||[]).push(g)}); const d=Object.values(bucket).filter(x=>x.length>1); let m=document.getElementById('v35DupModal')||document.body.appendChild(document.createElement('div')); m.id='v35DupModal'; m.className='modal-backdrop open'; m.innerHTML=`<div class="modal"><div class="modal-header"><h2>كشف التكرار</h2><button class="close-btn" onclick="v35DupModal.classList.remove('open')">×</button></div><div class="modal-body">${d.length?d.map(arr=>`<div class="v35-dup-block">${arr.map(g=>`<div>${esc(g.id)} - ${esc(g.title)}</div>`).join('')}</div>`).join(''):'لا توجد مجموعات مكررة'}</div></div>`}
+ function buttons(){const p=document.querySelector('.search-panel'); if(p&&!document.getElementById('v35MergeBtn'))p.insertAdjacentHTML('beforeend','<span class="v35-toolbar-buttons"><button id="v35MergeBtn" onclick="v35OpenMergeModal()">دمج المجموعات</button><button onclick="v35OpenDuplicates()">كشف التكرار</button></span>')}
+ document.addEventListener('input',e=>{if(e.target.classList.contains('edit-part-text')||e.target.classList.contains('edit-part-type'))setTimeout(liveEdit,20)});
+ window.addEventListener('DOMContentLoaded',()=>setTimeout(()=>{buttons();addColorAndPreviewAdd()},1000)); setTimeout(buttons,1500)
 })();
-/* END RESTORE PACK V35 */
+/* END COMPACT RESTORE PACK V35 */
+
+
+/* =========================================================
+   ADDON V36: RELEASE NOTE IN SETTINGS + MOBILE ICONS
+========================================================= */
+(function(){
+ if(window.__V36_RELEASE_NOTES__) return; window.__V36_RELEASE_NOTES__=true;
+ const FALLBACK_RELEASE_NOTE = "Below is the **complete feature list from V35**, organized by **window / screen / modal**.\n\nSource files used: **Mutashabihat\\_v35.zip**, containing updated `index.html`, `styles.css`, and `app.js`. \n\n***\n\n# 1. Main Page / Home Screen\n\n## Header Area\n\n*   Arabic RTL interface.\n*   App title: **متشابهات القرآن الكريم**.\n*   Subtitle describing core functions:\n    *   Search\n    *   Filter\n    *   Add\n    *   Edit\n    *   Delete\n    *   Auto-save\n    *   GitHub Sync \n\n## Legend Bar\n\nShows color meaning for ayah text types:\n\n*   **فريدة في القرآن** — Unique\n*   **اختلاف في اللفظ** — Difference\n*   **زيادة في الآية** — Addition\n*   **لفظ مشترك** — Shared wording \n\n## Storage / Sync Toolbar\n\n*   Storage status badge:\n    *   loading\n    *   saved\n    *   linked file\n    *   writing\n*   GitHub status badge:\n    *   not set\n    *   ready\n    *   syncing\n    *   synced\n    *   error\n*   Settings button to open app settings.\n*   Hidden theme/font badges retained in structure. \n\n***\n\n# 2. Main Search Window / Search Panel\n\n## Basic Search\n\n*   Main search input searches across:\n    *   group title\n    *   notes\n    *   unique/additional notes\n    *   surah names\n    *   ayah numbers\n    *   ayah labels\n    *   ayah text parts\n*   Clear search button.\n*   Result counter.\n*   Search highlighting in ayah text.\n*   Search works together with selected Surah filter. \n\n## Action Buttons in Search Panel\n\n*   **+ إضافة متشابه** — opens Add New Group window.\n*   **فتح الكل / طي الكل** — opens or collapses all groups / all Surah sections.\n*   **Export data.js** — exports current data.\n*   **دمج المجموعات** — opens Merge Groups window.\n*   **كشف التكرار** — opens Duplicate Detection window. \n\n## Advanced Search Modal\n\n*   Advanced search moved to a separate popup window.\n*   Search scope options:\n    *   all\n    *   title only\n    *   ayah text only\n    *   notes only\n    *   surah only\n    *   ayah number only\n*   Status filters:\n    *   all\n    *   favorite\n    *   completed\n    *   not completed\n    *   locked\n*   Difficulty filters:\n    *   سهل\n    *   متوسط\n    *   صعب\n    *   صعب جدًا\n*   Review filters:\n    *   today / overdue\n    *   without review date\n*   Shows active filter preview chips.\n*   Can apply filters or reset them. \n\n***\n\n# 3. Surah Filter Window / Surah Filter Panel\n\n## Compact Filter Bar\n\n*   Shows selected Surah status.\n*   “Only with results” toggle.\n*   Clear Surah filter button.\n*   Open / close Surah filter panel. \n\n## Surah Search\n\n*   Search Surah by:\n    *   name\n    *   number\n*   Range tabs:\n    *   all\n    *   1–30\n    *   31–60\n    *   61–90\n    *   91–114 \n\n## Surah Count Badges\n\n*   Each Surah button shows number of groups.\n*   Count badge changes style according to count level:\n    *   zero\n    *   low\n    *   medium\n    *   high\n*   Surah number displayed on the right side of Surah name in RTL layout.\n*   Top Surahs section shows most-used Surahs. \n\n## Selected Surah Chip\n\n*   Shows selected Surah.\n*   Shows group count for that Surah.\n*   Includes close button to clear selection. \n\n***\n\n# 4. Group Display / Sorting Toolbar\n\n## Display Modes\n\nGroups can be displayed as:\n\n*   Original order\n*   Sort by Surah\n*   Group by Surah\n*   Newest first\n*   Most verses first \n\n## Group by Surah Mode\n\n*   Groups are organized under Surah sections.\n*   Each Surah section has:\n    *   Surah title\n    *   group count\n    *   collapsible header\n*   Surah index bar appears for quick navigation.\n*   Collapsed Surah sections are saved in localStorage.\n*   Open all / collapse all works for Surah sections. \n\n***\n\n# 5. Group Card Window\n\nEach group card includes the following:\n\n## Group Header\n\n*   Group number on the right.\n*   Group title.\n*   Surah tags.\n*   Custom group header color.\n*   Ayah count badge beside title.\n*   Expand/collapse by clicking header. \n\n## Group Action Icons\n\n*   Favorite icon:\n    *   inactive / active state\n    *   active favorite shows star visual effect.\n*   Completed icon:\n    *   inactive / active state\n    *   completed group shows green tick and “مكتمل” label.\n*   Lock icon:\n    *   🔓 unlocked\n    *   🔒 locked\n    *   locked group has visual locked label.\n*   Edit icon.\n*   Compare icon for inline visual comparison. \n\n## Group Body\n\nDisplays all ayahs in the group with:\n\n*   Surah name.\n*   Ayah number badge.\n*   Optional label.\n*   Ayah text split into colored parts:\n    *   normal\n    *   shared\n    *   diff\n    *   addition\n    *   unique\n*   Unique ayah card styling.\n*   Notes section.\n*   Unique/additional notes section.\n*   Rich text notes are rendered as HTML if stored. \n\n***\n\n# 6. Add New Group Window\n\n## Basic Fields\n\n*   Group title.\n*   Surah dropdown.\n*   Ayah number dropdown.\n*   Text color type:\n    *   shared\n    *   diff\n    *   addition\n    *   unique\n    *   normal\n*   Label field.\n*   Ayah preview from `quran-reference.js`.\n*   Selected part field.\n*   Note field.\n*   Unique/additional note field. \n\n## Restored V35 Features in Add Window\n\n*   **Live ayah preview**:\n    *   shows selected ayah live.\n    *   applies selected text color type.\n*   **Color preview**:\n    *   group color picker.\n    *   visual preview of selected color.\n*   **Auto-generate group title**:\n    *   creates title based on selected draft ayahs and Surahs.\n*   **Smart Quran search from `quran-reference.js`**:\n    *   appears at top of Add window.\n    *   searches ayah text.\n    *   ignores tashkeel.\n    *   ignores hamza differences.\n    *   ignores common Arabic letter variations.\n    *   exact matches shown first.\n    *   normalized matches shown after. \n\n## Quran Search Result Actions in Add Window\n\nEach search result includes:\n\n*   checkbox\n*   Surah name\n*   Ayah number\n*   ayah text\n*   exact/normalized match label\n*   Add full ayah button\n*   Add selected text button\n\nBehavior:\n\n*   selecting checkbox adds the ayah automatically to draft.\n*   deselecting checkbox removes the ayah from draft.\n*   Add full ayah inserts full ayah.\n*   Add selected text inserts selected browser text if highlighted, otherwise full ayah. \n\n## Draft Ayahs\n\n*   Added ayahs appear in temporary draft box.\n*   Each draft ayah shows:\n    *   Surah\n    *   Ayah number\n    *   label if available\n    *   colored text\n*   Remove individual draft ayah.\n*   Clear all draft ayahs.\n*   Save group into page.\n*   Export data.js.\n*   Close window. \n\n***\n\n# 7. Modification / Edit Group Window\n\n## Basic Edit Features\n\n*   Edit group title.\n*   Edit Surah using dropdown.\n*   Edit Ayah number using dropdown.\n*   Edit label.\n*   Fill ayah text from `quran-reference.js`.\n*   Add new ayah.\n*   Delete ayah.\n*   Move ayah up/down.\n*   Sort ayahs by Mushaf order.\n*   Edit ayah text parts.\n*   Add text part.\n*   Delete text part.\n*   Move text part up/down.\n*   Insert text part above.\n*   Insert text part below.\n*   Save edit.\n*   Delete group.\n*   Export data.js. \n\n## Restored V35 Features in Edit Window\n\n*   **Live ayah preview** for each edited ayah.\n*   **Color preview**:\n    *   group color picker.\n    *   visual preview of selected group color.\n*   **Auto-generate group title** based on current ayahs.\n*   **Smart Quran search from `quran-reference.js`** at top of Edit window.\n*   Search ignores:\n    *   tashkeel\n    *   hamza differences\n    *   common Arabic letter variations.\n*   Search results ordered:\n    *   exact first\n    *   normalized after.\n*   Checkbox add/remove behavior works in Edit window also. \n\n## Rich Text Notes Editor\n\nFor both normal note and unique/additional note:\n\n*   Bold.\n*   Underline.\n*   Bullet list.\n*   Text color.\n*   Remove formatting.\n*   Contenteditable rich text field.\n*   HTML sanitization before save. \n\n## Lock Protection in Edit Window\n\n*   If group is locked:\n    *   save is blocked.\n    *   delete is blocked.\n    *   alert tells user to unlock first.\n*   Lock/unlock is controlled from group card icon. \n\n***\n\n# 8. Inline Compare Window / Compare Panel\n\n## Visual Inline Comparison\n\n*   Opens inside the group body, not as popup.\n*   Uses first ayah as base comparison.\n*   Shows each ayah line with Surah and Ayah number.\n*   Same/common words highlighted in green.\n*   Different words highlighted in red.\n*   Base ayah highlighted in blue.\n*   Clicking compare again removes the compare panel. \n\n***\n\n# 9. Merge Groups Window\n\n## Merge Function\n\n*   Opens from main search panel.\n*   Select primary group.\n*   Select group to merge into primary.\n*   Moves all ayahs from second group into primary group.\n*   Combines Surah list.\n*   Combines notes and unique/additional notes.\n*   Deletes merged group.\n*   Re-numbers all groups after merge.\n*   Saves and refreshes data.\n*   Blocks merge if either group is locked. \n\n***\n\n# 10. Duplicate Detection Window\n\n## Duplicate Detection\n\n*   Opens from main search panel.\n*   Detects duplicates based on:\n    *   normalized group title\n    *   same set of ayah references\n*   Shows duplicate groups in blocks.\n*   Each duplicate item shows:\n    *   group ID\n    *   group title\n    *   edit button\n*   Shows message if no duplicates found. \n\n***\n\n# 11. Settings Window\n\n## Theme Settings\n\nAvailable themes include:\n\n*   Quran Classic\n*   Apple Health Clean\n*   Bevel Night Metrics\n*   Serene Reader\n*   Memorization Contrast\n*   Manuscript Premium\n*   Professional Dashboard \n\n## Font Settings\n\nAvailable font presets include:\n\n*   Classic Quran — Amiri Quran + Cairo\n*   Modern Reader — Scheherazade + Tajawal\n*   Mobile Clear — Noto Naskh + Readex Pro\n*   Dashboard Pro — Noto Naskh + IBM Plex\n*   Manuscript Style — Amiri + Aref Ruqaa\n*   QPC Nastaleeq — KFGQPCNastaleeq-Regular\n*   Surah Display — surah-name-v4 \n\n## Font Preview\n\nSettings window includes preview for:\n\n*   title font\n*   Surah name font\n*   Quran ayah font\n*   notes font \n\n## GitHub Auto Sync Settings\n\nFields:\n\n*   token\n*   owner\n*   repo\n*   branch\n*   file path\n\nActions:\n\n*   save settings\n*   sync now \n\n## Storage / Backup Settings\n\nActions:\n\n*   Export data.js\n*   Link data.js file\n*   Reset localStorage \n\n***\n\n# 12. Export data.js Window\n\n## Export Function\n\n*   Creates `data.js` from current DATA.\n*   Supports direct download.\n*   Supports iOS Safari Web Share API where available.\n*   Fallback modal shows full `data.js` content.\n*   Fallback actions:\n    *   Copy data.js\n    *   Select All\n    *   Close \n\n***\n\n# 13. GitHub Settings Window\n\n## GitHub Modal\n\n*   Separate GitHub settings modal still exists.\n*   Fields:\n    *   GitHub Personal Access Token\n    *   GitHub Username\n    *   Repository Name\n    *   Branch\n    *   File path\n*   Actions:\n    *   save settings\n    *   sync now\n    *   close \n\n## GitHub Sync Behavior\n\n*   On save, app can auto-sync `data.js` to GitHub.\n*   On startup, if GitHub settings exist, app tries to fetch latest `data.js` from GitHub.\n*   If GitHub fetch fails, app falls back to localStorage. \n\n***\n\n# 14. Floating / Draggable Windows\n\nAll modal windows are enhanced to be draggable by their header, including:\n\n*   Add New Group\n*   Edit Group\n*   Settings\n*   Advanced Search\n*   Merge Groups\n*   Duplicate Detection\n*   GitHub Settings\n*   Export fallback modal\n\nBehavior:\n\n*   drag from modal header.\n*   works with mouse and touch.\n*   modal position is constrained inside viewport.\n*   includes open/close animation. \n\n***\n\n# 15. Floating Top Button\n\n*   Fixed button at bottom-right.\n*   Scrolls smoothly to top.\n*   Styled according to current theme.\n*   Responsive size on mobile. \n\n***\n\n# 16. Storage / Persistence Features\n\n## Local Storage\n\n*   DATA saved automatically to localStorage.\n*   On startup, app loads saved localStorage data if available.\n*   Reset option removes saved localStorage and reloads original `data.js`. \n\n## File System Access API\n\n*   Allows linking local `data.js` file in supported browsers.\n*   Auto-writes changes directly to linked file.\n*   Mainly for PC Chrome-supported environments. \n\n***\n\n# 17. Mobile / Responsive Features\n\n*   RTL layout maintained.\n*   Modal windows adjust to mobile height.\n*   Search panel wraps controls.\n*   Surah grid becomes mobile-friendly.\n*   Group side icons reduce size.\n*   Edit part rows become single-column.\n*   Floating top button becomes smaller.\n*   Quran search result area has mobile max height.\n*   Toolbar buttons expand on small screens. \n\n***\n\n# 18. Important File Structure Note\n\nV35 package contains:\n\n*   `index.html`\n*   `styles.css`\n*   `app.js`\n\nBut the app still depends on external project files:\n\n*   `data.js`\n*   `quran-reference.js`\n*   optional `fonts/` folder for custom fonts\n\nThese are referenced by `index.html` and must remain in the same folder when running the app. \n";
+ function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+ function md(txt){let html='', list=false; function close(){if(list){html+='</ul>';list=false}}; String(txt||'').split(/\r?\n/).forEach(line=>{const s=line.trim(); if(!s){close();html+='<div class="v36-rn-space"></div>';return} if(s.startsWith('### ')){close();html+='<h4>'+esc(s.slice(4))+'</h4>';return} if(s.startsWith('## ')){close();html+='<h3>'+esc(s.slice(3))+'</h3>';return} if(s.startsWith('# ')){close();html+='<h2>'+esc(s.slice(2))+'</h2>';return} if(s.startsWith('- ')){if(!list){html+='<ul>';list=true} html+='<li>'+esc(s.slice(2))+'</li>';return} close(); html+='<p>'+esc(s)+'</p>'}); close(); return html.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}
+ function modal(){if(document.getElementById('v36ReleaseNoteModal'))return; const m=document.createElement('div'); m.id='v36ReleaseNoteModal'; m.className='modal-backdrop'; m.innerHTML=`<div class="modal edit-modal v36-release-note-modal"><div class="modal-header"><h2>📋 Release Note / ملاحظات الإصدار</h2><button class="close-btn" onclick="v36CloseReleaseNotes()">×</button></div><div class="modal-body"><div class="v36-release-note-toolbar"><span id="v36ReleaseNoteStatus">Release Note</span><button onclick="v36CopyReleaseNotes()">Copy</button></div><div id="v36ReleaseNoteContent" class="v36-release-note-content"></div><textarea id="v36ReleaseNoteRaw" style="display:none"></textarea></div><div class="modal-footer"><button class="primary-btn" onclick="v36CloseReleaseNotes()">إغلاق</button></div></div>`; document.body.appendChild(m)}
+ async function load(){try{const r=await fetch('release note.txt?v=mutashabihat-v36-20260512-01',{cache:'no-store'}); if(r.ok){const x=await r.text(); if(x.trim())return x}}catch(e){} return FALLBACK_RELEASE_NOTE}
+ window.v36OpenReleaseNotes=async function(){modal(); const m=document.getElementById('v36ReleaseNoteModal'), c=document.getElementById('v36ReleaseNoteContent'), raw=document.getElementById('v36ReleaseNoteRaw'); m.classList.add('open'); c.innerHTML='جاري فتح ملاحظات الإصدار...'; const txt=await load(); raw.value=txt; c.innerHTML=md(txt)}
+ window.v36CloseReleaseNotes=function(){document.getElementById('v36ReleaseNoteModal')?.classList.remove('open')}
+ window.v36CopyReleaseNotes=function(){const r=document.getElementById('v36ReleaseNoteRaw'); if(!r)return; r.style.display='block'; r.select(); document.execCommand('copy'); r.style.display='none'; alert('تم نسخ Release Note')}
+ function inject(){const b=document.querySelector('#appSettingsModal .modal-body'); if(!b||document.getElementById('v36ReleaseNoteSettingsBtn'))return; const s=document.createElement('div'); s.className='settings-section v36-release-note-settings-section'; s.innerHTML='<h3>📋 Release Note</h3><p class="v36-settings-note">فتح القائمة الكاملة لملاحظات الإصدار والميزات الحالية.</p><button id="v36ReleaseNoteSettingsBtn" class="v36-release-note-btn" onclick="v36OpenReleaseNotes()">📋 عرض Release Note</button>'; b.insertBefore(s,b.firstChild)}
+ const old=window.openAppSettings; window.openAppSettings=function(){const r=old?old.apply(this,arguments):undefined; setTimeout(inject,80); return r}; window.addEventListener('DOMContentLoaded',()=>setTimeout(inject,1200)); setTimeout(inject,1600)
+})();
+/* END ADDON V36 */

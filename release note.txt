@@ -1,3 +1,34 @@
+# Release Note — V36
+
+Source files used: Mutashabihat_v36.zip, containing index.html, styles.css, app.js, and release note.txt.
+
+## V36 New Features
+
+### Settings Window
+- Added a **Release Note icon/button** inside Settings.
+- Pressing the Release Note button opens a dedicated modal window showing the full release note list.
+- The Release Note modal loads `release note.txt` when available.
+- If browser security blocks loading `release note.txt`, the app uses an embedded fallback copy of the release note.
+- Release Note modal includes a Copy button to copy the full release note text.
+
+### Mobile Group Card Layout
+- In mobile view, group action icons are moved **below the group title**.
+- Desktop / iPad large screen behavior remains unchanged, with icons on the left side.
+- Mobile group header layout now uses a two-row structure:
+  - first row: group number + group title
+  - second row: favorite / completed / lock / compare / edit icons
+
+### Release Package Rule
+- Starting from V36, each version package includes 4 files:
+  - `index.html`
+  - `styles.css`
+  - `app.js`
+  - `release note.txt`
+- Before generating each next version, the previous release note shall be checked to confirm all listed features are still applied.
+- New features added in the new version shall be documented in the next `release note.txt`.
+
+---
+
 Below is the **complete feature list from V35**, organized by **window / screen / modal**.
 
 Source files used: **Mutashabihat\_v35.zip**, containing updated `index.html`, `styles.css`, and `app.js`. 
