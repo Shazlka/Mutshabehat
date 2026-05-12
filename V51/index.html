@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>متشابهات القرآن الكريم</title>
+  <link rel="stylesheet" href="styles.css?v=Mutashabihat_v51_ui_filter_compare_refinement">
+</head>
+<body data-theme="quran-classic" data-font-preset="classic-quran">
+  <header class="app-header">
+  <div class="header-inner">
+    <div class="brand-block">
+      <div class="brand-icon" aria-label="متشابهات القرآن">
+        <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect x="16" y="10" width="32" height="44" rx="10" fill="none" stroke="currentColor" stroke-width="4"/>
+          <path d="M24 22h16M24 32h16M24 42h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path d="M32 6v52" stroke="currentColor" stroke-width="2.5" opacity=".45"/>
+        </svg>
+      </div>
+      <div>
+        <h1>متشابهات القرآن الكريم</h1>
+        <p>منصة دراسة وحفظ المتشابهات</p>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <button class="nav-tab active" type="button" onclick="showBrowse(this)">المتشابهات</button>
+      <button class="nav-tab" type="button" onclick="showDashboard(this)">الإحصائيات</button>
+      <button class="nav-tab" type="button" onclick="openAppSettings()">الإعدادات</button>
+    </nav>
+    <div class="header-actions">
+      <button class="add-top-btn" type="button" onclick="openAddModal()">+ إضافة</button>
+      <button class="theme-round" type="button" onclick="toggleTheme()">◐</button>
+    </div>
+  </div>
+</header>
+
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot ld-u"></span>فريدة في القرآن</div>
+    <div class="legend-item"><span class="legend-dot ld-d"></span>اختلاف في اللفظ</div>
+    <div class="legend-item"><span class="legend-dot ld-a"></span>زيادة في الآية</div>
+    <div class="legend-item"><span class="legend-dot ld-s"></span>لفظ مشترك</div>
+  </div>
+
+
+<!-- STORAGE + SETTINGS BAR -->
+  <div class="storage-bar app-toolbar-clean">
+    <span id="storageBadge" class="storage-badge">⏳ Loading...</span>
+    <span class="bar-divider">|</span>
+    <span id="ghBadge" class="storage-badge">☁ GitHub: not set</span>
+    <button class="settings-btn toolbar-settings-left" onclick="openAppSettings()">Settings ⚙</button>
+    <span id="themeBadge" class="storage-badge theme-badge toolbar-hidden-badge" aria-hidden="true"></span>
+    <span id="fontBadge" class="storage-badge theme-badge toolbar-hidden-badge" aria-hidden="true"></span>
+  </div>
+
+  <section class="filter-bar pro-surah-filter v44-card" id="surahFilterSection">
+    <div class="filter-compact-row">
+      <div class="filter-title-block">
+        <span class="filter-title">🔍 تصفية حسب السورة</span>
+        <span class="filter-status" id="filterStatus">المعروض الآن: كل السور</span>
+      </div>
+      <div id="selectedSurahChip" class="selected-surah-chip hidden"></div>
+      <div class="filter-main-actions">
+        <button class="filter-toggle-btn active" id="onlyResultsBtn" onclick="toggleOnlyWithResults()">بها نتائج فقط</button>
+        <button class="filter-clear" id="clearSurahBtn" onclick="clearSurahFilter()">عرض الكل</button>
+        <button class="filter-expand-btn" id="surahFilterToggleBtn" onclick="toggleSurahFilterPanel()">فتح الفلتر ▾</button>
+      </div>
+    </div>
+    <div class="filter-panel collapsed" id="surahFilterPanel">
+      <div class="surah-filter-tools">
+        <input id="surahFilterSearch" class="surah-filter-search" type="text" placeholder="ابحث باسم السورة أو رقمها..." oninput="runSurahFilterSearch()">
+        <div class="range-tabs" id="surahRangeTabs">
+          <button class="range-tab active" data-range="all" onclick="setSurahRange('all')">الكل</button>
+          <button class="range-tab" data-range="1-30" onclick="setSurahRange('1-30')">1-30</button>
+          <button class="range-tab" data-range="31-60" onclick="setSurahRange('31-60')">31-60</button>
+          <button class="range-tab" data-range="61-90" onclick="setSurahRange('61-90')">61-90</button>
+          <button class="range-tab" data-range="91-114" onclick="setSurahRange('91-114')">91-114</button>
+        </div>
+      </div>
+      <div class="top-surahs-section" id="topSurahsSection">
+        <div class="mini-section-title">الأكثر وجودًا</div>
+        <div id="topSurahGrid" class="top-surah-grid"></div>
+      </div>
+      <div class="surah-section-head">
+        <span class="mini-section-title">كل السور</span>
+        <span id="surahFilterCount" class="surah-filter-count"></span>
+      </div>
+      <div id="surahFilterGrid" class="surah-grid professional-surah-grid"></div>
+    </div>
+  </section>
+  <section class="search-panel hero-search v44-card">
+    <input id="searchInput" type="text" placeholder="ابحث في المتشابهات..." oninput="runSearch()">
+    <button onclick="clearSearch()">إلغاء</button>
+    <button class="primary-btn" onclick="openAddModal()">+ إضافة متشابه</button>
+    <button id="toggleAllBtn" onclick="toggleAll()">فتح الكل</button>
+    
+    <button onclick="downloadDataJS()">📤 Export data.js</button>
+    <span id="counter"></span>
+  </section>
+
+  <main id="app" class="main groups"></main>
+
+  <!-- ADD MODAL -->
+  <div id="addModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>إضافة متشابه جديد</h2>
+        <button class="close-btn" onclick="closeAddModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <label>عنوان المتشابه</label>
+        <input id="newTitle" class="full-input" placeholder="مثال: الرجفة / الصيحة">
+        <div class="grid-3">
+          <div>
+            <label>السورة</label>
+            <select id="newSurah" onchange="onSurahChange()"></select>
+          </div>
+          <div>
+            <label>رقم الآية</label>
+            <select id="newAyah" onchange="previewSelectedAyah()"></select>
+          </div>
+          <div>
+            <label>نوع التلوين</label>
+            <select id="newType">
+              <option value="shared">shared - مشترك</option>
+              <option value="diff">diff - اختلاف</option>
+              <option value="addition">addition - زيادة</option>
+              <option value="unique">unique - فريدة</option>
+              <option value="normal">normal - عادي</option>
+            </select>
+          </div>
+        </div>
+        <label>وصف قصير للآية / Label</label>
+        <input id="newLabel" class="full-input" placeholder="مثال: قوم صالح / زيادة فكذبوه">
+        <label>نص الآية من quran-reference.js</label>
+        <textarea id="ayahPreview" class="ayah-preview" readonly></textarea>
+        <label>تحديد جزء من الآية فقط - اختياري</label>
+        <textarea id="selectedPart" class="ayah-preview" placeholder="لو تركته فارغًا سيتم استخدام نص الآية كاملًا"></textarea>
+        <div class="modal-actions">
+          <button class="primary-btn" onclick="addVerseToDraft()">إضافة الآية للمجموعة</button>
+          <button onclick="clearDraftVerses()">مسح الآيات المؤقتة</button>
+        </div>
+        <h3>الآيات المضافة مؤقتًا</h3>
+        <div id="draftVerses" class="draft-box">لا توجد آيات مضافة بعد.</div>
+        <label>ملاحظة</label>
+        <textarea id="newNote" class="ayah-preview" placeholder="ملاحظة الحفظ أو الربط"></textarea>
+        <label>فائدة فريدة / إضافية</label>
+        <textarea id="newUnote" class="ayah-preview" placeholder="اختياري"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="primary-btn" onclick="createNewGroup()">حفظ في الصفحة</button>
+        <button onclick="downloadDataJS()">📤 Export data.js</button>
+        <button onclick="closeAddModal()">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalRoot"></div>
+  <script src="data.js?v=Mutashabihat_v51_ui_filter_compare_refinement"></script>
+  <script src="quran-reference.js?v=Mutashabihat_v51_ui_filter_compare_refinement"></script>
+  <script src="app.js?v=Mutashabihat_v51_ui_filter_compare_refinement"></script>
+  <button id="floatingTopBtn" class="floating-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="العودة للأعلى">↑</button>
+<!-- V49: V38 feature logic preserved; V44 professional UI applied. -->
+</body>
+</html>
