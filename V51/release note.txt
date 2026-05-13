@@ -681,3 +681,34 @@ These are referenced by `index.html` and must remain in the same folder when run
 - Repaired PC layout with a full desktop-only override pack.
 - Kept mobile hamburger menu and mobile group preview modal scoped to screens up to 700px.
 - Removed duplicate Settings button from storage toolbar and moved GitHub status to legend line.
+
+
+#### Release Note — V56
+- Adjusted desktop object placement to match the marked screenshot: GitHub status on the left of the legend line, saved status as a small pill on the right, and display/sort toolbar in a full row below search.
+- Reduced ayah display box height while keeping width unchanged; ayah cards now fit content height more tightly.
+- Reduced ayah font size to show more data on screen.
+- Added Settings option: Edit Mode. In read mode, only Favorite and Completed icons are visible; edit/compare/lock/merge/duplicate tools are hidden.
+- Added Diff2 category with purple text and purple highlight.
+- Changed Diff category to yellow highlighted styling.
+- Added Diff2 option in Add Group and Modification/Edit text-part type selectors.
+- Reduced Modification/Edit ayah text box height; textareas auto-size vertically to the written content.
+- Unique ayah cards now receive a thin red border around the whole ayah box.
+- Group icon/action area background now blends with the group header/background.
+
+
+#### Release Note — V58
+- Read Mode now also hides Add Group buttons and prevents opening Add Group unless Edit Mode is enabled.
+
+
+#### Release Note — V59
+- Moved sorting dropdown to be inline with the Surah filter compact row.
+- Moved green saved status to the same line as GitHub status in the legend/status line.
+- Updated color legend to include the added Diff2 purple category and adjusted legend colors to match actual highlight colors.
+- Changed Diff yellow highlight to a lighter yellow shade.
+
+
+#### Release Note — V60
+- Updated all popup/modal windows to use the same theme variables as the main interface, including dark mode and selected color themes.
+- Added iPad portrait responsive behavior to match iPhone arrangement: hamburger menu, compact header, hidden desktop tabs/actions, and mobile-style group behavior.
+- Dashboard modal now closes when clicking anywhere outside the dashboard window.
+- Replaced the existing app logo with a new Arabic QAF letter logo.

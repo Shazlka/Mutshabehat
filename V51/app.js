@@ -2906,3 +2906,259 @@ function gbGroupCard(g){
  function wrapToggle(){const current=window.toggleGroup;if(current&&current.__v55Wrapped)return;const wrapped=function(header){if(isMobileView()){window.openMobileGroupModalFromHeader(header);return;}if(typeof current==='function')return current.apply(this,arguments);header?.parentElement?.classList.toggle('open');};wrapped.__v55Wrapped=true;window.toggleGroup=wrapped;}
  wrapToggle();window.addEventListener('DOMContentLoaded',function(){ensureMobileMenu();setTimeout(wrapToggle,900);});
 })();
+
+
+/* =========================================================
+ V56 EDIT MODE + COMPACT TEXTAREA + DIFF2 PACK
+========================================================= */
+(function(){
+  if(window.__V56_EDIT_MODE_PACK__) return;
+  window.__V56_EDIT_MODE_PACK__ = true;
+  const KEY='mutashabihat_edit_mode_enabled';
+  function isEditMode(){ return localStorage.getItem(KEY)==='true'; }
+  function setEditMode(on){
+    localStorage.setItem(KEY,on?'true':'false');
+    document.body.setAttribute('data-edit-mode',on?'on':'off');
+    const cb=document.getElementById('v56EditModeToggle');
+    if(cb) cb.checked=!!on;
+  }
+  window.v56SetEditMode=function(on){ setEditMode(!!on); };
+  function initMode(){ setEditMode(isEditMode()); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initMode); else initMode();
+
+  function injectEditModeSetting(){
+    const body=document.querySelector('#appSettingsModal .modal-body');
+    if(!body || document.getElementById('v56EditModeSection')) return;
+    const sec=document.createElement('div');
+    sec.id='v56EditModeSection';
+    sec.className='settings-section';
+    sec.innerHTML=`
+      <h3>✏️ Edit Mode / وضع التعديل</h3>
+      <p class="v36-settings-note">عند إيقاف وضع التعديل تظهر أيقونات المفضلة والمكتمل فقط، وتختفي أيقونات التعديل والمقارنة والقفل والدمج وكشف التكرار.</p>
+      <label style="display:flex;align-items:center;gap:10px;font-weight:900;cursor:pointer">
+        <input id="v56EditModeToggle" type="checkbox" onchange="v56SetEditMode(this.checked)" style="width:20px;height:20px">
+        <span>تفعيل وضع التعديل</span>
+      </label>`;
+    body.insertBefore(sec, body.firstChild);
+    const cb=document.getElementById('v56EditModeToggle');
+    if(cb) cb.checked=isEditMode();
+  }
+  const oldOpenSettings=window.openAppSettings;
+  window.openAppSettings=function(){
+    const r=oldOpenSettings?oldOpenSettings.apply(this,arguments):undefined;
+    setTimeout(injectEditModeSetting,80);
+    return r;
+  };
+  window.addEventListener('DOMContentLoaded',()=>setTimeout(injectEditModeSetting,1200));
+
+  /* Add diff2 to every edit part selector, including selectors created after render */
+  function ensureDiff2Options(root){
+    (root||document).querySelectorAll('select.edit-part-type, #newType').forEach(sel=>{
+      if(!sel.querySelector('option[value="diff2"]')){
+        const opt=document.createElement('option');
+        opt.value='diff2'; opt.textContent='diff2';
+        const diff=sel.querySelector('option[value="diff"]');
+        if(diff && diff.nextSibling) diff.parentNode.insertBefore(opt,diff.nextSibling); else sel.appendChild(opt);
+      }
+    });
+  }
+  window.v56EnsureDiff2Options=ensureDiff2Options;
+
+  /* Auto height for edit textareas: height follows content, width unchanged */
+  function autoSizeTextArea(el){
+    if(!el) return;
+    el.style.height='auto';
+    el.style.height=Math.max(34, Math.min(el.scrollHeight+2, 220))+'px';
+  }
+  window.v56AutoSizeAyahBoxes=function(root){
+    (root||document).querySelectorAll('textarea.edit-part-text').forEach(autoSizeTextArea);
+  };
+  document.addEventListener('input',function(e){ if(e.target && e.target.matches('textarea.edit-part-text')) autoSizeTextArea(e.target); });
+
+  ['renderEditVerses','openEditGroup','openAddModal'].forEach(name=>{
+    const old=window[name];
+    if(typeof old==='function' && !old.__v56Wrapped){
+      const wrapped=function(){
+        const r=old.apply(this,arguments);
+        setTimeout(()=>{ensureDiff2Options(document); window.v56AutoSizeAyahBoxes(document);},60);
+        return r;
+      };
+      wrapped.__v56Wrapped=true;
+      window[name]=wrapped;
+    }
+  });
+
+  /* Guard edit-only actions in read mode */
+  ['v38OpenMergeModal','v38OpenDuplicates','openMerge','openDuplicates'].forEach(name=>{
+    const old=window[name];
+    if(typeof old==='function' && !old.__v56Guarded){
+      const wrapped=function(){
+        if(!isEditMode()) { alert('فعّل وضع التعديل من الإعدادات أولاً.'); return; }
+        return old.apply(this,arguments);
+      };
+      wrapped.__v56Guarded=true;
+      window[name]=wrapped;
+    }
+  });
+
+  const mo=new MutationObserver(muts=>{
+    for(const m of muts){
+      if(m.addedNodes && m.addedNodes.length){
+        ensureDiff2Options(document);
+        window.v56AutoSizeAyahBoxes(document);
+        break;
+      }
+    }
+  });
+  window.addEventListener('DOMContentLoaded',()=>{
+    ensureDiff2Options(document);
+    window.v56AutoSizeAyahBoxes(document);
+    mo.observe(document.body,{childList:true,subtree:true});
+  });
+})();
+
+
+/* V58: Guard Add Group in read mode */
+(function(){
+  if(window.__V58_ADD_GUARD__) return; window.__V58_ADD_GUARD__=true;
+  function isEditMode(){return localStorage.getItem('mutashabihat_edit_mode_enabled')==='true';}
+  function guardAdd(){
+    const old=window.openAddModal;
+    if(typeof old==='function' && !old.__v58Guarded){
+      const wrapped=function(){
+        if(!isEditMode()){alert('فعّل وضع التعديل من الإعدادات أولاً.');return;}
+        return old.apply(this,arguments);
+      };
+      wrapped.__v58Guarded=true;
+      window.openAddModal=wrapped;
+    }
+  }
+  guardAdd();
+  window.addEventListener('DOMContentLoaded',()=>setTimeout(guardAdd,900));
+})();
+
+
+/* =========================================================
+ V59 INLINE SORT + STATUS LINE PACK
+========================================================= */
+(function(){
+  if(window.__V59_INLINE_SORT_PACK__) return;
+  window.__V59_INLINE_SORT_PACK__=true;
+
+  function ensureInlineSort(){
+    const row=document.querySelector('#surahFilterSection .filter-compact-row');
+    const toolbar=document.getElementById('groupDisplayToolbar');
+    const original=document.getElementById('groupDisplaySelect');
+    if(!row || !toolbar || !original) return;
+
+    toolbar.classList.add('v59-toolbar-index-only');
+
+    let wrap=document.getElementById('v59InlineSort');
+    if(!wrap){
+      wrap=document.createElement('div');
+      wrap.id='v59InlineSort';
+      wrap.className='v59-inline-sort';
+      wrap.innerHTML='<label for="v59GroupDisplaySelect">طريقة عرض المجموعات</label><select id="v59GroupDisplaySelect" class="group-display-select"></select>';
+      row.appendChild(wrap);
+    }
+    const inline=document.getElementById('v59GroupDisplaySelect');
+    if(inline && inline.options.length !== original.options.length){
+      inline.innerHTML=original.innerHTML;
+    }
+    if(inline && inline.value !== original.value){ inline.value=original.value; }
+    if(inline && !inline.__v59Bound){
+      inline.addEventListener('change',function(){
+        original.value=this.value;
+        if(typeof setGroupDisplayMode==='function') setGroupDisplayMode(this.value);
+        else original.dispatchEvent(new Event('change',{bubbles:true}));
+      });
+      inline.__v59Bound=true;
+    }
+  }
+
+  function syncInlineSort(){
+    const original=document.getElementById('groupDisplaySelect');
+    const inline=document.getElementById('v59GroupDisplaySelect');
+    if(original && inline && inline.value!==original.value) inline.value=original.value;
+  }
+
+  const oldSet=window.setGroupDisplayMode;
+  if(typeof oldSet==='function' && !oldSet.__v59Wrapped){
+    const wrapped=function(){
+      const r=oldSet.apply(this,arguments);
+      setTimeout(()=>{ensureInlineSort();syncInlineSort();},40);
+      return r;
+    };
+    wrapped.__v59Wrapped=true;
+    window.setGroupDisplayMode=wrapped;
+  }
+
+  function init(){
+    ensureInlineSort();
+    syncInlineSort();
+    const mo=new MutationObserver(()=>{ensureInlineSort();syncInlineSort();});
+    mo.observe(document.body,{childList:true,subtree:true});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>setTimeout(init,900));
+  else setTimeout(init,900);
+})();
+
+
+/* =========================================================
+ V60 DASHBOARD OUTSIDE CLOSE + IPAD PORTRAIT MOBILE LOGIC
+========================================================= */
+(function(){
+  if(window.__V60_DASHBOARD_IPAD_PACK__) return;
+  window.__V60_DASHBOARD_IPAD_PACK__=true;
+
+  function isMobileOrIpadPortrait(){
+    const phone = window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
+    const ipadPortrait = window.matchMedia && window.matchMedia('(max-width: 1024px) and (orientation: portrait)').matches;
+    return !!(phone || ipadPortrait);
+  }
+  window.v60IsMobileOrIpadPortrait=isMobileOrIpadPortrait;
+
+  /* Close dashboard when clicking the backdrop/outside the dashboard window */
+  function bindDashboardOutsideClose(){
+    const modal=document.getElementById('v49DashboardModal');
+    if(!modal || modal.__v60OutsideClose) return;
+    modal.addEventListener('click',function(e){
+      if(e.target===modal){
+        modal.classList.remove('open');
+        document.querySelectorAll('.nav-tab').forEach(function(x){x.classList.remove('active')});
+        const first=document.querySelector('.nav-tab');
+        if(first) first.classList.add('active');
+      }
+    });
+    modal.__v60OutsideClose=true;
+  }
+
+  const oldDashboard=window.showDashboard;
+  if(typeof oldDashboard==='function' && !oldDashboard.__v60Wrapped){
+    const wrapped=function(){
+      const r=oldDashboard.apply(this,arguments);
+      setTimeout(bindDashboardOutsideClose,40);
+      return r;
+    };
+    wrapped.__v60Wrapped=true;
+    window.showDashboard=wrapped;
+  }
+  window.addEventListener('DOMContentLoaded',function(){setTimeout(bindDashboardOutsideClose,1200);});
+
+  /* Upgrade mobile group modal behavior to include iPad portrait as mobile */
+  function wrapToggleForIpad(){
+    const current=window.toggleGroup;
+    if(!current || current.__v60IpadWrapped) return;
+    const wrapped=function(header){
+      if(isMobileOrIpadPortrait() && typeof window.openMobileGroupModalFromHeader==='function'){
+        window.openMobileGroupModalFromHeader(header);
+        return;
+      }
+      return current.apply(this,arguments);
+    };
+    wrapped.__v60IpadWrapped=true;
+    window.toggleGroup=wrapped;
+  }
+  wrapToggleForIpad();
+  window.addEventListener('DOMContentLoaded',function(){setTimeout(wrapToggleForIpad,1000);});
+})();
