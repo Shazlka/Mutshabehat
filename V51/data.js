@@ -773,7 +773,7 @@ const DATA = [
       },
       {
         "surah": "هود",
-        "ayah": "٨٤",
+        "ayah": "84",
         "label": "قَالَ — بدون فاء",
         "parts": [
           {
@@ -792,7 +792,7 @@ const DATA = [
       },
       {
         "surah": "العنكبوت",
-        "ayah": "٣٦",
+        "ayah": "36",
         "label": "فَقَالَ + وارجوا — فريدة",
         "parts": [
           {
@@ -800,11 +800,11 @@ const DATA = [
             "text": "وَإِلَى مَدْيَنَ أَخَاهُمْ شُعَيْبًا "
           },
           {
-            "type": "unique",
+            "type": "diff2",
             "text": "فَقَالَ"
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": " يَا قَوْمِ اعْبُدُوا اللَّهَ "
           },
           {
@@ -815,7 +815,7 @@ const DATA = [
       }
     ],
     "note": "",
-    "unote": "فريدة في القرآن العنكبوت ٣٦: الوحيدة بالفاء + وارجوا اليوم الاخر",
+    "unote": "العنكبوت ٣٦: الوحيدة بالفاء + وارجوا اليوم الاخر",
     "completed": true
   },
   {
@@ -908,7 +908,8 @@ const DATA = [
     ],
     "note": "وردت ٥ مرات: ٢ قصة موسى + ٣ قصة شعيب",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 12,
@@ -956,7 +957,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "العنكبوت ٢٢: الوحيدة بزيادة (ولا في السماء)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 13,
@@ -1063,7 +1065,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "الاعراف: وَمَا (بالواو) الوحيدة — باقيها: فَمَا<div>الأعراف قائمة علي الإختصار لذا قال (أخرجوهم) وليس (أخرجوا آل لوط) كما في النمل</div>",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 14,
@@ -1155,7 +1158,8 @@ const DATA = [
     ],
     "note": "اللفظ متطابق في ٥ مواضع<div>لم ترد من أول المصحف إلي الحجر ولا من فاطر إلي نهاية المصحف</div><div>فقط في هذه المواضع&nbsp;</div>",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 15,
@@ -1223,7 +1227,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن القصص ٦١: الوحيدة بزيادة (هو)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 16,
@@ -1283,7 +1288,8 @@ const DATA = [
     ],
     "note": "ملاحظة العنكبوت/الجاثية: وما لكم من ناصرين — الحديد: هي مولاكم",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 17,
@@ -1343,7 +1349,8 @@ const DATA = [
     ],
     "note": "ملاحظة الانعام: كلا هدينا — الانبياء: نافلة — العنكبوت: زيادة النبوة",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 18,
@@ -1447,7 +1454,8 @@ const DATA = [
     ],
     "note": "ملاحظة العنكبوت/الحديد: النبوة والكتاب فقط — آل عمران/الانعام/الجاثية: الكتاب+الحكم+النبوة",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 19,
@@ -1499,7 +1507,8 @@ const DATA = [
     ],
     "note": "ملاحظة النحل: حسنة — العنكبوت: أجره",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 20,
@@ -1587,7 +1596,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "العنكبوت ٢٨: الوحيدة بالإخبار",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 21,
@@ -1659,12 +1669,13 @@ const DATA = [
     ],
     "note": "ملاحظة الاعراف: مسرفون — النمل: تجهلون — العنكبوت: زيادة جريمتين",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 22,
     "title": "إِن كُنتَ مِنَ الصَّادِقِينَ / الْمُرْسَلِينَ",
-    "color": "#2A5E1A",
+    "color": "#4a1a2a",
     "surahs": [
       "الاعراف"
     ],
@@ -1687,7 +1698,9 @@ const DATA = [
     ],
     "note": "",
     "unote": "الاعراف ٧٧: الوحيدة بـ (المرسلين) — باقي ٩ مواضع: (الصادقين)",
-    "completed": true
+    "completed": true,
+    "headerColor": "#4a1a2a",
+    "locked": true
   },
   {
     "id": 23,
