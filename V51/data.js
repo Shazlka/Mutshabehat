@@ -6669,7 +6669,7 @@ const DATA = [
         ]
       }
     ],
-    "note": "<br>",
+    "note": "<span style=\"font-size: 14.72px;\">(أنزلنا إليك) في الثلث الأول من القران</span><div style=\"font-size: 14.72px;\">(أنزلنا عليك) في الثلث الثاني من القرآن</div><div style=\"font-size: 14.72px;\">السور التي ذكرت مرتين (إليك) و (عليك) تم ذكر (إليك) قبل (عليك) —-العنكبوت والزمر</div>",
     "unote": "",
     "headerColor": "#0d47a1",
     "completed": true,
