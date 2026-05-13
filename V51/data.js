@@ -6565,7 +6565,7 @@ const DATA = [
         "label": "",
         "parts": [
           {
-            "type": "normal",
+            "type": "addition",
             "text": "إِنَّآ أَنزَلۡنَآ إِلَيۡكَ ٱلۡكِتَٰبَ "
           },
           {
@@ -6580,7 +6580,7 @@ const DATA = [
         "label": "",
         "parts": [
           {
-            "type": "normal",
+            "type": "addition",
             "text": "وَأَنزَلۡنَآ إِلَيۡكَ ٱلۡكِتَٰبَ "
           },
           {
@@ -6610,7 +6610,7 @@ const DATA = [
         "label": "",
         "parts": [
           {
-            "type": "normal",
+            "type": "addition",
             "text": "وَكَذَٰلِكَ أَنزَلۡنَآ إِلَيۡكَ ٱلۡكِتَٰبَۚ "
           },
           {
@@ -6644,7 +6644,7 @@ const DATA = [
         "label": "",
         "parts": [
           {
-            "type": "diff2",
+            "type": "addition",
             "text": "إِنَّآ أَنزَلۡنَآ إِلَيۡكَ ٱلۡكِتَٰبَ"
           },
           {
