@@ -6671,7 +6671,8 @@ const DATA = [
     ],
     "note": "<br>",
     "unote": "",
-    "headerColor": "#0d47a1"
+    "headerColor": "#0d47a1",
+    "completed": true
   },
   {
     "id": 95,
