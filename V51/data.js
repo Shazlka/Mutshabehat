@@ -1666,12 +1666,7 @@ const DATA = [
     "title": "إِن كُنتَ مِنَ الصَّادِقِينَ / الْمُرْسَلِينَ",
     "color": "#2A5E1A",
     "surahs": [
-      "الاعراف",
-      "هود",
-      "الحجر",
-      "الشعراء",
-      "العنكبوت",
-      "الاحقاف"
+      "الاعراف"
     ],
     "verses": [
       {
@@ -1688,25 +1683,10 @@ const DATA = [
             "text": "إِن كُنتَ مِنَ الْمُرْسَلِينَ"
           }
         ]
-      },
-      {
-        "surah": "العنكبوت",
-        "ayah": "٢٩",
-        "label": "الصادقين — المعتادة",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "ائْتِنَا بِعَذَابِ اللَّهِ "
-          },
-          {
-            "type": "shared",
-            "text": "إِن كُنتَ مِنَ الصَّادِقِينَ"
-          }
-        ]
       }
     ],
     "note": "",
-    "unote": "فريدة في القرآن الاعراف ٧٧: الوحيدة بـ (المرسلين) — باقي ٩ مواضع: (الصادقين)",
+    "unote": "الاعراف ٧٧: الوحيدة بـ (المرسلين) — باقي ٩ مواضع: (الصادقين)",
     "completed": true
   },
   {
@@ -1766,7 +1746,8 @@ const DATA = [
     ],
     "note": "ملاحظة المؤمنون: بما كذبون — العنكبوت: على القوم المفسدين",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 24,
@@ -1858,7 +1839,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن الاعراف: لقد بدون واو — باقي القرآن: ولقد",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 25,
@@ -1929,7 +1911,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "العنكبوت ١٣: الوحيدة بـ (يفترون)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 26,
@@ -2066,7 +2049,8 @@ const DATA = [
     ],
     "note": "<div><ul><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">يونس/الانبياء/الشعراء: فنجيناه — باقي القرآن: فأنجيناه</span><br></li><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">الأنبياء / الصافات : ونجيناه&nbsp;</span><br></li><li><span style=\"font-family: var(--font-notes,inherit); font-size: 0.92rem;\">في الأنبياء قصة نوح فقط (فنجيناه) سبقها (فاستجبنا له) سرعة الإستجابة من الله عز وجل وباقي صورة الأنبياء (ونجيناه)</span></li></ul></div><div><br></div>",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 27,
