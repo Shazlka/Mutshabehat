@@ -147,7 +147,8 @@ const DATA = [
     ],
     "note": "<b>الاعراف/العنكبوت</b>: الرجفة + دارهم <div><b>هود</b>: الصيحة + ديارهم</div><div><span><b>العنكبوت</b>: زيادة فكذبوه </span></div><div><span><b>هود٩٤</b>: تأنيث أخذتِ</span></div>",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 2,
