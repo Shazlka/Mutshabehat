@@ -191,7 +191,8 @@ const DATA = [
     ],
     "note": "ملاحظة النمل: نفي الهداية — العنكبوت: ضلوا رغم بصيرتهم",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 3,
@@ -235,7 +236,8 @@ const DATA = [
     ],
     "note": "ملاحظة العنكبوت: خاص بالعلماء — الحشر: رجاء عام",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 4,
@@ -315,7 +317,8 @@ const DATA = [
     ],
     "note": "العنكبوت: الأساس — الروم: وما بينهما — الجاثية: زيادة الواو",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 5,
@@ -393,7 +396,8 @@ const DATA = [
     ],
     "note": "هود: ولقد في ابراهيم /  ولما في لوط\nالعنكبوت: ولما في كليهما",
     "unote": "هود ٦٩ : الوحيدة (ولقد) وباقي القرآن (ولما)\nالعنكبوت ٣٣: الوحيدة بزيادة (أن) وباقي القرآن (ولما جاءت)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 6,
@@ -540,7 +544,8 @@ const DATA = [
     ],
     "note": "ملاحظة الاعراف/العنكبوت٣٢: كانت — الحجر: قدرنا — النمل: قدرناها — الشعراء/الصافات: عجوزاً",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 7,
@@ -616,7 +621,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن العنكبوت ٣٣: الوحيدة بالواو",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 8,
@@ -708,7 +714,8 @@ const DATA = [
     ],
     "note": "البقرة: أنزلنا+يفسقون — الاعراف: أرسلنا+يظلمون — العنكبوت: منزلون",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 9,
@@ -740,12 +747,13 @@ const DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن العنكبوت ٣٥: الوحيدة بصيغة (تركنا منها)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 10,
     "title": "وَإِلَى مَدْيَنَ أَخَاهُمْ شُعَيْبًا — قال / فقال",
-    "color": "#3A5E1A",
+    "color": "#4a1a2a",
     "surahs": [
       "الاعراف",
       "هود",
@@ -816,7 +824,9 @@ const DATA = [
     ],
     "note": "",
     "unote": "العنكبوت ٣٦: الوحيدة بالفاء + وارجوا اليوم الاخر",
-    "completed": true
+    "completed": true,
+    "headerColor": "#4a1a2a",
+    "locked": true
   },
   {
     "id": 11,
