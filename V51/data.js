@@ -2442,7 +2442,8 @@ const DATA = [
     ],
     "note": "ألم يروا : ٥ مواضع وباقي القرآن (ألوم يروا)<div>وردت في النحل مرتين : الأولي ٤٨ (أولم يروا) والثاني ٧٩ (ألم يروا)</div><div>وردت في يس مرتين : الأولي ٣١ (ألم يروا) والثانية ٧١ (أولم يروا)</div><div>أفلم يروا : الوحيدة في سبأ بالفاء</div><div>لا يوجد ألم يسيروا ، موضعان فقط أولم يسيروا</div>",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 31,
@@ -2570,7 +2571,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "العنكبوت ٢١: الوحيدة بـ (يرحم)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 32,
@@ -2602,7 +2604,8 @@ const DATA = [
     ],
     "note": "<br>",
     "unote": "<span style=\"font-size: 14.72px;\">الانعام: الوحيدة بـ ثم انظروا — باقي القرآن : فانظروا</span>",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 33,
@@ -2674,7 +2677,8 @@ const DATA = [
     ],
     "note": "الانعام: بدون زيادة (نموت ونحيا)<div>الجاثية: ما هي + الدهر</div>",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 34,
@@ -2786,7 +2790,8 @@ const DATA = [
     ],
     "note": "البقرة/ال عمران: ثم توفي + ما كسبت&nbsp;<div><br></div>",
     "unote": "<span style=\"font-size: 14.72px;\">النحل : وتوفى + ما عملت</span><div><span style=\"font-size: 14.72px;\">الزمل : ووفيت + ما عملت</span></div>",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 35,
@@ -2883,7 +2888,8 @@ const DATA = [
     "note": "(مخمصة) في المائدة والباقي غير (باغ ولا عاد)",
     "unote": "الانعام ١٤٥: الوحيدة بـ (فإن ربك)",
     "completed": true,
-    "headerColor": "#5e2a1a"
+    "headerColor": "#5e2a1a",
+    "locked": true
   },
   {
     "id": 36,
@@ -3072,7 +3078,8 @@ const DATA = [
     "note": "هود: ظلموا أنفسهم — الزخرف: هم الظالمين — الباقي: كانوا أنفسهم يظلمون",
     "unote": "آل عمران منفردة : بدون (كانوا) وباقي القرآن (ولكن كانوا أنفسهم يظلمون)",
     "headerColor": "#5e2a1a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 37,
@@ -3116,7 +3123,8 @@ const DATA = [
     ],
     "note": "الانبياء: الأخسرين — الصافات: الأسفلين",
     "unote": "فاء الصافات مع فاء الأسفلين",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 38,
@@ -3177,7 +3185,8 @@ const DATA = [
     "note": "الانبياء: من عندنا + للعابدين — ص: منّا + لأولي الألباب<div><ul><li>عدد حروف الأنبياء اكثر من ص لذا في الأنبياء كلمتين \"من عندنا\" و ص كلمة \"منا\"</li><li>الأنبياء عايدين</li></ul></div>",
     "unote": "",
     "completed": true,
-    "headerColor": "#5e2a1a"
+    "headerColor": "#5e2a1a",
+    "locked": true
   },
   {
     "id": 39,
@@ -3282,7 +3291,8 @@ const DATA = [
     "note": "طه: لعلي + هدى — النمل: سآتيكم + شهاب — القصص: لعلي + جذوة",
     "unote": "",
     "headerColor": "#5e2a1a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 40,
@@ -3366,7 +3376,8 @@ const DATA = [
     ],
     "note": "العنكبوت: حسناً — لقمان: حملته وهناً — الاحقاف: إحساناً + ثلاثون شهراً",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 41,
@@ -3447,7 +3458,8 @@ const DATA = [
     "note": "الاعراف: أن أَلقِ<div>القصص: وأن ألقِ — النمل: المرسلون — القصص: الآمنين</div>",
     "unote": "",
     "headerColor": "#5e2a1a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 42,
@@ -3492,7 +3504,8 @@ const DATA = [
     "note": "المائدة: النصارى — النحل: مثل القرية الكافرة",
     "unote": "",
     "headerColor": "#5e2a1a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 43,
@@ -3585,7 +3598,8 @@ const DATA = [
     "note": "النحل بزيادة (من بعد ذلك)",
     "unote": "الأعراف منفردة (تابوا وآمنوا) وباقي القرآن (تآبوا واصلحوا)",
     "headerColor": "#5e2a1a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 44,
@@ -3653,7 +3667,8 @@ const DATA = [
     "note": "القصص ٣٧: وقال موسى + بمن — القصص ٨٥: قل + من + ضلال مبين",
     "unote": "",
     "headerColor": "#5e2a1a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 45,
@@ -3742,7 +3757,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "الاحزاب ٣٦: الوحيدة بـ (ضلالاً مبيناً) — النساء ٤ مواضع: بعيداً",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 46,
@@ -3825,7 +3841,8 @@ const DATA = [
     "note": "آل عمران: إن كنتم تعقلون — الحديد: لعلكم تعقلون — كلاهما ينتهي بـ (تعقلون)",
     "unote": "",
     "headerColor": "#1a5e5e",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 48,
@@ -3870,7 +3887,8 @@ const DATA = [
     "note": "",
     "unote": "يوسف وإبراهيم فقط: (المتوكلون) — باقي القرآن: (المؤمنون)",
     "headerColor": "#1a5e5e",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 49,
