@@ -3162,3 +3162,168 @@ function gbGroupCard(g){
   wrapToggleForIpad();
   window.addEventListener('DOMContentLoaded',function(){setTimeout(wrapToggleForIpad,1000);});
 })();
+
+
+/* =========================================================
+ V62 SAFE CATEGORY SAVE + FAST SYNC FIX
+ Fixes V61 page-freeze by removing continuous MutationObserver rewrites.
+========================================================= */
+(function(){
+  if(window.__V62_SAFE_CATEGORY_SAVE__) return;
+  window.__V62_SAFE_CATEGORY_SAVE__=true;
+
+  const VALID_TYPES=['normal','shared','diff','diff2','addition','unique'];
+  function normType(t){
+    t=(t===undefined||t===null?'normal':String(t)).trim().toLowerCase();
+    if(t==='different') t='diff';
+    if(t==='diff-2'||t==='diff_2'||t==='purple') t='diff2';
+    return VALID_TYPES.includes(t)?t:'normal';
+  }
+  function esc(v){
+    if(typeof escapeHtml==='function') return escapeHtml(v);
+    return String(v===undefined||v===null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function optionsHTML(selected){
+    selected=normType(selected);
+    return VALID_TYPES.map(t=>'<option value="'+t+'" '+(selected===t?'selected':'')+'>'+t+'</option>').join('');
+  }
+  function ensureOneSelect(sel){
+    if(!sel) return;
+    const cur=normType(sel.value || sel.getAttribute('data-saved-type') || 'normal');
+    // Only rebuild if diff2 is missing. Do NOT rebuild continuously.
+    if(!sel.querySelector('option[value="diff2"]') || !sel.querySelector('option[value="unique"]')){
+      sel.innerHTML=optionsHTML(cur);
+    }
+    sel.value=cur;
+    sel.setAttribute('data-saved-type',cur);
+  }
+  function ensureCategoryOptions(root){
+    (root||document).querySelectorAll('select.edit-part-type,#newType').forEach(ensureOneSelect);
+  }
+  window.v62EnsureCategoryOptions=ensureCategoryOptions;
+
+  // Safe edit part renderer with all categories
+  function v62RenderEditPart(p,vi,pi){
+    const type=normType(p&&p.type);
+    const text=(p&&p.text!==undefined)?p.text:'';
+    return `<div class="edit-part-row" data-part-index="${pi}">
+      <select class="edit-part-type" data-saved-type="${type}">${optionsHTML(type)}</select>
+      <textarea class="edit-part-text" placeholder="اكتب جزء الآية هنا...">${esc(text)}</textarea>
+      <div class="part-action-bar">
+        <button class="move-part-btn" type="button" onclick="moveEditPartUp(${vi},${pi})">↑ أعلى</button>
+        <button class="move-part-btn" type="button" onclick="moveEditPartDown(${vi},${pi})">↓ أسفل</button>
+        <button class="insert-part-btn" type="button" onclick="insertEditPartAbove(${vi},${pi})">+ فوق</button>
+        <button class="insert-part-btn" type="button" onclick="insertEditPartBelow(${vi},${pi})">+ تحت</button>
+        <button class="remove-small" type="button" onclick="removeEditPart(${vi},${pi})">حذف</button>
+      </div>
+    </div>`;
+  }
+  window.renderEditPart=v62RenderEditPart;
+  try{ renderEditPart=v62RenderEditPart; }catch(e){}
+
+  function v62CollectEditVersesFromDOM(){
+    const cards=document.querySelectorAll('#editVersesBox .edit-verse-card');
+    const verses=[];
+    cards.forEach(card=>{
+      const surah=(card.querySelector('.edit-surah')?.value||'').trim();
+      const ayah=(card.querySelector('.edit-ayah')?.value||'').trim();
+      const label=(card.querySelector('.edit-label')?.value||'').trim();
+      const parts=[];
+      card.querySelectorAll('.edit-part-row').forEach(row=>{
+        const type=normType(row.querySelector('.edit-part-type')?.value||'normal');
+        const text=row.querySelector('.edit-part-text')?.value||'';
+        if(String(text).trim()) parts.push({type,text});
+      });
+      if(surah && ayah && parts.length) verses.push({surah,ayah,label,parts});
+    });
+    return verses;
+  }
+  window.collectEditVersesFromDOM=v62CollectEditVersesFromDOM;
+  try{ collectEditVersesFromDOM=v62CollectEditVersesFromDOM; }catch(e){}
+
+  function v62SaveEditGroup(){
+    if(editGroupIndex===null || editGroupIndex<0){ alert('لا توجد مجموعة مفتوحة للتعديل'); return; }
+    ensureCategoryOptions(document);
+    const title=(document.getElementById('editTitle')?.value||'').trim();
+    const note=(typeof sanitizeRichText==='function'?sanitizeRichText(document.getElementById('editNoteEditor')?.innerHTML||''):(document.getElementById('editNoteEditor')?.innerHTML||'')).trim();
+    const unote=(typeof sanitizeRichText==='function'?sanitizeRichText(document.getElementById('editUnoteEditor')?.innerHTML||''):(document.getElementById('editUnoteEditor')?.innerHTML||'')).trim();
+    const verses=v62CollectEditVersesFromDOM();
+    if(!title){ alert('عنوان المتشابه لا يمكن أن يكون فارغًا'); return; }
+    if(!verses.length){ alert('يجب وجود آية واحدة على الأقل'); return; }
+    const oldGroup=DATA[editGroupIndex]||{};
+    DATA[editGroupIndex]={...oldGroup,title,surahs:[...new Set(verses.map(v=>v.surah).filter(Boolean))],verses,note,unote};
+    if(typeof closeEditModal==='function') closeEditModal();
+    if(typeof masterSave==='function') masterSave();
+    if(typeof buildSurahFilterBar==='function') buildSurahFilterBar();
+    if(typeof applyAllFilters==='function') applyAllFilters(); else if(typeof render==='function') render(DATA);
+  }
+  window.saveEditGroup=v62SaveEditGroup;
+  try{ saveEditGroup=v62SaveEditGroup; }catch(e){}
+
+  // Fast non-blocking save/sync. No page-load heavy processing.
+  let syncRunning=false, syncPending=false, syncTimer=null;
+  function compactDataJS(){return 'const DATA='+JSON.stringify(DATA)+';';}
+  async function v62SyncToGitHub(){
+    const s=(typeof loadGHSettings==='function')?loadGHSettings():{};
+    if(!s.token||!s.owner||!s.repo){ if(typeof updateGHBadge==='function') updateGHBadge('none'); return false; }
+    if(syncRunning){syncPending=true; return false;}
+    syncRunning=true; syncPending=false;
+    try{
+      if(typeof updateGHBadge==='function') updateGHBadge('syncing');
+      const content=compactDataJS();
+      const encoded=btoa(unescape(encodeURIComponent(content)));
+      const url='https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/'+(s.path||'data.js');
+      const headers={Authorization:'token '+s.token,Accept:'application/vnd.github+json','Content-Type':'application/json'};
+      let sha=null;
+      const getRes=await fetch(url+'?ref='+(s.branch||'main')+'&t='+Date.now(),{headers,cache:'no-store'});
+      if(getRes.ok){sha=(await getRes.json()).sha;}
+      const body={message:'fast data.js sync — '+new Date().toISOString(),content:encoded,branch:s.branch||'main'};
+      if(sha) body.sha=sha;
+      const putRes=await fetch(url,{method:'PUT',headers,body:JSON.stringify(body)});
+      if(putRes.ok){ if(typeof updateGHBadge==='function') updateGHBadge('ok'); return true; }
+      let msg=putRes.status;
+      try{msg=(await putRes.json()).message||msg;}catch(e){}
+      if(typeof updateGHBadge==='function') updateGHBadge('error',msg);
+      return false;
+    }catch(e){
+      if(typeof updateGHBadge==='function') updateGHBadge('error','Network error');
+      return false;
+    }finally{
+      syncRunning=false;
+      if(syncPending){syncPending=false; setTimeout(v62SyncToGitHub,250);}
+    }
+  }
+  function scheduleSync(){clearTimeout(syncTimer); syncTimer=setTimeout(v62SyncToGitHub,700);}
+  async function v62MasterSave(){
+    try{localStorage.setItem(LS_KEY,JSON.stringify(DATA)); if(typeof updateStorageStatus==='function') updateStorageStatus('saved');}catch(e){console.warn('local save failed',e);}
+    if(typeof fileHandle!=='undefined' && fileHandle && typeof writeToLinkedFile==='function') writeToLinkedFile().catch(()=>{});
+    scheduleSync();
+  }
+  window.syncToGitHub=v62SyncToGitHub;
+  window.masterSave=v62MasterSave;
+  try{ syncToGitHub=v62SyncToGitHub; }catch(e){}
+  try{ masterSave=v62MasterSave; }catch(e){}
+
+  // Compact export data.js
+  const oldDownload=window.downloadDataJS;
+  if(typeof oldDownload==='function' && !oldDownload.__v62Wrapped){
+    const wrapped=function(){
+      try{
+        const blob=new Blob([compactDataJS()],{type:'application/javascript;charset=utf-8'});
+        const a=document.createElement('a');
+        a.href=URL.createObjectURL(blob); a.download='data.js';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+      }catch(e){return oldDownload.apply(this,arguments);}
+    };
+    wrapped.__v62Wrapped=true; window.downloadDataJS=wrapped; try{downloadDataJS=wrapped;}catch(e){}
+  }
+
+  document.addEventListener('change',e=>{
+    if(e.target && e.target.matches('select.edit-part-type,#newType')) e.target.setAttribute('data-saved-type',normType(e.target.value));
+  },true);
+
+  // Run once only on load. No observer loop.
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>ensureCategoryOptions(document));
+  else ensureCategoryOptions(document);
+})();

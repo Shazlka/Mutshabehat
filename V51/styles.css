@@ -1995,3 +1995,9 @@ body.dark .modal-card{
   .modal-backdrop{padding:8px!important;align-items:center!important;}
   .modal,.modal-card{max-height:92vh!important;border-radius:18px!important;}
 }
+
+
+/* V62 page freeze fix: category selector colors without runtime DOM loops */
+.edit-part-type option[value="diff"]{background:#FFF8B3;color:#6B4E00;font-weight:900;}
+.edit-part-type option[value="diff2"]{background:rgba(124,58,237,.16);color:#7C3AED;font-weight:900;}
+.edit-part-type option[value="unique"]{background:rgba(230,0,0,.10);color:#E60000;font-weight:900;}

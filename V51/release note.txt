@@ -712,3 +712,10 @@ These are referenced by `index.html` and must remain in the same folder when run
 - Added iPad portrait responsive behavior to match iPhone arrangement: hamburger menu, compact header, hidden desktop tabs/actions, and mobile-style group behavior.
 - Dashboard modal now closes when clicking anywhere outside the dashboard window.
 - Replaced the existing app logo with a new Arabic QAF letter logo.
+
+
+#### Release Note — V62
+- Fixed page freeze / "This page isn't responding" caused by the previous category-save observer loop.
+- Removed continuous MutationObserver rewriting of category dropdowns.
+- Kept the category saving fix for normal, shared, diff, diff2, addition, and unique.
+- Kept faster save and queued GitHub sync, but implemented safely without heavy page-load processing.
