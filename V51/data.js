@@ -10856,7 +10856,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "الأنفال الوحيدة (يقيمون الصلاة) بدون (يؤتون الزكاة)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 128,
@@ -11388,7 +11389,7 @@ const DATA = [
             "text": "أَشَدَّ مِنۡهُمۡ قُوَّةٗ "
           },
           {
-            "type": "normal",
+            "type": "diff2",
             "text": "وَأَثَارُواْ ٱلۡأَرۡضَ "
           },
           {
@@ -11446,7 +11447,7 @@ const DATA = [
             "text": "أَشَدَّ مِنۡهُمۡ قُوَّةٗ "
           },
           {
-            "type": "normal",
+            "type": "diff2",
             "text": "وَءَاثَارٗا فِي ٱلۡأَرۡضِ "
           },
           {
@@ -11459,6 +11460,8 @@ const DATA = [
     "note": "",
     "unote": "",
     "color": "#4a1a2a",
-    "headerColor": "#4a1a2a"
+    "headerColor": "#4a1a2a",
+    "completed": true,
+    "locked": true
   }
 ];
