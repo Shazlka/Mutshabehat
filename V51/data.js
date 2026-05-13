@@ -5348,7 +5348,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن آل عمران: زيادة (وَلَا يَنظُرُ إِلَيْهِمْ) — البقرة: بدون ولا ينظر — كلاهما تنتهي بـ ولهم عذاب أليم",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 69,
@@ -5386,7 +5387,8 @@ const DATA = [
     "note": "",
     "unote": "الانفال ٣٩: الوحيدة في القرآن بالياء (يعملون) — باقي المواضع بالتاء (تعملون)",
     "headerColor": "#982abc",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 71,
@@ -5431,7 +5433,8 @@ const DATA = [
     "note": "",
     "unote": "الانفال ٢٩: ذو الفضل العظيم — التغابن ١٧: شكور حليم — كلاهما خارج عن المعتاد (غفور رحيم)",
     "headerColor": "#5e1a1a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 72,
@@ -5526,7 +5529,8 @@ const DATA = [
     "note": "",
     "unote": "المائدة: الوحيدة بـ (ما يعملون) بدون كانوا — التوبة/المجادلة/المنافقون: ما كانوا يعملون",
     "headerColor": "#982abc",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 75,
@@ -5555,7 +5559,8 @@ const DATA = [
     "note": "الإسراء وحيدة في القرآن وباقي القران (وكفي بالله وكيلا)",
     "unote": "الاسراء: الوحيدة بـ (بربك) — النساء ٣+الاحزاب ٢: بالله وكيلاً",
     "headerColor": "#982abc",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 76,
@@ -5640,7 +5645,8 @@ const DATA = [
     "note": "باقي القرآن: لولا أُنزل — الأربعة بالتضعيف (نُزِّل) — محمد: الوحيدة بالتاء (نُزِّلَت)",
     "unote": "",
     "headerColor": "#4a1a2a",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 77,
@@ -5699,7 +5705,8 @@ const DATA = [
     ],
     "note": "ملاحظة البقرة: النبيين + الحق (معرّفة) — آل عمران الأولى: النبيين + حق (نكرة) — آل عمران الثانية: الأنبياء + حق",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 78,
@@ -5866,7 +5873,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن المائدة والاعراف فقط: (رسلنا) — باقي القرآن: (رسلهم)",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 79,
@@ -5950,7 +5958,8 @@ const DATA = [
     "note": "<br>",
     "unote": "",
     "headerColor": "#982abc",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 80,
@@ -6132,7 +6141,8 @@ const DATA = [
     ],
     "note": "ملاحظة ٣ مواضع في النساء — لا يوجد في النساء (تعملون بصيرا) — كلها خبيراً",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 85,
@@ -6190,7 +6200,8 @@ const DATA = [
     ],
     "note": "ملاحظة الأولى والثالثة: عليم حكيم — الثانية وسطهما: غفور رحيم",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 86,
@@ -6241,7 +6252,8 @@ const DATA = [
     ],
     "note": "ملاحظة آيتان متتاليتان — ضابط: الباء قبل العين (بكل شيء عليماً) تأتي قبل (على كل شيء شهيداً)",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 87,
@@ -6269,7 +6281,8 @@ const DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن النساء ٤٧: الوحيدة في القرآن بنداء (يا أيها الذين أوتوا الكتاب) مباشرةً بدون وصف إضافي",
-    "completed": true
+    "completed": true,
+    "locked": true
   },
   {
     "id": 88,
