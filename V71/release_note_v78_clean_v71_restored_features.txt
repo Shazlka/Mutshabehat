@@ -1,0 +1,23 @@
+Release Note — V78 Clean V71 + Restored Features
+
+Base:
+- Clean V71 UTF-8 Arabic base. No corrupted V74/V75/V76 override chain is used.
+
+Restored features:
+- Canvas-based HD PNG photo export with color coding and notes.
+- Reliable copy group text with notes and clipboard fallback.
+- Modal background scroll lock.
+- Swipe-down close on mobile from modal header/top area.
+- GitHub connection status panel in Settings with HTTPS/repo/token/live test indicators.
+- Database updating/ready status for GitHub sync action.
+- Mobile group detail modal.
+- Completed toggle by clicking group number.
+- diff3 color type.
+- Status text beside group title removed; favorite/completed/lock are icon/color only.
+- Professional outline SVG icons for camera/copy/favorite/lock/edit/compare.
+
+Preserved from V71:
+- Surah/Ayah dependent dropdowns.
+- Settings font preview.
+- Personal and automated databases.
+- Smart Quran search.
