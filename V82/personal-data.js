@@ -16840,7 +16840,8 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "يخرج الحي من",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   },
   {
     "id": 209,
@@ -16887,6 +16888,7 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "ومن ايته خلق",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   }
 ];
