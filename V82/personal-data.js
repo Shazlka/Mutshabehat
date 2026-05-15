@@ -16713,11 +16713,12 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "يشا ان في",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   },
   {
     "id": 208,
-    "title": "عائلة عبارات متقاربة: يخرج الحي من",
+    "title": "يُخۡرِجُ ٱلۡحَيَّ مِنَ ٱلۡمَيِّتِ وَيُخۡرِجُ ٱلۡمَيِّتَ مِنَ ٱلۡحَيِّ",
     "surahs": [
       "الأنعام",
       "يونس",
@@ -16791,7 +16792,7 @@ window.PERSONAL_DATA = [
       }
     ],
     "note": "",
-    "unote": "<span style=\"font-weight: normal;\">الأنعام الوحيدة </span><font color=\"#e22400\">(وَمُخۡرِجُ ٱلۡمَيِّتِ مِنَ <span style=\"font-weight: normal;\">ٱلۡحَيِّۚ )</span></font><div><font color=\"#000000\"><span style=\"font-weight: normal;\">أما يونس والروم </span>(<span style=\"font-family: var(--uifont);\">وَيُخۡرِجُ ٱلۡمَيِّتَ مِنَ ٱلۡحَيِّ )</span></font></div>",
+    "unote": "",
     "autoCandidate": false,
     "candidateKind": "phrase-family",
     "candidateScore": 82,
