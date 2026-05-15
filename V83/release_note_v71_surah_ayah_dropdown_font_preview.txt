@@ -1,0 +1,19 @@
+Release Note — V71 Surah/Ayah Dropdowns + Font Preview
+
+Implemented:
+- In the modification window, Surah is now a dropdown list.
+- Ayah number is now a dropdown list dependent on the selected Surah.
+- Changing the Surah automatically refreshes the Ayah dropdown based on quran-reference.js.
+- Settings > Font now includes a live preview area before saving.
+- Font preview explains when the real QPC V2 font file is missing and fallback font is being used.
+
+Font folder note:
+- No action is required if you accept the fallback Quran font.
+- To use real Mushaf QPC V2 display, place qpc-v2.woff2 or qpc-v2.ttf inside /fonts.
+- Keep the exact filename as referenced by CSS.
+
+Preserved:
+- Personal and Automated database separation.
+- Smart Quran search.
+- Theme modal styling.
+- Existing add/edit/compare/filter workflows.
