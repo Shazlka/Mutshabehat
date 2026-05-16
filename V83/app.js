@@ -337,7 +337,27 @@ function updateToggleAllButton(){ var b=document.getElementById('toggleAllBtn'),
 function findActive(id){ return activeData.find(function(g){ return Number(g.id) === Number(id); }); }
 function toggleFlag(id, f){ var g=findActive(id); if(!g)return; g[f]=!isTrue(g[f]); saveDb(activeDb); renderActiveGroups(); updateHomeCounts(); }
 function nextPersonalId(){ return Math.max.apply(null,[0].concat(personalData.map(function(g){return Number(g.id)||0;}))+1); }
-function copyAutoGroupToPersonal(id){ var g=automatedData.find(function(x){return Number(x.id)===Number(id);}); if(!g)return; var c=clone([g])[0]; c.id=nextPersonalId(); c.autoCandidate=false; c.source='automated'; personalData.push(c); saveDb('personal'); alert('تم النسخ إلى الشخصية'); updateHomeCounts(); }
+function copyAutomatedGroupObjectToPersonal(g, stayHere){
+  if(!g){ toast('لم يتم العثور على المجموعة الآلية','err'); return null; }
+  var c=clone([g])[0];
+  c.id=nextPersonalId();
+  c.autoCandidate=false;
+  c.source='automated';
+  personalData.push(c);
+  invalidateGroupNormCache();
+  saveDb('personal');
+  updateHomeCounts();
+  toast('تم النسخ إلى الشخصية','ok');
+  if(!stayHere){
+    openDatabase('personal');
+    setTimeout(function(){
+      var el=document.querySelector('.group[data-id="'+c.id+'"]');
+      if(el){ el.classList.add('open'); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+    },250);
+  }
+  return c;
+}
+function copyAutoGroupToPersonal(id){ copyAutomatedGroupObjectToPersonal(automatedData.find(function(x){return Number(x.id)===Number(id);}), false); }
 
 /* ── BUG-2 FIX: deleteAutoGroup — blocklist approach ───── */
 function deleteAutoGroup(id){
@@ -506,8 +526,15 @@ function deleteEditGroup(){ if(confirm('حذف المجموعة؟')){personalDat
 function openMergeWindow(){ modal('mergeWindow','دمج / نقل من الآلية إلى الشخصية','<div class="tools"><input id="mergeSearch" placeholder="ابحث في الآلية..." oninput="renderMergeList()"><button onclick="selectAllMerge(true)">تحديد المعروض</button><button onclick="selectAllMerge(false)">إلغاء التحديد</button><button class="primary" onclick="copySelectedToPersonal()">نقل المحدد</button></div><div id="mergeList"></div>','<button onclick="closeModal(\'mergeWindow\')">إغلاق</button>');renderMergeList(); }
 function renderMergeList(){ var q=normalize((document.getElementById('mergeSearch')||{}).value||'');var list=automatedData.filter(function(g){return!q||normalize(groupText(g)).includes(q);});document.getElementById('mergeList').innerHTML=list.map(function(g){return'<label class="merge-item"><input type="checkbox" class="merge-check" value="'+automatedData.indexOf(g)+'"><div><b>'+escapeHtml(g.title)+'</b><br><small>'+getTags(g).join('، ')+' — '+(g.verses||[]).length+' آيات</small></div><button onclick="copyOneToPersonal('+automatedData.indexOf(g)+')">نسخ</button></label>';}).join('')||'<div class="hint">لا توجد نتائج</div>'; }
 function selectAllMerge(s){ document.querySelectorAll('.merge-check').forEach(function(x){x.checked=s;}); }
-function copyOneToPersonal(i){ var g=clone([automatedData[i]])[0];g.id=nextPersonalId();g.autoCandidate=false;g.source='automated';personalData.push(g);saveDb('personal');updateHomeCounts();alert('تم النسخ'); }
-function copySelectedToPersonal(){ var ids=[...document.querySelectorAll('.merge-check:checked')].map(function(x){return+x.value;});ids.forEach(copyOneToPersonal); }
+function copyOneToPersonal(i){ copyAutomatedGroupObjectToPersonal(automatedData[i], true);renderMergeList(); }
+function copySelectedToPersonal(){
+  var ids=[...document.querySelectorAll('.merge-check:checked')].map(function(x){return+x.value;});
+  if(!ids.length){ toast('اختر مجموعة واحدة على الأقل','err'); return; }
+  ids.forEach(function(i){ copyAutomatedGroupObjectToPersonal(automatedData[i], true); });
+  updateHomeCounts();
+  renderMergeList();
+  toast('تم نقل '+ids.length+' مجموعة إلى الشخصية','ok');
+}
 
 /* ── Settings ────────────────────────────────────────────── */
 /* BUG-4 FIX: empty defaults — no hardcoded Shazlka/Mutashabihat */
