@@ -311,10 +311,11 @@ function renderGroupBody(g){ return (g.verses || []).map(renderVerse).join('') +
 function renderCard(g){
   var fav=isTrue(g.favorite),done=isTrue(g.completed),locked=isTrue(g.locked),ro=isAutoDb();
   var actions = '<button class="icon-btn outline-icon star ' + (fav?'active':'') + '" title="مفضلة" onclick="event.stopPropagation();toggleFlag(' + g.id + ',\'favorite\')">' + iconSvg('star') + '</button>';
+  if (ro) actions += '<button onclick="event.stopPropagation();copyAutoGroupToPersonal(' + g.id + ')">نسخ للشخصية</button>';
   if (editMode){
     actions += '<button class="icon-btn outline-icon lock ' + (locked?'active':'') + '" title="قفل" onclick="event.stopPropagation();toggleFlag(' + g.id + ',\'locked\')">' + iconSvg('lock') + '</button>'
       + '<button class="icon-btn outline-icon" title="مقارنة" onclick="event.stopPropagation();openCompareModal(' + g.id + ')">' + iconSvg('compare') + '</button>'
-      + (ro ? '<button onclick="event.stopPropagation();copyAutoGroupToPersonal(' + g.id + ')">نسخ للشخصية</button><button class="danger" onclick="event.stopPropagation();deleteAutoGroup(' + g.id + ')">حذف من الآلية</button>'
+      + (ro ? '<button class="danger" onclick="event.stopPropagation();deleteAutoGroup(' + g.id + ')">حذف من الآلية</button>'
             : '<button class="icon-btn outline-icon" title="تعديل" onclick="event.stopPropagation();openEditModal(' + g.id + ')">' + iconSvg('edit') + '</button>');
   }
   var cls = (fav?' is-favorite':'') + (done?' is-completed':'') + (locked?' is-locked':'');
@@ -337,7 +338,7 @@ function updateToggleAllButton(){ var b=document.getElementById('toggleAllBtn'),
 function findActive(id){ return activeData.find(function(g){ return Number(g.id) === Number(id); }); }
 function toggleFlag(id, f){ var g=findActive(id); if(!g)return; g[f]=!isTrue(g[f]); saveDb(activeDb); renderActiveGroups(); updateHomeCounts(); }
 function nextPersonalId(){ return Math.max.apply(null,[0].concat(personalData.map(function(g){return Number(g.id)||0;}))+1); }
-function copyAutomatedGroupObjectToPersonal(g, stayHere){
+function copyAutomatedGroupObjectToPersonal(g, stayHere, showPopup){
   if(!g){ toast('لم يتم العثور على المجموعة الآلية','err'); return null; }
   var c=clone([g])[0];
   c.id=nextPersonalId();
@@ -348,6 +349,7 @@ function copyAutomatedGroupObjectToPersonal(g, stayHere){
   saveDb('personal');
   updateHomeCounts();
   toast('تم النسخ إلى الشخصية','ok');
+  if(showPopup) alert('تم النسخ إلى قاعدة المتشابهات الشخصية');
   if(!stayHere){
     openDatabase('personal');
     setTimeout(function(){
@@ -357,7 +359,12 @@ function copyAutomatedGroupObjectToPersonal(g, stayHere){
   }
   return c;
 }
-function copyAutoGroupToPersonal(id){ copyAutomatedGroupObjectToPersonal(automatedData.find(function(x){return Number(x.id)===Number(id);}), false); }
+function copyAutoGroupToPersonal(id){
+  var g=automatedData.find(function(x){return Number(x.id)===Number(id);}) || activeData.find(function(x){return Number(x.id)===Number(id);});
+  if(!g){ alert('لم يتم العثور على المجموعة الآلية'); return; }
+  if(!confirm('نسخ هذه المجموعة إلى قاعدة المتشابهات الشخصية؟\n\n'+safeText(g.title||'بدون عنوان'))) return;
+  copyAutomatedGroupObjectToPersonal(g, false, true);
+}
 
 /* ── BUG-2 FIX: deleteAutoGroup — blocklist approach ───── */
 function deleteAutoGroup(id){
@@ -451,7 +458,7 @@ function iconSvg(name){ var c='width="18" height="18" viewBox="0 0 24 24" fill="
 function openMobileMenu(){ var items=[['الرئيسية','openHome()'],['الشخصية',"openDatabase('personal')"],['الآلية',"openDatabase('auto')"],['إضافة','openAddModal()'],['الإحصائيات','openDashboard()'],['الإعدادات','openAppSettings()'],['دمج','openMergeWindow()'],['Release Notes','openReleaseNotes()']]; var e=document.createElement('section');e.id='mobileMenu';e.className='modal-backdrop';e.innerHTML='<div class="mobile-menu-panel"><button onclick="closeModal(\'mobileMenu\')">× إغلاق</button>'+items.map(function(i){return '<button onclick="closeModal(\'mobileMenu\');'+i[1]+'">'+i[0]+'</button>';}).join('')+'</div>';document.getElementById('modalRoot').appendChild(e);lockBodyScroll();enableSwipeToClose(e,'mobileMenu'); }
 
 /* ── Group detail (mobile) ──────────────────────────────── */
-function openGroupDetailModal(id){ var g=findActive(id);if(!g)return;var autoDeleteBtn=(isAutoDb()&&editMode)?'<button class="danger" onclick="deleteAutoGroupFromModal('+g.id+',\'groupDetailModal\')">حذف من الآلية</button>':'';modal('groupDetailModal','تفاصيل المجموعة','<div class="group-detail-card"><div class="group-detail-head"><div class="group-num '+(isTrue(g.completed)?'completed':'')+'" onclick="toggleFlag('+g.id+',\'completed\');closeModal(\'groupDetailModal\');openGroupDetailModal('+g.id+')">'+escapeHtml(g.id)+'</div><div><div class="group-tags">'+getTags(g).map(function(s){return renderSurahTag(g,s);}).join('')+'</div><h2>'+escapeHtml(g.title||'بدون عنوان')+'</h2></div></div>'+renderGroupBody(g)+'</div>','<button onclick="copyGroupText('+g.id+')">'+iconSvg('copy')+' نسخ مع الملاحظات</button><button class="primary" onclick="downloadGroupImage('+g.id+')">'+iconSvg('camera')+' صورة HD</button>'+autoDeleteBtn+'<button onclick="closeModal(\'groupDetailModal\')">إغلاق</button>'); }
+function openGroupDetailModal(id){ var g=findActive(id);if(!g)return;var autoCopyBtn=isAutoDb()?'<button class="primary" onclick="copyAutoGroupToPersonal('+g.id+')">نسخ للشخصية</button>':'';var autoDeleteBtn=(isAutoDb()&&editMode)?'<button class="danger" onclick="deleteAutoGroupFromModal('+g.id+',\'groupDetailModal\')">حذف من الآلية</button>':'';modal('groupDetailModal','تفاصيل المجموعة','<div class="group-detail-card"><div class="group-detail-head"><div class="group-num '+(isTrue(g.completed)?'completed':'')+'" onclick="toggleFlag('+g.id+',\'completed\');closeModal(\'groupDetailModal\');openGroupDetailModal('+g.id+')">'+escapeHtml(g.id)+'</div><div><div class="group-tags">'+getTags(g).map(function(s){return renderSurahTag(g,s);}).join('')+'</div><h2>'+escapeHtml(g.title||'بدون عنوان')+'</h2></div></div>'+renderGroupBody(g)+'</div>','<button onclick="copyGroupText('+g.id+')">'+iconSvg('copy')+' نسخ مع الملاحظات</button>'+autoCopyBtn+'<button class="primary" onclick="downloadGroupImage('+g.id+')">'+iconSvg('camera')+' صورة HD</button>'+autoDeleteBtn+'<button onclick="closeModal(\'groupDetailModal\')">إغلاق</button>'); }
 
 /* ── Compare, Dashboard, Advanced Search ─────────────────── */
 function openCompareModal(id){ var g=findActive(id);if(!g)return;modal('compareModal','المقارنة البصرية — '+escapeHtml(g.title),'<div>'+(g.verses||[]).map(function(v){return '<div class="compare-card"><b>'+escapeHtml(v.surah)+' آية '+escapeHtml(v.ayah)+' '+escapeHtml(v.label||'')+'</b><div class="compare-text">'+(v.parts||[]).map(function(p){return '<span class="'+(p.type==='normal'?'base':p.type==='shared'?'same':'cmpdiff')+'">'+escapeHtml(p.text)+'</span>';}).join(' ')+'</div></div>';}).join('')+'</div>','<button onclick="closeModal(\'compareModal\')">إغلاق</button>'); }
@@ -526,13 +533,15 @@ function deleteEditGroup(){ if(confirm('حذف المجموعة؟')){personalDat
 function openMergeWindow(){ modal('mergeWindow','دمج / نقل من الآلية إلى الشخصية','<div class="tools"><input id="mergeSearch" placeholder="ابحث في الآلية..." oninput="renderMergeList()"><button onclick="selectAllMerge(true)">تحديد المعروض</button><button onclick="selectAllMerge(false)">إلغاء التحديد</button><button class="primary" onclick="copySelectedToPersonal()">نقل المحدد</button></div><div id="mergeList"></div>','<button onclick="closeModal(\'mergeWindow\')">إغلاق</button>');renderMergeList(); }
 function renderMergeList(){ var q=normalize((document.getElementById('mergeSearch')||{}).value||'');var list=automatedData.filter(function(g){return!q||normalize(groupText(g)).includes(q);});document.getElementById('mergeList').innerHTML=list.map(function(g){return'<label class="merge-item"><input type="checkbox" class="merge-check" value="'+automatedData.indexOf(g)+'"><div><b>'+escapeHtml(g.title)+'</b><br><small>'+getTags(g).join('، ')+' — '+(g.verses||[]).length+' آيات</small></div><button onclick="copyOneToPersonal('+automatedData.indexOf(g)+')">نسخ</button></label>';}).join('')||'<div class="hint">لا توجد نتائج</div>'; }
 function selectAllMerge(s){ document.querySelectorAll('.merge-check').forEach(function(x){x.checked=s;}); }
-function copyOneToPersonal(i){ copyAutomatedGroupObjectToPersonal(automatedData[i], true);renderMergeList(); }
+function copyOneToPersonal(i){ var g=automatedData[i];if(!g)return alert('لم يتم العثور على المجموعة الآلية');if(!confirm('نسخ هذه المجموعة إلى الشخصية؟\n\n'+safeText(g.title||'بدون عنوان')))return;copyAutomatedGroupObjectToPersonal(g, true, true);renderMergeList(); }
 function copySelectedToPersonal(){
   var ids=[...document.querySelectorAll('.merge-check:checked')].map(function(x){return+x.value;});
   if(!ids.length){ toast('اختر مجموعة واحدة على الأقل','err'); return; }
-  ids.forEach(function(i){ copyAutomatedGroupObjectToPersonal(automatedData[i], true); });
+  if(!confirm('نسخ '+ids.length+' مجموعة إلى قاعدة المتشابهات الشخصية؟')) return;
+  ids.forEach(function(i){ copyAutomatedGroupObjectToPersonal(automatedData[i], true, false); });
   updateHomeCounts();
   renderMergeList();
+  alert('تم نسخ '+ids.length+' مجموعة إلى الشخصية');
   toast('تم نقل '+ids.length+' مجموعة إلى الشخصية','ok');
 }
 
