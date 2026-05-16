@@ -20,6 +20,12 @@ let displayMode   = localStorage.getItem('mutashabihat_v69_display_mode') || 'or
 let onlyWithResults = true, surahRange = 'all';
 let advancedFilters = {status:'all', kind:'', minScore:'', surah:''};
 
+/* ── Per-database independent state (filter + sort) ─────── */
+var _perDbState = {
+  personal: { filter: null, displayMode: localStorage.getItem('mutashabihat_v69_display_mode_personal') || 'original' },
+  auto:     { filter: null, displayMode: localStorage.getItem('mutashabihat_v69_display_mode_auto')     || 'original' }
+};
+
 /* ── PERF: module-level caches ──────────────────────────── */
 let _surahNamesCache     = null;
 let _surahNoMapCache     = null;
@@ -361,7 +367,17 @@ function exportActiveDatabase(){ if(!activeDb)return alert('افتح قاعدة 
 /* ── Navigation ─────────────────────────────────────────── */
 function openHome(skipSave){ document.getElementById('home').classList.remove('hidden'); document.getElementById('workspace').classList.add('hidden'); activeDb=null; if(!skipSave)try{localStorage.setItem(LAST_VIEW_KEY,'home');}catch(e){} updateHomeCounts(); }
 async function openDatabase(w, skipSave){
+  // Save departing database's filter and sort before switching
+  if (activeDb === 'personal' || activeDb === 'auto') {
+    _perDbState[activeDb].filter = selectedSurahFilter;
+    _perDbState[activeDb].displayMode = displayMode;
+  }
   activeDb=(w==='personal')?'personal':'auto'; activeData=activeDb==='personal'?personalData:automatedData;
+  // Restore arriving database's independent filter and sort
+  selectedSurahFilter = _perDbState[activeDb].filter;
+  displayMode = _perDbState[activeDb].displayMode;
+  var dm=document.getElementById('displayMode'); if(dm)dm.value=displayMode;
+  _lastSurahFilterState=null;
   if(!skipSave)try{localStorage.setItem(LAST_VIEW_KEY,activeDb);}catch(e){}
   document.getElementById('home').classList.add('hidden'); document.getElementById('workspace').classList.remove('hidden');
   document.getElementById('dbTitle').textContent=activeDb==='personal'?'المتشابهات الشخصية':'المتشابهات الآلية';
@@ -369,7 +385,7 @@ async function openDatabase(w, skipSave){
   if(activeDb==='auto'&&selectedSurahFilter)await loadAutomatedSurahNo(getSurahNo(selectedSurahFilter));
   renderActiveGroups(); buildSurahFilter(); if(typeof collapseSurahFilterPanel==='function')collapseSurahFilterPanel();
 }
-function setDisplayMode(v){ displayMode=v; localStorage.setItem('mutashabihat_v69_display_mode',v); renderActiveGroups(); }
+function setDisplayMode(v){ displayMode=v; var dbKey=activeDb==='personal'?'personal':'auto'; _perDbState[dbKey].displayMode=v; localStorage.setItem('mutashabihat_v69_display_mode_'+dbKey,v); renderActiveGroups(); }
 function clearSearch(){ document.getElementById('searchInput').value=''; renderActiveGroups(); }
 function updateHomeCounts(){ var p=document.getElementById('personalCountHome'),a=document.getElementById('autoCountHome'); if(p)p.textContent=personalData.length+' مجموعة'; if(a)a.textContent=(autoTotalCount()||automatedData.length)+' مجموعة'+(isAutoDb()?' (تحميل حسب السورة)':''); }
 function resetDualDbCacheV68(){ if(confirm('مسح الكاش وإعادة التحميل؟ (يشمل قائمة المحذوفات من الآلية)')){localStorage.removeItem(PERSONAL_KEY);localStorage.removeItem(AUTO_KEY);localStorage.removeItem(AUTO_DELETE_KEY);location.reload();} }
@@ -568,9 +584,8 @@ function init(){
   personalData = loadDb(PERSONAL_KEY, filePersonal());
   automatedData = applyAutoDeleteBlocklist(Array.isArray(window.AUTOMATED_DATA) ? window.AUTOMATED_DATA : []);
   updateHomeCounts();
-  var dm=document.getElementById('displayMode'); if(dm)dm.value=displayMode;
-  var savedSurah=null; try{savedSurah=localStorage.getItem(LAST_SURAH_KEY);}catch(e){}
-  if(savedSurah)selectedSurahFilter=savedSurah;
+  // Restore auto DB's last surah filter (personal filter always starts null per session)
+  try{ var savedSurah=localStorage.getItem(LAST_SURAH_KEY); if(savedSurah)_perDbState.auto.filter=savedSurah; }catch(e){}
   buildSurahFilter();
   if(typeof collapseSurahFilterPanel==='function')collapseSurahFilterPanel();
   var last='home'; try{last=localStorage.getItem(LAST_VIEW_KEY)||'home';}catch(e){}
