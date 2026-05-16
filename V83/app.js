@@ -338,6 +338,25 @@ function updateToggleAllButton(){ var b=document.getElementById('toggleAllBtn'),
 function findActive(id){ return activeData.find(function(g){ return Number(g.id) === Number(id); }); }
 function toggleFlag(id, f){ var g=findActive(id); if(!g)return; g[f]=!isTrue(g[f]); saveDb(activeDb); renderActiveGroups(); updateHomeCounts(); }
 function nextPersonalId(){ return Math.max.apply(null,[0].concat(personalData.map(function(g){return Number(g.id)||0;}))+1); }
+function showCopiedPersonalGroup(c){
+  try{ closeModal('groupDetailModal'); }catch(e){}
+  selectedSurahFilter=null;
+  try{ localStorage.removeItem(LAST_SURAH_KEY); }catch(e){}
+  advancedFilters={status:'all',kind:'',minScore:'',surah:''};
+  displayMode='newest';
+  try{ localStorage.setItem('mutashabihat_v69_display_mode',displayMode); }catch(e){}
+  var search=document.getElementById('searchInput'); if(search)search.value='';
+  var status=document.getElementById('statusFilter'); if(status)status.value='all';
+  var dm=document.getElementById('displayMode'); if(dm)dm.value=displayMode;
+  openDatabase('personal');
+  setTimeout(function(){
+    var dm2=document.getElementById('displayMode'); if(dm2)dm2.value=displayMode;
+    renderActiveGroups();
+    var el=document.querySelector('.group[data-id="'+c.id+'"]');
+    if(el){ el.classList.add('open'); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+    storage('تم عرض المجموعة المنسوخة في الشخصية');
+  },250);
+}
 function copyAutomatedGroupObjectToPersonal(g, stayHere, showPopup){
   if(!g){ toast('لم يتم العثور على المجموعة الآلية','err'); return null; }
   var c=clone([g])[0];
@@ -351,11 +370,7 @@ function copyAutomatedGroupObjectToPersonal(g, stayHere, showPopup){
   toast('تم النسخ إلى الشخصية','ok');
   if(showPopup) alert('تم النسخ إلى قاعدة المتشابهات الشخصية');
   if(!stayHere){
-    openDatabase('personal');
-    setTimeout(function(){
-      var el=document.querySelector('.group[data-id="'+c.id+'"]');
-      if(el){ el.classList.add('open'); el.scrollIntoView({behavior:'smooth',block:'center'}); }
-    },250);
+    showCopiedPersonalGroup(c);
   }
   return c;
 }
