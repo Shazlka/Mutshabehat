@@ -16872,7 +16872,7 @@ window.PERSONAL_DATA = [
         "label": "phrase-family | score 82",
         "parts": [
           {
-            "type": "diff",
+            "type": "normal",
             "text": "قُلۡ إِنَّمَآ أُنذِرُكُم بِٱلۡوَحۡيِۚ"
           },
           {
@@ -16880,7 +16880,7 @@ window.PERSONAL_DATA = [
             "text": "وَلَا"
           },
           {
-            "type": "diff",
+            "type": "diff2",
             "text": "يَسۡمَعُ"
           },
           {
@@ -16888,7 +16888,7 @@ window.PERSONAL_DATA = [
             "text": "ٱلصُّمُّ ٱلدُّعَآءَ"
           },
           {
-            "type": "diff",
+            "type": "normal",
             "text": "إِذَا مَا يُنذَرُونَ"
           }
         ]
@@ -16899,7 +16899,7 @@ window.PERSONAL_DATA = [
         "label": "phrase-family | score 82",
         "parts": [
           {
-            "type": "diff",
+            "type": "shared",
             "text": "إِنَّكَ لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ"
           },
           {
@@ -16915,7 +16915,7 @@ window.PERSONAL_DATA = [
             "text": "ٱلصُّمَّ ٱلدُّعَآءَ"
           },
           {
-            "type": "diff",
+            "type": "shared",
             "text": "إِذَا وَلَّوۡاْ مُدۡبِرِينَ"
           }
         ]
@@ -16926,8 +16926,12 @@ window.PERSONAL_DATA = [
         "label": "phrase-family | score 82",
         "parts": [
           {
-            "type": "diff",
-            "text": "فَإِنَّكَ لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ"
+            "type": "diff2",
+            "text": "فَإِنَّكَ"
+          },
+          {
+            "type": "shared",
+            "text": " لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ"
           },
           {
             "type": "shared",
@@ -16942,14 +16946,14 @@ window.PERSONAL_DATA = [
             "text": "ٱلصُّمَّ ٱلدُّعَآءَ"
           },
           {
-            "type": "diff",
+            "type": "shared",
             "text": "إِذَا وَلَّوۡاْ مُدۡبِرِينَ"
           }
         ]
       }
     ],
-    "note": "مرشح آلي موسّع — النوع: phrase-family — الدرجة: 82 — السبب: تجميع عائلة عبارات متقاربة: تشترك في 3 كلمات مرتبة مع اختلاف/زيادة كلمة واحدة، كما في منهج personal-data.js.",
-    "unote": "يحتاج مراجعة واعتماد يدوي قبل اعتباره من المتشابهات النهائية.",
+    "note": "",
+    "unote": "",
     "autoCandidate": false,
     "candidateKind": "phrase-family",
     "candidateScore": 82,
