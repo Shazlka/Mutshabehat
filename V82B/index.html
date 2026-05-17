@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>متشابهات القرآن الكريم — V82B</title>
+  <link rel="stylesheet" href="styles.css?v=v82b">
+</head>
+<body data-theme="quran-classic" data-font-preset="normal-quran">
+<header class="app-header">
+  <div class="brand"><div class="logo">ق</div><div><h1>متشابهات القرآن الكريم</h1><p>V82B — إصلاح تحميل السور في القاعدة الآلية</p></div></div>
+  <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
+  <nav class="header-actions">
+    <button onclick="openHome()">الرئيسية</button><button onclick="openDatabase('personal')">الشخصية</button><button onclick="openDatabase('auto')">الآلية</button>
+    <button onclick="openAddModal()">+ إضافة متشابه</button><button onclick="openDashboard()">الإحصائيات</button><button onclick="openAppSettings()">⚙ إعدادات</button>
+    <button onclick="openMergeWindow()">دمج المجموعات</button><button onclick="resetDualDbCacheV68()">تحديث البيانات</button>
+  </nav>
+</header>
+<div class="legend">
+  <span><i class="dot unique-dot"></i>فريدة في القرآن</span><span><i class="dot diff-dot"></i>اختلاف في اللفظ</span><span><i class="dot addition-dot"></i>زيادة في الآية</span><span><i class="dot shared-dot"></i>لفظ مشترك</span><span><i class="dot diff2-dot"></i>اختلاف ٢</span>
+  <b id="ghBadge">☁ GitHub: not set</b><b id="storageBadge">✓ جاهز</b>
+</div>
+<main id="home" class="home-screen"><section class="hero"><h2>اختر قاعدة البيانات</h2><p>القاعدة الشخصية قابلة للتعديل، والقاعدة الآلية للمراجعة والنسخ والحذف عند تفعيل وضع التعديل.</p><div class="choice-grid"><button class="choice-card personal" onclick="openDatabase('personal')"><span>★</span><b>المتشابهات الشخصية</b><small>معتمدة وقابلة للإضافة والتعديل</small><em id="personalCountHome">0 مجموعة</em></button><button class="choice-card auto" onclick="openDatabase('auto')"><span>⚙</span><b>المتشابهات الآلية</b><small>مرشحات آلية للمراجعة</small><em id="autoCountHome">0 مجموعة</em></button></div></section></main>
+<section id="workspace" class="workspace hidden">
+  <section class="filter-card" id="surahFilterSection"><div class="filter-head"><div><b>🔍 تصفية حسب السورة</b><small id="filterStatus">المعروض الآن: كل السور</small></div><div class="filter-actions"><button id="onlyResultsBtn" class="active" onclick="toggleOnlyWithResults()">بها نتائج فقط</button><button onclick="clearSurahFilter()">عرض الكل</button><button onclick="toggleSurahFilterPanel()" id="surahFilterToggleBtn">إغلاق الفلتر ▴</button></div></div><div id="surahFilterPanel"><input id="surahFilterSearch" class="wide-input" placeholder="ابحث باسم السورة أو رقمها..." oninput="renderSurahFilter()"><div class="filter-inline-sort" aria-label="خيارات العرض والنتائج">
+  <label for="displayMode">طريقة عرض المجموعات</label>
+  <select id="displayMode" onchange="setDisplayMode(this.value)">
+    <option value="original">Original Order — الترتيب الأصلي</option>
+    <option value="sort-surah">Sort by Surah</option>
+    <option value="group-surah">Group by Surah</option>
+    <option value="newest">Newest First</option>
+    <option value="most-verses">Most Verses First</option>
+  </select>
+  <span id="counter" class="result-counter">عدد النتائج: 0</span>
+</div><div class="range-tabs"><button onclick="setSurahRange('all')" class="active" data-range="all">الكل</button><button onclick="setSurahRange('1-30')" data-range="1-30">1-30</button><button onclick="setSurahRange('31-60')" data-range="31-60">31-60</button><button onclick="setSurahRange('61-90')" data-range="61-90">61-90</button><button onclick="setSurahRange('91-114')" data-range="91-114">91-114</button></div><h4>الأكثر وجودًا</h4><div id="topSurahGrid" class="surah-grid top"></div><div class="surah-count-line" id="surahCountLine"></div><div id="surahFilterGrid" class="surah-grid"></div></div></section>
+  <div class="toolbar"><div><h2 id="dbTitle">قاعدة البيانات</h2><p id="dbSubTitle">—</p></div><div class="tools"><input id="searchInput" placeholder="ابحث في المتشابهات..." oninput="onSearchInput()"><button onclick="clearSearch()">إلغاء</button><button class="primary" onclick="openAddModal()">+ إضافة متشابه</button><button onclick="openAdvancedSearch()">⚙ بحث متقدم</button><button onclick="toggleAllGroups()" id="toggleAllBtn">فتح الكل</button><button onclick="exportActiveDatabase()">Export data.js 📤</button></div></div>
+  <div id="activeFilterChips" class="active-filter-chips"></div><div id="surahIndexBar" class="surah-index-bar"></div><div id="groups" class="groups"></div>
+</section>
+<section id="modalRoot"></section><button class="floating-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<!-- PERF: defer loads scripts in parallel while HTML parses -->
+<script defer src="quran-reference.js?v=v82b"></script>
+<script defer src="personal-data.js?v=v82b"></script>
+<script defer src="automated-manifest.js?v=v82b"></script>
+<script defer src="app.js?v=v82b"></script>
+</body></html>
