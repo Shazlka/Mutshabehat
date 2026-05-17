@@ -16859,7 +16859,7 @@ window.PERSONAL_DATA = [
   },
   {
     "id": 210,
-    "title": "عائلة عبارات متقاربة: ولا الصم الدعا",
+    "title": "إِنَّكَ لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ وَلَا تُسۡمِعُ ٱلصُّمَّ ٱلدُّعَآءَ إِذَا وَلَّوۡاْ مُدۡبِرِينَ",
     "surahs": [
       "الأنبياء",
       "النمل",
@@ -16869,7 +16869,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "الأنبياء",
         "ayah": 45,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "normal",
@@ -16896,7 +16896,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "النمل",
         "ayah": 80,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "shared",
@@ -16923,7 +16923,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "الروم",
         "ayah": 52,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff2",
