@@ -270,3 +270,46 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
     grid-template-columns:repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Mobile-specific overrides to improve sorting/filtering readability (V82B) */
+@media (max-width:850px) {
+  /* make the inline sort/filter controls stack and span full width */
+  .filter-head .filter-inline-sort,
+  .filter-inline-sort {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    background: var(--surface);
+  }
+
+  .filter-inline-sort label { font-size: 1rem; font-weight: 800; color: var(--text); }
+
+  /* ensure selects and inputs expand and text is readable */
+  .filter-inline-sort select,
+  .filter-inline-sort input,
+  .filter-inline-sort .wide-input,
+  .filter-head .filter-actions button,
+  .filter-head .result-counter {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 1rem !important;
+    padding: 10px 12px !important;
+  }
+
+  .sort-select-wrap { display: block !important; width: 100% !important; }
+  .filter-actions { width: 100% !important; justify-content: space-between !important; gap: 8px; }
+
+  /* toolbar controls stack nicely on mobile */
+  .toolbar { grid-template-columns: 1fr !important; }
+  .tools { flex-direction: column !important; align-items: stretch !important; gap: 8px; }
+  .tools input, .main-search-wrap input { width: 100% !important; font-size: 1rem !important; padding: 10px 12px !important; }
+
+  /* keep compact filter bar behavior but ensure readable text when expanded */
+  #surahFilterSection .filter-head { gap: 8px; }
+  #surahFilterSection .filter-bar-row { width: 100%; justify-content: stretch; }
+}
