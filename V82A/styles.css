@@ -238,3 +238,153 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
   #surahFilterSection .filter-bar-row,
   #surahFilterSection .filter-actions{overflow:hidden}
 }
+
+
+/* =========================================================
+   V90 — Mobile filter card redesign (تصفية حسب السورة)
+   Fixes: alignment, spacing, no empty icons, no overlap, two-row layout.
+   Desktop/tablet unchanged.
+   ========================================================= */
+
+/* desktop defaults: show text, hide mobile icons */
+.mobile-btn-icon{display:none}
+.mobile-btn-text{display:inline}
+
+@media (max-width: 768px){
+  /* Card sizing */
+  #surahFilterSection.filter-card{padding:16px;margin-bottom:12px;border-radius:22px}
+
+  /* Layout: two rows inside filter-head */
+  #surahFilterSection .filter-head{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+  }
+
+  /* Row 1: centered title + search icon */
+  #surahFilterSection .filter-title-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    direction:rtl;
+    text-align:center;
+    min-width:0;
+  }
+  #surahFilterSection .filter-title-wrap .filter-title-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  #surahFilterSection .filter-title-icon{font-size:22px;line-height:1}
+  #surahFilterSection .filter-title-text{font-size:22px;font-weight:900;line-height:1.2}
+  #surahFilterSection .filter-title-wrap small{display:none!important} /* hide status line in mobile */
+
+  /* Row 2: controls in a clean single row */
+  #surahFilterSection .filter-bar-row{
+    display:flex;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+  }
+
+  /* Make sort + counter behave as a compact control group */
+  #surahFilterSection .filter-inline-sort{
+    display:flex;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:0;
+    padding:0;
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    min-width:0;
+  }
+  #surahFilterSection .filter-inline-sort label{display:none!important}
+
+  /* Counter pill first */
+  #surahFilterSection #counter{
+    order:1;
+    min-width:64px;
+    height:44px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 12px;
+    border-radius:999px;
+    font-size:16px;
+    font-weight:900;
+    line-height:1;
+  }
+
+  /* Sort control: icon-only select button */
+  #surahFilterSection .sort-select-wrap{order:2;position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px}
+  #surahFilterSection .sort-select-wrap:before{
+    content:"⇅";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+    font-weight:900;
+    font-size:18px;
+    line-height:1;
+  }
+  #surahFilterSection select#displayMode{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    min-height:44px;
+    padding:0;
+    border-radius:18px;
+    background:var(--soft);
+    border:1px solid var(--border);
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    color:transparent; /* hide selected text without shifting */
+    text-shadow:0 0 0 transparent;
+    overflow:hidden;
+  }
+
+  /* Actions row: icon buttons only */
+  #surahFilterSection .filter-actions{
+    display:flex;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:0;
+  }
+
+  /* Hide the expand/collapse filter panel button on mobile to reduce clutter */
+  #surahFilterSection #surahFilterToggleBtn{display:none!important}
+
+  /* Icon-only buttons with guaranteed icons (no empty buttons) */
+  #surahFilterSection .filter-actions button{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    min-height:44px;
+    padding:0;
+    border-radius:18px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  #surahFilterSection .mobile-btn-icon{display:inline-flex;font-size:20px;line-height:1}
+  #surahFilterSection .mobile-btn-text{display:none!important}
+
+  /* Prevent overflow */
+  #surahFilterSection .filter-head,
+  #surahFilterSection .filter-bar-row,
+  #surahFilterSection .filter-inline-sort,
+  #surahFilterSection .filter-actions{overflow:hidden}
+}

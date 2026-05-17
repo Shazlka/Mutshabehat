@@ -1126,3 +1126,50 @@ function __formatCounterV89(){
   try{ window.addEventListener('resize', ()=>setTimeout(__formatCounterV89, 0)); }catch(e){}
   try{ window.addEventListener('DOMContentLoaded', ()=>setTimeout(__formatCounterV89, 500)); }catch(e){}
 })();
+
+
+/* =========================================================
+   V90 — Mobile counter formatter (robust)
+   Ensures #counter shows only digits on mobile (<=768px) without breaking desktop.
+   ========================================================= */
+
+function __isMobileCompactV90(){
+  try{ return window.matchMedia && window.matchMedia('(max-width: 768px)').matches; }catch(e){ return false; }
+}
+
+function __formatCounterV90(){
+  let el=document.getElementById('counter');
+  if(!el) return;
+  let isMobile=__isMobileCompactV90();
+  // store latest full text each time
+  if(el.dataset){
+    if(!el.dataset.fullTextV90) el.dataset.fullTextV90='';
+    // if not mobile, always restore from last known full text
+    if(!isMobile){
+      if(el.dataset.fullTextV90) el.textContent = el.dataset.fullTextV90;
+      return;
+    }
+    // mobile: capture current full text, then compact
+    if(el.textContent) el.dataset.fullTextV90 = el.textContent;
+  }
+
+  let txt = (el.dataset && el.dataset.fullTextV90) ? el.dataset.fullTextV90 : (el.textContent||'');
+  let m = txt.match(/(\d+)/);
+  el.textContent = m ? m[1] : '…';
+}
+
+(function patchCounterUpdatesV90(){
+  try{
+    const baseRender = window.renderActiveGroups;
+    if(typeof baseRender==='function' && !window.__patchedCounterV90){
+      window.__patchedCounterV90=true;
+      window.renderActiveGroups = function(){
+        let r = baseRender.apply(this, arguments);
+        try{ __formatCounterV90(); }catch(e){}
+        return r;
+      };
+    }
+  }catch(e){}
+  try{ window.addEventListener('resize', ()=>setTimeout(__formatCounterV90, 0)); }catch(e){}
+  try{ window.addEventListener('DOMContentLoaded', ()=>setTimeout(__formatCounterV90, 600)); }catch(e){}
+})();
