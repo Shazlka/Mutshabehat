@@ -270,3 +270,295 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
     grid-template-columns:repeat(2, minmax(0, 1fr));
   }
 }
+
+/* =========================================================
+   V90 — iPhone Friendly Filter UI Improvements
+   ========================================================= */
+
+/* Improve touch target sizes for iPhone */
+@media (max-width: 850px) {
+  /* Increase all button sizes for better touch targets (min 44x44px) */
+  button, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  /* Filter section improvements */
+  .filter-card {
+    padding: 16px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* Filter head - better spacing */
+  .filter-head {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filter-title-wrap {
+    width: 100%;
+  }
+
+  .filter-title-wrap b {
+    font-size: 1.1rem;
+  }
+
+  .filter-title-wrap small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.85rem;
+  }
+
+  /* Filter bar row - stack vertically on very small screens */
+  .filter-bar-row {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .filter-inline-sort {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .filter-inline-sort label {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .filter-inline-sort select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    min-height: 44px;
+  }
+
+  .result-counter {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Filter actions - full width buttons */
+  .filter-actions {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .filter-actions button {
+    flex: 1;
+    min-width: 100px;
+    min-height: 44px;
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  /* Search input improvements */
+  #surahFilterSearch {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    min-height: 44px;
+    border-radius: 16px;
+    margin: 12px 0;
+  }
+
+  /* Range tabs - better sizing for mobile */
+  .range-tabs {
+    width: 100%;
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  .range-tabs button {
+    flex: 1;
+    min-height: 44px;
+    padding: 10px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+
+  /* Surah grid - comfortable grid layout */
+  .surah-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .surah-pill {
+    padding: 12px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Filter panel drawer styling */
+  #surahFilterPanel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 14px;
+    margin-top: 12px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  /* Collapsible filter panel animation */
+  #surahFilterPanel.hidden {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  #surahFilterPanel:not(.hidden) {
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  /* Better filter toggle button */
+  #surahFilterToggleBtn {
+    width: 100%;
+    padding: 12px;
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+
+  /* Filter section heading improvements */
+  .filter-head div:first-child {
+    width: 100%;
+  }
+
+  /* Icon button improvements */
+  .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.1rem;
+  }
+
+  /* Toolbar improvements for mobile */
+  .toolbar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tools {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .tools > * {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .tools input {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  .main-search-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .main-search-wrap {
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  .main-search-wrap input {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .main-search-wrap button {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  /* Improve spacing between sections */
+  .filter-card + .toolbar {
+    margin-top: 16px;
+  }
+
+  .active-filter-chips {
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  .active-filter-chips span {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Ultra-mobile optimization (below 600px) */
+@media (max-width: 600px) {
+  .filter-card {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .filter-inline-sort {
+    padding: 10px;
+  }
+
+  .surah-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px;
+  }
+
+  .surah-pill {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .filter-actions button,
+  .range-tabs button,
+  button {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .result-counter {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  /* Reduce heading size for very small screens */
+  .filter-title-wrap b {
+    font-size: 1rem;
+  }
+
+  /* Tighter spacing on tiny screens */
+  .filter-head {
+    gap: 10px;
+  }
+
+  .filter-bar-row {
+    gap: 10px;
+  }
+}
