@@ -16856,5 +16856,108 @@ window.PERSONAL_DATA = [
     "sharedPhrase": "ومن ايته خلق",
     "source": "automated",
     "completed": true
+  },
+  {
+    "id": 210,
+    "title": "عائلة عبارات متقاربة: ولا الصم الدعا",
+    "surahs": [
+      "الأنبياء",
+      "النمل",
+      "الروم"
+    ],
+    "verses": [
+      {
+        "surah": "الأنبياء",
+        "ayah": 45,
+        "label": "phrase-family | score 82",
+        "parts": [
+          {
+            "type": "normal",
+            "text": "قُلۡ إِنَّمَآ أُنذِرُكُم بِٱلۡوَحۡيِۚ"
+          },
+          {
+            "type": "shared",
+            "text": "وَلَا"
+          },
+          {
+            "type": "diff2",
+            "text": "يَسۡمَعُ"
+          },
+          {
+            "type": "shared",
+            "text": "ٱلصُّمُّ ٱلدُّعَآءَ"
+          },
+          {
+            "type": "normal",
+            "text": "إِذَا مَا يُنذَرُونَ"
+          }
+        ]
+      },
+      {
+        "surah": "النمل",
+        "ayah": 80,
+        "label": "phrase-family | score 82",
+        "parts": [
+          {
+            "type": "shared",
+            "text": "إِنَّكَ لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ"
+          },
+          {
+            "type": "shared",
+            "text": "وَلَا"
+          },
+          {
+            "type": "diff",
+            "text": "تُسۡمِعُ"
+          },
+          {
+            "type": "shared",
+            "text": "ٱلصُّمَّ ٱلدُّعَآءَ"
+          },
+          {
+            "type": "shared",
+            "text": "إِذَا وَلَّوۡاْ مُدۡبِرِينَ"
+          }
+        ]
+      },
+      {
+        "surah": "الروم",
+        "ayah": 52,
+        "label": "phrase-family | score 82",
+        "parts": [
+          {
+            "type": "diff2",
+            "text": "فَإِنَّكَ"
+          },
+          {
+            "type": "shared",
+            "text": " لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ"
+          },
+          {
+            "type": "shared",
+            "text": "وَلَا"
+          },
+          {
+            "type": "diff",
+            "text": "تُسۡمِعُ"
+          },
+          {
+            "type": "shared",
+            "text": "ٱلصُّمَّ ٱلدُّعَآءَ"
+          },
+          {
+            "type": "shared",
+            "text": "إِذَا وَلَّوۡاْ مُدۡبِرِينَ"
+          }
+        ]
+      }
+    ],
+    "note": "",
+    "unote": "",
+    "autoCandidate": false,
+    "candidateKind": "phrase-family",
+    "candidateScore": 82,
+    "sharedPhrase": "ولا الصم الدعا",
+    "source": "automated"
   }
 ];
