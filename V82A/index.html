@@ -23,7 +23,7 @@
 <section id="workspace" class="workspace hidden">
   <section class="filter-card" id="surahFilterSection"><div class="filter-head"><div class="filter-title-wrap"><b>🔍 تصفية حسب السورة</b><small id="filterStatus">المعروض الآن: كل السور</small></div><div class="filter-bar-row"><div class="filter-inline-sort" aria-label="خيارات العرض والنتائج">
   <label for="displayMode">طريقة عرض المجموعات</label>
-  <select id="displayMode" onchange="setDisplayMode(this.value)">
+  <div class="sort-select-wrap" aria-label="تغيير طريقة العرض" title="تغيير طريقة العرض"><select id="displayMode" onchange="setDisplayMode(this.value)">
     <option value="original">Original Order — الترتيب الأصلي</option>
     <option value="sort-surah">Sort by Surah</option>
     <option value="group-surah">Group by Surah</option>

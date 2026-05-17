@@ -166,3 +166,75 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 #syncGitHubBtn.syncing{background:color-mix(in srgb,var(--primary) 12%,var(--soft));border-color:var(--primary)}
 #syncGitHubBtn.ok{background:#dcfce7;color:#166534;border-color:#86efac}
 #syncGitHubBtn.err{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+
+
+/* =========================================================
+   V89 — Mobile compact filter/control bar (under "تصفية حسب السورة")
+   - Mobile only: single horizontal icon-only row for sort + filters + count.
+   - Desktop/tablet unchanged.
+   ========================================================= */
+
+@media (max-width: 768px){
+  /* Make the header row compact and prevent tall card-like layout */
+  #surahFilterSection .filter-head{flex-direction:row;align-items:center;gap:8px}
+  #surahFilterSection .filter-title-wrap{flex:1 1 auto;min-width:0}
+  #surahFilterSection .filter-title-wrap small{display:none} /* hide verbose status line in mobile */
+
+  /* Keep controls on ONE row */
+  #surahFilterSection .filter-bar-row{width:auto;flex:0 0 auto;flex-wrap:nowrap;gap:8px;justify-content:flex-start;align-items:center}
+
+  /* Inline sort container becomes minimal */
+  #surahFilterSection .filter-head .filter-inline-sort{
+    margin:0;padding:0;border:0;background:transparent;box-shadow:none;
+    flex:0 0 auto;min-width:auto;gap:6px
+  }
+  #surahFilterSection .filter-inline-sort label{display:none!important}
+
+  /* Compact icon-only select */
+  #surahFilterSection .sort-select-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+  #surahFilterSection .sort-select-wrap:before{
+    content:"⇅";
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    pointer-events:none;
+    font-weight:900;
+  }
+  #surahFilterSection select#displayMode{
+    width:40px;min-width:40px;height:40px;min-height:40px;
+    padding:0;
+    border-radius:999px;
+    background:var(--soft);
+    border:1px solid var(--border);
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    text-indent:-9999px; /* hide selected text (dropdown list still shows) */
+    direction:rtl;
+  }
+
+  /* Compact results counter pill: show only number via JS helper; CSS makes it small */
+  #surahFilterSection #counter{
+    padding:6px 10px;
+    border-radius:999px;
+    font-size:.78rem;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  /* Actions become icon-only buttons (no text visible) */
+  #surahFilterSection .filter-actions{flex:0 0 auto;gap:8px;flex-wrap:nowrap}
+  #surahFilterSection .filter-actions button{
+    width:40px;min-width:40px;height:40px;min-height:40px;
+    padding:0;
+    border-radius:999px;
+    font-size:0; /* hide existing label text */
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  #surahFilterSection #onlyResultsBtn:before{content:"✅";font-size:18px;line-height:1}
+  #surahFilterSection .filter-actions button[onclick="clearSurahFilter()"]:before{content:"📋";font-size:18px;line-height:1}
+
+  /* Prevent overflow */
+  #surahFilterSection .filter-head,
+  #surahFilterSection .filter-bar-row,
+  #surahFilterSection .filter-actions{overflow:hidden}
+}

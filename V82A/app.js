@@ -1075,3 +1075,54 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(()=>{
     else if(st==='failed') ghSetToolbarBtnStateV88('err', localStorage.getItem(GH_KEYS_V79.error)||'');
   }catch(e){}
 },500));
+
+
+/* =========================================================
+   V89 — Mobile compact counter label (badge shows number only)
+   - Mobile only (<=768px): #counter becomes compact numeric pill (e.g., "208").
+   - Desktop/tablet: restore original text.
+   ========================================================= */
+
+function __isMobileCompactV89(){
+  try{ return window.matchMedia && window.matchMedia('(max-width: 768px)').matches; }catch(e){ return false; }
+}
+
+function __formatCounterV89(){
+  let el=document.getElementById('counter');
+  if(!el) return;
+  let isMobile=__isMobileCompactV89();
+  // Preserve full text for restore
+  if(!el.dataset) return;
+  if(!el.dataset.fullText) el.dataset.fullText = el.textContent || '';
+  if(!isMobile){
+    // restore
+    if(el.dataset.fullText) el.textContent = el.dataset.fullText;
+    return;
+  }
+  // update stored full text before compacting
+  el.dataset.fullText = el.textContent || el.dataset.fullText || '';
+  let txt = el.textContent || '';
+  // Extract digits
+  let m = txt.match(/(\d+)/);
+  if(m){
+    el.textContent = m[1];
+  }else{
+    // If it's a message like "اختر سورة..." then show a small dot
+    el.textContent = '…';
+  }
+}
+
+(function patchCounterUpdatesV89(){
+  try{
+    const baseRender = window.renderActiveGroups;
+    if(typeof baseRender==='function'){
+      window.renderActiveGroups = function(){
+        let r = baseRender.apply(this, arguments);
+        try{ __formatCounterV89(); }catch(e){}
+        return r;
+      };
+    }
+  }catch(e){}
+  try{ window.addEventListener('resize', ()=>setTimeout(__formatCounterV89, 0)); }catch(e){}
+  try{ window.addEventListener('DOMContentLoaded', ()=>setTimeout(__formatCounterV89, 500)); }catch(e){}
+})();
