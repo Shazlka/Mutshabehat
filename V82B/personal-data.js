@@ -16958,6 +16958,7 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "ولا الصم الدعا",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   }
 ];
