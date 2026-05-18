@@ -49,12 +49,23 @@
   <div id="activeFilterChips" class="active-filter-chips"></div><div id="surahIndexBar" class="surah-index-bar"></div><div id="groups" class="groups"></div>
 </section>
 <section id="modalRoot"></section><button class="floating-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<script src="quran-reference.js?v=v82_fix_loader"></script><script src="personal-data.js?v=v82_fix_loader"></script><script src="automated-manifest.js?v=v82_fix_loader"></script><script src="app.js?v=v85_independent_filters_sort"></script>
+<script src="quran-reference.js?v=v82_fix_loader"></script>
+<script src="personal-data.js?v=v82_fix_loader"></script>
+<script src="automated-manifest.js?v=v82_fix_loader"></script>
+<script src="js/state.js?v=v82b_split_app"></script>
+<script src="js/utils.js?v=v82b_split_app"></script>
+<script src="js/quran-utils.js?v=v82b_split_app"></script>
+<script src="js/data-loader.js?v=v82b_split_app"></script>
+<script src="js/icons-toast.js?v=v82b_split_app"></script>
+<script src="js/modals.js?v=v82b_split_app"></script>
+<script src="js/filters.js?v=v82b_split_app"></script>
+<script src="js/render-groups.js?v=v82b_split_app"></script>
+<script src="js/group-actions.js?v=v82b_split_app"></script>
+<script src="js/add-edit.js?v=v82b_split_app"></script>
+<script src="js/quran-search.js?v=v82b_split_app"></script>
+<script src="js/navigation.js?v=v82b_split_app"></script>
+<script src="js/dashboard-search-merge.js?v=v82b_split_app"></script>
+<script src="js/github-sync.js?v=v82b_split_app"></script>
+<script src="js/settings.js?v=v82b_split_app"></script>
+<script src="js/export-tools.js?v=v82b_split_app"></script>
 </body></html>
-+<script>                                                                                                                                                                                                                        
-(function(){                                                                                                                                                                                                                    
-   var _od = openDatabase, _oh = openHome;                                                                                                                                                                                       
-   openDatabase = async function(w){ document.body.dataset.activeDb = w; return _od(w); };                                                                                                                                       
-    openHome     = function(){        document.body.dataset.activeDb = '';  return _oh();  };                                                                                                                                     
-  })();                                                                                                                                                                                                                           
-  </script>           
