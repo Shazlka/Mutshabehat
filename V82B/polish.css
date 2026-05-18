@@ -432,3 +432,21 @@ body[data-theme="bevel-night"] .modal-header {
     min-height: 120px;
   }
 }
+      435 +                                                                                                                                                                                                                               
+      436 +/* ─── Active database: light-green header highlight ─────────────── */                                                                                                                                                        
+      437 +body[data-active-db="personal"] .header-actions button[onclick="openDatabase('personal')"],                                                                                                                                    
+      438 +body[data-active-db="auto"]     .header-actions button[onclick="openDatabase('auto')"] {                                                                                                                                       
+      439 +  background: #dcfce7 !important;                                                                                                                                                                                              
+      440 +  color: #166534 !important;                                                                                                                                                                                                   
+      441 +  border: 1.5px solid #86efac !important;                                                                                                                                                                                      
+      442 +  box-shadow: none !important;                                                                                                                                                                                                 
+      443 +  font-weight: 700 !important;                                                                                                                                                                                                 
+      444 +}                                                                                                                                                                                                                              
+      445 +                                                                                                                                                                                                                               
+      446 +body[data-theme="bevel-night"][data-active-db="personal"] .header-actions button[onclick="openDatabase('personal')"],                                                                                                          
+      447 +body[data-theme="bevel-night"][data-active-db="auto"]     .header-actions button[onclick="openDatabase('auto')"] {                                                                                                             
+      448 +  background: rgba(134, 239, 172, 0.13) !important;                                                                                                                                                                            
+      449 +  color: #4ade80 !important;                                                                                                                                                                                                   
+      450 +  border: 1.5px solid rgba(134, 239, 172, 0.35) !important;                                                                                                                                                                    
+      451 +  box-shadow: none !important;                                                                                                                                                                                                 
+      452 +}                             
