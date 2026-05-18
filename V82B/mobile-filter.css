@@ -1,439 +1,786 @@
 /*
- * Mutshabehat V82B — Mobile Filter & Sorting Section
- * /impeccable polish + /impeccable layout
+ * Mutshabehat — Filter & Sort Section: Complete Mobile Redesign
+ * /impeccable layout  /impeccable polish  /ui-ux-polish
  *
- * Problem this fixes:
- *   V89 used #surahFilterSection ID selectors to make everything icon-only:
- *     - text-indent:-9999px hid the select value (blank box)
- *     - font-size:0 hid all button labels
- *     - #surahFilterToggleBtn had no ::before so rendered as invisible
- *   V82B's class-based overrides couldn't beat V89's ID specificity.
+ * MOBILE ONLY — @media (max-width: 850px)
+ * Desktop is untouched.
  *
- * Strategy: match or exceed V89's specificity throughout, establish
- * one clean layout, restore all text.
+ * Problem: 8 CSS version layers (V69→V91) fight for control of this
+ * section using a mix of class and ID selectors with !important.
+ * V89's #surahFilterSection ID-scoped rules silently beat every
+ * class-based attempt to override them, leaving:
+ *   - select text hidden (text-indent:-9999px)
+ *   - button labels gone (font-size:0)
+ *   - toggle button invisible (no ::before assigned)
+ *   - multiple overflow:hidden clipping content
  *
- * Scope: @media (max-width: 850px) only. Desktop unchanged.
- * Link AFTER styles.css and after polish.css (if using both).
+ * Fix: every rule uses #surahFilterSection as prefix (equal
+ * specificity to V89) and loads last in the cascade, so same-
+ * specificity !important rules here override identically-specified
+ * !important rules in earlier sheets.
+ *
+ * Architecture (two layouts via CSS :has()):
+ *
+ *   COLLAPSED — panel has .hidden class
+ *   ┌───────────────────────────────────────┐
+ *   │ تصفية حسب السورة   [● N] [⇅] [▾]     │
+ *   │ المعروض الآن: ...                      │
+ *   └───────────────────────────────────────┘
+ *
+ *   EXPANDED — panel has no .hidden class
+ *   ┌───────────────────────────────────────┐
+ *   │ تصفية حسب السورة  المعروض الآن: ...   │
+ *   ├───────────────────────────────────────┤
+ *   │ طريقة العرض                           │
+ *   │ [ الترتيب الأصلي                   ▾ ]│
+ *   │ N نتائج                               │
+ *   │ [ ◉ بها نتائج فقط ]  [ عرض الكل ]    │
+ *   │ [────── إغلاق التصفية ▴ ──────────]   │
+ *   ├───────────────────────────────────────┤
+ *   │ [ ابحث باسم السورة... ]               │
+ *   │ [الكل] [1-30] [31-60] [61-90] [91-114]│
+ *   │ الأكثر وجودًا                         │
+ *   │ [ البقرة ③ ]  [ آل عمران ② ]          │
+ *   └───────────────────────────────────────┘
  */
 
+/* ─────────────────────────────────────────────────────────────
+   §0 CUSTOM PROPERTIES (scoped additions)
+───────────────────────────────────────────────────────────── */
+#surahFilterSection {
+  --_r: 12px;           /* internal radius */
+  --_r-pill: 9999px;
+  --_gap: 8px;
+  --_h-btn: 42px;       /* touch target height */
+  --_w-icon: 40px;      /* icon button width */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   §1 SECTION SHELL
+───────────────────────────────────────────────────────────── */
 @media (max-width: 850px) {
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     FILTER CARD SHELL
-     Full-width, tight padding, clean border
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#surahFilterSection {
+  padding: 0 !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--_r) !important;
+  overflow: visible !important;   /* must be visible — old layers set hidden */
+  margin-bottom: 14px !important;
+  box-shadow: none !important;
+}
 
-  #surahFilterSection {
-    padding: 14px 14px 16px;
-    border-radius: 14px;
-    margin-bottom: 16px;
-    overflow: visible;
-  }
+/* ─────────────────────────────────────────────────────────────
+   §2 HEADER STRIP — always visible, single compact row
+───────────────────────────────────────────────────────────── */
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     FILTER HEAD — single row: title left, status right
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#surahFilterSection .filter-head {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
+  gap: 10px !important;
+  padding: 12px 14px !important;
+  overflow: visible !important;
+  border: none !important;
+  background: transparent !important;
+}
 
-  #surahFilterSection .filter-head {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    flex-wrap: nowrap !important;
-    gap: 10px !important;
-    overflow: visible !important;
-    margin-bottom: 0;
-  }
+/* Title block (right side in RTL) */
+#surahFilterSection .filter-title-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 1px !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
 
-  #surahFilterSection .filter-title-wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end !important; /* RTL: text starts from right */
-    gap: 2px !important;
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-  }
+#surahFilterSection .filter-title-wrap b {
+  display: block !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: var(--text) !important;
+  font-family: var(--uifont) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
 
-  #surahFilterSection .filter-title-wrap b {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--text);
-    white-space: nowrap;
-  }
+#surahFilterSection .filter-title-wrap small {
+  display: block !important;
+  font-size: 0.7rem !important;
+  font-weight: 400 !important;
+  color: var(--muted) !important;
+  font-family: var(--uifont) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  line-height: 1.3 !important;
+}
 
-  /* Restore status text as a subtle sub-line */
-  #surahFilterSection .filter-title-wrap small {
-    display: block !important;
-    font-size: 0.75rem !important;
-    color: var(--muted) !important;
-    font-weight: 400 !important;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
+/* Control strip (left side in RTL) */
+#surahFilterSection .filter-bar-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+  width: auto !important;
+  overflow: visible !important;
+}
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     FILTER BAR ROW — collapses into the filter-head zone
-     Becomes the right-side compact control area
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Inline sort wrapper: row in header */
+#surahFilterSection .filter-inline-sort,
+#surahFilterSection .filter-head .filter-inline-sort {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  width: auto !important;
+  min-width: auto !important;
+  margin: 0 !important;
+}
 
-  #surahFilterSection .filter-bar-row {
-    display: flex !important;
-    flex-direction: row !important;
-    flex: 0 0 auto !important;
-    width: auto !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 8px !important;
-    flex-wrap: nowrap !important;
-    overflow: visible !important;
-  }
+/* Label: always hidden in header strip */
+#surahFilterSection .filter-inline-sort label {
+  display: none !important;
+}
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     INLINE SORT CONTAINER — horizontal icon strip
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ─── Sort: icon button in header (COLLAPSED state) ─── */
 
-  #surahFilterSection .filter-inline-sort,
-  #surahFilterSection .filter-head .filter-inline-sort {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    gap: 6px !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    width: auto !important;
-    min-width: auto !important;
-    margin: 0 !important;
-  }
+#surahFilterSection .sort-select-wrap {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  flex-shrink: 0 !important;
+}
 
-  /* Hide the verbose label — title row already explains context */
-  #surahFilterSection .filter-inline-sort label {
-    display: none !important;
-  }
+/* ⇅ icon overlay */
+#surahFilterSection .sort-select-wrap::before {
+  content: "⇅" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  color: var(--primary) !important;
+  z-index: 1 !important;
+  line-height: 1 !important;
+}
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     SORT SELECT WRAP + SELECT
-     Show the sort icon button; select is icon-only but
-     functional (native dropdown opens on tap)
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* No ::after in header */
+#surahFilterSection .sort-select-wrap::after {
+  display: none !important;
+  content: none !important;
+}
 
-  #surahFilterSection .sort-select-wrap {
-    position: relative !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: auto !important;
-  }
+/* Select: 40×40 icon-only touch target in header */
+#surahFilterSection select#displayMode {
+  width: var(--_w-icon) !important;
+  min-width: var(--_w-icon) !important;
+  height: var(--_w-icon) !important;
+  min-height: var(--_w-icon) !important;
+  padding: 0 !important;
+  border-radius: 10px !important;
+  background: var(--soft) !important;
+  border: 1px solid var(--border) !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  text-indent: -9999px !important;
+  font-family: var(--uifont) !important;
+  color: var(--text) !important;
+  direction: rtl !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  transition: border-color 150ms ease-out, background 150ms ease-out !important;
+}
 
-  /* Sort icon overlay — shows ⇅ over the hidden-text select */
-  #surahFilterSection .sort-select-wrap::before {
-    content: "⇅" !important;
-    display: flex !important;
-    position: absolute !important;
-    inset: 0 !important;
-    align-items: center !important;
-    justify-content: center !important;
-    pointer-events: none !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    color: var(--primary) !important;
-    z-index: 1;
-  }
+#surahFilterSection select#displayMode:focus {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent) !important;
+}
 
-  /* Select: 40×40 touch target, icon-only (text hidden but functional) */
-  #surahFilterSection select#displayMode {
-    width: 40px !important;
-    min-width: 40px !important;
-    height: 40px !important;
-    min-height: 40px !important;
-    padding: 0 !important;
-    border-radius: 10px !important;
-    background: var(--soft) !important;
-    border: 1px solid var(--border) !important;
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    text-indent: -9999px !important; /* intentional: icon-only; dropdown still works */
-    font-family: var(--uifont) !important;
-    color: var(--text) !important;
-    direction: rtl !important;
-    cursor: pointer !important;
-  }
+/* Result counter: compact pill in header strip */
+#surahFilterSection #counter,
+#surahFilterSection .result-counter {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 5px 9px !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  border-radius: var(--_r-pill) !important;
+  font-family: var(--uifont) !important;
+  flex-shrink: 0 !important;
+  width: auto !important;
+  min-width: auto !important;
+}
 
-  /* Result counter: compact pill showing the number */
-  #surahFilterSection .result-counter {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 6px 10px !important;
-    font-size: 0.78rem !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-    border-radius: 999px !important;
-    max-width: none !important;
-    width: auto !important;
-    font-family: var(--uifont) !important;
-  }
+/* ─── Action buttons: icon-only in header ─── */
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     FILTER ACTION BUTTONS — compact icon row in the header
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#surahFilterSection .filter-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+  align-items: center !important;
+  overflow: visible !important;
+  width: auto !important;
+}
 
-  #surahFilterSection .filter-actions {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 6px !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    overflow: visible !important;
-    width: auto !important;
-  }
+/* All 3 buttons: 40×40 icon targets */
+#surahFilterSection .filter-actions button {
+  width: var(--_w-icon) !important;
+  min-width: var(--_w-icon) !important;
+  height: var(--_w-icon) !important;
+  min-height: var(--_w-icon) !important;
+  padding: 0 !important;
+  border-radius: 10px !important;
+  font-size: 0 !important;           /* text hidden; icon via ::before */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  cursor: pointer !important;
+  background: var(--soft) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  transition: background 150ms ease-out, border-color 150ms ease-out !important;
+}
 
-  /* All 3 action buttons: 40×40 icon-only touch targets */
-  #surahFilterSection .filter-actions button {
-    width: 40px !important;
-    min-width: 40px !important;
-    height: 40px !important;
-    min-height: 40px !important;
-    padding: 0 !important;
-    border-radius: 10px !important;
-    font-size: 0 !important;         /* text hidden */
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-    font-family: var(--uifont) !important;
-  }
+/* "بها نتائج فقط" icon */
+#surahFilterSection #onlyResultsBtn::before {
+  content: "⊚" !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  color: var(--muted) !important;
+  display: flex !important;
+}
 
-  /* Icon for "بها نتائج فقط" — filter/results button */
-  #surahFilterSection #onlyResultsBtn::before {
-    content: "🔎" !important;
-    font-size: 17px !important;
-    line-height: 1 !important;
-    display: flex !important;
-  }
+#surahFilterSection #onlyResultsBtn.active {
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface)) !important;
+  border-color: var(--primary) !important;
+}
 
-  /* Active state: tinted background so user knows it's on */
-  #surahFilterSection #onlyResultsBtn.active {
-    background: color-mix(in srgb, var(--primary) 15%, var(--soft)) !important;
-    border-color: var(--primary) !important;
-  }
+#surahFilterSection #onlyResultsBtn.active::before {
+  color: var(--primary) !important;
+}
 
-  #surahFilterSection #onlyResultsBtn.active::before {
-    content: "🔎" !important;
-  }
+/* "عرض الكل" icon */
+#surahFilterSection .filter-actions button[onclick="clearSurahFilter()"]::before {
+  content: "⊘" !important;
+  font-size: 15px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  color: var(--muted) !important;
+  display: flex !important;
+}
 
-  /* Icon for "عرض الكل" — show all / clear filter */
-  #surahFilterSection .filter-actions button[onclick="clearSurahFilter()"]::before {
-    content: "⊘" !important;
-    font-size: 18px !important;
-    line-height: 1 !important;
-    font-weight: 700 !important;
-    color: var(--muted) !important;
-    display: flex !important;
-  }
+/* Toggle: primary-colored, always visible */
+#surahFilterSection #surahFilterToggleBtn {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
 
-  /* Icon for toggle panel button — open ▾ / close ▴
-     V89 left this button completely invisible. Fixed here. */
-  #surahFilterSection #surahFilterToggleBtn {
-    background: var(--primary) !important;
-    border-color: var(--primary) !important;
-    color: #fff !important;
-  }
+/* ▾ when panel is closed */
+#surahFilterSection:has(#surahFilterPanel.hidden) #surahFilterToggleBtn::before {
+  content: "▾" !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  color: #fff !important;
+  display: flex !important;
+}
 
-  #surahFilterSection #surahFilterToggleBtn::before {
-    content: "▾" !important;
-    font-size: 18px !important;
-    line-height: 1 !important;
-    color: #fff !important;
-    display: flex !important;
-  }
+/* ▴ when panel is open */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #surahFilterToggleBtn::before {
+  content: "▴" !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  color: #fff !important;
+  display: flex !important;
+}
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     FILTER PANEL (expanded) — full-width stacked content
-     This is what opens when the user taps the ▾ button
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ─────────────────────────────────────────────────────────────
+   §3 EXPANDED STATE — full controls via :has()
+   When panel is visible, transform header into two-row layout
+   with full-width sort select and labeled filter buttons.
+───────────────────────────────────────────────────────────── */
 
-  #surahFilterSection #surahFilterPanel {
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
+/* EXPANDED: header becomes a column */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-head {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding: 12px 14px 0 !important;
+  gap: 0 !important;
+}
 
-  #surahFilterSection #surahFilterPanel:not(.hidden) {
-    display: block !important;
-    margin-top: 14px !important;
-    padding-top: 14px !important;
-    border-top: 1px solid var(--border) !important;
-  }
+/* EXPANDED: title row — horizontal, full width */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-title-wrap {
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex: auto !important;
+  width: 100% !important;
+  gap: 8px !important;
+  padding-bottom: 10px !important;
+}
 
-  /* ── Sort select — FULL WIDTH with visible text inside the panel ── */
-  /* When the panel is open, show a labelled full-width sort control */
-  #surahFilterSection #surahFilterPanel:not(.hidden) ~ .filter-head .sort-select-wrap,
-  #surahFilterSection #surahFilterPanel:not(.hidden) ~ .filter-head select#displayMode {
-    /* The sort select stays in the header strip; this is just defensive */
-    width: auto !important;
-  }
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-title-wrap b {
+  flex: 1 1 auto !important;
+}
 
-  /* ── Panel: search input ── */
-  #surahFilterSection #surahFilterSearch {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    font-family: var(--uifont) !important;
-    font-size: 0.95rem !important;
-    padding: 10px 13px !important;
-    border-radius: 10px !important;
-    border: 1px solid var(--border) !important;
-    background: var(--soft) !important;
-    color: var(--text) !important;
-    direction: rtl !important;
-    margin: 0 0 12px !important;
-    display: block !important;
-  }
+/* EXPANDED: status stays visible as a trailing note */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-title-wrap small {
+  flex-shrink: 0 !important;
+  font-size: 0.68rem !important;
+  white-space: nowrap !important;
+}
 
-  #surahFilterSection #surahFilterSearch::placeholder {
-    color: var(--muted) !important;
-    font-family: var(--uifont) !important;
-  }
+/* EXPANDED: controls bar — full-width column, separated by border */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-bar-row {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  flex: auto !important;
+  gap: 10px !important;
+  padding: 14px 0 16px !important;
+  border-top: 1px solid var(--border) !important;
+}
 
-  #surahFilterSection #surahFilterSearch:focus {
-    outline: 2px solid color-mix(in srgb, var(--primary) 35%, transparent) !important;
-    border-color: var(--primary) !important;
-  }
+/* EXPANDED: inline sort — column, full width */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-inline-sort,
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-head .filter-inline-sort {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  width: 100% !important;
+}
 
-  /* ── Panel: range tab buttons ── */
-  #surahFilterSection .range-tabs {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 6px !important;
-    flex-wrap: wrap !important;
-    margin-bottom: 14px !important;
-    width: 100% !important;
-  }
+/* EXPANDED: show label */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-inline-sort label {
+  display: block !important;
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  color: var(--muted) !important;
+  font-family: var(--uifont) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  text-align: right !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
 
-  #surahFilterSection .range-tabs button {
-    flex: 1 1 auto !important;
-    min-height: 38px !important;
-    padding: 8px 10px !important;
-    font-size: 0.82rem !important;     /* visible text */
-    font-family: var(--uifont) !important;
-    font-weight: 600 !important;
-    color: var(--text) !important;
-    border-radius: 8px !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-    width: auto !important;
-    min-width: 0 !important;
-  }
+/* EXPANDED: sort-select-wrap — full width, column (select + counter) */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .sort-select-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  width: 100% !important;
+  position: relative !important;
+}
 
-  #surahFilterSection .range-tabs button.active {
-    background: var(--primary) !important;
-    color: #fff !important;
-  }
+/* EXPANDED: hide ⇅ overlay icon */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .sort-select-wrap::before {
+  display: none !important;
+  content: none !important;
+}
 
-  /* ── Panel: section label (الأكثر وجودًا) ── */
-  #surahFilterSection #surahFilterPanel h4 {
-    font-size: 0.78rem !important;
-    font-weight: 700 !important;
-    color: var(--muted) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.04em !important;
-    margin: 0 0 8px !important;
-    font-family: var(--uifont) !important;
-  }
+/* EXPANDED: custom chevron on left side (RTL) */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .sort-select-wrap::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 13px !important;
+  right: auto !important;
+  top: 13px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='%234b63e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M4 6l4 4 4-4'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-size: 14px !important;
+  background-position: center !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
 
-  /* ── Panel: surah grids — 2 columns ── */
-  #surahFilterSection .surah-grid,
-  #surahFilterSection #topSurahGrid,
-  #surahFilterSection #surahFilterGrid,
-  #surahFilterSection #surahFilterPanel:not(.hidden) .surah-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 7px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: none !important;
-    overflow: visible !important;
-    box-sizing: border-box !important;
-  }
+/* EXPANDED: select — full width, text fully visible */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) select#displayMode {
+  width: 100% !important;
+  min-width: 100% !important;
+  height: var(--_h-btn) !important;
+  min-height: var(--_h-btn) !important;
+  text-indent: 0 !important;         /* RESTORE TEXT — key fix */
+  padding-right: 14px !important;
+  padding-left: 38px !important;     /* space for left-side chevron (RTL) */
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  border-radius: 10px !important;
+  text-align: right !important;
+  direction: rtl !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: var(--soft) !important;
+  border: 1px solid var(--border) !important;
+}
 
-  /* Top grid (الأكثر وجودًا): slightly larger cards */
-  #surahFilterSection #topSurahGrid {
-    margin-bottom: 14px !important;
-  }
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) select#displayMode:focus {
+  border-color: var(--primary) !important;
+  background-color: var(--surface) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent) !important;
+  outline: none !important;
+}
 
-  /* ── Panel: individual surah pills ── */
-  #surahFilterSection .surah-pill {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 6px !important;
-    padding: 9px 10px !important;
-    border-radius: 10px !important;
-    border: 1px solid var(--border) !important;
-    background: var(--soft) !important;
-    font-family: var(--uifont) !important;
-    font-size: 0.83rem !important;
-    font-weight: 600 !important;
-    color: var(--text) !important;
-    min-height: 42px !important;
-    cursor: pointer !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    direction: rtl !important;
-    text-align: right !important;
-    transition: background 120ms ease-out, border-color 120ms ease-out !important;
-  }
+/* EXPANDED: counter as a status line below the select */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #counter,
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .result-counter {
+  align-self: flex-end !important;   /* RTL: right-aligned */
+  font-size: 0.7rem !important;
+  color: var(--muted) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  padding: 0 !important;
+  font-weight: 500 !important;
+  width: auto !important;
+}
 
-  #surahFilterSection .surah-pill.active {
-    background: color-mix(in srgb, var(--primary) 12%, var(--surface)) !important;
-    border-color: var(--primary) !important;
-    color: var(--primary) !important;
-  }
+/* EXPANDED: filter actions — CSS grid with named areas */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-actions {
+  display: grid !important;
+  grid-template-areas:
+    "filter clear"
+    "toggle toggle" !important;
+  gap: 8px !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
 
-  #surahFilterSection .surah-pill.no-match {
-    opacity: 0.35 !important;
-  }
+/* Named area assignments */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #onlyResultsBtn {
+  grid-area: filter !important;
+}
 
-  /* Count badge inside pill */
-  #surahFilterSection .count-badge,
-  #surahFilterSection .no-badge {
-    font-family: var(--uifont) !important;
-    font-size: 0.72rem !important;
-    font-weight: 700 !important;
-    min-width: 22px !important;
-    height: 22px !important;
-    border-radius: 999px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-    padding: 0 5px !important;
-  }
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-actions button[onclick="clearSurahFilter()"] {
+  grid-area: clear !important;
+}
 
-  /* Surah name inside pill — constrain so it doesn't overflow */
-  #surahFilterSection .surah-pill > *:first-child {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-  }
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #surahFilterToggleBtn {
+  grid-area: toggle !important;
+}
 
-  /* surah count line */
-  #surahFilterSection .surah-count-line {
-    display: block !important;
-    font-size: 0.75rem !important;
-    color: var(--muted) !important;
-    font-family: var(--uifont) !important;
-    margin: 8px 0 !important;
-  }
+/* EXPANDED: restore full-width text on all 3 buttons */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-actions button {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: var(--_h-btn) !important;
+  min-height: var(--_h-btn) !important;
+  padding: 0 14px !important;
+  font-size: 0.85rem !important;     /* RESTORE TEXT — key fix */
+  font-weight: 600 !important;
+  font-family: var(--uifont) !important;
+  border-radius: 10px !important;
+  color: var(--text) !important;
+  background: var(--soft) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Remove the ::before icons in expanded (text is visible) */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #onlyResultsBtn::before,
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) .filter-actions button[onclick="clearSurahFilter()"]::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Active filter button */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #onlyResultsBtn.active {
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface)) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+/* Toggle button (close): full-width, primary */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #surahFilterToggleBtn {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+  font-size: 0.85rem !important;     /* RESTORE TEXT */
+}
+
+/* Remove ::before in expanded — JS text handles the label */
+#surahFilterSection:has(#surahFilterPanel:not(.hidden)) #surahFilterToggleBtn::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   §4 FILTER PANEL CONTENT (search + tabs + surah grid)
+───────────────────────────────────────────────────────────── */
+
+/* Panel hidden */
+#surahFilterSection #surahFilterPanel.hidden {
+  display: none !important;
+}
+
+/* Panel open */
+#surahFilterSection #surahFilterPanel:not(.hidden) {
+  display: block !important;
+  padding: 0 14px 16px !important;
+  border-top: 1px solid var(--border) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 0 !important;
+  clear: both !important;
+}
+
+/* Reset V91's over-scoped rules */
+#surahFilterSection #surahFilterPanel:not(.hidden) > * {
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+/* ─── Search input ─── */
+
+#surahFilterSection #surahFilterSearch {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: var(--uifont) !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
+  padding: 11px 14px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  direction: rtl !important;
+  margin: 14px 0 12px !important;
+  text-indent: 0 !important;
+  -webkit-appearance: none !important;
+  line-height: 1.5 !important;
+  min-width: 0 !important;
+}
+
+#surahFilterSection #surahFilterSearch::placeholder {
+  color: var(--muted) !important;
+  font-family: var(--uifont) !important;
+  font-size: 0.875rem !important;
+}
+
+#surahFilterSection #surahFilterSearch:focus {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  background: var(--surface) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent) !important;
+}
+
+/* ─── Range tab pills ─── */
+
+#surahFilterSection .range-tabs {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  margin: 0 0 16px !important;
+  width: 100% !important;
+  padding-bottom: 2px !important;
+}
+
+#surahFilterSection .range-tabs::-webkit-scrollbar {
+  display: none !important;
+}
+
+#surahFilterSection .range-tabs button {
+  flex: 0 0 auto !important;
+  min-height: 34px !important;
+  height: 34px !important;
+  padding: 0 13px !important;
+  font-size: 0.8rem !important;
+  font-family: var(--uifont) !important;
+  font-weight: 600 !important;
+  color: var(--text) !important;
+  border-radius: var(--_r-pill) !important;
+  white-space: nowrap !important;
+  width: auto !important;
+  min-width: auto !important;
+  background: var(--soft) !important;
+  border: 1px solid var(--border) !important;
+  transition: background 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out !important;
+}
+
+#surahFilterSection .range-tabs button.active {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-color: var(--primary) !important;
+}
+
+/* ─── Section labels ─── */
+
+#surahFilterSection #surahFilterPanel h4 {
+  font-size: 0.66rem !important;
+  font-weight: 700 !important;
+  color: var(--muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin: 0 0 8px !important;
+  font-family: var(--uifont) !important;
+  text-align: right !important;
+  line-height: 1 !important;
+}
+
+#surahFilterSection .surah-count-line {
+  display: block !important;
+  font-size: 0.68rem !important;
+  color: var(--muted) !important;
+  font-family: var(--uifont) !important;
+  margin: 10px 0 8px !important;
+  text-align: right !important;
+  line-height: 1 !important;
+}
+
+/* ─── Surah grids — 2-column ─── */
+
+#surahFilterSection #topSurahGrid,
+#surahFilterSection #surahFilterGrid,
+#surahFilterSection #surahFilterPanel .surah-grid,
+#surahFilterSection #surahFilterPanel:not(.hidden) .surah-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 7px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  margin-top: 0 !important;
+}
+
+#surahFilterSection #topSurahGrid {
+  margin-bottom: 4px !important;
+}
+
+/* ─── Surah pills ─── */
+
+#surahFilterSection .surah-pill {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 6px !important;
+  padding: 9px 10px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  font-family: var(--uifont) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  color: var(--text) !important;
+  min-height: 40px !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  direction: rtl !important;
+  text-align: right !important;
+  line-height: 1.3 !important;
+  transition: background 120ms ease-out, border-color 120ms ease-out !important;
+}
+
+#surahFilterSection .surah-pill:active {
+  background: color-mix(in srgb, var(--primary) 7%, var(--surface)) !important;
+}
+
+#surahFilterSection .surah-pill.active {
+  background: color-mix(in srgb, var(--primary) 9%, var(--surface)) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+#surahFilterSection .surah-pill.no-match {
+  opacity: 0.28 !important;
+  pointer-events: none !important;
+}
+
+/* Surah name: clip overflow cleanly */
+#surahFilterSection .surah-pill > *:first-child {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  font-family: var(--uifont) !important;
+  color: inherit !important;
+}
+
+/* Count badge (has results) */
+#surahFilterSection .count-badge {
+  font-family: var(--uifont) !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  border-radius: var(--_r-pill) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  padding: 0 5px !important;
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  line-height: 1 !important;
+}
+
+/* Empty badge (no results) */
+#surahFilterSection .no-badge {
+  font-family: var(--uifont) !important;
+  font-size: 0.65rem !important;
+  font-weight: 600 !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  border-radius: var(--_r-pill) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  padding: 0 5px !important;
+  background: var(--border) !important;
+  color: var(--muted) !important;
+  line-height: 1 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   §5 DARK THEME ADAPTATIONS
+───────────────────────────────────────────────────────────── */
+
+body[data-theme="bevel-night"] #surahFilterSection {
+  box-shadow: none !important;
+}
+
+body[data-theme="bevel-night"] #surahFilterSection:has(#surahFilterPanel:not(.hidden)) select#displayMode:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent) !important;
+}
 
 } /* end @media (max-width: 850px) */
