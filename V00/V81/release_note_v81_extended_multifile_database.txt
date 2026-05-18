@@ -1,0 +1,30 @@
+Release Note — V81 Extended Multi-file Database Ready for GitHub
+
+Base:
+- Updated from the uploaded V79 project files.
+- Compiled with the V75 extended automated database criteria.
+
+Implemented:
+- Replaced the old single automated-data.js with the extended chunked automated database.
+- Added /auto-db/automated-data-manifest.js.
+- Added /auto-db/automated-data-loader.js.
+- Added /auto-db/automated-data-part-001.js through /auto-db/automated-data-part-032.js.
+- Updated index.html to load all database parts before app.js.
+- Updated app.js with automatic automated database cache refresh based on manifest version.
+- Preserved V79 GitHub sync status, V78 restored features, V71 dropdown/font preview features, and V70 font/theme support.
+
+Database split result:
+- Total automated groups: 12692.
+- Total parts: 32 files.
+- Each part has up to 400 groups.
+- Multi-ayah groups: 5339.
+- Largest part file: 1,974,210 bytes.
+
+ZIP cleanup:
+- Not included: old README files, old release notes, previous ZIP files, generator/helper files, and old standalone automated-data.js.
+- Included only files required to run the app on GitHub Pages plus this release note.
+
+Upload note:
+- Unzip this package and upload the contents to the repository root.
+- Keep the /auto-db folder structure exactly as included.
+- If automated-data.js already exists in the repository, delete it manually or leave it unused; V81 index.html does not reference it.

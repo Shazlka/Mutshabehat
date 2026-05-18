@@ -1,0 +1,91 @@
+/* V69 Arabic font stack and theme-aligned edit/search UI */
+:root{
+  --font-ui:"Readex Pro","Noto Naskh Arabic","Cairo","Segoe UI",Tahoma,Arial,sans-serif;
+  --font-quran:"Amiri Quran","Noto Naskh Arabic","Scheherazade New",serif;
+  --font-notes:"Noto Naskh Arabic","Readex Pro",serif;
+  --uifont:var(--font-ui);
+  --qfont:var(--font-quran);
+}
+body,button,input,select,textarea{font-family:var(--font-ui)}
+.verse-text,.quran-text,.quran-result-text{font-family:var(--font-quran);line-height:2.05}
+.note,.unote,.rich-editor,.rich-text,.card-notes{font-family:var(--font-notes)}
+.filter-inline-sort{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0;padding:10px;border:1px solid var(--border);border-radius:14px;background:var(--soft)}
+.filter-inline-sort label{font-weight:800;color:var(--text)}
+.filter-inline-sort select{min-width:210px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:9px 12px}
+.result-counter{display:inline-flex;align-items:center;gap:6px;border:1px solid color-mix(in srgb,var(--primary) 35%,var(--border));background:color-mix(in srgb,var(--primary) 10%,var(--surface));color:var(--text);border-radius:999px;padding:8px 12px;font-weight:800}
+.display-row{display:none!important}
+.modal-card,.modal-content,.modal-window{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--border)!important;box-shadow:var(--shadow)}
+.modal-head,.modal-header{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 14%,var(--surface)),var(--surface))!important;border-bottom:1px solid var(--border)!important;color:var(--text)!important}
+.modal-body input,.modal-body textarea,.modal-body select,.modal-card input,.modal-card textarea,.modal-card select{background:var(--soft)!important;color:var(--text)!important;border:1px solid var(--border)!important;border-radius:12px}
+.modal-body input:focus,.modal-body textarea:focus,.modal-body select:focus,.modal-card input:focus,.modal-card textarea:focus,.modal-card select:focus{outline:2px solid color-mix(in srgb,var(--primary) 38%,transparent);border-color:var(--primary)!important}
+.edit-verse{background:var(--soft);border:1px solid var(--border);border-radius:18px;padding:14px;margin:12px 0;box-shadow:0 8px 20px rgba(15,23,42,.04)}
+.edit-verse-title{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:10px}
+.part-row{display:grid;grid-template-columns:minmax(120px,160px) minmax(240px,1fr) auto;align-items:stretch;gap:10px;margin:8px 0;padding:10px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+.part-row select{height:100%}.part-row textarea{min-height:54px;resize:vertical}.part-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.part-actions button{white-space:nowrap}
+.quran-search-box{background:var(--soft);border:1px solid var(--border);border-radius:18px;padding:14px;margin:0 0 14px;box-shadow:0 8px 22px rgba(15,23,42,.05)}
+.quran-search-box h3{margin:4px 0;color:var(--text)}.quran-search-box p{margin:4px 0 10px;color:var(--muted)}
+.search-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}.search-stats span{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-weight:800;color:var(--text)}
+.quran-results{display:grid;gap:10px;max-height:420px;overflow:auto;margin-top:10px}.quran-result{display:grid;grid-template-columns:115px 1fr;gap:10px;padding:10px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}.quran-result.selected{border-color:var(--green);box-shadow:0 0 0 2px color-mix(in srgb,var(--green) 18%,transparent)}
+.quran-check-line{display:flex;align-items:center;gap:8px;font-weight:800}.quran-result-body b{display:block;margin-bottom:6px}.quran-result-text{width:100%;min-height:72px;background:var(--soft)!important}.quran-result-actions,.quran-result-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}.quran-result-toolbar{padding:8px;border-top:1px dashed var(--border)}
+body[data-theme="bevel-night"] .app-header{background:rgba(17,24,39,.94)}
+body[data-theme="bevel-night"] .quran-search-box,body[data-theme="bevel-night"] .edit-verse,body[data-theme="bevel-night"] .filter-inline-sort{box-shadow:none}
+@media(max-width:760px){.filter-inline-sort{align-items:stretch}.filter-inline-sort select,.result-counter{width:100%;justify-content:center}.part-row{grid-template-columns:1fr}.quran-result{grid-template-columns:1fr}.edit-verse-title{align-items:flex-start;flex-direction:column}}
+
+/* =========================================================
+   V70 — Dual Quran Font Modes + Theme-Aligned Edit Modal
+   ========================================================= */
+@font-face{font-family:"QPC V2";src:local("QPC V2"),local("QPCV2"),local("QPC V2 Font"),url("fonts/qpc-v2.woff2") format("woff2"),url("fonts/qpc-v2.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"KFGQPCNastaleeq-Regular";src:local("KFGQPCNastaleeq-Regular"),url("fonts/KFGQPCNastaleeq-Regular.woff2") format("woff2"),url("fonts/KFGQPCNastaleeq-Regular.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"surah-name-v4";src:local("surah-name-v4"),url("fonts/surah-name-v4.woff2") format("woff2"),url("fonts/surah-name-v4.ttf") format("truetype");font-display:swap}
+:root{--font-functional-quran:"Noto Naskh Arabic","Amiri Quran","Amiri","Scheherazade New",serif;--font-mushaf-qpc-v2:"QPC V2","KFGQPC Uthmanic Script HAFS","KFGQPCNastaleeq-Regular","Uthman Taha Naskh","Amiri Quran",serif;--font-surah-name:"surah-name-v4","Readex Pro","Noto Naskh Arabic",serif;--qfont:var(--font-functional-quran)}
+body[data-font-preset="normal-quran"],body[data-font-preset="classic-quran"],body[data-font-preset="modern-reader"],body[data-font-preset="mobile-clear"]{--qfont:var(--font-functional-quran)}
+body[data-font-preset="mushaf-qpc-v2"]{--qfont:var(--font-mushaf-qpc-v2)}
+.verse-card .verse-text,.group-body .verse-text,.draft-item .verse-text{font-family:var(--qfont)!important;font-size:1.42rem;line-height:2.35;letter-spacing:0;text-rendering:optimizeLegibility}
+body[data-font-preset="mushaf-qpc-v2"] .verse-card .verse-text,body[data-font-preset="mushaf-qpc-v2"] .group-body .verse-text{font-size:1.58rem;line-height:2.55}
+.quran-result-text,.quran-result-body textarea,.quran-search-box textarea,.editModal-window textarea,.editModal-window .part-row textarea,.editModal-window .live-preview,.editModal-window .verse-text,.compareModal-window .compare-text,#addPreview,#addSelectedPart,#addLive,#editQSearch,#addQSearch{font-family:var(--font-functional-quran)!important;line-height:2.15}
+.editModal-window .part-row textarea,.quran-result-text,#addPreview,#addSelectedPart{font-size:1.16rem;direction:rtl;unicode-bidi:plaintext}
+.compareModal-window .compare-text{font-size:1.32rem;line-height:2.25}.surah-name,.surah-section .group-title{font-family:var(--font-surah-name),var(--uifont)}
+.modal-head,.modal-header{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 12%,var(--surface)),var(--surface))!important;color:var(--text)!important;border-bottom:1px solid color-mix(in srgb,var(--primary) 22%,var(--border))!important;box-shadow:0 10px 24px rgba(15,23,42,.06)}
+.modal-head h2,.modal-header h2{color:var(--text)!important;font-family:var(--uifont)!important;font-weight:900}
+.modal-head .modal-close-btn,.modal-header .modal-close-btn,.modal-head>button,.modal-header>button{width:40px;height:40px;min-width:40px;padding:0!important;display:inline-flex;align-items:center;justify-content:center;border-radius:14px!important;background:color-mix(in srgb,var(--primary) 10%,var(--surface))!important;color:var(--primary2)!important;border:1px solid color-mix(in srgb,var(--primary) 24%,var(--border))!important;font-size:1.35rem!important;line-height:1;box-shadow:none!important}
+.modal-head .modal-close-btn:hover,.modal-header .modal-close-btn:hover,.modal-head>button:hover,.modal-header>button:hover{background:color-mix(in srgb,var(--primary) 18%,var(--surface))!important;border-color:var(--primary)!important}
+body[data-theme="bevel-night"] .modal-head,body[data-theme="bevel-night"] .modal-header{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 18%,var(--surface)),var(--surface))!important;box-shadow:none}
+body[data-theme="bevel-night"] .modal-head .modal-close-btn,body[data-theme="bevel-night"] .modal-header .modal-close-btn,body[data-theme="bevel-night"] .modal-head>button,body[data-theme="bevel-night"] .modal-header>button{color:var(--text)!important;background:color-mix(in srgb,var(--primary) 18%,var(--surface))!important}
+.editModal-window .modal-body,.editModal-window .field,.editModal-window button,.editModal-window input,.editModal-window select,.editModal-window textarea{font-family:var(--uifont)!important}.editModal-window .part-row textarea,.editModal-window .quran-result-text,.editModal-window .live-preview,.editModal-window .verse-text{font-family:var(--font-functional-quran)!important}
+@media(max-width:760px){.verse-card .verse-text,.group-body .verse-text{font-size:1.18rem;line-height:2.15}body[data-font-preset="mushaf-qpc-v2"] .verse-card .verse-text,body[data-font-preset="mushaf-qpc-v2"] .group-body .verse-text{font-size:1.28rem;line-height:2.3}}
+
+
+/* V71 — dependent Surah/Ayah dropdowns + Settings font preview */
+.editModal-window select,
+#editVerses select,
+#addSurah,
+#addAyah{
+  min-height:44px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--text);
+  padding:9px 12px;
+  font-weight:800;
+}
+.font-preview-box{
+  margin-top:14px;
+  border:1px dashed var(--border);
+  border-radius:18px;
+  background:var(--soft);
+  padding:14px;
+}
+.font-preview-ayah{
+  margin-top:10px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  font-size:1.55rem;
+  line-height:2.45;
+  direction:rtl;
+  text-align:right;
+}
+.font-preview-box[data-font-preset="normal-quran"] .font-preview-ayah{font-family:var(--font-functional-quran)!important;}
+.font-preview-box[data-font-preset="mushaf-qpc-v2"] .font-preview-ayah{font-family:var(--font-mushaf-qpc-v2)!important;font-size:1.7rem;line-height:2.65;}
+.font-preview-box small{display:block;margin-top:8px;color:var(--muted);font-weight:700;}

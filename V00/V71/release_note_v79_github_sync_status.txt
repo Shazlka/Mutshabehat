@@ -1,0 +1,25 @@
+Release Note — V79 GitHub Auto Sync Status Improvements
+
+Implemented:
+- Added clear GitHub Sync Status section in Settings > GitHub Auto Sync.
+- Added status states: 🟡 جاري المزامنة، ✅ تمت المزامنة بنجاح، ❌ فشل المزامنة، ⚠️ لا توجد تغييرات للمزامنة.
+- Shows last successful sync date/time, synced file path, short commit SHA, optional commit link.
+- Added Copy Error, Open Commit, and Verify on GitHub buttons.
+- Uses real GitHub Contents API flow: GET current SHA, compare content, UTF-8 Base64 encode, PUT update with message/content/sha/branch.
+- Success is displayed only after GitHub returns commit information.
+- If local and remote content are identical, no commit is created.
+- Stores last successful sync info in localStorage: github_last_sync_time, github_last_commit_sha, github_last_commit_url, github_last_sync_path.
+- Added console logs for sync start, SHA retrieval, update request, success SHA, and full failure error.
+- Auto Sync runs after personal database changes saved through saveDb().
+- Added soft green/yellow/red/gray visual indicator near GitHub Auto Sync title.
+
+Defaults preserved:
+- Owner: Shazlka
+- Repo: Mutashabihat
+- Branch: main
+- Path: V71/personal-data.js
+
+Preserved:
+- Current UI theme/layout.
+- Existing GitHub settings fields: Token, Owner, Repo, Branch, Path, Save, Test Connection, Sync Now.
+- All V78/V71 restored features and database separation.
