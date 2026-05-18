@@ -69,10 +69,9 @@
 <script src="js/settings.js?v=v82b_split_app"></script>
 <script src="js/export-tools.js?v=v82b_split_app"></script>
 </body></html>
-
 <script>                                                                                                                                                                                                                        
       (function(){                                                                                                                                                                                                                    
-        var _od = openDatabase, _oh = openHome;                                                                                                                                                                                       
+       var _od = openDatabase, _oh = openHome;                                                                                                                                                                                       
         openDatabase = async function(w){ document.body.dataset.activeDb = w; return _od(w); };                                                                                                                                       
         openHome     = function(){        document.body.dataset.activeDb = '';  return _oh();  };                                                                                                                                     
       })();                                                                                                                                                                                                                           
