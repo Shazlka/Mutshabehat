@@ -1,0 +1,211 @@
+/* V80 — Automated DB delete action */
+.group-actions .danger{background:#fee2e2!important;color:#991b1b!important;border-color:#fecaca!important}
+@media(max-width:850px){.group-actions .danger{width:auto;min-width:120px}}
+
+
+/* =========================================================
+   V85 — Sorting bar outside filter menu + independent DB state UI
+   ========================================================= */
+.filter-title-wrap{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.filter-bar-row{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;flex:1 1 620px}.filter-head{flex-wrap:wrap}.filter-head .filter-inline-sort{margin:0;padding:8px 10px;flex:0 1 auto;min-width:min(100%,430px)}.filter-head .filter-inline-sort select{min-width:190px}.filter-head .result-counter{white-space:nowrap}.filter-head .filter-actions{align-items:center}@media(max-width:850px){.filter-bar-row{width:100%;justify-content:stretch;align-items:stretch}.filter-head .filter-inline-sort,.filter-head .filter-actions{width:100%}.filter-head .filter-inline-sort select,.filter-head .result-counter,.filter-head .filter-actions button{flex:1 1 100%;width:100%;justify-content:center}}
+
+/* =========================================================
+   V86 — Search reset + main search hidden by default
+   ========================================================= */
+.main-search-btn{flex:0 0 auto}
+.main-search-wrap{display:flex;gap:8px;align-items:center;flex:1 1 320px;min-width:260px;padding:8px 10px;border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,var(--surface),var(--soft));box-shadow:0 8px 22px rgba(15,23,42,.04)}
+.main-search-wrap input{flex:1 1 auto;min-width:180px}
+.main-search-wrap button{border-radius:14px}
+@media(max-width:850px){
+  .main-search-wrap{flex-wrap:wrap;justify-content:stretch}
+  .main-search-wrap input{min-width:100%;width:100%}
+  .main-search-wrap button{flex:1 1 140px}
+}
+
+/* =========================================================
+   V87 — Settings stay open on save + Mobile icon-only toolbar (Personal only)
+   ========================================================= */
+
+/* Legend: hide color legend in main window (badges remain) */
+.legend.legend-compact{justify-content:flex-end}
+.legend.legend-compact .dot{display:none}
+
+/* Settings token row */
+.token-row{display:flex;gap:8px;align-items:center}
+.token-row input{flex:1 1 auto;min-width:180px}
+.token-row .token-toggle-btn{min-width:44px;min-height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:14px}
+
+/* Button label helpers */
+.btn-icon{display:none}
+.btn-text{display:inline}
+
+/* Mobile-only icon buttons for PERSONAL database toolbar */
+@media(max-width:850px){
+  body.db-personal .toolbar-tools{justify-content:flex-end;gap:8px}
+  /* override old rule that forces full width */
+  body.db-personal .toolbar-tools > *{min-width:auto!important;width:auto!important;flex:0 0 auto!important}
+
+  body.db-personal .toolbar-tools button{min-width:44px;min-height:44px;padding:0 10px}
+  body.db-personal .toolbar-tools .btn-icon{display:inline-flex;font-size:1.25rem;line-height:1;align-items:center;justify-content:center}
+  body.db-personal .toolbar-tools .btn-text{display:none}
+
+  /* Search inline popup: keep input usable */
+  body.db-personal .main-search-wrap{flex:1 1 100%;min-width:100%}
+  body.db-personal .main-search-wrap input{min-width:100%;width:100%}
+  body.db-personal .main-search-wrap button{min-width:44px;min-height:44px;padding:0 10px}
+}
+
+
+/* =========================================================
+   V88 — GitHub Manual Sync Button + Safety status
+   ========================================================= */
+#syncGitHubBtn{border-radius:14px}
+#syncGitHubBtn.syncing{background:color-mix(in srgb,var(--primary) 12%,var(--soft));border-color:var(--primary)}
+#syncGitHubBtn.ok{background:#dcfce7;color:#166534;border-color:#86efac}
+#syncGitHubBtn.err{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+
+
+/* =========================================================
+   V89 — Mobile compact filter/control bar (under "تصفية حسب السورة")
+   - Mobile only: single horizontal icon-only row for sort + filters + count.
+   - Desktop/tablet unchanged.
+   ========================================================= */
+
+@media (max-width: 768px){
+  /* Make the header row compact and prevent tall card-like layout */
+  #surahFilterSection .filter-head{flex-direction:row;align-items:center;gap:8px}
+  #surahFilterSection .filter-title-wrap{flex:1 1 auto;min-width:0}
+  #surahFilterSection .filter-title-wrap small{display:none} /* hide verbose status line in mobile */
+
+  /* Keep controls on ONE row */
+  #surahFilterSection .filter-bar-row{width:auto;flex:0 0 auto;flex-wrap:nowrap;gap:8px;justify-content:flex-start;align-items:center}
+
+  /* Inline sort container becomes minimal */
+  #surahFilterSection .filter-head .filter-inline-sort{
+    margin:0;padding:0;border:0;background:transparent;box-shadow:none;
+    flex:0 0 auto;min-width:auto;gap:6px
+  }
+  #surahFilterSection .filter-inline-sort label{display:none!important}
+
+  /* Compact icon-only select */
+  #surahFilterSection .sort-select-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+  #surahFilterSection .sort-select-wrap:before{
+    content:"⇅";
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    pointer-events:none;
+    font-weight:900;
+  }
+  #surahFilterSection select#displayMode{
+    width:40px;min-width:40px;height:40px;min-height:40px;
+    padding:0;
+    border-radius:999px;
+    background:var(--soft);
+    border:1px solid var(--border);
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    text-indent:-9999px; /* hide selected text (dropdown list still shows) */
+    direction:rtl;
+  }
+
+  /* Compact results counter pill: show only number via JS helper; CSS makes it small */
+  #surahFilterSection #counter{
+    padding:6px 10px;
+    border-radius:999px;
+    font-size:.78rem;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  /* Actions become icon-only buttons (no text visible) */
+  #surahFilterSection .filter-actions{flex:0 0 auto;gap:8px;flex-wrap:nowrap}
+  #surahFilterSection .filter-actions button{
+    width:40px;min-width:40px;height:40px;min-height:40px;
+    padding:0;
+    border-radius:999px;
+    font-size:0; /* hide existing label text */
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  #surahFilterSection #onlyResultsBtn:before{content:"✅";font-size:18px;line-height:1}
+  #surahFilterSection .filter-actions button[onclick="clearSurahFilter()"]:before{content:"📋";font-size:18px;line-height:1}
+
+  /* Prevent overflow */
+  #surahFilterSection .filter-head,
+  #surahFilterSection .filter-bar-row,
+  #surahFilterSection .filter-actions{overflow:hidden}
+}
+
+
+/* =========================================================
+   V91 — Surah filter panel: when OPEN, content stacks BELOW header (no side column)
+   Requirement: only affects OPEN state; closed state keeps main UI unchanged.
+   ========================================================= */
+
+#surahFilterSection #surahFilterPanel:not(.hidden){
+  display:block;
+  width:100%;
+  max-width:100%;
+  margin-top:14px;
+  clear:both;
+}
+#surahFilterSection #surahFilterPanel:not(.hidden) > *{
+  width:100%;
+  max-width:100%;
+}
+#surahFilterSection #surahFilterPanel:not(.hidden) .surah-grid{
+  width:100%;
+  max-width:100%;
+}
+
+/* Ensure grids fill available width and don't look like a left column */
+#surahFilterSection #surahFilterPanel:not(.hidden) .surah-grid{
+  grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
+}
+@media (max-width: 768px){
+  #surahFilterSection #surahFilterPanel:not(.hidden) .surah-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile-specific overrides to improve sorting/filtering readability (V82B) */
+@media (max-width:850px) {
+  /* make the inline sort/filter controls stack and span full width */
+  .filter-head .filter-inline-sort,
+  .filter-inline-sort {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    background: var(--surface);
+  }
+
+  .filter-inline-sort label { font-size: 1rem; font-weight: 800; color: var(--text); }
+
+  /* ensure selects and inputs expand and text is readable */
+  .filter-inline-sort select,
+  .filter-inline-sort input,
+  .filter-inline-sort .wide-input,
+  .filter-head .filter-actions button,
+  .filter-head .result-counter {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 1rem !important;
+    padding: 10px 12px !important;
+  }
+
+  .sort-select-wrap { display: block !important; width: 100% !important; }
+  .filter-actions { width: 100% !important; justify-content: space-between !important; gap: 8px; }
+
+  /* toolbar controls stack nicely on mobile */
+  .toolbar { grid-template-columns: 1fr !important; }
+  .tools { flex-direction: column !important; align-items: stretch !important; gap: 8px; }
+  .tools input, .main-search-wrap input { width: 100% !important; font-size: 1rem !important; padding: 10px 12px !important; }
+
+  /* keep compact filter bar behavior but ensure readable text when expanded */
+  #surahFilterSection .filter-head { gap: 8px; }
+  #surahFilterSection .filter-bar-row { width: 100%; justify-content: stretch; }
+}
