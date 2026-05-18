@@ -1,0 +1,439 @@
+/*
+ * Mutshabehat V82B — Mobile Filter & Sorting Section
+ * /impeccable polish + /impeccable layout
+ *
+ * Problem this fixes:
+ *   V89 used #surahFilterSection ID selectors to make everything icon-only:
+ *     - text-indent:-9999px hid the select value (blank box)
+ *     - font-size:0 hid all button labels
+ *     - #surahFilterToggleBtn had no ::before so rendered as invisible
+ *   V82B's class-based overrides couldn't beat V89's ID specificity.
+ *
+ * Strategy: match or exceed V89's specificity throughout, establish
+ * one clean layout, restore all text.
+ *
+ * Scope: @media (max-width: 850px) only. Desktop unchanged.
+ * Link AFTER styles.css and after polish.css (if using both).
+ */
+
+@media (max-width: 850px) {
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FILTER CARD SHELL
+     Full-width, tight padding, clean border
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  #surahFilterSection {
+    padding: 14px 14px 16px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: visible;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FILTER HEAD — single row: title left, status right
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  #surahFilterSection .filter-head {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    overflow: visible !important;
+    margin-bottom: 0;
+  }
+
+  #surahFilterSection .filter-title-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important; /* RTL: text starts from right */
+    gap: 2px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  #surahFilterSection .filter-title-wrap b {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* Restore status text as a subtle sub-line */
+  #surahFilterSection .filter-title-wrap small {
+    display: block !important;
+    font-size: 0.75rem !important;
+    color: var(--muted) !important;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FILTER BAR ROW — collapses into the filter-head zone
+     Becomes the right-side compact control area
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  #surahFilterSection .filter-bar-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     INLINE SORT CONTAINER — horizontal icon strip
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  #surahFilterSection .filter-inline-sort,
+  #surahFilterSection .filter-head .filter-inline-sort {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    width: auto !important;
+    min-width: auto !important;
+    margin: 0 !important;
+  }
+
+  /* Hide the verbose label — title row already explains context */
+  #surahFilterSection .filter-inline-sort label {
+    display: none !important;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SORT SELECT WRAP + SELECT
+     Show the sort icon button; select is icon-only but
+     functional (native dropdown opens on tap)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  #surahFilterSection .sort-select-wrap {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+  }
+
+  /* Sort icon overlay — shows ⇅ over the hidden-text select */
+  #surahFilterSection .sort-select-wrap::before {
+    content: "⇅" !important;
+    display: flex !important;
+    position: absolute !important;
+    inset: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    z-index: 1;
+  }
+
+  /* Select: 40×40 touch target, icon-only (text hidden but functional) */
+  #surahFilterSection select#displayMode {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 !important;
+    border-radius: 10px !important;
+    background: var(--soft) !important;
+    border: 1px solid var(--border) !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    text-indent: -9999px !important; /* intentional: icon-only; dropdown still works */
+    font-family: var(--uifont) !important;
+    color: var(--text) !important;
+    direction: rtl !important;
+    cursor: pointer !important;
+  }
+
+  /* Result counter: compact pill showing the number */
+  #surahFilterSection .result-counter {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 10px !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    border-radius: 999px !important;
+    max-width: none !important;
+    width: auto !important;
+    font-family: var(--uifont) !important;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FILTER ACTION BUTTONS — compact icon row in the header
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  #surahFilterSection .filter-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    overflow: visible !important;
+    width: auto !important;
+  }
+
+  /* All 3 action buttons: 40×40 icon-only touch targets */
+  #surahFilterSection .filter-actions button {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 !important;
+    border-radius: 10px !important;
+    font-size: 0 !important;         /* text hidden */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    font-family: var(--uifont) !important;
+  }
+
+  /* Icon for "بها نتائج فقط" — filter/results button */
+  #surahFilterSection #onlyResultsBtn::before {
+    content: "🔎" !important;
+    font-size: 17px !important;
+    line-height: 1 !important;
+    display: flex !important;
+  }
+
+  /* Active state: tinted background so user knows it's on */
+  #surahFilterSection #onlyResultsBtn.active {
+    background: color-mix(in srgb, var(--primary) 15%, var(--soft)) !important;
+    border-color: var(--primary) !important;
+  }
+
+  #surahFilterSection #onlyResultsBtn.active::before {
+    content: "🔎" !important;
+  }
+
+  /* Icon for "عرض الكل" — show all / clear filter */
+  #surahFilterSection .filter-actions button[onclick="clearSurahFilter()"]::before {
+    content: "⊘" !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    font-weight: 700 !important;
+    color: var(--muted) !important;
+    display: flex !important;
+  }
+
+  /* Icon for toggle panel button — open ▾ / close ▴
+     V89 left this button completely invisible. Fixed here. */
+  #surahFilterSection #surahFilterToggleBtn {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #fff !important;
+  }
+
+  #surahFilterSection #surahFilterToggleBtn::before {
+    content: "▾" !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    color: #fff !important;
+    display: flex !important;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FILTER PANEL (expanded) — full-width stacked content
+     This is what opens when the user taps the ▾ button
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  #surahFilterSection #surahFilterPanel {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #surahFilterSection #surahFilterPanel:not(.hidden) {
+    display: block !important;
+    margin-top: 14px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid var(--border) !important;
+  }
+
+  /* ── Sort select — FULL WIDTH with visible text inside the panel ── */
+  /* When the panel is open, show a labelled full-width sort control */
+  #surahFilterSection #surahFilterPanel:not(.hidden) ~ .filter-head .sort-select-wrap,
+  #surahFilterSection #surahFilterPanel:not(.hidden) ~ .filter-head select#displayMode {
+    /* The sort select stays in the header strip; this is just defensive */
+    width: auto !important;
+  }
+
+  /* ── Panel: search input ── */
+  #surahFilterSection #surahFilterSearch {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    font-family: var(--uifont) !important;
+    font-size: 0.95rem !important;
+    padding: 10px 13px !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--border) !important;
+    background: var(--soft) !important;
+    color: var(--text) !important;
+    direction: rtl !important;
+    margin: 0 0 12px !important;
+    display: block !important;
+  }
+
+  #surahFilterSection #surahFilterSearch::placeholder {
+    color: var(--muted) !important;
+    font-family: var(--uifont) !important;
+  }
+
+  #surahFilterSection #surahFilterSearch:focus {
+    outline: 2px solid color-mix(in srgb, var(--primary) 35%, transparent) !important;
+    border-color: var(--primary) !important;
+  }
+
+  /* ── Panel: range tab buttons ── */
+  #surahFilterSection .range-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+  }
+
+  #surahFilterSection .range-tabs button {
+    flex: 1 1 auto !important;
+    min-height: 38px !important;
+    padding: 8px 10px !important;
+    font-size: 0.82rem !important;     /* visible text */
+    font-family: var(--uifont) !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
+  #surahFilterSection .range-tabs button.active {
+    background: var(--primary) !important;
+    color: #fff !important;
+  }
+
+  /* ── Panel: section label (الأكثر وجودًا) ── */
+  #surahFilterSection #surahFilterPanel h4 {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    color: var(--muted) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    margin: 0 0 8px !important;
+    font-family: var(--uifont) !important;
+  }
+
+  /* ── Panel: surah grids — 2 columns ── */
+  #surahFilterSection .surah-grid,
+  #surahFilterSection #topSurahGrid,
+  #surahFilterSection #surahFilterGrid,
+  #surahFilterSection #surahFilterPanel:not(.hidden) .surah-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 7px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Top grid (الأكثر وجودًا): slightly larger cards */
+  #surahFilterSection #topSurahGrid {
+    margin-bottom: 14px !important;
+  }
+
+  /* ── Panel: individual surah pills ── */
+  #surahFilterSection .surah-pill {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    padding: 9px 10px !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--border) !important;
+    background: var(--soft) !important;
+    font-family: var(--uifont) !important;
+    font-size: 0.83rem !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    min-height: 42px !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    direction: rtl !important;
+    text-align: right !important;
+    transition: background 120ms ease-out, border-color 120ms ease-out !important;
+  }
+
+  #surahFilterSection .surah-pill.active {
+    background: color-mix(in srgb, var(--primary) 12%, var(--surface)) !important;
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+  }
+
+  #surahFilterSection .surah-pill.no-match {
+    opacity: 0.35 !important;
+  }
+
+  /* Count badge inside pill */
+  #surahFilterSection .count-badge,
+  #surahFilterSection .no-badge {
+    font-family: var(--uifont) !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    min-width: 22px !important;
+    height: 22px !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    padding: 0 5px !important;
+  }
+
+  /* Surah name inside pill — constrain so it doesn't overflow */
+  #surahFilterSection .surah-pill > *:first-child {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  /* surah count line */
+  #surahFilterSection .surah-count-line {
+    display: block !important;
+    font-size: 0.75rem !important;
+    color: var(--muted) !important;
+    font-family: var(--uifont) !important;
+    margin: 8px 0 !important;
+  }
+
+} /* end @media (max-width: 850px) */
