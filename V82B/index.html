@@ -41,9 +41,9 @@
 <script src="quran-reference.js?v=v82_fix_loader"></script><script src="personal-data.js?v=v82_fix_loader"></script><script src="automated-manifest.js?v=v82_fix_loader"></script><script src="app.js?v=v85_independent_filters_sort"></script>
 </body></html>
 +<script>                                                                                                                                                                                                                        
-      43 +(function(){                                                                                                                                                                                                                    
-      44 +  var _od = openDatabase, _oh = openHome;                                                                                                                                                                                       
-      45 +  openDatabase = async function(w){ document.body.dataset.activeDb = w; return _od(w); };                                                                                                                                       
-      46 +  openHome     = function(){        document.body.dataset.activeDb = '';  return _oh();  };                                                                                                                                     
-      47 +})();                                                                                                                                                                                                                           
-      48 +</script>           
+(function(){                                                                                                                                                                                                                    
+   var _od = openDatabase, _oh = openHome;                                                                                                                                                                                       
+   openDatabase = async function(w){ document.body.dataset.activeDb = w; return _od(w); };                                                                                                                                       
+    openHome     = function(){        document.body.dataset.activeDb = '';  return _oh();  };                                                                                                                                     
+  })();                                                                                                                                                                                                                           
+  </script>           
