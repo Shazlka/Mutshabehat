@@ -1,1 +1,435 @@
+/*
+ * Mutshabehat V82B — Design Polish + Layout Pass
+ * /impeccable polish + /impeccable layout
+ *
+ * Link AFTER styles.css:
+ *   <link rel="stylesheet" href="polish.css">
+ *
+ * What changed and why:
+ *  1. Header glassmorphism removed — flat surface, solid border
+ *  2. Gradients removed from all UI elements — flat primary color, state communicated through color/shadow not gradient
+ *  3. Button font-weight 800 → 600 — restores hierarchy between labels and headings
+ *  4. box-shadow removed from static surfaces — flat at rest, lift on hover/elevation only
+ *  5. .unote side-stripe removed — replaced with background tint (banned pattern)
+ *  6. Border-radius vocabulary consolidated: 8px / 12px / 16px / pill
+ *  7. max-width 1500px → 1200px — better content density and readability
+ *  8. Choice cards differentiated — personal = primary filled, auto = outlined
+ *  9. Group head hover state + open state indicator
+ * 10. Spacing rhythm improved — varied between tight groupings and generous separations
+ */
+
+/* ─── Radius vocabulary ─────────────────────────────────────────── */
+:root {
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-pill: 9999px;
+}
+
+/* ─── Header: remove glassmorphism ─────────────────────────────── */
+.app-header {
+  background: var(--surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+body[data-theme="bevel-night"] .app-header {
+  background: var(--surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* ─── Logo: flat color, consistent radius ───────────────────────── */
+.logo {
+  background: var(--primary);
+  border-radius: var(--r-md);
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+}
+
+/* ─── Primary elements: flat, no gradient ───────────────────────── */
+.primary,
+.choice-card {
+  background: var(--primary) !important;
+}
+
+.floating-top {
+  background: var(--primary);
+}
+
+.group-num {
+  background: var(--primary);
+  border-radius: var(--r-md);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  font-size: 1rem;
+}
+
+/* ─── Modal head: no gradient ────────────────────────────────────── */
+.modal-head,
+.modal-header {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+.modal-head h2,
+.modal-header h2 {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+
+/* ─── Group head/body: no gradient ─────────────────────────────── */
+.group-head {
+  background: var(--surface);
+  border-bottom: 1px solid transparent;
+  transition: background 150ms ease-out, border-color 150ms ease-out;
+}
+.group-head:hover {
+  background: var(--soft);
+}
+.group.open .group-head {
+  border-bottom: 1px solid var(--border);
+}
+
+.group-body {
+  background: var(--surface);
+}
+
+/* ─── Shadows: flat at rest, lift on interaction ────────────────── */
+.hero,
+.filter-card,
+.toolbar,
+.settings-section,
+.display-row,
+.group,
+.surah-section,
+.verse-card,
+.draft-item,
+.edit-verse,
+.quran-result,
+.merge-item,
+.dash-card,
+.github-sync-status-card {
+  box-shadow: none;
+}
+
+.group:hover {
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  transition: box-shadow 200ms ease-out;
+}
+
+.verse-card:hover {
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.07);
+  transition: box-shadow 200ms ease-out;
+}
+
+.choice-card:hover {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  transform: translateY(-2px);
+  transition: box-shadow 200ms ease-out, transform 200ms ease-out;
+}
+
+/* ─── Buttons: hierarchy through weight, not uniformity ─────────── */
+button {
+  font-weight: 600;
+  border-radius: var(--r-md);
+}
+
+button.primary {
+  font-weight: 700;
+}
+
+/* Danger stays as-is (semantic red) */
+button.danger {
+  font-weight: 600;
+}
+
+/* ─── Side-stripe removal: .unote → tinted background ──────────── */
+.unote {
+  border-right: none;
+  border: 1px solid color-mix(in srgb, var(--purple) 28%, var(--border));
+  background: color-mix(in srgb, var(--purple) 6%, var(--surface));
+}
+
+/* ─── Border-radius vocabulary: 8 / 12 / 16 / pill ─────────────── */
+
+/* Large containers */
+.hero,
+.filter-card,
+.toolbar,
+.settings-section,
+.modal,
+.group,
+.surah-section,
+.mobile-menu-panel {
+  border-radius: var(--r-lg);
+}
+
+/* Standard cards */
+.verse-card,
+.draft-item,
+.compare-card,
+.quran-search-box,
+.edit-verse,
+.quran-result,
+.merge-item,
+.font-preview-box,
+.github-status-card,
+.github-sync-status-card,
+.group-detail-card {
+  border-radius: var(--r-md);
+}
+
+/* Inputs and small controls */
+.wide-input,
+.field input,
+.field select,
+.field textarea,
+.rt-editor,
+.filter-inline-sort,
+.main-search-wrap,
+.quran-search-box input {
+  border-radius: var(--r-sm);
+}
+
+/* Surah pills stay as compact cards */
+.surah-pill {
+  border-radius: var(--r-md);
+  min-height: 40px;
+}
+
+/* Modal head radius matches modal container */
+.modal-head,
+.modal-header {
+  border-radius: var(--r-lg) var(--r-lg) 0 0 !important;
+}
+
+/* ─── Choice cards: break the identical-grid pattern ───────────── */
+
+/* Personal = primary filled (recommended action) */
+.choice-card.personal {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* Auto = outlined (secondary action) */
+.choice-card.auto {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 2px solid var(--border) !important;
+  min-height: 140px; /* slightly shorter to create size contrast */
+}
+
+.choice-card.auto span {
+  color: var(--muted);
+}
+
+.choice-card.auto em {
+  background: var(--soft);
+  color: var(--muted);
+}
+
+/* Choice grid: stack differently — personal wider, auto narrower */
+.choice-grid {
+  grid-template-columns: 1fr;
+  max-width: 560px;
+  margin-inline: auto;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .choice-grid {
+    grid-template-columns: 3fr 2fr;
+    max-width: none;
+  }
+}
+
+/* ─── Content width: tighter for better density ─────────────────── */
+.home-screen,
+.workspace {
+  max-width: 1200px;
+  padding: 0 28px;
+  margin: 24px auto;
+}
+
+@media (max-width: 850px) {
+  .home-screen,
+  .workspace {
+    padding: 0 12px;
+    margin: 16px auto;
+  }
+}
+
+/* ─── Spacing rhythm: tight within / generous between ───────────── */
+
+/* More breathing between the filter and the toolbar */
+.filter-card {
+  margin-bottom: 24px;
+}
+
+/* Slightly tighter gap between groups */
+.group,
+.surah-section {
+  margin-bottom: 10px;
+}
+
+/* Section-level breathing room */
+.workspace > .toolbar {
+  margin-bottom: 16px;
+}
+
+.workspace > #activeFilterChips {
+  margin-bottom: 8px;
+}
+
+/* Hero section padding: generous */
+.hero {
+  padding: 36px 24px;
+}
+
+/* Toolbar padding: tighter — it's a control strip */
+.toolbar {
+  padding: 14px 18px;
+}
+
+/* Filter card: consistent inner spacing */
+.filter-card {
+  padding: 16px 18px;
+}
+
+/* Group head: proportional */
+.group-head {
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+/* Group body: comfortable */
+.group-body {
+  padding: 16px;
+}
+
+/* Verse cards: tighter */
+.verse-card,
+.draft-item {
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+/* ─── Surah filter: visual cleanup ─────────────────────────────── */
+.surah-grid {
+  gap: 8px;
+}
+
+.surah-pill.active {
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  border-color: var(--primary);
+}
+
+/* ─── Toolbar: icon buttons more compact ────────────────────────── */
+.group-actions .icon-btn {
+  width: 34px;
+  height: 34px;
+}
+
+/* ─── Legend: cleaner compact strip ────────────────────────────── */
+.legend.legend-compact {
+  padding: 6px 18px;
+  gap: 10px;
+  font-size: 0.75rem;
+}
+
+/* ─── Completed group number: consistent with flat system ────────── */
+.group-num.completed,
+.group.is-completed .group-num {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+  border: 1.5px solid #86efac !important;
+  box-shadow: none !important;
+}
+
+/* ─── Result counter: subtle ────────────────────────────────────── */
+.result-counter {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+}
+
+/* ─── Modal: clean shadow, no gradient ─────────────────────────── */
+.modal {
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+  border-radius: var(--r-lg);
+}
+
+/* Modal close button: clean */
+.modal-head > button,
+.modal-header > button,
+.modal-head .modal-close-btn,
+.modal-header .modal-close-btn {
+  background: var(--soft) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-sm) !important;
+  box-shadow: none !important;
+}
+
+.modal-head > button:hover,
+.modal-header > button:hover,
+.modal-head .modal-close-btn:hover,
+.modal-header .modal-close-btn:hover {
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface)) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ─── Search wrap: flat ─────────────────────────────────────────── */
+.main-search-wrap {
+  background: var(--soft);
+  box-shadow: none;
+  border-radius: var(--r-md);
+}
+
+/* ─── dark theme adaptations ────────────────────────────────────── */
+body[data-theme="bevel-night"] .group-head,
+body[data-theme="bevel-night"] .group-body {
+  background: var(--surface);
+}
+
+body[data-theme="bevel-night"] .choice-card.auto {
+  background: var(--soft) !important;
+  border-color: var(--border) !important;
+}
+
+body[data-theme="bevel-night"] .unote {
+  border: 1px solid color-mix(in srgb, var(--purple) 35%, var(--border));
+  background: color-mix(in srgb, var(--purple) 10%, var(--surface));
+  border-right: none;
+}
+
+body[data-theme="bevel-night"] .modal-head,
+body[data-theme="bevel-night"] .modal-header {
+  background: var(--surface) !important;
+}
+
+/* ─── Responsive: radius tightens on mobile ─────────────────────── */
+@media (max-width: 850px) {
+  .hero,
+  .filter-card,
+  .toolbar,
+  .settings-section,
+  .group,
+  .surah-section {
+    border-radius: var(--r-md);
+  }
+
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-card.auto {
+    min-height: 120px;
+  }
+}
 
