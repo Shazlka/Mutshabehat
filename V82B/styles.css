@@ -1168,3 +1168,130 @@ body{
     flex-wrap:wrap;
   }
 }
+
+/* =========================================================
+   V82C Phase 3 Mirror - details left, cards center, sidebar right
+   ========================================================= */
+
+.dashboard-body{
+  direction:ltr;
+  grid-template-columns:minmax(620px,1.4fr) minmax(360px,.8fr) 340px;
+  grid-template-areas:"detail list side";
+}
+
+.dashboard-body > .detail-panel,
+.dashboard-body > .groups,
+.dashboard-body > .dashboard-side{
+  direction:rtl;
+}
+
+.dashboard-side{
+  justify-self:stretch;
+}
+
+.dashboard-body > .detail-panel{
+  justify-self:stretch;
+}
+
+.dashboard-body > .groups{
+  justify-self:stretch;
+}
+
+.groups > .group .group-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:
+    "title num"
+    "actions actions";
+  align-items:start;
+  row-gap:10px;
+  column-gap:12px;
+}
+
+.groups > .group .group-num{
+  grid-area:num;
+  align-self:start;
+  justify-self:start;
+}
+
+.groups > .group .group-title-wrap{
+  grid-area:title;
+  display:grid;
+  gap:8px;
+  min-width:0;
+}
+
+.groups > .group .group-tags{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:0;
+}
+
+.groups > .group .group-title{
+  display:block;
+  width:100%;
+  font-size:1.02rem;
+  line-height:1.55;
+  text-align:right;
+  word-break:normal;
+  overflow-wrap:anywhere;
+}
+
+.groups > .group .group-actions{
+  grid-area:actions;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  gap:6px;
+  width:100%;
+  padding-top:2px;
+  border-top:1px solid color-mix(in srgb,var(--border) 82%,transparent);
+}
+
+.groups > .group .group-actions button:not(.icon-btn){
+  min-height:30px;
+  padding:5px 9px;
+}
+
+.groups > .group .icon-btn{
+  width:31px;
+  height:31px;
+}
+
+.groups > .group .tag{
+  font-size:.72rem;
+}
+
+@media (max-width:1200px){
+  .dashboard-body{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "detail"
+      "list"
+      "side";
+  }
+
+  .dashboard-body > .detail-panel,
+  .dashboard-side{
+    position:static;
+  }
+
+  .detail-panel-content{
+    min-height:auto;
+    max-height:none;
+  }
+}
+
+@media (max-width:900px){
+  .dashboard-body{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "detail"
+      "list"
+      "side";
+  }
+}
