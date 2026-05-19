@@ -6,6 +6,8 @@ function nextPersonalId(){return Math.max(0,...personalData.map(g=>Number(g.id)|
 
 function copyAutoGroupToPersonal(id){let g=automatedData.find(x=>Number(x.id)===Number(id));if(!g)return;let c=clone([g])[0];c.id=nextPersonalId();c.autoCandidate=false;c.source='automated';personalData.push(c);saveDb('personal');alert('تم النسخ إلى الشخصية');updateHomeCounts()}
 
+function copyGroupText(id){let g=findActive(id);if(!g)return;let txt=`${g.title}\n`+(g.verses||[]).map(v=>`${v.surah} ${v.ayah}: ${(v.parts||[]).map(p=>p.text).join('')}`).join('\n');navigator.clipboard?.writeText(txt);alert('تم النسخ')}
+
 async function copyGroupText(id){let g=findActive(id);if(!g)return;let ok=await writeClipboardTextV78(groupPlainText(g));toast(ok?'تم النسخ مع الملاحظات':'لم يتم النسخ — انسخ يدوياً من المتصفح',ok?'ok':'err')}
 
 function deleteAutoGroup(id){
