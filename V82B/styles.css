@@ -434,3 +434,317 @@
     padding:10px 12px;
   }
 }
+
+/* =========================================================
+   V82C Phase 3 Fix - Full-width dashboard workspace
+   ========================================================= */
+
+.home-screen,
+.workspace{
+  max-width:none!important;
+  width:100%;
+  margin:16px 0 24px;
+  padding:0 16px;
+}
+
+.workspace-shell{
+  display:block;
+  width:100%;
+}
+
+.workspace-main{
+  display:grid;
+  gap:16px;
+  width:100%;
+}
+
+.workspace-toolbar{
+  display:flex!important;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  width:100%;
+  margin:0;
+  padding:20px 24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+}
+
+.workspace-toolbar > :first-child{
+  flex:1 1 280px;
+}
+
+.workspace-toolbar h2{
+  margin:0 0 6px;
+  font-size:clamp(1.9rem,2.4vw,2.7rem);
+  line-height:1.15;
+}
+
+.workspace-toolbar p{
+  margin:0;
+  color:var(--muted);
+  font-size:1rem;
+}
+
+.toolbar-tools{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  flex:2 1 820px;
+  width:100%;
+}
+
+.toolbar-tools > button,
+.toolbar-tools > .main-search-wrap{
+  flex:0 0 auto;
+}
+
+.toolbar-tools .main-search-wrap{
+  flex:1 1 380px;
+  max-width:540px;
+}
+
+.workspace-filter-card{
+  width:100%;
+  margin:0;
+  padding:20px 24px;
+  border-radius:24px;
+}
+
+.workspace-filter-card .filter-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.workspace-filter-card .filter-title-wrap{
+  flex:1 1 260px;
+}
+
+.workspace-filter-card .filter-title-wrap b{
+  font-size:1.05rem;
+}
+
+.workspace-filter-card .filter-title-wrap small{
+  font-size:.95rem;
+}
+
+.workspace-filter-card .filter-bar-row{
+  flex:2 1 880px;
+  justify-content:flex-start;
+  gap:12px;
+}
+
+.workspace-filter-card .filter-inline-sort{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:min(100%,460px);
+  padding:10px 12px;
+}
+
+.workspace-filter-card .filter-inline-sort label{
+  margin:0;
+  white-space:nowrap;
+  font-weight:800;
+}
+
+.workspace-filter-card .sort-select-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.workspace-filter-card .filter-inline-sort select{
+  min-width:220px;
+}
+
+.workspace-filter-card .filter-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.workspace-filter-card .wide-input{
+  margin:16px 0 12px;
+}
+
+.workspace-status-bar{
+  position:static;
+  margin:0;
+  padding:14px 18px;
+  gap:10px;
+}
+
+.active-filter-chips,
+.surah-index-bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:0;
+}
+
+.active-filter-chips span,
+.surah-index-bar button{
+  min-height:38px;
+}
+
+.dashboard-layout{
+  width:100%;
+  max-width:none;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 320px;
+  gap:16px;
+  align-items:start;
+}
+
+.dashboard-side{
+  display:grid;
+  gap:16px;
+  align-self:start;
+  position:sticky;
+  top:112px;
+}
+
+.workspace-side-card,
+.detail-panel{
+  border-radius:22px;
+}
+
+.workspace-side-card{
+  padding:18px;
+}
+
+.groups{
+  min-width:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:16px;
+  align-items:start;
+}
+
+.groups > .group,
+.groups > .hint{
+  margin-bottom:0;
+}
+
+.groups > .surah-section,
+.groups > .hint{
+  grid-column:1 / -1;
+}
+
+.group,
+.surah-section{
+  margin-bottom:0;
+  border-radius:22px;
+}
+
+.group{
+  height:fit-content;
+}
+
+.group-head{
+  align-items:flex-start;
+  min-height:104px;
+}
+
+.group-title{
+  font-size:1.35rem;
+  line-height:1.4;
+}
+
+.group-title-wrap{
+  min-width:0;
+}
+
+.group-actions{
+  justify-content:flex-start;
+}
+
+.detail-panel{
+  position:static;
+  overflow:hidden;
+}
+
+.detail-panel-content{
+  min-height:340px;
+  max-height:calc(100vh - 180px);
+  padding:18px;
+}
+
+.detail-empty,
+.detail-card-head{
+  gap:14px;
+}
+
+.detail-panel .group-detail-card{
+  border:0;
+  padding:0;
+}
+
+@media (max-width:1100px){
+  .dashboard-layout{
+    grid-template-columns:1fr;
+  }
+
+  .dashboard-side{
+    position:static;
+    grid-template-columns:1fr;
+  }
+
+  .detail-panel-content{
+    min-height:auto;
+    max-height:none;
+  }
+}
+
+@media (max-width:850px){
+  .home-screen,
+  .workspace{
+    padding:0 12px;
+  }
+
+  .workspace-toolbar,
+  .workspace-filter-card{
+    padding:16px;
+  }
+
+  .workspace-toolbar{
+    gap:12px;
+  }
+
+  .toolbar-tools{
+    justify-content:stretch;
+  }
+
+  .toolbar-tools > button,
+  .toolbar-tools > .main-search-wrap{
+    flex:1 1 180px;
+  }
+
+  .workspace-filter-card .filter-head,
+  .workspace-filter-card .filter-bar-row,
+  .workspace-filter-card .filter-inline-sort{
+    width:100%;
+  }
+
+  .workspace-status-bar{
+    padding:12px 14px;
+  }
+
+  .groups{
+    grid-template-columns:1fr;
+  }
+
+  .group-head{
+    min-height:auto;
+  }
+}
