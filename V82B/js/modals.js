@@ -1,9 +1,3 @@
-function modal(id,title,body,footer){closeModal(id);let e=document.createElement('section');e.id=id;e.className='modal-backdrop';let modalClass='modal '+id+'-window';e.innerHTML=`<div class="${modalClass}" role="dialog" aria-modal="true"><div class="modal-head"><h2>${title}</h2><button class="modal-close-btn" aria-label="إغلاق" onclick="closeModal('${id}')">×</button></div><div class="modal-body">${body}</div><div class="modal-footer">${footer||''}</div></div>`;e.onclick=x=>{if(x.target===e)closeModal(id)};document.getElementById('modalRoot').appendChild(e)}
-
-function closeModal(id){document.getElementById(id)?.remove()}
-
-function openMobileMenu(){let items=[['الرئيسية','openHome()'],['الشخصية',"openDatabase('personal')"],['الآلية',"openDatabase('auto')"],['إضافة','openAddModal()'],['الإحصائيات','openDashboard()'],['الإعدادات','openAppSettings()'],['بحث متقدم','openAdvancedSearch()'],['دمج','openMergeWindow()'],['Release Notes','openReleaseNotes()']];let e=document.createElement('section');e.id='mobileMenu';e.className='modal-backdrop';e.innerHTML=`<div class="mobile-menu-panel"><button onclick="closeModal('mobileMenu')">× إغلاق</button>${items.map(i=>`<button onclick="closeModal('mobileMenu');${i[1]}">${i[0]}</button>`).join('')}</div>`;document.getElementById('modalRoot').appendChild(e)}
-
 function lockBodyScrollV78(){if(document.body.classList.contains('modal-open-v78'))return;__modalScrollY_V78=window.scrollY||document.documentElement.scrollTop||0;document.body.style.top=`-${__modalScrollY_V78}px`;document.body.classList.add('modal-open-v78')}
 
 function unlockBodyScrollV78(){if(document.querySelector('.modal-backdrop'))return;document.body.classList.remove('modal-open-v78');document.body.style.top='';window.scrollTo(0,__modalScrollY_V78||0)}

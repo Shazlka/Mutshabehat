@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>متشابهات القرآن الكريم — V80 Automated DB Delete</title>
+  <title>متشابهات القرآن الكريم</title>
   <link rel="stylesheet" href="css/01-base.css?v=v82b_split">
   <link rel="stylesheet" href="css/02-header.css?v=v82b_split">
   <link rel="stylesheet" href="css/03-layout.css?v=v82b_split">
@@ -21,7 +21,7 @@
 </head>
 <body data-theme="quran-classic" data-font-preset="normal-quran">
 <header class="app-header">
-  <div class="brand"><div class="logo">ق</div><div><h1>متشابهات القرآن الكريم</h1><p>V80 — حذف من القاعدة الآلية</p></div></div>
+  <div class="brand"><div class="logo">ق</div><div><h1>متشابهات القرآن الكريم</h1><p></p></div></div>
   <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
   <nav class="header-actions">
     <button onclick="openHome()">الرئيسية</button><button onclick="openDatabase('personal')">الشخصية</button><button onclick="openDatabase('auto')">الآلية</button>
@@ -68,6 +68,13 @@
 <script src="js/github-sync.js?v=v82b_split_app"></script>
 <script src="js/settings.js?v=v82b_split_app"></script>
 <script src="js/export-tools.js?v=v82b_split_app"></script>
-<script src="js/boot-check.js?v=v82c_phase1"></script>
-</body>
-</html>
+</body></html>
+<script>                                                                                                                                                                                                                        
+      (function(){                                                                                                                                                                                                                    
+       var _od = openDatabase, _oh = openHome;                                                                                                                                                                                       
+        openDatabase = async function(w){ document.body.dataset.activeDb = w; return _od(w); };                                                                                                                                       
+        openHome     = function(){        document.body.dataset.activeDb = '';  return _oh();  };                                                                                                                                     
+      })();                                                                                                                                                                                                                           
+      </script>                                                                                                                                                                                                                       
+        </body></html>
+     
