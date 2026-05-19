@@ -209,3 +209,542 @@
   #surahFilterSection .filter-head { gap: 8px; }
   #surahFilterSection .filter-bar-row { width: 100%; justify-content: stretch; }
 }
+
+/* =========================================================
+   V82C Phase 3 - Split workspace, summary rail, detail drawer
+   ========================================================= */
+
+.workspace-shell{
+  display:grid;
+  grid-template-columns:minmax(300px,360px) minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+}
+
+.workspace-sidebar{
+  position:sticky;
+  top:112px;
+  display:grid;
+  gap:16px;
+}
+
+.workspace-side-card,
+.workspace-status-bar,
+.detail-panel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+}
+
+.workspace-side-card{
+  padding:18px;
+}
+
+.workspace-side-label{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 12px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--muted);
+  background:var(--soft);
+  font-size:.76rem;
+  font-weight:900;
+}
+
+.workspace-side-card h3{
+  margin:14px 0 8px;
+  font-size:1.1rem;
+}
+
+.workspace-side-card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.9;
+}
+
+.workspace-main{
+  min-width:0;
+}
+
+.workspace-status-bar{
+  position:sticky;
+  top:112px;
+  z-index:6;
+  margin-bottom:14px;
+  padding:12px 14px;
+  display:grid;
+  gap:8px;
+}
+
+.workspace-content{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(300px,360px);
+  gap:16px;
+  align-items:start;
+}
+
+.groups{
+  min-width:0;
+}
+
+.detail-panel{
+  position:sticky;
+  top:214px;
+  overflow:hidden;
+}
+
+.detail-panel-content{
+  min-height:420px;
+  max-height:calc(100vh - 250px);
+  overflow:auto;
+  padding:18px;
+}
+
+.detail-empty{
+  display:grid;
+  gap:12px;
+  align-content:start;
+}
+
+.detail-empty h3,
+.detail-card-head h3{
+  margin:0;
+  font-size:1.08rem;
+}
+
+.detail-empty p,
+.detail-card-head p,
+.detail-meta-line{
+  margin:0;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.detail-card-head{
+  display:grid;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.detail-header-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.detail-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.detail-stack{
+  display:grid;
+  gap:10px;
+}
+
+.detail-panel .group-detail-card{
+  padding:0;
+  border:0;
+  background:transparent;
+}
+
+.group.is-selected{
+  border-color:color-mix(in srgb,var(--primary) 42%,var(--border));
+  box-shadow:0 20px 38px rgba(49,84,212,.12);
+}
+
+.group.is-selected .group-head{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--primary) 9%,var(--surface)),var(--soft));
+}
+
+.workspace-hero-state{
+  display:grid;
+  gap:16px;
+}
+
+.workspace-hero-state h3{
+  margin:0;
+  font-size:1.15rem;
+}
+
+.workspace-hero-state p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.9;
+}
+
+.workspace-hero-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
+}
+
+.workspace-hero-stat{
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:linear-gradient(180deg,var(--surface),var(--soft));
+}
+
+.workspace-hero-stat b{
+  display:block;
+  margin-bottom:4px;
+  font-size:1.25rem;
+}
+
+.workspace-hero-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.workspace-hero-state .surah-grid{
+  max-height:none;
+}
+
+@media (max-width:1100px){
+  .workspace-shell,
+  .workspace-content{
+    grid-template-columns:1fr;
+  }
+
+  .workspace-sidebar,
+  .workspace-status-bar,
+  .detail-panel{
+    position:static;
+  }
+
+  .detail-panel-content{
+    min-height:auto;
+    max-height:none;
+  }
+}
+
+@media (max-width:850px){
+  .workspace-shell{
+    gap:12px;
+  }
+
+  .workspace-status-bar{
+    padding:10px 12px;
+  }
+}
+
+/* =========================================================
+   V82C Phase 3 Fix - Full-width dashboard workspace
+   ========================================================= */
+
+.home-screen,
+.workspace{
+  max-width:none!important;
+  width:100%;
+  margin:16px 0 24px;
+  padding:0 16px;
+}
+
+.workspace-shell{
+  display:block;
+  width:100%;
+}
+
+.workspace-main{
+  display:grid;
+  gap:16px;
+  width:100%;
+}
+
+.workspace-toolbar{
+  display:flex!important;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  width:100%;
+  margin:0;
+  padding:20px 24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+}
+
+.workspace-toolbar > :first-child{
+  flex:1 1 280px;
+}
+
+.workspace-toolbar h2{
+  margin:0 0 6px;
+  font-size:clamp(1.9rem,2.4vw,2.7rem);
+  line-height:1.15;
+}
+
+.workspace-toolbar p{
+  margin:0;
+  color:var(--muted);
+  font-size:1rem;
+}
+
+.toolbar-tools{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  flex:2 1 820px;
+  width:100%;
+}
+
+.toolbar-tools > button,
+.toolbar-tools > .main-search-wrap{
+  flex:0 0 auto;
+}
+
+.toolbar-tools .main-search-wrap{
+  flex:1 1 380px;
+  max-width:540px;
+}
+
+.workspace-filter-card{
+  width:100%;
+  margin:0;
+  padding:20px 24px;
+  border-radius:24px;
+}
+
+.workspace-filter-card .filter-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.workspace-filter-card .filter-title-wrap{
+  flex:1 1 260px;
+}
+
+.workspace-filter-card .filter-title-wrap b{
+  font-size:1.05rem;
+}
+
+.workspace-filter-card .filter-title-wrap small{
+  font-size:.95rem;
+}
+
+.workspace-filter-card .filter-bar-row{
+  flex:2 1 880px;
+  justify-content:flex-start;
+  gap:12px;
+}
+
+.workspace-filter-card .filter-inline-sort{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:min(100%,460px);
+  padding:10px 12px;
+}
+
+.workspace-filter-card .filter-inline-sort label{
+  margin:0;
+  white-space:nowrap;
+  font-weight:800;
+}
+
+.workspace-filter-card .sort-select-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.workspace-filter-card .filter-inline-sort select{
+  min-width:220px;
+}
+
+.workspace-filter-card .filter-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.workspace-filter-card .wide-input{
+  margin:16px 0 12px;
+}
+
+.workspace-status-bar{
+  position:static;
+  margin:0;
+  padding:14px 18px;
+  gap:10px;
+}
+
+.active-filter-chips,
+.surah-index-bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:0;
+}
+
+.active-filter-chips span,
+.surah-index-bar button{
+  min-height:38px;
+}
+
+.dashboard-layout{
+  width:100%;
+  max-width:none;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 320px;
+  gap:16px;
+  align-items:start;
+}
+
+.dashboard-side{
+  display:grid;
+  gap:16px;
+  align-self:start;
+  position:sticky;
+  top:112px;
+}
+
+.workspace-side-card,
+.detail-panel{
+  border-radius:22px;
+}
+
+.workspace-side-card{
+  padding:18px;
+}
+
+.groups{
+  min-width:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:16px;
+  align-items:start;
+}
+
+.groups > .group,
+.groups > .hint{
+  margin-bottom:0;
+}
+
+.groups > .surah-section,
+.groups > .hint{
+  grid-column:1 / -1;
+}
+
+.group,
+.surah-section{
+  margin-bottom:0;
+  border-radius:22px;
+}
+
+.group{
+  height:fit-content;
+}
+
+.group-head{
+  align-items:flex-start;
+  min-height:104px;
+}
+
+.group-title{
+  font-size:1.35rem;
+  line-height:1.4;
+}
+
+.group-title-wrap{
+  min-width:0;
+}
+
+.group-actions{
+  justify-content:flex-start;
+}
+
+.detail-panel{
+  position:static;
+  overflow:hidden;
+}
+
+.detail-panel-content{
+  min-height:340px;
+  max-height:calc(100vh - 180px);
+  padding:18px;
+}
+
+.detail-empty,
+.detail-card-head{
+  gap:14px;
+}
+
+.detail-panel .group-detail-card{
+  border:0;
+  padding:0;
+}
+
+@media (max-width:1100px){
+  .dashboard-layout{
+    grid-template-columns:1fr;
+  }
+
+  .dashboard-side{
+    position:static;
+    grid-template-columns:1fr;
+  }
+
+  .detail-panel-content{
+    min-height:auto;
+    max-height:none;
+  }
+}
+
+@media (max-width:850px){
+  .home-screen,
+  .workspace{
+    padding:0 12px;
+  }
+
+  .workspace-toolbar,
+  .workspace-filter-card{
+    padding:16px;
+  }
+
+  .workspace-toolbar{
+    gap:12px;
+  }
+
+  .toolbar-tools{
+    justify-content:stretch;
+  }
+
+  .toolbar-tools > button,
+  .toolbar-tools > .main-search-wrap{
+    flex:1 1 180px;
+  }
+
+  .workspace-filter-card .filter-head,
+  .workspace-filter-card .filter-bar-row,
+  .workspace-filter-card .filter-inline-sort{
+    width:100%;
+  }
+
+  .workspace-status-bar{
+    padding:12px 14px;
+  }
+
+  .groups{
+    grid-template-columns:1fr;
+  }
+
+  .group-head{
+    min-height:auto;
+  }
+}
