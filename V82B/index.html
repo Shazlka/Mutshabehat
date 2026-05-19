@@ -34,7 +34,20 @@
 </div>
 <main id="home" class="home-screen"><section class="hero"><h2>اختر قاعدة البيانات</h2><p>القاعدة الشخصية قابلة للتعديل، والقاعدة الآلية للمراجعة والنسخ والحذف عند تفعيل وضع التعديل.</p><div class="choice-grid"><button class="choice-card personal" onclick="openDatabase('personal')"><span>★</span><b>المتشابهات الشخصية</b><small>معتمدة وقابلة للإضافة والتعديل</small><em id="personalCountHome">0 مجموعة</em></button><button class="choice-card auto" onclick="openDatabase('auto')"><span>⚙</span><b>المتشابهات الآلية</b><small>مرشحات آلية للمراجعة</small><em id="autoCountHome">0 مجموعة</em></button></div></section></main>
 <section id="workspace" class="workspace hidden">
-  <section class="filter-card" id="surahFilterSection"><div class="filter-head"><div class="filter-title-wrap"><b>🔍 تصفية حسب السورة</b><small id="filterStatus">المعروض الآن: كل السور</small></div><div class="filter-bar-row"><div class="filter-inline-sort" aria-label="خيارات العرض والنتائج">
+  <div class="workspace-shell">
+    <div class="workspace-main">
+      <section class="workspace-status-bar">
+        <div id="activeFilterChips" class="active-filter-chips"></div>
+        <div id="surahIndexBar" class="surah-index-bar"></div>
+      </section>
+      <div class="dashboard-body">
+        <aside id="detailPanel" class="detail-panel">
+          <div id="detailPanelContent" class="detail-panel-content"></div>
+        </aside>
+        <div id="groups" class="groups"></div>
+        <div class="dashboard-side">
+          <div class="toolbar workspace-toolbar workspace-side-card"><div><h2 id="dbTitle">قاعدة البيانات</h2><p id="dbSubTitle">—</p></div><div class="tools toolbar-tools"><button id="mainSearchBtn" class="icon-btn outline-icon main-search-btn" title="بحث" onclick="openMainSearchUI()" aria-label="بحث"><span class="btn-icon" aria-hidden="true">🔍</span><span class="btn-text">بحث</span></button><div id="mainSearchWrap" class="main-search-wrap hidden"><input id="searchInput" placeholder="ابحث في المتشابهات..." oninput="renderActiveGroups()"><button class="outline-icon" onclick="clearSearch()" aria-label="إلغاء البحث" title="إلغاء"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إلغاء</span></button><button class="danger" title="إغلاق البحث" onclick="closeMainSearchUI()" aria-label="إغلاق البحث"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إغلاق</span></button></div><button class="primary" onclick="openAddModal()" aria-label="إضافة متشابه" title="إضافة متشابه"><span class="btn-icon" aria-hidden="true">➕</span><span class="btn-text">إضافة متشابه</span></button><button onclick="openAdvancedSearch()" aria-label="بحث متقدم" title="بحث متقدم"><span class="btn-icon" aria-hidden="true">⚙️</span><span class="btn-text">بحث متقدم</span></button><button onclick="toggleAllGroups()" id="toggleAllBtn" aria-label="فتح/طي الكل" title="فتح/طي الكل"><span class="btn-icon" aria-hidden="true">📂</span><span class="btn-text">فتح الكل</span></button><button id="syncGitHubBtn" onclick="manualSyncGitHub()" aria-label="مزامنة GitHub" title="مزامنة GitHub"><span class="btn-icon" aria-hidden="true">☁</span><span class="btn-text">Sync GitHub</span></button><button onclick="exportActiveDatabase()" aria-label="تصدير data.js" title="Export data.js"><span class="btn-icon" aria-hidden="true">📤</span><span class="btn-text">Export data.js</span></button></div></div>
+          <section class="filter-card workspace-filter-card" id="surahFilterSection"><div class="filter-head"><div class="filter-title-wrap"><b>🔍 تصفية حسب السورة</b><small id="filterStatus">المعروض الآن: كل السور</small></div><div class="filter-bar-row"><div class="filter-inline-sort" aria-label="خيارات العرض والنتائج">
   <label for="displayMode">طريقة عرض المجموعات</label>
   <div class="sort-select-wrap" aria-label="تغيير طريقة العرض" title="تغيير طريقة العرض"><select id="displayMode" onchange="setDisplayMode(this.value)">
     <option value="original">Original Order — الترتيب الأصلي</option>
@@ -45,8 +58,19 @@
   </select>
   <span id="counter" class="result-counter">عدد النتائج: 0</span>
 </div><div class="filter-actions"><button id="onlyResultsBtn" class="active" onclick="toggleOnlyWithResults()">بها نتائج فقط</button><button onclick="clearSurahFilter()">عرض الكل</button><button onclick="toggleSurahFilterPanel()" id="surahFilterToggleBtn">إغلاق الفلتر ▴</button></div></div></div><div id="surahFilterPanel"><input id="surahFilterSearch" class="wide-input" placeholder="ابحث باسم السورة أو رقمها..." oninput="renderSurahFilter()"><div class="range-tabs"><button onclick="setSurahRange('all')" class="active" data-range="all">الكل</button><button onclick="setSurahRange('1-30')" data-range="1-30">1-30</button><button onclick="setSurahRange('31-60')" data-range="31-60">31-60</button><button onclick="setSurahRange('61-90')" data-range="61-90">61-90</button><button onclick="setSurahRange('91-114')" data-range="91-114">91-114</button></div><h4>الأكثر وجودًا</h4><div id="topSurahGrid" class="surah-grid top"></div><div class="surah-count-line" id="surahCountLine"></div><div id="surahFilterGrid" class="surah-grid"></div></div></section>
-  <div class="toolbar"><div><h2 id="dbTitle">قاعدة البيانات</h2><p id="dbSubTitle">—</p></div><div class="tools toolbar-tools"><button id="mainSearchBtn" class="icon-btn outline-icon main-search-btn" title="بحث" onclick="openMainSearchUI()" aria-label="بحث"><span class="btn-icon" aria-hidden="true">🔍</span><span class="btn-text">بحث</span></button><div id="mainSearchWrap" class="main-search-wrap hidden"><input id="searchInput" placeholder="ابحث في المتشابهات..." oninput="renderActiveGroups()"><button class="outline-icon" onclick="clearSearch()" aria-label="إلغاء البحث" title="إلغاء"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إلغاء</span></button><button class="danger" title="إغلاق البحث" onclick="closeMainSearchUI()" aria-label="إغلاق البحث"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إغلاق</span></button></div><button class="primary" onclick="openAddModal()" aria-label="إضافة متشابه" title="إضافة متشابه"><span class="btn-icon" aria-hidden="true">➕</span><span class="btn-text">إضافة متشابه</span></button><button onclick="openAdvancedSearch()" aria-label="بحث متقدم" title="بحث متقدم"><span class="btn-icon" aria-hidden="true">⚙️</span><span class="btn-text">بحث متقدم</span></button><button onclick="toggleAllGroups()" id="toggleAllBtn" aria-label="فتح/طي الكل" title="فتح/طي الكل"><span class="btn-icon" aria-hidden="true">📂</span><span class="btn-text">فتح الكل</span></button><button id="syncGitHubBtn" onclick="manualSyncGitHub()" aria-label="مزامنة GitHub" title="مزامنة GitHub"><span class="btn-icon" aria-hidden="true">☁</span><span class="btn-text">Sync GitHub</span></button><button onclick="exportActiveDatabase()" aria-label="تصدير data.js" title="Export data.js"><span class="btn-icon" aria-hidden="true">📤</span><span class="btn-text">Export data.js</span></button></div></div>
-  <div id="activeFilterChips" class="active-filter-chips"></div><div id="surahIndexBar" class="surah-index-bar"></div><div id="groups" class="groups"></div>
+          <section class="workspace-side-card" id="workspaceGuideCard">
+            <div class="workspace-side-label">وضع المراجعة</div>
+            <h3>ابدأ من عرض واضح</h3>
+            <p>استخدم السور والفرز للانتقال بسرعة، ثم افتح تفاصيل المجموعة من اللوحة الجانبية للمراجعة والنسخ والتعديل.</p>
+            <div id="workspaceGuideActions" class="inline-actions">
+              <button onclick="toggleSurahFilterPanel()">فتح الفلتر</button>
+              <button onclick="openAdvancedSearch()">بحث متقدم</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="modalRoot"></section><button class="floating-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script src="quran-reference.js?v=v82_fix_loader"></script>
