@@ -108,3 +108,213 @@ function __formatCounterV89(){
   try{ window.addEventListener('resize', ()=>setTimeout(__formatCounterV89, 0)); }catch(e){}
   try{ window.addEventListener('DOMContentLoaded', ()=>setTimeout(__formatCounterV89, 500)); }catch(e){}
 })();
+
+let activeDetailGroupIdV82C = null;
+
+function isDesktopDetailLayoutV82C() {
+  try {
+    return !isMobileLayout() && window.matchMedia("(min-width: 1101px)").matches;
+  } catch (e) {
+    return false;
+  }
+}
+
+function renderWorkspaceGuideV82C() {
+  let mount = document.getElementById("workspaceGuideCard");
+  if (!mount) return;
+  let isAuto = activeDb === "auto";
+  mount.innerHTML = isAuto
+    ? `<div class="workspace-side-label">القاعدة الآلية</div>
+       <h3>اختيار سريع للسورة</h3>
+       <p>ابدأ من السورة ثم راجع المجموعات في الوسط وافتح التفاصيل الكاملة في اللوحة الجانبية.</p>
+       <div class="inline-actions">
+         <button onclick="toggleSurahFilterPanel()">فتح الفلتر</button>
+         <button onclick="clearSurahFilter()">إعادة الضبط</button>
+       </div>`
+    : `<div class="workspace-side-label">القاعدة الشخصية</div>
+       <h3>مراجعة مركزة</h3>
+       <p>ابحث أو صفِّ النتائج من اليسار، ثم افتح تفاصيل المجموعة في اللوحة الجانبية للنسخ أو التعديل السريع.</p>
+       <div class="inline-actions">
+         <button onclick="openAddModal()">إضافة مجموعة</button>
+         <button onclick="openAdvancedSearch()">بحث متقدم</button>
+       </div>`;
+}
+
+function detailEmptyHtmlV82C() {
+  if (activeDb === "auto" && !selectedSurahFilter) {
+    let manifest = typeof autoManifestV84 === "function" ? autoManifestV84() : autoManifest();
+    let items = (manifest.surahs || []).slice().sort(function (a, b) {
+      return Number(b.count || 0) - Number(a.count || 0);
+    }).slice(0, 6);
+    return `<div class="detail-empty workspace-hero-state">
+      <div class="workspace-side-label">مراجعة الآلي</div>
+      <h3>ابدأ بسورة واحدة</h3>
+      <p>القاعدة الآلية محمّلة حسب السورة. اختر سورة من الفلتر أو من القائمة السريعة هنا حتى نحمّل مجموعاتها فقط ونبقي الواجهة خفيفة.</p>
+      <div class="workspace-hero-grid">
+        <div class="workspace-hero-stat"><b>${escapeHtml(String((manifest.surahs || []).length || 0))}</b><span>سورة متاحة</span></div>
+        <div class="workspace-hero-stat"><b>${escapeHtml(String(autoTotalCountV84 ? autoTotalCountV84() : autoTotalCount()))}</b><span>مجموعة في الفهرس</span></div>
+      </div>
+      <div class="workspace-hero-actions">
+        <button class="primary" onclick="toggleSurahFilterPanel()">اختيار من الفلتر</button>
+        <button onclick="openDatabase('personal')">فتح الشخصية</button>
+      </div>
+      <div class="detail-stack">
+        <h3>الأكثر وجوداً</h3>
+        <div class="surah-grid top">${items.map(pill).join("")}</div>
+      </div>
+    </div>`;
+  }
+
+  return `<div class="detail-empty">
+    <div class="workspace-side-label">تفاصيل المجموعة</div>
+    <h3>اختر مجموعة من القائمة</h3>
+    <p>التفاصيل الكاملة ستظهر هنا: الآيات، الملاحظات، والعمليات السريعة مثل النسخ والتعديل والتصدير.</p>
+  </div>`;
+}
+
+function setActiveDetailGroupV82C(id) {
+  activeDetailGroupIdV82C = id === null || id === undefined ? null : Number(id);
+  renderDetailPanelV82C();
+}
+
+function renderDetailPanelV82C() {
+  let mount = document.getElementById("detailPanelContent");
+  let panel = document.getElementById("detailPanel");
+  if (!mount || !panel) return;
+
+  renderWorkspaceGuideV82C();
+
+  if (!isDesktopDetailLayoutV82C()) {
+    panel.classList.add("hidden");
+    mount.innerHTML = "";
+    return;
+  }
+
+  panel.classList.remove("hidden");
+
+  let group = activeDetailGroupIdV82C !== null ? findActive(activeDetailGroupIdV82C) : null;
+  if (!group) {
+    mount.innerHTML = detailEmptyHtmlV82C();
+    return;
+  }
+
+  let isAuto = activeDb === "auto";
+  let editAction = isAuto
+    ? `<button onclick="copyAutoGroupToPersonal(${group.id})">نسخ للشخصية</button>`
+    : `<button onclick="openEditModal(${group.id})">تعديل</button>`;
+  let deleteAction = isAuto && editMode
+    ? `<button class="danger" onclick="deleteAutoGroup(${group.id});setActiveDetailGroupV82C(null)">حذف من الآلية</button>`
+    : "";
+
+  mount.innerHTML = `<div class="group-detail-card">
+    <div class="detail-card-head">
+      <div class="detail-header-row">
+        <div>
+          <div class="group-tags">${getTags(group).map(function (s) { return renderSurahTag(group, s); }).join("")}</div>
+          <h3>${escapeHtml(group.title || "بدون عنوان")}</h3>
+        </div>
+        <div class="group-num ${isTrue(group.completed) ? "completed" : ""}">${escapeHtml(group.id)}</div>
+      </div>
+      <p id="detailPanelMeta" class="detail-meta-line">عدد الآيات: ${(group.verses || []).length} ${selectedSurahFilter ? `| السورة الحالية: ${escapeHtml(selectedSurahFilter)}` : ""}</p>
+      <div class="detail-actions">
+        <button onclick="copyGroupText(${group.id})">${iconSvg("copy")} نسخ</button>
+        <button onclick="downloadGroupImage(${group.id})">${iconSvg("camera")} صورة</button>
+        <button onclick="openCompareModal(${group.id})">${iconSvg("compare")} مقارنة</button>
+        ${editAction}
+        ${deleteAction}
+      </div>
+    </div>
+    ${renderGroupBody(group)}
+  </div>`;
+}
+
+function renderCard(g) {
+  let fav = isTrue(g.favorite), done = isTrue(g.completed), locked = isTrue(g.locked), ro = activeDb === "auto";
+  let selected = activeDetailGroupIdV82C !== null && Number(g.id) === Number(activeDetailGroupIdV82C);
+  let actions = `<button class="icon-btn outline-icon star ${fav ? "active" : ""}" title="مفضلة" onclick="event.stopPropagation();toggleFlag(${g.id},'favorite')">${iconSvg("star")}</button>`;
+  if (editMode) {
+    actions += `<button class="icon-btn outline-icon lock ${locked ? "active" : ""}" title="قفل" onclick="event.stopPropagation();toggleFlag(${g.id},'locked')">${iconSvg("lock")}</button><button class="icon-btn outline-icon" title="مقارنة" onclick="event.stopPropagation();openCompareModal(${g.id})">${iconSvg("compare")}</button>${ro ? `<button onclick="event.stopPropagation();copyAutoGroupToPersonal(${g.id})">نسخ للشخصية</button><button class="danger" title="حذف من القاعدة الآلية" onclick="event.stopPropagation();deleteAutoGroup(${g.id})">حذف من الآلية</button>` : `<button class="icon-btn outline-icon" title="تعديل" onclick="event.stopPropagation();openEditModal(${g.id})">${iconSvg("edit")}</button>`}`;
+  }
+  let cls = (fav ? " is-favorite" : "") + (done ? " is-completed" : "") + (locked ? " is-locked" : "") + (selected ? " is-selected" : "");
+  return `<article class="group${cls}" data-id="${g.id}"><div class="group-head" onclick="toggleGroup(this)"><div class="group-num ${done ? "completed" : ""}" title="اضغط لتغيير حالة الإكمال" onclick="event.stopPropagation();toggleFlag(${g.id},'completed')">${escapeHtml(g.id)}</div><div class="group-title-wrap"><div class="group-tags">${getTags(g).map(function (s) { return renderSurahTag(g, s); }).join("")}<span class="tag">${(g.verses || []).length} آية</span>${g.candidateScore ? `<span class="tag">score ${g.candidateScore}</span>` : ""}</div><div class="group-title">${highlight(g.title || "بدون عنوان")}</div></div><div class="group-actions">${actions}<button class="icon-btn outline-icon" title="نسخ النص" onclick="event.stopPropagation();copyGroupText(${g.id})">${iconSvg("copy")}</button><button class="icon-btn outline-icon" title="صورة HD" onclick="event.stopPropagation();downloadGroupImage(${g.id})">${iconSvg("camera")}</button></div></div><div class="group-body">${renderGroupBody(g)}</div></article>`;
+}
+
+function toggleGroup(h) {
+  let groupEl = h && typeof h.closest === "function" ? h.closest(".group") : null;
+  let id = groupEl && groupEl.dataset ? groupEl.dataset.id : null;
+  if (isMobileLayout() && id) {
+    openGroupDetailModal(id);
+    return;
+  }
+  if (isDesktopDetailLayoutV82C() && id) {
+    setActiveDetailGroupV82C(id);
+    renderActiveGroups();
+    return;
+  }
+  h.parentElement.classList.toggle("open");
+  updateToggleAllButton();
+}
+
+function renderChips(c) {
+  let dbLabel = activeDb === "personal" ? "الشخصية" : activeDb === "auto" ? "الآلية" : "الرئيسية";
+  let chips = [
+    `القاعدة: ${dbLabel}`,
+    `النتائج: ${c}`,
+    `الفرز: ${displayMode}`,
+  ];
+  if (selectedSurahFilter) chips.push(`السورة: ${selectedSurahFilter}`);
+  if (advancedFilters.kind) chips.push(`النوع: ${advancedFilters.kind}`);
+  if (advancedFilters.status && advancedFilters.status !== "all") chips.push(`الحالة: ${advancedFilters.status}`);
+  document.getElementById("activeFilterChips").innerHTML = chips.map(function (x) {
+    return `<span>${escapeHtml(x)}</span>`;
+  }).join("");
+}
+
+function renderActiveGroups() {
+  if (!activeDb) return;
+  saveFiltersV85(activeDb);
+
+  let counter = document.getElementById("counter");
+  let groupsBox = document.getElementById("groups");
+
+  if (typeof isAutoDbV84 === "function" && isAutoDbV84() && !selectedSurahFilter) {
+    if (counter) counter.textContent = "اختر سورة لتحميل بياناتها فقط";
+    renderChips(0);
+    renderSurahIndex([]);
+    if (groupsBox) groupsBox.innerHTML = detailEmptyHtmlV82C();
+    activeDetailGroupIdV82C = null;
+    renderDetailPanelV82C();
+    updateToggleAllButton();
+    buildSurahFilter();
+    return;
+  }
+
+  let list = sortGroups(activeData.filter(passFilters));
+  if (counter) counter.textContent = "عدد النتائج: " + list.length;
+
+  if (isDesktopDetailLayoutV82C()) {
+    let exists = activeDetailGroupIdV82C !== null && list.some(function (group) {
+      return Number(group.id) === Number(activeDetailGroupIdV82C);
+    });
+    activeDetailGroupIdV82C = exists ? activeDetailGroupIdV82C : (list[0] ? Number(list[0].id) : null);
+  } else if (!isMobileLayout()) {
+    activeDetailGroupIdV82C = null;
+  }
+
+  renderChips(list.length);
+  renderSurahIndex(list);
+  if (groupsBox) {
+    groupsBox.innerHTML = list.length
+      ? (displayMode === "group-surah" ? renderGrouped(list) : list.map(renderCard).join(""))
+      : '<div class="hint">لا توجد نتائج</div>';
+  }
+  renderDetailPanelV82C();
+  updateToggleAllButton();
+  buildSurahFilter();
+}
+
+window.addEventListener("resize", function () {
+  setTimeout(function () {
+    renderDetailPanelV82C();
+  }, 0);
+});
