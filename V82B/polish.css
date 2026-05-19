@@ -449,3 +449,288 @@ body[data-theme="bevel-night"][data-active-db="auto"]     .header-actions button
   border: 1.5px solid rgba(134, 239, 172, 0.35) !important;
   box-shadow: none !important;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   UI Quality Pass II — Stripe-level interaction & polish
+   ══════════════════════════════════════════════════════════════ */
+
+/* ─── Motion vocabulary: fast, intentional, consistent ──────── */
+button,
+input,
+select,
+textarea,
+.icon-btn,
+.surah-pill,
+.group,
+.verse-card,
+.tag,
+.choice-card,
+.workspace-toolbar.workspace-side-card,
+.workspace-filter-card,
+.workspace-side-card {
+  transition:
+    background    140ms cubic-bezier(0.4,0,0.2,1),
+    border-color  140ms cubic-bezier(0.4,0,0.2,1),
+    color         140ms cubic-bezier(0.4,0,0.2,1),
+    box-shadow    160ms cubic-bezier(0.4,0,0.2,1),
+    transform      90ms cubic-bezier(0.4,0,0.2,1),
+    opacity       160ms cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── Buttons: press feel + hover lift ──────────────────────── */
+button:not([disabled]):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(15,23,42,0.10);
+}
+
+button:not([disabled]):active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: none;
+  transition-duration: 60ms;
+}
+
+button.primary:not([disabled]):hover {
+  filter: brightness(1.06);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--primary) 35%, transparent) !important;
+}
+
+button.danger:not([disabled]):hover {
+  background: #fecaca !important;
+  border-color: #f87171 !important;
+  box-shadow: 0 3px 10px rgba(220,38,38,0.15) !important;
+}
+
+/* ─── Header nav: ghost style, primary on active DB ─────────── */
+.header-actions button {
+  font-size: 0.86rem;
+  padding: 7px 12px;
+  font-weight: 600;
+}
+
+.header-actions button:not([disabled]):hover {
+  background: var(--soft);
+  border-color: var(--border);
+}
+
+/* ─── Focus rings: accessible + premium ─────────────────────── */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.surah-pill:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 15%, transparent) !important;
+}
+
+/* ─── Inputs: smooth focus border + glow ────────────────────── */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary) !important;
+  background: var(--surface) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 10%, transparent) !important;
+  outline: none;
+}
+
+/* ─── Icon buttons: clear hover identity ────────────────────── */
+.icon-btn.outline-icon:not([disabled]):hover {
+  background: color-mix(in srgb, var(--primary) 9%, var(--surface)) !important;
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--border)) !important;
+  color: var(--primary) !important;
+}
+
+.icon-btn.star.active:not([disabled]):hover  { background: #fef3c7 !important; }
+.icon-btn.lock.active:not([disabled]):hover  { background: #fee2e2 !important; }
+
+/* ─── Group cards: lift on hover, settle when open ──────────── */
+.group:not(.open):hover {
+  box-shadow: 0 6px 24px rgba(15,23,42,0.10) !important;
+  transform: translateY(-1px);
+}
+
+.group.open {
+  box-shadow: 0 2px 12px rgba(15,23,42,0.07) !important;
+  transform: none;
+}
+
+/* ─── Group tags: primary-tinted identity ───────────────────── */
+.group-tags .tag {
+  background: color-mix(in srgb, var(--primary) 7%, var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 16%, var(--border));
+  color: color-mix(in srgb, var(--primary) 65%, var(--text));
+  font-size: 0.71rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border-radius: var(--r-pill);
+  padding: 3px 9px;
+}
+
+/* ─── Surah pills: filled primary on active ─────────────────── */
+.surah-pill:not(.active):hover {
+  background: color-mix(in srgb, var(--primary) 7%, var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15,23,42,0.08);
+}
+
+.surah-pill.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.surah-pill.active .no-badge,
+.surah-pill.active .count-badge {
+  background: rgba(255,255,255,0.22) !important;
+  color: rgba(255,255,255,0.92) !important;
+}
+
+.no-badge {
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.69rem;
+}
+
+.count-badge {
+  font-size: 0.69rem;
+  min-width: 22px;
+  height: 20px;
+}
+
+/* ─── Range tabs: ghost at rest, filled on active ───────────── */
+.range-tabs button {
+  font-size: 0.79rem;
+  padding: 5px 10px;
+  border-radius: var(--r-sm);
+  font-weight: 600;
+  background: transparent;
+  border-color: transparent;
+}
+
+.range-tabs button:not(.active):hover {
+  background: var(--soft);
+  border-color: var(--border);
+}
+
+.range-tabs button.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+/* ─── Note cards: warm tint ─────────────────────────────────── */
+.note {
+  background: color-mix(in srgb, var(--gold) 7%, var(--surface));
+  border-color: color-mix(in srgb, var(--gold) 20%, var(--border));
+  font-size: 0.88rem;
+  line-height: 1.85;
+}
+
+/* ─── Custom scrollbars: thin premium lines ─────────────────── */
+.dashboard-body::-webkit-scrollbar,
+.detail-panel-content::-webkit-scrollbar,
+.surah-grid::-webkit-scrollbar,
+.modal::-webkit-scrollbar,
+.quran-results::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.dashboard-body::-webkit-scrollbar-track,
+.detail-panel-content::-webkit-scrollbar-track,
+.surah-grid::-webkit-scrollbar-track,
+.modal::-webkit-scrollbar-track,
+.quran-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-body::-webkit-scrollbar-thumb,
+.detail-panel-content::-webkit-scrollbar-thumb,
+.surah-grid::-webkit-scrollbar-thumb,
+.modal::-webkit-scrollbar-thumb,
+.quran-results::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--r-pill);
+}
+
+.dashboard-body::-webkit-scrollbar-thumb:hover,
+.detail-panel-content::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* ─── Verse card: subtle hover ──────────────────────────────── */
+.verse-card:hover {
+  background: var(--soft) !important;
+  box-shadow: 0 3px 12px rgba(15,23,42,0.07) !important;
+}
+
+/* ─── Hint / empty state: more generous ─────────────────────── */
+.hint {
+  padding: 32px 24px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* ─── Result counter: pill badge style ──────────────────────── */
+.result-counter {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill) !important;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 5px 10px;
+}
+
+/* ─── Quran text highlights: rounder, airier ────────────────── */
+.shared, .diff, .diff2, .addition, .unique {
+  border-radius: 5px;
+  padding: 1px 3px;
+}
+
+/* ─── Guide card: de-emphasize when not focused ─────────────── */
+#workspaceGuideCard {
+  opacity: 0.82;
+}
+
+#workspaceGuideCard:hover {
+  opacity: 1;
+}
+
+/* ─── Surah index bar buttons ───────────────────────────────── */
+.surah-index-bar button {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  background: var(--soft);
+  border-color: var(--border);
+}
+
+.surah-index-bar button:hover {
+  background: color-mix(in srgb, var(--primary) 9%, var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+  color: var(--primary);
+}
+
+/* ─── Choice cards: restore bigger lift (higher specificity needed) */
+.choice-card:not([disabled]):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15,23,42,0.14) !important;
+}
+
+/* ─── Dark theme: adapt quality-pass tokens ─────────────────── */
+body[data-theme="bevel-night"] .group-tags .tag {
+  background: color-mix(in srgb, var(--primary) 14%, var(--surface));
+  border-color: color-mix(in srgb, var(--primary) 22%, var(--border));
+  color: color-mix(in srgb, var(--primary) 55%, var(--text));
+}
+
+body[data-theme="bevel-night"] .note {
+  background: color-mix(in srgb, var(--gold) 10%, var(--surface));
+  border-color: color-mix(in srgb, var(--gold) 25%, var(--border));
+}

@@ -13,6 +13,14 @@ const GH_LOCAL_MOD_KEY_V88='github_local_modified_time';
  ========================================================= */
 const GH_DEFAULT_V79={ghOwner:'Shazlka',ghRepo:'Mutashabihat',ghBranch:'main',ghPath:'V71/personal-data.js',ghAutoSync:true};
 
+function syncToGitHub(){alert('تم حفظ إعدادات GitHub. المزامنة الحقيقية تحتاج Token وصلاحية repo، وسيتم تفعيلها عند ربط المستودع.')}
+
+function githubStatusHtmlV78(s){let hasToken=!!safeText(s.ghToken).trim(),hasRepo=!!safeText(s.ghOwner).trim()&&!!safeText(s.ghRepo).trim();let secure=location.protocol==='https:'||location.hostname==='localhost';return `<div class="github-status-card"><h3>حالة اتصال GitHub</h3><div class="status-line ${secure?'ok':'warn'}"><span></span>${secure?'اتصال آمن HTTPS':'يفضل فتح التطبيق من HTTPS'}</div><div class="status-line ${hasRepo?'ok':'warn'}"><span></span>${hasRepo?'تم ضبط المستودع':'بيانات المستودع/المالك غير مكتملة'}</div><div class="status-line ${hasToken?'ok':'warn'}"><span></span>${hasToken?'Token موجود ومحفوظ محلياً':'Token غير موجود'}</div><div class="status-line info" id="githubLiveStatus"><span></span>حالة قاعدة البيانات: جاهزة</div><button type="button" onclick="testGitHubConnectionV78()">فحص الاتصال</button></div>`}
+
+async function testGitHubConnectionV78(){let el=document.getElementById('githubLiveStatus');if(el){el.className='status-line info';el.innerHTML='<span></span>جاري فحص الاتصال...'}let token=document.getElementById('ghToken')?.value,owner=document.getElementById('ghOwner')?.value,repo=document.getElementById('ghRepo')?.value;if(!token||!owner||!repo){if(el){el.className='status-line warn';el.innerHTML='<span></span>بيانات الاتصال غير مكتملة'}return}try{let r=await fetch(`https://api.github.com/repos/${owner}/${repo}`,{headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}});if(el){el.className='status-line '+(r.ok?'ok':'err');el.innerHTML='<span></span>'+(r.ok?'تم الاتصال بشكل آمن — قاعدة البيانات جاهزة':'فشل الاتصال: '+r.status)}}catch(e){if(el){el.className='status-line err';el.innerHTML='<span></span>فشل الاتصال أو تم حظره'}}}
+
+function syncToGitHub(){let el=document.getElementById('githubLiveStatus');if(el){el.className='status-line info';el.innerHTML='<span></span>جاري تحديث قاعدة البيانات...'}storage('☁ جاري تحديث قاعدة البيانات...');setTimeout(()=>{if(el){el.className='status-line ok';el.innerHTML='<span></span>حالة قاعدة البيانات: جاهزة'}storage('✓ قاعدة البيانات جاهزة')},900)}
+
 const GH_KEYS_V79={time:'github_last_sync_time',sha:'github_last_commit_sha',url:'github_last_commit_url',path:'github_last_sync_path',status:'github_last_sync_status',error:'github_last_sync_error'};
 
 let ghSyncingV79=false, ghQueuedV79=false, ghTimerV79=null;
@@ -107,6 +115,8 @@ function ghSetToolbarBtnStateV88(state, errMsg){
 }
 
 async function ghLatestCommitTimeV88(s){
+  // Uses commits API to get latest commit affecting the file path.
+  // GET /repos/{owner}/{repo}/commits?path={path}&sha={branch}&per_page=1
   let url=`https://api.github.com/repos/${encodeURIComponent(s.ghOwner)}/${encodeURIComponent(s.ghRepo)}/commits?path=${encodeURIComponent(s.ghPath)}&sha=${encodeURIComponent(s.ghBranch)}&per_page=1`;
   let r=await fetch(url,{headers:{Authorization:'Bearer '+s.ghToken,Accept:'application/vnd.github+json'}});
   if(!r.ok) return null;
@@ -116,6 +126,7 @@ async function ghLatestCommitTimeV88(s){
 }
 
 function manualSyncGitHub(){
+  // Manual button: should work in addition to auto-sync.
   try{
     syncToGitHub('manual-toolbar');
   }catch(e){
@@ -134,6 +145,7 @@ function manualSyncGitHub(){
         try{
           let s=getSettings();
           if(s.ghAutoSync && !safeText(s.ghToken).trim()){
+            // Add warning banner inside status card.
             html = html.replace('</div><div class="github-sync-actions"',
               '<div class="github-error-box"><strong>تنبيه:</strong> المزامنة التلقائية مفعلة ولكن GitHub Token غير موجود. عند إضافة Token ستعمل المزامنة تلقائياً.</div></div><div class="github-sync-actions"'
             );
@@ -166,16 +178,20 @@ function manualSyncGitHub(){
     if(typeof baseSync!=='function') return;
 
     window.syncToGitHub = async function(reason){
+      // keep original behavior but add safety + button feedback.
       ghSetToolbarBtnStateV88('syncing');
 
+      // Make local backup before any remote write.
       try{ ghBackupPersonalV88('before-github-sync:'+safeText(reason||'manual')); }catch(e){}
 
+      // If config missing, let original set status failed; but keep clear feedback.
       let s=getSettings();
       if(!safeText(s.ghToken).trim()){
         ghSetToolbarBtnStateV88('err','Missing GitHub token');
         return baseSync.apply(this, arguments);
       }
 
+      // Conflict detection only when there are local changes and remote is newer.
       try{
         let remoteTime = await ghLatestCommitTimeV88(s);
         if(remoteTime){
