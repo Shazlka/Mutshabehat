@@ -164,14 +164,13 @@ describe("📋 Copy", () => {
 // ═══════════════════════════════════════════════════════════
 // SUITE 3: Export
 // ═══════════════════════════════════════════════════════════
-describe("📤 Export", () => {
-  beforeEach(() => {
-    document.createElement = vi.fn(() => ({
+beforeEach(() => {
+    vi.spyOn(document, 'createElement').mockReturnValue({
       click: vi.fn(),
       href: "",
       download: "",
-    }));
-    document.body = { appendChild: vi.fn(), removeChild: vi.fn() };
+      style: {},
+    });
   });
 
   it("exports to JSON with correct structure", () => {
