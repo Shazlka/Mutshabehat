@@ -132,7 +132,7 @@ test.describe("⚙️ Settings @actions", () => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
     await page.click('[data-testid="btn-settings"]');
-    await expect(page.locator('[data-testid="modal-appSettings"]')).toBeVisible({ timeout: 5000 });
+    await expect(page.locator('[data-testid="modal-settingsModal"]')).toBeVisible({ timeout: 5000 });
   });
 
   test("theme toggle changes app theme", async ({ page }) => {
