@@ -19,20 +19,29 @@ export default defineConfig({
 
   projects: [
     {
-      name: "desktop-chrome",
+      name: "desktop",
+      testMatch: [
+        "**/actions.spec.js",
+        "**/database.spec.js",
+        "**/filter-sort.spec.js",
+        "**/windows.spec.js",
+      ],
       use: { ...devices["Desktop Chrome"] },
     },
     {
-      name: "mobile-iphone",
+      name: "mobile",
+      testMatch: "**/mobile-tablet.spec.js",
       use: { ...devices["iPhone 14"] },
     },
     {
-      name: "mobile-android",
-      use: { ...devices["Pixel 7"] },
+      name: "tablet",
+      testMatch: "**/mobile-tablet.spec.js",
+      use: { ...devices["iPad Pro 11"] },
     },
     {
-      name: "tablet-ipad",
-      use: { ...devices["iPad Pro 11"] },
+      name: "android",
+      testMatch: "**/mobile-tablet.spec.js",
+      use: { ...devices["Pixel 7"] },
     },
   ],
 
