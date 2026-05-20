@@ -12,19 +12,23 @@ test.describe("🔍 Search & Filter @filter", () => {
   });
 
   test("search bar is visible", async ({ page }) => {
-    await expect(page.locator('[data-testid="search-input"]')).toBeVisible();
+    await page.click('[data-testid="btn-search"]');
+    await expect(page.locator('[data-testid="search-input"]')).toBeVisible({ timeout: 3000 });
   });
 
   test("typing Arabic text in search filters results", async ({ page }) => {
+    await page.click('[data-testid="btn-search"]');
+    await page.waitForTimeout(300);
     const search = page.locator('[data-testid="search-input"]');
     await search.fill("عذاب");
-    await page.waitForTimeout(400); // debounce
+    await page.waitForTimeout(400);
     const rows = await page.locator('[data-testid="record-row"]').count();
-    // If records exist with this word, they should show; others hidden
     expect(rows).toBeGreaterThanOrEqual(0);
   });
 
   test("clearing search restores all records", async ({ page }) => {
+    await page.click('[data-testid="btn-search"]');
+    await page.waitForTimeout(300);
     const totalBefore = await page.locator('[data-testid="record-row"]').count();
     await page.locator('[data-testid="search-input"]').fill("عذاب");
     await page.waitForTimeout(400);
@@ -60,7 +64,6 @@ test.describe("🔍 Search & Filter @filter", () => {
       await page.waitForTimeout(300);
       const rows = page.locator('[data-testid="record-row"]');
       const count = await rows.count();
-      // All visible rows should be lexical type
       for (let i = 0; i < count; i++) {
         const badge = rows.nth(i).locator('[data-testid="similarity-type-badge"]');
         if (await badge.isVisible()) {
@@ -75,7 +78,6 @@ test.describe("🔍 Search & Filter @filter", () => {
     if (await surahFilter.isVisible()) {
       await surahFilter.fill("2");
       await page.waitForTimeout(300);
-      // Records should all include surah 2
       const rows = await page.locator('[data-testid="record-row"]').count();
       expect(rows).toBeGreaterThanOrEqual(0);
     }
@@ -165,9 +167,9 @@ test.describe("🔢 Sort @sort", () => {
   test("clicking column header toggles sort direction", async ({ page }) => {
     const header = page.locator('[data-testid="th-surah-a"]');
     if (await header.isVisible()) {
-      await header.click(); // asc
+      await header.click();
       const ascIndicator = await header.getAttribute("aria-sort");
-      await header.click(); // desc
+      await header.click();
       const descIndicator = await header.getAttribute("aria-sort");
       expect(ascIndicator).not.toBe(descIndicator);
     }
@@ -178,7 +180,6 @@ test.describe("🔢 Sort @sort", () => {
     if (await sortDate.isVisible()) {
       await sortDate.click();
       await page.waitForTimeout(300);
-      // Just verify it doesn't crash
       await expect(page.locator('[data-testid="database-view"]')).toBeVisible();
     }
   });
@@ -190,7 +191,6 @@ test.describe("🔢 Sort @sort", () => {
       await sortBtn.click();
       await catFilter.selectOption({ index: 1 });
       await page.waitForTimeout(300);
-      // Sort indicator should still be active
       await expect(sortBtn).toHaveAttribute("aria-pressed", "true");
     }
   });
