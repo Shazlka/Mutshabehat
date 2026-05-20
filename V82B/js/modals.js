@@ -8,7 +8,7 @@ function lockBodyScrollV78(){if(document.body.classList.contains('modal-open-v78
 
 function unlockBodyScrollV78(){if(document.querySelector('.modal-backdrop'))return;document.body.classList.remove('modal-open-v78');document.body.style.top='';window.scrollTo(0,__modalScrollY_V78||0)}
 
-function modal(id,title,body,footer){closeModal(id);let e=document.createElement('section');e.id=id;e.className='modal-backdrop';let modalClass='modal '+id+'-window';e.innerHTML=`<div class="${modalClass}" role="dialog" aria-modal="true"><div class="modal-head"><span class="modal-drag-handle"></span><h2>${title}</h2><button class="modal-close-btn icon-outline" aria-label="إغلاق" onclick="closeModal('${id}')">×</button></div><div class="modal-body">${body}</div><div class="modal-footer">${footer||''}</div></div>`;e.onclick=x=>{if(x.target===e)closeModal(id)};document.getElementById('modalRoot').appendChild(e);lockBodyScrollV78();enableSwipeToClose(e,id)}
+function modal(id,title,body,footer){closeModal(id);let e=document.createElement('section');e.id=id;e.className='modal-backdrop';let modalClass='modal '+id+'-window';e.innerHTML=`<div class="${modalClass}" data-testid="modal-${id}" role="dialog" aria-modal="true"><div class="modal-head"><span class="modal-drag-handle"></span><h2>${title}</h2><button class="modal-close-btn icon-outline" aria-label="إغلاق" onclick="closeModal('${id}')">×</button></div><div class="modal-body">${body}</div><div class="modal-footer">${footer||''}</div></div>`;e.onclick=x=>{if(x.target===e)closeModal(id)};document.getElementById('modalRoot').appendChild(e);lockBodyScrollV78();enableSwipeToClose(e,id)}
 
 function closeModal(id){document.getElementById(id)?.remove();setTimeout(unlockBodyScrollV78,0)}
 
