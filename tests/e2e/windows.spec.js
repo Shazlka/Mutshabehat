@@ -105,10 +105,10 @@ test.describe("🧭 Navigation @windows", () => {
     await expect(page.locator('[data-testid="database-view"]')).toBeVisible();
   });
 
-  test("clicking Settings nav opens settings panel", async ({ page }) => {
-    await page.click(SEL.navSettings);
-    await expect(page.locator(SEL.settingsPanel)).toBeVisible();
-  });
+test("clicking Settings nav opens settings panel", async ({ page }) => {
+  await page.click(SEL.navSettings);
+  await expect(page.locator('[data-testid="modal-appSettings"]')).toBeVisible({ timeout: 5000 });
+});
 
   test("clicking Export nav opens export panel", async ({ page }) => {
     await page.click(SEL.navExport);
@@ -137,10 +137,10 @@ test.describe("➕ Add Record Modal @windows", () => {
     await page.waitForLoadState("networkidle");
   });
 
-  test("Add button opens modal", async ({ page }) => {
-    await page.click(SEL.btnAddRecord);
-    await expect(page.locator(SEL.addRecordModal)).toBeVisible();
-  });
+test("Add button opens modal", async ({ page }) => {
+  await page.click(SEL.btnAddRecord);
+  await expect(page.locator('[data-testid="modal-addRecord"]')).toBeVisible({ timeout: 5000 });
+});
 
   test("modal has form fields for surah and ayah", async ({ page }) => {
     await page.click(SEL.btnAddRecord);
