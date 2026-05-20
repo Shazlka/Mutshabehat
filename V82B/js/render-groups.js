@@ -256,12 +256,36 @@ function renderCard(g, displayNum) {
   let fav = isTrue(g.favorite), done = isTrue(g.completed), locked = isTrue(g.locked), ro = activeDb === "auto";
   let selected = activeDetailGroupIdV82C !== null && Number(g.id) === Number(activeDetailGroupIdV82C);
   let numLabel = displayNum !== undefined ? displayNum : escapeHtml(g.id);
-  let actions = `<button class="icon-btn outline-icon star ${fav ? "active" : ""}" title="مفضلة" onclick="event.stopPropagation();toggleFlag(${g.id},'favorite')">${iconSvg("star")}</button>`;
+
+  let actions = `<button class="icon-btn outline-icon star ${fav ? "active" : ""}" data-testid="btn-favorite" aria-pressed="${fav}" title="مفضلة" onclick="event.stopPropagation();toggleFlag(${g.id},'favorite')">${iconSvg("star")}</button>`;
+
   if (editMode) {
-    actions += `<button class="icon-btn outline-icon lock ${locked ? "active" : ""}" title="قفل" onclick="event.stopPropagation();toggleFlag(${g.id},'locked')">${iconSvg("lock")}</button><button class="icon-btn outline-icon" title="مقارنة" onclick="event.stopPropagation();openCompareModal(${g.id})">${iconSvg("compare")}</button>${ro ? `<button onclick="event.stopPropagation();copyAutoGroupToPersonal(${g.id})">نسخ للشخصية</button><button class="danger" title="حذف من القاعدة الآلية" onclick="event.stopPropagation();deleteAutoGroup(${g.id})">حذف من الآلية</button>` : `<button class="icon-btn outline-icon" title="تعديل" onclick="event.stopPropagation();openEditModal(${g.id})">${iconSvg("edit")}</button>`}`;
+    actions += `<button class="icon-btn outline-icon lock ${locked ? "active" : ""}" title="قفل" onclick="event.stopPropagation();toggleFlag(${g.id},'locked')">${iconSvg("lock")}</button>
+    <button class="icon-btn outline-icon" title="مقارنة" onclick="event.stopPropagation();openCompareModal(${g.id})">${iconSvg("compare")}</button>
+    ${ro
+      ? `<button onclick="event.stopPropagation();copyAutoGroupToPersonal(${g.id})">نسخ للشخصية</button>
+         <button class="danger" data-testid="btn-delete-record" title="حذف من القاعدة الآلية" onclick="event.stopPropagation();deleteAutoGroup(${g.id})">حذف من الآلية</button>`
+      : `<button class="icon-btn outline-icon" data-testid="btn-edit-record" title="تعديل" onclick="event.stopPropagation();openEditModal(${g.id})">${iconSvg("edit")}</button>`
+    }`;
   }
+
   let cls = (fav ? " is-favorite" : "") + (done ? " is-completed" : "") + (locked ? " is-locked" : "") + (selected ? " is-selected" : "");
-  return `<article class="group${cls}" data-id="${g.id}"><div class="group-head" onclick="toggleGroup(this)"><div class="group-num ${done ? "completed" : ""}" title="اضغط لتغيير حالة الإكمال" onclick="event.stopPropagation();toggleFlag(${g.id},'completed')">${numLabel}</div><div class="group-title-wrap"><div class="group-tags">${getTags(g).map(function (s) { return renderSurahTag(g, s); }).join("")}<span class="tag">${(g.verses || []).length} آية</span></div><div class="group-title">${highlight(g.title || "بدون عنوان")}</div></div><div class="group-actions">${actions}<button class="icon-btn outline-icon" title="نسخ النص" onclick="event.stopPropagation();copyGroupText(${g.id})">${iconSvg("copy")}</button><button class="icon-btn outline-icon" title="صورة HD" onclick="event.stopPropagation();downloadGroupImage(${g.id})">${iconSvg("camera")}</button></div></div><div class="group-body">${renderGroupBody(g)}</div></article>`;
+
+  return `<article class="group${cls}" data-id="${g.id}" data-testid="record-row">
+    <div class="group-head" onclick="toggleGroup(this)">
+      <div class="group-num ${done ? "completed" : ""}" title="اضغط لتغيير حالة الإكمال" onclick="event.stopPropagation();toggleFlag(${g.id},'completed')">${numLabel}</div>
+      <div class="group-title-wrap">
+        <div class="group-tags">${getTags(g).map(function (s) { return renderSurahTag(g, s); }).join("")}<span class="tag">${(g.verses || []).length} آية</span></div>
+        <div class="group-title" data-testid="record-title">${highlight(g.title || "بدون عنوان")}</div>
+      </div>
+      <div class="group-actions">
+        ${actions}
+        <button class="icon-btn outline-icon" data-testid="btn-copy-record" title="نسخ النص" onclick="event.stopPropagation();copyGroupText(${g.id})">${iconSvg("copy")}</button>
+        <button class="icon-btn outline-icon" title="صورة HD" onclick="event.stopPropagation();downloadGroupImage(${g.id})">${iconSvg("camera")}</button>
+      </div>
+    </div>
+    <div class="group-body">${renderGroupBody(g)}</div>
+  </article>`;
 }
 
 function toggleGroup(h) {
