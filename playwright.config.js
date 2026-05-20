@@ -29,19 +29,14 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
     {
-      name: "mobile",
-      testMatch: "**/mobile-tablet.spec.js",
-      use: { ...devices["iPhone 14"] },
-    },
-    {
-      name: "tablet",
-      testMatch: "**/mobile-tablet.spec.js",
-      use: { ...devices["iPad Pro 11"] },
-    },
-    {
-      name: "android",
+      name: "mobile-android",
       testMatch: "**/mobile-tablet.spec.js",
       use: { ...devices["Pixel 7"] },
+    },
+    {
+      name: "tablet-android",
+      testMatch: "**/mobile-tablet.spec.js",
+      use: { ...devices["Galaxy Tab S4"] },
     },
   ],
 
