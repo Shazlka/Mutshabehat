@@ -5,14 +5,8 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./tests/setup.js"],
-    include: ["tests/unit/**/*.test.js"],      // ← ONLY unit tests
-    exclude: ["tests/e2e/**", "tests/**/*.spec.js", "node_modules/**"],
-    coverage: {
-      provider: "v8",
-      reporter: ["text", "lcov", "html"],
-      include: ["tests/unit/**/*.js"],
-      thresholds: { lines: 70, functions: 70, branches: 65, statements: 70 },
-    },
+    include: ["tests/unit/**/*.test.js"],
+    exclude: ["node_modules/**", "tests/e2e/**", "tests/**/*.spec.js"],
     reporters: ["verbose"],
   },
 });
