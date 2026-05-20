@@ -30,10 +30,10 @@ export default defineConfig({
     },
   ],
 
-  webServer: {
-  command: "cd V82B && npm run dev",   // ← change this
+webServer: {
+  command: "npx serve V82B -p 5173",
   url: "http://localhost:5173",
-  reuseExistingServer: !process.env.CI,
+  reuseExistingServer: true,
   timeout: 120 * 1000,
 },
 
