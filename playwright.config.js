@@ -18,6 +18,7 @@ export default defineConfig({
   },
 
   projects: [
+    // ── Desktop ──────────────────────────────────────────
     {
       name: "desktop",
       testMatch: [
@@ -28,13 +29,27 @@ export default defineConfig({
       ],
       use: { ...devices["Desktop Chrome"] },
     },
+
+    // ── Mobile ───────────────────────────────────────────
     {
-      name: "mobile-android",
+      name: "iphone-14",
+      testMatch: "**/mobile-tablet.spec.js",
+      use: { ...devices["iPhone 14"] },
+    },
+    {
+      name: "pixel-7",
       testMatch: "**/mobile-tablet.spec.js",
       use: { ...devices["Pixel 7"] },
     },
+
+    // ── Tablet ───────────────────────────────────────────
     {
-      name: "tablet-android",
+      name: "ipad-pro",
+      testMatch: "**/mobile-tablet.spec.js",
+      use: { ...devices["iPad Pro 11"] },
+    },
+    {
+      name: "galaxy-tab",
       testMatch: "**/mobile-tablet.spec.js",
       use: { ...devices["Galaxy Tab S4"] },
     },
