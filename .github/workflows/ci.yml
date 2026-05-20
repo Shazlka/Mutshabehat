@@ -1,1 +1,277 @@
+name: 🔬 Mutashabihat CI — Test Suite
+
+on:
+  push:
+    branches: [main, develop, "feature/**"]
+  pull_request:
+    branches: [main, develop]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  # ─────────────────────────────────────────
+  # JOB 1: Lint & Static Analysis
+  # ─────────────────────────────────────────
+  lint:
+    name: 🧹 Lint & Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: Prettier Check
+        run: npm run format:check
+
+  # ─────────────────────────────────────────
+  # JOB 2: Unit Tests
+  # ─────────────────────────────────────────
+  unit-tests:
+    name: 🧪 Unit Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Unit Tests (Vitest)
+        run: npm run test:unit -- --coverage --reporter=verbose
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-coverage
+          path: coverage/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # JOB 3: Build
+  # ─────────────────────────────────────────
+  build:
+    name: 🏗️ Build App
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
+
+  # ─────────────────────────────────────────
+  # JOB 4: E2E Tests — Windows & Navigation
+  # ─────────────────────────────────────────
+  e2e-windows:
+    name: 🪟 E2E — Windows & Navigation
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Download Build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Run Windows E2E Tests
+        run: npm run test:e2e -- --grep "@windows"
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-windows-report
+          path: playwright-report/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # JOB 5: E2E Tests — Database Operations
+  # ─────────────────────────────────────────
+  e2e-database:
+    name: 🗄️ E2E — Database Operations
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Download Build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Run Database E2E Tests
+        run: npm run test:e2e -- --grep "@database"
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-database-report
+          path: playwright-report/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # JOB 6: E2E Tests — User Actions
+  # ─────────────────────────────────────────
+  e2e-actions:
+    name: ⚡ E2E — User Actions (Copy, Save, Export, Sync)
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Download Build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Run User Actions E2E Tests
+        run: npm run test:e2e -- --grep "@actions"
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-actions-report
+          path: playwright-report/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # JOB 7: E2E Tests — Filter, Sort, Search
+  # ─────────────────────────────────────────
+  e2e-filter-sort:
+    name: 🔍 E2E — Filter, Sort & Search
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Download Build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Run Filter/Sort E2E Tests
+        run: npm run test:e2e -- --grep "@filter|@sort"
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-filter-sort-report
+          path: playwright-report/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # SUMMARY JOB — Gate before deploy
+  # ─────────────────────────────────────────
+  ci-gate:
+    name: ✅ CI Gate
+    runs-on: ubuntu-latest
+    needs:
+      [e2e-windows, e2e-database, e2e-actions, e2e-filter-sort, unit-tests]
+    if: always()
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [[ "${{ needs.e2e-windows.result }}" != "success" ||
+                "${{ needs.e2e-database.result }}" != "success" ||
+                "${{ needs.e2e-actions.result }}" != "success" ||
+                "${{ needs.e2e-filter-sort.result }}" != "success" ||
+                "${{ needs.unit-tests.result }}" != "success" ]]; then
+            echo "❌ One or more CI jobs failed. Blocking deploy."
+            exit 1
+          fi
+          echo "✅ All CI jobs passed."
 
