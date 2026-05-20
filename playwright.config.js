@@ -38,6 +38,5 @@ webServer: {
 },
 
   // Global timeout per test
-  timeout: 30_000,
-  expect: { timeout: 5_000 },
-});
+timeout: 10_000,        // 10s per test (was 30s)
+expect: { timeout: 3_000 },
