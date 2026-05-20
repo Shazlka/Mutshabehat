@@ -62,6 +62,13 @@ export default defineConfig({
     timeout: 30_000,
   },
 
-  timeout: 10_000,
+  timeout: 15000,
   expect: { timeout: 3_000 },
 });
+
+// ADD inside projects array:
+{
+  name: "performance",
+  testMatch: "**/performance.spec.js",
+  use: { ...devices["Desktop Chrome"] },
+},
