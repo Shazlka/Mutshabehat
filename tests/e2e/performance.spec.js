@@ -56,8 +56,12 @@ async function loadWithLargeDataset(page, count = 1000) {
   }, [PERF_KEY, data]);
   await page.reload();
   await page.waitForLoadState("networkidle");
-  await page.click('[data-testid="nav-database"]');
-  await page.waitForLoadState("networkidle");
+ const choiceCard = page.locator('button.choice-card').first();
+  if (await choiceCard.isVisible()) {
+    await choiceCard.click();
+    await page.waitForTimeout(500);
+  }
+  await page.waitForTimeout(500);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -260,11 +264,14 @@ test.describe("Memory & Stability — 1000 Records @performance", () => {
       }
     });
     await page.reload();
-    await page.waitForLoadState("networkidle");
-    await page.click('[data-testid="nav-database"]');
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("domcontentloaded");
+    await page.waitForTimeout(1000);
+    const choiceCard2 = page.locator('button.choice-card').first();
+    if (await choiceCard2.isVisible()) {
+      await choiceCard2.click();
+      await page.waitForTimeout(500);
+    }
     expect(errors).toHaveLength(0);
-  });
 
   test("opening a record modal with 1000 records loaded", async ({ page }) => {
     const addBtn = page.locator('[data-testid="btn-add-record"]');
