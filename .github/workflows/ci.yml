@@ -63,12 +63,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Serve App
-        run: |
-          cd V82B
-          npx serve . -p 5173 &
-          sleep 3
-          echo "App running at http://localhost:5173"
+   
 
       - name: Run E2E Tests
         run: npm run test:e2e
