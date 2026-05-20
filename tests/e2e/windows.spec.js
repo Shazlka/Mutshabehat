@@ -107,7 +107,7 @@ test.describe("🧭 Navigation @windows", () => {
 
 test("clicking Settings nav opens settings panel", async ({ page }) => {
   await page.click(SEL.navSettings);
-  await expect(page.locator('[data-testid="modal-appSettings"]')).toBeVisible({ timeout: 5000 });
+await expect(page.locator('[data-testid="modal-settingsModal"]')).toBeVisible({ timeout: 5000 });
 });
 
   test("clicking Export nav opens export panel", async ({ page }) => {
