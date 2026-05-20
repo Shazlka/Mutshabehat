@@ -162,9 +162,10 @@ describe("📋 Copy", () => {
 });
 
 // ═══════════════════════════════════════════════════════════
-// SUITE 3: Export
+// SUITE 3: EXPORT
 // ═══════════════════════════════════════════════════════════
-beforeEach(() => {
+describe("📤 Export", () => {
+  beforeEach(() => {
     vi.spyOn(document, 'createElement').mockReturnValue({
       click: vi.fn(),
       href: "",
@@ -186,14 +187,12 @@ beforeEach(() => {
   });
 
   it("throws on unsupported format", () => {
-    expect(() => exportToFile(SAMPLE_MUTASHABIHAT, "xlsx")).toThrow(
-      "Unsupported format"
-    );
+    expect(() => exportToFile(SAMPLE_MUTASHABIHAT, "xlsx")).toThrow("Unsupported format");
   });
 
   it("export of empty array produces valid output", () => {
     const result = exportToFile([], "json");
-    expect(result.size).toBeGreaterThan(0); // at least "[]"
+    expect(result.size).toBeGreaterThan(0);
   });
 
   it("revokes object URL after export", () => {
@@ -203,11 +202,9 @@ beforeEach(() => {
 
   it("JSON export preserves Arabic characters", () => {
     const result = exportToFile(SAMPLE_MUTASHABIHAT, "json");
-    // size check — Arabic UTF-8 content should be substantial
     expect(result.size).toBeGreaterThan(100);
   });
 });
-
 // ═══════════════════════════════════════════════════════════
 // SUITE 4: Sync (localStorage persistence simulation)
 // ═══════════════════════════════════════════════════════════
