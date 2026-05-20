@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests/e2e",
-  fullyParallel: false,
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
   workers: 5,
@@ -18,7 +18,6 @@ export default defineConfig({
   },
 
   projects: [
-    // ── Desktop ──────────────────────────────────────────
     {
       name: "desktop",
       testMatch: [
@@ -29,8 +28,6 @@ export default defineConfig({
       ],
       use: { ...devices["Desktop Chrome"] },
     },
-
-    // ── Mobile ───────────────────────────────────────────
     {
       name: "iphone-14",
       testMatch: "**/mobile-tablet.spec.js",
@@ -41,8 +38,6 @@ export default defineConfig({
       testMatch: "**/mobile-tablet.spec.js",
       use: { ...devices["Pixel 7"] },
     },
-
-    // ── Tablet ───────────────────────────────────────────
     {
       name: "ipad-pro",
       testMatch: "**/mobile-tablet.spec.js",
@@ -53,6 +48,11 @@ export default defineConfig({
       testMatch: "**/mobile-tablet.spec.js",
       use: { ...devices["Galaxy Tab S4"] },
     },
+    {
+      name: "performance",
+      testMatch: "**/performance.spec.js",
+      use: { ...devices["Desktop Chrome"] },
+    },
   ],
 
   webServer: {
@@ -62,13 +62,6 @@ export default defineConfig({
     timeout: 30_000,
   },
 
-  timeout: 15000,
+  timeout: 15_000,
   expect: { timeout: 3_000 },
 });
-
-// ADD inside projects array:
-{
-  name: "performance",
-  testMatch: "**/performance.spec.js",
-  use: { ...devices["Desktop Chrome"] },
-},
