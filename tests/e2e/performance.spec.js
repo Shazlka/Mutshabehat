@@ -304,7 +304,7 @@ test.describe("Memory & Stability — 1000 Records @performance", () => {
     await page.evaluate(([key, json]) => {
       localStorage.setItem(key, json);
     }, [PERF_KEY, JSON.stringify(generateLargeDataset(2000))]);
-        await page.reload();
+    await page.reload();
     await page.waitForLoadState("domcontentloaded");
     await page.waitForTimeout(2000);
     await page.click('[data-testid="nav-database"]');
