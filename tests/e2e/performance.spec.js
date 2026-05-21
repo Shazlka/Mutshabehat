@@ -272,7 +272,7 @@ test.describe("Memory & Stability — 1000 Records @performance", () => {
       await page.waitForTimeout(500);
     }
     expect(errors).toHaveLength(0);
-
+  });
   test("opening a record modal with 1000 records loaded", async ({ page }) => {
     const addBtn = page.locator('[data-testid="btn-add-record"]');
     if (await addBtn.isVisible()) {
