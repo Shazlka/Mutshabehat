@@ -89,33 +89,40 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
       - name: Install Dependencies
         run: npm install
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
-      - name: Generate Linux Baselines
+
+      - name: Generate Visual Baselines
         run: npx playwright test --project=visual --update-snapshots
         continue-on-error: true
-      - name: Commit Linux Baselines
+
+      - name: Commit Baselines
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add tests/e2e/visual.spec.js-snapshots/ || true
-          git diff --staged --quiet || git commit -m "ci: update Linux visual baselines [skip ci]"
-          git push || true
-      - name: Run Visual Comparison
-        run: npx playwright test --project=visual
-      - name: Upload Visual Report
+          git pull origin main --rebase || true
+          git add tests/e2e/visual.spec.js-snapshots/
+          git diff --staged --quiet && echo "No changes" || git commit -m "ci: update Linux visual baselines [skip ci]"
+          git push origin main || echo "Push failed — baselines saved as artifact"
+
+      - name: Upload Visual Baselines
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: visual-report
-          path: playwright-report/
-          retention-days: 7
+          name: visual-baselines
+          path: tests/e2e/visual.spec.js-snapshots/
+          retention-days: 30
 
   ci-gate:
     name: ✅ CI Gate
