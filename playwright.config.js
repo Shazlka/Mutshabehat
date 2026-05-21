@@ -53,6 +53,14 @@ export default defineConfig({
       testMatch: "**/performance.spec.js",
       use: { ...devices["Desktop Chrome"] },
     },
+    {
+      name: "visual",
+      testMatch: "**/visual.spec.js",
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1280, height: 800 },
+      },
+    },
   ],
 
   webServer: {
@@ -63,5 +71,12 @@ export default defineConfig({
   },
 
   timeout: 15_000,
-  expect: { timeout: 3_000 },
+  expect: {
+    timeout: 3_000,
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.02,
+      threshold: 0.2,
+      animations: "disabled",
+    },
+  },
 });
