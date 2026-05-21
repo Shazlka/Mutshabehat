@@ -86,3 +86,11 @@
   .part-row{grid-template-columns:1fr}
   .floating-top{left:12px;bottom:12px;width:44px;height:44px}
 }
+/* Force show label on search btn same as others */
+@media(max-width:850px){
+  #mainSearchBtn .btn-text{display:block!important;font-size:.65rem!important;line-height:1.1;text-align:center}
+  #mainSearchBtn svg{width:22px!important;height:22px!important}
+  /* Sync button - keep neutral color even on failure */
+  #syncGitHubBtn.danger{background:var(--soft)!important;color:var(--text)!important;border-color:var(--border)!important}
+  #syncGitHubBtn.danger svg{color:var(--muted)!important;stroke:var(--muted)!important}
+}
