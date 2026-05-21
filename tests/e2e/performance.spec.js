@@ -56,12 +56,16 @@ async function loadWithLargeDataset(page, count = 1000) {
   }, [PERF_KEY, data]);
   await page.reload();
   await page.waitForLoadState("networkidle");
- const choiceCard = page.locator('button.choice-card').first();
+const choiceCard = page.locator('button.choice-card').first();
   if (await choiceCard.isVisible()) {
     await choiceCard.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(800);
+  } else {
+    await page.evaluate(() => {
+      if (typeof openDatabase === 'function') openDatabase('personal');
+    });
+    await page.waitForTimeout(800);
   }
-  await page.waitForTimeout(500);
 }
 
 // ═══════════════════════════════════════════════════════════
