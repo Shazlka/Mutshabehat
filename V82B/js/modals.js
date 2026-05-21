@@ -49,6 +49,7 @@ function openMobileMenu(){
       </div>
     </div>`;
   document.getElementById('modalRoot').appendChild(e);
+  e.onclick = function(x){ if(x.target === e) closeModal('mobileMenu'); };
   lockBodyScrollV78();
   enableSwipeToClose(e, 'mobileMenu');
 }
