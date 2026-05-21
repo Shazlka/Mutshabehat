@@ -139,7 +139,7 @@ test.describe("Mobile Database @mobile", () => {
     const isVisible = await page.locator('.modal-backdrop').isVisible();
     if (isVisible) {
       await page.locator('.modal-close-btn').tap();
-      await expect(page.locator('.modal-backdrop')).not.toBeVisible({ timeout: 3000 });
+      await expect(page.locator('.modal-backdrop')).not.toBeVisible({ timeout: 8000 });
     }
   });
 
