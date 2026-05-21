@@ -54,6 +54,11 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
     {
+      name: "accessibility",
+      testMatch: "**/accessibility.spec.js",
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
       name: "visual",
       testMatch: "**/visual.spec.js",
       use: {
