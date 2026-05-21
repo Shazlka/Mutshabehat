@@ -45,7 +45,7 @@ test.describe("ARIA Attributes @a11y", () => {
 
   test("settings button has aria-label or title", async ({ page }) => {
     await page.goto("/");
-    const btn = page.locator('[data-testid="btn-settings"]');
+    const btn = page.locator('[data-testid="btn-settings"]').first();
     const label = await btn.getAttribute("aria-label");
     const title = await btn.getAttribute("title");
     const text = await btn.textContent();
@@ -54,7 +54,7 @@ test.describe("ARIA Attributes @a11y", () => {
 
   test("add record button has accessible label", async ({ page }) => {
     await goToDatabase(page);
-    const btn = page.locator('[data-testid="btn-add-record"]');
+    const btn = page.locator('[data-testid="btn-add-record"]').first();
     if (await btn.isVisible()) {
       const label = await btn.getAttribute("aria-label");
       const title = await btn.getAttribute("title");
@@ -125,7 +125,7 @@ test.describe("Keyboard Navigation @a11y", () => {
   test("can open settings modal with keyboard Enter", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
-    const btn = page.locator('[data-testid="btn-settings"]');
+    const btn = page.locator('[data-testid="btn-settings"]').first();
     await btn.focus();
     await page.keyboard.press("Enter");
     await expect(page.locator('[data-testid="modal-settingsModal"]')).toBeVisible({ timeout: 5000 });
@@ -151,7 +151,7 @@ test.describe("Keyboard Navigation @a11y", () => {
 
   test("add record button is keyboard accessible", async ({ page }) => {
     await goToDatabase(page);
-    const btn = page.locator('[data-testid="btn-add-record"]');
+    const btn = page.locator('[data-testid="btn-add-record"]').first();
     if (await btn.isVisible()) {
       await btn.focus();
       await page.keyboard.press("Enter");
@@ -226,7 +226,7 @@ test.describe("Semantic HTML @a11y", () => {
 
   test("add record modal contains form inputs", async ({ page }) => {
     await goToDatabase(page);
-    const btn = page.locator('[data-testid="btn-add-record"]');
+    const btn = page.locator('[data-testid="btn-add-record"]').first();
     if (await btn.isVisible()) {
       await btn.click();
       await expect(page.locator(".modal-backdrop")).toBeVisible({ timeout: 5000 });

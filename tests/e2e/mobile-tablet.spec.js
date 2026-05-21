@@ -5,7 +5,7 @@
 import { test, expect } from "@playwright/test";
 
 async function openAddModal(page) {
-  const addBtn = page.locator('[data-testid="btn-add-record"]');
+  const addBtn = page.locator('[data-testid="btn-add-record"]').first();
   if (await addBtn.isVisible()) {
     await addBtn.tap();
   } else {
@@ -144,7 +144,7 @@ test.describe("Mobile Database @mobile", () => {
   });
 
   test("settings modal opens on mobile", async ({ page }) => {
-    const settingsBtn = page.locator('[data-testid="btn-settings"]');
+    const settingsBtn = page.locator('[data-testid="btn-settings"]').first();
     if (await settingsBtn.isVisible()) {
       await settingsBtn.tap();
       await expect(page.locator('[data-testid="modal-settingsModal"]')).toBeVisible({ timeout: 5000 });
