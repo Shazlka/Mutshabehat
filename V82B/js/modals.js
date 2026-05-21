@@ -16,4 +16,39 @@ function isMobileLayout(){return window.matchMedia&&window.matchMedia('(max-widt
 
 function enableSwipeToClose(backdrop,id){let panel=backdrop.querySelector('.modal,.mobile-menu-panel');if(!panel)return;panel.addEventListener('touchstart',e=>{if(!isMobileLayout())return;let t=e.touches[0];__touchStartY_V78=t.clientY;__touchStartX_V78=t.clientX;__touchStartedOnHead_V78=!!e.target.closest('.modal-head,.modal-drag-handle')},{passive:true});panel.addEventListener('touchmove',e=>{if(!isMobileLayout())return;if(e.target.closest('.modal-body'))return;e.preventDefault()},{passive:false});panel.addEventListener('touchend',e=>{if(!isMobileLayout())return;let t=e.changedTouches[0],dy=t.clientY-__touchStartY_V78,dx=Math.abs(t.clientX-__touchStartX_V78);let body=panel.querySelector('.modal-body');let atTop=!body||body.scrollTop<=2;if(dy>95&&dx<80&&(__touchStartedOnHead_V78||atTop))closeModal(id)},{passive:true})}
 
-function openMobileMenu(){let items=[['الرئيسية','openHome()'],['الشخصية',"openDatabase('personal')"],['الآلية',"openDatabase('auto')"],['إضافة','openAddModal()'],['الإحصائيات','openDashboard()'],['الإعدادات','openAppSettings()'],['دمج','openMergeWindow()'],['Release Notes','openReleaseNotes()']];let e=document.createElement('section');e.id='mobileMenu';e.className='modal-backdrop';e.innerHTML=`<div class="mobile-menu-panel"><button onclick="closeModal('mobileMenu')">× إغلاق</button>${items.map(i=>`<button onclick="closeModal('mobileMenu');${i[1]}">${i[0]}</button>`).join('')}</div>`;document.getElementById('modalRoot').appendChild(e);lockBodyScrollV78();enableSwipeToClose(e,'mobileMenu')}
+function openMobileMenu(){
+  const items = [
+    { icon: '🏠', label: 'الرئيسية',    action: 'openHome()',                primary: false },
+    { icon: '📖', label: 'الشخصية',     action: "openDatabase('personal')",  primary: true  },
+    { icon: '🤖', label: 'الآلية',      action: "openDatabase('auto')",      primary: false },
+    { icon: '➕', label: 'إضافة متشابه',action: 'openAddModal()',             primary: true  },
+    { icon: '🔍', label: 'بحث متقدم',   action: 'openAdvancedSearch()',      primary: false },
+    { icon: '📊', label: 'الإحصائيات', action: 'openDashboard()',            primary: false },
+    { icon: '⚙️', label: 'الإعدادات',  action: 'openAppSettings()',          primary: false },
+    { icon: '☁️', label: 'مزامنة',      action: 'manualSyncGitHub()',         primary: false },
+    { icon: '📤', label: 'تصدير',       action: 'exportActiveDatabase()',     primary: false },
+  ];
+  const e = document.createElement('section');
+  e.id = 'mobileMenu';
+  e.className = 'modal-backdrop';
+  e.innerHTML = `
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-header">
+        <span class="mobile-menu-title">القائمة</span>
+        <button class="mobile-menu-close" onclick="closeModal('mobileMenu')">✕</button>
+      </div>
+      <div class="mobile-menu-separator"></div>
+      <div class="mobile-menu-grid">
+        ${items.map(i => `
+          <button class="mobile-nav-item ${i.primary ? 'mobile-nav-primary' : ''}"
+            onclick="closeModal('mobileMenu');${i.action}">
+            <span class="nav-icon">${i.icon}</span>
+            <span class="nav-label">${i.label}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>`;
+  document.getElementById('modalRoot').appendChild(e);
+  lockBodyScrollV78();
+  enableSwipeToClose(e, 'mobileMenu');
+}
