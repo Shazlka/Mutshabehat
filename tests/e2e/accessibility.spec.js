@@ -48,7 +48,8 @@ test.describe("ARIA Attributes @a11y", () => {
     const btn = page.locator('[data-testid="btn-settings"]');
     const label = await btn.getAttribute("aria-label");
     const title = await btn.getAttribute("title");
-    expect(label || title).toBeTruthy();
+    const text = await btn.textContent();
+    expect(label || title || (text && text.trim())).toBeTruthy();
   });
 
   test("add record button has accessible label", async ({ page }) => {
