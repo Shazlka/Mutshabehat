@@ -349,3 +349,62 @@ function saveSettings(closeAfter=false){
   // Also update once on load
   try{ window.addEventListener('DOMContentLoaded', ()=>setTimeout(__setDbBodyClassV87, 50)); }catch(e){}
 })();
+// ── Compact Settings Override — must be last ──
+function openAppSettings(){
+  let s=getSettings();
+  modal('settingsModal','إعدادات التطبيق',`
+<div class="settings-compact">
+  <div class="settings-column settings-column-left">
+    <div class="settings-group settings-card status-card">
+      <div class="settings-group-title">☁ حالة المزامنة</div>
+      ${typeof githubStatusHtmlV78==='function' ? githubStatusHtmlV78(s) : ''}
+      <div id="githubSyncStatusMount">${typeof ghStatusHtmlV79==='function' ? ghStatusHtmlV79() : ''}</div>
+    </div>
+  </div>
+
+  <div class="settings-column settings-column-right">
+    <div class="settings-group settings-card appearance-card">
+      <div class="settings-group-title">🎨 المظهر / الخط</div>
+      <div class="settings-2col">
+        <label class="field-compact">Theme<select id="setTheme"><option value="quran-classic">Quran Classic</option><option value="apple-health">Apple Health</option><option value="bevel-night">Bevel Night</option></select></label>
+        <label class="field-compact">Font<select id="setFont" onchange="updateFontPreview()"><option value="normal-quran">Normal Quran</option><option value="mushaf-qpc-v2">Mushaf QPC V2</option></select></label>
+      </div>
+      <div id="fontPreviewBox" class="font-preview-compact" data-font-preset="normal-quran">
+        <div class="font-preview-ayah">وَزَيَّنَ لَهُمُ الشَّيْطَانُ أَعْمَالَهُمْ</div>
+        <small id="fontPreviewHint"></small>
+      </div>
+    </div>
+
+    <div class="settings-group settings-card github-card">
+      <div class="settings-group-title">🔐 إعدادات GitHub</div>
+      <label class="field-compact field-compact-full">Token<input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}"></label>
+      <div class="settings-2col">
+        <label class="field-compact">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner)}"></label>
+        <label class="field-compact">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo)}"></label>
+        <label class="field-compact">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch)}"></label>
+        <label class="field-compact">Path<input id="ghPath" value="${escapeHtml(s.ghPath)}"></label>
+      </div>
+      <label class="toggle-compact"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}> مزامنة تلقائية</label>
+      <div class="settings-actions-row">
+        <button class="primary sm" onclick="saveSettings()">حفظ</button>
+        <button class="sm" onclick="testGitHubConnectionV79()">Test</button>
+        <button class="sm" onclick="syncToGitHub('manual')">Sync</button>
+      </div>
+    </div>
+
+    <div class="settings-group settings-card tools-card">
+      <div class="settings-group-title">✏️ الوضع والأدوات</div>
+      <label class="toggle-compact"><input type="checkbox" id="editModeCheck" ${editMode?'checked':''}> تفعيل وضع التعديل</label>
+      <div class="settings-actions-row">
+        <button class="sm" onclick="exportActiveDatabase()">Export</button>
+        <button class="sm" onclick="resetDualDbCacheV68()">Reset</button>
+        <button class="sm" onclick="openReleaseNotes()">Notes</button>
+      </div>
+    </div>
+  </div>
+</div>`,
+  `<button class="primary" onclick="saveSettings()">حفظ</button><button onclick="closeModal('settingsModal')">إغلاق</button>`);
+  document.getElementById('setTheme').value=s.theme;
+  document.getElementById('setFont').value=s.font;
+  updateFontPreview();ghRenderV79();
+}

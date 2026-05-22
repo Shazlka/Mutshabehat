@@ -56,15 +56,6 @@
             <div id="activeFilterChips" class="active-filter-chips"></div>
             <div id="surahIndexBar" class="surah-index-bar"></div>
           </div><div id="surahFilterPanel"><input id="surahFilterSearch" class="wide-input" placeholder="ابحث باسم السورة أو رقمها..." oninput="renderSurahFilter()"><div class="range-tabs"><button onclick="setSurahRange('all')" class="active" data-range="all">الكل</button><button onclick="setSurahRange('1-30')" data-range="1-30">1-30</button><button onclick="setSurahRange('31-60')" data-range="31-60">31-60</button><button onclick="setSurahRange('61-90')" data-range="61-90">61-90</button><button onclick="setSurahRange('91-114')" data-range="91-114">91-114</button></div><h4>الأكثر وجودًا</h4><div id="topSurahGrid" class="surah-grid top"></div><div class="surah-count-line" id="surahCountLine"></div><div id="surahFilterGrid" class="surah-grid"></div></div></section>
-          <section class="workspace-side-card" id="workspaceGuideCard">
-            <div class="workspace-side-label">وضع المراجعة</div>
-            <h3>ابدأ من عرض واضح</h3>
-            <p>استخدم السور والفرز للانتقال بسرعة، ثم افتح تفاصيل المجموعة من اللوحة الجانبية للمراجعة والنسخ والتعديل.</p>
-            <div id="workspaceGuideActions" class="inline-actions">
-              <button onclick="toggleSurahFilterPanel()">فتح الفلتر</button>
-              <button onclick="openAdvancedSearch()">بحث متقدم</button>
-            </div>
-          </section>
         </div>
       </div>
     </div>
@@ -91,27 +82,5 @@
 <script src="js/settings.js?v=v82b_split_app"></script>
 <script src="js/export-tools.js?v=v82b_split_app"></script>
 <script src="js/boot-check.js?v=v82c_phase1"></script>
-<script>
-function openMainSearchUI(){
-  if(window.innerWidth<=850){
-    var overlay=document.getElementById("mobileSearchOverlay");
-    overlay.classList.add("active");
-    setTimeout(function(){document.getElementById("mobileSearchInput").focus();},100);
-  } else {
-    var wrap=document.getElementById("mainSearchWrap");
-    if(wrap){wrap.classList.remove("hidden");wrap.querySelector("input")?.focus();}
-  }
-}
-function closeMobileSearch(){
-  var overlay=document.getElementById("mobileSearchOverlay");
-  overlay.classList.remove("active");
-  document.getElementById("mobileSearchInput").value="";
-  document.getElementById("searchInput").value="";
-  renderActiveGroups();
-}
-function closeMainSearchUI(){
-  if(window.innerWidth<=850){closeMobileSearch();}
-  else{var wrap=document.getElementById("mainSearchWrap");if(wrap)wrap.classList.add("hidden");}
-}
-</script></body>
+</body>
 </html>

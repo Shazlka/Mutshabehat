@@ -144,24 +144,7 @@ function isDesktopDetailLayoutV82C() {
 }
 
 function renderWorkspaceGuideV82C() {
-  let mount = document.getElementById("workspaceGuideCard");
-  if (!mount) return;
-  let isAuto = activeDb === "auto";
-  mount.innerHTML = isAuto
-    ? `<div class="workspace-side-label">القاعدة الآلية</div>
-       <h3>اختيار سريع للسورة</h3>
-       <p>ابدأ من السورة ثم راجع المجموعات في الوسط وافتح التفاصيل الكاملة في اللوحة الجانبية.</p>
-       <div class="inline-actions">
-         <button onclick="toggleSurahFilterPanel()">فتح الفلتر</button>
-         <button onclick="clearSurahFilter()">إعادة الضبط</button>
-       </div>`
-    : `<div class="workspace-side-label">القاعدة الشخصية</div>
-       <h3>مراجعة مركزة</h3>
-       <p>ابحث أو صفِّ النتائج من اليسار، ثم افتح تفاصيل المجموعة في اللوحة الجانبية للنسخ أو التعديل السريع.</p>
-       <div class="inline-actions">
-         <button onclick="openAddModal()">إضافة مجموعة</button>
-         <button onclick="openAdvancedSearch()">بحث متقدم</button>
-       </div>`;
+  return;
 }
 
 function detailEmptyHtmlV82C() {
