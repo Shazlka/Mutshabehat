@@ -40,7 +40,7 @@ function openMainSearchUI(){
   }
   let wrap=document.getElementById('mainSearchWrap');
   if(wrap) wrap.classList.remove('hidden');
-  let toolbar=wrap?wrap.closest('.workspace-toolbar'):null;
+  let toolbar=document.querySelector('.workspace-toolbar');
   if(toolbar) toolbar.classList.add('search-open');
   let si=document.getElementById('searchInput');
   if(si){ si.focus(); if(typeof si.select==='function') si.select(); }
@@ -64,7 +64,7 @@ function closeMainSearchUI(skipRender){
   if(si) si.value='';
   let wrap=document.getElementById('mainSearchWrap');
   if(wrap) wrap.classList.add('hidden');
-  let toolbar=wrap?wrap.closest('.workspace-toolbar'):null;
+  let toolbar=document.querySelector('.workspace-toolbar');
   if(toolbar) toolbar.classList.remove('search-open');
   __clearPersistedSearchV86(activeDb);
   if(!skipRender && activeDb) renderActiveGroups();

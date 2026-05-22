@@ -22,16 +22,6 @@
 .settings-compact h2,.settings-compact .github-sync-heading{font-size:.75rem!important;margin:0 0 4px!important}
 .settings-compact .github-sync-dot{width:8px;height:8px}
 /* Modal sizing */
-.settingsModal-window{max-width:960px!important;width:min(960px,calc(100vw - 24px))!important;max-height:min(92vh,860px)!important;overflow:hidden!important}
-.settingsModal-window .modal-body{overflow:visible!important;max-height:none!important;padding:12px!important}
-@media(max-width:600px){
-  .settings-compact{grid-template-columns:1fr!important}
-  .settings-column{gap:12px!important}
-  .settingsModal-window{max-height:90vh!important;overflow:auto!important}
-  .settingsModal-window .modal-body{overflow:auto!important;max-height:70vh!important}
-}
-
-/* ── Settings modal no-scroll fix ── */
 .settingsModal-window{
   max-width:960px!important;
   width:min(960px,calc(100vw - 24px))!important;
@@ -39,8 +29,15 @@
   overflow:hidden!important;
 }
 .settingsModal-window .modal-body{
-  overflow:visible!important;
+  overflow:auto!important;
   max-height:none!important;
+  padding:12px!important;
+}
+@media(max-width:600px){
+  .settings-compact{grid-template-columns:1fr!important}
+  .settings-column{gap:12px!important}
+  .settingsModal-window{max-height:90vh!important;overflow:auto!important}
+  .settingsModal-window .modal-body{overflow:auto!important;max-height:70vh!important}
 }
 .settings-compact{
   display:grid!important;
