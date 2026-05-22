@@ -16,7 +16,7 @@
 .font-preview-compact .font-preview-ayah{font-size:1rem;line-height:1.8;color:var(--text);text-align:center;direction:rtl}
 .font-preview-compact small{font-size:.7rem;color:var(--muted);display:block;text-align:center;margin-top:4px}
 /* Modal width for settings */
-.settingsModal-window{max-width:680px!important;width:95vw!important}
+.settingsModal-window{max-width:820px!important;width:min(820px,96vw)!important}
 @media(max-width:600px){
   .settings-compact{grid-template-columns:1fr}
   .settings-2col{grid-template-columns:1fr 1fr}
@@ -35,7 +35,7 @@
 }
 .settings-compact{
   display:grid!important;
-  grid-template-columns:1fr 1fr!important;
+  grid-template-columns:minmax(280px,1fr) minmax(280px,1fr)!important;
   gap:14px!important;
   align-items:start!important;
 }
