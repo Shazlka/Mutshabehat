@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>متشابهات القرآن الكريم — V80 Automated DB Delete</title>
+  <title>متشابهات القرآن الكريم</title>
   <link rel="stylesheet" href="css/01-base.css?v=v82b_split">
   <link rel="stylesheet" href="css/02-header.css?v=v82b_split">
   <link rel="stylesheet" href="css/03-layout.css?v=v82b_split">
@@ -21,7 +21,7 @@
 </head>
 <body data-theme="quran-classic" data-font-preset="normal-quran" data-testid="app-root">
 <header class="app-header" data-testid="header">
-  <div class="brand"><div class="logo">ق</div><div><h1>متشابهات القرآن الكريم</h1><p>V80 — حذف من القاعدة الآلية</p></div></div>
+  <div class="brand"><div class="logo">ق</div><div><h1>متشابهات القرآن الكريم</h1></div></div>
   <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
 <nav class="header-actions" data-testid="sidebar">
     <button onclick="openHome()" data-testid="nav-home">الرئيسية</button><button onclick="openDatabase('personal')" data-testid="nav-database">الشخصية</button><button onclick="openDatabase('auto')" data-testid="nav-database-auto">الآلية</button>
@@ -29,9 +29,7 @@
     <button onclick="openMergeWindow()" data-testid="btn-merge">دمج المجموعات</button><button onclick="resetDualDbCacheV68()" data-testid="btn-refresh">تحديث البيانات</button>
 </nav>
 </header>
-<div class="legend legend-compact">
-  <b id="ghBadge">☁ GitHub: not set</b><b id="storageBadge">✓ جاهز</b>
-</div>
+
 <main id="home" class="home-screen" data-testid="main-content"><section class="hero"><h2>اختر قاعدة البيانات</h2><p>القاعدة الشخصية قابلة للتعديل، والقاعدة الآلية للمراجعة والنسخ والحذف عند تفعيل وضع التعديل.</p><div class="choice-grid"><button class="choice-card personal" onclick="openDatabase('personal')"><span>★</span><b>المتشابهات الشخصية</b><small>معتمدة وقابلة للإضافة والتعديل</small><em id="personalCountHome">0 مجموعة</em></button><button class="choice-card auto" onclick="openDatabase('auto')"><span>⚙</span><b>المتشابهات الآلية</b><small>مرشحات آلية للمراجعة</small><em id="autoCountHome">0 مجموعة</em></button></div></section></main>
 <section id="workspace" class="workspace hidden">
   <div class="workspace-shell">
