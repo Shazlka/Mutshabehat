@@ -826,9 +826,8 @@ body{
   display:flex;
   flex-direction:column;
   gap:14px;
-  min-height:calc(100vh - 130px);
-  height:auto;
-  overflow:visible;
+  height:calc(100vh - 130px);
+  overflow:hidden;
 }
 
 .workspace-status-bar{
@@ -852,9 +851,9 @@ body{
   width:100%;
   max-width:none;
   align-items:start;
-  overflow:visible;
-  flex:none;
-  min-height:auto;
+  overflow-y:auto;
+  flex:1;
+  min-height:0;
   direction:ltr;
 }
 

@@ -377,12 +377,12 @@ function openAppSettings(){
 
     <div class="settings-group settings-card github-card">
       <div class="settings-group-title">🔐 إعدادات GitHub</div>
-      <label class="field-compact field-compact-full">Token<div style="display:flex;gap:4px;align-items:center"><input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}" style="flex:1"><button type="button" class="sm" onclick="toggleGhTokenVisibility()" title="إظهار/إخفاء">👁</button></div></label>
+      <label class="field-compact field-compact-full">Token<input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}"></label>
       <div class="settings-2col">
-        <label class="field-compact">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner||'')}"></label>
-        <label class="field-compact">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo||'')}"></label>
-        <label class="field-compact">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch||'')}"></label>
-        <label class="field-compact">Path<input id="ghPath" value="${escapeHtml(s.ghPath||'')}"></label>
+        <label class="field-compact">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner)}"></label>
+        <label class="field-compact">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo)}"></label>
+        <label class="field-compact">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch)}"></label>
+        <label class="field-compact">Path<input id="ghPath" value="${escapeHtml(s.ghPath)}"></label>
       </div>
       <label class="toggle-compact"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}> مزامنة تلقائية</label>
       <div class="settings-actions-row">
@@ -404,8 +404,7 @@ function openAppSettings(){
   </div>
 </div>`,
   `<button class="primary" onclick="saveSettings()">حفظ</button><button onclick="closeModal('settingsModal')">إغلاق</button>`);
-  let themeEl=document.getElementById('setTheme');
-  let fontEl=document.getElementById('setFont');
-  if(themeEl) themeEl.value=s.theme;
-  if(fontEl) fontEl.value=s.font;
+  document.getElementById('setTheme').value=s.theme;
+  document.getElementById('setFont').value=s.font;
   updateFontPreview();ghRenderV79();
+}
