@@ -34,10 +34,6 @@
 <section id="workspace" class="workspace hidden">
   <div class="workspace-shell">
     <div class="workspace-main">
-      <section class="workspace-status-bar">
-        <div id="activeFilterChips" class="active-filter-chips"></div>
-        <div id="surahIndexBar" class="surah-index-bar"></div>
-      </section>
       <div class="dashboard-body">
         <aside id="detailPanel" class="detail-panel">
           <div id="detailPanelContent" class="detail-panel-content"></div>
@@ -55,7 +51,11 @@
     <option value="most-verses">Most Verses First</option>
   </select>
   <span id="counter" class="result-counter" data-testid="record-count">عدد النتائج: 0</span>
-</div><div class="filter-actions"><button id="onlyResultsBtn" class="active" onclick="toggleOnlyWithResults()">بها نتائج فقط</button><button onclick="clearSurahFilter()">عرض الكل</button><button onclick="toggleSurahFilterPanel()" id="surahFilterToggleBtn">إغلاق الفلتر ▴</button></div></div></div><div id="surahFilterPanel"><input id="surahFilterSearch" class="wide-input" placeholder="ابحث باسم السورة أو رقمها..." oninput="renderSurahFilter()"><div class="range-tabs"><button onclick="setSurahRange('all')" class="active" data-range="all">الكل</button><button onclick="setSurahRange('1-30')" data-range="1-30">1-30</button><button onclick="setSurahRange('31-60')" data-range="31-60">31-60</button><button onclick="setSurahRange('61-90')" data-range="61-90">61-90</button><button onclick="setSurahRange('91-114')" data-range="91-114">91-114</button></div><h4>الأكثر وجودًا</h4><div id="topSurahGrid" class="surah-grid top"></div><div class="surah-count-line" id="surahCountLine"></div><div id="surahFilterGrid" class="surah-grid"></div></div></section>
+</div><div class="filter-actions"><button id="onlyResultsBtn" class="active" onclick="toggleOnlyWithResults()">بها نتائج فقط</button><button onclick="clearSurahFilter()">عرض الكل</button><button onclick="toggleSurahFilterPanel()" id="surahFilterToggleBtn">إغلاق الفلتر ▴</button></div></div></div>
+          <div class="workspace-status-bar-inline" style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px;">
+            <div id="activeFilterChips" class="active-filter-chips"></div>
+            <div id="surahIndexBar" class="surah-index-bar"></div>
+          </div><div id="surahFilterPanel"><input id="surahFilterSearch" class="wide-input" placeholder="ابحث باسم السورة أو رقمها..." oninput="renderSurahFilter()"><div class="range-tabs"><button onclick="setSurahRange('all')" class="active" data-range="all">الكل</button><button onclick="setSurahRange('1-30')" data-range="1-30">1-30</button><button onclick="setSurahRange('31-60')" data-range="31-60">31-60</button><button onclick="setSurahRange('61-90')" data-range="61-90">61-90</button><button onclick="setSurahRange('91-114')" data-range="91-114">91-114</button></div><h4>الأكثر وجودًا</h4><div id="topSurahGrid" class="surah-grid top"></div><div class="surah-count-line" id="surahCountLine"></div><div id="surahFilterGrid" class="surah-grid"></div></div></section>
           <section class="workspace-side-card" id="workspaceGuideCard">
             <div class="workspace-side-label">وضع المراجعة</div>
             <h3>ابدأ من عرض واضح</h3>

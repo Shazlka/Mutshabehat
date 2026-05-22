@@ -144,3 +144,7 @@ async function filterBySurah(s){let item=(typeof autoManifestItemByNameV84==='fu
 function clearSurahFilter(){selectedSurahFilter=null;let fs=document.getElementById('filterStatus');if(fs)fs.textContent=(typeof isAutoDbV84==='function'&&isAutoDbV84())?'اختر سورة لتحميلها فقط':'المعروض الآن: كل السور';saveFiltersV85(activeDb);renderActiveGroups()}
 
 function resetCurrentFiltersV85(){let db=dbNameV85(activeDb);try{localStorage.removeItem(filtersKeyV85(db))}catch(e){}selectedSurahFilter=null;onlyWithResults=true;surahRange='all';advancedFilters=defaultAdvancedFiltersV85();let si=document.getElementById('searchInput');if(si)si.value='';let sf=document.getElementById('surahFilterSearch');if(sf)sf.value='';applyFiltersV85(db);renderActiveGroups()}
+/* ── Node.js exports for unit testing (browser ignores this) ── */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { getTags, passStatus };
+}
