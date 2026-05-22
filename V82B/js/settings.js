@@ -80,8 +80,59 @@ function saveSettings(closeAfter=true){let s=ghCollectV79(),e=document.getElemen
 
 function applySettings(){let s=getSettings();document.body.setAttribute('data-theme',s.theme);document.body.setAttribute('data-font-preset',s.font);let b=document.getElementById('ghBadge');if(b){let st=localStorage.getItem(GH_KEYS_V79.status)||'none';b.textContent=st==='success'?'✅ GitHub synced':st==='failed'?'❌ GitHub failed':st==='syncing'?'🟡 GitHub syncing':st==='no_changes'?'⚠️ No changes':(s.ghOwner&&s.ghRepo?'☁ GitHub ready':'☁ GitHub: not set')}}
 
-function openAppSettings(){let s=getSettings();modal('settingsModal','إعدادات التطبيق',`<div class="settings-section github-settings-section"><h2 class="github-sync-heading"><span id="githubSyncDot" class="github-sync-dot gray"></span>GitHub Auto Sync ☁</h2>${githubStatusHtmlV78(s)}<div id="githubSyncStatusMount">${ghStatusHtmlV79()}</div><label class="field">Token<input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}"></label><div class="form-grid"><label class="field">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner)}"></label><label class="field">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo)}"></label><label class="field">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch)}"></label><label class="field">Path<input id="ghPath" value="${escapeHtml(s.ghPath)}"></label></div><label class="github-autosync-toggle"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}> تفعيل المزامنة التلقائية بعد تعديل قاعدة البيانات الشخصية</label><div class="inline-actions"><button class="primary" onclick="saveSettings()">Save / حفظ</button><button onclick="testGitHubConnectionV79()">Test Connection</button><button onclick="syncToGitHub('manual')">Sync Now / مزامنة الآن</button></div><small class="github-sync-note">المسار الحالي للمزامنة: <code>V71/personal-data.js</code> — لا يتم إظهار النجاح إلا بعد رجوع GitHub بمعلومات Commit.</small></div><div class="settings-section"><h2>✏️ وضع التعديل / Edit Mode</h2><label><input type="checkbox" id="editModeCheck" ${editMode?'checked':''}> تفعيل وضع التعديل</label></div><div class="settings-section"><h2>🎨 المظهر / الخط</h2><div class="form-grid"><label class="field">Theme<select id="setTheme"><option value="quran-classic">Quran Classic</option><option value="apple-health">Apple Health</option><option value="bevel-night">Bevel Night</option></select></label><label class="field">Font<select id="setFont" onchange="updateFontPreview()"><option value="normal-quran">Normal Quran</option><option value="mushaf-qpc-v2">Mushaf QPC V2</option></select></label></div><div id="fontPreviewBox" class="font-preview-box" data-font-preset="normal-quran"><b>معاينة الخط قبل الحفظ</b><div class="font-preview-ayah">وَزَيَّنَ لَهُمُ الشَّيْطَانُ أَعْمَالَهُمْ فَصَدَّهُمْ عَنِ السَّبِيلِ فَهُمْ لَا يَهْتَدُونَ</div><small id="fontPreviewHint">إذا كان مجلد fonts فارغاً سيظهر الخط الاحتياطي تلقائياً.</small></div></div><div class="inline-actions"><button onclick="openReleaseNotes()">Release Notes</button><button onclick="exportActiveDatabase()">Export data.js</button><button onclick="resetDualDbCacheV68()">Reset Cache</button></div>`,`<button class="primary" onclick="saveSettings()">حفظ</button><button onclick="closeModal('settingsModal')">إغلاق</button>`);document.getElementById('setTheme').value=s.theme;document.getElementById('setFont').value=s.font;updateFontPreview();ghRenderV79()}
-
+function openAppSettings(){
+  let s=getSettings();
+  modal('settingsModal','إعدادات التطبيق',`
+<div class="settings-compact">
+  <div class="settings-col">
+    <div class="settings-group">
+      <div class="settings-group-title">☁ GitHub Sync</div>
+      <label class="field-compact">Token<input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}"></label>
+      <div class="settings-2col">
+        <label class="field-compact">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner)}"></label>
+        <label class="field-compact">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo)}"></label>
+        <label class="field-compact">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch)}"></label>
+        <label class="field-compact">Path<input id="ghPath" value="${escapeHtml(s.ghPath)}"></label>
+      </div>
+      <label class="toggle-compact"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}> مزامنة تلقائية</label>
+      <div class="settings-actions-row">
+        <button class="primary sm" onclick="saveSettings()">حفظ</button>
+        <button class="sm" onclick="testGitHubConnectionV79()">Test</button>
+        <button class="sm" onclick="syncToGitHub('manual')">Sync</button>
+      </div>
+    </div>
+  </div>
+  <div class="settings-col">
+    <div class="settings-group">
+      <div class="settings-group-title">🎨 مظهر / خط</div>
+      <div class="settings-2col">
+        <label class="field-compact">Theme<select id="setTheme"><option value="quran-classic">Quran Classic</option><option value="apple-health">Apple Health</option><option value="bevel-night">Bevel Night</option></select></label>
+        <label class="field-compact">Font<select id="setFont" onchange="updateFontPreview()"><option value="normal-quran">Normal Quran</option><option value="mushaf-qpc-v2">Mushaf QPC V2</option></select></label>
+      </div>
+      <div id="fontPreviewBox" class="font-preview-compact" data-font-preset="normal-quran">
+        <div class="font-preview-ayah">وَزَيَّنَ لَهُمُ الشَّيْطَانُ أَعْمَالَهُمْ</div>
+        <small id="fontPreviewHint"></small>
+      </div>
+    </div>
+    <div class="settings-group">
+      <div class="settings-group-title">✏️ وضع التعديل</div>
+      <label class="toggle-compact"><input type="checkbox" id="editModeCheck" ${editMode?'checked':''}> تفعيل وضع التعديل</label>
+    </div>
+    <div class="settings-group">
+      <div class="settings-group-title">🔧 أدوات</div>
+      <div class="settings-actions-row">
+        <button class="sm" onclick="exportActiveDatabase()">Export</button>
+        <button class="sm" onclick="resetDualDbCacheV68()">Reset</button>
+        <button class="sm" onclick="openReleaseNotes()">Notes</button>
+      </div>
+    </div>
+  </div>
+</div>`,
+  `<button class="primary" onclick="saveSettings()">حفظ</button><button onclick="closeModal('settingsModal')">إغلاق</button>`);
+  document.getElementById('setTheme').value=s.theme;
+  document.getElementById('setFont').value=s.font;
+  updateFontPreview();ghRenderV79();
+}
 const RELEASE_V79=`Release Note — V79 GitHub Auto Sync Status Improvements\n\nImplemented:\n- Added clear GitHub Sync Status section.\n- Shows syncing/success/failure/no-changes states.\n- Shows last sync time, synced path, commit short SHA, Open Commit, Copy Error, and Verify on GitHub.\n- Preserves Owner Shazlka, Repo Mutashabihat, Branch main, Path V71/personal-data.js.\n- Uses GitHub Contents API: GET SHA, compare content, UTF-8 Base64 encode, PUT with message/content/sha/branch.\n- Success appears only after GitHub returns commit information.\n- No commit is created when local and GitHub content are identical.\n- Auto Sync runs after personal database changes saved through saveDb().\n\nPreserved: all V78/V71 features and current UI theme/layout.`;
 
 function openReleaseNotes(){modal('releaseModal','Release Notes — V79',`<div class="release-content">${escapeHtml(RELEASE_V79)}</div>`,`<button onclick="navigator.clipboard?.writeText(RELEASE_V79)">نسخ</button><button onclick="closeModal('releaseModal')">إغلاق</button>`)}
