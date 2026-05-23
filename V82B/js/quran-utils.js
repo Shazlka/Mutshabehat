@@ -240,3 +240,5 @@ function smartArabicSearchMatch(query, text, threshold) {
   threshold = threshold || 55;
   return smartArabicSearchScore(query, text) >= threshold;
 }
+
+function smartArabicSearchMatch(query,text,threshold){try{threshold=threshold||50;return smartArabicSearchScore(query,text)>=threshold;}catch(e){return normalizeArabicLooseSearchText(text).includes(normalizeArabicLooseSearchText(query));}}
