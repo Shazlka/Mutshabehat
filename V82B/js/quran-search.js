@@ -11,10 +11,13 @@ function highlightQuranText(rawText, query) {
     const nT = normalizeArabicLooseSearchText(token);
     const tS = stripArabicSearchPrefixes(nT);
     const matched = qData.some(({variants, nQ, qS, allowed}) => {
-      if (variants.some(v => nT === v || nT.includes(v) || v.includes(nT))) return true;
-      if (tS.length > 2 && qS.length > 2 && (tS.includes(qS) || qS.includes(tS))) return true;
-      if (allowed > 0 && levenshteinDistance(nT, nQ) <= allowed) return true;
-      if (allowed > 0 && levenshteinDistance(tS, qS) <= getAllowedArabicDistance(qS)) return true;
+      if (variants.some(v => nT === v || (v.length >= 4 && nT.includes(v)))) return true;
+      if (qS.length >= 4 && tS.length >= 4 && tS.includes(qS)) return true;
+      if (nQ.length >= 5 && allowed > 0 && levenshteinDistance(nT, nQ) <= allowed) return true;
+      if (tS.length >= 3 && qS.length >= 3) {
+        const aS = getAllowedArabicDistance(qS);
+        if (aS > 0 && levenshteinDistance(tS, qS) <= aS) return true;
+      }
       return false;
     });
     return matched ? `<span class="search-highlight">${escapeHtml(token)}</span>` : escapeHtml(token);

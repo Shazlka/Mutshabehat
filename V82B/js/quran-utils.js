@@ -177,27 +177,38 @@ function smartArabicSearchScore(query, text) {
       }
 
       // Tier 4: variant / prefix match (80)
+      // Only: exact variant match OR text word contains a 4+ char variant as substring.
+      // Removed v.includes(nT): long variants containing short text words caused false positives.
       if (best < 80) {
         for (const v of variants) {
-          if (nT === v || nT.includes(v) || v.includes(nT)) { best = 80; break; }
+          if (nT === v || (v.length >= 4 && nT.includes(v))) { best = 80; break; }
         }
       }
-      if (best >= 70) continue; // no need to check slower tiers for this text word
+      if (best >= 70) continue;
 
-      // Tier 5: stripped root substring match (70)
-      if (stripped.length > 2 && tS.length > 2 && (tS.includes(stripped) || stripped.includes(tS))) {
+      // Tier 5: text root contains query root (70)
+      // Only one direction (tS contains stripped) and both must be 4+ chars.
+      // Removed stripped.includes(tS): short common roots inside long query roots caused false positives.
+      if (stripped.length >= 4 && tS.length >= 4 && tS.includes(stripped)) {
         best = Math.max(best, 70);
         continue;
       }
 
       // Tier 6: fuzzy Levenshtein (55–70)
-      const allowed = getAllowedArabicDistance(nWord);
-      if (allowed > 0) {
-        const d = levenshteinDistance(nWord, nT);
-        if (d <= allowed) best = Math.max(best, Math.round(55 + ((allowed - d) / allowed) * 15));
-        if (best < 55) {
+      // nWord must be 5+ chars to prevent 4-char words fuzzy-matching unrelated verbs/nouns.
+      if (nWord.length >= 5) {
+        const allowed = getAllowedArabicDistance(nWord);
+        if (allowed > 0) {
+          const d = levenshteinDistance(nWord, nT);
+          if (d <= allowed) best = Math.max(best, Math.round(55 + ((allowed - d) / allowed) * 15));
+        }
+      }
+      // Stripped fuzzy: both roots 3+ chars
+      if (best < 55 && stripped.length >= 3 && tS.length >= 3) {
+        const allowedS = getAllowedArabicDistance(stripped);
+        if (allowedS > 0) {
           const ds = levenshteinDistance(stripped, tS);
-          if (ds <= getAllowedArabicDistance(stripped)) best = Math.max(best, 55);
+          if (ds <= allowedS) best = Math.max(best, 55);
         }
       }
     }
