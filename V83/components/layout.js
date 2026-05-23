@@ -225,7 +225,7 @@
     root=document.createElement('section');
     root.id='v83MobileDetailSheet';
     root.className='v83-mobile-sheet';
-    root.innerHTML='<div class="v83-mobile-sheet-card"><div class="v83-mobile-sheet-head"><button class="v83-mobile-close" data-v83-mobile-close="1">رجوع</button><h3 class="v83-mobile-title">التفاصيل</h3><div class="v83-mobile-nav-steps"><button data-v83-mobile-prev="1">السابق</button><button data-v83-mobile-next="1">التالي</button></div></div><div class="v83-mobile-sheet-body" id="v83MobileDetailContent"></div></div>';
+    root.innerHTML='<div class="v83-mobile-sheet-card"><div class="v83-mobile-sheet-head"><button class="v83-mobile-close" data-v83-mobile-close="1">رجوع</button><h3 class="v83-mobile-title">التفاصيل</h3><div class="v83-mobile-nav-steps"><button class="v83-mobile-edit" data-v83-mobile-edit="1" hidden>تعديل</button><button data-v83-mobile-prev="1">السابق</button><button data-v83-mobile-next="1">التالي</button></div></div><div class="v83-mobile-sheet-body" id="v83MobileDetailContent"></div></div>';
     document.body.appendChild(root);
     return root;
   }
@@ -233,8 +233,14 @@
   function renderMobileSheetContent(group,html){
     var body=document.getElementById('v83MobileDetailContent');
     var title=document.querySelector('#v83MobileDetailSheet .v83-mobile-title');
+    var edit=document.querySelector('#v83MobileDetailSheet [data-v83-mobile-edit]');
     if(!body||!title) return;
     title.textContent=group?(group.title||('مجموعة '+group.id)):'التفاصيل';
+    if(edit){
+      var canEdit=!!(group&&typeof activeDb!=='undefined'&&activeDb==='personal');
+      edit.hidden=!canEdit;
+      edit.setAttribute('data-group-id',canEdit?String(group.id):'');
+    }
     body.innerHTML=html||'<div class="v83-empty">اختر مجموعة</div>';
   }
 
@@ -273,6 +279,15 @@
   document.addEventListener('click',function(e){
     if(e.target.closest('[data-v83-mobile-close]')){
       closeMobileSheet();
+      return;
+    }
+    var editBtn=e.target.closest('[data-v83-mobile-edit]');
+    if(editBtn){
+      var editId=editBtn.getAttribute('data-group-id');
+      if(editId&&typeof openEditModal==='function'){
+        closeMobileSheet();
+        openEditModal(editId);
+      }
       return;
     }
     if(e.target.closest('[data-v83-mobile-prev]')){

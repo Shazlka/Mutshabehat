@@ -392,8 +392,8 @@
     padding:0;
   }
 
-  body.db-personal #groups .group-actions .icon-btn:not(.star),
-  body.db-auto #groups .group-actions .icon-btn:not(.star){
+  body.db-personal #groups .group-actions .icon-btn:not(.star):not(.edit-action),
+  body.db-auto #groups .group-actions .icon-btn:not(.star):not(.edit-action){
     display:none!important;
   }
 
@@ -435,12 +435,26 @@
     display:none!important;
   }
 
-  body.db-personal #groups .group-actions .edit-action{
+  body.db-personal #groups .group-actions .icon-btn.edit-action{
     display:inline-flex!important;
     width:28px;
     height:28px;
     border:0!important;
     background:transparent!important;
     color:#0f5a45!important;
+  }
+
+  .v83-mobile-edit{
+    border:1px solid #cbe7d3!important;
+    background:#eff8f0!important;
+    color:#0f5a45!important;
+    border-radius:10px!important;
+    padding:6px 10px!important;
+    font-size:.78rem!important;
+    font-weight:900!important;
+  }
+
+  .v83-mobile-edit[hidden]{
+    display:none!important;
   }
 }
