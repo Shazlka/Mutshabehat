@@ -11,11 +11,18 @@ function runQuranSearch(prefix){
   if(!box)return;
   ['Exact','Close','Total'].forEach(k=>{let el=document.getElementById(prefix+k);if(el)el.textContent='0 :'+k});
   if(!q){box.className='quran-results hint';box.innerHTML='اكتب كلمة لعرض النتائج.';return}
-  let nq=normalizeQuranSearchText(q), exact=[], close=[];
-  qAyahs().forEach(a=>{let txt=safeText(a.text), nt=normalizeQuranSearchText(txt); if(txt.includes(q)) exact.push(a); else if(nt.includes(nq)) close.push(a)});
-  let total=allResults.length, all=allResults.slice(0,80).map(x=>x.a||x);
+  // Score every ayah with smartArabicSearchScore and keep those >= 50, sorted best-first
+  let scored=[];
+  qAyahs().forEach(a=>{
+    let score=smartArabicSearchScore(q,safeText(a.text));
+    if(score>=50)scored.push({a,score});
+  });
+  scored.sort((x,y)=>y.score-x.score);
+  let exactCount=scored.filter(x=>x.score>=100).length;
+  let closeCount=scored.filter(x=>x.score>=50&&x.score<100).length;
+  let total=scored.length, all=scored.slice(0,80).map(x=>x.a);
   let e=document.getElementById(prefix+'Exact'), c=document.getElementById(prefix+'Close'), t=document.getElementById(prefix+'Total');
-  if(e)e.textContent=exact.length+' :Exact'; if(c)c.textContent=(close.length+loose.length)+' :Close'; if(t)t.textContent=total+' :Total';
+  if(e)e.textContent=exactCount+' :Exact'; if(c)c.textContent=closeCount+' :Close'; if(t)t.textContent=total+' :Total';
   box.className='quran-results';
   box.innerHTML=all.map((a,i)=>{
     let target=prefix==='edit'?'edit':'add', exists=quranItemExists(target,a.surah,a.ayahNo), checked=exists?'checked':'';

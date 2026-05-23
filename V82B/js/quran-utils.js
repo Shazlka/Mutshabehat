@@ -1,5 +1,5 @@
 function normalizeQuranSearchText(v){return safeText(v).toLowerCase()
-  .replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/g,'')
+  .replace(/[ؐ-ًؚ-ٰٟۖ-ۭ]/g,'')
   .replace(/[إأآٱا]/g,'ا').replace(/[ؤ]/g,'و').replace(/[ئ]/g,'ي')
   .replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ـ/g,'').replace(/\s+/g,' ').trim()}
 
@@ -25,76 +25,68 @@ function populateAyah(id,no,sel){let e=document.getElementById(id);if(e)e.innerH
 
 // ═══════════════════════════════════════════════════════════════
 // Arabic Smart Fuzzy Search Engine — V82B
+// Scoring tiers: Exact=100, Normalized=90, Personal=85,
+//                Prefix/Variant=80, Root=70, Fuzzy=55–70
 // ═══════════════════════════════════════════════════════════════
 
 // 1. Normalize Arabic text for loose matching
 function normalizeArabicLooseSearchText(v) {
   return String(v || '')
-    .replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]/g, '') // remove tashkeel
-    .replace(/[إأآٱا]/g, 'ا')   // normalize alef variants
-    .replace(/[ؤو]/g, 'و')       // normalize waw
-    .replace(/[ئي]/g, 'ي')       // normalize ya
-    .replace(/ى/g, 'ا')           // alef maqsura → alef
-    .replace(/ة/g, 'ه')           // ta marbuta → ha
-    .replace(/ء/g, '')             // drop hamza standalone
+    .replace(/[ؐ-ًؚ-ٰٟۖ-ۭ]/g, '') // tashkeel
+    .replace(/[إأآٱا]/g, 'ا')   // alef variants → ا
+    .replace(/[ؤ]/g, 'و')        // waw with hamza → و
+    .replace(/[ئ]/g, 'ي')        // ya with hamza → ي
+    .replace(/ى/g, 'ا')           // alef maqsura → ا (loose)
+    .replace(/ة/g, 'ه')           // ta marbuta → ه
+    .replace(/ء/g, '')             // drop isolated hamza
     .replace(/ـ/g, '')             // remove tatweel
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-// 2. Split search query into meaningful words
+// 2. Split into meaningful words after normalizing
 function splitArabicSearchWords(q) {
-  return normalizeArabicLooseSearchText(q)
-    .split(/\s+/)
-    .filter(w => w.length > 0);
+  return normalizeArabicLooseSearchText(q).split(/\s+/).filter(w => w.length > 0);
 }
 
-// 3. Strip common Arabic prefixes to find root word
+// 3. Strip the longest matching Arabic prefix to expose the root
 function stripArabicSearchPrefixes(word) {
   const prefixes = ['فال', 'وال', 'بال', 'كال', 'لل', 'ال', 'فب', 'وب', 'ف', 'و', 'ب', 'ك', 'ل', 'س'];
   for (const p of prefixes) {
-    if (word.startsWith(p) && word.length > p.length + 2) {
-      return word.slice(p.length);
-    }
+    if (word.startsWith(p) && word.length > p.length + 2) return word.slice(p.length);
   }
   return word;
 }
 
-// 4. Generate search variants for a word
+// 4. Generate all prefix-attached variants for a word
 function generateArabicSearchVariants(word) {
   const n = normalizeArabicLooseSearchText(word);
   const stripped = stripArabicSearchPrefixes(n);
   const variants = new Set([word, n, stripped]);
-  // Add prefix combinations
   for (const p of ['ف', 'و', 'ب', 'ك', 'ل']) {
     variants.add(p + n);
     variants.add(p + stripped);
   }
-  // Add ال prefix
   variants.add('ال' + stripped);
   variants.add('ال' + n);
   return [...variants].filter(v => v.length > 1);
 }
 
-// 5. Levenshtein distance for fuzzy matching
+// 5. Levenshtein edit distance
 function levenshteinDistance(a, b) {
   const m = a.length, n = b.length;
   if (m === 0) return n;
   if (n === 0) return m;
-  const dp = Array.from({ length: m + 1 }, (_, i) =>
-    Array.from({ length: n + 1 }, (_, j) => i === 0 ? j : j === 0 ? i : 0)
+  const dp = Array.from({length: m + 1}, (_, i) =>
+    Array.from({length: n + 1}, (_, j) => i === 0 ? j : j === 0 ? i : 0)
   );
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      dp[i][j] = a[i - 1] === b[j - 1]
-        ? dp[i - 1][j - 1]
-        : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
-    }
-  }
+  for (let i = 1; i <= m; i++)
+    for (let j = 1; j <= n; j++)
+      dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
   return dp[m][n];
 }
 
-// 6. Allowed fuzzy distance based on word length
+// 6. Maximum allowed edit distance by word length
 function getAllowedArabicDistance(word) {
   const l = word.length;
   if (l <= 3) return 0;
@@ -103,7 +95,7 @@ function getAllowedArabicDistance(word) {
   return 3;
 }
 
-// 7. Build personal search pattern index from PERSONAL_DATA
+// 7. Build root index from PERSONAL_DATA highlighted parts
 let _personalSearchIndex = null;
 function buildPersonalSearchPatternIndex() {
   _personalSearchIndex = new Set();
@@ -114,131 +106,104 @@ function buildPersonalSearchPatternIndex() {
       (g.verses || []).forEach(v => {
         (v.parts || []).forEach(p => {
           if (types.includes(p.type)) {
-            const words = splitArabicSearchWords(p.text || '');
-            words.forEach(w => {
-              const stripped = stripArabicSearchPrefixes(w);
-              if (stripped.length > 2) _personalSearchIndex.add(stripped);
+            splitArabicSearchWords(p.text || '').forEach(w => {
+              const s = stripArabicSearchPrefixes(w);
+              if (s.length > 2) _personalSearchIndex.add(s);
             });
           }
         });
       });
     });
-  } catch (e) {}
+  } catch(e) {}
   return _personalSearchIndex;
 }
 
-// 8. Get personal data search variants for a query word
+// 8. Find personal-data roots related to a query word
 function getPersonalArabicSearchVariants(word) {
   if (!_personalSearchIndex) buildPersonalSearchPatternIndex();
-  const n = normalizeArabicLooseSearchText(word);
-  const stripped = stripArabicSearchPrefixes(n);
+  const stripped = stripArabicSearchPrefixes(normalizeArabicLooseSearchText(word));
   const results = [];
-  _personalSearchIndex.forEach(pattern => {
-    if (pattern.includes(stripped) || stripped.includes(pattern)) {
-      results.push(pattern);
-    }
-  });
+  _personalSearchIndex.forEach(p => { if (p.includes(stripped) || stripped.includes(p)) results.push(p); });
   return results;
 }
 
-// 9. Smart Arabic search score (0-100)
+// 9. Smart Arabic search score (0–100)
+//    Returns the minimum per-word score so ALL query words must match.
 function smartArabicSearchScore(query, text) {
   if (!query || !text) return 0;
-  const rawText = String(text);
+  const rawText  = String(text);
   const rawQuery = String(query).trim();
+  if (!rawQuery) return 0;
 
-  // Exact match
+  // Tier 1: raw substring exact match (100)
   if (rawText.includes(rawQuery)) return 100;
 
-  const nText = normalizeArabicLooseSearchText(rawText);
+  const nText  = normalizeArabicLooseSearchText(rawText);
   const nQuery = normalizeArabicLooseSearchText(rawQuery);
 
-  // Normalized exact match
+  // Tier 2: normalized exact match (90)
   if (nText.includes(nQuery)) return 90;
 
   const queryWords = splitArabicSearchWords(rawQuery);
   if (queryWords.length === 0) return 0;
+  const textWords = splitArabicSearchWords(rawText);
 
-  let totalScore = 0;
-
-  for (const qWord of queryWords) {
-    const nWord = normalizeArabicLooseSearchText(qWord);
+  // Per-word scoring — overall score = min across all query words
+  const wordScores = queryWords.map(qWord => {
+    const nWord    = normalizeArabicLooseSearchText(qWord);
     const stripped = stripArabicSearchPrefixes(nWord);
     const variants = generateArabicSearchVariants(qWord);
-    const textWords = splitArabicSearchWords(rawText);
-    let bestWordScore = 0;
+    let best = 0;
 
     for (const tWord of textWords) {
-      const nTWord = normalizeArabicLooseSearchText(tWord);
-      const tStripped = stripArabicSearchPrefixes(nTWord);
+      if (best >= 85) break; // personal-pattern is the ceiling inside per-word
 
-      // Personal pattern match
-      if (_personalSearchIndex && _personalSearchIndex.has(stripped) && _personalSearchIndex.has(tStripped)) {
-        if (stripped === tStripped) { bestWordScore = Math.max(bestWordScore, 85); continue; }
+      const nT = normalizeArabicLooseSearchText(tWord);
+      const tS = stripArabicSearchPrefixes(nT);
+
+      // Tier 3: personal-pattern root match (85)
+      if (_personalSearchIndex && stripped.length > 2 && stripped === tS && _personalSearchIndex.has(stripped)) {
+        best = 85;
+        continue;
       }
 
-      // Variant / prefix match
-      for (const v of variants) {
-        if (nTWord === v || nTWord.includes(v) || v.includes(nTWord)) {
-          bestWordScore = Math.max(bestWordScore, 80);
+      // Tier 4: variant / prefix match (80)
+      if (best < 80) {
+        for (const v of variants) {
+          if (nT === v || nT.includes(v) || v.includes(nT)) { best = 80; break; }
         }
       }
+      if (best >= 70) continue; // no need to check slower tiers for this text word
 
-      // Stripped root match
-      if (stripped.length > 2 && tStripped.length > 2) {
-        if (tStripped.includes(stripped) || stripped.includes(tStripped)) {
-          bestWordScore = Math.max(bestWordScore, 70);
-        }
+      // Tier 5: stripped root substring match (70)
+      if (stripped.length > 2 && tS.length > 2 && (tS.includes(stripped) || stripped.includes(tS))) {
+        best = Math.max(best, 70);
+        continue;
       }
 
-      // Fuzzy distance match
+      // Tier 6: fuzzy Levenshtein (55–70)
       const allowed = getAllowedArabicDistance(nWord);
       if (allowed > 0) {
-        const dist = levenshteinDistance(nWord, nTWord);
-        if (dist <= allowed) {
-          const score = Math.round(55 + ((allowed - dist) / allowed) * 15);
-          bestWordScore = Math.max(bestWordScore, score);
-        }
-        // Also try stripped vs stripped
-        const distStripped = levenshteinDistance(stripped, tStripped);
-        if (distStripped <= allowed) {
-          bestWordScore = Math.max(bestWordScore, 55);
+        const d = levenshteinDistance(nWord, nT);
+        if (d <= allowed) best = Math.max(best, Math.round(55 + ((allowed - d) / allowed) * 15));
+        if (best < 55) {
+          const ds = levenshteinDistance(stripped, tS);
+          if (ds <= getAllowedArabicDistance(stripped)) best = Math.max(best, 55);
         }
       }
     }
 
-    totalScore += bestWordScore;
-  }
+    return best;
+  });
 
-  if(queryWords.length===0) return 0;
-  // For multi-word: all words must match (min score approach)
-  let wordScores=[];
-  for(const qWord of queryWords){
-    const nWord=normalizeArabicLooseSearchText(qWord);
-    const stripped=stripArabicSearchPrefixes(nWord);
-    const variants=generateArabicSearchVariants(qWord);
-    const textWords=splitArabicSearchWords(rawText);
-    let best=0;
-    for(const tWord of textWords){
-      const nT=normalizeArabicLooseSearchText(tWord);
-      const tS=stripArabicSearchPrefixes(nT);
-      for(const v of variants){if(nT===v||nT.includes(v)||v.includes(nT)){best=Math.max(best,80);}}
-      if(stripped.length>2&&tS.length>2&&(tS.includes(stripped)||stripped.includes(tS))){best=Math.max(best,70);}
-      const allowed=getAllowedArabicDistance(nWord);
-      if(allowed>0){
-        if(levenshteinDistance(nWord,nT)<=allowed)best=Math.max(best,55);
-        if(levenshteinDistance(stripped,tS)<=allowed)best=Math.max(best,55);
-      }
-    }
-    wordScores.push(best);
-  }
   return Math.min(...wordScores);
 }
 
-// 10. Smart Arabic search match — returns true if score >= threshold
+// 10. Boolean wrapper — true if score meets threshold (default 50)
 function smartArabicSearchMatch(query, text, threshold) {
-  threshold = threshold || 55;
-  return smartArabicSearchScore(query, text) >= threshold;
+  try {
+    return smartArabicSearchScore(query, text) >= (threshold || 50);
+  } catch(e) {
+    return normalizeArabicLooseSearchText(text).includes(normalizeArabicLooseSearchText(query));
+  }
 }
-
-function smartArabicSearchMatch(query,text,threshold){try{threshold=threshold||50;return smartArabicSearchScore(query,text)>=threshold;}catch(e){return normalizeArabicLooseSearchText(text).includes(normalizeArabicLooseSearchText(query));}}
