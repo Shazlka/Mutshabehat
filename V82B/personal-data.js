@@ -16963,7 +16963,7 @@ window.PERSONAL_DATA = [
   },
   {
     "id": 211,
-    "title": "عائلة عبارات متقاربة: واذا تتلي ايتنا",
+    "title": "وَإِذَا تُتۡلَىٰ عَلَيۡهِمۡ ءَايَٰتُنَا / بَيِّنَٰتٖ",
     "surahs": [
       "الأنفال",
       "مريم",
@@ -17061,7 +17061,7 @@ window.PERSONAL_DATA = [
             "text": "وَإِذَا تُتۡلَىٰ"
           },
           {
-            "type": "diff",
+            "type": "diff3",
             "text": "عَلَيۡهِ"
           },
           {
@@ -17156,7 +17156,7 @@ window.PERSONAL_DATA = [
         ]
       }
     ],
-    "note": "",
+    "note": "<span style=\"font-weight: normal;\">الأنفال ولقمان فقط بدون بينات وباقي القرآن بالبينات</span>",
     "unote": "",
     "autoCandidate": false,
     "candidateKind": "phrase-family",
