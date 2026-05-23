@@ -1,4 +1,8 @@
-// V83 compatibility loader: keeps legacy logic intact while allowing modular migration.
-const script=document.createElement('script');
-script.src='components/app-core.js?v=v83_shell_phase2';
-document.head.appendChild(script);
+// V83 bootstrap shim.
+// app-core is loaded directly by index.html to avoid async race conditions on mobile.
+(function(){
+  if(typeof window==='undefined') return;
+  if(typeof window.init==='function' && document.readyState!=='loading'){
+    try{ window.init(); }catch(e){}
+  }
+})();
