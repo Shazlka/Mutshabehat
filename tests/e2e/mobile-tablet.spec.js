@@ -203,7 +203,7 @@ test.describe("Mobile Touch and Scroll @mobile", () => {
     await page.evaluate(() => window.scrollTo(0, 500));
     await page.waitForTimeout(300);
     await page.locator('.floating-top').tap();
-    await page.waitForTimeout(500);
+    await page.waitForFunction(() => window.scrollY < 100, { timeout: 3000 });
     const scrollY = await page.evaluate(() => window.scrollY);
     expect(scrollY).toBeLessThan(100);
   });
