@@ -405,4 +405,42 @@
     background:transparent!important;
     color:#b98c27!important;
   }
+
+  body.db-personal .toolbar-tools > button.primary{
+    position:fixed!important;
+    right:16px;
+    bottom:76px;
+    z-index:560;
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:center;
+    width:54px!important;
+    height:54px!important;
+    min-width:54px!important;
+    min-height:54px!important;
+    padding:0!important;
+    border-radius:50%!important;
+    background:#0f5a45!important;
+    color:#fff!important;
+    box-shadow:0 12px 28px rgba(15,23,42,.22);
+  }
+
+  body.db-personal .toolbar-tools > button.primary .btn-icon{
+    display:inline-flex!important;
+    font-size:1.35rem;
+    line-height:1;
+  }
+
+  body.db-personal .toolbar-tools > button.primary .btn-text{
+    display:none!important;
+  }
+
+  body.db-personal #groups .group-actions .edit-action{
+    display:inline-flex!important;
+    width:28px;
+    height:28px;
+    border:0!important;
+    background:transparent!important;
+    color:#0f5a45!important;
+  }
 }
