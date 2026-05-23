@@ -71,3 +71,145 @@
   body.v83-mobile-sheet-open .v83-mobile-sheet-card{transform:translateY(0)}
 }
 @media (min-width: 851px){.v83-mobile-nav{display:none}}
+
+/* V83 mobile visual alignment with provided iPhone layout */
+@media (max-width: 850px){
+  body{background:#f6f7f9}
+  .app-header{
+    padding:10px 12px;
+    border-bottom:1px solid #e7e9ee;
+    background:#fff;
+  }
+  .brand .logo{
+    width:36px;height:36px;border-radius:10px;font-size:18px;
+    background:linear-gradient(135deg,#103c34,#0b2a30);
+  }
+  .brand h1{font-size:1rem}
+  .brand p{font-size:.68rem}
+  .legend{display:none}
+  .workspace.v83-shell,.home-screen{margin:0;padding:0}
+  .v83-grid{display:block}
+  .v83-center .v83-scroll{padding:8px}
+  .filter-card{
+    border-radius:14px;
+    box-shadow:none;
+    padding:10px;
+    margin-bottom:8px;
+  }
+  .toolbar{
+    margin:0 0 8px;
+    border-radius:14px;
+    box-shadow:none;
+    padding:10px;
+  }
+  .toolbar h2{font-size:1.05rem}
+  .toolbar p{font-size:.78rem}
+  .group,.surah-section{
+    border-radius:14px;
+    box-shadow:none;
+    margin-bottom:8px;
+  }
+  .group-head{padding:10px 11px}
+  .group-num{
+    width:40px;height:40px;min-width:40px;border-radius:12px;font-size:1rem;
+    background:#ecf1f8;color:#22334a;
+  }
+  .group-title{font-size:1.2rem;line-height:1.35}
+  .group-tags .tag{
+    font-size:.72rem;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#f2f4f7;
+  }
+  .group-actions .icon-btn{
+    width:32px;height:32px;border-radius:9px;
+    border:1px solid #e6e8ee;background:#fff;
+  }
+  .v83-mobile-nav{
+    background:#fff;
+    border-top:1px solid #e7e9ee;
+    padding:6px 6px calc(8px + env(safe-area-inset-bottom));
+    box-shadow:0 -8px 20px rgba(15,23,42,.08);
+  }
+  .v83-mobile-nav button{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    color:#687386;
+    font-weight:700;
+    line-height:1.1;
+    border-radius:12px;
+    padding:6px 2px;
+  }
+  .v83-mobile-nav button .mi{font-size:1.02rem;color:#3f4b60}
+  .v83-mobile-nav button .ml{font-size:.66rem}
+  .v83-mobile-nav button:active{background:#f1f3f7}
+  .main-search-wrap{
+    top:8px;left:8px;right:8px;
+    border-radius:14px;
+    box-shadow:0 8px 24px rgba(15,23,42,.14);
+  }
+  .v83-mobile-sheet{background:rgba(0,0,0,.28)}
+  .v83-mobile-sheet-card{
+    inset:6% 0 0 0;
+    border-top-left-radius:18px;
+    border-top-right-radius:18px;
+    border:0;
+    background:#fff;
+  }
+  .v83-mobile-sheet-head{
+    position:sticky;top:0;z-index:3;background:#fff;
+    padding:11px 12px;
+  }
+  .v83-mobile-close,.v83-mobile-nav-steps button{
+    border-radius:10px;
+    background:#f2f4f7;
+    border:1px solid #e6e8ee;
+    font-size:.78rem;
+  }
+  .v83-tabs{
+    position:sticky;top:0;z-index:2;background:#fff;padding-top:6px;
+    border-bottom:1px solid #edf0f4;
+  }
+  .v83-tab-btn{
+    border:none;
+    background:transparent;
+    color:#66758a;
+    font-size:.8rem;
+    font-weight:800;
+    padding:8px 10px;
+    border-bottom:2px solid transparent;
+    border-radius:0;
+  }
+  .v83-tab-btn.active{
+    color:#0d5b4e;
+    border-bottom-color:#0d5b4e;
+    background:transparent;
+  }
+  .verse-card{
+    border-radius:12px;
+    margin-bottom:8px;
+    border:1px solid #e9edf3;
+    box-shadow:none;
+    padding:10px;
+  }
+  .verse-text{font-size:1.16rem;line-height:2.05}
+  .mobile-menu-panel{
+    width:min(338px,92vw);
+    border-right:0;
+    background:linear-gradient(180deg,#0f3f37,#0b262f);
+    color:#e7f2ed;
+    box-shadow:18px 0 38px rgba(2,8,23,.4);
+    padding:12px;
+  }
+  .mobile-menu-panel button{
+    background:transparent;
+    color:#e7f2ed;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:10px;
+    text-align:right;
+  }
+  .mobile-menu-panel button:active{background:rgba(201,168,76,.22)}
+}
