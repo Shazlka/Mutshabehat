@@ -1,0 +1,11 @@
+.v83-sidebar{background:linear-gradient(180deg,var(--v83-green-1),var(--v83-green-2));color:#e9f3ef;border-color:#1f5d55}
+.v83-brand{padding:14px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;gap:10px;align-items:center}
+.v83-badge{border:1px solid rgba(201,168,76,.6);color:#f6e6ba;border-radius:10px;padding:4px 10px;font-weight:900}
+.v83-brand h3{margin:0;font-size:1.1rem;color:#fff}
+.v83-brand small{color:#b6cdc7}
+.v83-side-sec{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.09)}
+.v83-side-sec h4{margin:0 0 8px;color:#f4dfae}
+.v83-menu button{width:100%;text-align:right;background:transparent;color:#f8fafc;border:1px solid rgba(255,255,255,.16);margin-bottom:8px}
+.v83-menu button.active,.v83-menu button:hover{background:rgba(201,168,76,.2);border-color:var(--v83-gold)}
+.v83-side-search{width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);color:#fff;padding:9px 10px}
+.v83-side-search::placeholder{color:#c6d8d1}

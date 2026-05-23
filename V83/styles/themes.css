@@ -1,0 +1,28 @@
+body[data-theme="quran-classic"] .v83-center .toolbar,
+body[data-theme="quran-classic"] .v83-center .filter-card,
+body[data-theme="quran-classic"] .v83-detail{box-shadow:0 12px 28px rgba(15,23,42,.07)}
+
+/* V92 UX polish layer */
+:root{--v92-anim-fast:.18s;--v92-anim-mid:.26s;--v92-ring:0 0 0 3px color-mix(in srgb,var(--primary) 28%,transparent)}
+*{transition:background-color var(--v92-anim-fast) ease,border-color var(--v92-anim-fast) ease,color var(--v92-anim-fast) ease,box-shadow var(--v92-anim-mid) ease}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none;box-shadow:var(--v92-ring)}
+.group,.v83-panel,.filter-card,.toolbar{animation:v92-fade-up .28s ease both}
+@keyframes v92-fade-up{from{opacity:.01;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Focus mode (desktop reading) */
+body.v92-focus-mode .v83-sidebar{display:none}
+body.v92-focus-mode .v83-grid{grid-template-columns:minmax(360px,460px) 1fr}
+body.v92-focus-mode .v83-detail{border-color:color-mix(in srgb,var(--primary) 48%,var(--border))}
+
+/* Optional explicit dark theme alias */
+body[data-theme="v83-dark"]{
+  --bg:#0b1220;--surface:#101a2d;--soft:#16223a;--text:#e9f0ff;--muted:#9fb0ca;--border:#25334f;--primary:#61a7ff;--primary2:#3e85ff;
+}
+
+/* Better contrast for subtle text in dark modes */
+body[data-theme="bevel-night"] .legend,
+body[data-theme="v83-dark"] .legend{color:#c0cee4}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
