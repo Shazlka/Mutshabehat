@@ -118,6 +118,8 @@ function toggleGhTokenVisibility(){
 function __setDbBodyClassV87(){
   try{
     document.body.classList.toggle('db-personal', activeDb === 'personal');
+    document.body.classList.toggle('db-auto', activeDb === 'auto' || activeDb === 'automated');
+    document.body.classList.toggle('db-workspace', activeDb === 'personal' || activeDb === 'auto' || activeDb === 'automated');
   }catch(e){}
 }
 

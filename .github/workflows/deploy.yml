@@ -28,27 +28,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build for Production
-        run: npm run build
-        env:
-          NODE_ENV: production
-
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v4
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/
+          path: V83/
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -60,4 +46,3 @@ jobs:
           echo "🔗 URL: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
           echo "📅 Date: $(date -u)" >> $GITHUB_STEP_SUMMARY
           echo "🔖 Commit: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-

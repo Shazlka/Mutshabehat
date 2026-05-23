@@ -213,3 +213,196 @@
   }
   .mobile-menu-panel button:active{background:rgba(201,168,76,.22)}
 }
+
+/* V83 mobile app workflow: list/search first, desktop filters hidden */
+@media (max-width: 850px){
+  body.db-personal .app-header,
+  body.db-auto .app-header{
+    display:none;
+  }
+
+  body.db-personal #surahFilterSection,
+  body.db-auto #surahFilterSection,
+  body.db-personal #activeFilterChips,
+  body.db-auto #activeFilterChips,
+  body.db-personal #surahIndexBar,
+  body.db-auto #surahIndexBar{
+    display:none!important;
+  }
+
+  body.db-personal .v83-center .v83-scroll,
+  body.db-auto .v83-center .v83-scroll{
+    padding:10px 10px 76px;
+  }
+
+  body.db-personal .toolbar,
+  body.db-auto .toolbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:grid!important;
+    grid-template-columns:1fr auto;
+    gap:8px;
+    align-items:center;
+    margin:0 -2px 10px;
+    padding:8px 2px 10px;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    background:#f8f9fb;
+  }
+
+  body.db-personal .toolbar h2,
+  body.db-auto .toolbar h2{
+    margin:0;
+    font-size:1rem;
+    line-height:1.3;
+    font-weight:900;
+  }
+
+  body.db-personal .toolbar p,
+  body.db-auto .toolbar p{
+    display:none;
+  }
+
+  body.db-personal .toolbar-tools,
+  body.db-auto .toolbar-tools{
+    grid-column:1/-1;
+    display:block!important;
+    width:100%;
+  }
+
+  body.db-personal .toolbar-tools > button,
+  body.db-auto .toolbar-tools > button{
+    display:none!important;
+  }
+
+  body.db-personal #mainSearchWrap,
+  body.db-auto #mainSearchWrap,
+  body.db-personal #mainSearchWrap.hidden,
+  body.db-auto #mainSearchWrap.hidden{
+    position:static!important;
+    display:flex!important;
+    width:100%!important;
+    min-width:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:8px!important;
+    box-shadow:none!important;
+    background:transparent!important;
+  }
+
+  body.db-personal #mainSearchWrap input,
+  body.db-auto #mainSearchWrap input{
+    width:100%!important;
+    min-width:0!important;
+    height:38px!important;
+    border-radius:7px!important;
+    border:1px solid #e4e7ec!important;
+    background:#f1f2f4!important;
+    font-size:.88rem!important;
+    padding:8px 12px!important;
+    text-align:right;
+  }
+
+  body.db-personal #mainSearchWrap button,
+  body.db-auto #mainSearchWrap button{
+    display:none!important;
+  }
+
+  body.db-personal #groups,
+  body.db-auto #groups{
+    display:grid;
+    gap:8px;
+  }
+
+  body.db-personal #groups .group,
+  body.db-auto #groups .group{
+    margin:0;
+    border-radius:8px;
+    border:1px solid #ece5d7;
+    background:#fff;
+    box-shadow:none;
+    overflow:hidden;
+  }
+
+  body.db-personal #groups .group-head,
+  body.db-auto #groups .group-head{
+    display:grid!important;
+    grid-template-columns:1fr auto;
+    gap:8px;
+    align-items:start;
+    padding:11px 12px;
+    background:#fff;
+  }
+
+  body.db-personal #groups .group-num,
+  body.db-auto #groups .group-num{
+    grid-column:2;
+    grid-row:1;
+    width:auto;
+    min-width:38px;
+    height:26px;
+    border-radius:6px;
+    padding:0 7px;
+    background:#eff8f0!important;
+    color:#0f5a45!important;
+    border:1px solid #cbe7d3!important;
+    font-size:.78rem;
+  }
+
+  body.db-personal #groups .group-title-wrap,
+  body.db-auto #groups .group-title-wrap{
+    grid-column:1;
+    grid-row:1;
+    min-width:0;
+  }
+
+  body.db-personal #groups .group-title,
+  body.db-auto #groups .group-title{
+    margin:0 0 6px;
+    font-size:1.05rem;
+    line-height:1.35;
+    font-weight:900;
+    color:#141821;
+  }
+
+  body.db-personal #groups .group-tags,
+  body.db-auto #groups .group-tags{
+    margin:0;
+    gap:5px;
+  }
+
+  body.db-personal #groups .tag,
+  body.db-auto #groups .tag{
+    border:0;
+    border-radius:6px;
+    background:#f4f5f7;
+    color:#555f70;
+    padding:4px 7px;
+    font-size:.68rem;
+  }
+
+  body.db-personal #groups .group-actions,
+  body.db-auto #groups .group-actions{
+    grid-column:2;
+    grid-row:2;
+    justify-content:end;
+    border:0;
+    padding:0;
+  }
+
+  body.db-personal #groups .group-actions .icon-btn:not(.star),
+  body.db-auto #groups .group-actions .icon-btn:not(.star){
+    display:none!important;
+  }
+
+  body.db-personal #groups .group-actions .star,
+  body.db-auto #groups .group-actions .star{
+    width:28px;
+    height:28px;
+    border:0!important;
+    background:transparent!important;
+    color:#b98c27!important;
+  }
+}
