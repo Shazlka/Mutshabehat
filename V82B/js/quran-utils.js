@@ -210,7 +210,29 @@ function smartArabicSearchScore(query, text) {
     totalScore += bestWordScore;
   }
 
-  return queryWords.length > 0 ? Math.round(totalScore / queryWords.length) : 0;
+  if(queryWords.length===0) return 0;
+  // For multi-word: all words must match (min score approach)
+  let wordScores=[];
+  for(const qWord of queryWords){
+    const nWord=normalizeArabicLooseSearchText(qWord);
+    const stripped=stripArabicSearchPrefixes(nWord);
+    const variants=generateArabicSearchVariants(qWord);
+    const textWords=splitArabicSearchWords(rawText);
+    let best=0;
+    for(const tWord of textWords){
+      const nT=normalizeArabicLooseSearchText(tWord);
+      const tS=stripArabicSearchPrefixes(nT);
+      for(const v of variants){if(nT===v||nT.includes(v)||v.includes(nT)){best=Math.max(best,80);}}
+      if(stripped.length>2&&tS.length>2&&(tS.includes(stripped)||stripped.includes(tS))){best=Math.max(best,70);}
+      const allowed=getAllowedArabicDistance(nWord);
+      if(allowed>0){
+        if(levenshteinDistance(nWord,nT)<=allowed)best=Math.max(best,55);
+        if(levenshteinDistance(stripped,tS)<=allowed)best=Math.max(best,55);
+      }
+    }
+    wordScores.push(best);
+  }
+  return Math.min(...wordScores);
 }
 
 // 10. Smart Arabic search match — returns true if score >= threshold
