@@ -17061,7 +17061,7 @@ window.PERSONAL_DATA = [
             "text": "وَإِذَا تُتۡلَىٰ"
           },
           {
-            "type": "diff3",
+            "type": "unique",
             "text": "عَلَيۡهِ"
           },
           {
@@ -17156,8 +17156,8 @@ window.PERSONAL_DATA = [
         ]
       }
     ],
-    "note": "<span style=\"font-weight: normal;\">الأنفال ولقمان فقط بدون بينات وباقي القرآن بالبينات</span>",
-    "unote": "",
+    "note": "<span style=\"font-weight: normal;\">كل الآيات ب(بينات) عدا لقمان والأنفال</span>",
+    "unote": "<span style=\"font-weight: 400;\">لقمان الوحيدة (عليه) والباقي (عليهم)</span>",
     "autoCandidate": false,
     "candidateKind": "phrase-family",
     "candidateScore": 82,
