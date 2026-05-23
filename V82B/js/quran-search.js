@@ -1,3 +1,26 @@
+function highlightQuranText(rawText, query) {
+  if (!query || !query.trim()) return escapeHtml(rawText);
+  const qData = splitArabicSearchWords(query).map(qWord => {
+    const nQ = normalizeArabicLooseSearchText(qWord);
+    const qS = stripArabicSearchPrefixes(nQ);
+    return {variants: generateArabicSearchVariants(qWord), nQ, qS, allowed: getAllowedArabicDistance(nQ)};
+  });
+  if (!qData.length) return escapeHtml(rawText);
+  return rawText.split(/(\s+)/).map(token => {
+    if (!token || /^\s+$/.test(token)) return token;
+    const nT = normalizeArabicLooseSearchText(token);
+    const tS = stripArabicSearchPrefixes(nT);
+    const matched = qData.some(({variants, nQ, qS, allowed}) => {
+      if (variants.some(v => nT === v || nT.includes(v) || v.includes(nT))) return true;
+      if (tS.length > 2 && qS.length > 2 && (tS.includes(qS) || qS.includes(tS))) return true;
+      if (allowed > 0 && levenshteinDistance(nT, nQ) <= allowed) return true;
+      if (allowed > 0 && levenshteinDistance(tS, qS) <= getAllowedArabicDistance(qS)) return true;
+      return false;
+    });
+    return matched ? `<span class="search-highlight">${escapeHtml(token)}</span>` : escapeHtml(token);
+  }).join('');
+}
+
 function addQuranVerseObject(target, surah, ayah, text, type){let obj={surah:safeText(surah),ayah:safeText(ayah),label:'',parts:[{type:type||'shared',text:safeText(text)}]};if(target==='edit'){editVersesBuffer.push(obj);renderEditVerses();setTimeout(()=>document.getElementById('editVerses')?.lastElementChild?.scrollIntoView({behavior:'smooth',block:'center'}),50)}else{draftVerses.push(obj);renderDraft()}}
 
 function removeQuranVerseObject(target, surah, ayah){let arr=target==='edit'?editVersesBuffer:draftVerses;let idx=arr.findIndex(v=>safeText(v.surah)===safeText(surah)&&safeText(v.ayah)===safeText(ayah));if(idx>=0){arr.splice(idx,1);target==='edit'?renderEditVerses():renderDraft();return true}return false}
@@ -28,7 +51,7 @@ function runQuranSearch(prefix){
     let target=prefix==='edit'?'edit':'add', exists=quranItemExists(target,a.surah,a.ayahNo), checked=exists?'checked':'';
     return `<div class="quran-result ${exists?'selected':''}">
       <label class="quran-check-line"><input type="checkbox" class="${prefix}QCheck" ${checked} onchange="toggleQuranResult('${prefix}',this)" data-index="${i}" data-surah-no="${a.surahNo||a.surah}" data-ayah="${a.ayahNo}" data-text="${escapeHtml(a.text)}" data-surah="${escapeHtml(a.surah)}"><span>${exists?'مضاف':'تحديد'}</span></label>
-      <div class="quran-result-body"><b>${a.surah} — ${a.ayahNo}</b><textarea id="${prefix}QText_${i}" class="quran-result-text" readonly>${escapeHtml(a.text)}</textarea>
+      <div class="quran-result-body"><b>${a.surah} — ${a.ayahNo}</b><div id="${prefix}QText_${i}" class="quran-result-text quran-result-hl" dir="rtl">${highlightQuranText(a.text,q)}</div>
       <div class="quran-result-actions"><button onclick="addFullQuranResult('${prefix}',this)">إضافة الآية كاملة</button><button onclick="addSelectedQuranResult('${prefix}',${i},this)">إضافة النص المحدد</button></div></div>
     </div>`}).join('') + `<div class="quran-result-toolbar"><button class="primary" onclick="addCheckedQuran('${prefix}')">إضافة المحدد</button><small>حدد جزءاً من النص داخل مربع الآية ثم اضغط «إضافة النص المحدد».</small></div>`;
 }

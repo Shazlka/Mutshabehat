@@ -90,3 +90,7 @@
   max-width:100%;
   overflow-wrap:anywhere;
 }
+
+/* ── Quran search result highlight ── */
+.search-highlight{background:#b2f5ea;border-radius:4px;padding:0 3px;color:inherit}
+.quran-result-hl{padding:6px 4px;line-height:2.2;direction:rtl;cursor:text;user-select:text;word-break:break-word}
