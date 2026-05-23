@@ -13,9 +13,9 @@ function runQuranSearch(prefix){
   if(!q){box.className='quran-results hint';box.innerHTML='اكتب كلمة لعرض النتائج.';return}
   let nq=normalizeQuranSearchText(q), exact=[], close=[];
   qAyahs().forEach(a=>{let txt=safeText(a.text), nt=normalizeQuranSearchText(txt); if(txt.includes(q)) exact.push(a); else if(nt.includes(nq)) close.push(a)});
-  let total=exact.length+close.length, all=exact.concat(close).slice(0,80);
+  let total=allResults.length, all=allResults.slice(0,80).map(x=>x.a||x);
   let e=document.getElementById(prefix+'Exact'), c=document.getElementById(prefix+'Close'), t=document.getElementById(prefix+'Total');
-  if(e)e.textContent=exact.length+' :Exact'; if(c)c.textContent=close.length+' :Close'; if(t)t.textContent=total+' :Total';
+  if(e)e.textContent=exact.length+' :Exact'; if(c)c.textContent=(close.length+loose.length)+' :Close'; if(t)t.textContent=total+' :Total';
   box.className='quran-results';
   box.innerHTML=all.map((a,i)=>{
     let target=prefix==='edit'?'edit':'add', exists=quranItemExists(target,a.surah,a.ayahNo), checked=exists?'checked':'';
