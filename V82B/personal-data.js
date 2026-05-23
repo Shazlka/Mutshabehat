@@ -17162,6 +17162,7 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "واذا تتلي ايتنا",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   }
 ];
