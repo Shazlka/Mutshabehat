@@ -17096,8 +17096,8 @@ window.PERSONAL_DATA = [
         ]
       }
     ],
-    "note": "مرشح آلي موسّع — النوع: shared-phrase — الدرجة: 84 — السبب: عبارة مشتركة من 4 كلمات داخل الآيات.",
-    "unote": "يحتاج مراجعة واعتماد يدوي قبل اعتباره من المتشابهات النهائية.",
+    "note": "<br>",
+    "unote": "<br>",
     "autoCandidate": false,
     "candidateKind": "shared-phrase",
     "candidateScore": 84,
