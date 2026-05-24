@@ -18,7 +18,12 @@ function renderGroupBody(g){return `${(g.verses||[]).map(renderVerse).join('')}$
 
 function getGroupPreview(g){let verse=(g.verses||[]).find(v=>safeText((v.parts||[]).map(p=>p.text).join(' ')).trim());let raw=verse?(verse.parts||[]).map(p=>safeText(p.text)).join(' '):safeText(g.note||g.unote||'');raw=raw.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();return raw.length>128?raw.slice(0,128)+'…':raw}
 
-function toggleGroup(h){let gEl=h?.closest?.('.group'),id=gEl?.dataset?.id;if(isMobileLayout()&&id){openGroupDetailModal(id);return}h.parentElement.classList.toggle('open');updateToggleAllButton()}
+function toggleGroup(h){
+  let gEl=h?.closest?.('.group'),id=gEl?.dataset?.id;
+  if(!id) return;
+  if(isMobileLayout()){openGroupDetailModal(id);return}
+  if(typeof selectV83DetailGroup==='function'){selectV83DetailGroup(id);return}
+}
 
 function renderCard(g){
   let fav=isTrue(g.favorite),done=isTrue(g.completed),locked=isTrue(g.locked),ro=activeDb==='auto';

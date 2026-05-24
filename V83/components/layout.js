@@ -273,8 +273,22 @@
     var id=groupEl.getAttribute('data-id');
     if(id==null) return;
     v83DetailState.groupId=Number(id);
+    Array.prototype.slice.call(document.querySelectorAll('#groups .group.is-selected,#groups .group.open')).forEach(function(el){
+      el.classList.remove('is-selected');
+      el.classList.remove('open');
+    });
+    groupEl.classList.add('is-selected');
     renderDetailPane();
   }
+
+  window.selectV83DetailGroup=function(id){
+    var groupEl=document.querySelector('#groups .group[data-id="'+String(id).replace(/"/g,'\\"')+'"]');
+    if(groupEl) syncDetailFromGroup(groupEl);
+    else {
+      v83DetailState.groupId=Number(id);
+      renderDetailPane();
+    }
+  };
 
   document.addEventListener('click',function(e){
     if(e.target.closest('[data-v83-mobile-close]')){
