@@ -416,3 +416,46 @@ body[data-theme="bevel-night"] .ev-card--open{
   .df-item{flex-direction:column;gap:6px}
   .df-ref{width:100%}
 }
+
+
+/* =========================================================
+   V83 Phase 6 — Notes cards (الملاحظات) + Tags chips (التصنيفات)
+   Notes: each editor wrapped in a .v83-edit-card with a section head.
+   Tags: auto-derived surahs and group status shown as read-only chips.
+   No new colours — uses existing palette variables throughout.
+   ========================================================= */
+
+/* Note cards — strip the inner <label class="field"> bottom margin */
+.nt-card .field{margin-bottom:0}
+
+/* Tags / chips row */
+.tg-chip-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.tg-chip{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:5px 12px;
+  font-weight:800;
+  font-size:.85rem;
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--muted);
+}
+
+/* Surah chip — primary tint */
+.tg-surah{
+  color:var(--primary2);
+  background:color-mix(in srgb,var(--primary) 8%,var(--soft));
+  border-color:color-mix(in srgb,var(--primary) 28%,var(--border));
+}
+
+/* Status chips — reuse existing badge colours */
+.tg-status.fav  {color:#b45309;background:#fff7d6;border-color:#f0d589}
+.tg-status.done {color:#166534;background:#dcfce7;border-color:#86efac}
+.tg-status.locked{color:#991b1b;background:#fee2e2;border-color:#fecaca}
+.tg-status.draft{color:var(--muted);background:var(--soft)}
