@@ -537,3 +537,48 @@
     overflow:hidden!important;
   }
 }
+
+
+/* =========================================================
+   V83 — Desktop/iPad landscape toolbar: title on top, equal-width buttons row below
+   Only affects ≥ 851px (desktop + iPad landscape).
+   Mobile layout (≤ 850px) is managed by the rules above.
+   ========================================================= */
+@media (min-width: 851px) {
+  /* Stack title above the button row */
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  /* Button row: equal-width, equal-spacing, no wrap */
+  .tools.toolbar-tools {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+  }
+
+  /* Every direct button child gets equal flex share */
+  .tools.toolbar-tools > button {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 44px;
+    padding: 0 8px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Search popup: when visible, let it expand proportionally rather than using equal-button sizing */
+  .tools.toolbar-tools > #mainSearchWrap {
+    flex: 4 1 auto;
+  }
+}
