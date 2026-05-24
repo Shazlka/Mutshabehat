@@ -29,8 +29,10 @@ function createNewGroup(){let title=document.getElementById('addTitle').value.tr
    Future phases should reshape this section without changing personal-data save logic.
    ========================================================= */
 let editActiveTab='ayahs', editNoteBuffer='', editUnoteBuffer='';
+/* Phase 4: tracks which verse cards are expanded in the الآيات tab */
+let editVerseExpanded=[];
 
-function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
+function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);editVerseExpanded=(g.verses||[]).map(()=>false);modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
 
 function editStatusText(g){if(g.status)return escapeHtml(g.status);if(isTrue(g.verified))return 'Verified';if(isTrue(g.reviewed))return 'Reviewed';return 'Draft'}
 
@@ -56,13 +58,35 @@ function renderEditTab(){let root=document.getElementById('editTabContent'),tabs
 
 function editBody(g){return `<section class="v83-edit-shell" dir="rtl"><div class="v83-edit-toolbar"><div class="v83-edit-toolbar-title"><b>تعديل المتشابه</b><small>مساحة تحرير مدمجة مع نفس منطق الحفظ الحالي</small></div><div class="v83-edit-toolbar-actions"><button class="primary" onclick="saveEditGroup()">حفظ التعديل</button><button class="danger" onclick="deleteEditGroup()">حذف المجموعة</button><button onclick="closeModal('editModal')">إغلاق</button></div></div><div class="v83-edit-layout"><aside class="v83-edit-props" aria-label="خصائص المجموعة"><section class="v83-edit-card"><h3>خصائص المجموعة</h3><label class="field">عنوان المتشابه<input id="editTitle" value="${escapeHtml(g.title||'')}"></label><div class="v83-edit-metrics"><span><b>#${escapeHtml(g.id)}</b><small>رقم المجموعة</small></span><span><b>${(g.verses||[]).length}</b><small>عدد الآيات</small></span><span><b>${editSimilarityText(g)}</b><small>درجة التشابه</small></span><span><b>${editStatusText(g)}</b><small>الحالة</small></span></div></section><section class="v83-edit-card"><h3>الوسوم</h3><div class="v83-edit-chip-row">${editTagsHtml(g)}</div></section><section class="v83-edit-card"><h3>إجراءات سريعة</h3><div class="v83-edit-quick-actions"><button class="primary" onclick="addBlankEditVerse()">+ إضافة آية</button><button onclick="sortEditVersesByMushaf()">ترتيب حسب المصحف</button></div></section></aside><main class="v83-edit-main"><div id="editTabsMount">${editTabsHtml()}</div><div id="editTabContent" class="v83-edit-tab-panel"></div></main></div></section>`}
 
-function renderEditVerses(){let b=document.getElementById('editVerses');if(!b)return;b.innerHTML=editVersesBuffer.map((v,vi)=>{let sno=getValidSurahNo(v.surah),ayah=v.ayah||1;return `<div class="edit-verse"><div class="edit-verse-title"><b>آية ${vi+1}</b><div><button onclick="moveEditVerse(${vi},-1)">↑</button><button onclick="moveEditVerse(${vi},1)">↓</button><button class="danger" onclick="editVersesBuffer.splice(${vi},1);renderEditVerses()">حذف الآية</button></div></div><div class="form-grid"><label class="field">السورة<select onchange="setEditSurah(${vi},this.value)">${surahOptionsHtml(sno)}</select></label><label class="field">رقم الآية<select onchange="setEditAyah(${vi},this.value)">${ayahOptionsHtml(sno,ayah)}</select></label><label class="field">Label<input value="${escapeHtml(v.label||'')}" onchange="editVersesBuffer[${vi}].label=this.value"></label></div><button onclick="fillEditAyah(${vi})">ملء نص الآية من المرجع</button><h4>أجزاء النص</h4>${(v.parts||[]).map((p,pi)=>partRow(vi,pi,p)).join('')}<button onclick="addEditPart(${vi})">+ إضافة جزء نص</button><div class="live-preview verse-text">${(v.parts||[]).map(p=>`<span class="${p.type}">${escapeHtml(p.text)}</span>`).join(' ')}</div></div>`}).join('')}
+/* =========================================================
+   V83 Phase 4 — Compact verse editor cards (الآيات tab)
+   Each card shows: surah / ayah badge + text preview when collapsed.
+   Click the edit (✏️) button or the preview text to expand the full form.
+   All existing fields and save logic are preserved unchanged.
+   ========================================================= */
+function toggleEditVerse(vi){editVerseExpanded[vi]=!editVerseExpanded[vi];renderEditVerses()}
+
+function deleteEditVerse(vi){editVersesBuffer.splice(vi,1);editVerseExpanded.splice(vi,1);renderEditVerses()}
+
+function renderEditVerses(){
+  /* sync expanded array length to buffer length */
+  while(editVerseExpanded.length<editVersesBuffer.length)editVerseExpanded.push(false);
+  editVerseExpanded.length=editVersesBuffer.length;
+  let b=document.getElementById('editVerses');
+  if(!b)return;
+  if(!editVersesBuffer.length){b.innerHTML='<div class="hint">لا توجد آيات. اضغط "+ إضافة آية" لبدء.</div>';return}
+  b.innerHTML=editVersesBuffer.map((v,vi)=>{
+    let sno=getValidSurahNo(v.surah),ayah=v.ayah||1,isOpen=!!editVerseExpanded[vi];
+    let preview=(v.parts||[]).map(p=>`<span class="${p.type}">${escapeHtml(p.text)}</span>`).join(' ')||'<em style="opacity:.4">لا يوجد نص</em>';
+    let bodyHtml=isOpen?`<div class="ev-card-body"><div class="form-grid"><label class="field">السورة<select onchange="setEditSurah(${vi},this.value)">${surahOptionsHtml(sno)}</select></label><label class="field">رقم الآية<select onchange="setEditAyah(${vi},this.value)">${ayahOptionsHtml(sno,ayah)}</select></label><label class="field">Label<input value="${escapeHtml(v.label||'')}" onchange="editVersesBuffer[${vi}].label=this.value"></label></div><div class="ev-card-fill-row"><button type="button" onclick="fillEditAyah(${vi})">ملء نص الآية من المرجع</button></div><div class="ev-card-parts-head"><b>أجزاء النص</b></div>${(v.parts||[]).map((p,pi)=>partRow(vi,pi,p)).join('')}<button type="button" class="ev-add-part" onclick="addEditPart(${vi})">+ إضافة جزء نص</button></div>`:'';
+    return `<div class="ev-card${isOpen?' ev-card--open':''}"><div class="ev-card-head"><div class="ev-card-meta"><span class="ev-card-num">${vi+1}</span><span class="surah-name">${escapeHtml(v.surah)}</span><span class="ayah-num">${escapeHtml(String(ayah))}</span>${v.label?`<span class="verse-label">${escapeHtml(v.label)}</span>`:''}</div><div class="ev-card-actions"><button type="button" class="ev-btn-edit${isOpen?' active':''}" title="${isOpen?'طي':'تعديل'}" onclick="toggleEditVerse(${vi})">${isOpen?'🔼':'✏️'}</button><button type="button" title="أعلى" onclick="moveEditVerse(${vi},-1)"${vi===0?' disabled':''}>↑</button><button type="button" title="أسفل" onclick="moveEditVerse(${vi},1)"${vi===editVersesBuffer.length-1?' disabled':''}>↓</button><button type="button" class="danger" title="حذف الآية" onclick="deleteEditVerse(${vi})">×</button></div></div><div class="ev-card-preview verse-text" onclick="toggleEditVerse(${vi})">${preview}</div>${bodyHtml}</div>`}).join('');
+}
 
 function partRow(vi,pi,p){return `<div class="part-row"><select aria-label="نوع الجزء" onchange="editVersesBuffer[${vi}].parts[${pi}].type=this.value;renderEditVerses()">${partOptions(p.type)}</select><textarea aria-label="نص الجزء" onchange="editVersesBuffer[${vi}].parts[${pi}].text=this.value">${escapeHtml(p.text)}</textarea><div class="part-actions"><button title="تحريك لأعلى" onclick="moveEditPart(${vi},${pi},-1)">↑</button><button title="تحريك لأسفل" onclick="moveEditPart(${vi},${pi},1)">↓</button><button title="إضافة قبل" onclick="insertEditPart(${vi},${pi})">+ قبل</button><button title="إضافة بعد" onclick="insertEditPart(${vi},${pi}+1)">+ بعد</button><button class="danger" title="حذف" onclick="removeEditPart(${vi},${pi})">حذف</button></div></div>`}
 
-function addBlankEditVerse(){editVersesBuffer.push({surah:'الفاتحة',ayah:1,label:'',parts:[{type:'normal',text:''}]});ensureEditAyahsTab();renderEditVerses()}
+function addBlankEditVerse(){editVersesBuffer.push({surah:'الفاتحة',ayah:1,label:'',parts:[{type:'normal',text:''}]});editVerseExpanded.push(true);ensureEditAyahsTab();renderEditVerses()}
 
-function moveEditVerse(i,d){let j=i+d;if(j<0||j>=editVersesBuffer.length)return;[editVersesBuffer[i],editVersesBuffer[j]]=[editVersesBuffer[j],editVersesBuffer[i]];renderEditVerses()}
+function moveEditVerse(i,d){let j=i+d;if(j<0||j>=editVersesBuffer.length)return;[editVersesBuffer[i],editVersesBuffer[j]]=[editVersesBuffer[j],editVersesBuffer[i]];[editVerseExpanded[i],editVerseExpanded[j]]=[editVerseExpanded[j],editVerseExpanded[i]];renderEditVerses()}
 
 function addEditPart(vi){editVersesBuffer[vi].parts.push({type:'normal',text:''});renderEditVerses()}
 
@@ -78,7 +102,7 @@ function setEditAyah(vi,ayah){if(!editVersesBuffer[vi])return;editVersesBuffer[v
 
 function fillEditAyah(vi){let v=editVersesBuffer[vi],a=getRef(getSurahNo(v.surah),v.ayah);if(!a)return alert('لم يتم العثور');v.surah=a.surah;v.ayah=a.ayahNo;v.parts=[{type:'normal',text:a.text}];renderEditVerses()}
 
-function sortEditVersesByMushaf(){editVersesBuffer.sort((a,b)=>getSurahNo(a.surah)-getSurahNo(b.surah)||(+a.ayah||0)-(+b.ayah||0));ensureEditAyahsTab();renderEditVerses()}
+function sortEditVersesByMushaf(){editVersesBuffer.sort((a,b)=>getSurahNo(a.surah)-getSurahNo(b.surah)||(+a.ayah||0)-(+b.ayah||0));editVerseExpanded=editVersesBuffer.map(()=>false);ensureEditAyahsTab();renderEditVerses()}
 
 function saveEditGroup(){syncEditTabBuffers();let i=personalData.findIndex(g=>+g.id===+editGroupId);if(i<0)return;personalData[i]={...personalData[i],title:document.getElementById('editTitle').value.trim(),verses:clone(editVersesBuffer),surahs:[...new Set(editVersesBuffer.map(v=>v.surah))],note:editNoteBuffer,unote:editUnoteBuffer};saveDb('personal');closeModal('editModal');renderActiveGroups()}
 
