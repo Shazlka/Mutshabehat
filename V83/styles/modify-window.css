@@ -1,5 +1,5 @@
 /* =========================================================
-   V83 Phase 2 — Modify Window Layout Shell
+   V83 Phase 2/3 — Modify Window Layout Shell + Tabs
    Uses existing theme variables and preserves current edit IDs/actions.
    ========================================================= */
 .editModal-window{
@@ -76,6 +76,36 @@
   display:grid;
   gap:12px;
 }
+.v83-edit-tabs{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  overflow-x:auto;
+  padding:4px 2px 6px;
+  border-bottom:1px solid var(--border);
+  scrollbar-width:thin;
+}
+.v83-edit-tab{
+  flex:0 0 auto;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:999px;
+  padding:8px 14px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.v83-edit-tab.active{
+  background:var(--primary);
+  border-color:var(--primary);
+  color:white;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+}
+.v83-edit-tab-panel{
+  display:grid;
+  gap:12px;
+  min-width:0;
+}
 .v83-edit-card,
 .v83-edit-section{
   background:var(--surface);
@@ -131,11 +161,32 @@
 .v83-edit-main .quran-search-box{
   margin:0;
 }
+.v83-edit-placeholder{
+  display:grid;
+  place-items:center;
+  min-height:220px;
+  text-align:center;
+  border:1px dashed var(--border);
+  border-radius:14px;
+  background:var(--soft);
+  padding:24px;
+}
+.v83-edit-placeholder h3{
+  margin:0 0 8px;
+  font-size:1.05rem;
+  font-weight:900;
+}
+.v83-edit-placeholder p{
+  margin:0;
+  color:var(--muted);
+  font-weight:800;
+}
 @media(max-width:900px){
   .editModal-window .modal-body{max-height:74vh}
   .v83-edit-toolbar{align-items:stretch;flex-direction:column}
   .v83-edit-toolbar-actions button{flex:1 1 auto}
   .v83-edit-layout{grid-template-columns:1fr;direction:rtl}
   .v83-edit-props{position:static}
+  .v83-edit-tabs{margin-inline:-2px}
   .v83-edit-notes-grid{grid-template-columns:1fr}
 }
