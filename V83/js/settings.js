@@ -123,88 +123,106 @@ function __setDbBodyClassV87(){
   }catch(e){}
 }
 
-// Override openAppSettings to include token reveal button.
+// V83 Settings Dashboard — two-column compact layout.
 function openAppSettings(){
   let s=getSettings();
-  // Build the same settings modal structure used by V79, with token row + reveal.
-  modal('settingsModal','إعدادات التطبيق',
-    `<div class="settings-section github-settings-section">
-      <h2 class="github-sync-heading"><span id="githubSyncDot" class="github-sync-dot gray"></span>GitHub Auto Sync ☁</h2>
-      ${typeof githubStatusHtmlV78==='function' ? githubStatusHtmlV78(s) : ''}
-      <div id="githubSyncStatusMount">${typeof ghStatusHtmlV79==='function' ? ghStatusHtmlV79() : ''}</div>
+  modal('settingsModal',
+    `إعدادات التطبيق<span class="sett-head-sub">تخصيص التطبيق والمزامنة</span>`,
+    `<div class="sett-shell"><div class="sett-cols">
 
-      <label class="field">Token
-        <div class="token-row">
-          <input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}" autocomplete="off" />
-          <button type="button" class="token-toggle-btn" onclick="toggleGhTokenVisibility()" aria-label="إظهار/إخفاء التوكن" title="إظهار/إخفاء">👁</button>
-        </div>
-      </label>
+<div class="sett-col">
 
-      <div class="form-grid">
-        <label class="field">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner||'')}" /></label>
-        <label class="field">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo||'')}" /></label>
-        <label class="field">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch||'')}" /></label>
-        <label class="field">Path<input id="ghPath" value="${escapeHtml(s.ghPath||'')}" /></label>
-      </div>
+<div class="sett-card">
+<div class="sett-card-title"><span id="githubSyncDot" class="github-sync-dot gray"></span>GitHub Auto Sync ☁</div>
+<div id="githubSyncStatusMount">${typeof ghStatusHtmlV79==='function'?ghStatusHtmlV79():''}</div>
+<div class="sett-card-actions">
+<button onclick="syncToGitHub('manual')">Sync Now / مزامنة الآن</button>
+</div>
+</div>
 
-      <label class="github-autosync-toggle"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''} /> تفعيل المزامنة التلقائية بعد تعديل قاعدة البيانات الشخصية</label>
+<div class="sett-card">
+<div class="sett-card-title">🔑 Token والمستودع</div>
+${typeof githubStatusHtmlV78==='function'?githubStatusHtmlV78(s):''}
+<label class="field">Token
+<div class="token-row">
+<input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}" autocomplete="off"/>
+<button type="button" class="token-toggle-btn" onclick="toggleGhTokenVisibility()" aria-label="إظهار/إخفاء التوكن" title="إظهار/إخفاء">👁</button>
+</div>
+</label>
+<div class="sett-repo-grid">
+<label class="field">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner||'')}"/></label>
+<label class="field">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo||'')}"/></label>
+<label class="field">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch||'')}"/></label>
+<label class="field">Path<input id="ghPath" value="${escapeHtml(s.ghPath||'')}"/></label>
+</div>
+<label class="github-autosync-toggle"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}/> تفعيل المزامنة التلقائية بعد تعديل قاعدة البيانات الشخصية</label>
+<small class="github-sync-note">المسار الحالي للمزامنة: <code>V71/personal-data.js</code> — لا يتم إظهار النجاح إلا بعد رجوع GitHub بمعلومات Commit.</small>
+</div>
 
-      <div class="inline-actions">
-        <button class="primary" onclick="saveSettings(false)">Save / حفظ</button>
-        <button onclick="testGitHubConnectionV79()">Test Connection</button>
-        <button onclick="syncToGitHub('manual')">Sync Now / مزامنة الآن</button>
-      </div>
+<div class="sett-card">
+<div class="sett-card-title">✏️ وضع التعديل</div>
+<label class="sett-toggle-label"><input type="checkbox" id="editModeCheck" ${editMode?'checked':''}/><span>تفعيل وضع التعديل — يتيح حذف وتعديل المجموعات</span></label>
+</div>
 
-      <small class="github-sync-note">المسار الحالي للمزامنة: <code>V71/personal-data.js</code> — لا يتم إظهار النجاح إلا بعد رجوع GitHub بمعلومات Commit.</small>
-    </div>
+</div>
 
-    <div class="settings-section">
-      <h2>✏️ وضع التعديل / Edit Mode</h2>
-      <label><input type="checkbox" id="editModeCheck" ${editMode?'checked':''} /> تفعيل وضع التعديل</label>
-    </div>
+<div class="sett-col">
 
-    <div class="settings-section">
-      <h2>🎨 المظهر / الخط</h2>
-      <div class="form-grid">
-        <label class="field">Theme
-          <select id="setTheme">
-            <option value="quran-classic">Quran Classic</option>
-            <option value="apple-health">Apple Health</option>
-            <option value="bevel-night">Bevel Night</option>
-          </select>
-        </label>
-        <label class="field">Font
-          <select id="setFont" onchange="updateFontPreview()">
-            <option value="normal-quran">Normal Quran</option>
-            <option value="mushaf-qpc-v2">Mushaf QPC V2</option>
-          </select>
-        </label>
-      </div>
-      <div id="fontPreviewBox" class="font-preview-box" data-font-preset="normal-quran">
-        <b>معاينة الخط قبل الحفظ</b>
-        <div class="font-preview-ayah">وَزَيَّنَ لَهُمُ الشَّيْطَانُ أَعْمَالَهُمْ فَصَدَّهُمْ عَنِ السَّبِيلِ فَهُمْ لَا يَهْتَدُونَ</div>
-        <small id="fontPreviewHint">إذا كان مجلد fonts فارغاً سيظهر الخط الاحتياطي تلقائياً.</small>
-      </div>
-    </div>
+<div class="sett-card">
+<div class="sett-card-title">🎨 المظهر</div>
+<label class="field">Theme
+<select id="setTheme">
+<option value="quran-classic">Quran Classic</option>
+<option value="apple-health">Apple Health</option>
+<option value="bevel-night">Bevel Night</option>
+</select>
+</label>
+</div>
 
-    <div class="inline-actions">
-      <button onclick="openReleaseNotes()">Release Notes</button>
-      <button onclick="exportActiveDatabase()">Export data.js</button>
-      <button onclick="resetDualDbCacheV68()">Reset Cache</button>
-    </div>`,
-    `<button class="primary" onclick="saveSettings(false)">حفظ</button>
-     <button onclick="closeModal('settingsModal')">إغلاق</button>`
+<div class="sett-card">
+<div class="sett-card-title">خط القرآن</div>
+<label class="field">Font
+<select id="setFont" onchange="updateFontPreview()">
+<option value="normal-quran">Normal Quran</option>
+<option value="mushaf-qpc-v2">Mushaf QPC V2</option>
+</select>
+</label>
+<div id="fontPreviewBox" class="font-preview-box" data-font-preset="normal-quran">
+<b>معاينة الخط قبل الحفظ</b>
+<div class="font-preview-ayah">وَزَيَّنَ لَهُمُ الشَّيْطَانُ أَعْمَالَهُمْ فَصَدَّهُمْ عَنِ السَّبِيلِ فَهُمْ لَا يَهْتَدُونَ</div>
+<small id="fontPreviewHint">إذا كان مجلد fonts فارغاً سيظهر الخط الاحتياطي تلقائياً.</small>
+</div>
+</div>
+
+<div class="sett-card">
+<div class="sett-card-title">🔧 أدوات البيانات</div>
+<div class="sett-data-tools">
+<div class="sett-data-tool">
+<div class="sett-data-tool-info"><b>إعادة تحميل البيانات</b><small>مسح الكاش المحلي وإعادة التهيئة</small></div>
+<button onclick="resetDualDbCacheV68()">Reset Cache</button>
+</div>
+<div class="sett-data-tool">
+<div class="sett-data-tool-info"><b>تصدير قاعدة البيانات</b><small>تنزيل personal-data.js محلياً</small></div>
+<button onclick="exportActiveDatabase()">Export data.js</button>
+</div>
+<div class="sett-data-tool">
+<div class="sett-data-tool-info"><b>ملاحظات الإصدار</b><small>عرض آخر التغييرات والتحسينات</small></div>
+<button onclick="openReleaseNotes()">Release Notes</button>
+</div>
+</div>
+</div>
+
+</div>
+
+</div></div>`,
+    `<button onclick="resetDualDbCacheV68()">🔄 Reset Cache</button><button onclick="exportActiveDatabase()">📤 Export data.js</button><button onclick="openReleaseNotes()">📋 Release Notes</button><button class="primary" onclick="saveSettings(false)">✓ حفظ</button>`
   );
-
-  // apply dropdown values
   try{
     document.getElementById('setTheme').value=s.theme||'quran-classic';
     document.getElementById('setFont').value=s.font||'normal-quran';
     updateFontPreview();
   }catch(e){}
-
-  // render sync status UI
-  try{ if(typeof ghRenderV79==='function') ghRenderV79(); }catch(e){}
+  try{if(typeof ghRenderV79==='function')ghRenderV79();}catch(e){}
 }
 
 // Override saveSettings: do NOT close settings modal.
