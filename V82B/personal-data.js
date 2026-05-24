@@ -3252,7 +3252,7 @@ window.PERSONAL_DATA = [
             "text": "وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ "
           },
           {
-            "type": "shared",
+            "type": "addition",
             "text": "حَمَلَتۡهُ أُمُّهُۥ "
           },
           {
@@ -3279,7 +3279,7 @@ window.PERSONAL_DATA = [
             "text": " إِحۡسَٰنًاۖ "
           },
           {
-            "type": "shared",
+            "type": "addition",
             "text": "حَمَلَتۡهُ أُمُّهُۥ "
           },
           {
