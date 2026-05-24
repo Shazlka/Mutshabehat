@@ -331,3 +331,88 @@ body[data-theme="bevel-night"] .ev-card--open{
   .ev-card-actions{width:100%;justify-content:flex-end}
   .ev-card-preview{font-size:1rem}
 }
+
+
+/* =========================================================
+   V83 Phase 5 — Differences Tab (الفروقات)
+   Read-only view: parts grouped by semantic type.
+   Uses existing .shared/.diff/.diff2/.diff3/.addition/.unique
+   for colour; no new colours introduced.
+   ========================================================= */
+
+/* Coloured dot matching existing legend dots */
+.df-dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  margin-left:6px;
+  vertical-align:middle;
+  flex-shrink:0;
+}
+.df-dot.shared{background:var(--green)}
+.df-dot.diff{background:var(--gold)}
+.df-dot.diff2{background:var(--purple)}
+.df-dot.diff3{background:#2dd4bf}
+.df-dot.addition{background:var(--blue)}
+.df-dot.unique{background:var(--red)}
+
+/* List of parts inside a section */
+.df-list{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+.df-item{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:8px 12px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--soft);
+}
+
+/* Verse reference badge group */
+.df-ref{
+  display:flex;
+  gap:5px;
+  align-items:center;
+  flex-shrink:0;
+  flex-wrap:wrap;
+}
+
+/* Part text — inherits colour from type class (.shared/.diff etc.) */
+.df-text{
+  flex:1;
+  min-width:0;
+  font-family:var(--font-functional-quran);
+  font-size:1.08rem;
+  line-height:1.9;
+  direction:rtl;
+  border-radius:6px;
+  padding:2px 5px;
+}
+
+/* Unused-type chips at the bottom */
+.df-empty-chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.df-empty-chip{
+  padding:5px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--muted);
+  font-weight:800;
+  font-size:.82rem;
+  opacity:.55;
+}
+
+@media(max-width:760px){
+  .df-item{flex-direction:column;gap:6px}
+  .df-ref{width:100%}
+}
