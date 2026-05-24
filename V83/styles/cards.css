@@ -613,3 +613,118 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 @media(max-width:500px){
   .settingsModal-window .modal-footer button{flex:1 1 110px}
 }
+
+
+/* =========================================================
+   V83 — GitHub Sync compact chip system
+   Replaces the two tall status cards with one scannable row.
+   Uses existing color variables; no new palette entries.
+   ========================================================= */
+
+/* Chip row — wraps if needed */
+.sett-gh-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:8px;
+}
+
+/* Individual chip — pill shape matching existing badge style */
+.sett-gh-chip{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:.76rem;
+  font-weight:800;
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--muted);
+  white-space:nowrap;
+}
+.sett-gh-chip.ok{background:#dcfce7;border-color:#86efac;color:#166534}
+.sett-gh-chip.warn{background:#fff7dc;border-color:#f0dd9a;color:#854d0e}
+.sett-gh-chip.err{background:#fee2e2;border-color:#fecaca;color:#991b1b}
+.sett-gh-chip.info{background:color-mix(in srgb,var(--primary) 9%,var(--surface));border-color:color-mix(in srgb,var(--primary) 30%,var(--border));color:var(--primary2)}
+
+/* State chip: inline in the card title, right-aligned via margin-start:auto */
+.sett-gh-state-chip{
+  display:inline-flex;
+  align-items:center;
+  margin-right:auto;   /* pushes it to the left end in RTL */
+  border-radius:999px;
+  padding:3px 9px;
+  font-size:.72rem;
+  font-weight:900;
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--muted);
+  white-space:nowrap;
+}
+.sett-gh-state-chip.sett-gh-chip-success{background:#dcfce7;border-color:#86efac;color:#166534}
+.sett-gh-state-chip.sett-gh-chip-failed{background:#fee2e2;border-color:#fecaca;color:#991b1b}
+.sett-gh-state-chip.sett-gh-chip-syncing,
+.sett-gh-state-chip.sett-gh-chip-no-changes{background:#fef3c7;border-color:#f0dd9a;color:#854d0e}
+.sett-gh-state-chip.sett-gh-chip-none{opacity:.55}
+
+/* Live test-connection feedback line */
+.sett-gh-live{
+  font-size:.82rem;
+  font-weight:800;
+  min-height:0;
+  margin-bottom:4px;
+  transition:min-height .2s;
+}
+.sett-gh-live:empty{margin-bottom:0}
+/* Reuse status-line dot style inside the compact live area */
+.sett-gh-live.status-line{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:5px 0;
+  margin-bottom:6px;
+}
+
+/* Sync meta: time + path + SHA in a small horizontal line */
+.sett-gh-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin-bottom:6px;
+}
+.sett-gh-meta:empty{margin-bottom:0}
+.sett-gh-meta-item{
+  font-size:.76rem;
+  font-weight:700;
+  color:var(--muted);
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.sett-gh-meta-item code{
+  direction:ltr;
+  unicode-bidi:plaintext;
+  background:var(--soft);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:1px 5px;
+  font-size:.74rem;
+}
+
+/* Auto-sync checkbox row inside the compact card */
+.sett-gh-autosync{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid var(--border);
+  font-size:.84rem;
+}
+
+/* Error box already styled globally; just reset its outer margin */
+#sett-gh-error .github-error-box{margin-top:8px;margin-bottom:0}
+
+@media(max-width:500px){
+  .sett-gh-chips{gap:5px}
+  .sett-gh-chip{font-size:.7rem;padding:3px 8px}
+  .sett-gh-meta{gap:6px}
+}
