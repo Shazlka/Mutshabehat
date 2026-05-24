@@ -581,4 +581,19 @@
   .tools.toolbar-tools > #mainSearchWrap {
     flex: 4 1 auto;
   }
+
+  /* Search input is now in the sidebar; hide the toolbar search wrap on desktop */
+  .toolbar-tools > #mainSearchWrap { display: none !important }
+}
+
+
+/* =========================================================
+   V83 — iPad landscape (851-1024px): widen sidebar so filter
+   controls remain accessible (was hardcoded 90px).
+   ========================================================= */
+@media (max-width: 1024px) and (min-width: 851px) {
+  .v83-grid { grid-template-columns: 220px minmax(280px,1fr) 1fr !important }
+  .v83-side-sec h4 { display: block !important }
+  .v83-side-search { display: block !important }
+  .v83-brand small { display: none }
 }
