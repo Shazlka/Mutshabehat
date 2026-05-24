@@ -134,6 +134,19 @@
    UPGRADE 2 — Group Cards Visual Upgrade
    ────────────────────────────────────────────────────────── */
 
+/* Ensure group card titles use the correct Quran font and aren't mangled by surah-name-v4 */
+.v83-group-card .group-title,
+.pv-title-wrap .group-title {
+  font-family: var(--qfont), var(--font-functional-quran), serif !important;
+  font-size: 1.36rem !important;
+  line-height: 1.95 !important;
+  font-weight: 500 !important;
+  text-rendering: optimizeLegibility !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  direction: rtl !important;
+}
+
 /* Left border accent per dominant part type */
 .v83-group-card { position: relative; }
 
