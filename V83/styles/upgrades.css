@@ -138,12 +138,12 @@
 .v83-group-card .group-title,
 .pv-title-wrap .group-title {
   font-family: var(--qfont), var(--font-functional-quran), serif !important;
-  font-size: 1.36rem !important;
-  line-height: 1.95 !important;
+  font-size: 1.14rem !important;
+  line-height: 1.9 !important;
   font-weight: 500 !important;
   text-rendering: optimizeLegibility !important;
   display: block !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 15px !important;
   direction: rtl !important;
 }
 
