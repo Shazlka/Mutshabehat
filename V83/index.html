@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>متشابهات القرآن الكريم — V83</title>
-  <link rel="stylesheet" href="styles/styles.css?v=v83_toolbar_desktop_20260524_1">
+  <link rel="stylesheet" href="styles/styles.css?v=v83_sidebar_filters_20260524_1">
 </head>
 <body data-theme="quran-classic" data-font-preset="normal-quran">
 <header class="app-header">
@@ -22,22 +22,52 @@
 <section id="workspace" class="workspace v83-shell hidden">
   <div class="v83-grid">
     <aside class="v83-panel v83-sidebar">
-      <div class="v83-brand"><span class="v83-badge">V83</span><div><h3>المتشابهات</h3><small>Quran Similarity Explorer</small></div></div>
-      <div class="v83-side-sec"><input id="v83GlobalSearch" class="v83-side-search" placeholder="ابحث في القرآن..." oninput="document.getElementById('searchInput').value=this.value;renderActiveGroups()"></div>
-      <div class="v83-side-sec v83-menu">
-        <h4>التنقل</h4>
-        <button onclick="openHome()">الرئيسية</button>
-        <button class="active" onclick="openDatabase(activeDb||'personal')">المتشابهات</button>
-        <button onclick="openDashboard()">المفضلة</button>
-        <button onclick="openAppSettings()">الإعدادات</button>
+      <div class="v83-side-scroll">
+        <div class="v83-brand"><span class="v83-badge">V83</span><div><h3>المتشابهات</h3><small>Quran Similarity Explorer</small></div></div>
+
+        <!-- 2. Main search (proxies to #searchInput in toolbar) -->
+        <div class="v83-side-sec"><input id="v83GlobalSearch" class="v83-side-search" placeholder="ابحث في المتشابهات..." oninput="document.getElementById('searchInput').value=this.value;renderActiveGroups()"></div>
+
+        <!-- 3. البحث والفلترة -->
+        <div class="v83-side-sec v83-side-filters">
+          <h4>البحث والفلترة</h4>
+          <small id="filterStatus" class="v83-filter-status">المعروض الآن: كل السور</small>
+          <label class="v83-side-label" for="displayMode">طريقة عرض المجموعات</label>
+          <select id="displayMode" class="v83-side-select" onchange="setDisplayMode(this.value)"><option value="original">الترتيب الأصلي</option><option value="sort-surah">حسب السورة</option><option value="group-surah">تجميع بالسورة</option><option value="newest">الأحدث أولاً</option><option value="most-verses">الأكثر آيات</option></select>
+          <span id="counter" class="result-counter v83-side-counter">عدد النتائج: 0</span>
+          <div class="v83-side-filter-btns">
+            <button id="onlyResultsBtn" class="active" onclick="toggleOnlyWithResults()">بها نتائج فقط</button>
+            <button onclick="clearSurahFilter()">عرض الكل</button>
+            <button onclick="openAdvancedSearch()">بحث متقدم</button>
+            <button id="surahFilterToggleBtn" onclick="toggleSurahFilterPanel()">فتح الفلتر ▾</button>
+          </div>
+          <div id="surahFilterPanel" class="hidden">
+            <input id="surahFilterSearch" class="v83-side-search v83-side-filter-search" placeholder="ابحث باسم السورة أو رقمها..." oninput="renderSurahFilter()">
+            <div class="range-tabs"><button onclick="setSurahRange('all')" class="active" data-range="all">الكل</button><button onclick="setSurahRange('1-30')" data-range="1-30">1-30</button><button onclick="setSurahRange('31-60')" data-range="31-60">31-60</button><button onclick="setSurahRange('61-90')" data-range="61-90">61-90</button><button onclick="setSurahRange('91-114')" data-range="91-114">91-114</button></div>
+            <h4>الأكثر وجودًا</h4>
+            <div id="topSurahGrid" class="surah-grid top"></div>
+            <div class="surah-count-line" id="surahCountLine"></div>
+            <div id="surahFilterGrid" class="surah-grid"></div>
+          </div>
+        </div>
+
+        <!-- 4. Navigation -->
+        <div class="v83-side-sec v83-menu">
+          <h4>التنقل</h4>
+          <button onclick="openHome()">الرئيسية</button>
+          <button class="active" onclick="openDatabase(activeDb||'personal')">المتشابهات</button>
+          <button onclick="openDashboard()">المفضلة</button>
+          <button onclick="openAppSettings()">الإعدادات</button>
+        </div>
+
+        <!-- 5. Tools -->
+        <div class="v83-side-sec"><h4>أدوات</h4><button onclick="toggleAllGroups()">فتح/طي الكل</button></div>
       </div>
-      <div class="v83-side-sec"><h4>أدوات</h4><button onclick="toggleSurahFilterPanel()">إظهار/إخفاء الفلتر</button><button onclick="toggleAllGroups()">فتح/طي الكل</button></div>
     </aside>
 
     <section class="v83-panel v83-center">
       <div class="v83-scroll">
-        <section class="filter-card" id="surahFilterSection"><div class="filter-head"><div class="filter-title-wrap"><b>🔍 تصفية حسب السورة</b><small id="filterStatus">المعروض الآن: كل السور</small></div><div class="filter-bar-row"><div class="filter-inline-sort" aria-label="خيارات العرض والنتائج"><label for="displayMode">طريقة عرض المجموعات</label><div class="sort-select-wrap" aria-label="تغيير طريقة العرض" title="تغيير طريقة العرض"><select id="displayMode" onchange="setDisplayMode(this.value)"><option value="original">Original Order — الترتيب الأصلي</option><option value="sort-surah">Sort by Surah</option><option value="group-surah">Group by Surah</option><option value="newest">Newest First</option><option value="most-verses">Most Verses First</option></select><span id="counter" class="result-counter">عدد النتائج: 0</span></div><div class="filter-actions"><button id="onlyResultsBtn" class="active" onclick="toggleOnlyWithResults()">بها نتائج فقط</button><button onclick="clearSurahFilter()">عرض الكل</button><button onclick="toggleSurahFilterPanel()" id="surahFilterToggleBtn">إغلاق الفلتر ▴</button></div></div></div><div id="surahFilterPanel"><input id="surahFilterSearch" class="wide-input" placeholder="ابحث باسم السورة أو رقمها..." oninput="renderSurahFilter()"><div class="range-tabs"><button onclick="setSurahRange('all')" class="active" data-range="all">الكل</button><button onclick="setSurahRange('1-30')" data-range="1-30">1-30</button><button onclick="setSurahRange('31-60')" data-range="31-60">31-60</button><button onclick="setSurahRange('61-90')" data-range="61-90">61-90</button><button onclick="setSurahRange('91-114')" data-range="91-114">91-114</button></div><h4>الأكثر وجودًا</h4><div id="topSurahGrid" class="surah-grid top"></div><div class="surah-count-line" id="surahCountLine"></div><div id="surahFilterGrid" class="surah-grid"></div></div></section>
-        <div class="toolbar"><div><h2 id="dbTitle">قاعدة البيانات</h2><p id="dbSubTitle">—</p></div><div class="tools toolbar-tools"><button id="mainSearchBtn" class="icon-btn outline-icon main-search-btn" title="بحث" onclick="openMainSearchUI()" aria-label="بحث"><span class="btn-icon" aria-hidden="true">🔍</span><span class="btn-text">بحث</span></button><div id="mainSearchWrap" class="main-search-wrap hidden"><input id="searchInput" placeholder="ابحث في المتشابهات..." oninput="renderActiveGroups()"><button class="outline-icon" onclick="clearSearch()" aria-label="إلغاء البحث" title="إلغاء"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إلغاء</span></button><button class="danger" title="إغلاق البحث" onclick="closeMainSearchUI()" aria-label="إغلاق البحث"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إغلاق</span></button></div><button class="primary" onclick="openAddModal()" aria-label="إضافة متشابه" title="إضافة متشابه"><span class="btn-icon" aria-hidden="true">➕</span><span class="btn-text">إضافة متشابه</span></button><button onclick="openAdvancedSearch()" aria-label="بحث متقدم" title="بحث متقدم"><span class="btn-icon" aria-hidden="true">⚙️</span><span class="btn-text">بحث متقدم</span></button><button onclick="toggleAllGroups()" id="toggleAllBtn" aria-label="فتح/طي الكل" title="فتح/طي الكل"><span class="btn-icon" aria-hidden="true">📂</span><span class="btn-text">فتح الكل</span></button><button id="syncGitHubBtn" onclick="manualSyncGitHub()" aria-label="مزامنة GitHub" title="مزامنة GitHub"><span class="btn-icon" aria-hidden="true">☁</span><span class="btn-text">Sync GitHub</span></button></div></div>
+        <div class="toolbar"><div><h2 id="dbTitle">قاعدة البيانات</h2><p id="dbSubTitle">—</p></div><div class="tools toolbar-tools"><div id="mainSearchWrap" class="main-search-wrap hidden"><input id="searchInput" placeholder="ابحث في المتشابهات..." oninput="renderActiveGroups()"><button class="outline-icon" onclick="clearSearch()" aria-label="إلغاء البحث" title="إلغاء"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إلغاء</span></button><button class="danger" title="إغلاق البحث" onclick="closeMainSearchUI()" aria-label="إغلاق البحث"><span class="btn-icon" aria-hidden="true">✖️</span><span class="btn-text">إغلاق</span></button></div><button class="primary" onclick="openAddModal()" aria-label="إضافة متشابه" title="إضافة متشابه"><span class="btn-icon" aria-hidden="true">➕</span><span class="btn-text">إضافة متشابه</span></button><button onclick="toggleAllGroups()" id="toggleAllBtn" aria-label="فتح/طي الكل" title="فتح/طي الكل"><span class="btn-icon" aria-hidden="true">📂</span><span class="btn-text">فتح الكل</span></button><button id="syncGitHubBtn" onclick="manualSyncGitHub()" aria-label="مزامنة GitHub" title="مزامنة GitHub"><span class="btn-icon" aria-hidden="true">☁</span><span class="btn-text">Sync GitHub</span></button></div></div>
         <div id="activeFilterChips" class="active-filter-chips"></div><div id="surahIndexBar" class="surah-index-bar"></div><div id="groups" class="groups"></div>
       </div>
     </section>
