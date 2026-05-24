@@ -17107,7 +17107,7 @@ window.PERSONAL_DATA = [
   },
   {
     "id": 213,
-    "title": "عبارة مشتركة: لك به علم فلا",
+    "title": "وَإِن جَٰهَدَاكَ لِتُشۡرِكَ بِي مَا لَيۡسَ لَكَ بِهِۦ عِلۡمٞ فَلَا تُطِعۡهُمَآۚ",
     "surahs": [
       "العنكبوت",
       "لقمان"
@@ -17182,6 +17182,7 @@ window.PERSONAL_DATA = [
     "candidateKind": "shared-phrase",
     "candidateScore": 84,
     "sharedPhrase": "لك به علم فلا",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   }
 ];
