@@ -367,6 +367,19 @@ body[data-theme="quran-night"] .verse-card {
 #mainSearchWrap:not(.has-text) .outline-icon { display: none !important; }
 
 /* ──────────────────────────────────────────────────────────
+/* Style details pane and mobile sheet titles to render beautifully in the classical Quran font */
+.v83-detail-title,
+.v83-mobile-title {
+  font-family: var(--qfont), var(--font-functional-quran), serif !important;
+  font-size: 1.14rem !important;
+  line-height: 1.9 !important;
+  font-weight: 500 !important;
+  text-rendering: optimizeLegibility !important;
+  direction: rtl !important;
+  margin: 0 !important;
+}
+
+/* ──────────────────────────────────────────────────────────
    UPGRADE 5 — Detail Pane Empty State
    ────────────────────────────────────────────────────────── */
 
