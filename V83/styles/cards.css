@@ -405,7 +405,7 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 }
 
 
-/* V83 compact group card: actions live under the title, not as a side rail. */
+/* V83 compact group card: actions live as a bottom footer, not as a side rail. */
 .v83-group-card .group-head{
   display:grid;
   grid-template-columns:auto minmax(0,1fr);
@@ -436,9 +436,9 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
   align-items:center;
   justify-content:flex-start;
   gap:6px;
-  margin:6px 0 7px;
-  padding:0;
-  border:0;
+  margin:8px 0 0;
+  padding:8px 0 0;
+  border-top:1px solid color-mix(in srgb,var(--border) 72%,transparent);
 }
 .v83-group-card .group-tags{
   margin:0 0 7px;

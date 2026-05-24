@@ -35,10 +35,10 @@ function renderCard(g){
     actions+=`<button class="icon-btn outline-icon edit-action" title="تعديل" onclick="event.stopPropagation();openEditModal(${g.id})">${iconSvg('edit')}</button>`;
   }
   let cls=(fav?' is-favorite':'')+(done?' is-completed':'')+(locked?' is-locked':'');
-  let tags=`${getTags(g).map(s=>renderSurahTag(g,s)).join('')}<span class="tag">${(g.verses||[]).length} آية</span>${g.candidateScore?`<span class="tag">score ${g.candidateScore}</span>`:''}`;
+  let tags=`${getTags(g).map(s=>renderSurahTag(g,s)).join('')}<span class="tag">${(g.verses||[]).length} آية</span>`;
   let preview=getGroupPreview(g);
   let previewHtml=preview?`<div class="v83-preview">${highlight(preview)}</div>`:'';
-  return `<article class="group v83-group-card${cls}" data-id="${g.id}"><div class="group-head" onclick="toggleGroup(this)"><div class="group-num ${done?'completed':''}" title="اضغط لتغيير حالة الإكمال" onclick="event.stopPropagation();toggleFlag(${g.id},'completed')">${escapeHtml(g.id)}</div><div class="group-title-wrap"><div class="group-title">${highlight(g.title||'بدون عنوان')}</div><div class="group-actions">${actions}<button class="icon-btn outline-icon" title="نسخ النص" onclick="event.stopPropagation();copyGroupText(${g.id})">${iconSvg('copy')}</button><button class="icon-btn outline-icon" title="صورة HD" onclick="event.stopPropagation();downloadGroupImage(${g.id})">${iconSvg('camera')}</button></div><div class="group-tags">${tags}</div>${previewHtml}</div></div><div class="group-body">${renderGroupBody(g)}</div></article>`;
+  return `<article class="group v83-group-card${cls}" data-id="${g.id}"><div class="group-head" onclick="toggleGroup(this)"><div class="group-num ${done?'completed':''}" title="اضغط لتغيير حالة الإكمال" onclick="event.stopPropagation();toggleFlag(${g.id},'completed')">${escapeHtml(g.id)}</div><div class="group-title-wrap"><div class="group-title">${highlight(g.title||'بدون عنوان')}</div><div class="group-tags">${tags}</div>${previewHtml}<div class="group-actions">${actions}<button class="icon-btn outline-icon" title="نسخ النص" onclick="event.stopPropagation();copyGroupText(${g.id})">${iconSvg('copy')}</button><button class="icon-btn outline-icon" title="صورة HD" onclick="event.stopPropagation();downloadGroupImage(${g.id})">${iconSvg('camera')}</button></div></div></div><div class="group-body">${renderGroupBody(g)}</div></article>`;
 }
 
 function openGroupDetailModal(id){

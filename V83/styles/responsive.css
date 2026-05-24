@@ -460,7 +460,7 @@
 }
 
 
-/* V83 mobile card fit: full-width title/preview with actions below the title. */
+/* V83 mobile card fit: full-width title/preview with actions at the card bottom. */
 @media(max-width:850px){
   body.db-personal #groups .v83-group-card .group-head,
   body.db-auto #groups .v83-group-card .group-head{
@@ -505,9 +505,9 @@
     width:100%!important;
     justify-content:flex-start!important;
     gap:6px!important;
-    margin:5px 0 6px!important;
-    padding:0!important;
-    border:0!important;
+    margin:8px 0 0!important;
+    padding:7px 0 0!important;
+    border-top:1px solid #eef0f3!important;
   }
 
   body.db-personal #groups .v83-group-card .group-actions .icon-btn.outline-icon,
