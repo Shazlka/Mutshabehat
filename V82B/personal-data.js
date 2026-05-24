@@ -17102,6 +17102,7 @@ window.PERSONAL_DATA = [
     "candidateKind": "shared-phrase",
     "candidateScore": 84,
     "sharedPhrase": "يشكر لنفسه ومن كفر",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   }
 ];
