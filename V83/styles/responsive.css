@@ -596,4 +596,52 @@
   .v83-side-sec h4 { display: block !important }
   .v83-side-search { display: block !important }
   .v83-brand small { display: none }
+
+  /* ── Detail pane: ~35% font reduction for iPad landscape ── */
+
+  /* Panel chrome */
+  .v83-detail-head { padding: 8px 12px !important }
+  .v83-detail-title { font-size: 0.78rem !important }
+  .v83-detail-content { padding: 8px !important }
+
+  /* Verse cards */
+  .v83-detail-content .verse-card {
+    padding: 8px !important;
+    margin-bottom: 6px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Quran text: 1.42rem → 0.92rem (35% reduction) */
+  .v83-detail-content .verse-text,
+  .v83-detail-content .quran-text {
+    font-size: 0.92rem !important;
+    line-height: 1.85 !important;
+  }
+
+  /* Verse reference chips */
+  .v83-detail-content .surah-name { font-size: 0.76rem !important }
+  .v83-detail-content .ayah-num,
+  .v83-detail-content .verse-label { font-size: 0.72rem !important; padding: 1px 7px !important }
+  .v83-detail-content .verse-ref { margin-bottom: 5px !important }
+
+  /* Notes */
+  .v83-detail-content .note,
+  .v83-detail-content .unote {
+    font-size: 0.82rem !important;
+    line-height: 1.65 !important;
+    padding: 8px !important;
+    margin-top: 6px !important;
+  }
+
+  /* Group title and tags when shown inside detail */
+  .v83-detail-content .group-title { font-size: 0.80rem !important }
+  .v83-detail-content .tag { font-size: 0.68rem !important; padding: 3px 7px !important }
+
+  /* Shared/diff part spans inside Quran text */
+  .v83-detail-content .shared,
+  .v83-detail-content .diff,
+  .v83-detail-content .diff2,
+  .v83-detail-content .diff3,
+  .v83-detail-content .addition,
+  .v83-detail-content .unique { padding: 0 2px !important }
 }
