@@ -17067,7 +17067,7 @@ window.PERSONAL_DATA = [
             "text": "يَشۡكُرُ لِنَفۡسِهِۦۖ وَمَن كَفَرَ"
           },
           {
-            "type": "diff2",
+            "type": "unique",
             "text": "فَإِنَّ رَبِّي غَنِيّٞ كَرِيمٞ"
           }
         ]
@@ -17096,7 +17096,7 @@ window.PERSONAL_DATA = [
         ]
       }
     ],
-    "note": "<br>",
+    "note": "<font color=\"#ff3a30\"><u>(غني كريم) وحيدة في النمل</u></font><span style=\"font-weight: normal;\"> وباقي القران (غني حميد)</span>",
     "unote": "<br>",
     "autoCandidate": false,
     "candidateKind": "shared-phrase",
