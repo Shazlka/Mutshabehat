@@ -489,3 +489,65 @@ body[data-theme="bevel-night"] .ev-card--open{
 .pv-card-body .verse-card:last-child,
 .pv-card-body .note:last-child,
 .pv-card-body .unote:last-child{margin-bottom:0}
+
+
+/* =========================================================
+   V83 Phase 8 — Responsive breakpoints for the Modify Window
+   ≥1380px  : 3-column (props | tabs+content | live preview panel)
+   901-1379px: 2-column (existing — no change)
+   ≤900px   : single-column stacked (existing) + touch-target polish
+   ≤600px   : near-fullscreen modal, grid toolbar buttons
+   ========================================================= */
+
+/* -- Persistent live-preview panel (3rd column) --
+   Hidden by default; flex-column displayed at wide viewports.
+   Sticky within the modal-body scroll container, same as .v83-edit-props. */
+.v83-edit-preview-panel{
+  direction:rtl;
+  min-width:0;
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  position:sticky;
+  top:76px;
+  overflow-y:auto;
+  max-height:calc(min(78vh,840px) - 90px);
+}
+
+@media(min-width:1380px){
+  .editModal-window{width:min(1440px,96vw)}
+  .v83-edit-layout{
+    grid-template-columns:minmax(225px,265px) minmax(0,1fr) minmax(255px,305px);
+  }
+  .v83-edit-preview-panel{display:flex}
+}
+
+/* -- ≤900px: existing stacked layout + better touch targets -- */
+@media(max-width:900px){
+  .v83-edit-toolbar-actions button{min-height:44px;border-radius:12px}
+  .v83-edit-quick-actions{width:100%}
+  .v83-edit-quick-actions button{flex:1 1 auto;min-height:44px}
+}
+
+/* -- ≤600px: near-fullscreen modal, 2-col action grid -- */
+@media(max-width:600px){
+  .editModal-window{
+    width:100vw;
+    border-radius:0;
+    margin:0 auto;
+  }
+  .editModal-window .modal-body{
+    max-height:calc(100svh - 58px);
+  }
+  /* 2-column grid: Save full-width on top row, Delete+Close below */
+  .v83-edit-toolbar-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+  }
+  .v83-edit-toolbar-actions button:first-child{
+    grid-column:1/-1;
+    min-height:48px;
+  }
+  .v83-edit-toolbar-actions button{min-height:44px;border-radius:12px}
+}
