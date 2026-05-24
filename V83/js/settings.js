@@ -145,18 +145,18 @@ function openAppSettings(){
 </div>
 
 <div class="sett-card">
-<div class="sett-card-title">🔑 Token والمستودع</div>
+<div class="sett-card-title">🔗 GitHub Repository Settings</div>
 <label class="field">Token
 <div class="token-row">
-<input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}" autocomplete="off"/>
+<input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}" autocomplete="off" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/>
 <button type="button" class="token-toggle-btn" onclick="toggleGhTokenVisibility()" aria-label="إظهار/إخفاء التوكن" title="إظهار/إخفاء">👁</button>
 </div>
 </label>
-<div class="sett-repo-grid">
-<label class="field">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner||'')}"/></label>
-<label class="field">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo||'')}"/></label>
-<label class="field">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch||'')}"/></label>
-<label class="field">Path<input id="ghPath" value="${escapeHtml(s.ghPath||'')}"/></label>
+<div class="sett-repo-grid sett-repo-grid-sep">
+<label class="field">Owner<input id="ghOwner" value="${escapeHtml(s.ghOwner||'')}" placeholder="Shazlka"/></label>
+<label class="field">Repo<input id="ghRepo" value="${escapeHtml(s.ghRepo||'')}" placeholder="Mutashabihat"/></label>
+<label class="field">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch||'')}" placeholder="main"/></label>
+<label class="field">Path<input id="ghPath" value="${escapeHtml(s.ghPath||'')}" placeholder="V71/personal-data.js"/></label>
 </div>
 <small class="github-sync-note">المسار الحالي للمزامنة: <code>V71/personal-data.js</code> — لا يتم إظهار النجاح إلا بعد رجوع GitHub بمعلومات Commit.</small>
 </div>

@@ -712,6 +712,16 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
   font-size:.74rem;
 }
 
+/* Repo grid: thin top border separates token (credential) from repo fields (config) */
+.sett-repo-grid-sep{
+  border-top:1px solid var(--border);
+  padding-top:10px;
+  margin-top:4px;
+}
+
+/* Placeholder dimmed to keep fields readable */
+.sett-card input::placeholder{color:var(--muted);opacity:.65}
+
 /* Auto-sync checkbox row inside the compact card */
 .sett-gh-autosync{
   margin-top:10px;
