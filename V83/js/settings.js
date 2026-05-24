@@ -133,16 +133,19 @@ function openAppSettings(){
 <div class="sett-col">
 
 <div class="sett-card">
-<div class="sett-card-title"><span id="githubSyncDot" class="github-sync-dot gray"></span>GitHub Auto Sync ☁</div>
-<div id="githubSyncStatusMount">${typeof ghStatusHtmlV79==='function'?ghStatusHtmlV79():''}</div>
+<div class="sett-card-title"><span id="githubSyncDot" class="github-sync-dot gray"></span>GitHub Auto Sync ☁<span id="sett-gh-state-chip" class="sett-gh-state-chip none">—</span></div>
+<div class="sett-gh-chips" id="sett-gh-chips"></div>
+<div id="githubLiveStatus" class="sett-gh-live"></div>
+<div class="sett-gh-meta" id="sett-gh-meta"></div>
+<div id="sett-gh-error"></div>
 <div class="sett-card-actions">
-<button onclick="syncToGitHub('manual')">Sync Now / مزامنة الآن</button>
+<button onclick="testGitHubConnectionV79()">Test Connection</button><button onclick="syncToGitHub('manual')">Sync Now</button><button onclick="ghVerifyV79()">Verify on GitHub</button>
 </div>
+<label class="github-autosync-toggle sett-gh-autosync"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}/> تفعيل المزامنة التلقائية</label>
 </div>
 
 <div class="sett-card">
 <div class="sett-card-title">🔑 Token والمستودع</div>
-${typeof githubStatusHtmlV78==='function'?githubStatusHtmlV78(s):''}
 <label class="field">Token
 <div class="token-row">
 <input id="ghToken" type="password" value="${escapeHtml(s.ghToken||'')}" autocomplete="off"/>
@@ -155,7 +158,6 @@ ${typeof githubStatusHtmlV78==='function'?githubStatusHtmlV78(s):''}
 <label class="field">Branch<input id="ghBranch" value="${escapeHtml(s.ghBranch||'')}"/></label>
 <label class="field">Path<input id="ghPath" value="${escapeHtml(s.ghPath||'')}"/></label>
 </div>
-<label class="github-autosync-toggle"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}/> تفعيل المزامنة التلقائية بعد تعديل قاعدة البيانات الشخصية</label>
 <small class="github-sync-note">المسار الحالي للمزامنة: <code>V71/personal-data.js</code> — لا يتم إظهار النجاح إلا بعد رجوع GitHub بمعلومات Commit.</small>
 </div>
 
@@ -291,4 +293,77 @@ function saveSettings(closeAfter=false){
   }catch(e){}
   // Also update once on load
   try{ window.addEventListener('DOMContentLoaded', ()=>setTimeout(__setDbBodyClassV87, 50)); }catch(e){}
+})();
+
+/* =========================================================
+   V83 — Compact GitHub status renderer
+   Patches ghRenderV79 to update individual chip/meta elements
+   inside the compact card instead of replacing a full status card.
+   All existing element IDs (#githubSyncDot, #githubLiveStatus) kept.
+   ========================================================= */
+(function patchGhRenderCompactV83(){
+  const _orig=window.ghRenderV79;
+  window.ghRenderV79=function(){
+    // 1. Sync dot (also updated when settings is closed)
+    try{
+      let d=document.getElementById('githubSyncDot');
+      let m=typeof ghMetaV79==='function'?ghMetaV79():null;
+      if(d&&m){d.className='github-sync-dot '+m[1];d.title=m[2]}
+    }catch(e){}
+
+    // 2. State chip in card title
+    try{
+      let chip=document.getElementById('sett-gh-state-chip');
+      let m=typeof ghMetaV79==='function'?ghMetaV79():null;
+      if(chip&&m){
+        let labels={'syncing':'🟡 جاري...','success':'✅ متزامن','failed':'❌ فشل','no-changes':'✓ محدث','none':'—'};
+        chip.textContent=labels[m[0]]||'—';
+        chip.className='sett-gh-state-chip sett-gh-chip-'+m[0];
+      }
+    }catch(e){}
+
+    // 3. Four status chips (computed from live settings + protocol)
+    try{
+      let chips=document.getElementById('sett-gh-chips');
+      if(chips){
+        let s=typeof getSettings==='function'?getSettings():{};
+        let sec=location.protocol==='https:'||location.hostname==='localhost';
+        let tok=!!(typeof safeText==='function'?safeText(s.ghToken||'').trim():s.ghToken);
+        let repo=!!(s.ghOwner&&s.ghRepo);
+        chips.innerHTML=
+          '<span class="sett-gh-chip '+(sec?'ok':'warn')+'">'+(sec?'🔒 HTTPS آمن':'⚠ HTTP')+'</span>'+
+          '<span class="sett-gh-chip '+(repo?'ok':'warn')+'">'+(repo?'✓ المستودع مضبوط':'⚠ المستودع غير مضبوط')+'</span>'+
+          '<span class="sett-gh-chip '+(tok?'ok':'warn')+'">'+(tok?'✓ Token موجود':'⚠ Token غير موجود')+'</span>'+
+          '<span class="sett-gh-chip info">قاعدة البيانات جاهزة</span>';
+      }
+    }catch(e){}
+
+    // 4. Sync meta: last time, path, commit SHA
+    try{
+      let meta=document.getElementById('sett-gh-meta');
+      if(meta){
+        let t=localStorage.getItem('github_last_sync_time')||'';
+        let s=typeof getSettings==='function'?getSettings():{};
+        let p=localStorage.getItem('github_last_sync_path')||s.ghPath||'';
+        let sha=localStorage.getItem('github_last_commit_sha')||'';
+        let h='<span class="sett-gh-meta-item">'+(t?'🕐 '+(typeof escapeHtml==='function'?escapeHtml(t):t):'لم تتم أي مزامنة بعد')+'</span>';
+        if(p) h+='<span class="sett-gh-meta-item"><code>'+(typeof escapeHtml==='function'?escapeHtml(p):p)+'</code></span>';
+        if(sha) h+='<span class="sett-gh-meta-item">SHA: <code>'+(typeof escapeHtml==='function'?escapeHtml(sha.slice(0,7)):sha.slice(0,7))+'</code></span>';
+        meta.innerHTML=h;
+      }
+    }catch(e){}
+
+    // 5. Error box
+    try{
+      let errBox=document.getElementById('sett-gh-error');
+      if(errBox){
+        let er=localStorage.getItem('github_last_sync_error')||'';
+        let st=localStorage.getItem('github_last_sync_status')||'none';
+        errBox.innerHTML=(er&&st==='failed')?'<div class="github-error-box" style="margin-top:8px"><strong>Error:</strong><pre>'+(typeof escapeHtml==='function'?escapeHtml(er):er)+'</pre></div>':'';
+      }
+    }catch(e){}
+
+    // Always call applySettings (original side-effect)
+    try{if(typeof applySettings==='function')applySettings();}catch(e){}
+  };
 })();
