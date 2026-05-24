@@ -1,0 +1,594 @@
+/* ==========================================================
+   V83 UI/UX UPGRADES — upgrades.css
+   Covers: 7 upgrade areas. Import this AFTER themes.css.
+   ========================================================== */
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 1 — Home Screen Glow-Up
+   ────────────────────────────────────────────────────────── */
+
+/* Animated hero background */
+.home-screen {
+  padding: 0 18px 18px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #0b2e28 0%, #0f3f37 40%, #1a2f3a 100%) !important;
+  border: 1px solid rgba(201,168,76,.25) !important;
+  border-radius: 28px !important;
+  padding: 44px 32px !important;
+  color: #f0ede4;
+  box-shadow: 0 20px 50px rgba(11,46,40,.35), 0 0 0 1px rgba(201,168,76,.1) !important;
+}
+
+/* Decorative Arabic pattern overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(201,168,76,.10) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(75,99,230,.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Rotating decorative rings */
+.hero::after {
+  content: '۞';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9rem;
+  color: rgba(201,168,76,.05);
+  pointer-events: none;
+  animation: heroSpin 60s linear infinite;
+  line-height: 1;
+}
+
+@keyframes heroSpin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+.hero h2 {
+  color: #f6e8b4;
+  font-size: 1.7rem;
+  margin: 0 0 10px;
+  position: relative;
+  text-shadow: 0 2px 14px rgba(201,168,76,.25);
+}
+
+.hero > p {
+  color: #b8d0c8;
+  font-size: 1rem;
+  position: relative;
+  margin: 0 0 28px;
+}
+
+/* Entry animation for home screen */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero, .choice-card {
+  animation: fadeSlideUp 0.42s cubic-bezier(.22,.68,0,1.2) both;
+}
+
+.choice-card:nth-child(1) { animation-delay: .05s; }
+.choice-card:nth-child(2) { animation-delay: .14s; }
+
+/* Choice cards — premium glow treatment */
+.choice-card.personal {
+  background: linear-gradient(135deg, #0d4a41 0%, #196d5e 60%, #1e8a74 100%) !important;
+  border: 1.5px solid rgba(201,168,76,.35) !important;
+  box-shadow: 0 16px 38px rgba(13,74,65,.4), 0 0 0 1px rgba(201,168,76,.08) !important;
+  transition: transform .22s ease, box-shadow .22s ease !important;
+}
+
+.choice-card.auto {
+  background: linear-gradient(135deg, #1a2a4a 0%, #1e3464 60%, #24448c 100%) !important;
+  border: 1.5px solid rgba(99,137,230,.4) !important;
+  box-shadow: 0 16px 38px rgba(26,42,74,.4), 0 0 0 1px rgba(99,137,230,.08) !important;
+  transition: transform .22s ease, box-shadow .22s ease !important;
+}
+
+.choice-card.personal:hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  box-shadow: 0 24px 52px rgba(13,74,65,.5), 0 0 0 2px rgba(201,168,76,.25) !important;
+}
+
+.choice-card.auto:hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  box-shadow: 0 24px 52px rgba(26,42,74,.5), 0 0 0 2px rgba(99,137,230,.25) !important;
+}
+
+.choice-card span {
+  font-size: 2.6rem !important;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));
+}
+
+.choice-card b {
+  font-size: 1.15rem;
+  letter-spacing: .01em;
+}
+
+.choice-card em {
+  background: rgba(255,255,255,.14) !important;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,.18) !important;
+  padding: 6px 16px !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+  transition: background .2s ease !important;
+}
+
+.choice-card:hover em {
+  background: rgba(255,255,255,.22) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 2 — Group Cards Visual Upgrade
+   ────────────────────────────────────────────────────────── */
+
+/* Left border accent per dominant part type */
+.v83-group-card { position: relative; }
+
+.v83-group-card.card-type-shared  { border-right: 3px solid #22c55e !important; }
+.v83-group-card.card-type-diff    { border-right: 3px solid #c9a84c !important; }
+.v83-group-card.card-type-diff2   { border-right: 3px solid #7c3aed !important; }
+.v83-group-card.card-type-diff3   { border-right: 3px solid #2dd4bf !important; }
+.v83-group-card.card-type-addition{ border-right: 3px solid #3b82f6 !important; }
+.v83-group-card.card-type-unique  { border-right: 3px solid #ef4444 !important; }
+
+/* Favorite glow */
+.v83-group-card.is-favorite {
+  box-shadow: 0 4px 14px rgba(15,23,42,.05), inset 3px 0 0 0 #f59e0b !important;
+  background: linear-gradient(to left, var(--surface) 96%, rgba(245,158,11,.08)) !important;
+}
+
+/* Surah tags — colorful pills */
+.v83-group-card .group-tags .tag {
+  background: linear-gradient(135deg, rgba(75,99,230,.1), rgba(49,84,212,.08)) !important;
+  border-color: rgba(75,99,230,.22) !important;
+  color: var(--primary2) !important;
+  font-weight: 900 !important;
+  transition: background .18s ease, transform .12s ease !important;
+}
+
+.v83-group-card .group-tags .tag:hover {
+  background: linear-gradient(135deg, rgba(75,99,230,.18), rgba(49,84,212,.14)) !important;
+  transform: scale(1.04) !important;
+}
+
+.v83-group-card .group-tags .unique-surah-tag {
+  background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(220,38,38,.08)) !important;
+  border-color: rgba(239,68,68,.3) !important;
+  color: #dc2626 !important;
+}
+
+/* Verse count badge — distinct teal */
+.v83-group-card .tag:last-child {
+  background: linear-gradient(135deg, rgba(13,148,136,.12), rgba(20,184,166,.08)) !important;
+  border-color: rgba(13,148,136,.3) !important;
+  color: #0f766e !important;
+}
+
+/* Staggered card entry animation */
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#groups .v83-group-card {
+  animation: cardFadeIn 0.3s ease both;
+}
+
+#groups .v83-group-card:nth-child(1)  { animation-delay: .00s }
+#groups .v83-group-card:nth-child(2)  { animation-delay: .03s }
+#groups .v83-group-card:nth-child(3)  { animation-delay: .06s }
+#groups .v83-group-card:nth-child(4)  { animation-delay: .09s }
+#groups .v83-group-card:nth-child(5)  { animation-delay: .12s }
+#groups .v83-group-card:nth-child(6)  { animation-delay: .15s }
+#groups .v83-group-card:nth-child(7)  { animation-delay: .18s }
+#groups .v83-group-card:nth-child(8)  { animation-delay: .21s }
+#groups .v83-group-card:nth-child(n+9){ animation-delay: .24s }
+
+/* Number badge — completed state */
+.v83-group-card .group-num.completed {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  color: #fff !important;
+  border: 2px solid rgba(255,255,255,.3) !important;
+  box-shadow: 0 4px 10px rgba(22,163,74,.3) !important;
+}
+
+/* Selected card highlight */
+#groups .v83-group-card.is-selected {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(75,99,230,.2), 0 10px 26px rgba(15,23,42,.1) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 3 — "Quran Night" Dark Theme
+   ────────────────────────────────────────────────────────── */
+
+body[data-theme="quran-night"] {
+  --bg: #081812;
+  --surface: #0e2219;
+  --soft: #122a20;
+  --text: #f0ead8;
+  --muted: #8aad97;
+  --border: #1f4030;
+  --primary: #c9a84c;
+  --primary2: #b8942e;
+  --green: #3ec97e;
+  --gold: #c9a84c;
+  --shadow: 0 14px 34px rgba(0,0,0,.45);
+}
+
+body[data-theme="quran-night"] .app-header {
+  background: rgba(14,34,25,.96) !important;
+  border-color: #1f4030 !important;
+}
+
+body[data-theme="quran-night"] .v83-sidebar {
+  background: linear-gradient(180deg, #081410, #051210) !important;
+  border-color: #1a3528 !important;
+}
+
+body[data-theme="quran-night"] .v83-badge {
+  border-color: rgba(201,168,76,.5) !important;
+  color: #f6e6ba !important;
+}
+
+body[data-theme="quran-night"] .brand .logo {
+  background: linear-gradient(135deg, #c9a84c, #8a6a1e) !important;
+  color: #fff !important;
+}
+
+body[data-theme="quran-night"] .hero {
+  background: linear-gradient(145deg, #060e09, #0d1f14, #0a1a10) !important;
+  border-color: rgba(201,168,76,.2) !important;
+}
+
+body[data-theme="quran-night"] .choice-card.personal {
+  background: linear-gradient(135deg, #0a1f12 0%, #122f1e 60%, #163825 100%) !important;
+  border-color: rgba(201,168,76,.28) !important;
+}
+
+body[data-theme="quran-night"] .choice-card.auto {
+  background: linear-gradient(135deg, #0a1420 0%, #0f2030 60%, #142840 100%) !important;
+  border-color: rgba(201,168,76,.2) !important;
+}
+
+body[data-theme="quran-night"] .v83-group-card {
+  background: var(--surface) !important;
+  border-color: #1f4030 !important;
+}
+
+body[data-theme="quran-night"] .primary,
+body[data-theme="quran-night"] .choice-card {
+  background: linear-gradient(135deg, #b8942e, #c9a84c) !important;
+  color: #0e1a10 !important;
+}
+
+body[data-theme="quran-night"] .shared { color: #4cde88; background: rgba(76,222,136,.12) !important; }
+body[data-theme="quran-night"] .diff   { color: #e8c668; background: rgba(232,198,104,.12) !important; }
+body[data-theme="quran-night"] .diff2  { color: #b78cf0; background: rgba(183,140,240,.12) !important; }
+body[data-theme="quran-night"] .diff3  { color: #5ee8d8; background: rgba(94,232,216,.12) !important; }
+body[data-theme="quran-night"] .addition{ color: #74aeff; background: rgba(116,174,255,.12) !important; }
+body[data-theme="quran-night"] .unique { color: #ff7a7a; background: rgba(255,122,122,.12) !important; }
+
+body[data-theme="quran-night"] .group-num {
+  background: linear-gradient(135deg, #1e4a34, #1a3a2a) !important;
+  color: #c9a84c !important;
+  border: 1px solid rgba(201,168,76,.2) !important;
+}
+
+body[data-theme="quran-night"] .surah-name { color: #c9a84c !important; }
+
+body[data-theme="quran-night"] .v83-group-card .group-tags .tag {
+  background: rgba(201,168,76,.1) !important;
+  border-color: rgba(201,168,76,.22) !important;
+  color: #c9a84c !important;
+}
+
+body[data-theme="quran-night"] .toolbar,
+body[data-theme="quran-night"] .filter-card,
+body[data-theme="quran-night"] .sett-card,
+body[data-theme="quran-night"] .verse-card {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 4 — Search Bar Always Visible
+   ────────────────────────────────────────────────────────── */
+
+/* Desktop: always show the search inside the toolbar  */
+@media (min-width: 851px) {
+  /* Override the rule that hides #mainSearchWrap on desktop */
+  .toolbar-tools > #mainSearchWrap {
+    display: flex !important;
+    flex: 3 1 auto !important;
+  }
+
+  /* Clean pill search style */
+  #mainSearchWrap {
+    background: var(--soft) !important;
+    border: 1.5px solid var(--border) !important;
+    border-radius: 14px !important;
+    padding: 5px 10px !important;
+    box-shadow: none !important;
+    transition: border-color .18s ease, box-shadow .18s ease !important;
+  }
+
+  #mainSearchWrap:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent) !important;
+  }
+
+  #mainSearchWrap input {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 6px 8px !important;
+    min-width: 180px !important;
+    font-size: .95rem !important;
+  }
+
+  #mainSearchWrap input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Hide clear/close buttons when input is empty — done via JS patch */
+  #mainSearchWrap .danger { display: none !important; }
+}
+
+/* Search clear button only shows when input has value */
+#mainSearchWrap.has-text .outline-icon { display: inline-flex !important; }
+#mainSearchWrap:not(.has-text) .outline-icon { display: none !important; }
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 5 — Detail Pane Empty State
+   ────────────────────────────────────────────────────────── */
+
+/* Elegant empty state */
+.v83-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 220px;
+  text-align: center;
+  padding: 32px 24px !important;
+  border: 1.5px dashed color-mix(in srgb, var(--primary) 25%, var(--border)) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(160deg, var(--surface), var(--soft)) !important;
+  color: var(--muted) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.v83-empty::before {
+  content: '﴾';
+  position: absolute;
+  font-size: 8rem;
+  color: color-mix(in srgb, var(--primary) 6%, transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%);
+  pointer-events: none;
+  font-family: var(--qfont);
+  line-height: 1;
+}
+
+/* Detail pane slide-in when content changes */
+@keyframes detailSlideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+#detailContent > * {
+  animation: detailSlideIn .22s ease both;
+}
+
+/* Detail pane verse cards get enhanced styling */
+.v83-detail-content .verse-card {
+  border-radius: 16px !important;
+  border-left: 3px solid color-mix(in srgb, var(--primary) 35%, var(--border)) !important;
+  transition: border-color .18s ease !important;
+}
+
+.v83-detail-content .verse-card:hover {
+  border-left-color: var(--primary) !important;
+}
+
+/* Detail pane action bar */
+.v83-detail-actions button {
+  border-radius: 12px !important;
+  font-size: .82rem !important;
+  padding: 7px 12px !important;
+  transition: transform .12s ease, background .18s ease !important;
+}
+
+.v83-detail-actions button:active {
+  transform: scale(.96) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 6 — Mobile Bottom Nav SVG Icons
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 850px) {
+  .v83-mobile-nav button {
+    border-radius: 14px !important;
+    transition: background .15s ease, transform .12s ease !important;
+    padding: 6px 4px !important;
+  }
+
+  .v83-mobile-nav button:active {
+    transform: scale(.9) !important;
+    background: color-mix(in srgb, var(--primary) 12%, transparent) !important;
+  }
+
+  /* Active nav button — pill highlight */
+  .v83-mobile-nav button.nav-active {
+    background: color-mix(in srgb, var(--primary) 14%, transparent) !important;
+    color: var(--primary2) !important;
+  }
+
+  .v83-mobile-nav button.nav-active .mi {
+    color: var(--primary2) !important;
+  }
+
+  .v83-mobile-nav button.nav-active .ml {
+    color: var(--primary2) !important;
+    font-weight: 900 !important;
+  }
+
+  /* SVG icon sizing inside nav buttons */
+  .v83-mobile-nav button .mi svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .v83-mobile-nav button .mi {
+    font-size: 0 !important; /* hide emoji, show SVG */
+    line-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 7 — Micro-animations & Polish
+   ────────────────────────────────────────────────────────── */
+
+/* Smooth group open/close via max-height */
+.group-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .32s cubic-bezier(.4,0,.2,1), padding .22s ease, opacity .22s ease !important;
+  opacity: 0;
+}
+
+.group.open .group-body {
+  max-height: 9999px !important;
+  opacity: 1 !important;
+}
+
+/* V83 card: body is hidden via JS — override only for real .group (non-v83) */
+#groups .v83-group-card .group-body,
+#groups .v83-group-card.open .group-body {
+  display: none !important;
+}
+
+/* Surah filter panel slide */
+#surahFilterPanel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .3s cubic-bezier(.4,0,.2,1), opacity .22s ease !important;
+}
+
+#surahFilterPanel:not(.hidden) {
+  max-height: 700px !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* Toast — bounce entrance */
+@keyframes toastBounce {
+  0%   { opacity: 0; transform: translate(-50%, 24px) scale(.9); }
+  60%  { opacity: 1; transform: translate(-50%, -5px) scale(1.03); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.v78-toast.show {
+  animation: toastBounce .32s cubic-bezier(.22,.68,0,1.2) both !important;
+}
+
+/* Button press feel */
+button:active:not(.icon-btn):not(.choice-card) {
+  transform: scale(.97) !important;
+}
+
+/* Sidebar surah pill click ripple */
+.surah-pill {
+  transition: transform .12s ease, background .15s ease, border-color .15s ease !important;
+}
+
+.surah-pill:active {
+  transform: scale(.94) !important;
+}
+
+/* Icon buttons — subtle hover glow */
+.icon-btn.outline-icon:hover {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent) !important;
+}
+
+/* Toolbar buttons hover lift */
+.tools button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(15,23,42,.08) !important;
+}
+
+/* Smooth scrollbar for panels */
+.v83-scroll, .v83-side-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--primary) 30%, var(--border)) transparent;
+}
+
+.v83-scroll::-webkit-scrollbar,
+.v83-side-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.v83-scroll::-webkit-scrollbar-thumb,
+.v83-side-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 30%, var(--border));
+  border-radius: 999px;
+}
+
+/* Modal enter animation */
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(20px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal {
+  animation: modalSlideUp .26s cubic-bezier(.22,.68,0,1.2) both !important;
+}
+
+/* Filter chip animation */
+.active-filter-chips span {
+  animation: fadeSlideUp .2s ease both;
+}
+
+/* Range tab buttons active state animation */
+.range-tabs button {
+  transition: background .15s ease, color .15s ease, border-color .15s ease, transform .12s ease !important;
+}
+
+.range-tabs button:active {
+  transform: scale(.95) !important;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

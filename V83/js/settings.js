@@ -177,6 +177,7 @@ function openAppSettings(){
 <option value="quran-classic">Quran Classic</option>
 <option value="apple-health">Apple Health</option>
 <option value="bevel-night">Bevel Night</option>
+<option value="quran-night">🌙 Quran Night</option>
 </select>
 </label>
 </div>

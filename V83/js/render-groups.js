@@ -25,6 +25,17 @@ function toggleGroup(h){
   if(typeof selectV83DetailGroup==='function'){selectV83DetailGroup(id);return}
 }
 
+function getDominantType(g){
+  const counts={};
+  (g.verses||[]).forEach(v=>(v.parts||[]).forEach(p=>{
+    const t=p.type||'shared';
+    counts[t]=(counts[t]||0)+p.text.length;
+  }));
+  const order=['diff','diff2','diff3','addition','unique','shared'];
+  for(const t of order){if(counts[t]>0)return t;}
+  return 'shared';
+}
+
 function renderCard(g){
   let fav=isTrue(g.favorite),done=isTrue(g.completed),locked=isTrue(g.locked),ro=activeDb==='auto';
   let personalMobileEdit=!ro&&typeof isMobileLayout==='function'&&isMobileLayout();
@@ -34,7 +45,8 @@ function renderCard(g){
   }else if(personalMobileEdit){
     actions+=`<button class="icon-btn outline-icon edit-action" title="تعديل" onclick="event.stopPropagation();openEditModal(${g.id})">${iconSvg('edit')}</button>`;
   }
-  let cls=(fav?' is-favorite':'')+(done?' is-completed':'')+(locked?' is-locked':'');
+  let dominantType=getDominantType(g);
+  let cls=(fav?' is-favorite':'')+(done?' is-completed':'')+(locked?' is-locked':'')+' card-type-'+dominantType;
   let tags=`${getTags(g).map(s=>renderSurahTag(g,s)).join('')}<span class="tag">${(g.verses||[]).length} آية</span>`;
   let preview=getGroupPreview(g);
   let previewHtml=preview?`<div class="v83-preview">${highlight(preview)}</div>`:'';
