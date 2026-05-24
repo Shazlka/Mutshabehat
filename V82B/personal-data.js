@@ -16963,7 +16963,7 @@ window.PERSONAL_DATA = [
   },
   {
     "id": 211,
-    "title": "من كل زوج كريم / زو بهيج",
+    "title": "من كل زوج كريم / زوج بهيج",
     "surahs": [
       "الحج",
       "الشعراء",
@@ -17038,6 +17038,7 @@ window.PERSONAL_DATA = [
     "candidateKind": "shared-phrase",
     "candidateScore": 84,
     "sharedPhrase": "من كل زوج كريم",
-    "source": "automated"
+    "source": "automated",
+    "completed": true
   }
 ];
