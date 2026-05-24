@@ -17032,7 +17032,7 @@ window.PERSONAL_DATA = [
         ]
       }
     ],
-    "note": "الشعراء ولقمان (زوج كريم)&nbsp;<div><span style=\"font-weight: 400;\">الحج و ق</span>&nbsp;(زوج بهيج)</div>",
+    "note": "الشعراء ولقمان (زوج كريم) - <font color=\"#b51a00\"><u>الرابط لقمان أكرم الشعراء&nbsp;</u></font><div><span style=\"font-weight: 400;\">الحج و ق</span>&nbsp;(زوج بهيج)</div>",
     "unote": "<br>",
     "autoCandidate": false,
     "candidateKind": "shared-phrase",
