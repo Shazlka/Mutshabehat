@@ -28,8 +28,48 @@
       <div class="v83-side-scroll">
         <div class="v83-brand"><span class="v83-badge">V83</span><div><h3>المتشابهات</h3><small>Quran Similarity Explorer</small></div></div>
 
-        <!-- 2. Main search (proxies to #searchInput in toolbar) -->
-        <div class="v83-side-sec"><input id="v83GlobalSearch" class="v83-side-search" placeholder="ابحث في المتشابهات..." oninput="document.getElementById('searchInput').value=this.value;renderActiveGroups()"></div>
+        <!-- Dynamic Database Header Card -->
+        <div class="v83-side-sec v83-side-db-card">
+          <h2 id="dbTitle" class="v83-side-db-title">قاعدة البيانات</h2>
+          <p id="dbSubTitle" class="v83-side-db-subtitle">—</p>
+          
+          <div id="mainSearchWrap" class="main-search-wrap">
+            <input id="searchInput" placeholder="ابحث في المتشابهات..." oninput="renderActiveGroups()">
+            <button class="outline-icon" onclick="clearSearch()" aria-label="إلغاء البحث" title="إلغاء">
+              <span class="btn-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </span>
+              <span class="btn-text">إلغاء</span>
+            </button>
+            <button class="danger" title="إغلاق البحث" onclick="closeMainSearchUI()" aria-label="إغلاق البحث">
+              <span class="btn-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </span>
+              <span class="btn-text">إغلاق</span>
+            </button>
+          </div>
+
+          <div class="v83-side-db-actions">
+            <button class="primary" onclick="openAddModal()" aria-label="إضافة متشابه" title="إضافة متشابه">
+              <span class="btn-icon" aria-hidden="true">➕</span>
+              <span class="btn-text">إضافة</span>
+            </button>
+            <button onclick="toggleAllGroups()" id="toggleAllBtn" aria-label="فتح/طي الكل" title="فتح/طي الكل">
+              <span class="btn-icon" aria-hidden="true">📂</span>
+              <span class="btn-text">الكل</span>
+            </button>
+            <button id="syncGitHubBtn" onclick="manualSyncGitHub()" aria-label="مزامنة GitHub" title="مزامنة GitHub">
+              <span class="btn-icon" aria-hidden="true">☁</span>
+              <span class="btn-text">Sync</span>
+            </button>
+          </div>
+        </div>
 
         <!-- 3. البحث والفلترة -->
         <div class="v83-side-sec v83-side-filters">
@@ -70,7 +110,7 @@
 
     <section class="v83-panel v83-center">
       <div class="v83-scroll">
-        <div class="toolbar"><div><h2 id="dbTitle">قاعدة البيانات</h2><p id="dbSubTitle">—</p></div><div class="tools toolbar-tools">        <div id="mainSearchWrap" class="main-search-wrap"><input id="searchInput" placeholder="ابحث في المتشابهات..." oninput="renderActiveGroups()"><button class="outline-icon" onclick="clearSearch()" aria-label="إلغاء البحث" title="إلغاء"><span class="btn-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span><span class="btn-text">إلغاء</span></button><button class="danger" title="إغلاق البحث" onclick="closeMainSearchUI()" aria-label="إغلاق البحث"><span class="btn-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span><span class="btn-text">إغلاق</span></button></div><button class="primary" onclick="openAddModal()" aria-label="إضافة متشابه" title="إضافة متشابه"><span class="btn-icon" aria-hidden="true">➕</span><span class="btn-text">إضافة متشابه</span></button><button onclick="toggleAllGroups()" id="toggleAllBtn" aria-label="فتح/طي الكل" title="فتح/طي الكل"><span class="btn-icon" aria-hidden="true">📂</span><span class="btn-text">فتح الكل</span></button><button id="syncGitHubBtn" onclick="manualSyncGitHub()" aria-label="مزامنة GitHub" title="مزامنة GitHub"><span class="btn-icon" aria-hidden="true">☁</span><span class="btn-text">Sync GitHub</span></button></div></div>
+
         <div id="activeFilterChips" class="active-filter-chips"></div><div id="surahIndexBar" class="surah-index-bar"></div><div id="groups" class="groups"></div>
       </div>
     </section>

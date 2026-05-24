@@ -605,3 +605,219 @@ button:active:not(.icon-btn):not(.choice-card) {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 8 — Green Sidebar Database Widget & Responsive Layout
+   ────────────────────────────────────────────────────────── */
+
+/* Right sidebar database card container */
+.v83-side-db-card {
+  padding: 18px 14px !important;
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  background: rgba(255,255,255,.02) !important;
+}
+
+/* Sidebar Database Title */
+.v83-side-db-title {
+  font-size: 1.22rem !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  margin: 0 0 4px !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.2) !important;
+  font-family: var(--uifont) !important;
+  line-height: 1.3 !important;
+}
+
+/* Sidebar Database Subtitle */
+.v83-side-db-subtitle {
+  font-size: .84rem !important;
+  color: #b6cdc7 !important;
+  margin: 0 0 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+/* Search bar styling inside the sidebar database card */
+.v83-side-db-card .main-search-wrap {
+  display: flex !important;
+  width: 100% !important;
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.2) !important;
+  border-radius: 12px !important;
+  padding: 4px 8px !important;
+  margin-bottom: 14px !important;
+  box-shadow: none !important;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease !important;
+}
+
+.v83-side-db-card .main-search-wrap:focus-within {
+  background: rgba(255,255,255,.14) !important;
+  border-color: #c9a84c !important; /* Gold/Primary highlight */
+  box-shadow: 0 0 0 3px rgba(201,168,76,.18) !important;
+}
+
+.v83-side-db-card .main-search-wrap input {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  padding: 6px 4px !important;
+  font-size: .9rem !important;
+  width: 100% !important;
+}
+
+.v83-side-db-card .main-search-wrap input::placeholder {
+  color: #c6d8d1 !important;
+}
+
+.v83-side-db-card .main-search-wrap input:focus {
+  outline: none !important;
+}
+
+/* Action buttons styling inside the sidebar database card */
+.v83-side-db-actions {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+  margin-top: 10px !important;
+}
+
+.v83-side-db-actions button {
+  width: 100% !important;
+  min-height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: transform .12s ease, background .15s ease, border-color .15s ease !important;
+  padding: 6px !important;
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  color: #f8fafc !important;
+  box-shadow: none !important;
+}
+
+.v83-side-db-actions button:hover {
+  background: rgba(255,255,255,.14) !important;
+  border-color: rgba(255,255,255,.3) !important;
+}
+
+.v83-side-db-actions button:active {
+  transform: scale(.94) !important;
+}
+
+/* Hide text in sidebar buttons to keep them clean and compact */
+.v83-side-db-actions button .btn-text {
+  display: none !important;
+}
+
+.v83-side-db-actions button .btn-icon {
+  display: inline-flex !important;
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
+}
+
+/* Primary "Add" button gold styling */
+.v83-side-db-actions button.primary {
+  background: linear-gradient(135deg, #c9a84c, #b8942e) !important;
+  border-color: rgba(201,168,76,.3) !important;
+  color: #081812 !important;
+}
+
+.v83-side-db-actions button.primary:hover {
+  background: linear-gradient(135deg, #d8b85c, #c9a84c) !important;
+}
+
+/* Syncing/Success/Failed states on Sync GitHub button in sidebar */
+.v83-side-db-actions #syncGitHubBtn.syncing {
+  background: rgba(201,168,76,.2) !important;
+  border-color: #c9a84c !important;
+  color: #c9a84c !important;
+}
+
+.v83-side-db-actions #syncGitHubBtn.ok {
+  background: rgba(34,197,94,.16) !important;
+  border-color: #22c55e !important;
+  color: #4ade80 !important;
+}
+
+.v83-side-db-actions #syncGitHubBtn.err {
+  background: rgba(239,68,68,.16) !important;
+  border-color: #ef4444 !important;
+  color: #f87171 !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE OVERRIDES FOR DATABASE CARD ON MOBILE
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 850px) {
+  /* Show the sidebar container but strip its column styling */
+  .v83-sidebar {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 8px 0 !important;
+    box-shadow: none !important;
+  }
+  
+  /* Scroll wrapper is disabled on mobile for sidebar */
+  .v83-sidebar .v83-side-scroll {
+    overflow: visible !important;
+  }
+
+  /* Hide brand, filters, navigation menu, and tools in the sidebar on mobile */
+  .v83-sidebar .v83-brand,
+  .v83-sidebar .v83-side-filters,
+  .v83-sidebar .v83-menu,
+  .v83-sidebar .v83-side-sec:not(.v83-side-db-card) {
+    display: none !important;
+  }
+
+  /* Transform database widget into a premium white card on mobile */
+  .v83-side-db-card {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 24px !important;
+    padding: 18px !important;
+    box-shadow: var(--shadow) !important;
+    margin: 8px 4px 12px !important;
+  }
+
+  .v83-side-db-card .v83-side-db-title {
+    color: var(--text) !important;
+    text-shadow: none !important;
+  }
+
+  .v83-side-db-card .v83-side-db-subtitle {
+    color: var(--muted) !important;
+  }
+
+  .v83-side-db-card .main-search-wrap {
+    background: var(--soft) !important;
+    border-color: var(--border) !important;
+  }
+
+  .v83-side-db-card .main-search-wrap input {
+    color: var(--text) !important;
+  }
+
+  .v83-side-db-card .main-search-wrap input::placeholder {
+    color: var(--muted) !important;
+  }
+
+  .v83-side-db-card .v83-side-db-actions button {
+    background: var(--soft) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+
+  .v83-side-db-card .v83-side-db-actions button.primary {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border-color: var(--primary2) !important;
+  }
+}
