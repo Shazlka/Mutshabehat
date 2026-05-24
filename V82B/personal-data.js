@@ -3268,7 +3268,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "الأحقاف",
         "ayah": "15",
-        "label": "",
+        "label": "إحسانا + كرها",
         "parts": [
           {
             "type": "shared",
@@ -3294,7 +3294,7 @@ window.PERSONAL_DATA = [
       }
     ],
     "note": "العنكبوت: حسناً — لقمان: حملته وهناً — الاحقاف: إحساناً + ثلاثون شهراً",
-    "unote": "",
+    "unote": "<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🔹ورد قوله تعالى { ووصينا الإنسان بوالديه….} ثلاث مواضع ف القرآن&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">#العنكبوت ، #لقمان ، #الأحقاف</span></p>\n<p style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'; min-height: 14.3px\"><span style=\"font-weight: bold;\"></span><br></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🌿السورة التي فيها الهمزة تأخذ الكلمة التي لها الهمزة&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">الأحقاف== إحسانًا&nbsp;</span></p>\n<p style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'; min-height: 14.3px\"><span style=\"font-weight: bold;\"></span><br></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🌿العنكبوت تشبه لقمان لكنها أكثر اختصارًا منها&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">فنجد ان العنكبوت بدون مد</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">{ وإن جاهداك لتشرك بي…} بينما في لقمان أطول في السياق فجاءت بالمد&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">{ وإن جاهداك على أن تشرك بي …}</span></p>\n<p style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'; min-height: 14.3px\"><span style=\"font-weight: bold;\"></span><br></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🌿لقمان فيها كلمة {وصاحبهما }</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">وهي من مصاحبة لقمان لابنه&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">بينما خلت سورة العنكبوت من هذه الكلمة.</span></p>",
     "completed": true
   },
   {
