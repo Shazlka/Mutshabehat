@@ -22,6 +22,12 @@ function generateTitleFromDraft(){if(draftVerses.length)document.getElementById(
 
 function createNewGroup(){let title=document.getElementById('addTitle').value.trim();if(!title||!draftVerses.length)return alert('أدخل العنوان والآيات');personalData.push({id:nextPersonalId(),title,color:document.getElementById('addColor').value,surahs:[...new Set(draftVerses.map(v=>v.surah))],verses:clone(draftVerses),note:document.getElementById('addNote').innerHTML,unote:document.getElementById('addUnote').innerHTML,favorite:false,completed:false,locked:false});saveDb('personal');closeModal('addModal');openDatabase('personal')}
 
+/* =========================================================
+   V83 Phase 1 — Modify Window map
+   Existing edit flow kept unchanged:
+   openEditModal -> editBody -> renderEditVerses -> saveEditGroup/deleteEditGroup.
+   Future phases should reshape this section without changing personal-data save logic.
+   ========================================================= */
 function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editVersesBuffer=clone(g.verses||[]);modal('editModal','تعديل المتشابه',editBody(g),`<button class="primary" onclick="saveEditGroup()">حفظ التعديل</button><button class="danger" onclick="deleteEditGroup()">حذف المجموعة</button><button onclick="closeModal('editModal')">إغلاق</button>`);renderEditVerses();runQuranSearch('edit')}
 
 function editBody(g){return `<div class="quran-search-box edit-quran-search"><div class="search-stats"><span id="editExact">0 :Exact</span><span id="editClose">0 :Close</span><span id="editTotal">0 :Total</span></div><h3>بحث ذكي في القرآن</h3><p>يتجاهل التشكيل واختلافات الهمزات والألف وى/ي وة/ه وؤ/و وئ/ي. النتائج المطابقة أولاً ثم القريبة.</p><input class="wide-input" id="editQSearch" placeholder="ابحث داخل quran-reference.js ثم أضف الآية أو النص المحدد..." oninput="runQuranSearch('edit')"><div id="editQResults" class="quran-results hint">اكتب كلمة لعرض النتائج.</div></div><label class="field">عنوان المتشابه<input id="editTitle" value="${escapeHtml(g.title)}"></label><div class="inline-actions"><button class="primary" onclick="addBlankEditVerse()">+ إضافة آية</button><button onclick="sortEditVersesByMushaf()">ترتيب حسب المصحف</button></div><div id="editVerses"></div>${richEditor('editNote','ملاحظة','#1d4ed8')}${richEditor('editUnote','فائدة فريدة / إضافية','#b91c1c')}`}
@@ -53,3 +59,4 @@ function sortEditVersesByMushaf(){editVersesBuffer.sort((a,b)=>getSurahNo(a.sura
 function saveEditGroup(){let i=personalData.findIndex(g=>+g.id===+editGroupId);if(i<0)return;personalData[i]={...personalData[i],title:document.getElementById('editTitle').value.trim(),verses:clone(editVersesBuffer),surahs:[...new Set(editVersesBuffer.map(v=>v.surah))],note:document.getElementById('editNote').innerHTML,unote:document.getElementById('editUnote').innerHTML};saveDb('personal');closeModal('editModal');renderActiveGroups()}
 
 function deleteEditGroup(){if(confirm('حذف المجموعة؟')){personalData=personalData.filter(g=>+g.id!==+editGroupId);saveDb('personal');closeModal('editModal');renderActiveGroups();updateHomeCounts()}}
+/* End V83 Phase 1 — Modify Window map */
