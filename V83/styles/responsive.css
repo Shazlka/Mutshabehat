@@ -458,3 +458,82 @@
     display:none!important;
   }
 }
+
+
+/* V83 mobile card fit: full-width title/preview with actions below the title. */
+@media(max-width:850px){
+  body.db-personal #groups .v83-group-card .group-head,
+  body.db-auto #groups .v83-group-card .group-head{
+    display:grid!important;
+    grid-template-columns:auto minmax(0,1fr)!important;
+    gap:9px!important;
+    align-items:start!important;
+    padding:11px 12px!important;
+  }
+
+  body.db-personal #groups .v83-group-card .group-num,
+  body.db-auto #groups .v83-group-card .group-num{
+    grid-column:auto!important;
+    grid-row:auto!important;
+  }
+
+  body.db-personal #groups .v83-group-card .group-title-wrap,
+  body.db-auto #groups .v83-group-card .group-title-wrap{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    min-width:0!important;
+    width:100%!important;
+  }
+
+  body.db-personal #groups .v83-group-card .group-title,
+  body.db-auto #groups .v83-group-card .group-title{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    font-size:1.02rem!important;
+    line-height:1.32!important;
+    display:-webkit-box!important;
+    -webkit-line-clamp:2!important;
+    -webkit-box-orient:vertical!important;
+    overflow:hidden!important;
+  }
+
+  body.db-personal #groups .v83-group-card .group-actions,
+  body.db-auto #groups .v83-group-card .group-actions{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    width:100%!important;
+    justify-content:flex-start!important;
+    gap:6px!important;
+    margin:5px 0 6px!important;
+    padding:0!important;
+    border:0!important;
+  }
+
+  body.db-personal #groups .v83-group-card .group-actions .icon-btn.outline-icon,
+  body.db-auto #groups .v83-group-card .group-actions .icon-btn.outline-icon{
+    display:inline-flex!important;
+    width:28px!important;
+    height:28px!important;
+    border-radius:8px!important;
+  }
+
+  body.db-personal #groups .v83-group-card .group-tags,
+  body.db-auto #groups .v83-group-card .group-tags{
+    width:100%!important;
+    margin:0 0 6px!important;
+  }
+
+  body.db-personal #groups .v83-group-card .v83-preview,
+  body.db-auto #groups .v83-group-card .v83-preview{
+    width:100%!important;
+    font-size:.9rem!important;
+    line-height:1.65!important;
+    padding:7px 9px!important;
+    border-radius:10px!important;
+    display:-webkit-box!important;
+    -webkit-line-clamp:2!important;
+    -webkit-box-orient:vertical!important;
+    overflow:hidden!important;
+  }
+}

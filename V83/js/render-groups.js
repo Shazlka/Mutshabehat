@@ -16,6 +16,8 @@ function renderSurahTag(g,s){return `<span class="tag ${groupHasUniqueInSurah(g,
 
 function renderGroupBody(g){return `${(g.verses||[]).map(renderVerse).join('')}${g.note?`<div class="note"><b>ملاحظة:</b><br>${safeRich(g.note)}</div>`:''}${g.unote?`<div class="unote"><b>فائدة إضافية:</b><br>${safeRich(g.unote)}</div>`:''}`}
 
+function getGroupPreview(g){let verse=(g.verses||[]).find(v=>safeText((v.parts||[]).map(p=>p.text).join(' ')).trim());let raw=verse?(verse.parts||[]).map(p=>safeText(p.text)).join(' '):safeText(g.note||g.unote||'');raw=raw.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();return raw.length>128?raw.slice(0,128)+'…':raw}
+
 function toggleGroup(h){let gEl=h?.closest?.('.group'),id=gEl?.dataset?.id;if(isMobileLayout()&&id){openGroupDetailModal(id);return}h.parentElement.classList.toggle('open');updateToggleAllButton()}
 
 function renderCard(g){
@@ -28,7 +30,10 @@ function renderCard(g){
     actions+=`<button class="icon-btn outline-icon edit-action" title="تعديل" onclick="event.stopPropagation();openEditModal(${g.id})">${iconSvg('edit')}</button>`;
   }
   let cls=(fav?' is-favorite':'')+(done?' is-completed':'')+(locked?' is-locked':'');
-  return `<article class="group${cls}" data-id="${g.id}"><div class="group-head" onclick="toggleGroup(this)"><div class="group-num ${done?'completed':''}" title="اضغط لتغيير حالة الإكمال" onclick="event.stopPropagation();toggleFlag(${g.id},'completed')">${escapeHtml(g.id)}</div><div class="group-title-wrap"><div class="group-tags">${getTags(g).map(s=>renderSurahTag(g,s)).join('')}<span class="tag">${(g.verses||[]).length} آية</span>${g.candidateScore?`<span class="tag">score ${g.candidateScore}</span>`:''}</div><div class="group-title">${highlight(g.title||'بدون عنوان')}</div></div><div class="group-actions">${actions}<button class="icon-btn outline-icon" title="نسخ النص" onclick="event.stopPropagation();copyGroupText(${g.id})">${iconSvg('copy')}</button><button class="icon-btn outline-icon" title="صورة HD" onclick="event.stopPropagation();downloadGroupImage(${g.id})">${iconSvg('camera')}</button></div></div><div class="group-body">${renderGroupBody(g)}</div></article>`;
+  let tags=`${getTags(g).map(s=>renderSurahTag(g,s)).join('')}<span class="tag">${(g.verses||[]).length} آية</span>${g.candidateScore?`<span class="tag">score ${g.candidateScore}</span>`:''}`;
+  let preview=getGroupPreview(g);
+  let previewHtml=preview?`<div class="v83-preview">${highlight(preview)}</div>`:'';
+  return `<article class="group v83-group-card${cls}" data-id="${g.id}"><div class="group-head" onclick="toggleGroup(this)"><div class="group-num ${done?'completed':''}" title="اضغط لتغيير حالة الإكمال" onclick="event.stopPropagation();toggleFlag(${g.id},'completed')">${escapeHtml(g.id)}</div><div class="group-title-wrap"><div class="group-title">${highlight(g.title||'بدون عنوان')}</div><div class="group-actions">${actions}<button class="icon-btn outline-icon" title="نسخ النص" onclick="event.stopPropagation();copyGroupText(${g.id})">${iconSvg('copy')}</button><button class="icon-btn outline-icon" title="صورة HD" onclick="event.stopPropagation();downloadGroupImage(${g.id})">${iconSvg('camera')}</button></div><div class="group-tags">${tags}</div>${previewHtml}</div></div><div class="group-body">${renderGroupBody(g)}</div></article>`;
 }
 
 function openGroupDetailModal(id){
