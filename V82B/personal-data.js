@@ -17184,5 +17184,100 @@ window.PERSONAL_DATA = [
     "sharedPhrase": "لك به علم فلا",
     "source": "automated",
     "completed": true
+  },
+  {
+    "id": 214,
+    "title": "عائلة عبارات متقاربة: لا يحب كل",
+    "surahs": [
+      "البقرة",
+      "الحج",
+      "لقمان",
+      "الحديد"
+    ],
+    "verses": [
+      {
+        "surah": "البقرة",
+        "ayah": 276,
+        "label": "phrase-family | score 82",
+        "parts": [
+          {
+            "type": "diff",
+            "text": "يَمۡحَقُ ٱللَّهُ ٱلرِّبَوٰاْ وَيُرۡبِي ٱلصَّدَقَٰتِۗ وَٱللَّهُ"
+          },
+          {
+            "type": "shared",
+            "text": "لَا يُحِبُّ كُلَّ"
+          },
+          {
+            "type": "diff",
+            "text": "كَفَّارٍ أَثِيمٍ"
+          }
+        ]
+      },
+      {
+        "surah": "الحج",
+        "ayah": 38,
+        "label": "phrase-family | score 82",
+        "parts": [
+          {
+            "type": "diff",
+            "text": "إِنَّ ٱللَّهَ يُدَٰفِعُ عَنِ ٱلَّذِينَ ءَامَنُوٓاْۗ إِنَّ ٱللَّهَ"
+          },
+          {
+            "type": "shared",
+            "text": "لَا يُحِبُّ كُلَّ"
+          },
+          {
+            "type": "diff",
+            "text": "خَوَّانٖ كَفُورٍ"
+          }
+        ]
+      },
+      {
+        "surah": "لقمان",
+        "ayah": 18,
+        "label": "phrase-family | score 82",
+        "parts": [
+          {
+            "type": "diff",
+            "text": "وَلَا تُصَعِّرۡ خَدَّكَ لِلنَّاسِ وَلَا تَمۡشِ فِي ٱلۡأَرۡضِ مَرَحًاۖ إِنَّ ٱللَّهَ"
+          },
+          {
+            "type": "shared",
+            "text": "لَا يُحِبُّ كُلَّ"
+          },
+          {
+            "type": "diff",
+            "text": "مُخۡتَالٖ فَخُورٖ"
+          }
+        ]
+      },
+      {
+        "surah": "الحديد",
+        "ayah": 23,
+        "label": "phrase-family | score 82",
+        "parts": [
+          {
+            "type": "diff",
+            "text": "لِّكَيۡلَا تَأۡسَوۡاْ عَلَىٰ مَا فَاتَكُمۡ وَلَا تَفۡرَحُواْ بِمَآ ءَاتَىٰكُمۡۗ وَٱللَّهُ"
+          },
+          {
+            "type": "shared",
+            "text": "لَا يُحِبُّ كُلَّ"
+          },
+          {
+            "type": "diff",
+            "text": "مُخۡتَالٖ فَخُورٍ"
+          }
+        ]
+      }
+    ],
+    "note": "مرشح آلي موسّع — النوع: phrase-family — الدرجة: 82 — السبب: تجميع عائلة عبارات متقاربة: تشترك في 3 كلمات مرتبة مع اختلاف/زيادة كلمة واحدة، كما في منهج personal-data.js.",
+    "unote": "يحتاج مراجعة واعتماد يدوي قبل اعتباره من المتشابهات النهائية.",
+    "autoCandidate": false,
+    "candidateKind": "phrase-family",
+    "candidateScore": 82,
+    "sharedPhrase": "لا يحب كل",
+    "source": "automated"
   }
 ];
