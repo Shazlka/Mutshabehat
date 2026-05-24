@@ -1,0 +1,141 @@
+/* =========================================================
+   V83 Phase 2 — Modify Window Layout Shell
+   Uses existing theme variables and preserves current edit IDs/actions.
+   ========================================================= */
+.editModal-window{
+  width:min(1320px,96vw);
+}
+.editModal-window .modal-body{
+  padding:0!important;
+  max-height:min(78vh,840px);
+}
+.editModal-window .modal-footer:empty{
+  display:none;
+}
+.v83-edit-shell{
+  direction:rtl;
+  background:var(--surface);
+  color:var(--text);
+}
+.v83-edit-toolbar{
+  position:sticky;
+  top:0;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface),var(--soft));
+  border-bottom:1px solid var(--border);
+}
+.v83-edit-toolbar-title{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  min-width:0;
+}
+.v83-edit-toolbar-title b{
+  font-size:1rem;
+  font-weight:900;
+}
+.v83-edit-toolbar-title small,
+.v83-edit-section-head small,
+.v83-edit-metrics small{
+  color:var(--muted);
+  font-weight:700;
+}
+.v83-edit-toolbar-actions,
+.v83-edit-quick-actions,
+.v83-edit-chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+.v83-edit-layout{
+  direction:ltr;
+  display:grid;
+  grid-template-columns:minmax(235px,300px) minmax(0,1fr);
+  gap:12px;
+  align-items:start;
+  padding:12px;
+}
+.v83-edit-props,
+.v83-edit-main{
+  direction:rtl;
+  min-width:0;
+}
+.v83-edit-props{
+  position:sticky;
+  top:76px;
+  display:grid;
+  gap:10px;
+}
+.v83-edit-main{
+  display:grid;
+  gap:12px;
+}
+.v83-edit-card,
+.v83-edit-section{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px;
+}
+.v83-edit-card{
+  background:linear-gradient(180deg,var(--surface),var(--soft));
+}
+.v83-edit-card h3,
+.v83-edit-section-head h3{
+  margin:0;
+  font-size:.95rem;
+  font-weight:900;
+}
+.v83-edit-card .field{
+  margin:10px 0 0;
+}
+.v83-edit-metrics{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+.v83-edit-metrics span{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:9px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--surface);
+}
+.v83-edit-metrics b{
+  font-weight:900;
+  color:var(--text);
+}
+.v83-edit-section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.v83-edit-notes-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.v83-edit-main .quran-search-box{
+  margin:0;
+}
+@media(max-width:900px){
+  .editModal-window .modal-body{max-height:74vh}
+  .v83-edit-toolbar{align-items:stretch;flex-direction:column}
+  .v83-edit-toolbar-actions button{flex:1 1 auto}
+  .v83-edit-layout{grid-template-columns:1fr;direction:rtl}
+  .v83-edit-props{position:static}
+  .v83-edit-notes-grid{grid-template-columns:1fr}
+}
