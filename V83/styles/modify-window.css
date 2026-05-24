@@ -459,3 +459,33 @@ body[data-theme="bevel-night"] .ev-card--open{
 .tg-status.done {color:#166534;background:#dcfce7;border-color:#86efac}
 .tg-status.locked{color:#991b1b;background:#fee2e2;border-color:#fecaca}
 .tg-status.draft{color:var(--muted);background:var(--soft)}
+
+
+/* =========================================================
+   V83 Phase 7 — Preview Tab (المعاينة)
+   Uses renderGroupBody() output directly — all verse-card,
+   verse-text, .note/.unote, part-type colour classes already
+   defined in cards.css. Only layout wrappers added here.
+   ========================================================= */
+
+/* Live-preview notice banner (reuses .hint, just tightens margin) */
+.pv-notice{margin-bottom:6px;font-size:.88rem}
+
+/* Card header row inside the preview section */
+.pv-card-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding-bottom:10px;
+  margin-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.pv-title-wrap{flex:1;min-width:0}
+
+/* Body: verse-card / note / unote elements rendered by renderGroupBody() */
+.pv-card-body{padding:0}
+
+/* Prevent verse-card margin from leaking outside the preview */
+.pv-card-body .verse-card:last-child,
+.pv-card-body .note:last-child,
+.pv-card-body .unote:last-child{margin-bottom:0}
