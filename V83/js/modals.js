@@ -22,6 +22,13 @@ function openV83MobileBurgerMenu() {
   if (typeof automatedData !== 'undefined') autoCount = automatedData.length;
   else if (typeof activeData !== 'undefined' && activeDbName === 'auto') autoCount = activeData.length;
   
+  let names = (typeof surahNames === 'function') ? surahNames() : {};
+  let activeSurahNo = selectedSurahFilter ? (typeof getSurahNo === 'function' ? getSurahNo(selectedSurahFilter) : '') : '';
+  let surahSelectOptions = '<option value="">-- كل السور (عرض الكل) --</option>' + 
+    Object.keys(names).map(no => {
+      return `<option value="${no}" ${Number(no) === Number(activeSurahNo) ? 'selected' : ''}>${no} - ${names[no]}</option>`;
+    }).join('');
+
   let currentSort = (typeof displayMode !== 'undefined') ? displayMode : 'original';
   let scale = Number(localStorage.getItem('v83_verse_font_scale') || '1.0');
   
@@ -51,6 +58,24 @@ function openV83MobileBurgerMenu() {
                 <small>مرشحات المراجعة والنسخ</small>
               </div>
             </button>
+          </div>
+        </div>
+
+        <!-- Surah Selector -->
+        <div class="v83-burger-section">
+          <h4>🔍 تصفية وتحميل حسب السورة</h4>
+          <div class="v83-pref-row">
+            <span>اختر سورة لعرض متشابهاتها وتنزيلها:</span>
+            <div class="v83-surah-select-wrap">
+              <select id="v83BurgerSurahSelect" onchange="v83BurgerSelectSurah(this.value)" class="v83-burger-select">
+                ${surahSelectOptions}
+              </select>
+            </div>
+            ${activeDbName === 'auto' && !selectedSurahFilter ? `
+              <div class="v83-burger-hint">
+                ⚠️ يرجى اختيار سورة لتحميل وعرض المتشابهات الآلية الخاصة بها.
+              </div>
+            ` : ''}
           </div>
         </div>
 
@@ -182,3 +207,20 @@ setTimeout(() => {
   let scale = Number(localStorage.getItem('v83_verse_font_scale') || '1.0');
   applyV83FontSizeScale(scale);
 }, 300);
+
+async function v83BurgerSelectSurah(val) {
+  if (val === '') {
+    if (typeof clearSurahFilter === 'function') clearSurahFilter();
+  } else {
+    let isAuto = (typeof isAutoDbV84 === 'function') ? isAutoDbV84() : (activeDb === 'auto');
+    if (isAuto && typeof toast === 'function') {
+      toast('جاري تحميل بيانات السورة سحابياً...', 'info');
+    }
+    closeModal('v83MobileBurgerMenu');
+    if (typeof filterBySurahNo === 'function') await filterBySurahNo(Number(val));
+    if (isAuto && typeof toast === 'function') {
+      toast('✅ تم تحميل السورة وتحديث الواجهة', 'ok');
+    }
+  }
+  closeModal('v83MobileBurgerMenu');
+}
