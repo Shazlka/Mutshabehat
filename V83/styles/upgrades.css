@@ -137,10 +137,10 @@
 /* Ensure group card titles use the correct Quran font and aren't mangled by surah-name-v4 */
 .v83-group-card .group-title,
 .pv-title-wrap .group-title {
-  font-family: var(--qfont), var(--font-functional-quran), serif !important;
-  font-size: 1.14rem !important;
-  line-height: 1.9 !important;
-  font-weight: 500 !important;
+  font-family: "Cairo", var(--uifont), sans-serif !important;
+  font-size: 1.08rem !important;
+  line-height: 1.65 !important;
+  font-weight: 700 !important;
   text-rendering: optimizeLegibility !important;
   display: block !important;
   margin-bottom: 15px !important;
@@ -366,14 +366,13 @@ body[data-theme="quran-night"] .verse-card {
 #mainSearchWrap.has-text .outline-icon { display: inline-flex !important; }
 #mainSearchWrap:not(.has-text) .outline-icon { display: none !important; }
 
-/* ──────────────────────────────────────────────────────────
-/* Style details pane and mobile sheet titles to render beautifully in the classical Quran font */
+/* Style details pane and mobile sheet titles to render beautifully in the modern Cairo font */
 .v83-detail-title,
 .v83-mobile-title {
-  font-family: var(--qfont), var(--font-functional-quran), serif !important;
-  font-size: 1.14rem !important;
-  line-height: 1.9 !important;
-  font-weight: 500 !important;
+  font-family: "Cairo", var(--uifont), sans-serif !important;
+  font-size: 1.08rem !important;
+  line-height: 1.65 !important;
+  font-weight: 700 !important;
   text-rendering: optimizeLegibility !important;
   direction: rtl !important;
   margin: 0 !important;
