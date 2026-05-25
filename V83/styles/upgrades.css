@@ -833,3 +833,335 @@ button:active:not(.icon-btn):not(.choice-card) {
     border-color: var(--primary2) !important;
   }
 }
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 8 — V83 Mobile Burger Controls Drawer
+   ────────────────────────────────────────────────────────── */
+
+#v83MobileBurgerMenu {
+  align-items: flex-end !important; /* Slide up from bottom */
+  padding: 0 !important;
+}
+
+.v83-burger-drawer {
+  width: 100% !important;
+  max-width: 600px !important;
+  max-height: 85vh !important;
+  background: var(--surface) !important;
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  border: 1px solid var(--border) !important;
+  border-bottom: none !important;
+  box-shadow: 0 -15px 40px rgba(15, 23, 42, 0.18) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  animation: v83SlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  direction: rtl !important;
+  margin: 0 auto !important;
+}
+
+@keyframes v83SlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.v83-burger-head {
+  padding: 16px 20px !important;
+  background: linear-gradient(135deg, var(--primary), var(--primary2)) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: relative !important;
+}
+
+.v83-burger-head:after {
+  content: "" !important;
+  position: absolute !important;
+  top: 6px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 44px !important;
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 99px !important;
+}
+
+.v83-burger-head h3 {
+  margin: 0 !important;
+  font-size: 1.15rem !important;
+  font-weight: 900 !important;
+}
+
+.v83-burger-close-btn {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  transition: background 0.18s ease !important;
+}
+
+.v83-burger-close-btn:active {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.v83-burger-body {
+  padding: 20px !important;
+  overflow-y: auto !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.v83-burger-section {
+  border-bottom: 1px dashed var(--border) !important;
+  padding-bottom: 20px !important;
+}
+
+.v83-burger-section.no-border {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.v83-burger-section h4 {
+  margin: 0 0 12px 0 !important;
+  font-size: 0.92rem !important;
+  color: var(--muted) !important;
+  font-weight: 800 !important;
+}
+
+/* Database toggle cards */
+.v83-db-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px !important;
+}
+
+.v83-db-card {
+  border: 1.5px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 18px !important;
+  padding: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-align: right !important;
+  font-weight: inherit !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.v83-db-card.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary2)) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 20px rgba(75, 99, 230, 0.22) !important;
+}
+
+.v83-db-card .icon {
+  font-size: 1.6rem !important;
+}
+
+.v83-db-card .info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+.v83-db-card .info b {
+  font-size: 0.88rem !important;
+  font-weight: 900 !important;
+}
+
+.v83-db-card .info small {
+  font-size: 0.72rem !important;
+  opacity: 0.85 !important;
+}
+
+.v83-db-card.active .info small {
+  opacity: 0.95 !important;
+}
+
+/* Sorting rows */
+.v83-sort-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.v83-sort-row {
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 14px !important;
+  padding: 11px 14px !important;
+  text-align: right !important;
+  font-weight: 800 !important;
+  font-size: 0.88rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-sort-row .check {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: transparent !important;
+  font-size: 0.72rem !important;
+  border: 1.5px solid var(--border) !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-sort-row.active {
+  border-color: var(--gold) !important;
+  background: color-mix(in srgb, var(--gold) 8%, var(--surface)) !important;
+  color: var(--text) !important;
+}
+
+.v83-sort-row.active .check {
+  background: var(--gold) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* Preferences Rows */
+.v83-pref-row {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+.v83-pref-row.flex-between {
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 0 !important;
+}
+
+.v83-pref-row > span {
+  font-size: 0.85rem !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+}
+
+.v83-chips-row {
+  display: flex !important;
+  gap: 6px !important;
+  flex-wrap: wrap !important;
+}
+
+.v83-theme-chip,
+.v83-font-chip {
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 12px !important;
+  padding: 7px 11px !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-theme-chip.active,
+.v83-font-chip.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 10px rgba(75, 99, 230, 0.15) !important;
+}
+
+/* Font scale controls */
+.v83-size-ctrls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: var(--soft) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  padding: 4px 6px !important;
+}
+
+.v83-size-ctrls button {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 10px !important;
+  padding: 5px 12px !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.v83-size-ctrls span {
+  font-size: 0.85rem !important;
+  font-weight: 900 !important;
+  min-width: 44px !important;
+  text-align: center !important;
+}
+
+/* Action grid */
+.v83-action-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 8px !important;
+}
+
+.v83-action-card {
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 14px !important;
+  padding: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-action-card.primary {
+  grid-column: 1 / -1 !important;
+  background: linear-gradient(135deg, var(--green), #16a34a) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.v83-action-card.primary:active {
+  background: var(--green) !important;
+}
+
+/* Apply CSS Scale to Verse text blocks */
+.verse-text, .quran-text, .compare-text {
+  font-size: var(--verse-fs, 1.35rem) !important;
+}
+
+@media(max-width:850px) {
+  .verse-text, .quran-text, .compare-text {
+    font-size: var(--verse-fs-mobile, 1.1rem) !important;
+  }
+}

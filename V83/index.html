@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;700;900&family=Cairo:wght@400;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Amiri+Quran&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/styles.css?v=v83_upgrades_20260525_2">
+  <link rel="stylesheet" href="styles/styles.css?v=v83_upgrades_20260525_3">
 </head>
 <body data-theme="quran-classic" data-font-preset="normal-quran">
 <header class="app-header">
@@ -123,6 +123,7 @@
 </section>
 
 <nav class="v83-mobile-nav" aria-label="Mobile Navigation">
+  <button id="mnavBurger" onclick="openV83MobileBurgerMenu();setMobileNavActive('mnavBurger')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></span><span class="ml">القائمة</span></button>
   <button id="mnavHome" onclick="openHome();setMobileNavActive('mnavHome')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="ml">الرئيسية</span></button>
   <button id="mnavDb" onclick="openDatabase('personal');setMobileNavActive('mnavDb')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span><span class="ml">المتشابهات</span></button>
   <button id="mnavSearch" onclick="openMainSearchUI();setMobileNavActive('mnavSearch')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span class="ml">بحث</span></button>
