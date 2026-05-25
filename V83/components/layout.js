@@ -188,7 +188,7 @@
     var title=document.querySelector('.v83-detail-title');
     if(!pane||!title) return;
     var g=getActiveGroup();
-    title.textContent=g?(g.title||('مجموعة '+g.id)):'مساحة التفاصيل';
+    title.textContent=g?((typeof stripTashkeel==='function'?stripTashkeel(g.title):g.title)||('مجموعة '+g.id)):'مساحة التفاصيل';
     var tabs='<div class="v83-tabs">'+V83_TABS.map(function(t){
       var active=t.id===v83DetailState.tab?' active':'';
       return '<button class="v83-tab-btn'+active+'" data-v83-tab="'+t.id+'">'+t.label+'</button>';
@@ -235,7 +235,7 @@
     var title=document.querySelector('#v83MobileDetailSheet .v83-mobile-title');
     var edit=document.querySelector('#v83MobileDetailSheet [data-v83-mobile-edit]');
     if(!body||!title) return;
-    title.textContent=group?(group.title||('مجموعة '+group.id)):'التفاصيل';
+    title.textContent=group?((typeof stripTashkeel==='function'?stripTashkeel(group.title):group.title)||('مجموعة '+group.id)):'التفاصيل';
     if(edit){
       var canEdit=!!(group&&typeof activeDb!=='undefined'&&activeDb==='personal');
       edit.hidden=!canEdit;

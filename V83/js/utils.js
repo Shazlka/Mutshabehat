@@ -16,4 +16,6 @@ function highlight(t){let q=safeText(document.getElementById('searchInput')?.val
 
 function v78IntegrityCheck(){const bad=new RegExp('[\\u00d8\\u00d9\\u00e2\\ufffd]');const ok=!bad.test(document.documentElement.innerText||'');if(!ok)console.warn('V78 integrity warning: corrupted UI text detected. Clear browser cache and redeploy V78 files.');return ok}
 
+function stripTashkeel(v){return safeText(v).replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g,'')}
+
 window.addEventListener('load',()=>setTimeout(v78IntegrityCheck,500));

@@ -138,12 +138,12 @@
 .v83-group-card .group-title,
 .pv-title-wrap .group-title {
   font-family: "Cairo", var(--uifont), sans-serif !important;
-  font-size: 1.08rem !important;
-  line-height: 1.65 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5 !important;
   font-weight: 700 !important;
   text-rendering: optimizeLegibility !important;
   display: block !important;
-  margin-bottom: 15px !important;
+  margin-bottom: 8px !important;
   direction: rtl !important;
 }
 
@@ -370,8 +370,8 @@ body[data-theme="quran-night"] .verse-card {
 .v83-detail-title,
 .v83-mobile-title {
   font-family: "Cairo", var(--uifont), sans-serif !important;
-  font-size: 1.08rem !important;
-  line-height: 1.65 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5 !important;
   font-weight: 700 !important;
   text-rendering: optimizeLegibility !important;
   direction: rtl !important;
