@@ -230,3 +230,84 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(()=>{
     else if(st==='failed') ghSetToolbarBtnStateV88('err', localStorage.getItem(GH_KEYS_V79.error)||'');
   }catch(e){}
 },500));
+
+async function pullFromGitHub() {
+  saveSettings(false);
+  let s = getSettings();
+  if (!s.ghToken) {
+    if (typeof toast === 'function') toast('❌ يرجى إضافة Token أولاً', 'err');
+    else alert('❌ يرجى إضافة Token أولاً');
+    return;
+  }
+  
+  if (typeof toast === 'function') toast('☁ جاري سحب البيانات من GitHub...', 'info');
+  else console.log('Pulling personal database from GitHub...');
+  
+  try {
+    let g = await fetch(ghApiGetV79(s), {
+      headers: {
+        Authorization: 'Bearer ' + s.ghToken,
+        Accept: 'application/vnd.github+json'
+      }
+    });
+    
+    if (!g.ok) throw new Error(await ghErrV79(g));
+    
+    let cur = await g.json();
+    let remote = '';
+    try {
+      remote = ghDecodeV79(cur.content || '');
+    } catch(e) {
+      throw new Error('فشل فك ترميز محتوى الملف من GitHub');
+    }
+    
+    let data = parsePersonalDbFromJsContent(remote);
+    
+    let msg = `تنبيه: هل تريد بالتأكيد جلب قاعدة البيانات الشخصية من GitHub؟\n\nسيؤدي هذا إلى استبدال جميع البيانات الشخصية المحلية الحالية المكونة من (${personalData.length} مجموعة) بالبيانات السحابية المكونة من (${data.length} مجموعة).\n\n* هذا الإجراء سيقوم بتحديث القائمة فوراً.`;
+    if (!confirm(msg)) {
+      if (typeof toast === 'function') toast('⚠️ تم إلغاء جلب البيانات', 'info');
+      return;
+    }
+    
+    // Back up personal data locally before overwriting
+    try { ghBackupPersonalV88('before-github-pull'); } catch(e) {}
+    
+    personalData = data;
+    saveDb('personal');
+    
+    if (typeof renderActiveGroups === 'function') renderActiveGroups();
+    updateHomeCounts();
+    
+    // Sync local modified time with pull time
+    try { localStorage.setItem(GH_LOCAL_MOD_KEY_V88, String(Date.now())); } catch(e) {}
+    
+    // Set sync status to success
+    localStorage.setItem(GH_KEYS_V79.time, new Date().toLocaleString('ar-EG', { hour12: false }));
+    localStorage.setItem(GH_KEYS_V79.sha, cur.sha);
+    localStorage.setItem(GH_KEYS_V79.path, s.ghPath);
+    ghSetV79('success');
+    
+    if (typeof toast === 'function') toast('✅ تم جلب وتحديث البيانات الشخصية بنجاح', 'ok');
+    else alert('✅ تم جلب وتحديث البيانات الشخصية بنجاح');
+    
+  } catch(e) {
+    console.error('GitHub pull failed', e);
+    ghSetV79('failed', e.message || String(e));
+    if (typeof toast === 'function') toast('❌ فشل جلب البيانات: ' + (e.message || e), 'err');
+    else alert('❌ فشل جلب البيانات: ' + (e.message || e));
+  }
+}
+
+function parsePersonalDbFromJsContent(jsText) {
+  let start = jsText.indexOf('[');
+  let end = jsText.lastIndexOf(']');
+  if (start === -1 || end === -1 || end < start) {
+    throw new Error('الملف لا يحتوي على مصفوفة بيانات صالحة (Missing [ or ])');
+  }
+  let jsonText = jsText.substring(start, end + 1);
+  let data = JSON.parse(jsonText);
+  if (!Array.isArray(data)) {
+    throw new Error('البيانات المستخرجة ليست مصفوفة صالحة');
+  }
+  return data;
+}

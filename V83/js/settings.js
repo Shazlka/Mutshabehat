@@ -139,7 +139,7 @@ function openAppSettings(){
 <div class="sett-gh-meta" id="sett-gh-meta"></div>
 <div id="sett-gh-error"></div>
 <div class="sett-card-actions">
-<button onclick="testGitHubConnectionV79()">Test Connection</button><button onclick="syncToGitHub('manual')">Sync Now</button><button onclick="ghVerifyV79()">Verify on GitHub</button>
+<button onclick="testGitHubConnectionV79()">Test Connection</button><button onclick="syncToGitHub('manual')">Sync Now / دفع</button><button class="danger" onclick="pullFromGitHub()">Pull / جلب من GitHub</button><button onclick="ghVerifyV79()">Verify on GitHub</button>
 </div>
 <label class="github-autosync-toggle sett-gh-autosync"><input type="checkbox" id="ghAutoSyncCheck" ${s.ghAutoSync?'checked':''}/> تفعيل المزامنة التلقائية</label>
 </div>
