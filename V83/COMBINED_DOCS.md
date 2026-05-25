@@ -828,3 +828,52 @@ Validation:
 - Original automated groups: 12668
 - Largest chunk size bytes: 7690825
 - Generated: 2026-05-15T03:58:11.487753Z
+
+---
+
+## README_V83_PREMIUM_UI_UX_AND_SETTINGS_PULL.md
+
+
+# V83 — Premium UI/UX visual upgrades, Mobile Burger controls, and GitHub pull integration
+
+This version implements extensive, modern visual upgrades to establish a high-end visual hierarchy and features comprehensive controls optimized for mobile interfaces.
+
+## 🚀 Added Features & Visual Upgrades
+
+### 1. 🎨 Emerald Green Sidebar Panel & Floating Mobile Card
+- **Moved Active DB Panel**: Moved the entire active database controls section (dynamic database titles, dynamic description subtitle, search input box, and quick-action buttons: *Add Mutashabih, Expand/Collapse, Sync GitHub*) from the middle cards column into the **dark emerald green right sidebar (`v83-sidebar`)** for desktops and tablets.
+- **Floating Mobile Widget**: Automatically adapts the panel on mobile viewports into a gorgeous, floating white card layout at the very top of the list view. This ensures full responsive access to search, sync, and add actions with zero HTML or ID duplicates!
+
+### 2. 🧹 Dynamic Tashkeel Stripping from Titles
+- **Vowel Stripping**: Created the `stripTashkeel` helper in `js/utils.js` (using unicode regex `[\u064B-\u065F\u0670\u06D6-\u06ED]`) to dynamically remove Arabic diacritics and vowel markers from titles in the cards list, mobile legacy details modal, main details pane, mobile sheet drawer, and live edit previews. Only headings are stripped; body verses retain full vowels for accurate reading.
+
+### 3. 📏 Sleek Cairo Title Font & Normalized Layout Spacing
+- **Cairo Google Font**: Registered the dynamic `Cairo` font weights inside `V83/index.html`.
+- **Layout Normalization**: Now that tall diacritic harakat are stripped from titles, we normalized their CSS parameters in `styles/upgrades.css` to be tight, snug, and modern:
+  - Tightened line-height to `1.5 !important` (was `1.65`).
+  - Standardized card titles margin-bottom to `8px !important` (was `15px`).
+  - Set the title font-size to a balanced `1.05rem !important` (was `1.08rem`).
+
+### 4. 🍔 Premium Bottom Burger Drawer (Qanawat Control Menu)
+- **Burger Button Beside Home**: Added a custom `<button id="mnavBurger">` directly next to the home button `mnavHome` in the mobile bottom navigation bar in `V83/index.html` with a beautiful inline SVG burger icon.
+- **Dynamic Slide-out Bottom-Sheet Drawer**: Created `openV83MobileBurgerMenu()` in `js/modals.js` that constructs a full-featured, thumb-friendly panel. Swipe-to-close gestures and backdrop clicks seamlessly close the drawer.
+- **Active Database Switcher**: Provides cards to switch instantly between Personal and Automated databases, dynamically highlighting the selected state and rendering localized counts.
+- **Instant Sorting Selector**: Lists all 5 display modes (Original, By Surah, Grouped by Surah, Newest First, Most Verses) with a custom gold checkmark (✓) highlighting the active method.
+
+### 5. 🔍 Surah Selector Database Loading in Mobile Drawer
+- **Dynamic Surah Picker**: Populated a complete list of all 114 Surahs inside the mobile burger drawer using `surahNames()` helper.
+- **Lazy Database Loading & Filtering**: Clicking any Surah closes the drawer immediately and triggers `filterBySurahNo(no)` which filters groups locally (for Personal DB) or **fetches and lazy-loads the specific Surah database remotely (for Automated DB)**, complete with pleasant network loading notifications.
+- **Smart Mobile Notice**: Displays a warn hint panel inside the drawer when the Automated Database is selected but no Surah filter is active, advising the user to select a Surah to load its remote content.
+
+### 6. 📥 Option to Pull Personal Database from GitHub in Settings
+- **GitHub Pull Button**: Added a red `Pull / جلب من GitHub` action button inside the settings modal card actions row inside `js/settings.js`.
+- **Dynamic Pull Logic**: Implemented `pullFromGitHub()` in `js/github-sync.js` to download, decode, and parse remote personal-data file, displaying a warning confirmation listing exact counts of groups to prevent accidental loss, backing up the current database locally (`ghBackupPersonalV88`) before overwriting, and instantly updating the UI.
+
+### 7. 📏 Live Verse Font Size Scale Toggler
+- **Interactive Sizers**: Interactive sizers inside the mobile drawer scale verse text sizes from `70%` to `180%` using responsive CSS custom variables (`--verse-fs`), preserving preference across page reloads.
+
+### 8. 🧼 Mobile Toolbar Decluttering
+- **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
+
+### 9. ☁️ Version 6 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260525_6` across styles and HTML imports to force immediate browser reloads.
