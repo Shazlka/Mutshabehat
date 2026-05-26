@@ -875,8 +875,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 16 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260526_9` across styles, scripts, and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 17 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_10` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
@@ -913,5 +913,5 @@ This version implements extensive, modern visual upgrades to establish a high-en
 
 ### 18. 🏷️ Top-Aligned Title for Mobile Sheet View
 - **Isolated Title Placement**: Extracted the dynamic header title (`.v83-mobile-title`) from the bottom buttons container into a dedicated, clean, top-level layout wrapper (`.v83-mobile-sheet-top-title`).
-- **Flexible Ordering**: Anchored the wrapper at the **very top of the detailed sheet card** using `order: 1 !important` in flexbox, while the main verse text body sits in the middle (`order: 2 !important`), and the navigation control bar sits at the bottom (`order: 3 !important`).
-- **Elegant Borders & Background**: Configured a centered, spacious padding layout with a solid bottom border separating the active title context cleanly from the Quranic text area.
+- **Flexible Ordering & Sticky Anchoring**: Anchored the title wrapper at the **very top of the detailed sheet card** using `order: 1 !important` and configured a bulletproof `position: sticky !important; top: 0 !important; z-index: 4 !important;` styling. This ensures the title remains completely static at the top, while the scrollable verses list flows underneath it.
+- **Action Buttons Sticky Overrides**: Styled the bottom navigation control bar `.v83-mobile-sheet-head` with `position: sticky !important; bottom: 0 !important; top: auto !important; z-index: 4 !important; order: 3 !important;`. This correctly forces the navigation buttons to anchor at the bottom edge, preventing old CSS sticky rules from drawing them back to the top.
