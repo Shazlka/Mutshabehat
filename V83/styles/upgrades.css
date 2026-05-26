@@ -1222,3 +1222,18 @@ body[data-theme="bevel-night"] .v83-burger-hint {
   border-color: rgba(245, 158, 11, 0.25) !important;
   color: #fbbf24 !important;
 }
+
+/* V83 mobile detailed pane font scale: 60% of the mobile base size to fit the window perfectly */
+@media (max-width: 850px) {
+  #v83MobileDetailContent .verse-text,
+  #detailContent .verse-text,
+  #v83MobileDetailContent .v83-cmp-token,
+  #detailContent .v83-cmp-token,
+  #v83MobileDetailContent .v83-cmp-inline-line,
+  #detailContent .v83-cmp-inline-line,
+  #v83MobileDetailContent .v83-cmp-diff-line,
+  #detailContent .v83-cmp-diff-line {
+    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
+    line-height: 1.75 !important;
+  }
+}

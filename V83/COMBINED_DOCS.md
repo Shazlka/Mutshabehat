@@ -875,8 +875,11 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 7 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260525_7` across styles and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 8 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_1` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
+
+### 11. 📏 Mobile Detailed Pane Font Scale
+- **Optimized Mobile Layout**: Reduced the Ayah/verse font size inside the mobile detailed sheet (`#v83MobileDetailContent`) and desktop-style detailed pane on mobile viewports by 60% (`calc(var(--verse-fs-mobile) * 0.6)`). This prevents text overflow, respects user-selected scaling, and ensures that long verses fit the window screen beautifully.
