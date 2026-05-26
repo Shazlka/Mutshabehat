@@ -1223,168 +1223,6 @@ body[data-theme="bevel-night"] .v83-burger-hint {
   color: #fbbf24 !important;
 }
 
-/* V83 mobile detailed pane font scale: 60% of the mobile base size to fit the window perfectly */
-@media (max-width: 850px) {
-  #v83MobileDetailContent .verse-text,
-  #detailContent .verse-text {
-    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
-    line-height: 2.5 !important; /* Spacing lines beautifully to avoid overlaps with vowel harakat */
-  }
-
-  #v83MobileDetailContent .v83-cmp-token,
-  #detailContent .v83-cmp-token,
-  #v83MobileDetailContent .v83-cmp-inline-line,
-  #detailContent .v83-cmp-inline-line,
-  #v83MobileDetailContent .v83-cmp-diff-line,
-  #detailContent .v83-cmp-diff-line {
-    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
-    line-height: 1.75 !important;
-  }
-
-  /* Snug highlight boxes with padding/wrap tuning to never overlap text strokes */
-  #v83MobileDetailContent .shared,
-  #detailContent .shared,
-  #v83MobileDetailContent .diff,
-  #detailContent .diff,
-  #v83MobileDetailContent .diff2,
-  #detailContent .diff2,
-  #v83MobileDetailContent .diff3,
-  #detailContent .diff3,
-  #v83MobileDetailContent .addition,
-  #detailContent .addition,
-  #v83MobileDetailContent .unique,
-  #detailContent .unique {
-    padding: 1px 4px !important;
-    margin: 0 1px !important;
-    border-radius: 4px !important;
-    display: inline !important;
-    line-height: 1.25 !important; /* Snug bounds around glyph strokes */
-    -webkit-box-decoration-break: clone !important;
-    box-decoration-break: clone !important;
-  }
-
-  /* Move mobile detailed card header (navigation buttons) to the bottom of the card */
-  .v83-mobile-sheet-card {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .v83-mobile-sheet-top-title {
-    order: 1 !important;
-    position: sticky !important;
-    top: 0 !important;
-    bottom: auto !important;
-    background: var(--surface) !important;
-    padding: 12px 16px !important;
-    border-bottom: 1px solid var(--border) !important;
-    text-align: center !important;
-    z-index: 4 !important;
-  }
-  .v83-mobile-sheet-top-title .v83-mobile-title {
-    text-align: center !important;
-    margin: 0 !important;
-    width: 100% !important;
-  }
-  .v83-mobile-sheet-body {
-    order: 2 !important;
-    flex: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-  }
-  .v83-mobile-sheet-head {
-    order: 3 !important;
-    position: sticky !important;
-    bottom: 0 !important;
-    top: auto !important;
-    border-top: 1px solid var(--border) !important;
-    border-bottom: none !important;
-    background: var(--surface) !important;
-    padding: 0 !important;
-    z-index: 4 !important;
-  }
-
-  /* Move tabs container to the bottom of the sheet body as a single row flex container */
-  #v83MobileDetailContent .v83-tabs {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch !important;
-    gap: 6px !important;
-    order: 2 !important;
-    position: sticky !important;
-    bottom: 0 !important;
-    top: auto !important;
-    border-top: 1px solid var(--border) !important;
-    border-bottom: none !important;
-    margin: 0 !important;
-    padding: 10px 8px 14px !important; /* Maximum width expansion */
-    background: var(--surface) !important;
-    z-index: 2 !important;
-    overflow: visible !important;
-  }
-  #v83MobileDetailContent .v83-tab-panel {
-    order: 1 !important;
-    flex: 1 !important;
-    overflow-y: auto !important;
-    padding: 12px 12px 20px !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  /* Make mobile tab buttons span maximum screen width and taller in height for easy press */
-  #v83MobileDetailContent .v83-tab-btn {
-    flex: 1 !important;
-    min-width: 0 !important;
-    min-height: 64px !important;
-    border-radius: 16px !important;
-    font-size: 1.05rem !important; /* Identical to below action buttons */
-    padding: 12px 14px !important; /* Identical to below action buttons */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-weight: 800 !important;
-    text-align: center !important;
-  }
-
-  /* Hide Tafser tab on mobile view */
-  #v83MobileDetailContent .v83-tab-btn[data-v83-tab="tafsir"] {
-    display: none !important;
-  }
-
-  /* Make mobile action buttons container span maximum screen width and taller in height for easy press */
-  .v83-mobile-buttons-grid {
-    padding: 10px 8px 14px !important; /* Maximum width expansion */
-    gap: 8px !important;
-  }
-
-  .v83-mobile-buttons-grid button {
-    min-height: 64px !important;
-    border-radius: 16px !important;
-    font-size: 1.05rem !important;
-    padding: 12px 14px !important;
-  }
-
-  /* Move comparison mode selector buttons to the bottom of comparison panel */
-  .v83-cmp-panel {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .v83-cmp-modes {
-    order: 2 !important;
-    margin-top: 12px !important;
-    margin-bottom: 0 !important;
-  }
-  .v83-cmp-legend {
-    order: 3 !important;
-    margin-top: 8px !important;
-    margin-bottom: 4px !important;
-  }
-  .v83-cmp-table,
-  .v83-cmp-inline-list,
-  .v83-cmp-diff-only {
-    order: 1 !important;
-  }
-}
-
 /* =========================================================
    V83 — Details Pane Tabs styling: identical size and
    arrangement to the main home screen choices cards
@@ -1532,3 +1370,174 @@ body[data-theme="bevel-night"] .v83-mobile-buttons-grid button.v83-mobile-edit {
 .v83-mobile-buttons-grid button.v83-mobile-edit[hidden] {
   display: none !important;
 }
+
+/* =========================================================
+   V83 — Mobile Media Queries (Moved to end for correct cascading overrides)
+   ========================================================= */
+/* V83 mobile detailed pane font scale: 60% of the mobile base size to fit the window perfectly */
+@media (max-width: 850px) {
+  #v83MobileDetailContent .verse-text,
+  #detailContent .verse-text {
+    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
+    line-height: 2.5 !important; /* Spacing lines beautifully to avoid overlaps with vowel harakat */
+  }
+
+  #v83MobileDetailContent .v83-cmp-token,
+  #detailContent .v83-cmp-token,
+  #v83MobileDetailContent .v83-cmp-inline-line,
+  #detailContent .v83-cmp-inline-line,
+  #v83MobileDetailContent .v83-cmp-diff-line,
+  #detailContent .v83-cmp-diff-line {
+    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
+    line-height: 1.75 !important;
+  }
+
+  /* Snug highlight boxes with padding/wrap tuning to never overlap text strokes */
+  #v83MobileDetailContent .shared,
+  #detailContent .shared,
+  #v83MobileDetailContent .diff,
+  #detailContent .diff,
+  #v83MobileDetailContent .diff2,
+  #detailContent .diff2,
+  #v83MobileDetailContent .diff3,
+  #detailContent .diff3,
+  #v83MobileDetailContent .addition,
+  #detailContent .addition,
+  #v83MobileDetailContent .unique,
+  #detailContent .unique {
+    padding: 1px 4px !important;
+    margin: 0 1px !important;
+    border-radius: 4px !important;
+    display: inline !important;
+    line-height: 1.25 !important; /* Snug bounds around glyph strokes */
+    -webkit-box-decoration-break: clone !important;
+    box-decoration-break: clone !important;
+  }
+
+  /* Move mobile detailed card header (navigation buttons) to the bottom of the card */
+  .v83-mobile-sheet-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .v83-mobile-sheet-top-title {
+    order: 1 !important;
+    position: sticky !important;
+    top: 0 !important;
+    bottom: auto !important;
+    background: var(--surface) !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid var(--border) !important;
+    text-align: center !important;
+    z-index: 4 !important;
+  }
+  .v83-mobile-sheet-top-title .v83-mobile-title {
+    text-align: center !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .v83-mobile-sheet-body {
+    order: 2 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+  .v83-mobile-sheet-head {
+    order: 3 !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    top: auto !important;
+    border-top: 1px solid var(--border) !important;
+    border-bottom: none !important;
+    background: var(--surface) !important;
+    padding: 0 !important;
+    z-index: 4 !important;
+  }
+
+  /* Move tabs container to the bottom of the sheet body as a single row flex container */
+  #v83MobileDetailContent .v83-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 8px !important; /* Matched exactly to action buttons grid gap */
+    order: 2 !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    top: auto !important;
+    border-top: 1px solid var(--border) !important;
+    border-bottom: none !important;
+    margin: 0 !important;
+    padding: 10px 8px 14px !important; /* Maximum width expansion */
+    background: var(--surface) !important;
+    z-index: 2 !important;
+    overflow: visible !important;
+  }
+  #v83MobileDetailContent .v83-tab-panel {
+    order: 1 !important;
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 12px 12px 20px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Make mobile tab buttons span maximum screen width and taller in height for easy press */
+  #v83MobileDetailContent .v83-tab-btn {
+    flex: 1 !important;
+    min-width: 0 !important;
+    min-height: 64px !important;
+    height: 64px !important; /* Explicit same height */
+    border-radius: 16px !important;
+    font-size: 0.95rem !important; /* Reduced slightly to fit Arabic text without wrapping */
+    padding: 12px 8px !important; /* Balanced padding to ensure perfect fit without wrapping */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+  }
+
+  /* Hide Tafser tab on mobile view */
+  #v83MobileDetailContent .v83-tab-btn[data-v83-tab="tafsir"] {
+    display: none !important;
+  }
+
+  /* Make mobile action buttons container span maximum screen width and taller in height for easy press */
+  .v83-mobile-buttons-grid {
+    padding: 10px 8px 14px !important; /* Maximum width expansion */
+    gap: 8px !important;
+  }
+
+  .v83-mobile-buttons-grid button {
+    min-height: 64px !important;
+    height: 64px !important; /* Explicit same height */
+    border-radius: 16px !important;
+    font-size: 1.05rem !important;
+    padding: 12px 14px !important;
+  }
+
+  /* Move comparison mode selector buttons to the bottom of comparison panel */
+  .v83-cmp-panel {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .v83-cmp-modes {
+    order: 2 !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  .v83-cmp-legend {
+    order: 3 !important;
+    margin-top: 8px !important;
+    margin-bottom: 4px !important;
+  }
+  .v83-cmp-table,
+  .v83-cmp-inline-list,
+  .v83-cmp-diff-only {
+    order: 1 !important;
+  }
+}
+
