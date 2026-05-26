@@ -1336,12 +1336,13 @@ body[data-theme="bevel-night"] .v83-burger-hint {
     min-width: 0 !important;
     min-height: 64px !important;
     border-radius: 16px !important;
-    font-size: 0.95rem !important; /* Cozy, readable size to prevent wrap */
-    padding: 10px 4px !important; /* Compact padding to fit beautifully */
+    font-size: 1.05rem !important; /* Identical to below action buttons */
+    padding: 12px 14px !important; /* Identical to below action buttons */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     font-weight: 800 !important;
+    text-align: center !important;
   }
 
   /* Hide Tafser tab on mobile view */

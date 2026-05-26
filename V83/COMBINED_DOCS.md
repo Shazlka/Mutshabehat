@@ -875,8 +875,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 18 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260526_11` across styles, scripts, and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 19 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_12` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
@@ -904,7 +904,7 @@ This version implements extensive, modern visual upgrades to establish a high-en
 - **Ergonomic Grid Upgrade**: Resized the details pane tab buttons (`.v83-tab-btn`) on both desktop and mobile viewports to look exactly like the main home screen choices cards (big, highly tactile, and extremely easy to press).
 - **Same Size & Layout**: Arranged the 5 tabs in a beautifully balanced 2-column grid (`الآيات` & `الاختلافات` / `الملاحظات` & `التفسير` / `مرتبط` spanning full-width) on desktop screen sizes. Active tabs feature a gold-bordered emerald green gradient, dynamic shadows, and 3D hover/press physics.
 - **Single-Row Mobile Layout**: Hides the **Tafsir (`التفسير`)** tab entirely in mobile view (`display: none !important`), and lays out the remaining 4 tabs side-by-side in a **single horizontal row** using `display: flex !important` and `flex-direction: row !important` with equal `flex: 1` width distribution.
-- **Mobile Viewport Optimization**: Decreased horizontal margins (`padding: 10px 8px 14px`) to stretch the row edge-to-edge, and boosted heights to a substantial **`64px`** with an ergonomic `16px` border-radius and snug `0.95rem` font size to prevent overlapping or wrapping.
+- **Mobile Viewport Optimization**: Decreased horizontal margins (`padding: 10px 8px 14px`) to stretch the row edge-to-edge. Both the tab buttons and the below navigation buttons are now **exactly identical in size and styling**, featuring a substantial **`64px`** minimum height, a comfortable `16px` border-radius, spacious `12px 14px` padding, and a bold `1.05rem` font size for perfect tap responsiveness.
 
 ### 17. 🎛️ Premium Mobile Navigation Actions Bar (Single Row!)
 - **Arrangement & Styling**: Redesigned all action buttons inside the mobile detailed sheet header (`رجوع`, `السابق`, `التالي`, and `تعديل` when active) to match the exact size, tactile boundaries, and aesthetics of the main home screen choices cards and details tabs.
