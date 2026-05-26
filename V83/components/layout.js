@@ -352,6 +352,26 @@
     if(dx<0) moveMobileGroup(1); else moveMobileGroup(-1);
   },{passive:true});
 
+  document.addEventListener('dblclick',function(e){
+    var card=e.target.closest('#v83MobileDetailContent .verse-card, #detailContent .verse-card');
+    if(!card) return;
+    var surahNameEl=card.querySelector('.surah-name');
+    var ayahNumEl=card.querySelector('.ayah-num');
+    var verseTextEl=card.querySelector('.verse-text');
+    if(!verseTextEl) return;
+    var surah=surahNameEl?surahNameEl.textContent.trim():'';
+    var ayah=ayahNumEl?ayahNumEl.textContent.trim():'';
+    var text=verseTextEl.textContent.trim();
+    var copyText=text;
+    if(surah&&ayah) copyText='['+surah+': '+ayah+'] '+text;
+    var copyFunc=window.writeClipboardTextV78||(navigator.clipboard&&navigator.clipboard.writeText.bind(navigator.clipboard));
+    if(typeof copyFunc==='function'){
+      Promise.resolve(copyFunc(copyText)).then(function(ok){
+        if(typeof window.toast==='function') window.toast('تم نسخ الآية: '+surah+' ('+ayah+')','ok');
+      });
+    }
+  });
+
   document.addEventListener('DOMContentLoaded',function(){
     renderDetailPane();
     patchMobileGroupDetail();

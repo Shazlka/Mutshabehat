@@ -875,8 +875,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 8 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260526_1` across styles, scripts, and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 9 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_2` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
@@ -887,3 +887,7 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 12. 🚫 Mobile Background Scroll Locking
 - **Zero Scroll Leakage**: Linked the mobile detailed sheet lifecycle to the Safari-optimized global scroll lock system (`lockBodyScrollV78` and `unlockBodyScrollV78`). This completely locks the background main window viewport while the mobile detail drawer is active, allowing friction-free scrolling only inside the drawer.
 - **Dismiss on Backdrop Tap**: Tapping anywhere on the dark blurred backdrop overlay outside the detail sheet container now smoothly closes the detailed drawer and unlocks scrolling automatically.
+
+### 13. 📋 Double-Click to Copy Ayah Text
+- **Quick Ayah Sharing**: Implemented a double-click event listener inside the mobile detailed sheet (`#v83MobileDetailContent`) and desktop detailed pane. Double-clicking any Ayah card instantly copies its Quranic text to the clipboard formatted as `[Surah: Ayah] Text` using fallback-safe clipboard routines.
+- **Visual Success Toast**: Displays a success toast notification immediately (e.g., "تم نسخ الآية: البقرة (5)") to confirm clipboard copy action.
