@@ -1272,6 +1272,16 @@ body[data-theme="bevel-night"] .v83-burger-hint {
     order: 3 !important;
     border-top: 1px solid var(--border) !important;
     border-bottom: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 12px 0 0 0 !important;
+    background: var(--surface) !important;
+  }
+  .v83-mobile-sheet-head .v83-mobile-title {
+    text-align: center !important;
+    padding: 0 14px !important;
+    margin-bottom: 4px !important;
   }
   .v83-mobile-sheet-body {
     order: 1 !important;
@@ -1389,4 +1399,91 @@ body[data-theme="bevel-night"] .v83-tab-btn.active {
   border-color: rgba(201, 168, 76, 0.45) !important;
   color: #f0ead8 !important;
   box-shadow: 0 8px 24px rgba(5, 20, 16, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.15) !important;
+}
+
+/* =========================================================
+   V83 — Mobile Sheet Navigation Buttons: same premium cards
+   size, arrangement, and hover/press behaviors as tabs
+   ========================================================= */
+.v83-mobile-buttons-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px !important;
+  width: 100% !important;
+  padding: 10px 14px 14px !important;
+  box-sizing: border-box !important;
+}
+
+.v83-mobile-buttons-grid button {
+  min-height: 54px !important;
+  border-radius: 14px !important;
+  padding: 10px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  border: 1.5px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.22s cubic-bezier(.22,.68,0,1.2) !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+.v83-mobile-buttons-grid button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+.v83-mobile-buttons-grid button:active {
+  transform: translateY(1px) !important;
+}
+
+/* Specific styling for Previous & Next: premium gold-bordered emerald gradient matching home cards */
+.v83-mobile-buttons-grid button[data-v83-mobile-prev="1"],
+.v83-mobile-buttons-grid button[data-v83-mobile-next="1"] {
+  background: linear-gradient(135deg, #0d4a41 0%, #196d5e 60%, #1e8a74 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(13, 74, 65, 0.35), 0 0 0 1px rgba(201, 168, 76, 0.1) !important;
+}
+
+/* Specific styling for Modify (Edit) button: gorgeous gold theme */
+.v83-mobile-buttons-grid button.v83-mobile-edit {
+  background: linear-gradient(135deg, #7c6225 0%, #a48231 60%, #c9a84c 100%) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(164, 130, 49, 0.35) !important;
+}
+
+/* Theme support for Previous & Next */
+body[data-theme="quran-night"] .v83-mobile-buttons-grid button[data-v83-mobile-prev="1"],
+body[data-theme="bevel-night"] .v83-mobile-buttons-grid button[data-v83-mobile-prev="1"],
+body[data-theme="quran-night"] .v83-mobile-buttons-grid button[data-v83-mobile-next="1"],
+body[data-theme="bevel-night"] .v83-mobile-buttons-grid button[data-v83-mobile-next="1"] {
+  background: linear-gradient(135deg, #051410 0%, #0d2e24 60%, #144436 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #f0ead8 !important;
+  box-shadow: 0 8px 24px rgba(5, 20, 16, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.15) !important;
+}
+
+/* Theme support for Modify (Edit) in dark modes */
+body[data-theme="quran-night"] .v83-mobile-buttons-grid button.v83-mobile-edit,
+body[data-theme="bevel-night"] .v83-mobile-buttons-grid button.v83-mobile-edit {
+  background: linear-gradient(135deg, #3d2f0f 0%, #5e4a1a 60%, #7c6225 100%) !important;
+  border-color: rgba(201, 168, 76, 0.35) !important;
+  color: #f0ead8 !important;
+  box-shadow: 0 8px 24px rgba(61, 47, 15, 0.6) !important;
+}
+
+/* Handle grid columns dynamically when the Modify button is hidden */
+.v83-mobile-buttons-grid button.v83-mobile-edit[hidden] {
+  display: none !important;
+}
+
+.v83-mobile-buttons-grid button.v83-mobile-edit[hidden] ~ button.v83-mobile-close {
+  grid-column: span 2 !important;
 }

@@ -225,7 +225,7 @@
     root=document.createElement('section');
     root.id='v83MobileDetailSheet';
     root.className='v83-mobile-sheet';
-    root.innerHTML='<div class="v83-mobile-sheet-card"><div class="v83-mobile-sheet-head"><button class="v83-mobile-close" data-v83-mobile-close="1">رجوع</button><h3 class="v83-mobile-title">التفاصيل</h3><div class="v83-mobile-nav-steps"><button class="v83-mobile-edit" data-v83-mobile-edit="1" hidden>تعديل</button><button data-v83-mobile-prev="1">السابق</button><button data-v83-mobile-next="1">التالي</button></div></div><div class="v83-mobile-sheet-body" id="v83MobileDetailContent"></div></div>';
+    root.innerHTML='<div class="v83-mobile-sheet-card"><div class="v83-mobile-sheet-head"><h3 class="v83-mobile-title">التفاصيل</h3><div class="v83-mobile-buttons-grid"><button data-v83-mobile-prev="1">السابق</button><button data-v83-mobile-next="1">التالي</button><button class="v83-mobile-edit" data-v83-mobile-edit="1" hidden>تعديل</button><button class="v83-mobile-close" data-v83-mobile-close="1">رجوع</button></div></div><div class="v83-mobile-sheet-body" id="v83MobileDetailContent"></div></div>';
     document.body.appendChild(root);
     return root;
   }
