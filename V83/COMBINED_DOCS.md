@@ -875,8 +875,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 9 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260526_2` across styles, scripts, and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 10 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_3` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
@@ -891,3 +891,7 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 13. 📋 Double-Click to Copy Ayah Text
 - **Quick Ayah Sharing**: Implemented a double-click event listener inside the mobile detailed sheet (`#v83MobileDetailContent`) and desktop detailed pane. Double-clicking any Ayah card instantly copies its Quranic text to the clipboard formatted as `[Surah: Ayah] Text` using fallback-safe clipboard routines.
 - **Visual Success Toast**: Displays a success toast notification immediately (e.g., "تم نسخ الآية: البقرة (5)") to confirm clipboard copy action.
+
+### 14. 📱 Bottom-First Ergonomic Mobile Layout
+- **Ergonomic Reorganization**: Moved the detailed sheet's tabs (`.v83-tabs`), sheet navigation buttons (Back, Prev, Next, Edit in `.v83-mobile-sheet-head`), and comparison mode selection buttons (`.v83-cmp-modes`) to the bottom of the viewport on mobile devices.
+- **Thumb-Friendly Experience**: Reordered elements via flexbox order styling, ensuring active content scrolls independently at the top while all controls remain static and comfortable for one-handed thumb interaction at the bottom edge.

@@ -1236,4 +1236,65 @@ body[data-theme="bevel-night"] .v83-burger-hint {
     font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
     line-height: 1.75 !important;
   }
+
+  /* Move mobile detailed card header (navigation buttons) to the bottom of the card */
+  .v83-mobile-sheet-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .v83-mobile-sheet-head {
+    order: 3 !important;
+    border-top: 1px solid var(--border) !important;
+    border-bottom: none !important;
+  }
+  .v83-mobile-sheet-body {
+    order: 1 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  /* Move tabs container to the bottom of the sheet body */
+  #v83MobileDetailContent .v83-tabs {
+    order: 2 !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    top: auto !important;
+    border-top: 1px solid var(--border) !important;
+    border-bottom: none !important;
+    margin: 0 !important;
+    padding: 8px 12px 10px !important;
+    background: var(--surface) !important;
+    z-index: 2 !important;
+  }
+  #v83MobileDetailContent .v83-tab-panel {
+    order: 1 !important;
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 12px 12px 20px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Move comparison mode selector buttons to the bottom of comparison panel */
+  .v83-cmp-panel {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .v83-cmp-modes {
+    order: 2 !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  .v83-cmp-legend {
+    order: 3 !important;
+    margin-top: 8px !important;
+    margin-bottom: 4px !important;
+  }
+  .v83-cmp-table,
+  .v83-cmp-inline-list,
+  .v83-cmp-diff-only {
+    order: 1 !important;
+  }
 }
