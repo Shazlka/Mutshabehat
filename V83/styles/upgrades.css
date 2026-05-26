@@ -1226,7 +1226,11 @@ body[data-theme="bevel-night"] .v83-burger-hint {
 /* V83 mobile detailed pane font scale: 60% of the mobile base size to fit the window perfectly */
 @media (max-width: 850px) {
   #v83MobileDetailContent .verse-text,
-  #detailContent .verse-text,
+  #detailContent .verse-text {
+    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
+    line-height: 2.5 !important; /* Spacing lines beautifully to avoid overlaps with vowel harakat */
+  }
+
   #v83MobileDetailContent .v83-cmp-token,
   #detailContent .v83-cmp-token,
   #v83MobileDetailContent .v83-cmp-inline-line,
@@ -1235,6 +1239,28 @@ body[data-theme="bevel-night"] .v83-burger-hint {
   #detailContent .v83-cmp-diff-line {
     font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
     line-height: 1.75 !important;
+  }
+
+  /* Snug highlight boxes with padding/wrap tuning to never overlap text strokes */
+  #v83MobileDetailContent .shared,
+  #detailContent .shared,
+  #v83MobileDetailContent .diff,
+  #detailContent .diff,
+  #v83MobileDetailContent .diff2,
+  #detailContent .diff2,
+  #v83MobileDetailContent .diff3,
+  #detailContent .diff3,
+  #v83MobileDetailContent .addition,
+  #detailContent .addition,
+  #v83MobileDetailContent .unique,
+  #detailContent .unique {
+    padding: 1px 4px !important;
+    margin: 0 1px !important;
+    border-radius: 4px !important;
+    display: inline !important;
+    line-height: 1.25 !important; /* Snug bounds around glyph strokes */
+    -webkit-box-decoration-break: clone !important;
+    box-decoration-break: clone !important;
   }
 
   /* Move mobile detailed card header (navigation buttons) to the bottom of the card */
