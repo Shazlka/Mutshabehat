@@ -875,8 +875,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 11 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260526_4` across styles, scripts, and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 12 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_5` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
@@ -899,3 +899,7 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 15. 🎨 Overlap-Free Arabic Highlights Tuning
 - **Tall Arabic Metrics Care**: Increased the mobile line-height of the parent verse container (`.verse-text`) inside detailed views to `2.5` to give Arabic vowel markers (harakat) ample vertical spacing.
 - **Snug Highlight Backgrounds**: Standardized highlight span line heights inside the detailed container to a tight `1.25` and applied `box-decoration-break: clone` to avoid tall clipping and prevent backgrounds from adjacent lines from overlapping the Quranic text strokes.
+
+### 16. 🎴 Premium Choice-Card Details Tabs
+- **Ergonomic Grid Upgrade**: Resized the details pane tab buttons (`.v83-tab-btn`) on both desktop and mobile viewports to look exactly like the main home screen choices cards (big, highly tactile, and extremely easy to press).
+- **Same Size & Layout**: Arranged the 5 tabs in a beautifully balanced 2-column grid (`الآيات` & `الاختلافات` / `الملاحظات` & `التفسير` / `مرتبط` spanning full-width). Active tabs feature a gold-bordered emerald green gradient, dynamic shadows, and 3D hover/press physics.

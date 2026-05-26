@@ -1282,8 +1282,11 @@ body[data-theme="bevel-night"] .v83-burger-hint {
     padding: 0 !important;
   }
 
-  /* Move tabs container to the bottom of the sheet body */
+  /* Move tabs container to the bottom of the sheet body as a grid */
   #v83MobileDetailContent .v83-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
     order: 2 !important;
     position: sticky !important;
     bottom: 0 !important;
@@ -1291,9 +1294,10 @@ body[data-theme="bevel-night"] .v83-burger-hint {
     border-top: 1px solid var(--border) !important;
     border-bottom: none !important;
     margin: 0 !important;
-    padding: 8px 12px 10px !important;
+    padding: 10px 14px 14px !important;
     background: var(--surface) !important;
     z-index: 2 !important;
+    overflow: visible !important;
   }
   #v83MobileDetailContent .v83-tab-panel {
     order: 1 !important;
@@ -1323,4 +1327,66 @@ body[data-theme="bevel-night"] .v83-burger-hint {
   .v83-cmp-diff-only {
     order: 1 !important;
   }
+}
+
+/* =========================================================
+   V83 — Details Pane Tabs styling: identical size and
+   arrangement to the main home screen choices cards
+   ========================================================= */
+.v83-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px !important;
+  border: none !important;
+  padding: 10px 14px !important;
+  margin: 0 0 16px 0 !important;
+  overflow: visible !important;
+}
+
+.v83-tabs > button:nth-child(5) {
+  grid-column: span 2 !important;
+}
+
+.v83-tab-btn {
+  min-height: 54px !important;
+  border-radius: 14px !important;
+  padding: 10px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  border: 1.5px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.22s cubic-bezier(.22,.68,0,1.2) !important;
+  cursor: pointer !important;
+  text-align: center !important;
+}
+
+.v83-tab-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+.v83-tab-btn:active {
+  transform: translateY(1px) !important;
+}
+
+/* Active tab style: premium gold-bordered emerald gradient matching home cards */
+.v83-tab-btn.active {
+  background: linear-gradient(135deg, #0d4a41 0%, #196d5e 60%, #1e8a74 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(13, 74, 65, 0.35), 0 0 0 1px rgba(201, 168, 76, 0.1) !important;
+}
+
+/* Theme support for active tab buttons */
+body[data-theme="quran-night"] .v83-tab-btn.active,
+body[data-theme="bevel-night"] .v83-tab-btn.active {
+  background: linear-gradient(135deg, #051410 0%, #0d2e24 60%, #144436 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #f0ead8 !important;
+  box-shadow: 0 8px 24px rgba(5, 20, 16, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.15) !important;
 }
