@@ -250,6 +250,7 @@
     v83DetailState.groupId=Number(id);
     v83MobileState.open=true;
     document.body.classList.add('v83-mobile-sheet-open');
+    if(typeof lockBodyScrollV78==='function') lockBodyScrollV78();
     renderDetailPane();
     return true;
   }
@@ -257,6 +258,7 @@
   function closeMobileSheet(){
     v83MobileState.open=false;
     document.body.classList.remove('v83-mobile-sheet-open');
+    if(typeof unlockBodyScrollV78==='function') unlockBodyScrollV78();
   }
 
   function patchMobileGroupDetail(){
@@ -291,7 +293,7 @@
   };
 
   document.addEventListener('click',function(e){
-    if(e.target.closest('[data-v83-mobile-close]')){
+    if(e.target.closest('[data-v83-mobile-close]') || e.target.id==='v83MobileDetailSheet' || e.target.classList.contains('v83-mobile-sheet')){
       closeMobileSheet();
       return;
     }

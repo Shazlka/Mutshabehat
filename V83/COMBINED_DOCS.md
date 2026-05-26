@@ -883,3 +883,7 @@ This version implements extensive, modern visual upgrades to establish a high-en
 
 ### 11. 📏 Mobile Detailed Pane Font Scale
 - **Optimized Mobile Layout**: Reduced the Ayah/verse font size inside the mobile detailed sheet (`#v83MobileDetailContent`) and desktop-style detailed pane on mobile viewports by 60% (`calc(var(--verse-fs-mobile) * 0.6)`). This prevents text overflow, respects user-selected scaling, and ensures that long verses fit the window screen beautifully.
+
+### 12. 🚫 Mobile Background Scroll Locking
+- **Zero Scroll Leakage**: Linked the mobile detailed sheet lifecycle to the Safari-optimized global scroll lock system (`lockBodyScrollV78` and `unlockBodyScrollV78`). This completely locks the background main window viewport while the mobile detail drawer is active, allowing friction-free scrolling only inside the drawer.
+- **Dismiss on Backdrop Tap**: Tapping anywhere on the dark blurred backdrop overlay outside the detail sheet container now smoothly closes the detailed drawer and unlocks scrolling automatically.
