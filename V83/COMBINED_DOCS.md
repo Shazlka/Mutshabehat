@@ -875,8 +875,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 14 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260526_7` across styles, scripts, and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 15 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_8` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
@@ -905,8 +905,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 - **Same Size & Layout**: Arranged the 5 tabs in a beautifully balanced 2-column grid (`الآيات` & `الاختلافات` / `الملاحظات` & `التفسير` / `مرتبط` spanning full-width). Active tabs feature a gold-bordered emerald green gradient, dynamic shadows, and 3D hover/press physics.
 - **Mobile Viewport Optimization**: On mobile devices, decreased horizontal container margins/paddings (`padding: 10px 8px 14px`) to expand tabs to the maximum screen width, and increased their minimum heights to a substantial **`64px`** with an ergonomic `16px` border-radius for effortless thumb pressing.
 
-### 17. 🎛️ Premium Mobile Navigation Actions Grid
-- **Arrangement & Styling**: Redesigned all action buttons inside the mobile detailed sheet header (`رجوع`, `السابق`, `التالي`, and `تعديل` when active) to match the exact size, tactile boundaries, and arrangement as the main home screen choices cards and details tabs.
-- **Dynamic 2-Column Grid**: Laid out buttons in a beautiful 2-column grid using the new flat container `.v83-mobile-buttons-grid` inside the bottom control sheet.
-- **Active Accents & Theme Support**: Previous and Next buttons display with a premium gold-bordered dark emerald green gradient, and the Modify (Edit) button displays in a high-end gold gradient. The Back (`رجوع`) button dynamically spans the full 2 columns when the Modify button is hidden (such as on automated databases).
-- **Mobile Width & Height Expansion**: Reduced the grid's horizontal padding (`padding: 10px 8px 14px`) to stretch buttons edge-to-edge, and boosted their minimum heights to **`64px`** with an ergonomic `16px` border-radius to ensure maximum accessibility and thumb-reach convenience.
+### 17. 🎛️ Premium Mobile Navigation Actions Bar (Single Row!)
+- **Arrangement & Styling**: Redesigned all action buttons inside the mobile detailed sheet header (`رجوع`, `السابق`, `التالي`, and `تعديل` when active) to match the exact size, tactile boundaries, and aesthetics of the main home screen choices cards and details tabs.
+- **Sleek Single-Row Flexbox**: Placed all buttons in a **single horizontal row** using `display: flex !important` and `flex-direction: row !important` with `flex: 1` allocation. This distributes screen space perfectly so all buttons reside on one level.
+- **Active Accents & Theme Support**: Previous and Next buttons display with a premium gold-bordered dark emerald green gradient, and the Modify (Edit) button displays in a high-end gold gradient. The Back (`رجوع`) button dynamically sits at the edge and grows automatically when Modify is hidden.
+- **Mobile Width & Height Expansion**: Reduced horizontal padding (`padding: 10px 8px 14px`) to stretch buttons edge-to-edge, and boosted their minimum heights to **`64px`** with an ergonomic `16px` border-radius to ensure maximum accessibility and thumb-reach convenience.

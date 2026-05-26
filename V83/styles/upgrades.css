@@ -1427,8 +1427,9 @@ body[data-theme="bevel-night"] .v83-tab-btn.active {
    size, arrangement, and hover/press behaviors as tabs
    ========================================================= */
 .v83-mobile-buttons-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
   gap: 10px !important;
   width: 100% !important;
   padding: 10px 14px 14px !important;
@@ -1436,6 +1437,8 @@ body[data-theme="bevel-night"] .v83-tab-btn.active {
 }
 
 .v83-mobile-buttons-grid button {
+  flex: 1 !important;
+  min-width: 0 !important;
   min-height: 54px !important;
   border-radius: 14px !important;
   padding: 10px 12px !important;
@@ -1500,11 +1503,7 @@ body[data-theme="bevel-night"] .v83-mobile-buttons-grid button.v83-mobile-edit {
   box-shadow: 0 8px 24px rgba(61, 47, 15, 0.6) !important;
 }
 
-/* Handle grid columns dynamically when the Modify button is hidden */
+/* Handle visibility when the Modify button is hidden */
 .v83-mobile-buttons-grid button.v83-mobile-edit[hidden] {
   display: none !important;
-}
-
-.v83-mobile-buttons-grid button.v83-mobile-edit[hidden] ~ button.v83-mobile-close {
-  grid-column: span 2 !important;
 }
