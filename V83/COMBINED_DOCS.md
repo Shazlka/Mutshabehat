@@ -875,8 +875,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 ### 8. 🧼 Mobile Toolbar Decluttering
 - **Removed Favorite Button**: Fully removed the redundant `mnavFav` button from the bottom navigation bar to optimize space and establish a pristine visual hierarchy, as the premium burger drawer now contains all the necessary settings, database controls, and layout features.
 
-### 9. ☁️ Version 15 Cache-Busters
-- Promoted all query-string cache-busters to `v83_upgrades_20260526_8` across styles, scripts, and HTML imports to force immediate browser reloads.
+### 9. ☁️ Version 16 Cache-Busters
+- Promoted all query-string cache-busters to `v83_upgrades_20260526_9` across styles, scripts, and HTML imports to force immediate browser reloads.
 
 ### 10. 🧹 Ayah Preview Box Removal
 - **Streamlined Card Aesthetics**: Completely removed the collapsed `.v83-preview` (Ayah preview box) from all group cards in both desktop and mobile viewports. This delivers a cleaner, faster, and highly focused list-view layout while avoiding extra DOM weight and redundant script processing.
@@ -893,7 +893,7 @@ This version implements extensive, modern visual upgrades to establish a high-en
 - **Visual Success Toast**: Displays a success toast notification immediately (e.g., "تم نسخ الآية: البقرة (5)") to confirm clipboard copy action.
 
 ### 14. 📱 Bottom-First Ergonomic Mobile Layout
-- **Ergonomic Reorganization**: Moved the detailed sheet's tabs (`.v83-tabs`), sheet navigation buttons (Back, Prev, Next, Edit in `.v83-mobile-sheet-head`), and comparison mode selection buttons (`.v83-cmp-modes`) to the bottom of the viewport on mobile devices.
+- **Ergonomic Reorganization**: Moved the detailed sheet's tabs (`.v83-tabs`) and comparison mode selectors to the bottom of the viewport on mobile devices.
 - **Thumb-Friendly Experience**: Reordered elements via flexbox order styling, ensuring active content scrolls independently at the top while all controls remain static and comfortable for one-handed thumb interaction at the bottom edge.
 
 ### 15. 🎨 Overlap-Free Arabic Highlights Tuning
@@ -910,3 +910,8 @@ This version implements extensive, modern visual upgrades to establish a high-en
 - **Sleek Single-Row Flexbox**: Placed all buttons in a **single horizontal row** using `display: flex !important` and `flex-direction: row !important` with `flex: 1` allocation. This distributes screen space perfectly so all buttons reside on one level.
 - **Active Accents & Theme Support**: Previous and Next buttons display with a premium gold-bordered dark emerald green gradient, and the Modify (Edit) button displays in a high-end gold gradient. The Back (`رجوع`) button dynamically sits at the edge and grows automatically when Modify is hidden.
 - **Mobile Width & Height Expansion**: Reduced horizontal padding (`padding: 10px 8px 14px`) to stretch buttons edge-to-edge, and boosted their minimum heights to **`64px`** with an ergonomic `16px` border-radius to ensure maximum accessibility and thumb-reach convenience.
+
+### 18. 🏷️ Top-Aligned Title for Mobile Sheet View
+- **Isolated Title Placement**: Extracted the dynamic header title (`.v83-mobile-title`) from the bottom buttons container into a dedicated, clean, top-level layout wrapper (`.v83-mobile-sheet-top-title`).
+- **Flexible Ordering**: Anchored the wrapper at the **very top of the detailed sheet card** using `order: 1 !important` in flexbox, while the main verse text body sits in the middle (`order: 2 !important`), and the navigation control bar sits at the bottom (`order: 3 !important`).
+- **Elegant Borders & Background**: Configured a centered, spacious padding layout with a solid bottom border separating the active title context cleanly from the Quranic text area.
