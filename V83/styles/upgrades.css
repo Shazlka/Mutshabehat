@@ -1304,7 +1304,7 @@ body[data-theme="bevel-night"] .v83-burger-hint {
     border-top: 1px solid var(--border) !important;
     border-bottom: none !important;
     margin: 0 !important;
-    padding: 10px 14px 14px !important;
+    padding: 10px 8px 14px !important; /* Maximum width expansion */
     background: var(--surface) !important;
     z-index: 2 !important;
     overflow: visible !important;
@@ -1315,6 +1315,27 @@ body[data-theme="bevel-night"] .v83-burger-hint {
     overflow-y: auto !important;
     padding: 12px 12px 20px !important;
     -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Make mobile tab buttons span maximum screen width and taller in height for easy press */
+  #v83MobileDetailContent .v83-tab-btn {
+    min-height: 64px !important;
+    border-radius: 16px !important;
+    font-size: 1.05rem !important;
+    padding: 12px 14px !important;
+  }
+
+  /* Make mobile action buttons container span maximum screen width and taller in height for easy press */
+  .v83-mobile-buttons-grid {
+    padding: 10px 8px 14px !important; /* Maximum width expansion */
+    gap: 8px !important;
+  }
+
+  .v83-mobile-buttons-grid button {
+    min-height: 64px !important;
+    border-radius: 16px !important;
+    font-size: 1.05rem !important;
+    padding: 12px 14px !important;
   }
 
   /* Move comparison mode selector buttons to the bottom of comparison panel */
