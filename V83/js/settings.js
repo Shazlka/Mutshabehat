@@ -212,6 +212,10 @@ function openAppSettings(){
 <div class="sett-data-tool-info"><b>ملاحظات الإصدار</b><small>عرض آخر التغييرات والتحسينات</small></div>
 <button onclick="openReleaseNotes()">Release Notes</button>
 </div>
+<div class="sett-data-tool">
+<div class="sett-data-tool-info"><b>تنزيل التطبيق</b><small>فتح نسخة V83 المباشرة على GitHub Pages</small></div>
+<button onclick="window.open('https://shazlka.github.io/Mutshabehat/V83/','_blank')">⬇ فتح التطبيق</button>
+</div>
 </div>
 </div>
 
