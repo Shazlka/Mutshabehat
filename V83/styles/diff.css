@@ -1,0 +1,267 @@
+/* =========================================================
+   diff.css — DiffHighlighter component styles
+   All selectors are prefixed .dh-* to avoid collisions.
+   ========================================================= */
+
+/* ── Root ─────────────────────────────────────────────────── */
+.dh-root {
+  direction: rtl;
+  font-family: var(--uifont, 'Cairo', 'Readex Pro', sans-serif);
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.dh-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.dh-title {
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.5;
+  flex: 1;
+  min-width: 0;
+}
+
+.dh-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* diffType badge */
+.dh-type-badge {
+  display: inline-block;
+  background: color-mix(in srgb, var(--primary, #0f5a45) 10%, transparent);
+  color: var(--primary2, var(--primary, #0f5a45));
+  border: 1px solid color-mix(in srgb, var(--primary, #0f5a45) 28%, transparent);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: .76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Word / Char toggle */
+.dh-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: .82rem;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  transition: border-color .15s ease;
+  color: var(--text);
+  min-height: 34px;
+}
+.dh-toggle:hover         { border-color: var(--primary, #0f5a45); }
+.dh-toggle:focus-visible {
+  outline: 2px solid var(--primary, #0f5a45);
+  outline-offset: 2px;
+}
+
+.dh-toggle-opt        { color: var(--muted); font-weight: 600; }
+.dh-toggle-opt.active { color: var(--primary2, var(--primary, #0f5a45)); font-weight: 900; }
+.dh-toggle-sep        { color: var(--border); }
+
+/* ── Grid ─────────────────────────────────────────────────── */
+.dh-grid {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.dh-grid-2 {
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Consecutive-pair row (3+ verses) */
+.dh-pair {
+  display: grid;
+  gap: 14px;
+}
+
+@media (max-width: 850px) {
+  .dh-grid-2,
+  .dh-pair { grid-template-columns: 1fr; }
+}
+
+/* ── Verse card ───────────────────────────────────────────── */
+.dh-verse-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: var(--soft, var(--surface));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Card header row */
+.dh-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dh-surah-name {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.dh-ayah-badge {
+  background: var(--primary, #0f5a45);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: .74rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  min-width: 26px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ── Verse text ───────────────────────────────────────────── */
+.dh-verse-text {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 2.4;
+  font-family: var(--qfont, 'Amiri Quran', 'Readex Pro', serif);
+  color: var(--text);
+  direction: rtl;
+  text-align: right;
+  word-break: break-word;
+}
+
+/* ── Diff tokens (word level) ─────────────────────────────── */
+.dh-token {
+  display: inline;
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+
+.dh-same {
+  /* transparent — shared words get no background */
+}
+
+.dh-added {
+  background: #d4edda;
+  border: 1px solid #a8d5b5;
+  color: #1a5c33;
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+
+.dh-removed {
+  background: #f8d7da;
+  border: 1px solid #f5a8ad;
+  color: #7b1d22;
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+
+.dh-changed {
+  background: #fff3cd;
+  border: 1px solid #fad67d;
+  color: #6b4c00;
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+
+/* ── Char-level diff within a changed token ───────────────── */
+.dh-char-added {
+  background: #a8d5b5;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.dh-char-removed {
+  background: #f5a8ad;
+  border-radius: 3px;
+  padding: 0 2px;
+  text-decoration: line-through;
+}
+
+.dh-char-same {
+  /* inherits parent dh-changed styling */
+}
+
+/* ── Dark theme overrides ─────────────────────────────────── */
+[data-theme="bevel-night"] .dh-added,
+[data-theme="v83-dark"]    .dh-added {
+  background: #1a3a24;
+  border-color: #2d6b40;
+  color: #7fd49a;
+}
+
+[data-theme="bevel-night"] .dh-removed,
+[data-theme="v83-dark"]    .dh-removed {
+  background: #3a1a1c;
+  border-color: #6b2d30;
+  color: #f0a0a5;
+}
+
+[data-theme="bevel-night"] .dh-changed,
+[data-theme="v83-dark"]    .dh-changed {
+  background: #2a2210;
+  border-color: #6b5a20;
+  color: #f0d080;
+}
+
+[data-theme="bevel-night"] .dh-char-added,
+[data-theme="v83-dark"]    .dh-char-added {
+  background: #2d6b40;
+}
+
+[data-theme="bevel-night"] .dh-char-removed,
+[data-theme="v83-dark"]    .dh-char-removed {
+  background: #6b2d30;
+}
+
+/* ── Legend bar ───────────────────────────────────────────── */
+.dh-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: .76rem;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+.dh-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.dh-legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+
+.dh-legend-dot.dh-same    { background: var(--border); }
+.dh-legend-dot.dh-added   { background: #d4edda; border-color: #a8d5b5; }
+.dh-legend-dot.dh-removed { background: #f8d7da; border-color: #f5a8ad; }
+.dh-legend-dot.dh-changed { background: #fff3cd; border-color: #fad67d; }
