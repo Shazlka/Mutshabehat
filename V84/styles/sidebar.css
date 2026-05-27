@@ -1,0 +1,114 @@
+.v83-sidebar{background:linear-gradient(180deg,var(--v83-green-1),var(--v83-green-2));color:#e9f3ef;border-color:#1f5d55}
+.v83-brand{padding:14px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;gap:10px;align-items:center}
+.v83-badge{border:1px solid rgba(201,168,76,.6);color:#f6e6ba;border-radius:10px;padding:4px 10px;font-weight:900}
+.v83-brand h3{margin:0;font-size:1.1rem;color:#fff}
+.v83-brand small{color:#b6cdc7}
+.v83-side-sec{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.09)}
+.v83-side-sec h4{margin:0 0 8px;color:#f4dfae}
+.v83-menu button{width:100%;text-align:right;background:transparent;color:#f8fafc;border:1px solid rgba(255,255,255,.16);margin-bottom:8px}
+.v83-menu button.active,.v83-menu button:hover{background:rgba(201,168,76,.2);border-color:var(--v83-gold)}
+.v83-side-search{width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);color:#fff;padding:9px 10px}
+.v83-side-search::placeholder{color:#c6d8d1}
+
+/* =========================================================
+   V83 — Sidebar search & filter section
+   ========================================================= */
+
+/* Scroll wrapper: lets sidebar content grow without clipping */
+.v83-side-scroll{overflow-y:auto;overflow-x:hidden;flex:1;min-height:0}
+
+/* Filter status line */
+.v83-filter-status{display:block;color:#b6cdc7;font-size:.8rem;font-weight:700;margin:0 0 10px}
+
+/* Label above the sort select */
+.v83-side-label{display:block;color:#f4dfae;font-size:.8rem;font-weight:800;margin-bottom:4px;margin-top:2px}
+
+/* Sort dropdown styled for dark sidebar */
+.v83-side-select{
+  width:100%;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.22);
+  color:#f0f8f5;
+  border-radius:10px;
+  padding:8px 10px;
+  font-family:inherit;
+  font-weight:800;
+  font-size:.86rem;
+  direction:rtl;
+  cursor:pointer;
+  margin-bottom:8px;
+  appearance:none;
+  -webkit-appearance:none;
+}
+.v83-side-select option{background:#0f3f37;color:#e9f3ef}
+
+/* Result counter */
+.v83-side-counter{
+  display:inline-flex;
+  background:rgba(255,255,255,.1)!important;
+  border-color:rgba(255,255,255,.2)!important;
+  color:#e9f3ef!important;
+  margin-bottom:8px;
+  font-size:.8rem;
+}
+
+/* Vertical stack of filter action buttons */
+.v83-side-filter-btns{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.v83-side-filter-btns button{
+  width:100%;
+  text-align:right;
+  background:rgba(255,255,255,.07);
+  color:#e9f3ef;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:10px;
+  padding:8px 10px;
+  font-size:.84rem;
+  font-weight:800;
+  cursor:pointer;
+}
+.v83-side-filter-btns button:hover{background:rgba(255,255,255,.14)}
+.v83-side-filter-btns #onlyResultsBtn.active{background:rgba(201,168,76,.22);border-color:var(--v83-gold);color:#f6e6ba}
+
+/* Surah filter panel — expands inside sidebar */
+.v83-side-filter-search{margin:6px 0 8px!important}
+.v83-side-filters #surahFilterPanel{padding-top:6px}
+
+/* Range tabs in sidebar */
+.v83-side-filters .range-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.v83-side-filters .range-tabs button{
+  flex:1 1 auto;
+  background:rgba(255,255,255,.08);
+  color:#c6d8d1;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:8px;
+  padding:5px 6px;
+  font-size:.74rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+.v83-side-filters .range-tabs button.active{background:rgba(201,168,76,.24);border-color:var(--v83-gold);color:#f6e6ba}
+
+/* Surah pill grid inside sidebar */
+.v83-side-filters .surah-grid{
+  grid-template-columns:repeat(auto-fill,minmax(108px,1fr));
+  max-height:none;
+  gap:6px;
+}
+.v83-side-filters .surah-pill{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.12);
+  color:#e9f3ef;
+  border-radius:10px;
+  padding:5px 7px;
+  font-size:.76rem;
+}
+.v83-side-filters .surah-pill.active{background:rgba(201,168,76,.22);border-color:var(--v83-gold);color:#f6e6ba}
+.v83-side-filters .surah-pill.no-match{opacity:.32}
+.v83-side-filters .no-badge{background:rgba(255,255,255,.14);color:#e9f3ef;min-width:22px;height:20px;font-size:.7rem}
+.v83-side-filters .count-badge{background:rgba(21,128,61,.32);color:#86efac;min-width:22px;height:20px;font-size:.7rem}
+
+/* Surah count line */
+.v83-side-filters .surah-count-line{color:#9ab8b0;font-size:.74rem;margin:5px 0}
+
+/* "No results" hint in dark context */
+.v83-side-filters .hint{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:#9ab8b0}

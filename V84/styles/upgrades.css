@@ -1,0 +1,1543 @@
+/* ==========================================================
+   V83 UI/UX UPGRADES — upgrades.css
+   Covers: 7 upgrade areas. Import this AFTER themes.css.
+   ========================================================== */
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 1 — Home Screen Glow-Up
+   ────────────────────────────────────────────────────────── */
+
+/* Animated hero background */
+.home-screen {
+  padding: 0 18px 18px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #0b2e28 0%, #0f3f37 40%, #1a2f3a 100%) !important;
+  border: 1px solid rgba(201,168,76,.25) !important;
+  border-radius: 28px !important;
+  padding: 44px 32px !important;
+  color: #f0ede4;
+  box-shadow: 0 20px 50px rgba(11,46,40,.35), 0 0 0 1px rgba(201,168,76,.1) !important;
+}
+
+/* Decorative Arabic pattern overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(201,168,76,.10) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(75,99,230,.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Rotating decorative rings */
+.hero::after {
+  content: '۞';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9rem;
+  color: rgba(201,168,76,.05);
+  pointer-events: none;
+  animation: heroSpin 60s linear infinite;
+  line-height: 1;
+}
+
+@keyframes heroSpin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+.hero h2 {
+  color: #f6e8b4;
+  font-size: 1.7rem;
+  margin: 0 0 10px;
+  position: relative;
+  text-shadow: 0 2px 14px rgba(201,168,76,.25);
+}
+
+.hero > p {
+  color: #b8d0c8;
+  font-size: 1rem;
+  position: relative;
+  margin: 0 0 28px;
+}
+
+/* Entry animation for home screen */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero, .choice-card {
+  animation: fadeSlideUp 0.42s cubic-bezier(.22,.68,0,1.2) both;
+}
+
+.choice-card:nth-child(1) { animation-delay: .05s; }
+.choice-card:nth-child(2) { animation-delay: .14s; }
+
+/* Choice cards — premium glow treatment */
+.choice-card.personal {
+  background: linear-gradient(135deg, #0d4a41 0%, #196d5e 60%, #1e8a74 100%) !important;
+  border: 1.5px solid rgba(201,168,76,.35) !important;
+  box-shadow: 0 16px 38px rgba(13,74,65,.4), 0 0 0 1px rgba(201,168,76,.08) !important;
+  transition: transform .22s ease, box-shadow .22s ease !important;
+}
+
+.choice-card.auto {
+  background: linear-gradient(135deg, #1a2a4a 0%, #1e3464 60%, #24448c 100%) !important;
+  border: 1.5px solid rgba(99,137,230,.4) !important;
+  box-shadow: 0 16px 38px rgba(26,42,74,.4), 0 0 0 1px rgba(99,137,230,.08) !important;
+  transition: transform .22s ease, box-shadow .22s ease !important;
+}
+
+.choice-card.personal:hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  box-shadow: 0 24px 52px rgba(13,74,65,.5), 0 0 0 2px rgba(201,168,76,.25) !important;
+}
+
+.choice-card.auto:hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  box-shadow: 0 24px 52px rgba(26,42,74,.5), 0 0 0 2px rgba(99,137,230,.25) !important;
+}
+
+.choice-card span {
+  font-size: 2.6rem !important;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));
+}
+
+.choice-card b {
+  font-size: 1.15rem;
+  letter-spacing: .01em;
+}
+
+.choice-card em {
+  background: rgba(255,255,255,.14) !important;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,.18) !important;
+  padding: 6px 16px !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+  transition: background .2s ease !important;
+}
+
+.choice-card:hover em {
+  background: rgba(255,255,255,.22) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 2 — Group Cards Visual Upgrade
+   ────────────────────────────────────────────────────────── */
+
+/* Ensure group card titles use the correct Quran font and aren't mangled by surah-name-v4 */
+.v83-group-card .group-title,
+.pv-title-wrap .group-title {
+  font-family: "Cairo", var(--uifont), sans-serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5 !important;
+  font-weight: 700 !important;
+  text-rendering: optimizeLegibility !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+  direction: rtl !important;
+}
+
+/* Left border accent per dominant part type */
+.v83-group-card { position: relative; }
+
+.v83-group-card.card-type-shared  { border-right: 3px solid #22c55e !important; }
+.v83-group-card.card-type-diff    { border-right: 3px solid #c9a84c !important; }
+.v83-group-card.card-type-diff2   { border-right: 3px solid #7c3aed !important; }
+.v83-group-card.card-type-diff3   { border-right: 3px solid #2dd4bf !important; }
+.v83-group-card.card-type-addition{ border-right: 3px solid #3b82f6 !important; }
+.v83-group-card.card-type-unique  { border-right: 3px solid #ef4444 !important; }
+
+/* Favorite glow */
+.v83-group-card.is-favorite {
+  box-shadow: 0 4px 14px rgba(15,23,42,.05), inset 3px 0 0 0 #f59e0b !important;
+  background: linear-gradient(to left, var(--surface) 96%, rgba(245,158,11,.08)) !important;
+}
+
+/* Surah tags — colorful pills */
+.v83-group-card .group-tags .tag {
+  background: linear-gradient(135deg, rgba(75,99,230,.1), rgba(49,84,212,.08)) !important;
+  border-color: rgba(75,99,230,.22) !important;
+  color: var(--primary2) !important;
+  font-weight: 900 !important;
+  transition: background .18s ease, transform .12s ease !important;
+}
+
+.v83-group-card .group-tags .tag:hover {
+  background: linear-gradient(135deg, rgba(75,99,230,.18), rgba(49,84,212,.14)) !important;
+  transform: scale(1.04) !important;
+}
+
+.v83-group-card .group-tags .unique-surah-tag {
+  background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(220,38,38,.08)) !important;
+  border-color: rgba(239,68,68,.3) !important;
+  color: #dc2626 !important;
+}
+
+/* Verse count badge — distinct teal */
+.v83-group-card .tag:last-child {
+  background: linear-gradient(135deg, rgba(13,148,136,.12), rgba(20,184,166,.08)) !important;
+  border-color: rgba(13,148,136,.3) !important;
+  color: #0f766e !important;
+}
+
+/* Staggered card entry animation */
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#groups .v83-group-card {
+  animation: cardFadeIn 0.3s ease both;
+}
+
+#groups .v83-group-card:nth-child(1)  { animation-delay: .00s }
+#groups .v83-group-card:nth-child(2)  { animation-delay: .03s }
+#groups .v83-group-card:nth-child(3)  { animation-delay: .06s }
+#groups .v83-group-card:nth-child(4)  { animation-delay: .09s }
+#groups .v83-group-card:nth-child(5)  { animation-delay: .12s }
+#groups .v83-group-card:nth-child(6)  { animation-delay: .15s }
+#groups .v83-group-card:nth-child(7)  { animation-delay: .18s }
+#groups .v83-group-card:nth-child(8)  { animation-delay: .21s }
+#groups .v83-group-card:nth-child(n+9){ animation-delay: .24s }
+
+/* Number badge — completed state */
+.v83-group-card .group-num.completed {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  color: #fff !important;
+  border: 2px solid rgba(255,255,255,.3) !important;
+  box-shadow: 0 4px 10px rgba(22,163,74,.3) !important;
+}
+
+/* Selected card highlight */
+#groups .v83-group-card.is-selected {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(75,99,230,.2), 0 10px 26px rgba(15,23,42,.1) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 3 — "Quran Night" Dark Theme
+   ────────────────────────────────────────────────────────── */
+
+body[data-theme="quran-night"] {
+  --bg: #081812;
+  --surface: #0e2219;
+  --soft: #122a20;
+  --text: #f0ead8;
+  --muted: #8aad97;
+  --border: #1f4030;
+  --primary: #c9a84c;
+  --primary2: #b8942e;
+  --green: #3ec97e;
+  --gold: #c9a84c;
+  --shadow: 0 14px 34px rgba(0,0,0,.45);
+}
+
+body[data-theme="quran-night"] .app-header {
+  background: rgba(14,34,25,.96) !important;
+  border-color: #1f4030 !important;
+}
+
+body[data-theme="quran-night"] .v83-sidebar {
+  background: linear-gradient(180deg, #081410, #051210) !important;
+  border-color: #1a3528 !important;
+}
+
+body[data-theme="quran-night"] .v83-badge {
+  border-color: rgba(201,168,76,.5) !important;
+  color: #f6e6ba !important;
+}
+
+body[data-theme="quran-night"] .brand .logo {
+  background: linear-gradient(135deg, #c9a84c, #8a6a1e) !important;
+  color: #fff !important;
+}
+
+body[data-theme="quran-night"] .hero {
+  background: linear-gradient(145deg, #060e09, #0d1f14, #0a1a10) !important;
+  border-color: rgba(201,168,76,.2) !important;
+}
+
+body[data-theme="quran-night"] .choice-card.personal {
+  background: linear-gradient(135deg, #0a1f12 0%, #122f1e 60%, #163825 100%) !important;
+  border-color: rgba(201,168,76,.28) !important;
+}
+
+body[data-theme="quran-night"] .choice-card.auto {
+  background: linear-gradient(135deg, #0a1420 0%, #0f2030 60%, #142840 100%) !important;
+  border-color: rgba(201,168,76,.2) !important;
+}
+
+body[data-theme="quran-night"] .v83-group-card {
+  background: var(--surface) !important;
+  border-color: #1f4030 !important;
+}
+
+body[data-theme="quran-night"] .primary,
+body[data-theme="quran-night"] .choice-card {
+  background: linear-gradient(135deg, #b8942e, #c9a84c) !important;
+  color: #0e1a10 !important;
+}
+
+body[data-theme="quran-night"] .shared { color: #4cde88; background: rgba(76,222,136,.12) !important; }
+body[data-theme="quran-night"] .diff   { color: #e8c668; background: rgba(232,198,104,.12) !important; }
+body[data-theme="quran-night"] .diff2  { color: #b78cf0; background: rgba(183,140,240,.12) !important; }
+body[data-theme="quran-night"] .diff3  { color: #5ee8d8; background: rgba(94,232,216,.12) !important; }
+body[data-theme="quran-night"] .addition{ color: #74aeff; background: rgba(116,174,255,.12) !important; }
+body[data-theme="quran-night"] .unique { color: #ff7a7a; background: rgba(255,122,122,.12) !important; }
+
+body[data-theme="quran-night"] .group-num {
+  background: linear-gradient(135deg, #1e4a34, #1a3a2a) !important;
+  color: #c9a84c !important;
+  border: 1px solid rgba(201,168,76,.2) !important;
+}
+
+body[data-theme="quran-night"] .surah-name { color: #c9a84c !important; }
+
+body[data-theme="quran-night"] .v83-group-card .group-tags .tag {
+  background: rgba(201,168,76,.1) !important;
+  border-color: rgba(201,168,76,.22) !important;
+  color: #c9a84c !important;
+}
+
+body[data-theme="quran-night"] .toolbar,
+body[data-theme="quran-night"] .filter-card,
+body[data-theme="quran-night"] .sett-card,
+body[data-theme="quran-night"] .verse-card {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 4 — Search Bar Always Visible
+   ────────────────────────────────────────────────────────── */
+
+/* Desktop: always show the search inside the toolbar  */
+@media (min-width: 851px) {
+  /* Override the rule that hides #mainSearchWrap on desktop */
+  .toolbar-tools > #mainSearchWrap {
+    display: flex !important;
+    flex: 3 1 auto !important;
+  }
+
+  /* Clean pill search style */
+  #mainSearchWrap {
+    background: var(--soft) !important;
+    border: 1.5px solid var(--border) !important;
+    border-radius: 14px !important;
+    padding: 5px 10px !important;
+    box-shadow: none !important;
+    transition: border-color .18s ease, box-shadow .18s ease !important;
+  }
+
+  #mainSearchWrap:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent) !important;
+  }
+
+  #mainSearchWrap input {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 6px 8px !important;
+    min-width: 180px !important;
+    font-size: .95rem !important;
+  }
+
+  #mainSearchWrap input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Hide clear/close buttons when input is empty — done via JS patch */
+  #mainSearchWrap .danger { display: none !important; }
+}
+
+/* Search clear button only shows when input has value */
+#mainSearchWrap.has-text .outline-icon { display: inline-flex !important; }
+#mainSearchWrap:not(.has-text) .outline-icon { display: none !important; }
+
+/* Style details pane and mobile sheet titles to render beautifully in the modern Cairo font */
+.v83-detail-title,
+.v83-mobile-title {
+  font-family: "Cairo", var(--uifont), sans-serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5 !important;
+  font-weight: 700 !important;
+  text-rendering: optimizeLegibility !important;
+  direction: rtl !important;
+  margin: 0 !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 5 — Detail Pane Empty State
+   ────────────────────────────────────────────────────────── */
+
+/* Elegant empty state */
+.v83-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 220px;
+  text-align: center;
+  padding: 32px 24px !important;
+  border: 1.5px dashed color-mix(in srgb, var(--primary) 25%, var(--border)) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(160deg, var(--surface), var(--soft)) !important;
+  color: var(--muted) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.v83-empty::before {
+  content: '﴾';
+  position: absolute;
+  font-size: 8rem;
+  color: color-mix(in srgb, var(--primary) 6%, transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%);
+  pointer-events: none;
+  font-family: var(--qfont);
+  line-height: 1;
+}
+
+/* Detail pane slide-in when content changes */
+@keyframes detailSlideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+#detailContent > * {
+  animation: detailSlideIn .22s ease both;
+}
+
+/* Detail pane verse cards get enhanced styling */
+.v83-detail-content .verse-card {
+  border-radius: 16px !important;
+  border-left: 3px solid color-mix(in srgb, var(--primary) 35%, var(--border)) !important;
+  transition: border-color .18s ease !important;
+}
+
+.v83-detail-content .verse-card:hover {
+  border-left-color: var(--primary) !important;
+}
+
+/* Detail pane action bar */
+.v83-detail-actions button {
+  border-radius: 12px !important;
+  font-size: .82rem !important;
+  padding: 7px 12px !important;
+  transition: transform .12s ease, background .18s ease !important;
+}
+
+.v83-detail-actions button:active {
+  transform: scale(.96) !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 6 — Mobile Bottom Nav SVG Icons
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 850px) {
+  .v83-mobile-nav button {
+    border-radius: 14px !important;
+    transition: background .15s ease, transform .12s ease !important;
+    padding: 6px 4px !important;
+  }
+
+  .v83-mobile-nav button:active {
+    transform: scale(.9) !important;
+    background: color-mix(in srgb, var(--primary) 12%, transparent) !important;
+  }
+
+  /* Active nav button — pill highlight */
+  .v83-mobile-nav button.nav-active {
+    background: color-mix(in srgb, var(--primary) 14%, transparent) !important;
+    color: var(--primary2) !important;
+  }
+
+  .v83-mobile-nav button.nav-active .mi {
+    color: var(--primary2) !important;
+  }
+
+  .v83-mobile-nav button.nav-active .ml {
+    color: var(--primary2) !important;
+    font-weight: 900 !important;
+  }
+
+  /* SVG icon sizing inside nav buttons */
+  .v83-mobile-nav button .mi svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .v83-mobile-nav button .mi {
+    font-size: 0 !important; /* hide emoji, show SVG */
+    line-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 7 — Micro-animations & Polish
+   ────────────────────────────────────────────────────────── */
+
+/* Smooth group open/close via max-height */
+.group-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .32s cubic-bezier(.4,0,.2,1), padding .22s ease, opacity .22s ease !important;
+  opacity: 0;
+}
+
+.group.open .group-body {
+  max-height: 9999px !important;
+  opacity: 1 !important;
+}
+
+/* V83 card: body is hidden via JS — override only for real .group (non-v83) */
+#groups .v83-group-card .group-body,
+#groups .v83-group-card.open .group-body {
+  display: none !important;
+}
+
+/* Surah filter panel slide */
+#surahFilterPanel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .3s cubic-bezier(.4,0,.2,1), opacity .22s ease !important;
+}
+
+#surahFilterPanel:not(.hidden) {
+  max-height: 700px !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* Toast — bounce entrance */
+@keyframes toastBounce {
+  0%   { opacity: 0; transform: translate(-50%, 24px) scale(.9); }
+  60%  { opacity: 1; transform: translate(-50%, -5px) scale(1.03); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.v78-toast.show {
+  animation: toastBounce .32s cubic-bezier(.22,.68,0,1.2) both !important;
+}
+
+/* Button press feel */
+button:active:not(.icon-btn):not(.choice-card) {
+  transform: scale(.97) !important;
+}
+
+/* Sidebar surah pill click ripple */
+.surah-pill {
+  transition: transform .12s ease, background .15s ease, border-color .15s ease !important;
+}
+
+.surah-pill:active {
+  transform: scale(.94) !important;
+}
+
+/* Icon buttons — subtle hover glow */
+.icon-btn.outline-icon:hover {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent) !important;
+}
+
+/* Toolbar buttons hover lift */
+.tools button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(15,23,42,.08) !important;
+}
+
+/* Smooth scrollbar for panels */
+.v83-scroll, .v83-side-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--primary) 30%, var(--border)) transparent;
+}
+
+.v83-scroll::-webkit-scrollbar,
+.v83-side-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.v83-scroll::-webkit-scrollbar-thumb,
+.v83-side-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 30%, var(--border));
+  border-radius: 999px;
+}
+
+/* Modal enter animation */
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(20px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal {
+  animation: modalSlideUp .26s cubic-bezier(.22,.68,0,1.2) both !important;
+}
+
+/* Filter chip animation */
+.active-filter-chips span {
+  animation: fadeSlideUp .2s ease both;
+}
+
+/* Range tab buttons active state animation */
+.range-tabs button {
+  transition: background .15s ease, color .15s ease, border-color .15s ease, transform .12s ease !important;
+}
+
+.range-tabs button:active {
+  transform: scale(.95) !important;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 8 — Green Sidebar Database Widget & Responsive Layout
+   ────────────────────────────────────────────────────────── */
+
+/* Right sidebar database card container */
+.v83-side-db-card {
+  padding: 18px 14px !important;
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  background: rgba(255,255,255,.02) !important;
+}
+
+/* Sidebar Database Title */
+.v83-side-db-title {
+  font-size: 1.22rem !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  margin: 0 0 4px !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.2) !important;
+  font-family: var(--uifont) !important;
+  line-height: 1.3 !important;
+}
+
+/* Sidebar Database Subtitle */
+.v83-side-db-subtitle {
+  font-size: .84rem !important;
+  color: #b6cdc7 !important;
+  margin: 0 0 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+/* Search bar styling inside the sidebar database card */
+.v83-side-db-card .main-search-wrap {
+  display: flex !important;
+  width: 100% !important;
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.2) !important;
+  border-radius: 12px !important;
+  padding: 4px 8px !important;
+  margin-bottom: 14px !important;
+  box-shadow: none !important;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease !important;
+}
+
+.v83-side-db-card .main-search-wrap:focus-within {
+  background: rgba(255,255,255,.14) !important;
+  border-color: #c9a84c !important; /* Gold/Primary highlight */
+  box-shadow: 0 0 0 3px rgba(201,168,76,.18) !important;
+}
+
+.v83-side-db-card .main-search-wrap input {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  padding: 6px 4px !important;
+  font-size: .9rem !important;
+  width: 100% !important;
+}
+
+.v83-side-db-card .main-search-wrap input::placeholder {
+  color: #c6d8d1 !important;
+}
+
+.v83-side-db-card .main-search-wrap input:focus {
+  outline: none !important;
+}
+
+/* Action buttons styling inside the sidebar database card */
+.v83-side-db-actions {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+  margin-top: 10px !important;
+}
+
+.v83-side-db-actions button {
+  width: 100% !important;
+  min-height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: transform .12s ease, background .15s ease, border-color .15s ease !important;
+  padding: 6px !important;
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  color: #f8fafc !important;
+  box-shadow: none !important;
+}
+
+.v83-side-db-actions button:hover {
+  background: rgba(255,255,255,.14) !important;
+  border-color: rgba(255,255,255,.3) !important;
+}
+
+.v83-side-db-actions button:active {
+  transform: scale(.94) !important;
+}
+
+/* Hide text in sidebar buttons to keep them clean and compact */
+.v83-side-db-actions button .btn-text {
+  display: none !important;
+}
+
+.v83-side-db-actions button .btn-icon {
+  display: inline-flex !important;
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
+}
+
+/* Primary "Add" button gold styling */
+.v83-side-db-actions button.primary {
+  background: linear-gradient(135deg, #c9a84c, #b8942e) !important;
+  border-color: rgba(201,168,76,.3) !important;
+  color: #081812 !important;
+}
+
+.v83-side-db-actions button.primary:hover {
+  background: linear-gradient(135deg, #d8b85c, #c9a84c) !important;
+}
+
+/* Syncing/Success/Failed states on Sync GitHub button in sidebar */
+.v83-side-db-actions #syncGitHubBtn.syncing {
+  background: rgba(201,168,76,.2) !important;
+  border-color: #c9a84c !important;
+  color: #c9a84c !important;
+}
+
+.v83-side-db-actions #syncGitHubBtn.ok {
+  background: rgba(34,197,94,.16) !important;
+  border-color: #22c55e !important;
+  color: #4ade80 !important;
+}
+
+.v83-side-db-actions #syncGitHubBtn.err {
+  background: rgba(239,68,68,.16) !important;
+  border-color: #ef4444 !important;
+  color: #f87171 !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE OVERRIDES FOR DATABASE CARD ON MOBILE
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 850px) {
+  /* Show the sidebar container but strip its column styling */
+  .v83-sidebar {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 8px 0 !important;
+    box-shadow: none !important;
+  }
+  
+  /* Scroll wrapper is disabled on mobile for sidebar */
+  .v83-sidebar .v83-side-scroll {
+    overflow: visible !important;
+  }
+
+  /* Hide brand, filters, navigation menu, and tools in the sidebar on mobile */
+  .v83-sidebar .v83-brand,
+  .v83-sidebar .v83-side-filters,
+  .v83-sidebar .v83-menu,
+  .v83-sidebar .v83-side-sec:not(.v83-side-db-card) {
+    display: none !important;
+  }
+
+  /* Transform database widget into a premium white card on mobile */
+  .v83-side-db-card {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 24px !important;
+    padding: 18px !important;
+    box-shadow: var(--shadow) !important;
+    margin: 8px 4px 12px !important;
+  }
+
+  .v83-side-db-card .v83-side-db-title {
+    color: var(--text) !important;
+    text-shadow: none !important;
+  }
+
+  .v83-side-db-card .v83-side-db-subtitle {
+    color: var(--muted) !important;
+  }
+
+  .v83-side-db-card .main-search-wrap {
+    background: var(--soft) !important;
+    border-color: var(--border) !important;
+  }
+
+  .v83-side-db-card .main-search-wrap input {
+    color: var(--text) !important;
+  }
+
+  .v83-side-db-card .main-search-wrap input::placeholder {
+    color: var(--muted) !important;
+  }
+
+  .v83-side-db-card .v83-side-db-actions button {
+    background: var(--soft) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+
+  .v83-side-db-card .v83-side-db-actions button.primary {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border-color: var(--primary2) !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   UPGRADE 8 — V83 Mobile Burger Controls Drawer
+   ────────────────────────────────────────────────────────── */
+
+#v83MobileBurgerMenu {
+  align-items: flex-end !important; /* Slide up from bottom */
+  padding: 0 !important;
+}
+
+.v83-burger-drawer {
+  width: 100% !important;
+  max-width: 600px !important;
+  max-height: 85vh !important;
+  background: var(--surface) !important;
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  border: 1px solid var(--border) !important;
+  border-bottom: none !important;
+  box-shadow: 0 -15px 40px rgba(15, 23, 42, 0.18) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  animation: v83SlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  direction: rtl !important;
+  margin: 0 auto !important;
+}
+
+@keyframes v83SlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.v83-burger-head {
+  padding: 16px 20px !important;
+  background: linear-gradient(135deg, var(--primary), var(--primary2)) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: relative !important;
+}
+
+.v83-burger-head:after {
+  content: "" !important;
+  position: absolute !important;
+  top: 6px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 44px !important;
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 99px !important;
+}
+
+.v83-burger-head h3 {
+  margin: 0 !important;
+  font-size: 1.15rem !important;
+  font-weight: 900 !important;
+}
+
+.v83-burger-close-btn {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  transition: background 0.18s ease !important;
+}
+
+.v83-burger-close-btn:active {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.v83-burger-body {
+  padding: 20px !important;
+  overflow-y: auto !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.v83-burger-section {
+  border-bottom: 1px dashed var(--border) !important;
+  padding-bottom: 20px !important;
+}
+
+.v83-burger-section.no-border {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.v83-burger-section h4 {
+  margin: 0 0 12px 0 !important;
+  font-size: 0.92rem !important;
+  color: var(--muted) !important;
+  font-weight: 800 !important;
+}
+
+/* Database toggle cards */
+.v83-db-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px !important;
+}
+
+.v83-db-card {
+  border: 1.5px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 18px !important;
+  padding: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-align: right !important;
+  font-weight: inherit !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.v83-db-card.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary2)) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 20px rgba(75, 99, 230, 0.22) !important;
+}
+
+.v83-db-card .icon {
+  font-size: 1.6rem !important;
+}
+
+.v83-db-card .info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+.v83-db-card .info b {
+  font-size: 0.88rem !important;
+  font-weight: 900 !important;
+}
+
+.v83-db-card .info small {
+  font-size: 0.72rem !important;
+  opacity: 0.85 !important;
+}
+
+.v83-db-card.active .info small {
+  opacity: 0.95 !important;
+}
+
+/* Sorting rows */
+.v83-sort-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.v83-sort-row {
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 14px !important;
+  padding: 11px 14px !important;
+  text-align: right !important;
+  font-weight: 800 !important;
+  font-size: 0.88rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-sort-row .check {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: transparent !important;
+  font-size: 0.72rem !important;
+  border: 1.5px solid var(--border) !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-sort-row.active {
+  border-color: var(--gold) !important;
+  background: color-mix(in srgb, var(--gold) 8%, var(--surface)) !important;
+  color: var(--text) !important;
+}
+
+.v83-sort-row.active .check {
+  background: var(--gold) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* Preferences Rows */
+.v83-pref-row {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+.v83-pref-row.flex-between {
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 0 !important;
+}
+
+.v83-pref-row > span {
+  font-size: 0.85rem !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+}
+
+.v83-chips-row {
+  display: flex !important;
+  gap: 6px !important;
+  flex-wrap: wrap !important;
+}
+
+.v83-theme-chip,
+.v83-font-chip {
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 12px !important;
+  padding: 7px 11px !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-theme-chip.active,
+.v83-font-chip.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 10px rgba(75, 99, 230, 0.15) !important;
+}
+
+/* Font scale controls */
+.v83-size-ctrls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: var(--soft) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  padding: 4px 6px !important;
+}
+
+.v83-size-ctrls button {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 10px !important;
+  padding: 5px 12px !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+.v83-size-ctrls span {
+  font-size: 0.85rem !important;
+  font-weight: 900 !important;
+  min-width: 44px !important;
+  text-align: center !important;
+}
+
+/* Action grid */
+.v83-action-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 8px !important;
+}
+
+.v83-action-card {
+  border: 1px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 14px !important;
+  padding: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+}
+
+.v83-action-card.primary {
+  grid-column: 1 / -1 !important;
+  background: linear-gradient(135deg, var(--green), #16a34a) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.v83-action-card.primary:active {
+  background: var(--green) !important;
+}
+
+/* Apply CSS Scale to Verse text blocks */
+.verse-text, .quran-text, .compare-text {
+  font-size: var(--verse-fs, 1.35rem) !important;
+}
+
+@media(max-width:850px) {
+  .verse-text, .quran-text, .compare-text {
+    font-size: var(--verse-fs-mobile, 1.1rem) !important;
+  }
+}
+
+/* Surah selector wrap inside mobile drawer */
+.v83-surah-select-wrap {
+  width: 100% !important;
+  position: relative !important;
+}
+
+.v83-burger-select {
+  width: 100% !important;
+  border: 1.5px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  border-radius: 16px !important;
+  padding: 12px 16px !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  font-family: inherit !important;
+  outline: none !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat !important;
+  background-position: left 16px center !important;
+  background-size: 18px !important;
+  transition: all 0.2s ease !important;
+  direction: rtl !important;
+}
+
+.v83-burger-select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent) !important;
+  background-color: var(--surface) !important;
+}
+
+.v83-burger-hint {
+  margin-top: 10px !important;
+  background: #fef3c7 !important;
+  border: 1px solid #fde68a !important;
+  color: #92400e !important;
+  border-radius: 14px !important;
+  padding: 10px 14px !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  line-height: 1.5 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  direction: rtl !important;
+}
+
+body[data-theme="quran-night"] .v83-burger-hint,
+body[data-theme="bevel-night"] .v83-burger-hint {
+  background: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+  color: #fbbf24 !important;
+}
+
+/* =========================================================
+   V83 — Details Pane Tabs styling: identical size and
+   arrangement to the main home screen choices cards
+   ========================================================= */
+.v83-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px !important;
+  border: none !important;
+  padding: 10px 14px !important;
+  margin: 0 0 16px 0 !important;
+  overflow: visible !important;
+}
+
+.v83-tabs > button:nth-child(5) {
+  grid-column: span 2 !important;
+}
+
+.v83-tab-btn {
+  min-height: 54px !important;
+  border-radius: 14px !important;
+  padding: 10px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  border: 1.5px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.22s cubic-bezier(.22,.68,0,1.2) !important;
+  cursor: pointer !important;
+  text-align: center !important;
+}
+
+.v83-tab-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+.v83-tab-btn:active {
+  transform: translateY(1px) !important;
+}
+
+/* Active tab style: premium gold-bordered emerald gradient matching home cards */
+.v83-tab-btn.active {
+  background: linear-gradient(135deg, #0d4a41 0%, #196d5e 60%, #1e8a74 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(13, 74, 65, 0.35), 0 0 0 1px rgba(201, 168, 76, 0.1) !important;
+}
+
+/* Theme support for active tab buttons */
+body[data-theme="quran-night"] .v83-tab-btn.active,
+body[data-theme="bevel-night"] .v83-tab-btn.active {
+  background: linear-gradient(135deg, #051410 0%, #0d2e24 60%, #144436 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #f0ead8 !important;
+  box-shadow: 0 8px 24px rgba(5, 20, 16, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.15) !important;
+}
+
+/* =========================================================
+   V83 — Mobile Sheet Navigation Buttons: same premium cards
+   size, arrangement, and hover/press behaviors as tabs
+   ========================================================= */
+.v83-mobile-buttons-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  width: 100% !important;
+  padding: 10px 14px 14px !important;
+  box-sizing: border-box !important;
+}
+
+.v83-mobile-buttons-grid button {
+  flex: 1 !important;
+  min-width: 0 !important;
+  min-height: 54px !important;
+  border-radius: 14px !important;
+  padding: 10px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  border: 1.5px solid var(--border) !important;
+  background: var(--soft) !important;
+  color: var(--text) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.22s cubic-bezier(.22,.68,0,1.2) !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+.v83-mobile-buttons-grid button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+.v83-mobile-buttons-grid button:active {
+  transform: translateY(1px) !important;
+}
+
+/* Specific styling for Previous & Next: premium gold-bordered emerald gradient matching home cards */
+.v83-mobile-buttons-grid button[data-v83-mobile-prev="1"],
+.v83-mobile-buttons-grid button[data-v83-mobile-next="1"] {
+  background: linear-gradient(135deg, #0d4a41 0%, #196d5e 60%, #1e8a74 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(13, 74, 65, 0.35), 0 0 0 1px rgba(201, 168, 76, 0.1) !important;
+}
+
+/* Specific styling for Modify (Edit) button: gorgeous gold theme */
+.v83-mobile-buttons-grid button.v83-mobile-edit {
+  background: linear-gradient(135deg, #7c6225 0%, #a48231 60%, #c9a84c 100%) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(164, 130, 49, 0.35) !important;
+}
+
+/* Theme support for Previous & Next */
+body[data-theme="quran-night"] .v83-mobile-buttons-grid button[data-v83-mobile-prev="1"],
+body[data-theme="bevel-night"] .v83-mobile-buttons-grid button[data-v83-mobile-prev="1"],
+body[data-theme="quran-night"] .v83-mobile-buttons-grid button[data-v83-mobile-next="1"],
+body[data-theme="bevel-night"] .v83-mobile-buttons-grid button[data-v83-mobile-next="1"] {
+  background: linear-gradient(135deg, #051410 0%, #0d2e24 60%, #144436 100%) !important;
+  border-color: rgba(201, 168, 76, 0.45) !important;
+  color: #f0ead8 !important;
+  box-shadow: 0 8px 24px rgba(5, 20, 16, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.15) !important;
+}
+
+/* Theme support for Modify (Edit) in dark modes */
+body[data-theme="quran-night"] .v83-mobile-buttons-grid button.v83-mobile-edit,
+body[data-theme="bevel-night"] .v83-mobile-buttons-grid button.v83-mobile-edit {
+  background: linear-gradient(135deg, #3d2f0f 0%, #5e4a1a 60%, #7c6225 100%) !important;
+  border-color: rgba(201, 168, 76, 0.35) !important;
+  color: #f0ead8 !important;
+  box-shadow: 0 8px 24px rgba(61, 47, 15, 0.6) !important;
+}
+
+/* Handle visibility when the Modify button is hidden */
+.v83-mobile-buttons-grid button.v83-mobile-edit[hidden] {
+  display: none !important;
+}
+
+/* =========================================================
+   V83 — Mobile Media Queries (Moved to end for correct cascading overrides)
+   ========================================================= */
+/* V83 mobile detailed pane font scale: 60% of the mobile base size to fit the window perfectly */
+@media (max-width: 850px) {
+  #v83MobileDetailContent .verse-text,
+  #detailContent .verse-text {
+    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
+    line-height: 2.5 !important; /* Spacing lines beautifully to avoid overlaps with vowel harakat */
+  }
+
+  #v83MobileDetailContent .v83-cmp-token,
+  #detailContent .v83-cmp-token,
+  #v83MobileDetailContent .v83-cmp-inline-line,
+  #detailContent .v83-cmp-inline-line,
+  #v83MobileDetailContent .v83-cmp-diff-line,
+  #detailContent .v83-cmp-diff-line {
+    font-size: calc(var(--verse-fs-mobile, 1.1rem) * 0.6) !important;
+    line-height: 1.75 !important;
+  }
+
+  /* Snug highlight boxes with padding/wrap tuning to never overlap text strokes */
+  #v83MobileDetailContent .shared,
+  #detailContent .shared,
+  #v83MobileDetailContent .diff,
+  #detailContent .diff,
+  #v83MobileDetailContent .diff2,
+  #detailContent .diff2,
+  #v83MobileDetailContent .diff3,
+  #detailContent .diff3,
+  #v83MobileDetailContent .addition,
+  #detailContent .addition,
+  #v83MobileDetailContent .unique,
+  #detailContent .unique {
+    padding: 1px 4px !important;
+    margin: 0 1px !important;
+    border-radius: 4px !important;
+    display: inline !important;
+    line-height: 1.25 !important; /* Snug bounds around glyph strokes */
+    -webkit-box-decoration-break: clone !important;
+    box-decoration-break: clone !important;
+  }
+
+  /* Move mobile detailed card header (navigation buttons) to the bottom of the card */
+  .v83-mobile-sheet-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .v83-mobile-sheet-top-title {
+    order: 1 !important;
+    position: sticky !important;
+    top: 0 !important;
+    bottom: auto !important;
+    background: var(--surface) !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid var(--border) !important;
+    text-align: center !important;
+    z-index: 4 !important;
+  }
+  .v83-mobile-sheet-top-title .v83-mobile-title {
+    text-align: center !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .v83-mobile-sheet-body {
+    order: 2 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+  .v83-mobile-sheet-head {
+    order: 3 !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    top: auto !important;
+    border-top: 1px solid var(--border) !important;
+    border-bottom: none !important;
+    background: var(--surface) !important;
+    padding: 0 !important;
+    z-index: 4 !important;
+  }
+
+  /* Move tabs container to the bottom of the sheet body as a single row flex container */
+  #v83MobileDetailContent .v83-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 8px !important; /* Matched exactly to action buttons grid gap */
+    order: 2 !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    top: auto !important;
+    border-top: 1px solid var(--border) !important;
+    border-bottom: none !important;
+    margin: 0 !important;
+    padding: 10px 8px 14px !important; /* Maximum width expansion */
+    background: var(--surface) !important;
+    z-index: 2 !important;
+    overflow: visible !important;
+  }
+  #v83MobileDetailContent .v83-tab-panel {
+    order: 1 !important;
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 12px 12px 20px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Make mobile tab buttons span maximum screen width and taller in height for easy press */
+  #v83MobileDetailContent .v83-tab-btn {
+    flex: 1 !important;
+    min-width: 0 !important;
+    min-height: 64px !important;
+    height: 64px !important; /* Explicit same height */
+    border-radius: 16px !important;
+    font-size: 0.95rem !important; /* Reduced slightly to fit Arabic text without wrapping */
+    padding: 12px 8px !important; /* Balanced padding to ensure perfect fit without wrapping */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+  }
+
+  /* Hide Tafser tab on mobile view */
+  #v83MobileDetailContent .v83-tab-btn[data-v83-tab="tafsir"] {
+    display: none !important;
+  }
+
+  /* Make mobile action buttons container span maximum screen width and taller in height for easy press */
+  .v83-mobile-buttons-grid {
+    padding: 10px 8px 14px !important; /* Maximum width expansion */
+    gap: 8px !important;
+  }
+
+  .v83-mobile-buttons-grid button {
+    min-height: 64px !important;
+    height: 64px !important; /* Explicit same height */
+    border-radius: 16px !important;
+    font-size: 1.05rem !important;
+    padding: 12px 14px !important;
+  }
+
+  /* Move comparison mode selector buttons to the bottom of comparison panel */
+  .v83-cmp-panel {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .v83-cmp-modes {
+    order: 2 !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  .v83-cmp-legend {
+    order: 3 !important;
+    margin-top: 8px !important;
+    margin-bottom: 4px !important;
+  }
+  .v83-cmp-table,
+  .v83-cmp-inline-list,
+  .v83-cmp-diff-only {
+    order: 1 !important;
+  }
+}
+

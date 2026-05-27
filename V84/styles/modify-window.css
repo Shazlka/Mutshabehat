@@ -1,0 +1,627 @@
+/* =========================================================
+   V83 Phase 2/3 — Modify Window Layout Shell + Tabs
+   Uses existing theme variables and preserves current edit IDs/actions.
+   ========================================================= */
+.editModal-window{
+  width:min(1320px,96vw);
+}
+.editModal-window .modal-body{
+  padding:0!important;
+  max-height:min(78vh,840px);
+}
+.editModal-window .modal-footer:empty{
+  display:none;
+}
+.v83-edit-shell{
+  direction:rtl;
+  background:var(--surface);
+  color:var(--text);
+}
+.v83-edit-toolbar{
+  position:sticky;
+  top:0;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  background:linear-gradient(180deg,var(--surface),var(--soft));
+  border-bottom:1px solid var(--border);
+}
+.v83-edit-toolbar-title{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  min-width:0;
+}
+.v83-edit-toolbar-title b{
+  font-size:1rem;
+  font-weight:900;
+}
+.v83-edit-toolbar-title small,
+.v83-edit-section-head small,
+.v83-edit-metrics small{
+  color:var(--muted);
+  font-weight:700;
+}
+.v83-edit-toolbar-actions,
+.v83-edit-quick-actions,
+.v83-edit-chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+.v83-edit-layout{
+  direction:ltr;
+  display:grid;
+  grid-template-columns:minmax(235px,300px) minmax(0,1fr);
+  gap:12px;
+  align-items:start;
+  padding:12px;
+}
+.v83-edit-props,
+.v83-edit-main{
+  direction:rtl;
+  min-width:0;
+}
+.v83-edit-props{
+  position:sticky;
+  top:76px;
+  display:grid;
+  gap:10px;
+}
+.v83-edit-main{
+  display:grid;
+  gap:12px;
+}
+.v83-edit-tabs{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  overflow-x:auto;
+  padding:4px 2px 6px;
+  border-bottom:1px solid var(--border);
+  scrollbar-width:thin;
+}
+.v83-edit-tab{
+  flex:0 0 auto;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:999px;
+  padding:8px 14px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.v83-edit-tab.active{
+  background:var(--primary);
+  border-color:var(--primary);
+  color:white;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+}
+.v83-edit-tab-panel{
+  display:grid;
+  gap:12px;
+  min-width:0;
+}
+.v83-edit-card,
+.v83-edit-section{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px;
+}
+.v83-edit-card{
+  background:linear-gradient(180deg,var(--surface),var(--soft));
+}
+.v83-edit-card h3,
+.v83-edit-section-head h3{
+  margin:0;
+  font-size:.95rem;
+  font-weight:900;
+}
+.v83-edit-card .field{
+  margin:10px 0 0;
+}
+.v83-edit-metrics{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+.v83-edit-metrics span{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:9px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--surface);
+}
+.v83-edit-metrics b{
+  font-weight:900;
+  color:var(--text);
+}
+.v83-edit-section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.v83-edit-notes-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.v83-edit-main .quran-search-box{
+  margin:0;
+}
+.v83-edit-placeholder{
+  display:grid;
+  place-items:center;
+  min-height:220px;
+  text-align:center;
+  border:1px dashed var(--border);
+  border-radius:14px;
+  background:var(--soft);
+  padding:24px;
+}
+.v83-edit-placeholder h3{
+  margin:0 0 8px;
+  font-size:1.05rem;
+  font-weight:900;
+}
+.v83-edit-placeholder p{
+  margin:0;
+  color:var(--muted);
+  font-weight:800;
+}
+@media(max-width:900px){
+  .editModal-window .modal-body{max-height:74vh}
+  .v83-edit-toolbar{align-items:stretch;flex-direction:column}
+  .v83-edit-toolbar-actions button{flex:1 1 auto}
+  .v83-edit-layout{grid-template-columns:1fr;direction:rtl}
+  .v83-edit-props{position:static}
+  .v83-edit-tabs{margin-inline:-2px}
+  .v83-edit-notes-grid{grid-template-columns:1fr}
+}
+
+
+/* =========================================================
+   V83 Phase 4 — Compact Verse Editor Cards (الآيات tab)
+   Two-state: collapsed summary shows surah/ayah + verse preview.
+   Click ✏️ button or the preview text to expand full editor.
+   Existing fields, part-rows, and save logic unchanged.
+   ========================================================= */
+
+/* Card wrapper */
+.ev-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  margin-bottom:8px;
+  overflow:hidden;
+}
+.ev-card--open{
+  border-color:var(--primary);
+  box-shadow:0 4px 14px rgba(75,99,230,.12);
+}
+
+/* Header row — always visible */
+.ev-card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:9px 12px;
+  background:var(--soft);
+  border-bottom:1px solid transparent;
+}
+.ev-card--open .ev-card-head{
+  border-bottom-color:var(--border);
+  background:color-mix(in srgb,var(--primary) 6%,var(--soft));
+}
+
+/* Meta: number badge + surah name + ayah pill + optional label */
+.ev-card-meta{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+  flex:1;
+  min-width:0;
+}
+.ev-card-num{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
+  font-weight:900;
+  font-size:.72rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+/* Action buttons on the left (RTL: left side = end side) */
+.ev-card-actions{
+  display:flex;
+  gap:5px;
+  align-items:center;
+  flex-shrink:0;
+}
+.ev-card-actions button{
+  padding:5px 9px;
+  border-radius:10px;
+  font-size:.78rem;
+  font-weight:800;
+  line-height:1;
+  min-height:32px;
+}
+.ev-btn-edit.active{
+  background:color-mix(in srgb,var(--primary) 14%,var(--soft));
+  border-color:var(--primary);
+  color:var(--primary2);
+}
+
+/* Verse text preview — always visible, click to toggle */
+.ev-card-preview{
+  padding:9px 14px;
+  font-size:1.18rem;
+  line-height:2;
+  direction:rtl;
+  cursor:pointer;
+  min-height:2.2rem;
+  border-bottom:1px solid transparent;
+}
+.ev-card--open .ev-card-preview{
+  border-bottom-color:var(--border);
+  font-size:1.1rem;
+  padding-bottom:8px;
+}
+.ev-card-preview:hover{
+  background:color-mix(in srgb,var(--primary) 4%,var(--surface));
+}
+
+/* Expanded body: full form editor */
+.ev-card-body{
+  padding:14px;
+  background:var(--surface);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* "Fill from reference" button row */
+.ev-card-fill-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+/* "Parts" section divider inside body */
+.ev-card-parts-head{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border-bottom:1px dashed var(--border);
+  padding-bottom:6px;
+}
+
+/* "Add part" button */
+.ev-add-part{
+  align-self:flex-start;
+}
+
+/* Dark theme: remove extra shadows */
+body[data-theme="bevel-night"] .ev-card--open{
+  box-shadow:none;
+}
+
+@media(max-width:760px){
+  .ev-card-head{flex-wrap:wrap}
+  .ev-card-meta{width:100%}
+  .ev-card-actions{width:100%;justify-content:flex-end}
+  .ev-card-preview{font-size:1rem}
+}
+
+
+/* =========================================================
+   V83 Phase 5 — Differences Tab (الفروقات)
+   Read-only view: parts grouped by semantic type.
+   Uses existing .shared/.diff/.diff2/.diff3/.addition/.unique
+   for colour; no new colours introduced.
+   ========================================================= */
+
+/* Coloured dot matching existing legend dots */
+.df-dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  margin-left:6px;
+  vertical-align:middle;
+  flex-shrink:0;
+}
+.df-dot.shared{background:var(--green)}
+.df-dot.diff{background:var(--gold)}
+.df-dot.diff2{background:var(--purple)}
+.df-dot.diff3{background:#2dd4bf}
+.df-dot.addition{background:var(--blue)}
+.df-dot.unique{background:var(--red)}
+
+/* List of parts inside a section */
+.df-list{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+.df-item{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:8px 12px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--soft);
+}
+
+/* Verse reference badge group */
+.df-ref{
+  display:flex;
+  gap:5px;
+  align-items:center;
+  flex-shrink:0;
+  flex-wrap:wrap;
+}
+
+/* Part text — inherits colour from type class (.shared/.diff etc.) */
+.df-text{
+  flex:1;
+  min-width:0;
+  font-family:var(--font-functional-quran);
+  font-size:1.08rem;
+  line-height:1.9;
+  direction:rtl;
+  border-radius:6px;
+  padding:2px 5px;
+}
+
+/* Unused-type chips at the bottom */
+.df-empty-chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.df-empty-chip{
+  padding:5px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--muted);
+  font-weight:800;
+  font-size:.82rem;
+  opacity:.55;
+}
+
+@media(max-width:760px){
+  .df-item{flex-direction:column;gap:6px}
+  .df-ref{width:100%}
+}
+
+
+/* =========================================================
+   V83 Phase 6 — Notes cards (الملاحظات) + Tags chips (التصنيفات)
+   Notes: each editor wrapped in a .v83-edit-card with a section head.
+   Tags: auto-derived surahs and group status shown as read-only chips.
+   No new colours — uses existing palette variables throughout.
+   ========================================================= */
+
+/* Note cards — strip the inner <label class="field"> bottom margin */
+.nt-card .field{margin-bottom:0}
+
+/* Tags / chips row */
+.tg-chip-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.tg-chip{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:5px 12px;
+  font-weight:800;
+  font-size:.85rem;
+  border:1px solid var(--border);
+  background:var(--soft);
+  color:var(--muted);
+}
+
+/* Surah chip — primary tint */
+.tg-surah{
+  color:var(--primary2);
+  background:color-mix(in srgb,var(--primary) 8%,var(--soft));
+  border-color:color-mix(in srgb,var(--primary) 28%,var(--border));
+}
+
+/* Status chips — reuse existing badge colours */
+.tg-status.fav  {color:#b45309;background:#fff7d6;border-color:#f0d589}
+.tg-status.done {color:#166534;background:#dcfce7;border-color:#86efac}
+.tg-status.locked{color:#991b1b;background:#fee2e2;border-color:#fecaca}
+.tg-status.draft{color:var(--muted);background:var(--soft)}
+
+
+/* =========================================================
+   V83 Phase 7 — Preview Tab (المعاينة)
+   Uses renderGroupBody() output directly — all verse-card,
+   verse-text, .note/.unote, part-type colour classes already
+   defined in cards.css. Only layout wrappers added here.
+   ========================================================= */
+
+/* Live-preview notice banner (reuses .hint, just tightens margin) */
+.pv-notice{margin-bottom:6px;font-size:.88rem}
+
+/* Card header row inside the preview section */
+.pv-card-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding-bottom:10px;
+  margin-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.pv-title-wrap{flex:1;min-width:0}
+
+/* Body: verse-card / note / unote elements rendered by renderGroupBody() */
+.pv-card-body{padding:0}
+
+/* Prevent verse-card margin from leaking outside the preview */
+.pv-card-body .verse-card:last-child,
+.pv-card-body .note:last-child,
+.pv-card-body .unote:last-child{margin-bottom:0}
+
+
+/* =========================================================
+   V83 Phase 8 — Responsive breakpoints for the Modify Window
+   ≥1380px  : 3-column (props | tabs+content | live preview panel)
+   901-1379px: 2-column (existing — no change)
+   ≤900px   : single-column stacked (existing) + touch-target polish
+   ≤600px   : near-fullscreen modal, grid toolbar buttons
+   ========================================================= */
+
+/* -- Persistent live-preview panel (3rd column) --
+   Hidden by default; flex-column displayed at wide viewports.
+   Sticky within the modal-body scroll container, same as .v83-edit-props. */
+.v83-edit-preview-panel{
+  direction:rtl;
+  min-width:0;
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  position:sticky;
+  top:76px;
+  overflow-y:auto;
+  max-height:calc(min(78vh,840px) - 90px);
+}
+
+@media(min-width:1380px){
+  .editModal-window{width:min(1440px,96vw)}
+  .v83-edit-layout{
+    grid-template-columns:minmax(225px,265px) minmax(0,1fr) minmax(255px,305px);
+  }
+  .v83-edit-preview-panel{display:flex}
+}
+
+/* -- ≤900px: existing stacked layout + better touch targets -- */
+@media(max-width:900px){
+  .v83-edit-toolbar-actions button{min-height:44px;border-radius:12px}
+  .v83-edit-quick-actions{width:100%}
+  .v83-edit-quick-actions button{flex:1 1 auto;min-height:44px}
+}
+
+/* -- ≤600px: near-fullscreen modal, 2-col action grid -- */
+@media(max-width:600px){
+  .editModal-window{
+    width:100vw;
+    border-radius:0;
+    margin:0 auto;
+  }
+  .editModal-window .modal-body{
+    max-height:calc(100svh - 58px);
+  }
+  /* 2-column grid: Save full-width on top row, Delete+Close below */
+  .v83-edit-toolbar-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+  }
+  .v83-edit-toolbar-actions button:first-child{
+    grid-column:1/-1;
+    min-height:48px;
+  }
+  .v83-edit-toolbar-actions button{min-height:44px;border-radius:12px}
+}
+
+
+/* =========================================================
+   V83 Phase 9 — Validation + Polish
+   Non-blocking inline validation bar, entrance animations,
+   spacing consistency. No new colours beyond existing vars.
+   ========================================================= */
+
+/* -- Validation bar: hidden (max-height:0) → visible (max-height:120px) --
+   Uses CSS transition on max-height so no JS display toggle needed.     */
+.edit-validation-bar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+  max-height:0;
+  overflow:hidden;
+  padding:0 14px;
+  background:color-mix(in srgb,var(--red) 7%,var(--surface));
+  border-bottom:1px solid transparent;
+  color:#991b1b;
+  font-size:.84rem;
+  font-weight:800;
+  transition:max-height .24s ease, padding .24s ease, border-color .24s ease;
+}
+.edit-validation-bar.is-visible{
+  max-height:120px;
+  padding:9px 14px;
+  border-color:color-mix(in srgb,var(--red) 28%,var(--border));
+}
+.ev-issue{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  border:1px solid color-mix(in srgb,var(--red) 25%,var(--border));
+  border-radius:999px;
+  padding:3px 10px;
+  background:color-mix(in srgb,var(--red) 10%,var(--surface));
+  white-space:nowrap;
+}
+
+/* -- Error highlight on the title input -- */
+.edit-field-error{
+  border-color:var(--red)!important;
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--red) 18%,transparent)!important;
+}
+
+/* -- Entrance animation: shared keyframe -- */
+@keyframes v83-edit-in{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Tab content: each direct child fades in on render */
+.v83-edit-tab-panel > *{
+  animation:v83-edit-in .22s ease both;
+}
+
+/* Expanded card body fades in on open */
+.ev-card-body{
+  animation:v83-edit-in .18s ease both;
+}
+
+/* -- Spacing consistency -- */
+.v83-edit-metrics{gap:6px;margin-top:8px}
+.v83-edit-metrics span{padding:8px}
+.v83-edit-section{padding:14px}
+.v83-edit-section-head{margin-bottom:12px;padding-bottom:10px}
+
+/* -- Dark theme: tint validation bar -- */
+body[data-theme="bevel-night"] .edit-validation-bar.is-visible,
+body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
+  background:color-mix(in srgb,var(--red) 14%,var(--surface));
+}

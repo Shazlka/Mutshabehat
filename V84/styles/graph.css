@@ -1,0 +1,827 @@
+/* =========================================================
+   graph.css — Network Graph Page (Task 5.2)
+   ========================================================= */
+
+/* ── Page shell ───────────────────────────────────────────────────────────── */
+
+.ng-page {
+  background: var(--bg);
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;           /* fill viewport exactly — no scrollbar */
+  overflow: hidden;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.ng-hdr {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 22px;
+  direction: rtl;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.ng-title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  text-align: center;
+}
+
+.ng-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 10px;
+  padding: 7px 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.ng-nav-btn:hover {
+  background: var(--soft);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ── Main area ────────────────────────────────────────────────────────────── */
+
+.ng-main {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 0; /* prevents flex-child overflow */
+}
+
+/* ── Canvas ───────────────────────────────────────────────────────────────── */
+
+.ng-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.ng-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.ng-svg:active {
+  cursor: grabbing;
+}
+
+/* ── Links ────────────────────────────────────────────────────────────────── */
+
+.ng-link {
+  stroke: var(--muted, #64748b);
+  stroke-opacity: 0.32;
+  transition: stroke-opacity 0.18s ease, stroke 0.18s ease;
+}
+
+.ng-link--hi {
+  stroke: var(--primary, #0284c7);
+  stroke-opacity: 0.88;
+}
+
+.ng-link--dim {
+  stroke-opacity: 0.05;
+}
+
+/* ── Node groups ──────────────────────────────────────────────────────────── */
+
+.ng-node {
+  cursor: pointer;
+}
+
+/* ── Node circles ─────────────────────────────────────────────────────────── */
+
+.ng-node-circle {
+  stroke: var(--surface, #ffffff);
+  stroke-width: 2;
+  transition: opacity 0.18s ease, filter 0.18s ease;
+}
+
+.ng-node:hover .ng-node-circle {
+  filter: brightness(1.15);
+}
+
+.ng-node--sel .ng-node-circle {
+  stroke: var(--text, #1e293b);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 7px rgba(0, 0, 0, .38));
+}
+
+.ng-node--dim .ng-node-circle {
+  opacity: 0.12;
+}
+
+/* ── Node labels ──────────────────────────────────────────────────────────── */
+
+.ng-node-lbl {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--text, #1e293b);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.14s ease;
+  paint-order: stroke fill;
+  stroke: var(--surface, #fff);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.ng-node-lbl--show {
+  opacity: 1;
+}
+
+.ng-node:hover .ng-node-lbl,
+.ng-node--sel .ng-node-lbl {
+  opacity: 1;
+}
+
+.ng-node--dim .ng-node-lbl {
+  opacity: 0;
+}
+
+/* ── Stats badge ──────────────────────────────────────────────────────────── */
+
+.ng-stats {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 10px;
+  pointer-events: none;
+  direction: rtl;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+/* ── Legend ───────────────────────────────────────────────────────────────── */
+
+.ng-legend {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  pointer-events: none;
+  direction: rtl;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.ng-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.65rem;
+  color: var(--text);
+}
+
+.ng-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1.5px solid var(--surface);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+}
+
+/* ── Slots (Tasks 5.3 and 5.4) ────────────────────────────────────────────── */
+
+.ng-controls-slot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+}
+
+.ng-detail-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  pointer-events: none; /* no content yet — won't block canvas clicks */
+}
+
+/* ── Empty state ──────────────────────────────────────────────────────────── */
+
+.ng-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 24px;
+  direction: rtl;
+  line-height: 1.6;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .ng-hdr {
+    padding: 10px 14px;
+  }
+
+  .ng-nav-btn {
+    padding: 6px 10px;
+    font-size: 0.74rem;
+  }
+
+  /* Hide always-visible labels on small screens — too cramped */
+  .ng-node-lbl--show {
+    opacity: 0;
+  }
+
+  .ng-legend {
+    bottom: 50px; /* clear the stats badge */
+    font-size: 0.6rem;
+  }
+}
+
+/* =========================================================
+   Controls Panel (Task 5.3 — .ngc-*)
+   ========================================================= */
+
+/* ── Toggle button ────────────────────────────────────────────────────────── */
+
+.ngc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 7px 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.ngc-toggle:hover,
+.ngc-toggle[aria-expanded="true"] {
+  background: var(--soft);
+  border-color: var(--primary);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .14);
+}
+
+/* ── Panel ────────────────────────────────────────────────────────────────── */
+
+.ngc-panel {
+  position: absolute;
+  top: calc(100% + 6px); /* drops below the toggle button */
+  right: 0;
+  width: 248px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .14);
+  direction: rtl;
+  overflow: hidden;
+  /* Collapsed by default */
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.22s ease, opacity 0.18s ease;
+}
+
+.ngc-panel--open {
+  max-height: 520px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Panel header ─────────────────────────────────────────────────────────── */
+
+.ngc-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ngc-hdr-title {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.ngc-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.ngc-close:hover {
+  color: var(--text);
+  background: var(--soft);
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────────── */
+
+.ngc-section {
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ngc-section:last-child {
+  border-bottom: none;
+}
+
+.ngc-sec-label {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+/* ── Sliders ──────────────────────────────────────────────────────────────── */
+
+.ngc-slider-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.ngc-slider-val {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  min-width: 20px;
+  text-align: left;
+}
+
+.ngc-slider {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+  height: 4px;
+}
+
+.ngc-slider:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.ngc-hint {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.62rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── Radio row ────────────────────────────────────────────────────────────── */
+
+.ngc-radio-row {
+  display: flex;
+  gap: 16px;
+}
+
+.ngc-radio-lbl {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.74rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.ngc-radio-lbl input[type="radio"] {
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* ── Surah search ─────────────────────────────────────────────────────────── */
+
+.ngc-search-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.ngc-search {
+  flex: 1;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.76rem;
+  background: var(--soft, rgba(0,0,0,.04));
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 9px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  min-width: 0;
+}
+
+.ngc-search:focus {
+  border-color: var(--primary);
+}
+
+.ngc-search--miss {
+  border-color: #ef4444 !important;
+  animation: ngc-shake 0.25s ease;
+}
+
+@keyframes ngc-shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-4px); }
+  75%       { transform: translateX(4px); }
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+
+.ngc-btn-row {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px 12px;
+}
+
+.ngc-btn {
+  flex: 1;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.74rem;
+  font-weight: 700;
+  border-radius: 9px;
+  padding: 7px 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.ngc-btn--primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.ngc-btn--primary:hover {
+  filter: brightness(1.1);
+}
+
+.ngc-btn--ghost {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.ngc-btn--ghost:hover {
+  background: var(--soft);
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .ngc-panel {
+    width: calc(100vw - 24px);
+    right: 0;
+  }
+}
+
+/* =========================================================
+   Detail Panel (Task 5.4 — .ngd-*)
+   ========================================================= */
+
+/* ── Panel ────────────────────────────────────────────────────────────────── */
+
+.ngd-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 270px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, .12);
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Collapsed: slide completely off-screen to the left */
+  transform: translateX(-110%);
+  transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.ngd-panel--open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.ngd-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.ngd-hdr-title {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.ngd-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 4px 5px;
+  border-radius: 6px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+}
+
+.ngd-close:hover {
+  color: var(--text);
+  background: var(--soft);
+}
+
+/* ── Body (scrollable) ────────────────────────────────────────────────────── */
+
+.ngd-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Node card ────────────────────────────────────────────────────────────── */
+
+.ngd-card {
+  background: var(--soft, rgba(0, 0, 0, .03));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ngd-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ngd-name {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.ngd-badge {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 20px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
+
+.ngd-name-en {
+  font-size: 0.72rem;
+  color: var(--muted);
+  direction: ltr;
+  text-align: right;
+}
+
+.ngd-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ngd-chip {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 7px;
+  color: var(--muted);
+}
+
+.ngd-group-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ngd-group-icon {
+  color: var(--primary);
+  display: block;
+  flex-shrink: 0;
+}
+
+.ngd-group-count {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ── Filter button ────────────────────────────────────────────────────────── */
+
+.ngd-filter-btn {
+  width: 100%;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: filter 0.15s;
+}
+
+.ngd-filter-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* ── Section header ───────────────────────────────────────────────────────── */
+
+.ngd-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ngd-sec-label {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0 2px;
+}
+
+/* ── Neighbour list ───────────────────────────────────────────────────────── */
+
+.ngd-nb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ngd-nb-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 6px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.ngd-nb-row:hover {
+  background: var(--soft);
+}
+
+.ngd-nb-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+.ngd-nb-name {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.78rem;
+  color: var(--text);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ngd-nb-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.ngd-nb-weight {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--primary);
+  min-width: 22px;
+  text-align: left;
+  direction: ltr;
+}
+
+.ngd-nb-bar {
+  width: 36px;
+  height: 4px;
+  background: var(--soft);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ngd-nb-bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+  min-width: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .ngd-panel {
+    width: 230px;
+  }
+
+  .ngd-nb-bar {
+    display: none;
+  }
+}

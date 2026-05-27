@@ -1,0 +1,192 @@
+/* =========================================================
+   heatmap.css — Quran Surah Heatmap (Task 4.2)
+   ========================================================= */
+
+/* ── Title row (title + click hint) ──────────────────────────────────────── */
+
+.hm-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  direction: rtl;
+  gap: 8px;
+}
+
+.hm-title-row .sc-chart-title {
+  margin-bottom: 0;
+}
+
+.hm-click-hint {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.63rem;
+  color: var(--muted);
+  opacity: 0.65;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Wrapper ──────────────────────────────────────────────────────────────── */
+
+.hm-wrap {
+  direction: rtl;
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────────────── */
+
+.hm-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+/* ── Juz row ──────────────────────────────────────────────────────────────── */
+
+.hm-juz-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.hm-juz-lbl {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--muted);
+  width: 20px;
+  flex-shrink: 0;
+  text-align: center;
+  padding-top: 3px;
+  line-height: 1;
+}
+
+/* ── Cells container ──────────────────────────────────────────────────────── */
+
+.hm-cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Individual cell ──────────────────────────────────────────────────────── */
+
+.hm-cell {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.hm-cell:hover {
+  transform: scale(1.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .22);
+  z-index: 2;
+}
+
+/* CSS tooltip via data-tooltip */
+.hm-cell[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface, #fff);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 7px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 20;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .14);
+  direction: rtl;
+}
+
+/* ── Density levels ───────────────────────────────────────────────────────── */
+
+.hm-cell--0 {
+  background: var(--soft, rgba(0, 0, 0, .04));
+  border: 1px solid var(--border);
+}
+
+.hm-cell--1 { background: color-mix(in srgb, var(--primary) 18%, transparent); }
+.hm-cell--2 { background: color-mix(in srgb, var(--primary) 38%, transparent); }
+.hm-cell--3 { background: color-mix(in srgb, var(--primary) 63%, transparent); }
+.hm-cell--4 { background: color-mix(in srgb, var(--primary) 90%, transparent); }
+
+/* ── Continuation row (juz 2, juz 5) ─────────────────────────────────────── */
+
+.hm-continue {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.62rem;
+  color: var(--muted);
+  opacity: 0.55;
+  padding: 3px 4px;
+  align-self: center;
+  font-style: italic;
+}
+
+/* ── Legend ───────────────────────────────────────────────────────────────── */
+
+.hm-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-top: 10px;
+  direction: ltr; /* color scale always reads low → high left-to-right */
+}
+
+.hm-legend-lbl {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.65rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.hm-legend-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.hm-legend-cell {
+  width: 13px !important;
+  height: 13px !important;
+  cursor: default !important;
+  pointer-events: none;
+}
+
+.hm-legend-cell:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .hm-cell {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hm-juz-lbl {
+    width: 16px;
+    font-size: 0.55rem;
+  }
+
+  .hm-legend-cell {
+    width: 11px !important;
+    height: 11px !important;
+  }
+}
