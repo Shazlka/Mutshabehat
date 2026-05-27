@@ -1,0 +1,133 @@
+/* =========================================================
+   stats.css — Statistics Dashboard styles
+   Task 3.1: KPI Cards Row (.kpi-*)
+   ========================================================= */
+
+/* ── KPI Row grid ─────────────────────────────────────────────── */
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding: 4px 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  direction: rtl;
+}
+
+/* ── KPI Card ─────────────────────────────────────────────────── */
+
+.kpi-card {
+  background: var(--soft, rgba(0, 0, 0, .03));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  cursor: default;
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.kpi-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .09);
+  transform: translateY(-1px);
+}
+
+/* Top row: icon left, ring right */
+.kpi-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+}
+
+.kpi-icon {
+  color: var(--primary);
+  opacity: 0.72;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Values ───────────────────────────────────────────────────── */
+
+.kpi-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  letter-spacing: -0.02em;
+  margin-top: 2px;
+}
+
+.kpi-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.35;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+/* ── SVG Progress Ring ────────────────────────────────────────── */
+
+.kpi-ring-wrap {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+}
+
+.kpi-ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* progress starts from the top */
+}
+
+.kpi-ring-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 3.5;
+}
+
+.kpi-ring-fg {
+  fill: none;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.65s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Percentage label centered over the ring */
+.kpi-ring-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .kpi-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .kpi-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .kpi-value {
+    font-size: 1.45rem;
+  }
+}
