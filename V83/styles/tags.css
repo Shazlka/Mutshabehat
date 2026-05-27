@@ -187,3 +187,153 @@
 .ts-pill.selected {
   font-weight: 900;
 }
+
+/* =========================================================
+   TagFilterPanel (.tf-*) — sidebar-embedded tag filter
+   ========================================================= */
+
+.tf-root {
+  margin-top: 8px;
+}
+
+.tf-toggle-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  direction: rtl;
+  background: rgba(255, 255, 255, .07);
+  color: #e9f3ef;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: .84rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  transition: background .12s ease, border-color .12s ease;
+}
+
+.tf-toggle-btn:hover {
+  background: rgba(255, 255, 255, .14);
+}
+
+.tf-toggle-btn.has-active {
+  background: rgba(201, 168, 76, .22);
+  border-color: var(--v83-gold, #c9a84c);
+  color: #f6e6ba;
+}
+
+.tf-toggle-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tf-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(201, 168, 76, .45);
+  color: #f6e6ba;
+  font-size: .7rem;
+  font-weight: 900;
+}
+
+.tf-arrow {
+  font-size: .75rem;
+  opacity: .75;
+}
+
+/* ── Panel body ────────────────────────────────────────────── */
+.tf-panel {
+  padding: 8px 0 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tf-panel.tf-hidden {
+  display: none;
+}
+
+.tf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tf-group-label {
+  font-size: .68rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, .45);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 0 2px;
+}
+
+.tf-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tf-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .72);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: .74rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  min-height: 26px;
+  white-space: nowrap;
+  direction: rtl;
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+}
+
+.tf-pill:hover:not(.active) {
+  background: rgba(255, 255, 255, .15);
+  border-color: rgba(255, 255, 255, .36);
+  color: #fff;
+}
+
+.tf-pill:focus-visible {
+  outline: 2px solid rgba(201, 168, 76, .6);
+  outline-offset: 1px;
+}
+
+/* Active pill: inline color from JS, plus subtle glow */
+.tf-pill.active {
+  font-weight: 900;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .12);
+}
+
+.tf-clear-btn {
+  width: 100%;
+  margin-top: 2px;
+  background: rgba(220, 38, 38, .15);
+  color: #fca5a5;
+  border: 1px solid rgba(220, 38, 38, .28);
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: .8rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  text-align: center;
+  direction: rtl;
+  transition: background .12s ease;
+}
+
+.tf-clear-btn:hover {
+  background: rgba(220, 38, 38, .28);
+}
