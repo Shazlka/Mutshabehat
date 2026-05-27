@@ -403,3 +403,136 @@
   direction: rtl;
   padding-top: 8px;
 }
+
+/* =========================================================
+   Task 3.4: Full Dashboard Page (.stats-dash-*)
+   ========================================================= */
+
+/* ── Page shell ───────────────────────────────────────────────── */
+
+.stats-dash-page {
+  background: var(--bg);
+  direction: rtl;
+  min-height: 100vh;
+}
+
+/* shares the global .hidden rule: display:none !important */
+
+/* ── Page header ──────────────────────────────────────────────── */
+
+.stats-dash-hdr {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 22px;
+  direction: rtl;
+}
+
+.stats-dash-title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  text-align: center;
+}
+
+.stats-dash-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 10px;
+  padding: 7px 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.stats-dash-nav-btn:hover {
+  background: var(--soft);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ── Scrollable body ──────────────────────────────────────────── */
+
+.stats-dash-body {
+  max-width: 940px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 22px 22px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Detail summary section ───────────────────────────────────── */
+
+.stats-dash-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  direction: rtl;
+}
+
+.stats-dash-detail-card {
+  background: var(--soft, rgba(0, 0, 0, .03));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: default;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.stats-dash-detail-card:hover {
+  box-shadow: 0 3px 14px rgba(0, 0, 0, .08);
+  transform: translateY(-1px);
+}
+
+.stats-dash-detail-val {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stats-dash-detail-lbl {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+  .stats-dash-detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-dash-body {
+    padding: 14px 12px 40px;
+    gap: 12px;
+  }
+
+  .stats-dash-hdr {
+    padding: 10px 14px;
+  }
+
+  .stats-dash-nav-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}
