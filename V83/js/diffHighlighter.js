@@ -32,6 +32,20 @@ const LEGEND = [
   { key: 'changed', label: 'تغيير' },
 ];
 
+// ── html2canvas lazy loader (module-level singleton) ─────────────────────────
+let _h2c = null;
+function _loadHtml2Canvas() {
+  if (_h2c) return Promise.resolve(_h2c);
+  if (window.html2canvas) { _h2c = window.html2canvas; return Promise.resolve(_h2c); }
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload  = () => { _h2c = window.html2canvas; resolve(_h2c); };
+    s.onerror = () => reject(new Error('html2canvas load failed'));
+    document.head.appendChild(s);
+  });
+}
+
 export function createDiffHighlighter(group, options = {}) {
   let mode = options.mode || 'word';
 
@@ -76,6 +90,7 @@ export function createDiffHighlighter(group, options = {}) {
       render();
     });
     controls.appendChild(toggle);
+    controls.appendChild(_buildCopyBtn());
 
     el.appendChild(title);
     el.appendChild(controls);
@@ -252,6 +267,92 @@ export function createDiffHighlighter(group, options = {}) {
     });
 
     return bar;
+  }
+
+  // ── Copy-as-image ────────────────────────────────────────────────────────────
+
+  function _buildCopyBtn() {
+    const btn = document.createElement('button');
+    btn.className = 'dh-copy-btn';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'نسخ المقارنة كصورة');
+    btn.innerHTML =
+      `<svg class="dh-copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>` +
+      `<svg class="dh-copy-spinner" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>` +
+      `<span class="dh-copy-label">نسخ صورة</span>`;
+    btn.addEventListener('click', () => _copyAsImage(btn));
+    return btn;
+  }
+
+  async function _copyAsImage(btn) {
+    if (btn.disabled) return;
+    btn.disabled = true;
+    btn.classList.add('loading');
+
+    try {
+      const html2canvas = await _loadHtml2Canvas();
+
+      // Capture root without the copy button itself (hide briefly)
+      btn.style.visibility = 'hidden';
+      const canvas = await html2canvas(root, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: getComputedStyle(root).backgroundColor || '#ffffff',
+        logging: false,
+      });
+      btn.style.visibility = '';
+
+      _addWatermark(canvas);
+
+      // Try clipboard API first, fall back to download
+      let usedClipboard = false;
+      if (navigator.clipboard?.write) {
+        try {
+          const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+          await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+          usedClipboard = true;
+        } catch { /* clipboard denied — fall through to download */ }
+      }
+
+      if (!usedClipboard) {
+        const a = document.createElement('a');
+        a.download = `mutashabihat-${group.id}.png`;
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      }
+
+      _setCopyState(btn, usedClipboard ? 'copied' : 'downloaded');
+    } catch (err) {
+      console.error('[DiffHighlighter] copy-as-image failed:', err);
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  }
+
+  function _addWatermark(canvas) {
+    const ctx = canvas.getContext('2d');
+    const text = 'متشابهات القرآن الكريم';
+    const scale = canvas.width / root.offsetWidth;
+    const size = Math.round(12 * scale);
+    ctx.save();
+    ctx.font = `bold ${size}px Cairo, 'Readex Pro', sans-serif`;
+    ctx.fillStyle = 'rgba(80, 80, 80, 0.45)';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(text, canvas.width - Math.round(10 * scale), canvas.height - Math.round(8 * scale));
+    ctx.restore();
+  }
+
+  function _setCopyState(btn, state) {
+    btn.classList.remove('loading');
+    btn.classList.add(state); // 'copied' | 'downloaded'
+    const lbl = btn.querySelector('.dh-copy-label');
+    if (lbl) lbl.textContent = state === 'copied' ? 'تم النسخ' : 'تم التنزيل';
+    setTimeout(() => {
+      btn.classList.remove(state);
+      if (lbl) lbl.textContent = 'نسخ صورة';
+      btn.disabled = false;
+    }, 2200);
   }
 
   render();

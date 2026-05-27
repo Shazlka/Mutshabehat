@@ -74,6 +74,49 @@
 .dh-toggle-opt.active { color: var(--primary2, var(--primary, #0f5a45)); font-weight: 900; }
 .dh-toggle-sep        { color: var(--border); }
 
+/* ── Copy-as-image button ─────────────────────────────────── */
+.dh-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: .82rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  min-height: 34px;
+  transition: border-color .15s ease, background .15s ease, color .15s ease;
+}
+.dh-copy-btn:hover:not(:disabled) { border-color: var(--primary, #0f5a45); }
+.dh-copy-btn:focus-visible {
+  outline: 2px solid var(--primary, #0f5a45);
+  outline-offset: 2px;
+}
+.dh-copy-btn:disabled { opacity: .6; cursor: default; }
+
+/* Icon / spinner visibility */
+.dh-copy-icon    { display: block; flex-shrink: 0; }
+.dh-copy-spinner { display: none; flex-shrink: 0; animation: dh-spin .7s linear infinite; }
+
+.dh-copy-btn.loading .dh-copy-icon    { display: none; }
+.dh-copy-btn.loading .dh-copy-spinner { display: block; }
+
+/* Success / downloaded feedback */
+.dh-copy-btn.copied,
+.dh-copy-btn.downloaded {
+  border-color: var(--primary, #0f5a45);
+  background: color-mix(in srgb, var(--primary, #0f5a45) 10%, transparent);
+  color: var(--primary2, var(--primary, #0f5a45));
+}
+
+@keyframes dh-spin {
+  to { transform: rotate(360deg); }
+}
+
 /* ── Grid ─────────────────────────────────────────────────── */
 .dh-grid {
   display: grid;
