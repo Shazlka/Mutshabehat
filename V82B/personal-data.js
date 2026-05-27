@@ -16675,7 +16675,7 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "وما بينهما الا",
     "source": "automated",
-    "completed": true
+    "completed": false
   },
   {
     "id": 207,
