@@ -337,3 +337,358 @@
 .tf-clear-btn:hover {
   background: rgba(220, 38, 38, .28);
 }
+
+/* =========================================================
+   TagStatsBar (.tf-stats-*)
+   ========================================================= */
+
+.tf-stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+  background: var(--soft, #f8f9fa);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  direction: rtl;
+}
+
+.tf-stats-bar.tf-stats-empty {
+  display: none;
+}
+
+.tf-stats-lbl {
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-left: 2px;
+}
+
+.tf-stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: .72rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.tf-stat-label {
+  /* inherits parent color */
+}
+
+.tf-stat-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .1);
+  font-size: .66rem;
+  font-weight: 900;
+}
+
+.tf-bulk-btn {
+  margin-right: auto;
+  margin-left: 0;
+  background: var(--primary, #0f5a45);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 11px;
+  font-size: .74rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .12s ease;
+}
+
+.tf-bulk-btn:hover { opacity: .85; }
+
+/* =========================================================
+   BulkTagModal (.tbm-*)
+   ========================================================= */
+
+/* Wider modal window */
+.tbm-window {
+  max-width: 680px !important;
+  width: 94vw !important;
+}
+
+.tbm-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 !important;
+  overflow-y: visible !important;
+}
+
+.tbm-section {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  direction: rtl;
+}
+
+.tbm-section:last-child {
+  border-bottom: none;
+}
+
+.tbm-section-hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tbm-section-title {
+  font-size: .8rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.tbm-tag-sec-title {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.tbm-hdr-actions {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--primary, #0f5a45);
+}
+
+.tbm-txt-btn {
+  background: none;
+  border: none;
+  color: var(--primary, #0f5a45);
+  font-size: .78rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  padding: 0 2px;
+  transition: opacity .12s ease;
+}
+
+.tbm-txt-btn:hover { opacity: .7; }
+
+/* ── Group list ──────────────────────────────────────────── */
+.tbm-group-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg, #fff);
+}
+
+.tbm-group-list::-webkit-scrollbar { width: 4px; }
+.tbm-group-list::-webkit-scrollbar-track { background: transparent; }
+.tbm-group-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.tbm-group-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .1s ease;
+  direction: rtl;
+  user-select: none;
+}
+
+.tbm-group-row:last-child {
+  border-bottom: none;
+}
+
+.tbm-group-row:hover {
+  background: var(--soft, #f8f9fa);
+}
+
+.tbm-group-row.is-checked {
+  background: color-mix(in srgb, var(--primary, #0f5a45) 6%, transparent);
+}
+
+.tbm-checkbox {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary, #0f5a45);
+  cursor: pointer;
+}
+
+.tbm-grp-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 22px;
+  background: var(--soft, #f0f0f0);
+  border-radius: 6px;
+  font-size: .7rem;
+  font-weight: 900;
+  color: var(--muted);
+}
+
+.tbm-grp-title {
+  flex: 1;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  direction: rtl;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tbm-grp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.tbm-grp-tag-chip {
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 1px 6px;
+  font-size: .65rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  white-space: nowrap;
+}
+
+.tbm-grp-tag-more {
+  font-size: .65rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 0 2px;
+  align-self: center;
+}
+
+.tbm-empty {
+  padding: 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+/* ── Tag picker ──────────────────────────────────────────── */
+.tbm-tag-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tbm-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  direction: rtl;
+}
+
+.tbm-tag-cat {
+  font-size: .7rem;
+  font-weight: 800;
+  color: var(--muted);
+  min-width: 72px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.tbm-tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* tf-pill inside .tbm-tag-pills is a light-bg context — override sidebar-dark vars */
+.tbm-tag-picker .tf-pill {
+  border-color: var(--border);
+  background: var(--soft, #f8f9fa);
+  color: var(--muted);
+}
+
+.tbm-tag-picker .tf-pill:hover:not(.active) {
+  border-color: var(--primary, #0f5a45);
+  color: var(--text);
+  background: var(--soft, #f0f0f0);
+}
+
+/* ── Apply mode ──────────────────────────────────────────── */
+.tbm-mode-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  direction: rtl;
+}
+
+.tbm-mode-label {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.tbm-radio-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+}
+
+.tbm-radio-wrap input[type="radio"] {
+  accent-color: var(--primary, #0f5a45);
+  cursor: pointer;
+}
+
+/* ── Apply button ────────────────────────────────────────── */
+.tbm-apply-btn {
+  min-width: 160px;
+  transition: opacity .12s ease;
+}
+
+.tbm-btn-dim {
+  opacity: .5;
+  cursor: not-allowed !important;
+}
+
+/* ── Sidebar bulk button ─────────────────────────────────── */
+.tbm-sidebar-btn {
+  width: 100%;
+  text-align: right;
+  background: rgba(201, 168, 76, .18);
+  color: #f6e6ba;
+  border: 1px solid rgba(201, 168, 76, .35);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: .84rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background .12s ease;
+}
+
+.tbm-sidebar-btn:hover {
+  background: rgba(201, 168, 76, .3);
+}
