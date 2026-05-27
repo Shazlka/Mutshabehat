@@ -131,3 +131,192 @@
     font-size: 1.45rem;
   }
 }
+
+/* =========================================================
+   Task 3.2: Charts Row (.sc-*)
+   ========================================================= */
+
+/* ── Layout ───────────────────────────────────────────────────── */
+
+.sc-charts-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  direction: rtl;
+}
+
+.sc-chart-box {
+  background: var(--soft, rgba(0, 0, 0, .03));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.sc-chart-box--bar   { flex: 1.5; }
+.sc-chart-box--donut { flex: 1; }
+
+.sc-chart-title {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.sc-empty {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  text-align: center;
+  padding: 18px 0;
+  line-height: 1.6;
+}
+
+/* ── Bar Chart ────────────────────────────────────────────────── */
+
+.sc-bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sc-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: rtl;
+}
+
+.sc-bar-label {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text);
+  width: 62px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.sc-bar-track {
+  position: relative;
+  flex: 1;
+  height: 9px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.sc-bar-fill {
+  position: absolute;
+  right: 0; /* bar starts from label side (RTL) */
+  top: 0;
+  height: 100%;
+  background: var(--primary, #0284c7);
+  border-radius: 999px;
+  transform-origin: right center;
+  animation: sc-bar-grow 0.55s cubic-bezier(.4, 0, .2, 1) both;
+}
+
+@keyframes sc-bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.sc-bar-count {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 18px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+/* ── Donut Chart ──────────────────────────────────────────────── */
+
+.sc-donut-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.sc-donut-svg {
+  width: 130px;
+  height: 130px;
+  overflow: visible;
+}
+
+.sc-donut-seg {
+  transition: opacity 0.15s ease;
+  cursor: default;
+}
+
+.sc-donut-seg:hover {
+  opacity: 0.78;
+}
+
+.sc-donut-center-num {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  fill: var(--text, #1e293b);
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.sc-donut-center-lbl {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 9px;
+  fill: var(--muted, #64748b);
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.sc-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.sc-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: rtl;
+}
+
+.sc-donut-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sc-donut-legend-label {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.72rem;
+  color: var(--text);
+  flex: 1;
+}
+
+.sc-donut-legend-count {
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+  .sc-charts-row {
+    flex-direction: column;
+  }
+}
