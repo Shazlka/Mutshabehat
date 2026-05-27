@@ -16855,7 +16855,8 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ومن ايته خلق",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "favorite": true
   },
   {
     "id": 210,
@@ -16959,6 +16960,7 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ولا الصم الدعا",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "favorite": true
   }
 ];
