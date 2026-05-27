@@ -692,3 +692,188 @@
 .tbm-sidebar-btn:hover {
   background: rgba(201, 168, 76, .3);
 }
+
+/* =========================================================
+   TagExportModal (.tex-*)
+   ========================================================= */
+
+.tex-window {
+  max-width: 560px !important;
+  width: 92vw !important;
+}
+
+.tex-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 !important;
+  overflow-y: auto !important;
+  max-height: 72vh;
+}
+
+.tex-section {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  direction: rtl;
+}
+
+.tex-section:last-child {
+  border-bottom: none;
+}
+
+.tex-section-title {
+  font-size: .82rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.tex-hint {
+  font-size: .78rem;
+  color: var(--muted);
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+
+/* ── Export buttons ──────────────────────────────────────── */
+.tex-btn-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tex-export-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--soft, #f8f9fa);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  direction: rtl;
+  text-align: right;
+  transition: background .12s ease, border-color .12s ease;
+}
+
+.tex-export-btn:hover {
+  background: color-mix(in srgb, var(--primary, #0f5a45) 6%, var(--soft, #f8f9fa));
+  border-color: color-mix(in srgb, var(--primary, #0f5a45) 30%, var(--border));
+}
+
+.tex-btn-label {
+  font-size: .84rem;
+  font-weight: 800;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+.tex-btn-desc {
+  font-size: .72rem;
+  color: var(--muted);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+/* ── File picker ─────────────────────────────────────────── */
+.tex-file-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  direction: rtl;
+}
+
+.tex-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.tex-file-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  background: var(--primary, #0f5a45);
+  color: #fff;
+  border-radius: 8px;
+  font-size: .8rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .12s ease;
+}
+
+.tex-file-label:hover { opacity: .85; }
+
+.tex-file-name {
+  font-size: .76rem;
+  color: var(--muted);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  direction: ltr;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+/* ── Paste textarea ──────────────────────────────────────── */
+.tex-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: .8rem;
+  font-family: 'Courier New', monospace;
+  color: var(--text);
+  background: var(--bg, #fff);
+  resize: vertical;
+  direction: ltr;
+  transition: border-color .15s ease;
+  margin-bottom: 8px;
+}
+
+.tex-textarea:focus {
+  outline: none;
+  border-color: var(--primary, #0f5a45);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, #0f5a45) 12%, transparent);
+}
+
+/* ── Status message ──────────────────────────────────────── */
+.tex-import-status {
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  direction: rtl;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+.tex-status-hidden { display: none; }
+
+.tex-status-ok {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #6ee7b7;
+}
+
+.tex-status-err {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+/* ── Import button ───────────────────────────────────────── */
+.tex-import-btn {
+  width: 100%;
+  margin-top: 2px;
+}
