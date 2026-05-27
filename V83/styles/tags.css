@@ -1,0 +1,879 @@
+/* =========================================================
+   tags.css — TagBadge (.tb-*) + TagSelector (.ts-*) styles
+   ========================================================= */
+
+/* ── TagBadge ─────────────────────────────────────────────── */
+.tb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1;
+  direction: rtl;
+}
+
+.tb-sm {
+  padding: 3px 9px;
+  font-size: .74rem;
+  min-height: 24px;
+}
+
+.tb-md {
+  padding: 5px 13px;
+  font-size: .82rem;
+  min-height: 30px;
+}
+
+.tb-unknown {
+  color: var(--muted);
+  background: var(--soft, #f8f9fa);
+  border-color: var(--border);
+}
+
+/* Remove button inside badge */
+.tb-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  opacity: .6;
+  border-radius: 999px;
+  color: inherit;
+  min-width: 16px;
+  min-height: 16px;
+  transition: opacity .12s ease;
+}
+.tb-remove:hover         { opacity: 1; }
+.tb-remove:focus-visible { outline: 2px solid currentColor; outline-offset: 1px; }
+
+/* ── TagSelector root ─────────────────────────────────────── */
+.ts-root {
+  direction: rtl;
+  font-family: var(--uifont, 'Cairo', 'Readex Pro', sans-serif);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Selected tags strip ──────────────────────────────────── */
+.ts-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 32px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--soft, var(--surface));
+  align-items: center;
+}
+
+.ts-empty-hint {
+  font-size: .76rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Search input ─────────────────────────────────────────── */
+.ts-search-wrap {
+  position: relative;
+}
+
+.ts-search {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: .86rem;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  color: var(--text);
+  background: var(--bg, #fff);
+  direction: rtl;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.ts-search::placeholder { color: var(--muted); opacity: .7; }
+
+.ts-search:focus {
+  outline: none;
+  border-color: var(--primary, #0f5a45);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, #0f5a45) 12%, transparent);
+}
+
+/* ── Available tags panel ─────────────────────────────────── */
+.ts-available {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 2px 2px 4px;
+}
+
+/* Scrollbar styling */
+.ts-available::-webkit-scrollbar { width: 4px; }
+.ts-available::-webkit-scrollbar-track { background: transparent; }
+.ts-available::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.ts-no-results {
+  font-size: .8rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 12px;
+}
+
+/* ── Category group ───────────────────────────────────────── */
+.ts-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ts-group-label {
+  font-size: .7rem;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 0 2px;
+}
+
+/* ── Tag pills in the available list ─────────────────────── */
+.ts-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.ts-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  background: var(--soft, var(--surface));
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: .78rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  transition: border-color .12s ease, background .12s ease, color .12s ease;
+  min-height: 30px;
+  white-space: nowrap;
+}
+
+.ts-pill:hover:not(.selected) {
+  border-color: var(--primary, #0f5a45);
+  color: var(--text);
+}
+
+.ts-pill:focus-visible {
+  outline: 2px solid var(--primary, #0f5a45);
+  outline-offset: 2px;
+}
+
+/* Selected state — color applied inline via JS */
+.ts-pill.selected {
+  font-weight: 900;
+}
+
+/* =========================================================
+   TagFilterPanel (.tf-*) — sidebar-embedded tag filter
+   ========================================================= */
+
+.tf-root {
+  margin-top: 8px;
+}
+
+.tf-toggle-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  direction: rtl;
+  background: rgba(255, 255, 255, .07);
+  color: #e9f3ef;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: .84rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  transition: background .12s ease, border-color .12s ease;
+}
+
+.tf-toggle-btn:hover {
+  background: rgba(255, 255, 255, .14);
+}
+
+.tf-toggle-btn.has-active {
+  background: rgba(201, 168, 76, .22);
+  border-color: var(--v83-gold, #c9a84c);
+  color: #f6e6ba;
+}
+
+.tf-toggle-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tf-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(201, 168, 76, .45);
+  color: #f6e6ba;
+  font-size: .7rem;
+  font-weight: 900;
+}
+
+.tf-arrow {
+  font-size: .75rem;
+  opacity: .75;
+}
+
+/* ── Panel body ────────────────────────────────────────────── */
+.tf-panel {
+  padding: 8px 0 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tf-panel.tf-hidden {
+  display: none;
+}
+
+.tf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tf-group-label {
+  font-size: .68rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, .45);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 0 2px;
+}
+
+.tf-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tf-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .72);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: .74rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  min-height: 26px;
+  white-space: nowrap;
+  direction: rtl;
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+}
+
+.tf-pill:hover:not(.active) {
+  background: rgba(255, 255, 255, .15);
+  border-color: rgba(255, 255, 255, .36);
+  color: #fff;
+}
+
+.tf-pill:focus-visible {
+  outline: 2px solid rgba(201, 168, 76, .6);
+  outline-offset: 1px;
+}
+
+/* Active pill: inline color from JS, plus subtle glow */
+.tf-pill.active {
+  font-weight: 900;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .12);
+}
+
+.tf-clear-btn {
+  width: 100%;
+  margin-top: 2px;
+  background: rgba(220, 38, 38, .15);
+  color: #fca5a5;
+  border: 1px solid rgba(220, 38, 38, .28);
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: .8rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  text-align: center;
+  direction: rtl;
+  transition: background .12s ease;
+}
+
+.tf-clear-btn:hover {
+  background: rgba(220, 38, 38, .28);
+}
+
+/* =========================================================
+   TagStatsBar (.tf-stats-*)
+   ========================================================= */
+
+.tf-stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+  background: var(--soft, #f8f9fa);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  direction: rtl;
+}
+
+.tf-stats-bar.tf-stats-empty {
+  display: none;
+}
+
+.tf-stats-lbl {
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-left: 2px;
+}
+
+.tf-stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: .72rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.tf-stat-label {
+  /* inherits parent color */
+}
+
+.tf-stat-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .1);
+  font-size: .66rem;
+  font-weight: 900;
+}
+
+.tf-bulk-btn {
+  margin-right: auto;
+  margin-left: 0;
+  background: var(--primary, #0f5a45);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 11px;
+  font-size: .74rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .12s ease;
+}
+
+.tf-bulk-btn:hover { opacity: .85; }
+
+/* =========================================================
+   BulkTagModal (.tbm-*)
+   ========================================================= */
+
+/* Wider modal window */
+.tbm-window {
+  max-width: 680px !important;
+  width: 94vw !important;
+}
+
+.tbm-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 !important;
+  overflow-y: visible !important;
+}
+
+.tbm-section {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  direction: rtl;
+}
+
+.tbm-section:last-child {
+  border-bottom: none;
+}
+
+.tbm-section-hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tbm-section-title {
+  font-size: .8rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.tbm-tag-sec-title {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.tbm-hdr-actions {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--primary, #0f5a45);
+}
+
+.tbm-txt-btn {
+  background: none;
+  border: none;
+  color: var(--primary, #0f5a45);
+  font-size: .78rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  padding: 0 2px;
+  transition: opacity .12s ease;
+}
+
+.tbm-txt-btn:hover { opacity: .7; }
+
+/* ── Group list ──────────────────────────────────────────── */
+.tbm-group-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg, #fff);
+}
+
+.tbm-group-list::-webkit-scrollbar { width: 4px; }
+.tbm-group-list::-webkit-scrollbar-track { background: transparent; }
+.tbm-group-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.tbm-group-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .1s ease;
+  direction: rtl;
+  user-select: none;
+}
+
+.tbm-group-row:last-child {
+  border-bottom: none;
+}
+
+.tbm-group-row:hover {
+  background: var(--soft, #f8f9fa);
+}
+
+.tbm-group-row.is-checked {
+  background: color-mix(in srgb, var(--primary, #0f5a45) 6%, transparent);
+}
+
+.tbm-checkbox {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary, #0f5a45);
+  cursor: pointer;
+}
+
+.tbm-grp-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 22px;
+  background: var(--soft, #f0f0f0);
+  border-radius: 6px;
+  font-size: .7rem;
+  font-weight: 900;
+  color: var(--muted);
+}
+
+.tbm-grp-title {
+  flex: 1;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  direction: rtl;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tbm-grp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.tbm-grp-tag-chip {
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 1px 6px;
+  font-size: .65rem;
+  font-weight: 700;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  white-space: nowrap;
+}
+
+.tbm-grp-tag-more {
+  font-size: .65rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 0 2px;
+  align-self: center;
+}
+
+.tbm-empty {
+  padding: 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+/* ── Tag picker ──────────────────────────────────────────── */
+.tbm-tag-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tbm-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  direction: rtl;
+}
+
+.tbm-tag-cat {
+  font-size: .7rem;
+  font-weight: 800;
+  color: var(--muted);
+  min-width: 72px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.tbm-tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* tf-pill inside .tbm-tag-pills is a light-bg context — override sidebar-dark vars */
+.tbm-tag-picker .tf-pill {
+  border-color: var(--border);
+  background: var(--soft, #f8f9fa);
+  color: var(--muted);
+}
+
+.tbm-tag-picker .tf-pill:hover:not(.active) {
+  border-color: var(--primary, #0f5a45);
+  color: var(--text);
+  background: var(--soft, #f0f0f0);
+}
+
+/* ── Apply mode ──────────────────────────────────────────── */
+.tbm-mode-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  direction: rtl;
+}
+
+.tbm-mode-label {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.tbm-radio-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+}
+
+.tbm-radio-wrap input[type="radio"] {
+  accent-color: var(--primary, #0f5a45);
+  cursor: pointer;
+}
+
+/* ── Apply button ────────────────────────────────────────── */
+.tbm-apply-btn {
+  min-width: 160px;
+  transition: opacity .12s ease;
+}
+
+.tbm-btn-dim {
+  opacity: .5;
+  cursor: not-allowed !important;
+}
+
+/* ── Sidebar bulk button ─────────────────────────────────── */
+.tbm-sidebar-btn {
+  width: 100%;
+  text-align: right;
+  background: rgba(201, 168, 76, .18);
+  color: #f6e6ba;
+  border: 1px solid rgba(201, 168, 76, .35);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: .84rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background .12s ease;
+}
+
+.tbm-sidebar-btn:hover {
+  background: rgba(201, 168, 76, .3);
+}
+
+/* =========================================================
+   TagExportModal (.tex-*)
+   ========================================================= */
+
+.tex-window {
+  max-width: 560px !important;
+  width: 92vw !important;
+}
+
+.tex-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 !important;
+  overflow-y: auto !important;
+  max-height: 72vh;
+}
+
+.tex-section {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  direction: rtl;
+}
+
+.tex-section:last-child {
+  border-bottom: none;
+}
+
+.tex-section-title {
+  font-size: .82rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.tex-hint {
+  font-size: .78rem;
+  color: var(--muted);
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+
+/* ── Export buttons ──────────────────────────────────────── */
+.tex-btn-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tex-export-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--soft, #f8f9fa);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  direction: rtl;
+  text-align: right;
+  transition: background .12s ease, border-color .12s ease;
+}
+
+.tex-export-btn:hover {
+  background: color-mix(in srgb, var(--primary, #0f5a45) 6%, var(--soft, #f8f9fa));
+  border-color: color-mix(in srgb, var(--primary, #0f5a45) 30%, var(--border));
+}
+
+.tex-btn-label {
+  font-size: .84rem;
+  font-weight: 800;
+  color: var(--text);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+.tex-btn-desc {
+  font-size: .72rem;
+  color: var(--muted);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+/* ── File picker ─────────────────────────────────────────── */
+.tex-file-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  direction: rtl;
+}
+
+.tex-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.tex-file-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  background: var(--primary, #0f5a45);
+  color: #fff;
+  border-radius: 8px;
+  font-size: .8rem;
+  font-weight: 800;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .12s ease;
+}
+
+.tex-file-label:hover { opacity: .85; }
+
+.tex-file-name {
+  font-size: .76rem;
+  color: var(--muted);
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  direction: ltr;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+/* ── Paste textarea ──────────────────────────────────────── */
+.tex-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: .8rem;
+  font-family: 'Courier New', monospace;
+  color: var(--text);
+  background: var(--bg, #fff);
+  resize: vertical;
+  direction: ltr;
+  transition: border-color .15s ease;
+  margin-bottom: 8px;
+}
+
+.tex-textarea:focus {
+  outline: none;
+  border-color: var(--primary, #0f5a45);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, #0f5a45) 12%, transparent);
+}
+
+/* ── Status message ──────────────────────────────────────── */
+.tex-import-status {
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  direction: rtl;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+}
+
+.tex-status-hidden { display: none; }
+
+.tex-status-ok {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #6ee7b7;
+}
+
+.tex-status-err {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+/* ── Import button ───────────────────────────────────────── */
+.tex-import-btn {
+  width: 100%;
+  margin-top: 2px;
+}
