@@ -11,17 +11,18 @@
 
 </head>
 <body data-theme="quran-classic" data-font-preset="normal-quran">
+<a href="#workspace" class="skip-link">تخطى إلى المحتوى الرئيسي</a>
 <header class="app-header">
   <div class="brand"><div class="logo">ق</div><div><h1>متشابهات القرآن الكريم</h1><p>V83 — Quran Similarity Explorer</p></div></div>
-  <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
+  <button class="mobile-menu-btn" onclick="openMobileMenu()" aria-label="فتح القائمة"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   <nav class="header-actions">
     <button onclick="openHome()" data-nav="home">الرئيسية</button><button onclick="openDatabase('personal')" data-nav="personal">الشخصية</button><button onclick="openDatabase('auto')" data-nav="automated">الآلية</button>
-    <button onclick="openAddModal()">+ إضافة متشابه</button><button onclick="openDashboard()" data-nav="dashboard">الإحصائيات</button><button onclick="openAppSettings()" data-nav="settings">⚙ إعدادات</button>
+    <button onclick="openAddModal()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> إضافة متشابه</button><button onclick="openDashboard()" data-nav="dashboard">الإحصائيات</button><button onclick="openAppSettings()" data-nav="settings"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> إعدادات</button>
   </nav>
 </header>
 <div class="legend legend-compact"><b id="ghBadge">☁ GitHub: not set</b><b id="storageBadge">✓ جاهز</b></div>
 
-<main id="home" class="home-screen"><section class="hero"><h2>اختر قاعدة البيانات</h2><p>القاعدة الشخصية قابلة للتعديل، والقاعدة الآلية للمراجعة والنسخ والحذف عند تفعيل وضع التعديل.</p><div class="choice-grid"><button class="choice-card personal" onclick="openDatabase('personal')"><span>★</span><b>المتشابهات الشخصية</b><small>معتمدة وقابلة للإضافة والتعديل</small><em id="personalCountHome">0 مجموعة</em></button><button class="choice-card auto" onclick="openDatabase('auto')"><span>⚙</span><b>المتشابهات الآلية</b><small>مرشحات آلية للمراجعة</small><em id="autoCountHome">0 مجموعة</em></button></div></section></main>
+<main id="home" class="home-screen"><section class="hero"><h2>اختر قاعدة البيانات</h2><p>القاعدة الشخصية قابلة للتعديل، والقاعدة الآلية للمراجعة والنسخ والحذف عند تفعيل وضع التعديل.</p><div class="choice-grid"><button class="choice-card personal" onclick="openDatabase('personal')"><span aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="rgba(255,255,255,.85)" stroke="rgba(255,255,255,.5)" stroke-width="0.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><b>المتشابهات الشخصية</b><small>معتمدة وقابلة للإضافة والتعديل</small><em id="personalCountHome">0 مجموعة</em></button><button class="choice-card auto" onclick="openDatabase('auto')"><span aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg></span><b>المتشابهات الآلية</b><small>مرشحات آلية للمراجعة</small><em id="autoCountHome">0 مجموعة</em></button></div></section></main>
 
 <section id="workspace" class="workspace v83-shell hidden">
   <div class="v83-grid">
@@ -58,15 +59,15 @@
 
           <div class="v83-side-db-actions">
             <button class="primary" onclick="openAddModal()" aria-label="إضافة متشابه" title="إضافة متشابه">
-              <span class="btn-icon" aria-hidden="true">➕</span>
+              <span class="btn-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
               <span class="btn-text">إضافة</span>
             </button>
             <button onclick="toggleAllGroups()" id="toggleAllBtn" aria-label="فتح/طي الكل" title="فتح/طي الكل">
-              <span class="btn-icon" aria-hidden="true">📂</span>
+              <span class="btn-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
               <span class="btn-text">الكل</span>
             </button>
             <button id="syncGitHubBtn" onclick="manualSyncGitHub()" aria-label="مزامنة GitHub" title="مزامنة GitHub">
-              <span class="btn-icon" aria-hidden="true">☁</span>
+              <span class="btn-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span>
               <span class="btn-text">Sync</span>
             </button>
           </div>
@@ -132,7 +133,7 @@
 </nav>
 
 <!-- V83 Phase 1 — Modify Window mounts dynamically here through js/modals.js + js/add-edit.js. -->
-<section id="modalRoot"></section><button class="floating-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<section id="modalRoot"></section><button class="floating-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="العودة إلى الأعلى"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 <script src="components/layout.js?v=v83_upgrades_20260526_2"></script>
 <script src="data/quran-reference.js?v=v83_phase2_fixdb"></script>
 <script src="data/personal-data.js?v=v83_phase2_fixdb"></script>

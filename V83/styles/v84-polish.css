@@ -1,0 +1,152 @@
+/* =========================================================
+   V84 — UI/UX Pro Max Polish Layer
+   Fixes: emoji→SVG, cursor, hover, focus, a11y, spacing
+   ========================================================= */
+
+/* ─── 1. Skip-to-content (WCAG 2.1 / keyboard a11y) ─────── */
+.skip-link {
+  position: absolute;
+  top: -120%;
+  right: 22px;
+  z-index: 9999;
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 0 0 14px 14px;
+  font-weight: 900;
+  transition: top .15s ease;
+  text-decoration: none;
+  font-family: var(--uifont);
+}
+.skip-link:focus { top: 0; }
+
+/* ─── 2. Cursor on non-button interactive elements ─────────── */
+.surah-pill       { cursor: pointer; }
+.v83-group-card   { cursor: pointer; }
+
+/* ─── 3. Header: SVG icon alignment in action buttons ──────── */
+.header-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-actions button > svg {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  opacity: .80;
+}
+
+/* ─── 4. Mobile menu button: 44px touch target + centered SVG ─ */
+.mobile-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  min-width: 44px;
+  min-height: 44px;
+}
+.mobile-menu-btn svg { display: block; }
+
+/* ─── 5. Floating top: SVG display + micro-lift hover ──────── */
+.floating-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .18s ease, box-shadow .2s ease;
+}
+.floating-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, .28);
+}
+.floating-top svg { display: block; }
+
+/* ─── 6. Choice-card icon: SVG sizing in dark card ─────────── */
+.choice-card > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, .88);
+}
+.choice-card > span > svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ─── 7. Sidebar btn-icon: SVG block display ───────────────── */
+.btn-icon svg { display: block; }
+
+/* FAB add-button on mobile: size the SVG icon */
+body.db-personal .toolbar-tools > button.primary .btn-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff;
+}
+
+/* ─── 8. Surah pill: hover feedback ────────────────────────── */
+.surah-pill {
+  transition: background .15s ease, border-color .15s ease, transform .12s ease;
+}
+.surah-pill:hover:not(.no-match) {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--primary) 6%, var(--soft));
+}
+
+/* ─── 9. Group card: smooth hover preserved from cards.css ──── */
+.v83-group-card {
+  transition: transform .18s cubic-bezier(.16, 1, .3, 1),
+              box-shadow .2s ease,
+              border-color .2s ease;
+}
+
+/* ─── 10. Mobile nav: crisp active state indicator ─────────── */
+.v83-mobile-nav button.v83-nav-active,
+.v83-mobile-nav button.v83-nav-active .mi,
+.v83-mobile-nav button.v83-nav-active .ml {
+  color: var(--primary, #0f5a45);
+}
+.v83-mobile-nav button.v83-nav-active .mi svg {
+  stroke: var(--primary, #0f5a45);
+}
+
+/* ─── 11. Detail pane empty state: vertically centered ─────── */
+.v83-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  min-height: 180px;
+  padding: 28px 16px;
+}
+
+/* ─── 12. Focus ring: consistent, primary-colored ──────────── */
+:focus-visible {
+  outline: 2px solid var(--primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* ─── 13. Touch target floors: 44×44 on interactive controls ── */
+.icon-btn        { min-width: 44px; min-height: 44px; }
+.floating-top    { min-width: 50px; min-height: 50px; }
+
+@media (max-width: 850px) {
+  .v83-mobile-nav button { min-height: 44px; }
+}
+
+/* ─── 14. Logo: block display for SVG-safe layout ──────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-family: var(--qfont);
+}
+
+/* ─── 15. Legend: tighten strip height ─────────────────────── */
+.legend.legend-compact {
+  padding: 5px 22px;
+  font-size: .76rem;
+}
