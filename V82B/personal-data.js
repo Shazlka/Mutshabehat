@@ -1049,11 +1049,11 @@ window.PERSONAL_DATA = [
             "text": "وَ"
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": "مَا كَانَ جَوَابَ قَوۡمِهِۦٓ"
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": " إِلَّآ أَن قَالُوٓاْ"
           },
           {
@@ -1134,7 +1134,10 @@ window.PERSONAL_DATA = [
     ],
     "note": "",
     "unote": "الاعراف: وَمَا (بالواو) الوحيدة — باقيها: فَمَا<div>الأعراف قائمة علي الإختصار لذا قال (أخرجوهم) وليس (أخرجوا آل لوط) كما في النمل</div>",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null,
+    "slaveParts": null
   },
   {
     "id": 14,
