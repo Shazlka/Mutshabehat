@@ -1076,7 +1076,7 @@ window.PERSONAL_DATA = [
             "text": "۞ فَمَا كَانَ جَوَابَ قَوۡمِهِ"
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": "ۦٓ إِلَّآ أَن قَالُوٓاْ "
           },
           {
@@ -1262,7 +1262,7 @@ window.PERSONAL_DATA = [
         "label": "ثم هو يوم — فريدة",
         "parts": [
           {
-            "type": "normal",
+            "type": "shared",
             "text": "ثُمَّ "
           },
           {
