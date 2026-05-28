@@ -16856,7 +16856,12 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "يخرج الحي من",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ]
   },
   {
     "id": 209,
