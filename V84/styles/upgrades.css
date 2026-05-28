@@ -1224,49 +1224,51 @@ body[data-theme="bevel-night"] .v83-burger-hint {
 }
 
 /* =========================================================
-   V83 — Details Pane Tabs styling: identical size and
-   arrangement to the main home screen choices cards
+   V83 — Details Pane Tabs styling: compact single horizontal row
    ========================================================= */
 .v83-tabs {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 10px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
   border: none !important;
-  padding: 10px 14px !important;
-  margin: 0 0 16px 0 !important;
-  overflow: visible !important;
-}
-
-.v83-tabs > button:nth-child(5) {
-  grid-column: span 2 !important;
+  padding: 4px 0 10px 0 !important;
+  margin: 0 0 12px 0 !important;
+  overflow-x: auto !important;
+  width: 100% !important;
 }
 
 .v83-tab-btn {
-  min-height: 54px !important;
-  border-radius: 14px !important;
-  padding: 10px 12px !important;
-  display: flex !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  min-height: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  padding: 6px 8px !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 0.95rem !important;
+  font-size: 0.88rem !important;
   font-weight: 800 !important;
   border: 1.5px solid var(--border) !important;
   background: var(--soft) !important;
   color: var(--text) !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03) !important;
-  transition: all 0.22s cubic-bezier(.22,.68,0,1.2) !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.2s cubic-bezier(.22,.68,0,1.2) !important;
   cursor: pointer !important;
   text-align: center !important;
+  white-space: nowrap !important;
 }
 
 .v83-tab-btn:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04) !important;
 }
 
 .v83-tab-btn:active {
   transform: translateY(1px) !important;
 }
+
 
 /* Active tab style: premium gold-bordered emerald gradient matching home cards */
 .v83-tab-btn.active {
@@ -1468,7 +1470,7 @@ body[data-theme="bevel-night"] .v83-mobile-buttons-grid button.v83-mobile-edit {
     border-top: 1px solid var(--border) !important;
     border-bottom: none !important;
     margin: 0 !important;
-    padding: 10px 8px 14px !important; /* Maximum width expansion */
+    padding: 8px 8px 10px !important; /* SNUG vertical space */
     background: var(--surface) !important;
     z-index: 2 !important;
     overflow: visible !important;
@@ -1485,11 +1487,11 @@ body[data-theme="bevel-night"] .v83-mobile-buttons-grid button.v83-mobile-edit {
   #v83MobileDetailContent .v83-tab-btn {
     flex: 1 !important;
     min-width: 0 !important;
-    min-height: 64px !important;
-    height: 64px !important; /* Explicit same height */
-    border-radius: 16px !important;
-    font-size: 0.95rem !important; /* Reduced slightly to fit Arabic text without wrapping */
-    padding: 12px 8px !important; /* Balanced padding to ensure perfect fit without wrapping */
+    min-height: 48px !important; /* Slimmer, space-saving */
+    height: 48px !important;
+    border-radius: 12px !important;
+    font-size: 0.88rem !important; /* Crisp snug font size */
+    padding: 10px 6px !important; /* SNUG padding */
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -1507,17 +1509,18 @@ body[data-theme="bevel-night"] .v83-mobile-buttons-grid button.v83-mobile-edit {
 
   /* Make mobile action buttons container span maximum screen width and taller in height for easy press */
   .v83-mobile-buttons-grid {
-    padding: 10px 8px 14px !important; /* Maximum width expansion */
+    padding: 8px 8px 10px !important; /* SNUG vertical space */
     gap: 8px !important;
   }
 
   .v83-mobile-buttons-grid button {
-    min-height: 64px !important;
-    height: 64px !important; /* Explicit same height */
-    border-radius: 16px !important;
-    font-size: 1.05rem !important;
-    padding: 12px 14px !important;
+    min-height: 54px !important; /* Slimmer, space-saving */
+    height: 54px !important;
+    border-radius: 14px !important;
+    font-size: 0.98rem !important;
+    padding: 10px 12px !important;
   }
+
 
   /* Move comparison mode selector buttons to the bottom of comparison panel */
   .v83-cmp-panel {
