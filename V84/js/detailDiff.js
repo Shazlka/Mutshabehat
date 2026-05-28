@@ -33,12 +33,18 @@ const _masterMap = new Map();
 function _getMasterState(g) {
   const key = String(g.id);
   if (!_masterMap.has(key)) {
-    const firstVerse = (g.verses || [])[0];
-    const parts = firstVerse ? (firstVerse.parts || []) : [];
-    _masterMap.set(key, {
-      masterIndex: 0,
-      partSet: new Set(parts.map((_, i) => i)),
-    });
+    // Seed from persisted fields on the group object (if any)
+    const masterIdx = typeof g.masterIndex === 'number' ? g.masterIndex : 0;
+    const masterVerse = (g.verses || [])[masterIdx];
+    const parts = masterVerse ? (masterVerse.parts || []) : [];
+    let partSet;
+    if (Array.isArray(g.masterParts)) {
+      partSet = new Set(g.masterParts.filter(i => i >= 0 && i < parts.length));
+      if (partSet.size === 0) partSet = new Set(parts.map((_, i) => i)); // fallback: all
+    } else {
+      partSet = new Set(parts.map((_, i) => i));
+    }
+    _masterMap.set(key, { masterIndex: masterIdx, partSet });
   }
   return _masterMap.get(key);
 }
@@ -47,6 +53,19 @@ function _resetPartSet(ms, g) {
   const masterVerse = (g.verses || [])[ms.masterIndex];
   const parts = masterVerse ? (masterVerse.parts || []) : [];
   ms.partSet = new Set(parts.map((_, i) => i));
+}
+
+// Write master state back to the group object and save to personal DB + GitHub
+function _persistMasterState(g, ms) {
+  if (typeof window.activeDb === 'undefined' || window.activeDb !== 'personal') return;
+  g.masterIndex = ms.masterIndex;
+  const masterVerse = (g.verses || [])[ms.masterIndex];
+  const totalParts = masterVerse ? (masterVerse.parts || []).length : 0;
+  // null = all parts selected (saves space); array = partial selection
+  g.masterParts = (ms.partSet.size >= totalParts)
+    ? null
+    : [...ms.partSet].sort((a, b) => a - b);
+  if (typeof window.saveDb === 'function') window.saveDb('personal');
 }
 
 // ── Format adapter ────────────────────────────────────────────────────────────
@@ -133,6 +152,7 @@ function _buildMasterUI(g, onRefresh) {
       if (ms.masterIndex === i) return;
       ms.masterIndex = i;
       _resetPartSet(ms, g);
+      _persistMasterState(g, ms);
       onRefresh();
     });
     pills.appendChild(pill);
@@ -181,6 +201,7 @@ function _buildMasterUI(g, onRefresh) {
         } else {
           ms.partSet.add(realIdx);
         }
+        _persistMasterState(g, ms);
         onRefresh();
       });
       chipWrap.appendChild(chip);
@@ -194,6 +215,7 @@ function _buildMasterUI(g, onRefresh) {
     allBtn.textContent = 'الكل';
     allBtn.addEventListener('click', () => {
       _resetPartSet(ms, g);
+      _persistMasterState(g, ms);
       onRefresh();
     });
     chipWrap.appendChild(allBtn);
