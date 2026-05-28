@@ -2252,7 +2252,13 @@ window.PERSONAL_DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن مريم: لأبيه فقط — العنكبوت: لقومه فقط — الثلاث: لأبيه وقومه",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0,
+      1
+    ],
+    "slaveParts": null
   },
   {
     "id": 28,
