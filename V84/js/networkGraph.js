@@ -171,6 +171,25 @@ export function renderNetworkGraph(container, options = {}) {
   const simNodes = nodes.map(n => ({ ...n }));
   const simEdges = edges.map(e => ({ ...e }));
 
+  // ── Circular Mushaf-order layout ──────────────────────────────────────────────
+  // Sort by surah number so they appear 1→114 clockwise from 12 o'clock
+  simNodes.sort((a, b) => a.id - b.id);
+
+  const cx = W / 2, cy = H / 2;
+  // Radius large enough that R_MIN nodes don't overlap (min spacing = 2*R_MIN + 6px)
+  const minSpacing = 2 * R_MIN + 6;
+  const R_CIRCLE = Math.max(
+    (simNodes.length * minSpacing) / (2 * Math.PI),
+    Math.min(W, H) * 0.35
+  );
+
+  simNodes.forEach((n, i) => {
+    const angle = (i / simNodes.length) * 2 * Math.PI - Math.PI / 2; // start at 12 o'clock
+    n._angle = angle;
+    n.x = n.fx = cx + R_CIRCLE * Math.cos(angle);
+    n.y = n.fy = cy + R_CIRCLE * Math.sin(angle);
+  });
+
   // ── SVG ──────────────────────────────────────────────────────────────────────
   const svg = d3.select(container)
     .append('svg')
@@ -181,11 +200,26 @@ export function renderNetworkGraph(container, options = {}) {
 
   const root = svg.append('g').attr('class', 'ng-root');
 
-  svg.call(
-    d3.zoom()
-      .scaleExtent([0.08, 5])
-      .on('zoom', ev => root.attr('transform', ev.transform))
-  );
+  const zoomBehavior = d3.zoom()
+    .scaleExtent([0.05, 5])
+    .on('zoom', ev => root.attr('transform', ev.transform));
+
+  svg.call(zoomBehavior);
+
+  // Fit the full circle + labels in viewport on first render
+  const fitScale = Math.min((W - 100) / (2 * R_CIRCLE + 80), (H - 100) / (2 * R_CIRCLE + 80));
+  if (fitScale < 0.95) {
+    svg.call(
+      zoomBehavior.transform,
+      d3.zoomIdentity.translate(W / 2, H / 2).scale(fitScale).translate(-cx, -cy)
+    );
+  }
+
+  // ── Circle guide ring (Mushaf-order rail) ─────────────────────────────────────
+  root.append('circle')
+    .attr('cx', cx).attr('cy', cy)
+    .attr('r', R_CIRCLE)
+    .attr('class', 'ng-circle-guide');
 
   // ── Links ─────────────────────────────────────────────────────────────────────
   const link = root.append('g')
@@ -215,10 +249,15 @@ export function renderNetworkGraph(container, options = {}) {
     .attr('r',    d => rScale(d.count))
     .style('fill', _nodeColor);
 
+  // Labels point radially outward from the circle center
   node.append('text')
     .attr('class', d => 'ng-node-lbl' + (d.count >= LABEL_THRESHOLD ? ' ng-node-lbl--show' : ''))
-    .attr('dy', d => rScale(d.count) + 11)
-    .attr('text-anchor', 'middle')
+    .attr('dx', d => Math.cos(d._angle) * (rScale(d.count) + 9))
+    .attr('dy', d => Math.sin(d._angle) * (rScale(d.count) + 9) + 4)
+    .attr('text-anchor', d => {
+      const cos = Math.cos(d._angle);
+      return cos < -0.25 ? 'end' : cos > 0.25 ? 'start' : 'middle';
+    })
     .text(d => d.name);
 
   node.append('title').text(d =>
@@ -247,17 +286,13 @@ export function renderNetworkGraph(container, options = {}) {
 
   _updateLegend();
 
-  // ── Force simulation ──────────────────────────────────────────────────────────
+  // ── Simulation (minimal — nodes pinned via fx/fy; only needed to resolve link
+  //   source/target references and support drag dynamics) ────────────────────────
   _sim = d3.forceSimulation(simNodes)
     .force('link',
-      d3.forceLink(simEdges)
-        .id(d => d.id)
-        .distance(e => 70 + (1 / Math.max(e.weight, 1)) * 60)
-        .strength(0.55)
+      d3.forceLink(simEdges).id(d => d.id).strength(0)
     )
-    .force('charge', d3.forceManyBody().strength(-240).distanceMax(420))
-    .force('center', d3.forceCenter(W / 2, H / 2).strength(0.06))
-    .force('collide', d3.forceCollide(d => rScale(d.count) + 5))
+    .force('charge', d3.forceManyBody().strength(-15))
     .on('tick', () => {
       link
         .attr('x1', e => e.source.x ?? 0)

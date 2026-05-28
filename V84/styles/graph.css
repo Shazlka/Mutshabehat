@@ -87,6 +87,17 @@
   cursor: grabbing;
 }
 
+/* ── Circle guide ring (Mushaf-order rail) ────────────────────────────────── */
+
+.ng-circle-guide {
+  fill: none;
+  stroke: var(--border, #e2e8f0);
+  stroke-width: 1px;
+  stroke-dasharray: 5 5;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* ── Links ────────────────────────────────────────────────────────────────── */
 
 .ng-link {
