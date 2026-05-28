@@ -198,7 +198,7 @@ export function createDiffHighlighter(group, options = {}) {
       _renderContext(textEl, verse.contextAfter);
     } else {
       _renderContext(textEl, verse.contextBefore);
-      _renderRightTokens(textEl, tokens);
+      _renderRightTokens(textEl, tokens, !!verse.trimContext);
       _renderContext(textEl, verse.contextAfter);
     }
 
@@ -236,14 +236,30 @@ export function createDiffHighlighter(group, options = {}) {
   }
 
   // Right card (B): same ✓  |  added ✓  |  changed → shows newWord
-  function _renderRightTokens(el, tokens) {
-    tokens.forEach(tok => {
-      if (tok.status === 'removed') return; // not present in B — skip
+  // trimOuter: leading/trailing 'added' tokens (outside the LCS core) become dimmed context
+  function _renderRightTokens(el, tokens, trimOuter) {
+    const rightToks = tokens.filter(t => t.status !== 'removed');
 
-      if (tok.status === 'changed' && mode === 'char' && tok.oldWord) {
+    let first = 0, last = rightToks.length - 1;
+    if (trimOuter) {
+      let f = -1, l = -1;
+      for (let i = 0; i < rightToks.length; i++) {
+        if (rightToks[i].status !== 'added') { if (f === -1) f = i; l = i; }
+      }
+      if (f !== -1) { first = f; last = l; }
+      else           { first = rightToks.length; } // all tokens are context
+    }
+
+    rightToks.forEach((tok, i) => {
+      if (trimOuter && (i < first || i > last)) {
+        const sp = document.createElement('span');
+        sp.className = 'dh-context';
+        sp.textContent = tok.word;
+        el.appendChild(sp);
+      } else if (tok.status === 'changed' && mode === 'char' && tok.oldWord) {
         el.appendChild(_charDiffSpan(tok.oldWord, tok.word, 'right'));
       } else {
-        el.appendChild(_makeToken(tok.word, tok.status)); // 'same' | 'added' | 'changed'
+        el.appendChild(_makeToken(tok.word, tok.status));
       }
       el.appendChild(document.createTextNode(' '));
     });

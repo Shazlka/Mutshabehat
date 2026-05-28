@@ -21,7 +21,7 @@
  * parts[].text into a single string so arabicDiff.js can run LCS on it.
  */
 
-import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_3';
+import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_4';
 import { createAnnotationPanel  } from './annotationPanel.js?v=v84_diff_20260527_1';
 
 // Tracks the ID of the last group the user opened (set in capture phase)
@@ -132,6 +132,8 @@ function adaptGroupWithMaster(g, ms) {
           adapted.text = ctx.diff; // narrows the diff computation to the matching fragment
           if (ctx.before) adapted.contextBefore = ctx.before;
           if (ctx.after)  adapted.contextAfter  = ctx.after;
+        } else {
+          adapted.trimContext = true; // full text used; trim outer adds during rendering
         }
       }
       return adapted;
