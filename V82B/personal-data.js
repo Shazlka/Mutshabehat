@@ -13723,7 +13723,21 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "يحكم يوم القيمه",
-    "source": "automated"
+    "source": "automated",
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "slaveParts": {
+      "1": [
+        1,
+        2,
+        3
+      ]
+    }
   },
   {
     "id": 168,
@@ -14020,7 +14034,22 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "يبتغون فضلا من",
-    "source": "automated"
+    "source": "automated",
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ],
+    "slaveParts": {
+      "1": [
+        1,
+        2
+      ],
+      "2": [
+        1,
+        2
+      ]
+    }
   },
   {
     "id": 172,
@@ -16567,7 +16596,19 @@ window.PERSONAL_DATA = [
     "masterParts": [
       1,
       2
-    ]
+    ],
+    "slaveParts": {
+      "1": [
+        1,
+        2
+      ],
+      "2": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
   },
   {
     "id": 205,
@@ -16739,8 +16780,12 @@ window.PERSONAL_DATA = [
     "slaveParts": {
       "1": [
         1,
-        2,
-        3
+        2
+      ],
+      "2": [
+        0,
+        1,
+        2
       ]
     }
   },
