@@ -18,7 +18,8 @@
  *   #ngDetailSlot   — Task 5.4 injects node-detail panel here
  */
 
-import * as d3          from 'https://cdn.jsdelivr.net/npm/d3@7/dist/d3.esm.min.js';
+// D3 loaded as a UMD <script> tag in index.html — more reliable than ESM CDN import
+const d3 = window.d3;
 import { buildGraphData } from './graphDataBuilder.js';
 
 const PAGE_ID   = 'networkGraph';
