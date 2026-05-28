@@ -8222,7 +8222,11 @@ window.PERSONAL_DATA = [
     "note": ": إذا كان الخطاب للكفار: \"يغفر لكم من ذنوبكم\" — وللمؤمنين: \"يغفر لكم ذنوبكم\"",
     "unote": "فائدة إضافية: مفتاح الحفظ: الكفار جاء معهم \"من\" للتبعيض، أما المؤمنون فجاءت بدون \"من\".",
     "headerColor": "#982abc",
-    "completed": true
+    "completed": true,
+    "masterIndex": 3,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 116,
@@ -17004,6 +17008,13 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ولا الصم الدعا",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2,
+      3,
+      4
+    ]
   }
 ];
