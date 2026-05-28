@@ -852,7 +852,24 @@ window.PERSONAL_DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن العنكبوت ٣٦: الوحيدة بالفاء + وارجوا اليوم الاخر",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0,
+      1,
+      2
+    ],
+    "slaveParts": {
+      "1": [
+        0,
+        1,
+        2
+      ],
+      "2": [
+        0,
+        1
+      ]
+    }
   },
   {
     "id": 11,
@@ -944,7 +961,25 @@ window.PERSONAL_DATA = [
     ],
     "note": "وردت ٥ مرات: ٢ قصة موسى + ٣ قصة شعيب",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ],
+    "slaveParts": {
+      "1": [
+        1
+      ],
+      "2": [
+        1
+      ],
+      "3": [
+        1
+      ],
+      "4": [
+        1
+      ]
+    }
   },
   {
     "id": 12,
