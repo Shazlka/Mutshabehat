@@ -126,20 +126,30 @@ export function createDiffHighlighter(group, options = {}) {
     if (!verses || verses.length === 0) return grid;
 
     if (verses.length === 1) {
-      grid.appendChild(_buildVerseCard(verses[0], null, null));
+      grid.appendChild(_buildVerseCard(verses[0], null, null, false));
     } else if (verses.length === 2) {
       grid.classList.add('dh-grid-2');
       const tokens = computeWordDiff(verses[0].text, verses[1].text);
-      grid.appendChild(_buildVerseCard(verses[0], tokens, 'left'));
-      grid.appendChild(_buildVerseCard(verses[1], tokens, 'right'));
+      grid.appendChild(_buildVerseCard(verses[0], tokens, 'left',  !!options.starMode));
+      grid.appendChild(_buildVerseCard(verses[1], tokens, 'right', false));
+    } else if (options.starMode) {
+      // Star topology: verses[0] is master — compare every other verse against it
+      for (let i = 1; i < verses.length; i++) {
+        const pair = document.createElement('div');
+        pair.className = 'dh-pair dh-grid-2';
+        const tokens = computeWordDiff(verses[0].text, verses[i].text);
+        pair.appendChild(_buildVerseCard(verses[0], tokens, 'left',  true));
+        pair.appendChild(_buildVerseCard(verses[i], tokens, 'right', false));
+        grid.appendChild(pair);
+      }
     } else {
       // Consecutive pairs: (0,1), (1,2), …
       for (let i = 0; i < verses.length - 1; i++) {
         const pair = document.createElement('div');
         pair.className = 'dh-pair dh-grid-2';
         const tokens = computeWordDiff(verses[i].text, verses[i + 1].text);
-        pair.appendChild(_buildVerseCard(verses[i],     tokens, 'left'));
-        pair.appendChild(_buildVerseCard(verses[i + 1], tokens, 'right'));
+        pair.appendChild(_buildVerseCard(verses[i],     tokens, 'left',  false));
+        pair.appendChild(_buildVerseCard(verses[i + 1], tokens, 'right', false));
         grid.appendChild(pair);
       }
     }
@@ -147,9 +157,9 @@ export function createDiffHighlighter(group, options = {}) {
     return grid;
   }
 
-  function _buildVerseCard(verse, tokens, side) {
+  function _buildVerseCard(verse, tokens, side, isMaster) {
     const card = document.createElement('div');
-    card.className = 'dh-verse-card';
+    card.className = 'dh-verse-card' + (isMaster ? ' dh-verse-master' : '');
 
     const header = document.createElement('div');
     header.className = 'dh-card-header';
@@ -164,6 +174,14 @@ export function createDiffHighlighter(group, options = {}) {
 
     header.appendChild(surahName);
     header.appendChild(ayahBadge);
+
+    if (isMaster) {
+      const masterBadge = document.createElement('span');
+      masterBadge.className = 'dh-master-badge';
+      masterBadge.textContent = 'مرجع';
+      header.appendChild(masterBadge);
+    }
+
     card.appendChild(header);
 
     const textEl = document.createElement('p');

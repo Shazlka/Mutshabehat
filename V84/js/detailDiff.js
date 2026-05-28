@@ -11,47 +11,198 @@
  *     with createDiffHighlighter + createAnnotationPanel.
  *  4. Same approach for the mobile bottom sheet (#v83MobileDetailContent).
  *
+ * Master / Slave comparison:
+ *  - A selector bar lets the user pick which verse is the "master" (مرجع).
+ *  - All other verses are compared against the master using star-topology diff.
+ *  - Part selector: when the master verse has multiple parts, the user can
+ *    toggle individual parts on/off to narrow the comparison base text.
+ *
  * Adapter: the old data model uses { surah, ayah, parts[] } — we join
  * parts[].text into a single string so arabicDiff.js can run LCS on it.
  */
 
-import { createDiffHighlighter } from './diffHighlighter.js';
-import { createAnnotationPanel  } from './annotationPanel.js';
+import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_2';
+import { createAnnotationPanel  } from './annotationPanel.js?v=v84_diff_20260527_1';
 
 // Tracks the ID of the last group the user opened (set in capture phase)
 let _lastGroupId = null;
 
+// Per-group master state: Map<String(groupId), { masterIndex, partSet }>
+const _masterMap = new Map();
+
+function _getMasterState(g) {
+  const key = String(g.id);
+  if (!_masterMap.has(key)) {
+    const firstVerse = (g.verses || [])[0];
+    const parts = firstVerse ? (firstVerse.parts || []) : [];
+    _masterMap.set(key, {
+      masterIndex: 0,
+      partSet: new Set(parts.map((_, i) => i)),
+    });
+  }
+  return _masterMap.get(key);
+}
+
+function _resetPartSet(ms, g) {
+  const masterVerse = (g.verses || [])[ms.masterIndex];
+  const parts = masterVerse ? (masterVerse.parts || []) : [];
+  ms.partSet = new Set(parts.map((_, i) => i));
+}
+
 // ── Format adapter ────────────────────────────────────────────────────────────
 
-function adaptGroup(g) {
+function _adaptVerse(v) {
+  const text = (v.parts || [])
+    .map(p => (p && p.text) || '')
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const ayahNumber = parseInt(v.ayah || v.ayahNo || 0, 10);
+  const surahNumber = typeof window.getSurahNo === 'function'
+    ? (window.getSurahNo(v.surah) || 0)
+    : 0;
+  return { surahName: v.surah || '', surahNumber, ayahNumber, text };
+}
+
+function adaptGroupWithMaster(g, ms) {
   if (!g) return null;
 
-  const verses = (g.verses || []).map(v => {
-    // Join all parts into one continuous text string
-    const text = (v.parts || [])
-      .map(p => (p && p.text) || '')
-      .join(' ')
-      .replace(/\s+/g, ' ')
-      .trim();
+  const allVerses = g.verses || [];
+  const masterIdx = Math.min(ms.masterIndex, allVerses.length - 1);
+  const masterVerse = allVerses[masterIdx];
+  if (!masterVerse) return null;
 
-    const ayahNumber = parseInt(v.ayah || v.ayahNo || 0, 10);
-    const surahNumber = typeof window.getSurahNo === 'function'
-      ? (window.getSurahNo(v.surah) || 0)
-      : 0;
+  const masterParts = masterVerse.parts || [];
+  const allSelected = ms.partSet.size === 0 || ms.partSet.size >= masterParts.length;
+  const masterText = masterParts
+    .filter((_, i) => allSelected || ms.partSet.has(i))
+    .map(p => (p && p.text) || '')
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 
-    return { surahName: v.surah || '', surahNumber, ayahNumber, text };
-  }).filter(v => v.text);
+  if (!masterText) return null;
 
-  // Need at least two verses with text for a meaningful diff
+  const adaptedMaster = { ..._adaptVerse(masterVerse), text: masterText };
+
+  const slaves = allVerses
+    .filter((_, i) => i !== masterIdx)
+    .map(_adaptVerse)
+    .filter(v => v.text);
+
+  const verses = [adaptedMaster, ...slaves];
   if (verses.length < 2) return null;
 
   return {
     id:       String(g.id),
-    title:    g.title  || '',
+    title:    g.title    || '',
     diffType: g.diffType || '',
-    notes:    g.note   || g.notes || '',
+    notes:    g.note     || g.notes || '',
     verses,
   };
+}
+
+// ── Master selector UI ────────────────────────────────────────────────────────
+
+function _buildMasterUI(g, onRefresh) {
+  const ms = _getMasterState(g);
+  const verses = g.verses || [];
+
+  const bar = document.createElement('div');
+  bar.className = 'dh-master-bar';
+
+  // Row 1: "الآية المرجع:" label + verse selector pills
+  const row1 = document.createElement('div');
+  row1.className = 'dh-master-row1';
+
+  const lbl1 = document.createElement('span');
+  lbl1.className = 'dh-master-label';
+  lbl1.textContent = 'الآية المرجع:';
+  row1.appendChild(lbl1);
+
+  const pills = document.createElement('div');
+  pills.className = 'dh-master-pills';
+
+  verses.forEach((v, i) => {
+    const pill = document.createElement('button');
+    pill.type = 'button';
+    pill.className = 'dh-master-pill' + (i === ms.masterIndex ? ' active' : '');
+    const ayahNo = v.ayah || v.ayahNo || (i + 1);
+    pill.textContent = `${v.surah || ''} (${ayahNo})`;
+    pill.addEventListener('click', () => {
+      if (ms.masterIndex === i) return;
+      ms.masterIndex = i;
+      _resetPartSet(ms, g);
+      onRefresh();
+    });
+    pills.appendChild(pill);
+  });
+
+  row1.appendChild(pills);
+  bar.appendChild(row1);
+
+  // Row 2: part selector (only when master has 2+ parts)
+  const masterVerse = verses[ms.masterIndex];
+  const rawParts = masterVerse ? (masterVerse.parts || []) : [];
+  const visibleParts = rawParts.filter(p => p && p.text);
+
+  if (visibleParts.length > 1) {
+    // Ensure partSet is properly initialised for this master
+    if (ms.partSet.size === 0) _resetPartSet(ms, g);
+
+    const row2 = document.createElement('div');
+    row2.className = 'dh-master-row2';
+
+    const lbl2 = document.createElement('span');
+    lbl2.className = 'dh-master-label';
+    lbl2.textContent = 'جزء المرجع:';
+    row2.appendChild(lbl2);
+
+    const chipWrap = document.createElement('div');
+    chipWrap.className = 'dh-part-chips';
+
+    rawParts.forEach((part, realIdx) => {
+      if (!part || !part.text) return;
+      const isSelected = ms.partSet.has(realIdx);
+
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className =
+        `dh-part-chip dh-part-${part.type || 'normal'}${isSelected ? ' selected' : ''}`;
+
+      // Show first 5 words, tooltip has full text
+      const words = part.text.trim().split(/\s+/);
+      chip.textContent = words.slice(0, 5).join(' ') + (words.length > 5 ? '…' : '');
+      chip.title = part.text;
+
+      chip.addEventListener('click', () => {
+        if (isSelected) {
+          if (ms.partSet.size > 1) ms.partSet.delete(realIdx); // keep at least one
+        } else {
+          ms.partSet.add(realIdx);
+        }
+        onRefresh();
+      });
+      chipWrap.appendChild(chip);
+    });
+
+    // "Select all" shortcut
+    const allSelected = rawParts.every((p, i) => !p || !p.text || ms.partSet.has(i));
+    const allBtn = document.createElement('button');
+    allBtn.type = 'button';
+    allBtn.className = 'dh-part-all-btn' + (allSelected ? ' active' : '');
+    allBtn.textContent = 'الكل';
+    allBtn.addEventListener('click', () => {
+      _resetPartSet(ms, g);
+      onRefresh();
+    });
+    chipWrap.appendChild(allBtn);
+
+    row2.appendChild(chipWrap);
+    bar.appendChild(row2);
+  }
+
+  return bar;
 }
 
 // ── Inject into a rendered pane ───────────────────────────────────────────────
@@ -69,26 +220,32 @@ function injectIntoPane(pane) {
   if (!_lastGroupId || typeof window.findActive !== 'function') return;
 
   const g = window.findActive(_lastGroupId);
-  const adapted = adaptGroup(g);
 
-  if (!adapted) {
-    panel.innerHTML =
-      '<div class="v83-empty">لا توجد آيات كافية للمقارنة المتقدمة — المجموعة تحتاج آيتين على الأقل.</div>';
-    return;
+  function refresh() {
+    panel.innerHTML = '';
+
+    const ms = _getMasterState(g);
+    const adapted = adaptGroupWithMaster(g, ms);
+
+    if (!adapted) {
+      panel.innerHTML =
+        '<div class="v83-empty">لا توجد آيات كافية للمقارنة المتقدمة — المجموعة تحتاج آيتين على الأقل.</div>';
+      return;
+    }
+
+    panel.appendChild(_buildMasterUI(g, refresh));
+    panel.appendChild(createDiffHighlighter(adapted, { starMode: true }));
+    panel.appendChild(createAnnotationPanel(adapted, {
+      onChange({ diffType, notes }) {
+        if (typeof window.activeDb !== 'undefined' && window.activeDb === 'personal' && g) {
+          if ('diffType' in g) g.diffType = diffType;
+          if ('note'    in g) g.note     = notes;
+        }
+      },
+    }));
   }
 
-  panel.innerHTML = '';
-
-  panel.appendChild(createDiffHighlighter(adapted));
-  panel.appendChild(createAnnotationPanel(adapted, {
-    onChange({ diffType, notes }) {
-      // Sync back to the in-memory personal group so edits persist in session
-      if (typeof window.activeDb !== 'undefined' && window.activeDb === 'personal' && g) {
-        if ('diffType' in g) g.diffType = diffType;
-        if ('note'    in g) g.note     = notes;
-      }
-    },
-  }));
+  refresh();
 }
 
 // ── Observer factory ──────────────────────────────────────────────────────────

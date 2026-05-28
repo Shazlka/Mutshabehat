@@ -484,3 +484,131 @@
   transition: opacity .25s ease;
 }
 .ap-save-status.visible { opacity: 1; }
+
+/* =========================================================
+   Master / Slave selector — dh-master-* and dh-part-* prefixes
+   ========================================================= */
+
+.dh-master-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.dh-master-row1,
+.dh-master-row2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dh-master-row2 {
+  border-top: 1px dashed var(--border);
+  padding-top: 7px;
+}
+
+.dh-master-label {
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dh-master-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.dh-master-pill {
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: .78rem;
+  font-weight: 800;
+  font-family: var(--qfont, 'Amiri Quran', serif);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .13s, color .13s, background .13s;
+}
+.dh-master-pill:hover:not(.active) {
+  border-color: var(--primary);
+  color: var(--primary2);
+}
+.dh-master-pill.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary2);
+}
+
+/* Part chips */
+.dh-part-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.dh-part-chip {
+  font-family: var(--qfont, 'Amiri Quran', serif);
+  font-size: .82rem;
+  line-height: 1.9;
+  padding: 1px 8px;
+  border-radius: 7px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: .38;
+  transition: opacity .13s, border-color .13s;
+}
+.dh-part-chip.selected   { opacity: 1; border-color: currentColor; }
+.dh-part-chip:hover      { opacity: .75; }
+
+.dh-part-chip.dh-part-shared   { background: rgba(34,197,94,.13);  color: #15803d; }
+.dh-part-chip.dh-part-diff     { background: #fff4cc;              color: #9a5d00; }
+.dh-part-chip.dh-part-diff2    { background: rgba(124,58,237,.14); color: #7c3aed; }
+.dh-part-chip.dh-part-diff3    { background: #ccfbf1;              color: #0f766e; }
+.dh-part-chip.dh-part-addition { background: rgba(37,99,235,.12);  color: #2563eb; }
+.dh-part-chip.dh-part-unique   { background: rgba(217,35,35,.10);  color: #d92323; }
+.dh-part-chip.dh-part-normal   { background: var(--soft); color: var(--text); }
+
+.dh-part-all-btn {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 800;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: background .13s, color .13s, border-color .13s;
+}
+.dh-part-all-btn:hover,
+.dh-part-all-btn.active { background: var(--surface); color: var(--text); border-color: var(--primary); }
+
+/* Master badge shown inside verse card header */
+.dh-master-badge {
+  display: inline-block;
+  font-size: .64rem;
+  font-weight: 900;
+  font-family: var(--uifont, 'Cairo', sans-serif);
+  background: var(--primary);
+  color: #fff;
+  padding: 1px 7px;
+  border-radius: 999px;
+  margin-inline-start: 6px;
+  vertical-align: middle;
+}
+
+/* Master verse card — subtle tinted border */
+.dh-verse-master {
+  border-color: color-mix(in srgb, var(--primary) 38%, var(--border)) !important;
+  background: color-mix(in srgb, var(--primary) 4%, var(--surface)) !important;
+}
