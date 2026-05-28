@@ -3252,7 +3252,7 @@ window.PERSONAL_DATA = [
             "text": "وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ "
           },
           {
-            "type": "addition",
+            "type": "shared",
             "text": "حَمَلَتۡهُ أُمُّهُۥ "
           },
           {
@@ -3268,7 +3268,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "الأحقاف",
         "ayah": "15",
-        "label": "إحسانا + كرها",
+        "label": "",
         "parts": [
           {
             "type": "shared",
@@ -3279,7 +3279,7 @@ window.PERSONAL_DATA = [
             "text": " إِحۡسَٰنًاۖ "
           },
           {
-            "type": "addition",
+            "type": "shared",
             "text": "حَمَلَتۡهُ أُمُّهُۥ "
           },
           {
@@ -3294,7 +3294,7 @@ window.PERSONAL_DATA = [
       }
     ],
     "note": "العنكبوت: حسناً — لقمان: حملته وهناً — الاحقاف: إحساناً + ثلاثون شهراً",
-    "unote": "<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🔹ورد قوله تعالى { ووصينا الإنسان بوالديه….} ثلاث مواضع ف القرآن&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">#العنكبوت ، #لقمان ، #الأحقاف</span></p>\n<p style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'; min-height: 14.3px\"><span style=\"font-weight: bold;\"></span><br></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🌿السورة التي فيها الهمزة تأخذ الكلمة التي لها الهمزة&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">الأحقاف== إحسانًا&nbsp;</span></p>\n<p style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'; min-height: 14.3px\"><span style=\"font-weight: bold;\"></span><br></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🌿العنكبوت تشبه لقمان لكنها أكثر اختصارًا منها&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">فنجد ان العنكبوت بدون مد</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">{ وإن جاهداك لتشرك بي…} بينما في لقمان أطول في السياق فجاءت بالمد&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">{ وإن جاهداك على أن تشرك بي …}</span></p>\n<p style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'; min-height: 14.3px\"><span style=\"font-weight: bold;\"></span><br></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">🌿لقمان فيها كلمة {وصاحبهما }</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">وهي من مصاحبة لقمان لابنه&nbsp;</span></p>\n<p dir=\"rtl\" style=\"margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'system-ui'\"><span style=\"font-weight: bold;\">بينما خلت سورة العنكبوت من هذه الكلمة.</span></p>",
+    "unote": "",
     "completed": true
   },
   {
@@ -8222,7 +8222,11 @@ window.PERSONAL_DATA = [
     "note": ": إذا كان الخطاب للكفار: \"يغفر لكم من ذنوبكم\" — وللمؤمنين: \"يغفر لكم ذنوبكم\"",
     "unote": "فائدة إضافية: مفتاح الحفظ: الكفار جاء معهم \"من\" للتبعيض، أما المؤمنون فجاءت بدون \"من\".",
     "headerColor": "#982abc",
-    "completed": true
+    "completed": true,
+    "masterIndex": 3,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 116,
@@ -8518,7 +8522,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: المفرد: يس، ص، الزخرف، الطور، الرحمن، الواقعة — الجمع: المؤمنون، الصافات، المرسلات",
     "unote": "فائدة إضافية: قاعدة الصورة: إذا كان اسم السورة مفردًا جاء اللفظ \"فاكهة\"، وإذا كان اسم السورة جمعًا جاء اللفظ \"فواكه\".",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 118,
@@ -8719,7 +8727,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إن الله كان عليمًا خبيرًا } وحيدة في النساء 35 — والباقي { عليمًا حكيمًا }",
     "unote": "فائدة إضافية: الضابط: خبيرًا في موضع الإصلاح بين الزوجين في النساء 35، أما المواضع الأخرى فخاتمتها حكيمًا.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 120,
@@ -8791,7 +8803,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إذا حضر أحدهم الموت } في النساء 18 — والباقي { أحدكم } في البقرة 180، المائدة 106",
     "unote": "فائدة إضافية: أحدهم للغائب في سياق التوبة عند حضور الموت، وأحدكم للخطاب في أحكام الوصية والشهادة.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 121,
@@ -8882,7 +8898,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إلا قليل منهم } في النساء 66 — والباقي { إلا قليلًا منهم }",
     "unote": "فائدة إضافية: التمييز بالحركة: النساء جاءت بالرفع \"قليلٌ\"، والباقي بالنصب \"قليلًا\".",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 122,
@@ -8972,7 +8992,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: (2) أطيعوا الله ورسوله — الأنفال 3 مواضع، والمجادلة موضع واحد",
     "unote": "فائدة إضافية: التركيب هنا بإضافة الرسول إلى الضمير: ورسوله، وأكثره في الأنفال.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 123,
@@ -9039,7 +9063,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { واقتلوهم حيث وجدتموهم } في النساء 89 — والباقي { حيث ثقفتموهم } في البقرة 191، النساء 91",
     "unote": "فائدة إضافية: موضع وجدتموهم وحيد في النساء 89، أما ثقفتموهم فجاءت في البقرة 191 والنساء 91.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 124,
@@ -9115,7 +9143,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { وأما الذين آمنوا وعملوا الصالحات } في آل عمران — والباقي { فأما }",
     "unote": "فائدة إضافية: آل عمران تميزت بحذف الفاء هنا: وأما، بينما المواضع الأخرى تبدأ بـ فأما.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0
+    ]
   },
   {
     "id": 125,
@@ -9285,7 +9317,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { وإليه يرجعون } في آل عمران — والباقي { وإليه ترجعون }",
     "unote": "فائدة إضافية: الفرق في الضمير: آل عمران جاءت للغائب \"يرجعون\"، وأكثر المواضع الأخرى للخطاب \"ترجعون\".",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 126,
@@ -9531,7 +9567,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { في قلوبهم زيغ } في آل عمران — والباقي { في قلوبهم مرض }",
     "unote": "فائدة إضافية: آل عمران موضع الزيغ في سياق المتشابه، أما مرض القلوب فجاء في مواضع متعددة.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 127,
@@ -9653,7 +9693,11 @@ window.PERSONAL_DATA = [
     ],
     "note": ": { والله ذو فضل عظيم } في آل عمران — والباقي { والله ذو الفضل العظيم }",
     "unote": "فائدة إضافية: آل عمران جاءت بدون أل في فضل: ذو فضل عظيم، والباقي مع التعريف: ذو الفضل العظيم.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 1,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 128,
@@ -9764,7 +9808,12 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { ثم مأواهم جهنم } في آل عمران — والباقي { ومأواهم جهنم }",
     "unote": "فائدة إضافية: آل عمران تميزت بـ ثم، وباقي المواضع جاءت بالواو.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ]
   },
   {
     "id": 129,
@@ -16444,7 +16493,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "البقرة",
         "ayah": 197,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16463,7 +16512,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "البقرة",
         "ayah": 215,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16482,7 +16531,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "النساء",
         "ayah": 127,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16675,7 +16724,13 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "وما بينهما الا",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0,
+      1,
+      2
+    ]
   },
   {
     "id": 207,
@@ -16723,7 +16778,11 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "يشا ان في",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0
+    ]
   },
   {
     "id": 208,
@@ -16807,7 +16866,12 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "يخرج الحي من",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ]
   },
   {
     "id": 209,
@@ -16855,11 +16919,15 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ومن ايته خلق",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0
+    ]
   },
   {
     "id": 210,
-    "title": "إِنَّكَ لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ وَلَا تُسۡمِعُ ٱلصُّمَّ ٱلدُّعَآءَ إِذَا وَلَّوۡاْ مُدۡبِرِينَ",
+    "title": "قل إِنَّمَآ أُنذِرُكُم بِٱلۡوَحۡيِۚ وَلَا يَسۡمَعُ ٱلصُّمُّ ٱلدُّعَآءَ إِذَا مَا يُنذَرُونَ",
     "surahs": [
       "الأنبياء",
       "النمل",
@@ -16959,238 +17027,8 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ولا الصم الدعا",
     "source": "automated",
-    "completed": true
-  },
-  {
-    "id": 211,
-    "title": "من كل زوج كريم / زوج بهيج",
-    "surahs": [
-      "الحج",
-      "الشعراء",
-      "لقمان",
-      "ق"
-    ],
-    "verses": [
-      {
-        "surah": "الحج",
-        "ayah": "5",
-        "label": "",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "يَٰٓأَيُّهَا ٱلنَّاسُ إِن كُنتُمۡ فِي رَيۡبٖ مِّنَ ٱلۡبَعۡثِ فَإِنَّا خَلَقۡنَٰكُم مِّن تُرَابٖ ثُمَّ مِن نُّطۡفَةٖ ثُمَّ مِنۡ عَلَقَةٖ ثُمَّ مِن مُّضۡغَةٖ مُّخَلَّقَةٖ وَغَيۡرِ مُخَلَّقَةٖ لِّنُبَيِّنَ لَكُمۡۚ وَنُقِرُّ فِي ٱلۡأَرۡحَامِ مَا نَشَآءُ إِلَىٰٓ أَجَلٖ مُّسَمّٗى ثُمَّ نُخۡرِجُكُمۡ طِفۡلٗا ثُمَّ لِتَبۡلُغُوٓاْ أَشُدَّكُمۡۖ وَمِنكُم مَّن يُتَوَفَّىٰ وَمِنكُم مَّن يُرَدُّ إِلَىٰٓ أَرۡذَلِ ٱلۡعُمُرِ لِكَيۡلَا يَعۡلَمَ مِنۢ بَعۡدِ عِلۡمٖ شَيۡـٔٗاۚ وَتَرَى ٱلۡأَرۡضَ هَامِدَةٗ فَإِذَآ أَنزَلۡنَا عَلَيۡهَا ٱلۡمَآءَ ٱهۡتَزَّتۡ وَرَبَتۡ وَأَنۢبَتَتۡ"
-          },
-          {
-            "type": "diff",
-            "text": " مِن كُلِّ زَوۡجِۭ بَهِيجٖ"
-          }
-        ]
-      },
-      {
-        "surah": "الشعراء",
-        "ayah": 7,
-        "label": "",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "أَوَلَمۡ يَرَوۡاْ إِلَى ٱلۡأَرۡضِ كَمۡ أَنۢبَتۡنَا فِيهَا"
-          },
-          {
-            "type": "shared",
-            "text": "مِن كُلِّ زَوۡجٖ كَرِيمٍ"
-          }
-        ]
-      },
-      {
-        "surah": "لقمان",
-        "ayah": 10,
-        "label": "",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "خَلَقَ ٱلسَّمَٰوَٰتِ بِغَيۡرِ عَمَدٖ تَرَوۡنَهَاۖ وَأَلۡقَىٰ فِي ٱلۡأَرۡضِ رَوَٰسِيَ أَن تَمِيدَ بِكُمۡ وَبَثَّ فِيهَا مِن كُلِّ دَآبَّةٖۚ وَأَنزَلۡنَا مِنَ ٱلسَّمَآءِ مَآءٗ فَأَنۢبَتۡنَا فِيهَا"
-          },
-          {
-            "type": "shared",
-            "text": "مِن كُلِّ زَوۡجٖ كَرِيمٍ"
-          }
-        ]
-      },
-      {
-        "surah": "ق",
-        "ayah": "7",
-        "label": "",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "وَٱلۡأَرۡضَ مَدَدۡنَٰهَا وَأَلۡقَيۡنَا فِيهَا رَوَٰسِيَ وَأَنۢبَتۡنَا فِيهَا"
-          },
-          {
-            "type": "diff",
-            "text": "مِن كُلِّ زَوۡجِۭ بَهِيجٖ"
-          }
-        ]
-      }
-    ],
-    "note": "الشعراء ولقمان (زوج كريم) - <font color=\"#b51a00\"><u>الرابط لقمان أكرم الشعراء&nbsp;</u></font><div><span style=\"font-weight: 400;\">الحج و ق</span>&nbsp;(زوج بهيج)</div>",
-    "unote": "<br>",
-    "autoCandidate": false,
-    "candidateKind": "shared-phrase",
-    "candidateScore": 84,
-    "sharedPhrase": "من كل زوج كريم",
-    "source": "automated",
-    "completed": true
-  },
-  {
-    "id": 212,
-    "title": "عبارة مشتركة: يشكر لنفسه ومن كفر",
-    "surahs": [
-      "النمل",
-      "لقمان"
-    ],
-    "verses": [
-      {
-        "surah": "النمل",
-        "ayah": 40,
-        "label": "شكر",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "قَالَ ٱلَّذِي عِندَهُۥ عِلۡمٞ مِّنَ ٱلۡكِتَٰبِ أَنَا۠ ءَاتِيكَ بِهِۦ قَبۡلَ أَن يَرۡتَدَّ إِلَيۡكَ طَرۡفُكَۚ فَلَمَّا رَءَاهُ مُسۡتَقِرًّا عِندَهُۥ قَالَ هَٰذَا مِن فَضۡلِ رَبِّي لِيَبۡلُوَنِيٓ ءَأَشۡكُرُ أَمۡ أَكۡفُرُۖ "
-          },
-          {
-            "type": "diff",
-            "text": "وَمَن شَكَرَ فَإِنَّمَا"
-          },
-          {
-            "type": "shared",
-            "text": "يَشۡكُرُ لِنَفۡسِهِۦۖ وَمَن كَفَرَ"
-          },
-          {
-            "type": "unique",
-            "text": "فَإِنَّ رَبِّي غَنِيّٞ كَرِيمٞ"
-          }
-        ]
-      },
-      {
-        "surah": "لقمان",
-        "ayah": 12,
-        "label": "يشكر",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "وَلَقَدۡ ءَاتَيۡنَا لُقۡمَٰنَ ٱلۡحِكۡمَةَ أَنِ ٱشۡكُرۡ لِلَّهِۚ "
-          },
-          {
-            "type": "diff",
-            "text": "وَمَن يَشۡكُرۡ فَإِنَّمَا"
-          },
-          {
-            "type": "shared",
-            "text": "يَشۡكُرُ لِنَفۡسِهِۦۖ وَمَن كَفَرَ"
-          },
-          {
-            "type": "diff2",
-            "text": "فَإِنَّ ٱللَّهَ غَنِيٌّ حَمِيدٞ"
-          }
-        ]
-      }
-    ],
-    "note": "<font color=\"#ff3a30\"><u>(غني كريم) وحيدة في النمل</u></font><span style=\"font-weight: normal;\"> وباقي القران (غني حميد)</span>",
-    "unote": "<br>",
-    "autoCandidate": false,
-    "candidateKind": "shared-phrase",
-    "candidateScore": 84,
-    "sharedPhrase": "يشكر لنفسه ومن كفر",
-    "source": "automated",
-    "completed": true
-  },
-  {
-    "id": 213,
-    "title": "وَإِن جَٰهَدَاكَ لِتُشۡرِكَ بِي مَا لَيۡسَ لَكَ بِهِۦ عِلۡمٞ فَلَا تُطِعۡهُمَآۚ",
-    "surahs": [
-      "العنكبوت",
-      "لقمان"
-    ],
-    "verses": [
-      {
-        "surah": "العنكبوت",
-        "ayah": 8,
-        "label": "لتشرك - إلي",
-        "parts": [
-          {
-            "type": "normal",
-            "text": "وَوَصَّيۡنَا ٱلۡإِنسَٰنَ بِوَٰلِدَيۡهِ حُسۡنٗاۖ "
-          },
-          {
-            "type": "shared",
-            "text": "وَإِن جَٰهَدَاكَ "
-          },
-          {
-            "type": "diff2",
-            "text": "لِتُشۡرِكَ"
-          },
-          {
-            "type": "shared",
-            "text": " بِي مَا لَيۡسَ لَكَ بِهِۦ عِلۡمٞ فَلَا تُطِعۡهُمَآۚ"
-          },
-          {
-            "type": "diff3",
-            "text": "إِلَيَّ "
-          },
-          {
-            "type": "shared",
-            "text": "مَرۡجِعُكُمۡ فَأُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ"
-          }
-        ]
-      },
-      {
-        "surah": "لقمان",
-        "ayah": 15,
-        "label": "علي أن تشرك - ثم",
-        "parts": [
-          {
-            "type": "shared",
-            "text": "وَإِن جَٰهَدَاكَ "
-          },
-          {
-            "type": "diff2",
-            "text": "عَلَىٰٓ أَن تُشۡرِكَ "
-          },
-          {
-            "type": "shared",
-            "text": "بِي مَا لَيۡسَ لَكَ بِهِۦ عِلۡمٞ فَلَا تُطِعۡهُمَاۖ "
-          },
-          {
-            "type": "normal",
-            "text": "وَصَاحِبۡهُمَا فِي ٱلدُّنۡيَا مَعۡرُوفٗاۖ وَٱتَّبِعۡ سَبِيلَ مَنۡ أَنَابَ إِلَيَّۚ "
-          },
-          {
-            "type": "diff3",
-            "text": "ثُمَّ "
-          },
-          {
-            "type": "shared",
-            "text": "إِلَيَّ مَرۡجِعُكُمۡ فَأُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ"
-          }
-        ]
-      }
-    ],
-    "note": "آيه لقمان أطول فيها تفصيل أكثر مناسب لوصية لقمان لإبنه",
-    "unote": "<br>",
-    "autoCandidate": false,
-    "candidateKind": "shared-phrase",
-    "candidateScore": 84,
-    "sharedPhrase": "لك به علم فلا",
-    "source": "automated",
     "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1,
-      2,
-      3,
-      4,
-      5
-    ]
+    "masterIndex": 1,
+    "masterParts": null
   }
 ];
