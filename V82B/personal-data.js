@@ -16104,7 +16104,7 @@ window.PERSONAL_DATA = [
   },
   {
     "id": 200,
-    "title": "وَمَا مِن دَآبَّةٖ فِي ٱلۡأَرض",
+    "title": "عائلة عبارات متقاربة: وما من في",
     "surahs": [
       "الأنعام",
       "هود",
@@ -16121,16 +16121,16 @@ window.PERSONAL_DATA = [
             "text": "وَمَا مِن"
           },
           {
-            "type": "shared",
+            "type": "diff",
             "text": "دَآبَّةٖ"
           },
           {
             "type": "shared",
-            "text": "فِي ٱلۡأَرۡضِ"
+            "text": "فِي"
           },
           {
-            "type": "normal",
-            "text": "وَلَا طَٰٓئِرٖ يَطِيرُ بِجَنَاحَيۡهِ إِلَّآ أُمَمٌ أَمۡثَالُكُمۚ مَّا فَرَّطۡنَا فِي ٱلۡكِتَٰبِ مِن شَيۡءٖۚ ثُمَّ إِلَىٰ رَبِّهِمۡ يُحۡشَرُونَ"
+            "type": "diff",
+            "text": "ٱلۡأَرۡضِ وَلَا طَٰٓئِرٖ يَطِيرُ بِجَنَاحَيۡهِ إِلَّآ أُمَمٌ أَمۡثَالُكُمۚ مَّا فَرَّطۡنَا فِي ٱلۡكِتَٰبِ مِن شَيۡءٖۚ ثُمَّ إِلَىٰ رَبِّهِمۡ يُحۡشَرُونَ"
           }
         ]
       },
@@ -16144,16 +16144,16 @@ window.PERSONAL_DATA = [
             "text": "وَمَا مِن"
           },
           {
-            "type": "shared",
+            "type": "diff",
             "text": "دَآبَّةٖ"
           },
           {
             "type": "shared",
-            "text": "فِي ٱلۡأَرۡضِ"
+            "text": "فِي"
           },
           {
-            "type": "normal",
-            "text": "إِلَّا عَلَى ٱللَّهِ رِزۡقُهَا وَيَعۡلَمُ مُسۡتَقَرَّهَا وَمُسۡتَوۡدَعَهَاۚ كُلّٞ فِي كِتَٰبٖ مُّبِينٖ"
+            "type": "diff",
+            "text": "ٱلۡأَرۡضِ إِلَّا عَلَى ٱللَّهِ رِزۡقُهَا وَيَعۡلَمُ مُسۡتَقَرَّهَا وَمُسۡتَوۡدَعَهَاۚ كُلّٞ فِي كِتَٰبٖ مُّبِينٖ"
           }
         ]
       },
@@ -16167,7 +16167,7 @@ window.PERSONAL_DATA = [
             "text": "وَمَا مِنۡ"
           },
           {
-            "type": "diff2",
+            "type": "diff",
             "text": "غَآئِبَةٖ"
           },
           {
@@ -16444,7 +16444,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "البقرة",
         "ayah": 197,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16463,7 +16463,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "البقرة",
         "ayah": 215,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16482,7 +16482,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "النساء",
         "ayah": 127,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16675,7 +16675,7 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "وما بينهما الا",
     "source": "automated",
-    "completed": false
+    "completed": true
   },
   {
     "id": 207,
@@ -16855,12 +16855,11 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ومن ايته خلق",
     "source": "automated",
-    "completed": true,
-    "favorite": true
+    "completed": true
   },
   {
     "id": 210,
-    "title": "إِنَّكَ لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ وَلَا تُسۡمِعُ ٱلصُّمَّ ٱلدُّعَآءَ إِذَا وَلَّوۡاْ مُدۡبِرِينَ",
+    "title": "قل إِنَّمَآ أُنذِرُكُم بِٱلۡوَحۡيِۚ وَلَا يَسۡمَعُ ٱلصُّمُّ ٱلدُّعَآءَ إِذَا مَا يُنذَرُونَ",
     "surahs": [
       "الأنبياء",
       "النمل",
@@ -16960,7 +16959,6 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ولا الصم الدعا",
     "source": "automated",
-    "completed": true,
-    "favorite": true
+    "completed": true
   }
 ];
