@@ -123,7 +123,7 @@ window.PERSONAL_DATA = [
         "label": "زيادة فكذبوه",
         "parts": [
           {
-            "type": "addition",
+            "type": "unique",
             "text": "فَكَذَّبُوهُ   "
           },
           {
@@ -318,7 +318,21 @@ window.PERSONAL_DATA = [
     ],
     "note": "العنكبوت: الأساس — الروم: وما بينهما — الجاثية: زيادة الواو",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null,
+    "slaveParts": {
+      "1": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "2": [
+        0,
+        1
+      ]
+    }
   },
   {
     "id": 5,
