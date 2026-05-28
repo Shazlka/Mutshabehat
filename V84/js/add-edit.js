@@ -32,7 +32,7 @@ let editActiveTab='ayahs', editNoteBuffer='', editUnoteBuffer='';
 /* Phase 4: tracks which verse cards are expanded in the الآيات tab */
 let editVerseExpanded=[];
 
-function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);editVerseExpanded=(g.verses||[]).map(()=>false);modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
+function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);editVerseExpanded=(g.verses||[]).map(()=>false);wlLinks=[];wlActiveMaster=null;modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
 
 function editStatusText(g){if(g.status)return escapeHtml(g.status);if(isTrue(g.verified))return 'Verified';if(isTrue(g.reviewed))return 'Reviewed';return 'Draft'}
 
@@ -40,7 +40,7 @@ function editSimilarityText(g){let s=g.candidateScore||g.similarity||g.similarit
 
 function editTagsHtml(g){let tags=(typeof getTags==='function'?getTags(g):(Array.isArray(g.surahs)?g.surahs:[])).filter(Boolean);return tags.length?tags.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join(''):'<span class="tag">بدون وسوم</span>'}
 
-function editTabsHtml(){let tabs=[['ayahs','الآيات'],['differences','الفروقات'],['notes','الملاحظات'],['tags','التصنيفات'],['preview','المعاينة']];return `<nav class="v83-edit-tabs" aria-label="تبويبات التحرير">${tabs.map(([key,label])=>`<button type="button" class="v83-edit-tab ${editActiveTab===key?'active':''}" aria-selected="${editActiveTab===key?'true':'false'}" onclick="setEditTab('${key}')">${label}</button>`).join('')}</nav>`}
+function editTabsHtml(){let tabs=[['ayahs','الآيات'],['differences','الفروقات'],['link','ربط الكلمات'],['notes','الملاحظات'],['tags','التصنيفات'],['preview','المعاينة']];return `<nav class="v83-edit-tabs" aria-label="تبويبات التحرير">${tabs.map(([key,label])=>`<button type="button" class="v83-edit-tab ${editActiveTab===key?'active':''}" aria-selected="${editActiveTab===key?'true':'false'}" onclick="setEditTab('${key}')">${label}</button>`).join('')}</nav>`}
 
 function syncEditTabBuffers(){let note=document.getElementById('editNote'),unote=document.getElementById('editUnote');if(note)editNoteBuffer=note.innerHTML;if(unote)editUnoteBuffer=unote.innerHTML}
 
@@ -62,7 +62,7 @@ function editPreviewTabHtml(){const title=document.getElementById('editTitle')?.
 
 function refreshEditPreviewPanel(){const p=document.getElementById('editPreviewPanelContent');if(!p)return;const g={id:editGroupId,verses:editVersesBuffer,note:editNoteBuffer,unote:editUnoteBuffer};const body=renderGroupBody(g);p.innerHTML=body||'<div class="hint">لا توجد محتويات بعد.</div>'}
 
-function renderEditTab(){let root=document.getElementById('editTabContent'),tabs=document.getElementById('editTabsMount');if(tabs)tabs.innerHTML=editTabsHtml();if(!root)return;if(editActiveTab==='ayahs'){root.innerHTML=editAyahsTabHtml();renderEditVerses();runQuranSearch('edit');return}if(editActiveTab==='notes'){root.innerHTML=editNotesTabHtml();let note=document.getElementById('editNote'),unote=document.getElementById('editUnote');if(note)note.innerHTML=editNoteBuffer;if(unote)unote.innerHTML=editUnoteBuffer;refreshEditPreviewPanel();return}if(editActiveTab==='differences'){root.innerHTML=editDifferencesTabHtml();refreshEditPreviewPanel();return}if(editActiveTab==='tags'){root.innerHTML=editTagsTabHtml();refreshEditPreviewPanel();return}root.innerHTML=editPreviewTabHtml();refreshEditPreviewPanel()}
+function renderEditTab(){let root=document.getElementById('editTabContent'),tabs=document.getElementById('editTabsMount');if(tabs)tabs.innerHTML=editTabsHtml();if(!root)return;if(editActiveTab==='ayahs'){root.innerHTML=editAyahsTabHtml();renderEditVerses();runQuranSearch('edit');return}if(editActiveTab==='notes'){root.innerHTML=editNotesTabHtml();let note=document.getElementById('editNote'),unote=document.getElementById('editUnote');if(note)note.innerHTML=editNoteBuffer;if(unote)unote.innerHTML=editUnoteBuffer;refreshEditPreviewPanel();return}if(editActiveTab==='differences'){root.innerHTML=editDifferencesTabHtml();refreshEditPreviewPanel();return}if(editActiveTab==='tags'){root.innerHTML=editTagsTabHtml();refreshEditPreviewPanel();return}if(editActiveTab==='link'){root.innerHTML=wordLinkerTabHtml();wlRender();return}root.innerHTML=editPreviewTabHtml();refreshEditPreviewPanel()}
 
 function editBody(g){return `<section class="v83-edit-shell" dir="rtl"><div class="v83-edit-toolbar"><div class="v83-edit-toolbar-title"><b>تعديل المتشابه</b><small>مساحة تحرير مدمجة مع نفس منطق الحفظ الحالي</small></div><div class="v83-edit-toolbar-actions"><button class="primary" onclick="saveEditGroup()">حفظ التعديل</button><button class="danger" onclick="deleteEditGroup()">حذف المجموعة</button><button onclick="closeModal('editModal')">إغلاق</button></div></div><div id="editValidationBar" class="edit-validation-bar"></div><div class="v83-edit-layout"><aside class="v83-edit-props" aria-label="خصائص المجموعة"><section class="v83-edit-card"><h3>خصائص المجموعة</h3><label class="field">عنوان المتشابه<input id="editTitle" value="${escapeHtml(g.title||'')}" oninput="clearEditValidation()"></label><div class="v83-edit-metrics"><span><b>#${escapeHtml(g.id)}</b><small>رقم المجموعة</small></span><span><b>${(g.verses||[]).length}</b><small>عدد الآيات</small></span><span><b>${editSimilarityText(g)}</b><small>درجة التشابه</small></span><span><b>${editStatusText(g)}</b><small>الحالة</small></span></div></section><section class="v83-edit-card"><h3>الوسوم</h3><div class="v83-edit-chip-row">${editTagsHtml(g)}</div></section><section class="v83-edit-card"><h3>إجراءات سريعة</h3><div class="v83-edit-quick-actions"><button class="primary" onclick="addBlankEditVerse()">+ إضافة آية</button><button onclick="sortEditVersesByMushaf()">ترتيب حسب المصحف</button></div></section></aside><main class="v83-edit-main"><div id="editTabsMount">${editTabsHtml()}</div><div id="editTabContent" class="v83-edit-tab-panel"></div></main><aside class="v83-edit-preview-panel" id="editPreviewPanel"><div class="v83-edit-section-head"><h3>معاينة مباشرة</h3><small>تتحدث مع كل تعديل</small></div><div class="pv-card-body" id="editPreviewPanelContent"><div class="hint">سيظهر المحتوى هنا.</div></div></aside></div></section>`}
 
@@ -123,3 +123,115 @@ function clearEditValidation(){const bar=document.getElementById('editValidation
 
 function deleteEditGroup(){if(confirm('حذف المجموعة؟')){personalData=personalData.filter(g=>+g.id!==+editGroupId);saveDb('personal');closeModal('editModal');renderActiveGroups();updateHomeCounts()}}
 /* End V83 Phase 1 — Modify Window map */
+
+/* =========================================================
+   V84 Word Linker — ربط الكلمات
+   Click a master word to activate it, then click slave words
+   to link them. Each link group gets a diff/diff2/diff3 color.
+   "Apply" serializes links into editVersesBuffer parts arrays.
+   ========================================================= */
+let wlLinks=[],wlActiveMaster=null;
+const WL_COLORS=['diff','diff2','diff3'];
+
+function wlTokenize(t){return(t||'').trim().split(/\s+/).filter(Boolean)}
+function wlGetMasterWords(){const v=editVersesBuffer[0];return v?wlTokenize((v.parts||[]).map(p=>p.text).join(' ')):[]}
+function wlGetSlaveWords(vi){const v=editVersesBuffer[vi];return v?wlTokenize((v.parts||[]).map(p=>p.text).join(' ')):[]}
+function wlLinkForMaster(wi){return wlLinks.find(l=>l.masterWi===wi)||null}
+function wlLinkForSlave(vi,wi){return wlLinks.find(l=>l.slaves.some(s=>s.vi===vi&&s.wi===wi))||null}
+
+function wlClickMaster(wi){
+  wlActiveMaster=wlActiveMaster===wi?null:wi;
+  wlRender();
+}
+
+function wlClickSlave(vi,wi){
+  if(wlActiveMaster===null)return;
+  let link=wlLinkForMaster(wlActiveMaster);
+  const existing=wlLinkForSlave(vi,wi);
+  if(existing){
+    existing.slaves=existing.slaves.filter(s=>!(s.vi===vi&&s.wi===wi));
+    if(!existing.slaves.length&&existing!==link)wlLinks=wlLinks.filter(l=>l!==existing);
+    if(existing===link){if(!link.slaves.length)wlLinks=wlLinks.filter(l=>l!==link);wlActiveMaster=null;wlRender();return}
+  }
+  if(!link){
+    const used=wlLinks.map(l=>l.color);
+    const color=WL_COLORS.find(c=>!used.includes(c));
+    if(!color){alert('الحد الأقصى ٣ أنواع اختلاف. امسح رابطاً لإضافة جديد.');return}
+    link={color,masterWi:wlActiveMaster,slaves:[]};
+    wlLinks.push(link);
+  }
+  if(!link.slaves.some(s=>s.vi===vi&&s.wi===wi))link.slaves.push({vi,wi});
+  wlRender();
+}
+
+function wlUnlinkMaster(wi){
+  wlLinks=wlLinks.filter(l=>l.masterWi!==wi);
+  if(wlActiveMaster===wi)wlActiveMaster=null;
+  wlRender();
+}
+
+function wlClearLinks(){wlLinks=[];wlActiveMaster=null;wlRender()}
+
+function wlMergeParts(parts){
+  if(!parts.length)return parts;
+  const out=[{...parts[0]}];
+  for(let i=1;i<parts.length;i++){
+    const last=out[out.length-1];
+    if(parts[i].type===last.type)last.text+=' '+parts[i].text;
+    else out.push({...parts[i]});
+  }
+  return out;
+}
+
+function wlApplyLinks(){
+  if(editVersesBuffer.length<2)return;
+  editVersesBuffer.forEach((v,vi)=>{
+    const words=vi===0?wlGetMasterWords():wlGetSlaveWords(vi);
+    const parts=words.map((word,wi)=>{
+      const link=vi===0?wlLinkForMaster(wi):wlLinkForSlave(vi,wi);
+      return{type:link?link.color:'shared',text:word};
+    });
+    v.parts=wlMergeParts(parts);
+  });
+  renderEditVerses();
+  refreshEditPreviewPanel();
+  setEditTab('differences');
+}
+
+function wlRender(){
+  const root=document.getElementById('wlContent');
+  if(!root)return;
+  if(editVersesBuffer.length<2){root.innerHTML='<div class="hint">يجب إضافة آيتين على الأقل من تبويب الآيات.</div>';return}
+  const masterWords=wlGetMasterWords();
+  const master=editVersesBuffer[0];
+  const hasActive=wlActiveMaster!==null;
+  let html=`<div class="wl-status">${hasActive?`<span class="wl-status--active">← اختر الكلمة المقابلة في الآيات أدناه</span>`:'<span>اضغط كلمة من الآية الرئيسية لتحديدها</span>'}</div>`;
+  html+=`<div class="wl-verse wl-master-row"><div class="wl-verse-label"><span class="wl-badge wl-badge--master">رئيسية</span><span class="surah-name">${escapeHtml(master.surah)}</span><span class="ayah-num">${escapeHtml(String(master.ayah||1))}</span>${master.label?`<span class="verse-label">${escapeHtml(master.label)}</span>`:''}</div><div class="wl-words" dir="rtl">`;
+  masterWords.forEach((word,wi)=>{
+    const link=wlLinkForMaster(wi);
+    const isActive=wlActiveMaster===wi;
+    const cls=['wl-word',link?link.color:'',isActive?'wl-active':''].filter(Boolean).join(' ');
+    html+=`<span class="${cls}" onclick="wlClickMaster(${wi})">${escapeHtml(word)}`;
+    if(link&&!isActive)html+=`<span class="wl-unlink" onclick="event.stopPropagation();wlUnlinkMaster(${wi})">×</span>`;
+    html+=`</span>`;
+  });
+  html+=`</div></div>`;
+  for(let vi=1;vi<editVersesBuffer.length;vi++){
+    const slave=editVersesBuffer[vi];
+    const slaveWords=wlGetSlaveWords(vi);
+    html+=`<div class="wl-verse wl-slave-row${hasActive?' wl-slave-active':''}"><div class="wl-verse-label"><span class="wl-badge">${vi}</span><span class="surah-name">${escapeHtml(slave.surah)}</span><span class="ayah-num">${escapeHtml(String(slave.ayah||1))}</span>${slave.label?`<span class="verse-label">${escapeHtml(slave.label)}</span>`:''}</div><div class="wl-words" dir="rtl">`;
+    slaveWords.forEach((word,wi)=>{
+      const link=wlLinkForSlave(vi,wi);
+      const cls=['wl-word',link?link.color:'',hasActive?'wl-clickable':''].filter(Boolean).join(' ');
+      html+=`<span class="${cls}" onclick="wlClickSlave(${vi},${wi})">${escapeHtml(word)}</span>`;
+    });
+    html+=`</div></div>`;
+  }
+  root.innerHTML=html;
+}
+
+function wordLinkerTabHtml(){
+  if(editVersesBuffer.length<2)return`<section class="v83-edit-section"><div class="v83-edit-placeholder"><h3>ربط الكلمات</h3><p>أضف آيتين على الأقل من تبويب الآيات أولاً.</p></div></section>`;
+  return`<section class="v83-edit-section wl-section"><div class="v83-edit-section-head"><h3>ربط الكلمات — تعيين الفروقات</h3><div class="wl-toolbar-actions"><button class="primary" onclick="wlApplyLinks()">✓ تطبيق الروابط</button><button onclick="wlClearLinks()">مسح الروابط</button></div></div><p class="wl-hint">اضغط كلمة من الآية الرئيسية ← اضغط الكلمة المقابلة في كل آية. تطبيق الروابط يستبدل التصنيفات الحالية.</p><div class="wl-legend"><span class="wl-legend-item diff">الاختلاف الأول</span><span class="wl-legend-item diff2">الاختلاف الثاني</span><span class="wl-legend-item diff3">الاختلاف الثالث</span><span class="wl-legend-item shared">مشترك</span></div><div id="wlContent" class="wl-content"></div></section>`;
+}
+/* End V84 Word Linker */
