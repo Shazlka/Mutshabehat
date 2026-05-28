@@ -106,7 +106,22 @@ function adaptGroupWithMaster(g, ms) {
 
   const slaves = allVerses
     .filter((_, i) => i !== masterIdx)
-    .map(_adaptVerse)
+    .map(v => {
+      const adapted = _adaptVerse(v);
+      // When a partial master piece is selected, filter the slave to the same part
+      // indices so the diff only highlights the relevant fragment, not the full ayah.
+      if (!allSelected) {
+        const slaveParts = v.parts || [];
+        const filtered = slaveParts
+          .filter((_, i) => ms.partSet.has(i))
+          .map(p => (p && p.text) || '')
+          .join(' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        if (filtered) adapted.text = filtered;
+      }
+      return adapted;
+    })
     .filter(v => v.text);
 
   const verses = [adaptedMaster, ...slaves];
