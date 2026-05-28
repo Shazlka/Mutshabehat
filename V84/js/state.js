@@ -10,7 +10,7 @@ const AUTO_KEY='mutashabihat_v69_auto_db';
 
 const SETTINGS_KEY='mutashabihat_v69_settings';
 
-let personalData=[], automatedData=[], activeDb=null, activeData=[];
+var personalData=[], automatedData=[], activeDb=null, activeData=[];
 
 let draftVerses=[], editGroupId=null, editVersesBuffer=[], selectedSurahFilter=null;
 
