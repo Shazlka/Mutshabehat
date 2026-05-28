@@ -144,7 +144,7 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 
 /* Settings token row */
 .token-row{display:flex;gap:8px;align-items:center}
-.token-row input{flex:1 1 auto;min-width:180px}
+.token-row input{flex:1 1 auto;min-width:0}
 .token-row .token-toggle-btn{min-width:26px;min-height:26px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:.78rem}
 
 /* Button label helpers */
@@ -469,13 +469,12 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
    ========================================================= */
 
 /* Modal width only — keep as block so sticky header works */
-.settingsModal-window{width:min(860px,94vw)}
+.settingsModal-window{width:min(800px,90vw)}
 
-/* Modal body: constrained so the modal's own 92vh max-height is never exceeded.
-   108px ≈ modal-head (~62px) + modal-footer (~42px) with a small buffer. */
+/* Modal body: constrained so the modal's own 90vh max-height is never exceeded. */
 .settingsModal-window .modal-body{
   padding:0!important;
-  max-height:calc(min(90vh, 880px) - 108px)!important;
+  max-height:calc(min(90vh, 860px) - 108px)!important;
   display:flex;
   flex-direction:column;
   overflow:hidden!important;
@@ -484,10 +483,10 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 /* Shell fills the body */
 .sett-shell{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
 
-/* Two-column grid — GitHub col wider (has SHA/error text), Appearance col narrower */
+/* Two-column grid — GitHub col wider, Appearance col narrower */
 .sett-cols{
   display:grid;
-  grid-template-columns:1.1fr 0.9fr;
+  grid-template-columns:1.15fr 0.85fr;
   gap:4px;
   padding:5px;
   overflow:hidden;
@@ -495,8 +494,11 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
   align-items:start;
 }
 
-/* Column: min-width:0 prevents CSS Grid blowout from long content (SHA hashes, error text) */
+/* min-width:0 prevents CSS Grid blowout; overflow:hidden clips anything beyond column boundary */
 .sett-col{display:grid;gap:4px;align-content:start;min-width:0;overflow:hidden}
+
+/* Cards must not escape their column */
+.sett-card{overflow:hidden}
 
 /* Card wrapper */
 .sett-card{
@@ -559,17 +561,19 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 .sett-data-tools{display:grid;gap:0}
 .sett-data-tool{
   display:flex;
+  flex-wrap:wrap;
   align-items:center;
   justify-content:space-between;
-  gap:5px;
+  gap:4px;
   padding:4px 0;
   border-bottom:1px solid var(--border);
 }
 .sett-data-tool:last-child{border-bottom:0;padding-bottom:0}
 .sett-data-tool:first-child{padding-top:0}
+.sett-data-tool-info{flex:1;min-width:0}
 .sett-data-tool-info b{display:block;font-size:.71rem;font-weight:900}
 .sett-data-tool-info small{color:var(--muted);font-size:.64rem;font-weight:700;display:block;margin-top:0}
-.sett-data-tool button{flex-shrink:0;font-size:.67rem;padding:3px 6px;border-radius:8px;white-space:nowrap}
+.sett-data-tool button{flex-shrink:0;font-size:.65rem;padding:2px 5px;border-radius:8px;white-space:nowrap}
 
 /* Subtitle injected into modal-head h2 */
 .sett-head-sub{
@@ -590,14 +594,15 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 .sett-card .github-sync-status-title{font-size:.71rem}
 
 /* Font preview — single-line compact ayah, no internal scroll */
-.sett-card .font-preview-box{margin-top:4px;padding:4px 6px}
+.sett-card .font-preview-box{margin-top:4px;padding:4px 6px;overflow:hidden;max-width:100%}
 .sett-card .font-preview-ayah{
-  font-size:.70rem;
-  line-height:1.45;
+  font-size:.70rem!important;
+  line-height:1.45!important;
   padding:3px 5px;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+  max-width:100%;
 }
 
 /* Bottom action bar uses the modal-footer */
