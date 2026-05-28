@@ -16731,7 +16731,18 @@ window.PERSONAL_DATA = [
     "source": "automated",
     "completed": true,
     "masterIndex": 0,
-    "masterParts": null
+    "masterParts": [
+      0,
+      1,
+      2
+    ],
+    "slaveParts": {
+      "1": [
+        1,
+        2,
+        3
+      ]
+    }
   },
   {
     "id": 207,
@@ -16870,7 +16881,17 @@ window.PERSONAL_DATA = [
     "masterParts": [
       1,
       2
-    ]
+    ],
+    "slaveParts": {
+      "1": [
+        1,
+        2
+      ],
+      "2": [
+        0,
+        1
+      ]
+    }
   },
   {
     "id": 209,
