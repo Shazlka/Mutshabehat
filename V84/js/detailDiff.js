@@ -21,7 +21,7 @@
  * parts[].text into a single string so arabicDiff.js can run LCS on it.
  */
 
-import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_5';
+import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_6';
 import { createAnnotationPanel  } from './annotationPanel.js?v=v84_diff_20260527_1';
 
 // Tracks the ID of the last group the user opened (set in capture phase)
@@ -30,6 +30,86 @@ let _lastGroupId = null;
 // Per-group master state: Map<String(groupId), { masterIndex, partSet, slavePartSets }>
 // slavePartSets: Map<verseIndex, Set<partIndex>> — undefined entry = all parts selected
 const _masterMap = new Map();
+
+// ── Part-type context menu ────────────────────────────────────────────────────
+
+let _typeMenu = null;
+
+const _PART_TYPES = [
+  { key: 'shared',   label: 'مشترك' },
+  { key: 'diff',     label: 'اختلاف ١' },
+  { key: 'diff2',    label: 'اختلاف ٢' },
+  { key: 'diff3',    label: 'اختلاف ٣' },
+  { key: 'addition', label: 'زيادة' },
+  { key: 'unique',   label: 'فريد' },
+  { key: 'normal',   label: 'عادي' },
+];
+
+function _hideTypeMenu() {
+  if (_typeMenu) { _typeMenu.remove(); _typeMenu = null; }
+}
+
+function _showTypeMenu(e, part, onSelect) {
+  e.preventDefault();
+  _hideTypeMenu();
+
+  const menu = document.createElement('div');
+  menu.className = 'dh-type-menu';
+  menu.dir = 'rtl';
+  menu.setAttribute('role', 'menu');
+
+  const hdr = document.createElement('div');
+  hdr.className = 'dh-type-menu-hdr';
+  hdr.textContent = 'نوع الجزء';
+  menu.appendChild(hdr);
+
+  _PART_TYPES.forEach(({ key, label }) => {
+    const item = document.createElement('button');
+    item.type = 'button';
+    const current = part.type || 'normal';
+    item.className = 'dh-type-menu-item' + (key === current ? ' active' : '');
+    item.setAttribute('role', 'menuitem');
+
+    const dot = document.createElement('span');
+    dot.className = `dh-type-dot dh-part-${key}`;
+    item.appendChild(dot);
+
+    const txt = document.createElement('span');
+    txt.textContent = label;
+    item.appendChild(txt);
+
+    if (key === current) {
+      const ck = document.createElement('span');
+      ck.className = 'dh-type-check';
+      ck.textContent = '✓';
+      item.appendChild(ck);
+    }
+
+    item.addEventListener('click', () => { onSelect(key); _hideTypeMenu(); });
+    menu.appendChild(item);
+  });
+
+  document.body.appendChild(menu);
+  _typeMenu = menu;
+
+  menu.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px`;
+  requestAnimationFrame(() => {
+    if (!_typeMenu) return;
+    const r = _typeMenu.getBoundingClientRect();
+    if (r.right  > window.innerWidth)  _typeMenu.style.left = (e.clientX - r.width)  + 'px';
+    if (r.bottom > window.innerHeight) _typeMenu.style.top  = (e.clientY - r.height) + 'px';
+  });
+}
+
+// Single dismiss listener set up once
+(function () {
+  document.addEventListener('mousedown', ev => {
+    if (_typeMenu && !_typeMenu.contains(ev.target)) _hideTypeMenu();
+  }, true);
+  document.addEventListener('keydown', ev => {
+    if (ev.key === 'Escape') _hideTypeMenu();
+  }, true);
+}());
 
 function _getMasterState(g) {
   const key = String(g.id);
@@ -278,6 +358,14 @@ function _buildMasterUI(g, onRefresh) {
         _persistMasterState(g, ms);
         onRefresh();
       });
+      chip.addEventListener('contextmenu', e => {
+        if (typeof window.activeDb === 'undefined' || window.activeDb !== 'personal') return;
+        _showTypeMenu(e, part, newType => {
+          part.type = newType;
+          if (typeof window.saveDb === 'function') window.saveDb('personal');
+          onRefresh();
+        });
+      });
       chipWrap.appendChild(chip);
     });
 
@@ -344,6 +432,14 @@ function _buildMasterUI(g, onRefresh) {
         }
         _persistMasterState(g, ms);
         onRefresh();
+      });
+      chip.addEventListener('contextmenu', e => {
+        if (typeof window.activeDb === 'undefined' || window.activeDb !== 'personal') return;
+        _showTypeMenu(e, part, newType => {
+          part.type = newType;
+          if (typeof window.saveDb === 'function') window.saveDb('personal');
+          onRefresh();
+        });
       });
       chipWrapS.appendChild(chip);
     });
