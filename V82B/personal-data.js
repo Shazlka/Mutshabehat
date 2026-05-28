@@ -16562,7 +16562,12 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "وما تفعلوا من",
-    "source": "automated"
+    "source": "automated",
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ]
   },
   {
     "id": 205,
@@ -16725,7 +16730,7 @@ window.PERSONAL_DATA = [
     "sharedPhrase": "وما بينهما الا",
     "source": "automated",
     "completed": true,
-    "masterIndex": 1,
+    "masterIndex": 0,
     "masterParts": null
   },
   {
@@ -16776,9 +16781,7 @@ window.PERSONAL_DATA = [
     "source": "automated",
     "completed": true,
     "masterIndex": 0,
-    "masterParts": [
-      0
-    ]
+    "masterParts": null
   },
   {
     "id": 208,
