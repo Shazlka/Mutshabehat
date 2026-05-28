@@ -522,7 +522,7 @@ window.PERSONAL_DATA = [
         "label": "امرأتك — للوط",
         "parts": [
           {
-            "type": "diff",
+            "type": "unique",
             "text": "إِلَّا امْرَأَتَكَ"
           },
           {
@@ -636,7 +636,19 @@ window.PERSONAL_DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن العنكبوت ٣٣: الوحيدة بالواو",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0
+    ],
+    "slaveParts": {
+      "2": [
+        0
+      ],
+      "3": [
+        0
+      ]
+    }
   },
   {
     "id": 8,
