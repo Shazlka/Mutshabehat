@@ -628,9 +628,8 @@ body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
 
 
 /* =========================================================
-   V84 Word Linker — ربط الكلمات
-   Word-token mapper: click master → click slaves to link.
-   Uses existing diff/diff2/diff3/shared colour classes.
+   V84 Word Linker — ربط الكلمات (paint-by-type)
+   Type palette at top; click any word in any verse to paint it.
    ========================================================= */
 
 .wl-section{overflow:hidden}
@@ -649,35 +648,42 @@ body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
   font-weight:700;
 }
 
-.wl-legend{
+/* Type selector palette */
+.wl-type-bar{
   display:flex;
-  gap:6px;
   flex-wrap:wrap;
-  margin-bottom:12px;
+  gap:6px;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px dashed var(--border);
 }
 
-.wl-legend-item{
-  padding:3px 10px;
+.wl-type-btn{
+  padding:5px 13px;
   border-radius:999px;
-  font-size:.76rem;
-  font-weight:800;
+  font-size:.78rem;
+  font-weight:900;
   border:1.5px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  cursor:pointer;
+  transition:transform .1s,box-shadow .12s,border-color .12s;
+  user-select:none;
 }
-.wl-legend-item.diff{background:color-mix(in srgb,var(--gold,#f0a500) 18%,var(--surface));border-color:color-mix(in srgb,var(--gold,#f0a500) 40%,var(--border))}
-.wl-legend-item.diff2{background:color-mix(in srgb,var(--purple,#7c3aed) 18%,var(--surface));border-color:color-mix(in srgb,var(--purple,#7c3aed) 40%,var(--border))}
-.wl-legend-item.diff3{background:color-mix(in srgb,#2dd4bf 18%,var(--surface));border-color:color-mix(in srgb,#2dd4bf 40%,var(--border))}
-.wl-legend-item.shared{background:color-mix(in srgb,var(--green,#16a34a) 12%,var(--surface));border-color:color-mix(in srgb,var(--green,#16a34a) 30%,var(--border))}
+.wl-type-btn:hover{transform:scale(1.04)}
+.wl-type-active{
+  border-width:2px;
+  box-shadow:0 0 0 3px color-mix(in srgb,currentColor 20%,transparent);
+  transform:scale(1.07)!important;
+}
 
-.wl-status{
-  font-size:.8rem;
-  font-weight:800;
-  color:var(--muted);
-  margin-bottom:8px;
-  min-height:1.4em;
-}
-.wl-status--active{
-  color:var(--primary2);
-}
+.wl-type-btn.shared  {background:color-mix(in srgb,var(--green,#16a34a) 18%,var(--surface));border-color:color-mix(in srgb,var(--green,#16a34a) 45%,var(--border))}
+.wl-type-btn.diff    {background:color-mix(in srgb,var(--gold,#f0a500) 22%,var(--surface));border-color:color-mix(in srgb,var(--gold,#f0a500) 50%,var(--border))}
+.wl-type-btn.diff2   {background:color-mix(in srgb,var(--purple,#7c3aed) 22%,var(--surface));border-color:color-mix(in srgb,var(--purple,#7c3aed) 50%,var(--border))}
+.wl-type-btn.diff3   {background:color-mix(in srgb,#2dd4bf 22%,var(--surface));border-color:color-mix(in srgb,#2dd4bf 50%,var(--border))}
+.wl-type-btn.addition{background:color-mix(in srgb,var(--blue,#2563eb) 18%,var(--surface));border-color:color-mix(in srgb,var(--blue,#2563eb) 45%,var(--border))}
+.wl-type-btn.unique  {background:color-mix(in srgb,var(--red,#dc2626) 18%,var(--surface));border-color:color-mix(in srgb,var(--red,#dc2626) 45%,var(--border))}
+.wl-type-btn.normal  {background:var(--soft);color:var(--muted)}
 
 .wl-content{
   display:grid;
@@ -688,12 +694,6 @@ body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
   border:1.5px solid var(--border);
   border-radius:14px;
   overflow:hidden;
-}
-.wl-master-row{
-  border-color:color-mix(in srgb,var(--primary) 30%,var(--border));
-}
-.wl-slave-active{
-  border-color:color-mix(in srgb,var(--gold,#f0a500) 30%,var(--border));
 }
 
 .wl-verse-label{
@@ -720,11 +720,6 @@ body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
   border:1px solid var(--border);
   color:var(--muted);
 }
-.wl-badge--master{
-  background:color-mix(in srgb,var(--primary) 12%,var(--surface));
-  border-color:color-mix(in srgb,var(--primary) 30%,var(--border));
-  color:var(--primary2);
-}
 
 .wl-words{
   display:flex;
@@ -734,10 +729,10 @@ body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
   direction:rtl;
 }
 
+/* Word token — painted with its current type */
 .wl-word{
   display:inline-flex;
   align-items:center;
-  gap:3px;
   padding:5px 11px;
   border-radius:9px;
   font-family:var(--font-functional-quran);
@@ -747,63 +742,26 @@ body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
   border:1.5px solid var(--border);
   background:var(--surface);
   color:var(--text);
-  transition:transform .1s,box-shadow .1s,background .15s,border-color .15s;
+  transition:transform .1s,box-shadow .1s,background .12s,border-color .12s;
   user-select:none;
-  position:relative;
 }
 .wl-word:hover{
-  background:color-mix(in srgb,var(--primary) 7%,var(--surface));
-  border-color:color-mix(in srgb,var(--primary) 28%,var(--border));
+  transform:scale(1.05);
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-/* Active master word — glows */
-.wl-word.wl-active{
-  background:color-mix(in srgb,var(--primary) 15%,var(--surface));
-  border-color:var(--primary);
-  color:var(--primary2);
-  box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 22%,transparent);
-  transform:scale(1.06);
-  z-index:1;
-}
-
-/* Slave words when a master is active */
-.wl-word.wl-clickable:not(.diff):not(.diff2):not(.diff3):hover{
-  background:color-mix(in srgb,var(--gold,#f0a500) 12%,var(--surface));
-  border-color:color-mix(in srgb,var(--gold,#f0a500) 35%,var(--border));
-}
-
-/* Linked word colours — chip style */
-.wl-word.diff{
-  background:color-mix(in srgb,var(--gold,#f0a500) 22%,var(--surface));
-  border-color:color-mix(in srgb,var(--gold,#f0a500) 50%,var(--border));
-}
-.wl-word.diff2{
-  background:color-mix(in srgb,var(--purple,#7c3aed) 22%,var(--surface));
-  border-color:color-mix(in srgb,var(--purple,#7c3aed) 50%,var(--border));
-}
-.wl-word.diff3{
-  background:color-mix(in srgb,#2dd4bf 22%,var(--surface));
-  border-color:color-mix(in srgb,#2dd4bf 50%,var(--border));
-}
-
-/* × unlink button inside master word chip */
-.wl-unlink{
-  font-size:.65rem;
-  line-height:1;
-  padding:1px 3px;
-  border-radius:50%;
-  opacity:.45;
-  cursor:pointer;
-  margin-inline-start:2px;
-}
-.wl-unlink:hover{
-  opacity:1;
-  background:var(--red);
-  color:#fff;
-}
+/* Word colours by type */
+.wl-word.shared  {background:color-mix(in srgb,var(--green,#16a34a) 16%,var(--surface));border-color:color-mix(in srgb,var(--green,#16a34a) 38%,var(--border))}
+.wl-word.diff    {background:color-mix(in srgb,var(--gold,#f0a500) 22%,var(--surface));border-color:color-mix(in srgb,var(--gold,#f0a500) 50%,var(--border))}
+.wl-word.diff2   {background:color-mix(in srgb,var(--purple,#7c3aed) 22%,var(--surface));border-color:color-mix(in srgb,var(--purple,#7c3aed) 50%,var(--border))}
+.wl-word.diff3   {background:color-mix(in srgb,#2dd4bf 22%,var(--surface));border-color:color-mix(in srgb,#2dd4bf 50%,var(--border))}
+.wl-word.addition{background:color-mix(in srgb,var(--blue,#2563eb) 18%,var(--surface));border-color:color-mix(in srgb,var(--blue,#2563eb) 42%,var(--border))}
+.wl-word.unique  {background:color-mix(in srgb,var(--red,#dc2626) 18%,var(--surface));border-color:color-mix(in srgb,var(--red,#dc2626) 42%,var(--border))}
+.wl-word.normal  {background:var(--soft);border-color:var(--border);opacity:.65}
 
 @media(max-width:600px){
   .wl-word{font-size:.98rem;padding:4px 9px}
   .wl-toolbar-actions{width:100%}
   .wl-toolbar-actions button{flex:1 1 auto}
+  .wl-type-btn{padding:4px 10px;font-size:.74rem}
 }

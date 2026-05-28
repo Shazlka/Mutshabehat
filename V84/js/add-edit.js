@@ -32,7 +32,7 @@ let editActiveTab='ayahs', editNoteBuffer='', editUnoteBuffer='';
 /* Phase 4: tracks which verse cards are expanded in the الآيات tab */
 let editVerseExpanded=[];
 
-function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);editVerseExpanded=(g.verses||[]).map(()=>false);wlLinks=[];wlActiveMaster=null;modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
+function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);editVerseExpanded=(g.verses||[]).map(()=>false);wlInitFromBuffer();modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
 
 function editStatusText(g){if(g.status)return escapeHtml(g.status);if(isTrue(g.verified))return 'Verified';if(isTrue(g.reviewed))return 'Reviewed';return 'Draft'}
 
@@ -125,52 +125,46 @@ function deleteEditGroup(){if(confirm('حذف المجموعة؟')){personalData
 /* End V83 Phase 1 — Modify Window map */
 
 /* =========================================================
-   V84 Word Linker — ربط الكلمات
-   Click a master word to activate it, then click slave words
-   to link them. Each link group gets a diff/diff2/diff3 color.
-   "Apply" serializes links into editVersesBuffer parts arrays.
+   V84 Word Linker — ربط الكلمات (paint-by-type)
+   1. Select a type from the palette (shared/diff/diff2/…)
+   2. Click any word in any verse to paint it with that type
+   3. Apply → rebuilds all parts arrays from the painted types
+   No limit on number of types used or number of verses.
    ========================================================= */
-let wlLinks=[],wlActiveMaster=null;
-const WL_COLORS=['diff','diff2','diff3'];
+let wlWordTypes=[],   // wlWordTypes[vi][wi] = type string
+    wlActiveType='diff';
+
+const WL_TYPES=[
+  {k:'shared',   l:'مشترك'},
+  {k:'diff',     l:'اختلاف ١'},
+  {k:'diff2',    l:'اختلاف ٢'},
+  {k:'diff3',    l:'اختلاف ٣'},
+  {k:'addition', l:'زيادة'},
+  {k:'unique',   l:'فريد'},
+  {k:'normal',   l:'عادي'},
+];
 
 function wlTokenize(t){return(t||'').trim().split(/\s+/).filter(Boolean)}
-function wlGetMasterWords(){const v=editVersesBuffer[0];return v?wlTokenize((v.parts||[]).map(p=>p.text).join(' ')):[]}
-function wlGetSlaveWords(vi){const v=editVersesBuffer[vi];return v?wlTokenize((v.parts||[]).map(p=>p.text).join(' ')):[]}
-function wlLinkForMaster(wi){return wlLinks.find(l=>l.masterWi===wi)||null}
-function wlLinkForSlave(vi,wi){return wlLinks.find(l=>l.slaves.some(s=>s.vi===vi&&s.wi===wi))||null}
 
-function wlClickMaster(wi){
-  wlActiveMaster=wlActiveMaster===wi?null:wi;
+function wlGetWords(vi){const v=editVersesBuffer[vi];return v?wlTokenize((v.parts||[]).map(p=>p.text).join(' ')):[]}
+
+function wlInitFromBuffer(){
+  wlWordTypes=editVersesBuffer.map(v=>{
+    const map={};let wi=0;
+    (v.parts||[]).forEach(p=>{wlTokenize(p.text).forEach(()=>{map[wi]=p.type||'shared';wi++;});});
+    return map;
+  });
+}
+
+function wlClickWord(vi,wi){
+  if(!wlWordTypes[vi])wlWordTypes[vi]={};
+  wlWordTypes[vi][wi]=wlActiveType;
   wlRender();
 }
 
-function wlClickSlave(vi,wi){
-  if(wlActiveMaster===null)return;
-  let link=wlLinkForMaster(wlActiveMaster);
-  const existing=wlLinkForSlave(vi,wi);
-  if(existing){
-    existing.slaves=existing.slaves.filter(s=>!(s.vi===vi&&s.wi===wi));
-    if(!existing.slaves.length&&existing!==link)wlLinks=wlLinks.filter(l=>l!==existing);
-    if(existing===link){if(!link.slaves.length)wlLinks=wlLinks.filter(l=>l!==link);wlActiveMaster=null;wlRender();return}
-  }
-  if(!link){
-    const used=wlLinks.map(l=>l.color);
-    const color=WL_COLORS.find(c=>!used.includes(c));
-    if(!color){alert('الحد الأقصى ٣ أنواع اختلاف. امسح رابطاً لإضافة جديد.');return}
-    link={color,masterWi:wlActiveMaster,slaves:[]};
-    wlLinks.push(link);
-  }
-  if(!link.slaves.some(s=>s.vi===vi&&s.wi===wi))link.slaves.push({vi,wi});
-  wlRender();
-}
+function wlSetType(type){wlActiveType=type;wlRender()}
 
-function wlUnlinkMaster(wi){
-  wlLinks=wlLinks.filter(l=>l.masterWi!==wi);
-  if(wlActiveMaster===wi)wlActiveMaster=null;
-  wlRender();
-}
-
-function wlClearLinks(){wlLinks=[];wlActiveMaster=null;wlRender()}
+function wlClearLinks(){wlInitFromBuffer();wlRender()}
 
 function wlMergeParts(parts){
   if(!parts.length)return parts;
@@ -184,13 +178,10 @@ function wlMergeParts(parts){
 }
 
 function wlApplyLinks(){
-  if(editVersesBuffer.length<2)return;
+  if(!editVersesBuffer.length)return;
   editVersesBuffer.forEach((v,vi)=>{
-    const words=vi===0?wlGetMasterWords():wlGetSlaveWords(vi);
-    const parts=words.map((word,wi)=>{
-      const link=vi===0?wlLinkForMaster(wi):wlLinkForSlave(vi,wi);
-      return{type:link?link.color:'shared',text:word};
-    });
+    const words=wlGetWords(vi);
+    const parts=words.map((word,wi)=>({type:(wlWordTypes[vi]&&wlWordTypes[vi][wi])||'shared',text:word}));
     v.parts=wlMergeParts(parts);
   });
   renderEditVerses();
@@ -201,37 +192,23 @@ function wlApplyLinks(){
 function wlRender(){
   const root=document.getElementById('wlContent');
   if(!root)return;
-  if(editVersesBuffer.length<2){root.innerHTML='<div class="hint">يجب إضافة آيتين على الأقل من تبويب الآيات.</div>';return}
-  const masterWords=wlGetMasterWords();
-  const master=editVersesBuffer[0];
-  const hasActive=wlActiveMaster!==null;
-  let html=`<div class="wl-status">${hasActive?`<span class="wl-status--active">← اختر الكلمة المقابلة في الآيات أدناه</span>`:'<span>اضغط كلمة من الآية الرئيسية لتحديدها</span>'}</div>`;
-  html+=`<div class="wl-verse wl-master-row"><div class="wl-verse-label"><span class="wl-badge wl-badge--master">رئيسية</span><span class="surah-name">${escapeHtml(master.surah)}</span><span class="ayah-num">${escapeHtml(String(master.ayah||1))}</span>${master.label?`<span class="verse-label">${escapeHtml(master.label)}</span>`:''}</div><div class="wl-words" dir="rtl">`;
-  masterWords.forEach((word,wi)=>{
-    const link=wlLinkForMaster(wi);
-    const isActive=wlActiveMaster===wi;
-    const cls=['wl-word',link?link.color:'',isActive?'wl-active':''].filter(Boolean).join(' ');
-    html+=`<span class="${cls}" onclick="wlClickMaster(${wi})">${escapeHtml(word)}`;
-    if(link&&!isActive)html+=`<span class="wl-unlink" onclick="event.stopPropagation();wlUnlinkMaster(${wi})">×</span>`;
-    html+=`</span>`;
-  });
-  html+=`</div></div>`;
-  for(let vi=1;vi<editVersesBuffer.length;vi++){
-    const slave=editVersesBuffer[vi];
-    const slaveWords=wlGetSlaveWords(vi);
-    html+=`<div class="wl-verse wl-slave-row${hasActive?' wl-slave-active':''}"><div class="wl-verse-label"><span class="wl-badge">${vi}</span><span class="surah-name">${escapeHtml(slave.surah)}</span><span class="ayah-num">${escapeHtml(String(slave.ayah||1))}</span>${slave.label?`<span class="verse-label">${escapeHtml(slave.label)}</span>`:''}</div><div class="wl-words" dir="rtl">`;
-    slaveWords.forEach((word,wi)=>{
-      const link=wlLinkForSlave(vi,wi);
-      const cls=['wl-word',link?link.color:'',hasActive?'wl-clickable':''].filter(Boolean).join(' ');
-      html+=`<span class="${cls}" onclick="wlClickSlave(${vi},${wi})">${escapeHtml(word)}</span>`;
+  if(!editVersesBuffer.length){root.innerHTML='<div class="hint">لا توجد آيات — أضف آيات من تبويب الآيات أولاً.</div>';return}
+  let html=`<div class="wl-type-bar">${WL_TYPES.map(t=>`<button class="wl-type-btn ${t.k}${wlActiveType===t.k?' wl-type-active':''}" onclick="wlSetType('${t.k}')">${t.l}</button>`).join('')}</div>`;
+  editVersesBuffer.forEach((v,vi)=>{
+    const words=wlGetWords(vi);
+    const vtypes=wlWordTypes[vi]||{};
+    html+=`<div class="wl-verse"><div class="wl-verse-label"><span class="wl-badge">${vi+1}</span><span class="surah-name">${escapeHtml(v.surah)}</span><span class="ayah-num">${escapeHtml(String(v.ayah||1))}</span>${v.label?`<span class="verse-label">${escapeHtml(v.label)}</span>`:''}</div><div class="wl-words" dir="rtl">`;
+    words.forEach((word,wi)=>{
+      const type=vtypes[wi]||'shared';
+      html+=`<span class="wl-word ${type}" onclick="wlClickWord(${vi},${wi})">${escapeHtml(word)}</span>`;
     });
     html+=`</div></div>`;
-  }
+  });
   root.innerHTML=html;
 }
 
 function wordLinkerTabHtml(){
-  if(editVersesBuffer.length<2)return`<section class="v83-edit-section"><div class="v83-edit-placeholder"><h3>ربط الكلمات</h3><p>أضف آيتين على الأقل من تبويب الآيات أولاً.</p></div></section>`;
-  return`<section class="v83-edit-section wl-section"><div class="v83-edit-section-head"><h3>ربط الكلمات — تعيين الفروقات</h3><div class="wl-toolbar-actions"><button class="primary" onclick="wlApplyLinks()">✓ تطبيق الروابط</button><button onclick="wlClearLinks()">مسح الروابط</button></div></div><p class="wl-hint">اضغط كلمة من الآية الرئيسية ← اضغط الكلمة المقابلة في كل آية. تطبيق الروابط يستبدل التصنيفات الحالية.</p><div class="wl-legend"><span class="wl-legend-item diff">الاختلاف الأول</span><span class="wl-legend-item diff2">الاختلاف الثاني</span><span class="wl-legend-item diff3">الاختلاف الثالث</span><span class="wl-legend-item shared">مشترك</span></div><div id="wlContent" class="wl-content"></div></section>`;
+  if(!editVersesBuffer.length)return`<section class="v83-edit-section"><div class="v83-edit-placeholder"><h3>ربط الكلمات</h3><p>أضف آية واحدة على الأقل من تبويب الآيات أولاً.</p></div></section>`;
+  return`<section class="v83-edit-section wl-section"><div class="v83-edit-section-head"><h3>ربط الكلمات — تعيين الفروقات</h3><div class="wl-toolbar-actions"><button class="primary" onclick="wlApplyLinks()">✓ تطبيق</button><button onclick="wlClearLinks()">إعادة تعيين</button></div></div><p class="wl-hint">اختر نوعاً من الشريط ← اضغط الكلمات في أي آية لتلوينها. تطبيق يستبدل التصنيفات الحالية.</p><div id="wlContent" class="wl-content"></div></section>`;
 }
 /* End V84 Word Linker */
