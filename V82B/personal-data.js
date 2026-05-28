@@ -20,15 +20,11 @@ window.PERSONAL_DATA = [
           },
           {
             "type": "normal",
-            "text": " فَأَصْبَحُوا فِي "
+            "text": "فَأَصْبَحُوا فِي"
           },
           {
             "type": "shared",
-            "text": "دَارِهِمْ"
-          },
-          {
-            "type": "normal",
-            "text": " جَاثِمِينَ"
+            "text": "دَارِهِمْ جَاثِمِينَ"
           }
         ]
       },
@@ -43,15 +39,11 @@ window.PERSONAL_DATA = [
           },
           {
             "type": "normal",
-            "text": " فَأَصْبَحُوا فِي "
+            "text": "فَأَصْبَحُوا فِي"
           },
           {
             "type": "shared",
-            "text": "دَارِهِمْ"
-          },
-          {
-            "type": "normal",
-            "text": " جَاثِمِينَ"
+            "text": "دَارِهِمْ جَاثِمِينَ"
           }
         ]
       },
@@ -66,7 +58,7 @@ window.PERSONAL_DATA = [
           },
           {
             "type": "normal",
-            "text": " الَّذِينَ ظَلَمُوا "
+            "text": "الَّذِينَ ظَلَمُوا"
           },
           {
             "type": "diff",
@@ -74,15 +66,15 @@ window.PERSONAL_DATA = [
           },
           {
             "type": "normal",
-            "text": " فَأَصْبَحُوا فِي "
+            "text": "فَأَصْبَحُوا فِي"
           },
           {
             "type": "diff",
             "text": "دِيَارِهِمْ"
           },
           {
-            "type": "normal",
-            "text": " جَاثِمِينَ"
+            "type": "shared",
+            "text": "جَاثِمِينَ"
           }
         ]
       },
@@ -93,11 +85,11 @@ window.PERSONAL_DATA = [
         "parts": [
           {
             "type": "addition",
-            "text": "وَأَخَذَتِ  "
+            "text": "وَأَخَذَتِ"
           },
           {
             "type": "normal",
-            "text": " الَّذِينَ ظَلَمُوا "
+            "text": "الَّذِينَ ظَلَمُوا"
           },
           {
             "type": "diff",
@@ -105,15 +97,15 @@ window.PERSONAL_DATA = [
           },
           {
             "type": "normal",
-            "text": " فَأَصْبَحُوا فِي "
+            "text": "فَأَصْبَحُوا فِي"
           },
           {
             "type": "diff",
             "text": "دِيَارِهِمْ"
           },
           {
-            "type": "normal",
-            "text": " جَاثِمِينَ"
+            "type": "shared",
+            "text": "جَاثِمِينَ"
           }
         ]
       },
@@ -124,23 +116,19 @@ window.PERSONAL_DATA = [
         "parts": [
           {
             "type": "unique",
-            "text": "فَكَذَّبُوهُ   "
+            "text": "فَكَذَّبُوهُ"
           },
           {
             "type": "shared",
-            "text": " فَأَخَذَتْهُمُ الرَّجْفَةُ"
+            "text": "فَأَخَذَتْهُمُ الرَّجْفَةُ"
           },
           {
             "type": "normal",
-            "text": " فَأَصْبَحُوا فِي "
+            "text": "فَأَصْبَحُوا فِي"
           },
           {
             "type": "shared",
-            "text": "دَارِهِمْ"
-          },
-          {
-            "type": "normal",
-            "text": " جَاثِمِينَ"
+            "text": "دَارِهِمْ جَاثِمِينَ"
           }
         ]
       }
