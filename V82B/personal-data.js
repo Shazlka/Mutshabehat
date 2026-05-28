@@ -123,7 +123,7 @@ window.PERSONAL_DATA = [
         "label": "زيادة فكذبوه",
         "parts": [
           {
-            "type": "addition",
+            "type": "unique",
             "text": "فَكَذَّبُوهُ   "
           },
           {
@@ -147,7 +147,10 @@ window.PERSONAL_DATA = [
     ],
     "note": "<b>الاعراف/العنكبوت</b>: الرجفة + دارهم <div><b>هود</b>: الصيحة + ديارهم</div><div><span><b>العنكبوت</b>: زيادة فكذبوه </span></div><div><span><b>هود٩٤</b>: تأنيث أخذتِ</span></div>",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null,
+    "slaveParts": null
   },
   {
     "id": 2,
@@ -315,7 +318,21 @@ window.PERSONAL_DATA = [
     ],
     "note": "العنكبوت: الأساس — الروم: وما بينهما — الجاثية: زيادة الواو",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null,
+    "slaveParts": {
+      "1": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "2": [
+        0,
+        1
+      ]
+    }
   },
   {
     "id": 5,
@@ -505,7 +522,7 @@ window.PERSONAL_DATA = [
         "label": "امرأتك — للوط",
         "parts": [
           {
-            "type": "diff",
+            "type": "unique",
             "text": "إِلَّا امْرَأَتَكَ"
           },
           {
@@ -540,7 +557,10 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة الاعراف/العنكبوت٣٢: كانت — الحجر: قدرنا — النمل: قدرناها — الشعراء/الصافات: عجوزاً",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null,
+    "slaveParts": null
   },
   {
     "id": 7,
@@ -616,7 +636,19 @@ window.PERSONAL_DATA = [
     ],
     "note": "",
     "unote": "فريدة في القرآن العنكبوت ٣٣: الوحيدة بالواو",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0
+    ],
+    "slaveParts": {
+      "2": [
+        0
+      ],
+      "3": [
+        0
+      ]
+    }
   },
   {
     "id": 8,
@@ -747,76 +779,97 @@ window.PERSONAL_DATA = [
     "title": "وَإِلَى مَدْيَنَ أَخَاهُمْ شُعَيْبًا — قال / فقال",
     "color": "#3A5E1A",
     "surahs": [
-      "الاعراف",
+      "الأعراف",
       "هود",
       "العنكبوت"
     ],
     "verses": [
       {
-        "surah": "الاعراف",
-        "ayah": "٨٥",
+        "surah": "الأعراف",
+        "ayah": 85,
         "label": "قَالَ — بدون فاء",
         "parts": [
           {
+            "type": "shared",
+            "text": "وَإِلَىٰ مَدۡيَنَ أَخَاهُمۡ شُعَيۡبٗاۚ "
+          },
+          {
+            "type": "shared",
+            "text": "قَالَ يَٰقَوۡمِ ٱعۡبُدُواْ ٱللَّهَ "
+          },
+          {
+            "type": "addition",
+            "text": "مَا لَكُم مِّنۡ إِلَٰهٍ غَيۡرُهُۥۖ "
+          },
+          {
             "type": "normal",
-            "text": "وَإِلَى مَدْيَنَ أَخَاهُمْ شُعَيْبًا "
-          },
-          {
-            "type": "shared",
-            "text": "قَالَ"
-          },
-          {
-            "type": "shared",
-            "text": " يَا قَوْمِ اعْبُدُوا اللَّهَ"
+            "text": "قَدۡ جَآءَتۡكُم بَيِّنَةٞ مِّن رَّبِّكُمۡۖ فَأَوۡفُواْ ٱلۡكَيۡلَ وَٱلۡمِيزَانَ وَلَا تَبۡخَسُواْ ٱلنَّاسَ أَشۡيَآءَهُمۡ وَلَا تُفۡسِدُواْ فِي ٱلۡأَرۡضِ بَعۡدَ إِصۡلَٰحِهَاۚ ذَٰلِكُمۡ خَيۡرٞ لَّكُمۡ إِن كُنتُم مُّؤۡمِنِينَ"
           }
         ]
       },
       {
         "surah": "هود",
-        "ayah": "٨٤",
+        "ayah": 84,
         "label": "قَالَ — بدون فاء",
         "parts": [
           {
+            "type": "shared",
+            "text": "وَإِلَىٰ مَدۡيَنَ أَخَاهُمۡ شُعَيۡبٗاۚ "
+          },
+          {
+            "type": "shared",
+            "text": "قَالَ يَٰقَوۡمِ ٱعۡبُدُواْ ٱللَّهَ "
+          },
+          {
+            "type": "addition",
+            "text": "مَا لَكُم مِّنۡ إِلَٰهٍ غَيۡرُهُۥۖ "
+          },
+          {
             "type": "normal",
-            "text": "وَإِلَى مَدْيَنَ أَخَاهُمْ شُعَيْبًا "
-          },
-          {
-            "type": "shared",
-            "text": "قَالَ"
-          },
-          {
-            "type": "shared",
-            "text": " يَا قَوْمِ اعْبُدُوا اللَّهَ"
+            "text": "وَلَا تَنقُصُواْ ٱلۡمِكۡيَالَ وَٱلۡمِيزَانَۖ إِنِّيٓ أَرَىٰكُم بِخَيۡرٖ وَإِنِّيٓ أَخَافُ عَلَيۡكُمۡ عَذَابَ يَوۡمٖ مُّحِيطٖ"
           }
         ]
       },
       {
         "surah": "العنكبوت",
-        "ayah": "٣٦",
+        "ayah": 36,
         "label": "فَقَالَ + وارجوا — فريدة",
         "parts": [
           {
-            "type": "normal",
-            "text": "وَإِلَى مَدْيَنَ أَخَاهُمْ شُعَيْبًا "
+            "type": "shared",
+            "text": "وَإِلَىٰ مَدۡيَنَ أَخَاهُمۡ شُعَيۡبٗا "
           },
           {
             "type": "unique",
-            "text": "فَقَالَ"
+            "text": "فَقَالَ يَٰقَوۡمِ ٱعۡبُدُواْ ٱللَّهَ "
           },
           {
             "type": "normal",
-            "text": " يَا قَوْمِ اعْبُدُوا اللَّهَ "
-          },
-          {
-            "type": "unique",
-            "text": "وَارْجُوا الْيَوْمَ الْآخِرَ"
+            "text": "وَٱرۡجُواْ ٱلۡيَوۡمَ ٱلۡأٓخِرَ وَلَا تَعۡثَوۡاْ فِي ٱلۡأَرۡضِ مُفۡسِدِينَ"
           }
         ]
       }
     ],
     "note": "",
     "unote": "فريدة في القرآن العنكبوت ٣٦: الوحيدة بالفاء + وارجوا اليوم الاخر",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0,
+      1,
+      2
+    ],
+    "slaveParts": {
+      "1": [
+        0,
+        1,
+        2
+      ],
+      "2": [
+        0,
+        1
+      ]
+    }
   },
   {
     "id": 11,
@@ -908,7 +961,25 @@ window.PERSONAL_DATA = [
     ],
     "note": "وردت ٥ مرات: ٢ قصة موسى + ٣ قصة شعيب",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ],
+    "slaveParts": {
+      "1": [
+        1
+      ],
+      "2": [
+        1
+      ],
+      "3": [
+        1
+      ],
+      "4": [
+        1
+      ]
+    }
   },
   {
     "id": 12,
@@ -978,11 +1049,11 @@ window.PERSONAL_DATA = [
             "text": "وَ"
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": "مَا كَانَ جَوَابَ قَوۡمِهِۦٓ"
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": " إِلَّآ أَن قَالُوٓاْ"
           },
           {
@@ -1005,7 +1076,7 @@ window.PERSONAL_DATA = [
             "text": "۞ فَمَا كَانَ جَوَابَ قَوۡمِهِ"
           },
           {
-            "type": "normal",
+            "type": "shared",
             "text": "ۦٓ إِلَّآ أَن قَالُوٓاْ "
           },
           {
@@ -1063,7 +1134,10 @@ window.PERSONAL_DATA = [
     ],
     "note": "",
     "unote": "الاعراف: وَمَا (بالواو) الوحيدة — باقيها: فَمَا<div>الأعراف قائمة علي الإختصار لذا قال (أخرجوهم) وليس (أخرجوا آل لوط) كما في النمل</div>",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null,
+    "slaveParts": null
   },
   {
     "id": 14,
@@ -1188,7 +1262,7 @@ window.PERSONAL_DATA = [
         "label": "ثم هو يوم — فريدة",
         "parts": [
           {
-            "type": "normal",
+            "type": "shared",
             "text": "ثُمَّ "
           },
           {
@@ -8222,7 +8296,11 @@ window.PERSONAL_DATA = [
     "note": ": إذا كان الخطاب للكفار: \"يغفر لكم من ذنوبكم\" — وللمؤمنين: \"يغفر لكم ذنوبكم\"",
     "unote": "فائدة إضافية: مفتاح الحفظ: الكفار جاء معهم \"من\" للتبعيض، أما المؤمنون فجاءت بدون \"من\".",
     "headerColor": "#982abc",
-    "completed": true
+    "completed": true,
+    "masterIndex": 3,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 116,
@@ -8518,7 +8596,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: المفرد: يس، ص، الزخرف، الطور، الرحمن، الواقعة — الجمع: المؤمنون، الصافات، المرسلات",
     "unote": "فائدة إضافية: قاعدة الصورة: إذا كان اسم السورة مفردًا جاء اللفظ \"فاكهة\"، وإذا كان اسم السورة جمعًا جاء اللفظ \"فواكه\".",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 118,
@@ -8719,7 +8801,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إن الله كان عليمًا خبيرًا } وحيدة في النساء 35 — والباقي { عليمًا حكيمًا }",
     "unote": "فائدة إضافية: الضابط: خبيرًا في موضع الإصلاح بين الزوجين في النساء 35، أما المواضع الأخرى فخاتمتها حكيمًا.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 120,
@@ -8791,7 +8877,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إذا حضر أحدهم الموت } في النساء 18 — والباقي { أحدكم } في البقرة 180، المائدة 106",
     "unote": "فائدة إضافية: أحدهم للغائب في سياق التوبة عند حضور الموت، وأحدكم للخطاب في أحكام الوصية والشهادة.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 121,
@@ -8882,7 +8972,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إلا قليل منهم } في النساء 66 — والباقي { إلا قليلًا منهم }",
     "unote": "فائدة إضافية: التمييز بالحركة: النساء جاءت بالرفع \"قليلٌ\"، والباقي بالنصب \"قليلًا\".",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 122,
@@ -8972,7 +9066,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: (2) أطيعوا الله ورسوله — الأنفال 3 مواضع، والمجادلة موضع واحد",
     "unote": "فائدة إضافية: التركيب هنا بإضافة الرسول إلى الضمير: ورسوله، وأكثره في الأنفال.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 123,
@@ -9039,7 +9137,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { واقتلوهم حيث وجدتموهم } في النساء 89 — والباقي { حيث ثقفتموهم } في البقرة 191، النساء 91",
     "unote": "فائدة إضافية: موضع وجدتموهم وحيد في النساء 89، أما ثقفتموهم فجاءت في البقرة 191 والنساء 91.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 124,
@@ -9115,7 +9217,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { وأما الذين آمنوا وعملوا الصالحات } في آل عمران — والباقي { فأما }",
     "unote": "فائدة إضافية: آل عمران تميزت بحذف الفاء هنا: وأما، بينما المواضع الأخرى تبدأ بـ فأما.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0
+    ]
   },
   {
     "id": 125,
@@ -9285,7 +9391,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { وإليه يرجعون } في آل عمران — والباقي { وإليه ترجعون }",
     "unote": "فائدة إضافية: الفرق في الضمير: آل عمران جاءت للغائب \"يرجعون\"، وأكثر المواضع الأخرى للخطاب \"ترجعون\".",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 126,
@@ -9531,7 +9641,11 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { في قلوبهم زيغ } في آل عمران — والباقي { في قلوبهم مرض }",
     "unote": "فائدة إضافية: آل عمران موضع الزيغ في سياق المتشابه، أما مرض القلوب فجاء في مواضع متعددة.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 127,
@@ -9653,7 +9767,11 @@ window.PERSONAL_DATA = [
     ],
     "note": ": { والله ذو فضل عظيم } في آل عمران — والباقي { والله ذو الفضل العظيم }",
     "unote": "فائدة إضافية: آل عمران جاءت بدون أل في فضل: ذو فضل عظيم، والباقي مع التعريف: ذو الفضل العظيم.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 1,
+    "masterParts": [
+      1
+    ]
   },
   {
     "id": 128,
@@ -9764,7 +9882,12 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { ثم مأواهم جهنم } في آل عمران — والباقي { ومأواهم جهنم }",
     "unote": "فائدة إضافية: آل عمران تميزت بـ ثم، وباقي المواضع جاءت بالواو.",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ]
   },
   {
     "id": 129,
@@ -16444,7 +16567,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "البقرة",
         "ayah": 197,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16463,7 +16586,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "البقرة",
         "ayah": 215,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16482,7 +16605,7 @@ window.PERSONAL_DATA = [
       {
         "surah": "النساء",
         "ayah": 127,
-        "label": "phrase-family | score 82",
+        "label": "",
         "parts": [
           {
             "type": "diff",
@@ -16513,7 +16636,12 @@ window.PERSONAL_DATA = [
     "candidateKind": "phrase-family",
     "candidateScore": 82,
     "sharedPhrase": "وما تفعلوا من",
-    "source": "automated"
+    "source": "automated",
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ]
   },
   {
     "id": 205,
@@ -16675,7 +16803,20 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "وما بينهما الا",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0,
+      1,
+      2
+    ],
+    "slaveParts": {
+      "1": [
+        1,
+        2,
+        3
+      ]
+    }
   },
   {
     "id": 207,
@@ -16723,7 +16864,9 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "يشا ان في",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null
   },
   {
     "id": 208,
@@ -16807,7 +16950,22 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "يخرج الحي من",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      1,
+      2
+    ],
+    "slaveParts": {
+      "1": [
+        1,
+        2
+      ],
+      "2": [
+        0,
+        1
+      ]
+    }
   },
   {
     "id": 209,
@@ -16855,11 +17013,15 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ومن ايته خلق",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": [
+      0
+    ]
   },
   {
     "id": 210,
-    "title": "إِنَّكَ لَا تُسۡمِعُ ٱلۡمَوۡتَىٰ وَلَا تُسۡمِعُ ٱلصُّمَّ ٱلدُّعَآءَ إِذَا وَلَّوۡاْ مُدۡبِرِينَ",
+    "title": "قل إِنَّمَآ أُنذِرُكُم بِٱلۡوَحۡيِۚ وَلَا يَسۡمَعُ ٱلصُّمُّ ٱلدُّعَآءَ إِذَا مَا يُنذَرُونَ",
     "surahs": [
       "الأنبياء",
       "النمل",
@@ -16880,7 +17042,7 @@ window.PERSONAL_DATA = [
             "text": "وَلَا"
           },
           {
-            "type": "diff2",
+            "type": "unique",
             "text": "يَسۡمَعُ"
           },
           {
@@ -16959,6 +17121,16 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ولا الصم الدعا",
     "source": "automated",
-    "completed": true
+    "completed": true,
+    "masterIndex": 1,
+    "masterParts": null,
+    "slaveParts": {
+      "0": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
   }
 ];
