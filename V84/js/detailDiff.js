@@ -21,7 +21,7 @@
  * parts[].text into a single string so arabicDiff.js can run LCS on it.
  */
 
-import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_6';
+import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_7';
 import { createAnnotationPanel  } from './annotationPanel.js?v=v84_diff_20260527_1';
 
 // Tracks the ID of the last group the user opened (set in capture phase)
@@ -110,6 +110,39 @@ function _showTypeMenu(e, part, onSelect) {
     if (ev.key === 'Escape') _hideTypeMenu();
   }, true);
 }());
+
+// Bind right-click (desktop) + long-press (mobile) to show the type menu
+function _addTypeInteraction(chip, part, onTypeSelect) {
+  chip.addEventListener('contextmenu', e => {
+    if (typeof window.activeDb === 'undefined' || window.activeDb !== 'personal') return;
+    _showTypeMenu(e, part, onTypeSelect);
+  });
+
+  // Long-press: fire after 500 ms without significant movement
+  let _lpTimer = null;
+  let _lpX = 0, _lpY = 0;
+
+  chip.addEventListener('touchstart', e => {
+    if (typeof window.activeDb === 'undefined' || window.activeDb !== 'personal') return;
+    const t = e.touches[0];
+    _lpX = t.clientX; _lpY = t.clientY;
+    _lpTimer = setTimeout(() => {
+      _lpTimer = null;
+      _showTypeMenu({ clientX: _lpX, clientY: _lpY, preventDefault() {} }, part, onTypeSelect);
+    }, 500);
+  }, { passive: true });
+
+  const _cancelLp = () => { if (_lpTimer) { clearTimeout(_lpTimer); _lpTimer = null; } };
+
+  chip.addEventListener('touchmove', e => {
+    if (!_lpTimer) return;
+    const t = e.touches[0];
+    if (Math.abs(t.clientX - _lpX) > 8 || Math.abs(t.clientY - _lpY) > 8) _cancelLp();
+  }, { passive: true });
+
+  chip.addEventListener('touchend',    _cancelLp, { passive: true });
+  chip.addEventListener('touchcancel', _cancelLp, { passive: true });
+}
 
 function _getMasterState(g) {
   const key = String(g.id);
@@ -358,13 +391,10 @@ function _buildMasterUI(g, onRefresh) {
         _persistMasterState(g, ms);
         onRefresh();
       });
-      chip.addEventListener('contextmenu', e => {
-        if (typeof window.activeDb === 'undefined' || window.activeDb !== 'personal') return;
-        _showTypeMenu(e, part, newType => {
-          part.type = newType;
-          if (typeof window.saveDb === 'function') window.saveDb('personal');
-          onRefresh();
-        });
+      _addTypeInteraction(chip, part, newType => {
+        part.type = newType;
+        if (typeof window.saveDb === 'function') window.saveDb('personal');
+        onRefresh();
       });
       chipWrap.appendChild(chip);
     });
@@ -433,13 +463,10 @@ function _buildMasterUI(g, onRefresh) {
         _persistMasterState(g, ms);
         onRefresh();
       });
-      chip.addEventListener('contextmenu', e => {
-        if (typeof window.activeDb === 'undefined' || window.activeDb !== 'personal') return;
-        _showTypeMenu(e, part, newType => {
-          part.type = newType;
-          if (typeof window.saveDb === 'function') window.saveDb('personal');
-          onRefresh();
-        });
+      _addTypeInteraction(chip, part, newType => {
+        part.type = newType;
+        if (typeof window.saveDb === 'function') window.saveDb('personal');
+        onRefresh();
       });
       chipWrapS.appendChild(chip);
     });
