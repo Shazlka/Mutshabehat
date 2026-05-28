@@ -557,7 +557,10 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة الاعراف/العنكبوت٣٢: كانت — الحجر: قدرنا — النمل: قدرناها — الشعراء/الصافات: عجوزاً",
     "unote": "",
-    "completed": true
+    "completed": true,
+    "masterIndex": 0,
+    "masterParts": null,
+    "slaveParts": null
   },
   {
     "id": 7,
