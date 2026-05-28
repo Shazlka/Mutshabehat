@@ -17000,7 +17000,8 @@ window.PERSONAL_DATA = [
     "masterIndex": 0,
     "masterParts": [
       0
-    ]
+    ],
+    "slaveParts": null
   },
   {
     "id": 210,
@@ -17025,7 +17026,7 @@ window.PERSONAL_DATA = [
             "text": "وَلَا"
           },
           {
-            "type": "diff",
+            "type": "unique",
             "text": "يَسۡمَعُ"
           },
           {
