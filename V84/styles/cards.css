@@ -145,7 +145,7 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 /* Settings token row */
 .token-row{display:flex;gap:8px;align-items:center}
 .token-row input{flex:1 1 auto;min-width:180px}
-.token-row .token-toggle-btn{min-width:32px;min-height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:.85rem}
+.token-row .token-toggle-btn{min-width:26px;min-height:26px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-size:.78rem}
 
 /* Button label helpers */
 .btn-icon{display:none}
@@ -469,13 +469,13 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
    ========================================================= */
 
 /* Modal width only — keep as block so sticky header works */
-.settingsModal-window{width:min(940px,96vw)}
+.settingsModal-window{width:min(900px,96vw)}
 
 /* Modal body: constrained so the modal's own 92vh max-height is never exceeded.
-   120px ≈ modal-head (~66px) + modal-footer (~48px) with a small buffer. */
+   108px ≈ modal-head (~62px) + modal-footer (~42px) with a small buffer. */
 .settingsModal-window .modal-body{
   padding:0!important;
-  max-height:calc(min(92vh, 920px) - 120px)!important;
+  max-height:calc(min(90vh, 880px) - 108px)!important;
   display:flex;
   flex-direction:column;
   overflow:hidden!important;
@@ -484,74 +484,74 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 /* Shell fills the body */
 .sett-shell{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
 
-/* Two-column grid — compact gap/padding so all content fits without scroll */
+/* Two-column grid */
 .sett-cols{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:6px;
-  padding:6px;
+  gap:4px;
+  padding:5px;
   overflow:hidden;
   flex:1;
   align-items:start;
 }
 
 /* Column: stacks cards vertically */
-.sett-col{display:grid;gap:5px;align-content:start}
+.sett-col{display:grid;gap:4px;align-content:start}
 
-/* Card wrapper — tight padding */
+/* Card wrapper */
 .sett-card{
   background:var(--surface);
   border:1px solid var(--border);
-  border-radius:12px;
-  padding:7px 10px;
+  border-radius:10px;
+  padding:5px 8px;
 }
 
 /* Card section title */
 .sett-card-title{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
   font-weight:900;
-  font-size:.8rem;
+  font-size:.74rem;
   color:var(--text);
-  margin-bottom:5px;
-  padding-bottom:4px;
+  margin-bottom:4px;
+  padding-bottom:3px;
   border-bottom:1px solid var(--border);
 }
 
 /* Compact fields inside settings cards */
-.sett-card .field{margin-bottom:4px;font-size:.8rem}
+.sett-card .field{margin-bottom:3px;font-size:.75rem}
 .sett-card .field input,
-.sett-card .field select{font-size:.8rem;padding:4px 7px}
+.sett-card .field select{font-size:.75rem;padding:3px 5px}
 
 /* 2×2 grid for Owner/Repo/Branch/Path */
-.sett-repo-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px}
+.sett-repo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px}
 .sett-repo-grid .field{margin-bottom:0}
 
 /* Auto-sync toggle and path note inside Token card */
-.sett-card .github-autosync-toggle{margin:4px 0 0;font-size:.8rem}
-.sett-card .github-sync-note{margin-top:4px;font-size:.71rem}
+.sett-card .github-autosync-toggle{margin:3px 0 0;font-size:.75rem}
+.sett-card .github-sync-note{margin-top:3px;font-size:.67rem}
 
-/* Card action row (Sync Now, etc.) — 2×2 grid so buttons never wrap more than 2 rows */
+/* Card action row — 2×2 grid */
 .sett-card-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:4px;
-  margin-top:5px;
-  padding-top:5px;
+  gap:3px;
+  margin-top:4px;
+  padding-top:4px;
   border-top:1px solid var(--border);
 }
-.sett-card-actions button{font-size:.74rem;padding:4px 6px;border-radius:9px;white-space:nowrap;text-align:center}
+.sett-card-actions button{font-size:.69rem;padding:3px 5px;border-radius:8px;white-space:nowrap;text-align:center}
 
 /* Edit Mode toggle label */
 .sett-toggle-label{
   display:flex;
   align-items:flex-start;
-  gap:7px;
+  gap:5px;
   font-weight:800;
-  font-size:.8rem;
+  font-size:.75rem;
   cursor:pointer;
-  line-height:1.4;
+  line-height:1.35;
 }
 .sett-toggle-label input{margin-top:2px;flex-shrink:0}
 
@@ -561,15 +561,15 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:6px;
-  padding:5px 0;
+  gap:5px;
+  padding:4px 0;
   border-bottom:1px solid var(--border);
 }
 .sett-data-tool:last-child{border-bottom:0;padding-bottom:0}
 .sett-data-tool:first-child{padding-top:0}
-.sett-data-tool-info b{display:block;font-size:.76rem;font-weight:900}
-.sett-data-tool-info small{color:var(--muted);font-size:.68rem;font-weight:700;display:block;margin-top:1px}
-.sett-data-tool button{flex-shrink:0;font-size:.72rem;padding:4px 7px;border-radius:9px;white-space:nowrap}
+.sett-data-tool-info b{display:block;font-size:.71rem;font-weight:900}
+.sett-data-tool-info small{color:var(--muted);font-size:.64rem;font-weight:700;display:block;margin-top:0}
+.sett-data-tool button{flex-shrink:0;font-size:.67rem;padding:3px 6px;border-radius:8px;white-space:nowrap}
 
 /* Subtitle injected into modal-head h2 */
 .sett-head-sub{
@@ -583,18 +583,18 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 }
 
 /* Compact the github status cards when nested inside a sett-card */
-.sett-card .github-status-card{margin:0 0 6px}
-.sett-card .github-status-card h3{font-size:.78rem;margin-bottom:5px}
-.sett-card .github-sync-status-card{margin:0 0 6px}
-.sett-card .github-sync-lines{font-size:.76rem}
-.sett-card .github-sync-status-title{font-size:.78rem}
+.sett-card .github-status-card{margin:0 0 4px}
+.sett-card .github-status-card h3{font-size:.71rem;margin-bottom:3px}
+.sett-card .github-sync-status-card{margin:0 0 4px}
+.sett-card .github-sync-lines{font-size:.70rem}
+.sett-card .github-sync-status-title{font-size:.71rem}
 
 /* Font preview — single-line compact ayah, no internal scroll */
-.sett-card .font-preview-box{margin-top:5px;padding:5px 7px}
+.sett-card .font-preview-box{margin-top:4px;padding:4px 6px}
 .sett-card .font-preview-ayah{
-  font-size:.75rem;
-  line-height:1.5;
-  padding:4px 6px;
+  font-size:.70rem;
+  line-height:1.45;
+  padding:3px 5px;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -603,24 +603,24 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 /* Bottom action bar uses the modal-footer */
 .settingsModal-window .modal-footer{
   display:flex!important;
-  gap:6px;
+  gap:5px;
   flex-wrap:wrap;
-  padding:8px 10px;
+  padding:6px 8px;
   background:var(--surface);
   border-top:1px solid var(--border);
   align-items:center;
   flex-shrink:0;
 }
-.settingsModal-window .modal-footer button{flex:1 1 auto;font-size:.8rem;min-height:32px;border-radius:10px}
-.settingsModal-window .modal-footer .primary{flex:1 1 100px}
+.settingsModal-window .modal-footer button{flex:1 1 auto;font-size:.75rem;min-height:28px;border-radius:9px}
+.settingsModal-window .modal-footer .primary{flex:1 1 90px}
 
 /* Responsive: single column on narrow viewports */
 @media(max-width:820px){
-  .settingsModal-window{width:min(640px,96vw)}
+  .settingsModal-window{width:min(620px,96vw)}
   .sett-cols{grid-template-columns:1fr;overflow-y:auto}
 }
 @media(max-width:500px){
-  .settingsModal-window .modal-footer button{flex:1 1 90px}
+  .settingsModal-window .modal-footer button{flex:1 1 80px}
 }
 
 
@@ -634,17 +634,17 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 .sett-gh-chips{
   display:flex;
   flex-wrap:wrap;
-  gap:4px;
-  margin-bottom:5px;
+  gap:3px;
+  margin-bottom:4px;
 }
 
-/* Individual chip — pill shape matching existing badge style */
+/* Individual chip */
 .sett-gh-chip{
   display:inline-flex;
   align-items:center;
   border-radius:999px;
-  padding:3px 8px;
-  font-size:.71rem;
+  padding:2px 7px;
+  font-size:.67rem;
   font-weight:800;
   border:1px solid var(--border);
   background:var(--soft);
@@ -656,14 +656,14 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 .sett-gh-chip.err{background:#fee2e2;border-color:#fecaca;color:#991b1b}
 .sett-gh-chip.info{background:color-mix(in srgb,var(--primary) 9%,var(--surface));border-color:color-mix(in srgb,var(--primary) 30%,var(--border));color:var(--primary2)}
 
-/* State chip: inline in the card title, right-aligned via margin-start:auto */
+/* State chip: inline in the card title */
 .sett-gh-state-chip{
   display:inline-flex;
   align-items:center;
-  margin-right:auto;   /* pushes it to the left end in RTL */
+  margin-right:auto;
   border-radius:999px;
-  padding:3px 9px;
-  font-size:.72rem;
+  padding:2px 7px;
+  font-size:.67rem;
   font-weight:900;
   border:1px solid var(--border);
   background:var(--soft);
@@ -678,54 +678,53 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 
 /* Live test-connection feedback line */
 .sett-gh-live{
-  font-size:.82rem;
+  font-size:.75rem;
   font-weight:800;
   min-height:0;
-  margin-bottom:4px;
+  margin-bottom:3px;
   transition:min-height .2s;
 }
 .sett-gh-live:empty{margin-bottom:0}
-/* Reuse status-line dot style inside the compact live area */
 .sett-gh-live.status-line{
   display:flex;
   align-items:center;
-  gap:7px;
-  padding:5px 0;
-  margin-bottom:6px;
+  gap:5px;
+  padding:3px 0;
+  margin-bottom:4px;
 }
 
-/* Sync meta: time + path + SHA in a small horizontal line */
+/* Sync meta: time + path + SHA */
 .sett-gh-meta{
   display:flex;
   flex-wrap:wrap;
-  gap:5px;
+  gap:4px;
   align-items:center;
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 .sett-gh-meta:empty{margin-bottom:0}
 .sett-gh-meta-item{
-  font-size:.76rem;
+  font-size:.70rem;
   font-weight:700;
   color:var(--muted);
   display:inline-flex;
   align-items:center;
-  gap:4px;
+  gap:3px;
 }
 .sett-gh-meta-item code{
   direction:ltr;
   unicode-bidi:plaintext;
   background:var(--soft);
   border:1px solid var(--border);
-  border-radius:6px;
-  padding:1px 5px;
-  font-size:.74rem;
+  border-radius:5px;
+  padding:1px 4px;
+  font-size:.68rem;
 }
 
-/* Repo grid: thin top border separates token (credential) from repo fields (config) */
+/* Repo grid: thin top border separates token from repo fields */
 .sett-repo-grid-sep{
   border-top:1px solid var(--border);
-  padding-top:5px;
-  margin-top:2px;
+  padding-top:4px;
+  margin-top:1px;
 }
 
 /* Placeholder dimmed to keep fields readable */
@@ -733,14 +732,14 @@ body.modal-open-v78{position:fixed!important;left:0;right:0;width:100%;overflow:
 
 /* Auto-sync checkbox row inside the compact card */
 .sett-gh-autosync{
-  margin-top:5px;
-  padding-top:5px;
+  margin-top:4px;
+  padding-top:4px;
   border-top:1px solid var(--border);
-  font-size:.8rem;
+  font-size:.75rem;
 }
 
 /* Error box already styled globally; just reset its outer margin */
-#sett-gh-error .github-error-box{margin-top:8px;margin-bottom:0}
+#sett-gh-error .github-error-box{margin-top:5px;margin-bottom:0}
 
 @media(max-width:500px){
   .sett-gh-chips{gap:5px}
