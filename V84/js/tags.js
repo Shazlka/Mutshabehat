@@ -82,10 +82,26 @@ export function getTag(id) {
 const STORAGE_NS = 'mutshabehat_tags_';
 
 /**
- * Save an array of tag IDs for a group.
- * Unknown IDs are silently stored (allows custom/future tags).
+ * Save tag IDs for a group.
+ *
+ * For personal-DB groups: writes directly to group.tags on the personalData
+ * object and calls saveDb('personal'), so tags travel with the DB on every
+ * GitHub sync and import. No separate localStorage key is needed.
+ *
+ * For automated/unknown groups: falls back to a localStorage key (automated
+ * data is read-only and is not synced to GitHub).
  */
 export function saveGroupTags(groupId, tagIds) {
+  const pd = window.personalData;
+  if (Array.isArray(pd)) {
+    const g = pd.find(x => String(x.id) === String(groupId));
+    if (g) {
+      g.tags = [...tagIds];
+      try { window.saveDb('personal'); } catch { /* saveDb not ready yet */ }
+      return; // stored in DB — no separate localStorage key needed
+    }
+  }
+  // Automated DB or group not found: localStorage fallback
   try {
     localStorage.setItem(STORAGE_NS + groupId, JSON.stringify(tagIds));
   } catch { /* storage unavailable */ }
@@ -93,9 +109,24 @@ export function saveGroupTags(groupId, tagIds) {
 
 /**
  * Load persisted tag IDs for a group.
- * Returns null if nothing has been saved yet.
+ *
+ * For personal-DB groups: reads group.tags directly from personalData
+ * (the source of truth after a GitHub sync / import).
+ * Returns null (not []) when tags have never been set, so resolveGroupTags
+ * can still fall through to seed from diffType.
+ *
+ * For automated/unknown groups: falls back to localStorage.
  */
 export function loadGroupTags(groupId) {
+  const pd = window.personalData;
+  if (Array.isArray(pd)) {
+    const g = pd.find(x => String(x.id) === String(groupId));
+    if (g) {
+      // Array.isArray check: undefined → null (triggers seed); [] → [] (explicitly empty)
+      return Array.isArray(g.tags) ? [...g.tags] : null;
+    }
+  }
+  // Automated DB or personalData not loaded yet: localStorage fallback
   try {
     const raw = localStorage.getItem(STORAGE_NS + groupId);
     return raw ? JSON.parse(raw) : null;
@@ -104,26 +135,73 @@ export function loadGroupTags(groupId) {
   }
 }
 
-/** Remove all persisted tags for a group. */
+/**
+ * Remove all tags for a group.
+ * Clears group.tags from personalData (and saves) for personal groups;
+ * removes the localStorage key for automated groups.
+ */
 export function clearGroupTags(groupId) {
+  const pd = window.personalData;
+  if (Array.isArray(pd)) {
+    const g = pd.find(x => String(x.id) === String(groupId));
+    if (g && 'tags' in g) {
+      delete g.tags;
+      try { window.saveDb('personal'); } catch {}
+    }
+  }
   try { localStorage.removeItem(STORAGE_NS + groupId); } catch {}
 }
 
 /**
  * Merge seed tags from the group data model (g.tags) with any persisted edits.
- * localStorage takes precedence if the user has made changes; otherwise seed is used.
+ * loadGroupTags() takes precedence (personalData.group.tags or localStorage);
+ * otherwise seeds from g.diffType which overlaps the change-type taxonomy.
  */
 export function resolveGroupTags(group) {
   const persisted = loadGroupTags(group.id);
   if (persisted !== null) return persisted;
-  // Seed from existing data: use g.tags if they are known tag IDs,
-  // otherwise fall back to g.diffType (which overlaps the change-type taxonomy)
+  // Seed from diffType if no explicit tags have been saved yet
   const seed = [];
-  if (Array.isArray(group.tags)) {
-    group.tags.forEach(t => { if (TAG_REGISTRY.has(t)) seed.push(t); });
-  }
-  if (group.diffType && TAG_REGISTRY.has(group.diffType) && !seed.includes(group.diffType)) {
+  if (group.diffType && TAG_REGISTRY.has(group.diffType)) {
     seed.push(group.diffType);
   }
   return seed;
 }
+
+// ── One-time migration ────────────────────────────────────────────────────────
+
+/**
+ * Migrate any tags stored in legacy localStorage keys (mutshabehat_tags_<id>)
+ * into personalData[].tags so they are included in the next GitHub sync.
+ * Runs once on DOMContentLoaded — after init() has loaded personalData.
+ * Safe to call multiple times (idempotent).
+ */
+function _migrateTagsToPersonalDb() {
+  const pd = window.personalData;
+  if (!Array.isArray(pd) || pd.length === 0) return;
+  let dirty = false;
+  const keys = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith(STORAGE_NS)) keys.push(k);
+  }
+  keys.forEach(key => {
+    const groupId = key.slice(STORAGE_NS.length);
+    const g = pd.find(x => String(x.id) === String(groupId));
+    if (!g) return; // automated group — leave in localStorage
+    try {
+      const tags = JSON.parse(localStorage.getItem(key) || 'null');
+      if (Array.isArray(tags) && tags.length > 0 && !Array.isArray(g.tags)) {
+        g.tags = tags;
+        dirty = true;
+      }
+      localStorage.removeItem(key); // clean up legacy key regardless
+    } catch { /* malformed entry — ignore */ }
+  });
+  if (dirty) {
+    try { window.saveDb('personal'); } catch {}
+  }
+}
+
+// Run migration after init() (navigation.js) has populated personalData
+document.addEventListener('DOMContentLoaded', _migrateTagsToPersonalDb);
