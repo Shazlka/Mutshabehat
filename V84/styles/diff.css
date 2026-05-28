@@ -612,3 +612,15 @@
   border-color: color-mix(in srgb, var(--primary) 38%, var(--border)) !important;
   background: color-mix(in srgb, var(--primary) 4%, var(--surface)) !important;
 }
+
+/* Context text — plain text outside the compared master piece */
+.dh-context {
+  color: var(--muted);
+  opacity: .6;
+  font-style: normal;
+}
+
+[data-theme="bevel-night"] .dh-context,
+[data-theme="v83-dark"]    .dh-context {
+  opacity: .45;
+}

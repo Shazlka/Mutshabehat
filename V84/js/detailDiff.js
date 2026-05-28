@@ -21,7 +21,7 @@
  * parts[].text into a single string so arabicDiff.js can run LCS on it.
  */
 
-import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_2';
+import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_3';
 import { createAnnotationPanel  } from './annotationPanel.js?v=v84_diff_20260527_1';
 
 // Tracks the ID of the last group the user opened (set in capture phase)
@@ -102,23 +102,37 @@ function adaptGroupWithMaster(g, ms) {
 
   if (!masterText) return null;
 
+  // Helper: split parts into before/diff/after relative to the selected index range
+  function _splitContext(parts) {
+    if (allSelected || ms.partSet.size === 0) return { before: '', diff: null, after: '' };
+    const minIdx = Math.min(...ms.partSet);
+    const maxIdx = Math.max(...ms.partSet);
+    const join = arr => arr.map(p => (p && p.text) || '').join(' ').replace(/\s+/g, ' ').trim();
+    return {
+      before: join(parts.slice(0, minIdx)),
+      diff:   join(parts.slice(minIdx, maxIdx + 1)),
+      after:  join(parts.slice(maxIdx + 1)),
+    };
+  }
+
+  const masterCtx = _splitContext(masterParts);
   const adaptedMaster = { ..._adaptVerse(masterVerse), text: masterText };
+  if (masterCtx.diff !== null) {
+    if (masterCtx.before) adaptedMaster.contextBefore = masterCtx.before;
+    if (masterCtx.after)  adaptedMaster.contextAfter  = masterCtx.after;
+  }
 
   const slaves = allVerses
     .filter((_, i) => i !== masterIdx)
     .map(v => {
       const adapted = _adaptVerse(v);
-      // When a partial master piece is selected, filter the slave to the same part
-      // indices so the diff only highlights the relevant fragment, not the full ayah.
       if (!allSelected) {
-        const slaveParts = v.parts || [];
-        const filtered = slaveParts
-          .filter((_, i) => ms.partSet.has(i))
-          .map(p => (p && p.text) || '')
-          .join(' ')
-          .replace(/\s+/g, ' ')
-          .trim();
-        if (filtered) adapted.text = filtered;
+        const ctx = _splitContext(v.parts || []);
+        if (ctx.diff) {
+          adapted.text = ctx.diff; // narrows the diff computation to the matching fragment
+          if (ctx.before) adapted.contextBefore = ctx.before;
+          if (ctx.after)  adapted.contextAfter  = ctx.after;
+        }
       }
       return adapted;
     })

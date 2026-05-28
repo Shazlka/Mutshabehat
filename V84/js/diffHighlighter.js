@@ -189,15 +189,32 @@ export function createDiffHighlighter(group, options = {}) {
     textEl.lang = 'ar';
 
     if (!tokens) {
-      textEl.textContent = verse.text;
+      // No diff: show full text (reassemble context if present)
+      const full = [verse.contextBefore, verse.text, verse.contextAfter].filter(Boolean).join(' ');
+      textEl.textContent = full;
     } else if (side === 'left') {
+      _renderContext(textEl, verse.contextBefore);
       _renderLeftTokens(textEl, tokens);
+      _renderContext(textEl, verse.contextAfter);
     } else {
+      _renderContext(textEl, verse.contextBefore);
       _renderRightTokens(textEl, tokens);
+      _renderContext(textEl, verse.contextAfter);
     }
 
     card.appendChild(textEl);
     return card;
+  }
+
+  // ── Context renderer (plain, dimmed — outside the compared piece) ────────────
+
+  function _renderContext(el, text) {
+    if (!text) return;
+    const sp = document.createElement('span');
+    sp.className = 'dh-context';
+    sp.textContent = text;
+    el.appendChild(sp);
+    el.appendChild(document.createTextNode(' '));
   }
 
   // ── Token renderers ──────────────────────────────────────────────────────────
