@@ -21,13 +21,14 @@
  * parts[].text into a single string so arabicDiff.js can run LCS on it.
  */
 
-import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_4';
+import { createDiffHighlighter } from './diffHighlighter.js?v=v84_diff_20260528_5';
 import { createAnnotationPanel  } from './annotationPanel.js?v=v84_diff_20260527_1';
 
 // Tracks the ID of the last group the user opened (set in capture phase)
 let _lastGroupId = null;
 
-// Per-group master state: Map<String(groupId), { masterIndex, partSet }>
+// Per-group master state: Map<String(groupId), { masterIndex, partSet, slavePartSets }>
+// slavePartSets: Map<verseIndex, Set<partIndex>> — undefined entry = all parts selected
 const _masterMap = new Map();
 
 function _getMasterState(g) {
@@ -44,7 +45,16 @@ function _getMasterState(g) {
     } else {
       partSet = new Set(parts.map((_, i) => i));
     }
-    _masterMap.set(key, { masterIndex: masterIdx, partSet });
+    // Restore per-slave part selections
+    const slavePartSets = new Map();
+    if (g.slaveParts && typeof g.slaveParts === 'object' && !Array.isArray(g.slaveParts)) {
+      for (const [k, arr] of Object.entries(g.slaveParts)) {
+        const idx = Number(k);
+        if (!isNaN(idx) && Array.isArray(arr) && arr.length > 0)
+          slavePartSets.set(idx, new Set(arr));
+      }
+    }
+    _masterMap.set(key, { masterIndex: masterIdx, partSet, slavePartSets });
   }
   return _masterMap.get(key);
 }
@@ -53,6 +63,7 @@ function _resetPartSet(ms, g) {
   const masterVerse = (g.verses || [])[ms.masterIndex];
   const parts = masterVerse ? (masterVerse.parts || []) : [];
   ms.partSet = new Set(parts.map((_, i) => i));
+  ms.slavePartSets = new Map(); // clear slave selections when master changes
 }
 
 // Write master state back to the group object and save to personal DB + GitHub
@@ -65,6 +76,19 @@ function _persistMasterState(g, ms) {
   g.masterParts = (ms.partSet.size >= totalParts)
     ? null
     : [...ms.partSet].sort((a, b) => a - b);
+  // Persist slave part sets
+  const slaveParts = {};
+  let hasSlave = false;
+  for (const [verseIdx, pSet] of ms.slavePartSets) {
+    const sv = (g.verses || [])[verseIdx];
+    if (!sv) continue;
+    const total = (sv.parts || []).length;
+    if (pSet && pSet.size > 0 && pSet.size < total) {
+      slaveParts[String(verseIdx)] = [...pSet].sort((a, b) => a - b);
+      hasSlave = true;
+    }
+  }
+  g.slaveParts = hasSlave ? slaveParts : null;
   if (typeof window.saveDb === 'function') window.saveDb('personal');
 }
 
@@ -102,12 +126,13 @@ function adaptGroupWithMaster(g, ms) {
 
   if (!masterText) return null;
 
+  const join = arr => arr.map(p => (p && p.text) || '').join(' ').replace(/\s+/g, ' ').trim();
+
   // Helper: split parts into before/diff/after relative to the selected index range
   function _splitContext(parts) {
     if (allSelected || ms.partSet.size === 0) return { before: '', diff: null, after: '' };
     const minIdx = Math.min(...ms.partSet);
     const maxIdx = Math.max(...ms.partSet);
-    const join = arr => arr.map(p => (p && p.text) || '').join(' ').replace(/\s+/g, ' ').trim();
     return {
       before: join(parts.slice(0, minIdx)),
       diff:   join(parts.slice(minIdx, maxIdx + 1)),
@@ -123,19 +148,37 @@ function adaptGroupWithMaster(g, ms) {
   }
 
   const slaves = allVerses
-    .filter((_, i) => i !== masterIdx)
-    .map(v => {
+    .map((v, origIdx) => ({ v, origIdx }))
+    .filter(({ origIdx }) => origIdx !== masterIdx)
+    .map(({ v, origIdx }) => {
       const adapted = _adaptVerse(v);
-      if (!allSelected) {
-        const ctx = _splitContext(v.parts || []);
+      const rawParts = v.parts || [];
+      const slavePartSet = ms.slavePartSets.get(origIdx);
+
+      if (slavePartSet && slavePartSet.size > 0) {
+        // Explicit slave part selection — use those parts as the diff text
+        const minIdx = Math.min(...slavePartSet);
+        const maxIdx = Math.max(...slavePartSet);
+        const diff = join(rawParts.slice(minIdx, maxIdx + 1));
+        if (diff) {
+          adapted.text = diff;
+          const before = join(rawParts.slice(0, minIdx));
+          const after  = join(rawParts.slice(maxIdx + 1));
+          if (before) adapted.contextBefore = before;
+          if (after)  adapted.contextAfter  = after;
+        }
+      } else if (!allSelected) {
+        // Fall back to master-index-based splitting
+        const ctx = _splitContext(rawParts);
         if (ctx.diff) {
-          adapted.text = ctx.diff; // narrows the diff computation to the matching fragment
+          adapted.text = ctx.diff;
           if (ctx.before) adapted.contextBefore = ctx.before;
           if (ctx.after)  adapted.contextAfter  = ctx.after;
         } else {
           adapted.trimContext = true; // full text used; trim outer adds during rendering
         }
       }
+
       return adapted;
     })
     .filter(v => v.text);
@@ -254,6 +297,72 @@ function _buildMasterUI(g, onRefresh) {
     row2.appendChild(chipWrap);
     bar.appendChild(row2);
   }
+
+  // Rows 3+: per-slave part selectors (only for slaves with 2+ visible parts)
+  verses.forEach((v, verseIdx) => {
+    if (verseIdx === ms.masterIndex) return;
+    const slaveParts = (v.parts || []).filter(p => p && p.text);
+    if (slaveParts.length <= 1) return;
+
+    const rowS = document.createElement('div');
+    rowS.className = 'dh-master-row2';
+
+    const lblS = document.createElement('span');
+    lblS.className = 'dh-master-label';
+    const ayahNo = v.ayah || v.ayahNo || '';
+    lblS.textContent = `جزء ${v.surah || ''} (${ayahNo}):`;
+    rowS.appendChild(lblS);
+
+    const chipWrapS = document.createElement('div');
+    chipWrapS.className = 'dh-part-chips';
+
+    const slavePartSet = ms.slavePartSets.get(verseIdx);
+
+    (v.parts || []).forEach((part, realIdx) => {
+      if (!part || !part.text) return;
+      const isSelected = !slavePartSet || slavePartSet.has(realIdx);
+
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className =
+        `dh-part-chip dh-part-${part.type || 'normal'}${isSelected ? ' selected' : ''}`;
+
+      const words = part.text.trim().split(/\s+/);
+      chip.textContent = words.slice(0, 5).join(' ') + (words.length > 5 ? '…' : '');
+      chip.title = part.text;
+
+      chip.addEventListener('click', () => {
+        let cur = ms.slavePartSets.get(verseIdx);
+        if (!cur) {
+          cur = new Set((v.parts || []).map((p, i) => (p && p.text ? i : null)).filter(i => i !== null));
+          ms.slavePartSets.set(verseIdx, cur);
+        }
+        if (cur.has(realIdx)) {
+          if (cur.size > 1) cur.delete(realIdx);
+        } else {
+          cur.add(realIdx);
+        }
+        _persistMasterState(g, ms);
+        onRefresh();
+      });
+      chipWrapS.appendChild(chip);
+    });
+
+    const slaveAllSelected = !slavePartSet;
+    const allBtnS = document.createElement('button');
+    allBtnS.type = 'button';
+    allBtnS.className = 'dh-part-all-btn' + (slaveAllSelected ? ' active' : '');
+    allBtnS.textContent = 'الكل';
+    allBtnS.addEventListener('click', () => {
+      ms.slavePartSets.delete(verseIdx);
+      _persistMasterState(g, ms);
+      onRefresh();
+    });
+    chipWrapS.appendChild(allBtnS);
+
+    rowS.appendChild(chipWrapS);
+    bar.appendChild(rowS);
+  });
 
   return bar;
 }
