@@ -106,6 +106,7 @@
           <button onclick="openHome()">الرئيسية</button>
           <button class="active" onclick="openDatabase(activeDb||'personal')">المتشابهات</button>
           <button onclick="openDashboard()">الإحصائيات</button>
+          <button onclick="openNetworkGraph()">شبكة السور</button>
           <button onclick="openAppSettings()">الإعدادات</button>
         </div>
 
@@ -133,7 +134,7 @@
   <button id="mnavHome" onclick="openHome();setMobileNavActive('mnavHome')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="ml">الرئيسية</span></button>
   <button id="mnavDb" onclick="openDatabase('personal');setMobileNavActive('mnavDb')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span><span class="ml">المتشابهات</span></button>
   <button id="mnavSearch" onclick="openMainSearchUI();setMobileNavActive('mnavSearch')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span class="ml">بحث</span></button>
-  <button id="mnavMore" onclick="openAppSettings();setMobileNavActive('mnavMore')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></span><span class="ml">المزيد</span></button>
+  <button id="mnavGraph" onclick="openNetworkGraph();setMobileNavActive('mnavGraph')"><span class="mi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></span><span class="ml">شبكة</span></button>
 </nav>
 
 <!-- V83 Phase 1 — Modify Window mounts dynamically here through js/modals.js + js/add-edit.js. -->
