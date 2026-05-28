@@ -8222,11 +8222,7 @@ window.PERSONAL_DATA = [
     "note": ": إذا كان الخطاب للكفار: \"يغفر لكم من ذنوبكم\" — وللمؤمنين: \"يغفر لكم ذنوبكم\"",
     "unote": "فائدة إضافية: مفتاح الحفظ: الكفار جاء معهم \"من\" للتبعيض، أما المؤمنون فجاءت بدون \"من\".",
     "headerColor": "#982abc",
-    "completed": true,
-    "masterIndex": 3,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 116,
@@ -8522,11 +8518,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: المفرد: يس، ص، الزخرف، الطور، الرحمن، الواقعة — الجمع: المؤمنون، الصافات، المرسلات",
     "unote": "فائدة إضافية: قاعدة الصورة: إذا كان اسم السورة مفردًا جاء اللفظ \"فاكهة\"، وإذا كان اسم السورة جمعًا جاء اللفظ \"فواكه\".",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 118,
@@ -8727,11 +8719,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إن الله كان عليمًا خبيرًا } وحيدة في النساء 35 — والباقي { عليمًا حكيمًا }",
     "unote": "فائدة إضافية: الضابط: خبيرًا في موضع الإصلاح بين الزوجين في النساء 35، أما المواضع الأخرى فخاتمتها حكيمًا.",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 120,
@@ -8803,11 +8791,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إذا حضر أحدهم الموت } في النساء 18 — والباقي { أحدكم } في البقرة 180، المائدة 106",
     "unote": "فائدة إضافية: أحدهم للغائب في سياق التوبة عند حضور الموت، وأحدكم للخطاب في أحكام الوصية والشهادة.",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 121,
@@ -8898,11 +8882,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { إلا قليل منهم } في النساء 66 — والباقي { إلا قليلًا منهم }",
     "unote": "فائدة إضافية: التمييز بالحركة: النساء جاءت بالرفع \"قليلٌ\"، والباقي بالنصب \"قليلًا\".",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 122,
@@ -8992,11 +8972,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: (2) أطيعوا الله ورسوله — الأنفال 3 مواضع، والمجادلة موضع واحد",
     "unote": "فائدة إضافية: التركيب هنا بإضافة الرسول إلى الضمير: ورسوله، وأكثره في الأنفال.",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 123,
@@ -9063,11 +9039,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { واقتلوهم حيث وجدتموهم } في النساء 89 — والباقي { حيث ثقفتموهم } في البقرة 191، النساء 91",
     "unote": "فائدة إضافية: موضع وجدتموهم وحيد في النساء 89، أما ثقفتموهم فجاءت في البقرة 191 والنساء 91.",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 124,
@@ -9143,11 +9115,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { وأما الذين آمنوا وعملوا الصالحات } في آل عمران — والباقي { فأما }",
     "unote": "فائدة إضافية: آل عمران تميزت بحذف الفاء هنا: وأما، بينما المواضع الأخرى تبدأ بـ فأما.",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      0
-    ]
+    "completed": true
   },
   {
     "id": 125,
@@ -9317,11 +9285,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { وإليه يرجعون } في آل عمران — والباقي { وإليه ترجعون }",
     "unote": "فائدة إضافية: الفرق في الضمير: آل عمران جاءت للغائب \"يرجعون\"، وأكثر المواضع الأخرى للخطاب \"ترجعون\".",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 126,
@@ -9567,11 +9531,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { في قلوبهم زيغ } في آل عمران — والباقي { في قلوبهم مرض }",
     "unote": "فائدة إضافية: آل عمران موضع الزيغ في سياق المتشابه، أما مرض القلوب فجاء في مواضع متعددة.",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 127,
@@ -9693,11 +9653,7 @@ window.PERSONAL_DATA = [
     ],
     "note": ": { والله ذو فضل عظيم } في آل عمران — والباقي { والله ذو الفضل العظيم }",
     "unote": "فائدة إضافية: آل عمران جاءت بدون أل في فضل: ذو فضل عظيم، والباقي مع التعريف: ذو الفضل العظيم.",
-    "completed": true,
-    "masterIndex": 1,
-    "masterParts": [
-      1
-    ]
+    "completed": true
   },
   {
     "id": 128,
@@ -9808,12 +9764,7 @@ window.PERSONAL_DATA = [
     ],
     "note": "ملاحظة: { ثم مأواهم جهنم } في آل عمران — والباقي { ومأواهم جهنم }",
     "unote": "فائدة إضافية: آل عمران تميزت بـ ثم، وباقي المواضع جاءت بالواو.",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1,
-      2
-    ]
+    "completed": true
   },
   {
     "id": 129,
@@ -16724,13 +16675,7 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "وما بينهما الا",
     "source": "automated",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      0,
-      1,
-      2
-    ]
+    "completed": true
   },
   {
     "id": 207,
@@ -16778,11 +16723,7 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "يشا ان في",
     "source": "automated",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      0
-    ]
+    "completed": true
   },
   {
     "id": 208,
@@ -16866,12 +16807,7 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "يخرج الحي من",
     "source": "automated",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      1,
-      2
-    ]
+    "completed": true
   },
   {
     "id": 209,
@@ -16919,11 +16855,7 @@ window.PERSONAL_DATA = [
     "candidateScore": 82,
     "sharedPhrase": "ومن ايته خلق",
     "source": "automated",
-    "completed": true,
-    "masterIndex": 0,
-    "masterParts": [
-      0
-    ]
+    "completed": true
   },
   {
     "id": 210,
