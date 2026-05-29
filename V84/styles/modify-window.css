@@ -759,6 +759,16 @@ body[data-theme="v83-dark"] .edit-validation-bar.is-visible{
 .wl-word.unique  {background:color-mix(in srgb,var(--red,#dc2626) 18%,var(--surface));border-color:color-mix(in srgb,var(--red,#dc2626) 42%,var(--border))}
 .wl-word.normal  {background:var(--soft);border-color:var(--border);opacity:.65}
 
+/* Detail pane save/reset bar */
+.wl-detail-panel{display:flex;flex-direction:column;gap:10px}
+.wl-detail-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  padding-bottom:10px;
+  border-bottom:1px dashed var(--border);
+}
+
 @media(max-width:600px){
   .wl-word{font-size:.98rem;padding:4px 9px}
   .wl-toolbar-actions{width:100%}

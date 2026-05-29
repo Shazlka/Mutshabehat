@@ -32,7 +32,7 @@ let editActiveTab='ayahs', editNoteBuffer='', editUnoteBuffer='';
 /* Phase 4: tracks which verse cards are expanded in the الآيات tab */
 let editVerseExpanded=[];
 
-function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);editVerseExpanded=(g.verses||[]).map(()=>false);wlInitFromBuffer();modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
+function openEditModal(id){let g=personalData.find(x=>+x.id===+id);if(!g)return;if(isTrue(g.locked))return alert('المجموعة مقفلة');editGroupId=id;editActiveTab='ayahs';editNoteBuffer=g.note||'';editUnoteBuffer=g.unote||'';editVersesBuffer=clone(g.verses||[]);editVerseExpanded=(g.verses||[]).map(()=>false);wlDetailVerses=null;wlInitFromBuffer();modal('editModal','تعديل المتشابه',editBody(g),'');renderEditTab()}
 
 function editStatusText(g){if(g.status)return escapeHtml(g.status);if(isTrue(g.verified))return 'Verified';if(isTrue(g.reviewed))return 'Reviewed';return 'Draft'}
 
@@ -40,7 +40,7 @@ function editSimilarityText(g){let s=g.candidateScore||g.similarity||g.similarit
 
 function editTagsHtml(g){let tags=(typeof getTags==='function'?getTags(g):(Array.isArray(g.surahs)?g.surahs:[])).filter(Boolean);return tags.length?tags.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join(''):'<span class="tag">بدون وسوم</span>'}
 
-function editTabsHtml(){let tabs=[['ayahs','الآيات'],['differences','الفروقات'],['link','ربط الكلمات'],['notes','الملاحظات'],['tags','التصنيفات'],['preview','المعاينة']];return `<nav class="v83-edit-tabs" aria-label="تبويبات التحرير">${tabs.map(([key,label])=>`<button type="button" class="v83-edit-tab ${editActiveTab===key?'active':''}" aria-selected="${editActiveTab===key?'true':'false'}" onclick="setEditTab('${key}')">${label}</button>`).join('')}</nav>`}
+function editTabsHtml(){let tabs=[['ayahs','الآيات'],['differences','الفروقات'],['notes','الملاحظات'],['tags','التصنيفات'],['preview','المعاينة']];return `<nav class="v83-edit-tabs" aria-label="تبويبات التحرير">${tabs.map(([key,label])=>`<button type="button" class="v83-edit-tab ${editActiveTab===key?'active':''}" aria-selected="${editActiveTab===key?'true':'false'}" onclick="setEditTab('${key}')">${label}</button>`).join('')}</nav>`}
 
 function syncEditTabBuffers(){let note=document.getElementById('editNote'),unote=document.getElementById('editUnote');if(note)editNoteBuffer=note.innerHTML;if(unote)editUnoteBuffer=unote.innerHTML}
 
@@ -62,7 +62,7 @@ function editPreviewTabHtml(){const title=document.getElementById('editTitle')?.
 
 function refreshEditPreviewPanel(){const p=document.getElementById('editPreviewPanelContent');if(!p)return;const g={id:editGroupId,verses:editVersesBuffer,note:editNoteBuffer,unote:editUnoteBuffer};const body=renderGroupBody(g);p.innerHTML=body||'<div class="hint">لا توجد محتويات بعد.</div>'}
 
-function renderEditTab(){let root=document.getElementById('editTabContent'),tabs=document.getElementById('editTabsMount');if(tabs)tabs.innerHTML=editTabsHtml();if(!root)return;if(editActiveTab==='ayahs'){root.innerHTML=editAyahsTabHtml();renderEditVerses();runQuranSearch('edit');return}if(editActiveTab==='notes'){root.innerHTML=editNotesTabHtml();let note=document.getElementById('editNote'),unote=document.getElementById('editUnote');if(note)note.innerHTML=editNoteBuffer;if(unote)unote.innerHTML=editUnoteBuffer;refreshEditPreviewPanel();return}if(editActiveTab==='differences'){root.innerHTML=editDifferencesTabHtml();refreshEditPreviewPanel();return}if(editActiveTab==='tags'){root.innerHTML=editTagsTabHtml();refreshEditPreviewPanel();return}if(editActiveTab==='link'){root.innerHTML=wordLinkerTabHtml();wlRender();return}root.innerHTML=editPreviewTabHtml();refreshEditPreviewPanel()}
+function renderEditTab(){let root=document.getElementById('editTabContent'),tabs=document.getElementById('editTabsMount');if(tabs)tabs.innerHTML=editTabsHtml();if(!root)return;if(editActiveTab==='ayahs'){root.innerHTML=editAyahsTabHtml();renderEditVerses();runQuranSearch('edit');return}if(editActiveTab==='notes'){root.innerHTML=editNotesTabHtml();let note=document.getElementById('editNote'),unote=document.getElementById('editUnote');if(note)note.innerHTML=editNoteBuffer;if(unote)unote.innerHTML=editUnoteBuffer;refreshEditPreviewPanel();return}if(editActiveTab==='differences'){root.innerHTML=editDifferencesTabHtml();refreshEditPreviewPanel();return}if(editActiveTab==='tags'){root.innerHTML=editTagsTabHtml();refreshEditPreviewPanel();return}root.innerHTML=editPreviewTabHtml();refreshEditPreviewPanel()}
 
 function editBody(g){return `<section class="v83-edit-shell" dir="rtl"><div class="v83-edit-toolbar"><div class="v83-edit-toolbar-title"><b>تعديل المتشابه</b><small>مساحة تحرير مدمجة مع نفس منطق الحفظ الحالي</small></div><div class="v83-edit-toolbar-actions"><button class="primary" onclick="saveEditGroup()">حفظ التعديل</button><button class="danger" onclick="deleteEditGroup()">حذف المجموعة</button><button onclick="closeModal('editModal')">إغلاق</button></div></div><div id="editValidationBar" class="edit-validation-bar"></div><div class="v83-edit-layout"><aside class="v83-edit-props" aria-label="خصائص المجموعة"><section class="v83-edit-card"><h3>خصائص المجموعة</h3><label class="field">عنوان المتشابه<input id="editTitle" value="${escapeHtml(g.title||'')}" oninput="clearEditValidation()"></label><div class="v83-edit-metrics"><span><b>#${escapeHtml(g.id)}</b><small>رقم المجموعة</small></span><span><b>${(g.verses||[]).length}</b><small>عدد الآيات</small></span><span><b>${editSimilarityText(g)}</b><small>درجة التشابه</small></span><span><b>${editStatusText(g)}</b><small>الحالة</small></span></div></section><section class="v83-edit-card"><h3>الوسوم</h3><div class="v83-edit-chip-row">${editTagsHtml(g)}</div></section><section class="v83-edit-card"><h3>إجراءات سريعة</h3><div class="v83-edit-quick-actions"><button class="primary" onclick="addBlankEditVerse()">+ إضافة آية</button><button onclick="sortEditVersesByMushaf()">ترتيب حسب المصحف</button></div></section></aside><main class="v83-edit-main"><div id="editTabsMount">${editTabsHtml()}</div><div id="editTabContent" class="v83-edit-tab-panel"></div></main><aside class="v83-edit-preview-panel" id="editPreviewPanel"><div class="v83-edit-section-head"><h3>معاينة مباشرة</h3><small>تتحدث مع كل تعديل</small></div><div class="pv-card-body" id="editPreviewPanelContent"><div class="hint">سيظهر المحتوى هنا.</div></div></aside></div></section>`}
 
@@ -131,8 +131,9 @@ function deleteEditGroup(){if(confirm('حذف المجموعة؟')){personalData
    3. Apply → rebuilds all parts arrays from the painted types
    No limit on number of types used or number of verses.
    ========================================================= */
-let wlWordTypes=[],   // wlWordTypes[vi][wi] = type string
-    wlActiveType='diff';
+let wlWordTypes=[],      // wlWordTypes[vi][wi] = type string
+    wlActiveType='diff',
+    wlDetailVerses=null; // non-null when linker is in detail pane (not edit modal)
 
 const WL_TYPES=[
   {k:'shared',   l:'مشترك'},
@@ -146,7 +147,7 @@ const WL_TYPES=[
 
 function wlTokenize(t){return(t||'').trim().split(/\s+/).filter(Boolean)}
 
-function wlGetWords(vi){const v=editVersesBuffer[vi];return v?wlTokenize((v.parts||[]).map(p=>p.text).join(' ')):[]}
+function wlGetWords(vi){const vb=wlDetailVerses||editVersesBuffer;const v=vb[vi];return v?wlTokenize((v.parts||[]).map(p=>p.text).join(' ')):[]}
 
 function wlInitFromBuffer(){
   wlWordTypes=editVersesBuffer.map(v=>{
@@ -192,9 +193,10 @@ function wlApplyLinks(){
 function wlRender(){
   const root=document.getElementById('wlContent');
   if(!root)return;
-  if(!editVersesBuffer.length){root.innerHTML='<div class="hint">لا توجد آيات — أضف آيات من تبويب الآيات أولاً.</div>';return}
+  const vb=wlDetailVerses||editVersesBuffer;
+  if(!vb.length){root.innerHTML='<div class="hint">لا توجد آيات — أضف آيات من تبويب الآيات أولاً.</div>';return}
   let html=`<div class="wl-type-bar">${WL_TYPES.map(t=>`<button class="wl-type-btn ${t.k}${wlActiveType===t.k?' wl-type-active':''}" onclick="wlSetType('${t.k}')">${t.l}</button>`).join('')}</div>`;
-  editVersesBuffer.forEach((v,vi)=>{
+  vb.forEach((v,vi)=>{
     const words=wlGetWords(vi);
     const vtypes=wlWordTypes[vi]||{};
     html+=`<div class="wl-verse"><div class="wl-verse-label"><span class="wl-badge">${vi+1}</span><span class="surah-name">${escapeHtml(v.surah)}</span><span class="ayah-num">${escapeHtml(String(v.ayah||1))}</span>${v.label?`<span class="verse-label">${escapeHtml(v.label)}</span>`:''}</div><div class="wl-words" dir="rtl">`;
@@ -210,5 +212,35 @@ function wlRender(){
 function wordLinkerTabHtml(){
   if(!editVersesBuffer.length)return`<section class="v83-edit-section"><div class="v83-edit-placeholder"><h3>ربط الكلمات</h3><p>أضف آية واحدة على الأقل من تبويب الآيات أولاً.</p></div></section>`;
   return`<section class="v83-edit-section wl-section"><div class="v83-edit-section-head"><h3>ربط الكلمات — تعيين الفروقات</h3><div class="wl-toolbar-actions"><button class="primary" onclick="wlApplyLinks()">✓ تطبيق</button><button onclick="wlClearLinks()">إعادة تعيين</button></div></div><p class="wl-hint">اختر نوعاً من الشريط ← اضغط الكلمات في أي آية لتلوينها. تطبيق يستبدل التصنيفات الحالية.</p><div id="wlContent" class="wl-content"></div></section>`;
+}
+
+function wlInitForDetail(group){
+  wlDetailVerses=(group&&group.verses)?clone(group.verses):[];
+  wlWordTypes=wlDetailVerses.map(v=>{
+    const map={};let wi=0;
+    (v.parts||[]).forEach(p=>{wlTokenize(p.text).forEach(()=>{map[wi]=p.type||'shared';wi++;});});
+    return map;
+  });
+}
+
+function wlResetDetail(groupId){
+  const g=typeof findActive==='function'?findActive(groupId):null;
+  if(g)wlInitForDetail(g);
+  wlRender();
+}
+
+function wlSaveToGroup(groupId){
+  if(!wlDetailVerses)return;
+  wlDetailVerses.forEach((v,vi)=>{
+    const words=wlGetWords(vi);
+    const parts=words.map((word,wi)=>({type:(wlWordTypes[vi]&&wlWordTypes[vi][wi])||'shared',text:word}));
+    v.parts=wlMergeParts(parts);
+  });
+  const idx=personalData.findIndex(g=>+g.id===+groupId);
+  if(idx<0)return;
+  personalData[idx].verses=clone(wlDetailVerses);
+  saveDb('personal');
+  if(typeof selectV83DetailGroup==='function')selectV83DetailGroup(groupId);
+  if(typeof toast==='function')toast('تم حفظ التصنيف','ok');
 }
 /* End V84 Word Linker */

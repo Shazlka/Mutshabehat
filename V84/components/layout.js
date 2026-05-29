@@ -4,6 +4,7 @@
   var V83_TABS=[
     {id:'verses',label:'الآيات'},
     {id:'differences',label:'الاختلافات'},
+    {id:'link',label:'ربط الكلمات'},
     {id:'notes',label:'الملاحظات'},
     {id:'tafsir',label:'التفسير'},
     {id:'related',label:'مرتبط'}
@@ -177,6 +178,20 @@
       var unote=group.unote?group.unote:'';
       return '<div class="v83-tab-panel"><div class="note"><b>ملاحظات شخصية</b><br>'+note+'</div><div class="unote"><b>ملاحظات إضافية</b><br>'+unote+'</div></div>';
     }
+    if(v83DetailState.tab==='link'){
+      if(typeof window.activeDb!=='undefined'&&window.activeDb!=='personal'){
+        return '<div class="v83-tab-panel"><div class="v83-empty">ربط الكلمات متاح للمتشابهات الشخصية فقط.</div></div>';
+      }
+      if(typeof window.wlInitForDetail==='function') window.wlInitForDetail(group);
+      var gid=esc(String(group&&group.id!=null?group.id:0));
+      return '<div class="v83-tab-panel wl-detail-panel">'
+        +'<div class="wl-detail-actions">'
+        +'<button class="primary" onclick="wlSaveToGroup('+gid+')">✓ حفظ</button>'
+        +'<button onclick="wlResetDetail('+gid+')">إعادة تعيين</button>'
+        +'</div>'
+        +'<div id="wlContent" class="wl-content"></div>'
+        +'</div>';
+    }
     if(v83DetailState.tab==='tafsir'){
       return '<div class="v83-tab-panel"><div class="v83-empty">سيتم ربط التفسير في Phase 6/10. حالياً يمكنك فتح التفسير الكامل من أزرار المجموعة.</div></div>';
     }
@@ -195,6 +210,7 @@
     }).join('')+'</div>';
     var html=tabs+renderTabContent(g);
     pane.innerHTML=html;
+    if(v83DetailState.tab==='link'&&typeof window.wlRender==='function') window.wlRender();
     renderMobileSheetContent(g,html);
   }
 
