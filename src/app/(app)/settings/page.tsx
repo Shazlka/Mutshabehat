@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import TagToolbox from '@/components/TagToolbox'
+import ClearCacheButton from '@/components/ClearCacheButton'
 
 export default async function SettingsPage() {
   const supabase = await createServerSupabaseClient()
@@ -43,6 +44,13 @@ export default async function SettingsPage() {
             تصدير / استيراد الوسوم
           </div>
           <TagToolbox />
+        </div>
+
+        <div>
+          <div className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-3">
+            التخزين المؤقت
+          </div>
+          <ClearCacheButton />
         </div>
 
         <div>
