@@ -1,4 +1,5 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSurahNumberByName } from '@/lib/quran'
 import GroupRow from '@/components/GroupRow'
 import FilterBar from '@/components/FilterBar'
 import SortBar from '@/components/SortBar'
@@ -32,9 +33,16 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
 
   const supabase = await createServerSupabaseClient()
 
-  // When filtering by surah, we need to fetch all groups that contain that surah.
-  // Postgres can do this via the verses join — easiest path: fetch all + filter client-side
-  // (we already paginate to 12 anyway).
+  // Resolve surah filter to a set of group IDs server-side (fast indexed lookup).
+  let surahGroupIds: string[] | null = null
+  if (surah) {
+    const { data: verseRows } = await supabase
+      .from('verses')
+      .select('group_id')
+      .eq('surah', surah)
+    surahGroupIds = [...new Set((verseRows || []).map((v: { group_id: string }) => v.group_id))]
+  }
+
   let query = supabase
     .from('groups')
     .select(`
@@ -50,17 +58,18 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   if (filter === 'draft')     query = query.eq('status', 'draft')
   if (filter === 'locked')    query = query.eq('status', 'locked')
   if (q.trim())               query = query.ilike('title', `%${q.trim()}%`)
+  if (surahGroupIds !== null) {
+    if (surahGroupIds.length === 0) query = query.eq('id', 'no-match')
+    else                            query = query.in('id', surahGroupIds)
+  }
 
   // Sort
   if (sort === 'updated')         query = query.order('updated_at', { ascending: false })
   else if (sort === 'title')      query = query.order('title',      { ascending: true })
-  // Other sorts ('mushaf', 'most-verses') applied client-side after fetch
+  // 'mushaf' and 'most-verses' are applied after fetch
 
-  // For non-trivial sorts/surah-filter we need to over-fetch then slice.
-  // For simple sorts + no surah filter, use range pagination.
   const needsClientSort = sort === 'mushaf' || sort === 'most-verses'
-  const needsClientFilter = !!surah
-  const useServerPaging = !needsClientSort && !needsClientFilter
+  const useServerPaging = !needsClientSort
 
   if (useServerPaging) {
     const from = (page - 1) * limit
@@ -72,30 +81,21 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   let groups = (groupsRaw as unknown as GroupShape[]) || []
   let total = count ?? 0
 
-  // Client-side surah filter
-  if (surah) {
-    groups = groups.filter((g) => g.verses.some((v) => v.surah === surah))
-    total = groups.length
-  }
-
-  // Client-side sorting
+  // Client-side sorting (requires all results)
   if (sort === 'most-verses') {
     groups.sort((a, b) => (b.verses?.length ?? 0) - (a.verses?.length ?? 0))
   } else if (sort === 'mushaf') {
-    // Sort by min surah index of all verses
-    const surahOrder = new Map<string, number>()
-    // Use first-encounter index as a stable order
-    groups.forEach((g) => g.verses.forEach((v) => {
-      if (!surahOrder.has(v.surah)) surahOrder.set(v.surah, surahOrder.size)
-    }))
     groups.sort((a, b) => {
-      const ma = Math.min(...a.verses.map((v) => surahOrder.get(v.surah) ?? 9999), 9999)
-      const mb = Math.min(...b.verses.map((v) => surahOrder.get(v.surah) ?? 9999), 9999)
-      return ma - mb
+      const ma = Math.min(...a.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+      const mb = Math.min(...b.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+      if (ma !== mb) return ma - mb
+      const minAa = Math.min(...a.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === ma).map((v) => v.ayah), 9999)
+      const minAb = Math.min(...b.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === mb).map((v) => v.ayah), 9999)
+      return minAa - minAb
     })
   }
 
-  // Client-side pagination for non-trivial sorts/filters
+  // Client-side pagination only for non-trivial sorts
   if (!useServerPaging) {
     const from = (page - 1) * limit
     groups = groups.slice(from, from + limit)

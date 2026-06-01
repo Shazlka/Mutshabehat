@@ -155,7 +155,12 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
           </select>
         </div>
         {(q || surah) && (
-          <button type="button" onClick={() => { setValue(''); setParam('q', ''); setParam('surah', '') }}
+          <button type="button" onClick={() => {
+            setValue('')
+            const p = new URLSearchParams(params.toString())
+            p.delete('q'); p.delete('surah'); p.delete('page')
+            router.push(`/automated?${p.toString()}`)
+          }}
             className="self-start text-[12px] text-[var(--color-ink-muted)] hover:text-[var(--color-danger)] tap-shrink transition-colors">
             مسح المرشّحات
           </button>

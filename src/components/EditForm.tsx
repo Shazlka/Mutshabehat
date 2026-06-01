@@ -16,11 +16,17 @@ import { stripTashkeel } from '@/lib/arabic'
 interface Part { id?: string; type: string; text: string }
 interface Verse { id?: string; surah: string; ayah: number; label: string | null; parts: Part[] }
 interface Group {
-  id: string; title: string; status: 'draft'|'published'|'locked'
+  id: string; title: string; color?: string | null
+  status: 'draft'|'published'|'locked'
   favorite: boolean; completed: boolean
   note?: string | null; unote?: string | null
   verses: Verse[]
 }
+
+const COLOR_SWATCHES = [
+  '#55b94f', '#4b63e6', '#c9a84c', '#7c3aed', '#15803d',
+  '#2563eb', '#d92323', '#0f766e', '#9a5d00', '#1A4A6E',
+]
 
 const PART_TYPES: { value: string; label: string }[] = [
   { value: 'shared',   label: 'مشترك'   },
@@ -59,7 +65,7 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [confirmDelete, group])
+  }, [confirmDelete, group, note, unote])
 
   // Focus confirm button when delete prompt opens
   useEffect(() => {
@@ -169,6 +175,7 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title:     group.title,
+          color:     group.color,
           status:    group.status,
           favorite:  group.favorite,
           completed: group.completed,
@@ -244,6 +251,37 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
           value={group.title}
           onChange={(e) => updateGroup('title', stripTashkeel(e.target.value))}
           className="w-full bg-transparent text-[24px] md:text-[28px] font-bold text-[var(--color-ink)] border-b border-[var(--color-border)] pb-2 focus:border-[var(--color-primary)] focus:outline-none transition-colors" />
+      </section>
+
+      {/* Color picker */}
+      <section className="mb-8">
+        <label className="block text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-2">
+          اللون المميّز
+        </label>
+        <div className="flex flex-wrap items-center gap-2">
+          {COLOR_SWATCHES.map((c) => {
+            const active = group.color === c
+            return (
+              <button key={c} type="button" onClick={() => updateGroup('color', c)}
+                aria-label={`اختر اللون ${c}`}
+                aria-pressed={active}
+                className="touch-target-sm rounded-full border-2 tap-shrink transition-all"
+                style={{
+                  background: c,
+                  borderColor: active ? 'var(--color-ink)' : 'transparent',
+                  transform: active ? 'scale(1.15)' : 'scale(1)',
+                }} />
+            )
+          })}
+          <span className="w-px h-7 bg-[var(--color-border)] mx-1" aria-hidden="true" />
+          <label className="inline-flex items-center gap-2 text-[12px] text-[var(--color-ink-soft)] cursor-pointer">
+            <input type="color" value={group.color || '#55b94f'}
+              onChange={(e) => updateGroup('color', e.target.value)}
+              className="w-9 h-9 rounded-md cursor-pointer border-0 p-0"
+              aria-label="اختيار لون مخصّص" />
+            مخصّص
+          </label>
+        </div>
       </section>
 
       {/* Status toggles */}

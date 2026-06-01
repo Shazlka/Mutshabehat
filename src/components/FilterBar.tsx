@@ -44,8 +44,9 @@ export default function FilterBar() {
 
   function onSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const p = new URLSearchParams()
-    if (value.trim()) p.set('q', value.trim())
+    const p = new URLSearchParams(params.toString())
+    if (value.trim()) p.set('q', value.trim()); else p.delete('q')
+    p.delete('page')
     router.push(`/?${p.toString()}`)
   }
 

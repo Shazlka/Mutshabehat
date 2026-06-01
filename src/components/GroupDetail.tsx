@@ -12,7 +12,7 @@ interface Verse {
   parts: Part[]
 }
 interface Group {
-  id: string; title: string; color: string
+  id: string; title: string; color: string | null
   status: 'draft' | 'published' | 'locked'
   favorite: boolean; completed: boolean
   note: string | null; unote: string | null
