@@ -39,7 +39,7 @@ export default function GroupDetail({ group }: { group: Group }) {
                   className="inline-block w-3 h-3 rounded-full shrink-0 mt-1"
                   style={{ background: group.color }} />
           )}
-          <h1 id="g-title" className="text-[22px] md:text-[26px] font-bold text-[var(--color-ink)] leading-tight">
+          <h1 id="g-title" className="text-[18px] md:text-[26px] font-bold text-[var(--color-ink)] leading-tight">
             {group.title}
           </h1>
         </div>
@@ -119,22 +119,24 @@ export default function GroupDetail({ group }: { group: Group }) {
             display = [{ type: 'shared', text: masterText }]
           }
           return (
-            <li key={v.id} className="pt-6 first:pt-0 flex items-start gap-5">
-              <div className="shrink-0 w-24 pt-0.5">
-                <div className="text-[13px] font-bold text-[var(--color-primary)] leading-tight">{v.surah}</div>
-                <div className="text-[11px] text-[var(--color-ink-soft)] mt-1 font-bold">
+            <li key={v.id} className="pt-5 md:pt-6 first:pt-0 md:flex md:items-start md:gap-5">
+              {/* Meta — stacked on mobile (above text), column on desktop (left of text) */}
+              <div className="md:shrink-0 md:w-24 md:pt-0.5
+                              flex md:block items-baseline gap-2 mb-2 md:mb-0 flex-wrap">
+                <span className="text-[12px] md:text-[13px] font-bold text-[var(--color-primary)] leading-tight">{v.surah}</span>
+                <span className="inline-block px-1.5 py-0.5 text-[10px] md:text-[11px] font-mono tabular-nums rounded bg-[var(--color-primary-soft)] text-[var(--color-primary)] leading-tight font-bold md:mt-1">
                   آية {ayahToArabic(v.ayah)}
-                </div>
+                </span>
                 {v.label && (
-                  <div className="text-[11px] text-[var(--color-ink-muted)] mt-1.5 leading-snug">
+                  <span className="text-[10px] md:text-[11px] text-[var(--color-ink-muted)] md:mt-1.5 leading-snug md:block">
                     {v.label}
-                  </div>
+                  </span>
                 )}
                 {view === 'master-slave' && vi === masterIdx && (
-                  <div className="text-[10px] mt-2 font-bold uppercase tracking-wider px-1.5 py-0.5 rounded inline-block"
+                  <span className="text-[9px] md:text-[10px] md:mt-2 font-bold uppercase tracking-wider px-1.5 py-0.5 rounded md:inline-block"
                        style={{ color: 'var(--color-primary)', background: 'var(--color-primary-soft)' }}>
                     مرجع
-                  </div>
+                  </span>
                 )}
               </div>
               <div className="flex-1 min-w-0">

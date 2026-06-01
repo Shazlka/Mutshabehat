@@ -206,12 +206,12 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
                     )}
                     <h2 className="text-[15px] font-bold text-[var(--color-ink)] leading-snug">{r.title}</h2>
                   </div>
-                  <ol className="space-y-2.5">
+                  <ol className="space-y-3">
                     {verses.map((v, vi) => (
-                      <li key={vi} className="flex items-start gap-3">
-                        <div className="shrink-0 w-20">
-                          <div className="text-[12px] font-bold text-[var(--color-primary)]">{v.surah ?? '—'}</div>
-                          <div className="text-[10px] font-mono text-[var(--color-ink-muted)]">آية {ayahToArabic(ayahNum(v.ayah))}</div>
+                      <li key={vi} className="md:flex md:items-start md:gap-3">
+                        <div className="md:shrink-0 md:w-20 flex md:block items-baseline gap-2 mb-1 md:mb-0 flex-wrap">
+                          <span className="text-[12px] font-bold text-[var(--color-primary)]">{v.surah ?? '—'}</span>
+                          <span className="inline-block px-1.5 py-0.5 text-[10px] font-mono tabular-nums rounded bg-[var(--color-primary-soft)] text-[var(--color-primary)] font-bold leading-tight">آية {ayahToArabic(ayahNum(v.ayah))}</span>
                         </div>
                         <div className="flex-1 min-w-0">
                           <ArabicDiff parts={(v.parts ?? []) as Part[]} size="sm" />
@@ -219,7 +219,7 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
                       </li>
                     ))}
                     {(r.payload?.verses?.length ?? 0) > 2 && (
-                      <li className="text-[11px] text-[var(--color-ink-muted)] mr-20">
+                      <li className="text-[11px] text-[var(--color-ink-muted)] md:mr-20">
                         + {(r.payload?.verses?.length ?? 0) - 2} آية أخرى…
                       </li>
                     )}

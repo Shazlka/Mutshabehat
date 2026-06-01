@@ -12,12 +12,12 @@ interface Props {
 }
 
 // Renders Quranic text with color-highlighted parts inline.
-// No left-stripe borders, no boxes — parts are inline spans.
+// Mobile-first sizing: smaller on phones, larger on md+ screens.
 export default function ArabicDiff({ parts, className, size = 'md' }: Props) {
   const sizeClass =
-    size === 'sm' ? 'text-[18px] leading-[2.2]' :
-    size === 'lg' ? 'text-[26px] leading-[2.4]' :
-                    'text-[22px] leading-[2.3]'
+    size === 'sm' ? 'text-[15px] leading-[2.0] md:text-[18px] md:leading-[2.2]' :
+    size === 'lg' ? 'text-[19px] leading-[2.1] md:text-[26px] md:leading-[2.4]' :
+                    'text-[17px] leading-[2.05] md:text-[22px] md:leading-[2.3]'
 
   return (
     <p dir="rtl" className={cn('font-quran', sizeClass, className)}>

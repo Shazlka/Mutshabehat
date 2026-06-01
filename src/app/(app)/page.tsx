@@ -143,13 +143,13 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-5 md:px-8 py-8 md:py-14">
+    <div className="max-w-3xl mx-auto px-3 md:px-8 py-5 md:py-14">
       {/* Header */}
-      <header className="mb-10">
-        <h1 className="text-[28px] md:text-[32px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
+      <header className="mb-6 md:mb-10">
+        <h1 className="text-[22px] md:text-[32px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
           المتشابهات
         </h1>
-        <p className="mt-2 text-[13px] text-[var(--color-ink-muted)]">
+        <p className="mt-1.5 md:mt-2 text-[12px] md:text-[13px] text-[var(--color-ink-muted)]">
           {total} مجموعة
           {filter && <> • {filter === 'favorite' ? 'مفضّلة' : filter === 'completed' ? 'مكتملة' : filter === 'draft' ? 'مسودة' : 'مقفلة'}</>}
           {surah && <> • سورة {surah}</>}
