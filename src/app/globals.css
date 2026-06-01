@@ -1,26 +1,199 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Mutshabehat V2 — Design Tokens (OKLCH, warm paper register)
+   ============================================================
+   Register: product (daily study tool, not marketing).
+   Mood: scholarly book — deep ink on warm paper. No gradients,
+   no glass, no left-stripe borders, no Islamic-cliché green.
+   Reduced chroma at luminance extremes.
+*/
+
+@theme {
+  /* Surfaces — warm-paper neutrals */
+  --color-paper:        oklch(0.985 0.004 80);   /* page background */
+  --color-surface:      oklch(0.997 0.003 80);   /* card/panel */
+  --color-surface-2:    oklch(0.965 0.006 80);   /* recessed panel */
+  --color-border:       oklch(0.905 0.008 80);
+  --color-border-soft:  oklch(0.940 0.006 80);
+
+  /* Ink — primary content */
+  --color-ink:          oklch(0.22 0.015 60);    /* body text */
+  --color-ink-soft:     oklch(0.42 0.014 60);    /* secondary */
+  --color-ink-muted:    oklch(0.58 0.012 60);    /* tertiary / labels */
+
+  /* Primary — deeper indigo with more presence */
+  --color-primary:      oklch(0.36 0.140 265);
+  --color-primary-hover:oklch(0.30 0.155 265);
+  --color-primary-soft: oklch(0.93 0.050 265);
+  --color-primary-tint: oklch(0.85 0.090 265);
+
+  /* Semantic accents — SOFT: muted, scholarly-book feel like the original Mini */
+  --color-shared:       oklch(0.46 0.110 150);   /* green — shared text */
+  --color-shared-bg:    oklch(0.96 0.040 150);
+  --color-diff:         oklch(0.52 0.110 80);    /* ochre — difference */
+  --color-diff-bg:      oklch(0.96 0.060 85);
+  --color-diff2:        oklch(0.48 0.140 295);   /* purple */
+  --color-diff2-bg:     oklch(0.96 0.040 295);
+  --color-diff3:        oklch(0.50 0.080 195);   /* teal */
+  --color-diff3-bg:     oklch(0.96 0.030 195);
+  --color-addition:     oklch(0.48 0.130 250);   /* blue */
+  --color-addition-bg:  oklch(0.96 0.040 250);
+  --color-unique:       oklch(0.52 0.140 25);    /* terracotta */
+  --color-unique-bg:    oklch(0.96 0.040 25);
+
+  /* Status */
+  --color-danger:       oklch(0.52 0.150 25);
+  --color-danger-bg:    oklch(0.96 0.025 25);
+  --color-success:      oklch(0.50 0.110 150);
+  --color-success-bg:   oklch(0.96 0.030 150);
+  --color-warn:         oklch(0.65 0.130 75);
+  --color-warn-bg:      oklch(0.97 0.040 75);
+
+  /* Typography */
+  --font-sans: var(--font-cairo), "Noto Naskh Arabic", "Segoe UI", system-ui, sans-serif;
+  --font-quran: var(--font-amiri-quran), "Noto Naskh Arabic", serif;
+
+  /* Spacing rhythm (intentional non-uniform scale) */
+  --spacing-section: 2.5rem;
+  --spacing-block:   1.25rem;
+  --spacing-tight:   0.5rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* { -webkit-font-smoothing: antialiased; }
+
+html, body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Selection in warm ink */
+::selection {
+  background: oklch(0.85 0.04 80);
+  color: var(--color-ink);
+}
+
+/* Focus ring — 3px, not the default browser blue */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Quranic text utility */
+.font-quran {
+  font-family: var(--font-quran);
+  font-feature-settings: normal;
+  line-height: 2.4;
+  letter-spacing: 0;
+}
+
+/* Part-type spans — soft, scholarly look; subtle backgrounds */
+.part-shared   { color: var(--color-shared);   background: var(--color-shared-bg);   border-radius: 4px; padding: 0 3px; }
+.part-diff     { color: var(--color-diff);     background: var(--color-diff-bg);     border-radius: 4px; padding: 0 3px; }
+.part-diff2    { color: var(--color-diff2);    background: var(--color-diff2-bg);    border-radius: 4px; padding: 0 3px; }
+.part-diff3    { color: var(--color-diff3);    background: var(--color-diff3-bg);    border-radius: 4px; padding: 0 3px; }
+.part-addition { color: var(--color-addition); background: var(--color-addition-bg); border-radius: 4px; padding: 0 3px; }
+.part-unique   { color: var(--color-unique);   background: var(--color-unique-bg);   border-radius: 4px; padding: 0 3px; }
+.part-normal   { color: var(--color-ink); }
+
+/* Legend swatch dots */
+.legend-dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.legend-dot-shared   { background: var(--color-shared); }
+.legend-dot-diff     { background: var(--color-diff); }
+.legend-dot-diff2    { background: var(--color-diff2); }
+.legend-dot-diff3    { background: var(--color-diff3); }
+.legend-dot-addition { background: var(--color-addition); }
+.legend-dot-unique   { background: var(--color-unique); }
+
+/* Soft horizontal rule for dividing verses inside a group */
+.rule-soft {
+  border-color: var(--color-border-soft);
+}
+
+/* ============================================================
+   Motion — selective, transform/opacity only.
+   Ease-out exponential. Never animate width/height/top/left.
+   ============================================================ */
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-pop {
+  0%   { opacity: 0; transform: scale(0.92); }
+  60%  { opacity: 1; transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1);    }
+}
+@keyframes check-draw {
+  from { stroke-dashoffset: 24; }
+  to   { stroke-dashoffset: 0;  }
+}
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: 0.6; }
+}
+
+.animate-fade-rise   { animation: fade-rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in     { animation: fade-in 0.3s ease-out both; }
+.animate-scale-pop   { animation: scale-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-check-draw  { stroke-dasharray: 24; animation: check-draw 0.3s ease-out 0.1s both; }
+.animate-pulse-dot   { animation: pulse-dot 2.4s ease-in-out infinite; }
+
+/* Stagger delays for list rendering */
+.stagger > * { animation-delay: calc(var(--i, 0) * 30ms); }
+
+/* Press feedback for tactile buttons */
+.tap-shrink:active { transform: scale(0.96); }
+.tap-shrink { transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Skip link — accessible, hidden until focused */
+.skip-link {
+  position: fixed; top: -100px; left: 50%; transform: translateX(-50%);
+  background: var(--color-primary); color: var(--color-paper);
+  padding: 10px 18px; border-radius: 8px; font-weight: 700; z-index: 999;
+  transition: top 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skip-link:focus { top: 12px; outline: 3px solid var(--color-primary-tint); outline-offset: 2px; }
+
+/* Better focus rings — high contrast, always 3px */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Touch target enforcement for icon-only buttons */
+.touch-target { min-width: 44px; min-height: 44px; }
+.touch-target-sm { min-width: 36px; min-height: 36px; }
+
+/* sr-only — Tailwind ships it, but we want it explicit for screen readers */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
