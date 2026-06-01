@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import ArabicDiff, { type Part } from './ArabicDiff'
 import { ayahToArabic } from '@/lib/arabic'
+import { cn } from '@/lib/cn'
 
 interface PayloadVerse {
   surah?: string; ayah?: number | string; label?: string
@@ -31,6 +32,12 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
   const [busy, setBusy]     = useState(false)
   const [done, setDone]     = useState<string | null>(null)
   const [names, setNames] = useState<Record<string, string>>({})
+  const [value, setValue] = useState(q)
+  const [focused, setFocused] = useState(false)
+
+  useEffect(() => {
+    setValue(q)
+  }, [q])
 
   useEffect(() => {
     fetch('/api/quran?names=1')
@@ -90,13 +97,48 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
   return (
     <>
       {/* Filters */}
-      <form onSubmit={(e) => { e.preventDefault(); const v = (e.currentTarget.elements.namedItem('q') as HTMLInputElement).value.trim(); setParam('q', v) }}
+      <form onSubmit={(e) => { e.preventDefault(); setParam('q', value.trim()) }}
             role="search" className="flex flex-col gap-3 mb-4">
-        <div className="flex gap-3 flex-wrap md:flex-nowrap">
-          <input name="q" defaultValue={q}
-            placeholder="ابحث في العناوين…"
-            className="flex-1 min-w-[200px] px-4 py-2.5 bg-[var(--color-surface)] text-[14px] border border-[var(--color-border)] rounded-xl focus:border-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-soft)] transition-all"
-            dir="rtl" />
+        <div className="flex gap-3 flex-wrap md:flex-nowrap items-stretch">
+          {/* Search Input Container */}
+          <div className="relative flex-1 min-w-[200px]">
+            <span aria-hidden="true"
+                  className={cn(
+                    'absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none transition-colors z-10',
+                    focused ? 'text-[var(--color-primary)]' : 'text-[var(--color-ink-muted)]'
+                  )}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+              </svg>
+            </span>
+            <input
+              id="automated-search"
+              name="q"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              placeholder="ابحث في العناوين الآلية…"
+              className={cn(
+                'w-full pl-10 pr-10 py-2.5 bg-[var(--color-surface)] text-[14px] text-[var(--color-ink)]',
+                'border rounded-xl placeholder:text-[var(--color-ink-muted)]',
+                'transition-all duration-200 outline-none',
+                focused
+                  ? 'border-[var(--color-primary)] ring-4 ring-[var(--color-primary-soft)]'
+                  : 'border-[var(--color-border)] hover:border-[var(--color-border-soft)]'
+              )}
+              dir="rtl"
+            />
+            {value && (
+              <button type="button" onClick={() => { setValue(''); setParam('q', '') }}
+                aria-label="مسح البحث"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1 rounded-md text-[var(--color-ink-muted)] hover:text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)] tap-shrink transition-colors z-10">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                  <path d="M18 6 6 18M6 6l12 12"/>
+                </svg>
+              </button>
+            )}
+          </div>
           
           <select
             value={surah}
@@ -113,7 +155,7 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
           </select>
         </div>
         {(q || surah) && (
-          <button type="button" onClick={() => { setParam('q', ''); setParam('surah', '') }}
+          <button type="button" onClick={() => { setValue(''); setParam('q', ''); setParam('surah', '') }}
             className="self-start text-[12px] text-[var(--color-ink-muted)] hover:text-[var(--color-danger)] tap-shrink transition-colors">
             مسح المرشّحات
           </button>
