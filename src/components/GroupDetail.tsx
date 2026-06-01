@@ -124,8 +124,8 @@ export default function GroupDetail({ group }: { group: Group }) {
               <div className="md:shrink-0 md:w-24 md:pt-0.5
                               flex md:block items-baseline gap-2 mb-2 md:mb-0 flex-wrap">
                 <span className="text-[12px] md:text-[13px] font-bold text-[var(--color-primary)] leading-tight">{v.surah}</span>
-                <span className="inline-block px-1.5 py-0.5 text-[10px] md:text-[11px] font-mono tabular-nums rounded bg-[var(--color-primary-soft)] text-[var(--color-primary)] leading-tight font-bold md:mt-1">
-                  آية {ayahToArabic(v.ayah)}
+                <span className="text-[11px] md:text-[12px] font-mono tabular-nums text-[var(--color-ink-muted)] leading-tight font-bold md:mt-1">
+                  {ayahToArabic(v.ayah)}
                 </span>
                 {v.label && (
                   <span className="text-[10px] md:text-[11px] text-[var(--color-ink-muted)] md:mt-1.5 leading-snug md:block">

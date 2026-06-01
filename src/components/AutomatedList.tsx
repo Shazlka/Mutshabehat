@@ -211,7 +211,7 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
                       <li key={vi} className="md:flex md:items-start md:gap-3">
                         <div className="md:shrink-0 md:w-20 flex md:block items-baseline gap-2 mb-1 md:mb-0 flex-wrap">
                           <span className="text-[12px] font-bold text-[var(--color-primary)]">{v.surah ?? '—'}</span>
-                          <span className="inline-block px-1.5 py-0.5 text-[10px] font-mono tabular-nums rounded bg-[var(--color-primary-soft)] text-[var(--color-primary)] font-bold leading-tight">آية {ayahToArabic(ayahNum(v.ayah))}</span>
+                          <span className="text-[11px] font-mono tabular-nums text-[var(--color-ink-muted)] font-bold leading-tight">{ayahToArabic(ayahNum(v.ayah))}</span>
                         </div>
                         <div className="flex-1 min-w-0">
                           <ArabicDiff parts={(v.parts ?? []) as Part[]} size="sm" />
