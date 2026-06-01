@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import ArabicDiff, { type Part } from './ArabicDiff'
@@ -30,7 +30,14 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
   const [picked, setPicked] = useState<Set<number>>(new Set())
   const [busy, setBusy]     = useState(false)
   const [done, setDone]     = useState<string | null>(null)
+  const [names, setNames] = useState<Record<string, string>>({})
 
+  useEffect(() => {
+    fetch('/api/quran?names=1')
+      .then((r) => r.json())
+      .then((j) => setNames(j.surahs || {}))
+      .catch(() => {})
+  }, [])
   function setParam(key: string, val: string) {
     const p = new URLSearchParams(params.toString())
     if (val) p.set(key, val); else p.delete(key)
@@ -85,10 +92,26 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
       {/* Filters */}
       <form onSubmit={(e) => { e.preventDefault(); const v = (e.currentTarget.elements.namedItem('q') as HTMLInputElement).value.trim(); setParam('q', v) }}
             role="search" className="flex flex-col gap-3 mb-4">
-        <input name="q" defaultValue={q}
-          placeholder="ابحث في العناوين…"
-          className="w-full px-4 py-2.5 bg-[var(--color-surface)] text-[14px] border border-[var(--color-border)] rounded-xl focus:border-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-soft)] transition-all"
-          dir="rtl" />
+        <div className="flex gap-3 flex-wrap md:flex-nowrap">
+          <input name="q" defaultValue={q}
+            placeholder="ابحث في العناوين…"
+            className="flex-1 min-w-[200px] px-4 py-2.5 bg-[var(--color-surface)] text-[14px] border border-[var(--color-border)] rounded-xl focus:border-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-soft)] transition-all"
+            dir="rtl" />
+          
+          <select
+            value={surah}
+            onChange={(e) => setParam('surah', e.target.value)}
+            className="px-4 py-2.5 bg-[var(--color-surface)] text-[14px] text-[var(--color-ink-soft)] border border-[var(--color-border)] rounded-xl focus:border-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-soft)] transition-all min-w-[150px] font-bold"
+            dir="rtl"
+          >
+            <option value="">كل السور</option>
+            {Object.entries(names).map(([no, name]) => (
+              <option key={no} value={name}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
         {(q || surah) && (
           <button type="button" onClick={() => { setParam('q', ''); setParam('surah', '') }}
             className="self-start text-[12px] text-[var(--color-ink-muted)] hover:text-[var(--color-danger)] tap-shrink transition-colors">

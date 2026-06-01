@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { stripTashkeel } from '@/lib/arabic'
 
 type Ctx = { params: Promise<{ id: string }> }
 
@@ -52,7 +53,9 @@ export async function PATCH(request: NextRequest, ctx: Ctx) {
   // Update group scalar fields
   const updates: Record<string, unknown> = {}
   for (const k of ['title','color','note','unote','status','favorite','completed']) {
-    if (k in body) updates[k] = body[k]
+    if (k in body) {
+      updates[k] = k === 'title' ? stripTashkeel(String(body[k]).trim()) : body[k]
+    }
   }
   if (Object.keys(updates).length) {
     const { error } = await supabase.from('groups').update(updates).eq('id', id)

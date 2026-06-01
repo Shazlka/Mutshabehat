@@ -122,7 +122,7 @@ export default function GroupDetail({ group }: { group: Group }) {
             <li key={v.id} className="pt-6 first:pt-0 flex items-start gap-5">
               <div className="shrink-0 w-24 pt-0.5">
                 <div className="text-[13px] font-bold text-[var(--color-primary)] leading-tight">{v.surah}</div>
-                <div className="inline-block mt-1 px-2 py-0.5 text-[11px] font-mono tabular-nums rounded-md bg-[var(--color-primary-soft)] text-[var(--color-primary)] font-bold">
+                <div className="text-[11px] text-[var(--color-ink-soft)] mt-1 font-bold">
                   آية {ayahToArabic(v.ayah)}
                 </div>
                 {v.label && (

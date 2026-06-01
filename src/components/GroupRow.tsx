@@ -82,8 +82,8 @@ export default function GroupRow({ group, index }: Props) {
               <div className="text-[13px] font-bold text-[var(--color-primary)] leading-tight">
                 {v.surah}
               </div>
-              <div className="inline-block mt-1 px-2 py-0.5 text-[11px] font-mono tabular-nums rounded-md bg-[var(--color-primary-soft)] text-[var(--color-primary)] leading-tight font-bold">
-                آية <span className="text-[12px]">{ayahToArabic(v.ayah)}</span>
+              <div className="text-[11px] text-[var(--color-ink-soft)] mt-1 font-bold">
+                آية {ayahToArabic(v.ayah)}
               </div>
               {v.label && (
                 <div className="text-[11px] text-[var(--color-ink-muted)] mt-1.5 leading-snug">

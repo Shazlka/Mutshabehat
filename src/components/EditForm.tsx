@@ -11,6 +11,7 @@ import RichEditor from './RichEditor'
 import QuranSearch from './QuranSearch'
 import TagEditor from './TagEditor'
 import type { AutoColoredPart } from '@/lib/diff'
+import { stripTashkeel } from '@/lib/arabic'
 
 interface Part { id?: string; type: string; text: string }
 interface Verse { id?: string; surah: string; ayah: number; label: string | null; parts: Part[] }
@@ -241,7 +242,7 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
         </label>
         <input
           value={group.title}
-          onChange={(e) => updateGroup('title', e.target.value)}
+          onChange={(e) => updateGroup('title', stripTashkeel(e.target.value))}
           className="w-full bg-transparent text-[24px] md:text-[28px] font-bold text-[var(--color-ink)] border-b border-[var(--color-border)] pb-2 focus:border-[var(--color-primary)] focus:outline-none transition-colors" />
       </section>
 

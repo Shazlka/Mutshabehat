@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { stripTashkeel } from '@/lib/arabic'
 
 // GET /api/groups
 //   ?surah=النمل       — filter by surah name
@@ -62,7 +63,7 @@ export async function POST(request: NextRequest) {
     .from('groups')
     .insert({
       user_id: user.id,
-      title:   body.title.trim(),
+      title:   stripTashkeel(body.title.trim()),
       color:   body.color || '#55b94f',
       note:    body.note  ?? null,
       unote:   body.unote ?? null,
