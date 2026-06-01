@@ -33,15 +33,15 @@ export default function LoginPage() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-bold text-slate-700">البريد الإلكتروني</label>
-          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+          <label htmlFor="email" className="text-sm font-bold text-slate-700">البريد الإلكتروني</label>
+          <input type="email" id="email" name="email" autoComplete="username" required value={email} onChange={(e) => setEmail(e.target.value)}
             className="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none"
             placeholder="you@example.com" dir="ltr" />
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-bold text-slate-700">كلمة المرور</label>
-          <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
+          <label htmlFor="password" className="text-sm font-bold text-slate-700">كلمة المرور</label>
+          <input type="password" id="password" name="password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)}
             className="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none"
             dir="ltr" />
         </div>
