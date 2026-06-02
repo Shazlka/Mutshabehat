@@ -190,8 +190,8 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
         return
       }
       setSaveSuccess(true)
-      // Brief moment of success feedback, then return to group detail
-      setTimeout(() => { router.push(`/groups/${group.id}`); router.refresh() }, 650)
+      // Replace the edit page in history so pressing back skips it
+      setTimeout(() => { router.replace(`/groups/${group.id}`); router.refresh() }, 650)
     })
   }
 

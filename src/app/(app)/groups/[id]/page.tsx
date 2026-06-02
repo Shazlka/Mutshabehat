@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import GroupDetail from '@/components/GroupDetail'
+import BackButton from '@/components/BackButton'
 
 type GroupRecord = {
   id: string; title: string; color: string
@@ -42,10 +43,7 @@ export default async function GroupDetailPage({ params }: { params: Promise<{ id
   return (
     <div className="max-w-3xl mx-auto px-5 md:px-8 py-6 md:py-10">
       <div className="sticky top-0 -mx-5 md:-mx-8 px-5 md:px-8 py-3 mb-6 bg-[var(--color-paper)]/95 backdrop-blur-sm border-b border-[var(--color-border)] z-10 flex items-center justify-between">
-        <Link href="/"
-          className="text-[13px] font-bold text-[var(--color-ink-soft)] hover:text-[var(--color-primary)] tap-shrink transition-colors">
-          ← العودة
-        </Link>
+        <BackButton className="text-[13px] font-bold text-[var(--color-ink-soft)] hover:text-[var(--color-primary)] tap-shrink transition-colors" />
         <Link href={`/groups/${group.id}/edit`}
           className="px-4 py-1.5 text-[13px] font-bold rounded-full bg-[var(--color-primary)] text-[var(--color-paper)] hover:bg-[var(--color-primary-hover)] tap-shrink transition-colors shadow-sm">
           تعديل
