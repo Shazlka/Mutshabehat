@@ -1,16 +1,17 @@
-import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { createServerSupabaseClient, getUser } from '@/lib/supabase-server'
 import { redirect } from 'next/navigation'
 import Sidebar from '@/components/Sidebar'
 import MobileTopbar from '@/components/MobileTopbar'
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
 
-  const { count } = await supabase
-    .from('groups')
-    .select('*', { count: 'exact', head: true })
+  // auth + count run in parallel — saves one sequential round-trip per navigation
+  const [user, { count }] = await Promise.all([
+    getUser(),
+    supabase.from('groups').select('*', { count: 'exact', head: true }),
+  ])
+  if (!user) redirect('/login')
 
   return (
     <div className="min-h-screen flex bg-[var(--color-paper)]">

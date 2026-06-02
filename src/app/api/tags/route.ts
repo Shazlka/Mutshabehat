@@ -27,9 +27,21 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'name is required' }, { status: 400 })
   }
 
+  const name = body.name.trim()
+
+  // Reject duplicates (case-insensitive)
+  const { data: existing } = await supabase
+    .from('tags')
+    .select('id')
+    .ilike('name', name)
+    .maybeSingle()
+  if (existing) {
+    return NextResponse.json({ error: 'وسم بهذا الاسم موجود مسبقاً' }, { status: 409 })
+  }
+
   const { data, error } = await supabase
     .from('tags')
-    .insert({ user_id: user.id, name: body.name.trim(), color: body.color ?? null })
+    .insert({ user_id: user.id, name, color: body.color ?? null })
     .select('*').single()
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

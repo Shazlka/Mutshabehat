@@ -9,17 +9,36 @@ import { juzOfSurah } from '@/lib/juz'
 export default async function StatsPage() {
   const supabase = await createServerSupabaseClient()
 
-  const [groupsRes, versesRes, partsRes, favRes, doneRes, lockedRes] = await Promise.all([
+  // All 12 queries run in a single parallel batch — no sequential round-trips.
+  const [
+    groupsRes,
+    versesRes,
+    partsRes,
+    favRes,
+    doneRes,
+    lockedRes,
+    { data: verseList },
+    { data: partsList },
+    { data: tagsList },
+    { data: gtList },
+    { data: updates },
+    { data: verseGroups },
+  ] = await Promise.all([
     supabase.from('groups').select('*', { count: 'exact', head: true }),
     supabase.from('verses').select('*', { count: 'exact', head: true }),
     supabase.from('parts').select('*', { count: 'exact', head: true }),
     supabase.from('groups').select('*', { count: 'exact', head: true }).eq('favorite', true),
     supabase.from('groups').select('*', { count: 'exact', head: true }).eq('completed', true),
     supabase.from('groups').select('*', { count: 'exact', head: true }).eq('status', 'locked'),
+    supabase.from('verses').select('surah'),
+    supabase.from('parts').select('type'),
+    supabase.from('tags').select('id, name, color'),
+    supabase.from('group_tags').select('tag_id'),
+    supabase.from('groups').select('updated_at'),
+    supabase.from('verses').select('surah, group_id'),
   ])
 
   // Surah distribution
-  const { data: verseList } = await supabase.from('verses').select('surah')
   const surahCounts: Record<string, number> = {}
   ;(verseList || []).forEach((v: { surah: string }) => {
     surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
@@ -28,7 +47,6 @@ export default async function StatsPage() {
   const maxCount = top[0]?.[1] || 1
 
   // Parts breakdown
-  const { data: partsList } = await supabase.from('parts').select('type')
   const partsBreakdown: Record<string, number> = {}
   ;(partsList || []).forEach((p: { type: string }) => {
     partsBreakdown[p.type] = (partsBreakdown[p.type] || 0) + 1
@@ -46,8 +64,6 @@ export default async function StatsPage() {
   }
 
   // Tags distribution
-  const { data: tagsList } = await supabase.from('tags').select('id, name, color')
-  const { data: gtList }   = await supabase.from('group_tags').select('tag_id')
   const tagCounts = new Map<string, number>()
   ;(gtList || []).forEach((r: { tag_id: string }) => {
     tagCounts.set(r.tag_id, (tagCounts.get(r.tag_id) || 0) + 1)
@@ -61,7 +77,6 @@ export default async function StatsPage() {
   const totalTagUses = tagSlices.reduce((s: number, t: { count: number }) => s + t.count, 0)
 
   // Activity — count groups updated per day, last 30 days
-  const { data: updates } = await supabase.from('groups').select('updated_at')
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   const dayMs = 24 * 60 * 60 * 1000
@@ -78,8 +93,7 @@ export default async function StatsPage() {
     if (idx !== undefined) days[idx].count++
   })
 
-  // Juz heatmap — count groups per juz (a group counts once per juz its verses touch)
-  const { data: verseGroups } = await supabase.from('verses').select('surah, group_id')
+  // Juz heatmap — count groups per juz
   const juzGroupSet: Set<string>[] = Array.from({ length: 30 }, () => new Set())
   ;(verseGroups || []).forEach((v: { surah: string; group_id: string }) => {
     const sno = getSurahNumberByName(v.surah)

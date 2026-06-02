@@ -113,20 +113,6 @@ html, body {
 .part-unique   { color: var(--color-unique);   background: var(--color-unique-bg);   border-radius: 4px; padding: 0 3px; }
 .part-normal   { color: var(--color-ink); }
 
-/* Legend swatch dots */
-.legend-dot {
-  display: inline-block;
-  width: 10px; height: 10px;
-  border-radius: 3px;
-  margin-left: 6px;
-  vertical-align: middle;
-}
-.legend-dot-shared   { background: var(--color-shared); }
-.legend-dot-diff     { background: var(--color-diff); }
-.legend-dot-diff2    { background: var(--color-diff2); }
-.legend-dot-diff3    { background: var(--color-diff3); }
-.legend-dot-addition { background: var(--color-addition); }
-.legend-dot-unique   { background: var(--color-unique); }
 
 /* Soft horizontal rule for dividing verses inside a group */
 .rule-soft {

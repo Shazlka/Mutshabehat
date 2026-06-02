@@ -21,10 +21,26 @@ type GroupShape = {
   }>
 }
 
+type MiniGroup = {
+  id: string
+  verses: Array<{ surah: string; ayah: number }>
+}
+
+const FULL_SELECT = `
+  id, title, color, status, favorite, completed, updated_at,
+  verses (
+    id, surah, ayah, label, sort_order,
+    parts ( id, type, text, sort_order )
+  )
+`
+
+// Only fields needed for mushaf/most-verses sort key — no parts, no title
+const MINI_SELECT = `id, verses ( surah, ayah )`
+
 export default async function HomePage({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams
-  const page  = Math.max(1, parseInt(sp.page ?? '1', 10))
-  const limit = 12
+  const page   = Math.max(1, parseInt(sp.page ?? '1', 10))
+  const limit  = 12
   const filter = sp.filter ?? ''
   const q      = sp.q ?? ''
   const sort   = sp.sort ?? 'updated'
@@ -33,75 +49,139 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
 
   const supabase = await createServerSupabaseClient()
 
-  // Resolve surah filter to a set of group IDs server-side (fast indexed lookup).
+  // Resolve surah filter first — its result is needed by every subsequent query
   let surahGroupIds: string[] | null = null
   if (surah) {
     const { data: verseRows } = await supabase
-      .from('verses')
-      .select('group_id')
-      .eq('surah', surah)
+      .from('verses').select('group_id').eq('surah', surah)
     surahGroupIds = [...new Set((verseRows || []).map((v: { group_id: string }) => v.group_id))]
   }
 
-  let query = supabase
-    .from('groups')
-    .select(`
-      id, title, color, status, favorite, completed, updated_at,
-      verses (
-        id, surah, ayah, label, sort_order,
-        parts ( id, type, text, sort_order )
-      )
-    `, { count: 'exact' })
-
-  if (filter === 'favorite')  query = query.eq('favorite', true)
-  if (filter === 'completed') query = query.eq('completed', true)
-  if (filter === 'draft')     query = query.eq('status', 'draft')
-  if (filter === 'locked')    query = query.eq('status', 'locked')
-  if (q.trim())               query = query.ilike('title', `%${q.trim()}%`)
-  if (surahGroupIds !== null) {
-    if (surahGroupIds.length === 0) query = query.eq('id', 'no-match')
-    else                            query = query.in('id', surahGroupIds)
+  // Generic filter applicator — casts through any to keep type-system happy across
+  // different Supabase builder shapes (QueryBuilder vs FilterBuilder).
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function applyFilters<T>(qb: T): T {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let qBuilder = qb as any
+    if (filter === 'favorite')  qBuilder = qBuilder.eq('favorite', true)
+    if (filter === 'completed') qBuilder = qBuilder.eq('completed', true)
+    if (filter === 'draft')     qBuilder = qBuilder.eq('status', 'draft')
+    if (filter === 'locked')    qBuilder = qBuilder.eq('status', 'locked')
+    if (q.trim())               qBuilder = qBuilder.ilike('title', `%${q.trim()}%`)
+    if (surahGroupIds !== null) {
+      if (surahGroupIds.length === 0) qBuilder = qBuilder.eq('id', 'no-match')
+      else                            qBuilder = qBuilder.in('id', surahGroupIds)
+    }
+    return qBuilder
   }
 
-  // Sort
-  if (sort === 'updated')         query = query.order('updated_at', { ascending: false })
-  else if (sort === 'title')      query = query.order('title',      { ascending: true })
-  // 'mushaf' and 'most-verses' are applied after fetch
+  let groups: GroupShape[] = []
+  let total = 0
+  let surahCounts: Record<string, number> = {}
 
-  const needsClientSort = sort === 'mushaf' || sort === 'most-verses'
-  const useServerPaging = !needsClientSort
+  if (view === 'group-surah') {
+    // Needs ALL matching groups for bucketing — can't page
+    // Surah counts always run in parallel
+    let mainQ = supabase.from('groups').select(FULL_SELECT, { count: 'exact' })
+    mainQ = applyFilters(mainQ)
+    if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
+    else if (sort === 'title') mainQ = (mainQ as any).order('title', { ascending: true })
+    // mushaf/most-verses applied in JS after fetch since all data is present anyway
 
-  if (useServerPaging) {
+    const [{ data: groupsRaw, count }, { data: allVerses }] = await Promise.all([
+      mainQ,
+      supabase.from('verses').select('surah'),
+    ])
+
+    groups = (groupsRaw as unknown as GroupShape[]) || []
+    total = count ?? 0
+
+    if (sort === 'most-verses') {
+      groups.sort((a, b) => (b.verses?.length ?? 0) - (a.verses?.length ?? 0))
+    } else if (sort === 'mushaf') {
+      groups.sort((a, b) => {
+        const ma = Math.min(...a.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+        const mb = Math.min(...b.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+        if (ma !== mb) return ma - mb
+        const minAa = Math.min(...a.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === ma).map((v) => v.ayah), 9999)
+        const minAb = Math.min(...b.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === mb).map((v) => v.ayah), 9999)
+        return minAa - minAb
+      })
+    }
+
+    for (const v of allVerses || []) {
+      surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
+    }
+
+  } else if (sort === 'mushaf' || sort === 'most-verses') {
+    // Two-step: fetch lightweight sort-key data for ALL matching groups,
+    // sort in JS, then fetch full data (with parts) for only the current page.
+    // Avoids transferring all parts text for every group in the dataset.
+    let miniQ = supabase.from('groups').select(MINI_SELECT)
+    miniQ = applyFilters(miniQ)
+
+    const [{ data: miniRaw }, { data: allVerses }] = await Promise.all([
+      miniQ,
+      supabase.from('verses').select('surah'),
+    ])
+
+    let mini = (miniRaw as unknown as MiniGroup[]) || []
+
+    if (sort === 'most-verses') {
+      mini.sort((a, b) => (b.verses?.length ?? 0) - (a.verses?.length ?? 0))
+    } else {
+      mini.sort((a, b) => {
+        const ma = Math.min(...a.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+        const mb = Math.min(...b.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+        if (ma !== mb) return ma - mb
+        const minAa = Math.min(...a.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === ma).map((v) => v.ayah), 9999)
+        const minAb = Math.min(...b.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === mb).map((v) => v.ayah), 9999)
+        return minAa - minAb
+      })
+    }
+
+    total = mini.length
     const from = (page - 1) * limit
-    const to   = from + limit - 1
-    query = query.range(from, to)
-  }
+    const pageIds = mini.slice(from, from + limit).map((g) => g.id)
 
-  const { data: groupsRaw, count } = await query
-  let groups = (groupsRaw as unknown as GroupShape[]) || []
-  let total = count ?? 0
+    // Fetch full data for this page only
+    const { data: fullRaw } = await supabase
+      .from('groups')
+      .select(FULL_SELECT)
+      .in('id', pageIds)
 
-  // Client-side sorting (requires all results)
-  if (sort === 'most-verses') {
-    groups.sort((a, b) => (b.verses?.length ?? 0) - (a.verses?.length ?? 0))
-  } else if (sort === 'mushaf') {
-    groups.sort((a, b) => {
-      const ma = Math.min(...a.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
-      const mb = Math.min(...b.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
-      if (ma !== mb) return ma - mb
-      const minAa = Math.min(...a.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === ma).map((v) => v.ayah), 9999)
-      const minAb = Math.min(...b.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === mb).map((v) => v.ayah), 9999)
-      return minAa - minAb
-    })
-  }
+    // Preserve sort order from the mini-sorted IDs
+    const groupMap = new Map((fullRaw || []).map((g: any) => [g.id, g]))
+    groups = pageIds.map((id) => groupMap.get(id)).filter(Boolean) as GroupShape[]
 
-  // Client-side pagination only for non-trivial sorts
-  if (!useServerPaging) {
+    for (const v of allVerses || []) {
+      surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
+    }
+
+  } else {
+    // Default path: server-side paging with sort, surah counts run in parallel
+    let mainQ = supabase.from('groups').select(FULL_SELECT, { count: 'exact' })
+    mainQ = applyFilters(mainQ)
+    if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
+    else if (sort === 'title') mainQ = (mainQ as any).order('title', { ascending: true })
+
     const from = (page - 1) * limit
-    groups = groups.slice(from, from + limit)
+    mainQ = (mainQ as any).range(from, from + limit - 1)
+
+    const [{ data: groupsRaw, count }, { data: allVerses }] = await Promise.all([
+      mainQ,
+      supabase.from('verses').select('surah'),
+    ])
+
+    groups = (groupsRaw as unknown as GroupShape[]) || []
+    total = count ?? 0
+
+    for (const v of allVerses || []) {
+      surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
+    }
   }
 
-  const totalPages = Math.ceil(total / limit)
+  const totalPages = view === 'group-surah' ? 1 : Math.ceil(total / limit)
 
   // Sort nested arrays
   const sorted = groups.map((g) => ({
@@ -111,13 +191,6 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
       parts: [...v.parts].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0)),
     })),
   }))
-
-  // Surah counts (for surah filter dropdown) — compute from all user verses
-  const { data: allVerses } = await supabase.from('verses').select('surah')
-  const surahCounts: Record<string, number> = {}
-  ;(allVerses || []).forEach((v: { surah: string }) => {
-    surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
-  })
 
   // Build pagination params
   const paginationParams: Record<string, string> = {}

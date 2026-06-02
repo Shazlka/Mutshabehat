@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import TagToolbox from '@/components/TagToolbox'
+import TagManager from '@/components/TagManager'
 import ClearCacheButton from '@/components/ClearCacheButton'
 
 export default async function SettingsPage() {
@@ -37,6 +38,13 @@ export default async function SettingsPage() {
             تُحفظ بياناتك تلقائياً في Supabase. لا توجد حاجة لمزامنة يدوية.
             يمكنك الوصول إليها من أي جهاز بعد تسجيل الدخول.
           </p>
+        </div>
+
+        <div>
+          <div className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-3">
+            إدارة الوسوم
+          </div>
+          <TagManager />
         </div>
 
         <div>

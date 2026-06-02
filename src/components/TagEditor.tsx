@@ -11,6 +11,7 @@ export default function TagEditor({ groupId }: Props) {
   const [adding, setAdding] = useState(false)
   const [newName, setNewName] = useState('')
   const [newColor, setNewColor] = useState('#4b63e6')
+  const [createError, setCreateError] = useState<string | null>(null)
 
   async function reload() {
     const [allRes, gRes] = await Promise.all([
@@ -39,20 +40,23 @@ export default function TagEditor({ groupId }: Props) {
 
   async function createTag() {
     if (!newName.trim()) return
+    setCreateError(null)
     const res = await fetch('/api/tags', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: newName.trim(), color: newColor }),
     })
+    const j = await res.json()
     if (res.ok) {
-      const { tag } = await res.json()
       // Auto-attach
       await fetch(`/api/groups/${groupId}/tags`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tag_id: tag.id }),
+        body: JSON.stringify({ tag_id: j.tag.id }),
       })
       setNewName(''); setAdding(false); reload()
+    } else {
+      setCreateError(j.error || 'حدث خطأ')
     }
   }
 
@@ -100,20 +104,30 @@ export default function TagEditor({ groupId }: Props) {
           + إنشاء وسم جديد
         </button>
       ) : (
-        <div className="flex items-center gap-2 p-3 bg-[var(--color-surface)] rounded-lg border border-[var(--color-border-soft)]">
-          <input value={newName} onChange={(e) => setNewName(e.target.value)}
-            placeholder="اسم الوسم"
-            className="flex-1 px-3 py-1.5 text-[13px] bg-[var(--color-paper)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-primary)] focus:outline-none transition-colors" />
-          <input type="color" value={newColor} onChange={(e) => setNewColor(e.target.value)}
-            className="w-9 h-9 rounded-md cursor-pointer border-0 p-0" aria-label="لون الوسم" />
-          <button onClick={createTag} type="button"
-            className="px-3 py-1.5 text-[12px] font-bold rounded-md bg-[var(--color-primary)] text-[var(--color-paper)] hover:bg-[var(--color-primary-hover)] tap-shrink transition-colors">
-            حفظ
-          </button>
-          <button onClick={() => { setAdding(false); setNewName('') }} type="button"
-            className="text-[12px] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] tap-shrink transition-colors">
-            إلغاء
-          </button>
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 p-3 bg-[var(--color-surface)] rounded-lg border border-[var(--color-border-soft)]">
+            <input value={newName} onChange={(e) => { setNewName(e.target.value); setCreateError(null) }}
+              onKeyDown={(e) => { if (e.key === 'Enter') createTag(); if (e.key === 'Escape') { setAdding(false); setNewName(''); setCreateError(null) } }}
+              placeholder="اسم الوسم"
+              className="flex-1 px-3 py-1.5 text-[13px] bg-[var(--color-paper)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-primary)] focus:outline-none transition-colors"
+              autoFocus dir="rtl" />
+            <input type="color" value={newColor} onChange={(e) => setNewColor(e.target.value)}
+              className="w-9 h-9 rounded-md cursor-pointer border-0 p-0" aria-label="لون الوسم" />
+            <button onClick={createTag} type="button"
+              className="px-3 py-1.5 text-[12px] font-bold rounded-md bg-[var(--color-primary)] text-[var(--color-paper)] hover:bg-[var(--color-primary-hover)] tap-shrink transition-colors">
+              حفظ
+            </button>
+            <button onClick={() => { setAdding(false); setNewName(''); setCreateError(null) }} type="button"
+              className="text-[12px] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] tap-shrink transition-colors">
+              إلغاء
+            </button>
+          </div>
+          {createError && (
+            <p role="alert" className="text-[11px] px-2 py-1 rounded font-bold"
+               style={{ color: 'var(--color-danger)', background: 'var(--color-danger-bg)' }}>
+              {createError}
+            </p>
+          )}
         </div>
       )}
     </div>
