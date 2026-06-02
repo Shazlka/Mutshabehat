@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import ArabicDiff, { type Part } from './ArabicDiff'
 import { ayahToArabic } from '@/lib/arabic'
 import GroupActions from './GroupActions'
@@ -32,18 +35,17 @@ function buildPlainText(g: GroupRowData): string {
 }
 
 export default function GroupRow({ group, index }: Props) {
+  const router = useRouter()
   const plainText = buildPlainText(group)
   return (
     <article
       style={{ ['--i' as keyof React.CSSProperties]: String(index % 12) } as React.CSSProperties}
-      className="group/row relative -mx-2 md:-mx-4 px-3 md:px-4 py-4 md:py-6 rounded-xl animate-fade-rise transition-all duration-200 hover:bg-[var(--color-surface)] md:hover:shadow-[0_2px_24px_-12px_oklch(0.30_0.10_265/0.20)] motion-safe:md:hover:-translate-y-0.5 will-change-transform cursor-pointer"
+      onClick={() => router.push(`/groups/${group.id}`)}
+      className="group/row -mx-2 md:-mx-4 px-3 md:px-4 py-4 md:py-6 rounded-xl animate-fade-rise transition-all duration-200 hover:bg-[var(--color-surface)] md:hover:shadow-[0_2px_24px_-12px_oklch(0.30_0.10_265/0.20)] motion-safe:md:hover:-translate-y-0.5 will-change-transform cursor-pointer"
       aria-labelledby={`group-${group.id}-title`}>
 
-      {/* Full-card link overlay — sits behind all interactive children */}
-      <Link href={`/groups/${group.id}`} className="absolute inset-0 z-0 rounded-xl" aria-label={group.title} tabIndex={-1} />
-
       {/* Title row */}
-      <header className="relative z-[1] flex items-baseline justify-between gap-3 md:gap-4 mb-3 md:mb-4">
+      <header className="flex items-baseline justify-between gap-3 md:gap-4 mb-3 md:mb-4">
         <div className="flex items-baseline gap-2 md:gap-3 min-w-0">
           {group.color && (
             <span aria-hidden="true"
@@ -59,7 +61,7 @@ export default function GroupRow({ group, index }: Props) {
             {group.title}
           </h2>
         </div>
-        <div className="flex items-center gap-1 md:gap-2 shrink-0">
+        <div className="flex items-center gap-1 md:gap-2 shrink-0" onClick={(e) => e.stopPropagation()}>
           <GroupActions
             id={group.id}
             favorite={group.favorite}
@@ -75,7 +77,7 @@ export default function GroupRow({ group, index }: Props) {
       </header>
 
       {/* Verses */}
-      <ol className="relative z-[1] space-y-4 md:space-y-4" aria-label="الآيات">
+      <ol className="space-y-4 md:space-y-4" aria-label="الآيات">
         {group.verses.map((v) => (
           <li key={v.id} className="md:flex md:items-start md:gap-5">
             {/* Mobile: meta on top as inline strip. Desktop: meta in left column. */}
