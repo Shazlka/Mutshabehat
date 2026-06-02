@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { cn } from '@/lib/cn'
 
 export interface Part {
@@ -21,9 +22,18 @@ export default function ArabicDiff({ parts, className, size = 'md' }: Props) {
 
   return (
     <p dir="rtl" className={cn('font-quran', sizeClass, className)}>
-      {parts.map((p, i) => (
-        <span key={i} className={`part-${p.type}`}>{p.text}</span>
-      ))}
+      {parts.map((p, i) => {
+        const next = parts[i + 1]
+        const needsSpace = next !== undefined
+          && !p.text.endsWith(' ')
+          && !next.text.startsWith(' ')
+        return (
+          <Fragment key={i}>
+            <span className={`part-${p.type}`}>{p.text}</span>
+            {needsSpace && ' '}
+          </Fragment>
+        )
+      })}
     </p>
   )
 }
