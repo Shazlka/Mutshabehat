@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 
 const SORTS = [
+  { key: 'created',     label: 'الأحدث إضافةً' },
   { key: 'updated',     label: 'الأحدث تعديلاً' },
   { key: 'mushaf',      label: 'ترتيب المصحف' },
   { key: 'most-verses', label: 'الأكثر آيات' },
@@ -17,7 +18,7 @@ const VIEWS = [
 export default function SortBar() {
   const router = useRouter()
   const params = useSearchParams()
-  const sort = params.get('sort') ?? 'updated'
+  const sort = params.get('sort') ?? 'created'
   const view = params.get('view') ?? 'flat'
 
   function setParam(key: string, value: string, defaultValue: string) {
@@ -31,7 +32,7 @@ export default function SortBar() {
     <div className="flex items-center gap-3 flex-wrap text-[11px] mb-4">
       <label className="inline-flex items-center gap-1.5">
         <span className="text-[var(--color-ink-muted)] tracking-wider uppercase font-bold">الترتيب:</span>
-        <select value={sort} onChange={(e) => setParam('sort', e.target.value, 'updated')}
+        <select value={sort} onChange={(e) => setParam('sort', e.target.value, 'created')}
           className="px-2.5 py-1.5 bg-[var(--color-surface)] border border-[var(--color-border-soft)] rounded-md text-[12px] font-bold focus:border-[var(--color-primary)] focus:outline-none transition-colors">
           {SORTS.map((s) => <option key={s.key} value={s.key}>{s.label}</option>)}
         </select>

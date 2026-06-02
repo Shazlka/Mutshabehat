@@ -43,7 +43,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   const limit  = 12
   const filter = sp.filter ?? ''
   const q      = sp.q ?? ''
-  const sort   = sp.sort ?? 'updated'
+  const sort   = sp.sort ?? 'created'
   const view   = sp.view ?? 'flat'
   const surah  = sp.surah ?? ''
 
@@ -84,8 +84,9 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     // Surah counts always run in parallel
     let mainQ = supabase.from('groups').select(FULL_SELECT, { count: 'exact' })
     mainQ = applyFilters(mainQ)
-    if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
-    else if (sort === 'title') mainQ = (mainQ as any).order('title', { ascending: true })
+    if (sort === 'created')     mainQ = (mainQ as any).order('created_at', { ascending: false })
+    else if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
+    else if (sort === 'title')   mainQ = (mainQ as any).order('title',      { ascending: true })
     // mushaf/most-verses applied in JS after fetch since all data is present anyway
 
     const [{ data: groupsRaw, count }, { data: allVerses }] = await Promise.all([
@@ -162,8 +163,9 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     // Default path: server-side paging with sort, surah counts run in parallel
     let mainQ = supabase.from('groups').select(FULL_SELECT, { count: 'exact' })
     mainQ = applyFilters(mainQ)
-    if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
-    else if (sort === 'title') mainQ = (mainQ as any).order('title', { ascending: true })
+    if (sort === 'created')      mainQ = (mainQ as any).order('created_at', { ascending: false })
+    else if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
+    else if (sort === 'title')   mainQ = (mainQ as any).order('title',      { ascending: true })
 
     const from = (page - 1) * limit
     mainQ = (mainQ as any).range(from, from + limit - 1)
@@ -196,7 +198,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   const paginationParams: Record<string, string> = {}
   if (filter) paginationParams.filter = filter
   if (q)      paginationParams.q = q
-  if (sort !== 'updated') paginationParams.sort = sort
+  if (sort !== 'created') paginationParams.sort = sort
   if (view !== 'flat')    paginationParams.view = view
   if (surah)  paginationParams.surah = surah
 
