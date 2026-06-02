@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
   // Map incoming tag.id → final tag.id (existing or newly created)
   const idMap = new Map<string, string>()
   let created = 0
+  let tagsFailed = 0
   for (const inc of body.tags) {
     if (!inc?.name?.trim()) continue
     let finalId = existingByName.get(inc.name.trim())
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
       const { data: newTag, error } = await supabase
         .from('tags').insert({ user_id: user.id, name: inc.name.trim(), color: inc.color ?? null })
         .select('id').single()
-      if (error) continue
+      if (error) { tagsFailed++; continue }
       finalId = newTag.id
       created++
     }
@@ -38,14 +39,22 @@ export async function POST(request: NextRequest) {
 
   // Apply group_tags — only for groups the user owns (RLS enforces it anyway)
   let attached = 0
+  let linksFailed = 0
   if (Array.isArray(body.group_tags)) {
     for (const gt of body.group_tags) {
       const final = idMap.get(gt.tag_id) || gt.tag_id
       const { error } = await supabase
         .from('group_tags').insert({ group_id: gt.group_id, tag_id: final })
       if (!error) attached++
+      else linksFailed++
     }
   }
 
-  return NextResponse.json({ success: true, tagsCreated: created, linksCreated: attached })
+  return NextResponse.json({
+    success: true,
+    tagsCreated: created,
+    linksCreated: attached,
+    ...(tagsFailed  > 0 && { tagsFailed }),
+    ...(linksFailed > 0 && { linksFailed }),
+  })
 }

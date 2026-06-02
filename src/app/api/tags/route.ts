@@ -44,6 +44,12 @@ export async function POST(request: NextRequest) {
     .insert({ user_id: user.id, name, color: body.color ?? null })
     .select('*').single()
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    // Postgres unique-constraint violation (code 23505) means duplicate tag
+    if (error.code === '23505') {
+      return NextResponse.json({ error: 'وسم بهذا الاسم موجود مسبقاً' }, { status: 409 })
+    }
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
   return NextResponse.json({ tag: data }, { status: 201 })
 }

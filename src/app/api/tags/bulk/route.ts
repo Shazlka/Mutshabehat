@@ -17,12 +17,14 @@ export async function POST(request: NextRequest) {
   const mode = body.mode ?? 'add'
 
   if (mode === 'replace') {
-    await supabase.from('group_tags').delete().in('group_id', body.group_ids)
+    const { error } = await supabase.from('group_tags').delete().in('group_id', body.group_ids)
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   }
   if (mode === 'remove') {
     if (body.tag_ids.length) {
-      await supabase.from('group_tags').delete()
+      const { error } = await supabase.from('group_tags').delete()
         .in('group_id', body.group_ids).in('tag_id', body.tag_ids)
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 })
     }
   } else {
     // add or replace → insert all pairs
@@ -30,7 +32,8 @@ export async function POST(request: NextRequest) {
     for (const gid of body.group_ids) for (const tid of body.tag_ids) rows.push({ group_id: gid, tag_id: tid })
     if (rows.length) {
       // .upsert with onConflict prevents duplicate-pk errors on add-mode
-      await supabase.from('group_tags').upsert(rows, { onConflict: 'group_id,tag_id', ignoreDuplicates: true })
+      const { error } = await supabase.from('group_tags').upsert(rows, { onConflict: 'group_id,tag_id', ignoreDuplicates: true })
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 })
     }
   }
 

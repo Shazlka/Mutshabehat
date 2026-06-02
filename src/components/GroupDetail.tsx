@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import ArabicDiff, { type Part } from './ArabicDiff'
 import ImageShareButton from './ImageShareButton'
 import { ayahToArabic } from '@/lib/arabic'
 import { autoColorPair } from '@/lib/diff'
 import { cn } from '@/lib/cn'
+import { sanitizeNote } from '@/lib/sanitize'
 
 interface Verse {
   id: string; surah: string; ayah: number; label: string | null
@@ -22,6 +23,23 @@ interface Group {
 export default function GroupDetail({ group }: { group: Group }) {
   const [view, setView] = useState<'as-is' | 'master-slave'>('as-is')
   const [masterIdx, setMasterIdx] = useState(0)
+  const [copiedIdx, setCopiedIdx] = useState<number | null>(null)
+  const lastTapTime = useRef<Record<number, number>>({})
+
+  function copyVerse(vi: number, parts: Part[], surah: string, ayah: number) {
+    const text = `${surah} (${ayah})\n${parts.map((p) => p.text).join('')}`
+    navigator.clipboard.writeText(text).catch(() => {})
+    setCopiedIdx(vi)
+    setTimeout(() => setCopiedIdx(null), 1500)
+  }
+
+  function handleDoubleTap(vi: number, parts: Part[], surah: string, ayah: number) {
+    const now = Date.now()
+    if (now - (lastTapTime.current[vi] ?? 0) < 350) {
+      copyVerse(vi, parts, surah, ayah)
+    }
+    lastTapTime.current[vi] = now
+  }
 
   const masterText = useMemo(() => {
     const v = group.verses[masterIdx]
@@ -118,8 +136,19 @@ export default function GroupDetail({ group }: { group: Group }) {
           } else if (view === 'master-slave' && vi === masterIdx) {
             display = [{ type: 'shared', text: masterText }]
           }
+          const isCopied = copiedIdx === vi
           return (
-            <li key={v.id} className="pt-5 md:pt-6 first:pt-0 md:flex md:items-start md:gap-5">
+            <li key={v.id}
+              className="pt-5 md:pt-6 first:pt-0 md:flex md:items-start md:gap-5 relative select-none cursor-default"
+              onDoubleClick={() => copyVerse(vi, display, v.surah, v.ayah)}
+              onTouchEnd={() => handleDoubleTap(vi, display, v.surah, v.ayah)}>
+              {/* Copied flash */}
+              {isCopied && (
+                <span className="absolute left-0 top-4 md:top-5 z-10 text-[11px] font-bold px-2.5 py-1 rounded-full pointer-events-none animate-fade-rise"
+                      style={{ color: 'var(--color-success)', background: 'var(--color-success-bg)' }}>
+                  تم النسخ ✓
+                </span>
+              )}
               {/* Meta — stacked on mobile (above text), column on desktop (left of text) */}
               <div className="md:shrink-0 md:w-24 md:pt-0.5
                               flex md:block items-baseline gap-2 mb-2 md:mb-0 flex-wrap">
@@ -156,7 +185,7 @@ export default function GroupDetail({ group }: { group: Group }) {
                 ملاحظة
               </h2>
               <div className="rich-content text-[14px] leading-[1.9] text-[var(--color-ink)] p-4 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border-soft)]"
-                   dangerouslySetInnerHTML={{ __html: group.note }} dir="rtl" />
+                   dangerouslySetInnerHTML={{ __html: sanitizeNote(group.note) ?? '' }} dir="rtl" />
             </div>
           )}
           {group.unote && (
@@ -168,7 +197,7 @@ export default function GroupDetail({ group }: { group: Group }) {
               </h2>
               <div className="rich-content text-[14px] leading-[1.9] text-[var(--color-ink)] p-4 rounded-xl border-2"
                    style={{ background: 'var(--color-diff2-bg)', borderColor: 'var(--color-diff2)' }}
-                   dangerouslySetInnerHTML={{ __html: group.unote }} dir="rtl" />
+                   dangerouslySetInnerHTML={{ __html: sanitizeNote(group.unote) ?? '' }} dir="rtl" />
             </div>
           )}
         </div>
