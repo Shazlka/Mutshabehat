@@ -190,8 +190,8 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
         return
       }
       setSaveSuccess(true)
-      // Brief moment of success feedback, then navigate
-      setTimeout(() => { router.push('/'); router.refresh() }, 650)
+      // Brief moment of success feedback, then return to group detail
+      setTimeout(() => { router.push(`/groups/${group.id}`); router.refresh() }, 650)
     })
   }
 
@@ -209,7 +209,7 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
       {/* Toolbar — sticky with accent presence */}
       <div className="sticky top-0 -mx-5 md:-mx-8 px-5 md:px-8 py-3 mb-8 bg-[var(--color-paper)]/95 backdrop-blur-sm border-b border-[var(--color-border)] z-10">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/"
+          <Link href={`/groups/${group.id}`}
             className="inline-flex items-center gap-1 text-[13px] font-bold text-[var(--color-ink-soft)] hover:text-[var(--color-primary)] tap-shrink transition-colors">
             <span aria-hidden="true">←</span> العودة
           </Link>
