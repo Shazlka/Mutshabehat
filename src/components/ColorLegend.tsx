@@ -16,9 +16,7 @@ export default function ColorLegend() {
       </span>
       <span className="hidden sm:block w-px h-3 bg-[var(--color-border)]" aria-hidden="true" />
       {ITEMS.map((it) => (
-        <span key={it.key}
-              className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[var(--color-ink-soft)]">
-          <span className={`part-${it.key} font-quran text-[13px] px-1.5 py-0`} aria-hidden="true">أ</span>
+        <span key={it.key} className={`part-${it.key} text-[12px] font-bold px-1.5 py-0.5 rounded`}>
           {it.label}
         </span>
       ))}
