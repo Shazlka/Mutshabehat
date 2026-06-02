@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import { cn } from '@/lib/cn'
 import ArabicDiff from './ArabicDiff'
 import AutoColorPicker from './AutoColorPicker'
@@ -190,8 +189,7 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
         return
       }
       setSaveSuccess(true)
-      // Replace the edit page in history so pressing back skips it
-      setTimeout(() => { router.replace(`/groups/${group.id}`); router.refresh() }, 650)
+      setTimeout(() => router.back(), 650)
     })
   }
 
@@ -209,10 +207,10 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
       {/* Toolbar — sticky with accent presence */}
       <div className="sticky top-0 -mx-5 md:-mx-8 px-5 md:px-8 py-3 mb-8 bg-[var(--color-paper)]/95 backdrop-blur-sm border-b border-[var(--color-border)] z-10">
         <div className="flex items-center justify-between gap-4">
-          <Link href={`/groups/${group.id}`}
+          <button onClick={() => router.back()}
             className="inline-flex items-center gap-1 text-[13px] font-bold text-[var(--color-ink-soft)] hover:text-[var(--color-primary)] tap-shrink transition-colors">
             <span aria-hidden="true">←</span> العودة
-          </Link>
+          </button>
           <div className="flex items-center gap-3" aria-live="polite">
             {saveError && (
               <span role="alert" className="text-[12px] px-2.5 py-1 rounded-md font-bold animate-fade-rise"
