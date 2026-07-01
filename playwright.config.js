@@ -69,7 +69,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: "npx serve V82B -p 5173 --no-clipboard",
+    command: "python3 -m http.server 5173 --directory V82B",
     url: "http://localhost:5173",
     reuseExistingServer: true,
     timeout: 30_000,
