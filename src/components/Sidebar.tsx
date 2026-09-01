@@ -79,12 +79,6 @@ export default function Sidebar({ email, groupCount }: Props) {
         <div className="px-3 py-2 text-[11px] text-[var(--color-ink-muted)] truncate" dir="ltr" title={email}>
           {email}
         </div>
-        <form action="/auth/signout" method="POST">
-          <button type="submit"
-            className="w-full text-right px-3 py-1.5 rounded-md text-[12px] text-[var(--color-ink-soft)] hover:bg-[var(--color-danger-bg)] hover:text-[var(--color-danger)] tap-shrink transition-colors">
-            تسجيل الخروج
-          </button>
-        </form>
       </div>
     </aside>
   )

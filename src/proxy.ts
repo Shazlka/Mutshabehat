@@ -1,6 +1,10 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+// Single-user, self-hosted deployment: there is no login UI. The middleware
+// silently establishes a session for the one account (credentials in
+// AUTOLOGIN_EMAIL / AUTOLOGIN_PASSWORD) so every request is authenticated and
+// RLS (`auth.uid()`) keeps working unchanged.
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
@@ -21,27 +25,32 @@ export async function proxy(request: NextRequest) {
     }
   )
 
-  // Refresh session if expired
-  const { data: { user } } = await supabase.auth.getUser()
-
   const { pathname } = request.nextUrl
 
-  // Redirect unauthenticated users away from protected routes
-  const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/signup') || pathname.startsWith('/auth')
-  const isApiRoute  = pathname.startsWith('/api')
-
-  if (!user && !isAuthRoute && !isApiRoute) {
-    return NextResponse.redirect(new URL('/login', request.url))
+  // The old auth pages are gone — bounce any stale links back to the app.
+  if (
+    pathname.startsWith('/login') || pathname.startsWith('/signup') ||
+    pathname.startsWith('/forgot-password') || pathname.startsWith('/reset-password')
+  ) {
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
-  // Redirect authenticated users away from auth pages
-  if (user && isAuthRoute) {
-    return NextResponse.redirect(new URL('/', request.url))
+  // Refresh the session if there is one.
+  let { data: { user } } = await supabase.auth.getUser()
+
+  // No session → sign in as the single account, server-side.
+  if (!user && !pathname.startsWith('/auth')) {
+    const email = process.env.AUTOLOGIN_EMAIL
+    const password = process.env.AUTOLOGIN_PASSWORD
+    if (email && password) {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+      if (!error && data.user) user = data.user
+    }
   }
 
   return supabaseResponse
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.svg).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|manifest\\.json|sw\\.js|icons|.*\\.svg).*)'],
 }
