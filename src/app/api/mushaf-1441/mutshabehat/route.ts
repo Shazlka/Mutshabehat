@@ -1,33 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { getSessionUser } from '@/lib/session-user'
-import { MUSHAF_1441_SURAH_OPTIONS } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
-
-type VerseRow = {
-  surah: string | number | null
-  ayah: number | null
-  label?: string | null
-}
-
-type TagRow = {
-  name?: string | null
-}
-
-type GroupTagRow = {
-  tags?: TagRow | TagRow[] | null
-}
-
-type GroupRow = {
-  id: string
-  title: string
-  color: string | null
-  note?: string | null
-  status?: string | null
-  verses?: VerseRow[] | null
-  group_tags?: GroupTagRow[] | null
-}
-
-const surahNameToNumber = new Map(MUSHAF_1441_SURAH_OPTIONS.map((surah) => [surah.name, surah.surahNumber]))
+import { loadMushafMutshabehatHighlights } from '@/lib/mushaf-mutshabehat'
 
 async function getAuthenticatedSupabase() {
   try {
@@ -59,33 +33,7 @@ async function getAuthenticatedSupabase() {
   }
 }
 
-function toAyahKey(verse: VerseRow) {
-  const ayah = Number(verse.ayah)
-  if (!Number.isInteger(ayah) || ayah < 1) return null
-
-  if (typeof verse.surah === 'number' || /^\d+$/.test(String(verse.surah ?? ''))) {
-    const surahNumber = Number(verse.surah)
-    return Number.isInteger(surahNumber) ? `${surahNumber}:${ayah}` : null
-  }
-
-  const surahNumber = surahNameToNumber.get(String(verse.surah ?? '').trim())
-  return surahNumber ? `${surahNumber}:${ayah}` : null
-}
-
-function getTagNames(group: GroupRow) {
-  const names = new Set<string>()
-
-  for (const groupTag of group.group_tags ?? []) {
-    const tagRows = Array.isArray(groupTag.tags) ? groupTag.tags : [groupTag.tags]
-    for (const tag of tagRows) {
-      const name = tag?.name?.trim()
-      if (name) names.add(name)
-    }
-  }
-
-  return [...names]
-}
-
+// GET /api/mushaf-1441/mutshabehat[?ayahKeys=2:10,2:11] — without ayahKeys returns every link.
 export async function GET(request: NextRequest) {
   const { supabase, user, response } = await getAuthenticatedSupabase()
   if (response) return response
@@ -98,36 +46,8 @@ export async function GET(request: NextRequest) {
       .filter((key) => /^\d+:\d+$/.test(key))
   )
 
-  const { data, error } = await supabase
-    .from('groups')
-    .select('id, title, color, note, status, verses(surah, ayah, label), group_tags(tags(name))')
-    .eq('user_id', user.id)
-
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-
-  const highlights = []
-  for (const group of (data ?? []) as GroupRow[]) {
-    const groupAyahKeys = new Set<string>()
-    for (const verse of group.verses ?? []) {
-      const ayahKey = toAyahKey(verse)
-      if (ayahKey) groupAyahKeys.add(ayahKey)
-    }
-
-    for (const ayahKey of groupAyahKeys) {
-      if (ayahKeys.size > 0 && !ayahKeys.has(ayahKey)) continue
-      const tags = getTagNames(group)
-      highlights.push({
-        ayahKey,
-        groupId: group.id,
-        title: group.title,
-        category: group.status ?? undefined,
-        color: group.color ?? '#b8871d',
-        tags: tags.length > 0 ? tags : undefined,
-        notes: group.note ? [group.note] : [],
-        similarAyat: [...groupAyahKeys].filter((key) => key !== ayahKey),
-      })
-    }
-  }
+  const { highlights, error } = await loadMushafMutshabehatHighlights(supabase, user.id, ayahKeys)
+  if (error) return NextResponse.json({ error }, { status: 500 })
 
   return NextResponse.json({ highlights })
 }

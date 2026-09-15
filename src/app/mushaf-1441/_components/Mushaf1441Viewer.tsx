@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import Link from 'next/link'
 import ArabicDiff, { type Part } from '@/components/ArabicDiff'
 import type {
@@ -29,6 +29,8 @@ type Mushaf1441ViewerProps = {
   initialPage: MushafPage
   initialPageMetadata: Mushaf1441PageMetadata
   surahOptions: Mushaf1441SurahOption[]
+  /** Every ayah → personal group link, loaded on the server; null = not available (client fetches). */
+  initialMutshabehatHighlights?: MutshabehatAyahLink[] | null
 }
 
 const MIN_PAGE = 1
@@ -185,6 +187,9 @@ const MUSHAF_PAGE_PRINT_PADDING_X = '7.2%'
 const MUSHAF_PAGE_PRINT_PADDING_Y = '5.8%'
 const MUSHAF_QCF_FONT_SIZE = '4.35cqw'
 const MUSHAF_QCF_LINE_HEIGHT = 1.04
+// Word box = line height + vertical padding; gaps use the same height so highlight bands are flush.
+const MUSHAF_WORD_BAND_PADDING = '0.08em'
+const MUSHAF_WORD_BAND_HEIGHT = `calc(${MUSHAF_QCF_LINE_HEIGHT}em + 0.16em)`
 const SWIPE_THRESHOLD_PX = 55
 const LONG_PRESS_MS = 480
 const SIGN_IN_HREF = '/login?next=/mushaf-1441'
@@ -267,6 +272,7 @@ export default function Mushaf1441Viewer({
   initialPage,
   initialPageMetadata,
   surahOptions,
+  initialMutshabehatHighlights = null,
 }: Mushaf1441ViewerProps) {
   const [pageNumber, setPageNumber] = useState(initialPage.pageNumber)
   const [pageInput, setPageInput] = useState(String(initialPage.pageNumber))
@@ -303,7 +309,7 @@ export default function Mushaf1441Viewer({
   const [annotationError, setAnnotationError] = useState<string | null>(null)
   const [isAnnotationSaving, setIsAnnotationSaving] = useState(false)
   const [annotationSyncAvailable, setAnnotationSyncAvailable] = useState(true)
-  const [pageMutshabehatHighlights, setPageMutshabehatHighlights] = useState<MutshabehatAyahLink[]>([])
+  const [allMutshabehatHighlights, setAllMutshabehatHighlights] = useState<MutshabehatAyahLink[] | null>(initialMutshabehatHighlights)
   const [mutshabehatLoadError, setMutshabehatLoadError] = useState<string | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [needsSignIn, setNeedsSignIn] = useState(false)
@@ -536,7 +542,16 @@ export default function Mushaf1441Viewer({
     return map
   }, [pageAnnotations])
   const mutshabehatLinkEnabled = isMushafMutshabehatLinkEnabled()
-  const pageHighlights = pageMutshabehatHighlights
+  // Filter the user's full link list to this page locally — instant on every page turn.
+  const pageHighlights = useMemo<MutshabehatAyahLink[]>(() => {
+    if (!visiblePage) return []
+    if (!mutshabehatLinkEnabled) {
+      return getHighlightsForPage(pageNumber, visiblePage, SAMPLE_MUTSHABEHAT_LINK_SOURCE) as MutshabehatAyahLink[]
+    }
+    if (!allMutshabehatHighlights) return []
+    const keys = new Set(ayahKeys)
+    return allMutshabehatHighlights.filter((highlight) => keys.has(highlight.ayahKey))
+  }, [allMutshabehatHighlights, ayahKeys, mutshabehatLinkEnabled, pageNumber, visiblePage])
   const highlightedMutshabehatAyahKeys = useMemo(
     () => new Set(pageHighlights.map((highlight) => highlight.ayahKey)),
     [pageHighlights]
@@ -561,45 +576,32 @@ export default function Mushaf1441Viewer({
       : []
   ), [selectedAyahKey])
 
+  // Fallback only: if the server could not include the links, fetch the full list once.
   useEffect(() => {
+    if (!mutshabehatLinkEnabled || allMutshabehatHighlights) return
     let cancelled = false
 
-    async function loadMutshabehatHighlights() {
-      if (!visiblePage || !mutshabehatLinkEnabled) {
-        setMutshabehatLoadError(null)
-        setPageMutshabehatHighlights(getHighlightsForPage(pageNumber, visiblePage, SAMPLE_MUTSHABEHAT_LINK_SOURCE))
-        return
-      }
-
-      const keys = ayahKeys.length > 0
-        ? ayahKeys
-        : [...new Set(visiblePage.lines.flatMap((line) => line.words.map((word) => word.ayahKey)))]
-      if (keys.length === 0) {
-        setPageMutshabehatHighlights([])
-        return
-      }
-
+    async function loadAllMutshabehatHighlights() {
       try {
-        setMutshabehatLoadError(null)
-        const response = await fetch(`/api/mushaf-1441/mutshabehat?ayahKeys=${encodeURIComponent(keys.join(','))}`)
+        const response = await fetch(`/api/mushaf-1441/mutshabehat`)
         if (!response.ok) {
           throw new Error(await readPreviewApiError(response, 'تعذر تحميل متشابهات Supabase لهذه الصفحة.'))
         }
         const payload = await response.json() as { highlights?: MutshabehatAyahLink[] }
         if (cancelled) return
-        setPageMutshabehatHighlights(Array.isArray(payload.highlights) ? payload.highlights : [])
+        setMutshabehatLoadError(null)
+        setAllMutshabehatHighlights(Array.isArray(payload.highlights) ? payload.highlights : [])
       } catch (error) {
         if (cancelled) return
         setMutshabehatLoadError(error instanceof Error ? error.message : 'تعذر تحميل متشابهات Supabase لهذه الصفحة.')
-        setPageMutshabehatHighlights(getHighlightsForPage(pageNumber, visiblePage, SAMPLE_MUTSHABEHAT_LINK_SOURCE))
       }
     }
 
-    void loadMutshabehatHighlights()
+    void loadAllMutshabehatHighlights()
     return () => {
       cancelled = true
     }
-  }, [ayahKeys, mutshabehatLinkEnabled, pageNumber, visiblePage])
+  }, [allMutshabehatHighlights, mutshabehatLinkEnabled])
 
   async function goToPage(nextPage: number, targetAyahKey?: string) {
     const clamped = clampPage(nextPage)
@@ -1315,6 +1317,42 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  function findHighlightAnnotation(word: MushafWord) {
+    const wordHighlightAnnotation = (annotationsByWordId.get(word.id) ?? [])
+      .find((annotation) => annotation.annotationType === 'highlight')
+    const rangeHighlightAnnotation = pageAnnotations.find((annotation) => (
+      annotation.annotationType === 'highlight' && isWordInsideAnnotationRange(annotation, word)
+    ))
+    const ayahHighlightAnnotation = (annotationsByAyahKey.get(word.ayahKey) ?? []).find((annotation) => (
+      annotation.annotationType === 'highlight' && annotation.targetType === 'ayah'
+    ))
+    return wordHighlightAnnotation ?? rangeHighlightAnnotation ?? ayahHighlightAnnotation
+  }
+
+  // Background a word shows (same precedence as renderQcfWord), used to colour the gaps.
+  function getWordBandColor(word: MushafWord): string | null {
+    const annotationColor = findHighlightAnnotation(word)?.backgroundColor
+    if (annotationColor) return annotationColor
+    if (selectedAyahKey === word.ayahKey) return SELECTION_BG
+    const link = mutshabehatHighlightByAyahKey.get(word.ayahKey)
+    return link ? tintForGroup(link.groupId ?? link.ayahKey).bg : null
+  }
+
+  // The space between two words. On justified lines it grows to fill the line (like
+  // justify-between); when both neighbours share a highlight colour the gap takes it, so an
+  // ayah's highlight reads as one continuous band instead of separate word marks.
+  function renderWordGap(left: MushafWord, right: MushafWord, isCentered: boolean) {
+    const leftColor = getWordBandColor(left)
+    const color = leftColor && leftColor === getWordBandColor(right) ? leftColor : undefined
+    return (
+      <span
+        aria-hidden="true"
+        className={isCentered ? 'w-[0.12em] shrink-0' : 'min-w-[0.06em] flex-1'}
+        style={{ height: MUSHAF_WORD_BAND_HEIGHT, backgroundColor: color }}
+      />
+    )
+  }
+
   function renderQcfWord(word: MushafWord) {
     const isSelectedWord = selectedWord?.id === word.id
     const isHighlightedAyah = selectedAyahKey === word.ayahKey
@@ -1322,16 +1360,8 @@ export default function Mushaf1441Viewer({
     const isMutshabehatHighlighted = Boolean(mutshabehatHighlight)
     const mutshabehatTint = mutshabehatHighlight ? tintForGroup(mutshabehatHighlight.groupId ?? mutshabehatHighlight.ayahKey) : null
     const showMutshabehatTint = Boolean(mutshabehatTint) && !isSelectedWord && !isHighlightedAyah
-    const wordAnnotations = annotationsByWordId.get(word.id) ?? []
     const ayahAnnotations = annotationsByAyahKey.get(word.ayahKey) ?? []
-    const wordHighlightAnnotation = wordAnnotations.find((annotation) => annotation.annotationType === 'highlight')
-    const rangeHighlightAnnotation = pageAnnotations.find((annotation) => (
-      annotation.annotationType === 'highlight' && isWordInsideAnnotationRange(annotation, word)
-    ))
-    const ayahHighlightAnnotation = ayahAnnotations.find((annotation) => (
-      annotation.annotationType === 'highlight' && annotation.targetType === 'ayah'
-    ))
-    const highlightAnnotation = wordHighlightAnnotation ?? rangeHighlightAnnotation ?? ayahHighlightAnnotation
+    const highlightAnnotation = findHighlightAnnotation(word)
     const hasAyahBookmark = ayahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasAyahFavorite = ayahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
     // QCF glyphs only with this page's own loaded font; otherwise readable Unicode text.
@@ -1397,14 +1427,12 @@ export default function Mushaf1441Viewer({
           fontFamily,
           fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
+          paddingBlock: MUSHAF_WORD_BAND_PADDING,
           color: highlightAnnotation?.textColor,
-          // Highlighter mark: tinted background plus a same-colour spread that bridges the
-          // justified gaps between words, so the whole ayah reads as one coloured band.
+          // Highlight band: the word and the gaps next to it (renderWordGap) share one colour.
           backgroundColor: highlightAnnotation?.backgroundColor ?? (showMutshabehatTint ? mutshabehatTint?.bg : undefined),
-          boxShadow: [
-            showMutshabehatTint && !highlightAnnotation ? `0 0 0 0.14em ${mutshabehatTint?.bg}` : null,
-            hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : null,
-          ].filter(Boolean).join(', ') || undefined,
+          borderRadius: showMutshabehatTint || highlightAnnotation ? 0 : undefined,
+          boxShadow: hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : undefined,
         }}
       >
         <span dangerouslySetInnerHTML={{ __html: displayText ?? '' }} />
@@ -1623,9 +1651,14 @@ export default function Mushaf1441Viewer({
                   ) : line.words.length > 0 ? (
                     <div
                       data-role="line-words"
-                      className={`flex w-full items-baseline whitespace-nowrap [word-spacing:0] ${isCentered ? 'justify-center gap-[0.12em]' : 'justify-between'}`}
+                      className={`flex w-full items-center whitespace-nowrap [word-spacing:0] ${isCentered ? 'justify-center' : ''}`}
                     >
-                      {line.words.map((word) => renderQcfWord(word))}
+                      {line.words.map((word, index) => (
+                        <Fragment key={word.id}>
+                          {renderQcfWord(word)}
+                          {index < line.words.length - 1 ? renderWordGap(word, line.words[index + 1], isCentered) : null}
+                        </Fragment>
+                      ))}
                     </div>
                   ) : (
                     <span aria-hidden="true" />

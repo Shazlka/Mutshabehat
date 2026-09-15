@@ -17,7 +17,7 @@ function fail(message) {
 const schema = readFileSync(SCHEMA_PATH, 'utf8')
 const previewMigration = readFileSync(PREVIEW_MIGRATION_PATH, 'utf8')
 const annotationsApi = readFileSync(ANNOTATIONS_API_PATH, 'utf8')
-const mutshabehatApi = readFileSync(MUTSHABEHAT_API_PATH, 'utf8')
+const mutshabehatApi = readFileSync(MUTSHABEHAT_API_PATH, 'utf8') + readFileSync(join(ROOT, 'src/lib/mushaf-mutshabehat.ts'), 'utf8')
 const types = readFileSync(TYPES_PATH, 'utf8')
 const crudVerifier = readFileSync(CRUD_VERIFIER_PATH, 'utf8')
 
