@@ -45,11 +45,10 @@ Mushaf 1441 page reader with annotations.
 | `feature/mushaf-1441-module` | **The Next.js V2 app.** Tip `299bdb4` "Fix first-load auto-login data race" |
 | `V82*`, `v83-release`, `claude/*` | legacy app branches |
 
-**Local vs GitHub check (2026-09-15):**
-- Local `feature/mushaf-1441-module` is at `571a8c9`, **1 commit behind** origin (`299bdb4`).
-  The working tree already contains an equivalent `proxy.ts` fix, uncommitted.
-- The working tree differs from origin in ~29 tracked files, plus many untracked files. **GitHub does NOT
-  contain the current code** (mushaf-1441 module, packages/, scripts/, PWA icons, loading skeletons).
+**Local vs GitHub (synced 2026-09-15):** the previously uncommitted production code (mushaf-1441,
+`packages/`, scripts, PWA assets) was committed and merged with origin's auto-login fix, then pushed.
+Local `feature/mushaf-1441-module` == origin (merge `7fd9b1b`) with a clean tree. Build, `tsc` and `test:proxy` pass.
+Pre-sync rollback point: local tag `backup/pre-sync-20260915` (`571a8c9`).
 - Local `main` (`455e439`) is V2 history and **is not** GitHub `main`. Never push it to `origin/main`.
 - The repo is public, so never commit `.env*`, `.secrets.json`, or data files.
 
@@ -60,6 +59,8 @@ Mushaf 1441 page reader with annotations.
 - `.vercel/project.json` in the canonical repo links to this project. ✅
 - **No Git integration** (`link: null`). Pushing to GitHub does **not** deploy. All deploys are CLI uploads
   of a local working tree.
+  If you connect Git, set Production Branch = `feature/mushaf-1441-module` **immediately**. The default
+  `main` is the legacy app. Also note that Vercel may BLOCK git deploys whose commit author is not a team member.
 - Current production: `dpl_DfsCpfR9DfhtvHKk79RUFSFqdYPc` (2026-09-11, actor `codex`, CLI).
   Aliases: `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app`.
 - Production env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
@@ -118,11 +119,19 @@ Every public table has RLS on (`auth.uid() = user_id`).
 - `mushaf_annotations` (notes/highlights/bookmarks, page 1–604, line 1–15), `profiles` (UI prefs)
 - Functions: `handle_updated_at`, `handle_new_user`, `groups_search_update`
 
-**Known schema gaps vs the repo's .sql files** (never re-applied after migration):
-`get_dashboard_stats()` RPC, `surah_counts` view, `normalize_arabic()`, `parts.search_vec`,
-`rasm_skeleton` columns, and the trigram indexes (`supabase-stats-aggregates.sql`, `supabase-parts-fts.sql`,
-`supabase-indexes.sql`) are **missing**. Stats uses its 12-query fallback, and search uses the ILIKE fallback.
-Apply them with psql if you need the faster paths. Check each file for idempotency first.
+**Repo schema files** (`supabase-stats-aggregates.sql`, `supabase-parts-fts.sql`, `supabase-indexes.sql`,
+`supabase-migration-tag-uniqueness.sql`) were not applied after the cloud migration. They were applied on 2026-09-15 (below).
+
+**✅ APPLIED 2026-09-15:** `get_dashboard_stats`, `normalize_arabic`, `rasm_skeleton`, `parts.search_vec`,
+the `rasm_skeleton` columns, `surah_counts`, trigram/sort indexes, and `tags_user_name_unique` now exist.
+Pre-apply backup: `mutshabehat-selfhost/backups/pre-schema-apply-20260915b.dump`. The files are idempotent. To re-run them
+(e.g. on a rebuilt DB):
+```bash
+cd ~/Projects/mutshabehat-v2
+cat supabase-stats-aggregates.sql supabase-parts-fts.sql supabase-indexes.sql supabase-migration-tag-uniqueness.sql \
+  | docker exec -i mutshabehat-db psql -U postgres -d postgres -v ON_ERROR_STOP=1 --single-transaction
+docker exec mutshabehat-db psql -U postgres -d postgres -c "NOTIFY pgrst, 'reload schema'"
+```
 
 ## 6. App architecture (`~/Projects/mutshabehat-v2`)
 
