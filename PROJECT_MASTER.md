@@ -19,17 +19,17 @@ Mushaf 1441 page reader with annotations.
 | What | Path | Status |
 |---|---|---|
 | **App source (CANONICAL)** | `~/Projects/mutshabehat-v2` (internal disk) | git remote `origin` = GitHub. Branches `main` and `feature/mushaf-1441-module` (identical as of 2026-09-15), clean tree |
-| Codex worktree | `/Volumes/External Mini/Projects/apps/.codex-worktrees/mutshabehat-autologin-first-request` | branch `fix/autologin-first-request` = `299bdb4` (same as GitHub feature branch tip) |
 | **Self-host backend (source of truth)** | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost` | own local git repo (no remote), branch `fix/colima-selfhost-recovery`. Holds `docker-compose.yml`, `caddy/`, `volumes/initdb/`, `.env`, `.secrets.json`, `.autologin-password.txt`, `cloud-schema.sql`, `README.md` |
 | Launchd runtime copy | `~/.mutshabehat-selfhost/` (`ensure-running.sh` + `runtime/`) | copy of the SSD stack config (launchd cannot read from the removable SSD). Re-sync after config changes (see selfhost README) |
 | LaunchAgent | `~/Library/LaunchAgents/com.mutshabehat.selfhost.plist` | runs `ensure-running.sh` at login + every 60 s. Log: `~/Library/Logs/mutshabehat-selfhost.log` |
 | Colima VM + DB volume | `~/.colima` → `/Volumes/External Mini/Colima` | Docker volume `mutshabehat_db-data` lives in the VM disk on the SSD |
-| Legacy static app (V82B/V82C/V83/V84) | `/Volumes/External Mini/Projects/Mutshabehat` | Archived on GitHub as `legacy-v84-main`. Old GitHub Pages HTML app. **Not** the V2 app |
+| Legacy static app (V82B/V82C/V83/V84) | GitHub only: branch `legacy-v84-main` / tag `legacy-v84-final` | Old GitHub Pages HTML app. **Not** the V2 app |
 
-**Stale copies. Do not edit:**
-- `~/dev/mutshabehat-v2` (= `/Volumes/External Mini/Projects/dev/mutshabehat-v2`): older snapshot, no git remote, still has the old login pages.
-- `~/Projects/mutshabehat-selfhost`: early Aug-31 draft of the stack, superseded by the SSD one.
-- iCloud `Mutshabehat_V2`, OneDrive `Mutshabehat`, `~/.Trash/Mutshabehat-launchd-runtime-failed-*`.
+**Cleanup 2026-09-15:** `~/Projects/mutshabehat-v2` is the **only** app checkout. Removed (moved to macOS Trash):
+`~/dev/mutshabehat-v2` (old snapshot), `~/Projects/mutshabehat-selfhost` (early stack draft), the local legacy repo
+`/Volumes/External Mini/Projects/Mutshabehat`, and the Codex worktree `fix/autologin-first-request`. Its WIP
+ActivityChart test is saved at `mutshabehat-selfhost/backups/codex-worktree-wip-20260915.patch`.
+OneDrive `Mutshabehat/Old version Mutshabehat App` is a personal archive. Do not use it.
 - The `mutshabehat` skill (`~/.claude/skills/mutshabehat`) describes the **legacy V83 GitHub Pages app**, not V2.
 
 > ⚠️ `~/dev`, `~/apps`, `~/.colima` are symlinks onto the **External Mini** SSD. If the SSD is not
