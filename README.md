@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mutshabehat V2
 
-## Getting Started
+Mutshabehat is a private Arabic Quranic-similarity workspace built with Next.js 16 and Supabase. The production application is [mutshabehat-v2.vercel.app](https://mutshabehat-v2.vercel.app).
 
-First, run the development server:
+## Architecture
+
+- The V2 application source is maintained on the GitHub branch `feature/mushaf-1441-module`. The repository's default `main` branch contains the legacy static application.
+- Vercel hosts the Next.js application.
+- Supabase-compatible PostgreSQL, Auth, PostgREST, and Caddy services run in Colima on the Mac mini.
+- The self-hosted API is published through Tailscale Funnel at `https://youssefs-mac-mini.tailcd68dd.ts.net:8443`.
+- The persistent Colima data root is stored on the Mac mini external SSD.
+- A launchd health supervisor checks the stack every 60 seconds and restores stopped services.
+
+The deployment is single-user. `src/proxy.ts` establishes the configured account's Supabase session when a browser has no valid session. After a successful auto-login on a safe page request, the proxy returns one same-URL redirect with the new cookies. This guarantees the retried Server Component request is authenticated and prevents an empty first render.
+
+## Local development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Required environment variables:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY
+AUTOLOGIN_EMAIL
+AUTOLOGIN_PASSWORD
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Verification
 
-## Learn More
+Run the proxy integration test against a healthy local self-hosted Supabase stack with the four variables above:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run test:proxy
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Production verification must use a fresh browser context and confirm that the first navigation renders the expected group count with no page or console errors. A plain HTTP 200 is not sufficient.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## History & Changelog
 
-## Deploy on Vercel
+### 2026-09-11 (Codex GPT-5)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Added**: A live proxy integration regression test for first-visit auto-login and session-cookie forwarding.
+- **Removed**: Nothing.
+- **Changed**: Fresh GET and HEAD requests now perform a one-time same-URL redirect after successful server-side auto-login, ensuring the first Server Component render sees the authenticated session.
+- **Verification**: `npm run test:proxy` (1/1 passed); `npx eslint src/proxy.ts tests/proxy-autologin.test.mjs` (exit 0); `npx tsc --noEmit` (exit 0); `npm run build` (exit 0); Vercel production deployment `dpl_DfsCpfR9DfhtvHKk79RUFSFqdYPc` reached Ready and was aliased to `mutshabehat-v2.vercel.app`; Playwright fresh-context desktop/mobile verification repeated twice (4/4 passed, 0 page errors, 0 console errors, 0 actionable request failures, 0 HTTP responses >= 400). Repository-wide `npm run lint` remains exit 1 with 21 pre-existing errors in unrelated application files; focused lint for this change is clean.
