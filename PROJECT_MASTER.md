@@ -51,6 +51,7 @@ An Arabic, RTL, single-user web app (installable as a PWA) for studying Quran **
 | DB backups | `…/mutshabehat-selfhost/backups/` | `pg_dump -Fc` files (e.g. `pre-schema-apply-20260915b.dump`) |
 | Watchdog runtime copy | `~/.mutshabehat-selfhost/` (`ensure-running.sh` + `runtime/`) | copy of the stack config (launchd can't read from the removable SSD). Re-sync after config changes (steps in the stack README) |
 | LaunchAgent | `~/Library/LaunchAgents/com.mutshabehat.selfhost.plist` | runs the watchdog at login and every 60 s. Log: `~/Library/Logs/mutshabehat-selfhost.log` |
+| Legacy LaunchAgent (not V2) | `com.mutshabehat.server` (plist renamed `….plist.disabled-20260911`) | old legacy Python `server.py` from iCloud `Mutshabehat_Mini`. Still loaded until logout/reboot and failing (exit 78). Not needed by V2. Unload with `launchctl bootout gui/$(id -u)/com.mutshabehat.server` |
 | Colima VM + DB data | `~/.colima` → `/Volumes/External Mini/Colima` | Docker volume `mutshabehat_db-data` (inside the VM disk on the SSD) |
 | Legacy V82–V84 static app | GitHub only: branch `legacy-v84-main`, tag `legacy-v84-final` | not V2. Old GitHub Pages app. Don't build on it |
 
