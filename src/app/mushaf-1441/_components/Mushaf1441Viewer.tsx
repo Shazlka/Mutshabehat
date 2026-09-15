@@ -1,6 +1,7 @@
 'use client'
 
 import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import ReactDOM from 'react-dom'
 import Link from 'next/link'
 import PageCurlOverlay, { type PageCurlHandle, type PageCurlRect } from './PageCurlOverlay'
 import ArabicDiff, { type Part } from '@/components/ArabicDiff'
@@ -304,20 +305,35 @@ export default function Mushaf1441Viewer({
   surahOptions,
   initialMutshabehatHighlights = null,
 }: Mushaf1441ViewerProps) {
+  ReactDOM.preconnect('https://verses.quran.foundation', { crossOrigin: 'anonymous' })
+  ReactDOM.preload(getQcfV2FontUrl(initialPage.pageNumber), {
+    as: 'font',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous',
+    fetchPriority: 'high',
+  })
+
   const [pageNumber, setPageNumber] = useState(initialPage.pageNumber)
   const [pageInput, setPageInput] = useState(String(initialPage.pageNumber))
   const [currentPage, setCurrentPage] = useState<MushafPage | null>(initialPage)
   const [pageCache, setPageCache] = useState<Record<number, MushafPage>>({
     [initialPage.pageNumber]: initialPage,
   })
+  const pageCacheRef = useRef<Record<number, MushafPage>>({
+    [initialPage.pageNumber]: initialPage,
+  })
+  const pageWordsRequestsRef = useRef(new Map<number, Promise<MushafPage>>())
   const [currentPageMetadata, setCurrentPageMetadata] = useState<Mushaf1441PageMetadata>(initialPageMetadata)
   const [pageMetadataCache, setPageMetadataCache] = useState<Record<number, Mushaf1441PageMetadata>>({
     [initialPageMetadata.pageNumber]: initialPageMetadata,
   })
+  const pageMetadataCacheRef = useRef<Record<number, Mushaf1441PageMetadata>>({
+    [initialPageMetadata.pageNumber]: initialPageMetadata,
+  })
+  const pageMetadataRequestsRef = useRef(new Map<number, Promise<Mushaf1441PageMetadata>>())
   const [isPageLoading, setIsPageLoading] = useState(false)
-  // Per-page QCF V2 font state. Glyph codes are page-specific private-use characters, so a
-  // page's words must never render before THAT page's font is loaded (they would show as
-  // wrong letters or boxes), and one page's font failure must not affect other pages.
+  // Per-page QCF V2 font state. Render the readable Uthmani fallback immediately, then swap
+  // each page to its page-specific private-use glyphs only after THAT page's font is loaded.
   const [qcfFontStatus, setQcfFontStatus] = useState<Record<number, QcfFontStatus>>({})
   const qcfFontStatusRef = useRef<Record<number, QcfFontStatus>>({})
   const [selectedSurahNumber, setSelectedSurahNumber] = useState(initialPageMetadata.surahNumbers[0] ?? 1)
@@ -771,8 +787,9 @@ export default function Mushaf1441Viewer({
     setAnnotationDraft(EMPTY_ANNOTATION_DRAFT)
     setAnnotationMode('note')
 
-    if (pageCache[clamped]) {
-      setCurrentPage(pageCache[clamped])
+    const cachedPage = pageCacheRef.current[clamped]
+    if (cachedPage) {
+      setCurrentPage(cachedPage)
       const metadata = await loadPageMetadata(clamped)
       if (!targetAyahKey) syncJumpControlsToMetadata(metadata)
       return
@@ -780,14 +797,9 @@ export default function Mushaf1441Viewer({
 
     setIsPageLoading(true)
     try {
-      const [loadedPage, metadata] = await Promise.all([
-        loadPageWords(clamped),
-        loadPageMetadata(clamped),
-      ])
+      const loadedPage = await loadPageWords(clamped)
+      const metadata = await loadPageMetadata(clamped)
       setCurrentPage(loadedPage)
-      if (loadedPage) {
-        setPageCache((current) => ({ ...current, [loadedPage.pageNumber]: loadedPage }))
-      }
       if (!targetAyahKey) syncJumpControlsToMetadata(metadata)
     } finally {
       setIsPageLoading(false)
@@ -856,23 +868,70 @@ export default function Mushaf1441Viewer({
   }
 
   async function loadPageWords(nextPage: number) {
+    const cached = pageCacheRef.current[nextPage]
+    if (cached) return cached
+
+    const inFlight = pageWordsRequestsRef.current.get(nextPage)
+    if (inFlight) return inFlight
+
     // loadMushaf1441Page legacy compatibility only.
-    const response = await fetch(`/api/mushaf-1441/page-words?page=${nextPage}`)
-    if (!response.ok) throw new Error(`Failed to load word lines for page ${nextPage}`)
-    return await response.json() as MushafPage
+    const request = (async () => {
+      const response = await fetch(`/api/mushaf-1441/page-words?page=${nextPage}`)
+      if (!response.ok) throw new Error(`Failed to load word lines for page ${nextPage}`)
+      const loadedPage = await response.json() as MushafPage & { metadata?: Mushaf1441PageMetadata }
+      if (loadedPage.metadata) {
+        const metadata = loadedPage.metadata
+        pageMetadataCacheRef.current = { ...pageMetadataCacheRef.current, [metadata.pageNumber]: metadata }
+        setPageMetadataCache((current) => (current[metadata.pageNumber]
+          ? current
+          : { ...current, [metadata.pageNumber]: metadata }))
+      }
+      pageCacheRef.current = { ...pageCacheRef.current, [loadedPage.pageNumber]: loadedPage }
+      setPageCache((current) => (current[loadedPage.pageNumber]
+        ? current
+        : { ...current, [loadedPage.pageNumber]: loadedPage }))
+      return loadedPage
+    })()
+    pageWordsRequestsRef.current.set(nextPage, request)
+    try {
+      return await request
+    } finally {
+      if (pageWordsRequestsRef.current.get(nextPage) === request) {
+        pageWordsRequestsRef.current.delete(nextPage)
+      }
+    }
+  }
+
+  async function fetchPageMetadata(nextPage: number) {
+    const cached = pageMetadataCacheRef.current[nextPage]
+    if (cached) return cached
+
+    const inFlight = pageMetadataRequestsRef.current.get(nextPage)
+    if (inFlight) return inFlight
+
+    const request = (async () => {
+      const response = await fetch(`/api/mushaf-1441/page-metadata?page=${nextPage}`)
+      if (!response.ok) throw new Error(`Failed to load metadata for page ${nextPage}`)
+      const metadata = await response.json() as Mushaf1441PageMetadata
+      pageMetadataCacheRef.current = { ...pageMetadataCacheRef.current, [metadata.pageNumber]: metadata }
+      setPageMetadataCache((current) => (current[metadata.pageNumber]
+        ? current
+        : { ...current, [metadata.pageNumber]: metadata }))
+      return metadata
+    })()
+    pageMetadataRequestsRef.current.set(nextPage, request)
+    try {
+      return await request
+    } finally {
+      if (pageMetadataRequestsRef.current.get(nextPage) === request) {
+        pageMetadataRequestsRef.current.delete(nextPage)
+      }
+    }
   }
 
   async function loadPageMetadata(nextPage: number) {
-    if (pageMetadataCache[nextPage]) {
-      setCurrentPageMetadata(pageMetadataCache[nextPage])
-      return pageMetadataCache[nextPage]
-    }
-
-    const response = await fetch(`/api/mushaf-1441/page-metadata?page=${nextPage}`)
-    if (!response.ok) throw new Error(`Failed to load metadata for page ${nextPage}`)
-    const metadata = await response.json() as Mushaf1441PageMetadata
+    const metadata = await fetchPageMetadata(nextPage)
     setCurrentPageMetadata(metadata)
-    setPageMetadataCache((current) => ({ ...current, [metadata.pageNumber]: metadata }))
     return metadata
   }
 
@@ -1024,21 +1083,16 @@ export default function Mushaf1441Viewer({
     const clamped = clampPage(target)
     if (clamped < MIN_PAGE || clamped > MAX_PAGE) return
     void loadQcfFontForPage(clamped)
-    if (!pageCache[clamped]) {
+    if (!pageCacheRef.current[clamped]) {
       try {
-        const loaded = await loadPageWords(clamped)
-        setPageCache((current) => (current[clamped] ? current : { ...current, [clamped]: loaded }))
+        await loadPageWords(clamped)
       } catch {
         // Ignore prefetch failures; the page will load on demand.
       }
     }
-    if (!pageMetadataCache[clamped]) {
+    if (!pageMetadataCacheRef.current[clamped]) {
       try {
-        const response = await fetch(`/api/mushaf-1441/page-metadata?page=${clamped}`)
-        if (response.ok) {
-          const metadata = await response.json() as Mushaf1441PageMetadata
-          setPageMetadataCache((current) => (current[clamped] ? current : { ...current, [clamped]: metadata }))
-        }
+        await fetchPageMetadata(clamped)
       } catch {
         // Ignore prefetch failures.
       }
@@ -1783,7 +1837,9 @@ export default function Mushaf1441Viewer({
     const fontLoaded = qcfFontStatus[pageNo] === 'loaded'
     const fontFailed = qcfFontStatus[pageNo] === 'error'
     const isOpeningPage = pageNo <= 2
-    const isPageReady = Boolean(page) && (fontLoaded || fontFailed)
+    // Page words have safe Uthmani/Amiri fallbacks. Never hold readable Quran text behind
+    // the page-specific QCF font network request; swap to the exact glyph font when ready.
+    const isPageReady = Boolean(page)
     const decorations = page ? getLineDecorations(page) : new Map<number, LineDecoration>()
     const isRightPage = pageNo % 2 === 1
     const marginFontSize = 'clamp(8px, 2cqw, 13px)'
@@ -1872,7 +1928,7 @@ export default function Mushaf1441Viewer({
                 && lastWord.ayahNumber === surahAyahCountByNumber.get(lastWord.surahNumber)
               )
               // Justify full lines edge to edge like the printed mushaf; centre short lines.
-              const isCentered = isOpeningPage || fontFailed || (endsSurah && line.words.length < typicalLineWordCount * 0.7)
+              const isCentered = isOpeningPage || !fontLoaded || (endsSurah && line.words.length < typicalLineWordCount * 0.7)
               return (
                 <div
                   key={`${line.pageNumber}-${line.lineNumber}`}
@@ -2788,6 +2844,7 @@ export default function Mushaf1441Viewer({
           </button>
           <Link
             href="/"
+            prefetch={false}
             aria-label="العودة إلى المتشابهات"
             title="المتشابهات"
             className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
@@ -2875,7 +2932,7 @@ export default function Mushaf1441Viewer({
           />
         ) : null}
         {renderHoverCard()}
-        {isPageLoading || (!isQcfFontLoaded && !isQcfFontFailed) ? (
+        {isPageLoading ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
             <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
           </div>
