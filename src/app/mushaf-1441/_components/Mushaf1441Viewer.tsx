@@ -1,7 +1,8 @@
 'use client'
 
-import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import Link from 'next/link'
+import PageCurlOverlay, { type PageCurlHandle, type PageCurlRect } from './PageCurlOverlay'
 import ArabicDiff, { type Part } from '@/components/ArabicDiff'
 import type {
   AyahNote,
@@ -203,7 +204,23 @@ const MUSHAF_QCF_LINE_HEIGHT = 1.04
 // Word box = line height + vertical padding; gaps use the same height so highlight bands are flush.
 const MUSHAF_WORD_BAND_PADDING = '0.08em'
 const MUSHAF_WORD_BAND_HEIGHT = `calc(${MUSHAF_QCF_LINE_HEIGHT}em + 0.16em)`
-const SWIPE_THRESHOLD_PX = 55
+// A horizontal drag this long (px) starts curling the page under the finger.
+const DRAG_START_PX = 12
+
+type PageLayout = 'single' | 'right' | 'left'
+type TurnSheet = { pageNo: number; page: MushafPage | null; metadata: Mushaf1441PageMetadata | null; layout: PageLayout }
+type PageTurn = {
+  id: number
+  mode: 'auto' | 'drag'
+  fromPage: number
+  leaf: PageCurlRect
+  peelFrom: 'left' | 'right'
+  travel: number
+  front: TurnSheet
+  /** Page printed on the back of the turning sheet (spread only; a single page shows its own see-through). */
+  back: { pageNo: number; layout: PageLayout } | null
+  still: (TurnSheet & { rect: PageCurlRect }) | null
+}
 const LONG_PRESS_MS = 480
 const SIGN_IN_HREF = '/login?next=/mushaf-1441'
 const BASMALA_TEXT = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'
@@ -337,10 +354,13 @@ export default function Mushaf1441Viewer({
   const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
   const lastTapRef = useRef(0)
 
-  const swipeStartRef = useRef<{ x: number; y: number } | null>(null)
   const pageStageRef = useRef<HTMLDivElement | null>(null)
-  // Direction of the pending page turn (1 = forward, -1 = back); consumed by the flip animation.
-  const pendingFlipRef = useRef<1 | -1 | 0>(0)
+  const pageMainRef = useRef<HTMLElement | null>(null)
+  const [pageTurn, setPageTurn] = useState<PageTurn | null>(null)
+  const pageTurnIdRef = useRef(0)
+  const curlRef = useRef<PageCurlHandle | null>(null)
+  const dragRef = useRef<{ pointerId: number; startX: number; startY: number; lastX: number; lastTime: number; velocity: number; direction: 1 | -1 | 0; progress: number; width: number } | null>(null)
+  const suppressClickRef = useRef(false)
   const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const longPressFiredRef = useRef(false)
   // Timestamp of the last touch end, used to suppress tap-to-select on touch
@@ -426,7 +446,7 @@ export default function Mushaf1441Viewer({
       }
       return
     }
-    const timer = setTimeout(() => { void goToPage(savedPage as number) }, 0)
+    const timer = setTimeout(() => { void goToPage(savedPage as number, undefined, { animate: false }) }, 0)
     return () => clearTimeout(timer)
     // Runs once on mount.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -499,18 +519,23 @@ export default function Mushaf1441Viewer({
   const isQcfFontFailed = qcfFontStatus[pageNumber] === 'error'
   const selectedSurah = surahOptions.find((surah) => surah.surahNumber === selectedSurahNumber) ?? surahOptions[0]
   const selectedSurahAyahCount = selectedSurah?.ayahCount ?? 1
+  // While a page curls away its sheets are still on screen, so they keep their highlights.
+  const turnPages = useMemo(
+    () => [pageTurn?.front.page, pageTurn?.still?.page].filter(Boolean) as MushafPage[],
+    [pageTurn],
+  )
   const ayahKeys = useMemo(() => {
     const keys = new Set<string>()
-    for (const shownPage of [visiblePage, companionPage]) {
+    for (const shownPage of [visiblePage, companionPage, ...turnPages]) {
       for (const line of shownPage?.lines ?? []) {
         for (const word of line.words) keys.add(word.ayahKey)
       }
     }
     return [...keys]
-  }, [visiblePage, companionPage])
+  }, [visiblePage, companionPage, turnPages])
   const lastWordIdByAyah = useMemo(() => {
     const lastWords = new Map<string, string>()
-    const shownPages = [visiblePage, companionPage].filter(Boolean) as MushafPage[]
+    const shownPages = [visiblePage, companionPage, ...turnPages].filter(Boolean) as MushafPage[]
     shownPages.sort((a, b) => a.pageNumber - b.pageNumber)
     for (const shownPage of shownPages) {
       for (const line of shownPage.lines) {
@@ -521,10 +546,10 @@ export default function Mushaf1441Viewer({
     }
 
     return lastWords
-  }, [visiblePage, companionPage])
+  }, [visiblePage, companionPage, turnPages])
   const pageWordOrder = useMemo(() => {
     const order = new Map<string, number>()
-    const shownPages = [visiblePage, companionPage].filter(Boolean) as MushafPage[]
+    const shownPages = [visiblePage, companionPage, ...turnPages].filter(Boolean) as MushafPage[]
     shownPages.sort((a, b) => a.pageNumber - b.pageNumber)
 
     let index = 0
@@ -538,12 +563,14 @@ export default function Mushaf1441Viewer({
     }
 
     return order
-  }, [visiblePage, companionPage])
+  }, [visiblePage, companionPage, turnPages])
   const pageAnnotations = useMemo(
     () => annotations.filter((annotation) => (
-      annotation.pageNumber === pageNumber || annotation.pageNumber === companionPageNumber
+      annotation.pageNumber === pageNumber
+      || annotation.pageNumber === companionPageNumber
+      || turnPages.some((page) => page.pageNumber === annotation.pageNumber)
     )),
-    [annotations, pageNumber, companionPageNumber]
+    [annotations, pageNumber, companionPageNumber, turnPages]
   )
   const annotationsForSelectedTarget = useMemo(() => {
     if (!selectedAyahKey) return []
@@ -663,48 +690,62 @@ export default function Mushaf1441Viewer({
     }
   }, [allMutshabehatHighlights, mutshabehatLinkEnabled])
 
-  // Paper page-turn: the incoming leaf swings flat from the spine (or page edge) with a
-  // passing shadow. Web Animations only touch transform/filter, so layout is unaffected.
-  useLayoutEffect(() => {
-    const direction = pendingFlipRef.current
-    pendingFlipRef.current = 0
+  // Measure the on-screen sheets before navigating so the outgoing page can curl away over the new one.
+  function measurePageTurn(fromPage: number, toPage: number): Omit<PageTurn, 'id' | 'mode'> | null {
+    if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null
+    const main = pageMainRef.current
     const stage = pageStageRef.current
-    if (!direction || !stage) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const leaves = stage.querySelectorAll<HTMLElement>('[data-mushaf-leaf]')
-    const animations: Animation[] = []
-    leaves.forEach((leaf) => {
-      const layout = leaf.dataset.mushafLeaf
-      // Forward (RTL) sweeps left → right; back sweeps right → left.
-      const turning =
-        layout === 'single' || (layout === 'right' && direction === 1) || (layout === 'left' && direction === -1)
-      if (turning) {
-        const hingeOnRight = layout === 'single' ? direction === 1 : layout === 'left'
-        const startAngle = hingeOnRight ? 88 : -88
-        animations.push(leaf.animate(
-          [
-            { transform: `perspective(2200px) rotateY(${startAngle}deg)`, filter: 'brightness(0.72)', boxShadow: '0 0 0 rgba(63,49,21,0)' },
-            { transform: `perspective(2200px) rotateY(${startAngle * 0.35}deg)`, filter: 'brightness(0.9)', boxShadow: `${hingeOnRight ? -18 : 18}px 10px 40px rgba(63,49,21,0.28)`, offset: 0.55 },
-            { transform: 'perspective(2200px) rotateY(0deg)', filter: 'brightness(1)', boxShadow: '0 8px 30px rgba(63,49,21,0.12)' },
-          ],
-          { duration: 520, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)', fill: 'backwards' },
-        ))
-        leaf.style.transformOrigin = hingeOnRight ? 'right center' : 'left center'
-        leaf.style.zIndex = '2'
-      } else {
-        // The page revealed underneath sits in the turning leaf's shadow for a moment.
-        animations.push(leaf.animate(
-          [{ filter: 'brightness(0.8)' }, { filter: 'brightness(1)' }],
-          { duration: 520, easing: 'ease-out', fill: 'backwards' },
-        ))
-      }
+    if (!main || !stage) return null
+    const origin = main.getBoundingClientRect()
+    const rectOf = (layout: PageLayout): PageCurlRect | null => {
+      const el = stage.querySelector<HTMLElement>(`[data-mushaf-leaf="${layout}"]`)
+      if (!el) return null
+      const r = el.getBoundingClientRect()
+      return { x: r.left - origin.left, y: r.top - origin.top, width: r.width, height: r.height }
+    }
+    const sheet = (pageNo: number, layout: PageLayout): TurnSheet => ({
+      pageNo,
+      layout,
+      page: pageCache[pageNo] ?? (currentPage?.pageNumber === pageNo ? currentPage : null),
+      metadata: pageMetadataCache[pageNo] ?? (currentPageMetadata.pageNumber === pageNo ? currentPageMetadata : null),
     })
-    return () => animations.forEach((animation) => animation.cancel())
-  }, [pageNumber])
+    const forward = toPage > fromPage
 
-  async function goToPage(nextPage: number, targetAyahKey?: string) {
+    const rightRect = rectOf('right')
+    const leftRect = rectOf('left')
+    if (rightRect && leftRect) {
+      const fromRight = fromPage % 2 === 1 ? fromPage : fromPage - 1
+      const toRight = toPage % 2 === 1 ? toPage : toPage - 1
+      if (fromRight === toRight) return null
+      const gap = Math.max(0, rightRect.x - (leftRect.x + leftRect.width))
+      // Forward lifts the left-hand page over the spine; back lifts the right-hand page.
+      return forward
+        ? {
+            fromPage, leaf: leftRect, peelFrom: 'left', travel: leftRect.width * 2 + gap,
+            front: sheet(fromRight + 1, 'left'),
+            back: { pageNo: toRight, layout: 'right' },
+            still: { ...sheet(fromRight, 'right'), rect: rightRect },
+          }
+        : {
+            fromPage, leaf: rightRect, peelFrom: 'right', travel: rightRect.width * 2 + gap,
+            front: sheet(fromRight, 'right'),
+            back: { pageNo: toRight + 1, layout: 'left' },
+            still: { ...sheet(fromRight + 1, 'left'), rect: leftRect },
+          }
+    }
+    const singleRect = rectOf('single')
+    if (!singleRect) return null
+    return {
+      fromPage, leaf: singleRect, peelFrom: forward ? 'left' : 'right', travel: singleRect.width * 2,
+      front: sheet(fromPage, 'single'), back: null, still: null,
+    }
+  }
+
+  async function goToPage(nextPage: number, targetAyahKey?: string, options: { animate?: boolean; turnMode?: 'auto' | 'drag' } = {}) {
     const clamped = clampPage(nextPage)
-    if (clamped !== pageNumber) pendingFlipRef.current = clamped > pageNumber ? 1 : -1
+    const turn = clamped !== pageNumber && options.animate !== false ? measurePageTurn(pageNumber, clamped) : null
+    pageTurnIdRef.current += 1
+    setPageTurn(turn ? { ...turn, id: pageTurnIdRef.current, mode: options.turnMode ?? 'auto' } : null)
     setPageNumber(clamped)
     setPageInput(String(clamped))
     if (typeof window !== 'undefined') {
@@ -851,25 +892,86 @@ export default function Mushaf1441Viewer({
     setContextMenu(null)
   }
 
-  // Swipe left → next page, swipe right → previous page (RTL page turning).
-  function handlePageTouchStart(event: ReactTouchEvent) {
-    const touch = event.touches[0]
-    if (!touch) return
-    swipeStartRef.current = { x: touch.clientX, y: touch.clientY }
+  function turnTarget(direction: 1 | -1) {
+    if (!isSpread) return clampPage(pageNumber + direction)
+    // A spread turns by two pages and keeps the odd (right-hand) page as the current page.
+    const spreadStart = pageNumber % 2 === 1 ? pageNumber : pageNumber - 1
+    return clampPage(spreadStart + direction * 2)
   }
 
-  function handlePageTouchEnd(event: ReactTouchEvent) {
-    const start = swipeStartRef.current
-    swipeStartRef.current = null
-    if (!start) return
-    const touch = event.changedTouches[0]
-    if (!touch) return
-    const dx = touch.clientX - start.x
-    const dy = touch.clientY - start.y
-    if (Math.abs(dx) < SWIPE_THRESHOLD_PX || Math.abs(dx) < Math.abs(dy) * 1.3) return
-    // Arabic RTL: swipe left → previous page, swipe right → next page.
-    if (dx < 0) turnPage(-1)
-    else turnPage(1)
+  // Drag a page to curl it under the finger (RTL: drag right → next page, drag left → previous).
+  function handlePagePointerDown(event: ReactPointerEvent<HTMLElement>) {
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+    if (isMenuOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
+    // Words on the page are buttons too; only controls outside the page block a drag.
+    const target = event.target as HTMLElement
+    if (target.closest('a, input, textarea, select') || (target.closest('button') && !target.closest('[data-mushaf-leaf]'))) return
+    dragRef.current = {
+      pointerId: event.pointerId, startX: event.clientX, startY: event.clientY,
+      lastX: event.clientX, lastTime: event.timeStamp, velocity: 0, direction: 0, progress: 0, width: 1,
+    }
+  }
+
+  function handlePagePointerMove(event: ReactPointerEvent<HTMLElement>) {
+    const drag = dragRef.current
+    if (!drag || drag.pointerId !== event.pointerId) return
+    const dx = event.clientX - drag.startX
+    const dy = event.clientY - drag.startY
+    if (drag.direction === 0) {
+      if (Math.abs(dx) < DRAG_START_PX || Math.abs(dx) < Math.abs(dy) * 1.2) return
+      const direction = dx > 0 ? 1 : -1
+      const target = turnTarget(direction)
+      if (target === pageNumber) {
+        dragRef.current = null
+        return
+      }
+      drag.direction = direction
+      cancelLongPress()
+      try {
+        event.currentTarget.setPointerCapture(event.pointerId)
+      } catch {
+        // Capture is best-effort (the pointer may already be gone).
+      }
+      const leaf = stageLeafWidth()
+      drag.width = leaf
+      void goToPage(target, undefined, { turnMode: 'drag' })
+    }
+    const elapsed = Math.max(1, event.timeStamp - drag.lastTime)
+    drag.velocity = ((event.clientX - drag.lastX) / elapsed) * drag.direction
+    drag.lastX = event.clientX
+    drag.lastTime = event.timeStamp
+    const travelled = Math.max(0, dx * drag.direction - DRAG_START_PX)
+    drag.progress = travelled / drag.width
+    curlRef.current?.drag(travelled, dy)
+  }
+
+  function handlePagePointerEnd(event: ReactPointerEvent<HTMLElement>) {
+    const drag = dragRef.current
+    if (!drag || drag.pointerId !== event.pointerId) return
+    dragRef.current = null
+    if (drag.direction === 0) return
+    suppressClickRef.current = true
+    setTimeout(() => { suppressClickRef.current = false }, 400)
+    const commit = event.type !== 'pointercancel' && (drag.progress > 0.3 || drag.velocity > 0.35)
+    if (curlRef.current) {
+      curlRef.current.release(commit)
+    } else if (commit) {
+      setPageTurn((turn) => (turn ? { ...turn, mode: 'auto' } : turn))
+    } else {
+      finishPageTurn(false)
+    }
+  }
+
+  function stageLeafWidth() {
+    const el = pageStageRef.current?.querySelector<HTMLElement>('[data-mushaf-leaf]')
+    return Math.max(1, el?.getBoundingClientRect().width ?? 1)
+  }
+
+  function finishPageTurn(committed: boolean) {
+    const turn = pageTurn
+    setPageTurn(null)
+    // A drag let go early falls back to the page it started from.
+    if (!committed && turn) void goToPage(turn.fromPage, undefined, { animate: false })
   }
 
   async function copyAyahText(ayahKey: string) {
@@ -903,13 +1005,7 @@ export default function Mushaf1441Viewer({
   }
 
   function turnPage(direction: 1 | -1) {
-    if (!isSpread) {
-      void goToPage(pageNumber + direction)
-      return
-    }
-    // A spread turns by two pages and keeps the odd (right-hand) page as the current page.
-    const spreadStart = pageNumber % 2 === 1 ? pageNumber : pageNumber - 1
-    void goToPage(spreadStart + direction * 2)
+    void goToPage(turnTarget(direction))
   }
 
   function handleSpreadPageClick(event: ReactMouseEvent<HTMLDivElement>, side: 'right' | 'left') {
@@ -1714,8 +1810,6 @@ export default function Mushaf1441Viewer({
         }}
         data-mushaf-leaf={layout}
         onClick={(event) => (layout === 'single' ? handlePageClick(event) : handleSpreadPageClick(event, layout))}
-        onTouchStart={handlePageTouchStart}
-        onTouchEnd={handlePageTouchEnd}
       >
         {/* Spine shading on the inner edge of a spread page */}
         {layout !== 'single' ? (
@@ -2718,12 +2812,21 @@ export default function Mushaf1441Viewer({
         </div>
       </header>
 
-      {/* The mushaf page fills the screen; swipe to turn pages */}
+      {/* The mushaf page fills the screen; drag a page to curl it over */}
       <main
+        ref={pageMainRef}
         className="relative min-h-0 flex-1"
-        style={{ containerType: 'size' }}
-        onTouchStart={handlePageTouchStart}
-        onTouchEnd={handlePageTouchEnd}
+        style={{ containerType: 'size', touchAction: 'none' }}
+        onPointerDown={handlePagePointerDown}
+        onPointerMove={handlePagePointerMove}
+        onPointerUp={handlePagePointerEnd}
+        onPointerCancel={handlePagePointerEnd}
+        onClickCapture={(event) => {
+          if (!suppressClickRef.current) return
+          suppressClickRef.current = false
+          event.stopPropagation()
+          event.preventDefault()
+        }}
         onWheel={handleWheel}
       >
         <div ref={pageStageRef} className="absolute inset-0 flex items-center justify-center p-0 sm:p-3">
@@ -2746,6 +2849,31 @@ export default function Mushaf1441Viewer({
             renderLineWords(visiblePage, pageNumber, visiblePageMetadata, 'single')
           )}
         </div>
+        {pageTurn ? (
+          <PageCurlOverlay
+            key={pageTurn.id}
+            ref={curlRef}
+            mode={pageTurn.mode}
+            leaf={pageTurn.leaf}
+            peelFrom={pageTurn.peelFrom}
+            travel={pageTurn.travel}
+            front={renderLineWords(pageTurn.front.page, pageTurn.front.pageNo, pageTurn.front.metadata, pageTurn.front.layout)}
+            back={pageTurn.back
+              ? renderLineWords(pageCache[pageTurn.back.pageNo] ?? null, pageTurn.back.pageNo, pageMetadataCache[pageTurn.back.pageNo] ?? null, pageTurn.back.layout)
+              : (
+                // A single page's back: blank paper with the printed side showing through, mirrored.
+                <div className="h-full w-full overflow-hidden bg-[#fffdf6]">
+                  <div className="h-full w-full opacity-[0.13]" style={{ transform: 'scaleX(-1)' }}>
+                    {renderLineWords(pageTurn.front.page, pageTurn.front.pageNo, pageTurn.front.metadata, pageTurn.front.layout)}
+                  </div>
+                </div>
+              )}
+            still={pageTurn.still
+              ? { rect: pageTurn.still.rect, node: renderLineWords(pageTurn.still.page, pageTurn.still.pageNo, pageTurn.still.metadata, pageTurn.still.layout) }
+              : null}
+            onFinish={finishPageTurn}
+          />
+        ) : null}
         {renderHoverCard()}
         {isPageLoading || (!isQcfFontLoaded && !isQcfFontFailed) ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
