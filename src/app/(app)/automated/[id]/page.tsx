@@ -72,7 +72,7 @@ export default async function AutomatedDetailPage({ params }: { params: Promise<
 
       <div className="mb-8">
         {copiedGroupId ? (
-          <div className="flex items-center gap-3 flex-wrap p-3 rounded-xl bg-[var(--color-copied-bg)] border-s-4 border-[var(--color-copied)]">
+          <div className="flex items-center gap-3 flex-wrap p-3 rounded-xl bg-[var(--color-copied-bg)] border border-[var(--color-copied)]/30">
             <CopiedBadge />
             <span className="text-[13px] text-[var(--color-ink-soft)]">هذه المجموعة موجودة في قاعدتك الشخصية.</span>
             <Link href={`/groups/${copiedGroupId}`} className="text-[13px] font-bold text-[var(--color-copied)] hover:underline">

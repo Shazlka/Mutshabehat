@@ -49,7 +49,7 @@ export default function AutomatedCard({ row, preview = 2, picked = false, onTogg
 
   return (
     <li className={row.copied
-      ? 'my-2 py-5 px-3 rounded-xl border-s-4 border-[var(--color-copied)] bg-[var(--color-copied-bg)] transition-colors'
+      ? 'my-2 py-5 px-3 rounded-xl border border-[var(--color-copied)]/30 bg-[var(--color-copied-bg)] transition-colors'
       : 'py-5 -mx-2 px-2 rounded-lg transition-colors hover:bg-[var(--color-surface)]'}>
       <div className="flex items-start gap-3">
         {onToggle && (
