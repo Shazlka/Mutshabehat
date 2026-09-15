@@ -7,7 +7,8 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 - **📘 Start with `PROJECT_MASTER.md`**: locations, GitHub/Vercel/Tailscale wiring, backend, schema, design, rules.
 - **Live:** https://mutshabehat-v2.vercel.app
-- **Deploy:** `vercel --prod --yes --scope shazlka-s-projects` (project `mutshabehat-v2`, user `amreshazly-4497`)
+- **Deploy:** `git push origin main` (Vercel git-connected, Production Branch `main`; fallback
+  `vercel --prod --yes --scope shazlka-s-projects`, project `mutshabehat-v2`, user `amreshazly-4497`)
 - **Backend:** self-hosted Supabase (Postgres + GoTrue + PostgREST + Caddy) on the Mac Mini under Colima,
   exposed at `https://youssefs-mac-mini.tailcd68dd.ts.net:8443` (Tailscale Funnel). The Supabase Cloud
   project `tthlhkdmwusxerfiimgc` is retired (paused, data migrated 2026-08-31).

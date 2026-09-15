@@ -1,231 +1,264 @@
 # Mutshabehat V2: Master Project Instructions (for any agent)
 
-> Verified against the live system on **2026-09-15**. Read this first, then `CLAUDE.md` + `AGENTS.md`.
-> If something here disagrees with what you observe, trust the observation and update this file.
+> **Read this first.** Last verified against the live system: **2026-09-15**.
+> Then read `AGENTS.md` (Next.js 16 warning) and `CLAUDE.md` (gotchas + changelog).
+> If anything here disagrees with what you observe, trust the observation and **update this file**.
+
+---
+
+## 0. Quick facts (cheat sheet)
+
+| Item | Value |
+|---|---|
+| App name | **متشابهات القرآن الكريم**: Mutshabehat V2 |
+| Live URL | https://mutshabehat-v2.vercel.app |
+| Source code (only checkout) | `~/Projects/mutshabehat-v2` on the Mac Mini |
+| GitHub | https://github.com/Shazlka/Mutshabehat (**public**), branch **`main`** |
+| Vercel | team `shazlka-s-projects`, project `mutshabehat-v2`. **Git-connected: push to `main` deploys production** |
+| Backend | self-hosted Supabase (Postgres + GoTrue + PostgREST + Caddy) in Docker/Colima on the Mac Mini |
+| Backend public URL | `https://youssefs-mac-mini.tailcd68dd.ts.net:8443` (Tailscale Funnel) |
+| Backend config dir | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost` |
+| Machine | Mac Mini `amr-Mac-mini`, Tailscale node `youssefs-mac-mini`, tailnet `tailcd68dd.ts.net` |
+| Users | single user, **no login UI** (auto-login in `src/proxy.ts`) |
+
+---
 
 ## 1. What the app is
 
-**متشابهات القرآن الكريم (Mutshabehat V2)** is an Arabic, RTL, **single-user** web app for studying Quran
-*mutashabihat* (similar verses): curated groups of similar ayahs, where each ayah is split into
-colour-coded parts (shared / different / addition / unique). It also has automated candidate groups,
-Quran search with Uthmani spelling tolerance, stats, a D3 network graph, tags, export/import, and a
-Mushaf 1441 page reader with annotations.
+An Arabic, RTL, single-user web app (installable as a PWA) for studying Quran **mutashabihat** (similar verses):
 
-- **Owner account:** the single GoTrue user in `AUTOLOGIN_EMAIL` (Vercel env / `.env.local`)
-- **No login UI.** Middleware signs in automatically as that account (see §6).
+- **Personal groups:** curated groups of similar ayahs. Each ayah is split into colour-coded **parts**
+  (shared / diff / addition / unique) so the differences between near-identical verses stand out.
+  Groups have title, colour, notes, status, favourite, completed, and tags.
+- **Automated groups:** 12.6k algorithm-detected candidate groups (read-only). They can be copied into personal groups.
+- **Quran search:** 6,236 ayahs (Uthmani script) with spelling tolerance (alef wasla, dagger alef, rasm skeleton) and match highlighting.
+- **Stats dashboard:** counts, juz heatmap, tag donut, 30-day activity. **Network graph:** D3 force graph of groups/surahs.
+- **Tags:** CRUD, bulk tagging, import/export. **Export/backup:** JSON / SQL / Excel.
+- **Mushaf 1441 reader** (`/mushaf-1441`): page-accurate mushaf (604 pages, 15 lines) with highlights, notes,
+  bookmarks, favourites (`mushaf_annotations`), surah/page sliders, swipe page turning, and a mutshabehat connections panel.
+- Mobile-first, native feel: bottom action bars, swipe navigation between groups, flip cards.
 
-## 2. Where everything lives (Mac Mini `amr-Mac-mini`, Tailscale name `youssefs-mac-mini`)
+---
 
-| What | Path | Status |
+## 2. Locations on the Mac Mini
+
+| What | Path | Notes |
 |---|---|---|
-| **App source (CANONICAL)** | `~/Projects/mutshabehat-v2` (internal disk) | git remote `origin` = GitHub. Branches `main` and `feature/mushaf-1441-module` (identical as of 2026-09-15), clean tree |
-| **Self-host backend (source of truth)** | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost` | own local git repo (no remote), branch `fix/colima-selfhost-recovery`. Holds `docker-compose.yml`, `caddy/`, `volumes/initdb/`, `.env`, `.secrets.json`, `.autologin-password.txt`, `cloud-schema.sql`, `README.md` |
-| Launchd runtime copy | `~/.mutshabehat-selfhost/` (`ensure-running.sh` + `runtime/`) | copy of the SSD stack config (launchd cannot read from the removable SSD). Re-sync after config changes (see selfhost README) |
-| LaunchAgent | `~/Library/LaunchAgents/com.mutshabehat.selfhost.plist` | runs `ensure-running.sh` at login + every 60 s. Log: `~/Library/Logs/mutshabehat-selfhost.log` |
-| Colima VM + DB volume | `~/.colima` → `/Volumes/External Mini/Colima` | Docker volume `mutshabehat_db-data` lives in the VM disk on the SSD |
-| Legacy static app (V82B/V82C/V83/V84) | GitHub only: branch `legacy-v84-main` / tag `legacy-v84-final` | Old GitHub Pages HTML app. **Not** the V2 app |
+| **App source (the ONLY checkout)** | `~/Projects/mutshabehat-v2` | internal disk. `origin` = GitHub. Work on `main` or short-lived branches. Repo-local git identity = `Shazlka <amr.eshazly@gmail.com>` |
+| **Backend stack (source of truth)** | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost` | local-only git repo. `docker-compose.yml`, `caddy/Caddyfile`, `volumes/initdb/`, `README.md`, `cloud-schema.sql`, `bin/ensure-running.sh`, `launchd/`, `tests/`. Secrets: `.env`, `.secrets.json`, `.autologin-password.txt` (chmod 600, git-ignored) |
+| DB backups | `…/mutshabehat-selfhost/backups/` | `pg_dump -Fc` files (e.g. `pre-schema-apply-20260915b.dump`) |
+| Watchdog runtime copy | `~/.mutshabehat-selfhost/` (`ensure-running.sh` + `runtime/`) | copy of the stack config (launchd can't read from the removable SSD). Re-sync after config changes (steps in the stack README) |
+| LaunchAgent | `~/Library/LaunchAgents/com.mutshabehat.selfhost.plist` | runs the watchdog at login and every 60 s. Log: `~/Library/Logs/mutshabehat-selfhost.log` |
+| Colima VM + DB data | `~/.colima` → `/Volumes/External Mini/Colima` | Docker volume `mutshabehat_db-data` (inside the VM disk on the SSD) |
+| Legacy V82–V84 static app | GitHub only: branch `legacy-v84-main`, tag `legacy-v84-final` | not V2. Old GitHub Pages app. Don't build on it |
 
-**Cleanup 2026-09-15:** `~/Projects/mutshabehat-v2` is the **only** app checkout. Removed (moved to macOS Trash):
-`~/dev/mutshabehat-v2` (old snapshot), `~/Projects/mutshabehat-selfhost` (early stack draft), the local legacy repo
-`/Volumes/External Mini/Projects/Mutshabehat`, and the Codex worktree `fix/autologin-first-request`. Its WIP
-ActivityChart test is saved at `mutshabehat-selfhost/backups/codex-worktree-wip-20260915.patch`.
-OneDrive `Mutshabehat/Old version Mutshabehat App` is a personal archive. Do not use it.
-- The `mutshabehat` skill (`~/.claude/skills/mutshabehat`) describes the **legacy V83 GitHub Pages app**, not V2.
+**There are no other copies.** `~/dev/mutshabehat-v2`, `~/Projects/mutshabehat-selfhost`, the local legacy repo, and old
+Codex worktrees were removed on 2026-09-15. Ignore iCloud/OneDrive "Mutshabehat" folders (personal archives).
 
-> ⚠️ `~/dev`, `~/apps`, `~/.colima` are symlinks onto the **External Mini** SSD. If the SSD is not
-> mounted, errors look like docker or git failures. Check `ls "/Volumes/External Mini"` first.
-> Inside the Colima VM only `/Volumes/External Mini` is mounted. Always use the **real** path for
-> compose bind mounts, never `~/apps/...`.
+> ⚠️ **External SSD:** `~/dev`, `~/apps`, `~/.colima`, `~/.claude` are symlinks onto **`/Volumes/External Mini`**.
+> If the SSD is unmounted, failures look like docker/git errors. Check `ls "/Volumes/External Mini"` first.
+> The Colima VM only mounts `/Volumes/External Mini`. In compose files, use the **real** path, never `~/apps/...`.
 
-## 3. GitHub: `https://github.com/Shazlka/Mutshabehat` (PUBLIC)
+---
 
-| Branch | Contents |
+## 3. GitHub: https://github.com/Shazlka/Mutshabehat
+
+| Branch / tag | Contents |
 |---|---|
-| `main` (default) | **The Next.js V2 app.** Force-replaced on 2026-09-15 (was the legacy V84 app) |
-| `feature/mushaf-1441-module` | V2 working branch, identical to `main` as of 2026-09-15 |
-| `legacy-v84-main` + tag `legacy-v84-final` | archived legacy V84 `main` (`b3a0a7b`) |
-| `legacy-v84-local-statusline-fix` | an unpushed local legacy commit (`428eb86`), preserved |
+| **`main`** (default) | **The V2 Next.js app. Production.** |
+| `feature/mushaf-1441-module` | old V2 working branch (same as `main` on 2026-09-15). Its pushes create duplicate previews, so it can be retired |
+| `legacy-v84-main`, tag `legacy-v84-final` | archived legacy static app (old `main`, `b3a0a7b`) |
+| `legacy-v84-local-statusline-fix` | one preserved legacy commit (`428eb86`) |
 | `V82*`, `v83-release`, `claude/*` | legacy app branches |
 
-GitHub Pages still builds from `main`, so the old `shazlka.github.io/Mutshabehat/V84/` URLs no longer serve the
-legacy app. To restore them, point Pages at `legacy-v84-main`.
+- The repo is **PUBLIC**. Never commit `.env*`, `.secrets.json`, passwords, user ids/emails, DB dumps, or xlsx/csv/pdf data.
+- GitHub Pages builds from `main`, so the old `shazlka.github.io/Mutshabehat/V84/` URLs are 404. Point Pages at `legacy-v84-main` if they're needed.
 
-**Local vs GitHub (synced 2026-09-15):** the previously uncommitted production code (mushaf-1441,
-`packages/`, scripts, PWA assets) was committed and merged with origin's auto-login fix, then pushed.
-Local `feature/mushaf-1441-module` == origin (merge `7fd9b1b`) with a clean tree. Build, `tsc` and `test:proxy` pass.
-Pre-sync rollback point: local tag `backup/pre-sync-20260915` (`571a8c9`).
-- Local `main` tracks `origin/main`. Work on a branch, merge to `main`, and keep `feature/mushaf-1441-module` in step or retire it.
-- The repo is public, so never commit `.env*`, `.secrets.json`, or data files.
+---
 
-## 4. Vercel: `https://mutshabehat-v2.vercel.app`
+## 4. Vercel: https://mutshabehat-v2.vercel.app
 
-- Team `shazlka-s-projects` (`team_sDnS0rtYIo3SJZtJ3FsFinGV`), project `mutshabehat-v2`
-  (`prj_CNcNhnaT36NFuHlcP5bnVbbDfsSj`), CLI user `amreshazly-4497`. Node 24.x, Next.js preset, region `iad1`.
-- `.vercel/project.json` in the canonical repo links to this project. ✅
-- **Git integration ON (connected 2026-09-15):** `Shazlka/Mutshabehat`, Production Branch = `main`.
-  Push to `main` → production deploy. Push to any other branch → preview deploy.
-  If a git deploy shows `BLOCKED` (the commit author is not a Vercel team member), commit as
-  `Shazlka <amr.eshazly@gmail.com>` or fall back to `vercel --prod --scope shazlka-s-projects`.
-- Current production: `dpl_DfsCpfR9DfhtvHKk79RUFSFqdYPc` (2026-09-11, actor `codex`, CLI).
-  Aliases: `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app`.
-- Production env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
-  `SUPABASE_SERVICE_ROLE_KEY`, `AUTOLOGIN_EMAIL`, `AUTOLOGIN_PASSWORD`.
-- Live check 2026-09-15: first hit `307 → /` with the session cookie set, then `200`. ✅
+| Item | Value |
+|---|---|
+| Team | `shazlka-s-projects` (`team_sDnS0rtYIo3SJZtJ3FsFinGV`) |
+| Project | `mutshabehat-v2` (`prj_CNcNhnaT36NFuHlcP5bnVbbDfsSj`), linked via `.vercel/project.json` |
+| CLI user | `amreshazly-4497` (always pass `--scope shazlka-s-projects`) |
+| Git | connected to `Shazlka/Mutshabehat`, **Production Branch `main`** |
+| Build | Next.js preset, Node 24.x, region `iad1`, Turbopack |
+| Aliases | `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app` |
+| Env vars (Production) | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `AUTOLOGIN_EMAIL`, `AUTOLOGIN_PASSWORD` |
 
-**Deploy (normal path = git):**
-```bash
-cd ~/Projects/mutshabehat-v2
-env -u __NEXT_PROCESSED_ENV npm run build     # must pass first
-git push origin main                          # Vercel builds + promotes to production
-# Fallback only: vercel --prod --yes --scope shazlka-s-projects   (uploads the WORKING TREE)
-# If only NEXT_PUBLIC_* env values changed (baked into the bundle at build time):
-vercel redeploy https://mutshabehat-v2.vercel.app --scope shazlka-s-projects
-```
-Prefer committing and pushing to `feature/mushaf-1441-module` before a prod deploy, so GitHub matches production.
+**How deploys work:**
+- `git push origin main` → **production** build, auto-promoted.
+- Push any other branch → **preview** URL (use it for review before merging).
+- Fallback only: `vercel --prod --yes --scope shazlka-s-projects` (uploads the local working tree, including uncommitted files).
+- If a `NEXT_PUBLIC_*` value changes, redeploy (it's baked in at build time):
+  `vercel redeploy https://mutshabehat-v2.vercel.app --scope shazlka-s-projects`.
+- A deploy that "hangs" or shows UNKNOWN is probably **`BLOCKED`** (commit author not a Vercel team member). Check the
+  state via the Vercel API/MCP, and commit as `Shazlka <amr.eshazly@gmail.com>` (the repo-local git config already does).
+- Verified 2026-09-15: git deploy `dpl_GQU5eKsa8G3j9o8emLTpRaxpZa59` (`662ab07`) READY and aliased. All main pages return 200 with data.
 
-## 5. Backend: self-hosted Supabase on the Mac Mini
+---
 
-The Supabase Cloud project `tthlhkdmwusxerfiimgc` is **paused and retired** (the data was migrated 2026-08-31).
-`CLAUDE.md` still mentions it as the ref. That is outdated.
+## 5. Backend: self-hosted Supabase (Mac Mini, Colima)
 
-| Service (compose project `mutshabehat`) | Image | Port |
+The Supabase **Cloud** project `tthlhkdmwusxerfiimgc` is **retired** (paused, data migrated 2026-08-31). Don't use it.
+
+| Container (compose project `mutshabehat`) | Image | Port |
 |---|---|---|
-| `mutshabehat-db` | `postgres:17-alpine` (+ hand-written Supabase roles) | `127.0.0.1:5433` |
+| `mutshabehat-db` | `postgres:17-alpine` + hand-written Supabase roles | `127.0.0.1:5433` |
 | `mutshabehat-auth` | `supabase/gotrue:v2.189.0` | internal 9999 |
 | `mutshabehat-rest` | `postgrest/postgrest:v14.12` | internal 3000 |
-| `mutshabehat-gateway` | `caddy:2-alpine` (`/auth/v1/*`, `/rest/v1/*`) | `127.0.0.1:8000` |
+| `mutshabehat-gateway` | `caddy:2-alpine`: `/auth/v1/*` → auth, `/rest/v1/*` → rest | `127.0.0.1:8000` |
 
-There is no realtime, storage, studio, or edge functions stack. The app uses none of them. Google OAuth and SMTP are off.
+Not running: realtime, storage, studio, edge functions (the app uses none). Google OAuth and SMTP are off.
 
-**Tailscale:**
-- Node `youssefs-mac-mini`, tailnet `tailcd68dd.ts.net` (tailnet IP: `tailscale status --self`)
-- **Public API URL (Funnel):** `https://youssefs-mac-mini.tailcd68dd.ts.net:8443` → `127.0.0.1:8000`
-  (= `NEXT_PUBLIC_SUPABASE_URL`). Health: `/auth/v1/health` → 200.
-- Funnel `:443` → `127.0.0.1:8090` belongs to **Wave C3B**. Do not touch it.
+**Tailscale**
+- Funnel **`:8443`** → `127.0.0.1:8000` = `https://youssefs-mac-mini.tailcd68dd.ts.net:8443` (this is `NEXT_PUBLIC_SUPABASE_URL`).
+- Health: `curl https://youssefs-mac-mini.tailcd68dd.ts.net:8443/auth/v1/health` → 200.
+- Funnel **`:443` → `:8090` belongs to the Wave C3B project. Never change it.**
+- Status: `tailscale funnel status`. Node IP: `tailscale status --self`.
 
-**Operate:**
+**Operate**
 ```bash
-cd "/Volumes/External Mini/Projects/apps/mutshabehat-selfhost"
-docker compose ps | logs -f auth | up -d
-docker compose exec db psql -U postgres -d postgres      # admin SQL (DDL goes here, not via PostgREST)
-launchctl print gui/$(id -u)/com.mutshabehat.selfhost   # watchdog status
+cd "/Volumes/External Mini/Projects/apps/mutshabehat-selfhost"   # real path, not ~/apps
+docker compose ps
+docker compose logs -f auth
+docker compose up -d
+docker compose exec db psql -U postgres -d postgres               # admin SQL / DDL
+docker exec mutshabehat-db pg_dump -U postgres -d postgres --schema=public --schema=auth -Fc > backups/<name>.dump
+launchctl print gui/$(id -u)/com.mutshabehat.selfhost             # watchdog
 # NEVER: docker compose down -v   (deletes the database volume)
 ```
 
-**Data (exact counts 2026-09-15):** groups 245 · verses 916 · parts 2954 · automated_groups 12668 ·
-personal_groups 199 · personal_verses 714 · mushaf_annotations 12 · profiles 1 · tags 0 · auth.users 1.
-Every public table has RLS on (`auth.uid() = user_id`).
+**Data (2026-09-15):** groups 246 · verses 923 · parts 2991 · automated_groups 12668 · personal_groups 199 ·
+personal_verses 714 · mushaf_annotations 12 · profiles 1 · tags 0 · auth.users 1.
 
-**Schema (public):**
-- `groups(id, user_id, title, color, note, unote, status, favorite, completed, created_at, updated_at, search_vec)`
-  → `verses(id, group_id, surah, ayah, label, sort_order)` → `parts(id, verse_id, type, text, sort_order)`
-- `tags(id, user_id, name, color)`, `group_tags(group_id, tag_id)`
-- `automated_groups(id bigint, legacy_id, title, color, surahs[], payload jsonb, created_at)`, read-only candidates
-- `personal_groups` / `personal_verses` / `group_verses` / `verse_parts`: mushaf-1441 / legacy-import set
-- `mushaf_annotations` (notes/highlights/bookmarks, page 1–604, line 1–15), `profiles` (UI prefs)
-- Functions: `handle_updated_at`, `handle_new_user`, `groups_search_update`
+**Schema (`public`, RLS ON for every table, `auth.uid() = user_id`)**
+- `groups(id, user_id, title, color, note, unote, status, favorite, completed, created_at, updated_at, search_vec, rasm_skeleton)`
+  - `verses(id, group_id, surah, ayah, label, sort_order)`
+    - `parts(id, verse_id, type, text, sort_order, search_vec, rasm_skeleton)`
+- `tags(id, user_id, name, color)` (unique `user_id, lower(name)`) · `group_tags(group_id, tag_id)`
+- `automated_groups(id bigint, legacy_id, title, color, surahs[], payload jsonb, created_at)`
+- `personal_groups`, `personal_verses`, `group_verses`, `verse_parts`: legacy-import / mushaf set
+- `mushaf_annotations(annotation_type, target_type, ayah_key, page_number 1–604, line_number 1–15, word ids, title, body, colours, tags[], metadata)`
+- `profiles(display_name, font_preset, theme, font_size, compact_mode)`
+- Functions: `get_dashboard_stats()`, `normalize_arabic()`, `rasm_skeleton()`, `groups_search_update()`, `handle_updated_at()`, `handle_new_user()`
+- View: `surah_counts` (security_invoker)
+- Schema history files: `supabase-schema*.sql`, `supabase-parts-fts.sql`, `supabase-stats-aggregates.sql`,
+  `supabase-indexes.sql`, `supabase-migration-tag-uniqueness.sql`, `supabase/migrations/*.sql` (all applied and idempotent).
 
-**Repo schema files** (`supabase-stats-aggregates.sql`, `supabase-parts-fts.sql`, `supabase-indexes.sql`,
-`supabase-migration-tag-uniqueness.sql`) were not applied after the cloud migration. They were applied on 2026-09-15 (below).
-
-**✅ APPLIED 2026-09-15:** `get_dashboard_stats`, `normalize_arabic`, `rasm_skeleton`, `parts.search_vec`,
-the `rasm_skeleton` columns, `surah_counts`, trigram/sort indexes, and `tags_user_name_unique` now exist.
-Pre-apply backup: `mutshabehat-selfhost/backups/pre-schema-apply-20260915b.dump`. The files are idempotent. To re-run them
-(e.g. on a rebuilt DB):
-```bash
-cd ~/Projects/mutshabehat-v2
-cat supabase-stats-aggregates.sql supabase-parts-fts.sql supabase-indexes.sql supabase-migration-tag-uniqueness.sql \
-  | docker exec -i mutshabehat-db psql -U postgres -d postgres -v ON_ERROR_STOP=1 --single-transaction
-docker exec mutshabehat-db psql -U postgres -d postgres -c "NOTIFY pgrst, 'reload schema'"
-```
+---
 
 ## 6. App architecture (`~/Projects/mutshabehat-v2`)
 
-**Stack:** Next.js **16.2.6** (App Router, Turbopack), React 19.2, TypeScript, Tailwind v4,
-`@supabase/ssr` + `supabase-js`, d3 submodules (network graph only), exceljs, sanitize-html. Node 22 (`.nvmrc`).
+**Stack:** Next.js **16.2.6** (App Router, Turbopack), React 19.2, TypeScript, Tailwind CSS v4, `@supabase/ssr` +
+`@supabase/supabase-js`, d3 submodules (network only), exceljs, sanitize-html. Node 22 locally (`.nvmrc`).
 
 ```
 src/
-  proxy.ts                  # Next 16 "middleware": auto-login as AUTOLOGIN_EMAIL, refresh session,
-                            # redirect /login|/signup|... → /, GET re-run after first sign-in
+  proxy.ts                 # Next 16 middleware (export `proxy`): auto sign-in as AUTOLOGIN_EMAIL,
+                           # session refresh, one same-URL redirect after first sign-in, /login etc → /
   app/
-    layout.tsx              # fonts: Cairo (UI) + Amiri Quran (ayahs), RTL, PWA manifest
-    globals.css             # design tokens (oklch), see §7
-    (app)/                  # main shell (Sidebar + MobileTopbar)
-      page.tsx              # groups list: filter/sort/search/pagination, mobile swipe pager
-      groups/new, groups/[id], groups/[id]/edit   (+ loading.tsx skeletons)
-      automated/            # automated candidate groups → copy into personal
-      network/              # D3 force graph
-      stats/                # dashboard (RPC w/ fallback), JuzHeatmap, TagDonut, ActivityChart
-      tools/, settings/     # tools; settings (swipe nav, export/backup, cache clear)
-    mushaf-1441/            # Mushaf page reader (Mushaf1441Viewer.tsx, big client component)
+    layout.tsx             # RTL <html>, fonts Cairo (UI) + Amiri Quran (ayahs), PWA manifest
+    globals.css            # design tokens (§7)
+    not-found.tsx
+    (app)/                 # app shell: Sidebar (desktop) + MobileTopbar
+      page.tsx             # groups list: search, surah filter, sort, pagination, mobile swipe pager
+      groups/new/          # create group
+      groups/[id]/         # group detail (+ loading.tsx), swipe prev/next, bottom bar
+      groups/[id]/edit/    # editor (RichEditor, WordLinker, parts), save & next/prev
+      automated/           # automated candidates → copy to personal
+      network/             # D3 graph
+      stats/               # dashboard via get_dashboard_stats RPC (fallback: multi-query)
+      tools/  settings/    # tools; settings (swipe nav, DB export/backup, clear cache)
+    mushaf-1441/           # page.tsx + _components/Mushaf1441Viewer.tsx (large client component)
     api/
-      groups/ [id]/ [id]/tags/ export/     # CRUD + JSON/SQL/Excel export
-      tags/ [id]/ bulk/ export/ import/
-      search/               # groups + parts search (FTS → ILIKE → rasm-skeleton tiers)
+      groups/  groups/[id]/  groups/[id]/tags/  groups/export/
+      tags/  tags/[id]/  tags/bulk/  tags/export/  tags/import/
+      search/              # FTS → ILIKE → rasm-skeleton tiers
+      quran/               # ayahs + surah names (CDN-cached)
       automated/copy/
-      mushaf-1441/ annotations/ mutshabehat/ page-metadata/ page-words/
-    auth/callback/          # leftover OAuth callback
-  components/               # ~40 client/server components (GroupRow, EditForm, RichEditor, WordLinker,
-                            # ArabicDiff, QuranSearch, NetworkGraph, TagManager, SwipeNavWrapper, ...)
+      mushaf-1441/annotations|mutshabehat|page-metadata|page-words/
+    auth/callback/         # leftover OAuth callback
+  components/              # ~40 components: GroupRow, GroupDetail, EditForm, RichEditor, WordLinker, ArabicDiff,
+                           # QuranSearch, SurahFilter, FilterBar, SortBar, NetworkGraph, TagManager, BulkTagger,
+                           # JuzHeatmap, TagDonut, ActivityChart, SwipeNavWrapper, GroupMobileBottomBar, ...
   lib/
-    supabase.ts / supabase-server.ts   # browser / server clients
-    arabic.ts               # normalizeArabic (folds ٱ→ا, dagger alef→ا, strips tashkeel/tatweel),
-                            # rasmSkeleton, normalizeArabicWithMap, matchRanges
-    quran.ts                # in-memory pre-normalized ayah index, searchAyahs
-    surah-names.ts          # useSurahNames singleton hook
-    diff.ts, juz.ts, sanitize.ts, cn.ts
+    supabase.ts            # browser client
+    supabase-server.ts     # server client (cookies)
+    arabic.ts              # normalizeArabic, rasmSkeleton, normalizeArabicWithMap, matchRanges
+    quran.ts               # pre-normalized in-memory ayah index, searchAyahs
+    surah-names.ts         # useSurahNames (singleton fetch + cache)
+    diff.ts  juz.ts  sanitize.ts  cn.ts
   types/database.ts
-packages/                   # mutshabehat-core (mushaf link adapter), qiraat-core, quran-data/mushaf1441 fixtures
-public/quran/ayahs.json     # 6,236 ayahs, **Uthmani script**
-public/sw.js, manifest.json, icons/   # PWA, SW cache "mutshabehat-v3"
-scripts/                    # mushaf1441 import/validate scripts, legacy data migration
-supabase-*.sql, supabase/migrations/  # schema history (see §5 gaps)
-design-system/mutshabehat-v2/MASTER.md
+packages/
+  quran-data/mushaf1441/   # page words/ayahs/metadata fixtures + loaders (imported by the app, must stay committed)
+  mutshabehat-core/        # mushaf ↔ mutshabehat link adapter
+  qiraat-core/             # qiraat variants adapter (sample source)
+public/
+  quran/ayahs.json         # 6,236 ayahs, UTHMANI script
+  quran/surah-names.json
+  sw.js  manifest.json  icons/   # PWA (SW cache "mutshabehat-v3", SWR for /api/quran)
+scripts/                   # mushaf1441 import/validate, legacy data migration
+tests/proxy-autologin.test.mjs
+design-system/mutshabehat-v2/MASTER.md   # early generated spec. globals.css tokens win
+CHANGELOG.md  CLAUDE.md  AGENTS.md  PROJECT_MASTER.md
 ```
 
-**Data flow:** Server Components and route handlers call `supabase-server.ts` using cookies from `proxy.ts`.
-Every request is authenticated as the single user, so RLS applies. The client never holds the service role key.
+**Data flow:** browser → Vercel (Next.js). `proxy.ts` ensures a session cookie. Server Components and route handlers call
+`supabase-server.ts` → Tailscale Funnel → Caddy → PostgREST/GoTrue → Postgres (RLS as the single user). The service role
+key is server-only.
+
+---
 
 ## 7. Design system
 
-- **Direction:** RTL Arabic, warm "scholarly paper" look. Mobile-first with a native-app feel
-  (bottom action bars ≥62px tap targets, swipe navigation, flip cards, iOS safe-area insets).
-- **Fonts:** `Cairo` (UI, 3 weights) + `Amiri Quran` (ayah text) via `next/font/google`.
-- **Tokens (`src/app/globals.css`, oklch):**
-  - Surfaces: `--color-paper` (page), `--color-surface` (card), `--color-surface-2`, `--color-border(-soft)`
-  - Ink: `--color-ink`, `--color-ink-soft`, `--color-ink-muted`
-  - Primary indigo: `--color-primary` (+ `-hover`, `-soft`, `-tint`)
-  - **Diff semantics (the core of the app):** `--color-shared` green · `--color-diff` ochre ·
+- **Look:** RTL Arabic, warm "scholarly paper". Calm, readable, mobile-first, native-app feel.
+- **Fonts:** `Cairo` (UI, 3 weights) and `Amiri Quran` (all Quran text), via `next/font/google`.
+- **Tokens** (`src/app/globals.css`, oklch):
+  - Surfaces: `--color-paper` (page) · `--color-surface` (card) · `--color-surface-2` · `--color-border` · `--color-border-soft`
+  - Text: `--color-ink` · `--color-ink-soft` · `--color-ink-muted`
+  - Brand: `--color-primary` indigo (+ `-hover`, `-soft`, `-tint`)
+  - **Part/diff colours (core meaning, keep consistent):** `--color-shared` green · `--color-diff` ochre ·
     `--color-diff2` purple · `--color-diff3` teal · `--color-addition` blue · `--color-unique` terracotta (each has a `-bg`)
-  - Status: `--color-danger`, `--color-success`, `--color-warn`
-- `design-system/mutshabehat-v2/MASTER.md` is an early generated spec (Noto fonts, black and gold). The
-  **live tokens in globals.css win.**
-- Safari gotcha: inline text inside 3D-transformed cards collapses. Use flex children (see `GroupRow.tsx`).
+  - Status: `--color-danger` · `--color-success` · `--color-warn`
+- **Patterns:** bottom action bars with ≥62px cells + safe-area insets. Swipe right/left follows RTL (next/prev). Flip
+  cards on mobile. `loading.tsx` skeletons. Mushaf selection tint `#ece2c8`.
+- **Safari gotcha:** inline text inside 3D-transformed cards collapses. Use flex children (see `GroupRow.tsx`).
 
-## 8. Rules for adding or fixing features
+---
 
-1. Work in `~/Projects/mutshabehat-v2` only. Run `git status` first, because the tree has large uncommitted WIP.
-   Create a branch off `feature/mushaf-1441-module` and pull `origin` first (you are 1 commit behind).
-2. Read `AGENTS.md`: Next 16 has breaking changes. Check `node_modules/next/dist/docs/` before using Next APIs.
-   Middleware lives in `src/proxy.ts` (export `proxy`). `ssr:false` dynamic imports are not allowed in Server Components.
-3. All Arabic text matching goes through `normalizeArabic` (`ayahs.json` is Uthmani, with `ٱ` alef wasla).
-4. DB changes: write a migration SQL file under `supabase/migrations/`, apply it via
-   `docker compose exec db psql` on the Mac Mini, keep RLS policies, then `NOTIFY pgrst, 'reload schema'`.
-5. Build: `env -u __NEXT_PROCESSED_ENV npm run build` (a leaked `__NEXT_PROCESSED_ENV` skips `.env.local`).
-   Dev: `npm run dev`. Mushaf checks: `npm run mushaf:validate`, `npm run mushaf:runtime`.
-6. **Changelog is mandatory:** add a dated entry, newest first, to both `CHANGELOG.md` and the `# Changelog` section of `CLAUDE.md`.
-7. Work on a feature branch (a push gives a preview URL), merge to `main` (a push deploys production), then verify the live site in a browser.
-8. Never commit secrets or data files. Never touch Wave C3B containers or Funnel `:443`.
-   Never run `docker compose down -v`.
+## 8. Workflow for adding or fixing features
 
-## 9. Troubleshooting quick map
+1. `cd ~/Projects/mutshabehat-v2 && git status && git pull --ff-only`. Confirm you're on a clean `main`.
+2. Create a branch: `git checkout -b feat/<name>`.
+3. Read `AGENTS.md`: **Next.js 16 has breaking changes.** Check `node_modules/next/dist/docs/` before using Next APIs.
+   Middleware = `src/proxy.ts`. `ssr:false` dynamic imports are not allowed in Server Components.
+4. Arabic text matching **must** use `normalizeArabic` / `rasmSkeleton` (`ayahs.json` is Uthmani: `ٱ`, dagger alef).
+5. DB change: add `supabase/migrations/<timestamp>_<name>.sql` (idempotent, with RLS policies). Back up first, then apply:
+   `docker compose exec -T db psql -U postgres -d postgres -v ON_ERROR_STOP=1 --single-transaction < file.sql`,
+   then `NOTIFY pgrst, 'reload schema'`. Update `src/types/database.ts`.
+6. Verify locally:
+   `env -u __NEXT_PROCESSED_ENV npm run build` · `npx tsc --noEmit` · `npm run lint` ·
+   `set -a; source .env.local; set +a; npm run test:proxy` · Mushaf: `npm run mushaf:validate`.
+   Dev server: `npm run dev` (uses `.env.local` → self-hosted backend, i.e. **real data**).
+7. **Changelog is mandatory:** add a dated, newest-first entry to **both** `CHANGELOG.md` and the `# Changelog` section of `CLAUDE.md`.
+8. Push the branch → review the Vercel **preview** URL → merge to `main` → push → production deploy → check the live site in a browser.
+9. **Never:** commit secrets or data files · touch Wave C3B containers or Funnel `:443` · run `docker compose down -v` ·
+   use the retired Supabase Cloud project · force-push `main` without an archive.
+
+---
+
+## 9. Troubleshooting
 
 | Symptom | Check / fix |
 |---|---|
-| Live site loads but shows no data / 500 | `curl https://youssefs-mac-mini.tailcd68dd.ts.net:8443/auth/v1/health` → if it fails: SSD mounted? `colima status`, `docker compose ps`, `tail ~/Library/Logs/mutshabehat-selfhost.log`, `tailscale funnel status` |
-| Gateway healthy locally but Funnel 502 after reboot | Colima lost port forward. `docker restart mutshabehat-gateway` |
-| Build fails "Supabase URL and API key are required" | `env -u __NEXT_PROCESSED_ENV npm run build` |
-| Search misses Uthmani words | route through `normalizeArabic` / `rasmSkeleton` |
-| Stats slow | `get_dashboard_stats` RPC missing on self-host (§5) |
-| Push to GitHub didn't deploy / deploy "hangs" | Check the deployment state via the Vercel API. `BLOCKED` = commit author not in the team (see §4) |
+| Live site up but empty / 500 | `curl …ts.net:8443/auth/v1/health`. If it fails: SSD mounted? `colima status` → `docker compose ps` → `tail ~/Library/Logs/mutshabehat-selfhost.log` → `tailscale funnel status` |
+| Local gateway OK, Funnel 502 after reboot | Colima lost the port-forward: `docker restart mutshabehat-gateway` |
+| Docker/git "not found" weirdness | External SSD not mounted |
+| Build: "Supabase URL and API key are required" | `env -u __NEXT_PROCESSED_ENV npm run build` |
+| Search misses Uthmani spelling | normalize through `normalizeArabic` / `rasmSkeleton`, and check the `search_vec`/`rasm_skeleton` columns exist |
+| Push didn't deploy / deploy hangs | Vercel deployment state `BLOCKED` = commit author. Check git identity (§4) |
+| New `NEXT_PUBLIC_*` value not live | redeploy (baked at build time) |
+| First page load empty | auto-login redirect in `proxy.ts` (see `tests/proxy-autologin.test.mjs`) |
