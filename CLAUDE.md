@@ -12,7 +12,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   exposed at `https://youssefs-mac-mini.tailcd68dd.ts.net:8443` (Tailscale Funnel). The Supabase Cloud
   project `tthlhkdmwusxerfiimgc` is retired (paused, data migrated 2026-08-31).
 - **Location:** `~/Projects/mutshabehat-v2` on the Mac Mini (GitHub `Shazlka/Mutshabehat`, branch
-  `feature/mushaf-1441-module`; `main` is the unrelated legacy V84 app). `~/dev/mutshabehat-v2` and the
+  `main`; V2 replaced the legacy V84 app on 2026-09-15, which is archived as `legacy-v84-main` / tag `legacy-v84-final`). `~/dev/mutshabehat-v2` and the
   iCloud copy are stale duplicates. Do not edit them.
 - **Local build/dev env gotcha:** if a shell has `__NEXT_PROCESSED_ENV` set (leaks in from another
   Next.js process), `next build`/`next dev` will **skip loading `.env.local`** and fail to prerender

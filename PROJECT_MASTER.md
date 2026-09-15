@@ -18,13 +18,13 @@ Mushaf 1441 page reader with annotations.
 
 | What | Path | Status |
 |---|---|---|
-| **App source (CANONICAL)** | `~/Projects/mutshabehat-v2` (internal disk) | git remote `origin` = GitHub. Branch `feature/mushaf-1441-module`. **Dirty**: ~70 uncommitted/untracked files (mushaf-1441 module, packages/, scripts/, PWA icons, sw.js) |
+| **App source (CANONICAL)** | `~/Projects/mutshabehat-v2` (internal disk) | git remote `origin` = GitHub. Branches `main` and `feature/mushaf-1441-module` (identical as of 2026-09-15), clean tree |
 | Codex worktree | `/Volumes/External Mini/Projects/apps/.codex-worktrees/mutshabehat-autologin-first-request` | branch `fix/autologin-first-request` = `299bdb4` (same as GitHub feature branch tip) |
 | **Self-host backend (source of truth)** | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost` | own local git repo (no remote), branch `fix/colima-selfhost-recovery`. Holds `docker-compose.yml`, `caddy/`, `volumes/initdb/`, `.env`, `.secrets.json`, `.autologin-password.txt`, `cloud-schema.sql`, `README.md` |
 | Launchd runtime copy | `~/.mutshabehat-selfhost/` (`ensure-running.sh` + `runtime/`) | copy of the SSD stack config (launchd cannot read from the removable SSD). Re-sync after config changes (see selfhost README) |
 | LaunchAgent | `~/Library/LaunchAgents/com.mutshabehat.selfhost.plist` | runs `ensure-running.sh` at login + every 60 s. Log: `~/Library/Logs/mutshabehat-selfhost.log` |
 | Colima VM + DB volume | `~/.colima` → `/Volumes/External Mini/Colima` | Docker volume `mutshabehat_db-data` lives in the VM disk on the SSD |
-| Legacy static app (V82B/V82C/V83/V84) | `/Volumes/External Mini/Projects/Mutshabehat` | GitHub `main`. Old GitHub Pages HTML app. **Not** the V2 app |
+| Legacy static app (V82B/V82C/V83/V84) | `/Volumes/External Mini/Projects/Mutshabehat` | Archived on GitHub as `legacy-v84-main`. Old GitHub Pages HTML app. **Not** the V2 app |
 
 **Stale copies. Do not edit:**
 - `~/dev/mutshabehat-v2` (= `/Volumes/External Mini/Projects/dev/mutshabehat-v2`): older snapshot, no git remote, still has the old login pages.
@@ -41,15 +41,20 @@ Mushaf 1441 page reader with annotations.
 
 | Branch | Contents |
 |---|---|
-| `main` (default) | **Legacy** static V84 app. History unrelated to V2 (no common ancestor) |
-| `feature/mushaf-1441-module` | **The Next.js V2 app.** Tip `299bdb4` "Fix first-load auto-login data race" |
+| `main` (default) | **The Next.js V2 app.** Force-replaced on 2026-09-15 (was the legacy V84 app) |
+| `feature/mushaf-1441-module` | V2 working branch, identical to `main` as of 2026-09-15 |
+| `legacy-v84-main` + tag `legacy-v84-final` | archived legacy V84 `main` (`b3a0a7b`) |
+| `legacy-v84-local-statusline-fix` | an unpushed local legacy commit (`428eb86`), preserved |
 | `V82*`, `v83-release`, `claude/*` | legacy app branches |
+
+GitHub Pages still builds from `main`, so the old `shazlka.github.io/Mutshabehat/V84/` URLs no longer serve the
+legacy app. To restore them, point Pages at `legacy-v84-main`.
 
 **Local vs GitHub (synced 2026-09-15):** the previously uncommitted production code (mushaf-1441,
 `packages/`, scripts, PWA assets) was committed and merged with origin's auto-login fix, then pushed.
 Local `feature/mushaf-1441-module` == origin (merge `7fd9b1b`) with a clean tree. Build, `tsc` and `test:proxy` pass.
 Pre-sync rollback point: local tag `backup/pre-sync-20260915` (`571a8c9`).
-- Local `main` (`455e439`) is V2 history and **is not** GitHub `main`. Never push it to `origin/main`.
+- Local `main` tracks `origin/main`. Work on a branch, merge to `main`, and keep `feature/mushaf-1441-module` in step or retire it.
 - The repo is public, so never commit `.env*`, `.secrets.json`, or data files.
 
 ## 4. Vercel: `https://mutshabehat-v2.vercel.app`
@@ -59,8 +64,8 @@ Pre-sync rollback point: local tag `backup/pre-sync-20260915` (`571a8c9`).
 - `.vercel/project.json` in the canonical repo links to this project. ✅
 - **No Git integration** (`link: null`). Pushing to GitHub does **not** deploy. All deploys are CLI uploads
   of a local working tree.
-  If you connect Git, set Production Branch = `feature/mushaf-1441-module` **immediately**. The default
-  `main` is the legacy app. Also note that Vercel may BLOCK git deploys whose commit author is not a team member.
+  If you connect Git, the default Production Branch `main` is now correct (V2). Note that Vercel may
+  BLOCK git deploys whose commit author is not a team member.
 - Current production: `dpl_DfsCpfR9DfhtvHKk79RUFSFqdYPc` (2026-09-11, actor `codex`, CLI).
   Aliases: `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app`.
 - Production env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,

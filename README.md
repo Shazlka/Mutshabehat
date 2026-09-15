@@ -4,7 +4,7 @@ Mutshabehat is a private Arabic Quranic-similarity workspace built with Next.js 
 
 ## Architecture
 
-- The V2 application source is maintained on the GitHub branch `feature/mushaf-1441-module`. The repository's default `main` branch contains the legacy static application.
+- The V2 application source is on the default `main` branch (mirrored on `feature/mushaf-1441-module`). The legacy static V84 application is archived on branch `legacy-v84-main` and tag `legacy-v84-final`.
 - Vercel hosts the Next.js application.
 - Supabase-compatible PostgreSQL, Auth, PostgREST, and Caddy services run in Colima on the Mac mini.
 - The self-hosted API is published through Tailscale Funnel at `https://youssefs-mac-mini.tailcd68dd.ts.net:8443`.
