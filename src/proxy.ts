@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import { getSessionUser } from '@/lib/session-user'
 
 // Single-user, self-hosted deployment: there is no login UI. The middleware
 // silently establishes a session for the one account (credentials in
@@ -35,8 +36,9 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
-  // Refresh the session if there is one.
-  let { data: { user } } = await supabase.auth.getUser()
+  // Read the session from the cookie (no auth-server round-trip unless the token
+  // needs refreshing). PostgREST still verifies the JWT on every data query.
+  let user: { id: string } | null = await getSessionUser(supabase)
 
   // No session → sign in as the single account, server-side.
   if (!user && !pathname.startsWith('/auth')) {

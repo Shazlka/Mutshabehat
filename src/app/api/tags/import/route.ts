@@ -1,12 +1,13 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 
 // POST /api/tags/import
 //   body: { tags: [{ name, color }], group_tags: [{ group_id, tag_id }] }
 //   tag IDs in the import are remapped by name → existing-or-created tag.
 export async function POST(request: NextRequest) {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   const body = await request.json().catch(() => null) as

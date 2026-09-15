@@ -149,8 +149,8 @@ personal_verses 714 · mushaf_annotations 12 · profiles 1 · tags 0 · auth.use
 - `personal_groups`, `personal_verses`, `group_verses`, `verse_parts`: legacy-import / mushaf set
 - `mushaf_annotations(annotation_type, target_type, ayah_key, page_number 1–604, line_number 1–15, word ids, title, body, colours, tags[], metadata)`
 - `profiles(display_name, font_preset, theme, font_size, compact_mode)`
-- Functions: `get_dashboard_stats()`, `normalize_arabic()`, `rasm_skeleton()`, `groups_search_update()`, `handle_updated_at()`, `handle_new_user()`
-- View: `surah_counts` (security_invoker)
+- Functions: `save_group(id, fields, verses)` (editor save, 1 round-trip), `search_group_ids(q)`, `get_dashboard_stats()`, `normalize_arabic()`, `rasm_skeleton()`, `groups_search_update()`, `handle_updated_at()`, `handle_new_user()`
+- Views: `surah_counts`, `automated_surah_counts` (security_invoker)
 - Schema history files: `supabase-schema*.sql`, `supabase-parts-fts.sql`, `supabase-stats-aggregates.sql`,
   `supabase-indexes.sql`, `supabase-migration-tag-uniqueness.sql`, `supabase/migrations/*.sql` (all applied and idempotent).
 
@@ -174,7 +174,10 @@ src/
       groups/new/          # create group
       groups/[id]/         # group detail (+ loading.tsx), swipe prev/next, bottom bar
       groups/[id]/edit/    # editor (RichEditor, WordLinker, parts), save & next/prev
-      automated/           # automated candidates → copy to personal
+      automated/           # automated candidates (cards) → copy to personal
+      automated/[id]/      # one automated candidate: all ayat, surah links, copy button
+      surahs/              # Surah tab: 114 cards with personal + automated counts
+      surahs/[no]/         # one surah: personal groups / automated tabs
       network/             # D3 graph
       stats/               # dashboard via get_dashboard_stats RPC (fallback: multi-query)
       tools/  settings/    # tools; settings (swipe nav, DB export/backup, clear cache)
@@ -193,6 +196,7 @@ src/
   lib/
     supabase.ts            # browser client
     supabase-server.ts     # server client (cookies)
+    session-user.ts        # getSessionUser: user from session cookie, no auth round-trip
     arabic.ts              # normalizeArabic, rasmSkeleton, normalizeArabicWithMap, matchRanges
     quran.ts               # pre-normalized in-memory ayah index, searchAyahs
     surah-names.ts         # useSurahNames (singleton fetch + cache)

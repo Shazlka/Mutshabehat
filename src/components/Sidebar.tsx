@@ -7,6 +7,7 @@ import { cn } from '@/lib/cn'
 const NAV = [
   { href: '/',          label: 'المتشابهات',  count: 'groups' as const },
   { href: '/automated', label: 'الآلية',      count: null },
+  { href: '/surahs',    label: 'السور',       count: null },
   { href: '/network',   label: 'شبكة السور',  count: null },
   { href: '/stats',     label: 'إحصائيات',   count: null },
   { href: '/tools',     label: 'أدوات',      count: null },
@@ -45,7 +46,7 @@ export default function Sidebar({ email, groupCount }: Props) {
       <nav aria-label="التنقل بين الصفحات" className="px-3 flex-1">
         <ul className="space-y-0.5">
           {NAV.map((item) => {
-            const active = pathname === item.href
+            const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href + '/'))
             return (
               <li key={item.href}>
                 <Link href={item.href}

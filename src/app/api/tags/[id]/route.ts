@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 
 type Ctx = { params: Promise<{ id: string }> }
 
@@ -7,7 +8,7 @@ type Ctx = { params: Promise<{ id: string }> }
 export async function PATCH(request: NextRequest, ctx: Ctx) {
   const { id } = await ctx.params
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   const body = await request.json().catch(() => null)
@@ -28,7 +29,7 @@ export async function PATCH(request: NextRequest, ctx: Ctx) {
 export async function DELETE(_request: NextRequest, ctx: Ctx) {
   const { id } = await ctx.params
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   const { error } = await supabase.from('tags').delete().eq('id', id)

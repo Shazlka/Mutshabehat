@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import EditForm from '@/components/EditForm'
 import PrefetchNeighbours from '@/components/PrefetchNeighbours'
 
@@ -22,11 +23,11 @@ export default async function EditGroupPage({ params }: { params: Promise<{ id: 
   //   b) group scalar fields
   //   c) verses for this group
   const [
-    { data: { user } },
+    user,
     { data: groupRaw },
     { data: versesRaw },
   ] = await Promise.all([
-    supabase.auth.getUser(),
+    getSessionUser(supabase),
     supabase.from('groups')
       .select('id, title, color, status, favorite, completed, note, unote, created_at')
       .eq('id', id)

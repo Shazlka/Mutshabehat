@@ -2,6 +2,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { cache } from 'react'
+import { getSessionUser } from '@/lib/session-user'
 
 // Wrapped in React cache() so multiple server components in the same request
 // share one client instance instead of each creating their own.
@@ -27,9 +28,8 @@ export const createServerSupabaseClient = cache(async () => {
   )
 })
 
-// Cached per-request user fetch — layout + page share one auth round-trip.
+// Cached per-request user — read from the session cookie, no auth round-trip.
 export const getUser = cache(async () => {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  return user
+  return getSessionUser(supabase)
 })

@@ -63,51 +63,16 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
 
   const supabase = await createServerSupabaseClient()
 
-  // Resolve surah filter first — its result is needed by every subsequent query
-  let surahGroupIds: string[] | null = null
-  if (surah) {
-    const { data: verseRows } = await supabase
-      .from('verses').select('group_id').eq('surah', surah)
-    surahGroupIds = [...new Set((verseRows || []).map((v: { group_id: string }) => v.group_id))]
-  }
+  // Surah filter is an inner join on a second `verses` embed (alias `sv`) inside the main
+  // query itself, instead of a separate "which groups contain this surah?" round-trip.
+  const SURAH_JOIN = surah ? ', sv:verses!inner(surah)' : ''
 
-  // Resolve text-search group IDs: union of title matches + parts-text matches.
-  // FTS on search_vec (normalized, GIN-indexed) first; ILIKE fallback if FTS returns nothing.
+  // Text search: title + parts FTS with ILIKE fallback, all in ONE RPC round-trip.
   let qGroupIds: string[] | null = null
   if (q.trim()) {
     const st = normalizeArabic(q.trim()) || q.trim()
-    const seen = new Set<string>()
-
-    if (st.length >= 2) {
-      const [{ data: tFts }, { data: pFts }] = await Promise.all([
-        supabase.from('groups').select('id')
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .textSearch('search_vec', st, { type: 'websearch', config: 'simple' } as any)
-          .limit(300),
-        supabase.from('parts').select('verses(group_id)')
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .textSearch('search_vec', st, { type: 'websearch', config: 'simple' } as any)
-          .limit(300),
-      ])
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      for (const g of tFts || []) seen.add((g as any).id)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      for (const p of pFts || []) { const gid = (p as any).verses?.group_id; if (gid) seen.add(gid) }
-    }
-
-    if (seen.size === 0) {
-      // ILIKE fallback — runs when FTS returns nothing or query is too short
-      const [{ data: tIlike }, { data: pIlike }] = await Promise.all([
-        supabase.from('groups').select('id').ilike('title', `%${st}%`).limit(300),
-        supabase.from('parts').select('verses(group_id)').ilike('text', `%${st}%`).limit(300),
-      ])
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      for (const g of tIlike || []) seen.add((g as any).id)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      for (const p of pIlike || []) { const gid = (p as any).verses?.group_id; if (gid) seen.add(gid) }
-    }
-
-    qGroupIds = [...seen]
+    const { data: ids } = await supabase.rpc('search_group_ids', { p_q: st })
+    qGroupIds = (ids as string[] | null) ?? []
   }
 
   // Generic filter applicator — casts through any to keep type-system happy across
@@ -124,10 +89,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
       if (qGroupIds.length === 0) qBuilder = qBuilder.eq('id', 'no-match')
       else                        qBuilder = qBuilder.in('id', qGroupIds)
     }
-    if (surahGroupIds !== null) {
-      if (surahGroupIds.length === 0) qBuilder = qBuilder.eq('id', 'no-match')
-      else                            qBuilder = qBuilder.in('id', surahGroupIds)
-    }
+    if (surah) qBuilder = qBuilder.eq('sv.surah', surah)
     return qBuilder
   }
 
@@ -139,7 +101,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   if (view === 'titles-only') {
     if (sort === 'mushaf' || sort === 'most-verses') {
       // Two-step: sort by verse data, then fetch title-only fields for current page
-      let miniQ = supabase.from('groups').select(MINI_SELECT)
+      let miniQ = supabase.from('groups').select(MINI_SELECT + SURAH_JOIN)
       miniQ = applyFilters(miniQ)
       const { data: miniRaw } = await miniQ
       const mini = (miniRaw as unknown as MiniGroup[]) || []
@@ -171,7 +133,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
 
     } else {
       // Standard paginated fetch — no verses needed
-      let mainQ = supabase.from('groups').select(TITLES_ONLY_SELECT, { count: 'exact' })
+      let mainQ = supabase.from('groups').select(TITLES_ONLY_SELECT + SURAH_JOIN, { count: 'exact' })
       mainQ = applyFilters(mainQ)
       if (sort === 'created')      mainQ = (mainQ as any).order('created_at', { ascending: false })
       else if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
@@ -187,7 +149,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   } else if (view === 'group-surah') {
     // Needs ALL matching groups for bucketing — can't page
     // Surah counts always run in parallel
-    let mainQ = supabase.from('groups').select(FULL_SELECT, { count: 'exact' })
+    let mainQ = supabase.from('groups').select(FULL_SELECT + SURAH_JOIN, { count: 'exact' })
     mainQ = applyFilters(mainQ)
     if (sort === 'created')     mainQ = (mainQ as any).order('created_at', { ascending: false })
     else if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
@@ -221,7 +183,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     // Two-step: fetch lightweight sort-key data for ALL matching groups,
     // sort in JS, then fetch full data (with parts) for only the current page.
     // Avoids transferring all parts text for every group in the dataset.
-    let miniQ = supabase.from('groups').select(MINI_SELECT)
+    let miniQ = supabase.from('groups').select(MINI_SELECT + SURAH_JOIN)
     miniQ = applyFilters(miniQ)
 
     const [{ data: miniRaw }, { data: surahAgg }] = await Promise.all([
@@ -262,7 +224,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
 
   } else {
     // Default path: server-side paging with sort, surah counts run in parallel
-    let mainQ = supabase.from('groups').select(FULL_SELECT, { count: 'exact' })
+    let mainQ = supabase.from('groups').select(FULL_SELECT + SURAH_JOIN, { count: 'exact' })
     mainQ = applyFilters(mainQ)
     if (sort === 'created')      mainQ = (mainQ as any).order('created_at', { ascending: false })
     else if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })

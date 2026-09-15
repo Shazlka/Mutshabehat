@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 
 type Ctx = { params: Promise<{ id: string }> }
 
@@ -21,7 +22,7 @@ async function verifyOwnership(
 export async function GET(_request: NextRequest, ctx: Ctx) {
   const { id } = await ctx.params
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   if (!(await verifyOwnership(supabase, id, user.id))) {
@@ -41,7 +42,7 @@ export async function GET(_request: NextRequest, ctx: Ctx) {
 export async function POST(request: NextRequest, ctx: Ctx) {
   const { id } = await ctx.params
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   if (!(await verifyOwnership(supabase, id, user.id))) {
@@ -63,7 +64,7 @@ export async function POST(request: NextRequest, ctx: Ctx) {
 export async function DELETE(request: NextRequest, ctx: Ctx) {
   const { id } = await ctx.params
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   if (!(await verifyOwnership(supabase, id, user.id))) {

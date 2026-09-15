@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import { normalizeArabic, rasmSkeleton } from '@/lib/arabic'
 
 // GET /api/search?q=<arabic>&limit=20
@@ -13,7 +14,7 @@ import { normalizeArabic, rasmSkeleton } from '@/lib/arabic'
 // Uthmani variant (السموات ↔ السماوات, عاكفين ↔ عكفين) still surfaces.
 export async function GET(request: NextRequest) {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   const { searchParams } = new URL(request.url)

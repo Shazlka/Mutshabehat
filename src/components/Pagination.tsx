@@ -5,16 +5,17 @@ interface Props {
   page: number
   totalPages: number
   searchParams: Record<string, string>
+  basePath?: string
 }
 
-function buildHref(params: Record<string, string>, newPage: number): string {
-  const p = new URLSearchParams(params)
-  p.set('page', String(newPage))
-  return `/?${p.toString()}`
-}
-
-export default function Pagination({ page, totalPages, searchParams }: Props) {
+export default function Pagination({ page, totalPages, searchParams, basePath = '/' }: Props) {
   if (totalPages <= 1) return null
+
+  function buildHref(params: Record<string, string>, newPage: number): string {
+    const p = new URLSearchParams(params)
+    p.set('page', String(newPage))
+    return `${basePath}?${p.toString()}`
+  }
 
   const pages: (number | '…')[] = []
   // Smart pagination: always show first, last, current, and neighbors

@@ -3,22 +3,12 @@
 import { useState, useEffect, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import ArabicDiff, { type Part } from './ArabicDiff'
-import { ayahToArabic } from '@/lib/arabic'
+import AutomatedCard, { type AutomatedRow } from './AutomatedCard'
 import { cn } from '@/lib/cn'
 import { useSurahNames } from '@/lib/surah-names'
 
-interface PayloadVerse {
-  surah?: string; ayah?: number | string; label?: string
-  parts?: { type: string; text: string }[]
-}
-interface Row {
-  id: number; title: string; color: string; surahs: string[]
-  payload: { verses?: PayloadVerse[] }
-}
-
 interface Props {
-  rows: Row[]
+  rows: AutomatedRow[]
   page: number
   totalPages: number
   q: string
@@ -72,14 +62,6 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
         setDone(j.error || 'حدث خطأ')
       }
     } finally { setBusy(false) }
-  }
-
-  function ayahNum(v: number | string | undefined): number {
-    if (typeof v === 'number') return v
-    if (typeof v !== 'string') return 1
-    const map = '٠١٢٣٤٥٦٧٨٩'
-    const w = v.split('').map((c) => map.indexOf(c) >= 0 ? String(map.indexOf(c)) : c).join('')
-    return parseInt(w, 10) || 1
   }
 
   function buildHref(p: number) {
@@ -188,46 +170,9 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
 
       {/* List */}
       <ol className="divide-y divide-[var(--color-border-soft)]">
-        {rows.map((r) => {
-          const verses = (r.payload?.verses || []).slice(0, 2)
-          const isPicked = picked.has(r.id)
-          return (
-            <li key={r.id} className="py-5 -mx-2 px-2 rounded-lg transition-colors hover:bg-[var(--color-surface)]">
-              <div className="flex items-start gap-3">
-                <input type="checkbox" checked={isPicked} onChange={() => toggle(r.id)}
-                  className="mt-1 w-4 h-4 accent-[var(--color-primary)] shrink-0"
-                  aria-label={`اختيار ${r.title}`} />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2 mb-3">
-                    {r.color && (
-                      <span aria-hidden="true" className="inline-block w-2 h-2 rounded-full mt-1"
-                            style={{ background: r.color }} />
-                    )}
-                    <h2 className="text-[15px] font-bold text-[var(--color-ink)] leading-snug">{r.title}</h2>
-                  </div>
-                  <ol className="space-y-3">
-                    {verses.map((v, vi) => (
-                      <li key={vi} className="md:flex md:items-start md:gap-3">
-                        <div className="md:shrink-0 md:w-20 flex md:block items-baseline gap-2 mb-1 md:mb-0 flex-wrap">
-                          <span className="text-[12px] font-bold text-[var(--color-primary)]">{v.surah ?? '—'}</span>
-                          <span className="text-[11px] font-mono tabular-nums text-[var(--color-ink-muted)] font-bold leading-tight">{ayahToArabic(ayahNum(v.ayah))}</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <ArabicDiff parts={(v.parts ?? []) as Part[]} size="sm" />
-                        </div>
-                      </li>
-                    ))}
-                    {(r.payload?.verses?.length ?? 0) > 2 && (
-                      <li className="text-[11px] text-[var(--color-ink-muted)] md:mr-20">
-                        + {(r.payload?.verses?.length ?? 0) - 2} آية أخرى…
-                      </li>
-                    )}
-                  </ol>
-                </div>
-              </div>
-            </li>
-          )
-        })}
+        {rows.map((r) => (
+          <AutomatedCard key={r.id} row={r} picked={picked.has(r.id)} onToggle={toggle} />
+        ))}
       </ol>
 
       {/* Pagination */}

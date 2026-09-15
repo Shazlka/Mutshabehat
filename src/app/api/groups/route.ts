@@ -1,12 +1,13 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import { stripTashkeel } from '@/lib/arabic'
 import { sanitizeNote } from '@/lib/sanitize'
 
 // GET /api/groups
 export async function GET(request: NextRequest) {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   const { searchParams } = new URL(request.url)
@@ -46,7 +47,7 @@ export async function GET(request: NextRequest) {
 // POST /api/groups
 export async function POST(request: NextRequest) {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   const body = await request.json().catch(() => null)

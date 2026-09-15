@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import GroupDetail from '@/components/GroupDetail'
 import GroupBrowseNav from '@/components/GroupBrowseNav'
 import GroupMobileBottomBar from '@/components/GroupMobileBottomBar'
@@ -30,11 +31,11 @@ export default async function GroupDetailPage({ params }: { params: Promise<{ id
   //   b) group scalar fields
   //   c) verses for this group
   const [
-    { data: { user } },
+    user,
     { data: groupRaw },
     { data: versesRaw },
   ] = await Promise.all([
-    supabase.auth.getUser(),
+    getSessionUser(supabase),
     supabase.from('groups')
       .select('id, title, color, status, favorite, completed, note, unote, created_at')
       .eq('id', id)

@@ -8,6 +8,7 @@ import { cn } from '@/lib/cn'
 const NAV = [
   { href: '/',          label: 'المتشابهات',  count: 'groups' as const },
   { href: '/automated', label: 'الآلية',      count: null },
+  { href: '/surahs',    label: 'السور',       count: null },
   { href: '/network',   label: 'شبكة السور',  count: null },
   { href: '/stats',     label: 'إحصائيات',   count: null },
   { href: '/tools',     label: 'أدوات',      count: null },
@@ -121,7 +122,7 @@ export default function MobileTopbar({ email, groupCount }: Props) {
         <nav aria-label="التنقل بين الصفحات" className="px-3 py-4 flex-1 overflow-y-auto">
           <ul className="space-y-1">
             {NAV.map((item) => {
-              const active = pathname === item.href
+              const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href + '/'))
               return (
                 <li key={item.href}>
                   <Link href={item.href}

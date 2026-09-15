@@ -1,4 +1,5 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import TagToolbox from '@/components/TagToolbox'
 import TagManager from '@/components/TagManager'
 import ClearCacheButton from '@/components/ClearCacheButton'
@@ -7,7 +8,7 @@ import SwipeNavigationSetting from '@/components/SwipeNavigationSetting'
 
 export default async function SettingsPage() {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
 
   return (
     <div className="max-w-2xl mx-auto px-5 md:px-8 py-8 md:py-14">

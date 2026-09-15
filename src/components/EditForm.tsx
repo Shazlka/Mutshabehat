@@ -201,12 +201,12 @@ export default function EditForm({
     startTransition(async () => {
       if (!(await persist())) return
       setSaveSuccess(true)
+      // Navigate right away. Dynamic pages are always fetched fresh on navigation,
+      // so no router.refresh() (that re-rendered this editor = extra DB round-trips)
+      // and no artificial delay. replace() so "back" doesn't return to the editor.
       const advanceTo = willAdvance ? (nextGroupId ?? prevGroupId ?? null) : null
-      setTimeout(() => {
-        router.refresh()
-        if (advanceTo) router.push(`/groups/${advanceTo}/edit`)
-        else router.back()
-      }, 650)
+      if (advanceTo) router.push(`/groups/${advanceTo}/edit`)
+      else router.replace(`/groups/${group.id}`)
     })
   }
 
@@ -216,7 +216,6 @@ export default function EditForm({
     setSaveError(null); setSaveSuccess(false)
     startTransition(async () => {
       if (!(await persist())) return
-      router.refresh()
       router.push(`/groups/${targetId}/edit`)
     })
   }

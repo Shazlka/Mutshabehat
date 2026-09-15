@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import { sanitizeNote } from '@/lib/sanitize'
 
 type PartInput  = { type: string; text: string }
@@ -22,7 +23,7 @@ function parseAyah(val: number | string | undefined): number {
 // POST /api/automated/copy   body: { automated_ids: number[] }
 export async function POST(request: NextRequest) {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
   const body = await request.json().catch(() => null) as { automated_ids?: number[] } | null
