@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import Link from 'next/link'
 import ArabicDiff, { type Part } from '@/components/ArabicDiff'
 import type {
@@ -338,6 +338,9 @@ export default function Mushaf1441Viewer({
   const lastTapRef = useRef(0)
 
   const swipeStartRef = useRef<{ x: number; y: number } | null>(null)
+  const pageStageRef = useRef<HTMLDivElement | null>(null)
+  // Direction of the pending page turn (1 = forward, -1 = back); consumed by the flip animation.
+  const pendingFlipRef = useRef<1 | -1 | 0>(0)
   const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const longPressFiredRef = useRef(false)
   // Timestamp of the last touch end, used to suppress tap-to-select on touch
@@ -644,8 +647,48 @@ export default function Mushaf1441Viewer({
     }
   }, [allMutshabehatHighlights, mutshabehatLinkEnabled])
 
+  // Paper page-turn: the incoming leaf swings flat from the spine (or page edge) with a
+  // passing shadow. Web Animations only touch transform/filter, so layout is unaffected.
+  useLayoutEffect(() => {
+    const direction = pendingFlipRef.current
+    pendingFlipRef.current = 0
+    const stage = pageStageRef.current
+    if (!direction || !stage) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const leaves = stage.querySelectorAll<HTMLElement>('[data-mushaf-leaf]')
+    const animations: Animation[] = []
+    leaves.forEach((leaf) => {
+      const layout = leaf.dataset.mushafLeaf
+      // Forward (RTL) sweeps left → right; back sweeps right → left.
+      const turning =
+        layout === 'single' || (layout === 'right' && direction === 1) || (layout === 'left' && direction === -1)
+      if (turning) {
+        const hingeOnRight = layout === 'single' ? direction === 1 : layout === 'left'
+        const startAngle = hingeOnRight ? 88 : -88
+        animations.push(leaf.animate(
+          [
+            { transform: `perspective(2200px) rotateY(${startAngle}deg)`, filter: 'brightness(0.72)', boxShadow: '0 0 0 rgba(63,49,21,0)' },
+            { transform: `perspective(2200px) rotateY(${startAngle * 0.35}deg)`, filter: 'brightness(0.9)', boxShadow: `${hingeOnRight ? -18 : 18}px 10px 40px rgba(63,49,21,0.28)`, offset: 0.55 },
+            { transform: 'perspective(2200px) rotateY(0deg)', filter: 'brightness(1)', boxShadow: '0 8px 30px rgba(63,49,21,0.12)' },
+          ],
+          { duration: 520, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)', fill: 'backwards' },
+        ))
+        leaf.style.transformOrigin = hingeOnRight ? 'right center' : 'left center'
+        leaf.style.zIndex = '2'
+      } else {
+        // The page revealed underneath sits in the turning leaf's shadow for a moment.
+        animations.push(leaf.animate(
+          [{ filter: 'brightness(0.8)' }, { filter: 'brightness(1)' }],
+          { duration: 520, easing: 'ease-out', fill: 'backwards' },
+        ))
+      }
+    })
+    return () => animations.forEach((animation) => animation.cancel())
+  }, [pageNumber])
+
   async function goToPage(nextPage: number, targetAyahKey?: string) {
     const clamped = clampPage(nextPage)
+    if (clamped !== pageNumber) pendingFlipRef.current = clamped > pageNumber ? 1 : -1
     setPageNumber(clamped)
     setPageInput(String(clamped))
     if (typeof window !== 'undefined') {
@@ -1653,6 +1696,7 @@ export default function Mushaf1441Viewer({
           maxHeight: '100%',
           containerType: 'inline-size',
         }}
+        data-mushaf-leaf={layout}
         onClick={(event) => (layout === 'single' ? handlePageClick(event) : handleSpreadPageClick(event, layout))}
         onTouchStart={handlePageTouchStart}
         onTouchEnd={handlePageTouchEnd}
@@ -2666,7 +2710,7 @@ export default function Mushaf1441Viewer({
         onTouchEnd={handlePageTouchEnd}
         onWheel={handleWheel}
       >
-        <div className="absolute inset-0 flex items-center justify-center p-0 sm:p-3">
+        <div ref={pageStageRef} className="absolute inset-0 flex items-center justify-center p-0 sm:p-3">
           {isSpread && hasCompanion ? (
             <div dir="rtl" className="flex h-full w-full items-center justify-center gap-[3px]">
               {(() => {
