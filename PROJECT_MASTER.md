@@ -20,6 +20,8 @@
 | Backend config dir | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost` |
 | Machine | Mac Mini `amr-Mac-mini`, Tailscale node `youssefs-mac-mini`, tailnet `tailcd68dd.ts.net` |
 | Users | single user, **no login UI** (auto-login in `src/proxy.ts`) |
+| Agent entry points | this file · `AGENTS.md` · `CLAUDE.md` · skill `mutshabehat` (identical copies in `~/.claude/skills/`, `~/.agents/skills/`, `~/.gemini/skills/`) |
+| "Where is X?" | §10 search guide |
 
 ---
 
@@ -70,6 +72,7 @@ Codex worktrees were removed on 2026-09-15. Ignore iCloud/OneDrive "Mutshabehat"
 | `legacy-v84-main`, tag `legacy-v84-final` | archived legacy static app (old `main`, `b3a0a7b`) |
 | `legacy-v84-local-statusline-fix` | one preserved legacy commit (`428eb86`) |
 | `V82*`, `v83-release`, `claude/*` | legacy app branches |
+| `diag/dns-region` | **temporary** DNS/region diagnostic commits ("do not merge"), preview-only, created 2026-09-15 by another session (with a worktree under `/private/tmp/...`). Never merge it; delete it when that diagnosis is done |
 
 - The repo is **PUBLIC**. Never commit `.env*`, `.secrets.json`, passwords, user ids/emails, DB dumps, or xlsx/csv/pdf data.
 - GitHub Pages builds from `main`, so the old `shazlka.github.io/Mutshabehat/V84/` URLs are 404. Point Pages at `legacy-v84-main` if they're needed.
@@ -85,7 +88,8 @@ Codex worktrees were removed on 2026-09-15. Ignore iCloud/OneDrive "Mutshabehat"
 | CLI user | `amreshazly-4497` (always pass `--scope shazlka-s-projects`) |
 | Git | connected to `Shazlka/Mutshabehat`, **Production Branch `main`** |
 | Build | Next.js preset, Node 24.x, region `iad1`, Turbopack |
-| Aliases | `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app` |
+| Aliases | `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app`, `mutshabehat-v2-git-main-shazlka-s-projects.vercel.app` (branch previews: `mutshabehat-v2-git-<branch>-shazlka-s-projects.vercel.app`) |
+| Dashboard | https://vercel.com/shazlka-s-projects/mutshabehat-v2 |
 | Env vars (Production) | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `AUTOLOGIN_EMAIL`, `AUTOLOGIN_PASSWORD` |
 
 **How deploys work:**
@@ -96,7 +100,8 @@ Codex worktrees were removed on 2026-09-15. Ignore iCloud/OneDrive "Mutshabehat"
   `vercel redeploy https://mutshabehat-v2.vercel.app --scope shazlka-s-projects`.
 - A deploy that "hangs" or shows UNKNOWN is probably **`BLOCKED`** (commit author not a Vercel team member). Check the
   state via the Vercel API/MCP, and commit as `Shazlka <amr.eshazly@gmail.com>` (the repo-local git config already does).
-- Verified 2026-09-15: git deploy `dpl_GQU5eKsa8G3j9o8emLTpRaxpZa59` (`662ab07`) READY and aliased. All main pages return 200 with data.
+- Verified 2026-09-15: production = git deploy `dpl_FayCF1kFS8LDkfLDAAckQTxAG9hr` (`ddd6e7f`, `main`) READY.
+  `/`, `/stats`, `/automated`, `/network`, `/mushaf-1441` all return 200; backend health 200.
 
 ---
 
@@ -179,7 +184,7 @@ src/
       search/              # FTS → ILIKE → rasm-skeleton tiers
       quran/               # ayahs + surah names (CDN-cached)
       automated/copy/
-      mushaf-1441/annotations|mutshabehat|page-metadata|page-words/
+      mushaf-1441/annotations|mutshabehat|page-ayat|page-metadata|page-words/
     auth/callback/         # leftover OAuth callback
   components/              # ~40 components: GroupRow, GroupDetail, EditForm, RichEditor, WordLinker, ArabicDiff,
                            # QuranSearch, SurahFilter, FilterBar, SortBar, NetworkGraph, TagManager, BulkTagger,
@@ -262,3 +267,34 @@ key is server-only.
 | Push didn't deploy / deploy hangs | Vercel deployment state `BLOCKED` = commit author. Check git identity (§4) |
 | New `NEXT_PUBLIC_*` value not live | redeploy (baked at build time) |
 | First page load empty | auto-login redirect in `proxy.ts` (see `tests/proxy-autologin.test.mjs`) |
+
+---
+
+## 10. Where to search ("where is X?")
+
+| Looking for | Look in |
+|---|---|
+| A page / screen | `src/app/(app)/<route>/page.tsx` (mushaf: `src/app/mushaf-1441/`) |
+| An API endpoint | `src/app/api/<name>/route.ts` |
+| A UI piece (card, bar, editor, chart) | `src/components/` (grep the Arabic label text, e.g. `grep -rn "حفظ والتالية" src`) |
+| Arabic normalization / search logic | `src/lib/arabic.ts`, `src/lib/quran.ts`, `src/app/api/search/route.ts` |
+| Supabase client / auth / session | `src/lib/supabase*.ts`, `src/proxy.ts` |
+| DB types | `src/types/database.ts`. Live schema: `docker compose exec db psql -U postgres -c '\d public.*'` (from the backend dir) |
+| Migrations / SQL history | `supabase/migrations/`, root `supabase-*.sql`; backend `cloud-schema.sql`, `volumes/initdb/` |
+| Colours, fonts, spacing | `src/app/globals.css`, `src/app/layout.tsx` |
+| Mushaf page data & validators | `packages/quran-data/mushaf1441/`, `scripts/*mushaf1441*`, `npm run mushaf:*` |
+| PWA / offline | `public/sw.js`, `public/manifest.json`, `public/icons/` |
+| Why something changed | `CHANGELOG.md` (newest first), `git log -S "<code>"` |
+| Backend compose, gateway, watchdog | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost` (`README.md`, `docker-compose.yml`, `caddy/Caddyfile`, `bin/`, `launchd/`) |
+| Deploys, env vars, runtime logs | Vercel dashboard / Vercel MCP (team `team_sDnS0rtYIo3SJZtJ3FsFinGV`, project `prj_CNcNhnaT36NFuHlcP5bnVbbDfsSj`) or `vercel logs <url> --scope shazlka-s-projects` |
+| Code/knowledge graph (may be stale, Jun 2026) | `graphify-out/` |
+
+## 11. Access and tools an agent has on this machine
+
+- **GitHub:** `gh` CLI authenticated; `git push origin <branch>` works over HTTPS.
+- **Vercel:** `vercel` CLI logged in as `amreshazly-4497`; the Vercel MCP connector also works for projects/deployments/logs.
+- **Backend:** `docker` (Colima context) + `docker compose exec db psql …`. There's no Supabase CLI and no host `psql`, and there's no Management API either (the backend is self-hosted).
+- **Tailscale:** `tailscale` CLI (status/funnel). Don't change Funnel config except `:8443`.
+- **Secrets:** only in files, never in chat or git: app `.env.local` (dev → self-host), backend `.env`, `.secrets.json`,
+  `.autologin-password.txt`. Production values live in Vercel env vars. Read values only when a task needs them, and never print them.
+- **Stale data:** `.env.local.supabase-cloud.bak` points at the retired cloud project. Don't use it.

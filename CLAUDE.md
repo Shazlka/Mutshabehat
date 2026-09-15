@@ -13,8 +13,8 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   exposed at `https://youssefs-mac-mini.tailcd68dd.ts.net:8443` (Tailscale Funnel). The Supabase Cloud
   project `tthlhkdmwusxerfiimgc` is retired (paused, data migrated 2026-08-31).
 - **Location:** `~/Projects/mutshabehat-v2` on the Mac Mini (GitHub `Shazlka/Mutshabehat`, branch
-  `main`; V2 replaced the legacy V84 app on 2026-09-15, which is archived as `legacy-v84-main` / tag `legacy-v84-final`). `~/dev/mutshabehat-v2` and the
-  iCloud copy are stale duplicates. Do not edit them.
+  `main`; V2 replaced the legacy V84 app on 2026-09-15, which is archived as `legacy-v84-main` / tag `legacy-v84-final`). This is the
+  only checkout (`~/dev/mutshabehat-v2` was removed 2026-09-15). Ignore iCloud/OneDrive "Mutshabehat" folders.
 - **Local build/dev env gotcha:** if a shell has `__NEXT_PROCESSED_ENV` set (leaks in from another
   Next.js process), `next build`/`next dev` will **skip loading `.env.local`** and fail to prerender
   with "Supabase URL and API key are required". Run with `env -u __NEXT_PROCESSED_ENV ...` or use a
@@ -27,9 +27,10 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   `.next/static/chunks` file sizes instead.
 - `public/quran/ayahs.json` is **Uthmani script** (alef wasla `ٱ` U+0671, not `ا`). Any text
   matching must go through `normalizeArabic` (`src/lib/arabic.ts`), which folds `ٱ→ا` + strips tatweel.
-- Applying DB DDL: the `service_role` key CANNOT run DDL via PostgREST. Use the Supabase
-  **Management API** with a personal access token (one curl), or the DB password. `supabase` CLI
-  and `psql` are NOT installed locally.
+- Applying DB DDL: the `service_role` key CANNOT run DDL via PostgREST. The backend is self-hosted, so the
+  Management API no longer applies. Back up, then run `docker compose exec -T db psql -U postgres -d postgres
+  -v ON_ERROR_STOP=1 --single-transaction < file.sql` from `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost`,
+  then `NOTIFY pgrst, 'reload schema'` (PROJECT_MASTER.md §8). The `supabase` CLI and host `psql` are not installed.
 - **📋 CHANGELOG IS MANDATORY:** every bug fix, feature, or performance improvement **MUST** be
   recorded — dated, newest-first — in **both** the `# Changelog` section below **and** the root
   `CHANGELOG.md` (keep the two in sync), before the work is considered done. This is the running
@@ -41,6 +42,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 > and any required DB migration. This log is the source of truth for "what changed and when".
 
 ## 2026-09-15
+- **Docs — Agent handoff verified against live systems:** `PROJECT_MASTER.md` now has a "where to search" guide (§10), an agent access/tools section (§11), the current prod deployment, the `git-main` alias, the Vercel dashboard link, the temporary `diag/dns-region` branch, and the `page-ayat` API route. `CLAUDE.md`: removed the stale `~/dev` copy note and replaced the Management-API DDL advice with the self-hosted `docker compose exec psql` path. No code or DB change.
 - **DB — Re-applied missing schema on the self-hosted stack:** `supabase-stats-aggregates.sql`, `supabase-parts-fts.sql`, `supabase-indexes.sql`, `supabase-migration-tag-uniqueness.sql` (never re-run after the cloud→Mac Mini migration). `/stats` now uses the `get_dashboard_stats()` RPC, and search uses FTS plus rasm-skeleton trigram columns instead of the ILIKE fallback. Verified through the Funnel URL as the app user (RPC counts, `surah_counts` view, FTS). Backup: `mutshabehat-selfhost/backups/pre-schema-apply-20260915b.dump`.
 - **Chore — Sync GitHub with production source:** committed the previously uncommitted Mushaf 1441 module (`src/app/mushaf-1441`, `src/app/api/mushaf-1441`, `packages/`), mushaf validation/import scripts, PWA icons/manifest/SW, loading skeletons and export route, which were already live on Vercel via CLI deploys. Merged `origin/feature/mushaf-1441-module` (auto-login first-request fix + proxy test). Added `PROJECT_MASTER.md` agent handoff doc and corrected stale location/backend notes in `CLAUDE.md`. No DB migration.
 
