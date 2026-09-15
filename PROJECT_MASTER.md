@@ -36,7 +36,7 @@ An Arabic, RTL, single-user web app (installable as a PWA) for studying Quran **
 - **Quran search:** 6,236 ayahs (Uthmani script) with spelling tolerance (alef wasla, dagger alef, rasm skeleton) and match highlighting.
 - **Stats dashboard:** counts, juz heatmap, tag donut, 30-day activity. **Network graph:** D3 force graph of groups/surahs.
 - **Tags:** CRUD, bulk tagging, import/export. **Export/backup:** JSON / SQL / Excel.
-- **Test mode** (`/test`): quiz on your own groups (pick the location / recall flashcards / mixed) with a colour-coded review.
+- **Test mode** (`/test`): quiz on your own groups or the whole Quran — pick the location / pick the missing similar word / recall flashcards / mixed — with a colour-coded review. Every answer is stored in `test_answers`; the stats tab shows right/wrong totals.
 - **Mushaf 1441 reader** (`/mushaf-1441`): page-accurate mushaf (604 pages, 15 lines) with highlights, notes,
   bookmarks, favourites (`mushaf_annotations`), surah/page sliders, swipe page turning, and a mutshabehat connections panel.
 - Mobile-first, native feel: bottom action bars, swipe navigation between groups, flip cards.
@@ -202,7 +202,8 @@ src/
     arabic.ts              # normalizeArabic, rasmSkeleton, normalizeArabicWithMap, matchRanges
     quran.ts               # pre-normalized in-memory ayah index, searchAyahs
     surah-names.ts         # useSurahNames (singleton fetch + cache)
-    test-questions.ts      # builds test questions from personal groups
+    test-questions.ts      # builds test questions from personal groups (shared types)
+    test-questions-quran.ts # whole-Quran questions (server; distractors from the Quran text)
     diff.ts  juz.ts  sanitize.ts  cn.ts
   types/database.ts
 packages/

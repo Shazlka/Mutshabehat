@@ -115,6 +115,7 @@ html, body {
 .part-addition { color: var(--color-addition); background: var(--color-addition-bg); border-radius: 4px; padding: 0 3px; }
 .part-unique   { color: var(--color-unique);   background: var(--color-unique-bg);   border-radius: 4px; padding: 0 3px; }
 .part-normal   { color: var(--color-ink); }
+.part-blank    { color: var(--color-primary); background: var(--color-primary-soft); border-radius: 6px; padding: 0 10px; letter-spacing: 0.1em; }
 
 
 /* Soft horizontal rule for dividing verses inside a group */

@@ -3,6 +3,7 @@ import CountUp from '@/components/CountUp'
 import TagDonut from '@/components/TagDonut'
 import ActivityChart from '@/components/ActivityChart'
 import JuzHeatmap from '@/components/JuzHeatmap'
+import TestAnswerStats, { type TestAnswerStatsData } from '@/components/TestAnswerStats'
 import { getSurahNumberByName } from '@/lib/quran'
 import { juzOfSurah } from '@/lib/juz'
 
@@ -113,6 +114,25 @@ export default async function StatsPage() {
     }
   }
 
+  // ── Test-mode right/wrong totals (table from 20260915180000_test_answers.sql) ──
+  let testStats: TestAnswerStatsData | null = null
+  try {
+    const { data, error } = await supabase.rpc('get_test_answer_stats')
+    if (!error && data) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const d = data as any
+      testStats = {
+        total: Number(d.total ?? 0),
+        correct: Number(d.correct ?? 0),
+        wrong: Number(d.wrong ?? 0),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        byKind: (d.by_kind ?? []).map((k: any) => ({ source: String(k.source), kind: String(k.kind), correct: Number(k.correct), wrong: Number(k.wrong) })),
+      }
+    }
+  } catch {
+    // migration not applied yet — the section is hidden
+  }
+
   // ── Derive view variables (shared by both paths) ──
   const groupsRes = { count: stats.counts.groups }
   const versesRes = { count: stats.counts.verses }
@@ -196,6 +216,8 @@ export default async function StatsPage() {
           </div>
         ))}
       </section>
+
+      {testStats && <TestAnswerStats stats={testStats} />}
 
       {/* 30-day activity */}
       <section className="mb-14 p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border-soft)]">
