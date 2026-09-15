@@ -51,6 +51,7 @@ export async function POST(request: NextRequest) {
         note:    sanitizeNote(p?.note),
         unote:   sanitizeNote(p?.unote),
         status:  'draft',
+        source_automated_id: row.id,
       })
       .select('id').single()
     if (gErr || !newGroup) continue

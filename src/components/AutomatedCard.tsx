@@ -9,6 +9,20 @@ export interface AutomatedVerse {
 export interface AutomatedRow {
   id: number; title: string; color: string; surahs: string[]
   payload: { note?: string; unote?: string; verses?: AutomatedVerse[] }
+  /** Already copied into the personal database (from the automated_groups_with_copy view). */
+  copied?: boolean
+}
+
+export function CopiedBadge({ className = '' }: { className?: string }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-[var(--color-copied-bg)] text-[var(--color-copied)] border border-[var(--color-copied)]/40 ${className}`}>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5" />
+      </svg>
+      منسوخة
+    </span>
+  )
 }
 
 export function ayahNum(v: number | string | undefined): number {
@@ -34,7 +48,9 @@ export default function AutomatedCard({ row, preview = 2, picked = false, onTogg
   const href = `/automated/${row.id}`
 
   return (
-    <li className="py-5 -mx-2 px-2 rounded-lg transition-colors hover:bg-[var(--color-surface)]">
+    <li className={row.copied
+      ? 'my-2 py-5 px-3 rounded-xl border-s-4 border-[var(--color-copied)] bg-[var(--color-copied-bg)] transition-colors'
+      : 'py-5 -mx-2 px-2 rounded-lg transition-colors hover:bg-[var(--color-surface)]'}>
       <div className="flex items-start gap-3">
         {onToggle && (
           <input type="checkbox" checked={picked} onChange={() => onToggle(row.id)}
@@ -50,6 +66,7 @@ export default function AutomatedCard({ row, preview = 2, picked = false, onTogg
             <h2 className="text-[15px] font-bold text-[var(--color-ink)] leading-snug group-hover:text-[var(--color-primary)] transition-colors">
               {row.title}
             </h2>
+            {row.copied && <CopiedBadge className="shrink-0 self-center" />}
           </Link>
           <ol className="space-y-3">
             {verses.map((v, vi) => (

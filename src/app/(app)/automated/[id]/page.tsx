@@ -5,7 +5,7 @@ import { getSurahNumberByName } from '@/lib/quran'
 import { ayahToArabic } from '@/lib/arabic'
 import ArabicDiff, { type Part } from '@/components/ArabicDiff'
 import AutomatedCopyButton from '@/components/AutomatedCopyButton'
-import { ayahNum, type AutomatedRow } from '@/components/AutomatedCard'
+import { ayahNum, CopiedBadge, type AutomatedRow } from '@/components/AutomatedCard'
 
 export default async function AutomatedDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -13,12 +13,21 @@ export default async function AutomatedDetailPage({ params }: { params: Promise<
   if (!Number.isInteger(numericId) || numericId <= 0) notFound()
 
   const supabase = await createServerSupabaseClient()
-  const { data } = await supabase
-    .from('automated_groups')
-    .select('id, title, color, surahs, payload')
-    .eq('id', numericId)
-    .maybeSingle()
+  const [{ data }, { data: copies }] = await Promise.all([
+    supabase
+      .from('automated_groups')
+      .select('id, title, color, surahs, payload')
+      .eq('id', numericId)
+      .maybeSingle(),
+    supabase
+      .from('groups')
+      .select('id')
+      .eq('source_automated_id', numericId)
+      .order('created_at', { ascending: true })
+      .limit(1),
+  ])
   if (!data) notFound()
+  const copiedGroupId = (copies as { id: string }[] | null)?.[0]?.id ?? null
 
   const row = data as AutomatedRow
   const verses = row.payload?.verses ?? []
@@ -61,7 +70,19 @@ export default async function AutomatedDetailPage({ params }: { params: Promise<
         )}
       </header>
 
-      <div className="mb-8"><AutomatedCopyButton id={row.id} /></div>
+      <div className="mb-8">
+        {copiedGroupId ? (
+          <div className="flex items-center gap-3 flex-wrap p-3 rounded-xl bg-[var(--color-copied-bg)] border-s-4 border-[var(--color-copied)]">
+            <CopiedBadge />
+            <span className="text-[13px] text-[var(--color-ink-soft)]">هذه المجموعة موجودة في قاعدتك الشخصية.</span>
+            <Link href={`/groups/${copiedGroupId}`} className="text-[13px] font-bold text-[var(--color-copied)] hover:underline">
+              فتح النسخة الشخصية ←
+            </Link>
+          </div>
+        ) : (
+          <AutomatedCopyButton id={row.id} />
+        )}
+      </div>
 
       <ol className="space-y-4">
         {verses.map((v, vi) => (

@@ -49,6 +49,9 @@
   --color-success-bg:   oklch(0.96 0.030 150);
   --color-warn:         oklch(0.65 0.130 75);
   --color-warn-bg:      oklch(0.97 0.040 75);
+  /* Automated candidate already copied to personal — magenta, distinct from all part colours */
+  --color-copied:       oklch(0.50 0.160 345);
+  --color-copied-bg:    oklch(0.96 0.030 345);
 
   /* Typography */
   --font-sans: var(--font-cairo), "Noto Naskh Arabic", "Segoe UI", system-ui, sans-serif;

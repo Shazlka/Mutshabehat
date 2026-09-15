@@ -14,9 +14,11 @@ export default async function AutomatedPage({ searchParams }: { searchParams: SP
 
   const supabase = await createServerSupabaseClient()
 
+  // Not-yet-copied candidates first; ones already copied to personal go to the end.
   let query = supabase
-    .from('automated_groups')
-    .select('id, title, color, surahs, payload', { count: 'exact' })
+    .from('automated_groups_with_copy')
+    .select('id, title, color, surahs, payload, copied', { count: 'exact' })
+    .order('copied', { ascending: true })
     .order('id', { ascending: true })
     .range(from, to)
 
@@ -29,7 +31,7 @@ export default async function AutomatedPage({ searchParams }: { searchParams: SP
   const totalPages = Math.ceil(total / limit)
 
   type Row = {
-    id: number; title: string; color: string; surahs: string[]
+    id: number; title: string; color: string; surahs: string[]; copied: boolean
     payload: { verses?: { surah?: string; ayah?: number|string; label?: string; parts?: { type: string; text: string }[] }[] }
   }
   const rows = (data as Row[]) || []

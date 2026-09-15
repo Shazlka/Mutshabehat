@@ -44,8 +44,8 @@ export default async function SurahDetailPage({ params, searchParams }: { params
         .eq('sv.surah', name).order('created_at', { ascending: false }).range(from, from + limit - 1)
     : supabase.from('groups').select('id, sv:verses!inner(surah)', { count: 'exact', head: true }).eq('sv.surah', name)
   const automatedQ = tab === 'automated'
-    ? supabase.from('automated_groups').select('id, title, color, surahs, payload', { count: 'exact' })
-        .contains('surahs', [name]).order('id', { ascending: true }).range(from, from + limit - 1)
+    ? supabase.from('automated_groups_with_copy').select('id, title, color, surahs, payload, copied', { count: 'exact' })
+        .contains('surahs', [name]).order('copied', { ascending: true }).order('id', { ascending: true }).range(from, from + limit - 1)
     : supabase.from('automated_groups').select('id', { count: 'exact', head: true }).contains('surahs', [name])
 
   const [personalRes, automatedRes] = await Promise.all([personalQ, automatedQ])
