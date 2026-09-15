@@ -1745,8 +1745,13 @@ export default function Mushaf1441Viewer({
                       <span className="flex min-w-0 items-center gap-2 text-[15px] font-black leading-snug text-[#171717]">
                         <span
                           aria-hidden="true"
-                          className="inline-block size-3 shrink-0 rounded-full"
-                          style={{ backgroundColor: tintForGroup(groupId).bg, boxShadow: `inset 0 0 0 1.5px ${tintForGroup(groupId).edge}` }}
+                          className="block flex-none rounded-full"
+                          style={{
+                            width: 12,
+                            height: 12,
+                            backgroundColor: tintForGroup(groupId).bg,
+                            boxShadow: `inset 0 0 0 1.5px ${tintForGroup(groupId).edge}`,
+                          }}
                         />
                         <span className="min-w-0">{link?.title ?? 'مجموعة متشابهات'}</span>
                       </span>
