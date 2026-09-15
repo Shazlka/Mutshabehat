@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import { MUSHAF_1441_SURAH_OPTIONS } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
 
 type VerseRow = {
@@ -31,34 +32,8 @@ const surahNameToNumber = new Map(MUSHAF_1441_SURAH_OPTIONS.map((surah) => [sura
 async function getAuthenticatedSupabase() {
   try {
     const supabase = await createServerSupabaseClient()
-    const { data: { user }, error } = await supabase.auth.getUser()
-
-    if (error) {
-      // A missing/expired session is a normal "not signed in" state, not a server
-      // fault — return 401 so the UI can prompt sign-in instead of showing an error.
-      const sessionMissing =
-        error.name === 'AuthSessionMissingError' ||
-        /auth session missing/i.test(error.message)
-      if (sessionMissing) {
-        return {
-          supabase: null,
-          user: null,
-          response: NextResponse.json({ error: 'unauthorized' }, { status: 401 }),
-        }
-      }
-
-      return {
-        supabase: null,
-        user: null,
-        response: NextResponse.json(
-          {
-            error: 'Supabase authentication is unavailable for the Mushaf 1441 preview',
-            detail: error.message,
-          },
-          { status: 503 }
-        ),
-      }
-    }
+    // Session cookie, no auth-server round-trip (RLS still enforces ownership).
+    const user = await getSessionUser(supabase)
 
     if (!user) {
       return {

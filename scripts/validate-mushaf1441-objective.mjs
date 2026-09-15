@@ -96,7 +96,7 @@ for (const token of [
   'fetch(`/api/mushaf-1441/mutshabehat',
   'mutshabehatHighlightByAyahKey',
   'isMutshabehatHighlighted',
-  'mutshabehatHighlight.color',
+  'PERSONAL_AYAH_HIGHLIGHT',
   "setActiveDetailTab(hasMutshabehatHighlight ? 'mutshabehat' : 'notes')",
 ]) {
   mustInclude(viewer, token, 'Mutshabehat viewer link')

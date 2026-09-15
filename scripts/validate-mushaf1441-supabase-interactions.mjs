@@ -96,7 +96,7 @@ for (const required of [
   'getTagNames',
   'ayahKeys',
   'tags',
-  'Supabase authentication is unavailable for the Mushaf 1441 preview',
+  'getSessionUser',
   'Supabase configuration is unavailable for the Mushaf 1441 preview',
   'similarAyat',
 ]) {

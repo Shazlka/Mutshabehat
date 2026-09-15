@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import Link from 'next/link'
+import ArabicDiff, { type Part } from '@/components/ArabicDiff'
 import type {
   AyahNote,
   MushafAnnotation,
@@ -67,6 +68,17 @@ const EMPTY_ANNOTATION_DRAFT: AnnotationDraft = {
 // Subtle selection tint: the page colour one step darker (not a different colour).
 const SELECTION_BG = '#ece2c8'
 const SELECTION_BORDER = '#d8c9a3'
+
+// Ayat that belong to one of your personal mutashabihat groups: one consistent teal,
+// distinct from the gold UI chrome and from every annotation highlight preset.
+const PERSONAL_AYAH_HIGHLIGHT = { text: '#0b6b66', underline: '#5fa89e', tint: '#e3f1ee' }
+const WHEEL_TURN_THRESHOLD = 60
+
+type PopupGroup = {
+  id: string
+  title: string
+  verses: Array<{ surah: string; ayah: number; parts: Array<{ type: string; text: string }> }>
+}
 
 const HIGHLIGHT_COLOR_PRESETS = [
   { label: 'ورقي', textColor: '#5b4a26', backgroundColor: '#ece2c8' },
@@ -272,6 +284,9 @@ export default function Mushaf1441Viewer({
   const [hoveredAyahKey, setHoveredAyahKey] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const [surahSliderPreview, setSurahSliderPreview] = useState<number | null>(null)
+  const [mutshabehatPopupAyahKey, setMutshabehatPopupAyahKey] = useState<string | null>(null)
+  const [groupDetails, setGroupDetails] = useState<Record<string, PopupGroup | 'loading' | 'error'>>({})
+  const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const lastTapRef = useRef(0)
 
   const swipeStartRef = useRef<{ x: number; y: number } | null>(null)
@@ -341,6 +356,15 @@ export default function Mushaf1441Viewer({
     void prefetchPage(pageNumber - 1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber])
+
+  useEffect(() => {
+    if (!mutshabehatPopupAyahKey) return
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') setMutshabehatPopupAyahKey(null)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [mutshabehatPopupAyahKey])
 
   useEffect(() => {
     if (!toast) return
@@ -543,6 +567,7 @@ export default function Mushaf1441Viewer({
     setSelectedAyahKey(targetAyahKey ?? null)
     setIsMobileNotesOpen(false)
     setMutshabehatPanelAyahKey(null)
+    setMutshabehatPopupAyahKey(null)
     setActiveDetailTab('notes')
     setContextMenu(null)
     setEditingNoteId(null)
@@ -923,6 +948,53 @@ export default function Mushaf1441Viewer({
     setSelectedTarget({ targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word }, 'note')
   }
 
+  function openMutshabehatPopup(ayahKey: string) {
+    setMutshabehatPopupAyahKey(ayahKey)
+    setContextMenu(null)
+    const groupIds = new Set(
+      pageHighlights
+        .filter((highlight) => highlight.ayahKey === ayahKey && highlight.groupId)
+        .map((highlight) => highlight.groupId as string)
+    )
+    for (const groupId of groupIds) void loadGroupDetail(groupId)
+  }
+
+  async function loadGroupDetail(groupId: string) {
+    const existing = groupDetails[groupId]
+    if (existing && existing !== 'error') return
+    setGroupDetails((current) => ({ ...current, [groupId]: 'loading' }))
+    try {
+      const response = await fetch(`/api/groups/${groupId}`)
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      const { group } = await response.json() as { group: PopupGroup }
+      setGroupDetails((current) => ({ ...current, [groupId]: group }))
+    } catch {
+      setGroupDetails((current) => ({ ...current, [groupId]: 'error' }))
+    }
+  }
+
+  // Mouse wheel / trackpad turns pages: scroll down → next page, up → previous.
+  // One page per gesture — the momentum that follows a turn is ignored.
+  function handleWheel(event: ReactWheelEvent) {
+    if (event.ctrlKey || isMenuOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
+    const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX
+    if (delta === 0) return
+    const state = wheelStateRef.current
+    const now = Date.now()
+    const gap = now - state.lastEvent
+    state.lastEvent = now
+    if (now - state.lastTurn < 350 || (gap < 140 && now - state.lastTurn < 1200)) {
+      state.accumulated = 0
+      return
+    }
+    state.accumulated += delta
+    if (Math.abs(state.accumulated) < WHEEL_TURN_THRESHOLD) return
+    const direction = state.accumulated > 0 ? 1 : -1
+    state.accumulated = 0
+    state.lastTurn = now
+    void goToPage(pageNumber + direction)
+  }
+
   function openContextMenu(target: AnnotationTarget, x: number, y: number) {
     setContextMenu({ target, x, y })
   }
@@ -1223,6 +1295,11 @@ export default function Mushaf1441Viewer({
             longPressFiredRef.current = false
             return
           }
+          // An ayah that is in your personal mutashabihat opens its card (click or tap).
+          if (isMutshabehatHighlighted) {
+            openMutshabehatPopup(word.ayahKey)
+            return
+          }
           // On touch devices a tap does not open details — long-press does.
           if (Date.now() - recentTouchRef.current < 700) return
           selectWord(word)
@@ -1257,7 +1334,7 @@ export default function Mushaf1441Viewer({
             : isHighlightedAyah
               ? 'bg-[#ece2c8] text-[#171717]'
               : isMutshabehatHighlighted
-                ? 'text-[#8c5f0a] underline decoration-dotted decoration-[#b8871d] underline-offset-[3px]'
+                ? 'cursor-pointer underline decoration-dotted decoration-[1.5px] underline-offset-[4px] hover:bg-[#e3f1ee]'
                 : 'text-[#171717] hover:bg-[#f3ecd9]'
         }`}
         style={{
@@ -1265,7 +1342,8 @@ export default function Mushaf1441Viewer({
           fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
           color: highlightAnnotation?.textColor
-            ?? (!isSelectedWord && !isHighlightedAyah && mutshabehatHighlight ? mutshabehatHighlight.color ?? '#8c5f0a' : undefined),
+            ?? (!isSelectedWord && !isHighlightedAyah && isMutshabehatHighlighted ? PERSONAL_AYAH_HIGHLIGHT.text : undefined),
+          textDecorationColor: isMutshabehatHighlighted ? PERSONAL_AYAH_HIGHLIGHT.underline : undefined,
           backgroundColor: highlightAnnotation?.backgroundColor,
           boxShadow: hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : undefined,
         }}
@@ -1275,41 +1353,75 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  // Surah header band: one SVG so frame, cartouche and name scale together and the name is
+  // centred by geometry (dominant-baseline), not by a text line box inside a fixed-height div.
   function renderSurahBanner(surahNumber: number) {
     const name = surahNameByNumber.get(surahNumber) ?? `${surahNumber}`
-    return (
-      <div className="flex h-full w-full items-center justify-center">
-        <div
-          className="relative flex w-full items-center justify-center overflow-hidden rounded-[6px]"
-          style={{
-            height: '84%',
-            border: '2px solid #b8871d',
-            boxShadow: 'inset 0 0 0 1px rgba(184,135,29,0.55), inset 0 0 0 4px #fff7e0',
-            backgroundColor: '#f7e8bf',
-            backgroundImage: [
-              'repeating-linear-gradient(45deg, rgba(150,109,26,0.16) 0 1.5px, transparent 1.5px 9px)',
-              'repeating-linear-gradient(-45deg, rgba(150,109,26,0.16) 0 1.5px, transparent 1.5px 9px)',
-              'linear-gradient(180deg, #fff8e2, #f1dca6)',
-            ].join(','),
-          }}
+    const ayahCount = surahAyahCountByNumber.get(surahNumber)
+    const gradientId = `surah-gold-${surahNumber}`
+    const panelId = `surah-panel-${surahNumber}`
+    const latticeId = `surah-lattice-${surahNumber}`
+    const medallion = (cx: number, label: string) => (
+      <g>
+        <circle cx={cx} cy={50} r={33} fill="#fffdf6" stroke={`url(#${gradientId})`} strokeWidth={3} />
+        <rect x={cx - 19} y={31} width={38} height={38} rx={3} fill="none" stroke="#b8871d" strokeOpacity={0.55} strokeWidth={1.4} />
+        <rect x={cx - 19} y={31} width={38} height={38} rx={3} fill="none" stroke="#b8871d" strokeOpacity={0.55} strokeWidth={1.4} transform={`rotate(45 ${cx} 50)`} />
+        <text
+          x={cx}
+          y={50}
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="#6b531f"
+          style={{ fontFamily: 'var(--font-cairo), system-ui, sans-serif', fontSize: 21, fontWeight: 800 }}
         >
-          {/* arabesque end rosettes */}
-          <span aria-hidden className="absolute right-1.5 text-[#9a6d1a]" style={{ fontSize: '3.4cqw' }}>۞</span>
-          <span aria-hidden className="absolute left-1.5 text-[#9a6d1a]" style={{ fontSize: '3.4cqw' }}>۞</span>
-          {/* name cartouche */}
-          <span
-            className="mx-[7%] flex w-[86%] items-center justify-center rounded-[5px] font-black text-[#59461d]"
-            style={{
-              fontFamily: 'var(--font-amiri-quran), "Times New Roman", serif',
-              fontSize: '4.2cqw',
-              lineHeight: 1.25,
-              backgroundColor: 'rgba(255,251,236,0.85)',
-              boxShadow: '0 0 0 1px rgba(184,135,29,0.4)',
-            }}
+          {label}
+        </text>
+      </g>
+    )
+
+    return (
+      <div className="flex h-full w-full items-center justify-center" role="heading" aria-level={2} aria-label={`سورة ${name}`}>
+        <svg viewBox="0 0 1000 100" preserveAspectRatio="xMidYMid meet" className="block h-[94%] w-full overflow-visible" aria-hidden="true">
+          <defs>
+            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#d6ad55" />
+              <stop offset="1" stopColor="#9c7016" />
+            </linearGradient>
+            <linearGradient id={panelId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#fbf0d2" />
+              <stop offset="1" stopColor="#efd9a0" />
+            </linearGradient>
+            <pattern id={latticeId} width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <path d="M0 8H16M8 0V16" stroke="#9c7016" strokeOpacity="0.16" strokeWidth="1.3" />
+            </pattern>
+          </defs>
+
+          {/* Outer band with lattice and an inner hairline rule */}
+          <rect x="2" y="3" width="996" height="94" rx="12" fill={`url(#${panelId})`} stroke={`url(#${gradientId})`} strokeWidth="3.5" />
+          <rect x="2" y="3" width="996" height="94" rx="12" fill={`url(#${latticeId})`} />
+          <rect x="11" y="11" width="978" height="78" rx="7" fill="none" stroke="#9c7016" strokeOpacity="0.42" strokeWidth="1.3" />
+
+          {/* Central cartouche with pointed ends */}
+          <path d="M262 15H738Q782 15 806 50Q782 85 738 85H262Q218 85 194 50Q218 15 262 15Z" fill="#fffdf6" stroke={`url(#${gradientId})`} strokeWidth="3" />
+          <path d="M266 22H734Q771 22 791 50Q771 78 734 78H266Q229 78 209 50Q229 22 266 22Z" fill="none" stroke="#b8871d" strokeOpacity="0.38" strokeWidth="1.2" />
+
+          {/* Surah number (right, where reading starts) and ayah count (left) */}
+          {medallion(928, surahNumber.toLocaleString('ar-EG'))}
+          {ayahCount ? medallion(72, ayahCount.toLocaleString('ar-EG')) : null}
+
+          {/* Amiri Quran's tall ascent/descent push a "central" baseline low; an alphabetic
+              baseline at y=64 puts the letter bodies on the cartouche's optical centre (y=50). */}
+          <text
+            x="500"
+            y="64"
+            textAnchor="middle"
+            dominantBaseline="alphabetic"
+            fill="#4a3a17"
+            style={{ fontFamily: 'var(--font-amiri-quran), "Amiri Quran", serif', fontSize: 50 }}
           >
             سورة {name}
-          </span>
-        </div>
+          </text>
+        </svg>
       </div>
     )
   }
@@ -1478,6 +1590,135 @@ export default function Mushaf1441Viewer({
             تعذّر تحميل خط المصحف لهذه الصفحة، يُعرض النص بخط بديل.
           </p>
         ) : null}
+      </div>
+    )
+  }
+
+  // Card for an ayah that belongs to your personal mutashabihat: every group containing it,
+  // with all similar ayat (colour-coded parts), jump-to-ayah and open/edit group actions.
+  function renderMutshabehatPopup() {
+    if (!mutshabehatPopupAyahKey) return null
+    const [surahNo, ayahNo] = mutshabehatPopupAyahKey.split(':').map(Number)
+    const surahName = surahNameByNumber.get(surahNo) ?? ''
+    const links = pageHighlights.filter((highlight) => highlight.ayahKey === mutshabehatPopupAyahKey)
+    const groupIds = [...new Set(links.map((link) => link.groupId).filter((id): id is string => Boolean(id)))]
+    const close = () => setMutshabehatPopupAyahKey(null)
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="mutshabehat-popup-title">
+        <button type="button" aria-label="إغلاق" onClick={close} className="absolute inset-0 cursor-default bg-[#2a2111]/40" />
+        <section
+          className="relative flex max-h-[86dvh] w-full max-w-xl flex-col overflow-hidden rounded-t-2xl border border-[#d7c7a7] bg-[#fffdf8] shadow-[0_24px_60px_-12px_rgba(42,33,17,0.45)] sm:rounded-2xl"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        >
+          <header className="flex items-start justify-between gap-3 border-b border-[#eadfc9] px-4 py-3">
+            <div className="min-w-0">
+              <p className="text-[11px] font-bold" style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}>من متشابهاتك</p>
+              <h2 id="mutshabehat-popup-title" className="text-base font-black leading-snug text-[#171717]">
+                سورة {surahName} · الآية {Number.isFinite(ayahNo) ? ayahNo.toLocaleString('ar-EG') : ''}
+              </h2>
+            </div>
+            <button
+              type="button"
+              autoFocus
+              onClick={close}
+              aria-label="إغلاق البطاقة"
+              className="flex size-11 shrink-0 items-center justify-center rounded-md border border-[#d7c7a7] text-xl font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+            >
+              ×
+            </button>
+          </header>
+
+          <div className="space-y-6 overflow-y-auto px-4 py-4">
+            {groupIds.length === 0 ? (
+              <p className="py-6 text-center text-sm text-[#665b48]">لا توجد مجموعة مرتبطة بهذه الآية.</p>
+            ) : groupIds.map((groupId) => {
+              const link = links.find((candidate) => candidate.groupId === groupId)
+              const detail = groupDetails[groupId]
+              return (
+                <article key={groupId} className="space-y-3">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="text-[15px] font-black leading-snug text-[#171717]">{link?.title ?? 'مجموعة متشابهات'}</h3>
+                    <span className="shrink-0 text-[11px] font-bold tabular-nums text-[#80662c]">
+                      {((link?.similarAyat?.length ?? 0) + 1).toLocaleString('ar-EG')} مواضع
+                    </span>
+                  </div>
+                  {link?.tags && link.tags.length > 0 ? (
+                    <div className="flex flex-wrap gap-1.5">
+                      {link.tags.map((tag) => (
+                        <span key={tag} className="rounded-full bg-[#f4ecd8] px-2 py-0.5 text-[11px] font-bold text-[#6b531f]">{tag}</span>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  {!detail || detail === 'loading' ? (
+                    <div className="space-y-2" aria-busy="true" aria-label="جارٍ تحميل المواضع">
+                      {[0, 1].map((index) => (
+                        <div key={index} className="h-16 animate-pulse rounded-lg bg-[#f4ecd8]" />
+                      ))}
+                    </div>
+                  ) : detail === 'error' ? (
+                    <div className="flex items-center justify-between gap-3 rounded-lg border border-[#c07662] bg-[#fff1ed] px-3 py-2 text-xs font-bold text-[#8a2f1b]">
+                      <span>تعذّر تحميل مواضع هذه المجموعة.</span>
+                      <button type="button" onClick={() => void loadGroupDetail(groupId)} className="min-h-9 rounded-md px-2 underline">
+                        إعادة المحاولة
+                      </button>
+                    </div>
+                  ) : (
+                    <ol className="space-y-2">
+                      {detail.verses.map((verse, index) => {
+                        const verseSurahNo = surahOptions.find((surah) => surah.name === verse.surah)?.surahNumber ?? null
+                        const isCurrent = verseSurahNo !== null && `${verseSurahNo}:${verse.ayah}` === mutshabehatPopupAyahKey
+                        return (
+                          <li
+                            key={`${verse.surah}-${verse.ayah}-${index}`}
+                            className="rounded-lg px-3 py-2.5"
+                            style={{
+                              backgroundColor: isCurrent ? PERSONAL_AYAH_HIGHLIGHT.tint : '#faf5e8',
+                              boxShadow: isCurrent ? `inset 0 0 0 1px ${PERSONAL_AYAH_HIGHLIGHT.underline}` : undefined,
+                            }}
+                          >
+                            <div className="mb-1 flex items-center justify-between gap-2 text-xs font-bold">
+                              <span className="text-[#59461d]">
+                                سورة {verse.surah} · {verse.ayah.toLocaleString('ar-EG')}
+                                {isCurrent ? <span style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}> · هذه الآية</span> : null}
+                              </span>
+                              {!isCurrent && verseSurahNo ? (
+                                <button
+                                  type="button"
+                                  onClick={() => { close(); void goToAyah(verseSurahNo, verse.ayah) }}
+                                  className="min-h-9 rounded-md px-2 text-[#80662c] transition-colors hover:bg-[#fff1cf]"
+                                >
+                                  انتقل إليها ←
+                                </button>
+                              ) : null}
+                            </div>
+                            <ArabicDiff parts={verse.parts as Part[]} size="sm" />
+                          </li>
+                        )
+                      })}
+                    </ol>
+                  )}
+
+                  <div className="flex gap-2">
+                    <Link
+                      href={`/groups/${groupId}`}
+                      className="flex min-h-11 flex-1 items-center justify-center rounded-md bg-[#171717] px-4 text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
+                    >
+                      فتح المجموعة
+                    </Link>
+                    <Link
+                      href={`/groups/${groupId}/edit`}
+                      className="flex min-h-11 items-center justify-center rounded-md border border-[#b99b51] px-4 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
+                    >
+                      تعديل
+                    </Link>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        </section>
       </div>
     )
   }
@@ -2216,6 +2457,7 @@ export default function Mushaf1441Viewer({
         style={{ containerType: 'size' }}
         onTouchStart={handlePageTouchStart}
         onTouchEnd={handlePageTouchEnd}
+        onWheel={handleWheel}
       >
         <div className="absolute inset-0 flex items-center justify-center p-0 sm:p-3">
           {renderLineWords()}
@@ -2353,6 +2595,8 @@ export default function Mushaf1441Viewer({
       ) : null}
 
       {renderContextMenu()}
+
+      {renderMutshabehatPopup()}
 
       {/* Notes / annotation sheet — opens when an ayah or word is selected */}
       {selectedAyahKey && isMobileNotesOpen ? (
