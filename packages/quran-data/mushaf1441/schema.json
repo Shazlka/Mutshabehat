@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mutshabehat.local/schemas/mushaf1441-page.schema.json",
+  "title": "Mushaf Al-Madinah 1441 Page",
+  "type": "object",
+  "required": ["pageNumber", "lines"],
+  "additionalProperties": false,
+  "properties": {
+    "pageNumber": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 604
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": { "$ref": "#/$defs/mushafLine" }
+    }
+  },
+  "$defs": {
+    "mushafLine": {
+      "type": "object",
+      "required": ["pageNumber", "lineNumber", "words"],
+      "additionalProperties": false,
+      "properties": {
+        "pageNumber": { "type": "integer", "minimum": 1, "maximum": 604 },
+        "lineNumber": { "type": "integer", "minimum": 1, "maximum": 15 },
+        "words": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/mushafWord" }
+        }
+      }
+    },
+    "mushafWord": {
+      "type": "object",
+      "required": [
+        "id",
+        "pageNumber",
+        "lineNumber",
+        "wordIndexInLine",
+        "surahNumber",
+        "ayahNumber",
+        "wordIndexInAyah",
+        "ayahKey",
+        "textUthmani"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "pageNumber": { "type": "integer", "minimum": 1, "maximum": 604 },
+        "lineNumber": { "type": "integer", "minimum": 1, "maximum": 15 },
+        "wordIndexInLine": { "type": "integer", "minimum": 1 },
+        "surahNumber": { "type": "integer", "minimum": 1, "maximum": 114 },
+        "ayahNumber": { "type": "integer", "minimum": 1 },
+        "wordIndexInAyah": { "type": "integer", "minimum": 1 },
+        "ayahKey": { "type": "string", "pattern": "^[0-9]+:[0-9]+$" },
+        "textUthmani": { "type": "string", "minLength": 1 },
+        "glyph": { "type": "string" },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number" },
+        "height": { "type": "number" }
+      }
+    }
+  }
+}

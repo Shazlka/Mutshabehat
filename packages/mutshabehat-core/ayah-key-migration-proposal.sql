@@ -1,0 +1,42 @@
+-- PROPOSAL ONLY — DO NOT RUN.
+-- Future migration idea for linking Mutshabehat verses to Mushaf page words by ayah_key.
+-- Phase 4 does not modify Supabase and does not apply this SQL.
+
+-- Current evidence:
+-- public.verses stores:
+--   group_id uuid
+--   surah text
+--   ayah int
+-- It does not store canonical ayah_key yet.
+
+-- Option A: add ayah_key directly to public.verses after surah names can be reliably mapped
+-- to canonical surah numbers.
+--
+-- alter table public.verses
+--   add column ayah_key text;
+--
+-- update public.verses
+-- set ayah_key = canonical_surah_number::text || ':' || ayah::text
+-- from future_surah_name_to_number_map
+-- where future_surah_name_to_number_map.surah_name = public.verses.surah;
+--
+-- alter table public.verses
+--   alter column ayah_key set not null,
+--   add constraint verses_ayah_key_format check (ayah_key ~ '^[0-9]+:[0-9]+$');
+--
+-- create index verses_ayah_key_idx on public.verses (ayah_key);
+-- create index verses_group_ayah_key_idx on public.verses (group_id, ayah_key);
+
+-- Option B: create a generated or companion mapping table if historical surah text needs
+-- manual review before canonicalization.
+--
+-- create table public.verse_ayah_key_map (
+--   verse_id uuid primary key references public.verses(id) on delete cascade,
+--   ayah_key text not null check (ayah_key ~ '^[0-9]+:[0-9]+$'),
+--   reviewed_at timestamptz,
+--   reviewed_by uuid references auth.users(id)
+-- );
+--
+-- alter table public.verse_ayah_key_map enable row level security;
+--
+-- RLS must follow parent public.verses ownership through public.groups before exposure.

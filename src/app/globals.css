@@ -11,11 +11,11 @@
 
 @theme {
   /* Surfaces — warm-paper neutrals */
-  --color-paper:        oklch(0.985 0.004 80);   /* page background */
+  --color-paper:        oklch(0.972 0.006 80);   /* page background (slightly darker for card contrast) */
   --color-surface:      oklch(0.997 0.003 80);   /* card/panel */
-  --color-surface-2:    oklch(0.965 0.006 80);   /* recessed panel */
-  --color-border:       oklch(0.905 0.008 80);
-  --color-border-soft:  oklch(0.940 0.006 80);
+  --color-surface-2:    oklch(0.950 0.008 80);   /* recessed panel */
+  --color-border:       oklch(0.890 0.010 80);
+  --color-border-soft:  oklch(0.925 0.008 80);
 
   /* Ink — primary content */
   --color-ink:          oklch(0.22 0.015 60);    /* body text */
@@ -157,6 +157,54 @@ html, body {
 /* Press feedback for tactile buttons */
 .tap-shrink:active { transform: scale(0.96); }
 .tap-shrink { transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Mobile group cards flip in place instead of navigating on the first tap. */
+.mobile-flip-scene {
+  perspective: 1200px;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-flip-card {
+  display: grid;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+.mobile-flip-face {
+  grid-area: 1 / 1;
+  min-width: 0;
+  padding: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.mobile-flip-front {
+  position: relative;
+  z-index: 2;
+}
+.mobile-flip-card.is-flipped .mobile-flip-front {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.mobile-flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  pointer-events: none;
+  z-index: 1;
+}
+.mobile-flip-card.is-flipped .mobile-flip-back {
+  position: relative;
+  transform: rotateY(180deg);
+  inset: auto;
+  pointer-events: auto;
+  z-index: 2;
+}
 
 /* Skip link — accessible, hidden until focused */
 .skip-link {

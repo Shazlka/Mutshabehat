@@ -58,12 +58,12 @@ export default function MobileTopbar({ email, groupCount }: Props) {
             </svg>
           </button>
           
-          <div>
+          <Link href="/" className="hover:opacity-80 transition-opacity block select-none">
             <h1 className="text-[15px] font-bold tracking-tight text-[var(--color-ink)]">متشابهات القرآن</h1>
             <p className="text-[9px] tracking-wider text-[var(--color-ink-muted)] uppercase mt-0.5">
               Similarity Explorer
             </p>
-          </div>
+          </Link>
         </div>
 
         <span className="px-2 py-1 rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary)] text-[11px] font-bold font-mono tabular-nums">

@@ -36,17 +36,19 @@ export default async function NetworkPage() {
   const edges = [...edgeCount.values()]
 
   return (
-    <div className="max-w-6xl mx-auto px-3 md:px-6 py-6 md:py-10">
-      <header className="mb-8 px-2">
+    <div className="h-full flex flex-col px-3 md:px-6 pt-5 md:pt-6">
+      <header className="shrink-0 mb-4 px-2">
         <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Network</p>
-        <h1 className="text-[28px] md:text-[32px] font-bold tracking-tight leading-none">
+        <h1 className="text-[22px] md:text-[26px] font-bold tracking-tight leading-none">
           شبكة السور
         </h1>
-        <p className="mt-2 text-[13px] text-[var(--color-ink-muted)]">
+        <p className="mt-1.5 text-[12px] text-[var(--color-ink-muted)]">
           {nodes.length} سورة • {edges.length} ارتباط — كل خط يربط سورتين ظهرتا في نفس المجموعة
         </p>
       </header>
-      <NetworkGraph nodes={nodes} edges={edges} />
+      <div className="flex-1 min-h-0 pb-4">
+        <NetworkGraph nodes={nodes} edges={edges} />
+      </div>
     </div>
   )
 }

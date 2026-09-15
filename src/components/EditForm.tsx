@@ -37,7 +37,9 @@ const PART_TYPES: { value: string; label: string }[] = [
   { value: 'normal',   label: 'عادي'    },
 ]
 
-export default function EditForm({ initialGroup }: { initialGroup: Group }) {
+export default function EditForm({
+  initialGroup, nextGroupId, prevGroupId,
+}: { initialGroup: Group; nextGroupId?: string | null; prevGroupId?: string | null }) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [group, setGroup] = useState<Group>(initialGroup)
@@ -166,30 +168,56 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
     setShowWordLinker(false)
   }
 
-  async function handleSave() {
+  // Persist the group; returns true on success (sets saveError on failure).
+  async function persist(): Promise<boolean> {
+    const res = await fetch(`/api/groups/${group.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title:     group.title,
+        color:     group.color,
+        status:    group.status,
+        favorite:  group.favorite,
+        completed: group.completed,
+        note,
+        unote,
+        verses:    group.verses,
+      }),
+    })
+    if (!res.ok) {
+      const j = await res.json().catch(() => ({}))
+      setSaveError(j.error || 'فشل الحفظ')
+      return false
+    }
+    return true
+  }
+
+  // Marking a group completed/published is a "review sweep" — instead of bouncing
+  // back to the view, advance to the next group's editor to keep the flow going.
+  const willAdvance = group.completed || group.status === 'published'
+
+  function handleSave() {
     setSaveError(null); setSaveSuccess(false)
     startTransition(async () => {
-      const res = await fetch(`/api/groups/${group.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title:     group.title,
-          color:     group.color,
-          status:    group.status,
-          favorite:  group.favorite,
-          completed: group.completed,
-          note,
-          unote,
-          verses:    group.verses,
-        }),
-      })
-      if (!res.ok) {
-        const j = await res.json().catch(() => ({}))
-        setSaveError(j.error || 'فشل الحفظ')
-        return
-      }
+      if (!(await persist())) return
       setSaveSuccess(true)
-      setTimeout(() => router.back(), 650)
+      const advanceTo = willAdvance ? (nextGroupId ?? prevGroupId ?? null) : null
+      setTimeout(() => {
+        router.refresh()
+        if (advanceTo) router.push(`/groups/${advanceTo}/edit`)
+        else router.back()
+      }, 650)
+    })
+  }
+
+  // Save the current group, then jump straight to a neighbour's editor.
+  function saveAndGo(targetId: string | null | undefined) {
+    if (!targetId || isPending) return
+    setSaveError(null); setSaveSuccess(false)
+    startTransition(async () => {
+      if (!(await persist())) return
+      router.refresh()
+      router.push(`/groups/${targetId}/edit`)
     })
   }
 
@@ -197,27 +225,45 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
     startTransition(async () => {
       const res = await fetch(`/api/groups/${group.id}`, { method: 'DELETE' })
       if (!res.ok) { setSaveError('فشل الحذف'); return }
-      router.push('/')
       router.refresh()
+      const after = nextGroupId ?? prevGroupId
+      router.push(after ? `/groups/${after}` : '/')
     })
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-5 md:px-8 py-6 md:py-10">
-      {/* Toolbar — sticky with accent presence */}
-      <div className="sticky top-0 -mx-5 md:-mx-8 px-5 md:px-8 py-3 mb-8 bg-[var(--color-paper)]/95 backdrop-blur-sm border-b border-[var(--color-border)] z-10">
+    <div className="max-w-3xl mx-auto px-5 md:px-8 py-6 md:py-10 pb-28 md:pb-10">
+      {/* Desktop: sticky top toolbar */}
+      <div className="hidden md:block sticky top-0 -mx-8 px-8 py-3 mb-8 bg-[var(--color-paper)]/95 backdrop-blur-sm border-b border-[var(--color-border)] z-10">
         <div className="flex items-center justify-between gap-4">
           <button onClick={() => router.back()}
             className="inline-flex items-center gap-1 text-[13px] font-bold text-[var(--color-ink-soft)] hover:text-[var(--color-primary)] tap-shrink transition-colors">
             <span aria-hidden="true">←</span> العودة
           </button>
-          <div className="flex items-center gap-3" aria-live="polite">
+          <div className="flex items-center gap-2" aria-live="polite">
             {saveError && (
               <span role="alert" className="text-[12px] px-2.5 py-1 rounded-md font-bold animate-fade-rise"
                     style={{ color: 'var(--color-danger)', background: 'var(--color-danger-bg)' }}>
                 {saveError}
               </span>
             )}
+
+            {/* Save & jump to a neighbouring group (RTL: previous = ›, next = ‹) */}
+            <div className="flex items-center gap-1">
+              <button type="button" onClick={() => saveAndGo(prevGroupId)}
+                disabled={!prevGroupId || isPending}
+                title="حفظ والانتقال للمجموعة السابقة" aria-label="حفظ والانتقال للمجموعة السابقة"
+                className="touch-target-sm rounded-full text-[var(--color-ink-soft)] hover:text-[var(--color-primary)] hover:bg-[var(--color-surface)] disabled:opacity-30 disabled:hover:bg-transparent tap-shrink transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+              <button type="button" onClick={() => saveAndGo(nextGroupId)}
+                disabled={!nextGroupId || isPending}
+                title="حفظ والانتقال للمجموعة التالية" aria-label="حفظ والانتقال للمجموعة التالية"
+                className="touch-target-sm rounded-full text-[var(--color-ink-soft)] hover:text-[var(--color-primary)] hover:bg-[var(--color-surface)] disabled:opacity-30 disabled:hover:bg-transparent tap-shrink transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+            </div>
+
             <button onClick={handleSave} disabled={isPending || saveSuccess}
               aria-label={saveSuccess ? 'تم الحفظ' : 'حفظ التعديلات'}
               className={cn(
@@ -234,7 +280,7 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
                   </svg>
                   تم الحفظ
                 </>
-              ) : isPending ? 'جارٍ الحفظ…' : 'حفظ التعديلات'}
+              ) : isPending ? 'جارٍ الحفظ…' : willAdvance ? 'حفظ والتالية' : 'حفظ التعديلات'}
             </button>
           </div>
         </div>
@@ -302,6 +348,11 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
           <option value="published">منشورة</option>
           <option value="locked">مقفلة</option>
         </select>
+        {willAdvance && (nextGroupId || prevGroupId) && (
+          <span className="text-[11px] text-[var(--color-success)] font-bold animate-fade-rise">
+            ↩ سيتم الانتقال للمجموعة التالية بعد الحفظ
+          </span>
+        )}
       </section>
 
       {/* Verses */}
@@ -512,6 +563,99 @@ export default function EditForm({ initialGroup }: { initialGroup: Group }) {
           </div>
         )}
       </section>
+
+      {/* Mobile: fixed bottom action bar — large tap-target cells */}
+      <div
+        className="md:hidden fixed bottom-0 left-0 right-0 z-20 bg-[var(--color-paper)]/95 backdrop-blur-sm border-t border-[var(--color-border)]"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+      >
+        {saveError && (
+          <div className="px-4 py-1.5 border-b border-[var(--color-border-soft)]"
+               style={{ background: 'var(--color-danger-bg)' }}>
+            <span role="alert" className="text-[11px] font-bold" style={{ color: 'var(--color-danger)' }}>{saveError}</span>
+          </div>
+        )}
+        <div className="flex items-stretch divide-x divide-[var(--color-border-soft)]">
+
+          {/* Back */}
+          <button
+            onClick={() => router.back()}
+            className="flex-1 flex flex-col items-center justify-center gap-1.5 py-3.5 min-h-[62px] text-[var(--color-ink-soft)] transition-colors active:bg-[var(--color-surface)] tap-shrink select-none"
+            aria-label="رجوع"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m12 19-7-7 7-7" /><path d="M5 12h14" />
+            </svg>
+            <span className="text-[11px] font-bold">رجوع</span>
+          </button>
+
+          {/* Save & Previous */}
+          <button
+            type="button"
+            onClick={() => saveAndGo(prevGroupId)}
+            disabled={!prevGroupId || isPending}
+            aria-label="حفظ والانتقال للمجموعة السابقة"
+            className="flex-1 flex flex-col items-center justify-center gap-1.5 py-3.5 min-h-[62px] text-[var(--color-ink-soft)] disabled:opacity-20 disabled:pointer-events-none transition-colors active:bg-[var(--color-surface)] tap-shrink select-none"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+            <span className="text-[11px] font-bold">سابقة</span>
+          </button>
+
+          {/* Save */}
+          <button
+            onClick={handleSave}
+            disabled={isPending || saveSuccess}
+            aria-label={saveSuccess ? 'تم الحفظ' : 'حفظ'}
+            className={cn(
+              'flex-[1.4] flex flex-col items-center justify-center gap-1.5 py-3.5 min-h-[62px]',
+              'transition-all duration-200 disabled:opacity-60 tap-shrink select-none',
+              saveSuccess ? 'text-[var(--color-success)]' : 'text-[var(--color-primary)]'
+            )}
+          >
+            {saveSuccess ? (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            ) : isPending ? (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+              </svg>
+            ) : (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                <polyline points="17 21 17 13 7 13 7 21" />
+                <polyline points="7 3 7 8 15 8" />
+              </svg>
+            )}
+            <span className="text-[11px] font-bold">
+              {saveSuccess ? 'تم' : isPending ? '…' : 'حفظ'}
+            </span>
+          </button>
+
+          {/* Save & Next */}
+          <button
+            type="button"
+            onClick={() => saveAndGo(nextGroupId)}
+            disabled={!nextGroupId || isPending}
+            aria-label="حفظ والانتقال للمجموعة التالية"
+            className="flex-1 flex flex-col items-center justify-center gap-1.5 py-3.5 min-h-[62px] text-[var(--color-ink-soft)] disabled:opacity-20 disabled:pointer-events-none transition-colors active:bg-[var(--color-surface)] tap-shrink select-none"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+            <span className="text-[11px] font-bold">تالية</span>
+          </button>
+
+        </div>
+      </div>
     </div>
   )
 }

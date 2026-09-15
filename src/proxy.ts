@@ -44,7 +44,21 @@ export async function proxy(request: NextRequest) {
     const password = process.env.AUTOLOGIN_PASSWORD
     if (email && password) {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-      if (!error && data.user) user = data.user
+      if (!error && data.user) {
+        user = data.user
+
+        // The current Server Component request was created before the session
+        // cookies existed. Re-run safe page requests once so their data queries
+        // see the authenticated session immediately instead of rendering an
+        // empty first page.
+        if (request.method === 'GET' || request.method === 'HEAD') {
+          const redirectResponse = NextResponse.redirect(request.nextUrl)
+          supabaseResponse.cookies.getAll().forEach((cookie) =>
+            redirectResponse.cookies.set(cookie)
+          )
+          return redirectResponse
+        }
+      }
     }
   }
 

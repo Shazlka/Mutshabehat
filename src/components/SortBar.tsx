@@ -13,6 +13,7 @@ const SORTS = [
 const VIEWS = [
   { key: 'flat',         label: 'قائمة' },
   { key: 'group-surah',  label: 'مجموع حسب السورة' },
+  { key: 'titles-only',  label: 'العناوين فقط' },
 ]
 
 export default function SortBar() {

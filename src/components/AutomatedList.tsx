@@ -6,6 +6,7 @@ import Link from 'next/link'
 import ArabicDiff, { type Part } from './ArabicDiff'
 import { ayahToArabic } from '@/lib/arabic'
 import { cn } from '@/lib/cn'
+import { useSurahNames } from '@/lib/surah-names'
 
 interface PayloadVerse {
   surah?: string; ayah?: number | string; label?: string
@@ -31,20 +32,13 @@ export default function AutomatedList({ rows, page, totalPages, q, surah }: Prop
   const [picked, setPicked] = useState<Set<number>>(new Set())
   const [busy, setBusy]     = useState(false)
   const [done, setDone]     = useState<string | null>(null)
-  const [names, setNames] = useState<Record<string, string>>({})
+  const names = useSurahNames()
   const [value, setValue] = useState(q)
   const [focused, setFocused] = useState(false)
 
   useEffect(() => {
     setValue(q)
   }, [q])
-
-  useEffect(() => {
-    fetch('/api/quran?names=1')
-      .then((r) => r.json())
-      .then((j) => setNames(j.surahs || {}))
-      .catch(() => {})
-  }, [])
   function setParam(key: string, val: string) {
     const p = new URLSearchParams(params.toString())
     if (val) p.set(key, val); else p.delete(key)

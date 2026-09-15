@@ -1,0 +1,2 @@
+export const MUSHAF_1441_PAGE_COUNT = 604
+export const MUSHAF_1441_LINES_PER_PAGE = 15

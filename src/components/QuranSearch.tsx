@@ -1,9 +1,32 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react'
+import { useSurahNames } from '@/lib/surah-names'
+import { matchRanges } from '@/lib/arabic'
 
-interface Hit { surah: number; ayah: number; text: string }
-interface SurahNames { [n: string]: string }
+interface Hit { surah: number; ayah: number; text: string; approximate?: boolean }
+
+// Wrap the matched word(s) in the ayah with a highlight, mapping the normalized
+// match back onto the original Uthmani text (tashkeel/dagger-alef aware).
+function highlight(text: string, query: string) {
+  const q = query.trim()
+  if (!q) return text
+  const ranges = matchRanges(text, q)
+  if (!ranges.length) return text
+  const out: ReactNode[] = []
+  let last = 0
+  ranges.forEach(([s, e], i) => {
+    if (s > last) out.push(<Fragment key={`t${i}`}>{text.slice(last, s)}</Fragment>)
+    out.push(
+      <mark key={`m${i}`} className="bg-[var(--color-primary-soft)] text-[var(--color-primary)] rounded px-0.5">
+        {text.slice(s, e)}
+      </mark>,
+    )
+    last = e
+  })
+  if (last < text.length) out.push(<Fragment key="tail">{text.slice(last)}</Fragment>)
+  return out
+}
 
 interface Props {
   onAdd: (verses: { surah: string; ayah: number; label: string | null; parts: { type: string; text: string }[] }[]) => void
@@ -15,17 +38,9 @@ export default function QuranSearch({ onAdd }: Props) {
   const [picked, setPicked] = useState<Set<string>>(new Set()) // key = "surah:ayah"
   const [loading, setLoading] = useState(false)
   const [open, setOpen] = useState(false)
-  const [surahs, setSurahs] = useState<SurahNames>({})
+  const surahs = useSurahNames()
   const inputRef = useRef<HTMLInputElement>(null)
   const debounceRef = useRef<number | null>(null)
-
-  // Load surah names once
-  useEffect(() => {
-    fetch('/api/quran?names=1')
-      .then((r) => r.json())
-      .then((j) => setSurahs(j.surahs || {}))
-      .catch(() => {})
-  }, [])
 
   // Debounced search
   useEffect(() => {
@@ -117,6 +132,13 @@ export default function QuranSearch({ onAdd }: Props) {
                         {surahs[String(r.surah)] || `سورة ${r.surah}`}
                       </span>
                       <span className="text-[11px] font-mono text-[var(--color-ink-muted)]">آية {r.ayah}</span>
+                      {r.approximate && (
+                        <span
+                          title="نتيجة تقريبية — اختلاف في رسم الألف"
+                          className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--color-addition-bg)] text-[var(--color-addition)]">
+                          ≈ تقريبي
+                        </span>
+                      )}
                       {isPicked && (
                         <span className="ml-auto text-[var(--color-primary)]" aria-label="مختار">
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -124,7 +146,7 @@ export default function QuranSearch({ onAdd }: Props) {
                       )}
                     </div>
                     <p className="font-quran text-[18px] leading-[2.1] text-[var(--color-ink)]" dir="rtl">
-                      {r.text}
+                      {highlight(r.text, query)}
                     </p>
                   </button>
                 )

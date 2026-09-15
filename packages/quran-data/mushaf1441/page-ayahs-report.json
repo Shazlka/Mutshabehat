@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-06-27T12:48:10.325Z",
+  "sourceFetchedAt": "2026-06-27T12:46:20.795Z",
+  "pageCount": 604,
+  "ayahCount": 6236,
+  "duplicateAyahKeys": [],
+  "firstPage": {
+    "pageNumber": 1,
+    "ayahs": [
+      {
+        "id": 1,
+        "pageNumber": 1,
+        "surahNumber": 1,
+        "ayahNumber": 1,
+        "ayahKey": "1:1",
+        "textUthmani": "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ"
+      },
+      {
+        "id": 2,
+        "pageNumber": 1,
+        "surahNumber": 1,
+        "ayahNumber": 2,
+        "ayahKey": "1:2",
+        "textUthmani": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ"
+      },
+      {
+        "id": 3,
+        "pageNumber": 1,
+        "surahNumber": 1,
+        "ayahNumber": 3,
+        "ayahKey": "1:3",
+        "textUthmani": "ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ"
+      },
+      {
+        "id": 4,
+        "pageNumber": 1,
+        "surahNumber": 1,
+        "ayahNumber": 4,
+        "ayahKey": "1:4",
+        "textUthmani": "مَـٰلِكِ يَوْمِ ٱلدِّينِ"
+      },
+      {
+        "id": 5,
+        "pageNumber": 1,
+        "surahNumber": 1,
+        "ayahNumber": 5,
+        "ayahKey": "1:5",
+        "textUthmani": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ"
+      },
+      {
+        "id": 6,
+        "pageNumber": 1,
+        "surahNumber": 1,
+        "ayahNumber": 6,
+        "ayahKey": "1:6",
+        "textUthmani": "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ"
+      },
+      {
+        "id": 7,
+        "pageNumber": 1,
+        "surahNumber": 1,
+        "ayahNumber": 7,
+        "ayahKey": "1:7",
+        "textUthmani": "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ"
+      }
+    ]
+  },
+  "lastPage": {
+    "pageNumber": 604,
+    "ayahs": [
+      {
+        "id": 6222,
+        "pageNumber": 604,
+        "surahNumber": 112,
+        "ayahNumber": 1,
+        "ayahKey": "112:1",
+        "textUthmani": " قُلْ هُوَ ٱللَّهُ أَحَدٌ"
+      },
+      {
+        "id": 6223,
+        "pageNumber": 604,
+        "surahNumber": 112,
+        "ayahNumber": 2,
+        "ayahKey": "112:2",
+        "textUthmani": "ٱللَّهُ ٱلصَّمَدُ"
+      },
+      {
+        "id": 6224,
+        "pageNumber": 604,
+        "surahNumber": 112,
+        "ayahNumber": 3,
+        "ayahKey": "112:3",
+        "textUthmani": "لَمْ يَلِدْ وَلَمْ يُولَدْ"
+      },
+      {
+        "id": 6225,
+        "pageNumber": 604,
+        "surahNumber": 112,
+        "ayahNumber": 4,
+        "ayahKey": "112:4",
+        "textUthmani": "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ"
+      },
+      {
+        "id": 6226,
+        "pageNumber": 604,
+        "surahNumber": 113,
+        "ayahNumber": 1,
+        "ayahKey": "113:1",
+        "textUthmani": " قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ"
+      },
+      {
+        "id": 6227,
+        "pageNumber": 604,
+        "surahNumber": 113,
+        "ayahNumber": 2,
+        "ayahKey": "113:2",
+        "textUthmani": "مِن شَرِّ مَا خَلَقَ"
+      },
+      {
+        "id": 6228,
+        "pageNumber": 604,
+        "surahNumber": 113,
+        "ayahNumber": 3,
+        "ayahKey": "113:3",
+        "textUthmani": "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ"
+      },
+      {
+        "id": 6229,
+        "pageNumber": 604,
+        "surahNumber": 113,
+        "ayahNumber": 4,
+        "ayahKey": "113:4",
+        "textUthmani": "وَمِن شَرِّ ٱلنَّفَّـٰثَـٰتِ فِى ٱلْعُقَدِ"
+      },
+      {
+        "id": 6230,
+        "pageNumber": 604,
+        "surahNumber": 113,
+        "ayahNumber": 5,
+        "ayahKey": "113:5",
+        "textUthmani": "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ"
+      },
+      {
+        "id": 6231,
+        "pageNumber": 604,
+        "surahNumber": 114,
+        "ayahNumber": 1,
+        "ayahKey": "114:1",
+        "textUthmani": " قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ"
+      },
+      {
+        "id": 6232,
+        "pageNumber": 604,
+        "surahNumber": 114,
+        "ayahNumber": 2,
+        "ayahKey": "114:2",
+        "textUthmani": "مَلِكِ ٱلنَّاسِ"
+      },
+      {
+        "id": 6233,
+        "pageNumber": 604,
+        "surahNumber": 114,
+        "ayahNumber": 3,
+        "ayahKey": "114:3",
+        "textUthmani": "إِلَـٰهِ ٱلنَّاسِ"
+      },
+      {
+        "id": 6234,
+        "pageNumber": 604,
+        "surahNumber": 114,
+        "ayahNumber": 4,
+        "ayahKey": "114:4",
+        "textUthmani": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ"
+      },
+      {
+        "id": 6235,
+        "pageNumber": 604,
+        "surahNumber": 114,
+        "ayahNumber": 5,
+        "ayahKey": "114:5",
+        "textUthmani": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ"
+      },
+      {
+        "id": 6236,
+        "pageNumber": 604,
+        "surahNumber": 114,
+        "ayahNumber": 6,
+        "ayahKey": "114:6",
+        "textUthmani": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ"
+      }
+    ]
+  }
+}

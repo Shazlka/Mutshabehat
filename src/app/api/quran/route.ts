@@ -1,6 +1,16 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { getAyah, getSurahAyahs, getSurahNames, getSurahNumberByName } from '@/lib/quran'
-import { normalizeArabic } from '@/lib/arabic'
+import { getAyah, getSurahAyahs, getSurahNames, getSurahNumberByName, searchAyahs } from '@/lib/quran'
+
+// The Quran corpus is static, so every response here is immutable for a given
+// query. Cache aggressively at the CDN/edge so repeat requests (e.g. the surah
+// list, fetched by several components) never re-invoke the function.
+//   s-maxage → shared CDN cache (Vercel) ; max-age → browser ; immutable → no revalidation
+const IMMUTABLE = 'public, max-age=3600, s-maxage=31536000, immutable'
+const SEARCH_CACHE = 'public, max-age=300, s-maxage=86400'
+
+function json(body: unknown, cacheControl: string, status = 200) {
+  return NextResponse.json(body, { status, headers: { 'Cache-Control': cacheControl } })
+}
 
 // GET /api/quran
 //   ?surah=النمل&ayah=24  → single ayah text
@@ -13,27 +23,14 @@ export async function GET(request: NextRequest) {
 
   // List all surah names
   if (searchParams.has('names')) {
-    return NextResponse.json({ surahs: getSurahNames() })
+    return json({ surahs: getSurahNames() }, IMMUTABLE)
   }
 
-  // Full-text search across all ayahs
+  // Full-text search across all ayahs (uses the pre-normalized index)
   const search = searchParams.get('search')
   if (search) {
-    const qNorm = normalizeArabic(search)
-    const results: { surah: number; ayah: number; text: string }[] = []
-    const ayahs = getSurahNames()
-    for (const [surahNum] of Object.entries(ayahs)) {
-      const sAyahs = getSurahAyahs(surahNum)
-      if (!sAyahs) continue
-      for (const [ayahNum, text] of Object.entries(sAyahs)) {
-        if (normalizeArabic(text).includes(qNorm)) {
-          results.push({ surah: parseInt(surahNum, 10), ayah: parseInt(ayahNum, 10), text })
-          if (results.length >= 50) break
-        }
-      }
-      if (results.length >= 50) break
-    }
-    return NextResponse.json({ query: search, results })
+    const results = searchAyahs(search, 50)
+    return json({ query: search, results }, SEARCH_CACHE)
   }
 
   // Specific surah/ayah lookup
@@ -56,11 +53,11 @@ export async function GET(request: NextRequest) {
   if (ayahParam) {
     const text = getAyah(surahNo, ayahParam)
     if (text === null) return NextResponse.json({ error: 'ayah not found' }, { status: 404 })
-    return NextResponse.json({ surah: surahNo, ayah: parseInt(ayahParam, 10), text })
+    return json({ surah: surahNo, ayah: parseInt(ayahParam, 10), text }, IMMUTABLE)
   }
 
   // Whole surah
   const sAyahs = getSurahAyahs(surahNo)
   if (!sAyahs) return NextResponse.json({ error: 'surah not found' }, { status: 404 })
-  return NextResponse.json({ surah: surahNo, ayahs: sAyahs })
+  return json({ surah: surahNo, ayahs: sAyahs }, IMMUTABLE)
 }

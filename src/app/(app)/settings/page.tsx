@@ -2,6 +2,8 @@ import { createServerSupabaseClient } from '@/lib/supabase-server'
 import TagToolbox from '@/components/TagToolbox'
 import TagManager from '@/components/TagManager'
 import ClearCacheButton from '@/components/ClearCacheButton'
+import DatabaseExport from '@/components/DatabaseExport'
+import SwipeNavigationSetting from '@/components/SwipeNavigationSetting'
 
 export default async function SettingsPage() {
   const supabase = await createServerSupabaseClient()
@@ -42,9 +44,23 @@ export default async function SettingsPage() {
 
         <div>
           <div className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-3">
+            التنقل
+          </div>
+          <SwipeNavigationSetting />
+        </div>
+
+        <div>
+          <div className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-3">
             إدارة الوسوم
           </div>
           <TagManager />
+        </div>
+
+        <div>
+          <div className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-3">
+            تصدير قاعدة البيانات الشخصية
+          </div>
+          <DatabaseExport />
         </div>
 
         <div>

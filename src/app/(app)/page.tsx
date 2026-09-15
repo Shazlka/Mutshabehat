@@ -1,11 +1,14 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { getSurahNumberByName } from '@/lib/quran'
+import { normalizeArabic } from '@/lib/arabic'
 import GroupRow from '@/components/GroupRow'
+import GroupRowTitlesOnly, { type GroupRowTitleData } from '@/components/GroupRowTitlesOnly'
 import FilterBar from '@/components/FilterBar'
 import SortBar from '@/components/SortBar'
 import SurahFilter from '@/components/SurahFilter'
 import Pagination from '@/components/Pagination'
 import ColorLegend from '@/components/ColorLegend'
+import MainGroupSwipePager from '@/components/MainGroupSwipePager'
 
 type SP = Promise<{ page?: string; filter?: string; q?: string; sort?: string; view?: string; surah?: string }>
 
@@ -26,6 +29,15 @@ type MiniGroup = {
   verses: Array<{ surah: string; ayah: number }>
 }
 
+type TitleOnlyGroup = GroupRowTitleData & {
+  id: string
+  title: string
+  color: string | null
+  status: 'draft' | 'published' | 'locked'
+  favorite: boolean
+  completed: boolean
+}
+
 const FULL_SELECT = `
   id, title, color, status, favorite, completed, updated_at,
   verses (
@@ -36,6 +48,8 @@ const FULL_SELECT = `
 
 // Only fields needed for mushaf/most-verses sort key — no parts, no title
 const MINI_SELECT = `id, verses ( surah, ayah )`
+
+const TITLES_ONLY_SELECT = `id, title, color, status, favorite, completed`
 
 export default async function HomePage({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams
@@ -57,6 +71,45 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     surahGroupIds = [...new Set((verseRows || []).map((v: { group_id: string }) => v.group_id))]
   }
 
+  // Resolve text-search group IDs: union of title matches + parts-text matches.
+  // FTS on search_vec (normalized, GIN-indexed) first; ILIKE fallback if FTS returns nothing.
+  let qGroupIds: string[] | null = null
+  if (q.trim()) {
+    const st = normalizeArabic(q.trim()) || q.trim()
+    const seen = new Set<string>()
+
+    if (st.length >= 2) {
+      const [{ data: tFts }, { data: pFts }] = await Promise.all([
+        supabase.from('groups').select('id')
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .textSearch('search_vec', st, { type: 'websearch', config: 'simple' } as any)
+          .limit(300),
+        supabase.from('parts').select('verses(group_id)')
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .textSearch('search_vec', st, { type: 'websearch', config: 'simple' } as any)
+          .limit(300),
+      ])
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      for (const g of tFts || []) seen.add((g as any).id)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      for (const p of pFts || []) { const gid = (p as any).verses?.group_id; if (gid) seen.add(gid) }
+    }
+
+    if (seen.size === 0) {
+      // ILIKE fallback — runs when FTS returns nothing or query is too short
+      const [{ data: tIlike }, { data: pIlike }] = await Promise.all([
+        supabase.from('groups').select('id').ilike('title', `%${st}%`).limit(300),
+        supabase.from('parts').select('verses(group_id)').ilike('text', `%${st}%`).limit(300),
+      ])
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      for (const g of tIlike || []) seen.add((g as any).id)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      for (const p of pIlike || []) { const gid = (p as any).verses?.group_id; if (gid) seen.add(gid) }
+    }
+
+    qGroupIds = [...seen]
+  }
+
   // Generic filter applicator — casts through any to keep type-system happy across
   // different Supabase builder shapes (QueryBuilder vs FilterBuilder).
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -67,7 +120,10 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     if (filter === 'completed') qBuilder = qBuilder.eq('completed', true)
     if (filter === 'draft')     qBuilder = qBuilder.eq('status', 'draft')
     if (filter === 'locked')    qBuilder = qBuilder.eq('status', 'locked')
-    if (q.trim())               qBuilder = qBuilder.ilike('title', `%${q.trim()}%`)
+    if (qGroupIds !== null) {
+      if (qGroupIds.length === 0) qBuilder = qBuilder.eq('id', 'no-match')
+      else                        qBuilder = qBuilder.in('id', qGroupIds)
+    }
     if (surahGroupIds !== null) {
       if (surahGroupIds.length === 0) qBuilder = qBuilder.eq('id', 'no-match')
       else                            qBuilder = qBuilder.in('id', surahGroupIds)
@@ -78,8 +134,57 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   let groups: GroupShape[] = []
   let total = 0
   let surahCounts: Record<string, number> = {}
+  let titleOnlyGroups: TitleOnlyGroup[] = []
 
-  if (view === 'group-surah') {
+  if (view === 'titles-only') {
+    if (sort === 'mushaf' || sort === 'most-verses') {
+      // Two-step: sort by verse data, then fetch title-only fields for current page
+      let miniQ = supabase.from('groups').select(MINI_SELECT)
+      miniQ = applyFilters(miniQ)
+      const { data: miniRaw } = await miniQ
+      const mini = (miniRaw as unknown as MiniGroup[]) || []
+
+      if (sort === 'most-verses') {
+        mini.sort((a, b) => (b.verses?.length ?? 0) - (a.verses?.length ?? 0))
+      } else {
+        mini.sort((a, b) => {
+          const ma = Math.min(...a.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+          const mb = Math.min(...b.verses.map((v) => getSurahNumberByName(v.surah) ?? 9999), 9999)
+          if (ma !== mb) return ma - mb
+          const minAa = Math.min(...a.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === ma).map((v) => v.ayah), 9999)
+          const minAb = Math.min(...b.verses.filter((v) => (getSurahNumberByName(v.surah) ?? 9999) === mb).map((v) => v.ayah), 9999)
+          return minAa - minAb
+        })
+      }
+
+      total = mini.length
+      const from = (page - 1) * limit
+      const pageIds = mini.slice(from, from + limit).map((g) => g.id)
+
+      const { data: titlesRaw } = await supabase
+        .from('groups')
+        .select(TITLES_ONLY_SELECT)
+        .in('id', pageIds)
+
+      const groupMap = new Map((titlesRaw || []).map((g: any) => [g.id, g]))
+      titleOnlyGroups = pageIds.map((id) => groupMap.get(id)).filter(Boolean) as TitleOnlyGroup[]
+
+    } else {
+      // Standard paginated fetch — no verses needed
+      let mainQ = supabase.from('groups').select(TITLES_ONLY_SELECT, { count: 'exact' })
+      mainQ = applyFilters(mainQ)
+      if (sort === 'created')      mainQ = (mainQ as any).order('created_at', { ascending: false })
+      else if (sort === 'updated') mainQ = (mainQ as any).order('updated_at', { ascending: false })
+      else if (sort === 'title')   mainQ = (mainQ as any).order('title',      { ascending: true })
+
+      const from = (page - 1) * limit
+      mainQ = (mainQ as any).range(from, from + limit - 1)
+
+      const { data: titlesRaw, count } = await mainQ
+      titleOnlyGroups = (titlesRaw as unknown as TitleOnlyGroup[]) || []
+      total = count ?? 0
+    }
+  } else if (view === 'group-surah') {
     // Needs ALL matching groups for bucketing — can't page
     // Surah counts always run in parallel
     let mainQ = supabase.from('groups').select(FULL_SELECT, { count: 'exact' })
@@ -89,9 +194,9 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     else if (sort === 'title')   mainQ = (mainQ as any).order('title',      { ascending: true })
     // mushaf/most-verses applied in JS after fetch since all data is present anyway
 
-    const [{ data: groupsRaw, count }, { data: allVerses }] = await Promise.all([
+    const [{ data: groupsRaw, count }, { data: surahAgg }] = await Promise.all([
       mainQ,
-      supabase.from('verses').select('surah'),
+      supabase.from('surah_counts').select('surah, cnt'),
     ])
 
     groups = (groupsRaw as unknown as GroupShape[]) || []
@@ -110,9 +215,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
       })
     }
 
-    for (const v of allVerses || []) {
-      surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
-    }
+    surahCounts = Object.fromEntries((surahAgg || []).map((r: { surah: string; cnt: number }) => [r.surah, Number(r.cnt)]))
 
   } else if (sort === 'mushaf' || sort === 'most-verses') {
     // Two-step: fetch lightweight sort-key data for ALL matching groups,
@@ -121,9 +224,9 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     let miniQ = supabase.from('groups').select(MINI_SELECT)
     miniQ = applyFilters(miniQ)
 
-    const [{ data: miniRaw }, { data: allVerses }] = await Promise.all([
+    const [{ data: miniRaw }, { data: surahAgg }] = await Promise.all([
       miniQ,
-      supabase.from('verses').select('surah'),
+      supabase.from('surah_counts').select('surah, cnt'),
     ])
 
     let mini = (miniRaw as unknown as MiniGroup[]) || []
@@ -155,9 +258,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     const groupMap = new Map((fullRaw || []).map((g: any) => [g.id, g]))
     groups = pageIds.map((id) => groupMap.get(id)).filter(Boolean) as GroupShape[]
 
-    for (const v of allVerses || []) {
-      surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
-    }
+    surahCounts = Object.fromEntries((surahAgg || []).map((r: { surah: string; cnt: number }) => [r.surah, Number(r.cnt)]))
 
   } else {
     // Default path: server-side paging with sort, surah counts run in parallel
@@ -170,17 +271,15 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
     const from = (page - 1) * limit
     mainQ = (mainQ as any).range(from, from + limit - 1)
 
-    const [{ data: groupsRaw, count }, { data: allVerses }] = await Promise.all([
+    const [{ data: groupsRaw, count }, { data: surahAgg }] = await Promise.all([
       mainQ,
-      supabase.from('verses').select('surah'),
+      supabase.from('surah_counts').select('surah, cnt'),
     ])
 
     groups = (groupsRaw as unknown as GroupShape[]) || []
     total = count ?? 0
 
-    for (const v of allVerses || []) {
-      surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
-    }
+    surahCounts = Object.fromEntries((surahAgg || []).map((r: { surah: string; cnt: number }) => [r.surah, Number(r.cnt)]))
   }
 
   const totalPages = view === 'group-surah' ? 1 : Math.ceil(total / limit)
@@ -243,7 +342,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
       <div className="mt-4"><ColorLegend /></div>
 
       {/* Empty */}
-      {sorted.length === 0 ? (
+      {(view === 'titles-only' ? titleOnlyGroups.length === 0 : sorted.length === 0) ? (
         <div className="py-24 text-center bg-[var(--color-surface)] rounded-xl border border-[var(--color-border-soft)]">
           <div className="w-12 h-12 rounded-full bg-[var(--color-primary-soft)] mx-auto mb-4 flex items-center justify-center text-[var(--color-primary)] text-2xl font-bold">∅</div>
           <p className="text-[15px] font-bold text-[var(--color-ink)]">لا توجد نتائج</p>
@@ -272,13 +371,20 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
             </section>
           ))}
         </>
+      ) : view === 'titles-only' ? (
+        // Titles-only view — compact rows, no verse details
+        <MainGroupSwipePager
+          mode="titles-only"
+          groups={titleOnlyGroups}
+          startIndex={(page - 1) * limit + 1}
+        />
       ) : (
         // Flat view
-        <div className="divide-y divide-[var(--color-border-soft)] mt-2">
-          {sorted.map((g, i) => (
-            <GroupRow key={g.id} group={g} index={(page - 1) * limit + i + 1} />
-          ))}
-        </div>
+        <MainGroupSwipePager
+          mode="full"
+          groups={sorted}
+          startIndex={(page - 1) * limit + 1}
+        />
       )}
 
       <Pagination page={page} totalPages={totalPages} searchParams={paginationParams} />

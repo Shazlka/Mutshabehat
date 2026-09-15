@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { cn } from '@/lib/cn'
-
-type SurahNames = Record<string, string>
+import { useSurahNames } from '@/lib/surah-names'
 
 interface Props {
   surahCounts: Record<string, number>
@@ -16,11 +15,7 @@ export default function SurahFilter({ surahCounts }: Props) {
   const active = params.get('surah') ?? ''
   const [open, setOpen] = useState(false)
   const [filter, setFilter] = useState('')
-  const [names, setNames] = useState<SurahNames>({})
-
-  useEffect(() => {
-    fetch('/api/quran?names=1').then((r) => r.json()).then((j) => setNames(j.surahs || {})).catch(() => {})
-  }, [])
+  const names = useSurahNames()
 
   function pick(name: string) {
     const p = new URLSearchParams(params.toString())

@@ -6,77 +6,131 @@ import JuzHeatmap from '@/components/JuzHeatmap'
 import { getSurahNumberByName } from '@/lib/quran'
 import { juzOfSurah } from '@/lib/juz'
 
+const PART_META: Record<string, { label: string; varName: string }> = {
+  shared:   { label: 'مشترك',   varName: '--color-shared'   },
+  diff:     { label: 'اختلاف',  varName: '--color-diff'     },
+  diff2:    { label: 'اختلاف ٢', varName: '--color-diff2'    },
+  diff3:    { label: 'اختلاف ٣', varName: '--color-diff3'    },
+  addition: { label: 'زيادة',   varName: '--color-addition' },
+  unique:   { label: 'فريد',    varName: '--color-unique'   },
+  normal:   { label: 'عادي',    varName: '--color-ink-muted'},
+}
+
+type TagSlice = { id: string; name: string; color: string | null; count: number }
+type Stats = {
+  counts: { groups: number; verses: number; parts: number; favorites: number; completed: number; locked: number }
+  surahCounts: Record<string, number>
+  partsBreakdown: Record<string, number>
+  tagSlices: TagSlice[]
+  activity: { date: string; count: number }[]      // sparse — UI fills gaps
+  surahGroups: { surah: string; group_id: string }[]
+}
+
 export default async function StatsPage() {
   const supabase = await createServerSupabaseClient()
 
-  // All 12 queries run in a single parallel batch — no sequential round-trips.
-  const [
-    groupsRes,
-    versesRes,
-    partsRes,
-    favRes,
-    doneRes,
-    lockedRes,
-    { data: verseList },
-    { data: partsList },
-    { data: tagsList },
-    { data: gtList },
-    { data: updates },
-    { data: verseGroups },
-  ] = await Promise.all([
-    supabase.from('groups').select('*', { count: 'exact', head: true }),
-    supabase.from('verses').select('*', { count: 'exact', head: true }),
-    supabase.from('parts').select('*', { count: 'exact', head: true }),
-    supabase.from('groups').select('*', { count: 'exact', head: true }).eq('favorite', true),
-    supabase.from('groups').select('*', { count: 'exact', head: true }).eq('completed', true),
-    supabase.from('groups').select('*', { count: 'exact', head: true }).eq('status', 'locked'),
-    supabase.from('verses').select('surah'),
-    supabase.from('parts').select('type'),
-    supabase.from('tags').select('id, name, color'),
-    supabase.from('group_tags').select('tag_id'),
-    supabase.from('groups').select('updated_at'),
-    supabase.from('verses').select('surah, group_id'),
-  ])
-
-  // Surah distribution
-  const surahCounts: Record<string, number> = {}
-  ;(verseList || []).forEach((v: { surah: string }) => {
-    surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1
-  })
-  const top = Object.entries(surahCounts).sort((a, b) => b[1] - a[1]).slice(0, 12)
-  const maxCount = top[0]?.[1] || 1
-
-  // Parts breakdown
-  const partsBreakdown: Record<string, number> = {}
-  ;(partsList || []).forEach((p: { type: string }) => {
-    partsBreakdown[p.type] = (partsBreakdown[p.type] || 0) + 1
-  })
-  const totalParts = partsRes.count ?? 0
-
-  const PART_META: Record<string, { label: string; varName: string }> = {
-    shared:   { label: 'مشترك',   varName: '--color-shared'   },
-    diff:     { label: 'اختلاف',  varName: '--color-diff'     },
-    diff2:    { label: 'اختلاف ٢', varName: '--color-diff2'    },
-    diff3:    { label: 'اختلاف ٣', varName: '--color-diff3'    },
-    addition: { label: 'زيادة',   varName: '--color-addition' },
-    unique:   { label: 'فريد',    varName: '--color-unique'   },
-    normal:   { label: 'عادي',    varName: '--color-ink-muted'},
+  // ── Primary path: one aggregate RPC (see supabase-stats-aggregates.sql) ──
+  // Replaces 12 queries + 4 full-table transfers. Falls back to per-row
+  // aggregation in JS when the function isn't deployed yet — so this is safe to
+  // ship before the migration is run, and speeds up automatically once it is.
+  let stats: Stats | null = null
+  try {
+    const { data, error } = await supabase.rpc('get_dashboard_stats')
+    if (!error && data) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const d = data as any
+      stats = {
+        counts: {
+          groups:    Number(d.counts?.groups    ?? 0),
+          verses:    Number(d.counts?.verses    ?? 0),
+          parts:     Number(d.counts?.parts     ?? 0),
+          favorites: Number(d.counts?.favorites ?? 0),
+          completed: Number(d.counts?.completed ?? 0),
+          locked:    Number(d.counts?.locked    ?? 0),
+        },
+        surahCounts: Object.fromEntries(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          Object.entries(d.surah_counts ?? {}).map(([k, v]: [string, any]) => [k, Number(v)])),
+        partsBreakdown: Object.fromEntries(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          Object.entries(d.parts_by_type ?? {}).map(([k, v]: [string, any]) => [k, Number(v)])),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        tagSlices: (d.tag_usage ?? []).map((t: any) => ({ id: t.id, name: t.name, color: t.color, count: Number(t.count) })),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        activity: (d.activity ?? []).map((a: any) => ({ date: String(a.date), count: Number(a.count) })),
+        surahGroups: d.surah_groups ?? [],
+      }
+    }
+  } catch {
+    // ignore — fall back below
   }
 
-  // Tags distribution
-  const tagCounts = new Map<string, number>()
-  ;(gtList || []).forEach((r: { tag_id: string }) => {
-    tagCounts.set(r.tag_id, (tagCounts.get(r.tag_id) || 0) + 1)
-  })
-  const tagSlices = (tagsList || [])
-    .map((t: { id: string; name: string; color: string | null }) => ({
-      ...t, count: tagCounts.get(t.id) || 0,
-    }))
-    .filter((s: { count: number }) => s.count > 0)
-    .sort((a: { count: number }, b: { count: number }) => b.count - a.count)
-  const totalTagUses = tagSlices.reduce((s: number, t: { count: number }) => s + t.count, 0)
+  // ── Fallback: original per-row aggregation (pre-migration) ──
+  if (!stats) {
+    const [
+      groupsRes, versesRes, partsRes, favRes, doneRes, lockedRes,
+      { data: verseList }, { data: partsList }, { data: tagsList },
+      { data: gtList }, { data: updates }, { data: verseGroups },
+    ] = await Promise.all([
+      supabase.from('groups').select('*', { count: 'exact', head: true }),
+      supabase.from('verses').select('*', { count: 'exact', head: true }),
+      supabase.from('parts').select('*', { count: 'exact', head: true }),
+      supabase.from('groups').select('*', { count: 'exact', head: true }).eq('favorite', true),
+      supabase.from('groups').select('*', { count: 'exact', head: true }).eq('completed', true),
+      supabase.from('groups').select('*', { count: 'exact', head: true }).eq('status', 'locked'),
+      supabase.from('verses').select('surah'),
+      supabase.from('parts').select('type'),
+      supabase.from('tags').select('id, name, color'),
+      supabase.from('group_tags').select('tag_id'),
+      supabase.from('groups').select('updated_at'),
+      supabase.from('verses').select('surah, group_id'),
+    ])
 
-  // Activity — count groups updated per day, last 30 days
+    const surahCounts: Record<string, number> = {}
+    ;(verseList || []).forEach((v: { surah: string }) => { surahCounts[v.surah] = (surahCounts[v.surah] || 0) + 1 })
+
+    const partsBreakdown: Record<string, number> = {}
+    ;(partsList || []).forEach((p: { type: string }) => { partsBreakdown[p.type] = (partsBreakdown[p.type] || 0) + 1 })
+
+    const tagCounts = new Map<string, number>()
+    ;(gtList || []).forEach((r: { tag_id: string }) => { tagCounts.set(r.tag_id, (tagCounts.get(r.tag_id) || 0) + 1) })
+    const tagSlices = (tagsList || [])
+      .map((t: { id: string; name: string; color: string | null }) => ({ ...t, count: tagCounts.get(t.id) || 0 }))
+      .filter((s: { count: number }) => s.count > 0)
+      .sort((a: { count: number }, b: { count: number }) => b.count - a.count)
+
+    const activity = (updates || [])
+      .filter((g: { updated_at: string | null }) => !!g.updated_at)
+      .map((g: { updated_at: string | null }) => ({ date: (g.updated_at as string).slice(0, 10), count: 1 }))
+
+    stats = {
+      counts: {
+        groups: groupsRes.count ?? 0, verses: versesRes.count ?? 0, parts: partsRes.count ?? 0,
+        favorites: favRes.count ?? 0, completed: doneRes.count ?? 0, locked: lockedRes.count ?? 0,
+      },
+      surahCounts, partsBreakdown, tagSlices, activity,
+      surahGroups: (verseGroups as { surah: string; group_id: string }[]) || [],
+    }
+  }
+
+  // ── Derive view variables (shared by both paths) ──
+  const groupsRes = { count: stats.counts.groups }
+  const versesRes = { count: stats.counts.verses }
+  const partsRes  = { count: stats.counts.parts }
+  const favRes    = { count: stats.counts.favorites }
+  const doneRes   = { count: stats.counts.completed }
+  const lockedRes = { count: stats.counts.locked }
+
+  const top = Object.entries(stats.surahCounts).sort((a, b) => b[1] - a[1]).slice(0, 12)
+  const maxCount = top[0]?.[1] || 1
+
+  const partsBreakdown = stats.partsBreakdown
+  const totalParts = stats.counts.parts
+
+  const tagSlices = stats.tagSlices
+  const totalTagUses = tagSlices.reduce((s, t) => s + t.count, 0)
+
+  // Activity — zero-filled 30-day window, summed from sparse data
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   const dayMs = 24 * 60 * 60 * 1000
@@ -86,16 +140,14 @@ export default async function StatsPage() {
     days.push({ date: d.toISOString().slice(0, 10), count: 0 })
   }
   const dayIndex = new Map(days.map((d, i) => [d.date, i]))
-  ;(updates || []).forEach((g: { updated_at: string | null }) => {
-    if (!g.updated_at) return
-    const key = g.updated_at.slice(0, 10)
-    const idx = dayIndex.get(key)
-    if (idx !== undefined) days[idx].count++
+  stats.activity.forEach((a) => {
+    const idx = dayIndex.get(a.date.slice(0, 10))
+    if (idx !== undefined) days[idx].count += a.count
   })
 
-  // Juz heatmap — count groups per juz
+  // Juz heatmap — count groups per juz (surah→number→juz mapping lives in JS)
   const juzGroupSet: Set<string>[] = Array.from({ length: 30 }, () => new Set())
-  ;(verseGroups || []).forEach((v: { surah: string; group_id: string }) => {
+  stats.surahGroups.forEach((v) => {
     const sno = getSurahNumberByName(v.surah)
     if (!sno) return
     const j = juzOfSurah(sno)

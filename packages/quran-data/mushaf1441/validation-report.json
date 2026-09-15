@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-06-28T01:10:20.070Z",
+  "module": "mushaf1441",
+  "schemaTitle": "Mushaf Al-Madinah 1441 Page",
+  "source": "sample fixture only; not verified Mushaf Al-Madinah 1441 data",
+  "fixture": "fixtures/sample-page-1.json",
+  "passed": true,
+  "stats": {
+    "lineCount": 15,
+    "wordCount": 30
+  },
+  "issues": []
+}

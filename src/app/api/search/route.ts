@@ -1,9 +1,16 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
-import { normalizeArabic } from '@/lib/arabic'
+import { normalizeArabic, rasmSkeleton } from '@/lib/arabic'
 
 // GET /api/search?q=<arabic>&limit=20
-//   Searches groups by title AND parts by text (tashkeel-insensitive).
+//
+// Search runs as a cascade, exact results first:
+//   1. FTS on search_vec (GIN-indexed, normalized)        → exact
+//   2. ILIKE on raw text                                  → exact (prefix/substring)
+//   3. ILIKE on rasm_skeleton (long-alef removed)         → approximate (Tier 2)
+// Tier 3 (skeleton) only runs when there is room left under `limit` and the
+// query skeleton is long enough to be meaningful (≥ 3 chars), so a plene/defective
+// Uthmani variant (السموات ↔ السماوات, عاكفين ↔ عكفين) still surfaces.
 export async function GET(request: NextRequest) {
   const supabase = await createServerSupabaseClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -15,64 +22,106 @@ export async function GET(request: NextRequest) {
 
   if (!q) return NextResponse.json({ groups: [], parts: [] })
 
-  const qNorm = normalizeArabic(q)
+  const qNorm      = normalizeArabic(q)
+  const searchTerm = qNorm || q
+  const qSkeleton  = rasmSkeleton(q)
+  const canSkeleton = qSkeleton.length >= 3
 
-  // 1) Search group titles using ILIKE (case + tashkeel-tolerant via normalized client check)
-  const { data: titleHits, error: tErr } = await supabase
-    .from('groups')
-    .select('id, title, color, status, favorite, completed, updated_at')
-    .ilike('title', `%${q}%`)
-    .limit(limit)
-  if (tErr) return NextResponse.json({ error: tErr.message }, { status: 500 })
+  // ── 1) GROUPS (title) ──────────────────────────────────────────────────────
+  type GroupHit = {
+    id: string; title: string; color: string; status: string
+    favorite: boolean; completed: boolean; updated_at: string
+    approximate?: boolean
+  }
+  const GROUP_SELECT = 'id, title, color, status, favorite, completed, updated_at'
 
-  // 2) Search part text
-  const { data: partHits, error: pErr } = await supabase
-    .from('parts')
-    .select(`
-      id, text, type,
-      verses ( id, surah, ayah, label,
-        groups ( id, title, color )
-      )
-    `)
-    .ilike('text', `%${q}%`)
-    .limit(limit)
-  if (pErr) return NextResponse.json({ error: pErr.message }, { status: 500 })
+  let titleHits: GroupHit[] = []
 
-  // 3) Also search normalized form (strip tashkeel from query, then ilike again if different)
-  let extraTitleHits: typeof titleHits = []
-  let extraPartHits:  typeof partHits  = []
-  if (qNorm && qNorm !== q) {
-    const { data: t2 } = await supabase
+  if (searchTerm.length >= 2) {
+    const { data: ftsHits, error: ftsErr } = await supabase
       .from('groups')
-      .select('id, title, color, status, favorite, completed, updated_at')
-      .ilike('title', `%${qNorm}%`)
+      .select(GROUP_SELECT)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .textSearch('search_vec', searchTerm, { type: 'websearch', config: 'simple' } as any)
       .limit(limit)
-    extraTitleHits = t2 || []
-
-    const { data: p2 } = await supabase
-      .from('parts')
-      .select(`
-        id, text, type,
-        verses ( id, surah, ayah, label,
-          groups ( id, title, color )
-        )
-      `)
-      .ilike('text', `%${qNorm}%`)
-      .limit(limit)
-    extraPartHits = p2 || []
+    if (!ftsErr && ftsHits?.length) titleHits = ftsHits as GroupHit[]
   }
 
-  // Dedupe by id
-  const groupsMap = new Map<string, typeof titleHits[number]>()
-  ;[...(titleHits || []), ...(extraTitleHits || [])].forEach((g) => groupsMap.set(g.id, g))
+  // ILIKE (exact substring / prefix) when FTS returns nothing
+  if (titleHits.length === 0) {
+    const { data: ilikeHits } = await supabase
+      .from('groups')
+      .select(GROUP_SELECT)
+      .ilike('title', `%${searchTerm}%`)
+      .limit(limit)
+    titleHits = (ilikeHits as GroupHit[]) || []
+  }
 
-  const partsMap = new Map<string, typeof partHits[number]>()
-  ;[...(partHits || []), ...(extraPartHits || [])].forEach((p) => partsMap.set(p.id, p))
+  // Tier 2 — rasm skeleton (approximate) to fill remaining room
+  if (titleHits.length < limit && canSkeleton) {
+    const seen = new Set(titleHits.map((g) => g.id))
+    const { data: skelHits } = await supabase
+      .from('groups')
+      .select(GROUP_SELECT)
+      .ilike('rasm_skeleton', `%${qSkeleton}%`)
+      .limit(limit)
+    for (const g of (skelHits as GroupHit[]) || []) {
+      if (!seen.has(g.id)) { titleHits.push({ ...g, approximate: true }); seen.add(g.id) }
+    }
+    titleHits = titleHits.slice(0, limit)
+  }
+
+  // ── 2) PARTS (text) ────────────────────────────────────────────────────────
+  const PART_SELECT = `
+    id, text, type,
+    verses ( id, surah, ayah, label,
+      groups ( id, title, color )
+    )
+  `
+  type PartHit = { id: string; text: string; type: string; verses: unknown; approximate?: boolean }
+
+  let partHits: PartHit[] = []
+
+  if (searchTerm.length >= 2) {
+    const { data: ftsHits } = await supabase
+      .from('parts')
+      .select(PART_SELECT)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .textSearch('search_vec', searchTerm, { type: 'websearch', config: 'simple' } as any)
+      .limit(limit)
+    if (ftsHits?.length) partHits = ftsHits as PartHit[]
+  }
+
+  // ILIKE (exact substring / prefix) when FTS returns nothing
+  if (partHits.length === 0) {
+    const { data: ilikeHits, error: pErr } = await supabase
+      .from('parts')
+      .select(PART_SELECT)
+      .ilike('text', `%${searchTerm}%`)
+      .limit(limit)
+    if (pErr) return NextResponse.json({ error: pErr.message }, { status: 500 })
+    partHits = (ilikeHits as PartHit[]) || []
+  }
+
+  // Tier 2 — rasm skeleton (approximate) to fill remaining room
+  if (partHits.length < limit && canSkeleton) {
+    const seen = new Set(partHits.map((p) => p.id))
+    const { data: skelHits } = await supabase
+      .from('parts')
+      .select(PART_SELECT)
+      .ilike('rasm_skeleton', `%${qSkeleton}%`)
+      .limit(limit)
+    for (const p of (skelHits as PartHit[]) || []) {
+      if (!seen.has(p.id)) { partHits.push({ ...p, approximate: true }); seen.add(p.id) }
+    }
+    partHits = partHits.slice(0, limit)
+  }
 
   return NextResponse.json({
-    query: q,
+    query:      q,
     normalized: qNorm,
-    groups: Array.from(groupsMap.values()),
-    parts:  Array.from(partsMap.values()),
+    skeleton:   qSkeleton,
+    groups:     titleHits,
+    parts:      partHits,
   })
 }

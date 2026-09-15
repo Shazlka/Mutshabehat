@@ -1,0 +1,125 @@
+{
+  "pageNumber": 1,
+  "lines": [
+    {
+      "pageNumber": 1,
+      "lineNumber": 1,
+      "words": [
+        { "id": "sample-p001-l01-w001", "pageNumber": 1, "lineNumber": 1, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 1, "wordIndexInAyah": 1, "ayahKey": "1:1", "textUthmani": "عينة" },
+        { "id": "sample-p001-l01-w002", "pageNumber": 1, "lineNumber": 1, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 1, "wordIndexInAyah": 2, "ayahKey": "1:1", "textUthmani": "تجريبية" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 2,
+      "words": [
+        { "id": "sample-p001-l02-w001", "pageNumber": 1, "lineNumber": 2, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 1, "wordIndexInAyah": 3, "ayahKey": "1:1", "textUthmani": "ليست" },
+        { "id": "sample-p001-l02-w002", "pageNumber": 1, "lineNumber": 2, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 1, "wordIndexInAyah": 4, "ayahKey": "1:1", "textUthmani": "نصا" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 3,
+      "words": [
+        { "id": "sample-p001-l03-w001", "pageNumber": 1, "lineNumber": 3, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 2, "wordIndexInAyah": 1, "ayahKey": "1:2", "textUthmani": "قرآنيا" },
+        { "id": "sample-p001-l03-w002", "pageNumber": 1, "lineNumber": 3, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 2, "wordIndexInAyah": 2, "ayahKey": "1:2", "textUthmani": "موثقا" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 4,
+      "words": [
+        { "id": "sample-p001-l04-w001", "pageNumber": 1, "lineNumber": 4, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 2, "wordIndexInAyah": 3, "ayahKey": "1:2", "textUthmani": "بل" },
+        { "id": "sample-p001-l04-w002", "pageNumber": 1, "lineNumber": 4, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 2, "wordIndexInAyah": 4, "ayahKey": "1:2", "textUthmani": "بيان" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 5,
+      "words": [
+        { "id": "sample-p001-l05-w001", "pageNumber": 1, "lineNumber": 5, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 3, "wordIndexInAyah": 1, "ayahKey": "1:3", "textUthmani": "لشكل" },
+        { "id": "sample-p001-l05-w002", "pageNumber": 1, "lineNumber": 5, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 3, "wordIndexInAyah": 2, "ayahKey": "1:3", "textUthmani": "البيانات" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 6,
+      "words": [
+        { "id": "sample-p001-l06-w001", "pageNumber": 1, "lineNumber": 6, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 3, "wordIndexInAyah": 3, "ayahKey": "1:3", "textUthmani": "فحسب" },
+        { "id": "sample-p001-l06-w002", "pageNumber": 1, "lineNumber": 6, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 3, "wordIndexInAyah": 4, "ayahKey": "1:3", "textUthmani": "بانتظار" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 7,
+      "words": [
+        { "id": "sample-p001-l07-w001", "pageNumber": 1, "lineNumber": 7, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 4, "wordIndexInAyah": 1, "ayahKey": "1:4", "textUthmani": "مصدر" },
+        { "id": "sample-p001-l07-w002", "pageNumber": 1, "lineNumber": 7, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 4, "wordIndexInAyah": 2, "ayahKey": "1:4", "textUthmani": "معتمد" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 8,
+      "words": [
+        { "id": "sample-p001-l08-w001", "pageNumber": 1, "lineNumber": 8, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 4, "wordIndexInAyah": 3, "ayahKey": "1:4", "textUthmani": "للصفحة" },
+        { "id": "sample-p001-l08-w002", "pageNumber": 1, "lineNumber": 8, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 4, "wordIndexInAyah": 4, "ayahKey": "1:4", "textUthmani": "والسطر" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 9,
+      "words": [
+        { "id": "sample-p001-l09-w001", "pageNumber": 1, "lineNumber": 9, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 5, "wordIndexInAyah": 1, "ayahKey": "1:5", "textUthmani": "والكلمة" },
+        { "id": "sample-p001-l09-w002", "pageNumber": 1, "lineNumber": 9, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 5, "wordIndexInAyah": 2, "ayahKey": "1:5", "textUthmani": "لاحقا" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 10,
+      "words": [
+        { "id": "sample-p001-l10-w001", "pageNumber": 1, "lineNumber": 10, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 5, "wordIndexInAyah": 3, "ayahKey": "1:5", "textUthmani": "هذه" },
+        { "id": "sample-p001-l10-w002", "pageNumber": 1, "lineNumber": 10, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 5, "wordIndexInAyah": 4, "ayahKey": "1:5", "textUthmani": "العبارات" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 11,
+      "words": [
+        { "id": "sample-p001-l11-w001", "pageNumber": 1, "lineNumber": 11, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 6, "wordIndexInAyah": 1, "ayahKey": "1:6", "textUthmani": "تملأ" },
+        { "id": "sample-p001-l11-w002", "pageNumber": 1, "lineNumber": 11, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 6, "wordIndexInAyah": 2, "ayahKey": "1:6", "textUthmani": "النموذج" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 12,
+      "words": [
+        { "id": "sample-p001-l12-w001", "pageNumber": 1, "lineNumber": 12, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 6, "wordIndexInAyah": 3, "ayahKey": "1:6", "textUthmani": "ولا" },
+        { "id": "sample-p001-l12-w002", "pageNumber": 1, "lineNumber": 12, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 6, "wordIndexInAyah": 4, "ayahKey": "1:6", "textUthmani": "تعتمد" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 13,
+      "words": [
+        { "id": "sample-p001-l13-w001", "pageNumber": 1, "lineNumber": 13, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 7, "wordIndexInAyah": 1, "ayahKey": "1:7", "textUthmani": "للحفظ" },
+        { "id": "sample-p001-l13-w002", "pageNumber": 1, "lineNumber": 13, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 7, "wordIndexInAyah": 2, "ayahKey": "1:7", "textUthmani": "أو" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 14,
+      "words": [
+        { "id": "sample-p001-l14-w001", "pageNumber": 1, "lineNumber": 14, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 7, "wordIndexInAyah": 3, "ayahKey": "1:7", "textUthmani": "الاستشهاد" },
+        { "id": "sample-p001-l14-w002", "pageNumber": 1, "lineNumber": 14, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 7, "wordIndexInAyah": 4, "ayahKey": "1:7", "textUthmani": "العلمي" }
+      ]
+    },
+    {
+      "pageNumber": 1,
+      "lineNumber": 15,
+      "words": [
+        { "id": "sample-p001-l15-w001", "pageNumber": 1, "lineNumber": 15, "wordIndexInLine": 1, "surahNumber": 1, "ayahNumber": 7, "wordIndexInAyah": 5, "ayahKey": "1:7", "textUthmani": "أبدا" },
+        { "id": "sample-p001-l15-w002", "pageNumber": 1, "lineNumber": 15, "wordIndexInLine": 2, "surahNumber": 1, "ayahNumber": 7, "wordIndexInAyah": 6, "ayahKey": "1:7", "textUthmani": "مؤقتا" }
+      ]
+    }
+  ]
+}
