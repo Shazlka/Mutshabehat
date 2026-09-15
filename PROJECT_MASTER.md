@@ -62,21 +62,22 @@ Pre-sync rollback point: local tag `backup/pre-sync-20260915` (`571a8c9`).
 - Team `shazlka-s-projects` (`team_sDnS0rtYIo3SJZtJ3FsFinGV`), project `mutshabehat-v2`
   (`prj_CNcNhnaT36NFuHlcP5bnVbbDfsSj`), CLI user `amreshazly-4497`. Node 24.x, Next.js preset, region `iad1`.
 - `.vercel/project.json` in the canonical repo links to this project. ✅
-- **No Git integration** (`link: null`). Pushing to GitHub does **not** deploy. All deploys are CLI uploads
-  of a local working tree.
-  If you connect Git, the default Production Branch `main` is now correct (V2). Note that Vercel may
-  BLOCK git deploys whose commit author is not a team member.
+- **Git integration ON (connected 2026-09-15):** `Shazlka/Mutshabehat`, Production Branch = `main`.
+  Push to `main` → production deploy. Push to any other branch → preview deploy.
+  If a git deploy shows `BLOCKED` (the commit author is not a Vercel team member), commit as
+  `Shazlka <amr.eshazly@gmail.com>` or fall back to `vercel --prod --scope shazlka-s-projects`.
 - Current production: `dpl_DfsCpfR9DfhtvHKk79RUFSFqdYPc` (2026-09-11, actor `codex`, CLI).
   Aliases: `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app`.
 - Production env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
   `SUPABASE_SERVICE_ROLE_KEY`, `AUTOLOGIN_EMAIL`, `AUTOLOGIN_PASSWORD`.
 - Live check 2026-09-15: first hit `307 → /` with the session cookie set, then `200`. ✅
 
-**Deploy:**
+**Deploy (normal path = git):**
 ```bash
 cd ~/Projects/mutshabehat-v2
 env -u __NEXT_PROCESSED_ENV npm run build     # must pass first
-vercel --prod --yes                           # uploads the WORKING TREE (includes uncommitted WIP)
+git push origin main                          # Vercel builds + promotes to production
+# Fallback only: vercel --prod --yes --scope shazlka-s-projects   (uploads the WORKING TREE)
 # If only NEXT_PUBLIC_* env values changed (baked into the bundle at build time):
 vercel redeploy https://mutshabehat-v2.vercel.app --scope shazlka-s-projects
 ```
@@ -214,7 +215,7 @@ Every request is authenticated as the single user, so RLS applies. The client ne
 5. Build: `env -u __NEXT_PROCESSED_ENV npm run build` (a leaked `__NEXT_PROCESSED_ENV` skips `.env.local`).
    Dev: `npm run dev`. Mushaf checks: `npm run mushaf:validate`, `npm run mushaf:runtime`.
 6. **Changelog is mandatory:** add a dated entry, newest first, to both `CHANGELOG.md` and the `# Changelog` section of `CLAUDE.md`.
-7. Commit, push to `feature/mushaf-1441-module`, deploy with `vercel --prod --yes`, then verify the live site in a browser.
+7. Work on a feature branch (a push gives a preview URL), merge to `main` (a push deploys production), then verify the live site in a browser.
 8. Never commit secrets or data files. Never touch Wave C3B containers or Funnel `:443`.
    Never run `docker compose down -v`.
 
@@ -227,4 +228,4 @@ Every request is authenticated as the single user, so RLS applies. The client ne
 | Build fails "Supabase URL and API key are required" | `env -u __NEXT_PROCESSED_ENV npm run build` |
 | Search misses Uthmani words | route through `normalizeArabic` / `rasmSkeleton` |
 | Stats slow | `get_dashboard_stats` RPC missing on self-host (§5) |
-| Push to GitHub didn't deploy | expected: no Git integration, deploy via CLI |
+| Push to GitHub didn't deploy / deploy "hangs" | Check the deployment state via the Vercel API. `BLOCKED` = commit author not in the team (see §4) |
