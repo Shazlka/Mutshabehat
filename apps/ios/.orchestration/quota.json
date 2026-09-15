@@ -1,0 +1,8 @@
+{
+  "_note": "This cloud session has no local codex/agy CLI and no Tailscale route to the Mac mini. codex-sol, codex-luna, and agy-flash are NOT reachable from here. All Phase 0 work is run directly by this Sonnet 5 session (standing in for both 'orchestrator' and 'Sonnet worker' roles) plus one Claude general-purpose subagent standing in for the Agy Flash inventory role. Re-evaluate once running from the MacBook Air where those CLIs actually exist.",
+  "opus-orchestrator": { "status": "not_present_this_session", "note": "this session is Sonnet 5, not Opus 5" },
+  "sonnet": { "status": "ok" },
+  "codex-sol": { "status": "unavailable_environment", "reason": "codex CLI not installed in this container" },
+  "codex-luna": { "status": "unavailable_environment", "reason": "codex CLI not installed in this container" },
+  "agy-flash": { "status": "unavailable_environment", "reason": "agy CLI not installed in this container; role filled by a Claude general-purpose subagent for Phase 0 only" }
+}
