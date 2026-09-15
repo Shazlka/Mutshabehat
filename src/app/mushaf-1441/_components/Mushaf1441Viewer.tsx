@@ -328,7 +328,7 @@ export default function Mushaf1441Viewer({
   const [needsSignIn, setNeedsSignIn] = useState(false)
   const [hoveredAyahKey, setHoveredAyahKey] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
-  const [surahSliderPreview, setSurahSliderPreview] = useState<number | null>(null)
+  const [pageSliderPreview, setPageSliderPreview] = useState<number | null>(null)
   const [mutshabehatPopupAyahKey, setMutshabehatPopupAyahKey] = useState<string | null>(null)
   const [groupDetails, setGroupDetails] = useState<Record<string, PopupGroup | 'loading' | 'error'>>({})
   // Groups in the ayah card start collapsed (title only); tapping a title expands its details.
@@ -352,6 +352,22 @@ export default function Mushaf1441Viewer({
     for (const surah of surahOptions) map.set(surah.surahNumber, surah.name)
     return map
   }, [surahOptions])
+  // Surah starts sorted by page, for naming the surah shown on any page.
+  const surahStarts = useMemo(
+    () => surahOptions
+      .filter((surah) => surah.firstPage !== null)
+      .map((surah) => ({ page: surah.firstPage as number, surahNumber: surah.surahNumber, name: surah.name }))
+      .sort((a, b) => a.page - b.page || a.surahNumber - b.surahNumber),
+    [surahOptions],
+  )
+  const surahStartForPage = (page: number) => {
+    let found = surahStarts[0]
+    for (const start of surahStarts) {
+      if (start.page > page) break
+      found = start
+    }
+    return found
+  }
   const surahAyahCountByNumber = useMemo(() => {
     const map = new Map<number, number>()
     for (const surah of surahOptions) map.set(surah.surahNumber, surah.ayahCount)
@@ -2738,48 +2754,49 @@ export default function Mushaf1441Viewer({
         ) : null}
       </main>
 
-      {/* Bottom quick surah slider — preview while dragging, navigate on release */}
+      {/* Bottom quick page slider — preview page + surah while dragging, navigate on release */}
       {(() => {
-        const sliderValue = surahSliderPreview ?? selectedSurahNumber
-        const previewName = surahNameByNumber.get(sliderValue) ?? ''
-        // RTL slider: value 1 sits on the right, 114 on the left.
-        const leftPct = 100 - ((sliderValue - 1) / 113) * 100
+        const sliderValue = pageSliderPreview ?? pageNumber
+        const previewSurah = surahStartForPage(sliderValue)
+        const previewName = previewSurah?.name ?? ''
+        // RTL slider: page 1 sits on the right, the last page on the left.
+        const leftPct = 100 - ((sliderValue - 1) / (MUSHAF_1441_PAGE_COUNT - 1)) * 100
         const commit = () => {
-          if (surahSliderPreview && surahSliderPreview !== selectedSurahNumber) {
-            void goToAyah(surahSliderPreview, 1)
+          if (pageSliderPreview && pageSliderPreview !== pageNumber) {
+            void goToPage(pageSliderPreview)
           }
-          setSurahSliderPreview(null)
+          setPageSliderPreview(null)
         }
         return (
           <div
             className="relative flex shrink-0 items-center gap-3 border-t border-[#d7c7a7] bg-[#f7f0e0] px-3 py-2"
             style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
           >
-            {surahSliderPreview !== null ? (
+            {pageSliderPreview !== null ? (
               <div
                 className="pointer-events-none absolute -top-12 z-50 -translate-x-1/2 rounded-xl border border-[#b8871d] bg-[#171717] px-4 py-2 text-center shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
                 style={{ left: `clamp(60px, ${leftPct}%, calc(100% - 60px))` }}
               >
-                <p className="text-base font-black text-white">{previewName}</p>
-                <p className="text-[10px] font-bold text-[#e6d8b6] tabular-nums">سورة {sliderValue}</p>
+                <p className="text-base font-black text-white tabular-nums">ص {sliderValue}</p>
+                <p className="text-[10px] font-bold text-[#e6d8b6]">{previewName}</p>
               </div>
             ) : null}
             <span className="w-24 shrink-0 truncate text-xs font-black text-[#59461d]">
-              {sliderValue}. {previewName}
+              <span className="tabular-nums">ص {sliderValue}</span> · {previewName}
             </span>
             <input
               type="range"
               min={1}
-              max={114}
+              max={MUSHAF_1441_PAGE_COUNT}
               step={1}
               value={sliderValue}
-              aria-label="انتقال سريع للسورة"
-              onPointerDown={() => setSurahSliderPreview(selectedSurahNumber)}
-              onChange={(event) => setSurahSliderPreview(Number(event.target.value))}
+              aria-label="انتقال سريع للصفحة"
+              onPointerDown={() => setPageSliderPreview(pageNumber)}
+              onChange={(event) => setPageSliderPreview(Number(event.target.value))}
               onPointerUp={commit}
-              onPointerCancel={() => setSurahSliderPreview(null)}
+              onPointerCancel={() => setPageSliderPreview(null)}
               onKeyUp={commit}
-              onBlur={() => setSurahSliderPreview(null)}
+              onBlur={() => setPageSliderPreview(null)}
               className="h-3 flex-1 cursor-pointer appearance-none rounded-full bg-[#e6d8b6] accent-[#171717] [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#171717]"
             />
           </div>
