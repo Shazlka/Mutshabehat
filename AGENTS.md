@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Project orientation (all agents)
 
-**Read `PROJECT_MASTER.md` before doing anything.** It is the single source of truth for this project:
+**Read `HANDOFF.md` (latest state, open items) and `PROJECT_MASTER.md` before doing anything.** It is the single source of truth for this project:
 locations on the Mac Mini, GitHub (`Shazlka/Mutshabehat`, branch `main`), Vercel (git-connected, push to `main` deploys
 production to https://mutshabehat-v2.vercel.app), the self-hosted Supabase backend behind Tailscale Funnel, schema,
 design tokens, the feature workflow, and troubleshooting.
