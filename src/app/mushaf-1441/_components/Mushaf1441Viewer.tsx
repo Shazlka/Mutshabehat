@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent } from 'react'
+import Link from 'next/link'
 import type {
   AyahNote,
   MushafAnnotation,
@@ -2183,6 +2184,17 @@ export default function Mushaf1441Viewer({
           >
             ←
           </button>
+          <Link
+            href="/"
+            aria-label="العودة إلى المتشابهات"
+            title="المتشابهات"
+            className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M3 11.5 12 4l9 7.5" />
+              <path d="M5.5 10v9a1 1 0 0 0 1 1H10v-5h4v5h3.5a1 1 0 0 0 1-1v-9" />
+            </svg>
+          </Link>
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}

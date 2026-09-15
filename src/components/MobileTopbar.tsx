@@ -10,6 +10,7 @@ const NAV = [
   { href: '/automated', label: 'الآلية',      count: null },
   { href: '/surahs',    label: 'السور',       count: null },
   { href: '/test',      label: 'اختبار',      count: null },
+  { href: '/mushaf-1441', label: 'المصحف',   count: null },
   { href: '/network',   label: 'شبكة السور',  count: null },
   { href: '/stats',     label: 'إحصائيات',   count: null },
   { href: '/tools',     label: 'أدوات',      count: null },
