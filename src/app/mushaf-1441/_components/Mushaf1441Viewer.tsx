@@ -318,6 +318,8 @@ export default function Mushaf1441Viewer({
   const [surahSliderPreview, setSurahSliderPreview] = useState<number | null>(null)
   const [mutshabehatPopupAyahKey, setMutshabehatPopupAyahKey] = useState<string | null>(null)
   const [groupDetails, setGroupDetails] = useState<Record<string, PopupGroup | 'loading' | 'error'>>({})
+  // Groups in the ayah card start collapsed (title only); tapping a title expands its details.
+  const [expandedPopupGroups, setExpandedPopupGroups] = useState<Record<string, boolean>>({})
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const lastTapRef = useRef(0)
 
@@ -1006,13 +1008,14 @@ export default function Mushaf1441Viewer({
 
   function openMutshabehatPopup(ayahKey: string) {
     setMutshabehatPopupAyahKey(ayahKey)
+    setExpandedPopupGroups({})
     setContextMenu(null)
-    const groupIds = new Set(
-      pageHighlights
-        .filter((highlight) => highlight.ayahKey === ayahKey && highlight.groupId)
-        .map((highlight) => highlight.groupId as string)
-    )
-    for (const groupId of groupIds) void loadGroupDetail(groupId)
+  }
+
+  function togglePopupGroup(groupId: string) {
+    const willExpand = !expandedPopupGroups[groupId]
+    setExpandedPopupGroups((current) => ({ ...current, [groupId]: willExpand }))
+    if (willExpand) void loadGroupDetail(groupId)
   }
 
   async function loadGroupDetail(groupId: string) {
@@ -1721,27 +1724,46 @@ export default function Mushaf1441Viewer({
             </button>
           </header>
 
-          <div className="space-y-6 overflow-y-auto px-4 py-4">
+          <div className="space-y-2 overflow-y-auto px-4 py-4">
             {groupIds.length === 0 ? (
               <p className="py-6 text-center text-sm text-[#665b48]">لا توجد مجموعة مرتبطة بهذه الآية.</p>
             ) : groupIds.map((groupId) => {
               const link = links.find((candidate) => candidate.groupId === groupId)
               const detail = groupDetails[groupId]
+              const isExpanded = Boolean(expandedPopupGroups[groupId])
+              const detailsId = `mutshabehat-group-${groupId}`
               return (
-                <article key={groupId} className="space-y-3">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="flex items-center gap-2 text-[15px] font-black leading-snug text-[#171717]">
-                      <span
-                        aria-hidden="true"
-                        className="inline-block size-3 shrink-0 rounded-full"
-                        style={{ backgroundColor: tintForGroup(groupId).bg, boxShadow: `inset 0 0 0 1.5px ${tintForGroup(groupId).edge}` }}
-                      />
-                      {link?.title ?? 'مجموعة متشابهات'}
-                    </h3>
-                    <span className="shrink-0 text-[11px] font-bold tabular-nums text-[#80662c]">
-                      {((link?.similarAyat?.length ?? 0) + 1).toLocaleString('ar-EG')} مواضع
-                    </span>
-                  </div>
+                <article key={groupId} className="overflow-hidden rounded-xl border border-[#eadfc9] bg-[#fffdf8]">
+                  <h3>
+                    <button
+                      type="button"
+                      onClick={() => togglePopupGroup(groupId)}
+                      aria-expanded={isExpanded}
+                      aria-controls={detailsId}
+                      className="flex min-h-12 w-full items-center justify-between gap-3 px-3 py-2.5 text-right transition-colors hover:bg-[#fbf5e6]"
+                    >
+                      <span className="flex min-w-0 items-center gap-2 text-[15px] font-black leading-snug text-[#171717]">
+                        <span
+                          aria-hidden="true"
+                          className="inline-block size-3 shrink-0 rounded-full"
+                          style={{ backgroundColor: tintForGroup(groupId).bg, boxShadow: `inset 0 0 0 1.5px ${tintForGroup(groupId).edge}` }}
+                        />
+                        <span className="min-w-0">{link?.title ?? 'مجموعة متشابهات'}</span>
+                      </span>
+                      <span className="flex shrink-0 items-center gap-2 text-[11px] font-bold tabular-nums text-[#80662c]">
+                        {((link?.similarAyat?.length ?? 0) + 1).toLocaleString('ar-EG')} مواضع
+                        <svg
+                          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
+                          strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+                          className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </span>
+                    </button>
+                  </h3>
+                  {isExpanded ? (
+                  <div id={detailsId} className="space-y-3 border-t border-[#eadfc9] px-3 pb-3 pt-3">
                   {link?.tags && link.tags.length > 0 ? (
                     <div className="flex flex-wrap gap-1.5">
                       {link.tags.map((tag) => (
@@ -1813,6 +1835,8 @@ export default function Mushaf1441Viewer({
                       تعديل
                     </Link>
                   </div>
+                  </div>
+                  ) : null}
                 </article>
               )
             })}
