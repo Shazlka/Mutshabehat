@@ -1,12 +1,13 @@
 'use client'
 
-// iBooks-style page curl. The turning sheet folds along a straight line that moves with the
-// peeled corner: the part past the fold is clipped away (revealing the page underneath),
-// and the folded flap — the back of the sheet — is drawn reflected across that line.
-// Everything is updated imperatively per animation frame (clip-path, transform, SVG
-// gradients), so React renders the heavy page content only once per turn.
+// iBooks-style page curl, driven directly on the page elements already on screen.
+// The turning sheet folds along a straight line that moves with the peeled corner: the part
+// past the fold is clipped off the outgoing page (revealing the new page underneath), and the
+// folded flap — the back of the sheet — is the real page element that lands on the other side,
+// transformed by the reflection across that line. No page content is copied or re-rendered;
+// each animation frame only writes clip-path / transform and a few SVG attributes.
 
-import { forwardRef, useEffect, useId, useImperativeHandle, useRef, type ReactNode } from 'react'
+import { forwardRef, useEffect, useId, useImperativeHandle, useLayoutEffect, useRef } from 'react'
 
 export type PageCurlRect = { x: number; y: number; width: number; height: number }
 
@@ -25,10 +26,14 @@ type Props = {
   /** Horizontal distance the peeled corner travels to lie flat on the other side. */
   travel: number
   mode: 'auto' | 'drag'
-  front: ReactNode
-  back: ReactNode
-  /** The other page of the outgoing spread, which stays until the flap covers it. */
-  still?: { rect: PageCurlRect; node: ReactNode } | null
+  /** Outgoing page element (the front of the turning sheet). */
+  front: HTMLElement
+  /** The other outgoing page of a spread, kept on top until the flap covers it. */
+  still: HTMLElement | null
+  /** Incoming page printed on the back of the sheet (spread); null draws blank paper. */
+  resolveBack: () => HTMLElement | null
+  /** That incoming page's rect, measured before the turn (so no layout is forced here). */
+  backRect: PageCurlRect | null
   onFinish: (committed: boolean) => void
 }
 
@@ -56,7 +61,7 @@ function clipPolygon(points: Point[], side: (p: Point) => number): Point[] {
   return out
 }
 
-const toPolygon = (points: Point[]) =>
+const toClipPath = (points: Point[]) =>
   points.length < 3 ? EMPTY_POLYGON : `polygon(${points.map((p) => `${p.x.toFixed(2)}px ${p.y.toFixed(2)}px`).join(', ')})`
 
 const toSvgPoints = (points: Point[]) => points.map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' ')
@@ -72,18 +77,29 @@ function setGradient(el: SVGLinearGradientElement | null, from: Point, to: Point
   el.setAttribute('y2', to.y.toFixed(2))
 }
 
+function restoreStyles(el: HTMLElement | null, props: string[]) {
+  if (!el) return
+  for (const prop of props) el.style.removeProperty(prop)
+}
+
 const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverlay(
-  { leaf, peelFrom, travel, mode, front, back, still, onFinish },
+  { leaf, peelFrom, travel, mode, front, still, resolveBack, backRect, onFinish },
   ref,
 ) {
-  const frontRef = useRef<HTMLDivElement>(null)
-  const frontGradientRef = useRef<SVGLinearGradientElement>(null)
   const revealRef = useRef<SVGSVGElement>(null)
   const revealPolygonRef = useRef<SVGPolygonElement>(null)
   const revealGradientRef = useRef<SVGLinearGradientElement>(null)
-  const flapRef = useRef<HTMLDivElement>(null)
-  const flapInnerRef = useRef<HTMLDivElement>(null)
+  const frontShadeRef = useRef<SVGSVGElement>(null)
+  const frontGradientRef = useRef<SVGLinearGradientElement>(null)
+  const flapShadowRef = useRef<SVGSVGElement>(null)
+  const flapShadowGroupRef = useRef<SVGGElement>(null)
+  const flapShadowPolygonRef = useRef<SVGPolygonElement>(null)
+  const flapShadeRef = useRef<SVGSVGElement>(null)
+  const flapShadeGroupRef = useRef<SVGGElement>(null)
+  const flapPaperRef = useRef<SVGPolygonElement>(null)
+  const flapShadePolygonRef = useRef<SVGPolygonElement>(null)
   const flapGradientRef = useRef<SVGLinearGradientElement>(null)
+  const backRef = useRef<{ el: HTMLElement | null; dx: number; dy: number }>({ el: null, dx: 0, dy: 0 })
   const stateRef = useRef({ t: 0, lift: 0, frame: 0, finished: false })
   const onFinishRef = useRef(onFinish)
   useEffect(() => {
@@ -114,21 +130,16 @@ const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverl
     clampTo({ x: hingeX, y: H }, reach)
     clampTo({ x: hingeX, y: 0 }, Math.hypot(reach, H))
 
-    const frontEl = frontRef.current
-    const revealEl = revealRef.current
-    const flapEl = flapRef.current
-    const flapInnerEl = flapInnerRef.current
-    if (!frontEl || !revealEl || !flapEl || !flapInnerEl) return
-
+    const layers = [revealRef.current, frontShadeRef.current, flapShadowRef.current, flapShadeRef.current]
+    const back = backRef.current
     const span = Math.hypot(peeled.x - corner.x, peeled.y - corner.y)
     if (span < 0.5) {
-      frontEl.style.clipPath = 'none'
-      revealEl.style.visibility = 'hidden'
-      flapEl.style.visibility = 'hidden'
+      front.style.clipPath = 'none'
+      for (const layer of layers) if (layer) layer.style.visibility = 'hidden'
+      if (back.el) back.el.style.clipPath = EMPTY_POLYGON
       return
     }
-    revealEl.style.visibility = 'visible'
-    flapEl.style.visibility = 'visible'
+    for (const layer of layers) if (layer) layer.style.visibility = 'visible'
 
     // Fold line: perpendicular bisector of corner → peeled corner; n points toward the peeled corner.
     const mid: Point = { x: (corner.x + peeled.x) / 2, y: (corner.y + peeled.y) / 2 }
@@ -139,8 +150,10 @@ const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverl
     const folded = clipPolygon(sheet, (p) => -side(p))
     const depth = Math.max(1, ...folded.map((p) => -side(p)))
 
-    // Flat part of the sheet, darkening slightly toward the bend.
-    frontEl.style.clipPath = toPolygon(flat)
+    // Flat part of the outgoing page, darkening slightly toward the bend.
+    const flatClip = toClipPath(flat)
+    front.style.clipPath = flatClip
+    if (frontShadeRef.current) frontShadeRef.current.style.clipPath = flatClip
     setGradient(frontGradientRef.current, mid, { x: mid.x + n.x * W * 0.14, y: mid.y + n.y * W * 0.14 })
 
     // Shadow the lifted flap casts on the page revealed underneath.
@@ -148,8 +161,8 @@ const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverl
     const shadowLength = Math.min(W * 0.45, depth * 1.2 + 24)
     setGradient(revealGradientRef.current, mid, { x: mid.x - n.x * shadowLength, y: mid.y - n.y * shadowLength })
 
-    // Back of the sheet: mirror the back page onto the sheet (x → W − x), then reflect across the fold.
-    // Two reflections make a rotation, so the back page's text reads the right way round.
+    // Back of the sheet: mirror onto the sheet (x → W − x), then reflect across the fold.
+    // Two reflections make a rotation, so the incoming page's text reads the right way round.
     const d = dot(n, mid)
     const a = -(1 - 2 * n.x * n.x)
     const b = 2 * n.x * n.y
@@ -157,10 +170,22 @@ const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverl
     const e = 1 - 2 * n.y * n.y
     const tx = W * (1 - 2 * n.x * n.x) + 2 * d * n.x
     const ty = -2 * n.x * n.y * W + 2 * d * n.y
-    flapInnerEl.style.transform = `matrix(${a}, ${b}, ${c}, ${e}, ${tx}, ${ty})`
-    flapInnerEl.style.clipPath = toPolygon(folded.map((p) => ({ x: W - p.x, y: p.y })))
+    const matrix = `matrix(${a} ${b} ${c} ${e} ${tx} ${ty})`
+    const flapLocal = folded.map((p) => ({ x: W - p.x, y: p.y }))
+    const flapPoints = toSvgPoints(flapLocal)
+    flapShadowGroupRef.current?.setAttribute('transform', matrix)
+    flapShadowPolygonRef.current?.setAttribute('points', flapPoints)
+    flapShadeGroupRef.current?.setAttribute('transform', matrix)
+    flapPaperRef.current?.setAttribute('points', flapPoints)
+    flapShadePolygonRef.current?.setAttribute('points', flapPoints)
     const flapMid: Point = { x: W - mid.x, y: mid.y }
     setGradient(flapGradientRef.current, flapMid, { x: flapMid.x + n.x * depth, y: flapMid.y - n.y * depth })
+
+    if (back.el) {
+      // The incoming page sits at its own position; shift the transform so it lands on the sheet.
+      back.el.style.transform = `matrix(${a}, ${b}, ${c}, ${e}, ${tx + back.dx}, ${ty + back.dy})`
+      back.el.style.clipPath = toClipPath(flapLocal)
+    }
   }
 
   function animateTo(target: number, committed: boolean, easing: (t: number) => number, duration: number) {
@@ -198,21 +223,45 @@ const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverl
     },
   }))
 
-  useEffect(() => {
+  // Lift the outgoing pages above the (already visible) incoming spread before the first paint.
+  useLayoutEffect(() => {
+    const backEl = backRect ? resolveBack() : null
+    if (backEl && backRect) {
+      backRef.current = { el: backEl, dx: leaf.x - backRect.x, dy: leaf.y - backRect.y }
+      backEl.style.transformOrigin = '0 0'
+      backEl.style.zIndex = '30'
+      backEl.style.willChange = 'transform, clip-path'
+    }
+    front.style.visibility = 'visible'
+    front.style.zIndex = '25'
+    front.style.willChange = 'clip-path'
+    if (still) {
+      still.style.visibility = 'visible'
+      still.style.zIndex = '21'
+    }
     const state = stateRef.current
     apply(state.t, state.lift)
-    if (mode === 'auto') animateTo(1, true, state.t > 0 ? easeOut : easeInOut, AUTO_DURATION_MS)
-    return () => cancelAnimationFrame(state.frame)
+    return () => {
+      cancelAnimationFrame(state.frame)
+      restoreStyles(front, ['visibility', 'z-index', 'clip-path', 'will-change'])
+      restoreStyles(still, ['visibility', 'z-index'])
+      restoreStyles(backRef.current.el, ['transform', 'transform-origin', 'clip-path', 'z-index', 'will-change'])
+    }
+    // Elements and geometry are fixed for the lifetime of one turn (the overlay is keyed per turn).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    if (mode !== 'auto' || stateRef.current.finished) return
+    animateTo(1, true, stateRef.current.t > 0 ? easeOut : easeInOut, AUTO_DURATION_MS)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode])
 
-  const place = (rect: PageCurlRect) => ({ left: rect.x, top: rect.y, width: rect.width, height: rect.height })
+  const place = { left: leaf.x, top: leaf.y, width: W, height: H, visibility: 'hidden' as const }
 
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
-      {still ? <div className="absolute" style={place(still.rect)}>{still.node}</div> : null}
-
-      <svg ref={revealRef} className="absolute overflow-visible" style={{ ...place(leaf), visibility: 'hidden' }}>
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <svg ref={revealRef} className="absolute overflow-visible" style={{ ...place, zIndex: 20 }}>
         <defs>
           <linearGradient id={`${gradientId}-reveal`} ref={revealGradientRef} gradientUnits="userSpaceOnUse">
             <stop offset="0" stopColor="rgb(40,30,12)" stopOpacity="0.42" />
@@ -223,39 +272,42 @@ const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverl
         <polygon ref={revealPolygonRef} fill={`url(#${gradientId}-reveal)`} />
       </svg>
 
-      <div ref={frontRef} className="absolute" style={place(leaf)}>
-        {front}
-        <svg className="absolute inset-0 h-full w-full">
-          <defs>
-            <linearGradient id={`${gradientId}-front`} ref={frontGradientRef} gradientUnits="userSpaceOnUse">
-              <stop offset="0" stopColor="rgb(40,30,12)" stopOpacity="0.22" />
-              <stop offset="1" stopColor="rgb(40,30,12)" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <rect width="100%" height="100%" fill={`url(#${gradientId}-front)`} />
-        </svg>
-      </div>
+      <svg ref={frontShadeRef} className="absolute" style={{ ...place, zIndex: 26 }}>
+        <defs>
+          <linearGradient id={`${gradientId}-front`} ref={frontGradientRef} gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="rgb(40,30,12)" stopOpacity="0.22" />
+            <stop offset="1" stopColor="rgb(40,30,12)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill={`url(#${gradientId}-front)`} />
+      </svg>
 
-      <div
-        ref={flapRef}
-        className="absolute"
-        style={{ ...place(leaf), visibility: 'hidden', filter: 'drop-shadow(0 0 14px rgba(40,30,12,0.32))' }}
-      >
-        <div ref={flapInnerRef} className="absolute left-0 top-0" style={{ width: W, height: H, transformOrigin: '0 0' }}>
-          {back}
-          <svg className="absolute inset-0 h-full w-full">
-            <defs>
-              <linearGradient id={`${gradientId}-flap`} ref={flapGradientRef} gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="rgb(40,30,12)" stopOpacity="0.26" />
-                <stop offset="0.06" stopColor="#ffffff" stopOpacity="0.4" />
-                <stop offset="0.3" stopColor="#ffffff" stopOpacity="0.1" />
-                <stop offset="1" stopColor="rgb(40,30,12)" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill={`url(#${gradientId}-flap)`} />
-          </svg>
-        </div>
-      </div>
+      <svg ref={flapShadowRef} className="absolute overflow-visible" style={{ ...place, zIndex: 29 }}>
+        <defs>
+          <filter id={`${gradientId}-blur`} x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="9" />
+          </filter>
+        </defs>
+        <g ref={flapShadowGroupRef}>
+          <polygon ref={flapShadowPolygonRef} fill="rgb(40,30,12)" fillOpacity="0.3" filter={`url(#${gradientId}-blur)`} />
+        </g>
+      </svg>
+
+      <svg ref={flapShadeRef} className="absolute overflow-visible" style={{ ...place, zIndex: 31 }}>
+        <defs>
+          <linearGradient id={`${gradientId}-flap`} ref={flapGradientRef} gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="rgb(40,30,12)" stopOpacity="0.26" />
+            <stop offset="0.06" stopColor="#ffffff" stopOpacity="0.4" />
+            <stop offset="0.3" stopColor="#ffffff" stopOpacity="0.1" />
+            <stop offset="1" stopColor="rgb(40,30,12)" stopOpacity="0.1" />
+          </linearGradient>
+        </defs>
+        <g ref={flapShadeGroupRef}>
+          {/* A single page has nothing printed on its back: blank paper. */}
+          <polygon ref={flapPaperRef} fill="#fffdf6" style={{ display: still === null ? undefined : 'none' }} />
+          <polygon ref={flapShadePolygonRef} fill={`url(#${gradientId}-flap)`} />
+        </g>
+      </svg>
     </div>
   )
 })

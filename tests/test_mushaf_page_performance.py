@@ -175,3 +175,26 @@ def test_reader_does_not_prefetch_the_database_home_route() -> None:
 
         context.close()
         browser.close()
+
+
+def test_prefetched_turn_reuses_the_mounted_neighbor_page() -> None:
+    """Rendering neighbours only on demand would rebuild the next page's DOM on every turn."""
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        context = browser.new_context(
+            viewport={"width": 1440, "height": 900},
+            reduced_motion="reduce",
+        )
+        page = context.new_page()
+        _open_mushaf(page, 105)
+        next_spread = "[data-page-slot-group='107']"
+        page.wait_for_selector(f"{next_spread} [data-page-no='107'] [data-role='line-words']", state="attached", timeout=10_000)
+        page.evaluate(f"() => {{ document.querySelector(\"{next_spread}\").__mountedBeforeTurn = true }}")
+
+        page.get_by_label("الصفحة التالية").first.click()
+        page.wait_for_selector(f"{next_spread}[data-page-slot-current]", timeout=5_000)
+
+        assert page.evaluate(f"() => document.querySelector(\"{next_spread}\").__mountedBeforeTurn === true")
+
+        context.close()
+        browser.close()

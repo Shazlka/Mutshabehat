@@ -112,7 +112,7 @@ for (const token of [
 mustInclude(mutshabehatAdapter, 'NEXT_PUBLIC_ENABLE_MUSHAF_MUTSHABEHAT_LINK', 'Mutshabehat adapter')
 
 for (const token of [
-  'onContextMenu={(event) => openWordContextMenu(event, word)}',
+  'onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}',
   'onContextMenu={(event) => openAyahContextMenu(event, word.ayahKey)}',
   'async function persistAnnotation',
   'async function deleteAnnotation',

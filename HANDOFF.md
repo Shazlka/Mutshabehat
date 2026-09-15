@@ -46,6 +46,8 @@ notes localStorage effect) + unused-var warnings; `src/app/(app)/page.tsx` and `
 
 | Commit | Change |
 |---|---|
+| (this commit) | **Mushaf page turns ~1 ms**: mounted page slots (`MushafPageSlot`, memoized) for current ± one page/spread, turn = visibility swap; curl animates real page elements. Finishes the Codex task below. |
+| `2ef9d83`, `272e4d3` | (Codex) Readable fallback text before the QCF font, page metadata bundled with page words, in-flight request de-dup, initial font preload, no home prefetch; `tests/test_mushaf_page_performance.py`. |
 | `5ab1b0c` | **Groups list card views** (≥1024px): `?view=collapsed` (equal cards, click expands full row) and `?view=magazine` (dense mosaic of hero/tall/wide/regular/short tiles, sized by text length + stable hash). 24 per page, full width; phones fall back to the list. `src/components/GroupCardGrid.tsx`, `SortBar.tsx` (layout switch), `src/app/(app)/page.tsx`. |
 | `fb49712` | **Mushaf iBooks-style page curl** + drag-to-turn. `src/app/mushaf-1441/_components/PageCurlOverlay.tsx` (fold geometry, clip-path/matrix/SVG gradients per rAF frame). Viewer: `measurePageTurn`, `goToPage(page, ayahKey, { animate, turnMode })`, pointer drag handlers on `<main>` (`touch-action: none`), `turnPages` keeps highlights on curling sheets. |
 | `329b503` | **Test mode**: words mode (hidden differing word), whole-Quran source (`src/lib/test-questions-quran.ts`), answers saved via `POST /api/test/answers` → table `test_answers`; stats tab section `TestAnswerStats.tsx` via RPC `get_test_answer_stats`. Migration `20260915180000_test_answers.sql` **applied** (backup `pre-test-answers-20260915.dump`). |
@@ -68,6 +70,14 @@ Applied migrations this session: `20260915120000_perf_save_search_surahs.sql`, `
 - Magazine view: sizes are heuristic (`magazineSize` in `GroupCardGrid.tsx`); the last row can be ragged.
 - The Impeccable design hook flags literal colours in `Mushaf1441Viewer.tsx` because there is no `DESIGN.md`. They were classified as intentional/pre-existing, not suppressed. The user has not yet chosen between `/impeccable document` (create DESIGN.md) or ignore-values.
 - Mac Mini load: earlier outages came from overload (stale agy/claude processes, old dev servers). If the DB is slow or GoTrue 504s, check `top` / stale processes first and ask the user before killing anything.
+
+## 5b. Mushaf rendering architecture (read before touching the reader)
+
+- The stage renders **slot groups** (a page, or a spread keyed by its right page) for the current group and one neighbour on each side (`slotGroups`, from `useDeferredValue(pageNumber)`), stacked in one grid cell; only `[data-page-slot-current]` is visible. Hidden groups are `inert` + `aria-hidden`.
+- Each page is a `MushafPageSlot` (`memo` with a custom comparator that ignores the `render` prop). Keep slot props stable: use the session-wide maps (`slotHighlightByAyahKey`, `slotAnnotationsByWordId`, `slotAnnotationsByAyahKey`), never per-turn subsets, or every mounted page re-renders on each turn.
+- Handlers inside page JSX must go through `liveRef.current.*` (memoized slots would otherwise keep stale closures).
+- The curl (`PageCurlOverlay`) mutates the real page elements' `clip-path`/`transform`/`z-index` during a turn and restores them on unmount; `measurePageTurn` passes the elements and rects measured before the state change.
+- Measuring: a prefetched turn is ~1 ms render→commit, 0 slot renders. Re-check after reader changes (instrument a render counter locally, don't ship it).
 
 ## 6. Key files map (recently touched)
 

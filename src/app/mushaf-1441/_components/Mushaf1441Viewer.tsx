@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, memo, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import ReactDOM from 'react-dom'
 import Link from 'next/link'
 import PageCurlOverlay, { type PageCurlHandle, type PageCurlRect } from './PageCurlOverlay'
@@ -209,19 +209,53 @@ const MUSHAF_WORD_BAND_HEIGHT = `calc(${MUSHAF_QCF_LINE_HEIGHT}em + 0.16em)`
 const DRAG_START_PX = 12
 
 type PageLayout = 'single' | 'right' | 'left'
-type TurnSheet = { pageNo: number; page: MushafPage | null; metadata: Mushaf1441PageMetadata | null; layout: PageLayout }
 type PageTurn = {
   id: number
   mode: 'auto' | 'drag'
   fromPage: number
+  /** Slot group (page, or a spread's right page) the turn starts from; kept mounted until it ends. */
+  fromGroup: number
   leaf: PageCurlRect
   peelFrom: 'left' | 'right'
   travel: number
-  front: TurnSheet
-  /** Page printed on the back of the turning sheet (spread only; a single page shows its own see-through). */
-  back: { pageNo: number; layout: PageLayout } | null
-  still: (TurnSheet & { rect: PageCurlRect }) | null
+  front: HTMLElement
+  still: HTMLElement | null
+  /** Incoming page printed on the back of the turning sheet (spread only; a single page's back is paper). */
+  backPageNo: number | null
+  /** Where that incoming page sits (the other half of the spread), measured before the turn. */
+  backRect: PageCurlRect | null
 }
+
+type MushafPageSlotProps = {
+  pageNo: number
+  layout: PageLayout
+  page: MushafPage | null
+  metadata: Mushaf1441PageMetadata | null
+  fontStatus: QcfFontStatus | undefined
+  highlights: unknown
+  annotations: unknown
+  selection: string
+  loading: boolean
+  render: () => ReactNode
+}
+
+// One mushaf page. It re-renders only when that page's own inputs change, so turning to an
+// already-mounted neighbour is a visibility swap instead of rebuilding hundreds of words.
+// `render` is intentionally excluded from the comparison: its output depends only on the other props.
+const MushafPageSlot = memo(
+  function MushafPageSlot({ render }: MushafPageSlotProps) {
+    return render()
+  },
+  (prev, next) => prev.pageNo === next.pageNo
+    && prev.layout === next.layout
+    && prev.page === next.page
+    && prev.metadata === next.metadata
+    && prev.fontStatus === next.fontStatus
+    && prev.highlights === next.highlights
+    && prev.annotations === next.annotations
+    && prev.selection === next.selection
+    && prev.loading === next.loading,
+)
 const LONG_PRESS_MS = 480
 const SIGN_IN_HREF = '/login?next=/mushaf-1441'
 const BASMALA_TEXT = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'
@@ -377,6 +411,11 @@ export default function Mushaf1441Viewer({
   const curlRef = useRef<PageCurlHandle | null>(null)
   const dragRef = useRef<{ pointerId: number; startX: number; startY: number; lastX: number; lastTime: number; velocity: number; direction: 1 | -1 | 0; progress: number; width: number } | null>(null)
   const suppressClickRef = useRef(false)
+  // Page slots are memoized, so their event handlers call through this ref to reach the latest closures.
+  const liveRef = useRef({ handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress })
+  useLayoutEffect(() => {
+    liveRef.current = { handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress }
+  })
   const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const longPressFiredRef = useRef(false)
   // Timestamp of the last touch end, used to suppress tap-to-select on touch
@@ -489,8 +528,9 @@ export default function Mushaf1441Viewer({
     void prefetchPage(pageNumber + 1)
     void prefetchPage(pageNumber - 1)
     if (isSpread) {
-      void prefetchPage(pageNumber + 2)
-      void prefetchPage(pageNumber - 2)
+      // Both pages of the next and previous spreads, so their mounted slots are ready before a turn.
+      const spreadStart = pageNumber % 2 === 1 ? pageNumber : pageNumber - 1
+      for (const page of [spreadStart + 2, spreadStart + 3, spreadStart - 2, spreadStart - 1]) void prefetchPage(page)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, isSpread])
@@ -530,28 +570,34 @@ export default function Mushaf1441Viewer({
   const companionPageNumber = isSpread ? (pageNumber % 2 === 1 ? pageNumber + 1 : pageNumber - 1) : null
   const hasCompanion = companionPageNumber !== null && companionPageNumber >= MIN_PAGE && companionPageNumber <= MAX_PAGE
   const companionPage = hasCompanion ? pageCache[companionPageNumber as number] ?? null : null
-  const companionPageMetadata = hasCompanion ? pageMetadataCache[companionPageNumber as number] ?? null : null
   const isQcfFontLoaded = qcfFontStatus[pageNumber] === 'loaded'
   const isQcfFontFailed = qcfFontStatus[pageNumber] === 'error'
   const selectedSurah = surahOptions.find((surah) => surah.surahNumber === selectedSurahNumber) ?? surahOptions[0]
   const selectedSurahAyahCount = selectedSurah?.ayahCount ?? 1
-  // While a page curls away its sheets are still on screen, so they keep their highlights.
-  const turnPages = useMemo(
-    () => [pageTurn?.front.page, pageTurn?.still?.page].filter(Boolean) as MushafPage[],
-    [pageTurn],
-  )
+  // Mounted page slots: the current page/spread plus its neighbours on each side (computed from the
+  // deferred page number, so newly needed neighbours mount after the turn has painted).
+  const deferredPageNumber = useDeferredValue(pageNumber)
+  const slotGroups = useMemo(() => {
+    const groupOf = (page: number) => (isSpread ? (page % 2 === 1 ? page : page - 1) : page)
+    const step = isSpread ? 2 : 1
+    const lastGroup = isSpread ? MAX_PAGE - 1 : MAX_PAGE
+    const center = groupOf(deferredPageNumber)
+    const groups = new Set([center - step, center, center + step, groupOf(pageNumber)])
+    if (pageTurn) groups.add(pageTurn.fromGroup)
+    return [...groups].filter((group) => group >= MIN_PAGE && group <= lastGroup).sort((a, b) => a - b)
+  }, [deferredPageNumber, isSpread, pageNumber, pageTurn])
   const ayahKeys = useMemo(() => {
     const keys = new Set<string>()
-    for (const shownPage of [visiblePage, companionPage, ...turnPages]) {
+    for (const shownPage of [visiblePage, companionPage]) {
       for (const line of shownPage?.lines ?? []) {
         for (const word of line.words) keys.add(word.ayahKey)
       }
     }
     return [...keys]
-  }, [visiblePage, companionPage, turnPages])
+  }, [visiblePage, companionPage])
   const lastWordIdByAyah = useMemo(() => {
     const lastWords = new Map<string, string>()
-    const shownPages = [visiblePage, companionPage, ...turnPages].filter(Boolean) as MushafPage[]
+    const shownPages = [visiblePage, companionPage].filter(Boolean) as MushafPage[]
     shownPages.sort((a, b) => a.pageNumber - b.pageNumber)
     for (const shownPage of shownPages) {
       for (const line of shownPage.lines) {
@@ -562,10 +608,10 @@ export default function Mushaf1441Viewer({
     }
 
     return lastWords
-  }, [visiblePage, companionPage, turnPages])
+  }, [visiblePage, companionPage])
   const pageWordOrder = useMemo(() => {
     const order = new Map<string, number>()
-    const shownPages = [visiblePage, companionPage, ...turnPages].filter(Boolean) as MushafPage[]
+    const shownPages = [visiblePage, companionPage].filter(Boolean) as MushafPage[]
     shownPages.sort((a, b) => a.pageNumber - b.pageNumber)
 
     let index = 0
@@ -579,14 +625,12 @@ export default function Mushaf1441Viewer({
     }
 
     return order
-  }, [visiblePage, companionPage, turnPages])
+  }, [visiblePage, companionPage])
   const pageAnnotations = useMemo(
     () => annotations.filter((annotation) => (
-      annotation.pageNumber === pageNumber
-      || annotation.pageNumber === companionPageNumber
-      || turnPages.some((page) => page.pageNumber === annotation.pageNumber)
+      annotation.pageNumber === pageNumber || annotation.pageNumber === companionPageNumber
     )),
-    [annotations, pageNumber, companionPageNumber, turnPages]
+    [annotations, pageNumber, companionPageNumber]
   )
   const annotationsForSelectedTarget = useMemo(() => {
     if (!selectedAyahKey) return []
@@ -624,17 +668,6 @@ export default function Mushaf1441Viewer({
     () => annotationsForSelectedTarget.filter((annotation) => annotation.annotationType === 'favorite'),
     [annotationsForSelectedTarget]
   )
-  const annotationsByWordId = useMemo(() => {
-    const map = new Map<string, MushafAnnotation[]>()
-    for (const annotation of pageAnnotations) {
-      if (annotation.wordId) {
-        const existing = map.get(annotation.wordId) ?? []
-        existing.push(annotation)
-        map.set(annotation.wordId, existing)
-      }
-    }
-    return map
-  }, [pageAnnotations])
   const annotationsByAyahKey = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
     for (const annotation of pageAnnotations) {
@@ -666,6 +699,32 @@ export default function Mushaf1441Viewer({
     }
     return map
   }, [pageHighlights])
+  // Page slots read whole-session maps (not the shown-pages subsets above), so a page's output
+  // only changes when its own data does and pages stay memoized across turns.
+  const allHighlightByAyahKey = useMemo(() => {
+    const map = new Map<string, MutshabehatAyahLink>()
+    for (const highlight of allMutshabehatHighlights ?? []) {
+      if (!map.has(highlight.ayahKey)) map.set(highlight.ayahKey, highlight)
+    }
+    return map
+  }, [allMutshabehatHighlights])
+  // Only the offline sample source is page-scoped; the real link list is session-wide.
+  const slotHighlightByAyahKey = mutshabehatLinkEnabled ? allHighlightByAyahKey : mutshabehatHighlightByAyahKey
+  const slotAnnotationsByWordId = useMemo(() => {
+    const map = new Map<string, MushafAnnotation[]>()
+    for (const annotation of annotations) {
+      if (!annotation.wordId) continue
+      map.set(annotation.wordId, [...(map.get(annotation.wordId) ?? []), annotation])
+    }
+    return map
+  }, [annotations])
+  const slotAnnotationsByAyahKey = useMemo(() => {
+    const map = new Map<string, MushafAnnotation[]>()
+    for (const annotation of annotations) {
+      map.set(annotation.ayahKey, [...(map.get(annotation.ayahKey) ?? []), annotation])
+    }
+    return map
+  }, [annotations])
   const mutshabehatPanelLinks = useMemo(() => (
     mutshabehatPanelAyahKey
       ? pageHighlights.filter((highlight) => highlight.ayahKey === mutshabehatPanelAyahKey).length > 0
@@ -706,55 +765,41 @@ export default function Mushaf1441Viewer({
     }
   }, [allMutshabehatHighlights, mutshabehatLinkEnabled])
 
-  // Measure the on-screen sheets before navigating so the outgoing page can curl away over the new one.
+  function slotGroupOf(page: number) {
+    return isSpread ? (page % 2 === 1 ? page : page - 1) : page
+  }
+
+  // Grab the on-screen page elements before navigating so the outgoing page can curl away over the new one.
   function measurePageTurn(fromPage: number, toPage: number): Omit<PageTurn, 'id' | 'mode'> | null {
     if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null
     const main = pageMainRef.current
-    const stage = pageStageRef.current
-    if (!main || !stage) return null
+    const group = pageStageRef.current?.querySelector<HTMLElement>('[data-page-slot-current]')
+    const fromGroup = slotGroupOf(fromPage)
+    if (!main || !group || fromGroup === slotGroupOf(toPage)) return null
     const origin = main.getBoundingClientRect()
-    const rectOf = (layout: PageLayout): PageCurlRect | null => {
-      const el = stage.querySelector<HTMLElement>(`[data-mushaf-leaf="${layout}"]`)
-      if (!el) return null
+    const leafOf = (layout: PageLayout) => group.querySelector<HTMLElement>(`[data-mushaf-leaf="${layout}"]`)
+    const rectOf = (el: HTMLElement): PageCurlRect => {
       const r = el.getBoundingClientRect()
       return { x: r.left - origin.left, y: r.top - origin.top, width: r.width, height: r.height }
     }
-    const sheet = (pageNo: number, layout: PageLayout): TurnSheet => ({
-      pageNo,
-      layout,
-      page: pageCache[pageNo] ?? (currentPage?.pageNumber === pageNo ? currentPage : null),
-      metadata: pageMetadataCache[pageNo] ?? (currentPageMetadata.pageNumber === pageNo ? currentPageMetadata : null),
-    })
     const forward = toPage > fromPage
 
-    const rightRect = rectOf('right')
-    const leftRect = rectOf('left')
-    if (rightRect && leftRect) {
-      const fromRight = fromPage % 2 === 1 ? fromPage : fromPage - 1
-      const toRight = toPage % 2 === 1 ? toPage : toPage - 1
-      if (fromRight === toRight) return null
+    const right = leafOf('right')
+    const left = leafOf('left')
+    if (right && left) {
+      const rightRect = rectOf(right)
+      const leftRect = rectOf(left)
       const gap = Math.max(0, rightRect.x - (leftRect.x + leftRect.width))
+      const toRight = slotGroupOf(toPage)
       // Forward lifts the left-hand page over the spine; back lifts the right-hand page.
       return forward
-        ? {
-            fromPage, leaf: leftRect, peelFrom: 'left', travel: leftRect.width * 2 + gap,
-            front: sheet(fromRight + 1, 'left'),
-            back: { pageNo: toRight, layout: 'right' },
-            still: { ...sheet(fromRight, 'right'), rect: rightRect },
-          }
-        : {
-            fromPage, leaf: rightRect, peelFrom: 'right', travel: rightRect.width * 2 + gap,
-            front: sheet(fromRight, 'right'),
-            back: { pageNo: toRight + 1, layout: 'left' },
-            still: { ...sheet(fromRight + 1, 'left'), rect: leftRect },
-          }
+        ? { fromPage, fromGroup, leaf: leftRect, peelFrom: 'left', travel: leftRect.width * 2 + gap, front: left, still: right, backPageNo: toRight, backRect: rightRect }
+        : { fromPage, fromGroup, leaf: rightRect, peelFrom: 'right', travel: rightRect.width * 2 + gap, front: right, still: left, backPageNo: toRight + 1, backRect: leftRect }
     }
-    const singleRect = rectOf('single')
-    if (!singleRect) return null
-    return {
-      fromPage, leaf: singleRect, peelFrom: forward ? 'left' : 'right', travel: singleRect.width * 2,
-      front: sheet(fromPage, 'single'), back: null, still: null,
-    }
+    const single = leafOf('single')
+    if (!single) return null
+    const rect = rectOf(single)
+    return { fromPage, fromGroup, leaf: rect, peelFrom: forward ? 'left' : 'right', travel: rect.width * 2, front: single, still: null, backPageNo: null, backRect: null }
   }
 
   async function goToPage(nextPage: number, targetAyahKey?: string, options: { animate?: boolean; turnMode?: 'auto' | 'drag' } = {}) {
@@ -1022,7 +1067,7 @@ export default function Mushaf1441Viewer({
   }
 
   function stageLeafWidth() {
-    const el = pageStageRef.current?.querySelector<HTMLElement>('[data-mushaf-leaf]')
+    const el = pageStageRef.current?.querySelector<HTMLElement>('[data-page-slot-current] [data-mushaf-leaf]')
     return Math.max(1, el?.getBoundingClientRect().width ?? 1)
   }
 
@@ -1133,21 +1178,21 @@ export default function Mushaf1441Viewer({
         setAnnotationSyncAvailable(false)
         setNeedsSignIn(true)
         setAnnotationStatus('سجّل الدخول لحفظ التمييز والملاحظات والإشارات والمفضلة.')
-        setAnnotations([])
+        setAnnotations((current) => (current.length ? [] : current))
         return
       }
       if (response.status === 501) {
         setAnnotationSyncAvailable(false)
         setAnnotationStatus('جدول Supabase الخاص بالمصحف غير مفعل بعد.')
         setAnnotationError(await readPreviewApiError(response, 'جدول Supabase الخاص بالمصحف غير مفعل بعد.'))
-        setAnnotations([])
+        setAnnotations((current) => (current.length ? [] : current))
         return
       }
       if (response.status === 503) {
         setAnnotationSyncAvailable(false)
         setAnnotationStatus('تعذر الاتصال بإعدادات Supabase للمصحف.')
         setAnnotationError(await readPreviewApiError(response, 'تعذر تحميل الملاحظات من Supabase.'))
-        setAnnotations([])
+        setAnnotations((current) => (current.length ? [] : current))
         return
       }
       if (!response.ok) {
@@ -1157,7 +1202,13 @@ export default function Mushaf1441Viewer({
 
       const payload = await response.json() as { annotations?: MushafAnnotation[] }
       const loaded = Array.isArray(payload.annotations) ? payload.annotations : []
-      setAnnotations((current) => [...current.filter((annotation) => annotation.pageNumber !== nextPage), ...loaded])
+      setAnnotations((current) => {
+        const existing = current.filter((annotation) => annotation.pageNumber === nextPage)
+        const unchanged = existing.length === loaded.length
+          && existing.every((annotation, index) => annotation.id === loaded[index].id && annotation.updatedAt === loaded[index].updatedAt)
+        // Keep the same array when nothing changed, so memoized pages don't re-render on every turn.
+        return unchanged ? current : [...current.filter((annotation) => annotation.pageNumber !== nextPage), ...loaded]
+      })
       setAnnotationSyncAvailable(true)
       setNeedsSignIn(false)
     } catch {
@@ -1374,12 +1425,12 @@ export default function Mushaf1441Viewer({
     }
   }
 
-  function isWordInsideAnnotationRange(annotation: MushafAnnotation, word: MushafWord) {
+  function isWordInsideAnnotationRange(annotation: MushafAnnotation, word: MushafWord, wordOrder: Map<string, number> = pageWordOrder) {
     if (annotation.targetType !== 'word-range' || !annotation.wordRangeStartId || !annotation.wordRangeEndId) return false
 
-    const startIndex = pageWordOrder.get(annotation.wordRangeStartId)
-    const endIndex = pageWordOrder.get(annotation.wordRangeEndId)
-    const wordIndex = pageWordOrder.get(word.id)
+    const startIndex = wordOrder.get(annotation.wordRangeStartId)
+    const endIndex = wordOrder.get(annotation.wordRangeEndId)
+    const wordIndex = wordOrder.get(word.id)
     if (startIndex === undefined || endIndex === undefined || wordIndex === undefined) return false
 
     const min = Math.min(startIndex, endIndex)
@@ -1590,33 +1641,35 @@ export default function Mushaf1441Viewer({
     )
   }
 
-  function findHighlightAnnotation(word: MushafWord) {
-    const wordHighlightAnnotation = (annotationsByWordId.get(word.id) ?? [])
+  function findHighlightAnnotation(word: MushafWord, wordOrder: Map<string, number>) {
+    const wordHighlightAnnotation = (slotAnnotationsByWordId.get(word.id) ?? [])
       .find((annotation) => annotation.annotationType === 'highlight')
-    const rangeHighlightAnnotation = pageAnnotations.find((annotation) => (
-      annotation.annotationType === 'highlight' && isWordInsideAnnotationRange(annotation, word)
+    const rangeHighlightAnnotation = annotations.find((annotation) => (
+      annotation.pageNumber === word.pageNumber
+      && annotation.annotationType === 'highlight'
+      && isWordInsideAnnotationRange(annotation, word, wordOrder)
     ))
-    const ayahHighlightAnnotation = (annotationsByAyahKey.get(word.ayahKey) ?? []).find((annotation) => (
+    const ayahHighlightAnnotation = (slotAnnotationsByAyahKey.get(word.ayahKey) ?? []).find((annotation) => (
       annotation.annotationType === 'highlight' && annotation.targetType === 'ayah'
     ))
     return wordHighlightAnnotation ?? rangeHighlightAnnotation ?? ayahHighlightAnnotation
   }
 
   // Background a word shows (same precedence as renderQcfWord), used to colour the gaps.
-  function getWordBandColor(word: MushafWord): string | null {
-    const annotationColor = findHighlightAnnotation(word)?.backgroundColor
+  function getWordBandColor(word: MushafWord, wordOrder: Map<string, number>): string | null {
+    const annotationColor = findHighlightAnnotation(word, wordOrder)?.backgroundColor
     if (annotationColor) return annotationColor
     if (selectedAyahKey === word.ayahKey) return SELECTION_BG
-    const link = mutshabehatHighlightByAyahKey.get(word.ayahKey)
+    const link = slotHighlightByAyahKey.get(word.ayahKey)
     return link ? tintForGroup(link.groupId ?? link.ayahKey).bg : null
   }
 
   // The space between two words. On justified lines it grows to fill the line (like
   // justify-between); when both neighbours share a highlight colour the gap takes it, so an
   // ayah's highlight reads as one continuous band instead of separate word marks.
-  function renderWordGap(left: MushafWord, right: MushafWord, isCentered: boolean) {
-    const leftColor = getWordBandColor(left)
-    const color = leftColor && leftColor === getWordBandColor(right) ? leftColor : undefined
+  function renderWordGap(left: MushafWord, right: MushafWord, isCentered: boolean, wordOrder: Map<string, number>) {
+    const leftColor = getWordBandColor(left, wordOrder)
+    const color = leftColor && leftColor === getWordBandColor(right, wordOrder) ? leftColor : undefined
     return (
       <span
         aria-hidden="true"
@@ -1626,15 +1679,15 @@ export default function Mushaf1441Viewer({
     )
   }
 
-  function renderQcfWord(word: MushafWord) {
+  function renderQcfWord(word: MushafWord, wordOrder: Map<string, number>) {
     const isSelectedWord = selectedWord?.id === word.id
     const isHighlightedAyah = selectedAyahKey === word.ayahKey
-    const mutshabehatHighlight = mutshabehatHighlightByAyahKey.get(word.ayahKey)
+    const mutshabehatHighlight = slotHighlightByAyahKey.get(word.ayahKey)
     const isMutshabehatHighlighted = Boolean(mutshabehatHighlight)
     const mutshabehatTint = mutshabehatHighlight ? tintForGroup(mutshabehatHighlight.groupId ?? mutshabehatHighlight.ayahKey) : null
     const showMutshabehatTint = Boolean(mutshabehatTint) && !isSelectedWord && !isHighlightedAyah
-    const ayahAnnotations = annotationsByAyahKey.get(word.ayahKey) ?? []
-    const highlightAnnotation = findHighlightAnnotation(word)
+    const ayahAnnotations = slotAnnotationsByAyahKey.get(word.ayahKey) ?? []
+    const highlightAnnotation = findHighlightAnnotation(word, wordOrder)
     const hasAyahBookmark = ayahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasAyahFavorite = ayahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
     // QCF glyphs only with this page's own loaded font; otherwise readable Unicode text.
@@ -1656,27 +1709,27 @@ export default function Mushaf1441Viewer({
           }
           // An ayah that is in your personal mutashabihat opens its card (click or tap).
           if (isMutshabehatHighlighted) {
-            openMutshabehatPopup(word.ayahKey)
+            liveRef.current.openMutshabehatPopup(word.ayahKey)
             return
           }
           // On touch devices a tap does not open details — long-press does.
           if (Date.now() - recentTouchRef.current < 700) return
-          selectWord(word)
+          liveRef.current.selectWord(word)
         }}
-        onDoubleClick={() => void copyAyahText(word.ayahKey)}
+        onDoubleClick={() => void liveRef.current.copyAyahText(word.ayahKey)}
         onMouseEnter={() => setHoveredAyahKey(word.ayahKey)}
         onMouseLeave={() => setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))}
-        onContextMenu={(event) => openWordContextMenu(event, word)}
-        onTouchStart={(event) => startLongPress(
+        onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
+        onTouchStart={(event) => liveRef.current.startLongPress(
           { targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word },
           event,
         )}
-        onTouchMove={cancelLongPress}
+        onTouchMove={() => liveRef.current.cancelLongPress()}
         onTouchEnd={() => {
-          cancelLongPress()
+          liveRef.current.cancelLongPress()
           const now = Date.now()
           if (now - lastTapRef.current < 300) {
-            void copyAyahText(word.ayahKey)
+            void liveRef.current.copyAyahText(word.ayahKey)
             lastTapRef.current = 0
           } else {
             lastTapRef.current = now
@@ -1852,6 +1905,10 @@ export default function Mushaf1441Viewer({
         : page.lines
     const wordCounts = (page?.lines ?? []).map((line) => line.words.length).filter(Boolean).sort((a, b) => a - b)
     const typicalLineWordCount = wordCounts[Math.floor(wordCounts.length * 0.75)] ?? 0
+    const wordOrder = new Map<string, number>()
+    for (const line of page?.lines ?? []) {
+      for (const word of line.words) wordOrder.set(word.id, wordOrder.size)
+    }
 
     return (
       <div
@@ -1865,7 +1922,8 @@ export default function Mushaf1441Viewer({
           containerType: 'inline-size',
         }}
         data-mushaf-leaf={layout}
-        onClick={(event) => (layout === 'single' ? handlePageClick(event) : handleSpreadPageClick(event, layout))}
+        data-page-no={pageNo}
+        onClick={(event) => (layout === 'single' ? liveRef.current.handlePageClick(event) : liveRef.current.handleSpreadPageClick(event, layout))}
       >
         {/* Spine shading on the inner edge of a spread page */}
         {layout !== 'single' ? (
@@ -1947,8 +2005,8 @@ export default function Mushaf1441Viewer({
                     >
                       {line.words.map((word, index) => (
                         <Fragment key={word.id}>
-                          {renderQcfWord(word)}
-                          {index < line.words.length - 1 ? renderWordGap(word, line.words[index + 1], isCentered) : null}
+                          {renderQcfWord(word, wordOrder)}
+                          {index < line.words.length - 1 ? renderWordGap(word, line.words[index + 1], isCentered, wordOrder) : null}
                         </Fragment>
                       ))}
                     </div>
@@ -2886,25 +2944,44 @@ export default function Mushaf1441Viewer({
         }}
         onWheel={handleWheel}
       >
-        <div ref={pageStageRef} className="absolute inset-0 flex items-center justify-center p-0 sm:p-3">
-          {isSpread && hasCompanion ? (
-            <div dir="rtl" className="flex h-full w-full items-center justify-center gap-[3px]">
-              {(() => {
-                const rightNo = pageNumber % 2 === 1 ? pageNumber : (companionPageNumber as number)
-                const leftNo = rightNo === pageNumber ? (companionPageNumber as number) : pageNumber
-                const pageFor = (no: number) => (no === pageNumber ? visiblePage : companionPage)
-                const metadataFor = (no: number) => (no === pageNumber ? visiblePageMetadata : companionPageMetadata)
-                return (
-                  <>
-                    <Fragment key={`right-${rightNo}`}>{renderLineWords(pageFor(rightNo), rightNo, metadataFor(rightNo), 'right')}</Fragment>
-                    <Fragment key={`left-${leftNo}`}>{renderLineWords(pageFor(leftNo), leftNo, metadataFor(leftNo), 'left')}</Fragment>
-                  </>
-                )
-              })()}
-            </div>
-          ) : (
-            renderLineWords(visiblePage, pageNumber, visiblePageMetadata, 'single')
-          )}
+        <div ref={pageStageRef} className="absolute inset-0 grid grid-cols-1 grid-rows-1 p-0 sm:p-3">
+          {slotGroups.map((group) => {
+            const isCurrent = group === slotGroupOf(pageNumber)
+            const groupPages = isSpread ? [group, group + 1].filter((no) => no <= MAX_PAGE) : [group]
+            return (
+              <div
+                key={`${isSpread ? 'spread' : 'page'}-${group}`}
+                dir="rtl"
+                data-page-slot-group={group}
+                data-page-slot-current={isCurrent ? '' : undefined}
+                aria-hidden={isCurrent ? undefined : true}
+                inert={!isCurrent}
+                className={`flex min-h-0 min-w-0 items-center justify-center [grid-area:1/1] ${isSpread ? 'gap-[3px]' : ''}`}
+                style={{ visibility: isCurrent ? 'visible' : 'hidden' }}
+              >
+                {groupPages.map((no) => {
+                  const layout: PageLayout = isSpread ? (no % 2 === 1 ? 'right' : 'left') : 'single'
+                  const slotPage = pageCache[no] ?? (currentPage?.pageNumber === no ? currentPage : null)
+                  const slotMetadata = pageMetadataCache[no] ?? (currentPageMetadata.pageNumber === no ? currentPageMetadata : null)
+                  return (
+                    <MushafPageSlot
+                      key={no}
+                      pageNo={no}
+                      layout={layout}
+                      page={slotPage}
+                      metadata={slotMetadata}
+                      fontStatus={qcfFontStatus[no]}
+                      highlights={slotHighlightByAyahKey}
+                      annotations={annotations}
+                      selection={`${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}`}
+                      loading={isCurrent && isPageLoading}
+                      render={() => renderLineWords(slotPage, no, slotMetadata, layout)}
+                    />
+                  )
+                })}
+              </div>
+            )
+          })}
         </div>
         {pageTurn ? (
           <PageCurlOverlay
@@ -2914,20 +2991,12 @@ export default function Mushaf1441Viewer({
             leaf={pageTurn.leaf}
             peelFrom={pageTurn.peelFrom}
             travel={pageTurn.travel}
-            front={renderLineWords(pageTurn.front.page, pageTurn.front.pageNo, pageTurn.front.metadata, pageTurn.front.layout)}
-            back={pageTurn.back
-              ? renderLineWords(pageCache[pageTurn.back.pageNo] ?? null, pageTurn.back.pageNo, pageMetadataCache[pageTurn.back.pageNo] ?? null, pageTurn.back.layout)
-              : (
-                // A single page's back: blank paper with the printed side showing through, mirrored.
-                <div className="h-full w-full overflow-hidden bg-[#fffdf6]">
-                  <div className="h-full w-full opacity-[0.13]" style={{ transform: 'scaleX(-1)' }}>
-                    {renderLineWords(pageTurn.front.page, pageTurn.front.pageNo, pageTurn.front.metadata, pageTurn.front.layout)}
-                  </div>
-                </div>
-              )}
-            still={pageTurn.still
-              ? { rect: pageTurn.still.rect, node: renderLineWords(pageTurn.still.page, pageTurn.still.pageNo, pageTurn.still.metadata, pageTurn.still.layout) }
-              : null}
+            front={pageTurn.front}
+            still={pageTurn.still}
+            backRect={pageTurn.backRect}
+            resolveBack={() => (pageTurn.backPageNo === null
+              ? null
+              : pageStageRef.current?.querySelector<HTMLElement>(`[data-page-slot-current] [data-page-no="${pageTurn.backPageNo}"]`) ?? null)}
             onFinish={finishPageTurn}
           />
         ) : null}
