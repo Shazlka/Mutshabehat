@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
+import { cn } from '@/lib/cn'
 
 const SORTS = [
   { key: 'created',     label: 'الأحدث إضافةً' },
@@ -14,6 +15,15 @@ const VIEWS = [
   { key: 'flat',         label: 'قائمة' },
   { key: 'group-surah',  label: 'مجموع حسب السورة' },
   { key: 'titles-only',  label: 'العناوين فقط' },
+  { key: 'collapsed',    label: 'بطاقات مطوية' },
+  { key: 'magazine',     label: 'مجلة' },
+]
+
+// Quick layout switch shown on wide screens (desktop / iPad landscape), where the card views apply.
+const LAYOUTS = [
+  { key: 'flat',      label: 'قائمة',  icon: 'M4 6h16M4 12h16M4 18h16' },
+  { key: 'collapsed', label: 'مطوية',  icon: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z' },
+  { key: 'magazine',  label: 'مجلة',   icon: 'M4 4h9v10H4zM15 4h5v6h-5zM15 12h5v8h-5zM4 16h9v4H4z' },
 ]
 
 export default function SortBar() {
@@ -45,6 +55,22 @@ export default function SortBar() {
           {VIEWS.map((v) => <option key={v.key} value={v.key}>{v.label}</option>)}
         </select>
       </label>
+      <div role="group" aria-label="تخطيط البطاقات"
+        className="hidden lg:inline-flex items-center p-0.5 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)]">
+        {LAYOUTS.map((layout) => {
+          const active = view === layout.key
+          return (
+            <button key={layout.key} type="button" aria-pressed={active} onClick={() => setParam('view', layout.key, 'flat')}
+              className={cn('inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[12px] font-bold tap-shrink transition-colors',
+                active ? 'bg-[var(--color-primary)] text-[var(--color-paper)]' : 'text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]')}>
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+                <path d={layout.icon} />
+              </svg>
+              {layout.label}
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -9,6 +9,7 @@ import SurahFilter from '@/components/SurahFilter'
 import Pagination from '@/components/Pagination'
 import ColorLegend from '@/components/ColorLegend'
 import MainGroupSwipePager from '@/components/MainGroupSwipePager'
+import GroupCardGrid from '@/components/GroupCardGrid'
 
 type SP = Promise<{ page?: string; filter?: string; q?: string; sort?: string; view?: string; surah?: string }>
 
@@ -54,11 +55,13 @@ const TITLES_ONLY_SELECT = `id, title, color, status, favorite, completed`
 export default async function HomePage({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams
   const page   = Math.max(1, parseInt(sp.page ?? '1', 10))
-  const limit  = 12
   const filter = sp.filter ?? ''
   const q      = sp.q ?? ''
   const sort   = sp.sort ?? 'created'
   const view   = sp.view ?? 'flat'
+  // Card views fill a wide screen, so they show more groups per page.
+  const isCardView = view === 'collapsed' || view === 'magazine'
+  const limit  = isCardView ? 24 : 12
   const surah  = sp.surah ?? ''
 
   const supabase = await createServerSupabaseClient()
@@ -279,7 +282,7 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-3 md:px-8 py-5 md:py-14">
+    <div className={`${isCardView ? 'max-w-3xl lg:max-w-none lg:px-10' : 'max-w-3xl'} mx-auto px-3 md:px-8 py-5 md:py-14`}>
       {/* Header */}
       <header className="mb-6 md:mb-10">
         <h1 className="text-[22px] md:text-[32px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
@@ -340,6 +343,16 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
           groups={titleOnlyGroups}
           startIndex={(page - 1) * limit + 1}
         />
+      ) : isCardView ? (
+        // Collapsed / magazine cards on wide screens; phones and portrait tablets keep the list
+        <>
+          <div className="lg:hidden">
+            <MainGroupSwipePager mode="full" groups={sorted} startIndex={(page - 1) * limit + 1} />
+          </div>
+          <div className="hidden lg:block">
+            <GroupCardGrid mode={view as 'collapsed' | 'magazine'} groups={sorted} startIndex={(page - 1) * limit + 1} />
+          </div>
+        </>
       ) : (
         // Flat view
         <MainGroupSwipePager
