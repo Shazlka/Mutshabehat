@@ -52,13 +52,13 @@ const crudVerifier = read(paths.crudVerifier, 'Supabase CRUD verifier')
 
 for (const token of [
   'Mushaf1441Viewer',
-  'loadMushaf1441Page(1)',
+  'loadMushaf1441Page(initialPageNumber)',
   'initialPageMetadata',
   'MUSHAF_1441_SURAH_OPTIONS',
 ]) {
   mustInclude(page, token, 'route')
 }
-mustInclude(proxy, '/mushaf-1441', 'proxy')
+mustInclude(proxy, 'export const config', 'proxy')
 mustInclude(pageWordsApi, 'loadMushaf1441Page', 'page words API')
 mustInclude(pageLoader, 'MUSHAF_1441_PAGE_COUNT = 604', 'page loader')
 mustInclude(pageLoader, 'per-page QCF V2 word fixtures', 'page loader')

@@ -2,8 +2,8 @@
   "source": {
     "name": "Quran.com API v4 verses by page words",
     "url": "https://api.quran.com/api/v4/verses/by_page/{page}?words=true&word_fields=code_v2,text_qpc_hafs,text_uthmani&mushaf=1",
-    "fetchedAt": "2026-06-27T13:21:05.481Z",
-    "notes": "Verified source fixture for Mushaf page -> line -> word/token rendering. Uses QCF V2 glyph codes and Quran.com line_number values; empty line slots are preserved to keep 15-line page architecture."
+    "fetchedAt": "2026-09-15T09:17:55.188Z",
+    "notes": "Verified source fixture for Mushaf page -> line -> word/token rendering. Uses QCF V2 glyph codes; words are placed by their own Quran.com page_number + line_number (a verse can span pages); empty line slots are preserved to keep 15-line page architecture."
   },
   "pageCount": 604,
   "lineSlotsPerPage": 15,
@@ -1464,46 +1464,46 @@
     },
     {
       "pageNumber": 120,
-      "tokenCount": 132,
+      "tokenCount": 156,
       "ayahKeys": [
         "5:71",
         "5:72",
         "5:73",
         "5:74",
         "5:75",
-        "5:76"
+        "5:76",
+        "5:77"
       ]
     },
     {
       "pageNumber": 121,
-      "tokenCount": 116,
+      "tokenCount": 114,
       "ayahKeys": [
-        "5:77",
         "5:78",
         "5:79",
         "5:80",
         "5:81",
-        "5:82"
+        "5:82",
+        "5:83"
       ]
     },
     {
       "pageNumber": 122,
-      "tokenCount": 139,
+      "tokenCount": 133,
       "ayahKeys": [
-        "5:83",
         "5:84",
         "5:85",
         "5:86",
         "5:87",
         "5:88",
-        "5:89"
+        "5:89",
+        "5:90"
       ]
     },
     {
       "pageNumber": 123,
-      "tokenCount": 151,
+      "tokenCount": 135,
       "ayahKeys": [
-        "5:90",
         "5:91",
         "5:92",
         "5:93",
@@ -1782,21 +1782,21 @@
     },
     {
       "pageNumber": 144,
-      "tokenCount": 134,
+      "tokenCount": 123,
       "ayahKeys": [
         "6:125",
         "6:126",
         "6:127",
         "6:128",
         "6:129",
-        "6:130",
-        "6:131"
+        "6:130"
       ]
     },
     {
       "pageNumber": 145,
-      "tokenCount": 109,
+      "tokenCount": 120,
       "ayahKeys": [
+        "6:131",
         "6:132",
         "6:133",
         "6:134",
@@ -8086,7 +8086,7 @@
     },
     {
       "pageNumber": 531,
-      "tokenCount": 112,
+      "tokenCount": 122,
       "ayahKeys": [
         "54:50",
         "54:51",
@@ -8109,15 +8109,15 @@
         "55:13",
         "55:14",
         "55:15",
-        "55:16"
+        "55:16",
+        "55:17",
+        "55:18"
       ]
     },
     {
       "pageNumber": 532,
-      "tokenCount": 151,
+      "tokenCount": 148,
       "ayahKeys": [
-        "55:17",
-        "55:18",
         "55:19",
         "55:20",
         "55:21",
@@ -8139,14 +8139,14 @@
         "55:37",
         "55:38",
         "55:39",
-        "55:40"
+        "55:40",
+        "55:41"
       ]
     },
     {
       "pageNumber": 533,
-      "tokenCount": 144,
+      "tokenCount": 147,
       "ayahKeys": [
-        "55:41",
         "55:42",
         "55:43",
         "55:44",
@@ -8172,15 +8172,15 @@
         "55:64",
         "55:65",
         "55:66",
-        "55:67"
+        "55:67",
+        "55:68",
+        "55:69"
       ]
     },
     {
       "pageNumber": 534,
-      "tokenCount": 126,
+      "tokenCount": 116,
       "ayahKeys": [
-        "55:68",
-        "55:69",
         "55:70",
         "55:71",
         "55:72",
@@ -8656,7 +8656,7 @@
     },
     {
       "pageNumber": 564,
-      "tokenCount": 138,
+      "tokenCount": 142,
       "ayahKeys": [
         "67:27",
         "67:28",
@@ -8676,14 +8676,14 @@
         "68:12",
         "68:13",
         "68:14",
-        "68:15"
+        "68:15",
+        "68:16"
       ]
     },
     {
       "pageNumber": 565,
-      "tokenCount": 178,
+      "tokenCount": 174,
       "ayahKeys": [
-        "68:16",
         "68:17",
         "68:18",
         "68:19",
@@ -8738,7 +8738,7 @@
     },
     {
       "pageNumber": 567,
-      "tokenCount": 164,
+      "tokenCount": 170,
       "ayahKeys": [
         "69:9",
         "69:10",
@@ -8765,14 +8765,14 @@
         "69:31",
         "69:32",
         "69:33",
-        "69:34"
+        "69:34",
+        "69:35"
       ]
     },
     {
       "pageNumber": 568,
-      "tokenCount": 149,
+      "tokenCount": 143,
       "ayahKeys": [
-        "69:35",
         "69:36",
         "69:37",
         "69:38",
@@ -8804,7 +8804,7 @@
     },
     {
       "pageNumber": 569,
-      "tokenCount": 163,
+      "tokenCount": 171,
       "ayahKeys": [
         "70:11",
         "70:12",
@@ -8834,14 +8834,14 @@
         "70:36",
         "70:37",
         "70:38",
-        "70:39"
+        "70:39",
+        "70:40"
       ]
     },
     {
       "pageNumber": 570,
-      "tokenCount": 142,
+      "tokenCount": 134,
       "ayahKeys": [
-        "70:40",
         "70:41",
         "70:42",
         "70:43",
@@ -8949,7 +8949,7 @@
     },
     {
       "pageNumber": 575,
-      "tokenCount": 147,
+      "tokenCount": 151,
       "ayahKeys": [
         "73:20",
         "74:1",
@@ -8968,14 +8968,14 @@
         "74:14",
         "74:15",
         "74:16",
-        "74:17"
+        "74:17",
+        "74:18"
       ]
     },
     {
       "pageNumber": 576,
-      "tokenCount": 188,
+      "tokenCount": 184,
       "ayahKeys": [
-        "74:18",
         "74:19",
         "74:20",
         "74:21",
@@ -9205,7 +9205,7 @@
     },
     {
       "pageNumber": 583,
-      "tokenCount": 138,
+      "tokenCount": 145,
       "ayahKeys": [
         "78:31",
         "78:32",
@@ -9231,14 +9231,14 @@
         "79:12",
         "79:13",
         "79:14",
-        "79:15"
+        "79:15",
+        "79:16"
       ]
     },
     {
       "pageNumber": 584,
-      "tokenCount": 165,
+      "tokenCount": 158,
       "ayahKeys": [
-        "79:16",
         "79:17",
         "79:18",
         "79:19",
@@ -9273,7 +9273,7 @@
     },
     {
       "pageNumber": 585,
-      "tokenCount": 175,
+      "tokenCount": 167,
       "ayahKeys": [
         "80:1",
         "80:2",
@@ -9314,15 +9314,15 @@
         "80:37",
         "80:38",
         "80:39",
-        "80:40",
-        "80:41",
-        "80:42"
+        "80:40"
       ]
     },
     {
       "pageNumber": 586,
-      "tokenCount": 133,
+      "tokenCount": 141,
       "ayahKeys": [
+        "80:41",
+        "80:42",
         "81:1",
         "81:2",
         "81:3",
@@ -9356,7 +9356,7 @@
     },
     {
       "pageNumber": 587,
-      "tokenCount": 130,
+      "tokenCount": 121,
       "ayahKeys": [
         "82:1",
         "82:2",
@@ -9380,15 +9380,15 @@
         "83:1",
         "83:2",
         "83:3",
-        "83:4",
-        "83:5",
-        "83:6"
+        "83:4"
       ]
     },
     {
       "pageNumber": 588,
-      "tokenCount": 163,
+      "tokenCount": 165,
       "ayahKeys": [
+        "83:5",
+        "83:6",
         "83:7",
         "83:8",
         "83:9",
@@ -9415,14 +9415,14 @@
         "83:30",
         "83:31",
         "83:32",
-        "83:33",
-        "83:34"
+        "83:33"
       ]
     },
     {
       "pageNumber": 589,
-      "tokenCount": 143,
+      "tokenCount": 140,
       "ayahKeys": [
+        "83:34",
         "83:35",
         "83:36",
         "84:1",
@@ -9448,14 +9448,14 @@
         "84:21",
         "84:22",
         "84:23",
-        "84:24",
-        "84:25"
+        "84:24"
       ]
     },
     {
       "pageNumber": 590,
-      "tokenCount": 131,
+      "tokenCount": 141,
       "ayahKeys": [
+        "84:25",
         "85:1",
         "85:2",
         "85:3",
@@ -9482,7 +9482,7 @@
     },
     {
       "pageNumber": 591,
-      "tokenCount": 150,
+      "tokenCount": 125,
       "ayahKeys": [
         "86:1",
         "86:2",
@@ -9510,18 +9510,18 @@
         "87:7",
         "87:8",
         "87:9",
-        "87:10",
-        "87:11",
-        "87:12",
-        "87:13",
-        "87:14",
-        "87:15"
+        "87:10"
       ]
     },
     {
       "pageNumber": 592,
-      "tokenCount": 137,
+      "tokenCount": 143,
       "ayahKeys": [
+        "87:11",
+        "87:12",
+        "87:13",
+        "87:14",
+        "87:15",
         "87:16",
         "87:17",
         "87:18",
@@ -9547,17 +9547,17 @@
         "88:19",
         "88:20",
         "88:21",
-        "88:22",
-        "88:23",
-        "88:24",
-        "88:25",
-        "88:26"
+        "88:22"
       ]
     },
     {
       "pageNumber": 593,
-      "tokenCount": 134,
+      "tokenCount": 143,
       "ayahKeys": [
+        "88:23",
+        "88:24",
+        "88:25",
+        "88:26",
         "89:1",
         "89:2",
         "89:3",
@@ -9579,14 +9579,14 @@
         "89:19",
         "89:20",
         "89:21",
-        "89:22",
-        "89:23"
+        "89:22"
       ]
     },
     {
       "pageNumber": 594,
-      "tokenCount": 135,
+      "tokenCount": 134,
       "ayahKeys": [
+        "89:23",
         "89:24",
         "89:25",
         "89:26",
@@ -9611,15 +9611,15 @@
         "90:15",
         "90:16",
         "90:17",
-        "90:18",
-        "90:19",
-        "90:20"
+        "90:18"
       ]
     },
     {
       "pageNumber": 595,
-      "tokenCount": 128,
+      "tokenCount": 116,
       "ayahKeys": [
+        "90:19",
+        "90:20",
         "91:1",
         "91:2",
         "91:3",
@@ -9643,18 +9643,18 @@
         "92:6",
         "92:7",
         "92:8",
-        "92:9",
-        "92:10",
-        "92:11",
-        "92:12",
-        "92:13",
-        "92:14"
+        "92:9"
       ]
     },
     {
       "pageNumber": 596,
-      "tokenCount": 119,
+      "tokenCount": 116,
       "ayahKeys": [
+        "92:10",
+        "92:11",
+        "92:12",
+        "92:13",
+        "92:14",
         "92:15",
         "92:16",
         "92:17",
@@ -9674,19 +9674,19 @@
         "93:10",
         "93:11",
         "94:1",
-        "94:2",
+        "94:2"
+      ]
+    },
+    {
+      "pageNumber": 597,
+      "tokenCount": 125,
+      "ayahKeys": [
         "94:3",
         "94:4",
         "94:5",
         "94:6",
         "94:7",
-        "94:8"
-      ]
-    },
-    {
-      "pageNumber": 597,
-      "tokenCount": 133,
-      "ayahKeys": [
+        "94:8",
         "95:1",
         "95:2",
         "95:3",
@@ -9706,20 +9706,20 @@
         "96:9",
         "96:10",
         "96:11",
-        "96:12",
+        "96:12"
+      ]
+    },
+    {
+      "pageNumber": 598,
+      "tokenCount": 122,
+      "ayahKeys": [
         "96:13",
         "96:14",
         "96:15",
         "96:16",
         "96:17",
         "96:18",
-        "96:19"
-      ]
-    },
-    {
-      "pageNumber": 598,
-      "tokenCount": 115,
-      "ayahKeys": [
+        "96:19",
         "97:1",
         "97:2",
         "97:3",
@@ -9729,15 +9729,15 @@
         "98:2",
         "98:3",
         "98:4",
-        "98:5",
-        "98:6",
-        "98:7"
+        "98:5"
       ]
     },
     {
       "pageNumber": 599,
-      "tokenCount": 106,
+      "tokenCount": 110,
       "ayahKeys": [
+        "98:6",
+        "98:7",
         "98:8",
         "99:1",
         "99:2",
@@ -9751,17 +9751,17 @@
         "100:2",
         "100:3",
         "100:4",
-        "100:5",
-        "100:6",
-        "100:7",
-        "100:8",
-        "100:9"
+        "100:5"
       ]
     },
     {
       "pageNumber": 600,
-      "tokenCount": 94,
+      "tokenCount": 117,
       "ayahKeys": [
+        "100:6",
+        "100:7",
+        "100:8",
+        "100:9",
         "100:10",
         "100:11",
         "101:1",

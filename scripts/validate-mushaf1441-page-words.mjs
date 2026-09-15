@@ -138,7 +138,7 @@ for (const required of ['QCF V2', 'dangerouslySetInnerHTML', 'line-words', 'load
   }
 }
 
-for (const required of ['MUSHAF_PAGE_ASPECT_RATIO', 'aspectRatio: MUSHAF_PAGE_ASPECT_RATIO']) {
+for (const required of ['MUSHAF_PAGE_WIDTH', 'height: MUSHAF_PAGE_HEIGHT']) {
   if (!viewer.includes(required)) {
     fail(`viewer is missing page aspect sizing: ${required}`)
   }
@@ -150,11 +150,9 @@ for (const required of [
   'MUSHAF_QCF_FONT_SIZE',
   'MUSHAF_QCF_LINE_HEIGHT',
   "containerType: 'inline-size'",
-  "alignContent: 'space-between'",
-  "gridTemplateRows: 'repeat(15, max-content)'",
   "fontSize: MUSHAF_QCF_FONT_SIZE",
   "lineHeight: MUSHAF_QCF_LINE_HEIGHT",
-  "fontSize: '1em'",
+  "fontSize: useGlyph ? '1em'",
   "lineHeight: 'inherit'",
   '[word-spacing:0]',
 ]) {
@@ -167,7 +165,6 @@ for (const forbidden of [
   "MUSHAF_PAGE_PRINT_PADDING_X = '8.5%'",
   "MUSHAF_PAGE_PRINT_PADDING_Y = '7.2%'",
   "MUSHAF_QCF_FONT_SIZE = 'calc(3.65cqw + 1.5px)'",
-  'gridTemplateRows: \'repeat(15, minmax(0, 1fr))\'',
   'min-h-[640px]',
   'sm:min-h-[820px]',
   'border-b border-[#efe7d7]',

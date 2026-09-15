@@ -137,10 +137,14 @@ function IconCopy({ className }: IconProps) {
   )
 }
 
-const MUSHAF_PAGE_ASPECT_RATIO = '1994 / 2850'
+// Printed page is 1994 x 2850. Width follows the print ratio; on phones (taller than a
+// printed page) the height may grow up to 18% so the page fills the screen instead of
+// leaving empty bands. Font size is tied to page width (cqw) so every line always fits.
+const MUSHAF_PAGE_WIDTH = 'min(100cqw, calc(100cqh * 1994 / 2850))'
+const MUSHAF_PAGE_HEIGHT = 'min(100cqh, calc(min(100cqw, 100cqh * 1994 / 2850) * 2850 / 1994 * 1.18))'
 const MUSHAF_PAGE_PRINT_PADDING_X = '7.2%'
 const MUSHAF_PAGE_PRINT_PADDING_Y = '5.8%'
-const MUSHAF_QCF_FONT_SIZE = 'clamp(15px, 4.35cqw, 40px)'
+const MUSHAF_QCF_FONT_SIZE = '4.35cqw'
 const MUSHAF_QCF_LINE_HEIGHT = 1.04
 const SWIPE_THRESHOLD_PX = 55
 const LONG_PRESS_MS = 480
@@ -148,6 +152,7 @@ const SIGN_IN_HREF = '/login?next=/mushaf-1441'
 const BASMALA_TEXT = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'
 
 type LineDecoration = { surahHeader?: number; basmala?: boolean }
+type QcfFontStatus = 'loading' | 'loaded' | 'error'
 
 // The fixture reserves empty lines as placeholders for a surah's ornamental
 // header band and its basmala. Map each such empty line to what it represents
@@ -235,8 +240,11 @@ export default function Mushaf1441Viewer({
     [initialPageMetadata.pageNumber]: initialPageMetadata,
   })
   const [isPageLoading, setIsPageLoading] = useState(false)
-  const [loadedQcfFontPages, setLoadedQcfFontPages] = useState<Record<number, boolean>>({})
-  const [qcfFontError, setQcfFontError] = useState<string | null>(null)
+  // Per-page QCF V2 font state. Glyph codes are page-specific private-use characters, so a
+  // page's words must never render before THAT page's font is loaded (they would show as
+  // wrong letters or boxes), and one page's font failure must not affect other pages.
+  const [qcfFontStatus, setQcfFontStatus] = useState<Record<number, QcfFontStatus>>({})
+  const qcfFontStatusRef = useRef<Record<number, QcfFontStatus>>({})
   const [selectedSurahNumber, setSelectedSurahNumber] = useState(initialPageMetadata.surahNumbers[0] ?? 1)
   const [selectedAyahNumber, setSelectedAyahNumber] = useState(
     Number(initialPageMetadata.firstAyahKey.split(':')[1] ?? 1)
@@ -275,6 +283,11 @@ export default function Mushaf1441Viewer({
   const surahNameByNumber = useMemo(() => {
     const map = new Map<number, string>()
     for (const surah of surahOptions) map.set(surah.surahNumber, surah.name)
+    return map
+  }, [surahOptions])
+  const surahAyahCountByNumber = useMemo(() => {
+    const map = new Map<number, number>()
+    for (const surah of surahOptions) map.set(surah.surahNumber, surah.ayahCount)
     return map
   }, [surahOptions])
 
@@ -350,8 +363,8 @@ export default function Mushaf1441Viewer({
   const visiblePage = currentPage?.pageNumber === pageNumber ? currentPage : null
   const visiblePageMetadata = currentPageMetadata.pageNumber === pageNumber ? currentPageMetadata : null
   const qcfFontFamily = getQcfV2FontFamily(pageNumber)
-  const qcfFontUrl = getQcfV2FontUrl(pageNumber)
-  const isQcfFontLoaded = loadedQcfFontPages[pageNumber]
+  const isQcfFontLoaded = qcfFontStatus[pageNumber] === 'loaded'
+  const isQcfFontFailed = qcfFontStatus[pageNumber] === 'error'
   const selectedSurah = surahOptions.find((surah) => surah.surahNumber === selectedSurahNumber) ?? surahOptions[0]
   const selectedSurahAyahCount = selectedSurah?.ayahCount ?? 1
   const ayahKeys = useMemo(() => {
@@ -518,6 +531,12 @@ export default function Mushaf1441Viewer({
     const clamped = clampPage(nextPage)
     setPageNumber(clamped)
     setPageInput(String(clamped))
+    if (typeof window !== 'undefined') {
+      // Keep ?page= in the URL so reloads and shared links open the same page.
+      const url = new URL(window.location.href)
+      url.searchParams.set('page', String(clamped))
+      window.history.replaceState(window.history.state, '', url)
+    }
     setSelectedWord(null)
     setSelectedWordRange(null)
     setSelectedAyahKey(targetAyahKey ?? null)
@@ -579,26 +598,38 @@ export default function Mushaf1441Viewer({
 
   async function loadQcfFontForPage(nextPage: number) {
     if (typeof document === 'undefined' || typeof FontFace === 'undefined') return
-    if (loadedQcfFontPages[nextPage]) return
+    const current = qcfFontStatusRef.current[nextPage]
+    if (current === 'loaded' || current === 'loading') return
+
+    const setStatus = (status: QcfFontStatus) => {
+      qcfFontStatusRef.current = { ...qcfFontStatusRef.current, [nextPage]: status }
+      setQcfFontStatus(qcfFontStatusRef.current)
+    }
 
     const fontFamily = getQcfV2FontFamily(nextPage)
     const fontUrl = getQcfV2FontUrl(nextPage)
 
-    if (document.fonts.check(`1em "${fontFamily}"`)) {
-      setLoadedQcfFontPages((current) => ({ ...current, [nextPage]: true }))
+    // Note: document.fonts.check() returns true when NO face with that family is registered,
+    // so it cannot tell whether the page font is really loaded. Look for a loaded face instead.
+    const alreadyLoaded = [...document.fonts].some((face) => face.family.replace(/"/g, '') === fontFamily && face.status === 'loaded')
+    if (alreadyLoaded) {
+      setStatus('loaded')
       return
     }
 
-    try {
-      setQcfFontError(null)
-      const fontFace = new FontFace(fontFamily, `url("${fontUrl}") format("woff2")`)
-      fontFace.display = 'block'
-      await fontFace.load()
-      document.fonts.add(fontFace)
-      setLoadedQcfFontPages((current) => ({ ...current, [nextPage]: true }))
-    } catch {
-      setQcfFontError('تعذر تحميل خط QCF V2 لهذه الصفحة. سيتم عرض النص الاحتياطي.')
+    setStatus('loading')
+    for (let attempt = 1; attempt <= 2; attempt += 1) {
+      try {
+        const fontFace = new FontFace(fontFamily, `url("${fontUrl}") format("woff2")`, { display: 'block' })
+        await fontFace.load()
+        document.fonts.add(fontFace)
+        setStatus('loaded')
+        return
+      } catch {
+        if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 600))
+      }
     }
+    setStatus('error')
   }
 
   async function loadPageWords(nextPage: number) {
@@ -1174,10 +1205,11 @@ export default function Mushaf1441Viewer({
     const highlightAnnotation = wordHighlightAnnotation ?? rangeHighlightAnnotation ?? ayahHighlightAnnotation
     const hasAyahBookmark = ayahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasAyahFavorite = ayahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
-    const useGlyph = !qcfFontError && Boolean(word.glyph)
+    // QCF glyphs only with this page's own loaded font; otherwise readable Unicode text.
+    const useGlyph = isQcfFontLoaded && Boolean(word.glyph)
     const displayText = useGlyph ? word.glyph : (word.textQpcHafs ?? word.textUthmani)
     const fontFamily = useGlyph
-      ? `"${qcfFontFamily}", "Times New Roman", serif`
+      ? `"${qcfFontFamily}", serif`
       : 'var(--font-amiri-quran), "Times New Roman", serif'
 
     return (
@@ -1229,7 +1261,7 @@ export default function Mushaf1441Viewer({
         }`}
         style={{
           fontFamily,
-          fontSize: '1em',
+          fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
           color: highlightAnnotation?.textColor
             ?? (!isSelectedWord && !isHighlightedAyah && mutshabehatHighlight ? mutshabehatHighlight.color ?? '#8c5f0a' : undefined),
@@ -1249,7 +1281,7 @@ export default function Mushaf1441Viewer({
         <div
           className="relative flex w-full items-center justify-center overflow-hidden rounded-[6px]"
           style={{
-            height: '90%',
+            height: '84%',
             border: '2px solid #b8871d',
             boxShadow: 'inset 0 0 0 1px rgba(184,135,29,0.55), inset 0 0 0 4px #fff7e0',
             backgroundColor: '#f7e8bf',
@@ -1261,14 +1293,15 @@ export default function Mushaf1441Viewer({
           }}
         >
           {/* arabesque end rosettes */}
-          <span aria-hidden className="absolute right-1.5 text-[#9a6d1a]" style={{ fontSize: 'clamp(11px,3.4cqw,26px)' }}>۞</span>
-          <span aria-hidden className="absolute left-1.5 text-[#9a6d1a]" style={{ fontSize: 'clamp(11px,3.4cqw,26px)' }}>۞</span>
+          <span aria-hidden className="absolute right-1.5 text-[#9a6d1a]" style={{ fontSize: '3.4cqw' }}>۞</span>
+          <span aria-hidden className="absolute left-1.5 text-[#9a6d1a]" style={{ fontSize: '3.4cqw' }}>۞</span>
           {/* name cartouche */}
           <span
-            className="mx-[7%] flex w-[86%] items-center justify-center rounded-[5px] py-[0.4em] font-black text-[#59461d]"
+            className="mx-[7%] flex w-[86%] items-center justify-center rounded-[5px] font-black text-[#59461d]"
             style={{
               fontFamily: 'var(--font-amiri-quran), "Times New Roman", serif',
-              fontSize: 'clamp(15px,5.4cqw,46px)',
+              fontSize: '4.2cqw',
+              lineHeight: 1.25,
               backgroundColor: 'rgba(255,251,236,0.85)',
               boxShadow: '0 0 0 1px rgba(184,135,29,0.4)',
             }}
@@ -1286,48 +1319,73 @@ export default function Mushaf1441Viewer({
         className="flex h-full items-center justify-center text-[#171717]"
         style={{ fontSize: MUSHAF_QCF_FONT_SIZE, lineHeight: MUSHAF_QCF_LINE_HEIGHT }}
       >
-        <span style={{ fontFamily: 'var(--font-amiri-quran), "Times New Roman", serif' }}>{BASMALA_TEXT}</span>
+        <span style={{ fontFamily: 'var(--font-amiri-quran), "Times New Roman", serif', fontSize: '0.9em' }}>{BASMALA_TEXT}</span>
+      </div>
+    )
+  }
+
+  function getLineDecorations(page: MushafPage): Map<number, LineDecoration> {
+    // Server-computed decorations also cover surahs whose header sits on the previous page.
+    if (page.lineDecorations) {
+      return new Map(Object.entries(page.lineDecorations).map(([line, decoration]) => [Number(line), decoration]))
+    }
+    return computeLineDecorations(page)
+  }
+
+  function renderPageSkeleton() {
+    return (
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 grid"
+        style={{
+          gridTemplateRows: 'repeat(15, minmax(0, 1fr))',
+          paddingBlock: MUSHAF_PAGE_PRINT_PADDING_Y,
+          paddingInline: MUSHAF_PAGE_PRINT_PADDING_X,
+        }}
+      >
+        {Array.from({ length: 15 }, (_, index) => (
+          <div key={index} className="flex items-center">
+            <div
+              className="h-[38%] animate-pulse rounded-full bg-[#efe4c9]"
+              style={{ width: index === 14 ? '60%' : '100%', marginInline: 'auto', animationDelay: `${index * 60}ms` }}
+            />
+          </div>
+        ))}
       </div>
     )
   }
 
   function renderLineWords() {
-    if (!visiblePage) {
-      return (
-        <div className="flex h-full w-full items-center justify-center px-6 text-center">
-          <div>
-            <p className="text-3xl font-black text-[#80662c]">{pageNumber}</p>
-            <p className="mt-3 text-sm leading-7 text-[#665b48]">
-              {isPageLoading ? 'جاري تحميل الصفحة…' : 'لا توجد بيانات كلمات لهذه الصفحة.'}
-            </p>
-          </div>
-        </div>
-      )
-    }
-
-    const decorations = computeLineDecorations(visiblePage)
+    const isOpeningPage = pageNumber <= 2
+    const isPageReady = Boolean(visiblePage) && (isQcfFontLoaded || isQcfFontFailed)
+    const decorations = visiblePage ? getLineDecorations(visiblePage) : new Map<number, LineDecoration>()
     const isRightPage = pageNumber % 2 === 1
     const marginFontSize = 'clamp(8px, 2cqw, 13px)'
+    // Al-Fatihah and the start of Al-Baqarah are set as a short centred block in a framed
+    // middle area; every other page uses the full 15-line grid.
+    const lines = !visiblePage
+      ? []
+      : isOpeningPage
+        ? visiblePage.lines.filter((line) => line.words.length > 0 || decorations.has(line.lineNumber))
+        : visiblePage.lines
+    const wordCounts = (visiblePage?.lines ?? []).map((line) => line.words.length).filter(Boolean).sort((a, b) => a - b)
+    const typicalLineWordCount = wordCounts[Math.floor(wordCounts.length * 0.75)] ?? 0
 
     return (
       <div
         dir="rtl"
         className="relative select-none overflow-hidden bg-[#fffdf6] shadow-[0_8px_30px_rgba(63,49,21,0.12)] [-webkit-touch-callout:none] sm:rounded-[10px] sm:border sm:border-[#e2d4b3]"
         style={{
-          width: 'min(100cqw, calc(100cqh * 1994 / 2850))',
+          width: MUSHAF_PAGE_WIDTH,
+          height: MUSHAF_PAGE_HEIGHT,
           maxWidth: '100%',
           maxHeight: '100%',
-          aspectRatio: MUSHAF_PAGE_ASPECT_RATIO,
           containerType: 'inline-size',
         }}
         onClick={handlePageClick}
         onTouchStart={handlePageTouchStart}
         onTouchEnd={handlePageTouchEnd}
       >
-        <style>
-          {`@font-face{font-family:"${qcfFontFamily}";src:url("${qcfFontUrl}") format("woff2");font-display:block;}`}
-        </style>
-
         {/* In-page top margin: juz / hizb / rub + surah name */}
         <div
           className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between gap-2 px-[5.5%] pt-[1.4%] font-bold text-[#9a7b35]"
@@ -1347,39 +1405,64 @@ export default function Mushaf1441Viewer({
           {isRightPage ? 'يُمنى' : 'يُسرى'}
         </span>
 
-        {/* The 15 mushaf lines, evenly distributed top-to-bottom */}
-        <div
-          className="absolute inset-0 grid"
-          style={{
-            gridTemplateRows: 'repeat(15, minmax(0, 1fr))',
-            paddingBlock: MUSHAF_PAGE_PRINT_PADDING_Y,
-            paddingInline: MUSHAF_PAGE_PRINT_PADDING_X,
-          }}
-        >
-          {visiblePage.lines.map((line) => {
-            const decoration = decorations.get(line.lineNumber)
-            return (
-              <div
-                key={`${line.pageNumber}-${line.lineNumber}`}
-                className="flex items-center justify-center overflow-visible"
-                style={{ fontSize: MUSHAF_QCF_FONT_SIZE, lineHeight: MUSHAF_QCF_LINE_HEIGHT }}
-                aria-label={`صفحة ${line.pageNumber} سطر ${line.lineNumber}`}
-              >
-                {decoration?.surahHeader ? (
-                  renderSurahBanner(decoration.surahHeader)
-                ) : decoration?.basmala ? (
-                  renderBasmala()
-                ) : line.words.length > 0 ? (
-                  <div className="w-full overflow-visible whitespace-nowrap text-center [word-spacing:0]">
-                    {line.words.map((word) => renderQcfWord(word))}
-                  </div>
-                ) : (
-                  <span aria-hidden="true" />
-                )}
-              </div>
-            )
-          })}
-        </div>
+        {!visiblePage && !isPageLoading ? (
+          <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+            <div>
+              <p className="text-3xl font-black text-[#80662c]">{pageNumber}</p>
+              <p className="mt-3 text-sm leading-7 text-[#665b48]">لا توجد بيانات كلمات لهذه الصفحة.</p>
+            </div>
+          </div>
+        ) : !isPageReady ? (
+          renderPageSkeleton()
+        ) : (
+          /* The mushaf lines, evenly distributed top-to-bottom */
+          <div
+            className="absolute grid"
+            style={isOpeningPage
+              ? { inset: '22% 13%', gridTemplateRows: `repeat(${lines.length}, minmax(0, 1fr))` }
+              : {
+                  inset: 0,
+                  gridTemplateRows: 'repeat(15, minmax(0, 1fr))',
+                  paddingBlock: MUSHAF_PAGE_PRINT_PADDING_Y,
+                  paddingInline: MUSHAF_PAGE_PRINT_PADDING_X,
+                }}
+          >
+            {lines.map((line) => {
+              const decoration = decorations.get(line.lineNumber)
+              const lastWord = line.words[line.words.length - 1]
+              const endsSurah = Boolean(
+                lastWord
+                && lastWord.charTypeName === 'end'
+                && lastWord.ayahNumber === surahAyahCountByNumber.get(lastWord.surahNumber)
+              )
+              // Justify full lines edge to edge like the printed mushaf; centre short lines.
+              const isCentered = isOpeningPage || isQcfFontFailed || (endsSurah && line.words.length < typicalLineWordCount * 0.7)
+              return (
+                <div
+                  key={`${line.pageNumber}-${line.lineNumber}`}
+                  className="flex items-center justify-center overflow-visible"
+                  style={{ fontSize: MUSHAF_QCF_FONT_SIZE, lineHeight: MUSHAF_QCF_LINE_HEIGHT }}
+                  aria-label={`صفحة ${line.pageNumber} سطر ${line.lineNumber}`}
+                >
+                  {decoration?.surahHeader ? (
+                    renderSurahBanner(decoration.surahHeader)
+                  ) : decoration?.basmala ? (
+                    renderBasmala()
+                  ) : line.words.length > 0 ? (
+                    <div
+                      data-role="line-words"
+                      className={`flex w-full items-baseline whitespace-nowrap [word-spacing:0] ${isCentered ? 'justify-center gap-[0.12em]' : 'justify-between'}`}
+                    >
+                      {line.words.map((word) => renderQcfWord(word))}
+                    </div>
+                  ) : (
+                    <span aria-hidden="true" />
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        )}
 
         {/* In-page bottom margin: page number */}
         <div
@@ -1389,9 +1472,9 @@ export default function Mushaf1441Viewer({
           <span className="tabular-nums">{pageNumber}</span>
         </div>
 
-        {qcfFontError ? (
+        {isQcfFontFailed ? (
           <p className="absolute inset-x-2 bottom-6 rounded-md border border-[#c07662] bg-[#fff1ed] px-3 py-1 text-center text-[10px] font-bold text-[#8a2f1b]">
-            {qcfFontError}
+            تعذّر تحميل خط المصحف لهذه الصفحة، يُعرض النص بخط بديل.
           </p>
         ) : null}
       </div>
@@ -2126,7 +2209,7 @@ export default function Mushaf1441Viewer({
           {renderLineWords()}
         </div>
         {renderHoverCard()}
-        {isPageLoading ? (
+        {isPageLoading || (!isQcfFontLoaded && !isQcfFontFailed) ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
             <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
           </div>
@@ -2243,7 +2326,7 @@ export default function Mushaf1441Viewer({
               <p className="mt-1">
                 الجزء {visiblePageMetadata?.juzNumber ?? '—'} · الحزب {visiblePageMetadata?.hizbNumber ?? '—'} · الربع {visiblePageMetadata ? `${visiblePageMetadata.rubInJuz}/8` : '—'}
               </p>
-              <p className="mt-1">{isQcfFontLoaded ? 'خط QCF V2 محمّل.' : 'جاري تحميل خط QCF V2…'}</p>
+              <p className="mt-1">{isQcfFontLoaded ? 'خط QCF V2 محمّل.' : isQcfFontFailed ? 'تعذّر تحميل خط QCF V2 لهذه الصفحة.' : 'جاري تحميل خط QCF V2…'}</p>
               <p className="mt-1">{pageNumber % 2 === 1 ? 'الصفحة على الجهة اليمنى.' : 'الصفحة على الجهة اليسرى.'}</p>
               <p className="mt-2 text-[11px] text-[#80662c]">اسحب يميناً/يساراً على الصفحة للتنقل، واضغط مطوّلاً على كلمة أو آية للتمييز والملاحظات.</p>
             </div>

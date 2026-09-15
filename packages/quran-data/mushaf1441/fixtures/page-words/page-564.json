@@ -2156,6 +2156,66 @@
           "textQpcHafs": "١٥",
           "charTypeName": "end",
           "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-18491",
+          "pageNumber": 564,
+          "lineNumber": 15,
+          "wordIndexInLine": 6,
+          "surahNumber": 68,
+          "ayahNumber": 16,
+          "wordIndexInAyah": 1,
+          "ayahKey": "68:16",
+          "textUthmani": "سَنَسِمُهُۥ",
+          "glyph": "ﳍ",
+          "textQpcHafs": "سَنَسِمُهُۥ",
+          "charTypeName": "word",
+          "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-18492",
+          "pageNumber": 564,
+          "lineNumber": 15,
+          "wordIndexInLine": 7,
+          "surahNumber": 68,
+          "ayahNumber": 16,
+          "wordIndexInAyah": 2,
+          "ayahKey": "68:16",
+          "textUthmani": "عَلَى",
+          "glyph": "ﳎ",
+          "textQpcHafs": "عَلَى",
+          "charTypeName": "word",
+          "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-18493",
+          "pageNumber": 564,
+          "lineNumber": 15,
+          "wordIndexInLine": 8,
+          "surahNumber": 68,
+          "ayahNumber": 16,
+          "wordIndexInAyah": 3,
+          "ayahKey": "68:16",
+          "textUthmani": "ٱلْخُرْطُومِ",
+          "glyph": "ﳏ",
+          "textQpcHafs": "ٱلۡخُرۡطُومِ",
+          "charTypeName": "word",
+          "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-18494",
+          "pageNumber": 564,
+          "lineNumber": 15,
+          "wordIndexInLine": 9,
+          "surahNumber": 68,
+          "ayahNumber": 16,
+          "wordIndexInAyah": 4,
+          "ayahKey": "68:16",
+          "textUthmani": "١٦",
+          "glyph": "ﳐ",
+          "textQpcHafs": "١٦",
+          "charTypeName": "end",
+          "qcfVersion": "v2"
         }
       ]
     }

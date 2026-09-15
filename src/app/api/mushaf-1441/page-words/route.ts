@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { loadMushaf1441Page } from '../../../../../packages/quran-data/mushaf1441/pageLoader'
+import { loadMushaf1441PageDecorations } from '../../../../../packages/quran-data/mushaf1441/pageDecorations'
 
 export async function GET(request: NextRequest) {
   const page = Number(request.nextUrl.searchParams.get('page'))
-  const mushafPage = await loadMushaf1441Page(page)
+  const [mushafPage, lineDecorations] = await Promise.all([
+    loadMushaf1441Page(page),
+    loadMushaf1441PageDecorations(page),
+  ])
 
   if (!mushafPage) {
     return NextResponse.json(
@@ -12,5 +16,8 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  return NextResponse.json(mushafPage)
+  return NextResponse.json(
+    { ...mushafPage, lineDecorations },
+    { headers: { 'Cache-Control': 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400' } }
+  )
 }

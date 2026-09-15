@@ -2291,6 +2291,66 @@
           "textQpcHafs": "١٧",
           "charTypeName": "end",
           "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-20640",
+          "pageNumber": 575,
+          "lineNumber": 15,
+          "wordIndexInLine": 8,
+          "surahNumber": 74,
+          "ayahNumber": 18,
+          "wordIndexInAyah": 1,
+          "ayahKey": "74:18",
+          "textUthmani": "إِنَّهُۥ",
+          "glyph": "ﳟ",
+          "textQpcHafs": "إِنَّهُۥ",
+          "charTypeName": "word",
+          "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-20641",
+          "pageNumber": 575,
+          "lineNumber": 15,
+          "wordIndexInLine": 9,
+          "surahNumber": 74,
+          "ayahNumber": 18,
+          "wordIndexInAyah": 2,
+          "ayahKey": "74:18",
+          "textUthmani": "فَكَّرَ",
+          "glyph": "ﳠ",
+          "textQpcHafs": "فَكَّرَ",
+          "charTypeName": "word",
+          "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-20642",
+          "pageNumber": 575,
+          "lineNumber": 15,
+          "wordIndexInLine": 10,
+          "surahNumber": 74,
+          "ayahNumber": 18,
+          "wordIndexInAyah": 3,
+          "ayahKey": "74:18",
+          "textUthmani": "وَقَدَّرَ",
+          "glyph": "ﳡ",
+          "textQpcHafs": "وَقَدَّرَ",
+          "charTypeName": "word",
+          "qcfVersion": "v2"
+        },
+        {
+          "id": "qurancom-word-20643",
+          "pageNumber": 575,
+          "lineNumber": 15,
+          "wordIndexInLine": 11,
+          "surahNumber": 74,
+          "ayahNumber": 18,
+          "wordIndexInAyah": 4,
+          "ayahKey": "74:18",
+          "textUthmani": "١٨",
+          "glyph": "ﳢ",
+          "textQpcHafs": "١٨",
+          "charTypeName": "end",
+          "qcfVersion": "v2"
         }
       ]
     }

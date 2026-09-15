@@ -3,6 +3,13 @@ export type QiraahReading = 'hafs' | 'warsh' | 'abu-amr' | 'hamza'
 export interface MushafPage {
   pageNumber: number
   lines: MushafLine[]
+  /** Empty line slots that show a surah header band or basmala (see pageDecorations.ts). */
+  lineDecorations?: Record<number, MushafLineDecoration>
+}
+
+export interface MushafLineDecoration {
+  surahHeader?: number
+  basmala?: boolean
 }
 
 export interface MushafLine {

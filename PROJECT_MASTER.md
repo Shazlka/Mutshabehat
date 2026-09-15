@@ -36,6 +36,7 @@ An Arabic, RTL, single-user web app (installable as a PWA) for studying Quran **
 - **Quran search:** 6,236 ayahs (Uthmani script) with spelling tolerance (alef wasla, dagger alef, rasm skeleton) and match highlighting.
 - **Stats dashboard:** counts, juz heatmap, tag donut, 30-day activity. **Network graph:** D3 force graph of groups/surahs.
 - **Tags:** CRUD, bulk tagging, import/export. **Export/backup:** JSON / SQL / Excel.
+- **Test mode** (`/test`): quiz on your own groups (pick the location / recall flashcards / mixed) with a colour-coded review.
 - **Mushaf 1441 reader** (`/mushaf-1441`): page-accurate mushaf (604 pages, 15 lines) with highlights, notes,
   bookmarks, favourites (`mushaf_annotations`), surah/page sliders, swipe page turning, and a mutshabehat connections panel.
 - Mobile-first, native feel: bottom action bars, swipe navigation between groups, flip cards.
@@ -178,10 +179,11 @@ src/
       automated/[id]/      # one automated candidate: all ayat, surah links, copy button
       surahs/              # Surah tab: 114 cards with personal + automated counts
       surahs/[no]/         # one surah: personal groups / automated tabs
+      test/                # mutashabihat test mode: setup → quiz (TestRunner) → results
       network/             # D3 graph
       stats/               # dashboard via get_dashboard_stats RPC (fallback: multi-query)
       tools/  settings/    # tools; settings (swipe nav, DB export/backup, clear cache)
-    mushaf-1441/           # page.tsx + _components/Mushaf1441Viewer.tsx (large client component)
+    mushaf-1441/           # page.tsx (?page=N) + loading.tsx + _components/Mushaf1441Viewer.tsx (large client component)
     api/
       groups/  groups/[id]/  groups/[id]/tags/  groups/export/
       tags/  tags/[id]/  tags/bulk/  tags/export/  tags/import/
@@ -200,6 +202,7 @@ src/
     arabic.ts              # normalizeArabic, rasmSkeleton, normalizeArabicWithMap, matchRanges
     quran.ts               # pre-normalized in-memory ayah index, searchAyahs
     surah-names.ts         # useSurahNames (singleton fetch + cache)
+    test-questions.ts      # builds test questions from personal groups
     diff.ts  juz.ts  sanitize.ts  cn.ts
   types/database.ts
 packages/
@@ -270,6 +273,7 @@ key is server-only.
 | Local gateway OK, Funnel 502 after reboot | Colima lost the port-forward: `docker restart mutshabehat-gateway` |
 | Docker/git "not found" weirdness | External SSD not mounted |
 | Build: "Supabase URL and API key are required" | `env -u __NEXT_PROCESSED_ENV npm run build` |
+| Mushaf page shows wrong letters, lines out of order, or a missing surah header | data: `npm run mushaf:validate` (page-order check); re-import with `node scripts/import-mushaf1441-page-words.mjs` (places words by their own page_number). Render: page text waits for its own QCF font |
 | Search misses Uthmani spelling | normalize through `normalizeArabic` / `rasmSkeleton`, and check the `search_vec`/`rasm_skeleton` columns exist |
 | Push didn't deploy / deploy hangs | Vercel deployment state `BLOCKED` = commit author. Check git identity (§4) |
 | New `NEXT_PUBLIC_*` value not live | redeploy (baked at build time) |

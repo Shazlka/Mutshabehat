@@ -38,7 +38,7 @@ assert(viewerSource.includes('env(safe-area-inset-bottom)'), 'Viewer must accoun
 assert(!viewerSource.includes('min-h-10'), 'Interactive controls should use 44px-compatible min-h-11 or larger')
 assert(!viewerSource.includes('vw'), 'Viewer typography must avoid viewport-width font sizing')
 assert(
-  viewerSource.includes("MUSHAF_QCF_FONT_SIZE = 'clamp(15px, 4.35cqw, 40px)'"),
+  viewerSource.includes("MUSHAF_QCF_FONT_SIZE = '4.35cqw'"),
   'Mushaf glyph sizing must be clamped to the page container, not the viewport'
 )
 assert(viewerSource.includes('MUSHAF_1441_NOTES_STORAGE_KEY'), 'Local notes storage must remain explicit')

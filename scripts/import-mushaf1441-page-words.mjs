@@ -15,7 +15,7 @@ function buildUrl(pageNumber) {
   const url = new URL(`${SOURCE_BASE_URL}/${pageNumber}`)
   url.searchParams.set('language', 'en')
   url.searchParams.set('words', 'true')
-  url.searchParams.set('word_fields', 'code_v2,text_qpc_hafs,text_uthmani')
+  url.searchParams.set('word_fields', 'code_v2,text_qpc_hafs,text_uthmani,page_number,line_number')
   url.searchParams.set('fields', 'text_uthmani,chapter_id,verse_number,page_number')
   url.searchParams.set('per_page', '50')
   url.searchParams.set('mushaf', '1')
@@ -70,71 +70,90 @@ function normalizeWord(rawWord, verse, pageNumber, line) {
   }
 }
 
-async function importPage(pageNumber) {
+// `verses/by_page/{n}` returns every verse that STARTS on page n, including the words of
+// that verse which spill onto page n+1. Each word carries its own `page_number` and
+// `line_number`, and QCF V2 glyph codes are only valid with the font of the word's own
+// page. So words must be placed by their own page_number, never by the requested page
+// (doing the latter produced out-of-order lines, missing header slots and wrong glyphs).
+async function fetchPageVerses(pageNumber) {
   const url = buildUrl(pageNumber)
   const data = await fetchJsonWithRetry(url)
-  const lines = createEmptyLines(pageNumber)
-  const linesByNumber = new Map(lines.map((line) => [line.lineNumber, line]))
-  let tokenCount = 0
-
   if (!Array.isArray(data.verses)) {
     throw new Error(`Page ${pageNumber} response has no verses array`)
   }
-
-  for (const verse of data.verses) {
-    if (!Array.isArray(verse.words)) continue
-
-    for (const rawWord of verse.words) {
-      const lineNumber = rawWord.line_number
-      const line = linesByNumber.get(lineNumber)
-      if (!line) {
-        throw new Error(`Page ${pageNumber} word ${rawWord.id} has invalid line ${lineNumber}`)
-      }
-
-      line.words.push(normalizeWord(rawWord, verse, pageNumber, line))
-      tokenCount += 1
-    }
-  }
-
-  return {
-    pageNumber,
-    lines,
-    tokenCount,
-    ayahKeys: data.verses.map((verse) => verse.verse_key),
-    sourceUrl: url.toString(),
-  }
+  return { pageNumber, verses: data.verses, sourceUrl: url.toString() }
 }
 
-async function importBatch(pageNumbers) {
-  return Promise.all(pageNumbers.map((pageNumber) => importPage(pageNumber)))
-}
+const wordKey = (word) => word.surahNumber * 1e6 + word.ayahNumber * 1e3 + word.wordIndexInAyah
+const pageLines = new Map()
+const sourceUrlByPage = new Map()
+const seenWordIds = new Set()
 
-const pages = []
-const reportPages = []
+function linesForPage(pageNumber) {
+  if (!pageLines.has(pageNumber)) pageLines.set(pageNumber, createEmptyLines(pageNumber))
+  return pageLines.get(pageNumber)
+}
 
 for (let index = 1; index <= PAGE_COUNT; index += CONCURRENCY) {
   const pageNumbers = Array.from(
     { length: Math.min(CONCURRENCY, PAGE_COUNT - index + 1) },
     (_, offset) => index + offset
   )
-  const imported = await importBatch(pageNumbers)
-  for (const page of imported) {
-    pages.push({
-      pageNumber: page.pageNumber,
-      lines: page.lines,
-    })
-    reportPages.push({
-      pageNumber: page.pageNumber,
-      tokenCount: page.tokenCount,
-      ayahKeys: page.ayahKeys,
-      sourceUrl: page.sourceUrl,
-    })
+  const fetched = await Promise.all(pageNumbers.map((pageNumber) => fetchPageVerses(pageNumber)))
+  for (const { pageNumber, verses, sourceUrl } of fetched) {
+    sourceUrlByPage.set(pageNumber, sourceUrl)
+    for (const verse of verses) {
+      if (!Array.isArray(verse.words)) continue
+      for (const rawWord of verse.words) {
+        if (seenWordIds.has(rawWord.id)) continue
+        seenWordIds.add(rawWord.id)
+        const wordPage = rawWord.page_number ?? pageNumber
+        const lines = linesForPage(wordPage)
+        const line = lines[rawWord.line_number - 1]
+        if (!line || wordPage < 1 || wordPage > PAGE_COUNT) {
+          throw new Error(`Word ${rawWord.id} (${verse.verse_key}) has invalid page/line ${wordPage}/${rawWord.line_number}`)
+        }
+        line.words.push(normalizeWord(rawWord, verse, wordPage, line))
+      }
+    }
   }
-  process.stdout.write(`Imported word lines through page ${Math.min(index + CONCURRENCY - 1, PAGE_COUNT)}\r`)
+  process.stdout.write(`Fetched verses through page ${Math.min(index + CONCURRENCY - 1, PAGE_COUNT)}\r`)
 }
 
-pages.sort((a, b) => a.pageNumber - b.pageNumber)
-reportPages.sort((a, b) => a.pageNumber - b.pageNumber)
+// Source quirk: an ayah-end marker occasionally carries a line_number BEFORE the ayah's
+// last words (e.g. 84:21 on page 589). The marker always belongs right after the ayah's
+// final word, so move it to the last line that holds a word of the same ayah on its page.
+for (const lines of pageLines.values()) {
+  for (const line of lines) {
+    for (const marker of [...line.words]) {
+      if (marker.charTypeName !== 'end') continue
+      const lastLine = [...lines].reverse().find((candidate) =>
+        candidate.words.some((word) => word.ayahKey === marker.ayahKey && word.charTypeName !== 'end'))
+      if (!lastLine || lastLine.lineNumber <= line.lineNumber) continue
+      line.words.splice(line.words.indexOf(marker), 1)
+      marker.lineNumber = lastLine.lineNumber
+      lastLine.words.push(marker)
+    }
+  }
+}
+
+const pages = []
+const reportPages = []
+for (let pageNumber = 1; pageNumber <= PAGE_COUNT; pageNumber += 1) {
+  const lines = linesForPage(pageNumber)
+  const ayahKeys = []
+  let tokenCount = 0
+  for (const line of lines) {
+    line.words.sort((a, b) => wordKey(a) - wordKey(b))
+    line.words.forEach((word, i) => { word.wordIndexInLine = i + 1 })
+    for (const word of line.words) {
+      if (ayahKeys[ayahKeys.length - 1] !== word.ayahKey && !ayahKeys.includes(word.ayahKey)) ayahKeys.push(word.ayahKey)
+    }
+    tokenCount += line.words.length
+  }
+  pages.push({ pageNumber, lines })
+  reportPages.push({ pageNumber, tokenCount, ayahKeys, sourceUrl: sourceUrlByPage.get(pageNumber) })
+}
 
 const totalTokens = reportPages.reduce((sum, page) => sum + page.tokenCount, 0)
 const fetchedAt = new Date().toISOString()
@@ -142,7 +161,7 @@ const source = {
   name: 'Quran.com API v4 verses by page words',
   url: `${SOURCE_BASE_URL}/{page}?words=true&word_fields=code_v2,text_qpc_hafs,text_uthmani&mushaf=1`,
   fetchedAt,
-  notes: 'Verified source fixture for Mushaf page -> line -> word/token rendering. Uses QCF V2 glyph codes and Quran.com line_number values; empty line slots are preserved to keep 15-line page architecture.',
+  notes: 'Verified source fixture for Mushaf page -> line -> word/token rendering. Uses QCF V2 glyph codes; words are placed by their own Quran.com page_number + line_number (a verse can span pages); empty line slots are preserved to keep 15-line page architecture.',
 }
 const manifest = {
   source,

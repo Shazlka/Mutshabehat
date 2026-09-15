@@ -38,12 +38,12 @@ if (metadata.pages[603]?.lastAyahKey !== '114:6') {
 
 for (const required of [
   'submitAyahJump',
-  'mushaf-surah-number',
-  'mushaf-ayah-number',
+  'selectedSurahNumber',
+  'selectedAyahNumber',
   'visiblePageMetadata?.surahNames',
   'visiblePageMetadata?.juzNumber',
   'visiblePageMetadata.rubInJuz',
-  'صفحة {pageNumber}',
+  'ص {pageNumber}',
 ]) {
   if (!viewer.includes(required)) fail(`viewer missing ${required}`)
 }
