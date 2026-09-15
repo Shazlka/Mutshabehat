@@ -133,10 +133,10 @@ applied to prod), sync + backup per the plan.
 its own answer-logging schema), `/stats` dashboard, `/automated` browse +
 copy, `/tools` bulk tagging. None of these block daily reading/study use.
 
-**D-04, network graph (`/network`)**: it's a genuinely live, nav-linked
-feature (not dead code as the plan's "if actually used" test implied might
-be the case) — so on usage grounds alone it leans toward v1. But it's a D3
-force-directed graph with no direct SwiftUI equivalent; native
-reimplementation is either a hand-rolled `Canvas`-based force layout or a
-new third-party package, either way real work for Phase 4/5. Surfacing this
-to Amr as D-04 rather than deciding it here.
+**D-04 — DECIDED 2026-09-15: network graph (`/network`) deferred to v1.1.**
+It is a genuinely live, nav-linked feature (not dead code, as the plan's "if
+actually used" test allowed for), but it's a D3 force-directed graph with no
+direct SwiftUI equivalent — native reimplementation means a hand-rolled
+`Canvas` force layout or a new SPM dependency, either way Phase 4/5 work that
+doesn't block the reading/study core loop. Revisit for v1.1 once v1 is on the
+phone.
