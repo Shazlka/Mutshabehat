@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useMemo, useRef, useState, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type MouseEvent as ReactMouseEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import Link from 'next/link'
 import ArabicDiff, { type Part } from '@/components/ArabicDiff'
 import type {
@@ -102,6 +102,16 @@ function tintForGroup(key: string | undefined) {
 }
 const WHEEL_TURN_THRESHOLD = 60
 
+// Two-page spread like an open mushaf on wide landscape screens (desktop, iPad landscape).
+const SPREAD_MEDIA_QUERY = '(min-width: 1024px) and (orientation: landscape)'
+function subscribeToSpreadQuery(onChange: () => void) {
+  const query = window.matchMedia(SPREAD_MEDIA_QUERY)
+  query.addEventListener('change', onChange)
+  return () => query.removeEventListener('change', onChange)
+}
+const getSpreadSnapshot = () => window.matchMedia(SPREAD_MEDIA_QUERY).matches
+const getSpreadServerSnapshot = () => false
+
 type PopupGroup = {
   id: string
   title: string
@@ -183,6 +193,9 @@ function IconCopy({ className }: IconProps) {
 // leaving empty bands. Font size is tied to page width (cqw) so every line always fits.
 const MUSHAF_PAGE_WIDTH = 'min(100cqw, calc(100cqh * 1994 / 2850))'
 const MUSHAF_PAGE_HEIGHT = 'min(100cqh, calc(min(100cqw, 100cqh * 1994 / 2850) * 2850 / 1994 * 1.18))'
+// In a spread each page takes half the width (minus the spine gap) at the printed ratio.
+const MUSHAF_SPREAD_PAGE_WIDTH = 'min(calc(50cqw - 4px), calc(100cqh * 1994 / 2850))'
+const MUSHAF_SPREAD_PAGE_HEIGHT = 'min(100cqh, calc(min(calc(50cqw - 4px), calc(100cqh * 1994 / 2850)) * 2850 / 1994))'
 const MUSHAF_PAGE_PRINT_PADDING_X = '7.2%'
 const MUSHAF_PAGE_PRINT_PADDING_Y = '5.8%'
 const MUSHAF_QCF_FONT_SIZE = '4.35cqw'
@@ -321,6 +334,7 @@ export default function Mushaf1441Viewer({
   // Groups in the ayah card start collapsed (title only); tapping a title expands its details.
   const [expandedPopupGroups, setExpandedPopupGroups] = useState<Record<string, boolean>>({})
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
+  const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
   const lastTapRef = useRef(0)
 
   const swipeStartRef = useRef<{ x: number; y: number } | null>(null)
@@ -407,12 +421,24 @@ export default function Mushaf1441Viewer({
     void loadAnnotationsForPage(pageNumber)
   }, [pageNumber])
 
+  // In a spread, also load notes/highlights for the other page of the spread.
+  useEffect(() => {
+    if (!isSpread) return
+    const companion = pageNumber % 2 === 1 ? pageNumber + 1 : pageNumber - 1
+    if (companion >= MIN_PAGE && companion <= MAX_PAGE) void loadAnnotationsForPage(companion)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber, isSpread])
+
   useEffect(() => {
     // Prefetch neighbours so flipping to the next/previous page is instant.
     void prefetchPage(pageNumber + 1)
     void prefetchPage(pageNumber - 1)
+    if (isSpread) {
+      void prefetchPage(pageNumber + 2)
+      void prefetchPage(pageNumber - 2)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber])
+  }, [pageNumber, isSpread])
 
   useEffect(() => {
     if (!mutshabehatPopupAyahKey) return
@@ -444,48 +470,61 @@ export default function Mushaf1441Viewer({
 
   const visiblePage = currentPage?.pageNumber === pageNumber ? currentPage : null
   const visiblePageMetadata = currentPageMetadata.pageNumber === pageNumber ? currentPageMetadata : null
-  const qcfFontFamily = getQcfV2FontFamily(pageNumber)
+  // Spread: odd page on the right, its even partner on the left. `pageNumber` stays the page
+  // the user navigated to (URL, header); the companion is the other half of the spread.
+  const companionPageNumber = isSpread ? (pageNumber % 2 === 1 ? pageNumber + 1 : pageNumber - 1) : null
+  const hasCompanion = companionPageNumber !== null && companionPageNumber >= MIN_PAGE && companionPageNumber <= MAX_PAGE
+  const companionPage = hasCompanion ? pageCache[companionPageNumber as number] ?? null : null
+  const companionPageMetadata = hasCompanion ? pageMetadataCache[companionPageNumber as number] ?? null : null
   const isQcfFontLoaded = qcfFontStatus[pageNumber] === 'loaded'
   const isQcfFontFailed = qcfFontStatus[pageNumber] === 'error'
   const selectedSurah = surahOptions.find((surah) => surah.surahNumber === selectedSurahNumber) ?? surahOptions[0]
   const selectedSurahAyahCount = selectedSurah?.ayahCount ?? 1
   const ayahKeys = useMemo(() => {
-    if (!visiblePage) return []
     const keys = new Set<string>()
-    for (const line of visiblePage.lines) {
-      for (const word of line.words) keys.add(word.ayahKey)
+    for (const shownPage of [visiblePage, companionPage]) {
+      for (const line of shownPage?.lines ?? []) {
+        for (const word of line.words) keys.add(word.ayahKey)
+      }
     }
     return [...keys]
-  }, [visiblePage])
+  }, [visiblePage, companionPage])
   const lastWordIdByAyah = useMemo(() => {
     const lastWords = new Map<string, string>()
-    if (!visiblePage) return lastWords
-
-    for (const line of visiblePage.lines) {
-      for (const word of line.words) {
-        lastWords.set(word.ayahKey, word.id)
+    const shownPages = [visiblePage, companionPage].filter(Boolean) as MushafPage[]
+    shownPages.sort((a, b) => a.pageNumber - b.pageNumber)
+    for (const shownPage of shownPages) {
+      for (const line of shownPage.lines) {
+        for (const word of line.words) {
+          lastWords.set(word.ayahKey, word.id)
+        }
       }
     }
 
     return lastWords
-  }, [visiblePage])
+  }, [visiblePage, companionPage])
   const pageWordOrder = useMemo(() => {
     const order = new Map<string, number>()
-    if (!visiblePage) return order
+    const shownPages = [visiblePage, companionPage].filter(Boolean) as MushafPage[]
+    shownPages.sort((a, b) => a.pageNumber - b.pageNumber)
 
     let index = 0
-    for (const line of visiblePage.lines) {
-      for (const word of line.words) {
-        order.set(word.id, index)
-        index += 1
+    for (const shownPage of shownPages) {
+      for (const line of shownPage.lines) {
+        for (const word of line.words) {
+          order.set(word.id, index)
+          index += 1
+        }
       }
     }
 
     return order
-  }, [visiblePage])
+  }, [visiblePage, companionPage])
   const pageAnnotations = useMemo(
-    () => annotations.filter((annotation) => annotation.pageNumber === pageNumber),
-    [annotations, pageNumber]
+    () => annotations.filter((annotation) => (
+      annotation.pageNumber === pageNumber || annotation.pageNumber === companionPageNumber
+    )),
+    [annotations, pageNumber, companionPageNumber]
   )
   const annotationsForSelectedTarget = useMemo(() => {
     if (!selectedAyahKey) return []
@@ -770,8 +809,8 @@ export default function Mushaf1441Viewer({
     const dy = touch.clientY - start.y
     if (Math.abs(dx) < SWIPE_THRESHOLD_PX || Math.abs(dx) < Math.abs(dy) * 1.3) return
     // Arabic RTL: swipe left → previous page, swipe right → next page.
-    if (dx < 0) void goToPage(pageNumber - 1)
-    else void goToPage(pageNumber + 1)
+    if (dx < 0) turnPage(-1)
+    else turnPage(1)
   }
 
   async function copyAyahText(ayahKey: string) {
@@ -800,8 +839,29 @@ export default function Mushaf1441Viewer({
     if (target.closest('button') || target.closest('a')) return
     const rect = event.currentTarget.getBoundingClientRect()
     const x = event.clientX - rect.left
-    if (x < rect.width / 2) void goToPage(pageNumber + 1)
-    else void goToPage(pageNumber - 1)
+    if (x < rect.width / 2) turnPage(1)
+    else turnPage(-1)
+  }
+
+  function turnPage(direction: 1 | -1) {
+    if (!isSpread) {
+      void goToPage(pageNumber + direction)
+      return
+    }
+    // A spread turns by two pages and keeps the odd (right-hand) page as the current page.
+    const spreadStart = pageNumber % 2 === 1 ? pageNumber : pageNumber - 1
+    void goToPage(spreadStart + direction * 2)
+  }
+
+  function handleSpreadPageClick(event: ReactMouseEvent<HTMLDivElement>, side: 'right' | 'left') {
+    if (longPressFiredRef.current) {
+      longPressFiredRef.current = false
+      return
+    }
+    const target = event.target as HTMLElement
+    if (target.closest('button') || target.closest('a')) return
+    // Arabic book: tapping the left-hand page goes forward, the right-hand page goes back.
+    turnPage(side === 'left' ? 1 : -1)
   }
 
   // Warm the cache (words + metadata + font) for adjacent pages so turning is instant.
@@ -887,7 +947,8 @@ export default function Mushaf1441Viewer({
       }
 
       const payload = await response.json() as { annotations?: MushafAnnotation[] }
-      setAnnotations(Array.isArray(payload.annotations) ? payload.annotations : [])
+      const loaded = Array.isArray(payload.annotations) ? payload.annotations : []
+      setAnnotations((current) => [...current.filter((annotation) => annotation.pageNumber !== nextPage), ...loaded])
       setAnnotationSyncAvailable(true)
       setNeedsSignIn(false)
     } catch {
@@ -1051,7 +1112,7 @@ export default function Mushaf1441Viewer({
     const direction = state.accumulated > 0 ? 1 : -1
     state.accumulated = 0
     state.lastTurn = now
-    void goToPage(pageNumber + direction)
+    turnPage(direction > 0 ? 1 : -1)
   }
 
   function openContextMenu(target: AnnotationTarget, x: number, y: number) {
@@ -1368,10 +1429,10 @@ export default function Mushaf1441Viewer({
     const hasAyahBookmark = ayahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasAyahFavorite = ayahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
     // QCF glyphs only with this page's own loaded font; otherwise readable Unicode text.
-    const useGlyph = isQcfFontLoaded && Boolean(word.glyph)
+    const useGlyph = qcfFontStatus[word.pageNumber] === 'loaded' && Boolean(word.glyph)
     const displayText = useGlyph ? word.glyph : (word.textQpcHafs ?? word.textUthmani)
     const fontFamily = useGlyph
-      ? `"${qcfFontFamily}", serif`
+      ? `"${getQcfV2FontFamily(word.pageNumber)}", serif`
       : 'var(--font-amiri-quran), "Times New Roman", serif'
 
     return (
@@ -1558,46 +1619,64 @@ export default function Mushaf1441Viewer({
     )
   }
 
-  function renderLineWords() {
-    const isOpeningPage = pageNumber <= 2
-    const isPageReady = Boolean(visiblePage) && (isQcfFontLoaded || isQcfFontFailed)
-    const decorations = visiblePage ? getLineDecorations(visiblePage) : new Map<number, LineDecoration>()
-    const isRightPage = pageNumber % 2 === 1
+  function renderLineWords(
+    page: MushafPage | null,
+    pageNo: number,
+    metadata: Mushaf1441PageMetadata | null,
+    layout: 'single' | 'right' | 'left' = 'single',
+  ) {
+    const fontLoaded = qcfFontStatus[pageNo] === 'loaded'
+    const fontFailed = qcfFontStatus[pageNo] === 'error'
+    const isOpeningPage = pageNo <= 2
+    const isPageReady = Boolean(page) && (fontLoaded || fontFailed)
+    const decorations = page ? getLineDecorations(page) : new Map<number, LineDecoration>()
+    const isRightPage = pageNo % 2 === 1
     const marginFontSize = 'clamp(8px, 2cqw, 13px)'
     // Al-Fatihah and the start of Al-Baqarah are set as a short centred block in a framed
     // middle area; every other page uses the full 15-line grid.
-    const lines = !visiblePage
+    const lines = !page
       ? []
       : isOpeningPage
-        ? visiblePage.lines.filter((line) => line.words.length > 0 || decorations.has(line.lineNumber))
-        : visiblePage.lines
-    const wordCounts = (visiblePage?.lines ?? []).map((line) => line.words.length).filter(Boolean).sort((a, b) => a - b)
+        ? page.lines.filter((line) => line.words.length > 0 || decorations.has(line.lineNumber))
+        : page.lines
+    const wordCounts = (page?.lines ?? []).map((line) => line.words.length).filter(Boolean).sort((a, b) => a - b)
     const typicalLineWordCount = wordCounts[Math.floor(wordCounts.length * 0.75)] ?? 0
 
     return (
       <div
         dir="rtl"
-        className="relative select-none overflow-hidden bg-[#fffdf6] shadow-[0_8px_30px_rgba(63,49,21,0.12)] [-webkit-touch-callout:none] sm:rounded-[10px] sm:border sm:border-[#e2d4b3]"
+        className={`relative select-none overflow-hidden bg-[#fffdf6] shadow-[0_8px_30px_rgba(63,49,21,0.12)] [-webkit-touch-callout:none] sm:rounded-[10px] sm:border sm:border-[#e2d4b3] ${layout === 'right' ? 'sm:rounded-l-[3px]' : layout === 'left' ? 'sm:rounded-r-[3px]' : ''}`}
         style={{
-          width: MUSHAF_PAGE_WIDTH,
-          height: MUSHAF_PAGE_HEIGHT,
+          width: layout === 'single' ? MUSHAF_PAGE_WIDTH : MUSHAF_SPREAD_PAGE_WIDTH,
+          height: layout === 'single' ? MUSHAF_PAGE_HEIGHT : MUSHAF_SPREAD_PAGE_HEIGHT,
           maxWidth: '100%',
           maxHeight: '100%',
           containerType: 'inline-size',
         }}
-        onClick={handlePageClick}
+        onClick={(event) => (layout === 'single' ? handlePageClick(event) : handleSpreadPageClick(event, layout))}
         onTouchStart={handlePageTouchStart}
         onTouchEnd={handlePageTouchEnd}
       >
+        {/* Spine shading on the inner edge of a spread page */}
+        {layout !== 'single' ? (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 w-[7%]"
+            style={layout === 'right'
+              ? { left: 0, background: 'linear-gradient(to right, rgba(63,49,21,0.10), transparent)' }
+              : { right: 0, background: 'linear-gradient(to left, rgba(63,49,21,0.10), transparent)' }}
+          />
+        ) : null}
+
         {/* In-page top margin: juz / hizb / rub + surah name */}
         <div
           className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between gap-2 px-[5.5%] pt-[1.4%] font-bold text-[#9a7b35]"
           style={{ fontSize: marginFontSize }}
         >
           <span className="tabular-nums">
-            الجزء {visiblePageMetadata?.juzNumber ?? '—'} · الحزب {visiblePageMetadata?.hizbNumber ?? '—'} · الربع {visiblePageMetadata ? `${visiblePageMetadata.rubInJuz}/8` : '—'}
+            الجزء {metadata?.juzNumber ?? '—'} · الحزب {metadata?.hizbNumber ?? '—'} · الربع {metadata ? `${metadata.rubInJuz}/8` : '—'}
           </span>
-          <span className="truncate">{visiblePageMetadata?.surahNames.join(' · ') ?? ''}</span>
+          <span className="truncate">{metadata?.surahNames.join(' · ') ?? ''}</span>
         </div>
 
         {/* Left / right page indicator tab on the outer edge */}
@@ -1608,10 +1687,10 @@ export default function Mushaf1441Viewer({
           {isRightPage ? 'يُمنى' : 'يُسرى'}
         </span>
 
-        {!visiblePage && !isPageLoading ? (
+        {!page && !isPageLoading && layout === 'single' ? (
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
             <div>
-              <p className="text-3xl font-black text-[#80662c]">{pageNumber}</p>
+              <p className="text-3xl font-black text-[#80662c]">{pageNo}</p>
               <p className="mt-3 text-sm leading-7 text-[#665b48]">لا توجد بيانات كلمات لهذه الصفحة.</p>
             </div>
           </div>
@@ -1639,7 +1718,7 @@ export default function Mushaf1441Viewer({
                 && lastWord.ayahNumber === surahAyahCountByNumber.get(lastWord.surahNumber)
               )
               // Justify full lines edge to edge like the printed mushaf; centre short lines.
-              const isCentered = isOpeningPage || isQcfFontFailed || (endsSurah && line.words.length < typicalLineWordCount * 0.7)
+              const isCentered = isOpeningPage || fontFailed || (endsSurah && line.words.length < typicalLineWordCount * 0.7)
               return (
                 <div
                   key={`${line.pageNumber}-${line.lineNumber}`}
@@ -1677,10 +1756,10 @@ export default function Mushaf1441Viewer({
           className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center pb-[1.4%] font-black text-[#59461d]"
           style={{ fontSize: marginFontSize }}
         >
-          <span className="tabular-nums">{pageNumber}</span>
+          <span className="tabular-nums">{pageNo}</span>
         </div>
 
-        {isQcfFontFailed ? (
+        {fontFailed ? (
           <p className="absolute inset-x-2 bottom-6 rounded-md border border-[#c07662] bg-[#fff1ed] px-3 py-1 text-center text-[10px] font-bold text-[#8a2f1b]">
             تعذّر تحميل خط المصحف لهذه الصفحة، يُعرض النص بخط بديل.
           </p>
@@ -2498,7 +2577,7 @@ export default function Mushaf1441Viewer({
           <div className="mt-2 flex items-center gap-2">
             <button
               type="button"
-              onClick={() => void goToPage(pageNumber - 1)}
+              onClick={() => turnPage(-1)}
               disabled={pageNumber <= MIN_PAGE}
               className="min-h-11 flex-1 rounded-md border border-[#b99b51] px-3 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:cursor-not-allowed disabled:opacity-40"
             >
@@ -2506,7 +2585,7 @@ export default function Mushaf1441Viewer({
             </button>
             <button
               type="button"
-              onClick={() => void goToPage(pageNumber + 1)}
+              onClick={() => turnPage(1)}
               disabled={pageNumber >= MAX_PAGE}
               className="min-h-11 flex-1 rounded-md border border-[#b99b51] px-3 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:cursor-not-allowed disabled:opacity-40"
             >
@@ -2537,7 +2616,7 @@ export default function Mushaf1441Viewer({
         <div className="flex shrink-0 items-center gap-1.5">
           <button
             type="button"
-            onClick={() => void goToPage(pageNumber - 1)}
+            onClick={() => turnPage(-1)}
             disabled={pageNumber <= MIN_PAGE}
             aria-label="الصفحة السابقة"
             className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40"
@@ -2546,7 +2625,7 @@ export default function Mushaf1441Viewer({
           </button>
           <button
             type="button"
-            onClick={() => void goToPage(pageNumber + 1)}
+            onClick={() => turnPage(1)}
             disabled={pageNumber >= MAX_PAGE}
             aria-label="الصفحة التالية"
             className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40"
@@ -2588,7 +2667,24 @@ export default function Mushaf1441Viewer({
         onWheel={handleWheel}
       >
         <div className="absolute inset-0 flex items-center justify-center p-0 sm:p-3">
-          {renderLineWords()}
+          {isSpread && hasCompanion ? (
+            <div dir="rtl" className="flex h-full w-full items-center justify-center gap-[3px]">
+              {(() => {
+                const rightNo = pageNumber % 2 === 1 ? pageNumber : (companionPageNumber as number)
+                const leftNo = rightNo === pageNumber ? (companionPageNumber as number) : pageNumber
+                const pageFor = (no: number) => (no === pageNumber ? visiblePage : companionPage)
+                const metadataFor = (no: number) => (no === pageNumber ? visiblePageMetadata : companionPageMetadata)
+                return (
+                  <>
+                    <Fragment key={`right-${rightNo}`}>{renderLineWords(pageFor(rightNo), rightNo, metadataFor(rightNo), 'right')}</Fragment>
+                    <Fragment key={`left-${leftNo}`}>{renderLineWords(pageFor(leftNo), leftNo, metadataFor(leftNo), 'left')}</Fragment>
+                  </>
+                )
+              })()}
+            </div>
+          ) : (
+            renderLineWords(visiblePage, pageNumber, visiblePageMetadata, 'single')
+          )}
         </div>
         {renderHoverCard()}
         {isPageLoading || (!isQcfFontLoaded && !isQcfFontFailed) ? (

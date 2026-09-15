@@ -138,7 +138,7 @@ for (const required of ['QCF V2', 'dangerouslySetInnerHTML', 'line-words', 'load
   }
 }
 
-for (const required of ['MUSHAF_PAGE_WIDTH', 'height: MUSHAF_PAGE_HEIGHT']) {
+for (const required of ['MUSHAF_PAGE_WIDTH', 'MUSHAF_PAGE_HEIGHT', 'MUSHAF_SPREAD_PAGE_WIDTH']) {
   if (!viewer.includes(required)) {
     fail(`viewer is missing page aspect sizing: ${required}`)
   }
