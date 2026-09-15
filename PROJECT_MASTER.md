@@ -267,7 +267,7 @@ key is server-only.
 
 | Symptom | Check / fix |
 |---|---|
-| Live site up but empty, Vercel logs `getaddrinfo ENOTFOUND …ts.net` | Vercel function region can't resolve the Funnel host. Keep `vercel.json` `"regions": ["bom1"]` |
+| Live site up but empty, Vercel logs `getaddrinfo ENOTFOUND …ts.net` | Vercel DNS intermittently can't resolve the Funnel host (any region). Server Supabase clients must use `resilientFetch` (`src/lib/resilient-fetch.ts`, DoH fallback); keep `vercel.json` `bom1` pin too. Any new `createServerClient` must pass `global: { fetch: resilientFetch }` |
 | Pages load but very slow / auth `/token` 504, DB "context deadline exceeded" | Mac Mini CPU overloaded (Colima VM CPU pressure). Check `colima ssh -- cat /proc/pressure/cpu`, `docker stats`, `ps -Ao pcpu,comm -r` on the host |
 | Live site up but empty / 500 | `curl …ts.net:8443/auth/v1/health`. If it fails: SSD mounted? `colima status` → `docker compose ps` → `tail ~/Library/Logs/mutshabehat-selfhost.log` → `tailscale funnel status` |
 | Local gateway OK, Funnel 502 after reboot | Colima lost the port-forward: `docker restart mutshabehat-gateway` |

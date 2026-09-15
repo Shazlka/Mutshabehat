@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { getSessionUser } from '@/lib/session-user'
+import { resilientFetch } from '@/lib/resilient-fetch'
 
 // Single-user, self-hosted deployment: there is no login UI. The middleware
 // silently establishes a session for the one account (credentials in
@@ -13,6 +14,7 @@ export async function proxy(request: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
+      global: { fetch: resilientFetch },
       cookies: {
         getAll() { return request.cookies.getAll() },
         setAll(cookiesToSet) {

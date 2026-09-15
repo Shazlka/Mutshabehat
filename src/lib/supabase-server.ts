@@ -3,6 +3,7 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { cache } from 'react'
 import { getSessionUser } from '@/lib/session-user'
+import { resilientFetch } from '@/lib/resilient-fetch'
 
 // Wrapped in React cache() so multiple server components in the same request
 // share one client instance instead of each creating their own.
@@ -12,6 +13,7 @@ export const createServerSupabaseClient = cache(async () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
+      global: { fetch: resilientFetch },
       cookies: {
         getAll() { return cookieStore.getAll() },
         setAll(cookiesToSet) {
