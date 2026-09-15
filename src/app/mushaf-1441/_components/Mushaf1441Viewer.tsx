@@ -75,6 +75,29 @@ const SELECTION_BORDER = '#d8c9a3'
 // Ayat that belong to one of your personal mutashabihat groups: one consistent teal,
 // distinct from the gold UI chrome and from every annotation highlight preset.
 const PERSONAL_AYAH_HIGHLIGHT = { text: '#0b6b66', underline: '#5fa89e', tint: '#e3f1ee' }
+
+// Highlighter tints for ayat in your mutashabihat groups. Each group gets its own colour,
+// picked deterministically from its id, so the same group has the same colour on every page
+// and neighbouring groups are easy to tell apart. Soft enough to keep the black text readable.
+const MUTSHABEHAT_TINTS = [
+  { bg: '#fcd9de', edge: '#e0909c' }, // rose
+  { bg: '#fde3bd', edge: '#dca457' }, // apricot
+  { bg: '#f4eca6', edge: '#c4b23d' }, // lemon
+  { bg: '#d5efc8', edge: '#7dbb63' }, // leaf
+  { bg: '#c7ebe1', edge: '#55ad98' }, // mint
+  { bg: '#cde7f6', edge: '#5aa6cc' }, // sky
+  { bg: '#d9dffb', edge: '#7f8fdc' }, // periwinkle
+  { bg: '#e7d8fa', edge: '#a283dc' }, // lavender
+  { bg: '#f8d5ee', edge: '#d585bf' }, // orchid
+  { bg: '#e6dcc9', edge: '#ad966c' }, // sand
+] as const
+
+function tintForGroup(key: string | undefined) {
+  if (!key) return MUTSHABEHAT_TINTS[0]
+  let hash = 0
+  for (let i = 0; i < key.length; i += 1) hash = (hash * 31 + key.charCodeAt(i)) | 0
+  return MUTSHABEHAT_TINTS[Math.abs(hash) % MUTSHABEHAT_TINTS.length]
+}
 const WHEEL_TURN_THRESHOLD = 60
 
 type PopupGroup = {
@@ -1297,6 +1320,8 @@ export default function Mushaf1441Viewer({
     const isHighlightedAyah = selectedAyahKey === word.ayahKey
     const mutshabehatHighlight = mutshabehatHighlightByAyahKey.get(word.ayahKey)
     const isMutshabehatHighlighted = Boolean(mutshabehatHighlight)
+    const mutshabehatTint = mutshabehatHighlight ? tintForGroup(mutshabehatHighlight.groupId ?? mutshabehatHighlight.ayahKey) : null
+    const showMutshabehatTint = Boolean(mutshabehatTint) && !isSelectedWord && !isHighlightedAyah
     const wordAnnotations = annotationsByWordId.get(word.id) ?? []
     const ayahAnnotations = annotationsByAyahKey.get(word.ayahKey) ?? []
     const wordHighlightAnnotation = wordAnnotations.find((annotation) => annotation.annotationType === 'highlight')
@@ -1365,18 +1390,21 @@ export default function Mushaf1441Viewer({
             : isHighlightedAyah
               ? 'bg-[#ece2c8] text-[#171717]'
               : isMutshabehatHighlighted
-                ? 'cursor-pointer underline decoration-dotted decoration-[1.5px] underline-offset-[4px] hover:bg-[#e3f1ee]'
+                ? 'cursor-pointer text-[#171717] hover:brightness-95'
                 : 'text-[#171717] hover:bg-[#f3ecd9]'
         }`}
         style={{
           fontFamily,
           fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
-          color: highlightAnnotation?.textColor
-            ?? (!isSelectedWord && !isHighlightedAyah && isMutshabehatHighlighted ? PERSONAL_AYAH_HIGHLIGHT.text : undefined),
-          textDecorationColor: isMutshabehatHighlighted ? PERSONAL_AYAH_HIGHLIGHT.underline : undefined,
-          backgroundColor: highlightAnnotation?.backgroundColor,
-          boxShadow: hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : undefined,
+          color: highlightAnnotation?.textColor,
+          // Highlighter mark: tinted background plus a same-colour spread that bridges the
+          // justified gaps between words, so the whole ayah reads as one coloured band.
+          backgroundColor: highlightAnnotation?.backgroundColor ?? (showMutshabehatTint ? mutshabehatTint?.bg : undefined),
+          boxShadow: [
+            showMutshabehatTint && !highlightAnnotation ? `0 0 0 0.14em ${mutshabehatTint?.bg}` : null,
+            hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : null,
+          ].filter(Boolean).join(', ') || undefined,
         }}
       >
         <span dangerouslySetInnerHTML={{ __html: displayText ?? '' }} />
@@ -1669,7 +1697,14 @@ export default function Mushaf1441Viewer({
               return (
                 <article key={groupId} className="space-y-3">
                   <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-[15px] font-black leading-snug text-[#171717]">{link?.title ?? 'مجموعة متشابهات'}</h3>
+                    <h3 className="flex items-center gap-2 text-[15px] font-black leading-snug text-[#171717]">
+                      <span
+                        aria-hidden="true"
+                        className="inline-block size-3 shrink-0 rounded-full"
+                        style={{ backgroundColor: tintForGroup(groupId).bg, boxShadow: `inset 0 0 0 1.5px ${tintForGroup(groupId).edge}` }}
+                      />
+                      {link?.title ?? 'مجموعة متشابهات'}
+                    </h3>
                     <span className="shrink-0 text-[11px] font-bold tabular-nums text-[#80662c]">
                       {((link?.similarAyat?.length ?? 0) + 1).toLocaleString('ar-EG')} مواضع
                     </span>
@@ -1705,8 +1740,8 @@ export default function Mushaf1441Viewer({
                             key={`${verse.surah}-${verse.ayah}-${index}`}
                             className="rounded-lg px-3 py-2.5"
                             style={{
-                              backgroundColor: isCurrent ? PERSONAL_AYAH_HIGHLIGHT.tint : '#faf5e8',
-                              boxShadow: isCurrent ? `inset 0 0 0 1px ${PERSONAL_AYAH_HIGHLIGHT.underline}` : undefined,
+                              backgroundColor: isCurrent ? tintForGroup(groupId).bg : '#faf5e8',
+                              boxShadow: isCurrent ? `inset 0 0 0 1px ${tintForGroup(groupId).edge}` : undefined,
                             }}
                           >
                             <div className="mb-1 flex items-center justify-between gap-2 text-xs font-bold">
