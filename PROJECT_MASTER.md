@@ -88,7 +88,7 @@ Codex worktrees were removed on 2026-09-15. Ignore iCloud/OneDrive "Mutshabehat"
 | Project | `mutshabehat-v2` (`prj_CNcNhnaT36NFuHlcP5bnVbbDfsSj`), linked via `.vercel/project.json` |
 | CLI user | `amreshazly-4497` (always pass `--scope shazlka-s-projects`) |
 | Git | connected to `Shazlka/Mutshabehat`, **Production Branch `main`** |
-| Build | Next.js preset, Node 24.x, region `iad1`, Turbopack |
+| Build | Next.js preset, Node 24.x, Turbopack. **Functions pinned to `bom1` (Mumbai) in `vercel.json`**: in `iad1`, Vercel's DNS can't resolve the `*.ts.net` Funnel hostname (`ENOTFOUND`), so every page loads empty. Don't remove the pin |
 | Aliases | `mutshabehat-v2.vercel.app`, `mutshabehat-v2-wine.vercel.app`, `mutshabehat-v2-shazlka-s-projects.vercel.app`, `mutshabehat-v2-git-main-shazlka-s-projects.vercel.app` (branch previews: `mutshabehat-v2-git-<branch>-shazlka-s-projects.vercel.app`) |
 | Dashboard | https://vercel.com/shazlka-s-projects/mutshabehat-v2 |
 | Env vars (Production) | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `AUTOLOGIN_EMAIL`, `AUTOLOGIN_PASSWORD` |
@@ -260,6 +260,8 @@ key is server-only.
 
 | Symptom | Check / fix |
 |---|---|
+| Live site up but empty, Vercel logs `getaddrinfo ENOTFOUND …ts.net` | Vercel function region can't resolve the Funnel host. Keep `vercel.json` `"regions": ["bom1"]` |
+| Pages load but very slow / auth `/token` 504, DB "context deadline exceeded" | Mac Mini CPU overloaded (Colima VM CPU pressure). Check `colima ssh -- cat /proc/pressure/cpu`, `docker stats`, `ps -Ao pcpu,comm -r` on the host |
 | Live site up but empty / 500 | `curl …ts.net:8443/auth/v1/health`. If it fails: SSD mounted? `colima status` → `docker compose ps` → `tail ~/Library/Logs/mutshabehat-selfhost.log` → `tailscale funnel status` |
 | Local gateway OK, Funnel 502 after reboot | Colima lost the port-forward: `docker restart mutshabehat-gateway` |
 | Docker/git "not found" weirdness | External SSD not mounted |
