@@ -34,6 +34,9 @@ type Mushaf1441ViewerProps = {
 const MIN_PAGE = 1
 const MAX_PAGE = MUSHAF_1441_PAGE_COUNT
 const MUSHAF_1441_NOTES_STORAGE_KEY = 'mushaf1441:ayah-notes:v1'
+// Last page the reader was on, so leaving the mushaf (another tab, a group) and coming
+// back resumes there instead of page 1. An explicit ?page= in the URL always wins.
+const MUSHAF_1441_LAST_PAGE_KEY = 'mushaf1441:last-page:v1'
 
 type DetailPanelTab = 'notes' | 'mutshabehat' | 'qiraat'
 type AnnotationEditorMode = 'note' | 'highlight' | 'bookmark' | 'favorite'
@@ -342,6 +345,29 @@ export default function Mushaf1441Viewer({
     )
   }, [annotationDraft, annotationMode])
 
+  // Resume the last page when the reader is opened without an explicit ?page=.
+  useEffect(() => {
+    let savedPage: number | null = null
+    try {
+      savedPage = Number(window.localStorage.getItem(MUSHAF_1441_LAST_PAGE_KEY))
+    } catch {
+      savedPage = null
+    }
+    const hasExplicitPage = new URL(window.location.href).searchParams.has('page')
+    if (hasExplicitPage || !savedPage || savedPage === initialPage.pageNumber || clampPage(savedPage) !== savedPage) {
+      try {
+        window.localStorage.setItem(MUSHAF_1441_LAST_PAGE_KEY, String(initialPage.pageNumber))
+      } catch {
+        // ignore
+      }
+      return
+    }
+    const timer = setTimeout(() => { void goToPage(savedPage as number) }, 0)
+    return () => clearTimeout(timer)
+    // Runs once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     void loadQcfFontForPage(pageNumber)
   }, [pageNumber])
@@ -561,6 +587,11 @@ export default function Mushaf1441Viewer({
       const url = new URL(window.location.href)
       url.searchParams.set('page', String(clamped))
       window.history.replaceState(window.history.state, '', url)
+      try {
+        window.localStorage.setItem(MUSHAF_1441_LAST_PAGE_KEY, String(clamped))
+      } catch {
+        // Storage unavailable (private mode) — resuming is best-effort.
+      }
     }
     setSelectedWord(null)
     setSelectedWordRange(null)
