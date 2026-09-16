@@ -22,10 +22,11 @@ Revisit for v1.1.
 ### The decision
 
 1. Ship **no** Mushaf page fonts in the app binary.
-2. Fetch **`.ttf`** (not `.woff2`) per page on first view, register with
+2. Fetch **`.ttf`** per page on first view, register with
    `CTFontManagerRegisterFontsForURL`, and cache the file permanently under
    `Application Support/`, excluded from iCloud backup
-   (`isExcludedFromBackupKey = true`).
+   (`isExcludedFromBackupKey = true`). `.woff2` is ~57% smaller and *does*
+   work — see "WOFF2" below — but is not what v1 ships on.
 3. Offer one explicit **"تحميل المصحف كاملاً"** action in settings that
    prefetches all 604 pages over Wi-Fi, with progress and a cancel.
 4. **Never transcode, subset, re-compress or otherwise alter a font file.**
@@ -39,23 +40,20 @@ Revisit for v1.1.
 Sizes sampled directly from `verses.quran.foundation` on 2026-09-16
 (41 pages sampled at stride 15 for woff2, 11 pages at stride 60 for the rest):
 
-| Format | Avg/page | All 604 pages | iOS-loadable? |
+| Format | Avg/page | All 604 pages | CoreText-loadable? |
 |---|---:|---:|---|
-| QCF **V2 `.woff2`** (what the web app uses) | ~152 KB | **~89 MB** | **No** |
-| QCF **V2 `.ttf`** | ~348 KB | **~205 MB** | Yes |
-| QCF V1 `.ttf` | ~137 KB | ~81 MB | Yes |
-| QCF V1 `.woff2` | ~69 KB | ~40 MB | **No** |
+| QCF **V2 `.woff2`** (what the web app uses) | ~152 KB | **~89 MB** | yes, but undocumented — see below |
+| QCF **V2 `.ttf`** | ~348 KB | **~205 MB** | yes, documented |
+| QCF V1 `.ttf` | ~137 KB | ~81 MB | yes |
+| QCF V1 `.woff2` | ~69 KB | ~40 MB | yes, same caveat |
 | QCF V2 `.otf` | — | — | does not exist (404) |
 
-Four facts decide it:
+Three facts decide it:
 
-- **WOFF2 is not an option on iOS.** CoreText registers OTF/TTF/TTC/dfont only;
-  WOFF2 decoding lives inside WebKit and is not exposed. Using the web app's
-  89 MB of `.woff2` would mean embedding a WOFF2 decoder — a new dependency,
-  and decoding the file is squarely what the licence calls "Decompile".
-- **205 MB of TTF cannot go in the binary.** It dwarfs the rest of the app,
+- **No format fits in the binary.** 205 MB of TTF dwarfs the rest of the app,
   crosses Apple's cellular-download warning threshold on its own, and forces
-  every user to pay for 604 pages to read one.
+  every user to pay for 604 pages to read one. Even the 89 MB WOFF2 set is a
+  bad trade for a feature the reader degrades gracefully without.
 - **The licence forbids the obvious workaround.** Subsetting, converting
   WOFF2→TTF, or re-compressing to shrink the bundle are all "Modified,
   Altered, … Reproduced". Ruled out, not merely inadvisable.
@@ -72,6 +70,39 @@ The TTF endpoint serves **uncompressed** (`content-length` identical with and
 without `Accept-Encoding: br, gzip` — 323 348 bytes for p50 either way), so
 ~348 KB/page is real wire cost, not just disk. Budget ~205 MB for a full
 prefetch.
+
+### WOFF2 — measured, available, deliberately unused
+
+An earlier draft of this decision asserted that CoreText cannot register WOFF2
+and that using it would require bundling a decoder. **That is wrong**, and the
+correction matters because it changes which URL the fetcher hits and how much
+bandwidth to budget.
+
+Measured on 2026-09-16 (macOS 27, the same CoreText that ships on iOS), against
+the real `p110` font and the real PUA codepoints from
+`packages/quran-data/mushaf1441/fixtures/page-words/page-110.json`:
+
+| | `.ttf` | `.woff2` |
+|---|---|---|
+| `CTFontManagerRegisterFontsForURL` | succeeds | **succeeds** |
+| resolves by PostScript name `QCF2110` | yes | yes |
+| U+FC41…U+FC43, U+FC50, U+FCA0 map to glyphs | 5/5 | **5/5** |
+| advances | `[54, 88, 46, 136, 95]` | **identical** |
+
+WOFF2 renders the correct glyphs with identical metrics. Harness kept at
+`apps/ios/tools/fontcheck.swift` — re-run it against an iOS simulator once
+Xcode is installed (IOS-10).
+
+It is still not what v1 ships on, for one reason: **CoreText's WOFF2 support is
+undocumented, and App Store review has been rejecting apps containing WOFF2
+files**, detected by inspecting file contents rather than extensions. Even
+though this design downloads fonts at runtime rather than embedding them — so
+the documented rejection trigger does not apply — betting the Mushaf reader,
+the app's core feature, on undocumented behaviour that Apple's own reviewers
+call unsupported is a bad trade for ~120 MB of one-time optional download.
+
+Revisit only if full-prefetch bandwidth becomes a real complaint. The fallback
+is cheap and already proven: same CDN, same filenames, different extension.
 
 ### Licence position
 
@@ -130,8 +161,9 @@ the interim.
   management, and has Apple redistribute a third-party font whose provenance
   is exactly the thing in question. A plain HTTPS fetch plus a cache directory
   is less machinery and keeps us in control of the source.
-- **Ship WOFF2 + an on-device decoder.** New dependency, and decoding is
-  "Decompile" under the licence.
+- **Ship WOFF2 instead of TTF** (89 MB rather than 205 MB). Technically works
+  — verified above — but undocumented and an App Store review risk. See
+  "WOFF2" above. Reconsider if bandwidth becomes a real complaint.
 
 ---
 
