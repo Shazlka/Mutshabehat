@@ -24,6 +24,13 @@ has zero network code, and the live schema is already captured in
 
 ## Steps on the Air
 
+> **The mini now has Xcode 27.0 too.** It was installed there before the
+> "put it on the Air" call, from the App Store page this work opened. Two
+> consequences on the mini: `swift` commands fail until someone runs
+> `sudo xcodebuild -license`, and ~15 GB of its ~38 GB free disk is gone.
+> Either accept the licence there or uninstall it — but the Air is still where
+> the iOS work belongs.
+
 ```sh
 # 1. Get the work
 cd ~/Projects/mutshabehat-v2            # or clone git@github.com:Shazlka/Mutshabehat.git
@@ -45,6 +52,13 @@ xcodebuild -downloadPlatform iOS
 # 4. Confirm Phase 1 still passes on this machine
 cd apps/ios/MutshabehatCore && swift build && swift test     # expect 18 tests / 6 suites
 ```
+
+`Package.swift` carries a shim for a Swift 6.4 quirk: under Command Line Tools
+it cannot auto-locate swift-testing's macro plugin. The shim is **conditional on
+the active developer directory** — with Xcode selected it contributes nothing,
+which matters because `.unsafeFlags` would otherwise make the package
+ineligible as a versioned dependency of the Phase 4 app target. To force the
+CLT path for comparison: `DEVELOPER_DIR=/Library/Developer/CommandLineTools swift test`.
 
 Xcode 27.0 is a ~3 GB download; the iOS platform adds several GB on top.
 
