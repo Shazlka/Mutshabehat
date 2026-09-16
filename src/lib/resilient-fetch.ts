@@ -80,7 +80,44 @@ function lookup(hostname: string, options: dns.LookupOptions, callback: LookupCa
   })
 }
 
-const agent = new Agent({ connect: { lookup: lookup as never }, keepAliveTimeout: 30_000 })
+// Explicit, aggressive timeouts: undici's defaults (10s connect, 300s headers/body) mean a
+// genuinely unreachable backend (Mac Mini offline, Tailscale Funnel down at the network level —
+// not just a DNS hiccup) can leave a request hanging for minutes. Every page/route already
+// degrades gracefully when a Supabase call fails (empty lists, 401/503 handling — see
+// CLAUDE.md's changelog), but only once the call actually fails; a multi-minute hang looks
+// identical to "the app is broken" from the outside. Bounding every stage keeps a fully-down
+// backend fast-failing (worst case a few seconds per call) instead of stalling until Vercel's
+// own function timeout kills the request.
+const agent = new Agent({
+  connect: { lookup: lookup as never, timeout: 5_000 },
+  connectTimeout: 5_000,
+  headersTimeout: 8_000,
+  bodyTimeout: 8_000,
+  keepAliveTimeout: 30_000,
+})
 
-export const resilientFetch: typeof fetch = (input, init) =>
-  undiciFetch(input as never, { ...(init as object), dispatcher: agent } as never) as unknown as Promise<Response>
+// `@supabase/postgrest-js` retries every idempotent (GET/HEAD) request up to 3 times with
+// exponential backoff (1s, 2s, 4s = 7s total) on ANY fetch rejection except an `AbortError` —
+// see its `PostgrestBuilder.then()`. That backoff is aimed at brief transient blips (a load
+// balancer hiccup); against a genuinely unreachable backend (Mac Mini offline, Tailscale Funnel
+// down) it turns an instant connection failure into a 7-second wait on every single query, and
+// this app calls several queries per page — the app-level 401/503 handling and empty-state
+// rendering (see CLAUDE.md's changelog, e.g. "logged-out UX 401 vs 503") only kicks in *after*
+// the fetch settles, so the whole page stalls for that long even though it fails gracefully.
+// This module already owns retry/fallback for the one failure mode that's actually transient
+// here (DNS — system lookup, then DNS-over-HTTPS, then last-known-good). A second, generic
+// retry layer on top adds a multi-second tax during a real outage without adding resilience
+// PostgREST/GoTrue-side blips aren't the documented failure mode; DNS is, and that's already
+// handled above. So every rejection is normalized to an `AbortError`, which postgrest-js (and
+// any other consumer that follows the same fetch convention) treats as final and never retries.
+// The original failure is preserved as `.cause` for logging/diagnostics.
+export const resilientFetch: typeof fetch = async (input, init) => {
+  try {
+    return await (undiciFetch(input as never, { ...(init as object), dispatcher: agent } as never) as unknown as Promise<Response>)
+  } catch (cause) {
+    const error = new Error('Fetch failed (normalized to AbortError so callers do not retry a fully-down backend)', { cause })
+    error.name = 'AbortError'
+    ;(error as Error & { code?: string }).code = 'ABORT_ERR'
+    throw error
+  }
+}
