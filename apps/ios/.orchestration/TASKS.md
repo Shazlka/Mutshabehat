@@ -3,9 +3,9 @@
 **Environment (updated 2026-09-16).** This board has moved off the cloud
 session onto a real machine — and that machine is the **Mac mini**, not the
 MacBook Air as the resume prompt assumed (`hostname amr-Mac-mini.local`,
-`hw.model Macmini9,1`, Tailscale self `100.88.212.88`). Run `hostname` before
+`hw.model Macmini9,1`, and Tailscale reports the mini as this node). Run `hostname` before
 assuming otherwise. Consequences: production Postgres is **local** on
-`127.0.0.1:5433` via `docker exec mutshabehat-db`, which closed IOS-08, and
+`docker exec mutshabehat-db`, which closed IOS-08, and
 there is no second host to SSH into. Also available: the `codex` / `agy` /
 `grok` / `opencode` CLIs and the Swift 6.4 toolchain.
 
@@ -31,7 +31,8 @@ Session model: Opus 5. Roster state in `quota.json`.
 | IOS-09 | 1 | T1 | — | — | Delete stray probe row `710f9be6-…` from `mushaf_annotations` | prod DB | IOS-04 | **NEEDS USER** | auto-mode classifier blocks prod writes; one-liner in DISCOVERY §8.6 item 4 |
 | IOS-10 | 1 | T1 | — | — | Install Xcode + iOS SDK | — | — | **NEEDS USER** | `mas get 497799835` needs sudo and cannot prompt from an agent session; `brew install xcodes` is broken on macOS 27 (XcodesOrg/homebrew-made#4). Blocks every iOS-target build and simulator run; does **not** block IOS-12 |
 | IOS-11 | 5 | T2 | — | — | Source official KFGQPC QCF V2 TTFs (CDN build is self-labelled "Test Font"), verify glyph codepoints still match the fixtures | `docs/ios/**` | IOS-06 | TODO | release gate only; CDN files fine for private/TestFlight builds |
-| IOS-12 | 1 | T2 | Codex | — | Scaffold `apps/ios/MutshabehatCore` SPM package: domain models, SQLite schema, sync ports. No UIKit/SwiftUI — must build with CLT | `apps/ios/**` | IOS-04 | IN PROGRESS | platform-independent by design so IOS-10 does not block it |
+| IOS-12 | 1 | T2 | Codex | Codex | Scaffold `apps/ios/MutshabehatCore` SPM package: domain models, SQLite schema, ports. No UIKit/SwiftUI — must build with CLT | `apps/ios/**` | IOS-04 | **DONE** | 2 targets, 0 dependencies, 1 773 LOC. `swift build` + `swift test` clean: **18 tests / 6 suites**, incl. all 406 golden vectors. Reviewed: dependency rule holds (Domain imports Foundation only), `SQLITE_TRANSIENT` used on every text/blob bind, `foreign_keys=ON`, WAL, `user_version` migrations |
+| IOS-14 | 1 | T1 | — | — | Move the iOS work to the MacBook Air (see `docs/ios/HANDOFF-AIR.md`) | — | IOS-12 | **NEEDS USER** | Xcode + simulator belong on the Air; the mini keeps the backend |
 | IOS-13 | 3 | T3 | Opus | — | Sync design: pull/push protocol, conflict policy, `updated_at` watermarks. Must handle PostgREST's 1 000-row cap | `docs/ios/**` | IOS-04, IOS-12 | TODO | full-corpus sync viable — v1 dataset ≈1.5 MB |
 
 ## Open decisions

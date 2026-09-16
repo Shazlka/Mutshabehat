@@ -1,5 +1,5 @@
 {
-  "_note": "Updated 2026-09-16 from the MacBook Air. The cloud session's blockers are gone: codex/agy/grok/opencode CLIs are installed and the Tailscale route to the Mac mini works (production REST reachable on :8443). The remaining environment blocker is Xcode - only Command Line Tools are installed, so there is no xcodebuild, iOS SDK or simulator. SwiftPM + host toolchain builds are verified working, so platform-independent Swift work proceeds; see IOS-10.",
+  "_note": "Updated 2026-09-16 from the MacBook Air. The cloud session's blockers are gone: codex/agy/grok/opencode CLIs are installed and production Postgres is reachable directly, because this session runs on the Mac mini itself. The remaining environment blocker is Xcode - only Command Line Tools are installed, so there is no xcodebuild, iOS SDK or simulator. SwiftPM + host toolchain builds are verified working, so platform-independent Swift work proceeds; see IOS-10.",
   "host": "amrs-macbook-air-2-1",
   "session-model": "opus-5",
   "opus-orchestrator": {
@@ -48,9 +48,9 @@
     }
   },
   "backend": {
-    "prod-rest": "https://youssefs-mac-mini.tailcd68dd.ts.net:8443 (reachable)",
-    "postgres-direct": "NOT routed over Tailscale (5432/5433 closed)",
-    "mini-ssh": "key rejected - see IOS-08",
+    "prod-rest": "the self-hosted Supabase funnel (NEXT_PUBLIC_SUPABASE_URL in .env.local) - reachable",
+    "postgres-direct": "local to the mini on 127.0.0.1 via `docker exec mutshabehat-db`; NOT routed over Tailscale",
+    "mini-ssh": "n/a - this session runs ON the mini",
     "psql-pg_dump": "not installed on the Air"
   }
 }

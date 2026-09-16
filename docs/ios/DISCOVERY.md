@@ -152,7 +152,7 @@ phone.
 
 **Which machine this ran on.** The session was told it was on the MacBook Air.
 It is not — it runs on the **Mac mini itself** (`hostname amr-Mac-mini.local`,
-`hw.model Macmini9,1`, Tailscale self `100.88.212.88 youssefs-mac-mini`). That
+`hw.model Macmini9,1`, and Tailscale reports the mini as this node). That
 mattered: the first half of this section was gathered the hard way, over the
 public Tailscale Funnel, and the "SSH to the mini is refused" blocker was this
 machine refusing a connection to itself. Anyone resuming this work should run
