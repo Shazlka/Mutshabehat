@@ -3,6 +3,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { QiraatLocus, QiraatVariant, QiraatAttribution } from '@/types/qiraat'
 
+import { getQiraatPersonColor } from '@/lib/qiraat-colors'
+
 export interface QiraatHoverTooltipProps {
   locus: QiraatLocus
   anchorRect: {
@@ -34,16 +36,6 @@ export function formatPerformanceType(type?: string | null): string {
   return map[type] || type
 }
 
-function getAttributionBadgeClass(role?: string, personType?: string): string {
-  if (personType === 'imam' || role === 'imam') {
-    return 'border border-[#fde68a] bg-[#fef3c7] text-[#854d0e]'
-  }
-  if (personType === 'rawi' || role === 'rawi') {
-    return 'border border-[#a7f3d0] bg-[#ecfdf5] text-[#065f46]'
-  }
-  return 'border border-[#e5e7eb] bg-[#f9fafb] text-[#374151]'
-}
-
 function renderQarisForVariant(variant: QiraatVariant) {
   if (!variant.attributions || variant.attributions.length === 0) {
     if (variant.source_line_raw) {
@@ -55,25 +47,39 @@ function renderQarisForVariant(variant: QiraatVariant) {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-1">
+    <div className="flex flex-wrap items-center gap-1.5">
       {variant.attributions.map((attr) => {
         const isImam = attr.role === 'imam' || attr.person?.person_type === 'imam'
         const isRawi = attr.role === 'rawi' || attr.person?.person_type === 'rawi'
         const displayName = attr.person ? attr.person.display_name : attr.attribution_raw
+        const parentId = attr.parent_person_id || attr.person?.parent_person_id
+
+        const personColor = getQiraatPersonColor(
+          attr.person?.id || attr.person_id || attr.person?.display_name || attr.attribution_raw,
+          attr.role,
+          attr.person?.person_type,
+          parentId
+        )
 
         return (
           <span
             key={attr.id || `${attr.person_id}-${attr.variant_id}`}
-            className={`inline-flex items-center gap-0.5 rounded px-1.5 py-0.5 text-[11px] font-bold leading-tight ${getAttributionBadgeClass(
-              attr.role,
-              attr.person?.person_type
-            )}`}
+            className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-bold leading-tight shadow-sm border transition-transform hover:scale-[1.03]"
+            style={{
+              color: personColor.color,
+              backgroundColor: personColor.bg,
+              borderColor: personColor.border,
+            }}
             title={
               attr.person
                 ? `${isImam ? 'الإمام' : isRawi ? 'الراوي' : ''} ${attr.person.canonical_name || attr.person.display_name}`
                 : attr.attribution_raw
             }
           >
+            <span
+              className="size-1.5 rounded-full shrink-0"
+              style={{ backgroundColor: personColor.color }}
+            />
             {isImam ? <span className="text-[9px] opacity-75 font-normal">الإمام</span> : null}
             {isRawi ? <span className="text-[9px] opacity-75 font-normal">الراوي</span> : null}
             <span>{displayName}</span>

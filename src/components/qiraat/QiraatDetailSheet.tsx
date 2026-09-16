@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import type { QiraatLocus, QiraatVariant, QiraatAttribution } from '@/types/qiraat'
+import { getQiraatPersonColor } from '@/lib/qiraat-colors'
 
 interface QiraatDetailSheetProps {
   isOpen: boolean
@@ -258,24 +259,32 @@ export default function QiraatDetailSheet({
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {activeVariant.attributions.map((attr) => {
-                        const isImam = attr.role === 'imam'
+                        const isImam = attr.role === 'imam' || attr.person?.person_type === 'imam'
                         const person = attr.person
                         const isKhalafHamza = person?.id === 'KHALAF_HAMZA'
                         const isKhalafAshir = person?.id === 'KHALAF_ASHIR'
+                        const parentId = attr.parent_person_id || person?.parent_person_id
+
+                        const personColor = getQiraatPersonColor(
+                          person?.id || attr.person_id || person?.display_name || attr.attribution_raw,
+                          attr.role,
+                          person?.person_type,
+                          parentId
+                        )
 
                         return (
                           <div
                             key={attr.id}
-                            className={`flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-bold ${
-                              isImam
-                                ? 'border-[#f59e0b]/40 bg-[#fffbeb] text-[#92400e]'
-                                : 'border-[#10b981]/40 bg-[#ecfdf5] text-[#065f46]'
-                            }`}
+                            className="flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-bold shadow-sm transition-transform hover:scale-[1.02]"
+                            style={{
+                              color: personColor.color,
+                              backgroundColor: personColor.bg,
+                              borderColor: personColor.border,
+                            }}
                           >
                             <span
-                              className={`size-2 rounded-full ${
-                                isImam ? 'bg-[#d97706]' : 'bg-[#10b981]'
-                              }`}
+                              className="size-2 rounded-full shrink-0"
+                              style={{ backgroundColor: personColor.color }}
                             />
                             <span>
                               {isImam ? 'الإمام ' : 'الراوي '}
@@ -283,11 +292,25 @@ export default function QiraatDetailSheet({
                             </span>
                             {/* Clear indicator for Khalaf disambiguation */}
                             {isKhalafHamza ? (
-                              <span className="rounded bg-[#a7f3d0] px-1 py-0.2 text-[9px] text-[#064e3b]">
+                              <span
+                                className="rounded px-1.5 py-0.5 text-[9px] font-semibold border"
+                                style={{
+                                  borderColor: personColor.border,
+                                  backgroundColor: 'rgba(255,255,255,0.7)',
+                                  color: personColor.color,
+                                }}
+                              >
                                 عن حمزة
                               </span>
                             ) : isKhalafAshir ? (
-                              <span className="rounded bg-[#fde68a] px-1 py-0.2 text-[9px] text-[#78350f]">
+                              <span
+                                className="rounded px-1.5 py-0.5 text-[9px] font-semibold border"
+                                style={{
+                                  borderColor: personColor.border,
+                                  backgroundColor: 'rgba(255,255,255,0.7)',
+                                  color: personColor.color,
+                                }}
+                              >
                                 العاشر
                               </span>
                             ) : null}

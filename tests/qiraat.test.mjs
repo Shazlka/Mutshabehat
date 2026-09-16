@@ -245,3 +245,83 @@ test('Qiraat Service - Lookup Functions', async () => {
   const lNone = await getQiraatByAyahWord(1, 1, 1)
   assert.equal(lNone, null, '1:1:1 has no Qiraat variation')
 })
+
+test('QIRAAT_COLORS Taxonomy and getQiraatPersonColor Resolution', async () => {
+  const { QIRAAT_COLORS, getQiraatPersonColor } = await import('../src/lib/qiraat-colors.ts')
+
+  // Verify all 10 Imams exist in QIRAAT_COLORS
+  const expectedImams = [
+    'nafi', 'ibnKathir', 'abuAmr', 'ibnAmir', 'asim',
+    'hamzah', 'alKisai', 'abuJafar', 'yaqub', 'khalafAlAshir'
+  ]
+  for (const imamKey of expectedImams) {
+    assert.ok(QIRAAT_COLORS[imamKey], `Imam ${imamKey} must exist in QIRAAT_COLORS`)
+    assert.ok(QIRAAT_COLORS[imamKey].color, `Imam ${imamKey} must have a color`)
+    assert.ok(QIRAAT_COLORS[imamKey].name, `Imam ${imamKey} must have an Arabic name`)
+    assert.equal(Object.keys(QIRAAT_COLORS[imamKey].narrators).length, 2, `Imam ${imamKey} must have exactly 2 narrators`)
+  }
+
+  // Exact color assertions
+  assert.equal(QIRAAT_COLORS.nafi.color, '#2563EB')
+  assert.equal(QIRAAT_COLORS.nafi.narrators.qalun.color, '#60A5FA')
+  assert.equal(QIRAAT_COLORS.nafi.narrators.warsh.color, '#1D4ED8')
+
+  assert.equal(QIRAAT_COLORS.ibnKathir.color, '#16A34A')
+  assert.equal(QIRAAT_COLORS.ibnKathir.narrators.alBazzi.color, '#4ADE80')
+  assert.equal(QIRAAT_COLORS.ibnKathir.narrators.qunbul.color, '#15803D')
+
+  assert.equal(QIRAAT_COLORS.abuAmr.color, '#0891B2')
+  assert.equal(QIRAAT_COLORS.abuAmr.narrators.alDuri.color, '#67E8F9')
+  assert.equal(QIRAAT_COLORS.abuAmr.narrators.alSusi.color, '#0E7490')
+
+  assert.equal(QIRAAT_COLORS.ibnAmir.color, '#7C3AED')
+  assert.equal(QIRAAT_COLORS.ibnAmir.narrators.hisham.color, '#A78BFA')
+  assert.equal(QIRAAT_COLORS.ibnAmir.narrators.ibnDhakwan.color, '#6D28D9')
+
+  assert.equal(QIRAAT_COLORS.asim.color, '#EA580C')
+  assert.equal(QIRAAT_COLORS.asim.narrators.shubah.color, '#FB923C')
+  assert.equal(QIRAAT_COLORS.asim.narrators.hafs.color, '#C2410C')
+
+  assert.equal(QIRAAT_COLORS.hamzah.color, '#DC2626')
+  assert.equal(QIRAAT_COLORS.hamzah.narrators.khalaf.color, '#F87171')
+  assert.equal(QIRAAT_COLORS.hamzah.narrators.khallad.color, '#B91C1C')
+
+  assert.equal(QIRAAT_COLORS.alKisai.color, '#DB2777')
+  assert.equal(QIRAAT_COLORS.alKisai.narrators.abuAlHarith.color, '#F472B6')
+  assert.equal(QIRAAT_COLORS.alKisai.narrators.alDuri.color, '#BE185D')
+
+  assert.equal(QIRAAT_COLORS.abuJafar.color, '#CA8A04')
+  assert.equal(QIRAAT_COLORS.abuJafar.narrators.ibnWardan.color, '#FACC15')
+  assert.equal(QIRAAT_COLORS.abuJafar.narrators.ibnJammaz.color, '#A16207')
+
+  assert.equal(QIRAAT_COLORS.yaqub.color, '#B45309')
+  assert.equal(QIRAAT_COLORS.yaqub.narrators.ruways.color, '#F59E0B')
+  assert.equal(QIRAAT_COLORS.yaqub.narrators.rawh.color, '#92400E')
+
+  assert.equal(QIRAAT_COLORS.khalafAlAshir.color, '#475569')
+  assert.equal(QIRAAT_COLORS.khalafAlAshir.narrators.ishaq.color, '#94A3B8')
+  assert.equal(QIRAAT_COLORS.khalafAlAshir.narrators.idris.color, '#334155')
+
+  // Disambiguation tests for getQiraatPersonColor
+  // 1. Khalaf as rawi vs imam
+  const kHamza = getQiraatPersonColor('خلف', 'rawi', 'rawi', 'HAMZA')
+  assert.equal(kHamza.color, '#F87171', 'Khalaf an Hamza must have color #F87171')
+
+  const kAshir = getQiraatPersonColor('خلف', 'imam', 'imam', null)
+  assert.equal(kAshir.color, '#475569', 'Khalaf al-Ashir must have color #475569')
+
+  // 2. Al-Duri under Abu Amr vs Al-Kisai
+  const duriAbuAmr = getQiraatPersonColor('الدوري', 'rawi', 'rawi', 'ABU_AMR')
+  assert.equal(duriAbuAmr.color, '#67E8F9', 'Al-Duri under Abu Amr must have color #67E8F9')
+
+  const duriKisai = getQiraatPersonColor('الدوري', 'rawi', 'rawi', 'AL_KISAI')
+  assert.equal(duriKisai.color, '#BE185D', 'Al-Duri under Al-Kisai must have color #BE185D')
+
+  // 3. Database IDs resolution
+  assert.equal(getQiraatPersonColor('NAFI').color, '#2563EB')
+  assert.equal(getQiraatPersonColor('AL_BAZZI').color, '#4ADE80')
+  assert.equal(getQiraatPersonColor('QUNBUL').color, '#15803D')
+  assert.equal(getQiraatPersonColor('KHALLAD').color, '#B91C1C')
+  assert.equal(getQiraatPersonColor('RUWAYS').color, '#F59E0B')
+  assert.equal(getQiraatPersonColor('RAWH').color, '#92400E')
+})
