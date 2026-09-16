@@ -30,6 +30,10 @@ export type ReadingId = NarratorId
 export interface QiraatReader {
   id: ReaderId
   nameAr: string
+  /** Short display name (no nisba/city, e.g. "عاصم" not "عاصم الكوفي") for compact UI like pills —
+   * a fixed lookup table, never derived by string-splitting nameAr (Q10 "خلف العاشر" must stay
+   * whole: it is NOT interchangeable with narrator Q06-R01 "خلف"). */
+  nameArShort: string
   nameEn: string
   slug: string
   /** Parent-reader color: used when BOTH narrators of this reader apply to a variant (Part 10 Case B). */
@@ -76,7 +80,7 @@ export type DifferenceType =
   | 'IMALAH' | 'IDGHAM' | 'WAQF' | 'NAQL' | 'SILAH' | 'ORTHOGRAPHY' | 'OTHER'
 
 export const DIFFERENCE_TYPE_LABELS_AR: Record<DifferenceType, string> = {
-  HARAKAH: 'حركة',
+  HARAKAH: 'تشكيل',
   LETTER: 'حرف',
   ADDITION: 'زيادة',
   OMISSION: 'حذف',

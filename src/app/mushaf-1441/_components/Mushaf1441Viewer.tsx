@@ -3063,6 +3063,8 @@ export default function Mushaf1441Viewer({
   // Groups a set of readingIds into colored "who reads this" pills: one pill per reader when both
   // of that reader's narrators are present (reader color — Part 10 Case B), otherwise one pill per
   // individual narrator that IS present (narrator color — Case A). Never a plain black-text list.
+  // Labeled "الإمام {short name}" / "الراوي {name}" — narrator names are never shortened further
+  // (the two "الدوري" narrators are only disambiguated by their full name).
   function readerPillsForReadingIds(readingIds: ReadingId[]): { key: string; name: string; color: string }[] {
     const readerIds = Array.from(new Set(readingIds.map((id) => getReading(id).readerId)))
     const pills: { key: string; name: string; color: string }[] = []
@@ -3070,10 +3072,10 @@ export default function Mushaf1441Viewer({
       const totalNarrators = narratorsOfReader(readerId).length
       const presentForReader = readingIds.filter((id) => getReading(id).readerId === readerId)
       if (presentForReader.length >= totalNarrators) {
-        pills.push({ key: readerId, name: getReader(readerId).nameAr, color: readerColor(readerId) })
+        pills.push({ key: readerId, name: `الإمام ${getReader(readerId).nameArShort}`, color: readerColor(readerId) })
       } else {
         for (const narratorId of presentForReader) {
-          pills.push({ key: narratorId, name: getNarrator(narratorId).nameAr, color: narratorColor(narratorId) })
+          pills.push({ key: narratorId, name: `الراوي ${getNarrator(narratorId).nameAr}`, color: narratorColor(narratorId) })
         }
       }
     }
@@ -3097,39 +3099,65 @@ export default function Mushaf1441Viewer({
     if (!hoveredQiraatWord) return null
     const { word, marker } = hoveredQiraatWord
     const surahName = surahNameByNumber.get(word.surahNumber) ?? ''
+    const shownVariants = marker.variants.slice(0, 3)
+
+    // A documented variant only ever lists the readings that DIFFER from Hafs — those who read
+    // like Hafs simply have no record (never duplicating the baseline text as a "variant"). The
+    // hover card still shows them as their own وجه, computed here, never guessed: the 20-reading
+    // set minus everyone covered by a shown variant.
+    const hafsBaseText = word.textQpcHafs ?? word.textUthmani
+    const coveredReadingIds = Array.from(new Set(shownVariants.flatMap((variant) => variant.readingIds)))
+    const baselineReadingIds = marker.unresolved ? [] : readingsNotIn(coveredReadingIds, QIRAAT_READINGS.map((reading) => reading.id))
+    const showBaselineWajh = baselineReadingIds.length > 0
+    const showWajhNumbers = shownVariants.length + (showBaselineWajh ? 1 : 0) > 1
 
     return (
-      <div className="pointer-events-none absolute left-1/2 top-3 z-20 block w-[280px] max-w-[92%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[320px]" dir="rtl">
+      <div className="pointer-events-none absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]" dir="rtl">
         <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
+          <span className="rounded-full bg-[#f1e2b6] px-2.5 py-1 text-[11px] font-bold text-[#7a5a10]">خلاف في الكلمة</span>
           <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
-          <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">القراءات</span>
         </div>
         {marker.unresolved ? (
           <p className="mt-2 text-xs font-bold text-[#8a2f10]">قراءة قيد المراجعة — لم تُحدَّد نسبتها بعد</p>
         ) : (
-          <div className="mt-2 space-y-2">
-            {marker.variants.slice(0, 3).map((variant) => {
+          <div className="mt-2.5 space-y-2.5">
+            {showBaselineWajh ? (
+              <div className="rounded-xl border border-[#e3d6b4] bg-white p-3">
+                <div className="mb-2 flex items-center justify-between gap-2">
+                  <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold leading-relaxed text-[#7a5a10]">القراءة الأصلية</span>
+                  {showWajhNumbers ? <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">الوجه 1</span> : null}
+                </div>
+                <p className="text-center text-3xl font-bold leading-relaxed text-[#7a1f1a] font-[family-name:var(--font-amiri-quran)]">
+                  {hafsBaseText}
+                </p>
+                <p className="mb-1.5 mt-2 text-[10px] font-bold text-[#8a7c5c]">القرّاء والرواة:</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {readerPillsForReadingIds(baselineReadingIds).map(renderReaderPill)}
+                </div>
+              </div>
+            ) : null}
+            {shownVariants.map((variant, index) => {
               const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
               const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
+              // The exact ruling (تشكيل/تقليل/إمالة/إدغام/تحقيق أو إبدال الهمزة/مد...), never a
+              // generic "أداء" placeholder — performanceNote is the precise phonetic description
+              // when this locus has one, otherwise the variant's own difference-type category.
+              const rulingLabel = variant.performanceNote ?? DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]
               const pills = readerPillsForReadingIds(variant.readingIds)
               return (
-                <div key={variant.id} className="border-t border-dashed border-[#eadfc9] pt-2 first:border-t-0 first:pt-0">
+                <div key={variant.id} className="rounded-xl border border-[#e3d6b4] bg-white p-3">
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold leading-relaxed text-[#7a5a10]">{rulingLabel}</span>
+                    {showWajhNumbers ? <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">الوجه {index + 1 + (showBaselineWajh ? 1 : 0)}</span> : null}
+                  </div>
                   {needsManualReview ? (
-                    <p className="mb-1 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
+                    <p className="mb-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
                   ) : null}
-                  {isPerformanceOnly ? (
-                    <p className="text-sm leading-7 text-[#3a3326]">
-                      <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.hafsText}</span>
-                      <span className="mr-2 text-[11px] text-[#8a7c5c]">(اختلاف أداء)</span>
-                    </p>
-                  ) : (
-                    <p className="text-sm leading-7 text-[#3a3326]">
-                      <span className="text-[#8a7c5c] line-through decoration-1">{variant.hafsText}</span>
-                      {' ← '}
-                      <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.variantText}</span>
-                    </p>
-                  )}
-                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  <p className="text-center text-3xl font-bold leading-relaxed text-[#7a1f1a] font-[family-name:var(--font-amiri-quran)]">
+                    {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
+                  </p>
+                  <p className="mb-1.5 mt-2 text-[10px] font-bold text-[#8a7c5c]">القرّاء والرواة:</p>
+                  <div className="flex flex-wrap gap-1.5">
                     {pills.map(renderReaderPill)}
                   </div>
                 </div>
@@ -3140,7 +3168,7 @@ export default function Mushaf1441Viewer({
             ) : null}
           </div>
         )}
-        <p className="mt-2 text-[10px] text-[#a8987a]">اضغط على الكلمة لعرض كل التفاصيل والمصادر</p>
+        <p className="mt-2.5 text-[10px] text-[#a8987a]">اضغط على الكلمة لعرض كل التفاصيل والمصادر</p>
       </div>
     )
   }
