@@ -1,8 +1,56 @@
 {
-  "_note": "This cloud session has no local codex/agy CLI and no Tailscale route to the Mac mini. codex-sol, codex-luna, and agy-flash are NOT reachable from here. All Phase 0 work is run directly by this Sonnet 5 session (standing in for both 'orchestrator' and 'Sonnet worker' roles) plus one Claude general-purpose subagent standing in for the Agy Flash inventory role. Re-evaluate once running from the MacBook Air where those CLIs actually exist.",
-  "opus-orchestrator": { "status": "not_present_this_session", "note": "this session is Sonnet 5, not Opus 5" },
-  "sonnet": { "status": "ok" },
-  "codex-sol": { "status": "unavailable_environment", "reason": "codex CLI not installed in this container" },
-  "codex-luna": { "status": "unavailable_environment", "reason": "codex CLI not installed in this container" },
-  "agy-flash": { "status": "unavailable_environment", "reason": "agy CLI not installed in this container; role filled by a Claude general-purpose subagent for Phase 0 only" }
+  "_note": "Updated 2026-09-16 from the MacBook Air. The cloud session's blockers are gone: codex/agy/grok/opencode CLIs are installed and the Tailscale route to the Mac mini works (production REST reachable on :8443). The remaining environment blocker is Xcode - only Command Line Tools are installed, so there is no xcodebuild, iOS SDK or simulator. SwiftPM + host toolchain builds are verified working, so platform-independent Swift work proceeds; see IOS-10.",
+  "host": "amrs-macbook-air-2-1",
+  "session-model": "opus-5",
+  "opus-orchestrator": {
+    "status": "ok",
+    "note": "this session"
+  },
+  "sonnet": {
+    "status": "ok"
+  },
+  "codex-sol": {
+    "status": "ok",
+    "version": "codex-cli 0.154.0"
+  },
+  "codex-luna": {
+    "status": "ok",
+    "version": "codex-cli 0.154.0"
+  },
+  "agy-flash": {
+    "status": "ok",
+    "version": "agy 1.2.3"
+  },
+  "grok": {
+    "status": "ok",
+    "version": "grok 1.0.0",
+    "note": "fallback for implementation work per delegation policy"
+  },
+  "opencode": {
+    "status": "ok",
+    "version": "1.18.16",
+    "note": "last-resort implementation fallback"
+  },
+  "kimi": {
+    "status": "not_installed"
+  },
+  "toolchain": {
+    "swift": {
+      "status": "ok",
+      "version": "6.4",
+      "note": "SwiftPM build verified with CLT only; system SQLite3 links"
+    },
+    "xcode": {
+      "status": "MISSING",
+      "detail": "xcode-select -> /Library/Developer/CommandLineTools; no xcodebuild, no iOS SDK, no simctl",
+      "blocks": "any iOS-target compile, simulator run, or .xcodeproj work",
+      "task": "IOS-10"
+    }
+  },
+  "backend": {
+    "prod-rest": "https://youssefs-mac-mini.tailcd68dd.ts.net:8443 (reachable)",
+    "postgres-direct": "NOT routed over Tailscale (5432/5433 closed)",
+    "mini-ssh": "key rejected - see IOS-08",
+    "psql-pg_dump": "not installed on the Air"
+  }
 }

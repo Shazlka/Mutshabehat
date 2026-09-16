@@ -1,6 +1,20 @@
--- Preview migration for Mushaf 1441 annotations.
--- Review and apply only to a Supabase preview/development branch.
--- Codex did not apply this migration to any live database.
+-- Mushaf 1441 annotations.
+--
+-- STATUS (verified against production 2026-09-16): this table IS LIVE in the
+-- self-hosted production database and is in active use — 14 rows, written
+-- through src/app/api/mushaf-1441/annotations/route.ts. All 19 columns and
+-- every CHECK constraint below match production exactly.
+--
+-- It reached production via the 2026-08-31 Supabase-Cloud -> self-host data
+-- migration (schema reconstructed by introspection), NOT by running this file.
+-- The file and production agree today; that is verified, not guaranteed by
+-- construction.
+--
+-- The previous header here said "review and apply only to a preview/development
+-- branch" and "Codex did not apply this migration to any live database". Both
+-- were true when written and are now wrong; they caused a live, in-use table to
+-- be classified as unapplied during iOS Phase 0 discovery. See
+-- docs/ios/DISCOVERY.md section 8.3 and docs/ios/DECISIONS.md D-07.
 
 create table if not exists public.mushaf_annotations (
   id uuid primary key default gen_random_uuid(),
