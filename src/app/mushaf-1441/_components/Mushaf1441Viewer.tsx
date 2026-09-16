@@ -33,7 +33,7 @@ import { getNarrator } from '../../../../packages/qiraat-core/narrators'
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
-import { comparisonMarkerForWord, riwayahResolutionForWord, type WordMarker } from './qiraat/qiraatWordMarker'
+import { comparisonMarkerForWord, riwayahResolutionForWord, PERFORMANCE_MARKER_COLOR, type WordMarker } from './qiraat/qiraatWordMarker'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 
 const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
@@ -407,9 +407,18 @@ export default function Mushaf1441Viewer({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [needsSignIn, setNeedsSignIn] = useState(false)
   const [hoveredAyahKey, setHoveredAyahKey] = useState<string | null>(null)
-  // Desktop-only preview of a Qiraat marker on hover (Part 20's "never rely on color alone" —
-  // this is the lightweight peek; the full attribution stays behind a click/tap on the word).
+  // Preview of a Qiraat marker on hover (desktop) or first tap (mobile) — Part 20's "never rely on
+  // color alone." A second tap/click on the SAME already-peeked word opens the full detail panel.
   const [hoveredQiraatWord, setHoveredQiraatWord] = useState<{ word: MushafWord; marker: WordMarker } | null>(null)
+  // Word buttons live inside a memoized MushafPageSlot that intentionally does not re-render on
+  // this state alone (only the sibling popup does) — so a word's own onClick closure can be stale.
+  // This ref mirrors the state and is always read fresh, so the peek/open-detail decision in
+  // onClick is correct even when the page slot hasn't re-rendered since the peek was set.
+  const hoveredQiraatWordIdRef = useRef<string | null>(null)
+  function updateHoveredQiraatWord(value: { word: MushafWord; marker: WordMarker } | null) {
+    hoveredQiraatWordIdRef.current = value?.word.id ?? null
+    setHoveredQiraatWord(value)
+  }
   const [toast, setToast] = useState<string | null>(null)
   const [pageSliderPreview, setPageSliderPreview] = useState<number | null>(null)
   const [mutshabehatPopupAyahKey, setMutshabehatPopupAyahKey] = useState<string | null>(null)
@@ -1876,22 +1885,41 @@ export default function Mushaf1441Viewer({
             liveRef.current.openMutshabehatPopup(word.ayahKey)
             return
           }
-          // On touch devices a tap does not open details — long-press does.
-          if (Date.now() - recentTouchRef.current < 700) return
+          // Qiraat: runs before the touch-suppression guard below (that guard exists for
+          // annotations/mutshabihat, not this) so a first tap on mobile — which fires no pointer
+          // hover — still peeks. First tap/hover shows the lite popup; a second tap on the SAME
+          // already-peeked word (or a desktop click, since hover already peeked it) opens the full
+          // detail panel. Reads the ref, not the state, so a stale page-slot closure can't misread it.
           if (hasQiraatData && qiraatView.mode !== 'normal') {
-            liveRef.current.selectWordForQiraat(word)
+            if (qiraatMarker) {
+              if (hoveredQiraatWordIdRef.current === word.id) {
+                updateHoveredQiraatWord(null)
+                liveRef.current.selectWordForQiraat(word)
+              } else {
+                updateHoveredQiraatWord({ word, marker: qiraatMarker })
+              }
+            } else {
+              liveRef.current.selectWordForQiraat(word)
+            }
             return
           }
+          // On touch devices a tap does not open details — long-press does.
+          if (Date.now() - recentTouchRef.current < 700) return
           liveRef.current.selectWord(word)
         }}
         onDoubleClick={() => void liveRef.current.copyAyahText(word.ayahKey)}
-        onMouseEnter={() => {
+        onPointerEnter={(event) => {
+          // Mouse only: touch taps are driven entirely by onClick above. Chromium's touch-tap
+          // emulation (and some real devices) also synthesizes pointerenter/pointerleave around a
+          // tap, which would otherwise clear a peek the instant after onClick just set it.
+          if (event.pointerType !== 'mouse') return
           setHoveredAyahKey(word.ayahKey)
-          if (qiraatMarker) setHoveredQiraatWord({ word, marker: qiraatMarker })
+          if (qiraatMarker) updateHoveredQiraatWord({ word, marker: qiraatMarker })
         }}
-        onMouseLeave={() => {
+        onPointerLeave={(event) => {
+          if (event.pointerType !== 'mouse') return
           setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
-          setHoveredQiraatWord((current) => (current?.word.id === word.id ? null : current))
+          if (hoveredQiraatWordIdRef.current === word.id) updateHoveredQiraatWord(null)
         }}
         onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
         onTouchStart={(event) => liveRef.current.startLongPress(
@@ -1934,7 +1962,8 @@ export default function Mushaf1441Viewer({
           fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
           paddingBlock: MUSHAF_WORD_BAND_PADDING,
-          color: highlightAnnotation?.textColor,
+          color: highlightAnnotation?.textColor
+            ?? (qiraatMarker?.isPerformanceOnly ? PERFORMANCE_MARKER_COLOR : undefined),
           // Highlight band: the word and the gaps next to it (renderWordGap) share one colour.
           backgroundColor: highlightAnnotation?.backgroundColor
             ?? (showMutshabehatTint ? mutshabehatTint?.bg : undefined)
@@ -2909,17 +2938,12 @@ export default function Mushaf1441Viewer({
                   }
                   const remaining = readingsNotIn(variant.readingIds, QIRAAT_READINGS.map((reading) => reading.id))
                   const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
-                  const isPreview = !needsManualReview && variant.verificationStatus !== 'VERIFIED' && variant.verificationStatus !== 'PUBLISHED'
                   const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
                   return (
                     <article key={variant.id} className="rounded-md bg-[#fffaf0] p-3 text-sm">
                       {needsManualReview ? (
                         <p className="mb-2 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">
                           تحتاج مراجعة يدوية — غير مؤكدة من المصدر الأصلي
-                        </p>
-                      ) : isPreview ? (
-                        <p className="mb-2 inline-block rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">
-                          قيد المراجعة (غير معتمدة بعد)
                         </p>
                       ) : null}
                       {isPerformanceOnly ? (
@@ -3041,7 +3065,7 @@ export default function Mushaf1441Viewer({
     const surahName = surahNameByNumber.get(word.surahNumber) ?? ''
 
     return (
-      <div className="pointer-events-none absolute left-1/2 top-3 z-20 hidden w-[320px] max-w-[92%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] lg:block" dir="rtl">
+      <div className="pointer-events-none absolute left-1/2 top-3 z-20 block w-[280px] max-w-[92%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[320px]" dir="rtl">
         <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
           <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
           <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">القراءات</span>
@@ -3052,15 +3076,12 @@ export default function Mushaf1441Viewer({
           <div className="mt-2 space-y-2">
             {marker.variants.slice(0, 3).map((variant) => {
               const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
-              const isPreview = !needsManualReview && variant.verificationStatus !== 'VERIFIED' && variant.verificationStatus !== 'PUBLISHED'
               const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
               const labels = attributionLabelsAr(variant.readingIds)
               return (
                 <div key={variant.id} className="border-t border-dashed border-[#eadfc9] pt-2 first:border-t-0 first:pt-0">
                   {needsManualReview ? (
                     <p className="mb-1 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
-                  ) : isPreview ? (
-                    <p className="mb-1 inline-block rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">قيد المراجعة</p>
                   ) : null}
                   {isPerformanceOnly ? (
                     <p className="text-sm leading-7 text-[#3a3326]">

@@ -9,7 +9,7 @@ import { computeAttribution, gradientCss, readingsNotIn } from './attribution.ts
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
 import { BASE_READING } from './types.ts'
 import { FixtureQiraatRepository } from './repository.ts'
-import { comparisonMarkerForWord } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
+import { comparisonMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
 
 const ALL_READING_IDS = QIRAAT_READINGS.map((reading) => reading.id)
@@ -194,6 +194,27 @@ test('pages-1-10 batch: a performance-only variant keeps variantText === hafsTex
     assert.ok(ishmam, 'the إشمام performance variant must be present')
     assert.equal(ishmam.variantText, ishmam.hafsText, 'a performance-only difference must not fake a text/spelling change')
     assert.ok(ishmam.performanceNote && ishmam.performanceNote.length > 0, 'performance-only variants must describe the phonetic difference')
+  })
+})
+
+test('comparison marker: a performance-only variant (no text change) gets the fixed performance color, never a guessed reader/narrator identity color', () => {
+  const repo = new FixtureQiraatRepository()
+  return repo.getVariantsForPage(1, { includeUnpublished: true }).then((variants) => {
+    // 1:6:2 has two competing variants at the same token: a textual one (سين) and a
+    // performance-only one (إشمام) — comparisonMarkerForWord with filter 'all' matches both, so
+    // scope the check to a reader filter that isolates just the performance-only one (Q06 حمزة).
+    const marker = comparisonMarkerForWord(variants, 1, 6, 2, { kind: 'reader', readerId: 'Q06' }, { includeUnpublished: true })
+    assert.ok(marker, 'the إشمام performance marker must be present')
+    assert.equal(marker.isPerformanceOnly, true)
+    assert.equal(marker.color, PERFORMANCE_MARKER_COLOR)
+    assert.equal(marker.isGradient, false)
+
+    // A genuine textual variant (مالك/ملك, 1:4:1) must keep the existing reader/narrator identity
+    // color scheme — the performance color must never leak into an ordinary spelling difference.
+    const textualMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'all' }, { includeUnpublished: true })
+    assert.ok(textualMarker)
+    assert.notEqual(textualMarker.color, PERFORMANCE_MARKER_COLOR)
+    assert.ok(!textualMarker.isPerformanceOnly)
   })
 })
 

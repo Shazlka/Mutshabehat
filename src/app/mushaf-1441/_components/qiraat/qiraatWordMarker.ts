@@ -22,9 +22,22 @@ export interface WordMarker {
    * Never color-coded to a reader/narrator (that would be a guess); shown as a neutral marker.
    */
   unresolved?: boolean
+  /**
+   * True when every matched variant is a phonetic/performance-only ruling (إمالة، تقليل، إدغام،
+   * سكت، إشمام، اختلاس...) — `variantText === hafsText`, no spelling changes. These get one fixed
+   * "this word has a recitation ruling" color instead of the usual reader/narrator identity color,
+   * so a performance ruling is recognizable across the page at a glance; the word's own text color
+   * is set to this too (not just the underline) — the full attribution is still one tap away.
+   */
+  isPerformanceOnly?: boolean
 }
 
 const UNRESOLVED_MARKER_COLOR = '#8a8a8a'
+export const PERFORMANCE_MARKER_COLOR = '#4F46E5'
+
+function isPerformanceOnlyVariant(variant: QiraatVariant): boolean {
+  return variant.variantText === variant.hafsText
+}
 
 function matchesFilter(variant: QiraatVariant, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
@@ -50,6 +63,9 @@ export function comparisonMarkerForWord(
     // needs_manual_review placeholder(s) with no confident attribution yet (Part 29) — never guess
     // a reader/narrator color for this; computeAttribution requires at least one reading id.
     return { color: UNRESOLVED_MARKER_COLOR, isGradient: false, variants: filtered, unresolved: true }
+  }
+  if (filtered.every(isPerformanceOnlyVariant)) {
+    return { color: PERFORMANCE_MARKER_COLOR, isGradient: false, variants: filtered, isPerformanceOnly: true }
   }
   const attribution = computeAttribution(readingIds)
   return {
