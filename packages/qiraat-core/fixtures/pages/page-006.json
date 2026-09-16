@@ -1,0 +1,134 @@
+[
+  {
+    "id": "v-p006-l001-lilmalaikatu",
+    "surah": 2,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "DIACRITIC_CHANGE",
+    "hafsText": "لِلْمَلَـٰٓئِكَةِ",
+    "variantText": "لِلْمَلَـٰٓئِكَةِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p006-l001-lilmalaikatu",
+        "variantId": "v-p006-l001-lilmalaikatu",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 11,
+        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "performanceNote": "ضم التاء حال الوصل \"لِلْمَلَائِكَةُ اسجدوا\".",
+    "notes": "الباقون بالكسر \"لِلْمَلَائِكَةِ\"."
+  },
+  {
+    "id": "v-p006-l002-azalahuma",
+    "surah": 2,
+    "ayah": 36,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَأَزَلَّهُمَا",
+    "variantText": "فَأَزَالَهُمَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p006-l002-azalahuma",
+        "variantId": "v-p006-l002-azalahuma",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 11,
+        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "uthmaniText": "فَأَزَالَهُمَا",
+    "notes": "إثبات ألف بعد الزاي مع تخفيف اللام عند حمزة؛ الباقون بدون الألف مع تشديد اللام."
+  },
+  {
+    "id": "v-p006-l003-adam-1",
+    "surah": 2,
+    "ayah": 37,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ءَادَمُ",
+    "variantText": "ءَادَمَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p006-l003-adam-1",
+        "variantId": "v-p006-l003-adam-1",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 11,
+        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "uthmaniText": "ءَادَمَ",
+    "locusId": "p6-adam-kalimat",
+    "locusType": "multi_word_variant",
+    "notes": "جزء من قراءة مزدوجة الكلمة مع \"كلمات\" في نفس الآية (رفع/نصب متبادلان)."
+  },
+  {
+    "id": "v-p006-l003-kalimat-1",
+    "surah": 2,
+    "ayah": 37,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "كَلِمَـٰتٍۢ",
+    "variantText": "كَلِمَاتٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p006-l003-kalimat-1",
+        "variantId": "v-p006-l003-kalimat-1",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 11,
+        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "uthmaniText": "كَلِمَاتٌ",
+    "locusId": "p6-adam-kalimat",
+    "locusType": "multi_word_variant",
+    "notes": "عند ابن كثير: \"آدَمَ\" بالنصب و\"كَلِمَاتٌ\" بالرفع (عكس البنية عند الباقين)، فالفعل \"تلقّى\" يُسنَد إلى الكلمات لا إلى آدم."
+  }
+]

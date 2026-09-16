@@ -94,8 +94,12 @@ export const DIFFERENCE_TYPE_LABELS_AR: Record<DifferenceType, string> = {
 /**
  * Verification lifecycle (Part 9). Only VERIFIED/PUBLISHED records are shown to ordinary users;
  * everything earlier in the pipeline requires an explicit debug/review flag to surface at all.
+ * `NEEDS_MANUAL_REVIEW` (pages 1-10 batch, Part 3) is distinct from `REVIEWED`: it marks a record
+ * whose exact wording/attribution could not be confidently resolved from the available source at
+ * all — not merely "not yet independently re-checked" — and it must never be promoted by anything
+ * other than an explicit human decision after reading the primary source.
  */
-export type VerificationStatus = 'EXTRACTED' | 'MAPPED' | 'REVIEWED' | 'VERIFIED' | 'PUBLISHED'
+export type VerificationStatus = 'EXTRACTED' | 'MAPPED' | 'REVIEWED' | 'NEEDS_MANUAL_REVIEW' | 'VERIFIED' | 'PUBLISHED'
 
 export const PUBLIC_VERIFICATION_STATUSES: readonly VerificationStatus[] = ['VERIFIED', 'PUBLISHED']
 
@@ -110,6 +114,12 @@ export interface QiraatSource {
   sourceText?: string
   verificationNotes?: string
 }
+
+/**
+ * Whether a locus's difference is a spelling/text change, a phonetic/performance-only difference
+ * (no display text change — Part 23), or a difference spanning more than one Quran word.
+ */
+export type LocusType = 'word_variant' | 'multi_word_variant' | 'performance_variant'
 
 /**
  * One documented difference from the Hafs baseline, anchored to canonical Quran position
@@ -137,6 +147,22 @@ export interface QiraatVariant {
   /** Many-to-many attribution — which of the 20 Riwayat read this variant (never duplicated 10x). */
   readingIds: ReadingId[]
   sources?: QiraatSource[]
+  /**
+   * Groups multiple `QiraatVariant` records that represent ONE conceptual source location
+   * spanning more than one token — either disjoint words in the same ayah (e.g. 2:37's آدم +
+   * كلمات) or the same word repeated across ayahs (e.g. 2:2 and 2:5's هدى). Each record still
+   * resolves independently through the normal per-token engine; `locusId` is display-only, used
+   * to group them back together in the tap/detail panel. Absent for an ordinary single-word locus.
+   */
+  locusId?: string
+  locusType?: LocusType
+  /**
+   * A phonetic/performance description (e.g. "إشمام الصاد زايًا", "ضم الهاء") for a variant that
+   * does not change the displayed text at all (`variantText === hafsText`) — Part 23's rule that
+   * not every Qiraat difference is a Unicode text difference. Shown in the tap/detail panel
+   * alongside — or instead of — a text diff; never encoded as a fake spelling change.
+   */
+  performanceNote?: string
 }
 
 /** page-scoped payload shape returned by GET /api/mushaf-1441/qiraat */

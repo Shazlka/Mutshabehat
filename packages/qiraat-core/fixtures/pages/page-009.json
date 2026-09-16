@@ -1,0 +1,164 @@
+[
+  {
+    "id": "v-p009-l001-yughfar",
+    "surah": 2,
+    "ayah": 58,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "نَّغْفِرْ",
+    "variantText": "يُغْفَرْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p009-l001-yughfar",
+        "variantId": "v-p009-l001-yughfar",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 14,
+        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "uthmaniText": "يُغْفَرْ",
+    "locusId": "p9-naghfir",
+    "locusType": "word_variant",
+    "notes": "ياء مضمومة، فتح الفاء، بناء للمفعول، عند نافع وأبي جعفر."
+  },
+  {
+    "id": "v-p009-l001-tughfar",
+    "surah": 2,
+    "ayah": 58,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "نَّغْفِرْ",
+    "variantText": "تُغْفَرْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p009-l001-tughfar",
+        "variantId": "v-p009-l001-tughfar",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 14,
+        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "uthmaniText": "تُغْفَرْ",
+    "locusId": "p9-naghfir",
+    "locusType": "word_variant",
+    "notes": "تاء مضمومة، فتح الفاء، بناء للمفعول، عند ابن عامر. الباقون بنون مفتوحة وكسر الفاء بناء للفاعل \"نَغْفِرْ\"."
+  },
+  {
+    "id": "v-p009-l002-qila",
+    "surah": 2,
+    "ayah": 59,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "DIACRITIC_CHANGE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p009-l002-qila",
+        "variantId": "v-p009-l002-qila",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 14,
+        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "performanceNote": "إشمام الكسرة الضم.",
+    "notes": "الباقون بالكسرة الخالصة (نفس حكم 2:11 و2:13)."
+  },
+  {
+    "id": "v-p009-l003-alayhim-hameed",
+    "surah": 2,
+    "ayah": 61,
+    "startToken": 38,
+    "endToken": 38,
+    "operation": "DIACRITIC_CHANGE",
+    "hafsText": "عَلَيْهِمُ",
+    "variantText": "عَلَيْهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "NEEDS_MANUAL_REVIEW",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [],
+    "sources": [
+      {
+        "id": "s-v-p009-l003-alayhim-hameed",
+        "variantId": "v-p009-l003-alayhim-hameed",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 14,
+        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "performanceNote": "بنية أداء مركّبة لهاء ومیم الضمير في \"عليهم\" هنا (ضم الهاء صراحةً عند حمزة ويعقوب، تفصيل بين الوصل والوقف عند الكسائي وخلف العاشر، وتفصيل آخر عند أبي عمرو) — لم تتضح تفاصيلها الدقيقة بما يكفي من البيانات المُدخلة للفصل بين الحالات بثقة. راجع المصدر الأصلي قبل أي اعتماد.",
+    "notes": "مرشّحات غير مؤكدة (للتتبع فقط): ضم الهاء (حمزة، يعقوب)؛ ضم/كسر الهاء بحسب الوصل والوقف (الكسائي، خلف العاشر)؛ كسر الهاء مع تفصيل في الميم (أبو عمرو)؛ الباقون بحسب أصلهم المعتاد."
+  },
+  {
+    "id": "v-p009-l004-nabiyyin",
+    "surah": 2,
+    "ayah": 61,
+    "startToken": 52,
+    "endToken": 52,
+    "operation": "DIACRITIC_CHANGE",
+    "hafsText": "ٱلنَّبِيِّـۧنَ",
+    "variantText": "ٱلنَّبِيِّـۧنَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "NEEDS_MANUAL_REVIEW",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [],
+    "sources": [
+      {
+        "id": "s-v-p009-l004-nabiyyin",
+        "variantId": "v-p009-l004-nabiyyin",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 14,
+        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "performanceNote": "مرشّح غير مؤكد: إثبات همزة \"النبيئين\" عند قالون وورش عن نافع، مقابل ترك الهمز \"النبيّين\" عند الباقين — التفاصيل الدقيقة (بما فيها أي أثر على المدّ) لم تُؤكَّد من مصدر أساسي. راجع المصدر الأصلي قبل أي اعتماد.",
+    "notes": "مرشّح فقط، غير مُدرَج كقراءة فعلية (readingIds فارغة) لعدم اليقين."
+  }
+]

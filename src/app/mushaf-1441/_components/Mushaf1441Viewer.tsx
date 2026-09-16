@@ -1902,7 +1902,11 @@ export default function Mushaf1441Viewer({
           recentTouchRef.current = now
         }}
         aria-label={`اختيار ${word.charTypeName === 'end' ? 'علامة نهاية الآية' : 'كلمة'} ${word.textUthmani} من الآية ${word.ayahKey}${
-          qiraatMarker ? ` — قراءات مختلفة: ${attributionLabelsAr(Array.from(new Set(qiraatMarker.variants.flatMap((variant) => variant.readingIds)))).join('، ')}` : ''
+          qiraatMarker
+            ? (qiraatMarker.unresolved
+              ? ' — قراءة قيد المراجعة (لم تُحدَّد نسبتها بعد)'
+              : ` — قراءات مختلفة: ${attributionLabelsAr(Array.from(new Set(qiraatMarker.variants.flatMap((variant) => variant.readingIds)))).join('، ')}`)
+            : ''
         }`}
         aria-pressed={isSelectedWord}
         className={`inline rounded-[3px] px-0 py-0 align-baseline transition-colors focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
@@ -2895,30 +2899,54 @@ export default function Mushaf1441Viewer({
                     readerGroups.set(reader.nameAr, [...(readerGroups.get(reader.nameAr) ?? []), narrator.nameAr])
                   }
                   const remaining = readingsNotIn(variant.readingIds, QIRAAT_READINGS.map((reading) => reading.id))
-                  const isPreview = variant.verificationStatus !== 'VERIFIED' && variant.verificationStatus !== 'PUBLISHED'
+                  const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
+                  const isPreview = !needsManualReview && variant.verificationStatus !== 'VERIFIED' && variant.verificationStatus !== 'PUBLISHED'
+                  const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
                   return (
                     <article key={variant.id} className="rounded-md bg-[#fffaf0] p-3 text-sm">
-                      {isPreview ? (
+                      {needsManualReview ? (
+                        <p className="mb-2 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">
+                          تحتاج مراجعة يدوية — غير مؤكدة من المصدر الأصلي
+                        </p>
+                      ) : isPreview ? (
                         <p className="mb-2 inline-block rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">
                           قيد المراجعة (غير معتمدة بعد)
                         </p>
                       ) : null}
-                      <p className="text-sm leading-8 text-[#3a3326]" dir="rtl">
-                        <span className="text-[#8a7c5c] line-through decoration-1">{variant.hafsText}</span>
-                        {' ← '}
-                        <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.variantText}</span>
-                      </p>
-                      <div className="mt-2 space-y-1.5 border-t border-dashed border-[#e3d6b4] pt-2">
-                        {Array.from(readerGroups.entries()).map(([readerName, narrators]) => (
-                          <div key={readerName}>
-                            <p className="font-black text-[#171717]">{readerName}</p>
-                            <p className="text-xs text-[#665b48]">{narrators.join(' · ')}</p>
+                      {isPerformanceOnly ? (
+                        <p className="text-sm leading-8 text-[#3a3326]" dir="rtl">
+                          <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.hafsText}</span>
+                          <span className="mr-2 text-xs text-[#8a7c5c]">(اختلاف أداء لا يغيّر الرسم)</span>
+                        </p>
+                      ) : (
+                        <p className="text-sm leading-8 text-[#3a3326]" dir="rtl">
+                          <span className="text-[#8a7c5c] line-through decoration-1">{variant.hafsText}</span>
+                          {' ← '}
+                          <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.variantText}</span>
+                        </p>
+                      )}
+                      {variant.performanceNote ? (
+                        <p className="mt-1 text-xs leading-6 text-[#7a5a10]">الأداء: {variant.performanceNote}</p>
+                      ) : null}
+                      {variant.readingIds.length === 0 ? (
+                        <p className="mt-2 border-t border-dashed border-[#e3d6b4] pt-2 text-xs font-bold text-[#8a2f10]">
+                          لم تُحدَّد نسبة هذه القراءة إلى قارئ/راوٍ بعد — لا تُعرض على أنها منسوبة لأحد ولا على أنها غير موجودة عند الباقين.
+                        </p>
+                      ) : (
+                        <>
+                          <div className="mt-2 space-y-1.5 border-t border-dashed border-[#e3d6b4] pt-2">
+                            {Array.from(readerGroups.entries()).map(([readerName, narrators]) => (
+                              <div key={readerName}>
+                                <p className="font-black text-[#171717]">{readerName}</p>
+                                <p className="text-xs text-[#665b48]">{narrators.join(' · ')}</p>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                      <p className="mt-2 text-[11px] text-[#8a7c5c]">
-                        الباقون (حفص عن عاصم وغيرهم ممن لم يُذكر أعلاه): {remaining.length} رواية بلا تغيير عن النص الأساس.
-                      </p>
+                          <p className="mt-2 text-[11px] text-[#8a7c5c]">
+                            الباقون (حفص عن عاصم وغيرهم ممن لم يُذكر أعلاه): {remaining.length} رواية بلا تغيير عن النص الأساس.
+                          </p>
+                        </>
+                      )}
                       <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#80662c]">
                         <span>نوع الاختلاف: {DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]}</span>
                         <span>حالة التحقق: {variant.verificationStatus}</span>

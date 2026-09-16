@@ -1,0 +1,71 @@
+[
+  {
+    "id": "v-p007-l001-khawfa",
+    "surah": 2,
+    "ayah": 38,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "خَوْفٌ",
+    "variantText": "خَوْفَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p007-l001-khawfa",
+        "variantId": "v-p007-l001-khawfa",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 12,
+        "sourceReference": "صفحة المصحف 7 · صفحة PDF 12",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "uthmaniText": "خَوْفَ",
+    "locusId": "p7-khawf",
+    "locusType": "word_variant",
+    "notes": "فتح الفاء وحذف التنوين عند يعقوب؛ الباقون بالتنوين المرفوع \"خَوْفٌ\"."
+  },
+  {
+    "id": "v-p007-l002-tuqbalu",
+    "surah": 2,
+    "ayah": 48,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يُقْبَلُ",
+    "variantText": "تُقْبَلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T12:00:00.000Z",
+    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p007-l002-tuqbalu",
+        "variantId": "v-p007-l002-tuqbalu",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 12,
+        "sourceReference": "صفحة المصحف 7 · صفحة PDF 12",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+      }
+    ],
+    "uthmaniText": "تُقْبَلُ"
+  }
+]

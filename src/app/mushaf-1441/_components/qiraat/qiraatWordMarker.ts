@@ -3,7 +3,6 @@
 import {
   variantsForToken,
   resolveTokenForReading,
-  differsFromHafs,
   type EngineOptions,
 } from '../../../../../packages/qiraat-core/engine'
 import { computeAttribution, gradientCss } from '../../../../../packages/qiraat-core/attribution'
@@ -17,7 +16,15 @@ export interface WordMarker {
   color: string
   isGradient: boolean
   variants: QiraatVariant[]
+  /**
+   * True when none of the matched variants carry any `readingIds` yet — a `NEEDS_MANUAL_REVIEW`
+   * placeholder (Part 29's flagged loci) surfaced only via the debug "include reviewed" toggle.
+   * Never color-coded to a reader/narrator (that would be a guess); shown as a neutral marker.
+   */
+  unresolved?: boolean
 }
+
+const UNRESOLVED_MARKER_COLOR = '#8a8a8a'
 
 function matchesFilter(variant: QiraatVariant, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
@@ -39,6 +46,11 @@ export function comparisonMarkerForWord(
   if (filtered.length === 0) return null
 
   const readingIds = Array.from(new Set(filtered.flatMap((variant) => variant.readingIds)))
+  if (readingIds.length === 0) {
+    // needs_manual_review placeholder(s) with no confident attribution yet (Part 29) — never guess
+    // a reader/narrator color for this; computeAttribution requires at least one reading id.
+    return { color: UNRESOLVED_MARKER_COLOR, isGradient: false, variants: filtered, unresolved: true }
+  }
   const attribution = computeAttribution(readingIds)
   return {
     color: attribution.kind === 'multi-reader' ? gradientCss(attribution.segments) : attribution.color,
@@ -73,7 +85,9 @@ export function riwayahResolutionForWord(
     return { text: '', suppressed: true, marker: null }
   }
 
-  const marker = showDifferenceFromHafs && resolution.kind === 'variant' && differsFromHafs(resolution, hafsText)
+  // A matched non-baseline variant IS a difference from Hafs even when it's performance-only
+  // and its display text is identical to hafsText (Part 23) — never gate this on text equality.
+  const marker = showDifferenceFromHafs && resolution.kind === 'variant'
     ? { color: narratorColor(selectedReadingId), isGradient: false, variants: [resolution.variant] }
     : null
 

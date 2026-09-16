@@ -20,6 +20,15 @@ type PageVariantsLoader = () => Promise<PageVariantsModule>
 // the API route, and the UI are all page-count-agnostic).
 const PAGE_VARIANT_LOADERS: Record<number, PageVariantsLoader> = {
   1: () => import('./fixtures/pages/page-001.json') as unknown as Promise<PageVariantsModule>,
+  2: () => import('./fixtures/pages/page-002.json') as unknown as Promise<PageVariantsModule>,
+  3: () => import('./fixtures/pages/page-003.json') as unknown as Promise<PageVariantsModule>,
+  4: () => import('./fixtures/pages/page-004.json') as unknown as Promise<PageVariantsModule>,
+  5: () => import('./fixtures/pages/page-005.json') as unknown as Promise<PageVariantsModule>,
+  6: () => import('./fixtures/pages/page-006.json') as unknown as Promise<PageVariantsModule>,
+  7: () => import('./fixtures/pages/page-007.json') as unknown as Promise<PageVariantsModule>,
+  8: () => import('./fixtures/pages/page-008.json') as unknown as Promise<PageVariantsModule>,
+  9: () => import('./fixtures/pages/page-009.json') as unknown as Promise<PageVariantsModule>,
+  10: () => import('./fixtures/pages/page-010.json') as unknown as Promise<PageVariantsModule>,
 }
 
 export class FixtureQiraatRepository implements QiraatRepository {
