@@ -29,7 +29,8 @@ import { defaultQiraatRepository } from '../../../../packages/qiraat-core/reposi
 import { attributionLabelsAr, readingsNotIn } from '../../../../packages/qiraat-core/attribution'
 import { getReading, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
-import { getNarrator } from '../../../../packages/qiraat-core/narrators'
+import { getNarrator, narratorsOfReader } from '../../../../packages/qiraat-core/narrators'
+import { readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
@@ -3059,6 +3060,39 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  // Groups a set of readingIds into colored "who reads this" pills: one pill per reader when both
+  // of that reader's narrators are present (reader color — Part 10 Case B), otherwise one pill per
+  // individual narrator that IS present (narrator color — Case A). Never a plain black-text list.
+  function readerPillsForReadingIds(readingIds: ReadingId[]): { key: string; name: string; color: string }[] {
+    const readerIds = Array.from(new Set(readingIds.map((id) => getReading(id).readerId)))
+    const pills: { key: string; name: string; color: string }[] = []
+    for (const readerId of readerIds) {
+      const totalNarrators = narratorsOfReader(readerId).length
+      const presentForReader = readingIds.filter((id) => getReading(id).readerId === readerId)
+      if (presentForReader.length >= totalNarrators) {
+        pills.push({ key: readerId, name: getReader(readerId).nameAr, color: readerColor(readerId) })
+      } else {
+        for (const narratorId of presentForReader) {
+          pills.push({ key: narratorId, name: getNarrator(narratorId).nameAr, color: narratorColor(narratorId) })
+        }
+      }
+    }
+    return pills
+  }
+
+  function renderReaderPill(pill: { key: string; name: string; color: string }) {
+    return (
+      <span
+        key={pill.key}
+        className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold"
+        style={{ borderColor: `${pill.color}55`, backgroundColor: `${pill.color}14`, color: pill.color }}
+      >
+        <span className="size-1.5 shrink-0 rounded-full" style={{ backgroundColor: pill.color }} />
+        {pill.name}
+      </span>
+    )
+  }
+
   function renderQiraatHoverCard() {
     if (!hoveredQiraatWord) return null
     const { word, marker } = hoveredQiraatWord
@@ -3077,7 +3111,7 @@ export default function Mushaf1441Viewer({
             {marker.variants.slice(0, 3).map((variant) => {
               const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
               const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
-              const labels = attributionLabelsAr(variant.readingIds)
+              const pills = readerPillsForReadingIds(variant.readingIds)
               return (
                 <div key={variant.id} className="border-t border-dashed border-[#eadfc9] pt-2 first:border-t-0 first:pt-0">
                   {needsManualReview ? (
@@ -3095,7 +3129,9 @@ export default function Mushaf1441Viewer({
                       <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.variantText}</span>
                     </p>
                   )}
-                  <p className="mt-0.5 truncate text-[11px] text-[#665b48]">{labels.join('، ')}</p>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {pills.map(renderReaderPill)}
+                  </div>
                 </div>
               )
             })}
