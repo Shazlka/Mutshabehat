@@ -68,13 +68,12 @@ const env = Object.fromEntries(
 // Live `parts.text` — verse fragments the user has split out (shared/diff/unique),
 // so it exercises real segmentation the whole-ayah corpus does not.
 //
-// PRIVACY: the emitted fixture is committed to the repo, so only sample columns
-// that hold scripture. `parts.text` qualifies — it is Quran text. Never add
+// PRIVACY: the emitted fixture is committed to a PUBLIC repo, so only sample
+// columns that hold scripture. `parts.text` qualifies — it is Quran text. Never add
 // `groups.title`, `groups.note` or `groups.unote`: those are the user's own
 // writing and do not belong in a test fixture.
 let partTexts = []
 try {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
   const h = { apikey: env.SUPABASE_SERVICE_ROLE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}` }
   const rows = await (await fetch(`${env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/parts?select=text&limit=1000`, { headers: h })).json()
   partTexts = pick(rows.map((r) => r.text).filter(Boolean), 150)
@@ -89,7 +88,6 @@ const samples = [...new Set([...EDGE_CASES, ...pick(ayahTexts, 250), ...partText
 let sqlChecked = 0
 const mismatches = []
 try {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
   const h = {
     apikey: env.SUPABASE_SERVICE_ROLE_KEY,
     Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
