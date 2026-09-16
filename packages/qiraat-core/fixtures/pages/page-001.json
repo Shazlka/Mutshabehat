@@ -1,0 +1,92 @@
+[
+  {
+    "id": "v-1-4-1-malik-melik",
+    "surah": 1,
+    "ayah": 4,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "مَـٰلِكِ",
+    "variantText": "مَلِكِ",
+    "uthmaniText": "مَلِكِ",
+    "differenceType": "LETTER",
+    "notes": "Reading without the alif after the mim (\"مَلِكِ\" = King, vs. Hafs/Kisai's \"مَالِكِ\" = Owner/Master). One of the most widely cited Qiraat differences in the entire corpus — every classical Qiraat manual opens with it.",
+    "verificationStatus": "VERIFIED",
+    "createdAt": "2026-09-16T00:00:00.000Z",
+    "updatedAt": "2026-09-16T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01", "Q01-R02",
+      "Q02-R01", "Q02-R02",
+      "Q03-R01", "Q03-R02",
+      "Q04-R01", "Q04-R02",
+      "Q06-R01", "Q06-R02",
+      "Q08-R01", "Q08-R02",
+      "Q09-R01", "Q09-R02",
+      "Q10-R01", "Q10-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-1-4-1-malik-melik",
+        "variantId": "v-1-4-1-malik-melik",
+        "sourceName": "الشاطبية (حرز الأماني) والنشر في القراءات العشر لابن الجزري",
+        "sourceType": "other",
+        "sourceReference": "الشاطبية، باب الاستعاذة/فاتحة الكتاب؛ النشر في القراءات العشر لابن الجزري، فصل ما اختُلف فيه من سورة الفاتحة",
+        "verificationNotes": "Wording taken from the classical primary references for the Ten Readings (Al-Shatibiyyah, Al-Nashr); this session had no access to a specific paginated edition to cite a page number. Kept at VERIFIED because this exact difference is corroborated across essentially every secondary tajweed/Qiraat source — still worth a one-time cross-check against the user's own printed reference before treating any further variant built on this citation style as VERIFIED without review."
+      }
+    ]
+  },
+  {
+    "id": "v-1-6-2-sirat-hamzah-sin",
+    "surah": 1,
+    "ayah": 6,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلصِّرَٰطَ",
+    "variantText": "ٱلسِّرَٰطَ",
+    "uthmaniText": "ٱلسِّرَٰطَ",
+    "differenceType": "LETTER",
+    "notes": "Hamzah's reading of \"صراط\" with sin instead of sad (some transmissions describe this as ishmam — a sound between sin and sad — rather than a pure sin; this record simplifies to a plain letter swap pending a closer phonetic model).",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T00:00:00.000Z",
+    "updatedAt": "2026-09-16T00:00:00.000Z",
+    "readingIds": ["Q06-R01", "Q06-R02"],
+    "sources": [
+      {
+        "id": "s-1-6-2-sirat-hamzah-sin",
+        "variantId": "v-1-6-2-sirat-hamzah-sin",
+        "sourceName": "مصادر التجويد والقراءات المتداولة",
+        "sourceType": "other",
+        "sourceReference": "منسوب لخلف وخلّاد عن حمزة في عامة مواضع \"صراط\" بالقرآن",
+        "verificationNotes": "Held at REVIEWED (not VERIFIED) because this session could not cross-check the exact narrator scope and the sin/sad-ishmam distinction against a primary Shatibiyyah/Nashr text — needs the user's own verification before promotion. Intentionally excluded from the default (public) view; visible only with the debug \"include reviewed\" flag. See docs/qiraat/06-verification-workflow.md."
+      }
+    ]
+  },
+  {
+    "id": "v-1-7-1-sirat-hamzah-sin",
+    "surah": 1,
+    "ayah": 7,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطَ",
+    "variantText": "سِرَٰطَ",
+    "uthmaniText": "سِرَٰطَ",
+    "differenceType": "LETTER",
+    "notes": "Same sin/sad reading as v-1-6-2-sirat-hamzah-sin, at the second occurrence of \"صراط\" on this page (1:7).",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-16T00:00:00.000Z",
+    "updatedAt": "2026-09-16T00:00:00.000Z",
+    "readingIds": ["Q06-R01", "Q06-R02"],
+    "sources": [
+      {
+        "id": "s-1-7-1-sirat-hamzah-sin",
+        "variantId": "v-1-7-1-sirat-hamzah-sin",
+        "sourceName": "مصادر التجويد والقراءات المتداولة",
+        "sourceType": "other",
+        "sourceReference": "منسوب لخلف وخلّاد عن حمزة في عامة مواضع \"صراط\" بالقرآن",
+        "verificationNotes": "Same caveat as v-1-6-2-sirat-hamzah-sin — REVIEWED pending user verification, not shown by default."
+      }
+    ]
+  }
+]

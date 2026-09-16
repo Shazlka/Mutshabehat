@@ -25,7 +25,18 @@ import {
 } from '../../../../packages/mutshabehat-core/mushafLinkAdapter'
 import { SAMPLE_MUTSHABEHAT_LINK_SOURCE } from '../../../../packages/mutshabehat-core/sampleMushafLinks'
 import { getQiraatVariantsByAyahKey } from '../../../../packages/qiraat-core/qiraatAdapter'
-import { SAMPLE_QIRAAT_SOURCE } from '../../../../packages/qiraat-core/sampleQiraatSource'
+import { defaultQiraatRepository } from '../../../../packages/qiraat-core/repository'
+import { attributionLabelsAr, readingsNotIn } from '../../../../packages/qiraat-core/attribution'
+import { getReading, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
+import { getReader } from '../../../../packages/qiraat-core/readers'
+import { getNarrator } from '../../../../packages/qiraat-core/narrators'
+import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type ReadingId } from '../../../../packages/qiraat-core/types'
+import QiraatToolbar from './qiraat/QiraatToolbar'
+import QiraatLegend from './qiraat/QiraatLegend'
+import { comparisonMarkerForWord, riwayahResolutionForWord, type WordMarker } from './qiraat/qiraatWordMarker'
+import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
+
+const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
 
 type Mushaf1441ViewerProps = {
   initialPage: MushafPage
@@ -234,6 +245,7 @@ type MushafPageSlotProps = {
   fontStatus: QcfFontStatus | undefined
   highlights: unknown
   annotations: unknown
+  qiraat: unknown
   selection: string
   loading: boolean
   render: () => ReactNode
@@ -253,6 +265,7 @@ const MushafPageSlot = memo(
     && prev.fontStatus === next.fontStatus
     && prev.highlights === next.highlights
     && prev.annotations === next.annotations
+    && prev.qiraat === next.qiraat
     && prev.selection === next.selection
     && prev.loading === next.loading,
 )
@@ -400,6 +413,19 @@ export default function Mushaf1441Viewer({
   const [groupDetails, setGroupDetails] = useState<Record<string, PopupGroup | 'loading' | 'error'>>({})
   // Groups in the ayah card start collapsed (title only); tapping a title expands its details.
   const [expandedPopupGroups, setExpandedPopupGroups] = useState<Record<string, boolean>>({})
+
+  // Qiraat Ashr state model (Part 23). Persisted locally like other reader preferences.
+  const [qiraatMode, setQiraatMode] = useState<QiraatMode>('normal')
+  const [qiraatSelectedReadingId, setQiraatSelectedReadingId] = useState<ReadingId>(BASE_READING)
+  const [qiraatStudyMode, setQiraatStudyMode] = useState(false)
+  const [qiraatShowDiffFromHafs, setQiraatShowDiffFromHafs] = useState(false)
+  const [qiraatFilter, setQiraatFilter] = useState<QiraatComparisonFilter>({ kind: 'all' })
+  const [qiraatIncludeReviewed, setQiraatIncludeReviewed] = useState(false)
+  const [qiraatLegendOpen, setQiraatLegendOpen] = useState(false)
+  // Keyed `${page}:${includeReviewed ? 1 : 0}` so toggling the debug flag never serves stale data.
+  const [qiraatVariantsByPage, setQiraatVariantsByPage] = useState<Record<string, QiraatVariant[]>>({})
+  const qiraatVariantsByPageRef = useRef<Record<string, QiraatVariant[]>>({})
+  const qiraatRequestsRef = useRef(new Map<string, Promise<QiraatVariant[]>>())
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
   const lastTapRef = useRef(0)
@@ -412,9 +438,9 @@ export default function Mushaf1441Viewer({
   const dragRef = useRef<{ pointerId: number; startX: number; startY: number; lastX: number; lastTime: number; velocity: number; direction: 1 | -1 | 0; progress: number; width: number } | null>(null)
   const suppressClickRef = useRef(false)
   // Page slots are memoized, so their event handlers call through this ref to reach the latest closures.
-  const liveRef = useRef({ handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress })
+  const liveRef = useRef({ handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, selectWordForQiraat, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress })
   useLayoutEffect(() => {
-    liveRef.current = { handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress }
+    liveRef.current = { handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, selectWordForQiraat, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress }
   })
   const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const longPressFiredRef = useRef(false)
@@ -732,11 +758,79 @@ export default function Mushaf1441Viewer({
         : getMutshabehatByAyahKey(mutshabehatPanelAyahKey, SAMPLE_MUTSHABEHAT_LINK_SOURCE)
       : []
   ), [mutshabehatPanelAyahKey, pageHighlights])
-  const qiraatVariantsForSelectedAyah = useMemo(() => (
-    selectedAyahKey
-      ? getQiraatVariantsByAyahKey(selectedAyahKey, SAMPLE_QIRAAT_SOURCE)
-      : []
-  ), [selectedAyahKey])
+  // The one stable object gated through MushafPageSlot's memo comparator (like `highlights`
+  // above) — a mounted page's Qiraat rendering only updates when THIS reference changes.
+  const qiraatView = useMemo(() => ({
+    mode: qiraatMode,
+    selectedReadingId: qiraatSelectedReadingId,
+    studyMode: qiraatStudyMode,
+    showDifferenceFromHafs: qiraatShowDiffFromHafs,
+    filter: qiraatFilter,
+    includeReviewed: qiraatIncludeReviewed,
+    variantsByPage: qiraatVariantsByPage,
+  }), [qiraatMode, qiraatSelectedReadingId, qiraatStudyMode, qiraatShowDiffFromHafs, qiraatFilter, qiraatIncludeReviewed, qiraatVariantsByPage])
+
+  function qiraatVariantsForPage(pageNo: number): QiraatVariant[] {
+    return qiraatView.variantsByPage[`${pageNo}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_VARIANTS
+  }
+
+  const qiraatVariantsForSelectedAyah = useMemo(() => {
+    if (!selectedAyahKey) return []
+    const [surahPart, ayahPart] = selectedAyahKey.split(':')
+    const surah = Number(surahPart)
+    const ayah = Number(ayahPart)
+    const page = selectedWord?.pageNumber ?? pageNumber
+    const pageVariants = qiraatView.variantsByPage[`${page}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_VARIANTS
+    return getQiraatVariantsByAyahKey(selectedAyahKey, pageVariants)
+      .filter((variant) => variant.surah === surah && variant.ayah === ayah)
+  }, [selectedAyahKey, selectedWord, pageNumber, qiraatView])
+
+  // Load Qiraat reference data for the visible page(s) only in comparison/riwayah mode — the
+  // common "normal Mushaf" case never fetches it at all (Part 24).
+  useEffect(() => {
+    if (qiraatMode === 'normal') return
+    const pages = new Set<number>([pageNumber])
+    if (isSpread) {
+      const spreadStart = pageNumber % 2 === 1 ? pageNumber : pageNumber - 1
+      pages.add(spreadStart)
+      pages.add(spreadStart + 1)
+    }
+    for (const page of pages) {
+      if (page >= MIN_PAGE && page <= MAX_PAGE) void fetchQiraatForPage(page, qiraatIncludeReviewed).catch(() => {})
+    }
+  }, [pageNumber, isSpread, qiraatMode, qiraatIncludeReviewed])
+
+  // Restore/persist Qiraat preferences (mode, reading, study mode, diff toggle, filter) the same
+  // way the swipe-nav setting and the last-page key do: read after mount, write on change.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(QIRAAT_PREFS_STORAGE_KEY)
+      if (!raw) return
+      const prefs = JSON.parse(raw) as Partial<QiraatPrefs>
+      if (prefs.mode) setQiraatMode(prefs.mode)
+      if (prefs.selectedReadingId) setQiraatSelectedReadingId(prefs.selectedReadingId)
+      if (typeof prefs.studyMode === 'boolean') setQiraatStudyMode(prefs.studyMode)
+      if (typeof prefs.showDifferenceFromHafs === 'boolean') setQiraatShowDiffFromHafs(prefs.showDifferenceFromHafs)
+      if (prefs.filter) setQiraatFilter(prefs.filter)
+    } catch {
+      // Ignore malformed/blocked storage — defaults (Mode 1, Hafs) still work.
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      const prefs: QiraatPrefs = {
+        mode: qiraatMode,
+        selectedReadingId: qiraatSelectedReadingId,
+        studyMode: qiraatStudyMode,
+        showDifferenceFromHafs: qiraatShowDiffFromHafs,
+        filter: qiraatFilter,
+      }
+      localStorage.setItem(QIRAAT_PREFS_STORAGE_KEY, JSON.stringify(prefs))
+    } catch {
+      // Best-effort only.
+    }
+  }, [qiraatMode, qiraatSelectedReadingId, qiraatStudyMode, qiraatShowDiffFromHafs, qiraatFilter])
 
   // Fallback only: if the server could not include the links, fetch the full list once.
   useEffect(() => {
@@ -978,6 +1072,34 @@ export default function Mushaf1441Viewer({
     const metadata = await fetchPageMetadata(nextPage)
     setCurrentPageMetadata(metadata)
     return metadata
+  }
+
+  // Qiraat variants are shared reference data (no auth), cached per page — same dedup-by-in-flight
+  // pattern as fetchPageMetadata above. Only page 1 has real data today; every other page resolves
+  // to an empty array quickly and costs one small cached network round trip, never a stall.
+  async function fetchQiraatForPage(nextPage: number, includeUnpublished: boolean) {
+    const cacheKey = `${nextPage}:${includeUnpublished ? 1 : 0}`
+    const cached = qiraatVariantsByPageRef.current[cacheKey]
+    if (cached) return cached
+
+    const inFlight = qiraatRequestsRef.current.get(cacheKey)
+    if (inFlight) return inFlight
+
+    const request = (async () => {
+      const response = await fetch(`/api/mushaf-1441/qiraat?page=${nextPage}${includeUnpublished ? '&debug=1' : ''}`)
+      if (!response.ok) throw new Error(`Failed to load qiraat data for page ${nextPage}`)
+      const payload = await response.json() as { variants?: QiraatVariant[] }
+      const variants = Array.isArray(payload.variants) ? payload.variants : []
+      qiraatVariantsByPageRef.current = { ...qiraatVariantsByPageRef.current, [cacheKey]: variants }
+      setQiraatVariantsByPage((current) => ({ ...current, [cacheKey]: variants }))
+      return variants
+    })()
+    qiraatRequestsRef.current.set(cacheKey, request)
+    try {
+      return await request
+    } finally {
+      if (qiraatRequestsRef.current.get(cacheKey) === request) qiraatRequestsRef.current.delete(cacheKey)
+    }
   }
 
   function isWordTarget(target: AnnotationTarget): target is Extract<AnnotationTarget, { targetType: 'word' }> {
@@ -1325,6 +1447,13 @@ export default function Mushaf1441Viewer({
   function selectWord(word: MushafWord) {
     setSelectedWordRange(null)
     setSelectedTarget({ targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word }, 'note')
+  }
+
+  // Tapping a word carrying Qiraat data opens the same detail panel, straight to its Qiraat tab
+  // (Part 13's "tap a word/phrase → bottom sheet"), instead of the notes tab `selectWord` opens.
+  function selectWordForQiraat(word: MushafWord) {
+    selectWord(word)
+    setActiveDetailTab('qiraat')
   }
 
   function openMutshabehatPopup(ayahKey: string) {
@@ -1690,12 +1819,44 @@ export default function Mushaf1441Viewer({
     const highlightAnnotation = findHighlightAnnotation(word, wordOrder)
     const hasAyahBookmark = ayahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasAyahFavorite = ayahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
-    // QCF glyphs only with this page's own loaded font; otherwise readable Unicode text.
-    const useGlyph = qcfFontStatus[word.pageNumber] === 'loaded' && Boolean(word.glyph)
-    const displayText = useGlyph ? word.glyph : (word.textQpcHafs ?? word.textUthmani)
+
+    // Qiraat Ashr: Mode 1 (normal) never touches rendering — no marks, no colour noise (Part 3).
+    // Ayah-end/pause/sajdah glyphs are page furniture, not real Quran tokens — never anchor variants there.
+    const isRealWordToken = word.charTypeName === undefined || word.charTypeName === 'word'
+    const qiraatPageVariants = qiraatView.mode === 'normal' || !isRealWordToken ? EMPTY_QIRAAT_VARIANTS : qiraatVariantsForPage(word.pageNumber)
+    const qiraatHafsBaseText = word.textQpcHafs ?? word.textUthmani
+    let qiraatOverrideText: string | null = null
+    let qiraatSuppressed = false
+    let qiraatMarker: WordMarker | null = null
+    if (qiraatView.mode === 'comparison') {
+      qiraatMarker = comparisonMarkerForWord(
+        qiraatPageVariants, word.surahNumber, word.ayahNumber, word.wordIndexInAyah, qiraatView.filter,
+        { includeUnpublished: qiraatView.includeReviewed },
+      )
+    } else if (qiraatView.mode === 'riwayah') {
+      const resolution = riwayahResolutionForWord(
+        qiraatPageVariants, word.surahNumber, word.ayahNumber, word.wordIndexInAyah, qiraatHafsBaseText,
+        qiraatView.selectedReadingId, qiraatView.showDifferenceFromHafs, { includeUnpublished: qiraatView.includeReviewed },
+      )
+      qiraatSuppressed = resolution.suppressed
+      qiraatMarker = resolution.marker
+      if (!resolution.suppressed && resolution.text !== qiraatHafsBaseText) qiraatOverrideText = resolution.text
+    }
+    const hasQiraatData = Boolean(qiraatMarker) || qiraatOverrideText !== null || qiraatSuppressed
+
+    // QCF glyphs only with this page's own loaded font, and only for the exact Hafs text they were
+    // drawn for; a Riwayah substitution always falls back to flowing Unicode text (Part 21).
+    const useGlyph = qiraatOverrideText === null && qcfFontStatus[word.pageNumber] === 'loaded' && Boolean(word.glyph)
+    const displayText = qiraatSuppressed ? '' : (qiraatOverrideText ?? (useGlyph ? word.glyph : qiraatHafsBaseText))
     const fontFamily = useGlyph
       ? `"${getQcfV2FontFamily(word.pageNumber)}", serif`
       : 'var(--font-amiri-quran), "Times New Roman", serif'
+    const qiraatMarkerCss = qiraatMarker
+      ? { height: qiraatView.studyMode ? 4 : 2, offset: qiraatView.studyMode ? -3 : -2 }
+      : null
+    const qiraatTintColor = qiraatMarker && qiraatView.studyMode
+      ? (qiraatMarker.isGradient ? '#8a7c5c' : qiraatMarker.color)
+      : null
 
     return (
       <button
@@ -1714,6 +1875,10 @@ export default function Mushaf1441Viewer({
           }
           // On touch devices a tap does not open details — long-press does.
           if (Date.now() - recentTouchRef.current < 700) return
+          if (hasQiraatData && qiraatView.mode !== 'normal') {
+            liveRef.current.selectWordForQiraat(word)
+            return
+          }
           liveRef.current.selectWord(word)
         }}
         onDoubleClick={() => void liveRef.current.copyAyahText(word.ayahKey)}
@@ -1736,7 +1901,9 @@ export default function Mushaf1441Viewer({
           }
           recentTouchRef.current = now
         }}
-        aria-label={`اختيار ${word.charTypeName === 'end' ? 'علامة نهاية الآية' : 'كلمة'} ${word.textUthmani} من الآية ${word.ayahKey}`}
+        aria-label={`اختيار ${word.charTypeName === 'end' ? 'علامة نهاية الآية' : 'كلمة'} ${word.textUthmani} من الآية ${word.ayahKey}${
+          qiraatMarker ? ` — قراءات مختلفة: ${attributionLabelsAr(Array.from(new Set(qiraatMarker.variants.flatMap((variant) => variant.readingIds)))).join('، ')}` : ''
+        }`}
         aria-pressed={isSelectedWord}
         className={`inline rounded-[3px] px-0 py-0 align-baseline transition-colors focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
           isSelectedWord
@@ -1745,7 +1912,7 @@ export default function Mushaf1441Viewer({
               ? ''
             : isHighlightedAyah
               ? 'bg-[#ece2c8] text-[#171717]'
-              : isMutshabehatHighlighted
+              : isMutshabehatHighlighted || hasQiraatData
                 ? 'cursor-pointer text-[#171717] hover:brightness-95'
                 : 'text-[#171717] hover:bg-[#f3ecd9]'
         }`}
@@ -1756,12 +1923,30 @@ export default function Mushaf1441Viewer({
           paddingBlock: MUSHAF_WORD_BAND_PADDING,
           color: highlightAnnotation?.textColor,
           // Highlight band: the word and the gaps next to it (renderWordGap) share one colour.
-          backgroundColor: highlightAnnotation?.backgroundColor ?? (showMutshabehatTint ? mutshabehatTint?.bg : undefined),
+          backgroundColor: highlightAnnotation?.backgroundColor
+            ?? (showMutshabehatTint ? mutshabehatTint?.bg : undefined)
+            ?? (qiraatTintColor ? `color-mix(in srgb, ${qiraatTintColor} 8%, transparent)` : undefined),
           borderRadius: showMutshabehatTint || highlightAnnotation ? 0 : undefined,
           boxShadow: hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : undefined,
         }}
       >
-        <span dangerouslySetInnerHTML={{ __html: displayText ?? '' }} />
+        <span style={{ position: 'relative', display: 'inline-block' }}>
+          <span dangerouslySetInnerHTML={{ __html: displayText ?? '' }} />
+          {qiraatMarker && qiraatMarkerCss ? (
+            <span
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                insetInlineStart: 0,
+                insetInlineEnd: 0,
+                bottom: qiraatMarkerCss.offset,
+                height: qiraatMarkerCss.height,
+                borderRadius: 9999,
+                background: qiraatMarker.color,
+              }}
+            />
+          ) : null}
+        </span>
       </button>
     )
   }
@@ -2691,33 +2876,72 @@ export default function Mushaf1441Viewer({
         {activeDetailTab === 'qiraat' ? (
           <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
             <div className="mb-3">
-              <p className="text-xs font-bold text-[#80662c]">Qiraat</p>
-              <p className="text-xs text-[#665b48]">
-                البنية منفصلة في qiraat-core، ولا توجد بيانات قراءات موثقة محملة بعد.
-              </p>
+              <p className="text-xs font-bold text-[#80662c]">القراءات في هذا الموضع</p>
+              {selectedAyahKey ? (
+                <p className="text-xs text-[#665b48]">
+                  سورة {surahNameByNumber.get(Number(selectedAyahKey.split(':')[0])) ?? ''} · الآية {selectedAyahKey.split(':')[1]}
+                </p>
+              ) : null}
             </div>
 
             {qiraatVariantsForSelectedAyah.length > 0 ? (
-              <div className="space-y-2">
-                {qiraatVariantsForSelectedAyah.map((variant) => (
-                  <article key={variant.id} className="rounded-md bg-[#fffaf0] p-3 text-sm">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="font-black text-[#171717]">{variant.reading}</p>
-                      <p className="font-mono text-xs text-[#80662c]" dir="ltr">{variant.ayahKey}</p>
-                    </div>
-                    <p className="mt-3 text-sm leading-7 text-[#3a3326]">{variant.text}</p>
-                    {variant.explanation ? (
-                      <p className="mt-2 text-xs leading-6 text-[#665b48]">{variant.explanation}</p>
-                    ) : null}
-                    {variant.source ? (
-                      <p className="mt-2 text-[11px] text-[#80662c]">{variant.source}</p>
-                    ) : null}
-                  </article>
-                ))}
+              <div className="space-y-3">
+                {qiraatVariantsForSelectedAyah.map((variant) => {
+                  const readerGroups = new Map<string, string[]>()
+                  for (const readingId of variant.readingIds) {
+                    const reading = getReading(readingId)
+                    const reader = getReader(reading.readerId)
+                    const narrator = getNarrator(reading.narratorId)
+                    readerGroups.set(reader.nameAr, [...(readerGroups.get(reader.nameAr) ?? []), narrator.nameAr])
+                  }
+                  const remaining = readingsNotIn(variant.readingIds, QIRAAT_READINGS.map((reading) => reading.id))
+                  const isPreview = variant.verificationStatus !== 'VERIFIED' && variant.verificationStatus !== 'PUBLISHED'
+                  return (
+                    <article key={variant.id} className="rounded-md bg-[#fffaf0] p-3 text-sm">
+                      {isPreview ? (
+                        <p className="mb-2 inline-block rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">
+                          قيد المراجعة (غير معتمدة بعد)
+                        </p>
+                      ) : null}
+                      <p className="text-sm leading-8 text-[#3a3326]" dir="rtl">
+                        <span className="text-[#8a7c5c] line-through decoration-1">{variant.hafsText}</span>
+                        {' ← '}
+                        <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.variantText}</span>
+                      </p>
+                      <div className="mt-2 space-y-1.5 border-t border-dashed border-[#e3d6b4] pt-2">
+                        {Array.from(readerGroups.entries()).map(([readerName, narrators]) => (
+                          <div key={readerName}>
+                            <p className="font-black text-[#171717]">{readerName}</p>
+                            <p className="text-xs text-[#665b48]">{narrators.join(' · ')}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-2 text-[11px] text-[#8a7c5c]">
+                        الباقون (حفص عن عاصم وغيرهم ممن لم يُذكر أعلاه): {remaining.length} رواية بلا تغيير عن النص الأساس.
+                      </p>
+                      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#80662c]">
+                        <span>نوع الاختلاف: {DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]}</span>
+                        <span>حالة التحقق: {variant.verificationStatus}</span>
+                      </div>
+                      {variant.sources?.length ? (
+                        <div className="mt-1 space-y-0.5 text-[11px] text-[#8a7c5c]">
+                          {variant.sources.map((source) => (
+                            <p key={source.id}>المصدر: {source.sourceName} — {source.sourceReference}</p>
+                          ))}
+                        </div>
+                      ) : null}
+                      {variant.notes ? (
+                        <p className="mt-2 text-xs leading-6 text-[#665b48]">{variant.notes}</p>
+                      ) : null}
+                    </article>
+                  )
+                })}
               </div>
             ) : (
               <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[#665b48]">
-                No qiraat data loaded yet.
+                {qiraatMode === 'normal'
+                  ? 'فعّل وضع المقارنة أو القراءة برواية من القائمة لعرض اختلافات القراءات على هذه الصفحة.'
+                  : 'لا توجد قراءات مختلفة موثقة عند هذه الآية (أو أنها مستبعدة بحسب المرشِّح الحالي).'}
               </p>
             )}
           </div>
@@ -2973,6 +3197,7 @@ export default function Mushaf1441Viewer({
                       fontStatus={qcfFontStatus[no]}
                       highlights={slotHighlightByAyahKey}
                       annotations={annotations}
+                      qiraat={qiraatView}
                       selection={`${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}`}
                       loading={isCurrent && isPageLoading}
                       render={() => renderLineWords(slotPage, no, slotMetadata, layout)}
@@ -3107,6 +3332,26 @@ export default function Mushaf1441Viewer({
               )}
             </div>
 
+            {/* Qiraat Ashr: mode, Riwayah selection, study mode, filters */}
+            <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
+              <p className="mb-3 text-xs font-bold text-[#80662c]">القراءات</p>
+              <QiraatToolbar
+                mode={qiraatMode}
+                onModeChange={setQiraatMode}
+                selectedReadingId={qiraatSelectedReadingId}
+                onReadingChange={setQiraatSelectedReadingId}
+                studyMode={qiraatStudyMode}
+                onStudyModeChange={setQiraatStudyMode}
+                showDifferenceFromHafs={qiraatShowDiffFromHafs}
+                onShowDifferenceFromHafsChange={setQiraatShowDiffFromHafs}
+                filter={qiraatFilter}
+                onFilterChange={setQiraatFilter}
+                includeReviewed={qiraatIncludeReviewed}
+                onIncludeReviewedChange={setQiraatIncludeReviewed}
+                onOpenLegend={() => setQiraatLegendOpen(true)}
+              />
+            </div>
+
             {/* Navigation sliders */}
             <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
               <p className="mb-3 text-xs font-bold text-[#80662c]">التنقل</p>
@@ -3136,6 +3381,33 @@ export default function Mushaf1441Viewer({
       {renderContextMenu()}
 
       {renderMutshabehatPopup()}
+
+      {qiraatLegendOpen ? (
+        <div className="fixed inset-0 z-50">
+          <button
+            type="button"
+            aria-label="إغلاق مفتاح القراءات"
+            onClick={() => setQiraatLegendOpen(false)}
+            className="absolute inset-0 bg-black/35"
+          />
+          <section
+            className="absolute inset-x-0 bottom-0 max-h-[82vh] overflow-y-auto rounded-t-2xl border-t border-[#d7c7a7] bg-[#fffdf8] p-4 shadow-[0_-18px_70px_rgba(23,23,23,0.22)] lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[380px] lg:max-h-none lg:rounded-none lg:border-l lg:border-t-0"
+            style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+          >
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <h2 className="text-lg font-black">مفتاح القراءات</h2>
+              <button
+                type="button"
+                onClick={() => setQiraatLegendOpen(false)}
+                className="min-h-11 rounded-md border border-[#d7c7a7] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+              >
+                إغلاق
+              </button>
+            </div>
+            <QiraatLegend />
+          </section>
+        </div>
+      ) : null}
 
       {/* Notes / annotation sheet — opens when an ayah or word is selected */}
       {selectedAyahKey && isMobileNotesOpen ? (

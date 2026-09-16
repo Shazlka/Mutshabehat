@@ -12,7 +12,8 @@
     "mushaf:validate": "PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/validate-mushaf1441-objective.mjs && PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/validate-mushaf1441-page-order.mjs && PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/validate-mushaf1441-page-words.mjs && PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/validate-mushaf1441-navigation.mjs && PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/validate-mushaf1441-supabase-interactions.mjs && PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/validate-mushaf1441-page-ayats.mjs && PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/validate-mushaf1441-phase6.mjs",
     "mushaf:supabase": "PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/check-mushaf1441-supabase-env.mjs",
     "mushaf:supabase:crud": "PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/verify-mushaf1441-supabase-crud.mjs",
-    "test:proxy": "tsx --test tests/proxy-autologin.test.mjs"
+    "test:proxy": "tsx --test tests/proxy-autologin.test.mjs",
+    "test:qiraat": "node packages/qiraat-core/validate.mjs && tsx --test packages/qiraat-core/engine.test.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",

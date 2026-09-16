@@ -41,6 +41,45 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 > Newest first. One dated entry per change (bug fix / feature / perf). Include the files touched
 > and any required DB migration. This log is the source of truth for "what changed and when".
 
+## 2026-09-16
+- **Feature — Qiraat Ashr (ten canonical Quran readings) prototype on Mushaf page 1:** a full,
+  tested architecture (not just scaffolding) for the ten readers / twenty narrators / twenty
+  Riwayat, integrated into the Mushaf 1441 reader as an additional layer alongside the existing
+  Hafs baseline and Mutashabihat highlighting. Three modes reachable from the reader's burger menu
+  under a new "القراءات" panel: **المصحف** (normal, unchanged Hafs, the default — Qiraat code paths
+  don't even run), **مقارنة القراءات** (Hafs text stays displayed; a color-coded underline marks
+  words with documented variants — solid narrator/reader color for one narrator or a whole reader,
+  a segmented gradient for several readers sharing one variant; filterable by الكل/قارئ/رواية; a
+  Study Mode toggle thickens the marker and adds a light background tint), and **القراءة برواية**
+  (renders the entire page according to any of the 20 selected Riwayat, switchable instantly with
+  no navigation, with an optional "إظهار الاختلاف عن حفص" marker). Tapping a marked word opens the
+  existing (previously-empty-placeholder) "قراءات" detail-panel tab with the full attribution
+  (readers grouped with their narrator pairs), difference type, verification status, and source
+  citation. New framework-agnostic domain package `packages/qiraat-core/` (types, canonical
+  reader/narrator/reading IDs and colors, a deterministic token-anchored rendering engine
+  supporting KEEP/REPLACE/INSERT/DELETE/MERGE/SPLIT/DIACRITIC_CHANGE/ORTHOGRAPHIC_CHANGE, an
+  EXTRACTED→MAPPED→REVIEWED→VERIFIED→PUBLISHED verification lifecycle that keeps unverified data
+  out of the default view, and a fixture-backed `QiraatRepository` — superseding its earlier empty
+  scaffold). New route `GET /api/mushaf-1441/qiraat?page=N` (no auth needed — shared reference
+  data, same cache strategy as `page-words`). Seeded with one real, classically-cited variant
+  (1:4 مالك/ملك, VERIFIED, 8 readers/16 narrators) and two REVIEWED-tier ones (1:6–1:7 الصراط
+  سين/صاد, Hamzah) plus clearly-labeled SYNTHETIC fixtures exercising every remaining operation and
+  attribution case (never rendered in the app). New CSS tokens `--q01-*`…`--q10-*` in
+  `globals.css`. 16 new unit tests (`packages/qiraat-core/engine.test.mjs`, all passing), the whole
+  Mushaf-1441 fixture set untouched and its 7 existing validators still passing, `tsc --noEmit` and
+  `next build` clean, and manual Playwright/Chromium verification of every mode, the multi-reader
+  marker, Riwayah switching, the difference-from-Hafs toggle, and Study Mode (screenshots and full
+  results in `docs/qiraat/08-test-results.md`). Files: `packages/qiraat-core/*` (rewritten from the
+  earlier stub), `src/app/api/mushaf-1441/qiraat/route.ts` (new),
+  `src/app/mushaf-1441/_components/qiraat/*` (new: `QiraatToolbar`, `QiraatLegend`,
+  `qiraatWordMarker.ts`), `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`,
+  `src/app/globals.css`, `scripts/validate-mushaf1441-phase5.mjs` (rewritten for the real
+  integration). **DB migration written, NOT applied** (no backend connectivity from this session —
+  see `docs/qiraat/03-database-schema.md`): `supabase/migrations/20260916120000_qiraat_ashr_schema.sql`.
+  Full design docs: `docs/qiraat/00`–`09`. **Not done**: full-Quran data (only page 1 has real
+  content — see `docs/qiraat/09-full-rollout-plan.md` for what that needs; this was intentional
+  per the task's own "prototype first" sequencing, not an oversight).
+
 ## 2026-09-15
 - **Performance — Mushaf page turns render in ~1 ms (finishes the Codex "2 ms rendering" task):** the reader now keeps the current page/spread plus one neighbour on each side mounted as memoized `MushafPageSlot`s stacked in one grid cell; a turn only flips which slot is visible. Measured on a local production build (Chromium, prefetched turns): React render→commit **0.8–1.3 ms**, click→commit **1.8–2.4 ms**, **0 page slots re-rendered** (desktop spread and phone, with and without the curl); before: 9–31 ms per turn. New neighbours mount afterwards in a deferred pass (`useDeferredValue`, 2–3 ms each), and both pages of the next/previous spread are prefetched. Page slots read session-wide highlight/annotation maps so their props stay identical across turns; slot event handlers go through a live ref; re-fetched annotations that didn't change keep the same array. The page curl now animates the real on-screen page elements (clip-path on the outgoing page, reflection transform on the incoming page as the back of the sheet) instead of rendering three extra page copies, and no longer forces a layout at turn start. Codex's earlier commits (`272e4d3`, `2ef9d83`: readable fallback text before the QCF font, bundled metadata, request de-duplication, font preload) were reviewed and kept. Regression: `tests/test_mushaf_page_performance.py::test_prefetched_turn_reuses_the_mounted_neighbor_page`. Files: `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`, `src/app/mushaf-1441/_components/PageCurlOverlay.tsx`, `tests/test_mushaf_page_performance.py`, `scripts/validate-mushaf1441-objective.mjs` (context-menu token now goes through `liveRef`). No DB change.
 - **Performance — Mushaf pages become readable immediately instead of waiting for the QCF font:** page text now paints with its Uthmani/Amiri fallback as soon as page data is available, then swaps to the exact page-specific QCF glyph font when it finishes loading. The initial font is preconnected/preloaded before hydration; page-word and metadata payloads are combined; concurrent page/prefetch requests share one in-flight promise; and the database-backed home route is no longer prefetched from the reader. Live baseline page turns were 794–1,087 ms because font loading gated text; local production-build app render/update is now 6.8–11.7 ms on an uncached turn and 3.7–5.9 ms on a prefetched turn across 1440×900, 1180×820 and 390×844 (below one 60 Hz frame; a literal 2 ms browser guarantee is not technically achievable). Files: `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`, `src/app/api/mushaf-1441/page-words/route.ts`, `tests/test_mushaf_page_performance.py`. Verification: `npx tsc --noEmit -p .` (exit 0); `npm run mushaf:validate` (all validators passed); `env -u __NEXT_PROCESSED_ENV npm run build` (exit 0, 28 static pages); `PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q tests/test_mushaf_page_performance.py` against `next start -p 3222` (4 passed); Chromium checks at all three target viewports (readable at DOMContentLoaded, one neighbour page request, zero separate metadata/home-prefetch requests, zero console/page/HTTP errors, page curl completed). No DB change.

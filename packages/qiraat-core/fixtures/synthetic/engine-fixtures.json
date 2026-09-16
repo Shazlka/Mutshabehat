@@ -1,0 +1,98 @@
+{
+  "source": "SYNTHETIC — invented for engine/unit tests only. Surah 999 does not exist. Never present as real Quran or Qiraat data, and never load through repository.ts.",
+  "variants": [
+    {
+      "id": "syn-insert",
+      "surah": 999, "ayah": 1, "startToken": 1, "endToken": 1,
+      "operation": "INSERT",
+      "hafsText": "SYN-BASE", "variantText": "SYN-EXTRA",
+      "differenceType": "ADDITION", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q01-R02"]
+    },
+    {
+      "id": "syn-delete",
+      "surah": 999, "ayah": 1, "startToken": 2, "endToken": 2,
+      "operation": "DELETE",
+      "hafsText": "SYN-GONE", "variantText": "",
+      "differenceType": "OMISSION", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q02-R01"]
+    },
+    {
+      "id": "syn-merge",
+      "surah": 999, "ayah": 1, "startToken": 3, "endToken": 4,
+      "operation": "MERGE",
+      "hafsText": "SYN-A SYN-B", "variantText": "SYN-MERGED",
+      "differenceType": "ORTHOGRAPHY", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q03-R02"]
+    },
+    {
+      "id": "syn-split",
+      "surah": 999, "ayah": 1, "startToken": 5, "endToken": 5,
+      "operation": "SPLIT",
+      "hafsText": "SYN-WHOLE", "variantText": "SYN-PART1 SYN-PART2",
+      "differenceType": "ORTHOGRAPHY", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q04-R01"]
+    },
+    {
+      "id": "syn-diacritic",
+      "surah": 999, "ayah": 1, "startToken": 6, "endToken": 6,
+      "operation": "DIACRITIC_CHANGE",
+      "hafsText": "SYN-WORD", "variantText": "SYN-WORD (diacritic)",
+      "differenceType": "HARAKAH", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q05-R01"]
+    },
+    {
+      "id": "syn-ten-reader-segment",
+      "surah": 999, "ayah": 1, "startToken": 7, "endToken": 7,
+      "operation": "REPLACE",
+      "hafsText": "SYN-BASE7", "variantText": "SYN-VARIANT7",
+      "differenceType": "OTHER", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": [
+        "Q01-R01", "Q02-R01", "Q03-R01", "Q04-R01", "Q05-R01",
+        "Q06-R01", "Q07-R01", "Q08-R01", "Q09-R01", "Q10-R01"
+      ]
+    },
+    {
+      "id": "syn-duri-an-abi-amr",
+      "surah": 999, "ayah": 2, "startToken": 1, "endToken": 1,
+      "operation": "REPLACE",
+      "hafsText": "SYN-BASE-DURI", "variantText": "SYN-DURI-ABI-AMR",
+      "differenceType": "OTHER", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q03-R01"]
+    },
+    {
+      "id": "syn-duri-an-al-kisai",
+      "surah": 999, "ayah": 2, "startToken": 1, "endToken": 1,
+      "operation": "REPLACE",
+      "hafsText": "SYN-BASE-DURI", "variantText": "SYN-DURI-KISAI",
+      "differenceType": "OTHER", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q07-R02"]
+    },
+    {
+      "id": "syn-unpublished",
+      "surah": 999, "ayah": 3, "startToken": 1, "endToken": 1,
+      "operation": "REPLACE",
+      "hafsText": "SYN-BASE3", "variantText": "SYN-SHOULD-NOT-APPEAR",
+      "differenceType": "OTHER", "verificationStatus": "EXTRACTED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q01-R01"]
+    },
+    {
+      "id": "syn-baseline-immunity",
+      "surah": 999, "ayah": 4, "startToken": 1, "endToken": 1,
+      "operation": "REPLACE",
+      "hafsText": "SYN-BASE4", "variantText": "SYN-SHOULD-NEVER-APPLY-TO-HAFS",
+      "differenceType": "OTHER", "verificationStatus": "VERIFIED", "synthetic": true,
+      "createdAt": "2026-09-16T00:00:00.000Z", "updatedAt": "2026-09-16T00:00:00.000Z",
+      "readingIds": ["Q01-R01", "Q05-R02"]
+    }
+  ]
+}

@@ -1,12 +1,10 @@
+// Phase 5 (superseded 2026-09-16): originally asserted the qiraat-core scaffold stayed an empty
+// stub. That milestone is done — this now validates the real Qiraat Ashr integration described in
+// docs/qiraat/. Not part of `npm run mushaf:validate` (kept standalone, like the original).
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 const root = process.cwd()
-const qiraatTypesFile = resolve(root, 'packages/qiraat-core/types.ts')
-const qiraatAdapterFile = resolve(root, 'packages/qiraat-core/qiraatAdapter.ts')
-const qiraatFixtureFile = resolve(root, 'packages/qiraat-core/fixtures/sample-empty-variants.json')
-const qiraatSourceFile = resolve(root, 'packages/qiraat-core/sampleQiraatSource.ts')
-const qiraatValidateFile = resolve(root, 'packages/qiraat-core/validate.mjs')
 const viewerFile = resolve(root, 'src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx')
 
 function assert(condition, message) {
@@ -18,34 +16,12 @@ function read(path) {
   return readFileSync(path, 'utf8')
 }
 
-const qiraatTypesSource = read(qiraatTypesFile)
-const qiraatAdapterSource = read(qiraatAdapterFile)
-const qiraatFixture = JSON.parse(read(qiraatFixtureFile))
-const qiraatSource = read(qiraatSourceFile)
-const qiraatValidateSource = read(qiraatValidateFile)
 const viewerSource = read(viewerFile)
 
-for (const reading of ['hafs', 'warsh', 'abu-amr', 'hamza']) {
-  assert(qiraatTypesSource.includes(`'${reading}'`), `Qiraat types must support ${reading}`)
-}
+assert(viewerSource.includes("from '../../../../packages/qiraat-core"), 'Viewer must import from qiraat-core')
+assert(viewerSource.includes('QiraatMode') || viewerSource.includes("'normal' | 'comparison' | 'riwayah'"), 'Viewer must model the three Qiraat modes (normal/comparison/riwayah)')
+assert(viewerSource.includes('BASE_READING'), 'Viewer must reference the Hafs baseline constant, never hard-code "Q05-R02" ad hoc')
+assert(viewerSource.includes('comparisonMarkerForWord') && viewerSource.includes('riwayahResolutionForWord'), 'Viewer must render markers through the shared qiraat-core engine/attribution logic, not invent its own')
+assert(!viewerSource.includes('لا توجد بيانات قراءات موثقة محملة بعد'), 'Viewer must no longer show the old "no qiraat data" placeholder — real page-1 data is loaded')
 
-assert(qiraatTypesSource.includes('QiraatVariant'), 'Qiraat package must define QiraatVariant')
-assert(qiraatTypesSource.includes('wordIndexInAyah?'), 'QiraatVariant must support optional wordIndexInAyah')
-assert(qiraatAdapterSource.includes('getQiraatVariantsByAyahKey'), 'Qiraat adapter must expose ayahKey lookup')
-assert(qiraatAdapterSource.includes('ayahKey'), 'Qiraat adapter must use ayahKey')
-assert(!qiraatAdapterSource.includes('textUthmani'), 'Qiraat adapter must not depend on base Mushaf word text')
-assert(!qiraatAdapterSource.includes('Mutshabehat'), 'Qiraat adapter must not depend on Mutshabehat')
-
-assert(Array.isArray(qiraatFixture.variants), 'Qiraat fixture must expose variants array')
-assert(qiraatFixture.variants.length === 0, 'Qiraat fixture must be empty until verified source data exists')
-assert(qiraatSource.includes('SAMPLE_QIRAAT_SOURCE'), 'Qiraat sample source must be exported')
-assert(qiraatValidateSource.includes('No verified qiraat data is bundled'), 'Qiraat validator must document empty verified-data state')
-
-assert(viewerSource.includes('getQiraatVariantsByAyahKey'), 'Viewer must use qiraat-core adapter')
-assert(viewerSource.includes('SAMPLE_QIRAAT_SOURCE'), 'Viewer must use qiraat sample source')
-assert(viewerSource.includes("'qiraat'"), 'Viewer must include a qiraat tab state')
-assert(viewerSource.includes('Qiraat'), 'Viewer must render a Qiraat tab label')
-assert(viewerSource.includes('No qiraat data loaded yet.'), 'Viewer must show required empty qiraat message')
-assert(!viewerSource.includes('text: "') && !viewerSource.includes("text: '"), 'Viewer must not hard-code qiraat text')
-
-console.log('Phase 5 Qiraat validation passed.')
+console.log('Phase 5 Qiraat validation passed (post-scaffold): viewer wired to the real qiraat-core engine.')

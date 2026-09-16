@@ -63,6 +63,60 @@
   --spacing-tight:   0.5rem;
 }
 
+/* ============================================================
+   Qiraat Ashr — reader/narrator identity colors (Part 2)
+   ============================================================
+   These name WHO reads a variant, never WHAT KIND of difference it is (see
+   packages/qiraat-core/attribution.ts). Values are the exact hex from
+   packages/qiraat-core/colors.ts (READER_COLOR / NARRATOR_COLOR) — kept in
+   plain hex, not converted to OKLCH, so the two stay byte-identical; if you
+   change one, change the other and packages/qiraat-core/validate.mjs will
+   catch the reader-side drift. Kept out of the Tailwind `@theme` block above
+   on purpose: these are picked dynamically by reader/narrator id (30 values),
+   not used as static utility classes.
+*/
+:root {
+  --q01-nafi: #2563EB;
+  --q01-qalun: #60A5FA;
+  --q01-warsh: #1D4ED8;
+
+  --q02-ibn-kathir: #16A34A;
+  --q02-bazzi: #4ADE80;
+  --q02-qunbul: #15803D;
+
+  --q03-abu-amr: #0891B2;
+  --q03-duri: #67E8F9;
+  --q03-susi: #0E7490;
+
+  --q04-ibn-amir: #7C3AED;
+  --q04-hisham: #A78BFA;
+  --q04-ibn-dhakwan: #6D28D9;
+
+  --q05-asim: #EA580C;
+  --q05-shubah: #FB923C;
+  --q05-hafs: #C2410C;
+
+  --q06-hamzah: #DC2626;
+  --q06-khalaf: #F87171;
+  --q06-khallad: #B91C1C;
+
+  --q07-kisai: #DB2777;
+  --q07-abul-harith: #F472B6;
+  --q07-duri: #BE185D;
+
+  --q08-abu-jafar: #CA8A04;
+  --q08-ibn-wardan: #FACC15;
+  --q08-ibn-jammaz: #A16207;
+
+  --q09-yaqub: #B45309;
+  --q09-ruways: #F59E0B;
+  --q09-rawh: #92400E;
+
+  --q10-khalaf-ashir: #475569;
+  --q10-ishaq: #94A3B8;
+  --q10-idris: #334155;
+}
+
 :root {
   color-scheme: light;
   --background: var(--color-paper);
