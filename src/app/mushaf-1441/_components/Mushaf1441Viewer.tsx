@@ -407,6 +407,9 @@ export default function Mushaf1441Viewer({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [needsSignIn, setNeedsSignIn] = useState(false)
   const [hoveredAyahKey, setHoveredAyahKey] = useState<string | null>(null)
+  // Desktop-only preview of a Qiraat marker on hover (Part 20's "never rely on color alone" —
+  // this is the lightweight peek; the full attribution stays behind a click/tap on the word).
+  const [hoveredQiraatWord, setHoveredQiraatWord] = useState<{ word: MushafWord; marker: WordMarker } | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const [pageSliderPreview, setPageSliderPreview] = useState<number | null>(null)
   const [mutshabehatPopupAyahKey, setMutshabehatPopupAyahKey] = useState<string | null>(null)
@@ -1882,8 +1885,14 @@ export default function Mushaf1441Viewer({
           liveRef.current.selectWord(word)
         }}
         onDoubleClick={() => void liveRef.current.copyAyahText(word.ayahKey)}
-        onMouseEnter={() => setHoveredAyahKey(word.ayahKey)}
-        onMouseLeave={() => setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))}
+        onMouseEnter={() => {
+          setHoveredAyahKey(word.ayahKey)
+          if (qiraatMarker) setHoveredQiraatWord({ word, marker: qiraatMarker })
+        }}
+        onMouseLeave={() => {
+          setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
+          setHoveredQiraatWord((current) => (current?.word.id === word.id ? null : current))
+        }}
         onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
         onTouchStart={(event) => liveRef.current.startLongPress(
           { targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word },
@@ -3026,6 +3035,59 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  function renderQiraatHoverCard() {
+    if (!hoveredQiraatWord) return null
+    const { word, marker } = hoveredQiraatWord
+    const surahName = surahNameByNumber.get(word.surahNumber) ?? ''
+
+    return (
+      <div className="pointer-events-none absolute left-1/2 top-3 z-20 hidden w-[320px] max-w-[92%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] lg:block" dir="rtl">
+        <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
+          <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
+          <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">القراءات</span>
+        </div>
+        {marker.unresolved ? (
+          <p className="mt-2 text-xs font-bold text-[#8a2f10]">قراءة قيد المراجعة — لم تُحدَّد نسبتها بعد</p>
+        ) : (
+          <div className="mt-2 space-y-2">
+            {marker.variants.slice(0, 3).map((variant) => {
+              const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
+              const isPreview = !needsManualReview && variant.verificationStatus !== 'VERIFIED' && variant.verificationStatus !== 'PUBLISHED'
+              const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
+              const labels = attributionLabelsAr(variant.readingIds)
+              return (
+                <div key={variant.id} className="border-t border-dashed border-[#eadfc9] pt-2 first:border-t-0 first:pt-0">
+                  {needsManualReview ? (
+                    <p className="mb-1 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
+                  ) : isPreview ? (
+                    <p className="mb-1 inline-block rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">قيد المراجعة</p>
+                  ) : null}
+                  {isPerformanceOnly ? (
+                    <p className="text-sm leading-7 text-[#3a3326]">
+                      <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.hafsText}</span>
+                      <span className="mr-2 text-[11px] text-[#8a7c5c]">(اختلاف أداء)</span>
+                    </p>
+                  ) : (
+                    <p className="text-sm leading-7 text-[#3a3326]">
+                      <span className="text-[#8a7c5c] line-through decoration-1">{variant.hafsText}</span>
+                      {' ← '}
+                      <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.variantText}</span>
+                    </p>
+                  )}
+                  <p className="mt-0.5 truncate text-[11px] text-[#665b48]">{labels.join('، ')}</p>
+                </div>
+              )
+            })}
+            {marker.variants.length > 3 ? (
+              <p className="text-[11px] text-[#8a7c5c]">و{marker.variants.length - 3} أخرى — اضغط للتفاصيل الكاملة</p>
+            ) : null}
+          </div>
+        )}
+        <p className="mt-2 text-[10px] text-[#a8987a]">اضغط على الكلمة لعرض كل التفاصيل والمصادر</p>
+      </div>
+    )
+  }
+
   function renderNavControls() {
     return (
       <div className="space-y-5">
@@ -3166,6 +3228,20 @@ export default function Mushaf1441Viewer({
           </Link>
           <button
             type="button"
+            onClick={() => setQiraatMode((current) => (current === 'normal' ? 'comparison' : 'normal'))}
+            aria-label={qiraatMode === 'normal' ? 'تفعيل مقارنة القراءات' : 'إيقاف مقارنة القراءات — العودة إلى المصحف العادي'}
+            aria-pressed={qiraatMode !== 'normal'}
+            title="القراءات"
+            className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
+              qiraatMode !== 'normal'
+                ? 'border-[#171717] bg-[#171717] text-white'
+                : 'border-[#b99b51] text-[#3f3215] hover:bg-[#fff9e9]'
+            }`}
+          >
+            ق
+          </button>
+          <button
+            type="button"
             onClick={() => setIsMenuOpen(true)}
             aria-label="القائمة والإعدادات"
             className="flex size-10 items-center justify-center rounded-md bg-[#171717] text-white transition-colors hover:bg-[#3a3326]"
@@ -3253,7 +3329,7 @@ export default function Mushaf1441Viewer({
             onFinish={finishPageTurn}
           />
         ) : null}
-        {renderHoverCard()}
+        {hoveredQiraatWord ? renderQiraatHoverCard() : renderHoverCard()}
         {isPageLoading ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
             <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
