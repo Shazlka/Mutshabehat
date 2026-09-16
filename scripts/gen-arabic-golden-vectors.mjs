@@ -65,7 +65,13 @@ const env = Object.fromEntries(
     .map((l) => { const i = l.indexOf('='); return [l.slice(0, i), l.slice(i + 1).trim().replace(/^["']|["']$/g, '')] })
 )
 
-// Live `parts.text` — user-authored, so it exercises input the Quran corpus does not.
+// Live `parts.text` — verse fragments the user has split out (shared/diff/unique),
+// so it exercises real segmentation the whole-ayah corpus does not.
+//
+// PRIVACY: the emitted fixture is committed to the repo, so only sample columns
+// that hold scripture. `parts.text` qualifies — it is Quran text. Never add
+// `groups.title`, `groups.note` or `groups.unote`: those are the user's own
+// writing and do not belong in a test fixture.
 let partTexts = []
 try {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
