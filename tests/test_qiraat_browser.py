@@ -92,11 +92,34 @@ def run_qiraat_browser_test():
         page.screenshot(path=str(shot2), full_page=False)
         print(f"✓ Screenshot 2 captured: {shot2.name}")
 
-        # 3. Click Locus 1 target word (مَـٰلِكِ / Marker 1)
+        # Verify distinct word text color (#8f1d14) when Qira'at mode is active
+        marker1_btn = page.locator("span[title^='خلاف في القراءات العشر']:has-text('1')").locator("..")
+        word_color = marker1_btn.evaluate("el => window.getComputedStyle(el).color")
+        assert "143" in word_color and "29" in word_color, f"Expected red text color rgb(143, 29, 20), got {word_color}"
+        print(f"✓ Verified distinct red text color for Qira'at word: {word_color}")
+
+        # Verify Hover Popover: Hovering over word shows variants with Qaris
+        print("Hovering over Locus 1 word to verify tooltip...")
+        marker1_btn.hover()
+        page.wait_for_timeout(400)
+
+        # Tooltip should appear
+        hover_tooltip = page.locator("div.rounded-xl[dir='rtl']:has-text('خلاف في الكلمة')").first
+        assert hover_tooltip.is_visible(), "Hover tooltip must be visible on mouse enter"
+        tooltip_text = hover_tooltip.inner_text()
+        assert "مَالِكِ" in tooltip_text, "Tooltip must contain variant 1 (مالك)"
+        assert "مَلِكِ" in tooltip_text, "Tooltip must contain variant 2 (ملك)"
+        assert "عاصم" in tooltip_text or "الكسائي" in tooltip_text or "يعقوب" in tooltip_text, "Tooltip must list Qaris"
+        print("✓ Verified hover popover displaying variants and Qaris successfully!")
+
+        # Capture Screenshot: Hover Popover
+        shot_hover = SCREENSHOTS_DIR / "06-hover-word-variants-qaris.png"
+        page.screenshot(path=str(shot_hover), full_page=False)
+        print(f"✓ Screenshot captured: {shot_hover.name}")
+
+        # Click Locus 1 target word to open full sheet
         print("Clicking Locus 1 target word...")
-        # The parent button of badge '1'
-        marker1_badge = page.locator("span[title^='خلاف في القراءات العشر']:has-text('1')")
-        marker1_badge.locator("..").click()
+        marker1_btn.click()
         page.wait_for_timeout(600)
 
         # Verify Qira'at Detail Sheet opened

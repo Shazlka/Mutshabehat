@@ -28,6 +28,7 @@ import { getQiraatVariantsByAyahKey } from '../../../../packages/qiraat-core/qir
 import { SAMPLE_QIRAAT_SOURCE } from '../../../../packages/qiraat-core/sampleQiraatSource'
 import type { QiraatPagePayload, QiraatLocus } from '@/types/qiraat'
 import QiraatDetailSheet from '@/components/qiraat/QiraatDetailSheet'
+import QiraatHoverTooltip from '@/components/qiraat/QiraatHoverTooltip'
 
 type Mushaf1441ViewerProps = {
   initialPage: MushafPage
@@ -420,6 +421,46 @@ export default function Mushaf1441Viewer({
   )
   const [selectedQiraatLocus, setSelectedQiraatLocus] = useState<QiraatLocus | null>(null)
   const [isQiraatSheetOpen, setIsQiraatSheetOpen] = useState(false)
+  const [hoveredQiraat, setHoveredQiraat] = useState<{
+    locus: QiraatLocus
+    anchorRect: {
+      top: number
+      bottom: number
+      left: number
+      right: number
+      width: number
+      height: number
+    }
+  } | null>(null)
+  const qiraatHoverTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  function showQiraatHover(
+    locus: QiraatLocus,
+    anchorRect: { top: number; bottom: number; left: number; right: number; width: number; height: number }
+  ) {
+    if (qiraatHoverTimerRef.current) {
+      clearTimeout(qiraatHoverTimerRef.current)
+      qiraatHoverTimerRef.current = null
+    }
+    setHoveredQiraat({ locus, anchorRect })
+  }
+
+  function hideQiraatHoverWithDelay(delay = 180) {
+    if (qiraatHoverTimerRef.current) {
+      clearTimeout(qiraatHoverTimerRef.current)
+    }
+    qiraatHoverTimerRef.current = setTimeout(() => {
+      setHoveredQiraat(null)
+      qiraatHoverTimerRef.current = null
+    }, delay)
+  }
+
+  function cancelQiraatHoverHide() {
+    if (qiraatHoverTimerRef.current) {
+      clearTimeout(qiraatHoverTimerRef.current)
+      qiraatHoverTimerRef.current = null
+    }
+  }
 
   function openQiraatDetail(locusIdOrLocus: string | QiraatLocus) {
     const currentQiraat = qiraatPageCacheRef.current[pageNumber] || (pageNumber === 1 && initialQiraat ? initialQiraat : null)
@@ -466,9 +507,9 @@ export default function Mushaf1441Viewer({
   const dragRef = useRef<{ pointerId: number; startX: number; startY: number; lastX: number; lastTime: number; velocity: number; direction: 1 | -1 | 0; progress: number; width: number } | null>(null)
   const suppressClickRef = useRef(false)
   // Page slots are memoized, so their event handlers call through this ref to reach the latest closures.
-  const liveRef = useRef({ handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress, openQiraatDetail })
+  const liveRef = useRef({ handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress, openQiraatDetail, showQiraatHover, hideQiraatHoverWithDelay })
   useLayoutEffect(() => {
-    liveRef.current = { handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress, openQiraatDetail }
+    liveRef.current = { handlePageClick, handleSpreadPageClick, openMutshabehatPopup, selectWord, copyAyahText, openWordContextMenu, startLongPress, cancelLongPress, openQiraatDetail, showQiraatHover, hideQiraatHoverWithDelay }
   })
   const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const longPressFiredRef = useRef(false)
@@ -1779,8 +1820,29 @@ export default function Mushaf1441Viewer({
           liveRef.current.selectWord(word)
         }}
         onDoubleClick={() => void liveRef.current.copyAyahText(word.ayahKey)}
-        onMouseEnter={() => setHoveredAyahKey(word.ayahKey)}
-        onMouseLeave={() => setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))}
+        onMouseEnter={(e) => {
+          setHoveredAyahKey(word.ayahKey)
+          if (isQiraatTarget && qiraatTargetInfo) {
+            const locus = currentQiraat?.loci.find((l) => l.id === qiraatTargetInfo.locus_id)
+            if (locus) {
+              const rect = e.currentTarget.getBoundingClientRect()
+              liveRef.current.showQiraatHover(locus, {
+                top: rect.top,
+                bottom: rect.bottom,
+                left: rect.left,
+                right: rect.right,
+                width: rect.width,
+                height: rect.height,
+              })
+            }
+          }
+        }}
+        onMouseLeave={() => {
+          setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
+          if (isQiraatTarget) {
+            liveRef.current.hideQiraatHoverWithDelay(180)
+          }
+        }}
         onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
         onTouchStart={(event) => liveRef.current.startLongPress(
           { targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word },
@@ -1808,7 +1870,7 @@ export default function Mushaf1441Viewer({
             : isHighlightedAyah
               ? 'bg-[#ece2c8] text-[#171717]'
               : isQiraatTarget
-                ? 'cursor-pointer text-[#171717] hover:brightness-95'
+                ? 'cursor-pointer font-bold hover:brightness-90'
               : isMutshabehatHighlighted
                 ? 'cursor-pointer text-[#171717] hover:brightness-95'
                 : 'text-[#171717] hover:bg-[#f3ecd9]'
@@ -1818,14 +1880,16 @@ export default function Mushaf1441Viewer({
           fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
           paddingBlock: MUSHAF_WORD_BAND_PADDING,
-          color: highlightAnnotation?.textColor,
+          color: isQiraatTarget
+            ? '#8f1d14'
+            : highlightAnnotation?.textColor,
           // Highlight band: the word and the gaps next to it (renderWordGap) share one colour.
           backgroundColor: isQiraatTarget
-            ? '#faeed0'
+            ? '#fdf2d8'
             : (highlightAnnotation?.backgroundColor ?? (showMutshabehatTint ? mutshabehatTint?.bg : undefined)),
           borderRadius: isQiraatTarget || showMutshabehatTint || highlightAnnotation ? 0 : undefined,
           boxShadow: isQiraatTarget
-            ? 'inset 0 -2.5px 0 0 #b8871d, 0 0 0 1px rgba(184,135,29,0.35)'
+            ? 'inset 0 -2.5px 0 0 #b8871d, 0 0 0 1.5px rgba(184,135,29,0.45)'
             : (hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : undefined),
         }}
       >
@@ -3135,6 +3199,19 @@ export default function Mushaf1441Viewer({
           />
         ) : null}
         {renderHoverCard()}
+        {hoveredQiraat && isQiraatMode ? (
+          <QiraatHoverTooltip
+            locus={hoveredQiraat.locus}
+            anchorRect={hoveredQiraat.anchorRect}
+            surahName={visiblePageMetadata?.surahNames[0] ?? 'الفاتحة'}
+            onOpenDetail={(loc) => {
+              setHoveredQiraat(null)
+              openQiraatDetail(loc)
+            }}
+            onMouseEnter={cancelQiraatHoverHide}
+            onMouseLeave={() => hideQiraatHoverWithDelay(150)}
+          />
+        ) : null}
         {isPageLoading ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
             <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
