@@ -12,6 +12,7 @@ import {
   getMushaf1441PageMetadata,
   MUSHAF_1441_SURAH_OPTIONS,
 } from '../../../packages/quran-data/mushaf1441/pageMetadata'
+import { getQiraatByPage } from '@/lib/qiraat-service'
 
 export const metadata: Metadata = {
   title: 'مصحف المدينة ١٤٤١',
@@ -39,10 +40,11 @@ export default async function Mushaf1441Page({ searchParams }: { searchParams: S
   const requestedPage = Number.parseInt(page ?? '1', 10)
   const initialPageNumber = isValidMushaf1441PageNumber(requestedPage) ? requestedPage : 1
 
-  const [initialPage, lineDecorations, initialMutshabehatHighlights] = await Promise.all([
+  const [initialPage, lineDecorations, initialMutshabehatHighlights, initialQiraat] = await Promise.all([
     loadMushaf1441Page(initialPageNumber),
     loadMushaf1441PageDecorations(initialPageNumber),
     loadInitialMutshabehatHighlights(),
+    getQiraatByPage(initialPageNumber),
   ])
   const initialPageMetadata = getMushaf1441PageMetadata(initialPageNumber)
 
@@ -60,6 +62,7 @@ export default async function Mushaf1441Page({ searchParams }: { searchParams: S
       initialPageMetadata={initialPageMetadata}
       surahOptions={MUSHAF_1441_SURAH_OPTIONS}
       initialMutshabehatHighlights={initialMutshabehatHighlights}
+      initialQiraat={initialQiraat}
     />
   )
 }

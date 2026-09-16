@@ -1,6 +1,6 @@
 # Mutshabehat V2: Master Project Instructions (for any agent)
 
-> **Read this first.** Last verified against the live system: **2026-09-15**.
+> **Read this first.** Last verified against the live system: **2026-09-16**.
 > Then read `AGENTS.md` (Next.js 16 warning) and `CLAUDE.md` (gotchas + changelog).
 > If anything here disagrees with what you observe, trust the observation and **update this file**.
 
@@ -75,6 +75,7 @@ Codex worktrees were removed on 2026-09-15. Ignore iCloud/OneDrive "Mutshabehat"
 | `legacy-v84-local-statusline-fix` | one preserved legacy commit (`428eb86`) |
 | `V82*`, `v83-release`, `claude/*` | legacy app branches |
 | `diag/dns-region` | **temporary** DNS/region diagnostic commits ("do not merge"), preview-only, created 2026-09-15 by another session (with a worktree under `/private/tmp/...`). Never merge it; delete it when that diagnosis is done |
+| `claude/titanic-313-phase-0-z1b1yt` | Native iOS app port Phase 0/1 (`apps/ios/MutshabehatCore`, `docs/ios/`). Swift Package (Domain + SQLite replica, 18 tests passing). Work handed over to MacBook Air for Xcode / simulator / SwiftUI development (`docs/ios/HANDOFF-AIR.md`) |
 
 - The repo is **PUBLIC**. Never commit `.env*`, `.secrets.json`, passwords, user ids/emails, DB dumps, or xlsx/csv/pdf data.
 - GitHub Pages builds from `main`, so the old `shazlka.github.io/Mutshabehat/V84/` URLs are 404. Point Pages at `legacy-v84-main` if they're needed.
@@ -138,8 +139,8 @@ launchctl print gui/$(id -u)/com.mutshabehat.selfhost             # watchdog
 # NEVER: docker compose down -v   (deletes the database volume)
 ```
 
-**Data (2026-09-15):** groups 246 · verses 923 · parts 2991 · automated_groups 12668 · personal_groups 199 ·
-personal_verses 714 · mushaf_annotations 12 · profiles 1 · tags 0 · auth.users 1.
+**Data (2026-09-16):** groups 246 · verses 923 · parts 2991 · automated_groups 12668 · personal_groups 199 ·
+personal_verses 714 · mushaf_annotations 14 (plus 1 test probe pending cleanup) · test_answers · profiles 1 · tags 0 · auth.users 1.
 
 **Schema (`public`, RLS ON for every table, `auth.uid() = user_id`)**
 - `groups(id, user_id, title, color, note, unote, status, favorite, completed, created_at, updated_at, search_vec, rasm_skeleton)`
@@ -149,11 +150,13 @@ personal_verses 714 · mushaf_annotations 12 · profiles 1 · tags 0 · auth.use
 - `automated_groups(id bigint, legacy_id, title, color, surahs[], payload jsonb, created_at)`
 - `personal_groups`, `personal_verses`, `group_verses`, `verse_parts`: legacy-import / mushaf set
 - `mushaf_annotations(annotation_type, target_type, ayah_key, page_number 1–604, line_number 1–15, word ids, title, body, colours, tags[], metadata)`
+- `test_answers(id, user_id, test_type, question_source, question_mode, surah_number, ayah_key, is_correct, answered_at)`
 - `profiles(display_name, font_preset, theme, font_size, compact_mode)`
-- Functions: `save_group(id, fields, verses)` (editor save, 1 round-trip), `search_group_ids(q)`, `get_dashboard_stats()`, `normalize_arabic()`, `rasm_skeleton()`, `groups_search_update()`, `handle_updated_at()`, `handle_new_user()`
-- Views: `surah_counts`, `automated_surah_counts` (security_invoker)
+- Functions: `save_group(id, fields, verses)` (editor save, 1 round-trip), `search_group_ids(q)`, `get_dashboard_stats()`, `get_test_answer_stats()`, `normalize_arabic()`, `rasm_skeleton()`, `groups_search_update()`, `handle_updated_at()`, `handle_new_user()`
+- Views: `surah_counts`, `automated_surah_counts`, `automated_groups_with_copy` (security_invoker)
 - Schema history files: `supabase-schema*.sql`, `supabase-parts-fts.sql`, `supabase-stats-aggregates.sql`,
   `supabase-indexes.sql`, `supabase-migration-tag-uniqueness.sql`, `supabase/migrations/*.sql` (all applied and idempotent).
+- **PostgREST note:** `Prefer: tx=rollback` is not enabled on this stack (`db-tx-end = commit-allow-override` is unset), so write probes sent to PostgREST commit to the live database. Do not use PostgREST write requests for dry-run testing.
 
 ---
 
@@ -206,6 +209,12 @@ src/
     test-questions-quran.ts # whole-Quran questions (server; distractors from the Quran text)
     diff.ts  juz.ts  sanitize.ts  cn.ts
   types/database.ts
+apps/
+  ios/
+    MutshabehatCore/       # Swift package: MutshabehatDomain (Foundation only) + MutshabehatPersistence (SQLite)
+    tools/                 # fontcheck.swift and local utilities
+docs/
+  ios/                     # ARCHITECTURE.md, DECISIONS.md, DISCOVERY.md, HANDOFF-AIR.md
 packages/
   quran-data/mushaf1441/   # page words/ayahs/metadata fixtures + loaders (imported by the app, must stay committed)
   mutshabehat-core/        # mushaf ↔ mutshabehat link adapter
@@ -279,6 +288,7 @@ key is server-only.
 | Push didn't deploy / deploy hangs | Vercel deployment state `BLOCKED` = commit author. Check git identity (§4) |
 | New `NEXT_PUBLIC_*` value not live | redeploy (baked at build time) |
 | First page load empty | auto-login redirect in `proxy.ts` (see `tests/proxy-autologin.test.mjs`) |
+| Mushaf validation fails: "preview migration missing..." | `scripts/validate-mushaf1441-supabase-interactions.mjs` verifies exact header tokens in `supabase/migrations/20260628000000_mushaf_annotations_preview.sql` ('Preview migration for Mushaf 1441 annotations' and 'apply only to a Supabase preview/development branch') |
 
 ---
 

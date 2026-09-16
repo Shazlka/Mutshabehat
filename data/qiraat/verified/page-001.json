@@ -1,0 +1,469 @@
+{
+  "source": {
+    "id": "ten-qiraat-mushaf-1",
+    "title": "مصحف القراءات العشر",
+    "edition": "النسخة المطبوعة الأولى",
+    "source_type": "scanned_mushaf_with_margin",
+    "pdf_file": "مصحف القراءات العشر-1.pdf",
+    "pdf_page_number": 6,
+    "printed_page_number": 1,
+    "mushaf_1441_page": 1,
+    "surah_number": 1,
+    "surah_name": "سورة الفاتحة",
+    "notes": "المصدر المعتمد للقراءات العشر الصغرى من طريقي الشاطبية والدرة"
+  },
+  "persons": [
+    {
+      "id": "NAFI",
+      "canonical_name": "نافع بن عبد الرحمن المدني",
+      "display_name": "نافع",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 1,
+      "alias": "الإمام نافع",
+      "notes": "الإمام الأول من القراء العشرة"
+    },
+    {
+      "id": "IBN_KATHIR",
+      "canonical_name": "عبد الله بن كثير المكي",
+      "display_name": "ابن كثير",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 2,
+      "alias": "الإمام ابن كثير",
+      "notes": "الإمام الثاني من القراء العشرة"
+    },
+    {
+      "id": "AL_BAZZI",
+      "canonical_name": "أحمد بن محمد البزي",
+      "display_name": "البزي",
+      "person_type": "rawi",
+      "parent_person_id": "IBN_KATHIR",
+      "order_index": 1,
+      "alias": "البزي عن ابن كثير",
+      "notes": "الراوي الأول عن ابن كثير"
+    },
+    {
+      "id": "QUNBUL",
+      "canonical_name": "محمد بن عبد الرحمن قنبل",
+      "display_name": "قنبل",
+      "person_type": "rawi",
+      "parent_person_id": "IBN_KATHIR",
+      "order_index": 2,
+      "alias": "قنبل عن ابن كثير",
+      "notes": "الراوي الثاني عن ابن كثير"
+    },
+    {
+      "id": "ABU_AMR",
+      "canonical_name": "أبو عمرو بن العلاء البصري",
+      "display_name": "أبو عمرو",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 3,
+      "alias": "الإمام أبو عمرو",
+      "notes": "الإمام الثالث من القراء العشرة"
+    },
+    {
+      "id": "IBN_AMIR",
+      "canonical_name": "عبد الله بن عامر الشامي",
+      "display_name": "ابن عامر",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 4,
+      "alias": "الإمام ابن عامر",
+      "notes": "الإمام الرابع من القراء العشرة"
+    },
+    {
+      "id": "ASIM",
+      "canonical_name": "عاصم بن أبي النجود الكوفي",
+      "display_name": "عاصم",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 5,
+      "alias": "الإمام عاصم",
+      "notes": "الإمام الخامس من القراء العشرة"
+    },
+    {
+      "id": "HAMZA",
+      "canonical_name": "حمزة بن حبيب الزيات الكوفي",
+      "display_name": "حمزة",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 6,
+      "alias": "الإمام حمزة",
+      "notes": "الإمام السادس من القراء العشرة"
+    },
+    {
+      "id": "KHALAF_HAMZA",
+      "canonical_name": "خلف بن هشام البزار (عن حمزة)",
+      "display_name": "خلف عن حمزة",
+      "person_type": "rawi",
+      "parent_person_id": "HAMZA",
+      "order_index": 1,
+      "alias": "خلف الراوي عن حمزة",
+      "notes": "الراوي الأول عن الإمام حمزة (يتميز عن خلف العاشر)"
+    },
+    {
+      "id": "KHALLAD",
+      "canonical_name": "خلاد بن خالد الصيرفي",
+      "display_name": "خلاد",
+      "person_type": "rawi",
+      "parent_person_id": "HAMZA",
+      "order_index": 2,
+      "alias": "خلاد عن حمزة",
+      "notes": "الراوي الثاني عن الإمام حمزة"
+    },
+    {
+      "id": "AL_KISAI",
+      "canonical_name": "علي بن حمزة الكسائي",
+      "display_name": "الكسائي",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 7,
+      "alias": "الإمام الكسائي",
+      "notes": "الإمام السابع من القراء العشرة"
+    },
+    {
+      "id": "ABU_JAFAR",
+      "canonical_name": "يزيد بن القعقاع أبو جعفر المدني",
+      "display_name": "أبو جعفر",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 8,
+      "alias": "الإمام أبو جعفر",
+      "notes": "الإمام الثامن من القراء العشرة"
+    },
+    {
+      "id": "YAQUB",
+      "canonical_name": "يعقوب بن إسحاق الحضرمي",
+      "display_name": "يعقوب",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 9,
+      "alias": "الإمام يعقوب",
+      "notes": "الإمام التاسع من القراء العشرة"
+    },
+    {
+      "id": "RUWAYS",
+      "canonical_name": "محمد بن المتوكل رويس",
+      "display_name": "رويس",
+      "person_type": "rawi",
+      "parent_person_id": "YAQUB",
+      "order_index": 1,
+      "alias": "رويس عن يعقوب",
+      "notes": "الراوي الأول عن يعقوب الحضرمي"
+    },
+    {
+      "id": "RAWH",
+      "canonical_name": "روح بن عبد المؤمن البصري",
+      "display_name": "روح",
+      "person_type": "rawi",
+      "parent_person_id": "YAQUB",
+      "order_index": 2,
+      "alias": "روح عن يعقوب",
+      "notes": "الراوي الثاني عن يعقوب الحضرمي"
+    },
+    {
+      "id": "KHALAF_ASHIR",
+      "canonical_name": "خلف بن هشام البزار (العاشر)",
+      "display_name": "خلف",
+      "person_type": "imam",
+      "parent_person_id": null,
+      "order_index": 10,
+      "alias": "خلف العاشر",
+      "notes": "الإمام العاشر بذاته في اختياره (يتميز عن روايته عن حمزة)"
+    }
+  ],
+  "loci": [
+    {
+      "locus_key": "1:4:1",
+      "source_marker": "1",
+      "marker_display": "(١)",
+      "surah": 1,
+      "ayah": 4,
+      "mushaf_page": 1,
+      "pdf_page": 6,
+      "printed_page": 1,
+      "source_heading_raw": "﴿ مَلِكِ ﴾ (١) فيها قراءتان:",
+      "source_word_raw": "مَلِكِ",
+      "mushaf_base_word": "مَـٰلِكِ",
+      "status": "verified",
+      "requires_manual_review": false,
+      "notes": "قراءتان في إثبات الألف وحذفها",
+      "targets": [
+        {
+          "quran_word_id": "qurancom-word-3252",
+          "surah": 1,
+          "ayah": 4,
+          "word_index": 1,
+          "mushaf_page": 1,
+          "line_number": 4,
+          "word_index_in_line": 4,
+          "base_text_uthmani": "مَـٰلِكِ",
+          "normalized_text": "مالك"
+        }
+      ],
+      "variants": [
+        {
+          "variant_index": 1,
+          "display_text": "مَالِكِ",
+          "normalized_text": "مالك",
+          "performance_type": "orthographic_alef",
+          "performance_text": "بإثبات الألف بعد الميم",
+          "source_line_raw": "١- مَالِكِ : عاصم، الكسائي، يعقوب، خلف.",
+          "sort_order": 1,
+          "attributions": [
+            { "person_id": "ASIM", "attribution_raw": "عاصم", "role": "imam" },
+            { "person_id": "AL_KISAI", "attribution_raw": "الكسائي", "role": "imam" },
+            { "person_id": "YAQUB", "attribution_raw": "يعقوب", "role": "imam" },
+            { "person_id": "KHALAF_ASHIR", "attribution_raw": "خلف", "role": "imam" }
+          ]
+        },
+        {
+          "variant_index": 2,
+          "display_text": "مَلِكِ",
+          "normalized_text": "ملك",
+          "performance_type": "orthographic_alef",
+          "performance_text": "بحذف الألف بعد الميم",
+          "source_line_raw": "٢- مَلِكِ : نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، أبو جعفر.",
+          "sort_order": 2,
+          "attributions": [
+            { "person_id": "NAFI", "attribution_raw": "نافع", "role": "imam" },
+            { "person_id": "IBN_KATHIR", "attribution_raw": "ابن كثير", "role": "imam" },
+            { "person_id": "ABU_AMR", "attribution_raw": "أبو عمرو", "role": "imam" },
+            { "person_id": "IBN_AMIR", "attribution_raw": "ابن عامر", "role": "imam" },
+            { "person_id": "HAMZA", "attribution_raw": "حمزة", "role": "imam" },
+            { "person_id": "ABU_JAFAR", "attribution_raw": "أبو جعفر", "role": "imam" }
+          ]
+        }
+      ]
+    },
+    {
+      "locus_key": "1:6:2",
+      "source_marker": "2",
+      "marker_display": "(٢)",
+      "surah": 1,
+      "ayah": 6,
+      "mushaf_page": 1,
+      "pdf_page": 6,
+      "printed_page": 1,
+      "source_heading_raw": "﴿ ٱلصِّرَٰطَ ﴾ (٢) فيها ثلاث قراءات:",
+      "source_word_raw": "ٱلصِّرَٰطَ",
+      "mushaf_base_word": "ٱلصِّرَٰطَ",
+      "status": "verified",
+      "requires_manual_review": false,
+      "notes": "المعرف بأل: الصراط المعرفة",
+      "targets": [
+        {
+          "quran_word_id": "qurancom-word-6845",
+          "surah": 1,
+          "ayah": 6,
+          "word_index": 2,
+          "mushaf_page": 1,
+          "line_number": 6,
+          "word_index_in_line": 1,
+          "base_text_uthmani": "ٱلصِّرَٰطَ",
+          "normalized_text": "الصراط"
+        }
+      ],
+      "variants": [
+        {
+          "variant_index": 1,
+          "display_text": "ٱلصِّرَاطَ",
+          "normalized_text": "الصراط",
+          "performance_type": "pure_sad",
+          "performance_text": "بالصاد الخالصة",
+          "source_line_raw": "١- ٱلصِّرَاطَ : نافع، البزي، أبو عمرو، ابن عامر، عاصم، الكسائي، أبو جعفر، روح، خلف.",
+          "sort_order": 1,
+          "attributions": [
+            { "person_id": "NAFI", "attribution_raw": "نافع", "role": "imam" },
+            { "person_id": "AL_BAZZI", "attribution_raw": "البزي", "role": "rawi", "parent_person_id": "IBN_KATHIR" },
+            { "person_id": "ABU_AMR", "attribution_raw": "أبو عمرو", "role": "imam" },
+            { "person_id": "IBN_AMIR", "attribution_raw": "ابن عامر", "role": "imam" },
+            { "person_id": "ASIM", "attribution_raw": "عاصم", "role": "imam" },
+            { "person_id": "AL_KISAI", "attribution_raw": "الكسائي", "role": "imam" },
+            { "person_id": "ABU_JAFAR", "attribution_raw": "أبو جعفر", "role": "imam" },
+            { "person_id": "RAWH", "attribution_raw": "روح", "role": "rawi", "parent_person_id": "YAQUB" },
+            { "person_id": "KHALAF_ASHIR", "attribution_raw": "خلف", "role": "imam" }
+          ]
+        },
+        {
+          "variant_index": 2,
+          "display_text": "ٱلسِّرَاطَ",
+          "normalized_text": "السراط",
+          "performance_type": "pure_seen",
+          "performance_text": "بالسين الخالصة",
+          "source_line_raw": "٢- ٱلسِّرَاطَ : قنبل، رويس.",
+          "sort_order": 2,
+          "attributions": [
+            { "person_id": "QUNBUL", "attribution_raw": "قنبل", "role": "rawi", "parent_person_id": "IBN_KATHIR" },
+            { "person_id": "RUWAYS", "attribution_raw": "رويس", "role": "rawi", "parent_person_id": "YAQUB" }
+          ]
+        },
+        {
+          "variant_index": 3,
+          "display_text": "ٱلصِّرَاطَ",
+          "normalized_text": "الصراط",
+          "performance_type": "ishmam_sad_zay",
+          "performance_text": "بإشمام الصاد زايًا",
+          "source_line_raw": "٣- ٱلصِّرَاطَ (بإشمام الصاد زايًا) : حمزة.",
+          "sort_order": 3,
+          "attributions": [
+            { "person_id": "HAMZA", "attribution_raw": "حمزة", "role": "imam" }
+          ]
+        }
+      ]
+    },
+    {
+      "locus_key": "1:7:1",
+      "source_marker": "3",
+      "marker_display": "(٣)",
+      "surah": 1,
+      "ayah": 7,
+      "mushaf_page": 1,
+      "pdf_page": 6,
+      "printed_page": 1,
+      "source_heading_raw": "﴿ صِرَٰطَ ﴾ (٣) فيها ثلاث قراءات:",
+      "source_word_raw": "صِرَٰطَ",
+      "mushaf_base_word": "صِرَٰطَ",
+      "status": "verified",
+      "requires_manual_review": false,
+      "notes": "المنكر: صراط المنكرة بدون أل",
+      "targets": [
+        {
+          "quran_word_id": "qurancom-word-8411",
+          "surah": 1,
+          "ayah": 7,
+          "word_index": 1,
+          "mushaf_page": 1,
+          "line_number": 6,
+          "word_index_in_line": 4,
+          "base_text_uthmani": "صِرَٰطَ",
+          "normalized_text": "صراط"
+        }
+      ],
+      "variants": [
+        {
+          "variant_index": 1,
+          "display_text": "صِرَاطَ",
+          "normalized_text": "صراط",
+          "performance_type": "pure_sad",
+          "performance_text": "بالصاد الخالصة",
+          "source_line_raw": "١- صِرَاطَ : نافع، البزي، أبو عمرو، ابن عامر، خلاد، عاصم، الكسائي، أبو جعفر، روح، خلف.",
+          "sort_order": 1,
+          "attributions": [
+            { "person_id": "NAFI", "attribution_raw": "نافع", "role": "imam" },
+            { "person_id": "AL_BAZZI", "attribution_raw": "البزي", "role": "rawi", "parent_person_id": "IBN_KATHIR" },
+            { "person_id": "ABU_AMR", "attribution_raw": "أبو عمرو", "role": "imam" },
+            { "person_id": "IBN_AMIR", "attribution_raw": "ابن عامر", "role": "imam" },
+            { "person_id": "KHALLAD", "attribution_raw": "خلاد", "role": "rawi", "parent_person_id": "HAMZA" },
+            { "person_id": "ASIM", "attribution_raw": "عاصم", "role": "imam" },
+            { "person_id": "AL_KISAI", "attribution_raw": "الكسائي", "role": "imam" },
+            { "person_id": "ABU_JAFAR", "attribution_raw": "أبو جعفر", "role": "imam" },
+            { "person_id": "RAWH", "attribution_raw": "روح", "role": "rawi", "parent_person_id": "YAQUB" },
+            { "person_id": "KHALAF_ASHIR", "attribution_raw": "خلف", "role": "imam" }
+          ]
+        },
+        {
+          "variant_index": 2,
+          "display_text": "سِرَاطَ",
+          "normalized_text": "سراط",
+          "performance_type": "pure_seen",
+          "performance_text": "بالسين الخالصة",
+          "source_line_raw": "٢- سِرَاطَ : قنبل، رويس.",
+          "sort_order": 2,
+          "attributions": [
+            { "person_id": "QUNBUL", "attribution_raw": "قنبل", "role": "rawi", "parent_person_id": "IBN_KATHIR" },
+            { "person_id": "RUWAYS", "attribution_raw": "رويس", "role": "rawi", "parent_person_id": "YAQUB" }
+          ]
+        },
+        {
+          "variant_index": 3,
+          "display_text": "صِرَاطَ",
+          "normalized_text": "صراط",
+          "performance_type": "ishmam_sad_zay",
+          "performance_text": "بإشمام الصاد زايًا",
+          "source_line_raw": "٣- صِرَاطَ (بإشمام الصاد زايًا) : خلف عن حمزة.",
+          "sort_order": 3,
+          "attributions": [
+            { "person_id": "KHALAF_HAMZA", "attribution_raw": "خلف عن حمزة", "role": "rawi", "parent_person_id": "HAMZA" }
+          ]
+        }
+      ]
+    },
+    {
+      "locus_key": "1:7:4_7",
+      "source_marker": "4",
+      "marker_display": "(٤)",
+      "surah": 1,
+      "ayah": 7,
+      "mushaf_page": 1,
+      "pdf_page": 6,
+      "printed_page": 1,
+      "source_heading_raw": "﴿ عَلَيْهِمْ ﴾ (٤) (معًا) فيها قراءتان:",
+      "source_word_raw": "عَلَيْهِمْ",
+      "mushaf_base_word": "عَلَيْهِمْ",
+      "status": "verified",
+      "requires_manual_review": false,
+      "notes": "معًا: تنطبق على موضعي (أَنْعَمْتَ عَلَيْهِمْ) و (الْمَغْضُوبِ عَلَيْهِمْ)",
+      "targets": [
+        {
+          "quran_word_id": "qurancom-word-8414",
+          "surah": 1,
+          "ayah": 7,
+          "word_index": 4,
+          "mushaf_page": 1,
+          "line_number": 7,
+          "word_index_in_line": 1,
+          "base_text_uthmani": "عَلَيْهِمْ",
+          "normalized_text": "عليهم"
+        },
+        {
+          "quran_word_id": "qurancom-word-8417",
+          "surah": 1,
+          "ayah": 7,
+          "word_index": 7,
+          "mushaf_page": 1,
+          "line_number": 7,
+          "word_index_in_line": 4,
+          "base_text_uthmani": "عَلَيْهِمْ",
+          "normalized_text": "عليهم"
+        }
+      ],
+      "variants": [
+        {
+          "variant_index": 1,
+          "display_text": "عَلَيْهِمْ",
+          "normalized_text": "عليهم",
+          "performance_type": "kasr_haa",
+          "performance_text": "بكسر الهاء",
+          "source_line_raw": "١- عَلَيْهِمْ : نافع، ابن كثير، أبو عمرو، ابن عامر، عاصم، الكسائي، أبو جعفر، خلف.",
+          "sort_order": 1,
+          "attributions": [
+            { "person_id": "NAFI", "attribution_raw": "نافع", "role": "imam" },
+            { "person_id": "IBN_KATHIR", "attribution_raw": "ابن كثير", "role": "imam" },
+            { "person_id": "ABU_AMR", "attribution_raw": "أبو عمرو", "role": "imam" },
+            { "person_id": "IBN_AMIR", "attribution_raw": "ابن عامر", "role": "imam" },
+            { "person_id": "ASIM", "attribution_raw": "عاصم", "role": "imam" },
+            { "person_id": "AL_KISAI", "attribution_raw": "الكسائي", "role": "imam" },
+            { "person_id": "ABU_JAFAR", "attribution_raw": "أبو جعفر", "role": "imam" },
+            { "person_id": "KHALAF_ASHIR", "attribution_raw": "خلف", "role": "imam" }
+          ]
+        },
+        {
+          "variant_index": 2,
+          "display_text": "عَلَيْهِمُ",
+          "normalized_text": "عليهم",
+          "performance_type": "damm_haa",
+          "performance_text": "بضم الهاء وصلاً ووقفاً",
+          "source_line_raw": "٢- عَلَيْهِمُ : حمزة، يعقوب.",
+          "sort_order": 2,
+          "attributions": [
+            { "person_id": "HAMZA", "attribution_raw": "حمزة", "role": "imam" },
+            { "person_id": "YAQUB", "attribution_raw": "يعقوب", "role": "imam" }
+          ]
+        }
+      ]
+    }
+  ]
+}

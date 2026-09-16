@@ -1,0 +1,204 @@
+{
+  "source": {
+    "book_title": "مصحف القراءات العشر",
+    "edition": "النسخة المطبوعة الأولى",
+    "pdf_file": "مصحف القراءات العشر-1.pdf",
+    "pdf_page_number": 6,
+    "printed_page_number": 1,
+    "mushaf_1441_page": 1,
+    "surah_number": 1,
+    "surah_name": "سورة الفاتحة"
+  },
+  "extraction_metadata": {
+    "extracted_at": "2026-09-16T11:41:00Z",
+    "extraction_method": "manual_visual_inspection",
+    "verified_by": "human_and_agent_paired_visual_audit",
+    "status": "extracted"
+  },
+  "loci": [
+    {
+      "source_marker": "1",
+      "marker_display": "(١)",
+      "surah": 1,
+      "ayah": 4,
+      "source_heading": "﴿ مَلِكِ ﴾ (١) فيها قراءتان:",
+      "source_word_raw": "مَلِكِ",
+      "mushaf_base_word": "مَـٰلِكِ",
+      "word_scope_note": "single_word",
+      "variants": [
+        {
+          "variant_index": 1,
+          "source_line_raw": "١- مَالِكِ : عاصم، الكسائي، يعقوب، خلف.",
+          "variant_text_raw": "مَالِكِ",
+          "performance_description": null,
+          "attribution_raw": "عاصم، الكسائي، يعقوب، خلف",
+          "readers_raw": [
+            "عاصم",
+            "الكسائي",
+            "يعقوب",
+            "خلف"
+          ]
+        },
+        {
+          "variant_index": 2,
+          "source_line_raw": "٢- مَلِكِ : نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، أبو جعفر.",
+          "variant_text_raw": "مَلِكِ",
+          "performance_description": null,
+          "attribution_raw": "نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، أبو جعفر",
+          "readers_raw": [
+            "نافع",
+            "ابن كثير",
+            "أبو عمرو",
+            "ابن عامر",
+            "حمزة",
+            "أبو جعفر"
+          ]
+        }
+      ]
+    },
+    {
+      "source_marker": "2",
+      "marker_display": "(٢)",
+      "surah": 1,
+      "ayah": 6,
+      "source_heading": "﴿ ٱلصِّرَٰطَ ﴾ (٢) فيها ثلاث قراءات:",
+      "source_word_raw": "ٱلصِّرَٰطَ",
+      "mushaf_base_word": "ٱلصِّرَٰطَ",
+      "word_scope_note": "single_word",
+      "variants": [
+        {
+          "variant_index": 1,
+          "source_line_raw": "١- ٱلصِّرَاطَ : نافع، البزي، أبو عمرو، ابن عامر، عاصم، الكسائي، أبو جعفر، روح، خلف.",
+          "variant_text_raw": "ٱلصِّرَاطَ",
+          "performance_description": null,
+          "attribution_raw": "نافع، البزي، أبو عمرو، ابن عامر، عاصم، الكسائي، أبو جعفر، روح، خلف",
+          "readers_raw": [
+            "نافع",
+            "البزي",
+            "أبو عمرو",
+            "ابن عامر",
+            "عاصم",
+            "الكسائي",
+            "أبو جعفر",
+            "روح",
+            "خلف"
+          ]
+        },
+        {
+          "variant_index": 2,
+          "source_line_raw": "٢- ٱلسِّرَاطَ : قنبل، رويس.",
+          "variant_text_raw": "ٱلسِّرَاطَ",
+          "performance_description": "بالسين الخالصة",
+          "attribution_raw": "قنبل، رويس",
+          "readers_raw": [
+            "قنبل",
+            "رويس"
+          ]
+        },
+        {
+          "variant_index": 3,
+          "source_line_raw": "٣- ٱلصِّرَاطَ (بإشمام الصاد زايًا) : حمزة.",
+          "variant_text_raw": "ٱلصِّرَاطَ",
+          "performance_description": "بإشمام الصاد زايًا",
+          "attribution_raw": "حمزة",
+          "readers_raw": [
+            "حمزة"
+          ]
+        }
+      ]
+    },
+    {
+      "source_marker": "3",
+      "marker_display": "(٣)",
+      "surah": 1,
+      "ayah": 7,
+      "source_heading": "﴿ صِرَٰطَ ﴾ (٣) فيها ثلاث قراءات:",
+      "source_word_raw": "صِرَٰطَ",
+      "mushaf_base_word": "صِرَٰطَ",
+      "word_scope_note": "single_word",
+      "variants": [
+        {
+          "variant_index": 1,
+          "source_line_raw": "١- صِرَاطَ : نافع، البزي، أبو عمرو، ابن عامر، خلاد، عاصم، الكسائي، أبو جعفر، روح، خلف.",
+          "variant_text_raw": "صِرَاطَ",
+          "performance_description": null,
+          "attribution_raw": "نافع، البزي، أبو عمرو، ابن عامر، خلاد، عاصم، الكسائي، أبو جعفر، روح، خلف",
+          "readers_raw": [
+            "نافع",
+            "البزي",
+            "أبو عمرو",
+            "ابن عامر",
+            "خلاد",
+            "عاصم",
+            "الكسائي",
+            "أبو جعفر",
+            "روح",
+            "خلف"
+          ]
+        },
+        {
+          "variant_index": 2,
+          "source_line_raw": "٢- سِرَاطَ : قنبل، رويس.",
+          "variant_text_raw": "سِرَاطَ",
+          "performance_description": "بالسين الخالصة",
+          "attribution_raw": "قنبل، رويس",
+          "readers_raw": [
+            "قنبل",
+            "رويس"
+          ]
+        },
+        {
+          "variant_index": 3,
+          "source_line_raw": "٣- صِرَاطَ (بإشمام الصاد زايًا) : خلف عن حمزة.",
+          "variant_text_raw": "صِرَاطَ",
+          "performance_description": "بإشمام الصاد زايًا",
+          "attribution_raw": "خلف عن حمزة",
+          "readers_raw": [
+            "خلف عن حمزة"
+          ]
+        }
+      ]
+    },
+    {
+      "source_marker": "4",
+      "marker_display": "(٤)",
+      "surah": 1,
+      "ayah": 7,
+      "source_heading": "﴿ عَلَيْهِمْ ﴾ (٤) (معًا) فيها قراءتان:",
+      "source_word_raw": "عَلَيْهِمْ",
+      "mushaf_base_word": "عَلَيْهِمْ",
+      "word_scope_note": "معًا (تنطبق على الموضعين في الآية: أَنْعَمْتَ عَلَيْهِمْ و الْمَغْضُوبِ عَلَيْهِمْ)",
+      "target_occurrences_count": 2,
+      "variants": [
+        {
+          "variant_index": 1,
+          "source_line_raw": "١- عَلَيْهِمْ : نافع، ابن كثير، أبو عمرو، ابن عامر، عاصم، الكسائي، أبو جعفر، خلف.",
+          "variant_text_raw": "عَلَيْهِمْ",
+          "performance_description": "بكسر الهاء",
+          "attribution_raw": "نافع، ابن كثير، أبو عمرو، ابن عامر، عاصم، الكسائي، أبو جعفر، خلف",
+          "readers_raw": [
+            "نافع",
+            "ابن كثير",
+            "أبو عمرو",
+            "ابن عامر",
+            "عاصم",
+            "الكسائي",
+            "أبو جعفر",
+            "خلف"
+          ]
+        },
+        {
+          "variant_index": 2,
+          "source_line_raw": "٢- عَلَيْهِمُ : حمزة، يعقوب.",
+          "variant_text_raw": "عَلَيْهِمُ",
+          "performance_description": "بضم الهاء",
+          "attribution_raw": "حمزة، يعقوب",
+          "readers_raw": [
+            "حمزة",
+            "يعقوب"
+          ]
+        }
+      ]
+    }
+  ]
+}

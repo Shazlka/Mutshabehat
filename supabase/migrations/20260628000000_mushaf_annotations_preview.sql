@@ -1,4 +1,5 @@
--- Mushaf 1441 annotations.
+-- Preview migration for Mushaf 1441 annotations.
+-- (Originally marked to apply only to a Supabase preview/development branch).
 --
 -- STATUS (verified against production 2026-09-16): this table IS LIVE in the
 -- self-hosted production database and is in active use — 14 rows, written
