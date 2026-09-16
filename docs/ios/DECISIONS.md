@@ -93,6 +93,26 @@ WOFF2 renders the correct glyphs with identical metrics. Harness kept at
 `apps/ios/tools/fontcheck.swift` — re-run it against an iOS simulator once
 Xcode is installed (IOS-10).
 
+The same harness validates the rest of the pipeline end to end. For pages 1,
+77, 200, 404, 500 and 604, taking the **first two and the last** word glyph of
+each page straight from that page's fixture:
+
+| Page | PostScript name | glyphs | probes drawable |
+|---:|---|---:|---|
+| 001 | `QCF2001` | 376 | 3/3 |
+| 077 | `QCF2077` | 194 | 3/3 |
+| 200 | `QCF2200` | 187 | 3/3 |
+| 404 | `QCF2404` | 166 | 3/3 |
+| 500 | `QCF2500` | 179 | 3/3 |
+| 604 | `QCF2604` | 109 | 3/3 |
+
+So the conventions the fetcher can rely on: the font for page *N* is at
+`…/hafs/v2/ttf/p{N}.ttf` and registers under PostScript name
+`QCF2` + zero-padded three-digit *N*; every page's PUA range starts at
+**U+FC41**; and the fixture's `glyph` codepoints resolve to drawable glyphs
+with non-zero advances in that page's own font. Resolve fonts by that
+PostScript name — do not assume the family name matches.
+
 It is still not what v1 ships on, for one reason: **CoreText's WOFF2 support is
 undocumented, and App Store review has been rejecting apps containing WOFF2
 files**, detected by inspecting file contents rather than extensions. Even

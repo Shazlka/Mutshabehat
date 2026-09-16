@@ -42,3 +42,6 @@ next-env.d.ts
 
 # graphify output
 graphify-out/
+
+# Codex/agent scratch (prompts + results from delegated runs)
+.ai/
