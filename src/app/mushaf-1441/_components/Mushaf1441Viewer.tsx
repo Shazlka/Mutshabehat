@@ -433,7 +433,9 @@ export default function Mushaf1441Viewer({
   const [qiraatStudyMode, setQiraatStudyMode] = useState(false)
   const [qiraatShowDiffFromHafs, setQiraatShowDiffFromHafs] = useState(false)
   const [qiraatFilter, setQiraatFilter] = useState<QiraatComparisonFilter>({ kind: 'all' })
-  const [qiraatIncludeReviewed, setQiraatIncludeReviewed] = useState(false)
+  // Defaults ON: none of the imported Qiraat data has reached VERIFIED/PUBLISHED yet, so leaving
+  // this off would mean nothing ever appears without a manual per-session toggle.
+  const [qiraatIncludeReviewed, setQiraatIncludeReviewed] = useState(true)
   const [qiraatLegendOpen, setQiraatLegendOpen] = useState(false)
   // Keyed `${page}:${includeReviewed ? 1 : 0}` so toggling the debug flag never serves stale data.
   const [qiraatVariantsByPage, setQiraatVariantsByPage] = useState<Record<string, QiraatVariant[]>>({})
