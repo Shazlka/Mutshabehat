@@ -1,7 +1,6 @@
 # iOS Native App — Phase 0 Discovery
 
-Date: 2026-09-15, **live-verified and corrected 2026-09-16 from the MacBook
-Air** (IOS-04). The original pass ran from a cloud Claude Code session with no
+Date: 2026-09-15, **live-verified and corrected 2026-09-16** (IOS-04, IOS-08). The original pass ran from a cloud Claude Code session with no
 route to the Mac mini, so it was **repo-file-based**. Section 8 now carries the
 live schema, row counts and payload sizes read straight from production, and
 the corrections it forced are marked **[CORRECTED 2026-09-16]** inline below.
@@ -149,18 +148,27 @@ phone.
 
 ---
 
-# 8. Live production verification — IOS-04 (2026-09-16, from the MacBook Air)
+# 8. Live production verification — IOS-04 / IOS-08 (2026-09-16)
 
-Method note: the Mac mini exposes **only** the Tailscale Funnel on `:8443`
-(Caddy → GoTrue + PostgREST). Postgres `5432`/`5433` are **not** routed over
-Tailscale, `psql`/`pg_dump` are not installed on the Air, and SSH to the mini
-refuses the Air's key. So a literal `pg_dump --schema-only` was not possible.
-Instead the live schema was read from **PostgREST's OpenAPI document**
-(`GET /rest/v1/` with the service-role key), row counts from
-`HEAD … Prefer: count=exact`, and constraints by probing rejected inserts.
-That covers columns, types, nullability, PKs, FKs, CHECK enforcement and RLS
-behaviour — everything Phase 1 needs. It does **not** give index definitions
-or policy bodies as DDL text; see §8.6.
+**Which machine this ran on.** The session was told it was on the MacBook Air.
+It is not — it runs on the **Mac mini itself** (`hostname amr-Mac-mini.local`,
+`hw.model Macmini9,1`, Tailscale self `100.88.212.88 youssefs-mac-mini`). That
+mattered: the first half of this section was gathered the hard way, over the
+public Tailscale Funnel, and the "SSH to the mini is refused" blocker was this
+machine refusing a connection to itself. Anyone resuming this work should run
+`hostname` before assuming which host they are on.
+
+Consequences, both good: production Postgres is on `127.0.0.1:5433`
+(`docker exec mutshabehat-db …`), so a real `pg_dump --schema-only` **was**
+available and IOS-08 is closed below; and `/Volumes/External Mini` is this
+machine's own SSD.
+
+Method: §8.1–8.5 were read through **PostgREST's OpenAPI document**
+(`GET /rest/v1/` with the service-role key), with row counts from
+`HEAD … Prefer: count=exact`, RLS checked with the anon key, and constraints
+probed with deliberately invalid inserts. §8.7 adds what only `pg_dump` and
+`pg_class` can give: index definitions, RLS policy bodies and physical sizes.
+The two agree everywhere they overlap.
 
 ## 8.1 Live schema and row counts (production, 2026-09-16)
 
@@ -301,20 +309,11 @@ credentials against GoTrue.
 
 ## 8.6 Still open after IOS-04
 
-1. **True `pg_dump --schema-only` DDL** — index definitions and RLS policy
-   bodies. Not obtainable over PostgREST. Needs a shell on the mini or
-   Postgres routed over Tailscale. **Not a Phase 1 blocker**: the iOS app
-   defines its own SQLite indexes and never reproduces server policies.
-2. **Mac mini shell / `git status`** — SSH to `100.88.212.88` refuses the
-   Air's key (`id_ed25519_minipull`); no `authorized_keys` entry. Largely a
-   non-issue: per the self-host notes the mini holds only the Docker compose
-   stack at `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost`, not an
-   app checkout. **The canonical checkout is the Air's `~/Projects/mutshabehat-v2`
-   and it is clean.** To close this properly, add the Air's public key to the
-   mini's `authorized_keys`.
-3. **Physical table/index sizes** — needs Postgres access. The JSON payload
-   sizes in §8.1 are the better proxy anyway: they measure what actually
-   crosses the wire to the phone.
+1. ~~True `pg_dump --schema-only` DDL~~ — **CLOSED, see §8.7.**
+2. ~~Mac mini shell / `git status`~~ — **CLOSED.** There was never a second
+   machine: this session runs on the mini. Its checkout is
+   `~/Projects/mutshabehat-v2` and `git status` is clean.
+3. ~~Physical table/index sizes~~ — **CLOSED, see §8.7.**
 4. **Stray probe row** — the constraint probe in §8.3 sent `Prefer: tx=rollback`,
    but this PostgREST is not configured with `db-tx-end = commit-allow-override`,
    so the one *valid* probe insert committed instead of rolling back. Row
@@ -324,3 +323,56 @@ credentials against GoTrue.
    production write. Counts above say 14 = the true user-data figure.
    **Note for all future sessions: `Prefer: tx=rollback` is NOT honoured on
    this stack. Never treat it as a dry run.**
+
+
+## 8.7 What only `pg_dump` could give — IOS-08 (2026-09-16)
+
+Taken with `docker exec mutshabehat-db pg_dump -U postgres --schema-only -n public`
+plus `pg_class` / `pg_indexes`, once it became clear this session runs on the
+mini itself.
+
+**Row-level security is enabled on all 13 public tables** — `groups`, `verses`,
+`parts`, `tags`, `group_tags`, `test_answers`, `mushaf_annotations`,
+`automated_groups`, `profiles`, `personal_groups`, `personal_verses`,
+`group_verses`, `verse_parts`. Nothing was left unprotected by the 2026-08-31
+introspection-based migration. This is the DDL-level confirmation of the
+behavioural result in §8.4.
+
+**Indexes are all present**, including the three the annotations migration
+defines, which is worth stating because that migration was never run as a file
+(§8.3) and its indexes could plausibly have been lost:
+
+| Table | Indexes |
+|---|---|
+| `groups` | pkey, `search_vec` (gin), `rasm_skeleton` + `title` (gin_trgm), `user_id`, and partial/composite btrees on `(user_id, …)` for created/updated/status/title/favorite/completed/source_automated |
+| `verses` | pkey, `group_id`, `(group_id, sort_order)`, `(group_id, surah)`, `surah` |
+| `parts` | pkey, `verse_id`, `(verse_id, sort_order)`, `search_vec` (gin), `rasm_skeleton` + `text` (gin_trgm) |
+| `mushaf_annotations` | pkey, `(user_id, page_number, annotation_type)`, `(user_id, ayah_key, annotation_type)`, `(user_id, word_id)` |
+| `tags` | pkey, `user_id`, unique `(user_id, lower(name))` |
+| `test_answers` | pkey, `(user_id, created_at)` |
+
+The annotations indexes are exactly the access patterns the iOS reader needs —
+by page while turning pages, by ayah when opening a verse — so the SQLite
+mirror should carry the same two (minus `user_id`, which is constant on device).
+
+**Physical sizes** (whole database: **42 MB**):
+
+| Table | Total | Heap | Indexes |
+|---|---:|---:|---:|
+| `automated_groups` | 24 MB | 19 MB | 2 904 kB |
+| `parts` | 3 208 kB | 1 088 kB | 2 088 kB |
+| `groups` | 944 kB | 176 kB | 728 kB |
+| `verses` | 376 kB | 104 kB | 240 kB |
+| `personal_verses` | 360 kB | 272 kB | 56 kB |
+| `personal_groups` | 144 kB | 64 kB | 48 kB |
+| `test_answers` | 96 kB | 32 kB | 32 kB |
+| `mushaf_annotations` | 80 kB | 8 kB | 64 kB |
+| `profiles`, `group_verses`, `tags`, `verse_parts`, `group_tags` | ≤32 kB each | | |
+
+This confirms §8.1's conclusion from the other direction: everything in the v1
+cut is **under 5 MB on disk including indexes**, and `automated_groups` is 24 MB
+of the 42 MB database. Full-corpus offline replication remains the simple,
+correct choice. Note how index-heavy the small tables are (`groups`: 728 kB of
+index over 176 kB of heap) — that is Postgres FTS and trigram indexes, which
+the SQLite mirror replaces with one FTS5 table, so do not use these figures to
+size the on-device database.
