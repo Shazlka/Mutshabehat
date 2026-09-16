@@ -602,6 +602,18 @@ export default function Mushaf1441Viewer({
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [contextMenu])
 
+  // The Qiraat peek closes on any click, on the popup itself or elsewhere — the marked word's own
+  // click stops propagation (see its onClick) so opening/switching a peek is never immediately
+  // undone by this same listener.
+  useEffect(() => {
+    if (!hoveredQiraatWord) return
+    function onDocumentClick() {
+      updateHoveredQiraatWord(null)
+    }
+    document.addEventListener('click', onDocumentClick)
+    return () => document.removeEventListener('click', onDocumentClick)
+  }, [hoveredQiraatWord])
+
   const visiblePage = currentPage?.pageNumber === pageNumber ? currentPage : null
   const visiblePageMetadata = currentPageMetadata.pageNumber === pageNumber ? currentPageMetadata : null
   // Spread: odd page on the right, its even partner on the left. `pageNumber` stays the page
@@ -1876,7 +1888,7 @@ export default function Mushaf1441Viewer({
         key={word.id}
         type="button"
         id={word.wordIndexInAyah === 1 ? navigateToAyah(word.ayahKey).slice(1) : undefined}
-        onClick={() => {
+        onClick={(event) => {
           if (longPressFiredRef.current) {
             longPressFiredRef.current = false
             return
@@ -1891,7 +1903,10 @@ export default function Mushaf1441Viewer({
           // hover — still peeks. First tap/hover shows the lite popup; a second tap on the SAME
           // already-peeked word (or a desktop click, since hover already peeked it) opens the full
           // detail panel. Reads the ref, not the state, so a stale page-slot closure can't misread it.
+          // Stops here (never bubbles to the document click-outside listener below) so opening or
+          // switching a peek is never immediately undone by that same click.
           if (hasQiraatData && qiraatView.mode !== 'normal') {
+            event.stopPropagation()
             if (qiraatMarker) {
               if (hoveredQiraatWordIdRef.current === word.id) {
                 updateHoveredQiraatWord(null)
@@ -3100,19 +3115,16 @@ export default function Mushaf1441Viewer({
     const { word, marker } = hoveredQiraatWord
     const surahName = surahNameByNumber.get(word.surahNumber) ?? ''
     const shownVariants = marker.variants.slice(0, 3)
+    const showWajhNumbers = shownVariants.length > 1
 
-    // A documented variant only ever lists the readings that DIFFER from Hafs — those who read
-    // like Hafs simply have no record (never duplicating the baseline text as a "variant"). The
-    // hover card still shows them as their own وجه, computed here, never guessed: the 20-reading
-    // set minus everyone covered by a shown variant.
-    const hafsBaseText = word.textQpcHafs ?? word.textUthmani
-    const coveredReadingIds = Array.from(new Set(shownVariants.flatMap((variant) => variant.readingIds)))
-    const baselineReadingIds = marker.unresolved ? [] : readingsNotIn(coveredReadingIds, QIRAAT_READINGS.map((reading) => reading.id))
-    const showBaselineWajh = baselineReadingIds.length > 0
-    const showWajhNumbers = shownVariants.length + (showBaselineWajh ? 1 : 0) > 1
-
+    // Only who DIFFERS from Hafs, and how — never Hafs's own reading or whoever merely agrees
+    // with him (no "الباقون"/baseline group here; that stays a full-detail-panel-only concept).
     return (
-      <div className="pointer-events-none absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]" dir="rtl">
+      <div
+        className="absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]"
+        dir="rtl"
+        onClick={() => updateHoveredQiraatWord(null)}
+      >
         <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
           <span className="rounded-full bg-[#f1e2b6] px-2.5 py-1 text-[11px] font-bold text-[#7a5a10]">خلاف في الكلمة</span>
           <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
@@ -3121,21 +3133,6 @@ export default function Mushaf1441Viewer({
           <p className="mt-2 text-xs font-bold text-[#8a2f10]">قراءة قيد المراجعة — لم تُحدَّد نسبتها بعد</p>
         ) : (
           <div className="mt-2.5 space-y-2.5">
-            {showBaselineWajh ? (
-              <div className="rounded-xl border border-[#e3d6b4] bg-white p-3">
-                <div className="mb-2 flex items-center justify-between gap-2">
-                  <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold leading-relaxed text-[#7a5a10]">القراءة الأصلية</span>
-                  {showWajhNumbers ? <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">الوجه 1</span> : null}
-                </div>
-                <p className="text-center text-3xl font-bold leading-relaxed text-[#7a1f1a] font-[family-name:var(--font-amiri-quran)]">
-                  {hafsBaseText}
-                </p>
-                <p className="mb-1.5 mt-2 text-[10px] font-bold text-[#8a7c5c]">القرّاء والرواة:</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {readerPillsForReadingIds(baselineReadingIds).map(renderReaderPill)}
-                </div>
-              </div>
-            ) : null}
             {shownVariants.map((variant, index) => {
               const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
               const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
@@ -3148,7 +3145,7 @@ export default function Mushaf1441Viewer({
                 <div key={variant.id} className="rounded-xl border border-[#e3d6b4] bg-white p-3">
                   <div className="mb-2 flex items-center justify-between gap-2">
                     <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold leading-relaxed text-[#7a5a10]">{rulingLabel}</span>
-                    {showWajhNumbers ? <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">الوجه {index + 1 + (showBaselineWajh ? 1 : 0)}</span> : null}
+                    {showWajhNumbers ? <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">الوجه {index + 1}</span> : null}
                   </div>
                   {needsManualReview ? (
                     <p className="mb-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
