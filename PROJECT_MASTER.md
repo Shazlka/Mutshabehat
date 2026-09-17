@@ -394,3 +394,91 @@ Fixtures are the serving layer and should stay that way (zero round-trip page tu
 Mac Mini is offline). Postgres becomes the authoring/QA source of truth: apply the migration after a
 `pg_dump` backup, then generate the same fixtures from `qiraat_export_page()`. See
 `docs/qiraat/10-v2-architecture-plan.md` §4 and §8.
+
+---
+
+## 13. The Mushaf reader's three colour layers (read before touching the reader)
+
+The mushaf page can paint three different colour systems onto the **same letters**. Exactly one of
+them runs at a time. This is a product rule the user set explicitly, and it is enforced structurally
+rather than by discipline — the shape of the state makes the forbidden states unrepresentable.
+
+### 13.1 The layer model
+
+| Layer | Top-bar button | What it paints | What a press on a word does |
+|---|---|---|---|
+| `annotations` | **ن** | highlight background/text colour, bookmark & favourite ring, ayah-medallion tint | opens the note / highlight / bookmark / favourite menu |
+| `mutshabehat` | **م** | the per-group highlight band on linked ayat | opens that ayah's متشابهات card — and a word in no group does **nothing** |
+| `qiraat` | **ق** | أصول word colours, variant markers, ذو وجهين underline | opens the قراءات explanation (sidebar on desktop/iPad landscape, sheet on a phone) |
+| `none` | — | nothing | opens the notes panel (what a press means with no layer on) |
+
+Pressing an inactive button switches to that layer and turns the other two off. Pressing the active
+one turns it off → plain mushaf.
+
+### 13.2 How it is enforced (do not undo this)
+
+```ts
+type ReaderLayer = 'none' | 'annotations' | 'mutshabehat' | 'qiraat'
+const [readerLayer, setReaderLayer] = useState<ReaderLayer>('mutshabehat')
+
+const annotationsVisible          = readerLayer === 'annotations'
+const mutshabehatHighlightEnabled = readerLayer === 'mutshabehat'
+const qiraatMode: QiraatMode      = readerLayer === 'qiraat' ? qiraatSubMode : 'normal'
+```
+
+- **One enum, not three booleans.** Three booleans can represent "two layers on at once" — a state
+  the reader is not allowed to be in — and each such state would then have to be defended against
+  separately at every render site. The enum cannot represent it at all.
+- The three old flags are **derived**, so the whole render path below them is unchanged.
+- `qiraatSubMode` (`'comparison' | 'riwayah'`) is kept apart from the layer, so leaving القراءات and
+  coming back restores the mode the reader was in instead of resetting them.
+- `activateLayer()` is the only writer. It persists to `mushaf1441:reader-layer:v1` and closes
+  whatever the previous layer had open (متشابهات card, notes sheet, Qiraat peek and selection).
+- The burger panel's mode select and the **ق** button both go through `applyQiraatMode()`, so they
+  cannot disagree about whether القراءات is on.
+- `scripts/validate-mushaf1441-objective.mjs` has an exclusivity block that **fails the build** if
+  the enum or the derived flags are replaced by independent on/off state again.
+
+### 13.3 Routing a press
+
+Two entry points, both routed by layer — add new press behaviour to these, never beside them:
+
+- **Tap / click** → `renderQcfWord`'s `onClick`. Qiraat is checked first and returns early, so a word
+  that carries Qiraat data *and* a متشابهات link *and* a highlight (real example: ﴿إِبْرَٰهِـۧمَ﴾ 2:124)
+  still answers with Qiraat alone.
+- **Long-press (touch) / right-click** → the single `openContextMenu()` funnel. It returns `boolean`
+  — whether the press produced anything — which is what decides if the haptic plays.
+
+The ayah-end medallion follows the same rule; it used to be a back door into the notes sheet.
+
+The detail sheet no longer has a three-way tab bar: `activeDetailTab` is **derived** from the layer,
+so it cannot show متشابهات links over a page painted with Qiraat.
+
+### 13.4 The memoization trap (this has bitten twice)
+
+`MushafPageSlot` compares its props **by identity**. Anything a word's render or click closure reads
+must therefore reach the slot through a prop, or the slot keeps a stale closure and the change only
+appears when some *other* prop happens to move.
+
+- 2026-09-17, first bug: the annotations toggle silently did nothing because the slot was handed the
+  raw `annotations` array. Fixed by passing the gated value (`annotationsVisible ? annotations : EMPTY_ANNOTATIONS`).
+- Same day, prevented: `readerLayer` rides in the slot's `selection` prop precisely because the press
+  routing reads it from the render closure.
+
+Rule: **gate at the prop, not only at the derived map.**
+
+### 13.5 Haptics (`_components/haptics.ts`)
+
+`impactHaptic()` plays one crisp tick when a long press is recognised — and only when the press
+actually produced something, because a long press that opens nothing buzzing anyway would be lying
+about what just happened. A CSS `active:` state on the word gives the same feedback visually, with no
+React state and so no page-slot re-render.
+
+Two paths, because no single API covers both platforms:
+
+1. `navigator.vibrate(15)` — Android / Chromium. Longer than ~20 ms stops reading as a tap.
+2. iOS 17.4+ only — clicking the `<label>` of an `<input type="checkbox" switch>` makes WebKit play
+   the system switch haptic. **Mobile Safari exposes no Vibration API at all**, so this is the only
+   haptic an iOS web page can ask for. It is a platform quirk, not a standard: if a future WebKit
+   stops playing it the tick goes quiet and nothing else breaks. **Not yet confirmed on a real
+   iPhone** — the sandbox only has Chromium.
