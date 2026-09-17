@@ -3821,13 +3821,26 @@ export default function Mushaf1441Viewer({
     // with him (no "الباقون"/baseline group here; that stays a full-detail-panel-only concept).
     return (
       <div
-        className="absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]"
+        className="absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 cursor-pointer rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]"
         dir="rtl"
         onClick={() => updateHoveredQiraatWord(null)}
       >
         <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
-          <span className="rounded-full bg-[#f1e2b6] px-2.5 py-1 text-[11px] font-bold text-[#7a5a10]">خلاف في الكلمة</span>
-          <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-[#f1e2b6] px-2.5 py-1 text-[11px] font-bold text-[#7a5a10]">خلاف في الكلمة</span>
+            <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
+          </div>
+          <button
+            type="button"
+            aria-label="إغلاق"
+            onClick={(e) => {
+              e.stopPropagation()
+              updateHoveredQiraatWord(null)
+            }}
+            className="rounded px-1.5 py-0.5 text-xs font-bold text-[#8b7f6a] hover:bg-[#ebdcc0] hover:text-[#171717]"
+          >
+            ✕
+          </button>
         </div>
         {marker.unresolved ? (
           <p className="mt-2 text-xs font-bold text-[#8a2f10]">قراءة قيد المراجعة — لم تُحدَّد نسبتها بعد</p>
@@ -3870,7 +3883,7 @@ export default function Mushaf1441Viewer({
             ) : null}
           </div>
         )}
-        <p className="mt-2.5 text-[10px] text-[#a8987a]">اضغط على الكلمة لعرض كل التفاصيل والمصادر</p>
+        <p className="mt-2.5 text-[10px] text-[#a8987a]">اضغط في أي مكان للإغلاق</p>
       </div>
     )
   }
@@ -4157,9 +4170,17 @@ export default function Mushaf1441Viewer({
             onFinish={finishPageTurn}
           />
         ) : null}
-        {readerLayer === 'qiraat'
-          ? (hoveredQiraatWord ? renderQiraatHoverCard() : null)
-          : (hoveredQiraatWord ? renderQiraatHoverCard() : renderHoverCard())}
+        {hoveredQiraatWord ? (
+          <>
+            <button
+              type="button"
+              aria-label="إغلاق بطاقة القراءات"
+              onClick={() => updateHoveredQiraatWord(null)}
+              className="fixed inset-0 z-10 bg-black/20 backdrop-blur-[1px] sm:hidden"
+            />
+            {renderQiraatHoverCard()}
+          </>
+        ) : (readerLayer === 'qiraat' ? null : renderHoverCard())}
         {isPageLoading ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
             <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
@@ -4364,10 +4385,23 @@ export default function Mushaf1441Viewer({
 
       {/* Dedicated Qiraat bottom card on mobile & portrait screens */}
       {!isSpread && qiraatSelection && qiraatMode !== 'normal' ? (
-        <div className="fixed inset-x-0 bottom-0 z-40 p-2 sm:p-4 pointer-events-none" dir="rtl">
+        <div className="fixed inset-0 z-40 flex flex-col justify-end p-2 sm:p-4" dir="rtl">
+          <button
+            type="button"
+            aria-label="إغلاق بطاقة القراءات"
+            onClick={() => {
+              setQiraatSelection(null)
+              updateHoveredQiraatWord(null)
+            }}
+            className="fixed inset-0 bg-black/25 backdrop-blur-[1px] transition-opacity"
+          />
           <div
-            className="pointer-events-auto mx-auto max-w-lg rounded-2xl border border-[#d7c7a7] bg-[#fffdf8]/98 p-3.5 shadow-[0_-12px_45px_rgba(23,23,23,0.22)] backdrop-blur-md"
+            className="relative z-10 mx-auto w-full max-w-lg cursor-pointer rounded-2xl border border-[#d7c7a7] bg-[#fffdf8]/98 p-3.5 shadow-[0_-12px_45px_rgba(23,23,23,0.22)] backdrop-blur-md"
             style={{ paddingBottom: 'calc(0.875rem + env(safe-area-inset-bottom))' }}
+            onClick={() => {
+              setQiraatSelection(null)
+              updateHoveredQiraatWord(null)
+            }}
           >
             <div className="mb-2.5 flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
               <div className="flex items-center gap-2">
@@ -4378,7 +4412,12 @@ export default function Mushaf1441Viewer({
               </div>
               <button
                 type="button"
-                onClick={() => setQiraatSelection(null)}
+                aria-label="إغلاق"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setQiraatSelection(null)
+                  updateHoveredQiraatWord(null)
+                }}
                 className="rounded-md border border-[#d7c7a7] bg-white px-2.5 py-1 text-xs font-bold text-[#80662c] shadow-sm transition-colors hover:bg-[#fff7df]"
               >
                 مسح التحديد ✕
@@ -4387,6 +4426,7 @@ export default function Mushaf1441Viewer({
             <div className="max-h-[48vh] overflow-y-auto pr-0.5">
               {renderQiraatSelection()}
             </div>
+            <p className="mt-2 text-center text-[10px] text-[#a8987a]">اضغط في أي مكان داخل البطاقة أو خارجها للإغلاق</p>
           </div>
         </div>
       ) : null}
