@@ -46,3 +46,12 @@ graphify-out/
 # Python bytecode from the Qiraat generators (committed by accident in 7b54c40)
 __pycache__/
 *.pyc
+
+# Local browser verification artifacts
+/playwright-report/
+/test-results/
+
+# Local build & experimentation artifacts
+.ai/
+apps/**/.build/
+

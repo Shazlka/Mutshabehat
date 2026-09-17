@@ -1,0 +1,1 @@
+export default function Loading(){return <div dir="rtl" className="max-w-3xl mx-auto p-8" role="status"><h1 className="text-3xl font-bold">اختبر حفظك</h1><p className="mt-5 text-[var(--color-ink-soft)]">جارٍ تحميل اختباراتك…</p></div>}
