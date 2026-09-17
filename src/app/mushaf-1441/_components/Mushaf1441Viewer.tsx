@@ -48,6 +48,12 @@ type QiraatReviewVerdict = 'confirmed' | 'rejected'
 // Mutshabehat highlighting is a per-device choice, independent of the Qiraat layer, so a reader can
 // look at ONE of them at a time instead of both colour systems fighting over the same words.
 const MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY = 'mushaf1441:mutshabehat-highlight:v1'
+// Personal annotations (notes, highlight colours, bookmarks, favourites) are the third colour
+// system on the page. Same deal as the mutshabehat layer: one switch, so only one of them paints
+// the words at a time — and it turns itself off when the Qiraat layer comes on, since the two
+// would otherwise fight over the very same letters.
+const ANNOTATIONS_VISIBLE_STORAGE_KEY = 'mushaf1441:annotations-visible:v1'
+const EMPTY_ANNOTATIONS: MushafAnnotation[] = []
 
 /** What the permanent Qiraat sidebar is currently explaining. */
 interface QiraatSelection {
@@ -495,6 +501,8 @@ export default function Mushaf1441Viewer({
   // ~1 ms page-turn invariant holds (same rule as hoveredAyahKey / hoveredQiraatWord).
   const [qiraatSelection, setQiraatSelection] = useState<QiraatSelection | null>(null)
   const [mutshabehatHighlightEnabled, setMutshabehatHighlightEnabled] = useState(true)
+  const [annotationsVisible, setAnnotationsVisible] = useState(true)
+  const previousQiraatModeRef = useRef<QiraatMode>('normal')
   const [qiraatReview, setQiraatReview] = useState<Record<string, QiraatReviewVerdict>>({})
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
@@ -665,6 +673,32 @@ export default function Mushaf1441Viewer({
       if (raw !== null) setMutshabehatHighlightEnabled(raw === '1')
     } catch { /* storage unavailable — default stays on */ }
   }, [])
+
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(ANNOTATIONS_VISIBLE_STORAGE_KEY)
+      if (raw !== null) setAnnotationsVisible(raw === '1')
+    } catch { /* storage unavailable — default stays on */ }
+  }, [])
+
+  function setAnnotationsVisiblePersisted(next: boolean) {
+    setAnnotationsVisible(next)
+    try {
+      window.localStorage.setItem(ANNOTATIONS_VISIBLE_STORAGE_KEY, next ? '1' : '0')
+    } catch { /* ignore */ }
+  }
+
+  // Entering مقارنة القراءات / القراءة برواية clears the personal-annotation layer, so the Qiraat
+  // colours are never read against a highlight the user put there for an unrelated reason. Fires
+  // only on the normal -> Qiraat transition, so turning annotations back ON while in Qiraat mode
+  // sticks instead of being immediately undone.
+  useEffect(() => {
+    const previous = previousQiraatModeRef.current
+    previousQiraatModeRef.current = qiraatMode
+    if (previous === 'normal' && qiraatMode !== 'normal' && annotationsVisible) {
+      setAnnotationsVisiblePersisted(false)
+    }
+  }, [qiraatMode, annotationsVisible])
 
   function toggleMutshabehatHighlight() {
     setMutshabehatHighlightEnabled((current) => {
@@ -869,21 +903,27 @@ export default function Mushaf1441Viewer({
   // One switch, one colour system: with the highlight off the page shows only the Qiraat layer.
   const EMPTY_HIGHLIGHTS = useMemo(() => new Map<string, MutshabehatAyahLink>(), [])
   const slotHighlightByAyahKey = mutshabehatHighlightEnabled ? slotHighlightByAyahKeyRaw : EMPTY_HIGHLIGHTS
+  // `annotationsVisible` gates these two maps rather than each of the ~6 render sites that read
+  // them, so the highlight colour, the bookmark/favourite ring and the ayah badge all disappear
+  // together and none can be forgotten. The annotations themselves are untouched — the context
+  // menu and the notes editor still see everything, so nothing is lost by hiding the layer.
   const slotAnnotationsByWordId = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
+    if (!annotationsVisible) return map
     for (const annotation of annotations) {
       if (!annotation.wordId) continue
       map.set(annotation.wordId, [...(map.get(annotation.wordId) ?? []), annotation])
     }
     return map
-  }, [annotations])
+  }, [annotations, annotationsVisible])
   const slotAnnotationsByAyahKey = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
+    if (!annotationsVisible) return map
     for (const annotation of annotations) {
       map.set(annotation.ayahKey, [...(map.get(annotation.ayahKey) ?? []), annotation])
     }
     return map
-  }, [annotations])
+  }, [annotations, annotationsVisible])
   const mutshabehatPanelLinks = useMemo(() => (
     mutshabehatPanelAyahKey
       ? pageHighlights.filter((highlight) => highlight.ayahKey === mutshabehatPanelAyahKey).length > 0
@@ -1918,7 +1958,8 @@ export default function Mushaf1441Viewer({
 
   function inlineAyahMarker(word: MushafWord) {
     if (lastWordIdByAyah.get(word.ayahKey) !== word.id) return null
-    const ayahAnnotations = annotationsByAyahKey.get(word.ayahKey) ?? []
+    // The ayah-end medallion is tinted by bookmark/favourite too, so it follows the same switch.
+    const ayahAnnotations = annotationsVisible ? (annotationsByAyahKey.get(word.ayahKey) ?? []) : []
     const hasBookmark = ayahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasFavorite = ayahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
 
@@ -3802,6 +3843,20 @@ export default function Mushaf1441Viewer({
           </Link>
           <button
             type="button"
+            onClick={() => setAnnotationsVisiblePersisted(!annotationsVisible)}
+            aria-label={annotationsVisible ? 'إخفاء الملاحظات والتظليل' : 'إظهار الملاحظات والتظليل'}
+            aria-pressed={annotationsVisible}
+            title="الملاحظات والتظليل"
+            className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
+              annotationsVisible
+                ? 'border-[#8c5f0a] bg-[#8c5f0a] text-white'
+                : 'border-[#b99b51] text-[#3f3215] hover:bg-[#fff9e9]'
+            }`}
+          >
+            ن
+          </button>
+          <button
+            type="button"
             onClick={toggleMutshabehatHighlight}
             aria-label={mutshabehatHighlightEnabled ? 'إخفاء تظليل المتشابهات' : 'إظهار تظليل المتشابهات'}
             aria-pressed={mutshabehatHighlightEnabled}
@@ -3893,7 +3948,10 @@ export default function Mushaf1441Viewer({
                       metadata={slotMetadata}
                       fontStatus={qcfFontStatus[no]}
                       highlights={slotHighlightByAyahKey}
-                      annotations={annotations}
+                      // Gated here, not just at the maps: MushafPageSlot compares props by
+                      // identity, so passing the raw array would leave the slot convinced nothing
+                      // changed and the layer would only vanish when some other prop happened to move.
+                      annotations={annotationsVisible ? annotations : EMPTY_ANNOTATIONS}
                       qiraat={qiraatView}
                       selection={`${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}`}
                       loading={isCurrent && isPageLoading}
