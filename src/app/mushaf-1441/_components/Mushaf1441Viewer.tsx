@@ -1167,6 +1167,8 @@ export default function Mushaf1441Viewer({
     setSelectedWordRange(null)
     setSelectedAyahKey(targetAyahKey ?? null)
     setIsMobileNotesOpen(false)
+    setQiraatSelection(null)
+    updateHoveredQiraatWord(null)
     setMutshabehatPanelAyahKey(null)
     setMutshabehatPopupAyahKey(null)
     setContextMenu(null)
@@ -1718,8 +1720,10 @@ export default function Mushaf1441Viewer({
   // Returns false when the token carries no Qiraat data at all, so a press that would open an
   // empty panel simply does nothing (and plays no haptic).
   function selectWordForQiraat(word: MushafWord): boolean {
-    // Feed the permanent sidebar (desktop / iPad landscape) with everything anchored to this token:
-    // the أوجه that change the rasm AND the أصول rulings that only change how it is performed.
+    if (qiraatSelection?.word.id === word.id) {
+      setQiraatSelection(null)
+      return true
+    }
     const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
       ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
       : qiraatView.filter
@@ -1736,10 +1740,6 @@ export default function Mushaf1441Viewer({
       : allVariants.filter((variant) => matchesFilter(variant, effectiveFilter))
     if (!rulings.length && !variants.length) return false
     setQiraatSelection({ word, rulings, variants })
-    // The drawer/detail panel stays the mobile path, where there is no room for a sidebar.
-    if (!isSpread) {
-      selectWord(word)
-    }
     return true
   }
 
@@ -2208,16 +2208,8 @@ export default function Mushaf1441Viewer({
           if (qiraatView.mode !== 'normal') {
             if (!hasQiraatData) return
             event.stopPropagation()
-            if (qiraatMarker) {
-              if (hoveredQiraatWordIdRef.current === word.id) {
-                updateHoveredQiraatWord(null)
-                liveRef.current.selectWordForQiraat(word)
-              } else {
-                updateHoveredQiraatWord({ word, marker: qiraatMarker })
-              }
-            } else {
-              liveRef.current.selectWordForQiraat(word)
-            }
+            updateHoveredQiraatWord(null)
+            liveRef.current.selectWordForQiraat(word)
             return
           }
           // متشابهات layer: an ayah that is in one of your groups opens its card, and a word that
@@ -3499,7 +3491,23 @@ export default function Mushaf1441Viewer({
                 {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5">
-                {readerPillsForReadingIds(variant.readingIds).map(renderReaderPill)}
+                {readerPillsForReadingIds(
+                  (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
+                    ? variant.readingIds.filter((id) => getReading(id).readerId === qiraatFilter.readerId)
+                    : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
+                      ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
+                      : qiraatMode === 'riwayah'
+                        ? variant.readingIds.filter((id) => id === qiraatSelectedReadingId)
+                        : variant.readingIds).length > 0
+                    ? (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
+                        ? variant.readingIds.filter((id) => getReading(id).readerId === qiraatFilter.readerId)
+                        : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
+                          ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
+                          : qiraatMode === 'riwayah'
+                            ? variant.readingIds.filter((id) => id === qiraatSelectedReadingId)
+                            : variant.readingIds)
+                    : variant.readingIds
+                ).map(renderReaderPill)}
               </div>
             </div>
           )
@@ -4207,7 +4215,23 @@ export default function Mushaf1441Viewer({
 
             {/* Qiraat Ashr: mode, Riwayah selection, study mode, filters */}
             <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
-              <p className="mb-3 text-xs font-bold text-[#80662c]">القراءات</p>
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <p className="text-xs font-bold text-[#80662c]">القراءات</p>
+                {qiraatSelection ? (
+                  <button
+                    type="button"
+                    onClick={() => setQiraatSelection(null)}
+                    className="rounded border border-[#d7c7a7] px-2 py-0.5 text-[11px] font-bold text-[#80662c] hover:bg-[#fff7df]"
+                  >
+                    مسح التحديد
+                  </button>
+                ) : null}
+              </div>
+              {qiraatSelection ? (
+                <div className="mb-3 rounded-lg border border-[#d7c7a7] bg-[#fffaf0] p-2.5">
+                  {renderQiraatSelection()}
+                </div>
+              ) : null}
               <QiraatToolbar
                 mode={qiraatMode}
                 onModeChange={applyQiraatMode}
@@ -4284,8 +4308,37 @@ export default function Mushaf1441Viewer({
         </div>
       ) : null}
 
+      {/* Dedicated Qiraat bottom card on mobile & portrait screens */}
+      {!isSpread && qiraatSelection && qiraatMode !== 'normal' ? (
+        <div className="fixed inset-x-0 bottom-0 z-40 p-2 sm:p-4 pointer-events-none" dir="rtl">
+          <div
+            className="pointer-events-auto mx-auto max-w-lg rounded-2xl border border-[#d7c7a7] bg-[#fffdf8]/98 p-3.5 shadow-[0_-12px_45px_rgba(23,23,23,0.22)] backdrop-blur-md"
+            style={{ paddingBottom: 'calc(0.875rem + env(safe-area-inset-bottom))' }}
+          >
+            <div className="mb-2.5 flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
+              <div className="flex items-center gap-2">
+                <span className="rounded-full bg-[#171717] px-2.5 py-0.5 text-[11px] font-black text-white">القراءات العشر</span>
+                <span className="text-xs font-bold text-[#80662c]">
+                  {surahNameByNumber.get(qiraatSelection.word.surahNumber) ?? ''} — آية {qiraatSelection.word.ayahNumber}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setQiraatSelection(null)}
+                className="rounded-md border border-[#d7c7a7] bg-white px-2.5 py-1 text-xs font-bold text-[#80662c] shadow-sm transition-colors hover:bg-[#fff7df]"
+              >
+                مسح التحديد ✕
+              </button>
+            </div>
+            <div className="max-h-[48vh] overflow-y-auto pr-0.5">
+              {renderQiraatSelection()}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       {/* Notes / annotation sheet — opens when an ayah or word is selected */}
-      {selectedAyahKey && isMobileNotesOpen ? (
+      {selectedAyahKey && isMobileNotesOpen && readerLayer !== 'qiraat' ? (
         <div className="fixed inset-0 z-40">
           <button
             type="button"
