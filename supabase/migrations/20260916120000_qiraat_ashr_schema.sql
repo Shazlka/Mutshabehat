@@ -1,3 +1,20 @@
+-- ############################################################################
+-- ##  SUPERSEDED 2026-09-17 — DO NOT APPLY THIS FILE.
+-- ##
+-- ##  Replaced by 20260917120000_qiraat_v2_schema.sql, which was reviewed against the
+-- ##  full 20-page source extraction and executed against a real PostgreSQL 16.
+-- ##  This file was never applied to any backend, so nothing depends on it.
+-- ##
+-- ##  Why it was replaced (see docs/qiraat/10-v2-architecture-plan.md):
+-- ##    - no token anchor on page-table rules (الأصول), ~15 of 17 of which are word-anchored;
+-- ##    - no locus/variant split, so two أوجه of one word could disagree about their span;
+-- ##    - no multi-ayah span, making الإدغام الكبير across an ayah boundary unrepresentable;
+-- ##    - no الشواهد, notes, QA-flag or global-أصول tables;
+-- ##    - separate reader/narrator tables, unable to hold a source row that mixes both levels.
+-- ##
+-- ##  Kept for history only.
+-- ############################################################################
+
 -- ============================================================
 -- Qiraat Ashr (ten canonical Quran readings) — reference schema
 -- ============================================================
