@@ -34,7 +34,17 @@ import { readerColor, narratorColor } from '../../../../packages/qiraat-core/col
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
-import { comparisonMarkerForWord, riwayahResolutionForWord, rulingMarkerForWord, rulingCategoriesOnPage, PERFORMANCE_MARKER_COLOR, type WordMarker, type RulingMarker } from './qiraat/qiraatWordMarker'
+import {
+  comparisonMarkerForWord,
+  riwayahResolutionForWord,
+  rulingMarkerForWord,
+  rulingCategoriesOnPage,
+  matchesFilter,
+  matchesRulingFilter,
+  PERFORMANCE_MARKER_COLOR,
+  type WordMarker,
+  type RulingMarker,
+} from './qiraat/qiraatWordMarker'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
 
@@ -1014,8 +1024,12 @@ export default function Mushaf1441Viewer({
     const ayah = Number(ayahPart)
     const page = selectedWord?.pageNumber ?? pageNumber
     const pageVariants = qiraatView.variantsByPage[`${page}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_VARIANTS
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
     return getQiraatVariantsByAyahKey(selectedAyahKey, pageVariants)
       .filter((variant) => variant.surah === surah && variant.ayah === ayah)
+      .filter((variant) => matchesFilter(variant, effectiveFilter))
   }, [selectedAyahKey, selectedWord, pageNumber, qiraatView])
 
   // Load Qiraat reference data for the visible page(s) only in comparison/riwayah mode — the
@@ -1706,14 +1720,20 @@ export default function Mushaf1441Viewer({
   function selectWordForQiraat(word: MushafWord): boolean {
     // Feed the permanent sidebar (desktop / iPad landscape) with everything anchored to this token:
     // the أوجه that change the rasm AND the أصول rulings that only change how it is performed.
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
     const rulings = rulingMarkerForWord(
       qiraatRulingsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
-      qiraatView.filter,
+      effectiveFilter,
     )?.rulings ?? []
-    const variants = variantsForToken(
+    const allVariants = variantsForToken(
       qiraatVariantsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
       { includeUnpublished: qiraatView.includeReviewed },
     )
+    const variants = effectiveFilter.kind === 'all'
+      ? allVariants
+      : allVariants.filter((variant) => matchesFilter(variant, effectiveFilter))
     if (!rulings.length && !variants.length) return false
     setQiraatSelection({ word, rulings, variants })
     // The drawer/detail panel stays the mobile path, where there is no room for a sidebar.
@@ -2119,6 +2139,10 @@ export default function Mushaf1441Viewer({
     let qiraatOverrideText: string | null = null
     let qiraatSuppressed = false
     let qiraatMarker: WordMarker | null = null
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
+
     if (qiraatView.mode === 'comparison') {
       qiraatMarker = comparisonMarkerForWord(
         qiraatPageVariants, word.surahNumber, word.ayahNumber, word.wordIndexInAyah, qiraatView.filter,
@@ -2140,7 +2164,7 @@ export default function Mushaf1441Viewer({
       ? null
       : rulingMarkerForWord(
         qiraatRulingsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
-        qiraatView.filter,
+        effectiveFilter,
         qiraatView.disabledCategories.length
           ? new Set(rulingCategoriesOnPage(qiraatRulingsForPage(word.pageNumber))
             .map((c) => c.category).filter((c) => !qiraatView.disabledCategories.includes(c)))
@@ -2246,7 +2270,16 @@ export default function Mushaf1441Viewer({
           qiraatMarker
             ? (qiraatMarker.unresolved
               ? ' — قراءة قيد المراجعة (لم تُحدَّد نسبتها بعد)'
-              : ` — قراءات مختلفة: ${attributionLabelsAr(Array.from(new Set(qiraatMarker.variants.flatMap((variant) => variant.readingIds)))).join('، ')}`)
+              : ` — قراءات مختلفة: ${attributionLabelsAr(
+                  Array.from(new Set(
+                    (effectiveFilter.kind === 'reader'
+                      ? qiraatMarker.variants.flatMap((variant) => variant.readingIds).filter((id) => getReading(id).readerId === effectiveFilter.readerId)
+                      : effectiveFilter.kind === 'reading'
+                        ? qiraatMarker.variants.flatMap((variant) => variant.readingIds).filter((id) => id === effectiveFilter.readingId)
+                        : qiraatMarker.variants.flatMap((variant) => variant.readingIds)
+                    )
+                  ))
+                ).join('، ')}`)
             : ''
         }`}
         aria-pressed={isSelectedWord}
@@ -2272,9 +2305,10 @@ export default function Mushaf1441Viewer({
           lineHeight: 'inherit',
           paddingBlock: MUSHAF_WORD_BAND_PADDING,
           color: highlightAnnotation?.textColor
-            ?? (qiraatMarker?.isPerformanceOnly ? PERFORMANCE_MARKER_COLOR : undefined)
-            // A word carrying only an أصول ruling takes that family's colour.
-            ?? (rulingMarker && !qiraatMarker ? rulingMarker.color : undefined),
+            ?? (qiraatMarker?.isPerformanceOnly
+              ? PERFORMANCE_MARKER_COLOR
+              : (qiraatMarker && !qiraatMarker.isGradient ? qiraatMarker.color : undefined))
+            ?? rulingMarker?.color,
           // ذو وجهين («بخلف عنه») — two equally valid readings here; never silently pick one.
           textDecoration: rulingMarker?.hasAlternate ? 'underline dotted' : undefined,
           textDecorationColor: rulingMarker?.hasAlternate ? rulingMarker.color : undefined,
@@ -3571,7 +3605,13 @@ export default function Mushaf1441Viewer({
   // location-review controls. The colours come from the data, never from a hardcoded UI map, so a
   // newly-imported category shows up here automatically.
   function renderQiraatUsulPanel() {
-    const rulings = qiraatRulingsForPage(pageNumber)
+    const allRulings = qiraatRulingsForPage(pageNumber)
+    const effectiveFilter: QiraatComparisonFilter = qiraatMode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatSelectedReadingId }
+      : qiraatFilter
+    const rulings = effectiveFilter.kind === 'all'
+      ? allRulings
+      : allRulings.filter((r) => matchesRulingFilter(r, effectiveFilter))
     const families = rulingCategoriesOnPage(rulings)
     const pending = rulings.filter((r) => !qiraatReview[qiraatLocusKey(r.surah, r.ayah, r.startToken)])
     if (families.length === 0 && rulings.length === 0) return null
@@ -3715,6 +3755,9 @@ export default function Mushaf1441Viewer({
     const surahName = surahNameByNumber.get(word.surahNumber) ?? ''
     const shownVariants = marker.variants.slice(0, 3)
     const showWajhNumbers = shownVariants.length > 1
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
 
     // Only who DIFFERS from Hafs, and how — never Hafs's own reading or whoever merely agrees
     // with him (no "الباقون"/baseline group here; that stays a full-detail-panel-only concept).
@@ -3739,7 +3782,12 @@ export default function Mushaf1441Viewer({
               // generic "أداء" placeholder — performanceNote is the precise phonetic description
               // when this locus has one, otherwise the variant's own difference-type category.
               const rulingLabel = variant.performanceNote ?? DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]
-              const pills = readerPillsForReadingIds(variant.readingIds)
+              const displayedReadingIds = effectiveFilter.kind === 'reader'
+                ? variant.readingIds.filter((id) => getReading(id).readerId === effectiveFilter.readerId)
+                : effectiveFilter.kind === 'reading'
+                  ? variant.readingIds.filter((id) => id === effectiveFilter.readingId)
+                  : variant.readingIds
+              const pills = readerPillsForReadingIds(displayedReadingIds.length > 0 ? displayedReadingIds : variant.readingIds)
               return (
                 <div key={variant.id} className="rounded-xl border border-[#e3d6b4] bg-white p-3">
                   <div className="mb-2 flex items-center justify-between gap-2">
