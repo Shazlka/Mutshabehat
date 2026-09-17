@@ -1,0 +1,92 @@
+[
+  {
+    "id": "v-L035-لاعنتكم-1-w2",
+    "surah": 2,
+    "ayah": 220,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "لَأَعْنَتَكُمْ ۚ",
+    "variantText": "لَأَعْنَتَكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "L035-لاعنتكم-1",
+    "locusType": "word_variant",
+    "notes": "للبزي وجهان في هذا الموضع (بخلف عنه).",
+    "sources": [
+      {
+        "id": "s-L035-لاعنتكم-1-w2",
+        "variantId": "v-L035-لاعنتكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 40,
+        "sourceReference": "صفحة المصحف 35 · صفحة المصدر 40",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبَعْدَهُ لَأَعْنَتَكُمْ بِالْخُلْفِ أَحْمَدُ سَهَّلَا"
+      }
+    ],
+    "description": "بتسهيل الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبَعْدَهُ لَأَعْنَتَكُمْ بِالْخُلْفِ أَحْمَدُ سَهَّلَا"
+      }
+    ],
+    "alternateOf": [
+      "Q02-R01"
+    ]
+  },
+  {
+    "id": "v-L035-يطهرن-1-w2",
+    "surah": 2,
+    "ayah": 222,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "يَطْهُرْنَ ۖ",
+    "variantText": "يَطَّهَّرْنَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L035-يطهرن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L035-يطهرن-1-w2",
+        "variantId": "v-L035-يطهرن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 40,
+        "sourceReference": "صفحة المصحف 35 · صفحة المصدر 40",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَطْهُرْنَ فِي الطَّاءِ السُّكُونُ وَهَاؤُهُ يُضَمُّ وَخَفًّا إِذْ سَمَا كَيْفَ عُوِّلَا"
+      }
+    ],
+    "description": "بتشديد الطاء والهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَطْهُرْنَ فِي الطَّاءِ السُّكُونُ وَهَاؤُهُ يُضَمُّ وَخَفًّا إِذْ سَمَا كَيْفَ عُوِّلَا"
+      }
+    ]
+  }
+]

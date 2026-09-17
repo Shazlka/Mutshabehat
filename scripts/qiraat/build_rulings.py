@@ -103,7 +103,7 @@ def build_page(page, rows):
 
 def main():
     total = 0
-    for page in range(1, 21):
+    for page in sorted(RULINGS):
         rows = build_page(page, RULINGS.get(page, []))
         total += len(rows)
         with open(os.path.join(OUT, f'page-{page:03d}.json'), 'w', encoding='utf-8') as f:

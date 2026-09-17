@@ -4,9 +4,10 @@ For the next agent picking up this project. Read this first, then `PROJECT_MASTE
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
 **Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/17
-— pages 1–20 of «مصحف القراءات العشر» are imported and live, the أصول rulings colour the words, and the
-three colour systems on the page (notes / متشابهات / قراءات) are now mutually exclusive.
-**The user's stated next activity is visually reviewing those 20 imported pages, one by one**, against
+— pages 1–20 and 22–41 of «مصحف القراءات العشر» are imported and live (202 variants, 874 أصول rulings),
+the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
+are now mutually exclusive.
+**The user's stated next activity is visually reviewing the imported pages, one by one**, against
 the paper original, using the built-in review mode. Do not start new feature work ahead of that
 without being asked.
 
@@ -71,6 +72,7 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 | Commit | Change |
 |---|---|
+| (this batch) | **Qiraat pages 22–41 imported** (Juz' 2): +102 variants, +471 أصول rulings, every locus partitioning the 20 Riwayat exactly once. Also unpinned two tools that were silently scoped to 20 pages (`build_rulings.py`, `validate-qiraat-data.mjs`) and untracked the stray `__pycache__`. |
 | `8a0fe08` | **One reader layer at a time** + long-press haptic. `ReaderLayer` enum replaces three independent booleans; a press is answered by the active layer only; `haptics.ts` (new). See `PROJECT_MASTER.md` §13. |
 | `5b02897` | **Annotations on/off switch** ("ن"), auto-cleared when the Qiraat layer came on (that auto-off is now subsumed by the exclusivity rule above). Fixed the memo-identity bug that made the first cut of the toggle do nothing. |
 | `05bc02b` | **Permanent Qiraat sidebar** (desktop / iPad landscape, 330px), a متشابهات toggle ("م"), and per-word أصول explanation grouped **by action** (﴿تَرْضَىٰ﴾ → «إمالة → حمزة/الكسائي/خلف العاشر» and «تقليل → ورش»). `PROJECT_MASTER.md` §12 written. |
@@ -86,13 +88,18 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 ### 5.1 Qiraat — the live thread
 
-- **Visual review of pages 1–20 is the user's next activity.** Open the reader in مقارنة القراءات,
+- **Visual review of the imported pages (1–20, 22–41) is the user's next activity.** Open the reader in مقارنة القراءات,
   then burger/sidebar → «مراجعة المواضع المستوردة». Every imported locus gets a ring (amber unchecked,
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
-- **584 pages left to import** (21–604). The recipe, the five non-negotiable rules and the six
-  generator invariants are in `PROJECT_MASTER.md` §12. Do not improvise around it.
+- **563 pages left to import** (21, and 42–604). The recipe, the five non-negotiable rules, the six
+  generator invariants and the four anchor shapes that cost 23 rejections in the 22–41 batch are in
+  `PROJECT_MASTER.md` §12 (see §12.4b for the anchor shapes). Do not improvise around it.
+- **Page 21 (2:135–141) is a genuine gap** — the supplied source jumped from 20 to 22. Ask for it.
+- **Pages 22–41 carry their own source defects**, all in `PROJECT_MASTER.md` §12.5: three corrected
+  slips (page 34 كثير→كبير، page 38 خير→خبير، page 41 إني→مني) and eight `؟`-marked entries omitted
+  rather than guessed. Resolve these against the paper original first.
 - **3 loci held at `NEEDS_MANUAL_REVIEW`**, each with the defect recorded: 2:83 تعبدون (حمزة والكسائي
   in both أوجه, يعقوب unaccounted for), 2:93 قلوبهم العجل (خلف in two of three), 2:105 ينزل (the
   source omits أبو جعفر entirely).

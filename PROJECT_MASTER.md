@@ -380,13 +380,57 @@ architecture behind it is `docs/qiraat/10-v2-architecture-plan.md`; this is the 
 | One usul family = exactly one colour, dataset-wide | Keeps the page legible as categories grow |
 | `hasAlternate` must agree with its readings | Keeps the ذو وجهين marker honest |
 
-### 12.5 Known defects carried from the pages 1–20 source
+### 12.4b What the pages 22–41 batch cost in anchor fixes (read before the next batch)
+
+The generators rejected **23 anchors** on the first run of this batch. None was a data error on
+my side — every one was the source spelling a word differently from the mushaf. The four shapes,
+because they will recur on every remaining batch:
+
+| Shape | Example | Fix |
+|---|---|---|
+| A small high **ۥ / ۦ** expands to و / ي in `norm()` | `قوله` ✗ → `قولهو` ✓ (قَوْلُهُۥ); `بيده` ✗ → `بيدهي` ✓ | write the expansion letter, as page 20's `فامتعهو` already did |
+| The source quotes the **variant**, the anchor needs the **rasm** | `حتى يقتلوكم` ✗ → `حتى يقاتلوكم` ✓; `كثير ومنفع` ✗ → `كبير ومنافع` ✓ | anchor on what Hafs prints, never on the وجه |
+| Final long aa written `ىٰ` | `واليتمى` ✗ → `واليتاما` ✓ | the fold tier usually catches this; spell it as the mushaf does |
+| A neighbouring word is part of the token | `شيء` ✗ → `بشيء` ✓; `العذاب بالمغفرة` ✗ → `والعذاب بالمغفرة` ✓ | copy the span from the page dump |
+
+The fastest way to resolve a rejection is to dump the page and read it, not to guess:
+
+```python
+import sys; sys.path.insert(0, 'scripts/qiraat'); import tokens as T
+print(' '.join(T.norm(w['textUthmani']) for w in T.page_words(34)))
+```
+
+### 12.5 Known defects carried from the sources
 
 Held at `NEEDS_MANUAL_REVIEW` with the reason recorded; resolve against the paper original:
 2:83 تعبدون، 2:93 قلوبهم العجل، 2:105 ينزل (أبو جعفر unattributed), plus ~15 `؟` markers the
 extractor flagged on pages 9, 11, 16 and 19, and page 8's corrupted ﴿وَعَٰدْنَا﴾ header.
 The extraction was made visually at 150 dpi with a scrambled text layer — treat every page as
 suspect until checked.
+
+**Pages 22–41** (the Juz' 2 batch). Three source slips were corrected against the mushaf, because
+the word the source printed does not exist on that page at all:
+
+| Page | Source printed | The mushaf prints | Why the correction is safe |
+|---|---|---|---|
+| 34 | ﴿كَثِيرٌ وَمَنَٰفِعُ﴾ | ﴿كَبِيرٌ وَمَنَٰفِعُ﴾ | كثير is the حمزة/الكسائي **reading**, recorded separately as a variant on the same page; a ترك الغنة anchor must sit on the rasm |
+| 38 | ﴿خَيْرٌ﴾ (ترقيق الراءات) | ﴿خَبِيرٌ﴾ (2:234) | page 38 has no ﴿خَيْرٌ﴾; خبير is the ر-final word the ruling is about |
+| 41 | ﴿إِنِّىٓ إِلَّا﴾ (ياءات الإضافة) | ﴿مِنِّىٓ إِلَّا﴾ (2:249) | إني does not occur on the page; the attribution given is the standard one for مِنِّىٓ |
+
+Eight `؟`-marked or impossible entries were **omitted rather than guessed**, and are the first
+thing to resolve against the paper original: page 27 ﴿ٱلْمَشْرِقِ﴾؟ and ﴿ٱلتَّأْنِيبِ؟/ٱلنَّأْىِ﴾
+(ٱلنَّأْىِ is in الإسراء, not on page 27); page 29 ﴿يُبَيِّنُ ٱللَّهُ؟/يُبَيِّنَ لَكُمْ﴾; page 33
+﴿زُيِّنَ﴾؟ (in both الممال and ترك الغنة); page 36 ﴿أَنفُسِهِمَا؟﴾; page 37 ﴿يَعْمَلْ ذَٰلِكَ﴾؟.
+
+**Page 21 (2:135–141) was not supplied** — the source jumps from 20 to 22, so it is a real gap in
+the imported range, not an oversight.
+
+Two modelling decisions in this batch worth knowing before they recur:
+- **page 25 ﴿يَأْمُرُكُم﴾** — الدوري عن أبي عمرو has the إسكان *and* the اختلاس. Two أوجه
+  overlapping on one Riwayah cannot partition the 20, so the إسكان وجه carries both السوسي and
+  الدوري, `alternate_of=['DURI_AMR']` marks الدوري ذو وجهين, and the اختلاس is kept in the note.
+- **page 39 ﴿وَيَبْصُۜطُ﴾** — the baseline text must be the mushaf's own rasm (صاد with the small
+  seen), with the description naming السين; writing `وَيَبْسُطُ` fails the baseline invariant.
 
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 

@@ -1,0 +1,238 @@
+[
+  {
+    "id": "v-L038-تمسوهن-1-w2",
+    "surah": 2,
+    "ayah": 236,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "تَمَسُّوهُنَّ",
+    "variantText": "تُمَآسُّوهُنَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L038-تمسوهن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L038-تمسوهن-1-w2",
+        "variantId": "v-L038-تمسوهن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 43,
+        "sourceReference": "صفحة المصحف 38 · صفحة المصدر 43",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَحَيْثُ جَا يُضَمُّ تَمَسُّوهُنَّ وَامْدُدْهُ شُلْشُلَا"
+      }
+    ],
+    "description": "بضم التاء وألف بعد الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَيْثُ جَا يُضَمُّ تَمَسُّوهُنَّ وَامْدُدْهُ شُلْشُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L038-تمسوهن-2-w2",
+    "surah": 2,
+    "ayah": 237,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَمَسُّوهُنَّ",
+    "variantText": "تُمَآسُّوهُنَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L038-تمسوهن-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L038-تمسوهن-2-w2",
+        "variantId": "v-L038-تمسوهن-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 43,
+        "sourceReference": "صفحة المصحف 38 · صفحة المصدر 43",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَحَيْثُ جَا يُضَمُّ تَمَسُّوهُنَّ وَامْدُدْهُ شُلْشُلَا"
+      }
+    ],
+    "description": "بضم التاء وألف بعد الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَيْثُ جَا يُضَمُّ تَمَسُّوهُنَّ وَامْدُدْهُ شُلْشُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L038-قدرهو-1-w2",
+    "surah": 2,
+    "ayah": 236,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "قَدَرُهُۥ",
+    "variantText": "قَدْرُهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L038-قدرهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L038-قدرهو-1-w2",
+        "variantId": "v-L038-قدرهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 43,
+        "sourceReference": "صفحة المصحف 38 · صفحة المصدر 43",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعًا قَدَرُ حَرِّكْ مِنْ صِحَابٍ — D: وَقَدْرُهُ فَحَرِّكْ إِذًا"
+      }
+    ],
+    "description": "بإسكان الدال",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعًا قَدَرُ حَرِّكْ مِنْ صِحَابٍ"
+      },
+      {
+        "source": "D",
+        "text": "وَقَدْرُهُ فَحَرِّكْ إِذًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L038-قدرهو-2-w2",
+    "surah": 2,
+    "ayah": 236,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "قَدَرُهُۥ",
+    "variantText": "قَدْرُهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L038-قدرهو-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L038-قدرهو-2-w2",
+        "variantId": "v-L038-قدرهو-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 43,
+        "sourceReference": "صفحة المصحف 38 · صفحة المصدر 43",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعًا قَدَرُ حَرِّكْ مِنْ صِحَابٍ — D: وَقَدْرُهُ فَحَرِّكْ إِذًا"
+      }
+    ],
+    "description": "بإسكان الدال",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعًا قَدَرُ حَرِّكْ مِنْ صِحَابٍ"
+      },
+      {
+        "source": "D",
+        "text": "وَقَدْرُهُ فَحَرِّكْ إِذًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L038-بيدهي-1-w2",
+    "surah": 2,
+    "ayah": 237,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "بِيَدِهِۦ",
+    "variantText": "بِيَدِهِ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "L038-بيدهي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L038-بيدهي-1-w2",
+        "variantId": "v-L038-بيدهي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 43,
+        "sourceReference": "صفحة المصحف 38 · صفحة المصدر 43",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَفِي يَدِهِ اقْصُرْ طُلْ"
+      }
+    ],
+    "description": "بقصر الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَفِي يَدِهِ اقْصُرْ طُلْ"
+      }
+    ]
+  }
+]

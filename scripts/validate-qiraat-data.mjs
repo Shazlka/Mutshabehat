@@ -1,4 +1,4 @@
-// Dataset linter for the Qiraat pages 1-20 import. Pure node, no build step, no dev deps —
+// Dataset linter for the imported Qiraat pages. Pure node, no build step, no dev deps —
 // it reads the generated fixtures and the real Mushaf-1441 word fixtures and checks that the
 // two actually agree. Run: node scripts/validate-qiraat-data.mjs
 import { readFileSync } from 'node:fs'
@@ -15,12 +15,17 @@ let failures = 0
 const fail = (msg) => { failures++; console.error('  FAIL', msg) }
 
 let variants = 0, rulings = 0, flagged = 0
+// Every page the repository actually loads, read from the loader table itself.
+const REPO = readFileSync(join(ROOT, 'packages/qiraat-core/repository.ts'), 'utf8')
+const PAGES = [...new Set([...REPO.matchAll(/fixtures\/pages\/page-(\d{3})\.json/g)]
+  .map((m) => Number(m[1])))].sort((a, b) => a - b)
+if (!PAGES.length) { console.error('FAIL: no Qiraat pages wired into the repository'); process.exit(1) }
 const wordsOf = (page) => {
   const d = read(`packages/quran-data/mushaf1441/fixtures/page-words/page-${String(page).padStart(3, '0')}.json`)
   return d.lines.flatMap((l) => l.words).filter((w) => !w.charTypeName || w.charTypeName === 'word')
 }
 
-for (let page = 1; page <= 20; page++) {
+for (const page of PAGES) {
   const pad = String(page).padStart(3, '0')
   const words = wordsOf(page)
   const byPos = new Map(words.map((w) => [`${w.surahNumber}:${w.ayahNumber}:${w.wordIndexInAyah}`, w]))
@@ -82,7 +87,7 @@ for (let page = 1; page <= 20; page++) {
 
 // One usul FAMILY must have exactly one colour across the whole dataset.
 const colourOf = new Map()
-for (let page = 1; page <= 20; page++) {
+for (const page of PAGES) {
   for (const r of read(`packages/qiraat-core/fixtures/rulings/page-${String(page).padStart(3, '0')}.json`)) {
     const prev = colourOf.get(r.category)
     if (prev && prev !== r.color) fail(`category ${r.category} has two colours: ${prev} and ${r.color}`)
@@ -90,7 +95,7 @@ for (let page = 1; page <= 20; page++) {
   }
 }
 
-console.log(`Qiraat data: ${variants} variants, ${rulings} rulings across 20 pages, ${flagged} flagged NEEDS_MANUAL_REVIEW`)
+console.log(`Qiraat data: ${variants} variants, ${rulings} rulings across ${PAGES.length} pages (${PAGES[0]}-${PAGES[PAGES.length - 1]}), ${flagged} flagged NEEDS_MANUAL_REVIEW`)
 console.log(`${colourOf.size} usul categories, each with one colour`)
 if (failures) { console.error(`\n${failures} failures`); process.exit(1) }
 console.log('all checks passed')

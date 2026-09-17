@@ -1,0 +1,407 @@
+[
+  {
+    "id": "v-L028-موص-1-w2",
+    "surah": 2,
+    "ayah": 182,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مُّوصٍۢ",
+    "variantText": "مُّوَصٍّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L028-موص-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L028-موص-1-w2",
+        "variantId": "v-L028-موص-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمُوَصٍّ ثِقْلُهُ صَحَّ شُلْشُلَا"
+      }
+    ],
+    "description": "بالتشديد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمُوَصٍّ ثِقْلُهُ صَحَّ شُلْشُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-فديه_طعام_مسكين-1-w2",
+    "surah": 2,
+    "ayah": 184,
+    "startToken": 17,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "فِدْيَةٌۭ طَعَامُ مِسْكِينٍۢ ۖ",
+    "variantText": "فِدْيَةُ طَعَامِ مَسَٰكِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L028-فديه_طعام_مسكين-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L028-فديه_طعام_مسكين-1-w2",
+        "variantId": "v-L028-فديه_طعام_مسكين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِدْيَةُ نَوِّنْ وَٱرْفَعِ ٱلْخَفْضَ بَعْدُ فِي مَسَاكِينَ مَجْمُوعًا وَلَيْسَ مُنَوَّنًا — D: طَعَامُ أَسْدَىٰ غُصْنٍ دَنَا وَتَذَلَّلَا وَيُفْتَحُ مِنْهُ ٱلنُّونُ عَمَّ وَأَنْجَلَا"
+      }
+    ],
+    "description": "بإضافة فدية وجمع مساكين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِدْيَةُ نَوِّنْ وَٱرْفَعِ ٱلْخَفْضَ بَعْدُ فِي مَسَاكِينَ مَجْمُوعًا وَلَيْسَ مُنَوَّنًا"
+      },
+      {
+        "source": "D",
+        "text": "طَعَامُ أَسْدَىٰ غُصْنٍ دَنَا وَتَذَلَّلَا وَيُفْتَحُ مِنْهُ ٱلنُّونُ عَمَّ وَأَنْجَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-فديه_طعام_مسكين-1-w3",
+    "surah": 2,
+    "ayah": 184,
+    "startToken": 17,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "فِدْيَةٌۭ طَعَامُ مِسْكِينٍۢ ۖ",
+    "variantText": "فِدْيَةٌ طَعَامُ مَسَٰكِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "L028-فديه_طعام_مسكين-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L028-فديه_طعام_مسكين-1-w3",
+        "variantId": "v-L028-فديه_طعام_مسكين-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِدْيَةُ نَوِّنْ وَٱرْفَعِ ٱلْخَفْضَ بَعْدُ فِي مَسَاكِينَ مَجْمُوعًا وَلَيْسَ مُنَوَّنًا — D: طَعَامُ أَسْدَىٰ غُصْنٍ دَنَا وَتَذَلَّلَا وَيُفْتَحُ مِنْهُ ٱلنُّونُ عَمَّ وَأَنْجَلَا"
+      }
+    ],
+    "description": "بتنوين فدية وجمع مساكين",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِدْيَةُ نَوِّنْ وَٱرْفَعِ ٱلْخَفْضَ بَعْدُ فِي مَسَاكِينَ مَجْمُوعًا وَلَيْسَ مُنَوَّنًا"
+      },
+      {
+        "source": "D",
+        "text": "طَعَامُ أَسْدَىٰ غُصْنٍ دَنَا وَتَذَلَّلَا وَيُفْتَحُ مِنْهُ ٱلنُّونُ عَمَّ وَأَنْجَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-فمن_تطوع-1-w2",
+    "surah": 2,
+    "ayah": 184,
+    "startToken": 20,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "فَمَن تَطَوَّعَ",
+    "variantText": "فَمَن يَطَّوَّعْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L028-فمن_تطوع-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L028-فمن_تطوع-1-w2",
+        "variantId": "v-L028-فمن_تطوع-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَسَاكِنٌ بِحَرْفَيْهِ يَطَّوَّعْ وَفِي الطَّاءِ ثُقِّلَا وَفِي التَّاءِ يَاءٌ شَاعَ"
+      }
+    ],
+    "description": "بالياء وتشديد الطاء وجزم العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَاكِنٌ بِحَرْفَيْهِ يَطَّوَّعْ وَفِي الطَّاءِ ثُقِّلَا وَفِي التَّاءِ يَاءٌ شَاعَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-فهو-1-w2",
+    "surah": 2,
+    "ayah": 184,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L028-فهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L028-فهو-1-w2",
+        "variantId": "v-L028-فهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-القرءان-1-w2",
+    "surah": 2,
+    "ayah": 185,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانُ",
+    "variantText": "ٱلْقُرَانُ",
+    "differenceType": "NAQL",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L028-القرءان-1",
+    "locusType": "word_variant",
+    "notes": "﴿ٱلْقُرْءَانُ﴾ بقصر مد البدل لورش قولًا واحدًا.",
+    "sources": [
+      {
+        "id": "s-L028-القرءان-1-w2",
+        "variantId": "v-L028-القرءان-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَقْلُ قُرَانٍ وَٱلْقُرَانِ دَوَاؤُنَا"
+      }
+    ],
+    "description": "بنقل حركة الهمزة إلى الراء وحذفها",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَقْلُ قُرَانٍ وَٱلْقُرَانِ دَوَاؤُنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-اليسر-1-w2",
+    "surah": 2,
+    "ayah": 185,
+    "startToken": 31,
+    "endToken": 31,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْيُسْرَ",
+    "variantText": "ٱلْيُسُرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L028-اليسر-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L028-اليسر-1-w2",
+        "variantId": "v-L028-اليسر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَٱلْعُسُرَ وَٱلْيُسُرَ أُثْقِلَا"
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَٱلْعُسُرَ وَٱلْيُسُرَ أُثْقِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-العسر-1-w2",
+    "surah": 2,
+    "ayah": 185,
+    "startToken": 35,
+    "endToken": 35,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْعُسْرَ",
+    "variantText": "ٱلْعُسُرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L028-العسر-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L028-العسر-1-w2",
+        "variantId": "v-L028-العسر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَٱلْعُسُرَ وَٱلْيُسُرَ أُثْقِلَا"
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَٱلْعُسُرَ وَٱلْيُسُرَ أُثْقِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L028-ولتكملوا-1-w2",
+    "surah": 2,
+    "ayah": 185,
+    "startToken": 36,
+    "endToken": 36,
+    "operation": "REPLACE",
+    "hafsText": "وَلِتُكْمِلُوا۟",
+    "variantText": "وَلِتُكَمِّلُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L028-ولتكملوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L028-ولتكملوا-1-w2",
+        "variantId": "v-L028-ولتكملوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 33,
+        "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي تُكْمِلُوا قُلْ شُعْبَةُ ٱلْيُمْنَ ثَقَّلَا — D: اشْدُدْ لِتُكْمِلُوا كَمُوصٍ حِمًى"
+      }
+    ],
+    "description": "بالتشديد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي تُكْمِلُوا قُلْ شُعْبَةُ ٱلْيُمْنَ ثَقَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "اشْدُدْ لِتُكْمِلُوا كَمُوصٍ حِمًى"
+      }
+    ]
+  }
+]

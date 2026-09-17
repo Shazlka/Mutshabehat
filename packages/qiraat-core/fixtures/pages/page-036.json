@@ -1,0 +1,216 @@
+[
+  {
+    "id": "v-L036-عليهن-1-w2",
+    "surah": 2,
+    "ayah": 228,
+    "startToken": 33,
+    "endToken": 33,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِنَّ",
+    "variantText": "عَلَيْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L036-عليهن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L036-عليهن-1-w2",
+        "variantId": "v-L036-عليهن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 41,
+        "sourceReference": "صفحة المصحف 36 · صفحة المصدر 41",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L036-عليهن-2-w2",
+    "surah": 2,
+    "ayah": 228,
+    "startToken": 36,
+    "endToken": 36,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِنَّ",
+    "variantText": "عَلَيْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L036-عليهن-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L036-عليهن-2-w2",
+        "variantId": "v-L036-عليهن-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 41,
+        "sourceReference": "صفحة المصحف 36 · صفحة المصدر 41",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L036-يخافا-1-w2",
+    "surah": 2,
+    "ayah": 229,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "يَخَافَآ",
+    "variantText": "يُخَافَآ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L036-يخافا-1",
+    "locusType": "word_variant",
+    "notes": "﴿يُؤَاخِذُكُم﴾ بقصر مد البدل لورش قولًا واحدًا.",
+    "sources": [
+      {
+        "id": "s-L036-يخافا-1-w2",
+        "variantId": "v-L036-يخافا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 41,
+        "sourceReference": "صفحة المصحف 36 · صفحة المصدر 41",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضَمُّ يَخَافَا فَازَ — D: وَاضْمُمْ أَنْ يَخَافَا حُلَىٰ أَبٍ وَفَتْحُ فَتَى"
+      }
+    ],
+    "description": "بضم الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضَمُّ يَخَافَا فَازَ"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ أَنْ يَخَافَا حُلَىٰ أَبٍ وَفَتْحُ فَتَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L036-عليهما-1-w2",
+    "surah": 2,
+    "ayah": 229,
+    "startToken": 31,
+    "endToken": 31,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمَا",
+    "variantText": "عَلَيْهُمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L036-عليهما-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L036-عليهما-1-w2",
+        "variantId": "v-L036-عليهما-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 41,
+        "sourceReference": "صفحة المصحف 36 · صفحة المصدر 41",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L036-عليهما-2-w2",
+    "surah": 2,
+    "ayah": 230,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمَآ",
+    "variantText": "عَلَيْهُمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L036-عليهما-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L036-عليهما-2-w2",
+        "variantId": "v-L036-عليهما-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 41,
+        "sourceReference": "صفحة المصحف 36 · صفحة المصدر 41",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  }
+]

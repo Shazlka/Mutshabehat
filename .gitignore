@@ -42,3 +42,7 @@ next-env.d.ts
 
 # graphify output
 graphify-out/
+
+# Python bytecode from the Qiraat generators (committed by accident in 7b54c40)
+__pycache__/
+*.pyc
