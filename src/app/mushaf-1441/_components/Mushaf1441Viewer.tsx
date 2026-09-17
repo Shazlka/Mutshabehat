@@ -34,7 +34,17 @@ import { readerColor, narratorColor } from '../../../../packages/qiraat-core/col
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
-import { comparisonMarkerForWord, riwayahResolutionForWord, rulingMarkerForWord, rulingCategoriesOnPage, PERFORMANCE_MARKER_COLOR, type WordMarker, type RulingMarker } from './qiraat/qiraatWordMarker'
+import {
+  comparisonMarkerForWord,
+  riwayahResolutionForWord,
+  rulingMarkerForWord,
+  rulingCategoriesOnPage,
+  matchesFilter,
+  matchesRulingFilter,
+  PERFORMANCE_MARKER_COLOR,
+  type WordMarker,
+  type RulingMarker,
+} from './qiraat/qiraatWordMarker'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
 
@@ -473,6 +483,9 @@ export default function Mushaf1441Viewer({
   const [allMutshabehatHighlights, setAllMutshabehatHighlights] = useState<MutshabehatAyahLink[] | null>(initialMutshabehatHighlights)
   const [mutshabehatLoadError, setMutshabehatLoadError] = useState<string | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSurahPickerOpen, setIsSurahPickerOpen] = useState(false)
+  const [surahPickerSearch, setSurahPickerSearch] = useState('')
+  const currentSurahItemRef = useRef<HTMLButtonElement | null>(null)
   const [needsSignIn, setNeedsSignIn] = useState(false)
   const [hoveredAyahKey, setHoveredAyahKey] = useState<string | null>(null)
   // Preview of a Qiraat marker on hover (desktop) or first tap (mobile) — Part 20's "never rely on
@@ -594,6 +607,58 @@ export default function Mushaf1441Viewer({
     for (const surah of surahOptions) map.set(surah.surahNumber, surah.ayahCount)
     return map
   }, [surahOptions])
+
+  const filteredSurahOptions = useMemo(() => {
+    const q = surahPickerSearch.trim().toLowerCase()
+    if (!q) return surahOptions
+    const norm = (str: string) =>
+      str
+        .replace(/[\u064B-\u065F\u0670]/g, '')
+        .replace(/[إأآٱ]/g, 'ا')
+        .replace(/ى/g, 'ي')
+        .replace(/ة/g, 'ه')
+        .replace(/[\u0660-\u0669]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+        .toLowerCase()
+    const cleanQ = norm(q)
+    return surahOptions.filter((surah) => {
+      if (String(surah.surahNumber) === cleanQ || String(surah.firstPage) === cleanQ) return true
+      if (String(surah.surahNumber).includes(cleanQ)) return true
+      const cleanName = norm(surah.name)
+      return cleanName.includes(cleanQ)
+    })
+  }, [surahOptions, surahPickerSearch])
+
+  useEffect(() => {
+    if (!isSurahPickerOpen) return
+    const timer = setTimeout(() => {
+      currentSurahItemRef.current?.scrollIntoView({ block: 'center', behavior: 'auto' })
+    }, 60)
+    return () => clearTimeout(timer)
+  }, [isSurahPickerOpen])
+
+  useEffect(() => {
+    if (!isSurahPickerOpen) return
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setIsSurahPickerOpen(false)
+        setSurahPickerSearch('')
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isSurahPickerOpen])
+
+  async function selectSurahFromPicker(surah: Mushaf1441SurahOption) {
+    setIsSurahPickerOpen(false)
+    setSurahPickerSearch('')
+    setSelectedSurahNumber(surah.surahNumber)
+    setSelectedAyahNumber(1)
+    if (surah.firstPage) {
+      await goToPage(surah.firstPage, `${surah.surahNumber}:1`)
+    } else {
+      await goToAyah(surah.surahNumber, 1)
+    }
+  }
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -726,6 +791,11 @@ export default function Mushaf1441Viewer({
     setIsMobileNotesOpen(false)
     updateHoveredQiraatWord(null)
     if (next !== 'qiraat') setQiraatSelection(null)
+    if (next === 'qiraat') {
+      setSelectedAyahKey(null)
+      setSelectedWord(null)
+      setSelectedWordRange(null)
+    }
   }
 
   // A press on an already-active button turns that layer off (plain mushaf, no colour system).
@@ -944,21 +1014,21 @@ export default function Mushaf1441Viewer({
   // menu and the notes editor still see everything, so nothing is lost by hiding the layer.
   const slotAnnotationsByWordId = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
-    if (!annotationsVisible) return map
+    if (!annotationsVisible && readerLayer !== 'qiraat') return map
     for (const annotation of annotations) {
       if (!annotation.wordId) continue
       map.set(annotation.wordId, [...(map.get(annotation.wordId) ?? []), annotation])
     }
     return map
-  }, [annotations, annotationsVisible])
+  }, [annotations, annotationsVisible, readerLayer])
   const slotAnnotationsByAyahKey = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
-    if (!annotationsVisible) return map
+    if (!annotationsVisible && readerLayer !== 'qiraat') return map
     for (const annotation of annotations) {
       map.set(annotation.ayahKey, [...(map.get(annotation.ayahKey) ?? []), annotation])
     }
     return map
-  }, [annotations, annotationsVisible])
+  }, [annotations, annotationsVisible, readerLayer])
   const mutshabehatPanelLinks = useMemo(() => (
     mutshabehatPanelAyahKey
       ? pageHighlights.filter((highlight) => highlight.ayahKey === mutshabehatPanelAyahKey).length > 0
@@ -1014,8 +1084,12 @@ export default function Mushaf1441Viewer({
     const ayah = Number(ayahPart)
     const page = selectedWord?.pageNumber ?? pageNumber
     const pageVariants = qiraatView.variantsByPage[`${page}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_VARIANTS
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
     return getQiraatVariantsByAyahKey(selectedAyahKey, pageVariants)
       .filter((variant) => variant.surah === surah && variant.ayah === ayah)
+      .filter((variant) => matchesFilter(variant, effectiveFilter))
   }, [selectedAyahKey, selectedWord, pageNumber, qiraatView])
 
   // Load Qiraat reference data for the visible page(s) only in comparison/riwayah mode — the
@@ -1153,6 +1227,8 @@ export default function Mushaf1441Viewer({
     setSelectedWordRange(null)
     setSelectedAyahKey(targetAyahKey ?? null)
     setIsMobileNotesOpen(false)
+    setQiraatSelection(null)
+    updateHoveredQiraatWord(null)
     setMutshabehatPanelAyahKey(null)
     setMutshabehatPopupAyahKey(null)
     setContextMenu(null)
@@ -1373,7 +1449,7 @@ export default function Mushaf1441Viewer({
   // Drag a page to curl it under the finger (RTL: drag right → next page, drag left → previous).
   function handlePagePointerDown(event: ReactPointerEvent<HTMLElement>) {
     if (event.pointerType === 'mouse' && event.button !== 0) return
-    if (isMenuOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
+    if (isMenuOpen || isSurahPickerOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
     // Words on the page are buttons too; only controls outside the page block a drag.
     const target = event.target as HTMLElement
     if (target.closest('a, input, textarea, select') || (target.closest('button') && !target.closest('[data-mushaf-leaf]'))) return
@@ -1704,22 +1780,29 @@ export default function Mushaf1441Viewer({
   // Returns false when the token carries no Qiraat data at all, so a press that would open an
   // empty panel simply does nothing (and plays no haptic).
   function selectWordForQiraat(word: MushafWord): boolean {
-    // Feed the permanent sidebar (desktop / iPad landscape) with everything anchored to this token:
-    // the أوجه that change the rasm AND the أصول rulings that only change how it is performed.
+    setSelectedAyahKey(null)
+    setSelectedWord(null)
+    setSelectedWordRange(null)
+    if (qiraatSelection?.word.id === word.id) {
+      setQiraatSelection(null)
+      return true
+    }
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
     const rulings = rulingMarkerForWord(
       qiraatRulingsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
-      qiraatView.filter,
+      effectiveFilter,
     )?.rulings ?? []
-    const variants = variantsForToken(
+    const allVariants = variantsForToken(
       qiraatVariantsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
       { includeUnpublished: qiraatView.includeReviewed },
     )
+    const variants = effectiveFilter.kind === 'all'
+      ? allVariants
+      : allVariants.filter((variant) => matchesFilter(variant, effectiveFilter))
     if (!rulings.length && !variants.length) return false
     setQiraatSelection({ word, rulings, variants })
-    // The drawer/detail panel stays the mobile path, where there is no room for a sidebar.
-    if (!isSpread) {
-      selectWord(word)
-    }
     return true
   }
 
@@ -1752,7 +1835,7 @@ export default function Mushaf1441Viewer({
   // Mouse wheel / trackpad turns pages: scroll down → next page, up → previous.
   // One page per gesture — the momentum that follows a turn is ignored.
   function handleWheel(event: ReactWheelEvent) {
-    if (event.ctrlKey || isMenuOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
+    if (event.ctrlKey || isMenuOpen || isSurahPickerOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
     const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX
     if (delta === 0) return
     const state = wheelStateRef.current
@@ -1777,11 +1860,6 @@ export default function Mushaf1441Viewer({
   // never open over a page the reader is studying in Qiraat or متشابهات mode.
   // Returns whether the press produced anything, so the caller only plays the haptic when it did.
   function openContextMenu(target: AnnotationTarget, x: number, y: number): boolean {
-    if (readerLayer === 'qiraat') {
-      // "press and hold to see the Qiraat difference" — straight to the full explanation of that
-      // token: the permanent sidebar on desktop / iPad landscape, the detail sheet on a phone.
-      return isWordTarget(target) ? selectWordForQiraat(target.word) : false
-    }
     if (readerLayer === 'mutshabehat') {
       if (!highlightedMutshabehatAyahKeys.has(target.ayahKey)) return false
       openMutshabehatPopup(target.ayahKey)
@@ -2041,8 +2119,8 @@ export default function Mushaf1441Viewer({
           if (Date.now() - recentTouchRef.current < 700) return
           selectAyah(word.ayahKey)
         }}
-        onMouseEnter={() => setHoveredAyahKey(word.ayahKey)}
-        onMouseLeave={() => setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))}
+        onMouseEnter={() => { if (readerLayer !== 'qiraat') setHoveredAyahKey(word.ayahKey) }}
+        onMouseLeave={() => { if (readerLayer !== 'qiraat') setHoveredAyahKey((current) => (current === word.ayahKey ? null : current)) }}
         onContextMenu={(event) => openAyahContextMenu(event, word.ayahKey)}
         onTouchStart={(event) => startLongPress({ targetType: 'ayah', ayahKey: word.ayahKey, pageNumber }, event)}
         onTouchMove={cancelLongPress}
@@ -2079,7 +2157,7 @@ export default function Mushaf1441Viewer({
   function getWordBandColor(word: MushafWord, wordOrder: Map<string, number>): string | null {
     const annotationColor = findHighlightAnnotation(word, wordOrder)?.backgroundColor
     if (annotationColor) return annotationColor
-    if (selectedAyahKey === word.ayahKey) return SELECTION_BG
+    if (readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey) return SELECTION_BG
     const link = slotHighlightByAyahKey.get(word.ayahKey)
     return link ? tintForGroup(link.groupId ?? link.ayahKey).bg : null
   }
@@ -2100,8 +2178,8 @@ export default function Mushaf1441Viewer({
   }
 
   function renderQcfWord(word: MushafWord, wordOrder: Map<string, number>) {
-    const isSelectedWord = selectedWord?.id === word.id
-    const isHighlightedAyah = selectedAyahKey === word.ayahKey
+    const isSelectedWord = readerLayer !== 'qiraat' && selectedWord?.id === word.id
+    const isHighlightedAyah = readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey
     const mutshabehatHighlight = slotHighlightByAyahKey.get(word.ayahKey)
     const isMutshabehatHighlighted = Boolean(mutshabehatHighlight)
     const mutshabehatTint = mutshabehatHighlight ? tintForGroup(mutshabehatHighlight.groupId ?? mutshabehatHighlight.ayahKey) : null
@@ -2119,6 +2197,10 @@ export default function Mushaf1441Viewer({
     let qiraatOverrideText: string | null = null
     let qiraatSuppressed = false
     let qiraatMarker: WordMarker | null = null
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
+
     if (qiraatView.mode === 'comparison') {
       qiraatMarker = comparisonMarkerForWord(
         qiraatPageVariants, word.surahNumber, word.ayahNumber, word.wordIndexInAyah, qiraatView.filter,
@@ -2140,7 +2222,7 @@ export default function Mushaf1441Viewer({
       ? null
       : rulingMarkerForWord(
         qiraatRulingsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
-        qiraatView.filter,
+        effectiveFilter,
         qiraatView.disabledCategories.length
           ? new Set(rulingCategoriesOnPage(qiraatRulingsForPage(word.pageNumber))
             .map((c) => c.category).filter((c) => !qiraatView.disabledCategories.includes(c)))
@@ -2184,16 +2266,8 @@ export default function Mushaf1441Viewer({
           if (qiraatView.mode !== 'normal') {
             if (!hasQiraatData) return
             event.stopPropagation()
-            if (qiraatMarker) {
-              if (hoveredQiraatWordIdRef.current === word.id) {
-                updateHoveredQiraatWord(null)
-                liveRef.current.selectWordForQiraat(word)
-              } else {
-                updateHoveredQiraatWord({ word, marker: qiraatMarker })
-              }
-            } else {
-              liveRef.current.selectWordForQiraat(word)
-            }
+            updateHoveredQiraatWord(null)
+            liveRef.current.selectWordForQiraat(word)
             return
           }
           // متشابهات layer: an ayah that is in one of your groups opens its card, and a word that
@@ -2213,12 +2287,12 @@ export default function Mushaf1441Viewer({
           // emulation (and some real devices) also synthesizes pointerenter/pointerleave around a
           // tap, which would otherwise clear a peek the instant after onClick just set it.
           if (event.pointerType !== 'mouse') return
-          setHoveredAyahKey(word.ayahKey)
+          if (readerLayer !== 'qiraat') setHoveredAyahKey(word.ayahKey)
           if (qiraatMarker) updateHoveredQiraatWord({ word, marker: qiraatMarker })
         }}
         onPointerLeave={(event) => {
           if (event.pointerType !== 'mouse') return
-          setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
+          if (readerLayer !== 'qiraat') setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
           if (hoveredQiraatWordIdRef.current === word.id) updateHoveredQiraatWord(null)
         }}
         onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
@@ -2246,7 +2320,16 @@ export default function Mushaf1441Viewer({
           qiraatMarker
             ? (qiraatMarker.unresolved
               ? ' — قراءة قيد المراجعة (لم تُحدَّد نسبتها بعد)'
-              : ` — قراءات مختلفة: ${attributionLabelsAr(Array.from(new Set(qiraatMarker.variants.flatMap((variant) => variant.readingIds)))).join('، ')}`)
+              : ` — قراءات مختلفة: ${attributionLabelsAr(
+                  Array.from(new Set(
+                    (effectiveFilter.kind === 'reader'
+                      ? qiraatMarker.variants.flatMap((variant) => variant.readingIds).filter((id) => getReading(id).readerId === effectiveFilter.readerId)
+                      : effectiveFilter.kind === 'reading'
+                        ? qiraatMarker.variants.flatMap((variant) => variant.readingIds).filter((id) => id === effectiveFilter.readingId)
+                        : qiraatMarker.variants.flatMap((variant) => variant.readingIds)
+                    )
+                  ))
+                ).join('، ')}`)
             : ''
         }`}
         aria-pressed={isSelectedWord}
@@ -2272,9 +2355,10 @@ export default function Mushaf1441Viewer({
           lineHeight: 'inherit',
           paddingBlock: MUSHAF_WORD_BAND_PADDING,
           color: highlightAnnotation?.textColor
-            ?? (qiraatMarker?.isPerformanceOnly ? PERFORMANCE_MARKER_COLOR : undefined)
-            // A word carrying only an أصول ruling takes that family's colour.
-            ?? (rulingMarker && !qiraatMarker ? rulingMarker.color : undefined),
+            ?? (qiraatMarker?.isPerformanceOnly
+              ? PERFORMANCE_MARKER_COLOR
+              : (qiraatMarker && !qiraatMarker.isGradient ? qiraatMarker.color : undefined))
+            ?? rulingMarker?.color,
           // ذو وجهين («بخلف عنه») — two equally valid readings here; never silently pick one.
           textDecoration: rulingMarker?.hasAlternate ? 'underline dotted' : undefined,
           textDecorationColor: rulingMarker?.hasAlternate ? rulingMarker.color : undefined,
@@ -2765,14 +2849,18 @@ export default function Mushaf1441Viewer({
         ? createWordRangeTarget(selectedWord, contextMenu.target.word)
         : null
 
-    const targetAyahAnnotations = annotationsByAyahKey.get(contextMenu.target.ayahKey) ?? []
+    const menuTarget = contextMenu.target
+    const targetAyahAnnotations = annotationsByAyahKey.get(menuTarget.ayahKey) ?? []
     const hasBookmarkOnTarget = targetAyahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasFavoriteOnTarget = targetAyahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
+    const existingHighlightOnTarget = isWordTarget(menuTarget)
+      ? annotations.find((a) => a.annotationType === 'highlight' && a.wordId === menuTarget.word.id)
+      : targetAyahAnnotations.find((a) => a.annotationType === 'highlight' && a.targetType === 'ayah')
     // Bookmark / favourite always act on the whole ayah, even when a word was tapped.
     const ayahTargetForMenu: AnnotationTarget = {
       targetType: 'ayah',
-      ayahKey: contextMenu.target.ayahKey,
-      pageNumber: contextMenu.target.pageNumber,
+      ayahKey: menuTarget.ayahKey,
+      pageNumber: menuTarget.pageNumber,
     }
 
     return (
@@ -2795,7 +2883,60 @@ export default function Mushaf1441Viewer({
             <p className="text-[11px] font-bold text-[#80662c]">الاختيار الحالي</p>
             <p className="mt-1 truncate text-sm font-black text-[#171717]">{targetLabel}</p>
           </div>
-          <div className="space-y-1">
+          <div className="space-y-1.5">
+            <div className="rounded-lg border border-[#eadfc9] bg-[#fffaf0] p-1.5">
+              <div className="flex items-center justify-between px-1 pb-1">
+                <span className="flex items-center gap-1.5 text-xs font-bold text-[#59461d]">
+                  <IconHighlight className="text-[#80662c]" />تمييز
+                </span>
+                {existingHighlightOnTarget ? (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      await deleteAnnotation(existingHighlightOnTarget.id)
+                      setContextMenu(null)
+                    }}
+                    className="text-[11px] font-bold text-[#8a2f1b] hover:underline"
+                  >
+                    إزالة التمييز ✕
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedTarget(contextMenu.target, 'highlight')
+                      setAnnotationMode('highlight')
+                      setContextMenu(null)
+                    }}
+                    className="text-[11px] font-bold text-[#80662c] hover:underline"
+                  >
+                    مخصص…
+                  </button>
+                )}
+              </div>
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                {HIGHLIGHT_COLOR_PRESETS.map((preset) => (
+                  <button
+                    key={preset.label}
+                    type="button"
+                    title={preset.label}
+                    onClick={async () => {
+                      if (existingHighlightOnTarget) {
+                        await deleteAnnotation(existingHighlightOnTarget.id)
+                      }
+                      await persistAnnotation(buildAnnotationPayload(contextMenu.target, 'highlight', {
+                        textColor: preset.textColor,
+                        backgroundColor: preset.backgroundColor,
+                        metadata: { source: 'mushaf-1441-preview', action: 'highlight' },
+                      }))
+                      setContextMenu(null)
+                    }}
+                    className="size-6 rounded-full border border-black/15 shadow-sm transition-transform hover:scale-110 active:scale-95"
+                    style={{ backgroundColor: preset.backgroundColor }}
+                  />
+                ))}
+              </div>
+            </div>
             <button
               type="button"
               onClick={() => {
@@ -2807,18 +2948,6 @@ export default function Mushaf1441Viewer({
             >
               <span className="flex items-center gap-2"><IconNote className="text-[#80662c]" />ملاحظة</span>
               <span className="text-[11px] text-[#80662c]">Note</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedTarget(contextMenu.target, 'highlight')
-                setAnnotationMode('highlight')
-                setContextMenu(null)
-              }}
-              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
-            >
-              <span className="flex items-center gap-2"><IconHighlight className="text-[#80662c]" />تمييز</span>
-              <span className="text-[11px] text-[#80662c]">Highlight</span>
             </button>
             {rangeTarget ? (
               <button
@@ -3329,12 +3458,14 @@ export default function Mushaf1441Viewer({
 
   function renderHoverCard() {
     if (!hoveredAyahKey) return null
+    if (readerLayer === 'qiraat') return null
+    if (readerLayer !== 'mutshabehat' && readerLayer !== 'annotations') return null
     const annos = annotationsByAyahKey.get(hoveredAyahKey) ?? []
     const highlight = annos.find((annotation) => annotation.annotationType === 'highlight')
     const notes = annos.filter((annotation) => annotation.annotationType === 'note')
     const hasBookmark = annos.some((annotation) => annotation.annotationType === 'bookmark')
     const hasFavorite = annos.some((annotation) => annotation.annotationType === 'favorite')
-    const mutshabehat = mutshabehatHighlightByAyahKey.get(hoveredAyahKey)
+    const mutshabehat = readerLayer === 'mutshabehat' ? mutshabehatHighlightByAyahKey.get(hoveredAyahKey) : null
     if (!highlight && notes.length === 0 && !hasBookmark && !hasFavorite && !mutshabehat) return null
 
     const surahName = surahNameByNumber.get(Number(hoveredAyahKey.split(':')[0])) ?? ''
@@ -3465,7 +3596,23 @@ export default function Mushaf1441Viewer({
                 {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5">
-                {readerPillsForReadingIds(variant.readingIds).map(renderReaderPill)}
+                {readerPillsForReadingIds(
+                  (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
+                    ? variant.readingIds.filter((id) => getReading(id).readerId === qiraatFilter.readerId)
+                    : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
+                      ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
+                      : qiraatMode === 'riwayah'
+                        ? variant.readingIds.filter((id) => id === qiraatSelectedReadingId)
+                        : variant.readingIds).length > 0
+                    ? (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
+                        ? variant.readingIds.filter((id) => getReading(id).readerId === qiraatFilter.readerId)
+                        : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
+                          ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
+                          : qiraatMode === 'riwayah'
+                            ? variant.readingIds.filter((id) => id === qiraatSelectedReadingId)
+                            : variant.readingIds)
+                    : variant.readingIds
+                ).map(renderReaderPill)}
               </div>
             </div>
           )
@@ -3571,7 +3718,13 @@ export default function Mushaf1441Viewer({
   // location-review controls. The colours come from the data, never from a hardcoded UI map, so a
   // newly-imported category shows up here automatically.
   function renderQiraatUsulPanel() {
-    const rulings = qiraatRulingsForPage(pageNumber)
+    const allRulings = qiraatRulingsForPage(pageNumber)
+    const effectiveFilter: QiraatComparisonFilter = qiraatMode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatSelectedReadingId }
+      : qiraatFilter
+    const rulings = effectiveFilter.kind === 'all'
+      ? allRulings
+      : allRulings.filter((r) => matchesRulingFilter(r, effectiveFilter))
     const families = rulingCategoriesOnPage(rulings)
     const pending = rulings.filter((r) => !qiraatReview[qiraatLocusKey(r.surah, r.ayah, r.startToken)])
     if (families.length === 0 && rulings.length === 0) return null
@@ -3715,18 +3868,34 @@ export default function Mushaf1441Viewer({
     const surahName = surahNameByNumber.get(word.surahNumber) ?? ''
     const shownVariants = marker.variants.slice(0, 3)
     const showWajhNumbers = shownVariants.length > 1
+    const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
 
     // Only who DIFFERS from Hafs, and how — never Hafs's own reading or whoever merely agrees
     // with him (no "الباقون"/baseline group here; that stays a full-detail-panel-only concept).
     return (
       <div
-        className="absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]"
+        className="absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 cursor-pointer rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]"
         dir="rtl"
         onClick={() => updateHoveredQiraatWord(null)}
       >
         <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
-          <span className="rounded-full bg-[#f1e2b6] px-2.5 py-1 text-[11px] font-bold text-[#7a5a10]">خلاف في الكلمة</span>
-          <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-[#f1e2b6] px-2.5 py-1 text-[11px] font-bold text-[#7a5a10]">خلاف في الكلمة</span>
+            <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
+          </div>
+          <button
+            type="button"
+            aria-label="إغلاق"
+            onClick={(e) => {
+              e.stopPropagation()
+              updateHoveredQiraatWord(null)
+            }}
+            className="rounded px-1.5 py-0.5 text-xs font-bold text-[#8b7f6a] hover:bg-[#ebdcc0] hover:text-[#171717]"
+          >
+            ✕
+          </button>
         </div>
         {marker.unresolved ? (
           <p className="mt-2 text-xs font-bold text-[#8a2f10]">قراءة قيد المراجعة — لم تُحدَّد نسبتها بعد</p>
@@ -3739,7 +3908,12 @@ export default function Mushaf1441Viewer({
               // generic "أداء" placeholder — performanceNote is the precise phonetic description
               // when this locus has one, otherwise the variant's own difference-type category.
               const rulingLabel = variant.performanceNote ?? DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]
-              const pills = readerPillsForReadingIds(variant.readingIds)
+              const displayedReadingIds = effectiveFilter.kind === 'reader'
+                ? variant.readingIds.filter((id) => getReading(id).readerId === effectiveFilter.readerId)
+                : effectiveFilter.kind === 'reading'
+                  ? variant.readingIds.filter((id) => id === effectiveFilter.readingId)
+                  : variant.readingIds
+              const pills = readerPillsForReadingIds(displayedReadingIds.length > 0 ? displayedReadingIds : variant.readingIds)
               return (
                 <div key={variant.id} className="rounded-xl border border-[#e3d6b4] bg-white p-3">
                   <div className="mb-2 flex items-center justify-between gap-2">
@@ -3764,7 +3938,7 @@ export default function Mushaf1441Viewer({
             ) : null}
           </div>
         )}
-        <p className="mt-2.5 text-[10px] text-[#a8987a]">اضغط على الكلمة لعرض كل التفاصيل والمصادر</p>
+        <p className="mt-2.5 text-[10px] text-[#a8987a]">اضغط في أي مكان للإغلاق</p>
       </div>
     )
   }
@@ -3867,14 +4041,45 @@ export default function Mushaf1441Viewer({
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       {/* Slim top bar — the main screen is the mushaf itself */}
-      <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[#d7c7a7] bg-[#f7f0e0] px-3 py-2">
-        <div className="min-w-0">
-          <p className="truncate text-sm font-black leading-tight sm:text-base">
-            {visiblePageMetadata?.surahNames.join(' · ') ?? 'مصحف المدينة ١٤٤١'}
-          </p>
-          <p className="text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
-            {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''} · ص {pageNumber}
-          </p>
+      <header className="flex shrink-0 items-center justify-between gap-2 border-b border-[#d7c7a7] bg-[#f7f0e0] px-3 py-2">
+        <div className="flex min-w-0 items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="القائمة والإعدادات"
+            className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#171717] text-white transition-colors hover:bg-[#3a3326]"
+          >
+            <span className="flex flex-col gap-[3px]">
+              <span className="block h-0.5 w-5 rounded bg-white" />
+              <span className="block h-0.5 w-5 rounded bg-white" />
+              <span className="block h-0.5 w-5 rounded bg-white" />
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setSurahPickerSearch('')
+              setIsSurahPickerOpen(true)
+            }}
+            aria-label="اختيار السورة من القائمة"
+            aria-haspopup="dialog"
+            aria-expanded={isSurahPickerOpen}
+            className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 text-right transition-colors hover:bg-[#ebdcc0] active:bg-[#e2cfaf]"
+          >
+            <div className="min-w-0">
+              <div className="flex items-center gap-1">
+                <p className="truncate text-sm font-black leading-tight sm:text-base text-[#171717]">
+                  {visiblePageMetadata?.surahNames.join(' · ') ?? 'مصحف المدينة ١٤٤١'}
+                </p>
+                <svg className="size-3.5 shrink-0 text-[#80662c]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <p className="text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
+                {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''} · ص {pageNumber}
+              </p>
+            </div>
+          </button>
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
           <button
@@ -3882,7 +4087,7 @@ export default function Mushaf1441Viewer({
             onClick={() => turnPage(-1)}
             disabled={pageNumber <= MIN_PAGE}
             aria-label="الصفحة السابقة"
-            className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40"
+            className="hidden size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40 sm:flex"
           >
             →
           </button>
@@ -3891,7 +4096,7 @@ export default function Mushaf1441Viewer({
             onClick={() => turnPage(1)}
             disabled={pageNumber >= MAX_PAGE}
             aria-label="الصفحة التالية"
-            className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40"
+            className="hidden size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40 sm:flex"
           >
             ←
           </button>
@@ -3948,18 +4153,6 @@ export default function Mushaf1441Viewer({
             }`}
           >
             ق
-          </button>
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen(true)}
-            aria-label="القائمة والإعدادات"
-            className="flex size-10 items-center justify-center rounded-md bg-[#171717] text-white transition-colors hover:bg-[#3a3326]"
-          >
-            <span className="flex flex-col gap-[3px]">
-              <span className="block h-0.5 w-5 rounded bg-white" />
-              <span className="block h-0.5 w-5 rounded bg-white" />
-              <span className="block h-0.5 w-5 rounded bg-white" />
-            </span>
           </button>
         </div>
       </header>
@@ -4049,7 +4242,17 @@ export default function Mushaf1441Viewer({
             onFinish={finishPageTurn}
           />
         ) : null}
-        {hoveredQiraatWord ? renderQiraatHoverCard() : renderHoverCard()}
+        {hoveredQiraatWord ? (
+          <>
+            <button
+              type="button"
+              aria-label="إغلاق بطاقة القراءات"
+              onClick={() => updateHoveredQiraatWord(null)}
+              className="fixed inset-0 z-10 bg-black/20 backdrop-blur-[1px] sm:hidden"
+            />
+            {renderQiraatHoverCard()}
+          </>
+        ) : (readerLayer === 'qiraat' ? null : renderHoverCard())}
         {isPageLoading ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
             <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
@@ -4107,6 +4310,121 @@ export default function Mushaf1441Viewer({
         )
       })()}
 
+      {/* Surah quick-select combo list (mobile & desktop) */}
+      {isSurahPickerOpen ? (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end sm:justify-center sm:items-center p-0 sm:p-4" dir="rtl">
+          <button
+            type="button"
+            aria-label="إغلاق قائمة السور"
+            onClick={() => {
+              setIsSurahPickerOpen(false)
+              setSurahPickerSearch('')
+            }}
+            className="fixed inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity"
+          />
+          <div
+            className="relative z-10 flex flex-col w-full sm:max-w-md max-h-[85vh] sm:max-h-[80vh] rounded-t-2xl sm:rounded-2xl border border-[#d7c7a7] bg-[#fffdf8] shadow-[0_-16px_60px_rgba(23,23,23,0.3)] overflow-hidden"
+            style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
+          >
+            <div className="flex items-center justify-between border-b border-[#eadfc9] bg-[#f7f0e0] px-4 py-3">
+              <div className="flex items-center gap-2">
+                <span className="flex size-7 items-center justify-center rounded-md bg-[#171717] text-xs font-black text-white">
+                  ١١٤
+                </span>
+                <div>
+                  <h3 className="text-sm font-black text-[#171717]">فهرس السور</h3>
+                  <p className="text-[10px] font-bold text-[#80662c]">اختر سورة للانتقال إليها مباشرة</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                aria-label="إغلاق"
+                onClick={() => {
+                  setIsSurahPickerOpen(false)
+                  setSurahPickerSearch('')
+                }}
+                className="flex size-8 items-center justify-center rounded-md border border-[#d7c7a7] bg-white text-sm font-bold text-[#80662c] shadow-sm transition-colors hover:bg-[#fff7df]"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="border-b border-[#eadfc9] bg-[#fffaf0] p-2.5">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={surahPickerSearch}
+                  onChange={(e) => setSurahPickerSearch(e.target.value)}
+                  placeholder="ابحث باسم السورة أو رقمها…"
+                  aria-label="بحث في السور"
+                  className="w-full rounded-lg border border-[#d7c7a7] bg-white px-3 py-2 text-sm text-[#171717] placeholder:text-[#a8987a] focus:border-[#171717] focus:outline-none"
+                  autoFocus
+                />
+                {surahPickerSearch ? (
+                  <button
+                    type="button"
+                    onClick={() => setSurahPickerSearch('')}
+                    aria-label="مسح البحث"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded p-1 text-xs text-[#80662c] hover:bg-[#f0e4cc]"
+                  >
+                    ✕
+                  </button>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto divide-y divide-[#f0e4cc] p-2">
+              {filteredSurahOptions.length === 0 ? (
+                <p className="p-6 text-center text-xs font-bold text-[#8a7c5c]">
+                  لا توجد سورة مطابقة للبحث
+                </p>
+              ) : (
+                filteredSurahOptions.map((surah) => {
+                  const currentSurahNumber = visiblePageMetadata?.surahNumbers[0] ?? selectedSurahNumber
+                  const isCurrent = surah.surahNumber === currentSurahNumber
+                  return (
+                    <button
+                      key={surah.surahNumber}
+                      type="button"
+                      ref={isCurrent ? currentSurahItemRef : null}
+                      onClick={() => void selectSurahFromPicker(surah)}
+                      className={`flex w-full items-center justify-between px-3 py-2.5 rounded-lg text-right transition-colors ${
+                        isCurrent
+                          ? 'bg-[#171717] text-white shadow-sm'
+                          : 'hover:bg-[#f7f0e0] active:bg-[#ebdcc0] text-[#171717]'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className={`flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums ${
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#f0e4cc] text-[#80662c]'
+                        }`}>
+                          {surah.surahNumber}
+                        </span>
+                        <div>
+                          <p className="text-base font-black font-[family-name:var(--font-amiri-quran)] leading-tight">
+                            سورة {surah.name}
+                          </p>
+                          <p className={`text-[11px] font-bold ${isCurrent ? 'text-white/80' : 'text-[#80662c]'}`}>
+                            {surah.ayahCount} آية
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-left">
+                        <span className={`inline-block rounded px-2 py-0.5 text-xs font-bold tabular-nums ${
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#fffaf0] border border-[#d7c7a7] text-[#80662c]'
+                        }`}>
+                          ص {surah.firstPage ?? '—'}
+                        </span>
+                      </div>
+                    </button>
+                  )
+                })
+              )}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       {/* Burger drawer: navigation sliders, account / sign-in, settings */}
       {isMenuOpen ? (
         <div className="fixed inset-0 z-40">
@@ -4159,7 +4477,23 @@ export default function Mushaf1441Viewer({
 
             {/* Qiraat Ashr: mode, Riwayah selection, study mode, filters */}
             <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
-              <p className="mb-3 text-xs font-bold text-[#80662c]">القراءات</p>
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <p className="text-xs font-bold text-[#80662c]">القراءات</p>
+                {qiraatSelection ? (
+                  <button
+                    type="button"
+                    onClick={() => setQiraatSelection(null)}
+                    className="rounded border border-[#d7c7a7] px-2 py-0.5 text-[11px] font-bold text-[#80662c] hover:bg-[#fff7df]"
+                  >
+                    مسح التحديد
+                  </button>
+                ) : null}
+              </div>
+              {qiraatSelection ? (
+                <div className="mb-3 rounded-lg border border-[#d7c7a7] bg-[#fffaf0] p-2.5">
+                  {renderQiraatSelection()}
+                </div>
+              ) : null}
               <QiraatToolbar
                 mode={qiraatMode}
                 onModeChange={applyQiraatMode}
@@ -4233,6 +4567,54 @@ export default function Mushaf1441Viewer({
             </div>
             <QiraatLegend />
           </section>
+        </div>
+      ) : null}
+
+      {/* Dedicated Qiraat bottom card on mobile & portrait screens */}
+      {!isSpread && qiraatSelection && qiraatMode !== 'normal' ? (
+        <div className="fixed inset-0 z-40 flex flex-col justify-end p-2 sm:p-4" dir="rtl">
+          <button
+            type="button"
+            aria-label="إغلاق بطاقة القراءات"
+            onClick={() => {
+              setQiraatSelection(null)
+              updateHoveredQiraatWord(null)
+            }}
+            className="fixed inset-0 bg-black/25 backdrop-blur-[1px] transition-opacity"
+          />
+          <div
+            className="relative z-10 mx-auto w-full max-w-lg cursor-pointer rounded-2xl border border-[#d7c7a7] bg-[#fffdf8]/98 p-3.5 shadow-[0_-12px_45px_rgba(23,23,23,0.22)] backdrop-blur-md"
+            style={{ paddingBottom: 'calc(0.875rem + env(safe-area-inset-bottom))' }}
+            onClick={() => {
+              setQiraatSelection(null)
+              updateHoveredQiraatWord(null)
+            }}
+          >
+            <div className="mb-2.5 flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
+              <div className="flex items-center gap-2">
+                <span className="rounded-full bg-[#171717] px-2.5 py-0.5 text-[11px] font-black text-white">القراءات العشر</span>
+                <span className="text-xs font-bold text-[#80662c]">
+                  {surahNameByNumber.get(qiraatSelection.word.surahNumber) ?? ''} — آية {qiraatSelection.word.ayahNumber}
+                </span>
+              </div>
+              <button
+                type="button"
+                aria-label="إغلاق"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setQiraatSelection(null)
+                  updateHoveredQiraatWord(null)
+                }}
+                className="rounded-md border border-[#d7c7a7] bg-white px-2.5 py-1 text-xs font-bold text-[#80662c] shadow-sm transition-colors hover:bg-[#fff7df]"
+              >
+                مسح التحديد ✕
+              </button>
+            </div>
+            <div className="max-h-[48vh] overflow-y-auto pr-0.5">
+              {renderQiraatSelection()}
+            </div>
+            <p className="mt-2 text-center text-[10px] text-[#a8987a]">اضغط في أي مكان داخل البطاقة أو خارجها للإغلاق</p>
+          </div>
         </div>
       ) : null}
 

@@ -94,7 +94,7 @@ export default function QiraatToolbar({
                 onClick={() => {
                   if (kind === 'all') onFilterChange({ kind: 'all' })
                   else if (kind === 'reader') onFilterChange({ kind: 'reader', readerId: QIRAAT_READERS[0].id })
-                  else onFilterChange({ kind: 'reading', readingId: BASE_READING })
+                  else onFilterChange({ kind: 'reading', readingId: selectedReadingId !== BASE_READING ? selectedReadingId : 'Q01-R01' })
                 }}
                 className={`min-h-8 rounded-md border px-2 transition-colors ${
                   filter.kind === kind ? 'border-[#171717] bg-[#171717] text-white' : 'border-[#d7c7a7] text-[#59461d] hover:bg-[#fff1cf]'

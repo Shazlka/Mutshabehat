@@ -9,8 +9,9 @@ import { computeAttribution, gradientCss, readingsNotIn } from './attribution.ts
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
 import { BASE_READING } from './types.ts'
 import { FixtureQiraatRepository } from './repository.ts'
-import { comparisonMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
+import { comparisonMarkerForWord, rulingMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
+import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
 
 const ALL_READING_IDS = QIRAAT_READINGS.map((reading) => reading.id)
 const VARIANTS = synthetic.variants
@@ -318,3 +319,72 @@ test('page-1 rules (عد الآي/الإدغام الكبير/أوجه الوص�
     assert.equal(maddOptions.readingIds, undefined, 'an unattributed enumerated-options rule must carry no reader attribution at all')
   })
 })
+
+test('when filtering by reader or narrator, comparisonMarkerForWord only marks what belongs to him with his color', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(1, { includeUnpublished: true })
+
+  // 1:4:1 (مالك/ملك): 6 readers read ملك (Nafi Q01, Ibn Kathir Q02, Abu Amr Q03, Ibn Amir Q04, Abu Ja'far Q08, Ya'qub Q09).
+  // When filter is 'all', it produces a multi-reader gradient:
+  const allMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'all' }, { includeUnpublished: true })
+  assert.ok(allMarker)
+  assert.equal(allMarker.isGradient, true)
+
+  // When filtered by Reader Nafi (Q01), it MUST return Nafi's solid reader color, never a multi-reader gradient:
+  const nafiMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reader', readerId: 'Q01' }, { includeUnpublished: true })
+  assert.ok(nafiMarker)
+  assert.equal(nafiMarker.isGradient, false)
+  assert.equal(nafiMarker.color, readerColor('Q01'))
+
+  // When filtered by Narrator Warsh (Q01-R02), it MUST return Warsh's solid narrator color:
+  const warshMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reading', readingId: 'Q01-R02' }, { includeUnpublished: true })
+  assert.ok(warshMarker)
+  assert.equal(warshMarker.isGradient, false)
+  assert.equal(warshMarker.color, narratorColor('Q01-R02'))
+
+  // When filtered by Reader Asim (Q05), who reads the baseline (مالك) and does not differ:
+  // It MUST return null — nothing colored or marked for Asim!
+  const asimMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reader', readerId: 'Q05' }, { includeUnpublished: true })
+  assert.equal(asimMarker, null, 'word must not be marked or colored when it does not differ for this reader')
+
+  // When filtered by Narrator Hafs (Q05-R02):
+  const hafsMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reading', readingId: 'Q05-R02' }, { includeUnpublished: true })
+  assert.equal(hafsMarker, null, 'word must not be marked or colored for Hafs baseline')
+})
+
+test('when filtering by reader or narrator, rulingMarkerForWord only marks and colors usul rulings related to him', () => {
+  // On Page 2, 2:2:5 (فيه): صلة هاء الكناية belongs exclusively to Ibn Kathir (Q02, Al-Bazzi Q02-R01 & Qunbul Q02-R02).
+  const allSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'all' })
+  assert.ok(allSilat)
+
+  // Reader filter Ibn Kathir matches:
+  const ibnKathirSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'reader', readerId: 'Q02' })
+  assert.ok(ibnKathirSilat)
+  assert.equal(ibnKathirSilat.color, '#0D9488')
+
+  // Reader filter Nafi (Q01) must return null:
+  const nafiSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'reader', readerId: 'Q01' })
+  assert.equal(nafiSilat, null, 'Nafi must not see or color Ibn Kathir usul ruling')
+
+  // Narrator filter Warsh (Q01-R02) must return null:
+  const warshSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'reading', readingId: 'Q01-R02' })
+  assert.equal(warshSilat, null, 'Warsh must not see or color Ibn Kathir usul ruling')
+
+  // On Page 2, 2:4:10 (وبالآخرة): ترقيق الراءات belongs exclusively to Warsh (Q01-R02).
+  // Reader filter Nafi (Q01) matches (Warsh is a narrator of Nafi):
+  const nafiTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reader', readerId: 'Q01' })
+  assert.ok(nafiTarqiq)
+
+  // Narrator filter Warsh (Q01-R02) matches:
+  const warshTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reading', readingId: 'Q01-R02' })
+  assert.ok(warshTarqiq)
+
+  // Narrator filter Qalun (Q01-R01) must return null:
+  const qalunTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reading', readingId: 'Q01-R01' })
+  assert.equal(qalunTarqiq, null, 'Qalun must not see or color Warsh-only tarqiq ruling')
+
+  // Reader filter Asim (Q05) must return null:
+  const asimTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reader', readerId: 'Q05' })
+  assert.equal(asimTarqiq, null, 'Asim must not see or color Warsh tarqiq ruling')
+})
+

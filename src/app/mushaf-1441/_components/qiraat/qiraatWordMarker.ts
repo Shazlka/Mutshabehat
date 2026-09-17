@@ -39,7 +39,7 @@ function isPerformanceOnlyVariant(variant: QiraatVariant): boolean {
   return variant.variantText === variant.hafsText
 }
 
-function matchesFilter(variant: QiraatVariant, filter: QiraatComparisonFilter): boolean {
+export function matchesFilter(variant: QiraatVariant, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
   if (filter.kind === 'reader') return variant.readingIds.some((id) => getReading(id).readerId === filter.readerId)
   return variant.readingIds.includes(filter.readingId)
@@ -58,8 +58,8 @@ export function comparisonMarkerForWord(
   const filtered = matches.filter((variant) => matchesFilter(variant, filter))
   if (filtered.length === 0) return null
 
-  const readingIds = Array.from(new Set(filtered.flatMap((variant) => variant.readingIds)))
-  if (readingIds.length === 0) {
+  const allReadingIds = Array.from(new Set(filtered.flatMap((variant) => variant.readingIds)))
+  if (allReadingIds.length === 0) {
     // needs_manual_review placeholder(s) with no confident attribution yet (Part 29) — never guess
     // a reader/narrator color for this; computeAttribution requires at least one reading id.
     return { color: UNRESOLVED_MARKER_COLOR, isGradient: false, variants: filtered, unresolved: true }
@@ -67,6 +67,18 @@ export function comparisonMarkerForWord(
   if (filtered.every(isPerformanceOnlyVariant)) {
     return { color: PERFORMANCE_MARKER_COLOR, isGradient: false, variants: filtered, isPerformanceOnly: true }
   }
+
+  // When filtered by a specific reader or narrator, scope attribution exclusively to that authority.
+  // This ensures selecting a reader (e.g. Nafi) or narrator (e.g. Warsh) never draws other readers'
+  // colors or a multi-reader gradient.
+  const readingIds = filter.kind === 'reader'
+    ? allReadingIds.filter((id) => getReading(id).readerId === filter.readerId)
+    : filter.kind === 'reading'
+      ? allReadingIds.filter((id) => id === filter.readingId)
+      : allReadingIds
+
+  if (readingIds.length === 0) return null
+
   const attribution = computeAttribution(readingIds)
   return {
     color: attribution.kind === 'multi-reader' ? gradientCss(attribution.segments) : attribution.color,
@@ -154,11 +166,19 @@ export function rulingMarkerForWord(
     color: matches[0].color,
     rulings: matches,
     multiple: families.size > 1,
-    hasAlternate: matches.some((ruling) => ruling.hasAlternate),
+    hasAlternate: matches.some((ruling) => {
+      if (!ruling.hasAlternate) return false
+      if (filter.kind === 'all') return true
+      if (filter.kind === 'reader') {
+        return ruling.readings.some((r) => getReading(r.readingId).readerId === filter.readerId && !r.isDefault)
+          || ruling.attribution.some((a) => a.authorityId === filter.readerId && a.condition?.includes('بخلف'))
+      }
+      return ruling.readings.some((r) => r.readingId === filter.readingId && !r.isDefault)
+    }),
   }
 }
 
-function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparisonFilter): boolean {
+export function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
   if (filter.kind === 'reader') {
     return ruling.readings.some((r) => getReading(r.readingId).readerId === filter.readerId)
