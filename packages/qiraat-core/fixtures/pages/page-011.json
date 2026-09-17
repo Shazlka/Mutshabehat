@@ -1,0 +1,70 @@
+[
+  {
+    "id": "v-p011-l001-fahya",
+    "surah": 2,
+    "ayah": 74,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "DIACRITIC_CHANGE",
+    "hafsText": "فَهِىَ",
+    "variantText": "فَهْيَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p011-l001-fahya",
+        "variantId": "v-p011-l001-fahya",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 16,
+        "sourceReference": "صفحة المصحف 11 · صفحة PDF 16",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+      }
+    ],
+    "notes": "الباقون (ورش عن نافع، ابن كثير، ابن عامر، عاصم، حمزة، يعقوب، خلف العاشر) بكسر الهاء \"فَهِيَ\" موافقةً للرسم الأساس."
+  },
+  {
+    "id": "v-p011-l002-taqmaluna",
+    "surah": 2,
+    "ayah": 74,
+    "startToken": 37,
+    "endToken": 37,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ",
+    "variantText": "يَعْمَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p011-l002-taqmaluna",
+        "variantId": "v-p011-l002-taqmaluna",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 16,
+        "sourceReference": "صفحة المصحف 11 · صفحة PDF 16",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+      }
+    ],
+    "uthmaniText": "يَعْمَلُونَ",
+    "notes": "الباقون بالتاء \"تَعْمَلُونَ\" موافقةً للرسم الأساس."
+  }
+]

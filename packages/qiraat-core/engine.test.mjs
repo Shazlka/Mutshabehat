@@ -234,3 +234,37 @@ test('pages-1-10 batch: a NEEDS_MANUAL_REVIEW placeholder with no confident attr
     assert.notEqual(marker.color, undefined)
   })
 })
+
+test('pages-11-20 batch: every record is REVIEWED (the import policy blocks needs_manual_review entirely, not just from the default view)', () => {
+  const repo = new FixtureQiraatRepository()
+  return Promise.all([11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((page) => repo.getVariantsForPage(page, { includeUnpublished: true }))).then((pages) => {
+    const all = pages.flat()
+    assert.ok(all.length > 0, 'pages 11-20 must actually be wired into the repository')
+    for (const variant of all) {
+      assert.equal(variant.verificationStatus, 'REVIEWED', `${variant.id} must be REVIEWED — needs_manual_review loci are dropped entirely for this batch, never kept as a placeholder`)
+      assert.ok(variant.readingIds.length > 0, `${variant.id} is REVIEWED, so it must carry a real attribution`)
+    }
+  })
+})
+
+test('pages-11-20 batch: the جبريل/ميكال loci (2:97-98) resolve as independent single-token variants sharing one locusId, without corrupting the real base text', () => {
+  const repo = new FixtureQiraatRepository()
+  return repo.getVariantsForPage(15, { includeUnpublished: true }).then((variants) => {
+    const jibril97 = variants.find((v) => v.id === 'v-p015-l002-jibril-97-hamza')
+    const jibril98 = variants.find((v) => v.id === 'v-p015-l002-jibril-98-hamza')
+    assert.ok(jibril97 && jibril98, 'both ayah occurrences of جبريل must be present')
+    assert.equal(jibril97.locusId, jibril98.locusId, 'the two occurrences share one display locus')
+    // The attached prefix (لِّ.../وَ...) is spliced from the real fixture word, never hand-typed, so
+    // we assert on length/prefix-preservation rather than re-typing the exact combining-mark order
+    // (a literal here would risk the same diacritic-ordering drift the generator script guards
+    // against — see build-qiraat-pages-011-020.py's splice()).
+    assert.ok(jibril97.hafsText.length < jibril97.variantText.length, 'the alternate spelling adds a hamza+ya, so it must be longer than the base text')
+    assert.ok(jibril97.variantText.endsWith('يلَ'), 'the جبرئيل ending must be preserved')
+    assert.equal(jibril97.hafsText.length, jibril98.hafsText.length + 1, 'لِّ (3 codepoints: lam+shadda+kasra) vs وَ (2 codepoints) is the only prefix difference between the two occurrences')
+
+    const mikal = variants.find((v) => v.id === 'v-p015-l003-mikal-hamza')
+    assert.ok(mikal)
+    assert.notEqual(mikal.hafsText, mikal.variantText, 'ميكال must actually differ from the ميكائيل reading')
+    assert.ok(mikal.variantText.includes('ئِيلَ'), 'the همز+ياء ending must be present in the alternate spelling')
+  })
+})

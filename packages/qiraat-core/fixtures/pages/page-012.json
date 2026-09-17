@@ -1,0 +1,68 @@
+[
+  {
+    "id": "v-p012-l001-amaniyya",
+    "surah": 2,
+    "ayah": 78,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "أَمَانِىَّ",
+    "variantText": "أَمَانِيَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p012-l001-amaniyya",
+        "variantId": "v-p012-l001-amaniyya",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 17,
+        "sourceReference": "صفحة المصحف 12 · صفحة PDF 17",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+      }
+    ],
+    "uthmaniText": "أَمَانِيَ",
+    "notes": "تخفيف الياء (بلا تشديد) عند أبي جعفر؛ الباقون بتشديد الياء موافقةً للرسم الأساس."
+  },
+  {
+    "id": "v-p012-l002-khatiatuhu",
+    "surah": 2,
+    "ayah": 81,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "خَطِيٓـَٔتُهُۥ",
+    "variantText": "خَطِيئَاتُهُ",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p012-l002-khatiatuhu",
+        "variantId": "v-p012-l002-khatiatuhu",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 17,
+        "sourceReference": "صفحة المصحف 12 · صفحة PDF 17",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+      }
+    ],
+    "uthmaniText": "خَطِيئَاتُهُ",
+    "notes": "الجمع \"خَطِيئَاتُهُ\" عند نافع وأبي جعفر؛ الباقون بالإفراد موافقةً للرسم الأساس."
+  }
+]

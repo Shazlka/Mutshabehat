@@ -1,0 +1,118 @@
+[
+  {
+    "id": "v-p016-l001-walakini",
+    "surah": 2,
+    "ayah": 102,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "DIACRITIC_CHANGE",
+    "hafsText": "وَلَـٰكِنَّ",
+    "variantText": "وَلَـٰكِنِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p016-l001-walakini",
+        "variantId": "v-p016-l001-walakini",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 21,
+        "sourceReference": "صفحة المصحف 16 · صفحة PDF 21",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+      }
+    ],
+    "locusId": "p16-walakinna",
+    "locusType": "word_variant",
+    "performanceNote": "تخفيف نون \"لكن\" وكسرها في الوصل.",
+    "notes": "الباقون بتشديد النون وفتحها \"وَلَكِنَّ\" موافقةً للرسم الأساس."
+  },
+  {
+    "id": "v-p016-l001-shayatinu",
+    "surah": 2,
+    "ayah": 102,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "DIACRITIC_CHANGE",
+    "hafsText": "ٱلشَّيَـٰطِينَ",
+    "variantText": "ٱلشَّيَـٰطِينُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p016-l001-shayatinu",
+        "variantId": "v-p016-l001-shayatinu",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 21,
+        "sourceReference": "صفحة المصحف 16 · صفحة PDF 21",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+      }
+    ],
+    "locusId": "p16-walakinna",
+    "locusType": "word_variant",
+    "performanceNote": "رفع \"الشياطين\" (فاعل مع تخفيف \"لكن\").",
+    "notes": "الباقون بنصب \"الشياطين\" موافقةً للرسم الأساس."
+  },
+  {
+    "id": "v-p016-l002-yunazzala",
+    "surah": 2,
+    "ayah": 105,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "يُنَزَّلَ",
+    "variantText": "يُنْزَلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-v-p016-l002-yunazzala",
+        "variantId": "v-p016-l002-yunazzala",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 21,
+        "sourceReference": "صفحة المصحف 16 · صفحة PDF 21",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+      }
+    ],
+    "uthmaniText": "يُنْزَلَ",
+    "notes": "إسكان النون وتخفيف الزاي؛ الباقون بفتح النون وتشديد الزاي موافقةً للرسم الأساس."
+  }
+]

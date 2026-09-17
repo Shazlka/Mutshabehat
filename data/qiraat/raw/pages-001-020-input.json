@@ -1,0 +1,2546 @@
+{
+  "schema_version": "qiraat-extraction-v2.0",
+  "source": {
+    "title": "مصحف القراءات العشر",
+    "source_file": "مصحف القراءات العشر-1.pdf",
+    "mushaf_pages": {
+      "from": 1,
+      "to": 20
+    },
+    "pdf_pages": {
+      "from": 6,
+      "to": 25
+    }
+  },
+  "import_policy": {
+    "allowed_status": [
+      "reviewed"
+    ],
+    "blocked_status": [
+      "needs_manual_review",
+      "needs_high_resolution_transcription"
+    ],
+    "preserve_source_text": true,
+    "preserve_reader_attribution": true,
+    "do_not_collapse_turuq_or_wujuh": true
+  },
+  "pages": [
+    {
+      "mushaf_page": 1,
+      "pdf_page": 6,
+      "surah": 1,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P001-L001",
+          "targets": [
+            {
+              "surah": 1,
+              "ayah": 4,
+              "base_text": "مَالِكِ",
+              "word_index": null
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "مَالِكِ",
+              "attribution_raw": [
+                "عاصم",
+                "الكسائي",
+                "يعقوب",
+                "خلف العاشر"
+              ],
+              "performance": null
+            },
+            {
+              "reading": "مَلِكِ",
+              "attribution_raw": [
+                "نافع",
+                "ابن كثير",
+                "أبو عمرو",
+                "ابن عامر",
+                "حمزة",
+                "أبو جعفر"
+              ],
+              "performance": null
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-L002",
+          "targets": [
+            {
+              "surah": 1,
+              "ayah": 6,
+              "base_text": "الصِّرَاط",
+              "word_index": null
+            }
+          ],
+          "type": "word_and_performance_variant",
+          "variants": [
+            {
+              "reading": "الصِّرَاط",
+              "attribution_raw": [
+                "نافع",
+                "البزي",
+                "أبو عمرو",
+                "ابن عامر",
+                "عاصم",
+                "الكسائي",
+                "أبو جعفر",
+                "روح",
+                "خلف"
+              ],
+              "performance": null
+            },
+            {
+              "reading": "السِّرَاط",
+              "attribution_raw": [
+                "قنبل",
+                "رويس"
+              ],
+              "performance": null
+            },
+            {
+              "reading": "الصِّرَاط",
+              "attribution_raw": [
+                "حمزة"
+              ],
+              "performance": "إشمام الصاد زايًا"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-L003",
+          "targets": [
+            {
+              "surah": 1,
+              "ayah": 7,
+              "base_text": "صِرَاط",
+              "word_index": null
+            }
+          ],
+          "type": "word_and_performance_variant",
+          "variants": [
+            {
+              "reading": "صِرَاط",
+              "attribution_raw": [
+                "نافع",
+                "البزي",
+                "أبو عمرو",
+                "ابن عامر",
+                "عاصم",
+                "خلاد",
+                "الكسائي",
+                "أبو جعفر",
+                "روح",
+                "خلف"
+              ],
+              "performance": null
+            },
+            {
+              "reading": "سِرَاط",
+              "attribution_raw": [
+                "قنبل",
+                "رويس"
+              ],
+              "performance": null
+            },
+            {
+              "reading": "صِرَاط",
+              "attribution_raw": [
+                "خلف عن حمزة"
+              ],
+              "performance": "إشمام الصاد زايًا"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-L004",
+          "targets": [
+            {
+              "surah": 1,
+              "ayah": 7,
+              "base_text": "عَلَيْهِمْ",
+              "occurrence": 1
+            },
+            {
+              "surah": 1,
+              "ayah": 7,
+              "base_text": "عَلَيْهِمْ",
+              "occurrence": 2
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "عَلَيْهِمْ",
+              "attribution_raw": [
+                "نافع",
+                "ابن كثير",
+                "أبو عمرو",
+                "ابن عامر",
+                "عاصم",
+                "الكسائي",
+                "أبو جعفر",
+                "خلف العاشر"
+              ]
+            },
+            {
+              "reading": "عَلَيْهِمُ",
+              "attribution_raw": [
+                "حمزة",
+                "يعقوب"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": [
+        {
+          "id": "P001-R001",
+          "category": "عد الآي",
+          "text": "بسم الله الرحمن الرحيم",
+          "attribution_raw": [
+            "المكي",
+            "الكوفي"
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-R002",
+          "category": "عد الآي",
+          "text": "أنعمت عليهم",
+          "attribution_raw": [
+            "المدنيان",
+            "البصري",
+            "الشامي"
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-R003",
+          "category": "الإدغام الكبير",
+          "text": "الرحيم ۝ مالك",
+          "attribution_raw": [
+            "السوسي عن أبي عمرو"
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-R004",
+          "category": "الأوجه بين السورتين",
+          "reading": "البسملة",
+          "attribution_raw": [
+            "قالون",
+            "ابن كثير",
+            "عاصم",
+            "الكسائي",
+            "أبو جعفر"
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-R005",
+          "category": "الأوجه بين السورتين",
+          "reading": "الوصل",
+          "attribution_raw": [
+            "حمزة",
+            "خلف"
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-R006",
+          "category": "الأوجه بين السورتين",
+          "reading": "السكت أو الوصل",
+          "attribution_raw": [
+            "أبو عمرو",
+            "ابن عامر",
+            "يعقوب"
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-R007",
+          "category": "الأوجه بين السورتين",
+          "reading": "السكت أو الوصل أو البسملة",
+          "attribution_raw": [
+            "ورش"
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P001-R008",
+          "category": "المد قبل الإدغام الكبير",
+          "options": [
+            "القصر",
+            "التوسط",
+            "الإشباع"
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "FAWAID_REGION": {
+        "source_heading": "الشواهد",
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription",
+        "note": "الشواهد الشعرية ظاهرة في الصفحة، لكن لا يتم إدخال نصها حتى تتم قراءة الصورة بدقة أعلى."
+      }
+    },
+    {
+      "mushaf_page": 2,
+      "pdf_page": 7,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P002-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 1,
+              "base_text": "الم"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "الم",
+              "attribution_raw": [
+                "أبو جعفر"
+              ],
+              "performance": "السكت على حروف الهجاء"
+            },
+            {
+              "reading": "الم",
+              "attribution_raw": [
+                "باقي الرواة"
+              ],
+              "performance": "ترك السكت"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P002-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 2,
+              "base_text": "فِيهِ"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "فِيهِ",
+              "attribution_raw": [
+                "ابن كثير"
+              ],
+              "performance": "صلة هاء الضمير"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P002-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 2,
+              "base_text": "هُدًى"
+            },
+            {
+              "surah": 2,
+              "ayah": 5,
+              "base_text": "هُدًى"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "هُدًى",
+              "attribution_raw": [
+                "ورش"
+              ],
+              "performance": "التقليل بخلف عنه وقفًا"
+            },
+            {
+              "reading": "هُدًى",
+              "attribution_raw": [
+                "حمزة",
+                "الكسائي",
+                "خلف العاشر"
+              ],
+              "performance": "الإمالة وقفًا"
+            },
+            {
+              "reading": "هُدًى",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "الفتح"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 3,
+      "pdf_page": 8,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P003-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 6,
+              "base_text": "عَلَيْهِمْ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "عَلَيْهِمُ",
+              "attribution_raw": [
+                "حمزة",
+                "يعقوب"
+              ],
+              "performance": "ضم هاء الضمير"
+            },
+            {
+              "reading": "عَلَيْهِمْ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "كسر هاء الضمير"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P003-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 9,
+              "base_text": "يَخْدَعُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يُخَادِعُونَ",
+              "attribution_raw": [
+                "نافع",
+                "ابن كثير",
+                "أبو عمرو"
+              ]
+            },
+            {
+              "reading": "يَخْدَعُونَ",
+              "attribution_raw": [
+                "باقي الرواة"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P003-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 10,
+              "base_text": "يَكْذِبُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يَكْذِبُونَ",
+              "attribution_raw": [
+                "عاصم",
+                "حمزة",
+                "الكسائي",
+                "خلف العاشر"
+              ],
+              "performance": "تخفيف الذال"
+            },
+            {
+              "reading": "يُكَذِّبُونَ",
+              "attribution_raw": [
+                "باقي الرواة"
+              ],
+              "performance": "تشديد الذال"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P003-L004",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 11,
+              "base_text": "قِيلَ"
+            },
+            {
+              "surah": 2,
+              "ayah": 13,
+              "base_text": "قِيلَ"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "قِيلَ",
+              "attribution_raw": [
+                "هشام عن ابن عامر",
+                "الكسائي",
+                "رويس عن يعقوب"
+              ],
+              "performance": "إشمام الكسرة الضم"
+            },
+            {
+              "reading": "قِيلَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "الكسرة الخالصة"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 4,
+      "pdf_page": 9,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P004-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 20,
+              "base_text": "شَاءَ اللَّهُ"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "شَاءَ اللَّهُ",
+              "attribution_raw": [
+                "نافع",
+                "أبو جعفر",
+                "ابن كثير",
+                "أبو عمرو",
+                "رويس عن يعقوب"
+              ],
+              "performance": "اختلاف أداء الهمزتين؛ يلزم نقل العبارة حرفيًا من المصدر قبل الاعتماد"
+            },
+            {
+              "reading": "شَاءَ اللَّهُ",
+              "attribution_raw": [
+                "باقي الرواة"
+              ],
+              "performance": "تحقيق الهمزتين"
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 5,
+      "pdf_page": 10,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P005-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 28,
+              "base_text": "تُرْجَعُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "تَرْجِعُونَ",
+              "attribution_raw": [
+                "يعقوب"
+              ],
+              "performance": "فتح التاء وكسر الجيم؛ بناء للفاعل"
+            },
+            {
+              "reading": "تُرْجَعُونَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "ضم التاء وفتح الجيم؛ بناء للمفعول"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 6,
+      "pdf_page": 11,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P006-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 34,
+              "base_text": "الْمَلَائِكَةِ"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "الْمَلَائِكَةُ",
+              "attribution_raw": [
+                "أبو جعفر"
+              ]
+            },
+            {
+              "reading": "الْمَلَائِكَةِ",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P006-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 36,
+              "base_text": "فَأَزَلَّهُمَا"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "فَأَزَالَهُمَا",
+              "attribution_raw": [
+                "حمزة"
+              ]
+            },
+            {
+              "reading": "فَأَزَلَّهُمَا",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P006-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 37,
+              "base_text": "آدَمُ"
+            },
+            {
+              "surah": 2,
+              "ayah": 37,
+              "base_text": "كَلِمَاتٍ"
+            }
+          ],
+          "type": "multi_word_variant",
+          "variants": [
+            {
+              "reading": "آدَمَ … كَلِمَاتٌ",
+              "attribution_raw": [
+                "ابن كثير"
+              ]
+            },
+            {
+              "reading": "آدَمُ … كَلِمَاتٍ",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 7,
+      "pdf_page": 12,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P007-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 38,
+              "base_text": "خَوْفٌ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "خَوْفَ",
+              "attribution_raw": [
+                "يعقوب"
+              ],
+              "performance": "فتح الفاء وحذف التنوين"
+            },
+            {
+              "reading": "خَوْفٌ",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P007-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 48,
+              "base_text": "يُقْبَلُ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "تُقْبَلُ",
+              "attribution_raw": [
+                "ابن كثير",
+                "أبو عمرو",
+                "يعقوب"
+              ]
+            },
+            {
+              "reading": "يُقْبَلُ",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 8,
+      "pdf_page": 13,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P008-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 51,
+              "base_text": "وَاعَدْنَا"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "وَعَدْنَا",
+              "attribution_raw": [
+                "أبو عمرو",
+                "أبو جعفر",
+                "يعقوب"
+              ],
+              "performance": "حذف الألف"
+            },
+            {
+              "reading": "وَاعَدْنَا",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "إثبات الألف"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P008-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 54,
+              "base_text": "بَارِئِكُمْ",
+              "occurrence": 1
+            },
+            {
+              "surah": 2,
+              "ayah": 54,
+              "base_text": "بَارِئِكُمْ",
+              "occurrence": 2
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "بَارِئِكُمْ",
+              "attribution_raw": [
+                "السوسي عن أبي عمرو"
+              ],
+              "performance": "إسكان الهمزة"
+            },
+            {
+              "reading": "بَارِئِكُمْ",
+              "attribution_raw": [
+                "الدوري عن أبي عمرو"
+              ],
+              "performance": "الإسكان وله الاختلاس"
+            },
+            {
+              "reading": "بَارِئِكُمْ",
+              "attribution_raw": [
+                "حمزة"
+              ],
+              "performance": "إتمام الكسرة مع حكم الوقف على الهمز"
+            },
+            {
+              "reading": "بَارِئِكُمْ",
+              "attribution_raw": [
+                "الدوري عن الكسائي"
+              ],
+              "performance": "الإمالة مع تحقيق الهمزة"
+            },
+            {
+              "reading": "بَارِئِكُمْ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "إتمام الكسرة وترك الإمالة"
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 9,
+      "pdf_page": 14,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P009-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 58,
+              "base_text": "نَغْفِرْ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يُغْفَرْ",
+              "attribution_raw": [
+                "نافع",
+                "أبو جعفر"
+              ],
+              "performance": "ياء مضمومة وفتح الفاء؛ بناء للمفعول"
+            },
+            {
+              "reading": "تُغْفَرْ",
+              "attribution_raw": [
+                "ابن عامر"
+              ],
+              "performance": "تاء مضمومة وفتح الفاء؛ بناء للمفعول"
+            },
+            {
+              "reading": "نَغْفِرْ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "نون مفتوحة وكسر الفاء؛ بناء للفاعل"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P009-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 59,
+              "base_text": "قِيلَ"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "قِيلَ",
+              "attribution_raw": [
+                "هشام عن ابن عامر",
+                "الكسائي",
+                "رويس عن يعقوب"
+              ],
+              "performance": "إشمام الكسرة الضم"
+            },
+            {
+              "reading": "قِيلَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "الكسرة الخالصة"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P009-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 61,
+              "base_text": "عَلَيْهِمْ"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "عَلَيْهِمُ",
+              "attribution_raw": [
+                "حمزة",
+                "يعقوب"
+              ],
+              "performance": "ضم الهاء مع تفصيل ميم الجمع"
+            },
+            {
+              "reading": "عَلَيْهِمُ",
+              "attribution_raw": [
+                "الكسائي",
+                "خلف العاشر"
+              ],
+              "performance": "أحكام الهاء والميم بحسب الطريق"
+            },
+            {
+              "reading": "عَلَيْهِمْ",
+              "attribution_raw": [
+                "أبو عمرو"
+              ],
+              "performance": "كسر الهاء مع تفصيل ميم الجمع"
+            },
+            {
+              "reading": "عَلَيْهِمْ",
+              "attribution_raw": [
+                "باقي الرواة"
+              ]
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        },
+        {
+          "id": "P009-L004",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 61,
+              "base_text": "النَّبِيِّينَ"
+            }
+          ],
+          "type": "word_and_performance_variant",
+          "variants": [
+            {
+              "reading": "النَّبِيئِينَ",
+              "attribution_raw": [
+                "قالون",
+                "ورش عن نافع"
+              ],
+              "performance": "إثبات الهمزة مع تفصيل المد بحسب الرواية"
+            },
+            {
+              "reading": "النَّبِيِّينَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "بغير همز"
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 10,
+      "pdf_page": 15,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P010-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 62,
+              "base_text": "وَالصَّابِئِينَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "وَالصَّابِينَ",
+              "attribution_raw": [
+                "نافع",
+                "أبو جعفر"
+              ],
+              "performance": "حذف الهمزة"
+            },
+            {
+              "reading": "وَالصَّابِئِينَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "إثبات الهمزة"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P010-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 62,
+              "base_text": "خَوْفٌ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "خَوْفَ",
+              "attribution_raw": [
+                "يعقوب"
+              ],
+              "performance": "فتح الفاء وحذف التنوين"
+            },
+            {
+              "reading": "خَوْفٌ",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P010-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 67,
+              "base_text": "يَأْمُرُكُمْ"
+            }
+          ],
+          "type": "word_and_performance_variant",
+          "variants": [
+            {
+              "reading": "يَامُرُكُمْ",
+              "attribution_raw": [
+                "ورش عن نافع",
+                "أبو جعفر"
+              ],
+              "performance": "إبدال الهمزة ألفًا مع ضم الراء"
+            },
+            {
+              "reading": "يَأْمُرْكُمْ",
+              "attribution_raw": [
+                "الدوري عن أبي عمرو"
+              ],
+              "performance": "تحقيق الهمزة وإسكان الراء وله الاختلاس"
+            },
+            {
+              "reading": "يَامُرْكُمْ",
+              "attribution_raw": [
+                "السوسي عن أبي عمرو"
+              ],
+              "performance": "إبدال الهمزة ألفًا مع إسكان الراء"
+            },
+            {
+              "reading": "يَأْمُرُكُمْ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "تحقيق الهمزة وضم الراء"
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        },
+        {
+          "id": "P010-L004",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 67,
+              "base_text": "هُزُوًا"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "هُزُوًا",
+              "attribution_raw": [
+                "حفص عن عاصم"
+              ],
+              "performance": "إبدال الهمزة واوًا مع ضم الزاي"
+            },
+            {
+              "reading": "هُزْؤًا",
+              "attribution_raw": [
+                "حمزة",
+                "خلف العاشر"
+              ],
+              "performance": "إسكان الزاي مع الهمز"
+            },
+            {
+              "reading": "هُزُؤًا",
+              "attribution_raw": [
+                "باقي الرواة"
+              ],
+              "performance": "ضم الزاي مع إثبات الهمز"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 11,
+      "pdf_page": 16,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P011-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 74,
+              "base_text": "فَهِيَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "فَهْيَ",
+              "attribution_raw": [
+                "قالون عن نافع",
+                "أبو عمرو",
+                "الكسائي",
+                "أبو جعفر"
+              ],
+              "performance": "إسكان الهاء"
+            },
+            {
+              "reading": "فَهِيَ",
+              "attribution_raw": [
+                "ورش عن نافع",
+                "ابن كثير",
+                "ابن عامر",
+                "عاصم",
+                "حمزة",
+                "يعقوب",
+                "خلف العاشر"
+              ],
+              "performance": "كسر الهاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P011-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 74,
+              "base_text": "تَعْمَلُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يَعْمَلُونَ",
+              "attribution_raw": [
+                "ابن كثير"
+              ],
+              "performance": "بالياء"
+            },
+            {
+              "reading": "تَعْمَلُونَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "بالتاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 12,
+      "pdf_page": 17,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P012-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 78,
+              "base_text": "أَمَانِيَّ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "أَمَانِيَ",
+              "attribution_raw": [
+                "أبو جعفر"
+              ],
+              "performance": "تخفيف الياء"
+            },
+            {
+              "reading": "أَمَانِيَّ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "تشديد الياء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P012-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 81,
+              "base_text": "خَطِيئَتُهُ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "خَطِيئَاتُهُ",
+              "attribution_raw": [
+                "نافع",
+                "أبو جعفر"
+              ],
+              "performance": "الجمع"
+            },
+            {
+              "reading": "خَطِيئَتُهُ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "الإفراد"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P012-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 83,
+              "base_text": "تَعْبُدُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يَعْبُدُونَ",
+              "attribution_raw": [
+                "ابن كثير",
+                "حمزة",
+                "الكسائي"
+              ],
+              "performance": "بالياء"
+            },
+            {
+              "reading": "تَعْبُدُونَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "بالتاء"
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        },
+        {
+          "id": "P012-L004",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 83,
+              "base_text": "حُسْنًا"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "حَسَنًا",
+              "attribution_raw": [
+                "حمزة",
+                "الكسائي",
+                "يعقوب",
+                "خلف العاشر"
+              ]
+            },
+            {
+              "reading": "حُسْنًا",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 13,
+      "pdf_page": 18,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P013-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 85,
+              "base_text": "تَظَاهَرُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "تَظَاهَرُونَ",
+              "attribution_raw": [
+                "عاصم",
+                "حمزة",
+                "الكسائي",
+                "خلف العاشر"
+              ],
+              "performance": "تخفيف الظاء"
+            },
+            {
+              "reading": "تَظَّاهَرُونَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "تشديد الظاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P013-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 85,
+              "base_text": "عَلَيْهِمْ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "عَلَيْهِمُ",
+              "attribution_raw": [
+                "حمزة",
+                "يعقوب"
+              ],
+              "performance": "ضم هاء الضمير"
+            },
+            {
+              "reading": "عَلَيْهِمْ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "كسر الهاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P013-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 85,
+              "base_text": "أُسَارَى"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "أَسْرَى",
+              "attribution_raw": [
+                "حمزة"
+              ]
+            },
+            {
+              "reading": "أُسَارَى",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P013-L004",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 85,
+              "base_text": "تُفَادُوهُمْ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "تُفَادُوهُمْ",
+              "attribution_raw": [
+                "نافع",
+                "عاصم",
+                "الكسائي",
+                "أبو جعفر",
+                "يعقوب"
+              ]
+            },
+            {
+              "reading": "تَفْدُوهُمْ",
+              "attribution_raw": [
+                "ابن كثير",
+                "أبو عمرو",
+                "ابن عامر",
+                "حمزة",
+                "خلف العاشر"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P013-L005",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 85,
+              "base_text": "وَهُوَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "وَهْوَ",
+              "attribution_raw": [
+                "قالون عن نافع",
+                "أبو عمرو",
+                "الكسائي",
+                "أبو جعفر"
+              ],
+              "performance": "إسكان الهاء"
+            },
+            {
+              "reading": "وَهُوَ",
+              "attribution_raw": [
+                "ورش عن نافع",
+                "ابن كثير",
+                "ابن عامر",
+                "عاصم",
+                "حمزة",
+                "يعقوب",
+                "خلف العاشر"
+              ],
+              "performance": "ضم الهاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P013-L006",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 85,
+              "base_text": "تَعْمَلُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يَعْمَلُونَ",
+              "attribution_raw": [
+                "نافع",
+                "ابن كثير",
+                "شعبة عن عاصم",
+                "يعقوب",
+                "خلف العاشر"
+              ],
+              "performance": "بالياء"
+            },
+            {
+              "reading": "تَعْمَلُونَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "بالتاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P013-L007",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 87,
+              "base_text": "الْقُدُسِ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "الْقُدْسِ",
+              "attribution_raw": [
+                "ابن كثير"
+              ],
+              "performance": "إسكان الدال"
+            },
+            {
+              "reading": "الْقُدُسِ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "ضم الدال"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 14,
+      "pdf_page": 19,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P014-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 90,
+              "base_text": "يُنَزِّلَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يُنْزِلَ",
+              "attribution_raw": [
+                "ابن كثير",
+                "أبو عمرو",
+                "يعقوب"
+              ],
+              "performance": "إسكان النون وتخفيف الزاي"
+            },
+            {
+              "reading": "يُنَزِّلَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "فتح النون وتشديد الزاي"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P014-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 91,
+              "base_text": "قِيلَ"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "قِيلَ",
+              "attribution_raw": [
+                "هشام عن ابن عامر",
+                "الكسائي",
+                "رويس عن يعقوب"
+              ],
+              "performance": "إشمام كسرة القاف ضمًا"
+            },
+            {
+              "reading": "قِيلَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "الكسرة الخالصة"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P014-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 91,
+              "base_text": "وَهُوَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "وَهْوَ",
+              "attribution_raw": [
+                "قالون عن نافع",
+                "أبو عمرو",
+                "الكسائي",
+                "أبو جعفر"
+              ],
+              "performance": "إسكان الهاء"
+            },
+            {
+              "reading": "وَهُوَ",
+              "attribution_raw": [
+                "ورش عن نافع",
+                "ابن كثير",
+                "ابن عامر",
+                "عاصم",
+                "حمزة",
+                "يعقوب",
+                "خلف العاشر"
+              ],
+              "performance": "ضم الهاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P014-L004",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 93,
+              "base_text": "يَأْمُرُكُمْ"
+            }
+          ],
+          "type": "word_and_performance_variant",
+          "variants": [
+            {
+              "reading": "يَامُرُكُمْ",
+              "attribution_raw": [
+                "ورش عن نافع",
+                "أبو جعفر"
+              ],
+              "performance": "إبدال الهمزة ألفًا"
+            },
+            {
+              "reading": "يَأْمُرْكُمْ",
+              "attribution_raw": [
+                "الدوري عن أبي عمرو"
+              ],
+              "performance": "تحقيق الهمزة مع إسكان الراء وله الاختلاس"
+            },
+            {
+              "reading": "يَامُرْكُمْ",
+              "attribution_raw": [
+                "السوسي عن أبي عمرو"
+              ],
+              "performance": "إبدال الهمزة ألفًا مع إسكان الراء"
+            },
+            {
+              "reading": "يَأْمُرُكُمْ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "تحقيق الهمزة وضم الراء"
+            }
+          ],
+          "verification_status": "needs_manual_review"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 15,
+      "pdf_page": 20,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P015-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 96,
+              "base_text": "يَعْمَلُونَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "تَعْمَلُونَ",
+              "attribution_raw": [
+                "يعقوب"
+              ],
+              "performance": "بالتاء"
+            },
+            {
+              "reading": "يَعْمَلُونَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "بالياء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P015-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 97,
+              "base_text": "جِبْرِيلَ"
+            },
+            {
+              "surah": 2,
+              "ayah": 98,
+              "base_text": "جِبْرِيلَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "جِبْرِيلَ",
+              "attribution_raw": [
+                "نافع",
+                "أبو عمرو",
+                "ابن عامر",
+                "حفص عن عاصم",
+                "أبو جعفر",
+                "يعقوب"
+              ]
+            },
+            {
+              "reading": "جَبْرِيلَ",
+              "attribution_raw": [
+                "ابن كثير"
+              ]
+            },
+            {
+              "reading": "جَبْرَئِلَ",
+              "attribution_raw": [
+                "شعبة عن عاصم"
+              ]
+            },
+            {
+              "reading": "جَبْرَئِيلَ",
+              "attribution_raw": [
+                "حمزة",
+                "الكسائي",
+                "خلف العاشر"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P015-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 98,
+              "base_text": "مِيكَالَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "مِيكَائِلَ",
+              "attribution_raw": [
+                "نافع",
+                "أبو جعفر"
+              ]
+            },
+            {
+              "reading": "مِيكَالَ",
+              "attribution_raw": [
+                "أبو عمرو",
+                "حفص عن عاصم",
+                "يعقوب"
+              ]
+            },
+            {
+              "reading": "مِيكَائِيلَ",
+              "attribution_raw": [
+                "ابن كثير",
+                "ابن عامر",
+                "شعبة عن عاصم",
+                "حمزة",
+                "الكسائي",
+                "خلف العاشر"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 16,
+      "pdf_page": 21,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P016-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 102,
+              "base_text": "وَلَكِنَّ"
+            },
+            {
+              "surah": 2,
+              "ayah": 102,
+              "base_text": "الشَّيَاطِينَ"
+            }
+          ],
+          "type": "multi_word_variant",
+          "variants": [
+            {
+              "reading": "وَلَكِنِ … الشَّيَاطِينُ",
+              "attribution_raw": [
+                "ابن عامر",
+                "حمزة",
+                "الكسائي",
+                "خلف العاشر"
+              ],
+              "performance": "تخفيف نون لكن وكسرها في الوصل ورفع الشياطين"
+            },
+            {
+              "reading": "وَلَكِنَّ … الشَّيَاطِينَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "تشديد نون لكن وفتحها ونصب الشياطين"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P016-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 105,
+              "base_text": "يُنَزَّلَ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "يُنْزَلَ",
+              "attribution_raw": [
+                "ابن كثير",
+                "أبو عمرو",
+                "يعقوب"
+              ],
+              "performance": "إسكان النون وتخفيف الزاي"
+            },
+            {
+              "reading": "يُنَزَّلَ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "فتح النون وتشديد الزاي"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 17,
+      "pdf_page": 22,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P017-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 106,
+              "base_text": "نَنْسَخْ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "نُنْسِخْ",
+              "attribution_raw": [
+                "ابن عامر"
+              ],
+              "performance": "ضم النون الأولى وكسر السين"
+            },
+            {
+              "reading": "نَنْسَخْ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "فتح النون الأولى والسين"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P017-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 106,
+              "base_text": "نُنْسِهَا"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "نَنْسَأْهَا",
+              "attribution_raw": [
+                "ابن كثير",
+                "أبو عمرو"
+              ]
+            },
+            {
+              "reading": "نُنْسِهَا",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P017-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 111,
+              "base_text": "أَمَانِيُّهُمْ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "أَمَانِيهِمْ",
+              "attribution_raw": [
+                "أبو جعفر"
+              ]
+            },
+            {
+              "reading": "أَمَانِيُّهُمْ",
+              "attribution_raw": [
+                "الباقون"
+              ]
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P017-L004",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 112,
+              "base_text": "وَهُوَ"
+            }
+          ],
+          "type": "word_and_performance_variant",
+          "variants": [
+            {
+              "reading": "وَهْوَ",
+              "attribution_raw": [
+                "قالون عن نافع",
+                "أبو عمرو",
+                "الكسائي",
+                "أبو جعفر"
+              ],
+              "performance": "إسكان الهاء"
+            },
+            {
+              "reading": "وَهُوَ",
+              "attribution_raw": [
+                "يعقوب"
+              ],
+              "performance": "ضم الهاء وله الوقف بهاء السكت"
+            },
+            {
+              "reading": "وَهُوَ",
+              "attribution_raw": [
+                "باقي الرواة"
+              ],
+              "performance": "ضم الهاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P017-L005",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 112,
+              "base_text": "خَوْفٌ"
+            },
+            {
+              "surah": 2,
+              "ayah": 112,
+              "base_text": "عَلَيْهِمْ"
+            }
+          ],
+          "type": "multi_word_variant",
+          "variants": [
+            {
+              "reading": "خَوْفٌ … عَلَيْهِمْ",
+              "attribution_raw": [
+                "نافع",
+                "ابن كثير",
+                "أبو عمرو",
+                "ابن عامر",
+                "عاصم",
+                "الكسائي",
+                "أبو جعفر",
+                "خلف العاشر"
+              ]
+            },
+            {
+              "reading": "خَوْفٌ … عَلَيْهِمُ",
+              "attribution_raw": [
+                "حمزة"
+              ]
+            },
+            {
+              "reading": "خَوْفَ … عَلَيْهِمُ",
+              "attribution_raw": [
+                "يعقوب"
+              ],
+              "performance": "فتح خوف بلا تنوين وضم هاء الضمير"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 18,
+      "pdf_page": 23,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P018-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 116,
+              "base_text": "وَقَالُوا"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "قَالُوا",
+              "attribution_raw": [
+                "ابن عامر"
+              ],
+              "performance": "حذف الواو"
+            },
+            {
+              "reading": "وَقَالُوا",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "إثبات الواو"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P018-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 117,
+              "base_text": "فَيَكُونُ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "فَيَكُونَ",
+              "attribution_raw": [
+                "ابن عامر"
+              ],
+              "performance": "نصب النون"
+            },
+            {
+              "reading": "فَيَكُونُ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "رفع النون"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P018-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 119,
+              "base_text": "وَلَا تُسْأَلُ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "وَلَا تَسْأَلْ",
+              "attribution_raw": [
+                "نافع",
+                "يعقوب"
+              ],
+              "performance": "فتح التاء وجزم اللام"
+            },
+            {
+              "reading": "وَلَا تُسْأَلُ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "ضم التاء ورفع اللام"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 19,
+      "pdf_page": 24,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P019-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 125,
+              "base_text": "إِبْرَاهِيم",
+              "occurrence": 1
+            },
+            {
+              "surah": 2,
+              "ayah": 125,
+              "base_text": "إِبْرَاهِيم",
+              "occurrence": 2
+            },
+            {
+              "surah": 2,
+              "ayah": 126,
+              "base_text": "إِبْرَاهِيم"
+            }
+          ],
+          "type": "multi_target_word_variant",
+          "variants": [
+            {
+              "reading": "إِبْرَاهِيم",
+              "attribution_raw": [
+                "جميع القراء عدا ابن عامر، مع أحد وجهي ابن ذكوان"
+              ],
+              "performance": "بالياء"
+            },
+            {
+              "reading": "إِبْرَاهَام",
+              "attribution_raw": [
+                "ابن عامر، والوجه الآخر لابن ذكوان"
+              ],
+              "performance": "بالألف"
+            }
+          ],
+          "verification_status": "needs_manual_review",
+          "review_note": "يجب حفظ وجه ابن ذكوان كطريق/وجه مستقل وعدم اختزاله إلى نسبة عامة."
+        },
+        {
+          "id": "P019-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 125,
+              "base_text": "وَاتَّخِذُوا"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "وَاتَّخِذُوا",
+              "attribution_raw": [
+                "ابن كثير",
+                "أبو عمرو",
+                "عاصم",
+                "حمزة",
+                "الكسائي",
+                "أبو جعفر",
+                "يعقوب",
+                "خلف العاشر"
+              ],
+              "performance": "كسر الخاء"
+            },
+            {
+              "reading": "وَاتَّخَذُوا",
+              "attribution_raw": [
+                "نافع",
+                "ابن عامر"
+              ],
+              "performance": "فتح الخاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        },
+        {
+          "id": "P019-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 126,
+              "base_text": "فَأُمَتِّعُهُ"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "فَأُمْتِعُهُ",
+              "attribution_raw": [
+                "ابن عامر"
+              ],
+              "performance": "إسكان الميم وتخفيف التاء المكسورة"
+            },
+            {
+              "reading": "فَأُمَتِّعُهُ",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "فتح الميم وتشديد التاء"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    },
+    {
+      "mushaf_page": 20,
+      "pdf_page": 25,
+      "surah": 2,
+      "QIRAAT_VARIANTS_REGION": [
+        {
+          "id": "P020-L001",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 127,
+              "base_text": "إِبْرَاهِيم"
+            },
+            {
+              "surah": 2,
+              "ayah": 130,
+              "base_text": "إِبْرَاهِيم"
+            },
+            {
+              "surah": 2,
+              "ayah": 132,
+              "base_text": "إِبْرَاهِيم"
+            },
+            {
+              "surah": 2,
+              "ayah": 133,
+              "base_text": "إِبْرَاهِيم"
+            }
+          ],
+          "type": "multi_target_word_variant",
+          "variants": [
+            {
+              "reading": "إِبْرَاهِيم",
+              "attribution_raw": [
+                "جميع القراء عدا ابن عامر، مع أحد وجهي ابن ذكوان"
+              ],
+              "performance": "بالياء"
+            },
+            {
+              "reading": "إِبْرَاهَام",
+              "attribution_raw": [
+                "ابن عامر، والوجه الآخر لابن ذكوان"
+              ],
+              "performance": "بالألف"
+            }
+          ],
+          "verification_status": "needs_manual_review",
+          "review_note": "احفظ وجه ابن ذكوان كوجه/طريق مستقل."
+        },
+        {
+          "id": "P020-L002",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 128,
+              "base_text": "وَأَرِنَا"
+            }
+          ],
+          "type": "performance_variant",
+          "variants": [
+            {
+              "reading": "وَأَرْنَا",
+              "attribution_raw": [
+                "ابن كثير",
+                "السوسي عن أبي عمرو",
+                "يعقوب"
+              ],
+              "performance": "إسكان الراء"
+            },
+            {
+              "reading": "وَأَرِنَا",
+              "attribution_raw": [
+                "الدوري عن أبي عمرو"
+              ],
+              "performance": "اختلاس كسرة الراء"
+            },
+            {
+              "reading": "وَأَرِنَا",
+              "attribution_raw": [
+                "الباقون"
+              ],
+              "performance": "إتمام كسرة الراء"
+            }
+          ],
+          "verification_status": "needs_manual_review",
+          "review_note": "الاختلاس صفة أداء ولا يكفي تمثيله بنص Unicode مختلف."
+        },
+        {
+          "id": "P020-L003",
+          "targets": [
+            {
+              "surah": 2,
+              "ayah": 132,
+              "base_text": "وَوَصَّى"
+            }
+          ],
+          "type": "word_variant",
+          "variants": [
+            {
+              "reading": "وَوَصَّى",
+              "attribution_raw": [
+                "ابن كثير",
+                "أبو عمرو",
+                "عاصم",
+                "حمزة",
+                "الكسائي",
+                "يعقوب",
+                "خلف العاشر"
+              ],
+              "performance": "تشديد الصاد"
+            },
+            {
+              "reading": "وَأَوْصَى",
+              "attribution_raw": [
+                "نافع",
+                "ابن عامر",
+                "أبو جعفر"
+              ],
+              "performance": "همزة مفتوحة بين الواوين وتخفيف الصاد"
+            }
+          ],
+          "verification_status": "reviewed"
+        }
+      ],
+      "RULES_TABLE_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      },
+      "FAWAID_REGION": {
+        "entries": [],
+        "verification_status": "needs_high_resolution_transcription"
+      }
+    }
+  ]
+}

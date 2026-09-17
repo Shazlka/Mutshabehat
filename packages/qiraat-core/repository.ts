@@ -29,6 +29,16 @@ const PAGE_VARIANT_LOADERS: Record<number, PageVariantsLoader> = {
   8: () => import('./fixtures/pages/page-008.json') as unknown as Promise<PageVariantsModule>,
   9: () => import('./fixtures/pages/page-009.json') as unknown as Promise<PageVariantsModule>,
   10: () => import('./fixtures/pages/page-010.json') as unknown as Promise<PageVariantsModule>,
+  11: () => import('./fixtures/pages/page-011.json') as unknown as Promise<PageVariantsModule>,
+  12: () => import('./fixtures/pages/page-012.json') as unknown as Promise<PageVariantsModule>,
+  13: () => import('./fixtures/pages/page-013.json') as unknown as Promise<PageVariantsModule>,
+  14: () => import('./fixtures/pages/page-014.json') as unknown as Promise<PageVariantsModule>,
+  15: () => import('./fixtures/pages/page-015.json') as unknown as Promise<PageVariantsModule>,
+  16: () => import('./fixtures/pages/page-016.json') as unknown as Promise<PageVariantsModule>,
+  17: () => import('./fixtures/pages/page-017.json') as unknown as Promise<PageVariantsModule>,
+  18: () => import('./fixtures/pages/page-018.json') as unknown as Promise<PageVariantsModule>,
+  19: () => import('./fixtures/pages/page-019.json') as unknown as Promise<PageVariantsModule>,
+  20: () => import('./fixtures/pages/page-020.json') as unknown as Promise<PageVariantsModule>,
 }
 
 export class FixtureQiraatRepository implements QiraatRepository {
