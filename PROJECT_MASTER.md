@@ -310,3 +310,87 @@ key is server-only.
 - **Secrets:** only in files, never in chat or git: app `.env.local` (dev → self-host), backend `.env`, `.secrets.json`,
   `.autologin-password.txt`. Production values live in Vercel env vars. Read values only when a task needs them, and never print them.
 - **Stale data:** `.env.local.supabase-cloud.bak` points at the retired cloud project. Don't use it.
+
+---
+
+## 12. Qiraat Ashr: the import process for the remaining Mushaf pages
+
+**Read this before importing any page beyond 20.** Pages 1–20 are done and live; this section is the
+repeatable recipe for 21–604, written so the next session does not have to rediscover it. The
+architecture behind it is `docs/qiraat/10-v2-architecture-plan.md`; this is the operating procedure.
+
+### 12.1 Where everything lives
+
+| Thing | Path |
+|---|---|
+| Token matcher (anchors every locus to a real Mushaf word) | `scripts/qiraat/tokens.py` |
+| Arabic name → canonical Q-ID, with the ambiguity guards | `scripts/qiraat/authorities.py` |
+| The الأوجه tables (variants), page by page | `scripts/qiraat/data_variants.py` |
+| The جدول الصفحة (أصول rulings), page by page | `scripts/qiraat/data_rulings.py` |
+| Generators (write the fixtures, enforce the invariants) | `scripts/qiraat/build_variants.py`, `build_rulings.py` |
+| Dataset linter (no dev deps) | `scripts/validate-qiraat-data.mjs` — `npm run qiraat:validate` |
+| Generated variant fixtures | `packages/qiraat-core/fixtures/pages/page-NNN.json` |
+| Generated ruling fixtures | `packages/qiraat-core/fixtures/rulings/page-NNN.json` |
+| Postgres schema (written + tested, NOT applied) | `supabase/migrations/20260917120000_qiraat_v2_schema.sql` |
+
+### 12.2 The loop for one batch of pages
+
+1. **Transcribe the source page into the data files.** Add a `PAGES[n]` entry to `data_variants.py`
+   (the الأوجه table) and a `RULINGS[n]` entry to `data_rulings.py` (the جدول الصفحة). Include
+   الشواهد via `ev=[...]` and any صندوق الملاحظات text via `note=`.
+2. **Run the generators.** `python3 scripts/qiraat/build_variants.py && python3 scripts/qiraat/build_rulings.py`.
+   They fail loudly rather than emitting bad data — fix what they report, do not work around it.
+3. **Wire the page in** — one line each in `PAGE_VARIANT_LOADERS` and `PAGE_RULING_LOADERS`
+   (`packages/qiraat-core/repository.ts`). Nothing else changes; the API and UI are page-count-agnostic.
+4. **Lint the dataset.** `npm run qiraat:validate`.
+5. **Test + build.** `npm run test:qiraat`, `npx tsc --noEmit -p .`, `npm run mushaf:validate`,
+   `env -u __NEXT_PROCESSED_ENV npx next build`.
+6. **Review in the app.** Burger/sidebar → «مراجعة المواضع المستوردة», walk the page, export the
+   verdicts as JSON. Only a locus confirmed against the paper original may ever be promoted past
+   `REVIEWED`.
+
+### 12.3 Rules that are not negotiable
+
+- **Never hand-type `baseText`.** It always comes from `tokens.find()`, i.e. verbatim from the real
+  Mushaf-1441 word fixtures. Hand-typing silently reorders combining marks and produces spans that
+  match nothing at render time. The generator and the linter both enforce this.
+- **Never write a bare `خلف`.** It is two different people: the narrator خلف عن حمزة (`Q06-R01`)
+  and the reader خلف العاشر (`Q10`). `authorities.py` refuses to resolve it — write `KHALAF_HAMZA`
+  or `KHALAF10`. Same for `الدوري` → `DURI_AMR` / `DURI_KISAI`.
+  Rule of thumb from the source's own layout: inside ترك الغنة and وقف حمزة, «لخلف» is the narrator;
+  in a list that already names حمزة separately, it is خلف العاشر.
+- **A rule is written once but never auto-applied.** Every occurrence is its own verified record,
+  because the rule genuinely does not hold at every position (وقفًا vs وصلًا, ميم الجمع before a
+  vowel, …). Never expand a rule across the Quran automatically.
+- **Never infer "performance-only" from normalised text equality.** Normalisation strips harakat, so
+  عَلَيْهِمْ and عَلَيْهُمْ compare equal and a real, visible difference gets erased. It is decided
+  from the source's own wording (إشمام / اختلاس / سكت). This bug shipped once and was caught by the
+  baseline invariant — do not reintroduce it.
+- **Nothing reaches `VERIFIED` without a human reading the paper original.** The import ships at
+  `REVIEWED`; RLS and `PUBLIC_VERIFICATION_STATUSES` keep that out of the ordinary reader's view.
+
+### 12.4 Invariants the generators enforce (and what each one caught)
+
+| Invariant | Why it exists |
+|---|---|
+| The baseline وجه must contain حفص **and** its text must equal what the Mushaf prints | Caught three loci where the source's أوجه rows are **swapped** (2:9 يخدعون، 2:81 خطيئته، 2:111 أمانيهم) |
+| A variant locus must partition all 20 Riwayat exactly once | Caught 2:83 تعبدون (حمزة/الكسائي in both أوجه، يعقوب missing) and 2:93 قلوبهم العجل (خلف in two of three) |
+| Every anchor must be a real word on that page | Caught ~20 query spellings that did not exist in the mushaf (أمانيكم for أمانيهم, وتستحيون for ويستحيون …) |
+| No reading claimed twice at the **same token** | Note: a grouped locus spans several words (2:37 آدم+كلمات), where one reader legitimately differs at each — the check is per token, not per locus |
+| One usul family = exactly one colour, dataset-wide | Keeps the page legible as categories grow |
+| `hasAlternate` must agree with its readings | Keeps the ذو وجهين marker honest |
+
+### 12.5 Known defects carried from the pages 1–20 source
+
+Held at `NEEDS_MANUAL_REVIEW` with the reason recorded; resolve against the paper original:
+2:83 تعبدون، 2:93 قلوبهم العجل، 2:105 ينزل (أبو جعفر unattributed), plus ~15 `؟` markers the
+extractor flagged on pages 9, 11, 16 and 19, and page 8's corrupted ﴿وَعَٰدْنَا﴾ header.
+The extraction was made visually at 150 dpi with a scrambled text layer — treat every page as
+suspect until checked.
+
+### 12.6 Moving to Postgres (Phase A, not yet done)
+
+Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the
+Mac Mini is offline). Postgres becomes the authoring/QA source of truth: apply the migration after a
+`pg_dump` backup, then generate the same fixtures from `qiraat_export_page()`. See
+`docs/qiraat/10-v2-architecture-plan.md` §4 and §8.

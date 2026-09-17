@@ -25,7 +25,7 @@ import {
 } from '../../../../packages/mutshabehat-core/mushafLinkAdapter'
 import { SAMPLE_MUTSHABEHAT_LINK_SOURCE } from '../../../../packages/mutshabehat-core/sampleMushafLinks'
 import { getQiraatVariantsByAyahKey } from '../../../../packages/qiraat-core/qiraatAdapter'
-import { defaultQiraatRepository } from '../../../../packages/qiraat-core/repository'
+import { defaultQiraatRepository, variantsForToken } from '../../../../packages/qiraat-core/repository'
 import { attributionLabelsAr, readingsNotIn } from '../../../../packages/qiraat-core/attribution'
 import { getReading, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
@@ -44,6 +44,17 @@ const EMPTY_QIRAAT_RULINGS: QiraatRuling[] = []
 // original. The import ships everything at REVIEWED; this is how a locus earns VERIFIED.
 const QIRAAT_REVIEW_STORAGE_KEY = 'mushaf1441:qiraat-review:v1'
 type QiraatReviewVerdict = 'confirmed' | 'rejected'
+
+// Mutshabehat highlighting is a per-device choice, independent of the Qiraat layer, so a reader can
+// look at ONE of them at a time instead of both colour systems fighting over the same words.
+const MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY = 'mushaf1441:mutshabehat-highlight:v1'
+
+/** What the permanent Qiraat sidebar is currently explaining. */
+interface QiraatSelection {
+  word: MushafWord
+  rulings: QiraatRuling[]
+  variants: QiraatVariant[]
+}
 
 /** A locus key that is stable across rebuilds: position, not record id. */
 function qiraatLocusKey(surah: number, ayah: number, token: number): string {
@@ -479,6 +490,11 @@ export default function Mushaf1441Viewer({
   const [qiraatDisabledCategories, setQiraatDisabledCategories] = useState<string[]>([])
   // Location-review mode (Part: "confirm the locations after import").
   const [qiraatReviewMode, setQiraatReviewMode] = useState(false)
+  // What the permanent sidebar explains: set by clicking any Qiraat/أصول-marked word. Deliberately
+  // NOT part of any MushafPageSlot prop, so selecting a word never re-renders a page slot and the
+  // ~1 ms page-turn invariant holds (same rule as hoveredAyahKey / hoveredQiraatWord).
+  const [qiraatSelection, setQiraatSelection] = useState<QiraatSelection | null>(null)
+  const [mutshabehatHighlightEnabled, setMutshabehatHighlightEnabled] = useState(true)
   const [qiraatReview, setQiraatReview] = useState<Record<string, QiraatReviewVerdict>>({})
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
@@ -642,6 +658,23 @@ export default function Mushaf1441Viewer({
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [contextMenu])
+
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY)
+      if (raw !== null) setMutshabehatHighlightEnabled(raw === '1')
+    } catch { /* storage unavailable — default stays on */ }
+  }, [])
+
+  function toggleMutshabehatHighlight() {
+    setMutshabehatHighlightEnabled((current) => {
+      const next = !current
+      try {
+        window.localStorage.setItem(MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY, next ? '1' : '0')
+      } catch { /* ignore */ }
+      return next
+    })
+  }
 
   // Location-review verdicts are per-device (localStorage), like the other reader preferences.
   // Wrapped in try/catch: private windows and blocked site data make these throw.
@@ -832,7 +865,10 @@ export default function Mushaf1441Viewer({
     return map
   }, [allMutshabehatHighlights])
   // Only the offline sample source is page-scoped; the real link list is session-wide.
-  const slotHighlightByAyahKey = mutshabehatLinkEnabled ? allHighlightByAyahKey : mutshabehatHighlightByAyahKey
+  const slotHighlightByAyahKeyRaw = mutshabehatLinkEnabled ? allHighlightByAyahKey : mutshabehatHighlightByAyahKey
+  // One switch, one colour system: with the highlight off the page shows only the Qiraat layer.
+  const EMPTY_HIGHLIGHTS = useMemo(() => new Map<string, MutshabehatAyahLink>(), [])
+  const slotHighlightByAyahKey = mutshabehatHighlightEnabled ? slotHighlightByAyahKeyRaw : EMPTY_HIGHLIGHTS
   const slotAnnotationsByWordId = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
     for (const annotation of annotations) {
@@ -876,6 +912,10 @@ export default function Mushaf1441Viewer({
   function qiraatVariantsForPage(pageNo: number): QiraatVariant[] {
     return qiraatView.variantsByPage[`${pageNo}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_VARIANTS
   }
+
+  // The sidebar is a landscape/desktop affordance and only earns its width once the Qiraat layer
+  // is actually on; on phones and portrait tablets the burger drawer stays the only path.
+  const showQiraatSidebar = isSpread && qiraatMode !== 'normal'
 
   function qiraatRulingsForPage(pageNo: number): QiraatRuling[] {
     return qiraatView.rulingsByPage[`${pageNo}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_RULINGS
@@ -1581,8 +1621,22 @@ export default function Mushaf1441Viewer({
   // Tapping a word carrying Qiraat data opens the same detail panel, straight to its Qiraat tab
   // (Part 13's "tap a word/phrase → bottom sheet"), instead of the notes tab `selectWord` opens.
   function selectWordForQiraat(word: MushafWord) {
-    selectWord(word)
-    setActiveDetailTab('qiraat')
+    // Feed the permanent sidebar (desktop / iPad landscape) with everything anchored to this token:
+    // the أوجه that change the rasm AND the أصول rulings that only change how it is performed.
+    const rulings = rulingMarkerForWord(
+      qiraatRulingsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
+      qiraatView.filter,
+    )?.rulings ?? []
+    const variants = variantsForToken(
+      qiraatVariantsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
+      { includeUnpublished: qiraatView.includeReviewed },
+    )
+    setQiraatSelection({ word, rulings, variants })
+    // The drawer/detail panel stays the mobile path, where there is no room for a sidebar.
+    if (!isSpread) {
+      selectWord(word)
+      setActiveDetailTab('qiraat')
+    }
   }
 
   function openMutshabehatPopup(ayahKey: string) {
@@ -3249,6 +3303,163 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  /** One authority (reader OR narrator, whichever level the source used) as a coloured pill. */
+  function renderAuthorityPill(authorityId: string, key: string) {
+    const isNarrator = authorityId.includes('-')
+    const color = isNarrator ? narratorColor(authorityId as ReadingId) : readerColor(authorityId as never)
+    const name = isNarrator
+      ? `الراوي ${getNarrator(authorityId as ReadingId).nameAr}`
+      : `الإمام ${getReader(authorityId as never).nameArShort}`
+    return (
+      <span
+        key={key}
+        className="inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-bold"
+        style={{ borderColor: color, background: `color-mix(in srgb, ${color} 12%, white)`, color }}
+      >
+        <span aria-hidden="true" style={{ width: 7, height: 7, borderRadius: 9999, background: color }} />
+        {name}
+      </span>
+    )
+  }
+
+  /**
+   * The sidebar's answer to "what is going on with this word?": for every أصول ruling on it, HOW it
+   * is read (the action, e.g. إمالة / تقليل / ترقيق الراء) and WHO reads it that way — grouped by
+   * action, because one word routinely carries two different actions by two different groups.
+   */
+  function renderQiraatSelection() {
+    if (!qiraatSelection) {
+      return (
+        <p className="rounded-lg border border-dashed border-[#d7c7a7] bg-[#fffdf8] p-3 text-xs leading-6 text-[#8b7f6a]">
+          اضغط على أي كلمة ملوَّنة في الصفحة ليظهر هنا بيانُ حكمها: كيف تُقرأ، ولمن.
+        </p>
+      )
+    }
+    const { word, rulings, variants } = qiraatSelection
+    return (
+      <div className="space-y-2.5">
+        <div className="flex items-baseline justify-between gap-2 border-b border-[#eadfc9] pb-2">
+          <span className="text-[11px] font-bold text-[#8b7f6a]" dir="ltr">{word.ayahKey}</span>
+          <span className="font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#171717]">
+            {word.textUthmani}
+          </span>
+        </div>
+
+        {variants.map((variant) => {
+          const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
+          const label = variant.performanceNote ?? DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]
+          return (
+            <div key={variant.id} className="rounded-lg border border-[#e3d6b4] bg-white p-2.5">
+              <div className="mb-1.5 flex items-center justify-between gap-2">
+                <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">{label}</span>
+                <span className="text-[10px] font-bold text-[#8b7f6a]">خلاف في الرسم</span>
+              </div>
+              <p className="text-center font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#7a1f1a]">
+                {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
+              </p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {readerPillsForReadingIds(variant.readingIds).map(renderReaderPill)}
+              </div>
+            </div>
+          )
+        })}
+
+        {rulings.map((ruling) => {
+          // Group by action so "أمالها حمزة والكسائي وخلف، وقلّلها ورش" reads as two lines, not one
+          // flattened list that loses which group does which.
+          const byAction = new Map<string, typeof ruling.attribution>()
+          for (const a of ruling.attribution) {
+            const list = byAction.get(a.action) ?? []
+            list.push(a)
+            byAction.set(a.action, list)
+          }
+          const alternates = ruling.readings.filter((r) => !r.isDefault)
+          return (
+            <div key={ruling.id} className="rounded-lg border p-2.5" style={{ borderColor: ruling.color, background: `color-mix(in srgb, ${ruling.color} 5%, white)` }}>
+              <div className="mb-1.5 flex items-center justify-between gap-2">
+                <span className="rounded-full px-2 py-0.5 text-[10px] font-bold text-white" style={{ background: ruling.color }}>
+                  {ruling.categoryAr}
+                </span>
+                {ruling.condition ? (
+                  <span className="text-[10px] font-bold text-[#8b7f6a]">{ruling.condition}</span>
+                ) : null}
+              </div>
+              {Array.from(byAction.entries()).map(([action, list]) => (
+                <div key={action} className="mb-1.5 last:mb-0">
+                  <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {list.map((a, i) => renderAuthorityPill(a.authorityId, `${ruling.id}-${action}-${i}`))}
+                  </div>
+                </div>
+              ))}
+              {ruling.text ? <p className="mt-1.5 text-[11px] leading-6 text-[#665b48]">{ruling.text}</p> : null}
+              {alternates.length > 0 ? (
+                <p className="mt-1.5 rounded bg-[#fdf3d8] px-2 py-1 text-[10px] font-bold text-[#7a5a10]">
+                  ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا
+                </p>
+              ) : null}
+              {ruling.notes ? <p className="mt-1.5 text-[11px] leading-6 text-[#8b7f6a]">{ruling.notes}</p> : null}
+              {ruling.verificationStatus === 'NEEDS_MANUAL_REVIEW' ? (
+                <p className="mt-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
+              ) : null}
+            </div>
+          )
+        })}
+
+        {variants.length === 0 && rulings.length === 0 ? (
+          <p className="text-xs text-[#8b7f6a]">لا توجد أحكام مسجَّلة على هذه الكلمة.</p>
+        ) : null}
+      </div>
+    )
+  }
+
+  /** The permanent Qiraat sidebar — desktop and iPad landscape only (same breakpoint as the spread). */
+  function renderQiraatSidebar() {
+    return (
+      <aside
+        dir="rtl"
+        className="flex w-[330px] shrink-0 flex-col gap-3 overflow-y-auto border-e border-[#d7c7a7] bg-[#f7f0e0] p-3"
+      >
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="text-sm font-black text-[#171717]">القراءات العشر</h2>
+          {qiraatSelection ? (
+            <button
+              type="button"
+              onClick={() => setQiraatSelection(null)}
+              className="rounded border border-[#d7c7a7] px-2 py-0.5 text-[11px] font-bold text-[#80662c] hover:bg-[#fff7df]"
+            >
+              مسح التحديد
+            </button>
+          ) : null}
+        </div>
+
+        <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+          {renderQiraatSelection()}
+        </div>
+
+        <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+          <QiraatToolbar
+            mode={qiraatMode}
+            onModeChange={setQiraatMode}
+            selectedReadingId={qiraatSelectedReadingId}
+            onReadingChange={setQiraatSelectedReadingId}
+            studyMode={qiraatStudyMode}
+            onStudyModeChange={setQiraatStudyMode}
+            showDifferenceFromHafs={qiraatShowDiffFromHafs}
+            onShowDifferenceFromHafsChange={setQiraatShowDiffFromHafs}
+            filter={qiraatFilter}
+            onFilterChange={setQiraatFilter}
+            includeReviewed={qiraatIncludeReviewed}
+            onIncludeReviewedChange={setQiraatIncludeReviewed}
+            onOpenLegend={() => setQiraatLegendOpen(true)}
+          />
+          {renderQiraatUsulPanel()}
+          {renderQiraatRules()}
+        </div>
+      </aside>
+    )
+  }
+
   // أصول panel: one swatch per usul family present on this page, each togglable, plus the
   // location-review controls. The colours come from the data, never from a hardcoded UI map, so a
   // newly-imported category shows up here automatically.
@@ -3591,6 +3802,20 @@ export default function Mushaf1441Viewer({
           </Link>
           <button
             type="button"
+            onClick={toggleMutshabehatHighlight}
+            aria-label={mutshabehatHighlightEnabled ? 'إخفاء تظليل المتشابهات' : 'إظهار تظليل المتشابهات'}
+            aria-pressed={mutshabehatHighlightEnabled}
+            title="المتشابهات"
+            className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
+              mutshabehatHighlightEnabled
+                ? 'border-[#0d7a6f] bg-[#0d7a6f] text-white'
+                : 'border-[#b99b51] text-[#3f3215] hover:bg-[#fff9e9]'
+            }`}
+          >
+            م
+          </button>
+          <button
+            type="button"
             onClick={() => setQiraatMode((current) => (current === 'normal' ? 'comparison' : 'normal'))}
             aria-label={qiraatMode === 'normal' ? 'تفعيل مقارنة القراءات' : 'إيقاف مقارنة القراءات — العودة إلى المصحف العادي'}
             aria-pressed={qiraatMode !== 'normal'}
@@ -3617,6 +3842,11 @@ export default function Mushaf1441Viewer({
           </button>
         </div>
       </header>
+
+      {/* On desktop / iPad landscape the Qiraat panel is a permanent sidebar beside the page
+          instead of living inside the burger drawer; the page re-fits itself via container queries. */}
+      <div className="flex min-h-0 flex-1">
+      {showQiraatSidebar ? renderQiraatSidebar() : null}
 
       {/* The mushaf page fills the screen; drag a page to curl it over */}
       <main
@@ -3699,6 +3929,7 @@ export default function Mushaf1441Viewer({
           </div>
         ) : null}
       </main>
+      </div>
 
       {/* Bottom quick page slider — preview page + surah while dragging, navigate on release */}
       {(() => {
