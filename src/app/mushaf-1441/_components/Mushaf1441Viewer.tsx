@@ -464,9 +464,6 @@ export default function Mushaf1441Viewer({
   const [qcfFontStatus, setQcfFontStatus] = useState<Record<number, QcfFontStatus>>({})
   const qcfFontStatusRef = useRef<Record<number, QcfFontStatus>>({})
   const [selectedSurahNumber, setSelectedSurahNumber] = useState(initialPageMetadata.surahNumbers[0] ?? 1)
-  const [selectedAyahNumber, setSelectedAyahNumber] = useState(
-    Number(initialPageMetadata.firstAyahKey.split(':')[1] ?? 1)
-  )
   const [selectedWord, setSelectedWord] = useState<MushafWord | null>(null)
   const [selectedWordRange, setSelectedWordRange] = useState<{ startWord: MushafWord; endWord: MushafWord } | null>(null)
   const [selectedAyahKey, setSelectedAyahKey] = useState<string | null>(null)
@@ -655,7 +652,6 @@ export default function Mushaf1441Viewer({
     setIsSurahPickerOpen(false)
     setSurahPickerSearch('')
     setSelectedSurahNumber(surah.surahNumber)
-    setSelectedAyahNumber(1)
     if (surah.firstPage) {
       await goToPage(surah.firstPage, `${surah.surahNumber}:1`)
     } else {
@@ -870,8 +866,6 @@ export default function Mushaf1441Viewer({
   const companionPage = hasCompanion ? pageCache[companionPageNumber as number] ?? null : null
   const isQcfFontLoaded = qcfFontStatus[pageNumber] === 'loaded'
   const isQcfFontFailed = qcfFontStatus[pageNumber] === 'error'
-  const selectedSurah = surahOptions.find((surah) => surah.surahNumber === selectedSurahNumber) ?? surahOptions[0]
-  const selectedSurahAyahCount = selectedSurah?.ayahCount ?? 1
   // Mounted page slots: the current page/spread plus its neighbours on each side (computed from the
   // deferred page number, so newly needed neighbours mount after the turn has painted).
   const deferredPageNumber = useDeferredValue(pageNumber)
@@ -1063,7 +1057,10 @@ export default function Mushaf1441Viewer({
 
   // The sidebar is a landscape/desktop affordance and only earns its width once the Qiraat layer
   // is actually on; on phones and portrait tablets the burger drawer stays the only path.
-  const showQiraatSidebar = isSpread && qiraatMode !== 'normal'
+  // The side rail belongs to whichever layer is on, not to Qiraat alone: in متشابهات and
+  // الملاحظات the same real estate shows that layer's panel instead of stealing a modal
+  // over the page. A plain mushaf ('none') keeps the full width for the page.
+  const showReaderSidebar = isSpread && readerLayer !== 'none'
 
   function qiraatRulingsForPage(pageNo: number): QiraatRuling[] {
     return qiraatView.rulingsByPage[`${pageNo}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_RULINGS
@@ -1260,7 +1257,6 @@ export default function Mushaf1441Viewer({
 
   function syncJumpControlsToMetadata(metadata: Mushaf1441PageMetadata) {
     setSelectedSurahNumber(metadata.surahNumbers[0] ?? 1)
-    setSelectedAyahNumber(Number(metadata.firstAyahKey.split(':')[1] ?? 1))
   }
 
   async function goToAyah(surahNumber: number, ayahNumber: number) {
@@ -1269,18 +1265,7 @@ export default function Mushaf1441Viewer({
     if (!response.ok) return
     const data = await response.json() as { pageNumber: number }
     setSelectedSurahNumber(surahNumber)
-    setSelectedAyahNumber(ayahNumber)
     await goToPage(data.pageNumber, ayahKey)
-  }
-
-  async function jumpToSelectedAyah() {
-    const ayahNumber = Math.min(selectedSurahAyahCount, Math.max(1, Math.trunc(Number(selectedAyahNumber))))
-    await goToAyah(selectedSurahNumber, ayahNumber)
-  }
-
-  async function submitAyahJump(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    await jumpToSelectedAyah()
   }
 
   async function loadQcfFontForPage(nextPage: number) {
@@ -1762,7 +1747,9 @@ export default function Mushaf1441Viewer({
     setSelectedAyahKey(target.ayahKey)
     setSelectedWord(isWordTarget(target) ? target.word : isWordRangeTarget(target) ? target.endWord : null)
     setSelectedWordRange(isWordRangeTarget(target) ? { startWord: target.startWord, endWord: target.endWord } : null)
-    setIsMobileNotesOpen(true)
+    // The sheet is for viewports without a rail; where the rail exists it already shows the
+    // editor, and opening a sheet on top of it would hide the page for no reason.
+    setIsMobileNotesOpen(!(isSpread && readerLayer === 'annotations'))
     setMutshabehatPanelAyahKey(hasMutshabehatHighlight ? target.ayahKey : null)
     setAnnotationMode(mode)
     setContextMenu(null)
@@ -1810,9 +1797,16 @@ export default function Mushaf1441Viewer({
   }
 
   function openMutshabehatPopup(ayahKey: string) {
-    setMutshabehatPopupAyahKey(ayahKey)
     setExpandedPopupGroups({})
     setContextMenu(null)
+    // With a rail on screen the links belong in it; a modal over the page would cover the very
+    // ayat the reader is comparing. Phones and portrait tablets keep the card.
+    if (isSpread && readerLayer === 'mutshabehat') {
+      setMutshabehatPanelAyahKey(ayahKey)
+      setMutshabehatPopupAyahKey(null)
+      return
+    }
+    setMutshabehatPopupAyahKey(ayahKey)
   }
 
   function togglePopupGroup(groupId: string) {
@@ -2677,14 +2671,168 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  // The group list for one linked ayah. Shared by the modal (phone / portrait) and the side
+  // rail (desktop / iPad landscape) so the two can never drift apart.
+  function renderMutshabehatGroups(ayahKey: string) {
+    const links = pageHighlights.filter((highlight) => highlight.ayahKey === ayahKey)
+    const groupIds = [...new Set(links.map((link) => link.groupId).filter((id): id is string => Boolean(id)))]
+    return (
+        <div className="space-y-2 overflow-y-auto px-4 py-4">
+          {groupIds.length === 0 ? (
+            <p className="py-6 text-center text-sm text-[#665b48]">لا توجد مجموعة مرتبطة بهذه الآية.</p>
+          ) : groupIds.map((groupId) => {
+            const link = links.find((candidate) => candidate.groupId === groupId)
+            const detail = groupDetails[groupId]
+            const isExpanded = Boolean(expandedPopupGroups[groupId])
+            const detailsId = `mutshabehat-group-${groupId}`
+            return (
+              <article key={groupId} className="overflow-hidden rounded-xl border border-[#eadfc9] bg-[#fffdf8]">
+                <h3>
+                  <button
+                    type="button"
+                    onClick={() => togglePopupGroup(groupId)}
+                    aria-expanded={isExpanded}
+                    aria-controls={detailsId}
+                    className="flex min-h-12 w-full items-center justify-between gap-3 px-3 py-2.5 text-right transition-colors hover:bg-[#fbf5e6]"
+                  >
+                    <span className="flex min-w-0 items-center gap-2 text-[15px] font-black leading-snug text-[#171717]">
+                      <span
+                        aria-hidden="true"
+                        className="block flex-none rounded-full"
+                        style={{
+                          width: 12,
+                          height: 12,
+                          backgroundColor: tintForGroup(groupId).bg,
+                          boxShadow: `inset 0 0 0 1.5px ${tintForGroup(groupId).edge}`,
+                        }}
+                      />
+                      <span className="min-w-0">{link?.title ?? 'مجموعة متشابهات'}</span>
+                    </span>
+                    <span className="flex shrink-0 items-center gap-2 text-[11px] font-bold tabular-nums text-[#80662c]">
+                      {((link?.similarAyat?.length ?? 0) + 1).toLocaleString('ar-EG')} مواضع
+                      <svg
+                        width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
+                        strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+                        className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </span>
+                  </button>
+                </h3>
+                {isExpanded ? (
+                <div id={detailsId} className="space-y-3 border-t border-[#eadfc9] px-3 pb-3 pt-3">
+                {link?.tags && link.tags.length > 0 ? (
+                  <div className="flex flex-wrap gap-1.5">
+                    {link.tags.map((tag) => (
+                      <span key={tag} className="rounded-full bg-[#f4ecd8] px-2 py-0.5 text-[11px] font-bold text-[#6b531f]">{tag}</span>
+                    ))}
+                  </div>
+                ) : null}
+
+                {!detail || detail === 'loading' ? (
+                  <div className="space-y-2" aria-busy="true" aria-label="جارٍ تحميل المواضع">
+                    {[0, 1].map((index) => (
+                      <div key={index} className="h-16 animate-pulse rounded-lg bg-[#f4ecd8]" />
+                    ))}
+                  </div>
+                ) : detail === 'error' ? (
+                  <div className="flex items-center justify-between gap-3 rounded-lg border border-[#c07662] bg-[#fff1ed] px-3 py-2 text-xs font-bold text-[#8a2f1b]">
+                    <span>تعذّر تحميل مواضع هذه المجموعة.</span>
+                    <button type="button" onClick={() => void loadGroupDetail(groupId)} className="min-h-9 rounded-md px-2 underline">
+                      إعادة المحاولة
+                    </button>
+                  </div>
+                ) : (
+                  <ol className="space-y-2">
+                    {detail.verses.map((verse, index) => {
+                      const verseSurahNo = surahOptions.find((surah) => surah.name === verse.surah)?.surahNumber ?? null
+                      const isCurrent = verseSurahNo !== null && `${verseSurahNo}:${verse.ayah}` === mutshabehatPopupAyahKey
+                      return (
+                        <li
+                          key={`${verse.surah}-${verse.ayah}-${index}`}
+                          className="rounded-lg px-3 py-2.5"
+                          style={{
+                            backgroundColor: isCurrent ? tintForGroup(groupId).bg : '#faf5e8',
+                            boxShadow: isCurrent ? `inset 0 0 0 1px ${tintForGroup(groupId).edge}` : undefined,
+                          }}
+                        >
+                          <div className="mb-1 flex items-center justify-between gap-2 text-xs font-bold">
+                            <span className="text-[#59461d]">
+                              سورة {verse.surah} · {verse.ayah.toLocaleString('ar-EG')}
+                              {isCurrent ? <span style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}> · هذه الآية</span> : null}
+                            </span>
+                            {!isCurrent && verseSurahNo ? (
+                              <button
+                                type="button"
+                                onClick={() => { close(); void goToAyah(verseSurahNo, verse.ayah) }}
+                                className="min-h-9 rounded-md px-2 text-[#80662c] transition-colors hover:bg-[#fff1cf]"
+                              >
+                                انتقل إليها ←
+                              </button>
+                            ) : null}
+                          </div>
+                          <ArabicDiff parts={verse.parts as Part[]} size="sm" />
+                        </li>
+                      )
+                    })}
+                  </ol>
+                )}
+
+                <div className="flex gap-2">
+                  <Link
+                    href={`/groups/${groupId}`}
+                    className="flex min-h-11 flex-1 items-center justify-center rounded-md bg-[#171717] px-4 text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
+                  >
+                    فتح المجموعة
+                  </Link>
+                  <Link
+                    href={`/groups/${groupId}/edit`}
+                    className="flex min-h-11 items-center justify-center rounded-md border border-[#b99b51] px-4 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
+                  >
+                    تعديل
+                  </Link>
+                </div>
+                </div>
+                ) : null}
+              </article>
+            )
+          })}
+        </div>
+    )
+  }
+
+  /** متشابهات rail body: the ayah's own heading plus the shared group list. */
+  function renderMutshabehatSidebarBody(ayahKey: string) {
+    const [surahNo, ayahNo] = ayahKey.split(':').map(Number)
+    return (
+      <div>
+        <div className="mb-2 flex items-start justify-between gap-2 border-b border-[#eadfc9] pb-2">
+          <div className="min-w-0">
+            <p className="text-[10px] font-bold" style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}>من متشابهاتك</p>
+            <p className="text-sm font-black leading-snug text-[#171717]">
+              سورة {surahNameByNumber.get(surahNo) ?? ''} · الآية {Number.isFinite(ayahNo) ? ayahNo.toLocaleString('ar-EG') : ''}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setMutshabehatPanelAyahKey(null)}
+            className="shrink-0 rounded border border-[#d7c7a7] px-2 py-0.5 text-[11px] font-bold text-[#80662c] hover:bg-[#fff7df]"
+          >
+            مسح التحديد
+          </button>
+        </div>
+        {renderMutshabehatGroups(ayahKey)}
+      </div>
+    )
+  }
+
   // Card for an ayah that belongs to your personal mutashabihat: every group containing it,
   // with all similar ayat (colour-coded parts), jump-to-ayah and open/edit group actions.
   function renderMutshabehatPopup() {
     if (!mutshabehatPopupAyahKey) return null
     const [surahNo, ayahNo] = mutshabehatPopupAyahKey.split(':').map(Number)
     const surahName = surahNameByNumber.get(surahNo) ?? ''
-    const links = pageHighlights.filter((highlight) => highlight.ayahKey === mutshabehatPopupAyahKey)
-    const groupIds = [...new Set(links.map((link) => link.groupId).filter((id): id is string => Boolean(id)))]
     const close = () => setMutshabehatPopupAyahKey(null)
 
     return (
@@ -2712,128 +2860,7 @@ export default function Mushaf1441Viewer({
             </button>
           </header>
 
-          <div className="space-y-2 overflow-y-auto px-4 py-4">
-            {groupIds.length === 0 ? (
-              <p className="py-6 text-center text-sm text-[#665b48]">لا توجد مجموعة مرتبطة بهذه الآية.</p>
-            ) : groupIds.map((groupId) => {
-              const link = links.find((candidate) => candidate.groupId === groupId)
-              const detail = groupDetails[groupId]
-              const isExpanded = Boolean(expandedPopupGroups[groupId])
-              const detailsId = `mutshabehat-group-${groupId}`
-              return (
-                <article key={groupId} className="overflow-hidden rounded-xl border border-[#eadfc9] bg-[#fffdf8]">
-                  <h3>
-                    <button
-                      type="button"
-                      onClick={() => togglePopupGroup(groupId)}
-                      aria-expanded={isExpanded}
-                      aria-controls={detailsId}
-                      className="flex min-h-12 w-full items-center justify-between gap-3 px-3 py-2.5 text-right transition-colors hover:bg-[#fbf5e6]"
-                    >
-                      <span className="flex min-w-0 items-center gap-2 text-[15px] font-black leading-snug text-[#171717]">
-                        <span
-                          aria-hidden="true"
-                          className="block flex-none rounded-full"
-                          style={{
-                            width: 12,
-                            height: 12,
-                            backgroundColor: tintForGroup(groupId).bg,
-                            boxShadow: `inset 0 0 0 1.5px ${tintForGroup(groupId).edge}`,
-                          }}
-                        />
-                        <span className="min-w-0">{link?.title ?? 'مجموعة متشابهات'}</span>
-                      </span>
-                      <span className="flex shrink-0 items-center gap-2 text-[11px] font-bold tabular-nums text-[#80662c]">
-                        {((link?.similarAyat?.length ?? 0) + 1).toLocaleString('ar-EG')} مواضع
-                        <svg
-                          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
-                          strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
-                          className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-                        >
-                          <path d="m6 9 6 6 6-6" />
-                        </svg>
-                      </span>
-                    </button>
-                  </h3>
-                  {isExpanded ? (
-                  <div id={detailsId} className="space-y-3 border-t border-[#eadfc9] px-3 pb-3 pt-3">
-                  {link?.tags && link.tags.length > 0 ? (
-                    <div className="flex flex-wrap gap-1.5">
-                      {link.tags.map((tag) => (
-                        <span key={tag} className="rounded-full bg-[#f4ecd8] px-2 py-0.5 text-[11px] font-bold text-[#6b531f]">{tag}</span>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {!detail || detail === 'loading' ? (
-                    <div className="space-y-2" aria-busy="true" aria-label="جارٍ تحميل المواضع">
-                      {[0, 1].map((index) => (
-                        <div key={index} className="h-16 animate-pulse rounded-lg bg-[#f4ecd8]" />
-                      ))}
-                    </div>
-                  ) : detail === 'error' ? (
-                    <div className="flex items-center justify-between gap-3 rounded-lg border border-[#c07662] bg-[#fff1ed] px-3 py-2 text-xs font-bold text-[#8a2f1b]">
-                      <span>تعذّر تحميل مواضع هذه المجموعة.</span>
-                      <button type="button" onClick={() => void loadGroupDetail(groupId)} className="min-h-9 rounded-md px-2 underline">
-                        إعادة المحاولة
-                      </button>
-                    </div>
-                  ) : (
-                    <ol className="space-y-2">
-                      {detail.verses.map((verse, index) => {
-                        const verseSurahNo = surahOptions.find((surah) => surah.name === verse.surah)?.surahNumber ?? null
-                        const isCurrent = verseSurahNo !== null && `${verseSurahNo}:${verse.ayah}` === mutshabehatPopupAyahKey
-                        return (
-                          <li
-                            key={`${verse.surah}-${verse.ayah}-${index}`}
-                            className="rounded-lg px-3 py-2.5"
-                            style={{
-                              backgroundColor: isCurrent ? tintForGroup(groupId).bg : '#faf5e8',
-                              boxShadow: isCurrent ? `inset 0 0 0 1px ${tintForGroup(groupId).edge}` : undefined,
-                            }}
-                          >
-                            <div className="mb-1 flex items-center justify-between gap-2 text-xs font-bold">
-                              <span className="text-[#59461d]">
-                                سورة {verse.surah} · {verse.ayah.toLocaleString('ar-EG')}
-                                {isCurrent ? <span style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}> · هذه الآية</span> : null}
-                              </span>
-                              {!isCurrent && verseSurahNo ? (
-                                <button
-                                  type="button"
-                                  onClick={() => { close(); void goToAyah(verseSurahNo, verse.ayah) }}
-                                  className="min-h-9 rounded-md px-2 text-[#80662c] transition-colors hover:bg-[#fff1cf]"
-                                >
-                                  انتقل إليها ←
-                                </button>
-                              ) : null}
-                            </div>
-                            <ArabicDiff parts={verse.parts as Part[]} size="sm" />
-                          </li>
-                        )
-                      })}
-                    </ol>
-                  )}
-
-                  <div className="flex gap-2">
-                    <Link
-                      href={`/groups/${groupId}`}
-                      className="flex min-h-11 flex-1 items-center justify-center rounded-md bg-[#171717] px-4 text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
-                    >
-                      فتح المجموعة
-                    </Link>
-                    <Link
-                      href={`/groups/${groupId}/edit`}
-                      className="flex min-h-11 items-center justify-center rounded-md border border-[#b99b51] px-4 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
-                    >
-                      تعديل
-                    </Link>
-                  </div>
-                  </div>
-                  ) : null}
-                </article>
-              )
-            })}
-          </div>
+          {renderMutshabehatGroups(mutshabehatPopupAyahKey)}
         </section>
       </div>
     )
@@ -3671,14 +3698,19 @@ export default function Mushaf1441Viewer({
   }
 
   /** The permanent Qiraat sidebar — desktop and iPad landscape only (same breakpoint as the spread). */
-  function renderQiraatSidebar() {
+  /** The one side rail, titled and filled by whichever layer currently owns the page. */
+  function renderReaderSidebar() {
+    const title = readerLayer === 'qiraat'
+      ? 'القراءات العشر'
+      : readerLayer === 'mutshabehat' ? 'المتشابهات' : 'الملاحظات والتمييز'
     return (
       <aside
         dir="rtl"
+        data-reader-sidebar={readerLayer}
         className="flex w-[330px] shrink-0 flex-col gap-3 overflow-y-auto border-e border-[#d7c7a7] bg-[#f7f0e0] p-3"
       >
         <div className="flex items-center justify-between gap-2">
-          <h2 className="text-sm font-black text-[#171717]">القراءات العشر</h2>
+          <h2 className="text-sm font-black text-[#171717]">{title}</h2>
           {qiraatSelection ? (
             <button
               type="button"
@@ -3689,6 +3721,14 @@ export default function Mushaf1441Viewer({
             </button>
           ) : null}
         </div>
+
+        {readerLayer !== 'qiraat' ? renderSidebarLayerBody() : null}
+
+        {readerLayer === 'qiraat' ? (
+        <>
+        {/* The Qiraat peek lives here rather than floating over the page: an overlay on top of
+            the lines swallowed the next word press and closed itself before it could be read. */}
+        {hoveredQiraatWord ? <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">{renderQiraatHoverCard('sidebar')}</div> : null}
 
         <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
           {renderQiraatSelection()}
@@ -3713,7 +3753,50 @@ export default function Mushaf1441Viewer({
           {renderQiraatUsulPanel()}
           {renderQiraatRules()}
         </div>
+        </>
+        ) : null}
       </aside>
+    )
+  }
+
+  /** What the rail shows for the متشابهات and الملاحظات layers. */
+  function renderSidebarLayerBody() {
+    if (readerLayer === 'mutshabehat') {
+      const linkedOnPage = [...new Set(pageHighlights.map((h) => h.ayahKey))]
+      return (
+        <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+          {mutshabehatPanelAyahKey ? (
+            renderMutshabehatSidebarBody(mutshabehatPanelAyahKey)
+          ) : (
+            <>
+              <p className="text-xs leading-6 text-[#665b48]">
+                {linkedOnPage.length
+                  ? `على هذه الصفحة ${linkedOnPage.length} آية من متشابهاتك. اضغط على آية ملوَّنة ليظهر هنا كل ما يرتبط بها.`
+                  : 'لا توجد على هذه الصفحة آية من متشابهاتك.'}
+              </p>
+            </>
+          )}
+        </div>
+      )
+    }
+    // الملاحظات
+    return (
+      <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+        {needsSignIn ? (
+          <a
+            href={SIGN_IN_HREF}
+            className="block min-h-11 rounded-md bg-[#171717] px-4 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
+          >
+            سجّل الدخول لحفظ التمييز والملاحظات
+          </a>
+        ) : selectedAyahKey ? (
+          renderNotesPanel('desktop')
+        ) : (
+          <p className="text-xs leading-6 text-[#665b48]">
+            اضغط على أي كلمة أو آية في الصفحة لتضيف لها ملاحظة أو تمييزًا أو إشارة، ويظهر تحريرها هنا.
+          </p>
+        )}
+      </div>
     )
   }
 
@@ -3865,7 +3948,14 @@ export default function Mushaf1441Viewer({
     )
   }
 
-  function renderQiraatHoverCard() {
+  // The peek. `placement` decides the shell, never the contents:
+  //   'sidebar' — plain block inside the side rail (desktop / iPad landscape), over no text at all;
+  //   'overlay' — a fixed sheet pinned to the BOTTOM of the viewport on phones and portrait.
+  // It used to be an absolutely-positioned card at the top-centre of the page stage, sitting
+  // directly on the first lines. Pressing a word underneath it hit the card instead — and the
+  // card closes on click — so the peek vanished and the word was never selected. Moving it off
+  // the text is the fix; nothing about closing behaviour needed to change.
+  function renderQiraatHoverCard(placement: 'sidebar' | 'overlay' = 'overlay') {
     if (!hoveredQiraatWord) return null
     const { word, marker } = hoveredQiraatWord
     const surahName = surahNameByNumber.get(word.surahNumber) ?? ''
@@ -3877,9 +3967,15 @@ export default function Mushaf1441Viewer({
 
     // Only who DIFFERS from Hafs, and how — never Hafs's own reading or whoever merely agrees
     // with him (no "الباقون"/baseline group here; that stays a full-detail-panel-only concept).
+    const shellClass = placement === 'sidebar'
+      ? 'block cursor-pointer text-right'
+      : 'fixed inset-x-2 bottom-2 z-30 mx-auto block max-h-[52vh] w-auto max-w-lg cursor-pointer overflow-y-auto rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/98 p-3 text-right shadow-[0_-14px_50px_rgba(23,23,23,0.28)] backdrop-blur-sm'
+
     return (
       <div
-        className="absolute left-1/2 top-3 z-20 block w-[300px] max-w-[94%] -translate-x-1/2 cursor-pointer rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] sm:w-[360px]"
+        className={shellClass}
+        data-qiraat-peek={placement}
+        style={placement === 'overlay' ? { paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' } : undefined}
         dir="rtl"
         onClick={() => updateHoveredQiraatWord(null)}
       >
@@ -3946,94 +4042,96 @@ export default function Mushaf1441Viewer({
     )
   }
 
-  function renderNavControls() {
+
+  // Anchored dropdown under the surah name, not a full-screen modal: the reader is picking a
+  // surah while looking at the page, so the list stays small and beside its own trigger.
+  function renderSurahPicker() {
+    if (!isSurahPickerOpen) return null
+    const close = () => { setIsSurahPickerOpen(false); setSurahPickerSearch('') }
     return (
-      <div className="space-y-5">
-        {/* Surah slider */}
-        <div>
-          <div className="mb-1 flex items-baseline justify-between">
-            <span className="text-xs font-bold text-[#80662c]">السورة</span>
-            <span className="text-sm font-black text-[#171717]">{selectedSurahNumber}. {selectedSurah?.name}</span>
-          </div>
-          <input
-            type="range"
-            min={1}
-            max={114}
-            value={selectedSurahNumber}
-            aria-label="اختيار السورة"
-            onChange={(event) => {
-              setSelectedSurahNumber(Number(event.target.value))
-              setSelectedAyahNumber(1)
-            }}
-            onPointerUp={() => void jumpToSelectedAyah()}
-            onKeyUp={() => void jumpToSelectedAyah()}
-            className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#e6d8b6] accent-[#171717]"
-          />
-        </div>
+      <>
+        {/* Click-away catcher; the panel sits above it. */}
+        <button type="button" aria-label="إغلاق قائمة السور" onClick={close} className="fixed inset-0 z-40 cursor-default" />
+        <div
+          dir="rtl"
+          role="dialog"
+          aria-label="فهرس السور"
+          className="absolute right-0 top-full z-50 mt-1 flex max-h-[min(60vh,420px)] w-[17rem] sm:w-[19rem] flex-col overflow-hidden rounded-xl border border-[#d7c7a7] bg-[#fffdf8] shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
+        >
+            <div className="border-b border-[#eadfc9] bg-[#fffaf0] p-2.5">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={surahPickerSearch}
+                  onChange={(e) => setSurahPickerSearch(e.target.value)}
+                  placeholder="ابحث باسم السورة أو رقمها…"
+                  aria-label="بحث في السور"
+                  className="w-full rounded-lg border border-[#d7c7a7] bg-white px-3 py-2 text-sm text-[#171717] placeholder:text-[#a8987a] focus:border-[#171717] focus:outline-none"
+                  autoFocus
+                />
+                {surahPickerSearch ? (
+                  <button
+                    type="button"
+                    onClick={() => setSurahPickerSearch('')}
+                    aria-label="مسح البحث"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded p-1 text-xs text-[#80662c] hover:bg-[#f0e4cc]"
+                  >
+                    ✕
+                  </button>
+                ) : null}
+              </div>
+            </div>
 
-        {/* Ayah slider */}
-        <div>
-          <div className="mb-1 flex items-baseline justify-between">
-            <span className="text-xs font-bold text-[#80662c]">الآية</span>
-            <span className="text-sm font-black text-[#171717] tabular-nums">{selectedAyahNumber} / {selectedSurahAyahCount}</span>
-          </div>
-          <input
-            type="range"
-            min={1}
-            max={selectedSurahAyahCount}
-            value={Math.min(selectedAyahNumber, selectedSurahAyahCount)}
-            aria-label="اختيار رقم الآية"
-            onChange={(event) => setSelectedAyahNumber(Number(event.target.value))}
-            onPointerUp={() => void jumpToSelectedAyah()}
-            onKeyUp={() => void jumpToSelectedAyah()}
-            className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#e6d8b6] accent-[#171717]"
-          />
-          <button
-            type="button"
-            onClick={() => void jumpToSelectedAyah()}
-            className="mt-2 min-h-11 w-full rounded-md bg-[#171717] px-4 text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
-          >
-            انتقل للآية {selectedSurahNumber}:{selectedAyahNumber}
-          </button>
+            <div className="flex-1 overflow-y-auto divide-y divide-[#f0e4cc] p-2">
+              {filteredSurahOptions.length === 0 ? (
+                <p className="p-6 text-center text-xs font-bold text-[#8a7c5c]">
+                  لا توجد سورة مطابقة للبحث
+                </p>
+              ) : (
+                filteredSurahOptions.map((surah) => {
+                  const currentSurahNumber = visiblePageMetadata?.surahNumbers[0] ?? selectedSurahNumber
+                  const isCurrent = surah.surahNumber === currentSurahNumber
+                  return (
+                    <button
+                      key={surah.surahNumber}
+                      type="button"
+                      ref={isCurrent ? currentSurahItemRef : null}
+                      onClick={() => void selectSurahFromPicker(surah)}
+                      className={`flex w-full items-center justify-between px-3 py-2.5 rounded-lg text-right transition-colors ${
+                        isCurrent
+                          ? 'bg-[#171717] text-white shadow-sm'
+                          : 'hover:bg-[#f7f0e0] active:bg-[#ebdcc0] text-[#171717]'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className={`flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums ${
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#f0e4cc] text-[#80662c]'
+                        }`}>
+                          {surah.surahNumber}
+                        </span>
+                        <div>
+                          <p className="text-base font-black font-[family-name:var(--font-amiri-quran)] leading-tight">
+                            سورة {surah.name}
+                          </p>
+                          <p className={`text-[11px] font-bold ${isCurrent ? 'text-white/80' : 'text-[#80662c]'}`}>
+                            {surah.ayahCount} آية
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-left">
+                        <span className={`inline-block rounded px-2 py-0.5 text-xs font-bold tabular-nums ${
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#fffaf0] border border-[#d7c7a7] text-[#80662c]'
+                        }`}>
+                          ص {surah.firstPage ?? '—'}
+                        </span>
+                      </div>
+                    </button>
+                  )
+                })
+              )}
+            </div>
         </div>
-
-        {/* Page slider + prev/next */}
-        <div>
-          <div className="mb-1 flex items-baseline justify-between">
-            <span className="text-xs font-bold text-[#80662c]">الصفحة</span>
-            <span className="text-sm font-black text-[#171717] tabular-nums">{pageNumber} / {MAX_PAGE}</span>
-          </div>
-          <input
-            type="range"
-            min={MIN_PAGE}
-            max={MAX_PAGE}
-            value={pageNumber}
-            aria-label="اختيار الصفحة"
-            onChange={(event) => setPageInput(event.target.value)}
-            onPointerUp={(event) => void goToPage(Number((event.target as HTMLInputElement).value))}
-            onKeyUp={(event) => void goToPage(Number((event.target as HTMLInputElement).value))}
-            className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#e6d8b6] accent-[#171717]"
-          />
-          <div className="mt-2 flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => turnPage(-1)}
-              disabled={pageNumber <= MIN_PAGE}
-              className="min-h-11 flex-1 rounded-md border border-[#b99b51] px-3 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              ← السابقة
-            </button>
-            <button
-              type="button"
-              onClick={() => turnPage(1)}
-              disabled={pageNumber >= MAX_PAGE}
-              className="min-h-11 flex-1 rounded-md border border-[#b99b51] px-3 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              التالية →
-            </button>
-          </div>
-        </div>
-      </div>
+      </>
     )
   }
 
@@ -4058,11 +4156,12 @@ export default function Mushaf1441Viewer({
               <span className="block h-0.5 w-5 rounded bg-white" />
             </span>
           </button>
+          <div className="relative min-w-0">
           <button
             type="button"
             onClick={() => {
               setSurahPickerSearch('')
-              setIsSurahPickerOpen(true)
+              setIsSurahPickerOpen((open) => !open)
             }}
             aria-label="اختيار السورة من القائمة"
             aria-haspopup="dialog"
@@ -4078,11 +4177,22 @@ export default function Mushaf1441Viewer({
                   <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                 </svg>
               </div>
-              <p className="text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
-                {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''} · ص {pageNumber}
+              <p className="truncate text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
+                {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''}
               </p>
             </div>
           </button>
+          {renderSurahPicker()}
+          </div>
+          {/* The page number gets its own fixed-width frame OUTSIDE the truncating block: inside
+              it, a long surah name pushed it into the ellipsis and the number became unreadable. */}
+          <span
+            className="flex shrink-0 flex-col items-center justify-center rounded-md border border-[#b99b51] bg-[#fffaf0] px-2.5 py-1 leading-none"
+            title={`الصفحة ${pageNumber} من ${MUSHAF_1441_PAGE_COUNT}`}
+          >
+            <span className="text-[9px] font-bold text-[#80662c]">صفحة</span>
+            <span className="text-sm font-black tabular-nums text-[#3f3215]" dir="ltr">{pageNumber}</span>
+          </span>
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
           <button
@@ -4163,7 +4273,7 @@ export default function Mushaf1441Viewer({
       {/* On desktop / iPad landscape the Qiraat panel is a permanent sidebar beside the page
           instead of living inside the burger drawer; the page re-fits itself via container queries. */}
       <div className="flex min-h-0 flex-1">
-      {showQiraatSidebar ? renderQiraatSidebar() : null}
+      {showReaderSidebar ? renderReaderSidebar() : null}
 
       {/* The mushaf page fills the screen; drag a page to curl it over */}
       <main
@@ -4253,7 +4363,7 @@ export default function Mushaf1441Viewer({
               onClick={() => updateHoveredQiraatWord(null)}
               className="fixed inset-0 z-10 bg-black/20 backdrop-blur-[1px] sm:hidden"
             />
-            {renderQiraatHoverCard()}
+            {showReaderSidebar ? null : renderQiraatHoverCard('overlay')}
           </>
         ) : (readerLayer === 'qiraat' ? null : renderHoverCard())}
         {isPageLoading ? (
@@ -4313,120 +4423,6 @@ export default function Mushaf1441Viewer({
         )
       })()}
 
-      {/* Surah quick-select combo list (mobile & desktop) */}
-      {isSurahPickerOpen ? (
-        <div className="fixed inset-0 z-50 flex flex-col justify-end sm:justify-center sm:items-center p-0 sm:p-4" dir="rtl">
-          <button
-            type="button"
-            aria-label="إغلاق قائمة السور"
-            onClick={() => {
-              setIsSurahPickerOpen(false)
-              setSurahPickerSearch('')
-            }}
-            className="fixed inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity"
-          />
-          <div
-            className="relative z-10 flex flex-col w-full sm:max-w-md max-h-[85vh] sm:max-h-[80vh] rounded-t-2xl sm:rounded-2xl border border-[#d7c7a7] bg-[#fffdf8] shadow-[0_-16px_60px_rgba(23,23,23,0.3)] overflow-hidden"
-            style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
-          >
-            <div className="flex items-center justify-between border-b border-[#eadfc9] bg-[#f7f0e0] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <span className="flex size-7 items-center justify-center rounded-md bg-[#171717] text-xs font-black text-white">
-                  ١١٤
-                </span>
-                <div>
-                  <h3 className="text-sm font-black text-[#171717]">فهرس السور</h3>
-                  <p className="text-[10px] font-bold text-[#80662c]">اختر سورة للانتقال إليها مباشرة</p>
-                </div>
-              </div>
-              <button
-                type="button"
-                aria-label="إغلاق"
-                onClick={() => {
-                  setIsSurahPickerOpen(false)
-                  setSurahPickerSearch('')
-                }}
-                className="flex size-8 items-center justify-center rounded-md border border-[#d7c7a7] bg-white text-sm font-bold text-[#80662c] shadow-sm transition-colors hover:bg-[#fff7df]"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="border-b border-[#eadfc9] bg-[#fffaf0] p-2.5">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={surahPickerSearch}
-                  onChange={(e) => setSurahPickerSearch(e.target.value)}
-                  placeholder="ابحث باسم السورة أو رقمها…"
-                  aria-label="بحث في السور"
-                  className="w-full rounded-lg border border-[#d7c7a7] bg-white px-3 py-2 text-sm text-[#171717] placeholder:text-[#a8987a] focus:border-[#171717] focus:outline-none"
-                  autoFocus
-                />
-                {surahPickerSearch ? (
-                  <button
-                    type="button"
-                    onClick={() => setSurahPickerSearch('')}
-                    aria-label="مسح البحث"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded p-1 text-xs text-[#80662c] hover:bg-[#f0e4cc]"
-                  >
-                    ✕
-                  </button>
-                ) : null}
-              </div>
-            </div>
-
-            <div className="flex-1 overflow-y-auto divide-y divide-[#f0e4cc] p-2">
-              {filteredSurahOptions.length === 0 ? (
-                <p className="p-6 text-center text-xs font-bold text-[#8a7c5c]">
-                  لا توجد سورة مطابقة للبحث
-                </p>
-              ) : (
-                filteredSurahOptions.map((surah) => {
-                  const currentSurahNumber = visiblePageMetadata?.surahNumbers[0] ?? selectedSurahNumber
-                  const isCurrent = surah.surahNumber === currentSurahNumber
-                  return (
-                    <button
-                      key={surah.surahNumber}
-                      type="button"
-                      ref={isCurrent ? currentSurahItemRef : null}
-                      onClick={() => void selectSurahFromPicker(surah)}
-                      className={`flex w-full items-center justify-between px-3 py-2.5 rounded-lg text-right transition-colors ${
-                        isCurrent
-                          ? 'bg-[#171717] text-white shadow-sm'
-                          : 'hover:bg-[#f7f0e0] active:bg-[#ebdcc0] text-[#171717]'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className={`flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums ${
-                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#f0e4cc] text-[#80662c]'
-                        }`}>
-                          {surah.surahNumber}
-                        </span>
-                        <div>
-                          <p className="text-base font-black font-[family-name:var(--font-amiri-quran)] leading-tight">
-                            سورة {surah.name}
-                          </p>
-                          <p className={`text-[11px] font-bold ${isCurrent ? 'text-white/80' : 'text-[#80662c]'}`}>
-                            {surah.ayahCount} آية
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-left">
-                        <span className={`inline-block rounded px-2 py-0.5 text-xs font-bold tabular-nums ${
-                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#fffaf0] border border-[#d7c7a7] text-[#80662c]'
-                        }`}>
-                          ص {surah.firstPage ?? '—'}
-                        </span>
-                      </div>
-                    </button>
-                  )
-                })
-              )}
-            </div>
-          </div>
-        </div>
-      ) : null}
 
       {/* Burger drawer: navigation sliders, account / sign-in, settings */}
       {isMenuOpen ? (
@@ -4514,23 +4510,6 @@ export default function Mushaf1441Viewer({
               />
               {renderQiraatUsulPanel()}
               {renderQiraatRules()}
-            </div>
-
-            {/* Navigation sliders */}
-            <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
-              <p className="mb-3 text-xs font-bold text-[#80662c]">التنقل</p>
-              {renderNavControls()}
-            </div>
-
-            {/* Page / font info */}
-            <div className="rounded-lg border border-[#d7c7a7] bg-[#fffaf0] p-3 text-xs leading-6 text-[#665b48]">
-              <p className="font-bold text-[#80662c]">معلومات الصفحة</p>
-              <p className="mt-1">
-                الجزء {visiblePageMetadata?.juzNumber ?? '—'} · الحزب {visiblePageMetadata?.hizbNumber ?? '—'} · الربع {visiblePageMetadata ? `${visiblePageMetadata.rubInJuz}/8` : '—'}
-              </p>
-              <p className="mt-1">{isQcfFontLoaded ? 'خط QCF V2 محمّل.' : isQcfFontFailed ? 'تعذّر تحميل خط QCF V2 لهذه الصفحة.' : 'جاري تحميل خط QCF V2…'}</p>
-              <p className="mt-1">{pageNumber % 2 === 1 ? 'الصفحة على الجهة اليمنى.' : 'الصفحة على الجهة اليسرى.'}</p>
-              <p className="mt-2 text-[11px] text-[#80662c]">اسحب يميناً/يساراً على الصفحة للتنقل، واضغط مطوّلاً على كلمة أو آية للتمييز والملاحظات.</p>
             </div>
 
             {/* Info / reference */}

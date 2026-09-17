@@ -37,13 +37,13 @@ if (metadata.pages[603]?.lastAyahKey !== '114:6') {
 }
 
 for (const required of [
-  'submitAyahJump',
+  'selectSurahFromPicker',
   'selectedSurahNumber',
-  'selectedAyahNumber',
+  'renderSurahPicker',
   'visiblePageMetadata?.surahNames',
-  'visiblePageMetadata?.juzNumber',
-  'visiblePageMetadata.rubInJuz',
-  'ص {pageNumber}',
+  "metadata?.juzNumber ?? '—'",
+  'metadata.rubInJuz',
+  '{pageNumber}</span>',
 ]) {
   if (!viewer.includes(required)) fail(`viewer missing ${required}`)
 }
