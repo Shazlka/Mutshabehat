@@ -1,6 +1,6 @@
 [
   {
-    "id": "v-p012-l001-amaniyya",
+    "id": "v-L012-اماني-1-w2",
     "surah": 2,
     "ayah": 78,
     "startToken": 7,
@@ -16,31 +16,81 @@
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L012-اماني-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p012-l001-amaniyya",
-        "variantId": "v-p012-l001-amaniyya",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L012-اماني-1-w2",
+        "variantId": "v-L012-اماني-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 17,
-        "sourceReference": "صفحة المصحف 12 · صفحة PDF 17",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 12 · صفحة المصدر 17",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: خِفُّ الْأَمَانِيَّ مُسْجَلًا أَلَا"
       }
     ],
-    "uthmaniText": "أَمَانِيَ",
-    "notes": "تخفيف الياء (بلا تشديد) عند أبي جعفر؛ الباقون بتشديد الياء موافقةً للرسم الأساس."
+    "description": "بتخفيف الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "خِفُّ الْأَمَانِيَّ مُسْجَلًا أَلَا"
+      }
+    ]
   },
   {
-    "id": "v-p012-l002-khatiatuhu",
+    "id": "v-L012-بايديهم-1-w2",
+    "surah": 2,
+    "ayah": 79,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِأَيْدِيهِمْ",
+    "variantText": "بِأَيْدِيهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L012-بايديهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L012-بايديهم-1-w2",
+        "variantId": "v-L012-بايديهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 17,
+        "sourceReference": "صفحة المصحف 12 · صفحة المصدر 17",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L012-خطيتهو-1-w2",
     "surah": 2,
     "ayah": 81,
     "startToken": 7,
     "endToken": 7,
     "operation": "REPLACE",
     "hafsText": "خَطِيٓـَٔتُهُۥ",
-    "variantText": "خَطِيئَاتُهُ",
-    "differenceType": "ADDITION",
+    "variantText": "خَطِيٓـَٔاتُهُۥ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -50,19 +100,130 @@
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L012-خطيتهو-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p012-l002-khatiatuhu",
-        "variantId": "v-p012-l002-khatiatuhu",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L012-خطيتهو-1-w2",
+        "variantId": "v-L012-خطيتهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 17,
-        "sourceReference": "صفحة المصحف 12 · صفحة PDF 17",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 12 · صفحة المصدر 17",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: خَطِيئَاتُهُ التَّوْحِيدُ عَنْ غَيرِ نَافِعٍ"
       }
     ],
-    "uthmaniText": "خَطِيئَاتُهُ",
-    "notes": "الجمع \"خَطِيئَاتُهُ\" عند نافع وأبي جعفر؛ الباقون بالإفراد موافقةً للرسم الأساس."
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "خَطِيئَاتُهُ التَّوْحِيدُ عَنْ غَيرِ نَافِعٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L012-تعبدون-1-w2",
+    "surah": 2,
+    "ayah": 83,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "تَعْبُدُونَ",
+    "variantText": "يَعْبُدُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "NEEDS_MANUAL_REVIEW",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L012-تعبدون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L012-تعبدون-1-w2",
+        "variantId": "v-L012-تعبدون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 17,
+        "sourceReference": "صفحة المصحف 12 · صفحة المصدر 17",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَلَا تَعْبُدُونَ الْغَيْبُ شَايَعَ دُخْلَلَا — D: يَعْبُدُو خَاطِبْ فَشَا"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَلَا تَعْبُدُونَ الْغَيْبُ شَايَعَ دُخْلَلَا"
+      },
+      {
+        "source": "D",
+        "text": "يَعْبُدُو خَاطِبْ فَشَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L012-حسنا-1-w2",
+    "surah": 2,
+    "ayah": 83,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "حُسْنًۭا",
+    "variantText": "حَسَنًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L012-حسنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L012-حسنا-1-w2",
+        "variantId": "v-L012-حسنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 17,
+        "sourceReference": "صفحة المصحف 12 · صفحة المصدر 17",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ حَسَنًا شُكْرًا وَحُسْنَا بِضَمِّهِ وَسَاكِنِهِ الْبَاقُونَ وَاحْسِنْ مُقَوَّلَا — D: وَقُلْ حَسَنَا مَعَهُ تُفَادُو وَتُنْسِهَا وَتَسْأَلْ حَوَىٰ"
+      }
+    ],
+    "description": "بفتح الحاء والسين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ حَسَنًا شُكْرًا وَحُسْنَا بِضَمِّهِ وَسَاكِنِهِ الْبَاقُونَ وَاحْسِنْ مُقَوَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَقُلْ حَسَنَا مَعَهُ تُفَادُو وَتُنْسِهَا وَتَسْأَلْ حَوَىٰ"
+      }
+    ]
   }
 ]

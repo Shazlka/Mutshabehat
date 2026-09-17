@@ -1,6 +1,6 @@
 [
   {
-    "id": "v-p005-l001-turjaun",
+    "id": "v-L005-ترجعون-1-w2",
     "surah": 2,
     "ayah": 28,
     "startToken": 13,
@@ -8,27 +8,86 @@
     "operation": "REPLACE",
     "hafsText": "تُرْجَعُونَ",
     "variantText": "تَرْجِعُونَ",
-    "differenceType": "HARAKAH",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q09-R01",
       "Q09-R02"
     ],
+    "locusId": "L005-ترجعون-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p005-l001-turjaun",
-        "variantId": "v-p005-l001-turjaun",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L005-ترجعون-1-w2",
+        "variantId": "v-L005-ترجعون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 10,
-        "sourceReference": "صفحة المصحف 5 · صفحة PDF 10",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 5 · صفحة المصدر 10",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
       }
     ],
-    "uthmaniText": "تَرْجِعُونَ",
-    "notes": "فتح التاء وكسر الجيم، بناء للفاعل، عند يعقوب؛ الباقون بضم التاء وفتح الجيم بناء للمفعول."
+    "description": "بفتح التاء وكسر الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L005-وهو-1-w2",
+    "surah": 2,
+    "ayah": 29,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L005-وهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L005-وهو-1-w2",
+        "variantId": "v-L005-وهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 10,
+        "sourceReference": "صفحة المصحف 5 · صفحة المصدر 10",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
   }
 ]

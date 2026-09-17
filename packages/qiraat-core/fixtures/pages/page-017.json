@@ -1,14 +1,14 @@
 [
   {
-    "id": "v-p017-l001-nunsikh",
+    "id": "v-L017-ننسخ-1-w2",
     "surah": 2,
     "ayah": 106,
     "startToken": 2,
     "endToken": 2,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "نَنسَخْ",
-    "variantText": "نُنسِخْ",
-    "differenceType": "HARAKAH",
+    "variantText": "نُنْسِخْ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -16,30 +16,40 @@
       "Q04-R01",
       "Q04-R02"
     ],
+    "locusId": "L017-ننسخ-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p017-l001-nunsikh",
-        "variantId": "v-p017-l001-nunsikh",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L017-ننسخ-1-w2",
+        "variantId": "v-L017-ننسخ-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 22,
-        "sourceReference": "صفحة المصحف 17 · صفحة PDF 22",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 17 · صفحة المصدر 22",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَنْسَخْ بِهِ ضَمٌّ وَكَسْرٌ كَفَىٰ"
       }
     ],
-    "notes": "ضم النون الأولى وكسر السين عند ابن عامر؛ الباقون بفتحهما موافقةً للرسم الأساس."
+    "description": "بضم النون وكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَنْسَخْ بِهِ ضَمٌّ وَكَسْرٌ كَفَىٰ"
+      }
+    ]
   },
   {
-    "id": "v-p017-l002-nansaha",
+    "id": "v-L017-ننسها-1-w2",
     "surah": 2,
     "ayah": 106,
     "startToken": 6,
     "endToken": 6,
     "operation": "REPLACE",
     "hafsText": "نُنسِهَا",
-    "variantText": "نَنسَأْهَا",
-    "differenceType": "LETTER",
+    "variantText": "نَنْسَأْهَا",
+    "differenceType": "HAMZ",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -49,30 +59,44 @@
       "Q03-R01",
       "Q03-R02"
     ],
+    "locusId": "L017-ننسها-1",
+    "locusType": "word_variant",
+    "notes": "لا يبدل السوسي الهمزة الساكنة في كلمة ﴿نَنْسَأْهَا﴾.",
     "sources": [
       {
-        "id": "s-v-p017-l002-nansaha",
-        "variantId": "v-p017-l002-nansaha",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L017-ننسها-1-w2",
+        "variantId": "v-L017-ننسها-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 22,
-        "sourceReference": "صفحة المصحف 17 · صفحة PDF 22",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 17 · صفحة المصدر 22",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنُنْسِهَا مِثْلُهُ مِنْ غَيْرِ هَمْزٍ ذَكَتْ إِلَىٰ — D: وَنُنْسِهَا وَتَسْأَلْ حَوَىٰ"
       }
     ],
-    "uthmaniText": "نَنسَأْهَا",
-    "notes": "الباقون \"نُنْسِهَا\" موافقةً للرسم الأساس."
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنُنْسِهَا مِثْلُهُ مِنْ غَيْرِ هَمْزٍ ذَكَتْ إِلَىٰ"
+      },
+      {
+        "source": "D",
+        "text": "وَنُنْسِهَا وَتَسْأَلْ حَوَىٰ"
+      }
+    ]
   },
   {
-    "id": "v-p017-l003-amaniyyuhum",
+    "id": "v-L017-امانيهم-1-w2",
     "surah": 2,
     "ayah": 111,
     "startToken": 12,
     "endToken": 12,
     "operation": "REPLACE",
     "hafsText": "أَمَانِيُّهُمْ ۗ",
-    "variantText": "أَمَانِيهِمْ",
+    "variantText": "أَمَانِيُهُمْ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -81,28 +105,37 @@
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L017-امانيهم-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p017-l003-amaniyyuhum",
-        "variantId": "v-p017-l003-amaniyyuhum",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L017-امانيهم-1-w2",
+        "variantId": "v-L017-امانيهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 22,
-        "sourceReference": "صفحة المصحف 17 · صفحة PDF 22",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 17 · صفحة المصدر 22",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: خِفُّ الْأَمَانِيَّ مُسْجَلًا أَلَا"
       }
     ],
-    "uthmaniText": "أَمَانِيهِمْ",
-    "notes": "أبو جعفر بتخفيف الياء \"أَمَانِيهِمْ\"؛ الباقون بتشديدها موافقةً للرسم الأساس."
+    "description": "بتخفيف الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "خِفُّ الْأَمَانِيَّ مُسْجَلًا أَلَا"
+      }
+    ]
   },
   {
-    "id": "v-p017-l004-wahuwa-112",
+    "id": "v-L017-وهو-1-w2",
     "surah": 2,
     "ayah": 112,
     "startToken": 6,
     "endToken": 6,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "وَهُوَ",
     "variantText": "وَهْوَ",
     "differenceType": "HARAKAH",
@@ -118,118 +151,122 @@
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L017-وهو-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p017-l004-wahuwa-112",
-        "variantId": "v-p017-l004-wahuwa-112",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L017-وهو-1-w2",
+        "variantId": "v-L017-وهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 22,
-        "sourceReference": "صفحة المصحف 17 · صفحة PDF 22",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 17 · صفحة المصدر 22",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
       }
     ],
-    "notes": "إسكان الهاء؛ الباقون بضم الهاء موافقةً للرسم الأساس."
-  },
-  {
-    "id": "v-p017-l004b-wahuwa-112-yaqub",
-    "surah": 2,
-    "ayah": 112,
-    "startToken": 6,
-    "endToken": 6,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "وَهُوَ",
-    "variantText": "وَهُوَ",
-    "differenceType": "WAQF",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "readingIds": [
-      "Q09-R01",
-      "Q09-R02"
-    ],
-    "sources": [
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
       {
-        "id": "s-v-p017-l004b-wahuwa-112-yaqub",
-        "variantId": "v-p017-l004b-wahuwa-112-yaqub",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 22,
-        "sourceReference": "صفحة المصحف 17 · صفحة PDF 22",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
       }
-    ],
-    "performanceNote": "ضم الهاء مع جواز الوقف بهاء السكت (خاص بيعقوب).",
-    "notes": "النص المنطوق كالباقين \"وَهُوَ\"؛ الفارق أداءٌ وقفي فقط عند يعقوب."
+    ]
   },
   {
-    "id": "v-p017-l005-khawfa-112",
+    "id": "v-L017-خوف_عليهم-1-w2",
     "surah": 2,
     "ayah": 112,
     "startToken": 13,
-    "endToken": 13,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "خَوْفٌ",
-    "variantText": "خَوْفَ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "readingIds": [
-      "Q09-R01",
-      "Q09-R02"
-    ],
-    "sources": [
-      {
-        "id": "s-v-p017-l005-khawfa-112",
-        "variantId": "v-p017-l005-khawfa-112",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 22,
-        "sourceReference": "صفحة المصحف 17 · صفحة PDF 22",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
-      }
-    ],
-    "locusId": "p17-khawf-alayhim",
-    "locusType": "word_variant",
-    "notes": "فتح الفاء بلا تنوين عند يعقوب (مقترن بضم هاء \"عليهم\" التالية)؛ الباقون بالتنوين المرفوع موافقةً للرسم الأساس."
-  },
-  {
-    "id": "v-p017-l005-alayhim-112",
-    "surah": 2,
-    "ayah": 112,
-    "startToken": 14,
     "endToken": 14,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "عَلَيْهِمْ",
-    "variantText": "عَلَيْهِمُ",
+    "operation": "REPLACE",
+    "hafsText": "خَوْفٌ عَلَيْهِمْ",
+    "variantText": "خَوْفٌ عَلَيْهُمْ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q06-R01",
-      "Q06-R02",
-      "Q09-R01",
-      "Q09-R02"
+      "Q06-R02"
     ],
+    "locusId": "L017-خوف_عليهم-1",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p017-l005-alayhim-112",
-        "variantId": "v-p017-l005-alayhim-112",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L017-خوف_عليهم-1-w2",
+        "variantId": "v-L017-خوف_عليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 22,
-        "sourceReference": "صفحة المصحف 17 · صفحة PDF 22",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 17 · صفحة المصدر 22",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
       }
     ],
-    "locusId": "p17-khawf-alayhim",
-    "locusType": "word_variant",
-    "notes": "ضم هاء الضمير عند حمزة ويعقوب؛ الباقون بكسر الهاء موافقةً للرسم الأساس."
+    "description": "برفع خوف وضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L017-خوف_عليهم-1-w3",
+    "surah": 2,
+    "ayah": 112,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "خَوْفٌ عَلَيْهِمْ",
+    "variantText": "خَوْفَ عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L017-خوف_عليهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L017-خوف_عليهم-1-w3",
+        "variantId": "v-L017-خوف_عليهم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 22,
+        "sourceReference": "صفحة المصحف 17 · صفحة المصدر 22",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ],
+    "description": "بفتح الفاء وضم الهاء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ]
   }
 ]

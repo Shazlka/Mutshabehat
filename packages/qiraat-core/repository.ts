@@ -5,18 +5,21 @@
 // implementing the same interface (backed by the qiraat_variants/qiraat_variant_readings tables in
 // docs/qiraat/03-database-schema.md) is a drop-in replacement; nothing above this interface needs
 // to change when that happens.
-import type { QiraatRule, QiraatVariant } from './types'
+import type { QiraatRule, QiraatRuling, QiraatVariant } from './types'
 import { variantsForToken as engineVariantsForToken, type EngineOptions } from './engine'
 
 export interface QiraatRepository {
   getVariantsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatVariant[]>
   getRulesForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRule[]>
+  getRulingsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRuling[]>
 }
 
 type PageVariantsModule = { default: QiraatVariant[] }
 type PageVariantsLoader = () => Promise<PageVariantsModule>
 type PageRulesModule = { default: QiraatRule[] }
 type PageRulesLoader = () => Promise<PageRulesModule>
+type PageRulingsModule = { default: QiraatRuling[] }
+type PageRulingsLoader = () => Promise<PageRulingsModule>
 
 // Only page 1 (the prototype page) is wired today. Adding a page is: drop a new
 // `fixtures/pages/page-NNN.json`, add one line here — nothing else changes (repository consumers,
@@ -52,6 +55,32 @@ const PAGE_RULE_LOADERS: Record<number, PageRulesLoader> = {
   1: () => import('./fixtures/rules/page-001.json') as unknown as Promise<PageRulesModule>,
 }
 
+// Per-occurrence أصول rulings (الممال، الإدغام، الترقيق، السكت …). Each one is its own verified
+// record anchored to a real token — a rule is written once in the catalogue but NEVER auto-applied,
+// because it genuinely does not hold at every occurrence of the same word.
+const PAGE_RULING_LOADERS: Record<number, PageRulingsLoader> = {
+  1: () => import('./fixtures/rulings/page-001.json') as unknown as Promise<PageRulingsModule>,
+  2: () => import('./fixtures/rulings/page-002.json') as unknown as Promise<PageRulingsModule>,
+  3: () => import('./fixtures/rulings/page-003.json') as unknown as Promise<PageRulingsModule>,
+  4: () => import('./fixtures/rulings/page-004.json') as unknown as Promise<PageRulingsModule>,
+  5: () => import('./fixtures/rulings/page-005.json') as unknown as Promise<PageRulingsModule>,
+  6: () => import('./fixtures/rulings/page-006.json') as unknown as Promise<PageRulingsModule>,
+  7: () => import('./fixtures/rulings/page-007.json') as unknown as Promise<PageRulingsModule>,
+  8: () => import('./fixtures/rulings/page-008.json') as unknown as Promise<PageRulingsModule>,
+  9: () => import('./fixtures/rulings/page-009.json') as unknown as Promise<PageRulingsModule>,
+  10: () => import('./fixtures/rulings/page-010.json') as unknown as Promise<PageRulingsModule>,
+  11: () => import('./fixtures/rulings/page-011.json') as unknown as Promise<PageRulingsModule>,
+  12: () => import('./fixtures/rulings/page-012.json') as unknown as Promise<PageRulingsModule>,
+  13: () => import('./fixtures/rulings/page-013.json') as unknown as Promise<PageRulingsModule>,
+  14: () => import('./fixtures/rulings/page-014.json') as unknown as Promise<PageRulingsModule>,
+  15: () => import('./fixtures/rulings/page-015.json') as unknown as Promise<PageRulingsModule>,
+  16: () => import('./fixtures/rulings/page-016.json') as unknown as Promise<PageRulingsModule>,
+  17: () => import('./fixtures/rulings/page-017.json') as unknown as Promise<PageRulingsModule>,
+  18: () => import('./fixtures/rulings/page-018.json') as unknown as Promise<PageRulingsModule>,
+  19: () => import('./fixtures/rulings/page-019.json') as unknown as Promise<PageRulingsModule>,
+  20: () => import('./fixtures/rulings/page-020.json') as unknown as Promise<PageRulingsModule>,
+}
+
 export class FixtureQiraatRepository implements QiraatRepository {
   async getVariantsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatVariant[]> {
     const load = PAGE_VARIANT_LOADERS[pageNumber]
@@ -60,6 +89,15 @@ export class FixtureQiraatRepository implements QiraatRepository {
     const all = mod.default
     if (options?.includeUnpublished) return all
     return all.filter((variant) => variant.verificationStatus === 'VERIFIED' || variant.verificationStatus === 'PUBLISHED')
+  }
+
+  async getRulingsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRuling[]> {
+    const load = PAGE_RULING_LOADERS[pageNumber]
+    if (!load) return []
+    const mod = await load()
+    const all = mod.default
+    if (options?.includeUnpublished) return all
+    return all.filter((r) => r.verificationStatus === 'VERIFIED' || r.verificationStatus === 'PUBLISHED')
   }
 
   async getRulesForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRule[]> {

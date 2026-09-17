@@ -109,3 +109,71 @@ export function riwayahResolutionForWord(
 
   return { text: resolution.text, suppressed: false, marker }
 }
+
+// ── أصول (usul) rulings ──────────────────────────────────────────────────────
+import type { QiraatRuling } from '../../../../../packages/qiraat-core/types'
+
+export interface RulingMarker {
+  /** The usul family colour — one colour per family (إمالة+تقليل share one, both إدغام kinds
+   * share one, ترقيق+تغليظ share one, and so on), so the KIND of ruling is readable at a glance. */
+  color: string
+  rulings: QiraatRuling[]
+  /** True when more than one usul family applies to this same word; the word takes the first
+   * family's colour and the rest are listed on tap. */
+  multiple: boolean
+  /** True when some Riwayah has two valid وجهان here («بخلف عنه») — the word is marked ذو وجهين. */
+  hasAlternate: boolean
+}
+
+/**
+ * All أصول rulings that touch one token, or null when none do.
+ *
+ * `filter` narrows to a reader/narrator exactly like the variant marker does, so selecting ورش
+ * shows only ورش's ترقيق/تغليظ/مد البدل and nothing else.
+ */
+export function rulingMarkerForWord(
+  rulings: readonly QiraatRuling[],
+  surah: number,
+  ayah: number,
+  token: number,
+  filter: QiraatComparisonFilter,
+  enabledCategories?: ReadonlySet<string>,
+): RulingMarker | null {
+  const matches = rulings.filter((ruling) => (
+    ruling.wordAnchored
+    && ruling.surah === surah
+    && ruling.ayah === ayah
+    && token >= ruling.startToken
+    && token <= ruling.endToken
+    && (!enabledCategories || enabledCategories.has(ruling.category))
+    && matchesRulingFilter(ruling, filter)
+  ))
+  if (matches.length === 0) return null
+  const families = new Set(matches.map((ruling) => ruling.color))
+  return {
+    color: matches[0].color,
+    rulings: matches,
+    multiple: families.size > 1,
+    hasAlternate: matches.some((ruling) => ruling.hasAlternate),
+  }
+}
+
+function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparisonFilter): boolean {
+  if (filter.kind === 'all') return true
+  if (filter.kind === 'reader') {
+    return ruling.readings.some((r) => getReading(r.readingId).readerId === filter.readerId)
+  }
+  return ruling.readings.some((r) => r.readingId === filter.readingId)
+}
+
+/** Distinct usul families present on a page, for the legend/panel. */
+export function rulingCategoriesOnPage(rulings: readonly QiraatRuling[]) {
+  const seen = new Map<string, { category: string; categoryAr: string; color: string; count: number }>()
+  for (const ruling of rulings) {
+    if (!ruling.wordAnchored) continue
+    const entry = seen.get(ruling.category)
+    if (entry) entry.count += 1
+    else seen.set(ruling.category, { category: ruling.category, categoryAr: ruling.categoryAr, color: ruling.color, count: 1 })
+  }
+  return Array.from(seen.values())
+}

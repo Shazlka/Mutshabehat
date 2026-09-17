@@ -217,3 +217,62 @@ export interface QiraatPageResponse {
   variants: QiraatVariant[]
   rules: QiraatRule[]
 }
+
+/**
+ * One occurrence of an أصول (usul) ruling, anchored to a real Mushaf-1441 token span.
+ *
+ * A ruling never changes the printed rasm — it says HOW a word is performed (إمالة، تقليل، ترقيق،
+ * تغليظ، إدغام، سكت، غنة، مد، وقف …). It is therefore rendered as a COLOUR on the word, one fixed
+ * colour per usul family, so a reader can see at a glance that a ruling applies and of which kind.
+ *
+ * Distinct from `QiraatVariant` (which does change the rasm) and from `QiraatRule` (a page-level
+ * convention with no token anchor at all). Every record here was resolved against the real
+ * Mushaf-1441 word fixtures by scripts/qiraat/build_rulings.py — never hand-typed.
+ */
+export interface QiraatRulingAttribution {
+  /** Reader (Q0N) or narrator (Q0N-R0M) — whichever level the source actually used. */
+  authorityId: string
+  /** What this authority does here: إمالة / تقليل / ترقيق / إدغام … One word can carry two
+   * different actions by different groups (﴿بِٱلْهُدَىٰ﴾: إمالة for حمزة, تقليل for ورش). */
+  action: string
+  /** "وقفًا" / "وصلًا" / "بخلف عنه" — the source's own qualifier, verbatim. */
+  condition?: string
+}
+
+export interface QiraatRulingReading {
+  readingId: ReadingId
+  action: string
+  /** false when this is the second of two valid وجهان («بخلف عنه») for that Riwayah. */
+  isDefault: boolean
+}
+
+export interface QiraatRuling {
+  id: string
+  pageNumber: number
+  /** Stable category code (IMALAH_TAQLIL, IDGHAM_KABIR, TARQIQ_RA …). */
+  category: string
+  categoryAr: string
+  /** The one colour for this usul family. Same colour for إمالة and تقليل, for both إدغام kinds,
+   * for ترقيق and تغليظ, and so on — the grouping the reader asked for. */
+  color: string
+  wordAnchored: boolean
+  surah: number
+  ayah: number
+  startToken: number
+  endToken: number
+  endAyah: number
+  /** Taken verbatim from the Mushaf-1441 fixture, never hand-typed. */
+  baseText: string
+  verificationStatus: VerificationStatus
+  attribution: QiraatRulingAttribution[]
+  readings: QiraatRulingReading[]
+  /** True when some Riwayah has two valid وجهان here — the word is marked ذو وجهين. */
+  hasAlternate: boolean
+  text?: string
+  condition?: string
+  /** عد الآي only: ayah-counting schools, a taxonomy unrelated to the ten readers. */
+  countSchools?: string[]
+  notes?: string
+  createdAt: string
+  updatedAt: string
+}

@@ -1,38 +1,47 @@
 [
   {
-    "id": "v-p006-l001-lilmalaikatu",
+    "id": "v-L006-للمليكه_اسجدوا-1-w2",
     "surah": 2,
     "ayah": 34,
     "startToken": 3,
-    "endToken": 3,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "لِلْمَلَـٰٓئِكَةِ",
-    "variantText": "لِلْمَلَـٰٓئِكَةِ",
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِلْمَلَـٰٓئِكَةِ ٱسْجُدُوا۟",
+    "variantText": "لِلْمَلَٰٓئِكَةُ ٱسْجُدُوا",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L006-للمليكه_اسجدوا-1",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p006-l001-lilmalaikatu",
-        "variantId": "v-p006-l001-lilmalaikatu",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L006-للمليكه_اسجدوا-1-w2",
+        "variantId": "v-L006-للمليكه_اسجدوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 11,
-        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 6 · صفحة المصدر 11",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَأَيْنَ اضْمُمْ مَلَائِكَةِ اسْجُدُوا"
       }
     ],
-    "performanceNote": "ضم التاء حال الوصل \"لِلْمَلَائِكَةُ اسجدوا\".",
-    "notes": "الباقون بالكسر \"لِلْمَلَائِكَةِ\"."
+    "description": "بضم التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَأَيْنَ اضْمُمْ مَلَائِكَةِ اسْجُدُوا"
+      }
+    ]
   },
   {
-    "id": "v-p006-l002-azalahuma",
+    "id": "v-L006-فازلهما-1-w2",
     "surah": 2,
     "ayah": 36,
     "startToken": 1,
@@ -42,29 +51,42 @@
     "variantText": "فَأَزَالَهُمَا",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q06-R01",
       "Q06-R02"
     ],
+    "locusId": "L006-فازلهما-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p006-l002-azalahuma",
-        "variantId": "v-p006-l002-azalahuma",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L006-فازلهما-1-w2",
+        "variantId": "v-L006-فازلهما-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 11,
-        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 6 · صفحة المصدر 11",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي فَأَزَلَّ اللَّامَ خَفِّفْ لِحَمْزَةٍ وَزِدْ أَلِفًا مِنْ قَبْلِهِ فَتَكَمَّلَا — D: أَزَلَّ فَثَا"
       }
     ],
-    "uthmaniText": "فَأَزَالَهُمَا",
-    "notes": "إثبات ألف بعد الزاي مع تخفيف اللام عند حمزة؛ الباقون بدون الألف مع تشديد اللام."
+    "description": "بألف وتخفيف اللام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي فَأَزَلَّ اللَّامَ خَفِّفْ لِحَمْزَةٍ وَزِدْ أَلِفًا مِنْ قَبْلِهِ فَتَكَمَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَزَلَّ فَثَا"
+      }
+    ]
   },
   {
-    "id": "v-p006-l003-adam-1",
+    "id": "v-L006-ADAM-KALIMAT-w2",
     "surah": 2,
     "ayah": 37,
     "startToken": 2,
@@ -74,61 +96,69 @@
     "variantText": "ءَادَمَ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q02-R01",
       "Q02-R02"
     ],
+    "locusId": "L006-ADAM-KALIMAT",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p006-l003-adam-1",
-        "variantId": "v-p006-l003-adam-1",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L006-ADAM-KALIMAT-w2",
+        "variantId": "v-L006-ADAM-KALIMAT-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 11,
-        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 6 · صفحة المصدر 11",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَآدَمَ فَارْفَعْ نَاصِبًا كَلِمَاتِهِ بِكَسْرٍ وَلِلْمَكِّيِّ عَكْسٌ تَحَوَّلَا"
       }
     ],
-    "uthmaniText": "ءَادَمَ",
-    "locusId": "p6-adam-kalimat",
-    "locusType": "multi_word_variant",
-    "notes": "جزء من قراءة مزدوجة الكلمة مع \"كلمات\" في نفس الآية (رفع/نصب متبادلان)."
+    "description": "بنصب آدم ورفع كلمات",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَآدَمَ فَارْفَعْ نَاصِبًا كَلِمَاتِهِ بِكَسْرٍ وَلِلْمَكِّيِّ عَكْسٌ تَحَوَّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p006-l003-kalimat-1",
+    "id": "v-L006-ADAM-KALIMAT-w2",
     "surah": 2,
     "ayah": 37,
     "startToken": 5,
     "endToken": 5,
     "operation": "REPLACE",
     "hafsText": "كَلِمَـٰتٍۢ",
-    "variantText": "كَلِمَاتٌ",
+    "variantText": "كَلِمَٰتٌ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q02-R01",
       "Q02-R02"
     ],
+    "locusId": "L006-ADAM-KALIMAT",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p006-l003-kalimat-1",
-        "variantId": "v-p006-l003-kalimat-1",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L006-ADAM-KALIMAT-w2",
+        "variantId": "v-L006-ADAM-KALIMAT-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 11,
-        "sourceReference": "صفحة المصحف 6 · صفحة PDF 11",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 6 · صفحة المصدر 11",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
       }
     ],
-    "uthmaniText": "كَلِمَاتٌ",
-    "locusId": "p6-adam-kalimat",
-    "locusType": "multi_word_variant",
-    "notes": "عند ابن كثير: \"آدَمَ\" بالنصب و\"كَلِمَاتٌ\" بالرفع (عكس البنية عند الباقين)، فالفعل \"تلقّى\" يُسنَد إلى الكلمات لا إلى آدم."
+    "description": "برفع كلمات",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

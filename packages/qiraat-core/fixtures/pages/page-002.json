@@ -1,204 +1,44 @@
 [
   {
-    "id": "v-p002-l001-alm-sakt",
+    "id": "v-L002-الم-1-w2",
     "surah": 2,
     "ayah": 1,
     "startToken": 1,
     "endToken": 1,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "الٓمٓ",
     "variantText": "الٓمٓ",
     "differenceType": "WAQF",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L002-الم-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بالسكت على حروف التهجي",
     "sources": [
       {
-        "id": "s-v-p002-l001-alm-sakt",
-        "variantId": "v-p002-l001-alm-sakt",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L002-الم-1-w2",
+        "variantId": "v-L002-الم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 7,
-        "sourceReference": "صفحة المصحف 2 · صفحة PDF 7",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 2 · صفحة المصدر 7",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: حُرُوفَ التَّهَجِّي افْصِلْ بِسَكْتٍ كَحَا أَلِفْ أَلَا"
       }
     ],
-    "performanceNote": "السكت على حروف الهجاء (الألف، اللام، الميم) دون تنفّس، لا يغيّر الرسم."
-  },
-  {
-    "id": "v-p002-l002-fihi-silah",
-    "surah": 2,
-    "ayah": 2,
-    "startToken": 5,
-    "endToken": 5,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "فِيهِ ۛ",
-    "variantText": "فِيهِ ۛ",
-    "differenceType": "SILAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [
-      "Q02-R01",
-      "Q02-R02"
-    ],
-    "sources": [
+    "description": "بالسكت على حروف التهجي",
+    "wajhIndex": 2,
+    "evidence": [
       {
-        "id": "s-v-p002-l002-fihi-silah",
-        "variantId": "v-p002-l002-fihi-silah",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 7,
-        "sourceReference": "صفحة المصحف 2 · صفحة PDF 7",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "source": "D",
+        "text": "حُرُوفَ التَّهَجِّي افْصِلْ بِسَكْتٍ كَحَا أَلِفْ أَلَا"
       }
-    ],
-    "performanceNote": "صلة هاء الضمير بياء في الوصل (تُشبع الكسرة فتتولّد ياء مدّية)، لا يغيّر الرسم.",
-    "notes": "السوسي عن أبي عمرو يُدغم إدغامًا كبيرًا في مواضع مشابهة عمومًا، لكن هذا السجل لا يُثبت ذلك هنا تحديدًا — لم يَرِد نص صريح من المستخدم يربط قاعدة الإدغام الكبير بهذا الموضع بعينه، فلم يُدرَج تجنّبًا للتخمين."
-  },
-  {
-    "id": "v-p002-l003-huda-taqlil",
-    "surah": 2,
-    "ayah": 2,
-    "startToken": 6,
-    "endToken": 6,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "هُدًۭى",
-    "variantText": "هُدًۭى",
-    "differenceType": "IMALAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [
-      "Q01-R02"
-    ],
-    "sources": [
-      {
-        "id": "s-v-p002-l003-huda-taqlil",
-        "variantId": "v-p002-l003-huda-taqlil",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 7,
-        "sourceReference": "صفحة المصحف 2 · صفحة PDF 7",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
-      }
-    ],
-    "locusId": "p2-huda",
-    "locusType": "word_variant",
-    "performanceNote": "التقليل بخلف عنه وقفًا."
-  },
-  {
-    "id": "v-p002-l003-huda-imalah",
-    "surah": 2,
-    "ayah": 2,
-    "startToken": 6,
-    "endToken": 6,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "هُدًۭى",
-    "variantText": "هُدًۭى",
-    "differenceType": "IMALAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
-    ],
-    "sources": [
-      {
-        "id": "s-v-p002-l003-huda-imalah",
-        "variantId": "v-p002-l003-huda-imalah",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 7,
-        "sourceReference": "صفحة المصحف 2 · صفحة PDF 7",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
-      }
-    ],
-    "locusId": "p2-huda",
-    "locusType": "word_variant",
-    "performanceNote": "الإمالة وقفًا.",
-    "notes": "الباقون يقفون بالفتح."
-  },
-  {
-    "id": "v-p002-l003-huda2-taqlil",
-    "surah": 2,
-    "ayah": 5,
-    "startToken": 3,
-    "endToken": 3,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "هُدًۭى",
-    "variantText": "هُدًۭى",
-    "differenceType": "IMALAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [
-      "Q01-R02"
-    ],
-    "sources": [
-      {
-        "id": "s-v-p002-l003-huda2-taqlil",
-        "variantId": "v-p002-l003-huda2-taqlil",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 7,
-        "sourceReference": "صفحة المصحف 2 · صفحة PDF 7",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
-      }
-    ],
-    "locusId": "p2-huda",
-    "locusType": "word_variant",
-    "performanceNote": "التقليل بخلف عنه وقفًا (نفس حكم 2:2 يُطبَّق هنا)."
-  },
-  {
-    "id": "v-p002-l003-huda2-imalah",
-    "surah": 2,
-    "ayah": 5,
-    "startToken": 3,
-    "endToken": 3,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "هُدًۭى",
-    "variantText": "هُدًۭى",
-    "differenceType": "IMALAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
-    ],
-    "sources": [
-      {
-        "id": "s-v-p002-l003-huda2-imalah",
-        "variantId": "v-p002-l003-huda2-imalah",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 7,
-        "sourceReference": "صفحة المصحف 2 · صفحة PDF 7",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
-      }
-    ],
-    "locusId": "p2-huda",
-    "locusType": "word_variant",
-    "performanceNote": "الإمالة وقفًا (نفس حكم 2:2 يُطبَّق هنا)."
+    ]
   }
 ]

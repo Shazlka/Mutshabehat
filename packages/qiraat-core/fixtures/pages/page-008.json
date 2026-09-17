@@ -1,6 +1,6 @@
 [
   {
-    "id": "v-p008-l001-waadna",
+    "id": "v-L008-واعدنا-1-w2",
     "surah": 2,
     "ayah": 51,
     "startToken": 2,
@@ -8,10 +8,10 @@
     "operation": "REPLACE",
     "hafsText": "وَٰعَدْنَا",
     "variantText": "وَعَدْنَا",
-    "differenceType": "LETTER",
+    "differenceType": "ORTHOGRAPHY",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q03-R01",
       "Q03-R02",
@@ -20,81 +20,230 @@
       "Q09-R01",
       "Q09-R02"
     ],
+    "locusId": "L008-واعدنا-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p008-l001-waadna",
-        "variantId": "v-p008-l001-waadna",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L008-واعدنا-1-w2",
+        "variantId": "v-L008-واعدنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 13,
-        "sourceReference": "صفحة المصحف 8 · صفحة PDF 13",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 8 · صفحة المصدر 13",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعَدْنَا جَمِيعًا دُونَ مَا أَلِفٍ حَلَا — D: وَعَدْنَا اتْلُ"
       }
     ],
-    "uthmaniText": "وَعَدْنَا",
-    "notes": "حذف الألف عند أبي عمرو وأبي جعفر ويعقوب؛ الباقون بإثبات الألف \"وَاعَدْنَا\"."
+    "description": "بلا ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعَدْنَا جَمِيعًا دُونَ مَا أَلِفٍ حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَعَدْنَا اتْلُ"
+      }
+    ]
   },
   {
-    "id": "v-p008-l002-bariikum-13",
+    "id": "v-L008-باريكم-1-w2",
     "surah": 2,
     "ayah": 54,
     "startToken": 13,
     "endToken": 13,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "بَارِئِكُمْ",
-    "variantText": "بَارِئِكُمْ",
-    "differenceType": "HAMZ",
+    "variantText": "بَارِئْكُمْ",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [],
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "L008-باريكم-1",
+    "locusType": "word_variant",
+    "notes": "أبو عمرو بالإسكان، وللدوري عنه وجه ثانٍ بالاختلاس (بخلف عنه).",
     "sources": [
       {
-        "id": "s-v-p008-l002-bariikum-13",
-        "variantId": "v-p008-l002-bariikum-13",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L008-باريكم-1-w2",
+        "variantId": "v-L008-باريكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 13,
-        "sourceReference": "صفحة المصحف 8 · صفحة PDF 13",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 8 · صفحة المصدر 13",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
       }
     ],
-    "locusId": "p8-bariikum",
-    "locusType": "word_variant",
-    "performanceNote": "اختلاف أداء متعدد الأوجه في همزة \"بارئكم\" بين السكون المحض، الاختلاس، إتمام الكسرة، والإمالة مع تحقيق الهمزة — البيانات المُدخلة تنسب أوجهًا للسوسي والدوري عن أبي عمرو، ولحمزة، وللدوري عن الكسائي، لكنها غير مؤكدة بدقة كافية للربط الحاسم بين كل وجه ورواته. راجع المصدر الأصلي قبل أي اعتماد.",
-    "notes": "مرشّحات غير مؤكدة (للتتبع فقط): إسكان الهمزة (السوسي عن أبي عمرو)؛ الإسكان مع جواز الاختلاس (الدوري عن أبي عمرو)؛ إتمام الكسرة (حمزة، مع حكم خاص بالوقف على الهمز يُراجَع من المصدر)؛ الإمالة مع تحقيق الهمزة (الدوري عن الكسائي)؛ إتمام كسرة الهمزة وترك الإمالة عند الباقين."
+    "description": "بإسكان الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ]
   },
   {
-    "id": "v-p008-l002-bariikum-20",
+    "id": "v-L008-باريكم-1-w3",
+    "surah": 2,
+    "ayah": 54,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "بَارِئِكُمْ",
+    "variantText": "بَارِئِكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "L008-باريكم-1",
+    "locusType": "performance_variant",
+    "performanceNote": "باختلاس كسرة الهمزة",
+    "notes": "أبو عمرو بالإسكان، وللدوري عنه وجه ثانٍ بالاختلاس (بخلف عنه).",
+    "sources": [
+      {
+        "id": "s-L008-باريكم-1-w3",
+        "variantId": "v-L008-باريكم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 13,
+        "sourceReference": "صفحة المصحف 8 · صفحة المصدر 13",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ],
+    "description": "باختلاس كسرة الهمزة",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L008-باريكم-2-w2",
     "surah": 2,
     "ayah": 54,
     "startToken": 20,
     "endToken": 20,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "بَارِئِكُمْ",
-    "variantText": "بَارِئِكُمْ",
-    "differenceType": "HAMZ",
+    "variantText": "بَارِئْكُمْ",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [],
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "L008-باريكم-2",
+    "locusType": "word_variant",
+    "notes": "أبو عمرو بالإسكان، وللدوري عنه وجه ثانٍ بالاختلاس (بخلف عنه).",
     "sources": [
       {
-        "id": "s-v-p008-l002-bariikum-20",
-        "variantId": "v-p008-l002-bariikum-20",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L008-باريكم-2-w2",
+        "variantId": "v-L008-باريكم-2-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 13,
-        "sourceReference": "صفحة المصحف 8 · صفحة PDF 13",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 8 · صفحة المصدر 13",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
       }
     ],
-    "locusId": "p8-bariikum",
-    "locusType": "word_variant",
-    "performanceNote": "اختلاف أداء متعدد الأوجه في همزة \"بارئكم\" بين السكون المحض، الاختلاس، إتمام الكسرة، والإمالة مع تحقيق الهمزة — البيانات المُدخلة تنسب أوجهًا للسوسي والدوري عن أبي عمرو، ولحمزة، وللدوري عن الكسائي، لكنها غير مؤكدة بدقة كافية للربط الحاسم بين كل وجه ورواته. راجع المصدر الأصلي قبل أي اعتماد.",
-    "notes": "مرشّحات غير مؤكدة (للتتبع فقط): إسكان الهمزة (السوسي عن أبي عمرو)؛ الإسكان مع جواز الاختلاس (الدوري عن أبي عمرو)؛ إتمام الكسرة (حمزة، مع حكم خاص بالوقف على الهمز يُراجَع من المصدر)؛ الإمالة مع تحقيق الهمزة (الدوري عن الكسائي)؛ إتمام كسرة الهمزة وترك الإمالة عند الباقين."
+    "description": "بإسكان الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L008-باريكم-2-w3",
+    "surah": 2,
+    "ayah": 54,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "بَارِئِكُمْ",
+    "variantText": "بَارِئِكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "L008-باريكم-2",
+    "locusType": "performance_variant",
+    "performanceNote": "باختلاس كسرة الهمزة",
+    "notes": "أبو عمرو بالإسكان، وللدوري عنه وجه ثانٍ بالاختلاس (بخلف عنه).",
+    "sources": [
+      {
+        "id": "s-L008-باريكم-2-w3",
+        "variantId": "v-L008-باريكم-2-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 13,
+        "sourceReference": "صفحة المصحف 8 · صفحة المصدر 13",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ],
+    "description": "باختلاس كسرة الهمزة",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ]
   }
 ]

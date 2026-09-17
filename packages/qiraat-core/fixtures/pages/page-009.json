@@ -1,164 +1,283 @@
 [
   {
-    "id": "v-p009-l001-yughfar",
+    "id": "v-L009-نغفر_لكم-1-w2",
     "surah": 2,
     "ayah": 58,
     "startToken": 16,
-    "endToken": 16,
+    "endToken": 17,
     "operation": "REPLACE",
-    "hafsText": "نَّغْفِرْ",
-    "variantText": "يُغْفَرْ",
-    "differenceType": "LETTER",
+    "hafsText": "نَّغْفِرْ لَكُمْ",
+    "variantText": "يُغْفَرْ لَكُمْ",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q01-R01",
       "Q01-R02",
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L009-نغفر_لكم-1",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p009-l001-yughfar",
-        "variantId": "v-p009-l001-yughfar",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L009-نغفر_لكم-1-w2",
+        "variantId": "v-L009-نغفر_لكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 14,
-        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 9 · صفحة المصدر 14",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي الأَعْرَافِ نَغْفِرْ بِنُونِهِ وَلَا ضَمَّ وَاكْسِرْ فَاءَهُ حِينَ ظَلَّلَا — SH: وَذَكَّرْ هُنَا أَصْلًا وَلِلشَّامِ أَنَّثُوا وَعَنْ نَافِعٍ مَعَهُ فِي الأَعْرَافِ وُصَّلَا"
       }
     ],
-    "uthmaniText": "يُغْفَرْ",
-    "locusId": "p9-naghfir",
-    "locusType": "word_variant",
-    "notes": "ياء مضمومة، فتح الفاء، بناء للمفعول، عند نافع وأبي جعفر."
+    "description": "بالياء المضمومة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي الأَعْرَافِ نَغْفِرْ بِنُونِهِ وَلَا ضَمَّ وَاكْسِرْ فَاءَهُ حِينَ ظَلَّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَذَكَّرْ هُنَا أَصْلًا وَلِلشَّامِ أَنَّثُوا وَعَنْ نَافِعٍ مَعَهُ فِي الأَعْرَافِ وُصَّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p009-l001-tughfar",
+    "id": "v-L009-نغفر_لكم-1-w3",
     "surah": 2,
     "ayah": 58,
     "startToken": 16,
-    "endToken": 16,
+    "endToken": 17,
     "operation": "REPLACE",
-    "hafsText": "نَّغْفِرْ",
-    "variantText": "تُغْفَرْ",
-    "differenceType": "LETTER",
+    "hafsText": "نَّغْفِرْ لَكُمْ",
+    "variantText": "تُغْفَرْ لَكُمْ",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q04-R01",
       "Q04-R02"
     ],
+    "locusId": "L009-نغفر_لكم-1",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p009-l001-tughfar",
-        "variantId": "v-p009-l001-tughfar",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L009-نغفر_لكم-1-w3",
+        "variantId": "v-L009-نغفر_لكم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 14,
-        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 9 · صفحة المصدر 14",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي الأَعْرَافِ نَغْفِرْ بِنُونِهِ وَلَا ضَمَّ وَاكْسِرْ فَاءَهُ حِينَ ظَلَّلَا — SH: وَذَكَّرْ هُنَا أَصْلًا وَلِلشَّامِ أَنَّثُوا وَعَنْ نَافِعٍ مَعَهُ فِي الأَعْرَافِ وُصَّلَا"
       }
     ],
-    "uthmaniText": "تُغْفَرْ",
-    "locusId": "p9-naghfir",
-    "locusType": "word_variant",
-    "notes": "تاء مضمومة، فتح الفاء، بناء للمفعول، عند ابن عامر. الباقون بنون مفتوحة وكسر الفاء بناء للفاعل \"نَغْفِرْ\"."
+    "description": "بالتاء المضمومة",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي الأَعْرَافِ نَغْفِرْ بِنُونِهِ وَلَا ضَمَّ وَاكْسِرْ فَاءَهُ حِينَ ظَلَّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَذَكَّرْ هُنَا أَصْلًا وَلِلشَّامِ أَنَّثُوا وَعَنْ نَافِعٍ مَعَهُ فِي الأَعْرَافِ وُصَّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p009-l002-qila",
+    "id": "v-L009-قيل-1-w2",
     "surah": 2,
     "ayah": 59,
     "startToken": 7,
     "endToken": 7,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "قِيلَ",
     "variantText": "قِيلَ",
-    "differenceType": "IMALAH",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q04-R01",
       "Q07-R01",
       "Q07-R02",
       "Q09-R01"
     ],
+    "locusId": "L009-قيل-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام كسر القاف ضمًّا",
     "sources": [
       {
-        "id": "s-v-p009-l002-qila",
-        "variantId": "v-p009-l002-qila",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L009-قيل-1-w2",
+        "variantId": "v-L009-قيل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 14,
-        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 9 · صفحة المصدر 14",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
       }
     ],
-    "performanceNote": "إشمام الكسرة الضم.",
-    "notes": "الباقون بالكسرة الخالصة (نفس حكم 2:11 و2:13)."
+    "description": "بإشمام كسر القاف ضمًّا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ]
   },
   {
-    "id": "v-p009-l003-alayhim-hameed",
+    "id": "v-L009-عليهم_الذله-1-w2",
     "surah": 2,
     "ayah": 61,
     "startToken": 38,
-    "endToken": 38,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "عَلَيْهِمُ",
-    "variantText": "عَلَيْهِمُ",
+    "endToken": 39,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلذِّلَّةُ",
+    "variantText": "عَلَيْهِمِ ٱلذِّلَّةُ",
     "differenceType": "HARAKAH",
-    "verificationStatus": "NEEDS_MANUAL_REVIEW",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [],
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L009-عليهم_الذله-1",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p009-l003-alayhim-hameed",
-        "variantId": "v-p009-l003-alayhim-hameed",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L009-عليهم_الذله-1-w2",
+        "variantId": "v-L009-عليهم_الذله-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 14,
-        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 9 · صفحة المصدر 14",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا — SH: مَعَ الْكَسْرِ قَبْلَ الْهَا أَوِ الْيَاءِ سَاكِنًا وَفِي الْوَصْلِ كَسْرُ الْهَاءِ بِالضَّمِّ شَمْلَلَا"
       }
     ],
-    "performanceNote": "بنية أداء مركّبة لهاء ومیم الضمير في \"عليهم\" هنا (ضم الهاء صراحةً عند حمزة ويعقوب، تفصيل بين الوصل والوقف عند الكسائي وخلف العاشر، وتفصيل آخر عند أبي عمرو) — لم تتضح تفاصيلها الدقيقة بما يكفي من البيانات المُدخلة للفصل بين الحالات بثقة. راجع المصدر الأصلي قبل أي اعتماد.",
-    "notes": "مرشّحات غير مؤكدة (للتتبع فقط): ضم الهاء (حمزة، يعقوب)؛ ضم/كسر الهاء بحسب الوصل والوقف (الكسائي، خلف العاشر)؛ كسر الهاء مع تفصيل في الميم (أبو عمرو)؛ الباقون بحسب أصلهم المعتاد."
+    "description": "بكسر الهاء والميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      },
+      {
+        "source": "SH",
+        "text": "مَعَ الْكَسْرِ قَبْلَ الْهَا أَوِ الْيَاءِ سَاكِنًا وَفِي الْوَصْلِ كَسْرُ الْهَاءِ بِالضَّمِّ شَمْلَلَا"
+      }
+    ]
   },
   {
-    "id": "v-p009-l004-nabiyyin",
+    "id": "v-L009-عليهم_الذله-1-w3",
+    "surah": 2,
+    "ayah": 61,
+    "startToken": 38,
+    "endToken": 39,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلذِّلَّةُ",
+    "variantText": "عَلَيْهُمُ ٱلذِّلَّةُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L009-عليهم_الذله-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L009-عليهم_الذله-1-w3",
+        "variantId": "v-L009-عليهم_الذله-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 14,
+        "sourceReference": "صفحة المصحف 9 · صفحة المصدر 14",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا — SH: مَعَ الْكَسْرِ قَبْلَ الْهَا أَوِ الْيَاءِ سَاكِنًا وَفِي الْوَصْلِ كَسْرُ الْهَاءِ بِالضَّمِّ شَمْلَلَا"
+      }
+    ],
+    "description": "بضم الهاء والميم",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      },
+      {
+        "source": "SH",
+        "text": "مَعَ الْكَسْرِ قَبْلَ الْهَا أَوِ الْيَاءِ سَاكِنًا وَفِي الْوَصْلِ كَسْرُ الْهَاءِ بِالضَّمِّ شَمْلَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L009-النبيين-1-w2",
     "surah": 2,
     "ayah": 61,
     "startToken": 52,
     "endToken": 52,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "ٱلنَّبِيِّـۧنَ",
-    "variantText": "ٱلنَّبِيِّـۧنَ",
+    "variantText": "ٱلنَّبِيـِٔينَ",
     "differenceType": "HAMZ",
-    "verificationStatus": "NEEDS_MANUAL_REVIEW",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [],
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L009-النبيين-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p009-l004-nabiyyin",
-        "variantId": "v-p009-l004-nabiyyin",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L009-النبيين-1-w2",
+        "variantId": "v-L009-النبيين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 14,
-        "sourceReference": "صفحة المصحف 9 · صفحة PDF 14",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 9 · صفحة المصدر 14",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا — D: أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
       }
     ],
-    "performanceNote": "مرشّح غير مؤكد: إثبات همزة \"النبيئين\" عند قالون وورش عن نافع، مقابل ترك الهمز \"النبيّين\" عند الباقين — التفاصيل الدقيقة (بما فيها أي أثر على المدّ) لم تُؤكَّد من مصدر أساسي. راجع المصدر الأصلي قبل أي اعتماد.",
-    "notes": "مرشّح فقط، غير مُدرَج كقراءة فعلية (readingIds فارغة) لعدم اليقين."
+    "description": "بالهمز مع المد المنفصل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
+      }
+    ]
   }
 ]

@@ -1,14 +1,14 @@
 [
   {
-    "id": "v-p015-l001-yamaluna",
+    "id": "v-L015-ايديهم-1-w2",
     "surah": 2,
-    "ayah": 96,
-    "startToken": 25,
-    "endToken": 25,
+    "ayah": 95,
+    "startToken": 6,
+    "endToken": 6,
     "operation": "REPLACE",
-    "hafsText": "يَعْمَلُونَ",
-    "variantText": "تَعْمَلُونَ",
-    "differenceType": "LETTER",
+    "hafsText": "أَيْدِيهِمْ ۗ",
+    "variantText": "أَيْدِيهُمْ",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -16,30 +16,80 @@
       "Q09-R01",
       "Q09-R02"
     ],
+    "locusId": "L015-ايديهم-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l001-yamaluna",
-        "variantId": "v-p015-l001-yamaluna",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-ايديهم-1-w2",
+        "variantId": "v-L015-ايديهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
       }
     ],
-    "uthmaniText": "تَعْمَلُونَ",
-    "notes": "الباقون بالياء موافقةً للرسم الأساس."
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
   },
   {
-    "id": "v-p015-l002-jibril-97",
+    "id": "v-L015-يعملون-1-w2",
+    "surah": 2,
+    "ayah": 96,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "يَعْمَلُونَ",
+    "variantText": "تَعْمَلُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L015-يعملون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L015-يعملون-1-w2",
+        "variantId": "v-L015-يعملون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 20,
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: يَعْبُدُو خَاطِبْ فَشَا يَعْمَلُونَ قُلْ حَوَىٰ"
+      }
+    ],
+    "description": "بالتاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "يَعْبُدُو خَاطِبْ فَشَا يَعْمَلُونَ قُلْ حَوَىٰ"
+      }
+    ]
+  },
+  {
+    "id": "v-L015-JIBRIL-w2",
     "surah": 2,
     "ayah": 97,
     "startToken": 5,
     "endToken": 5,
     "operation": "REPLACE",
     "hafsText": "لِّجِبْرِيلَ",
-    "variantText": "لِّجَبْرِيلَ",
+    "variantText": "لِجَبْرِيلَ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -48,64 +98,68 @@
       "Q02-R01",
       "Q02-R02"
     ],
+    "locusId": "L015-JIBRIL",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l002-jibril-97",
-        "variantId": "v-p015-l002-jibril-97",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-JIBRIL-w2",
+        "variantId": "v-L015-JIBRIL-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
       }
     ],
-    "locusId": "p15-jibril",
-    "locusType": "word_variant",
-    "notes": "ابن كثير بفتح الجيم بلا همز \"جَبْرِيلَ\". الحرف اللاصق \"لِّ\" من الآية محفوظ كما في الرسم الأساس."
+    "description": "بفتح الجيم",
+    "wajhIndex": 2,
+    "evidence": []
   },
   {
-    "id": "v-p015-l002-jibril-97-shuba",
+    "id": "v-L015-JIBRIL-w3",
     "surah": 2,
     "ayah": 97,
     "startToken": 5,
     "endToken": 5,
     "operation": "REPLACE",
     "hafsText": "لِّجِبْرِيلَ",
-    "variantText": "لِّجَبْرَئِلَ",
-    "differenceType": "HAMZ",
+    "variantText": "لِجَبْرَئِلَ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q05-R01"
     ],
+    "locusId": "L015-JIBRIL",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l002-jibril-97-shuba",
-        "variantId": "v-p015-l002-jibril-97-shuba",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-JIBRIL-w3",
+        "variantId": "v-L015-JIBRIL-w3",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
       }
     ],
-    "locusId": "p15-jibril",
-    "locusType": "word_variant",
-    "notes": "شعبة عن عاصم بالهمز بلا ياء قبل اللام \"جَبْرَئِلَ\"."
+    "description": "بفتح الجيم والراء وهمزة مكسورة بلا ياء",
+    "wajhIndex": 3,
+    "evidence": []
   },
   {
-    "id": "v-p015-l002-jibril-97-hamza",
+    "id": "v-L015-JIBRIL-w4",
     "surah": 2,
     "ayah": 97,
     "startToken": 5,
     "endToken": 5,
     "operation": "REPLACE",
     "hafsText": "لِّجِبْرِيلَ",
-    "variantText": "لِّجَبْرَئِيلَ",
-    "differenceType": "HAMZ",
+    "variantText": "لِجَبْرَئِيلَ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -117,24 +171,26 @@
       "Q10-R01",
       "Q10-R02"
     ],
+    "locusId": "L015-JIBRIL",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l002-jibril-97-hamza",
-        "variantId": "v-p015-l002-jibril-97-hamza",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-JIBRIL-w4",
+        "variantId": "v-L015-JIBRIL-w4",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
       }
     ],
-    "locusId": "p15-jibril",
-    "locusType": "word_variant",
-    "notes": "حمزة والكسائي وخلف العاشر بالهمز مع الياء \"جَبْرَئِيلَ\". الباقون (نافع، أبو عمرو، ابن عامر، حفص عن عاصم، أبو جعفر، يعقوب) \"جِبْرِيلَ\" موافقةً للرسم الأساس."
+    "description": "بفتح الجيم والراء وهمزة مكسورة وياء",
+    "wajhIndex": 4,
+    "evidence": []
   },
   {
-    "id": "v-p015-l002-jibril-98",
+    "id": "v-L015-JIBRIL-w2",
     "surah": 2,
     "ayah": 98,
     "startToken": 7,
@@ -150,24 +206,36 @@
       "Q02-R01",
       "Q02-R02"
     ],
+    "locusId": "L015-JIBRIL",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l002-jibril-98",
-        "variantId": "v-p015-l002-jibril-98",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-JIBRIL-w2",
+        "variantId": "v-L015-JIBRIL-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجِبْرِيلَ فَتْحُ الْجِيمِ وَالرَّا وَبَعْدَهَا وَعَىٰ هَمْزَةً مَكْسُورَةً صُحْبَةٌ وِلَا — SH: بِحَيْثُ أَتَىٰ وَالْيَاءَ يَحْذِفُ شُعْبَةٌ وَمَكِيُّهُمْ فِي الْجِيمِ بِالْفَتْحِ وُكِّلَا"
       }
     ],
-    "locusId": "p15-jibril",
-    "locusType": "word_variant",
-    "notes": "نفس حكم 2:97 يُطبَّق هنا (موضع ثانٍ لنفس الكلمة في نفس الصفحة)."
+    "description": "بفتح الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجِبْرِيلَ فَتْحُ الْجِيمِ وَالرَّا وَبَعْدَهَا وَعَىٰ هَمْزَةً مَكْسُورَةً صُحْبَةٌ وِلَا"
+      },
+      {
+        "source": "SH",
+        "text": "بِحَيْثُ أَتَىٰ وَالْيَاءَ يَحْذِفُ شُعْبَةٌ وَمَكِيُّهُمْ فِي الْجِيمِ بِالْفَتْحِ وُكِّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p015-l002-jibril-98-shuba",
+    "id": "v-L015-JIBRIL-w3",
     "surah": 2,
     "ayah": 98,
     "startToken": 7,
@@ -175,30 +243,43 @@
     "operation": "REPLACE",
     "hafsText": "وَجِبْرِيلَ",
     "variantText": "وَجَبْرَئِلَ",
-    "differenceType": "HAMZ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q05-R01"
     ],
+    "locusId": "L015-JIBRIL",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l002-jibril-98-shuba",
-        "variantId": "v-p015-l002-jibril-98-shuba",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-JIBRIL-w3",
+        "variantId": "v-L015-JIBRIL-w3",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجِبْرِيلَ فَتْحُ الْجِيمِ وَالرَّا وَبَعْدَهَا وَعَىٰ هَمْزَةً مَكْسُورَةً صُحْبَةٌ وِلَا — SH: بِحَيْثُ أَتَىٰ وَالْيَاءَ يَحْذِفُ شُعْبَةٌ وَمَكِيُّهُمْ فِي الْجِيمِ بِالْفَتْحِ وُكِّلَا"
       }
     ],
-    "locusId": "p15-jibril",
-    "locusType": "word_variant"
+    "description": "بفتح الجيم والراء وهمزة مكسورة بلا ياء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجِبْرِيلَ فَتْحُ الْجِيمِ وَالرَّا وَبَعْدَهَا وَعَىٰ هَمْزَةً مَكْسُورَةً صُحْبَةٌ وِلَا"
+      },
+      {
+        "source": "SH",
+        "text": "بِحَيْثُ أَتَىٰ وَالْيَاءَ يَحْذِفُ شُعْبَةٌ وَمَكِيُّهُمْ فِي الْجِيمِ بِالْفَتْحِ وُكِّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p015-l002-jibril-98-hamza",
+    "id": "v-L015-JIBRIL-w4",
     "surah": 2,
     "ayah": 98,
     "startToken": 7,
@@ -206,7 +287,7 @@
     "operation": "REPLACE",
     "hafsText": "وَجِبْرِيلَ",
     "variantText": "وَجَبْرَئِيلَ",
-    "differenceType": "HAMZ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -218,23 +299,36 @@
       "Q10-R01",
       "Q10-R02"
     ],
+    "locusId": "L015-JIBRIL",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l002-jibril-98-hamza",
-        "variantId": "v-p015-l002-jibril-98-hamza",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-JIBRIL-w4",
+        "variantId": "v-L015-JIBRIL-w4",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجِبْرِيلَ فَتْحُ الْجِيمِ وَالرَّا وَبَعْدَهَا وَعَىٰ هَمْزَةً مَكْسُورَةً صُحْبَةٌ وِلَا — SH: بِحَيْثُ أَتَىٰ وَالْيَاءَ يَحْذِفُ شُعْبَةٌ وَمَكِيُّهُمْ فِي الْجِيمِ بِالْفَتْحِ وُكِّلَا"
       }
     ],
-    "locusId": "p15-jibril",
-    "locusType": "word_variant"
+    "description": "بفتح الجيم والراء وهمزة مكسورة وياء",
+    "wajhIndex": 4,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجِبْرِيلَ فَتْحُ الْجِيمِ وَالرَّا وَبَعْدَهَا وَعَىٰ هَمْزَةً مَكْسُورَةً صُحْبَةٌ وِلَا"
+      },
+      {
+        "source": "SH",
+        "text": "بِحَيْثُ أَتَىٰ وَالْيَاءَ يَحْذِفُ شُعْبَةٌ وَمَكِيُّهُمْ فِي الْجِيمِ بِالْفَتْحِ وُكِّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p015-l003-mikal-nafi",
+    "id": "v-L015-وميكال-1-w2",
     "surah": 2,
     "ayah": 98,
     "startToken": 8,
@@ -242,7 +336,7 @@
     "operation": "REPLACE",
     "hafsText": "وَمِيكَىٰلَ",
     "variantText": "وَمِيكَائِلَ",
-    "differenceType": "HAMZ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -252,24 +346,32 @@
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L015-وميكال-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l003-mikal-nafi",
-        "variantId": "v-p015-l003-mikal-nafi",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-وميكال-1-w2",
+        "variantId": "v-L015-وميكال-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَدَعْ يَاءَ مِيكَائِيلَ وَالْهَمْزَ قَبْلَهُ عَلَىٰ حُجَّةٍ وَالْيَاءُ يُحْذَفُ أَجْمَلَا"
       }
     ],
-    "locusId": "p15-mikal",
-    "locusType": "word_variant",
-    "notes": "نافع وأبو جعفر \"مِيكَائِلَ\" (بالهمز بلا ياء)."
+    "description": "بالهمز بلا ياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَدَعْ يَاءَ مِيكَائِيلَ وَالْهَمْزَ قَبْلَهُ عَلَىٰ حُجَّةٍ وَالْيَاءُ يُحْذَفُ أَجْمَلَا"
+      }
+    ]
   },
   {
-    "id": "v-p015-l003-mikal-hamza",
+    "id": "v-L015-وميكال-1-w3",
     "surah": 2,
     "ayah": 98,
     "startToken": 8,
@@ -277,7 +379,7 @@
     "operation": "REPLACE",
     "hafsText": "وَمِيكَىٰلَ",
     "variantText": "وَمِيكَائِيلَ",
-    "differenceType": "HAMZ",
+    "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -294,20 +396,28 @@
       "Q10-R01",
       "Q10-R02"
     ],
+    "locusId": "L015-وميكال-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p015-l003-mikal-hamza",
-        "variantId": "v-p015-l003-mikal-hamza",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L015-وميكال-1-w3",
+        "variantId": "v-L015-وميكال-1-w3",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 20,
-        "sourceReference": "صفحة المصحف 15 · صفحة PDF 20",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 15 · صفحة المصدر 20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَدَعْ يَاءَ مِيكَائِيلَ وَالْهَمْزَ قَبْلَهُ عَلَىٰ حُجَّةٍ وَالْيَاءُ يُحْذَفُ أَجْمَلَا"
       }
     ],
-    "locusId": "p15-mikal",
-    "locusType": "word_variant",
-    "notes": "ابن كثير وابن عامر وشعبة عن عاصم وحمزة والكسائي وخلف العاشر \"مِيكَائِيلَ\" (بالهمز مع الياء). الباقون (أبو عمرو، حفص عن عاصم، يعقوب) \"مِيكَالَ\" موافقةً للرسم الأساس."
+    "description": "بالهمز والياء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَدَعْ يَاءَ مِيكَائِيلَ وَالْهَمْزَ قَبْلَهُ عَلَىٰ حُجَّةٍ وَالْيَاءُ يُحْذَفُ أَجْمَلَا"
+      }
+    ]
   }
 ]

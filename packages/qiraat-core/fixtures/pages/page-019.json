@@ -1,13 +1,205 @@
 [
   {
-    "id": "v-p019-l002-wattakhidhu",
+    "id": "v-L019-ابراهيم-1-w2",
+    "surah": 2,
+    "ayah": 124,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِـۧمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "L019-ابراهيم-1",
+    "locusType": "word_variant",
+    "notes": "لابن ذكوان وجهان في هذا الموضع (بخلف عنه)؛ والوجه الأول موافق لسائر القراء.",
+    "sources": [
+      {
+        "id": "s-L019-ابراهيم-1-w2",
+        "variantId": "v-L019-ابراهيم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 24,
+        "sourceReference": "صفحة المصحف 19 · صفحة المصدر 24",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا — SH: وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "description": "بالألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R02"
+    ]
+  },
+  {
+    "id": "v-L019-ابراهيم-2-w2",
+    "surah": 2,
+    "ayah": 125,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِـۧمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "L019-ابراهيم-2",
+    "locusType": "word_variant",
+    "notes": "لابن ذكوان وجهان في هذا الموضع (بخلف عنه)؛ والوجه الأول موافق لسائر القراء.",
+    "sources": [
+      {
+        "id": "s-L019-ابراهيم-2-w2",
+        "variantId": "v-L019-ابراهيم-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 24,
+        "sourceReference": "صفحة المصحف 19 · صفحة المصدر 24",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا — SH: وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "description": "بالألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R02"
+    ]
+  },
+  {
+    "id": "v-L019-ابراهيم-3-w2",
+    "surah": 2,
+    "ayah": 125,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِـۧمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "L019-ابراهيم-3",
+    "locusType": "word_variant",
+    "notes": "لابن ذكوان وجهان في هذا الموضع (بخلف عنه)؛ والوجه الأول موافق لسائر القراء.",
+    "sources": [
+      {
+        "id": "s-L019-ابراهيم-3-w2",
+        "variantId": "v-L019-ابراهيم-3-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 24,
+        "sourceReference": "صفحة المصحف 19 · صفحة المصدر 24",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا — SH: وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "description": "بالألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R02"
+    ]
+  },
+  {
+    "id": "v-L019-ابراهيم-4-w2",
+    "surah": 2,
+    "ayah": 126,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِـۧمُ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "L019-ابراهيم-4",
+    "locusType": "word_variant",
+    "notes": "لابن ذكوان وجهان في هذا الموضع (بخلف عنه)؛ والوجه الأول موافق لسائر القراء.",
+    "sources": [
+      {
+        "id": "s-L019-ابراهيم-4-w2",
+        "variantId": "v-L019-ابراهيم-4-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 24,
+        "sourceReference": "صفحة المصحف 19 · صفحة المصدر 24",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا — SH: وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "description": "بالألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَوَجْهَانِ فِيهِ لِابْنِ ذَكْوَانَ هُهُنَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R02"
+    ]
+  },
+  {
+    "id": "v-L019-واتخذوا-1-w2",
     "surah": 2,
     "ayah": 125,
     "startToken": 7,
     "endToken": 7,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "وَٱتَّخِذُوا۟",
-    "variantText": "وَٱتَّخَذُوا۟",
+    "variantText": "وَٱتَّخِذُوا",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -18,29 +210,43 @@
       "Q04-R01",
       "Q04-R02"
     ],
+    "locusId": "L019-واتخذوا-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p019-l002-wattakhidhu",
-        "variantId": "v-p019-l002-wattakhidhu",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L019-واتخذوا-1-w2",
+        "variantId": "v-L019-واتخذوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 24,
-        "sourceReference": "صفحة المصحف 19 · صفحة PDF 24",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 19 · صفحة المصدر 24",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَوَاتَّخِذُوا بِالْفَتْحِ عَمَّ وَأَوْغَلَا — D: وَكَسَرَ اتَّخِذْ أُذْ"
       }
     ],
-    "notes": "فتح الخاء عند نافع وابن عامر؛ الباقون بكسرها موافقةً للرسم الأساس."
+    "description": "بكسر الخاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَوَاتَّخِذُوا بِالْفَتْحِ عَمَّ وَأَوْغَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَكَسَرَ اتَّخِذْ أُذْ"
+      }
+    ]
   },
   {
-    "id": "v-p019-l003-faumattiuhu",
+    "id": "v-L019-فامتعهو-1-w2",
     "surah": 2,
     "ayah": 126,
     "startToken": 22,
     "endToken": 22,
     "operation": "REPLACE",
     "hafsText": "فَأُمَتِّعُهُۥ",
-    "variantText": "فَأُمْتِعُهُ",
+    "variantText": "فَأُمْتِعُهُۥ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -49,19 +255,28 @@
       "Q04-R01",
       "Q04-R02"
     ],
+    "locusId": "L019-فامتعهو-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p019-l003-faumattiuhu",
-        "variantId": "v-p019-l003-faumattiuhu",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L019-فامتعهو-1-w2",
+        "variantId": "v-L019-فامتعهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 24,
-        "sourceReference": "صفحة المصحف 19 · صفحة PDF 24",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 19 · صفحة المصدر 24",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخِفُّ ابْنِ عَامِرٍ فَأُمْتِعُهُ"
       }
     ],
-    "uthmaniText": "فَأُمْتِعُهُ",
-    "notes": "إسكان الميم وتخفيف التاء المكسورة عند ابن عامر؛ الباقون بفتح الميم وتشديد التاء موافقةً للرسم الأساس."
+    "description": "بإسكان الميم وتخفيف التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخِفُّ ابْنِ عَامِرٍ فَأُمْتِعُهُ"
+      }
+    ]
   }
 ]

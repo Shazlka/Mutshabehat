@@ -1,13 +1,13 @@
 [
   {
-    "id": "v-p018-l001-waqaloo",
+    "id": "v-L018-وقالوا_اتخذ-1-w2",
     "surah": 2,
     "ayah": 116,
     "startToken": 1,
-    "endToken": 1,
-    "operation": "OMISSION",
-    "hafsText": "وَقَالُوا۟",
-    "variantText": "قَالُوا۟",
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَقَالُوا۟ ٱتَّخَذَ",
+    "variantText": "قَالُوا ٱتَّخَذَ",
     "differenceType": "OMISSION",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -16,28 +16,37 @@
       "Q04-R01",
       "Q04-R02"
     ],
+    "locusId": "L018-وقالوا_اتخذ-1",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p018-l001-waqaloo",
-        "variantId": "v-p018-l001-waqaloo",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L018-وقالوا_اتخذ-1-w2",
+        "variantId": "v-L018-وقالوا_اتخذ-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 23,
-        "sourceReference": "صفحة المصحف 18 · صفحة PDF 23",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 18 · صفحة المصدر 23",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلِيمٌ وَقَالُوا الْوَاوُ الأُولَىٰ سُقُوطُهَا وَكُنْ فَيَكُونُ النَّصْبُ فِي الرَّفْعِ كُفِّلَا"
       }
     ],
-    "uthmaniText": "قَالُوا۟",
-    "notes": "حذف الواو عند ابن عامر؛ الباقون بإثباتها موافقةً للرسم الأساس."
+    "description": "بحذف الواو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلِيمٌ وَقَالُوا الْوَاوُ الأُولَىٰ سُقُوطُهَا وَكُنْ فَيَكُونُ النَّصْبُ فِي الرَّفْعِ كُفِّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p018-l002-fayakuna",
+    "id": "v-L018-فيكون-1-w2",
     "surah": 2,
     "ayah": 117,
     "startToken": 11,
     "endToken": 11,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "فَيَكُونُ",
     "variantText": "فَيَكُونَ",
     "differenceType": "HARAKAH",
@@ -48,22 +57,26 @@
       "Q04-R01",
       "Q04-R02"
     ],
+    "locusId": "L018-فيكون-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p018-l002-fayakuna",
-        "variantId": "v-p018-l002-fayakuna",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L018-فيكون-1-w2",
+        "variantId": "v-L018-فيكون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 23,
-        "sourceReference": "صفحة المصحف 18 · صفحة PDF 23",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 18 · صفحة المصدر 23",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
       }
     ],
-    "notes": "نصب النون عند ابن عامر؛ الباقون برفعها موافقةً للرسم الأساس."
+    "description": "بالنصب",
+    "wajhIndex": 2,
+    "evidence": []
   },
   {
-    "id": "v-p018-l003-tasal",
+    "id": "v-L018-تسءل-1-w2",
     "surah": 2,
     "ayah": 119,
     "startToken": 7,
@@ -81,19 +94,32 @@
       "Q09-R01",
       "Q09-R02"
     ],
+    "locusId": "L018-تسءل-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p018-l003-tasal",
-        "variantId": "v-p018-l003-tasal",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L018-تسءل-1-w2",
+        "variantId": "v-L018-تسءل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 23,
-        "sourceReference": "صفحة المصحف 18 · صفحة PDF 23",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 18 · صفحة المصدر 23",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَتُسْأَلْ ضَمُّوا التَّاءَ وَاللَّامَ حَرَّكُوا بِرَفْعٍ خُلُودًا وَهْوَ مِنْ بَعْدِ نَفْيٍ لَا — D: وَتَسْأَلْ حَوَىٰ وَالضَّمُّ وَالرَّفْعُ أُصِّلَا"
       }
     ],
-    "uthmaniText": "تَسْأَلْ",
-    "notes": "فتح التاء وجزم اللام (بناء للفاعل) عند نافع ويعقوب؛ الباقون بضم التاء ورفع اللام (بناء للمفعول) موافقةً للرسم الأساس. \"وَلَا\" السابقة لهذه الكلمة لا تتغيّر بين الوجهين."
+    "description": "بفتح التاء وجزم اللام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُسْأَلْ ضَمُّوا التَّاءَ وَاللَّامَ حَرَّكُوا بِرَفْعٍ خُلُودًا وَهْوَ مِنْ بَعْدِ نَفْيٍ لَا"
+      },
+      {
+        "source": "D",
+        "text": "وَتَسْأَلْ حَوَىٰ وَالضَّمُّ وَالرَّفْعُ أُصِّلَا"
+      }
+    ]
   }
 ]

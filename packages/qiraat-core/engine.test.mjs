@@ -131,37 +131,38 @@ test('attribution: multiple readers (Case C) builds one segmented marker, one sl
   assert.match(css, /^linear-gradient\(to right, /)
 })
 
-test('the page-1 (Al-Fatihah) prototype: multi-reader مالك/ملك variant covers 6 readers, 12 narrators, and never Hafs/Ibn-Amir/Kisai/Khalaf-al-Ashir', () => {
+test('page 1: the مالك/ملك variant covers 6 readers / 12 narrators and never duplicates the readers who match Hafs', () => {
   const repo = new FixtureQiraatRepository()
-  // REVIEWED (not VERIFIED) since the pages-1-10 batch (2026-09-16): only reachable via debug mode.
   return repo.getVariantsForPage(1, { includeUnpublished: true }).then((variants) => {
-    const malik = variants.find((v) => v.id === 'v-p001-l001-malik-melik')
+    // Looked up by POSITION, never by a generated record id — ids change whenever the dataset is
+    // rebuilt, positions do not.
+    const malik = variants.find((v) => v.surah === 1 && v.ayah === 4 && v.startToken === 1)
     assert.ok(malik, 'page 1 must have the مالك/ملك variant')
-    // Pages-1-10 batch (2026-09-16): REVIEWED, not VERIFIED — this attribution came from the task
-    // prompt's typed data, not an independent PDF check (docs/qiraat/pages-001-010-existing-architecture.md).
     assert.equal(malik.verificationStatus, 'REVIEWED')
     assert.equal(malik.readingIds.length, 12)
-    for (const excluded of ['Q05-R01', 'Q05-R02', 'Q07-R01', 'Q07-R02']) {
-      assert.ok(!malik.readingIds.includes(excluded), `${excluded} (reads مالك, same as Hafs) must not be duplicated into the variant`)
+    // عاصم / الكسائي / يعقوب / خلف العاشر read مالك exactly as the Mushaf prints it, so they must
+    // never appear in the variant record.
+    for (const excluded of ['Q05-R01', 'Q05-R02', 'Q07-R01', 'Q07-R02', 'Q09-R01', 'Q09-R02', 'Q10-R01', 'Q10-R02']) {
+      assert.ok(!malik.readingIds.includes(excluded), `${excluded} reads مالك like Hafs and must not be in the variant`)
     }
     const attribution = computeAttribution(malik.readingIds)
     assert.equal(attribution.kind, 'multi-reader')
     assert.equal(attribution.segments.length, 6)
-
-    const remaining = readingsNotIn(malik.readingIds, ALL_READING_IDS)
-    assert.equal(remaining.length, 8)
+    assert.equal(readingsNotIn(malik.readingIds, ALL_READING_IDS).length, 8)
   })
 })
 
-test('the page-1 REVIEWED variants (سين/إشمام الصراط) are excluded by default and only appear in debug mode', () => {
+test('page 1: REVIEWED variants are excluded from the public view and only appear in debug mode', () => {
   const repo = new FixtureQiraatRepository()
   return repo.getVariantsForPage(1).then(async (defaultVariants) => {
-    assert.ok(!defaultVariants.some((v) => v.id.includes('sirat-sin')), 'REVIEWED records must not reach the default (public) view')
+    assert.equal(defaultVariants.length, 0, 'nothing in this import has reached VERIFIED, so the public view must be empty')
     const debugVariants = await repo.getVariantsForPage(1, { includeUnpublished: true })
-    assert.ok(debugVariants.some((v) => v.id === 'v-p001-l002-sirat-ishmam'))
-    const attribution = computeAttribution(debugVariants.find((v) => v.id === 'v-p001-l002-sirat-ishmam').readingIds)
+    assert.ok(debugVariants.length > 0, 'debug mode surfaces the REVIEWED records for review')
+    const ishmam = debugVariants.find((v) => v.ayah === 6 && v.performanceNote?.includes('إشمام'))
+    assert.ok(ishmam, 'the إشمام الصاد زايًا reading must be present at 1:6')
+    const attribution = computeAttribution(ishmam.readingIds)
     assert.equal(attribution.kind, 'reader')
-    assert.equal(attribution.readerId, 'Q06')
+    assert.equal(attribution.readerId, 'Q06', 'حمزة (both narrators) reads الصراط with إشمام at 1:6')
   })
 })
 
@@ -170,30 +171,33 @@ test('tokenKey/ayahKeyOf produce the canonical surah:ayah[:token] identity', () 
   assert.equal(ayahKeyOf(1, 4), '1:4')
 })
 
-test('pages-1-10 batch: 2:37 آدم/كلمات multi-word locus resolves as two independent single-token variants sharing one locusId', () => {
+test('2:37 آدم/كلمات: one conceptual locus spanning two disjoint words shares a locusId but resolves independently', () => {
   const repo = new FixtureQiraatRepository()
   return repo.getVariantsForPage(6, { includeUnpublished: true }).then((variants) => {
-    const adam = variants.find((v) => v.id === 'v-p006-l003-adam-1')
-    const kalimat = variants.find((v) => v.id === 'v-p006-l003-kalimat-1')
-    assert.ok(adam && kalimat, 'both halves of the 2:37 locus must be present')
-    assert.equal(adam.locusId, kalimat.locusId, 'disjoint words of one conceptual locus share a locusId')
+    const group = variants.filter((v) => v.locusId === 'L006-ADAM-KALIMAT')
+    assert.equal(group.length, 2, 'both halves of the 2:37 locus must be present')
+    const [adam, kalimat] = group.sort((a, b) => a.startToken - b.startToken)
+    assert.equal(adam.ayah, 37)
+    assert.equal(kalimat.ayah, 37)
     assert.equal(adam.locusType, 'multi_word_variant')
     assert.notEqual(adam.startToken, kalimat.startToken, 'the two targets are different tokens in the same ayah')
-    // Each half still resolves independently through the ordinary single-token engine — no special
-    // multi-target code path needed in resolveTokenForReading.
+    // ابن كثير is the one reader who differs, and he differs at BOTH tokens — that is not a
+    // double-claim, it is one grammatical swap (رفع آدم/نصب كلمات becomes نصب آدم/رفع كلمات).
+    assert.deepEqual(adam.readingIds, kalimat.readingIds)
     const options = { includeUnpublished: true }
     assert.ok(variantsForToken(variants, 2, 37, adam.startToken, options).some((v) => v.id === adam.id))
     assert.ok(variantsForToken(variants, 2, 37, kalimat.startToken, options).some((v) => v.id === kalimat.id))
   })
 })
 
-test('pages-1-10 batch: a performance-only variant keeps variantText === hafsText and carries a performanceNote', () => {
+test('a performance-only variant keeps variantText === hafsText and carries a performanceNote', () => {
   const repo = new FixtureQiraatRepository()
   return repo.getVariantsForPage(1, { includeUnpublished: true }).then((variants) => {
-    const ishmam = variants.find((v) => v.id === 'v-p001-l002-sirat-ishmam')
+    const ishmam = variants.find((v) => v.performanceNote?.includes('إشمام'))
     assert.ok(ishmam, 'the إشمام performance variant must be present')
-    assert.equal(ishmam.variantText, ishmam.hafsText, 'a performance-only difference must not fake a text/spelling change')
-    assert.ok(ishmam.performanceNote && ishmam.performanceNote.length > 0, 'performance-only variants must describe the phonetic difference')
+    assert.equal(ishmam.variantText, ishmam.hafsText, 'a performance-only difference must never fake a spelling change')
+    assert.equal(ishmam.locusType, 'performance_variant')
+    assert.ok(ishmam.performanceNote.length > 0)
   })
 })
 
@@ -218,54 +222,68 @@ test('comparison marker: a performance-only variant (no text change) gets the fi
   })
 })
 
-test('pages-1-10 batch: a NEEDS_MANUAL_REVIEW placeholder with no confident attribution never crashes computeAttribution', () => {
-  const repo = new FixtureQiraatRepository()
-  return repo.getVariantsForPage(4, { includeUnpublished: true }).then((variants) => {
-    const shaaAllah = variants.find((v) => v.id === 'v-p004-l001-shaa-allah')
-    assert.ok(shaaAllah, 'the 2:20 شاء الله critical-review item must be present')
-    assert.equal(shaaAllah.verificationStatus, 'NEEDS_MANUAL_REVIEW')
-    assert.equal(shaaAllah.readingIds.length, 0, 'no reader/narrator may be guessed for an unresolved critical item')
-
-    // Never gate visibility on verification status alone: computeAttribution([]) throws, so the
-    // view-layer marker builder must special-case the empty-readingIds case (Part 29 placeholders).
-    const marker = comparisonMarkerForWord(variants, shaaAllah.surah, shaaAllah.ayah, shaaAllah.startToken, { kind: 'all' }, { includeUnpublished: true })
-    assert.ok(marker, 'the placeholder is still surfaced in debug mode so a reviewer can find it')
-    assert.equal(marker.unresolved, true)
-    assert.notEqual(marker.color, undefined)
-  })
+test('a record with no confident attribution never crashes the marker builder (computeAttribution([]) throws)', () => {
+  // Constructed, not read from the fixtures: the guard must hold for ANY such record, including
+  // ones a future import introduces. computeAttribution([]) throws by design, so the view layer
+  // has to special-case it rather than guessing a reader colour.
+  const placeholder = {
+    id: 'synthetic-unresolved', surah: 2, ayah: 20, startToken: 1, endToken: 1,
+    operation: 'REPLACE', hafsText: 'شَآءَ', variantText: 'شَآءَ', differenceType: 'OTHER',
+    verificationStatus: 'NEEDS_MANUAL_REVIEW', createdAt: '', updatedAt: '', readingIds: [],
+  }
+  assert.throws(() => computeAttribution([]), 'computeAttribution must still reject an empty set')
+  const marker = comparisonMarkerForWord([placeholder], 2, 20, 1, { kind: 'all' }, { includeUnpublished: true })
+  assert.ok(marker, 'the placeholder is still surfaced in debug mode so a reviewer can find it')
+  assert.equal(marker.unresolved, true)
+  assert.notEqual(marker.color, undefined)
 })
 
-test('pages-11-20 batch: every record is REVIEWED (the import policy blocks needs_manual_review entirely, not just from the default view)', () => {
+test('pages 1-20: every record is REVIEWED, or NEEDS_MANUAL_REVIEW with the defect documented in notes', () => {
   const repo = new FixtureQiraatRepository()
-  return Promise.all([11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((page) => repo.getVariantsForPage(page, { includeUnpublished: true }))).then((pages) => {
-    const all = pages.flat()
-    assert.ok(all.length > 0, 'pages 11-20 must actually be wired into the repository')
+  const pages = Array.from({ length: 20 }, (_, i) => i + 1)
+  return Promise.all(pages.map((page) => repo.getVariantsForPage(page, { includeUnpublished: true }))).then((loaded) => {
+    const all = loaded.flat()
+    assert.ok(all.length > 0, 'pages 1-20 must actually be wired into the repository')
+    let flagged = 0
     for (const variant of all) {
-      assert.equal(variant.verificationStatus, 'REVIEWED', `${variant.id} must be REVIEWED — needs_manual_review loci are dropped entirely for this batch, never kept as a placeholder`)
+      assert.ok(
+        variant.verificationStatus === 'REVIEWED' || variant.verificationStatus === 'NEEDS_MANUAL_REVIEW',
+        `${variant.id}: nothing in this import may claim VERIFIED — it has not been checked against the paper original`,
+      )
+      if (variant.verificationStatus === 'NEEDS_MANUAL_REVIEW') {
+        flagged++
+        continue
+      }
       assert.ok(variant.readingIds.length > 0, `${variant.id} is REVIEWED, so it must carry a real attribution`)
+      assert.ok(variant.sources?.length > 0, `${variant.id} must cite its source page`)
     }
+    // The three loci where the supplied extraction contradicts itself or drops a reader
+    // (2:83 تعبدون, 2:93 قلوبهم العجل, 2:105 ينزل) must stay flagged, never silently promoted.
+    assert.ok(flagged >= 3, 'the known source defects must remain flagged')
   })
 })
 
-test('pages-11-20 batch: the جبريل/ميكال loci (2:97-98) resolve as independent single-token variants sharing one locusId, without corrupting the real base text', () => {
+test('2:97-98 جبريل: both occurrences share one display locus and keep their real (different) prefixes', () => {
   const repo = new FixtureQiraatRepository()
   return repo.getVariantsForPage(15, { includeUnpublished: true }).then((variants) => {
-    const jibril97 = variants.find((v) => v.id === 'v-p015-l002-jibril-97-hamza')
-    const jibril98 = variants.find((v) => v.id === 'v-p015-l002-jibril-98-hamza')
-    assert.ok(jibril97 && jibril98, 'both ayah occurrences of جبريل must be present')
-    assert.equal(jibril97.locusId, jibril98.locusId, 'the two occurrences share one display locus')
-    // The attached prefix (لِّ.../وَ...) is spliced from the real fixture word, never hand-typed, so
-    // we assert on length/prefix-preservation rather than re-typing the exact combining-mark order
-    // (a literal here would risk the same diacritic-ordering drift the generator script guards
-    // against — see build-qiraat-pages-011-020.py's splice()).
-    assert.ok(jibril97.hafsText.length < jibril97.variantText.length, 'the alternate spelling adds a hamza+ya, so it must be longer than the base text')
-    assert.ok(jibril97.variantText.endsWith('يلَ'), 'the جبرئيل ending must be preserved')
-    assert.equal(jibril97.hafsText.length, jibril98.hafsText.length + 1, 'لِّ (3 codepoints: lam+shadda+kasra) vs وَ (2 codepoints) is the only prefix difference between the two occurrences')
+    const group = variants.filter((v) => v.locusId === 'L015-JIBRIL')
+    const at97 = group.filter((v) => v.ayah === 97)
+    const at98 = group.filter((v) => v.ayah === 98)
+    assert.ok(at97.length > 0 && at98.length > 0, 'both ayah occurrences of جبريل must be present')
+    assert.equal(at97.length, at98.length, 'the same three non-baseline أوجه apply at both occurrences')
+    // hafsText comes VERBATIM from the Mushaf fixture, so the two occurrences keep their real and
+    // different prefixes (لِّ... vs وَ...) instead of a hand-typed stem.
+    // Compare the BASE LETTER only. The fixture stores shadda before kasra; typing "لِّ" here by
+    // hand produces the opposite combining order and would fail against identical text — the exact
+    // diacritic-ordering trap this dataset is built to avoid.
+    assert.equal(at97[0].hafsText[0], 'ل', 'the 2:97 occurrence keeps its لِّ prefix from the fixture')
+    assert.equal(at98[0].hafsText[0], 'و', 'the 2:98 occurrence keeps its وَ prefix from the fixture')
+    assert.notEqual(at97[0].hafsText, at98[0].hafsText)
 
-    const mikal = variants.find((v) => v.id === 'v-p015-l003-mikal-hamza')
-    assert.ok(mikal)
-    assert.notEqual(mikal.hafsText, mikal.variantText, 'ميكال must actually differ from the ميكائيل reading')
-    assert.ok(mikal.variantText.includes('ئِيلَ'), 'the همز+ياء ending must be present in the alternate spelling')
+    const mikal = variants.find((v) => v.ayah === 98 && v.hafsText.includes('مِيكَىٰلَ'))
+    assert.ok(mikal, 'ميكال must be anchored to the real fixture token')
+    const hamzaSpelling = variants.filter((v) => v.ayah === 98 && v.variantText.includes('ئِيلَ'))
+    assert.ok(hamzaSpelling.length > 0, 'the همز+ياء spelling must be present')
   })
 })
 

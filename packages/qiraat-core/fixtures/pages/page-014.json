@@ -1,13 +1,13 @@
 [
   {
-    "id": "v-p014-l001-yunazzila",
+    "id": "v-L014-ينزل-1-w2",
     "surah": 2,
     "ayah": 90,
     "startToken": 12,
     "endToken": 12,
     "operation": "REPLACE",
     "hafsText": "يُنَزِّلَ",
-    "variantText": "يُنْزِلَ",
+    "variantText": "يُنْزِلُ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -20,31 +20,40 @@
       "Q09-R01",
       "Q09-R02"
     ],
+    "locusId": "L014-ينزل-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p014-l001-yunazzila",
-        "variantId": "v-p014-l001-yunazzila",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L014-ينزل-1-w2",
+        "variantId": "v-L014-ينزل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 19,
-        "sourceReference": "صفحة المصحف 14 · صفحة PDF 19",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
       }
     ],
-    "uthmaniText": "يُنْزِلَ",
-    "notes": "إسكان النون وتخفيف الزاي؛ الباقون بفتح النون وتشديد الزاي موافقةً للرسم الأساس."
+    "description": "بإسكان النون وتخفيف الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p014-l002-qila-91",
+    "id": "v-L014-قيل-1-w2",
     "surah": 2,
     "ayah": 91,
     "startToken": 2,
     "endToken": 2,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "قِيلَ",
     "variantText": "قِيلَ",
-    "differenceType": "IMALAH",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
@@ -54,28 +63,42 @@
       "Q07-R02",
       "Q09-R01"
     ],
+    "locusId": "L014-قيل-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام كسر القاف ضمًّا",
     "sources": [
       {
-        "id": "s-v-p014-l002-qila-91",
-        "variantId": "v-p014-l002-qila-91",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L014-قيل-1-w2",
+        "variantId": "v-L014-قيل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 19,
-        "sourceReference": "صفحة المصحف 14 · صفحة PDF 19",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
       }
     ],
-    "performanceNote": "إشمام كسرة القاف ضمًا.",
-    "notes": "الباقون بالكسرة الخالصة."
+    "description": "بإشمام كسر القاف ضمًّا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ]
   },
   {
-    "id": "v-p014-l003-wahuwa-91",
+    "id": "v-L014-وهو-1-w2",
     "surah": 2,
     "ayah": 91,
     "startToken": 16,
     "endToken": 16,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
     "hafsText": "وَهُوَ",
     "variantText": "وَهْوَ",
     "differenceType": "HARAKAH",
@@ -91,18 +114,260 @@
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L014-وهو-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p014-l003-wahuwa-91",
-        "variantId": "v-p014-l003-wahuwa-91",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L014-وهو-1-w2",
+        "variantId": "v-L014-وهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 19,
-        "sourceReference": "صفحة المصحف 14 · صفحة PDF 19",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule. This batch's import policy explicitly excludes any needs_manual_review locus from the fixture set entirely (see this script's docstring)."
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
       }
     ],
-    "notes": "إسكان الهاء؛ الباقون بضم الهاء موافقةً للرسم الأساس (نفس حكم 2:85 يُطبَّق هنا)."
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L014-انبياء-1-w2",
+    "surah": 2,
+    "ayah": 91,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "أَنۢبِيَآءَ",
+    "variantText": "أَنْبِئَاءَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L014-انبياء-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L014-انبياء-1-w2",
+        "variantId": "v-L014-انبياء-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 19,
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا — D: أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
+      }
+    ],
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L014-قلوبهم_العجل-1-w2",
+    "surah": 2,
+    "ayah": 93,
+    "startToken": 17,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْعِجْلَ",
+    "variantText": "قُلُوبِهِمِ ٱلْعِجْلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "NEEDS_MANUAL_REVIEW",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L014-قلوبهم_العجل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L014-قلوبهم_العجل-1-w2",
+        "variantId": "v-L014-قلوبهم_العجل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 19,
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ],
+    "description": "بكسر الهاء والميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L014-قلوبهم_العجل-1-w3",
+    "surah": 2,
+    "ayah": 93,
+    "startToken": 17,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْعِجْلَ",
+    "variantText": "قُلُوبِهُمُ ٱلْعِجْلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "NEEDS_MANUAL_REVIEW",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L014-قلوبهم_العجل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L014-قلوبهم_العجل-1-w3",
+        "variantId": "v-L014-قلوبهم_العجل-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 19,
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ],
+    "description": "بضم الهاء والميم",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L014-يامركم-1-w2",
+    "surah": 2,
+    "ayah": 93,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "يَأْمُرُكُم",
+    "variantText": "يَأْمُرْكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "L014-يامركم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L014-يامركم-1-w2",
+        "variantId": "v-L014-يامركم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 19,
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ],
+    "description": "بإسكان الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L014-يامركم-1-w3",
+    "surah": 2,
+    "ayah": 93,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "يَأْمُرُكُم",
+    "variantText": "يَأْمُرُكُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "L014-يامركم-1",
+    "locusType": "performance_variant",
+    "performanceNote": "باختلاس ضمة الراء",
+    "sources": [
+      {
+        "id": "s-L014-يامركم-1-w3",
+        "variantId": "v-L014-يامركم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 19,
+        "sourceReference": "صفحة المصحف 14 · صفحة المصدر 19",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ],
+    "description": "باختلاس ضمة الراء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ]
   }
 ]

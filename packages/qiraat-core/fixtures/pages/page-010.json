@@ -1,6 +1,6 @@
 [
   {
-    "id": "v-p010-l001-sabiina",
+    "id": "v-L010-والصبين-1-w2",
     "surah": 2,
     "ayah": 62,
     "startToken": 7,
@@ -8,163 +8,229 @@
     "operation": "REPLACE",
     "hafsText": "وَٱلصَّـٰبِـِٔينَ",
     "variantText": "وَٱلصَّابِينَ",
-    "differenceType": "OMISSION",
+    "differenceType": "HAMZ",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q01-R01",
       "Q01-R02",
       "Q08-R01",
       "Q08-R02"
     ],
+    "locusId": "L010-والصبين-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p010-l001-sabiina",
-        "variantId": "v-p010-l001-sabiina",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L010-والصبين-1-w2",
+        "variantId": "v-L010-والصبين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 15,
-        "sourceReference": "صفحة المصحف 10 · صفحة PDF 15",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي الصَّابِئِينَ الْهَمْزُ وَالصَّابِئُونَ خُذْ"
       }
     ],
-    "uthmaniText": "وَٱلصَّابِينَ",
-    "notes": "حذف الهمزة عند نافع وأبي جعفر؛ الباقون بإثبات الهمزة. حمزة له حكم خاص بالوقف على الهمز يُراجَع من المصدر عند الحاجة."
+    "description": "بلا همز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الصَّابِئِينَ الْهَمْزُ وَالصَّابِئُونَ خُذْ"
+      }
+    ]
   },
   {
-    "id": "v-p010-l002-khawfa",
+    "id": "v-L010-خوف_عليهم-1-w2",
     "surah": 2,
     "ayah": 62,
     "startToken": 20,
-    "endToken": 20,
+    "endToken": 21,
     "operation": "REPLACE",
-    "hafsText": "خَوْفٌ",
-    "variantText": "خَوْفَ",
+    "hafsText": "خَوْفٌ عَلَيْهِمْ",
+    "variantText": "خَوْفٌ عَلَيْهُمْ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L010-خوف_عليهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L010-خوف_عليهم-1-w2",
+        "variantId": "v-L010-خوف_عليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 15,
+        "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ],
+    "description": "برفع خوف وضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L010-خوف_عليهم-1-w3",
+    "surah": 2,
+    "ayah": 62,
+    "startToken": 20,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "خَوْفٌ عَلَيْهِمْ",
+    "variantText": "خَوْفَ عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q09-R01",
       "Q09-R02"
     ],
+    "locusId": "L010-خوف_عليهم-1",
+    "locusType": "multi_word_variant",
     "sources": [
       {
-        "id": "s-v-p010-l002-khawfa",
-        "variantId": "v-p010-l002-khawfa",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L010-خوف_عليهم-1-w3",
+        "variantId": "v-L010-خوف_عليهم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 15,
-        "sourceReference": "صفحة المصحف 10 · صفحة PDF 15",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
       }
     ],
-    "uthmaniText": "خَوْفَ",
-    "notes": "فتح الفاء وحذف التنوين عند يعقوب (نفس حكم 2:38)؛ الباقون بالتنوين المرفوع \"خَوْفٌ\"."
+    "description": "بفتح الفاء وضم الهاء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ]
   },
   {
-    "id": "v-p010-l003-yamurukum",
+    "id": "v-L010-يامركم-1-w2",
     "surah": 2,
     "ayah": 67,
     "startToken": 7,
     "endToken": 7,
-    "operation": "DIACRITIC_CHANGE",
+    "operation": "REPLACE",
+    "hafsText": "يَأْمُرُكُمْ",
+    "variantText": "يَأْمُرْكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "L010-يامركم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L010-يامركم-1-w2",
+        "variantId": "v-L010-يامركم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 15,
+        "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ],
+    "description": "بإسكان الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L010-يامركم-1-w3",
+    "surah": 2,
+    "ayah": 67,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
     "hafsText": "يَأْمُرُكُمْ",
     "variantText": "يَأْمُرُكُمْ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "NEEDS_MANUAL_REVIEW",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [],
-    "sources": [
-      {
-        "id": "s-v-p010-l003-yamurukum",
-        "variantId": "v-p010-l003-yamurukum",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 15,
-        "sourceReference": "صفحة المصحف 10 · صفحة PDF 15",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
-      }
-    ],
-    "performanceNote": "اختلاف أداء في همزة الراء (إبدال الهمزة ألفًا مع ضم/إسكان الراء، أو تحقيق الهمزة مع ضم/إسكان الراء وجواز الاختلاس) — لم يتضح بثقة كافية أي رواة يتبعون أي وجه من البيانات المُدخلة. راجع المصدر الأصلي قبل أي اعتماد.",
-    "notes": "مرشّحات غير مؤكدة (للتتبع فقط): إبدال الهمزة ألفًا مع ضم الراء (ورش عن نافع، أبو جعفر)؛ تحقيق الهمزة مع إسكان الراء وجواز الاختلاس (الدوري عن أبي عمرو)؛ إبدال الهمزة ألفًا مع إسكان الراء (السوسي عن أبي عمرو)؛ تحقيق الهمزة مع ضم الراء عند الباقين. حمزة له حكم خاص بالوقف على الهمز يُراجَع من المصدر."
-  },
-  {
-    "id": "v-p010-l004-huzuwa-1",
-    "surah": 2,
-    "ayah": 67,
-    "startToken": 13,
-    "endToken": 13,
-    "operation": "DIACRITIC_CHANGE",
-    "hafsText": "هُزُوًۭا ۖ",
-    "variantText": "هُزُوًۭا ۖ",
-    "differenceType": "HAMZ",
+    "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
-      "Q05-R02"
+      "Q03-R01"
     ],
+    "locusId": "L010-يامركم-1",
+    "locusType": "performance_variant",
+    "performanceNote": "باختلاس ضمة الراء",
     "sources": [
       {
-        "id": "s-v-p010-l004-huzuwa-1",
-        "variantId": "v-p010-l004-huzuwa-1",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L010-يامركم-1-w3",
+        "variantId": "v-L010-يامركم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 15,
-        "sourceReference": "صفحة المصحف 10 · صفحة PDF 15",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
       }
     ],
-    "locusId": "p10-huzuwa",
-    "locusType": "word_variant",
-    "performanceNote": "إبدال الهمزة واوًا مع ضم الزاي."
-  },
-  {
-    "id": "v-p010-l004-huzuwa-2",
-    "surah": 2,
-    "ayah": 67,
-    "startToken": 13,
-    "endToken": 13,
-    "operation": "REPLACE",
-    "hafsText": "هُزُوًۭا ۖ",
-    "variantText": "هُزْؤًا",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02",
-      "Q10-R01",
-      "Q10-R02"
-    ],
-    "sources": [
+    "description": "باختلاس ضمة الراء",
+    "wajhIndex": 3,
+    "evidence": [
       {
-        "id": "s-v-p010-l004-huzuwa-2",
-        "variantId": "v-p010-l004-huzuwa-2",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
-        "sourceType": "pdf",
-        "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 15,
-        "sourceReference": "صفحة المصحف 10 · صفحة PDF 15",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "source": "SH",
+        "text": "حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا"
+      },
+      {
+        "source": "D",
+        "text": "بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ"
+      },
+      {
+        "source": "SH",
+        "text": "وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
       }
-    ],
-    "uthmaniText": "هُزْؤًا",
-    "locusId": "p10-huzuwa",
-    "locusType": "word_variant",
-    "performanceNote": "إسكان الزاي مع إثبات الهمز.",
-    "notes": "حمزة له حكم خاص بالوقف على الهمز يُراجَع من المصدر."
+    ]
   },
   {
-    "id": "v-p010-l004-huzuwa-3",
+    "id": "v-L010-هزوا-1-w2",
     "surah": 2,
     "ayah": 67,
     "startToken": 13,
@@ -174,8 +240,8 @@
     "variantText": "هُزُؤًا",
     "differenceType": "HAMZ",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-16T12:00:00.000Z",
-    "updatedAt": "2026-09-16T12:00:00.000Z",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q01-R01",
       "Q01-R02",
@@ -193,22 +259,79 @@
       "Q09-R01",
       "Q09-R02"
     ],
+    "locusId": "L010-هزوا-1",
+    "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-v-p010-l004-huzuwa-3",
-        "variantId": "v-p010-l004-huzuwa-3",
-        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "id": "s-L010-هزوا-1-w2",
+        "variantId": "v-L010-هزوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
         "pdfPage": 15,
-        "sourceReference": "صفحة المصحف 10 · صفحة PDF 15",
-        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED (or NEEDS_MANUAL_REVIEW where the user flagged it) rather than VERIFIED until someone cross-checks it against the actual PDF page image, per this project's own verification-workflow rule."
+        "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَهُزْؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا — SH: وَضُمَّ لِبَاقِيهِمْ وَحَفْصٌ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَخَفْضٌ وَاقِفًا ثُمَّ مُوصِلَا"
       }
     ],
-    "uthmaniText": "هُزُؤًا",
-    "locusId": "p10-huzuwa",
+    "description": "بالهمز مع ضم الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَهُزْؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَضُمَّ لِبَاقِيهِمْ وَحَفْصٌ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَخَفْضٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L010-هزوا-1-w3",
+    "surah": 2,
+    "ayah": 67,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًۭا ۖ",
+    "variantText": "هُزْءًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L010-هزوا-1",
     "locusType": "word_variant",
-    "performanceNote": "ضم الزاي مع إثبات الهمز.",
-    "notes": "باقي الرواة (كل من عدا حفص، وحمزة وخلف العاشر)."
+    "sources": [
+      {
+        "id": "s-L010-هزوا-1-w3",
+        "variantId": "v-L010-هزوا-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 15,
+        "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَهُزْؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا — SH: وَضُمَّ لِبَاقِيهِمْ وَحَفْصٌ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَخَفْضٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      }
+    ],
+    "description": "بإسكان الزاي والهمز",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَهُزْؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَضُمَّ لِبَاقِيهِمْ وَحَفْصٌ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَخَفْضٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      }
+    ]
   }
 ]
