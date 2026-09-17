@@ -483,6 +483,9 @@ export default function Mushaf1441Viewer({
   const [allMutshabehatHighlights, setAllMutshabehatHighlights] = useState<MutshabehatAyahLink[] | null>(initialMutshabehatHighlights)
   const [mutshabehatLoadError, setMutshabehatLoadError] = useState<string | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSurahPickerOpen, setIsSurahPickerOpen] = useState(false)
+  const [surahPickerSearch, setSurahPickerSearch] = useState('')
+  const currentSurahItemRef = useRef<HTMLButtonElement | null>(null)
   const [needsSignIn, setNeedsSignIn] = useState(false)
   const [hoveredAyahKey, setHoveredAyahKey] = useState<string | null>(null)
   // Preview of a Qiraat marker on hover (desktop) or first tap (mobile) — Part 20's "never rely on
@@ -604,6 +607,58 @@ export default function Mushaf1441Viewer({
     for (const surah of surahOptions) map.set(surah.surahNumber, surah.ayahCount)
     return map
   }, [surahOptions])
+
+  const filteredSurahOptions = useMemo(() => {
+    const q = surahPickerSearch.trim().toLowerCase()
+    if (!q) return surahOptions
+    const norm = (str: string) =>
+      str
+        .replace(/[\u064B-\u065F\u0670]/g, '')
+        .replace(/[إأآٱ]/g, 'ا')
+        .replace(/ى/g, 'ي')
+        .replace(/ة/g, 'ه')
+        .replace(/[\u0660-\u0669]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+        .toLowerCase()
+    const cleanQ = norm(q)
+    return surahOptions.filter((surah) => {
+      if (String(surah.surahNumber) === cleanQ || String(surah.firstPage) === cleanQ) return true
+      if (String(surah.surahNumber).includes(cleanQ)) return true
+      const cleanName = norm(surah.name)
+      return cleanName.includes(cleanQ)
+    })
+  }, [surahOptions, surahPickerSearch])
+
+  useEffect(() => {
+    if (!isSurahPickerOpen) return
+    const timer = setTimeout(() => {
+      currentSurahItemRef.current?.scrollIntoView({ block: 'center', behavior: 'auto' })
+    }, 60)
+    return () => clearTimeout(timer)
+  }, [isSurahPickerOpen])
+
+  useEffect(() => {
+    if (!isSurahPickerOpen) return
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setIsSurahPickerOpen(false)
+        setSurahPickerSearch('')
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isSurahPickerOpen])
+
+  async function selectSurahFromPicker(surah: Mushaf1441SurahOption) {
+    setIsSurahPickerOpen(false)
+    setSurahPickerSearch('')
+    setSelectedSurahNumber(surah.surahNumber)
+    setSelectedAyahNumber(1)
+    if (surah.firstPage) {
+      await goToPage(surah.firstPage, `${surah.surahNumber}:1`)
+    } else {
+      await goToAyah(surah.surahNumber, 1)
+    }
+  }
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -1394,7 +1449,7 @@ export default function Mushaf1441Viewer({
   // Drag a page to curl it under the finger (RTL: drag right → next page, drag left → previous).
   function handlePagePointerDown(event: ReactPointerEvent<HTMLElement>) {
     if (event.pointerType === 'mouse' && event.button !== 0) return
-    if (isMenuOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
+    if (isMenuOpen || isSurahPickerOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
     // Words on the page are buttons too; only controls outside the page block a drag.
     const target = event.target as HTMLElement
     if (target.closest('a, input, textarea, select') || (target.closest('button') && !target.closest('[data-mushaf-leaf]'))) return
@@ -1780,7 +1835,7 @@ export default function Mushaf1441Viewer({
   // Mouse wheel / trackpad turns pages: scroll down → next page, up → previous.
   // One page per gesture — the momentum that follows a turn is ignored.
   function handleWheel(event: ReactWheelEvent) {
-    if (event.ctrlKey || isMenuOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
+    if (event.ctrlKey || isMenuOpen || isSurahPickerOpen || contextMenu || mutshabehatPopupAyahKey || isMobileNotesOpen) return
     const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX
     if (delta === 0) return
     const state = wheelStateRef.current
@@ -4000,14 +4055,31 @@ export default function Mushaf1441Viewer({
               <span className="block h-0.5 w-5 rounded bg-white" />
             </span>
           </button>
-          <div className="min-w-0">
-            <p className="truncate text-sm font-black leading-tight sm:text-base">
-              {visiblePageMetadata?.surahNames.join(' · ') ?? 'مصحف المدينة ١٤٤١'}
-            </p>
-            <p className="text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
-              {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''} · ص {pageNumber}
-            </p>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setSurahPickerSearch('')
+              setIsSurahPickerOpen(true)
+            }}
+            aria-label="اختيار السورة من القائمة"
+            aria-haspopup="dialog"
+            aria-expanded={isSurahPickerOpen}
+            className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 text-right transition-colors hover:bg-[#ebdcc0] active:bg-[#e2cfaf]"
+          >
+            <div className="min-w-0">
+              <div className="flex items-center gap-1">
+                <p className="truncate text-sm font-black leading-tight sm:text-base text-[#171717]">
+                  {visiblePageMetadata?.surahNames.join(' · ') ?? 'مصحف المدينة ١٤٤١'}
+                </p>
+                <svg className="size-3.5 shrink-0 text-[#80662c]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <p className="text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
+                {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''} · ص {pageNumber}
+              </p>
+            </div>
+          </button>
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
           <button
@@ -4237,6 +4309,121 @@ export default function Mushaf1441Viewer({
           </div>
         )
       })()}
+
+      {/* Surah quick-select combo list (mobile & desktop) */}
+      {isSurahPickerOpen ? (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end sm:justify-center sm:items-center p-0 sm:p-4" dir="rtl">
+          <button
+            type="button"
+            aria-label="إغلاق قائمة السور"
+            onClick={() => {
+              setIsSurahPickerOpen(false)
+              setSurahPickerSearch('')
+            }}
+            className="fixed inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity"
+          />
+          <div
+            className="relative z-10 flex flex-col w-full sm:max-w-md max-h-[85vh] sm:max-h-[80vh] rounded-t-2xl sm:rounded-2xl border border-[#d7c7a7] bg-[#fffdf8] shadow-[0_-16px_60px_rgba(23,23,23,0.3)] overflow-hidden"
+            style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
+          >
+            <div className="flex items-center justify-between border-b border-[#eadfc9] bg-[#f7f0e0] px-4 py-3">
+              <div className="flex items-center gap-2">
+                <span className="flex size-7 items-center justify-center rounded-md bg-[#171717] text-xs font-black text-white">
+                  ١١٤
+                </span>
+                <div>
+                  <h3 className="text-sm font-black text-[#171717]">فهرس السور</h3>
+                  <p className="text-[10px] font-bold text-[#80662c]">اختر سورة للانتقال إليها مباشرة</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                aria-label="إغلاق"
+                onClick={() => {
+                  setIsSurahPickerOpen(false)
+                  setSurahPickerSearch('')
+                }}
+                className="flex size-8 items-center justify-center rounded-md border border-[#d7c7a7] bg-white text-sm font-bold text-[#80662c] shadow-sm transition-colors hover:bg-[#fff7df]"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="border-b border-[#eadfc9] bg-[#fffaf0] p-2.5">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={surahPickerSearch}
+                  onChange={(e) => setSurahPickerSearch(e.target.value)}
+                  placeholder="ابحث باسم السورة أو رقمها…"
+                  aria-label="بحث في السور"
+                  className="w-full rounded-lg border border-[#d7c7a7] bg-white px-3 py-2 text-sm text-[#171717] placeholder:text-[#a8987a] focus:border-[#171717] focus:outline-none"
+                  autoFocus
+                />
+                {surahPickerSearch ? (
+                  <button
+                    type="button"
+                    onClick={() => setSurahPickerSearch('')}
+                    aria-label="مسح البحث"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded p-1 text-xs text-[#80662c] hover:bg-[#f0e4cc]"
+                  >
+                    ✕
+                  </button>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto divide-y divide-[#f0e4cc] p-2">
+              {filteredSurahOptions.length === 0 ? (
+                <p className="p-6 text-center text-xs font-bold text-[#8a7c5c]">
+                  لا توجد سورة مطابقة للبحث
+                </p>
+              ) : (
+                filteredSurahOptions.map((surah) => {
+                  const currentSurahNumber = visiblePageMetadata?.surahNumbers[0] ?? selectedSurahNumber
+                  const isCurrent = surah.surahNumber === currentSurahNumber
+                  return (
+                    <button
+                      key={surah.surahNumber}
+                      type="button"
+                      ref={isCurrent ? currentSurahItemRef : null}
+                      onClick={() => void selectSurahFromPicker(surah)}
+                      className={`flex w-full items-center justify-between px-3 py-2.5 rounded-lg text-right transition-colors ${
+                        isCurrent
+                          ? 'bg-[#171717] text-white shadow-sm'
+                          : 'hover:bg-[#f7f0e0] active:bg-[#ebdcc0] text-[#171717]'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className={`flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums ${
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#f0e4cc] text-[#80662c]'
+                        }`}>
+                          {surah.surahNumber}
+                        </span>
+                        <div>
+                          <p className="text-base font-black font-[family-name:var(--font-amiri-quran)] leading-tight">
+                            سورة {surah.name}
+                          </p>
+                          <p className={`text-[11px] font-bold ${isCurrent ? 'text-white/80' : 'text-[#80662c]'}`}>
+                            {surah.ayahCount} آية
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-left">
+                        <span className={`inline-block rounded px-2 py-0.5 text-xs font-bold tabular-nums ${
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#fffaf0] border border-[#d7c7a7] text-[#80662c]'
+                        }`}>
+                          ص {surah.firstPage ?? '—'}
+                        </span>
+                      </div>
+                    </button>
+                  )
+                })
+              )}
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {/* Burger drawer: navigation sliders, account / sign-in, settings */}
       {isMenuOpen ? (
