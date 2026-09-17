@@ -33,6 +33,8 @@ test('database repository: createSession, readSession, saveAnswer, and performan
     count: 2,
     scope: { type: 'surahs', surahIds: [10] },
     questionType: 'complete_ayah',
+    timer: 'none',
+    timezone: 'UTC',
   }
 
   const questions: PrivateQuestion[] = [
@@ -49,6 +51,8 @@ test('database repository: createSession, readSession, saveAnswer, and performan
       context: 'الر تِلْكَ آيَاتُ الْكِتَابِ الْحَكِيمِ',
       contextSpans: [],
       correctChoiceId: 'c1-1',
+      explanation: 'الآية الأولى من سورة يونس',
+      comparisons: [],
       choices: [
         { id: 'c1-1', text: 'الر تِلْكَ آيَاتُ الْكِتَابِ الْحَكِيمِ' },
         { id: 'c1-2', text: 'طسم تِلْكَ آيَاتُ الْكِتَابِ الْمُبِينِ' },
@@ -70,6 +74,8 @@ test('database repository: createSession, readSession, saveAnswer, and performan
       context: 'أَكَانَ لِلنَّاسِ عَجَبًا',
       contextSpans: [],
       correctChoiceId: 'c2-2',
+      explanation: 'الآية الثانية من سورة يونس',
+      comparisons: [],
       choices: [
         { id: 'c2-1', text: 'أَن جَاءَهُم مَّنذِرٌ مِّنْهُمْ' },
         { id: 'c2-2', text: 'أَنْ أَوْحَيْنَا إِلَىٰ رَجُلٍ مِّنْهُمْ أَنْ أَنذِرِ النَّاسَ' },
