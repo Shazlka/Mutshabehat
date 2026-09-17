@@ -915,3 +915,29 @@ PAGES[41] = dict(source=46, surah=2, af=249, at=252, variants=[
         ('دِفَاعُ', 'بكسر الدال وألف', 'word_form', ['نافع', 'أبو جعفر', 'يعقوب'], False),
     ], dict(ev=[('SH', 'دِفَاعُ بِهَا وَٱلْحَجِّ فَتْحٌ وَسَاكِنٌ وَقَصْرٌ خُصُوصًا'), ('D', 'دِفَاعُ حُزْ')])),
 ])
+
+# Page 21 closes the gap between the two supplied batches (it is the last page of Juz' 1, and
+# was missing from the source that supplied 22-41). The tables 20 -> 21 -> 22 are now contiguous.
+PAGES[21] = dict(source=26, surah=2, af=135, at=141, variants=[
+    ('ابراهيم', [
+        ('إِبْرَٰهِـۧمَ', 'بالياء', 'word_form', EXCEPT(['ابن عامر']), True),
+        ('إِبْرَٰهَامَ', 'بالألف', 'word_form', ['ابن عامر'], False),
+    ], dict(all_occurrences=True, ev=[SH_IBRAHAM, SH_IBRAHAM2],
+            note='لابن ذكوان وجهان في هذا الموضع (بخلف عنه)، وهشام بالألف قولًا واحدًا.',
+            alternate_of=['ابن ذكوان'])),
+    ('النبيون', [
+        ('ٱلنَّبِيُّونَ', 'بالياء بلا همز', 'hamza', EXCEPT(['نافع']), True),
+        ('ٱلنَّبِيئُونَ', 'بالهمز مع المد المتصل', 'hamza', ['نافع'], False),
+    ], dict(ev=[SH_NABI, D_NABI])),
+    ('وهو', [
+        ('وَهُوَ', 'بضم الهاء', 'vowel',
+         ['ورش', 'ابن كثير', 'ابن عامر', 'عاصم', 'حمزة', 'يعقوب', 'KHALAF10'], True),
+        ('وَهْوَ', 'بإسكان الهاء', 'vowel', ['قالون', 'أبو عمرو', 'الكسائي', 'أبو جعفر'], False),
+    ], dict(all_occurrences=True, ev=[SH_HUWA, D_HUWA])),
+    ('ام تقولون', [
+        ('أَمْ تَقُولُونَ', 'بالتاء', 'word_form',
+         ['ابن عامر', 'حفص', 'حمزة', 'الكسائي', 'رويس', 'KHALAF10'], True),
+        ('أَمْ يَقُولُونَ', 'بالياء', 'word_form',
+         ['نافع', 'ابن كثير', 'أبو عمرو', 'شعبة', 'أبو جعفر', 'روح'], False),
+    ], dict(ev=[('SH', 'وَفِي أَمْ يَقُولُونَ ٱلْخِطَابُ كَمَا عَلَا شَفَا'), ('D', 'خِطَابَ يَقُولُو طِبْ')])),
+])

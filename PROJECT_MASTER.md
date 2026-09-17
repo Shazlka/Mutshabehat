@@ -422,8 +422,9 @@ thing to resolve against the paper original: page 27 ﴿ٱلْمَشْرِقِ�
 (ٱلنَّأْىِ is in الإسراء, not on page 27); page 29 ﴿يُبَيِّنُ ٱللَّهُ؟/يُبَيِّنَ لَكُمْ﴾; page 33
 ﴿زُيِّنَ﴾؟ (in both الممال and ترك الغنة); page 36 ﴿أَنفُسِهِمَا؟﴾; page 37 ﴿يَعْمَلْ ذَٰلِكَ﴾؟.
 
-**Page 21 (2:135–141) was not supplied** — the source jumps from 20 to 22, so it is a real gap in
-the imported range, not an oversight.
+**Page 21 (2:135–141)** was missing from the batch that supplied 22–41 and was imported separately
+straight afterwards; **pages 1–41 are now contiguous**. It went through both generators with zero
+anchor rejections — the first batch to do so, which is what §12.4b is for.
 
 Two modelling decisions in this batch worth knowing before they recur:
 - **page 25 ﴿يَأْمُرُكُم﴾** — الدوري عن أبي عمرو has the إسكان *and* the اختلاس. Two أوجه

@@ -1064,3 +1064,32 @@ RULINGS[41] = [
     ('YAAT_IDAFA', 'مني الا', [('نافع', 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')],
         dict(text='والإسكان وصلًا للباقين.')),
 ]
+
+RULINGS[21] = [
+    ('TAGHLIZ_LAM', 'اظلم', warsh('تغليظ اللام'), {}),
+    ('MADD_BADAL', 'ءامنا', warsh('مد البدل'), {}),
+    ('MADD_BADAL', 'اوتي', warsh('مد البدل'), dict(all_occurrences=True)),
+    ('MADD_BADAL', 'النبيون', warsh('مد البدل'), {}),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), {}),
+    ('MADD_BADAL', 'ءامنتم', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'نصارى', [('أبو عمرو', 'إمالة'), ('حمزة', 'إمالة'), ('الكسائي', 'إمالة'),
+                                (K10, 'إمالة'), (W, 'تقليل')], dict(all_occurrences=True)),
+    ('IMALAH_TAQLIL', 'موسى', imalah4(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'وعيسى', imalah4(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'صبغة', kisai_waqf(), dict(condition='وقفًا', text='بخلف عنه.')),
+    ('IDGHAM_KABIR', 'ونحن لهو', susi('إدغام كبير'),
+        dict(all_occurrences=True, text='وله فيها الاختلاس.')),
+    ('IDGHAM_KABIR', 'اظلم ممن', susi('إدغام كبير'), {}),
+    # The five مذاهب the source prints for the second hamzah, kept as five distinct actions
+    # rather than flattened: ورش and هشام each have two of them, hence the alternate marking.
+    ('HAMZATAN_KALIMA', 'ءانتم', [
+        ('قالون', 'التسهيل مع الإدخال'), ('أبو عمرو', 'التسهيل مع الإدخال'),
+        ('هشام', 'التسهيل مع الإدخال'), (AJ, 'التسهيل مع الإدخال'),
+        (W, 'الإبدال ألفًا مع المد المشبع'),
+        (W, 'التسهيل بدون إدخال'), (IK, 'التسهيل بدون إدخال'), ('رويس', 'التسهيل بدون إدخال'),
+        ('هشام', 'التحقيق مع الإدخال'),
+    ], dict(alternate=[W, 'هشام'],
+            text='ولهشام وجه ثانٍ: التحقيق مع الإدخال، ولورش وجه ثانٍ: التسهيل بدون إدخال؛ والتحقيق بدون إدخال للباقين.')),
+    ('TARK_GHUNNA', 'حنيفا وما', [(KH, 'ترك الغنة')], {}),
+    ('TARK_GHUNNA', 'صبغة ونحن', [(KH, 'ترك الغنة')], {}),
+]
