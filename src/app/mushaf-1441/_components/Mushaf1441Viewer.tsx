@@ -736,6 +736,11 @@ export default function Mushaf1441Viewer({
     setIsMobileNotesOpen(false)
     updateHoveredQiraatWord(null)
     if (next !== 'qiraat') setQiraatSelection(null)
+    if (next === 'qiraat') {
+      setSelectedAyahKey(null)
+      setSelectedWord(null)
+      setSelectedWordRange(null)
+    }
   }
 
   // A press on an already-active button turns that layer off (plain mushaf, no colour system).
@@ -954,21 +959,21 @@ export default function Mushaf1441Viewer({
   // menu and the notes editor still see everything, so nothing is lost by hiding the layer.
   const slotAnnotationsByWordId = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
-    if (!annotationsVisible) return map
+    if (!annotationsVisible && readerLayer !== 'qiraat') return map
     for (const annotation of annotations) {
       if (!annotation.wordId) continue
       map.set(annotation.wordId, [...(map.get(annotation.wordId) ?? []), annotation])
     }
     return map
-  }, [annotations, annotationsVisible])
+  }, [annotations, annotationsVisible, readerLayer])
   const slotAnnotationsByAyahKey = useMemo(() => {
     const map = new Map<string, MushafAnnotation[]>()
-    if (!annotationsVisible) return map
+    if (!annotationsVisible && readerLayer !== 'qiraat') return map
     for (const annotation of annotations) {
       map.set(annotation.ayahKey, [...(map.get(annotation.ayahKey) ?? []), annotation])
     }
     return map
-  }, [annotations, annotationsVisible])
+  }, [annotations, annotationsVisible, readerLayer])
   const mutshabehatPanelLinks = useMemo(() => (
     mutshabehatPanelAyahKey
       ? pageHighlights.filter((highlight) => highlight.ayahKey === mutshabehatPanelAyahKey).length > 0
@@ -1720,6 +1725,9 @@ export default function Mushaf1441Viewer({
   // Returns false when the token carries no Qiraat data at all, so a press that would open an
   // empty panel simply does nothing (and plays no haptic).
   function selectWordForQiraat(word: MushafWord): boolean {
+    setSelectedAyahKey(null)
+    setSelectedWord(null)
+    setSelectedWordRange(null)
     if (qiraatSelection?.word.id === word.id) {
       setQiraatSelection(null)
       return true
@@ -1797,11 +1805,6 @@ export default function Mushaf1441Viewer({
   // never open over a page the reader is studying in Qiraat or متشابهات mode.
   // Returns whether the press produced anything, so the caller only plays the haptic when it did.
   function openContextMenu(target: AnnotationTarget, x: number, y: number): boolean {
-    if (readerLayer === 'qiraat') {
-      // "press and hold to see the Qiraat difference" — straight to the full explanation of that
-      // token: the permanent sidebar on desktop / iPad landscape, the detail sheet on a phone.
-      return isWordTarget(target) ? selectWordForQiraat(target.word) : false
-    }
     if (readerLayer === 'mutshabehat') {
       if (!highlightedMutshabehatAyahKeys.has(target.ayahKey)) return false
       openMutshabehatPopup(target.ayahKey)
@@ -2061,8 +2064,8 @@ export default function Mushaf1441Viewer({
           if (Date.now() - recentTouchRef.current < 700) return
           selectAyah(word.ayahKey)
         }}
-        onMouseEnter={() => setHoveredAyahKey(word.ayahKey)}
-        onMouseLeave={() => setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))}
+        onMouseEnter={() => { if (readerLayer !== 'qiraat') setHoveredAyahKey(word.ayahKey) }}
+        onMouseLeave={() => { if (readerLayer !== 'qiraat') setHoveredAyahKey((current) => (current === word.ayahKey ? null : current)) }}
         onContextMenu={(event) => openAyahContextMenu(event, word.ayahKey)}
         onTouchStart={(event) => startLongPress({ targetType: 'ayah', ayahKey: word.ayahKey, pageNumber }, event)}
         onTouchMove={cancelLongPress}
@@ -2099,7 +2102,7 @@ export default function Mushaf1441Viewer({
   function getWordBandColor(word: MushafWord, wordOrder: Map<string, number>): string | null {
     const annotationColor = findHighlightAnnotation(word, wordOrder)?.backgroundColor
     if (annotationColor) return annotationColor
-    if (selectedAyahKey === word.ayahKey) return SELECTION_BG
+    if (readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey) return SELECTION_BG
     const link = slotHighlightByAyahKey.get(word.ayahKey)
     return link ? tintForGroup(link.groupId ?? link.ayahKey).bg : null
   }
@@ -2120,8 +2123,8 @@ export default function Mushaf1441Viewer({
   }
 
   function renderQcfWord(word: MushafWord, wordOrder: Map<string, number>) {
-    const isSelectedWord = selectedWord?.id === word.id
-    const isHighlightedAyah = selectedAyahKey === word.ayahKey
+    const isSelectedWord = readerLayer !== 'qiraat' && selectedWord?.id === word.id
+    const isHighlightedAyah = readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey
     const mutshabehatHighlight = slotHighlightByAyahKey.get(word.ayahKey)
     const isMutshabehatHighlighted = Boolean(mutshabehatHighlight)
     const mutshabehatTint = mutshabehatHighlight ? tintForGroup(mutshabehatHighlight.groupId ?? mutshabehatHighlight.ayahKey) : null
@@ -2229,12 +2232,12 @@ export default function Mushaf1441Viewer({
           // emulation (and some real devices) also synthesizes pointerenter/pointerleave around a
           // tap, which would otherwise clear a peek the instant after onClick just set it.
           if (event.pointerType !== 'mouse') return
-          setHoveredAyahKey(word.ayahKey)
+          if (readerLayer !== 'qiraat') setHoveredAyahKey(word.ayahKey)
           if (qiraatMarker) updateHoveredQiraatWord({ word, marker: qiraatMarker })
         }}
         onPointerLeave={(event) => {
           if (event.pointerType !== 'mouse') return
-          setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
+          if (readerLayer !== 'qiraat') setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
           if (hoveredQiraatWordIdRef.current === word.id) updateHoveredQiraatWord(null)
         }}
         onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
@@ -2791,14 +2794,18 @@ export default function Mushaf1441Viewer({
         ? createWordRangeTarget(selectedWord, contextMenu.target.word)
         : null
 
-    const targetAyahAnnotations = annotationsByAyahKey.get(contextMenu.target.ayahKey) ?? []
+    const menuTarget = contextMenu.target
+    const targetAyahAnnotations = annotationsByAyahKey.get(menuTarget.ayahKey) ?? []
     const hasBookmarkOnTarget = targetAyahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasFavoriteOnTarget = targetAyahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
+    const existingHighlightOnTarget = isWordTarget(menuTarget)
+      ? annotations.find((a) => a.annotationType === 'highlight' && a.wordId === menuTarget.word.id)
+      : targetAyahAnnotations.find((a) => a.annotationType === 'highlight' && a.targetType === 'ayah')
     // Bookmark / favourite always act on the whole ayah, even when a word was tapped.
     const ayahTargetForMenu: AnnotationTarget = {
       targetType: 'ayah',
-      ayahKey: contextMenu.target.ayahKey,
-      pageNumber: contextMenu.target.pageNumber,
+      ayahKey: menuTarget.ayahKey,
+      pageNumber: menuTarget.pageNumber,
     }
 
     return (
@@ -2821,7 +2828,60 @@ export default function Mushaf1441Viewer({
             <p className="text-[11px] font-bold text-[#80662c]">الاختيار الحالي</p>
             <p className="mt-1 truncate text-sm font-black text-[#171717]">{targetLabel}</p>
           </div>
-          <div className="space-y-1">
+          <div className="space-y-1.5">
+            <div className="rounded-lg border border-[#eadfc9] bg-[#fffaf0] p-1.5">
+              <div className="flex items-center justify-between px-1 pb-1">
+                <span className="flex items-center gap-1.5 text-xs font-bold text-[#59461d]">
+                  <IconHighlight className="text-[#80662c]" />تمييز
+                </span>
+                {existingHighlightOnTarget ? (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      await deleteAnnotation(existingHighlightOnTarget.id)
+                      setContextMenu(null)
+                    }}
+                    className="text-[11px] font-bold text-[#8a2f1b] hover:underline"
+                  >
+                    إزالة التمييز ✕
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedTarget(contextMenu.target, 'highlight')
+                      setAnnotationMode('highlight')
+                      setContextMenu(null)
+                    }}
+                    className="text-[11px] font-bold text-[#80662c] hover:underline"
+                  >
+                    مخصص…
+                  </button>
+                )}
+              </div>
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                {HIGHLIGHT_COLOR_PRESETS.map((preset) => (
+                  <button
+                    key={preset.label}
+                    type="button"
+                    title={preset.label}
+                    onClick={async () => {
+                      if (existingHighlightOnTarget) {
+                        await deleteAnnotation(existingHighlightOnTarget.id)
+                      }
+                      await persistAnnotation(buildAnnotationPayload(contextMenu.target, 'highlight', {
+                        textColor: preset.textColor,
+                        backgroundColor: preset.backgroundColor,
+                        metadata: { source: 'mushaf-1441-preview', action: 'highlight' },
+                      }))
+                      setContextMenu(null)
+                    }}
+                    className="size-6 rounded-full border border-black/15 shadow-sm transition-transform hover:scale-110 active:scale-95"
+                    style={{ backgroundColor: preset.backgroundColor }}
+                  />
+                ))}
+              </div>
+            </div>
             <button
               type="button"
               onClick={() => {
@@ -2833,18 +2893,6 @@ export default function Mushaf1441Viewer({
             >
               <span className="flex items-center gap-2"><IconNote className="text-[#80662c]" />ملاحظة</span>
               <span className="text-[11px] text-[#80662c]">Note</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedTarget(contextMenu.target, 'highlight')
-                setAnnotationMode('highlight')
-                setContextMenu(null)
-              }}
-              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
-            >
-              <span className="flex items-center gap-2"><IconHighlight className="text-[#80662c]" />تمييز</span>
-              <span className="text-[11px] text-[#80662c]">Highlight</span>
             </button>
             {rangeTarget ? (
               <button
@@ -3355,12 +3403,14 @@ export default function Mushaf1441Viewer({
 
   function renderHoverCard() {
     if (!hoveredAyahKey) return null
+    if (readerLayer === 'qiraat') return null
+    if (readerLayer !== 'mutshabehat' && readerLayer !== 'annotations') return null
     const annos = annotationsByAyahKey.get(hoveredAyahKey) ?? []
     const highlight = annos.find((annotation) => annotation.annotationType === 'highlight')
     const notes = annos.filter((annotation) => annotation.annotationType === 'note')
     const hasBookmark = annos.some((annotation) => annotation.annotationType === 'bookmark')
     const hasFavorite = annos.some((annotation) => annotation.annotationType === 'favorite')
-    const mutshabehat = mutshabehatHighlightByAyahKey.get(hoveredAyahKey)
+    const mutshabehat = readerLayer === 'mutshabehat' ? mutshabehatHighlightByAyahKey.get(hoveredAyahKey) : null
     if (!highlight && notes.length === 0 && !hasBookmark && !hasFavorite && !mutshabehat) return null
 
     const surahName = surahNameByNumber.get(Number(hoveredAyahKey.split(':')[0])) ?? ''
@@ -3923,14 +3973,28 @@ export default function Mushaf1441Viewer({
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       {/* Slim top bar — the main screen is the mushaf itself */}
-      <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[#d7c7a7] bg-[#f7f0e0] px-3 py-2">
-        <div className="min-w-0">
-          <p className="truncate text-sm font-black leading-tight sm:text-base">
-            {visiblePageMetadata?.surahNames.join(' · ') ?? 'مصحف المدينة ١٤٤١'}
-          </p>
-          <p className="text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
-            {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''} · ص {pageNumber}
-          </p>
+      <header className="flex shrink-0 items-center justify-between gap-2 border-b border-[#d7c7a7] bg-[#f7f0e0] px-3 py-2">
+        <div className="flex min-w-0 items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="القائمة والإعدادات"
+            className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#171717] text-white transition-colors hover:bg-[#3a3326]"
+          >
+            <span className="flex flex-col gap-[3px]">
+              <span className="block h-0.5 w-5 rounded bg-white" />
+              <span className="block h-0.5 w-5 rounded bg-white" />
+              <span className="block h-0.5 w-5 rounded bg-white" />
+            </span>
+          </button>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-black leading-tight sm:text-base">
+              {visiblePageMetadata?.surahNames.join(' · ') ?? 'مصحف المدينة ١٤٤١'}
+            </p>
+            <p className="text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
+              {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''} · ص {pageNumber}
+            </p>
+          </div>
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
           <button
@@ -3938,7 +4002,7 @@ export default function Mushaf1441Viewer({
             onClick={() => turnPage(-1)}
             disabled={pageNumber <= MIN_PAGE}
             aria-label="الصفحة السابقة"
-            className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40"
+            className="hidden size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40 sm:flex"
           >
             →
           </button>
@@ -3947,7 +4011,7 @@ export default function Mushaf1441Viewer({
             onClick={() => turnPage(1)}
             disabled={pageNumber >= MAX_PAGE}
             aria-label="الصفحة التالية"
-            className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40"
+            className="hidden size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40 sm:flex"
           >
             ←
           </button>
@@ -4004,18 +4068,6 @@ export default function Mushaf1441Viewer({
             }`}
           >
             ق
-          </button>
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen(true)}
-            aria-label="القائمة والإعدادات"
-            className="flex size-10 items-center justify-center rounded-md bg-[#171717] text-white transition-colors hover:bg-[#3a3326]"
-          >
-            <span className="flex flex-col gap-[3px]">
-              <span className="block h-0.5 w-5 rounded bg-white" />
-              <span className="block h-0.5 w-5 rounded bg-white" />
-              <span className="block h-0.5 w-5 rounded bg-white" />
-            </span>
           </button>
         </div>
       </header>
@@ -4105,7 +4157,9 @@ export default function Mushaf1441Viewer({
             onFinish={finishPageTurn}
           />
         ) : null}
-        {hoveredQiraatWord ? renderQiraatHoverCard() : renderHoverCard()}
+        {readerLayer === 'qiraat'
+          ? (hoveredQiraatWord ? renderQiraatHoverCard() : null)
+          : (hoveredQiraatWord ? renderQiraatHoverCard() : renderHoverCard())}
         {isPageLoading ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
             <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
@@ -4338,7 +4392,7 @@ export default function Mushaf1441Viewer({
       ) : null}
 
       {/* Notes / annotation sheet — opens when an ayah or word is selected */}
-      {selectedAyahKey && isMobileNotesOpen && readerLayer !== 'qiraat' ? (
+      {selectedAyahKey && isMobileNotesOpen ? (
         <div className="fixed inset-0 z-40">
           <button
             type="button"
