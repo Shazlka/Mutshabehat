@@ -36,6 +36,7 @@ import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
 import { comparisonMarkerForWord, riwayahResolutionForWord, rulingMarkerForWord, rulingCategoriesOnPage, PERFORMANCE_MARKER_COLOR, type WordMarker, type RulingMarker } from './qiraat/qiraatWordMarker'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
+import { impactHaptic } from './haptics'
 
 const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
 const EMPTY_QIRAAT_RULES: QiraatRule[] = []
@@ -45,15 +46,40 @@ const EMPTY_QIRAAT_RULINGS: QiraatRuling[] = []
 const QIRAAT_REVIEW_STORAGE_KEY = 'mushaf1441:qiraat-review:v1'
 type QiraatReviewVerdict = 'confirmed' | 'rejected'
 
-// Mutshabehat highlighting is a per-device choice, independent of the Qiraat layer, so a reader can
-// look at ONE of them at a time instead of both colour systems fighting over the same words.
-const MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY = 'mushaf1441:mutshabehat-highlight:v1'
-// Personal annotations (notes, highlight colours, bookmarks, favourites) are the third colour
-// system on the page. Same deal as the mutshabehat layer: one switch, so only one of them paints
-// the words at a time — and it turns itself off when the Qiraat layer comes on, since the two
-// would otherwise fight over the very same letters.
-const ANNOTATIONS_VISIBLE_STORAGE_KEY = 'mushaf1441:annotations-visible:v1'
+// Three colour systems want the very same letters — personal annotations (notes, highlight
+// colours, bookmarks, favourites), the متشابهات links, and the Qiraat/أصول layer — so the reader
+// runs exactly ONE of them at a time. This is a single enum rather than three booleans on purpose:
+// three booleans can represent states the reader is not allowed to be in (two layers on at once),
+// and every one of those states would have to be defended against separately at each render site.
+// It governs more than colour: a press on a word is answered by the active layer and no other.
+type ReaderLayer = 'none' | 'annotations' | 'mutshabehat' | 'qiraat'
+const READER_LAYER_STORAGE_KEY = 'mushaf1441:reader-layer:v1'
+// Superseded by the single key above; read once on first load so a reader who had already chosen
+// keeps that choice instead of being reset (see readReaderLayer).
+const LEGACY_MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY = 'mushaf1441:mutshabehat-highlight:v1'
+const LEGACY_ANNOTATIONS_VISIBLE_STORAGE_KEY = 'mushaf1441:annotations-visible:v1'
 const EMPTY_ANNOTATIONS: MushafAnnotation[] = []
+
+function isReaderLayer(value: unknown): value is ReaderLayer {
+  return value === 'none' || value === 'annotations' || value === 'mutshabehat' || value === 'qiraat'
+}
+
+// Every access try/caught: private windows and blocked site data make these throw.
+function readReaderLayer(): ReaderLayer {
+  try {
+    const stored = window.localStorage.getItem(READER_LAYER_STORAGE_KEY)
+    if (isReaderLayer(stored)) return stored
+    // One-time migration off the two independent switches. Only an explicit "annotations on,
+    // متشابهات off" can have meant the annotation layer; anything else lands on متشابهات, which
+    // is both this app's reason to exist and what the mushaf showed before either switch existed.
+    const annotations = window.localStorage.getItem(LEGACY_ANNOTATIONS_VISIBLE_STORAGE_KEY)
+    const mutshabehat = window.localStorage.getItem(LEGACY_MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY)
+    if (annotations === '1' && mutshabehat === '0') return 'annotations'
+  } catch {
+    // Storage unavailable — fall through to the default.
+  }
+  return 'mutshabehat'
+}
 
 /** What the permanent Qiraat sidebar is currently explaining. */
 interface QiraatSelection {
@@ -440,7 +466,6 @@ export default function Mushaf1441Viewer({
   const [editingNoteId, setEditingNoteId] = useState<string | null>(null)
   const [isMobileNotesOpen, setIsMobileNotesOpen] = useState(false)
   const [mutshabehatPanelAyahKey, setMutshabehatPanelAyahKey] = useState<string | null>(null)
-  const [activeDetailTab, setActiveDetailTab] = useState<DetailPanelTab>('notes')
   const [annotationStatus, setAnnotationStatus] = useState<string | null>(null)
   const [annotationError, setAnnotationError] = useState<string | null>(null)
   const [isAnnotationSaving, setIsAnnotationSaving] = useState(false)
@@ -469,8 +494,28 @@ export default function Mushaf1441Viewer({
   // Groups in the ayah card start collapsed (title only); tapping a title expands its details.
   const [expandedPopupGroups, setExpandedPopupGroups] = useState<Record<string, boolean>>({})
 
+  // Which of the three colour systems owns the page right now. `readReaderLayer` is not used as
+  // the initial value: it touches localStorage, which the server render cannot, so it is read in
+  // an effect after mount (same pattern as the other reader preferences below).
+  const [readerLayer, setReaderLayer] = useState<ReaderLayer>('mutshabehat')
+  const annotationsVisible = readerLayer === 'annotations'
+  const mutshabehatHighlightEnabled = readerLayer === 'mutshabehat'
+  // Which panel the detail sheet shows is not a separate choice the reader makes any more — it
+  // follows the layer, so the sheet can never show متشابهات links while the page is painted with
+  // Qiraat. A plain mushaf (no layer) still opens the notes panel: that is what a press means
+  // when no colour system owns the page.
+  const activeDetailTab: DetailPanelTab = readerLayer === 'qiraat'
+    ? 'qiraat'
+    : readerLayer === 'mutshabehat' ? 'mutshabehat' : 'notes'
+
   // Qiraat Ashr state model (Part 23). Persisted locally like other reader preferences.
-  const [qiraatMode, setQiraatMode] = useState<QiraatMode>('normal')
+  // Which Qiraat mode the burger panel last selected. Kept apart from `readerLayer` so that
+  // leaving the layer and coming back returns the reader to the mode they were in, rather than
+  // silently resetting them to مقارنة القراءات.
+  const [qiraatSubMode, setQiraatSubMode] = useState<Exclude<QiraatMode, 'normal'>>('comparison')
+  // The single source of truth every render site reads: Qiraat is on only while it owns the layer,
+  // so no code path can paint Qiraat colours over متشابهات or annotations.
+  const qiraatMode: QiraatMode = readerLayer === 'qiraat' ? qiraatSubMode : 'normal'
   const [qiraatSelectedReadingId, setQiraatSelectedReadingId] = useState<ReadingId>(BASE_READING)
   const [qiraatStudyMode, setQiraatStudyMode] = useState(false)
   const [qiraatShowDiffFromHafs, setQiraatShowDiffFromHafs] = useState(false)
@@ -500,9 +545,6 @@ export default function Mushaf1441Viewer({
   // NOT part of any MushafPageSlot prop, so selecting a word never re-renders a page slot and the
   // ~1 ms page-turn invariant holds (same rule as hoveredAyahKey / hoveredQiraatWord).
   const [qiraatSelection, setQiraatSelection] = useState<QiraatSelection | null>(null)
-  const [mutshabehatHighlightEnabled, setMutshabehatHighlightEnabled] = useState(true)
-  const [annotationsVisible, setAnnotationsVisible] = useState(true)
-  const previousQiraatModeRef = useRef<QiraatMode>('normal')
   const [qiraatReview, setQiraatReview] = useState<Record<string, QiraatReviewVerdict>>({})
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
@@ -668,46 +710,39 @@ export default function Mushaf1441Viewer({
   }, [contextMenu])
 
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY)
-      if (raw !== null) setMutshabehatHighlightEnabled(raw === '1')
-    } catch { /* storage unavailable — default stays on */ }
+    setReaderLayer(readReaderLayer())
   }, [])
 
-  useEffect(() => {
+  // The ONE place the active layer changes. Switching layers also drops whatever the previous one
+  // had open — a متشابهات card, a notes sheet, a Qiraat peek — so the reader never ends up looking
+  // at a panel belonging to a layer that is no longer on.
+  function activateLayer(next: ReaderLayer) {
+    setReaderLayer(next)
     try {
-      const raw = window.localStorage.getItem(ANNOTATIONS_VISIBLE_STORAGE_KEY)
-      if (raw !== null) setAnnotationsVisible(raw === '1')
-    } catch { /* storage unavailable — default stays on */ }
-  }, [])
-
-  function setAnnotationsVisiblePersisted(next: boolean) {
-    setAnnotationsVisible(next)
-    try {
-      window.localStorage.setItem(ANNOTATIONS_VISIBLE_STORAGE_KEY, next ? '1' : '0')
+      window.localStorage.setItem(READER_LAYER_STORAGE_KEY, next)
     } catch { /* ignore */ }
+    setContextMenu(null)
+    setMutshabehatPopupAyahKey(null)
+    setIsMobileNotesOpen(false)
+    updateHoveredQiraatWord(null)
+    if (next !== 'qiraat') setQiraatSelection(null)
   }
 
-  // Entering مقارنة القراءات / القراءة برواية clears the personal-annotation layer, so the Qiraat
-  // colours are never read against a highlight the user put there for an unrelated reason. Fires
-  // only on the normal -> Qiraat transition, so turning annotations back ON while in Qiraat mode
-  // sticks instead of being immediately undone.
-  useEffect(() => {
-    const previous = previousQiraatModeRef.current
-    previousQiraatModeRef.current = qiraatMode
-    if (previous === 'normal' && qiraatMode !== 'normal' && annotationsVisible) {
-      setAnnotationsVisiblePersisted(false)
-    }
-  }, [qiraatMode, annotationsVisible])
+  // A press on an already-active button turns that layer off (plain mushaf, no colour system).
+  function toggleLayer(layer: Exclude<ReaderLayer, 'none'>) {
+    activateLayer(readerLayer === layer ? 'none' : layer)
+  }
 
-  function toggleMutshabehatHighlight() {
-    setMutshabehatHighlightEnabled((current) => {
-      const next = !current
-      try {
-        window.localStorage.setItem(MUTSHABEHAT_HIGHLIGHT_STORAGE_KEY, next ? '1' : '0')
-      } catch { /* ignore */ }
-      return next
-    })
+  // The burger panel's mode select. Choosing المصحف leaves the layer entirely; choosing either
+  // Qiraat mode both records the sub-mode and claims the layer, so the panel and the "ق" button
+  // can never disagree about whether Qiraat is on.
+  function applyQiraatMode(mode: QiraatMode) {
+    if (mode === 'normal') {
+      activateLayer(readerLayer === 'qiraat' ? 'none' : readerLayer)
+      return
+    }
+    setQiraatSubMode(mode)
+    if (readerLayer !== 'qiraat') activateLayer('qiraat')
   }
 
   // Location-review verdicts are per-device (localStorage), like the other reader preferences.
@@ -1005,7 +1040,9 @@ export default function Mushaf1441Viewer({
       const raw = localStorage.getItem(QIRAAT_PREFS_STORAGE_KEY)
       if (!raw) return
       const prefs = JSON.parse(raw) as Partial<QiraatPrefs>
-      if (prefs.mode) setQiraatMode(prefs.mode)
+      // Restores only WHICH Qiraat mode, never whether Qiraat is on: that is the layer's call
+      // (READER_LAYER_STORAGE_KEY), so restoring a preference can't quietly claim the page.
+      if (prefs.mode && prefs.mode !== 'normal') setQiraatSubMode(prefs.mode)
       if (prefs.selectedReadingId) setQiraatSelectedReadingId(prefs.selectedReadingId)
       if (typeof prefs.studyMode === 'boolean') setQiraatStudyMode(prefs.studyMode)
       if (typeof prefs.showDifferenceFromHafs === 'boolean') setQiraatShowDiffFromHafs(prefs.showDifferenceFromHafs)
@@ -1118,7 +1155,6 @@ export default function Mushaf1441Viewer({
     setIsMobileNotesOpen(false)
     setMutshabehatPanelAyahKey(null)
     setMutshabehatPopupAyahKey(null)
-    setActiveDetailTab('notes')
     setContextMenu(null)
     setEditingNoteId(null)
     setAnnotationDraft(EMPTY_ANNOTATION_DRAFT)
@@ -1475,7 +1511,14 @@ export default function Mushaf1441Viewer({
     }
   }
 
-  // Long-press (touch) on a word / ayah opens the highlight + notes menu.
+  // Long-press (touch) on a word / ayah. What it opens is the active layer's business
+  // (`openContextMenu`); what it FEELS like is this function's: hold a word the way you hold an
+  // iOS home-screen icon and you get one crisp tick at the moment the press is recognised.
+  //
+  // The tick fires only when the press actually produced something — a long press that opens
+  // nothing (a plain word while the متشابهات layer is on) buzzing anyway would be a lie about
+  // what just happened. `longPressFiredRef` is set either way, so the click that follows the
+  // release is still swallowed and can't be mistaken for a tap.
   function startLongPress(target: AnnotationTarget, event: ReactTouchEvent) {
     const touch = event.touches[0]
     if (!touch) return
@@ -1485,10 +1528,7 @@ export default function Mushaf1441Viewer({
     longPressFiredRef.current = false
     longPressTimerRef.current = setTimeout(() => {
       longPressFiredRef.current = true
-      openContextMenu(target, x, y)
-      if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
-        navigator.vibrate(12)
-      }
+      if (openContextMenu(target, x, y)) impactHaptic()
     }, LONG_PRESS_MS)
   }
 
@@ -1637,13 +1677,14 @@ export default function Mushaf1441Viewer({
   }
 
   function setSelectedTarget(target: AnnotationTarget, mode: AnnotationEditorMode = 'note') {
-    const hasMutshabehatHighlight = highlightedMutshabehatAyahKeys.has(target.ayahKey)
+    // Only the متشابهات layer fills the متشابهات panel: in the annotations layer a word whose ayah
+    // happens to sit in one of the user's groups still opens its notes, not the links.
+    const hasMutshabehatHighlight = readerLayer === 'mutshabehat' && highlightedMutshabehatAyahKeys.has(target.ayahKey)
     setSelectedAyahKey(target.ayahKey)
     setSelectedWord(isWordTarget(target) ? target.word : isWordRangeTarget(target) ? target.endWord : null)
     setSelectedWordRange(isWordRangeTarget(target) ? { startWord: target.startWord, endWord: target.endWord } : null)
     setIsMobileNotesOpen(true)
     setMutshabehatPanelAyahKey(hasMutshabehatHighlight ? target.ayahKey : null)
-    setActiveDetailTab(hasMutshabehatHighlight ? 'mutshabehat' : 'notes')
     setAnnotationMode(mode)
     setContextMenu(null)
     setEditingNoteId(null)
@@ -1660,7 +1701,9 @@ export default function Mushaf1441Viewer({
 
   // Tapping a word carrying Qiraat data opens the same detail panel, straight to its Qiraat tab
   // (Part 13's "tap a word/phrase → bottom sheet"), instead of the notes tab `selectWord` opens.
-  function selectWordForQiraat(word: MushafWord) {
+  // Returns false when the token carries no Qiraat data at all, so a press that would open an
+  // empty panel simply does nothing (and plays no haptic).
+  function selectWordForQiraat(word: MushafWord): boolean {
     // Feed the permanent sidebar (desktop / iPad landscape) with everything anchored to this token:
     // the أوجه that change the rasm AND the أصول rulings that only change how it is performed.
     const rulings = rulingMarkerForWord(
@@ -1671,12 +1714,13 @@ export default function Mushaf1441Viewer({
       qiraatVariantsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
       { includeUnpublished: qiraatView.includeReviewed },
     )
+    if (!rulings.length && !variants.length) return false
     setQiraatSelection({ word, rulings, variants })
     // The drawer/detail panel stays the mobile path, where there is no room for a sidebar.
     if (!isSpread) {
       selectWord(word)
-      setActiveDetailTab('qiraat')
     }
+    return true
   }
 
   function openMutshabehatPopup(ayahKey: string) {
@@ -1727,8 +1771,24 @@ export default function Mushaf1441Viewer({
     turnPage(direction > 0 ? 1 : -1)
   }
 
-  function openContextMenu(target: AnnotationTarget, x: number, y: number) {
+  // The single funnel for a deliberate press on a word or an ayah marker — a long-press on touch,
+  // a right-click with a mouse. The ACTIVE LAYER decides what that press means, so the annotation
+  // menu (note / highlight / bookmark / favourite) belongs to the annotations layer alone and can
+  // never open over a page the reader is studying in Qiraat or متشابهات mode.
+  // Returns whether the press produced anything, so the caller only plays the haptic when it did.
+  function openContextMenu(target: AnnotationTarget, x: number, y: number): boolean {
+    if (readerLayer === 'qiraat') {
+      // "press and hold to see the Qiraat difference" — straight to the full explanation of that
+      // token: the permanent sidebar on desktop / iPad landscape, the detail sheet on a phone.
+      return isWordTarget(target) ? selectWordForQiraat(target.word) : false
+    }
+    if (readerLayer === 'mutshabehat') {
+      if (!highlightedMutshabehatAyahKeys.has(target.ayahKey)) return false
+      openMutshabehatPopup(target.ayahKey)
+      return true
+    }
     setContextMenu({ target, x, y })
+    return true
   }
 
   function openWordContextMenu(event: ReactMouseEvent<HTMLButtonElement>, word: MushafWord) {
@@ -1971,6 +2031,13 @@ export default function Mushaf1441Viewer({
             longPressFiredRef.current = false
             return
           }
+          // Same one-layer rule as a word. The medallion carries no Qiraat data of its own, so in
+          // Qiraat mode it is inert rather than a back door into the notes sheet.
+          if (readerLayer === 'qiraat') return
+          if (readerLayer === 'mutshabehat') {
+            if (highlightedMutshabehatAyahKeys.has(word.ayahKey)) openMutshabehatPopup(word.ayahKey)
+            return
+          }
           if (Date.now() - recentTouchRef.current < 700) return
           selectAyah(word.ayahKey)
         }}
@@ -2105,19 +2172,17 @@ export default function Mushaf1441Viewer({
             longPressFiredRef.current = false
             return
           }
-          // An ayah that is in your personal mutashabihat opens its card (click or tap).
-          if (isMutshabehatHighlighted) {
-            liveRef.current.openMutshabehatPopup(word.ayahKey)
-            return
-          }
-          // Qiraat: runs before the touch-suppression guard below (that guard exists for
-          // annotations/mutshabihat, not this) so a first tap on mobile — which fires no pointer
-          // hover — still peeks. First tap/hover shows the lite popup; a second tap on the SAME
+          // Only the active layer answers a press. Qiraat first and exclusively: while it owns the
+          // page a word never opens a متشابهات card or the notes sheet, however much other data it
+          // carries. Runs before the touch-suppression guard below (that guard exists for
+          // annotations/متشابهات, not this) so a first tap on mobile — which fires no pointer hover
+          // — still peeks. First tap/hover shows the lite popup; a second tap on the SAME
           // already-peeked word (or a desktop click, since hover already peeked it) opens the full
-          // detail panel. Reads the ref, not the state, so a stale page-slot closure can't misread it.
+          // detail. Reads the ref, not the state, so a stale page-slot closure can't misread it.
           // Stops here (never bubbles to the document click-outside listener below) so opening or
           // switching a peek is never immediately undone by that same click.
-          if (hasQiraatData && qiraatView.mode !== 'normal') {
+          if (qiraatView.mode !== 'normal') {
+            if (!hasQiraatData) return
             event.stopPropagation()
             if (qiraatMarker) {
               if (hoveredQiraatWordIdRef.current === word.id) {
@@ -2131,6 +2196,13 @@ export default function Mushaf1441Viewer({
             }
             return
           }
+          // متشابهات layer: an ayah that is in one of your groups opens its card, and a word that
+          // is in none of them does nothing at all — no notes panel behind the reader's back.
+          if (readerLayer === 'mutshabehat') {
+            if (isMutshabehatHighlighted) liveRef.current.openMutshabehatPopup(word.ayahKey)
+            return
+          }
+          // Annotations layer (and the plain mushaf) — notes, highlight, bookmark, favourite.
           // On touch devices a tap does not open details — long-press does.
           if (Date.now() - recentTouchRef.current < 700) return
           liveRef.current.selectWord(word)
@@ -2178,7 +2250,12 @@ export default function Mushaf1441Viewer({
             : ''
         }`}
         aria-pressed={isSelectedWord}
-        className={`inline rounded-[3px] px-0 py-0 align-baseline transition-colors focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
+        // `active:` gives the press its own visual state for as long as the finger is down — the
+        // other half of the iOS icon-hold feel, and the half that works on every device, since
+        // mobile Safari has no vibration API to ask (see haptics.ts). Pure CSS on purpose: a
+        // per-word "is pressed" state would re-render the memoized page slot and cost the ~1 ms
+        // page-turn invariant on every touch.
+        className={`inline rounded-[3px] px-0 py-0 align-baseline transition-colors select-none [-webkit-touch-callout:none] active:bg-[#e3d8bc] focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
           isSelectedWord
             ? 'bg-[#ece2c8] text-[#171717] ring-1 ring-[#d8c9a3]'
             : highlightAnnotation
@@ -2814,25 +2891,14 @@ export default function Mushaf1441Viewer({
           ) : null}
         </div>
 
-        <div className="grid grid-cols-3 gap-1 rounded-lg bg-[#f4efe6] p-1">
-          {[
-            ['notes', 'Notes'],
-            ['mutshabehat', 'Mutshabehat'],
-            ['qiraat', 'Qiraat'],
-          ].map(([tab, label]) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActiveDetailTab(tab as DetailPanelTab)}
-              className={`min-h-11 rounded-md px-2 text-xs font-black transition-colors ${
-                activeDetailTab === tab
-                  ? 'bg-[#171717] text-white'
-                  : 'text-[#59461d] hover:bg-white'
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+        {/* Was a three-way tab bar. The layer decides now, so this is a label, not a choice — the
+            sheet shows one layer's data and switching means switching layer in the top bar. */}
+        <div className="rounded-lg bg-[#f4efe6] p-1">
+          <p className="min-h-11 rounded-md bg-[#171717] px-2 py-3 text-center text-xs font-black text-white">
+            {activeDetailTab === 'qiraat'
+              ? 'القراءات العشر'
+              : activeDetailTab === 'mutshabehat' ? 'المتشابهات' : 'الملاحظات والتمييز'}
+          </p>
         </div>
 
         {activeDetailTab === 'notes' ? (
@@ -3481,7 +3547,7 @@ export default function Mushaf1441Viewer({
         <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
           <QiraatToolbar
             mode={qiraatMode}
-            onModeChange={setQiraatMode}
+            onModeChange={applyQiraatMode}
             selectedReadingId={qiraatSelectedReadingId}
             onReadingChange={setQiraatSelectedReadingId}
             studyMode={qiraatStudyMode}
@@ -3843,8 +3909,8 @@ export default function Mushaf1441Viewer({
           </Link>
           <button
             type="button"
-            onClick={() => setAnnotationsVisiblePersisted(!annotationsVisible)}
-            aria-label={annotationsVisible ? 'إخفاء الملاحظات والتظليل' : 'إظهار الملاحظات والتظليل'}
+            onClick={() => toggleLayer('annotations')}
+            aria-label={annotationsVisible ? 'إخفاء الملاحظات والتظليل' : 'إظهار الملاحظات والتظليل — وإيقاف المتشابهات والقراءات'}
             aria-pressed={annotationsVisible}
             title="الملاحظات والتظليل"
             className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
@@ -3857,8 +3923,8 @@ export default function Mushaf1441Viewer({
           </button>
           <button
             type="button"
-            onClick={toggleMutshabehatHighlight}
-            aria-label={mutshabehatHighlightEnabled ? 'إخفاء تظليل المتشابهات' : 'إظهار تظليل المتشابهات'}
+            onClick={() => toggleLayer('mutshabehat')}
+            aria-label={mutshabehatHighlightEnabled ? 'إخفاء تظليل المتشابهات' : 'إظهار تظليل المتشابهات — وإيقاف الملاحظات والقراءات'}
             aria-pressed={mutshabehatHighlightEnabled}
             title="المتشابهات"
             className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
@@ -3871,8 +3937,8 @@ export default function Mushaf1441Viewer({
           </button>
           <button
             type="button"
-            onClick={() => setQiraatMode((current) => (current === 'normal' ? 'comparison' : 'normal'))}
-            aria-label={qiraatMode === 'normal' ? 'تفعيل مقارنة القراءات' : 'إيقاف مقارنة القراءات — العودة إلى المصحف العادي'}
+            onClick={() => toggleLayer('qiraat')}
+            aria-label={qiraatMode === 'normal' ? 'تفعيل القراءات — وإيقاف الملاحظات والمتشابهات' : 'إيقاف القراءات — العودة إلى المصحف العادي'}
             aria-pressed={qiraatMode !== 'normal'}
             title="القراءات"
             className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
@@ -3953,7 +4019,10 @@ export default function Mushaf1441Viewer({
                       // changed and the layer would only vanish when some other prop happened to move.
                       annotations={annotationsVisible ? annotations : EMPTY_ANNOTATIONS}
                       qiraat={qiraatView}
-                      selection={`${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}`}
+                      // `readerLayer` rides along because renderQcfWord's click/press
+                      // routing reads it: without it a slot could keep a closure from the
+                      // previous layer and answer a press the way that layer used to.
+                      selection={`${readerLayer}|${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}`}
                       loading={isCurrent && isPageLoading}
                       render={() => renderLineWords(slotPage, no, slotMetadata, layout)}
                     />
@@ -4093,7 +4162,7 @@ export default function Mushaf1441Viewer({
               <p className="mb-3 text-xs font-bold text-[#80662c]">القراءات</p>
               <QiraatToolbar
                 mode={qiraatMode}
-                onModeChange={setQiraatMode}
+                onModeChange={applyQiraatMode}
                 selectedReadingId={qiraatSelectedReadingId}
                 onReadingChange={setQiraatSelectedReadingId}
                 studyMode={qiraatStudyMode}

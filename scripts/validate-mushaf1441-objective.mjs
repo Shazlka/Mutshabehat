@@ -97,10 +97,34 @@ for (const token of [
   'mutshabehatHighlightByAyahKey',
   'isMutshabehatHighlighted',
   'PERSONAL_AYAH_HIGHLIGHT',
-  "setActiveDetailTab(hasMutshabehatHighlight ? 'mutshabehat' : 'notes')",
+  // The detail sheet's Mutshabehat panel is now reached through the reader layer rather than
+  // a tab the user picks, so this is the line that keeps it reachable.
+  "readerLayer === 'mutshabehat' && highlightedMutshabehatAyahKeys.has(target.ayahKey)",
 ]) {
   mustInclude(viewer, token, 'Mutshabehat viewer link')
 }
+// One colour system at a time (annotations / Mutshabehat / Qiraat). The layer is a single enum
+// rather than independent booleans precisely so two of them can never be on together; if
+// these disappear, that guarantee has been unpicked somewhere.
+for (const token of [
+  "type ReaderLayer = 'none' | 'annotations' | 'mutshabehat' | 'qiraat'",
+  "const annotationsVisible = readerLayer === 'annotations'",
+  "const mutshabehatHighlightEnabled = readerLayer === 'mutshabehat'",
+  "const qiraatMode: QiraatMode = readerLayer === 'qiraat' ? qiraatSubMode : 'normal'",
+  'function activateLayer(next: ReaderLayer)',
+  'impactHaptic()',
+]) {
+  mustInclude(viewer, token, 'reader layer exclusivity')
+}
+// Independent on/off switches for the same three layers would let two of them paint at once.
+for (const token of [
+  'const [annotationsVisible, setAnnotationsVisible]',
+  'const [mutshabehatHighlightEnabled, setMutshabehatHighlightEnabled]',
+  'const [qiraatMode, setQiraatMode]',
+]) {
+  mustNotInclude(viewer, token, 'reader layer exclusivity')
+}
+
 for (const token of [
   "from('groups')",
   'verses(surah, ayah, label), group_tags(tags(name))',
