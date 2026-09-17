@@ -1,0 +1,20 @@
+export const QUESTION_TYPES = ['complete_ayah', 'missing_word', 'next_word', 'ayah_ending', 'ayah_beginning', 'next_ayah', 'previous_ayah', 'transition', 'surah', 'ayah_number', 'location', 'mutashabihat', 'difference'] as const
+export type QuestionType = typeof QUESTION_TYPES[number]
+export type Difficulty = 1 | 2 | 3 | 4 | 5
+export type QuizMode = 'quick' | 'custom' | 'mutashabihat' | 'weak' | 'daily'
+export type Scope = { type: 'all' | 'surahs' | 'juz' | 'hizb' | 'pages' | 'ayah_range' | 'studied' | 'studied_mutashabihat' | 'group'; surahIds?: number[]; from?: number; to?: number; groupId?: string }
+export type QuizSettings = { mode: QuizMode; difficulty: Difficulty; count: number; scope: Scope; questionType: QuestionType | 'mixed'; timer: 'none' | 'question' | 'quiz'; timerSeconds?: number; timezone: string; retryDaily?: boolean; reviewSessionId?: string }
+/** Offsets refer to exact UTF-16 slices of the authoritative Uthmani ayah, never reconstructed text. */
+export type SourceSpan = { ayahKey: string; start: number; end: number }
+export type Choice = { id: string; text: string; source?: SourceSpan; reference?: string }
+export type Question = { id: string; fingerprint: string; type: QuestionType; difficulty: Difficulty; ayahKey: string; surahId: number; ayahNumber: number; surahName: string; prompt: string; context: string; contextSpans: SourceSpan[]; choices: Choice[]; groupId?: string; page: number | null; blank?: { before: string; after: string } }
+export type PrivateQuestion = Question & { correctChoiceId: string; explanation: string; comparisons: Array<{ text: string; ayahKey: string; surahName: string }> }
+export type Answer = { questionId: string; selectedChoiceId: string; correctChoiceId: string; isCorrect: boolean; responseTimeMs: number; answeredAt: string; explanation: string; comparisons: PrivateQuestion['comparisons']; errorCategory: QuestionType | null }
+export type Session = { id: string; settings: QuizSettings; seed: string; startedAt: string; completedAt: string | null; questions: Question[]; answers: Answer[]; dailyDate: string | null }
+export type StoredSession = Omit<Session, 'questions'> & { questions: PrivateQuestion[]; userId: string }
+export type Performance = { ayahKey: string; attempts: number; correct: number; wrong: number; averageResponseMs: number; lastSeen: string; lastWrong: string | null; streak: number; groupId?: string }
+export type SimilarGroup = { id: string; title: string; ayahKeys: string[]; studied: boolean }
+export type GenerationContext = { groups: SimilarGroup[]; performance: Performance[]; recentFingerprints: string[]; weakTypes?: Partial<Record<QuestionType, number>>; weakGroupIds?: string[]; reviewAyahKeys?: string[]; now?: number }
+export type CategoryStat = { key: string; attempts: number; correct: number; accuracy: number }
+export type QuizSummary = { total: number; correct: number; wrong: number; percentage: number; durationSeconds: number; averageResponseMs: number; byType: CategoryStat[]; bySurah: CategoryStat[] }
+export type Dashboard = { sessions: Array<{ id: string; settings: QuizSettings; startedAt: string; completedAt: string | null; questionCount: number; correct: number; answered: number; durationSeconds: number }>; totalQuizzes: number; totalQuestions: number; accuracy: number; recentAccuracy: number; mutashabihatAccuracy: number | null; transitionAccuracy: number | null; byType: CategoryStat[]; bySurah: CategoryStat[]; trend: Array<{ date: string; attempts: number; accuracy: number }>; weakAyahs: Performance[] }

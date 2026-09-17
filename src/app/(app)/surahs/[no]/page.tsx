@@ -75,6 +75,7 @@ export default async function SurahDetailPage({ params, searchParams }: { params
 
   return (
     <div className="max-w-3xl mx-auto px-3 md:px-8 py-5 md:py-14">
+      <Link href={`/test?surah=${surahNo}`} className="inline-flex min-h-12 items-center mb-4 text-[var(--color-primary)] font-bold underline underline-offset-4">اختبر حفظك في سورة {name}</Link>
       <nav className="flex items-center justify-between mb-6 text-[12px] font-bold">
         <Link href="/surahs" className="inline-flex items-center gap-1 text-[var(--color-ink-muted)] hover:text-[var(--color-primary)] tap-shrink transition-colors">
           <span aria-hidden="true">→</span> كل السور

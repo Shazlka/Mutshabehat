@@ -14,7 +14,11 @@
     "mushaf:supabase:crud": "PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/verify-mushaf1441-supabase-crud.mjs",
     "test:proxy": "tsx --test tests/proxy-autologin.test.mjs",
     "test:qiraat": "node packages/qiraat-core/validate.mjs && tsx --test packages/qiraat-core/engine.test.mjs && node scripts/validate-qiraat-data.mjs",
-    "qiraat:validate": "node scripts/validate-qiraat-data.mjs"
+    "qiraat:validate": "node scripts/validate-qiraat-data.mjs",
+    "typecheck": "tsc --noEmit -p .",
+    "test:quiz": "tsx --test tests/quiz/engine.test.ts tests/quiz/presentation.test.ts",
+    "test:quiz:integration": "tsx --env-file=.env.local --test tests/quiz/database.test.ts",
+    "test:quiz:e2e": "playwright test"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
@@ -34,6 +38,7 @@
     "undici": "^7.29.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
     "@types/d3-drag": "^3.0.0",
     "@types/d3-force": "^3.0.0",

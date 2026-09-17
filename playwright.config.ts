@@ -1,0 +1,2 @@
+import { defineConfig,devices } from '@playwright/test'
+export default defineConfig({testDir:'tests/quiz/e2e',fullyParallel:false,workers:1,timeout:180000,expect:{timeout:15000},use:{baseURL:process.env.HIFZ_E2E_URL??'http://localhost:3222',trace:'retain-on-failure',screenshot:'only-on-failure'},projects:[{name:'desktop',use:{viewport:{width:1440,height:950}}},{name:'tablet',use:{viewport:{width:1024,height:768}}},{name:'iphone',use:{...devices['iPhone 13'],defaultBrowserType:'chromium'}}]})
