@@ -48,6 +48,14 @@ import {
 } from './qiraat/qiraatWordMarker'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
+import {
+  type MushafTheme,
+  MUSHAF_THEME_STORAGE_KEY,
+  THEME_TOKENS,
+  tintForGroupWithTheme,
+  adaptColorForDark,
+  adaptAnnotationForDark,
+} from './mushafTheme'
 
 const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
 const EMPTY_QIRAAT_RULES: QiraatRule[] = []
@@ -90,6 +98,17 @@ function readReaderLayer(): ReaderLayer {
     // Storage unavailable — fall through to the default.
   }
   return 'mutshabehat'
+}
+
+function readMushafTheme(): MushafTheme {
+  if (typeof window === 'undefined') return 'sepia'
+  try {
+    const stored = window.localStorage.getItem(MUSHAF_THEME_STORAGE_KEY)
+    if (stored === 'sepia' || stored === 'dark' || stored === 'white') return stored
+  } catch {
+    // Storage unavailable
+  }
+  return 'sepia'
 }
 
 /** What the permanent Qiraat sidebar is currently explaining. */
@@ -328,6 +347,7 @@ type MushafPageSlotProps = {
   qiraat: unknown
   selection: string
   loading: boolean
+  theme: MushafTheme
   render: () => ReactNode
 }
 
@@ -347,7 +367,8 @@ const MushafPageSlot = memo(
     && prev.annotations === next.annotations
     && prev.qiraat === next.qiraat
     && prev.selection === next.selection
-    && prev.loading === next.loading,
+    && prev.loading === next.loading
+    && prev.theme === next.theme,
 )
 const LONG_PRESS_MS = 480
 const SIGN_IN_HREF = '/login?next=/mushaf-1441'
@@ -518,6 +539,18 @@ export default function Mushaf1441Viewer({
   const activeDetailTab: DetailPanelTab = readerLayer === 'qiraat'
     ? 'qiraat'
     : readerLayer === 'mutshabehat' ? 'mutshabehat' : 'notes'
+
+  // Mushaf Appearance & Theme (Sepia / Dark / White)
+  const [mushafTheme, setMushafTheme] = useState<MushafTheme>('sepia')
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const currentThemeTokens = THEME_TOKENS[mushafTheme]
+
+  function switchMushafTheme(nextTheme: MushafTheme) {
+    setMushafTheme(nextTheme)
+    try {
+      window.localStorage.setItem(MUSHAF_THEME_STORAGE_KEY, nextTheme)
+    } catch { /* ignore */ }
+  }
 
   // Qiraat Ashr state model (Part 23). Persisted locally like other reader preferences.
   // Which Qiraat mode the burger panel last selected. Kept apart from `readerLayer` so that
@@ -775,6 +808,7 @@ export default function Mushaf1441Viewer({
 
   useEffect(() => {
     setReaderLayer(readReaderLayer())
+    setMushafTheme(readMushafTheme())
   }, [])
 
   // The ONE place the active layer changes. Switching layers also drops whatever the previous one
@@ -2152,11 +2186,15 @@ export default function Mushaf1441Viewer({
 
   // Background a word shows (same precedence as renderQcfWord), used to colour the gaps.
   function getWordBandColor(word: MushafWord, wordOrder: Map<string, number>): string | null {
-    const annotationColor = findHighlightAnnotation(word, wordOrder)?.backgroundColor
-    if (annotationColor) return annotationColor
-    if (readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey) return SELECTION_BG
+    const rawColor = findHighlightAnnotation(word, wordOrder)?.backgroundColor
+    if (rawColor) {
+      return mushafTheme === 'dark'
+        ? adaptAnnotationForDark({ backgroundColor: rawColor }).backgroundColor ?? rawColor
+        : rawColor
+    }
+    if (readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey) return currentThemeTokens.selectionBg
     const link = slotHighlightByAyahKey.get(word.ayahKey)
-    return link ? tintForGroup(link.groupId ?? link.ayahKey).bg : null
+    return link ? tintForGroupWithTheme(link.groupId ?? link.ayahKey, mushafTheme).bg : null
   }
 
   // The space between two words. On justified lines it grows to fill the line (like
@@ -2179,10 +2217,13 @@ export default function Mushaf1441Viewer({
     const isHighlightedAyah = readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey
     const mutshabehatHighlight = slotHighlightByAyahKey.get(word.ayahKey)
     const isMutshabehatHighlighted = Boolean(mutshabehatHighlight)
-    const mutshabehatTint = mutshabehatHighlight ? tintForGroup(mutshabehatHighlight.groupId ?? mutshabehatHighlight.ayahKey) : null
+    const mutshabehatTint = mutshabehatHighlight ? tintForGroupWithTheme(mutshabehatHighlight.groupId ?? mutshabehatHighlight.ayahKey, mushafTheme) : null
     const showMutshabehatTint = Boolean(mutshabehatTint) && !isSelectedWord && !isHighlightedAyah
     const ayahAnnotations = slotAnnotationsByAyahKey.get(word.ayahKey) ?? []
     const highlightAnnotation = findHighlightAnnotation(word, wordOrder)
+    const adaptedAnnotation = (highlightAnnotation && mushafTheme === 'dark')
+      ? adaptAnnotationForDark(highlightAnnotation)
+      : highlightAnnotation
     const hasAyahBookmark = ayahAnnotations.some((annotation) => annotation.annotationType === 'bookmark')
     const hasAyahFavorite = ayahAnnotations.some((annotation) => annotation.annotationType === 'favorite')
 
@@ -2237,9 +2278,22 @@ export default function Mushaf1441Viewer({
     const qiraatMarkerCss = qiraatMarker
       ? { height: qiraatView.studyMode ? 4 : 2, offset: qiraatView.studyMode ? -3 : -2 }
       : null
-    const qiraatTintColor = qiraatMarker && qiraatView.studyMode
+    const rawQiraatColor = qiraatMarker && qiraatView.studyMode
       ? (qiraatMarker.isGradient ? '#8a7c5c' : qiraatMarker.color)
       : null
+    const qiraatTintColor = rawQiraatColor && mushafTheme === 'dark'
+      ? adaptColorForDark(rawQiraatColor)
+      : rawQiraatColor
+
+    const effectiveRulingColor = rulingMarker?.color
+      ? (mushafTheme === 'dark' ? adaptColorForDark(rulingMarker.color) : rulingMarker.color)
+      : undefined
+
+    const effectiveMarkerColor = qiraatMarker?.isPerformanceOnly
+      ? (mushafTheme === 'dark' ? adaptColorForDark(PERFORMANCE_MARKER_COLOR) : PERFORMANCE_MARKER_COLOR)
+      : (qiraatMarker && !qiraatMarker.isGradient
+          ? (mushafTheme === 'dark' ? adaptColorForDark(qiraatMarker.color) : qiraatMarker.color)
+          : undefined)
 
     return (
       <button
@@ -2335,39 +2389,38 @@ export default function Mushaf1441Viewer({
         // mobile Safari has no vibration API to ask (see haptics.ts). Pure CSS on purpose: a
         // per-word "is pressed" state would re-render the memoized page slot and cost the ~1 ms
         // page-turn invariant on every touch.
-        className={`inline rounded-[3px] px-0 py-0 align-baseline transition-colors select-none [-webkit-touch-callout:none] active:bg-[#e3d8bc] focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
+        className={`inline rounded-[3px] px-0 py-0 align-baseline transition-colors select-none [-webkit-touch-callout:none] ${currentThemeTokens.wordActiveClass} focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
           isSelectedWord
-            ? 'bg-[#ece2c8] text-[#171717] ring-1 ring-[#d8c9a3]'
+            ? currentThemeTokens.wordSelectedClass
             : highlightAnnotation
               ? ''
             : isHighlightedAyah
-              ? 'bg-[#ece2c8] text-[#171717]'
+              ? currentThemeTokens.wordHighlightedAyahClass
               : isMutshabehatHighlighted || hasQiraatData
-                ? 'cursor-pointer text-[#171717] hover:brightness-95'
-                : 'text-[#171717] hover:bg-[#f3ecd9]'
+                ? `cursor-pointer ${currentThemeTokens.wordDefaultTextClass} hover:brightness-95`
+                : `${currentThemeTokens.wordDefaultTextClass} ${currentThemeTokens.wordHoverClass}`
         }`}
         style={{
           fontFamily,
           fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
           paddingBlock: MUSHAF_WORD_BAND_PADDING,
-          color: highlightAnnotation?.textColor
-            ?? (qiraatMarker?.isPerformanceOnly
-              ? PERFORMANCE_MARKER_COLOR
-              : (qiraatMarker && !qiraatMarker.isGradient ? qiraatMarker.color : undefined))
-            ?? rulingMarker?.color,
+          color: (adaptedAnnotation?.textColor ?? highlightAnnotation?.textColor)
+            ?? effectiveMarkerColor
+            ?? effectiveRulingColor
+            ?? currentThemeTokens.textPrimaryHex,
           // ذو وجهين («بخلف عنه») — two equally valid readings here; never silently pick one.
           textDecoration: rulingMarker?.hasAlternate ? 'underline dotted' : undefined,
-          textDecorationColor: rulingMarker?.hasAlternate ? rulingMarker.color : undefined,
+          textDecorationColor: rulingMarker?.hasAlternate ? effectiveRulingColor : undefined,
           textUnderlineOffset: rulingMarker?.hasAlternate ? '0.28em' : undefined,
           // Highlight band: the word and the gaps next to it (renderWordGap) share one colour.
-          backgroundColor: highlightAnnotation?.backgroundColor
+          backgroundColor: (adaptedAnnotation?.backgroundColor ?? highlightAnnotation?.backgroundColor)
             ?? (showMutshabehatTint ? mutshabehatTint?.bg : undefined)
-            ?? (qiraatTintColor ? `color-mix(in srgb, ${qiraatTintColor} 8%, transparent)` : undefined),
+            ?? (qiraatTintColor ? `color-mix(in srgb, ${qiraatTintColor} 16%, transparent)` : undefined),
           borderRadius: showMutshabehatTint || highlightAnnotation ? 0 : undefined,
           boxShadow: qiraatView.reviewMode && (qiraatMarker || rulingMarker)
             ? `inset 0 0 0 2px ${qiraatReviewRingColor(qiraatMarker, rulingMarker, qiraatView.review)}`
-            : (hasAyahBookmark || hasAyahFavorite ? 'inset 0 0 0 1px rgba(185,155,81,0.35)' : undefined),
+            : (hasAyahBookmark || hasAyahFavorite ? (mushafTheme === 'dark' ? 'inset 0 0 0 1px rgba(200,168,107,0.5)' : 'inset 0 0 0 1px rgba(185,155,81,0.35)') : undefined),
         }}
       >
         <span style={{ position: 'relative', display: 'inline-block' }}>
@@ -2378,7 +2431,7 @@ export default function Mushaf1441Viewer({
               title="أكثر من أصل في هذه الكلمة"
               style={{
                 position: 'absolute', insetInlineEnd: -3, top: -2,
-                width: 4, height: 4, borderRadius: 9999, background: rulingMarker.color,
+                width: 4, height: 4, borderRadius: 9999, background: effectiveRulingColor,
               }}
             />
           ) : null}
@@ -2392,7 +2445,7 @@ export default function Mushaf1441Viewer({
                 bottom: qiraatMarkerCss.offset,
                 height: qiraatMarkerCss.height,
                 borderRadius: 9999,
-                background: qiraatMarker.color,
+                background: effectiveMarkerColor,
               }}
             />
           ) : null}
@@ -2411,15 +2464,15 @@ export default function Mushaf1441Viewer({
     const latticeId = `surah-lattice-${surahNumber}`
     const medallion = (cx: number, label: string) => (
       <g>
-        <circle cx={cx} cy={50} r={33} fill="#fffdf6" stroke={`url(#${gradientId})`} strokeWidth={3} />
-        <rect x={cx - 19} y={31} width={38} height={38} rx={3} fill="none" stroke="#b8871d" strokeOpacity={0.55} strokeWidth={1.4} />
-        <rect x={cx - 19} y={31} width={38} height={38} rx={3} fill="none" stroke="#b8871d" strokeOpacity={0.55} strokeWidth={1.4} transform={`rotate(45 ${cx} 50)`} />
+        <circle cx={cx} cy={50} r={33} fill={currentThemeTokens.surahBanner.medallionFill} stroke={`url(#${gradientId})`} strokeWidth={3} />
+        <rect x={cx - 19} y={31} width={38} height={38} rx={3} fill="none" stroke={currentThemeTokens.surahBanner.medallionStroke} strokeOpacity={0.55} strokeWidth={1.4} />
+        <rect x={cx - 19} y={31} width={38} height={38} rx={3} fill="none" stroke={currentThemeTokens.surahBanner.medallionStroke} strokeOpacity={0.55} strokeWidth={1.4} transform={`rotate(45 ${cx} 50)`} />
         <text
           x={cx}
           y={50}
           textAnchor="middle"
           dominantBaseline="central"
-          fill="#6b531f"
+          fill={currentThemeTokens.surahBanner.medallionText}
           style={{ fontFamily: 'var(--font-cairo), system-ui, sans-serif', fontSize: 21, fontWeight: 800 }}
         >
           {label}
@@ -2432,26 +2485,26 @@ export default function Mushaf1441Viewer({
         <svg viewBox="0 0 1000 100" preserveAspectRatio="xMidYMid meet" className="block h-[94%] w-full overflow-visible" aria-hidden="true">
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#d6ad55" />
-              <stop offset="1" stopColor="#9c7016" />
+              <stop offset="0" stopColor={currentThemeTokens.surahBanner.goldGradient[0]} />
+              <stop offset="1" stopColor={currentThemeTokens.surahBanner.goldGradient[1]} />
             </linearGradient>
             <linearGradient id={panelId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#fbf0d2" />
-              <stop offset="1" stopColor="#efd9a0" />
+              <stop offset="0" stopColor={currentThemeTokens.surahBanner.panelGradient[0]} />
+              <stop offset="1" stopColor={currentThemeTokens.surahBanner.panelGradient[1]} />
             </linearGradient>
             <pattern id={latticeId} width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <path d="M0 8H16M8 0V16" stroke="#9c7016" strokeOpacity="0.16" strokeWidth="1.3" />
+              <path d="M0 8H16M8 0V16" stroke={currentThemeTokens.surahBanner.latticeStroke} strokeOpacity={currentThemeTokens.surahBanner.latticeOpacity} strokeWidth="1.3" />
             </pattern>
           </defs>
 
           {/* Outer band with lattice and an inner hairline rule */}
           <rect x="2" y="3" width="996" height="94" rx="12" fill={`url(#${panelId})`} stroke={`url(#${gradientId})`} strokeWidth="3.5" />
           <rect x="2" y="3" width="996" height="94" rx="12" fill={`url(#${latticeId})`} />
-          <rect x="11" y="11" width="978" height="78" rx="7" fill="none" stroke="#9c7016" strokeOpacity="0.42" strokeWidth="1.3" />
+          <rect x="11" y="11" width="978" height="78" rx="7" fill="none" stroke={currentThemeTokens.surahBanner.innerRuleStroke} strokeOpacity={currentThemeTokens.surahBanner.innerRuleOpacity} strokeWidth="1.3" />
 
           {/* Central cartouche with pointed ends */}
-          <path d="M262 15H738Q782 15 806 50Q782 85 738 85H262Q218 85 194 50Q218 15 262 15Z" fill="#fffdf6" stroke={`url(#${gradientId})`} strokeWidth="3" />
-          <path d="M266 22H734Q771 22 791 50Q771 78 734 78H266Q229 78 209 50Q229 22 266 22Z" fill="none" stroke="#b8871d" strokeOpacity="0.38" strokeWidth="1.2" />
+          <path d="M262 15H738Q782 15 806 50Q782 85 738 85H262Q218 85 194 50Q218 15 262 15Z" fill={currentThemeTokens.surahBanner.cartoucheFill} stroke={`url(#${gradientId})`} strokeWidth="3" />
+          <path d="M266 22H734Q771 22 791 50Q771 78 734 78H266Q229 78 209 50Q229 22 266 22Z" fill="none" stroke={currentThemeTokens.surahBanner.cartoucheInnerStroke} strokeOpacity={currentThemeTokens.surahBanner.cartoucheInnerOpacity} strokeWidth="1.2" />
 
           {/* Surah number (right, where reading starts) and ayah count (left) */}
           {medallion(928, surahNumber.toLocaleString('ar-EG'))}
@@ -2464,7 +2517,7 @@ export default function Mushaf1441Viewer({
             y="64"
             textAnchor="middle"
             dominantBaseline="alphabetic"
-            fill="#4a3a17"
+            fill={currentThemeTokens.surahBanner.surahNameColor}
             style={{ fontFamily: 'var(--font-amiri-quran), "Amiri Quran", serif', fontSize: 50 }}
           >
             سورة {name}
@@ -2477,7 +2530,7 @@ export default function Mushaf1441Viewer({
   function renderBasmala() {
     return (
       <div
-        className="flex h-full items-center justify-center text-[#171717]"
+        className={`flex h-full items-center justify-center ${currentThemeTokens.basmalaTextClass}`}
         style={{ fontSize: MUSHAF_QCF_FONT_SIZE, lineHeight: MUSHAF_QCF_LINE_HEIGHT }}
       >
         <span style={{ fontFamily: 'var(--font-amiri-quran), "Times New Roman", serif', fontSize: '0.9em' }}>{BASMALA_TEXT}</span>
@@ -2507,7 +2560,7 @@ export default function Mushaf1441Viewer({
         {Array.from({ length: 15 }, (_, index) => (
           <div key={index} className="flex items-center">
             <div
-              className="h-[38%] animate-pulse rounded-full bg-[#efe4c9]"
+              className={`h-[38%] animate-pulse rounded-full ${currentThemeTokens.skeletonBoneClass}`}
               style={{ width: index === 14 ? '60%' : '100%', marginInline: 'auto', animationDelay: `${index * 60}ms` }}
             />
           </div>
@@ -2548,8 +2601,9 @@ export default function Mushaf1441Viewer({
     return (
       <div
         dir="rtl"
-        className={`relative select-none overflow-hidden bg-[#fffdf6] shadow-[0_8px_30px_rgba(63,49,21,0.12)] [-webkit-touch-callout:none] sm:rounded-[10px] sm:border sm:border-[#e2d4b3] ${layout === 'right' ? 'sm:rounded-l-[3px]' : layout === 'left' ? 'sm:rounded-r-[3px]' : ''}`}
+        className={`relative select-none overflow-hidden ${currentThemeTokens.pageBorderClass} ${currentThemeTokens.pageShadowClass} [-webkit-touch-callout:none] sm:rounded-[10px] ${layout === 'right' ? 'sm:rounded-l-[3px]' : layout === 'left' ? 'sm:rounded-r-[3px]' : ''}`}
         style={{
+          backgroundColor: currentThemeTokens.pageBg,
           width: layout === 'single' ? MUSHAF_PAGE_WIDTH : MUSHAF_SPREAD_PAGE_WIDTH,
           height: layout === 'single' ? MUSHAF_PAGE_HEIGHT : MUSHAF_SPREAD_PAGE_HEIGHT,
           maxWidth: '100%',
@@ -2566,14 +2620,14 @@ export default function Mushaf1441Viewer({
             aria-hidden="true"
             className="pointer-events-none absolute inset-y-0 w-[7%]"
             style={layout === 'right'
-              ? { left: 0, background: 'linear-gradient(to right, rgba(63,49,21,0.10), transparent)' }
-              : { right: 0, background: 'linear-gradient(to left, rgba(63,49,21,0.10), transparent)' }}
+              ? { left: 0, background: currentThemeTokens.spineGradientRight }
+              : { right: 0, background: currentThemeTokens.spineGradientLeft }}
           />
         ) : null}
 
         {/* In-page top margin: juz / hizb / rub + surah name */}
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between gap-2 px-[5.5%] pt-[1.4%] font-bold text-[#9a7b35]"
+          className={`pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between gap-2 px-[5.5%] pt-[1.4%] font-bold ${currentThemeTokens.marginMetaClass}`}
           style={{ fontSize: marginFontSize }}
         >
           <span className="tabular-nums">
@@ -2584,7 +2638,7 @@ export default function Mushaf1441Viewer({
 
         {/* Left / right page indicator tab on the outer edge */}
         <span
-          className={`pointer-events-none absolute top-[3.5%] rounded-md bg-[#b8871d] px-2 py-0.5 font-bold text-white ${isRightPage ? 'right-0 rounded-r-none' : 'left-0 rounded-l-none'}`}
+          className={`pointer-events-none absolute top-[3.5%] rounded-md px-2 py-0.5 font-bold ${currentThemeTokens.sideTabClass} ${isRightPage ? 'right-0 rounded-r-none' : 'left-0 rounded-l-none'}`}
           style={{ fontSize: 'clamp(7px,1.7cqw,11px)' }}
         >
           {isRightPage ? 'يُمنى' : 'يُسرى'}
@@ -2593,8 +2647,8 @@ export default function Mushaf1441Viewer({
         {!page && !isPageLoading && layout === 'single' ? (
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
             <div>
-              <p className="text-3xl font-black text-[#80662c]">{pageNo}</p>
-              <p className="mt-3 text-sm leading-7 text-[#665b48]">لا توجد بيانات كلمات لهذه الصفحة.</p>
+              <p className={`text-3xl font-black ${currentThemeTokens.emptyPageNumClass}`}>{pageNo}</p>
+              <p className={`mt-3 text-sm leading-7 ${currentThemeTokens.emptyPageTextClass}`}>لا توجد بيانات كلمات لهذه الصفحة.</p>
             </div>
           </div>
         ) : !isPageReady ? (
@@ -2656,7 +2710,7 @@ export default function Mushaf1441Viewer({
 
         {/* In-page bottom margin: page number */}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center pb-[1.4%] font-black text-[#59461d]"
+          className={`pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center pb-[1.4%] font-black ${currentThemeTokens.marginPageNoClass}`}
           style={{ fontSize: marginFontSize }}
         >
           <span className="tabular-nums">{pageNo}</span>
@@ -3707,15 +3761,15 @@ export default function Mushaf1441Viewer({
       <aside
         dir="rtl"
         data-reader-sidebar={readerLayer}
-        className="flex w-[330px] shrink-0 flex-col gap-3 overflow-y-auto border-e border-[#d7c7a7] bg-[#f7f0e0] p-3"
+        className={`flex w-[330px] shrink-0 flex-col gap-3 overflow-y-auto border-e p-3 ${currentThemeTokens.sidebarContainerClass}`}
       >
         <div className="flex items-center justify-between gap-2">
-          <h2 className="text-sm font-black text-[#171717]">{title}</h2>
+          <h2 className={`text-sm font-black ${currentThemeTokens.sidebarTitleClass}`}>{title}</h2>
           {qiraatSelection ? (
             <button
               type="button"
               onClick={() => setQiraatSelection(null)}
-              className="rounded border border-[#d7c7a7] px-2 py-0.5 text-[11px] font-bold text-[#80662c] hover:bg-[#fff7df]"
+              className={`rounded border px-2 py-0.5 text-[11px] font-bold ${currentThemeTokens.headerBtnClass}`}
             >
               مسح التحديد
             </button>
@@ -3728,13 +3782,13 @@ export default function Mushaf1441Viewer({
         <>
         {/* The Qiraat peek lives here rather than floating over the page: an overlay on top of
             the lines swallowed the next word press and closed itself before it could be read. */}
-        {hoveredQiraatWord ? <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">{renderQiraatHoverCard('sidebar')}</div> : null}
+        {hoveredQiraatWord ? <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>{renderQiraatHoverCard('sidebar')}</div> : null}
 
-        <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+        <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
           {renderQiraatSelection()}
         </div>
 
-        <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+        <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
           <QiraatToolbar
             mode={qiraatMode}
             onModeChange={applyQiraatMode}
@@ -3764,12 +3818,12 @@ export default function Mushaf1441Viewer({
     if (readerLayer === 'mutshabehat') {
       const linkedOnPage = [...new Set(pageHighlights.map((h) => h.ayahKey))]
       return (
-        <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+        <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
           {mutshabehatPanelAyahKey ? (
             renderMutshabehatSidebarBody(mutshabehatPanelAyahKey)
           ) : (
             <>
-              <p className="text-xs leading-6 text-[#665b48]">
+              <p className={`text-xs leading-6 ${currentThemeTokens.sidebarSubtextClass}`}>
                 {linkedOnPage.length
                   ? `على هذه الصفحة ${linkedOnPage.length} آية من متشابهاتك. اضغط على آية ملوَّنة ليظهر هنا كل ما يرتبط بها.`
                   : 'لا توجد على هذه الصفحة آية من متشابهاتك.'}
@@ -3781,18 +3835,20 @@ export default function Mushaf1441Viewer({
     }
     // الملاحظات
     return (
-      <div className="rounded-lg border border-[#d7c7a7] bg-white p-2.5">
+      <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
         {needsSignIn ? (
           <a
             href={SIGN_IN_HREF}
-            className="block min-h-11 rounded-md bg-[#171717] px-4 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
+            className={`block min-h-11 rounded-md px-4 py-3 text-center text-sm font-bold transition-colors ${
+              mushafTheme === 'dark' ? 'bg-[#c8a86b] text-[#18191d] hover:bg-[#d6ba80]' : 'bg-[#171717] text-white hover:bg-[#3a3326]'
+            }`}
           >
             سجّل الدخول لحفظ التمييز والملاحظات
           </a>
         ) : selectedAyahKey ? (
           renderNotesPanel('desktop')
         ) : (
-          <p className="text-xs leading-6 text-[#665b48]">
+          <p className={`text-xs leading-6 ${currentThemeTokens.sidebarSubtextClass}`}>
             اضغط على أي كلمة أو آية في الصفحة لتضيف لها ملاحظة أو تمييزًا أو إشارة، ويظهر تحريرها هنا.
           </p>
         )}
@@ -4135,25 +4191,251 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  function renderSettingsModal() {
+    if (!isSettingsOpen) return null
+
+    const isDark = mushafTheme === 'dark'
+
+    const themes: Array<{
+      id: MushafTheme
+      title: string
+      subtitle: string
+      previewBg: string
+      previewBorder: string
+      previewText: string
+      previewAccent: string
+      desc: string
+    }> = [
+      {
+        id: 'sepia',
+        title: 'ورق كلاسيكي دافئ',
+        subtitle: 'المظهر التراثي الأصلي لمصحف المدينة المنورة',
+        previewBg: '#fcf8ed',
+        previewBorder: '#d7c7a7',
+        previewText: '#1b1b1b',
+        previewAccent: '#80662c',
+        desc: 'صفحات بلون الورق الطبيعي المعتق، مريح للعين في الإضاءة النهارية والمعتدلة.',
+      },
+      {
+        id: 'dark',
+        title: 'الوضع الليلي الداكن',
+        subtitle: 'قراءة ليلية مريحة مع حبر ذهبي ورمادي عالي التباين',
+        previewBg: '#18191d',
+        previewBorder: '#3b3d45',
+        previewText: '#f1f5f9',
+        previewAccent: '#c8a86b',
+        desc: 'خلفية داكنة خافتة مع نصوص عالية التباين، مخصصة للقراءة في الظلام وتوفير طاقة الشاشة.',
+      },
+      {
+        id: 'white',
+        title: 'صفحة بيضاء ناصعة',
+        subtitle: 'ورق أبيض ناصع بتباين استثنائي وألوان طباعة دقيقة',
+        previewBg: '#ffffff',
+        previewBorder: '#d1d5db',
+        previewText: '#111827',
+        previewAccent: '#92400e',
+        desc: 'صفحة بيضاء صافية بحبر كربوني فاحم، تبرز علامات المصحف وتلوينات المتشابهات بوضوح تام.',
+      },
+    ]
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4" dir="rtl">
+        {/* Backdrop */}
+        <button
+          type="button"
+          aria-label="إغلاق إعدادات المظهر"
+          onClick={() => setIsSettingsOpen(false)}
+          className="fixed inset-0 bg-black/60 backdrop-blur-[2px] transition-opacity"
+        />
+
+        {/* Modal Window */}
+        <section
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="mushaf-settings-title"
+          className={`relative z-10 flex max-h-[92vh] w-full max-w-xl flex-col rounded-t-2xl border shadow-2xl transition-all sm:rounded-2xl ${
+            isDark
+              ? 'border-[#2d2f36] bg-[#18191d] text-[#f1f5f9]'
+              : 'border-[#d7c7a7] bg-[#fffdf8] text-[#1f2937]'
+          }`}
+          style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
+        >
+          {/* Header */}
+          <div className={`flex items-center justify-between border-b px-5 py-4 ${
+            isDark ? 'border-[#2d2f36] bg-[#1f2127]' : 'border-[#eadfc9] bg-[#faf4e6]'
+          }`}>
+            <div className="flex items-center gap-2.5">
+              <span className={`flex size-9 items-center justify-center rounded-lg border text-base ${
+                isDark ? 'border-[#3b3d45] bg-[#18191d] text-[#c8a86b]' : 'border-[#d7c7a7] bg-white text-[#80662c]'
+              }`}>
+                ⚙
+              </span>
+              <div>
+                <h2 id="mushaf-settings-title" className="text-base font-black sm:text-lg">
+                  مظهر المصحف وقراءة الصفحات
+                </h2>
+                <p className={`text-xs ${isDark ? 'text-[#9ca3af]' : 'text-[#80662c]'}`}>
+                  اختر الطابع البصري الملائم لبيئة قراءتك
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsSettingsOpen(false)}
+              className={`size-9 rounded-lg border text-sm font-bold transition-colors ${
+                isDark
+                  ? 'border-[#3b3d45] text-[#9ca3af] hover:bg-[#2d2f36] hover:text-white'
+                  : 'border-[#d7c7a7] text-[#59461d] hover:bg-[#f3ebd7]'
+              }`}
+              aria-label="إغلاق النافذة"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Body: Theme Options */}
+          <div className="flex-1 overflow-y-auto p-4 sm:p-5">
+            <div className="space-y-3" role="radiogroup" aria-labelledby="mushaf-settings-title">
+              {themes.map((theme) => {
+                const isSelected = mushafTheme === theme.id
+                return (
+                  <button
+                    key={theme.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={isSelected}
+                    onClick={() => switchMushafTheme(theme.id)}
+                    className={`group relative flex w-full flex-col gap-3 rounded-xl border p-3.5 text-right transition-all sm:flex-row sm:items-center sm:p-4 ${
+                      isSelected
+                        ? isDark
+                          ? 'border-[#c8a86b] bg-[#22242a] shadow-[0_0_0_2px_#c8a86b]'
+                          : 'border-[#80662c] bg-[#fffaf0] shadow-[0_0_0_2px_#80662c]'
+                        : isDark
+                          ? 'border-[#2d2f36] bg-[#1a1c22] hover:border-[#3b3d45] hover:bg-[#22242a]'
+                          : 'border-[#eadfc9] bg-white hover:border-[#d7c7a7] hover:bg-[#fcf8ed]'
+                    }`}
+                  >
+                    {/* Visual Preview Card */}
+                    <div
+                      className="relative flex h-24 w-full shrink-0 flex-col justify-between overflow-hidden rounded-lg border p-2.5 shadow-sm sm:h-24 sm:w-36"
+                      style={{
+                        backgroundColor: theme.previewBg,
+                        borderColor: theme.previewBorder,
+                        color: theme.previewText,
+                      }}
+                    >
+                      <div className="flex items-center justify-between border-b pb-1" style={{ borderColor: theme.previewBorder }}>
+                        <span className="text-[9px] font-black" style={{ color: theme.previewAccent }}>
+                          سورة الفاتحة
+                        </span>
+                        <span className="text-[9px] tabular-nums opacity-60">١</span>
+                      </div>
+                      <div className="my-auto text-center font-serif text-sm font-bold tracking-wide">
+                        ﴿ بِسْمِ ٱللَّهِ ﴾
+                      </div>
+                      <div className="flex items-center justify-between pt-1" style={{ borderColor: theme.previewBorder }}>
+                        <span className="h-1 w-6 rounded-full" style={{ backgroundColor: theme.previewAccent }} />
+                        <span className="text-[8px] opacity-70">١٤٤١ هـ</span>
+                      </div>
+                    </div>
+
+                    {/* Text Details */}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-black sm:text-base">{theme.title}</span>
+                          {isSelected ? (
+                            <span className={`rounded-full px-2 py-0.5 text-[10px] font-black ${
+                              isDark ? 'bg-[#c8a86b] text-[#18191d]' : 'bg-[#80662c] text-white'
+                            }`}>
+                              المظهر النشط ✓
+                            </span>
+                          ) : null}
+                        </div>
+                        {/* Radio circle indicator */}
+                        <span
+                          className={`flex size-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                            isSelected
+                              ? isDark
+                                ? 'border-[#c8a86b] bg-[#c8a86b] text-[#18191d]'
+                                : 'border-[#80662c] bg-[#80662c] text-white'
+                              : isDark
+                                ? 'border-[#4b5563] bg-transparent'
+                                : 'border-[#c2b291] bg-transparent'
+                          }`}
+                        >
+                          {isSelected ? (
+                            <span className="size-2 rounded-full bg-current" />
+                          ) : null}
+                        </span>
+                      </div>
+                      <p className={`mt-0.5 text-xs font-medium ${isDark ? 'text-[#c8a86b]' : 'text-[#80662c]'}`}>
+                        {theme.subtitle}
+                      </p>
+                      <p className={`mt-1 text-[11px] leading-relaxed ${isDark ? 'text-[#9ca3af]' : 'text-[#6b7280]'}`}>
+                        {theme.desc}
+                      </p>
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Explanatory note */}
+            <div className={`mt-4 rounded-xl border p-3 text-xs leading-relaxed ${
+              isDark
+                ? 'border-[#2d2f36] bg-[#1a1c22] text-[#9ca3af]'
+                : 'border-[#eadfc9] bg-[#fbf7ee] text-[#786438]'
+            }`}>
+              <div className="flex items-start gap-2">
+                <span className="text-sm">✦</span>
+                <p>
+                  يتم حفظ المظهر تلقائياً على جهازك، ويشمل ضبط تلوينات الآيات المتشابهة، أحكام أصول القراءات، وهوامش المصحف، وتأثير طي الصفحات.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className={`flex items-center justify-end gap-2 border-t px-5 py-3 ${
+            isDark ? 'border-[#2d2f36] bg-[#1f2127]' : 'border-[#eadfc9] bg-[#faf4e6]'
+          }`}>
+            <button
+              type="button"
+              onClick={() => setIsSettingsOpen(false)}
+              className={`min-h-11 rounded-lg px-6 text-sm font-black transition-colors ${
+                isDark
+                  ? 'bg-[#c8a86b] text-[#18191d] hover:bg-[#dfbe7f]'
+                  : 'bg-[#80662c] text-white hover:bg-[#59461d]'
+              }`}
+            >
+              تم الحفظ والتطبيق
+            </button>
+          </div>
+        </section>
+      </div>
+    )
+  }
+
   return (
     <div
       dir="rtl"
-      className="flex h-[100dvh] flex-col overflow-hidden bg-[#efe7d6] text-[#171717]"
+      className={`flex h-[100dvh] flex-col overflow-hidden ${currentThemeTokens.viewerBgClass}`}
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       {/* Slim top bar — the main screen is the mushaf itself */}
-      <header className="flex shrink-0 items-center justify-between gap-2 border-b border-[#d7c7a7] bg-[#f7f0e0] px-3 py-2">
+      <header className={`flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2 ${currentThemeTokens.headerBgClass}`}>
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
             aria-label="القائمة والإعدادات"
-            className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#171717] text-white transition-colors hover:bg-[#3a3326]"
+            className={`flex size-10 shrink-0 items-center justify-center rounded-md border transition-colors ${currentThemeTokens.headerBtnClass}`}
           >
             <span className="flex flex-col gap-[3px]">
-              <span className="block h-0.5 w-5 rounded bg-white" />
-              <span className="block h-0.5 w-5 rounded bg-white" />
-              <span className="block h-0.5 w-5 rounded bg-white" />
+              <span className={`block h-0.5 w-5 rounded ${mushafTheme === 'dark' ? 'bg-[#f1f5f9]' : 'bg-current'}`} />
+              <span className={`block h-0.5 w-5 rounded ${mushafTheme === 'dark' ? 'bg-[#f1f5f9]' : 'bg-current'}`} />
+              <span className={`block h-0.5 w-5 rounded ${mushafTheme === 'dark' ? 'bg-[#f1f5f9]' : 'bg-current'}`} />
             </span>
           </button>
           <div className="relative min-w-0">
@@ -4166,18 +4448,18 @@ export default function Mushaf1441Viewer({
             aria-label="اختيار السورة من القائمة"
             aria-haspopup="dialog"
             aria-expanded={isSurahPickerOpen}
-            className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 text-right transition-colors hover:bg-[#ebdcc0] active:bg-[#e2cfaf]"
+            className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 text-right transition-colors hover:brightness-95 active:brightness-90"
           >
             <div className="min-w-0">
               <div className="flex items-center gap-1">
-                <p className="truncate text-sm font-black leading-tight sm:text-base text-[#171717]">
+                <p className={`truncate text-sm font-black leading-tight sm:text-base ${currentThemeTokens.headerTitleClass}`}>
                   {visiblePageMetadata?.surahNames.join(' · ') ?? 'مصحف المدينة ١٤٤١'}
                 </p>
-                <svg className="size-3.5 shrink-0 text-[#80662c]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <svg className={`size-3.5 shrink-0 ${currentThemeTokens.headerSubClass}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                 </svg>
               </div>
-              <p className="truncate text-[11px] font-bold tabular-nums text-[#80662c]" dir="ltr">
+              <p className={`truncate text-[11px] font-bold tabular-nums ${currentThemeTokens.headerSubClass}`} dir="ltr">
                 {visiblePageMetadata ? `${visiblePageMetadata.firstAyahKey} → ${visiblePageMetadata.lastAyahKey}` : ''}
               </p>
             </div>
@@ -4187,11 +4469,11 @@ export default function Mushaf1441Viewer({
           {/* The page number gets its own fixed-width frame OUTSIDE the truncating block: inside
               it, a long surah name pushed it into the ellipsis and the number became unreadable. */}
           <span
-            className="flex shrink-0 flex-col items-center justify-center rounded-md border border-[#b99b51] bg-[#fffaf0] px-2.5 py-1 leading-none"
+            className={`flex shrink-0 flex-col items-center justify-center rounded-md border px-2.5 py-1 leading-none ${currentThemeTokens.headerPageFrameClass}`}
             title={`الصفحة ${pageNumber} من ${MUSHAF_1441_PAGE_COUNT}`}
           >
-            <span className="text-[9px] font-bold text-[#80662c]">صفحة</span>
-            <span className="text-sm font-black tabular-nums text-[#3f3215]" dir="ltr">{pageNumber}</span>
+            <span className={`text-[9px] font-bold ${currentThemeTokens.headerPageFrameLabelClass}`}>صفحة</span>
+            <span className={`text-sm font-black tabular-nums ${currentThemeTokens.headerPageFrameNumClass}`} dir="ltr">{pageNumber}</span>
           </span>
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
@@ -4200,7 +4482,7 @@ export default function Mushaf1441Viewer({
             onClick={() => turnPage(-1)}
             disabled={pageNumber <= MIN_PAGE}
             aria-label="الصفحة السابقة"
-            className="hidden size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40 sm:flex"
+            className={`hidden size-10 items-center justify-center rounded-md border text-lg font-bold transition-colors disabled:opacity-40 sm:flex ${currentThemeTokens.headerBtnClass}`}
           >
             →
           </button>
@@ -4209,7 +4491,7 @@ export default function Mushaf1441Viewer({
             onClick={() => turnPage(1)}
             disabled={pageNumber >= MAX_PAGE}
             aria-label="الصفحة التالية"
-            className="hidden size-10 items-center justify-center rounded-md border border-[#b99b51] text-lg font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9] disabled:opacity-40 sm:flex"
+            className={`hidden size-10 items-center justify-center rounded-md border text-lg font-bold transition-colors disabled:opacity-40 sm:flex ${currentThemeTokens.headerBtnClass}`}
           >
             ←
           </button>
@@ -4218,7 +4500,7 @@ export default function Mushaf1441Viewer({
             prefetch={false}
             aria-label="العودة إلى المتشابهات"
             title="المتشابهات"
-            className="flex size-10 items-center justify-center rounded-md border border-[#b99b51] text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
+            className={`flex size-10 items-center justify-center rounded-md border transition-colors ${currentThemeTokens.headerBtnClass}`}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M3 11.5 12 4l9 7.5" />
@@ -4234,7 +4516,7 @@ export default function Mushaf1441Viewer({
             className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
               annotationsVisible
                 ? 'border-[#8c5f0a] bg-[#8c5f0a] text-white'
-                : 'border-[#b99b51] text-[#3f3215] hover:bg-[#fff9e9]'
+                : currentThemeTokens.headerBtnClass
             }`}
           >
             ن
@@ -4248,7 +4530,7 @@ export default function Mushaf1441Viewer({
             className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
               mutshabehatHighlightEnabled
                 ? 'border-[#0d7a6f] bg-[#0d7a6f] text-white'
-                : 'border-[#b99b51] text-[#3f3215] hover:bg-[#fff9e9]'
+                : currentThemeTokens.headerBtnClass
             }`}
           >
             م
@@ -4261,8 +4543,8 @@ export default function Mushaf1441Viewer({
             title="القراءات"
             className={`flex size-10 items-center justify-center rounded-md border text-sm font-black transition-colors ${
               qiraatMode !== 'normal'
-                ? 'border-[#171717] bg-[#171717] text-white'
-                : 'border-[#b99b51] text-[#3f3215] hover:bg-[#fff9e9]'
+                ? (mushafTheme === 'dark' ? 'border-[#c8a86b] bg-[#c8a86b] text-[#18191d]' : 'border-[#171717] bg-[#171717] text-white')
+                : currentThemeTokens.headerBtnClass
             }`}
           >
             ق
@@ -4330,6 +4612,7 @@ export default function Mushaf1441Viewer({
                       // previous layer and answer a press the way that layer used to.
                       selection={`${readerLayer}|${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}`}
                       loading={isCurrent && isPageLoading}
+                      theme={mushafTheme}
                       render={() => renderLineWords(slotPage, no, slotMetadata, layout)}
                     />
                   )
@@ -4349,6 +4632,7 @@ export default function Mushaf1441Viewer({
             front={pageTurn.front}
             still={pageTurn.still}
             backRect={pageTurn.backRect}
+            paperColor={currentThemeTokens.pageBg}
             resolveBack={() => (pageTurn.backPageNo === null
               ? null
               : pageStageRef.current?.querySelector<HTMLElement>(`[data-page-slot-current] [data-page-no="${pageTurn.backPageNo}"]`) ?? null)}
@@ -4389,19 +4673,19 @@ export default function Mushaf1441Viewer({
         }
         return (
           <div
-            className="relative flex shrink-0 items-center gap-3 border-t border-[#d7c7a7] bg-[#f7f0e0] px-3 py-2"
+            className={`relative flex shrink-0 items-center gap-3 border-t px-3 py-2 ${currentThemeTokens.sliderContainerClass}`}
             style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
           >
             {pageSliderPreview !== null ? (
               <div
-                className="pointer-events-none absolute -top-12 z-50 -translate-x-1/2 rounded-xl border border-[#b8871d] bg-[#171717] px-4 py-2 text-center shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                className={`pointer-events-none absolute -top-12 z-50 -translate-x-1/2 rounded-xl border px-4 py-2 text-center shadow-[0_10px_30px_rgba(0,0,0,0.3)] ${currentThemeTokens.sliderPreviewClass}`}
                 style={{ left: `clamp(60px, ${leftPct}%, calc(100% - 60px))` }}
               >
-                <p className="text-base font-black text-white tabular-nums">ص {sliderValue}</p>
-                <p className="text-[10px] font-bold text-[#e6d8b6]">{previewName}</p>
+                <p className={`text-base font-black tabular-nums ${currentThemeTokens.sliderPreviewTextClass}`}>ص {sliderValue}</p>
+                <p className={`text-[10px] font-bold ${currentThemeTokens.sliderPreviewSubClass}`}>{previewName}</p>
               </div>
             ) : null}
-            <span className="w-24 shrink-0 truncate text-xs font-black text-[#59461d]">
+            <span className={`w-24 shrink-0 truncate text-xs font-black ${currentThemeTokens.sliderTextClass}`}>
               <span className="tabular-nums">ص {sliderValue}</span> · {previewName}
             </span>
             <input
@@ -4417,7 +4701,8 @@ export default function Mushaf1441Viewer({
               onPointerCancel={() => setPageSliderPreview(null)}
               onKeyUp={commit}
               onBlur={() => setPageSliderPreview(null)}
-              className="h-3 flex-1 cursor-pointer appearance-none rounded-full bg-[#e6d8b6] accent-[#171717] [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#171717]"
+              className={`h-3 flex-1 cursor-pointer appearance-none rounded-full ${currentThemeTokens.sliderTrackClass} [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full`}
+              style={{ accentColor: currentThemeTokens.sliderThumbColor }}
             />
           </div>
         )
@@ -4434,62 +4719,113 @@ export default function Mushaf1441Viewer({
             className="absolute inset-0 bg-black/35"
           />
           <aside
-            className="absolute inset-y-0 right-0 flex w-[88%] max-w-sm flex-col gap-5 overflow-y-auto border-l border-[#d7c7a7] bg-[#fffdf8] p-4 shadow-[-18px_0_70px_rgba(23,23,23,0.25)]"
+            className={`absolute inset-y-0 right-0 flex w-[88%] max-w-sm flex-col gap-5 overflow-y-auto border-l p-4 shadow-[-18px_0_70px_rgba(23,23,23,0.25)] ${currentThemeTokens.drawerAsideClass}`}
             style={{ paddingTop: 'calc(1rem + env(safe-area-inset-top))', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#80662c]">Mushaf 1441</p>
-                <h2 className="text-lg font-black">القائمة</h2>
+                <p className={`text-[10px] font-bold uppercase tracking-[0.18em] ${currentThemeTokens.drawerHeaderSubClass}`}>Mushaf 1441</p>
+                <h2 className={`text-lg font-black ${currentThemeTokens.drawerTitleClass}`}>القائمة</h2>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsSettingsOpen(true)}
+                  aria-label="إعدادات مظهر المصحف"
+                  title="المظهر والسمات"
+                  className={`flex size-10 items-center justify-center rounded-md border transition-colors ${currentThemeTokens.drawerCloseBtnClass}`}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label="إغلاق"
+                  className={`flex size-10 items-center justify-center rounded-md border text-xl font-bold transition-colors ${currentThemeTokens.drawerCloseBtnClass}`}
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            {/* Appearance & Settings */}
+            <div className={`rounded-lg border p-3 ${currentThemeTokens.drawerCardClass}`}>
+              <div className="flex items-center justify-between">
+                <p className={`text-xs font-bold ${currentThemeTokens.drawerHeaderSubClass}`}>مظهر المصحف والإعدادات</p>
+                <span className={`text-[11px] font-bold ${currentThemeTokens.drawerHeaderSubClass}`}>
+                  {currentThemeTokens.nameArShort}
+                </span>
               </div>
               <button
                 type="button"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label="إغلاق"
-                className="flex size-10 items-center justify-center rounded-md border border-[#d7c7a7] text-xl font-bold text-[#59461d] hover:bg-[#fff7df]"
+                onClick={() => setIsSettingsOpen(true)}
+                className={`mt-2 flex min-h-11 w-full items-center justify-between gap-3 rounded-md border px-3 py-2 text-right transition-colors ${currentThemeTokens.drawerCardAltClass} hover:brightness-95`}
               >
-                ×
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden="true"
+                    className="size-4 shrink-0 rounded-full border shadow-xs"
+                    style={{
+                      backgroundColor: currentThemeTokens.pageBg,
+                      borderColor: mushafTheme === 'dark' ? '#3f4046' : '#d7c7a7',
+                    }}
+                  />
+                  <div>
+                    <span className={`block text-sm font-black ${currentThemeTokens.drawerTitleClass}`}>
+                      تغيير مظهر الصفحات
+                    </span>
+                    <span className={`block text-[11px] leading-5 ${currentThemeTokens.drawerSubtextClass}`}>
+                      ورق دافئ · ليلي داكن · ورق أبيض
+                    </span>
+                  </div>
+                </div>
+                <span aria-hidden className={`text-lg font-bold ${currentThemeTokens.drawerHeaderSubClass}`}>‹</span>
               </button>
             </div>
 
             {/* Account / sign-in */}
-            <div className="rounded-lg border border-[#d7c7a7] bg-[#fffaf0] p-3">
-              <p className="text-xs font-bold text-[#80662c]">الحساب</p>
+            <div className={`rounded-lg border p-3 ${currentThemeTokens.drawerCardClass}`}>
+              <p className={`text-xs font-bold ${currentThemeTokens.drawerHeaderSubClass}`}>الحساب</p>
               {needsSignIn ? (
                 <>
-                  <p className="mt-1 text-xs leading-6 text-[#665b48]">
+                  <p className={`mt-1 text-xs leading-6 ${currentThemeTokens.drawerSubtextClass}`}>
                     لإضافة تمييز أو ملاحظات أو إشارات أو مفضلة وحفظها، سجّل الدخول أولاً.
                   </p>
                   <a
                     href={SIGN_IN_HREF}
-                    className="mt-2 block min-h-11 rounded-md bg-[#171717] px-4 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
+                    className={`mt-2 block min-h-11 rounded-md px-4 py-3 text-center text-sm font-bold transition-colors ${
+                      mushafTheme === 'dark' ? 'bg-[#c8a86b] text-[#18191d] hover:bg-[#d6ba80]' : 'bg-[#171717] text-white hover:bg-[#3a3326]'
+                    }`}
                   >
                     تسجيل الدخول
                   </a>
                 </>
               ) : annotationSyncAvailable ? (
-                <p className="mt-1 text-xs leading-6 text-[#11643f]">مزامنة التمييز والملاحظات مع حسابك مفعّلة.</p>
+                <p className="mt-1 text-xs leading-6 text-[#16a34a]">مزامنة التمييز والملاحظات مع حسابك مفعّلة.</p>
               ) : (
-                <p className="mt-1 text-xs leading-6 text-[#665b48]">{annotationStatus ?? 'المزامنة غير متاحة حالياً.'}</p>
+                <p className={`mt-1 text-xs leading-6 ${currentThemeTokens.drawerSubtextClass}`}>{annotationStatus ?? 'المزامنة غير متاحة حالياً.'}</p>
               )}
             </div>
 
             {/* Qiraat Ashr: mode, Riwayah selection, study mode, filters */}
-            <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
+            <div className={`rounded-lg border p-3 ${currentThemeTokens.drawerCardAltClass}`}>
               <div className="mb-3 flex items-center justify-between gap-2">
-                <p className="text-xs font-bold text-[#80662c]">القراءات</p>
+                <p className={`text-xs font-bold ${currentThemeTokens.drawerHeaderSubClass}`}>القراءات</p>
                 {qiraatSelection ? (
                   <button
                     type="button"
                     onClick={() => setQiraatSelection(null)}
-                    className="rounded border border-[#d7c7a7] px-2 py-0.5 text-[11px] font-bold text-[#80662c] hover:bg-[#fff7df]"
+                    className={`rounded border px-2 py-0.5 text-[11px] font-bold ${currentThemeTokens.headerBtnClass}`}
                   >
                     مسح التحديد
                   </button>
                 ) : null}
               </div>
               {qiraatSelection ? (
-                <div className="mb-3 rounded-lg border border-[#d7c7a7] bg-[#fffaf0] p-2.5">
+                <div className={`mb-3 rounded-lg border p-2.5 ${currentThemeTokens.drawerCardClass}`}>
                   {renderQiraatSelection()}
                 </div>
               ) : null}
@@ -4513,20 +4849,20 @@ export default function Mushaf1441Viewer({
             </div>
 
             {/* Info / reference */}
-            <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
-              <p className="mb-2 text-xs font-bold text-[#80662c]">معلومات ومراجع</p>
+            <div className={`rounded-lg border p-3 ${currentThemeTokens.drawerCardAltClass}`}>
+              <p className={`mb-2 text-xs font-bold ${currentThemeTokens.drawerHeaderSubClass}`}>معلومات ومراجع</p>
               <button
                 type="button"
                 onClick={() => { setQiraatReferenceOpen(true); setIsMenuOpen(false) }}
-                className="flex min-h-11 w-full items-center justify-between gap-3 rounded-md border border-[#d7c7a7] bg-[#fffaf0] px-3 py-2 text-right transition-colors hover:bg-[#fff7df]"
+                className={`flex min-h-11 w-full items-center justify-between gap-3 rounded-md border px-3 py-2 text-right transition-colors ${currentThemeTokens.drawerCardClass} hover:brightness-95`}
               >
                 <span>
-                  <span className="block text-sm font-black text-[#171717]">القرّاء العشرة ورموز الشاطبية والدرة</span>
-                  <span className="block text-[11px] leading-5 text-[#665b48]">
+                  <span className={`block text-sm font-black ${currentThemeTokens.drawerTitleClass}`}>القرّاء العشرة ورموز الشاطبية والدرة</span>
+                  <span className={`block text-[11px] leading-5 ${currentThemeTokens.drawerSubtextClass}`}>
                     ٢٠ رواية، والرموز الكلمية والحرفية ومدلولاتها، وفروق الدرة عن الشاطبية
                   </span>
                 </span>
-                <span aria-hidden className="text-lg text-[#80662c]">‹</span>
+                <span aria-hidden className={`text-lg font-bold ${currentThemeTokens.drawerHeaderSubClass}`}>‹</span>
               </button>
             </div>
           </aside>
@@ -4689,6 +5025,8 @@ export default function Mushaf1441Viewer({
           </section>
         </div>
       ) : null}
+
+      {renderSettingsModal()}
     </div>
   )
 }
