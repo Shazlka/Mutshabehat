@@ -74,22 +74,62 @@ has confident attribution, since the ambiguous ones were dropped rather than fla
 counts sum to 20 readings per locus with no double-counting, verified per-locus while writing the
 generator (see script comments) and spot-checked via `packages/qiraat-core/engine.test.mjs`.
 
-## 3. RULES_TABLE_REGION / FAWAID_REGION — out of scope
+## 3. RULES_TABLE_REGION / FAWAID_REGION
 
-Both regions document a structurally different kind of information — waqf/الإدغام الكبير/عدّ الآي
-procedural rules and poetic شواهد citations — not a per-word Qiraat difference anchored to a single
-Quran token, which is what `QiraatVariant`/the comparison-mode engine models. Importing them would
-need a new domain type, not a `QiraatVariant` record. They are also, independently, still
-`needs_high_resolution_transcription` for every page in this batch (the one page-1 `RULES_TABLE_REGION`
-that isn't literally marked that way is still not a per-word variant), so the import policy would
-block them regardless. Left for a future task if/when this becomes an explicit requirement.
+**Update (2026-09-17, second pass): `RULES_TABLE_REGION` is now imported** — see §4 below for the
+new `QiraatRule` domain type and page 1's 8 rules. This section originally scoped it out for the
+reasons still noted below; the follow-up task asked for it to be added, so a proper (not force-fit)
+data model was built instead of shoehorning rules into `QiraatVariant`.
+
+`FAWAID_REGION` (poetic شواهد citations) remains out of scope: every page in this batch (including
+page 1) marks it `needs_high_resolution_transcription` with `entries: []` — there is no actual
+content anywhere in the payload to import, blocked or not.
+
+Both regions document a structurally different kind of information from a per-word Qiraat
+difference anchored to a single Quran token (waqf/الإدغام الكبير/عدّ الآي procedural rules, and
+poetic شواهد citations) — never force-fit into `QiraatVariant`, which models token-anchored
+differences only.
+
+## 4. `QiraatRule` — page 1's `RULES_TABLE_REGION` (8 rules, REVIEWED tier)
+
+New domain type `QiraatRule` (`packages/qiraat-core/types.ts`) models a page-level Qiraat
+convention that is **not** anchored to one Quran token: عدّ الآي (ayah-counting), الإدغام الكبير
+(assimilation across an ayah boundary), الأوجه بين السورتين (connection options at a surah break —
+بسملة/وصل/سكت), and المد قبل الإدغام الكبير (madd length before that assimilation). Wired through
+`FixtureQiraatRepository.getRulesForPage()` (new `PAGE_RULE_LOADERS`, same one-line-per-page
+pattern as `PAGE_VARIANT_LOADERS`), returned by `GET /api/mushaf-1441/qiraat` as a new `rules` array
+alongside `variants`, and rendered in the reader's burger-menu "القراءات" panel under "قواعد ذات
+صلة بهذه الصفحة" whenever the page has any (comparison/riwayah mode only, same as variants).
+
+**Attribution is never force-fit onto the wrong taxonomy.** Two of page 1's 8 rules (عدّ الآي) are
+attributed to ayah-counting *schools* (المكي/الكوفي/المدنيان/البصري/الشامي) — an entirely different,
+unrelated axis from the ten-reader/twenty-narrator `ReadingId` model — so `QiraatRule.readingIds` is
+optional and left `undefined` for these; a new free-text `attributionLabel` field carries the school
+names verbatim instead. One rule (مد قبل الإدغام الكبير) enumerates three unattributed options
+(القصر/التوسط/الإشباع) with no reader tie at all — `readingIds` and `attributionLabel` both absent,
+just `options`. The remaining 5 rules (الإدغام الكبير + the 4 أوجه بين السورتين rules) resolve
+cleanly onto real `ReadingId`s.
+
+One resolution required care: the أوجه بين السورتين رواية "الوصل" is attributed to `["حمزة", "خلف"]`
+in the payload — "خلف" bare is ambiguous between the narrator "خلف عن حمزة" (Q06-R01) and the reader
+"خلف العاشر" (Q10). Resolved as Q10 (the reader) after confirming the four أوجه بين السورتين rules'
+attributions must partition the full 20-reading set exactly once with no gap or overlap — they only
+do (`scripts/build-qiraat-rules-page-001.py` asserts this at generation time, and
+`engine.test.mjs` re-checks it) under that reading, not the narrator one. Files:
+`packages/qiraat-core/types.ts` (`QiraatRule`, `QiraatSource.ruleId`), `packages/qiraat-core/repository.ts`,
+`packages/qiraat-core/fixtures/rules/page-001.json` (new), `scripts/build-qiraat-rules-page-001.py`
+(new), `src/app/api/mushaf-1441/qiraat/route.ts`, `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`
+(`qiraatRulesByPage` state, `renderQiraatRules`), `packages/qiraat-core/engine.test.mjs`.
 
 ## Verification
 
-`npx tsc --noEmit -p .` (clean), `npm run test:qiraat` (24/24 — 2 new regression tests added:
-REVIEWED-only enforcement for this batch, and the جبريل/ميكال multi-occurrence splice),
-`npm run mushaf:validate` (all 7 validators), `node scripts/validate-mushaf1441-phase5.mjs`,
-`env -u __NEXT_PROCESSED_ENV npm run build` (clean), and a local `next start` + Playwright check
-confirming comparison-mode markers render correctly on pages 11, 15 and 20 (فهي, تعملون, يعملون,
-جبريل ×2, ميكال, ووصى) with `qiraatIncludeReviewed` defaulted on and no console errors beyond the
-sandbox's expected unreachable-dummy-backend noise.
+`npx tsc --noEmit -p .` (clean), `npm run test:qiraat` (23/23 — 3 new regression tests added:
+REVIEWED-only enforcement for pages 11-20, the جبريل/ميكال multi-occurrence splice, and the page-1
+rules attribution/taxonomy checks), `npm run mushaf:validate` (all 7 validators),
+`node scripts/validate-mushaf1441-phase5.mjs`, `env -u __NEXT_PROCESSED_ENV npm run build` (clean),
+and a local `next start` + Playwright check confirming: comparison-mode markers render correctly on
+pages 11, 15 and 20 (فهي, تعملون, يعملون, جبريل ×2, ميكال, ووصى) with `qiraatIncludeReviewed`
+defaulted on; and the "قواعد ذات صلة بهذه الصفحة" section on page 1 shows all 8 rules with correct
+categories, text/reading/options and attribution (school-name text for عدّ الآي, colored reader
+pills for الإدغام الكبير/أوجه الوصل). No console errors beyond the sandbox's expected
+unreachable-dummy-backend noise.

@@ -109,7 +109,10 @@ export const PUBLIC_VERIFICATION_STATUSES: readonly VerificationStatus[] = ['VER
 
 export interface QiraatSource {
   id: string
-  variantId: string
+  /** Exactly one of `variantId`/`ruleId` is set, matching whether this source backs a
+   * `QiraatVariant` or a `QiraatRule`. */
+  variantId?: string
+  ruleId?: string
   sourceName: string
   sourceType: 'manuscript' | 'printed-book' | 'pdf' | 'academic' | 'other'
   pdfFilename?: string
@@ -169,8 +172,48 @@ export interface QiraatVariant {
   performanceNote?: string
 }
 
+/**
+ * A page-level Qiraat "rule" — procedural/recitation guidance that is NOT anchored to one Quran
+ * token the way a `QiraatVariant` is (عدّ الآي ayah-counting conventions, الإدغام الكبير merging
+ * across an ayah boundary, أوجه الوصل بين السورتين connection options at a surah break, مد قبل
+ * الإدغام الكبير length options, and similar). Modeled separately from `QiraatVariant` rather than
+ * forced into it: a rule is page/boundary-scoped, not a single-token REPLACE/DIACRITIC_CHANGE, and
+ * several rule categories (عدّ الآي in particular) are attributed to Basran/Meccan/Kufan/etc.
+ * ayah-counting schools — an entirely different, unrelated taxonomy from the ten-reader/twenty-
+ * narrator `ReadingId` model, so it must never be force-fit into `readingIds`.
+ */
+export interface QiraatRule {
+  id: string
+  pageNumber: number
+  /** Arabic category label verbatim from the source (e.g. "عد الآي", "الإدغام الكبير",
+   * "الأوجه بين السورتين", "المد قبل الإدغام الكبير"). Kept as free text rather than a closed enum
+   * so a newly-encountered category from a later page never needs a type change to import. */
+  category: string
+  /** The Quran text span (with an ayah-boundary marker like ۝) this rule concerns, when the rule
+   * names one — e.g. "الرحيم ۝ مالك" for an idgham-across-boundary rule. */
+  text?: string
+  /** The rule's own named option/reading, when it has one distinct label (e.g. "البسملة", "الوصل",
+   * "السكت أو الوصل") — distinct from `options`, which is an unattributed enumerated list. */
+  reading?: string
+  /** An enumerated list of choices with no reader/narrator attribution at all (e.g. القصر/التوسط/
+   * الإشباع for a madd-length rule) — every reader may choose among these, so there is nothing to
+   * attribute per-reading. */
+  options?: string[]
+  /** Reader/narrator attribution, ONLY when it genuinely resolves onto the 20-reading taxonomy
+   * (Part 1/2's ReadingId model). Absent — never guessed — for a rule attributed to an
+   * ayah-counting school; see `attributionLabel` for that case instead. */
+  readingIds?: ReadingId[]
+  /** Free-text attribution verbatim from the source for a rule that is NOT reader/narrator-scoped
+   * (e.g. an ayah-counting school name like "المكي"/"الكوفي"). Never encoded as `readingIds`. */
+  attributionLabel?: string
+  verificationStatus: VerificationStatus
+  notes?: string
+  sources?: QiraatSource[]
+}
+
 /** page-scoped payload shape returned by GET /api/mushaf-1441/qiraat */
 export interface QiraatPageResponse {
   pageNumber: number
   variants: QiraatVariant[]
+  rules: QiraatRule[]
 }

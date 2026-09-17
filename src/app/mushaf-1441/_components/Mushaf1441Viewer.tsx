@@ -31,13 +31,14 @@ import { getReading, QIRAAT_READINGS } from '../../../../packages/qiraat-core/re
 import { getReader } from '../../../../packages/qiraat-core/readers'
 import { getNarrator, narratorsOfReader } from '../../../../packages/qiraat-core/narrators'
 import { readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
-import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type ReadingId } from '../../../../packages/qiraat-core/types'
+import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type QiraatRule, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
 import { comparisonMarkerForWord, riwayahResolutionForWord, PERFORMANCE_MARKER_COLOR, type WordMarker } from './qiraat/qiraatWordMarker'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 
 const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
+const EMPTY_QIRAAT_RULES: QiraatRule[] = []
 
 type Mushaf1441ViewerProps = {
   initialPage: MushafPage
@@ -440,7 +441,12 @@ export default function Mushaf1441Viewer({
   // Keyed `${page}:${includeReviewed ? 1 : 0}` so toggling the debug flag never serves stale data.
   const [qiraatVariantsByPage, setQiraatVariantsByPage] = useState<Record<string, QiraatVariant[]>>({})
   const qiraatVariantsByPageRef = useRef<Record<string, QiraatVariant[]>>({})
-  const qiraatRequestsRef = useRef(new Map<string, Promise<QiraatVariant[]>>())
+  // Page-level rules (عدّ الآي, الإدغام الكبير, أوجه الوصل بين السورتين, …) — a separate domain from
+  // per-word variants (see the QiraatRule doc comment in packages/qiraat-core/types.ts), fetched
+  // and cached alongside them from the same /api/mushaf-1441/qiraat response.
+  const [qiraatRulesByPage, setQiraatRulesByPage] = useState<Record<string, QiraatRule[]>>({})
+  const qiraatRulesByPageRef = useRef<Record<string, QiraatRule[]>>({})
+  const qiraatRequestsRef = useRef(new Map<string, Promise<{ variants: QiraatVariant[]; rules: QiraatRule[] }>>())
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
   const lastTapRef = useRef(0)
@@ -795,11 +801,23 @@ export default function Mushaf1441Viewer({
     filter: qiraatFilter,
     includeReviewed: qiraatIncludeReviewed,
     variantsByPage: qiraatVariantsByPage,
-  }), [qiraatMode, qiraatSelectedReadingId, qiraatStudyMode, qiraatShowDiffFromHafs, qiraatFilter, qiraatIncludeReviewed, qiraatVariantsByPage])
+    rulesByPage: qiraatRulesByPage,
+  }), [qiraatMode, qiraatSelectedReadingId, qiraatStudyMode, qiraatShowDiffFromHafs, qiraatFilter, qiraatIncludeReviewed, qiraatVariantsByPage, qiraatRulesByPage])
 
   function qiraatVariantsForPage(pageNo: number): QiraatVariant[] {
     return qiraatView.variantsByPage[`${pageNo}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_VARIANTS
   }
+
+  function qiraatRulesForPage(pageNo: number): QiraatRule[] {
+    return qiraatView.rulesByPage[`${pageNo}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_RULES
+  }
+
+  // Rules for the currently displayed page — shown in the القراءات burger-menu panel whenever
+  // comparison/riwayah mode has fetched some (Part 24: never fetched at all in normal mode).
+  const qiraatRulesForCurrentPage = useMemo(
+    () => (qiraatView.mode === 'normal' ? EMPTY_QIRAAT_RULES : qiraatRulesForPage(pageNumber)),
+    [qiraatView, pageNumber],
+  )
 
   const qiraatVariantsForSelectedAyah = useMemo(() => {
     if (!selectedAyahKey) return []
@@ -1101,13 +1119,15 @@ export default function Mushaf1441Viewer({
     return metadata
   }
 
-  // Qiraat variants are shared reference data (no auth), cached per page — same dedup-by-in-flight
-  // pattern as fetchPageMetadata above. Only page 1 has real data today; every other page resolves
-  // to an empty array quickly and costs one small cached network round trip, never a stall.
+  // Qiraat variants + page-level rules are shared reference data (no auth), cached per page — same
+  // dedup-by-in-flight pattern as fetchPageMetadata above. Only page 1 has real rule data today;
+  // every other page resolves to an empty array quickly and costs one small cached network round
+  // trip, never a stall.
   async function fetchQiraatForPage(nextPage: number, includeUnpublished: boolean) {
     const cacheKey = `${nextPage}:${includeUnpublished ? 1 : 0}`
-    const cached = qiraatVariantsByPageRef.current[cacheKey]
-    if (cached) return cached
+    const cachedVariants = qiraatVariantsByPageRef.current[cacheKey]
+    const cachedRules = qiraatRulesByPageRef.current[cacheKey]
+    if (cachedVariants && cachedRules) return { variants: cachedVariants, rules: cachedRules }
 
     const inFlight = qiraatRequestsRef.current.get(cacheKey)
     if (inFlight) return inFlight
@@ -1115,11 +1135,14 @@ export default function Mushaf1441Viewer({
     const request = (async () => {
       const response = await fetch(`/api/mushaf-1441/qiraat?page=${nextPage}${includeUnpublished ? '&debug=1' : ''}`)
       if (!response.ok) throw new Error(`Failed to load qiraat data for page ${nextPage}`)
-      const payload = await response.json() as { variants?: QiraatVariant[] }
+      const payload = await response.json() as { variants?: QiraatVariant[]; rules?: QiraatRule[] }
       const variants = Array.isArray(payload.variants) ? payload.variants : []
+      const rules = Array.isArray(payload.rules) ? payload.rules : []
       qiraatVariantsByPageRef.current = { ...qiraatVariantsByPageRef.current, [cacheKey]: variants }
+      qiraatRulesByPageRef.current = { ...qiraatRulesByPageRef.current, [cacheKey]: rules }
       setQiraatVariantsByPage((current) => ({ ...current, [cacheKey]: variants }))
-      return variants
+      setQiraatRulesByPage((current) => ({ ...current, [cacheKey]: rules }))
+      return { variants, rules }
     })()
     qiraatRequestsRef.current.set(cacheKey, request)
     try {
@@ -3112,6 +3135,43 @@ export default function Mushaf1441Viewer({
     )
   }
 
+  // Page-level Qiraat "rules" (عدّ الآي, الإدغام الكبير, أوجه الوصل بين السورتين, مد قبل الإدغام
+  // الكبير, …) — a different domain from the per-word variant markers above: not anchored to one
+  // token, so this renders as a plain list in the burger-menu panel rather than a word marker.
+  function renderQiraatRules() {
+    if (qiraatRulesForCurrentPage.length === 0) return null
+    return (
+      <div className="mt-3 space-y-2 border-t border-[#eadfc9] pt-3">
+        <p className="text-xs font-bold text-[#80662c]">قواعد ذات صلة بهذه الصفحة</p>
+        {qiraatRulesForCurrentPage.map((rule) => {
+          const pills = rule.readingIds ? readerPillsForReadingIds(rule.readingIds) : []
+          const needsManualReview = rule.verificationStatus === 'NEEDS_MANUAL_REVIEW'
+          return (
+            <div key={rule.id} className="rounded-lg border border-[#e3d6b4] bg-[#fffdf8] p-2.5 text-xs">
+              <div className="mb-1 flex items-center justify-between gap-2">
+                <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">{rule.category}</span>
+                {needsManualReview ? (
+                  <span className="rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</span>
+                ) : null}
+              </div>
+              {rule.text ? <p className="font-bold text-[#171717]" dir="rtl">{rule.text}</p> : null}
+              {rule.reading ? <p className="mt-0.5 text-[#3a3326]">الوجه: <span className="font-bold">{rule.reading}</span></p> : null}
+              {rule.options && rule.options.length > 0 ? (
+                <p className="mt-0.5 text-[#3a3326]">الأوجه: {rule.options.join('، ')}</p>
+              ) : null}
+              {pills.length > 0 ? (
+                <div className="mt-1.5 flex flex-wrap gap-1">{pills.map(renderReaderPill)}</div>
+              ) : rule.attributionLabel ? (
+                <p className="mt-1 text-[11px] text-[#665b48]">{rule.attributionLabel}</p>
+              ) : null}
+              {rule.notes ? <p className="mt-1 text-[11px] leading-5 text-[#8a7c5c]">{rule.notes}</p> : null}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
   function renderQiraatHoverCard() {
     if (!hoveredQiraatWord) return null
     const { word, marker } = hoveredQiraatWord
@@ -3538,6 +3598,7 @@ export default function Mushaf1441Viewer({
                 onIncludeReviewedChange={setQiraatIncludeReviewed}
                 onOpenLegend={() => setQiraatLegendOpen(true)}
               />
+              {renderQiraatRules()}
             </div>
 
             {/* Navigation sliders */}

@@ -5,15 +5,18 @@
 // implementing the same interface (backed by the qiraat_variants/qiraat_variant_readings tables in
 // docs/qiraat/03-database-schema.md) is a drop-in replacement; nothing above this interface needs
 // to change when that happens.
-import type { QiraatVariant } from './types'
+import type { QiraatRule, QiraatVariant } from './types'
 import { variantsForToken as engineVariantsForToken, type EngineOptions } from './engine'
 
 export interface QiraatRepository {
   getVariantsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatVariant[]>
+  getRulesForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRule[]>
 }
 
 type PageVariantsModule = { default: QiraatVariant[] }
 type PageVariantsLoader = () => Promise<PageVariantsModule>
+type PageRulesModule = { default: QiraatRule[] }
+type PageRulesLoader = () => Promise<PageRulesModule>
 
 // Only page 1 (the prototype page) is wired today. Adding a page is: drop a new
 // `fixtures/pages/page-NNN.json`, add one line here — nothing else changes (repository consumers,
@@ -41,6 +44,14 @@ const PAGE_VARIANT_LOADERS: Record<number, PageVariantsLoader> = {
   20: () => import('./fixtures/pages/page-020.json') as unknown as Promise<PageVariantsModule>,
 }
 
+// Page-level rules (عدّ الآي, الإدغام الكبير, أوجه الوصل بين السورتين, …) live in a separate fixture
+// tree from per-word variants — a different domain, not anchored to one Quran token (see the
+// `QiraatRule` doc comment in types.ts). Only page 1 has rule data today; adding a page follows the
+// same one-line pattern as `PAGE_VARIANT_LOADERS`.
+const PAGE_RULE_LOADERS: Record<number, PageRulesLoader> = {
+  1: () => import('./fixtures/rules/page-001.json') as unknown as Promise<PageRulesModule>,
+}
+
 export class FixtureQiraatRepository implements QiraatRepository {
   async getVariantsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatVariant[]> {
     const load = PAGE_VARIANT_LOADERS[pageNumber]
@@ -49,6 +60,15 @@ export class FixtureQiraatRepository implements QiraatRepository {
     const all = mod.default
     if (options?.includeUnpublished) return all
     return all.filter((variant) => variant.verificationStatus === 'VERIFIED' || variant.verificationStatus === 'PUBLISHED')
+  }
+
+  async getRulesForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRule[]> {
+    const load = PAGE_RULE_LOADERS[pageNumber]
+    if (!load) return []
+    const mod = await load()
+    const all = mod.default
+    if (options?.includeUnpublished) return all
+    return all.filter((rule) => rule.verificationStatus === 'VERIFIED' || rule.verificationStatus === 'PUBLISHED')
   }
 }
 

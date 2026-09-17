@@ -268,3 +268,35 @@ test('pages-11-20 batch: the جبريل/ميكال loci (2:97-98) resolve as ind
     assert.ok(mikal.variantText.includes('ئِيلَ'), 'the همز+ياء ending must be present in the alternate spelling')
   })
 })
+
+test('page-1 rules (عد الآي/الإدغام الكبير/أوجه الوصل بين السورتين/مد قبل الإدغام) are a separate domain from QiraatVariant and never guess reader attribution for an ayah-counting-school rule', () => {
+  const repo = new FixtureQiraatRepository()
+  return repo.getRulesForPage(1, { includeUnpublished: true }).then((rules) => {
+    assert.equal(rules.length, 8, 'all 8 page-1 RULES_TABLE_REGION entries must be present')
+    for (const rule of rules) assert.equal(rule.verificationStatus, 'REVIEWED')
+
+    const ayatCount = rules.find((r) => r.id === 'r-p001-r001-ayat-count-basmalah')
+    assert.ok(ayatCount, 'the عد الآي بسملة rule must be present')
+    assert.equal(ayatCount.readingIds, undefined, 'an ayah-counting-school rule (المكي/الكوفي) must never be force-fit into the 20-reading readingIds taxonomy')
+    assert.ok(ayatCount.attributionLabel && ayatCount.attributionLabel.includes('المكي'), 'its attribution must be free text naming the counting school instead')
+
+    const idghamKabir = rules.find((r) => r.id === 'r-p001-r003-idgham-kabir')
+    assert.ok(idghamKabir)
+    assert.deepEqual(idghamKabir.readingIds, ['Q03-R02'], 'السوسي عن أبي عمرو resolves onto the real reading taxonomy, unlike the عد الآي rules above')
+
+    // The four أوجه بين السورتين rules (بسملة / وصل / سكت أو وصل / سكت أو وصل أو بسملة) must
+    // partition the full 20-reading set exactly once — this is what confirms bare "خلف" in the
+    // وصل rule means the reader خلف العاشر (Q10), not the narrator خلف عن حمزة (Q06-R01): any other
+    // resolution would over- or under-count instead of summing to exactly 20 with no overlap.
+    const waslRules = rules.filter((r) => r.category === 'الأوجه بين السورتين')
+    assert.equal(waslRules.length, 4)
+    const allWaslIds = waslRules.flatMap((r) => r.readingIds ?? [])
+    assert.equal(allWaslIds.length, 20)
+    assert.equal(new Set(allWaslIds).size, 20, 'no reading may be attributed to more than one of the four أوجه بين السورتين rules')
+
+    const maddOptions = rules.find((r) => r.id === 'r-p001-r008-madd-before-idgham')
+    assert.ok(maddOptions)
+    assert.deepEqual(maddOptions.options, ['القصر', 'التوسط', 'الإشباع'])
+    assert.equal(maddOptions.readingIds, undefined, 'an unattributed enumerated-options rule must carry no reader attribution at all')
+  })
+})

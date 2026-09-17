@@ -17,10 +17,13 @@ export async function GET(request: NextRequest) {
   }
 
   const includeUnpublished = request.nextUrl.searchParams.get('debug') === '1'
-  const variants = await defaultQiraatRepository.getVariantsForPage(page, { includeUnpublished })
+  const [variants, rules] = await Promise.all([
+    defaultQiraatRepository.getVariantsForPage(page, { includeUnpublished }),
+    defaultQiraatRepository.getRulesForPage(page, { includeUnpublished }),
+  ])
 
   return NextResponse.json(
-    { pageNumber: page, variants },
+    { pageNumber: page, variants, rules },
     // Same long-lived cache as page-words: this is reference data, not per-user state. Debug
     // responses are not cached at the shared layer (still fine to cache in the browser).
     { headers: { 'Cache-Control': includeUnpublished ? 'private, max-age=60' : 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400' } }

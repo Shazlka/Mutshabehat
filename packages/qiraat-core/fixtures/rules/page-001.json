@@ -1,0 +1,198 @@
+[
+  {
+    "id": "r-p001-r001-ayat-count-basmalah",
+    "pageNumber": 1,
+    "category": "عد الآي",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r001-ayat-count-basmalah",
+        "ruleId": "r-p001-r001-ayat-count-basmalah",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "text": "بسم الله الرحمن الرحيم",
+    "attributionLabel": "المكي، الكوفي (يعدّان البسملة آية مستقلة من الفاتحة)",
+    "notes": "اصطلاح عدّي وليس قراءة أداء: يخص مدرستَي عدّ الآي المكي والكوفي، لا القراء أو الرواة العشرة."
+  },
+  {
+    "id": "r-p001-r002-ayat-count-anamta",
+    "pageNumber": 1,
+    "category": "عد الآي",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r002-ayat-count-anamta",
+        "ruleId": "r-p001-r002-ayat-count-anamta",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "text": "أنعمت عليهم",
+    "attributionLabel": "المدنيان، البصري، الشامي (يعدّون \"أنعمت عليهم\" رأس آية)",
+    "notes": "اصطلاح عدّي وليس قراءة أداء: يخص مدارس العدّ المدني والبصري والشامي، لا القراء أو الرواة العشرة."
+  },
+  {
+    "id": "r-p001-r003-idgham-kabir",
+    "pageNumber": 1,
+    "category": "الإدغام الكبير",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r003-idgham-kabir",
+        "ruleId": "r-p001-r003-idgham-kabir",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "text": "الرحيم ۝ مالك",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "notes": "إدغام الميم في الميم عبر فاصل رأس الآية (الإدغام الكبير) خاص بالسوسي عن أبي عمرو."
+  },
+  {
+    "id": "r-p001-r004-wasl-basmalah",
+    "pageNumber": 1,
+    "category": "الأوجه بين السورتين",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r004-wasl-basmalah",
+        "ruleId": "r-p001-r004-wasl-basmalah",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "reading": "البسملة",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "notes": "بين آخر الفاتحة وأول البقرة."
+  },
+  {
+    "id": "r-p001-r005-wasl-wasl",
+    "pageNumber": 1,
+    "category": "الأوجه بين السورتين",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r005-wasl-wasl",
+        "ruleId": "r-p001-r005-wasl-wasl",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "reading": "الوصل",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "notes": "\"خلف\" هنا يعني خلف العاشر (القارئ العاشر) لا خلف عن حمزة (الراوي) — كلاهما بلا بسملة ولا سكت بين السورتين."
+  },
+  {
+    "id": "r-p001-r006-wasl-sakt-or-wasl",
+    "pageNumber": 1,
+    "category": "الأوجه بين السورتين",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r006-wasl-sakt-or-wasl",
+        "ruleId": "r-p001-r006-wasl-sakt-or-wasl",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "reading": "السكت أو الوصل",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ]
+  },
+  {
+    "id": "r-p001-r007-wasl-sakt-wasl-basmalah",
+    "pageNumber": 1,
+    "category": "الأوجه بين السورتين",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r007-wasl-sakt-wasl-basmalah",
+        "ruleId": "r-p001-r007-wasl-sakt-wasl-basmalah",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "reading": "السكت أو الوصل أو البسملة",
+    "readingIds": [
+      "Q01-R02"
+    ],
+    "notes": "ورش وحده له التخيير بين ثلاثة أوجه؛ قالون (الراوي الآخر عن نافع) بالبسملة فقط (انظر الوجه أعلاه)."
+  },
+  {
+    "id": "r-p001-r008-madd-before-idgham",
+    "pageNumber": 1,
+    "category": "المد قبل الإدغام الكبير",
+    "verificationStatus": "REVIEWED",
+    "sources": [
+      {
+        "id": "s-r-p001-r008-madd-before-idgham",
+        "ruleId": "r-p001-r008-madd-before-idgham",
+        "sourceName": "مصحف القراءات العشر (نسخة PDF المزوَّدة من طرف المستخدم)",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 6,
+        "sourceReference": "صفحة المصحف 1 · صفحة PDF 6",
+        "verificationNotes": "This session had no access to the source PDF file itself (not present in the sandbox) — the wording/attribution below was typed directly into the task prompt by the user, not independently read off a page image. Held at REVIEWED rather than VERIFIED until someone cross-checks it against the actual PDF page image."
+      }
+    ],
+    "options": [
+      "القصر",
+      "التوسط",
+      "الإشباع"
+    ],
+    "notes": "لا نسبة قارئ/راوٍ محددة في المصدر لهذا الخيار — ثلاثة أوجه في مقدار المد قبل الإدغام الكبير (انظر r-p001-r003) متاحة لمن يُدغم."
+  }
+]
