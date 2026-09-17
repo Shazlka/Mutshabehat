@@ -34,6 +34,7 @@ import { readerColor, narratorColor } from '../../../../packages/qiraat-core/col
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
+import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
 import {
   comparisonMarkerForWord,
   riwayahResolutionForWord,
@@ -537,6 +538,8 @@ export default function Mushaf1441Viewer({
   // this off would mean nothing ever appears without a manual per-session toggle.
   const [qiraatIncludeReviewed, setQiraatIncludeReviewed] = useState(true)
   const [qiraatLegendOpen, setQiraatLegendOpen] = useState(false)
+  // المرجع: القرّاء العشرة ورموز الشاطبية والدرة — its own sheet, like the legend.
+  const [qiraatReferenceOpen, setQiraatReferenceOpen] = useState(false)
   // Keyed `${page}:${includeReviewed ? 1 : 0}` so toggling the debug flag never serves stale data.
   const [qiraatVariantsByPage, setQiraatVariantsByPage] = useState<Record<string, QiraatVariant[]>>({})
   const qiraatVariantsByPageRef = useRef<Record<string, QiraatVariant[]>>({})
@@ -4529,6 +4532,24 @@ export default function Mushaf1441Viewer({
               <p className="mt-1">{pageNumber % 2 === 1 ? 'الصفحة على الجهة اليمنى.' : 'الصفحة على الجهة اليسرى.'}</p>
               <p className="mt-2 text-[11px] text-[#80662c]">اسحب يميناً/يساراً على الصفحة للتنقل، واضغط مطوّلاً على كلمة أو آية للتمييز والملاحظات.</p>
             </div>
+
+            {/* Info / reference */}
+            <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
+              <p className="mb-2 text-xs font-bold text-[#80662c]">معلومات ومراجع</p>
+              <button
+                type="button"
+                onClick={() => { setQiraatReferenceOpen(true); setIsMenuOpen(false) }}
+                className="flex min-h-11 w-full items-center justify-between gap-3 rounded-md border border-[#d7c7a7] bg-[#fffaf0] px-3 py-2 text-right transition-colors hover:bg-[#fff7df]"
+              >
+                <span>
+                  <span className="block text-sm font-black text-[#171717]">القرّاء العشرة ورموز الشاطبية والدرة</span>
+                  <span className="block text-[11px] leading-5 text-[#665b48]">
+                    ٢٠ رواية، والرموز الكلمية والحرفية ومدلولاتها، وفروق الدرة عن الشاطبية
+                  </span>
+                </span>
+                <span aria-hidden className="text-lg text-[#80662c]">‹</span>
+              </button>
+            </div>
           </aside>
         </div>
       ) : null}
@@ -4566,6 +4587,42 @@ export default function Mushaf1441Viewer({
               </button>
             </div>
             <QiraatLegend />
+          </section>
+        </div>
+      ) : null}
+
+      {qiraatReferenceOpen ? (
+        <div className="fixed inset-0 z-50">
+          <button
+            type="button"
+            aria-label="إغلاق المرجع"
+            onClick={() => setQiraatReferenceOpen(false)}
+            className="absolute inset-0 bg-black/35"
+          />
+          <section
+            dir="rtl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="qiraat-reference-title"
+            className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-t-2xl border-t border-[#d7c7a7] bg-[#fffdf8] p-4 shadow-[0_-18px_70px_rgba(23,23,23,0.22)] lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[440px] lg:max-h-none lg:rounded-none lg:border-l lg:border-t-0"
+            style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+          >
+            <div className="mb-3 flex items-start justify-between gap-3">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#80662c]">مرجع</p>
+                <h2 id="qiraat-reference-title" className="text-lg font-black leading-snug">
+                  القرّاء العشرة ورموز الشاطبية والدرة
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setQiraatReferenceOpen(false)}
+                className="min-h-11 shrink-0 rounded-md border border-[#d7c7a7] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+              >
+                إغلاق
+              </button>
+            </div>
+            <QiraatReferenceSheet />
           </section>
         </div>
       ) : null}

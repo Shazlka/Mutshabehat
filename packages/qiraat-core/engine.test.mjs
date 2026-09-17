@@ -8,6 +8,7 @@ import { readerColor, narratorColor, readerCssVar, narratorCssVar } from './colo
 import { computeAttribution, gradientCss, readingsNotIn } from './attribution.ts'
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
 import { BASE_READING } from './types.ts'
+import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
 import { FixtureQiraatRepository } from './repository.ts'
 import { comparisonMarkerForWord, rulingMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
@@ -388,3 +389,55 @@ test('when filtering by reader or narrator, rulingMarkerForWord only marks and c
   assert.equal(asimTarqiq, null, 'Asim must not see or color Warsh tarqiq ruling')
 })
 
+
+// ── رموز الشاطبية والدرة ──────────────────────────────────────────────────────
+// The reference prints its own عدد الروايات for every group symbol. These tests treat that column
+// as a checksum against the app's authority model: if a group was mis-transcribed, the count and
+// the expansion disagree and the build fails rather than teaching the reader wrongly.
+test('every group symbol expands to exactly the reading count its source prints', () => {
+  for (const symbol of GROUP_SYMBOLS) {
+    const readings = readingsOfGroupSymbol(symbol)
+    assert.equal(readings.length, symbol.readingCountInSource,
+      `${symbol.symbol}: expanded to ${readings.length} riwayat but the source says ${symbol.readingCountInSource}`)
+    assert.equal(new Set(readings).size, readings.length, `${symbol.symbol}: duplicate riwayah in the expansion`)
+    for (const r of readings) assert.ok(ALL_READING_IDS.includes(r), `${symbol.symbol}: unknown reading ${r}`)
+  }
+})
+
+test('صحبة carries شعبة and صحاب carries حفص — never the other way round', () => {
+  const sohba = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'صَحْبَة'))
+  const sihab = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'صِحَاب'))
+  assert.ok(sohba.includes('Q05-R01') && !sohba.includes('Q05-R02'))
+  assert.ok(sihab.includes('Q05-R02') && !sihab.includes('Q05-R01'))
+  // Both share الأخوان, and neither may quietly acquire خلف العاشر (a Durrah reader).
+  for (const group of [sohba, sihab]) {
+    for (const r of ['Q06-R01', 'Q06-R02', 'Q07-R01', 'Q07-R02']) assert.ok(group.includes(r))
+    assert.ok(!group.includes('Q10-R01') && !group.includes('Q10-R02'))
+  }
+})
+
+test('خ is the seven minus نافع, so it never contains a Nafi riwayah', () => {
+  const kha = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'خ'))
+  assert.equal(kha.length, 12)
+  assert.ok(!kha.includes('Q01-R01') && !kha.includes('Q01-R02'))
+})
+
+test('the same letter resolves to different people in each matn, and never without one', () => {
+  // أ: نافع in the Shatibiyyah, أبو جعفر in the Durrah.
+  assert.equal(resolveAuthoritySymbol('shatibiyyah', 'أ').readerId, 'Q01')
+  assert.equal(resolveAuthoritySymbol('durrah', 'أ').readerId, 'Q08')
+  // ض: the narrator خلف عن حمزة there, إسحاق عن خلف العاشر here — the exact collision the
+  // project's Q-ID space exists to keep apart.
+  assert.equal(resolveAuthoritySymbol('shatibiyyah', 'ض').narratorId, 'Q06-R01')
+  assert.equal(resolveAuthoritySymbol('durrah', 'ض').narratorId, 'Q10-R01')
+  // A letter that belongs to the other matn does not resolve.
+  assert.equal(resolveAuthoritySymbol('durrah', 'ن'), undefined)
+})
+
+test('the symbol tables cover every reader and narrator the app knows', () => {
+  const covered = new Set(AUTHORITY_SYMBOLS.flatMap((a) => [a.readerId, a.narratorId].filter(Boolean)))
+  for (const reader of QIRAAT_READERS) assert.ok(covered.has(reader.id), `no symbol for ${reader.id}`)
+  for (const narrator of QIRAAT_NARRATORS) assert.ok(covered.has(narrator.id), `no symbol for ${narrator.id}`)
+  // 10 readers + 20 narrators, each once.
+  assert.equal(AUTHORITY_SYMBOLS.length, 30)
+})
