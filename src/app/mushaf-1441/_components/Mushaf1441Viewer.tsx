@@ -1126,30 +1126,28 @@ export default function Mushaf1441Viewer({
       .filter((variant) => matchesFilter(variant, effectiveFilter))
   }, [selectedAyahKey, selectedWord, pageNumber, qiraatView])
 
-  // Load Qiraat reference data for the visible page(s) only in comparison/riwayah mode — the
-  // common "normal Mushaf" case never fetches it at all (Part 24).
-  // Also prefetches adjacent pages (N±1, N±2) so that page turns feel instant.
+  // Load Qiraat data for exactly the page slots already mounted around the current page. In spread
+  // mode this includes BOTH leaves of the previous/current/next spreads; deriving targets from the
+  // raw page number skipped one leaf and caused its colors to appear only after the turn.
   useEffect(() => {
     if (qiraatMode === 'normal') return
-    const pages = new Set<number>([pageNumber])
-    if (isSpread) {
-      const spreadStart = pageNumber % 2 === 1 ? pageNumber : pageNumber - 1
-      pages.add(spreadStart)
-      pages.add(spreadStart + 1)
-    }
-    for (const page of pages) {
-      if (page >= MIN_PAGE && page <= MAX_PAGE) void fetchQiraatForPage(page, qiraatIncludeReviewed).catch(() => {})
-    }
-    // Prefetch adjacent pages so the next page turn is instant. Fire-and-forget — errors are
-    // silently ignored; the data will simply be fetched on-demand if the prefetch fails.
-    const step = isSpread ? 2 : 1
-    const prefetchTargets = [pageNumber - step * 2, pageNumber - step, pageNumber + step, pageNumber + step * 2]
-    for (const p of prefetchTargets) {
-      if (p >= MIN_PAGE && p <= MAX_PAGE && !pages.has(p)) {
-        void fetchQiraatForPage(p, qiraatIncludeReviewed).catch(() => {})
-      }
-    }
-  }, [pageNumber, isSpread, qiraatMode, qiraatIncludeReviewed])
+    let cancelled = false
+    const pages = slotGroups.flatMap((group) => (isSpread ? [group, group + 1] : [group]))
+      .filter((page) => page >= MIN_PAGE && page <= MAX_PAGE)
+
+    void Promise.all(pages.map((page) => fetchQiraatForPage(page, qiraatIncludeReviewed)))
+      .then(() => {
+        if (cancelled) return
+        // One state publication for the whole mounted window avoids rerendering every page slot as
+        // each independent chunk arrives. The refs above remain the in-flight/cache authority.
+        setQiraatVariantsByPage(qiraatVariantsByPageRef.current)
+        setQiraatRulesByPage(qiraatRulesByPageRef.current)
+        setQiraatRulingsByPage(qiraatRulingsByPageRef.current)
+      })
+      .catch(() => {})
+
+    return () => { cancelled = true }
+  }, [slotGroups, isSpread, qiraatMode, qiraatIncludeReviewed])
 
   // Restore/persist Qiraat preferences (mode, reading, study mode, diff toggle, filter) the same
   // way the swipe-nav setting and the last-page key do: read after mount, write on change.
@@ -1444,9 +1442,6 @@ export default function Mushaf1441Viewer({
       qiraatVariantsByPageRef.current = { ...qiraatVariantsByPageRef.current, [cacheKey]: variants }
       qiraatRulesByPageRef.current = { ...qiraatRulesByPageRef.current, [cacheKey]: rules }
       qiraatRulingsByPageRef.current = { ...qiraatRulingsByPageRef.current, [cacheKey]: rulings }
-      setQiraatVariantsByPage((current) => ({ ...current, [cacheKey]: variants }))
-      setQiraatRulesByPage((current) => ({ ...current, [cacheKey]: rules }))
-      setQiraatRulingsByPage((current) => ({ ...current, [cacheKey]: rulings }))
       return { variants, rules, rulings }
     })()
     qiraatRequestsRef.current.set(cacheKey, request)

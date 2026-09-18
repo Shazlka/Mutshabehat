@@ -173,9 +173,10 @@ changing anything about what a tap or long-press on a word does.
 - Measuring: a prefetched turn is ~1 ms render→commit, 0 slot renders. Re-check after reader changes
   (instrument a render counter locally, don't ship it).
 - Qiraat page fixtures are loaded directly in the browser through `FixtureQiraatRepository` and
-  prefetched for adjacent pages. Keep `/api/mushaf-1441/qiraat` for external/API consumers, but do
-  not put it back in the reader's flip path; `test_qiraat_colours_do_not_wait_for_a_route_handler_round_trip`
-  blocks the route and verifies that the mounted neighbour is already colored.
+  prefetched from `slotGroups`; in spread mode every group contributes both page leaves. The loaded
+  window is published to React state once, after all its chunks resolve. Keep `/api/mushaf-1441/qiraat`
+  for external/API consumers, but do not put it back in the reader's flip path. Performance tests
+  block the route and require both pages of the mounted next spread to be colored before a turn.
 
 ## 6. Key files map (recently touched)
 
