@@ -1,0 +1,465 @@
+[
+  {
+    "id": "v-L150-الا_ان_تاتيهم-1-w2",
+    "surah": 6,
+    "ayah": 158,
+    "startToken": 3,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "إِلَّآ أَن تَأْتِيَهُمُ",
+    "variantText": "إِلَّآ أَن يَأْتِيَهُمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L150-الا_ان_تاتيهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L150-الا_ان_تاتيهم-1-w2",
+        "variantId": "v-L150-الا_ان_تاتيهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَأْتِيَهُمْ شَافٍ"
+      }
+    ],
+    "description": "بالتحتية",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَأْتِيَهُمْ شَافٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-فرقوا-1-w2",
+    "surah": 6,
+    "ayah": 159,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "فَرَّقُوا۟",
+    "variantText": "فَارَقُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L150-فرقوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L150-فرقوا-1-w2",
+        "variantId": "v-L150-فرقوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: شَافٍ مَعَ النَّحْلِ فَارَقُوا مَعَ الرُّومِ مَدَّاهُ خَفِيفًا وَعُدِّلَا — D: وَقُلْ فَرَقُوا فَلَا"
+      }
+    ],
+    "description": "بالألف وتخفيف الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "شَافٍ مَعَ النَّحْلِ فَارَقُوا مَعَ الرُّومِ مَدَّاهُ خَفِيفًا وَعُدِّلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَقُلْ فَرَقُوا فَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-عشر_امثالها-1-w2",
+    "surah": 6,
+    "ayah": 160,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "عَشْرُ أَمْثَالِهَا ۖ",
+    "variantText": "عَشْرٌ أَمْثَالُهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L150-عشر_امثالها-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L150-عشر_امثالها-1-w2",
+        "variantId": "v-L150-عشر_امثالها-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَعَشْرٌ فَنَوِّنْ وَارْفَعِ امْثَالُهَا حُلَى"
+      }
+    ],
+    "description": "بتنوين عشر ورفع لام أمثالها",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَعَشْرٌ فَنَوِّنْ وَارْفَعِ امْثَالُهَا حُلَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-صراط-1-w2",
+    "surah": 6,
+    "ayah": 161,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "سِرَٰطٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L150-صراط-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L150-صراط-1-w2",
+        "variantId": "v-L150-صراط-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا — D: وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ — SH: بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ"
+      },
+      {
+        "source": "SH",
+        "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-صراط-1-w3",
+    "surah": 6,
+    "ayah": 161,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "صِرَٰطٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "L150-صراط-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام الصاد زايًا",
+    "sources": [
+      {
+        "id": "s-L150-صراط-1-w3",
+        "variantId": "v-L150-صراط-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا — D: وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ — SH: بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ],
+    "description": "بإشمام الصاد زايًا",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ"
+      },
+      {
+        "source": "SH",
+        "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-قيما-1-w2",
+    "surah": 6,
+    "ayah": 161,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "قِيَمًۭا",
+    "variantText": "قَيِّمًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L150-قيما-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L150-قيما-1-w2",
+        "variantId": "v-L150-قيما-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَكَسْرٌ وَفَتْحٌ خَفَّ فِي قِيَمًا ذَكَا"
+      }
+    ],
+    "description": "بفتح القاف وتشديد الياء مكسورة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَسْرٌ وَفَتْحٌ خَفَّ فِي قِيَمًا ذَكَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-ابراهيم-1-w2",
+    "surah": 6,
+    "ayah": 161,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَٰهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "L150-ابراهيم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L150-ابراهيم-1-w2",
+        "variantId": "v-L150-ابراهيم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامُ لَاحَ وَجَمَّلَا … وَمَعَ آخِرِ الأَنْعَامِ"
+      }
+    ],
+    "description": "بالألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامُ لَاحَ وَجَمَّلَا … وَمَعَ آخِرِ الأَنْعَامِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-وانا_اول-1-w2",
+    "surah": 6,
+    "ayah": 163,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَا۠ أَوَّلُ",
+    "variantText": "وَأَنَآ أَوَّلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L150-وانا_اول-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L150-وانا_اول-1-w2",
+        "variantId": "v-L150-وانا_اول-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَدُّ أَنَا فِي الْوَصْلِ مَعْ ضَمِّ هَمْزَةٍ وَفَتْحٍ أَتَى"
+      }
+    ],
+    "description": "بإثبات الألف وصلاً ووقفًا مع المد المنفصل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَدُّ أَنَا فِي الْوَصْلِ مَعْ ضَمِّ هَمْزَةٍ وَفَتْحٍ أَتَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-وهو-1-w2",
+    "surah": 6,
+    "ayah": 164,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L150-وهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L150-وهو-1-w2",
+        "variantId": "v-L150-وهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L150-وهو-2-w2",
+    "surah": 6,
+    "ayah": 165,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L150-وهو-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L150-وهو-2-w2",
+        "variantId": "v-L150-وهو-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 155,
+        "sourceReference": "صفحة المصحف 150 · صفحة المصدر 155",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  }
+]

@@ -476,6 +476,12 @@ Two modelling decisions in this batch worth knowing before they recur:
   - Locus grouping: page 145 ﴿زَيَّنَ﴾ and ﴿قَتْلَ أَوْلَـٰدِهِمْ شُرَكَآؤُهُمْ﴾ (6:137) linked via shared locus group `L145-زين_قتل_اولادهم`.
 - All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
+**Pages 146–165** (Juz' 8, Al-An'am 138 to Al-A'raf 130). 117 new variant records (900 total across 165 pages) and +513 أصول rulings (3,968 total) across 165 active pages. Pages 1–165 (Juz' 1 through Juz' 8) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 146 ﴿شُرَكَٰٓؤُاْ﴾ aligned to Hafs rasm ﴿شُرَكَآءُ ۚ﴾ (6:139); page 147 ﴿ٱلْحَوَايَآ﴾ (6:146); page 148 pure usul (0 variants) with 26 rulings, including ﴿كَذَٰلِكَ كَذَّبَ﴾ (6:148); page 149 ﴿بِـَٔايَـٰتِ﴾ and ﴿ءَايَـٰتِنَا﴾ (6:157), ﴿ٱلْعَذَابِ بِمَا﴾ (6:157); page 150 ﴿إِلَىٰ صِرَٰطٍۢ مُّسْتَقِيمٍۢ﴾ (6:161), ﴿أَن تَأْتِيَهُمُ﴾ (6:158).
+  - Usul disambiguation & small letters: page 151 ﴿الٓمٓصٓ﴾, disambiguated Abu Ja'far ikhfa ﴿وَمَنْ خَفَّتْ﴾ (7:9) and Khalaf tark al-ghunna ﴿بِعِلْمٍۢ ۖ وَمَا﴾ (7:7); page 152 ﴿وَيَـٰٓـَٔادَمُ﴾ (7:19), ﴿نَّارٍۢ وَخَلَقْتَهُۥ﴾ (7:12); page 153 ﴿بِٱلْفَحْشَآءِ ۖ أَتَقُولُونَ﴾ (7:28), ﴿مُسْتَقَرٌّۭ وَمَتَـٰعٌ﴾ (7:24); page 154 ﴿كَذَّبَ بِـَٔايَـٰتِهِۦٓ﴾ (7:37); page 155 ﴿رُسُلُ رَبِّنَا﴾ (7:43); page 156 ﴿عِوَجًۭا وَهُم﴾ (7:45), ﴿نَنسَىٰهُمْ﴾ (7:51); page 159 ﴿فَٱنتَظِرُوٓا۟﴾ (7:71), ﴿وَءَابَآؤُكُم﴾ (7:71), ﴿بَصْۜطَةًۭ ۖ﴾ (7:69); page 160 ﴿إِنَّكُمْ﴾ (7:81); page 163 ﴿أَوَأَمِنَ﴾ (7:98); page 164 ﴿أَرْجِهْ﴾ (7:111), ﴿نَّكُونَ نَحْنُ﴾ (7:115), ﴿يَدَهُۥ﴾ (7:108); page 165 ﴿مَكَرْتُمُوهُ﴾ (7:123).
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 
 Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the
