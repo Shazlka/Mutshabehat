@@ -1,0 +1,101 @@
+[
+  {
+    "id": "v-L062-تنزل-1-w2",
+    "surah": 3,
+    "ayah": 93,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "تُنَزَّلَ",
+    "variantText": "تَنْزِلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L062-تنزل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L062-تنزل-1-w2",
+        "variantId": "v-L062-تنزل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 67,
+        "sourceReference": "صفحة المصحف 62 · صفحة المصدر 67",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
+      }
+    ],
+    "description": "بالتخفيف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L062-حج-1-w2",
+    "surah": 3,
+    "ayah": 97,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "حِجُّ",
+    "variantText": "حَجُّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L062-حج-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L062-حج-1-w2",
+        "variantId": "v-L062-حج-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 67,
+        "sourceReference": "صفحة المصحف 62 · صفحة المصدر 67",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبِالْكَسْرِ حِجُّ الْبَيْتِ عَنْ شَاهِدٍ — D: وَحَجُّ اكْسِرَنْ وَاقْرَأْ يَضُرُّكُمُ أَلَا"
+      }
+    ],
+    "description": "بفتح الحاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبِالْكَسْرِ حِجُّ الْبَيْتِ عَنْ شَاهِدٍ"
+      },
+      {
+        "source": "D",
+        "text": "وَحَجُّ اكْسِرَنْ وَاقْرَأْ يَضُرُّكُمُ أَلَا"
+      }
+    ]
+  }
+]

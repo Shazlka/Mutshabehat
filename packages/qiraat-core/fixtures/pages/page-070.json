@@ -1,0 +1,385 @@
+[
+  {
+    "id": "v-L070-يغشي-1-w2",
+    "surah": 3,
+    "ayah": 154,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يَغْشَىٰ",
+    "variantText": "تَغْشَىٰ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L070-يغشي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L070-يغشي-1-w2",
+        "variantId": "v-L070-يغشي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَغْشَى أَنِّثُوا شَائِعًا تَلَا"
+      }
+    ],
+    "description": "بالتاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَغْشَى أَنِّثُوا شَائِعًا تَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L070-كلهو-1-w2",
+    "surah": 3,
+    "ayah": 154,
+    "startToken": 32,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "كُلَّهُۥ",
+    "variantText": "كُلُّهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L070-كلهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L070-كلهو-1-w2",
+        "variantId": "v-L070-كلهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ كُلَّهُ لِلَّهِ بِالرَّفْعِ حَامِدًا"
+      }
+    ],
+    "description": "بالرفع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ كُلَّهُ لِلَّهِ بِالرَّفْعِ حَامِدًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L070-بيوتكم-1-w2",
+    "surah": 3,
+    "ayah": 154,
+    "startToken": 55,
+    "endToken": 55,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتِكُمْ",
+    "variantText": "بِيُوتِكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L070-بيوتكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L070-بيوتكم-1-w2",
+        "variantId": "v-L070-بيوتكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَكُسِرَ بُيُوتٌ وَالْبُيُوتِ لِشَمْلَلَا"
+      }
+    ],
+    "description": "بكسر الباء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكُسِرَ بُيُوتٌ وَالْبُيُوتِ لِشَمْلَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L070-عليهم_القتل-1-w2",
+    "surah": 3,
+    "ayah": 154,
+    "startToken": 59,
+    "endToken": 60,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْقَتْلُ",
+    "variantText": "عَلَيْهِمِ ٱلْقَتْلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L070-عليهم_القتل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L070-عليهم_القتل-1-w2",
+        "variantId": "v-L070-عليهم_القتل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L070-عليهم_القتل-1-w3",
+    "surah": 3,
+    "ayah": 154,
+    "startToken": 59,
+    "endToken": 60,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْقَتْلُ",
+    "variantText": "عَلَيْهُمُ ٱلْقَتْلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L070-عليهم_القتل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L070-عليهم_القتل-1-w3",
+        "variantId": "v-L070-عليهم_القتل-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ],
+    "description": "بضم الهاء والميم",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَىٰ الْعَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L070-تعملون-1-w2",
+    "surah": 3,
+    "ayah": 156,
+    "startToken": 35,
+    "endToken": 35,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ",
+    "variantText": "يَعْمَلُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L070-تعملون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L070-تعملون-1-w2",
+        "variantId": "v-L070-تعملون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: بِمَا تَعْمَلُونَ الْغَيْبُ شَاعَ دُخْلُلَا"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "بِمَا تَعْمَلُونَ الْغَيْبُ شَاعَ دُخْلُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L070-متم-1-w2",
+    "surah": 3,
+    "ayah": 157,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "مُتُّمْ",
+    "variantText": "مِتُّمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L070-متم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L070-متم-1-w2",
+        "variantId": "v-L070-متم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِتُّمْ وَمِتْنَا وَمِتُّ فِي ضَمِّ كَسْرِهَا صَفَا نَفَرٌ — D: وَقَاتَلَ مِتُّ اضْمُمْ جَمِيعًا أَلَا"
+      }
+    ],
+    "description": "بكسر الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِتُّمْ وَمِتْنَا وَمِتُّ فِي ضَمِّ كَسْرِهَا صَفَا نَفَرٌ"
+      },
+      {
+        "source": "D",
+        "text": "وَقَاتَلَ مِتُّ اضْمُمْ جَمِيعًا أَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L070-يجمعون-1-w2",
+    "surah": 3,
+    "ayah": 157,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "يَجْمَعُونَ",
+    "variantText": "تَجْمَعُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L070-يجمعون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L070-يجمعون-1-w2",
+        "variantId": "v-L070-يجمعون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 75,
+        "sourceReference": "صفحة المصحف 70 · صفحة المصدر 75",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَحَفْصٌ هُنَا اجْتَلَى وَبِالْغَيْبِ عَنْهُ يَجْمَعُونَ"
+      }
+    ],
+    "description": "بالتاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَفْصٌ هُنَا اجْتَلَى وَبِالْغَيْبِ عَنْهُ يَجْمَعُونَ"
+      }
+    ]
+  }
+]

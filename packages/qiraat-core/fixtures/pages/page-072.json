@@ -1,0 +1,367 @@
+[
+  {
+    "id": "v-L072-وقيل-1-w2",
+    "surah": 3,
+    "ayah": 167,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L072-وقيل-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام كسر القاف ضمًّا",
+    "sources": [
+      {
+        "id": "s-L072-وقيل-1-w2",
+        "variantId": "v-L072-وقيل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ],
+    "description": "بإشمام كسر القاف ضمًّا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L072-ما_قتلوا-1-w2",
+    "surah": 3,
+    "ayah": 168,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "مَا قُتِلُوا۟ ۗ",
+    "variantText": "مَا قُتِّلُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "L072-ما_قتلوا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L072-ما_قتلوا-1-w2",
+        "variantId": "v-L072-ما_قتلوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: بِمَا قُتِلُوا التَّشْدِيدُ لَبَّى"
+      }
+    ],
+    "description": "بالتشديد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "بِمَا قُتِلُوا التَّشْدِيدُ لَبَّى"
+      }
+    ]
+  },
+  {
+    "id": "v-L072-ولا_تحسبن-1-w2",
+    "surah": 3,
+    "ayah": 169,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تَحْسَبَنَّ",
+    "variantText": "وَلَا تَحْسِبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L072-ولا_تحسبن-1",
+    "locusType": "multi_word_variant",
+    "notes": "لهشام وجه ثانٍ بالغيب مع فتح السين (وَلَا يَحْسَبَنَّ).",
+    "sources": [
+      {
+        "id": "s-L072-ولا_تحسبن-1-w2",
+        "variantId": "v-L072-ولا_تحسبن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبِالْخُلْفِ غَيْبًا لَا يَحْسَبَنَّ لَهُ وَلَا — D: وَمَيْسَرَةَ افْتَحْ كَتَحْسَبُ أُدْ وَاكْسِرْهُ فُقْ"
+      }
+    ],
+    "description": "بكسر السين مع تاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبِالْخُلْفِ غَيْبًا لَا يَحْسَبَنَّ لَهُ وَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَمَيْسَرَةَ افْتَحْ كَتَحْسَبُ أُدْ وَاكْسِرْهُ فُقْ"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R01"
+    ]
+  },
+  {
+    "id": "v-L072-قتلوا_في_سبيل_الله-1-w2",
+    "surah": 3,
+    "ayah": 169,
+    "startToken": 4,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قُتِلُوا۟ فِى سَبِيلِ ٱللَّهِ",
+    "variantText": "قَـٰتَلُوا۟ فِى سَبِيلِ ٱللَّهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L072-قتلوا_في_سبيل_الله-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L072-قتلوا_في_سبيل_الله-1-w2",
+        "variantId": "v-L072-قتلوا_في_سبيل_الله-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: بِمَا قُتِلُوا التَّشْدِيدُ لَبَّى وَبَعْدَهُ فِي الْحَجِّ لِلشَّامِي"
+      }
+    ],
+    "description": "بفتح القاف والتاء وألف بينهما",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "بِمَا قُتِلُوا التَّشْدِيدُ لَبَّى وَبَعْدَهُ فِي الْحَجِّ لِلشَّامِي"
+      }
+    ]
+  },
+  {
+    "id": "v-L072-الا_خوف_عليهم-1-w2",
+    "surah": 3,
+    "ayah": 170,
+    "startToken": 14,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "أَلَّا خَوْفٌ عَلَيْهِمْ",
+    "variantText": "أَلَّا خَوْفٌ عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L072-الا_خوف_عليهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L072-الا_خوف_عليهم-1-w2",
+        "variantId": "v-L072-الا_خوف_عليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ],
+    "description": "برفع خوف مع التنوين وضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L072-الا_خوف_عليهم-1-w3",
+    "surah": 3,
+    "ayah": 170,
+    "startToken": 14,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "أَلَّا خَوْفٌ عَلَيْهِمْ",
+    "variantText": "أَلَّا خَوْفَ عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L072-الا_خوف_عليهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L072-الا_خوف_عليهم-1-w3",
+        "variantId": "v-L072-الا_خوف_عليهم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ],
+    "description": "بفتح الفاء بلا تنوين وضم الهاء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "لَا خَوْفَ بِالْفَتْحِ حُوِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L072-وان_الله-1-w2",
+    "surah": 3,
+    "ayah": 171,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَّ ٱللَّهَ",
+    "variantText": "وَإِنَّ ٱللَّهَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L072-وان_الله-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L072-وان_الله-1-w2",
+        "variantId": "v-L072-وان_الله-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَنَّ اكْسِرُوا رِفْقًا"
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَنَّ اكْسِرُوا رِفْقًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L072-القرح-1-w2",
+    "surah": 3,
+    "ayah": 172,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقَرْحُ ۚ",
+    "variantText": "ٱلْقُرْحُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L072-القرح-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L072-القرح-1-w2",
+        "variantId": "v-L072-القرح-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 77,
+        "sourceReference": "صفحة المصحف 72 · صفحة المصدر 77",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَرْحٌ بِضَمِّ الْقَافِ وَالْقَرْحُ صُحْبَةٌ"
+      }
+    ],
+    "description": "بضم القاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَرْحٌ بِضَمِّ الْقَافِ وَالْقَرْحُ صُحْبَةٌ"
+      }
+    ]
+  }
+]

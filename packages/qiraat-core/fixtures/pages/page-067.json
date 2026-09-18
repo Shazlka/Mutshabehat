@@ -1,0 +1,139 @@
+[
+  {
+    "id": "v-L067-وسارعوا-1-w2",
+    "surah": 3,
+    "ayah": 133,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "۞ وَسَارِعُوٓا۟",
+    "variantText": "سَارِعُوٓا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L067-وسارعوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L067-وسارعوا-1-w2",
+        "variantId": "v-L067-وسارعوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 72,
+        "sourceReference": "صفحة المصحف 67 · صفحة المصدر 72",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: قُلْ سَارِعُوا لَا وَاوَ قَبْلُ كَمَا انْجَلَى"
+      }
+    ],
+    "description": "بحذف الواو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "قُلْ سَارِعُوا لَا وَاوَ قَبْلُ كَمَا انْجَلَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L067-قرح-1-w2",
+    "surah": 3,
+    "ayah": 140,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "قَرْحٌۭ",
+    "variantText": "قُرْحٌۭ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L067-قرح-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L067-قرح-1-w2",
+        "variantId": "v-L067-قرح-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 72,
+        "sourceReference": "صفحة المصحف 67 · صفحة المصدر 72",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَرْحٌ بِضَمِّ الْقَافِ وَالْقَرْحُ صُحْبَةٌ"
+      }
+    ],
+    "description": "بضم القاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَرْحٌ بِضَمِّ الْقَافِ وَالْقَرْحُ صُحْبَةٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L067-قرح-2-w2",
+    "surah": 3,
+    "ayah": 140,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قَرْحٌۭ",
+    "variantText": "قُرْحٌۭ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L067-قرح-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L067-قرح-2-w2",
+        "variantId": "v-L067-قرح-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 72,
+        "sourceReference": "صفحة المصحف 67 · صفحة المصدر 72",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَرْحٌ بِضَمِّ الْقَافِ وَالْقَرْحُ صُحْبَةٌ"
+      }
+    ],
+    "description": "بضم القاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَرْحٌ بِضَمِّ الْقَافِ وَالْقَرْحُ صُحْبَةٌ"
+      }
+    ]
+  }
+]

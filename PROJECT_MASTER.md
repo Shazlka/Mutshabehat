@@ -451,7 +451,15 @@ Two modelling decisions in this batch worth knowing before they recur:
   - Dagger alefs & rasm bases: page 43 ﴿نُنشِزُهَا﴾ (`'ننشزها'`), page 45 ﴿وَيَأْمُرُكُم﴾ (`'وَيَأْمُرُكُم'`), page 46 ﴿وَيُكَفِّرُ﴾ (`'ويكفر'`), page 56 ﴿أَنِّىٓ أَخْلُقُ﴾ (`'انى اخلق'`).
   - Small high letters (`ۥ` / `ۧ` / `ۦ`): page 42 ﴿تَأْخُذُهُۥ﴾ (`'تاخذهو'`) and ﴿بِإِذْنِهِۦ﴾ (`'باذنهي'`), page 52 ﴿ٱلنَّبِيِّـۧنَ﴾ (`'النبيين'`), page 60 ﴿لَفَرِيقًا يَلْوُۥنَ﴾ (`'لفريقا يلوون'`).
   - Multi-way splits cleanly partitioned: page 48 ﴿فَتُذَكِّرَ﴾ 2:282 (3-way partition: 12-6-2 = 20), page 56 ﴿صِرَٰطٌ﴾ 3:51 (17-2-1 = 20), page 57 ﴿فَيُوَفِّيهِمْ﴾ 3:57 (4-way split: 1-17-1-1 = 20).
-- All 52 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+**Pages 62–81** (the Juz' 4 batch, Ali 'Imran 92 to An-Nisa 23). 84 new variant loci (+107 variants, 520 total) and +405 أصول rulings (2,359 total) across 101 active pages. Pages 1–101 (Juz' 1, 2, 3, 4, and 5) are now 100% contiguous.
+- Corrected source slips & domain alignments:
+  - Page 77 ﴿تَسَآءَلُونَ﴾ (4:1): Shatibiyyah baseline (*وَكُوفِيُّهُمْ تَسَاءَلُونَ مُخَفَّفًا*) for Kufis (Asim, Hamza, Kisai, Khalaf 10) is تخفيف السين (`تَسَآءَلُونَ`), matching Hafs baseline; Harami+Shami+Basri+Madani read تشديد ﴿تَسَّآءَلُونَ﴾.
+  - Page 72 ﴿أَلَّا خَوْفٌ عَلَيْهِمْ﴾ (3:170): rasm query `'الا خوف عليهم'` matching 3:170 w17-19.
+  - Page 78 صلة هاء الكناية: resolved to 4:8 ﴿مِنْهُ﴾ and 4:11 ﴿وَلِأَبَوَيْهِ﴾.
+  - Page 79 صلة هاء الكناية: resolved to 4:13 and 4:14 ﴿يُدْخِلْهُ﴾.
+  - Page 80 صلة هاء الكناية: resolved to 4:19 ﴿فِيهِ خَيْرًا كَثِيرًا﴾.
+  - Page 81: separated Abu Ja'far ikhfa (4:21 ﴿مِّيثَـٰقًا غَلِيظًۭا﴾) from Khalaf tark al-ghunna (4:20 ﴿بُهْتَـٰنًۭا وَإِثْمًۭا﴾, 4:21 ﴿بَعْضٍ وَأَخَذْنَ﴾, 4:22 ﴿فَـٰحِشَةًۭ وَمَقْتًۭا﴾).
+- All 84 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 

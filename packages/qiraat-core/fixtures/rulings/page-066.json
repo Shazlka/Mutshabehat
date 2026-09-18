@@ -1,0 +1,1043 @@
+[
+  {
+    "id": "r-p066-001-1",
+    "pageNumber": 66,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 124,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 124,
+    "baseText": "ءَالَـٰفٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-001-2",
+    "pageNumber": 66,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 125,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 125,
+    "baseText": "ءَالَـٰفٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-002-1",
+    "pageNumber": 66,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 130,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 130,
+    "baseText": "ءَامَنُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-003-1",
+    "pageNumber": 66,
+    "category": "MADD_LIN",
+    "categoryAr": "مد اللين المهموز",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 128,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 128,
+    "baseText": "شَىْءٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد اللين المهموز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد اللين المهموز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-004-1",
+    "pageNumber": 66,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 123,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 123,
+    "baseText": "أَذِلَّةٌۭ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07",
+        "action": "إمالة",
+        "condition": "وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "condition": "وقفًا",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-005-1",
+    "pageNumber": 66,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 130,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 130,
+    "baseText": "مُّضَـٰعَفَةًۭ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07",
+        "action": "إمالة",
+        "condition": "وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "condition": "وقفًا",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-006-1",
+    "pageNumber": 66,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 125,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 125,
+    "baseText": "بَلَىٰٓ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-007-1",
+    "pageNumber": 66,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 126,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 126,
+    "baseText": "بُشْرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-008-1",
+    "pageNumber": 66,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 130,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 130,
+    "baseText": "ٱلرِّبَوٰٓا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-009-1",
+    "pageNumber": 66,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 131,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 131,
+    "baseText": "لِلْكَـٰفِرِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-010-1",
+    "pageNumber": 66,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 124,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 124,
+    "baseText": "إِذْ تَقُولُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03",
+        "action": "إدغام"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إدغام"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إدغام"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إدغام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إدغام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-011-1",
+    "pageNumber": 66,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 122,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 122,
+    "baseText": "ٱلْمُؤْمِنُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-012-1",
+    "pageNumber": 66,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 124,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 124,
+    "baseText": "لِلْمُؤْمِنِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-013-1",
+    "pageNumber": 66,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 125,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 125,
+    "baseText": "وَيَأْتُوكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-014-1",
+    "pageNumber": 66,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 130,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 130,
+    "baseText": "تَأْكُلُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-015-1",
+    "pageNumber": 66,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 123,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 123,
+    "baseText": "وَأَنتُمْ أَذِلَّةٌۭ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-016-1",
+    "pageNumber": 66,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 124,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 124,
+    "baseText": "أَلَن يَكْفِيَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-017-1",
+    "pageNumber": 66,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 124,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 124,
+    "baseText": "لِلْمُؤْمِنِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "الإبدال"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الإبدال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الإبدال",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-018-1",
+    "pageNumber": 66,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 123,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 123,
+    "baseText": "وَأَنتُمْ أَذِلَّةٌۭ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "السكت أو النقل أو التحقيق"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "النقل أو التحقيق"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت أو النقل أو التحقيق",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "النقل أو التحقيق",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-019-1",
+    "pageNumber": 66,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 127,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 127,
+    "baseText": "خَآئِبِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "تسهيل الهمزة مع الإشباع والقصر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "تسهيل الهمزة مع الإشباع والقصر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "تسهيل الهمزة مع الإشباع والقصر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-020-1",
+    "pageNumber": 66,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 129,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 129,
+    "baseText": "ٱلْأَرْضِ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "السكت أو النقل أو التحقيق"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "النقل أو التحقيق"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت أو النقل أو التحقيق",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "النقل أو التحقيق",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p066-021-1",
+    "pageNumber": 66,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 129,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 129,
+    "baseText": "يَشَآءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "خمسة القياس"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "خمسة القياس",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "خمسة القياس",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إبدال الهمزة ألفًا مع القصر والتوسط والإشباع، وتسهيلها مع الروم إشباعًا وقصرًا؛ ويوافقه هشام عدا وجه التسهيل مع الإشباع فله فيه التوسط.",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  }
+]
