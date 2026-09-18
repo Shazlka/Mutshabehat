@@ -1,0 +1,264 @@
+[
+  {
+    "id": "v-L143-فصل_حرم-w2",
+    "surah": 6,
+    "ayah": 119,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "فَصَّلَ",
+    "variantText": "فُصِّلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L143-فصل_حرم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L143-فصل_حرم-w2",
+        "variantId": "v-L143-فصل_حرم-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 148,
+        "sourceReference": "صفحة المصحف 143 · صفحة المصدر 148",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَحَرَّمَ فَتْحُ الضَّمِّ وَالْكَسْرِ إِذْ عَلَا وَفُصِّلَ إِذْ ثَنَى — D: وَحِبْرٌ سَمَا حَرَّمَ فُصِّلَا"
+      }
+    ],
+    "description": "بضم الفاء وكسر الصاد مبنيًا للمفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَرَّمَ فَتْحُ الضَّمِّ وَالْكَسْرِ إِذْ عَلَا وَفُصِّلَ إِذْ ثَنَى"
+      },
+      {
+        "source": "D",
+        "text": "وَحِبْرٌ سَمَا حَرَّمَ فُصِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L143-فصل_حرم-w2",
+    "surah": 6,
+    "ayah": 119,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "حَرَّمَ",
+    "variantText": "حُرِّمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L143-فصل_حرم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L143-فصل_حرم-w2",
+        "variantId": "v-L143-فصل_حرم-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 148,
+        "sourceReference": "صفحة المصحف 143 · صفحة المصدر 148",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَحَرَّمَ فَتْحُ الضَّمِّ وَالْكَسْرِ إِذْ عَلَا وَفُصِّلَ إِذْ ثَنَى — D: وَحِبْرٌ سَمَا حَرَّمَ فُصِّلَا"
+      }
+    ],
+    "description": "بضم الحاء وكسر الراء مبنيًا للمفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَرَّمَ فَتْحُ الضَّمِّ وَالْكَسْرِ إِذْ عَلَا وَفُصِّلَ إِذْ ثَنَى"
+      },
+      {
+        "source": "D",
+        "text": "وَحِبْرٌ سَمَا حَرَّمَ فُصِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L143-ليضلون-1-w2",
+    "surah": 6,
+    "ayah": 119,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "لَّيُضِلُّونَ",
+    "variantText": "لَّيَضِلُّونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L143-ليضلون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L143-ليضلون-1-w2",
+        "variantId": "v-L143-ليضلون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 148,
+        "sourceReference": "صفحة المصحف 143 · صفحة المصدر 148",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: يَضِلُّونَ ضُمَّ مَعْ يَضِلُّوا الَّذِي فِي يُونُسٍ ثَابِتًا وَلَا"
+      }
+    ],
+    "description": "بفتح الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "يَضِلُّونَ ضُمَّ مَعْ يَضِلُّوا الَّذِي فِي يُونُسٍ ثَابِتًا وَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L143-ميتا-1-w2",
+    "surah": 6,
+    "ayah": 122,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مَيْتًۭا",
+    "variantText": "مَيِّتًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L143-ميتا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L143-ميتا-1-w2",
+        "variantId": "v-L143-ميتا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 148,
+        "sourceReference": "صفحة المصحف 143 · صفحة المصدر 148",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَالْمَيْتَةُ الْخِفُّ خُوِّلَا وَمَيْتًا لَدَى الأَنْعَامِ وَالْحُجُرَاتِ حُزْ — D: اشْدُدَنْ … وَالأَنْعَامُ حُلِّلَا"
+      }
+    ],
+    "description": "بالتشديد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَالْمَيْتَةُ الْخِفُّ خُوِّلَا وَمَيْتًا لَدَى الأَنْعَامِ وَالْحُجُرَاتِ حُزْ"
+      },
+      {
+        "source": "D",
+        "text": "اشْدُدَنْ … وَالأَنْعَامُ حُلِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L143-رسالتهو-1-w2",
+    "surah": 6,
+    "ayah": 124,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "رِسَالَتَهُۥ ۗ",
+    "variantText": "رِسَالَـٰتِهِۦ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L143-رسالتهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L143-رسالتهو-1-w2",
+        "variantId": "v-L143-رسالتهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 148,
+        "sourceReference": "صفحة المصحف 143 · صفحة المصدر 148",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: رِسَالَاتِ فَرْدٌ وَافْتَحُوا دُونَ عِلَّةٍ"
+      }
+    ],
+    "description": "بالجمع وكسر التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "رِسَالَاتِ فَرْدٌ وَافْتَحُوا دُونَ عِلَّةٍ"
+      }
+    ]
+  }
+]

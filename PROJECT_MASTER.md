@@ -469,6 +469,13 @@ Two modelling decisions in this batch worth knowing before they recur:
   - Dagger alefs & rasm bases: page 119 ﴿رِسَالَتَهُۥ﴾ (5:67), page 119 ﴿وَٱلصَّـٰبِـُٔونَ﴾ (5:69), page 124 ﴿قِيَـٰمًا﴾ (5:97), page 124 ﴿يُنَزَّلُ﴾ (5:101).
 - All 108 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
+**Pages 126–145** (Juz' 7 & early Juz' 8, Al-Ma'idah 109 to Al-An'am 137). 155 new variant records (783 total across 145 pages) and +527 أصول rulings (3,455 total) across 145 active pages. Pages 1–145 (Juz' 1 through early Juz' 8) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 126 ﴿هَلْ يَسْتَطِيعُ رَبُّكَ﴾ (5:112); page 129 ﴿ٱسْتُهْزِئَ﴾ (6:10); page 133 ﴿أَقُولُ لَكُمْ﴾ (6:50); page 134 ﴿أَنَّهُۥ مَنْ﴾ and ﴿فَأَنَّهُۥ﴾ (6:54); page 139 ﴿تَجْعَلُونَهُۥ﴾ (6:91); page 143 ﴿رِسَالَتَهُۥ﴾ (6:124).
+  - Baseline alignments: page 138 ﴿دَرَجَـٰتٍۢ مَّن نَّشَآءُ﴾ (6:83) aligned to Hafs tanween baseline; page 140 ﴿وَجَعَلَ ٱلَّيْلَ﴾ baseline vs variant ﴿وَجَاعِلُ ٱلَّيْلِ﴾.
+  - Locus grouping: page 145 ﴿زَيَّنَ﴾ and ﴿قَتْلَ أَوْلَـٰدِهِمْ شُرَكَآؤُهُمْ﴾ (6:137) linked via shared locus group `L145-زين_قتل_اولادهم`.
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 
 Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the
