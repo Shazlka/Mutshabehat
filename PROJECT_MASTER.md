@@ -433,6 +433,16 @@ Two modelling decisions in this batch worth knowing before they recur:
 - **page 39 ﴿وَيَبْصُۜطُ﴾** — the baseline text must be the mushaf's own rasm (صاد with the small
   seen), with the description naming السين; writing `وَيَبْسُطُ` fails the baseline invariant.
 
+**Pages 82–101** (the Juz' 5 batch, An-Nisa 24–147). 36 new variant loci (+83 variants, 292 total) and +509 أصول rulings (1,402 total) across 61 active pages.
+- Corrected source slips:
+  - Page 96: source cited ﴿بَرِيئًا وَإِثْمًا﴾; the actual verse 4:112 text in Hafs is ﴿بُهْتَـٰنًۭا وَإِثْمًۭا﴾.
+  - Page 93: source had typo `'فتتبينوا'`; corrected to rasm `'فتبينوا'` (4:94).
+- Normalizations aligned with §12.4b:
+  - Dagger alefs: page 85 ﴿سُكَـٰرَىٰ﴾ (`'سكارى'`), page 86 ﴿هَـٰٓؤُلَآءِ أَهْدَىٰ﴾ (`'هاولاء اهدا'`), page 87 ﴿وَءَاتَيْنَـٰهُم﴾ (`'وءاتيناهم'`), page 98 ﴿يَتَـٰمَى﴾ (`'يتامى'`).
+  - Small high letters (`ۥ` / `ۧ` / `ۦ`): page 89 ﴿ٱلنَّبِيِّـۧنَ﴾ (`'النبيين'`), page 94 ﴿بَيْتِهِۦ﴾ (`'بيتهي'`), page 97 ﴿نُوَلِّهِۦ﴾ / ﴿وَنُصْلِهِۦ﴾ (`'نولهي'` / `'ونصلهي'`), page 100 ﴿تَلْوُۥٓا۟﴾ (`'تلووا'`), page 100 ﴿حَدِيثٍ غَيْرِهِۦٓ﴾ (`'حديث غيرهي'`).
+  - Multi-word rasm anchors: page 94 ﴿ٱلْمَلَـٰٓئِكَةُ ظَالِمِىٓ﴾ (`'الملايكه ظالمي'`), page 95 ﴿قِيَـٰمًۭا وَقُعُودًۭا وَعَلَىٰ﴾ (`'قياما وقعودا وعلا'`), page 100 ﴿نَزَّلَ عَلَىٰ رَسُولِهِۦ وَٱلْكِتَـٰبِ ٱلَّذِىٓ أَنزَلَ﴾ (`'نزل علا رسولهي والكتاب الذي انزل'`).
+- All 36 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 
 Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the

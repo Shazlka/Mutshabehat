@@ -1,0 +1,94 @@
+[
+  {
+    "id": "v-L099-عليهما-1-w2",
+    "surah": 4,
+    "ayah": 128,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمَآ",
+    "variantText": "عَلَيْهُمَآ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L099-عليهما-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L099-عليهما-1-w2",
+        "variantId": "v-L099-عليهما-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 104,
+        "sourceReference": "صفحة المصحف 99 · صفحة المصدر 104",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L099-يصلحا-1-w2",
+    "surah": 4,
+    "ayah": 128,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يُصْلِحَا",
+    "variantText": "يَصَّلَّحَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L099-يصلحا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L099-يصلحا-1-w2",
+        "variantId": "v-L099-يصلحا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 104,
+        "sourceReference": "صفحة المصحف 99 · صفحة المصدر 104",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَصَّالَحَا فَاضْمُمْ وَسَكِّنْ مُخَفِّفًا مَعَ الْقَصْرِ وَاكْسِرْ لَامَهُ ثَابِتًا تَلَا"
+      }
+    ],
+    "description": "بفتح الياء والصاد وتشديد الصاد واللام مفتوحتين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَصَّالَحَا فَاضْمُمْ وَسَكِّنْ مُخَفِّفًا مَعَ الْقَصْرِ وَاكْسِرْ لَامَهُ ثَابِتًا تَلَا"
+      }
+    ]
+  }
+]

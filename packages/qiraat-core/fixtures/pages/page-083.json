@@ -1,0 +1,196 @@
+[
+  {
+    "id": "v-L083-تجاره-1-w2",
+    "surah": 4,
+    "ayah": 29,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "تِجَـٰرَةً",
+    "variantText": "تِجَـٰرَةٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L083-تجاره-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L083-تجاره-1-w2",
+        "variantId": "v-L083-تجاره-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 88,
+        "sourceReference": "صفحة المصحف 83 · صفحة المصدر 88",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: تِجَارَةٌ انْصِبْ رَفْعَهُ فِي النِّسَا ثَوَى"
+      }
+    ],
+    "description": "بالرفع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "تِجَارَةٌ انْصِبْ رَفْعَهُ فِي النِّسَا ثَوَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L083-مدخلا-1-w2",
+    "surah": 4,
+    "ayah": 31,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مُّدْخَلًۭا",
+    "variantText": "مَّدْخَلًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L083-مدخلا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L083-مدخلا-1-w2",
+        "variantId": "v-L083-مدخلا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 88,
+        "sourceReference": "صفحة المصحف 83 · صفحة المصدر 88",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعَ الْحَجِّ ضَمُّوا مَدْخَلًا خَصَّهُ"
+      }
+    ],
+    "description": "بفتح الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعَ الْحَجِّ ضَمُّوا مَدْخَلًا خَصَّهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L083-وسلوا-1-w2",
+    "surah": 4,
+    "ayah": 32,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "وَسْـَٔلُوا۟",
+    "variantText": "وَسَلُوا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L083-وسلوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L083-وسلوا-1-w2",
+        "variantId": "v-L083-وسلوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 88,
+        "sourceReference": "صفحة المصحف 83 · صفحة المصدر 88",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَسَلْ فَسَلْ حَرِّكُوا بِالنَّقْلِ رَاشِدُهُ دَلَا — D: وَسَلْ مَعْ فَسَلْ فَشَا"
+      }
+    ],
+    "description": "بنقل فتحة الهمزة إلى السين وحذف الهمز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَلْ فَسَلْ حَرِّكُوا بِالنَّقْلِ رَاشِدُهُ دَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَسَلْ مَعْ فَسَلْ فَشَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L083-عقدت-1-w2",
+    "surah": 4,
+    "ayah": 33,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عَقَدَتْ",
+    "variantText": "عَاقَدَتْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L083-عقدت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L083-عقدت-1-w2",
+        "variantId": "v-L083-عقدت-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 88,
+        "sourceReference": "صفحة المصحف 83 · صفحة المصدر 88",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي عَاقَدَتْ قَصْرٌ ثَوَى"
+      }
+    ],
+    "description": "بمد الألف بعد العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي عَاقَدَتْ قَصْرٌ ثَوَى"
+      }
+    ]
+  }
+]
