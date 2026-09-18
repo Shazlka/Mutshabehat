@@ -1,0 +1,223 @@
+[
+  {
+    "id": "v-L106-وهو-1-w2",
+    "surah": 4,
+    "ayah": 176,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L106-وهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L106-وهو-1-w2",
+        "variantId": "v-L106-وهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 111,
+        "sourceReference": "صفحة المصحف 106 · صفحة المصدر 111",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L106-ورضوانا-1-w2",
+    "surah": 5,
+    "ayah": 2,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "وَرِضْوَٰنًۭا ۚ",
+    "variantText": "وَرُضْوَٰنًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L106-ورضوانا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L106-ورضوانا-1-w2",
+        "variantId": "v-L106-ورضوانا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 111,
+        "sourceReference": "صفحة المصحف 106 · صفحة المصدر 111",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرِضْوَانٌ اضْمُمْ فِي جَمِيعِ صِفَاتِهِ لَدَى الْكَسْرِ فَائِزًا"
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرِضْوَانٌ اضْمُمْ فِي جَمِيعِ صِفَاتِهِ لَدَى الْكَسْرِ فَائِزًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L106-شنان-1-w2",
+    "surah": 5,
+    "ayah": 2,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "شَنَـَٔانُ",
+    "variantText": "شَنْـَٔانُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L106-شنان-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L106-شنان-1-w2",
+        "variantId": "v-L106-شنان-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 111,
+        "sourceReference": "صفحة المصحف 106 · صفحة المصدر 111",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَسَكِّنْ مَعًا شَنَآنُ صَفْوًا كِلَاهُمَا — D: وَشَنْآنُ سَكِّنْ أَوْفِ"
+      }
+    ],
+    "description": "بإسكان النون",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَكِّنْ مَعًا شَنَآنُ صَفْوًا كِلَاهُمَا"
+      },
+      {
+        "source": "D",
+        "text": "وَشَنْآنُ سَكِّنْ أَوْفِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L106-ان_صدوكم-1-w2",
+    "surah": 5,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "أَن صَدُّوكُمْ",
+    "variantText": "إِن صَدُّوكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L106-ان_صدوكم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L106-ان_صدوكم-1-w2",
+        "variantId": "v-L106-ان_صدوكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 111,
+        "sourceReference": "صفحة المصحف 106 · صفحة المصدر 111",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَن صَدُّوكُمْ كَسْرُهُ انْدَرَى حِمًى"
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَن صَدُّوكُمْ كَسْرُهُ انْدَرَى حِمًى"
+      }
+    ]
+  },
+  {
+    "id": "v-L106-ولا_تعاونوا-1-w2",
+    "surah": 5,
+    "ayah": 2,
+    "startToken": 42,
+    "endToken": 43,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تَعَاوَنُوا۟",
+    "variantText": "وَلَا تَّعَاوَنُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "L106-ولا_تعاونوا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L106-ولا_تعاونوا-1-w2",
+        "variantId": "v-L106-ولا_تعاونوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 111,
+        "sourceReference": "صفحة المصحف 106 · صفحة المصدر 111",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي الْوَصْلِ لِلْبَزِّيِّ شَدِّدْ تَيَمَّمُوا ... وَتَعَاوَنُوا ادْعُوَا"
+      }
+    ],
+    "description": "بتشديد التاء وصلاً مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الْوَصْلِ لِلْبَزِّيِّ شَدِّدْ تَيَمَّمُوا ... وَتَعَاوَنُوا ادْعُوَا"
+      }
+    ]
+  }
+]

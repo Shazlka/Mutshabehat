@@ -1,0 +1,88 @@
+[
+  {
+    "id": "v-L122-عقدتم-1-w2",
+    "surah": 5,
+    "ayah": 89,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عَقَّدتُّمُ",
+    "variantText": "عَٰقَدتُّمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "L122-عقدتم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L122-عقدتم-1-w2",
+        "variantId": "v-L122-عقدتم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 127,
+        "sourceReference": "صفحة المصحف 122 · صفحة المصدر 127",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعَقَدْتُمُ التَّخْفِيفُ مِنْ صُحْبَةٍ وَلَا وَفِي الْعَيْنِ فَامْدُدْ مُقْسِطًا"
+      }
+    ],
+    "description": "بالألف بعد العين وتخفيف القاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعَقَدْتُمُ التَّخْفِيفُ مِنْ صُحْبَةٍ وَلَا وَفِي الْعَيْنِ فَامْدُدْ مُقْسِطًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L122-عقدتم-1-w3",
+    "surah": 5,
+    "ayah": 89,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عَقَّدتُّمُ",
+    "variantText": "عَقَّدتُّمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L122-عقدتم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L122-عقدتم-1-w3",
+        "variantId": "v-L122-عقدتم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 127,
+        "sourceReference": "صفحة المصحف 122 · صفحة المصدر 127",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعَقَدْتُمُ التَّخْفِيفُ مِنْ صُحْبَةٍ وَلَا وَفِي الْعَيْنِ فَامْدُدْ مُقْسِطًا"
+      }
+    ],
+    "description": "بتشديد القاف وقصر العين",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعَقَدْتُمُ التَّخْفِيفُ مِنْ صُحْبَةٍ وَلَا وَفِي الْعَيْنِ فَامْدُدْ مُقْسِطًا"
+      }
+    ]
+  }
+]

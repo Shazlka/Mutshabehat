@@ -54,4 +54,5 @@ __pycache__/
 # Local build & experimentation artifacts
 .ai/
 apps/**/.build/
+scratch/
 

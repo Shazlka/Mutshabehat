@@ -1,0 +1,43 @@
+[
+  {
+    "id": "v-L114-لا_يحزنك-1-w2",
+    "surah": 5,
+    "ayah": 41,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَحْزُنكَ",
+    "variantText": "لَا يُحْزِنكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L114-لا_يحزنك-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L114-لا_يحزنك-1-w2",
+        "variantId": "v-L114-لا_يحزنك-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 119,
+        "sourceReference": "صفحة المصحف 114 · صفحة المصدر 119",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي كُلِّهَا يَحْزُنْ بِضَمٍّ وَكَسْرِهِ لَدَى غَيْرِ أَنْبِيَاءَ شَفَا فَتَأَمَّلَا"
+      }
+    ],
+    "description": "بضم الياء وكسر الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي كُلِّهَا يَحْزُنْ بِضَمٍّ وَكَسْرِهِ لَدَى غَيْرِ أَنْبِيَاءَ شَفَا فَتَأَمَّلَا"
+      }
+    ]
+  }
+]

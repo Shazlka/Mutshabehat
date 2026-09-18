@@ -461,6 +461,14 @@ Two modelling decisions in this batch worth knowing before they recur:
   - Page 81: separated Abu Ja'far ikhfa (4:21 ﴿مِّيثَـٰقًا غَلِيظًۭا﴾) from Khalaf tark al-ghunna (4:20 ﴿بُهْتَـٰنًۭا وَإِثْمًۭا﴾, 4:21 ﴿بَعْضٍ وَأَخَذْنَ﴾, 4:22 ﴿فَـٰحِشَةًۭ وَمَقْتًۭا﴾).
 - All 84 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
+**Pages 102–125** (Juz' 6 & early Juz' 7, An-Nisa 148 to Al-Ma'idah 108). 108 new variant loci (+108 variants, 628 total across 125 pages) and +569 أصول rulings (2,928 total) across 125 active pages. Pages 1–125 (Juz' 1 through early Juz' 7) are now 100% contiguous.
+- Corrected glyph spacing defect in source fixture:
+  - Page 117 token 5:2 (ayah 52): fixed split glyph `"دَآئِرَ ةٌۭ ۚ"` -> `"دَآئِرَةٌۭ ۚ"`. Verified clean with `npm run mushaf:validate`.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word queries: page 115 ﴿وَٱلْعَيْنَ بِٱلْعَيْنِ...﴾ (5:45 token span 7-15), page 117 ﴿وَيَقُولُ ٱلَّذِينَ ءَامَنُوٓا۟﴾ (5:53), page 118 ﴿وَأَكْلِهِمُ ٱلسُّحْتَ﴾ (5:62,63), page 125 ﴿عَلَيْهِمُ ٱلْأَوْلَيَـٰنِ﴾ (5:107).
+  - Dagger alefs & rasm bases: page 119 ﴿رِسَالَتَهُۥ﴾ (5:67), page 119 ﴿وَٱلصَّـٰبِـُٔونَ﴾ (5:69), page 124 ﴿قِيَـٰمًا﴾ (5:97), page 124 ﴿يُنَزَّلُ﴾ (5:101).
+- All 108 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 
 Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the
