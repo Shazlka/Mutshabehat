@@ -243,32 +243,72 @@ const PAGE_RULING_LOADERS: Record<number, PageRulingsLoader> = {
   101: () => import('./fixtures/rulings/page-101.json') as unknown as Promise<PageRulingsModule>,
 }
 
+// In-memory module caches — each dynamic import() is resolved at most once per process lifetime.
+// The fixture JSONs are immutable reference data, so caching them forever is safe and eliminates
+// the ~5-15ms per-import overhead on repeated page visits.
+const variantModuleCache = new Map<number, Promise<PageVariantsModule>>()
+const rulingModuleCache = new Map<number, Promise<PageRulingsModule>>()
+const ruleModuleCache = new Map<number, Promise<PageRulesModule>>()
+
+function cachedLoadVariants(pageNumber: number): Promise<PageVariantsModule> | undefined {
+  const load = PAGE_VARIANT_LOADERS[pageNumber]
+  if (!load) return undefined
+  let cached = variantModuleCache.get(pageNumber)
+  if (!cached) { cached = load(); variantModuleCache.set(pageNumber, cached) }
+  return cached
+}
+
+function cachedLoadRulings(pageNumber: number): Promise<PageRulingsModule> | undefined {
+  const load = PAGE_RULING_LOADERS[pageNumber]
+  if (!load) return undefined
+  let cached = rulingModuleCache.get(pageNumber)
+  if (!cached) { cached = load(); rulingModuleCache.set(pageNumber, cached) }
+  return cached
+}
+
+function cachedLoadRules(pageNumber: number): Promise<PageRulesModule> | undefined {
+  const load = PAGE_RULE_LOADERS[pageNumber]
+  if (!load) return undefined
+  let cached = ruleModuleCache.get(pageNumber)
+  if (!cached) { cached = load(); ruleModuleCache.set(pageNumber, cached) }
+  return cached
+}
+
 export class FixtureQiraatRepository implements QiraatRepository {
   async getVariantsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatVariant[]> {
-    const load = PAGE_VARIANT_LOADERS[pageNumber]
-    if (!load) return []
-    const mod = await load()
+    const promise = cachedLoadVariants(pageNumber)
+    if (!promise) return []
+    const mod = await promise
     const all = mod.default
     if (options?.includeUnpublished) return all
     return all.filter((variant) => variant.verificationStatus === 'VERIFIED' || variant.verificationStatus === 'PUBLISHED')
   }
 
   async getRulingsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRuling[]> {
-    const load = PAGE_RULING_LOADERS[pageNumber]
-    if (!load) return []
-    const mod = await load()
+    const promise = cachedLoadRulings(pageNumber)
+    if (!promise) return []
+    const mod = await promise
     const all = mod.default
     if (options?.includeUnpublished) return all
     return all.filter((r) => r.verificationStatus === 'VERIFIED' || r.verificationStatus === 'PUBLISHED')
   }
 
   async getRulesForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRule[]> {
-    const load = PAGE_RULE_LOADERS[pageNumber]
-    if (!load) return []
-    const mod = await load()
+    const promise = cachedLoadRules(pageNumber)
+    if (!promise) return []
+    const mod = await promise
     const all = mod.default
     if (options?.includeUnpublished) return all
     return all.filter((rule) => rule.verificationStatus === 'VERIFIED' || rule.verificationStatus === 'PUBLISHED')
+  }
+
+  /** Eagerly load and cache fixture modules for the given pages in the current runtime. */
+  prefetchPages(pages: number[]): void {
+    for (const p of pages) {
+      cachedLoadVariants(p)
+      cachedLoadRulings(p)
+      cachedLoadRules(p)
+    }
   }
 }
 

@@ -172,6 +172,10 @@ changing anything about what a tap or long-press on a word does.
   before the state change.
 - Measuring: a prefetched turn is ~1 ms render→commit, 0 slot renders. Re-check after reader changes
   (instrument a render counter locally, don't ship it).
+- Qiraat page fixtures are loaded directly in the browser through `FixtureQiraatRepository` and
+  prefetched for adjacent pages. Keep `/api/mushaf-1441/qiraat` for external/API consumers, but do
+  not put it back in the reader's flip path; `test_qiraat_colours_do_not_wait_for_a_route_handler_round_trip`
+  blocks the route and verifies that the mounted neighbour is already colored.
 
 ## 6. Key files map (recently touched)
 

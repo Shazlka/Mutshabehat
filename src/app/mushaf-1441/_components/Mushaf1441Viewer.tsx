@@ -1128,6 +1128,7 @@ export default function Mushaf1441Viewer({
 
   // Load Qiraat reference data for the visible page(s) only in comparison/riwayah mode — the
   // common "normal Mushaf" case never fetches it at all (Part 24).
+  // Also prefetches adjacent pages (N±1, N±2) so that page turns feel instant.
   useEffect(() => {
     if (qiraatMode === 'normal') return
     const pages = new Set<number>([pageNumber])
@@ -1138,6 +1139,15 @@ export default function Mushaf1441Viewer({
     }
     for (const page of pages) {
       if (page >= MIN_PAGE && page <= MAX_PAGE) void fetchQiraatForPage(page, qiraatIncludeReviewed).catch(() => {})
+    }
+    // Prefetch adjacent pages so the next page turn is instant. Fire-and-forget — errors are
+    // silently ignored; the data will simply be fetched on-demand if the prefetch fails.
+    const step = isSpread ? 2 : 1
+    const prefetchTargets = [pageNumber - step * 2, pageNumber - step, pageNumber + step, pageNumber + step * 2]
+    for (const p of prefetchTargets) {
+      if (p >= MIN_PAGE && p <= MAX_PAGE && !pages.has(p)) {
+        void fetchQiraatForPage(p, qiraatIncludeReviewed).catch(() => {})
+      }
     }
   }, [pageNumber, isSpread, qiraatMode, qiraatIncludeReviewed])
 
@@ -1406,10 +1416,9 @@ export default function Mushaf1441Viewer({
     return metadata
   }
 
-  // Qiraat variants + page-level rules are shared reference data (no auth), cached per page — same
-  // dedup-by-in-flight pattern as fetchPageMetadata above. Only page 1 has real rule data today;
-  // every other page resolves to an empty array quickly and costs one small cached network round
-  // trip, never a stall.
+  // Qiraat variants + page-level rules are shared immutable reference data (no auth), cached per
+  // page with the same in-flight dedup pattern as fetchPageMetadata. Loading their generated page
+  // chunks directly avoids a route-handler round trip while keeping non-Qiraat sessions lazy.
   async function fetchQiraatForPage(nextPage: number, includeUnpublished: boolean) {
     const cacheKey = `${nextPage}:${includeUnpublished ? 1 : 0}`
     const cachedVariants = qiraatVariantsByPageRef.current[cacheKey]
@@ -1423,12 +1432,15 @@ export default function Mushaf1441Viewer({
     if (inFlight) return inFlight
 
     const request = (async () => {
-      const response = await fetch(`/api/mushaf-1441/qiraat?page=${nextPage}${includeUnpublished ? '&debug=1' : ''}`)
-      if (!response.ok) throw new Error(`Failed to load qiraat data for page ${nextPage}`)
-      const payload = await response.json() as { variants?: QiraatVariant[]; rules?: QiraatRule[]; rulings?: QiraatRuling[] }
-      const variants = Array.isArray(payload.variants) ? payload.variants : []
-      const rules = Array.isArray(payload.rules) ? payload.rules : []
-      const rulings = Array.isArray(payload.rulings) ? payload.rulings : []
+      // Qiraat fixtures are immutable application assets. Load their page chunks directly in the
+      // browser instead of paying for a route-handler round trip and a second JSON serialization.
+      // Adjacent-page prefetch therefore warms the same module cache used by the page turn.
+      const options = { includeUnpublished }
+      const [variants, rules, rulings] = await Promise.all([
+        defaultQiraatRepository.getVariantsForPage(nextPage, options),
+        defaultQiraatRepository.getRulesForPage(nextPage, options),
+        defaultQiraatRepository.getRulingsForPage(nextPage, options),
+      ])
       qiraatVariantsByPageRef.current = { ...qiraatVariantsByPageRef.current, [cacheKey]: variants }
       qiraatRulesByPageRef.current = { ...qiraatRulesByPageRef.current, [cacheKey]: rules }
       qiraatRulingsByPageRef.current = { ...qiraatRulingsByPageRef.current, [cacheKey]: rulings }
