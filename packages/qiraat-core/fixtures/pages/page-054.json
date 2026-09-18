@@ -1,0 +1,290 @@
+[
+  {
+    "id": "v-L054-رءوف-1-w2",
+    "surah": 3,
+    "ayah": 30,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "رَءُوفٌۢ",
+    "variantText": "رَؤُفٌۢ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L054-رءوف-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L054-رءوف-1-w2",
+        "variantId": "v-L054-رءوف-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 59,
+        "sourceReference": "صفحة المصحف 54 · صفحة المصدر 59",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرَا رَءُوفٌ قَصْرُ صُحْبَةٍ"
+      }
+    ],
+    "description": "بالقصر",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرَا رَءُوفٌ قَصْرُ صُحْبَةٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L054-وضعت-1-w2",
+    "surah": 3,
+    "ayah": 36,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَضَعَتْ",
+    "variantText": "وَضَعْتُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L054-وضعت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L054-وضعت-1-w2",
+        "variantId": "v-L054-وضعت-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 59,
+        "sourceReference": "صفحة المصحف 54 · صفحة المصدر 59",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَسَكِّنْ وَضَعَتْ فَتَى صَحَّ"
+      }
+    ],
+    "description": "بضم التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَكِّنْ وَضَعَتْ فَتَى صَحَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L054-وكفلها-1-w2",
+    "surah": 3,
+    "ayah": 37,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَكَفَّلَهَا",
+    "variantText": "وَكَفَلَهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L054-وكفلها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L054-وكفلها-1-w2",
+        "variantId": "v-L054-وكفلها-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 59,
+        "sourceReference": "صفحة المصحف 54 · صفحة المصدر 59",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَكَفَّلَهَا خِفٌّ كَمَا شَاعَ"
+      }
+    ],
+    "description": "بتخفيف الفاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَفَّلَهَا خِفٌّ كَمَا شَاعَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L054-زكريا-1-w2",
+    "surah": 3,
+    "ayah": 37,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "زَكَرِيَّا ۖ",
+    "variantText": "زَكَرِيَّآءُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L054-زكريا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L054-زكريا-1-w2",
+        "variantId": "v-L054-زكريا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 59,
+        "sourceReference": "صفحة المصحف 54 · صفحة المصدر 59",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي زَكَرِيَّا قَصْرُهُ وَسُكُونُهُ كَفَى صَحَّ"
+      }
+    ],
+    "description": "بالمد والهمز مرفوعًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي زَكَرِيَّا قَصْرُهُ وَسُكُونُهُ كَفَى صَحَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L054-زكريا-1-w3",
+    "surah": 3,
+    "ayah": 37,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "زَكَرِيَّا ۖ",
+    "variantText": "زَكَرِيَّآءَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L054-زكريا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L054-زكريا-1-w3",
+        "variantId": "v-L054-زكريا-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 59,
+        "sourceReference": "صفحة المصحف 54 · صفحة المصدر 59",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي زَكَرِيَّا قَصْرُهُ وَسُكُونُهُ كَفَى صَحَّ"
+      }
+    ],
+    "description": "بالمد والهمز منصوبًا",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي زَكَرِيَّا قَصْرُهُ وَسُكُونُهُ كَفَى صَحَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L054-زكريا-2-w2",
+    "surah": 3,
+    "ayah": 37,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "زَكَرِيَّا",
+    "variantText": "زَكَرِيَّآءُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L054-زكريا-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L054-زكريا-2-w2",
+        "variantId": "v-L054-زكريا-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 59,
+        "sourceReference": "صفحة المصحف 54 · صفحة المصدر 59",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي زَكَرِيَّا قَصْرُهُ وَسُكُونُهُ كَفَى صَحَّ"
+      }
+    ],
+    "description": "بالمد والهمز مرفوعًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي زَكَرِيَّا قَصْرُهُ وَسُكُونُهُ كَفَى صَحَّ"
+      }
+    ]
+  }
+]

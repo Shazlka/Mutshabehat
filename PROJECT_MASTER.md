@@ -443,6 +443,16 @@ Two modelling decisions in this batch worth knowing before they recur:
   - Multi-word rasm anchors: page 94 ﴿ٱلْمَلَـٰٓئِكَةُ ظَالِمِىٓ﴾ (`'الملايكه ظالمي'`), page 95 ﴿قِيَـٰمًۭا وَقُعُودًۭا وَعَلَىٰ﴾ (`'قياما وقعودا وعلا'`), page 100 ﴿نَزَّلَ عَلَىٰ رَسُولِهِۦ وَٱلْكِتَـٰبِ ٱلَّذِىٓ أَنزَلَ﴾ (`'نزل علا رسولهي والكتاب الذي انزل'`).
 - All 36 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
+**Pages 42–61** (the Juz' 3 batch, Al-Baqarah 253 to Ali 'Imran 91). 52 new variant loci (+121 variants, 413 total) and +552 أصول rulings (1,954 total) across 81 active pages. Pages 1–61 (Juz' 1, 2, and 3) are now fully contiguous.
+- Corrected source slips & query alignments:
+  - Page 53: source cited ﴿نَفْسَهُۥ وَيُحَذِّرُكُمُ﴾; actual verse 3:28 rasm is ﴿نَفْسَهُۥ ۗ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ﴾ (`'نفسهۥ والى'`).
+  - Page 60: source cited ﴿عَلَيْكُمْ إِصْرِى﴾; actual verse 3:81 rasm is ﴿عَلَىٰ ذَٰلِكُمْ إِصْرِى﴾ (`'اصري'`).
+- Normalizations aligned with §12.4b:
+  - Dagger alefs & rasm bases: page 43 ﴿نُنشِزُهَا﴾ (`'ننشزها'`), page 45 ﴿وَيَأْمُرُكُم﴾ (`'وَيَأْمُرُكُم'`), page 46 ﴿وَيُكَفِّرُ﴾ (`'ويكفر'`), page 56 ﴿أَنِّىٓ أَخْلُقُ﴾ (`'انى اخلق'`).
+  - Small high letters (`ۥ` / `ۧ` / `ۦ`): page 42 ﴿تَأْخُذُهُۥ﴾ (`'تاخذهو'`) and ﴿بِإِذْنِهِۦ﴾ (`'باذنهي'`), page 52 ﴿ٱلنَّبِيِّـۧنَ﴾ (`'النبيين'`), page 60 ﴿لَفَرِيقًا يَلْوُۥنَ﴾ (`'لفريقا يلوون'`).
+  - Multi-way splits cleanly partitioned: page 48 ﴿فَتُذَكِّرَ﴾ 2:282 (3-way partition: 12-6-2 = 20), page 56 ﴿صِرَٰطٌ﴾ 3:51 (17-2-1 = 20), page 57 ﴿فَيُوَفِّيهِمْ﴾ 3:57 (4-way split: 1-17-1-1 = 20).
+- All 52 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 
 Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the

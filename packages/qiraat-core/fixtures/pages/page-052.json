@@ -1,0 +1,129 @@
+[
+  {
+    "id": "v-L052-ان_الدين-1-w2",
+    "surah": 3,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِنَّ ٱلدِّينَ",
+    "variantText": "أَنَّ ٱلدِّينَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L052-ان_الدين-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L052-ان_الدين-1-w2",
+        "variantId": "v-L052-ان_الدين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 57,
+        "sourceReference": "صفحة المصحف 52 · صفحة المصدر 57",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَشَهِدَ انْكِسَارَ أَنَّ صَافٍ"
+      }
+    ],
+    "description": "بفتح الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَشَهِدَ انْكِسَارَ أَنَّ صَافٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L052-النبيين-1-w2",
+    "surah": 3,
+    "ayah": 21,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِيِّـۧنَ",
+    "variantText": "ٱلنَّبِيئِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L052-النبيين-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L052-النبيين-1-w2",
+        "variantId": "v-L052-النبيين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 57,
+        "sourceReference": "صفحة المصحف 52 · صفحة المصدر 57",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا — D: أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
+      }
+    ],
+    "description": "بالهمز مع المد المتصل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L052-ويقتلون_الذين-1-w2",
+    "surah": 3,
+    "ayah": 21,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَيَقْتُلُونَ ٱلَّذِينَ",
+    "variantText": "وَيُقَٰتِلُونَ ٱلَّذِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L052-ويقتلون_الذين-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L052-ويقتلون_الذين-1-w2",
+        "variantId": "v-L052-ويقتلون_الذين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 57,
+        "sourceReference": "صفحة المصحف 52 · صفحة المصدر 57",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَقْتُلُونَ الثَّانِي ضُمَّ وَافْتَحْ وَأَلِّفَا وَكَسْرًا فَزِدْ"
+      }
+    ],
+    "description": "بضم الياء وفتح القاف وألف بعدها وكسر التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَقْتُلُونَ الثَّانِي ضُمَّ وَافْتَحْ وَأَلِّفَا وَكَسْرًا فَزِدْ"
+      }
+    ]
+  }
+]
