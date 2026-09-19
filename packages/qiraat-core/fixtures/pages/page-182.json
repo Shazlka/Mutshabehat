@@ -1,0 +1,198 @@
+[
+  {
+    "id": "v-L182-بالعدوه-1-w2",
+    "surah": 8,
+    "ayah": 42,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْعُدْوَةِ",
+    "variantText": "بِٱلْعِدْوَةِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L182-بالعدوه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L182-بالعدوه-1-w2",
+        "variantId": "v-L182-بالعدوه-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 187,
+        "sourceReference": "صفحة المصحف 182 · صفحة المصدر 187",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهِمَا الْعُدْوَةِ اكْسِرْ حَقًّا الضَّمَّ وَاعْدِلَا"
+      }
+    ],
+    "description": "بكسر العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهِمَا الْعُدْوَةِ اكْسِرْ حَقًّا الضَّمَّ وَاعْدِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L182-بالعدوه-2-w2",
+    "surah": 8,
+    "ayah": 42,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْعُدْوَةِ",
+    "variantText": "بِٱلْعِدْوَةِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L182-بالعدوه-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L182-بالعدوه-2-w2",
+        "variantId": "v-L182-بالعدوه-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 187,
+        "sourceReference": "صفحة المصحف 182 · صفحة المصدر 187",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهِمَا الْعُدْوَةِ اكْسِرْ حَقًّا الضَّمَّ وَاعْدِلَا"
+      }
+    ],
+    "description": "بكسر العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهِمَا الْعُدْوَةِ اكْسِرْ حَقًّا الضَّمَّ وَاعْدِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L182-حي-1-w2",
+    "surah": 8,
+    "ayah": 42,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "حَىَّ",
+    "variantText": "حَيِيَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L182-حي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L182-حي-1-w2",
+        "variantId": "v-L182-حي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 187,
+        "sourceReference": "صفحة المصحف 182 · صفحة المصدر 187",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَنْ حَيِيَ اكْسِرْ مُظْهِرًا إِذْ صَفَا هُدًى — D: حَيَّ أَظْهِرَنْ فَتَى حُزْ"
+      }
+    ],
+    "description": "بفك الإدغام بياءين مكسورة ثم مفتوحة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَنْ حَيِيَ اكْسِرْ مُظْهِرًا إِذْ صَفَا هُدًى"
+      },
+      {
+        "source": "D",
+        "text": "حَيَّ أَظْهِرَنْ فَتَى حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L182-ترجع_الامور-1-w2",
+    "surah": 8,
+    "ayah": 44,
+    "startToken": 18,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُ ٱلْأُمُورُ",
+    "variantText": "تَرْجِعُ ٱلْأُمُورُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L182-ترجع_الامور-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L182-ترجع_الامور-1-w2",
+        "variantId": "v-L182-ترجع_الامور-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 187,
+        "sourceReference": "صفحة المصحف 182 · صفحة المصدر 187",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي التَّاءِ فَاضْمُمْ وَافْتَحِ الْجِيمَ تَرْجِعُ الأُمُورُ سَمَا نَصًّا وَحَيْثُ تَنَزَّلَا — D: وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا"
+      }
+    ],
+    "description": "بفتح التاء وكسر الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي التَّاءِ فَاضْمُمْ وَافْتَحِ الْجِيمَ تَرْجِعُ الأُمُورُ سَمَا نَصًّا وَحَيْثُ تَنَزَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا"
+      }
+    ]
+  }
+]

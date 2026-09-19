@@ -482,12 +482,27 @@ Two modelling decisions in this batch worth knowing before they recur:
   - Usul disambiguation & small letters: page 151 ﴿الٓمٓصٓ﴾, disambiguated Abu Ja'far ikhfa ﴿وَمَنْ خَفَّتْ﴾ (7:9) and Khalaf tark al-ghunna ﴿بِعِلْمٍۢ ۖ وَمَا﴾ (7:7); page 152 ﴿وَيَـٰٓـَٔادَمُ﴾ (7:19), ﴿نَّارٍۢ وَخَلَقْتَهُۥ﴾ (7:12); page 153 ﴿بِٱلْفَحْشَآءِ ۖ أَتَقُولُونَ﴾ (7:28), ﴿مُسْتَقَرٌّۭ وَمَتَـٰعٌ﴾ (7:24); page 154 ﴿كَذَّبَ بِـَٔايَـٰتِهِۦٓ﴾ (7:37); page 155 ﴿رُسُلُ رَبِّنَا﴾ (7:43); page 156 ﴿عِوَجًۭا وَهُم﴾ (7:45), ﴿نَنسَىٰهُمْ﴾ (7:51); page 159 ﴿فَٱنتَظِرُوٓا۟﴾ (7:71), ﴿وَءَابَآؤُكُم﴾ (7:71), ﴿بَصْۜطَةًۭ ۖ﴾ (7:69); page 160 ﴿إِنَّكُمْ﴾ (7:81); page 163 ﴿أَوَأَمِنَ﴾ (7:98); page 164 ﴿أَرْجِهْ﴾ (7:111), ﴿نَّكُونَ نَحْنُ﴾ (7:115), ﴿يَدَهُۥ﴾ (7:108); page 165 ﴿مَكَرْتُمُوهُ﴾ (7:123).
 - All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
-### 12.6 Moving to Postgres (Phase A, not yet done)
+**Pages 166–184** (Juz' 9 & early Juz' 10, Al-A'raf 131 to Al-Anfal 61). 101 new variant records (1,001 total across 184 pages) and +469 أصول rulings (4,437 total) across 184 active pages. Pages 1–184 (Juz' 1 through Juz' 9 and start of Juz' 10) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 166 ﴿أَنجَيْنَـٰكُم﴾ (7:141); page 168 ﴿حُلِيِّهِمْ﴾ (7:148) and Yaqub ضم الهاء on ﴿يَهْدِيهِمْ﴾ and ﴿أَيْدِيهِمْ﴾; page 170 disambiguated multiple occurrences of `عليهم` in 7:157 (occurrence 1 ﴿عَلَيْهِمُ ٱلْخَبَـٰٓئِثَ﴾ before sakin vs occurrence 2 ﴿عَلَيْهِمْ ۚ﴾ before mutaharrik); page 172 ﴿ذُرِّيَّتَهُمْ﴾ (7:172) Hafs singular baseline vs plural; page 173 ﴿تَقُولُوا۟﴾ (7:172) and ﴿تَقُولُوٓا۟﴾ (7:173); page 175 ﴿طَـٰٓئِفٌۭ﴾ (7:201) Hafs baseline vs ﴿طَيْفٌ﴾; page 178 ﴿وَرِئَآءَ﴾ (8:47).
+  - Cross-ayah multi-word spans resolved: page 86 4:49–50 ﴿فَتِيلًا ٱنظُرْ﴾ and page 160 7:74–75 ﴿مُفْسِدِينَ قَالَ﴾.
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
-Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the
-Mac Mini is offline). Postgres becomes the authoring/QA source of truth: apply the migration after a
-`pg_dump` backup, then generate the same fixtures from `qiraat_export_page()`. See
-`docs/qiraat/10-v2-architecture-plan.md` §4 and §8.
+### 12.6 Postgres V2 Migration & Ingestion (Phase A completed 2026-09-19)
+
+Fixtures remain the client serving layer (zero round-trip page turns, offline-capable). Postgres is the authoring, relational query, and QA source of truth.
+- **Migration**: Applied `supabase/migrations/20260917120000_qiraat_v2_schema.sql` (19 tables, enums, triggers, and export functions) after full binary `pg_dump -Fc` backup (`backups/pre-qiraat-v2-20260919091434.dump`).
+- **Data Ingestion**: Populated all 184 pages into Postgres via `scripts/qiraat/import_to_postgres.py`:
+  - `qiraat_pages`: 184 rows
+  - `qiraat_loci`: 5,266 rows
+  - `qiraat_entries`: 5,438 rows (1,001 variants, 4,437 rulings)
+  - `qiraat_entry_readings`: 16,538 rows
+  - `qiraat_evidence_texts`: 597 rows
+  - `qiraat_evidence_links`: 1,331 rows
+- **Schema Enhancements**:
+  - Added `CS-HIMSI` and `CS-DIMASHQI` into `qiraat_count_schools`.
+  - Replaced restrictive `ayah_to >= ayah_from` check on `qiraat_pages` with `CHECK (ayah_to >= 1)` to support transition pages spanning surah boundaries (e.g. page 106: 4:176 -> 5:2).
+- Verified `qiraat_export_page(1::smallint, true)` and `qiraat_export_page(184::smallint, true)` on Postgres 17; reloaded PostgREST cache (`NOTIFY pgrst, 'reload schema'`).
 
 ---
 

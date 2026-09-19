@@ -1,0 +1,468 @@
+[
+  {
+    "id": "v-L167-يعكفون-1-w2",
+    "surah": 7,
+    "ayah": 138,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَعْكُفُونَ",
+    "variantText": "يَعْكِفُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L167-يعكفون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L167-يعكفون-1-w2",
+        "variantId": "v-L167-يعكفون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي يَعْكُفُونَ الضَّمُّ يُكْسَرُ شَافِيًا"
+      }
+    ],
+    "description": "بكسر الكاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي يَعْكُفُونَ الضَّمُّ يُكْسَرُ شَافِيًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-وهو-1-w2",
+    "surah": 7,
+    "ayah": 140,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L167-وهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L167-وهو-1-w2",
+        "variantId": "v-L167-وهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-انجيناكم-1-w2",
+    "surah": 7,
+    "ayah": 141,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَنجَيْنَـٰكُم",
+    "variantText": "أَنجَىٰكُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L167-انجيناكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L167-انجيناكم-1-w2",
+        "variantId": "v-L167-انجيناكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَنْجَى بِحَذْفِ الْيَاءِ وَالنُّونِ كُفِّلَا"
+      }
+    ],
+    "description": "بحذف الياء والنون",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَنْجَى بِحَذْفِ الْيَاءِ وَالنُّونِ كُفِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-يقتلون-1-w2",
+    "surah": 7,
+    "ayah": 141,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يُقَتِّلُونَ",
+    "variantText": "يَقْتُلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L167-يقتلون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L167-يقتلون-1-w2",
+        "variantId": "v-L167-يقتلون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضُمَّ فِي سَنَقْتُلُ وَاكْسِرْ ضَمَّهُ مُثَقَّلَا وَحَرِّكْ … وَفِي يَقْتُلُونَ خُذْ — D: أَلَا افْتَحَنْ يَقْتُلُو"
+      }
+    ],
+    "description": "بفتح الياء وسكون القاف وتخفيف التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضُمَّ فِي سَنَقْتُلُ وَاكْسِرْ ضَمَّهُ مُثَقَّلَا وَحَرِّكْ … وَفِي يَقْتُلُونَ خُذْ"
+      },
+      {
+        "source": "D",
+        "text": "أَلَا افْتَحَنْ يَقْتُلُو"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-ووعدنا-1-w2",
+    "surah": 7,
+    "ayah": 142,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "۞ وَوَٰعَدْنَا",
+    "variantText": "وَوَعَدْنَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L167-ووعدنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L167-ووعدنا-1-w2",
+        "variantId": "v-L167-ووعدنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعَدْنَا جَمِيعًا دُونَ مَا أَلِفٍ حَلَا — D: وَعَدْنَا اتْلُ"
+      }
+    ],
+    "description": "بغير ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعَدْنَا جَمِيعًا دُونَ مَا أَلِفٍ حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَعَدْنَا اتْلُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-ارني-1-w2",
+    "surah": 7,
+    "ayah": 143,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "أَرِنِىٓ",
+    "variantText": "أَرْنِىٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L167-ارني-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L167-ارني-1-w2",
+        "variantId": "v-L167-ارني-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَرْنَا وَأَرْنِي سَاكِنَا الْكَسْرِ دُمْ يَدًا وَفِي فُصِّلَتْ يُرْوِي صَفَا دَرِّهِ عُلَا وَأَخْفَاهُمَا طَلْقٌ — D: سَكِّنْ أَرْنَا وَأَرْنِي حُزْ"
+      }
+    ],
+    "description": "بإسكان الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَرْنَا وَأَرْنِي سَاكِنَا الْكَسْرِ دُمْ يَدًا وَفِي فُصِّلَتْ يُرْوِي صَفَا دَرِّهِ عُلَا وَأَخْفَاهُمَا طَلْقٌ"
+      },
+      {
+        "source": "D",
+        "text": "سَكِّنْ أَرْنَا وَأَرْنِي حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-ارني-1-w3",
+    "surah": 7,
+    "ayah": 143,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "أَرِنِىٓ",
+    "variantText": "أَرِنِىٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "L167-ارني-1",
+    "locusType": "performance_variant",
+    "performanceNote": "باختلاس كسرة الراء",
+    "sources": [
+      {
+        "id": "s-L167-ارني-1-w3",
+        "variantId": "v-L167-ارني-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَرْنَا وَأَرْنِي سَاكِنَا الْكَسْرِ دُمْ يَدًا وَفِي فُصِّلَتْ يُرْوِي صَفَا دَرِّهِ عُلَا وَأَخْفَاهُمَا طَلْقٌ — D: سَكِّنْ أَرْنَا وَأَرْنِي حُزْ"
+      }
+    ],
+    "description": "باختلاس كسرة الراء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَرْنَا وَأَرْنِي سَاكِنَا الْكَسْرِ دُمْ يَدًا وَفِي فُصِّلَتْ يُرْوِي صَفَا دَرِّهِ عُلَا وَأَخْفَاهُمَا طَلْقٌ"
+      },
+      {
+        "source": "D",
+        "text": "سَكِّنْ أَرْنَا وَأَرْنِي حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-ولكن_انظر-1-w2",
+    "surah": 7,
+    "ayah": 143,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "وَلَـٰكِنِ ٱنظُرْ",
+    "variantText": "وَلَـٰكِنُ ٱنظُرْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L167-ولكن_انظر-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L167-ولكن_انظر-1-w2",
+        "variantId": "v-L167-ولكن_انظر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضَمُّكَ أُولَى السَّاكِنَيْنِ لِثَالِثٍ يُضَمُّ لُزُومًا كَسْرُهُ فِي نَدٍ حَلَا — D: وَأَوَّلَ السَّاكِنَيْنِ اضْمُمْ فَتًى"
+      }
+    ],
+    "description": "بضم النون وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضَمُّكَ أُولَى السَّاكِنَيْنِ لِثَالِثٍ يُضَمُّ لُزُومًا كَسْرُهُ فِي نَدٍ حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَأَوَّلَ السَّاكِنَيْنِ اضْمُمْ فَتًى"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-دكا-1-w2",
+    "surah": 7,
+    "ayah": 143,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "دَكًّۭا",
+    "variantText": "دَكَّآءَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L167-دكا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L167-دكا-1-w2",
+        "variantId": "v-L167-دكا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَدَكَّاءَ لَا تَنْوِينَ وَامْدُدْهُ هَامِزًا شَفَا"
+      }
+    ],
+    "description": "بفتح الهمزة والمد المتصل بلا تنوين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَدَكَّاءَ لَا تَنْوِينَ وَامْدُدْهُ هَامِزًا شَفَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L167-وانا_اول-1-w2",
+    "surah": 7,
+    "ayah": 143,
+    "startToken": 39,
+    "endToken": 40,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَا۠ أَوَّلُ",
+    "variantText": "وَأَنَآ أَوَّلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L167-وانا_اول-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L167-وانا_اول-1-w2",
+        "variantId": "v-L167-وانا_اول-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 172,
+        "sourceReference": "صفحة المصحف 167 · صفحة المصدر 172",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَدُّ أَنَا فِي الْوَصْلِ مَعْ ضَمِّ هَمْزَةٍ وَفَتْحٍ أَتَى"
+      }
+    ],
+    "description": "بإثبات الألف وصلاً ووقفًا مع المد المنفصل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَدُّ أَنَا فِي الْوَصْلِ مَعْ ضَمِّ هَمْزَةٍ وَفَتْحٍ أَتَى"
+      }
+    ]
+  }
+]
