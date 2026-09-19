@@ -1,0 +1,368 @@
+[
+  {
+    "id": "v-L235-مكانتكم-1-w2",
+    "surah": 11,
+    "ayah": 121,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "مَكَانَتِكُمْ",
+    "variantText": "مَكَانَاتِكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L235-مكانتكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L235-مكانتكم-1-w2",
+        "variantId": "v-L235-مكانتكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَكَانَاتِ مَدَّ النُّونَ فِي الْكُلِّ شُعْبَةٌ"
+      }
+    ],
+    "description": "بالجمع وألف بعد النون",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَكَانَاتِ مَدَّ النُّونَ فِي الْكُلِّ شُعْبَةٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L235-يرجع-1-w2",
+    "surah": 11,
+    "ayah": 123,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يُرْجَعُ",
+    "variantText": "يَرْجِعُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L235-يرجع-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L235-يرجع-1-w2",
+        "variantId": "v-L235-يرجع-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَرْجِعُ فِيهِ الضَّمُّ وَالْفَتْحُ إِذْ عَلَا — D: وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
+      }
+    ],
+    "description": "بفتح الياء وكسر الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَرْجِعُ فِيهِ الضَّمُّ وَالْفَتْحُ إِذْ عَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L235-تعملون-1-w2",
+    "surah": 11,
+    "ayah": 123,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ",
+    "variantText": "يَعْمَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L235-تعملون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L235-تعملون-1-w2",
+        "variantId": "v-L235-تعملون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطَبَ عَمَّا يَعْمَلُونَ هُنَا وَآخِرَ النَّمْلِ عِلْمًا عَمَّ وَارْتَادَ مَنْزِلَا — D: وَمَا يَعْمَلُوا خَاطِبْ مَعَ النَّمْلِ حُفَّلَا"
+      }
+    ],
+    "description": "بالتحتية على الغيبة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطَبَ عَمَّا يَعْمَلُونَ هُنَا وَآخِرَ النَّمْلِ عِلْمًا عَمَّ وَارْتَادَ مَنْزِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَمَا يَعْمَلُوا خَاطِبْ مَعَ النَّمْلِ حُفَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L235-الر-1-w2",
+    "surah": 12,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "الٓر ۚ",
+    "variantText": "الٓر ۚ",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L235-الر-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بالسكت على حروف التهجي",
+    "sources": [
+      {
+        "id": "s-L235-الر-1-w2",
+        "variantId": "v-L235-الر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: حُرُوفَ التَّهَجِّي افْصِلْ بِسَكْتٍ كَمَا أَلِفْ أَلَا"
+      }
+    ],
+    "description": "بالسكت على حروف التهجي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "حُرُوفَ التَّهَجِّي افْصِلْ بِسَكْتٍ كَمَا أَلِفْ أَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L235-قرءانا-1-w2",
+    "surah": 12,
+    "ayah": 2,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "قُرْءَٰنًا",
+    "variantText": "قُرَانًا",
+    "differenceType": "NAQL",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L235-قرءانا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L235-قرءانا-1-w2",
+        "variantId": "v-L235-قرءانا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ],
+    "description": "بلا همز بنقل حركة الهمزة إلى الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L235-القرءان-1-w2",
+    "surah": 12,
+    "ayah": 3,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "ٱلْقُرَانَ",
+    "differenceType": "NAQL",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L235-القرءان-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L235-القرءان-1-w2",
+        "variantId": "v-L235-القرءان-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ],
+    "description": "بلا همز بنقل حركة الهمزة إلى الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L235-يابت-1-w2",
+    "surah": 12,
+    "ayah": 4,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰٓأَبَتِ",
+    "variantText": "يَـٰٓأَبَتَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L235-يابت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L235-يابت-1-w2",
+        "variantId": "v-L235-يابت-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَا أَبَتِ افْتَحْ حَيْثُ جَا لِابْنِ عَامِرٍ — D: وَيَا أَبَتِ افْتَحْ أَدْ"
+      }
+    ],
+    "description": "بفتح التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَا أَبَتِ افْتَحْ حَيْثُ جَا لِابْنِ عَامِرٍ"
+      },
+      {
+        "source": "D",
+        "text": "وَيَا أَبَتِ افْتَحْ أَدْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L235-احد_عشر-1-w2",
+    "surah": 12,
+    "ayah": 4,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "أَحَدَ عَشَرَ",
+    "variantText": "أَحَدَ عْشَرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L235-احد_عشر-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L235-احد_عشر-1-w2",
+        "variantId": "v-L235-احد_عشر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 240,
+        "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَعَيْنَ عَشَرَ أَلَا فَسَكِّنْ جَمِيعًا وَامْدُدِ اثْنَا"
+      }
+    ],
+    "description": "بإسكان العين مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَعَيْنَ عَشَرَ أَلَا فَسَكِّنْ جَمِيعًا وَامْدُدِ اثْنَا"
+      }
+    ]
+  }
+]

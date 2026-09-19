@@ -1,0 +1,306 @@
+[
+  {
+    "id": "v-L239-عليهن-1-w2",
+    "surah": 12,
+    "ayah": 31,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِنَّ ۖ",
+    "variantText": "عَلَيْهُنَّ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L239-عليهن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L239-عليهن-1-w2",
+        "variantId": "v-L239-عليهن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 244,
+        "sourceReference": "صفحة المصحف 239 · صفحة المصدر 244",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L239-اليهن-1-w2",
+    "surah": 12,
+    "ayah": 31,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِنَّ",
+    "variantText": "إِلَيْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L239-اليهن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L239-اليهن-1-w2",
+        "variantId": "v-L239-اليهن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 244,
+        "sourceReference": "صفحة المصحف 239 · صفحة المصدر 244",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L239-اليهن-2-w2",
+    "surah": 12,
+    "ayah": 33,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِنَّ",
+    "variantText": "إِلَيْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L239-اليهن-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L239-اليهن-2-w2",
+        "variantId": "v-L239-اليهن-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 244,
+        "sourceReference": "صفحة المصحف 239 · صفحة المصدر 244",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L239-وقالت_اخرج-1-w2",
+    "surah": 12,
+    "ayah": 31,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَقَالَتِ ٱخْرُجْ",
+    "variantText": "وَقَالَتُ ٱخْرُجْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L239-وقالت_اخرج-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L239-وقالت_اخرج-1-w2",
+        "variantId": "v-L239-وقالت_اخرج-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 244,
+        "sourceReference": "صفحة المصحف 239 · صفحة المصدر 244",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضَمُّكَ أُولَى السَّاكِنَيْنِ لِثَالِثٍ يُضَمُّ لُزُومًا كَسْرُهُ فِي نَدٍ حَلَا — D: وَأَوَّلَ السَّاكِنَيْنِ اضْمُمْ فَتًى"
+      }
+    ],
+    "description": "بضم التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضَمُّكَ أُولَى السَّاكِنَيْنِ لِثَالِثٍ يُضَمُّ لُزُومًا كَسْرُهُ فِي نَدٍ حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَأَوَّلَ السَّاكِنَيْنِ اضْمُمْ فَتًى"
+      }
+    ]
+  },
+  {
+    "id": "v-L239-حاش_لله-1-w2",
+    "surah": 12,
+    "ayah": 31,
+    "startToken": 23,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "حَـٰشَ لِلَّهِ",
+    "variantText": "حَـٰشَا لِلَّهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L239-حاش_لله-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L239-حاش_لله-1-w2",
+        "variantId": "v-L239-حاش_لله-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 244,
+        "sourceReference": "صفحة المصحف 239 · صفحة المصدر 244",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعًا وَصْلُ حَاشَا حَجَّ — D: وَحَاشَا بِحَذْفٍ"
+      }
+    ],
+    "description": "بإثبات الألف وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعًا وَصْلُ حَاشَا حَجَّ"
+      },
+      {
+        "source": "D",
+        "text": "وَحَاشَا بِحَذْفٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L239-رب_السجن-1-w2",
+    "surah": 12,
+    "ayah": 33,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّ ٱلسِّجْنُ",
+    "variantText": "رَبِّ ٱلسَّجْنُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L239-رب_السجن-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L239-رب_السجن-1-w2",
+        "variantId": "v-L239-رب_السجن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 244,
+        "sourceReference": "صفحة المصحف 239 · صفحة المصدر 244",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَافْتَحِ السِّجْنَ أَوْلَا حِمَى"
+      }
+    ],
+    "description": "بفتح السين مصدرًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَافْتَحِ السِّجْنَ أَوْلَا حِمَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L239-ترزقانهي-1-w2",
+    "surah": 12,
+    "ayah": 37,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تُرْزَقَانِهِۦٓ",
+    "variantText": "تُرْزَقَانِهِۦٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01"
+    ],
+    "locusId": "L239-ترزقانهي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L239-ترزقانهي-1-w2",
+        "variantId": "v-L239-ترزقانهي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 244,
+        "sourceReference": "صفحة المصحف 239 · صفحة المصدر 244",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَمِنْ تُرْزَقَانِهِ اقْصُرْ طُلْ"
+      }
+    ],
+    "description": "بقصر هاء الكناية",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَمِنْ تُرْزَقَانِهِ اقْصُرْ طُلْ"
+      }
+    ]
+  }
+]

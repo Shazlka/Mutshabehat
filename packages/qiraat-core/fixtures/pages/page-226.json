@@ -1,0 +1,363 @@
+[
+  {
+    "id": "v-L226-من_كل-1-w2",
+    "surah": 11,
+    "ayah": 40,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مِن كُلٍّۢ",
+    "variantText": "مِن كُلِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L226-من_كل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L226-من_كل-1-w2",
+        "variantId": "v-L226-من_كل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 231,
+        "sourceReference": "صفحة المصحف 226 · صفحة المصدر 231",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ كُلٍّ نَوِّنْ مَعْ قَدَ افْلَحَ عَالِمًا"
+      }
+    ],
+    "description": "بغير تنوين إضافةً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ كُلٍّ نَوِّنْ مَعْ قَدَ افْلَحَ عَالِمًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L226-مجريها-1-w2",
+    "surah": 11,
+    "ayah": 41,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مَجْر۪ىٰهَا",
+    "variantText": "مُجْرَاهَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L226-مجريها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L226-مجريها-1-w2",
+        "variantId": "v-L226-مجريها-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 231,
+        "sourceReference": "صفحة المصحف 226 · صفحة المصدر 231",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: شَذَا عَلَا وَفِي ضَمِّ مَجْرَاهَا سِوَاهُمْ"
+      }
+    ],
+    "description": "بضم الميم مع التقليل لورش، والإمالة لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "شَذَا عَلَا وَفِي ضَمِّ مَجْرَاهَا سِوَاهُمْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L226-وهي-1-w2",
+    "surah": 11,
+    "ayah": 42,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَهِىَ",
+    "variantText": "وَهْيَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L226-وهي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L226-وهي-1-w2",
+        "variantId": "v-L226-وهي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 231,
+        "sourceReference": "صفحة المصحف 226 · صفحة المصدر 231",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L226-يبني_اركب-1-w2",
+    "surah": 11,
+    "ayah": 42,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰبُنَىَّ ٱرْكَب",
+    "variantText": "يَـٰبُنَىِّ ٱرْكَب",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L226-يبني_اركب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L226-يبني_اركب-1-w2",
+        "variantId": "v-L226-يبني_اركب-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 231,
+        "sourceReference": "صفحة المصحف 226 · صفحة المصدر 231",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفَتْحُ يَا بُنَيَّ هُنَا نَصٌّ"
+      }
+    ],
+    "description": "بكسر الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفَتْحُ يَا بُنَيَّ هُنَا نَصٌّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L226-وقيل-1-w2",
+    "surah": 11,
+    "ayah": 44,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L226-وقيل-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام كسر القاف ضمًّا",
+    "sources": [
+      {
+        "id": "s-L226-وقيل-1-w2",
+        "variantId": "v-L226-وقيل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 231,
+        "sourceReference": "صفحة المصحف 226 · صفحة المصدر 231",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ],
+    "description": "بإشمام كسر القاف ضمًّا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L226-وقيل-2-w2",
+    "surah": 11,
+    "ayah": 44,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L226-وقيل-2",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام كسر القاف ضمًّا",
+    "sources": [
+      {
+        "id": "s-L226-وقيل-2-w2",
+        "variantId": "v-L226-وقيل-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 231,
+        "sourceReference": "صفحة المصحف 226 · صفحة المصدر 231",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ],
+    "description": "بإشمام كسر القاف ضمًّا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L226-وغيض-1-w2",
+    "surah": 11,
+    "ayah": 44,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَغِيضَ",
+    "variantText": "وَغِيضَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L226-وغيض-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام كسر الغين ضمًّا",
+    "sources": [
+      {
+        "id": "s-L226-وغيض-1-w2",
+        "variantId": "v-L226-وغيض-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 231,
+        "sourceReference": "صفحة المصحف 226 · صفحة المصدر 231",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ],
+    "description": "بإشمام كسر الغين ضمًّا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+      }
+    ]
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "v-L241-انا_انبيكم-1-w2",
+    "surah": 12,
+    "ayah": 45,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "أَنَا۠ أُنَبِّئُكُم",
+    "variantText": "أَنَا۠ أُنَبِّئُكُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L241-انا_انبيكم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L241-انا_انبيكم-1-w2",
+        "variantId": "v-L241-انا_انبيكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 246,
+        "sourceReference": "صفحة المصحف 241 · صفحة المصدر 246",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَدُّ أَنَا فِي الْوَصْلِ مَعْ ضَمِّ هَمْزَةٍ وَفَتْحٍ أَتَى"
+      }
+    ],
+    "description": "بإثبات الألف وصلاً ووقفًا مع المد المنفصل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَدُّ أَنَا فِي الْوَصْلِ مَعْ ضَمِّ هَمْزَةٍ وَفَتْحٍ أَتَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L241-دابا-1-w2",
+    "surah": 12,
+    "ayah": 47,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "دَأَبًۭا",
+    "variantText": "دَأْبًۭا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L241-دابا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L241-دابا-1-w2",
+        "variantId": "v-L241-دابا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 246,
+        "sourceReference": "صفحة المصحف 241 · صفحة المصدر 246",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: دَأَبًا لِحَفْصِهِمْ فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "دَأَبًا لِحَفْصِهِمْ فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L241-يعصرون-1-w2",
+    "surah": 12,
+    "ayah": 49,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "يَعْصِرُونَ",
+    "variantText": "تَعْصِرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L241-يعصرون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L241-يعصرون-1-w2",
+        "variantId": "v-L241-يعصرون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 246,
+        "sourceReference": "صفحة المصحف 241 · صفحة المصدر 246",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطَبَ يَعْصِرُونَ شَمَرْدَلَا"
+      }
+    ],
+    "description": "بالفوقية على الخطاب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطَبَ يَعْصِرُونَ شَمَرْدَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L241-فسله-1-w2",
+    "surah": 12,
+    "ayah": 50,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "فَسْـَٔلْهُ",
+    "variantText": "فَسَلْهُ",
+    "differenceType": "NAQL",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L241-فسله-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L241-فسله-1-w2",
+        "variantId": "v-L241-فسله-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 246,
+        "sourceReference": "صفحة المصحف 241 · صفحة المصدر 246",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: فَسَلْ حَرِّكُوا بِالنَّقْلِ رَاشِدُهُ دَلَا — D: وَسَلْ مَعْ فَسَلْ فَشَا"
+      }
+    ],
+    "description": "بنقل فتحة الهمزة إلى السين وحذف الهمز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "فَسَلْ حَرِّكُوا بِالنَّقْلِ رَاشِدُهُ دَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَسَلْ مَعْ فَسَلْ فَشَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L241-حاش_لله-1-w2",
+    "surah": 12,
+    "ayah": 51,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "حَـٰشَ لِلَّهِ",
+    "variantText": "حَـٰشَا لِلَّهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L241-حاش_لله-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L241-حاش_لله-1-w2",
+        "variantId": "v-L241-حاش_لله-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 246,
+        "sourceReference": "صفحة المصحف 241 · صفحة المصدر 246",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعًا وَصْلُ حَاشَا حَجَّ — D: وَحَاشَا بِحَذْفٍ"
+      }
+    ],
+    "description": "بإثبات الألف وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعًا وَصْلُ حَاشَا حَجَّ"
+      },
+      {
+        "source": "D",
+        "text": "وَحَاشَا بِحَذْفٍ"
+      }
+    ]
+  }
+]

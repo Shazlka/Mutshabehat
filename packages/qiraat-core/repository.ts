@@ -249,7 +249,7 @@ const PAGE_VARIANT_LOADERS: Record<number, PageVariantsLoader> = {
   222: () => import('./fixtures/pages/page-222.json') as unknown as Promise<PageVariantsModule>,
   223: () => import('./fixtures/pages/page-223.json') as unknown as Promise<PageVariantsModule>,
   224: () => import('./fixtures/pages/page-224.json') as unknown as Promise<PageVariantsModule>,
-  // سورة مريم (19). Pages 225-304 are not imported yet, so the table is deliberately
+  // سورة مريم (19). Pages 245-304 are not imported yet, so the table is deliberately
   // non-contiguous — nothing here assumes a dense page range.
   305: () => import('./fixtures/pages/page-305.json') as unknown as Promise<PageVariantsModule>,
   306: () => import('./fixtures/pages/page-306.json') as unknown as Promise<PageVariantsModule>,
@@ -259,6 +259,26 @@ const PAGE_VARIANT_LOADERS: Record<number, PageVariantsLoader> = {
   310: () => import('./fixtures/pages/page-310.json') as unknown as Promise<PageVariantsModule>,
   311: () => import('./fixtures/pages/page-311.json') as unknown as Promise<PageVariantsModule>,
   312: () => import('./fixtures/pages/page-312.json') as unknown as Promise<PageVariantsModule>,
+  225: () => import('./fixtures/pages/page-225.json') as unknown as Promise<PageVariantsModule>,
+  226: () => import('./fixtures/pages/page-226.json') as unknown as Promise<PageVariantsModule>,
+  227: () => import('./fixtures/pages/page-227.json') as unknown as Promise<PageVariantsModule>,
+  228: () => import('./fixtures/pages/page-228.json') as unknown as Promise<PageVariantsModule>,
+  229: () => import('./fixtures/pages/page-229.json') as unknown as Promise<PageVariantsModule>,
+  230: () => import('./fixtures/pages/page-230.json') as unknown as Promise<PageVariantsModule>,
+  231: () => import('./fixtures/pages/page-231.json') as unknown as Promise<PageVariantsModule>,
+  232: () => import('./fixtures/pages/page-232.json') as unknown as Promise<PageVariantsModule>,
+  233: () => import('./fixtures/pages/page-233.json') as unknown as Promise<PageVariantsModule>,
+  234: () => import('./fixtures/pages/page-234.json') as unknown as Promise<PageVariantsModule>,
+  235: () => import('./fixtures/pages/page-235.json') as unknown as Promise<PageVariantsModule>,
+  236: () => import('./fixtures/pages/page-236.json') as unknown as Promise<PageVariantsModule>,
+  237: () => import('./fixtures/pages/page-237.json') as unknown as Promise<PageVariantsModule>,
+  238: () => import('./fixtures/pages/page-238.json') as unknown as Promise<PageVariantsModule>,
+  239: () => import('./fixtures/pages/page-239.json') as unknown as Promise<PageVariantsModule>,
+  240: () => import('./fixtures/pages/page-240.json') as unknown as Promise<PageVariantsModule>,
+  241: () => import('./fixtures/pages/page-241.json') as unknown as Promise<PageVariantsModule>,
+  242: () => import('./fixtures/pages/page-242.json') as unknown as Promise<PageVariantsModule>,
+  243: () => import('./fixtures/pages/page-243.json') as unknown as Promise<PageVariantsModule>,
+  244: () => import('./fixtures/pages/page-244.json') as unknown as Promise<PageVariantsModule>,
 }
 
 // Page-level rules (عدّ الآي, الإدغام الكبير, أوجه الوصل بين السورتين, …) live in a separate fixture
@@ -497,7 +517,7 @@ const PAGE_RULING_LOADERS: Record<number, PageRulingsLoader> = {
   222: () => import('./fixtures/rulings/page-222.json') as unknown as Promise<PageRulingsModule>,
   223: () => import('./fixtures/rulings/page-223.json') as unknown as Promise<PageRulingsModule>,
   224: () => import('./fixtures/rulings/page-224.json') as unknown as Promise<PageRulingsModule>,
-  // سورة مريم (19). Pages 225-304 are not imported yet, so the table is deliberately
+  // سورة مريم (19). Pages 245-304 are not imported yet, so the table is deliberately
   // non-contiguous — nothing here assumes a dense page range.
   305: () => import('./fixtures/rulings/page-305.json') as unknown as Promise<PageRulingsModule>,
   306: () => import('./fixtures/rulings/page-306.json') as unknown as Promise<PageRulingsModule>,
@@ -507,6 +527,26 @@ const PAGE_RULING_LOADERS: Record<number, PageRulingsLoader> = {
   310: () => import('./fixtures/rulings/page-310.json') as unknown as Promise<PageRulingsModule>,
   311: () => import('./fixtures/rulings/page-311.json') as unknown as Promise<PageRulingsModule>,
   312: () => import('./fixtures/rulings/page-312.json') as unknown as Promise<PageRulingsModule>,
+  225: () => import('./fixtures/rulings/page-225.json') as unknown as Promise<PageRulingsModule>,
+  226: () => import('./fixtures/rulings/page-226.json') as unknown as Promise<PageRulingsModule>,
+  227: () => import('./fixtures/rulings/page-227.json') as unknown as Promise<PageRulingsModule>,
+  228: () => import('./fixtures/rulings/page-228.json') as unknown as Promise<PageRulingsModule>,
+  229: () => import('./fixtures/rulings/page-229.json') as unknown as Promise<PageRulingsModule>,
+  230: () => import('./fixtures/rulings/page-230.json') as unknown as Promise<PageRulingsModule>,
+  231: () => import('./fixtures/rulings/page-231.json') as unknown as Promise<PageRulingsModule>,
+  232: () => import('./fixtures/rulings/page-232.json') as unknown as Promise<PageRulingsModule>,
+  233: () => import('./fixtures/rulings/page-233.json') as unknown as Promise<PageRulingsModule>,
+  234: () => import('./fixtures/rulings/page-234.json') as unknown as Promise<PageRulingsModule>,
+  235: () => import('./fixtures/rulings/page-235.json') as unknown as Promise<PageRulingsModule>,
+  236: () => import('./fixtures/rulings/page-236.json') as unknown as Promise<PageRulingsModule>,
+  237: () => import('./fixtures/rulings/page-237.json') as unknown as Promise<PageRulingsModule>,
+  238: () => import('./fixtures/rulings/page-238.json') as unknown as Promise<PageRulingsModule>,
+  239: () => import('./fixtures/rulings/page-239.json') as unknown as Promise<PageRulingsModule>,
+  240: () => import('./fixtures/rulings/page-240.json') as unknown as Promise<PageRulingsModule>,
+  241: () => import('./fixtures/rulings/page-241.json') as unknown as Promise<PageRulingsModule>,
+  242: () => import('./fixtures/rulings/page-242.json') as unknown as Promise<PageRulingsModule>,
+  243: () => import('./fixtures/rulings/page-243.json') as unknown as Promise<PageRulingsModule>,
+  244: () => import('./fixtures/rulings/page-244.json') as unknown as Promise<PageRulingsModule>,
 }
 
 // In-memory module caches — each dynamic import() is resolved at most once per process lifetime.

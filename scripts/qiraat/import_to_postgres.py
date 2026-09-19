@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Import all verified Qiraat fixtures (pages 1-184) into PostgreSQL.
+"""Import every authored Qiraat fixture into PostgreSQL.
 
 Connects to the self-hosted PostgreSQL instance, disables triggers during bulk insert,
 populates qiraat_pages, qiraat_loci, qiraat_entries, qiraat_variant_details,

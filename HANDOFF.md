@@ -5,7 +5,7 @@ locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + ma
 
 **Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/17
 — pages 1–224 plus all of سورة مريم (pages 305–312) are imported and live
-(1,232 variants, 5,544 أصول rulings across 232 pages),
+(1,330 variants, 6,137 أصول rulings across 252 pages),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
@@ -89,13 +89,13 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 ### 5.1 Qiraat — the live thread
 
-- **Visual review of the imported pages (1–224 and 305–312) is the user's next activity.** Open the reader in مقارنة القراءات,
+- **Visual review of the imported pages (1–244 and 305–312) is the user's next activity.** Open the reader in مقارنة القراءات,
   then burger/sidebar → «مراجعة المواضع المستوردة». Every imported locus gets a ring (amber unchecked,
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
-- **372 pages left to import** (225–304 and 313–604). The page table is deliberately **not**
-  contiguous now — 224 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
+- **352 pages left to import** (245–304 and 313–604). The page table is deliberately **not**
+  contiguous now — 244 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
   non-negotiable rules, the six generator invariants, the four anchor shapes that cost 23 rejections
   in the 22–41 batch and the classification rules for an ayah-by-ayah source are in
   `PROJECT_MASTER.md` §12 (§12.4b for the anchor shapes, §12.5 for سورة مريم). Do not improvise around it.

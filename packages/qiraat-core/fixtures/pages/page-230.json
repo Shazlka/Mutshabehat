@@ -1,0 +1,233 @@
+[
+  {
+    "id": "v-L230-ءاتيهم-1-w2",
+    "surah": 11,
+    "ayah": 76,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "ءَاتِيهِمْ",
+    "variantText": "ءَاتِيهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L230-ءاتيهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L230-ءاتيهم-1-w2",
+        "variantId": "v-L230-ءاتيهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 235,
+        "sourceReference": "صفحة المصحف 230 · صفحة المصدر 235",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L230-رسلنا-1-w2",
+    "surah": 11,
+    "ayah": 77,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُنَا",
+    "variantText": "رُسْلُنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L230-رسلنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L230-رسلنا-1-w2",
+        "variantId": "v-L230-رسلنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 235,
+        "sourceReference": "صفحة المصحف 230 · صفحة المصدر 235",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي رُسُلُنَا مَعْ رُسُلُكُمْ ثُمَّ رُسُلُهُمْ وَفِي سُبُلَنَا فِي الضَّمِّ الإِسْكَانُ حُصِّلَا — D: أَثْقِلَا … رُسُلَنَا خُشْبُ سُبُلَنَا حِمَى"
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي رُسُلُنَا مَعْ رُسُلُكُمْ ثُمَّ رُسُلُهُمْ وَفِي سُبُلَنَا فِي الضَّمِّ الإِسْكَانُ حُصِّلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَثْقِلَا … رُسُلَنَا خُشْبُ سُبُلَنَا حِمَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L230-سيء-1-w2",
+    "surah": 11,
+    "ayah": 77,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "سِىٓءَ",
+    "variantText": "سِىٓءَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L230-سيء-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام كسر السين ضمًّا",
+    "sources": [
+      {
+        "id": "s-L230-سيء-1-w2",
+        "variantId": "v-L230-سيء-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 235,
+        "sourceReference": "صفحة المصحف 230 · صفحة المصدر 235",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا … وَسِيءَ وَسِيئَتْ كَانَ رَاوِيهِ أَنْبَلَا — D: وَاشْمِمَا طِلَا بِقِيلَ وَمَا مَعْهُ"
+      }
+    ],
+    "description": "بإشمام كسر السين ضمًّا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا … وَسِيءَ وَسِيئَتْ كَانَ رَاوِيهِ أَنْبَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْمِمَا طِلَا بِقِيلَ وَمَا مَعْهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L230-فاسر-1-w2",
+    "surah": 11,
+    "ayah": 81,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فَأَسْرِ",
+    "variantText": "فَٱسْرِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L230-فاسر-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L230-فاسر-1-w2",
+        "variantId": "v-L230-فاسر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 235,
+        "sourceReference": "صفحة المصحف 230 · صفحة المصدر 235",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفَاسْرِ أَنِ اسْرِ الْوَصْلُ أَصْلٌ دَنَا"
+      }
+    ],
+    "description": "بهمزة وصل مكسورة ابتداءً من سرى",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفَاسْرِ أَنِ اسْرِ الْوَصْلُ أَصْلٌ دَنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L230-الا_امراتك-1-w2",
+    "surah": 11,
+    "ayah": 81,
+    "startToken": 18,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "إِلَّا ٱمْرَأَتَكَ ۖ",
+    "variantText": "إِلَّا ٱمْرَأَتُكَ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L230-الا_امراتك-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L230-الا_امراتك-1-w2",
+        "variantId": "v-L230-الا_امراتك-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 235,
+        "sourceReference": "صفحة المصحف 230 · صفحة المصدر 235",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَهٰهُنَا حَقٌّ إِلَّا امْرَأَتَكَ ارْفَعْ وَأَبْدِلَا — D: وَنَصْبُ حَافِظٍ امْرَأَتُكَ"
+      }
+    ],
+    "description": "برفع التاء بدلاً من أحد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَهٰهُنَا حَقٌّ إِلَّا امْرَأَتَكَ ارْفَعْ وَأَبْدِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَنَصْبُ حَافِظٍ امْرَأَتُكَ"
+      }
+    ]
+  }
+]
