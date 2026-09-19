@@ -7630,3 +7630,225 @@ RULINGS[331] = [
     ('IDGHAM_KABIR', 'قال رب', susi('إدغام كبير'), dict(condition='على قراءة الماضي')),
 ]
 
+# ---------------------------------------------------------------------------
+# سورة الحج (22) — Mushaf pages 332-341, from the supplied ayah-by-ayah table.
+# ---------------------------------------------------------------------------
+
+def hajj_imalah_taqlil():
+    """ذوات الياء التي أمالها حمزة والكسائي وخلف العاشر وقللها ورش وأبو عمرو."""
+    return [('حمزة', 'إمالة'), ('الكسائي', 'إمالة'), (K10, 'إمالة'),
+            (W, 'تقليل'), ('أبو عمرو', 'تقليل')]
+
+# ── Page 332 (Al-Hajj 1-5) ─────────────────────────────────────────────────────
+RULINGS[332] = [
+    ('MADD_LIN', 'شىء', warsh('مد اللين المهموز'), dict(ayah=1)),
+    ('WAQF_HAMZA', 'شىء', [('حمزة', 'النقل والإدغام')], dict(ayah=1)),
+    ('SAKT', 'شىء', sakt_idris(), dict(ayah=1, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'وترى', imalah4(), dict(ayah=2, condition='وقفًا', alternate=[W])),
+    ('IMALAH_TAQLIL', 'سكـٰرى', imalah4(), dict(ayah=2)),
+    ('IMALAH_TAQLIL', 'بسكـٰرى', imalah4(), dict(ayah=2)),
+    ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=3)),
+    ('TARQIQ_RA', 'بغير', warsh('ترقيق الراء'), dict(ayah=3)),
+    ('IMALAH_TAQLIL', 'تولىٰه', imalah3(), dict(ayah=4, alternate=[W])),
+    ('SILAT_HA', 'عليه', [('يعقوب', 'ضم الهاء وصلاً ووقفاً')], dict(ayah=4, text='رويس وروح بضم الهاء وصلاً ووقفاً (عَلَيْهُ)، والباقون بالكسر.')),
+    ('TAGHYIR_HAMZ', 'الارحام', warsh('النقل'), dict(ayah=5)),
+    ('SAKT', 'الارحام', sakt_idris(), dict(ayah=5, alternate=[KHD, 'إدريس'])),
+    ('HAMZATAN_KALIMATAYN', 'نشاء الى', [('قالون', 'تسهيل الأولى'), ('البزي', 'تسهيل الأولى'), ('أبو عمرو', 'تسهيل الأولى'), ('أبو جعفر', 'تسهيل الأولى'), (W, 'تسهيل الثانية أو إبدالها حرف مد'), ('قنبل', 'تسهيل الثانية أو إبدالها حرف مد')], dict(ayah=5)),
+    ('IMALAH_TAQLIL', 'مسمى', imalah3(), dict(ayah=5, alternate=[W])),
+    ('IMALAH_TAQLIL', 'يتوفى', hajj_imalah_taqlil(), dict(ayah=5, alternate=[W])),
+    ('MADD_LIN', 'شيـٔا', warsh('مد اللين المهموز'), dict(ayah=5)),
+    ('WAQF_HAMZA', 'شيـٔا', [('حمزة', 'النقل والإدغام')], dict(ayah=5)),
+    ('SAKT', 'شيـٔا', sakt_idris(), dict(ayah=5, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'وترى', imalah4(), dict(ayah=5, condition='وقفًا', alternate=[W])),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=5)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=5, alternate=[KHD, 'إدريس'])),
+    ('WAQF_HAMZA', 'الماء', [('حمزة', 'خمسة القياس')], dict(ayah=5)),
+]
+
+# ── Page 333 (Al-Hajj 6-15) ────────────────────────────────────────────────────
+RULINGS[333] = [
+    ('TAGHYIR_HAMZ', 'الموتى', warsh('النقل'), dict(ayah=6)),
+    ('SAKT', 'الموتى', sakt_idris(), dict(ayah=6, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'الموتى', hajj_imalah_taqlil(), dict(ayah=6, alternate=[W])),
+    ('MADD_LIN', 'شىء', warsh('مد اللين المهموز'), dict(ayah=6)),
+    ('WAQF_HAMZA', 'شىء', [('حمزة', 'النقل والإدغام')], dict(ayah=6)),
+    ('SAKT', 'شىء', sakt_idris(), dict(ayah=6, alternate=[KHD, 'إدريس'])),
+    ('MADD_BADAL', 'ءاتية', warsh('مد البدل'), dict(ayah=7)),
+    ('TAGHYIR_HAMZ', 'القبور', warsh('النقل'), dict(ayah=7)),
+    ('SAKT', 'القبور', sakt_idris(), dict(ayah=7, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=8)),
+    ('TARQIQ_RA', 'بغير', warsh('ترقيق الراء'), dict(ayah=8)),
+    ('TARQIQ_RA', 'الحريق', warsh('ترقيق الراء'), dict(ayah=9)),
+    ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=11)),
+    ('IMALAH_TAQLIL', 'الدنيا', imalah4(), dict(ayah=11, alternate=[W])),
+    ('MADD_BADAL', 'والـٔاخرة', warsh('مد البدل'), dict(ayah=11)),
+    ('TARQIQ_RA', 'والـٔاخرة', warsh('ترقيق الراء'), dict(ayah=11)),
+    ('TAGHYIR_HAMZ', 'والـٔاخرة', warsh('النقل'), dict(ayah=11)),
+    ('SAKT', 'والـٔاخرة', sakt_idris(), dict(ayah=11, alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'الخسران', warsh('ترقيق الراء'), dict(ayah=11)),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=14)),
+    ('TAGHYIR_HAMZ', 'الانهـٰر', warsh('النقل'), dict(ayah=14)),
+    ('SAKT', 'الانهـٰر', sakt_idris(), dict(ayah=14, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'الدنيا', imalah4(), dict(ayah=15, alternate=[W])),
+    ('MADD_BADAL', 'والـٔاخرة', warsh('مد البدل'), dict(ayah=15)),
+    ('TARQIQ_RA', 'والـٔاخرة', warsh('ترقيق الراء'), dict(ayah=15)),
+    ('TAGHYIR_HAMZ', 'والـٔاخرة', warsh('النقل'), dict(ayah=15)),
+    ('SAKT', 'والـٔاخرة', sakt_idris(), dict(ayah=15, alternate=[KHD, 'إدريس'])),
+    ('WAQF_HAMZA', 'السماء', [('حمزة', 'خمسة القياس')], dict(ayah=15)),
+]
+
+# ── Page 334 (Al-Hajj 16-23) ───────────────────────────────────────────────────
+RULINGS[334] = [
+    ('MADD_BADAL', 'ءايـٰت', warsh('مد البدل'), dict(ayah=16)),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=17)),
+    ('IMALAH_TAQLIL', 'والنصـٰرى', imalah4(), dict(ayah=17)),
+    ('MADD_LIN', 'شىء', warsh('مد اللين المهموز'), dict(ayah=17)),
+    ('WAQF_HAMZA', 'شىء', [('حمزة', 'النقل والإدغام')], dict(ayah=17)),
+    ('SAKT', 'شىء', sakt_idris(), dict(ayah=17, alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=18)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=18, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=18)),
+    ('WAQF_HAMZA', 'يشاء', [('حمزة', 'خمسة القياس')], dict(ayah=18)),
+    ('IMALAH_TAQLIL', 'نار', imalah_nar(), dict(ayah=19)),
+    ('TARQIQ_RA', 'الحريق', warsh('ترقيق الراء'), dict(ayah=22)),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=23)),
+    ('TAGHYIR_HAMZ', 'الانهـٰر', warsh('النقل'), dict(ayah=23)),
+    ('SAKT', 'الانهـٰر', sakt_idris(), dict(ayah=23, alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'اساور', warsh('ترقيق الراء'), dict(ayah=23)),
+    ('TAGHYIR_HAMZ', 'ولؤلؤا', [(SUSI, 'إبدال الهمزة الأولى ياءً'), (AJ, 'إبدال الهمزة الأولى ياءً')], dict(ayah=23, note='أبدلها السوسي وأبو جعفر ياءً ساكنة، وحمزة وقفًا، وورش يحققها لأنها عين الفعل')),
+    ('TARQIQ_RA', 'حرير', warsh('ترقيق الراء'), dict(ayah=23)),
+]
+
+# ── Page 335 (Al-Hajj 24-30) ───────────────────────────────────────────────────
+RULINGS[335] = [
+    ('IMALAH_TAQLIL', 'صراط', [('قنبل', 'قراءة بالسين'), ('رويس', 'قراءة بالسين'), (KH, 'إشمام الصاد زايا')], dict(ayah=24)),
+    ('IMALAH_TAQLIL', 'للناس', duri_amr(), dict(ayah=25)),
+    ('TAGHYIR_HAMZ', 'بالحاد', warsh('النقل'), dict(ayah=25)),
+    ('SAKT', 'بالحاد', sakt_idris(), dict(ayah=25, alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'عذاب اليم', warsh('النقل'), dict(ayah=25)),
+    ('SAKT', 'عذاب اليم', sakt_idris(), dict(ayah=25, alternate=[KHD, 'إدريس'])),
+    ('YAAT_ZAWAID', 'والباد', [('نافع', 'إثبات الياء وصلاً'), ('أبو عمرو', 'إثبات الياء وصلاً'), ('أبو جعفر', 'إثبات الياء وصلاً'), ('ابن كثير', 'إثبات الياء وصلاً ووقفاً'), ('يعقوب', 'إثبات الياء وصلاً ووقفاً')], dict(ayah=25, text='إثبات الياء وصلاً لنافع وأبي عمرو وأبي جعفر، وفي الحالين لابن كثير ويعقوب، وحذفها للباقين.')),
+    ('YAAT_IDAFA', 'بيتي للطـٓئفين', [('نافع', 'فتح الياء وصلاً'), ('هشام', 'فتح الياء وصلاً'), ('حفص', 'فتح الياء وصلاً')], dict(ayah=26, text='فتح ياء الإضافة وصلاً لنافع وهشام وحفص، وإسكانها للباقين.')),
+    ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=27)),
+    ('TAGHYIR_HAMZ', 'ياتوك', hamz3(), dict(ayah=27)),
+    ('TAGHYIR_HAMZ', 'ياتين', hamz3(), dict(ayah=27)),
+    ('TAGHYIR_HAMZ', 'الانعـٰم', warsh('النقل'), dict(ayah=28)),
+    ('SAKT', 'الانعـٰم', sakt_idris(), dict(ayah=28, alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'البائس', [('حمزة', 'تسهيل الهمزة بالروم')], dict(ayah=28, condition='وقفًا')),
+    ('TARQIQ_RA', 'الفقير', warsh('ترقيق الراء'), dict(ayah=28)),
+    ('TAGHYIR_HAMZ', 'الانعـٰم', warsh('النقل'), dict(ayah=30)),
+    ('SAKT', 'الانعـٰم', sakt_idris(), dict(ayah=30, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'يتلى', hajj_imalah_taqlil(), dict(ayah=30, alternate=[W])),
+    ('TAGHYIR_HAMZ', 'الاوثـٰن', warsh('النقل'), dict(ayah=30)),
+    ('SAKT', 'الاوثـٰن', sakt_idris(), dict(ayah=30, alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'الزور', warsh('ترقيق الراء'), dict(ayah=30)),
+]
+
+# ── Page 336 (Al-Hajj 31-38) ───────────────────────────────────────────────────
+RULINGS[336] = [
+    ('WAQF_HAMZA', 'السماء', [('حمزة', 'خمسة القياس')], dict(ayah=31)),
+    ('TAGHYIR_HAMZ', 'الريح', warsh('النقل'), dict(ayah=31)),
+    ('SAKT', 'الريح', sakt_idris(), dict(ayah=31, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'تقوى', imalah4(), dict(ayah=32, alternate=[W])),
+    ('IMALAH_TAQLIL', 'مسمى', imalah3(), dict(ayah=33, alternate=[W])),
+    ('TARQIQ_RA', 'وبشر', warsh('ترقيق الراء'), dict(ayah=34)),
+    ('TAGHYIR_HAMZ', 'الانعـٰم', warsh('النقل'), dict(ayah=34)),
+    ('SAKT', 'الانعـٰم', sakt_idris(), dict(ayah=34, alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'خير', warsh('ترقيق الراء'), dict(ayah=36)),
+    ('IMALAH_TAQLIL', 'التقوى', imalah4(), dict(ayah=37, alternate=[W])),
+    ('IMALAH_TAQLIL', 'هدىكم', imalah3(), dict(ayah=37, alternate=[W])),
+    ('TARQIQ_RA', 'وبشر', warsh('ترقيق الراء'), dict(ayah=37)),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=38)),
+]
+
+# ── Page 337 (Al-Hajj 39-46) ───────────────────────────────────────────────────
+RULINGS[337] = [
+    ('TARQIQ_RA', 'لقدير', warsh('ترقيق الراء'), dict(ayah=39)),
+    ('TARQIQ_RA', 'ديـٰرهم', warsh('ترقيق الراء'), dict(ayah=40)),
+    ('IMALAH_TAQLIL', 'ديـٰرهم', imalah_nar(), dict(ayah=40)),
+    ('TARQIQ_RA', 'بغير', warsh('ترقيق الراء'), dict(ayah=40)),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=41)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=41, alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'الامور', warsh('النقل'), dict(ayah=41)),
+    ('SAKT', 'الامور', sakt_idris(), dict(ayah=41, alternate=[KHD, 'إدريس'])),
+    ('YAAT_ZAWAID', 'نكير', [('أبو عمرو', 'إثبات الياء وصلاً'), ('يعقوب', 'إثبات الياء وصلاً ووقفاً'), (W, 'إثبات الياء وصلاً')], dict(ayah=44, alternate=[W], text='إثبات الياء وصلاً لأبي عمرو وورش بخلفه، وفي الحالين ليعقوب، وحذفها للباقين.')),
+    ('TAGHYIR_HAMZ', 'وبئر', hamz3(), dict(ayah=45)),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=46)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=46, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'تعمى', hajj_imalah_taqlil(), dict(ayah=46, occurrence=1, alternate=[W])),
+    ('TAGHYIR_HAMZ', 'الابصـٰر', warsh('النقل'), dict(ayah=46)),
+    ('SAKT', 'الابصـٰر', sakt_idris(), dict(ayah=46, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'تعمى', hajj_imalah_taqlil(), dict(ayah=46, occurrence=2, alternate=[W])),
+]
+
+# ── Page 338 (Al-Hajj 47-55) ───────────────────────────────────────────────────
+RULINGS[338] = [
+    ('TARQIQ_RA', 'نذير', warsh('ترقيق الراء'), dict(ayah=49)),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=50)),
+    ('TARQIQ_RA', 'كريم', warsh('ترقيق الراء'), dict(ayah=50)),
+    ('IMALAH_TAQLIL', 'تمنى', hajj_imalah_taqlil(), dict(ayah=52, alternate=[W])),
+    ('IMALAH_TAQLIL', 'القى', hajj_imalah_taqlil(), dict(ayah=52, alternate=[W])),
+    ('MADD_BADAL', 'ءايـٰتهۦ', warsh('مد البدل'), dict(ayah=52)),
+    ('MADD_BADAL', 'اوتوا', warsh('مد البدل'), dict(ayah=54)),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=54)),
+    ('YAAT_ZAWAID', 'لهاد الذين', [('رويس', 'إثبات الياء وصلاً ووقفاً'), ('روح', 'إثبات الياء وقفاً')], dict(ayah=54, alternate=['رويس'], text='إثبات الياء مفتوحة وصلاً لرويس بخلف عنه، وإثباتها ساكنة وقفاً ليعقوب بكماله، وحذفها وصلاً للباقين.')),
+    ('IMALAH_TAQLIL', 'صراط', [('قنبل', 'قراءة بالسين'), ('رويس', 'قراءة بالسين'), (KH, 'إشمام الصاد زايا')], dict(ayah=54)),
+    ('TAGHYIR_HAMZ', 'تاتيهم', hamz3(), dict(ayah=55)),
+    ('TAGHYIR_HAMZ', 'ياتيهم', hamz3(), dict(ayah=55)),
+]
+
+# ── Page 339 (Al-Hajj 56-64) ───────────────────────────────────────────────────
+RULINGS[339] = [
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=56)),
+    ('MADD_BADAL', 'باياتنا', warsh('مد البدل'), dict(ayah=57)),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=63)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=63, alternate=[KHD, 'إدريس'])),
+    ('WAQF_HAMZA', 'السماء', [('حمزة', 'خمسة القياس')], dict(ayah=63)),
+    ('WAQF_HAMZA', 'الماء', [('حمزة', 'خمسة القياس')], dict(ayah=63)),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=64)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=64, alternate=[KHD, 'إدريس'])),
+]
+
+# ── Page 340 (Al-Hajj 65-72) ───────────────────────────────────────────────────
+RULINGS[340] = [
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=65, occurrence=1)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=65, occurrence=1, alternate=[KHD, 'إدريس'])),
+    ('WAQF_HAMZA', 'السماء', [('حمزة', 'خمسة القياس')], dict(ayah=65)),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=65, occurrence=2)),
+    ('SAKT', 'الارض', sakt_idris(), dict(ayah=65, occurrence=2, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'بالناس', duri_amr(), dict(ayah=65)),
+    ('MADD_BADAL', 'لرءوف', warsh('مد البدل'), dict(ayah=65, condition='على قراءة إثبات الواو')),
+    ('SILAT_HA', 'فيه تختلفون', ibnkathir(), dict(ayah=69)),
+    ('WAQF_HAMZA', 'السماء', [('حمزة', 'خمسة القياس')], dict(ayah=70)),
+    ('TAGHYIR_HAMZ', 'والارض', warsh('النقل'), dict(ayah=70)),
+    ('SAKT', 'والارض', sakt_idris(), dict(ayah=70, alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'يسير', warsh('ترقيق الراء'), dict(ayah=70)),
+    ('TARQIQ_RA', 'نصير', warsh('ترقيق الراء'), dict(ayah=71)),
+    ('IMALAH_TAQLIL', 'تتلى', hajj_imalah_taqlil(), dict(ayah=72, alternate=[W])),
+    ('MADD_BADAL', 'ءايـٰتنا', warsh('مد البدل'), dict(ayah=72, all_occurrences=True)),
+    ('HAMZATAN_KALIMA', 'افانبئكم', [('قالون', 'تسهيل الهمزة الثانية مع الإدخال'), ('أبو عمرو', 'تسهيل الهمزة الثانية مع الإدخال'), ('أبو جعفر', 'تسهيل الهمزة الثانية مع الإدخال'), ('البزي', 'تسهيل الهمزة الثانية'), ('قنبل', 'تسهيل الهمزة الثانية'), ('رويس', 'تسهيل الهمزة الثانية')], dict(ayah=72)),
+    ('TAGHYIR_HAMZ', 'وبئس', hamz3(), dict(ayah=72)),
+    ('TARQIQ_RA', 'المصير', warsh('ترقيق الراء'), dict(ayah=72)),
+]
+
+# ── Page 341 (Al-Hajj 73-78) ───────────────────────────────────────────────────
+RULINGS[341] = [
+    ('MADD_LIN', 'شيـٔا', warsh('مد اللين المهموز'), dict(ayah=73)),
+    ('WAQF_HAMZA', 'شيـٔا', [('حمزة', 'النقل والإدغام')], dict(ayah=73)),
+    ('SAKT', 'شيـٔا', sakt_idris(), dict(ayah=73, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=75)),
+    ('TARQIQ_RA', 'بصير', warsh('ترقيق الراء'), dict(ayah=75)),
+    ('TAGHYIR_HAMZ', 'الامور', warsh('النقل'), dict(ayah=76)),
+    ('SAKT', 'الامور', sakt_idris(), dict(ayah=76, alternate=[KHD, 'إدريس'])),
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=77)),
+    ('TARQIQ_RA', 'الخير', warsh('ترقيق الراء'), dict(ayah=77)),
+    ('IMALAH_TAQLIL', 'اجتبىٰكم', hajj_imalah_taqlil(), dict(ayah=78, alternate=[W])),
+    ('TAGHLIZ_LAM', 'الصلوة', warsh('تغليظ اللام'), dict(ayah=78)),
+    ('MADD_BADAL', 'وءاتوا', warsh('مد البدل'), dict(ayah=78)),
+    ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=78)),
+    ('IMALAH_TAQLIL', 'مولىٰكم', hajj_imalah_taqlil(), dict(ayah=78, alternate=[W])),
+    ('IMALAH_TAQLIL', 'المولى', imalah4(), dict(ayah=78)),
+    ('TARQIQ_RA', 'النصير', warsh('ترقيق الراء'), dict(ayah=78)),
+]
+
+

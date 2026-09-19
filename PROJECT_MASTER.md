@@ -532,6 +532,27 @@ Source cautions & slips corrected during ingestion:
 
 The combined fixture state after this batch is **1,427 variants and 6,616 rulings across 271 active pages** (1–244 and 305–331). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, and Al-Anbiya are fixture-only until a database population is explicitly requested.
 
+**Surah Al-Hajj (22), Mushaf pages 332–341.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 22:1–78), not from the PDF: **37 variant records and 173 أصول rulings**.
+
+Source cautions, swaps & slips corrected during ingestion:
+- 22:62 and 22:73 (`يَدْعُونَ` vs `تَدْعُونَ`): The raw source accidentally inverted the Farsh rows. In 22:62 (page 339), Hafs baseline is `يَدْعُونَ` (الغيب, read by Abu Amr, Hafs, Hamza, Kisai, Khalaf 10); variant is `تَدْعُونَ` (الخطاب, read by Nafi, Ibn Kathir, Ibn Amir, Shubah, Abu Ja'far, Ya'qub). In 22:73 (page 341), Hafs baseline is `تَدْعُونَ` (الخطاب, read by Nafi, Asim, Abu Ja'far); variant is `يَدْعُونَ` (الغيب, read by Ibn Kathir, Abu Amr, Ibn Amir, Hamza, Kisai, Ya'qub, Khalaf 10). Both loci partition 20 Riwayat cleanly.
+- Strict majroor condition for Duri an Abi Amr imalah in `ٱلنَّاسِ`: Enforced strictly on majroor instances (22:3, 8, 11, 18, 25, 27, 65, 75, 78); excluded on marfoo'/mansoob instances (22:1, 2, 5, 40, 49, 73).
+- 22:39 ﴿لَقَدِيرٌ﴾ (page 337): Clean 3-way partition for rulings across Warsh, Hamza, and Khalaf 10.
+- Normalizations aligned with §12.4b & token queries:
+  - 22:4 ﴿فَأَنَّهُۥ﴾ (`'فانهۥ'`).
+  - 22:25 ﴿لِلنَّاسِ﴾ (`'للناس'`), 22:26 ﴿بَيْتِىَ لِلطَّآئِفِينَ﴾ (`'بيتي للطـٓئفين'`).
+  - 22:30 ﴿ٱلْأَوْثَـٰنِ﴾ (`'الاوثـٰن'`) and ﴿يُتْلَىٰ﴾ (`'يتلى'`).
+  - 22:32 ﴿تَقْوَى﴾ (`'تقوى'`), 22:34 ﴿وَبَشِّرِ﴾ (`'وبشر'`).
+  - 22:37 ﴿ٱلتَّقْوَىٰ﴾ (`'التقوى'`) and ﴿هَدَىٰكُمْ﴾ (`'هدىكم'`).
+  - 22:46 ﴿تَعْمَى﴾ (`'تعمى'`, occurrences 1 and 2).
+  - 22:52 ﴿ءَايَـٰتِهِۦ﴾ (`'ءايـٰتهۦ'`), 22:54 ﴿أُوتُوا۟﴾ (`'اوتوا'`).
+  - 22:55 ﴿تَأْتِيَهُمُ﴾ / ﴿يَأْتِيَهُمْ﴾ (`'تاتيهم'` / `'ياتيهم'`).
+  - 22:57 ﴿بِـَٔايَـٰتِنَا﴾ (`'باياتنا'`), 22:64 ﴿فِى ٱلْأَرْضِ﴾ (`'الارض'`).
+  - 22:65 ﴿بِٱلنَّاسِ﴾ (`'بالناس'`).
+  - 22:72 ﴿ءَايَـٰتُنَا﴾ / ﴿ءَايَـٰتِنَا﴾ (`all_occurrences=True` on `'ءايـٰتنا'`).
+
+The combined fixture state after this batch is **1,464 variants and 6,789 rulings across 281 active pages** (1–244 and 305–341). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, and Al-Hajj are fixture-only until a database population is explicitly requested.
+
 **Pages 42–61** (the Juz' 3 batch, Al-Baqarah 253 to Ali 'Imran 91). 52 new variant loci (+121 variants, 413 total) and +552 أصول rulings (1,954 total) across 81 active pages. Pages 1–61 (Juz' 1, 2, and 3) are now fully contiguous.
 - Corrected source slips & query alignments:
   - Page 53: source cited ﴿نَفْسَهُۥ وَيُحَذِّرُكُمُ﴾; actual verse 3:28 rasm is ﴿نَفْسَهُۥ ۗ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ﴾ (`'نفسهۥ والى'`).

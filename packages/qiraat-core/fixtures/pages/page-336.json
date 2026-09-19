@@ -1,0 +1,98 @@
+[
+  {
+    "id": "v-L336-منسكا-1-w2",
+    "surah": 22,
+    "ayah": 34,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مَنسَكًۭا",
+    "variantText": "مَنسِكًۭا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L336-منسكا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L336-منسكا-1-w2",
+        "variantId": "v-L336-منسكا-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي مَنْسَكًا كَسْرُ السِّينِ شَفَا — D: وَفِي مَنْسَكٍ كَأَصْلِهِ"
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مَنْسَكًا كَسْرُ السِّينِ شَفَا"
+      },
+      {
+        "source": "D",
+        "text": "وَفِي مَنْسَكٍ كَأَصْلِهِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L336-يدافع-1-w2",
+    "surah": 22,
+    "ayah": 38,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُدَٰفِعُ",
+    "variantText": "يَدْفَعُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L336-يدافع-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L336-يدافع-1-w2",
+        "variantId": "v-L336-يدافع-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَدْفَعُ فِي الْحَجِّ حَقٌّ — D: وَيَدْفَعُ كَأَصْلِهِ"
+      }
+    ],
+    "description": "بفتح الياء وسكون الدال وفتح الفاء بغير ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَدْفَعُ فِي الْحَجِّ حَقٌّ"
+      },
+      {
+        "source": "D",
+        "text": "وَيَدْفَعُ كَأَصْلِهِ"
+      }
+    ]
+  }
+]

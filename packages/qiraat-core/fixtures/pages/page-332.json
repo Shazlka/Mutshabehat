@@ -1,0 +1,135 @@
+[
+  {
+    "id": "v-L332-سكاري-1-w2",
+    "surah": 22,
+    "ayah": 2,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "سُكَـٰرَىٰ",
+    "variantText": "سَكْرَىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L332-سكاري-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L332-سكاري-1-w2",
+        "variantId": "v-L332-سكاري-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَسَكْرَى مَعًا فِي سَكْرَةٍ شَفْعُ صُحْبَةٍ"
+      }
+    ],
+    "description": "بفتح السين وسكون الكاف وحذف الألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَكْرَى مَعًا فِي سَكْرَةٍ شَفْعُ صُحْبَةٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L332-بسكاري-1-w2",
+    "surah": 22,
+    "ayah": 2,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "بِسُكَـٰرَىٰ",
+    "variantText": "بِسَكْرَىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L332-بسكاري-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L332-بسكاري-1-w2",
+        "variantId": "v-L332-بسكاري-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَسَكْرَى مَعًا فِي سَكْرَةٍ شَفْعُ صُحْبَةٍ"
+      }
+    ],
+    "description": "بفتح السين وسكون الكاف وحذف الألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَكْرَى مَعًا فِي سَكْرَةٍ شَفْعُ صُحْبَةٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L332-فانهو-1-w2",
+    "surah": 22,
+    "ayah": 4,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "فَأَنَّهُۥ",
+    "variantText": "فَإِنَّهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L332-فانهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L332-فانهو-1-w2",
+        "variantId": "v-L332-فانهو-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي فَأَنَّهُ اكْسِرْ حَقُّهُ — D: وَفَإِنَّهُ اكْسِرْ حُزْ"
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي فَأَنَّهُ اكْسِرْ حَقُّهُ"
+      },
+      {
+        "source": "D",
+        "text": "وَفَإِنَّهُ اكْسِرْ حُزْ"
+      }
+    ]
+  }
+]
