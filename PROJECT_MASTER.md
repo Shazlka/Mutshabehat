@@ -485,6 +485,31 @@ Still to check on the paper original: 19:1's «السكت على الحروف ا
 العام», and the two شواهد the source prints in garbled form (19:23 ﴿نَسْيًا﴾, 19:42 ﴿يَا أَبَتِ﴾ —
 transcribed as given; they are citations, not attributions).
 
+**Surah Taha (20), Mushaf pages 312-321.** Imported from the same kind of user-supplied
+ayah-by-ayah table as Maryam, not from the PDF: **62 variant records and 322 أصول rulings**. Page
+312 is a real transition page (Maryam 96-98 + Taha 1-12); its source metadata therefore names both
+tables, while every generated record remains anchored to its actual surah/ayah/token. The batch
+uses the Maryam classification rules above unchanged: universal tajwid and ordinary madd amounts,
+ميم الجمع, agreed صلة/وقف, and statements that explicitly say «جميع القراء» are not imported;
+فرش الكلمات become variants, while إمالة/تقليل، ياءات، صلة، إدغام، نقل، سكت، and وقف become rulings.
+
+Source cautions to verify against the paper original before promoting anything above `REVIEWED`:
+
+- the supplied table contains self-corrections and contradictory prose (notably 20:52, 20:69 and
+  20:111); the universal or internally contradicted clauses were omitted instead of guessed;
+- 20:13 was modeled as the established two-way locus ﴿وَأَنَا ٱخْتَرْتُكَ﴾ / ﴿وَأَنَّا
+  ٱخْتَرْنَـٰكَ﴾ for Hamza; 20:58 ﴿سِوًى﴾ keeps the Hafs baseline despite the source presenting the
+  ضم row first; and 20:71 ﴿ءَامَنتُمْ﴾ keeps the detailed performance differences in the note while
+  the written one-hamza/two-hamza split forms the variant;
+- the variant generator rejected ten initial query anchors and six baseline spellings, and the
+  ruling generator rejected fourteen anchors, because of the standard §12.4b shapes (small high
+  ۥ/ۦ, joined ﴿يَـٰمُوسَىٰ﴾, and rasm spellings such as ﴿رَءَا﴾); every one was resolved from the
+  page-word fixture, with no hand-written `baseText` and no new review flag.
+
+The combined fixture state after this batch is **1,392 variants and 6,459 rulings across 261 active
+pages** (1-244 and 305-321). PostgreSQL remains intentionally populated only through page 244;
+Maryam and Taha are fixture-only until a database population is explicitly requested.
+
 **Pages 42–61** (the Juz' 3 batch, Al-Baqarah 253 to Ali 'Imran 91). 52 new variant loci (+121 variants, 413 total) and +552 أصول rulings (1,954 total) across 81 active pages. Pages 1–61 (Juz' 1, 2, and 3) are now fully contiguous.
 - Corrected source slips & query alignments:
   - Page 53: source cited ﴿نَفْسَهُۥ وَيُحَذِّرُكُمُ﴾; actual verse 3:28 rasm is ﴿نَفْسَهُۥ ۗ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ﴾ (`'نفسهۥ والى'`).

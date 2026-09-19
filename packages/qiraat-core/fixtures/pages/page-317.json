@@ -1,0 +1,495 @@
+[
+  {
+    "id": "v-L317-ان_اسر-1-w2",
+    "surah": 20,
+    "ayah": 77,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَنْ أَسْرِ",
+    "variantText": "أَنِ ٱسْرِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L317-ان_اسر-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L317-ان_اسر-1-w2",
+        "variantId": "v-L317-ان_اسر-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَسْرِ مَعًا فِي نُونِهِ اكْسِرْ لِحِرْمِيٍّ"
+      }
+    ],
+    "description": "بوصل الهمزة وكسر النون",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَسْرِ مَعًا فِي نُونِهِ اكْسِرْ لِحِرْمِيٍّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L317-لا_تخاف-1-w2",
+    "surah": 20,
+    "ayah": 77,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "لَّا تَخَـٰفُ",
+    "variantText": "لَا تَخَفْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L317-لا_تخاف-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L317-لا_تخاف-1-w2",
+        "variantId": "v-L317-لا_تخاف-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي لَا تَخَفْ فَاقْصُرْ وَجَزْمًا فَتًى تَلَا"
+      }
+    ],
+    "description": "بحذف الألف وجزم الفاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي لَا تَخَفْ فَاقْصُرْ وَجَزْمًا فَتًى تَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L317-انجيناكم-1-w2",
+    "surah": 20,
+    "ayah": 80,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَنجَيْنَـٰكُم",
+    "variantText": "أَنجَيْتُكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L317-انجيناكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L317-انجيناكم-1-w2",
+        "variantId": "v-L317-انجيناكم-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتاء المتكلم المضمومة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L317-وواعدناكم-1-w2",
+    "surah": 20,
+    "ayah": 80,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَوَٰعَدْنَـٰكُمْ",
+    "variantText": "وَوَٰعَدتُّكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L317-وواعدناكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L317-وواعدناكم-1-w2",
+        "variantId": "v-L317-وواعدناكم-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتاء المتكلم المضمومة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L317-وواعدناكم-1-w3",
+    "surah": 20,
+    "ayah": 80,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَوَٰعَدْنَـٰكُمْ",
+    "variantText": "وَوَعَدْنَٰكُمْ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L317-وواعدناكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L317-وواعدناكم-1-w3",
+        "variantId": "v-L317-وواعدناكم-1-w3",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بحذف الألف بعد الواو",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-L317-ونزلنا-1-w2",
+    "surah": 20,
+    "ayah": 80,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَنَزَّلْنَا",
+    "variantText": "وَنَزَّلْتُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L317-ونزلنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L317-ونزلنا-1-w2",
+        "variantId": "v-L317-ونزلنا-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَنْجَيْتُكُمْ وَاعَدْتُكُمْ مَعَ نَزَّلْتُ فَاحْمِلْ لِشَخْصٍ"
+      }
+    ],
+    "description": "بتاء المتكلم المضمومة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَنْجَيْتُكُمْ وَاعَدْتُكُمْ مَعَ نَزَّلْتُ فَاحْمِلْ لِشَخْصٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L317-فيحل_عليكم-1-w2",
+    "surah": 20,
+    "ayah": 81,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "فَيَحِلَّ عَلَيْكُمْ",
+    "variantText": "فَيَحُلَّ عَلَيْكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L317-فيحل_عليكم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L317-فيحل_عليكم-1-w2",
+        "variantId": "v-L317-فيحل_عليكم-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الحاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L317-ومن_يحلل-1-w2",
+    "surah": 20,
+    "ayah": 81,
+    "startToken": 12,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَمَن يَحْلِلْ",
+    "variantText": "وَمَن يَحْلُلْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L317-ومن_يحلل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L317-ومن_يحلل-1-w2",
+        "variantId": "v-L317-ومن_يحلل-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الحاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L317-اثري-1-w2",
+    "surah": 20,
+    "ayah": 84,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَثَرِى",
+    "variantText": "إِثْرِى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L317-اثري-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L317-اثري-1-w2",
+        "variantId": "v-L317-اثري-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَإِثْرِي بِكَسْرِ الْهَمْزِ وَالسُّكْنِ فُزْ حِمًى"
+      }
+    ],
+    "description": "بكسر الهمزة وإسكان الثاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَإِثْرِي بِكَسْرِ الْهَمْزِ وَالسُّكْنِ فُزْ حِمًى"
+      }
+    ]
+  },
+  {
+    "id": "v-L317-ان_يحل_عليكم-1-w2",
+    "surah": 20,
+    "ayah": 86,
+    "startToken": 19,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "أَن يَحِلَّ عَلَيْكُمْ",
+    "variantText": "أَن يَحُلَّ عَلَيْكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L317-ان_يحل_عليكم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L317-ان_يحل_عليكم-1-w2",
+        "variantId": "v-L317-ان_يحل_عليكم-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الحاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L317-بملكنا-1-w2",
+    "surah": 20,
+    "ayah": 87,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِمَلْكِنَا",
+    "variantText": "بِمُلْكِنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L317-بملكنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L317-بملكنا-1-w2",
+        "variantId": "v-L317-بملكنا-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَكَسْرُ بِمَلْكِنَا ضَمَّ نَافِعٌ وَبِالْفَتْحِ صَحْبٌ"
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَسْرُ بِمَلْكِنَا ضَمَّ نَافِعٌ وَبِالْفَتْحِ صَحْبٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L317-بملكنا-1-w3",
+    "surah": 20,
+    "ayah": 87,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِمَلْكِنَا",
+    "variantText": "بِمِلْكِنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L317-بملكنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L317-بملكنا-1-w3",
+        "variantId": "v-L317-بملكنا-1-w3",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَكَسْرُ بِمَلْكِنَا ضَمَّ نَافِعٌ وَبِالْفَتْحِ صَحْبٌ"
+      }
+    ],
+    "description": "بكسر الميم",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَسْرُ بِمَلْكِنَا ضَمَّ نَافِعٌ وَبِالْفَتْحِ صَحْبٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L317-حملنا_اوزارا-1-w2",
+    "surah": 20,
+    "ayah": 87,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "حُمِّلْنَآ أَوْزَارًۭا",
+    "variantText": "حَمَلْنَآ أَوْزَارًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L317-حملنا_اوزارا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L317-حملنا_اوزارا-1-w2",
+        "variantId": "v-L317-حملنا_اوزارا-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح الحاء وتخفيف الميم مبنيًّا للفاعل",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -4,8 +4,8 @@ For the next agent picking up this project. Read this first, then `PROJECT_MASTE
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
 **Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/17
-— pages 1–224 plus all of سورة مريم (pages 305–312) are imported and live
-(1,330 variants, 6,137 أصول rulings across 252 pages),
+— pages 1–244 plus all of سورتي مريم وطه (pages 305–321) are imported
+(1,392 variants, 6,459 أصول rulings across 261 pages),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
@@ -89,21 +89,20 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 ### 5.1 Qiraat — the live thread
 
-- **Visual review of the imported pages (1–244 and 305–312) is the user's next activity.** Open the reader in مقارنة القراءات,
+- **Visual review of the imported pages (1–244 and 305–321) is the user's next activity.** Open the reader in مقارنة القراءات,
   then burger/sidebar → «مراجعة المواضع المستوردة». Every imported locus gets a ring (amber unchecked,
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
-- **352 pages left to import** (245–304 and 313–604). The page table is deliberately **not**
+- **343 pages left to import** (245–304 and 322–604). The page table is deliberately **not**
   contiguous now — 244 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
   non-negotiable rules, the six generator invariants, the four anchor shapes that cost 23 rejections
   in the 22–41 batch and the classification rules for an ayah-by-ayah source are in
   `PROJECT_MASTER.md` §12 (§12.4b for the anchor shapes, §12.5 for سورة مريم). Do not improvise around it.
-- **سورة مريم came from a different source** — a user-supplied ayah-by-ayah table, not the PDF — so
-  its records carry their own `src` instead of a PDF page. Five source rows were dropped and two were
-  imported against the source's own aside; all seven are listed in `PROJECT_MASTER.md` §12.5 and are
-  the first thing to check on the paper original. ميم الجمع rows were left out entirely: this dataset
-  has no such أصول family.
+- **سورتا مريم وطه came from different sources** — user-supplied ayah-by-ayah tables, not the PDF —
+  so their records carry their own `src` instead of a PDF page. Source cautions and omissions are
+  listed in `PROJECT_MASTER.md` §12.5 and are the first things to check on the paper original. ميم
+  الجمع and universal tajwid rows were left out: this dataset records differences, not agreed rules.
 - **Pages 22–41 carry their own source defects**, all in `PROJECT_MASTER.md` §12.5: three corrected
   slips (page 34 كثير→كبير، page 38 خير→خبير، page 41 إني→مني) and eight `؟`-marked entries omitted
   rather than guessed. Resolve these against the paper original first.

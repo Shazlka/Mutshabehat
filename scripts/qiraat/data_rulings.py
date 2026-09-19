@@ -6362,6 +6362,411 @@ RULINGS[312] = [
 # ── Page 225 (Hud 29-37) ──────────────────────────────────────────────────────
 ]
 
+# ---------------------------------------------------------------------------
+# سورة طه (20) — Mushaf pages 312-321, from the supplied ayah-by-ayah table.
+# Universal tajwid rows are intentionally omitted under the same §12.5 rule used for Maryam.
+# ---------------------------------------------------------------------------
+
+def taha_head():
+    """رأس آية طه: الإمالة لحمزة والكسائي وخلف العاشر، والتقليل لورش وأبي عمرو."""
+    return [('حمزة', 'إمالة'), ('الكسائي', 'إمالة'), (K10, 'إمالة'),
+            (W, 'تقليل'), ('أبو عمرو', 'تقليل')]
+
+def taha_ra_head():
+    """رأس آية ذوات الراء: أبو عمرو يميل، وورش يقلل."""
+    return [('حمزة', 'إمالة'), ('الكسائي', 'إمالة'), (K10, 'إمالة'),
+            ('أبو عمرو', 'إمالة'), (W, 'تقليل')]
+
+def taha_head_warsh():
+    """رأس آية طه حيث نص الجدول على تقليل ورش وحده وفتح أبي عمرو."""
+    return [('حمزة', 'إمالة'), ('الكسائي', 'إمالة'), (K10, 'إمالة'), (W, 'تقليل')]
+
+def sakt_idris():
+    return sakt_wasl() + [('إدريس', 'السكت')]
+
+RULINGS[312] += [
+    ('IMALAH_TAQLIL', 'طه', [
+        ('حمزة', 'إمالة الطاء والهاء'), ('الكسائي', 'إمالة الطاء والهاء'),
+        (K10, 'إمالة الطاء والهاء'), ('شعبة', 'إمالة الطاء والهاء'),
+        (W, 'تقليل الطاء والهاء'), ('أبو عمرو', 'فتح الطاء وإمالة الهاء'),
+        ('قالون', 'فتح الطاء وإمالة الهاء'), ('ابن ذكوان', 'فتح الطاء وإمالة الهاء'),
+        ('ابن وردان', 'فتح الطاء وإمالة الهاء'),
+    ], dict(alternate=['قالون', 'ابن ذكوان', 'ابن وردان'],
+            text='ولقالون وابن ذكوان وابن وردان وجه الفتح في الحرفين.')),
+    ('SAKT', 'طه', [(KH, 'السكت على الحروف المقطعة')], {}),
+    ('TAGHYIR_HAMZ', 'القرءان', [(IK, 'نقل حركة الهمزة إلى الراء وحذفها')], {}),
+    ('SAKT', 'القرءان', sakt_wasl(), dict(alternate=[KHD])),
+    ('IMALAH_TAQLIL', 'لتشقى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'يخشى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'العلى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'استوى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'الثرى', taha_ra_head(), {}),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(all_occurrences=True)),
+    ('SAKT', 'الارض', sakt_idris(), dict(all_occurrences=True, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'واخفى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'الحسنى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'الاسماء', warsh('النقل'), {}),
+    ('SAKT', 'الاسماء', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'اتىك', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'موسى', taha_head(), dict(all_occurrences=True)),
+    ('TAGHYIR_HAMZ', 'وهل اتىك', warsh('النقل'), {}),
+    ('SAKT', 'وهل اتىك', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'رءا', [
+        ('ابن ذكوان', 'إمالة الراء والهمزة'), ('حمزة', 'إمالة الراء والهمزة'),
+        ('الكسائي', 'إمالة الراء والهمزة'), (K10, 'إمالة الراء والهمزة'),
+        ('أبو عمرو', 'إمالة الهمزة فقط'), ('شعبة', 'إمالة الهمزة فقط'),
+        (W, 'تقليل الراء والهمزة'),
+    ], {}),
+    ('SILAT_HA', 'لاهلِه امكثوا', [('حمزة', 'ضم الهاء وصلًا')], dict(ayah=10)),
+    ('MADD_BADAL', 'ءانست', warsh('مد البدل'), {}),
+    ('MADD_BADAL', 'ءاتيكم', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'على النار', imalah_nar(), {}),
+    ('SAKT', 'بقبس او', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'هدى', taha_head(), dict(ayah=10, condition='وقفًا')),
+    ('IMALAH_TAQLIL', 'اتىها', imalah3(), dict(alternate=[W])),
+    ('YAAT_IDAFA', 'اني ءانست', [('نافع', 'الفتح وصلًا'), (IK, 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('YAAT_IDAFA', 'لعلي ءاتيكم', [('نافع', 'الفتح وصلًا'), (IK, 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), ('ابن عامر', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('YAAT_IDAFA', 'اني انا', [('نافع', 'الفتح وصلًا'), (IK, 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(ayah=12, text='والإسكان وصلًا للباقين.')),
+    ('IMALAH_TAQLIL', 'طوى', taha_head(), dict(condition='وقفًا')),
+]
+
+RULINGS[313] = [
+    ('IMALAH_TAQLIL', 'يوحى', taha_head(), {}),
+    ('YAAT_IDAFA', 'انني انا', [('نافع', 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('YAAT_IDAFA', 'لذكري ان', [('نافع', 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('TAGHLIZ_LAM', 'الصلوة', warsh('تغليظ اللام'), {}),
+    ('MADD_BADAL', 'ءاتية', warsh('مد البدل'), {}),
+    ('SAKT', 'ءاتية اكاد', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'لتجزى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'تسعى', taha_head(), dict(all_occurrences=True)),
+    ('TAGHYIR_HAMZ', 'يومن', hamz3(), {}),
+    ('IMALAH_TAQLIL', 'هواه', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'فتردى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'ياموسى', taha_head(), dict(all_occurrences=True)),
+    ('YAAT_IDAFA', 'ولي فيها', [(W, 'الفتح وصلًا'), ('حفص', 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('MADD_BADAL', 'مارب', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'اخرى', taha_ra_head(), dict(all_occurrences=True)),
+    ('IMALAH_TAQLIL', 'فالقىها', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'الاولى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'الاولى', warsh('النقل'), {}),
+    ('SAKT', 'الاولى', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('MADD_LIN', 'سوء', warsh('مد اللين المهموز'), {}),
+    ('MADD_BADAL', 'ءاية', warsh('مد البدل'), dict(ayah=22)),
+    ('SAKT', 'سوء ءاية', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('MADD_BADAL', 'ءايتنا', warsh('مد البدل'), {}),
+    ('SAKT', 'من ءايتنا', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'الكبرى', taha_ra_head(), {}),
+    ('IMALAH_TAQLIL', 'طغى', taha_head(), dict(all_occurrences=True)),
+    ('IDGHAM_KABIR', 'قال رب', susi(), {}),
+    ('TARQIQ_RA', 'صدري', warsh('ترقيق الراء'), {}),
+    ('YAAT_IDAFA', 'لي امري', [('نافع', 'الفتح وصلًا'), (IK, 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('YAAT_IDAFA', 'اخي اشدد', [(IK, 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('IDGHAM_KABIR', 'نسبحك كثيرا', susi(), {}),
+    ('IDGHAM_KABIR', 'ونذكرك كثيرا', susi(), {}),
+    ('TARQIQ_RA', 'كثيرا', warsh('ترقيق الراء'), dict(all_occurrences=True)),
+    ('MADD_BADAL', 'اوتيت', warsh('مد البدل'), {}),
+    ('TAGHYIR_HAMZ', 'قد اوتيت', warsh('النقل'), {}),
+    ('SAKT', 'قد اوتيت', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'سولك', [(AJ, 'إبدال الهمزة واوًا')], {}),
+]
+
+RULINGS[314] = [
+    ('IMALAH_TAQLIL', 'يوحى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'اذ اوحينا', warsh('النقل'), {}),
+    ('SAKT', 'اذ اوحينا', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('SILAT_HA', 'اقذفيه', ibnkathir(), dict(all_occurrences=True)),
+    ('SILAT_HA', 'ياخذه', ibnkathir(), {}),
+    ('TAGHYIR_HAMZ', 'ياخذه', hamz3(), {}),
+    ('YAAT_IDAFA', 'عيني اذ', [('نافع', 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('YAAT_IDAFA', 'لنفسي اذهب', [('نافع', 'الفتح وصلًا'), (IK, 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('MADD_BADAL', 'بايتي', warsh('مد البدل'), {}),
+    ('YAAT_IDAFA', 'في ذكري اذهبا', [('نافع', 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('IMALAH_TAQLIL', 'طغى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'يخشى', taha_head(), {}),
+    ('TARK_GHUNNA', 'ان يفرط', [(KH, 'ترك الغنة')], {}),
+    ('TARK_GHUNNA', 'ان يطغى', [(KH, 'ترك الغنة')], {}),
+    ('IMALAH_TAQLIL', 'يطغى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'وارى', taha_ra_head(), {}),
+    ('TAGHYIR_HAMZ', 'فاتياه', hamz3(), {}),
+    ('TAGHYIR_HAMZ', 'جيناك', hamz3(), {}),
+    ('MADD_BADAL', 'باية', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'الهدى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'قد اوحي', warsh('النقل'), {}),
+    ('SAKT', 'قد اوحي', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('MADD_BADAL', 'اوحي', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'وتولى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'ياموسى', taha_head(), dict(all_occurrences=True)),
+    ('MADD_LIN', 'شيء', warsh('مد اللين المهموز'), {}),
+    ('SAKT', 'شيء خلقهو', sakt_wasl(), dict(alternate=[KHD])),
+    ('IMALAH_TAQLIL', 'اعطى', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'هدى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'الاولى', taha_head(), {}),
+]
+
+RULINGS[315] = [
+    ('IMALAH_TAQLIL', 'ينسى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), {}),
+    ('SAKT', 'الارض', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'شتى', taha_head(), {}),
+    ('MADD_BADAL', 'لايات', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'النهى', taha_head(), dict(all_occurrences=True)),
+    ('IMALAH_TAQLIL', 'اخرى', taha_ra_head(), {}),
+    ('TAGHYIR_HAMZ', 'تارة اخرى', warsh('النقل'), {}),
+    ('SAKT', 'تارة اخرى', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'ولقد اريناه', warsh('النقل'), {}),
+    ('SAKT', 'ولقد اريناه', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('MADD_BADAL', 'ءايتنا', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'وابى', taha_head(), {}),
+    ('HAMZATAN_KALIMA', 'اجيتنا', [
+        ('قالون', 'تسهيل الثانية مع الإدخال'), ('أبو عمرو', 'تسهيل الثانية مع الإدخال'),
+        (AJ, 'تسهيل الثانية مع الإدخال'), (W, 'تسهيل الثانية بلا إدخال'),
+        (IK, 'تسهيل الثانية بلا إدخال'), ('هشام', 'التحقيق مع الإدخال أو بدونه'),
+    ], dict(alternate=['هشام'], text='والتحقيق بلا إدخال للباقين.')),
+    ('TAGHYIR_HAMZ', 'من ارضنا', warsh('النقل'), {}),
+    ('SAKT', 'من ارضنا', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'فلناتينك', hamz3(), {}),
+    ('IMALAH_TAQLIL', 'سوى', taha_head(), dict(condition='وقفًا')),
+    ('TARK_GHUNNA', 'وان يحشر', [(KH, 'ترك الغنة')], {}),
+    ('IMALAH_TAQLIL', 'ضحى', taha_head(), dict(condition='وقفًا')),
+    ('IMALAH_TAQLIL', 'فتولى', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'اتى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'موسى', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'افترى', taha_ra_head(), {}),
+    ('IMALAH_TAQLIL', 'خاب', [('حمزة', 'إمالة'), ('هشام', 'إمالة'), (K10, 'إمالة')], {}),
+    ('IMALAH_TAQLIL', 'النجوى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'من ارضكم', warsh('النقل'), {}),
+    ('SAKT', 'من ارضكم', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TARK_GHUNNA', 'ان يخرجاكم', [(KH, 'ترك الغنة')], {}),
+    ('IMALAH_TAQLIL', 'المثلى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'وقد افلح', warsh('النقل'), {}),
+    ('SAKT', 'وقد افلح', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'استعلى', taha_head(), {}),
+]
+
+RULINGS[316] = [
+    ('IMALAH_TAQLIL', 'موسى', imalah3(), dict(alternate=[W])),
+    ('TAGHYIR_HAMZ', 'من القى', warsh('النقل'), {}),
+    ('SAKT', 'من القى', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'القى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'بل القوا', warsh('النقل'), {}),
+    ('SAKT', 'بل القوا', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'تسعى', taha_head(), {}),
+    ('MADD_BADAL', 'ءامنا', warsh('مد البدل'), dict(all_occurrences=True)),
+    ('MADD_BADAL', 'ءامنتم', warsh('مد البدل'), {}),
+    ('MADD_BADAL', 'ءاذن', warsh('مد البدل'), {}),
+    ('TAGHYIR_HAMZ', 'ان ءاذن', warsh('النقل'), {}),
+    ('SAKT', 'ان ءاذن', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IKHFA', 'من خلاف', [(AJ, 'الإخفاء')], {}),
+    ('IMALAH_TAQLIL', 'وابقى', taha_head(), dict(all_occurrences=True)),
+    ('TAGHYIR_HAMZ', 'نوثرك', hamz3(), {}),
+    ('IMALAH_TAQLIL', 'جاءنا', [('ابن ذكوان', 'إمالة'), ('حمزة', 'إمالة'), (K10, 'إمالة'), (W, 'تقليل')], dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'الدنيا', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'خطايانا', imalah3(), dict(alternate=[W])),
+    ('TAGHYIR_HAMZ', 'يات', hamz3(), dict(all_occurrences=True)),
+    ('TARK_GHUNNA', 'من يات', [(KH, 'ترك الغنة')], dict(all_occurrences=True)),
+    ('IMALAH_TAQLIL', 'يحيا', taha_head(), {}),
+    ('SILAT_HA', 'ياتهي مومنا', [
+        ('قالون', 'القصر أو الصلة'), ('DURI_AMR', 'القصر أو الصلة'),
+        (SUSI, 'الإسكان أو القصر'), (AJ, 'القصر'),
+    ], dict(alternate=['قالون', 'DURI_AMR', SUSI], text='والصلة للباقين.')),
+    ('TAGHYIR_HAMZ', 'مومنا', hamz3(), {}),
+    ('IMALAH_TAQLIL', 'العلى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'الانهر', warsh('النقل'), {}),
+    ('SAKT', 'الانهر', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'تزكى', taha_head(), {}),
+]
+
+RULINGS[317] = [
+    ('TAGHYIR_HAMZ', 'ولقد اوحينا', warsh('النقل'), {}),
+    ('SAKT', 'ولقد اوحينا', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'موسى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'تخشى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'هدى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'والسلوى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'الايمان', warsh('النقل'), {}),
+    ('SAKT', 'الايمان', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'هوى', taha_head(), {}),
+    ('MADD_BADAL', 'وءامن', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'اهتدى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'موسى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'لترضى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'ان يحل', [('الكسائي', 'ضم الحاء')], dict(ayah=86)),
+    ('IDGHAM_SAGHIR', 'اردتم ان', [('أبو عمرو', 'الإدغام'), ('هشام', 'الإدغام'), ('حمزة', 'الإدغام'), ('الكسائي', 'الإدغام'), (K10, 'الإدغام')], {}),
+    ('IMALAH_TAQLIL', 'القى', imalah3(), dict(alternate=[W])),
+]
+
+RULINGS[318] = [
+    ('IMALAH_TAQLIL', 'موسى', imalah4(), dict(alternate=[W], all_occurrences=True)),
+    ('YAAT_IDAFA', 'فاتبعوني واطيعوا', [('نافع', 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('IMALAH_TAQLIL', 'رايتهم', [
+        ('حمزة', 'إمالة الراء والهمزة'), ('الكسائي', 'إمالة الراء والهمزة'), (K10, 'إمالة الراء والهمزة'),
+        ('شعبة', 'إمالة الراء فقط'), (SUSI, 'إمالة الهمزة فقط'), (W, 'تقليل الراء والهمزة'),
+    ], dict(alternate=[W])),
+    ('YAAT_ZAWAID', 'الا تتبعن افعصيت', [
+        ('نافع', 'إثبات الياء وصلًا'), (IK, 'إثبات الياء وصلًا'), ('أبو عمرو', 'إثبات الياء وصلًا'),
+        (AJ, 'إثبات الياء وصلًا'), ('يعقوب', 'إثبات الياء وصلًا ووقفًا'),
+    ], {}),
+    ('TAGHYIR_HAMZ', 'لا تاخذ', hamz3(), {}),
+    ('TAGHYIR_HAMZ', 'براسي', hamz3(), {}),
+    ('YAAT_IDAFA', 'اني خشيت', [('نافع', 'الفتح وصلًا'), (IK, 'الفتح وصلًا'), ('أبو عمرو', 'الفتح وصلًا'), (AJ, 'الفتح وصلًا')], dict(text='والإسكان وصلًا للباقين.')),
+    ('IDGHAM_SAGHIR', 'فقبضت قبضة', [('أبو عمرو', 'الإدغام'), ('هشام', 'الإدغام'), ('حمزة', 'الإدغام'), ('الكسائي', 'الإدغام'), (K10, 'الإدغام')], {}),
+    ('IDGHAM_SAGHIR', 'فنبذتها', [('أبو عمرو', 'الإدغام'), ('هشام', 'الإدغام'), ('حمزة', 'الإدغام'), ('الكسائي', 'الإدغام'), (AJ, 'الإدغام'), (K10, 'الإدغام')], {}),
+    ('MADD_LIN', 'شيء', warsh('مد اللين المهموز'), {}),
+    ('SAKT', 'شيء علما', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+]
+
+RULINGS[319] = [
+    ('IDGHAM_SAGHIR', 'قد سبق', [('أبو عمرو', 'الإدغام'), ('هشام', 'الإدغام'), ('حمزة', 'الإدغام'), ('الكسائي', 'الإدغام'), (K10, 'الإدغام')], {}),
+    ('MADD_BADAL', 'ءاتيناك', warsh('مد البدل'), {}),
+    ('TAGHYIR_HAMZ', 'من اعرض', warsh('النقل'), dict(all_occurrences=True)),
+    ('SAKT', 'من اعرض', sakt_idris(), dict(all_occurrences=True, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'وساء', [('ابن ذكوان', 'إمالة'), ('حمزة', 'إمالة'), (K10, 'إمالة'), (W, 'تقليل')], dict(alternate=[W])),
+    ('IDGHAM_SAGHIR', 'لبثتم الا', [('أبو عمرو', 'الإدغام'), ('هشام', 'الإدغام'), ('حمزة', 'الإدغام'), ('الكسائي', 'الإدغام'), (AJ, 'الإدغام'), (K10, 'الإدغام')], dict(all_occurrences=True)),
+    ('IMALAH_TAQLIL', 'ترى', taha_ra_head(), {}),
+    ('TARK_GHUNNA', 'عوجا ولا', [(KH, 'ترك الغنة')], {}),
+    ('TARK_GHUNNA', 'يومئذ يتبعون', [(KH, 'ترك الغنة')], {}),
+    ('TAGHYIR_HAMZ', 'الاصوات', warsh('النقل'), {}),
+    ('SAKT', 'الاصوات', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'من اذن', warsh('النقل'), {}),
+    ('SAKT', 'من اذن', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'خاب', [('حمزة', 'إمالة'), ('هشام', 'إمالة'), ('ابن ذكوان', 'إمالة'), (K10, 'إمالة')], dict(alternate=['ابن ذكوان'])),
+    ('TAGHLIZ_LAM', 'ظلما', warsh('تغليظ اللام'), dict(all_occurrences=True)),
+    ('TAGHYIR_HAMZ', 'مومن', hamz3(), dict(ayah=112)),
+    ('TARK_GHUNNA', 'ومن يعمل', [(KH, 'ترك الغنة')], {}),
+    ('TAGHLIZ_LAM', 'الصلحت', warsh('تغليظ اللام'), {}),
+]
+
+RULINGS[320] = [
+    ('TAGHYIR_HAMZ', 'بالقرءان', [(IK, 'نقل حركة الهمزة إلى الراء وحذفها')], {}),
+    ('IMALAH_TAQLIL', 'فتعلى', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'يقضى', imalah3(), dict(alternate=[W])),
+    ('MADD_BADAL', 'ءادم', warsh('مد البدل'), dict(all_occurrences=True)),
+    ('IMALAH_TAQLIL', 'ابى', taha_head_warsh(), {}),
+    ('IMALAH_TAQLIL', 'فتشقى', taha_head_warsh(), {}),
+    ('IMALAH_TAQLIL', 'تعرى', taha_ra_head(), {}),
+    ('IMALAH_TAQLIL', 'تضحى', taha_head_warsh(), {}),
+    ('IMALAH_TAQLIL', 'يبلى', taha_head_warsh(), {}),
+    ('MADD_LIN', 'سوءتهما', warsh('مد اللين المهموز'), {}),
+    ('IMALAH_TAQLIL', 'وعصى', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'فغوى', taha_head_warsh(), {}),
+    ('IMALAH_TAQLIL', 'اجتبىه', imalah3(), dict(alternate=[W])),
+    ('IMALAH_TAQLIL', 'وهدى', taha_head_warsh(), {}),
+    ('TAGHYIR_HAMZ', 'ياتينكم', hamz3(), {}),
+    ('IMALAH_TAQLIL', 'هدى', taha_head(), dict(ayah=123, condition='وقفًا')),
+    ('IMALAH_TAQLIL', 'يشقى', taha_head_warsh(), {}),
+    ('TAGHYIR_HAMZ', 'ومن اعرض', warsh('النقل'), {}),
+    ('SAKT', 'ومن اعرض', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'ذكري', warsh('ترقيق الراء'), {}),
+    ('IMALAH_TAQLIL', 'اعمى', taha_head(), dict(all_occurrences=True)),
+]
+
+RULINGS[321] = [
+    ('IMALAH_TAQLIL', 'تنسى', taha_head_warsh(), {}),
+    ('MADD_BADAL', 'ءايتنا', warsh('مد البدل'), {}),
+    ('TAGHYIR_HAMZ', 'يومن', hamz3(), {}),
+    ('TAGHYIR_HAMZ', 'من اسرف', warsh('النقل'), {}),
+    ('SAKT', 'من اسرف', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'الاخرة', warsh('النقل'), {}),
+    ('SAKT', 'الاخرة', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('MADD_BADAL', 'بايت', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'وابقى', taha_head_warsh(), {}),
+    ('TAGHYIR_HAMZ', 'كم اهلكنا', warsh('النقل'), {}),
+    ('SAKT', 'كم اهلكنا', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('MADD_BADAL', 'لايت', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'النهى', taha_head(), {}),
+    ('IMALAH_TAQLIL', 'مسمى', taha_head_warsh(), dict(condition='وقفًا')),
+    ('MADD_BADAL', 'ءاناء', warsh('مد البدل'), {}),
+    ('TAGHYIR_HAMZ', 'ومن ءاناي', warsh('النقل'), {}),
+    ('SAKT', 'ومن ءاناي', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'النهار', [('DURI_AMR', 'إمالة'), (W, 'تقليل')], {}),
+    ('IMALAH_TAQLIL', 'ترضى', taha_head_warsh(), {}),
+    ('IMALAH_TAQLIL', 'الدنيا', taha_head(), {}),
+    ('TARQIQ_RA', 'خير', warsh('ترقيق الراء'), {}),
+    ('IMALAH_TAQLIL', 'وابقى', taha_head_warsh(), {}),
+    ('TAGHYIR_HAMZ', 'وامر', hamz3(), {}),
+    ('TAGHLIZ_LAM', 'بالصلوة', warsh('تغليظ اللام'), {}),
+    ('IMALAH_TAQLIL', 'للتقوى', taha_head(), {}),
+    ('TAGHYIR_HAMZ', 'ياتينا', hamz3(), {}),
+    ('TAGHYIR_HAMZ', 'تاتهم', hamz3(), {}),
+    ('MADD_BADAL', 'باية', warsh('مد البدل'), {}),
+    ('TAGHYIR_HAMZ', 'الاولى', warsh('النقل'), {}),
+    ('SAKT', 'الاولى', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'الاولى', taha_head(), {}),
+    ('MADD_BADAL', 'ءايتك', warsh('مد البدل'), {}),
+    ('IMALAH_TAQLIL', 'ونخزى', taha_head_warsh(), {}),
+    ('TAGHYIR_HAMZ', 'من اصحب', warsh('النقل'), {}),
+    ('SAKT', 'من اصحب', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'اهتدى', taha_head_warsh(), {}),
+]
+
+# Non-universal rows found by the final ayah-by-ayah reconciliation pass. Keeping this as a
+# page-keyed supplement makes the audit boundary explicit without perturbing the earlier source
+# order or the stable ids of the records already generated above.
+RULINGS[312] += [
+    ('MADD_BADAL', 'القرءان', warsh('مد البدل'), {}),
+    ('TARK_GHUNNA', 'لمن يخشى', [(KH, 'ترك الغنة')], {}),
+    ('TARQIQ_RA', 'تذكرة', warsh('ترقيق الراء'), {}),
+]
+RULINGS[313] += [
+    ('TARQIQ_RA', 'لذكري', warsh('ترقيق الراء'), {}),
+    ('WAQF_HAMZA', 'اتوكوا', hamza_hisham_waqf('إبدال الهمزة ألفًا أو التسهيل بالروم'), {}),
+    ('MADD_BADAL', 'الاولى', warsh('مد البدل'), {}),
+    ('WAQF_HAMZA', 'سوء', [('حمزة', 'النقل أو الإدغام مع الإسكان والروم')], {}),
+    ('TARQIQ_RA', 'ازري', warsh('ترقيق الراء'), {}),
+    ('TAGHYIR_HAMZ', 'مرة اخرى', warsh('النقل'), {}),
+    ('SAKT', 'مرة اخرى', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'مرة', warsh('ترقيق الراء'), {}),
+]
+RULINGS[314] += [
+    ('IMALAH_TAQLIL', 'محبة', kisai_waqf(), dict(condition='وقفًا')),
+    ('IDGHAM_KABIR', 'ولتصنع على', susi(), {}),
+    ('TAGHYIR_HAMZ', 'جيت', [(SUSI, 'إبدال الهمز'), (AJ, 'إبدال الهمز')], {}),
+    ('TAGHYIR_HAMZ', 'هل ادلكم', warsh('النقل'), {}),
+    ('SAKT', 'هل ادلكم', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'في اهل', warsh('النقل'), {}),
+    ('SAKT', 'في اهل', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IDGHAM_SAGHIR', 'فلبثت سنين', [('أبو عمرو', 'الإدغام'), ('هشام', 'الإدغام'), ('حمزة', 'الإدغام'), ('الكسائي', 'الإدغام'), (AJ, 'الإدغام'), ('يعقوب', 'الإدغام'), (K10, 'الإدغام')], {}),
+    ('TAGHYIR_HAMZ', 'اذهب انت', warsh('النقل'), {}),
+    ('SAKT', 'اذهب انت', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'يتذكر او', warsh('النقل'), {}),
+    ('SAKT', 'يتذكر او', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('IDGHAM_KABIR', 'قال لا', susi(), {}),
+    ('TAGHYIR_HAMZ', 'الاولى', warsh('النقل'), {}),
+    ('SAKT', 'الاولى', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+]
+RULINGS[315] += [
+    ('TAGHYIR_HAMZ', 'ثم ايتوا', [(W, 'إبدال الهمزة الساكنة'), (SUSI, 'إبدال الهمزة الساكنة'), (AJ, 'إبدال الهمزة الساكنة')], {}),
+]
+RULINGS[316] += [
+    ('TAGHYIR_HAMZ', 'الاعلى', warsh('النقل'), {}),
+    ('SAKT', 'الاعلى', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
+    ('TARQIQ_RA', 'ليغفر', warsh('ترقيق الراء'), {}),
+    ('TARQIQ_RA', 'خير', warsh('ترقيق الراء'), {}),
+    ('IMALAH_TAQLIL', 'ساحر', [('DURI_AMR', 'إمالة'), ('أبو الحارث', 'إمالة')], {}),
+]
+RULINGS[318] += [
+    ('IMALAH_TAQLIL', 'حتى', imalah3(), dict(alternate=[W])),
+    ('TARK_GHUNNA', 'قولا ولا', [(KH, 'ترك الغنة')], {}),
+    ('TARK_GHUNNA', 'ضرا ولا', [(KH, 'ترك الغنة')], {}),
+    ('WAQF_HAMZA', 'شيء', hamza_hisham_waqf('النقل أو الإدغام مع السكون والروم'), {}),
+]
+RULINGS[319] += [
+    ('TARQIQ_RA', 'ذكرا', warsh('ترقيق الراء'), dict(ayah=99)),
+    ('SILAT_HA', 'عنه', ibnkathir(), {}),
+    ('TARQIQ_RA', 'وزرا', warsh('ترقيق الراء'), {}),
+    ('SILAT_HA', 'فيه', ibnkathir(), dict(ayah=101)),
+    ('SILAT_HA', 'فيه من', ibnkathir(), dict(ayah=113)),
+    ('TARQIQ_RA', 'عربيا', warsh('ترقيق الراء'), {}),
+    ('TARQIQ_RA', 'ذكرا', warsh('ترقيق الراء'), dict(ayah=113)),
+]
+RULINGS[320] += [
+    ('IDGHAM_KABIR', 'قال رب', susi(), dict(ayah=125)),
+]
+RULINGS[321] += [
+    ('TARK_GHUNNA', 'لزاما واجل', [(KH, 'ترك الغنة')], {}),
+    ('IDGHAM_KABIR', 'نحن نرزقك', susi(), {}),
+]
+
 RULINGS[225] = [
     ('SILAT_HA', 'عليه', ibnkathir(), {}),
     ('SILAT_HA', 'واليه', ibnkathir(), {}),
