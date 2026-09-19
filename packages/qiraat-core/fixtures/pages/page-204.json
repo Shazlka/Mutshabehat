@@ -1,0 +1,412 @@
+[
+  {
+    "id": "v-L204-والذين_اتخذوا-1-w2",
+    "surah": 9,
+    "ayah": 107,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلَّذِينَ ٱتَّخَذُوا۟",
+    "variantText": "ٱلَّذِينَ ٱتَّخَذُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L204-والذين_اتخذوا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L204-والذين_اتخذوا-1-w2",
+        "variantId": "v-L204-والذين_اتخذوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعَمَّ بِلَا وَاوٍ الَّذِينَ"
+      }
+    ],
+    "description": "بحذف الواو استئنافًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعَمَّ بِلَا وَاوٍ الَّذِينَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-اسس_بنيانه-w2",
+    "surah": 9,
+    "ayah": 109,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَفَمَنْ أَسَّسَ بُنْيَـٰنَهُۥ",
+    "variantText": "أَفَمَنْ أُسِّسَ بُنْيَـٰنُهُۥ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L204-اسس_بنيانه",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L204-اسس_بنيانه-w2",
+        "variantId": "v-L204-اسس_بنيانه-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضُمَّ فِي مِنَ اسَّسَ مَعْ كَسْرٍ وَبُنْيَانُهُ وَلَا — D: وَأَسَّسَ وَالْوِلَا فَسَمِّ انْصِبِ اتْلُ"
+      }
+    ],
+    "description": "بضم الهمزة وكسر السين المشددة ورفع نون بنيانه مبنيًا للمفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضُمَّ فِي مِنَ اسَّسَ مَعْ كَسْرٍ وَبُنْيَانُهُ وَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَأَسَّسَ وَالْوِلَا فَسَمِّ انْصِبِ اتْلُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-اسس_بنيانه-w2",
+    "surah": 9,
+    "ayah": 109,
+    "startToken": 10,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "أَم مَّنْ أَسَّسَ بُنْيَـٰنَهُۥ",
+    "variantText": "أَم مَّنْ أُسِّسَ بُنْيَـٰنُهُۥ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L204-اسس_بنيانه",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L204-اسس_بنيانه-w2",
+        "variantId": "v-L204-اسس_بنيانه-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضُمَّ فِي مِنَ اسَّسَ مَعْ كَسْرٍ وَبُنْيَانُهُ وَلَا — D: وَأَسَّسَ وَالْوِلَا فَسَمِّ انْصِبِ اتْلُ"
+      }
+    ],
+    "description": "بضم الهمزة وكسر السين المشددة ورفع نون بنيانه مبنيًا للمفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضُمَّ فِي مِنَ اسَّسَ مَعْ كَسْرٍ وَبُنْيَانُهُ وَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَأَسَّسَ وَالْوِلَا فَسَمِّ انْصِبِ اتْلُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-ورضون-1-w2",
+    "surah": 9,
+    "ayah": 109,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَرِضْوَٰنٍ",
+    "variantText": "وَرُضْوَٰنٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L204-ورضون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L204-ورضون-1-w2",
+        "variantId": "v-L204-ورضون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرَهُ صَحَّ"
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرَهُ صَحَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-جرف-1-w2",
+    "surah": 9,
+    "ayah": 109,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "جُرُفٍ",
+    "variantText": "جُرْفٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L204-جرف-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L204-جرف-1-w2",
+        "variantId": "v-L204-جرف-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجُرُفٍ سُكُونُ الضَّمِّ فِي صَفْوِ كَامِلٍ"
+      }
+    ],
+    "description": "بإسكان الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجُرُفٍ سُكُونُ الضَّمِّ فِي صَفْوِ كَامِلٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-الا_ان_تقطع-1-w2",
+    "surah": 9,
+    "ayah": 110,
+    "startToken": 9,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "إِلَّآ أَن تَقَطَّعَ",
+    "variantText": "إِلَّآ أَن تُقَطَّعَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L204-الا_ان_تقطع-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L204-الا_ان_تقطع-1-w2",
+        "variantId": "v-L204-الا_ان_تقطع-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: تَقَطَّعَ فَتْحُ الضَّمِّ فِي كَامِلٍ عُلَا — D: افْتَحْ تُقَطَّعَ إِذْ حِمًى وَبِالضَّمِّ حُزْ"
+      }
+    ],
+    "description": "بضم التاء مشددة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "تَقَطَّعَ فَتْحُ الضَّمِّ فِي كَامِلٍ عُلَا"
+      },
+      {
+        "source": "D",
+        "text": "افْتَحْ تُقَطَّعَ إِذْ حِمًى وَبِالضَّمِّ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-الا_ان_تقطع-1-w3",
+    "surah": 9,
+    "ayah": 110,
+    "startToken": 9,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "إِلَّآ أَن تَقَطَّعَ",
+    "variantText": "إِلَّآ أَن تَقْطَعَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L204-الا_ان_تقطع-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L204-الا_ان_تقطع-1-w3",
+        "variantId": "v-L204-الا_ان_تقطع-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: تَقَطَّعَ فَتْحُ الضَّمِّ فِي كَامِلٍ عُلَا — D: افْتَحْ تُقَطَّعَ إِذْ حِمًى وَبِالضَّمِّ حُزْ"
+      }
+    ],
+    "description": "بفتح التاء وسكون القاف وتخفيف الطاء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "تَقَطَّعَ فَتْحُ الضَّمِّ فِي كَامِلٍ عُلَا"
+      },
+      {
+        "source": "D",
+        "text": "افْتَحْ تُقَطَّعَ إِذْ حِمًى وَبِالضَّمِّ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-فيقتلون_ويقتلون-1-w2",
+    "surah": 9,
+    "ayah": 111,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "فَيَقْتُلُونَ وَيُقْتَلُونَ ۖ",
+    "variantText": "فَيُقْتَلُونَ وَيَقْتُلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L204-فيقتلون_ويقتلون-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L204-فيقتلون_ويقتلون-1-w2",
+        "variantId": "v-L204-فيقتلون_ويقتلون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبَعْدُ فِي بَرَاءَةَ أَخِّرْ يَقْتُلُونَ شَمَرْدَلَا"
+      }
+    ],
+    "description": "بتقديم المبني للمفعول على المبني للفاعل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبَعْدُ فِي بَرَاءَةَ أَخِّرْ يَقْتُلُونَ شَمَرْدَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L204-والقرءان-1-w2",
+    "surah": 9,
+    "ayah": 111,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْقُرْءَانِ ۚ",
+    "variantText": "وَٱلْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L204-والقرءان-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L204-والقرءان-1-w2",
+        "variantId": "v-L204-والقرءان-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 209,
+        "sourceReference": "صفحة المصحف 204 · صفحة المصدر 209",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ],
+    "description": "بلا همز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ]
+  }
+]

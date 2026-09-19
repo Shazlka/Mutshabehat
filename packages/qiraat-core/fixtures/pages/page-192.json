@@ -1,0 +1,84 @@
+[
+  {
+    "id": "v-L192-اثنا_عشر-1-w2",
+    "surah": 9,
+    "ayah": 36,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱثْنَا عَشَرَ",
+    "variantText": "ٱثْنَا عْشَرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L192-اثنا_عشر-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L192-اثنا_عشر-1-w2",
+        "variantId": "v-L192-اثنا_عشر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 197,
+        "sourceReference": "صفحة المصحف 192 · صفحة المصدر 197",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَعَيْنَ عَشَرَ أَلَا فَسَكِّنْ جَمِيعًا وَامْدُدِ اثْنَا"
+      }
+    ],
+    "description": "بإسكان العين مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَعَيْنَ عَشَرَ أَلَا فَسَكِّنْ جَمِيعًا وَامْدُدِ اثْنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L192-فيهن-1-w2",
+    "surah": 9,
+    "ayah": 36,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِنَّ",
+    "variantText": "فِيهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L192-فيهن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L192-فيهن-1-w2",
+        "variantId": "v-L192-فيهن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 197,
+        "sourceReference": "صفحة المصحف 192 · صفحة المصدر 197",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  }
+]
