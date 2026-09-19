@@ -553,6 +553,26 @@ Source cautions, swaps & slips corrected during ingestion:
 
 The combined fixture state after this batch is **1,464 variants and 6,789 rulings across 281 active pages** (1–244 and 305–341). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, and Al-Hajj are fixture-only until a database population is explicitly requested.
 
+**Surah Al-Mu'minun (23), Mushaf pages 342–349.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 23:1–118), not from the PDF: **44 variant records and 171 أصول rulings**.
+
+Source cautions, slips & query normalizations resolved during ingestion:
+- 23:52 ﴿وَإِنَّ هَـٰذِهِۦٓ﴾ (page 345): The raw source stated that Hafs read with fat-h (`وَأَنَّ هَٰذِهِ`), but in Hafs Mushaf-1441 rasm it is with kasrah (`وَإِنَّ`). Aligned baseline (`is_base=True`) to `وَإِنَّ هَـٰذِهِۦٓ` (Hafs, Hamza, Kisai, Khalaf 10), variant 1 `وَأَنَّ هَـٰذِهِۦٓ` (Nafi, Abu Amr), and variant 2 `وَإِنْ هَـٰذِهِۦٓ` (REST: Ibn Kathir, Ibn Amir, Shubah, Abu Ja'far, Ya'qub). Clean 20-Riwayat partition (7 + 4 + 9 = 20).
+- 23:85 ﴿تَذَكَّرُونَ﴾ (page 347): Source description claimed Hafs read with takhfeef (`تَذْكُرُونَ`). Hafs reads with tashdeed `تَذَكَّرُونَ` (matching Mushaf-1441 fixture). Aligned baseline to `تَذَكَّرُونَ` (`EXCEPT(['حمزة', 'الكسائي', K10])`), variant `تَذْكُرُونَ` (`['حمزة', 'الكسائي', K10]`).
+- 23:92 ﴿عَـٰلِمِ﴾ (page 348): Source description claimed Asim read by raf' (`عَالِمُ`). Hafs reads by khafd `عَـٰلِمِ` (matching Mushaf-1441 fixture). Baseline (`is_base=True`) is `عَـٰلِمِ` (Ibn Kathir, Abu Amr, Ibn Amir, Hafs, Ya'qub - 9 Riwayat), variant is `عَـٰلِمُ` (REST - 11 Riwayat). Sum = 20 Riwayat.
+- 23:106 ﴿شِقْوَتُنَا﴾ (page 349): Source description grouped Hafs in `شَقَاوَتُنَا`. Hafs reads `شِقْوَتُنَا` (Shatibiyyah: «وَفَتْحُ شِقْوَتُنَا وَامْدُدْ وَحَرِّكْهُ شُلْشُلَا» — شُلْشُلَا = Hamza and Kisai only). Baseline is `شِقْوَتُنَا` (`EXCEPT(['حمزة', 'الكسائي', K10])`), variant `شَقَـٰوَتُنَا` (`['حمزة', 'الكسائي', K10]`).
+- Normalizations aligned with §12.4b & token queries:
+  - 23:36 ﴿۞ هَيْهَاتَ هَيْهَاتَ﴾: query `'هيهات هيهات'` with rub' al-hizb symbol `۞` on page 344.
+  - 23:50 ﴿وَءَاوَيْنَـٰهُمَآ﴾ (`'وءاوينـٰهما'`), 23:50 ﴿مَّعِينٍۢ﴾ (`'معين'`).
+  - 23:56 ﴿نُسَارِعُ﴾ (`'نسارع'`).
+  - 23:66 ﴿ءَايَـٰتِى﴾ (`'ءايـٰتي'`).
+  - 23:72 ﴿أَمْ تَسْـَٔلُهُمْ﴾ (`'ام تسـٔلهم'`).
+  - 23:78 ﴿وَٱلْأَفْـِٔدَةَ﴾ (`'والافـٔدة'`).
+  - 23:83 ﴿وَءَابَآؤُنَا﴾ (`'وءاباؤنا'`).
+  - 23:91 ﴿فَتَعَـٰلَى﴾ (`'فتعالى'`).
+  - 23:112 ﴿قَـٰلَ كَمْ﴾ (`'قال كم'`), 23:114 ﴿قَـٰلَ إِن لَّبِثْتُمْ﴾ (`'قال ان لبثتم'`).
+
+The combined fixture state after this batch is **1,508 variants and 6,960 rulings across 289 active pages** (1–244 and 305–349). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, Al-Hajj, and Al-Mu'minun are fixture-only until a database population is explicitly requested.
+
 **Pages 42–61** (the Juz' 3 batch, Al-Baqarah 253 to Ali 'Imran 91). 52 new variant loci (+121 variants, 413 total) and +552 أصول rulings (1,954 total) across 81 active pages. Pages 1–61 (Juz' 1, 2, and 3) are now fully contiguous.
 - Corrected source slips & query alignments:
   - Page 53: source cited ﴿نَفْسَهُۥ وَيُحَذِّرُكُمُ﴾; actual verse 3:28 rasm is ﴿نَفْسَهُۥ ۗ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ﴾ (`'نفسهۥ والى'`).

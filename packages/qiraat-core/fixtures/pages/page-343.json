@@ -1,0 +1,240 @@
+[
+  {
+    "id": "v-L343-سيناء-1-w2",
+    "surah": 23,
+    "ayah": 20,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "سَيْنَآءَ",
+    "variantText": "سِينَاءَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L343-سيناء-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L343-سيناء-1-w2",
+        "variantId": "v-L343-سيناء-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَسَيْنَاءَ كَسْرُ السِّينِ صَفْوُ جَنَى رِضًا — D: وَسَيْنَا فَاكْسِرِ احْمِ"
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَيْنَاءَ كَسْرُ السِّينِ صَفْوُ جَنَى رِضًا"
+      },
+      {
+        "source": "D",
+        "text": "وَسَيْنَا فَاكْسِرِ احْمِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L343-تنبت-1-w2",
+    "surah": 23,
+    "ayah": 20,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَنۢبُتُ",
+    "variantText": "تُنْبِتُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L343-تنبت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L343-تنبت-1-w2",
+        "variantId": "v-L343-تنبت-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفِي تَنْبُتُ اضْمُمْ وَاكْسِرِ الْبَاءَ حُطْ رَسَا — D: وَتُنْبِتُ حُزْ"
+      }
+    ],
+    "description": "بضم التاء وكسر الباء مضارع أنبت رباعياً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي تَنْبُتُ اضْمُمْ وَاكْسِرِ الْبَاءَ حُطْ رَسَا"
+      },
+      {
+        "source": "D",
+        "text": "وَتُنْبِتُ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L343-نسقيكم-1-w2",
+    "surah": 23,
+    "ayah": 21,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "نُّسْقِيكُم",
+    "variantText": "نَسْقِيكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L343-نسقيكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L343-نسقيكم-1-w2",
+        "variantId": "v-L343-نسقيكم-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفِي نُسْقِيكُمُ افْتَحْ عَمَّ — D: وَافْتَحْ نُسْقِيكُمُ احْلَا"
+      }
+    ],
+    "description": "بفتح النون مضارع سقى",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي نُسْقِيكُمُ افْتَحْ عَمَّ"
+      },
+      {
+        "source": "D",
+        "text": "وَافْتَحْ نُسْقِيكُمُ احْلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L343-غيرهو-1-w2",
+    "surah": 23,
+    "ayah": 23,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "غَيْرُهُۥٓ ۖ",
+    "variantText": "غَيْرِهِۦٓ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L343-غيرهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L343-غيرهو-1-w2",
+        "variantId": "v-L343-غيرهو-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَغَيْرُهُ اخْفِضْ عَنْ كِسَائِيِّهِمْ رِضًا"
+      }
+    ],
+    "description": "بجر الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَغَيْرُهُ اخْفِضْ عَنْ كِسَائِيِّهِمْ رِضًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L343-من_كل_زوجين-1-w2",
+    "surah": 23,
+    "ayah": 27,
+    "startToken": 15,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "مِن كُلٍّۢ زَوْجَيْنِ",
+    "variantText": "مِن كُلِّ زَوْجَيْنِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L343-من_كل_زوجين-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L343-من_كل_زوجين-1-w2",
+        "variantId": "v-L343-من_كل_زوجين-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَكُلًّا نَوِّنْ مَعًا صَفَا"
+      }
+    ],
+    "description": "بحذف التنوين وإضافة كل إلى زوجين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكُلًّا نَوِّنْ مَعًا صَفَا"
+      }
+    ]
+  }
+]
