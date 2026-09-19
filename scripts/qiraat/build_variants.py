@@ -32,6 +32,31 @@ DIFF = {
 errors, warnings, qa_flags = [], [], []
 
 
+def source_of(page, spec):
+    """Where this page's data came from.
+
+    Pages 1-41 were extracted from the «مصحف القراءات العشر» PDF and carry its page number.
+    A page whose spec sets `src` came from somewhere else entirely and says so, rather than
+    borrowing a PDF page it was never read from.
+    """
+    src = spec.get('src')
+    if src:
+        return {
+            'sourceName': src['name'],
+            'sourceType': src.get('kind', 'other'),
+            'sourceReference': src['ref'],
+            'verificationNotes': src.get('note', SOURCE_NOTE),
+        }
+    return {
+        'sourceName': 'مصحف القراءات العشر',
+        'sourceType': 'pdf',
+        'pdfFilename': 'مصحف القراءات العشر-1.pdf',
+        'pdfPage': spec['source'],
+        'sourceReference': f"صفحة المصحف {page} · صفحة المصدر {spec['source']}",
+        'verificationNotes': SOURCE_NOTE,
+    }
+
+
 def resolve_attr(spec, claimed_so_far):
     if isinstance(spec, tuple) and spec and spec[0] == 'REST':
         return A.remainder(claimed_so_far)
@@ -95,12 +120,7 @@ def build_page(page, spec):
                     'sources': [{
                         'id': f's-{locus_id}-w{vi}',
                         'variantId': f'v-{locus_id}-w{vi}',
-                        'sourceName': 'مصحف القراءات العشر',
-                        'sourceType': 'pdf',
-                        'pdfFilename': 'مصحف القراءات العشر-1.pdf',
-                        'pdfPage': spec['source'],
-                        'sourceReference': f"صفحة المصحف {page} · صفحة المصدر {spec['source']}",
-                        'verificationNotes': SOURCE_NOTE,
+                        **source_of(page, spec),
                         **({'sourceText': ' — '.join(f'{s}: {t}' for s, t in kw['ev'])} if kw.get('ev') else {}),
                     }],
                     'description': desc,

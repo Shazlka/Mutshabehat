@@ -1,0 +1,512 @@
+[
+  {
+    "id": "v-L310-اءذا-1-w2",
+    "surah": 19,
+    "ayah": 66,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَءِذَا",
+    "variantText": "إِذَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "L310-اءذا-1",
+    "locusType": "word_variant",
+    "notes": "لابن ذكوان وجهان: الإخبار والاستفهام (بخلف عنه).",
+    "sources": [
+      {
+        "id": "s-L310-اءذا-1-w2",
+        "variantId": "v-L310-اءذا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَخْبَرُوا بِخُلْفٍ إِذَا مَا مُتُّ مُوفِينَ وُصِّلَا"
+      }
+    ],
+    "description": "بالإخبار بهمزة واحدة مكسورة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَخْبَرُوا بِخُلْفٍ إِذَا مَا مُتُّ مُوفِينَ وُصِّلَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R02"
+    ]
+  },
+  {
+    "id": "v-L310-مت-1-w2",
+    "surah": 19,
+    "ayah": 66,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مِتُّ",
+    "variantText": "مُتُّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L310-مت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-مت-1-w2",
+        "variantId": "v-L310-مت-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَفِي مَرْيَمٍ صَفْوٌ يُحَرِّكُ أُعْمِلَا"
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَفِي مَرْيَمٍ صَفْوٌ يُحَرِّكُ أُعْمِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-يذكر-1-w2",
+    "surah": 19,
+    "ayah": 67,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَذْكُرُ",
+    "variantText": "يَذَّكَّرُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L310-يذكر-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-يذكر-1-w2",
+        "variantId": "v-L310-يذكر-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: يَذَّكَّرُ اعْتَلَى"
+      }
+    ],
+    "description": "بتشديد الذال والكاف وفتحهما",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "يَذَّكَّرُ اعْتَلَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-جثيا-1-w2",
+    "surah": 19,
+    "ayah": 68,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "جِثِيًّۭا",
+    "variantText": "جُثِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L310-جثيا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-جثيا-1-w2",
+        "variantId": "v-L310-جثيا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ],
+    "description": "بضم الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-جثيا-2-w2",
+    "surah": 19,
+    "ayah": 72,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "جِثِيًّۭا",
+    "variantText": "جُثِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L310-جثيا-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-جثيا-2-w2",
+        "variantId": "v-L310-جثيا-2-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ],
+    "description": "بضم الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-عتيا-1-w2",
+    "surah": 19,
+    "ayah": 69,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عِتِيًّۭا",
+    "variantText": "عُتِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L310-عتيا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-عتيا-1-w2",
+        "variantId": "v-L310-عتيا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ],
+    "description": "بضم العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-صليا-1-w2",
+    "surah": 19,
+    "ayah": 70,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "صِلِيًّۭا",
+    "variantText": "صُلِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L310-صليا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-صليا-1-w2",
+        "variantId": "v-L310-صليا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ],
+    "description": "بضم الصاد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-ننجي-1-w2",
+    "surah": 19,
+    "ayah": 72,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "نُنَجِّى",
+    "variantText": "نُنْجِى",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L310-ننجي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-ننجي-1-w2",
+        "variantId": "v-L310-ننجي-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنُنَجِّي خَفِيفًا رِضًى"
+      }
+    ],
+    "description": "بإسكان النون الثانية وتخفيف الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنُنَجِّي خَفِيفًا رِضًى"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-مقاما-1-w2",
+    "surah": 19,
+    "ayah": 73,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "مَّقَامًۭا",
+    "variantText": "مُقَامًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L310-مقاما-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-مقاما-1-w2",
+        "variantId": "v-L310-مقاما-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَقَامًا بِضَمِّهِ دَنَا"
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَقَامًا بِضَمِّهِ دَنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-ورءيا-1-w2",
+    "surah": 19,
+    "ayah": 74,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَرِءْيًۭا",
+    "variantText": "وَرِيًّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L310-ورءيا-1",
+    "locusType": "word_variant",
+    "notes": "وأبدلها حمزة مع الإدغام وقفًا فقط.",
+    "sources": [
+      {
+        "id": "s-L310-ورءيا-1-w2",
+        "variantId": "v-L310-ورءيا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: رِءْيًا أَبْدِلْ مُدْغَمًا بَاسِطًا مَلَا"
+      }
+    ],
+    "description": "بإبدال الهمزة ياءً وإدغامها",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "رِءْيًا أَبْدِلْ مُدْغَمًا بَاسِطًا مَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L310-عليهم-1-w2",
+    "surah": 19,
+    "ayah": 73,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L310-عليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L310-عليهم-1-w2",
+        "variantId": "v-L310-عليهم-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  }
+]

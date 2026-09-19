@@ -433,6 +433,48 @@ Two modelling decisions in this batch worth knowing before they recur:
 - **page 39 ﴿وَيَبْصُۜطُ﴾** — the baseline text must be the mushaf's own rasm (صاد with the small
   seen), with the description naming السين; writing `وَيَبْسُطُ` fails the baseline invariant.
 
+**Surah Maryam (19), Mushaf pages 305-312.** The first batch that did **not** come from the
+«مصحف القراءات العشر» PDF: the user supplied an ayah-by-ayah table (فرش الكلمات + الأصول المطردة +
+الشواهد) for 19:1-98. Two things follow from that and are now permanent:
+
+- The page spec may carry `src=` (name / kind / ref / note) and then every record says where it
+  really came from, instead of borrowing a PDF page number nobody read. `build_variants.source_of()`
+  keeps the old PDF shape for pages 1-41.
+- **The page table is no longer contiguous.** 42-304 are unimported, so 41 → 305 is a legal jump;
+  the loader table, the linter and `build_rulings` are all data-driven and none of them assumes a
+  dense range.
+
+The classification rules used on that table, so the next ayah-by-ayah batch repeats them:
+
+| The source row says | What was done |
+|---|---|
+| A rule that holds for all ten readers (مقادير المد، القلقلة، الإدغام الشمسي، الإقلاب، كسر الساكن للساكنين، إبدال التنوين ألفًا وقفًا، صلة الهاء بين متحركين، حذف ألف ﴿أنا﴾ وصلًا) | **not imported** — the أصول layer marks who *differs*; a universal rule colours half the page and tells the reader nothing |
+| ميم الجمع | **not imported** — this dataset has no such family (pages 1-41 have none either), and one surah does not justify a 19th colour |
+| سكت وصلًا | `SAKT` (the category existed but had never been used); **وقف حمزة** stays `WAQF_HAMZA` |
+| ورش's النقل | `TAGHYIR_HAMZ` with `action='النقل'` — it is a تغيير همز, and needs no new family |
+| إمالة / ياءات / صلة / إدغام / ترقيق, even where the source printed them in the فرش column | a **ruling**, not a variant — classify by nature, not by which column the source used |
+
+Dropped rather than guessed, and the first thing to resolve against the paper original:
+
+| Locus | Why |
+|---|---|
+| 19:2 إمالة ﴿زَكَرِيَّا﴾ | the row is headed «لمن قرأ بالقصر» and then lists ورش, who reads it بالهمز والمد |
+| 19:4 ترقيق الراء في ﴿ٱلرَّأْسُ﴾ | the source asks and answers itself: «؟ بل الراء مفتوحة فلا تُرقَّق» |
+| 19:25 الإدغام الكبير | the row ends «لا إدغام هنا لعدم توفر الشروط» |
+| 19:46 غنة النون عند اللام | «بغنة لخلف بخلفه» — النون عند اللام بغير غنة للعشرة جميعًا |
+| 19:38 ﴿وَأَبْصِرْ﴾ · 19:62 ﴿رِزْقُهُمْ﴾ | the source itself says «لجميع القراء» — universal, not a خلاف |
+
+Two loci were imported **against** the source's own aside, because the aside contradicts the row:
+19:1 ﴿كهيعص﴾ names الدوري عن الكسائي in a group that already holds الكسائي whole and then retracts it
+(«والمشهور عن الكسائي إمالتهما معًا كحمزة») — imported على المشهور, which is also the only reading
+under which the five إمالة groups partition the twenty exactly once, with the aside kept in the row's
+note; and 19:21 ﴿لِّلنَّاسِ﴾ is `؟`-marked but the source then supplies «وَخُلْفُهُ فِي النَّاسِ فِي
+الْجَرِّ حُصِّلَا», so it is imported with the خلف rather than dropped.
+
+Still to check on the paper original: 19:1's «السكت على الحروف المقطعة لخلف عن حمزة من طريق السكت
+العام», and the two شواهد the source prints in garbled form (19:23 ﴿نَسْيًا﴾, 19:42 ﴿يَا أَبَتِ﴾ —
+transcribed as given; they are citations, not attributions).
+
 ### 12.6 Moving to Postgres (Phase A, not yet done)
 
 Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the

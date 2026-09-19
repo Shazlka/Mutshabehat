@@ -66,6 +66,16 @@ const PAGE_VARIANT_LOADERS: Record<number, PageVariantsLoader> = {
   39: () => import('./fixtures/pages/page-039.json') as unknown as Promise<PageVariantsModule>,
   40: () => import('./fixtures/pages/page-040.json') as unknown as Promise<PageVariantsModule>,
   41: () => import('./fixtures/pages/page-041.json') as unknown as Promise<PageVariantsModule>,
+  // سورة مريم (19). Pages 42-304 are not imported yet, so the table is deliberately
+  // non-contiguous — nothing here assumes a dense page range.
+  305: () => import('./fixtures/pages/page-305.json') as unknown as Promise<PageVariantsModule>,
+  306: () => import('./fixtures/pages/page-306.json') as unknown as Promise<PageVariantsModule>,
+  307: () => import('./fixtures/pages/page-307.json') as unknown as Promise<PageVariantsModule>,
+  308: () => import('./fixtures/pages/page-308.json') as unknown as Promise<PageVariantsModule>,
+  309: () => import('./fixtures/pages/page-309.json') as unknown as Promise<PageVariantsModule>,
+  310: () => import('./fixtures/pages/page-310.json') as unknown as Promise<PageVariantsModule>,
+  311: () => import('./fixtures/pages/page-311.json') as unknown as Promise<PageVariantsModule>,
+  312: () => import('./fixtures/pages/page-312.json') as unknown as Promise<PageVariantsModule>,
 }
 
 // Page-level rules (عدّ الآي, الإدغام الكبير, أوجه الوصل بين السورتين, …) live in a separate fixture
@@ -121,6 +131,16 @@ const PAGE_RULING_LOADERS: Record<number, PageRulingsLoader> = {
   39: () => import('./fixtures/rulings/page-039.json') as unknown as Promise<PageRulingsModule>,
   40: () => import('./fixtures/rulings/page-040.json') as unknown as Promise<PageRulingsModule>,
   41: () => import('./fixtures/rulings/page-041.json') as unknown as Promise<PageRulingsModule>,
+  // سورة مريم (19). Pages 42-304 are not imported yet, so the table is deliberately
+  // non-contiguous — nothing here assumes a dense page range.
+  305: () => import('./fixtures/rulings/page-305.json') as unknown as Promise<PageRulingsModule>,
+  306: () => import('./fixtures/rulings/page-306.json') as unknown as Promise<PageRulingsModule>,
+  307: () => import('./fixtures/rulings/page-307.json') as unknown as Promise<PageRulingsModule>,
+  308: () => import('./fixtures/rulings/page-308.json') as unknown as Promise<PageRulingsModule>,
+  309: () => import('./fixtures/rulings/page-309.json') as unknown as Promise<PageRulingsModule>,
+  310: () => import('./fixtures/rulings/page-310.json') as unknown as Promise<PageRulingsModule>,
+  311: () => import('./fixtures/rulings/page-311.json') as unknown as Promise<PageRulingsModule>,
+  312: () => import('./fixtures/rulings/page-312.json') as unknown as Promise<PageRulingsModule>,
 }
 
 export class FixtureQiraatRepository implements QiraatRepository {
