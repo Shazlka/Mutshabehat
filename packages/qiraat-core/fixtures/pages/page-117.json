@@ -1,0 +1,320 @@
+[
+  {
+    "id": "v-L117-فيهم-1-w2",
+    "surah": 5,
+    "ayah": 52,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِمْ",
+    "variantText": "فِيهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L117-فيهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L117-فيهم-1-w2",
+        "variantId": "v-L117-فيهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 122,
+        "sourceReference": "صفحة المصحف 117 · صفحة المصدر 122",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L117-ويقول_الذين_ءامنوا-1-w2",
+    "surah": 5,
+    "ayah": 53,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَيَقُولُ ٱلَّذِينَ ءَامَنُوٓا۟",
+    "variantText": "يَقُولُ ٱلَّذِينَ ءَامَنُوٓا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L117-ويقول_الذين_ءامنوا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L117-ويقول_الذين_ءامنوا-1-w2",
+        "variantId": "v-L117-ويقول_الذين_ءامنوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 122,
+        "sourceReference": "صفحة المصحف 117 · صفحة المصدر 122",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَبْلَ يَقُولُ الْوَاوُ غُصْنٌ وَرَافِعٌ سِوَى ابْنِ الْعَلَا"
+      }
+    ],
+    "description": "بغير واو ورفع اللام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَبْلَ يَقُولُ الْوَاوُ غُصْنٌ وَرَافِعٌ سِوَى ابْنِ الْعَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L117-ويقول_الذين_ءامنوا-1-w3",
+    "surah": 5,
+    "ayah": 53,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَيَقُولُ ٱلَّذِينَ ءَامَنُوٓا۟",
+    "variantText": "وَيَقُولَ ٱلَّذِينَ ءَامَنُوٓا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L117-ويقول_الذين_ءامنوا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L117-ويقول_الذين_ءامنوا-1-w3",
+        "variantId": "v-L117-ويقول_الذين_ءامنوا-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 122,
+        "sourceReference": "صفحة المصحف 117 · صفحة المصدر 122",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَبْلَ يَقُولُ الْوَاوُ غُصْنٌ وَرَافِعٌ سِوَى ابْنِ الْعَلَا"
+      }
+    ],
+    "description": "بالواو ونصب اللام",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَبْلَ يَقُولُ الْوَاوُ غُصْنٌ وَرَافِعٌ سِوَى ابْنِ الْعَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L117-يرتد-1-w2",
+    "surah": 5,
+    "ayah": 54,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَرْتَدَّ",
+    "variantText": "يَرْتَدِدْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L117-يرتد-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L117-يرتد-1-w2",
+        "variantId": "v-L117-يرتد-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 122,
+        "sourceReference": "صفحة المصحف 117 · صفحة المصدر 122",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَنْ يَرْتَدِدْ عَمَّ مُرْسَلًا وَحُرِّكَ بِالإِدْغَامِ لِلْغَيْرِ دَالُهُ"
+      }
+    ],
+    "description": "بدالين الأولى مكسورة والثانية ساكنة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَنْ يَرْتَدِدْ عَمَّ مُرْسَلًا وَحُرِّكَ بِالإِدْغَامِ لِلْغَيْرِ دَالُهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L117-هزوا-1-w2",
+    "surah": 5,
+    "ayah": 57,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًۭا",
+    "variantText": "هُزُؤًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L117-هزوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L117-هزوا-1-w2",
+        "variantId": "v-L117-هزوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 122,
+        "sourceReference": "صفحة المصحف 117 · صفحة المصدر 122",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَهُزُؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا ... وَضُمَّ لِبَاقِيهِمْ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَحَفْصٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      }
+    ],
+    "description": "بضم الزاي والهمز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَهُزُؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا ... وَضُمَّ لِبَاقِيهِمْ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَحَفْصٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L117-هزوا-1-w3",
+    "surah": 5,
+    "ayah": 57,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًۭا",
+    "variantText": "هُزْءًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L117-هزوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L117-هزوا-1-w3",
+        "variantId": "v-L117-هزوا-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 122,
+        "sourceReference": "صفحة المصحف 117 · صفحة المصدر 122",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَهُزُؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا ... وَضُمَّ لِبَاقِيهِمْ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَحَفْصٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      }
+    ],
+    "description": "بإسكان الزاي والهمز",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَهُزُؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا ... وَضُمَّ لِبَاقِيهِمْ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَحَفْصٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L117-والكفار-1-w2",
+    "surah": 5,
+    "ayah": 57,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْكُفَّارَ",
+    "variantText": "وَٱلْكُفَّارِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L117-والكفار-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L117-والكفار-1-w2",
+        "variantId": "v-L117-والكفار-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 122,
+        "sourceReference": "صفحة المصحف 117 · صفحة المصدر 122",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَفْضُ رِجَالٍ فِي الْكُفَّارِ شَمْلَلَا"
+      }
+    ],
+    "description": "بالخفض",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَفْضُ رِجَالٍ فِي الْكُفَّارِ شَمْلَلَا"
+      }
+    ]
+  }
+]

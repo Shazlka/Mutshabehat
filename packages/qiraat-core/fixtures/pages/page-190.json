@@ -1,0 +1,127 @@
+[
+  {
+    "id": "v-L190-يبشرهم-1-w2",
+    "surah": 9,
+    "ayah": 21,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "يُبَشِّرُهُمْ",
+    "variantText": "يَبْشُرُهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L190-يبشرهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L190-يبشرهم-1-w2",
+        "variantId": "v-L190-يبشرهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 195,
+        "sourceReference": "صفحة المصحف 190 · صفحة المصدر 195",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي التَّوْبَةِ اعْكِسُوا لِحَمْزَةَ — D: يُبَشِّرُ كُلًّا يَدْ"
+      }
+    ],
+    "description": "بفتح الياء وضم الشين مخففة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي التَّوْبَةِ اعْكِسُوا لِحَمْزَةَ"
+      },
+      {
+        "source": "D",
+        "text": "يُبَشِّرُ كُلًّا يَدْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L190-ورضون-1-w2",
+    "surah": 9,
+    "ayah": 21,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَرِضْوَٰنٍۢ",
+    "variantText": "وَرُضْوَٰنٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L190-ورضون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L190-ورضون-1-w2",
+        "variantId": "v-L190-ورضون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 195,
+        "sourceReference": "صفحة المصحف 190 · صفحة المصدر 195",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرَهُ صَحَّ"
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرَهُ صَحَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L190-وعشيرتكم-1-w2",
+    "surah": 9,
+    "ayah": 24,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَعَشِيرَتُكُمْ",
+    "variantText": "وَعَشِيرَٰتُكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L190-وعشيرتكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L190-وعشيرتكم-1-w2",
+        "variantId": "v-L190-وعشيرتكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 195,
+        "sourceReference": "صفحة المصحف 190 · صفحة المصدر 195",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَشِيرَاتُكُمْ بِالْجَمْعِ صِدْقٌ"
+      }
+    ],
+    "description": "بالجمع وألف بعد الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَشِيرَاتُكُمْ بِالْجَمْعِ صِدْقٌ"
+      }
+    ]
+  }
+]

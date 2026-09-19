@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS qiraat_pages (
   surah_number        smallint NOT NULL CHECK (surah_number BETWEEN 1 AND 114),
   surah_name_ar       text NOT NULL,
   ayah_from           smallint CHECK (ayah_from >= 1),
-  ayah_to             smallint CHECK (ayah_to >= ayah_from),
+  ayah_to             smallint CHECK (ayah_to >= 1),
   extraction_status   qiraat_verification_status NOT NULL DEFAULT 'EXTRACTED',
   extracted_at        timestamptz,
   reviewed_at         timestamptz,
@@ -958,7 +958,9 @@ INSERT INTO qiraat_count_schools (id, name_ar, name_en, sort_order) VALUES
   ('CS-MAKKI',    'المكي',        'Makki',       3),
   ('CS-KUFI',     'الكوفي',       'Kufi',        4),
   ('CS-BASRI',    'البصري',       'Basri',       5),
-  ('CS-SHAMI',    'الشامي',       'Shami',       6)
+  ('CS-SHAMI',    'الشامي',       'Shami',       6),
+  ('CS-HIMSI',    'الحمصي',       'Himsi',       7),
+  ('CS-DIMASHQI', 'الدمشقي',      'Dimashqi',    8)
 ON CONFLICT (id) DO UPDATE SET name_ar = EXCLUDED.name_ar, name_en = EXCLUDED.name_en,
   sort_order = EXCLUDED.sort_order;
 

@@ -1,0 +1,241 @@
+[
+  {
+    "id": "v-L212-قطعا-1-w2",
+    "surah": 10,
+    "ayah": 27,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "قِطَعًۭا",
+    "variantText": "قِطْعًۭا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L212-قطعا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L212-قطعا-1-w2",
+        "variantId": "v-L212-قطعا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 217,
+        "sourceReference": "صفحة المصحف 212 · صفحة المصدر 217",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَإِسْكَانُ قِطْعًا دُونَ رَيْبٍ وُرُودُهُ — D: قِطْعًا اسْكِنْ حُلَى حَلَا"
+      }
+    ],
+    "description": "بإسكان الطاء اسم مفرد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَإِسْكَانُ قِطْعًا دُونَ رَيْبٍ وُرُودُهُ"
+      },
+      {
+        "source": "D",
+        "text": "قِطْعًا اسْكِنْ حُلَى حَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L212-تبلوا-1-w2",
+    "surah": 10,
+    "ayah": 30,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَبْلُوا۟",
+    "variantText": "تَتْلُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L212-تبلوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L212-تبلوا-1-w2",
+        "variantId": "v-L212-تبلوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 217,
+        "sourceReference": "صفحة المصحف 212 · صفحة المصدر 217",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي بَاءِ تَبْلُوا التَّاءُ شَاعَ"
+      }
+    ],
+    "description": "بتاءين فوقيتين من التلاوة والقراءة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي بَاءِ تَبْلُوا التَّاءُ شَاعَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L212-الميت-w2",
+    "surah": 10,
+    "ayah": 31,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَيِّتِ",
+    "variantText": "ٱلْمَيْتِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L212-الميت",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L212-الميت-w2",
+        "variantId": "v-L212-الميت-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 217,
+        "sourceReference": "صفحة المصحف 212 · صفحة المصدر 217",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعَ الْمَيْتِ خَفَّفُوا صَفَا نَفَرًا — D: اشْدُدَنْ … وَفِي الْمَيْتِ"
+      }
+    ],
+    "description": "بالتخفيف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعَ الْمَيْتِ خَفَّفُوا صَفَا نَفَرًا"
+      },
+      {
+        "source": "D",
+        "text": "اشْدُدَنْ … وَفِي الْمَيْتِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L212-الميت-w2",
+    "surah": 10,
+    "ayah": 31,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَيِّتَ",
+    "variantText": "ٱلْمَيْتَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L212-الميت",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L212-الميت-w2",
+        "variantId": "v-L212-الميت-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 217,
+        "sourceReference": "صفحة المصحف 212 · صفحة المصدر 217",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعَ الْمَيْتِ خَفَّفُوا صَفَا نَفَرًا — D: اشْدُدَنْ … وَفِي الْمَيْتِ"
+      }
+    ],
+    "description": "بالتخفيف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعَ الْمَيْتِ خَفَّفُوا صَفَا نَفَرًا"
+      },
+      {
+        "source": "D",
+        "text": "اشْدُدَنْ … وَفِي الْمَيْتِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L212-كلمت_ربك-1-w2",
+    "surah": 10,
+    "ayah": 33,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "كَلِمَتُ رَبِّكَ",
+    "variantText": "كَلِمَـٰتُ رَبِّكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L212-كلمت_ربك-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L212-كلمت_ربك-1-w2",
+        "variantId": "v-L212-كلمت_ربك-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 217,
+        "sourceReference": "صفحة المصحف 212 · صفحة المصدر 217",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ كَلِمَاتٌ دُونَ مَا أَلِفٍ ثَوَى وَفِي يُونُسَ وَالطَّوْلِ حَامِيهِ ظَلَّلَا"
+      }
+    ],
+    "description": "بالجمع وألف بعد الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ كَلِمَاتٌ دُونَ مَا أَلِفٍ ثَوَى وَفِي يُونُسَ وَالطَّوْلِ حَامِيهِ ظَلَّلَا"
+      }
+    ]
+  }
+]

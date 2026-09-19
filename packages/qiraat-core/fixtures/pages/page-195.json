@@ -1,0 +1,132 @@
+[
+  {
+    "id": "v-L195-هل_تربصون-1-w2",
+    "surah": 9,
+    "ayah": 52,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "هَلْ تَرَبَّصُونَ",
+    "variantText": "هَل تَّرَبَّصُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "L195-هل_تربصون-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L195-هل_تربصون-1-w2",
+        "variantId": "v-L195-هل_تربصون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 200,
+        "sourceReference": "صفحة المصحف 195 · صفحة المصدر 200",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي الْوَصْلِ لِلْبَزِّيِّ شَدِّدْ تَيَمَّمُوا … وَفِي التَّوْبَةِ الْغَرَّاءِ قُلْ هَلْ تَرَبَّصُونَ"
+      }
+    ],
+    "description": "بتشديد التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الْوَصْلِ لِلْبَزِّيِّ شَدِّدْ تَيَمَّمُوا … وَفِي التَّوْبَةِ الْغَرَّاءِ قُلْ هَلْ تَرَبَّصُونَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L195-كرها-1-w2",
+    "surah": 9,
+    "ayah": 53,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "كَرْهًۭا",
+    "variantText": "كُرْهًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L195-كرها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L195-كرها-1-w2",
+        "variantId": "v-L195-كرها-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 200,
+        "sourceReference": "صفحة المصحف 195 · صفحة المصدر 200",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضَمَّ هُنَا كَرْهًا وَعِنْدَ بَرَاءَةٍ شِهَابٌ"
+      }
+    ],
+    "description": "بضم الكاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضَمَّ هُنَا كَرْهًا وَعِنْدَ بَرَاءَةٍ شِهَابٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L195-ان_تقبل-1-w2",
+    "surah": 9,
+    "ayah": 54,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَن تُقْبَلَ",
+    "variantText": "أَن يُقْبَلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L195-ان_تقبل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L195-ان_تقبل-1-w2",
+        "variantId": "v-L195-ان_تقبل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 200,
+        "sourceReference": "صفحة المصحف 195 · صفحة المصدر 200",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَأَنْ تُقْبَلَ التَّذْكِيرُ شَاعَ وِصَالُهُ"
+      }
+    ],
+    "description": "بالتحتية تذكيرًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَنْ تُقْبَلَ التَّذْكِيرُ شَاعَ وِصَالُهُ"
+      }
+    ]
+  }
+]

@@ -4,8 +4,8 @@ For the next agent picking up this project. Read this first, then `PROJECT_MASTE
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
 **Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/17
-— pages 1–41 of «مصحف القراءات العشر» plus all of سورة مريم (pages 305–312) are imported and live
-(261 variants, 1,061 أصول rulings across 49 pages),
+— pages 1–224 plus all of سورة مريم (pages 305–312) are imported and live
+(1,232 variants, 5,544 أصول rulings across 232 pages),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
@@ -89,13 +89,13 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 ### 5.1 Qiraat — the live thread
 
-- **Visual review of the imported pages (1–41 and 305–312) is the user's next activity.** Open the reader in مقارنة القراءات,
+- **Visual review of the imported pages (1–224 and 305–312) is the user's next activity.** Open the reader in مقارنة القراءات,
   then burger/sidebar → «مراجعة المواضع المستوردة». Every imported locus gets a ring (amber unchecked,
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
-- **555 pages left to import** (42–304 and 313–604). The page table is deliberately **not**
-  contiguous now — 41 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
+- **372 pages left to import** (225–304 and 313–604). The page table is deliberately **not**
+  contiguous now — 224 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
   non-negotiable rules, the six generator invariants, the four anchor shapes that cost 23 rejections
   in the 22–41 batch and the classification rules for an ayah-by-ayah source are in
   `PROJECT_MASTER.md` §12 (§12.4b for the anchor shapes, §12.5 for سورة مريم). Do not improvise around it.
@@ -180,6 +180,11 @@ changing anything about what a tap or long-press on a word does.
   before the state change.
 - Measuring: a prefetched turn is ~1 ms render→commit, 0 slot renders. Re-check after reader changes
   (instrument a render counter locally, don't ship it).
+- Qiraat page fixtures are loaded directly in the browser through `FixtureQiraatRepository` and
+  prefetched from `slotGroups`; in spread mode every group contributes both page leaves. The loaded
+  window is published to React state once, after all its chunks resolve. Keep `/api/mushaf-1441/qiraat`
+  for external/API consumers, but do not put it back in the reader's flip path. Performance tests
+  block the route and require both pages of the mounted next spread to be colored before a turn.
 
 ## 6. Key files map (recently touched)
 

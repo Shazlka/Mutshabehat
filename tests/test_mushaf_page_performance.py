@@ -198,3 +198,65 @@ def test_prefetched_turn_reuses_the_mounted_neighbor_page() -> None:
 
         context.close()
         browser.close()
+
+
+def test_qiraat_colours_do_not_wait_for_a_route_handler_round_trip() -> None:
+    """Immutable Qiraat fixtures should load in-browser before a prefetched turn."""
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        context = browser.new_context(
+            viewport={"width": 800, "height": 900},
+            reduced_motion="reduce",
+        )
+        context.add_init_script(
+            "localStorage.setItem('mushaf1441:reader-layer:v1', 'qiraat')"
+        )
+        page = context.new_page()
+        qiraat_api_requests: list[str] = []
+
+        def reject_qiraat_api(route) -> None:
+            qiraat_api_requests.append(route.request.url)
+            route.abort()
+
+        page.route("**/api/mushaf-1441/qiraat**", reject_qiraat_api)
+        _open_mushaf(page, 62)
+
+        next_page = page.locator("[data-page-slot-group='63']")
+        qiraat_words = next_page.locator(
+            "button[aria-label*='أصول:'], button[aria-label*='قراءات مختلفة:']"
+        )
+        qiraat_words.first.wait_for(state="attached", timeout=5_000)
+
+        assert qiraat_words.count() > 0
+        assert not qiraat_api_requests
+
+        context.close()
+        browser.close()
+
+
+def test_qiraat_prefetch_colours_both_pages_of_the_next_spread() -> None:
+    """A spread turn must not reveal one colored page and one late-loading page."""
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        context = browser.new_context(
+            viewport={"width": 1440, "height": 900},
+            reduced_motion="reduce",
+        )
+        context.add_init_script(
+            "localStorage.setItem('mushaf1441:reader-layer:v1', 'qiraat')"
+        )
+        page = context.new_page()
+        _open_mushaf(page, 62)
+
+        marker = "button[aria-label*='أصول:'], button[aria-label*='قراءات مختلفة:']"
+        next_spread = page.locator("[data-page-slot-group='63']")
+        page_63_markers = next_spread.locator("[data-page-no='63']").locator(marker)
+        page_64_markers = next_spread.locator("[data-page-no='64']").locator(marker)
+
+        page_63_markers.first.wait_for(state="attached", timeout=5_000)
+        page_64_markers.first.wait_for(state="attached", timeout=5_000)
+        assert page_63_markers.count() > 0
+        assert page_64_markers.count() > 0
+
+        context.close()
+        browser.close()

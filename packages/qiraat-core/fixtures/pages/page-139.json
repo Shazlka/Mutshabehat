@@ -1,0 +1,264 @@
+[
+  {
+    "id": "v-L139-تجعلونه_تبدونها_تخفون-w2",
+    "surah": 6,
+    "ayah": 91,
+    "startToken": 26,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "تَجْعَلُونَهُۥ",
+    "variantText": "يَجْعَلُونَهُۥ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L139-تجعلونه_تبدونها_تخفون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L139-تجعلونه_تبدونها_تخفون-w2",
+        "variantId": "v-L139-تجعلونه_تبدونها_تخفون-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 144,
+        "sourceReference": "صفحة المصحف 139 · صفحة المصدر 144",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَتُبْدُونَهَا تُخْفُونَ مَعْ تَجْعَلُونَهُ عَلَى غَيْبِهِ حَقًّا"
+      }
+    ],
+    "description": "بالياء على الغيبة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُبْدُونَهَا تُخْفُونَ مَعْ تَجْعَلُونَهُ عَلَى غَيْبِهِ حَقًّا"
+      }
+    ]
+  },
+  {
+    "id": "v-L139-تجعلونه_تبدونها_تخفون-w2",
+    "surah": 6,
+    "ayah": 91,
+    "startToken": 28,
+    "endToken": 28,
+    "operation": "REPLACE",
+    "hafsText": "تُبْدُونَهَا",
+    "variantText": "يُبْدُونَهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L139-تجعلونه_تبدونها_تخفون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L139-تجعلونه_تبدونها_تخفون-w2",
+        "variantId": "v-L139-تجعلونه_تبدونها_تخفون-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 144,
+        "sourceReference": "صفحة المصحف 139 · صفحة المصدر 144",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَتُبْدُونَهَا تُخْفُونَ مَعْ تَجْعَلُونَهُ عَلَى غَيْبِهِ حَقًّا"
+      }
+    ],
+    "description": "بالياء على الغيبة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُبْدُونَهَا تُخْفُونَ مَعْ تَجْعَلُونَهُ عَلَى غَيْبِهِ حَقًّا"
+      }
+    ]
+  },
+  {
+    "id": "v-L139-تجعلونه_تبدونها_تخفون-w2",
+    "surah": 6,
+    "ayah": 91,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "وَتُخْفُونَ",
+    "variantText": "وَيُخْفُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L139-تجعلونه_تبدونها_تخفون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L139-تجعلونه_تبدونها_تخفون-w2",
+        "variantId": "v-L139-تجعلونه_تبدونها_تخفون-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 144,
+        "sourceReference": "صفحة المصحف 139 · صفحة المصدر 144",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَتُبْدُونَهَا تُخْفُونَ مَعْ تَجْعَلُونَهُ عَلَى غَيْبِهِ حَقًّا"
+      }
+    ],
+    "description": "بالياء على الغيبة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُبْدُونَهَا تُخْفُونَ مَعْ تَجْعَلُونَهُ عَلَى غَيْبِهِ حَقًّا"
+      }
+    ]
+  },
+  {
+    "id": "v-L139-ولتنذر-1-w2",
+    "surah": 6,
+    "ayah": 92,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَلِتُنذِرَ",
+    "variantText": "وَلِيُنذِرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L139-ولتنذر-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L139-ولتنذر-1-w2",
+        "variantId": "v-L139-ولتنذر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 144,
+        "sourceReference": "صفحة المصحف 139 · صفحة المصدر 144",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَلِيُنْذِرَ صَنْدَلَا"
+      }
+    ],
+    "description": "بالتحتية",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَلِيُنْذِرَ صَنْدَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L139-ايديهم-1-w2",
+    "surah": 6,
+    "ayah": 93,
+    "startToken": 32,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L139-ايديهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L139-ايديهم-1-w2",
+        "variantId": "v-L139-ايديهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 144,
+        "sourceReference": "صفحة المصحف 139 · صفحة المصدر 144",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L139-بينكم-1-w2",
+    "surah": 6,
+    "ayah": 94,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "بَيْنَكُمْ",
+    "variantText": "بَيْنُكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L139-بينكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L139-بينكم-1-w2",
+        "variantId": "v-L139-بينكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 144,
+        "sourceReference": "صفحة المصحف 139 · صفحة المصدر 144",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبَيْنَكُمُ ارْفَعْ فِي صَفَا نَفَرٍ"
+      }
+    ],
+    "description": "بالرفع فاعلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبَيْنَكُمُ ارْفَعْ فِي صَفَا نَفَرٍ"
+      }
+    ]
+  }
+]

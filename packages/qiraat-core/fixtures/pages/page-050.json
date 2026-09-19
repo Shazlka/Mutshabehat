@@ -1,0 +1,44 @@
+[
+  {
+    "id": "v-L050-الم-1-w2",
+    "surah": 3,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "الٓمٓ",
+    "variantText": "الٓمٓ",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L050-الم-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بالسكت على حروف التهجي",
+    "sources": [
+      {
+        "id": "s-L050-الم-1-w2",
+        "variantId": "v-L050-الم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 55,
+        "sourceReference": "صفحة المصحف 50 · صفحة المصدر 55",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: حُرُوفَ التَّهَجِّي افْصِلْ بِسَكْتٍ كَمَا أَلِفْ أَلَا"
+      }
+    ],
+    "description": "بالسكت على حروف التهجي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "حُرُوفَ التَّهَجِّي افْصِلْ بِسَكْتٍ كَمَا أَلِفْ أَلَا"
+      }
+    ]
+  }
+]

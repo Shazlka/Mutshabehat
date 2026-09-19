@@ -1,0 +1,385 @@
+[
+  {
+    "id": "v-L130-القرءان-1-w2",
+    "surah": 6,
+    "ayah": 19,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانُ",
+    "variantText": "ٱلْقُرَانُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L130-القرءان-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L130-القرءان-1-w2",
+        "variantId": "v-L130-القرءان-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ],
+    "description": "بلا همز مع نقل حركة الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L130-نحشرهم_نقول-w2",
+    "surah": 6,
+    "ayah": 22,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "نَحْشُرُهُمْ",
+    "variantText": "يَحْشُرُهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L130-نحشرهم_نقول",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L130-نحشرهم_نقول-w2",
+        "variantId": "v-L130-نحشرهم_نقول-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: نَحْشُرُ الْيَا تَقُولُ مَنْ سَبَأَ"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "نَحْشُرُ الْيَا تَقُولُ مَنْ سَبَأَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L130-نحشرهم_نقول-w2",
+    "surah": 6,
+    "ayah": 22,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "نَقُولُ",
+    "variantText": "يَقُولُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L130-نحشرهم_نقول",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L130-نحشرهم_نقول-w2",
+        "variantId": "v-L130-نحشرهم_نقول-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: نَحْشُرُ الْيَا تَقُولُ مَنْ سَبَأَ"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "نَحْشُرُ الْيَا تَقُولُ مَنْ سَبَأَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L130-تكن_فتنتهم-1-w2",
+    "surah": 6,
+    "ayah": 23,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَكُن فِتْنَتُهُمْ",
+    "variantText": "تَكُن فِتْنَتَهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L130-تكن_فتنتهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L130-تكن_فتنتهم-1-w2",
+        "variantId": "v-L130-تكن_فتنتهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَذَكِّرْ لَمْ يَكُنْ شَاعَ وَانْجَلَى وَفِتْنَتَهُمْ بِالرَّفْعِ عَنْ دِينِ كَامِلٍ — D: لَمْ يَكُنْ … ارْفَعْ يَكُنْ أَنِّثْ فِدَا"
+      }
+    ],
+    "description": "بالفوقية ونصب فتنتهم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَذَكِّرْ لَمْ يَكُنْ شَاعَ وَانْجَلَى وَفِتْنَتَهُمْ بِالرَّفْعِ عَنْ دِينِ كَامِلٍ"
+      },
+      {
+        "source": "D",
+        "text": "لَمْ يَكُنْ … ارْفَعْ يَكُنْ أَنِّثْ فِدَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L130-تكن_فتنتهم-1-w3",
+    "surah": 6,
+    "ayah": 23,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَكُن فِتْنَتُهُمْ",
+    "variantText": "يَكُن فِتْنَتُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L130-تكن_فتنتهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L130-تكن_فتنتهم-1-w3",
+        "variantId": "v-L130-تكن_فتنتهم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَذَكِّرْ لَمْ يَكُنْ شَاعَ وَانْجَلَى وَفِتْنَتَهُمْ بِالرَّفْعِ عَنْ دِينِ كَامِلٍ — D: لَمْ يَكُنْ … ارْفَعْ يَكُنْ أَنِّثْ فِدَا"
+      }
+    ],
+    "description": "بالتحتية ورفع فتنتهم",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَذَكِّرْ لَمْ يَكُنْ شَاعَ وَانْجَلَى وَفِتْنَتَهُمْ بِالرَّفْعِ عَنْ دِينِ كَامِلٍ"
+      },
+      {
+        "source": "D",
+        "text": "لَمْ يَكُنْ … ارْفَعْ يَكُنْ أَنِّثْ فِدَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L130-ربنا-1-w2",
+    "surah": 6,
+    "ayah": 23,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّنَا",
+    "variantText": "رَبَّنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L130-ربنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L130-ربنا-1-w2",
+        "variantId": "v-L130-ربنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبَا رَبَّنَا بِالنَّصْبِ شَرَّفَ وَصَّلَا"
+      }
+    ],
+    "description": "بنصب باء ربنا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبَا رَبَّنَا بِالنَّصْبِ شَرَّفَ وَصَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L130-نكذب_نكون-w2",
+    "surah": 6,
+    "ayah": 27,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا نُكَذِّبَ",
+    "variantText": "وَلَا نُكَذِّبُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L130-نكذب_نكون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L130-نكذب_نكون-w2",
+        "variantId": "v-L130-نكذب_نكون-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: نُكَذِّبُ نَصْبُ الرَّفْعِ فَازَ عَلِيمُهُ وَفِي وَنَكُونَ انْصِبْهُ فِي كَسْبِهِ عُلَا — D: وَانْصِبْ نُكَذِّبُ وَالْوِلَا حَوَى"
+      }
+    ],
+    "description": "برفع الباء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "نُكَذِّبُ نَصْبُ الرَّفْعِ فَازَ عَلِيمُهُ وَفِي وَنَكُونَ انْصِبْهُ فِي كَسْبِهِ عُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَانْصِبْ نُكَذِّبُ وَالْوِلَا حَوَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L130-نكذب_نكون-w2",
+    "surah": 6,
+    "ayah": 27,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "وَنَكُونَ",
+    "variantText": "وَنَكُونُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L130-نكذب_نكون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L130-نكذب_نكون-w2",
+        "variantId": "v-L130-نكذب_نكون-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 135,
+        "sourceReference": "صفحة المصحف 130 · صفحة المصدر 135",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: نُكَذِّبُ نَصْبُ الرَّفْعِ فَازَ عَلِيمُهُ وَفِي وَنَكُونَ انْصِبْهُ فِي كَسْبِهِ عُلَا — D: وَانْصِبْ نُكَذِّبُ وَالْوِلَا حَوَى"
+      }
+    ],
+    "description": "برفع النون",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "نُكَذِّبُ نَصْبُ الرَّفْعِ فَازَ عَلِيمُهُ وَفِي وَنَكُونَ انْصِبْهُ فِي كَسْبِهِ عُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَانْصِبْ نُكَذِّبُ وَالْوِلَا حَوَى"
+      }
+    ]
+  }
+]

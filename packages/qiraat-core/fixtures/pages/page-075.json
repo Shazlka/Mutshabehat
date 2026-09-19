@@ -1,0 +1,259 @@
+[
+  {
+    "id": "v-L075-TABAYYANUNNAHU-w2",
+    "surah": 3,
+    "ayah": 187,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "لَتُبَيِّنُنَّهُۥ",
+    "variantText": "لَيُبَيِّنُنَّهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L075-TABAYYANUNNAHU",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L075-TABAYYANUNNAHU-w2",
+        "variantId": "v-L075-TABAYYANUNNAHU-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 80,
+        "sourceReference": "صفحة المصحف 75 · صفحة المصدر 80",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَصَفَا حَقٌّ غَيْبُ تَكْتُمُونَ تُبَيِّنُنَّ — D: يُبَيِّنُ يَكْتُمُ خِطَابٌ حَنَا"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَصَفَا حَقٌّ غَيْبُ تَكْتُمُونَ تُبَيِّنُنَّ"
+      },
+      {
+        "source": "D",
+        "text": "يُبَيِّنُ يَكْتُمُ خِطَابٌ حَنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L075-TABAYYANUNNAHU-w2",
+    "surah": 3,
+    "ayah": 187,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "تَكْتُمُونَهُۥ",
+    "variantText": "يَكْتُمُونَهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L075-TABAYYANUNNAHU",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L075-TABAYYANUNNAHU-w2",
+        "variantId": "v-L075-TABAYYANUNNAHU-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 80,
+        "sourceReference": "صفحة المصحف 75 · صفحة المصدر 80",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L075-TAHSABANNAHAM-w2",
+    "surah": 3,
+    "ayah": 188,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَا تَحْسَبَنَّ",
+    "variantText": "لَا يَحْسِبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L075-TAHSABANNAHAM",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L075-TAHSABANNAHAM-w2",
+        "variantId": "v-L075-TAHSABANNAHAM-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 80,
+        "sourceReference": "صفحة المصحف 75 · صفحة المصدر 80",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: لَا يَحْسَبَنَّ الْغَيْبُ كَيْفَ سَمَا اعْتَلَى ... وَحَقًّا بِضَمِّ الْبَاءِ فَلَا يَحْسَبُنَّهُمْ"
+      }
+    ],
+    "description": "بالياء وكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "لَا يَحْسَبَنَّ الْغَيْبُ كَيْفَ سَمَا اعْتَلَى ... وَحَقًّا بِضَمِّ الْبَاءِ فَلَا يَحْسَبُنَّهُمْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L075-TAHSABANNAHAM-w3",
+    "surah": 3,
+    "ayah": 188,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَا تَحْسَبَنَّ",
+    "variantText": "لَا يَحْسَبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L075-TAHSABANNAHAM",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L075-TAHSABANNAHAM-w3",
+        "variantId": "v-L075-TAHSABANNAHAM-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 80,
+        "sourceReference": "صفحة المصحف 75 · صفحة المصدر 80",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: لَا يَحْسَبَنَّ الْغَيْبُ كَيْفَ سَمَا اعْتَلَى ... وَحَقًّا بِضَمِّ الْبَاءِ فَلَا يَحْسَبُنَّهُمْ"
+      }
+    ],
+    "description": "بالياء وفتح السين",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "لَا يَحْسَبَنَّ الْغَيْبُ كَيْفَ سَمَا اعْتَلَى ... وَحَقًّا بِضَمِّ الْبَاءِ فَلَا يَحْسَبُنَّهُمْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L075-TAHSABANNAHAM-w2",
+    "surah": 3,
+    "ayah": 188,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَحْسَبَنَّهُم",
+    "variantText": "فَلَا يَحْسِبَنَّهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L075-TAHSABANNAHAM",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L075-TAHSABANNAHAM-w2",
+        "variantId": "v-L075-TAHSABANNAHAM-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 80,
+        "sourceReference": "صفحة المصحف 75 · صفحة المصدر 80",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالياء وضم الباء وكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L075-TAHSABANNAHAM-w3",
+    "surah": 3,
+    "ayah": 188,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَحْسَبَنَّهُم",
+    "variantText": "فَلَا تَحْسِبَنَّهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L075-TAHSABANNAHAM",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L075-TAHSABANNAHAM-w3",
+        "variantId": "v-L075-TAHSABANNAHAM-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 80,
+        "sourceReference": "صفحة المصحف 75 · صفحة المصدر 80",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالتاء وكسر السين وفتح الباء",
+    "wajhIndex": 3,
+    "evidence": []
+  }
+]

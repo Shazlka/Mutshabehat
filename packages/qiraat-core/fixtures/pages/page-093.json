@@ -1,0 +1,239 @@
+[
+  {
+    "id": "v-L093-وهو-1-w2",
+    "surah": 4,
+    "ayah": 92,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L093-وهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L093-وهو-1-w2",
+        "variantId": "v-L093-وهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 98,
+        "sourceReference": "صفحة المصحف 93 · صفحة المصدر 98",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L093-فتبينوا-1-w2",
+    "surah": 4,
+    "ayah": 94,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فَتَبَيَّنُوا۟",
+    "variantText": "فَتَثَبَّتُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L093-فتبينوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L093-فتبينوا-1-w2",
+        "variantId": "v-L093-فتبينوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 98,
+        "sourceReference": "صفحة المصحف 93 · صفحة المصدر 98",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: شَاعَ وَارْتَاحَ أَشْمُلَا — SH: وَفِيهَا وَتَحْتَ الْفَتْحِ قُلْ فَتَثَبَّتُوا مِنَ الثَّبْتِ وَالْغَيْرُ الْبَيَانَ تَبَدَّلَا"
+      }
+    ],
+    "description": "بالثاء المثلثة والتاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "شَاعَ وَارْتَاحَ أَشْمُلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَتَحْتَ الْفَتْحِ قُلْ فَتَثَبَّتُوا مِنَ الثَّبْتِ وَالْغَيْرُ الْبَيَانَ تَبَدَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L093-فتبينوا-2-w2",
+    "surah": 4,
+    "ayah": 94,
+    "startToken": 33,
+    "endToken": 33,
+    "operation": "REPLACE",
+    "hafsText": "فَتَبَيَّنُوٓا۟ ۚ",
+    "variantText": "فَتَثَبَّتُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L093-فتبينوا-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L093-فتبينوا-2-w2",
+        "variantId": "v-L093-فتبينوا-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 98,
+        "sourceReference": "صفحة المصحف 93 · صفحة المصدر 98",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: شَاعَ وَارْتَاحَ أَشْمُلَا — SH: وَفِيهَا وَتَحْتَ الْفَتْحِ قُلْ فَتَثَبَّتُوا مِنَ الثَّبْتِ وَالْغَيْرُ الْبَيَانَ تَبَدَّلَا"
+      }
+    ],
+    "description": "بالثاء المثلثة والتاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "شَاعَ وَارْتَاحَ أَشْمُلَا"
+      },
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَتَحْتَ الْفَتْحِ قُلْ فَتَثَبَّتُوا مِنَ الثَّبْتِ وَالْغَيْرُ الْبَيَانَ تَبَدَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L093-السلام-1-w2",
+    "surah": 4,
+    "ayah": 94,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "ٱلسَّلَـٰمَ",
+    "variantText": "ٱلسَّلْمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L093-السلام-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L093-السلام-1-w2",
+        "variantId": "v-L093-السلام-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 98,
+        "sourceReference": "صفحة المصحف 93 · صفحة المصدر 98",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعَمَّ فَتًى قَصْرُ السَّلَامِ مُؤَخَّرًا"
+      }
+    ],
+    "description": "بفتح السين وسكون اللام بغير ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعَمَّ فَتًى قَصْرُ السَّلَامِ مُؤَخَّرًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L093-لست_مومنا-1-w2",
+    "surah": 4,
+    "ayah": 94,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "لَسْتَ مُؤْمِنًۭا",
+    "variantText": "لَسْتَ مُؤْمَنًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01"
+    ],
+    "locusId": "L093-لست_مومنا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L093-لست_مومنا-1-w2",
+        "variantId": "v-L093-لست_مومنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 98,
+        "sourceReference": "صفحة المصحف 93 · صفحة المصدر 98",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَأُخْرَى مُؤْمِنًا فَتْحُهُ بَلَا"
+      }
+    ],
+    "description": "بفتح الميم الثانية اسم مفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَأُخْرَى مُؤْمِنًا فَتْحُهُ بَلَا"
+      }
+    ]
+  }
+]

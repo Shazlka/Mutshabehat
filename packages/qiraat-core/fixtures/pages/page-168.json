@@ -1,0 +1,316 @@
+[
+  {
+    "id": "v-L168-برسلتي-1-w2",
+    "surah": 7,
+    "ayah": 144,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "بِرِسَـٰلَـٰتِى",
+    "variantText": "بِرِسَالَتِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R02"
+    ],
+    "locusId": "L168-برسلتي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L168-برسلتي-1-w2",
+        "variantId": "v-L168-برسلتي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 173,
+        "sourceReference": "صفحة المصحف 168 · صفحة المصدر 173",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجَمْعُ رِسَالَاتِي حَمَتْهُ ذُكُورُهُ — D: وَرِسَالَاتْ يَحْلُ"
+      }
+    ],
+    "description": "بالإفراد بغير ألف بعد اللام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجَمْعُ رِسَالَاتِي حَمَتْهُ ذُكُورُهُ"
+      },
+      {
+        "source": "D",
+        "text": "وَرِسَالَاتْ يَحْلُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L168-سبيل_الرشد-1-w2",
+    "surah": 7,
+    "ayah": 146,
+    "startToken": 19,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "سَبِيلَ ٱلرُّشْدِ",
+    "variantText": "سَبِيلَ ٱلرَّشَدِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L168-سبيل_الرشد-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L168-سبيل_الرشد-1-w2",
+        "variantId": "v-L168-سبيل_الرشد-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 173,
+        "sourceReference": "صفحة المصحف 168 · صفحة المصدر 173",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي الرُّشْدِ حَرِّكْ وَافْتَحِ الضَّمَّ سُلْسُلَا"
+      }
+    ],
+    "description": "بفتح الراء والشين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الرُّشْدِ حَرِّكْ وَافْتَحِ الضَّمَّ سُلْسُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L168-حليهم-1-w2",
+    "surah": 7,
+    "ayah": 148,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "حُلِيِّهِمْ",
+    "variantText": "حِلِيِّهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L168-حليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L168-حليهم-1-w2",
+        "variantId": "v-L168-حليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 173,
+        "sourceReference": "صفحة المصحف 168 · صفحة المصدر 173",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضَمُّ حُلِيِّهِمْ بِكَسْرٍ شَفَا وَافٍ وَالإِتْبَاعُ ذُو حُلَى — D: وَاضْمُمْ حُلِي فِدْ وَحُزْ حَلْيِهِمْ"
+      }
+    ],
+    "description": "بكسر الحاء واللام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضَمُّ حُلِيِّهِمْ بِكَسْرٍ شَفَا وَافٍ وَالإِتْبَاعُ ذُو حُلَى"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ حُلِي فِدْ وَحُزْ حَلْيِهِمْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L168-حليهم-1-w3",
+    "surah": 7,
+    "ayah": 148,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "حُلِيِّهِمْ",
+    "variantText": "حَلْيِهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L168-حليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L168-حليهم-1-w3",
+        "variantId": "v-L168-حليهم-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 173,
+        "sourceReference": "صفحة المصحف 168 · صفحة المصدر 173",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضَمُّ حُلِيِّهِمْ بِكَسْرٍ شَفَا وَافٍ وَالإِتْبَاعُ ذُو حُلَى — D: وَاضْمُمْ حُلِي فِدْ وَحُزْ حَلْيِهِمْ"
+      }
+    ],
+    "description": "بفتح الحاء وإسكان اللام وتخفيف الياء",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضَمُّ حُلِيِّهِمْ بِكَسْرٍ شَفَا وَافٍ وَالإِتْبَاعُ ذُو حُلَى"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ حُلِي فِدْ وَحُزْ حَلْيِهِمْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L168-يهديهم-1-w2",
+    "surah": 7,
+    "ayah": 148,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "يَهْدِيهِمْ",
+    "variantText": "يَهْدِيهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L168-يهديهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L168-يهديهم-1-w2",
+        "variantId": "v-L168-يهديهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 173,
+        "sourceReference": "صفحة المصحف 168 · صفحة المصدر 173",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L168-ايديهم-1-w2",
+    "surah": 7,
+    "ayah": 149,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L168-ايديهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L168-ايديهم-1-w2",
+        "variantId": "v-L168-ايديهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 173,
+        "sourceReference": "صفحة المصحف 168 · صفحة المصدر 173",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L168-يرحمنا_ربنا_ويغفر_لنا-1-w2",
+    "surah": 7,
+    "ayah": 149,
+    "startToken": 12,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "يَرْحَمْنَا رَبُّنَا وَيَغْفِرْ لَنَا",
+    "variantText": "تَرْحَمْنَا رَبَّنَا وَتَغْفِرْ لَنَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L168-يرحمنا_ربنا_ويغفر_لنا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L168-يرحمنا_ربنا_ويغفر_لنا-1-w2",
+        "variantId": "v-L168-يرحمنا_ربنا_ويغفر_لنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 173,
+        "sourceReference": "صفحة المصحف 168 · صفحة المصدر 173",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطَبَ يَرْحَمْنَا وَيَغْفِرْ لَنَا شَذًا وَبَا رَبَّنَا رَفْعٌ لِغَيْرِهِمَا انْجَلَا"
+      }
+    ],
+    "description": "بالفوقية على الخطاب، ونصب باء ربنا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطَبَ يَرْحَمْنَا وَيَغْفِرْ لَنَا شَذًا وَبَا رَبَّنَا رَفْعٌ لِغَيْرِهِمَا انْجَلَا"
+      }
+    ]
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "id": "v-L051-ستغلبون_وتحشرون-1-w2",
+    "surah": 3,
+    "ayah": 12,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "سَتُغْلَبُونَ وَتُحْشَرُونَ",
+    "variantText": "سَيُغْلَبُونَ وَيُحْشَرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L051-ستغلبون_وتحشرون-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L051-ستغلبون_وتحشرون-1-w2",
+        "variantId": "v-L051-ستغلبون_وتحشرون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 56,
+        "sourceReference": "صفحة المصحف 51 · صفحة المصدر 56",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي تُغْلَبُونَ الْغَيْبُ مَعْ تُحْشَرُونَ فِي رِضَا"
+      }
+    ],
+    "description": "بالياء على الغيبة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي تُغْلَبُونَ الْغَيْبُ مَعْ تُحْشَرُونَ فِي رِضَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L051-يرونهم-1-w2",
+    "surah": 3,
+    "ayah": 13,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "يَرَوْنَهُم",
+    "variantText": "تَرَوْنَهُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L051-يرونهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L051-يرونهم-1-w2",
+        "variantId": "v-L051-يرونهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 56,
+        "sourceReference": "صفحة المصحف 51 · صفحة المصدر 56",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَتَرَوْنَ الْغَيْبُ خُصَّ وَخُلِّلَا — D: يَرَوْنَ خِطَابًا حُزْ"
+      }
+    ],
+    "description": "بالتاء على الخطاب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتَرَوْنَ الْغَيْبُ خُصَّ وَخُلِّلَا"
+      },
+      {
+        "source": "D",
+        "text": "يَرَوْنَ خِطَابًا حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L051-مثليهم-1-w2",
+    "surah": 3,
+    "ayah": 13,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "مِّثْلَيْهِمْ",
+    "variantText": "مِّثْلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L051-مثليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L051-مثليهم-1-w2",
+        "variantId": "v-L051-مثليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 56,
+        "sourceReference": "صفحة المصحف 51 · صفحة المصدر 56",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L051-ورضون-1-w2",
+    "surah": 3,
+    "ayah": 15,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "وَرِضْوَٰنٌۭ",
+    "variantText": "وَرُضْوَانٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L051-ورضون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L051-ورضون-1-w2",
+        "variantId": "v-L051-ورضون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 56,
+        "sourceReference": "صفحة المصحف 51 · صفحة المصدر 56",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرُهُ صَحَّ"
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرُهُ صَحَّ"
+      }
+    ]
+  }
+]

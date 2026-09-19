@@ -1,0 +1,367 @@
+[
+  {
+    "id": "v-L073-رضوان-1-w2",
+    "surah": 3,
+    "ayah": 174,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "رِضْوَٰنَ",
+    "variantText": "رُضْوَٰنَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L073-رضوان-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L073-رضوان-1-w2",
+        "variantId": "v-L073-رضوان-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرُهُ صَحَّ"
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرِضْوَانٌ اضْمُمْ غَيْرَ ثَانِي الْعُقُودِ كَسْرُهُ صَحَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L073-ولا_يحزنك-1-w2",
+    "surah": 3,
+    "ayah": 176,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يَحْزُنكَ",
+    "variantText": "وَلَا يُحْزِنكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L073-ولا_يحزنك-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L073-ولا_يحزنك-1-w2",
+        "variantId": "v-L073-ولا_يحزنك-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَحْزُنُ غَيْرَ الْأَنْبِيَاءِ بِضَمٍّ وَاكْسِرِ الضَّمَّ أَحْفَلَا — D: وَيَحْزُنُ فَافْتَحْ ضُمَّ كُلًّا سِوَى الَّذِي ..."
+      }
+    ],
+    "description": "بضم الياء وكسر الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَحْزُنُ غَيْرَ الْأَنْبِيَاءِ بِضَمٍّ وَاكْسِرِ الضَّمَّ أَحْفَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَيَحْزُنُ فَافْتَحْ ضُمَّ كُلًّا سِوَى الَّذِي ..."
+      }
+    ]
+  },
+  {
+    "id": "v-L073-ولا_يحسبن-1-w2",
+    "surah": 3,
+    "ayah": 178,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يَحْسَبَنَّ",
+    "variantText": "وَلَا يَحْسِبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L073-ولا_يحسبن-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L073-ولا_يحسبن-1-w2",
+        "variantId": "v-L073-ولا_يحسبن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ],
+    "description": "بالياء وكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L073-ولا_يحسبن-1-w3",
+    "surah": 3,
+    "ayah": 178,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يَحْسَبَنَّ",
+    "variantText": "وَلَا تَحْسَبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L073-ولا_يحسبن-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L073-ولا_يحسبن-1-w3",
+        "variantId": "v-L073-ولا_يحسبن-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ],
+    "description": "بالتاء وفتح السين",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L073-ولا_يحسبن-2-w2",
+    "surah": 3,
+    "ayah": 180,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يَحْسَبَنَّ",
+    "variantText": "وَلَا يَحْسِبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L073-ولا_يحسبن-2",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L073-ولا_يحسبن-2-w2",
+        "variantId": "v-L073-ولا_يحسبن-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ],
+    "description": "بالياء وكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L073-ولا_يحسبن-2-w3",
+    "surah": 3,
+    "ayah": 180,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يَحْسَبَنَّ",
+    "variantText": "وَلَا تَحْسَبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L073-ولا_يحسبن-2",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L073-ولا_يحسبن-2-w3",
+        "variantId": "v-L073-ولا_يحسبن-2-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ],
+    "description": "بالتاء وفتح السين",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطِبْ حَرْفَا يَحْسَبَنَّ فَخُذْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L073-يميز-1-w2",
+    "surah": 3,
+    "ayah": 179,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "يَمِيزَ",
+    "variantText": "يُمَيِّزَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L073-يميز-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L073-يميز-1-w2",
+        "variantId": "v-L073-يميز-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: يَمِيزُ مَعَ الْأَنْفَالِ فَاكْسِرْ سُكُونَهُ وَشَدِّدْهُ بَعْدَ الْفَتْحِ — D: وَاشْدُدْ يَمِيزَ مَعًا"
+      }
+    ],
+    "description": "بضم الياء وتشديد الميم مكسورة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "يَمِيزُ مَعَ الْأَنْفَالِ فَاكْسِرْ سُكُونَهُ وَشَدِّدْهُ بَعْدَ الْفَتْحِ"
+      },
+      {
+        "source": "D",
+        "text": "وَاشْدُدْ يَمِيزَ مَعًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L073-تعملون-1-w2",
+    "surah": 3,
+    "ayah": 180,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ",
+    "variantText": "يَعْمَلُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L073-تعملون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L073-تعملون-1-w2",
+        "variantId": "v-L073-تعملون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 78,
+        "sourceReference": "صفحة المصحف 73 · صفحة المصدر 78",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ بِمَا تَعْمَلُونَ الْغَيْبُ حَقٌّ"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ بِمَا تَعْمَلُونَ الْغَيْبُ حَقٌّ"
+      }
+    ]
+  }
+]

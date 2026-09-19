@@ -1,0 +1,190 @@
+[
+  {
+    "id": "v-L049-فرهن-1-w2",
+    "surah": 2,
+    "ayah": 283,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فَرِهَـٰنٌۭ",
+    "variantText": "فَرُهُنٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L049-فرهن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L049-فرهن-1-w2",
+        "variantId": "v-L049-فرهن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 54,
+        "sourceReference": "صفحة المصحف 49 · صفحة المصدر 54",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَحَقُّ رِهَانٍ ضَمُّ كَسْرٍ وَفَتْحَةٍ وَقَصْرٌ — D: رُهُنٌ حِمًى"
+      }
+    ],
+    "description": "بضم الفاء والراء بلا ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَقُّ رِهَانٍ ضَمُّ كَسْرٍ وَفَتْحَةٍ وَقَصْرٌ"
+      },
+      {
+        "source": "D",
+        "text": "رُهُنٌ حِمًى"
+      }
+    ]
+  },
+  {
+    "id": "v-L049-فيغفر_لمن_يشاء_ويعذب-1-w2",
+    "surah": 2,
+    "ayah": 284,
+    "startToken": 18,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "فَيَغْفِرُ لِمَن يَشَآءُ وَيُعَذِّبُ",
+    "variantText": "فَيَغْفِرْ لِمَن يَشَآءُ وَيُعَذِّبْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L049-فيغفر_لمن_يشاء_ويعذب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L049-فيغفر_لمن_يشاء_ويعذب-1-w2",
+        "variantId": "v-L049-فيغفر_لمن_يشاء_ويعذب-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 54,
+        "sourceReference": "صفحة المصحف 49 · صفحة المصدر 54",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَغْفِرْ مَعْ يُعَذِّبْ سَمَا الْعُلَا شَذَا الْجَزْمِ — D: يَغْفِرُ يُعَذِّبْ حَمَى الْعُلَا بِرَفْعٍ"
+      }
+    ],
+    "description": "بجزم الراء والباء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَغْفِرْ مَعْ يُعَذِّبْ سَمَا الْعُلَا شَذَا الْجَزْمِ"
+      },
+      {
+        "source": "D",
+        "text": "يَغْفِرُ يُعَذِّبْ حَمَى الْعُلَا بِرَفْعٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L049-وكتبهي-1-w2",
+    "surah": 2,
+    "ayah": 285,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَكُتُبِهِۦ",
+    "variantText": "وَكِتَابِهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L049-وكتبهي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L049-وكتبهي-1-w2",
+        "variantId": "v-L049-وكتبهي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 54,
+        "sourceReference": "صفحة المصحف 49 · صفحة المصدر 54",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَالتَّوْحِيدُ فِي وَكِتَابِهِ شَرِيفٌ"
+      }
+    ],
+    "description": "بالإفراد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَالتَّوْحِيدُ فِي وَكِتَابِهِ شَرِيفٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L049-لا_نفرق-1-w2",
+    "surah": 2,
+    "ayah": 285,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "لَا نُفَرِّقُ",
+    "variantText": "لَا يُفَرِّقُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L049-لا_نفرق-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L049-لا_نفرق-1-w2",
+        "variantId": "v-L049-لا_نفرق-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 54,
+        "sourceReference": "صفحة المصحف 49 · صفحة المصدر 54",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: نُفَرِّقُ يَاءٌ تَرْفَعُ مَنْ نَشَا يُوسُفَ نَسْلُكُهُ نُعَلِّمُهُ حَلَا"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "نُفَرِّقُ يَاءٌ تَرْفَعُ مَنْ نَشَا يُوسُفَ نَسْلُكُهُ نُعَلِّمُهُ حَلَا"
+      }
+    ]
+  }
+]

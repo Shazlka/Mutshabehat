@@ -1,0 +1,43 @@
+[
+  {
+    "id": "v-L188-لا_ايمن-1-w2",
+    "surah": 9,
+    "ayah": 12,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "لَآ أَيْمَـٰنَ",
+    "variantText": "لَآ إِيمَـٰنَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L188-لا_ايمن-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L188-لا_ايمن-1-w2",
+        "variantId": "v-L188-لا_ايمن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 193,
+        "sourceReference": "صفحة المصحف 188 · صفحة المصدر 193",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيُكْسَرُ لَا أَيْمَانَ عِنْدَ ابْنِ عَامِرٍ"
+      }
+    ],
+    "description": "بكسر الهمزة مصدر آمن",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُكْسَرُ لَا أَيْمَانَ عِنْدَ ابْنِ عَامِرٍ"
+      }
+    ]
+  }
+]
