@@ -493,21 +493,26 @@ Two modelling decisions in this batch worth knowing before they recur:
   - Multi-word & phrase queries: page 185 ﴿بِنَصْرِهِۦ وَبِٱلْمُؤْمِنِينَ﴾ (8:62) `'بنصرهي'`; page 186 ﴿ٱلۡأَسۡرَىٰ﴾ (8:70) combined Abu Amr's variant `الأسارى` with base imalah on `الاسرى`, ﴿ٱلْمُؤْمِنُونَ﴾ (8:74); page 188 ﴿ذِمَّةًۭ ۚ وَأُو۟لَـٰٓئِكَ﴾ (9:10); page 189 At-Tawbah 14–20 omitted duplicate ﴿تُطَهِّرُهُمْ﴾ (belongs to 9:103 on page 203); page 190 ﴿مِّنْهُ﴾ (9:21), ﴿عَلَىٰ رَسُولِهِۦ وَعَلَى ٱلْمُؤْمِنِينَ﴾ (9:26) anchored to `'المؤمنين'`, ﴿بِأَمْرِهِۦ ۗ﴾ (9:24) `'بامرهي'`; page 192 ﴿بِٱلْهُدَىٰ﴾ (9:33); page 193 ﴿وَكَلِمَةُ ٱللَّهِ﴾ (9:40); page 195 ﴿ٱئْذَن لِّى وَلَا﴾ (9:49) assigned all ten readers for agreed ya'at idafa; page 196 ﴿هُوَ أُذُنٌۭ﴾ and ﴿قُلْ أُذُنُ خَيْرٍۢ﴾ (9:61) modeled as two distinct loci; page 197 ﴿وَءَايَـٰتِهِۦ﴾ (9:65) `'وءايتهۦ'`, ﴿إِن نَّعْفُ﴾ (9:66) `'ان نعف'` with note for Hamzah on reading `إن يُعف`; page 199 ﴿وَٱغْلُظْ عَلَيْهِمْ﴾ (9:73); page 200 pure usul (0 variants) with 17 rulings, ﴿ٱسْتَـْٔذَنَكَ﴾ (9:86); page 202 ﴿نُّؤْمِنَ لَكُمْ﴾ (9:94); page 203 ﴿صَلَوٰتَكَ﴾ (9:103) baseline text aligned with Mushaf-1441 rasm; page 204 ﴿أَسَّسَ بُنْيَـٰنَهُۥ﴾ (9:109 occurrences 1 and 2 under locus group `L204-اسس_بنيانه`).
 - All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
+**Pages 205–224** (Juz' 11 & early Juz' 12, At-Tawbah 112 to Hud 28). 107 new variant records (1,180 total across 224 pages) and +498 أصول rulings (5,376 total) across 224 active pages. Pages 1–224 (Juz' 1 through Juz' 11 and start of Juz' 12) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 205 ﴿لِلنَّبِىِّ – ٱلنَّبِىِّ﴾ (9:113, 117) Nafi with hamza & madd muttasil, ﴿إِبْرَٰهِيمَ﴾ (9:114) Hisham with alef, ﴿ٱلْعُسْرَةِ﴾ (9:117) Abu Ja'far damma on seen, ﴿كَادَ يَزِيغُ﴾ (9:117) Hamzah, Hafs, Ibn Kathir with taa `تَزِيغُ`; page 207 ﴿يَلُونَكُم﴾ (9:123) damma on laam for Ibn Kathir, ﴿يَفْقَهُونَ﴾ (9:127) Abu Ja'far with taa `تَفْقَهُونَ`; page 208 Yunus 1–6: ﴿الٓر ۚ﴾ (10:1) Abu Ja'far sakt on huruf tahajji, ﴿لَسَـٰحِرٌ﴾ (10:2) Sahir vs Sihr, ﴿فَصَّلَ ٱلْـَٔايَـٰتِ﴾ (10:5) Nafi, Abu Amr, Hafs, Abu Ja'far with nun `نُفَصِّلُ`; page 212 omitted Hud table artifacts ﴿ٱلْأَخْسَرُونَ﴾ and ﴿يَسْتَغْشُونَ﴾ accidentally included in Yunus extraction; page 213 ﴿لَّا يَهِدِّىٓ﴾ (10:35) Hafs baseline aligned with rasm `لَّا يَهِدِّىٓ`, ﴿يَعْزُبُ﴾ (10:61) Hamzah, Kisai, Khalaf 10 kasr on zaay; page 215 ﴿قِطَعًا﴾ (10:27) Ibn Kathir, Kisai sukun on taa `قِطْعًا`, ﴿أَصْغَرَ﴾ and ﴿أَكْبَرَ﴾ (10:61) Hamzah, Khalaf 10 rafa'; page 216 ﴿مَتَـٰعُ﴾ (10:23) Hafs nasb `مَتَـٰعَ`; page 219 ﴿وَلَا تَتَّبِعَآنِّ﴾ (10:89) corrected prompt inversion: Hafs and majority read `وَلَا تَتَّبِعَآنِّ` (tashdeed nun maksoorah + madd mushabba') matching rasm baseline, Ibn Dhakwan alone reads `وَلَا تَتَّبِعَانِ` (takhfeef); page 220 ﴿نُنَجِّى﴾ (10:103) Kisa'i, Ya'qub with single nun and sukun `نُنْجِ`; page 221 transition page spanning Surah 10 (Yunus 107–109) and Surah 11 (Hud 1–5): `PAGES[221]` defined with `surah=10, af=107, at=5`, modeled ﴿وَهُوَ﴾ with `all_occurrences=True` matching all 3 positions (10:107, 10:109, 11:4); page 222 ﴿سِحْرٌۭ﴾ (11:7) Hamzah, Kisai, Khalaf 10 read `سَـٰحِرٌۭ`; page 224 ﴿يُضَـٰعَفُ﴾ (11:20) Ibn Kathir, Ibn Amir, Abu Ja'far, Ya'qub read `يُضَعَّفُ` without alef and with tashdeed on 'ayn.
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
 ### 12.6 Postgres V2 Migration & Ingestion (Phase A completed 2026-09-19)
 
 Fixtures remain the client serving layer (zero round-trip page turns, offline-capable). Postgres is the authoring, relational query, and QA source of truth.
 - **Migration**: Applied `supabase/migrations/20260917120000_qiraat_v2_schema.sql` (19 tables, enums, triggers, and export functions) after full binary `pg_dump -Fc` backup (`backups/pre-qiraat-v2-20260919091434.dump`).
-- **Data Ingestion**: Populated all 204 pages into Postgres via `scripts/qiraat/import_to_postgres.py`:
-  - `qiraat_pages`: 204 rows
-  - `qiraat_loci`: 5,774 rows
-  - `qiraat_entries`: 5,951 rows (1,073 variants, 4,878 rulings)
-  - `qiraat_entry_readings`: 17,986 rows
-  - `qiraat_evidence_texts`: 647 rows
-  - `qiraat_evidence_links`: 1,431 rows
+- **Data Ingestion**: Populated all 224 pages into Postgres via `scripts/qiraat/import_to_postgres.py`:
+  - `qiraat_pages`: 224 rows
+  - `qiraat_loci`: 6,363 rows
+  - `qiraat_entries`: 6,556 rows (1,180 variants, 5,376 rulings)
+  - `qiraat_entry_readings`: 19,899 rows
+  - `qiraat_evidence_texts`: 699 rows
+  - `qiraat_evidence_links`: 1,574 rows
 - **Schema Enhancements**:
   - Added `CS-HIMSI` and `CS-DIMASHQI` into `qiraat_count_schools`.
-  - Replaced restrictive `ayah_to >= ayah_from` check on `qiraat_pages` with `CHECK (ayah_to >= 1)` to support transition pages spanning surah boundaries (e.g. page 106: 4:176 -> 5:2).
-- Verified `qiraat_export_page(1::smallint, true)` and `qiraat_export_page(204::smallint, true)` on Postgres 17; reloaded PostgREST cache (`NOTIFY pgrst, 'reload schema'`).
+  - Replaced restrictive `ayah_to >= ayah_from` check on `qiraat_pages` with `CHECK (ayah_to >= 1)` to support transition pages spanning surah boundaries (e.g. page 106: 4:176 -> 5:2; page 221: 10:107 -> 11:5).
+- Verified `qiraat_export_page(1::smallint, true)` and `qiraat_export_page(224::smallint, true)` on Postgres 17; reloaded PostgREST cache (`NOTIFY pgrst, 'reload schema'`).
 
 ---
 
