@@ -510,6 +510,28 @@ The combined fixture state after this batch is **1,392 variants and 6,459 ruling
 pages** (1-244 and 305-321). PostgreSQL remains intentionally populated only through page 244;
 Maryam and Taha are fixture-only until a database population is explicitly requested.
 
+**Surah Al-Anbiya (21), Mushaf pages 322-331.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 21:1–112), not from the PDF: **35 variant records (across 31 loci) and 157 أصول rulings**.
+
+Source cautions & slips corrected during ingestion:
+- 21:4 ﴿قَالَ رَبِّى﴾ (page 322): Hafs, Hamza, Kisai, Khalaf 10 read `قَالَ` (ماضي); the remaining 16 Riwayat (`REST`) read `قُل` (أمر).
+- 21:7 ﴿نُّوحِىٓ إِلَيْهِمْ ۖ﴾ (page 322): The raw source conflated 21:7 (إليهم) with 21:25 (إليه). Under Shatibiyyah 887 (*وَيُوحَى إِلَيْهِمْ كَسْرُ حَاءِ جَمِيعِهَا وَنُونٌ عُلًا*), Hafs alone (`عُلاً`) reads `نُّوحِىٓ إِلَيْهِمْ` (بالنون وكسر الحاء); all other 19 Riwayat (`REST`) read `يُوحَىٰٓ إِلَيْهِمْ` (بالياء وفتح الحاء).
+- 21:25 ﴿نُوحِىٓ إِلَيْهِ﴾ (page 324): Under Shatibiyyah 887 (*يُوحَى إِلَيْهِ شَذًا عَلَا*), Hafs + Hamza + Kisai + Khalaf 10 read `نُوحِىٓ إِلَيْهِ` (4 readers / 7 Riwayat); all other 13 Riwayat read `يُوحَىٰٓ إِلَيْهِ`.
+- 21:67 ﴿أُفٍّۢ لَّكُمْ﴾ (page 327): Clean 3-way partition:
+  - `أُفٍّۢ` (كسر وتنوين): Nafi, Hafs, Abu Ja'far (5 Riwayat).
+  - `أُفَّ` (فتح بغير تنوين): Ibn Kathir, Ibn Amir, Ya'qub (6 Riwayat).
+  - `أُفِّ` (كسر بغير تنوين): Abu Amr, Shu'bah, Hamzah, Al-Kisa'i, Khalaf 10 (9 Riwayat). Total = 20 Riwayat.
+- 21:112 ﴿قَـٰلَ رَبِّ ٱحْكُم﴾ (page 331): Under Shatibiyyah (*وَآخِرُهَا عَلَا*), Hafs alone (`عَلَا`) reads `قَـٰلَ` (ماضي, 1 Riwayat); all other 19 Riwayat (`REST`) read `قُل` (أمر).
+- Normalizations aligned with §12.4b:
+  - 21:41 ﴿ٱسْتُهْزِئَ﴾ (`'استهزئ'`).
+  - 21:62 ﴿يَـٰٓإِبْرَٰهِيمُ﴾ (`'يابراهيم'`).
+  - 21:63 ﴿بَلْ فَعَلَهُۥ﴾ (`'بل فعلهو'`).
+  - 21:84 ﴿وَذِكْرَىٰ﴾ (`'وذكرى'`).
+  - 21:88 ﴿نُـۨجِى﴾ (`'نجي'` matching small high nun in rasm).
+  - 21:110 ﴿وَيَعْلَمُ مَا﴾ (`'ويعلم ما'`).
+  - 21:111 ﴿وَمَتَـٰعٌ إِلَىٰ﴾ (`'ومتاع الى'`).
+
+The combined fixture state after this batch is **1,427 variants and 6,616 rulings across 271 active pages** (1–244 and 305–331). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, and Al-Anbiya are fixture-only until a database population is explicitly requested.
+
 **Pages 42–61** (the Juz' 3 batch, Al-Baqarah 253 to Ali 'Imran 91). 52 new variant loci (+121 variants, 413 total) and +552 أصول rulings (1,954 total) across 81 active pages. Pages 1–61 (Juz' 1, 2, and 3) are now fully contiguous.
 - Corrected source slips & query alignments:
   - Page 53: source cited ﴿نَفْسَهُۥ وَيُحَذِّرُكُمُ﴾; actual verse 3:28 rasm is ﴿نَفْسَهُۥ ۗ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ﴾ (`'نفسهۥ والى'`).
