@@ -313,6 +313,23 @@ QIRAAT_TEST_DATABASE_URL=postgresql://user:pass@127.0.0.1:5432/qiraat_test \
   python3 -m pytest -q tests/test_qiraat_import_pipeline.py
 ```
 
+## 15b. Bootstrapping a fresh local Supabase stack (e.g. on a laptop, not the Mac Mini)
+
+`supabase/migrations/` did not contain the base app schema (`groups`/`verses`/`parts`/`tags`/
+`automated_groups`) until `20260601000000_core_schema_baseline.sql` — before that, `supabase
+start` on an empty project would apply every feature migration successfully but leave
+`public.groups` missing, and the whole app would 500 on its very first request (`(app)/layout.tsx`
+queries it unconditionally). That migration is a straight concatenation of the six root-level
+`supabase-*.sql` files, reordered so `pg_trgm` (enabled by `supabase-parts-fts.sql`) exists before
+`supabase-indexes.sql`'s trigram indexes need it. Applying it changes nothing on the self-hosted
+production backend, which already has all six files applied by hand from before this migration
+existed — it only matters for a brand-new local/CI database.
+
+With that in place, `supabase start` (Supabase CLI, Docker) applies every file in
+`supabase/migrations/` — including both Qiraat migrations from this system — in filename order,
+and gives you the API URL/anon key/service-role key/DB URL needed for `.env.local` and
+`QIRAAT_DATABASE_URL`.
+
 ## 16. What still needs to happen before a real 604-page import
 
 - **Apply both migrations to the self-hosted backend** (V2 schema, then the staging schema),
