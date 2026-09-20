@@ -33,6 +33,7 @@ RCOLORS = {
  'YAAT_IDAFA':('ياءات الإضافة','#CA8A04'),'YAAT_ZAWAID':('ياءات الزوائد','#CA8A04'),
  'HAMZATAN_KALIMATAYN':('الهمزتان من كلمتين','#DC2626'),
  'HAMZATAN_KALIMA':('الهمزتان من كلمة','#DC2626'),
+ 'WAQF_RASM':('الوقف على مرسوم الخط','#EA580C'),
 }
 DIFF={'orthography':'ORTHOGRAPHY','vowel':'HARAKAH','consonant':'LETTER','hamza':'HAMZ',
       'word_form':'LETTER','ishmam':'HARAKAH','other':'OTHER'}
@@ -365,6 +366,40 @@ def parse_hamzatan_line(page,category,line,out):
     for anchor,groups,notes in pending:
         emit_ruling(page,category,anchor,groups,out,notes=notes)
 
+def parse_waqf_rasm_line(page,line,out):
+    """Import only explicitly named بالهاء readers; remainder and other waqf forms are omitted."""
+    pending=[]
+    positions=r'(?:عليها|عليه|عليهما|عليهم|عليهن)'
+    after=re.compile(r'يقف\s+'+positions+r'\s+بالهاء\s+(.+?)(?=؛|$)')
+    before=re.compile(r'يقف\s+(.+?)\s+'+positions+r'\s+بالهاء')
+    for chunk in split_anchor_clauses(line):
+        pre,sep,body=chunk.partition(':')
+        anchor_matches=list(BRACE.finditer(pre))
+        if not sep or not anchor_matches: continue
+        match=after.search(body)
+        if match:
+            group_text=match.group(1)
+        else:
+            match=before.search(body)
+            if not match: continue
+            group_text=match.group(1)
+        group_notes=[n.strip() for n in PARENS.findall(group_text)]
+        names=PARENS.sub('',group_text)
+        names=BRACE.sub('',names).strip(' ،,؛.و')
+        try: readers=resolve_explicit_group(names)
+        except Unresolved: return
+        if not readers: continue
+        for i,match in enumerate(anchor_matches):
+            next_start=anchor_matches[i+1].start() if i+1<len(anchor_matches) else len(pre)
+            anchor_notes=[n.strip() for n in PARENS.findall(pre[match.end():next_start])]
+            notes='؛ '.join(dict.fromkeys(anchor_notes+group_notes)) or None
+            count=T.count(page,match.group(1))
+            repeat=any(x in ' '.join(anchor_notes) for x in ('جميعاً','الموضعان','معاً'))
+            occurrences=range(1,count+1) if repeat and count else (1,)
+            pending.extend((match.group(1),readers,notes,occurrence) for occurrence in occurrences)
+    for anchor,readers,notes,occurrence in pending:
+        emit_ruling(page,'WAQF_RASM',anchor,[(readers,'الوقف بالهاء')],out,notes=notes,occurrence=occurrence)
+
 def parse_usul(page, lines):
     out=[]; section=None; target_section=None
     for raw in lines:
@@ -375,6 +410,7 @@ def parse_usul(page, lines):
         # by one or more anchored lines.
         target_headers=[('الهمزتان من كلمتين','HAMZATAN_KALIMATAYN'),
                         ('الهمزتان من كلمة','HAMZATAN_KALIMA'),
+                        ('الوقف على مرسوم الخط','WAQF_RASM'),
                         ('ياءات الإضافة','YAAT_IDAFA'),('ياءات الزوائد','YAAT_ZAWAID')]
         matched_target=False
         for prefix,cat in target_headers:
@@ -383,6 +419,7 @@ def parse_usul(page, lines):
                 content=line.split(':',1)[1].strip() if ':' in line else ''
                 if content and not is_univ(line):
                     if cat.startswith('YAAT_'): parse_yaat_line(page,cat,content,out)
+                    elif cat=='WAQF_RASM': parse_waqf_rasm_line(page,content,out)
                     else: parse_hamzatan_line(page,cat,content,out)
                 matched_target=True
                 break
@@ -395,6 +432,7 @@ def parse_usul(page, lines):
             if BRACE.search(line) and not any(line.startswith(x) for x in known_other):
                 if not is_univ(line):
                     if target_section.startswith('YAAT_'): parse_yaat_line(page,target_section,line,out)
+                    elif target_section=='WAQF_RASM': parse_waqf_rasm_line(page,line,out)
                     else: parse_hamzatan_line(page,target_section,line,out)
                 continue
             target_section=None
@@ -438,9 +476,9 @@ def parse_usul(page, lines):
             continue
     return out
 
-def emit_ruling(page, cat, anchor, groups, out, notes=None):
+def emit_ruling(page, cat, anchor, groups, out, notes=None, occurrence=1):
     """groups: (readers_set, action[, is_alternate[, condition]]) tuples."""
-    try: loc=T.find(page, anchor, 1)
+    try: loc=T.find(page, anchor, occurrence)
     except T.NoMatch: return
     label,color=RCOLORS[cat]
     attribution=[]; readings=[]; has_alt=False

@@ -601,5 +601,45 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p453-WAQF_RASM-ولات-3",
+    "pageNumber": 453,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 3,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 3,
+    "baseText": "وَّلَاتَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "الوقف بالهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
