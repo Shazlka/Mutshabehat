@@ -72,5 +72,38 @@
     "description": "بالبناء للفاعل",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D258-بمصرخي-w2",
+    "surah": 14,
+    "ayah": 22,
+    "startToken": 33,
+    "endToken": 33,
+    "operation": "REPLACE",
+    "hafsText": "بِمُصْرِخِىَّ ۖ",
+    "variantText": "بِمُصْرِخِيِّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D258-بمصرخي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D258-بمصرخي-w2",
+        "variantId": "v-D258-بمصرخي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر الياء المشددة ﴿بِمُصْرِخِيِّ﴾",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
