@@ -1,0 +1,74 @@
+[
+  {
+    "id": "v-L263-ننزلهو-1-w2",
+    "surah": 15,
+    "ayah": 21,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نُنَزِّلُهُۥٓ",
+    "variantText": "وَمَا نُنْزِلُهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L263-ننزلهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L263-ننزلهو-1-w2",
+        "variantId": "v-L263-ننزلهو-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتخفيف الزاي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L263-الرياح-1-w2",
+    "surah": 15,
+    "ayah": 22,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيَـٰحَ",
+    "variantText": "ٱلرِّيحَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L263-الرياح-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L263-الرياح-1-w2",
+        "variantId": "v-L263-الرياح-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالإفراد",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

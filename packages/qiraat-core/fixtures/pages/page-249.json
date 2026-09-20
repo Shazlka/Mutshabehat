@@ -1,0 +1,282 @@
+[
+  {
+    "id": "v-L249-يغشي-1-w2",
+    "surah": 13,
+    "ayah": 3,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "يُغْشِى",
+    "variantText": "يُغَشِّي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L249-يغشي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L249-يغشي-1-w2",
+        "variantId": "v-L249-يغشي-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي يُغْشِي اشْدُدْ صَفَا شَفَا"
+      }
+    ],
+    "description": "بفتح الغين وتشديد الشين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي يُغْشِي اشْدُدْ صَفَا شَفَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L249-وزرع_ونخيل_صنوان_وغير_صنوان-1-w2",
+    "surah": 13,
+    "ayah": 4,
+    "startToken": 8,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "وَزَرْعٌۭ وَنَخِيلٌۭ صِنْوَانٌۭ وَغَيْرُ صِنْوَانٍۢ",
+    "variantText": "وَزَرْعٍ وَنَخِيلٍ صِنْوَانٍ وَغَيْرِ صِنْوَانٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L249-وزرع_ونخيل_صنوان_وغير_صنوان-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L249-وزرع_ونخيل_صنوان_وغير_صنوان-1-w2",
+        "variantId": "v-L249-وزرع_ونخيل_صنوان_وغير_صنوان-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالجر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L249-يسقي-1-w2",
+    "surah": 13,
+    "ayah": 4,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يُسْقَىٰ",
+    "variantText": "تُسْقَىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L249-يسقي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L249-يسقي-1-w2",
+        "variantId": "v-L249-يسقي-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالتاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L249-ونفضل-1-w2",
+    "surah": 13,
+    "ayah": 4,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "وَنُفَضِّلُ",
+    "variantText": "وَيُفَضِّلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L249-ونفضل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L249-ونفضل-1-w2",
+        "variantId": "v-L249-ونفضل-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L249-الاكل-1-w2",
+    "surah": 13,
+    "ayah": 4,
+    "startToken": 21,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْأُكُلِ ۚ",
+    "variantText": "ٱلْأُكْلِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L249-الاكل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L249-الاكل-1-w2",
+        "variantId": "v-L249-الاكل-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان الكاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L249-ISTIFHAM-w2",
+    "surah": 13,
+    "ayah": 5,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَءِذَا",
+    "variantText": "إِذَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L249-ISTIFHAM",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L249-ISTIFHAM-w2",
+        "variantId": "v-L249-ISTIFHAM-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالخبر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L249-ISTIFHAM-w2",
+    "surah": 13,
+    "ayah": 5,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَءِنَّا",
+    "variantText": "إِنَّا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L249-ISTIFHAM",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L249-ISTIFHAM-w2",
+        "variantId": "v-L249-ISTIFHAM-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالخبر",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,0 +1,171 @@
+[
+  {
+    "id": "v-L255-صرط-1-w2",
+    "surah": 14,
+    "ayah": 1,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطِ",
+    "variantText": "سِرَاطِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L255-صرط-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L255-صرط-1-w2",
+        "variantId": "v-L255-صرط-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L255-صرط-1-w3",
+    "surah": 14,
+    "ayah": 1,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطِ",
+    "variantText": "صِرَٰطِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "L255-صرط-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام الصاد زايًا",
+    "sources": [
+      {
+        "id": "s-L255-صرط-1-w3",
+        "variantId": "v-L255-صرط-1-w3",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      }
+    ],
+    "description": "بإشمام الصاد زايًا",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L255-الله_الذي-1-w2",
+    "surah": 14,
+    "ayah": 2,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱللَّهِ ٱلَّذِى",
+    "variantText": "ٱللَّهِ ٱلَّذِي",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L255-الله_الذي-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L255-الله_الذي-1-w2",
+        "variantId": "v-L255-الله_الذي-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بجر الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L255-وهو-1-w2",
+    "surah": 14,
+    "ayah": 4,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L255-وهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L255-وهو-1-w2",
+        "variantId": "v-L255-وهو-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      }
+    ]
+  }
+]

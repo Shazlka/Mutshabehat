@@ -1,0 +1,41 @@
+[
+  {
+    "id": "v-L253-وصدوا-1-w2",
+    "surah": 13,
+    "ayah": 33,
+    "startToken": 30,
+    "endToken": 30,
+    "operation": "REPLACE",
+    "hafsText": "وَصُدُّوا۟",
+    "variantText": "وَصَدُّوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L253-وصدوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L253-وصدوا-1-w2",
+        "variantId": "v-L253-وصدوا-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح الصاد مبنياً للفاعل",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,0 +1,190 @@
+[
+  {
+    "id": "r-p254-001-1",
+    "pageNumber": 254,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 36,
+    "startToken": 25,
+    "endToken": 25,
+    "endAyah": 36,
+    "baseText": "مَـَٔابِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09",
+        "action": "إثبات الياء وصلًا ووقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وصلًا ووقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وصلًا ووقفًا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p254-002-1",
+    "pageNumber": 254,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 36,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 36,
+    "baseText": "ءَاتَيْنَـٰهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p254-003-1",
+    "pageNumber": 254,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 37,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 37,
+    "baseText": "وَاقٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02",
+        "action": "إثبات الياء وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وقفًا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p254-004-1",
+    "pageNumber": 254,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 38,
+    "startToken": 14,
+    "endToken": 14,
+    "endAyah": 38,
+    "baseText": "يَأْتِىَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p254-005-1",
+    "pageNumber": 254,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 38,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 38,
+    "baseText": "بِـَٔايَةٍ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  }
+]

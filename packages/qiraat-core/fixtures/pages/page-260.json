@@ -1,0 +1,121 @@
+[
+  {
+    "id": "v-L260-ابرهيم-1-w2",
+    "surah": 14,
+    "ayah": 35,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمُ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "L260-ابرهيم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L260-ابرهيم-1-w2",
+        "variantId": "v-L260-ابرهيم-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      }
+    ],
+    "description": "بالألف بعد الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R01"
+    ]
+  },
+  {
+    "id": "v-L260-تحسبن-1-w2",
+    "surah": 14,
+    "ayah": 42,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَحْسَبَنَّ",
+    "variantText": "تَحْسِبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L260-تحسبن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L260-تحسبن-1-w2",
+        "variantId": "v-L260-تحسبن-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L260-يوخرهم-1-w2",
+    "surah": 14,
+    "ayah": 42,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يُؤَخِّرُهُمْ",
+    "variantText": "نُؤَخِّرُهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L260-يوخرهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L260-يوخرهم-1-w2",
+        "variantId": "v-L260-يوخرهم-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالنون",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

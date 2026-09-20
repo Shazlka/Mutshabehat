@@ -1,0 +1,75 @@
+[
+  {
+    "id": "v-L252-يدخلونها-1-w2",
+    "surah": 13,
+    "ayah": 23,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَدْخُلُونَهَا",
+    "variantText": "يُدْخَلُونَهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L252-يدخلونها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L252-يدخلونها-1-w2",
+        "variantId": "v-L252-يدخلونها-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الياء وفتح الخاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L252-وذريتهم-1-w2",
+    "surah": 13,
+    "ayah": 23,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَذُرِّيَّـٰتِهِمْ ۖ",
+    "variantText": "وَذُرِّيَّتِهِمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L252-وذريتهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L252-وذريتهم-1-w2",
+        "variantId": "v-L252-وذريتهم-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالتوحيد",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

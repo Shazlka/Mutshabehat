@@ -4,8 +4,8 @@ For the next agent picking up this project. Read this first, then `PROJECT_MASTE
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
 **Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/20
-— pages 1–244 plus all of سور مريم وطه والأنبياء والحج والمؤمنون والنور (pages 305–359) are imported
-(1,556 variants, 7,138 أصول rulings across 299 pages, 305 remaining),
+— pages 1–244, pages 249–267 (الرعد وإبراهيم والحجر), plus all of سور مريم وطه والأنبياء والحج والمؤمنون والنور (pages 305–359) are imported
+(1,613 variants, 7,190 أصول rulings across 318 pages, 286 remaining),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
@@ -73,7 +73,7 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 | Commit | Change |
 |---|---|
-| (this batch) | **Qiraat pages 21–41 imported**: +109 variants, +490 أصول rulings, every locus partitioning the 20 Riwayat exactly once. Pages 1–41 are now contiguous. Also unpinned two tools that were silently scoped to 20 pages (`build_rulings.py`, `validate-qiraat-data.mjs`) and untracked the stray `__pycache__`. |
+| (2026-09-20) | **Qiraat pages 249–267 imported**: Ar-Ra'd, Ibrahim and Al-Hijr from the supplied ayah tables; +57 variants and +52 reader-specific أصول rulings. All fixtures are loader-wired and token-anchored; universal tajwid and contradictory/self-questioning source rows were deliberately omitted. Fixture-only; no DB write. |
 | `8a0fe08` | **One reader layer at a time** + long-press haptic. `ReaderLayer` enum replaces three independent booleans; a press is answered by the active layer only; `haptics.ts` (new). See `PROJECT_MASTER.md` §13. |
 | `5b02897` | **Annotations on/off switch** ("ن"), auto-cleared when the Qiraat layer came on (that auto-off is now subsumed by the exclusivity rule above). Fixed the memo-identity bug that made the first cut of the toggle do nothing. |
 | `05bc02b` | **Permanent Qiraat sidebar** (desktop / iPad landscape, 330px), a متشابهات toggle ("م"), and per-word أصول explanation grouped **by action** (﴿تَرْضَىٰ﴾ → «إمالة → حمزة/الكسائي/خلف العاشر» and «تقليل → ورش»). `PROJECT_MASTER.md` §12 written. |

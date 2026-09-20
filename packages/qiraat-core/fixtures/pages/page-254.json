@@ -1,0 +1,117 @@
+[
+  {
+    "id": "v-L254-اكلها-1-w2",
+    "surah": 13,
+    "ayah": 35,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "أُكُلُهَا",
+    "variantText": "أُكْلُهَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L254-اكلها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L254-اكلها-1-w2",
+        "variantId": "v-L254-اكلها-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان الكاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L254-اولم_يروا-1-w2",
+    "surah": 13,
+    "ayah": 41,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَوَلَمْ يَرَوْا۟",
+    "variantText": "أَوَلَمْ تَرَوْا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L254-اولم_يروا-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L254-اولم_يروا-1-w2",
+        "variantId": "v-L254-اولم_يروا-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالتاء للخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L254-الكفار-1-w2",
+    "surah": 13,
+    "ayah": 42,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْكُفَّـٰرُ",
+    "variantText": "ٱلْكَافِرُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L254-الكفار-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L254-الكفار-1-w2",
+        "variantId": "v-L254-الكفار-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الرعد — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالإفراد",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

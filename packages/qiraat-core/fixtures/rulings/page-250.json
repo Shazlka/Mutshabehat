@@ -1,0 +1,364 @@
+[
+  {
+    "id": "r-p250-001-1",
+    "pageNumber": 250,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 6,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 6,
+    "baseText": "مَغْفِرَةٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p250-002-1",
+    "pageNumber": 250,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 7,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 7,
+    "baseText": "هَادٍ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02",
+        "action": "إثبات الياء وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وقفًا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p250-003-1",
+    "pageNumber": 250,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 8,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 8,
+    "baseText": "أُنثَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p250-004-1",
+    "pageNumber": 250,
+    "category": "MADD_LIN",
+    "categoryAr": "مد اللين المهموز",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 8,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 8,
+    "baseText": "شَىْءٍ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد اللين المهموز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد اللين المهموز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p250-005-1",
+    "pageNumber": 250,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 8,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 8,
+    "baseText": "شَىْءٍ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "السكت",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "السكت",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p250-006-1",
+    "pageNumber": 250,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 9,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 9,
+    "baseText": "ٱلْمُتَعَالِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02",
+        "action": "إثبات الياء وصلًا ووقفًا"
+      },
+      {
+        "authorityId": "Q09",
+        "action": "إثبات الياء وصلًا ووقفًا"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "إثبات الياء وصلًا"
+      },
+      {
+        "authorityId": "Q03",
+        "action": "إثبات الياء وصلًا"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إثبات الياء وصلًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وصلًا ووقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وصلًا ووقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وصلًا ووقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وصلًا ووقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "إثبات الياء وصلًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات الياء وصلًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إثبات الياء وصلًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إثبات الياء وصلًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات الياء وصلًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات الياء وصلًا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p250-007-1",
+    "pageNumber": 250,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 11,
+    "startToken": 35,
+    "endToken": 35,
+    "endAyah": 11,
+    "baseText": "وَالٍ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02",
+        "action": "إثبات الياء وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وقفًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وقفًا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  }
+]

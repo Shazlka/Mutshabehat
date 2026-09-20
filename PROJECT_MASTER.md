@@ -315,6 +315,14 @@ key is server-only.
 
 ## 12. Qiraat Ashr: the import process for the remaining Mushaf pages
 
+### 12.0 2026-09-20 import status
+
+The fixture corpus includes pages 249–267 (الرعد، إبراهيم، الحجر): 57 new fully partitioned
+variant loci and 52 token-anchored, reader-specific أصول rulings. This keeps the current total at
+1,613 variants and 7,190 rulings across 318 active pages. This batch is fixture-only: no migration
+or database population was performed. Source rows that were universal, self-questioning, or
+inconsistent with the Hafs Mushaf-1441 baseline were omitted rather than inferred.
+
 **Read this before importing any page beyond 20.** Pages 1–20 are done and live; this section is the
 repeatable recipe for 21–604, written so the next session does not have to rediscover it. The
 architecture behind it is `docs/qiraat/10-v2-architecture-plan.md`; this is the operating procedure.
