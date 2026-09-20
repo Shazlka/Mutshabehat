@@ -1,0 +1,138 @@
+[
+  {
+    "id": "v-L413-s31a20b0-w1",
+    "surah": 31,
+    "ayah": 20,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَأَسْبَغَ",
+    "variantText": "وَأَسْبَغْنَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L413-s31a20b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L413-s31a20b0-w1",
+        "variantId": "v-L413-s31a20b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بنون العظمة مفتوحة وضم الباء وسكون الغين",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L413-s31a23b0-w1",
+    "surah": 31,
+    "ayah": 23,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "يَحْزُنكَ",
+    "variantText": "يُحْزِنْكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L413-s31a23b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L413-s31a23b0-w1",
+        "variantId": "v-L413-s31a23b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الياء وكسر الزاي",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L413-s31a25b0-w1",
+    "surah": 31,
+    "ayah": 25,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "لَيَقُولُنَّ ٱللَّهُ ۚ",
+    "variantText": "لَيَقُولُنَّ لِلَّهِ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L413-s31a25b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L413-s31a25b0-w1",
+        "variantId": "v-L413-s31a25b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "(أبو عمرو، ويعقوب) بلام الجر وحذف الألف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L413-s31a27b0-w1",
+    "surah": 31,
+    "ayah": 27,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْبَحْرُ",
+    "variantText": "وَالْبَحْرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L413-s31a27b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L413-s31a27b0-w1",
+        "variantId": "v-L413-s31a27b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بنصب الراء",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "v-L395-s28a82b1-w2",
+    "surah": 28,
+    "ayah": 82,
+    "startToken": 21,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "لَخَسَفَ بِنَا ۖ",
+    "variantText": "لَخَسَفَ بِنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L395-s28a82b1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L395-s28a82b1-w2",
+        "variantId": "v-L395-s28a82b1-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح الخاء والسين مبنياً للفاعل",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

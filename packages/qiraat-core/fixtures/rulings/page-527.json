@@ -1,0 +1,33 @@
+[
+  {
+    "id": "r-p527-s53a31b1",
+    "pageNumber": 527,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 31,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 31,
+    "baseText": "أَسَـٰٓـُٔوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  }
+]

@@ -4,8 +4,8 @@ For the next agent picking up this project. Read this first, then `PROJECT_MASTE
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
 **Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/17
-— pages 1–224 plus all of سورة مريم (pages 305–312) are imported and live
-(1,232 variants, 5,544 أصول rulings across 232 pages),
+— pages 1–224, سورة مريم (305–312) and surahs 25–56 (pages 359–537) are imported and live
+(1,467 variants, 6,316 أصول rulings across 394 pages),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
@@ -94,9 +94,12 @@ and `stats/page.tsx` have `no-explicit-any` errors.
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
-- **372 pages left to import** (225–304 and 313–604). The page table is deliberately **not**
+- **210 pages left to import** (225–304, 313–358, and 538–604). The page table is deliberately **not**
   contiguous now — 224 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
   non-negotiable rules, the six generator invariants, the four anchor shapes that cost 23 rejections
+  Surahs 25–56 (pages 359–537) were bulk-imported by `scripts/qiraat/import_surah_tables.py`,
+  which drops anything it cannot prove clean (see `docs/qiraat/surahs-25-56-dropped.md`); coverage
+  there is intentionally partial.
   in the 22–41 batch and the classification rules for an ayah-by-ayah source are in
   `PROJECT_MASTER.md` §12 (§12.4b for the anchor shapes, §12.5 for سورة مريم). Do not improvise around it.
 - **سورة مريم came from a different source** — a user-supplied ayah-by-ayah table, not the PDF — so

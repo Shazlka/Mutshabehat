@@ -1,0 +1,40 @@
+[
+  {
+    "id": "v-L433-s34a48b0-w1",
+    "surah": 34,
+    "ayah": 48,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْغُيُوبِ",
+    "variantText": "الْغِيُوبِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L433-s34a48b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L433-s34a48b0-w1",
+        "variantId": "v-L433-s34a48b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر الغين لمناسبة الياء",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

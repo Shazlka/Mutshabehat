@@ -1,0 +1,163 @@
+[
+  {
+    "id": "v-L446-s37a6b0-w2",
+    "surah": 37,
+    "ayah": 6,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "بِزِينَةٍ ٱلْكَوَاكِبِ",
+    "variantText": "بِزِينَةٍ الْكَوَاكِبِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L446-s37a6b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L446-s37a6b0-w2",
+        "variantId": "v-L446-s37a6b0-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتنوين زينة وخفض الكواكب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L446-s37a6b0-w3",
+    "surah": 37,
+    "ayah": 6,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "بِزِينَةٍ ٱلْكَوَاكِبِ",
+    "variantText": "بِزِينَةِ الْكَوَاكِبِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L446-s37a6b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L446-s37a6b0-w3",
+        "variantId": "v-L446-s37a6b0-w3",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بغير تنوين وإضافة زينة إلى الكواكب مخفوضة",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-L446-s37a8b0-w2",
+    "surah": 37,
+    "ayah": 8,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَّا يَسَّمَّعُونَ",
+    "variantText": "لَّا يَسْمَعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L446-s37a8b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L446-s37a8b0-w2",
+        "variantId": "v-L446-s37a8b0-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان السين وتخفيف الميم مفتوحة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L446-s37a16b1-w2",
+    "surah": 37,
+    "ayah": 16,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "مِتْنَا",
+    "variantText": "مُتْنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L446-s37a16b1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L446-s37a16b1-w2",
+        "variantId": "v-L446-s37a16b1-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

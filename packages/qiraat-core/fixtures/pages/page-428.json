@@ -1,0 +1,107 @@
+[
+  {
+    "id": "v-L428-s34a3b0-w1",
+    "surah": 34,
+    "ayah": 3,
+    "startToken": 11,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "عَـٰلِمِ ٱلْغَيْبِ ۖ",
+    "variantText": "عَلَّامِ الْغَيْبِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L428-s34a3b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L428-s34a3b0-w1",
+        "variantId": "v-L428-s34a3b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بخفض الميم على صيغة المبالغة وتنوين اللام بعد تشديدها",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L428-s34a3b1-w1",
+    "surah": 34,
+    "ayah": 3,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَعْزُبُ",
+    "variantText": "لَا يَعْزِبُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L428-s34a3b1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L428-s34a3b1-w1",
+        "variantId": "v-L428-s34a3b1-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر الزاي",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L428-s34a5b0-w1",
+    "surah": 34,
+    "ayah": 5,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مُعَـٰجِزِينَ",
+    "variantText": "مُعَجِّزِينَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L428-s34a5b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L428-s34a5b0-w1",
+        "variantId": "v-L428-s34a5b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بحذف الألف وتشديد العين",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

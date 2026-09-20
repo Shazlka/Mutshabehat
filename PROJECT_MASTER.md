@@ -540,6 +540,24 @@ transcribed as given; they are citations, not attributions).
   - Multi-word & phrase queries: page 205 ﴿لِلنَّبِىِّ – ٱلنَّبِىِّ﴾ (9:113, 117) Nafi with hamza & madd muttasil, ﴿إِبْرَٰهِيمَ﴾ (9:114) Hisham with alef, ﴿ٱلْعُسْرَةِ﴾ (9:117) Abu Ja'far damma on seen, ﴿كَادَ يَزِيغُ﴾ (9:117) Hamzah, Hafs, Ibn Kathir with taa `تَزِيغُ`; page 207 ﴿يَلُونَكُم﴾ (9:123) damma on laam for Ibn Kathir, ﴿يَفْقَهُونَ﴾ (9:127) Abu Ja'far with taa `تَفْقَهُونَ`; page 208 Yunus 1–6: ﴿الٓر ۚ﴾ (10:1) Abu Ja'far sakt on huruf tahajji, ﴿لَسَـٰحِرٌ﴾ (10:2) Sahir vs Sihr, ﴿فَصَّلَ ٱلْـَٔايَـٰتِ﴾ (10:5) Nafi, Abu Amr, Hafs, Abu Ja'far with nun `نُفَصِّلُ`; page 212 omitted Hud table artifacts ﴿ٱلْأَخْسَرُونَ﴾ and ﴿يَسْتَغْشُونَ﴾ accidentally included in Yunus extraction; page 213 ﴿لَّا يَهِدِّىٓ﴾ (10:35) Hafs baseline aligned with rasm `لَّا يَهِدِّىٓ`, ﴿يَعْزُبُ﴾ (10:61) Hamzah, Kisai, Khalaf 10 kasr on zaay; page 215 ﴿قِطَعًا﴾ (10:27) Ibn Kathir, Kisai sukun on taa `قِطْعًا`, ﴿أَصْغَرَ﴾ and ﴿أَكْبَرَ﴾ (10:61) Hamzah, Khalaf 10 rafa'; page 216 ﴿مَتَـٰعُ﴾ (10:23) Hafs nasb `مَتَـٰعَ`; page 219 ﴿وَلَا تَتَّبِعَآنِّ﴾ (10:89) corrected prompt inversion: Hafs and majority read `وَلَا تَتَّبِعَآنِّ` (tashdeed nun maksoorah + madd mushabba') matching rasm baseline, Ibn Dhakwan alone reads `وَلَا تَتَّبِعَانِ` (takhfeef); page 220 ﴿نُنَجِّى﴾ (10:103) Kisa'i, Ya'qub with single nun and sukun `نُنْجِ`; page 221 transition page spanning Surah 10 (Yunus 107–109) and Surah 11 (Hud 1–5): `PAGES[221]` defined with `surah=10, af=107, at=5`, modeled ﴿وَهُوَ﴾ with `all_occurrences=True` matching all 3 positions (10:107, 10:109, 11:4); page 222 ﴿سِحْرٌۭ﴾ (11:7) Hamzah, Kisai, Khalaf 10 read `سَـٰحِرٌۭ`; page 224 ﴿يُضَـٰعَفُ﴾ (11:20) Ibn Kathir, Ibn Amir, Abu Ja'far, Ya'qub read `يُضَعَّفُ` without alef and with tashdeed on 'ayn.
 - All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
 
+**Surahs 25–56 (الفرقان–الواقعة), Mushaf pages 359–537 — the bulk parser.** 2,220 ayat across
+5 workbooks arrived in the same ayah-by-ayah table shape as Maryam, too many to hand-encode.
+`scripts/qiraat/import_surah_tables.py` reads the extracted JSON and writes fixtures directly
+(it does NOT go through `data_variants.py`/`data_rulings.py`), enforcing the same two hard
+invariants in code: a variant ships only if its أوجه partition the 20 Riwayat exactly once and
+the حفص وجه matches the rasm at a real token. Everything else is **dropped and logged** to
+`docs/qiraat/surahs-25-56-dropped.md`, never guessed. أصول rulings — which have no partition
+checkpoint — are parsed only for deterministic/explicitly-listed families and only when the
+bullet is free of the negation markers («غير وارد», «لا يدغم», «فتفخم», …) and universal markers
+(«للجميع», «لجميع القراء») that share the same leading phrase; the universal families (ميم الجمع،
+المد المنفصل/المتصل/العارض/اللازم، الإخفاء العام) are skipped exactly as §12.5 (Maryam) prescribes.
+Yield was 215 variant loci (235 records) + 772 rulings; the rest is catalogued for the paper
+original. **Two lessons for the next parser run:** (1) the reader resolver must match a whole
+name before treating a leading و as a connector, or every و-initial name (ورش، وروح…) is silently
+eaten — this bug hid until ﴿الموتى﴾'s تقليل group came out empty; (2) coverage from a parser is
+intentionally partial — it is the price of never shipping a guessed attribution, and it is the
+right trade for a 2,220-ayah volume that cannot be hand-verified in one pass.
+
 ### 12.6 Postgres V2 Migration & Ingestion (Phase A completed 2026-09-19)
 
 Fixtures remain the client serving layer (zero round-trip page turns, offline-capable). Postgres is the authoring, relational query, and QA source of truth.

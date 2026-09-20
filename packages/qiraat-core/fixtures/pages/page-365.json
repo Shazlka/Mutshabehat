@@ -1,0 +1,181 @@
+[
+  {
+    "id": "v-L365-s25a60b0-w1",
+    "surah": 25,
+    "ayah": 60,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "لِمَا تَأْمُرُنَا",
+    "variantText": "لِمَا يَأْمُرُنَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L365-s25a60b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L365-s25a60b0-w1",
+        "variantId": "v-L365-s25a60b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L365-s25a61b0-w1",
+    "surah": 25,
+    "ayah": 61,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "سِرَٰجًۭا",
+    "variantText": "سُرُجًا",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L365-s25a61b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L365-s25a61b0-w1",
+        "variantId": "v-L365-s25a61b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم السين والراء جمعاً بغير ألف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L365-s25a62b0-w1",
+    "surah": 25,
+    "ayah": 62,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يَذَّكَّرَ",
+    "variantText": "يَذْكُرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L365-s25a62b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L365-s25a62b0-w1",
+        "variantId": "v-L365-s25a62b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتخفيف الذال وإسكانها مع فتح الكاف مخففة",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L365-s25a67b0-w2",
+    "surah": 25,
+    "ayah": 67,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَلَمْ يَقْتُرُوا۟",
+    "variantText": "وَلَمْ يُقْتِرُوا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L365-s25a67b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L365-s25a67b0-w2",
+        "variantId": "v-L365-s25a67b0-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الياء وكسر التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L365-s25a67b0-w3",
+    "surah": 25,
+    "ayah": 67,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَلَمْ يَقْتُرُوا۟",
+    "variantText": "وَلَمْ يَقْتِرُوا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L365-s25a67b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L365-s25a67b0-w3",
+        "variantId": "v-L365-s25a67b0-w3",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح الياء وكسر التاء",
+    "wajhIndex": 3,
+    "evidence": []
+  }
+]

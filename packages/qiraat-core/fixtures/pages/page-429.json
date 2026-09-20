@@ -1,0 +1,159 @@
+[
+  {
+    "id": "v-L429-s34a9b1-w2",
+    "surah": 34,
+    "ayah": 9,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "كِسَفًۭا",
+    "variantText": "كِسْفًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L429-s34a9b1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L429-s34a9b1-w2",
+        "variantId": "v-L429-s34a9b1-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L429-s34a10b0-w1",
+    "surah": 34,
+    "ayah": 10,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلطَّيْرَ ۖ",
+    "variantText": "وَالطَّيْرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L429-s34a10b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L429-s34a10b0-w1",
+        "variantId": "v-L429-s34a10b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بنصب الراء",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L429-s34a12b1-w1",
+    "surah": 34,
+    "ayah": 12,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "نُذِقْهُ",
+    "variantText": "يُذِقْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L429-s34a12b1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L429-s34a12b1-w1",
+        "variantId": "v-L429-s34a12b1-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بياء الغيب المضمومة",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L429-s34a13b1-w1",
+    "surah": 34,
+    "ayah": 13,
+    "startToken": 18,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "عِبَادِىَ ٱلشَّكُورُ",
+    "variantText": "عِبَادِ الشَّكُورُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L429-s34a13b1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L429-s34a13b1-w1",
+        "variantId": "v-L429-s34a13b1-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان ياء الإضافة وصلاً فتسقط لالتقاء الساكنين",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

@@ -1,0 +1,109 @@
+[
+  {
+    "id": "v-L432-s34a37b0-w1",
+    "surah": 34,
+    "ayah": 37,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "جَزَآءُ ٱلضِّعْفِ",
+    "variantText": "جَزَاءً الضِّعْفُ / الضِّعْفَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L432-s34a37b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L432-s34a37b0-w1",
+        "variantId": "v-L432-s34a37b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتنوين جزاء ونصب الضعف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L432-s34a37b1-w1",
+    "surah": 34,
+    "ayah": 37,
+    "startToken": 21,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "فِى ٱلْغُرُفَـٰتِ",
+    "variantText": "فِي الْغُرْفَةِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L432-s34a37b1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L432-s34a37b1-w1",
+        "variantId": "v-L432-s34a37b1-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وحده بالإفراد وسكون الراء",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L432-s34a38b0-w1",
+    "surah": 34,
+    "ayah": 38,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مُعَـٰجِزِينَ",
+    "variantText": "مُعَجِّزِينَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L432-s34a38b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L432-s34a38b0-w1",
+        "variantId": "v-L432-s34a38b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بحذف الألف وتشديد العين",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]
