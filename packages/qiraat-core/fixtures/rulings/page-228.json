@@ -1155,6 +1155,10 @@
       {
         "authorityId": "Q06",
         "action": "النقل والإدغام"
+      },
+      {
+        "authorityId": "Q04",
+        "action": "النقل والإدغام (سكوناً وروماً)"
       }
     ],
     "readings": [
@@ -1166,6 +1170,11 @@
       {
         "readingId": "Q06-R02",
         "action": "النقل والإدغام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "النقل والإدغام (سكوناً وروماً)",
         "isDefault": true
       }
     ],

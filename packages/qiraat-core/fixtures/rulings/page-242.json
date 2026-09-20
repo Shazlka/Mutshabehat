@@ -1062,6 +1062,10 @@
       {
         "authorityId": "Q06",
         "action": "خمسة القياس"
+      },
+      {
+        "authorityId": "Q04",
+        "action": "خمسة القياس"
       }
     ],
     "readings": [
@@ -1072,6 +1076,11 @@
       },
       {
         "readingId": "Q06-R02",
+        "action": "خمسة القياس",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
         "action": "خمسة القياس",
         "isDefault": true
       }
@@ -1099,6 +1108,10 @@
       {
         "authorityId": "Q06",
         "action": "خمسة القياس"
+      },
+      {
+        "authorityId": "Q04",
+        "action": "خمسة القياس"
       }
     ],
     "readings": [
@@ -1109,6 +1122,11 @@
       },
       {
         "readingId": "Q06-R02",
+        "action": "خمسة القياس",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
         "action": "خمسة القياس",
         "isDefault": true
       }
