@@ -56,3 +56,11 @@ __pycache__/
 apps/**/.build/
 scratch/
 
+# Qiraat bulk-import: user's own Excel files and generated reports never belong in git.
+/data/qiraat/import/*
+!/data/qiraat/import/README.md
+/reports/qiraat-import-*.json
+/reports/qiraat-import-*.html
+/packages/qiraat-core/fixtures/pages-from-db/
+.env.local
+

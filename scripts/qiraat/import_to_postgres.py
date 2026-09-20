@@ -25,14 +25,12 @@ DIFF_INV = {
 }
 
 def main():
-    print("Connecting to PostgreSQL at 127.0.0.1:5433...")
-    conn = psycopg2.connect(
-        host='127.0.0.1',
-        port=5433,
-        dbname='postgres',
-        user='postgres',
-        password='O6ih48Hy6Q1nh3AxElyC9HlHLFCzwfjJ'
-    )
+    db_url = os.environ.get('QIRAAT_DATABASE_URL') or os.environ.get('DATABASE_URL')
+    if not db_url:
+        print("QIRAAT_DATABASE_URL (or DATABASE_URL) is required. See .env.example.", file=sys.stderr)
+        sys.exit(2)
+    print("Connecting to PostgreSQL...")
+    conn = psycopg2.connect(db_url)
     cur = conn.cursor()
 
     # Load surah names

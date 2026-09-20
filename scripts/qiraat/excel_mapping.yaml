@@ -1,0 +1,126 @@
+# Configurable Excel column mapping for the Qiraat bulk importer.
+#
+# Each canonical field lists every header spelling (Arabic + English, with/without diacritics,
+# common typos) that should map to it. The importer normalizes a header before matching:
+# strips whitespace/tashkeel, folds alef/ya variants, lowercases Latin text.
+#
+# A header found in the sheet that is NOT in ANY list below is left UNMAPPED and reported —
+# never silently guessed (task requirement #5: "Flag ambiguous mappings for review.").
+#
+# To support a new spreadsheet layout, add the new header spelling to the right list here.
+# Do not change field names on the right (those are read by scripts/qiraat/import_excel.py).
+
+mushaf_page:
+  - page
+  - mushaf_page
+  - الصفحة
+  - رقم الصفحة
+  - صفحة المصحف
+
+surah_number:
+  - surah
+  - surah_number
+  - السورة
+  - رقم السورة
+
+surah_name:
+  - surah_name
+  - اسم السورة
+
+ayah_from:
+  - ayah
+  - ayah_from
+  - ayah_number
+  - رقم الآية
+  - الآية
+  - من آية
+  - verse
+  - verse_number
+
+ayah_to:
+  - ayah_to
+  - إلى آية
+  - الآية إلى
+
+occurrence_note:
+  - occurrence
+  - occurrence_note
+  - الموضع
+  - الترتيب في الصفحة
+  - رقم الموضع
+
+base_text:
+  - base_text
+  - hafs_text
+  - نص حفص
+  - النص الأصلي
+  - الكلمة (حفص)
+  - كلمة حفص
+
+variant_text:
+  - variant_text
+  - reading
+  - القراءة
+  - الوجه
+  - النص البديل
+  - كلمة القراءة
+
+description:
+  - description
+  - difference_type
+  - نوع الاختلاف
+  - وصف الفرق
+  - البيان
+
+category:
+  - category
+  - usul
+  - farsh
+  - الأصل
+  - الفئة
+  - النوع
+  - أصول / فرش
+
+attribution:
+  - reader
+  - narrator
+  - readers
+  - narrators
+  - attribution
+  - القراء
+  - الرواة
+  - القرّاء والرواة
+  - من قرأ
+  - عزو القراءة
+
+verification_status:
+  - verification_status
+  - status
+  - الحالة
+  - حالة التحقق
+
+source_note:
+  - source
+  - note
+  - notes
+  - ملاحظة
+  - ملاحظات
+  - المصدر
+
+evidence_shatibiyyah:
+  - shatibiyyah
+  - الشاطبية
+  - شاهد الشاطبية
+  - بيت الشاطبية
+
+evidence_durrah:
+  - durrah
+  - الدرة
+  - شاهد الدرة
+  - بيت الدرة
+
+evidence_generic:
+  - shahid
+  - evidence
+  - الشاهد
+  - الأدلة
