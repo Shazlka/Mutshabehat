@@ -364,5 +364,45 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p474-YAAT_IDAFA-ادعوني_استجب-6",
+    "pageNumber": 474,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 40,
+    "ayah": 60,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 60,
+    "baseText": "ٱدْعُونِىٓ أَسْتَجِبْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

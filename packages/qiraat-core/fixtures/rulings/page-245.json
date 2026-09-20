@@ -835,5 +835,175 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p245-YAAT_IDAFA-لي_ابي-18",
+    "pageNumber": 245,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 80,
+    "startToken": 29,
+    "endToken": 30,
+    "endAyah": 80,
+    "baseText": "لِىٓ أَبِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p245-YAAT_IDAFA-وحزني_الي-19",
+    "pageNumber": 245,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 86,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 86,
+    "baseText": "وَحُزْنِىٓ إِلَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

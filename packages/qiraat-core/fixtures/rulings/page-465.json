@@ -872,5 +872,81 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p465-YAAT_IDAFA-تامروني_اعبد-7",
+    "pageNumber": 465,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 64,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 64,
+    "baseText": "تَأْمُرُوٓنِّىٓ أَعْبُدُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

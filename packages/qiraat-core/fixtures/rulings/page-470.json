@@ -552,5 +552,139 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p470-YAAT_IDAFA-ذروني_اقتل-8",
+    "pageNumber": 470,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 40,
+    "ayah": 26,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 26,
+    "baseText": "ذَرُونِىٓ أَقْتُلْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p470-YAAT_IDAFA-اني_اخاف-9",
+    "pageNumber": 470,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 40,
+    "ayah": 26,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 26,
+    "baseText": "إِنِّىٓ أَخَافُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

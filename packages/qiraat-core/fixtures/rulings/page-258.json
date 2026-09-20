@@ -323,5 +323,94 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p258-YAAT_IDAFA-لي_عليكم-3",
+    "pageNumber": 258,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 22,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 22,
+    "baseText": "لِىَ عَلَيْكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p258-YAAT_ZAWAID-اشركتمون-4",
+    "pageNumber": 258,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 22,
+    "startToken": 37,
+    "endToken": 37,
+    "endAyah": 22,
+    "baseText": "أَشْرَكْتُمُونِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إثبات الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

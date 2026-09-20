@@ -463,5 +463,81 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p295-YAAT_ZAWAID-المهتد-6",
+    "pageNumber": 295,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 17,
+    "startToken": 27,
+    "endToken": 27,
+    "endAyah": 17,
+    "baseText": "ٱلْمُهْتَدِ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إثبات الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

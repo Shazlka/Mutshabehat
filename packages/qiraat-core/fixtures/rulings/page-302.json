@@ -1,0 +1,33 @@
+[
+  {
+    "id": "r-p302-YAAT_IDAFA-معي_صبرا-0",
+    "pageNumber": 302,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 75,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 75,
+    "baseText": "مَعِىَ صَبْرًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  }
+]

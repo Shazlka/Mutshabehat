@@ -1017,5 +1017,90 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p227-YAAT_ZAWAID-تسلن-8",
+    "pageNumber": 227,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 46,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 46,
+    "baseText": "تَسْـَٔلْنِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إثبات وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إثبات وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إثبات وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إثبات وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إثبات وصلاً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات في الحالين"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات في الحالين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إثبات وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إثبات وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات في الحالين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

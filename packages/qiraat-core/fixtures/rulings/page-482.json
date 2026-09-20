@@ -297,5 +297,128 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p482-YAAT_IDAFA-شركاءي_قالوا-2",
+    "pageNumber": 482,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 47,
+    "startToken": 22,
+    "endToken": 23,
+    "endAyah": 47,
+    "baseText": "شُرَكَآءِى قَالُوٓا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p482-YAAT_IDAFA-ربي_ان-3",
+    "pageNumber": 482,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 50,
+    "startToken": 19,
+    "endToken": 20,
+    "endAyah": 50,
+    "baseText": "رَبِّىٓ إِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "condition": "بخلف عنه"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "بخلف عن قالون",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

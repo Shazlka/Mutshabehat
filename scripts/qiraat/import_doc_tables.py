@@ -30,6 +30,7 @@ RCOLORS = {
  'IMALAH_TAQLIL':('الممال والمقلل','#C026D3'),'TAGHYIR_HAMZ':('تغيير الهمز','#DC2626'),
  'SILAT_HA':('صلة هاء الكناية','#0D9488'),'MEEM_JAM':('صلة ميم الجمع','#DB2777'),'SAKT':('السكت','#7C3AED'),
  'TARK_GHUNNA':('ترك الغنة','#0891B2'),
+ 'YAAT_IDAFA':('ياءات الإضافة','#CA8A04'),'YAAT_ZAWAID':('ياءات الزوائد','#CA8A04'),
 }
 DIFF={'orthography':'ORTHOGRAPHY','vowel':'HARAKAH','consonant':'LETTER','hamza':'HAMZ',
       'word_form':'LETTER','ishmam':'HARAKAH','other':'OTHER'}
@@ -213,12 +214,124 @@ def parse_taghyir_hamz_line(page, line, out):
         for anchor in anchors:
             emit_ruling(page,'TAGHYIR_HAMZ',anchor,[(rs,action)],out)
 
+# ---- explicit ياءات families ------------------------------------------------
+ANCHOR_CLAUSE_START = re.compile(r'(?=﴿[^﴾]+﴾\s*:)')
+PARENS = re.compile(r'\(([^()]*)\)')
+
+def normalize_reader_names(text):
+    """Normalize source inflections and the elided article after a leading ل."""
+    t=text.strip()
+    for old,new in [('أبي عمرو','أبو عمرو'),('أبا عمرو','أبو عمرو'),
+                    ('أبي جعفر','أبو جعفر'),('أبا جعفر','أبو جعفر'),
+                    ('أبي الحارث','أبو الحارث'),('أبا الحارث','أبو الحارث')]:
+        t=t.replace(old,new)
+    # The source writes e.g. «للبزي»; the preposition is consumed by the caller,
+    # leaving «لبزي», where the article's alif is elided.
+    if t.startswith('ل') and not t.startswith(('للباقين','للجمهور')):
+        t='ال'+t[1:]
+    return t
+
+def resolve_explicit_group(text):
+    """Strict resolver for a source-named group; unresolved trailing names drop the line."""
+    t=normalize_reader_names(text)
+    if any(x in t for x in ('الباقون','الباقين','للجمهور','الجمهور')): return None
+    m=re.match(r'جميع القراء عدا\s+(.+)$',t)
+    if m:
+        excluded,rest=resolve_readers(m.group(1),set())
+        rest=rest.strip(' ،,؛.')
+        if rest or not excluded: raise Unresolved('unresolved excepted reader')
+        return set(ALL20)-excluded
+    rs,rest=resolve_readers(t,set())
+    rest=rest.strip(' ،,؛.')
+    if rest or not rs: raise Unresolved('unresolved reader text: '+rest)
+    return rs
+
+def explicit_reader_clause(clause):
+    """Return (action, readers, alternate, note) from one explicitly attributed clause."""
+    if any(x in clause for x in ('الباقون','الباقين','للجمهور','الجمهور')): return None
+    notes=PARENS.findall(clause)
+    flat=PARENS.sub('',clause)
+    flat=re.sub(r'\s+',' ',flat).strip()
+    for m in re.finditer(r'(?<=[\s،,])ل(?=\S)',flat):
+        action=flat[:m.start()].strip(' ،,و')
+        names=flat[m.end():].strip()
+        alternate=bool(re.search(r'بخلف',names) or any('بخلف' in n for n in notes))
+        names=re.sub(r'\s+بخلف(?:\s+عنه)?\s*$','',names).strip()
+        try: readers=resolve_explicit_group(names)
+        except Unresolved: raise
+        if readers:
+            note='؛ '.join(notes) or None
+            return action,readers,alternate,note
+    return None
+
+def split_anchor_clauses(line):
+    # Several words can share one colon («﴿a﴾، ﴿b﴾: ...»). Split only when a new
+    # anchor-led clause follows a sentence/reader-clause separator, keeping the whole
+    # initial anchor group together.
+    boundary=re.compile(r'(?<=[؛.])\s*(?=(?:﴿[^﴾]+﴾\s*[,،]\s*)*﴿[^﴾]+﴾\s*:)')
+    return [x.strip() for x in boundary.split(line) if x.strip()]
+
+def parse_yaat_line(page, category, line, out):
+    """Parse only source-named readers; the remainder is intentionally not emitted."""
+    pending=[]
+    for chunk in split_anchor_clauses(line):
+        pre,sep,body=chunk.partition(':')
+        anchors=BRACE.findall(pre)
+        if not sep or not anchors: continue
+        groups=[]; notes=[]
+        try:
+            for clause in re.split(r'[؛.]',body):
+                clause=clause.strip()
+                if not clause: continue
+                parsed=explicit_reader_clause(clause)
+                if not parsed: continue
+                action,readers,alternate,note=parsed
+                if category=='YAAT_IDAFA':
+                    # Only فتح الياء وصلًا is in scope; explicit remainder clauses are omitted.
+                    if not ('فتح' in action and 'وصل' in action): continue
+                    action='الفتح وصلاً'
+                else:
+                    if not any(x in action for x in ('إثبات','يثبت','حذف','يحذف')): continue
+                    action=BRACE.sub('',action).strip()
+                if not action: continue
+                groups.append((readers,action,alternate,'بخلف عنه' if alternate else None))
+                if note: notes.append(note)
+        except Unresolved:
+            # One unresolved name invalidates the whole source line, even if another clause parsed.
+            return
+        if groups:
+            for anchor in anchors:
+                pending.append((anchor,groups,'؛ '.join(dict.fromkeys(notes)) or None))
+    for anchor,groups,notes in pending:
+        emit_ruling(page,category,anchor,groups,out,notes=notes)
+
 def parse_usul(page, lines):
-    out=[]; section=None
+    out=[]; section=None; target_section=None
     for raw in lines:
         line=raw.strip()
         head=line.split(':')[0]
         if is_neg(line): continue
+        # New source-labelled families may be inline or introduced by a bare heading followed
+        # by one or more anchored lines.
+        target_headers=[('ياءات الإضافة','YAAT_IDAFA'),('ياءات الزوائد','YAAT_ZAWAID')]
+        matched_target=False
+        for prefix,cat in target_headers:
+            if line.startswith(prefix):
+                target_section=cat
+                content=line.split(':',1)[1].strip() if ':' in line else ''
+                if content and not is_univ(line): parse_yaat_line(page,cat,content,out)
+                matched_target=True
+                break
+        if matched_target: continue
+        # Leave the target section on any other named family before considering its continuation.
+        known_other=(list(FIXED)+['الممال','صلة هاء','الإدغام الصغير','تغيير الهمز','الهمز المفرد',
+                     'إبدال','الإدغام الكبير','الإدغام الصغير','ترك الغنة','السكت','الإخفاء',
+                     'الوقف على مرسوم الخط','وقف حمزة','الهمزتان'])
+        if target_section:
+            if BRACE.search(line) and not any(line.startswith(x) for x in known_other):
+                if not is_univ(line): parse_yaat_line(page,target_section,line,out)
+                continue
+            target_section=None
         # section header for الممال
         if line.startswith('الممال') and line.rstrip().endswith(':') and not BRACE.search(line):
             section='imalah'; continue
@@ -259,18 +372,19 @@ def parse_usul(page, lines):
             continue
     return out
 
-def emit_ruling(page, cat, anchor, groups, out):
-    """groups: list of (readers_set, action) or (readers_set, action, is_alternate)."""
+def emit_ruling(page, cat, anchor, groups, out, notes=None):
+    """groups: (readers_set, action[, is_alternate[, condition]]) tuples."""
     try: loc=T.find(page, anchor, 1)
     except T.NoMatch: return
     label,color=RCOLORS[cat]
     attribution=[]; readings=[]; has_alt=False
     for g in groups:
-        if len(g)==3: rs,action,alt=g
-        else: rs,action=g; alt=False
+        if len(g)==4: rs,action,alt,condition=g
+        elif len(g)==3: rs,action,alt=g; condition=None
+        else: rs,action=g; alt=False; condition=None
         if alt: has_alt=True
         for r in sorted(rs):
-            attribution.append({'authorityId':r,'action':action})
+            attribution.append({'authorityId':r,'action':action,**({'condition':condition} if condition else {})})
             readings.append({'readingId':r,'action':action,'isDefault':not alt})
     if not readings: return
     out.append({'id':f'r-p{page:03d}-{cat}-{T.norm(anchor).replace(" ","_")}-{len(out)}',
@@ -278,7 +392,7 @@ def emit_ruling(page, cat, anchor, groups, out):
         'surah':loc['surah'],'ayah':loc['startAyah'],'startToken':loc['startWord'],
         'endToken':loc['endWord'],'endAyah':loc['endAyah'],'baseText':loc['baseText'],
         'verificationStatus':'REVIEWED','attribution':attribution,'readings':readings,
-        'hasAlternate':has_alt,'createdAt':TS,'updatedAt':TS})
+        'hasAlternate':has_alt,**({'notes':notes} if notes else {}),'createdAt':TS,'updatedAt':TS})
 
 # ---------- driver ----------
 def existing(kind, page):
