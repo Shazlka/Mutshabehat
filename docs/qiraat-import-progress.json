@@ -50,21 +50,18 @@
     "validation": "passed",
     "manualReviewFlags": 4
   },
-  "sourceCoverageStatus": "Attached-document pages 225-584 have been reviewed, parsed, fixture-backed, and deployed, including the five-variant page-303 backfill. Existing Qiraat fixtures cover pages 1-224 from earlier sources. Pages 585-604 have no supplied source document and no Qiraat fixtures.",
+  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed; an external Quranpedia Qiraat comparison is now in progress and has produced an additive reader-attribution correction on page 303. Existing fixtures cover pages 1-224 from earlier sources. The local Juz Amma ten-Qiraat workbook covers the ayat on pages 585-604, but those pages still need fixture imports and validation.",
   "currentBatch": {
-    "id": "page-303-farsh",
+    "id": "page-303-quranpedia-reader-audit-correction",
     "pages": [
       303
     ],
-    "status": "complete",
-    "commit": "746edc991973c9bd43f5ad525c121e33313ef3d6",
-    "pushed": true,
-    "vercelState": "success",
-    "vercelDeployment": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/62GJJxvWrARSbALX7ChS7gv81511",
-    "productionVerified": true,
-    "variantsAdded": 5,
+    "status": "locally_validated_ready_for_push",
+    "variantsAdded": 0,
+    "readerAssignmentsAdded": 2,
     "rulingsAdded": 0,
-    "productionSmoke": "passed: four reader-specific forms; zero console errors or warnings"
+    "reference": "Quranpedia official qiraat.json.gz; site release 2026-09-20; file version 2026-09-19; SHA-256 d4d4ef4fefa54f2fe9db0a377cf2d15744effe39c6436f0c9509dd21ea6f2a5f",
+    "validation": "Qiraat validator, 33/33 test:qiraat, seven Mushaf validators, tsc, and production build passed; live smoke test pending push"
   },
   "lastConfirmedDeployedDataCommit": "746edc991973c9bd43f5ad525c121e33313ef3d6",
   "lastConfirmedVercelState": "success",
@@ -18271,5 +18268,21 @@
       584
     ]
   ],
-  "currentHeadCommit": "746edc991973c9bd43f5ad525c121e33313ef3d6"
+  "currentHeadCommit": "746edc991973c9bd43f5ad525c121e33313ef3d6",
+  "independentValidation": {
+    "source": "Quranpedia official versioned Qiraat dump",
+    "siteRelease": "2026-09-20",
+    "fileVersion": "2026-09-19",
+    "schema": "/v1/ayah/{surah}/{ayah}/qiraat",
+    "sha256": "d4d4ef4fefa54f2fe9db0a377cf2d15744effe39c6436f0c9509dd21ea6f2a5f",
+    "checkedLocus": {
+      "page": 303,
+      "surah": 18,
+      "ayah": 96,
+      "anchor": "قَالَ ءَاتُونِى"
+    },
+    "finding": "The alternative قَالَ ائْتُونى (hamzat wasl) is grouped for Shuba, Khalaf عن Hamza, and Khallad; the page fixture previously listed Shuba only.",
+    "status": "spot_correction_locally_validated; full external comparison in progress",
+    "scopeNote": "This one checked locus does not establish full-dataset completeness."
+  }
 }

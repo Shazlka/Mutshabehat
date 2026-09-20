@@ -465,6 +465,17 @@ test('page 303 imports only token-backed, explicitly attributable source variant
     resolveTokenForReading(variants, 18, 86, 10, hamiah.hafsText, 'Q06-R01', { includeUnpublished: true }),
     { kind: 'variant', text: 'حَامِيَةٍ', variant: hamiah },
   )
+
+  const ituni = variants.find((variant) => variant.ayah === 96)
+  assert.ok(ituni)
+  assert.deepEqual(ituni.readingIds, ['Q05-R01', 'Q06-R01', 'Q06-R02'])
+  assert.ok(ituni.sources?.some((source) => source.sourceName.startsWith('Quranpedia official Qiraat dump')))
+  for (const readingId of ['Q06-R01', 'Q06-R02']) {
+    assert.deepEqual(
+      resolveTokenForReading(variants, 18, 96, 1, ituni.hafsText, readingId, { includeUnpublished: true }),
+      { kind: 'variant', text: 'ائْتُونِي', variant: ituni },
+    )
+  }
 })
 
 test('صحبة carries شعبة and صحاب carries حفص — never the other way round', () => {

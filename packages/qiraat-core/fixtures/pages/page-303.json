@@ -124,7 +124,9 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
-      "Q05-R01"
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
     ],
     "locusId": "D303-18-96-1",
     "locusType": "word_variant",
@@ -137,6 +139,15 @@
         "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "﴿رَدْمًا ءَاتُونِي﴾: بهمزة قطع للجمهور؛ وبهمزة وصل ﴿رَدْمًا ائْتُونِي﴾ لشعبة."
+      },
+      {
+        "id": "s-D303-18-96-1-quranpedia-20260920",
+        "variantId": "v-D303-18-96-1-w2",
+        "sourceName": "Quranpedia official Qiraat dump (release 2026-09-20; file version 2026-09-19)",
+        "sourceType": "other",
+        "sourceReference": "Surah 18, ayah 96, locus قَالَ ءَاتُونِى; dump SHA-256 d4d4ef4fefa54f2fe9db0a377cf2d15744effe39c6436f0c9509dd21ea6f2a5f",
+        "sourceText": "(قَالَ ائْتُونى) بهمزة وصل بعدها همزة ساكنة: شعبة، خلف عن حمزة، خلاد عن حمزة.",
+        "verificationNotes": "Independent reader assignments cross-checked against the versioned Quranpedia dump; rawi grouped under qari حمزة resolves to Q06 narrators, not the tenth reader خلف."
       }
     ],
     "description": "بهمزة وصل لشعبة",
