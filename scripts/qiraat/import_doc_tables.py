@@ -571,6 +571,60 @@ def parse_ikhfa_line(page,line,out):
                         {'readingId':'Q08-R02','action':'إخفاء','isDefault':True}],
             'hasAlternate':False,'createdAt':TS,'updatedAt':TS})
 
+def explicit_idgham_readers(text):
+    """Resolve only a complete reader list; inflected Abu names are common in prose tables."""
+    text=text.strip()
+    aliases=(('أبي جعفر','أبو جعفر'),('أبا جعفر','أبو جعفر'),
+             ('أبي عمرو','أبو عمرو'),('أبا عمرو','أبو عمرو'))
+    for inflected,canonical in aliases:
+        text=text.replace(inflected,canonical)
+    excluded=re.fullmatch(r'جميع القراء عدا\s+(.+)',text)
+    if excluded:
+        text=re.sub(r'[اً]$','',excluded.group(1).strip()).replace('نافعا','نافع')
+        for inflected,canonical in aliases:
+            text=text.replace(inflected,canonical)
+        readers,rest=resolve_readers(text,set())
+        if not readers or rest.strip(' ،,؛.\t'):
+            raise Unresolved('unresolved excluded reader: '+rest.strip())
+        return set(ALL20)-readers
+    readers,rest=resolve_readers(text,set())
+    if not readers or rest.strip(' ،,؛.\t'):
+        raise Unresolved('unresolved idgham reader text: '+rest.strip())
+    return readers
+
+def parse_idgham_saghir_line(page, line, out):
+    """Parse each anchored clause independently; adjacent anchors may name different readers."""
+    anchors=list(BRACE.finditer(line))
+    for i,match in enumerate(anchors):
+        end=anchors[i+1].start() if i+1<len(anchors) else len(line)
+        clause=line[match.end():end]
+        m=re.search(r'أدغمها\s+([^؛.]+)', clause)
+        if m:
+            names=m.group(1).strip()
+        else:
+            # In an inline الإدغام الصغير section, a bare anchor: reader-list clause
+            # inherits the section's explicit operation (for example: ﴿إِذ جَاءَنِي﴾: أبو عمرو، وهشام).
+            _,sep,names=clause.partition(':')
+            if not sep: continue
+            names=names.strip()
+        try:
+            if re.fullmatch(r'(?:الباقون|الباقين|للجمهور|الجمهور)',names):
+                shown=None
+                for part in re.split(r'[؛.]',clause):
+                    visible=re.search(r'أظهرها\s+(.+)',part.strip())
+                    if visible:
+                        shown=explicit_idgham_readers(visible.group(1))
+                        break
+                if shown is None:
+                    continue
+                rs=set(ALL20)-shown
+            else:
+                rs=explicit_idgham_readers(names)
+        except Unresolved:
+            continue
+        if rs and rs!=ALL20:
+            emit_ruling(page,'IDGHAM_SAGHIR',match.group(1),[(rs,'إدغام صغير')],out)
+
 def parse_usul(page, lines):
     out=[]; section=None; target_section=None; target_hisham=False
     for raw in lines:
@@ -638,13 +692,7 @@ def parse_usul(page, lines):
             continue
         # الإدغام الصغير: "﴿w﴾: أظهرها ...؛ وأدغمها READERS"
         if head.startswith('الإدغام الصغير') or (section is None and 'أدغمها' in line and 'الإدغام' in line):
-            anchors=BRACE.findall(line)
-            m=re.search(r'أدغمها\s+([^؛.]+)', line)
-            if anchors and m:
-                try: rs=readers_from(m.group(1), set())
-                except Unresolved: rs=None
-                if rs and rs!=ALL20:
-                    for a in anchors: emit_ruling(page,'IDGHAM_SAGHIR',a,[(rs,'إدغام صغير')],out)
+            parse_idgham_saghir_line(page,line,out)
             continue
         # تغيير الهمز: clause-by-clause; a clause without an unambiguous per-anchor attribution
         # is dropped rather than guessed onto the family's default ورش/السوسي/أبو جعفر trio.
@@ -920,6 +968,38 @@ def merge_ruling_assignments(existing_record, candidate):
     if category in ('HAMZATAN_KALIMATAYN','HAMZATAN_KALIMA'):
         added,hamzatan_dropped=merge_hamzatan_assignments(existing_record,candidate)
         return added,dropped+hamzatan_dropped
+    if category=='IDGHAM_SAGHIR':
+        current=existing_record.setdefault('readings',[])
+        old_by_id=collections.defaultdict(list)
+        for item in current:
+            old_by_id[item.get('readingId')].append(item)
+        accepted=[]; accepted_ids=set(); seen=set()
+        for item in candidate.get('readings',[]):
+            rid=item.get('readingId'); status=item.get('isDefault',True)
+            key=(rid,item.get('action'),status)
+            if key in seen: continue
+            seen.add(key)
+            prior=[x for x in old_by_id.get(rid,[]) if x.get('isDefault',True)==status]
+            if prior:
+                idgham_word=T.norm('إدغام'); izhhar_word=T.norm('إظهار')
+                if item.get('action')=='إدغام صغير' and any(
+                    idgham_word in T.norm(x.get('action','')) and izhhar_word not in T.norm(x.get('action',''))
+                    for x in prior):
+                    continue  # Existing detailed action already expresses the source's generic idgham.
+                dropped+=1
+                continue
+            accepted.append(item); accepted_ids.add(rid); old_by_id[rid].append(item)
+        if not accepted:
+            return 0,dropped
+        current.extend(accepted)
+        attrs=existing_record.setdefault('attribution',[])
+        seen_attrs={(x.get('authorityId'),x.get('action'),x.get('condition')) for x in attrs}
+        for item in candidate.get('attribution',[]):
+            if item.get('authorityId') not in accepted_ids: continue
+            key=(item.get('authorityId'),item.get('action'),item.get('condition'))
+            if key not in seen_attrs:
+                attrs.append(item); seen_attrs.add(key)
+        return len(accepted),dropped
     if category not in ('YAAT_IDAFA','YAAT_ZAWAID'):
         added=0
         for field,key_fields in (

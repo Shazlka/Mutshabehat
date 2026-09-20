@@ -317,6 +317,22 @@
       {
         "authorityId": "Q10",
         "action": "إدغام الذال في التاء"
+      },
+      {
+        "authorityId": "Q01-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إدغام صغير"
       }
     ],
     "readings": [
@@ -378,6 +394,26 @@
       {
         "readingId": "Q10-R02",
         "action": "إدغام الذال في التاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إدغام صغير",
         "isDefault": true
       }
     ],
@@ -555,6 +591,10 @@
       {
         "authorityId": "Q10",
         "action": "إدغام الثاء في التاء"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
       }
     ],
     "readings": [
@@ -611,6 +651,11 @@
       {
         "readingId": "Q10-R02",
         "action": "إدغام الثاء في التاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
         "isDefault": true
       }
     ],
