@@ -790,9 +790,12 @@ def build(page_list, categories=None):
                 rstats['added']+=1
                 rstats['assignmentsAdded']+=len(candidate.get('readings',[]))
                 continue
+            old_notes=target.get('notes')
             added,dropped=merge_ruling_assignments(target,candidate)
             rstats['conflictsDropped']+=dropped
-            if added:
+            notes_added=target.get('notes') != old_notes
+            if notes_added: rstats['notesAdded']+=1
+            if added or notes_added:
                 changed=True; rstats['assignmentsAdded']+=added; rstats['merged']+=1
         if changed: rout[page]=er
     return vout,rout,vstats,rstats
@@ -961,6 +964,56 @@ def merge_hamzatan_assignments(existing_record,candidate):
             attrs.append(item); seen_attrs.add(key)
     return len(accepted),dropped
 
+def waqf_rasm_action_key(action):
+    """Treat old action-embedded imalah notes as the same base waqf action."""
+    value=T.norm(action)
+    return re.sub(r'\s*مع\s+الاماله(?:\s+بخلف)?', '', value).strip()
+
+def merge_waqf_rasm_assignments(existing_record,candidate):
+    """Merge source notes without duplicating readers already covered by this locus."""
+    current=existing_record.setdefault('readings',[])
+    old_by_id=collections.defaultdict(list)
+    for item in current:
+        old_by_id[item.get('readingId')].append(item)
+    accepted=[]; accepted_ids=set(); dropped=0
+    for item in candidate.get('readings',[]):
+        rid=item.get('readingId'); status=item.get('isDefault',True)
+        prior=[x for x in old_by_id.get(rid,[]) if x.get('isDefault',True)==status]
+        if prior:
+            if any(waqf_rasm_action_key(x.get('action','')) == waqf_rasm_action_key(item.get('action','')) for x in prior):
+                continue
+            dropped+=1
+            continue
+        if old_by_id.get(rid):
+            dropped+=1
+            continue
+        accepted.append(item); accepted_ids.add(rid); old_by_id[rid].append(item)
+    if accepted:
+        current.extend(accepted)
+        attrs=existing_record.setdefault('attribution',[])
+        seen={(x.get('authorityId'),x.get('action'),x.get('condition')) for x in attrs}
+        for item in candidate.get('attribution',[]):
+            if item.get('authorityId') not in accepted_ids: continue
+            key=(item.get('authorityId'),item.get('action'),item.get('condition'))
+            if key not in seen:
+                attrs.append(item); seen.add(key)
+    # Keep source parentheticals such as (مع الإمالة) visible as notes, even when the
+    # reader group is already represented by a more descriptive legacy action string.
+    note=candidate.get('notes')
+    covered=all(any(x.get('isDefault',True)==item.get('isDefault',True) and
+                        waqf_rasm_action_key(x.get('action','')) == waqf_rasm_action_key(item.get('action',''))
+                        for x in old_by_id.get(item.get('readingId'),[]))
+                for item in candidate.get('readings',[]))
+    if note and covered:
+        old_notes=existing_record.get('notes','')
+        note_parts=[x.strip() for x in old_notes.split('؛') if x.strip()]
+        for part in (x.strip() for x in note.split('؛')):
+            if part and part not in note_parts:
+                note_parts.append(part)
+        if '؛ '.join(note_parts) != old_notes:
+            existing_record['notes']='؛ '.join(note_parts)
+    return len(accepted),dropped
+
 def merge_ruling_assignments(existing_record, candidate):
     """Add compatible source-explicit assignments; same-reader disagreements are dropped."""
     candidate,dropped=sanitize_yaat_candidate(candidate)
@@ -1000,6 +1053,8 @@ def merge_ruling_assignments(existing_record, candidate):
             if key not in seen_attrs:
                 attrs.append(item); seen_attrs.add(key)
         return len(accepted),dropped
+    if category=='WAQF_RASM':
+        return merge_waqf_rasm_assignments(existing_record,candidate)
     if category not in ('YAAT_IDAFA','YAAT_ZAWAID'):
         added=0
         for field,key_fields in (
@@ -1178,6 +1233,7 @@ if __name__=='__main__':
     print('variants added:',vs['added'])
     print('new ruling loci:',rs['added'],' merged ruling loci:',rs['merged'],
           ' reader assignments added:',rs['assignmentsAdded'],
+          ' source notes added:',rs['notesAdded'],
           ' conflicting/duplicate assignments dropped:',rs['conflictsDropped'])
     if '--write' in sys.argv:
         vd=os.path.join(ROOT,'packages/qiraat-core/fixtures/pages')
