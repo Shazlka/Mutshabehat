@@ -53,24 +53,28 @@
   },
   "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification.",
   "currentBatch": {
-    "id": "abu-jaafar-mustahzun-page3",
+    "id": "waqf-hamza-hisham-six-loci",
     "pages": [
-      3
+      226,
+      228,
+      242,
+      244,
+      334
     ],
     "status": "production_verified",
-    "commit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
-    "variantsAdded": 1,
-    "readerAssignmentsAdded": 2,
+    "commit": "f54344b1374809bec966f449a4a18af25ecd6b22",
+    "variantsAdded": 0,
+    "readerAssignmentsAdded": 6,
     "variantTextCorrections": 0,
     "rulingsAdded": 0,
-    "reference": "اتباع الأثر في قراءة أبي جعفر بروايتي ابن جماز وابن وردان, باب الهمز المفرد; Quranpedia attachment 20403/78420",
-    "validation": "passed: additive-only guard; qiraat validator clean (1866 variants, 9600 rulings, 20 colours); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
-    "push": "success: main and origin/main match at 33354fc5792cfc5df03ffca7a89378eda026d0f6",
-    "productionDeploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
-    "productionSmoke": "passed: ابن وردان and ابن جماز each displayed مُسْتَهْزُونَ in reading-by-riwayah mode; Abu Ja'far reader filter showed both narrators; selected-word detail showed the existing TAGHYIR_HAMZ action; mobile 390x844 sheet was legible; no Vercel runtime errors",
-    "baseCommit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229"
+    "reference": "Ibn al-Jazari, al-Nashr, chapter on pausing at hamza; Quranpedia, Mushaf Asim and Ibn Amir min al-Tayyiba",
+    "validation": "passed: additive-only fixture diff; qiraat validator clean (1866 variants, 9600 rulings, 20 colours); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
+    "push": "success: main and origin/main match at f54344b1374809bec966f449a4a18af25ecd6b22",
+    "productionDeploymentId": "dpl_3RYjyVk482LTqrPrE1V3EQuQZivM",
+    "productionSmoke": "passed: production qiraat API debug response at page 226 contained the restored Q04-R01 WAQF_HAMZA reading at 11:43; the other five loci were confirmed locally in fixtures",
+    "baseCommit": "735b31f749983b72a5ec6390cceab8c238f92f92"
   },
-  "lastConfirmedDeployedDataCommit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
+  "lastConfirmedDeployedDataCommit": "f54344b1374809bec966f449a4a18af25ecd6b22",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -140,29 +144,41 @@
           "YAAT_ZAWAID: إثبات الياء في الحالين"
         ],
         "status": "passed"
+      },
+      {
+        "commit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
+        "deploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
+        "page": 3,
+        "mode": "reading by riwayah and reader comparison",
+        "readingIds": [
+          "Q08-R01",
+          "Q08-R02"
+        ],
+        "displayedForm": "مُسْتَهْزُونَ",
+        "readerFilter": "أبو جعفر المدني; marker identified ابن وردان and ابن جماز",
+        "selectedWordDetails": "2:14 showed exact surface form and existing TAGHYIR_HAMZ action حذف الهمزة مع ضم الزاي",
+        "mobileViewport": [
+          390,
+          844
+        ],
+        "mobileDetails": "passed: selected word sheet visible and readable",
+        "vercelRuntimeErrors": "none found for /mushaf-1441 and /api/mushaf-1441/qiraat",
+        "applicationConsoleErrors": 0,
+        "browserExtensionErrors": "captured extension-origin ReferenceError: $ is not defined; no application-origin browser errors",
+        "status": "passed"
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
-      "deploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
-      "page": 3,
-      "mode": "reading by riwayah and reader comparison",
-      "readingIds": [
-        "Q08-R01",
-        "Q08-R02"
-      ],
-      "displayedForm": "مُسْتَهْزُونَ",
-      "readerFilter": "أبو جعفر المدني; marker identified ابن وردان and ابن جماز",
-      "selectedWordDetails": "2:14 showed exact surface form and existing TAGHYIR_HAMZ action حذف الهمزة مع ضم الزاي",
-      "mobileViewport": [
-        390,
-        844
-      ],
-      "mobileDetails": "passed: selected word sheet visible and readable",
-      "vercelRuntimeErrors": "none found for /mushaf-1441 and /api/mushaf-1441/qiraat",
-      "applicationConsoleErrors": 0,
-      "browserExtensionErrors": "captured extension-origin ReferenceError: $ is not defined; no application-origin browser errors",
-      "status": "passed"
+      "commit": "f54344b1374809bec966f449a4a18af25ecd6b22",
+      "deploymentId": "dpl_3RYjyVk482LTqrPrE1V3EQuQZivM",
+      "deploymentUrl": "https://mutshabehat-v2-r492xai72-shazlka-s-projects.vercel.app",
+      "page": 226,
+      "endpoint": "/api/mushaf-1441/qiraat?page=226&debug=1",
+      "locus": "11:43 ﴿ٱلْمَآءِ﴾",
+      "category": "WAQF_HAMZA",
+      "readingId": "Q04-R01",
+      "status": "passed",
+      "note": "Records are REVIEWED; debug=1 includes them in the response."
     }
   },
   "knownSourceExclusions": [
@@ -518,6 +534,26 @@
       "vercelDeploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
       "productionValidation": "passed",
       "productionSmoke": "passed: ابن وردان and ابن جماز each displayed مُسْتَهْزُونَ in reading-by-riwayah mode; Abu Ja'far reader filter showed both narrators; selected-word detail showed the existing TAGHYIR_HAMZ action; mobile 390x844 sheet was legible; no Vercel runtime errors"
+    },
+    {
+      "commit": "f54344b1374809bec966f449a4a18af25ecd6b22",
+      "batch": "WAQF_HAMZA restore Hisham attribution at six loci",
+      "variantsAdded": 0,
+      "readerAssignmentsAdded": 6,
+      "rulingsAdded": 0,
+      "pages": [
+        226,
+        228,
+        242,
+        244,
+        334
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "vercelDeploymentId": "dpl_3RYjyVk482LTqrPrE1V3EQuQZivM",
+      "vercelDeployment": "https://mutshabehat-v2-r492xai72-shazlka-s-projects.vercel.app",
+      "productionValidation": "passed",
+      "productionSmoke": "passed: live GET /api/mushaf-1441/qiraat?page=226&debug=1 returned the 11:43 WAQF_HAMZA record with Q04-R01; all six locus assignments were verified in fixtures; this data remains REVIEWED and debug-scoped"
     }
   ],
   "pages": [
@@ -18428,7 +18464,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
+  "currentHeadCommit": "f54344b1374809bec966f449a4a18af25ecd6b22",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
