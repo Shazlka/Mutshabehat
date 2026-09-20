@@ -51,7 +51,7 @@
     "manualReviewFlags": 4,
     "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues."
   },
-  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues.",
+  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues.",
   "currentBatch": {
     "id": "hamzatan-yaat-reader-reconciliation-pages326-330-335",
     "pages": [
@@ -59,18 +59,24 @@
       330,
       335
     ],
-    "status": "local_validation_passed_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 8,
     "variantTextCorrections": 0,
     "rulingsAdded": 0,
     "reference": "nQuran ten-readings display at Al-Anbiya 21:45 and 21:99; Ibn al-Jazari, al-Nashr 2:327 (Al-Hajj 22:26); Quranpedia ten-readings verse display at 22:26",
     "validation": "passed locally: parser --write over 326, 330, 335 added 0 new loci; fixture diff 72 added lines, 0 removed; Qiraat validator (1866 variants, 9600 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
-    "productionDeploymentId": null,
+    "productionDeploymentId": "dpl_HJ5UEDhFN7YZ5uHxvdL2CdEoYf55",
     "sourceAudit": "Across pages 225-584, parser-emitted reader IDs in YAAT_IDAFA, YAAT_ZAWAID, HAMZATAN_KALIMATAYN, HAMZATAN_KALIMA, WAQF_RASM, WAQF_HAMZA, and IKHFA were compared with existing fixture IDs. Three supported gaps were added. The apparent Q02-R02 gap at page 231, 11:84 was withheld: the extraction generalizes Ibn Kathir, while the independent reference names al-Bazzi only; Q02-R01 already exists.",
-    "baseCommit": "e11cc3280d15d6fc861c2ba8964e44a1e7a664b9"
+    "baseCommit": "e11cc3280d15d6fc861c2ba8964e44a1e7a664b9",
+    "commit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
+    "push": "success: main and origin/main match at d3bcdf9620590570c4ed358209144d3c64fd8a0b",
+    "productionDeploymentUrl": "https://mutshabehat-v2-j2f5h3p2q-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed: production debug API returned HAMZATAN_KALIMATAYN readings Q08-R01/R02 and Q09-R01 at 21:45 page 326 and 21:99 page 330, plus YAAT_IDAFA readings Q08-R01/R02 at 22:26 page 335; records remain REVIEWED and debug-scoped",
+    "deploymentTarget": "production",
+    "deployedSha": "d3bcdf9620590570c4ed358209144d3c64fd8a0b"
   },
-  "lastConfirmedDeployedDataCommit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
+  "lastConfirmedDeployedDataCommit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -177,46 +183,33 @@
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
-      "deploymentId": "dpl_4ArVXzpAjepMpTcoxh4CfCCRVfMb",
-      "deploymentUrl": "https://mutshabehat-v2-9p147emk1-shazlka-s-projects.vercel.app",
+      "commit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
+      "deploymentId": "dpl_HJ5UEDhFN7YZ5uHxvdL2CdEoYf55",
+      "deploymentUrl": "https://mutshabehat-v2-j2f5h3p2q-shazlka-s-projects.vercel.app",
       "pages": [
-        236,
-        308,
-        313
+        326,
+        330,
+        335
       ],
-      "endpoint": "/api/mushaf-1441/qiraat?page={236,308,313}&debug=1",
-      "category": "YAAT_IDAFA",
+      "endpoint": "/api/mushaf-1441/qiraat?page={326,330,335}&debug=1",
       "checkedReaderIds": {
-        "236:12:13 ﴿لَيَحْزُنُنِي أَنْ﴾": [
-          "Q01-R01",
-          "Q01-R02",
-          "Q02-R01",
-          "Q02-R02",
+        "326:21:45 ﴿ٱلدُّعَآءَ إِذَا﴾": [
           "Q08-R01",
-          "Q08-R02"
+          "Q08-R02",
+          "Q09-R01"
         ],
-        "308:19:47 ﴿رَبِّيٓ إِنَّهُۥ﴾": [
-          "Q01-R01",
-          "Q01-R02",
-          "Q03-R01",
-          "Q03-R02",
+        "330:21:99 ﴿هَـٰٓؤُلَآءِ ءَالِهَةًۭ﴾": [
           "Q08-R01",
-          "Q08-R02"
+          "Q08-R02",
+          "Q09-R01"
         ],
-        "313:20:14 ﴿إِنَّنِيٓ أَنَا﴾": [
-          "Q01-R01",
-          "Q01-R02",
-          "Q02-R01",
-          "Q02-R02",
-          "Q03-R01",
-          "Q03-R02",
+        "335:22:26 ﴿بَيْتِىَ لِلطَّآئِفِينَ﴾": [
           "Q08-R01",
           "Q08-R02"
         ]
       },
       "status": "passed",
-      "note": "All imported records remain REVIEWED and require debug=1 to appear. Page 236 legacy source-anchor and explanatory-text anomaly remains open."
+      "note": "All imported records remain REVIEWED and appear through debug=1; standard public results continue to filter them."
     }
   },
   "knownSourceExclusions": [
@@ -626,6 +619,25 @@
       "vercelDeployment": "https://mutshabehat-v2-9p147emk1-shazlka-s-projects.vercel.app",
       "productionValidation": "passed: Qiraat validator, 36/36 test:qiraat, all seven Mushaf validators, TypeScript, and production build",
       "productionSmoke": "passed: production debug API returned the expected YAAT_IDAFA reading IDs at Yusuf 12:13 page 236, Maryam 19:47 page 308, and Ta-Ha 20:14 page 313; legacy source anomaly on page 236 remains documented"
+    },
+    {
+      "commit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
+      "batch": "Complete explicit reader groups on pages 326, 330, and 335",
+      "variantsAdded": 0,
+      "readerAssignmentsAdded": 8,
+      "rulingsAdded": 0,
+      "pages": [
+        326,
+        330,
+        335
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "vercelDeploymentId": "dpl_HJ5UEDhFN7YZ5uHxvdL2CdEoYf55",
+      "vercelDeployment": "https://mutshabehat-v2-j2f5h3p2q-shazlka-s-projects.vercel.app",
+      "productionValidation": "passed: Qiraat validator, 36/36 test:qiraat, all seven Mushaf validators, TypeScript, and production build",
+      "productionSmoke": "passed: production debug API returned HAMZATAN_KALIMATAYN readings Q08-R01/R02 and Q09-R01 at 21:45 page 326 and 21:99 page 330, plus YAAT_IDAFA readings Q08-R01/R02 at 22:26 page 335; records remain REVIEWED and debug-scoped",
+      "sourceConflictWithheld": "Page 231 11:84: no Q02-R02 added because the independent reference names al-Bazzi only and Q02-R01 is already present."
     }
   ],
   "pages": [
@@ -18536,7 +18548,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
+  "currentHeadCommit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -18664,7 +18676,7 @@
       "sourceAnomaly": "The attached source places Ibn Kathir and Abu Jaafar at وأخاف أن on page 236; that phrase has no yā of addition. Existing data and its explanatory text remain unchanged per additive-only constraint; cleanup is pending."
     },
     "docFullFamilyReaderAudit": {
-      "status": "local_validation_passed_pending_deploy",
+      "status": "production_verified_with_one_source_conflict_withheld",
       "sourcePages": [
         225,
         584
@@ -18723,7 +18735,9 @@
         "anchor": "إِنِّي أَرَىٰكُم",
         "candidateReaderId": "Q02-R02",
         "finding": "Not added. The attached extraction names Ibn Kathir generally, but the independent ten-readings reference attributes فتح الياء here to Nafi, Abu Jaafar, al-Bazzi, and Abu Amr; the fixture already has Q02-R01 for al-Bazzi."
-      }
+      },
+      "productionDeploymentId": "dpl_HJ5UEDhFN7YZ5uHxvdL2CdEoYf55",
+      "productionCommit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b"
     }
   }
 }
