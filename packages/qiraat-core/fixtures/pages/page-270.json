@@ -1,0 +1,35 @@
+[
+  {
+    "id": "v-D270-تشاقون-w2",
+    "surah": 16,
+    "ayah": 27,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "تُشَـٰٓقُّونَ",
+    "variantText": "تُشَاقُّونِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D270-تشاقون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D270-تشاقون-w2",
+        "variantId": "v-D270-تشاقون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بنون مكسورة مخففة ﴿تُشَاقُّونِ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

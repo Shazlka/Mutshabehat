@@ -1,0 +1,34 @@
+[
+  {
+    "id": "v-D293-من_لدنه-w2",
+    "surah": 18,
+    "ayah": 2,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مِّن لَّدُنْهُ",
+    "variantText": "مِن لَّدُنْهِۦ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D293-من_لدنه",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D293-من_لدنه-w2",
+        "variantId": "v-D293-من_لدنه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان الدال مع إشمام ضمها وكسر النون والهاء مع الصلة ﴿مِن لَّدُنْهِۦ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

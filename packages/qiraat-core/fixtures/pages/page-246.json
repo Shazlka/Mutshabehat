@@ -1,0 +1,34 @@
+[
+  {
+    "id": "v-D246-تايسوا-w2",
+    "surah": 12,
+    "ayah": 87,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تَا۟يْـَٔسُوا۟",
+    "variantText": "تَايَسُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D246-تايسوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D246-تايسوا-w2",
+        "variantId": "v-D246-تايسوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بقلب الهمزة ألفاً وتأخير الياء ﴿تَايَسُوا﴾، ﴿يَايَسُ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
