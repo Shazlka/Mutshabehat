@@ -6875,6 +6875,14 @@ PAGES[265] = dict(src=HIJR_SRC, surah=15, af=52, at=70, variants=[
 ])
 
 PAGES[266] = dict(src=HIJR_SRC, surah=15, af=71, at=90, variants=[
+    ('بيوتا', [
+        ('بُيُوتًا', 'بضم الباء', 'vowel', ['نافع', 'ابن عامر', 'حفص', AJ, 'يعقوب'], True),
+        ('بِيُوتًا', 'بكسر الباء', 'vowel', REST, False),
+    ], dict(ayah=82)),
+    ('والقرءان', [
+        ('وَٱلْقُرْءَانَ', 'بالتحقيق', 'hamza', EXCEPT([IK]), True),
+        ('وَٱلْقُرَانَ', 'بنقل حركة الهمزة إلى الراء', 'hamza', [IK], False),
+    ], dict(ayah=87)),
 ])
 
 PAGES[267] = dict(src=HIJR_SRC, surah=15, af=91, at=99, variants=[

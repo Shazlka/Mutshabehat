@@ -5,17 +5,17 @@ locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + ma
 
 **Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/20
 — pages 1–244, pages 249–267 (الرعد وإبراهيم والحجر), plus all of سور مريم وطه والأنبياء والحج والمؤمنون والنور (pages 305–359) are imported
-(1,613 variants, 7,190 أصول rulings across 318 pages, 286 remaining),
+(1,615 variants, 7,272 أصول rulings across 318 pages, 286 remaining),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
 the paper original, using the built-in review mode. Do not start new feature work ahead of that
 without being asked.
 
-**Colouring invariant (2026-09-20):** pages 249–267 now have reader-specific أصول coverage
-where their imported فرش requires it. New imports must retain the data → fixture → repository
-loader → `rulingMarkerForWord` path documented in `docs/qiraat/05-ui-ux.md`; validate generated
-anchors and direct fixture loads before release.
+**Colouring invariant (2026-09-20):** pages 249–267 have been audited twice for reader-specific
+colour coverage, including 15:82 ﴿بُيُوتًا﴾ and 15:87 ﴿وَٱلْقُرْءَانَ﴾. New imports must retain the
+data → fixture → repository loader → `rulingMarkerForWord` path documented in
+`docs/qiraat/05-ui-ux.md`; validate generated anchors and direct fixture loads before release.
 
 ---
 

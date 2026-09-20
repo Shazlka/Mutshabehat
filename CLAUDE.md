@@ -42,6 +42,16 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 > and any required DB migration. This log is the source of truth for "what changed and when".
 
 ## 2026-09-20
+- **Fix — completed the second Qiraat colour-coverage audit for pages 249–267:** imported the
+  outstanding unambiguous reader-specific loci from the supplied Ar-Ra'd, Ibrahim, and Al-Hijr
+  tables: +2 comparison variants (15:82 ﴿بُيُوتًا﴾ and 15:87 ﴿وَٱلْقُرْءَانَ﴾) and +55
+  token-anchored أصول markers, raising the corpus to 1,615 variants and 7,272 rulings. Added a
+  red/green page-266 regression covering both variant words and the adjacent Warsh marker, and
+  documented that a detail-table row must become a source → fixture → word-marker record before
+  it is visible. Universal tajwid and self-contradictory source statements remain deliberately
+  uncoloured. Files: `scripts/qiraat/{data_variants,data_rulings}.py`, generated page/ruling
+  fixtures 249–267, `packages/qiraat-core/engine.test.mjs`, `docs/qiraat/05-ui-ux.md`,
+  `CHANGELOG.md`, `CLAUDE.md`, `HANDOFF.md`. No database migration.
 - **Fix — multi-reader Qiraat gradients in the Mushaf:** centralised marker paint with
   `markerPaintForWord()` so segmented comparison markers use a text-clipped CSS gradient instead
   of falling back to normal ink; their underline shares the same gradient. Reader-specific أصول

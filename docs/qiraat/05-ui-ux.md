@@ -76,6 +76,12 @@ noise for universal tajwid. Before handoff run both generators, `npm run qiraat:
 repository runtime load with `includeUnpublished: true`; confirm that variants and rulings are
 present for every populated page and render under the same Qiraat layer toggles as older pages.
 
+For a supplied ayah-by-ayah table, audit every reader-specific line against both source tables:
+`data_variants.py` for a changed printed reading and `data_rulings.py` for a colourable أصل. A
+detail row is not implementation by itself. It must become a generated, token-anchored fixture
+record before it can paint the word. Do not add a colour for tajwid shared by all twenty riwayat,
+or for a source line that retracts or leaves its own attribution unresolved.
+
 ### Marker paint contract (including multi-reader differences)
 
 `comparisonMarkerForWord()` returns a solid colour for a one-reader-group difference and a CSS

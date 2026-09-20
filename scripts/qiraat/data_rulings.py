@@ -8426,3 +8426,91 @@ RULINGS[267] = [
     ('TAGHYIR_HAMZ', 'تؤمر', hamz3(), dict(ayah=94)),
     ('IMALAH_TAQLIL', 'حتى', imalah3(), dict(ayah=99, alternate=[W])),
 ]
+
+# Completion sweep for the remaining reader-specific أصول in the supplied
+# Ar-Ra'd, Ibrahim, and Al-Hijr tables.  Shared tajwid remains intentionally
+# unmarked: colours identify a difference in transmission, not a rule shared
+# by every reading.
+RULINGS[249].extend([
+    ('IMALAH_TAQLIL', 'النار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=5, alternate=[W])),
+])
+RULINGS[250].extend([
+    ('IMALAH_TAQLIL', 'بالنهار', [('DURI_AMR', 'إمالة'), (W, 'تقليل')], dict(ayah=10, alternate=[W])),
+])
+RULINGS[251].extend([
+    ('MADD_LIN', 'بشىء', warsh('مد اللين المهموز'), dict(ayah=14)),
+    ('SAKT', 'بشىء', sakt_idris(), dict(ayah=14, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'القهار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=16, alternate=[W])),
+    ('IMALAH_TAQLIL', 'النار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=17, alternate=[W])),
+])
+RULINGS[252].extend([
+    ('SILAT_HA', 'بهي ان', [(IK, 'صلة هاء الكناية'), ('قالون', 'صلة هاء الكناية بخلف'), (AJ, 'صلة هاء الكناية')], dict(ayah=21)),
+    ('IMALAH_TAQLIL', 'عقبى', imalah4(), dict(ayah=24, alternate=[W])),
+    ('IMALAH_TAQLIL', 'الدار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=25, alternate=[W])),
+    ('IMALAH_TAQLIL', 'الدنيا', imalah4(), dict(ayah=26, alternate=[W])),
+])
+RULINGS[253].extend([
+    ('IMALAH_TAQLIL', 'طوبى', imalah4(), dict(ayah=29, alternate=[W])),
+    ('TAGHYIR_HAMZ', 'قرءانا', [(IK, 'نقل الهمزة')], dict(ayah=31)),
+    ('IMALAH_TAQLIL', 'الموتى', imalah4(), dict(ayah=31, alternate=[W])),
+    ('IMALAH_TAQLIL', 'لهدى', imalah3(), dict(ayah=31, alternate=[W])),
+    ('IMALAH_TAQLIL', 'دارهم', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=31, alternate=[W])),
+    ('TAGHYIR_HAMZ', 'يأتى', hamz3(), dict(ayah=31)),
+])
+RULINGS[254].extend([
+    ('IMALAH_TAQLIL', 'عقبى', imalah4(), dict(ayah=35, alternate=[W])),
+    ('IMALAH_TAQLIL', 'الكافرين', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), ('رويس', 'إمالة'), (W, 'تقليل')], dict(ayah=35, alternate=[W])),
+    ('IMALAH_TAQLIL', 'جاءك', [('ابن ذكوان', 'إمالة'), ('حمزة', 'إمالة'), (K10, 'إمالة')], dict(ayah=37)),
+])
+RULINGS[258].extend([
+    ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=23)),
+    ('TAGHYIR_HAMZ', 'الانهار', warsh('النقل'), dict(ayah=23)),
+    ('SAKT', 'الانهار', sakt_idris(), dict(ayah=23, alternate=[KHD, 'إدريس'])),
+])
+RULINGS[261].extend([
+    ('MADD_BADAL', 'اولوا', warsh('مد البدل'), dict(ayah=52)),
+    ('TAGHYIR_HAMZ', 'الالباب', warsh('النقل'), dict(ayah=52)),
+    ('SAKT', 'الالباب', sakt_idris(), dict(ayah=52, alternate=[KHD, 'إدريس'])),
+])
+RULINGS[262].extend([
+    ('HAMZATAN_KALIMATAYN', 'بالملئكة ان', [('قالون', 'تسهيل الهمزة الثانية'), ('البزي', 'تسهيل الهمزة الثانية'), ('أبو عمرو', 'تسهيل الهمزة الثانية'), (AJ, 'تسهيل الهمزة الثانية'), (W, 'إبدال الهمزة الثانية ياءً مع المد'), ('قنبل', 'إبدال الهمزة الثانية ياءً مع المد')], dict(ayah=7, alternate=[W])),
+    ('TAGHYIR_HAMZ', 'يأتيهم', hamz3(), dict(ayah=11)),
+    ('MADD_BADAL', 'يستهزءون', warsh('مد البدل'), dict(ayah=11)),
+    ('TAGHYIR_HAMZ', 'يومنون', hamz3(), dict(ayah=13)),
+])
+RULINGS[263].extend([
+    ('TAGHYIR_HAMZ', 'والارض', warsh('النقل'), dict(ayah=19)),
+    ('SAKT', 'والارض', sakt_idris(), dict(ayah=19, alternate=[KHD, 'إدريس'])),
+    ('IMALAH_TAQLIL', 'نار', [('أبو عمرو', 'إمالة'), ('الكسائي', 'إمالة'), (W, 'تقليل')], dict(ayah=27, alternate=[W])),
+    ('YAAT_IDAFA', 'اني خالق', [('نافع', 'فتح الياء وصلًا'), (IK, 'فتح الياء وصلًا'), ('أبو عمرو', 'فتح الياء وصلًا'), (AJ, 'فتح الياء وصلًا')], dict(ayah=28)),
+    ('SILAT_HA', 'فيه من', [(IK, 'صلة هاء الكناية')], dict(ayah=29)),
+    ('IMALAH_TAQLIL', 'ابى', imalah3(), dict(ayah=31, alternate=[W])),
+])
+RULINGS[264].extend([
+    ('YAAT_IDAFA', 'فانظرني الى', [('نافع', 'فتح الياء وصلًا'), (AJ, 'فتح الياء وصلًا')], dict(ayah=36)),
+    ('YAAT_IDAFA', 'عبادي ليس', [('نافع', 'فتح الياء وصلًا'), (IK, 'فتح الياء وصلًا'), ('أبو عمرو', 'فتح الياء وصلًا'), (AJ, 'فتح الياء وصلًا')], dict(ayah=42)),
+    ('TARQIQ_RA', 'سرر', warsh('ترقيق الراء'), dict(ayah=47)),
+    ('YAAT_IDAFA', 'عبادي اني', [('نافع', 'فتح الياء وصلًا'), (IK, 'فتح الياء وصلًا'), ('أبو عمرو', 'فتح الياء وصلًا'), (AJ, 'فتح الياء وصلًا')], dict(ayah=49)),
+])
+RULINGS[265].extend([
+    ('IMALAH_TAQLIL', 'جاء', [('ابن ذكوان', 'إمالة'), ('حمزة', 'إمالة'), ('الكسائي', 'إمالة'), (K10, 'إمالة')], dict(ayah=61)),
+    ('TAGHYIR_HAMZ', 'جيناك', hamz3(), dict(ayah=63)),
+    ('IMALAH_TAQLIL', 'واتيناك', imalah3(), dict(ayah=64, alternate=[W])),
+    ('TAGHYIR_HAMZ', 'تؤمرون', hamz3(), dict(ayah=65)),
+    ('IMALAH_TAQLIL', 'ادبارهم', [('أبو عمرو', 'إمالة'), (W, 'تقليل')], dict(ayah=65, alternate=[W])),
+])
+RULINGS[266].extend([
+    ('MADD_BADAL', 'وءاتينهم', warsh('مد البدل'), dict(ayah=81)),
+    ('IMALAH_TAQLIL', 'وءاتينهم', imalah3(), dict(ayah=81, alternate=[W])),
+    ('MADD_BADAL', 'ءامنين', warsh('مد البدل'), dict(ayah=82)),
+    ('IMALAH_TAQLIL', 'اغنى', imalah3(), dict(ayah=84, alternate=[W])),
+    ('TAGHYIR_HAMZ', 'والارض', warsh('النقل'), dict(ayah=85)),
+    ('SAKT', 'والارض', sakt_idris(), dict(ayah=85, alternate=[KHD, 'إدريس'])),
+    ('TAGHYIR_HAMZ', 'والقرءان', [(IK, 'نقل الهمزة')], dict(ayah=87)),
+    ('TAGHYIR_HAMZ', 'بهي ازواجا', hamz3(), dict(ayah=88)),
+    ('TARQIQ_RA', 'النذير', warsh('ترقيق الراء'), dict(ayah=89)),
+])
+RULINGS[267].extend([
+    ('MADD_BADAL', 'المستهزءين', warsh('مد البدل'), dict(ayah=95)),
+    ('TAGHYIR_HAMZ', 'الها اخرا', warsh('النقل'), dict(ayah=96)),
+])

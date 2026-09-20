@@ -10,6 +10,16 @@ and any required DB migration.
 Live: https://mutshabehat-v2.vercel.app
 
 ## 2026-09-20
+- **Fix — completed the second Qiraat colour-coverage audit for pages 249–267:** imported the
+  outstanding unambiguous reader-specific loci from the supplied Ar-Ra'd, Ibrahim, and Al-Hijr
+  tables: +2 comparison variants (15:82 ﴿بُيُوتًا﴾ and 15:87 ﴿وَٱلْقُرْءَانَ﴾) and +55
+  token-anchored أصول markers, raising the corpus to 1,615 variants and 7,272 rulings. Added a
+  red/green page-266 regression covering both variant words and the adjacent Warsh marker, and
+  documented that a detail-table row must become a source → fixture → word-marker record before
+  it is visible. Universal tajwid and self-contradictory source statements remain deliberately
+  uncoloured. Files: `scripts/qiraat/{data_variants,data_rulings}.py`, generated page/ruling
+  fixtures 249–267, `packages/qiraat-core/engine.test.mjs`, `docs/qiraat/05-ui-ux.md`,
+  `CHANGELOG.md`, `CLAUDE.md`, `HANDOFF.md`. No database migration.
 - **Fix — Qiraat multi-reader gradients rendered as normal Mushaf ink:** repaired the shared
   Mushaf word renderer so comparison markers with several reader groups are painted as clipped
   segmented gradients rather than being discarded because CSS gradients cannot be assigned to

@@ -250,5 +250,230 @@
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p262-006-1",
+    "pageNumber": 262,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 7,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 7,
+    "baseText": "بِٱلْمَلَـٰٓئِكَةِ إِن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الهمزة الثانية"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الهمزة الثانية"
+      },
+      {
+        "authorityId": "Q03",
+        "action": "تسهيل الهمزة الثانية"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "تسهيل الهمزة الثانية"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية ياءً مع المد"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إبدال الهمزة الثانية ياءً مع المد"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الهمزة الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الهمزة الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الهمزة الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الهمزة الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الهمزة الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الهمزة الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية ياءً مع المد",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إبدال الهمزة الثانية ياءً مع المد",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p262-007-1",
+    "pageNumber": 262,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 11,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 11,
+    "baseText": "يَأْتِيهِم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p262-008-1",
+    "pageNumber": 262,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 11,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 11,
+    "baseText": "يَسْتَهْزِءُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p262-009-1",
+    "pageNumber": 262,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 13,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 13,
+    "baseText": "يُؤْمِنُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z"
   }
 ]
