@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-09-21",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -53,26 +53,22 @@
   },
   "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues.",
   "currentBatch": {
-    "id": "yaat-idafa-pages236-308-313-source-reconciliation",
+    "id": "hamzatan-yaat-reader-reconciliation-pages326-330-335",
     "pages": [
-      236,
-      308,
-      313
+      326,
+      330,
+      335
     ],
-    "status": "production_verified",
-    "commit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
+    "status": "local_validation_passed_pending_deploy",
     "variantsAdded": 0,
-    "readerAssignmentsAdded": 9,
+    "readerAssignmentsAdded": 8,
     "variantTextCorrections": 0,
     "rulingsAdded": 0,
-    "reference": "Ibn al-Jazari, al-Nashr, first chapter on yāʾs followed by open hamza (Yusuf 12:13); al-Nashr and al-Mabsut (Maryam 19:47); Quranpedia ten-readings display (Ta-Ha 20:14)",
-    "validation": "passed: additive-only fixture diff (66 added lines, 0 removed); source parser --write over 236, 308, 313 deduped all loci (0 variants and 0 rulings added); Qiraat validator clean (1866 variants, 9600 rulings, 20 colours); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
-    "push": "success: main and origin/main match at 0a6889a0ed60c2b297a3b065520d30f53708f038",
-    "productionDeploymentId": "dpl_4ArVXzpAjepMpTcoxh4CfCCRVfMb",
-    "productionDeploymentUrl": "https://mutshabehat-v2-9p147emk1-shazlka-s-projects.vercel.app",
-    "productionSmoke": "passed: debug API at pages 236, 308, 313 returned added reader IDs Q02-R01/R02 and Q08-R01/R02 at 12:13, Q03-R01/R02 at 19:47, and Q02-R01/R02 at 20:14; all records remain REVIEWED and debug-scoped",
-    "baseCommit": "c60fce0bf96a8e6c8544e24b5ae3e2d61fab7edc",
-    "sourceAnomaly": "The attached extraction puts Ibn Kathir and Abu Jaafar under ﴿وَأَخَافُ أَنْ﴾ on page 236, which has no yā of addition. The existing assignment and the old explanatory text on ﴿لَيَحْزُنُنِي أَنْ﴾ were preserved under the additive-only rule; separate cleanup remains."
+    "reference": "nQuran ten-readings display at Al-Anbiya 21:45 and 21:99; Ibn al-Jazari, al-Nashr 2:327 (Al-Hajj 22:26); Quranpedia ten-readings verse display at 22:26",
+    "validation": "passed locally: parser --write over 326, 330, 335 added 0 new loci; fixture diff 72 added lines, 0 removed; Qiraat validator (1866 variants, 9600 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
+    "productionDeploymentId": null,
+    "sourceAudit": "Across pages 225-584, parser-emitted reader IDs in YAAT_IDAFA, YAAT_ZAWAID, HAMZATAN_KALIMATAYN, HAMZATAN_KALIMA, WAQF_RASM, WAQF_HAMZA, and IKHFA were compared with existing fixture IDs. Three supported gaps were added. The apparent Q02-R02 gap at page 231, 11:84 was withheld: the extraction generalizes Ibn Kathir, while the independent reference names al-Bazzi only; Q02-R01 already exists.",
+    "baseCommit": "e11cc3280d15d6fc861c2ba8964e44a1e7a664b9"
   },
   "lastConfirmedDeployedDataCommit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
   "lastConfirmedVercelState": "READY",
@@ -18666,6 +18662,68 @@
         }
       ],
       "sourceAnomaly": "The attached source places Ibn Kathir and Abu Jaafar at وأخاف أن on page 236; that phrase has no yā of addition. Existing data and its explanatory text remain unchanged per additive-only constraint; cleanup is pending."
+    },
+    "docFullFamilyReaderAudit": {
+      "status": "local_validation_passed_pending_deploy",
+      "sourcePages": [
+        225,
+        584
+      ],
+      "families": [
+        "YAAT_IDAFA",
+        "YAAT_ZAWAID",
+        "HAMZATAN_KALIMATAYN",
+        "HAMZATAN_KALIMA",
+        "WAQF_RASM",
+        "WAQF_HAMZA",
+        "IKHFA"
+      ],
+      "method": "Compared parser-emitted readingId sets against the union of fixture readingIds at matching surah, ayah, startToken, and category.",
+      "added": [
+        {
+          "page": 326,
+          "surah": 21,
+          "ayah": 45,
+          "category": "HAMZATAN_KALIMATAYN",
+          "anchor": "ٱلدُّعَآءَ إِذَا",
+          "readerIds": [
+            "Q08-R01",
+            "Q08-R02",
+            "Q09-R01"
+          ]
+        },
+        {
+          "page": 330,
+          "surah": 21,
+          "ayah": 99,
+          "category": "HAMZATAN_KALIMATAYN",
+          "anchor": "هَـٰٓؤُلَآءِ ءَالِهَةًۭ",
+          "readerIds": [
+            "Q08-R01",
+            "Q08-R02",
+            "Q09-R01"
+          ]
+        },
+        {
+          "page": 335,
+          "surah": 22,
+          "ayah": 26,
+          "category": "YAAT_IDAFA",
+          "anchor": "بَيْتِىَ لِلطَّآئِفِينَ",
+          "readerIds": [
+            "Q08-R01",
+            "Q08-R02"
+          ]
+        }
+      ],
+      "sourceConflictWithheld": {
+        "page": 231,
+        "surah": 11,
+        "ayah": 84,
+        "anchor": "إِنِّي أَرَىٰكُم",
+        "candidateReaderId": "Q02-R02",
+        "finding": "Not added. The attached extraction names Ibn Kathir generally, but the independent ten-readings reference attributes فتح الياء here to Nafi, Abu Jaafar, al-Bazzi, and Abu Amr; the fixture already has Q02-R01 for al-Bazzi."
+      }
     }
   }
 }

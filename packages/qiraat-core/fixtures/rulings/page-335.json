@@ -358,6 +358,14 @@
       {
         "authorityId": "Q05-R02",
         "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "فتح الياء وصلاً"
       }
     ],
     "readings": [
@@ -378,6 +386,16 @@
       },
       {
         "readingId": "Q05-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
         "action": "فتح الياء وصلاً",
         "isDefault": true
       }

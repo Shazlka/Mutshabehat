@@ -455,6 +455,18 @@
       {
         "authorityId": "Q02-R02",
         "action": "تسهيل الهمزة الثانية وإبدالها حرف مد"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إبدال الهمزة الثانية ياءً"
       }
     ],
     "readings": [
@@ -486,6 +498,21 @@
       {
         "readingId": "Q02-R02",
         "action": "تسهيل الهمزة الثانية وإبدالها حرف مد",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إبدال الهمزة الثانية ياءً",
         "isDefault": true
       }
     ],
