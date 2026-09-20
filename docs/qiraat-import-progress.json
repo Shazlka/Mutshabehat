@@ -50,21 +50,27 @@
     "validation": "passed",
     "manualReviewFlags": 4
   },
-  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed; an external Quranpedia Qiraat comparison is now in progress and has produced an additive reader-attribution correction on page 303. Existing fixtures cover pages 1-224 from earlier sources. The local Juz Amma ten-Qiraat workbook covers the ayat on pages 585-604, but those pages still need fixture imports and validation.",
+  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303 and the Baqarah إبراهيم/إبراهام reader attribution on pages 19, 20, 43, and 44; full page-by-page external completeness review continues. The local Juz Amma ten-Qiraat workbook covers ayat on pages 585-604, which still need fixture imports and validation.",
   "currentBatch": {
-    "id": "page-303-quranpedia-reader-audit-correction",
+    "id": "baqarah-ibrahim-hisham-external-audit-correction",
     "pages": [
-      303
+      19,
+      20,
+      43,
+      44
     ],
     "status": "locally_validated_ready_for_push",
     "variantsAdded": 0,
-    "readerAssignmentsAdded": 2,
+    "readerAssignmentsAdded": 12,
+    "variantTextCorrections": 5,
     "rulingsAdded": 0,
-    "reference": "Quranpedia official qiraat.json.gz; site release 2026-09-20; file version 2026-09-19; SHA-256 d4d4ef4fefa54f2fe9db0a377cf2d15744effe39c6436f0c9509dd21ea6f2a5f",
-    "validation": "Qiraat validator, 33/33 test:qiraat, seven Mushaf validators, tsc, and production build passed; live smoke test pending push"
+    "reference": "Scanned مصحف القراءات العشر pp. 24,25,48,49; إبراز المعاني commentary on Shatibiyyah verse 480; Quranpedia official Qiraat dump at 2:125 and 2:133, file version 2026-09-19, SHA-256 d4d4ef4fefa54f2fe9db0a377cf2d15744effe39c6436f0c9509dd21ea6f2a5f",
+    "validation": "34/34 test:qiraat; qiraat validator clean (1,863 variants, 9,600 rulings across pages 1-584); all seven Mushaf validators, TypeScript, and production build passed",
+    "productionSmoke": "pending push/deploy",
+    "baseCommit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c"
   },
-  "lastConfirmedDeployedDataCommit": "746edc991973c9bd43f5ad525c121e33313ef3d6",
-  "lastConfirmedVercelState": "success",
+  "lastConfirmedDeployedDataCommit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c",
+  "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
       247,
@@ -101,7 +107,9 @@
       }
     ],
     "consoleErrors": 0,
-    "consoleWarnings": 0
+    "consoleWarnings": 0,
+    "page303HamzaFilter": true,
+    "page303SelectedTokenDetails": "passed: الإمام حمزة; reading IDs Q06-R01 and Q06-R02"
   },
   "knownSourceExclusions": [
     {
@@ -391,6 +399,21 @@
       "vercelDeployment": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/62GJJxvWrARSbALX7ChS7gv81511",
       "productionValidation": "passed",
       "productionSmoke": "passed: page 303; Abu Jaafar, Ibn Kathir, Hamza, and Shuba forms verified; zero console errors or warnings"
+    },
+    {
+      "commit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c",
+      "batch": "page 303 Quranpedia reader-attribution correction",
+      "variantsAdded": 0,
+      "readerAssignmentsAdded": 2,
+      "rulingsAdded": 0,
+      "pages": [
+        303
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "vercelDeployment": "https://mutshabehat-v2-doercp4a9-shazlka-s-projects.vercel.app",
+      "productionValidation": "passed",
+      "productionSmoke": "passed: page 303 Hamza reader filter showed الإمام حمزة with خلف and خلاد; selected-token detail remained visible"
     }
   ],
   "pages": [
@@ -931,7 +954,7 @@
         "farshLines": null,
         "usulLines": null
       },
-      "status": "existing_fixture_data_from_prior_sources_not_reaudited_against_attached_doc",
+      "status": "targeted_external_qiraat_locus_reviewed_full_page_audit_pending",
       "variantsChecked": false,
       "usulChecked": false,
       "variantRecords": 6,
@@ -943,7 +966,9 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "targetedExternalLociReviewed": true,
+      "readerAssignmentsCorrected": 4
     },
     {
       "page": 20,
@@ -960,7 +985,7 @@
         "farshLines": null,
         "usulLines": null
       },
-      "status": "existing_fixture_data_from_prior_sources_not_reaudited_against_attached_doc",
+      "status": "targeted_external_qiraat_locus_reviewed_full_page_audit_pending",
       "variantsChecked": false,
       "usulChecked": false,
       "variantRecords": 10,
@@ -972,7 +997,9 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "targetedExternalLociReviewed": true,
+      "readerAssignmentsCorrected": 4
     },
     {
       "page": 21,
@@ -1627,7 +1654,7 @@
         "farshLines": null,
         "usulLines": null
       },
-      "status": "existing_fixture_data_from_prior_sources_not_reaudited_against_attached_doc",
+      "status": "targeted_external_qiraat_locus_reviewed_full_page_audit_pending",
       "variantsChecked": false,
       "usulChecked": false,
       "variantRecords": 8,
@@ -1639,7 +1666,9 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "targetedExternalLociReviewed": true,
+      "readerAssignmentsCorrected": 3
     },
     {
       "page": 44,
@@ -1656,7 +1685,7 @@
         "farshLines": null,
         "usulLines": null
       },
-      "status": "existing_fixture_data_from_prior_sources_not_reaudited_against_attached_doc",
+      "status": "targeted_external_qiraat_locus_reviewed_full_page_audit_pending",
       "variantsChecked": false,
       "usulChecked": false,
       "variantRecords": 9,
@@ -1668,7 +1697,9 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "targetedExternalLociReviewed": true,
+      "readerAssignmentsCorrected": 1
     },
     {
       "page": 45,
@@ -9216,7 +9247,7 @@
       "pushed": true,
       "productionDeployed": true,
       "productionUiVerified": true,
-      "productionCommit": "746edc991973c9bd43f5ad525c121e33313ef3d6",
+      "productionCommit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c",
       "productionVerifiedAt": "2026-09-20"
     },
     {
@@ -18268,7 +18299,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "746edc991973c9bd43f5ad525c121e33313ef3d6",
+  "currentHeadCommit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -18282,7 +18313,61 @@
       "anchor": "قَالَ ءَاتُونِى"
     },
     "finding": "The alternative قَالَ ائْتُونى (hamzat wasl) is grouped for Shuba, Khalaf عن Hamza, and Khallad; the page fixture previously listed Shuba only.",
-    "status": "spot_correction_locally_validated; full external comparison in progress",
-    "scopeNote": "This one checked locus does not establish full-dataset completeness."
+    "status": "targeted_corrections_validated; full external comparison in progress",
+    "scopeNote": "This one checked locus does not establish full-dataset completeness.",
+    "additionalSources": [
+      "إبراز المعاني من حرز الأماني، شرح البيت 480",
+      "مصحف القراءات العشر scanned pages 24, 25, 48, 49"
+    ],
+    "additionalFinding": "Hisham Q04-R01 reads إبراهام in all 15 Ibrahim loci in Surah al-Baqarah. Twelve existing records omitted Hisham while retaining Ibn Dhakwan Q04-R02; five variant strings also had a final case vowel inconsistent with the canonical token. The 15-locus regression now checks reader coverage and case endings.",
+    "checkedLoci": [
+      {
+        "page": 19,
+        "surah": 2,
+        "ayahs": [
+          124,
+          125,
+          126
+        ],
+        "readerAdded": "Q04-R01"
+      },
+      {
+        "page": 20,
+        "surah": 2,
+        "ayahs": [
+          127,
+          130,
+          132,
+          133
+        ],
+        "readerAdded": "Q04-R01"
+      },
+      {
+        "page": 21,
+        "surah": 2,
+        "ayahs": [
+          135,
+          136,
+          140
+        ],
+        "status": "already included Q04-R01"
+      },
+      {
+        "page": 43,
+        "surah": 2,
+        "ayahs": [
+          258
+        ],
+        "readerAdded": "Q04-R01"
+      },
+      {
+        "page": 44,
+        "surah": 2,
+        "ayahs": [
+          260
+        ],
+        "readerAdded": "Q04-R01"
+      }
+    ]
   }
 }

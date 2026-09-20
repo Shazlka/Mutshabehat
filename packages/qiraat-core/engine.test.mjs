@@ -169,6 +169,39 @@ test('page 1: REVIEWED variants are excluded from the public view and only appea
   })
 })
 
+test('Surah al-Baqarah: Hisham reads إبراهام at all 15 Ibrahim loci, with the verse case ending preserved', async () => {
+  const repo = new FixtureQiraatRepository()
+  const cases = [
+    [19, 124, 3, 'إِبْرَاهَامَ'],
+    [19, 125, 10, 'إِبْرَاهَامَ'],
+    [19, 125, 14, 'إِبْرَاهَامَ'],
+    [19, 126, 3, 'إِبْرَاهَامُ'],
+    [20, 127, 3, 'إِبْرَاهَامُ'],
+    [20, 130, 5, 'إِبْرَاهَامَ'],
+    [20, 132, 3, 'إِبْرَاهَامُ'],
+    [20, 133, 20, 'إِبْرَاهَامَ'],
+    [21, 135, 10, 'إِبْرَٰهَامَ'],
+    [21, 136, 10, 'إِبْرَٰهَامَ'],
+    [21, 140, 4, 'إِبْرَٰهَامَ'],
+    [43, 258, 6, 'إِبْرَاهَامَ'],
+    [43, 258, 15, 'إِبْرَاهَامُ'],
+    [43, 258, 25, 'إِبْرَاهَامُ'],
+    [44, 260, 3, 'إِبْرَاهَامُ'],
+  ]
+
+  const byPage = new Map()
+  for (const [page] of cases) {
+    if (!byPage.has(page)) byPage.set(page, await repo.getVariantsForPage(page, { includeUnpublished: true }))
+  }
+  for (const [page, ayah, startToken, expectedText] of cases) {
+    const variant = byPage.get(page).find((entry) => entry.surah === 2 && entry.ayah === ayah && entry.startToken === startToken)
+    assert.ok(variant, `missing Ibrahim variant at page ${page}, 2:${ayah}:${startToken}`)
+    assert.equal(variant.variantText, expectedText, `wrong case ending at 2:${ayah}:${startToken}`)
+    assert.ok(variant.readingIds.includes('Q04-R01'), `Hisham must read إبراهام at 2:${ayah}:${startToken}`)
+    assert.ok(variant.readingIds.includes('Q04-R02'), `Ibn Dhakwan's alternate face must remain at 2:${ayah}:${startToken}`)
+  }
+})
+
 test('tokenKey/ayahKeyOf produce the canonical surah:ayah[:token] identity', () => {
   assert.equal(tokenKey(1, 4, 1), '1:4:1')
   assert.equal(ayahKeyOf(1, 4), '1:4')
