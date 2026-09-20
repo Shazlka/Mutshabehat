@@ -49,28 +49,32 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification."
+    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues."
   },
-  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification.",
+  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues.",
   "currentBatch": {
-    "id": "yaat-idafa-ibn-amir-page348",
+    "id": "yaat-idafa-pages236-308-313-source-reconciliation",
     "pages": [
-      348
+      236,
+      308,
+      313
     ],
     "status": "production_verified",
-    "commit": "6c9dc9d595bce28cd4e1c5fad98baeb987bd0dc6",
+    "commit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
     "variantsAdded": 0,
-    "readerAssignmentsAdded": 2,
+    "readerAssignmentsAdded": 9,
     "variantTextCorrections": 0,
     "rulingsAdded": 0,
-    "reference": "Ibn al-Jazari, al-Nashr, chapter on yāʾs followed by open hamza; Quranpedia, Ibn Amir min al-Tayyiba reading reference",
-    "validation": "passed: additive-only fixture diff; qiraat validator clean (1866 variants, 9600 rulings, 20 colours); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
-    "push": "success: main and origin/main match at 6c9dc9d595bce28cd4e1c5fad98baeb987bd0dc6",
-    "productionDeploymentId": "dpl_Gp335qxPVoKZc7gUu1kEYEKgzwTG",
-    "productionSmoke": "passed: production qiraat API debug response at page 348 returned both Q04 narrations for 23:100; source parser and token-backed ruling checked",
-    "baseCommit": "33c006ac7e67fce004130f0cddbae8446a337a8f"
+    "reference": "Ibn al-Jazari, al-Nashr, first chapter on yāʾs followed by open hamza (Yusuf 12:13); al-Nashr and al-Mabsut (Maryam 19:47); Quranpedia ten-readings display (Ta-Ha 20:14)",
+    "validation": "passed: additive-only fixture diff (66 added lines, 0 removed); source parser --write over 236, 308, 313 deduped all loci (0 variants and 0 rulings added); Qiraat validator clean (1866 variants, 9600 rulings, 20 colours); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
+    "push": "success: main and origin/main match at 0a6889a0ed60c2b297a3b065520d30f53708f038",
+    "productionDeploymentId": "dpl_4ArVXzpAjepMpTcoxh4CfCCRVfMb",
+    "productionDeploymentUrl": "https://mutshabehat-v2-9p147emk1-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed: debug API at pages 236, 308, 313 returned added reader IDs Q02-R01/R02 and Q08-R01/R02 at 12:13, Q03-R01/R02 at 19:47, and Q02-R01/R02 at 20:14; all records remain REVIEWED and debug-scoped",
+    "baseCommit": "c60fce0bf96a8e6c8544e24b5ae3e2d61fab7edc",
+    "sourceAnomaly": "The attached extraction puts Ibn Kathir and Abu Jaafar under ﴿وَأَخَافُ أَنْ﴾ on page 236, which has no yā of addition. The existing assignment and the old explanatory text on ﴿لَيَحْزُنُنِي أَنْ﴾ were preserved under the additive-only rule; separate cleanup remains."
   },
-  "lastConfirmedDeployedDataCommit": "6c9dc9d595bce28cd4e1c5fad98baeb987bd0dc6",
+  "lastConfirmedDeployedDataCommit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -177,19 +181,46 @@
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "6c9dc9d595bce28cd4e1c5fad98baeb987bd0dc6",
-      "deploymentId": "dpl_Gp335qxPVoKZc7gUu1kEYEKgzwTG",
-      "deploymentUrl": "https://mutshabehat-v2-6563kpztk-shazlka-s-projects.vercel.app",
-      "page": 348,
-      "endpoint": "/api/mushaf-1441/qiraat?page=348&debug=1",
-      "locus": "23:100 ﴿لَعَلِّىٓ أَعْمَلُ﴾",
-      "category": "YAAT_IDAFA",
-      "readingIds": [
-        "Q04-R01",
-        "Q04-R02"
+      "commit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
+      "deploymentId": "dpl_4ArVXzpAjepMpTcoxh4CfCCRVfMb",
+      "deploymentUrl": "https://mutshabehat-v2-9p147emk1-shazlka-s-projects.vercel.app",
+      "pages": [
+        236,
+        308,
+        313
       ],
+      "endpoint": "/api/mushaf-1441/qiraat?page={236,308,313}&debug=1",
+      "category": "YAAT_IDAFA",
+      "checkedReaderIds": {
+        "236:12:13 ﴿لَيَحْزُنُنِي أَنْ﴾": [
+          "Q01-R01",
+          "Q01-R02",
+          "Q02-R01",
+          "Q02-R02",
+          "Q08-R01",
+          "Q08-R02"
+        ],
+        "308:19:47 ﴿رَبِّيٓ إِنَّهُۥ﴾": [
+          "Q01-R01",
+          "Q01-R02",
+          "Q03-R01",
+          "Q03-R02",
+          "Q08-R01",
+          "Q08-R02"
+        ],
+        "313:20:14 ﴿إِنَّنِيٓ أَنَا﴾": [
+          "Q01-R01",
+          "Q01-R02",
+          "Q02-R01",
+          "Q02-R02",
+          "Q03-R01",
+          "Q03-R02",
+          "Q08-R01",
+          "Q08-R02"
+        ]
+      },
       "status": "passed",
-      "note": "Records are REVIEWED; debug=1 includes them in the response."
+      "note": "All imported records remain REVIEWED and require debug=1 to appear. Page 236 legacy source-anchor and explanatory-text anomaly remains open."
     }
   },
   "knownSourceExclusions": [
@@ -581,6 +612,24 @@
       "vercelDeployment": "https://mutshabehat-v2-6563kpztk-shazlka-s-projects.vercel.app",
       "productionValidation": "passed",
       "productionSmoke": "passed: live GET /api/mushaf-1441/qiraat?page=348&debug=1 returned the existing 23:100 YAAT_IDAFA ruling with Q04-R01 and Q04-R02"
+    },
+    {
+      "commit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
+      "batch": "YAAT_IDAFA external reconciliation at pages 236, 308, and 313",
+      "variantsAdded": 0,
+      "readerAssignmentsAdded": 9,
+      "rulingsAdded": 0,
+      "pages": [
+        236,
+        308,
+        313
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "vercelDeploymentId": "dpl_4ArVXzpAjepMpTcoxh4CfCCRVfMb",
+      "vercelDeployment": "https://mutshabehat-v2-9p147emk1-shazlka-s-projects.vercel.app",
+      "productionValidation": "passed: Qiraat validator, 36/36 test:qiraat, all seven Mushaf validators, TypeScript, and production build",
+      "productionSmoke": "passed: production debug API returned the expected YAAT_IDAFA reading IDs at Yusuf 12:13 page 236, Maryam 19:47 page 308, and Ta-Ha 20:14 page 313; legacy source anomaly on page 236 remains documented"
     }
   ],
   "pages": [
@@ -18491,7 +18540,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "6c9dc9d595bce28cd4e1c5fad98baeb987bd0dc6",
+  "currentHeadCommit": "0a6889a0ed60c2b297a3b065520d30f53708f038",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -18571,6 +18620,52 @@
         "status": "source-backed; ruling records already existed"
       }
     ],
-    "additionalFindingYaqubYaatZawaid": "The token-form audit flagged missing Q09 overlays at 2:40 فارهبون and 2:41 فاتقون. Ibn al-Jazari lists both among yāʾ endings at verse heads and gives Yaqub the both-states rule; added explicit Q09-R01/Q09-R02 word overlays while preserving the existing YAAT_ZAWAID rulings."
+    "additionalFindingYaqubYaatZawaid": "The token-form audit flagged missing Q09 overlays at 2:40 فارهبون and 2:41 فاتقون. Ibn al-Jazari lists both among yāʾ endings at verse heads and gives Yaqub the both-states rule; added explicit Q09-R01/Q09-R02 word overlays while preserving the existing YAAT_ZAWAID rulings.",
+    "additionalYaatIdafaCheck": {
+      "status": "targeted source verified and production smoke passed",
+      "source": "Ibn al-Jazari, al-Nashr; Ibn Mihran, al-Mabsut; Quranpedia ten-readings display",
+      "checkedLoci": [
+        {
+          "page": 236,
+          "surah": 12,
+          "ayah": 13,
+          "anchor": "ليحزنني أن",
+          "addedReaderIds": [
+            "Q01-R01",
+            "Q02-R01",
+            "Q02-R02",
+            "Q08-R01",
+            "Q08-R02"
+          ],
+          "source": "al-Nashr, first chapter, pp. 163-164",
+          "finding": "Ibn Kathir, Nafi, and Abu Jaafar open this yā; no Abu Amr assignment."
+        },
+        {
+          "page": 308,
+          "surah": 19,
+          "ayah": 47,
+          "anchor": "ربي إنه",
+          "addedReaderIds": [
+            "Q03-R01",
+            "Q03-R02"
+          ],
+          "source": "al-Nashr, second chapter; al-Mabsut, p. 287",
+          "finding": "Abu Amr opens this yā with Nafi and Abu Jaafar."
+        },
+        {
+          "page": 313,
+          "surah": 20,
+          "ayah": 14,
+          "anchor": "إنني أنا",
+          "addedReaderIds": [
+            "Q02-R01",
+            "Q02-R02"
+          ],
+          "source": "al-Nashr, first chapter; Quranpedia qiraat display",
+          "finding": "Both Ibn Kathir narrations open this yā."
+        }
+      ],
+      "sourceAnomaly": "The attached source places Ibn Kathir and Abu Jaafar at وأخاف أن on page 236; that phrase has no yā of addition. Existing data and its explanatory text remain unchanged per additive-only constraint; cleanup is pending."
+    }
   }
 }
