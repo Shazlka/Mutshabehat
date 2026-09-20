@@ -35,6 +35,7 @@ RCOLORS = {
  'HAMZATAN_KALIMA':('الهمزتان من كلمة','#DC2626'),
  'WAQF_RASM':('الوقف على مرسوم الخط','#EA580C'),
  'WAQF_HAMZA':('وقف حمزة','#EA580C'),
+ 'IKHFA':('الإخفاء','#0891B2'),
 }
 DIFF={'orthography':'ORTHOGRAPHY','vowel':'HARAKAH','consonant':'LETTER','hamza':'HAMZ',
       'word_form':'LETTER','ishmam':'HARAKAH','other':'OTHER'}
@@ -440,6 +441,22 @@ def parse_waqf_hamza_line(page,line,out,header_hisham=False):
     for anchor,readers,action in pending:
         emit_ruling(page,'WAQF_HAMZA',anchor,[(readers,action)],out)
 
+def parse_ikhfa_line(page,line,out):
+    """The source family names Abu Jaafar once; each explicit anchor gets both narrators."""
+    for anchor in BRACE.findall(line):
+        try: loc=T.find(page,anchor,1)
+        except T.NoMatch: continue
+        label,color=RCOLORS['IKHFA']
+        out.append({'id':f'r-p{page:03d}-IKHFA-{T.norm(anchor).replace(" ","_")}-{len(out)}',
+            'pageNumber':page,'category':'IKHFA','categoryAr':label,'color':color,'wordAnchored':True,
+            'surah':loc['surah'],'ayah':loc['startAyah'],'startToken':loc['startWord'],
+            'endToken':loc['endWord'],'endAyah':loc['endAyah'],'baseText':loc['baseText'],
+            'verificationStatus':'REVIEWED',
+            'attribution':[{'authorityId':'Q08','action':'إخفاء'}],
+            'readings':[{'readingId':'Q08-R01','action':'إخفاء','isDefault':True},
+                        {'readingId':'Q08-R02','action':'إخفاء','isDefault':True}],
+            'hasAlternate':False,'createdAt':TS,'updatedAt':TS})
+
 def parse_usul(page, lines):
     out=[]; section=None; target_section=None; target_hisham=False
     for raw in lines:
@@ -452,7 +469,8 @@ def parse_usul(page, lines):
                         ('الهمزتان من كلمة','HAMZATAN_KALIMA'),
                         ('الوقف على مرسوم الخط','WAQF_RASM'),
                         ('وقف حمزة وهشام','WAQF_HAMZA'),('وقف حمزة','WAQF_HAMZA'),
-                        ('ياءات الإضافة','YAAT_IDAFA'),('ياءات الزوائد','YAAT_ZAWAID')]
+                        ('ياءات الإضافة','YAAT_IDAFA'),('ياءات الزوائد','YAAT_ZAWAID'),
+                        ('إخفاء أبي جعفر','IKHFA')]
         matched_target=False
         for prefix,cat in target_headers:
             if line.startswith(prefix):
@@ -463,6 +481,7 @@ def parse_usul(page, lines):
                     if cat.startswith('YAAT_'): parse_yaat_line(page,cat,content,out)
                     elif cat=='WAQF_RASM': parse_waqf_rasm_line(page,content,out)
                     elif cat=='WAQF_HAMZA': parse_waqf_hamza_line(page,content,out,target_hisham)
+                    elif cat=='IKHFA': parse_ikhfa_line(page,content,out)
                     else: parse_hamzatan_line(page,cat,content,out)
                 matched_target=True
                 break
@@ -470,13 +489,15 @@ def parse_usul(page, lines):
         # Leave the target section on any other named family before considering its continuation.
         known_other=(list(FIXED)+['الممال','صلة هاء','الإدغام الصغير','تغيير الهمز','الهمز المفرد',
                      'إبدال','الإدغام الكبير','الإدغام الصغير','ترك الغنة','السكت','الإخفاء',
-                     'صلة ميم الجمع','ميم الجمع','الوقف على مرسوم الخط','وقف حمزة','الهمزتان'])
+                     'صلة ميم الجمع','ميم الجمع','الوقف على مرسوم الخط','وقف حمزة','الهمزتان',
+                     'إخفاء أبي جعفر'])
         if target_section:
             if BRACE.search(line) and not any(line.startswith(x) for x in known_other):
                 if not is_univ(line):
                     if target_section.startswith('YAAT_'): parse_yaat_line(page,target_section,line,out)
                     elif target_section=='WAQF_RASM': parse_waqf_rasm_line(page,line,out)
                     elif target_section=='WAQF_HAMZA': parse_waqf_hamza_line(page,line,out,target_hisham)
+                    elif target_section=='IKHFA': parse_ikhfa_line(page,line,out)
                     else: parse_hamzatan_line(page,target_section,line,out)
                 continue
             target_section=None
@@ -493,6 +514,9 @@ def parse_usul(page, lines):
                     emit_ruling(page, cat, anchor, [(q(reader),action)], out)
                 matched=True; break
         if matched: continue
+        if head.startswith('إخفاء أبي جعفر') and not is_univ(line):
+            parse_ikhfa_line(page,line,out)
+            continue
         # صلة هاء الكناية — only distinctive ابن كثير case
         if head.startswith('صلة هاء') and 'ابن كثير' in line and not is_univ(line):
             for anchor in BRACE.findall(line):
