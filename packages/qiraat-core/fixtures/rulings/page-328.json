@@ -37,6 +37,46 @@
       {
         "authorityId": "Q08",
         "action": "تسهيل الهمزة الثانية وإبدالها ياءً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تسهيل الثانية مع الإدخال"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تسهيل الثانية مع الإدخال"
+      },
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "التحقيق مع الإدخال وعدمه"
       }
     ],
     "readings": [
@@ -89,6 +129,56 @@
         "readingId": "Q08-R02",
         "action": "تسهيل الهمزة الثانية وإبدالها ياءً",
         "isDefault": false
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الثانية مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الثانية مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "التحقيق مع الإدخال وعدمه",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,

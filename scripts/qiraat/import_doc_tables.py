@@ -12,7 +12,7 @@ import json, os, re, sys, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tokens as T
 import authorities as A
-from import_surah_tables import resolve_readers, Unresolved, is_neg, is_univ
+from import_surah_tables import resolve_readers, Unresolved, is_neg, is_univ, NAMED, NAMES_BY_LEN
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SC = '/tmp/claude-0/-home-user-Mutshabehat/e0ba1b96-dd1a-5b8a-886e-c95aefd540ed/scratchpad'
@@ -377,33 +377,83 @@ def likely_reader_text(text):
         'خلف','الدوري','الكوفيون','أهل سما','الحرميان','المدنيان','البصريان','صحبة','صحاب','جميع القراء عدا')
     return any(name in probe for name in names)
 
+def hamzatan_reader_modes(text):
+    """Resolve a reader list while keeping parenthetical face notes on that reader only."""
+    text=normalize_reader_names(text).strip()
+    modes=[]
+    while text:
+        text=text.lstrip(' \t،,؛.')
+        if not text: break
+        match=None
+        for name in NAMES_BY_LEN:
+            if text.startswith(name):
+                match=name
+                break
+        if match is None and text.startswith('و'):
+            tail=text[1:].lstrip()
+            for name in NAMES_BY_LEN:
+                if tail.startswith(name):
+                    text=tail
+                    match=name
+                    break
+        if match is None:
+            raise Unresolved('unresolved hamzatan reader text: '+text)
+        readers=set(NAMED[match])
+        text=text[len(match):].lstrip()
+        modifiers=[]
+        while text.startswith('('):
+            end=text.find(')')
+            if end<0: raise Unresolved('unclosed hamzatan reader note')
+            modifiers.append(text[1:end].strip())
+            text=text[end+1:].lstrip()
+        alternate=any('بخلف' in note or 'وجهه الثاني' in note for note in modifiers)
+        modes.append((readers,alternate,'؛ '.join(modifiers) or None))
+        if text and not (text.startswith(('و','،',',')) or text[0].isspace()):
+            raise Unresolved('unresolved hamzatan reader separator: '+text)
+        # An attached trailing «بخلف عنه» has the same scope as a parenthetical on this name.
+        trailing=re.match(r'بخلف(?:\s+عنه)?(?=$|[،,؛.]|\s+[وأ])',text)
+        if trailing:
+            modes[-1]=(readers,True,'بخلف عنه')
+            text=text[trailing.end():]
+    return modes
+
 def hamzatan_explicit_clause(clause):
-    """Return only a single action clause whose reader group is explicitly named."""
-    if any(x in clause for x in ('الباقون','الباقين','للجمهور','الجمهور')): return None
-    for m in PARENS.finditer(clause):
-        names=m.group(1).strip()
-        try: readers=resolve_explicit_group(names)
-        except Unresolved:
-            if likely_reader_text(names): raise
-            continue
-        if not readers: continue
-        action=clause[:m.start()].strip()
-        action=re.split(r'(?:،\s*أو\s*|\s+أو\s+)',action)[-1].strip(' ،,و')
+    """Return only explicit reader/action pairs, with alternate notes scoped per reader."""
+    if any(x in clause for x in ('الباقون','الباقين','للباقون','للباقين','للجمهور','الجمهور')): return None
+    flat=PARENS.sub('',clause)
+    m=re.search(r'(?<=[\s،,])ل(?=\S)',flat)
+    if not m:
+        parsed=explicit_reader_clause(clause)
+        if not parsed: return None
+        action,readers,alternate,note=parsed
         action=BRACE.sub('',action).strip()
-        if not action: continue
-        alternate='بخلف' in clause
-        notes=[n.strip() for n in PARENS.findall(clause)
-               if not likely_reader_text(n) and 'بخلف' not in n]
-        return action,readers,alternate,('بخلف عنه' if alternate else None),notes
-    parsed=explicit_reader_clause(clause)
-    if not parsed: return None
-    action,readers,alternate,note=parsed
-    action=BRACE.sub('',action).strip()
+        if not action: return None
+        return [(action,readers,alternate,'بخلف عنه' if alternate else None,[note] if note else [])]
+    # The reader list is the tail after the first grammatical reader-introducing lam.
+    # Recover its source slice by scanning the original string while skipping parentheticals.
+    visible=[]; source_offsets=[]; cursor=0
+    for paren in PARENS.finditer(clause):
+        for i in range(cursor,paren.start()):
+            visible.append(clause[i]); source_offsets.append(i)
+        cursor=paren.end()
+    for i in range(cursor,len(clause)):
+        visible.append(clause[i]); source_offsets.append(i)
+    raw_start=source_offsets[m.end()] if m.end()<len(source_offsets) else len(clause)
+    try: modes=hamzatan_reader_modes(clause[raw_start:])
+    except Unresolved:
+        raise
+    action=BRACE.sub('',clause[:source_offsets[m.start()]]).strip(' ،,و')
+    action=action.strip()
     action=re.sub(r'^لمن قرأ بالهمز[،,]\s*','',action)
     if not action: return None
-    notes=[n.strip() for n in PARENS.findall(clause)
-           if not likely_reader_text(n) and 'بخلف' not in n]
-    return action,readers,alternate,('بخلف عنه' if alternate else None),notes
+    result=[]
+    for readers,alternate,note in modes:
+        condition=None
+        if alternate:
+            condition=('في وجهه الثاني' if note and 'وجهه الثاني' in note else
+                       'بخلف عنه' if note and 'بخلف' in note else note or 'بخلف عنه')
+        result.append((action,readers,alternate,condition,[note] if note else []))
+    return result or None
 
 def parse_hamzatan_line(page,category,line,out):
     pending=[]
@@ -411,6 +461,9 @@ def parse_hamzatan_line(page,category,line,out):
         pre,sep,body=chunk.partition(':')
         anchors=BRACE.findall(pre)
         if not sep or not anchors: continue
+        # The extraction sometimes gives a parenthetical mode for only the second of two
+        # anchors. Keep that line out until its per-anchor scope can be represented safely.
+        if len(anchors)>1 and re.search(r'في\s+الموضع\s+الثاني',body): continue
         groups=[]; notes=[n.strip() for n in PARENS.findall(pre)]
         try:
             for semicolon_clause in re.split(r'[؛.]',body):
@@ -418,9 +471,9 @@ def parse_hamzatan_line(page,category,line,out):
                 if not clause: continue
                 parsed=hamzatan_explicit_clause(clause)
                 if not parsed: continue
-                action,readers,alternate,condition,clause_notes=parsed
-                groups.append((readers,action,alternate,condition))
-                notes.extend(clause_notes)
+                for action,readers,alternate,condition,clause_notes in parsed:
+                    groups.append((readers,action,alternate,condition))
+                    notes.extend(clause_notes)
         except Unresolved:
             # An unresolved name anywhere on the source line invalidates all its clauses.
             return
@@ -738,10 +791,135 @@ def sanitize_yaat_candidate(candidate):
         candidate['hasAlternate']=any(not item.get('isDefault',True) for item in kept)
     return candidate,dropped
 
+def hamzatan_action_features(action):
+    """Extract the explicitly stated hamza operations for conservative additive merging."""
+    text=T.norm(action or '')
+    features=set()
+    ordinal='first' if any(x in text for x in ('الاولي','الهمزه الاولي')) else (
+        'second' if any(x in text for x in ('الثانيه','الهمزه الثانيه')) else None)
+    if ordinal and any(x in text for x in ('اسقاط','حذف')):
+        features.add('drop:'+ordinal)
+    if 'تسهيل' in text:
+        if ordinal:
+            features.add('ease:'+ordinal)
+        else:
+            features.add('ease:generic')
+    if 'ادخال' in text and 'بلا ادخال' not in text:
+        features.add('insertion:with')
+    elif 'بلا ادخال' in text or 'بدون ادخال' in text:
+        features.add('insertion:without')
+    if ordinal and 'ابدال' in text:
+        letter=('waw' if 'واو' in text else 'ya' if 'ياء' in text else
+                'alif-madd' if 'الف' in text and ('مشبع' in text or 'مد مشبع' in text) else
+                'alif' if 'الف' in text else 'madd' if 'حرف مد' in text else 'unspecified')
+        features.add('substitute:'+ordinal+':'+letter)
+    if 'تحقيق' in text:
+        if 'ادخال' in text and 'عدمه' in text:
+            features.update(('verify:input','verify:no-input'))
+        elif 'ادخال' in text:
+            features.add('verify:input')
+        elif 'بلا ادخال' in text:
+            features.add('verify:no-input')
+        else:
+            features.add('verify:unspecified')
+    return features
+
+def hamzatan_actions_are_distinct_insertion_faces(left,right):
+    """A reader may be named for both insertion faces; preserve that explicit distinction."""
+    a=hamzatan_action_features(left.get('action'))
+    b=hamzatan_action_features(right.get('action'))
+    ins_a=a & {'insertion:with','insertion:without'}
+    ins_b=b & {'insertion:with','insertion:without'}
+    core_a=a-ins_a; core_b=b-ins_b
+    return bool(core_a and core_a==core_b and len(ins_a)==len(ins_b)==1 and ins_a!=ins_b)
+
+def hamzatan_action_refines(new_item,old_item):
+    """Allow source text to add insertion detail to an otherwise identical old action."""
+    new=hamzatan_action_features(new_item.get('action'))
+    old=hamzatan_action_features(old_item.get('action'))
+    ins={'insertion:with','insertion:without'}
+    new_ins=new & ins; old_ins=old & ins
+    return bool(new and old and not old_ins and len(new_ins)==1 and new-new_ins==old)
+
+def hamzatan_assignment_covered(new_item, old_item):
+    """True only when an existing action already includes the source's stated operation."""
+    if new_item.get('isDefault',True)!=old_item.get('isDefault',True):
+        return False
+    new=hamzatan_action_features(new_item.get('action'))
+    old=hamzatan_action_features(old_item.get('action'))
+    if new and old:
+        return new <= old
+    return (new_item.get('action')==old_item.get('action') and
+            new_item.get('isDefault',True)==old_item.get('isDefault',True))
+
+def merge_hamzatan_assignments(existing_record,candidate):
+    """Merge only source-explicit compatible modes; same-face disagreements are dropped."""
+    old_by_id=collections.defaultdict(list)
+    for item in existing_record.get('readings',[]):
+        old_by_id[item.get('readingId')].append(item)
+    candidate_by_id_status=collections.defaultdict(list)
+    for item in candidate.get('readings',[]):
+        candidate_by_id_status[(item.get('readingId'),item.get('isDefault',True))].append(item)
+    conflicting=set()
+    for key,items in candidate_by_id_status.items():
+        signatures={tuple(sorted(hamzatan_action_features(x.get('action')))) or
+                    (x.get('action'),) for x in items}
+        if (len(signatures)>1 and any(not (hamzatan_actions_are_distinct_insertion_faces(a,b) or
+                                           hamzatan_action_refines(a,b) or
+                                           hamzatan_action_refines(b,a))
+                for i,a in enumerate(items) for b in items[i+1:])):
+            conflicting.add(key)
+
+    accepted=[]; dropped=0
+    seen_new=set()
+    for item in candidate.get('readings',[]):
+        rid=item.get('readingId'); is_default=item.get('isDefault',True)
+        if (rid,is_default) in conflicting:
+            dropped+=1
+            continue
+        key=(rid,item.get('action'),is_default)
+        if key in seen_new:
+            continue
+        seen_new.add(key)
+        if not is_default and not existing_record.get('hasAlternate',False):
+            dropped+=1
+            continue
+        old=old_by_id.get(rid,[])
+        if any(hamzatan_assignment_covered(item,prior) for prior in old):
+            continue
+        same_status=[x for x in old if x.get('isDefault',True)==is_default]
+        if same_status and not all(hamzatan_actions_are_distinct_insertion_faces(item,x) or
+                                   hamzatan_action_refines(item,x)
+                                   for x in same_status):
+            dropped+=1
+            continue
+        # Distinct source-marked alternate/default faces may complement a stored opposite face;
+        # the source parser sets isDefault=False only for an explicit «بخلف» or second face.
+        accepted.append(item)
+        old_by_id[rid].append(item)
+
+    if not accepted:
+        return 0,dropped
+    current=existing_record.setdefault('readings',[])
+    current.extend(accepted)
+    accepted_pairs={(x.get('readingId'),x.get('action')) for x in accepted}
+    attrs=existing_record.setdefault('attribution',[])
+    seen_attrs={(x.get('authorityId'),x.get('action'),x.get('condition')) for x in attrs}
+    for item in candidate.get('attribution',[]):
+        if (item.get('authorityId'),item.get('action')) not in accepted_pairs:
+            continue
+        key=(item.get('authorityId'),item.get('action'),item.get('condition'))
+        if key not in seen_attrs:
+            attrs.append(item); seen_attrs.add(key)
+    return len(accepted),dropped
+
 def merge_ruling_assignments(existing_record, candidate):
     """Add compatible source-explicit assignments; same-reader disagreements are dropped."""
     candidate,dropped=sanitize_yaat_candidate(candidate)
     category=existing_record.get('category')
+    if category in ('HAMZATAN_KALIMATAYN','HAMZATAN_KALIMA'):
+        added,hamzatan_dropped=merge_hamzatan_assignments(existing_record,candidate)
+        return added,dropped+hamzatan_dropped
     if category not in ('YAAT_IDAFA','YAAT_ZAWAID'):
         added=0
         for field,key_fields in (

@@ -297,6 +297,10 @@
       {
         "authorityId": "Q04-R01",
         "action": "التحقيق مع الإدخال"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "التسهيل بلا إدخال"
       }
     ],
     "readings": [
@@ -349,6 +353,16 @@
         "readingId": "Q04-R01",
         "action": "التحقيق مع الإدخال",
         "isDefault": false
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "التحقيق مع الإدخال",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
