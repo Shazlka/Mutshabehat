@@ -63,7 +63,7 @@
       462,
       564
     ],
-    "status": "locally_validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 19,
     "variantTextCorrections": 0,
@@ -72,9 +72,15 @@
     "validation": "passed locally: --write over source pages 225-584 produced 7 new loci and 19 reader assignments; fixture diff added 325 lines and removed none; Qiraat validator (1,866 variants, 9,615 rulings, 20 one-colour categories); 36/36 test:qiraat; TypeScript; production build.",
     "sourceAudit": "Added only source-named reader groups at real token anchors. Same-reader equivalent actions were deduplicated. Withheld Q06-R01/R02 at page 331, 23:105 because the fixture says فتح الياء وصلاً while the extraction says الإسكان وصلاً. DB migration: none.",
     "baseCommit": "a3e722ae3fe4f2f093a71736383f55940f524832",
-    "deploymentTarget": "production"
+    "deploymentTarget": "production",
+    "commit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
+    "push": "success: main and origin/main match at f6eb36977d84f12a70ea9bcf882aca7d556289bd",
+    "productionDeploymentId": "dpl_DU4t6WNHaBB7RZCXCU4QZdgb9S1j",
+    "productionDeploymentUrl": "https://mutshabehat-v2-5m3gc9yy8-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed: production Mushaf UI page 259 showed the new YAAT_IDAFA ruling at 14:31 with the expected named readers; deployment READY for the exact data commit.",
+    "deployedSha": "f6eb36977d84f12a70ea9bcf882aca7d556289bd"
   },
-  "lastConfirmedDeployedDataCommit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
+  "lastConfirmedDeployedDataCommit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -178,29 +184,51 @@
         "readingId": "Q04-R01",
         "status": "passed",
         "note": "Records are REVIEWED; debug=1 includes them in the response."
+      },
+      {
+        "commit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
+        "deploymentId": "dpl_DU4t6WNHaBB7RZCXCU4QZdgb9S1j",
+        "deploymentUrl": "https://mutshabehat-v2-5m3gc9yy8-shazlka-s-projects.vercel.app",
+        "pages": [
+          259,
+          307,
+          329,
+          429,
+          455,
+          462,
+          564
+        ],
+        "category": "YAAT_IDAFA",
+        "status": "passed",
+        "note": "Mushaf UI smoke at page 259, ayah 14:31; deployment READY for exact data SHA."
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "8441a3b0a60feea15e3934bd66b8ec64f9427ab8",
-      "deploymentId": "dpl_HhUwibqs2H3SmhREGsFDsAXB3JDW",
-      "deploymentUrl": "https://mutshabehat-v2-qtsj45rtw-shazlka-s-projects.vercel.app",
+      "commit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
+      "deploymentId": "dpl_DU4t6WNHaBB7RZCXCU4QZdgb9S1j",
+      "deploymentUrl": "https://mutshabehat-v2-5m3gc9yy8-shazlka-s-projects.vercel.app",
       "pages": [
-        226,
-        230
+        259,
+        307,
+        329,
+        429,
+        455,
+        462,
+        564
       ],
-      "endpoint": "/api/mushaf-1441/qiraat?page={226,230}&debug=1",
-      "checkedReaderIds": {
-        "226:11:41 ﴿مَجْرَاهَا﴾": {
-          "Q03-R01": "إمالة",
-          "Q03-R02": "إمالة",
-          "Q01-R02": "تقليل"
-        },
-        "230:11:72 ﴿يَـٰوَيْلَتَىٰ﴾": {
-          "Q03-R01": "تقليل"
-        }
-      },
+      "endpoint": "production Mushaf UI; page 259, 14:31",
+      "category": "YAAT_IDAFA",
+      "readingIds": [
+        "Q04-R01",
+        "Q04-R02",
+        "Q06-R01",
+        "Q06-R02",
+        "Q07-R01",
+        "Q07-R02",
+        "Q09-R02"
+      ],
       "status": "passed",
-      "note": "All imported records remain REVIEWED and appear through debug=1; standard public results continue to filter them."
+      "note": "Production deployment reached READY for the exact data commit; the UI detail showed the imported ruling and expected readers."
     }
   },
   "knownSourceExclusions": [
@@ -668,7 +696,7 @@
       "sourceConflictWithheld": "Source lines containing bare خلف on pages 259, 289, 293, 562, and 578 were not expanded. The source marks خاشعة on page 583 with khilaf, so no ruling was added there."
     },
     {
-      "commit": "pending",
+      "commit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
       "batch": "YAAT_IDAFA full-family source import",
       "variantsAdded": 0,
       "readerAssignmentsAdded": 19,
@@ -682,10 +710,14 @@
         462,
         564
       ],
-      "pushed": false,
-      "vercelState": "pending",
+      "pushed": true,
+      "vercelState": "READY",
       "validation": "passed locally: --write over source pages 225-584 produced 7 new loci and 19 reader assignments; fixture diff added 325 lines and removed none; Qiraat validator (1,866 variants, 9,615 rulings, 20 one-colour categories); 36/36 test:qiraat; TypeScript; production build.",
-      "sourceConflictWithheld": "Added only source-named reader groups at real token anchors. Same-reader equivalent actions were deduplicated. Withheld Q06-R01/R02 at page 331, 23:105 because the fixture says فتح الياء وصلاً while the extraction says الإسكان وصلاً. DB migration: none."
+      "sourceConflictWithheld": "Added only source-named reader groups at real token anchors. Same-reader equivalent actions were deduplicated. Withheld Q06-R01/R02 at page 331, 23:105 because the fixture says فتح الياء وصلاً while the extraction says الإسكان وصلاً. DB migration: none.",
+      "vercelDeploymentId": "dpl_DU4t6WNHaBB7RZCXCU4QZdgb9S1j",
+      "vercelDeployment": "https://mutshabehat-v2-5m3gc9yy8-shazlka-s-projects.vercel.app",
+      "productionValidation": "passed locally: --write over source pages 225-584 produced 7 new loci and 19 reader assignments; fixture diff added 325 lines and removed none; Qiraat validator (1,866 variants, 9,615 rulings, 20 one-colour categories); 36/36 test:qiraat; TypeScript; production build.",
+      "productionSmoke": "passed: production Mushaf UI page 259 showed the new YAAT_IDAFA ruling at 14:31 with the expected named readers; deployment READY for the exact data commit."
     }
   ],
   "pages": [
@@ -18596,7 +18628,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
+  "currentHeadCommit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
