@@ -18,7 +18,7 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 1863,
+    "variants": 1865,
     "usulRulings": 9600,
     "fixturePagesPresent": 584,
     "fixtureRange": [
@@ -48,28 +48,26 @@
       604
     ],
     "validation": "passed",
-    "manualReviewFlags": 4
+    "manualReviewFlags": 4,
+    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks have corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, and Yaqub added-ya display on page 7. Full page-by-page external completeness review continues. Pages 585-604 are not present in the attached DOCX and remain source-blocked pending independent source verification."
   },
   "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303 and the Baqarah إبراهيم/إبراهام reader attribution on pages 19, 20, 43, and 44; full page-by-page external completeness review continues. The local Juz Amma ten-Qiraat workbook covers ayat on pages 585-604, which still need fixture imports and validation.",
   "currentBatch": {
-    "id": "baqarah-ibrahim-hisham-external-audit-correction",
+    "id": "yaqub-yaat-zawaid-display-page7",
     "pages": [
-      19,
-      20,
-      43,
-      44
+      7
     ],
     "status": "locally_validated_ready_for_push",
-    "variantsAdded": 0,
-    "readerAssignmentsAdded": 12,
-    "variantTextCorrections": 5,
+    "variantsAdded": 2,
+    "readerAssignmentsAdded": 4,
+    "variantTextCorrections": 0,
     "rulingsAdded": 0,
-    "reference": "Scanned مصحف القراءات العشر pp. 24,25,48,49; إبراز المعاني commentary on Shatibiyyah verse 480; Quranpedia official Qiraat dump at 2:125 and 2:133, file version 2026-09-19, SHA-256 d4d4ef4fefa54f2fe9db0a377cf2d15744effe39c6436f0c9509dd21ea6f2a5f",
-    "validation": "34/34 test:qiraat; qiraat validator clean (1,863 variants, 9,600 rulings across pages 1-584); all seven Mushaf validators, TypeScript, and production build passed",
+    "reference": "النشر في القراءات العشر، باب مذاهبهم في ياءات الزوائد، رؤوس الآي (ج 2، ص 181–182); Quranpedia page-7 candidate audit flagged missing Q09 surface forms",
+    "validation": "passed: additive-only guard; qiraat validator clean (1865 variants, 9600 rulings, 20 colours); 35/35 test:qiraat; all seven Mushaf validators; TypeScript; production build",
     "productionSmoke": "pending push/deploy",
-    "baseCommit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c"
+    "baseCommit": "7688bc315ddb683bde0d38a468129b5a0c335a0f"
   },
-  "lastConfirmedDeployedDataCommit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c",
+  "lastConfirmedDeployedDataCommit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -109,7 +107,16 @@
     "consoleErrors": 0,
     "consoleWarnings": 0,
     "page303HamzaFilter": true,
-    "page303SelectedTokenDetails": "passed: الإمام حمزة; reading IDs Q06-R01 and Q06-R02"
+    "page303SelectedTokenDetails": "passed: الإمام حمزة; reading IDs Q06-R01 and Q06-R02",
+    "latestAdditionalCheck": {
+      "commit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
+      "page": 19,
+      "mode": "reading by riwayah",
+      "reading": "هشام عن ابن عامر الشامي",
+      "ayah": "2:124",
+      "displayedForm": "إِبْرَاهَامَ",
+      "status": "passed"
+    }
   },
   "knownSourceExclusions": [
     {
@@ -414,6 +421,26 @@
       "vercelDeployment": "https://mutshabehat-v2-doercp4a9-shazlka-s-projects.vercel.app",
       "productionValidation": "passed",
       "productionSmoke": "passed: page 303 Hamza reader filter showed الإمام حمزة with خلف and خلاد; selected-token detail remained visible"
+    },
+    {
+      "commit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
+      "batch": "Baqarah Ibrahim Hisham attribution external audit correction",
+      "variantsAdded": 0,
+      "readerAssignmentsAdded": 12,
+      "variantTextCorrections": 5,
+      "rulingsAdded": 0,
+      "pages": [
+        19,
+        20,
+        43,
+        44
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "vercelDeploymentId": "dpl_3cWev6i2kg7PhFSFwEDkZa8mc4qD",
+      "vercelDeployment": "https://mutshabehat-v2-k85ekhloq-shazlka-s-projects.vercel.app",
+      "productionValidation": "passed",
+      "productionSmoke": "passed: production page 19 in reading-by-riwayah mode showed هشام عن ابن عامر الشامي and exact detail at 2:124, إِبْرَاهَامَ; targeted locus only, full page audits remain pending"
     }
   ],
   "pages": [
@@ -606,10 +633,10 @@
         "farshLines": null,
         "usulLines": null
       },
-      "status": "existing_fixture_data_from_prior_sources_not_reaudited_against_attached_doc",
+      "status": "targeted_external_qiraat_loci_reviewed_full_page_audit_pending",
       "variantsChecked": false,
       "usulChecked": false,
-      "variantRecords": 3,
+      "variantRecords": 5,
       "usulRecords": 21,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
@@ -618,7 +645,13 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "targetedExternalLociReviewed": true,
+      "targetedExternalLoci": [
+        "2:40 فَٱرْهَبُونِ",
+        "2:41 فَٱتَّقُونِ"
+      ],
+      "variantsAdded": 2
     },
     {
       "page": 8,
@@ -966,9 +999,11 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false,
+      "productionUiVerified": true,
       "targetedExternalLociReviewed": true,
-      "readerAssignmentsCorrected": 4
+      "readerAssignmentsCorrected": 4,
+      "productionVerifiedCommit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
+      "productionVerifiedLocus": "2:124; هشام عن ابن عامر displays إِبْرَاهَامَ"
     },
     {
       "page": 20,
@@ -18299,7 +18334,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "0bf7917d6306b1f333714a086be8e5f4bb06aa1c",
+  "currentHeadCommit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -18367,7 +18402,18 @@
           260
         ],
         "readerAdded": "Q04-R01"
+      },
+      {
+        "page": 7,
+        "surah": 2,
+        "ayahs": [
+          40,
+          41
+        ],
+        "readerAdded": "Q09-R01 and Q09-R02 display overlays",
+        "status": "source-backed; ruling records already existed"
       }
-    ]
+    ],
+    "additionalFindingYaqubYaatZawaid": "The token-form audit flagged missing Q09 overlays at 2:40 فارهبون and 2:41 فاتقون. Ibn al-Jazari lists both among yāʾ endings at verse heads and gives Yaqub the both-states rule; added explicit Q09-R01/Q09-R02 word overlays while preserving the existing YAAT_ZAWAID rulings."
   }
 }

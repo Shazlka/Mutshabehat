@@ -133,5 +133,69 @@
         "text": "وَيُقْبَلُ الأُولَىٰ أَنَّثُوا دُونَ حَاجِزٍ"
       }
     ]
+  },
+  {
+    "id": "v-L007-FARHABUNI-yaqub",
+    "surah": 2,
+    "ayah": 40,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "فَٱرْهَبُونِ",
+    "variantText": "فَٱرْهَبُونِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T18:53:02.000Z",
+    "updatedAt": "2026-09-20T18:53:02.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L007-FARHABUNI",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L007-FARHABUNI-yaqub",
+        "variantId": "v-L007-FARHABUNI-yaqub",
+        "sourceName": "النشر في القراءات العشر (ابن الجزري)",
+        "sourceType": "printed-book",
+        "sourceReference": "باب مذاهبهم في ياءات الزوائد، رؤوس الآي، موضعا البقرة 2:40 و2:41، ج 2، ص 181–182 (النص متاح عبر IslamWeb)",
+        "sourceText": "يورد فارهبون وفاتقون ضمن ياءات رؤوس الآي، ويقرر إثبات يعقوب في الحالين.",
+        "verificationNotes": "تحقق من الموضعين وقاعدة يعقوب على النص المنشور من النشر. أُنشئ النص المعروض بإلحاق الياء المقروءة إلى نص المصحف المثبت حرفياً في fixture؛ الأصول الحالية محفوظة دون تغيير."
+      }
+    ],
+    "description": "إثبات الياء الزائدة ليعقوب وصلاً ووقفاً"
+  },
+  {
+    "id": "v-L007-FATTAQUNI-yaqub",
+    "surah": 2,
+    "ayah": 41,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "فَٱتَّقُونِ",
+    "variantText": "فَٱتَّقُونِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T18:53:02.000Z",
+    "updatedAt": "2026-09-20T18:53:02.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L007-FATTAQUNI",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L007-FATTAQUNI-yaqub",
+        "variantId": "v-L007-FATTAQUNI-yaqub",
+        "sourceName": "النشر في القراءات العشر (ابن الجزري)",
+        "sourceType": "printed-book",
+        "sourceReference": "باب مذاهبهم في ياءات الزوائد، رؤوس الآي، موضعا البقرة 2:40 و2:41، ج 2، ص 181–182 (النص متاح عبر IslamWeb)",
+        "sourceText": "يورد فارهبون وفاتقون ضمن ياءات رؤوس الآي، ويقرر إثبات يعقوب في الحالين.",
+        "verificationNotes": "تحقق من الموضعين وقاعدة يعقوب على النص المنشور من النشر. أُنشئ النص المعروض بإلحاق الياء المقروءة إلى نص المصحف المثبت حرفياً في fixture؛ الأصول الحالية محفوظة دون تغيير."
+      }
+    ],
+    "description": "إثبات الياء الزائدة ليعقوب وصلاً ووقفاً"
   }
 ]

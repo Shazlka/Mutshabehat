@@ -13,6 +13,7 @@ import { FixtureQiraatRepository } from './repository.ts'
 import { comparisonMarkerForWord, rulingMarkerForWord, markerPaintForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
 import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
+import page007Variants from './fixtures/pages/page-007.json' with { type: 'json' }
 import page266Rulings from './fixtures/rulings/page-266.json' with { type: 'json' }
 
 const ALL_READING_IDS = QIRAAT_READINGS.map((reading) => reading.id)
@@ -46,6 +47,22 @@ test('baseline is Hafs (Q05-R02) and is never duplicated', () => {
   assert.equal(BASE_READING, 'Q05-R02')
   assert.equal(getReading(BASE_READING).displayNameAr, 'حفص عن عاصم الكوفي')
   assert.equal(QIRAAT_READINGS.filter((r) => r.isBaseline).length, 1)
+})
+
+test('2:40 and 2:41 ياءات زوائد: Yaqub displays the added ya for both narrators, Hafs keeps the mushaf form', () => {
+  for (const [ayah, token, baseText, variantText] of [
+    [40, 13, 'فَٱرْهَبُونِ', 'فَٱرْهَبُونِي'],
+    [41, 18, 'فَٱتَّقُونِ', 'فَٱتَّقُونِي'],
+  ]) {
+    for (const readingId of ['Q09-R01', 'Q09-R02']) {
+      const resolution = resolveTokenForReading(page007Variants, 2, ayah, token, baseText, readingId, { includeUnpublished: true })
+      assert.equal(resolution.kind, 'variant', `${readingId} must receive the Yaqub form at 2:${ayah}`)
+      assert.equal(resolution.text, variantText)
+    }
+    const hafs = resolveTokenForReading(page007Variants, 2, ayah, token, baseText, BASE_READING, { includeUnpublished: true })
+    assert.equal(hafs.kind, 'base')
+    assert.equal(hafs.text, baseText)
+  }
 })
 
 test('the two "الدوري" narrators are distinct people, never conflated', () => {
