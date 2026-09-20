@@ -1,0 +1,320 @@
+[
+  {
+    "id": "v-L356-خلق_كل-1-w2",
+    "surah": 24,
+    "ayah": 45,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "خَلَقَ كُلَّ",
+    "variantText": "خَـٰلِقُ كُلِّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L356-خلق_كل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L356-خلق_كل-1-w2",
+        "variantId": "v-L356-خلق_كل-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَخَالِقُ كُلِّ ارْفَعْ مَعَ الْجَرِّ شَافِيًا"
+      }
+    ],
+    "description": "بألف بعد الخاء (خَـٰلِقُ) اسم فاعل مرفوعاً وخفض (كُلِّ) بالإضافة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَالِقُ كُلِّ ارْفَعْ مَعَ الْجَرِّ شَافِيًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L356-مبينت-1-w2",
+    "surah": 24,
+    "ayah": 46,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مُّبَيِّنَـٰتٍۢ ۚ",
+    "variantText": "مُّبَيَّنَـٰتٍۢ ۚ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L356-مبينت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L356-مبينت-1-w2",
+        "variantId": "v-L356-مبينت-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي مُبَيَّنَاتٍ كَسْرُ حَقٍّ كَفَى صَفَا — D: وَافْتَحْ مُبَيَّنَةٍ فُزْ"
+      }
+    ],
+    "description": "بفتح الياء المشددة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مُبَيَّنَاتٍ كَسْرُ حَقٍّ كَفَى صَفَا"
+      },
+      {
+        "source": "D",
+        "text": "وَافْتَحْ مُبَيَّنَةٍ فُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L356-ليحكم-1-w2",
+    "surah": 24,
+    "ayah": 48,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "لِيَحْكُمَ",
+    "variantText": "لِيُحْكَمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L356-ليحكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L356-ليحكم-1-w2",
+        "variantId": "v-L356-ليحكم-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "D: وَفِي يُحْكَمَ اضْمُمْ وَافْتَحِ الْكَافَ دُمْ ثَنَا"
+      }
+    ],
+    "description": "بضم الياء وفتح الكاف مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَفِي يُحْكَمَ اضْمُمْ وَافْتَحِ الْكَافَ دُمْ ثَنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L356-ليحكم-1-w2",
+    "surah": 24,
+    "ayah": 51,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لِيَحْكُمَ",
+    "variantText": "لِيُحْكَمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L356-ليحكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L356-ليحكم-1-w2",
+        "variantId": "v-L356-ليحكم-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "D: وَفِي يُحْكَمَ اضْمُمْ وَافْتَحِ الْكَافَ دُمْ ثَنَا"
+      }
+    ],
+    "description": "بضم الياء وفتح الكاف مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَفِي يُحْكَمَ اضْمُمْ وَافْتَحِ الْكَافَ دُمْ ثَنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L356-ويتقه-1-w2",
+    "surah": 24,
+    "ayah": 52,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَيَتَّقْهِ",
+    "variantText": "وَيَتَّقِهْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01"
+    ],
+    "locusId": "L356-ويتقه-1",
+    "locusType": "word_variant",
+    "notes": "لهشام وخلاد وجهان: كسر الهاء وصلتها، ولهشام أيضاً القصر، ولخلاد الإسكان.",
+    "sources": [
+      {
+        "id": "s-L356-ويتقه-1-w2",
+        "variantId": "v-L356-ويتقه-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَقُلْ بِسُكُونِ الْقَافِ وَالْكَسْرِ حَفْصُهُمْ وَيَتَّقْهِ ... وَأَسْكِنْ بِهِ جَزْمًا صَفَا صَفْوُ صَفْوِهِ — D: وَيَتَّقْهِ فِدْ كَمَا حَوَى"
+      }
+    ],
+    "description": "بكسر القاف وإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ بِسُكُونِ الْقَافِ وَالْكَسْرِ حَفْصُهُمْ وَيَتَّقْهِ ... وَأَسْكِنْ بِهِ جَزْمًا صَفَا صَفْوُ صَفْوِهِ"
+      },
+      {
+        "source": "D",
+        "text": "وَيَتَّقْهِ فِدْ كَمَا حَوَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L356-ويتقه-1-w3",
+    "surah": 24,
+    "ayah": 52,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَيَتَّقْهِ",
+    "variantText": "وَيَتَّقِهِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L356-ويتقه-1",
+    "locusType": "word_variant",
+    "notes": "لهشام وخلاد وجهان: كسر الهاء وصلتها، ولهشام أيضاً القصر، ولخلاد الإسكان.",
+    "sources": [
+      {
+        "id": "s-L356-ويتقه-1-w3",
+        "variantId": "v-L356-ويتقه-1-w3",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَقُلْ بِسُكُونِ الْقَافِ وَالْكَسْرِ حَفْصُهُمْ وَيَتَّقْهِ ... وَأَسْكِنْ بِهِ جَزْمًا صَفَا صَفْوُ صَفْوِهِ — D: وَيَتَّقْهِ فِدْ كَمَا حَوَى"
+      }
+    ],
+    "description": "بكسر القاف والقصر في الهاء دون صلة",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ بِسُكُونِ الْقَافِ وَالْكَسْرِ حَفْصُهُمْ وَيَتَّقْهِ ... وَأَسْكِنْ بِهِ جَزْمًا صَفَا صَفْوُ صَفْوِهِ"
+      },
+      {
+        "source": "D",
+        "text": "وَيَتَّقْهِ فِدْ كَمَا حَوَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L356-ويتقه-1-w4",
+    "surah": 24,
+    "ayah": 52,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَيَتَّقْهِ",
+    "variantText": "وَيَتَّقِهِۦ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L356-ويتقه-1",
+    "locusType": "word_variant",
+    "notes": "لهشام وخلاد وجهان: كسر الهاء وصلتها، ولهشام أيضاً القصر، ولخلاد الإسكان.",
+    "sources": [
+      {
+        "id": "s-L356-ويتقه-1-w4",
+        "variantId": "v-L356-ويتقه-1-w4",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَقُلْ بِسُكُونِ الْقَافِ وَالْكَسْرِ حَفْصُهُمْ وَيَتَّقْهِ ... وَأَسْكِنْ بِهِ جَزْمًا صَفَا صَفْوُ صَفْوِهِ — D: وَيَتَّقْهِ فِدْ كَمَا حَوَى"
+      }
+    ],
+    "description": "بكسر القاف وكسر الهاء مع الصلة بياء لفظية",
+    "wajhIndex": 4,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ بِسُكُونِ الْقَافِ وَالْكَسْرِ حَفْصُهُمْ وَيَتَّقْهِ ... وَأَسْكِنْ بِهِ جَزْمًا صَفَا صَفْوُ صَفْوِهِ"
+      },
+      {
+        "source": "D",
+        "text": "وَيَتَّقْهِ فِدْ كَمَا حَوَى"
+      }
+    ]
+  }
+]

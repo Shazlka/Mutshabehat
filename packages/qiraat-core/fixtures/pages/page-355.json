@@ -1,0 +1,211 @@
+[
+  {
+    "id": "v-L355-يحسبه-1-w2",
+    "surah": 24,
+    "ayah": 39,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَحْسَبُهُ",
+    "variantText": "يَحْسِبُهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L355-يحسبه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L355-يحسبه-1-w2",
+        "variantId": "v-L355-يحسبه-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي يَحْسَبُ كَسْرُ لِشَافِعٍ — D: وَفِي يَحْسِبُ افْتَحْ حُزْ"
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي يَحْسَبُ كَسْرُ لِشَافِعٍ"
+      },
+      {
+        "source": "D",
+        "text": "وَفِي يَحْسِبُ افْتَحْ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L355-سحاب_ظلمت-1-w2",
+    "surah": 24,
+    "ayah": 40,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "سَحَابٌۭ ۚ ظُلُمَـٰتٌۢ",
+    "variantText": "سَحَابُ ظُلُمَـٰتٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "L355-سحاب_ظلمت-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L355-سحاب_ظلمت-1-w2",
+        "variantId": "v-L355-سحاب_ظلمت-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَمَا نَوَّنَ الْبَزِّي سَحَابٌ وَرَفْعُهُمْ لَدَى ظُلُمَاتٍ جَرَّ دَارٍ وَأَوْصَلَا"
+      }
+    ],
+    "description": "بغير تنوين في (سَحَابُ) وجر (ظُلُمَـٰتٍ) بالإضافة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا نَوَّنَ الْبَزِّي سَحَابٌ وَرَفْعُهُمْ لَدَى ظُلُمَاتٍ جَرَّ دَارٍ وَأَوْصَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L355-سحاب_ظلمت-1-w3",
+    "surah": 24,
+    "ayah": 40,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "سَحَابٌۭ ۚ ظُلُمَـٰتٌۢ",
+    "variantText": "سَحَابٌۭ ۚ ظُلُمَـٰتٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "L355-سحاب_ظلمت-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L355-سحاب_ظلمت-1-w3",
+        "variantId": "v-L355-سحاب_ظلمت-1-w3",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَمَا نَوَّنَ الْبَزِّي سَحَابٌ وَرَفْعُهُمْ لَدَى ظُلُمَاتٍ جَرَّ دَارٍ وَأَوْصَلَا"
+      }
+    ],
+    "description": "بتنوين (سَحَابٌ) وجر (ظُلُمَـٰتٍ) بدلاً",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَا نَوَّنَ الْبَزِّي سَحَابٌ وَرَفْعُهُمْ لَدَى ظُلُمَاتٍ جَرَّ دَارٍ وَأَوْصَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L355-وينزل-1-w2",
+    "surah": 24,
+    "ayah": 43,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "وَيُنَزِّلُ",
+    "variantText": "وَيُنْزِلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L355-وينزل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L355-وينزل-1-w2",
+        "variantId": "v-L355-وينزل-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
+      }
+    ],
+    "description": "بضم النون وسكون الثانية وتخفيف الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L355-يذهب-1-w2",
+    "surah": 24,
+    "ayah": 43,
+    "startToken": 37,
+    "endToken": 37,
+    "operation": "REPLACE",
+    "hafsText": "يَذْهَبُ",
+    "variantText": "يُذْهِبُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L355-يذهب-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L355-يذهب-1-w2",
+        "variantId": "v-L355-يذهب-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "D: وَيَذْهَبُ ضُمَّ فُزْ"
+      }
+    ],
+    "description": "بضم الياء وكسر الهاء من أذهب الرباعي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَيَذْهَبُ ضُمَّ فُزْ"
+      }
+    ]
+  }
+]

@@ -1,0 +1,264 @@
+[
+  {
+    "id": "v-L354-مبينت-1-w2",
+    "surah": 24,
+    "ayah": 34,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مُّبَيِّنَـٰتٍۢ",
+    "variantText": "مُّبَيَّنَـٰتٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L354-مبينت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-مبينت-1-w2",
+        "variantId": "v-L354-مبينت-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي مُبَيَّنَاتٍ كَسْرُ حَقٍّ كَفَى صَفَا — D: وَافْتَحْ مُبَيَّنَةٍ فُزْ"
+      }
+    ],
+    "description": "بفتح الياء المشددة اسم مفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مُبَيَّنَاتٍ كَسْرُ حَقٍّ كَفَى صَفَا"
+      },
+      {
+        "source": "D",
+        "text": "وَافْتَحْ مُبَيَّنَةٍ فُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-دري-1-w2",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "دُرِّىٌّۭ",
+    "variantText": "دِرِّيٓءٌۭ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L354-دري-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-دري-1-w2",
+        "variantId": "v-L354-دري-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      }
+    ],
+    "description": "بكسر الدال وبعد الراء ياء مدية وهمزة منونة من درأ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-دري-1-w3",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "دُرِّىٌّۭ",
+    "variantText": "دُرِّيٓءٌۭ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L354-دري-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-دري-1-w3",
+        "variantId": "v-L354-دري-1-w3",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      }
+    ],
+    "description": "بضم الدال وبعد الراء ياء مدية وهمزة منونة",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-يوقد-1-w2",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يُوقَدُ",
+    "variantText": "تُوقَدُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L354-يوقد-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-يوقد-1-w2",
+        "variantId": "v-L354-يوقد-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      }
+    ],
+    "description": "بالتاء مضمومة وتخفيف القاف لتأنيث الزجاجة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-يوقد-1-w3",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يُوقَدُ",
+    "variantText": "تَوَقَّدُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L354-يوقد-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-يوقد-1-w3",
+        "variantId": "v-L354-يوقد-1-w3",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      }
+    ],
+    "description": "بالتاء مفتوحة وتشديد القاف فعلاً ماضياً",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-يسبح-1-w2",
+    "surah": 24,
+    "ayah": 36,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يُسَبِّحُ",
+    "variantText": "يُسَبَّحُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L354-يسبح-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-يسبح-1-w2",
+        "variantId": "v-L354-يسبح-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَيُسَبَّحُ فَتْحُ الْبَا كَذَا صِفْ"
+      }
+    ],
+    "description": "بفتح الباء مبنياً للمفعول ونائب الفاعل الجار والمجرور (له)",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُسَبَّحُ فَتْحُ الْبَا كَذَا صِفْ"
+      }
+    ]
+  }
+]

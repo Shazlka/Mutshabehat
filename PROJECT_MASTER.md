@@ -573,6 +573,29 @@ Source cautions, slips & query normalizations resolved during ingestion:
 
 The combined fixture state after this batch is **1,508 variants and 6,960 rulings across 289 active pages** (1–244 and 305–349). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, Al-Hajj, and Al-Mu'minun are fixture-only until a database population is explicitly requested.
 
+**Surah An-Nur (24), Mushaf pages 350–359.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 24:1–64), not from the PDF: **48 variant records and 178 أصول rulings** (page 359 spans An-Nur 62–64 and Al-Furqan 1–2: `surah=24, af=62, at=2`).
+
+Source cautions, slips & query normalizations resolved during ingestion:
+- 24:6 & 24:8 ﴿أَرْبَعُ / أَرْبَعَ﴾ (page 350): Shatibiyyah 912 (*«وَأَرْبَعُ أَوَّلًا صِحَابٌ»*). The prompt table inverted raf' and nasb, claiming Hafs read with nasb. In truth, Hafs reads with raf' ﴿أَرْبَعُ﴾ in 24:6 (`['حفص', 'حمزة', 'الكسائي', K10]`), matching Medina Mushaf-1441 fixture, while `REST` read with nasb ﴿أَرْبَعَ﴾. In 24:8, all 10 readers agree on nasb ﴿أَرْبَعَ﴾ by consensus.
+- 24:7 & 24:9 ﴿الْخَامِسَةُ / الْخَامِسَةَ﴾ (page 350): Shatibiyyah 913 (*«وَغَيْرُ الْحَفْصِ خَامِسَةُ الْأَخِيرُ»*). In 24:7, all 10 readers read with raf' ﴿وَٱلْخَـٰمِسَةُ﴾; the khilaf is in ﴿أَنَّ لَعْنَتَ﴾ (Nafi and Ya'qub read ﴿أَنْ لَّعْنَتُ﴾ takhfeef & raf'). In 24:9, Hafs alone reads with nasb ﴿وَٱلْخَـٰمِسَةَ﴾, while the remaining 19 Riwayat (`REST`) read with raf' ﴿وَٱلْخَـٰمِسَةُ﴾; in ﴿أَنَّ غَضَبَ﴾ Nafi and Ya'qub read ﴿أَنْ غَضِبَ﴾ (takhfeef & past verb).
+- 24:20 ﴿رَءُوفٌۭ﴾ (page 351): Prompt claimed Hafs, Ibn Kathir, Abu Ja'far read by qasr. In truth, Shatibiyyah 512 (*«وَرَءُوفٌ قَصْرُ صُحْبَتِهِ حَلَا»*) assigns qasr to Suhbah (Shu'ba, Hamza, Kisai) and Abu Amr (+ Ya'qub, Khalaf 10 in Durrah), while Hafs, Nafi, Ibn Kathir, Ibn Amir, Abu Ja'far read with madd ﴿رَءُوفٌۭ﴾ verbatim matching the Medina Mushaf fixture.
+- 24:21 ﴿خُطُوَٰتِ﴾ (page 352): Prompt claimed Hamza and Khalaf 10 read with damm; in truth, they read with sukun ﴿خُطْوَٰتِ﴾, while damm ﴿خُطُوَٰتِ﴾ belongs to Qunbul, Ibn Amir, Hafs, Kisai, Abu Ja'far, Ya'qub. Handled with `all_occurrences=True`.
+- 24:24 ﴿تَشْهَدُ / يَشْهَدُ﴾ (page 352): Shatibiyyah 914 (*«وَيَرْفَعُ بَعْدَ الْجَرِّ يَشْهَدُ شَائِعٌ»*); Hamza, Kisai, Khalaf 10 read with yaa ﴿يَشْهَدُ﴾, while Hafs and `REST` read with taa ﴿تَشْهَدُ﴾.
+- 24:31 ﴿جُيُوبِهِنَّ﴾, ﴿غَيْرِ﴾, ﴿أَيُّهَ﴾ (page 353):
+  - ﴿جُيُوبِهِنَّ﴾: Shatibiyyah (*«جُيُوبٍ مُنِيرٌ دُونَ شَكٍّ»*) assigns kasr to Ibn Dhakwan, Ibn Kathir, Hamza, Kisai, Khalaf 10; Hafs and `REST` read with damm ﴿جُيُوبِهِنَّ﴾.
+  - ﴿غَيْرِ﴾: Shatibiyyah 914 (*«وَغَيْرُ أُولِي بِالنَّصْبِ صَاحِبُهُ كَلَا»*) + Durrah (*«وَانْصِبْ غَيْرَ أَلَا»*); only Ibn Amir, Shu'ba, Abu Ja'far read with nasb ﴿غَيْرَ﴾, while Hafs and `REST` read with kasr ﴿غَيْرِ﴾ matching fixture.
+  - ﴿أَيُّهَ﴾: 3-way partition: Ibn Amir damm on haa وصلاً (`أَيُّهُ`), Abu Amr, Kisai, Ya'qub alif وقفاً (`أَيُّهَا`), Hafs and `REST` fat-h وصلاً and haa وقفاً (`أَيُّهَ`).
+- 24:40 ﴿سَحَابٌ ظُلُمَاتٌ﴾ (page 355): Shatibiyyah 917 (*«وَمَا نَوَّنَ الْبَزِّي سَحَابٌ وَرَفْعُهُمْ لَدَى ظُلُمَاتٍ جَرَّ دَارٍ وَأَوْصَلَا»*). Aligned clean 3-way partition: Al-Bazzi idafa without tanween ﴿سَحَابُ ظُلُمَـٰتٍۢ﴾; Qunbul tanween and jar ﴿سَحَابٌۭ ۚ ظُلُمَـٰتٍۢ﴾; Hafs and `REST` tanween and raf' ﴿سَحَابٌۭ ۚ ظُلُمَـٰتٌۢ﴾.
+- 24:41 & 24:53: Prompt claimed khilaf in ﴿بِمَا يَفْعَلُونَ﴾ and ﴿بِمَا تَعْمَلُونَ﴾; verified by consensus and classical Qiraat books that all 10 readers agree on ghayb in 41 and khitab in 53; omitted hallucinated prompt entries.
+- 24:51 ﴿قَوْلَ﴾: Verified that raf' is a grammatical/shazzah reading not part of the 10 Minor Readings; consensus of the 10 on nasb ﴿قَوْلَ﴾ maintained.
+- 24:55 ﴿ٱسْتَخْلَفَ﴾ & ﴿وَلَيُبَدِّلَنَّهُم﴾ (page 357): Shu'ba alone reads ﴿ٱسْتُخْلِفَ﴾ (19 vs 1 partition); Ibn Kathir, Shu'ba, Ya'qub read ﴿وَلَيُبْدِلَنَّهُم﴾ takhfeef.
+- 24:57 ﴿تَحْسَبَنَّ﴾: 3-way partition: Ibn Amir & Hamza yaa/fat-h ﴿يَحْسَبَنَّ﴾; Asim & Abu Ja'far taa/fat-h ﴿تَحْسَبَنَّ﴾ (Hafs baseline); `REST` taa/kasr ﴿تَحْسِبَنَّ﴾.
+- 24:58 ﴿ثَلَـٰثُ عَوْرَٰتٍۢ﴾: Disambiguated occurrence 2 query `'ثلث عورت'`; Shu'ba, Hamza, Kisai, Khalaf 10 read with nasb, Hafs & `REST` with raf'.
+- 24:61 ﴿بُيُوتِكُمْ﴾ & ﴿بُيُوتًا﴾ (page 358): Modeled with `all_occurrences=True` for buyutikum; verified that ﴿مَفَاتِحَهُۥٓ﴾ has no khilaf in An-Nur (consensus).
+- 24:64 ﴿يُرْجَعُونَ﴾ (page 359): Ibn Kathir, Abu Amr, Shu'ba, Ya'qub read ﴿يَرْجِعُونَ﴾; Hafs and `REST` read ﴿يُرْجَعُونَ﴾.
+
+The combined fixture state after this batch is **1,556 variants and 7,138 rulings across 299 active pages** (1–244 and 305–359; 305 pages remaining of 604). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, Al-Hajj, Al-Mu'minun, and An-Nur are fixture-only until a database population is explicitly requested.
+
 **Pages 42–61** (the Juz' 3 batch, Al-Baqarah 253 to Ali 'Imran 91). 52 new variant loci (+121 variants, 413 total) and +552 أصول rulings (1,954 total) across 81 active pages. Pages 1–61 (Juz' 1, 2, and 3) are now fully contiguous.
 - Corrected source slips & query alignments:
   - Page 53: source cited ﴿نَفْسَهُۥ وَيُحَذِّرُكُمُ﴾; actual verse 3:28 rasm is ﴿نَفْسَهُۥ ۗ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ﴾ (`'نفسهۥ والى'`).

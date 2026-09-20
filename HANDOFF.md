@@ -1,11 +1,11 @@
-# Handoff — Mutshabehat V2 (state as of 2026-09-19)
+# Handoff — Mutshabehat V2 (state as of 2026-09-20)
 
 For the next agent picking up this project. Read this first, then `PROJECT_MASTER.md` (full reference:
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
-**Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/19
-— pages 1–244 plus all of سور مريم وطه والأنبياء والحج والمؤمنون (pages 305–349) are imported
-(1,508 variants, 6,960 أصول rulings across 289 pages),
+**Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/20
+— pages 1–244 plus all of سور مريم وطه والأنبياء والحج والمؤمنون والنور (pages 305–359) are imported
+(1,556 variants, 7,138 أصول rulings across 299 pages, 305 remaining),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
@@ -89,17 +89,17 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 ### 5.1 Qiraat — the live thread
 
-- **Visual review of the imported pages (1–244 and 305–349) is the user's next activity.** Open the reader in مقارنة القراءات,
+- **Visual review of the imported pages (1–244 and 305–359) is the user's next activity.** Open the reader in مقارنة القراءات,
   then burger/sidebar → «مراجعة المواضع المستوردة». Every imported locus gets a ring (amber unchecked,
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
-- **315 pages left to import** (245–304 and 350–604). The page table is deliberately **not**
+- **305 pages left to import** (245–304 and 360–604). The page table is deliberately **not**
   contiguous now — 244 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
   non-negotiable rules, the six generator invariants, the four anchor shapes that cost 23 rejections
   in the 22–41 batch and the classification rules for an ayah-by-ayah source are in
   `PROJECT_MASTER.md` §12 (§12.4b for the anchor shapes, §12.5 for سورة مريم). Do not improvise around it.
-- **سور مريم وطه والأنبياء والحج والمؤمنون came from different sources** — user-supplied ayah-by-ayah tables, not the PDF —
+- **سور مريم وطه والأنبياء والحج والمؤمنون والنور came from different sources** — user-supplied ayah-by-ayah tables, not the PDF —
   so their records carry their own `src` instead of a PDF page. Source cautions and omissions are
   listed in `PROJECT_MASTER.md` §12.5 and are the first things to check on the paper original. ميم
   الجمع and universal tajwid rows were left out: this dataset records differences, not agreed rules.
