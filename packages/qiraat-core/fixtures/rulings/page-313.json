@@ -112,6 +112,10 @@
       {
         "authorityId": "Q08",
         "action": "الفتح وصلًا"
+      },
+      {
+        "authorityId": "Q02",
+        "action": "الفتح وصلًا"
       }
     ],
     "readings": [
@@ -142,6 +146,16 @@
       },
       {
         "readingId": "Q08-R02",
+        "action": "الفتح وصلًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلًا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
         "action": "الفتح وصلًا",
         "isDefault": true
       }

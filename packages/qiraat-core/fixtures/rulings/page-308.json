@@ -1157,6 +1157,11 @@
         "authorityId": "Q08",
         "action": "فتح الياء",
         "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q03",
+        "action": "فتح الياء",
+        "condition": "وصلًا"
       }
     ],
     "readings": [
@@ -1177,6 +1182,16 @@
       },
       {
         "readingId": "Q08-R02",
+        "action": "فتح الياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
         "action": "فتح الياء",
         "isDefault": true
       }

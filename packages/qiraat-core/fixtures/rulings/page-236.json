@@ -1048,11 +1048,48 @@
       {
         "authorityId": "Q01-R02",
         "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "الفتح وصلاً"
       }
     ],
     "readings": [
       {
         "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
         "action": "الفتح وصلاً",
         "isDefault": true
       }
