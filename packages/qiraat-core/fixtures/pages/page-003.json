@@ -241,5 +241,43 @@
         "text": "وَاشْمِمَا طِلَا بِقِيلَ"
       }
     ]
+  },
+  {
+    "id": "v-L003-MUSTAHZUN-abu-jaafar",
+    "surah": 2,
+    "ayah": 14,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "مُسْتَهْزِءُونَ",
+    "variantText": "مُسْتَهْزُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T19:07:11.000Z",
+    "updatedAt": "2026-09-20T19:07:11.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L003-MUSTAHZUN",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L003-MUSTAHZUN-abu-jaafar",
+        "variantId": "v-L003-MUSTAHZUN-abu-jaafar",
+        "sourceName": "اتباع الأثر في قراءة أبي جعفر بروايتي ابن جماز وابن وردان",
+        "sourceType": "printed-book",
+        "sourceReference": "باب الهمز المفرد، قاعدة الهمز المضموم بعد كسر إذا تلاه واو؛ مثال البقرة 2:14 (النص منشور عبر Quranpedia)",
+        "sourceText": "وإذا كان الهمز مضمومًا وما قبله مكسور وبعده واو فأبو جعفر يحذف الهمز ويضم ما قبله من أجل الهمز نحو: ﴿مُسْتَهْزِئُونَ﴾ تقرأ: ﴿مُسْتَهْزُونَ﴾.",
+        "verificationNotes": "ثبت موضع الكلمة في 2:14 ورقمها 16 من tokens.py. طوبق نص أبي جعفر المنشور على المصدر، مع إسناد الوجه إلى الروايتين ابن وردان وابن جماز؛ حُفظ نص حفص الأساسي دون تعديل."
+      }
+    ],
+    "description": "بحذف الهمزة وضم الزاي",
+    "evidence": [
+      {
+        "source": "اتباع الأثر في قراءة أبي جعفر",
+        "text": "أبو جعفر يحذف الهمز ويضم ما قبله من أجل الهمز نحو: ﴿مُسْتَهْزِئُونَ﴾ تقرأ: ﴿مُسْتَهْزُونَ﴾."
+      }
+    ]
   }
 ]

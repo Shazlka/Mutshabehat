@@ -243,6 +243,28 @@ test('2:37 آدم/كلمات: one conceptual locus spanning two disjoint words s
   })
 })
 
+test('2:14 أبو جعفر reads مستهزون while the Hafs base text stays unchanged', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(3, { includeUnpublished: true })
+  const variant = variants.find((entry) => entry.surah === 2 && entry.ayah === 14 && entry.startToken === 16)
+  assert.ok(variant, 'the Abu Jaafar variant must be anchored at 2:14 word 16')
+  assert.equal(variant.hafsText, 'مُسْتَهْزِءُونَ')
+  assert.equal(variant.variantText, 'مُسْتَهْزُونَ')
+  assert.deepEqual(variant.readingIds, ['Q08-R01', 'Q08-R02'])
+  assert.equal(variant.sources?.[0]?.sourceType, 'printed-book')
+
+  for (const readingId of ['Q08-R01', 'Q08-R02']) {
+    assert.deepEqual(
+      resolveTokenForReading(variants, 2, 14, 16, variant.hafsText, readingId, { includeUnpublished: true }),
+      { kind: 'variant', text: 'مُسْتَهْزُونَ', variant },
+    )
+  }
+  assert.deepEqual(
+    resolveTokenForReading(variants, 2, 14, 16, variant.hafsText, BASE_READING, { includeUnpublished: true }),
+    { kind: 'base', text: 'مُسْتَهْزِءُونَ' },
+  )
+})
+
 test('a performance-only variant keeps variantText === hafsText and carries a performanceNote', () => {
   const repo = new FixtureQiraatRepository()
   return repo.getVariantsForPage(1, { includeUnpublished: true }).then((variants) => {

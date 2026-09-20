@@ -18,7 +18,7 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 1865,
+    "variants": 1866,
     "usulRulings": 9600,
     "fixturePagesPresent": 584,
     "fixtureRange": [
@@ -49,25 +49,25 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks have corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, and Yaqub added-ya display on page 7. Full page-by-page external completeness review continues. Pages 585-604 are not present in the attached DOCX and remain source-blocked pending independent source verification."
+    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification."
   },
-  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303 and the Baqarah إبراهيم/إبراهام reader attribution on pages 19, 20, 43, and 44; full page-by-page external completeness review continues. The local Juz Amma ten-Qiraat workbook covers ayat on pages 585-604, which still need fixture imports and validation.",
+  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification.",
   "currentBatch": {
-    "id": "yaqub-yaat-zawaid-display-page7",
+    "id": "abu-jaafar-mustahzun-page3",
     "pages": [
-      7
+      3
     ],
     "status": "locally_validated_ready_for_push",
-    "variantsAdded": 2,
-    "readerAssignmentsAdded": 4,
+    "variantsAdded": 1,
+    "readerAssignmentsAdded": 2,
     "variantTextCorrections": 0,
     "rulingsAdded": 0,
-    "reference": "النشر في القراءات العشر، باب مذاهبهم في ياءات الزوائد، رؤوس الآي (ج 2، ص 181–182); Quranpedia page-7 candidate audit flagged missing Q09 surface forms",
-    "validation": "passed: additive-only guard; qiraat validator clean (1865 variants, 9600 rulings, 20 colours); 35/35 test:qiraat; all seven Mushaf validators; TypeScript; production build",
+    "reference": "اتباع الأثر في قراءة أبي جعفر بروايتي ابن جماز وابن وردان, باب الهمز المفرد; Quranpedia attachment 20403/78420",
+    "validation": "passed: additive-only guard; qiraat validator clean (1866 variants, 9600 rulings, 20 colours); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
     "productionSmoke": "pending push/deploy",
-    "baseCommit": "7688bc315ddb683bde0d38a468129b5a0c335a0f"
+    "baseCommit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229"
   },
-  "lastConfirmedDeployedDataCommit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
+  "lastConfirmedDeployedDataCommit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -108,13 +108,33 @@
     "consoleWarnings": 0,
     "page303HamzaFilter": true,
     "page303SelectedTokenDetails": "passed: الإمام حمزة; reading IDs Q06-R01 and Q06-R02",
-    "latestAdditionalCheck": {
+    "priorAdditionalCheck": {
       "commit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
       "page": 19,
       "mode": "reading by riwayah",
       "reading": "هشام عن ابن عامر الشامي",
       "ayah": "2:124",
       "displayedForm": "إِبْرَاهَامَ",
+      "status": "passed"
+    },
+    "latestAdditionalCheck": {
+      "commit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229",
+      "deploymentId": "dpl_AUs33LkvEEEgj2dm7tyX1nnXwYSQ",
+      "page": 7,
+      "mode": "reading by riwayah",
+      "reading": "رويس عن يعقوب",
+      "ayahs": [
+        "2:40",
+        "2:41"
+      ],
+      "displayedForms": [
+        "فَٱرْهَبُونِي",
+        "فَٱتَّقُونِي"
+      ],
+      "selectedWordRulings": [
+        "YAAT_ZAWAID: إثبات الياء في الحالين",
+        "YAAT_ZAWAID: إثبات الياء في الحالين"
+      ],
       "status": "passed"
     }
   },
@@ -441,6 +461,21 @@
       "vercelDeployment": "https://mutshabehat-v2-k85ekhloq-shazlka-s-projects.vercel.app",
       "productionValidation": "passed",
       "productionSmoke": "passed: production page 19 in reading-by-riwayah mode showed هشام عن ابن عامر الشامي and exact detail at 2:124, إِبْرَاهَامَ; targeted locus only, full page audits remain pending"
+    },
+    {
+      "commit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229",
+      "batch": "Yaqub added-ya forms page 7",
+      "variantsAdded": 2,
+      "readerAssignmentsAdded": 4,
+      "rulingsAdded": 0,
+      "pages": [
+        7
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "vercelDeploymentId": "dpl_AUs33LkvEEEgj2dm7tyX1nnXwYSQ",
+      "productionValidation": "passed",
+      "productionSmoke": "passed: selected rois narrator; both added-ya words and YAAT_ZAWAID details verified"
     }
   ],
   "pages": [
@@ -517,10 +552,10 @@
         "farshLines": null,
         "usulLines": null
       },
-      "status": "existing_fixture_data_from_prior_sources_not_reaudited_against_attached_doc",
+      "status": "targeted_external_qiraat_locus_corrected_full_page_audit_pending",
       "variantsChecked": false,
       "usulChecked": false,
-      "variantRecords": 5,
+      "variantRecords": 6,
       "usulRecords": 30,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
@@ -529,7 +564,18 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "targetedExternalAudit": {
+        "locus": "2:14 token 16",
+        "anchor": "مُسْتَهْزِءُونَ",
+        "correctedReading": "مُسْتَهْزُونَ",
+        "readingIds": [
+          "Q08-R01",
+          "Q08-R02"
+        ],
+        "reference": "اتباع الأثر في قراءة أبي جعفر، باب الهمز المفرد",
+        "productionUiVerified": false
+      }
     },
     {
       "page": 4,
@@ -645,13 +691,16 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false,
+      "productionUiVerified": true,
       "targetedExternalLociReviewed": true,
       "targetedExternalLoci": [
         "2:40 فَٱرْهَبُونِ",
         "2:41 فَٱتَّقُونِ"
       ],
-      "variantsAdded": 2
+      "variantsAdded": 2,
+      "productionCommit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229",
+      "productionDeploymentId": "dpl_AUs33LkvEEEgj2dm7tyX1nnXwYSQ",
+      "productionSmoke": "passed: رويس عن يعقوب displayed 2:40 فارهبوني and 2:41 فاتقوني; both selected-word details showed YAAT_ZAWAID إثبات الياء في الحالين; no runtime errors"
     },
     {
       "page": 8,
