@@ -846,5 +846,46 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p460-YAAT_ZAWAID-فبشر_عباد-2",
+    "pageNumber": 460,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 17,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 17,
+    "baseText": "فَبَشِّرْ عِبَادِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إثبات الياء وصلاً مفتوحة ووقفاً ساكنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إثبات الياء وصلاً مفتوحة ووقفاً ساكنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "وله الحذف وقفاً",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
