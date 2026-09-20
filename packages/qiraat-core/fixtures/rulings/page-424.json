@@ -514,5 +514,116 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p424-HAMZATAN_KALIMATAYN-التي_ءاتيت-3",
+    "pageNumber": 424,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 50,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 50,
+    "baseText": "ٱلَّـٰتِىٓ ءَاتَيْتَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p424-HAMZATAN_KALIMATAYN-للنبيء_ان-4",
+    "pageNumber": 424,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 50,
+    "startToken": 33,
+    "endToken": 34,
+    "endAyah": 50,
+    "baseText": "لِلنَّبِىِّ إِنْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الهمزة الثانية أو إبدالها ياءً مدية مشبعة ومقصورة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الهمزة الثانية أو إبدالها ياءً مدية مشبعة ومقصورة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p424-HAMZATAN_KALIMATAYN-النبيء_ان-5",
+    "pageNumber": 424,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 45,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 45,
+    "baseText": "ٱلنَّبِىُّ إِنَّآ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية واواً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية واواً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية واواً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

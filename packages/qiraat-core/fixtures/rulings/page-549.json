@@ -105,5 +105,108 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p549-HAMZATAN_KALIMATAYN-والبغضاء_ابدا-2",
+    "pageNumber": 549,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 4,
+    "startToken": 27,
+    "endToken": 28,
+    "endAyah": 4,
+    "baseText": "وَٱلْبَغْضَآءُ أَبَدًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إبدال الهمزة الثانية واواً مفتوحة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

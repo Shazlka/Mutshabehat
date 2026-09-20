@@ -1710,5 +1710,285 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p305-HAMZATAN_KALIMATAYN-زكرياء_اذ-6",
+    "pageNumber": 305,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 2,
+    "startToken": 5,
+    "endToken": 1,
+    "endAyah": 3,
+    "baseText": "زَكَرِيَّآ إِذْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "تحقيق الهمزتين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "أو إبدالها واواً مكسورة في الموضع الثاني",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p305-HAMZATAN_KALIMATAYN-يازكرياء_انا-7",
+    "pageNumber": 305,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 7,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 7,
+    "baseText": "يَـٰزَكَرِيَّآ إِنَّا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "تحقيق الهمزتين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "أو إبدالها واواً مكسورة في الموضع الثاني",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

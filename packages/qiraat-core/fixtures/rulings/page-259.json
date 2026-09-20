@@ -410,5 +410,211 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p259-HAMZATAN_KALIMATAYN-ماء_فاخرج-4",
+    "pageNumber": 259,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 32,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 32,
+    "baseText": "مَآءًۭ فَأَخْرَجَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إبدال الثانية واواً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p259-HAMZATAN_KALIMATAYN-ما_يشاء_الم-5",
+    "pageNumber": 259,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 27,
+    "startToken": 17,
+    "endToken": 1,
+    "endAyah": 28,
+    "baseText": "مَا يَشَآءُ ۞ أَلَمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الثانية واواً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إبدال الثانية واواً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إبدال الثانية واواً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

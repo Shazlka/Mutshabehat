@@ -771,5 +771,108 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p434-HAMZATAN_KALIMATAYN-يشاء_ان-7",
+    "pageNumber": 434,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 1,
+    "startToken": 18,
+    "endToken": 19,
+    "endAyah": 1,
+    "baseText": "يَشَآءُ ۚ إِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية وإبدالها واواً مكسورة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

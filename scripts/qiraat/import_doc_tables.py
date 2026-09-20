@@ -31,6 +31,8 @@ RCOLORS = {
  'SILAT_HA':('صلة هاء الكناية','#0D9488'),'MEEM_JAM':('صلة ميم الجمع','#DB2777'),'SAKT':('السكت','#7C3AED'),
  'TARK_GHUNNA':('ترك الغنة','#0891B2'),
  'YAAT_IDAFA':('ياءات الإضافة','#CA8A04'),'YAAT_ZAWAID':('ياءات الزوائد','#CA8A04'),
+ 'HAMZATAN_KALIMATAYN':('الهمزتان من كلمتين','#DC2626'),
+ 'HAMZATAN_KALIMA':('الهمزتان من كلمة','#DC2626'),
 }
 DIFF={'orthography':'ORTHOGRAPHY','vowel':'HARAKAH','consonant':'LETTER','hamza':'HAMZ',
       'word_form':'LETTER','ishmam':'HARAKAH','other':'OTHER'}
@@ -305,6 +307,64 @@ def parse_yaat_line(page, category, line, out):
     for anchor,groups,notes in pending:
         emit_ruling(page,category,anchor,groups,out,notes=notes)
 
+def likely_reader_text(text):
+    probe=re.sub(r'بخلف(?:\s+عنه)?','',text)
+    names=tuple(A.READERS)+tuple(A.NARRATORS)+(
+        'خلف','الدوري','الكوفيون','أهل سما','الحرميان','المدنيان','البصريان','صحبة','صحاب','جميع القراء عدا')
+    return any(name in probe for name in names)
+
+def hamzatan_explicit_clause(clause):
+    """Return only a single action clause whose reader group is explicitly named."""
+    if any(x in clause for x in ('الباقون','الباقين','للجمهور','الجمهور')): return None
+    for m in PARENS.finditer(clause):
+        names=m.group(1).strip()
+        try: readers=resolve_explicit_group(names)
+        except Unresolved:
+            if likely_reader_text(names): raise
+            continue
+        if not readers: continue
+        action=clause[:m.start()].strip()
+        action=re.split(r'(?:،\s*أو\s*|\s+أو\s+)',action)[-1].strip(' ،,و')
+        action=BRACE.sub('',action).strip()
+        if not action: continue
+        alternate='بخلف' in clause
+        notes=[n.strip() for n in PARENS.findall(clause)
+               if not likely_reader_text(n) and 'بخلف' not in n]
+        return action,readers,alternate,('بخلف عنه' if alternate else None),notes
+    parsed=explicit_reader_clause(clause)
+    if not parsed: return None
+    action,readers,alternate,note=parsed
+    action=BRACE.sub('',action).strip()
+    action=re.sub(r'^لمن قرأ بالهمز[،,]\s*','',action)
+    if not action: return None
+    notes=[n.strip() for n in PARENS.findall(clause)
+           if not likely_reader_text(n) and 'بخلف' not in n]
+    return action,readers,alternate,('بخلف عنه' if alternate else None),notes
+
+def parse_hamzatan_line(page,category,line,out):
+    pending=[]
+    for chunk in split_anchor_clauses(line):
+        pre,sep,body=chunk.partition(':')
+        anchors=BRACE.findall(pre)
+        if not sep or not anchors: continue
+        groups=[]; notes=[n.strip() for n in PARENS.findall(pre)]
+        try:
+            for semicolon_clause in re.split(r'[؛.]',body):
+                clause=semicolon_clause.strip()
+                if not clause: continue
+                parsed=hamzatan_explicit_clause(clause)
+                if not parsed: continue
+                action,readers,alternate,condition,clause_notes=parsed
+                groups.append((readers,action,alternate,condition))
+                notes.extend(clause_notes)
+        except Unresolved:
+            # An unresolved name anywhere on the source line invalidates all its clauses.
+            return
+        if groups:
+            for anchor in anchors: pending.append((anchor,groups,'؛ '.join(dict.fromkeys(notes)) or None))
+    for anchor,groups,notes in pending:
+        emit_ruling(page,category,anchor,groups,out,notes=notes)
+
 def parse_usul(page, lines):
     out=[]; section=None; target_section=None
     for raw in lines:
@@ -313,23 +373,29 @@ def parse_usul(page, lines):
         if is_neg(line): continue
         # New source-labelled families may be inline or introduced by a bare heading followed
         # by one or more anchored lines.
-        target_headers=[('ياءات الإضافة','YAAT_IDAFA'),('ياءات الزوائد','YAAT_ZAWAID')]
+        target_headers=[('الهمزتان من كلمتين','HAMZATAN_KALIMATAYN'),
+                        ('الهمزتان من كلمة','HAMZATAN_KALIMA'),
+                        ('ياءات الإضافة','YAAT_IDAFA'),('ياءات الزوائد','YAAT_ZAWAID')]
         matched_target=False
         for prefix,cat in target_headers:
             if line.startswith(prefix):
                 target_section=cat
                 content=line.split(':',1)[1].strip() if ':' in line else ''
-                if content and not is_univ(line): parse_yaat_line(page,cat,content,out)
+                if content and not is_univ(line):
+                    if cat.startswith('YAAT_'): parse_yaat_line(page,cat,content,out)
+                    else: parse_hamzatan_line(page,cat,content,out)
                 matched_target=True
                 break
         if matched_target: continue
         # Leave the target section on any other named family before considering its continuation.
         known_other=(list(FIXED)+['الممال','صلة هاء','الإدغام الصغير','تغيير الهمز','الهمز المفرد',
                      'إبدال','الإدغام الكبير','الإدغام الصغير','ترك الغنة','السكت','الإخفاء',
-                     'الوقف على مرسوم الخط','وقف حمزة','الهمزتان'])
+                     'صلة ميم الجمع','ميم الجمع','الوقف على مرسوم الخط','وقف حمزة','الهمزتان'])
         if target_section:
             if BRACE.search(line) and not any(line.startswith(x) for x in known_other):
-                if not is_univ(line): parse_yaat_line(page,target_section,line,out)
+                if not is_univ(line):
+                    if target_section.startswith('YAAT_'): parse_yaat_line(page,target_section,line,out)
+                    else: parse_hamzatan_line(page,target_section,line,out)
                 continue
             target_section=None
         # section header for الممال
