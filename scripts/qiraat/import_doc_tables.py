@@ -124,15 +124,15 @@ def q(name):
 # ("﴿w1﴾: أمالها R1، وقللها ورش بخلف؛ وأمال ﴿w2﴾ R2.") — split into independent clauses on
 # «؛» and on a fresh «وأمال/وأمالها»; each clause resolves its own anchor(s) and readers.
 IMALAH_CONNECTORS = re.compile(r'^(?:وأمالهما|وأمالها|وأمال|أمالهما|أمالها|أمال)\s*')
-# Within this family only, a bare «خلف» (not «خلف العاشر» / «خلف عن حمزة») is خلف العاشر: the
-# أصحاب الإمالة roster is always stated at reader level here, never by a lone narrator's bare
-# name. This is scoped to الممال parsing alone — every other family keeps the project-wide rule
-# that a bare «خلف» must never resolve.
-BARE_KHALAF_RE = re.compile(r'خلف(?!\s*العاشر|\s*عن)')
 TAQLIL_SPLIT_RE = re.compile(r'وقللهما|وقللها|وقلل|والتقليل|تقليل')
 
 def imalah_readers_from(text, claimed):
-    return readers_from(BARE_KHALAF_RE.sub('خلف العاشر', text), claimed)
+    # Keep the project-wide resolver rule here too: bare «خلف» is ambiguous between
+    # خلف العاشر and خلف عن حمزة, so any clause containing it is unresolved and dropped.
+    readers, rest = resolve_readers(text.strip(), claimed)
+    if rest.strip(' ،,؛.') or not readers:
+        raise Unresolved('unresolved imalah reader text: '+rest.strip())
+    return readers
 
 def clause_anchor_zone(clause):
     """Anchors are declared BEFORE the reader-list colon; a brace appearing after it (in the
@@ -148,21 +148,44 @@ def split_imalah_clauses(line):
 
 def parse_imalah_clause(page, clause, out):
     anchors = BRACE.findall(clause_anchor_zone(clause))
+    reverse=False
+    if not anchors:
+        # Some رؤوس الآي rows put the reader clause before a final colon and list
+        # anchors after it. In that form, braces after the last colon are the loci.
+        anchors=BRACE.findall(clause)
+        reverse=bool(anchors)
+    if not anchors: return
+    # An explicit «بخلف عنه في X» makes that anchor uncertain. Keep other words in the
+    # clause, but do not turn the exceptional anchor into a certain imalah ruling.
+    uncertain=[]
+    for note in PARENS.findall(clause):
+        if 'بخلف عنه' not in note: continue
+        m=re.search(r'في\s+(.+)$',note.strip())
+        if m:
+            target=T.norm(m.group(1).strip())
+            uncertain.extend(a for a in anchors if target and target in T.norm(a))
+    anchors=[a for a in anchors if a not in uncertain]
     if not anchors: return
     text = BRACE.sub('', clause)
     text = re.sub(r'\([^)]*\)', '', text)
-    if ':' in text: text = text.rsplit(':', 1)[-1]
+    if reverse and ':' in text:
+        parts=text.split(':')
+        text=':'.join(parts[1:-1]) if len(parts)>2 else parts[-1]
+    elif ':' in text:
+        text = text.rsplit(':', 1)[-1]
     text = IMALAH_CONNECTORS.sub('', text.strip())
     text = text.strip().rstrip('.').strip()
     m = TAQLIL_SPLIT_RE.search(text)
     imala_part = text[:m.start()] if m else text
     taqlil_part = text[m.end():] if m else ''
     imala_part = re.sub(r'[،,]\s*$', '', imala_part.strip()).strip()
+    imala_part = re.sub(r'\s+(?:وقفاً|وقفا|وصلاً|وصلا)(?:\s+قولاً واحداً)?$', '', imala_part).strip()
+    imala_part = re.sub(r'\s+قولاً واحداً$', '', imala_part).strip()
     groups=[]
     if imala_part:
         try: rs=imalah_readers_from(imala_part, set())
-        except Unresolved: rs=None
-        if rs and rs!=ALL20: groups.append((rs,'إمالة',False))
+        except Unresolved: return
+        if rs!=ALL20: groups.append((rs,'إمالة',False))
     if 'ورش' in taqlil_part:
         groups.append((q('ورش'),'تقليل','بخلف' in taqlil_part))
     if not groups: return
@@ -462,7 +485,7 @@ def parse_usul(page, lines):
     for raw in lines:
         line=raw.strip()
         head=line.split(':')[0]
-        if is_neg(line): continue
+        if is_neg(line) or has_bare_ambiguous_reader(line): continue
         # New source-labelled families may be inline or introduced by a bare heading followed
         # by one or more anchored lines.
         target_headers=[('الهمزتان من كلمتين','HAMZATAN_KALIMATAYN'),
@@ -575,7 +598,15 @@ def existing(kind, page):
         except Exception: return []
     return []
 
-def build(page_list):
+def has_bare_ambiguous_reader(text):
+    """Reject any source line that contains an unresolved bare narrator name."""
+    if re.search(r'(?<!ب)(?:و)?خلف(?!\s*(?:العاشر|عن))', text):
+        return True
+    if re.search(r'الدوري(?!\s+عن\s+(?:أبو\s+عمرو|أبي\s+عمرو|الكسائي))', text):
+        return True
+    return False
+
+def build(page_list, categories=None):
     vstats=collections.Counter(); rstats=collections.Counter()
     vout={}; rout={}
     for page in page_list:
@@ -590,6 +621,9 @@ def build(page_list):
         # parse_farsh yields nothing; it fills via yield_block into 'out' created inside — fix: call and capture
         v=collect_farsh(page, pd['farsh'])
         r=parse_usul(page, pd['usul'])
+        if categories is not None:
+            v=[]
+            r=[x for x in r if x['category'] in categories]
         # DEDUP against existing
         ev=existing('pages',page); er=existing('rulings',page)
         vtok={(x['surah'],x['ayah'],x['startToken']) for x in ev}
@@ -718,14 +752,21 @@ def checked_page303_farsh(page, lines):
     return out
 
 if __name__=='__main__':
-    args=[a for a in sys.argv[1:] if not a.startswith('--')]
+    raw=sys.argv[1:]
+    categories=None
+    if '--category' in raw:
+        ix=raw.index('--category')
+        if ix+1>=len(raw): raise SystemExit('--category needs a category name')
+        categories={raw[ix+1]}
+    args=[a for a in raw if not a.startswith('--')]
+    if categories is not None: args.remove(next(iter(categories)))
     if '-' in (args[0] if args else ''):
         a,b=args[0].split('-'); pages=list(range(int(a),int(b)+1))
     elif args:
         pages=[int(x) for x in args]
     else:
         pages=list(range(268,305))
-    vout,rout,vs,rs=build(pages)
+    vout,rout,vs,rs=build(pages,categories=categories)
     print('pages touched:',sorted(set(vout)|set(rout)))
     print('variants added:',vs['added'],' rulings added:',rs['added'])
     if '--write' in sys.argv:

@@ -423,5 +423,325 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-الراجفه-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 6,
+    "baseText": "ٱلرَّاجِفَةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-الرادفه-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 7,
+    "baseText": "ٱلرَّادِفَةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-واجفه-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 8,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 8,
+    "baseText": "وَاجِفَةٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-الحافره-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 10,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 10,
+    "baseText": "ٱلْحَافِرَةِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-نخره-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 11,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 11,
+    "baseText": "نَّخِرَةًۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-خاسره-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 12,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 12,
+    "baseText": "خَاسِرَةٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-واحده-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 13,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 13,
+    "baseText": "وَٰحِدَةٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "r-p583-IMALAH_TAQLIL-بالساهره-doc",
+    "pageNumber": 583,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 14,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 14,
+    "baseText": "بِٱلسَّاهِرَةِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T00:00:00.000Z"
   }
 ]
