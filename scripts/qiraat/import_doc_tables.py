@@ -629,6 +629,92 @@ def collect_farsh(page, lines):
             if wujuh and len(wujuh)>=2: yield_block(page,anchor,wujuh,out)
             continue
         i+=1
+    out.extend(checked_page303_farsh(page, lines))
+    return out
+
+def checked_page303_farsh(page, lines):
+    """Recover the page-303 forms the generic block parser cannot safely segment.
+
+    The source combines several alternative forms on one prose line, and one header uses the
+    non-Hafs form as its anchor. Keep this correction local to that page, use only explicit
+    reader groups, and resolve every stored baseText through the real Mushaf token fixtures.
+    Rows containing the ambiguous bare name «خلف» remain excluded by the generic resolver.
+    """
+    if page != 303:
+        return []
+
+    base_hamiah, rest = resolve_readers('نافع، ابن كثير، أبو عمرو، حفص، يعقوب', set())
+    if rest.strip(' ،,؛.') or 'Q05-R02' not in base_hamiah:
+        raise ValueError('page 303 حامية base group did not resolve with Hafs')
+
+    cases = [
+        {
+            'anchor': 'حَمِئَةٍ', 'ayah': 86, 'variantText': 'حَامِيَةٍ',
+            'readingIds': ALL20 - base_hamiah, 'differenceType': 'LETTER',
+            'description': 'بألف بعد الحاء مع كسر الميم وهمزة ياء',
+            'sourceFragment': 'بألف بعد الحاء',
+        },
+        {
+            'anchor': 'يُسْرٗا', 'ayah': 88, 'variantText': 'يُسُرًا',
+            'readerGroup': 'أبو جعفر', 'differenceType': 'HARAKAH',
+            'description': 'بضم السين', 'sourceFragment': 'بضم السين ﴿يُسُرًا﴾',
+        },
+        {
+            # The printed header quotes Ibn Kathir's alternate form, while the same source line
+            # explicitly gives the Hafs/bāqīn form that matches the real Mushaf token.
+            'anchor': 'مَكَّنِّي', 'ayah': 95, 'variantText': 'مَكَّنَنِي',
+            'readerGroup': 'ابن كثير', 'differenceType': 'LETTER',
+            'description': 'بنونين مظهرتين', 'sourceFragment': 'بنونين مظهرتين',
+            'anchorNote': 'رُبط باللفظ المطبوع للمصحف المذكور في سطر الباقين؛ عنوان الكتلة هو وجه ابن كثير.',
+        },
+        {
+            # The source quotes the full phrase, but only the second real token changes.
+            'anchor': 'ءَاتُونِىٓ', 'ayah': 96, 'variantText': 'ائْتُونِي',
+            'readerGroup': 'شعبة', 'differenceType': 'HAMZ',
+            'description': 'بهمزة وصل لشعبة', 'sourceFragment': 'بهمزة وصل ﴿رَدْمًا ائْتُونِي﴾',
+        },
+        {
+            'anchor': 'ٱسْطَـٰعُوٓاْ', 'ayah': 97, 'variantText': 'اسْطَّاعُوا',
+            'readerGroup': 'حمزة', 'differenceType': 'LETTER',
+            'description': 'بتشديد الطاء لحمزة', 'sourceFragment': 'بتشديد الطاء',
+        },
+    ]
+
+    out=[]
+    for case in cases:
+        source_matches=[line for line in lines if case['sourceFragment'] in line]
+        if len(source_matches) != 1:
+            raise ValueError(f"page 303 source row not unique: {case['sourceFragment']}")
+        source_text=source_matches[0]
+        if case['variantText'] not in source_text:
+            raise ValueError(f"page 303 source row does not contain variant: {case['variantText']}")
+        reading_ids=case.get('readingIds')
+        if reading_ids is None:
+            reading_ids, unresolved=resolve_readers(case['readerGroup'], set())
+            if unresolved.strip(' ،,؛.'):
+                raise Unresolved(f"page 303 explicit group not fully resolved: {unresolved}")
+        if not reading_ids or reading_ids == ALL20 or 'Q05-R02' in reading_ids:
+            raise ValueError(f"page 303 variant group is empty, universal, or includes Hafs: {case}")
+        loc=T.find(page, case['anchor'], 1, case['ayah'])
+        if case['variantText'] == loc['baseText']:
+            raise ValueError(f"page 303 source form does not differ from base token: {case}")
+        lid=f"D303-{loc['surah']}-{loc['startAyah']}-{loc['startWord']}"
+        variant_id=f'v-{lid}-w2'
+        source={**SRC,
+            'sourceReference':'وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية',
+            'sourceText':source_text}
+        if case.get('anchorNote'):
+            source['verificationNotes'] += ' ' + case['anchorNote']
+        out.append({
+            'id':variant_id,'surah':loc['surah'],'ayah':loc['startAyah'],
+            'startToken':loc['startWord'],'endToken':loc['endWord'],'operation':'REPLACE',
+            'hafsText':loc['baseText'],'variantText':case['variantText'],
+            'differenceType':case['differenceType'],'verificationStatus':'REVIEWED',
+            'createdAt':TS,'updatedAt':TS,'readingIds':sorted(reading_ids),
+            'locusId':lid,'locusType':'word_variant',
+            'sources':[{'id':f's-{lid}-w2','variantId':variant_id,**source}],
+            'description':case['description'],'wajhIndex':2,'evidence':[],
+        })
     return out
 
 if __name__=='__main__':

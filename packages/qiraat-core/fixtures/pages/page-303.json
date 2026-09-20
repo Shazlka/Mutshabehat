@@ -1,0 +1,180 @@
+[
+  {
+    "id": "v-D303-18-86-10-w2",
+    "surah": 18,
+    "ayah": 86,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "حَمِئَةٍۢ",
+    "variantText": "حَامِيَةٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-18-86-10",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-86-10-w2",
+        "variantId": "v-D303-18-86-10-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿حَمِئَةٍ﴾: مهموزاً بغير ألف لنافع، وابن كثير، وأبي عمرو، وحفص، ويعقوب؛ وبألف بعد الحاء مع كسر الميم وهمزة ياء ﴿حَامِيَةٍ﴾ للباقين."
+      }
+    ],
+    "description": "بألف بعد الحاء مع كسر الميم وهمزة ياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-88-13-w2",
+    "surah": 18,
+    "ayah": 88,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يُسْرًۭا",
+    "variantText": "يُسُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D303-18-88-13",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-88-13-w2",
+        "variantId": "v-D303-18-88-13-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿يُسْرٗا﴾: بإسكان السين للجمهور؛ وبضم السين ﴿يُسُرًا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-95-3-w2",
+    "surah": 18,
+    "ayah": 95,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مَكَّنِّى",
+    "variantText": "مَكَّنَنِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D303-18-95-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-95-3-w2",
+        "variantId": "v-D303-18-95-3-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي. رُبط باللفظ المطبوع للمصحف المذكور في سطر الباقين؛ عنوان الكتلة هو وجه ابن كثير.",
+        "sourceText": "﴿مَكَّنَنِي﴾: بنونين مظهرتين ﴿مَكَّنَنِي﴾ لابن كثير؛ وبنون واحدة مشددة ﴿مَكَّنِّي﴾ للباقين."
+      }
+    ],
+    "description": "بنونين مظهرتين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-96-1-w2",
+    "surah": 18,
+    "ayah": 96,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "ءَاتُونِى",
+    "variantText": "ائْتُونِي",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D303-18-96-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-96-1-w2",
+        "variantId": "v-D303-18-96-1-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿رَدْمًا ءَاتُونِي﴾: بهمزة قطع للجمهور؛ وبهمزة وصل ﴿رَدْمًا ائْتُونِي﴾ لشعبة."
+      }
+    ],
+    "description": "بهمزة وصل لشعبة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-97-2-w2",
+    "surah": 18,
+    "ayah": 97,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱسْطَـٰعُوٓا۟",
+    "variantText": "اسْطَّاعُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D303-18-97-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-97-2-w2",
+        "variantId": "v-D303-18-97-2-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿فَمَا ٱسْطَـٰعُوٓاْ﴾: بتخفيف الطاء للجمهور؛ وبتشديد الطاء ﴿فَمَا اسْطَّاعُوا﴾ لحمزة."
+      }
+    ],
+    "description": "بتشديد الطاء لحمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

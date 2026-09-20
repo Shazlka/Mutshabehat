@@ -440,6 +440,33 @@ test('every group symbol expands to exactly the reading count its source prints'
   }
 })
 
+test('page 303 imports only token-backed, explicitly attributable source variants', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(303, { includeUnpublished: true })
+  assert.equal(variants.length, 5)
+  assert.deepEqual(
+    variants.map(({ surah, ayah, variantText }) => `${surah}:${ayah}:${variantText}`),
+    [
+      '18:86:حَامِيَةٍ',
+      '18:88:يُسُرًا',
+      '18:95:مَكَّنَنِي',
+      '18:96:ائْتُونِي',
+      '18:97:اسْطَّاعُوا',
+    ],
+  )
+  assert.equal((await repo.getVariantsForPage(303)).length, 0, 'REVIEWED records remain hidden from the ordinary view')
+
+  const hamiah = variants.find((variant) => variant.ayah === 86)
+  assert.ok(hamiah)
+  assert.equal(hamiah.hafsText, 'حَمِئَةٍۢ')
+  assert.deepEqual(hamiah.readingIds, ['Q04-R01', 'Q04-R02', 'Q05-R01', 'Q06-R01', 'Q06-R02', 'Q07-R01', 'Q07-R02', 'Q08-R01', 'Q08-R02', 'Q10-R01', 'Q10-R02'])
+  assert.ok(hamiah.sources?.[0]?.sourceText?.includes('حَامِيَةٍ'), 'keep the exact source row with the token-backed variant')
+  assert.deepEqual(
+    resolveTokenForReading(variants, 18, 86, 10, hamiah.hafsText, 'Q06-R01', { includeUnpublished: true }),
+    { kind: 'variant', text: 'حَامِيَةٍ', variant: hamiah },
+  )
+})
+
 test('صحبة carries شعبة and صحاب carries حفص — never the other way round', () => {
   const sohba = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'صَحْبَة'))
   const sihab = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'صِحَاب'))
