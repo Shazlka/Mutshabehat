@@ -19,7 +19,7 @@
   "dataset": {
     "mushafPages": 604,
     "variants": 1866,
-    "usulRulings": 9608,
+    "usulRulings": 9615,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,32 +49,30 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict."
+    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending."
   },
-  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict.",
+  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending.",
   "currentBatch": {
-    "id": "imalah-taqlil-reader-reconciliation-pages247-279-583",
+    "id": "yaat-idafa-full-family-pages225-584",
     "pages": [
-      247,
-      279,
-      583
+      259,
+      307,
+      329,
+      429,
+      455,
+      462,
+      564
     ],
-    "status": "production_verified",
+    "status": "locally_validated_pending_deploy",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 19,
     "variantTextCorrections": 0,
-    "rulingsAdded": 8,
-    "reference": "Attached page extraction; nQuran 12:100; aljam3 Ghayat al-Matlub for Ruways at الكافرين",
-    "validation": "passed locally: category-scoped importer --write added 0 new loci after dedupe; fixture diff added 347 lines and removed none; Qiraat validator (1,866 variants, 9,608 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
-    "sourceAudit": "Added both Abu Amr readings as taqlil at Yusuf 12:100; the Susi is specifically paired with hamza substitution. Added Ruways Q09-R01 imalah at Nahl 16:107; added Q07-R01/R02 at eight certain waqf loci in Naba 79. Withheld خاشعة due the source khilaf note. Entire source lines on pages 259, 289, 293, 562, and 578 were dropped because they include ambiguous bare خلف. The parser now refuses bare خلف and bare الدوري in source lines. Existing fixture rows were not edited beyond additive changes.",
-    "baseCommit": "8c719f6c194105d9a1c04a8528f227b0c63c5e0a",
-    "commit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
-    "push": "success: main and origin/main match at 16e3e65b9f3453c6f75e9103428451167cf881ca",
-    "productionDeploymentId": "dpl_3QWdA8cGCRAiH31aeFLVmjDnAJR6",
-    "productionDeploymentUrl": "https://mutshabehat-v2-1cx3xco3h-shazlka-s-projects.vercel.app",
-    "productionSmoke": "passed in production Mushaf UI: page 247 Yusuf 12:100 showed both Abu Amr narrations with taqlil; page 279 Nahl 16:107 showed Ruways with imalah; page 583 Naba 79:6 showed al-Kisai narrations with imalah at waqf",
-    "deploymentTarget": "production",
-    "deployedSha": "16e3e65b9f3453c6f75e9103428451167cf881ca"
+    "rulingsAdded": 7,
+    "reference": "Attached page-by-page extraction, explicit YAAT_IDAFA groups.",
+    "validation": "passed locally: --write over source pages 225-584 produced 7 new loci and 19 reader assignments; fixture diff added 325 lines and removed none; Qiraat validator (1,866 variants, 9,615 rulings, 20 one-colour categories); 36/36 test:qiraat; TypeScript; production build.",
+    "sourceAudit": "Added only source-named reader groups at real token anchors. Same-reader equivalent actions were deduplicated. Withheld Q06-R01/R02 at page 331, 23:105 because the fixture says فتح الياء وصلاً while the extraction says الإسكان وصلاً. DB migration: none.",
+    "baseCommit": "a3e722ae3fe4f2f093a71736383f55940f524832",
+    "deploymentTarget": "production"
   },
   "lastConfirmedDeployedDataCommit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
   "lastConfirmedVercelState": "READY",
@@ -668,6 +666,26 @@
       "vercelDeploymentId": "dpl_3QWdA8cGCRAiH31aeFLVmjDnAJR6",
       "vercelDeployment": "https://mutshabehat-v2-1cx3xco3h-shazlka-s-projects.vercel.app",
       "sourceConflictWithheld": "Source lines containing bare خلف on pages 259, 289, 293, 562, and 578 were not expanded. The source marks خاشعة on page 583 with khilaf, so no ruling was added there."
+    },
+    {
+      "commit": "pending",
+      "batch": "YAAT_IDAFA full-family source import",
+      "variantsAdded": 0,
+      "readerAssignmentsAdded": 19,
+      "rulingsAdded": 7,
+      "pages": [
+        259,
+        307,
+        329,
+        429,
+        455,
+        462,
+        564
+      ],
+      "pushed": false,
+      "vercelState": "pending",
+      "validation": "passed locally: --write over source pages 225-584 produced 7 new loci and 19 reader assignments; fixture diff added 325 lines and removed none; Qiraat validator (1,866 variants, 9,615 rulings, 20 one-colour categories); 36/36 test:qiraat; TypeScript; production build.",
+      "sourceConflictWithheld": "Added only source-named reader groups at real token anchors. Same-reader equivalent actions were deduplicated. Withheld Q06-R01/R02 at page 331, 23:105 because the fixture says فتح الياء وصلاً while the extraction says الإسكان وصلاً. DB migration: none."
     }
   ],
   "pages": [

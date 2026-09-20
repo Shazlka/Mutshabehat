@@ -711,5 +711,90 @@
     "notes": "مع الإمالة",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p259-YAAT_IDAFA-قل_لعبادي_الذين-3",
+    "pageNumber": 259,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 31,
+    "startToken": 1,
+    "endToken": 3,
+    "endAyah": 31,
+    "baseText": "قُل لِّعِبَادِىَ ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R01",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الإسكان وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

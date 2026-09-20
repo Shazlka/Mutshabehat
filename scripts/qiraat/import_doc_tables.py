@@ -4,8 +4,9 @@
 Third ingestion path. Same hard invariants as build_variants.py (a variant partitions the 20
 Riwayat once and the Hafs wajh matches the rasm) and the same drop-on-doubt rule. Rulings are
 family-labelled per line in this source, which is cleaner than the ayah tables, but still guarded
-against negation/universal statements. DEDUP: on a page that already has fixtures, a locus is
-added only if no existing record already covers that (surah,ayah,startToken[,category]).
+against negation/universal statements. DEDUP is additive: new loci are appended, while
+source-named reader assignments may be appended to an existing category/locus when uncovered.
+Same-reader disagreements are dropped.
 """
 import json, os, re, sys, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -299,37 +300,74 @@ def split_anchor_clauses(line):
     boundary=re.compile(r'(?<=[؛.])\s*(?=(?:﴿[^﴾]+﴾\s*[,،]\s*)*﴿[^﴾]+﴾\s*:)')
     return [x.strip() for x in boundary.split(line) if x.strip()]
 
+YAAT_GROUP_SPLIT = re.compile(r'[،,]\s*(?=(?:وفي الحالين|في الحالين|وإثبات|والإثبات|وحذف|والحذف))')
+
+def normalize_yaat_action(category, action, inherited=None):
+    action=BRACE.sub('',action).strip(' ،,و.')
+    if category=='YAAT_IDAFA':
+        if 'فتح' in action: return 'الفتح وصلاً'
+        if 'إسكان' in action or 'اسكان' in action: return 'الإسكان وصلاً'
+        return None
+    if any(x in action for x in ('حذف','يحذف')):
+        return 'حذف الياء في الحالين' if 'الحالين' in action else 'حذف الياء وصلاً'
+    if any(x in action for x in ('إثبات','يثبت','أثبت')):
+        if 'الحالين' in action: return 'إثبات الياء في الحالين'
+        if 'مفتوحة' in action and 'ساكنة' in action:
+            return 'إثبات الياء وصلاً مفتوحة ووقفاً ساكنة'
+        if 'وصلاً' in action or 'وصلا' in action:
+            if 'وقفاً' in action: return 'إثبات الياء وصلاً ووقفاً'
+            return 'إثبات الياء وصلاً'
+    if 'الحالين' in action and inherited:
+        return 'حذف الياء في الحالين' if inherited.startswith('حذف') else 'إثبات الياء في الحالين'
+    return None
+
 def parse_yaat_line(page, category, line, out):
-    """Parse only source-named readers; the remainder is intentionally not emitted."""
+    """Parse source-named reader groups; remainder clauses are intentionally not emitted."""
     pending=[]
     for chunk in split_anchor_clauses(line):
         pre,sep,body=chunk.partition(':')
         anchors=BRACE.findall(pre)
         if not sep or not anchors: continue
-        groups=[]; notes=[]
+        groups=[]; notes=[]; inherited=None
         try:
             for clause in re.split(r'[؛.]',body):
                 clause=clause.strip()
                 if not clause: continue
-                parsed=explicit_reader_clause(clause)
-                if not parsed: continue
-                action,readers,alternate,note=parsed
-                if category=='YAAT_IDAFA':
-                    # Only فتح الياء وصلًا is in scope; explicit remainder clauses are omitted.
-                    if not ('فتح' in action and 'وصل' in action): continue
-                    action='الفتح وصلاً'
-                else:
-                    if not any(x in action for x in ('إثبات','يثبت','حذف','يحذف')): continue
-                    action=BRACE.sub('',action).strip()
-                if not action: continue
-                groups.append((readers,action,alternate,'بخلف عنه' if alternate else None))
-                if note: notes.append(note)
+                for group_clause in YAAT_GROUP_SPLIT.split(clause):
+                    # Braces in the body quote a resulting form, not a second locus.
+                    group_clause=BRACE.sub('',group_clause).strip()
+                    parsed=explicit_reader_clause(group_clause)
+                    if not parsed: continue
+                    action,readers,alternate,note=parsed
+                    normalized=normalize_yaat_action(category,action,inherited)
+                    if not normalized or not readers: continue
+                    # «وفي الحالين» inherits the immediately preceding explicit yā operation.
+                    # If there is no such operation, leave the clause unresolved.
+                    if category=='YAAT_ZAWAID' and 'الحالين' in action and not any(
+                        x in action for x in ('إثبات','يثبت','أثبت','حذف','يحذف')) and not inherited:
+                        continue
+                    if category=='YAAT_ZAWAID' and any(x in normalized for x in ('إثبات','حذف')):
+                        inherited=normalized
+                    groups.append((readers,normalized,alternate,'بخلف عنه' if alternate else None))
+                    if note: notes.append(note)
         except Unresolved:
             # One unresolved name invalidates the whole source line, even if another clause parsed.
             return
         if groups:
             for anchor in anchors:
-                pending.append((anchor,groups,'؛ '.join(dict.fromkeys(notes)) or None))
+                scoped_groups=groups
+                # An earlier independent check showed the extraction overgeneralizes Ibn
+                # Kathir at 11:84 «إني أراكم»: al-Bazzi is present, but Qanbul is not supported.
+                try: loc=T.find(page,anchor,1)
+                except T.NoMatch: loc=None
+                if category=='YAAT_IDAFA' and loc and (
+                    loc['surah'],loc['startAyah'],loc['startWord'])==(11,84,18):
+                    scoped_groups=[]
+                    for readers,action,alternate,condition in groups:
+                        remaining=set(readers)-{'Q02-R02'}
+                        if remaining: scoped_groups.append((remaining,action,alternate,condition))
+                if scoped_groups:
+                    pending.append((anchor,scoped_groups,'؛ '.join(dict.fromkeys(notes)) or None))
     for anchor,groups,notes in pending:
         emit_ruling(page,category,anchor,groups,out,notes=notes)
 
@@ -612,13 +650,6 @@ def build(page_list, categories=None):
     for page in page_list:
         pd=DOC.get(str(page))
         if not pd: continue
-        vs=list(parse_farsh(page, pd['farsh']) or [])
-        v=[]; parse_farsh(page, pd['farsh'])
-        # parse_farsh is a generator wrapper returning out via yield_block into list; call properly:
-        v=[]; 
-        # re-run collecting
-        gen_out=[]
-        # parse_farsh yields nothing; it fills via yield_block into 'out' created inside — fix: call and capture
         v=collect_farsh(page, pd['farsh'])
         r=parse_usul(page, pd['usul'])
         if categories is not None:
@@ -627,24 +658,142 @@ def build(page_list, categories=None):
         # DEDUP against existing
         ev=existing('pages',page); er=existing('rulings',page)
         vtok={(x['surah'],x['ayah'],x['startToken']) for x in ev}
-        rtok={(x['surah'],x['ayah'],x['startToken'],x['category']) for x in er}
         v=[x for x in v if (x['surah'],x['ayah'],x['startToken']) not in vtok]
-        r=[x for x in r if (x['surah'],x['ayah'],x['startToken'],x['category']) not in rtok]
         # also dedup within this batch
         seenv=set(); v2=[]
         for x in v:
             k=(x['surah'],x['ayah'],x['startToken'])
             if k in seenv: continue
             seenv.add(k); v2.append(x)
-        seenr=set(); r2=[]
+        seenr={}; r2=[]
         for x in r:
             k=(x['surah'],x['ayah'],x['startToken'],x['category'])
-            if k in seenr: continue
-            seenr.add(k); r2.append(x)
-        if ev or v2: vout[page]=ev+v2
-        if er or r2: rout[page]=er+r2
-        vstats['added']+=len(v2); rstats['added']+=len(r2)
+            if k in seenr:
+                added,dropped=merge_ruling_assignments(seenr[k],x)
+                rstats['assignmentsAdded']+=added; rstats['conflictsDropped']+=dropped
+                continue
+            seenr[k]=x; r2.append(x)
+        if v2: vout[page]=ev+v2
+        vstats['added']+=len(v2)
+        existing_by_key={(x['surah'],x['ayah'],x['startToken'],x['category']):x for x in er}
+        changed=False
+        for candidate in r2:
+            key=(candidate['surah'],candidate['ayah'],candidate['startToken'],candidate['category'])
+            target=existing_by_key.get(key)
+            if target is None:
+                candidate,dropped=sanitize_yaat_candidate(candidate)
+                rstats['conflictsDropped']+=dropped
+                if not candidate.get('readings'): continue
+                er.append(candidate); existing_by_key[key]=candidate
+                changed=True
+                rstats['added']+=1
+                rstats['assignmentsAdded']+=len(candidate.get('readings',[]))
+                continue
+            added,dropped=merge_ruling_assignments(target,candidate)
+            rstats['conflictsDropped']+=dropped
+            if added:
+                changed=True; rstats['assignmentsAdded']+=added; rstats['merged']+=1
+        if changed: rout[page]=er
     return vout,rout,vstats,rstats
+
+def yaat_action_key(category, action):
+    """Compare yā-family actions by their stated behavior, not orthographic wording."""
+    text=T.norm(BRACE.sub('',action or '')).strip(' ،,؛.')
+    if category=='YAAT_IDAFA':
+        if 'فتح' in text: return 'open-wasl'
+        if 'اسكان' in text: return 'sukun-wasl'
+    if category=='YAAT_ZAWAID':
+        if 'حذف' in text or 'يحذف' in text:
+            return 'delete-both' if ('الحالين' in text or ('وصلا' in text and 'وقفا' in text)) else 'delete-wasl'
+        if 'اثبات' in text or 'يثبت' in text or 'اثبت' in text:
+            if 'مفتوحه' in text and 'ساكنه' in text: return 'establish-open-wasl-sakin-waqf'
+            if 'الحالين' in text or ('وصلا' in text and 'وقفا' in text):
+                return 'establish-both'
+            if 'وصلا' in text: return 'establish-wasl'
+    return None
+
+def sanitize_yaat_candidate(candidate):
+    """Drop internally conflicting same-reader assignments; return (candidate, dropped)."""
+    category=candidate.get('category')
+    if category not in ('YAAT_IDAFA','YAAT_ZAWAID'):
+        return candidate,0
+    by_id=collections.defaultdict(list)
+    for item in candidate.get('readings',[]):
+        signature=(yaat_action_key(category,item.get('action')) or item.get('action'),item.get('isDefault',True))
+        by_id[item.get('readingId')].append((signature,item))
+    bad={rid for rid,items in by_id.items() if len({sig for sig,_ in items})>1}
+    seen=set(); kept=[]
+    for rid,items in by_id.items():
+        if rid in bad: continue
+        for signature,item in items:
+            identity=(rid,signature)
+            if identity in seen: continue
+            seen.add(identity); kept.append(item)
+    dropped=sum(len(by_id[rid]) for rid in bad)+sum(len(items)-1 for rid,items in by_id.items() if rid not in bad)
+    if dropped:
+        candidate=dict(candidate)
+        candidate['readings']=kept
+        allowed={item.get('readingId') for item in kept}
+        candidate['attribution']=[a for a in candidate.get('attribution',[]) if a.get('authorityId') in allowed]
+        candidate['hasAlternate']=any(not item.get('isDefault',True) for item in kept)
+    return candidate,dropped
+
+def merge_ruling_assignments(existing_record, candidate):
+    """Add compatible source-explicit assignments; same-reader disagreements are dropped."""
+    candidate,dropped=sanitize_yaat_candidate(candidate)
+    category=existing_record.get('category')
+    if category not in ('YAAT_IDAFA','YAAT_ZAWAID'):
+        added=0
+        for field,key_fields in (
+            ('readings',('readingId','action','isDefault')),
+            ('attribution',('authorityId','action','condition')),
+        ):
+            current=existing_record.setdefault(field,[])
+            seen={tuple(item.get(k) for k in key_fields) for item in current}
+            for item in candidate.get(field,[]):
+                key=tuple(item.get(k) for k in key_fields)
+                if key in seen: continue
+                current.append(item); seen.add(key)
+                if field=='readings': added+=1
+        if added:
+            existing_record['hasAlternate']=bool(existing_record.get('hasAlternate') or candidate.get('hasAlternate'))
+            if candidate.get('notes'):
+                old=existing_record.get('notes')
+                notes=[x for x in (old,candidate['notes']) if x]
+                if notes: existing_record['notes']='؛ '.join(dict.fromkeys(notes))
+        return added,dropped
+    added=0; accepted_ids=set()
+    current=existing_record.setdefault('readings',[])
+    by_id=collections.defaultdict(list)
+    for item in current: by_id[item.get('readingId')].append(item)
+    for item in candidate.get('readings',[]):
+        rid=item.get('readingId')
+        old=by_id.get(rid,[])
+        new_key=yaat_action_key(category,item.get('action')) if category in ('YAAT_IDAFA','YAAT_ZAWAID') else item.get('action')
+        new_sig=(new_key or item.get('action'),item.get('isDefault',True))
+        old_sigs={(yaat_action_key(category,x.get('action')) or x.get('action'),x.get('isDefault',True)) for x in old}
+        if new_sig in old_sigs: continue
+        if old:
+            dropped+=1
+            continue
+        current.append(item); by_id[rid].append(item); accepted_ids.add(rid); added+=1
+    if not added: return added,dropped
+    attrs=existing_record.setdefault('attribution',[])
+    seen_attrs=set()
+    for item in attrs:
+        aid=item.get('authorityId')
+        key=(aid,yaat_action_key(category,item.get('action')) or item.get('action'),item.get('condition'))
+        seen_attrs.add(key)
+    for item in candidate.get('attribution',[]):
+        if item.get('authorityId') not in accepted_ids: continue
+        key=(item.get('authorityId'),yaat_action_key(category,item.get('action')) or item.get('action'),item.get('condition'))
+        if key not in seen_attrs: attrs.append(item); seen_attrs.add(key)
+    existing_record['hasAlternate']=bool(existing_record.get('hasAlternate') or any(not x.get('isDefault',True) for x in candidate.get('readings',[]) if x.get('readingId') in accepted_ids))
+    if candidate.get('notes'):
+        old=existing_record.get('notes')
+        notes=[x for x in (old,candidate['notes']) if x]
+        if notes: existing_record['notes']='؛ '.join(dict.fromkeys(notes))
+    return added,dropped
 
 def collect_farsh(page, lines):
     out=[]; i=0; n=len(lines)
@@ -768,13 +917,19 @@ if __name__=='__main__':
         pages=list(range(268,305))
     vout,rout,vs,rs=build(pages,categories=categories)
     print('pages touched:',sorted(set(vout)|set(rout)))
-    print('variants added:',vs['added'],' rulings added:',rs['added'])
+    print('variants added:',vs['added'])
+    print('new ruling loci:',rs['added'],' merged ruling loci:',rs['merged'],
+          ' reader assignments added:',rs['assignmentsAdded'],
+          ' conflicting/duplicate assignments dropped:',rs['conflictsDropped'])
     if '--write' in sys.argv:
         vd=os.path.join(ROOT,'packages/qiraat-core/fixtures/pages')
         rd=os.path.join(ROOT,'packages/qiraat-core/fixtures/rulings')
-        for p in sorted(set(vout)|set(rout)):
-            json.dump(vout.get(p,existing('pages',p)),open(os.path.join(vd,f'page-{p:03d}.json'),'w'),ensure_ascii=False,indent=2)
-            open(os.path.join(vd,f'page-{p:03d}.json'),'a').write('\n')
-            json.dump(rout.get(p,existing('rulings',p)),open(os.path.join(rd,f'page-{p:03d}.json'),'w'),ensure_ascii=False,indent=2)
-            open(os.path.join(rd,f'page-{p:03d}.json'),'a').write('\n')
-        print('WROTE',len(set(vout)|set(rout)),'page pairs')
+        for p in sorted(vout):
+            path=os.path.join(vd,f'page-{p:03d}.json')
+            json.dump(vout[p],open(path,'w'),ensure_ascii=False,indent=2)
+            open(path,'a').write('\n')
+        for p in sorted(rout):
+            path=os.path.join(rd,f'page-{p:03d}.json')
+            json.dump(rout[p],open(path,'w'),ensure_ascii=False,indent=2)
+            open(path,'a').write('\n')
+        print('WROTE',len(vout),'variant page files and',len(rout),'ruling page files')
