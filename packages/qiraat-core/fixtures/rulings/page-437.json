@@ -408,5 +408,54 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p437-WAQF_HAMZA-العلماوا-4",
+    "pageNumber": 437,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 28,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 28,
+    "baseText": "ٱلْعُلَمَـٰٓؤُا۟ ۗ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R01",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

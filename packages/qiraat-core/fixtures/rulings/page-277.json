@@ -526,5 +526,94 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p277-WAQF_HAMZA-هاولاء-6",
+    "pageNumber": 277,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 89,
+    "startToken": 14,
+    "endToken": 14,
+    "endAyah": 89,
+    "baseText": "هَـٰٓؤُلَآءِ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "١٣ وجهاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "١٣ وجهاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "١٣ وجهاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "١٣ وجهاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p277-WAQF_HAMZA-يشاء-7",
+    "pageNumber": 277,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 93,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 93,
+    "baseText": "يَشَآءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R01",
+        "action": "خمسة القياس"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "خمسة القياس"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "خمسة القياس"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "خمسة القياس",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "خمسة القياس",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "خمسة القياس",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

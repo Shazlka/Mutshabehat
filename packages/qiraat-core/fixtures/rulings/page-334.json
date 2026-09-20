@@ -714,5 +714,54 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p334-WAQF_HAMZA-ولولوا-4",
+    "pageNumber": 334,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 23,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 23,
+    "baseText": "وَلُؤْلُؤًۭا ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R01",
+        "action": "إبدال الأولى واواً، وفي الثانية إبدالها واواً سكوناً وروماً وتسهيلها بروم"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إبدال الأولى واواً، وفي الثانية إبدالها واواً سكوناً وروماً وتسهيلها بروم"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الأولى واواً، وفي الثانية إبدالها واواً سكوناً وروماً وتسهيلها بروم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "إبدال الأولى واواً، وفي الثانية إبدالها واواً سكوناً وروماً وتسهيلها بروم",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إبدال الأولى واواً، وفي الثانية إبدالها واواً سكوناً وروماً وتسهيلها بروم",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الأولى واواً، وفي الثانية إبدالها واواً سكوناً وروماً وتسهيلها بروم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

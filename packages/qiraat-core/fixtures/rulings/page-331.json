@@ -832,5 +832,54 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p331-WAQF_HAMZA-سواء-3",
+    "pageNumber": 331,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 21,
+    "ayah": 109,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 109,
+    "baseText": "سَوَآءٍۢ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R01",
+        "action": "خمسة القياس (إبدال وتسهيل بروم)"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "خمسة القياس (إبدال وتسهيل بروم)"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "خمسة القياس (إبدال وتسهيل بروم)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "خمسة القياس (إبدال وتسهيل بروم)",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "خمسة القياس (إبدال وتسهيل بروم)",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "خمسة القياس (إبدال وتسهيل بروم)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

@@ -34,6 +34,7 @@ RCOLORS = {
  'HAMZATAN_KALIMATAYN':('الهمزتان من كلمتين','#DC2626'),
  'HAMZATAN_KALIMA':('الهمزتان من كلمة','#DC2626'),
  'WAQF_RASM':('الوقف على مرسوم الخط','#EA580C'),
+ 'WAQF_HAMZA':('وقف حمزة','#EA580C'),
 }
 DIFF={'orthography':'ORTHOGRAPHY','vowel':'HARAKAH','consonant':'LETTER','hamza':'HAMZ',
       'word_form':'LETTER','ishmam':'HARAKAH','other':'OTHER'}
@@ -400,8 +401,47 @@ def parse_waqf_rasm_line(page,line,out):
     for anchor,readers,notes,occurrence in pending:
         emit_ruling(page,'WAQF_RASM',anchor,[(readers,'الوقف بالهاء')],out,notes=notes,occurrence=occurrence)
 
+HISHAM_CUE_RE=re.compile(
+    r'(?:[،,؛;]\s*)?(?:(?:ويوافقه|يوافقه|ومعه|معه|وكذا)\s+هشام|(?:ومثله|مثله)\s+لهشام)'
+    r'(?:\s+في\s+[^؛.;()]+)?')
+
+def parse_waqf_hamza_line(page,line,out,header_hisham=False):
+    """Hamza is fixed; add Hisham only where the source explicitly scopes his agreement."""
+    pending=[]
+    for chunk in split_anchor_clauses(line):
+        pre,sep,body=chunk.partition(':')
+        anchor_matches=list(BRACE.finditer(pre))
+        if not sep or not anchor_matches: continue
+        cues=list(HISHAM_CUE_RE.finditer(body))
+        specific_targets=[]
+        for cue in cues:
+            m=re.search(r'\s+في\s+([^؛.;()]+)',cue.group(0))
+            if m: specific_targets.append(T.norm(m.group(1).strip()))
+        clean_action=HISHAM_CUE_RE.sub('',BRACE.sub('',body))
+        clean_action=re.sub(r'\(\s*\)','',clean_action)
+        clean_action=re.sub(r'\s+([،,؛])',r'\1',clean_action).strip(' ،,؛;. ')
+        for match in anchor_matches:
+            anchor=match.group(1)
+            if header_hisham:
+                readers=q('حمزة')|q('هشام')
+            elif cues:
+                if specific_targets:
+                    norm_anchor=T.norm(anchor)
+                    add_hisham=any(target and target in norm_anchor for target in specific_targets)
+                    if not add_hisham and len(anchor_matches)==1:
+                        # The cue names a feature of the sole anchor rather than its word text.
+                        add_hisham=True
+                else:
+                    add_hisham=True
+                readers=q('حمزة')|(q('هشام') if add_hisham else set())
+            else:
+                readers=q('حمزة')
+            pending.append((anchor,readers,clean_action or 'وقف حمزة'))
+    for anchor,readers,action in pending:
+        emit_ruling(page,'WAQF_HAMZA',anchor,[(readers,action)],out)
+
 def parse_usul(page, lines):
-    out=[]; section=None; target_section=None
+    out=[]; section=None; target_section=None; target_hisham=False
     for raw in lines:
         line=raw.strip()
         head=line.split(':')[0]
@@ -411,15 +451,18 @@ def parse_usul(page, lines):
         target_headers=[('الهمزتان من كلمتين','HAMZATAN_KALIMATAYN'),
                         ('الهمزتان من كلمة','HAMZATAN_KALIMA'),
                         ('الوقف على مرسوم الخط','WAQF_RASM'),
+                        ('وقف حمزة وهشام','WAQF_HAMZA'),('وقف حمزة','WAQF_HAMZA'),
                         ('ياءات الإضافة','YAAT_IDAFA'),('ياءات الزوائد','YAAT_ZAWAID')]
         matched_target=False
         for prefix,cat in target_headers:
             if line.startswith(prefix):
                 target_section=cat
+                target_hisham=cat=='WAQF_HAMZA' and prefix=='وقف حمزة وهشام'
                 content=line.split(':',1)[1].strip() if ':' in line else ''
                 if content and not is_univ(line):
                     if cat.startswith('YAAT_'): parse_yaat_line(page,cat,content,out)
                     elif cat=='WAQF_RASM': parse_waqf_rasm_line(page,content,out)
+                    elif cat=='WAQF_HAMZA': parse_waqf_hamza_line(page,content,out,target_hisham)
                     else: parse_hamzatan_line(page,cat,content,out)
                 matched_target=True
                 break
@@ -433,9 +476,11 @@ def parse_usul(page, lines):
                 if not is_univ(line):
                     if target_section.startswith('YAAT_'): parse_yaat_line(page,target_section,line,out)
                     elif target_section=='WAQF_RASM': parse_waqf_rasm_line(page,line,out)
+                    elif target_section=='WAQF_HAMZA': parse_waqf_hamza_line(page,line,out,target_hisham)
                     else: parse_hamzatan_line(page,target_section,line,out)
                 continue
             target_section=None
+            target_hisham=False
         # section header for الممال
         if line.startswith('الممال') and line.rstrip().endswith(':') and not BRACE.search(line):
             section='imalah'; continue

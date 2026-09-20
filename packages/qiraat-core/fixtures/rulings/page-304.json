@@ -472,5 +472,134 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p304-WAQF_HAMZA-دكاء-5",
+    "pageNumber": 304,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 98,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 98,
+    "baseText": "دَكَّآءَ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p304-WAQF_HAMZA-اولياء-6",
+    "pageNumber": 304,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 102,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 102,
+    "baseText": "أَوْلِيَآءَ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R01",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الهمزة ألفاً مع القصر والتوسط والإشباع",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p304-WAQF_HAMZA-هزوا-7",
+    "pageNumber": 304,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 106,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 106,
+    "baseText": "هُزُوًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "النقل والإبدال واواً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "النقل والإبدال واواً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "النقل والإبدال واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "النقل والإبدال واواً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

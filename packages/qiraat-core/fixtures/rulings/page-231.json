@@ -1343,5 +1343,45 @@
     "text": "الفتح وصلاً لنافع وأبي عمرو وابن عامر وأبي جعفر، والإسكان للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p231-WAQF_HAMZA-نشاوا-12",
+    "pageNumber": 231,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 87,
+    "startToken": 16,
+    "endToken": 16,
+    "endAyah": 87,
+    "baseText": "نَشَـٰٓؤُا۟ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "١٢ وجهاً (٥ القياس + ٧ على الرسم)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
