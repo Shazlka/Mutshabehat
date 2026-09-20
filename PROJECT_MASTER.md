@@ -737,6 +737,17 @@ const qiraatMode: QiraatMode      = readerLayer === 'qiraat' ? qiraatSubMode : '
 - `scripts/validate-mushaf1441-objective.mjs` has an exclusivity block that **fails the build** if
   the enum or the derived flags are replaced by independent on/off state again.
 
+### 13.2a Qiraat marker paint invariant (do not regress)
+
+A single reader-group Qiraat marker uses a solid text colour. A multi-reader difference uses a
+segmented CSS gradient. Since a gradient cannot be assigned to `color`, render it with
+`markerPaintForWord()` as clipped text (`backgroundImage`, `WebkitBackgroundClip: 'text'`, and
+`WebkitTextFillColor: 'transparent'`) and use the same gradient on the underline. Retain an
+annotation's explicit text colour over either Qiraat paint. Do not judge this from the detail
+sheet alone: a marker can still open correct details while silently falling back to normal Mushaf
+ink. The engine test and browser regression use page 249's multi-reader words as the permanent
+check.
+
 ### 13.3 Routing a press
 
 Two entry points, both routed by layer — add new press behaviour to these, never beside them:

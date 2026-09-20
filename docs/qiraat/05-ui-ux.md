@@ -76,6 +76,19 @@ noise for universal tajwid. Before handoff run both generators, `npm run qiraat:
 repository runtime load with `includeUnpublished: true`; confirm that variants and rulings are
 present for every populated page and render under the same Qiraat layer toggles as older pages.
 
+### Marker paint contract (including multi-reader differences)
+
+`comparisonMarkerForWord()` returns a solid colour for a one-reader-group difference and a CSS
+`linear-gradient(...)` for a multi-reader difference. A gradient is **not** a valid `color` value:
+the Mushaf renderer must pass gradient markers through `markerPaintForWord()` so the gradient is
+applied as `backgroundImage` clipped to the text (`WebkitBackgroundClip: 'text'` and
+`WebkitTextFillColor: 'transparent'`). The underline uses the same gradient as its background.
+
+Never collapse a gradient marker to normal ink, or rely on the detail sheet as proof of rendering:
+the explanation can load while the marked Mushaf word remains black. Preserve annotation text
+colour precedence, then verify a multi-reader token (page 249 is a regression fixture) in a real
+browser as well as the engine test.
+
 The existing detail-panel "قراءات" tab, reachable either from the burger-menu-adjacent notes sheet
 flow or directly by tapping a marked word (`selectWordForQiraat`, which selects the word exactly
 like the existing `selectWord` and then forces the detail tab to `'qiraat'`). Content, per variant

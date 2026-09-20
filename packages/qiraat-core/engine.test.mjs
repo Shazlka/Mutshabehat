@@ -10,7 +10,7 @@ import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKey
 import { BASE_READING } from './types.ts'
 import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
 import { FixtureQiraatRepository } from './repository.ts'
-import { comparisonMarkerForWord, rulingMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
+import { comparisonMarkerForWord, rulingMarkerForWord, markerPaintForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
 import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
 
@@ -222,6 +222,23 @@ test('comparison marker: a performance-only variant (no text change) gets the fi
     assert.notEqual(textualMarker.color, PERFORMANCE_MARKER_COLOR)
     assert.ok(!textualMarker.isPerformanceOnly)
   })
+})
+
+test('multi-reader marker paint preserves its gradient for Mushaf text instead of falling back to ink', () => {
+  const marker = comparisonMarkerForWord(
+    [{
+      id: 'synthetic-multi-reader', surah: 999, ayah: 11, startToken: 1, endToken: 1,
+      operation: 'REPLACE', hafsText: 'SYN-BASE', variantText: 'SYN-VARIANT', differenceType: 'LETTER',
+      verificationStatus: 'REVIEWED', createdAt: '', updatedAt: '',
+      readingIds: ['Q01-R01', 'Q02-R01'],
+    }],
+    999, 11, 1, { kind: 'all' }, { includeUnpublished: true },
+  )
+  assert.ok(marker?.isGradient, 'two readers must produce a segmented gradient marker')
+  const paint = markerPaintForWord(marker)
+  assert.match(paint.backgroundImage ?? '', /^linear-gradient\(/)
+  assert.equal(paint.WebkitBackgroundClip, 'text')
+  assert.equal(paint.WebkitTextFillColor, 'transparent')
 })
 
 test('a record with no confident attribution never crashes the marker builder (computeAttribution([]) throws)', () => {
