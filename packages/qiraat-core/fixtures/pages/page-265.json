@@ -1,0 +1,252 @@
+[
+  {
+    "id": "v-L265-فاسر-1-w2",
+    "surah": 15,
+    "ayah": 65,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَأَسْرِ",
+    "variantText": "فَاسْرِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L265-فاسر-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L265-فاسر-1-w2",
+        "variantId": "v-L265-فاسر-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بهمزة وصل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L265-لا_توجل-1-w2",
+    "surah": 15,
+    "ayah": 53,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَا تَوْجَلْ",
+    "variantText": "لَا تِوْجَلْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L265-لا_توجل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L265-لا_توجل-1-w2",
+        "variantId": "v-L265-لا_توجل-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L265-تبشرون-1-w2",
+    "surah": 15,
+    "ayah": 54,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تُبَشِّرُونَ",
+    "variantText": "تُبَشِّرُونِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L265-تبشرون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L265-تبشرون-1-w2",
+        "variantId": "v-L265-تبشرون-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر النون",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L265-تبشرون-1-w3",
+    "surah": 15,
+    "ayah": 54,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تُبَشِّرُونَ",
+    "variantText": "تُبَشِّرُونَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L265-تبشرون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L265-تبشرون-1-w3",
+        "variantId": "v-L265-تبشرون-1-w3",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر النون وتشديدها",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-L265-يقنط-1-w2",
+    "surah": 15,
+    "ayah": 56,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَقْنَطُ",
+    "variantText": "يَقْنِطُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L265-يقنط-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L265-يقنط-1-w2",
+        "variantId": "v-L265-يقنط-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر النون",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L265-لمنجوهم-1-w2",
+    "surah": 15,
+    "ayah": 59,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لَمُنَجُّوهُمْ",
+    "variantText": "لَمُنْجُوهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L265-لمنجوهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L265-لمنجوهم-1-w2",
+        "variantId": "v-L265-لمنجوهم-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتخفيف الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L265-قدرنا-1-w2",
+    "surah": 15,
+    "ayah": 60,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "قَدَّرْنَآ ۙ",
+    "variantText": "قَدَرْنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L265-قدرنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L265-قدرنا-1-w2",
+        "variantId": "v-L265-قدرنا-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتخفيف الدال",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

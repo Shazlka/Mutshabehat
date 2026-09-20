@@ -1,0 +1,307 @@
+[
+  {
+    "id": "v-L349-شقوتنا-1-w2",
+    "surah": 23,
+    "ayah": 106,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "شِقْوَتُنَا",
+    "variantText": "شَقَـٰوَتُنَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L349-شقوتنا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L349-شقوتنا-1-w2",
+        "variantId": "v-L349-شقوتنا-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفَتْحُ شِقْوَتُنَا وَامْدُدْ وَحَرِّكْهُ شُلْشُلَا"
+      }
+    ],
+    "description": "بفتح الشين والقاف وألف بعدها",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفَتْحُ شِقْوَتُنَا وَامْدُدْ وَحَرِّكْهُ شُلْشُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L349-سخريا-1-w2",
+    "surah": 23,
+    "ayah": 110,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سُخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L349-سخريا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L349-سخريا-1-w2",
+        "variantId": "v-L349-سخريا-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَسِخْرِيًّا اضْمُمْ فِي فَتًى شَاعَ — D: وَسُخْرِيًّا اضْمُمْ فُزْ وَحُزْ"
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسِخْرِيًّا اضْمُمْ فِي فَتًى شَاعَ"
+      },
+      {
+        "source": "D",
+        "text": "وَسُخْرِيًّا اضْمُمْ فُزْ وَحُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L349-انهم-1-w2",
+    "surah": 23,
+    "ayah": 111,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَنَّهُمْ",
+    "variantText": "إِنَّهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L349-انهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L349-انهم-1-w2",
+        "variantId": "v-L349-انهم-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَأَنَّهُمْ اكْسِرْ شَافِيًا"
+      }
+    ],
+    "description": "بكسر الهمزة على الاستئناف مسوقاً للتعليل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَنَّهُمْ اكْسِرْ شَافِيًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L349-قال_كم-1-w2",
+    "surah": 23,
+    "ayah": 112,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قَـٰلَ كَمْ",
+    "variantText": "قُل كَمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L349-قال_كم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L349-قال_كم-1-w2",
+        "variantId": "v-L349-قال_كم-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَقُلْ كَمْ لَبِثْتُمْ مَعْ أَنَّكُمْ شَفَا"
+      }
+    ],
+    "description": "بصيغة فعل الأمر (قل)",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ كَمْ لَبِثْتُمْ مَعْ أَنَّكُمْ شَفَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L349-فسل-1-w2",
+    "surah": 23,
+    "ayah": 113,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "فَسْـَٔلِ",
+    "variantText": "فَسَلِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L349-فسل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L349-فسل-1-w2",
+        "variantId": "v-L349-فسل-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفَاسْأَلْ مَعًا وَاسْأَلْ فَسَلْ كَمَا رَسَا"
+      }
+    ],
+    "description": "بنقل حركة الهمزة إلى السين وسقوطها",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفَاسْأَلْ مَعًا وَاسْأَلْ فَسَلْ كَمَا رَسَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L349-قال_ان-1-w2",
+    "surah": 23,
+    "ayah": 114,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قَـٰلَ إِن",
+    "variantText": "قُلِ إِن",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L349-قال_ان-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L349-قال_ان-1-w2",
+        "variantId": "v-L349-قال_ان-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَقُلْ كَمْ لَبِثْتُمْ مَعْ أَنَّكُمْ شَفَا"
+      }
+    ],
+    "description": "بصيغة فعل الأمر مع كسر اللام لالتقاء الساكنين (قلِ)",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ كَمْ لَبِثْتُمْ مَعْ أَنَّكُمْ شَفَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L349-ترجعون-1-w2",
+    "surah": 23,
+    "ayah": 115,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُونَ",
+    "variantText": "تَرْجِعُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L349-ترجعون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L349-ترجعون-1-w2",
+        "variantId": "v-L349-ترجعون-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "D: وَتَرْجِعُ حُطْ"
+      }
+    ],
+    "description": "بفتح التاء وكسر الجيم مبنياً للفاعل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَتَرْجِعُ حُطْ"
+      }
+    ]
+  }
+]

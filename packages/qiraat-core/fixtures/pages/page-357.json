@@ -1,0 +1,220 @@
+[
+  {
+    "id": "v-L357-استخلف-1-w2",
+    "surah": 24,
+    "ayah": 55,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "ٱسْتَخْلَفَ",
+    "variantText": "ٱسْتُخْلِفَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L357-استخلف-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L357-استخلف-1-w2",
+        "variantId": "v-L357-استخلف-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي اسْتُخْلِفَ افْتَحْ لِصَحْبِهِ"
+      }
+    ],
+    "description": "بضم التاء وكسر اللام مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي اسْتُخْلِفَ افْتَحْ لِصَحْبِهِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L357-وليبدلنهم-1-w2",
+    "surah": 24,
+    "ayah": 55,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "وَلَيُبَدِّلَنَّهُم",
+    "variantText": "وَلَيُبْدِلَنَّهُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L357-وليبدلنهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L357-وليبدلنهم-1-w2",
+        "variantId": "v-L357-وليبدلنهم-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَيُبْدِلَنَّ خَفَّفَ صَفْوُهُ كَمَا كَفَى — D: وَأَبْدِلْ حُزْ"
+      }
+    ],
+    "description": "بإسكان الباء وتخفيف الدال المكسورة من أبدل الرباعي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُبْدِلَنَّ خَفَّفَ صَفْوُهُ كَمَا كَفَى"
+      },
+      {
+        "source": "D",
+        "text": "وَأَبْدِلْ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L357-تحسبن-1-w2",
+    "surah": 24,
+    "ayah": 57,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَحْسَبَنَّ",
+    "variantText": "يَحْسَبَنَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L357-تحسبن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L357-تحسبن-1-w2",
+        "variantId": "v-L357-تحسبن-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي التَّاءِ يَحْسَبَنَّ شَامٍ وَحَمْزَةٌ وَكَسْرُهُمَا عَنْ شَافِعٍ قَدْ تَحَصَّلَا"
+      }
+    ],
+    "description": "بالياء التحتية غيباً وفتح السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي التَّاءِ يَحْسَبَنَّ شَامٍ وَحَمْزَةٌ وَكَسْرُهُمَا عَنْ شَافِعٍ قَدْ تَحَصَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L357-تحسبن-1-w3",
+    "surah": 24,
+    "ayah": 57,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَحْسَبَنَّ",
+    "variantText": "تَحْسِبَنَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L357-تحسبن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L357-تحسبن-1-w3",
+        "variantId": "v-L357-تحسبن-1-w3",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي التَّاءِ يَحْسَبَنَّ شَامٍ وَحَمْزَةٌ وَكَسْرُهُمَا عَنْ شَافِعٍ قَدْ تَحَصَّلَا"
+      }
+    ],
+    "description": "بالتاء الفوقية خطاباً وكسر السين",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي التَّاءِ يَحْسَبَنَّ شَامٍ وَحَمْزَةٌ وَكَسْرُهُمَا عَنْ شَافِعٍ قَدْ تَحَصَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L357-ثلث_عورت-1-w2",
+    "surah": 24,
+    "ayah": 58,
+    "startToken": 28,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "ثَلَـٰثُ عَوْرَٰتٍۢ",
+    "variantText": "ثَلَـٰثَ عَوْرَٰتٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L357-ثلث_عورت-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L357-ثلث_عورت-1-w2",
+        "variantId": "v-L357-ثلث_عورت-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَثَلَاثُ عَوْرَاتٍ شَفَا"
+      }
+    ],
+    "description": "بنصب المثلثة على الظرفية أو بدلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَثَلَاثُ عَوْرَاتٍ شَفَا"
+      }
+    ]
+  }
+]

@@ -32,6 +32,23 @@ export interface WordMarker {
   isPerformanceOnly?: boolean
 }
 
+/**
+ * Inline paint for a comparison marker.
+ *
+ * A multi-reader attribution is a CSS gradient, which cannot be assigned to
+ * `color`.  Rendering it as clipped text preserves the reader segments in the
+ * Mushaf instead of silently falling back to the normal ink colour.
+ */
+export function markerPaintForWord(marker: Pick<WordMarker, 'color' | 'isGradient'>) {
+  return marker.isGradient
+    ? {
+        backgroundImage: marker.color,
+        WebkitBackgroundClip: 'text' as const,
+        WebkitTextFillColor: 'transparent' as const,
+      }
+    : { color: marker.color }
+}
+
 const UNRESOLVED_MARKER_COLOR = '#8a8a8a'
 export const PERFORMANCE_MARKER_COLOR = '#4F46E5'
 

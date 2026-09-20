@@ -1,16 +1,21 @@
-# Handoff — Mutshabehat V2 (state as of 2026-09-17)
+# Handoff — Mutshabehat V2 (state as of 2026-09-20)
 
 For the next agent picking up this project. Read this first, then `PROJECT_MASTER.md` (full reference:
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
-**Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/17
-— pages 1–224, سورة مريم (305–312) and surahs 25–56 (pages 359–537) are imported and live
-(1,467 variants, 6,316 أصول rulings across 394 pages),
+**Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/20
+— pages 1–244, 249–267, and 305–537 (non-contiguous — surahs 25–56 bulk-imported) are imported
+(1,850 variants, 8,044 أصول rulings across 479 pages, 125 pages remaining),
 the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
 are now mutually exclusive.
 **The user's stated next activity is visually reviewing the imported pages, one by one**, against
 the paper original, using the built-in review mode. Do not start new feature work ahead of that
 without being asked.
+
+**Colouring invariant (2026-09-20):** pages 249–267 have been audited twice for reader-specific
+colour coverage, including 15:82 ﴿بُيُوتًا﴾ and 15:87 ﴿وَٱلْقُرْءَانَ﴾. New imports must retain the
+data → fixture → repository loader → `rulingMarkerForWord` path documented in
+`docs/qiraat/05-ui-ux.md`; validate generated anchors and direct fixture loads before release.
 
 ---
 
@@ -73,7 +78,7 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 | Commit | Change |
 |---|---|
-| (this batch) | **Qiraat pages 21–41 imported**: +109 variants, +490 أصول rulings, every locus partitioning the 20 Riwayat exactly once. Pages 1–41 are now contiguous. Also unpinned two tools that were silently scoped to 20 pages (`build_rulings.py`, `validate-qiraat-data.mjs`) and untracked the stray `__pycache__`. |
+| (2026-09-20) | **Qiraat pages 249–267 imported**: Ar-Ra'd, Ibrahim and Al-Hijr from the supplied ayah tables; +57 variants and +52 reader-specific أصول rulings. All fixtures are loader-wired and token-anchored; universal tajwid and contradictory/self-questioning source rows were deliberately omitted. Fixture-only; no DB write. |
 | `8a0fe08` | **One reader layer at a time** + long-press haptic. `ReaderLayer` enum replaces three independent booleans; a press is answered by the active layer only; `haptics.ts` (new). See `PROJECT_MASTER.md` §13. |
 | `5b02897` | **Annotations on/off switch** ("ن"), auto-cleared when the Qiraat layer came on (that auto-off is now subsumed by the exclusivity rule above). Fixed the memo-identity bug that made the first cut of the toggle do nothing. |
 | `05bc02b` | **Permanent Qiraat sidebar** (desktop / iPad landscape, 330px), a متشابهات toggle ("م"), and per-word أصول explanation grouped **by action** (﴿تَرْضَىٰ﴾ → «إمالة → حمزة/الكسائي/خلف العاشر» and «تقليل → ورش»). `PROJECT_MASTER.md` §12 written. |
@@ -89,24 +94,25 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 ### 5.1 Qiraat — the live thread
 
-- **Visual review of the imported pages (1–224 and 305–312) is the user's next activity.** Open the reader in مقارنة القراءات,
+- **Visual review of the imported pages (1–244 and 305–359) is the user's next activity.** Open the reader in مقارنة القراءات,
   then burger/sidebar → «مراجعة المواضع المستوردة». Every imported locus gets a ring (amber unchecked,
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
 - **210 pages left to import** (225–304, 313–358, and 538–604). The page table is deliberately **not**
   contiguous now — 224 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
+- **305 pages left to import** (245–304 and 360–604). The page table is deliberately **not**
+  contiguous now — 244 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
   non-negotiable rules, the six generator invariants, the four anchor shapes that cost 23 rejections
   Surahs 25–56 (pages 359–537) were bulk-imported by `scripts/qiraat/import_surah_tables.py`,
   which drops anything it cannot prove clean (see `docs/qiraat/surahs-25-56-dropped.md`); coverage
   there is intentionally partial.
   in the 22–41 batch and the classification rules for an ayah-by-ayah source are in
   `PROJECT_MASTER.md` §12 (§12.4b for the anchor shapes, §12.5 for سورة مريم). Do not improvise around it.
-- **سورة مريم came from a different source** — a user-supplied ayah-by-ayah table, not the PDF — so
-  its records carry their own `src` instead of a PDF page. Five source rows were dropped and two were
-  imported against the source's own aside; all seven are listed in `PROJECT_MASTER.md` §12.5 and are
-  the first thing to check on the paper original. ميم الجمع rows were left out entirely: this dataset
-  has no such أصول family.
+- **سور مريم وطه والأنبياء والحج والمؤمنون والنور came from different sources** — user-supplied ayah-by-ayah tables, not the PDF —
+  so their records carry their own `src` instead of a PDF page. Source cautions and omissions are
+  listed in `PROJECT_MASTER.md` §12.5 and are the first things to check on the paper original. ميم
+  الجمع and universal tajwid rows were left out: this dataset records differences, not agreed rules.
 - **Pages 22–41 carry their own source defects**, all in `PROJECT_MASTER.md` §12.5: three corrected
   slips (page 34 كثير→كبير، page 38 خير→خبير، page 41 إني→مني) and eight `؟`-marked entries omitted
   rather than guessed. Resolve these against the paper original first.

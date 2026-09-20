@@ -1,0 +1,181 @@
+[
+  {
+    "id": "v-L242-حيث_يشاء-1-w2",
+    "surah": 12,
+    "ayah": 56,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "حَيْثُ يَشَآءُ ۚ",
+    "variantText": "حَيْثُ نَشَآءُ ۚ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L242-حيث_يشاء-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L242-حيث_يشاء-1-w2",
+        "variantId": "v-L242-حيث_يشاء-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 247,
+        "sourceReference": "صفحة المصحف 242 · صفحة المصدر 247",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَحَيْثُ يَشَاءُ نُونُ دَارٍ"
+      }
+    ],
+    "description": "بالنون على العظمة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَيْثُ يَشَاءُ نُونُ دَارٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L242-لفتينه-1-w2",
+    "surah": 12,
+    "ayah": 62,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لِفِتْيَـٰنِهِ",
+    "variantText": "لِفِتْيَتِهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L242-لفتينه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L242-لفتينه-1-w2",
+        "variantId": "v-L242-لفتينه-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 247,
+        "sourceReference": "صفحة المصحف 242 · صفحة المصدر 247",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِتْيَتِهِ فِتْيَانِهِ عَنْ شَذًا"
+      }
+    ],
+    "description": "بياء وتاء تأنيث مربوطة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِتْيَتِهِ فِتْيَانِهِ عَنْ شَذًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L242-ابيهم-1-w2",
+    "surah": 12,
+    "ayah": 63,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَبِيهِمْ",
+    "variantText": "أَبِيهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L242-ابيهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L242-ابيهم-1-w2",
+        "variantId": "v-L242-ابيهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 247,
+        "sourceReference": "صفحة المصحف 242 · صفحة المصدر 247",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L242-نكتل-1-w2",
+    "surah": 12,
+    "ayah": 63,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "نَكْتَلْ",
+    "variantText": "يَكْتَلْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L242-نكتل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L242-نكتل-1-w2",
+        "variantId": "v-L242-نكتل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 247,
+        "sourceReference": "صفحة المصحف 242 · صفحة المصدر 247",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَكْتَلْ بِيَا شَافٍ"
+      }
+    ],
+    "description": "بالتحتية على إسناد الفعل للأخ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَكْتَلْ بِيَا شَافٍ"
+      }
+    ]
+  }
+]

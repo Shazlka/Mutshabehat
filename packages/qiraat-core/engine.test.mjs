@@ -10,9 +10,10 @@ import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKey
 import { BASE_READING } from './types.ts'
 import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
 import { FixtureQiraatRepository } from './repository.ts'
-import { comparisonMarkerForWord, rulingMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
+import { comparisonMarkerForWord, rulingMarkerForWord, markerPaintForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
 import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
+import page266Rulings from './fixtures/rulings/page-266.json' with { type: 'json' }
 
 const ALL_READING_IDS = QIRAAT_READINGS.map((reading) => reading.id)
 const VARIANTS = synthetic.variants
@@ -224,6 +225,23 @@ test('comparison marker: a performance-only variant (no text change) gets the fi
   })
 })
 
+test('multi-reader marker paint preserves its gradient for Mushaf text instead of falling back to ink', () => {
+  const marker = comparisonMarkerForWord(
+    [{
+      id: 'synthetic-multi-reader', surah: 999, ayah: 11, startToken: 1, endToken: 1,
+      operation: 'REPLACE', hafsText: 'SYN-BASE', variantText: 'SYN-VARIANT', differenceType: 'LETTER',
+      verificationStatus: 'REVIEWED', createdAt: '', updatedAt: '',
+      readingIds: ['Q01-R01', 'Q02-R01'],
+    }],
+    999, 11, 1, { kind: 'all' }, { includeUnpublished: true },
+  )
+  assert.ok(marker?.isGradient, 'two readers must produce a segmented gradient marker')
+  const paint = markerPaintForWord(marker)
+  assert.match(paint.backgroundImage ?? '', /^linear-gradient\(/)
+  assert.equal(paint.WebkitBackgroundClip, 'text')
+  assert.equal(paint.WebkitTextFillColor, 'transparent')
+})
+
 test('a record with no confident attribution never crashes the marker builder (computeAttribution([]) throws)', () => {
   // Constructed, not read from the fixtures: the guard must hold for ANY such record, including
   // ones a future import introduces. computeAttribution([]) throws by design, so the view layer
@@ -387,6 +405,24 @@ test('when filtering by reader or narrator, rulingMarkerForWord only marks and c
   // Reader filter Asim (Q05) must return null:
   const asimTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reader', readerId: 'Q05' })
   assert.equal(asimTarqiq, null, 'Asim must not see or color Warsh tarqiq ruling')
+})
+
+test('page 266 carries the supplied Al-Hijr colour coverage for 15:82 and 15:87', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(266, { includeUnpublished: true })
+
+  assert.ok(
+    variants.some((variant) => variant.ayah === 82 && variant.hafsText.includes('بُيُوتًا')),
+    '15:82 بُيُوتًا must be a loadable reader-specific comparison locus',
+  )
+  assert.ok(
+    variants.some((variant) => variant.ayah === 87 && variant.hafsText.includes('ٱلْقُرْءَانَ')),
+    '15:87 ٱلْقُرْءَانَ must be a loadable reader-specific comparison locus',
+  )
+  assert.ok(
+    page266Rulings.some((rule) => rule.ayah === 82 && rule.category === 'MADD_BADAL'),
+    '15:82 آمِنِينَ must retain its Warsh-specific colour marker alongside the comparison locus',
+  )
 })
 
 

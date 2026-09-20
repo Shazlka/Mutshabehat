@@ -1,0 +1,114 @@
+[
+  {
+    "id": "v-L259-اكلها-1-w2",
+    "surah": 14,
+    "ayah": 25,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أُكُلَهَا",
+    "variantText": "أُكْلَهَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L259-اكلها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L259-اكلها-1-w2",
+        "variantId": "v-L259-اكلها-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان الكاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L259-ليضلوا-1-w2",
+    "surah": 14,
+    "ayah": 30,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِّيُضِلُّوا۟",
+    "variantText": "لِيَضِلُّوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L259-ليضلوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L259-ليضلوا-1-w2",
+        "variantId": "v-L259-ليضلوا-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L259-لا_بيع_فيه_ولا_خلل-1-w2",
+    "surah": 14,
+    "ayah": 31,
+    "startToken": 17,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "لَّا بَيْعٌۭ فِيهِ وَلَا خِلَـٰلٌ",
+    "variantText": "لَا بَيْعَ فِيهِ وَلَا خِلَالَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L259-لا_بيع_فيه_ولا_خلل-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L259-لا_بيع_فيه_ولا_خلل-1-w2",
+        "variantId": "v-L259-لا_بيع_فيه_ولا_خلل-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالبناء مع لا النافية للجنس",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

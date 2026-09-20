@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "id": "v-L312-اني_انا_ربك-1-w2",
+    "surah": 20,
+    "ayah": 12,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ أَنَا۠ رَبُّكَ",
+    "variantText": "أَنِّىٓ أَنَا۠ رَبُّكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L312-اني_انا_ربك-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L312-اني_انا_ربك-1-w2",
+        "variantId": "v-L312-اني_انا_ربك-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَافْتَحُوا إِنِّي أَنَا دَائِمًا حُلَا"
+      }
+    ],
+    "description": "بفتح همزة أني",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَافْتَحُوا إِنِّي أَنَا دَائِمًا حُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L312-طوي-1-w2",
+    "surah": 20,
+    "ayah": 12,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "طُوًۭى",
+    "variantText": "طُوَى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L312-طوي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L312-طوي-1-w2",
+        "variantId": "v-L312-طوي-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنُوِّنْ بِهَا وَالنَّازِعَاتِ طُوًى ذَكَا"
+      }
+    ],
+    "description": "بغير تنوين وصلًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنُوِّنْ بِهَا وَالنَّازِعَاتِ طُوًى ذَكَا"
+      }
+    ]
+  }
+]

@@ -1,0 +1,366 @@
+[
+  {
+    "id": "v-L350-سوره-1-w2",
+    "surah": 24,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "سُورَةٌ",
+    "variantText": "سُورَةً",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L350-سوره-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L350-سوره-1-w2",
+        "variantId": "v-L350-سوره-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَسُورَةٌ انْصِبْ فِي انْتِمَاءٍ"
+      }
+    ],
+    "description": "بنصب التاء تنويناً مفعولاً به لفعل محذوف تقديره أنزلنا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسُورَةٌ انْصِبْ فِي انْتِمَاءٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L350-وفرضنها-1-w2",
+    "surah": 24,
+    "ayah": 1,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَفَرَضْنَـٰهَا",
+    "variantText": "وَفَرَّضْنَـٰهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L350-وفرضنها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L350-وفرضنها-1-w2",
+        "variantId": "v-L350-وفرضنها-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفَرَّضَتْ يُثَقَّلُ دُمْ حِصْنًا وَفِي قِصَصٍ حَلَا"
+      }
+    ],
+    "description": "بتشديد الراء للتكثير والتفصيل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفَرَّضَتْ يُثَقَّلُ دُمْ حِصْنًا وَفِي قِصَصٍ حَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L350-تذكرون-1-w2",
+    "surah": 24,
+    "ayah": 1,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذَكْرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L350-تذكرون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L350-تذكرون-1-w2",
+        "variantId": "v-L350-تذكرون-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَتَذْكُرُونَ الْكُلُّ خَفَّ شَفَا عُلَا"
+      }
+    ],
+    "description": "بتخفيف الذال وتشديد الكاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتَذْكُرُونَ الْكُلُّ خَفَّ شَفَا عُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L350-رافه-1-w2",
+    "surah": 24,
+    "ayah": 2,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "رَأْفَةٌۭ",
+    "variantText": "رَأَفَةٌۭ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L350-رافه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L350-رافه-1-w2",
+        "variantId": "v-L350-رافه-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَرَأْفَةٌ احْرِكْ سَاكِنًا عَنْ كَمَا رَسَا"
+      }
+    ],
+    "description": "بفتح الهمزة على وزن فَعَلَة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرَأْفَةٌ احْرِكْ سَاكِنًا عَنْ كَمَا رَسَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L350-اربع-1-w2",
+    "surah": 24,
+    "ayah": 6,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "أَرْبَعُ",
+    "variantText": "أَرْبَعَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L350-اربع-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L350-اربع-1-w2",
+        "variantId": "v-L350-اربع-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَأَرْبَعُ أَوَّلًا صِحَابٌ"
+      }
+    ],
+    "description": "بنصب العين على المصدرية",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَرْبَعُ أَوَّلًا صِحَابٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L350-ان_لعنت-1-w2",
+    "surah": 24,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَنَّ لَعْنَتَ",
+    "variantText": "أَنْ لَّعْنَتُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L350-ان_لعنت-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L350-ان_لعنت-1-w2",
+        "variantId": "v-L350-ان_لعنت-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي أَنَّ لَعْنَتَ ثَانِيًا نَصَّ شَاهِدٍ وَفِي الْخَفْضِ أَنَّ مَعْ خَفِيفٍ بِمَا حَلَا — D: وَأَنَّ مَعْ غَضِبَ حُزْ"
+      }
+    ],
+    "description": "بتخفيف (أَنْ) وإسكان نونها ورفع تاء (لَعْنَتُ)",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي أَنَّ لَعْنَتَ ثَانِيًا نَصَّ شَاهِدٍ وَفِي الْخَفْضِ أَنَّ مَعْ خَفِيفٍ بِمَا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَأَنَّ مَعْ غَضِبَ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L350-والخمسه-1-w2",
+    "surah": 24,
+    "ayah": 9,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْخَـٰمِسَةَ",
+    "variantText": "وَٱلْخَـٰمِسَةُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L350-والخمسه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L350-والخمسه-1-w2",
+        "variantId": "v-L350-والخمسه-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَغَيْرُ الْحَفْصِ خَامِسَةُ الْأَخِيرُ"
+      }
+    ],
+    "description": "برفع التاء بالابتداء وخبرها الجملة بعدها",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَغَيْرُ الْحَفْصِ خَامِسَةُ الْأَخِيرُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L350-ان_غضب-1-w2",
+    "surah": 24,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَنَّ غَضَبَ",
+    "variantText": "أَنْ غَضِبَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L350-ان_غضب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L350-ان_غضب-1-w2",
+        "variantId": "v-L350-ان_غضب-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي الْخَفْضِ أَنَّ مَعْ خَفِيفٍ بِمَا حَلَا — D: وَأَنَّ مَعْ غَضِبَ حُزْ"
+      }
+    ],
+    "description": "بتخفيف (أَنْ) وكسر ضاد (غَضِبَ) فعلاً ماضياً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الْخَفْضِ أَنَّ مَعْ خَفِيفٍ بِمَا حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَأَنَّ مَعْ غَضِبَ حُزْ"
+      }
+    ]
+  }
+]

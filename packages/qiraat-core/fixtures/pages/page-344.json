@@ -1,0 +1,226 @@
+[
+  {
+    "id": "v-L344-منزلا-1-w2",
+    "surah": 23,
+    "ayah": 29,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مُنزَلًۭا",
+    "variantText": "مَنْزِلًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L344-منزلا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L344-منزلا-1-w2",
+        "variantId": "v-L344-منزلا-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفِي مُنْزَلًا فَافْتَحْ كِلَا مِيمِهِ وَكُسِرَ الزَّايُ حَقًّا عَمَّ"
+      }
+    ],
+    "description": "بفتح الميم وكسر الزاي اسم مكان من نزل الثلاثي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مُنْزَلًا فَافْتَحْ كِلَا مِيمِهِ وَكُسِرَ الزَّايُ حَقًّا عَمَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L344-غيرهو-1-w2",
+    "surah": 23,
+    "ayah": 32,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "غَيْرُهُۥٓ ۖ",
+    "variantText": "غَيْرِهِۦٓ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L344-غيرهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L344-غيرهو-1-w2",
+        "variantId": "v-L344-غيرهو-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَغَيْرُهُ اخْفِضْ عَنْ كِسَائِيِّهِمْ رِضًا"
+      }
+    ],
+    "description": "بجر الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَغَيْرُهُ اخْفِضْ عَنْ كِسَائِيِّهِمْ رِضًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L344-متم-1-w2",
+    "surah": 23,
+    "ayah": 35,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مِتُّمْ",
+    "variantText": "مُتُّمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L344-متم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L344-متم-1-w2",
+        "variantId": "v-L344-متم-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَمَعْهُ أَبُو بَكْرٍ"
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَمَعْهُ أَبُو بَكْرٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L344-وعظاما-1-w2",
+    "surah": 23,
+    "ayah": 35,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَعِظَـٰمًا",
+    "variantText": "وَعَظْمًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L344-وعظاما-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L344-وعظاما-1-w2",
+        "variantId": "v-L344-وعظاما-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفِي عَظْمًا اكْسِرْ مَعْ كِسَوْنَا لِكِلْمَةٍ وَشُعْبَةُ وَحِّدْ عَظْمَ فَافْهَمْ مُفَصَّلَا"
+      }
+    ],
+    "description": "بالإفراد بفتح العين وسكون الظاء بغير ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي عَظْمًا اكْسِرْ مَعْ كِسَوْنَا لِكِلْمَةٍ وَشُعْبَةُ وَحِّدْ عَظْمَ فَافْهَمْ مُفَصَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L344-هيهات_هيهات-1-w2",
+    "surah": 23,
+    "ayah": 36,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "۞ هَيْهَاتَ هَيْهَاتَ",
+    "variantText": "۞ هَيْهَاتٍ هَيْهَاتٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L344-هيهات_هيهات-1",
+    "locusType": "multi_word_variant",
+    "notes": "والوقف عليها بالهاء (هَيْهَاهْ) لابن كثير وأبي عمرو والكسائي ويعقوب، وبالتاء (هَيْهَاتْ) للباقين.",
+    "sources": [
+      {
+        "id": "s-L344-هيهات_هيهات-1-w2",
+        "variantId": "v-L344-هيهات_هيهات-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَهَيْهَاتَ قِفْ بِالْهَا كَفَى نَصْرُ شَافِعٍ — D: وَهَيْهَاتَ بِالْهَا قِفْ حِمَى حَازَ وَنَوِّنْ مَعَ الْكَسْرِ حُزْ"
+      }
+    ],
+    "description": "بكسر التاء وتنوينها وصلاً ووقفاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَهَيْهَاتَ قِفْ بِالْهَا كَفَى نَصْرُ شَافِعٍ"
+      },
+      {
+        "source": "D",
+        "text": "وَهَيْهَاتَ بِالْهَا قِفْ حِمَى حَازَ وَنَوِّنْ مَعَ الْكَسْرِ حُزْ"
+      }
+    ]
+  }
+]

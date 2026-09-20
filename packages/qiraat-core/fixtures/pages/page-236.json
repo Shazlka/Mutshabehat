@@ -1,0 +1,428 @@
+[
+  {
+    "id": "v-L236-يبني-1-w2",
+    "surah": 12,
+    "ayah": 5,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰبُنَىَّ",
+    "variantText": "يَـٰبُنَىِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L236-يبني-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L236-يبني-1-w2",
+        "variantId": "v-L236-يبني-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفَتْحُ يَا بُنَيَّ هُنَا نَصٌّ"
+      }
+    ],
+    "description": "بكسر الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفَتْحُ يَا بُنَيَّ هُنَا نَصٌّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-ءايت-1-w2",
+    "surah": 12,
+    "ayah": 7,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ءَايَـٰتٌۭ",
+    "variantText": "ءَايَةٌۭ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L236-ءايت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L236-ءايت-1-w2",
+        "variantId": "v-L236-ءايت-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَوُحِّدَ لِلمَكِّيِّ آيَاتٌ الْوَلَا"
+      }
+    ],
+    "description": "بالإفراد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَوُحِّدَ لِلمَكِّيِّ آيَاتٌ الْوَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-مبين_اقتلوا-1-w2",
+    "surah": 12,
+    "ayah": 8,
+    "startToken": 15,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "مُّبِينٍ ٱقْتُلُوا۟",
+    "variantText": "مُّبِينٍ ٱقْتُلُوا۟",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L236-مبين_اقتلوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L236-مبين_اقتلوا-1-w2",
+        "variantId": "v-L236-مبين_اقتلوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَضَمُّكَ أُولَى السَّاكِنَيْنِ لِثَالِثٍ يُضَمُّ لُزُومًا كَسْرُهُ فِي نَدٍ حَلَا — D: وَأَوَّلَ السَّاكِنَيْنِ اضْمُمْ فَتًى"
+      }
+    ],
+    "description": "بضم التنوين وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَضَمُّكَ أُولَى السَّاكِنَيْنِ لِثَالِثٍ يُضَمُّ لُزُومًا كَسْرُهُ فِي نَدٍ حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَأَوَّلَ السَّاكِنَيْنِ اضْمُمْ فَتًى"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-غيبت-1-w2",
+    "surah": 12,
+    "ayah": 10,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "غَيَـٰبَتِ",
+    "variantText": "غَيَـٰبَـٰتِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L236-غيبت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L236-غيبت-1-w2",
+        "variantId": "v-L236-غيبت-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: غَيَابَاتِ فِي الْحَرْفَيْنِ بِالْجَمْعِ نَافِعٌ"
+      }
+    ],
+    "description": "بالجمع وألف بعد الباء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "غَيَابَاتِ فِي الْحَرْفَيْنِ بِالْجَمْعِ نَافِعٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-تمنا-1-w2",
+    "surah": 12,
+    "ayah": 11,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَأْمَ۫نَّا",
+    "variantText": "تَأْمَ۫نَّا",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L236-تمنا-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بالإدغام المحض من غير روم ولا إشمام",
+    "sources": [
+      {
+        "id": "s-L236-تمنا-1-w2",
+        "variantId": "v-L236-تمنا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَتَأْمَنَّا لِلْكُلِّ يُخْفَى مُفَصَّلًا وَأَدْغَمَ مَعْ إِشْمَامِهِ الْبَعْضُ عَنْهُمُ — D: وَأَدْغِمْ مَحْضَ تَأْمَنَّا"
+      }
+    ],
+    "description": "بالإدغام المحض من غير روم ولا إشمام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتَأْمَنَّا لِلْكُلِّ يُخْفَى مُفَصَّلًا وَأَدْغَمَ مَعْ إِشْمَامِهِ الْبَعْضُ عَنْهُمُ"
+      },
+      {
+        "source": "D",
+        "text": "وَأَدْغِمْ مَحْضَ تَأْمَنَّا"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-يرتع_ويلعب-1-w2",
+    "surah": 12,
+    "ayah": 12,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَرْتَعْ وَيَلْعَبْ",
+    "variantText": "يَرْتَعِ وَيَلْعَبْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L236-يرتع_ويلعب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L236-يرتع_ويلعب-1-w2",
+        "variantId": "v-L236-يرتع_ويلعب-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَرْتَعْ وَنَلْعَبْ يَاؤُهُ حِصْنٌ تَطَوَّلَا وَيَرْتَعْ سُكُونُ الْكَسْرِ فِي الْعَيْنِ ذُو حِمًى — D: وَنَرْتَعْ وَبَعْدُ يَا"
+      }
+    ],
+    "description": "بالتحتية فيهما وكسر العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَرْتَعْ وَنَلْعَبْ يَاؤُهُ حِصْنٌ تَطَوَّلَا وَيَرْتَعْ سُكُونُ الْكَسْرِ فِي الْعَيْنِ ذُو حِمًى"
+      },
+      {
+        "source": "D",
+        "text": "وَنَرْتَعْ وَبَعْدُ يَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-يرتع_ويلعب-1-w3",
+    "surah": 12,
+    "ayah": 12,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَرْتَعْ وَيَلْعَبْ",
+    "variantText": "نَرْتَعِ وَنَلْعَبْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L236-يرتع_ويلعب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L236-يرتع_ويلعب-1-w3",
+        "variantId": "v-L236-يرتع_ويلعب-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَرْتَعْ وَنَلْعَبْ يَاؤُهُ حِصْنٌ تَطَوَّلَا وَيَرْتَعْ سُكُونُ الْكَسْرِ فِي الْعَيْنِ ذُو حِمًى — D: وَنَرْتَعْ وَبَعْدُ يَا"
+      }
+    ],
+    "description": "بالنون فيهما وكسر العين",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَرْتَعْ وَنَلْعَبْ يَاؤُهُ حِصْنٌ تَطَوَّلَا وَيَرْتَعْ سُكُونُ الْكَسْرِ فِي الْعَيْنِ ذُو حِمًى"
+      },
+      {
+        "source": "D",
+        "text": "وَنَرْتَعْ وَبَعْدُ يَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-يرتع_ويلعب-1-w4",
+    "surah": 12,
+    "ayah": 12,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَرْتَعْ وَيَلْعَبْ",
+    "variantText": "نَرْتَعْ وَنَلْعَبْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L236-يرتع_ويلعب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L236-يرتع_ويلعب-1-w4",
+        "variantId": "v-L236-يرتع_ويلعب-1-w4",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَرْتَعْ وَنَلْعَبْ يَاؤُهُ حِصْنٌ تَطَوَّلَا وَيَرْتَعْ سُكُونُ الْكَسْرِ فِي الْعَيْنِ ذُو حِمًى — D: وَنَرْتَعْ وَبَعْدُ يَا"
+      }
+    ],
+    "description": "بالنون فيهما وسكون العين",
+    "wajhIndex": 4,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَرْتَعْ وَنَلْعَبْ يَاؤُهُ حِصْنٌ تَطَوَّلَا وَيَرْتَعْ سُكُونُ الْكَسْرِ فِي الْعَيْنِ ذُو حِمًى"
+      },
+      {
+        "source": "D",
+        "text": "وَنَرْتَعْ وَبَعْدُ يَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L236-ليحزنني-1-w2",
+    "surah": 12,
+    "ayah": 13,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَيَحْزُنُنِىٓ",
+    "variantText": "لَيُحْزِنُنِىٓ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L236-ليحزنني-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L236-ليحزنني-1-w2",
+        "variantId": "v-L236-ليحزنني-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 241,
+        "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَحْزُنُ غَيْرَ الأَنْبِيَاءِ بِضَمِّهِ وَاكْسِرِ الضَّمَّ أَحْفَلَا — D: وَيَحْزُنُ فَافْتَحْ ضُمَّ كُلًّا"
+      }
+    ],
+    "description": "بضم الياء وكسر الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَحْزُنُ غَيْرَ الأَنْبِيَاءِ بِضَمِّهِ وَاكْسِرِ الضَّمَّ أَحْفَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَيَحْزُنُ فَافْتَحْ ضُمَّ كُلًّا"
+      }
+    ]
+  }
+]

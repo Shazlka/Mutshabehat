@@ -1,0 +1,292 @@
+[
+  {
+    "id": "v-L352-خطوات-1-w2",
+    "surah": 24,
+    "ayah": 21,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "خُطُوَٰتِ",
+    "variantText": "خُطْوَٰتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L352-خطوات-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L352-خطوات-1-w2",
+        "variantId": "v-L352-خطوات-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَحَيْثُ أَتَىٰ خُطُوَٰتٍ الطَّاءُ سَاكِنٌ وَقُلْ ضَمُّهُ عَنْ زَاهِدٍ كَيْفَ رَتَّلَا — D: أَثْقِلَا وَخُطُوَاتٍ سُحْتٍ شُغْلٍ رُحْمًا حَوَى الْعُلَا"
+      }
+    ],
+    "description": "بإسكان الطاء تخفيفاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَيْثُ أَتَىٰ خُطُوَٰتٍ الطَّاءُ سَاكِنٌ وَقُلْ ضَمُّهُ عَنْ زَاهِدٍ كَيْفَ رَتَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَثْقِلَا وَخُطُوَاتٍ سُحْتٍ شُغْلٍ رُحْمًا حَوَى الْعُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L352-خطوات-2-w2",
+    "surah": 24,
+    "ayah": 21,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "خُطُوَٰتِ",
+    "variantText": "خُطْوَٰتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L352-خطوات-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L352-خطوات-2-w2",
+        "variantId": "v-L352-خطوات-2-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَحَيْثُ أَتَىٰ خُطُوَٰتٍ الطَّاءُ سَاكِنٌ وَقُلْ ضَمُّهُ عَنْ زَاهِدٍ كَيْفَ رَتَّلَا — D: أَثْقِلَا وَخُطُوَاتٍ سُحْتٍ شُغْلٍ رُحْمًا حَوَى الْعُلَا"
+      }
+    ],
+    "description": "بإسكان الطاء تخفيفاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَحَيْثُ أَتَىٰ خُطُوَٰتٍ الطَّاءُ سَاكِنٌ وَقُلْ ضَمُّهُ عَنْ زَاهِدٍ كَيْفَ رَتَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَثْقِلَا وَخُطُوَاتٍ سُحْتٍ شُغْلٍ رُحْمًا حَوَى الْعُلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L352-ياتل-1-w2",
+    "surah": 24,
+    "ayah": 22,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتَلِ",
+    "variantText": "يَتَأَلَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L352-ياتل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L352-ياتل-1-w2",
+        "variantId": "v-L352-ياتل-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "D: وَيَتَأَلَّ أَلَا"
+      }
+    ],
+    "description": "بتاءين مفتوحتين ولام مشددة مفتوحة على وزن يتفعل مجزوماً بحذف الألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَيَتَأَلَّ أَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L352-تشهد-1-w2",
+    "surah": 24,
+    "ayah": 24,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَشْهَدُ",
+    "variantText": "يَشْهَدُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L352-تشهد-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L352-تشهد-1-w2",
+        "variantId": "v-L352-تشهد-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَيَرْفَعُ بَعْدَ الْجَرِّ يَشْهَدُ شَائِعٌ"
+      }
+    ],
+    "description": "بياء التذكير للفصل ولمجازية تأنيث الألسنة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَرْفَعُ بَعْدَ الْجَرِّ يَشْهَدُ شَائِعٌ"
+      }
+    ]
+  },
+  {
+    "id": "v-L352-بيوتا-1-w2",
+    "surah": 24,
+    "ayah": 27,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتًا",
+    "variantText": "بِيُوتًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L352-بيوتا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L352-بيوتا-1-w2",
+        "variantId": "v-L352-بيوتا-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَكَسْرُ بُيُوتٍ وَالْبُيُوتِ كِلَاهُمَا عَلَى الْأَصْلِ شَاعَ وَانْجَلَى لِيُفَصَّلَا — D: وَكَسْرُ بُيُوتٍ حِمَى فُزْ"
+      }
+    ],
+    "description": "بكسر الباء لمناسبة الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَسْرُ بُيُوتٍ وَالْبُيُوتِ كِلَاهُمَا عَلَى الْأَصْلِ شَاعَ وَانْجَلَى لِيُفَصَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَكَسْرُ بُيُوتٍ حِمَى فُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L352-بيوتكم-1-w2",
+    "surah": 24,
+    "ayah": 27,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتِكُمْ",
+    "variantText": "بِيُوتِكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L352-بيوتكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L352-بيوتكم-1-w2",
+        "variantId": "v-L352-بيوتكم-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَكَسْرُ بُيُوتٍ وَالْبُيُوتِ كِلَاهُمَا عَلَى الْأَصْلِ شَاعَ وَانْجَلَى لِيُفَصَّلَا — D: وَكَسْرُ بُيُوتٍ حِمَى فُزْ"
+      }
+    ],
+    "description": "بكسر الباء لمناسبة الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَسْرُ بُيُوتٍ وَالْبُيُوتِ كِلَاهُمَا عَلَى الْأَصْلِ شَاعَ وَانْجَلَى لِيُفَصَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَكَسْرُ بُيُوتٍ حِمَى فُزْ"
+      }
+    ]
+  }
+]

@@ -1,0 +1,401 @@
+[
+  {
+    "id": "v-L318-افلا_يرون-1-w2",
+    "surah": 20,
+    "ayah": 89,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَفَلَا يَرَوْنَ",
+    "variantText": "أَفَلَا تَرَوْنَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L318-افلا_يرون-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L318-افلا_يرون-1-w2",
+        "variantId": "v-L318-افلا_يرون-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَتَرَوْنَ خَاطِبْ حُزْ"
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَتَرَوْنَ خَاطِبْ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L318-اليهم-1-w2",
+    "surah": 20,
+    "ayah": 89,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L318-اليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L318-اليهم-1-w2",
+        "variantId": "v-L318-اليهم-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L318-عليه-1-w2",
+    "surah": 20,
+    "ayah": 91,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِ",
+    "variantText": "عَلَيْهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L318-عليه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L318-عليه-1-w2",
+        "variantId": "v-L318-عليه-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L318-يبنوم-1-w2",
+    "surah": 20,
+    "ayah": 94,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَبْنَؤُمَّ",
+    "variantText": "يَبْنَؤُمِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L318-يبنوم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L318-يبنوم-1-w2",
+        "variantId": "v-L318-يبنوم-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي أُمَّ كَسْرُ الْمِيمِ فِي ابْنَ صَفَا جَنَا"
+      }
+    ],
+    "description": "بكسر الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي أُمَّ كَسْرُ الْمِيمِ فِي ابْنَ صَفَا جَنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L318-بصرت_بما-1-w2",
+    "surah": 20,
+    "ayah": 96,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "بَصُرْتُ بِمَا",
+    "variantText": "بَصِرْتُ بِمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L318-بصرت_بما-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L318-بصرت_بما-1-w2",
+        "variantId": "v-L318-بصرت_بما-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي بَصُرْتُ ضُمَّ كَسْرًا لِصُحْبَةٍ"
+      }
+    ],
+    "description": "بكسر الصاد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي بَصُرْتُ ضُمَّ كَسْرًا لِصُحْبَةٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L318-يبصروا_بهي-1-w2",
+    "surah": 20,
+    "ayah": 96,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَبْصُرُوا۟ بِهِۦ",
+    "variantText": "يَبْصِرُوا بِهِۦ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L318-يبصروا_بهي-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L318-يبصروا_بهي-1-w2",
+        "variantId": "v-L318-يبصروا_بهي-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي بَصُرْتُ ضُمَّ كَسْرًا لِصُحْبَةٍ"
+      }
+    ],
+    "description": "بكسر الصاد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي بَصُرْتُ ضُمَّ كَسْرًا لِصُحْبَةٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L318-لن_تخلفهو-1-w2",
+    "surah": 20,
+    "ayah": 97,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "لَّن تُخْلَفَهُۥ ۖ",
+    "variantText": "لَّن تَخْلِفَهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L318-لن_تخلفهو-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L318-لن_تخلفهو-1-w2",
+        "variantId": "v-L318-لن_تخلفهو-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح التاء وكسر اللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L318-ظلت_عليه-1-w2",
+    "surah": 20,
+    "ayah": 97,
+    "startToken": 20,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "ظَلْتَ عَلَيْهِ",
+    "variantText": "ظِلْتَ عَلَيْهِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L318-ظلت_عليه-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L318-ظلت_عليه-1-w2",
+        "variantId": "v-L318-ظلت_عليه-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر الظاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L318-عليه-1-w2",
+    "surah": 20,
+    "ayah": 97,
+    "startToken": 21,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِ",
+    "variantText": "عَلَيْهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L318-عليه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L318-عليه-1-w2",
+        "variantId": "v-L318-عليه-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L318-لنحرقنهو-1-w2",
+    "surah": 20,
+    "ayah": 97,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "لَّنُحَرِّقَنَّهُۥ",
+    "variantText": "لَّنَحْرُقَنَّهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R02"
+    ],
+    "locusId": "L318-لنحرقنهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L318-لنحرقنهو-1-w2",
+        "variantId": "v-L318-لنحرقنهو-1-w2",
+        "sourceName": "جدولا فرش سورتي مريم وطه ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَفِي لَنُحَرِّقَنَّهُ افْتَحْ وَخَفِّفْ ضُمَّ رَاءً"
+      }
+    ],
+    "description": "بفتح النون وإسكان الحاء وضم الراء مخففة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَفِي لَنُحَرِّقَنَّهُ افْتَحْ وَخَفِّفْ ضُمَّ رَاءً"
+      }
+    ]
+  }
+]

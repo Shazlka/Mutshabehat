@@ -37,6 +37,7 @@ import QiraatLegend from './qiraat/QiraatLegend'
 import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
 import {
   comparisonMarkerForWord,
+  markerPaintForWord,
   riwayahResolutionForWord,
   rulingMarkerForWord,
   rulingCategoriesOnPage,
@@ -2301,6 +2302,8 @@ export default function Mushaf1441Viewer({
       : (qiraatMarker && !qiraatMarker.isGradient
           ? (mushafTheme === 'dark' ? adaptColorForDark(qiraatMarker.color) : qiraatMarker.color)
           : undefined)
+    const qiraatMarkerPaint = qiraatMarker?.isGradient ? markerPaintForWord(qiraatMarker) : undefined
+    const annotationTextColor = adaptedAnnotation?.textColor ?? highlightAnnotation?.textColor
 
     return (
       <button
@@ -2412,10 +2415,15 @@ export default function Mushaf1441Viewer({
           fontSize: useGlyph ? '1em' : '0.78em',
           lineHeight: 'inherit',
           paddingBlock: MUSHAF_WORD_BAND_PADDING,
-          color: (adaptedAnnotation?.textColor ?? highlightAnnotation?.textColor)
+          color: annotationTextColor
             ?? effectiveMarkerColor
             ?? effectiveRulingColor
             ?? currentThemeTokens.textPrimaryHex,
+          // A gradient cannot be used as `color`; clip it to the glyph text. Explicit user
+          // annotation colours remain the highest-priority paint and deliberately override it.
+          backgroundImage: annotationTextColor ? undefined : qiraatMarkerPaint?.backgroundImage,
+          WebkitBackgroundClip: annotationTextColor ? undefined : qiraatMarkerPaint?.WebkitBackgroundClip,
+          WebkitTextFillColor: annotationTextColor ? undefined : qiraatMarkerPaint?.WebkitTextFillColor,
           // ذو وجهين («بخلف عنه») — two equally valid readings here; never silently pick one.
           textDecoration: rulingMarker?.hasAlternate ? 'underline dotted' : undefined,
           textDecorationColor: rulingMarker?.hasAlternate ? effectiveRulingColor : undefined,
@@ -2452,7 +2460,7 @@ export default function Mushaf1441Viewer({
                 bottom: qiraatMarkerCss.offset,
                 height: qiraatMarkerCss.height,
                 borderRadius: 9999,
-                background: effectiveMarkerColor,
+                background: qiraatMarker?.isGradient ? qiraatMarker.color : effectiveMarkerColor,
               }}
             />
           ) : null}

@@ -1,0 +1,221 @@
+[
+  {
+    "id": "v-L331-لا_يحزنهم-1-w2",
+    "surah": 21,
+    "ayah": 103,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَحْزُنُهُمُ",
+    "variantText": "لَا يُحْزِنُهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L331-لا_يحزنهم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L331-لا_يحزنهم-1-w2",
+        "variantId": "v-L331-لا_يحزنهم-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي يَحْزُنُ اضْمُمْ فِي انْضِمَامٍ وَكُسِرَتْ لِضَمٍّ"
+      }
+    ],
+    "description": "بضم الياء وكسر الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي يَحْزُنُ اضْمُمْ فِي انْضِمَامٍ وَكُسِرَتْ لِضَمٍّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L331-نطوي_السماء-1-w2",
+    "surah": 21,
+    "ayah": 104,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نَطْوِى ٱلسَّمَآءَ",
+    "variantText": "يُطْوَى ٱلسَّمَآءُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L331-نطوي_السماء-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L331-نطوي_السماء-1-w2",
+        "variantId": "v-L331-نطوي_السماء-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَيُطْوَى اضْمُمْ وَسَمِّ"
+      }
+    ],
+    "description": "بضم الياء وفتح الواو ورفع السماء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَيُطْوَى اضْمُمْ وَسَمِّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L331-للكتب-1-w2",
+    "surah": 21,
+    "ayah": 104,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "لِلْكُتُبِ ۚ",
+    "variantText": "لِلْكِتَـٰبِ ۚ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L331-للكتب-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L331-للكتب-1-w2",
+        "variantId": "v-L331-للكتب-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي الْكُتُبِ اكْسِرْ وَافْتَحِ التَّاءَ شَافِيًا وَمُدَّ كِتَابًا كَمْ نَصَا فَتَوَصَّلَا"
+      }
+    ],
+    "description": "بكسر الكاف وفتح التاء وألف على الإفراد",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الْكُتُبِ اكْسِرْ وَافْتَحِ التَّاءَ شَافِيًا وَمُدَّ كِتَابًا كَمْ نَصَا فَتَوَصَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L331-الزبور-1-w2",
+    "surah": 21,
+    "ayah": 105,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلزَّبُورِ",
+    "variantText": "ٱلزُّبُورِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L331-الزبور-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L331-الزبور-1-w2",
+        "variantId": "v-L331-الزبور-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي الزُّبُرِ اضْمُمْ مَعْ زَبُورِ شَفَا"
+      }
+    ],
+    "description": "بضم الزاي جمعًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الزُّبُرِ اضْمُمْ مَعْ زَبُورِ شَفَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L331-قال_رب_احكم-1-w2",
+    "surah": 21,
+    "ayah": 112,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "قَـٰلَ رَبِّ ٱحْكُم",
+    "variantText": "قُل رَّبِّ ٱحْكُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L331-قال_رب_احكم-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L331-قال_رب_احكم-1-w2",
+        "variantId": "v-L331-قال_رب_احكم-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ قَالَ عَنْ شَهْدٍ وَآخِرُهَا عَلَا"
+      }
+    ],
+    "description": "بصيغة الأمر بضم القاف وحذف الألف وإدغام اللام في الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ قَالَ عَنْ شَهْدٍ وَآخِرُهَا عَلَا"
+      }
+    ]
+  }
+]
