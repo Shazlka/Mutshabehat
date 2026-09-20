@@ -700,6 +700,10 @@
       {
         "authorityId": "Q08",
         "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q04",
+        "action": "فتح الياء وصلاً"
       }
     ],
     "readings": [
@@ -740,6 +744,16 @@
       },
       {
         "readingId": "Q08-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
         "action": "فتح الياء وصلاً",
         "isDefault": true
       }
