@@ -59,7 +59,7 @@
       279,
       583
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 19,
     "variantTextCorrections": 0,
@@ -68,14 +68,15 @@
     "validation": "passed locally: category-scoped importer --write added 0 new loci after dedupe; fixture diff added 347 lines and removed none; Qiraat validator (1,866 variants, 9,608 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
     "sourceAudit": "Added both Abu Amr readings as taqlil at Yusuf 12:100; the Susi is specifically paired with hamza substitution. Added Ruways Q09-R01 imalah at Nahl 16:107; added Q07-R01/R02 at eight certain waqf loci in Naba 79. Withheld خاشعة due the source khilaf note. Entire source lines on pages 259, 289, 293, 562, and 578 were dropped because they include ambiguous bare خلف. The parser now refuses bare خلف and bare الدوري in source lines. Existing fixture rows were not edited beyond additive changes.",
     "baseCommit": "8c719f6c194105d9a1c04a8528f227b0c63c5e0a",
-    "commit": "pending",
-    "push": "pending",
-    "productionDeploymentId": "pending",
-    "productionDeploymentUrl": "pending",
-    "productionSmoke": "pending",
-    "deploymentTarget": "production"
+    "commit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
+    "push": "success: main and origin/main match at 16e3e65b9f3453c6f75e9103428451167cf881ca",
+    "productionDeploymentId": "dpl_3QWdA8cGCRAiH31aeFLVmjDnAJR6",
+    "productionDeploymentUrl": "https://mutshabehat-v2-1cx3xco3h-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed in production Mushaf UI: page 247 Yusuf 12:100 showed both Abu Amr narrations with taqlil; page 279 Nahl 16:107 showed Ruways with imalah; page 583 Naba 79:6 showed al-Kisai narrations with imalah at waqf",
+    "deploymentTarget": "production",
+    "deployedSha": "16e3e65b9f3453c6f75e9103428451167cf881ca"
   },
-  "lastConfirmedDeployedDataCommit": "8441a3b0a60feea15e3934bd66b8ec64f9427ab8",
+  "lastConfirmedDeployedDataCommit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -650,7 +651,7 @@
       "vercelDeployment": "https://mutshabehat-v2-qtsj45rtw-shazlka-s-projects.vercel.app"
     },
     {
-      "commit": "pending",
+      "commit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
       "batch": "IMALAH_TAQLIL reader reconciliation at pages 247, 279, and 583",
       "variantsAdded": 0,
       "readerAssignmentsAdded": 19,
@@ -660,10 +661,12 @@
         279,
         583
       ],
-      "pushed": false,
-      "vercelState": "pending",
+      "pushed": true,
+      "vercelState": "READY",
       "productionValidation": "passed locally: Qiraat validator, 36/36 test:qiraat, all seven Mushaf validators, TypeScript, and production build",
-      "productionSmoke": "pending",
+      "productionSmoke": "passed in production Mushaf UI: page 247 Yusuf 12:100 showed both Abu Amr narrations with taqlil; page 279 Nahl 16:107 showed Ruways with imalah; page 583 Naba 79:6 showed al-Kisai narrations with imalah at waqf",
+      "vercelDeploymentId": "dpl_3QWdA8cGCRAiH31aeFLVmjDnAJR6",
+      "vercelDeployment": "https://mutshabehat-v2-1cx3xco3h-shazlka-s-projects.vercel.app",
       "sourceConflictWithheld": "Source lines containing bare خلف on pages 259, 289, 293, 562, and 578 were not expanded. The source marks خاشعة on page 583 with khilaf, so no ruling was added there."
     }
   ],
@@ -18575,7 +18578,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "8c719f6c194105d9a1c04a8528f227b0c63c5e0a",
+  "currentHeadCommit": "16e3e65b9f3453c6f75e9103428451167cf881ca",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
