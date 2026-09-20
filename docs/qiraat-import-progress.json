@@ -51,31 +51,31 @@
     "manualReviewFlags": 4,
     "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues."
   },
-  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation prepared for pages 226 and 230; independent reading references confirmed four explicit reader assignments, with the 11:72 action classified as taqlil.",
+  "sourceCoverageStatus": "Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil.",
   "currentBatch": {
     "id": "imalah-taqlil-reader-reconciliation-pages226-230",
     "pages": [
       226,
       230
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 4,
     "variantTextCorrections": 0,
     "rulingsAdded": 0,
     "reference": "nQuran ten-readings display at Hud 11:41 and 11:72",
-    "validation": "Parser --write over pages 226 and 230 added 0 new loci; fixture diff added 32 lines and removed none. Qiraat validator clean (1,866 variants, 9,600 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build.",
+    "validation": "passed locally: parser --write over 226 and 230 added 0 new loci; fixture diff 32 added lines and 0 removed; Qiraat validator (1,866 variants, 9,600 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
     "sourceAudit": "At 11:41, the independent ten-readings reference confirms Abu Amr (Q03-R01/R02) with imalah and Warsh (Q01-R02) with taqlil. At 11:72 it identifies al-Duri from Abu Amr (Q03-R01) with taqlil; the source extraction groups him under the imalah wording, so the fixture follows the specific reading reference for the action.",
     "baseCommit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
     "commit": "pending",
-    "push": "pending",
-    "productionDeploymentId": null,
-    "productionDeploymentUrl": null,
-    "productionSmoke": "pending",
+    "push": "success: main and origin/main match at 8441a3b0a60feea15e3934bd66b8ec64f9427ab8",
+    "productionDeploymentId": "dpl_HhUwibqs2H3SmhREGsFDsAXB3JDW",
+    "productionDeploymentUrl": "https://mutshabehat-v2-qtsj45rtw-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed: production debug API returned Q03-R01/Q03-R02 imalah and Q01-R02 taqlil at Hud 11:41 page 226, plus Q03-R01 taqlil at Hud 11:72 page 230; records remain REVIEWED and debug-scoped",
     "deploymentTarget": "production",
-    "deployedSha": null
+    "deployedSha": "8441a3b0a60feea15e3934bd66b8ec64f9427ab8"
   },
-  "lastConfirmedDeployedDataCommit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
+  "lastConfirmedDeployedDataCommit": "8441a3b0a60feea15e3934bd66b8ec64f9427ab8",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -182,30 +182,23 @@
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
-      "deploymentId": "dpl_HJ5UEDhFN7YZ5uHxvdL2CdEoYf55",
-      "deploymentUrl": "https://mutshabehat-v2-j2f5h3p2q-shazlka-s-projects.vercel.app",
+      "commit": "8441a3b0a60feea15e3934bd66b8ec64f9427ab8",
+      "deploymentId": "dpl_HhUwibqs2H3SmhREGsFDsAXB3JDW",
+      "deploymentUrl": "https://mutshabehat-v2-qtsj45rtw-shazlka-s-projects.vercel.app",
       "pages": [
-        326,
-        330,
-        335
+        226,
+        230
       ],
-      "endpoint": "/api/mushaf-1441/qiraat?page={326,330,335}&debug=1",
+      "endpoint": "/api/mushaf-1441/qiraat?page={226,230}&debug=1",
       "checkedReaderIds": {
-        "326:21:45 ﴿ٱلدُّعَآءَ إِذَا﴾": [
-          "Q08-R01",
-          "Q08-R02",
-          "Q09-R01"
-        ],
-        "330:21:99 ﴿هَـٰٓؤُلَآءِ ءَالِهَةًۭ﴾": [
-          "Q08-R01",
-          "Q08-R02",
-          "Q09-R01"
-        ],
-        "335:22:26 ﴿بَيْتِىَ لِلطَّآئِفِينَ﴾": [
-          "Q08-R01",
-          "Q08-R02"
-        ]
+        "226:11:41 ﴿مَجْرَاهَا﴾": {
+          "Q03-R01": "إمالة",
+          "Q03-R02": "إمالة",
+          "Q01-R02": "تقليل"
+        },
+        "230:11:72 ﴿يَـٰوَيْلَتَىٰ﴾": {
+          "Q03-R01": "تقليل"
+        }
       },
       "status": "passed",
       "note": "All imported records remain REVIEWED and appear through debug=1; standard public results continue to filter them."
@@ -639,7 +632,7 @@
       "sourceConflictWithheld": "Page 231 11:84: no Q02-R02 added because the independent reference names al-Bazzi only and Q02-R01 is already present."
     },
     {
-      "commit": "pending",
+      "commit": "8441a3b0a60feea15e3934bd66b8ec64f9427ab8",
       "batch": "IMALAH_TAQLIL reader reconciliation at pages 226 and 230",
       "variantsAdded": 0,
       "readerAssignmentsAdded": 4,
@@ -648,11 +641,13 @@
         226,
         230
       ],
-      "pushed": false,
-      "vercelState": "pending",
-      "productionValidation": "Parser --write over pages 226 and 230 added 0 new loci; fixture diff added 32 lines and removed none. Qiraat validator clean (1,866 variants, 9,600 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build.",
-      "productionSmoke": "pending",
-      "sourceAudit": "At 11:41, the independent ten-readings reference confirms Abu Amr (Q03-R01/R02) with imalah and Warsh (Q01-R02) with taqlil. At 11:72 it identifies al-Duri from Abu Amr (Q03-R01) with taqlil; the source extraction groups him under the imalah wording, so the fixture follows the specific reading reference for the action."
+      "pushed": true,
+      "vercelState": "READY",
+      "productionValidation": "passed locally: parser --write over 226 and 230 added 0 new loci; fixture diff 32 added lines and 0 removed; Qiraat validator (1,866 variants, 9,600 rulings, 20 one-colour categories); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
+      "productionSmoke": "passed: production debug API returned Q03-R01/Q03-R02 imalah and Q01-R02 taqlil at Hud 11:41 page 226, plus Q03-R01 taqlil at Hud 11:72 page 230; records remain REVIEWED and debug-scoped",
+      "sourceAudit": "At 11:41, the independent ten-readings reference confirms Abu Amr (Q03-R01/R02) with imalah and Warsh (Q01-R02) with taqlil. At 11:72 it identifies al-Duri from Abu Amr (Q03-R01) with taqlil; the source extraction groups him under the imalah wording, so the fixture follows the specific reading reference for the action.",
+      "vercelDeploymentId": "dpl_HhUwibqs2H3SmhREGsFDsAXB3JDW",
+      "vercelDeployment": "https://mutshabehat-v2-qtsj45rtw-shazlka-s-projects.vercel.app"
     }
   ],
   "pages": [
@@ -18563,7 +18558,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "d3bcdf9620590570c4ed358209144d3c64fd8a0b",
+  "currentHeadCommit": "8441a3b0a60feea15e3934bd66b8ec64f9427ab8",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
