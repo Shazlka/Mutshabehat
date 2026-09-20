@@ -85,7 +85,7 @@
       529,
       530
     ],
-    "status": "locally_validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 173,
     "variantTextCorrections": 0,
@@ -97,9 +97,15 @@
     "sourceAudit": "Same-reader disagreements withheld at page 318, 20:93 (Q02-R01/R02 source says إثبات في الحالين while existing says وصلاً; Q08-R01/R02 source specifies مفتوحة وصلاً وساكنة وقفاً while existing says وصلاً) and page 337 (Q01-R02 source says default wasl, existing marks alternate). Dropped token misses: page 236 ﴿نَرْتَعِ﴾, page 254 ﴿مَتَابِ﴾, and page 523 ﴿فَلَا تَسْتَعْجِلُونِ﴾. Possible Qalun alternates in parentheses on pages 468 and 470 were not inferred.",
     "baseCommit": "00beab0de346b182a1d770af2cf507b42bb66df3",
     "deploymentTarget": "production",
-    "databaseMigration": "none"
+    "databaseMigration": "none",
+    "commit": "6228f81fb2757c815fbac495f098f7025b147368",
+    "push": "success: main and origin/main match at 6228f81fb2757c815fbac495f098f7025b147368",
+    "productionDeploymentId": "dpl_5VYhwJQAgVqHN2jV39CLdDDPeGu1",
+    "productionDeploymentUrl": "https://mutshabehat-v2-muvy74du6-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed: production Mushaf UI page 230 showed the new YAAT_ZAWAID ruling at 11:78 with the expected Abu Amr, Abu Jaafar, and Yaqub reader details; deployment READY for the exact data commit.",
+    "deployedSha": "6228f81fb2757c815fbac495f098f7025b147368"
   },
-  "lastConfirmedDeployedDataCommit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
+  "lastConfirmedDeployedDataCommit": "6228f81fb2757c815fbac495f098f7025b147368",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -220,34 +226,86 @@
         "category": "YAAT_IDAFA",
         "status": "passed",
         "note": "Mushaf UI smoke at page 259, ayah 14:31; deployment READY for exact data SHA."
+      },
+      {
+        "commit": "6228f81fb2757c815fbac495f098f7025b147368",
+        "deploymentId": "dpl_5VYhwJQAgVqHN2jV39CLdDDPeGu1",
+        "deploymentUrl": "https://mutshabehat-v2-muvy74du6-shazlka-s-projects.vercel.app",
+        "pages": [
+          230,
+          246,
+          258,
+          260,
+          272,
+          288,
+          292,
+          295,
+          296,
+          298,
+          301,
+          429,
+          433,
+          437,
+          441,
+          448,
+          449,
+          460,
+          468,
+          470,
+          471,
+          487,
+          494,
+          497,
+          518,
+          520,
+          528,
+          529,
+          530
+        ],
+        "category": "YAAT_ZAWAID",
+        "status": "passed",
+        "note": "Mushaf UI smoke at page 230, ayah 11:78; deployment READY for exact data SHA."
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "f6eb36977d84f12a70ea9bcf882aca7d556289bd",
-      "deploymentId": "dpl_DU4t6WNHaBB7RZCXCU4QZdgb9S1j",
-      "deploymentUrl": "https://mutshabehat-v2-5m3gc9yy8-shazlka-s-projects.vercel.app",
+      "commit": "6228f81fb2757c815fbac495f098f7025b147368",
+      "deploymentId": "dpl_5VYhwJQAgVqHN2jV39CLdDDPeGu1",
+      "deploymentUrl": "https://mutshabehat-v2-muvy74du6-shazlka-s-projects.vercel.app",
       "pages": [
-        259,
-        307,
-        329,
+        230,
+        246,
+        258,
+        260,
+        272,
+        288,
+        292,
+        295,
+        296,
+        298,
+        301,
         429,
-        455,
-        462,
-        564
+        433,
+        437,
+        441,
+        448,
+        449,
+        460,
+        468,
+        470,
+        471,
+        487,
+        494,
+        497,
+        518,
+        520,
+        528,
+        529,
+        530
       ],
-      "endpoint": "production Mushaf UI; page 259, 14:31",
-      "category": "YAAT_IDAFA",
-      "readingIds": [
-        "Q04-R01",
-        "Q04-R02",
-        "Q06-R01",
-        "Q06-R02",
-        "Q07-R01",
-        "Q07-R02",
-        "Q09-R02"
-      ],
+      "endpoint": "production Mushaf UI; page 230, 11:78",
+      "category": "YAAT_ZAWAID",
       "status": "passed",
-      "note": "Production deployment reached READY for the exact data commit; the UI detail showed the imported ruling and expected readers."
+      "note": "Production deployment READY for exact data SHA; selected word showed YAAT_ZAWAID detail for Abu Amr, Abu Jaafar, and Yaqub."
     }
   },
   "knownSourceExclusions": [
@@ -739,7 +797,7 @@
       "productionSmoke": "passed: production Mushaf UI page 259 showed the new YAAT_IDAFA ruling at 14:31 with the expected named readers; deployment READY for the exact data commit."
     },
     {
-      "commit": "pending",
+      "commit": "6228f81fb2757c815fbac495f098f7025b147368",
       "batch": "YAAT_ZAWAID full-family source import",
       "variantsAdded": 0,
       "readerAssignmentsAdded": 173,
@@ -777,10 +835,14 @@
         529,
         530
       ],
-      "pushed": false,
-      "vercelState": "pending",
+      "pushed": true,
+      "vercelState": "READY",
       "validation": "passed locally: --write over source pages 225-584 produced 25 new loci, 11 merged loci, and 173 source-named reader assignments; fixture diff added 2,110 lines and removed none; Qiraat validator (1,866 variants, 9,640 rulings, 20 one-colour categories); 36/36 test:qiraat; TypeScript; production build.",
-      "sourceConflictWithheld": "Same-reader disagreements withheld at page 318, 20:93 (Q02-R01/R02 source says إثبات في الحالين while existing says وصلاً; Q08-R01/R02 source specifies مفتوحة وصلاً وساكنة وقفاً while existing says وصلاً) and page 337 (Q01-R02 source says default wasl, existing marks alternate). Dropped token misses: page 236 ﴿نَرْتَعِ﴾, page 254 ﴿مَتَابِ﴾, and page 523 ﴿فَلَا تَسْتَعْجِلُونِ﴾. Possible Qalun alternates in parentheses on pages 468 and 470 were not inferred."
+      "sourceConflictWithheld": "Same-reader disagreements withheld at page 318, 20:93 (Q02-R01/R02 source says إثبات في الحالين while existing says وصلاً; Q08-R01/R02 source specifies مفتوحة وصلاً وساكنة وقفاً while existing says وصلاً) and page 337 (Q01-R02 source says default wasl, existing marks alternate). Dropped token misses: page 236 ﴿نَرْتَعِ﴾, page 254 ﴿مَتَابِ﴾, and page 523 ﴿فَلَا تَسْتَعْجِلُونِ﴾. Possible Qalun alternates in parentheses on pages 468 and 470 were not inferred.",
+      "vercelDeploymentId": "dpl_5VYhwJQAgVqHN2jV39CLdDDPeGu1",
+      "vercelDeployment": "https://mutshabehat-v2-muvy74du6-shazlka-s-projects.vercel.app",
+      "productionValidation": "passed locally: --write over source pages 225-584 produced 25 new loci, 11 merged loci, and 173 source-named reader assignments; fixture diff added 2,110 lines and removed none; Qiraat validator (1,866 variants, 9,640 rulings, 20 one-colour categories); 36/36 test:qiraat; TypeScript; production build.",
+      "productionSmoke": "passed: production Mushaf UI page 230 showed the new YAAT_ZAWAID ruling at 11:78 with the expected Abu Amr, Abu Jaafar, and Yaqub reader details; deployment READY for the exact data commit."
     }
   ],
   "pages": [
@@ -18691,7 +18753,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "00beab0de346b182a1d770af2cf507b42bb66df3",
+  "currentHeadCommit": "6228f81fb2757c815fbac495f098f7025b147368",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
