@@ -274,7 +274,7 @@ RCOLORS = {  # must match build_rulings.py CATEGORIES exactly
  'TARQIQ_RA':('ترقيق الراءات','#B45309'),'TAGHLIZ_LAM':('تغليظ اللامات','#B45309'),
  'IDGHAM_KABIR':('المدغم الكبير','#15803D'),'IDGHAM_SAGHIR':('المدغم الصغير','#15803D'),
  'IMALAH_TAQLIL':('الممال والمقلل','#C026D3'),'TAGHYIR_HAMZ':('تغيير الهمز','#DC2626'),
- 'SILAT_HA':('صلة هاء الكناية','#0D9488'),'SAKT':('السكت','#7C3AED'),
+ 'SILAT_HA':('صلة هاء الكناية','#0D9488'),'MEEM_JAM':('صلة ميم الجمع','#DB2777'),'SAKT':('السكت','#7C3AED'),
 }
 def ruling_reading_rows(qids, action, alt=None):
     alt = alt or set()

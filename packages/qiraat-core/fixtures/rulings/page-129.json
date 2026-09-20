@@ -38,9 +38,9 @@
   {
     "id": "r-p129-002-1",
     "pageNumber": 129,
-    "category": "SILAT_HA",
-    "categoryAr": "صلة هاء الكناية",
-    "color": "#0D9488",
+    "category": "MEEM_JAM",
+    "categoryAr": "صلة ميم الجمع",
+    "color": "#DB2777",
     "wordAnchored": true,
     "surah": 6,
     "ayah": 9,
@@ -52,18 +52,18 @@
     "attribution": [
       {
         "authorityId": "Q02",
-        "action": "صلة هاء الكناية"
+        "action": "صلة ميم الجمع"
       }
     ],
     "readings": [
       {
         "readingId": "Q02-R01",
-        "action": "صلة هاء الكناية",
+        "action": "صلة ميم الجمع",
         "isDefault": true
       },
       {
         "readingId": "Q02-R02",
-        "action": "صلة هاء الكناية",
+        "action": "صلة ميم الجمع",
         "isDefault": true
       }
     ],

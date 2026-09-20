@@ -3399,7 +3399,7 @@ RULINGS[128] = [
 # ── Page 129 ─────────────────────────────────────────────────────────────
 RULINGS[129] = [
     ('SILAT_HA', 'جَعَلْنَـٰهُ', ibnkathir('صلة هاء الكناية'), {}),
-    ('SILAT_HA', 'عَلَيْهِم', ibnkathir('صلة هاء الكناية'), dict(text='صلة ميم الجمع لابن كثير')),
+    ('MEEM_JAM', 'عَلَيْهِم', ibnkathir('صلة ميم الجمع'), dict(text='صلة ميم الجمع لابن كثير')),
     ('SILAT_HA', 'لَّجَعَلْنَـٰهُ', ibnkathir('صلة هاء الكناية'), {}),
     ('SILAT_HA', 'عَنْهُ', ibnkathir('صلة هاء الكناية'), {}),
     ('TARQIQ_RA', 'سَخِرُواْ', warsh('ترقيق الراء'), {}),
@@ -4442,7 +4442,7 @@ RULINGS[163] = [
 RULINGS[164] = [
     ('SILAT_HA', 'يدهۥ', ibnkathir('صلة هاء الكناية'), {}),
     ('SILAT_HA', 'ارجه', [('ابن كثير', 'صلة هاء الكناية'), ('هشام', 'صلة هاء الكناية')], dict(text='ابن كثير وهشام بصلة هاء الكناية على قراءتهما بالهمز («أَرْجِئْهِۦ»)')),
-    ('SILAT_HA', 'واسترهبوهم', ibnkathir('صلة ميم الجمع'), {}),
+    ('MEEM_JAM', 'واسترهبوهم', ibnkathir('صلة ميم الجمع'), {}),
     ('TARQIQ_RA', 'للنظرين', warsh('ترقيق الراء'), {}),
     ('TAGHLIZ_LAM', 'وبطل', warsh('تغليظ اللام'), dict(condition='وصلاً', note='وصلاً، وله وقفًا التغليظ والترقيق', alternate=[W])),
     ('MADD_BADAL', 'بـٔاية', warsh('مد البدل'), {}),
@@ -6107,8 +6107,9 @@ RULINGS[224] = [
 #     كسر الساكن للساكنين، إبدال التنوين ألفًا وقفًا، صلة الهاء بين متحركين) carries no خلاف
 #     and is NOT imported — the أصول layer marks who DIFFERS, and a universal rule would
 #     colour half the page while telling the reader nothing;
-#   * ميم الجمع has no family in this dataset (pages 1-41 have none either), so its rows are
-#     left out rather than inventing a 19th colour for one surah;
+#   * ميم الجمع now has its own family (MEEM_JAM, colour #DB2777): the صلة ميم الجمع rows for
+#     ابن كثير (6:9 ﴿عَلَيْهِم﴾، 7:116 ﴿واسترهبوهم﴾) were previously mislabeled under SILAT_HA
+#     and are reclassified here; قالون بخلف / أبو جعفر rows join the same family as they appear;
 #   * a سكت وصلًا goes to SAKT (unused until now, but that is exactly what it is for) and a
 #     وقف حمزة goes to WAQF_HAMZA, instead of pushing both into WAQF_HAMZA as pages 1-41 did;
 #   * a row the source itself marks with ؟ or contradicts a line later is omitted, never

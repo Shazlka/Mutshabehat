@@ -17,6 +17,7 @@ TS = '2026-09-17T12:00:00.000Z'
 CATEGORIES = {
     'AYAH_COUNT':          ('عد الآي',                 '#64748B', False),
     'SILAT_HA':            ('صلة هاء الكناية',         '#0D9488', True),
+    'MEEM_JAM':            ('صلة ميم الجمع',           '#DB2777', True),
     'TARQIQ_RA':           ('ترقيق الراءات',           '#B45309', True),
     'TAGHLIZ_LAM':         ('تغليظ اللامات',           '#B45309', True),
     'MADD_BADAL':          ('مد البدل',                '#2563EB', True),
