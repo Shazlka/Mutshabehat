@@ -57,17 +57,20 @@
     "pages": [
       3
     ],
-    "status": "locally_validated_ready_for_push",
+    "status": "production_verified",
+    "commit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
     "variantsAdded": 1,
     "readerAssignmentsAdded": 2,
     "variantTextCorrections": 0,
     "rulingsAdded": 0,
     "reference": "اتباع الأثر في قراءة أبي جعفر بروايتي ابن جماز وابن وردان, باب الهمز المفرد; Quranpedia attachment 20403/78420",
     "validation": "passed: additive-only guard; qiraat validator clean (1866 variants, 9600 rulings, 20 colours); 36/36 test:qiraat; all seven Mushaf validators; TypeScript; production build",
-    "productionSmoke": "pending push/deploy",
+    "push": "success: main and origin/main match at 33354fc5792cfc5df03ffca7a89378eda026d0f6",
+    "productionDeploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
+    "productionSmoke": "passed: ابن وردان and ابن جماز each displayed مُسْتَهْزُونَ in reading-by-riwayah mode; Abu Ja'far reader filter showed both narrators; selected-word detail showed the existing TAGHYIR_HAMZ action; mobile 390x844 sheet was legible; no Vercel runtime errors",
     "baseCommit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229"
   },
-  "lastConfirmedDeployedDataCommit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229",
+  "lastConfirmedDeployedDataCommit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -108,33 +111,57 @@
     "consoleWarnings": 0,
     "page303HamzaFilter": true,
     "page303SelectedTokenDetails": "passed: الإمام حمزة; reading IDs Q06-R01 and Q06-R02",
-    "priorAdditionalCheck": {
-      "commit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
-      "page": 19,
-      "mode": "reading by riwayah",
-      "reading": "هشام عن ابن عامر الشامي",
-      "ayah": "2:124",
-      "displayedForm": "إِبْرَاهَامَ",
-      "status": "passed"
-    },
+    "priorAdditionalChecks": [
+      {
+        "commit": "7688bc315ddb683bde0d38a468129b5a0c335a0f",
+        "page": 19,
+        "mode": "reading by riwayah",
+        "reading": "هشام عن ابن عامر الشامي",
+        "ayah": "2:124",
+        "displayedForm": "إِبْرَاهَامَ",
+        "status": "passed"
+      },
+      {
+        "commit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229",
+        "deploymentId": "dpl_AUs33LkvEEEgj2dm7tyX1nnXwYSQ",
+        "page": 7,
+        "mode": "reading by riwayah",
+        "reading": "رويس عن يعقوب",
+        "ayahs": [
+          "2:40",
+          "2:41"
+        ],
+        "displayedForms": [
+          "فَٱرْهَبُونِي",
+          "فَٱتَّقُونِي"
+        ],
+        "selectedWordRulings": [
+          "YAAT_ZAWAID: إثبات الياء في الحالين",
+          "YAAT_ZAWAID: إثبات الياء في الحالين"
+        ],
+        "status": "passed"
+      }
+    ],
     "latestAdditionalCheck": {
-      "commit": "438e88f3f8a7b7ceb0f4d5a7f03e2445fc4af229",
-      "deploymentId": "dpl_AUs33LkvEEEgj2dm7tyX1nnXwYSQ",
-      "page": 7,
-      "mode": "reading by riwayah",
-      "reading": "رويس عن يعقوب",
-      "ayahs": [
-        "2:40",
-        "2:41"
+      "commit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
+      "deploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
+      "page": 3,
+      "mode": "reading by riwayah and reader comparison",
+      "readingIds": [
+        "Q08-R01",
+        "Q08-R02"
       ],
-      "displayedForms": [
-        "فَٱرْهَبُونِي",
-        "فَٱتَّقُونِي"
+      "displayedForm": "مُسْتَهْزُونَ",
+      "readerFilter": "أبو جعفر المدني; marker identified ابن وردان and ابن جماز",
+      "selectedWordDetails": "2:14 showed exact surface form and existing TAGHYIR_HAMZ action حذف الهمزة مع ضم الزاي",
+      "mobileViewport": [
+        390,
+        844
       ],
-      "selectedWordRulings": [
-        "YAAT_ZAWAID: إثبات الياء في الحالين",
-        "YAAT_ZAWAID: إثبات الياء في الحالين"
-      ],
+      "mobileDetails": "passed: selected word sheet visible and readable",
+      "vercelRuntimeErrors": "none found for /mushaf-1441 and /api/mushaf-1441/qiraat",
+      "applicationConsoleErrors": 0,
+      "browserExtensionErrors": "captured extension-origin ReferenceError: $ is not defined; no application-origin browser errors",
       "status": "passed"
     }
   },
@@ -476,6 +503,21 @@
       "vercelDeploymentId": "dpl_AUs33LkvEEEgj2dm7tyX1nnXwYSQ",
       "productionValidation": "passed",
       "productionSmoke": "passed: selected rois narrator; both added-ya words and YAAT_ZAWAID details verified"
+    },
+    {
+      "commit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
+      "batch": "Abu Jaafar مستهزون overlay page 3",
+      "variantsAdded": 1,
+      "readerAssignmentsAdded": 2,
+      "rulingsAdded": 0,
+      "pages": [
+        3
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "vercelDeploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
+      "productionValidation": "passed",
+      "productionSmoke": "passed: ابن وردان and ابن جماز each displayed مُسْتَهْزُونَ in reading-by-riwayah mode; Abu Ja'far reader filter showed both narrators; selected-word detail showed the existing TAGHYIR_HAMZ action; mobile 390x844 sheet was legible; no Vercel runtime errors"
     }
   ],
   "pages": [
@@ -564,7 +606,7 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false,
+      "productionUiVerified": true,
       "targetedExternalAudit": {
         "locus": "2:14 token 16",
         "anchor": "مُسْتَهْزِءُونَ",
@@ -574,8 +616,11 @@
           "Q08-R02"
         ],
         "reference": "اتباع الأثر في قراءة أبي جعفر، باب الهمز المفرد",
-        "productionUiVerified": false
-      }
+        "productionUiVerified": true
+      },
+      "productionCommit": "33354fc5792cfc5df03ffca7a89378eda026d0f6",
+      "productionDeploymentId": "dpl_AkWxcXwSLdwoE1nSadRpuhb66FCf",
+      "productionSmoke": "passed: ابن وردان and ابن جماز each displayed مُسْتَهْزُونَ in reading-by-riwayah mode; Abu Ja'far reader filter showed both narrators; selected-word detail showed the existing TAGHYIR_HAMZ action; mobile 390x844 sheet was legible; no Vercel runtime errors"
     },
     {
       "page": 4,
