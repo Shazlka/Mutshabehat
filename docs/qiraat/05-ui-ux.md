@@ -60,6 +60,22 @@ neutral-tinted) segmented-marker cases.
 
 ## Bottom sheet (Part 13)
 
+## Mandatory colouring pipeline for new pages
+
+Qiraat colours are data-driven; do not hand-style a new page. A `QiraatVariant` in
+`scripts/qiraat/data_variants.py` produces the established reader/narrator underline in comparison
+mode and the existing tint in study mode. A reader-specific `QiraatRuling` in
+`scripts/qiraat/data_rulings.py` produces the existing per-family word colour through
+`rulingMarkerForWord`. `build_variants.py` and `build_rulings.py` must resolve every query to a
+real Mushaf-1441 token, and both generated fixtures must be registered in the two loader maps in
+`packages/qiraat-core/repository.ts`; the viewer loads these immutable chunks directly for each
+mounted page/spread.
+
+Keep the established meaning of colour: import reader-specific أصول, but do not create colour
+noise for universal tajwid. Before handoff run both generators, `npm run qiraat:validate`, and a
+repository runtime load with `includeUnpublished: true`; confirm that variants and rulings are
+present for every populated page and render under the same Qiraat layer toggles as older pages.
+
 The existing detail-panel "قراءات" tab, reachable either from the burger-menu-adjacent notes sheet
 flow or directly by tapping a marked word (`selectWordForQiraat`, which selects the word exactly
 like the existing `selectWord` and then forces the detail tab to `'qiraat'`). Content, per variant

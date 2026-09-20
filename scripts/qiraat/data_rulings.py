@@ -8381,3 +8381,48 @@ RULINGS[266] = [
 ]
 
 RULINGS[267] = []
+
+# Colour-coverage completion for pages 249–267. A source row is emitted only
+# when it changes by reader/riwayah; shared tajwid remains deliberately absent.
+RULINGS[259] = [
+    ('TAGHYIR_HAMZ', 'الامثال', warsh('النقل'), dict(ayah=25)),
+    ('IMALAH_TAQLIL', 'قرار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=26)),
+    ('IMALAH_TAQLIL', 'الدنيا', imalah4(), dict(ayah=27, alternate=[W])),
+    ('IMALAH_TAQLIL', 'دار البوار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=28)),
+    ('TAGHLIZ_LAM', 'يصلونها', warsh('تغليظ اللام'), dict(ayah=29)),
+    ('IMALAH_TAQLIL', 'النار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=30)),
+    ('TAGHLIZ_LAM', 'الصلوة', warsh('تغليظ اللام'), dict(ayah=31)),
+]
+RULINGS[260] = [
+    ('MADD_BADAL', 'ءامن', warsh('مد البدل'), dict(ayah=34)),
+    ('TAGHYIR_HAMZ', 'الاصنام', warsh('النقل'), dict(ayah=35)),
+    ('TARQIQ_RA', 'كثيرا', warsh('ترقيق الراء'), dict(ayah=36)),
+    ('IMALAH_TAQLIL', 'تهوي', imalah3(), dict(ayah=37, alternate=[W])),
+    ('MADD_LIN', 'شىء', warsh('مد اللين المهموز'), dict(ayah=38)),
+    ('TARQIQ_RA', 'الكبر', warsh('ترقيق الراء'), dict(ayah=39)),
+    ('TAGHLIZ_LAM', 'الصلوة', warsh('تغليظ اللام'), dict(ayah=40)),
+    ('IMALAH_TAQLIL', 'الابصار', [('DURI_AMR', 'إمالة'), ('DURI_KISAI', 'إمالة'), (W, 'تقليل')], dict(ayah=42)),
+]
+RULINGS[261] = [
+    ('TAGHYIR_HAMZ', 'ياتيهم', hamz3(), dict(ayah=44)),
+]
+RULINGS[264] = [
+    ('YAAT_IDAFA', 'اني انا', [('نافع', 'فتح الياء وصلًا'), (IK, 'فتح الياء وصلًا'), ('أبو عمرو', 'فتح الياء وصلًا'), (AJ, 'فتح الياء وصلًا')], dict(ayah=49)),
+    ('TAGHYIR_HAMZ', 'الاليم', warsh('النقل'), dict(ayah=50)),
+]
+RULINGS[265] = [
+    ('YAAT_ZAWAID', 'تفضحون', [(W, 'إثبات الياء وصلًا'), ('يعقوب', 'إثبات الياء وصلًا ووقفًا')], dict(ayah=68)),
+    ('YAAT_ZAWAID', 'تخزون', [(W, 'إثبات الياء وصلًا'), ('يعقوب', 'إثبات الياء وصلًا ووقفًا')], dict(ayah=69)),
+]
+RULINGS[266] = [
+    ('TAGHYIR_HAMZ', 'الايكة', warsh('النقل'), dict(ayah=78)),
+    ('TAGHYIR_HAMZ', 'للمؤمنين', hamz3(), dict(ayah=88)),
+    ('MADD_BADAL', 'ءاتيناك', warsh('مد البدل'), dict(ayah=87)),
+    ('IMALAH_TAQLIL', 'ءاتيناك', imalah3(), dict(ayah=87, alternate=[W])),
+    ('YAAT_IDAFA', 'اني انا', [('نافع', 'فتح الياء وصلًا'), (IK, 'فتح الياء وصلًا'), ('أبو عمرو', 'فتح الياء وصلًا'), (AJ, 'فتح الياء وصلًا')], dict(ayah=89)),
+    ('YAAT_IDAFA', 'بناتي ان', [('نافع', 'فتح الياء وصلًا'), (IK, 'فتح الياء وصلًا'), ('أبو عمرو', 'فتح الياء وصلًا'), (AJ, 'فتح الياء وصلًا')], dict(ayah=71)),
+]
+RULINGS[267] = [
+    ('TAGHYIR_HAMZ', 'تؤمر', hamz3(), dict(ayah=94)),
+    ('IMALAH_TAQLIL', 'حتى', imalah3(), dict(ayah=99, alternate=[W])),
+]

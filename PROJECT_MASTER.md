@@ -323,6 +323,16 @@ variant loci and 52 token-anchored, reader-specific أصول rulings. This keeps
 or database population was performed. Source rows that were universal, self-questioning, or
 inconsistent with the Hafs Mushaf-1441 baseline were omitted rather than inferred.
 
+### 12.0a Colouring and fixture-loading invariant
+
+New Qiraat pages must preserve the existing colour language. Variant records create the
+reader/narrator underline (and study-mode tint); reader-specific أصول records create the existing
+per-family word colour. Both generated fixture types must be loader-registered in
+`packages/qiraat-core/repository.ts`, which the Mushaf reads directly for every mounted leaf.
+Never substitute universal tajwid for a reader-specific rule or invent a page-specific palette.
+The required completion gate is: both generators, `npm run qiraat:validate`, and a runtime fixture
+load with `includeUnpublished: true` for each newly imported page.
+
 **Read this before importing any page beyond 20.** Pages 1–20 are done and live; this section is the
 repeatable recipe for 21–604, written so the next session does not have to rediscover it. The
 architecture behind it is `docs/qiraat/10-v2-architecture-plan.md`; this is the operating procedure.

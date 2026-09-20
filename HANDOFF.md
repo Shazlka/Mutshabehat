@@ -12,6 +12,11 @@ are now mutually exclusive.
 the paper original, using the built-in review mode. Do not start new feature work ahead of that
 without being asked.
 
+**Colouring invariant (2026-09-20):** pages 249–267 now have reader-specific أصول coverage
+where their imported فرش requires it. New imports must retain the data → fixture → repository
+loader → `rulingMarkerForWord` path documented in `docs/qiraat/05-ui-ux.md`; validate generated
+anchors and direct fixture loads before release.
+
 ---
 
 ## 1. Where everything is
