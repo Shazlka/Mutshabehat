@@ -189,6 +189,76 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                 'source': case['externalName'], 'text': case['externalText'],
                 'url': case['externalUrl'],
             }]
+    if page == 456:
+        # These two package-indexed source rows were checked against al-Nashr and exact
+        # Mushaf tokens. Do not take the package's confidence flags as authority: its
+        # 38:53 record is marked high-confidence despite the unresolved bare «خلف».
+        audited = [
+            {
+                'anchor': 'عِبَـٰدَنَآ', 'ayah': 45, 'alternate': 'عَبْدَنَا',
+                'description': 'بالمفرد لابن كثير',
+                'resolverText': 'ابن كثير',
+                'readers': {'Q02-R01','Q02-R02'},
+                'sourceLine': '﴿عِبَـٰدَنَآ﴾ (آية ٤٥): بالجمع للجمهور؛ وبالمفرد ﴿عَبْدَنَا﴾ لابن كثير.',
+                'externalText': 'قرأ ابن كثير عَبْدَنَا بغير ألف على التوحيد، وقرأ الباقون بالألف على الجمع.',
+            },
+            {
+                'anchor': 'وَءَاخَرُ', 'ayah': 58, 'alternate': 'وَأُخَرُ',
+                'description': 'بضم الهمزة من غير مد على الجمع لأبي عمرو ويعقوب',
+                'resolverText': 'أبو عمرو، يعقوب',
+                'readers': {'Q03-R01','Q03-R02','Q09-R01','Q09-R02'},
+                'sourceLine': '﴿وَءَاخَرُ﴾: جمعاً وألف مدية بعد الهمزة ﴿وَءَاخَرُ﴾ للجمهور؛ وبضم الهمزة وقصرها بلا ألف مفرداً ﴿وَأُخَرُ﴾ لأبي عمرو ويعقوب.',
+                'externalText': 'قرأ البصريان بضم الهمزة من غير مد على الجمع، وقرأ الباقون بفتح الهمزة وألف بعدها على التوحيد.',
+            },
+        ]
+        for case in audited:
+            source_line = case['sourceLine']
+            matches = [line.strip() for line in lines if line.strip() == source_line]
+            if len(matches) != 1 or is_neg(source_line) or is_univ(source_line):
+                raise ValueError(f"page 456 audited farsh row missing/unsafe: {case['anchor']}")
+            try:
+                loc = T.find(page, case['anchor'], ayah=case['ayah'])
+            except T.NoMatch as exc:
+                raise ValueError(f"page 456 audited token missing: {case['anchor']}") from exc
+            if (loc['surah'], loc['startAyah'], loc['endAyah'], loc['baseText']) != (
+                38, case['ayah'], case['ayah'], case['anchor']):
+                raise ValueError(f"page 456 audited token span/base changed: {case['anchor']}")
+            resolved, unresolved = resolve_readers(case['resolverText'], set())
+            if unresolved or resolved != case['readers']:
+                raise ValueError(f"page 456 audited reader group changed: {case['anchor']}")
+            before = len(variants)
+            yield_block(page, case['anchor'], [
+                (None, 'وجه حفص المطابق لرسم المصحف', set(ALL20) - case['readers']),
+                (case['alternate'], case['description'], case['readers']),
+            ], variants)
+            added = [v for v in variants[before:] if v.get('surah') == 38 and
+                     v.get('ayah') == case['ayah'] and v.get('startToken') == loc['startWord']]
+            if len(added) != 1:
+                raise ValueError(f"page 456 audited variant partition failed: {case['anchor']}")
+            variant = added[0]
+            if case['ayah'] == 45:
+                variant['differenceType'] = 'LETTER'
+            variant['sources'][0].update({
+                'sourceReference': 'وثيقة استخراج القراءات العشر، صفحة المصحف 456، الكلمات الفرشية',
+                'sourceText': source_line,
+                'verificationNotes': 'قوبل النص الخام من حزمة الاستخراج بالمرجع المستقل، وثبتت الكلمة الأساس حرفياً من رمز الصفحة.',
+            })
+            reference = 'النشر في القراءات العشر، سورة ص، الآية ' + str(case['ayah'])
+            url = 'https://islamweb.net/ar/library/content/70/267/'
+            variant['sources'].append({
+                'id': f"s-AL-NASHR-P456-{case['ayah']}", 'variantId': variant['id'],
+                'sourceName': reference, 'sourceType': 'printed-book',
+                'sourceReference': url, 'sourceText': case['externalText'],
+                'verificationNotes': 'المرجع المستقل يؤكد صورة القراءة ومجموعة القراء.',
+            })
+            variant['evidence'] = [{
+                'source': reference, 'text': case['externalText'], 'url': url,
+            }]
+            if case['ayah'] == 58:
+                variant['sources'][0]['verificationNotes'] = (
+                    'قوبل النص الخام من حزمة الاستخراج بالمرجع المستقل. حُفظ وصف المصدر كما طبع؛ '
+                    'وصيغ الوصف المطبّق على قراءة وَأُخَرُ وفق النشر الذي يصفها بالجمع.'
+                )
     if page == 229:
         header = '﴿إِنَّ ثَمُودَاْ﴾:'
         fragment = 'بالتنوين ﴿إِنَّ ثَمُودًا﴾:'
