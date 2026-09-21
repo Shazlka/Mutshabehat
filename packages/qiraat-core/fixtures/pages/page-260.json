@@ -117,5 +117,53 @@
     "description": "بالنون",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D260-افده-w2",
+    "surah": 14,
+    "ayah": 37,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "أَفْـِٔدَةًۭ",
+    "variantText": "أَفْئِيدَةً",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D260-افده",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D260-افده-w2",
+        "variantId": "v-D260-افده-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 260، الكلمات الفرشية",
+        "verificationNotes": "حُفظ الرسم المطبوع في sourceText كما ورد. صُحح variantText إلى الياء بعد الهمزة، موافقًا للوصف وللمرجع المستقل؛ الرسم المطبوع للبديل يضع الياء قبل الهمزة.",
+        "sourceText": "﴿أَفْـِٔدَةً﴾:\nبياء ساكنة ممدودة مفتوحة ﴿أَفْيِدَةً﴾: هشام في وجهه الثاني."
+      },
+      {
+        "id": "s-AL-BUDUR-P260-AFIDAH",
+        "variantId": "v-D260-افده-w2",
+        "sourceName": "البدور الزاهرة في القراءات العشر المتواترة",
+        "sourceType": "printed-book",
+        "sourceReference": "سورة إبراهيم، الآية 37، إسلام ويب: https://www.islamweb.net/ar/library/content/229/120/",
+        "sourceText": "قرأ هشام بخلف عنه بياء ساكنة بعد الهمزة والباقون بغير ياء وهو الوجه الثاني لهشام.",
+        "verificationNotes": "يؤكد المرجع أن الياء الساكنة بعد الهمزة هي الوجه الثاني لهشام."
+      }
+    ],
+    "description": "بياء ساكنة بعد الهمزة؛ في وجهه الثاني لهشام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "البدور الزاهرة في القراءات العشر المتواترة",
+        "text": "قرأ هشام بخلف عنه بياء ساكنة بعد الهمزة والباقون بغير ياء وهو الوجه الثاني لهشام.",
+        "url": "https://www.islamweb.net/ar/library/content/229/120/"
+      }
+    ]
   }
 ]

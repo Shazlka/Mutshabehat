@@ -113,6 +113,114 @@ def yield_block(page, anchor, wujuh, out):
             'sources':[{'id':f's-{lid}-w{wi}','variantId':f'v-{lid}-w{wi}',**SRC}],
             'description':desc,'wajhIndex':wi,'evidence':[]})
 
+def reconcile_audited_farsh(page, lines, variants, existing_page):
+    """Reconcile two source rows whose generic block shape is unsafe.
+
+    Page 229's tanween reading is already present on its exact changed token; the document
+    quotes a two-word header, so the generic block parser otherwise creates a duplicate span.
+    Page 260's printed alternate has the yā before the hamza, while the explicit description and
+    independent القراءات reference put it after the hamza. Keep the literal document quotation
+    as sourceText and store only the independently corroborated form as the actual variant.
+    """
+    source_links_added = 0
+    if page == 229:
+        header = '﴿إِنَّ ثَمُودَاْ﴾:'
+        fragment = 'بالتنوين ﴿إِنَّ ثَمُودًا﴾:'
+        headers = [i for i, line in enumerate(lines) if line.strip() == header]
+        if len(headers) != 1:
+            raise ValueError('page 229 audited Thamud source header not unique')
+        matching = [line for line in lines if line.strip().startswith(fragment)]
+        if len(matching) != 1:
+            raise ValueError('page 229 audited tanween source line not unique')
+        source_line = matching[0].strip()
+        reader_text = source_line.split(':', 1)[1].strip()
+        if is_neg(source_line) or is_univ(source_line):
+            raise ValueError('page 229 tanween source row failed negation/universal guard')
+        reader_ids = readers_from(reader_text, set())
+        if reader_ids != {
+            'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
+            'Q04-R01','Q04-R02','Q05-R01','Q07-R01','Q07-R02','Q08-R01',
+            'Q08-R02','Q10-R01','Q10-R02',
+        }:
+            raise ValueError('page 229 tanween reader group changed')
+        try:
+            loc = T.find(page, 'ثَمُودَا۟', 1, 68)
+        except T.NoMatch as exc:
+            raise ValueError('page 229 exact Thamud token not found') from exc
+        if loc['startWord'] != 7 or loc['endWord'] != 7 or loc['baseText'] != 'ثَمُودَا۟':
+            raise ValueError('page 229 Thamud token span/base text changed')
+        existing_matches = [x for x in existing_page if
+            (x['surah'], x['ayah'], x['startToken'], x['endToken'], x['hafsText'], x['variantText']) ==
+            (11, 68, 7, 7, 'ثَمُودَا۟', 'ثَمُودًا')]
+        if len(existing_matches) != 1 or set(existing_matches[0]['readingIds']) != reader_ids:
+            raise ValueError('page 229 expected tanween variant is not uniquely covered already')
+        target = existing_matches[0]
+        source_id = 's-DOCX-P229-THAMUDA-TANWEEN'
+        if not any(s.get('id') == source_id for s in target.get('sources', [])):
+            target.setdefault('sources', []).append({
+                'id': source_id,
+                'variantId': target['id'],
+                **SRC,
+                'sourceReference': 'وثيقة الاستخراج المبوّب، صفحة المصحف 229، الكلمات الفرشية',
+                'sourceText': f"{header}\n{source_line}",
+                'verificationNotes': 'تتفق هذه المجموعة مع المتغير الموجود؛ رُبطت بالرمز الفعلي ثَمُودَا۟ ذي الرمز 7، لا بامتداد عنوان الاقتباس ذي الكلمتين.',
+            })
+            source_links_added += 1
+        variants = [x for x in variants if x.get('locusId') != 'D229-ان_ثمودا']
+
+    if page == 260:
+        header = '﴿أَفْـِٔدَةً﴾:'
+        source_fragment = 'بياء ساكنة ممدودة مفتوحة ﴿أَفْيِدَةً﴾: هشام في وجهه الثاني'
+        headers = [i for i, line in enumerate(lines) if line.strip() == header]
+        matching = [line.strip() for line in lines if source_fragment in line]
+        if len(headers) != 1 or len(matching) != 1:
+            raise ValueError('page 260 audited Hisham farsh row/header not unique')
+        source_line = matching[0]
+        if is_neg(source_line) or is_univ(source_line):
+            raise ValueError('page 260 explicit Hisham row failed negation/universal guard')
+        reader_ids, unresolved = resolve_readers('هشام', set())
+        if unresolved.strip(' ،,؛.') or reader_ids != {'Q04-R01'}:
+            raise ValueError('page 260 Hisham reader did not resolve uniquely')
+        try:
+            loc = T.find(page, 'أَفْـِٔدَةً', 1, 37)
+        except T.NoMatch as exc:
+            raise ValueError('page 260 exact Afidah token not found') from exc
+        if (loc['surah'], loc['startAyah'], loc['startWord'], loc['endWord'], loc['baseText']) != (
+            14, 37, 17, 17, 'أَفْـِٔدَةًۭ'):
+            raise ValueError('page 260 Afidah token span/base text changed')
+        variants = [x for x in variants if x.get('locusId') != 'D260-افده']
+        before = len(variants)
+        corrected_form = 'أَفْئِيدَةً'
+        description = 'بياء ساكنة بعد الهمزة؛ في وجهه الثاني لهشام'
+        yield_block(page, 'أَفْـِٔدَةً', [
+            (None, 'وجه حفص المطابق لرسم المصحف', set(ALL20) - reader_ids),
+            (corrected_form, description, reader_ids),
+        ], variants)
+        if len(variants) != before + 1:
+            raise ValueError('page 260 corrected Hisham variant failed the 20-reading/base-text partition')
+        variant = variants[-1]
+        variant['sources'][0].update({
+            'sourceReference': 'وثيقة الاستخراج المبوّب، صفحة المصحف 260، الكلمات الفرشية',
+            'sourceText': f"{header}\n{source_line}",
+            'verificationNotes': 'حُفظ الرسم المطبوع في sourceText كما ورد. صُحح variantText إلى الياء بعد الهمزة، موافقًا للوصف وللمرجع المستقل؛ الرسم المطبوع للبديل يضع الياء قبل الهمزة.',
+        })
+        reference_text = 'قرأ هشام بخلف عنه بياء ساكنة بعد الهمزة والباقون بغير ياء وهو الوجه الثاني لهشام.'
+        variant['sources'].append({
+            'id': 's-AL-BUDUR-P260-AFIDAH',
+            'variantId': variant['id'],
+            'sourceName': 'البدور الزاهرة في القراءات العشر المتواترة',
+            'sourceType': 'printed-book',
+            'sourceReference': 'سورة إبراهيم، الآية 37، إسلام ويب: https://www.islamweb.net/ar/library/content/229/120/',
+            'sourceText': reference_text,
+            'verificationNotes': 'يؤكد المرجع أن الياء الساكنة بعد الهمزة هي الوجه الثاني لهشام.',
+        })
+        variant['evidence'] = [{
+            'source': 'البدور الزاهرة في القراءات العشر المتواترة',
+            'text': reference_text,
+            'url': 'https://www.islamweb.net/ar/library/content/229/120/',
+        }]
+    return variants, source_links_added
+
 # ---------- USUL ----------
 FIXED={'مد البدل':('MADD_BADAL','ورش','مد البدل'),'مد اللين':('MADD_LIN','ورش','مد اللين المهموز'),
        'ترقيق':('TARQIQ_RA','ورش','ترقيق الراء'),'تغليظ':('TAGHLIZ_LAM','ورش','تغليظ اللام'),
@@ -946,6 +1054,10 @@ def build(page_list, categories=None, complete_ikhfa=False):
             r=[x for x in r if x['category'] in categories]
         # DEDUP against existing
         ev=existing('pages',page); er=existing('rulings',page)
+        source_links_added=0
+        if categories is None:
+            v,source_links_added=reconcile_audited_farsh(page,pd['farsh'],v,ev)
+            vstats['sourceLinksAdded']+=source_links_added
         vtok={(x['surah'],x['ayah'],x['startToken']) for x in ev}
         v=[x for x in v if (x['surah'],x['ayah'],x['startToken']) not in vtok]
         # also dedup within this batch
@@ -962,7 +1074,7 @@ def build(page_list, categories=None, complete_ikhfa=False):
                 rstats['assignmentsAdded']+=added; rstats['conflictsDropped']+=dropped
                 continue
             seenr[k]=x; r2.append(x)
-        if v2: vout[page]=ev+v2
+        if v2 or source_links_added: vout[page]=ev+v2
         vstats['added']+=len(v2)
         existing_by_key={(x['surah'],x['ayah'],x['startToken'],x['category']):x for x in er}
         changed=False
@@ -1663,6 +1775,7 @@ if __name__=='__main__':
         rs=collections.Counter()
     print('pages touched:',sorted(set(vout)|set(rout)))
     print('variants added:',vs['added'])
+    print('existing variant source links added:',vs['sourceLinksAdded'])
     print('new ruling loci:',rs['added'],' merged ruling loci:',rs['merged'],
           ' reader assignments added:',rs['assignmentsAdded'],
           ' source notes added:',rs['notesAdded'],
