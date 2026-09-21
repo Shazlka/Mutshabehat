@@ -408,5 +408,118 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p494-YAAT_IDAFA-ياعباد_لا_خوف-2",
+    "pageNumber": 494,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 68,
+    "startToken": 1,
+    "endToken": 3,
+    "endAyah": 68,
+    "baseText": "يَـٰعِبَادِ لَا خَوْفٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إثبات الياء في الحالين",
+        "condition": "مع الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

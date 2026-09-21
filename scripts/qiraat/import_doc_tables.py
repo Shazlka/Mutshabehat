@@ -302,11 +302,41 @@ def split_anchor_clauses(line):
 
 YAAT_GROUP_SPLIT = re.compile(r'[،,]\s*(?=(?:وفي الحالين|في الحالين|وإثبات|والإثبات|وحذف|والحذف))')
 
+def split_yaat_clauses(text):
+    """Split yāʾ clauses on prose punctuation, ignoring punctuation in quoted forms."""
+    clauses=[]; start=0; quoted=False
+    for i,ch in enumerate(text):
+        if ch=='﴿': quoted=True
+        elif ch=='﴾': quoted=False
+        elif ch in '؛.' and not quoted:
+            clauses.append(text[start:i])
+            start=i+1
+    clauses.append(text[start:])
+    return clauses
+
+def yaat_note_reader_scope(clause, readers, note):
+    """Resolve a parenthetical placed immediately after a named-reader segment."""
+    matches=list(PARENS.finditer(clause))
+    if len(matches)!=1 or matches[0].group(1).strip()!=note:
+        return None
+    before=clause[:matches[0].start()]
+    segment=re.split(r'[،,]',before)[-1].strip()
+    if not segment:
+        return None
+    try:
+        scoped=resolve_explicit_group(segment)
+    except Unresolved:
+        return None
+    if scoped and scoped <= readers:
+        return scoped
+    return None
+
 def normalize_yaat_action(category, action, inherited=None):
     action=BRACE.sub('',action).strip(' ،,و.')
     if category=='YAAT_IDAFA':
         if 'فتح' in action: return 'الفتح وصلاً'
         if 'إسكان' in action or 'اسكان' in action: return 'الإسكان وصلاً'
+        if 'إثبات' in action and 'الحالين' in action: return 'إثبات الياء في الحالين'
         return None
     if any(x in action for x in ('حذف','يحذف')):
         return 'حذف الياء في الحالين' if 'الحالين' in action else 'حذف الياء وصلاً'
@@ -330,7 +360,7 @@ def parse_yaat_line(page, category, line, out):
         if not sep or not anchors: continue
         groups=[]; notes=[]; inherited=None
         try:
-            for clause in re.split(r'[؛.]',body):
+            for clause in split_yaat_clauses(body):
                 clause=clause.strip()
                 if not clause: continue
                 for group_clause in YAAT_GROUP_SPLIT.split(clause):
@@ -348,8 +378,17 @@ def parse_yaat_line(page, category, line, out):
                         continue
                     if category=='YAAT_ZAWAID' and any(x in normalized for x in ('إثبات','حذف')):
                         inherited=normalized
-                    groups.append((readers,normalized,alternate,'بخلف عنه' if alternate else None))
-                    if note: notes.append(note)
+                    condition='بخلف عنه' if alternate else None
+                    scoped_note_readers=(yaat_note_reader_scope(group_clause,readers,note)
+                                         if category=='YAAT_IDAFA' and note else None)
+                    if scoped_note_readers:
+                        unscoped_readers=set(readers)-scoped_note_readers
+                        if unscoped_readers:
+                            groups.append((unscoped_readers,normalized,alternate,condition))
+                        groups.append((scoped_note_readers,normalized,alternate,note))
+                    else:
+                        groups.append((readers,normalized,alternate,condition))
+                        if note: notes.append(note)
         except Unresolved:
             # One unresolved name invalidates the whole source line, even if another clause parsed.
             return
