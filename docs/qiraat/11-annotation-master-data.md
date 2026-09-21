@@ -34,6 +34,12 @@ does not make the framework a parent of the authority.
 ## Adding taxonomy, groups and colours
 
 - Add a `qiraat_taxonomies` row under the `USUL` or `FARSH` root; do not hard-code UI options.
+- The `USUL` and `FARSH` rows are roots only. Usul groups (for example `USUL_HAMZ`,
+  `USUL_MADD`, and `USUL_IDGHAM`) must be children of `USUL`; selectable rules such as
+  `USUL_MADD_BADAL` must be children of their group. Never create a self-nested `USUL` row.
+- Optional leaf-only entry presets belong in `metadata.face_presets`; the editor exposes them
+  only after a leaf rule is selected. This metadata describes input vocabulary, not Reader or
+  Narrator applicability.
 - Add group presets to `qiraat_groups`, then expand them through `qiraat_group_members`. Groups are
   shortcuts only, never hierarchy entities. Both the group definition and every membership require
   verified evidence.
