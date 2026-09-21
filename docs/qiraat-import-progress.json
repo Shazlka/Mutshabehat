@@ -22527,6 +22527,51 @@
   "latestSourceCoverageNote": "Production-verified source-backed import for pages 277-278: three variants, four usul loci, and 12 reader assignments. Production API confirmed exact tokens/forms/reading IDs on both pages. The parser now uses qiraat_records.jsonl as its primary source.",
   "latestLocalImportCycle": {
     "pagesReviewed": [
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310
+    ],
+    "variantPages": [
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      304
+    ],
+    "rulingFilesChanged": [
+      298,
+      299,
+      305,
+      307,
+      308,
+      309
+    ],
+    "newVariants": 25,
+    "newRulingLoci": 5,
+    "mergedRulingLoci": 9,
+    "readerAssignmentsAdded": 57,
+    "status": "locally verified; deployment pending",
+    "details": "Four read-only audits covered pages 295-310. Twenty-five variants, five new ruling loci, and nine ruling merges added 57 source-backed reader assignments. Unimported audited candidates remain for follow-up; no page-wide completeness is claimed."
+  },
+  "previousImportCycle279_294": {
+    "pagesReviewed": [
       279,
       280,
       281,

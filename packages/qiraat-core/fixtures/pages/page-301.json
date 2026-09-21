@@ -1,1 +1,164 @@
-[]
+[
+  {
+    "id": "v-D301-انسانيه-w2",
+    "surah": 18,
+    "ayah": 63,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "أَنسَىٰنِيهُ",
+    "variantText": "أَنسَانِيهِ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D301-انسانيه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-انسانيه-w2",
+        "variantId": "v-D301-انسانيه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01037",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَنسَىٰنِيهُ﴾: بضم الهاء لحفص؛ وبكسر الهاء ﴿أَنسَانِيهِ﴾ للباقين."
+      }
+    ],
+    "description": "بكسر الهاء وحذف ألف الوسط",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D301-رشدا-w2",
+    "surah": 18,
+    "ayah": 66,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "رُشْدًۭا",
+    "variantText": "رَشَدًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D301-رشدا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-رشدا-w2",
+        "variantId": "v-D301-رشدا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01038",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿رُشْدًا﴾: بضم فسكون للجمهور؛ بفتحتين ﴿رَشَدًا﴾ لأبي عمرو ويعقوب."
+      }
+    ],
+    "description": "بفتح الشين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D301-عسرا-w2",
+    "surah": 18,
+    "ayah": 73,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عُسْرًۭا",
+    "variantText": "عُسُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D301-عسرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-عسرا-w2",
+        "variantId": "v-D301-عسرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01043",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عُسْرًا﴾: بإسكان السين للجمهور؛ وبضم السين ﴿عُسُرًا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D301-زكيه-w2",
+    "surah": 18,
+    "ayah": 74,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "زَكِيَّةًۢ",
+    "variantText": "زَاكِيَةً",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D301-زكيه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-زكيه-w2",
+        "variantId": "v-D301-زكيه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01044",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿زَكِيَّةَۢ﴾: بتخفيف الكاف مع ألف بعدها وتخفيف الياء ﴿زَاكِيَةً﴾ لنافع، ابن كثير، أبو عمرو، أبو جعفر، رويس؛ وبكسر الكاف وتشديد الياء ﴿زَكِيَّةً﴾ للباقين."
+      }
+    ],
+    "description": "بالألف بعد الزاي",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

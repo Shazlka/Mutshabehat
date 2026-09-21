@@ -8,7 +8,7 @@ against negation/universal statements. DEDUP is additive: new loci are appended,
 source-named reader assignments may be appended to an existing category/locus when uncovered.
 Same-reader disagreements are dropped.
 """
-import json, os, re, sys, collections, hashlib
+import json, os, re, sys, collections, hashlib, unicodedata
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tokens as T
 import authorities as A
@@ -87,6 +87,10 @@ def diff_type(desc):
         if any(k in desc for k in keys): return t
     return 'other'
 
+def face_key(text):
+    """Normalize composition and spacing but preserve reader-specific vowel marks."""
+    return ' '.join(unicodedata.normalize('NFC',text or '').replace('ـ','').split())
+
 def readers_from(text, claimed):
     """Resolve a reader clause: handles جميع القراء عدا X, الباقون/للجمهور, and name lists."""
     t=text.strip()
@@ -124,7 +128,7 @@ def parse_farsh(page, lines):
         i+=1
     return out
 
-def yield_block(page, anchor, wujuh, out, ayah=None):
+def yield_block(page, anchor, wujuh, out, ayah=None, occurrence=1):
     union=set(); overlap=False
     for _,_,rs in wujuh:
         if union&rs: overlap=True
@@ -132,7 +136,7 @@ def yield_block(page, anchor, wujuh, out, ayah=None):
     if overlap or union!=ALL20: return
     base=[k for k,(_,_,rs) in enumerate(wujuh) if 'Q05-R02' in rs]
     if len(base)!=1: return
-    try: loc=T.find(page, anchor, 1, ayah=ayah)
+    try: loc=T.find(page, anchor, occurrence, ayah=ayah)
     except T.NoMatch: return
     bt=wujuh[base[0]][0]
     if bt and T.norm(bt)!=T.norm(loc['baseText']): return
@@ -2186,17 +2190,17 @@ def build(page_list, categories=None, complete_ikhfa=False):
         forms_by_reader=collections.defaultdict(dict)
         for e in ev:
             token_key=(e['surah'],e['ayah'],e['startToken'])
-            form=T.norm(e.get('variantText') or '')
+            form=face_key(e.get('variantText') or '')
             for reader_id in e.get('readingIds',[]):
                 forms_by_reader[token_key][reader_id]=form
         v2=[]; seen_forms=collections.defaultdict(set)
         for e in ev:
             token_key=(e['surah'],e['ayah'],e['startToken'])
-            form_key=(*token_key,T.norm(e.get('variantText') or ''))
+            form_key=(*token_key,face_key(e.get('variantText') or ''))
             seen_forms[form_key].update(e.get('readingIds',[]))
         for x in v:
             token_key=(x['surah'],x['ayah'],x['startToken'])
-            form=T.norm(x.get('variantText') or '')
+            form=face_key(x.get('variantText') or '')
             form_key=(*token_key,form)
             candidates=set(x.get('readingIds',[]))
             seen_readers=seen_forms.setdefault(form_key,set())
@@ -2589,19 +2593,26 @@ def merge_ruling_assignments(existing_record, candidate):
         return merge_waqf_hamza_assignments(existing_record,candidate)
     if category not in ('YAAT_IDAFA','YAAT_ZAWAID'):
         added=0
-        for field,key_fields in (
-            ('readings',('readingId','action','isDefault')),
-            ('attribution',('authorityId','action','condition')),
-        ):
-            current=existing_record.setdefault(field,[])
-            seen={tuple(item.get(k) for k in key_fields) for item in current}
-            for item in candidate.get(field,[]):
-                key=tuple(item.get(k) for k in key_fields)
-                if key in seen: continue
-                current.append(item); seen.add(key)
-                if field=='readings': added+=1
+        current=existing_record.setdefault('readings',[])
+        seen={(item.get('readingId'),T.norm(item.get('action',''))) for item in current}
+        accepted_ids=set()
+        accepted_items=[]
+        for item in candidate.get('readings',[]):
+            key=(item.get('readingId'),T.norm(item.get('action','')))
+            if key in seen: continue
+            current.append(item); seen.add(key)
+            accepted_ids.add(item.get('readingId')); accepted_items.append(item); added+=1
+        attrs=existing_record.setdefault('attribution',[])
+        seen_attrs={(item.get('authorityId'),T.norm(item.get('action','')),item.get('condition'))
+                    for item in attrs}
+        for item in candidate.get('attribution',[]):
+            if item.get('authorityId') not in accepted_ids: continue
+            key=(item.get('authorityId'),T.norm(item.get('action','')),item.get('condition'))
+            if key in seen_attrs: continue
+            attrs.append(item); seen_attrs.add(key)
         if added:
-            existing_record['hasAlternate']=bool(existing_record.get('hasAlternate') or candidate.get('hasAlternate'))
+            existing_record['hasAlternate']=bool(existing_record.get('hasAlternate') or
+                                                 any(not item.get('isDefault',True) for item in accepted_items))
             if candidate.get('notes'):
                 old=existing_record.get('notes')
                 notes=[x for x in (old,candidate['notes']) if x]
@@ -2938,6 +2949,159 @@ def checked_inline_farsh(page, lines):
             'sourceReference':f"وثيقة الاستخراج المبوّب، صفحة المصحف {page}، الكلمات الفرشية",
             'sourceText':source_text,
         })
+    out.extend(checked_audited_inline_faces(page, lines))
+    return out
+
+def checked_audited_inline_faces(page, lines):
+    """Import explicitly attributed inline faces verified against source rows and page tokens.
+
+    Multiple source records may describe disjoint faces at one token. Reader overlaps between
+    different forms are dropped, while separate, non-overlapping forms are kept together.
+    """
+    cases = {
+        295: [
+            ('DOCX-P295-R00967','عَلَيْهِم','عَلَيْهُم','حمزة، يعقوب',18,
+             'بضم الهاء'),
+            ('DOCX-P295-R00970','بِوَرِقِكُمْ','بِوَرْقِكُمْ','أبو عمرو، شعبة، حمزة، روح',19,
+             'بإسكان الراء'),
+        ],
+        296: [
+            *[('DOCX-P296-R00975','عَلَيْهِم','عَلَيْهُم','حمزة، يعقوب',21,
+               'بضم الهاء',occ) for occ in range(1,4)],
+            *[('DOCX-P296-R00976','فِيهِم','فِيهُمُ','يعقوب',22,
+               'بضم الهاء',occ) for occ in range(1,3)],
+        ],
+        297: [
+            ('DOCX-P297-R00987','أُكُلَهَا','أُكْلَهَا','نافع، ابن كثير، أبو عمرو',33,
+             'بإسكان الكاف'),
+            ('DOCX-P297-R00992','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',34,
+             'بإسكان الهاء'),
+        ],
+        298: [
+            ('DOCX-P298-R00999','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',35,
+             'بإسكان الهاء'),
+            ('DOCX-P298-R00999','وَهِيَ','وَهْيَ','قالون، أبو عمرو، الكسائي، أبو جعفر',42,
+             'بإسكان الهاء'),
+        ],
+        299: [
+            ('DOCX-P299-R01016','نُسَيِّرُ ٱلْجِبَالَ','تُسَيَّرُ ٱلْجِبَالُ',
+             'ابن كثير، أبو عمرو، ابن عامر',47,'بالتاء والياء'),
+            ('DOCX-P299-R01017','لِلْمَلَـٰٓئِكَةِ','لِلْمَلَائِكَةُ','أبو جعفر',50,
+             'بضم التاء وصلاً'),
+            ('DOCX-P299-R01018','مَّآ أَشْهَدتُّهُمْ','مَا أَشْهَدْنَاهُمْ','أبو جعفر',51,
+             'بنون العظمة'),
+            ('DOCX-P299-R01019','وَمَا كُنتُ','وَمَا كُنْتَ','أبو جعفر',51,
+             'بخطاب التاء'),
+        ],
+        300: [
+            ('DOCX-P300-R01027','ٱلْقُرْءَانِ','ٱلْقُرَانِ','ابن كثير',54,
+             'بنقل الهمزة'),
+            ('DOCX-P300-R01028','قُبُلًا','قِبَلًا','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، يعقوب',55,
+             'بكسر القاف وفتح الباء'),
+            ('DOCX-P300-R01031','لِمَهْلِكِهِم','لِمُهْلَكِهِم',
+             'نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، الكسائي، أبو جعفر، يعقوب',59,
+             'بضم الميم وفتح اللام'),
+            ('DOCX-P300-R01032','لِمَهْلِكِهِم','لِمَهْلَكِهِم','شعبة',59,
+             'بفتح اللام'),
+        ],
+        301: [
+            ('DOCX-P301-R01037','أَنسَىٰنِيهُ','أَنسَانِيهِ','جميع القراء عدا حفص',63,
+             'بكسر الهاء وحذف ألف الوسط'),
+            ('DOCX-P301-R01038','رُشْدًا','رَشَدًا','أبو عمرو، يعقوب',66,
+             'بفتح الشين'),
+            ('DOCX-P301-R01043','عُسْرًا','عُسُرًا','أبو جعفر',73,
+             'بضم السين'),
+            ('DOCX-P301-R01044','زَكِيَّةً','زَاكِيَةً','نافع، ابن كثير، أبو عمرو، أبو جعفر، رويس',74,
+             'بالألف بعد الزاي'),
+        ],
+        302: [
+            ('DOCX-P302-R01056','رُحْمًا','رُحُمًا','ابن عامر، أبو جعفر، يعقوب',81,
+             'بضم الحاء'),
+        ],
+        304: [
+            ('DOCX-P304-R01081','أَن تَنفَدَ','أَن يَنفَدَ','حمزة، الكسائي',109,
+             'بياء الغيب'),
+        ],
+    }
+    out=[]
+    selected=cases.get(page, [])
+    if not selected:
+        return out
+    grouped=collections.defaultdict(list)
+    for item in selected:
+        record_id,anchor,form,reader_text,ayah,description,*occurrence=item
+        occurrence=occurrence[0] if occurrence else 1
+        record=PACKAGE_RECORDS.get(record_id)
+        if (not record or record.get('page_no')!=page or record.get('section')!='farsh' or
+                record.get('raw_text') not in lines):
+            raise ValueError(f'page {page} audited face source row missing: {record_id}')
+        source=record['raw_text']
+        if is_neg(source) or is_univ(source) or has_bare_ambiguous_reader(source):
+            raise ValueError(f'page {page} audited face failed source guards: {record_id}')
+        try:
+            readers=readers_from(reader_text,set())
+            loc=T.find(page,anchor,occurrence,ayah)
+        except (Unresolved,T.NoMatch) as exc:
+            raise ValueError(f'page {page} audited face reader/token unresolved: {record_id}') from exc
+        if not readers or 'Q05-R02' in readers:
+            raise ValueError(f'page {page} audited alternate group invalid: {record_id}')
+        if T.norm(form) not in T.norm(source):
+            raise ValueError(f'page {page} source lacks alternate spelling {form}: {record_id}')
+        grouped[(loc['surah'],loc['startAyah'],loc['startWord'],loc['endAyah'],loc['endWord'])].append(
+            (record_id,anchor,form,readers,description,source,loc,occurrence))
+    for key,faces in grouped.items():
+        # Merge identical forms, but remove every reader involved in a same-token conflict.
+        forms={}
+        for _,_,form,readers,_,_,_,_ in faces:
+            normalized=face_key(form)
+            if normalized not in forms:
+                forms[normalized]={'readers':set(),'text':form}
+            forms[normalized]['readers'].update(readers)
+        conflicting=set()
+        form_items=list(forms.items())
+        for i,(form_a,data_a) in enumerate(form_items):
+            for form_b,data_b in form_items[i+1:]:
+                if form_a!=form_b:
+                    conflicting |= data_a['readers'] & data_b['readers']
+        loc=faces[0][6]
+        groups=[]
+        occupied=set()
+        for normalized,data in forms.items():
+            safe=data['readers']-conflicting
+            if not safe:
+                continue
+            if safe & occupied:
+                raise ValueError(f'page {page} audited faces overlap after conflict filtering: {key}')
+            occupied.update(safe)
+            source_row=next(x for x in faces if face_key(x[2])==normalized)
+            # The source may quote the Hafs spelling for a named group; the real page token is
+            # the baseline and only non-baseline spellings become variant rows.
+            groups.append((source_row[1],data['text'],safe,source_row[4],source_row[5],source_row[7]))
+        if not groups:
+            continue
+        wujuh=[(loc['baseText'],'وجه حفص المطابق لرسم المصحف',ALL20-occupied)]
+        for anchor,form,readers,description,_,_ in groups:
+            if face_key(form)==face_key(loc['baseText']):
+                wujuh[0]=(loc['baseText'],description,ALL20-occupied | readers)
+            else:
+                wujuh.append((form,description,readers))
+        if not any(face_key(form)!=face_key(loc['baseText']) for _,form,_,_,_,_ in groups):
+            continue
+        before=len(out)
+        yield_block(page,faces[0][1],wujuh,out,ayah=loc['startAyah'],occurrence=faces[0][7])
+        emitted=out[before:]
+        for variant in emitted:
+            match=next((face for face in faces if face_key(face[2])==face_key(variant['variantText']) and
+                        set(variant['readingIds']) <= (forms[face_key(face[2])]['readers']-conflicting)),None)
+            if match:
+                variant['sources'][0].update({
+                    'sourceReference':f"qiraat_records.jsonl، {match[0]}",
+                    'sourceText':match[5],
+                    'verificationNotes':'إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.'})
+        expected_forms=sum(1 for _,form,readers,_,_,_ in groups if
+                           face_key(form)!=face_key(loc['baseText']) and readers-conflicting)
+        if len(emitted)!=expected_forms:
+            raise ValueError(f'page {page} audited face partition failed at {key}')
     return out
 
 if __name__=='__main__':
