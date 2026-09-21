@@ -1,1 +1,256 @@
-[]
+[
+  {
+    "id": "v-D510-نعلم-w2",
+    "surah": 47,
+    "ayah": 31,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نَعْلَمَ",
+    "variantText": "يَعْلَمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D510-نعلم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D510-نعلم-w2",
+        "variantId": "v-D510-نعلم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P510-R03145",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/31",
+        "sourceText": "بياء الغيب في الأفعال الثلاثة ونصب الواو ﴿وَلَيَبْلُوَنَّكُمْ... يَعْلَمَ... وَيَبْلُوَ﴾: شعبة."
+      }
+    ],
+    "description": "بياء الغيب في الفعل الثاني",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D510-ونبلوا-w2",
+    "surah": 47,
+    "ayah": 31,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَنَبْلُوَا۟",
+    "variantText": "وَنَبْلُو",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D510-ونبلوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D510-ونبلوا-w2",
+        "variantId": "v-D510-ونبلوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P510-R03146",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/31",
+        "sourceText": "بنون العظمة مع إسكان الواو الأخيرة ﴿وَنَبْلُو﴾: رويس."
+      }
+    ],
+    "description": "بإسكان الواو الأخيرة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D510-السلم-w2",
+    "surah": 47,
+    "ayah": 35,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ٱلسَّلْمِ",
+    "variantText": "ٱلسِّلْمِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D510-السلم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D510-السلم-w2",
+        "variantId": "v-D510-السلم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P510-R03147",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/35",
+        "sourceText": "﴿السَّلْمِ﴾: بفتح السين ﴿السَّلْمِ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وحفص، والكسائي، وأبي جعفر، ويعقوب؛ وبكسر السين ﴿السِّلْمِ﴾ لشعبة، وحمزة، وخلف."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P510-47-38-1-P4",
+    "surah": 47,
+    "ayah": 38,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓأَنتُمْ",
+    "variantText": "هَـٰٓأَنتُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P510-47-38-1-P4",
+    "locusType": "performance_variant",
+    "performanceNote": "بإثبات الألف وتحقيق الهمزة",
+    "sources": [
+      {
+        "id": "s-AUDIT-P510-47-38-1-P4",
+        "variantId": "v-AUDIT-P510-47-38-1-P4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P510-R03149",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/38",
+        "sourceText": "بإثبات الألف وتحقيق الهمزة ﴿هَاأَنْتُمْ﴾: البزي، وابن عامر، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف."
+      }
+    ],
+    "description": "بإثبات الألف وتحقيق الهمزة",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P510-47-38-1-P5",
+    "surah": 47,
+    "ayah": 38,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓأَنتُمْ",
+    "variantText": "هَـٰٓأَنتُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P510-47-38-1-P5",
+    "locusType": "performance_variant",
+    "performanceNote": "بإثبات الألف وتسهيل الهمزة",
+    "sources": [
+      {
+        "id": "s-AUDIT-P510-47-38-1-P5",
+        "variantId": "v-AUDIT-P510-47-38-1-P5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P510-R03150",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/38",
+        "sourceText": "بإثبات الألف وتسهيل الهمزة: قالون، وأبو عمرو، وأبو جعفر."
+      }
+    ],
+    "description": "بإثبات الألف وتسهيل الهمزة",
+    "wajhIndex": 5,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P510-47-38-1-P6",
+    "surah": 47,
+    "ayah": 38,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓأَنتُمْ",
+    "variantText": "هَـٰٓأَنتُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P510-47-38-1-P6",
+    "locusType": "performance_variant",
+    "performanceNote": "بحذف الألف وتسهيل الهمزة أو إبدالها ألفاً مشبعة",
+    "sources": [
+      {
+        "id": "s-AUDIT-P510-47-38-1-P6",
+        "variantId": "v-AUDIT-P510-47-38-1-P6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P510-R03151",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/38",
+        "sourceText": "بحذف الألف وتسهيل الهمزة أو إبدالها ألفاً مشبعة: ورش."
+      }
+    ],
+    "description": "بحذف الألف وتسهيل الهمزة أو إبدالها ألفاً مشبعة",
+    "wajhIndex": 6,
+    "evidence": []
+  },
+  {
+    "id": "v-D510-هاانتم-w2",
+    "surah": 47,
+    "ayah": 38,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓأَنتُمْ",
+    "variantText": "هَأَنْتُمْ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "D510-هاانتم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D510-هاانتم-w2",
+        "variantId": "v-D510-هاانتم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P510-R03152",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/38",
+        "sourceText": "بحذف الألف وتحقيق الهمزة ﴿هَأَنْتُمْ﴾: قنبل."
+      }
+    ],
+    "description": "بحذف الألف وتحقيق الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

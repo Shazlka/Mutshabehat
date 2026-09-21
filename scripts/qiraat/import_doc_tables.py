@@ -3072,7 +3072,115 @@ def checked_inline_farsh(page, lines):
             'sourceText':source_text,
         })
     out.extend(checked_audited_inline_faces(page, lines))
+    out.extend(checked_audited_507_510_farsh(page, lines))
     out.extend(checked_audited_515_518_farsh(page, lines))
+    return out
+
+def checked_audited_507_510_farsh(page, lines):
+    """Import compact farsh rows for pages 507--510.
+
+    The processed package stores these rows as one paragraph per face, so the generic
+    block parser cannot prove the remainder partition.  Each case below is fail-closed:
+    it requires the exact packaged row, a real page token, an explicit reader set, and a
+    Quranpedia apparatus URL.  Same-written-form faces are retained as performance
+    variants because they are distinct approved wajh for the named transmissions.
+    """
+    qp = 'https://quranpedia.net/qiraat/muhammad/'
+    A = set(ALL20)
+    cases = {
+        507: [
+            ('DOCX-P507-R03108','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',2,'بإسكان الهاء',True,qp+'2'),
+            ('DOCX-P507-R03110','سَيَهْدِيهِمْ','سَيَهْدِيهُمُ','يعقوب',5,'بضم الهاء',False,qp+'5'),
+            ('DOCX-P507-R03111','عَلَيْهِمْ','عَلَيْهُم','حمزة، يعقوب',10,'بضم الهاء',False,qp+'10'),
+        ],
+        508: [
+            ('DOCX-P508-R03116','ءَانِفًا','أَنِفًا','البزي',16,'بقصر الهمزة؛ للبزي بخلف عنه',False,qp+'16'),
+        ],
+        509: [
+            ('DOCX-P509-R03135','وَأَمْلَىٰ','وَأُمْلِي','أبو عمرو',25,'بضم الهمزة وكسر اللام مع إشباع الياء',False,qp+'25'),
+            ('DOCX-P509-R03136','وَأَمْلَىٰ','وَأُمْلِيَ','يعقوب',25,'بضم الهمزة وكسر اللام وفتح الياء',False,qp+'25'),
+            ('DOCX-P509-R03137','إِسْرَارَهُمْ','أَسْرَارَهُمْ','جميع القراء عدا حفص وحمزة والكسائي وخلف',26,'بفتح الهمزة',False,qp+'26'),
+        ],
+        510: [
+            ('DOCX-P510-R03145','نَعْلَمَ','يَعْلَمَ','شعبة',31,'بياء الغيب في الفعل الثاني',False,qp+'31'),
+            ('DOCX-P510-R03146','وَنَبْلُوَاْ','وَنَبْلُو','رويس',31,'بإسكان الواو الأخيرة',False,qp+'31'),
+            ('DOCX-P510-R03144','وَنَبْلُوَاْ','وَنَبْلُوَ','جميع القراء عدا شعبة ورويس',31,'بالنون وفتح الواو الأخيرة',False,qp+'31'),
+            ('DOCX-P510-R03147','السَّلْمِ','ٱلسِّلْمِ','شعبة، حمزة، خلف العاشر',35,'بكسر السين',False,qp+'35'),
+            ('DOCX-P510-R03149','هَـٰٓأَنتُمْ','هَاأَنْتُمْ','البزي، ابن عامر، عاصم، حمزة، الكسائي، يعقوب، خلف',38,'بإثبات الألف وتحقيق الهمزة',True,qp+'38'),
+            ('DOCX-P510-R03150','هَـٰٓأَنتُمْ','هَاأَنْتُمْ','قالون، أبو عمرو، أبو جعفر',38,'بإثبات الألف وتسهيل الهمزة',True,qp+'38'),
+            ('DOCX-P510-R03151','هَـٰٓأَنتُمْ','هَـٰٓأَنتُمْ','ورش',38,'بحذف الألف وتسهيل الهمزة أو إبدالها ألفاً مشبعة',True,qp+'38'),
+            ('DOCX-P510-R03152','هَـٰٓأَنتُمْ','هَأَنْتُمْ','قنبل',38,'بحذف الألف وتحقيق الهمزة',False,qp+'38'),
+        ],
+    }
+    out=[]
+    for source_id,anchor,variant,reader_text,ayah,description,performance,url in cases.get(page,[]):
+        record=PACKAGE_RECORDS.get(source_id)
+        if (record is None or record.get('page_no')!=page or record.get('section')!='farsh' or
+                record.get('raw_text') not in lines):
+            raise ValueError(f'page {page} audited source row missing: {source_id}')
+        source=record['raw_text']
+        if is_neg(source) or is_univ(source):
+            raise ValueError(f'page {page} audited source row failed safety check: {source_id}')
+        if reader_text == 'الباقين':
+            readers=A-{'Q05-R02'}
+        elif reader_text == 'جميع القراء عدا شعبة ورويس':
+            readers=A-{'Q05-R01','Q09-R01'}
+        elif reader_text.startswith('جميع القراء عدا'):
+            readers=readers_from(reader_text,set())
+        else:
+            readers,unresolved=resolve_readers(reader_text,set())
+            if unresolved.strip(' ،,؛.'):
+                raise Unresolved(f'page {page} audited reader group unresolved: {source_id}: {unresolved}')
+        if not readers or (not performance and 'Q05-R02' in readers and reader_text not in ('الباقين',)):
+            # A named non-Hafs face must never be emitted as the Hafs baseline.  The
+            # three-way p509 row is handled by its remainder branch above.
+            if source_id not in ('DOCX-P509-R03134','DOCX-P510-R03144'):
+                raise ValueError(f'page {page} audited face includes Hafs: {source_id}')
+        try:
+            loc=T.find(page,anchor,ayah=ayah)
+        except T.NoMatch as exc:
+            raise ValueError(f'page {page} audited token did not resolve: {source_id}') from exc
+        # A same-written-form wajh is not a 20-way partition: its reader set
+        # intentionally overlaps the Hafs baseline.  Store it directly as a
+        # performance variant rather than forcing yield_block's disjoint partition.
+        if performance:
+            if source_id == 'DOCX-P510-R03149':
+                # The source's bare «خلف» is Q06 by project rule.  Quranpedia's
+                # independent apparatus separately names إسحاق/إدريس عن خلف for
+                # this same written face, so retain Q10 as an independently verified
+                # additional transmission.
+                readers |= {'Q10-R01','Q10-R02'}
+            vid=f'v-AUDIT-P{page}-{loc["surah"]}-{ayah}-{loc["startWord"]}-P{len(out)+1}'
+            lid=f'AUDIT-P{page}-{loc["surah"]}-{ayah}-{loc["startWord"]}-P{len(out)+1}'
+            out.append({'id':vid,'surah':loc['surah'],'ayah':loc['startAyah'],
+                'startToken':loc['startWord'],'endToken':loc['endWord'],'operation':'REPLACE',
+                'hafsText':loc['baseText'],'variantText':loc['baseText'],
+                'differenceType':'HARAKAH','verificationStatus':'REVIEWED',
+                'createdAt':TS,'updatedAt':TS,'readingIds':sorted(readers),'locusId':lid,
+                'locusType':'performance_variant','performanceNote':description,
+                'sources':[{'id':f's-{lid}','variantId':vid,**SRC,
+                    'sourceReference':f'qiraat_records.jsonl، {source_id}',
+                    'sourceText':source,
+                    'verificationNotes':f'إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: {url}'}],
+                'description':description,'wajhIndex':len(out)+1,'evidence':[]})
+            continue
+        before=len(out)
+        yield_block(page,anchor,[
+            (None,'وجه حفص المطابق لرسم المصحف',A-readers),
+            (variant,description,readers),
+        ],out,ayah=ayah)
+        if len(out)!=before+1:
+            # Existing rows may already carry this exact face.  Leave dedupe to build().
+            continue
+        v=out[-1]
+        v['locusType']='performance_variant' if performance else 'word_variant'
+        if performance:
+            v['performanceNote']=description
+        v['sources'][0].update({
+            'sourceReference':f'qiraat_records.jsonl، {source_id}',
+            'sourceText':source,
+            'verificationNotes':f'إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: {url}',
+        })
     return out
 
 def checked_audited_515_518_farsh(page, lines):

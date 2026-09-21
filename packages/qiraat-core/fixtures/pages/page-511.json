@@ -1,1 +1,335 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P511-48-2-14-bef1a388",
+    "surah": 48,
+    "ayah": 2,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطًۭا",
+    "variantText": "سِرَٰطًۭا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P511-48-2-14-bef1a388",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03155-bef1a388",
+        "variantId": "v-AUDIT-P511-48-2-14-bef1a388",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03155",
+        "sourceText": "﴿صِرَٰطٗا﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/2"
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالسين",
+        "url": "https://quranpedia.net/qiraat/al-fath/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P511-48-2-14-75dd0c66",
+    "surah": 48,
+    "ayah": 2,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطًۭا",
+    "variantText": "صِرَٰطًۭا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P511-48-2-14-75dd0c66",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03155-75dd0c66",
+        "variantId": "v-AUDIT-P511-48-2-14-75dd0c66",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03155",
+        "sourceText": "﴿صِرَٰطٗا﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/2"
+      }
+    ],
+    "description": "إشمام الصاد زياً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "إشمام الصاد زياً",
+        "url": "https://quranpedia.net/qiraat/al-fath/2"
+      }
+    ],
+    "performanceNote": "إشمام الصاد زياً"
+  },
+  {
+    "id": "v-AUDIT-P511-48-6-10-c593995e",
+    "surah": 48,
+    "ayah": 6,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P511-48-6-10-c593995e",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03156-c593995e",
+        "variantId": "v-AUDIT-P511-48-6-10-c593995e",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03156",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (معاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/6"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الهاء",
+        "url": "https://quranpedia.net/qiraat/al-fath/6"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P511-48-6-11-3ff982ba",
+    "surah": 48,
+    "ayah": 6,
+    "startToken": 11,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "دَآئِرَةُ ٱلسَّوْءِ ۖ",
+    "variantText": "دَآئِرَةُ ٱلسُّوْءِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P511-48-6-11-3ff982ba",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03157-3ff982ba",
+        "variantId": "v-AUDIT-P511-48-6-11-3ff982ba",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03157",
+        "sourceText": "﴿دَآئِرَةُ السَّوْءِ﴾: بفتح السين للجمهور؛ بضم السين ﴿السُّوءِ﴾ لابن كثير وأبي عمرو (مع المد المتصل).",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/6"
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم السين",
+        "url": "https://quranpedia.net/qiraat/al-fath/6"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P511-48-9-1-7c1cc860",
+    "surah": 48,
+    "ayah": 9,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لِّتُؤْمِنُوا۟",
+    "variantText": "لِيُؤْمِنُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P511-48-9-1-7c1cc860",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03158-7c1cc860",
+        "variantId": "v-AUDIT-P511-48-9-1-7c1cc860",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03158",
+        "sourceText": "﴿لِّتُؤْمِنُواْ... وَتُعَزِّرُوهُ وَتُوَقِّرُوهُ وَتُسَبِّحُوهُ﴾: بتاء الخطاب في الأفعال الأربعة للجمهور (مع إبدال الهمزة لورش وأبي جعفر)؛ بياء الغيب فيها ﴿لِيُؤْمِنُوا... وَيُعَزِّرُوهُ وَيُوَقِّرُوهُ وَيُسَبِّحُوهُ﴾ لابن كثير وأبي عمرو (مع إبدال الهمزة للسوسي).",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P511-48-9-4-9ebb829b",
+    "surah": 48,
+    "ayah": 9,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَتُعَزِّرُوهُ",
+    "variantText": "وَيُعَزِّرُوهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P511-48-9-4-9ebb829b",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03158-9ebb829b",
+        "variantId": "v-AUDIT-P511-48-9-4-9ebb829b",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03158",
+        "sourceText": "﴿لِّتُؤْمِنُواْ... وَتُعَزِّرُوهُ وَتُوَقِّرُوهُ وَتُسَبِّحُوهُ﴾: بتاء الخطاب في الأفعال الأربعة للجمهور (مع إبدال الهمزة لورش وأبي جعفر)؛ بياء الغيب فيها ﴿لِيُؤْمِنُوا... وَيُعَزِّرُوهُ وَيُوَقِّرُوهُ وَيُسَبِّحُوهُ﴾ لابن كثير وأبي عمرو (مع إبدال الهمزة للسوسي).",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P511-48-9-5-d880cc18",
+    "surah": 48,
+    "ayah": 9,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَتُوَقِّرُوهُ",
+    "variantText": "وَيُوَقِّرُوهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P511-48-9-5-d880cc18",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03158-d880cc18",
+        "variantId": "v-AUDIT-P511-48-9-5-d880cc18",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03158",
+        "sourceText": "﴿لِّتُؤْمِنُواْ... وَتُعَزِّرُوهُ وَتُوَقِّرُوهُ وَتُسَبِّحُوهُ﴾: بتاء الخطاب في الأفعال الأربعة للجمهور (مع إبدال الهمزة لورش وأبي جعفر)؛ بياء الغيب فيها ﴿لِيُؤْمِنُوا... وَيُعَزِّرُوهُ وَيُوَقِّرُوهُ وَيُسَبِّحُوهُ﴾ لابن كثير وأبي عمرو (مع إبدال الهمزة للسوسي).",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P511-48-9-6-6ba9fe33",
+    "surah": 48,
+    "ayah": 9,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَتُسَبِّحُوهُ",
+    "variantText": "وَيُسَبِّحُوهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P511-48-9-6-6ba9fe33",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P511-R03158-6ba9fe33",
+        "variantId": "v-AUDIT-P511-48-9-6-6ba9fe33",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P511-R03158",
+        "sourceText": "﴿لِّتُؤْمِنُواْ... وَتُعَزِّرُوهُ وَتُوَقِّرُوهُ وَتُسَبِّحُوهُ﴾: بتاء الخطاب في الأفعال الأربعة للجمهور (مع إبدال الهمزة لورش وأبي جعفر)؛ بياء الغيب فيها ﴿لِيُؤْمِنُوا... وَيُعَزِّرُوهُ وَيُوَقِّرُوهُ وَيُسَبِّحُوهُ﴾ لابن كثير وأبي عمرو (مع إبدال الهمزة للسوسي).",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/9"
+      }
+    ]
+  }
+]

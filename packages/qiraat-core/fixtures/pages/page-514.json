@@ -1,1 +1,213 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P514-48-24-1-09516b8f",
+    "surah": 48,
+    "ayah": 24,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P514-48-24-1-09516b8f",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03174-09516b8f",
+        "variantId": "v-AUDIT-P514-48-24-1-09516b8f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03174",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بإسكان الهاء",
+        "url": "https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-24-14-b4186a64",
+    "surah": 48,
+    "ayah": 24,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ ۚ",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P514-48-24-14-b4186a64",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03175-b4186a64",
+        "variantId": "v-AUDIT-P514-48-24-14-b4186a64",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03175",
+        "sourceText": "﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الهاء",
+        "url": "https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-24-18-bb93ca33",
+    "surah": 48,
+    "ayah": 24,
+    "startToken": 18,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ بَصِيرًا",
+    "variantText": "يَعْمَلُونَ بَصِيرًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P514-48-24-18-bb93ca33",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03176-bb93ca33",
+        "variantId": "v-AUDIT-P514-48-24-18-bb93ca33",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03176",
+        "sourceText": "﴿تَعْمَلُونَ بَصِيرًا﴾: بتاء الخطاب للجمهور؛ بياء الغيب ﴿يَعْمَلُونَ﴾ لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-26-6-95770810",
+    "surah": 48,
+    "ayah": 26,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْحَمِيَّةَ",
+    "variantText": "قُلُوبِهِمِ ٱلْحَمِيَّةَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P514-48-26-6-95770810",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03178-95770810",
+        "variantId": "v-AUDIT-P514-48-26-6-95770810",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03178",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو، ويعقوب.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بكسر الهاء والميم وصلاً",
+        "url": "https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-26-6-43766619",
+    "surah": 48,
+    "ayah": 26,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْحَمِيَّةَ",
+    "variantText": "قُلُوبُهُمُ ٱلْحَمِيَّةَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P514-48-26-6-43766619",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03179-43766619",
+        "variantId": "v-AUDIT-P514-48-26-6-43766619",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03179",
+        "sourceText": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الهاء والميم وصلاً",
+        "url": "https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ]
+  }
+]

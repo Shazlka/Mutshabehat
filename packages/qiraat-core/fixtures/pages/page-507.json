@@ -47,5 +47,115 @@
     "description": "بفتح القاف والتاء مع ألف",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P507-47-2-10-P1",
+    "surah": 47,
+    "ayah": 2,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P507-47-2-10-P1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإسكان الهاء",
+    "sources": [
+      {
+        "id": "s-AUDIT-P507-47-2-10-P1",
+        "variantId": "v-AUDIT-P507-47-2-10-P1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P507-R03108",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/2",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D507-سيهديهم-w2",
+    "surah": 47,
+    "ayah": 5,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "سَيَهْدِيهِمْ",
+    "variantText": "سَيَهْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D507-سيهديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D507-سيهديهم-w2",
+        "variantId": "v-D507-سيهديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P507-R03110",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/5",
+        "sourceText": "﴿سَيَهْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿سَيَهْدِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D507-عليهم-w2",
+    "surah": 47,
+    "ayah": 10,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ ۖ",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D507-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D507-عليهم-w2",
+        "variantId": "v-D507-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P507-R03111",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/10",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

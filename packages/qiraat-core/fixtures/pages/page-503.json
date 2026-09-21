@@ -1,1 +1,374 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P503-R03067-7-3",
+    "surah": 46,
+    "ayah": 7,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-AUDIT-P503-R03067-7-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P503-R03067-7-3-src",
+        "variantId": "v-AUDIT-P503-R03067-7-3",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P503-R03067",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P503-R03067-7-3-ext",
+        "variantId": "v-AUDIT-P503-R03067-7-3",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/7",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 7 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 7 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/7"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P503-R03068-8-23",
+    "surah": 46,
+    "ayah": 8,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-AUDIT-P503-R03068-8-23",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P503-R03068-8-23-src",
+        "variantId": "v-AUDIT-P503-R03068-8-23",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P503-R03068",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P503-R03068-8-23-ext",
+        "variantId": "v-AUDIT-P503-R03068-8-23",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/7",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 8 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "إسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 8 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/7"
+      }
+    ],
+    "performanceNote": "إسكان الهاء"
+  },
+  {
+    "id": "v-AUDIT-P503-R03069-9-20",
+    "surah": 46,
+    "ayah": 9,
+    "startToken": 20,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "وَمَآ أَنَا۠ إِلَّا",
+    "variantText": "وَمَآ أَنَا۠ إِلَّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01"
+    ],
+    "locusId": "v-AUDIT-P503-R03069-9-20",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P503-R03069-9-20-src",
+        "variantId": "v-AUDIT-P503-R03069-9-20",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P503-R03069",
+        "sourceText": "﴿وَمَآ أَنَا۠ إِلَّا﴾: بإثبات الألف وصلاً ووقفاً لقالون بخلف عنه؛ وبحذفها وصلاً للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P503-R03069-9-20-ext",
+        "variantId": "v-AUDIT-P503-R03069-9-20",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/7",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 9 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "إثبات الألف وصلاً ووقفاً لقالون بخلف عنه",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 9 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/7"
+      }
+    ],
+    "performanceNote": "إثبات الألف وصلاً ووقفاً لقالون بخلف عنه"
+  },
+  {
+    "id": "v-AUDIT-P503-R03071-12-12",
+    "surah": 46,
+    "ayah": 12,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لِّيُنذِرَ",
+    "variantText": "لِيُنْذِرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "v-AUDIT-P503-R03071-12-12",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P503-R03071-12-12-src",
+        "variantId": "v-AUDIT-P503-R03071-12-12",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P503-R03071",
+        "sourceText": "﴿لِيُنذِرَ﴾: بياء الغيب ﴿لِيُنْذِرَ﴾ لابن كثير (بخلف عن البزي)، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ وبتاء الخطاب ﴿لِتُنْذِرَ﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P503-R03071-12-12-ext",
+        "variantId": "v-AUDIT-P503-R03071-12-12",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/7",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 12 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بياء الغيب للقراء المذكورين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 12 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/7"
+      }
+    ],
+    "performanceNote": "بياء الغيب للقراء المذكورين"
+  },
+  {
+    "id": "v-AUDIT-P503-R03071-12-12",
+    "surah": 46,
+    "ayah": 12,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لِّيُنذِرَ",
+    "variantText": "لِتُنْذِرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-AUDIT-P503-R03071-12-12",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P503-R03071-12-12-src",
+        "variantId": "v-AUDIT-P503-R03071-12-12",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P503-R03071",
+        "sourceText": "﴿لِيُنذِرَ﴾: بياء الغيب ﴿لِيُنْذِرَ﴾ لابن كثير (بخلف عن البزي)، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ وبتاء الخطاب ﴿لِتُنْذِرَ﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P503-R03071-12-12-ext",
+        "variantId": "v-AUDIT-P503-R03071-12-12",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/7",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 12 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بتاء الخطاب للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 12 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/7"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P503-R03072-13-8",
+    "surah": 46,
+    "ayah": 13,
+    "startToken": 8,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا خَوْفٌ عَلَيْهِمْ",
+    "variantText": "فَلَا خَوْفٌ عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-AUDIT-P503-R03072-13-8",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P503-R03072-13-8-src",
+        "variantId": "v-AUDIT-P503-R03072-13-8",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P503-R03072",
+        "sourceText": "﴿فَلَا خَوْفٌ عَلَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿عَلَيْهُمُ﴾ لحمزة ويعقوب (ويقرأ يعقوب بفتح الفاء بلا تنوين ﴿فَلَا خَوْفَ عَلَيْهِم﴾).",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P503-R03072-13-8-ext",
+        "variantId": "v-AUDIT-P503-R03072-13-8",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/7",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 13 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 13 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/7"
+      }
+    ],
+    "performanceNote": "بضم الهاء لحمزة ويعقوب"
+  },
+  {
+    "id": "v-AUDIT-P503-R03072-13-8",
+    "surah": 46,
+    "ayah": 13,
+    "startToken": 8,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا خَوْفٌ عَلَيْهِمْ",
+    "variantText": "فَلَا خَوْفَ عَلَيْهِم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-AUDIT-P503-R03072-13-8",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P503-R03072-13-8-src",
+        "variantId": "v-AUDIT-P503-R03072-13-8",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P503-R03072",
+        "sourceText": "﴿فَلَا خَوْفٌ عَلَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿عَلَيْهُمُ﴾ لحمزة ويعقوب (ويقرأ يعقوب بفتح الفاء بلا تنوين ﴿فَلَا خَوْفَ عَلَيْهِم﴾).",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P503-R03072-13-8-ext",
+        "variantId": "v-AUDIT-P503-R03072-13-8",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/7",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 13 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "قراءة يعقوب بفتح الفاء بلا تنوين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 13 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/7"
+      }
+    ],
+    "performanceNote": "قراءة يعقوب بفتح الفاء بلا تنوين"
+  }
+]

@@ -66,5 +66,38 @@
     "description": "بقصر الهمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D508-ءانفا-w2",
+    "surah": 47,
+    "ayah": 16,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "ءَانِفًا ۚ",
+    "variantText": "أَنِفًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D508-ءانفا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D508-ءانفا-w2",
+        "variantId": "v-D508-ءانفا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03116",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/16",
+        "sourceText": "﴿ءَانِفًا﴾: بمد الهمزة للجمهور؛ وبقصر الهمزة ﴿أَنِفًا﴾ للبزي بخلف عنه (والمعتمد له المد)."
+      }
+    ],
+    "description": "بقصر الهمزة؛ للبزي بخلف عنه",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

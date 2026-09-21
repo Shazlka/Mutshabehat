@@ -166,5 +166,120 @@
     "description": "بضم الراء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D509-واملا-w2",
+    "surah": 47,
+    "ayah": 25,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَأَمْلَىٰ",
+    "variantText": "وَأُمْلِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D509-واملا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-واملا-w2",
+        "variantId": "v-D509-واملا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03135",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/25",
+        "sourceText": "بضم الهمزة وكسر اللام مع إشباع الياء ﴿وَأُمْلِي﴾: أبو عمرو."
+      }
+    ],
+    "description": "بضم الهمزة وكسر اللام مع إشباع الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D509-واملا-w2",
+    "surah": 47,
+    "ayah": 25,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَأَمْلَىٰ",
+    "variantText": "وَأُمْلِيَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D509-واملا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-واملا-w2",
+        "variantId": "v-D509-واملا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03136",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/25",
+        "sourceText": "بضم الهمزة وكسر اللام وفتح الياء ﴿وَأُمْلِيَ﴾: يعقوب."
+      }
+    ],
+    "description": "بضم الهمزة وكسر اللام وفتح الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D509-اسرارهم-w2",
+    "surah": 47,
+    "ayah": 26,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "إِسْرَارَهُمْ",
+    "variantText": "أَسْرَارَهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D509-اسرارهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-اسرارهم-w2",
+        "variantId": "v-D509-اسرارهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03137",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/26",
+        "sourceText": "﴿إِسْرَارَهُمْ﴾: بكسر الهمزة ﴿إِسْرَارَهُمْ﴾ لحفص، وحمزة، والكسائي، وخلف؛ وبفتح الهمزة ﴿أَسْرَارَهُمْ﴾ للباقين."
+      }
+    ],
+    "description": "بفتح الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

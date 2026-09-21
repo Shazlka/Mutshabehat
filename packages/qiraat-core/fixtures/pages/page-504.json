@@ -105,5 +105,632 @@
     "description": "بهمزتين على الاستفهام",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P504-R03079-15-4",
+    "surah": 46,
+    "ayah": 15,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "إِحْسَـٰنًا ۖ",
+    "variantText": "حُسْنًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03079-15-4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03079-15-4-src",
+        "variantId": "v-AUDIT-P504-R03079-15-4",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03079",
+        "sourceText": "﴿إِحْسَـٰنًا﴾: بكسر الهمزة وإسكان الحاء وألف بعدها ﴿إِحْسَانًا﴾ لعاصم، وحمزة، والكسائي، وخلف؛ بضم الحاء وسكون السين بلا ألف ﴿حُسْنًا﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03079-15-4-ext",
+        "variantId": "v-AUDIT-P504-R03079-15-4",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 15 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بضم الحاء وسكون السين بلا ألف للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 15 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P504-R03080-15-7",
+    "surah": 46,
+    "ayah": 15,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "كُرْهًۭا",
+    "variantText": "كَرْهًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03080-15-7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03080-15-7-src",
+        "variantId": "v-AUDIT-P504-R03080-15-7",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03080",
+        "sourceText": "﴿كُرْهٗا﴾ (معاً): بضم الكاف ﴿كُرْهًا﴾ لابن ذكوان، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بفتح الكاف ﴿كَرْهًا﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03080-15-7-ext",
+        "variantId": "v-AUDIT-P504-R03080-15-7",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 15 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بفتح الكاف للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 15 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P504-R03082-16-3",
+    "surah": 46,
+    "ayah": 16,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نَتَقَبَّلُ",
+    "variantText": "يُتَقَبَّلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03082-16-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03082-16-3-src",
+        "variantId": "v-AUDIT-P504-R03082-16-3",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03082",
+        "sourceText": "﴿نَتَقَبَّلُ﴾، ﴿أَحْسَنَ﴾، ﴿وَنَتَجَاوَزُ﴾: بنون العظمة المفتوحة في الفعلين ونصب أحسنَ مفعولاً لحفص، وحمزة، والكسائي، وخلف؛ بياء الغيب المضمومة مبنياً للمجهول في الفعلين ورفع أحسنُ نائباً عن الفاعل ﴿يُتَقَبَّلُ... أَحْسَنُ... وَيُتَجَاوَزُ﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03082-16-3-ext",
+        "variantId": "v-AUDIT-P504-R03082-16-3",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بالغيب والبناء للمجهول للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P504-R03082-16-5",
+    "surah": 46,
+    "ayah": 16,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَحْسَنَ",
+    "variantText": "أَحْسَنُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03082-16-5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03082-16-5-src",
+        "variantId": "v-AUDIT-P504-R03082-16-5",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03082",
+        "sourceText": "﴿نَتَقَبَّلُ﴾، ﴿أَحْسَنَ﴾، ﴿وَنَتَجَاوَزُ﴾: بنون العظمة المفتوحة في الفعلين ونصب أحسنَ مفعولاً لحفص، وحمزة، والكسائي، وخلف؛ بياء الغيب المضمومة مبنياً للمجهول في الفعلين ورفع أحسنُ نائباً عن الفاعل ﴿يُتَقَبَّلُ... أَحْسَنُ... وَيُتَجَاوَزُ﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03082-16-5-ext",
+        "variantId": "v-AUDIT-P504-R03082-16-5",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بالغيب والبناء للمجهول للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P504-R03082-16-8",
+    "surah": 46,
+    "ayah": 16,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَنَتَجَاوَزُ",
+    "variantText": "وَيُتَجَاوَزُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03082-16-8",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03082-16-8-src",
+        "variantId": "v-AUDIT-P504-R03082-16-8",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03082",
+        "sourceText": "﴿نَتَقَبَّلُ﴾، ﴿أَحْسَنَ﴾، ﴿وَنَتَجَاوَزُ﴾: بنون العظمة المفتوحة في الفعلين ونصب أحسنَ مفعولاً لحفص، وحمزة، والكسائي، وخلف؛ بياء الغيب المضمومة مبنياً للمجهول في الفعلين ورفع أحسنُ نائباً عن الفاعل ﴿يُتَقَبَّلُ... أَحْسَنُ... وَيُتَجَاوَزُ﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03082-16-8-ext",
+        "variantId": "v-AUDIT-P504-R03082-16-8",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بالغيب والبناء للمجهول للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P504-R03083-17-4",
+    "surah": 46,
+    "ayah": 17,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أُفٍّۢ",
+    "variantText": "أُفٍّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03083-17-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03083-17-4-src",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03083",
+        "sourceText": "﴿أُفٍّ﴾: فيها ٣ قراءات (بكسر الفاء منونة لأبي عمرو وشعبة وحمزة والكسائي وخلف / بفتح الفاء بلا تنوين لنافع وحفص وأبي جعفر / بكسر الفاء بلا تنوين لابن كثير وابن عامر ويعقوب).",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03083-17-4-ext",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 17 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بكسر الفاء منونة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 17 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ],
+    "performanceNote": "بكسر الفاء منونة"
+  },
+  {
+    "id": "v-AUDIT-P504-R03083-17-4",
+    "surah": 46,
+    "ayah": 17,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أُفٍّۢ",
+    "variantText": "أُفَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03083-17-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03083-17-4-src",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03083",
+        "sourceText": "﴿أُفٍّ﴾: فيها ٣ قراءات (بكسر الفاء منونة لأبي عمرو وشعبة وحمزة والكسائي وخلف / بفتح الفاء بلا تنوين لنافع وحفص وأبي جعفر / بكسر الفاء بلا تنوين لابن كثير وابن عامر ويعقوب).",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03083-17-4-ext",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 17 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بفتح الفاء بلا تنوين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 17 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ],
+    "performanceNote": "بفتح الفاء بلا تنوين"
+  },
+  {
+    "id": "v-AUDIT-P504-R03083-17-4",
+    "surah": 46,
+    "ayah": 17,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أُفٍّۢ",
+    "variantText": "أُفِّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03083-17-4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03083-17-4-src",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03083",
+        "sourceText": "﴿أُفٍّ﴾: فيها ٣ قراءات (بكسر الفاء منونة لأبي عمرو وشعبة وحمزة والكسائي وخلف / بفتح الفاء بلا تنوين لنافع وحفص وأبي جعفر / بكسر الفاء بلا تنوين لابن كثير وابن عامر ويعقوب).",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03083-17-4-ext",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 17 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بكسر الفاء بلا تنوين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 17 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P504-R03085-18-4",
+    "surah": 46,
+    "ayah": 18,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْقَوْلُ",
+    "variantText": "عَلَيْهِمْ ٱلْقَوْلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03085-18-4",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03085-18-4-src",
+        "variantId": "v-AUDIT-P504-R03085-18-4",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03085",
+        "sourceText": "﴿عَلَيْهِمُ الْقَوْلُ﴾: بكسر الهاء وضم الميم وصلاً لنافع، وابن كثير، وابن عامر، وعاصم، وأبي جعفر؛ وبكسر الهاء والميم وصلاً لأبي عمرو؛ وبضم الهاء والميم وصلاً لحمزة، والكسائي، ويعقوب، وخلف.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03085-18-4-ext",
+        "variantId": "v-AUDIT-P504-R03085-18-4",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 18 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 18 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P504-R03085-18-4",
+    "surah": 46,
+    "ayah": 18,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْقَوْلُ",
+    "variantText": "عَلَيْهُمُ ٱلْقَوْلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03085-18-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03085-18-4-src",
+        "variantId": "v-AUDIT-P504-R03085-18-4",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03085",
+        "sourceText": "﴿عَلَيْهِمُ الْقَوْلُ﴾: بكسر الهاء وضم الميم وصلاً لنافع، وابن كثير، وابن عامر، وعاصم، وأبي جعفر؛ وبكسر الهاء والميم وصلاً لأبي عمرو؛ وبضم الهاء والميم وصلاً لحمزة، والكسائي، ويعقوب، وخلف.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03085-18-4-ext",
+        "variantId": "v-AUDIT-P504-R03085-18-4",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 18 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 18 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ],
+    "performanceNote": "بضم الهاء والميم وصلاً"
+  },
+  {
+    "id": "v-AUDIT-P504-R03086-19-5",
+    "surah": 46,
+    "ayah": 19,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَلِيُوَفِّيَهُمْ",
+    "variantText": "وَلِنُوَفِّيَهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-AUDIT-P504-R03086-19-5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P504-R03086-19-5-src",
+        "variantId": "v-AUDIT-P504-R03086-19-5",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03086",
+        "sourceText": "﴿وَلِيُوَفِّيَهُمْ﴾: بياء الغيب المضمومة ﴿وَلِيُوَفِّيَهُمْ﴾ لابن كثير، وأبي عمرو، وهشام، وعاصم، ويعقوب؛ بنون العظمة المفتوحة ﴿وَلِنُوَفِّيَهُمْ﴾ للباقين.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P504-R03086-19-5-ext",
+        "variantId": "v-AUDIT-P504-R03086-19-5",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 19 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بنون العظمة للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 19 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
+      }
+    ]
   }
 ]
