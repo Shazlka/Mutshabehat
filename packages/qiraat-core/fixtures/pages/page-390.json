@@ -64,5 +64,41 @@
     "description": "بفتح الياء وكسر الجيم مبنياً للفاعل",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D390-ومن_تكون-w2",
+    "surah": 28,
+    "ayah": 37,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَمَن تَكُونُ",
+    "variantText": "وَمَن يَكُونُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D390-ومن_تكون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D390-ومن_تكون-w2",
+        "variantId": "v-D390-ومن_تكون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P390-R02003",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَمَن تَكُونُ﴾: بتاء التأنيث لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ وبياء التذكير ﴿وَمَن يَكُونُ﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بياء التذكير",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
