@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T07:26:08+04:00",
+  "updatedAt": "2026-09-21T07:31:55+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -62,7 +62,7 @@
       229,
       260
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 1,
     "readerAssignmentsAdded": 1,
     "variantTextCorrections": 1,
@@ -76,14 +76,14 @@
     "baseCommit": "53741661c087e92fa6eb6dd8c565d82de20ac47c",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "commit": null,
-    "pushed": false,
-    "vercelState": "PENDING",
-    "deploymentId": null,
-    "deploymentUrl": null,
-    "productionApiSmoke": "pending"
+    "commit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
+    "pushed": true,
+    "vercelState": "READY",
+    "deploymentId": "dpl_85QCsHCohjH1pZfZiKDqZ2YgJxKf",
+    "deploymentUrl": "https://mutshabehat-v2-5kzdkyea8-shazlka-s-projects.vercel.app",
+    "productionApiSmoke": "Production debug API verified p229 11:68 token 7 and the added DOCX source link, plus p260 14:37 token 17, exact Hafs baseText, alternate أَفْئِيدَةً, and Q04-R01. Public Mushaf page 260 exposed the Hisham marker."
   },
-  "lastConfirmedDeployedDataCommit": "53741661c087e92fa6eb6dd8c565d82de20ac47c",
+  "lastConfirmedDeployedDataCommit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -724,6 +724,40 @@
         }
       ],
       "httpStatus": 200,
+      "status": "passed"
+    },
+    "latestQiraatFarshReconciliation": {
+      "commit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
+      "deploymentId": "dpl_85QCsHCohjH1pZfZiKDqZ2YgJxKf",
+      "deploymentUrl": "https://mutshabehat-v2-5kzdkyea8-shazlka-s-projects.vercel.app",
+      "pages": [
+        229,
+        260
+      ],
+      "sourceLinkedExistingVariant": {
+        "page": 229,
+        "surah": 11,
+        "ayah": 68,
+        "startToken": 7,
+        "variantId": "v-L229-ثمودا-1-w2",
+        "sourceLinkId": "s-DOCX-P229-THAMUDA-TANWEEN"
+      },
+      "newVariant": {
+        "page": 260,
+        "surah": 14,
+        "ayah": 37,
+        "startToken": 17,
+        "endToken": 17,
+        "variantId": "v-D260-افده-w2",
+        "hafsText": "أَفْـِٔدَةًۭ",
+        "variantText": "أَفْئِيدَةً",
+        "readingIds": [
+          "Q04-R01"
+        ]
+      },
+      "api": "/api/mushaf-1441/qiraat?page={229,260}&debug=1",
+      "apiHttpStatus": 200,
+      "uiPage260Marker": "قراءات مختلفة: هشام",
       "status": "passed"
     }
   },
@@ -1673,7 +1707,7 @@
       "productionApiSmoke": "Passed for all 11 additions: exact page, ayah, token span, Hafs baseText, alternate text, and reader IDs returned via the current production debug API."
     },
     {
-      "commit": null,
+      "commit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
       "batch": "Source-reconciled farsh variants, pages 229 and 260",
       "variantsAdded": 1,
       "rulingsAdded": 0,
@@ -1682,13 +1716,16 @@
         229,
         260
       ],
-      "pushed": false,
-      "vercelState": "PENDING",
+      "pushed": true,
+      "vercelState": "READY",
       "validation": "One token-backed variant added at 14:37; the p229 11:68 tanween group was confirmed against its existing token-7 record and received an additive DOCX source citation. No fixture deletions. Parser rerun is idempotent. Qiraat validator 1,884 variants / 9,771 rulings / 20 one-colour categories; 37/37 test:qiraat; all seven Mushaf validators; TypeScript; production build passed.",
       "sourceAudit": "The p229 DOCX row explicitly resolves to the existing 15-reader tanween variant at token 7; the generic parser span was suppressed to prevent a duplicate. At p260 14:37 the DOCX description and al-Budur al-Zahirah (IslamWeb, verse 37) both specify a yā after the hamza for Hisham Q04-R01; the source spelling أَفْيِدَةً is retained verbatim in sourceText and the supported variantText is أَفْئِيدَةً.",
       "databaseMigration": "none",
       "variantSourceRecordsAdded": 3,
-      "variantTextCorrections": 1
+      "variantTextCorrections": 1,
+      "deploymentId": "dpl_85QCsHCohjH1pZfZiKDqZ2YgJxKf",
+      "deploymentUrl": "https://mutshabehat-v2-5kzdkyea8-shazlka-s-projects.vercel.app",
+      "productionApiSmoke": "Production debug API verified p229 11:68 token 7 and the added DOCX source link, plus p260 14:37 token 17, exact Hafs baseText, alternate أَفْئِيدَةً, and Q04-R01. Public Mushaf page 260 exposed the Hisham marker."
     }
   ],
   "pages": [
@@ -8387,13 +8424,14 @@
       "productionDeployed": true,
       "productionUiVerified": false,
       "farshSourceReconciliation": {
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "locus": "11:68",
         "existingVariantId": "v-L229-ثمودا-1-w2",
         "token": 7,
         "variantAdded": false,
         "docxSourceLinked": true,
-        "note": "The DOCX tanween group and all 15 reading IDs match the existing one-token variant; no duplicate two-token span was imported."
+        "note": "The DOCX tanween group and all 15 reading IDs match the existing one-token variant; no duplicate two-token span was imported.",
+        "productionVerified": true
       }
     },
     {
@@ -9345,7 +9383,7 @@
         "liveApiVerified": true
       },
       "farshSourceReconciliation": {
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "locus": "14:37",
         "variantId": "v-D260-افده-w2",
         "token": 17,
@@ -9355,7 +9393,8 @@
         "hafsText": "أَفْـِٔدَةًۭ",
         "variantText": "أَفْئِيدَةً",
         "sourcePrintedVariantText": "أَفْيِدَةً",
-        "note": "DOCX sourceText is preserved verbatim; the stored alternate follows the explicit after-hamza description and independent al-Budur al-Zahirah reference."
+        "note": "DOCX sourceText is preserved verbatim; the stored alternate follows the explicit after-hamza description and independent al-Budur al-Zahirah reference.",
+        "productionVerified": true
       }
     },
     {
@@ -21118,7 +21157,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "53741661c087e92fa6eb6dd8c565d82de20ac47c",
+  "currentHeadCommit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -22414,7 +22453,7 @@
     "status": "passed",
     "reason": "The public production /api/mushaf-1441/qiraat?page=N&debug=1 endpoint returned all 11 exact variants, token spans, base texts, and reader IDs. The public Mushaf UI rendered page 410 and showed the new Ruways variant marker at 30:60."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_8oUxjoZ8dRCa9rgb813f9AhmUokq",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-di0qxtr1a-shazlka-s-projects.vercel.app",
+  "lastConfirmedVercelDeploymentId": "dpl_85QCsHCohjH1pZfZiKDqZ2YgJxKf",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5kzdkyea8-shazlka-s-projects.vercel.app",
   "latestSourceCoverageNote": "Page 229 11:68 tanween is already covered at exact token 7 and now has the DOCX citation; page 260 14:37 adds Hisham Q04-R01 with independently verified أَفْئِيدَةً while preserving the DOCX spelling أَفْيِدَةً in sourceText. One new variant and one reader assignment; full external family completeness review continues."
 }
