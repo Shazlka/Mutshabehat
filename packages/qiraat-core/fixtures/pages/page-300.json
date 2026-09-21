@@ -156,5 +156,72 @@
     "description": "بفتح اللام",
     "wajhIndex": 3,
     "evidence": []
+  },
+  {
+    "id": "v-D300-قبلا-w1",
+    "surah": 18,
+    "ayah": 55,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "قُبُلًۭا",
+    "variantText": "قُبُلًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D300-قبلا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-قبلا-w1",
+        "variantId": "v-D300-قبلا-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D300-هزوا-w2",
+    "surah": 18,
+    "ayah": 56,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًۭا",
+    "variantText": "هُزْءًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D300-هزوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-هزوا-w2",
+        "variantId": "v-D300-هزوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P300-R01029",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿هُزُوًا﴾: بضمتين مهموزاً لحفص؛ بضمتين بلا همز ﴿هُزُوًا﴾ لنافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، يعقوب؛ بضم فسكون مهموزاً ﴿هُزْءًا﴾ لحمزة وخلف."
+      }
+    ],
+    "description": "بضم فسكون مهموزًا",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

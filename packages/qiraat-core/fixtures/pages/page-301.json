@@ -160,5 +160,45 @@
     "description": "بالألف بعد الزاي",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D301-نكرا-w2",
+    "surah": 18,
+    "ayah": 74,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "نُّكْرًۭا",
+    "variantText": "نُكُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D301-نكرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-نكرا-w2",
+        "variantId": "v-D301-نكرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01045",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نُّكْرًا﴾: بإسكان الكاف لابن كثير، وأبي عمرو، وهشام، وحفص، وحمزة، والكسائي، وخلف؛ وبضم الكاف ﴿نُكُرًا﴾ للباقين."
+      }
+    ],
+    "description": "بضم الكاف",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

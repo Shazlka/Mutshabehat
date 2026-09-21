@@ -187,5 +187,81 @@
     "description": "بتشديد الطاء لحمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D303-يفقهون-w2",
+    "surah": 18,
+    "ayah": 93,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يَفْقَهُونَ",
+    "variantText": "يُفْقِهُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-يفقهون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-يفقهون-w2",
+        "variantId": "v-D303-يفقهون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01067",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَفْقَهُونَ﴾: بفتح الياء والهاء للجمهور؛ وبضم الياء وكسر القاف ﴿يُفْقِهُونَ﴾ لحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بضم الياء وكسر القاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-خرجا-w2",
+    "surah": 18,
+    "ayah": 94,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "خَرْجًا",
+    "variantText": "خَرَاجًا",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-خرجا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-خرجا-w2",
+        "variantId": "v-D303-خرجا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01069",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿خَرْجٗا﴾: بفتح الخاء وسكون الراء بلا ألف للجمهور؛ وبألف بعد الراء مفتوحة ﴿خَرَاجًا﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بألف بعد الراء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
