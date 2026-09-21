@@ -1,1 +1,158 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P534-55-70-1-b5cbbb27",
+    "surah": 55,
+    "ayah": 70,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِنَّ",
+    "variantText": "فِيهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P534-55-70-1-b5cbbb27",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P534-R03363",
+        "variantId": "v-AUDIT-P534-55-70-1-b5cbbb27",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03363",
+        "sourceText": "﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُنَّ﴾ ليعقوب.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P534-55-70-1-b5cbbb27-QP",
+        "variantId": "v-AUDIT-P534-55-70-1-b5cbbb27",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/70",
+        "sourceText": "الموضع 70 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُنَّ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 70 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/70"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P534-55-74-2-ab65fe62",
+    "surah": 55,
+    "ayah": 74,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَطْمِثْهُنَّ",
+    "variantText": "يَطْمُثْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P534-55-74-2-ab65fe62",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P534-R03364",
+        "variantId": "v-AUDIT-P534-55-74-2-ab65fe62",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03364",
+        "sourceText": "﴿يَطْمِثْهُنَّ﴾ (الموضع الثاني): بكسر الميم للجمهور؛ بالضم للكسائي إذا كسر الأول.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P534-55-74-2-ab65fe62-QP",
+        "variantId": "v-AUDIT-P534-55-74-2-ab65fe62",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/74",
+        "sourceText": "الموضع 74 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      },
+      {
+        "id": "s-DOCX-P533-R03359-v-AUDIT-P534-55-74-2-ab65fe62",
+        "variantId": "v-AUDIT-P534-55-74-2-ab65fe62",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03359",
+        "sourceText": "﴿يَطْمِثْهُنَّ﴾ (الموضع الأول): بكسر الميم للجمهور؛ وبضم الميم ﴿يَطْمُثْهُنَّ﴾ للكسائي في وجهه الثاني (وقاعدته: إذا كسر الموضع الأول ضم الثاني، وإذا ضم الأول كسر الثاني).",
+        "verificationNotes": "نص المصدر المساند يحدد بقية القراءة في الموضع نفسه، لاستكمال تقسيم الرواة مع الوجه المخالف."
+      }
+    ],
+    "description": "﴿يَطْمِثْهُنَّ﴾ (الموضع الثاني): بكسر الميم للجمهور؛ بالضم للكسائي إذا كسر الأول.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 74 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/74"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P534-55-78-4-ec50e225",
+    "surah": 55,
+    "ayah": 78,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ذِى ٱلْجَلَـٰلِ",
+    "variantText": "ذُو الْجَلَالِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "AUDIT-P534-55-78-4-ec50e225",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P534-R03365",
+        "variantId": "v-AUDIT-P534-55-78-4-ec50e225",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03365",
+        "sourceText": "﴿ذِي الْجَلَـٰلِ﴾ (خاتمة الرحمن): بياء الجر ﴿ذِي﴾ للجمهور؛ بواو الرفع ﴿ذُو الْجَلَالِ﴾ لابن عامر.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P534-55-78-4-ec50e225-QP",
+        "variantId": "v-AUDIT-P534-55-78-4-ec50e225",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/78",
+        "sourceText": "الموضع 78 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿ذِي الْجَلَـٰلِ﴾ (خاتمة الرحمن): بياء الجر ﴿ذِي﴾ للجمهور؛ بواو الرفع ﴿ذُو الْجَلَالِ﴾ لابن عامر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 78 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/78"
+      }
+    ]
+  }
+]

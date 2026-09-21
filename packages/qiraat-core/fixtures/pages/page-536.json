@@ -30,11 +30,26 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-DOCX-P536-R03383",
+        "variantId": "v-L536-s56a62b1-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03383",
+        "sourceText": "﴿تَذَكَّرُونَ﴾: بتخفيف الذال لحفص، وحمزة، والكسائي، وخلف؛ وبالتشديد للباقين.",
+        "verificationNotes": "السطر الأصلي موصول بالوجه الموجود، وقوبل إسناد الرواة مع الجهاز المستقل."
       }
     ],
     "description": "بتخفيف الذال وإسكانها",
     "wajhIndex": 1,
-    "evidence": []
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "The qiraat apparatus lists takhfif among Hafs, Hamza and al-Kisai, and identifies both al-Khalaf narrators separately.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/62"
+      }
+    ]
   },
   {
     "id": "v-L536-s56a65b0-w1",
@@ -67,5 +82,518 @@
     "description": "عن عاصم، وأبو جعفر بكسر الظاء مع فتح اللام",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P536-R03379-14e23815",
+    "surah": 56,
+    "ayah": 55,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "شُرْبَ",
+    "variantText": "شَرْبَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P536-R03379-14e23815",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03379-14e23815",
+        "variantId": "v-AUDIT-P536-R03379-14e23815",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03379",
+        "sourceText": "﴿شُرْبَ﴾: بضم الشين ﴿شُرْبَ﴾ لنافع، وعاصم، وحمزة، وأبي جعفر؛ بفتح الشين ﴿شَرْبَ﴾ للباقين.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿شُرْبَ﴾: بضم الشين ﴿شُرْبَ﴾ لنافع، وعاصم، وحمزة، وأبي جعفر؛ بفتح الشين ﴿شَرْبَ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Fatḥah on shīn: both narrators of Ibn Amir, Abu Amr, Ibn Kathir, al-Kisai, Yaqub and Khalaf al-Ashir.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/55"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03381-67d6796b",
+    "surah": 56,
+    "ayah": 60,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قَدَّرْنَا",
+    "variantText": "قَدَرْنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P536-R03381-67d6796b",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03381-67d6796b",
+        "variantId": "v-AUDIT-P536-R03381-67d6796b",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03381",
+        "sourceText": "﴿قَدَّرْنَا﴾: بتشديد الدال للجمهور؛ بتخفيف الدال ﴿قَدَرْنَا﴾ لابن كثير.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿قَدَّرْنَا﴾: بتشديد الدال للجمهور؛ بتخفيف الدال ﴿قَدَرْنَا﴾ لابن كثير.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Takhfif of dāl: al-Bazzi and Qunbul from Ibn Kathir.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/60"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03382-7833f84a",
+    "surah": 56,
+    "ayah": 62,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّشْأَةَ",
+    "variantText": "النَّشَآءَةَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P536-R03382-7833f84a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03382-7833f84a",
+        "variantId": "v-AUDIT-P536-R03382-7833f84a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03382",
+        "sourceText": "﴿النَّشْأَةَ﴾: بسكون الشين وقصر الهمزة للجمهور؛ بفتح الشين والمد والهمز لابن كثير وأبي عمرو.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿النَّشْأَةَ﴾: بسكون الشين وقصر الهمزة للجمهور؛ بفتح الشين والمد والهمز لابن كثير وأبي عمرو.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Fatḥah on shīn with alif: al-Bazzi, Qunbul, al-Duri and al-Susi.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/62"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03384-55e0ce75",
+    "surah": 56,
+    "ayah": 66,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِنَّا لَمُغْرَمُونَ",
+    "variantText": "أَءِنَّا لَمُغْرَمُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-P536-R03384-55e0ce75",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03384-55e0ce75",
+        "variantId": "v-AUDIT-P536-R03384-55e0ce75",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03384",
+        "sourceText": "﴿إِنَّا لَمُغْرَمُونَ﴾: بهمزة مكسورة على الإخبار للجمهور؛ بهمزتين على الاستفهام ﴿أَئِنَّا لَمُغْرَمُونَ﴾ لشعبة.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿إِنَّا لَمُغْرَمُونَ﴾: بهمزة مكسورة على الإخبار للجمهور؛ بهمزتين على الاستفهام ﴿أَئِنَّا لَمُغْرَمُونَ﴾ لشعبة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Two hamzas: Shuba alone.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/66"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03385-71140cd3",
+    "surah": 56,
+    "ayah": 75,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "بِمَوَٰقِعِ",
+    "variantText": "بِمَوْقِعِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P536-R03385-71140cd3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03385-71140cd3",
+        "variantId": "v-AUDIT-P536-R03385-71140cd3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03385",
+        "sourceText": "﴿بِمَوَٰقِعِ﴾: جمعاً وألف بعد الواو ﴿بِمَوَاقِعِ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ بالمفرد وإسكان الواو بلا ألف ﴿بِمَوْقِعِ﴾ لحمزة والكسائي وخلف.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿بِمَوَٰقِعِ﴾: جمعاً وألف بعد الواو ﴿بِمَوَاقِعِ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ بالمفرد وإسكان الواو بلا ألف ﴿بِمَوْقِعِ﴾ لحمزة والكسائي وخلف.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Singular without alif after wāw: Hamza, al-Kisai and Khalaf al-Ashir.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/75"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03380-PERF-b385f0aa",
+    "surah": 56,
+    "ayah": 58,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَفَرَءَيْتُم",
+    "variantText": "أَفَرَءَيْتُم",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P536-R03380-PERF-b385f0aa",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق الهمزة الثانية مع صلة الميم",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-b385f0aa",
+        "variantId": "v-AUDIT-P536-R03380-PERF-b385f0aa",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03380",
+        "sourceText": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-b385f0aa-QURANPEDIA",
+        "variantId": "v-AUDIT-P536-R03380-PERF-b385f0aa",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:58",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/58",
+        "sourceText": "تحقيق الهمزة الثانية مع صلة الميم",
+        "verificationNotes": "الجهاز المستقل يذكر الرواية والوجه الأدائي صراحةً."
+      }
+    ],
+    "description": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Qunbul and al-Bazzi: the second hamza is verified and the mīm is connected.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/58"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03380-PERF-fe7dd2d9",
+    "surah": 56,
+    "ayah": 58,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَفَرَءَيْتُم",
+    "variantText": "أَفَرَءَيْتُم",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P536-R03380-PERF-fe7dd2d9",
+    "locusType": "performance_variant",
+    "performanceNote": "تسهيل الهمزة الثانية مع مد ست حركات",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-fe7dd2d9",
+        "variantId": "v-AUDIT-P536-R03380-PERF-fe7dd2d9",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03380",
+        "sourceText": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-fe7dd2d9-QURANPEDIA",
+        "variantId": "v-AUDIT-P536-R03380-PERF-fe7dd2d9",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:58",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/58",
+        "sourceText": "تسهيل الهمزة الثانية مع مد ست حركات",
+        "verificationNotes": "الجهاز المستقل يذكر الرواية والوجه الأدائي صراحةً."
+      }
+    ],
+    "description": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Warsh: second hamza eased, or replaced by a six-count long alif; this record stores the easing face.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/58"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03380-PERF-ae204faa",
+    "surah": 56,
+    "ayah": 58,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَفَرَءَيْتُم",
+    "variantText": "أَفَرَءَيْتُم",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P536-R03380-PERF-ae204faa",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة الثانية ألفاً ممدودة ست حركات",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-ae204faa",
+        "variantId": "v-AUDIT-P536-R03380-PERF-ae204faa",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03380",
+        "sourceText": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-ae204faa-QURANPEDIA",
+        "variantId": "v-AUDIT-P536-R03380-PERF-ae204faa",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:58",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/58",
+        "sourceText": "إبدال الهمزة الثانية ألفاً ممدودة ست حركات",
+        "verificationNotes": "الجهاز المستقل يذكر الرواية والوجه الأدائي صراحةً."
+      }
+    ],
+    "description": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Warsh: second hamza eased, or replaced by a six-count long alif; this record stores the alif-substitution face.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/58"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03380-PERF-1006ef40",
+    "surah": 56,
+    "ayah": 58,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَفَرَءَيْتُم",
+    "variantText": "أَفَرَءَيْتُم",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01"
+    ],
+    "locusId": "AUDIT-P536-R03380-PERF-1006ef40",
+    "locusType": "performance_variant",
+    "performanceNote": "تسهيل الهمزة الثانية مع إسكان الميم",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-1006ef40",
+        "variantId": "v-AUDIT-P536-R03380-PERF-1006ef40",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03380",
+        "sourceText": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-1006ef40-QURANPEDIA",
+        "variantId": "v-AUDIT-P536-R03380-PERF-1006ef40",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:58",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/58",
+        "sourceText": "تسهيل الهمزة الثانية مع إسكان الميم",
+        "verificationNotes": "الجهاز المستقل يذكر الرواية والوجه الأدائي صراحةً."
+      }
+    ],
+    "description": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Qalun: second hamza eased with mīm sukun.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/58"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03380-PERF-365be4f5",
+    "surah": 56,
+    "ayah": 58,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَفَرَءَيْتُم",
+    "variantText": "أَفَرَءَيْتُم",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P536-R03380-PERF-365be4f5",
+    "locusType": "performance_variant",
+    "performanceNote": "تسهيل الهمزة الثانية مع صلة الميم",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-365be4f5",
+        "variantId": "v-AUDIT-P536-R03380-PERF-365be4f5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03380",
+        "sourceText": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-365be4f5-QURANPEDIA",
+        "variantId": "v-AUDIT-P536-R03380-PERF-365be4f5",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:58",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/58",
+        "sourceText": "تسهيل الهمزة الثانية مع صلة الميم",
+        "verificationNotes": "الجهاز المستقل يذكر الرواية والوجه الأدائي صراحةً."
+      }
+    ],
+    "description": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Qalun and both Abu Jaafar narrators: second hamza eased with mīm connection.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/58"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P536-R03380-PERF-f0ed9283",
+    "surah": 56,
+    "ayah": 58,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَفَرَءَيْتُم",
+    "variantText": "أَفَرَءَيْتُم",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P536-R03380-PERF-f0ed9283",
+    "locusType": "performance_variant",
+    "performanceNote": "حذف الهمزة الثانية مع إسكان الميم",
+    "sources": [
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-f0ed9283",
+        "variantId": "v-AUDIT-P536-R03380-PERF-f0ed9283",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P536-R03380",
+        "sourceText": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-AUDIT-P536-R03380-PERF-f0ed9283-QURANPEDIA",
+        "variantId": "v-AUDIT-P536-R03380-PERF-f0ed9283",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:58",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/58",
+        "sourceText": "حذف الهمزة الثانية مع إسكان الميم",
+        "verificationNotes": "الجهاز المستقل يذكر الرواية والوجه الأدائي صراحةً."
+      }
+    ],
+    "description": "﴿أَفَرَءَيْتُم﴾ (جميعاً): الأوجه الأربعة المعتادة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Both al-Kisai narrators: delete the second hamza with mīm sukun.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/58"
+      }
+    ]
   }
 ]

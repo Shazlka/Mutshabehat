@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "id": "v-AUDIT-DOCX-P542-R03432-fc7a3b2347",
+    "surah": 58,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُظَـٰهِرُونَ",
+    "variantText": "يَظَّهَّرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P542-R03432-fc7a3b2347",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03432-fc7a3b2347",
+        "variantId": "v-AUDIT-DOCX-P542-R03432-fc7a3b2347",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P542-R03432",
+        "sourceText": "بضم التاء وكسر الهاء مخففة وألف بعد الظاء ﴿يُظَاهِرُونَ﴾: عاصم.",
+        "verificationNotes": "سطر المصدر يعيّن الوجه؛ طوبق مع التوكن ومع الجهاز المستقل."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03432-fc7a3b2347-QP",
+        "variantId": "v-AUDIT-DOCX-P542-R03432-fc7a3b2347",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/2",
+        "sourceText": "تشديد الظاء والهاء وحذف الألف: نافع وابن كثير وأبو عمرو ويعقوب.",
+        "verificationNotes": "المرجع يذكر مجموعات الرواة لهذه الصورة صراحةً."
+      }
+    ],
+    "description": "بضم التاء وكسر الهاء مخففة وألف بعد الظاء ﴿يُظَاهِرُونَ﴾: عاصم.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "تشديد الظاء والهاء وحذف الألف: نافع وابن كثير وأبو عمرو ويعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P542-R03434-18e50e231f",
+    "surah": 58,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُظَـٰهِرُونَ",
+    "variantText": "يَظَّاهَرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P542-R03434-18e50e231f",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03434-18e50e231f",
+        "variantId": "v-AUDIT-DOCX-P542-R03434-18e50e231f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P542-R03434",
+        "sourceText": "بفتح التاء والظاء مشددة وتخفيف الهاء وألف بعد الظاء ﴿يَظَّاهَرُونَ﴾: ابن عامر، حمزة، الكسائي، أبو جعفر، خلف.",
+        "verificationNotes": "سطر المصدر يعيّن الوجه؛ طوبق مع التوكن ومع الجهاز المستقل."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03434-18e50e231f-QP",
+        "variantId": "v-AUDIT-DOCX-P542-R03434-18e50e231f",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/2",
+        "sourceText": "إثبات الألف وفتح الياء وتشديد الظاء: ابن عامر وحمزة والكسائي وأبو جعفر وخلف العاشر (إسحاق وإدريس).",
+        "verificationNotes": "المرجع يذكر مجموعات الرواة لهذه الصورة صراحةً."
+      }
+    ],
+    "description": "بفتح التاء والظاء مشددة وتخفيف الهاء وألف بعد الظاء ﴿يَظَّاهَرُونَ﴾: ابن عامر، حمزة، الكسائي، أبو جعفر، خلف.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إثبات الألف وفتح الياء وتشديد الظاء: ابن عامر وحمزة والكسائي وأبو جعفر وخلف العاشر (إسحاق وإدريس).",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/2"
+      }
+    ]
+  }
+]

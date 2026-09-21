@@ -1,1 +1,731 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P545-58-22-25-03457-1-قلوبهم الايمان-قلوبهم الايمان",
+    "surah": 58,
+    "ayah": 22,
+    "startToken": 25,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْإِيمَـٰنَ",
+    "variantText": "قُلُوبِهِمُ الْإِيمَـٰنَ",
+    "differenceType": "SILAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P545-58-22-25-03457-1-قلوبهم الايمان-قلوبهم الايمان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-58-22-25-03457-1-قلوبهم الايمان-قلوبهم الايمان-DOC",
+        "variantId": "v-AUDIT-P545-58-22-25-03457-1-قلوبهم الايمان-قلوبهم الايمان",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03457",
+        "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-58-22-25-03457-1-قلوبهم الايمان-قلوبهم الايمان-QP",
+        "variantId": "v-AUDIT-P545-58-22-25-03457-1-قلوبهم الايمان-قلوبهم الايمان",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/22",
+        "sourceText": "في ميم الجمع قبل همزة الوصل: صلة الميم لنافع وابن كثير وابن عامر وعاصم وأبي جعفر.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "في ميم الجمع قبل همزة الوصل: صلة الميم لنافع وابن كثير وابن عامر وعاصم وأبي جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/22"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-58-22-25-03458-1-قلوبهم الايمان-قلوبهم الايمان",
+    "surah": 58,
+    "ayah": 22,
+    "startToken": 25,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْإِيمَـٰنَ",
+    "variantText": "قُلُوبِهِمُ الْإِيمَـٰنَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P545-58-22-25-03458-1-قلوبهم الايمان-قلوبهم الايمان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-58-22-25-03458-1-قلوبهم الايمان-قلوبهم الايمان-DOC",
+        "variantId": "v-AUDIT-P545-58-22-25-03458-1-قلوبهم الايمان-قلوبهم الايمان",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03458",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو، ويعقوب.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-58-22-25-03458-1-قلوبهم الايمان-قلوبهم الايمان-QP",
+        "variantId": "v-AUDIT-P545-58-22-25-03458-1-قلوبهم الايمان-قلوبهم الايمان",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/22",
+        "sourceText": "في الميم والهاء عند الوصل: أبو عمرو ويعقوب بكسرهما.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "في الميم والهاء عند الوصل: أبو عمرو ويعقوب بكسرهما.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/22"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-58-22-25-03459-1-قلوبهم الايمان-قلوبهم الايمان",
+    "surah": 58,
+    "ayah": 22,
+    "startToken": 25,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْإِيمَـٰنَ",
+    "variantText": "قُلُوبِهُمُ الْإِيمَـٰنَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P545-58-22-25-03459-1-قلوبهم الايمان-قلوبهم الايمان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-58-22-25-03459-1-قلوبهم الايمان-قلوبهم الايمان-DOC",
+        "variantId": "v-AUDIT-P545-58-22-25-03459-1-قلوبهم الايمان-قلوبهم الايمان",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03459",
+        "sourceText": "بضم الهاء والميم وصلاً ﴿قُلُوبِهُمُ﴾: حمزة، والكسائي، وخلف.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل. أثبت خلف العاشر Q10 من جهاز القراءات المستقل؛ نص المصدر يذكر خلفاً مجرداً بعد حمزة والكسائي."
+      },
+      {
+        "id": "s-AUDIT-P545-58-22-25-03459-1-قلوبهم الايمان-قلوبهم الايمان-QP",
+        "variantId": "v-AUDIT-P545-58-22-25-03459-1-قلوبهم الايمان-قلوبهم الايمان",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/22",
+        "sourceText": "في الميم والهاء عند الوصل: حمزة والكسائي وخلف العاشر بضمّهما.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "في الميم والهاء عند الوصل: حمزة والكسائي وخلف العاشر بضمّهما.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/22"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-1-9-03460-1-وهو-وهو",
+    "surah": 59,
+    "ayah": 1,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P545-59-1-9-03460-1-وهو-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-1-9-03460-1-وهو-وهو-DOC",
+        "variantId": "v-AUDIT-P545-59-1-9-03460-1-وهو-وهو",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03460",
+        "sourceText": "﴿وَهُوَ﴾ (فاتحة الحشر): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-1-9-03460-1-وهو-وهو-QP",
+        "variantId": "v-AUDIT-P545-59-1-9-03460-1-وهو-وهو",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/surah/7/59/text",
+        "sourceText": "مصحف قالون يثبت في الحشر 59:1 رسم «وَهْوَ»؛ وسطر المصدر يسمي قالون وأبا عمرو والكسائي وأبا جعفر.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "إسكان الهاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مصحف قالون يثبت في الحشر 59:1 رسم «وَهْوَ»؛ وسطر المصدر يسمي قالون وأبا عمرو والكسائي وأبا جعفر.",
+        "url": "https://quranpedia.net/surah/7/59/text"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-31-03462-1-قلوبهم الرعب-قلوبهم الرعب",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلرُّعْبَ ۚ",
+    "variantText": "قُلُوبِهِمُ الرُّعْبَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01",
+      "Q05-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-31-03462-1-قلوبهم الرعب-قلوبهم الرعب",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر الهاء وضم الميم وإسكان العين",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-31-03462-1-قلوبهم الرعب-قلوبهم الرعب-DOC",
+        "variantId": "v-AUDIT-P545-59-2-31-03462-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03462",
+        "sourceText": "بكسر الهاء وضم الميم وإسكان العين ﴿قُلُوبِهِمُ الرُّعْبَ﴾: نافع، ابن كثير، عاصم.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-31-03462-1-قلوبهم الرعب-قلوبهم الرعب-QP",
+        "variantId": "v-AUDIT-P545-59-2-31-03462-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(قُلُوبِهِمُ الرُّعْبَ) بكسر الهاء وضم الميم وإسكان العين: قالون وورش والبزي وقنبل وشعبة وحفص.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وإسكان العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(قُلُوبِهِمُ الرُّعْبَ) بكسر الهاء وضم الميم وإسكان العين: قالون وورش والبزي وقنبل وشعبة وحفص.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-31-03463-1-قلوبهم الرعب-قلوبهم الرعب",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلرُّعْبَ ۚ",
+    "variantText": "قُلُوبِهِمِ الرُّعْبَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-31-03463-1-قلوبهم الرعب-قلوبهم الرعب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-31-03463-1-قلوبهم الرعب-قلوبهم الرعب-DOC",
+        "variantId": "v-AUDIT-P545-59-2-31-03463-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03463",
+        "sourceText": "بكسر الهاء والميم وإسكان العين: أبو عمرو.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-31-03463-1-قلوبهم الرعب-قلوبهم الرعب-QP",
+        "variantId": "v-AUDIT-P545-59-2-31-03463-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(قُلُوبِهِمِ الرُّعْبَ) بكسر الهاء والميم وإسكان العين: الدوري والسوسي عن أبي عمرو.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الهاء والميم وإسكان العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(قُلُوبِهِمِ الرُّعْبَ) بكسر الهاء والميم وإسكان العين: الدوري والسوسي عن أبي عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-31-03464-1-قلوبهم الرعب-قلوبهم الرعب",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلرُّعْبَ ۚ",
+    "variantText": "قُلُوبِهِمُ الرُّعُبَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-31-03464-1-قلوبهم الرعب-قلوبهم الرعب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-31-03464-1-قلوبهم الرعب-قلوبهم الرعب-DOC",
+        "variantId": "v-AUDIT-P545-59-2-31-03464-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03464",
+        "sourceText": "بكسر الهاء وضم الميم وضم العين ﴿الرُّعُبَ﴾: ابن عامر، وأبو جعفر.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-31-03464-1-قلوبهم الرعب-قلوبهم الرعب-QP",
+        "variantId": "v-AUDIT-P545-59-2-31-03464-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(قُلُوبِهِمُ الرُّعُبَ) بكسر الهاء وضم الميم وضم العين: هشام وابن ذكوان، ابن وردان وابن جمّاز.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(قُلُوبِهِمُ الرُّعُبَ) بكسر الهاء وضم الميم وضم العين: هشام وابن ذكوان، ابن وردان وابن جمّاز.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-31-03465-1-قلوبهم الرعب-قلوبهم الرعب",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلرُّعْبَ ۚ",
+    "variantText": "قُلُوبِهُمُ الرُّعْبَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-31-03465-1-قلوبهم الرعب-قلوبهم الرعب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-31-03465-1-قلوبهم الرعب-قلوبهم الرعب-DOC",
+        "variantId": "v-AUDIT-P545-59-2-31-03465-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03465",
+        "sourceText": "بضم الهاء والميم وإسكان العين: حمزة، وخلف.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-31-03465-1-قلوبهم الرعب-قلوبهم الرعب-QP",
+        "variantId": "v-AUDIT-P545-59-2-31-03465-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(قُلُوبِهُمُ الرُّعْبَ) بضم الهاء والميم وإسكان العين: خلف وخلاد عن حمزة، وإسحاق وإدريس عن خلف العاشر.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم الهاء والميم وإسكان العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(قُلُوبِهُمُ الرُّعْبَ) بضم الهاء والميم وإسكان العين: خلف وخلاد عن حمزة، وإسحاق وإدريس عن خلف العاشر.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-31-03466-1-قلوبهم الرعب-قلوبهم الرعب",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلرُّعْبَ ۚ",
+    "variantText": "قُلُوبِهِمُ الرُّعُبَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-31-03466-1-قلوبهم الرعب-قلوبهم الرعب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-31-03466-1-قلوبهم الرعب-قلوبهم الرعب-DOC",
+        "variantId": "v-AUDIT-P545-59-2-31-03466-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03466",
+        "sourceText": "بضم الهاء والميم وضم العين: الكسائي.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-31-03466-1-قلوبهم الرعب-قلوبهم الرعب-QP",
+        "variantId": "v-AUDIT-P545-59-2-31-03466-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(قُلُوبِهِمُ الرُّعُبَ) بضم العين: أبو الحارث والدوري عن الكسائي.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(قُلُوبِهِمُ الرُّعُبَ) بضم العين: أبو الحارث والدوري عن الكسائي.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-31-03467-1-قلوبهم الرعب-قلوبهم الرعب",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلرُّعْبَ ۚ",
+    "variantText": "قُلُوبِهِمِ الرُّعُبَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-31-03467-1-قلوبهم الرعب-قلوبهم الرعب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-31-03467-1-قلوبهم الرعب-قلوبهم الرعب-DOC",
+        "variantId": "v-AUDIT-P545-59-2-31-03467-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03467",
+        "sourceText": "بكسر الهاء والميم وضم العين: يعقوب.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-31-03467-1-قلوبهم الرعب-قلوبهم الرعب-QP",
+        "variantId": "v-AUDIT-P545-59-2-31-03467-1-قلوبهم الرعب-قلوبهم الرعب",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(قُلُوبِهِمِ الرُّعُبَ) بكسر الهاء والميم وضم العين: روح ورويس عن يعقوب.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الهاء والميم وضم العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(قُلُوبِهِمِ الرُّعُبَ) بكسر الهاء والميم وضم العين: روح ورويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-33-03468-1-يخربون-يخربون",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 33,
+    "endToken": 33,
+    "operation": "REPLACE",
+    "hafsText": "يُخْرِبُونَ",
+    "variantText": "يُخَرِّبُونَ",
+    "differenceType": "SHADDA",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-33-03468-1-يخربون-يخربون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-33-03468-1-يخربون-يخربون-DOC",
+        "variantId": "v-AUDIT-P545-59-2-33-03468-1-يخربون-يخربون",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03468",
+        "sourceText": "﴿يُخْرِبُونَ﴾: بتشديد الراء المكسورة ﴿يُخَرِّبُونَ﴾ لجميع القراء عدا أبا عمرو؛ بتخفيف الراء وسكون الخاء ﴿يُخْرِبُونَ﴾ لأبي عمرو.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل. نُقل الوجه المشدّد إلى أبي عمرو وفق الجهاز المستقل؛ النص المصدر يعكس التعيين، وأُبقي raw sourceText كما هو."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-33-03468-1-يخربون-يخربون-QP",
+        "variantId": "v-AUDIT-P545-59-2-33-03468-1-يخربون-يخربون",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(يُخَرِّبُونَ) بفتح الخاء وتشديد الراء: الدوري والسوسي عن أبي عمرو.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بفتح الخاء وتشديد الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(يُخَرِّبُونَ) بفتح الخاء وتشديد الراء: الدوري والسوسي عن أبي عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-34-03469-1-بيوتهم-بيوتهم",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 34,
+    "endToken": 34,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتَهُم",
+    "variantText": "بِيُوتَهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-34-03469-1-بيوتهم-بيوتهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-34-03469-1-بيوتهم-بيوتهم-DOC",
+        "variantId": "v-AUDIT-P545-59-2-34-03469-1-بيوتهم-بيوتهم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03469",
+        "sourceText": "﴿بُيُوتَهُم﴾: بكسر الباء لورش، وأبي عمرو، وحفص، وأبي جعفر، ويعقوب؛ وبضمها للباقين.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل. استبعد حفص من الكسر لأن الجهاز الخاص بالآية يثبت له الضم."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-34-03469-1-بيوتهم-بيوتهم-QP",
+        "variantId": "v-AUDIT-P545-59-2-34-03469-1-بيوتهم-بيوتهم",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(بِيُوتَهُمْ) بكسر الباء وإسكان الميم: قالون، هشام، ابن ذكوان، شعبة، خلف وخلاد، أبو الحارث، الدوري عن الكسائي، إسحاق وإدريس عن خلف.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الباء وإسكان الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(بِيُوتَهُمْ) بكسر الباء وإسكان الميم: قالون، هشام، ابن ذكوان، شعبة، خلف وخلاد، أبو الحارث، الدوري عن الكسائي، إسحاق وإدريس عن خلف.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-2-35-03470-1-بايديهم-بايديهم",
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 35,
+    "endToken": 35,
+    "operation": "REPLACE",
+    "hafsText": "بِأَيْدِيهِمْ",
+    "variantText": "بِأَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P545-59-2-35-03470-1-بايديهم-بايديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-2-35-03470-1-بايديهم-بايديهم-DOC",
+        "variantId": "v-AUDIT-P545-59-2-35-03470-1-بايديهم-بايديهم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03470",
+        "sourceText": "﴿بِأَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿بِأَيْدِيهُمُ﴾ ليعقوب.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P545-59-2-35-03470-1-بايديهم-بايديهم-QP",
+        "variantId": "v-AUDIT-P545-59-2-35-03470-1-بايديهم-بايديهم",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/2",
+        "sourceText": "(بِأَيْدِيهُمْ) بضم الهاء وإسكان الميم: روح ورويس عن يعقوب.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(بِأَيْدِيهُمْ) بضم الهاء وإسكان الميم: روح ورويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P545-59-3-5-03471-1-عليهم الجلاء-عليهم الجلاء",
+    "surah": 59,
+    "ayah": 3,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْجَلَآءَ",
+    "variantText": "عَلَيْهُمُ الْجَلَآءَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P545-59-3-5-03471-1-عليهم الجلاء-عليهم الجلاء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P545-59-3-5-03471-1-عليهم الجلاء-عليهم الجلاء-DOC",
+        "variantId": "v-AUDIT-P545-59-3-5-03471-1-عليهم الجلاء-عليهم الجلاء",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P545-R03471",
+        "sourceText": "﴿عَلَيْهِمُ الْجَلَآءَ﴾: بكسر الهاء وضم الميم وصلاً لنافع، وابن كثير، وابن عامر، وعاصم، وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو؛ بضم الهاء والميم لحمزة والكسائي وخلف ويعقوب.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل. أضيف Q10 لثبوت إدريس وإسحاق في الجهاز المستقل؛ اللفظ المجرد في سطر المصدر لا يكفي وحده."
+      },
+      {
+        "id": "s-AUDIT-P545-59-3-5-03471-1-عليهم الجلاء-عليهم الجلاء-QP",
+        "variantId": "v-AUDIT-P545-59-3-5-03471-1-عليهم الجلاء-عليهم الجلاء",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hashr/3",
+        "sourceText": "(عَلَيْهُمُ) بضم الهاء والميم: خلف وخلاد عن حمزة، رويس وروح عن يعقوب، أبو الحارث والدوري عن الكسائي، وإسحاق وإدريس عن خلف العاشر.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم الهاء والميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(عَلَيْهُمُ) بضم الهاء والميم: خلف وخلاد عن حمزة، رويس وروح عن يعقوب، أبو الحارث والدوري عن الكسائي، وإسحاق وإدريس عن خلف العاشر.",
+        "url": "https://quranpedia.net/qiraat/al-hashr/3"
+      }
+    ]
+  }
+]

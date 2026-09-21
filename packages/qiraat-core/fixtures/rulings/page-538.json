@@ -65,16 +65,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -82,7 +72,15 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceName": "تصحيح إسناد وفق قاعدة المشروع المعتمدة لخلف",
+        "sourceReference": "qiraat_records.jsonl، page 538",
+        "sourceText": "النص المصدر يذكر «خلف» فقط، من غير «خلف العاشر» أو تسمية إسحاق/إدريس؛ أُبقي الإسناد لخلَف عن حمزة (Q06)، ولم يُنسب لخلف العاشر (Q10).",
+        "verificationNotes": "تطبيق توجيه المستخدم: bare خلف = خلف عن حمزة؛ خلف العاشر لا يضاف إلا إذا صُرّح باسمه."
+      }
+    ]
   },
   {
     "id": "r-p538-IMALAH_TAQLIL-النهار-1",
@@ -226,16 +224,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -243,6 +231,14 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceName": "تصحيح إسناد وفق قاعدة المشروع المعتمدة لخلف",
+        "sourceReference": "qiraat_records.jsonl، page 538",
+        "sourceText": "النص المصدر يذكر «خلف» فقط، من غير «خلف العاشر» أو تسمية إسحاق/إدريس؛ أُبقي الإسناد لخلَف عن حمزة (Q06)، ولم يُنسب لخلف العاشر (Q10).",
+        "verificationNotes": "تطبيق توجيه المستخدم: bare خلف = خلف عن حمزة؛ خلف العاشر لا يضاف إلا إذا صُرّح باسمه."
+      }
+    ]
   }
 ]

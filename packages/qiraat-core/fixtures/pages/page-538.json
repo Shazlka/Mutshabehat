@@ -1,1 +1,445 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P538-R03395-f8593dfe",
+    "surah": 57,
+    "ayah": 5,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُ ٱلْأُمُورُ",
+    "variantText": "تَرْجِعُ ٱلْأُمُورُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P538-R03395-f8593dfe",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03395-f8593dfe",
+        "variantId": "v-AUDIT-P538-R03395-f8593dfe",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03395",
+        "sourceText": "﴿تُرْجَعُ الْأُمُورُ﴾: بضم التاء وفتح الجيم لنافع، وابن كثير، وأبي عمرو، وعاصم، وأبي جعفر؛ بفتح التاء وكسر الجيم ﴿تَرْجِعُ﴾ للباقين.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿تُرْجَعُ الْأُمُورُ﴾: بضم التاء وفتح الجيم لنافع، وابن كثير، وأبي عمرو، وعاصم، وأبي جعفر؛ بفتح التاء وكسر الجيم ﴿تَرْجِعُ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Active form with fatḥah tāʾ and kasrah jīm: narrators of Ibn Amir, Hamza, al-Kisai, Yaqub and Khalaf al-Ashir.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/5"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03396-cf4ca57a",
+    "surah": 57,
+    "ayah": 8,
+    "startToken": 11,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "أَخَذَ مِيثَـٰقَكُمْ",
+    "variantText": "أُخِذَ مِيثَاقُكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P538-R03396-cf4ca57a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03396-cf4ca57a",
+        "variantId": "v-AUDIT-P538-R03396-cf4ca57a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03396",
+        "sourceText": "﴿أَخَذَ مِيثَـٰقَكُمْ﴾: بفتح الهمزة والخاء ونصب ميثاقكم للجمهور؛ بضم الهمزة وكسر الخاء مبنياً للمجهول ورفع ميثاقُكم ﴿أُخِذَ مِيثَاقُكُمْ﴾ لأبي عمرو.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿أَخَذَ مِيثَـٰقَكُمْ﴾: بفتح الهمزة والخاء ونصب ميثاقكم للجمهور؛ بضم الهمزة وكسر الخاء مبنياً للمجهول ورفع ميثاقُكم ﴿أُخِذَ مِيثَاقُكُمْ﴾ لأبي عمرو.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Passive form with raised mīthāq: al-Susi and al-Duri from Abu Amr.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/8"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03397-1c35f197",
+    "surah": 57,
+    "ayah": 9,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُنَزِّلُ",
+    "variantText": "يُنْزِلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P538-R03397-1c35f197",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03397-1c35f197",
+        "variantId": "v-AUDIT-P538-R03397-1c35f197",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03397",
+        "sourceText": "﴿يُنَزِّلُ﴾: بتشديد الزاي للجمهور؛ بتخفيف الزاي ﴿يُنْزِلُ﴾ لابن كثير، وأبي عمرو، ويعقوب.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿يُنَزِّلُ﴾: بتشديد الزاي للجمهور؛ بتخفيف الزاي ﴿يُنْزِلُ﴾ لابن كثير، وأبي عمرو، ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Lightened verb with sukūn nūn: Ibn Kathir, Abu Amr and Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/9"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03398-2834a8bb",
+    "surah": 57,
+    "ayah": 9,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "لَرَءُوفٌۭ",
+    "variantText": "لَرَؤُفٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P538-R03398-2834a8bb",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03398-2834a8bb",
+        "variantId": "v-AUDIT-P538-R03398-2834a8bb",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03398",
+        "sourceText": "﴿لَرَءُوفٌ﴾: بالمد لحفص ونافع وابن كثير وابن عامر وأبي جعفر؛ وبالقصر للباقين.",
+        "verificationNotes": "النص المصدر يصف القصر ويحدد الجمهور؛ ضبط صورة اللفظ والرواة هنا بحسب جهاز القراءات المستقل، الذي يثبت حذف الواو للمجموعة المذكورة."
+      }
+    ],
+    "description": "﴿لَرَءُوفٌ﴾: بالمد لحفص ونافع وابن كثير وابن عامر وأبي جعفر؛ وبالقصر للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Deletion of the wāw after hamza: both Abu Amr narrators, Shuba, both Hamza narrators, both al-Kisai narrators, and both Khalaf al-Ashir narrators.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/9"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03399-a129dc82",
+    "surah": 57,
+    "ayah": 10,
+    "startToken": 30,
+    "endToken": 31,
+    "operation": "REPLACE",
+    "hafsText": "وَكُلًّۭا وَعَدَ",
+    "variantText": "وَكُلٌّ وَعَدَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "AUDIT-P538-R03399-a129dc82",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03399-a129dc82",
+        "variantId": "v-AUDIT-P538-R03399-a129dc82",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03399",
+        "sourceText": "﴿وَكُلّٗا وَعَدَ﴾: بنصب كلاً للجمهور؛ برفع كلٌّ ﴿وَكُلٌّ وَعَدَ﴾ لابن عامر.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿وَكُلّٗا وَعَدَ﴾: بنصب كلاً للجمهور؛ برفع كلٌّ ﴿وَكُلٌّ وَعَدَ﴾ لابن عامر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Rafʿ of kull: Hisham and Ibn Dhakwan from Ibn Amir.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/10"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03402-1713639d",
+    "surah": 57,
+    "ayah": 11,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فَيُضَـٰعِفَهُۥ",
+    "variantText": "فَيُضَاعِفُهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P538-R03402-1713639d",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03402-1713639d",
+        "variantId": "v-AUDIT-P538-R03402-1713639d",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03402",
+        "sourceText": "بحذف الألف وتشديد العين المكسورة ورفع الفاء ﴿فَيُضَعِّفُهُ﴾: نافع، وأبو عمرو، وحمزة، والكسائي، وخلف.",
+        "verificationNotes": "نص المصدر الخام محفوظ كما هو، لكن وصف الشكل فيه لا يوافق مجموعة القراء؛ رُبطت المجموعة بالشكل المطابق لجهاز القراءات المستقل: بالألف وتخفيف العين ورفع الفاء."
+      }
+    ],
+    "description": "بحذف الألف وتشديد العين المكسورة ورفع الفاء ﴿فَيُضَعِّفُهُ﴾: نافع، وأبو عمرو، وحمزة، والكسائي، وخلف.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "With alif after ḍād, light ʿayn and rafʿ: Nafi, Abu Amr, Hamza, al-Kisai and Khalaf al-Ashir.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03403-0d5972f4",
+    "surah": 57,
+    "ayah": 11,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فَيُضَـٰعِفَهُۥ",
+    "variantText": "فَيُضَعِّفُهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P538-R03403-0d5972f4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03403-0d5972f4",
+        "variantId": "v-AUDIT-P538-R03403-0d5972f4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03403",
+        "sourceText": "بألف مدية ورفع الفاء ﴿فَيُضَاعِفُهُ﴾: ابن كثير، وأبو جعفر.",
+        "verificationNotes": "نص المصدر الخام محفوظ كما هو، لكن وصف الشكل فيه لا يوافق مجموعة القراء؛ رُبطت المجموعة بالشكل المطابق لجهاز القراءات المستقل: بحذف الألف وتشديد العين ورفع الفاء."
+      }
+    ],
+    "description": "بألف مدية ورفع الفاء ﴿فَيُضَاعِفُهُ﴾: ابن كثير، وأبو جعفر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Without alif, doubled ʿayn and rafʿ: al-Bazzi, Qunbul, Ibn Wardan and Ibn Jammaz.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03404-9c65975b",
+    "surah": 57,
+    "ayah": 11,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فَيُضَـٰعِفَهُۥ",
+    "variantText": "فَيُضَعِّفَهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P538-R03404-9c65975b",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03404-9c65975b",
+        "variantId": "v-AUDIT-P538-R03404-9c65975b",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03404",
+        "sourceText": "بحذف الألف وتشديد العين ونصب الفاء ﴿فَيُضَعِّفَهُ﴾: ابن عامر، ويعقوب.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "بحذف الألف وتشديد العين ونصب الفاء ﴿فَيُضَعِّفَهُ﴾: ابن عامر، ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Without alif, doubled ʿayn and naṣb: Ibn Amir and Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03394-PERF-4a3c878b",
+    "surah": 57,
+    "ayah": 4,
+    "startToken": 28,
+    "endToken": 28,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P538-R03394-PERF-4a3c878b",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان هاء الضمير في وهو",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03394-PERF-4a3c878b",
+        "variantId": "v-AUDIT-P538-R03394-PERF-4a3c878b",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03394",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "سكون هاء الضمير في وهو/لهو: قالون، أبو جعفر، أبو عمرو، الكسائي؛ وغيرهم بالضم.",
+        "url": "https://quranpedia.net/book-attachment/18711/77129"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P538-R03394-PERF-0083bf47",
+    "surah": 57,
+    "ayah": 6,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P538-R03394-PERF-0083bf47",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان هاء الضمير في وهو",
+    "sources": [
+      {
+        "id": "s-AUDIT-P538-R03394-PERF-0083bf47",
+        "variantId": "v-AUDIT-P538-R03394-PERF-0083bf47",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03394",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "سكون هاء الضمير في وهو/لهو: قالون، أبو جعفر، أبو عمرو، الكسائي؛ وغيرهم بالضم.",
+        "url": "https://quranpedia.net/book-attachment/18711/77129"
+      }
+    ]
+  }
+]
