@@ -49,9 +49,9 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "External IKHFA rule audit complete for pages 225-584: all 134 valid adjacent-token contexts are covered (16 existed before audit; 118 added across four slices). Final slice adds 33 loci (66 reader assignments) on pages 505, 508, 510, 517, 518, 519, 522, 525, 530, 533, 534, 542, 544, 546, 548, 551, 556, 560, 563, 564, 566, 568, 573, 575, 579, 583, 584. All three cited exception verses are excluded. Full external review of the other Qiraat families remains in progress. External IKHFA rule sweep pages 400-499: added 37 Abu Ja'far loci (74 reader assignments) across 401, 403, 406, 409, 412, 413, 414, 415, 419, 422, 425, 427, 430, 434, 437, 438, 439, 440, 446, 461, 462, 473, 477, 478, 480, 481, 482, 488, 489, 493, 495; 33 valid contexts remain in pages 500-584. External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. The hamzatan-family production verification is recorded in the preceding status. Latest IDGHAM_SAGHIR parser correction scopes reader groups to each anchor and imports six new plus two expanded loci (49 assignments) on pages 349, 362, 437, 449, 462, and 478; external corpus corroboration was targeted because the wider dump has anchor mismatches. Production verified: commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; production API smoke passed at 23:110 and 23:112. Latest WAQF_RASM reconciliation verified the source reader groups at pages 231, 236, 238, and 241; all reader IDs were already included, with four missing imalah qualifier notes added. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending."
+    "sourceCoverageStatus": "Final IKHFA slice pages 500-584 production-verified: 33 added loci across 27 pages; all 134 rule contexts in attached pages 225-584 are now covered (16 pre-existing, 118 newly added across four slices). Full external completeness review of other Qiraat families continues. External IKHFA rule audit complete for pages 225-584: all 134 valid adjacent-token contexts are covered (16 existed before audit; 118 added across four slices). Final slice adds 33 loci (66 reader assignments) on pages 505, 508, 510, 517, 518, 519, 522, 525, 530, 533, 534, 542, 544, 546, 548, 551, 556, 560, 563, 564, 566, 568, 573, 575, 579, 583, 584. All three cited exception verses are excluded. Full external review of the other Qiraat families remains in progress. External IKHFA rule sweep pages 400-499: added 37 Abu Ja'far loci (74 reader assignments) across 401, 403, 406, 409, 412, 413, 414, 415, 419, 422, 425, 427, 430, 434, 437, 438, 439, 440, 446, 461, 462, 473, 477, 478, 480, 481, 482, 488, 489, 493, 495; 33 valid contexts remain in pages 500-584. External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. The hamzatan-family production verification is recorded in the preceding status. Latest IDGHAM_SAGHIR parser correction scopes reader groups to each anchor and imports six new plus two expanded loci (49 assignments) on pages 349, 362, 437, 449, 462, and 478; external corpus corroboration was targeted because the wider dump has anchor mismatches. Production verified: commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; production API smoke passed at 23:110 and 23:112. Latest WAQF_RASM reconciliation verified the source reader groups at pages 231, 236, 238, and 241; all reader IDs were already included, with four missing imalah qualifier notes added. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending."
   },
-  "sourceCoverageStatus": "External IKHFA rule audit complete for pages 225-584: all 134 valid adjacent-token contexts are covered (16 existed before audit; 118 added across four slices). Final slice adds 33 loci (66 reader assignments) on pages 505, 508, 510, 517, 518, 519, 522, 525, 530, 533, 534, 542, 544, 546, 548, 551, 556, 560, 563, 564, 566, 568, 573, 575, 579, 583, 584. All three cited exception verses are excluded. Full external review of the other Qiraat families remains in progress. External IKHFA rule sweep pages 400-499: added 37 Abu Ja'far loci (74 reader assignments) across 401, 403, 406, 409, 412, 413, 414, 415, 419, 422, 425, 427, 430, 434, 437, 438, 439, 440, 446, 461, 462, 473, 477, 478, 480, 481, 482, 488, 489, 493, 495; 33 valid contexts remain in pages 500-584. External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. External full-rule audit found 134 adjacent-word IKHFA contexts on attached pages 225-584 under the al-Nashr rule; 16 valid contexts were already covered. This production slice adds 14 on pages 227, 233, 257, 259, 260, 264, 274, 286, 288, 289, and 297; 104 eligible contexts remain for later slices. Four inherited IKHFA fixture rows on pages 227-228 point before waw rather than ghayn/kha and remain untouched under the additive-only fixture constraint. Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. Production verified: data commit fb68ed5b47cb2b04ca9e99a23ddecdcbe5643c39 is deployed READY as dpl_A2yHVvksjT6BNkzgtTqA9DJHax5W; Mushaf UI smoke passed at page 288, 17:61. Full page-by-page review remains pending. Latest IDGHAM_SAGHIR source pass adds six new loci and expands two existing loci with 49 assignments on pages 349, 362, 437, 449, 462, and 478. The official Quranpedia dump corroborated selected loci but has widespread wrong-verse/unmatched anchors, so only targeted records were used. Local validation passed; production commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; API smoke passed at 23:110 and 23:112. Full page-by-page external completeness review remains pending. Latest WAQF_RASM reconciliation externally verified the explicit groups at pages 231, 236, 238, and 241; all readers were already present, and four imalah qualifiers were moved into additive notes without duplicate assignments. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Full page-by-page external completeness review remains pending. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending.",
+  "sourceCoverageStatus": "Final IKHFA slice pages 500-584 production-verified: 33 added loci across 27 pages; all 134 rule contexts in attached pages 225-584 are now covered (16 pre-existing, 118 newly added across four slices). Full external completeness review of other Qiraat families continues. External IKHFA rule audit complete for pages 225-584: all 134 valid adjacent-token contexts are covered (16 existed before audit; 118 added across four slices). Final slice adds 33 loci (66 reader assignments) on pages 505, 508, 510, 517, 518, 519, 522, 525, 530, 533, 534, 542, 544, 546, 548, 551, 556, 560, 563, 564, 566, 568, 573, 575, 579, 583, 584. All three cited exception verses are excluded. Full external review of the other Qiraat families remains in progress. External IKHFA rule sweep pages 400-499: added 37 Abu Ja'far loci (74 reader assignments) across 401, 403, 406, 409, 412, 413, 414, 415, 419, 422, 425, 427, 430, 434, 437, 438, 439, 440, 446, 461, 462, 473, 477, 478, 480, 481, 482, 488, 489, 493, 495; 33 valid contexts remain in pages 500-584. External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. External full-rule audit found 134 adjacent-word IKHFA contexts on attached pages 225-584 under the al-Nashr rule; 16 valid contexts were already covered. This production slice adds 14 on pages 227, 233, 257, 259, 260, 264, 274, 286, 288, 289, and 297; 104 eligible contexts remain for later slices. Four inherited IKHFA fixture rows on pages 227-228 point before waw rather than ghayn/kha and remain untouched under the additive-only fixture constraint. Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. Production verified: data commit fb68ed5b47cb2b04ca9e99a23ddecdcbe5643c39 is deployed READY as dpl_A2yHVvksjT6BNkzgtTqA9DJHax5W; Mushaf UI smoke passed at page 288, 17:61. Full page-by-page review remains pending. Latest IDGHAM_SAGHIR source pass adds six new loci and expands two existing loci with 49 assignments on pages 349, 362, 437, 449, 462, and 478. The official Quranpedia dump corroborated selected loci but has widespread wrong-verse/unmatched anchors, so only targeted records were used. Local validation passed; production commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; API smoke passed at 23:110 and 23:112. Full page-by-page external completeness review remains pending. Latest WAQF_RASM reconciliation externally verified the explicit groups at pages 231, 236, 238, and 241; all readers were already present, and four imalah qualifiers were moved into additive notes without duplicate assignments. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Full page-by-page external completeness review remains pending. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending.",
   "currentBatch": {
     "id": "ikhfa-complete-rule-page-slice-500-584",
     "category": "IKHFA",
@@ -84,7 +84,7 @@
       583,
       584
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 66,
     "variantTextCorrections": 0,
@@ -98,46 +98,46 @@
     "baseCommit": "3ca151d66b12617ad280accc5d27378016291e95",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "commit": "pending",
-    "push": "pending",
-    "productionDeploymentStatus": "pending",
-    "remainingValidRuleContexts": 0
+    "commit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+    "push": "pushed to origin/main",
+    "productionDeploymentStatus": "READY",
+    "remainingValidRuleContexts": 0,
+    "productionDeploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+    "productionDeploymentUrl": "https://mutshabehat-v2-ou17bbeii-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed: production debug API verified all 33 exact token spans on the listed pages; every record returned IKHFA, #0891B2, Q08-R01, and Q08-R02.",
+    "deployedSha": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008"
   },
-  "lastConfirmedDeployedDataCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+  "lastConfirmedDeployedDataCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
-      401,
-      403,
-      406,
-      409,
-      412,
-      413,
-      414,
-      415,
-      419,
-      422,
-      425,
-      427,
-      430,
-      434,
-      437,
-      438,
-      439,
-      440,
-      446,
-      461,
-      462,
-      473,
-      477,
-      478,
-      480,
-      481,
-      482,
-      488,
-      489,
-      493,
-      495
+      505,
+      508,
+      510,
+      517,
+      518,
+      519,
+      522,
+      525,
+      530,
+      533,
+      534,
+      542,
+      544,
+      546,
+      548,
+      551,
+      556,
+      560,
+      563,
+      564,
+      566,
+      568,
+      573,
+      575,
+      579,
+      583,
+      584
     ],
     "desktop": true,
     "mobileViewport": [
@@ -466,48 +466,93 @@
         "exactTokenSpans": true,
         "httpStatus": 200,
         "status": "passed"
+      },
+      {
+        "commit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "deploymentUrl": "https://mutshabehat-v2-4tebvlf6n-shazlka-s-projects.vercel.app",
+        "pages": [
+          401,
+          403,
+          406,
+          409,
+          412,
+          413,
+          414,
+          415,
+          419,
+          422,
+          425,
+          427,
+          430,
+          434,
+          437,
+          438,
+          439,
+          440,
+          446,
+          461,
+          462,
+          473,
+          477,
+          478,
+          480,
+          481,
+          482,
+          488,
+          489,
+          493,
+          495
+        ],
+        "endpoint": "/api/mushaf-1441/qiraat?page={page}&debug=1",
+        "category": "IKHFA",
+        "verifiedLociCount": 37,
+        "readerIds": [
+          "Q08-R01",
+          "Q08-R02"
+        ],
+        "color": "#0891B2",
+        "exactTokenSpans": true,
+        "httpStatus": 200,
+        "status": "passed"
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "352327e48a008476c41538534e84da3f6ede44dd",
-      "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
-      "deploymentUrl": "https://mutshabehat-v2-4tebvlf6n-shazlka-s-projects.vercel.app",
+      "commit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+      "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+      "deploymentUrl": "https://mutshabehat-v2-ou17bbeii-shazlka-s-projects.vercel.app",
       "pages": [
-        401,
-        403,
-        406,
-        409,
-        412,
-        413,
-        414,
-        415,
-        419,
-        422,
-        425,
-        427,
-        430,
-        434,
-        437,
-        438,
-        439,
-        440,
-        446,
-        461,
-        462,
-        473,
-        477,
-        478,
-        480,
-        481,
-        482,
-        488,
-        489,
-        493,
-        495
+        505,
+        508,
+        510,
+        517,
+        518,
+        519,
+        522,
+        525,
+        530,
+        533,
+        534,
+        542,
+        544,
+        546,
+        548,
+        551,
+        556,
+        560,
+        563,
+        564,
+        566,
+        568,
+        573,
+        575,
+        579,
+        583,
+        584
       ],
       "endpoint": "/api/mushaf-1441/qiraat?page={page}&debug=1",
       "category": "IKHFA",
-      "verifiedLociCount": 37,
+      "verifiedLociCount": 33,
       "readerIds": [
         "Q08-R01",
         "Q08-R02"
@@ -1295,7 +1340,7 @@
       "apiSmoke": "All 37 loci verified via production debug API with exact spans, #0891B2, Q08-R01, and Q08-R02."
     },
     {
-      "commit": "pending",
+      "commit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
       "batch": "IKHFA external rule completeness, pages 500-584",
       "variantsAdded": 0,
       "rulingsAdded": 33,
@@ -1329,11 +1374,14 @@
         583,
         584
       ],
-      "pushed": false,
-      "vercelState": "pending",
+      "pushed": true,
+      "vercelState": "READY",
       "validation": "33 new ruling objects appended across 27 files; zero fixture deletions; all prior fixture objects byte-for-byte unchanged; all new token transitions verified against page-word fixtures. Importer rerun idempotent. Qiraat validator clean (1,866 variants, 9,764 rulings, 20 one-colour categories); 37/37 test:qiraat; all seven Mushaf validators; TypeScript; production build passed.",
       "sourceAudit": "Final slice of the rule sweep: accepted terminal nun-sukun/tanween before initial ghayn/kha over real page-word tokens, excluding the three named exception verses. Combined audit covers 134/134 eligible contexts on pages 225-584; 16 were already present and 118 were appended in four slices.",
-      "databaseMigration": "none"
+      "databaseMigration": "none",
+      "vercelDeploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+      "vercelDeployment": "https://mutshabehat-v2-ou17bbeii-shazlka-s-projects.vercel.app",
+      "apiSmoke": "All 33 final loci verified via production debug API with exact spans, #0891B2, Q08-R01, and Q08-R02."
     }
   ],
   "pages": [
@@ -17161,7 +17209,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "46:21 وَمِنْ خَلْفِهِۦٓ"
         ],
@@ -17169,7 +17217,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -17260,7 +17311,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "47:15 مَّآءٍ غَيْرِ",
           "47:15 مِّنْ خَمْرٍۢ"
@@ -17269,7 +17320,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -17331,7 +17385,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "47:38 قَوْمًا غَيْرَكُمْ"
         ],
@@ -17339,7 +17393,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -17552,7 +17609,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "49:13 عَلِيمٌ خَبِيرٌۭ"
         ],
@@ -17560,7 +17617,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -17593,7 +17653,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "50:15 مِّنْ خَلْقٍۢ"
         ],
@@ -17601,7 +17661,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -17634,7 +17697,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "50:33 مَّنْ خَشِىَ"
         ],
@@ -17642,7 +17705,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -17739,7 +17805,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "51:49 شَىْءٍ خَلَقْنَا"
         ],
@@ -17747,7 +17813,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -17844,7 +17913,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "52:35 مِنْ غَيْرِ",
           "52:43 إِلَـٰهٌ غَيْرُ"
@@ -17853,7 +17922,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18008,7 +18080,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "54:49 شَىْءٍ خَلَقْنَـٰهُ"
         ],
@@ -18016,7 +18088,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18113,7 +18188,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "55:46 وَلِمَنْ خَافَ"
         ],
@@ -18121,7 +18196,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18160,7 +18238,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "55:76 رَفْرَفٍ خُضْرٍۢ",
           "56:2 كَاذِبَةٌ خَافِضَةٌۭ"
@@ -18169,7 +18247,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18411,7 +18492,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "58:2 لَعَفُوٌّ غَفُورٌۭ"
         ],
@@ -18419,7 +18500,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18481,7 +18565,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "58:14 قَوْمًا غَضِبَ"
         ],
@@ -18489,7 +18573,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18557,7 +18644,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "59:6 مِنْ خَيْلٍۢ"
         ],
@@ -18565,7 +18652,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18627,7 +18717,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "59:21 مِّنْ خَشْيَةِ"
         ],
@@ -18635,7 +18725,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18732,7 +18825,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "60:13 قَوْمًا غَضِبَ"
         ],
@@ -18740,7 +18833,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -18895,7 +18991,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "64:2 بَصِيرٌ خَلَقَ"
         ],
@@ -18903,7 +18999,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19023,7 +19122,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "66:5 أَزْوَٰجًا خَيْرًۭا",
           "66:6 مَلَـٰٓئِكَةٌ غِلَاظٌۭ"
@@ -19032,7 +19131,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19123,7 +19225,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "67:14 مَنْ خَلَقَ"
         ],
@@ -19131,7 +19233,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19170,7 +19275,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "68:3 لَأَجْرًا غَيْرَ"
         ],
@@ -19178,7 +19283,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19246,7 +19354,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "69:7 نَخْلٍ خَاوِيَةٍۢ"
         ],
@@ -19254,7 +19362,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19322,7 +19433,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "69:36 مِنْ غِسْلِينٍۢ"
         ],
@@ -19330,7 +19441,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19485,7 +19599,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "72:16 مَّآءً غَدَقًۭا",
           "72:27 وَمِنْ خَلْفِهِۦ"
@@ -19494,7 +19608,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19562,7 +19679,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "73:20 مِّنْ خَيْرٍۢ",
           "74:11 وَمَنْ خَلَقْتُ"
@@ -19571,7 +19688,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19703,7 +19823,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "76:21 سُندُسٍ خُضْرٌۭ"
         ],
@@ -19711,7 +19831,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19843,7 +19966,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "79:12 كَرَّةٌ خَاسِرَةٌۭ"
         ],
@@ -19851,7 +19974,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -19884,7 +20010,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "79:40 مَنْ خَافَ"
         ],
@@ -19892,7 +20018,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+        "deploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+        "liveApiVerified": true
       }
     },
     {
@@ -20615,7 +20744,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+  "currentHeadCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -20958,7 +21087,7 @@
       "productionSmoke": "page 231 API returned baseText بَقِيَّتُ, all eight covered reader IDs, note مع الإمالة, and color #EA580C."
     },
     "docIkhfaCompleteRuleAudit": {
-      "status": "rule-complete; final slice validated, deployment pending",
+      "status": "production_verified_rule_complete",
       "primarySources": [
         {
           "title": "Ibn al-Jazari, al-Nashr, تنبيهات باب أحكام النون الساكنة والتنوين",
@@ -21456,6 +21585,174 @@
           "loci": [
             "43:87 مَّنْ خَلَقَهُمْ"
           ]
+        },
+        {
+          "page": 505,
+          "loci": [
+            "46:21 وَمِنْ خَلْفِهِۦٓ"
+          ]
+        },
+        {
+          "page": 508,
+          "loci": [
+            "47:15 مَّآءٍ غَيْرِ",
+            "47:15 مِّنْ خَمْرٍۢ"
+          ]
+        },
+        {
+          "page": 510,
+          "loci": [
+            "47:38 قَوْمًا غَيْرَكُمْ"
+          ]
+        },
+        {
+          "page": 517,
+          "loci": [
+            "49:13 عَلِيمٌ خَبِيرٌۭ"
+          ]
+        },
+        {
+          "page": 518,
+          "loci": [
+            "50:15 مِّنْ خَلْقٍۢ"
+          ]
+        },
+        {
+          "page": 519,
+          "loci": [
+            "50:33 مَّنْ خَشِىَ"
+          ]
+        },
+        {
+          "page": 522,
+          "loci": [
+            "51:49 شَىْءٍ خَلَقْنَا"
+          ]
+        },
+        {
+          "page": 525,
+          "loci": [
+            "52:35 مِنْ غَيْرِ",
+            "52:43 إِلَـٰهٌ غَيْرُ"
+          ]
+        },
+        {
+          "page": 530,
+          "loci": [
+            "54:49 شَىْءٍ خَلَقْنَـٰهُ"
+          ]
+        },
+        {
+          "page": 533,
+          "loci": [
+            "55:46 وَلِمَنْ خَافَ"
+          ]
+        },
+        {
+          "page": 534,
+          "loci": [
+            "55:76 رَفْرَفٍ خُضْرٍۢ",
+            "56:2 كَاذِبَةٌ خَافِضَةٌۭ"
+          ]
+        },
+        {
+          "page": 542,
+          "loci": [
+            "58:2 لَعَفُوٌّ غَفُورٌۭ"
+          ]
+        },
+        {
+          "page": 544,
+          "loci": [
+            "58:14 قَوْمًا غَضِبَ"
+          ]
+        },
+        {
+          "page": 546,
+          "loci": [
+            "59:6 مِنْ خَيْلٍۢ"
+          ]
+        },
+        {
+          "page": 548,
+          "loci": [
+            "59:21 مِّنْ خَشْيَةِ"
+          ]
+        },
+        {
+          "page": 551,
+          "loci": [
+            "60:13 قَوْمًا غَضِبَ"
+          ]
+        },
+        {
+          "page": 556,
+          "loci": [
+            "64:2 بَصِيرٌ خَلَقَ"
+          ]
+        },
+        {
+          "page": 560,
+          "loci": [
+            "66:5 أَزْوَٰجًا خَيْرًۭا",
+            "66:6 مَلَـٰٓئِكَةٌ غِلَاظٌۭ"
+          ]
+        },
+        {
+          "page": 563,
+          "loci": [
+            "67:14 مَنْ خَلَقَ"
+          ]
+        },
+        {
+          "page": 564,
+          "loci": [
+            "68:3 لَأَجْرًا غَيْرَ"
+          ]
+        },
+        {
+          "page": 566,
+          "loci": [
+            "69:7 نَخْلٍ خَاوِيَةٍۢ"
+          ]
+        },
+        {
+          "page": 568,
+          "loci": [
+            "69:36 مِنْ غِسْلِينٍۢ"
+          ]
+        },
+        {
+          "page": 573,
+          "loci": [
+            "72:16 مَّآءً غَدَقًۭا",
+            "72:27 وَمِنْ خَلْفِهِۦ"
+          ]
+        },
+        {
+          "page": 575,
+          "loci": [
+            "73:20 مِّنْ خَيْرٍۢ",
+            "74:11 وَمَنْ خَلَقْتُ"
+          ]
+        },
+        {
+          "page": 579,
+          "loci": [
+            "76:21 سُندُسٍ خُضْرٌۭ"
+          ]
+        },
+        {
+          "page": 583,
+          "loci": [
+            "79:12 كَرَّةٌ خَاسِرَةٌۭ"
+          ]
+        },
+        {
+          "page": 584,
+          "loci": [
+            "79:40 مَنْ خَافَ"
+          ]
         }
       ],
       "sourceLineFindings": {
@@ -21701,10 +21998,10 @@
         "readerAssignments": 66
       },
       "totalAddedSoFar": 118,
-      "latestProductionDeploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
-      "latestProductionCommit": "352327e48a008476c41538534e84da3f6ede44dd",
-      "latestProductionDeploymentUrl": "https://mutshabehat-v2-4tebvlf6n-shazlka-s-projects.vercel.app",
-      "latestApiSmoke": "All 37 loci from pages 400-499 verified via production debug API with exact spans, #0891B2, and both Abu Jaafar narrations."
+      "latestProductionDeploymentId": "dpl_HxGyUmA9rT9QvAyBaCtkau3oweo5",
+      "latestProductionCommit": "8ddf9a2830c3ffb6a4ccd0457344e9935553e008",
+      "latestProductionDeploymentUrl": "https://mutshabehat-v2-ou17bbeii-shazlka-s-projects.vercel.app",
+      "latestApiSmoke": "All 33 final-slice loci on pages 500-584 passed production API verification with exact spans, #0891B2, and Q08-R01/Q08-R02."
     }
   }
 }
