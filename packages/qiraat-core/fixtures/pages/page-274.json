@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "v-D274-يجحدون-w2",
+    "surah": 16,
+    "ayah": 71,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "يَجْحَدُونَ",
+    "variantText": "تَجْحَدُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q09-R01"
+    ],
+    "locusId": "D274-يجحدون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D274-يجحدون-w2",
+        "variantId": "v-D274-يجحدون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 274، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿يَجْحَدُونَ﴾: بياء الغيب للجمهور؛ وبتاء الخطاب ﴿تَجْحَدُونَ﴾ لشعبة ورويس."
+      }
+    ],
+    "description": "بتاء الخطاب ﴿تَجْحَدُونَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "v-D296-ولا_يشرك-w2",
+    "surah": 18,
+    "ayah": 26,
+    "startToken": 19,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يُشْرِكُ",
+    "variantText": "وَلَا تُشْرِكْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D296-ولا_يشرك",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D296-ولا_يشرك-w2",
+        "variantId": "v-D296-ولا_يشرك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 296، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿وَلَا يُشْرِكُ﴾: بياء الغيب المضمومة ورفع الكاف للجمهور؛ وبتاء الخطاب وجزم الكاف ﴿وَلَا تُشْرِكْ﴾ لابن عامر."
+      }
+    ],
+    "description": "بتاء الخطاب وجزم الكاف ﴿وَلَا تُشْرِكْ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "id": "v-D268-ينبت-w2",
+    "surah": 16,
+    "ayah": 11,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "يُنۢبِتُ",
+    "variantText": "نُنبِتُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D268-ينبت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D268-ينبت-w2",
+        "variantId": "v-D268-ينبت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 268، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿يُنبِتُ﴾: بالياء للجمهور؛ وبالنون ﴿نُنبِتُ﴾ لشعبة."
+      }
+    ],
+    "description": "بالنون ﴿نُنبِتُ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

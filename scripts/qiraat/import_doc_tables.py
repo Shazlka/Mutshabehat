@@ -41,7 +41,7 @@ RCOLORS = {
 DIFF={'orthography':'ORTHOGRAPHY','vowel':'HARAKAH','consonant':'LETTER','hamza':'HAMZ',
       'word_form':'LETTER','ishmam':'HARAKAH','other':'OTHER'}
 def diff_type(desc):
-    for keys,t in [(('بالياء','بالنون','بالتاء','ياء','نون العظمة','تاء'),'word_form'),
+    for keys,t in [(('بالياء','بالنون','بالتاء','ياء','نون العظمة','تاء','تثنية'),'word_form'),
                    (('بألف','بغير ألف','ألف'),'orthography'),
                    (('همز','تسهيل','إبدال','تحقيق'),'hamza'),
                    (('تشديد','تخفيف','مشدد','مخفف'),'word_form'),
@@ -1400,6 +1400,7 @@ def collect_farsh(page, lines):
             continue
         i+=1
     out.extend(checked_page303_farsh(page, lines))
+    out.extend(checked_inline_farsh(page, lines))
     return out
 
 def checked_page303_farsh(page, lines):
@@ -1484,6 +1485,95 @@ def checked_page303_farsh(page, lines):
             'locusId':lid,'locusType':'word_variant',
             'sources':[{'id':f's-{lid}-w2','variantId':variant_id,**source}],
             'description':case['description'],'wajhIndex':2,'evidence':[],
+        })
+    return out
+
+def checked_inline_farsh(page, lines):
+    """Import the externally audited, one-explicit-alternate inline farsh rows.
+
+    These rows put the default/remainder and the named alternate on one line rather than in
+    separate header blocks. Keep the scope explicit and narrow: each case records its exact
+    anchor, alternate form, reader group, and source fragment. The source must still resolve to
+    a real page token and form a clean 20-reading partition before yield_block emits anything.
+    """
+    cases = {
+        268: [{
+            'anchor': 'يُنبِتُ', 'ayah': 11, 'variantText': 'نُنبِتُ',
+            'readerGroup': 'شعبة', 'sourceFragment': 'وبالنون ﴿نُنبِتُ﴾ لشعبة',
+        }],
+        274: [{
+            'anchor': 'يَجْحَدُونَ', 'ayah': 71, 'variantText': 'تَجْحَدُونَ',
+            'readerGroup': 'شعبة ورويس', 'sourceFragment': 'وبتاء الخطاب ﴿تَجْحَدُونَ﴾ لشعبة ورويس',
+        }],
+        287: [{
+            'anchor': 'النَّبِيِّـۧنَ', 'ayah': 55, 'variantText': 'النَّبِيئِينَ',
+            'readerGroup': 'نافع', 'sourceFragment': 'وبالهمز والمد المتصل ﴿النَّبِيئِينَ﴾ لنافع',
+        }],
+        296: [{
+            'anchor': 'وَلَا يُشْرِكُ', 'ayah': 26, 'variantText': 'وَلَا تُشْرِكْ',
+            'readerGroup': 'ابن عامر', 'sourceFragment': 'وبتاء الخطاب وجزم الكاف ﴿وَلَا تُشْرِكْ﴾ لابن عامر',
+        }],
+        297: [{
+            'anchor': 'بِٱلْغَدَوٰةِ', 'ayah': 28, 'variantText': 'بِالْغُدْوَةِ',
+            'readerGroup': 'ابن عامر', 'sourceFragment': 'وبواو مضمومة ﴿بِالْغُدْوَةِ﴾ لابن عامر',
+        }],
+        298: [{
+            'anchor': 'مِّنْهَا', 'ayah': 36, 'variantText': 'مِنْهُمَا',
+            'readerGroup': 'نافع، ابن كثير، ابن عامر، أبو جعفر',
+            'sourceFragment': 'وبالتثنية ﴿مِنْهُمَا﴾ لنافع، وابن كثير، وابن عامر، وأبي جعفر',
+        }],
+    }
+    out=[]
+    for case in cases.get(page, []):
+        matches=[line for line in lines if case['sourceFragment'] in line]
+        if len(matches) != 1:
+            raise ValueError(f"page {page} audited farsh row not unique: {case['sourceFragment']}")
+        source_text=matches[0]
+        if is_neg(source_text) or is_univ(source_text):
+            continue
+        pre,sep,body=source_text.partition(':')
+        if not sep or BRACE.findall(pre) != [case['anchor']]:
+            continue
+        clauses=[x.strip() for x in body.split('؛') if x.strip()]
+        if len(clauses) != 2:
+            continue
+        alternate_clauses=[x for x in clauses if case['sourceFragment'] in x]
+        remainder_clauses=[x for x in clauses if any(
+            marker in x for marker in ('للجمهور','الباقون','الباقين'))]
+        if len(alternate_clauses) != 1 or len(remainder_clauses) != 1:
+            continue
+        alternate_clause=alternate_clauses[0]
+        if BRACE.findall(alternate_clause) != [case['variantText']]:
+            continue
+        parsed=explicit_reader_clause(alternate_clause)
+        if not parsed:
+            continue
+        description,reading_ids,alternate,note=parsed
+        if alternate or note:
+            continue
+        expected,unresolved=resolve_readers(case['readerGroup'],set())
+        if unresolved.strip(' ،,؛.') or reading_ids != expected:
+            continue
+        base_ids=ALL20-reading_ids
+        if not base_ids or 'Q05-R02' not in base_ids or reading_ids & base_ids:
+            continue
+        try:
+            loc=T.find(page,case['anchor'],1,case['ayah'])
+        except T.NoMatch:
+            continue
+        if T.norm(case['variantText']) == T.norm(loc['baseText']):
+            continue
+        before=len(out)
+        yield_block(page,case['anchor'],[
+            (None,remainder_clauses[0],base_ids),
+            (case['variantText'],description,reading_ids),
+        ],out)
+        if len(out) != before+1:
+            continue
+        variant=out[-1]
+        variant['sources'][0].update({
+            'sourceReference':f"وثيقة الاستخراج المبوّب، صفحة المصحف {page}، الكلمات الفرشية",
+            'sourceText':source_text,
         })
     return out
 

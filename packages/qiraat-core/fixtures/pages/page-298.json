@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "v-D298-منها-w2",
+    "surah": 18,
+    "ayah": 36,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مِّنْهَا",
+    "variantText": "مِنْهُمَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D298-منها",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D298-منها-w2",
+        "variantId": "v-D298-منها-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 298، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿مِّنْهَا﴾: بالإفراد للجمهور؛ وبالتثنية ﴿مِنْهُمَا﴾ لنافع، وابن كثير، وابن عامر، وأبي جعفر."
+      }
+    ],
+    "description": "بالتثنية ﴿مِنْهُمَا﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

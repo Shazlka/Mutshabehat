@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "v-D297-بالغدواه-w2",
+    "surah": 18,
+    "ayah": 28,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْغَدَوٰةِ",
+    "variantText": "بِالْغُدْوَةِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D297-بالغدواه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D297-بالغدواه-w2",
+        "variantId": "v-D297-بالغدواه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 297، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿بِٱلْغَدَوٰةِ﴾: بواو مفتوحة للجمهور؛ وبواو مضمومة ﴿بِالْغُدْوَةِ﴾ لابن عامر."
+      }
+    ],
+    "description": "بواو مضمومة ﴿بِالْغُدْوَةِ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
