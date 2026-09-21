@@ -15,6 +15,7 @@
     "test:proxy": "tsx --test tests/proxy-autologin.test.mjs",
     "test:qiraat": "node packages/qiraat-core/validate.mjs && tsx --test packages/qiraat-core/engine.test.mjs && node scripts/validate-qiraat-data.mjs",
     "qiraat:validate": "node scripts/validate-qiraat-data.mjs",
+    "qiraat:canonical-words:validate": "tsx scripts/qiraat/seed-canonical-words.ts --check",
     "typecheck": "tsc --noEmit -p .",
     "test:quiz": "tsx --test tests/quiz/engine.test.ts tests/quiz/presentation.test.ts",
     "test:quiz:integration": "tsx --env-file=.env.local --test tests/quiz/database.test.ts",
