@@ -555,21 +555,76 @@ def parse_waqf_hamza_line(page,line,out,header_hisham=False):
     for anchor,readers,action in pending:
         emit_ruling(page,'WAQF_HAMZA',anchor,[(readers,action)],out)
 
+def _arabic_base_positions(text):
+    return [(i,ch) for i,ch in enumerate(text)
+            if not T.TASHKEEL.fullmatch(ch) and ch!='ـ']
+
+def _terminal_nun_or_tanween(text):
+    """True only when nun-sukun/tanween is at the end of the previous word."""
+    bases=_arabic_base_positions(text)
+    if not bases: return False
+    last_i,last_ch=bases[-1]
+    tail=text[last_i+1:]
+    if last_ch=='ن' and 'ْ' in tail: return True
+    for i,ch in enumerate(text):
+        if ch not in 'ًٌٍ': continue
+        following=[(j,c) for j,c in bases if j>i]
+        if not following: return True
+        # Uthmani fathatan is written before its supporting alif in forms such as قوماً.
+        if ch=='ً' and len(following)==1 and following[0][1]=='ا': return True
+    return False
+
+def _first_arabic_base(text):
+    return next((ch for _,ch in _arabic_base_positions(text)), '')
+
+def ikhfa_transition(previous,following):
+    return (_terminal_nun_or_tanween(previous) and
+            _first_arabic_base(following) in ('غ','خ'))
+
+def ikhfa_loc_is_supported(page,loc):
+    """Validate an explicitly quoted source anchor against its actual token context."""
+    words=T.page_words(page)
+    left=next((w for w in words if w['surahNumber']==loc['surah'] and
+        w['ayahNumber']==loc['startAyah'] and w['wordIndexInAyah']==loc['startWord']),None)
+    right=next((w for w in words if w['surahNumber']==loc['surah'] and
+        w['ayahNumber']==loc['endAyah'] and w['wordIndexInAyah']==loc['endWord']),None)
+    return bool(left and right and ikhfa_transition(left['textUthmani'],right['textUthmani']))
+
+def emit_ikhfa_loc(page,loc,out,source_anchor=None):
+    label,color=RCOLORS['IKHFA']
+    suffix=((f"{T.norm(source_anchor).replace(' ','_')}-" if source_anchor else 'rule-') +
+            f"{loc['surah']}-{loc['startAyah']}-{loc['startWord']}")
+    out.append({'id':f'r-p{page:03d}-IKHFA-{suffix}','pageNumber':page,
+        'category':'IKHFA','categoryAr':label,'color':color,'wordAnchored':True,
+        'surah':loc['surah'],'ayah':loc['startAyah'],'startToken':loc['startWord'],
+        'endToken':loc['endWord'],'endAyah':loc['endAyah'],'baseText':loc['baseText'],
+        'verificationStatus':'REVIEWED',
+        'attribution':[{'authorityId':'Q08','action':'إخفاء'}],
+        'readings':[{'readingId':'Q08-R01','action':'إخفاء','isDefault':True},
+                    {'readingId':'Q08-R02','action':'إخفاء','isDefault':True}],
+        'hasAlternate':False,'createdAt':TS,'updatedAt':TS})
+
 def parse_ikhfa_line(page,line,out):
-    """The source family names Abu Jaafar once; each explicit anchor gets both narrators."""
+    """The source family names Abu Jaafar once; accept only an actual ghayn/kha trigger."""
     for anchor in BRACE.findall(line):
         try: loc=T.find(page,anchor,1)
         except T.NoMatch: continue
-        label,color=RCOLORS['IKHFA']
-        out.append({'id':f'r-p{page:03d}-IKHFA-{T.norm(anchor).replace(" ","_")}-{len(out)}',
-            'pageNumber':page,'category':'IKHFA','categoryAr':label,'color':color,'wordAnchored':True,
-            'surah':loc['surah'],'ayah':loc['startAyah'],'startToken':loc['startWord'],
-            'endToken':loc['endWord'],'endAyah':loc['endAyah'],'baseText':loc['baseText'],
-            'verificationStatus':'REVIEWED',
-            'attribution':[{'authorityId':'Q08','action':'إخفاء'}],
-            'readings':[{'readingId':'Q08-R01','action':'إخفاء','isDefault':True},
-                        {'readingId':'Q08-R02','action':'إخفاء','isDefault':True}],
-            'hasAlternate':False,'createdAt':TS,'updatedAt':TS})
+        if ikhfa_loc_is_supported(page,loc): emit_ikhfa_loc(page,loc,out,anchor)
+
+def derive_ikhfa_contexts(page):
+    """Expand Abu Jaafar's sourced ghayn/kha rule over every adjacent token on this page."""
+    out=[]; words=T.page_words(page)
+    for previous,following in zip(words,words[1:]):
+        if not ikhfa_transition(previous['textUthmani'],following['textUthmani']): continue
+        if (previous['surahNumber'],previous['ayahNumber']) in {(4,135),(5,3),(17,51)}:
+            # Ibn al-Jazari's Durr poem names these as established exceptions; drop on doubt.
+            continue
+        loc={'surah':previous['surahNumber'],'startAyah':previous['ayahNumber'],
+            'startWord':previous['wordIndexInAyah'],'endAyah':following['ayahNumber'],
+            'endWord':following['wordIndexInAyah'],
+            'baseText':f"{previous['textUthmani']} {following['textUthmani']}"}
+        emit_ikhfa_loc(page,loc,out)
+    return out
 
 def explicit_idgham_readers(text):
     """Resolve only a complete reader list; inflected Abu names are common in prose tables."""
@@ -745,7 +800,7 @@ def has_bare_ambiguous_reader(text):
         return True
     return False
 
-def build(page_list, categories=None):
+def build(page_list, categories=None, complete_ikhfa=False):
     vstats=collections.Counter(); rstats=collections.Counter()
     vout={}; rout={}
     for page in page_list:
@@ -753,6 +808,8 @@ def build(page_list, categories=None):
         if not pd: continue
         v=collect_farsh(page, pd['farsh'])
         r=parse_usul(page, pd['usul'])
+        if complete_ikhfa and (categories is None or 'IKHFA' in categories):
+            r.extend(derive_ikhfa_contexts(page))
         if categories is not None:
             v=[]
             r=[x for x in r if x['category'] in categories]
@@ -1265,6 +1322,7 @@ def checked_page303_farsh(page, lines):
 if __name__=='__main__':
     raw=sys.argv[1:]
     categories=None
+    complete_ikhfa='--complete-ikhfa' in raw
     if '--category' in raw:
         ix=raw.index('--category')
         if ix+1>=len(raw): raise SystemExit('--category needs a category name')
@@ -1277,7 +1335,7 @@ if __name__=='__main__':
         pages=[int(x) for x in args]
     else:
         pages=list(range(268,305))
-    vout,rout,vs,rs=build(pages,categories=categories)
+    vout,rout,vs,rs=build(pages,categories=categories,complete_ikhfa=complete_ikhfa)
     print('pages touched:',sorted(set(vout)|set(rout)))
     print('variants added:',vs['added'])
     print('new ruling loci:',rs['added'],' merged ruling loci:',rs['merged'],

@@ -462,5 +462,41 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p288-IKHFA-rule-17-61-11",
+    "pageNumber": 288,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 61,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 61,
+    "baseText": "لِمَنْ خَلَقْتَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

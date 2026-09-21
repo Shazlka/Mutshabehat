@@ -594,5 +594,77 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p257-IKHFA-rule-14-14-6",
+    "pageNumber": 257,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 14,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 14,
+    "baseText": "لِمَنْ خَافَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p257-IKHFA-rule-14-17-15",
+    "pageNumber": 257,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 17,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 17,
+    "baseText": "عَذَابٌ غَلِيظٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

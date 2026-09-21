@@ -316,5 +316,41 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p289-IKHFA-rule-17-70-15",
+    "pageNumber": 289,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 70,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 70,
+    "baseText": "مِّمَّنْ خَلَقْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
