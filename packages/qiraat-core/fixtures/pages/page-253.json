@@ -86,5 +86,44 @@
         "url": "https://quranpedia.net/book-attachment/20982/78954"
       }
     ]
+  },
+  {
+    "id": "v-D253-وصدوا-w1",
+    "surah": 13,
+    "ayah": 33,
+    "startToken": 30,
+    "endToken": 30,
+    "operation": "REPLACE",
+    "hafsText": "وَصُدُّوا۟",
+    "variantText": "وَصُدُّوا۟",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D253-وصدوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D253-وصدوا-w1",
+        "variantId": "v-D253-وصدوا-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": []
   }
 ]

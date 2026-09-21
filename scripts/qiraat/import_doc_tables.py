@@ -1182,7 +1182,10 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
         source_fragment = 'بياء ساكنة ممدودة مفتوحة ﴿أَفْيِدَةً﴾: هشام في وجهه الثاني'
         headers = [i for i, line in enumerate(lines) if line.strip() == header]
         matching = [line.strip() for line in lines if source_fragment in line]
-        if len(headers) != 1 or len(matching) != 1:
+        # The packaged source stores this farsh row as a standalone paragraph rather
+        # than repeating the locus header. The exact source fragment is sufficient
+        # to identify the audited record; reject duplicates but allow the absent header.
+        if len(headers) > 1 or len(matching) != 1:
             raise ValueError('page 260 audited Hisham farsh row/header not unique')
         source_line = matching[0]
         if is_neg(source_line) or is_univ(source_line):
@@ -3713,6 +3716,12 @@ def checked_audited_inline_faces(page, lines):
         274: [
             ('DOCX-P274-R00730','يَجْحَدُونَ','تَجْحَدُونَ','شعبة، رويس',71,'بتاء الخطاب'),
         ],
+        257: [
+            ('DOCX-P257-R00506','ٱلرِّيحُ','ٱلرِّيَاحُ','نافع، أبو جعفر',18,'بالجمع'),
+        ],
+        258: [
+            ('DOCX-P258-R00515','بِمُصْرِخِىَّ','بِمُصْرِخِيِّ','حمزة',22,'بكسر الياء المشددة'),
+        ],
         399: [
             ('DOCX-P399-R02075','ٱلنُّبُوَّةَ','ٱلنُّبُوءَةَ','نافع',27,
              'بالهمز والمد المتصل'),
@@ -3981,6 +3990,14 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P278-R00768','الْقُدُسِ','الْقُدْسِ','ابن كثير',102,
              'بإسكان الدال'),
         ],
+        260: [
+            ('DOCX-P260-R00536','إِلَيْهِمْ','إِلَيْهُمُ','حمزة، يعقوب',37,
+             'بضم الهاء'),
+        ],
+        261: [
+            ('DOCX-P261-R00545','إِلَيْهِمْ','إِلَيْهُمُ','حمزة، يعقوب',43,
+             'بضم الهاء'),
+        ],
         295: [
             ('DOCX-P295-R00960','مِّرْفَقٗا','مَرْفِقًا','نافع، ابن عامر، أبو جعفر',16,
              'بفتح الميم وكسر الفاء'),
@@ -4058,6 +4075,16 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P350-R01587','رَأْفَةٌ','رَآفَةٌ','ابن كثير',2,'بفتح الهمزة ممدودة'),
             ('DOCX-P350-R01588','الْمُحْصَنَـٰتِ','الْمُحْصِنَاتِ','الكسائي',4,'بكسر الصاد'),
             ('DOCX-P350-R01589','أَرْبَعُ شَهَـٰدَٰتٍ','أَرْبَعَ شَهَادَاتٍ','حفص، حمزة، الكسائي، خلف',6,'برفع العين'),
+        ],
+        251: [
+            ('DOCX-P251-R00441','يُوقِدُونَ','يُوقِدُونَ','حفص، حمزة، الكسائي، خلف',17,'بياء الغيب'),
+        ],
+        253: [
+            ('DOCX-P253-R00465','وَصَدُّوا','وَصُدُّوا','عاصم، حمزة، الكسائي، يعقوب، خلف',33,'بضم الصاد مبنياً للمفعول'),
+        ],
+        254: [
+            ('DOCX-P254-R00475','وَيُثْبِتُ','وَيُثَبِّتُ','نافع، ابن عامر، حفص، حمزة، الكسائي، أبو جعفر، خلف',39,'بالتشديد'),
+            ('DOCX-P254-R00478','الْكَافِرُ','الْكُفَّارُ','نافع، ابن كثير، أبو عمرو، أبو جعفر',42,'بصيغة الجمع'),
         ],
         267: [
             ('DOCX-P267-R00643','يُنَزِّلُ الْمَلَـٰٓئِكَةَ','يُنْزِلُ الْمَلَائِكَةَ','ابن كثير، أبو عمرو، رويس',2,'بتخفيف الزاي'),

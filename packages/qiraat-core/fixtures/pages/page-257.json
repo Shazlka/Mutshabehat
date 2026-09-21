@@ -70,5 +70,39 @@
     "description": "بالجمع",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D257-الريح-w2",
+    "surah": 14,
+    "ayah": 18,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيحُ",
+    "variantText": "ٱلرِّيَاحُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D257-الريح",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D257-الريح-w2",
+        "variantId": "v-D257-الريح-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00506",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الرِّيحُ﴾: بالإفراد ﴿الرِّيحُ﴾ لابن كثير، أبو عمرو، ابن عامر، عاصم، حمزة، الكسائي، يعقوب، خلف؛ وبالجمع ﴿الرِّيَاحُ﴾ لنافع وأبي جعفر."
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
