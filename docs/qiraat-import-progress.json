@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T23:50:00+04:00",
+  "updatedAt": "2026-09-21T23:59:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -65,7 +65,7 @@
       277,
       278
     ],
-    "status": "local_verified_deployment_pending",
+    "status": "production_verified",
     "variantsAdded": 3,
     "readerAssignmentsAdded": 12,
     "rulingsAdded": 4,
@@ -73,10 +73,11 @@
     "reference": "Processed records DOCX-P277-R00753/R00761/R00762 and DOCX-P278-R00765/R00766/R00774; exact token spans checked.",
     "sourceAudit": "Page 277: Hamza/Yaqub 16:89 عَلَيْهُم, two hamza-change rules, second يَشَاءُ waqf locus. Page 278: Qalun/Abu Amr/Kisai/Abu Jaafar وَهْوَ, Ibn Kathir ٱلْقُرَانَ, and Ibn Kathir waqf-rasm بَاقِي. Ambiguous bare-Khalaf rows withheld.",
     "validation": "Importer idempotent; additive fixture changes; validator 1,932 variants / 9,783 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
-    "deploymentId": null,
-    "productionApiSmoke": "pending"
+    "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+    "productionApiSmoke": "Page 277 returned عَلَيْهُم for Hamza/Yaqub at 16:89, the two TAGHYIR_HAMZ loci at 16:89 and 16:90, and WAQF_HAMZA at the second 16:93 token with Hisham+Hamza. Page 278 returned وَهْوَ, ٱلْقُرَانَ, and Ibn Kathir WAQF_RASM at بَاقٍۢ.",
+    "commit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144"
   },
-  "lastConfirmedDeployedDataCommit": "ef173ed872873245101ccda534b46f4c5594c357",
+  "lastConfirmedDeployedDataCommit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -533,16 +534,18 @@
     },
     "status": "passed",
     "latestQiraatSlice": {
-      "commit": "2a030a8750eee52f8534564cc6d64db5d45693a4",
-      "deploymentId": "dpl_GBfGja1XD4Qs72g7wKGpc62L6U1R",
+      "commit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144",
+      "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+      "deploymentUrl": "https://mutshabehat-v2-32073n89k-shazlka-s-projects.vercel.app",
       "pages": [
-        253
+        277,
+        278
       ],
-      "api": "/api/mushaf-1441/qiraat?page=253&debug=1",
-      "status": "passed",
-      "locus": "13:32 أَخَذْتُهُمْ ۖ",
-      "readerIds": 16,
-      "color": "#15803D"
+      "variantsAdded": 3,
+      "rulingsAdded": 4,
+      "readerAssignmentsAdded": 12,
+      "api": "/api/mushaf-1441/qiraat?page={277,278}&debug=1",
+      "status": "passed"
     },
     "latestQiraatBatch": {
       "commit": "53741661c087e92fa6eb6dd8c565d82de20ac47c",
@@ -1770,7 +1773,7 @@
         277,
         278
       ],
-      "status": "local_verified_deployment_pending",
+      "status": "production_verified",
       "variantsAdded": 3,
       "readerAssignmentsAdded": 12,
       "rulingsAdded": 4,
@@ -1778,8 +1781,9 @@
       "reference": "Processed records DOCX-P277-R00753/R00761/R00762 and DOCX-P278-R00765/R00766/R00774; exact token spans checked.",
       "sourceAudit": "Page 277: Hamza/Yaqub 16:89 عَلَيْهُم, two hamza-change rules, second يَشَاءُ waqf locus. Page 278: Qalun/Abu Amr/Kisai/Abu Jaafar وَهْوَ, Ibn Kathir ٱلْقُرَانَ, and Ibn Kathir waqf-rasm بَاقِي. Ambiguous bare-Khalaf rows withheld.",
       "validation": "Importer idempotent; additive fixture changes; validator 1,932 variants / 9,783 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
-      "deploymentId": null,
-      "productionApiSmoke": "pending"
+      "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+      "productionApiSmoke": "Page 277 returned عَلَيْهُم for Hamza/Yaqub at 16:89, the two TAGHYIR_HAMZ loci at 16:89 and 16:90, and WAQF_HAMZA at the second 16:93 token with Hisham+Hamza. Page 278 returned وَهْوَ, ٱلْقُرَانَ, and Ibn Kathir WAQF_RASM at بَاقٍۢ.",
+      "commit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144"
     }
   ],
   "pages": [
@@ -9963,7 +9967,7 @@
         "farshLines": 2,
         "usulLines": 9
       },
-      "status": "audited_fixture_ready_for_deployment",
+      "status": "audited_production_verified",
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 1,
@@ -9972,10 +9976,12 @@
       "rulingFixturePresent": true,
       "databaseUpdated": false,
       "datasetValidation": "passed",
-      "committed": false,
-      "pushed": false,
-      "productionDeployed": false,
-      "productionUiVerified": false
+      "committed": true,
+      "pushed": true,
+      "productionDeployed": true,
+      "productionUiVerified": true,
+      "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+      "dataCommit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144"
     },
     {
       "page": 278,
@@ -9992,7 +9998,7 @@
         "farshLines": 7,
         "usulLines": 7
       },
-      "status": "audited_fixture_ready_for_deployment",
+      "status": "audited_production_verified",
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 2,
@@ -10001,10 +10007,12 @@
       "rulingFixturePresent": true,
       "databaseUpdated": false,
       "datasetValidation": "passed",
-      "committed": false,
-      "pushed": false,
-      "productionDeployed": false,
-      "productionUiVerified": false
+      "committed": true,
+      "pushed": true,
+      "productionDeployed": true,
+      "productionUiVerified": true,
+      "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+      "dataCommit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144"
     },
     {
       "page": 279,
@@ -21219,7 +21227,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "ef173ed872873245101ccda534b46f4c5594c357",
+  "currentHeadCommit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -22502,18 +22510,19 @@
   },
   "lastProductionSmokeAttempt": {
     "pages": [
-      275,
-      276
+      277,
+      278
     ],
     "status": "passed",
-    "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
-    "commit": "ef173ed872873245101ccda534b46f4c5594c357",
-    "variantsAdded": 8,
-    "readerAssignmentsAdded": 36,
-    "api": "/api/mushaf-1441/qiraat?page={275,276}&debug=1",
-    "details": "Page 275 production API returned all eight exact variant forms/spans/readers, including performance-only ishmaam with base text preserved. Page 276 API returned zero variants and the expected already-covered reviewed usul records."
+    "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+    "commit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144",
+    "variantsAdded": 3,
+    "rulingsAdded": 4,
+    "readerAssignmentsAdded": 12,
+    "api": "/api/mushaf-1441/qiraat?page={277,278}&debug=1",
+    "details": "Page 277 returned عَلَيْهُم for Hamza/Yaqub at 16:89, the two TAGHYIR_HAMZ loci at 16:89 and 16:90, and WAQF_HAMZA at the second 16:93 token with Hisham+Hamza. Page 278 returned وَهْوَ, ٱلْقُرَانَ, and Ibn Kathir WAQF_RASM at بَاقٍۢ."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-ii1xs4oa4-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Locally verified source-backed import for pages 277-278: three variants and four usul loci (12 reader assignments). Importer now uses the supplied qiraat_records.jsonl package as primary input. Deployment pending; preceding confirmed production slice remains pages 275-276."
+  "lastConfirmedVercelDeploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-32073n89k-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Production-verified source-backed import for pages 277-278: three variants, four usul loci, and 12 reader assignments. Production API confirmed exact tokens/forms/reading IDs on both pages. The parser now uses qiraat_records.jsonl as its primary source."
 }
