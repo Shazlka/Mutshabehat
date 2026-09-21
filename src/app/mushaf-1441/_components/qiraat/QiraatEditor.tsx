@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { MushafWord } from '../../../../../packages/quran-data/mushaf1441/types'
 
 type Entity = { id: string; parentId: string | null; type: string; nameAr: string; color: string | null }
@@ -30,6 +30,7 @@ export function canonicalKeyForWord(word: MushafWord) {
 
 export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initialScope }: { word: MushafWord; onClose(): void; onSaved(): void; onNavigate?(direction: 1 | -1): Promise<void>; initialScope?: { startCanonicalKey: string; endCanonicalKey: string; scopeType: 'RANGE' | 'BOUNDARY' } }) {
   const key = useMemo(() => canonicalKeyForWord(word), [word])
+  const openedAtRef = useRef(Date.now())
   const [startCanonicalKey, setStartCanonicalKey] = useState(initialScope?.startCanonicalKey ?? key)
   const [endCanonicalKey, setEndCanonicalKey] = useState(initialScope?.endCanonicalKey ?? key)
   const [entities, setEntities] = useState<Entity[]>([])
@@ -130,7 +131,7 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
   })
 
   return <div className="fixed inset-0 z-[70] flex items-end bg-black/40 sm:items-stretch sm:justify-end" role="dialog" aria-modal="true" aria-label="محرر القراءات">
-    <button className="absolute inset-0" aria-label="إغلاق محرر القراءات" onClick={onClose} />
+    <button className="absolute inset-0" aria-label="إغلاق محرر القراءات" onClick={() => { if (Date.now() - openedAtRef.current > 500) onClose() }} />
     <section className="relative flex max-h-[94dvh] w-full flex-col overflow-hidden rounded-t-2xl bg-[#fffdf8] shadow-2xl sm:max-h-none sm:w-[min(620px,48vw)] sm:rounded-none" dir="rtl">
       <header className="flex items-start justify-between border-b border-[#eadfc9] px-5 py-4">
         <div><p className="text-xs font-bold text-[#80662c]">محرر القراءات</p><h2 className="font-[family-name:var(--font-amiri-quran)] text-2xl text-[#171717]">{word.textUthmani}</h2><p className="text-xs text-[#665b48]">سورة {word.surahNumber} · آية {word.ayahNumber} · كلمة {word.wordIndexInAyah} · صفحة {word.pageNumber}</p><code className="text-[11px] text-[#80662c]">{key}</code></div>

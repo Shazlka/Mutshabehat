@@ -532,6 +532,8 @@ export default function Mushaf1441Viewer({
   // the initial value: it touches localStorage, which the server render cannot, so it is read in
   // an effect after mount (same pattern as the other reader preferences below).
   const [readerLayer, setReaderLayer] = useState<ReaderLayer>('mutshabehat')
+  const readerLayerRef = useRef<ReaderLayer>('mutshabehat')
+  useEffect(() => { readerLayerRef.current = readerLayer }, [readerLayer])
   const annotationsVisible = readerLayer === 'annotations'
   const mutshabehatHighlightEnabled = readerLayer === 'mutshabehat'
   // Which panel the detail sheet shows is not a separate choice the reader makes any more — it
@@ -2355,6 +2357,15 @@ export default function Mushaf1441Viewer({
         key={word.id}
         type="button"
         id={word.wordIndexInAyah === 1 ? navigateToAyah(word.ayahKey).slice(1) : undefined}
+        onPointerUp={(event) => {
+          // Some mobile WebKit builds suppress the synthetic click after a touch gesture on the
+          // transformed Mushaf page. Pointer-up is the reliable semantic tap boundary there.
+          if (event.pointerType === 'touch' && readerLayerRef.current === 'qiraat') {
+            event.stopPropagation()
+            updateHoveredQiraatWord(null)
+            setQiraatEditorWord(word)
+          }
+        }}
         onClick={(event) => {
           if (longPressFiredRef.current) {
             longPressFiredRef.current = false
@@ -2369,7 +2380,7 @@ export default function Mushaf1441Viewer({
           // detail. Reads the ref, not the state, so a stale page-slot closure can't misread it.
           // Stops here (never bubbles to the document click-outside listener below) so opening or
           // switching a peek is never immediately undone by that same click.
-          if (readerLayer === 'qiraat') {
+          if (readerLayerRef.current === 'qiraat') {
             event.stopPropagation()
             updateHoveredQiraatWord(null)
             if (qiraatScopeModeRef.current) {
@@ -2411,12 +2422,16 @@ export default function Mushaf1441Viewer({
           if (hoveredQiraatWordIdRef.current === word.id) updateHoveredQiraatWord(null)
         }}
         onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
-        onTouchStart={(event) => liveRef.current.startLongPress(
-          { targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word },
-          event,
-        )}
-        onTouchMove={() => liveRef.current.cancelLongPress()}
+        onTouchStart={(event) => {
+          // Qiraat edit mode owns the tap gesture. The notes long-press timer must not compete
+          // with it on real mobile browsers, where the synthetic click can otherwise be delayed
+          // or swallowed before the editor opens.
+          if (readerLayerRef.current === 'qiraat') return
+          liveRef.current.startLongPress({ targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word }, event)
+        }}
+        onTouchMove={() => { if (readerLayerRef.current !== 'qiraat') liveRef.current.cancelLongPress() }}
         onTouchEnd={() => {
+          if (readerLayerRef.current === 'qiraat') return
           liveRef.current.cancelLongPress()
           const now = Date.now()
           if (now - lastTapRef.current < 300) {
@@ -2453,7 +2468,7 @@ export default function Mushaf1441Viewer({
         // mobile Safari has no vibration API to ask (see haptics.ts). Pure CSS on purpose: a
         // per-word "is pressed" state would re-render the memoized page slot and cost the ~1 ms
         // page-turn invariant on every touch.
-        className={`inline rounded-[3px] px-0 py-0 align-baseline transition-colors select-none [-webkit-touch-callout:none] ${currentThemeTokens.wordActiveClass} focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
+        className={`relative z-10 inline rounded-[3px] px-0 py-0 align-baseline transition-colors select-none [-webkit-touch-callout:none] ${currentThemeTokens.wordActiveClass} focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
           isSelectedWord
             ? currentThemeTokens.wordSelectedClass
             : highlightAnnotation
