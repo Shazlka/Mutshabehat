@@ -1,1 +1,106 @@
-[]
+[
+  {
+    "id": "v-D501-غشاوه-w2",
+    "surah": 45,
+    "ayah": 23,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "غِشَـٰوَةًۭ",
+    "variantText": "غَشْوَةً",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D501-غشاوه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D501-غشاوه-w2",
+        "variantId": "v-D501-غشاوه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03048",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿غِشَـٰوَةٗ﴾: بكسر الغين وألف مدية بعد الشين ﴿غِشَاوَةً﴾ للجمهور؛ وبفتح الغين وإسكان الشين وقصرها ﴿غَشْوَةً﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بفتح الغين وإسكان الشين وقصرها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D501-كل_امه_تدعا-w2",
+    "surah": 45,
+    "ayah": 28,
+    "startToken": 5,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "كُلُّ أُمَّةٍۢ تُدْعَىٰٓ",
+    "variantText": "كُلَّ أُمَّةٍ تُدْعَى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D501-كل_امه_تدعا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D501-كل_امه_تدعا-w2",
+        "variantId": "v-D501-كل_امه_تدعا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03051",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿كُلُّ أُمَّةٍ تُدْعَىٰ﴾ (الموضع الثاني): برفع كلُّ مبتدأ للجمهور؛ بنصب كلَّ مفعولاً به ﴿كُلَّ أُمَّةٍ تُدْعَى﴾ ليعقوب."
+      }
+    ],
+    "description": "بنصب كل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D501-والساعه_لا_ريب-w2",
+    "surah": 45,
+    "ayah": 32,
+    "startToken": 7,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلسَّاعَةُ لَا رَيْبَ",
+    "variantText": "وَالسَّاعَةَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D501-والساعه_لا_ريب",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D501-والساعه_لا_ريب-w2",
+        "variantId": "v-D501-والساعه_لا_ريب-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03053",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَالسَّاعَةُ لَا رَيْبَ﴾: برفع التاء ﴿وَالسَّاعَةُ﴾ للجمهور؛ بنصب التاء ﴿وَالسَّاعَةَ﴾ لحمزة."
+      }
+    ],
+    "description": "بنصب التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

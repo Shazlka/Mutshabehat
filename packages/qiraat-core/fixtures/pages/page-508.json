@@ -1,1 +1,70 @@
-[]
+[
+  {
+    "id": "v-D508-وكاين-w2",
+    "surah": 47,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَكَأَيِّن",
+    "variantText": "وَكَائِن",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D508-وكاين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D508-وكاين-w2",
+        "variantId": "v-D508-وكاين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03114",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَكَأَيِّن﴾: بالهمز والتنوين للجمهور؛ بالمد والهمز لابن كثير ﴿وَكَائِن﴾؛ بالتسهيل لأبي جعفر."
+      }
+    ],
+    "description": "بالمد والهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D508-ءاسن-w2",
+    "surah": 47,
+    "ayah": 15,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "ءَاسِنٍۢ",
+    "variantText": "أَسِنٍ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D508-ءاسن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D508-ءاسن-w2",
+        "variantId": "v-D508-ءاسن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03115",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ءَاسِنٍ﴾: بمد الهمزة ﴿ءَاسِنٍ﴾ للجمهور؛ بقصر الهمزة ﴿أَسِنٍ﴾ لابن كثير."
+      }
+    ],
+    "description": "بقصر الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

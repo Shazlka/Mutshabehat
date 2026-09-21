@@ -1,1 +1,170 @@
-[]
+[
+  {
+    "id": "v-D509-عسيتم-w2",
+    "surah": 47,
+    "ayah": 22,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَسَيْتُمْ",
+    "variantText": "عَسِيتُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D509-عسيتم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-عسيتم-w2",
+        "variantId": "v-D509-عسيتم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03129",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَسَيْتُمْ﴾: بفتح السين للجمهور؛ وبكسر السين ﴿عَسِيتُمْ﴾ لنافع."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D509-توليتم-w2",
+    "surah": 47,
+    "ayah": 22,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَوَلَّيْتُمْ",
+    "variantText": "تُوُلِّيتُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D509-توليتم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-توليتم-w2",
+        "variantId": "v-D509-توليتم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03130",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَوَلَّيْتُمْ﴾: بفتح التاء والواو للجمهور؛ بضم التاء وكسر الواو ﴿تُوُلِّيتُمْ﴾ لرويس."
+      }
+    ],
+    "description": "بضم التاء وكسر الواو",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D509-وتقطعوا-w2",
+    "surah": 47,
+    "ayah": 22,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَتُقَطِّعُوٓا۟",
+    "variantText": "وَتَقْطَعُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D509-وتقطعوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-وتقطعوا-w2",
+        "variantId": "v-D509-وتقطعوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03131",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَتُقَطِّعُوٓاْ﴾: بضم التاء وفتح القاف وتشديد الطاء المكسورة ﴿وَتُقَطِّعُوا﴾ للجمهور؛ بفتح التاء وإسكان القاف وفتح الطاء مخففة ﴿وَتَقْطَعُوا﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح التاء وإسكان القاف وفتح الطاء مخففة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D509-القرءان-w2",
+    "surah": 47,
+    "ayah": 24,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "الْقُرَانَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D509-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-القرءان-w2",
+        "variantId": "v-D509-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03132",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانَ﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D509-رضوانهو-w2",
+    "surah": 47,
+    "ayah": 28,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "رِضْوَٰنَهُۥ",
+    "variantText": "رُضْوَانَهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D509-رضوانهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D509-رضوانهو-w2",
+        "variantId": "v-D509-رضوانهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P509-R03138",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿رِضْوَٰنَهُۥ﴾: بكسر الراء للجمهور؛ وبضم الراء ﴿رُضْوَانَهُ﴾ لشعبة."
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

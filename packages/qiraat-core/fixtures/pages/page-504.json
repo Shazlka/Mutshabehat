@@ -1,1 +1,109 @@
-[]
+[
+  {
+    "id": "v-D504-وفصالهو-w2",
+    "surah": 46,
+    "ayah": 15,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَفِصَـٰلُهُۥ",
+    "variantText": "وَفَصْلُهُ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D504-وفصالهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D504-وفصالهو-w2",
+        "variantId": "v-D504-وفصالهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03081",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَفِصَـٰلُهُۥ﴾: بكسر الفاء وفتح الصاد وألف بعدها ﴿وَفِصَالُهُ﴾ للجمهور؛ بفتح الفاء وإسكان الصاد بلا ألف ﴿وَفَصْلُهُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح الفاء وإسكان الصاد بلا ألف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D504-اتعدانني-w2",
+    "surah": 46,
+    "ayah": 17,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَتَعِدَانِنِىٓ",
+    "variantText": "أَتَعِدَّانِّي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D504-اتعدانني",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D504-اتعدانني-w2",
+        "variantId": "v-D504-اتعدانني-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03084",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَتَعِدَانِنِيٓ﴾: بنونين خفيفتين مكسورتين للجمهور؛ بنون واحدة مشددة مع المد المشبع ﴿أَتَعِدَّانِّي﴾ لهشام."
+      }
+    ],
+    "description": "بنون واحدة مشددة مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D504-اذهبتم-w2",
+    "surah": 46,
+    "ayah": 20,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "أَذْهَبْتُمْ",
+    "variantText": "أَءَذْهَبْتُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D504-اذهبتم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D504-اذهبتم-w2",
+        "variantId": "v-D504-اذهبتم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P504-R03087",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَذْهَبْتُمْ﴾: بهمزتين على الاستفهام ﴿أَءَذْهَبْتُمْ﴾ لابن كثير، وابن عامر، وأبي جعفر، ويعقوب (مع التحقيق والتسهيل والإدخال حسب أصولهم)؛ وبهمزة واحدة على الإخبار للباقين."
+      }
+    ],
+    "description": "بهمزتين على الاستفهام",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

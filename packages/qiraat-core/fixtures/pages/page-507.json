@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "id": "v-D507-قتلوا-w2",
+    "surah": 47,
+    "ayah": 4,
+    "startToken": 32,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "قُتِلُوا۟",
+    "variantText": "قَاتَلُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D507-قتلوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D507-قتلوا-w2",
+        "variantId": "v-D507-قتلوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P507-R03109",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿قُتِلُواْ﴾: بضم القاف وكسر التاء مخففة ﴿قُتِلُوا﴾ لأبي عمرو وحفص ويعقوب؛ بفتح القاف والتاء وألف بينهما ﴿قَاتَلُوا﴾ للباقين."
+      }
+    ],
+    "description": "بفتح القاف والتاء مع ألف",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

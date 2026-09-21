@@ -1,1 +1,117 @@
-[]
+[
+  {
+    "id": "v-D500-ترجعون-w2",
+    "surah": 45,
+    "ayah": 15,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُونَ",
+    "variantText": "تَرْجِعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D500-ترجعون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D500-ترجعون-w2",
+        "variantId": "v-D500-ترجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P500-R03043",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تُرْجَعُونَ﴾: بضم التاء للجمهور؛ وبفتح التاء ﴿تَرْجِعُونَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D500-والنبوه-w2",
+    "surah": 45,
+    "ayah": 16,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلنُّبُوَّةَ",
+    "variantText": "وَالنُّبُوءَةَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D500-والنبوه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D500-والنبوه-w2",
+        "variantId": "v-D500-والنبوه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P500-R03044",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَالنُّبُوَّةَ﴾: بالهمز لنافع ﴿وَالنُّبُوءَةَ﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D500-سواء-w2",
+    "surah": 45,
+    "ayah": 21,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "سَوَآءًۭ",
+    "variantText": "سَوَاءٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D500-سواء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D500-سواء-w2",
+        "variantId": "v-D500-سواء-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P500-R03045",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿سَوَآءً﴾: بنصب الهمزة تنويناً ﴿سَوَاءً﴾ لحفص، وحمزة، والكسائي، وخلف؛ بالرفع تنويناً ﴿سَوَاءٌ﴾ للباقين."
+      }
+    ],
+    "description": "بالرفع تنويناً",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
