@@ -22524,5 +22524,39 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-32073n89k-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Production-verified source-backed import for pages 277-278: three variants, four usul loci, and 12 reader assignments. Production API confirmed exact tokens/forms/reading IDs on both pages. The parser now uses qiraat_records.jsonl as its primary source."
+  "latestSourceCoverageNote": "Production-verified source-backed import for pages 277-278: three variants, four usul loci, and 12 reader assignments. Production API confirmed exact tokens/forms/reading IDs on both pages. The parser now uses qiraat_records.jsonl as its primary source.",
+  "latestLocalImportCycle": {
+    "pagesReviewed": [
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286,
+      287,
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      294
+    ],
+    "pagesWithNewRulingLoci": [
+      279,
+      280,
+      285,
+      286,
+      287,
+      291,
+      292
+    ],
+    "newRulingLoci": 10,
+    "readerAssignmentsAdded": 51,
+    "newVariants": 0,
+    "status": "locally verified; deployment pending",
+    "details": "Four read-only audits reviewed pages 279-294. Ten ruling loci were added and one existing locus gained an assignment. Other audited farsh candidates remain unimported; this is not page-wide completion."
+  }
 }

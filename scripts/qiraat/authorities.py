@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """Arabic authority name -> canonical Q-ID.
 
-The single most dangerous string in this whole dataset is the bare word "خلف". It is TWO
-different people:
+The word "خلف" can denote two authorities:
     خلف عن حمزة  = Q06-R01 (a narrator)
     خلف العاشر   = Q10     (a reader, one of the ten)
-The source writes both as "خلف" and relies on context. This module therefore refuses to
-resolve a bare "خلف" at all — the data must say KHALAF10 or KHALAF_HAMZA explicitly.
+Project convention: bare "خلف" means Q06-R01. Resolve Q10 only when the source explicitly says
+"خلف العاشر".
 """
 
 READERS = {
@@ -54,9 +53,7 @@ class BadAuthority(Exception):
 def resolve(name: str) -> str:
     name = name.strip()
     if name == 'خلف':
-        raise BadAuthority(
-            'Bare "خلف" is ambiguous (Q06-R01 خلف عن حمزة vs Q10 خلف العاشر). '
-            'Use KHALAF10 or KHALAF_HAMZA.')
+        return NARRATORS['خلف عن حمزة']
     if name == 'الدوري':
         raise BadAuthority(
             'Bare "الدوري" is ambiguous (Q03-R01 عن أبي عمرو vs Q07-R02 عن الكسائي). '

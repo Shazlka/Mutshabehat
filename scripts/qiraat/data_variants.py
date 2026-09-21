@@ -3,7 +3,7 @@
 
 Transcribed from the user-supplied extraction. NOTHING here is inferred: where the source
 named a reader, a reader is named; where it named a narrator, a narrator is named.
-"خلف" is never written bare — see authorities.py.
+Bare "خلف" resolves to Q06-R01; use KHALAF10 only for explicit خلف العاشر.
 
 Each entry: (query, [wajh, ...], kwargs)
   wajh = (reading_text, description, variant_type, attribution, is_baseline)

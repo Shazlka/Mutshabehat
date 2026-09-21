@@ -1186,8 +1186,7 @@ IMALAH_CONNECTORS = re.compile(r'^(?:وأمالهما|وأمالها|وأمال|
 TAQLIL_SPLIT_RE = re.compile(r'وقللهما|وقللها|وقلل|والتقليل|تقليل')
 
 def imalah_readers_from(text, claimed):
-    # Keep the project-wide resolver rule here too: bare «خلف» is ambiguous between
-    # خلف العاشر and خلف عن حمزة, so any clause containing it is unresolved and dropped.
+    # Bare «خلف» means خلف عن حمزة; «خلف العاشر» is matched as a full reader name.
     readers, rest = resolve_readers(text.strip(), claimed)
     if rest.strip(' ،,؛.') or not readers:
         raise Unresolved('unresolved imalah reader text: '+rest.strip())
@@ -2039,9 +2038,7 @@ def existing(kind, page):
     return []
 
 def has_bare_ambiguous_reader(text):
-    """Reject any source line that contains an unresolved bare narrator name."""
-    if re.search(r'(?<!ب)(?:و)?خلف(?!\s*(?:العاشر|عن))', text):
-        return True
+    """Reject only reader names the user has left unresolved (currently bare الدوري)."""
     if re.search(r'الدوري(?!\s+عن\s+(?:أبو\s+عمرو|أبي\s+عمرو|الكسائي))', text):
         return True
     return False
@@ -2183,23 +2180,37 @@ def build(page_list, categories=None, complete_ikhfa=False):
         if categories is None:
             v,source_links_added=reconcile_audited_farsh(page,pd['farsh'],v,ev)
             vstats['sourceLinksAdded']+=source_links_added
-        # One word may have several authoritative non-Hafs faces. Deduplicate by exact
-        # token+form, then keep only reader transmissions not already assigned another
-        # form at that token. This is additive: an existing form/attribution is never
-        # rewritten, and conflicting same-reader claims are safely withheld.
-        claimed_by_token=collections.defaultdict(set)
+        # A token can have multiple source-supported faces when their reader sets differ.
+        # Track the form already assigned to each transmission: same-form readers may be
+        # added, while a reader already attached to a different form is withheld.
+        forms_by_reader=collections.defaultdict(dict)
         for e in ev:
-            claimed_by_token[(e['surah'],e['ayah'],e['startToken'])].update(e.get('readingIds',[]))
-        v2=[]; seen_forms=set()
+            token_key=(e['surah'],e['ayah'],e['startToken'])
+            form=T.norm(e.get('variantText') or '')
+            for reader_id in e.get('readingIds',[]):
+                forms_by_reader[token_key][reader_id]=form
+        v2=[]; seen_forms=collections.defaultdict(set)
+        for e in ev:
+            token_key=(e['surah'],e['ayah'],e['startToken'])
+            form_key=(*token_key,T.norm(e.get('variantText') or ''))
+            seen_forms[form_key].update(e.get('readingIds',[]))
         for x in v:
             token_key=(x['surah'],x['ayah'],x['startToken'])
-            form_key=(*token_key,T.norm(x.get('variantText') or ''),tuple(sorted(x.get('readingIds',[]))))
-            if form_key in seen_forms: continue
-            seen_forms.add(form_key)
-            available=set(x.get('readingIds',[]))-claimed_by_token[token_key]
+            form=T.norm(x.get('variantText') or '')
+            form_key=(*token_key,form)
+            candidates=set(x.get('readingIds',[]))
+            seen_readers=seen_forms.setdefault(form_key,set())
+            # Remove duplicate source faces already present with the same form, and
+            # refuse same-reader alternatives that disagree with an existing form.
+            available={reader_id for reader_id in candidates
+                       if reader_id not in seen_readers and
+                       (reader_id not in forms_by_reader[token_key] or
+                        forms_by_reader[token_key][reader_id]==form)}
             if not available: continue
             x['readingIds']=sorted(available)
-            claimed_by_token[token_key].update(available)
+            seen_readers.update(available)
+            for reader_id in available:
+                forms_by_reader[token_key][reader_id]=form
             v2.append(x)
         seenr={}; r2=[]
         for x in r:
@@ -2700,7 +2711,7 @@ def checked_page303_farsh(page, lines):
     The source combines several alternative forms on one prose line, and one header uses the
     non-Hafs form as its anchor. Keep this correction local to that page, use only explicit
     reader groups, and resolve every stored baseText through the real Mushaf token fixtures.
-    Rows containing the ambiguous bare name «خلف» remain excluded by the generic resolver.
+    Rows use the project convention for bare «خلف» and reserve «خلف العاشر» for the tenth reader.
     """
     if page != 303:
         return []
