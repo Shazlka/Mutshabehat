@@ -35,6 +35,7 @@ import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type Qiraa
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
 import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
+import QiraatEditor from './qiraat/QiraatEditor'
 import {
   comparisonMarkerForWord,
   markerPaintForWord,
@@ -558,6 +559,7 @@ export default function Mushaf1441Viewer({
   // leaving the layer and coming back returns the reader to the mode they were in, rather than
   // silently resetting them to مقارنة القراءات.
   const [qiraatSubMode, setQiraatSubMode] = useState<Exclude<QiraatMode, 'normal'>>('comparison')
+  const [qiraatEditorWord, setQiraatEditorWord] = useState<MushafWord | null>(null)
   // The single source of truth every render site reads: Qiraat is on only while it owns the layer,
   // so no code path can paint Qiraat colours over متشابهات or annotations.
   const qiraatMode: QiraatMode = readerLayer === 'qiraat' ? qiraatSubMode : 'normal'
@@ -1807,6 +1809,22 @@ export default function Mushaf1441Viewer({
     setSelectedTarget({ targetType: 'word', ayahKey: word.ayahKey, pageNumber: word.pageNumber, word }, 'note')
   }
 
+  async function navigateQiraatEditorWord(direction: 1 | -1) {
+    const pages = [visiblePage, companionPage].filter(Boolean) as MushafPage[]
+    const words = pages.sort((a, b) => a.pageNumber - b.pageNumber).flatMap((page) => page.lines.flatMap((line) => line.words.filter((candidate) => candidate.charTypeName === undefined || candidate.charTypeName === 'word')))
+    const index = words.findIndex((candidate) => candidate.id === qiraatEditorWord?.id)
+    const localTarget = index >= 0 ? words[index + direction] : null
+    if (localTarget) { setQiraatEditorWord(localTarget); return }
+    const nextPage = clampPage(pageNumber + (isSpread ? direction * 2 : direction))
+    if (nextPage === pageNumber) return
+    const loaded = await loadPageWords(nextPage)
+    const nextWords = loaded.lines.flatMap((line) => line.words.filter((candidate) => candidate.charTypeName === undefined || candidate.charTypeName === 'word'))
+    const target = direction > 0 ? nextWords[0] : nextWords[nextWords.length - 1]
+    if (!target) return
+    await goToPage(nextPage)
+    setQiraatEditorWord(target)
+  }
+
   // Tapping a word carrying Qiraat data opens the same detail panel, straight to its Qiraat tab
   // (Part 13's "tap a word/phrase → bottom sheet"), instead of the notes tab `selectWord` opens.
   // Returns false when the token carries no Qiraat data at all, so a press that would open an
@@ -2324,11 +2342,10 @@ export default function Mushaf1441Viewer({
           // detail. Reads the ref, not the state, so a stale page-slot closure can't misread it.
           // Stops here (never bubbles to the document click-outside listener below) so opening or
           // switching a peek is never immediately undone by that same click.
-          if (qiraatView.mode !== 'normal') {
-            if (!hasQiraatData) return
+          if (readerLayer === 'qiraat') {
             event.stopPropagation()
             updateHoveredQiraatWord(null)
-            liveRef.current.selectWordForQiraat(word)
+            setQiraatEditorWord(word)
             return
           }
           // متشابهات layer: an ayah that is in one of your groups opens its card, and a word that
@@ -4655,6 +4672,16 @@ export default function Mushaf1441Viewer({
               ? null
               : pageStageRef.current?.querySelector<HTMLElement>(`[data-page-slot-current] [data-page-no="${pageTurn.backPageNo}"]`) ?? null)}
             onFinish={finishPageTurn}
+          />
+        ) : null}
+        {qiraatEditorWord ? (
+          <QiraatEditor
+            word={qiraatEditorWord}
+            onClose={() => setQiraatEditorWord(null)}
+            onSaved={() => {
+              setToast('تم حفظ تعليق القراءات وتحديث القراءة المعروضة.')
+            }}
+            onNavigate={navigateQiraatEditorWord}
           />
         ) : null}
         {hoveredQiraatWord ? (
