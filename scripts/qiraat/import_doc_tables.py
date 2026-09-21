@@ -633,7 +633,7 @@ def explicit_idgham_readers(text):
              ('أبي عمرو','أبو عمرو'),('أبا عمرو','أبو عمرو'))
     for inflected,canonical in aliases:
         text=text.replace(inflected,canonical)
-    excluded=re.fullmatch(r'جميع القراء عدا\s+(.+)',text)
+    excluded=re.fullmatch(r'ل?جميع القراء عدا\s+(.+)',text)
     if excluded:
         text=re.sub(r'[اً]$','',excluded.group(1).strip()).replace('نافعا','نافع')
         for inflected,canonical in aliases:
@@ -662,6 +662,10 @@ def parse_idgham_saghir_line(page, line, out):
             _,sep,names=clause.partition(':')
             if not sep: continue
             names=names.strip()
+            # Some source rows state the action before an explicit all-except group:
+            # «بالإدغام لجميع القراء عدا ...». Strip only that action prefix, then
+            # resolve the named exclusions; generic/universal reader clauses still drop.
+            names=re.sub(r'^ب(?:ال)?(?:إدغام|ادغام)(?:\s+(?:الصغير|الكامل))?\s*','',names)
         try:
             if re.fullmatch(r'(?:الباقون|الباقين|للجمهور|الجمهور)',names):
                 shown=None
@@ -681,11 +685,24 @@ def parse_idgham_saghir_line(page, line, out):
             emit_ruling(page,'IDGHAM_SAGHIR',match.group(1),[(rs,'إدغام صغير')],out)
 
 def parse_usul(page, lines):
-    out=[]; section=None; target_section=None; target_hisham=False
+    out=[]; section=None; target_section=None; target_hisham=False; idgham_section=False
     for raw in lines:
         line=raw.strip()
         head=line.split(':')[0]
         if is_neg(line) or has_bare_ambiguous_reader(line): continue
+        if line.startswith('الإدغام الصغير'):
+            idgham_section=not bool(BRACE.search(line))
+            if BRACE.search(line): parse_idgham_saghir_line(page,line,out)
+            continue
+        if idgham_section:
+            other_headers=tuple(FIXED)+('الممال','تغيير الهمز','الهمز المفرد','إبدال',
+                'السكت','صلة هاء','الوقف على مرسوم الخط','وقف حمزة','الهمزتان',
+                'إخفاء أبي جعفر','صلة ميم الجمع','ميم الجمع')
+            if line.startswith(other_headers):
+                idgham_section=False
+            elif BRACE.search(line):
+                parse_idgham_saghir_line(page,line,out)
+                continue
         # New source-labelled families may be inline or introduced by a bare heading followed
         # by one or more anchored lines.
         target_headers=[('الهمزتان من كلمتين','HAMZATAN_KALIMATAYN'),
@@ -746,7 +763,7 @@ def parse_usul(page, lines):
                 emit_ruling(page,'SILAT_HA',anchor,[(q('ابن كثير'),'صلة هاء الكناية')],out)
             continue
         # الإدغام الصغير: "﴿w﴾: أظهرها ...؛ وأدغمها READERS"
-        if head.startswith('الإدغام الصغير') or (section is None and 'أدغمها' in line and 'الإدغام' in line):
+        if section is None and 'أدغمها' in line and 'الإدغام' in line:
             parse_idgham_saghir_line(page,line,out)
             continue
         # تغيير الهمز: clause-by-clause; a clause without an unambiguous per-anchor attribution
