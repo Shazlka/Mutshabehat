@@ -81,7 +81,9 @@ The cache trigger invalidates only descendants of the changed authority and the 
 
 ## Batch model
 
-`qiraat_batches` tracks candidate/preview/apply/validated/committed/rolled-back state and entry method. `qiraat_batch_changes` records every INSERT, UPDATE or DELETE with batch ID, table/entity, record ID, before/after JSON, sequence and timestamp. `rollback_batch(batch_id)` reverses changes in descending sequence inside one transaction, validates domain state, refreshes affected cache rows, and commits or rolls back atomically. Revisions and audit timestamps are intentionally not expected to equal their pre-batch values.
+`qiraat_batches` tracks candidate/preview/apply/validated/committed/rolled-back state and entry method. `qiraat_batch_changes` records every INSERT, UPDATE or DELETE with batch ID, an `annotation_aggregate` record ID, before/after aggregate JSON, sequence and timestamp. A snapshot includes the parent annotation plus Faces, annotation-level and face-linked Variants, and source links.
+
+`rollback_qiraat_batch(batch_id)` reverses changes in descending sequence inside the caller transaction. An original INSERT is soft-deleted; original UPDATE/DELETE operations restore the complete prior aggregate and then create a new monotonically higher version/revision rather than reusing a historical version. Protected `qiraat_annotation_revisions`, batch ledgers and change records are never hard-deleted. Before UPDATE/DELETE reversal, the live version must equal the captured post-batch version; otherwise `ROLLBACK_CONFLICT` aborts the complete transaction without overwriting a later edit. `rolled_back` batches are safe no-ops. Cache refresh is trigger-driven in the same transaction and clears the old as well as new authority/scope projection, keeping normal page reads cache-only. See `docs/qiraat/12-batch-rollback.md`.
 
 ## Existing-schema coexistence
 
