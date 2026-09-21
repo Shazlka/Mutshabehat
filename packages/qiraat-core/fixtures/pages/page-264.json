@@ -260,5 +260,114 @@
     "description": "بكسر العين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P264-15-41-4-HARAKAH",
+    "surah": 15,
+    "ayah": 41,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَلَىَّ",
+    "variantText": "عَلِيٌّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P264-15-41-4-HARAKAH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P264-R00591",
+        "variantId": "v-AUDIT-P264-15-41-4-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P264-R00591",
+        "sourceText": "بالسين وضم اللام وتنوين الياء الساكنة المرفوعة اسماً ﴿سِرَاطٌ عَلِيٌّ﴾: رويس.",
+        "verificationNotes": "نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P264-R00592",
+        "variantId": "v-AUDIT-P264-15-41-4-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P264-R00592",
+        "sourceText": "بالصاد ورفع الياء منونة ﴿صِرَاطٌ عَلِيٌّ﴾: روح.",
+        "verificationNotes": "نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P264-41-EXT",
+        "variantId": "v-AUDIT-P264-15-41-4-HARAKAH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hijr/41",
+        "sourceText": "Yaqub: Ruways and Rawh read عَلِيٌّ with kasra on the lam and nominative tanwin; the token 3 الصراط alternates are represented separately.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والراويين صراحةً."
+      }
+    ],
+    "description": "بالسين وضم اللام وتنوين الياء الساكنة المرفوعة اسماً ﴿سِرَاطٌ عَلِيٌّ﴾: رويس. / بالصاد ورفع الياء منونة ﴿صِرَاطٌ عَلِيٌّ﴾: روح.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Yaqub: Ruways and Rawh read عَلِيٌّ with kasra on the lam and nominative tanwin; the token 3 الصراط alternates are represented separately.",
+        "url": "https://quranpedia.net/qiraat/al-hijr/41"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P264-15-42-5-HARAKAH",
+    "surah": 15,
+    "ayah": 42,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P264-15-42-5-HARAKAH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P264-R00593",
+        "variantId": "v-AUDIT-P264-15-42-5-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P264-R00593",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها لحمزة ويعقوب.",
+        "verificationNotes": "نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P264-42-EXT",
+        "variantId": "v-AUDIT-P264-15-42-5-HARAKAH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hijr/42",
+        "sourceText": "Dammah on hāʾ: Khalaf and Khallād from Hamza, Rawh and Ruways from Yaqub.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والراويين صراحةً."
+      }
+    ],
+    "description": "﴿عَلَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها لحمزة ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Dammah on hāʾ: Khalaf and Khallād from Hamza, Rawh and Ruways from Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-hijr/42"
+      }
+    ]
   }
 ]

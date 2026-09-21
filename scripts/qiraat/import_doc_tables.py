@@ -206,6 +206,71 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                 'sourceReference':url,'sourceText':external_text,
                 'verificationNotes':'مرجع مستقل يذكر الرواة صراحةً ويثبت الوجه المخالف لحفص.'})
             v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
+    if page == 264:
+        p264_candidates=[
+            (41,'عَلَىَّ','عَلِيٌّ',{'Q09-R01','Q09-R02'},
+             ['DOCX-P264-R00591','DOCX-P264-R00592'],
+             'https://quranpedia.net/qiraat/al-hijr/41',
+             'Yaqub: Ruways and Rawh read عَلِيٌّ with kasra on the lam and nominative tanwin; the token 3 الصراط alternates are represented separately.'),
+            (42,'عَلَيْهِمْ','عَلَيْهُمْ',{'Q06-R01','Q06-R02','Q09-R01','Q09-R02'},
+             ['DOCX-P264-R00593'],
+             'https://quranpedia.net/qiraat/al-hijr/42',
+             'Dammah on hāʾ: Khalaf and Khallād from Hamza, Rawh and Ruways from Yaqub.'),
+            (44,'جُزْءٌ','جُزٌّ',{'Q08-R01','Q08-R02'},
+             ['DOCX-P264-R00596'],
+             'https://quranpedia.net/qiraat/al-hijr/44',
+             'Abu Jaafar (Ibn Jammaz and Ibn Wardan): doubled zay with tanwin and deletion of hamza.'),
+        ]
+        for ayah,anchor,alternate,readers,record_ids,url,external_text in p264_candidates:
+            rows=[PACKAGE_RECORDS.get(rid) for rid in record_ids]
+            if any(r is None or r.get('page_no')!=264 or r.get('section')!='farsh' for r in rows):
+                raise ValueError(f'page 264 audited {ayah} processed-package row missing')
+            for r in rows:
+                if (not r.get('raw_text') or r.get('attribution_mode') not in ('explicit','remainder') or
+                    is_neg(r['raw_text']) or is_univ(r['raw_text'])):
+                    raise ValueError(f'page 264 audited {ayah} source lacks explicit packaged attribution')
+            loc=T.find(page,anchor,ayah=ayah)
+            expected_word={41:4,42:5,44:7}[ayah]
+            if (loc['surah'],loc['startAyah'],loc['endAyah'],loc['startWord'],loc['endWord']) != (15,ayah,ayah,expected_word,expected_word):
+                raise ValueError(f'page 264 audited {ayah} exact token/span changed')
+            matches=[x for x in existing_page if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) ==
+                (15,ayah,expected_word,expected_word)]
+            stable_id=f'v-AUDIT-P264-15-{ayah}-{expected_word}-HARAKAH'
+            if matches:
+                if (len(matches)==1 and matches[0].get('id')==stable_id and
+                    matches[0].get('hafsText')==loc['baseText'] and
+                    matches[0].get('variantText')==alternate and
+                    set(matches[0].get('readingIds',[]))==readers and
+                    matches[0].get('description')==' / '.join(r['raw_text'] for r in rows)):
+                    continue
+                # This import path has an intentionally strict one-variant-per-token
+                # dedupe key. Do not append a second form at a token already occupied
+                # by a different source variant (e.g. Abu Jaafar's additional juzz form).
+                continue
+            if not readers or 'Q05-R02' in readers or not readers <= ALL20:
+                raise ValueError(f'page 264 audited {ayah} reader group failed')
+            before=len(variants)
+            yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+                                     (alternate,'الوجه المنقول في مجموعة المصدر المعالجة',readers)],variants)
+            added=[x for x in variants[before:] if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) == (15,ayah,expected_word,expected_word)]
+            if len(added)!=1:
+                raise ValueError(f'page 264 audited {ayah} 20-reading partition failed')
+            v=added[0]; v['id']=stable_id; v['locusId']=stable_id.replace('v-','')
+            v['differenceType']='LETTER' if ayah==44 else 'HARAKAH'
+            v['sources']=[]
+            for rid,row in zip(record_ids,rows):
+                v['sources'].append({'id':f's-{rid}','variantId':v['id'],
+                    'sourceName':'استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)','sourceType':'other',
+                    'sourceReference':f'qiraat_records.jsonl، {rid}','sourceText':row['raw_text'],
+                    'verificationNotes':'نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر.'})
+            v['description']=' / '.join(r['raw_text'] for r in rows)
+            v['sources'].append({'id':f's-AUDIT-P264-{ayah}-EXT','variantId':v['id'],
+                'sourceName':'موسوعة القراءات القرآنية — القراءات العشر','sourceType':'website',
+                'sourceReference':url,'sourceText':external_text,
+                'verificationNotes':'مرجع مستقل يثبت الوجه والراويين صراحةً.'})
+            v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
     if page == 253:
         source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
         if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
