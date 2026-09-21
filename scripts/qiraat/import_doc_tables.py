@@ -1136,7 +1136,9 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
         header = '﴿إِنَّ ثَمُودَاْ﴾:'
         fragment = 'بالتنوين ﴿إِنَّ ثَمُودًا﴾:'
         headers = [i for i, line in enumerate(lines) if line.strip() == header]
-        if len(headers) != 1:
+        # The packaged source may keep the Thamud locus row as a standalone
+        # paragraph; reject duplicate headers but allow the absent repeated header.
+        if len(headers) > 1:
             raise ValueError('page 229 audited Thamud source header not unique')
         matching = [line for line in lines if line.strip().startswith(fragment)]
         if len(matching) != 1:
@@ -4082,6 +4084,12 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P350-R01587','رَأْفَةٌ','رَآفَةٌ','ابن كثير',2,'بفتح الهمزة ممدودة'),
             ('DOCX-P350-R01588','الْمُحْصَنَـٰتِ','الْمُحْصِنَاتِ','الكسائي',4,'بكسر الصاد'),
             ('DOCX-P350-R01589','أَرْبَعُ شَهَـٰدَٰتٍ','أَرْبَعَ شَهَادَاتٍ','حفص، حمزة، الكسائي، خلف',6,'برفع العين'),
+        ],
+        225: [
+            ('DOCX-P225-R00001','تَذَكَّرُونَ','تَذْكُرُونَ','حفص، حمزة، الكسائي، خلف العاشر',30,'بتخفيف الذال'),
+        ],
+        226: [
+            ('DOCX-P226-R00020','مُجْرَاهَا','مَجْرَاهَا','حفص، حمزة، الكسائي، خلف العاشر',41,'بفتح الميم'),
         ],
         242: [
             ('DOCX-P242-R00295','لِفِتْيَـٰنِهِ','لِفِتْيَانِهِ','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، يعقوب',62,'بالألف والنون'),
