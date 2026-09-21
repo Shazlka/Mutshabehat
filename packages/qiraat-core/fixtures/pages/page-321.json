@@ -294,5 +294,49 @@
     "description": "بضم التاء مبنياً للمفعول",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D321-تاتهم-w2",
+    "surah": 20,
+    "ayah": 133,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِهِم",
+    "variantText": "يَأْتِهِم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D321-تاتهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D321-تاتهم-w2",
+        "variantId": "v-D321-تاتهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P321-R01296",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بياء التذكير وإسكان الهمزة ﴿يَأْتِهِم﴾: ابن كثير، ابن عامر، شعبة، حمزة، الكسائي، ابن وردان، خلف."
+      }
+    ],
+    "description": "بياء التذكير",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
