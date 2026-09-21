@@ -1157,6 +1157,36 @@ def merge_ruling_assignments(existing_record, candidate):
             if key not in seen_attrs:
                 attrs.append(item); seen_attrs.add(key)
         return len(accepted),dropped
+    if category=='IKHFA':
+        # The sourced ghayn/kha rule is a single fixed action for both Abu Jaafar
+        # narrations. Existing fixtures may spell it «الإخفاء» or «إخفاء»; the
+        # explicit reader IDs already establish coverage, so never duplicate them
+        # merely because the prose action spelling differs.
+        current=existing_record.setdefault('readings',[])
+        old_by_id=collections.defaultdict(list)
+        for item in current:
+            old_by_id[item.get('readingId')].append(item)
+        accepted=[]; accepted_ids=set()
+        for item in candidate.get('readings',[]):
+            rid=item.get('readingId'); status=item.get('isDefault',True)
+            prior=old_by_id.get(rid,[])
+            if any(x.get('isDefault',True)==status for x in prior):
+                continue
+            if prior:
+                dropped+=1
+                continue
+            accepted.append(item); accepted_ids.add(rid); old_by_id[rid].append(item)
+        if not accepted:
+            return 0,dropped
+        current.extend(accepted)
+        attrs=existing_record.setdefault('attribution',[])
+        seen_attrs={(x.get('authorityId'),x.get('action'),x.get('condition')) for x in attrs}
+        for item in candidate.get('attribution',[]):
+            if item.get('authorityId') not in accepted_ids: continue
+            key=(item.get('authorityId'),item.get('action'),item.get('condition'))
+            if key not in seen_attrs:
+                attrs.append(item); seen_attrs.add(key)
+        return len(accepted),dropped
     if category=='WAQF_RASM':
         return merge_waqf_rasm_assignments(existing_record,candidate)
     if category=='WAQF_HAMZA':

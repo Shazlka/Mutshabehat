@@ -19,7 +19,7 @@
   "dataset": {
     "mushafPages": 604,
     "variants": 1866,
-    "usulRulings": 9660,
+    "usulRulings": 9694,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,47 +49,63 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. The hamzatan-family production verification is recorded in the preceding status. Latest IDGHAM_SAGHIR parser correction scopes reader groups to each anchor and imports six new plus two expanded loci (49 assignments) on pages 349, 362, 437, 449, 462, and 478; external corpus corroboration was targeted because the wider dump has anchor mismatches. Production verified: commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; production API smoke passed at 23:110 and 23:112. Latest WAQF_RASM reconciliation verified the source reader groups at pages 231, 236, 238, and 241; all reader IDs were already included, with four missing imalah qualifier notes added. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending."
+    "sourceCoverageStatus": "External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. The hamzatan-family production verification is recorded in the preceding status. Latest IDGHAM_SAGHIR parser correction scopes reader groups to each anchor and imports six new plus two expanded loci (49 assignments) on pages 349, 362, 437, 449, 462, and 478; external corpus corroboration was targeted because the wider dump has anchor mismatches. Production verified: commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; production API smoke passed at 23:110 and 23:112. Latest WAQF_RASM reconciliation verified the source reader groups at pages 231, 236, 238, and 241; all reader IDs were already included, with four missing imalah qualifier notes added. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending."
   },
-  "sourceCoverageStatus": "External full-rule audit found 134 adjacent-word IKHFA contexts on attached pages 225-584 under the al-Nashr rule; 16 valid contexts were already covered. This production slice adds 14 on pages 227, 233, 257, 259, 260, 264, 274, 286, 288, 289, and 297; 104 eligible contexts remain for later slices. Four inherited IKHFA fixture rows on pages 227-228 point before waw rather than ghayn/kha and remain untouched under the additive-only fixture constraint. Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. Production verified: data commit fb68ed5b47cb2b04ca9e99a23ddecdcbe5643c39 is deployed READY as dpl_A2yHVvksjT6BNkzgtTqA9DJHax5W; Mushaf UI smoke passed at page 288, 17:61. Full page-by-page review remains pending. Latest IDGHAM_SAGHIR source pass adds six new loci and expands two existing loci with 49 assignments on pages 349, 362, 437, 449, 462, and 478. The official Quranpedia dump corroborated selected loci but has widespread wrong-verse/unmatched anchors, so only targeted records were used. Local validation passed; production commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; API smoke passed at 23:110 and 23:112. Full page-by-page external completeness review remains pending. Latest WAQF_RASM reconciliation externally verified the explicit groups at pages 231, 236, 238, and 241; all readers were already present, and four imalah qualifiers were moved into additive notes without duplicate assignments. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Full page-by-page external completeness review remains pending. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending.",
+  "sourceCoverageStatus": "External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. External full-rule audit found 134 adjacent-word IKHFA contexts on attached pages 225-584 under the al-Nashr rule; 16 valid contexts were already covered. This production slice adds 14 on pages 227, 233, 257, 259, 260, 264, 274, 286, 288, 289, and 297; 104 eligible contexts remain for later slices. Four inherited IKHFA fixture rows on pages 227-228 point before waw rather than ghayn/kha and remain untouched under the additive-only fixture constraint. Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. Production verified: data commit fb68ed5b47cb2b04ca9e99a23ddecdcbe5643c39 is deployed READY as dpl_A2yHVvksjT6BNkzgtTqA9DJHax5W; Mushaf UI smoke passed at page 288, 17:61. Full page-by-page review remains pending. Latest IDGHAM_SAGHIR source pass adds six new loci and expands two existing loci with 49 assignments on pages 349, 362, 437, 449, 462, and 478. The official Quranpedia dump corroborated selected loci but has widespread wrong-verse/unmatched anchors, so only targeted records were used. Local validation passed; production commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; API smoke passed at 23:110 and 23:112. Full page-by-page external completeness review remains pending. Latest WAQF_RASM reconciliation externally verified the explicit groups at pages 231, 236, 238, and 241; all readers were already present, and four imalah qualifiers were moved into additive notes without duplicate assignments. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Full page-by-page external completeness review remains pending. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending.",
   "currentBatch": {
-    "id": "ikhfa-complete-rule-page-slice-225-299",
+    "id": "ikhfa-complete-rule-page-slice-300-399",
     "category": "IKHFA",
     "pages": [
-      227,
-      233,
-      257,
-      259,
-      260,
-      264,
-      274,
-      286,
-      288,
-      289,
-      297
+      302,
+      304,
+      305,
+      312,
+      313,
+      314,
+      319,
+      323,
+      324,
+      326,
+      334,
+      339,
+      343,
+      344,
+      345,
+      348,
+      352,
+      353,
+      355,
+      362,
+      366,
+      368,
+      369,
+      377,
+      382,
+      383,
+      388,
+      389,
+      390,
+      394,
+      397
     ],
-    "status": "production_verified",
+    "status": "validated_pending_deploy",
     "variantsAdded": 0,
-    "readerAssignmentsAdded": 28,
+    "readerAssignmentsAdded": 68,
     "variantTextCorrections": 0,
-    "rulingsAdded": 14,
+    "rulingsAdded": 34,
     "rulingsMerged": 0,
     "sourceNotesAdded": 0,
     "conflictingAssignmentsDropped": 0,
-    "reference": "Ibn al-Jazari, al-Nashr, باب أحكام النون الساكنة والتنوين; شرح طيبة النشر, p. 113; links recorded in independentValidation.docIkhfaCompleteRuleAudit.",
-    "sourceAudit": "Enumerated every adjacent page-token pair in pages 225-584 with terminal nun-sukun or tanween followed by ghayn/kha; 134 contexts found, 16 exact existing contexts, 118 missing before this slice. The source exceptions at 4:135, 5:3, and 17:51 are excluded. Pages 227-228 source anchors before waw fail the rule and are rejected on future parser runs. Four old matching-key fixture rows remain unchanged because this import is additive-only.",
-    "validation": "Importer rerun idempotent; 14 additions across 11 fixture files with zero fixture deletions; previous fixture objects byte-for-byte unchanged. Qiraat validator clean (1,866 variants, 9,660 rulings, 20 one-colour categories); 37/37 test:qiraat; all seven Mushaf validators; TypeScript; production build passed.",
-    "baseCommit": "54a29112739d54c6d2e5379be682df3c4bc72eb6",
+    "reference": "Ibn al-Jazari, al-Nashr, باب أحكام النون الساكنة والتنوين; شرح طيبة النشر, p. 113.",
+    "sourceAudit": "Scanned real adjacent page tokens for terminal nun-sukun or tanween before initial ghayn/kha. All new baseText spans resolve verbatim from token fixtures. Existing page 316 (20:71) already had Q08-R01/R02 and was skipped despite action spelling variation. The rule's three named exception verses are excluded.",
+    "validation": "34 new ruling objects appended across 31 files; zero fixture deletions; all prior fixture objects byte-for-byte unchanged. Importer rerun idempotent. Qiraat validator clean (1,866 variants, 9,694 rulings, 20 one-colour categories); 37/37 test:qiraat; all seven Mushaf validators; TypeScript; production build passed.",
+    "baseCommit": "683b82c91622fdde3df412b154efa6d69bd48e4a",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "commit": "7ce48a0cafb31b9d11a79fcd69acb593ef38740e",
-    "push": "pushed to origin/main",
-    "productionDeploymentId": "dpl_2AWDPRcUgjSr2ViHvKcKkzjCfJUB",
-    "productionDeploymentUrl": "https://mutshabehat-v2-7y8zspmsw-shazlka-s-projects.vercel.app",
-    "productionSmoke": "passed: debug API verified all 14 exact token spans on pages 227, 233, 257, 259, 260, 264, 274, 286, 288, 289, 297; each returned #0891B2 and Q08-R01/Q08-R02.",
-    "deployedSha": "7ce48a0cafb31b9d11a79fcd69acb593ef38740e",
-    "productionDeploymentStatus": "READY",
-    "remainingValidRuleContexts": 104
+    "commit": "pending",
+    "push": "pending",
+    "productionDeploymentStatus": "pending",
+    "remainingValidRuleContexts": 70
   },
   "lastConfirmedDeployedDataCommit": "7ce48a0cafb31b9d11a79fcd69acb593ef38740e",
   "lastConfirmedVercelState": "READY",
@@ -1058,6 +1074,51 @@
       "vercelDeploymentId": "dpl_2AWDPRcUgjSr2ViHvKcKkzjCfJUB",
       "vercelDeployment": "https://mutshabehat-v2-7y8zspmsw-shazlka-s-projects.vercel.app",
       "apiSmoke": "All 14 newly added loci verified live with Q08-R01/Q08-R02 and #0891B2."
+    },
+    {
+      "commit": "pending",
+      "batch": "IKHFA external rule completeness, pages 300-399",
+      "variantsAdded": 0,
+      "rulingsAdded": 34,
+      "readerAssignmentsAdded": 68,
+      "pages": [
+        302,
+        304,
+        305,
+        312,
+        313,
+        314,
+        319,
+        323,
+        324,
+        326,
+        334,
+        339,
+        343,
+        344,
+        345,
+        348,
+        352,
+        353,
+        355,
+        362,
+        366,
+        368,
+        369,
+        377,
+        382,
+        383,
+        388,
+        389,
+        390,
+        394,
+        397
+      ],
+      "pushed": false,
+      "vercelState": "pending",
+      "validation": "34 new ruling objects appended across 31 files; zero fixture deletions; all prior fixture objects byte-for-byte unchanged. Importer rerun idempotent. Qiraat validator clean (1,866 variants, 9,694 rulings, 20 one-colour categories); 37/37 test:qiraat; all seven Mushaf validators; TypeScript; production build passed.",
+      "sourceAudit": "Scanned real adjacent page tokens for terminal nun-sukun or tanween before initial ghayn/kha. All new baseText spans resolve verbatim from token fixtures. Existing page 316 (20:71) already had Q08-R01/R02 and was skipped despite action spelling variation. The rule's three named exception verses are excluded.",
+      "databaseMigration": "none"
     }
   ],
   "pages": [
@@ -9980,7 +10041,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 1,
+      "usulRecords": 2,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -9988,7 +10049,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "18:79 سَفِينَةٍ غَصْبًۭا"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 303,
@@ -10040,7 +10113,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 9,
+      "usulRecords": 10,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10048,7 +10121,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "18:107 نُزُلًا خَـٰلِدِينَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 305,
@@ -10069,7 +10154,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 6,
-      "usulRecords": 38,
+      "usulRecords": 39,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10077,7 +10162,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "19:3 نِدَآءً خَفِيًّۭا"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 306,
@@ -10278,7 +10375,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 2,
-      "usulRecords": 44,
+      "usulRecords": 45,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10286,7 +10383,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "20:4 مِّمَّنْ خَلَقَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 313,
@@ -10307,7 +10416,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 3,
-      "usulRecords": 52,
+      "usulRecords": 53,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10315,7 +10424,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "20:22 مِنْ غَيْرِ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 314,
@@ -10336,7 +10457,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 1,
-      "usulRecords": 47,
+      "usulRecords": 48,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10344,7 +10465,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "20:50 شَىْءٍ خَلْقَهُۥ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 315,
@@ -10481,7 +10614,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 6,
-      "usulRecords": 27,
+      "usulRecords": 28,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10489,7 +10622,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "20:100 وِزْرًا خَـٰلِدِينَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 320,
@@ -10597,7 +10742,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 18,
+      "usulRecords": 19,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10605,7 +10750,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "21:15 حَصِيدًا خَـٰمِدِينَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 324,
@@ -10626,7 +10783,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 6,
-      "usulRecords": 6,
+      "usulRecords": 7,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10634,7 +10791,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "21:28 مِّنْ خَشْيَتِهِۦ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 325,
@@ -10684,7 +10853,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 3,
-      "usulRecords": 16,
+      "usulRecords": 17,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10692,7 +10861,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "21:47 مِّنْ خَرْدَلٍ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 327,
@@ -10916,7 +11097,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 4,
-      "usulRecords": 19,
+      "usulRecords": 20,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -10924,7 +11105,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "22:22 مِنْ غَمٍّ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 335,
@@ -11061,7 +11254,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 3,
-      "usulRecords": 9,
+      "usulRecords": 11,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11069,7 +11262,20 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "22:60 لَعَفُوٌّ غَفُورٌۭ",
+          "22:63 لَطِيفٌ خَبِيرٌۭ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 340,
@@ -11177,7 +11383,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 5,
-      "usulRecords": 21,
+      "usulRecords": 22,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11185,7 +11391,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "23:23 إِلَـٰهٍ غَيْرُهُۥٓ ۖ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 344,
@@ -11206,7 +11424,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 5,
-      "usulRecords": 23,
+      "usulRecords": 24,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11214,7 +11432,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "23:32 إِلَـٰهٍ غَيْرُهُۥٓ ۖ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 345,
@@ -11235,7 +11465,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 6,
-      "usulRecords": 23,
+      "usulRecords": 24,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11243,7 +11473,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "23:57 مِّنْ خَشْيَةِ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 346,
@@ -11322,7 +11564,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 1,
-      "usulRecords": 15,
+      "usulRecords": 16,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11330,7 +11572,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "23:103 وَمَنْ خَفَّتْ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 349,
@@ -11438,7 +11692,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 6,
-      "usulRecords": 15,
+      "usulRecords": 16,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11446,7 +11700,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "24:27 بُيُوتًا غَيْرَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 353,
@@ -11467,7 +11733,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 6,
-      "usulRecords": 12,
+      "usulRecords": 13,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11475,7 +11741,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "24:29 بُيُوتًا غَيْرَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 354,
@@ -11525,7 +11803,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 5,
-      "usulRecords": 19,
+      "usulRecords": 20,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11533,7 +11811,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "24:43 مِنْ خِلَـٰلِهِۦ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 356,
@@ -11734,7 +12024,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 4,
-      "usulRecords": 14,
+      "usulRecords": 16,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11742,7 +12032,20 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "25:24 يَوْمَئِذٍ خَيْرٌۭ",
+          "25:28 فُلَانًا خَلِيلًۭا"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 363,
@@ -11850,7 +12153,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 3,
-      "usulRecords": 7,
+      "usulRecords": 8,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11858,7 +12161,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "25:75 وَسَلَـٰمًا خَـٰلِدِينَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 367,
@@ -11908,7 +12223,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 1,
-      "usulRecords": 6,
+      "usulRecords": 7,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11916,7 +12231,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "26:29 إِلَـٰهًا غَيْرِى"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 369,
@@ -11937,7 +12264,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 7,
-      "usulRecords": 10,
+      "usulRecords": 11,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -11945,7 +12272,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "26:49 مِّنْ خِلَـٰفٍۢ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 370,
@@ -12169,7 +12508,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 18,
+      "usulRecords": 19,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12177,7 +12516,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "27:12 مِنْ غَيْرِ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 378,
@@ -12314,7 +12665,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 6,
+      "usulRecords": 7,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12322,7 +12673,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "27:60 أَمَّنْ خَلَقَ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 383,
@@ -12343,7 +12706,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 8,
+      "usulRecords": 9,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12351,7 +12714,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "27:75 مِنْ غَآئِبَةٍۢ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 384,
@@ -12494,7 +12869,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 14,
+      "usulRecords": 15,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12502,7 +12877,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "28:24 مِنْ خَيْرٍۢ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 389,
@@ -12523,7 +12910,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 6,
-      "usulRecords": 11,
+      "usulRecords": 12,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12531,7 +12918,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "28:32 مِنْ غَيْرِ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 390,
@@ -12552,7 +12951,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 2,
-      "usulRecords": 12,
+      "usulRecords": 13,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12560,7 +12959,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "28:38 إِلَـٰهٍ غَيْرِى"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 391,
@@ -12668,7 +13079,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
-      "usulRecords": 9,
+      "usulRecords": 11,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12676,7 +13087,20 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "28:71 إِلَـٰهٌ غَيْرُ",
+          "28:72 إِلَـٰهٌ غَيْرُ"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 395,
@@ -12761,7 +13185,7 @@
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 1,
-      "usulRecords": 9,
+      "usulRecords": 10,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
@@ -12769,7 +13193,19 @@
       "committed": true,
       "pushed": true,
       "productionDeployed": true,
-      "productionUiVerified": false
+      "productionUiVerified": false,
+      "qiraatExternalAuditIkhfa": {
+        "category": "IKHFA",
+        "status": "validated_pending_deploy",
+        "candidateLoci": [
+          "29:12 مِنْ خَطَـٰيَـٰهُم"
+        ],
+        "rule": "أبو جعفر: نون ساكنة/تنوين قبل غ أو خ",
+        "sourceReferences": [
+          "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
+          "https://ablibrary.net/book_content/b/8368/113"
+        ]
+      }
     },
     {
       "page": 398,
@@ -19413,7 +19849,7 @@
       "productionSmoke": "page 231 API returned baseText بَقِيَّتُ, all eight covered reader IDs, note مع الإمالة, and color #EA580C."
     },
     "docIkhfaCompleteRuleAudit": {
-      "status": "production_verified_first_slice; full family completion in progress",
+      "status": "first two source slices validated; production deployment pending for pages 300-399",
       "primarySources": [
         {
           "title": "Ibn al-Jazari, al-Nashr, تنبيهات باب أحكام النون الساكنة والتنوين",
@@ -19430,20 +19866,40 @@
       "candidateAdjacentTokenLoci": 134,
       "alreadyCoveredBeforeThisAudit": 16,
       "missingBeforeThisAudit": 118,
-      "addedThisSlice": 14,
-      "remainingAfterThisSlice": 104,
+      "addedThisSlice": 34,
+      "remainingAfterThisSlice": 70,
       "completedPagesInThisSlice": [
-        227,
-        233,
-        257,
-        259,
-        260,
-        264,
-        274,
-        286,
-        288,
-        289,
-        297
+        302,
+        304,
+        305,
+        312,
+        313,
+        314,
+        319,
+        323,
+        324,
+        326,
+        334,
+        339,
+        343,
+        344,
+        345,
+        348,
+        352,
+        353,
+        355,
+        362,
+        366,
+        368,
+        369,
+        377,
+        382,
+        383,
+        388,
+        389,
+        390,
+        394,
+        397
       ],
       "productionVerifiedLoci": [
         {
@@ -19524,7 +19980,251 @@
       "deploymentId": "dpl_2AWDPRcUgjSr2ViHvKcKkzjCfJUB",
       "productionCommit": "7ce48a0cafb31b9d11a79fcd69acb593ef38740e",
       "productionDeploymentUrl": "https://mutshabehat-v2-7y8zspmsw-shazlka-s-projects.vercel.app",
-      "apiSmoke": "All 14 added loci returned exact spans, category colour #0891B2, and both Abu Jaafar narrations from the production debug API."
+      "apiSmoke": "All 14 added loci returned exact spans, category colour #0891B2, and both Abu Jaafar narrations from the production debug API.",
+      "latestValidatedSlice": {
+        "pages": [
+          302,
+          304,
+          305,
+          312,
+          313,
+          314,
+          319,
+          323,
+          324,
+          326,
+          334,
+          339,
+          343,
+          344,
+          345,
+          348,
+          352,
+          353,
+          355,
+          362,
+          366,
+          368,
+          369,
+          377,
+          382,
+          383,
+          388,
+          389,
+          390,
+          394,
+          397
+        ],
+        "loci": [
+          {
+            "page": 302,
+            "surah": 18,
+            "ayah": 79,
+            "baseText": "سَفِينَةٍ غَصْبًۭا"
+          },
+          {
+            "page": 304,
+            "surah": 18,
+            "ayah": 107,
+            "baseText": "نُزُلًا خَـٰلِدِينَ"
+          },
+          {
+            "page": 305,
+            "surah": 19,
+            "ayah": 3,
+            "baseText": "نِدَآءً خَفِيًّۭا"
+          },
+          {
+            "page": 312,
+            "surah": 20,
+            "ayah": 4,
+            "baseText": "مِّمَّنْ خَلَقَ"
+          },
+          {
+            "page": 313,
+            "surah": 20,
+            "ayah": 22,
+            "baseText": "مِنْ غَيْرِ"
+          },
+          {
+            "page": 314,
+            "surah": 20,
+            "ayah": 50,
+            "baseText": "شَىْءٍ خَلْقَهُۥ"
+          },
+          {
+            "page": 319,
+            "surah": 20,
+            "ayah": 100,
+            "baseText": "وِزْرًا خَـٰلِدِينَ"
+          },
+          {
+            "page": 323,
+            "surah": 21,
+            "ayah": 15,
+            "baseText": "حَصِيدًا خَـٰمِدِينَ"
+          },
+          {
+            "page": 324,
+            "surah": 21,
+            "ayah": 28,
+            "baseText": "مِّنْ خَشْيَتِهِۦ"
+          },
+          {
+            "page": 326,
+            "surah": 21,
+            "ayah": 47,
+            "baseText": "مِّنْ خَرْدَلٍ"
+          },
+          {
+            "page": 334,
+            "surah": 22,
+            "ayah": 22,
+            "baseText": "مِنْ غَمٍّ"
+          },
+          {
+            "page": 339,
+            "surah": 22,
+            "ayah": 60,
+            "baseText": "لَعَفُوٌّ غَفُورٌۭ"
+          },
+          {
+            "page": 339,
+            "surah": 22,
+            "ayah": 63,
+            "baseText": "لَطِيفٌ خَبِيرٌۭ"
+          },
+          {
+            "page": 343,
+            "surah": 23,
+            "ayah": 23,
+            "baseText": "إِلَـٰهٍ غَيْرُهُۥٓ ۖ"
+          },
+          {
+            "page": 344,
+            "surah": 23,
+            "ayah": 32,
+            "baseText": "إِلَـٰهٍ غَيْرُهُۥٓ ۖ"
+          },
+          {
+            "page": 345,
+            "surah": 23,
+            "ayah": 57,
+            "baseText": "مِّنْ خَشْيَةِ"
+          },
+          {
+            "page": 348,
+            "surah": 23,
+            "ayah": 103,
+            "baseText": "وَمَنْ خَفَّتْ"
+          },
+          {
+            "page": 352,
+            "surah": 24,
+            "ayah": 27,
+            "baseText": "بُيُوتًا غَيْرَ"
+          },
+          {
+            "page": 353,
+            "surah": 24,
+            "ayah": 29,
+            "baseText": "بُيُوتًا غَيْرَ"
+          },
+          {
+            "page": 355,
+            "surah": 24,
+            "ayah": 43,
+            "baseText": "مِنْ خِلَـٰلِهِۦ"
+          },
+          {
+            "page": 362,
+            "surah": 25,
+            "ayah": 24,
+            "baseText": "يَوْمَئِذٍ خَيْرٌۭ"
+          },
+          {
+            "page": 362,
+            "surah": 25,
+            "ayah": 28,
+            "baseText": "فُلَانًا خَلِيلًۭا"
+          },
+          {
+            "page": 366,
+            "surah": 25,
+            "ayah": 75,
+            "baseText": "وَسَلَـٰمًا خَـٰلِدِينَ"
+          },
+          {
+            "page": 368,
+            "surah": 26,
+            "ayah": 29,
+            "baseText": "إِلَـٰهًا غَيْرِى"
+          },
+          {
+            "page": 369,
+            "surah": 26,
+            "ayah": 49,
+            "baseText": "مِّنْ خِلَـٰفٍۢ"
+          },
+          {
+            "page": 377,
+            "surah": 27,
+            "ayah": 12,
+            "baseText": "مِنْ غَيْرِ"
+          },
+          {
+            "page": 382,
+            "surah": 27,
+            "ayah": 60,
+            "baseText": "أَمَّنْ خَلَقَ"
+          },
+          {
+            "page": 383,
+            "surah": 27,
+            "ayah": 75,
+            "baseText": "مِنْ غَآئِبَةٍۢ"
+          },
+          {
+            "page": 388,
+            "surah": 28,
+            "ayah": 24,
+            "baseText": "مِنْ خَيْرٍۢ"
+          },
+          {
+            "page": 389,
+            "surah": 28,
+            "ayah": 32,
+            "baseText": "مِنْ غَيْرِ"
+          },
+          {
+            "page": 390,
+            "surah": 28,
+            "ayah": 38,
+            "baseText": "إِلَـٰهٍ غَيْرِى"
+          },
+          {
+            "page": 394,
+            "surah": 28,
+            "ayah": 71,
+            "baseText": "إِلَـٰهٌ غَيْرُ"
+          },
+          {
+            "page": 394,
+            "surah": 28,
+            "ayah": 72,
+            "baseText": "إِلَـٰهٌ غَيْرُ"
+          },
+          {
+            "page": 397,
+            "surah": 29,
+            "ayah": 12,
+            "baseText": "مِنْ خَطَـٰيَـٰهُم"
+          }
+        ],
+        "rulingCount": 34,
+        "readerAssignments": 68,
+        "existingCoveredPage316Skipped": true
+      }
     }
   }
 }
