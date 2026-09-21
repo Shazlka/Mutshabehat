@@ -17,6 +17,15 @@ from import_surah_tables import resolve_readers, Unresolved, is_neg, is_univ, NA
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SC = '/tmp/claude-0/-home-user-Mutshabehat/e0ba1b96-dd1a-5b8a-886e-c95aefd540ed/scratchpad'
 DOC = json.load(open(SC + '/doc_pages.json', encoding='utf-8'))
+PACKAGE_PATH = os.environ.get('QIRAAT_IMPORT_PACKAGE', os.path.expanduser(
+    '~/Downloads/mutshabehat_qiraat_import_225_584/qiraat_records.jsonl'))
+PACKAGE_RECORDS = {}
+if os.path.isfile(PACKAGE_PATH):
+    with open(PACKAGE_PATH, encoding='utf-8') as package_file:
+        for package_line in package_file:
+            record = json.loads(package_line)
+            if record.get('record_id'):
+                PACKAGE_RECORDS[record['record_id']] = record
 TS = '2026-09-20T12:00:00.000Z'
 ALL20 = set(A.ALL_READINGS)
 SRC = dict(sourceName='استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)', sourceType='other',
@@ -123,10 +132,85 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     as sourceText and store only the independently corroborated form as the actual variant.
     """
     source_links_added = 0
+    def require_packaged_source(page_no, raw_text):
+        rows=[r for r in PACKAGE_RECORDS.values() if r.get('page_no')==page_no and
+              r.get('section')=='farsh' and r.get('raw_text')==raw_text]
+        if len(rows)!=1:
+            raise ValueError(f'page {page_no} processed-package source row missing/not unique')
+        return rows[0]
+    # Three directly stated vowel variants in the processed import package. Each
+    # branch checks the exact source line, Mushaf token and reader partition before
+    # appending; this keeps the generic prose parser fail-closed on these compact rows.
+    audited_261_262 = {
+        (261, 47, 'تَحْسَبَنَّ'):(
+            '﴿فَلَا تَحْسَبَنَّ﴾: بفتح السين لابن عامر، عاصم، حمزة، أبو جعفر؛ وبكسرها للباقين.',
+            'تَحْسِبَنَّ',
+            {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'},
+            'https://quranpedia.net/qiraat/ibrahim/47',
+            'الفتح: ابن جمّاز عن أبي جعفر، هشام وابن ذكوان عن ابن عامر، شعبة وحفص عن عاصم، خلف وخلاد عن حمزة؛ والكسر لسائر الرواة.'),
+        (262, 11, 'يَأْتِيهِم'):(
+            '﴿وَمَا يَأْتِيهِم﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يَأْتِيهُم﴾ ليعقوب.',
+            'يَأْتِيهُم', {'Q09-R01','Q09-R02'},
+            'https://quranpedia.net/qiraat/al-hijr/11',
+            'ضم الهاء: رويس وروح عن يعقوب.'),
+        (262, 14, 'عَلَيْهِم'):(
+            '﴿عَلَيْهِم﴾: بكسر الهاء للجمهور؛ وبضمها لحمزة ويعقوب.',
+            'عَلَيْهُم', {'Q06-R01','Q06-R02','Q09-R01','Q09-R02'},
+            'https://quranpedia.net/qiraat/al-hijr/14',
+            'ضم الهاء: خلف وخلاد عن حمزة، ورويس وروح عن يعقوب.'),
+    }
+    if page in (261, 262):
+        for (p, ayah, anchor), (source_line, alternate, alternate_readers, url, external_text) in audited_261_262.items():
+            if p != page:
+                continue
+            if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
+                raise ValueError(f'page {page} audited {ayah} source row missing/not unique')
+            require_packaged_source(page, source_line)
+            if is_neg(source_line) or is_univ(source_line):
+                raise ValueError(f'page {page} audited {ayah} source row failed negation/universal guard')
+            loc=T.find(page,anchor,ayah=ayah)
+            if (loc['surah'],loc['startAyah'],loc['endAyah'],loc['startWord'],loc['endWord']) != (14 if page==261 else 15,ayah,ayah,2 if page==261 else (2 if ayah==11 else 3),2 if page==261 else (2 if ayah==11 else 3)):
+                raise ValueError(f'page {page} audited {ayah} exact token/span changed')
+            readers=set(alternate_readers)
+            if len(readers)==0 or not readers <= ALL20 or 'Q05-R02' in readers:
+                raise ValueError(f'page {page} audited {ayah} explicit alternate partition failed')
+            matches=[x for x in existing_page if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) ==
+                (loc['surah'],ayah,loc['startWord'],loc['endWord'])]
+            if matches:
+                if (len(matches)==1 and matches[0].get('id') ==
+                    f'v-AUDIT-P{page}-{loc["surah"]}-{ayah}-{loc["startWord"]}-HARAKAH' and
+                    matches[0].get('hafsText') == loc['baseText'] and
+                    matches[0].get('variantText') == alternate and
+                    set(matches[0].get('readingIds', [])) == readers):
+                    continue
+                raise ValueError(f'page {page} audited {ayah} token already has a different variant; additive-only import refused')
+            before=len(variants)
+            yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+                                     (alternate,source_line,readers)],variants)
+            added=[x for x in variants[before:] if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) ==
+                (loc['surah'],ayah,loc['startWord'],loc['endWord'])]
+            if len(added)!=1:
+                raise ValueError(f'page {page} audited {ayah} 20-reading partition failed')
+            v=added[0]
+            v['id']=f'v-AUDIT-P{page}-{loc["surah"]}-{ayah}-{loc["startWord"]}-HARAKAH'
+            v['locusId']=f'AUDIT-P{page}-{loc["surah"]}-{ayah}-{loc["startWord"]}-HARAKAH'
+            for i,src in enumerate(v.get('sources',[]),1):
+                src['id']=f's-AUDIT-P{page}-{ayah}-{i}'
+                src['variantId']=v['id']
+            v['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، Mushaf page {page}',
+                'sourceText':source_line,'verificationNotes':'تعيين القراء والوجه قوبل بمرجع مستقل للقراءات العشر.'})
+            v['sources'].append({'id':f's-AUDIT-P{page}-{ayah}-EXT','variantId':v['id'],
+                'sourceName':'موسوعة القراءات القرآنية — القراءات العشر','sourceType':'website',
+                'sourceReference':url,'sourceText':external_text,
+                'verificationNotes':'مرجع مستقل يذكر الرواة صراحةً ويثبت الوجه المخالف لحفص.'})
+            v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
     if page == 253:
         source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
         if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
             raise ValueError('page 253 audited Quranan source row missing/not unique')
+        require_packaged_source(page, source_line)
         if is_neg(source_line) or is_univ(source_line):
             raise ValueError('page 253 audited Quranan source row failed negation/universal guard')
         loc=T.find(page,'قُرْءَانًا',ayah=31)

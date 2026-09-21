@@ -144,5 +144,105 @@
     "description": "بتخفيف الكاف",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P262-15-11-2-HARAKAH",
+    "surah": 15,
+    "ayah": 11,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِيهِم",
+    "variantText": "يَأْتِيهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P262-15-11-2-HARAKAH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P262-11-1",
+        "variantId": "v-AUDIT-P262-15-11-2-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، Mushaf page 262",
+        "verificationNotes": "تعيين القراء والوجه قوبل بمرجع مستقل للقراءات العشر.",
+        "sourceText": "﴿وَمَا يَأْتِيهِم﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يَأْتِيهُم﴾ ليعقوب."
+      },
+      {
+        "id": "s-AUDIT-P262-11-EXT",
+        "variantId": "v-AUDIT-P262-15-11-2-HARAKAH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hijr/11",
+        "sourceText": "ضم الهاء: رويس وروح عن يعقوب.",
+        "verificationNotes": "مرجع مستقل يذكر الرواة صراحةً ويثبت الوجه المخالف لحفص."
+      }
+    ],
+    "description": "﴿وَمَا يَأْتِيهِم﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يَأْتِيهُم﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الهاء: رويس وروح عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hijr/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P262-15-14-3-HARAKAH",
+    "surah": 15,
+    "ayah": 14,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P262-15-14-3-HARAKAH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P262-14-1",
+        "variantId": "v-AUDIT-P262-15-14-3-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، Mushaf page 262",
+        "verificationNotes": "تعيين القراء والوجه قوبل بمرجع مستقل للقراءات العشر.",
+        "sourceText": "﴿عَلَيْهِم﴾: بكسر الهاء للجمهور؛ وبضمها لحمزة ويعقوب."
+      },
+      {
+        "id": "s-AUDIT-P262-14-EXT",
+        "variantId": "v-AUDIT-P262-15-14-3-HARAKAH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hijr/14",
+        "sourceText": "ضم الهاء: خلف وخلاد عن حمزة، ورويس وروح عن يعقوب.",
+        "verificationNotes": "مرجع مستقل يذكر الرواة صراحةً ويثبت الوجه المخالف لحفص."
+      }
+    ],
+    "description": "﴿عَلَيْهِم﴾: بكسر الهاء للجمهور؛ وبضمها لحمزة ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الهاء: خلف وخلاد عن حمزة، ورويس وروح عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hijr/14"
+      }
+    ]
   }
 ]
