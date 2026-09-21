@@ -31,5 +31,54 @@
     "description": "بالنون ﴿نُنبِتُ﴾",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P268-16-7-9-FARSH",
+    "surah": 16,
+    "ayah": 7,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "بِشِقِّ",
+    "variantText": "بِشَقِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P268-16-7-9-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P268-R00649",
+        "variantId": "v-AUDIT-P268-16-7-9-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P268-R00649",
+        "sourceText": "﴿بِشِقِّ﴾: بكسر الشين للجمهور؛ وبفتح الشين ﴿بِشَقِّ﴾ لأبي جعفر.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P268-7-EXT",
+        "variantId": "v-AUDIT-P268-16-7-9-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/7",
+        "sourceText": "Abu Jaafar (Ibn Wardan and Ibn Jammaz) reads بِشَقِّ with fatḥah on the shīn; the other eighteen readings have kasrah.",
+        "verificationNotes": "مرجع مستقل يذكر الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "﴿بِشِقِّ﴾: بكسر الشين للجمهور؛ وبفتح الشين ﴿بِشَقِّ﴾ لأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Abu Jaafar (Ibn Wardan and Ibn Jammaz) reads بِشَقِّ with fatḥah on the shīn; the other eighteen readings have kasrah.",
+        "url": "https://quranpedia.net/qiraat/an-nahl/7"
+      }
+    ]
   }
 ]

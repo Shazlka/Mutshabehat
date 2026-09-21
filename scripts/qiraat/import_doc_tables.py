@@ -96,7 +96,7 @@ def parse_farsh(page, lines):
         i+=1
     return out
 
-def yield_block(page, anchor, wujuh, out):
+def yield_block(page, anchor, wujuh, out, ayah=None):
     union=set(); overlap=False
     for _,_,rs in wujuh:
         if union&rs: overlap=True
@@ -104,7 +104,7 @@ def yield_block(page, anchor, wujuh, out):
     if overlap or union!=ALL20: return
     base=[k for k,(_,_,rs) in enumerate(wujuh) if 'Q05-R02' in rs]
     if len(base)!=1: return
-    try: loc=T.find(page, anchor, 1)
+    try: loc=T.find(page, anchor, 1, ayah=ayah)
     except T.NoMatch: return
     bt=wujuh[base[0]][0]
     if bt and T.norm(bt)!=T.norm(loc['baseText']): return
@@ -270,6 +270,60 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                 'sourceName':'موسوعة القراءات القرآنية — القراءات العشر','sourceType':'website',
                 'sourceReference':url,'sourceText':external_text,
                 'verificationNotes':'مرجع مستقل يثبت الوجه والراويين صراحةً.'})
+            v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
+    if page in (267,268):
+        if page==267:
+            candidates=[
+                (1,'يُشْرِكُونَ','تُشْرِكُونَ',{'Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'},
+                 ['DOCX-P267-R00639','DOCX-P267-R00640'],'https://quranpedia.net/qiraat/an-nahl/1',
+                 'At an-Nahl 16:1: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.'),
+                (3,'يُشْرِكُونَ','تُشْرِكُونَ',{'Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'},
+                 ['DOCX-P267-R00639','DOCX-P267-R00640'],'https://quranpedia.net/qiraat/an-nahl/3',
+                 'At an-Nahl 16:3: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.')]
+        else:
+            candidates=[(7,'بِشِقِّ','بِشَقِّ',{'Q08-R01','Q08-R02'},['DOCX-P268-R00649'],
+                'https://quranpedia.net/qiraat/an-nahl/7',
+                'Abu Jaafar (Ibn Wardan and Ibn Jammaz) reads بِشَقِّ with fatḥah on the shīn; the other eighteen readings have kasrah.')]
+        for ayah,anchor,alternate,readers,record_ids,url,external_text in candidates:
+            rows=[PACKAGE_RECORDS.get(rid) for rid in record_ids]
+            if any(r is None or r.get('page_no')!=page or r.get('section')!='farsh' for r in rows):
+                raise ValueError(f'page {page} audited {ayah} processed-package row missing')
+            if any(not r.get('raw_text') or is_neg(r['raw_text']) or is_univ(r['raw_text']) for r in rows):
+                raise ValueError(f'page {page} audited {ayah} processed-package row failed safety guard')
+            loc=T.find(page,anchor,ayah=ayah)
+            expected_word=7 if page==267 and ayah==3 else 9
+            if (loc['surah'],loc['startAyah'],loc['endAyah'],loc['startWord'],loc['endWord']) != (16,ayah,ayah,expected_word,expected_word):
+                raise ValueError(f'page {page} audited {ayah} exact token/span changed')
+            matches=[x for x in existing_page if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) ==
+                (16,ayah,expected_word,expected_word)]
+            stable_id=f'v-AUDIT-P{page}-16-{ayah}-{expected_word}-FARSH'
+            if matches:
+                if (len(matches)==1 and matches[0].get('id')==stable_id and
+                    matches[0].get('hafsText')==loc['baseText'] and
+                    matches[0].get('variantText')==alternate and
+                    set(matches[0].get('readingIds',[]))==readers and
+                    matches[0].get('description')==' / '.join(r['raw_text'] for r in rows)):
+                    continue
+                continue  # strict additive dedupe: one variant key per token
+            before=len(variants)
+            yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+                                     (alternate,'وجه فرشي صريح في المصدر المعالج',readers)],variants,ayah=ayah)
+            added=[x for x in variants[before:] if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) == (16,ayah,expected_word,expected_word)]
+            if len(added)!=1:
+                raise ValueError(f'page {page} audited {ayah} 20-reading partition failed')
+            v=added[0];v['id']=stable_id;v['locusId']=stable_id.replace('v-','');v['differenceType']='HARAKAH' if page==268 else 'LETTER'
+            v['description']=' / '.join(r['raw_text'] for r in rows);v['sources']=[]
+            for rid,row in zip(record_ids,rows):
+                v['sources'].append({'id':f's-{rid}','variantId':v['id'],
+                    'sourceName':'استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)','sourceType':'other',
+                    'sourceReference':f'qiraat_records.jsonl، {rid}','sourceText':row['raw_text'],
+                    'verificationNotes':'قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر.'})
+            v['sources'].append({'id':f's-AUDIT-P{page}-{ayah}-EXT','variantId':v['id'],
+                'sourceName':'موسوعة القراءات القرآنية — القراءات العشر','sourceType':'website',
+                'sourceReference':url,'sourceText':external_text,
+                'verificationNotes':'مرجع مستقل يذكر الوجه والرواة صراحةً.'})
             v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
     if page == 253:
         source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
