@@ -1399,6 +1399,45 @@ def has_bare_ambiguous_reader(text):
         return True
     return False
 
+def reconcile_audited_rulings(page, lines, rulings, existing_page):
+    """Keep the independently confirmed al-Susi imalah addition isolated from a conflicting
+    Warsh default/alternate status already stored at the same token.
+    """
+    if page != 254:
+        return rulings
+    source_line = '﴿الْكَـٰفِرِينَ﴾: أبو عمرو، الدوري عن الكسائي، رويس، وقللها ورش.'
+    if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
+        raise ValueError('page 254 audited al-Kafirin source row missing/not unique')
+    if is_neg(source_line) or is_univ(source_line) or has_bare_ambiguous_reader(source_line):
+        raise ValueError('page 254 al-Kafirin source row failed ambiguity/negation/universal guard')
+    loc = T.find(page, 'الْكَـٰفِرِينَ', ayah=35)
+    if (loc['surah'],loc['startAyah'],loc['startWord'],loc['baseText']) != (
+        13,35,18,'ٱلْكَـٰفِرِينَ'):
+        raise ValueError('page 254 exact al-Kafirin token/span/base changed')
+    abu_amr,_ = resolve_readers('أبو عمرو', set())
+    if abu_amr != {'Q03-R01','Q03-R02'}:
+        raise ValueError('page 254 Abu Amr reading group did not resolve exactly')
+    targets=[x for x in existing_page if
+        (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category')) ==
+        (13,35,18,'IMALAH_TAQLIL')]
+    target_ids={x.get('readingId') for x in targets[0].get('readings',[])} if len(targets)==1 else set()
+    if len(targets)!=1 or 'Q03-R01' not in target_ids:
+        raise ValueError('page 254 al-Kafirin existing ruling is not the expected unique match')
+    candidates=[x for x in rulings if
+        (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category')) ==
+        (13,35,18,'IMALAH_TAQLIL')]
+    if len(candidates)!=1:
+        raise ValueError('page 254 al-Kafirin parsed ruling is missing/not unique')
+    candidate=candidates[0]
+    parsed_ids={x.get('readingId') for x in candidate.get('readings',[])}
+    if not abu_amr <= parsed_ids:
+        raise ValueError('page 254 al-Kafirin parsed Abu Amr group changed')
+    candidate['readings']=[x for x in candidate['readings'] if x.get('readingId')=='Q03-R02']
+    candidate['attribution']=[x for x in candidate.get('attribution',[]) if x.get('authorityId')=='Q03-R02']
+    candidate['hasAlternate']=False
+    candidate['notes']='المصدر DOCX-P254-R00480 صرّح بأبي عمرو؛ وثبتت الإمالة لأبي عمرو في العرض المستقل للعشر الصغرى، فاقتصر الإلحاق على السوسي عن أبي عمرو. تُرك حكم ورش كما هو لوجود تعارض بين كونه بغير خلف في المصدر وبين الحالة البديلة القائمة.'
+    return rulings
+
 def build(page_list, categories=None, complete_ikhfa=False):
     vstats=collections.Counter(); rstats=collections.Counter()
     vout={}; rout={}
@@ -1414,6 +1453,8 @@ def build(page_list, categories=None, complete_ikhfa=False):
             r=[x for x in r if x['category'] in categories]
         # DEDUP against existing
         ev=existing('pages',page); er=existing('rulings',page)
+        if categories is None or 'IMALAH_TAQLIL' in categories:
+            r=reconcile_audited_rulings(page,pd['usul'],r,er)
         source_links_added=0
         if categories is None:
             v,source_links_added=reconcile_audited_farsh(page,pd['farsh'],v,ev)
