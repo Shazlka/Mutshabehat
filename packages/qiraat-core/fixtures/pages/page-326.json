@@ -122,5 +122,74 @@
         "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
       }
     ]
+  },
+  {
+    "id": "v-D326-مثقال-w2",
+    "surah": 21,
+    "ayah": 47,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "مِثْقَالَ",
+    "variantText": "مِثْقَالُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D326-مثقال",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D326-مثقال-w2",
+        "variantId": "v-D326-مثقال-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P326-R01351",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مِثْقَالَ﴾: بالنصب ﴿مِثْقَالَ﴾ لابن كثير، وأبي عمرو، وابن عامر، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبالرفع ﴿مِثْقَالُ﴾ لنافع وأبي جعفر."
+      }
+    ],
+    "description": "وبالرفع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D326-وضياء-w2",
+    "surah": 21,
+    "ayah": 48,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَضِيَآءًۭ",
+    "variantText": "وَضِنَاءً",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "D326-وضياء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D326-وضياء-w2",
+        "variantId": "v-D326-وضياء-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P326-R01352",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَضِيَآءٗ﴾: بهمزة ممدودة بعد الياء للجمهور؛ وبنون مفتوحة وهمزة بعدها ﴿وَضِنَاءً﴾ لقنبل."
+      }
+    ],
+    "description": "بنون مفتوحة وهمزة بعدها",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

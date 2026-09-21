@@ -259,5 +259,40 @@
         "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
       }
     ]
+  },
+  {
+    "id": "v-D321-ترضا-w2",
+    "surah": 20,
+    "ayah": 130,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "تَرْضَىٰ",
+    "variantText": "تُرْضَى",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D321-ترضا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D321-ترضا-w2",
+        "variantId": "v-D321-ترضا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P321-R01293",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَرْضَىٰ﴾: بفتح التاء للجمهور؛ وبضم التاء مبنياً للمفعول ﴿تُرْضَى﴾ لشعبة والكسائي."
+      }
+    ],
+    "description": "بضم التاء مبنياً للمفعول",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
