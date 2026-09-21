@@ -8,7 +8,7 @@ against negation/universal statements. DEDUP is additive: new loci are appended,
 source-named reader assignments may be appended to an existing category/locus when uncovered.
 Same-reader disagreements are dropped.
 """
-import json, os, re, sys, collections
+import json, os, re, sys, collections, hashlib
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tokens as T
 import authorities as A
@@ -244,10 +244,9 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                     set(matches[0].get('readingIds',[]))==readers and
                     matches[0].get('description')==' / '.join(r['raw_text'] for r in rows)):
                     continue
-                # This import path has an intentionally strict one-variant-per-token
-                # dedupe key. Do not append a second form at a token already occupied
-                # by a different source variant (e.g. Abu Jaafar's additional juzz form).
-                continue
+                # A different source-backed form can coexist at this token if it assigns
+                # only readings not already claimed by the existing form (filtered below).
+                stable_id += '-ALT-' + hashlib.sha1(T.norm(alternate).encode()).hexdigest()[:8]
             if not readers or 'Q05-R02' in readers or not readers <= ALL20:
                 raise ValueError(f'page 264 audited {ayah} reader group failed')
             before=len(variants)
@@ -305,7 +304,7 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                     set(matches[0].get('readingIds',[]))==readers and
                     matches[0].get('description')==' / '.join(r['raw_text'] for r in rows)):
                     continue
-                continue  # strict additive dedupe: one variant key per token
+                stable_id += '-ALT-' + hashlib.sha1(T.norm(alternate).encode()).hexdigest()[:8]
             before=len(variants)
             yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
                                      (alternate,'وجه فرشي صريح في المصدر المعالج',readers)],variants,ayah=ayah)
@@ -324,6 +323,69 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                 'sourceName':'موسوعة القراءات القرآنية — القراءات العشر','sourceType':'website',
                 'sourceReference':url,'sourceText':external_text,
                 'verificationNotes':'مرجع مستقل يذكر الوجه والرواة صراحةً.'})
+            v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
+    if page == 270:
+        candidates=[
+            (27,'يُخْزِيهِمْ','يُخْزِيهُمُ',{'Q09-R01','Q09-R02'},'DOCX-P270-R00672',
+             'https://quranpedia.net/tafsir/an-nahl/27',
+             'At an-Nahl 16:27, dammah on hāʾ in يُخْزِيهُمْ is attributed to Rawh and Ruways from Yaqub.'),
+            (27,'فِيهِمْ','فِيهُمُ',{'Q09-R01','Q09-R02'},'DOCX-P270-R00672',
+             'https://quranpedia.net/tafsir/an-nahl/27',
+             'At an-Nahl 16:27, dammah on hāʾ in فِيهُمْ is attributed to Rawh and Ruways from Yaqub.'),
+            (28,'تَتَوَفَّىٰهُمُ','يَتَوَفَّاهُمُ',{'Q06-R01','Q06-R02','Q10-R01','Q10-R02'},'DOCX-P270-R00676',
+             'https://quranpedia.net/ayahs/16/28/1/557',
+             'At an-Nahl 16:28 and the following occurrence, Hamza and Khalaf read يَتَوَفَّاهُمْ with yāʾ; the rest read تَتَوَفَّاهُمْ with tāʾ.'),
+            (32,'تَتَوَفَّىٰهُمُ','يَتَوَفَّاهُمُ',{'Q06-R01','Q06-R02','Q10-R01','Q10-R02'},'DOCX-P270-R00676',
+             'https://quranpedia.net/ayahs/16/28/1/557',
+             'At an-Nahl 16:28 and the following occurrence, Hamza and Khalaf read يَتَوَفَّاهُمْ with yāʾ; the rest read تَتَوَفَّاهُمْ with tāʾ.'),
+        ]
+        for ayah,anchor,alternate,readers,record_id,url,external_text in candidates:
+            row=PACKAGE_RECORDS.get(record_id)
+            if (row is None or row.get('page_no')!=270 or row.get('section')!='farsh' or
+                row.get('attribution_mode')!='explicit' or not row.get('raw_text') or
+                is_neg(row['raw_text']) or is_univ(row['raw_text'])):
+                raise ValueError(f'page 270 audited {ayah} processed-package row failed source/safety check')
+            explicit_names=[m['raw'] for m in row.get('authority_mentions',[])
+                            if m.get('resolution')=='exact']
+            resolved,unresolved=resolve_readers('،'.join(explicit_names),set())
+            if unresolved or resolved!=readers:
+                raise ValueError(f'page 270 audited {ayah} processed-package reader group changed')
+            loc=T.find(page,anchor,ayah=ayah)
+            expected={ (27,'يُخْزِيهِمْ'):4,(27,'فِيهِمْ'):11,
+                       (28,'تَتَوَفَّىٰهُمُ'):2,(32,'تَتَوَفَّىٰهُمُ'):2 }[(ayah,anchor)]
+            if (loc['surah'],loc['startAyah'],loc['endAyah'],loc['startWord'],loc['endWord']) != (16,ayah,ayah,expected,expected):
+                raise ValueError(f'page 270 audited {ayah} exact token/span changed')
+            if ayah in (28,32) and row.get('occurrence_note')!='معاً':
+                raise ValueError('page 270 paired Nahl 16:28/32 source no longer says معاً')
+            matches=[x for x in existing_page if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) ==
+                (16,ayah,expected,expected)]
+            stable_id=f'v-AUDIT-P270-16-{ayah}-{expected}-FARSH'
+            if matches:
+                if (len(matches)==1 and matches[0].get('id')==stable_id and
+                    matches[0].get('hafsText')==loc['baseText'] and
+                    matches[0].get('variantText')==alternate and
+                    set(matches[0].get('readingIds',[]))==readers and
+                    matches[0].get('description')==row['raw_text']):
+                    continue
+                stable_id += '-ALT-' + hashlib.sha1(T.norm(alternate).encode()).hexdigest()[:8]
+            before=len(variants)
+            yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+                                     (alternate,row['raw_text'],readers)],variants,ayah=ayah)
+            added=[x for x in variants[before:] if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) == (16,ayah,expected,expected)]
+            if len(added)!=1:
+                raise ValueError(f'page 270 audited {ayah} 20-reading partition failed')
+            v=added[0];v['id']=stable_id;v['locusId']=stable_id.replace('v-','');v['differenceType']='HARAKAH' if ayah in (27,28,32) else 'LETTER'
+            v['description']=row['raw_text'];v['sources']=[
+                {'id':f's-{record_id}','variantId':v['id'],
+                 'sourceName':'استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)','sourceType':'other',
+                 'sourceReference':f'qiraat_records.jsonl، {record_id}','sourceText':row['raw_text'],
+                 'verificationNotes':'قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر.'},
+                {'id':f's-AUDIT-P270-{ayah}-EXT','variantId':v['id'],
+                 'sourceName':'موسوعة القراءات القرآنية — القراءات العشر','sourceType':'website',
+                 'sourceReference':url,'sourceText':external_text,
+                 'verificationNotes':'مرجع مستقل يذكر الوجه والرواة صراحةً.'}]
             v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
     if page == 253:
         source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
@@ -1713,18 +1775,24 @@ def build(page_list, categories=None, complete_ikhfa=False):
         if categories is None:
             v,source_links_added=reconcile_audited_farsh(page,pd['farsh'],v,ev)
             vstats['sourceLinksAdded']+=source_links_added
-        vtok={(x['surah'],x['ayah'],x['startToken']) for x in ev}
-        multi_form_key=(12,105,1) if page==248 else None
-        v=[x for x in v if ((x['surah'],x['ayah'],x['startToken']) not in vtok or
-            ((x['surah'],x['ayah'],x['startToken'])==multi_form_key and
-             not any((e['surah'],e['ayah'],e['startToken'],e.get('variantText'))==
-                     (x['surah'],x['ayah'],x['startToken'],x.get('variantText')) for e in ev)))]
-        # also dedup within this batch
-        seenv=set(); v2=[]
+        # One word may have several authoritative non-Hafs faces. Deduplicate by exact
+        # token+form, then keep only reader transmissions not already assigned another
+        # form at that token. This is additive: an existing form/attribution is never
+        # rewritten, and conflicting same-reader claims are safely withheld.
+        claimed_by_token=collections.defaultdict(set)
+        for e in ev:
+            claimed_by_token[(e['surah'],e['ayah'],e['startToken'])].update(e.get('readingIds',[]))
+        v2=[]; seen_forms=set()
         for x in v:
-            k=(x['surah'],x['ayah'],x['startToken'],x.get('variantText')) if (page==248 and (x['surah'],x['ayah'],x['startToken'])==multi_form_key) else (x['surah'],x['ayah'],x['startToken'])
-            if k in seenv: continue
-            seenv.add(k); v2.append(x)
+            token_key=(x['surah'],x['ayah'],x['startToken'])
+            form_key=(*token_key,T.norm(x.get('variantText') or ''),tuple(sorted(x.get('readingIds',[]))))
+            if form_key in seen_forms: continue
+            seen_forms.add(form_key)
+            available=set(x.get('readingIds',[]))-claimed_by_token[token_key]
+            if not available: continue
+            x['readingIds']=sorted(available)
+            claimed_by_token[token_key].update(available)
+            v2.append(x)
         seenr={}; r2=[]
         for x in r:
             k=(x['surah'],x['ayah'],x['startToken'],x['category'])

@@ -499,6 +499,19 @@ test('page 266 carries the supplied Al-Hijr colour coverage for 15:82 and 15:87'
   )
 })
 
+test('page 264 preserves distinct approved forms at 15:44 for Shu\'bah and Abu Jaafar', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(264, { includeUnpublished: true })
+  const faces = variants.filter((variant) => variant.surah === 15 && variant.ayah === 44 && variant.startToken === 7)
+  assert.equal(faces.length, 2, 'different sourced forms at one token remain separate records')
+  assert.deepEqual(new Set(faces.flatMap((variant) => variant.readingIds)), new Set(['Q05-R01', 'Q08-R01', 'Q08-R02']))
+  assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', 'Q05-R01', { includeUnpublished: true }).text, 'جُزُءٌ')
+  for (const readingId of ['Q08-R01', 'Q08-R02']) {
+    assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', readingId, { includeUnpublished: true }).text, 'جُزٌّ')
+  }
+  assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', BASE_READING, { includeUnpublished: true }).text, 'جُزْءٌۭ')
+})
+
 
 // ── رموز الشاطبية والدرة ──────────────────────────────────────────────────────
 // The reference prints its own عدد الروايات for every group symbol. These tests treat that column
