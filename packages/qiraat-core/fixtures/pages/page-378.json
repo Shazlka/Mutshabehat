@@ -1,1 +1,70 @@
-[]
+[
+  {
+    "id": "v-D378-لا_يحطمنكم-w2",
+    "surah": 27,
+    "ayah": 18,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَحْطِمَنَّكُمْ",
+    "variantText": "لَا يَحْطِمَنكُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D378-لا_يحطمنكم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D378-لا_يحطمنكم-w2",
+        "variantId": "v-D378-لا_يحطمنكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P378-R01879",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَا يَحْطِمَنَّكُمْ﴾: بتشديد الطاء ﴿لَا يَحْطِمَنَّكُمْ﴾ للجمهور؛ وبتخفيف الطاء ﴿لَا يَحْطِمَنكُم﴾ لرويس."
+      }
+    ],
+    "description": "بتخفيف الطاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D378-سبا-w2",
+    "surah": 27,
+    "ayah": 22,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "سَبَإٍۭ",
+    "variantText": "سَبَأَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D378-سبا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D378-سبا-w2",
+        "variantId": "v-D378-سبا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P378-R01882",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿سَبَإٍ﴾: بالصرف وتنوين الهمزة ﴿سَبَإٍ﴾ لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ وبحذف التنوين وفتح الهمزة ﴿سَبَأَ﴾ للبزي وأبي عمرو؛ وبإسكان الهمزة ﴿سَبَأْ﴾ لقنبل."
+      }
+    ],
+    "description": "بفتح الهمزة بلا تنوين",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

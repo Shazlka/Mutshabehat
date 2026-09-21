@@ -1,1 +1,182 @@
-[]
+[
+  {
+    "id": "v-D382-قدرناها-w2",
+    "surah": 27,
+    "ayah": 57,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "قَدَّرْنَـٰهَا",
+    "variantText": "قَدَرْنَاهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D382-قدرناها",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D382-قدرناها-w2",
+        "variantId": "v-D382-قدرناها-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P382-R01920",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿قَدَّرْنَـٰهَا﴾: بتخفيف الدال ﴿قَدَرْنَاهَا﴾ لشعبة؛ وبالتشديد للباقين."
+      }
+    ],
+    "description": "بتخفيف الدال",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D382-تذكرون-w2",
+    "surah": 27,
+    "ayah": 62,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذَّكَّرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D382-تذكرون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D382-تذكرون-w2",
+        "variantId": "v-D382-تذكرون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P382-R01924",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بتشديد الذال والتاء ﴿تَذَّكَّرُونَ﴾: نافع، وابن كثير، وابن ذكوان، وشعبة، وأبو جعفر، ورويس."
+      }
+    ],
+    "description": "بتشديد الذال والتاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D382-تذكرون-w3",
+    "surah": 27,
+    "ayah": 62,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "يَذَّكَّرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D382-تذكرون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D382-تذكرون-w3",
+        "variantId": "v-D382-تذكرون-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P382-R01925",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بياء الغيب وتشديد الذال ﴿يَذَّكَّرُونَ﴾: أبو عمرو، وهشام، وروح."
+      }
+    ],
+    "description": "بياء الغيب وتشديد الذال",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D382-بشرا-w2",
+    "surah": 27,
+    "ayah": 63,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "بُشْرًۢا",
+    "variantText": "نَشْرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D382-بشرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D382-بشرا-w2",
+        "variantId": "v-D382-بشرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P382-R01927",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿بُشْرَۢا﴾: الأوجه الأربعة (بُشراً لعاصم / نَشراً لحمزة والكسائي وخلف / نُشراً لابن عامر / نُشُراً للباقين)."
+      }
+    ],
+    "description": "بنون مضمومة وفتح الشين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D382-بشرا-w3",
+    "surah": 27,
+    "ayah": 63,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "بُشْرًۢا",
+    "variantText": "نُشْرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D382-بشرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D382-بشرا-w3",
+        "variantId": "v-D382-بشرا-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P382-R01927",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿بُشْرَۢا﴾: الأوجه الأربعة (بُشراً لعاصم / نَشراً لحمزة والكسائي وخلف / نُشراً لابن عامر / نُشُراً للباقين)."
+      }
+    ],
+    "description": "بنون مضمومة وسكون الشين",
+    "wajhIndex": 3,
+    "evidence": []
+  }
+]

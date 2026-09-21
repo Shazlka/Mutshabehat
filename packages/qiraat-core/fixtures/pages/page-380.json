@@ -1,1 +1,111 @@
-[]
+[
+  {
+    "id": "v-D380-اتمدونن-w2",
+    "surah": 27,
+    "ayah": 36,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَتُمِدُّونَنِ",
+    "variantText": "أَتُمِدُّونَنِي",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D380-اتمدونن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D380-اتمدونن-w2",
+        "variantId": "v-D380-اتمدونن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P380-R01899",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بنونين الأولى مفتوحة والثانية مكسورة ﴿أَتُمِدُّونَنِي﴾: نافع، وأبو عمرو، وأبو جعفر (وصلاً)، وابن كثير (وصلاً ووقفاً)."
+      }
+    ],
+    "description": "بنونين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D380-اتمدونن-w3",
+    "surah": 27,
+    "ayah": 36,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَتُمِدُّونَنِ",
+    "variantText": "أَتُمِدُّوٓنِّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D380-اتمدونن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D380-اتمدونن-w3",
+        "variantId": "v-D380-اتمدونن-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P380-R01900",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بإدغام النون في النون مشددة مع المد المشبع ﴿أَتُمِدُّوٓنِّ﴾: حمزة، ويعقوب."
+      }
+    ],
+    "description": "بإدغام النون ومدها",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D380-ساقيها-w2",
+    "surah": 27,
+    "ayah": 44,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "سَاقَيْهَا ۚ",
+    "variantText": "سَأْقَيْهَا",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "D380-ساقيها",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D380-ساقيها-w2",
+        "variantId": "v-D380-ساقيها-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P380-R01904",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿سَاقَيْهَا﴾: بالألف للجمهور؛ وبإبدال الألف همزة ساكنة ﴿سَأْقَيْهَا﴾ لقنبل."
+      }
+    ],
+    "description": "بإبدال الألف همزة ساكنة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
