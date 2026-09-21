@@ -91,5 +91,43 @@
         "url": "https://jamharah.net/showthread.php?p=176127"
       }
     ]
+  },
+  {
+    "id": "v-D250-قبلهم-w2",
+    "surah": 13,
+    "ayah": 6,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "قَبْلِهِمُ",
+    "variantText": "قَبْلِهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D250-قبلهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D250-قبلهم-w2",
+        "variantId": "v-D250-قبلهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P250-R00429",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الهاء والميم وصلاً ﴿قَبْلِهُمُ الْمَثُلَاتُ﴾: حمزة، الكسائي، خلف."
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
