@@ -123,6 +123,72 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     as sourceText and store only the independently corroborated form as the actual variant.
     """
     source_links_added = 0
+    if page == 247:
+        audited = [
+            {
+                'anchor': 'يَـٰٓأَبَتِ', 'ayah': 100, 'alternate': 'يَـٰٓأَبَتَ',
+                'description': 'بفتح التاء لابن عامر وأبي جعفر',
+                'readers': {'Q04-R01','Q04-R02','Q08-R01','Q08-R02'},
+                'sourceLine': '﴿يَـٰٓأَبَتِ﴾: بالكسر للجمهور؛ وبالفتح ﴿يَـٰٓأَبَتَ﴾ لابن عامر وأبي جعفر.',
+                'resolverText': 'ابن عامر، أبو جعفر',
+                'externalName': 'النشر في القراءات العشر',
+                'externalUrl': 'https://www.islamweb.net/ar/library/content/70/241/',
+                'externalText': 'قرأ بفتح التاء في ياأبت حيث جاء أبو جعفر وابن عامر، والباقون بكسر التاء.',
+            },
+            {
+                'anchor': 'لَدَيْهِمْ', 'ayah': 102, 'alternate': 'لَدَيْهُمُ',
+                'description': 'بضم الهاء لحمزة ويعقوب',
+                'readers': {'Q06-R01','Q06-R02','Q09-R01','Q09-R02'},
+                'sourceLine': '﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب.',
+                'resolverText': 'حمزة، يعقوب',
+                'externalName': 'إتحاف فضلاء البشر وغيث النفع، نقلاً في جمهرة العلوم',
+                'externalUrl': 'https://jamharah.net/showthread.php?p=176022',
+                'externalText': 'وضم هاء لديهم حمزة ويعقوب؛ وقراءة الباقين لديهم بكسر الهاء.',
+            },
+        ]
+        for case in audited:
+            source_line = case['sourceLine']
+            matches = [line.strip() for line in lines if line.strip() == source_line]
+            if len(matches) != 1 or is_neg(source_line) or is_univ(source_line):
+                raise ValueError(f"page 247 audited farsh row missing/unsafe: {case['anchor']}")
+            try:
+                loc = T.find(page, case['anchor'], ayah=case['ayah'])
+            except T.NoMatch as exc:
+                raise ValueError(f"page 247 audited token missing: {case['anchor']}") from exc
+            if (loc['surah'], loc['startAyah'], loc['endAyah'], loc['baseText']) != (
+                12, case['ayah'], case['ayah'], case['anchor']):
+                raise ValueError(f"page 247 audited token span/base changed: {case['anchor']}")
+            try:
+                resolved, unresolved = resolve_readers(case['resolverText'], set())
+            except Unresolved as exc:
+                raise ValueError(f"page 247 audited reader group unresolved: {case['anchor']}") from exc
+            if unresolved or resolved != case['readers']:
+                raise ValueError(f"page 247 audited reader group changed: {case['anchor']}")
+            before = len(variants)
+            yield_block(page, case['anchor'], [
+                (None, 'وجه حفص المطابق لرسم المصحف', set(ALL20) - case['readers']),
+                (case['alternate'], case['description'], case['readers']),
+            ], variants)
+            added = [v for v in variants[before:] if v.get('surah') == 12 and
+                     v.get('ayah') == case['ayah'] and v.get('startToken') == loc['startWord']]
+            if len(added) != 1:
+                raise ValueError(f"page 247 audited variant partition failed: {case['anchor']}")
+            variant = added[0]
+            variant['sources'][0].update({
+                'sourceReference': 'وثيقة الاستخراج المبوّب، صفحة المصحف 247، الكلمات الفرشية',
+                'sourceText': source_line,
+                'verificationNotes': 'المتغير ومجموعة القراء تأكدا بمقابلة مرجع مستقل؛ ثبتت الكلمة الأساس حرفياً من رمز الصفحة.',
+            })
+            variant['sources'].append({
+                'id': f"s-AUDIT-P247-{case['ayah']}", 'variantId': variant['id'],
+                'sourceName': case['externalName'], 'sourceType': 'printed-book',
+                'sourceReference': case['externalUrl'], 'sourceText': case['externalText'],
+                'verificationNotes': 'تحقق خارجي من صورة القراءة ومجموعة القراء الصريحة.',
+            })
+            variant['evidence'] = [{
+                'source': case['externalName'], 'text': case['externalText'],
+                'url': case['externalUrl'],
+            }]
     if page == 229:
         header = '﴿إِنَّ ثَمُودَاْ﴾:'
         fragment = 'بالتنوين ﴿إِنَّ ثَمُودًا﴾:'
