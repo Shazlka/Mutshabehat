@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2838,
-    "usulRulings": 9889,
+    "variants": 2839,
+    "usulRulings": 9894,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -23601,51 +23601,52 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Deep audited pages 307-310 and 547-550; imported token-backed source faces and removed bare-خلف Q10 leakage on pages 507-510 and 547-550. User attribution rule remains enforced.",
+  "latestSourceCoverageNote": "Deep audited pages 311-314, 519-522, and 559-562; removed bare-خلف Q10 leakage, added the page-314 IDGHAM_SAGHIR locus, Yaqub WAQF_RASM loci on page 559, and the verified Susi performance face on page 562.",
   "latestLocalImportCycle": {
-    "id": "deep-audit-p307-p310-p507-p510-p547-p550",
+    "id": "deep-audit-p311-p314-p519-p522-p559-p562",
     "pages": [
-      307,
-      308,
-      309,
-      310,
-      507,
-      508,
-      509,
-      510,
-      547,
-      548,
-      549,
-      550
+      311,
+      312,
+      313,
+      314,
+      519,
+      520,
+      521,
+      522,
+      559,
+      560,
+      561,
+      562
     ],
-    "variantsAdded": 27,
-    "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 17,
+    "variantsAdded": 1,
+    "newRulingLoci": 5,
+    "rulingRecordsNetChanged": 5,
+    "correctedRulingLoci": 40,
     "perPageVariants": {
-      "307": 3,
-      "308": 5,
-      "309": 1,
-      "310": 4,
-      "507": 0,
-      "508": 0,
-      "509": 0,
-      "510": 0,
-      "547": 2,
-      "548": 2,
-      "549": 6,
-      "550": 5
+      "311": 0,
+      "312": 0,
+      "313": 0,
+      "314": 0,
+      "519": 0,
+      "520": 0,
+      "521": 0,
+      "522": 0,
+      "559": 0,
+      "560": 0,
+      "561": 0,
+      "562": 1
     },
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2838,
-      "usulRulings": 9889,
+      "variants": 2839,
+      "usulRulings": 9894,
       "validator": "passed",
       "tests": "38/38",
       "tsc": "pending",
       "build": "pending",
       "importerIdempotent": true
     },
-    "details": "Pages 307-310 added 13 faces. Pages 547-550 added 14 net faces and corrected bare-خلف imalah assignments. Pages 507-510 corrected 17 bare-خلف imalah loci. External source checks were used where available; all additions are token-backed."
+    "details": "Page 314 gained one IDGHAM_SAGHIR locus and a Q04-R02 merge; page 559 gained four Yaqub WAQF_RASM loci; page 562 gained one Susi performance face. Bare خلف Q10 leakage was corrected across pages 311-313 and 519-522."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -23884,5 +23885,50 @@
       "importerIdempotent": true
     },
     "details": "Pages 303-306 received eight net token-backed variants. Page 516 received two token-backed usul loci (WAQF_RASM and IMALAH_TAQLIL). Pages 583-584 had no missing variants; three existing ruling loci were corrected to remove Q10 from bare خلف assignments. External Quranpedia spot checks used."
+  },
+  "previousImportCycle307_310_507_510_547_550": {
+    "id": "deep-audit-p307-p310-p507-p510-p547-p550",
+    "pages": [
+      307,
+      308,
+      309,
+      310,
+      507,
+      508,
+      509,
+      510,
+      547,
+      548,
+      549,
+      550
+    ],
+    "variantsAdded": 27,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 17,
+    "perPageVariants": {
+      "307": 3,
+      "308": 5,
+      "309": 1,
+      "310": 4,
+      "507": 0,
+      "508": 0,
+      "509": 0,
+      "510": 0,
+      "547": 2,
+      "548": 2,
+      "549": 6,
+      "550": 5
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2838,
+      "usulRulings": 9889,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "pending",
+      "build": "pending",
+      "importerIdempotent": true
+    },
+    "details": "Pages 307-310 added 13 faces. Pages 547-550 added 14 net faces and corrected bare-خلف imalah assignments. Pages 507-510 corrected 17 bare-خلف imalah loci. External source checks were used where available; all additions are token-backed."
   }
 }

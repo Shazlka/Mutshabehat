@@ -259,5 +259,39 @@
     "description": "بضم الحاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D562-تكاد_تميز-performance1",
+    "surah": 67,
+    "ayah": 8,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَكَادُ تَمَيَّزُ",
+    "variantText": "تَكَادُ تَمَيَّزُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "D562-تكاد_تميز",
+    "locusType": "performance_variant",
+    "performanceNote": "إدغام الدال في التاء وصلاً بمد وقصر وتوسط",
+    "sources": [
+      {
+        "id": "s-D562-تكاد_تميز-performance1",
+        "variantId": "v-D562-تكاد_تميز-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P562-R03630",
+        "verificationNotes": "السوسي عن أبي عمرو يدغم الدال في التاء وصلاً، وله المد والقصر والتوسط. المرجع المستقل: https://quranpedia.net/qiraat/al-mulk/8.",
+        "sourceText": "﴿تَكَادُ تَمَيَّزُ﴾: بتخفيف التاء للجمهور؛ بتشديد التاء وصلاً ﴿تَكَادُ تَّمَيَّزُ﴾ للبزي (وللسوسي إدغام الدال في التاء وصلاً بمد وقصر وتوسط)."
+      }
+    ],
+    "description": "إدغام الدال في التاء وصلاً بمد وقصر وتوسط",
+    "wajhIndex": 1,
+    "evidence": []
   }
 ]

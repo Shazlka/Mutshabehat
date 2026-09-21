@@ -2173,6 +2173,32 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
                 emit_ruling(page,'IMALAH_TAQLIL',anchor,[(readers,'إمالة وقفاً')],rulings,occurrence=1,ayah=14,
                     source_notes=[{'sourceReference':'NQuran، العشر الصغرى، الصف 14','sourceText':record['raw_text'],
                                    'verificationNotes':'المصدر المستقل يسمي حمزة والكسائي وخلف العاشر صراحة؛ السجل يقول عيسى (معاً وقفاً).'}])
+    if page == 559:
+        # The source row names three separate loci, while the first anchor occurs
+        # twice on the page.  The generic usul parser intentionally drops the
+        # repeated anchor as ambiguous, so reconcile each occurrence explicitly.
+        record=PACKAGE_RECORDS.get('DOCX-P559-R03604')
+        if (record and record.get('raw_text') in lines and not is_neg(record['raw_text'])
+                and not is_univ(record['raw_text'])):
+            source_notes=[{'sourceReference':'qiraat_records.jsonl، DOCX-P559-R03604',
+                           'sourceText':record['raw_text'],
+                           'verificationNotes':'أُسندت المواضع الثلاثة إلى يعقوب، وربط كل موضع بتوكن المصحف الحقيقي؛ عَلَيْهِنَّ وردت مرتين.'}]
+            for anchor,ayah,occurrence in (
+                ('عَلَيْهِنَّ',6,1),
+                ('عَلَيْهِنَّ',6,2),
+                ('حَمْلَهُنَّ',6,1),
+            ):
+                loc=T.find(page,anchor,occurrence=occurrence,ayah=ayah)
+                key=(loc['surah'],loc['startAyah'],loc['startWord'],'WAQF_RASM')
+                old=next((x for x in existing_page if
+                           (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key),None)
+                have={x.get('readingId') for x in old.get('readings',[])} if old else set()
+                readers={'Q09-R01','Q09-R02'}-have
+                if readers:
+                    emit_ruling(page,'WAQF_RASM',anchor,
+                                [(readers,'الوقف بهاء السكت')],rulings,
+                                occurrence=occurrence,ayah=ayah,
+                                source_notes=source_notes)
     if page in (277,278):
         audited=(
             [('DOCX-P277-R00761','TAGHYIR_HAMZ','وَجِئْنَا',
@@ -4891,6 +4917,12 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P561-R03622','وَقِيلَ','هشام، الكسائي، رويس',10,'بالإشمام',
              'https://quranpedia.net/qiraat/at-tahrim/10',
              'الإشمام لهشام والكسائي ورويس؛ رويس هو Q09-R01.'),
+        ],
+        562: [
+            ('DOCX-P562-R03630','تَكَادُ تَمَيَّزُ','السوسي',8,
+             'إدغام الدال في التاء وصلاً بمد وقصر وتوسط',
+             'https://quranpedia.net/qiraat/al-mulk/8',
+             'السوسي عن أبي عمرو يدغم الدال في التاء وصلاً، وله المد والقصر والتوسط.'),
         ],
     }
     for record_id,anchor,reader_text,ayah,description,authority_url,verification in performance_faces.get(page,[]):

@@ -302,5 +302,186 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p559-WAQF_RASM-مثلهن-4",
+    "pageNumber": 559,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 65,
+    "ayah": 12,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 12,
+    "baseText": "مِثْلَهُنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p559-WAQF_RASM-عليهن-5",
+    "pageNumber": 559,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 65,
+    "ayah": 6,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 6,
+    "baseText": "عَلَيْهِنَّ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03604",
+        "sourceText": "الوقف على مرسوم الخط: ﴿عَلَيْهِنَّ﴾، ﴿حَمْلَهُنَّ﴾، ﴿مِثْلَهُنَّ﴾: يقف عليها يعقوب بهاء السكت.",
+        "verificationNotes": "أُسندت المواضع الثلاثة إلى يعقوب، وربط كل موضع بتوكن المصحف الحقيقي؛ عَلَيْهِنَّ وردت مرتين."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p559-WAQF_RASM-عليهن-6",
+    "pageNumber": 559,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 65,
+    "ayah": 6,
+    "startToken": 16,
+    "endToken": 16,
+    "endAyah": 6,
+    "baseText": "عَلَيْهِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03604",
+        "sourceText": "الوقف على مرسوم الخط: ﴿عَلَيْهِنَّ﴾، ﴿حَمْلَهُنَّ﴾، ﴿مِثْلَهُنَّ﴾: يقف عليها يعقوب بهاء السكت.",
+        "verificationNotes": "أُسندت المواضع الثلاثة إلى يعقوب، وربط كل موضع بتوكن المصحف الحقيقي؛ عَلَيْهِنَّ وردت مرتين."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p559-WAQF_RASM-حملهن-7",
+    "pageNumber": 559,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 65,
+    "ayah": 6,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 6,
+    "baseText": "حَمْلَهُنَّ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03604",
+        "sourceText": "الوقف على مرسوم الخط: ﴿عَلَيْهِنَّ﴾، ﴿حَمْلَهُنَّ﴾، ﴿مِثْلَهُنَّ﴾: يقف عليها يعقوب بهاء السكت.",
+        "verificationNotes": "أُسندت المواضع الثلاثة إلى يعقوب، وربط كل موضع بتوكن المصحف الحقيقي؛ عَلَيْهِنَّ وردت مرتين."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
