@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T18:07:00+04:00",
+  "updatedAt": "2026-09-21T18:18:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -63,7 +63,7 @@
       250,
       251
     ],
-    "status": "verified_predeploy",
+    "status": "production_verified",
     "variantsAdded": 2,
     "readerAssignmentsAdded": 9,
     "variantTextCorrections": 0,
@@ -77,11 +77,14 @@
     "baseCommit": "429a32096539152189fcfbb487ee5531cd7def9a",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "pushed": false,
-    "vercelState": "pending",
-    "productionApiSmoke": "pending"
+    "commit": "91d79543d766b2985205a680ffc4f25617e29754",
+    "pushed": true,
+    "vercelState": "READY",
+    "deploymentId": "dpl_Hb3XfwDiXJiWqubHrLijm5X1HjYc",
+    "deploymentUrl": "https://mutshabehat-v2-2lndj4wjd-shazlka-s-projects.vercel.app",
+    "productionApiSmoke": "Stable public debug API returned both 13:6 and 13:18 token variants with four expected reading IDs each and confirmed Q03-R02 on 13:24 al-Kafirin imalah."
   },
-  "lastConfirmedDeployedDataCommit": "6a80a2d6b316047bf10e1ef2279c0feca60af6a6",
+  "lastConfirmedDeployedDataCommit": "91d79543d766b2985205a680ffc4f25617e29754",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -21155,7 +21158,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "6a80a2d6b316047bf10e1ef2279c0feca60af6a6",
+  "currentHeadCommit": "91d79543d766b2985205a680ffc4f25617e29754",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -22437,11 +22440,11 @@
     }
   },
   "lastProductionSmokeAttempt": {
-    "pages": [248, 249],
+    "pages": [250, 251],
     "status": "passed",
-    "reason": "The stable public production debug API returned both distinct 12:105 forms, the 12:109 الغيب form, and the 13:3 tashdid form with Yaqub at exact token spans, verbatim Hafs bases, and expected reading IDs."
+    "reason": "The stable public production debug API returned both 13:6 and 13:18 token variants with four expected reading IDs each and confirmed Q03-R02 on the 13:24 al-Kafirin imalah ruling."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_4rXFLtcj8GWuxLyX2ZwA3bT377GY",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-go8sz818f-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Pages 250–251 predeploy verified: one audited word at 13:6 on page 250 and one at 13:18 plus a reader-assignment expansion at 13:24 on page 251. This is targeted-locus coverage, not full-page completeness. Pages 248–249, 456, and 247 remain production-verified; page-by-page reconciliation continues."
+  "lastConfirmedVercelDeploymentId": "dpl_Hb3XfwDiXJiWqubHrLijm5X1HjYc",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-2lndj4wjd-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Pages 250–251 production-verified: one audited word at 13:6 on page 250 and one at 13:18 plus a reader-assignment expansion at 13:24 on page 251. This is targeted-locus coverage, not full-page completeness. Pages 248–249, 456, and 247 remain production-verified; page-by-page reconciliation continues."
 }
