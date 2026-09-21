@@ -31,5 +31,258 @@
     "description": "وحده",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-4-R03261-18-1-2",
+    "surah": 52,
+    "ayah": 18,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَـٰكِهِينَ",
+    "variantText": "فَكِهِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P524-4-R03261-18-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-4-R03261-18-1-2",
+        "variantId": "v-DOCX-P524-4-R03261-18-1-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03261",
+        "sourceText": "﴿فَـٰكِهِينَ﴾: بألف مدية للجمهور؛ بحذف الألف ﴿فَكِهِينَ﴾ لأبي جعفر.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بألف مدية للجمهور؛ بحذف الألف ﴿فَكِهِينَ﴾ لأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-4-R03264-21-3-2",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَٱتَّبَعَتْهُمْ",
+    "variantText": "وَاتَّبَعَتْهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P524-4-R03264-21-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-4-R03264-21-3-2",
+        "variantId": "v-DOCX-P524-4-R03264-21-3-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03264",
+        "sourceText": "كالسابق مع جمع الكلمتين بالتاء ﴿ذُرِّيَّاتُهُمْ... ذُرِّيَّاتِهِمْ﴾: نافع، وأبو جعفر.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "كالسابق مع جمع الكلمتين بالتاء ﴿ذُرِّيَّاتُهُمْ... ذُرِّيَّاتِهِمْ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-4-R03266-21-3-4",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَٱتَّبَعَتْهُمْ",
+    "variantText": "وَاتَّبَعَتْهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P524-4-R03266-21-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-4-R03266-21-3-4",
+        "variantId": "v-DOCX-P524-4-R03266-21-3-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03266",
+        "sourceText": "بفعل ماضٍ ثلاثي مع إفراد ذريتهم الأولى مرفوعة، ونصب ذريتهم الثانية جمعاً بالتاء ﴿وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ... بِهِمْ ذُرِّيَّاتِهِمْ﴾: ابن عامر، ويعقوب.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بفعل ماضٍ ثلاثي مع إفراد ذريتهم الأولى مرفوعة، ونصب ذريتهم الثانية جمعاً بالتاء ﴿وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ... بِهِمْ ذُرِّيَّاتِهِمْ﴾",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-4-R03267-21-9-2",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وَمَآ أَلَتْنَـٰهُم",
+    "variantText": "وَمَآ أَلِتْنَـٰهُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "DOCX-P524-4-R03267-21-9",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-4-R03267-21-9-2",
+        "variantId": "v-DOCX-P524-4-R03267-21-9-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03267",
+        "sourceText": "﴿وَمَآ أَلَتْنَـٰهُم﴾: بفتح اللام ﴿أَلَتْنَاهُمْ﴾ لجميع القراء عدا ابن كثير؛ بكسر اللام ﴿أَلِتْنَاهُمْ﴾ لابن كثير.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بفتح اللام ﴿أَلَتْنَاهُمْ﴾ لجميع القراء عدا ابن كثير؛ بكسر اللام ﴿أَلِتْنَاهُمْ﴾ لابن كثير.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-4-R03268-23-4-2",
+    "surah": 52,
+    "ayah": 23,
+    "startToken": 4,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "لَّا لَغْوٌۭ فِيهَا وَلَا تَأْثِيمٌۭ",
+    "variantText": "لَا لَغْوَ فِيهَا وَلَا تَأْثِيمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P524-4-R03268-23-4",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-4-R03268-23-4-2",
+        "variantId": "v-DOCX-P524-4-R03268-23-4-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03268",
+        "sourceText": "﴿لَا لَغْوٌ فِيهَا وَلَا تَأْثِيمٌ﴾: برفع الاسمين وتنوينهما ﴿لَا لَغْوٌ... وَلَا تَأْثِيمٌ﴾ لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ بفتح الاسمين بلا تنوين ﴿لَا لَغْوَ... وَلَا تَأْثِيمَ﴾ للباقين.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "برفع الاسمين وتنوينهما ﴿لَا لَغْوٌ... وَلَا تَأْثِيمٌ﴾ لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ بفتح الاسمين بلا تنوين ﴿لَا لَغْوَ... وَلَا تَأْثِيمَ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-4-R03269-24-2-2",
+    "surah": 52,
+    "ayah": 24,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P524-4-R03269-24-2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-4-R03269-24-2-2",
+        "variantId": "v-DOCX-P524-4-R03269-24-2-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03269",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "ضم هاء عليهم"
+  },
+  {
+    "id": "v-DOCX-P524-4-R03270-28-5-2",
+    "surah": 52,
+    "ayah": 28,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "نَدْعُوهُ ۖ",
+    "variantText": "نَدْعُوهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P524-4-R03270-28-5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-4-R03270-28-5-2",
+        "variantId": "v-DOCX-P524-4-R03270-28-5-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03270",
+        "sourceText": "﴿نَدْعُوهُ إِنَّهُۥ﴾: بكسر الهمزة ﴿إِنَّهُ﴾ للجمهور؛ بفتح الهمزة ﴿أَنَّهُ﴾ لنافع، والكسائي، وأبي جعفر.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بكسر الهمزة ﴿إِنَّهُ﴾ للجمهور؛ بفتح الهمزة ﴿أَنَّهُ﴾ لنافع، والكسائي، وأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

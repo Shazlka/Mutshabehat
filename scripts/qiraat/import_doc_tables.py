@@ -305,10 +305,10 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     if page in (267,268):
         if page==267:
             candidates=[
-                (1,'يُشْرِكُونَ','تُشْرِكُونَ',{'Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'},
+                (1,'يُشْرِكُونَ','تُشْرِكُونَ',{'Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
                  ['DOCX-P267-R00639','DOCX-P267-R00640'],'https://quranpedia.net/qiraat/an-nahl/1',
                  'At an-Nahl 16:1: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.'),
-                (3,'يُشْرِكُونَ','تُشْرِكُونَ',{'Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'},
+                (3,'يُشْرِكُونَ','تُشْرِكُونَ',{'Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
                  ['DOCX-P267-R00639','DOCX-P267-R00640'],'https://quranpedia.net/qiraat/an-nahl/3',
                  'At an-Nahl 16:3: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.')]
         else:
@@ -870,7 +870,7 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                 'ayah': 109, 'anchor': 'تَعْقِلُونَ', 'alternate': 'يَعْقِلُونَ',
                 'description': 'بياء الغيب لمن عدا المذكورين في خطاب التاء',
                 'resolverText': 'نافع، ابن عامر، عاصم، أبو جعفر، يعقوب',
-                'readers': {'Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'},
+                'readers': {'Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
                 'suffix': 'GHAIB',
                 'sourceLine': '﴿تَعْقِلُونَ﴾: بتاء الخطاب لنافع، ابن عامر، عاصم، أبو جعفر، يعقوب؛ وبياء الغيب ﴿يَعْقِلُونَ﴾ للباقين.',
                 'externalText': 'وفي يعقلون بالتاء نافع وابن عامر وعاصم وأبو جعفر ويعقوب، والباقون بالياء.',
@@ -2090,7 +2090,7 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
             key=(loc['surah'],loc['startAyah'],loc['startWord'],'IMALAH_TAQLIL')
             old=next((x for x in existing_page if (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key),None)
             have=set(x.get('readingId') for x in old.get('readings',[])) if old else set()
-            readers={'Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'}-have
+            readers={'Q06-R01','Q06-R02','Q07-R01','Q07-R02'}-have
             if readers:
                 emit_ruling(page,'IMALAH_TAQLIL',anchor,[(readers,'إمالة وقفاً')],rulings,occurrence=1,ayah=14,
                     source_notes=[{'sourceReference':'NQuran، العشر الصغرى، الصف 14','sourceText':record['raw_text'],
@@ -3072,6 +3072,94 @@ def checked_inline_farsh(page, lines):
             'sourceText':source_text,
         })
     out.extend(checked_audited_inline_faces(page, lines))
+    out.extend(checked_audited_515_518_farsh(page, lines))
+    return out
+
+def checked_audited_515_518_farsh(page, lines):
+    """Import the compact inline farsh rows for pages 515--518.
+
+    These rows contain several clauses on one line (and page 515 includes three mīm/hā
+    faces), so the generic block parser cannot prove a 20-reading partition.  Each entry
+    below is still fail-closed: the exact packaged source row, real Mushaf token and an
+    explicit reader set are required before emitting a face.  Bare ``خلف`` is Q06 per the
+    project convention; Q10 is only used when named separately.
+    """
+    cases = {
+        515: [
+            ('DOCX-P515-R03186','وَرِضْوَٰنٗا','وَرُضْوَانًا','شعبة','بضم الراء'),
+            ('DOCX-P515-R03187','شَطْـَٔهُۥ','شَطَاهُ','ابن كثير','بفتح الطاء وألف بعدها بلا همز'),
+            ('DOCX-P515-R03188','فَـَٔازَرَهُۥ','فَأَزَرَهُ','ابن ذكوان','بقصر الهمزة وسكون الهمزة'),
+            ('DOCX-P515-R03189','سُوقِهِۦ','سُؤْقِهِ','قنبل','بهمز ساكن واواً'),
+            ('DOCX-P515-R03189','سُوقِهِۦ','سُئُوقِهِ','قنبل','بهمزة مضمومة بعد السين وبعدها واو ساكنة؛ الوجه الثاني لقنبل'),
+            ('DOCX-P515-R03190','بِهِمُ الْكُفَّارَ','بِهِمِ الْكُفَّارَ','أبو عمرو، يعقوب','بكسر الهاء والميم'),
+            ('DOCX-P515-R03190','بِهِمُ الْكُفَّارَ','بِهُمُ الْكُفَّارَ','حمزة، الكسائي، خلف','بضم الهاء والميم'),
+            ('DOCX-P515-R03191','لَا تُقَدِّمُواْ','لَا تَقَدَّمُوا','يعقوب','بفتح التاء والدال مشددة'),
+            ('DOCX-P515-R03192','النَّبِيِّ','النَّبِيءِ','نافع','بالهمز'),
+            ('DOCX-P515-R03193','الْحُجُرَٰتِ','الْحَجَرَاتِ','أبو جعفر','بفتح الجيم'),
+        ],
+        516: [
+            ('DOCX-P516-R03199','إِلَيْهِمْ','إِلَيْهُم','حمزة، يعقوب','بضم الهاء'),
+            ('DOCX-P516-R03200','فَتَبَيَّنُوٓاْ','فَتَثَبَّتُوا','حمزة، الكسائي، خلف','بالثاء المثلثة والتاء المشددة'),
+            ('DOCX-P516-R03201','أَخَوَيْكُمْ','إِخْوَتِكُمْ','يعقوب','بالجمع وكسر الهمزة وسكون الخاء'),
+            ('DOCX-P516-R03202','تَلْمِزُوٓاْ','تَلْمُزُوا','يعقوب','بضم الميم'),
+            ('DOCX-P516-R03203','وَلَا تَنَابَزُواْ','وَلَا تَّنَابَزُوا','البزي','بتشديد التاء وصلاً'),
+        ],
+        517: [
+            ('DOCX-P517-R03209','وَلَا تَجَسَّسُواْ','وَلَا تَّجَسَّسُوا','البزي','بتشديد التاء وصلاً'),
+            ('DOCX-P517-R03209','لِتَعَارَفُوٓاْ','لِتَّعَارَفُوا','البزي','بتشديد التاء وصلاً'),
+            ('DOCX-P517-R03210','مَّيْتٗا','مَيِّتًا','نافع، أبو جعفر، رويس','بتشديد الياء المكسورة'),
+            ('DOCX-P517-R03211','لَا يَلِتْكُم','لَا يَأْلِتْكُمْ','الدوري عن أبي عمرو، يعقوب','بهمز ساكن بعد الياء وكسر اللام'),
+            ('DOCX-P517-R03211','لَا يَلِتْكُم','لَا يَالِتْكُمْ','السوسي','بإبدال الهمزة'),
+            ('DOCX-P517-R03212','تَعْمَلُونَ','يَعْمَلُونَ','ابن كثير','بياء الغيب'),
+        ],
+        518: [
+            ('DOCX-P518-R03215','قٓ وَالْقُرْءَانِ','قٓ وَالْقُرْءَانِ','أبو جعفر','بالسكت'),
+            ('DOCX-P518-R03216','مِتْنَا','مُتْنَا','الباقين','بضم الميم'),
+            ('DOCX-P518-R03217','مَّيْتٗا','مَيِّتًا','أبو جعفر','بتشديد الياء المكسورة'),
+        ],
+    }
+    out=[]
+    authority_by_page = {
+        515:'https://quranpedia.net/qiraat/al-fath/29',
+        516:'https://quranpedia.net/qiraat/al-hujurat/5',
+        517:'https://quranpedia.net/qiraat/al-hujurat/12',
+        518:'https://quranpedia.net/qiraat/qaf/1',
+    }
+    for source_id,anchor,variant,reader_text,description in cases.get(page,[]):
+        packaged=PACKAGE_RECORDS.get(source_id)
+        if packaged is None or packaged.get('page_no')!=page or packaged.get('section')!='farsh':
+            raise ValueError(f'page {page} audited source row missing: {source_id}')
+        source_text=packaged.get('raw_text','')
+        if source_text not in lines or is_neg(source_text) or is_univ(source_text):
+            raise ValueError(f'page {page} audited source row failed safety check: {source_id}')
+        try:
+            loc=T.find(page,anchor)
+        except T.NoMatch:
+            continue
+        if reader_text == 'الباقين':
+            readers=set(ALL20)-{'Q01-R01','Q01-R02','Q05-R01','Q05-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'}
+            unresolved=''
+        else:
+            readers,unresolved=resolve_readers(reader_text,set())
+        if unresolved.strip(' ،,؛.') or not readers or 'Q05-R02' in readers:
+            raise Unresolved(f'page {page} audited reader group unresolved: {source_id}')
+        before=len(out)
+        yield_block(page,anchor,[
+            (None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+            (variant,description,readers),
+        ],out)
+        if len(out)==before+1:
+            out[-1]['sources'][0].update({
+                'sourceReference':f'qiraat_records.jsonl، {source_id}',
+                'sourceText':source_text,
+                'verificationNotes':('إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. '
+                                     'المراجعة المستقلة للآية: '+authority_by_page[page])
+            })
+            if source_id == 'DOCX-P515-R03189':
+                out[-1]['locusType']='performance_variant'
+                out[-1]['performanceNote']=description
+                out[-1]['sources'][0]['sourceReference']='https://quranpedia.net/qiraat/al-fath/29؛ '+out[-1]['sources'][0]['sourceReference']
+                out[-1]['sources'][0]['verificationNotes'] += ' المرجع المستقل يثبت الوجهين لقنبل: https://quranpedia.net/qiraat/al-fath/29'
     return out
 
 def checked_audited_inline_faces(page, lines):

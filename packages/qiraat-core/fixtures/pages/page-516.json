@@ -1,1 +1,175 @@
-[]
+[
+  {
+    "id": "v-D516-اليهم-w2",
+    "surah": 49,
+    "ayah": 5,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D516-اليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D516-اليهم-w2",
+        "variantId": "v-D516-اليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P516-R03199",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/5",
+        "sourceText": "﴿إِلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D516-فتبينوا-w2",
+    "surah": 49,
+    "ayah": 6,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فَتَبَيَّنُوٓا۟",
+    "variantText": "فَتَثَبَّتُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D516-فتبينوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D516-فتبينوا-w2",
+        "variantId": "v-D516-فتبينوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P516-R03200",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/5",
+        "sourceText": "﴿فَتَبَيَّنُوٓاْ﴾: بالباء والياء المشددة ﴿فَتَبَيَّنُوا﴾ للجمهور؛ بالثاء المثلثة والتاء المشددة ﴿فَتَثَبَّتُوا﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بالثاء المثلثة والتاء المشددة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D516-اخويكم-w2",
+    "surah": 49,
+    "ayah": 10,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَخَوَيْكُمْ ۚ",
+    "variantText": "إِخْوَتِكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D516-اخويكم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D516-اخويكم-w2",
+        "variantId": "v-D516-اخويكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P516-R03201",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/5",
+        "sourceText": "﴿أَخَوَيْكُمْ﴾: على التثنية بفتح الخاء والواو وسكون الياء ﴿أَخَوَيْكُمْ﴾ للجمهور؛ بالجمع وكسر الهمزة وسكون الخاء ﴿إِخْوَتِكُمْ﴾ ليعقوب."
+      }
+    ],
+    "description": "بالجمع وكسر الهمزة وسكون الخاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D516-تلمزوا-w2",
+    "surah": 49,
+    "ayah": 11,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "تَلْمِزُوٓا۟",
+    "variantText": "تَلْمُزُوا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D516-تلمزوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D516-تلمزوا-w2",
+        "variantId": "v-D516-تلمزوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P516-R03202",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/5",
+        "sourceText": "﴿تَلْمِزُوٓاْ﴾: بكسر الميم للجمهور؛ بضم الميم ﴿تَلْمُزُوا﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D516-ولا_تنابزوا-w2",
+    "surah": 49,
+    "ayah": 11,
+    "startToken": 26,
+    "endToken": 27,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تَنَابَزُوا۟",
+    "variantText": "وَلَا تَّنَابَزُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D516-ولا_تنابزوا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D516-ولا_تنابزوا-w2",
+        "variantId": "v-D516-ولا_تنابزوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P516-R03203",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/5",
+        "sourceText": "﴿وَلَا تَنَابَزُواْ﴾: بتخفيف التاء للجمهور؛ بتشديد التاء وصلاً ﴿وَلَا تَّنَابَزُوا﴾ للبزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

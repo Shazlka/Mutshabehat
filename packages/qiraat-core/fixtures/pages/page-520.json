@@ -1,1 +1,268 @@
-[]
+[
+  {
+    "id": "v-L520-s50a40b4-w1-R03228",
+    "surah": 50,
+    "ayah": 40,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَأَدْبَـٰرَ",
+    "variantText": "وَإِدْبَارَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L520-s50a40b4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L520-s50a40b4-w1-R03228",
+        "variantId": "v-L520-s50a40b4-w1-R03228",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P520-R03228",
+        "sourceText": "﴿وَأَدْبَـٰرَ﴾: بفتح الهمزة للجمهور؛ بكسر الهمزة ﴿وَإِدْبَارَ﴾ لنافع، وابن كثير، وحمزة، وأبي جعفر، وخلف.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/50/40"
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿وَأَدْبَـٰرَ﴾: بفتح الهمزة للجمهور؛ بكسر الهمزة ﴿وَإِدْبَارَ﴾ لنافع، وابن كثير، وحمزة، وأبي جعفر، وخلف.",
+        "url": "https://quranpedia.net/qiraat/50/40"
+      }
+    ]
+  },
+  {
+    "id": "v-L520-s50a44b2-w1-R03229",
+    "surah": 50,
+    "ayah": 44,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَشَقَّقُ",
+    "variantText": "تَشَّقَّقُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L520-s50a44b2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L520-s50a44b2-w1-R03229",
+        "variantId": "v-L520-s50a44b2-w1-R03229",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P520-R03229",
+        "sourceText": "﴿تَشَقَّقُ﴾: بتخفيف الشين لأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ بتشديد الشين ﴿تَشَّقَّقُ﴾ للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/50/44"
+      }
+    ],
+    "description": "بتشديد الشين",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿تَشَقَّقُ﴾: بتخفيف الشين لأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ بتشديد الشين ﴿تَشَّقَّقُ﴾ للباقين.",
+        "url": "https://quranpedia.net/qiraat/50/44"
+      }
+    ]
+  },
+  {
+    "id": "v-L520-s50a45b10-w1-R03231",
+    "surah": 50,
+    "ayah": 45,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْقُرْءَانِ",
+    "variantText": "بِالْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L520-s50a45b10",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L520-s50a45b10-w1-R03231",
+        "variantId": "v-L520-s50a45b10-w1-R03231",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P520-R03231",
+        "sourceText": "﴿بِالْقُرْءَانِ﴾: بنقل الهمزة لابن كثير ﴿بِالْقُرَانِ﴾.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/50/45"
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿بِالْقُرْءَانِ﴾: بنقل الهمزة لابن كثير ﴿بِالْقُرَانِ﴾.",
+        "url": "https://quranpedia.net/qiraat/50/45"
+      }
+    ]
+  },
+  {
+    "id": "v-L520-s51a3b2-w1-R03232",
+    "surah": 51,
+    "ayah": 3,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُسْرًۭا",
+    "variantText": "يُسُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L520-s51a3b2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L520-s51a3b2-w1-R03232",
+        "variantId": "v-L520-s51a3b2-w1-R03232",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P520-R03232",
+        "sourceText": "﴿يُسْرٗا﴾ (الذاريات): بسكون السين للجمهور؛ بضم السين ﴿يُسُرًا﴾ لأبي جعفر.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/3"
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿يُسْرٗا﴾ (الذاريات): بسكون السين للجمهور؛ بضم السين ﴿يُسُرًا﴾ لأبي جعفر.",
+        "url": "https://quranpedia.net/qiraat/51/3"
+      }
+    ]
+  },
+  {
+    "id": "v-L520-s50a37b12-perf-03227",
+    "surah": 50,
+    "ayah": 37,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L520-s50a37b12",
+    "locusType": "performance_variant",
+    "performanceNote": "بإسكان الهاء",
+    "sources": [
+      {
+        "id": "s-v-L520-s50a37b12-perf-03227",
+        "variantId": "v-L520-s50a37b12-perf-03227",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P520-R03227",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/50/37"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "url": "https://quranpedia.net/qiraat/50/37"
+      }
+    ]
+  },
+  {
+    "id": "v-L520-s50a45b7-perf-03230",
+    "surah": 50,
+    "ayah": 45,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهِم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L520-s50a45b7",
+    "locusType": "performance_variant",
+    "performanceNote": "بضم الهاء",
+    "sources": [
+      {
+        "id": "s-v-L520-s50a45b7-perf-03230",
+        "variantId": "v-L520-s50a45b7-perf-03230",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P520-R03230",
+        "sourceText": "﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/50/45"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "url": "https://quranpedia.net/qiraat/50/45"
+      }
+    ]
+  }
+]
