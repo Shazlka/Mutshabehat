@@ -890,6 +890,33 @@ def parse_idgham_saghir_line(page, line, out):
         if rs and rs!=ALL20:
             emit_ruling(page,'IDGHAM_SAGHIR',match.group(1),[(rs,'إدغام صغير')],out)
 
+def parse_audited_p246_hamzatan(lines, out):
+    """Import the fully explicit, unbraced Yusuf 12:90 table once its source is exact.
+
+    The DOCX presents this one hamzatan table as a heading followed by face rows, so the
+    general anchored-table parser cannot discover its word span.  Keep this guard narrow:
+    every row must be present verbatim before we emit a rule.
+    """
+    expected=(
+        'الهمزتان من كلمة (في أَءِنَّكَ لَأَنتَ):',
+        'تسهيل الثانية مع الإدخال: قالون، أبو عمرو.',
+        'تسهيل الثانية بلا إدخال: ورش، رويس.',
+        'تحقيق الثانية مع الإدخال وعدمه: هشام.',
+        'تحقيق الثانية بلا إدخال: الباقون.',
+        '(وقرأ ابن كثير وأبو جعفر بهمز واحد على الإخبار).',
+    )
+    source={line.strip() for line in lines}
+    if not set(expected).issubset(source):
+        return
+    groups=(
+        (q('قالون') | q('أبو عمرو'), 'تسهيل الثانية مع الإدخال'),
+        (q('ورش') | q('رويس'), 'تسهيل الثانية بلا إدخال'),
+        (q('هشام'), 'تحقيق الثانية مع الإدخال وعدمه'),
+        (q('ابن كثير') | q('أبو جعفر'), 'بهمز واحد على الإخبار'),
+    )
+    emit_ruling(246, 'HAMZATAN_KALIMA', 'أَءِنَّكَ لَأَنتَ', groups, out,
+        source_notes=[f'نص المصدر: «{row}»' for row in expected])
+
 def parse_usul(page, lines):
     out=[]; section=None; target_section=None; target_hisham=False
     target_hamzatan_anchors=[]; idgham_section=False
@@ -999,9 +1026,11 @@ def parse_usul(page, lines):
             for clause in split_imalah_clauses(line):
                 parse_imalah_clause(page, clause, out)
             continue
+    if page==246:
+        parse_audited_p246_hamzatan(lines, out)
     return out
 
-def emit_ruling(page, cat, anchor, groups, out, notes=None, occurrence=1):
+def emit_ruling(page, cat, anchor, groups, out, notes=None, occurrence=1, source_notes=None):
     """groups: (readers_set, action[, is_alternate[, condition]]) tuples."""
     try: loc=T.find(page, anchor, occurrence)
     except T.NoMatch: return
@@ -1021,7 +1050,8 @@ def emit_ruling(page, cat, anchor, groups, out, notes=None, occurrence=1):
         'surah':loc['surah'],'ayah':loc['startAyah'],'startToken':loc['startWord'],
         'endToken':loc['endWord'],'endAyah':loc['endAyah'],'baseText':loc['baseText'],
         'verificationStatus':'REVIEWED','attribution':attribution,'readings':readings,
-        'hasAlternate':has_alt,**({'notes':notes} if notes else {}),'createdAt':TS,'updatedAt':TS})
+        'hasAlternate':has_alt,**({'notes':notes} if notes else {}),
+        **({'sourceNotes':source_notes} if source_notes else {}),'createdAt':TS,'updatedAt':TS})
 
 # ---------- driver ----------
 def existing(kind, page):
