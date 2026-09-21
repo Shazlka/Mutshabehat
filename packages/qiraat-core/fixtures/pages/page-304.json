@@ -34,5 +34,96 @@
     "description": "بياء الغيب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D304-دكاء-w2",
+    "surah": 18,
+    "ayah": 98,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "دَكَّآءَ ۖ",
+    "variantText": "دَكًّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D304-دكاء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D304-دكاء-w2",
+        "variantId": "v-D304-دكاء-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P304-R01078",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿دَكَّآءَ﴾: بالمد المتصل مع فتح الهمزة بلا تنوين ﴿دَكَّاءَ﴾ لعاصم، وحمزة، والكسائي، وخلف؛ وبقصر الهمزة وتنوينها ﴿دَكًّا﴾ للباقين."
+      }
+    ],
+    "description": "بقصر الهمزة وتنوينها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D304-يحسبون-w2",
+    "surah": 18,
+    "ayah": 104,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَحْسَبُونَ",
+    "variantText": "يَحْسِبُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D304-يحسبون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D304-يحسبون-w2",
+        "variantId": "v-D304-يحسبون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P304-R01079",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَحْسَبُونَ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

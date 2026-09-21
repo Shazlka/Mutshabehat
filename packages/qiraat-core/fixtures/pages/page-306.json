@@ -231,11 +231,11 @@
     "endToken": 3,
     "operation": "REPLACE",
     "hafsText": "مِن تَحْتِهَآ",
-    "variantText": "مَن تَحْتَهَا",
+    "variantText": "مَنْ تَحْتَهَا",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
     "readingIds": [
       "Q02-R01",
       "Q02-R02",
@@ -244,10 +244,9 @@
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
-      "Q08-R01",
-      "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "L306-من_تحتها-1",
     "locusType": "multi_word_variant",
@@ -260,9 +259,18 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَتَحْتَهَا اخْفِضْ عَنْ كِسَائِي وَنَافِعٍ وَشَافٍ وَحَفْصٍ كَمْ جَنَى وَتَفَصَّلَا — D: وَتَحْتَهَا افْتَحْ حُزْ"
+      },
+      {
+        "id": "s-D306-من_تحتها-w2",
+        "variantId": "v-D306-من_تحتها-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P306-R01115",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مِن تَحْتِهَا﴾: بكسر الميم وخفض التاء ﴿مِن تَحْتِهَا﴾ لنافع، وحفص، وحمزة، والكسائي، وأبي جعفر، وروح، وخلف؛ وبفتح الميم ونصب التاء حرف جر ﴿مَنْ تَحْتَهَا﴾ للباقين."
       }
     ],
-    "description": "بفتح الميم ونصب التاء",
+    "description": "بفتح الميم ونصب التاء حرف جر",
     "wajhIndex": 2,
     "evidence": [
       {
@@ -367,5 +375,41 @@
         "text": "وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
       }
     ]
+  },
+  {
+    "id": "v-D306-مت-w2",
+    "surah": 19,
+    "ayah": 23,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "مِتُّ",
+    "variantText": "مُتُّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D306-مت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D306-مت-w2",
+        "variantId": "v-D306-مت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P306-R01113",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مِتُّ﴾: بكسر الميم لنافع، وحفص، وحمزة، والكسائي، وخلف؛ وبضم الميم ﴿مُتُّ﴾ للباقين."
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

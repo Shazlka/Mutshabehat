@@ -1712,22 +1712,39 @@ def bare_hamzatan_anchors(line):
     return anchors
 
 def parse_waqf_rasm_line(page,line,out):
-    """Import only explicitly named بالهاء readers; remainder and other waqf forms are omitted."""
+    """Import explicitly named بالهاء/بهاء السكت readers.
+
+    The source uses both ``يقف عليها بالهاء`` and the more specific
+    ``يقف عليها ... بهاء السكت`` wording.  The latter is still a waqf on the
+    written form and belongs in WAQF_RASM; retain the exact distinction in the
+    action/note rather than silently dropping the row.
+    """
     pending=[]
     positions=r'(?:عليها|عليه|عليهما|عليهم|عليهن)'
-    after=re.compile(r'يقف\s+'+positions+r'\s+بالهاء\s+(.+?)(?=؛|$)')
-    before=re.compile(r'يقف\s+(.+?)\s+'+positions+r'\s+بالهاء')
+    form=r'(بهاء\s+السكت|بالهاء)'
+    after=re.compile(r'يقف\s+'+positions+r'\s+'+form+r'\s+(.+?)(?=؛|$)')
+    before=re.compile(r'يقف\s+(.+?)\s+'+positions+r'\s+'+form)
+    # Some extracted rows place the named reader between the waqf object and
+    # the form: ``يقف عليها يعقوب بهاء السكت``.
+    trailing_form=re.compile(r'يقف\s+'+positions+r'\s+(.+?)\s+'+form+r'(?=؛|[.]|$)')
     for chunk in split_anchor_clauses(line):
         pre,sep,body=chunk.partition(':')
         anchor_matches=list(BRACE.finditer(pre))
         if not sep or not anchor_matches: continue
         match=after.search(body)
         if match:
-            group_text=match.group(1)
+            form_text=match.group(1)
+            group_text=match.group(2)
         else:
             match=before.search(body)
-            if not match: continue
-            group_text=match.group(1)
+            if match:
+                group_text=match.group(1)
+                form_text=match.group(2)
+            else:
+                match=trailing_form.search(body)
+                if not match: continue
+                group_text=match.group(1)
+                form_text=match.group(2)
         group_notes=[n.strip() for n in PARENS.findall(group_text)]
         names=PARENS.sub('',group_text)
         names=BRACE.sub('',names).strip(' ،,؛.و')
@@ -1741,9 +1758,10 @@ def parse_waqf_rasm_line(page,line,out):
             count=T.count(page,match.group(1))
             repeat=any(x in ' '.join(anchor_notes) for x in ('جميعاً','الموضعان','معاً'))
             occurrences=range(1,count+1) if repeat and count else (1,)
-            pending.extend((match.group(1),readers,notes,occurrence) for occurrence in occurrences)
-    for anchor,readers,notes,occurrence in pending:
-        emit_ruling(page,'WAQF_RASM',anchor,[(readers,'الوقف بالهاء')],out,notes=notes,occurrence=occurrence)
+        pending.extend((match.group(1),readers,notes,occurrence,form_text) for occurrence in occurrences)
+    for anchor,readers,notes,occurrence,form_text in pending:
+        action='الوقف بهاء السكت' if 'السكت' in form_text else 'الوقف بالهاء'
+        emit_ruling(page,'WAQF_RASM',anchor,[(readers,action)],out,notes=notes,occurrence=occurrence)
 
 HISHAM_CUE_RE=re.compile(
     r'(?:[،,؛;]\s*)?(?:(?:ويوافقه|يوافقه|ومعه|معه|وكذا)\s+هشام|(?:ومثله|مثله)\s+لهشام)'
@@ -2202,6 +2220,11 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
                 'sourceText':source_line,
                 'verificationNotes':'وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف.'}]
     audited_page_rules = {
+        516: [
+            ('DOCX-P516-R03204','IMALAH_TAQLIL','وَنِعْمَةًۭ',
+             {'Q07-R01','Q07-R02'},'إمالة هاء التأنيث وقفاً',1,8,4,
+             'مرجع القراءات العشر يثبت إمالة هاء التأنيث للكسائي وقفاً؛ انظر: https://quranpedia.net/qiraat/al-hujurat/8.'),
+        ],
         555: [
             ('DOCX-P555-R03570','IDGHAM_SAGHIR','يَسْتَغْفِرْ لَكُمْ',
              {'Q03-R01','Q03-R02'},'إدغام صغير',1,5,5,
@@ -3692,13 +3715,25 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P303-R01061','حَمِئَةٍۢ','حَامِيَةٍ','ابن عامر، حمزة، الكسائي، أبو جعفر، خلف العاشر',86,'بالألف'),
             ('DOCX-P303-R01067','يَفْقَهُونَ','يُفْقِهُونَ','حمزة، الكسائي، خلف العاشر',93,'بضم الياء وكسر القاف'),
             ('DOCX-P303-R01069','خَرْجًا','خَرَاجًا','حمزة، الكسائي، خلف العاشر',94,'بألف بعد الراء'),
+            ('DOCX-P303-R01062','نُّكْرٗا','نُكُرًا','نافع، ابن عامر، شعبة، أبو جعفر، يعقوب، خلف العاشر',87,'بضم الكاف'),
+            ('DOCX-P303-R01063','جَزَآءً الْحُسْنَىٰ','جَزَاءُ الْحُسْنَى','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، خلف العاشر',88,'برفع جزاء من غير تنوين على الإضافة'),
+            ('DOCX-P303-R01076','قَالَ ءَاتُونِيٓ','قَالَ ائْتُونِي','حمزة، شعبة',96,'بهمزة وصل'),
+            ('DOCX-P303-R01077','فَمَا ٱسْطَـٰعُوٓاْ','فَمَا اسْطَّاعُوا','حمزة',97,'بتشديد الطاء'),
+        ],
+        304: [
+            ('DOCX-P304-R01078','دَكَّآءَ','دَكًّا','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، يعقوب، خلف العاشر',98,'بقصر الهمزة وتنوينها'),
+            ('DOCX-P304-R01079','يَحْسَبُونَ','يَحْسِبُونَ','نافع، ابن كثير، أبو عمرو، الكسائي، يعقوب، خلف العاشر',104,'بكسر السين'),
         ],
         305: [
             ('DOCX-P305-R01095','نُبَشِّرُكَ','نَبْشُرُكَ','حمزة',7,'بفتح النون وضم الشين مخففة'),
             ('DOCX-P305-R01097','خَلَقْتُكَ','خَلَقْنَاكَ','حمزة، الكسائي',9,'بنون العظمة'),
+            ('DOCX-P305-R01096','عِتِيّٗا','عُتِيًّا','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، يعقوب، خلف العاشر',8,'بضم العين'),
         ],
         306: [
             ('DOCX-P306-R01112','لِأَهَبَ','لِيَهَبَ','أبو عمرو، يعقوب',19,'بياء الغيب'),
+            ('DOCX-P306-R01113','مِتُّ','مُتُّ','ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، يعقوب، خلف العاشر',23,'بضم الميم'),
+            ('DOCX-P306-R01114','نَسْيٗا','نِسْيًا','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، يعقوب، خلف العاشر',23,'بكسر النون'),
+            ('DOCX-P306-R01115','مِن تَحْتِهَا','مَنْ تَحْتَهَا','ابن كثير، أبو عمرو، ابن عامر، شعبة، رويس، خلف العاشر',24,'بفتح الميم ونصب التاء حرف جر'),
         ],
         288: [
             ('DOCX-P288-R00885','ٱلْقُرْءَانِ','ٱلْقُرَانِ','ابن كثير',60,'بنقل الهمزة'),
@@ -4740,6 +4775,10 @@ def checked_audited_inline_faces(page, lines):
         304: [
             ('DOCX-P304-R01081','أَن تَنفَدَ','أَن يَنفَدَ','حمزة، الكسائي',109,
              'بياء الغيب'),
+            ('DOCX-P304-R01078','دَكَّآءَ','دَكًّا','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، يعقوب، خلف العاشر',98,
+             'بقصر الهمزة وتنوينها'),
+            ('DOCX-P304-R01079','يَحْسَبُونَ','يَحْسِبُونَ','نافع، ابن كثير، أبو عمرو، الكسائي، يعقوب، خلف العاشر',104,
+             'بكسر السين'),
         ],
     }
     out=[]

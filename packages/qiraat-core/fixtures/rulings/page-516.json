@@ -726,5 +726,92 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p516-WAQF_RASM-منهن-8",
+    "pageNumber": 516,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 49,
+    "ayah": 11,
+    "startToken": 22,
+    "endToken": 22,
+    "endAyah": 11,
+    "baseText": "مِّنْهُنَّ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p516-IMALAH_TAQLIL-ونعمه-9",
+    "pageNumber": 516,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 49,
+    "ayah": 8,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 8,
+    "baseText": "وَنِعْمَةًۭ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P516-R03204",
+        "sourceText": "الممال والمقلل: ﴿جَآءَكُم﴾: ابن ذكوان، حمزة، خلف. ﴿إِحْدَىٰهُمَا﴾، ﴿الْأُخْرَىٰ﴾: حمزة، الكسائي، وخلف، وأبو عمرو، وقللها ورش بخلف. ﴿عَسَىٰٓ﴾ (معاً): حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿نِعْمَةٗ﴾: أمال هاء التأنيث وقفاً الكسائي.",
+        "verificationNotes": "مرجع القراءات العشر يثبت إمالة هاء التأنيث للكسائي وقفاً؛ انظر: https://quranpedia.net/qiraat/al-hujurat/8."
+      }
+    ]
   }
 ]

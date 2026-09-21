@@ -319,5 +319,39 @@
     "description": "بفتح النون وضم الشين مخففة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D305-عتيا-w2",
+    "surah": 19,
+    "ayah": 8,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "عِتِيًّۭا",
+    "variantText": "عُتِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D305-عتيا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D305-عتيا-w2",
+        "variantId": "v-D305-عتيا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P305-R01096",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عِتِيّٗا﴾: بكسر العين ﴿عِتِيًّا﴾ لحفص، وحمزة، والكسائي؛ وبضم العين ﴿عُتِيًّا﴾ للباقين."
+      }
+    ],
+    "description": "بضم العين",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

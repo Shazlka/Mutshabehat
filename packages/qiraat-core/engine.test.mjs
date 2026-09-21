@@ -530,7 +530,7 @@ test('every group symbol expands to exactly the reading count its source prints'
 test('page 303 imports only token-backed, explicitly attributable source variants', async () => {
   const repo = new FixtureQiraatRepository()
   const variants = await repo.getVariantsForPage(303, { includeUnpublished: true })
-  assert.equal(variants.length, 7)
+  assert.equal(variants.length, 11)
   assert.deepEqual(
     variants.map(({ surah, ayah, variantText }) => `${surah}:${ayah}:${variantText}`),
     [
@@ -541,6 +541,10 @@ test('page 303 imports only token-backed, explicitly attributable source variant
       '18:97:اسْطَّاعُوا',
       '18:93:يُفْقِهُونَ',
       '18:94:خَرَاجًا',
+      '18:87:نُكُرًا',
+      '18:88:جَزَاءُ الْحُسْنَى',
+      '18:96:قَالَ ائْتُونِي',
+      '18:97:فَمَا اسْطَّاعُوا',
     ],
   )
   assert.equal((await repo.getVariantsForPage(303)).length, 0, 'REVIEWED records remain hidden from the ordinary view')
