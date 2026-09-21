@@ -35,5 +35,41 @@
     "description": "بألف بعد الفاء وتخفيف الراء",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D407-لديهم-w2",
+    "surah": 30,
+    "ayah": 32,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لَدَيْهِمْ",
+    "variantText": "لَدَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D407-لديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D407-لديهم-w2",
+        "variantId": "v-D407-لديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P407-R02145",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

@@ -66,5 +66,143 @@
     "description": "بياء الغيب المضمومة وتشديد العين مفتوحة ورفع العذاب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D421-صياصيهم-w2",
+    "surah": 33,
+    "ayah": 26,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "صَيَاصِيهِمْ",
+    "variantText": "صَيَاصِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D421-صياصيهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D421-صياصيهم-w2",
+        "variantId": "v-D421-صياصيهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P421-R02267",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿صَيَاصِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿صَيَاصِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D421-مبينه-w2",
+    "surah": 33,
+    "ayah": 30,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "مُّبَيِّنَةٍۢ",
+    "variantText": "مُبَيِّنِةٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01"
+    ],
+    "locusId": "D421-مبينه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D421-مبينه-w2",
+        "variantId": "v-D421-مبينه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P421-R02276",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مُّبَيِّنَةٍ﴾: بفتح الياء المشددة للجمهور؛ وبكسر الياء المشددة ﴿مُبَيِّنِةٍ﴾ لابن كثير وشعبة."
+      }
+    ],
+    "description": "بكسر الياء المشددة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D421-يضاعف_لها_العذاب-w1",
+    "surah": 33,
+    "ayah": 30,
+    "startToken": 8,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يُضَـٰعَفْ لَهَا ٱلْعَذَابُ",
+    "variantText": "يُضَـٰعَفْ لَهَا ٱلْعَذَابُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D421-يضاعف_لها_العذاب",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D421-يضاعف_لها_العذاب-w1",
+        "variantId": "v-D421-يضاعف_لها_العذاب-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D421-يضاعف_لها_العذاب-w4",
+    "surah": 33,
+    "ayah": 30,
+    "startToken": 8,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يُضَـٰعَفْ لَهَا ٱلْعَذَابُ",
+    "variantText": "يُضَعَّفْ لَهَا الْعَذَابُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D421-يضاعف_لها_العذاب",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D421-يضاعف_لها_العذاب-w4",
+        "variantId": "v-D421-يضاعف_لها_العذاب-w4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P421-R02280",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بياء التذكير وتشديد العين المفتوحة ورفع «العذابُ» ﴿يُضَعَّفْ لَهَا الْعَذَابُ﴾: أبو عمرو، وأبو جعفر، ويعقوب."
+      }
+    ],
+    "description": "بياء التذكير وتشديد العين",
+    "wajhIndex": 4,
+    "evidence": []
   }
 ]
