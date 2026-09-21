@@ -458,5 +458,166 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-IDGHAM_SAGHIR-واستغفر-7",
+    "pageNumber": 551,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 12,
+    "startToken": 32,
+    "endToken": 32,
+    "endAyah": 12,
+    "baseText": "وَٱسْتَغْفِرْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير",
+        "condition": "بخلف عن الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير",
+        "condition": "إدغام بلا خلاف عن السوسي"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "بين وَٱسْتَغْفِرْ ولَهُنَّ؛ الدوري بخلف، والسوسي بلا خلاف.",
+    "sourceNotes": [
+      {
+        "sourceReference": "NQuran، العشر الصغرى، الممتحنة 12",
+        "sourceText": "الإدغام الصغير: ﴿وَٱسْتَغْفِرْ لَهُنَّ﴾: أبو عمرو بخلف عن الدوري."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-WAQF_RASM-لم-9",
+    "pageNumber": 551,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 2,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 2,
+    "baseText": "لِمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "البزي عن ابن كثير بخلف، ويعقوب؛ المصدر ذكر رويس والبزي، والمصدر المحقق يثبت يعقوب في الموضعين.",
+    "sourceNotes": [
+      {
+        "sourceReference": "NQuran، العشر الصغرى، الصف 2",
+        "sourceText": "الوقف على مرسوم الخط: ﴿لِمَ﴾ (معاً): يقف عليها رويس والبزي (بخلف) بهاء السكت ﴿لِمَهْ﴾."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-WAQF_RASM-لم-10",
+    "pageNumber": 551,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 5,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 5,
+    "baseText": "لِمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "البزي عن ابن كثير بخلف، ويعقوب؛ المصدر ذكر رويس والبزي، والمصدر المحقق يثبت يعقوب في الموضعين.",
+    "sourceNotes": [
+      {
+        "sourceReference": "NQuran، العشر الصغرى، الصف 2",
+        "sourceText": "الوقف على مرسوم الخط: ﴿لِمَ﴾ (معاً): يقف عليها رويس والبزي (بخلف) بهاء السكت ﴿لِمَهْ﴾."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

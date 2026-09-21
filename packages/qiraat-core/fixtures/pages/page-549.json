@@ -1,1 +1,125 @@
-[]
+[
+  {
+    "id": "v-D549-يفصل-w2",
+    "surah": 60,
+    "ayah": 3,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَفْصِلُ",
+    "variantText": "يُفْصَلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D549-يفصل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D549-يفصل-w2",
+        "variantId": "v-D549-يفصل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03508",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الياء وفتح الصاد مخففة مبنياً للمجهول ﴿يُفْصَلُ﴾: نافع، ابن كثير، أبو عمرو، أبو جعفر."
+      }
+    ],
+    "description": "بضم الياء وفتح الصاد مخففة مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D549-اسوه-w2",
+    "surah": 60,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أُسْوَةٌ",
+    "variantText": "إِسْوَةٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D549-اسوه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D549-اسوه-w2",
+        "variantId": "v-D549-اسوه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03511",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أُسْوَةٌ﴾: بضم الهمزة ﴿أُسْوَةٌ﴾ لعاصم؛ بكسر الهمزة ﴿إِسْوَةٌ﴾ للباقين."
+      }
+    ],
+    "description": "بكسرها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D549-ابراهيم-w2",
+    "surah": 60,
+    "ayah": 4,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D549-ابراهيم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D549-ابراهيم-w2",
+        "variantId": "v-D549-ابراهيم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03512",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾ (الموضع الأول): بياء بعد الهاء للجمهور؛ بألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
+      }
+    ],
+    "description": "بألف بعد الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,160 @@
-[]
+[
+  {
+    "id": "v-D558-النبي-w2",
+    "surah": 65,
+    "ayah": 1,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِىُّ",
+    "variantText": "النَّبِيءُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D558-النبي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D558-النبي-w2",
+        "variantId": "v-D558-النبي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P558-R03585",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿النَّبِيُّ﴾: بالهمز والمد لنافع ﴿النَّبِيءُ﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز والمد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D558-فهو-w2",
+    "surah": 65,
+    "ayah": 3,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D558-فهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D558-فهو-w2",
+        "variantId": "v-D558-فهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P558-R03588",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D558-بالغ_امرهي-w2",
+    "surah": 65,
+    "ayah": 3,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "بَـٰلِغُ أَمْرِهِۦ ۚ",
+    "variantText": "بَالِغٌ أَمْرَهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D558-بالغ_امرهي",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D558-بالغ_امرهي-w2",
+        "variantId": "v-D558-بالغ_امرهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P558-R03589",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿بَـٰلِغُ أَمْرِهِۦ﴾: بحذف التنوين على الإضافة وخفض أمرهِ ﴿بَالِغُ أَمْرِهِ﴾ لحفص؛ بتنوين بالغٌ ونصب أمرَهُ ﴿بَالِغٌ أَمْرَهُ﴾ للباقين."
+      }
+    ],
+    "description": "بتنوين بالغٌ ونصب أمرَهُ",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D558-يسرا-w2",
+    "surah": 65,
+    "ayah": 4,
+    "startToken": 28,
+    "endToken": 28,
+    "operation": "REPLACE",
+    "hafsText": "يُسْرًۭا",
+    "variantText": "يُسُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D558-يسرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D558-يسرا-w2",
+        "variantId": "v-D558-يسرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P558-R03591",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُسْرٗا﴾: بسكون السين للجمهور؛ بضم السين ﴿يُسُرًا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

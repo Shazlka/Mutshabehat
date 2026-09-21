@@ -2010,9 +2010,9 @@ def parse_usul(page, lines):
         parse_audited_p246_hamzatan(lines, out)
     return out
 
-def emit_ruling(page, cat, anchor, groups, out, notes=None, occurrence=1, source_notes=None):
+def emit_ruling(page, cat, anchor, groups, out, notes=None, occurrence=1, source_notes=None, ayah=None):
     """groups: (readers_set, action[, is_alternate[, condition]]) tuples."""
-    try: loc=T.find(page, anchor, occurrence)
+    try: loc=T.find(page, anchor, occurrence, ayah=ayah)
     except T.NoMatch: return
     label,color=RCOLORS[cat]
     attribution=[]; readings=[]; has_alt=False
@@ -2051,6 +2051,50 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
     """Keep the independently confirmed al-Susi imalah addition isolated from a conflicting
     Warsh default/alternate status already stored at the same token.
     """
+    if page == 551:
+        record=PACKAGE_RECORDS.get('DOCX-P551-R03534')
+        if record and record.get('raw_text') in lines and not is_neg(record['raw_text']) and not is_univ(record['raw_text']):
+            for anchor,readers,condition in (
+                ('وَٱسْتَغْفِرْ',{'Q03-R01'},'بخلف عن الدوري'),
+                ('وَٱسْتَغْفِرْ',{'Q03-R02'},'إدغام بلا خلاف عن السوسي'),
+            ):
+                loc=T.find(page,anchor,ayah=12)
+                key=(loc['surah'],loc['startAyah'],loc['startWord'],'IDGHAM_SAGHIR')
+                old=next((x for x in existing_page if (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key),None)
+                have=set(old.get('readingId') for old in old.get('readings',[])) if old else set()
+                readers=readers-have
+                if readers:
+                    emit_ruling(page,'IDGHAM_SAGHIR',anchor,[(readers,'إدغام صغير',True,condition)],rulings,
+                        notes='بين وَٱسْتَغْفِرْ ولَهُنَّ؛ الدوري بخلف، والسوسي بلا خلاف.',
+                        source_notes=[{'sourceReference':'NQuran، العشر الصغرى، الممتحنة 12','sourceText':record['raw_text']}])
+    if page == 551:
+        record=PACKAGE_RECORDS.get('DOCX-P551-R03537')
+        if record and record.get('raw_text') in lines and not is_neg(record['raw_text']) and not is_univ(record['raw_text']):
+            for ayah,occurrence in ((2,1),(5,1)):
+                anchor='لِمَ'
+                loc=T.find(page,anchor,occurrence=occurrence,ayah=ayah)
+                key=(loc['surah'],loc['startAyah'],loc['startWord'],'WAQF_RASM')
+                old=next((x for x in existing_page if (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key),None)
+                have=set(x.get('readingId') for x in old.get('readings',[])) if old else set()
+                readers={'Q02-R01','Q09-R01','Q09-R02'}-have
+                if readers:
+                    emit_ruling(page,'WAQF_RASM',anchor,[(readers,'الوقف بهاء السكت: لِمَهْ')],rulings,
+                        notes='البزي عن ابن كثير بخلف، ويعقوب؛ المصدر ذكر رويس والبزي، والمصدر المحقق يثبت يعقوب في الموضعين.',
+                        occurrence=occurrence,ayah=ayah,
+                        source_notes=[{'sourceReference':'NQuran، العشر الصغرى، الصف 2','sourceText':record['raw_text']}])
+    if page == 552:
+        record=PACKAGE_RECORDS.get('DOCX-P552-R03543')
+        if record and record.get('raw_text') in lines and not is_neg(record['raw_text']) and not is_univ(record['raw_text']):
+            anchor='عِيسَى'
+            loc=T.find(page,anchor,occurrence=1,ayah=14)
+            key=(loc['surah'],loc['startAyah'],loc['startWord'],'IMALAH_TAQLIL')
+            old=next((x for x in existing_page if (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key),None)
+            have=set(x.get('readingId') for x in old.get('readings',[])) if old else set()
+            readers={'Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'}-have
+            if readers:
+                emit_ruling(page,'IMALAH_TAQLIL',anchor,[(readers,'إمالة وقفاً')],rulings,occurrence=1,ayah=14,
+                    source_notes=[{'sourceReference':'NQuran، العشر الصغرى، الصف 14','sourceText':record['raw_text'],
+                                   'verificationNotes':'المصدر المستقل يسمي حمزة والكسائي وخلف العاشر صراحة؛ السجل يقول عيسى (معاً وقفاً).'}])
     if page in (277,278):
         audited=(
             [('DOCX-P277-R00761','TAGHYIR_HAMZ','وَجِئْنَا',
@@ -2097,6 +2141,84 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
             candidates[-1]['sourceNotes']=[{'sourceReference':f"qiraat_records.jsonl، {record_id}",
                 'sourceText':source_line,
                 'verificationNotes':'وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف.'}]
+    audited_page_rules = {
+        555: [
+            ('DOCX-P555-R03570','IDGHAM_SAGHIR','يَسْتَغْفِرْ لَكُمْ',
+             {'Q03-R01','Q03-R02'},'إدغام صغير',1,5,5,
+             'Quranpedia 63:5 explicitly lists both Susi and Duri from Abu Amr: https://quranpedia.net/qiraat/al-munafiqun/5.'),
+            ('DOCX-P555-R03570','IDGHAM_SAGHIR','تَسْتَغْفِرْ لَهُمْ',
+             {'Q03-R01','Q03-R02'},'إدغام صغير',1,6,7,
+             'Quranpedia 63:6 explicitly lists both Susi and Duri from Abu Amr: https://quranpedia.net/qiraat/al-munafiqun/6.'),
+            ('DOCX-P555-R03571','TAGHYIR_HAMZ','وَلِلْمُؤْمِنِينَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,8,13,
+             'مصدر وثيقة الاستخراج؛ الإسناد صريح.'),
+            ('DOCX-P555-R03571','TAGHYIR_HAMZ','يَأْتِىَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,10,8,
+             'مصدر وثيقة الاستخراج؛ الإسناد صريح.'),
+            ('DOCX-P555-R03571','TAGHYIR_HAMZ','يُؤَخِّرَ',
+             {'Q01-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,11,2,
+             'مصدر وثيقة الاستخراج؛ الإسناد صريح.'),
+            ('DOCX-P555-R03572','HAMZATAN_KALIMATAYN','جَآءَ أَجَلُهَا',
+             {'Q04-R01','Q04-R02','Q05-R01','Q05-R02','Q06-R01','Q06-R02',
+              'Q07-R01','Q07-R02','Q09-R02','Q10-R01','Q10-R02'},
+             'تحقيق الهمزتين',1,11,6,
+             'الباقون بعد الأوجه المسماة في سطر المصدر؛ ويوافق التقسيمُ التفصيليُّ للأوجه المسمّاة في Quranpedia 63:11.'),
+        ],
+        557: [
+            ('DOCX-P557-R03581','IMALAH_TAQLIL','فِتْنَةٌ',
+             {'Q07-R01','Q07-R02'},'إمالة هاء التأنيث وقفاً',1,15,4,
+             'مصدر وثيقة الاستخراج؛ حكم الوقف صريح.'),
+            ('DOCX-P557-R03584','WAQF_RASM','هُوَ',
+             {'Q09-R01','Q09-R02'},'هاء السكت وقفاً: هُوْهْ',1,13,5,
+             'مصدر وثيقة الاستخراج؛ إسناد الوقف إلى يعقوب صريح.'),
+        ],
+        558: [
+            ('DOCX-P558-R03592','IDGHAM_SAGHIR','فَقَدْ ظَلَمَ',
+             {'Q10-R01','Q10-R02'},'إدغام الدال في الظاء',1,1,31,
+             'إسحاق وإدريس عن خلف مسمّيان صراحةً في مصدر Quranpedia، القراءات العشر، سورة الطلاق 65:1: https://quranpedia.net/qiraat/at-talaq/1.'),
+            ('DOCX-P558-R03592','IDGHAM_SAGHIR','قَدْ جَعَلَ',
+             {'Q10-R01','Q10-R02'},'إدغام الدال في الجيم',1,3,16,
+             'إسحاق وإدريس عن خلف مسمّيان صراحةً في مصدر Quranpedia، القراءات العشر، سورة الطلاق 65:3: https://quranpedia.net/qiraat/at-talaq/3.'),
+            ('DOCX-P558-R03594','WAQF_RASM','حَمْلَهُنَّ',
+             {'Q09-R01','Q09-R02'},'هاء السكت وقفاً',1,4,20,
+             'مصدر وثيقة الاستخراج؛ إسناد الوقف إلى يعقوب صريح.'),
+        ],
+    }
+    for record_id,category,anchor,readers,action,occurrence,ayah,word,verification in audited_page_rules.get(page,[]):
+        record=PACKAGE_RECORDS.get(record_id)
+        source_text=record.get('raw_text','') if record else ''
+        explicit_duri_khilaf = record_id=='DOCX-P555-R03570' and 'أبو عمرو بخلف عن الدوري' in source_text
+        if (record is None or record.get('page_no')!=page or source_text not in lines or
+                is_neg(record['raw_text']) or is_univ(record['raw_text']) or
+                (has_bare_ambiguous_reader(record['raw_text']) and not explicit_duri_khilaf)):
+            raise ValueError(f'page {page} audited source fact failed exact source/safety check: {record_id}')
+        if not readers or not readers<=ALL20:
+            raise ValueError(f'page {page} audited reader IDs invalid: {record_id}')
+        loc=T.find(page,anchor,occurrence=occurrence,ayah=ayah)
+        if loc['startWord']!=word:
+            raise ValueError(f'page {page} audited token changed: {record_id} {anchor}')
+        key=(loc['surah'],loc['startAyah'],loc['startWord'],category)
+        pending={x.get('readingId') for entry in rulings if
+                 (entry.get('surah'),entry.get('ayah'),entry.get('startToken'),entry.get('category'))==key
+                 for x in entry.get('readings',[])}
+        have=set(pending)
+        for entry in existing_page:
+            if (entry.get('surah'),entry.get('ayah'),entry.get('startToken'),entry.get('category'))==key:
+                have.update(x.get('readingId') for x in entry.get('readings',[]))
+        readers=readers-have
+        if not readers:
+            continue
+        emit_ruling(page,category,anchor,[(readers,action)],rulings,
+                    notes=action if category=='WAQF_RASM' else None,
+                    occurrence=occurrence)
+        candidates=[x for x in rulings if
+            (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key]
+        if not candidates:
+            raise ValueError(f'page {page} audited ruling failed to resolve: {record_id}')
+        candidates[-1].setdefault('sourceNotes',[]).append({
+            'sourceReference':f'qiraat_records.jsonl، {record_id}',
+            'sourceText':record['raw_text'],
+            'verificationNotes':verification})
     if page == 273:
         record=PACKAGE_RECORDS.get('DOCX-P273-R00716')
         expected='ترقيق الراءات وتغليظ اللامات: ورش يرقق الراء في ﴿بُشِّرَ﴾ و﴿يُؤَخِّرُهُمْ﴾؛ ويغلظ اللام في ﴿ظَلَّ﴾ وصلاً، وله وقفاً الوجهان.'
@@ -3147,6 +3269,153 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P512-R03165','كَلَـٰمَ اللَّهِ','كِلْمَ اللَّهِ','حمزة، الكسائي، خلف',15,
              'بكسر الكاف وسكون اللام بلا ألف'),
         ],
+        551: [
+            ('DOCX-P551-R03529','ٱلنَّبِيُّ','ٱلنَّبِيءُ','نافع',12,'بالهمز'),
+            ('DOCX-P551-R03530','أَيْدِيهِنَّ','أَيْدِيهُنَّ','يعقوب',12,'بضمها'),
+            ('DOCX-P551-R03531','عَلَيْهِمْ','عَلَيْهُمُ','حمزة، يعقوب',13,'بضم الهاء'),
+            ('DOCX-P551-R03532','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',1,'بإسكان الهاء'),
+        ],
+        552: [
+            # NQuran, Saff 6, explicitly names Khalaf al-Ashar for ساحر; raw bare خلف remains Q06-R01.
+            ('DOCX-P552-R03538','سِحْرٌ','سَاحِرٌ','حمزة، الكسائي، خلف، خلف العاشر',6,'بفتح السين وألف مدية وكسر الحاء'),
+            ('DOCX-P552-R03540','مُتِمُّ نُورِهِۦ','مُتِمٌّ نُورَهُ','جميع القراء عدا ابن كثير، حفص، حمزة، الكسائي، خلف',8,'بتنوين متم ونصب نوره'),
+        ],
+        553: [
+            ('DOCX-P553-R03552','عَلَيْهِمْ','عَلَيْهُمُ','حمزة، يعقوب',2,'بضم الهاء'),
+            ('DOCX-P553-R03553','وَيُزَكِّيهِمْ','وَيُزَكِّيهُمُ','يعقوب',2,'بضم الهاء'),
+            ('DOCX-P553-R03553','أَيْدِيهِمْ','أَيْدِيهُمُ','يعقوب',7,'بضم الهاء'),
+            ('DOCX-P553-R03554','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',3,'بإسكان الهاء'),
+        ],
+        554: [
+            ('DOCX-P554-R03559','خُشُبٌ','خُشْبٌ','قنبل، أبو عمرو، الكسائي',4,
+             'بإسكان الشين'),
+            ('DOCX-P554-R03560','يَحْسَبُونَ','يَحْسِبُونَ','جميع القراء عدا ابن عامر، عاصم، حمزة، أبو جعفر',4,'بكسر السين'),
+            ('DOCX-P554-R03561','عَلَيْهِمْ','عَلَيْهُمُ','حمزة، يعقوب',4,'بضم الهاء'),
+        ],
+        559: [
+            ('DOCX-P559-R03595','وُجْدِكُمْ','وِجْدِكُمْ','روح عن يعقوب',6,
+             'بكسر الواو'),
+            *[('DOCX-P559-R03596','عَلَيْهِنَّ','عَلَيْهُنَّ','يعقوب',6,
+               'بضم الهاء',occ) for occ in (1,2)],
+            ('DOCX-P559-R03597','عُسْرٍ يُسْرًا','عُسُرٍ يُسُرًا','أبو جعفر',7,
+             'بضم السين في الكلمتين'),
+            ('DOCX-P559-R03599','نُّكْرًا','نُكُرًا','نافع، ابن عامر، أبو جعفر، يعقوب',8,
+             'بضم الكاف'),
+            ('DOCX-P559-R03600','مُّبَيِّنَـٰتٍ','مُبَيَّنَاتٍ','قالون، ورش، قنبل، البزي، الدوري عن أبي عمرو، السوسي، ابن وردان، ابن جماز، شعبة، روح، رويس',11,
+             'بفتح الياء المشددة'),
+            ('DOCX-P559-R03601','يُدْخِلْهُ','نُدْخِلْهُ','نافع، ابن عامر، أبو جعفر',11,
+             'بنون العظمة'),
+        ],
+        560: [
+            ('DOCX-P560-R03605','النَّبِيُّ','النَّبِيءُ','نافع',1,
+             'بالهمز والمد'),
+            ('DOCX-P560-R03605','النَّبِيُّ','النَّبِيءُ','نافع',3,
+             'بالهمز والمد'),
+            ('DOCX-P560-R03606','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',2,
+             'بإسكان الهاء'),
+            ('DOCX-P560-R03607','عَرَّفَ','عَرَفَ','الكسائي',3,
+             'بتخفيف الراء'),
+            ('DOCX-P560-R03608','تَظَـٰهَرَا','تَظَّاهَرَا','نافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر، يعقوب',4,
+             'بتشديد الظاء بلا ألف'),
+            ('DOCX-P560-R03611','وَجِبْرِيلُ','وَجَبْرِيلَ','ابن كثير',4,
+             'بفتح الجيم وكسر الراء بلا همز'),
+            ('DOCX-P560-R03612','وَجِبْرِيلُ','وَجَبْرَئِلُ','شعبة',4,
+             'بفتح الجيم والراء وهمزة مكسورة وحذف الياء'),
+            ('DOCX-P560-R03613','وَجِبْرِيلُ','وَجَبْرَئِيلَ','حمزة، الكسائي، خلف العاشر',4,
+             'بفتح الجيم والراء وهمزة مكسورة بعدها ياء مدية'),
+            ('DOCX-P560-R03614','يُبْدِلَهُۥٓ','يُبَدِّلَهُ','نافع، أبو عمرو، أبو جعفر',5,
+             'بتشديد الدال المفتوحة'),
+        ],
+        561: [
+            ('DOCX-P561-R03618','نَّصُوحًا','نُصُوحًا','شعبة',8,
+             'بضم النون'),
+            ('DOCX-P561-R03619','النَّبِيَّ','النَّبِيءَ','نافع',8,
+             'بالهمز'),
+            ('DOCX-P561-R03619','النَّبِيَّ','النَّبِيءَ','نافع',9,
+             'بالهمز'),
+            ('DOCX-P561-R03620','أَيْدِيهِمْ','أَيْدِيهُمُ','يعقوب',8,
+             'بضم الهاء'),
+            ('DOCX-P561-R03621','عَلَيْهِمْ','عَلَيْهُمْ','حمزة، يعقوب',9,
+             'بضم الهاء'),
+            ('DOCX-P561-R03622','وَقِيلَ','وَقِيلَ','هشام، الكسائي، رويس',10,
+             'بالإشمام'),
+            ('DOCX-P561-R03623','وَكُتُبِهِۦ','وَكِتَابِهِ','نافع، ابن كثير، ابن عامر، شعبة، حمزة، الكسائي، أبو جعفر، خلف العاشر',12,
+             'بالمفرد وفتح الكاف وإسكان التاء وألف بعدها'),
+        ],
+        562: [
+            ('DOCX-P562-R03628','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',1,
+             'بإسكان الهاء'),
+            ('DOCX-P562-R03628','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',2,
+             'بإسكان الهاء'),
+            ('DOCX-P562-R03628','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',4,
+             'بإسكان الهاء'),
+            ('DOCX-P562-R03628','وَهِيَ','وَهْيَ','قالون، أبو عمرو، الكسائي، أبو جعفر',7,
+             'بإسكان الهاء'),
+            ('DOCX-P562-R03629','تَفَاوُتٍ','تَفَوُّتٍ','حمزة، الكسائي',3,
+             'بحذف الألف وتشديد الواو المفتوحة'),
+            ('DOCX-P562-R03630','تَمَيَّزُ','تَّمَيَّزُ','البزي',8,
+             'بتشديد التاء وصلاً'),
+            ('DOCX-P562-R03631','فَسُحْقًا','فَسُحُقًا','الكسائي، أبو جعفر',11,
+             'بضم الحاء'),
+        ],
+        547: [
+            # Explicit forms in R03487. Bare «خلف» resolves to Q06-R01. The accepted
+            # ten-reader apparatus independently names Q10 (Idris/Ishaq) for this same form.
+            ('DOCX-P547-R03487','لِّإِخْوَٰنِهِمُ','لِإِخْوَٰنِهِمِ',
+             'أبو عمرو، يعقوب',11,'بكسر الهاء والميم'),
+            ('DOCX-P547-R03487','لِّإِخْوَٰنِهِمُ','لِإِخْوَٰنِهِمُ',
+             'نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',11,
+             'بكسر الهاء وضم الميم وصلاً'),
+            ('DOCX-P547-R03487','لِّإِخْوَٰنِهِمُ','لِإِخْوَٰنِهُمُ',
+             'حمزة، الكسائي، خلف، خلف العاشر',11,'بضم الهاء والميم'),
+        ],
+        549: [
+            ('DOCX-P549-R03508','يَفْصِلُ','يُفْصَلُ',
+             'نافع، ابن كثير، أبو عمرو، أبو جعفر',3,
+             'بضم الياء وفتح الصاد مخففة مبنياً للمجهول'),
+            ('DOCX-P549-R03511','أُسْوَةٌ','إِسْوَةٌ',
+             'جميع القراء عدا عاصم',4,'بكسرها'),
+            ('DOCX-P549-R03512','إِبْرَٰهِيمَ','إِبْرَاهَامَ',
+             'هشام',4,'بألف بعد الهاء',1),
+        ],
+        550: [
+            ('DOCX-P550-R03520','وَلَا تُمْسِكُوا','وَلَا تُمَسِّكُوا',
+             'أبو عمرو، يعقوب',10,'بضم الميم وتشديد السين المكسورة'),
+        ],
+        555: [
+            ('DOCX-P555-R03565','لَوَّوْاْ','لَوْوْا','نافع، روح',5,
+             'بتخفيف الواو الأولى ساكنة'),
+            ('DOCX-P555-R03566','عَلَيْهِمْ','عَلَيْهُمْ','حمزة، يعقوب',6,
+             'بضم الهاء'),
+            ('DOCX-P555-R03567','وَأَكُن','وَأَكُونَ','أبو عمرو',10,
+             'بنصب النون وإثبات الواو'),
+            ('DOCX-P555-R03568','تَعْمَلُونَ','يَعْمَلُونَ','شعبة',11,
+             'بياء الغيب'),
+        ],
+        556: [
+            ('DOCX-P556-R03573','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',1,
+             'بإسكان الهاء'),
+            ('DOCX-P556-R03574','تَأْتِيهِمْ','تَأْتِيهُم','يعقوب',6,
+             'بضم الهاء'),
+            ('DOCX-P556-R03575','رُسُلُهُم','رُسْلُهُمْ','أبو عمرو',6,
+             'بإسكان السين'),
+            ('DOCX-P556-R03576','يَجْمَعُكُمْ','نَجْمَعُكُمْ','يعقوب',9,
+             'بنون العظمة'),
+            ('DOCX-P556-R03577','يُكَفِّرْ','نُكَفِّرْ','نافع، ابن عامر، أبو جعفر، خلف العاشر',9,
+             'بنون العظمة'),
+            ('DOCX-P556-R03577','وَيُدْخِلْهُ','وَنُدْخِلْهُ','نافع، ابن عامر، أبو جعفر، خلف العاشر',9,
+             'بنون العظمة'),
+        ],
+        558: [
+            ('DOCX-P558-R03585','النَّبِيُّ','النَّبِيءُ','نافع',1,
+             'بالهمز والمد'),
+            ('DOCX-P558-R03588','فَهُوَ','فَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',3,
+             'بإسكان الهاء'),
+            ('DOCX-P558-R03589','بَـٰلِغُ أَمْرِهِۦ','بَالِغٌ أَمْرَهُ','جميع القراء عدا حفص',3,
+             'بتنوين بالغٌ ونصب أمرَهُ'),
+            ('DOCX-P558-R03591','يُسْرٗا','يُسُرًا','أبو جعفر',4,
+             'بضم السين'),
+        ],
         312: [
             ('DOCX-P312-R01187','لِتُبَشِّرَ','لِتَبْشُرَ','حمزة',97,
              'بالتخفيف'),
@@ -3260,6 +3529,57 @@ def checked_audited_inline_faces(page, lines):
         ],
     }
     out=[]
+    external_face_notes={
+        'DOCX-P560-R03600':('https://quranpedia.net/qiraat/at-talaq/11',
+            'يصحح هذا الإسناد المستقل توزيع السطر المقلوب: فتح الياء لقالون وورش وقنبل والبزي والدوري والسوسي وابن وردان وابن جماز وشعبة ورويس.'),
+        'DOCX-P560-R03608':('https://quranpedia.net/qiraat/at-tahrim/4',
+            'يعتمد هذا الوجه على التقسيم التفصيلي المستقل: التشديد لنافع وابن كثير وأبي عمرو وابن عامر وأبي جعفر ويعقوب؛ وخلف العاشر مع حفص وشعبة وحمزة والكسائي في وجه التخفيف.'),
+        'DOCX-P560-R03612':('https://quranpedia.net/qiraat/at-tahrim/4',
+            'يصحح هذا الإسناد المستقل قراءة شعبة: وَجَبْرَئِلُ، بفتح الجيم والراء والهمز مع حذف الياء.'),
+        'DOCX-P560-R03613':('https://quranpedia.net/qiraat/at-tahrim/4',
+            'أُضيف خلف العاشر هنا لأن جهاز الآية يسمي إسحاق وإدريس صراحةً مع حمزة والكسائي؛ أما «خلف» المجرد في سطر المصدر فخلف عن حمزة Q06-R01.'),
+    }
+    # Explicit phonetic faces that share the same written Uthmani token still belong in
+    # the word-variant fixture: the UI/API carries them as performance_variant records.
+    # Reader-level distinctions below are supported by the cited ten-reader apparatus.
+    performance_faces={
+        555: [
+            ('DOCX-P555-R03564','قِيلَ','هشام، الكسائي، رويس',5,'بالإشمام',
+             'https://quranpedia.net/qiraat/al-munafiqun/5',
+             'الإشمام لهشام والكسائي ورويس؛ رويس هو Q09-R01.'),
+            ('DOCX-P555-R03564','قِيلَ','السوسي',5,'كسر خالص مع الإدغام الكبير',
+             'https://quranpedia.net/qiraat/al-munafiqun/5',
+             'السوسي عن أبي عمرو يقرأ بكسر خالص مع الإدغام الكبير.'),
+        ],
+        561: [
+            ('DOCX-P561-R03622','وَقِيلَ','هشام، الكسائي، رويس',10,'بالإشمام',
+             'https://quranpedia.net/qiraat/at-tahrim/10',
+             'الإشمام لهشام والكسائي ورويس؛ رويس هو Q09-R01.'),
+        ],
+    }
+    for record_id,anchor,reader_text,ayah,description,authority_url,verification in performance_faces.get(page,[]):
+        record=PACKAGE_RECORDS.get(record_id)
+        if (not record or record.get('page_no')!=page or record.get('section')!='farsh' or
+                record.get('raw_text') not in lines or is_neg(record['raw_text']) or
+                is_univ(record['raw_text']) or has_bare_ambiguous_reader(record['raw_text'])):
+            raise ValueError(f'page {page} performance face failed exact source/safety check: {record_id}')
+        readers=readers_from(reader_text,set())
+        loc=T.find(page,anchor,ayah=ayah)
+        if not readers or not readers<=ALL20:
+            raise ValueError(f'page {page} performance reader group invalid: {record_id}')
+        lid=f'D{page:03d}-{T.norm(anchor).replace(" ","_")}'
+        wid=len(out)+1
+        vid=f'v-{lid}-performance{wid}'
+        out.append({'id':vid,'surah':loc['surah'],'ayah':loc['startAyah'],
+            'startToken':loc['startWord'],'endToken':loc['endWord'],'operation':'REPLACE',
+            'hafsText':loc['baseText'],'variantText':loc['baseText'],
+            'differenceType':'HARAKAH','verificationStatus':'REVIEWED',
+            'createdAt':TS,'updatedAt':TS,'readingIds':sorted(readers),'locusId':lid,
+            'locusType':'performance_variant','performanceNote':description,
+            'sources':[{'id':f's-{lid}-performance{wid}','variantId':vid,**SRC,
+                'sourceReference':f"qiraat_records.jsonl، {record_id}",'sourceText':record['raw_text'],
+                'verificationNotes':f'{verification} المرجع المستقل: {authority_url}.'}],
+            'description':description,'wajhIndex':wid,'evidence':[]})
     selected=cases.get(page, [])
     if not selected:
         return out
@@ -3272,7 +3592,9 @@ def checked_audited_inline_faces(page, lines):
                 record.get('raw_text') not in lines):
             raise ValueError(f'page {page} audited face source row missing: {record_id}')
         source=record['raw_text']
-        if is_neg(source) or is_univ(source) or has_bare_ambiguous_reader(source):
+        source_has_unqualified_universal = is_univ(source) and not re.search(
+            r'جميع القراء\s+عدا\s+', source)
+        if is_neg(source) or source_has_unqualified_universal or has_bare_ambiguous_reader(source):
             raise ValueError(f'page {page} audited face failed source guards: {record_id}')
         try:
             readers=readers_from(reader_text,set())
@@ -3282,7 +3604,18 @@ def checked_audited_inline_faces(page, lines):
         if not readers or not readers <= ALL20:
             raise ValueError(f'page {page} audited alternate group invalid: {record_id}')
         if T.norm(form) not in T.norm(source):
-            raise ValueError(f'page {page} source lacks alternate spelling {form}: {record_id}')
+            # Some page rows name a fully predictable vowel/shadda change in prose without
+            # repeating the alternate spelling. Permit only that same-letter case when both
+            # the anchor and the exact vocalic operation occur in the verified source row.
+            normalized_form=T.norm(form)
+            normalized_anchor=T.norm(anchor)
+            spelled_without_prefix=(normalized_anchor.startswith('و') and
+                                    normalized_form.startswith('و') and
+                                    normalized_form[1:] in T.norm(source) and
+                                    description in source)
+            described_same_letters=(normalized_form==normalized_anchor and description in source)
+            if not (described_same_letters or spelled_without_prefix or record_id in external_face_notes):
+                raise ValueError(f'page {page} source lacks alternate spelling {form}: {record_id}')
         grouped[(loc['surah'],loc['startAyah'],loc['startWord'],loc['endAyah'],loc['endWord'])].append(
             (record_id,anchor,form,readers,description,source,loc,occurrence))
     for key,faces in grouped.items():
@@ -3334,6 +3667,14 @@ def checked_audited_inline_faces(page, lines):
                     'sourceReference':f"qiraat_records.jsonl، {match[0]}",
                     'sourceText':match[5],
                     'verificationNotes':'إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.'})
+                if match[0] in external_face_notes:
+                    authority_url,authority_note=external_face_notes[match[0]]
+                    variant['sources'][0]['verificationNotes']=authority_note+' المرجع: '+authority_url
+                if match[0]=='DOCX-P547-R03487' and 'Q10-R01' in variant['readingIds']:
+                    variant['sources'][0]['verificationNotes']=(
+                        'ينص المصدر على خلف؛ أُسند خلف عن حمزة وفق قاعدة المشروع، وأضيف خلف العاشر '
+                        'لأن جهاز القراءات العشر يذكر إدريس وإسحاق صراحةً لهذا الوجه: '
+                        'https://quranpedia.net/tafsir/al-hashr/11')
         expected_forms=sum(1 for _,form,readers,_,_,_ in groups if
                            face_key(form)!=face_key(loc['baseText']) and readers-conflicting)
         if len(emitted)!=expected_forms:

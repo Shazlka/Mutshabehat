@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T23:45:00+04:00",
+  "updatedAt": "2026-09-22T00:00:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2034,
-    "usulRulings": 9847,
+    "variants": 2100,
+    "usulRulings": 9860,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,71 +49,53 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Production-verified targeted additions for Mushaf pages 499–530: 25 variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Audits of pages 531–578 identified more source omissions and legacy bare-«خلف» Q10 attribution conflicts; those pages and historical corrections are not claimed complete. Current import preserves all prior dataset records and reader assignments. Validator, 38/38 Qiraat tests, TypeScript, production build, and API smoke pass. Corrected two legacy bare-«خلف» variant assignments: pages 444 and 500 now assign Q06-R01 only, consistent with the processed source and resolver convention; Q10 is reserved for explicit «خلف العاشر». No full-page coverage is claimed for either page. Audits of pages 531–578 continue to identify new candidates and source discrepancies.",
-    "latestSourceCoverageNote": "Production-verified source-backed farsh slice on Mushaf pages 271-272: five targeted loci and 27 reader assignments. Page 271: ابن عامر/الكسائي نَصْب فَيَكُونَ at 16:40. Page 272: حمزة/يعقوب يُوحَى إِلَيْهُم at 16:43 and إِلَيْهُم at 16:44; أبو عمرو/يعقوب بِهِمِ الْأَرْضَ at 16:45; qasr لَرَؤُفٌ at 16:47. Commit 15bb6a0041f77f7e2d4726d66900d2126fa8dab4 deployed READY as dpl_A3DvyCbjrZfFM9hPuDdewdYsprvH. Production API smoke returned the exact new variant forms and reader IDs for both pages. Production-verified multi-face farsh import on pages 264 and 270: five targeted loci and 16 reader assignments. Importer dedup now permits different sourced forms at one token when reader sets do not overlap. Page 264: Abu Jaafar جُزٌّ alongside Shuʿbah’s جُزُءٌ at 15:44. Page 270: Yaqub hāʾ-dammah at 16:27 and Hamza/Khalaf al-Ashir yāʾ at 16:28/32. Ambiguous bare خلف remains excluded. Pages 271-272 prepared for deployment: five new source-backed farsh loci (27 reader assignments); no ambiguous reader attributions imported. Targeted correction: pages 444 and 500 now map source-labeled bare «خلف» to Q06-R01; Q10 is not inferred."
+    "sourceCoverageStatus": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending.",
+    "latestSourceCoverageNote": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending."
   },
-  "sourceCoverageStatus": "Production-verified targeted additions for Mushaf pages 499–530: 25 variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Audits of pages 531–578 identified more source omissions and legacy bare-«خلف» Q10 attribution conflicts; those pages and historical corrections are not claimed complete. Current import preserves all prior dataset records and reader assignments. Validator, 38/38 Qiraat tests, TypeScript, production build, and API smoke pass. Corrected two legacy bare-«خلف» variant assignments: pages 444 and 500 now assign Q06-R01 only, consistent with the processed source and resolver convention; Q10 is reserved for explicit «خلف العاشر». No full-page coverage is claimed for either page. Audits of pages 531–578 continue to identify new candidates and source discrepancies.",
+  "sourceCoverageStatus": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending.",
   "currentBatch": {
-    "id": "audited-targeted-import-p499-p530",
+    "id": "audited-targeted-import-p547-p562",
     "categories": [
       "FARSH",
-      "MADD_BADAL",
-      "MADD_LIN",
-      "TARQIQ_RA",
       "IMALAH_TAQLIL",
-      "TAGHYIR_HAMZ",
       "IDGHAM_SAGHIR",
-      "YAAT_ZAWAID",
       "HAMZATAN_KALIMATAYN",
+      "WAQF_RASM",
       "IKHFA"
     ],
     "pages": [
-      499,
-      500,
-      501,
-      502,
-      503,
-      504,
-      505,
-      506,
-      507,
-      508,
-      509,
-      510,
-      511,
-      512,
-      513,
-      514,
-      515,
-      516,
-      517,
-      518,
-      519,
-      520,
-      521,
-      522,
-      523,
-      524,
-      525,
-      526,
-      527,
-      528,
-      529,
-      530
+      547,
+      548,
+      549,
+      550,
+      551,
+      552,
+      553,
+      554,
+      555,
+      556,
+      557,
+      558,
+      559,
+      560,
+      561,
+      562
     ],
-    "status": "production_verified",
-    "variantsAdded": 25,
-    "readerAssignmentsAdded": 57,
-    "rulingsAdded": 9,
-    "rulingsMerged": 2,
-    "reference": "Processed qiraat_records.jsonl source rows on pages 499–530; exact token spans resolved through page-word fixtures. Audited face rows: DOCX-P499-R03030; P500-R03043–R03045; P501-R03050/R03052/R03054; P502-R03061; P504-R03081/R03084/R03087; P505-R03092; P506-R03103/R03104; P507-R03109; P508-R03114/R03115; P509-R03129–R03132/R03138; P512-R03164/R03165.",
-    "sourceAudit": "Only explicit source-attributed faces imported; unsupported/incomplete reader splits remain excluded. Four new audit slices separately covered pages 531–546 and found additional source omissions and legacy conflicts, so page-wide completion is not claimed.",
-    "validation": "Parser rerun writes 0 files; additive fixture audit passes; validator passes (2,034 variants / 9,847 rulings / 20 one-colour categories); 38/38 Qiraat tests, TypeScript, and production build pass.",
-    "deploymentId": "dpl_55MKdeALDjrCHpqmbr5zCikiwiuw",
-    "productionApiSmoke": "HTTP 200 on production pages 499, 500, 512, and 530; expected new variants on 499, 500, 512 and usul rulings on 530 confirmed.",
-    "commit": "876c972adc573bccd06dde1cf11f77bb265445b5"
+    "status": "locally_imported; deployment_pending",
+    "variantsAdded": 66,
+    "netRulingRecordsAdded": 13,
+    "performanceVariantsAdded": 3,
+    "readerAssignmentCorrections": [
+      "p555 Abu Amr idgham source rows DOCX-P555-R03570 corrected from Q07-R01 to Q03-R01/R02",
+      "p556 bare-Khalaf imala no longer attributes Q10",
+      "p560 bare-Khalaf imala no longer attributes Q10",
+      "p560 تظاهرا reader split corrected against Quranpedia 66:4"
+    ],
+    "reference": "Processed qiraat_records.jsonl plus verse-specific Quranpedia apparatus; source rows retained in fixture provenance, and exact Mushaf token anchors resolved through page-word fixtures.",
+    "sourceAudit": "Four four-page slices reviewed pages 547-562. Imported only token-anchored, source-backed forms and rulings; independent Quranpedia evidence was recorded for corrected/disjoint reader assignments. Conflicting or unsupported cases remain listed for follow-up; these are targeted loci, not page-wide completion.",
+    "validation": "Passed: importer preview/write idempotent; Qiraat validator (2100 variants, 9860 rulings, 20 one-colour categories), 38/38 Qiraat tests, TypeScript, production build. Deployment and API smoke pending."
   },
-  "lastConfirmedDeployedDataCommit": "876c972adc573bccd06dde1cf11f77bb265445b5",
+  "lastConfirmedDeployedDataCommit": "be507603bf8393d39dd0bc3a11d3ed71c38b2d4c",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -21263,7 +21245,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "239cc4bafa49a36ee45a8f06be34fd755f89230d",
+  "currentHeadCommit": "be507603bf8393d39dd0bc3a11d3ed71c38b2d4c",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -22564,9 +22546,9 @@
     "api": "/api/mushaf-1441/qiraat?page={387,388,389,390,394,395,396,397}&debug=1",
     "details": "Production API returned the exact new token-backed farsh records on pages 387, 388, 389, 390, 396, and 397, plus the new ruling records on pages 389, 390, 394, 395, and 396."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_6tqn1BGhrggLnucvcgKXijor1pjH",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-l2x19iwd2-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Production-verified targeted import on pages 499–530: 25 source-backed variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Bare خلف remains Q06-R01; an under-specified reader split at 47:25 was dropped. Vercel commit 876c972 is READY as dpl_55MKdeALDjrCHpqmbr5zCikiwiuw; API smoke passed pages 499, 500, 512, 530. Audits for 531–578 found further omissions and legacy Q10 mappings from bare خلف; next imports/corrections remain pending.",
+  "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending.",
   "latestLocalImportCycle": {
     "pagesReviewed": [
       295,
@@ -22662,13 +22644,26 @@
   },
   "latestProductionSmoke": {
     "pages": [
-      499,
-      500,
-      512,
-      530
+      444,
+      500
     ],
-    "status": 200,
-    "deploymentId": "dpl_55MKdeALDjrCHpqmbr5zCikiwiuw",
-    "confirmed": "new variant forms on 499, 500, 512; usul rulings on 530"
+    "status": "passed",
+    "deploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
+    "confirmed": "GET /api/mushaf-1441/qiraat?page={444,500}&debug=1 returned corrected source-linked variants with Q06-R01 and without Q10-R01/R02."
+  },
+  "latestKhalafAttributionCorrection": {
+    "commit": "be507603bf8393d39dd0bc3a11d3ed71c38b2d4c",
+    "deploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
+    "deploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
+    "status": "production_verified",
+    "pages": [
+      444,
+      500
+    ],
+    "loci": [
+      "v-D444-شغل-w2",
+      "v-D500-سواء-w2"
+    ],
+    "verification": "Both source rows use bare خلف; production debug API returns Q06-R01 and excludes Q10-R01/Q10-R02."
   }
 }
