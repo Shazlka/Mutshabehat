@@ -1,1 +1,69 @@
-[]
+[
+  {
+    "id": "v-D394-بضياء-w2",
+    "surah": 28,
+    "ayah": 71,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "بِضِيَآءٍ ۖ",
+    "variantText": "بِضِنَاءٍ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "D394-بضياء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D394-بضياء-w2",
+        "variantId": "v-D394-بضياء-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P394-R02040",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿بِضِيَآءٍ﴾: بهمز ممدود بعد الياء للجمهور؛ وبنون مفتوحة وهمزة بعدها ﴿بِضِنَاءٍ﴾ لقنبل."
+      }
+    ],
+    "description": "بنون مفتوحة وهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D394-يناديهم-w2",
+    "surah": 28,
+    "ayah": 74,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُنَادِيهِمْ",
+    "variantText": "يُنَادِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D394-يناديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D394-يناديهم-w2",
+        "variantId": "v-D394-يناديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P394-R02041",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُنَادِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يُنَادِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
