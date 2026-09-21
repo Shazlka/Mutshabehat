@@ -123,6 +123,101 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     as sourceText and store only the independently corroborated form as the actual variant.
     """
     source_links_added = 0
+    if page == 248:
+        # The printed table gives two different non-Hafs spellings at the same token.
+        # Keep both only after checking their explicitly named groups independently.
+        cases = [
+            {
+                'ayah': 105, 'anchor': 'وَكَأَيِّن', 'alternate': 'وَكَائِن',
+                'description': 'بالمد والتحقيق لابن كثير', 'resolverText': 'ابن كثير',
+                'readers': {'Q02-R01','Q02-R02'}, 'suffix': 'IBNKATHIR',
+                'sourceLine': 'بألف بعد الكاف وبعدها همزة مكسورة ممدودة مداً متصلاً ﴿وَكَائِن﴾: ابن كثير.',
+                'externalText': 'قرأ ابن كثير وكائن بالمد والهمز، وأبو جعفر بالتسهيل، والباقون وكأين.',
+                'externalUrl': 'https://quranpedia.net/book-attachment/19843/93433',
+            },
+            {
+                'ayah': 105, 'anchor': 'وَكَأَيِّن', 'alternate': 'وَكَايِن',
+                'description': 'بتسهيل الهمزة مع المد والقصر لأبي جعفر', 'resolverText': 'أبو جعفر',
+                'readers': {'Q08-R01','Q08-R02'}, 'suffix': 'ABUJAAFAR',
+                'sourceLine': 'بتسهيل الهمزة مع المد والقصر ﴿وَكَايِن﴾: أبو جعفر.',
+                'externalText': 'قرأ ابن كثير وكائن بالمد والهمز، وأبو جعفر بالتسهيل، والباقون وكأين.',
+                'externalUrl': 'https://quranpedia.net/book-attachment/19843/93433',
+            },
+            {
+                'ayah': 109, 'anchor': 'تَعْقِلُونَ', 'alternate': 'يَعْقِلُونَ',
+                'description': 'بياء الغيب لمن عدا المذكورين في خطاب التاء',
+                'resolverText': 'نافع، ابن عامر، عاصم، أبو جعفر، يعقوب',
+                'readers': {'Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q10-R01','Q10-R02'},
+                'suffix': 'GHAIB',
+                'sourceLine': '﴿تَعْقِلُونَ﴾: بتاء الخطاب لنافع، ابن عامر، عاصم، أبو جعفر، يعقوب؛ وبياء الغيب ﴿يَعْقِلُونَ﴾ للباقين.',
+                'externalText': 'وفي يعقلون بالتاء نافع وابن عامر وعاصم وأبو جعفر ويعقوب، والباقون بالياء.',
+                'externalUrl': 'https://ar.wikisource.org/wiki/النشر_في_القراءات_العشر/الجزء_الثاني',
+            },
+        ]
+        source_set={line.strip() for line in lines}
+        for case in cases:
+            if case['sourceLine'] not in source_set or is_neg(case['sourceLine']) or is_univ(case['sourceLine']):
+                raise ValueError(f"page 248 audited source row missing/unsafe: {case['anchor']}")
+            loc=T.find(page,case['anchor'],ayah=case['ayah'])
+            if loc['surah'] != 12 or loc['startAyah'] != case['ayah'] or loc['endAyah'] != case['ayah']:
+                raise ValueError(f"page 248 audited token coordinates changed: {case['anchor']}")
+            resolved,unresolved=resolve_readers(case['resolverText'],set())
+            if case['suffix']=='GHAIB': resolved=set(ALL20)-resolved
+            if unresolved or resolved != case['readers']:
+                raise ValueError(f"page 248 audited reader group changed: {case['anchor']}")
+            before=len(variants)
+            yield_block(page,case['anchor'],[
+                (None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-case['readers']),
+                (case['alternate'],case['description'],case['readers']),
+            ],variants)
+            added=[v for v in variants[before:] if v.get('surah')==12 and v.get('ayah')==case['ayah'] and
+                   v.get('startToken')==loc['startWord']]
+            if len(added)!=1:
+                raise ValueError(f"page 248 audited variant partition failed: {case['anchor']} {case['suffix']}")
+            variant=added[0]
+            variant['id']=f"v-AUDIT-P248-{case['ayah']}-{case['suffix']}"
+            variant['locusId']=f"AUDIT-P248-{case['ayah']}"
+            for i,src in enumerate(variant.get('sources',[]),1):
+                src['id']=f"s-AUDIT-P248-{case['ayah']}-{case['suffix']}-{i}"
+                src['variantId']=variant['id']
+            if variant.get('sources'):
+                variant['sources'][0].update({
+                    'sourceReference':'وثيقة استخراج القراءات العشر، صفحة المصحف 248، الكلمات الفرشية',
+                    'sourceText':case['sourceLine'],
+                    'verificationNotes':'قوبل نص المصدر ومجموعة القراء الصريحة بمرجع مستقل، وثبت نص حفص حرفياً من رمز الصفحة.',
+                })
+            url=case['externalUrl']
+            variant.setdefault('sources',[]).append({
+                'id':f"s-AL-BUDUR-P248-{case['ayah']}-{case['suffix']}",'variantId':variant['id'],
+                'sourceName':'البدور الزاهرة في القراءات العشر المتواترة','sourceType':'printed-book',
+                'sourceReference':url,'sourceText':case['externalText'],
+                'verificationNotes':'مرجع مستقل يثبت اختلاف صورة القراءة وتعيين القارئ.',
+            })
+            variant['evidence']=[{'source':'البدور الزاهرة في القراءات العشر المتواترة','text':case['externalText'],'url':url}]
+    if page == 249:
+        # The explicit source says «للباقين» after naming all light readers. Add only Yaqub
+        # to the pre-existing tashdid form; do not recreate the variant or alter its base.
+        source_line='﴿يُغْشِي﴾: بالتخفيف لنافع، ابن كثير، أبو عمرو، ابن عامر، حفص، أبو جعفر؛ وبالتشديد ﴿يُغَشِّي﴾ للباقين.'
+        if source_line not in {line.strip() for line in lines}:
+            raise ValueError('page 249 audited yughshi source row missing')
+        loc=T.find(page,'يُغْشِي',ayah=3)
+        if (loc['surah'],loc['startAyah'],loc['startWord'],loc['baseText']) != (13,3,16,'يُغْشِى'):
+            raise ValueError('page 249 audited yughshi token changed')
+        matches=[x for x in existing_page if (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('hafsText'),x.get('variantText'))==(13,3,16,'يُغْشِى','يُغَشِّي')]
+        if len(matches)!=1:
+            raise ValueError('page 249 expected pre-existing tashdid variant is not unique')
+        target=matches[0]
+        for rid in ('Q09-R01','Q09-R02'):
+            if rid not in target['readingIds']: target['readingIds'].append(rid)
+        target['readingIds'].sort()
+        source_id='s-DOCX-P249-YUGHSHI-YAQUB'
+        if not any(s.get('id')==source_id for s in target.get('sources',[])):
+            target.setdefault('sources',[]).append({'id':source_id,'variantId':target['id'],**SRC,
+                'sourceReference':'وثيقة استخراج القراءات العشر، صفحة المصحف 249، الكلمات الفرشية',
+                'sourceText':source_line,
+                'verificationNotes':'أضيف يعقوب فقط، لأنه داخل الباقين بعد تصريح المصدر بالتخفيف لغيره؛ وافق ذلك مرجع النشر المستقل.'})
+            source_links_added+=1
+        target.setdefault('evidence',[]).append({'source':'النشر في القراءات العشر، سورة الرعد 13:3؛ وبيان يغشي في الأعراف','text':'في قائمة القراء: التشديد لشعبة وحمزة والكسائي ويعقوب وخلف؛ والنشر يذكر التشديد للباقين بعد استثناء ابن كثير والبصريين وعاصم.','url':'https://quranpedia.net/tafsir/ar-rad/3'})
     if page == 247:
         audited = [
             {
@@ -1058,6 +1153,11 @@ def parse_usul(page, lines):
     target_hamzatan_anchors=[]; idgham_section=False
     for raw in lines:
         line=raw.strip()
+        # These two page-249 imalah excerpts collide with existing reader/action
+        # assignments at the same loci (including a same-reader face conflict). Hold
+        # them for manual reconciliation instead of merging potentially incompatible faces.
+        if page==249 and ('﴿النَّاس' in line or '﴿النَّار' in line):
+            continue
         head=line.split(':')[0]
         if is_neg(line) or has_bare_ambiguous_reader(line): continue
         if line.startswith('الإدغام الصغير'):
@@ -1225,11 +1325,15 @@ def build(page_list, categories=None, complete_ikhfa=False):
             v,source_links_added=reconcile_audited_farsh(page,pd['farsh'],v,ev)
             vstats['sourceLinksAdded']+=source_links_added
         vtok={(x['surah'],x['ayah'],x['startToken']) for x in ev}
-        v=[x for x in v if (x['surah'],x['ayah'],x['startToken']) not in vtok]
+        multi_form_key=(12,105,1) if page==248 else None
+        v=[x for x in v if ((x['surah'],x['ayah'],x['startToken']) not in vtok or
+            ((x['surah'],x['ayah'],x['startToken'])==multi_form_key and
+             not any((e['surah'],e['ayah'],e['startToken'],e.get('variantText'))==
+                     (x['surah'],x['ayah'],x['startToken'],x.get('variantText')) for e in ev)))]
         # also dedup within this batch
         seenv=set(); v2=[]
         for x in v:
-            k=(x['surah'],x['ayah'],x['startToken'])
+            k=(x['surah'],x['ayah'],x['startToken'],x.get('variantText')) if (page==248 and (x['surah'],x['ayah'],x['startToken'])==multi_form_key) else (x['surah'],x['ayah'],x['startToken'])
             if k in seenv: continue
             seenv.add(k); v2.append(x)
         seenr={}; r2=[]
