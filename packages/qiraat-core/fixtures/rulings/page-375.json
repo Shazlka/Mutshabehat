@@ -317,5 +317,202 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p375-YAAT_IDAFA-ربي_اعلم-1",
+    "pageNumber": 375,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 26,
+    "ayah": 188,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 188,
+    "baseText": "رَبِّىٓ أَعْلَمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p375-HAMZATAN_KALIMATAYN-السماء_ان-0",
+    "pageNumber": 375,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 26,
+    "ayah": 187,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 187,
+    "baseText": "ٱلسَّمَآءِ إِن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الأولى"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الأولى"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إسقاط الأولى"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسقاط الأولى"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية أو إبدالها ياء"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "تسهيل الثانية أو إبدالها ياء"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الأولى",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الأولى",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إسقاط الأولى",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إسقاط الأولى",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية أو إبدالها ياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "تسهيل الثانية أو إبدالها ياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
