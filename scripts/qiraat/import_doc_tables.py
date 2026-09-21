@@ -123,6 +123,50 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     as sourceText and store only the independently corroborated form as the actual variant.
     """
     source_links_added = 0
+    if page == 252:
+        source_line = '﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.'
+        if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
+            raise ValueError('page 252 audited عليهم source row missing/not unique')
+        if is_neg(source_line) or is_univ(source_line):
+            raise ValueError('page 252 audited عليهم source row failed negation/universal guard')
+        loc = T.find(page, 'عَلَيْهِم', ayah=23)
+        if (loc['surah'], loc['startAyah'], loc['startWord'], loc['endWord'], loc['baseText']) != (
+            13, 23, 12, 12, 'عَلَيْهِم'):
+            raise ValueError('page 252 exact عليهم token/span/base changed')
+        readers, unresolved = resolve_readers('حمزة، يعقوب', set())
+        expected = {'Q06-R01','Q06-R02','Q09-R01','Q09-R02'}
+        if unresolved or readers != expected:
+            raise ValueError('page 252 explicit Hamza/Yaqub group did not resolve exactly')
+        before = len(variants)
+        yield_block(page, 'عَلَيْهِم', [
+            (None, 'وجه حفص المطابق لرسم المصحف', set(ALL20)-readers),
+            ('عَلَيْهُم', 'بضم الهاء لحمزة ويعقوب', readers),
+        ], variants)
+        added = [v for v in variants[before:] if
+            (v.get('surah'),v.get('ayah'),v.get('startToken'),v.get('endToken')) ==
+            (13,23,12,12)]
+        if len(added) != 1:
+            raise ValueError('page 252 audited عليهم variant partition failed')
+        variant = added[0]
+        variant['id'] = 'v-AUDIT-P252-13-23-ALAYHIM'
+        variant['locusId'] = 'AUDIT-P252-13-23-ALAYHIM'
+        for i, source in enumerate(variant.get('sources', []), 1):
+            source['id'] = f's-AUDIT-P252-13-23-ALAYHIM-{i}'
+            source['variantId'] = variant['id']
+        variant['sources'][0].update({
+            'sourceReference': 'qiraat_records_pages_245_584.jsonl، DOCX-P252-R00451',
+            'sourceText': source_line,
+            'verificationNotes': 'ثبت نص حفص حرفياً من رمز الصفحة، وقوبلت مجموعة حمزة ويعقوب بالمرجع المستقل.',
+        })
+        url = 'https://quranpedia.net/ayahs/13/23/4'
+        external_text = 'عَلَيْهِمْ بضم الهاء وإسكان الميم: خلاد عن حمزة، روح عن يعقوب، رويس عن يعقوب.'
+        variant['sources'].append({
+            'id': 's-QURANPEDIA-P252-13-23-ALAYHIM', 'variantId': variant['id'],
+            'sourceName': 'موسوعة القراءات، الرعد 13:23', 'sourceType': 'reference',
+            'sourceReference': url, 'sourceText': external_text,
+            'verificationNotes': 'المرجع يؤيد صورة الضم ومجموعة حمزة ويعقوب؛ أُبقيت نسبة القراءة وفق الروايات الصريحة في المصدر.',
+        })
+        variant['evidence'] = [{'source': 'موسوعة القراءات، الرعد 13:23', 'text': external_text, 'url': url}]
     if page in (250,251):
         cases=[
             {

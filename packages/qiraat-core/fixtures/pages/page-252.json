@@ -71,5 +71,56 @@
     "description": "بالتوحيد",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P252-13-23-ALAYHIM",
+    "surah": 13,
+    "ayah": 23,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P252-13-23-ALAYHIM",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P252-13-23-ALAYHIM-1",
+        "variantId": "v-AUDIT-P252-13-23-ALAYHIM",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records_pages_245_584.jsonl، DOCX-P252-R00451",
+        "verificationNotes": "ثبت نص حفص حرفياً من رمز الصفحة، وقوبلت مجموعة حمزة ويعقوب بالمرجع المستقل.",
+        "sourceText": "﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-QURANPEDIA-P252-13-23-ALAYHIM",
+        "variantId": "v-AUDIT-P252-13-23-ALAYHIM",
+        "sourceName": "موسوعة القراءات، الرعد 13:23",
+        "sourceType": "reference",
+        "sourceReference": "https://quranpedia.net/ayahs/13/23/4",
+        "sourceText": "عَلَيْهِمْ بضم الهاء وإسكان الميم: خلاد عن حمزة، روح عن يعقوب، رويس عن يعقوب.",
+        "verificationNotes": "المرجع يؤيد صورة الضم ومجموعة حمزة ويعقوب؛ أُبقيت نسبة القراءة وفق الروايات الصريحة في المصدر."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات، الرعد 13:23",
+        "text": "عَلَيْهِمْ بضم الهاء وإسكان الميم: خلاد عن حمزة، روح عن يعقوب، رويس عن يعقوب.",
+        "url": "https://quranpedia.net/ayahs/13/23/4"
+      }
+    ]
   }
 ]
