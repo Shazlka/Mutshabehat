@@ -88,7 +88,7 @@
       493,
       495
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 74,
     "variantTextCorrections": 0,
@@ -102,46 +102,50 @@
     "baseCommit": "9ada7ec6ca6cd2d09ae90f298939a5e43192b307",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "commit": "pending",
-    "push": "pending",
-    "productionDeploymentStatus": "pending",
-    "remainingValidRuleContexts": 33
+    "commit": "352327e48a008476c41538534e84da3f6ede44dd",
+    "push": "pushed to origin/main",
+    "productionDeploymentStatus": "READY",
+    "remainingValidRuleContexts": 33,
+    "productionDeploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+    "productionDeploymentUrl": "https://mutshabehat-v2-4tebvlf6n-shazlka-s-projects.vercel.app",
+    "productionSmoke": "passed: production debug API verified all 37 exact token spans on the listed pages; every record returned IKHFA, #0891B2, Q08-R01, and Q08-R02.",
+    "deployedSha": "352327e48a008476c41538534e84da3f6ede44dd"
   },
-  "lastConfirmedDeployedDataCommit": "97b5a05089c78802610f3ec8cae0c6aa3496deeb",
+  "lastConfirmedDeployedDataCommit": "352327e48a008476c41538534e84da3f6ede44dd",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
-      302,
-      304,
-      305,
-      312,
-      313,
-      314,
-      319,
-      323,
-      324,
-      326,
-      334,
-      339,
-      343,
-      344,
-      345,
-      348,
-      352,
-      353,
-      355,
-      362,
-      366,
-      368,
-      369,
-      377,
-      382,
-      383,
-      388,
-      389,
-      390,
-      394,
-      397
+      401,
+      403,
+      406,
+      409,
+      412,
+      413,
+      414,
+      415,
+      419,
+      422,
+      425,
+      427,
+      430,
+      434,
+      437,
+      438,
+      439,
+      440,
+      446,
+      461,
+      462,
+      473,
+      477,
+      478,
+      480,
+      481,
+      482,
+      488,
+      489,
+      493,
+      495
     ],
     "desktop": true,
     "mobileViewport": [
@@ -421,48 +425,97 @@
         "consoleErrors": 0,
         "consoleWarnings": 0,
         "note": "Production deployment READY for exact data SHA; API and Mushaf detail smoke passed."
+      },
+      {
+        "commit": "97b5a05089c78802610f3ec8cae0c6aa3496deeb",
+        "deploymentId": "dpl_HGdX7JZerdSLFjozuwR5o5GvkJxX",
+        "deploymentUrl": "https://mutshabehat-v2-aj2vlh9ic-shazlka-s-projects.vercel.app",
+        "pages": [
+          302,
+          304,
+          305,
+          312,
+          313,
+          314,
+          319,
+          323,
+          324,
+          326,
+          334,
+          339,
+          343,
+          344,
+          345,
+          348,
+          352,
+          353,
+          355,
+          362,
+          366,
+          368,
+          369,
+          377,
+          382,
+          383,
+          388,
+          389,
+          390,
+          394,
+          397
+        ],
+        "endpoint": "/api/mushaf-1441/qiraat?page={page}&debug=1",
+        "category": "IKHFA",
+        "verifiedLociCount": 34,
+        "readerIds": [
+          "Q08-R01",
+          "Q08-R02"
+        ],
+        "color": "#0891B2",
+        "exactTokenSpans": true,
+        "httpStatus": 200,
+        "status": "passed"
       }
     ],
     "latestAdditionalCheck": {
-      "commit": "97b5a05089c78802610f3ec8cae0c6aa3496deeb",
-      "deploymentId": "dpl_HGdX7JZerdSLFjozuwR5o5GvkJxX",
-      "deploymentUrl": "https://mutshabehat-v2-aj2vlh9ic-shazlka-s-projects.vercel.app",
+      "commit": "352327e48a008476c41538534e84da3f6ede44dd",
+      "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+      "deploymentUrl": "https://mutshabehat-v2-4tebvlf6n-shazlka-s-projects.vercel.app",
       "pages": [
-        302,
-        304,
-        305,
-        312,
-        313,
-        314,
-        319,
-        323,
-        324,
-        326,
-        334,
-        339,
-        343,
-        344,
-        345,
-        348,
-        352,
-        353,
-        355,
-        362,
-        366,
-        368,
-        369,
-        377,
-        382,
-        383,
-        388,
-        389,
-        390,
-        394,
-        397
+        401,
+        403,
+        406,
+        409,
+        412,
+        413,
+        414,
+        415,
+        419,
+        422,
+        425,
+        427,
+        430,
+        434,
+        437,
+        438,
+        439,
+        440,
+        446,
+        461,
+        462,
+        473,
+        477,
+        478,
+        480,
+        481,
+        482,
+        488,
+        489,
+        493,
+        495
       ],
       "endpoint": "/api/mushaf-1441/qiraat?page={page}&debug=1",
       "category": "IKHFA",
-      "verifiedLociCount": 34,
+      "verifiedLociCount": 37,
       "readerIds": [
         "Q08-R01",
         "Q08-R02"
@@ -1202,7 +1255,7 @@
       "apiSmoke": "All 34 added loci verified via production debug API with exact token spans, #0891B2, Q08-R01, and Q08-R02."
     },
     {
-      "commit": "pending",
+      "commit": "352327e48a008476c41538534e84da3f6ede44dd",
       "batch": "IKHFA external rule completeness, pages 400-499",
       "variantsAdded": 0,
       "rulingsAdded": 37,
@@ -1240,11 +1293,14 @@
         493,
         495
       ],
-      "pushed": false,
-      "vercelState": "pending",
+      "pushed": true,
+      "vercelState": "READY",
       "validation": "37 new ruling objects appended across 31 files; zero fixture deletions; prior fixture objects byte-for-byte unchanged; all new token transitions verified against page-word fixtures. Importer rerun idempotent. Qiraat validator clean (1,866 variants, 9,731 rulings, 20 one-colour categories); 37/37 test:qiraat; all seven Mushaf validators; TypeScript; production build passed.",
       "sourceAudit": "Scanned adjacent real page tokens for terminal nun-sukun or tanween before initial ghayn/kha. Every new span resolves verbatim to page-word fixtures; the three named exception verses are excluded.",
-      "databaseMigration": "none"
+      "databaseMigration": "none",
+      "vercelDeploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+      "vercelDeployment": "https://mutshabehat-v2-4tebvlf6n-shazlka-s-projects.vercel.app",
+      "apiSmoke": "All 37 loci verified via production debug API with exact spans, #0891B2, Q08-R01, and Q08-R02."
     }
   ],
   "pages": [
@@ -13543,7 +13599,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "29:40 مَّنْ خَسَفْنَا"
         ],
@@ -13551,7 +13607,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -13613,7 +13672,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "29:61 مَّنْ خَلَقَ"
         ],
@@ -13621,7 +13680,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -13718,7 +13780,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "30:20 أَنْ خَلَقَكُم",
           "30:21 أَنْ خَلَقَ"
@@ -13727,7 +13789,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -13818,7 +13883,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "30:48 مِنْ خِلَـٰلِهِۦ ۖ"
         ],
@@ -13826,7 +13891,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -13917,7 +13985,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "31:16 مِّنْ خَرْدَلٍۢ",
           "31:16 لَطِيفٌ خَبِيرٌۭ"
@@ -13926,7 +13994,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -13959,7 +14030,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "31:24 عَذَابٍ غَلِيظٍۢ",
           "31:25 مَّنْ خَلَقَ"
@@ -13968,7 +14039,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14001,7 +14075,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "31:34 عَلِيمٌ خَبِيرٌۢ"
         ],
@@ -14009,7 +14083,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14042,7 +14119,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "32:7 شَىْءٍ خَلَقَهُۥ ۖ"
         ],
@@ -14050,7 +14127,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14170,7 +14250,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "33:7 مِّيثَـٰقًا غَلِيظًۭا"
         ],
@@ -14178,7 +14258,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14269,7 +14352,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "33:34 لَطِيفًا خَبِيرًا"
         ],
@@ -14277,7 +14360,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14368,7 +14454,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "33:53 طَعَامٍ غَيْرَ"
         ],
@@ -14376,7 +14462,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14438,7 +14527,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "33:64 سَعِيرًا خَـٰلِدِينَ"
         ],
@@ -14446,7 +14535,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14537,7 +14629,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "34:15 وَرَبٌّ غَفُورٌۭ",
           "34:16 أُكُلٍ خَمْطٍۢ"
@@ -14546,7 +14638,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14672,7 +14767,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "35:3 مِنْ خَـٰلِقٍ",
           "35:3 خَـٰلِقٍ غَيْرُ"
@@ -14681,7 +14776,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14772,7 +14870,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "35:28 عَزِيزٌ غَفُورٌ"
         ],
@@ -14780,7 +14878,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14813,7 +14914,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "35:37 صَـٰلِحًا غَيْرَ"
         ],
@@ -14821,7 +14922,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14854,7 +14958,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "35:41 حَلِيمًا غَفُورًۭا"
         ],
@@ -14862,7 +14966,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -14901,7 +15008,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "36:9 وَمِنْ خَلْفِهِمْ"
         ],
@@ -14909,7 +15016,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -15087,7 +15197,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "37:10 مَنْ خَطِفَ",
           "37:11 مَّنْ خَلَقْنَآ ۚ"
@@ -15096,7 +15206,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -15541,7 +15654,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "39:28 عَرَبِيًّا غَيْرَ"
         ],
@@ -15549,7 +15662,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -15582,7 +15698,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "39:38 مَّنْ خَلَقَ"
         ],
@@ -15590,7 +15706,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -15919,7 +16038,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "40:57 مِنْ خَلْقِ"
         ],
@@ -15927,7 +16046,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16047,7 +16169,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "41:8 أَجْرٌ غَيْرُ"
         ],
@@ -16055,7 +16177,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16088,7 +16213,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "41:14 وَمِنْ خَلْفِهِمْ"
         ],
@@ -16096,7 +16221,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16158,7 +16286,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "41:32 مِّنْ غَفُورٍۢ"
         ],
@@ -16166,7 +16294,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16199,7 +16330,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "41:42 مِنْ خَلْفِهِۦ ۖ"
         ],
@@ -16207,7 +16338,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16240,7 +16374,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "41:50 عَذَابٍ غَلِيظٍۢ"
         ],
@@ -16248,7 +16382,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16426,7 +16563,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "42:45 طَرْفٍ خَفِىٍّۢ ۗ"
         ],
@@ -16434,7 +16571,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16473,7 +16613,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "43:9 مَّنْ خَلَقَ"
         ],
@@ -16481,7 +16621,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16601,7 +16744,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "43:58 قَوْمٌ خَصِمُونَ"
         ],
@@ -16609,7 +16752,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -16671,7 +16817,7 @@
       "productionUiVerified": false,
       "qiraatExternalAuditIkhfa": {
         "category": "IKHFA",
-        "status": "validated_pending_deploy",
+        "status": "production_verified",
         "candidateLoci": [
           "43:87 مَّنْ خَلَقَهُمْ"
         ],
@@ -16679,7 +16825,10 @@
         "sourceReferences": [
           "https://www.islamweb.net/amp/ar/library/content/70/157/%D8%AA%D9%86%D8%A8%D9%8A%D9%87%D8%A7%D8%AA",
           "https://ablibrary.net/book_content/b/8368/113"
-        ]
+        ],
+        "productionVerifiedCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+        "deploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+        "liveApiVerified": true
       }
     },
     {
@@ -20103,7 +20252,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "97b5a05089c78802610f3ec8cae0c6aa3496deeb",
+  "currentHeadCommit": "352327e48a008476c41538534e84da3f6ede44dd",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -20446,7 +20595,7 @@
       "productionSmoke": "page 231 API returned baseText بَقِيَّتُ, all eight covered reader IDs, note مع الإمالة, and color #EA580C."
     },
     "docIkhfaCompleteRuleAudit": {
-      "status": "first three validated slices; production deployment pending for pages 400-499",
+      "status": "production_verified_slices_225-499; final pages 500-584 remain",
       "primarySources": [
         {
           "title": "Ibn al-Jazari, al-Nashr, تنبيهات باب أحكام النون الساكنة والتنوين",
@@ -20756,6 +20905,198 @@
           "loci": [
             "29:12 مِنْ خَطَـٰيَـٰهُم"
           ]
+        },
+        {
+          "page": 401,
+          "loci": [
+            "29:40 مَّنْ خَسَفْنَا"
+          ]
+        },
+        {
+          "page": 403,
+          "loci": [
+            "29:61 مَّنْ خَلَقَ"
+          ]
+        },
+        {
+          "page": 406,
+          "loci": [
+            "30:20 أَنْ خَلَقَكُم",
+            "30:21 أَنْ خَلَقَ"
+          ]
+        },
+        {
+          "page": 409,
+          "loci": [
+            "30:48 مِنْ خِلَـٰلِهِۦ ۖ"
+          ]
+        },
+        {
+          "page": 412,
+          "loci": [
+            "31:16 مِّنْ خَرْدَلٍۢ",
+            "31:16 لَطِيفٌ خَبِيرٌۭ"
+          ]
+        },
+        {
+          "page": 413,
+          "loci": [
+            "31:24 عَذَابٍ غَلِيظٍۢ",
+            "31:25 مَّنْ خَلَقَ"
+          ]
+        },
+        {
+          "page": 414,
+          "loci": [
+            "31:34 عَلِيمٌ خَبِيرٌۢ"
+          ]
+        },
+        {
+          "page": 415,
+          "loci": [
+            "32:7 شَىْءٍ خَلَقَهُۥ ۖ"
+          ]
+        },
+        {
+          "page": 419,
+          "loci": [
+            "33:7 مِّيثَـٰقًا غَلِيظًۭا"
+          ]
+        },
+        {
+          "page": 422,
+          "loci": [
+            "33:34 لَطِيفًا خَبِيرًا"
+          ]
+        },
+        {
+          "page": 425,
+          "loci": [
+            "33:53 طَعَامٍ غَيْرَ"
+          ]
+        },
+        {
+          "page": 427,
+          "loci": [
+            "33:64 سَعِيرًا خَـٰلِدِينَ"
+          ]
+        },
+        {
+          "page": 430,
+          "loci": [
+            "34:15 وَرَبٌّ غَفُورٌۭ",
+            "34:16 أُكُلٍ خَمْطٍۢ"
+          ]
+        },
+        {
+          "page": 434,
+          "loci": [
+            "35:3 مِنْ خَـٰلِقٍ",
+            "35:3 خَـٰلِقٍ غَيْرُ"
+          ]
+        },
+        {
+          "page": 437,
+          "loci": [
+            "35:28 عَزِيزٌ غَفُورٌ"
+          ]
+        },
+        {
+          "page": 438,
+          "loci": [
+            "35:37 صَـٰلِحًا غَيْرَ"
+          ]
+        },
+        {
+          "page": 439,
+          "loci": [
+            "35:41 حَلِيمًا غَفُورًۭا"
+          ]
+        },
+        {
+          "page": 440,
+          "loci": [
+            "36:9 وَمِنْ خَلْفِهِمْ"
+          ]
+        },
+        {
+          "page": 446,
+          "loci": [
+            "37:10 مَنْ خَطِفَ",
+            "37:11 مَّنْ خَلَقْنَآ ۚ"
+          ]
+        },
+        {
+          "page": 461,
+          "loci": [
+            "39:28 عَرَبِيًّا غَيْرَ"
+          ]
+        },
+        {
+          "page": 462,
+          "loci": [
+            "39:38 مَّنْ خَلَقَ"
+          ]
+        },
+        {
+          "page": 473,
+          "loci": [
+            "40:57 مِنْ خَلْقِ"
+          ]
+        },
+        {
+          "page": 477,
+          "loci": [
+            "41:8 أَجْرٌ غَيْرُ"
+          ]
+        },
+        {
+          "page": 478,
+          "loci": [
+            "41:14 وَمِنْ خَلْفِهِمْ"
+          ]
+        },
+        {
+          "page": 480,
+          "loci": [
+            "41:32 مِّنْ غَفُورٍۢ"
+          ]
+        },
+        {
+          "page": 481,
+          "loci": [
+            "41:42 مِنْ خَلْفِهِۦ ۖ"
+          ]
+        },
+        {
+          "page": 482,
+          "loci": [
+            "41:50 عَذَابٍ غَلِيظٍۢ"
+          ]
+        },
+        {
+          "page": 488,
+          "loci": [
+            "42:45 طَرْفٍ خَفِىٍّۢ ۗ"
+          ]
+        },
+        {
+          "page": 489,
+          "loci": [
+            "43:9 مَّنْ خَلَقَ"
+          ]
+        },
+        {
+          "page": 493,
+          "loci": [
+            "43:58 قَوْمٌ خَصِمُونَ"
+          ]
+        },
+        {
+          "page": 495,
+          "loci": [
+            "43:87 مَّنْ خَلَقَهُمْ"
+          ]
         }
       ],
       "sourceLineFindings": {
@@ -21029,10 +21370,10 @@
         "readerAssignments": 74
       },
       "totalAddedSoFar": 85,
-      "latestProductionDeploymentId": "dpl_HGdX7JZerdSLFjozuwR5o5GvkJxX",
-      "latestProductionCommit": "97b5a05089c78802610f3ec8cae0c6aa3496deeb",
-      "latestProductionDeploymentUrl": "https://mutshabehat-v2-aj2vlh9ic-shazlka-s-projects.vercel.app",
-      "latestApiSmoke": "All 34 new loci on pages 300-399 returned exact token spans, IKHFA colour #0891B2, and Q08-R01/Q08-R02."
+      "latestProductionDeploymentId": "dpl_6AXVin7ToE8Sf9idd92CEWL8H5vh",
+      "latestProductionCommit": "352327e48a008476c41538534e84da3f6ede44dd",
+      "latestProductionDeploymentUrl": "https://mutshabehat-v2-4tebvlf6n-shazlka-s-projects.vercel.app",
+      "latestApiSmoke": "All 37 loci from pages 400-499 verified via production debug API with exact spans, #0891B2, and both Abu Jaafar narrations."
     }
   }
 }
