@@ -466,6 +466,95 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                  'sourceReference':url,'sourceText':external_text,
                  'verificationNotes':'مرجع مستقل يثبت الوجه ومجموعة القراء.'}]
             v['evidence']=[{'source':'مصدر مستقل في القراءات العشر','text':external_text,'url':url}]
+    if page in (273,274):
+        candidates=[
+            (273,58,'وَهُوَ','وَهْوَ','DOCX-P273-R00712',
+             'https://books.rafed.net/view/3090/page/174',
+             'Al-Ithaf documents sukūn of the hāʾ in huwa/hiyya after wāw or fāʾ for Qalun, Abu Amr, al-Kisai, and Abu Jaafar.',
+             (16,58,8,8),'HARAKAH',{'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}),
+            (273,60,'وَهُوَ','وَهْوَ','DOCX-P273-R00712',
+             'https://books.rafed.net/view/3090/page/174',
+             'Al-Ithaf documents sukūn of the hāʾ in huwa/hiyya after wāw or fāʾ for Qalun, Abu Amr, al-Kisai, and Abu Jaafar.',
+             (16,60,10,10),'HARAKAH',{'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}),
+            (273,63,'فَهُوَ','فَهْوَ','DOCX-P273-R00712',
+             'https://jamharah.net/showthread.php?t=27567',
+             'At an-Nahl 16:63, Abu Amr, al-Kisai, Abu Jaafar, and Qalun read فَهْوَ with a silent hāʾ; the rest read with ḍamma.',
+             (16,63,12,12),'HARAKAH',{'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}),
+            (273,62,'مُّفْرَطُونَ','مُفْرِطُونَ','DOCX-P273-R00714',
+             'https://quranpedia.net/tafsir/an-nahl/62',
+             'Quranpedia records Nafiʿ reading مُفْرِطُونَ with kasra on rāʾ and no gemination at an-Nahl 16:62.',
+             (16,62,17,17),'HARAKAH',{'Q01-R01','Q01-R02'}),
+            (273,62,'مُّفْرَطُونَ','مُفَرِّطُونَ','DOCX-P273-R00715',
+             'https://quranpedia.net/tafsir/an-nahl/62',
+             'Quranpedia records Abu Jaafar reading مُفَرِّطُونَ with kasra on rāʾ and gemination at an-Nahl 16:62.',
+             (16,62,17,17),'LETTER',{'Q08-R01','Q08-R02'}),
+            (274,66,'نُّسْقِيكُم','نَسْقِيكُمْ','DOCX-P274-R00726',
+             'https://www.nquran.com/ar/index.php?ayano=66&group=tb1&sorano=16&tpath=2',
+             'The accepted ten-reading collation assigns نَسْقِيكُمْ to Nafi, Ibn Amir, Shuʿbah, and Yaqub at an-Nahl 16:66.',
+             (16,66,6,6),'HARAKAH',{'Q01-R01','Q01-R02','Q04-R01','Q04-R02','Q05-R01','Q09-R01','Q09-R02'}),
+            (274,66,'نُّسْقِيكُم','تَسْقِيكُمْ','DOCX-P274-R00727',
+             'https://www.nquran.com/ar/index.php?ayano=66&group=tb1&sorano=16&tpath=2',
+             'The accepted ten-reading collation assigns تَسْقِيكُمْ to Abu Jaafar at an-Nahl 16:66.',
+             (16,66,6,6),'LETTER',{'Q08-R01','Q08-R02'}),
+            (274,68,'يَعْرِشُونَ','يَعْرُشُونَ','DOCX-P274-R00729',
+             'https://www.nquran.com/ar/index.php?ayano=68&group=tb1&sorano=16&tpath=2',
+             'At an-Nahl 16:68 Ibn Amir and Shuʿbah read يَعْرُشُونَ with ḍamma on rāʾ.',
+             (16,68,13,13),'HARAKAH',{'Q04-R01','Q04-R02','Q05-R01'}),
+        ]
+        for p,ayah,anchor,alternate,record_id,url,external_text,expected,dtype,expected_readers in candidates:
+            if p!=page: continue
+            row=PACKAGE_RECORDS.get(record_id)
+            if (row is None or row.get('page_no')!=page or row.get('section')!='farsh' or
+                row.get('attribution_mode') not in ('explicit','remainder') or not row.get('raw_text') or
+                is_neg(row['raw_text']) or is_univ(row['raw_text']) or has_bare_ambiguous_reader(row['raw_text'])):
+                raise ValueError(f'page {page} audited {ayah} processed-package row failed source/safety check')
+            if record_id=='DOCX-P273-R00712':
+                named_clause=row['raw_text'].split('؛',1)[0].split(':',1)[1]
+                named_clause=(named_clause.replace('بإسكان الهاء ل','').replace('أبي عمرو','أبو عمرو')
+                              .replace('أبي جعفر','أبو جعفر').replace('وأبو','أبو').replace('وال','ال'))
+                named=set()
+                for name in re.split(r'[،,]',named_clause):
+                    name=name.strip()
+                    resolved,unresolved=resolve_readers(name,set())
+                    if unresolved or not resolved:
+                        raise ValueError(f'page {page} audited hāʾ source name failed to resolve: {name}')
+                    named.update(resolved)
+            else:
+                names=[m['raw'] for m in row.get('authority_mentions',[]) if m.get('resolution')=='exact']
+                names=[x.replace('أبي جعفر','أبو جعفر').replace('أبي عمرو','أبو عمرو') for x in names]
+                named=set()
+                for name in names:
+                    resolved,unresolved=resolve_readers(name,set())
+                    if unresolved or not resolved:
+                        raise ValueError(f'page {page} audited {ayah} packaged reader failed to resolve: {name}')
+                    named.update(resolved)
+            if named!=expected_readers:
+                raise ValueError(f'page {page} audited {ayah} explicit source readers changed')
+            loc=T.find(page,anchor,ayah=ayah)
+            if (loc['surah'],loc['startAyah'],loc['startWord'],loc['endWord'])!=expected:
+                raise ValueError(f'page {page} audited {ayah} exact token/span changed')
+            before=len(variants)
+            yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-named),
+                                     (alternate,row['raw_text'],named)],variants,ayah=ayah)
+            added=[x for x in variants[before:] if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) ==
+                (loc['surah'],ayah,loc['startWord'],loc['endWord'])]
+            if len(added)!=1:
+                raise ValueError(f'page {page} audited {ayah} sourced variant could not be constructed')
+            v=added[0]
+            digest=hashlib.sha1((T.norm(alternate)+'|'+','.join(sorted(named))).encode()).hexdigest()[:8]
+            lid=f'AUDIT-P{page}-{loc["surah"]}-{ayah}-{loc["startWord"]}-{digest}'
+            v['id']=f'v-{lid}';v['locusId']=lid;v['differenceType']=dtype
+            v['description']=row['raw_text'];v['sources']=[
+                {'id':f's-{record_id}','variantId':v['id'],
+                 'sourceName':'استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)','sourceType':'other',
+                 'sourceReference':f'qiraat_records.jsonl، {record_id}','sourceText':row['raw_text'],
+                 'verificationNotes':'طوبق الوجه والرواة مع مصدر مستقل للقراءات العشر ورمز المصحف.'},
+                {'id':f's-{record_id}-EXT','variantId':v['id'],
+                 'sourceName':'مصدر مستقل في القراءات العشر','sourceType':'website',
+                 'sourceReference':url,'sourceText':external_text,
+                 'verificationNotes':'مرجع مستقل يثبت الوجه ومجموعة القراء.'}]
+            v['evidence']=[{'source':'مصدر مستقل في القراءات العشر','text':external_text,'url':url}]
     if page == 253:
         source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
         if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
@@ -1064,8 +1153,18 @@ def parse_taghyir_hamz_line(page, line, out):
         r=parse_taghyir_hamz_clause(clause)
         if not r: continue
         anchors,rs,action=r
-        for anchor in anchors:
-            emit_ruling(page,'TAGHYIR_HAMZ',anchor,[(rs,action)],out)
+        anchor_matches=list(BRACE.finditer(clause_anchor_zone(clause)))
+        for index,anchor in enumerate(anchors):
+            segment_end=anchor_matches[index+1].start() if index+1<len(anchor_matches) else len(clause)
+            segment=clause[anchor_matches[index].end():segment_end]
+            occurrences=2 if re.search(r'\(\s*معاً?\s*\)',segment) else 1
+            note=None
+            for parenthetical in PARENS.findall(clause):
+                if 'قصر مد البدل' in parenthetical and T.norm(anchor) in T.norm(parenthetical):
+                    note=parenthetical.strip()
+            for occurrence in range(1,occurrences+1):
+                emit_ruling(page,'TAGHYIR_HAMZ',anchor,[(rs,action)],out,
+                            notes=note,occurrence=occurrence)
 
 # ---- explicit ياءات families ------------------------------------------------
 ANCHOR_CLAUSE_START = re.compile(r'(?=﴿[^﴾]+﴾\s*:)')
@@ -1719,6 +1818,14 @@ def parse_usul(page, lines):
         # section header for الممال
         if line.startswith('الممال') and line.rstrip().endswith(':') and not BRACE.search(line):
             section='imalah'; continue
+        if line.startswith('تغيير الهمز') and line.rstrip().endswith(':') and not BRACE.search(line):
+            section='taghyir_hamz'; continue
+        if section=='taghyir_hamz' and BRACE.search(line) and ':' in line:
+            parse_taghyir_hamz_line(page,line,out)
+            continue
+        if section=='taghyir_hamz' and any(line.startswith(x) for x in
+                ('الممال','الهمزتان','الوقف على مرسوم الخط','وقف حمزة','ياءات','إخفاء أبي جعفر')):
+            section=None
         # fixed-reader families
         matched=False
         for key,(cat,reader,action) in FIXED.items():
@@ -1798,6 +1905,37 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
     """Keep the independently confirmed al-Susi imalah addition isolated from a conflicting
     Warsh default/alternate status already stored at the same token.
     """
+    if page == 273:
+        record=PACKAGE_RECORDS.get('DOCX-P273-R00716')
+        expected='ترقيق الراءات وتغليظ اللامات: ورش يرقق الراء في ﴿بُشِّرَ﴾ و﴿يُؤَخِّرُهُمْ﴾؛ ويغلظ اللام في ﴿ظَلَّ﴾ وصلاً، وله وقفاً الوجهان.'
+        if (record is None or record.get('raw_text')!=expected or is_neg(expected) or is_univ(expected)
+                or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 273 audited tarqiq source row failed exact source/safety check')
+        loc=T.find(273,'بُشِّرَ',occurrence=2)
+        if (loc['surah'],loc['startAyah'],loc['startWord'],loc['baseText'])!=(16,59,7,'بُشِّرَ'):
+            raise ValueError('page 273 second بشر occurrence token changed')
+        emit_ruling(273,'TARQIQ_RA','بُشِّرَ',[(q('ورش'),'ترقيق الراء')],rulings,occurrence=2)
+        new=[x for x in rulings if (x['surah'],x['ayah'],x['startToken'],x['category'])==(16,59,7,'TARQIQ_RA')]
+        if len(new)!=1:
+            raise ValueError('page 273 second Warsh tarqiq locus did not resolve uniquely')
+        new[0]['notes']='ترقيق الراء عن ورش في بُشِّرَ بالآية 59؛ تؤيده إحالة المصدر المستقل إلى حكم الآية السابقة.'
+        return rulings
+    if page == 274:
+        record=PACKAGE_RECORDS.get('DOCX-P274-R00732')
+        expected='﴿لَعِبْرَةً﴾: أمال هاء التأنيث وقفاً الكسائي.'
+        if (record is None or record.get('raw_text')!=expected or is_neg(expected) or is_univ(expected)
+                or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 274 audited waqf-imala source row failed exact source/safety check')
+        loc=T.find(274,'لَعِبْرَةً',ayah=66)
+        if (loc['surah'],loc['startAyah'],loc['startWord'],loc['baseText'])!=(16,66,5,'لَعِبْرَةًۭ ۖ'):
+            raise ValueError('page 274 la-ibrata exact token/base changed')
+        kisai,_=resolve_readers('الكسائي',set())
+        emit_ruling(274,'IMALAH_TAQLIL','لَعِبْرَةً',[(kisai,'إمالة هاء التأنيث وقفاً')],rulings)
+        new=[x for x in rulings if (x['surah'],x['ayah'],x['startToken'],x['category'])==(16,66,5,'IMALAH_TAQLIL')]
+        if len(new)!=1:
+            raise ValueError('page 274 Kisai waqf-imala locus did not resolve uniquely')
+        new[0]['notes']='إمالة هاء التأنيث وقفاً للكسائي.'
+        return rulings
     if page != 254:
         return rulings
     source_line = '﴿الْكَـٰفِرِينَ﴾: أبو عمرو، الدوري عن الكسائي، رويس، وقللها ورش.'
