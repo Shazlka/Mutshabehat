@@ -40,6 +40,7 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
   const [frameworks, setFrameworks] = useState<Framework[]>([])
   const [existing, setExisting] = useState<Existing[]>([])
   const [entityId, setEntityId] = useState('')
+  const [selectedEntityIds, setSelectedEntityIds] = useState<string[]>([])
   const [taxonomyId, setTaxonomyId] = useState('')
   const [assignments, setAssignments] = useState<Array<{ entityId: string; taxonomyId: string }>>([])
   const [status, setStatus] = useState('draft')
@@ -79,7 +80,7 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
 
   const selectedEntity = entities.find((entity) => entity.id === entityId)
   function edit(item: Existing) {
-    setEditing(item); setEntityId(item.targetAuthorityId); setTaxonomyId(item.taxonomyId); setStatus(item.status)
+    setEditing(item); setEntityId(item.targetAuthorityId); setSelectedEntityIds([item.targetAuthorityId]); setTaxonomyId(item.taxonomyId); setStatus(item.status)
     setStartCanonicalKey(item.startCanonicalKey); setEndCanonicalKey(item.endCanonicalKey)
     setColorOverride(item.colorOverride ?? ''); setReadingContext(item.readingContext); setInheritanceAction(item.inheritanceAction); setAppliesToDescendants(item.appliesToDescendants); setScopeType(item.scopeType); setNotes(item.notes ?? ''); setCorpusId(item.corpusId ?? ''); setFrameworkId(item.frameworkId ?? '')
     setFaces(item.faces.length ? item.faces.map((face) => ({ faceType: face.faceType, faceValue: typeof face.faceValue === 'string' ? face.faceValue : JSON.stringify(face.faceValue), labelAr: face.labelAr, preferenceStatus: face.preferenceStatus ?? '' })) : [emptyFace()])
@@ -118,7 +119,7 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
     if (!response?.ok) { setError(data?.error ?? 'تعذر حفظ التعليق.'); return }
     setExisting(data?.annotations ?? []); onSaved()
     editorLoadRequests.delete(key)
-    setEditing(null); setAssignments([]); setFaces([emptyFace()]); setVariants([]); setSourceIds([]); setColorOverride('')
+    setEditing(null); setAssignments([]); setSelectedEntityIds([]); setFaces([emptyFace()]); setVariants([]); setSourceIds([]); setColorOverride('')
     if (navigate && onNavigate) await onNavigate(navigate)
   }
 
@@ -142,7 +143,20 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
   const setPresetFace = (labelAr: string, faceType = 'CUSTOM', faceValue = '') => {
     setFaces((current) => current.some((face) => face.labelAr === labelAr) ? current : [...current.filter((face) => face.labelAr || face.faceValue), { faceType, faceValue, labelAr, preferenceStatus: '' }])
   }
-  const chooseEntity = (id: string) => { setEntityId(id); setAssignments((current) => current.filter((assignment) => assignment.entityId !== id)) }
+  const chooseEntity = (id: string) => {
+    setEntityId(id)
+    setSelectedEntityIds((current) => {
+      if (!current.includes(id)) return [...current, id]
+      const next = current.filter((selectedId) => selectedId !== id)
+      if (entityId === id) setEntityId(next[next.length - 1] ?? '')
+      return next
+    })
+    setAssignments((current) => current.filter((assignment) => assignment.entityId !== id))
+  }
+  const removeSelectedEntity = (id: string) => {
+    setSelectedEntityIds((current) => current.filter((selectedId) => selectedId !== id))
+    if (entityId === id) setEntityId(selectedEntityIds.find((selectedId) => selectedId !== id) ?? '')
+  }
   const compactButton = 'min-h-8 rounded-full border border-[#d7c7a7] bg-white px-3 py-1 text-xs font-bold transition-colors hover:border-[#80662c] data-[selected=true]:border-[#80662c] data-[selected=true]:bg-[#f2e7c7]'
 
   const shell = inline ? 'flex h-full min-h-0 w-[min(460px,42vw)] shrink-0 flex-col border-s border-[#d7c7a7] bg-[#fffdf8]' : 'fixed inset-0 z-[70] flex items-end bg-black/40 sm:items-stretch sm:justify-end'
@@ -158,9 +172,10 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
           {existing.length ? <div className="flex flex-wrap gap-1.5">{existing.map((item) => <div key={item.id} className="flex items-center gap-1 rounded-full border border-[#eadfc9] bg-white px-2 py-1 text-[11px]"><button type="button" onClick={() => edit(item)}>{entities.find((x) => x.id === item.targetAuthorityId)?.nameAr ?? item.targetAuthorityId} · {taxonomies.find((x) => x.id === item.taxonomyId)?.nameAr ?? 'قاعدة'} · {item.faces.length} أوجه</button><button type="button" aria-label="حذف" className="text-[#8a2f1b]" onClick={() => void remove(item)}>×</button></div>)}</div> : <p className="text-[11px] text-[#8b7f6a]">لا توجد تعليقات محفوظة على هذه الكلمة.</p>}
           <div className="space-y-2 rounded-lg border border-[#eadfc9] bg-[#fffaf0] p-2">
             <div className="flex items-center justify-between"><b className="text-xs">السلطة</b>{selectedEntity ? <span className="text-[10px]" style={selectedEntity.color ? { color: selectedEntity.color } : undefined}>● {selectedEntity.nameAr}</span> : null}</div>
-            <div className="flex flex-wrap gap-1.5">{readerEntities.map((entity) => <button key={entity.id} type="button" className={compactButton} data-selected={selectedReaderId === entity.id} style={entity.color ? { borderColor: selectedReaderId === entity.id ? entity.color : undefined } : undefined} onClick={() => chooseEntity(entity.id)}>{entity.nameAr}</button>)}</div>
-            {narratorEntities.length ? <div className="flex flex-wrap gap-1.5 border-t border-[#eadfc9] pt-2">{narratorEntities.map((entity) => <button key={entity.id} type="button" className={compactButton} data-selected={entityId === entity.id} onClick={() => chooseEntity(entity.id)}>{entity.nameAr.replace(/^—\s*/, '')}</button>)}</div> : null}
-            {entityId ? <button type="button" className="text-[11px] font-bold text-[#80662c]" onClick={() => { if (!taxonomyId) { setError('اختر القاعدة أولاً.'); return } if (!assignments.some((item) => item.entityId === entityId && item.taxonomyId === taxonomyId)) setAssignments([...assignments, { entityId, taxonomyId }]) }}>+ إضافة السلطة للقاعدة المختارة</button> : null}
+            <div className="flex flex-wrap gap-1.5">{readerEntities.map((entity) => <button key={entity.id} type="button" className={compactButton} data-selected={selectedEntityIds.includes(entity.id)} style={entity.color ? { borderColor: selectedEntityIds.includes(entity.id) ? entity.color : undefined } : undefined} onClick={() => chooseEntity(entity.id)}>{entity.nameAr}</button>)}</div>
+            {narratorEntities.length ? <div className="flex flex-wrap gap-1.5 border-t border-[#eadfc9] pt-2">{narratorEntities.map((entity) => <button key={entity.id} type="button" className={compactButton} data-selected={selectedEntityIds.includes(entity.id)} onClick={() => chooseEntity(entity.id)}>{entity.nameAr.replace(/^—\s*/, '')}</button>)}</div> : null}
+            {selectedEntityIds.length ? <div className="flex flex-wrap gap-1"><span className="w-full text-[10px] text-[#665b48]">السلطات المختارة</span>{selectedEntityIds.map((id) => { const selected = entities.find((entity) => entity.id === id); return selected ? <span key={id} className="inline-flex items-center gap-1 rounded-full border bg-white px-2 py-1 text-[11px]" style={selected.color ? { borderColor: selected.color } : undefined}><span>{selected.nameAr}</span><button type="button" aria-label={`إزالة ${selected.nameAr}`} className="text-[#8a2f1b]" onClick={() => removeSelectedEntity(id)}>×</button></span> : null })}</div> : null}
+            {selectedEntityIds.length ? <button type="button" className="text-[11px] font-bold text-[#80662c]" onClick={() => { if (!taxonomyId) { setError('اختر القاعدة أولاً.'); return } setAssignments((current) => [...current, ...selectedEntityIds.filter((id) => !current.some((item) => item.entityId === id && item.taxonomyId === taxonomyId)).map((id) => ({ entityId: id, taxonomyId }))]) }}>+ إضافة السلطات للقاعدة المختارة</button> : null}
           </div>
           <div className="space-y-2 rounded-lg border border-[#eadfc9] p-2"><div className="flex gap-1.5"><button type="button" className={compactButton} data-selected={selectedTaxonomy?.category === 'USUL'} onClick={() => { const root = taxonomyRoots.find((t) => t.category === 'USUL'); if (root) { setTaxonomyId(root.id); setError(null) } }}>الأصول</button><button type="button" className={compactButton} data-selected={selectedTaxonomy?.category === 'FARSH'} onClick={() => { const root = taxonomyRoots.find((t) => t.category === 'FARSH'); if (root) { setTaxonomyId(root.id); setError(null) } }}>فرش الحروف</button></div><div className="flex flex-wrap gap-1.5">{taxonomyRoots.filter((root) => root.category === selectedTaxonomy?.category).map((root) => <button key={root.id} type="button" className={compactButton} data-selected={selectedTaxonomy?.id === root.id} onClick={() => setTaxonomyId(root.id)}>{root.nameAr}</button>)}</div>{taxonomyChildren.length ? <div className="flex flex-wrap gap-1.5 border-t border-[#eadfc9] pt-2">{taxonomyChildren.map((taxonomy) => <button key={taxonomy.id} type="button" className={compactButton} data-selected={taxonomyId === taxonomy.id} onClick={() => setTaxonomyId(taxonomy.id)}>{taxonomy.nameAr}</button>)}</div> : null}<p className="text-[10px] text-[#80662c]">{selectedTaxonomy ? `الأصول › ${selectedTaxonomy.nameAr}` : 'اختر نوع القاعدة'}</p></div>
           {!editing && assignments.length ? <div className="flex flex-wrap gap-1.5 rounded-lg border border-[#eadfc9] p-2"><b className="w-full text-[11px]">التعيينات</b>{assignments.map((assignment, index) => <span key={`${assignment.entityId}-${assignment.taxonomyId}`} className="rounded-full border border-[#b99b51] bg-[#fffaf0] px-2 py-1 text-[11px]">{entities.find((e) => e.id === assignment.entityId)?.nameAr} → {taxonomies.find((t) => t.id === assignment.taxonomyId)?.nameAr}<button type="button" className="mr-1 text-[#8a2f1b]" onClick={() => setAssignments(assignments.filter((_, i) => i !== index))}>×</button></span>)}</div> : null}
