@@ -48,7 +48,9 @@ GROUPS = {
 }
 # longest-name-first so "خلف العاشر" wins over "خلف", "الدوري عن الكسائي" over "الدوري"
 NAR_DISAMBIG = {'الدوري عن أبي عمرو': N['الدوري عن أبي عمرو'],
-                'الدوري عن الكسائي': N['الدوري عن الكسائي']}
+                'الدوري عن الكسائي': N['الدوري عن الكسائي'],
+                'إسحاق عن خلف': A.NARRATOR_ALIASES['إسحاق عن خلف'],
+                'إدريس عن خلف': A.NARRATOR_ALIASES['إدريس عن خلف']}
 NAMED = {}
 for k,v in GROUPS.items(): NAMED[k]=set(v)
 for k,v in NAR_DISAMBIG.items(): NAMED[k]={v}

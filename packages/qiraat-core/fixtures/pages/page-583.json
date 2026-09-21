@@ -1,1 +1,145 @@
-[]
+[
+  {
+    "id": "v-D583-كذابا-w2",
+    "surah": 78,
+    "ayah": 35,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "كِذَّٰبًۭا",
+    "variantText": "كِذَابًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D583-كذابا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D583-كذابا-w2",
+        "variantId": "v-D583-كذابا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P583-R03827 | وثيقة الاستخراج المبوّب، صفحة المصحف 583، الكلمات الفرشية",
+        "verificationNotes": "نُقل نص المصدر وربط بموضعه في كلمات المصحف، ثم قوبلت أوجه القراءة ذات الصلة بجهاز Quranpedia للآية المشار إليه في مصدر التحقق الآخر.",
+        "sourceText": "﴿كِذَّٰبٗا﴾ (آية ٣٥ - النبأ): بتشديد الذال للجمهور؛ بتخفيف الذال ﴿كِذَابًا﴾ للكسائي."
+      },
+      {
+        "id": "s-v-D583-كذابا-w2-qp",
+        "variantId": "v-D583-كذابا-w2",
+        "sourceName": "Quranpedia — اختلاف القراءات في الآية",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/35",
+        "verificationNotes": "جهاز الآية يخص التخفيف بالدوري وأبي الحارث عن الكسائي. المرجع: https://quranpedia.net/qiraat/an-naba/35",
+        "sourceText": "جهاز الآية يخص التخفيف بالدوري وأبي الحارث عن الكسائي."
+      }
+    ],
+    "description": "بتخفيف الذال ﴿كِذَابًا﴾ للكسائي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D583-نخره-w2",
+    "surah": 79,
+    "ayah": 11,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "نَّخِرَةًۭ",
+    "variantText": "نَاخِرَةً",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D583-نخره",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D583-نخره-w2",
+        "variantId": "v-D583-نخره-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P583-R03836 | وثيقة الاستخراج المبوّب، صفحة المصحف 583، الكلمات الفرشية",
+        "verificationNotes": "نُقل نص المصدر وربط بموضعه في كلمات المصحف، ثم قوبلت أوجه القراءة ذات الصلة بجهاز Quranpedia للآية المشار إليه في مصدر التحقق الآخر.",
+        "sourceText": "﴿نَّخِرَةٗ﴾: بغير ألف ﴿نَخِرَةً﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وحفص، وأبي جعفر، وروح؛ بألف بعد النون ﴿نَاخِرَةً﴾ للباقين."
+      },
+      {
+        "id": "s-v-D583-نخره-w2-qp",
+        "variantId": "v-D583-نخره-w2",
+        "sourceName": "Quranpedia — اختلاف القراءات في الآية",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naziat/11",
+        "verificationNotes": "جهاز الآية يذكر إدريس وإسحاق عن خلف صراحةً في صيغة الألف، مع رويس والكسائي وخلاد وخلف عن حمزة وشعبة. المرجع: https://quranpedia.net/qiraat/an-naziat/11",
+        "sourceText": "جهاز الآية يذكر إدريس وإسحاق عن خلف صراحةً في صيغة الألف، مع رويس والكسائي وخلاد وخلف عن حمزة وشعبة."
+      }
+    ],
+    "description": "بألف بعد النون ﴿نَاخِرَةً﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D583-طوي-w2",
+    "surah": 79,
+    "ayah": 16,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "طُوًى",
+    "variantText": "طُوَى",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D583-طوي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D583-طوي-w2",
+        "variantId": "v-D583-طوي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P583-R03837 | وثيقة الاستخراج المبوّب، صفحة المصحف 583، الكلمات الفرشية",
+        "verificationNotes": "نُقل نص المصدر وربط بموضعه في كلمات المصحف، ثم قوبلت أوجه القراءة ذات الصلة بجهاز Quranpedia للآية المشار إليه في مصدر التحقق الآخر.",
+        "sourceText": "﴿طُوًى﴾: بتنوين الواو ﴿طُوًى﴾ لابن عامر، وعاصم، وحمزة، والكسائي، وخلف؛ بغير تنوين ﴿طُوَا﴾ للباقين."
+      },
+      {
+        "id": "s-v-D583-طوي-w2-qp",
+        "variantId": "v-D583-طوي-w2",
+        "sourceName": "Quranpedia — اختلاف القراءات في الآية",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naziat/17",
+        "verificationNotes": "في جهاز الآية ١٧ تظهر قراءة التنوين لخلف عن حمزة وإدريس وإسحاق عن خلف والكسائي وحمزة وابن عامر وعاصم، وتُحذف لقالون وورش وأبي عمرو وابن كثير وأبي جعفر ويعقوب. المرجع: https://quranpedia.net/qiraat/an-naziat/17",
+        "sourceText": "في جهاز الآية ١٧ تظهر قراءة التنوين لخلف عن حمزة وإدريس وإسحاق عن خلف والكسائي وحمزة وابن عامر وعاصم، وتُحذف لقالون وورش وأبي عمرو وابن كثير وأبي جعفر ويعقوب."
+      }
+    ],
+    "description": "بغير تنوين ﴿طُوَى﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

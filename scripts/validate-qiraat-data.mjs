@@ -48,12 +48,29 @@ for (const page of PAGES) {
     if (!byLocus.has(key)) byLocus.set(key, [])
     byLocus.get(key).push(v)
   }
-  // No reading may be claimed by two أوجه of the same locus (an overlap = a contradiction).
+  // A reading cannot be assigned to two lexical alternatives. Explicitly sourced, named
+  // performance variants are the exception: a riwaya can have more than one approved way
+  // (e.g. إسكان/اختلاس or two waqf options) at the same token. Keep this exception narrow so
+  // a same-reader split never silently becomes a conflicting word form.
   for (const [locus, group] of byLocus) {
     const seen = new Map()
     for (const v of group) for (const r of v.readingIds) seen.set(r, (seen.get(r) ?? 0) + 1)
     const dup = [...seen].filter(([, c]) => c > 1).map(([r]) => r)
-    if (dup.length) fail(`p${page} token ${locus}: reading(s) ${dup.join(',')} claimed by two أوجه`)
+    const unsupported = dup.filter((readingId) => {
+      const faces = group.filter((v) => v.readingIds.includes(readingId))
+      const notes = faces.map((v) => v.performanceNote?.trim() ?? '')
+      const allHaveIndependentEvidence = faces.every((v) => (
+        Array.isArray(v.sources) && v.sources.some((s) => (
+          /^https?:\/\/(?:www\.)?(?:quranpedia\.net\/qiraat\/|nquran\.com\/)/i.test(s.sourceReference ?? '')
+        ))
+      ))
+      return faces.length < 2
+        || faces.some((v) => v.locusType !== 'performance_variant')
+        || notes.some((note) => !note)
+        || new Set(notes).size !== notes.length
+        || !allHaveIndependentEvidence
+    })
+    if (unsupported.length) fail(`p${page} token ${locus}: reading(s) ${unsupported.join(',')} overlap without distinct, source-verified performance notes`)
   }
 
   // ---- rulings ----

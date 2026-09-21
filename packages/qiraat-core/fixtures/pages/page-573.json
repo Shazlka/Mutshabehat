@@ -44,7 +44,7 @@
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
     "readingIds": [
       "Q09-R01"
     ],
@@ -56,13 +56,229 @@
         "variantId": "v-D573-ليعلم-w2",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
-        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 573، الكلمات الفرشية",
-        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03731",
+        "verificationNotes": "النص المصدر يسمّي رويس صراحةً؛ رُبط بروايته Q09-R01، مع التحقق من رمز كلمة المصحف.",
         "sourceText": "﴿لِّيَعْلَمَ﴾: بفتح الياء مبنياً للفاعل للجمهور؛ بضم الياء مبنياً للمجهول ﴿لِيُعْلَمَ﴾ لرويس."
       }
     ],
     "description": "بضم الياء مبنياً للمجهول ﴿لِيُعْلَمَ﴾",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P573-72-14-1-3",
+    "surah": 72,
+    "ayah": 14,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَّا",
+    "variantText": "وَإِنَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P573-72-14-1-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-14-1-3-DOCX",
+        "variantId": "v-AUDIT-P573-72-14-1-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03723",
+        "sourceText": "﴿وَأَنَّا مِنَّا﴾: بفتح الهمزة لابن عامر، وحفص، وحمزة، والكسائي، وخلف؛ بكسر الهمزة للباقين.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-14-1-3-QP",
+        "variantId": "v-AUDIT-P573-72-14-1-3",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/14",
+        "sourceText": "فتح الهمزة يشمل إسحاق وإدريس عن خلف؛ والكسر للرواة الآخرين.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      }
+    ],
+    "description": "﴿وَأَنَّا مِنَّا﴾: بفتح الهمزة لابن عامر، وحفص، وحمزة، والكسائي، وخلف؛ بكسر الهمزة للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "فتح الهمزة يشمل إسحاق وإدريس عن خلف؛ والكسر للرواة الآخرين.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/14"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P573-72-17-8-4",
+    "surah": 72,
+    "ayah": 17,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَسْلُكْهُ",
+    "variantText": "نَسْلُكْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P573-72-17-8-4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-17-8-4-DOCX",
+        "variantId": "v-AUDIT-P573-72-17-8-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03724",
+        "sourceText": "﴿يَسْلُكْهُ﴾: بياء الغيب ﴿يَسْلُكْهُ﴾ لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نَسْلُكْهُ﴾ للباقين.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-17-8-4-QP",
+        "variantId": "v-AUDIT-P573-72-17-8-4",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/17",
+        "sourceText": "النون: نافع وابن كثير وأبو عمرو وابن عامر وأبو جعفر؛ الياء تشمل الرواة الخمسة المسماة بالجهاز ومنهم خلف العاشر إسحاق وإدريس.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      }
+    ],
+    "description": "﴿يَسْلُكْهُ﴾: بياء الغيب ﴿يَسْلُكْهُ﴾ لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نَسْلُكْهُ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "النون: نافع وابن كثير وأبو عمرو وابن عامر وأبو جعفر؛ الياء تشمل الرواة الخمسة المسماة بالجهاز ومنهم خلف العاشر إسحاق وإدريس.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/17"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P573-72-19-1-5",
+    "surah": 72,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَّهُۥ",
+    "variantText": "وَإِنَّهُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-P573-72-19-1-5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-19-1-5-DOCX",
+        "variantId": "v-AUDIT-P573-72-19-1-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03725",
+        "sourceText": "﴿وَأَنَّهُۥ لَمَّا قَامَ﴾: بفتح الهمزة للجمهور؛ بكسر الهمزة ﴿وَإِنَّهُ﴾ لنافع وشعبة.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-19-1-5-QP",
+        "variantId": "v-AUDIT-P573-72-19-1-5",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/19",
+        "sourceText": "كسر الهمزة: شعبة وورش وقالون؛ والفتح لسائر الرواة.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      }
+    ],
+    "description": "﴿وَأَنَّهُۥ لَمَّا قَامَ﴾: بفتح الهمزة للجمهور؛ بكسر الهمزة ﴿وَإِنَّهُ﴾ لنافع وشعبة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "كسر الهمزة: شعبة وورش وقالون؛ والفتح لسائر الرواة.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/19"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P573-72-28-9-6",
+    "surah": 72,
+    "ayah": 28,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "لَدَيْهِمْ",
+    "variantText": "لَدَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P573-72-28-9-6",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-28-9-6-DOCX",
+        "variantId": "v-AUDIT-P573-72-28-9-6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03729",
+        "sourceText": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-28-9-6-QP",
+        "variantId": "v-AUDIT-P573-72-28-9-6",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/28",
+        "sourceText": "ضم الهاء: خلف وخلاد عن حمزة ورويس وروح عن يعقوب.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      }
+    ],
+    "description": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الهاء: خلف وخلاد عن حمزة ورويس وروح عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/28"
+      }
+    ]
   }
 ]

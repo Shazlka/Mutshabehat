@@ -4,8 +4,8 @@
 The word "خلف" can denote two authorities:
     خلف عن حمزة  = Q06-R01 (a narrator)
     خلف العاشر   = Q10     (a reader, one of the ten)
-Project convention: bare "خلف" means Q06-R01. Resolve Q10 only when the source explicitly says
-"خلف العاشر".
+Project convention: bare "خلف" means Q06-R01. Q10 can also be identified by its named
+narrators (إسحاق/إدريس), including the explicit compounds "إسحاق عن خلف" and "إدريس عن خلف".
 """
 
 READERS = {
@@ -27,6 +27,14 @@ NARRATORS = {
     'إسحاق': 'Q10-R01', 'إدريس': 'Q10-R02',
 }
 
+# Explicit reader-narrator compounds found in the verse apparatus. The word «خلف»
+# here is governed by the named narrator, so these whole-name matches refer to Q10;
+# an unqualified standalone «خلف» still resolves to Q06-R01 below.
+NARRATOR_ALIASES = {
+    'إسحاق عن خلف': 'Q10-R01',
+    'إدريس عن خلف': 'Q10-R02',
+}
+
 # Explicit, unambiguous aliases used by the data files.
 ALIAS = {
     'KHALAF10': 'Q10',          # خلف العاشر — the reader
@@ -38,6 +46,7 @@ ALIAS = {
 ALL = {}
 ALL.update(READERS)
 ALL.update(NARRATORS)
+ALL.update(NARRATOR_ALIASES)
 ALL.update(ALIAS)
 
 READER_OF = {n: r for n, r in

@@ -31,14 +31,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -65,16 +57,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -82,7 +64,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P570-R03702: الممال والمقلل: ﴿مُّسَمًّى﴾ (وقفاً): حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿جَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿ءَاذَانِهِمْ﴾: الدوري عن الكسائي. ﴿ذِلَّةٌ﴾: أمال هاء التأنيث وقفاً الكسائي. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/nooh/4."
+    ]
   },
   {
     "id": "r-p570-IMALAH_TAQLIL-جاء-1",
@@ -110,14 +95,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -135,21 +112,14 @@
         "readingId": "Q06-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P570-R03702: الممال والمقلل: ﴿مُّسَمًّى﴾ (وقفاً): حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿جَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿ءَاذَانِهِمْ﴾: الدوري عن الكسائي. ﴿ذِلَّةٌ﴾: أمال هاء التأنيث وقفاً الكسائي. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/nooh/4."
+    ]
   },
   {
     "id": "r-p570-IMALAH_TAQLIL-ءاذانهم-2",

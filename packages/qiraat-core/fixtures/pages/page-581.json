@@ -1,1 +1,416 @@
-[]
+[
+  {
+    "id": "v-D581-77-23-1--R03809-2",
+    "surah": 77,
+    "ayah": 23,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَقَدَرْنَا",
+    "variantText": "فَقَدَّرْنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D581-77-23-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D581-77-23-1--R03809-2",
+        "variantId": "v-D581-77-23-1--R03809-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03809",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿فَقَدَرْنَا﴾: بتخفيف الدال ﴿فَقَدَرْنَا﴾ لابن كثير، وأبي عمرو، وابن عامر، وعاصم، وحمزة، ويعقوب، وخلف؛ بتشديد الدال ﴿فَقَدَّرْنَا﴾ لنافع والكسائي وأبي جعفر."
+      },
+      {
+        "id": "s-v-D581-77-23-1--R03809-2-qp",
+        "variantId": "v-D581-77-23-1--R03809-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mursalat/23",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تشديد الدال لنافع والكسائي وأبي جعفر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D581-77-30-1--R03810-2",
+    "surah": 77,
+    "ayah": 30,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "ٱنطَلِقُوٓا۟",
+    "variantText": "ٱنطَلَقُوا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D581-77-30-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D581-77-30-1--R03810-2",
+        "variantId": "v-D581-77-30-1--R03810-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03810",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿ٱنطَلِقُوٓاْ إِلَىٰ ظِلٍّ﴾: بكسر همزة الوصل للجمهور؛ بقطع الهمزة مفتوحة ﴿أَنْطَلِقُوا﴾ لرويس."
+      },
+      {
+        "id": "s-v-D581-77-30-1--R03810-2-qp",
+        "variantId": "v-D581-77-30-1--R03810-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mursalat/30",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "فتح اللام لرويس",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "تصحيح الوجه: جهاز الآية يثبت فتح اللام لرويس ولا يثبت قطع الهمزة الوارد في السطر الخام."
+  },
+  {
+    "id": "v-D581-77-33-2--R03814-2",
+    "surah": 77,
+    "ayah": 33,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "جِمَـٰلَتٌۭ",
+    "variantText": "جُمَالَاتٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D581-77-33-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D581-77-33-2--R03814-2",
+        "variantId": "v-D581-77-33-2--R03814-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03814",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بضم الجيم وألف بعد اللام ﴿جُمَالَاتٌ﴾: رويس."
+      },
+      {
+        "id": "s-v-D581-77-33-2--R03814-2-qp",
+        "variantId": "v-D581-77-33-2--R03814-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mursalat/33",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "ضم الجيم وإثبات الألف بعد اللام لرويس",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D581-77-33-2--R03813-3",
+    "surah": 77,
+    "ayah": 33,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "جِمَـٰلَتٌۭ",
+    "variantText": "جِمَالَاتٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R02"
+    ],
+    "locusId": "D581-77-33-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D581-77-33-2--R03813-3",
+        "variantId": "v-D581-77-33-2--R03813-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03813",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بألف بعد اللام جمعاً ﴿جِمَالَاتٌ﴾: نافع، وابن كثير، وأبي عمرو، وابن عامر، وشعبة، وأبي جعفر، وروح."
+      },
+      {
+        "id": "s-v-D581-77-33-2--R03813-3-qp",
+        "variantId": "v-D581-77-33-2--R03813-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mursalat/33",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الجيم وإثبات الألف بعد اللام",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D581-77-33-2--R03812-4",
+    "surah": 77,
+    "ayah": 33,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "جِمَـٰلَتٌۭ",
+    "variantText": "جِمَالَتٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D581-77-33-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D581-77-33-2--R03812-4",
+        "variantId": "v-D581-77-33-2--R03812-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03812",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بحذف الألف بعد اللام جمعاً ﴿جِمَالَتٌ﴾: حفص، وحمزة، والكسائي (ويقف بالهاء مع الإمالة ﴿جِمَالَهْ﴾)، وخلف."
+      },
+      {
+        "id": "s-v-D581-77-33-2--R03812-4-qp",
+        "variantId": "v-D581-77-33-2--R03812-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mursalat/33",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الجيم وحذف الألف بعد اللام",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "أُضيف خلف العاشر لأن الجهاز يسمي إدريس وإسحاق؛ bare خلف في النص لا يضيف Q10."
+  },
+  {
+    "id": "v-D581-77-41-5--R03815-2",
+    "surah": 77,
+    "ayah": 41,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَعُيُونٍۢ",
+    "variantText": "وَعُيُونٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D581-77-41-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D581-77-41-5--R03815-2",
+        "variantId": "v-D581-77-41-5--R03815-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03815",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿وَعُيُونٍ﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين للباقين."
+      },
+      {
+        "id": "s-v-D581-77-41-5--R03815-2-nq",
+        "variantId": "v-D581-77-41-5--R03815-2",
+        "sourceName": "العشر الصغرى - nQuran",
+        "sourceType": "other",
+        "sourceReference": "https://www.nquran.com/ar/index.php?ayano=41&group=tb1&sorano=77&tpath=2",
+        "verificationNotes": "العشر الصغرى - nQuran: جهاز الآية يسند ضم العين لباقي الرواة بعد تسمية ابن كثير وابن ذكوان وشعبة وحمزة والكسائي في الكسر؛ لا أضيف Q10 من لفظ «خلف» وحده. المرجع: https://www.nquran.com/ar/index.php?ayano=41&group=tb1&sorano=77&tpath=2"
+      }
+    ],
+    "description": "ضم العين لنافع وأبي عمرو وهشام وحفص وأبي جعفر ويعقوب؛ لم يُضف Q10 لعدم تسمية إسحاق وإدريس صراحةً في الجهاز المفتوح.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D581-77-41-5--R03815-3",
+    "surah": 77,
+    "ayah": 41,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَعُيُونٍۢ",
+    "variantText": "وَعِيُونٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D581-77-41-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D581-77-41-5--R03815-3",
+        "variantId": "v-D581-77-41-5--R03815-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03815",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿وَعُيُونٍ﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين للباقين."
+      },
+      {
+        "id": "s-v-D581-77-41-5--R03815-3-nq",
+        "variantId": "v-D581-77-41-5--R03815-3",
+        "sourceName": "العشر الصغرى - nQuran",
+        "sourceType": "other",
+        "sourceReference": "https://www.nquran.com/ar/index.php?ayano=41&group=tb1&sorano=77&tpath=2",
+        "verificationNotes": "مطابقة مستقلة لمجموعة الرواة في الآية المحددة."
+      }
+    ],
+    "description": "كسر العين لابن كثير وابن ذكوان وشعبة وحمزة والكسائي",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D581-77-48-2--R03816-2",
+    "surah": 77,
+    "ayah": 48,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D581-77-48-2--R03816",
+    "locusType": "performance_variant",
+    "performanceNote": "إشمام كسرة القاف ضمًّا مع إظهار اللام الأولى",
+    "sources": [
+      {
+        "id": "s-v-D581-77-48-2--R03816-2",
+        "variantId": "v-D581-77-48-2--R03816-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03816",
+        "verificationNotes": "وجه أداء صريح من مصدر الآية، مربوط برمز الكلمة الحقيقي.",
+        "sourceText": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس."
+      },
+      {
+        "id": "s-v-D581-77-48-2--R03816-2-qp",
+        "variantId": "v-D581-77-48-2--R03816-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mursalat/48",
+        "verificationNotes": "مطابقة مستقلة لتفصيل الأداء في الآية."
+      }
+    ],
+    "description": "إشمام كسرة القاف ضمًّا مع إظهار اللام الأولى",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D581-77-48-2--R03816-3",
+    "surah": 77,
+    "ayah": 48,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "D581-77-48-2--R03816",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر خالص مع إدغام اللام الأولى في الثانية",
+    "sources": [
+      {
+        "id": "s-v-D581-77-48-2--R03816-3",
+        "variantId": "v-D581-77-48-2--R03816-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P581-R03816",
+        "verificationNotes": "وجه أداء صريح من مصدر الآية، مربوط برمز الكلمة الحقيقي.",
+        "sourceText": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس."
+      },
+      {
+        "id": "s-v-D581-77-48-2--R03816-3-qp",
+        "variantId": "v-D581-77-48-2--R03816-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mursalat/48",
+        "verificationNotes": "مطابقة مستقلة لتفصيل الأداء في الآية."
+      }
+    ],
+    "description": "كسر خالص مع إدغام اللام الأولى في الثانية",
+    "wajhIndex": 3,
+    "evidence": []
+  }
+]

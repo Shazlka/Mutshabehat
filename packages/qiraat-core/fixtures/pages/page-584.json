@@ -30,12 +30,64 @@
         "variantId": "v-D584-تزكا-w2",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
-        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 584، الكلمات الفرشية",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P584-R03842 | وثيقة الاستخراج المبوّب، صفحة المصحف 584، الكلمات الفرشية",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "﴿تَزَكَّىٰٓ﴾: بتشديد الزاي ﴿تَزَّكَّى﴾ لنافع، وابن كثير، وأبي جعفر، ويعقوب؛ بتخفيف الزاي للباقين."
+      },
+      {
+        "id": "s-v-D584-تزكا-w2-qp",
+        "variantId": "v-D584-تزكا-w2",
+        "sourceName": "Quranpedia — اختلاف القراءات في الآية",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naziat/18",
+        "verificationNotes": "جهاز الآية يبيّن أوجه الزاي والألف: التشديد لنافع وابن كثير وأبي جعفر ويعقوب مع تفصيل وجه ورش؛ ويذكر إسحاق وإدريس عن خلف في التخفيف مع الإمالة. المرجع: https://quranpedia.net/qiraat/an-naziat/18",
+        "sourceText": "تَزَّكَى (تشديد الزاي وفتح الألف لنافع/قالون ويعقوب وأبي جعفر، وتقليل لورش)؛ وتَزَكَّى بإمالة الألف وتخفيف الزاي لإسحاق وإدريس عن خلف وغيرهما."
       }
     ],
     "description": "بتشديد الزاي ﴿تَزَّكَّى﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D584-منذر_من-w2",
+    "surah": 79,
+    "ayah": 45,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مُنذِرُ مَن",
+    "variantText": "مُنذِرٌ مَن",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D584-منذر_من",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D584-منذر_من-w2",
+        "variantId": "v-D584-منذر_من-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P584-R03843 | وثيقة الاستخراج المبوّب، صفحة المصحف 584، الكلمات الفرشية",
+        "verificationNotes": "نُقل نص المصدر وربط بموضعه في كلمات المصحف، ثم قوبلت أوجه القراءة ذات الصلة بجهاز Quranpedia للآية المشار إليه في مصدر التحقق الآخر.",
+        "sourceText": "﴿مُنذِرُ﴾: بغير تنوين على الإضافة وخفض مَن ﴿مُنذِرُ مَن﴾ للجمهور؛ بتنوين منذرٌ ونصب مَن مفعولاً ﴿مُنذِرٌ مَن﴾ لأبي جعفر."
+      },
+      {
+        "id": "s-v-D584-منذر_من-w2-qp",
+        "variantId": "v-D584-منذر_من-w2",
+        "sourceName": "Quranpedia — اختلاف القراءات في الآية",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/tafsir/an-naziat/45",
+        "verificationNotes": "ينص تفسير الآية عند عرض القراءات على قراءة أبي جعفر «مُنذِرٌ مَن» بالتنوين؛ أُسند الوجه إلى روايتي أبي جعفر. المرجع: https://quranpedia.net/tafsir/an-naziat/45",
+        "sourceText": "ينص تفسير الآية عند عرض القراءات على قراءة أبي جعفر «مُنذِرٌ مَن» بالتنوين؛ أُسند الوجه إلى روايتي أبي جعفر."
+      }
+    ],
+    "description": "بتنوين ﴿مُنذِرٌ﴾ ونصب ﴿مَن﴾ مفعولاً لأبي جعفر",
     "wajhIndex": 2,
     "evidence": []
   }

@@ -27,10 +27,25 @@
         "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 576، الكلمات الفرشية",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "﴿تِسْعَةَ عَشَرَ﴾: بفتح عين «عشر» للجمهور؛ بإسكان العين ﴿تِسْعَةَ عْشَرَ﴾ لأبي جعفر."
+      },
+      {
+        "id": "s-QP-DOCX-P576-R03743",
+        "variantId": "v-D576-تسعه_عشر-w2",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-muddaththir/30",
+        "sourceText": "تسكين عين عشر لابن جمّاز وابن وردان عن أبي جعفر.",
+        "verificationNotes": "قوبل الوجه والراويان على بيان القراءات للآية 30 من المدثر."
       }
     ],
     "description": "بإسكان العين ﴿تِسْعَةَ عْشَرَ﴾",
     "wajhIndex": 2,
-    "evidence": []
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "تسكين عين عشر لابن جمّاز وابن وردان عن أبي جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-muddaththir/30"
+      }
+    ]
   }
 ]

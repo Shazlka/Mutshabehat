@@ -1,1 +1,239 @@
-[]
+[
+  {
+    "id": "v-DOCX-563-R03635-c46f2d21",
+    "surah": 67,
+    "ayah": 14,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P563-R03635-14-5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P563-R03635",
+        "variantId": "v-DOCX-563-R03635-c46f2d21",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P563-R03635",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "إسكان الهاء"
+  },
+  {
+    "id": "v-DOCX-563-R03636-2171103a",
+    "surah": 67,
+    "ayah": 20,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يَنصُرُكُم",
+    "variantText": "يَنصُرُكُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DOCX-P563-R03636-20-7",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P563-R03636",
+        "variantId": "v-DOCX-563-R03636-2171103a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P563-R03636",
+        "sourceText": "﴿يَنصُرُكُم﴾: بضم الراء للجمهور؛ بإسكان الراء لأبي عمرو بخلف عن الدوري؛ وباختلاس ضمة الراء للدوري في وجهه الثاني.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P563-R03636-2171103a-EXT",
+        "variantId": "v-DOCX-563-R03636-2171103a",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/20",
+        "sourceText": "يَنصُرُكُم باختلاس ضمة الراء للدوري عن أبي عمرو.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿يَنصُرُكُم﴾: بضم الراء للجمهور؛ بإسكان الراء لأبي عمرو بخلف عن الدوري؛ وباختلاس ضمة الراء للدوري في وجهه الثاني.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "يَنصُرُكُم باختلاس ضمة الراء للدوري عن أبي عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/20"
+      }
+    ],
+    "performanceNote": "اختلاس ضمة الراء، الوجه الآخر للدوري"
+  },
+  {
+    "id": "v-DOCX-563-R03636-2ee39a8b",
+    "surah": 67,
+    "ayah": 20,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يَنصُرُكُم",
+    "variantText": "يَنصُرُكُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "DOCX-P563-R03636-20-7",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P563-R03636",
+        "variantId": "v-DOCX-563-R03636-2ee39a8b",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P563-R03636",
+        "sourceText": "﴿يَنصُرُكُم﴾: بضم الراء للجمهور؛ بإسكان الراء لأبي عمرو بخلف عن الدوري؛ وباختلاس ضمة الراء للدوري في وجهه الثاني.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P563-R03636-2ee39a8b-EXT",
+        "variantId": "v-DOCX-563-R03636-2ee39a8b",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/20",
+        "sourceText": "يَنصُرْكُم بسكون الراء للدوري والسوسي عن أبي عمرو؛ والدوري له أيضاً اختلاس ضمة الراء.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿يَنصُرُكُم﴾: بضم الراء للجمهور؛ بإسكان الراء لأبي عمرو بخلف عن الدوري؛ وباختلاس ضمة الراء للدوري في وجهه الثاني.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "يَنصُرْكُم بسكون الراء للدوري والسوسي عن أبي عمرو؛ والدوري له أيضاً اختلاس ضمة الراء.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/20"
+      }
+    ],
+    "performanceNote": "إسكان الراء"
+  },
+  {
+    "id": "v-DOCX-563-R03637-47485347",
+    "surah": 67,
+    "ayah": 22,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "صِرَٰطٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "DOCX-P563-R03637-22-11",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P563-R03637",
+        "variantId": "v-DOCX-563-R03637-47485347",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P563-R03637",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P563-R03637-47485347-EXT",
+        "variantId": "v-DOCX-563-R03637-47485347",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/22",
+        "sourceText": "قرأ خلف عن حمزة بإشمام الصاد زايا في صراط.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "قرأ خلف عن حمزة بإشمام الصاد زايا في صراط.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/22"
+      }
+    ],
+    "performanceNote": "إشمام الصاد زايا"
+  },
+  {
+    "id": "v-DOCX-563-R03637-645e08dc",
+    "surah": 67,
+    "ayah": 22,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "سِرَٰطٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "DOCX-P563-R03637-22-11",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P563-R03637",
+        "variantId": "v-DOCX-563-R03637-645e08dc",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P563-R03637",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P563-R03637-645e08dc-EXT",
+        "variantId": "v-DOCX-563-R03637-645e08dc",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/22",
+        "sourceText": "قرأ قنبل عن ابن كثير ورويس عن يعقوب بالسين الخالصة في صراط.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "قرأ قنبل عن ابن كثير ورويس عن يعقوب بالسين الخالصة في صراط.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/22"
+      }
+    ]
+  }
+]

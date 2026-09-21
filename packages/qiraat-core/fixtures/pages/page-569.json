@@ -1,1 +1,174 @@
-[]
+[
+  {
+    "id": "v-D569-يوميذ-w2",
+    "surah": 70,
+    "ayah": 11,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَوْمِئِذٍۭ",
+    "variantText": "يَوْمَئِذٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D569-يوميذ",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D569-يوميذ-w2",
+        "variantId": "v-D569-يوميذ-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P569-R03691؛ Quranpedia https://quranpedia.net/qiraat/al-maarij/11",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-maarij/11",
+        "sourceText": "﴿يَوْمَئِذٍ﴾: بكسر الميم ﴿يَوْمِئِذٍ﴾ لابن كثير، وأبي عمرو، وابن عامر، وعاصم، وحمزة، ويعقوب، وخلف؛ بفتح الميم ﴿يَوْمَئِذٍ﴾ لنافع، والكسائي، وأبي جعفر."
+      }
+    ],
+    "description": "بفتح الميم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D569-نزاعه-w2",
+    "surah": 70,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "نَزَّاعَةًۭ",
+    "variantText": "نَزَّاعَةٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D569-نزاعه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D569-نزاعه-w2",
+        "variantId": "v-D569-نزاعه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P569-R03692؛ Quranpedia https://quranpedia.net/tafsir/al-maarij/16",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/tafsir/al-maarij/16",
+        "sourceText": "﴿نَزَّاعَةٗ﴾: بنصب التاء تنويناً ﴿نَزَّاعَةً﴾ لحفص؛ برفع التاء تنويناً ﴿نَزَّاعَةٌ﴾ للباقين."
+      }
+    ],
+    "description": "برفع التاء وتنوينها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D569-لاماناتهم-w2",
+    "surah": 70,
+    "ayah": 32,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لِأَمَـٰنَـٰتِهِمْ",
+    "variantText": "لِأَمَانَتِهِمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D569-لاماناتهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D569-لاماناتهم-w2",
+        "variantId": "v-D569-لاماناتهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P569-R03693؛ Quranpedia https://quranpedia.net/ayahs/70/32/1/27806",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/ayahs/70/32/1/27806",
+        "sourceText": "﴿لِأَمَـٰنَـٰتِهِمْ﴾: بالجمع للجمهور؛ بالمفرد ﴿لِأَمَانَتِهِمْ﴾ لابن كثير."
+      }
+    ],
+    "description": "بالمفرد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D569-بشهاداتهم-w2",
+    "surah": 70,
+    "ayah": 33,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "بِشَهَـٰدَٰتِهِمْ",
+    "variantText": "بِشَهَادَتِهِمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D569-بشهاداتهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D569-بشهاداتهم-w2",
+        "variantId": "v-D569-بشهاداتهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P569-R03694؛ Quranpedia https://quranpedia.net/ayahs/70/33/1/27806",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/ayahs/70/33/1/27806",
+        "sourceText": "﴿بِشَهَـٰدَٰتِهِمْ﴾: بالجمع ﴿بِشَهَادَاتِهِمْ﴾ لحفص ويعقوب؛ بالمفرد ﴿بِشَهَادَتِهِمْ﴾ للباقين."
+      }
+    ],
+    "description": "بالمفرد",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -27,17 +27,20 @@
       {
         "readingId": "Q07-R01",
         "action": "إمالة",
-        "isDefault": true
+        "isDefault": false
       },
       {
         "readingId": "Q07-R02",
         "action": "إمالة",
-        "isDefault": true
+        "isDefault": false
       }
     ],
-    "hasAlternate": false,
+    "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03663 — ﴿الْحَاقَّةُ﴾ (جميعاً)، ﴿بِالْقَارِعَةِ﴾: أمالها الكسائي بخلف عنه وقفاً."
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-بالقارعه-1",
@@ -67,17 +70,20 @@
       {
         "readingId": "Q07-R01",
         "action": "إمالة",
-        "isDefault": true
+        "isDefault": false
       },
       {
         "readingId": "Q07-R02",
         "action": "إمالة",
-        "isDefault": true
+        "isDefault": false
       }
     ],
-    "hasAlternate": false,
+    "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03663 — ﴿الْحَاقَّةُ﴾ (جميعاً)، ﴿بِالْقَارِعَةِ﴾: أمالها الكسائي بخلف عنه وقفاً."
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-نادا-2",
@@ -111,14 +117,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -145,16 +143,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -162,7 +150,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03664 — ﴿نَادَىٰ﴾، ﴿فَٱجْتَبَـٰهُ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف."
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-فاجتباه-3",
@@ -196,14 +187,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -230,16 +213,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -247,7 +220,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03664 — ﴿نَادَىٰ﴾، ﴿فَٱجْتَبَـٰهُ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف."
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-بابصارهم-4",
@@ -305,7 +281,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03665 — ﴿بِأَبْصَـٰرِهِمْ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش."
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-ادراك-5",
@@ -355,16 +334,16 @@
         "action": "إمالة"
       },
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q10-R01",
         "action": "إمالة"
       },
       {
         "authorityId": "Q10-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
@@ -381,7 +360,7 @@
       {
         "readingId": "Q04-R02",
         "action": "إمالة",
-        "isDefault": true
+        "isDefault": false
       },
       {
         "readingId": "Q05-R01",
@@ -409,6 +388,11 @@
         "isDefault": true
       },
       {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
         "readingId": "Q10-R01",
         "action": "إمالة",
         "isDefault": true
@@ -417,16 +401,15 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
-    "hasAlternate": false,
+    "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03666 — ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش.",
+      "مرجع القراءات للآية 69:3 يسمّي إدريس وإسحاق عن خلف في إمالة الراء والألف في ﴿وما أدراك﴾؛ أُضيف Q10-R01 وQ10-R02 استناداً إلى هذا التعيين الصريح: https://quranpedia.net/qiraat/al-haaqqa/3"
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-فتري-6",
@@ -446,6 +429,41 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة وصلاً بخلف",
+        "condition": "وصلاً بخلف"
       }
     ],
     "readings": [
@@ -453,11 +471,56 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة وصلاً بخلف",
+        "isDefault": false,
+        "condition": "وصلاً بخلف"
       }
     ],
-    "hasAlternate": false,
+    "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03667 — ﴿فَتَرَى﴾: وقفاً أمالها أبو عمرو، وحمزة، والكسائي، وخلف، وقللها ورش (وصلاً أمالها السوسي بخلف)."
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-صرعا-7",
@@ -499,14 +562,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -543,16 +598,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -560,7 +605,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03668 — ﴿صَرْعَىٰ﴾: حمزة، الكسائي، وخلف، وأبو عمرو، وقللها ورش بخلف."
+    ]
   },
   {
     "id": "r-p566-IMALAH_TAQLIL-ترا-8",
@@ -602,14 +650,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -646,16 +686,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
@@ -663,7 +693,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03669 — ﴿تَرَىٰ﴾: أمالها أبو عمرو، وحمزة، والكسائي، وخلف، وقللها ورش."
+    ]
   },
   {
     "id": "r-p566-IDGHAM_SAGHIR-فاصبر_لحكم-9",
@@ -707,6 +740,11 @@
       {
         "authorityId": "Q07-R02",
         "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إظهار الراء",
+        "condition": "الوجه الآخر للدوري"
       }
     ],
     "readings": [
@@ -744,11 +782,20 @@
         "readingId": "Q07-R02",
         "action": "إدغام صغير",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إظهار الراء",
+        "isDefault": false,
+        "condition": "الوجه الآخر للدوري"
       }
     ],
-    "hasAlternate": false,
+    "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03670 — الإدغام الصغير: ﴿فَٱصْبِر لِّحُكْمِ﴾: أبو عمرو بخلف عن الدوري. ﴿كَذَّبَت ثَّمُودُ﴾، ﴿فَهَل تَّرَىٰ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي (وابن عامر في كذبت ثمود)."
+    ]
   },
   {
     "id": "r-p566-IDGHAM_SAGHIR-كذبت_ثمود-10",
@@ -833,7 +880,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03670 — الإدغام الصغير: ﴿فَٱصْبِر لِّحُكْمِ﴾: أبو عمرو بخلف عن الدوري. ﴿كَذَّبَت ثَّمُودُ﴾، ﴿فَهَل تَّرَىٰ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي (وابن عامر في كذبت ثمود)."
+    ]
   },
   {
     "id": "r-p566-IDGHAM_SAGHIR-فهل_ترا-11",
@@ -856,10 +906,6 @@
       },
       {
         "authorityId": "Q03-R02",
-        "action": "إدغام صغير"
-      },
-      {
-        "authorityId": "Q04-R01",
         "action": "إدغام صغير"
       },
       {
@@ -891,11 +937,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q04-R01",
-        "action": "إدغام صغير",
-        "isDefault": true
-      },
-      {
         "readingId": "Q06-R01",
         "action": "إدغام صغير",
         "isDefault": true
@@ -918,7 +959,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03670 — الإدغام الصغير: ﴿فَٱصْبِر لِّحُكْمِ﴾: أبو عمرو بخلف عن الدوري. ﴿كَذَّبَت ثَّمُودُ﴾، ﴿فَهَل تَّرَىٰ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي (وابن عامر في كذبت ثمود).",
+      "مرجع القراءات للآية 69:8 يقصر إدغام ﴿فهل ترى﴾ على الدوري والسوسي عن أبي عمرو، روايتي الكسائي، وروايتي حمزة، ولا يذكر هشام؛ حُذف تعيين Q04-R01 المخالف لسطر المصدر: https://quranpedia.net/qiraat/al-haaqqa/8"
+    ]
   },
   {
     "id": "r-p566-IKHFA-rule-69-7-14",
@@ -955,5 +1000,279 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p566-IMALAH_TAQLIL-haqqah-2",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 2,
+    "baseText": "ٱلْحَآقَّةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03663 — ﴿الْحَاقَّةُ﴾ (جميعاً)، ﴿بِالْقَارِعَةِ﴾: أمالها الكسائي بخلف عنه وقفاً."
+    ]
+  },
+  {
+    "id": "r-p566-IMALAH_TAQLIL-haqqah-3",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 3,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 3,
+    "baseText": "ٱلْحَآقَّةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03663 — ﴿الْحَاقَّةُ﴾ (جميعاً)، ﴿بِالْقَارِعَةِ﴾: أمالها الكسائي بخلف عنه وقفاً."
+    ]
+  },
+  {
+    "id": "r-p566-IMALAH_TAQLIL-ta-5-4",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 5,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 5,
+    "baseText": "بِٱلطَّاغِيَةِ",
+    "verificationStatus": "REVIEWED",
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      }
+    ],
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03662 — ﴿ذِلَّةٌ﴾، ﴿بِالطَّاغِيَةِ﴾، ﴿عَاتِيَةٍ﴾، ﴿حَاوِيَةٍ﴾، ﴿بَاقِيَةٍ﴾: أمال هاء التأنيث وقفاً الكسائي."
+    ]
+  },
+  {
+    "id": "r-p566-IMALAH_TAQLIL-ta-6-6",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 6,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 6,
+    "baseText": "عَاتِيَةٍۢ",
+    "verificationStatus": "REVIEWED",
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      }
+    ],
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03662 — ﴿ذِلَّةٌ﴾، ﴿بِالطَّاغِيَةِ﴾، ﴿عَاتِيَةٍ﴾، ﴿حَاوِيَةٍ﴾، ﴿بَاقِيَةٍ﴾: أمال هاء التأنيث وقفاً الكسائي."
+    ]
+  },
+  {
+    "id": "r-p566-IMALAH_TAQLIL-ta-8-5",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 8,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 8,
+    "baseText": "بَاقِيَةٍۢ",
+    "verificationStatus": "REVIEWED",
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      }
+    ],
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03662 — ﴿ذِلَّةٌ﴾، ﴿بِالطَّاغِيَةِ﴾، ﴿عَاتِيَةٍ﴾، ﴿حَاوِيَةٍ﴾، ﴿بَاقِيَةٍ﴾: أمال هاء التأنيث وقفاً الكسائي."
+    ]
+  },
+  {
+    "id": "r-p566-IMALAH_TAQLIL-ta-43-4",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 68,
+    "ayah": 43,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 43,
+    "baseText": "ذِلَّةٌۭ ۖ",
+    "verificationStatus": "REVIEWED",
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      }
+    ],
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03662 — ﴿ذِلَّةٌ﴾، ﴿بِالطَّاغِيَةِ﴾، ﴿عَاتِيَةٍ﴾، ﴿حَاوِيَةٍ﴾، ﴿بَاقِيَةٍ﴾: أمال هاء التأنيث وقفاً الكسائي."
+    ]
   }
 ]

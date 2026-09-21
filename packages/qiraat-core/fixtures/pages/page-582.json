@@ -1,1 +1,390 @@
-[]
+[
+  {
+    "id": "v-D582-78-19-1--R03821-2",
+    "surah": 78,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَفُتِحَتِ",
+    "variantText": "وَفُتِحَتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D582-78-19-face",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D582-78-19-1--R03821-2",
+        "variantId": "v-D582-78-19-1--R03821-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03821",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿وَفُتِحَتِ﴾: بتخفيف التاء ﴿وَفُتِحَتِ﴾ لعاصم، وحمزة، والكسائي، وخلف؛ بتشديد التاء ﴿وَفُتِّحَتِ﴾ للباقين."
+      },
+      {
+        "id": "s-v-D582-78-19-1--R03821-2-qp",
+        "variantId": "v-D582-78-19-1--R03821-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/19",
+        "verificationNotes": "جهاز الآية يذكر إدريس وإسحاق عن خلف، والدوري وأبا الحارث عن الكسائي، وشعبة وحفص عن عاصم، وخلاد عن حمزة في تخفيف التاء مع إدغام بغنة؛ المرجع: https://quranpedia.net/qiraat/an-naba/19"
+      }
+    ],
+    "description": "إدغام التنوين في الواو بغنة مع تخفيف التاء الأولى",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "الجهاز يميز إدريس وإسحاق لخلف العاشر، وخلف وخلاد عن حمزة؛ التخفيف face is one text form.",
+    "performanceNote": "إدغام التنوين في الواو بغنة مع تخفيف التاء الأولى"
+  },
+  {
+    "id": "v-D582-78-19-1--R03821-3",
+    "surah": 78,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَفُتِحَتِ",
+    "variantText": "وَفُتِّحَتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D582-78-19-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D582-78-19-1--R03821-3",
+        "variantId": "v-D582-78-19-1--R03821-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03821",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿وَفُتِحَتِ﴾: بتخفيف التاء ﴿وَفُتِحَتِ﴾ لعاصم، وحمزة، والكسائي، وخلف؛ بتشديد التاء ﴿وَفُتِّحَتِ﴾ للباقين."
+      },
+      {
+        "id": "s-v-D582-78-19-1--R03821-3-qp",
+        "variantId": "v-D582-78-19-1--R03821-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/19",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تشديد التاء للباقين",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D582-78-23-1--R03822-2",
+    "surah": 78,
+    "ayah": 23,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لَّـٰبِثِينَ",
+    "variantText": "لَابِثِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D582-78-23-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D582-78-23-1--R03822-2",
+        "variantId": "v-D582-78-23-1--R03822-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03822",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿لَّـٰبِثِينَ﴾: بألف مدية بعد اللام ﴿لَابِثِينَ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، والكسائي، وأبي جعفر، ورويس، وخلف؛ بقصر اللام بلا ألف ﴿لَبِثِينَ﴾ لحمزة وروح."
+      },
+      {
+        "id": "s-v-D582-78-23-1--R03822-2-qp",
+        "variantId": "v-D582-78-23-1--R03822-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/23",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "إثبات الألف بعد اللام",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "الجهاز يثبت الألف لرويس وروح وخلف العاشر (إدريس وإسحاق)؛ ويجعل الحذف لخلاد وخلف عن حمزة وروح عن يعقوب."
+  },
+  {
+    "id": "v-D582-78-23-1--R03822-3",
+    "surah": 78,
+    "ayah": 23,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لَّـٰبِثِينَ",
+    "variantText": "لَبِثِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R02"
+    ],
+    "locusId": "D582-78-23-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D582-78-23-1--R03822-3",
+        "variantId": "v-D582-78-23-1--R03822-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03822",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿لَّـٰبِثِينَ﴾: بألف مدية بعد اللام ﴿لَابِثِينَ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، والكسائي، وأبي جعفر، ورويس، وخلف؛ بقصر اللام بلا ألف ﴿لَبِثِينَ﴾ لحمزة وروح."
+      },
+      {
+        "id": "s-v-D582-78-23-1--R03822-3-qp",
+        "variantId": "v-D582-78-23-1--R03822-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/23",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "حذف الألف بعد اللام لحمزة وروح",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "أُضيف خلاد Q06-R02 وفق جهاز الآية؛ حذف الألف هو الوجه لخلاد وخلف عن حمزة وروح."
+  },
+  {
+    "id": "v-D582-78-25-3--R03823-2",
+    "surah": 78,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَغَسَّاقًۭا",
+    "variantText": "وَغَسَاقًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D582-78-25-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D582-78-25-3--R03823-2",
+        "variantId": "v-D582-78-25-3--R03823-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03823",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿وَغَسَّاقًا﴾: بتشديد السين لحفص، وحمزة، والكسائي، وخلف؛ بتخفيف السين ﴿وَغَسَاقًا﴾ للباقين."
+      },
+      {
+        "id": "s-v-D582-78-25-3--R03823-2-qp",
+        "variantId": "v-D582-78-25-3--R03823-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/25",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تخفيف السين للباقين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D582-78-25-3--R03823-3",
+    "surah": 78,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَغَسَّاقًۭا",
+    "variantText": "وَغَسَّاقًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R02",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D582-78-25-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D582-78-25-3--R03823-3",
+        "variantId": "v-D582-78-25-3--R03823-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03823",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿وَغَسَّاقًا﴾: بتشديد السين لحفص، وحمزة، والكسائي، وخلف؛ بتخفيف السين ﴿وَغَسَاقًا﴾ للباقين."
+      },
+      {
+        "id": "s-v-D582-78-25-3--R03823-3-qp",
+        "variantId": "v-D582-78-25-3--R03823-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/25",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تشديد السين مع الإدغام بغنة",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "أُضيف Q10 لأن الجهاز يسمي إدريس وإسحاق؛ bare خلف عن حمزة في المجموعة المنفردة لا يسقط هذا الإثبات المستقل."
+  },
+  {
+    "id": "v-D582-78-25-3--R03823-4",
+    "surah": 78,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَغَسَّاقًۭا",
+    "variantText": "وَغَسَّاقًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "D582-78-25-3--R03823",
+    "locusType": "performance_variant",
+    "performanceNote": "تشديد السين مع الإدغام بغير غنة لخلف عن حمزة",
+    "sources": [
+      {
+        "id": "s-v-D582-78-25-3--R03823-4",
+        "variantId": "v-D582-78-25-3--R03823-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03823",
+        "verificationNotes": "وجه أداء صريح من مصدر الآية، مربوط برمز الكلمة الحقيقي.",
+        "sourceText": "﴿وَغَسَّاقًا﴾: بتشديد السين لحفص، وحمزة، والكسائي، وخلف؛ بتخفيف السين ﴿وَغَسَاقًا﴾ للباقين."
+      },
+      {
+        "id": "s-v-D582-78-25-3--R03823-4-qp",
+        "variantId": "v-D582-78-25-3--R03823-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/25",
+        "verificationNotes": "مطابقة مستقلة لتفصيل الأداء في الآية."
+      }
+    ],
+    "description": "تشديد السين مع الإدغام بغير غنة لخلف عن حمزة",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-D582-78-19-1--R03821-4",
+    "surah": 78,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَفُتِحَتِ",
+    "variantText": "وَفُتِحَتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "D582-78-19-face",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D582-78-19-1--R03821-4",
+        "variantId": "v-D582-78-19-1--R03821-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03821",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿وَفُتِحَتِ﴾: بتخفيف التاء ﴿وَفُتِحَتِ﴾ لعاصم، وحمزة، والكسائي، وخلف؛ بتشديد التاء ﴿وَفُتِّحَتِ﴾ للباقين."
+      },
+      {
+        "id": "s-v-D582-78-19-1--R03821-4-qp",
+        "variantId": "v-D582-78-19-1--R03821-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/an-naba/19",
+        "verificationNotes": "جهاز الآية يفرد خلفاً عن حمزة بالتخفيف وإدغام التنوين بلا غنة؛ المرجع: https://quranpedia.net/qiraat/an-naba/19"
+      }
+    ],
+    "description": "إدغام التنوين في الواو بلا غنة مع تخفيف التاء الأولى",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "الجهاز يميز إدريس وإسحاق لخلف العاشر، وخلف وخلاد عن حمزة؛ التخفيف face is one text form.",
+    "performanceNote": "إدغام التنوين في الواو بلا غنة مع تخفيف التاء الأولى"
+  }
+]
