@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T17:56:00+04:00",
+  "updatedAt": "2026-09-21T18:05:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -62,7 +62,7 @@
       248,
       249
     ],
-    "status": "verified_predeploy",
+    "status": "production_verified",
     "variantsAdded": 3,
     "readerAssignmentsAdded": 16,
     "variantTextCorrections": 0,
@@ -76,11 +76,14 @@
     "baseCommit": "0dee984a68748ccc7ad329cba3ec3da1b855ac8d",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "pushed": false,
-    "vercelState": "pending",
-    "productionApiSmoke": "pending"
+    "commit": "6a80a2d6b316047bf10e1ef2279c0feca60af6a6",
+    "pushed": true,
+    "vercelState": "READY",
+    "deploymentId": "dpl_4rXFLtcj8GWuxLyX2ZwA3bT377GY",
+    "deploymentUrl": "https://mutshabehat-v2-go8sz818f-shazlka-s-projects.vercel.app",
+    "productionApiSmoke": "Stable public debug API returned both distinct 12:105 forms, the 12:109 الغيب form, and the 13:3 tashdid form with Yaqub readers at exact token spans and expected IDs."
   },
-  "lastConfirmedDeployedDataCommit": "0dee984a68748ccc7ad329cba3ec3da1b855ac8d",
+  "lastConfirmedDeployedDataCommit": "6a80a2d6b316047bf10e1ef2279c0feca60af6a6",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -21154,7 +21157,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
+  "currentHeadCommit": "6a80a2d6b316047bf10e1ef2279c0feca60af6a6",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -22436,11 +22439,11 @@
     }
   },
   "lastProductionSmokeAttempt": {
-    "pages": [456],
+    "pages": [248, 249],
     "status": "passed",
-    "reason": "The stable public production debug API returned both new audited variants at their exact Sad token spans, with verbatim Hafs base text and all eight expected reader assignments."
+    "reason": "The stable public production debug API returned both distinct 12:105 forms, the 12:109 الغيب form, and the 13:3 tashdid form with Yaqub at exact token spans, verbatim Hafs bases, and expected reading IDs."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_5Vy4nvd8VCpQQrV5P8a6noyc8gx7",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-2acnywin9-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Pages 248–249 predeploy verified: page 248 adds three audited words at Yusuf 12:105 and 12:109; page 249 adds Yaqub's two narrator assignments to the existing 13:3 tashdid word. This is targeted-locus coverage, not full-page completeness. Page 456 and page 247 remain production-verified; page-by-page reconciliation continues."
+  "lastConfirmedVercelDeploymentId": "dpl_4rXFLtcj8GWuxLyX2ZwA3bT377GY",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-go8sz818f-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Pages 248–249 production-verified: page 248 adds three audited words at Yusuf 12:105 and 12:109; page 249 adds Yaqub's two narrator assignments to the existing 13:3 tashdid word. This is targeted-locus coverage, not full-page completeness. Page 456 and page 247 remain production-verified; page-by-page reconciliation continues."
 }
