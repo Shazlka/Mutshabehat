@@ -588,6 +588,8 @@ export default function Mushaf1441Viewer({
   const qiraatRulesByPageRef = useRef<Record<string, QiraatRule[]>>({})
   // Per-occurrence أصول rulings — the ones that colour a word without changing its rasm.
   const [qiraatRulingsByPage, setQiraatRulingsByPage] = useState<Record<string, QiraatRuling[]>>({})
+  const [resolvedQiraatByPage, setResolvedQiraatByPage] = useState<Record<number, Array<{ canonical_word_key: string; target_authority_id: string; resolved_face_count: number; has_multiple_faces: boolean; resolved_color: string | null }>>>({})
+  const resolvedQiraatRequestsRef = useRef(new Map<number, Promise<Array<{ canonical_word_key: string; target_authority_id: string; resolved_face_count: number; has_multiple_faces: boolean; resolved_color: string | null }>>>() )
   const qiraatRulingsByPageRef = useRef<Record<string, QiraatRuling[]>>({})
   const qiraatRequestsRef = useRef(new Map<string, Promise<{ variants: QiraatVariant[]; rules: QiraatRule[]; rulings: QiraatRuling[] }>>())
   // أصول colouring is its own toggle: a reader who knows the rules may not want the page tinted.
@@ -1144,6 +1146,7 @@ export default function Mushaf1441Viewer({
       .filter((page) => page >= MIN_PAGE && page <= MAX_PAGE)
 
     void Promise.all(pages.map((page) => fetchQiraatForPage(page, qiraatIncludeReviewed)))
+      .then(() => Promise.all(pages.map((page) => fetchResolvedQiraatForPage(page))))
       .then(() => {
         if (cancelled) return
         // One state publication for the whole mounted window avoids rerendering every page slot as
@@ -1458,6 +1461,23 @@ export default function Mushaf1441Viewer({
     } finally {
       if (qiraatRequestsRef.current.get(cacheKey) === request) qiraatRequestsRef.current.delete(cacheKey)
     }
+  }
+
+  async function fetchResolvedQiraatForPage(nextPage: number) {
+    const cached = resolvedQiraatByPage[nextPage]
+    if (cached) return cached
+    const inFlight = resolvedQiraatRequestsRef.current.get(nextPage)
+    if (inFlight) return inFlight
+    const request = fetch(`/api/mushaf-1441/qiraat-resolved?page=${nextPage}`)
+      .then(async (response) => {
+        if (!response.ok) return []
+        const payload = await response.json() as { annotations?: Array<{ canonical_word_key: string; target_authority_id: string; resolved_face_count: number; has_multiple_faces: boolean; resolved_color: string | null }> }
+        const rows = Array.isArray(payload.annotations) ? payload.annotations : []
+        setResolvedQiraatByPage((current) => ({ ...current, [nextPage]: rows }))
+        return rows
+      })
+    resolvedQiraatRequestsRef.current.set(nextPage, request)
+    try { return await request } finally { resolvedQiraatRequestsRef.current.delete(nextPage) }
   }
 
   function isWordTarget(target: AnnotationTarget): target is Extract<AnnotationTarget, { targetType: 'word' }> {
@@ -2297,7 +2317,9 @@ export default function Mushaf1441Viewer({
             .map((c) => c.category).filter((c) => !qiraatView.disabledCategories.includes(c)))
           : undefined,
       )
-    const hasQiraatData = Boolean(qiraatMarker) || Boolean(rulingMarker) || qiraatOverrideText !== null || qiraatSuppressed
+    const resolvedAnnotations = (resolvedQiraatByPage[word.pageNumber] ?? []).filter((annotation) => annotation.canonical_word_key === canonicalKeyForWord(word))
+    const resolvedFaceCount = resolvedAnnotations.reduce((count, annotation) => Math.max(count, annotation.resolved_face_count), 0)
+    const hasQiraatData = Boolean(qiraatMarker) || Boolean(rulingMarker) || qiraatOverrideText !== null || qiraatSuppressed || resolvedAnnotations.length > 0
 
     // QCF glyphs only with this page's own loaded font, and only for the exact Hafs text they were
     // drawn for; a Riwayah substitution always falls back to flowing Unicode text (Part 21).
@@ -2496,6 +2518,7 @@ export default function Mushaf1441Viewer({
               }}
             />
           ) : null}
+          {resolvedAnnotations.length ? <span aria-hidden="true" title={`${resolvedAnnotations.length} تعليقات محفوظة`} style={{ position: 'absolute', insetInlineEnd: -4, top: -5, minWidth: 7, height: 7, paddingInline: resolvedFaceCount > 1 ? 2 : 0, borderRadius: 9999, background: resolvedAnnotations[0].resolved_color ?? '#80662c', color: 'white', fontSize: 7, lineHeight: '7px', textAlign: 'center' }}>{resolvedFaceCount > 1 ? resolvedFaceCount : ''}</span> : null}
         </span>
       </button>
     )
@@ -4701,6 +4724,9 @@ export default function Mushaf1441Viewer({
             onClose={() => setQiraatEditorWord(null)}
             onSaved={() => {
               setToast('تم حفظ تعليق القراءات وتحديث القراءة المعروضة.')
+              resolvedQiraatRequestsRef.current.delete(qiraatEditorWord.pageNumber)
+              setResolvedQiraatByPage((current) => { const next = { ...current }; delete next[qiraatEditorWord.pageNumber]; return next })
+              void fetchResolvedQiraatForPage(qiraatEditorWord.pageNumber)
             }}
             onNavigate={navigateQiraatEditorWord}
             initialScope={qiraatScopePreview}
