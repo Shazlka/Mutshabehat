@@ -123,6 +123,52 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     as sourceText and store only the independently corroborated form as the actual variant.
     """
     source_links_added = 0
+    if page in (250,251):
+        cases=[
+            {
+                'ayah':6,'anchor':'قَبْلِهِمُ','alternate':'قَبْلِهِمِ',
+                'sourceLine':'بكسر الهاء والميم وصلاً ﴿قَبْلِهِمِ الْمَثُلَاتُ﴾: أبو عمرو، يعقوب.',
+                'resolverText':'أبو عمرو، يعقوب','readers':{'Q03-R01','Q03-R02','Q09-R01','Q09-R02'},
+                'externalText':'كسر الهاء والميم وصلاً في «قبلهم المثلات» أبو عمرو ويعقوب.',
+                'suffix':'P250-13-6',
+            }
+        ] if page==250 else [
+            {
+                'ayah':18,'anchor':'لِرَبِّهِمُ','alternate':'لِرَبِّهِمِ',
+                'sourceLine':'بكسر الهاء والميم وصلاً: أبو عمرو، يعقوب.',
+                'resolverText':'أبو عمرو، يعقوب','readers':{'Q03-R01','Q03-R02','Q09-R01','Q09-R02'},
+                'externalText':'ومثلها «لربهم الحسنى» في كسر الهاء والميم وصلاً لأبي عمرو ويعقوب.',
+                'suffix':'P251-13-18',
+            }
+        ]
+        for case in cases:
+            if case['sourceLine'] not in {line.strip() for line in lines} or is_neg(case['sourceLine']) or is_univ(case['sourceLine']):
+                raise ValueError(f"page {page} audited meem source row missing/unsafe")
+            loc=T.find(page,case['anchor'],ayah=case['ayah'])
+            if (loc['surah'],loc['startAyah'],loc['baseText']) != (13,case['ayah'],case['anchor']):
+                raise ValueError(f"page {page} audited meem token/base changed")
+            resolved,unresolved=resolve_readers(case['resolverText'],set())
+            if unresolved or resolved!=case['readers']:
+                raise ValueError(f"page {page} audited meem reader group changed")
+            before=len(variants)
+            yield_block(page,case['anchor'],[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-case['readers']),
+                (case['alternate'],'بكسر الميم وصلاً',case['readers'])],variants)
+            added=[v for v in variants[before:] if v.get('surah')==13 and v.get('ayah')==case['ayah'] and v.get('startToken')==loc['startWord']]
+            if len(added)!=1:
+                raise ValueError(f"page {page} audited meem variant partition failed")
+            variant=added[0];variant['id']=f"v-AUDIT-{case['suffix']}";variant['locusId']=f"AUDIT-{case['suffix']}"
+            for i,src in enumerate(variant.get('sources',[]),1):
+                src['id']=f"s-AUDIT-{case['suffix']}-{i}"
+                src['variantId']=variant['id']
+            if variant.get('sources'):
+                variant['sources'][0].update({'sourceReference':f'وثيقة استخراج القراءات العشر، صفحة المصحف {page}، الكلمات الفرشية',
+                    'sourceText':case['sourceLine'],'verificationNotes':'قوبلت مجموعة أبي عمرو ويعقوب المنصوص عليها بالمرجع المستقل، وثبت نص حفص من رمز الصفحة.'})
+            url='https://jamharah.net/showthread.php?p=176127'
+            variant['sources'].append({'id':f"s-ITHAF-{case['suffix']}",'variantId':variant['id'],
+                'sourceName':'إتحاف فضلاء البشر وغيث النفع، نقلاً في جمهرة العلوم','sourceType':'printed-book',
+                'sourceReference':url,'sourceText':case['externalText'],
+                'verificationNotes':'المرجع يثبت كسر ميم الجمع وصلاً لأبي عمرو ويعقوب؛ اقتصر الاستيراد على المجموعة الصريحة الخالية من الإبهام.'})
+            variant['evidence']=[{'source':'إتحاف فضلاء البشر وغيث النفع، نقلاً في جمهرة العلوم','text':case['externalText'],'url':url}]
     if page == 248:
         # The printed table gives two different non-Hafs spellings at the same token.
         # Keep both only after checking their explicitly named groups independently.
@@ -1157,6 +1203,10 @@ def parse_usul(page, lines):
         # assignments at the same loci (including a same-reader face conflict). Hold
         # them for manual reconciliation instead of merging potentially incompatible faces.
         if page==249 and ('﴿النَّاس' in line or '﴿النَّار' in line):
+            continue
+        if page==250 and '﴿بِمِقْدَارٍ﴾' in line and '﴿بِالنَّهَارِ﴾' in line:
+            continue
+        if page==251 and '﴿النَّار' in line:
             continue
         head=line.split(':')[0]
         if is_neg(line) or has_bare_ambiguous_reader(line): continue

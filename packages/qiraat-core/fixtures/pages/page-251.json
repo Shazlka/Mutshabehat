@@ -116,5 +116,56 @@
     "description": "بالياء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P251-13-18",
+    "surah": 13,
+    "ayah": 18,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لِرَبِّهِمُ",
+    "variantText": "لِرَبِّهِمِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P251-13-18",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P251-13-18-1",
+        "variantId": "v-AUDIT-P251-13-18",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة استخراج القراءات العشر، صفحة المصحف 251، الكلمات الفرشية",
+        "verificationNotes": "قوبلت مجموعة أبي عمرو ويعقوب المنصوص عليها بالمرجع المستقل، وثبت نص حفص من رمز الصفحة.",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو، يعقوب."
+      },
+      {
+        "id": "s-AUDIT-P251-13-18-2",
+        "variantId": "v-AUDIT-P251-13-18",
+        "sourceName": "إتحاف فضلاء البشر وغيث النفع، نقلاً في جمهرة العلوم",
+        "sourceType": "printed-book",
+        "sourceReference": "https://jamharah.net/showthread.php?p=176127",
+        "sourceText": "ومثلها «لربهم الحسنى» في كسر الهاء والميم وصلاً لأبي عمرو ويعقوب.",
+        "verificationNotes": "المرجع يثبت كسر ميم الجمع وصلاً لأبي عمرو ويعقوب؛ اقتصر الاستيراد على المجموعة الصريحة الخالية من الإبهام."
+      }
+    ],
+    "description": "بكسر الميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "إتحاف فضلاء البشر وغيث النفع، نقلاً في جمهرة العلوم",
+        "text": "كسر الميم وصلاً أبو عمرو ويعقوب عند التقاء الميم بالساكن.",
+        "url": "https://jamharah.net/showthread.php?p=176127"
+      }
+    ]
   }
 ]
