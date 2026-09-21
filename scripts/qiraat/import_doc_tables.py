@@ -164,6 +164,61 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     as sourceText and store only the independently corroborated form as the actual variant.
     """
     source_links_added = 0
+    # Explicit, source-partitioned faces on pages 439--442.  These rows are
+    # intentionally handled here because their prose contains parenthetical
+    # waqf/performance notes and the generic two-clause parser cannot safely
+    # partition them.  Every block is checked against the packaged source and
+    # anchored to the real token; the base (Q05) face is retained in the block.
+    audited_439_442 = {
+      439: [
+        ('DOCX-P439-R02436','بَيِّنَتٍ','بَيِّنَاتٍ',40,24,
+         {'Q01-R01','Q02-R01','Q02-R02','Q04-R01','Q05-R01','Q08-R01','Q09-R01'},
+         'بالجمع'),
+      ],
+      440: [
+        ('DOCX-P440-R02448','صِرَٰطٍ','سِرَٰطٍ',4,2,
+         {'Q02-R02','Q09-R02'},'بالسين'),
+        ('DOCX-P440-R02448','صِرَٰطٍ','صِرَٰطٍ',4,2,
+         {'Q06-R01','Q06-R02'},'بإشمام الصاد زياً'),
+        ('DOCX-P440-R02451','أَيْدِيهِمْ','أَيْدِيهُمُ',9,4,
+         {'Q09-R01','Q09-R02'},'بضم الهاء'),
+        ('DOCX-P440-R02452','سَدّٗا','سُدًّا',9,5,
+         {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q04-R01','Q04-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02','Q09-R01','Q09-R02'},'بضم السين'),
+        ('DOCX-P440-R02453','عَلَيْهِمْ','عَلَيْهُمُ',10,2,
+         {'Q06-R01','Q06-R02','Q09-R01','Q09-R02'},'بضم الهاء'),
+      ],
+      442: [
+        ('DOCX-P442-R02477','صَيْحَةٗ وَٰحِدَةٗ','صَيْحَةٌ وَاحِدَةٌ',29,4,
+         {'Q08-R01','Q08-R02'},'بالرفع'),
+        ('DOCX-P442-R02482','الْعُيُونِ','ٱلْعِيُونِ',34,10,
+         {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02'},'بكسر العين'),
+        ('DOCX-P442-R02483','ثَمَرِهِۦ','ثُمُرِهِۦ',35,3,
+         {'Q06-R01','Q06-R02','Q07-R01','Q07-R02'},'بضمتين'),
+        ('DOCX-P442-R02484','وَمَا عَمِلَتْهُ','وَمَا عَمِلَتْ',35,4,
+         {'Q04-R01','Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q10-R01','Q10-R02'},'بحذف الهاء'),
+      ],
+    }
+    for record_id, anchor, alternate, ayah, word, readers, action in audited_439_442.get(page,[]):
+        rec=PACKAGE_RECORDS.get(record_id)
+        if rec is None or rec.get('raw_text') not in lines:
+            raise ValueError(f'page {page} audited source row missing: {record_id}')
+        if is_neg(rec['raw_text']) or is_univ(rec['raw_text']):
+            raise ValueError(f'page {page} audited source row unsafe: {record_id}')
+        loc=T.find(page,anchor,ayah=ayah)
+        if loc['startWord'] != word or not readers <= ALL20 or 'Q05-R02' in readers:
+            raise ValueError(f'page {page} audited face token/partition changed: {record_id}')
+        remainder=ALL20-readers
+        if not remainder: continue
+        yield_block(page,anchor,[(None,'للباقين',remainder),(alternate,action,readers)],variants,ayah=ayah)
+        if variants:
+            # Two independent performance faces can share the same anchor; keep
+            # their fixture identities distinct while retaining the same token.
+            if record_id == 'DOCX-P440-R02448' and action == 'بإشمام الصاد زياً':
+                suffix='-ishmam'
+                variants[-1]['id'] += suffix
+                variants[-1]['sources'][0]['id'] += suffix
+                variants[-1]['sources'][0]['variantId'] += suffix
+            variants[-1]['sources'][0].update({'sourceReference':f'وثيقة الاستخراج، {record_id}','sourceText':rec['raw_text']})
     def require_packaged_source(page_no, raw_text):
         rows=[r for r in PACKAGE_RECORDS.values() if r.get('page_no')==page_no and
               r.get('section')=='farsh' and r.get('raw_text')==raw_text]
@@ -3585,12 +3640,34 @@ def checked_audited_inline_faces(page, lines):
              'برفع الكلمتين'),
         ],
         444: [
-            ('DOCX-P444-R02501','شُغُلٍ','شُغْلٍ','نافع، ابن كثير، أبو عمرو، خلف العاشر',55,
+            ('DOCX-P444-R02501','شُغُلٍ','شُغْلٍ','نافع، ابن كثير، أبو عمرو، خلف',55,
              'بإسكان الغين'),
             ('DOCX-P444-R02502','فَـٰكِهُونَ','فَكِهُونَ','أبو جعفر',55,
              'بحذف الألف'),
-            ('DOCX-P444-R02504','وَأَنِ ٱعْبُدُونِي','وَأَنُ اعْبُدُونِي','نافع، ابن كثير، ابن عامر، الكسائي، أبو جعفر، خلف العاشر',61,
+            ('DOCX-P444-R02504','وَأَنِ ٱعْبُدُونِي','وَأَنُ اعْبُدُونِي','نافع، ابن كثير، ابن عامر، الكسائي، أبو جعفر',61,
              'بضم النون وصلاً'),
+            ('DOCX-P444-R02506','جِبِلّٗا','جُبُلًّا','ابن كثير، حمزة، الكسائي، خلف',62,
+             'بضم الجيم والباء وتشديد اللام'),
+            ('DOCX-P444-R02511','أَيْدِيهِمْ','أَيْدِيهُمُ','يعقوب',65,
+             'بضم الهاء'),
+        ],
+        446: [
+            ('DOCX-P446-R02528','بِزِينَةٍ ٱلْكَوَاكِبِ','بِزِينَةٍ الْكَوَاكِبِ','حمزة',6,
+             'بتنوين زينة وخفض الكواكب'),
+        ],
+        451: [
+            ('DOCX-P451-R02592','عَلَيْهِمْ','عَلَيْهُمُ','حمزة، يعقوب',137,'بضم الهاء'),
+            ('DOCX-P451-R02593','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',142,'بإسكان الهاء'),
+            ('DOCX-P451-R02593','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',145,'بإسكان الهاء'),
+            ('DOCX-P451-R02594','فَٱسْتَفْتِهِمْ','فَاسْتَفْتِهُمُ','رويس',149,'بضم الهاء وصلة الميم'),
+            ('DOCX-P451-R02595','أَصْطَفَى','اصْطَفَى','أبو جعفر',153,'بهمزة وصل تسقط وصلاً وتكسر ابتداءً'),
+        ],
+        453: [
+            ('DOCX-P453-R02604','لْـَٔيْكَةِ','لَيْكَةَ','نافع، ابن كثير، ابن عامر، أبو جعفر',13,'بفتح اللام والتاء بلا همز'),
+            ('DOCX-P453-R02605','فَوَاقٍ','فُوَّاقٍ','حمزة، الكسائي، خلف',15,'بضم الفاء'),
+        ],
+        454: [
+            ('DOCX-P454-R02611','الصِّرَٰطِ','السِّرَٰطِ','قنبل، رويس',22,'بالسين'),
         ],
         447: [
             ('DOCX-P447-R02545','لَا تَنَاصَرُونَ','لَا تَّنَاصَرُونَ','أبو جعفر',25,
@@ -3601,6 +3678,8 @@ def checked_audited_inline_faces(page, lines):
         448: [
             ('DOCX-P448-R02557','الْمُخْلَصِينَ','الْمُخْلِصِينَ','يعقوب',74,
              'بكسر اللام'),
+            ('DOCX-P448-R02554','مِتْنَا','مُتْنَا','أبو جعفر',53,
+             'بضم الميم'),
         ],
         449: [
             ('DOCX-P449-R02568','يَـٰبُنَيَّ','يَابُنَيِّ','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، حمزة، الكسائي، أبو جعفر، يعقوب، خلف العاشر',102,
@@ -4021,6 +4100,8 @@ def checked_audited_inline_faces(page, lines):
     }
     out=[]
     external_face_notes={
+        'DOCX-P454-R02611':('https://quranpedia.net/qiraat/sad/22',
+            'ينص السطر المصدر صراحة على وجهي السين وإشمام الصاد زايًا في الصراط؛ أُبقي الوجهين منفصلين بحسب القارئ.'),
         'DOCX-P560-R03600':('https://quranpedia.net/qiraat/at-talaq/11',
             'يصحح هذا الإسناد المستقل توزيع السطر المقلوب: فتح الياء لقالون وورش وقنبل والبزي والدوري والسوسي وابن وردان وابن جماز وشعبة ورويس.'),
         'DOCX-P560-R03608':('https://quranpedia.net/qiraat/at-tahrim/4',

@@ -202,5 +202,150 @@
     "description": "برفع الراء",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D442-صيحه_واحده-w2",
+    "surah": 36,
+    "ayah": 29,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "صَيْحَةًۭ وَٰحِدَةًۭ",
+    "variantText": "صَيْحَةٌ وَاحِدَةٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D442-صيحه_واحده",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D442-صيحه_واحده-w2",
+        "variantId": "v-D442-صيحه_واحده-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P442-R02477",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿صَيْحَةٗ وَٰحِدَةٗ﴾ (آية ٢٩): بنصب الكلمتين تنويناً للجمهور؛ وبرفعهما ﴿صَيْحَةٌ وَاحِدَةٌ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بالرفع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D442-العيون-w2",
+    "surah": 36,
+    "ayah": 34,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْعُيُونِ",
+    "variantText": "ٱلْعِيُونِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D442-العيون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D442-العيون-w2",
+        "variantId": "v-D442-العيون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P442-R02482",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿الْعُيُونِ﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين ﴿الْعِيُونِ﴾ للباقين."
+      }
+    ],
+    "description": "بكسر العين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D442-ثمرهي-w2",
+    "surah": 36,
+    "ayah": 35,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ثَمَرِهِۦ",
+    "variantText": "ثُمُرِهِۦ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D442-ثمرهي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D442-ثمرهي-w2",
+        "variantId": "v-D442-ثمرهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P442-R02483",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿ثَمَرِهِۦ﴾: بفتحتين للجمهور؛ وبضمتين ﴿ثُمُرِهِ﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بضمتين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D442-وما_عملته-w2",
+    "surah": 36,
+    "ayah": 35,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَمَا عَمِلَتْهُ",
+    "variantText": "وَمَا عَمِلَتْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D442-وما_عملته",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D442-وما_عملته-w2",
+        "variantId": "v-D442-وما_عملته-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P442-R02484",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿وَمَا عَمِلَتْهُ﴾: بهاء الضمير ﴿عَمِلَتْهُ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وحفص، وأبي جعفر، ويعقوب؛ وبحذف الهاء ﴿وَمَا عَمِلَتْ﴾ للباقين."
+      }
+    ],
+    "description": "بحذف الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
