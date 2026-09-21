@@ -77,7 +77,7 @@
       526
     ],
     "status": "locally_verified; deployment_pending",
-    "variantsAdded": 65,
+    "variantsAdded": 66,
     "rulingRecordsNetChanged": 0,
     "reference": "Three four-page audits used qiraat_records.jsonl with exact source rows, real token anchors, and independent Quranpedia evidence. Compact inline rows for p515-518 are handled by checked parser cases.",
     "sourceAudit": "p515-518: 23 variants; p519-522: 21 variants; p523-526: 21 variants. Bare Khalaf is Q06; Q10 appears only with explicit apparatus identification. Ambiguous/conflicting/header/baseline duplicates withheld.",
@@ -22655,7 +22655,7 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Locally verified three-agent Qiraat cycle for Mushaf pages 515-526: 65 source-backed variant records added with exact anchors/provenance; validator, 38/38 tests, TypeScript and production build passed. Deployment/API smoke pending.",
+  "latestSourceCoverageNote": "Locally verified three-agent Qiraat cycle for Mushaf pages 515-526: 66 source-backed variant records added with exact anchors/provenance; validator, 38/38 tests, TypeScript and production build passed. Deployment/API smoke pending.",
   "latestLocalImportCycle": {
     "pagesReviewed": [
       515,
@@ -22686,7 +22686,7 @@
       526
     ],
     "rulingFilesChanged": [],
-    "newVariants": 65,
+    "newVariants": 66,
     "status": "locally verified; deployment pending",
     "details": "Three four-page audits imported source-backed faces and compact inline parser support; rerun is idempotent."
   },
