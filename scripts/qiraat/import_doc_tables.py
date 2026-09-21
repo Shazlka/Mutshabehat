@@ -3076,6 +3076,81 @@ def checked_inline_farsh(page, lines):
     out.extend(checked_audited_515_518_farsh(page, lines))
     out.extend(checked_audited_495_498_farsh(page, lines))
     out.extend(checked_audited_471_474_farsh(page, lines))
+    out.extend(checked_audited_459_462_farsh(page, lines))
+    return out
+
+def checked_audited_459_462_farsh(page, lines):
+    """Recover the explicit, source-partitioned farsh faces on pages 459--462.
+
+    These compact rows do not use the generic two-clause shape (and some describe
+    performance faces with the same rasm).  Keep the additions fail-closed: every
+    row is identified by its processed-package record and every anchor is resolved
+    against the real page token.  A bare ``خلف`` is resolved as Khalaf from Hamza
+    (Q06); Q10 is never inferred.
+    """
+    cases = {
+      459: [
+        ('DOCX-P459-R02653','يَرْضَهُ','يَرْضَهُ','نافع، هشام، عاصم، حمزة، يعقوب',7,'بضم الهاء وقصرها',False),
+        ('DOCX-P459-R02654','يَرْضَهُ','يَرْضَهُ','ابن كثير، الدوري عن أبي عمرو، ابن ذكوان، الكسائي، ابن وردان، خلف',7,'بضم الهاء وإشباع صلتها',False),
+        ('DOCX-P459-R02655','يَرْضَهُ','يَرْضَهُ','أبو عمرو، هشام، ابن جماز',7,'بإسكان الهاء',False),
+        ('DOCX-P459-R02656','لِّيُضِلَّ','لِيَضِلَّ','ابن كثير، أبو عمرو، رويس',8,'بفتح الياء',False),
+        ('DOCX-P459-R02657','أَمَّنْ هُوَ','أَمَنْ هُوَ','الباقين',9,'بتخفيف الميم',False),
+      ],
+      460: [
+        ('DOCX-P460-R02664','وَأَهْلِيهِمْ','وَأَهْلِيهُمُ','يعقوب',15,'بضم الهاء',False),
+        ('DOCX-P460-R02665','لَـٰكِنِ الَّذِينَ','لَـٰكِنَّ الَّذِينَ','أبو جعفر',20,'بتشديد النون وفتحها وصلاً',False),
+      ],
+      461: [
+        ('DOCX-P461-R02672','فَهُوَ','فَهُوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',22,'بإسكان الهاء',True),
+        ('DOCX-P461-R02673','وَقِيلَ','وَقِيلَ','هشام، الكسائي، رويس',24,'بالإشمام',True),
+        ('DOCX-P461-R02674','الْقُرْءَانِ','الْقُرَانِ','ابن كثير',27,'بنقل الهمزة',False),
+        ('DOCX-P461-R02674','قُرْءَانًا','قُرَانًا','ابن كثير',28,'بنقل الهمزة',False),
+        ('DOCX-P461-R02675','سَلَمٗا','سَالِمًا','الباقين',29,'بكسر السين وألف بعد اللام',False),
+      ],
+      462: [
+        ('DOCX-P462-R02679','عَبْدَهُۥ','عِبَادَهُ','حمزة، الكسائي، أبو جعفر، خلف',36,'بالجمع',False),
+        ('DOCX-P462-R02681','كَـٰشِفَـٰتُ ضُرِّهِۦٓ','كَاشِفَاتٌ ضُرَّهُ','أبو عمرو، يعقوب',38,'بتنوين الاسمين ونصب ضره',False),
+        ('DOCX-P462-R02681','مُمْسِكَـٰتُ رَحْمَتِهِۦٓ','مُمْسِكَاتٌ رَحْمَتَهُ','أبو عمرو، يعقوب',38,'بتنوين الاسمين ونصب رحمته',False),
+        ('DOCX-P462-R02682','مَكَانَتِكُمْ','مَكَانَاتِكُمْ','شعبة',39,'بالجمع',False),
+      ],
+    }
+    out=[]
+    for sid,anchor,alternate,reader_text,ayah,description,performance in cases.get(page,[]):
+        row=PACKAGE_RECORDS.get(sid)
+        if not row or row.get('page_no')!=page or row.get('raw_text') not in lines:
+            continue
+        source=row['raw_text']
+        if is_neg(source) or is_univ(source):
+            continue
+        try:
+            readers, unresolved=resolve_readers(reader_text,set())
+            loc=T.find(page,anchor,1,ayah=ayah)
+        except (Unresolved,T.NoMatch):
+            continue
+        if unresolved.strip(' ،,؛.') or not readers:
+            continue
+        base_ids=ALL20-readers
+        if not base_ids or 'Q05-R02' not in base_ids or readers & base_ids:
+            continue
+        before=len(out)
+        yield_block(page,anchor,[(None,'بالوجه المطبوع في حفص',base_ids),
+            (alternate,description,readers)],out,ayah=ayah)
+        if len(out)!=before+1:
+            continue
+        v=out[-1]
+        # Each compact source row is its own face, even when two faces share the
+        # same token text (for example hāʾ sukūn versus hāʾ ṣila).  Keep fixture
+        # IDs/source IDs unique so additive reruns cannot alias those faces.
+        safe_sid=re.sub(r'[^A-Za-z0-9_-]+','-',sid)
+        old_id=v['id']; v['id']=f'{old_id}-{safe_sid}'
+        v['locusId']=f'{v["locusId"]}-{safe_sid}'
+        for source_item in v.get('sources',[]):
+            source_item['id']=f'{source_item["id"]}-{safe_sid}'
+            source_item['variantId']=v['id']
+        v['sources'][0].update({'sourceReference':f'وثيقة الاستخراج المبوّب، صفحة المصحف {page}، {sid}',
+            'sourceText':source,'verificationNotes':'وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).'})
+        if performance:
+            v['locusType']='performance_variant'; v['performanceNote']=description
     return out
 
 def checked_audited_471_474_farsh(page, lines):
@@ -3399,6 +3474,16 @@ def checked_audited_inline_faces(page, lines):
     different forms are dropped, while separate, non-overlapping forms are kept together.
     """
     cases = {
+        464: [
+            # The two Abu Ja'far faces are distinct: Ibn Wardān's alternate has the
+            # fully extended final alif, while the other Abu Ja'far face has the
+            # ordinary yāʾ substitution.  Keep them separate so the reader key
+            # admits both faces instead of collapsing one into the other.
+            ('DOCX-P464-R02693','يَـٰحَسْرَتَىٰ','يَاحَسْرَتَيَ','ابن جماز',56,
+             'بإبدال الألف ياءً مفتوحة'),
+            ('DOCX-P464-R02693','يَـٰحَسْرَتَىٰ','يَاحَسْرَتَايَ','ابن وردان',56,
+             'بالمد المشبع'),
+        ],
         475: [
             ('DOCX-P475-R02798','فَيَكُونُ','فَيَكُونَ','ابن عامر',68,'بنصب النون'),
             ('DOCX-P475-R02799','رُسُلَنَا','رُسْلَنَا','أبو عمرو',70,'بإسكان السين'),
@@ -3464,6 +3549,19 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P397-R02063','فِيهِمْ','فِيهُمُ','يعقوب',14,
              'بضم الهاء'),
         ],
+        467: [
+            ('DOCX-P467-R02723','كَلِمَتُ رَبِّكَ','كَلِمَاتُ','نافع، ابن عامر، أبو جعفر',6,'بالجمع'),
+            ('DOCX-P467-R02724','وَقِهِمْ','وَقِهُمُ','رويس',7,'بضم الهاء'),
+        ],
+        468: [
+            ('DOCX-P468-R02735','وَيُنَزِّلُ','وَيُنْزِلُ','قالون، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر، يعقوب، خلف',13,'بتخفيف الزاي'),
+        ],
+        469: [
+            ('DOCX-P469-R02741','وَالَّذِينَ يَدْعُونَ','تَدْعُونَ','نافع، هشام',20,'بتاء الخطاب'),
+            ('DOCX-P469-R02742','أَشَدَّ مِنْهُمْ','أَشَدَّ مِنكُم','ابن عامر',21,'بكاف الخطاب'),
+            ('DOCX-P469-R02743','تَأْتِيهِمْ','تَأْتِيهُم','يعقوب',22,'بضم الهاء'),
+            ('DOCX-P469-R02744','رُسُلُهُم','رُسْلُهُمْ','أبو عمرو',22,'بإسكان السين'),
+        ],
         435: [
             ('DOCX-P435-R02411','فَلَا تَذْهَبْ نَفْسُكَ','فَلَا تُذْهِبْ نَفْسَكَ','أبو جعفر',8,
              'بضم التاء وكسر الهاء'),
@@ -3517,6 +3615,28 @@ def checked_audited_inline_faces(page, lines):
              'بالهمز'),
             ('DOCX-P450-R02584','وَإِنَّ إِلْيَاسَ','وَإِنَّ الِيَاسَ','ابن ذكوان',123,
              'بهمزة وصل مكسورة ابتداءً'),
+        ],
+        455: [
+            ('DOCX-P455-R02620','لِّيَدَّبَّرُوٓاْ','لِتَدَبَّرُوا','أبو جعفر',29,
+             'بتاء الخطاب وتخفيف الدال'),
+            ('DOCX-P455-R02622','ٱلرِّيحَ','ٱلرِّيَاحَ','أبو جعفر',36,
+             'بالجمع'),
+        ],
+        456: [
+            ('DOCX-P456-R02633','وَٱلْيَسَعَ','وَاللَّيْسَعَ','حمزة، الكسائي، خلف',48,
+             'بلامين وتشديد الياء'),
+            ('DOCX-P456-R02634','تُوعَدُونَ','يُوعَدُونَ','ابن كثير، أبو عمرو',53,
+             'بياء الغيب'),
+            ('DOCX-P456-R02635','وَغَسَّاقٌ','وَغَسَاقٌ','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، يعقوب، أبو جعفر',57,
+             'بتخفيف السين'),
+        ],
+        457: [
+            ('DOCX-P457-R02644','أَنَّمَآ أَنَا۠','إِنَّمَا أَنَا','أبو جعفر',65,
+             'بكسر الهمزة المشددة'),
+        ],
+        458: [
+            ('DOCX-P458-R02649','فَالْحَقُّ','فَالْحَقَّ','عاصم، حمزة، خلف',84,
+             'بنصب القاف'),
         ],
         477: [
             ('DOCX-P477-R02814','قُرْءَانًا','قُرَانًا','ابن كثير',3,

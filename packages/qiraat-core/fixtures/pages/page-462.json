@@ -1,1 +1,145 @@
-[]
+[
+  {
+    "id": "v-D462-عبدهو-w2-DOCX-P462-R02679",
+    "surah": 39,
+    "ayah": 36,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَبْدَهُۥ ۖ",
+    "variantText": "عِبَادَهُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D462-عبدهو-DOCX-P462-R02679",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D462-عبدهو-w2-DOCX-P462-R02679",
+        "variantId": "v-D462-عبدهو-w2-DOCX-P462-R02679",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 462، DOCX-P462-R02679",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿عَبْدَهُۥ﴾: بالمفرد للجمهور؛ وبالجمع ﴿عِبَادَهُ﴾ لحمزة، والكسائي، وأبي جعفر، وخلف."
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D462-كاشفات_ضرهي-w2-DOCX-P462-R02681",
+    "surah": 39,
+    "ayah": 38,
+    "startToken": 22,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "كَـٰشِفَـٰتُ ضُرِّهِۦٓ",
+    "variantText": "كَاشِفَاتٌ ضُرَّهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D462-كاشفات_ضرهي-DOCX-P462-R02681",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D462-كاشفات_ضرهي-w2-DOCX-P462-R02681",
+        "variantId": "v-D462-كاشفات_ضرهي-w2-DOCX-P462-R02681",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 462، DOCX-P462-R02681",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿كَـٰشِفَـٰتُ ضُرِّهِۦٓ﴾، ﴿مُمْسِكَـٰتُ رَحْمَتِهِۦٓ﴾: بحذف التنوين على الإضافة وخفض ضرهِ ورحمتهِ للجمهور؛ وبتنوين الاسمين ونصب «ضُرَّهُ» و«رَحْمَتَهُ» ﴿كَاشِفَاتٌ ضُرَّهُ... مُمْسِكَاتٌ رَحْمَتَهُ﴾ لأبي عمرو ويعقوب."
+      }
+    ],
+    "description": "بتنوين الاسمين ونصب ضره",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D462-ممسكات_رحمتهي-w2-DOCX-P462-R02681",
+    "surah": 39,
+    "ayah": 38,
+    "startToken": 29,
+    "endToken": 30,
+    "operation": "REPLACE",
+    "hafsText": "مُمْسِكَـٰتُ رَحْمَتِهِۦ ۚ",
+    "variantText": "مُمْسِكَاتٌ رَحْمَتَهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D462-ممسكات_رحمتهي-DOCX-P462-R02681",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D462-ممسكات_رحمتهي-w2-DOCX-P462-R02681",
+        "variantId": "v-D462-ممسكات_رحمتهي-w2-DOCX-P462-R02681",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 462، DOCX-P462-R02681",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿كَـٰشِفَـٰتُ ضُرِّهِۦٓ﴾، ﴿مُمْسِكَـٰتُ رَحْمَتِهِۦٓ﴾: بحذف التنوين على الإضافة وخفض ضرهِ ورحمتهِ للجمهور؛ وبتنوين الاسمين ونصب «ضُرَّهُ» و«رَحْمَتَهُ» ﴿كَاشِفَاتٌ ضُرَّهُ... مُمْسِكَاتٌ رَحْمَتَهُ﴾ لأبي عمرو ويعقوب."
+      }
+    ],
+    "description": "بتنوين الاسمين ونصب رحمته",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D462-مكانتكم-w2-DOCX-P462-R02682",
+    "surah": 39,
+    "ayah": 39,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مَكَانَتِكُمْ",
+    "variantText": "مَكَانَاتِكُمْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D462-مكانتكم-DOCX-P462-R02682",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D462-مكانتكم-w2-DOCX-P462-R02682",
+        "variantId": "v-D462-مكانتكم-w2-DOCX-P462-R02682",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 462، DOCX-P462-R02682",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿مَكَانَتِكُمْ﴾: بالمفرد للجمهور؛ وبالجمع ﴿مَكَانَاتِكُمْ﴾ لشعبة."
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,139 @@
-[]
+[
+  {
+    "id": "v-D469-والذين_يدعون-w2",
+    "surah": 40,
+    "ayah": 20,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلَّذِينَ يَدْعُونَ",
+    "variantText": "تَدْعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01"
+    ],
+    "locusId": "D469-والذين_يدعون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D469-والذين_يدعون-w2",
+        "variantId": "v-D469-والذين_يدعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P469-R02741",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَالَّذِينَ يَدْعُونَ﴾: بياء الغيب لابن كثير، وأبي عمرو، وابن ذكوان، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ وبتاء الخطاب ﴿تَدْعُونَ﴾ لنافع وهشام."
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D469-اشد_منهم-w2",
+    "surah": 40,
+    "ayah": 21,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "أَشَدَّ مِنْهُمْ",
+    "variantText": "أَشَدَّ مِنكُم",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D469-اشد_منهم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D469-اشد_منهم-w2",
+        "variantId": "v-D469-اشد_منهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P469-R02742",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَشَدَّ مِنْهُمْ﴾: بهاء الغيبة للجمهور؛ وبكاف الخطاب ﴿أَشَدَّ مِنكُم﴾ لابن عامر."
+      }
+    ],
+    "description": "بكاف الخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D469-تاتيهم-w2",
+    "surah": 40,
+    "ayah": 22,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَّأْتِيهِمْ",
+    "variantText": "تَأْتِيهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D469-تاتيهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D469-تاتيهم-w2",
+        "variantId": "v-D469-تاتيهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P469-R02743",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَأْتِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿تَأْتِيهُم﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D469-رسلهم-w2",
+    "surah": 40,
+    "ayah": 22,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُهُم",
+    "variantText": "رُسْلُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D469-رسلهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D469-رسلهم-w2",
+        "variantId": "v-D469-رسلهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P469-R02744",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿رُسُلُهُم﴾: بإسكان السين ﴿رُسْلُهُمْ﴾ لأبي عمرو؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

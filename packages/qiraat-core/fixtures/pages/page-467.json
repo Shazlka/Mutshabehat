@@ -1,1 +1,73 @@
-[]
+[
+  {
+    "id": "v-D467-كلمت_ربك-w2",
+    "surah": 40,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "كَلِمَتُ رَبِّكَ",
+    "variantText": "كَلِمَاتُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D467-كلمت_ربك",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D467-كلمت_ربك-w2",
+        "variantId": "v-D467-كلمت_ربك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P467-R02723",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿كَلِمَتُ رَبِّكَ﴾: بالمفرد ﴿كَلِمَتُ﴾ لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف (ويقف عليها بالهاء ابن كثير وأبو عمرو والكسائي ويعقوب)؛ وبالجمع ﴿كَلِمَاتُ﴾ لنافع، وابن عامر، وأبي جعفر."
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D467-وقهم-w2",
+    "surah": 40,
+    "ayah": 7,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "وَقِهِمْ",
+    "variantText": "وَقِهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D467-وقهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D467-وقهم-w2",
+        "variantId": "v-D467-وقهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P467-R02724",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَقِهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿وَقِهُمُ﴾ لرويس."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
