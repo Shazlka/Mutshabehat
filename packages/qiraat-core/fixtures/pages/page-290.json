@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "id": "v-D290-خلافك-w2",
+    "surah": 17,
+    "ayah": 76,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "خِلَـٰفَكَ",
+    "variantText": "خَلْفَكَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D290-خلافك",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D290-خلافك-w2",
+        "variantId": "v-D290-خلافك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P290-R00910",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿خِلَـٰفَكَ﴾: بكسر الخاء وألف بعد اللام لابن عامر، وحفص، وحمزة، والكسائي، ويعقوب، وخلف؛ وبفتح الخاء وسكون اللام بلا ألف ﴿خَلْفَكَ﴾ للباقين."
+      }
+    ],
+    "description": "بفتح الخاء وسكون اللام بلا ألف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D290-رسلنا-w2",
+    "surah": 17,
+    "ayah": 77,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "رُّسُلِنَا ۖ",
+    "variantText": "رُسْلِنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D290-رسلنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D290-رسلنا-w2",
+        "variantId": "v-D290-رسلنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P290-R00911",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿رُّسُلِنَا﴾: بإسكان السين ﴿رُسْلِنَا﴾ لأبي عمرو؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D290-وننزل-w2",
+    "surah": 17,
+    "ayah": 82,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَنُنَزِّلُ",
+    "variantText": "وَنُنْزِلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D290-وننزل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D290-وننزل-w2",
+        "variantId": "v-D290-وننزل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P290-R00913",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَنُنَزِّلُ﴾: بتشديد الزاي للجمهور؛ وبتخفيف الزاي ﴿وَنُنْزِلُ﴾ لأبي عمرو ويعقوب."
+      }
+    ],
+    "description": "بتخفيف الزاي",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

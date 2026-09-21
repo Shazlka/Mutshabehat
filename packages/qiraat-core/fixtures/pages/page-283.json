@@ -1,1 +1,210 @@
-[]
+[
+  {
+    "id": "v-D283-القرءان-w2",
+    "surah": 17,
+    "ayah": 9,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "الْقُرَانَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D283-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D283-القرءان-w2",
+        "variantId": "v-D283-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P283-R00816",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانَ﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D283-ويبشر-w2",
+    "surah": 17,
+    "ayah": 9,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَيُبَشِّرُ",
+    "variantText": "وَيَبْشُرُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D283-ويبشر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D283-ويبشر-w2",
+        "variantId": "v-D283-ويبشر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P283-R00818",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الياء وضم الشين مخففة ﴿وَيَبْشُرُ﴾: حمزة، الكسائي."
+      }
+    ],
+    "description": "بفتح الياء وضم الشين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D283-ونخرج-w2",
+    "surah": 17,
+    "ayah": 13,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَنُخْرِجُ",
+    "variantText": "وَيُخْرَجُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D283-ونخرج",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D283-ونخرج-w2",
+        "variantId": "v-D283-ونخرج-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P283-R00821",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بياء الغيب المضمومة وفتح الراء نائباً عن الفاعل ﴿وَيُخْرَجُ﴾: أبو جعفر."
+      }
+    ],
+    "description": "بياء الغيب مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D283-ونخرج-w3",
+    "surah": 17,
+    "ayah": 13,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَنُخْرِجُ",
+    "variantText": "وَيَخْرُجُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D283-ونخرج",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D283-ونخرج-w3",
+        "variantId": "v-D283-ونخرج-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P283-R00822",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بياء الغيب المفتوحة وضم الراء ﴿وَيَخْرُجُ﴾: يعقوب."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D283-يلقاه-w2",
+    "surah": 17,
+    "ayah": 13,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يَلْقَىٰهُ",
+    "variantText": "يُلَقَّاهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D283-يلقاه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D283-يلقاه-w2",
+        "variantId": "v-D283-يلقاه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P283-R00824",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الياء وفتح اللام وتشديد القاف ﴿يُلَقَّاهُ﴾: ابن عامر، أبو جعفر."
+      }
+    ],
+    "description": "بتشديد القاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D283-امرنا-w2",
+    "surah": 17,
+    "ayah": 16,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَمَرْنَا",
+    "variantText": "آمَّرْنَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D283-امرنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D283-امرنا-w2",
+        "variantId": "v-D283-امرنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P283-R00825",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَمَرْنَا﴾: بقصر الهمزة وتخفيف الميم للجمهور؛ وبمد الهمزة وتشديد الميم ﴿آمَّرْنَا﴾ ليعقوب."
+      }
+    ],
+    "description": "بمد الهمزة وتشديد الميم",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
