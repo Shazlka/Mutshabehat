@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T22:00:00+04:00",
+  "updatedAt": "2026-09-21T22:20:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -62,7 +62,7 @@
       275,
       276
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 8,
     "readerAssignmentsAdded": 36,
     "rulingsAdded": 0,
@@ -70,9 +70,12 @@
     "reference": "Processed records DOCX-P275-R00736/R00737/R00739/R00740/R00741; exact token spans plus independent Qiraat references. Page 276 processed rows R00744–R00752 cross-checked.",
     "sourceAudit": "Page 275: sukun-hāʾ at 16:75 and twice at 16:76; sīn and Hamza/Khalaf ishmaam at 16:76; separate Hamza/Kisai forms at 16:78; tāʾ form of يرى at 16:79. Page 276: matching records are already present or excluded for ambiguous/conflicting source attribution.",
     "validation": "Additive-only page-275 fixture; all same-token reader sets disjoint; importer idempotent; validator 1,929 variants / 9,779 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
-    "baseCommit": "ff5253f2e0bf2d5ccf682103f7052ca0695ca3f1"
+    "baseCommit": "ff5253f2e0bf2d5ccf682103f7052ca0695ca3f1",
+    "commit": "ef173ed872873245101ccda534b46f4c5594c357",
+    "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
+    "productionApiSmoke": "Production API page 275 returned all eight variant records including performance-only Q06-R01 ishmaam with exact base preserved; page 276 returned no variants and the five existing audited rulings."
   },
-  "lastConfirmedDeployedDataCommit": "b5497e6ea35f79a435d99354292ad7da89469c57",
+  "lastConfirmedDeployedDataCommit": "ef173ed872873245101ccda534b46f4c5594c357",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -1734,6 +1737,25 @@
       "deploymentId": "dpl_CpTZt5QonG2B4KkxphxEknqvSb6C",
       "deploymentUrl": "https://mutshabehat-v2-ilh7l7rtz-shazlka-s-projects.vercel.app",
       "productionApiSmoke": "Production debug API returned all 5 p273 variant records and all 3 new p274 variant records with exact spans/readers; p273 source-derived TAGHYIR_HAMZ/TARQIQ_RA and p274 Kisai IMALAH_TAQLIL were present."
+    },
+    {
+      "commit": "ef173ed872873245101ccda534b46f4c5594c357",
+      "batch": "Audited source faces, pages 275–276",
+      "variantsAdded": 8,
+      "rulingsAdded": 0,
+      "readerAssignmentsAdded": 36,
+      "pages": [
+        275,
+        276
+      ],
+      "pushed": true,
+      "vercelState": "READY",
+      "validation": "Additive page-275 fixture; importer idempotent; 1,929 variants / 9,779 rulings; 38/38 Qiraat tests; TypeScript and production build passed. Production API smoke passed for both pages.",
+      "sourceAudit": "Page 275: sukun-hāʾ at 16:75 and twice at 16:76; sīn and Hamza/Khalaf ishmaam at 16:76; separate Hamza/Kisai forms at 16:78; tāʾ form of يرى at 16:79. Page 276: matching records are already present or excluded for ambiguous/conflicting source attribution.",
+      "databaseMigration": "none",
+      "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
+      "deploymentUrl": "https://mutshabehat-v2-ii1xs4oa4-shazlka-s-projects.vercel.app",
+      "productionApiSmoke": "Production API page 275 returned all eight variant records including performance-only Q06-R01 ishmaam with exact base preserved; page 276 returned no variants and the five existing audited rulings."
     }
   ],
   "pages": [
@@ -9855,7 +9877,7 @@
         "farshLines": 7,
         "usulLines": 2
       },
-      "status": "audited_additions_pending_deploy",
+      "status": "audited_production_verified",
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 8,
@@ -9864,10 +9886,12 @@
       "rulingFixturePresent": true,
       "databaseUpdated": false,
       "datasetValidation": "passed",
-      "committed": false,
-      "pushed": false,
-      "productionDeployed": false,
-      "productionUiVerified": false
+      "committed": true,
+      "pushed": true,
+      "productionDeployed": true,
+      "productionUiVerified": true,
+      "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
+      "dataCommit": "ef173ed872873245101ccda534b46f4c5594c357"
     },
     {
       "page": 276,
@@ -9884,7 +9908,7 @@
         "farshLines": 6,
         "usulLines": 5
       },
-      "status": "audited_no_new_records_pending_deploy",
+      "status": "audited_production_verified",
       "variantsChecked": true,
       "usulChecked": true,
       "variantRecords": 0,
@@ -9893,10 +9917,12 @@
       "rulingFixturePresent": true,
       "databaseUpdated": false,
       "datasetValidation": "passed",
-      "committed": false,
-      "pushed": false,
-      "productionDeployed": false,
-      "productionUiVerified": false
+      "committed": true,
+      "pushed": true,
+      "productionDeployed": true,
+      "productionUiVerified": true,
+      "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
+      "dataCommit": "ef173ed872873245101ccda534b46f4c5594c357"
     },
     {
       "page": 277,
@@ -21169,7 +21195,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "ff5253f2e0bf2d5ccf682103f7052ca0695ca3f1",
+  "currentHeadCommit": "ef173ed872873245101ccda534b46f4c5594c357",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -22452,19 +22478,18 @@
   },
   "lastProductionSmokeAttempt": {
     "pages": [
-      273,
-      274
+      275,
+      276
     ],
     "status": "passed",
-    "deploymentId": "dpl_CpTZt5QonG2B4KkxphxEknqvSb6C",
-    "commit": "b5497e6ea35f79a435d99354292ad7da89469c57",
+    "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
+    "commit": "ef173ed872873245101ccda534b46f4c5594c357",
     "variantsAdded": 8,
-    "rulingsAdded": 7,
-    "readerAssignmentsAdded": 21,
-    "api": "/api/mushaf-1441/qiraat?page={273,274}&debug=1",
-    "details": "p273 returned all five imported variants and the new TARQIQ_RA/TAGHYIR_HAMZ records; p274 returned its three new variant forms, including both 16:66 alternatives with disjoint reading IDs, plus Kisai waqf IMALAH_TAQLIL."
+    "readerAssignmentsAdded": 36,
+    "api": "/api/mushaf-1441/qiraat?page={275,276}&debug=1",
+    "details": "Page 275 production API returned all eight exact variant forms/spans/readers, including performance-only ishmaam with base text preserved. Page 276 API returned zero variants and the expected already-covered reviewed usul records."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_CpTZt5QonG2B4KkxphxEknqvSb6C",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-ilh7l7rtz-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Pages 275–276 audited; page 275 has eight new source-backed farsh records (36 reader assignments), including a same-token performance face and disjoint written forms. Page 276 had no safe missing records. Local validation passed; production deployment/API smoke pending."
+  "lastConfirmedVercelDeploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-ii1xs4oa4-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Production-verified audit of pages 275–276: eight source-backed page-275 variants (36 reading assignments), including the performance-only Hamza ishmaam face; page 276 had no safe missing records. Data commit ef173ed deployed READY as dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9. Production API returned exact page-275 forms, spans, and readers and verified page-276 existing loci."
 }
