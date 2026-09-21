@@ -13,6 +13,8 @@ import { FixtureQiraatRepository } from './repository.ts'
 import { comparisonMarkerForWord, rulingMarkerForWord, markerPaintForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
 import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
+import page228Rulings from './fixtures/rulings/page-228.json' with { type: 'json' }
+import page234Rulings from './fixtures/rulings/page-234.json' with { type: 'json' }
 import page007Variants from './fixtures/pages/page-007.json' with { type: 'json' }
 import page266Rulings from './fixtures/rulings/page-266.json' with { type: 'json' }
 
@@ -548,6 +550,24 @@ test('page 303 imports only token-backed, explicitly attributable source variant
       { kind: 'variant', text: 'ائْتُونِي', variant: ituni },
     )
   }
+})
+
+test('WAQF_HAMZA source details are additive and preserve existing reader notes', async () => {
+  const repo = new FixtureQiraatRepository()
+  const page228 = await repo.getRulingsForPage(228, { includeUnpublished: true })
+  const bisuu = page228.find((r) => r.category === 'WAQF_HAMZA' && r.surah === 11 && r.ayah === 54)
+  assert.ok(bisuu)
+  assert.equal(bisuu.notes, 'وكذا هشام وقفًا')
+  assert.deepEqual(bisuu.sourceNotes, ['نص المصدر لوقف حمزة: «النقل والإدغام (سكوناً وروماً)»'])
+  assert.deepEqual(bisuu.readings.map((r) => r.readingId), ['Q06-R01', 'Q06-R02', 'Q04-R01'])
+
+  const page234 = await repo.getRulingsForPage(234, { includeUnpublished: true })
+  const haula = page234.find((r) => r.category === 'WAQF_HAMZA' && r.surah === 11 && r.ayah === 109)
+  const sayyiat = page234.find((r) => r.category === 'WAQF_HAMZA' && r.surah === 11 && r.ayah === 114)
+  assert.ok(haula)
+  assert.ok(sayyiat)
+  assert.deepEqual(haula.sourceNotes, ['نص المصدر لوقف حمزة: «١٣ وجهاً»'])
+  assert.deepEqual(sayyiat.sourceNotes, ['نص المصدر لوقف حمزة: «إبدال الهمزة ياءً»'])
 })
 
 test('صحبة carries شعبة and صحاب carries حفص — never the other way round', () => {

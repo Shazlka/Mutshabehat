@@ -3752,6 +3752,9 @@ export default function Mushaf1441Viewer({
                 </p>
               ) : null}
               {ruling.notes ? <p className="mt-1.5 text-[11px] leading-6 text-[#8b7f6a]">{ruling.notes}</p> : null}
+              {ruling.sourceNotes?.map((note, i) => (
+                <p key={`${ruling.id}-source-note-${i}`} className="mt-1.5 text-[11px] leading-6 text-[#8b7f6a]">{note}</p>
+              ))}
               {ruling.verificationStatus === 'NEEDS_MANUAL_REVIEW' ? (
                 <p className="mt-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
               ) : null}

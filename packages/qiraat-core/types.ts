@@ -273,6 +273,8 @@ export interface QiraatRuling {
   /** عد الآي only: ayah-counting schools, a taxonomy unrelated to the ten readers. */
   countSchools?: string[]
   notes?: string
+  /** Exact source refinements kept separately so additive imports never rewrite prior notes. */
+  sourceNotes?: string[]
   createdAt: string
   updatedAt: string
 }

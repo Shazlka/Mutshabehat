@@ -791,9 +791,11 @@ def build(page_list, categories=None):
                 rstats['assignmentsAdded']+=len(candidate.get('readings',[]))
                 continue
             old_notes=target.get('notes')
+            old_source_notes=target.get('sourceNotes')
             added,dropped=merge_ruling_assignments(target,candidate)
             rstats['conflictsDropped']+=dropped
-            notes_added=target.get('notes') != old_notes
+            notes_added=(target.get('notes') != old_notes or
+                         target.get('sourceNotes') != old_source_notes)
             if notes_added: rstats['notesAdded']+=1
             if added or notes_added:
                 changed=True; rstats['assignmentsAdded']+=added; rstats['merged']+=1
@@ -1014,6 +1016,51 @@ def merge_waqf_rasm_assignments(existing_record,candidate):
             existing_record['notes']='؛ '.join(note_parts)
     return len(accepted),dropped
 
+def merge_waqf_hamza_assignments(existing_record,candidate):
+    """Keep the fixed Hamza/Hisham reader set and store source action refinements as notes."""
+    current=existing_record.setdefault('readings',[])
+    old_by_id=collections.defaultdict(list)
+    for item in current:
+        old_by_id[item.get('readingId')].append(item)
+    accepted=[]; accepted_ids=set(); dropped=0; source_notes=[]
+    for item in candidate.get('readings',[]):
+        rid=item.get('readingId'); status=item.get('isDefault',True)
+        prior=[x for x in old_by_id.get(rid,[]) if x.get('isDefault',True)==status]
+        if prior:
+            if any(T.norm(x.get('action','')) == T.norm(item.get('action','')) for x in prior):
+                continue
+            # Preserve an explicit source refinement without creating a second action
+            # assignment for the same reader at this word.
+            source_notes.append(f"نص المصدر لوقف حمزة: «{item.get('action','')}»")
+            continue
+        if old_by_id.get(rid):
+            dropped+=1
+            continue
+        accepted.append(item); accepted_ids.add(rid); old_by_id[rid].append(item)
+    if accepted:
+        current.extend(accepted)
+        attrs=existing_record.setdefault('attribution',[])
+        seen={(x.get('authorityId'),x.get('action'),x.get('condition')) for x in attrs}
+        for item in candidate.get('attribution',[]):
+            if item.get('authorityId') not in accepted_ids: continue
+            key=(item.get('authorityId'),item.get('action'),item.get('condition'))
+            if key not in seen:
+                attrs.append(item); seen.add(key)
+    old_source_notes=existing_record.get('sourceNotes',[])
+    if isinstance(old_source_notes,str):
+        old_source_notes=[old_source_notes]
+    note_parts=list(old_source_notes)
+    for note in dict.fromkeys(source_notes):
+        if note not in note_parts:
+            note_parts.append(note)
+    if candidate.get('notes'):
+        for note in (x.strip() for x in candidate['notes'].split('؛')):
+            if note and note not in note_parts:
+                note_parts.append(note)
+    if note_parts and note_parts != old_source_notes:
+        existing_record['sourceNotes']=note_parts
+    return len(accepted),dropped
+
 def merge_ruling_assignments(existing_record, candidate):
     """Add compatible source-explicit assignments; same-reader disagreements are dropped."""
     candidate,dropped=sanitize_yaat_candidate(candidate)
@@ -1055,6 +1102,8 @@ def merge_ruling_assignments(existing_record, candidate):
         return len(accepted),dropped
     if category=='WAQF_RASM':
         return merge_waqf_rasm_assignments(existing_record,candidate)
+    if category=='WAQF_HAMZA':
+        return merge_waqf_hamza_assignments(existing_record,candidate)
     if category not in ('YAAT_IDAFA','YAAT_ZAWAID'):
         added=0
         for field,key_fields in (
