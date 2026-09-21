@@ -37,5 +37,54 @@
     "description": "بفتح الصاد مبنياً للفاعل",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P253-13-31-QURAAN",
+    "surah": 13,
+    "ayah": 31,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "قُرْءَانًۭا",
+    "variantText": "قُرَانًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P253-13-31-QURAAN",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P253-13-31-QURAAN-1",
+        "variantId": "v-AUDIT-P253-13-31-QURAAN",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P253-R00461",
+        "verificationNotes": "قوبل النص ومجموعة ابن كثير بالمرجع المستقل، وثبت أساس حفص حرفياً من رمز الصفحة.",
+        "sourceText": "﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير."
+      },
+      {
+        "id": "s-QAMAR-AL-MUNIR-P253-13-31",
+        "variantId": "v-AUDIT-P253-13-31-QURAAN",
+        "sourceName": "القمر المنير في قراءة الإمام المكي عبد الله بن كثير",
+        "sourceType": "printed-book",
+        "sourceReference": "https://quranpedia.net/book-attachment/20982/78954",
+        "sourceText": "نقل حركة الهمزة إلى الراء وأسقط الهمزة ابن كثير؛ القراءة: قُرَاناً.",
+        "verificationNotes": "مرجع مستقل خاص بقراءة ابن كثير يثبت نقل حركة الهمزة إلى الراء وإسقاطها في الآية 31."
+      }
+    ],
+    "description": "بنقل حركة الهمزة إلى الراء وحذف الهمزة لابن كثير",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "القمر المنير في قراءة الإمام المكي عبد الله بن كثير",
+        "text": "نقل حركة الهمزة إلى الراء وأسقط الهمزة ابن كثير؛ القراءة: قُرَاناً.",
+        "url": "https://quranpedia.net/book-attachment/20982/78954"
+      }
+    ]
   }
 ]

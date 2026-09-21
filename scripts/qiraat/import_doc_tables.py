@@ -123,6 +123,57 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
     as sourceText and store only the independently corroborated form as the actual variant.
     """
     source_links_added = 0
+    if page == 253:
+        source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
+        if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
+            raise ValueError('page 253 audited Quranan source row missing/not unique')
+        if is_neg(source_line) or is_univ(source_line):
+            raise ValueError('page 253 audited Quranan source row failed negation/universal guard')
+        loc=T.find(page,'قُرْءَانًا',ayah=31)
+        if (loc['surah'],loc['startAyah'],loc['startWord'],loc['endWord'],loc['baseText']) != (
+            13,31,3,3,'قُرْءَانًۭا'):
+            raise ValueError('page 253 exact Quranan token/span/base changed')
+        readers,unresolved=resolve_readers('ابن كثير',set())
+        if unresolved or readers!={'Q02-R01','Q02-R02'}:
+            raise ValueError('page 253 explicit Ibn Kathir group did not resolve exactly')
+        existing_matches=[x for x in existing_page if
+            (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken'))==(13,31,3,3)]
+        if existing_matches:
+            # A previous --write may already have added this audited record. Treat that
+            # exact record as an idempotent rerun; refuse any other occupied token.
+            if len(existing_matches) == 1:
+                prior = existing_matches[0]
+                if (prior.get('id') == 'v-AUDIT-P253-13-31-QURAAN' and
+                    prior.get('hafsText') == loc['baseText'] and
+                    prior.get('variantText') == 'قُرَانًا' and
+                    set(prior.get('readingIds', [])) == readers):
+                    return variants, source_links_added
+            raise ValueError('page 253 Quranan token already has a different variant; additive-only import refused')
+        before=len(variants)
+        yield_block(page,'قُرْءَانًا',[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+            ('قُرَانًا','بنقل حركة الهمزة إلى الراء وحذف الهمزة لابن كثير',readers)],variants)
+        added=[x for x in variants[before:] if
+            (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken'))==(13,31,3,3)]
+        if len(added)!=1:
+            raise ValueError('page 253 audited Quranan 20-reading partition failed')
+        variant=added[0]
+        variant['id']='v-AUDIT-P253-13-31-QURAAN'
+        variant['locusId']='AUDIT-P253-13-31-QURAAN'
+        for i,source in enumerate(variant.get('sources',[]),1):
+            source['id']=f's-AUDIT-P253-13-31-QURAAN-{i}'
+            source['variantId']=variant['id']
+        variant['sources'][0].update({
+            'sourceReference':'qiraat_records.jsonl، DOCX-P253-R00461',
+            'sourceText':source_line,
+            'verificationNotes':'قوبل النص ومجموعة ابن كثير بالمرجع المستقل، وثبت أساس حفص حرفياً من رمز الصفحة.'})
+        url='https://quranpedia.net/book-attachment/20982/78954'
+        external_text='نقل حركة الهمزة إلى الراء وأسقط الهمزة ابن كثير؛ القراءة: قُرَاناً.'
+        variant['sources'].append({'id':'s-QAMAR-AL-MUNIR-P253-13-31','variantId':variant['id'],
+            'sourceName':'القمر المنير في قراءة الإمام المكي عبد الله بن كثير','sourceType':'printed-book',
+            'sourceReference':url,'sourceText':external_text,
+            'verificationNotes':'مرجع مستقل خاص بقراءة ابن كثير يثبت نقل حركة الهمزة إلى الراء وإسقاطها في الآية 31.'})
+        variant['evidence']=[{'source':'القمر المنير في قراءة الإمام المكي عبد الله بن كثير',
+            'text':external_text,'url':url}]
     if page == 252:
         source_line = '﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.'
         if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
