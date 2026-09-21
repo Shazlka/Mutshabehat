@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "v-D478-ايديهم-w2",
+    "surah": 41,
+    "ayah": 14,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D478-ايديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D478-ايديهم-w2",
+        "variantId": "v-D478-ايديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P478-R02822",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿أَيْدِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضمها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D478-يحشر_اعداء-w2",
+    "surah": 41,
+    "ayah": 19,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُحْشَرُ أَعْدَآءُ",
+    "variantText": "نَحْشُرُ أَعْدَاءَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D478-يحشر_اعداء",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D478-يحشر_اعداء-w2",
+        "variantId": "v-D478-يحشر_اعداء-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P478-R02825",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُحْشَرُ أَعْدَآءُ﴾: بياء الغيب المضمومة وفتح الشين ورفع أعداءُ نائباً عن الفاعل للجمهور؛ وبنون العظمة المفتوحة وضم الشين ونصب أعداءَ مفعولاً ﴿نَحْشُرُ أَعْدَاءَ﴾ لنافع ويعقوب."
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

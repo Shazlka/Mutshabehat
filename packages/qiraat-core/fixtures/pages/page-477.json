@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "id": "v-D477-قرءانا-w2",
+    "surah": 41,
+    "ayah": 3,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "قُرْءَانًا",
+    "variantText": "قُرَانًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D477-قرءانا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D477-قرءانا-w2",
+        "variantId": "v-D477-قرءانا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P477-R02814",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿قُرْءَانًا﴾: بنقل الهمزة لابن كثير ﴿قُرَانًا﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D477-سواء-w2",
+    "surah": 41,
+    "ayah": 10,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "سَوَآءًۭ",
+    "variantText": "سَوَاءٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D477-سواء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D477-سواء-w2",
+        "variantId": "v-D477-سواء-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P477-R02815",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿سَوَآءٗ لِّلسَّآئِلِينَ﴾: بنصب الهمزة تنويناً ﴿سَوَاءً﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وحمزة، والكسائي، وخلف؛ بالرفع تنويناً ﴿سَوَاءٌ﴾ لأبي جعفر؛ بالجر تنويناً ﴿سَوَاءٍ﴾ ليعقوب."
+      }
+    ],
+    "description": "بالرفع تنويناً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D477-سواء-w3",
+    "surah": 41,
+    "ayah": 10,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "سَوَآءًۭ",
+    "variantText": "سَوَاءٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D477-سواء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D477-سواء-w3",
+        "variantId": "v-D477-سواء-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P477-R02815",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿سَوَآءٗ لِّلسَّآئِلِينَ﴾: بنصب الهمزة تنويناً ﴿سَوَاءً﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وحمزة، والكسائي، وخلف؛ بالرفع تنويناً ﴿سَوَاءٌ﴾ لأبي جعفر؛ بالجر تنويناً ﴿سَوَاءٍ﴾ ليعقوب."
+      }
+    ],
+    "description": "بالجر تنويناً",
+    "wajhIndex": 3,
+    "evidence": []
+  }
+]
