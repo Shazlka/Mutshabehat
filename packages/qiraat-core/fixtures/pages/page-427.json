@@ -1,1 +1,121 @@
-[]
+[
+  {
+    "id": "v-D427-سادتنا-w2",
+    "surah": 33,
+    "ayah": 67,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "سَادَتَنَا",
+    "variantText": "سَادَاتِنَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D427-سادتنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D427-سادتنا-w2",
+        "variantId": "v-D427-سادتنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P427-R02324",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿سَادَتَنَا﴾: بالمفرد ﴿سَادَتَنَا﴾ للجمهور؛ وبالجمع ﴿سَادَاتِنَا﴾ لابن عامر ويعقوب."
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D427-ءاتهم-w2",
+    "surah": 33,
+    "ayah": 68,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ءَاتِهِمْ",
+    "variantText": "ءَاتِهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D427-ءاتهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D427-ءاتهم-w2",
+        "variantId": "v-D427-ءاتهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P427-R02325",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ءَاتِهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿ءَاتِهُمُ﴾ لرويس."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D427-كبيرا-w2",
+    "surah": 33,
+    "ayah": 68,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "كَبِيرًۭا",
+    "variantText": "كَثِيرًا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D427-كبيرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D427-كبيرا-w2",
+        "variantId": "v-D427-كبيرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P427-R02326",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿كَبِيرٗا﴾ (آية ٦٨): بالباء الموحدة ﴿كَبِيرًا﴾ لعاصم؛ بالثاء المثلثة ﴿كَثِيرًا﴾ للباقين."
+      }
+    ],
+    "description": "بالثاء المثلثة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

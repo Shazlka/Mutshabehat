@@ -155,5 +155,38 @@
     "description": "بإسكان ياء الإضافة وصلاً فتسقط لالتقاء الساكنين",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D429-تبينت-w2",
+    "surah": 34,
+    "ayah": 14,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "تَبَيَّنَتِ",
+    "variantText": "تُبُيِّنَتِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D429-تبينت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D429-تبينت-w2",
+        "variantId": "v-D429-تبينت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P429-R02351",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَبَيَّنَتِ﴾: بفتح التاءين والباء والياء مشددة للجمهور؛ وبضم التاء الأولى وكسر الياء مشددة ﴿تُبُيِّنَتِ﴾ لرويس."
+      }
+    ],
+    "description": "بضم التاء الأولى وكسر الياء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
