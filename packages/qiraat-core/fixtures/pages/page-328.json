@@ -132,5 +132,39 @@
         "text": "لِنُحْصِنَكُمْ نُونٌ صَفَا صَفْوَةٍ وَيَا حِمَى دِرْهَمٍ وَالتَّاءُ فِي غَيْرِهِمْ تَلَا"
       }
     ]
+  },
+  {
+    "id": "v-D328-الريح-w2",
+    "surah": 21,
+    "ayah": 81,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيحَ",
+    "variantText": "الرِّيَاحَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D328-الريح",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D328-الريح-w2",
+        "variantId": "v-D328-الريح-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P328-R01372",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الرِّيحَ﴾: بالإفراد للجمهور؛ وبالجمع ﴿الرِّيَاحَ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

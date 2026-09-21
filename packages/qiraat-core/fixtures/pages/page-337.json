@@ -281,5 +281,113 @@
         "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
       }
     ]
+  },
+  {
+    "id": "v-D337-دفع-w2",
+    "surah": 22,
+    "ayah": 40,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "دَفْعُ",
+    "variantText": "دِفَاعُ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D337-دفع",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D337-دفع-w2",
+        "variantId": "v-D337-دفع-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P337-R01457",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿دَفْعُ﴾: بسكون الفاء بلا ألف للجمهور؛ وبفتح الفاء وألف بعدها ﴿دِفَاعُ﴾ لنافع وأبي جعفر ويعقوب."
+      }
+    ],
+    "description": "بفتح الفاء وألف بعدها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D337-لهدمت-w2",
+    "surah": 22,
+    "ayah": 40,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "لَّهُدِّمَتْ",
+    "variantText": "لَّهُدِمَتْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D337-لهدمت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D337-لهدمت-w2",
+        "variantId": "v-D337-لهدمت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P337-R01458",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَّهُدِّمَتْ﴾: بتشديد الدال للجمهور؛ وبتخفيف الدال ﴿لَّهُدِمَتْ﴾ لنافع وابن كثير وأبي جعفر."
+      }
+    ],
+    "description": "بتخفيف الدال",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D337-اهلكناها-w2",
+    "surah": 22,
+    "ayah": 45,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَهْلَكْنَـٰهَا",
+    "variantText": "أَهْلَكْتُهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D337-اهلكناها",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D337-اهلكناها-w2",
+        "variantId": "v-D337-اهلكناها-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P337-R01460",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَهْلَكْنَـٰهَا﴾: بنون العظمة للجمهور؛ وبتاء المتكلم ﴿أَهْلَكْتُهَا﴾ لأبي عمرو ويعقوب."
+      }
+    ],
+    "description": "بتاء المتكلم",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

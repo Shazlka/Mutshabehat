@@ -104,5 +104,39 @@
         "text": "وَيُرْجَعُ فِي دُمْ ثُمَّ لَا حُزْنُ شَاهِدٍ"
       }
     ]
+  },
+  {
+    "id": "v-D341-ايديهم-w2",
+    "surah": 22,
+    "ayah": 76,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D341-ايديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D341-ايديهم-w2",
+        "variantId": "v-D341-ايديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P341-R01494",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿أَيْدِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
