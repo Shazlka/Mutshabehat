@@ -408,18 +408,26 @@ def hamzatan_reader_modes(text):
             text=text[end+1:].lstrip()
         alternate=any('بخلف' in note or 'وجهه الثاني' in note for note in modifiers)
         modes.append((readers,alternate,'؛ '.join(modifiers) or None))
-        if text and not (text.startswith(('و','،',',')) or text[0].isspace()):
+        second_face=re.match(r'في\s+وجهه\s+الثاني(?=$|[،,؛.]|\s+[وأ])',text)
+        if text and not (text.startswith(('و','،',',')) or text[0].isspace() or second_face):
             raise Unresolved('unresolved hamzatan reader separator: '+text)
         # An attached trailing «بخلف عنه» has the same scope as a parenthetical on this name.
         trailing=re.match(r'بخلف(?:\s+عنه)?(?=$|[،,؛.]|\s+[وأ])',text)
         if trailing:
             modes[-1]=(readers,True,'بخلف عنه')
             text=text[trailing.end():]
+            continue
+        if second_face:
+            modes[-1]=(readers,True,'في وجهه الثاني')
+            text=text[second_face.end():]
     return modes
 
 def hamzatan_explicit_clause(clause):
     """Return only explicit reader/action pairs, with alternate notes scoped per reader."""
     if any(x in clause for x in ('الباقون','الباقين','للباقون','للباقين','للجمهور','الجمهور')): return None
+    # In this source, «لمن همز لنافع...» is a qualifier on the named-reader set, not a
+    # reader named «من همز». Preserve the explicit names while removing that qualifier.
+    clause=re.sub(r'لمن\s+همز\s+', '', clause)
     flat=PARENS.sub('',clause)
     m=re.search(r'(?<=[\s،,])ل(?=\S)',flat)
     if not m:
@@ -481,6 +489,57 @@ def parse_hamzatan_line(page,category,line,out):
             for anchor in anchors: pending.append((anchor,groups,'؛ '.join(dict.fromkeys(notes)) or None))
     for anchor,groups,notes in pending:
         emit_ruling(page,category,anchor,groups,out,notes=notes)
+
+def parse_hamzatan_continuation(page,category,anchors,line,out):
+    """Parse one explicit action:reader row under a hamzatan anchor heading."""
+    action,sep,reader_text=line.partition(':')
+    if not sep or not anchors or is_univ(line): return
+    action=action.strip()
+    # Parentheticals which quote one of the heading's anchors scope only that anchor.
+    # Keep their face text as a ruling note, rather than leaking it to sibling anchors.
+    scoped_notes=collections.defaultdict(list)
+    for match in list(PARENS.finditer(action)):
+        note=match.group(1).strip()
+        quoted=BRACE.findall(note)
+        if not quoted: continue
+        action=action.replace(match.group(0),' ').strip()
+        clean_note=note.strip(' ،,؛.')
+        for anchor in quoted:
+            if anchor in anchors and clean_note:
+                scoped_notes[anchor].append(clean_note)
+    reader_text=reader_text.strip().rstrip(' .؛')
+    if not action or not reader_text:
+        return
+    if any(x in reader_text for x in ('الباقون','الباقين','للجمهور','الجمهور')):
+        return
+    try:
+        modes=hamzatan_reader_modes(reader_text)
+    except Unresolved:
+        # A bare ambiguous narrator invalidates the full continuation clause.
+        return
+    groups=[]
+    for readers,alternate,note in modes:
+        condition=None
+        if alternate:
+            condition=('في وجهه الثاني' if note and 'وجهه الثاني' in note else
+                       'بخلف عنه' if note and 'بخلف' in note else note or 'بخلف عنه')
+        groups.append((readers,action,alternate,condition))
+    if not groups: return
+    for anchor in anchors:
+        notes=scoped_notes.get(anchor,[])
+        emit_ruling(page,category,anchor,groups,out,
+                    notes='؛ '.join(dict.fromkeys(notes)) or None)
+
+def bare_hamzatan_anchors(line):
+    """Return anchors from a heading row that has no attached explicit action."""
+    anchors=[]
+    for chunk in split_anchor_clauses(line):
+        pre,sep,body=chunk.partition(':')
+        if sep and not body.strip():
+            anchors.extend(BRACE.findall(pre))
+        else:
+            return []
+    return anchors
 
 def parse_waqf_rasm_line(page,line,out):
     """Import only explicitly named بالهاء readers; remainder and other waqf forms are omitted."""
@@ -685,7 +744,8 @@ def parse_idgham_saghir_line(page, line, out):
             emit_ruling(page,'IDGHAM_SAGHIR',match.group(1),[(rs,'إدغام صغير')],out)
 
 def parse_usul(page, lines):
-    out=[]; section=None; target_section=None; target_hisham=False; idgham_section=False
+    out=[]; section=None; target_section=None; target_hisham=False
+    target_hamzatan_anchors=[]; idgham_section=False
     for raw in lines:
         line=raw.strip()
         head=line.split(':')[0]
@@ -717,6 +777,8 @@ def parse_usul(page, lines):
                 target_section=cat
                 target_hisham=cat=='WAQF_HAMZA' and prefix=='وقف حمزة وهشام'
                 content=line.split(':',1)[1].strip() if ':' in line else ''
+                target_hamzatan_anchors=(bare_hamzatan_anchors(content)
+                    if cat in ('HAMZATAN_KALIMA','HAMZATAN_KALIMATAYN') else [])
                 if content and not is_univ(line):
                     if cat.startswith('YAAT_'): parse_yaat_line(page,cat,content,out)
                     elif cat=='WAQF_RASM': parse_waqf_rasm_line(page,content,out)
@@ -732,6 +794,18 @@ def parse_usul(page, lines):
                      'صلة ميم الجمع','ميم الجمع','الوقف على مرسوم الخط','وقف حمزة','الهمزتان',
                      'إخفاء أبي جعفر'])
         if target_section:
+            if (target_section in ('HAMZATAN_KALIMA','HAMZATAN_KALIMATAYN')
+                    and target_hamzatan_anchors and ':' in line):
+                pre=line.split(':',1)[0]
+                # Ignore braces quoted inside a parenthetical face note when deciding
+                # whether this row has its own anchor or inherits the heading anchors.
+                visible_pre=PARENS.sub('',pre)
+                other_header=any(line.startswith(x) for x in known_other)
+                if re.match(r'^إبدال\s+(?:الثانية|الهمزة الثانية)',line):
+                    other_header=False
+                if not BRACE.search(visible_pre) and not other_header:
+                    parse_hamzatan_continuation(page,target_section,target_hamzatan_anchors,line,out)
+                    continue
             if BRACE.search(line) and not any(line.startswith(x) for x in known_other):
                 if not is_univ(line):
                     if target_section.startswith('YAAT_'): parse_yaat_line(page,target_section,line,out)
@@ -742,6 +816,7 @@ def parse_usul(page, lines):
                 continue
             target_section=None
             target_hisham=False
+            target_hamzatan_anchors=[]
         # section header for الممال
         if line.startswith('الممال') and line.rstrip().endswith(':') and not BRACE.search(line):
             section='imalah'; continue
@@ -1038,6 +1113,13 @@ def merge_hamzatan_assignments(existing_record,candidate):
         key=(item.get('authorityId'),item.get('action'),item.get('condition'))
         if key not in seen_attrs:
             attrs.append(item); seen_attrs.add(key)
+    if candidate.get('notes'):
+        old_notes=[x.strip() for x in existing_record.get('notes','').split('؛') if x.strip()]
+        for note in (x.strip() for x in candidate['notes'].split('؛')):
+            if note and note not in old_notes:
+                old_notes.append(note)
+        if old_notes:
+            existing_record['notes']='؛ '.join(old_notes)
     return len(accepted),dropped
 
 def waqf_rasm_action_key(action):

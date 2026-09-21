@@ -598,5 +598,144 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p329-HAMZATAN_KALIMATAYN-وزكرياء_اذ-1",
+    "pageNumber": 329,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 21,
+    "ayah": 89,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 89,
+    "baseText": "وَزَكَرِيَّآ إِذْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "التحقيق"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "التحقيق"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "التحقيق"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "التحقيق"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "التحقيق",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "التحقيق",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "التحقيق",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "التحقيق",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
