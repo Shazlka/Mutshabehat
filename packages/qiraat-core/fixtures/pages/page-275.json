@@ -1,1 +1,415 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P275-16-75-15-2f5a0459",
+    "surah": 16,
+    "ayah": 75,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P275-16-75-15-2f5a0459",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00736",
+        "variantId": "v-AUDIT-P275-16-75-15-2f5a0459",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00736",
+        "sourceText": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00736-EXT-2f5a0459",
+        "variantId": "v-AUDIT-P275-16-75-15-2f5a0459",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download",
+        "sourceText": "A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "url": "https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P275-16-76-11-a83fa80a",
+    "surah": 16,
+    "ayah": 76,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P275-16-76-11-a83fa80a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00736",
+        "variantId": "v-AUDIT-P275-16-76-11-a83fa80a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00736",
+        "sourceText": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00736-EXT-a83fa80a",
+        "variantId": "v-AUDIT-P275-16-76-11-a83fa80a",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download",
+        "sourceText": "A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "url": "https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P275-16-76-26-a83fa80a",
+    "surah": 16,
+    "ayah": 76,
+    "startToken": 26,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P275-16-76-26-a83fa80a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00736",
+        "variantId": "v-AUDIT-P275-16-76-26-a83fa80a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00736",
+        "sourceText": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00736-EXT-a83fa80a",
+        "variantId": "v-AUDIT-P275-16-76-26-a83fa80a",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download",
+        "sourceText": "A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "url": "https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P275-16-76-28-57e637e6",
+    "surah": 16,
+    "ayah": 76,
+    "startToken": 28,
+    "endToken": 28,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "سِرَٰطٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P275-16-76-28-57e637e6",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00737",
+        "variantId": "v-AUDIT-P275-16-76-28-57e637e6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00737",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00737-EXT-57e637e6",
+        "variantId": "v-AUDIT-P275-16-76-28-57e637e6",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "The ten-reading collation records sīn for Qanbal and Ruways; the separately named Hamza transmission is an ishmaam performance face.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "The ten-reading collation records sīn for Qanbal and Ruways; the separately named Hamza transmission is an ishmaam performance face.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P275-16-76-28-8caaca05",
+    "surah": 16,
+    "ayah": 76,
+    "startToken": 28,
+    "endToken": 28,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "صِرَٰطٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "AUDIT-P275-16-76-28-8caaca05",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00737",
+        "variantId": "v-AUDIT-P275-16-76-28-8caaca05",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00737",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00737-EXT-8caaca05",
+        "variantId": "v-AUDIT-P275-16-76-28-8caaca05",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "Khalaf from Hamza has ishmaam of ṣād toward zāy; the base text is retained and the sound-only face is recorded as a performance note.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "Khalaf from Hamza has ishmaam of ṣād toward zāy; the base text is retained and the sound-only face is recorded as a performance note.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ],
+    "performanceNote": "إشمام الصاد زايًا"
+  },
+  {
+    "id": "v-AUDIT-P275-16-78-5-d4f16693",
+    "surah": 16,
+    "ayah": 78,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أُمَّهَـٰتِكُمْ",
+    "variantText": "إِمِّهَاتِكُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P275-16-78-5-d4f16693",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00739",
+        "variantId": "v-AUDIT-P275-16-78-5-d4f16693",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00739",
+        "sourceText": "بكسر الهمزة والميم ﴿إِمِّهَاتِكُم﴾: حمزة.",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00739-EXT-d4f16693",
+        "variantId": "v-AUDIT-P275-16-78-5-d4f16693",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/book/436/1/243",
+        "sourceText": "Al-Wafi states Hamza reads the hamza and mīm of إمهاتكم with kasrah in waṣl.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بكسر الهمزة والميم ﴿إِمِّهَاتِكُم﴾: حمزة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "Al-Wafi states Hamza reads the hamza and mīm of إمهاتكم with kasrah in waṣl.",
+        "url": "https://quranpedia.net/book/436/1/243"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P275-16-78-5-bc84af0c",
+    "surah": 16,
+    "ayah": 78,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أُمَّهَـٰتِكُمْ",
+    "variantText": "إِمَّهَاتِكُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P275-16-78-5-bc84af0c",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00740",
+        "variantId": "v-AUDIT-P275-16-78-5-bc84af0c",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00740",
+        "sourceText": "بكسر الهمزة وفتح الميم ﴿إِمَّهَاتِكُم﴾: الكسائي. (وعند الابتداء يتفق الجميع على ضم الهمزة وفتح الميم).",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00740-EXT-bc84af0c",
+        "variantId": "v-AUDIT-P275-16-78-5-bc84af0c",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/book/436/1/243",
+        "sourceText": "Al-Wafi states al-Kisai reads إمهاتكم with kasrah on the hamza and fatḥah on the mīm in waṣl.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بكسر الهمزة وفتح الميم ﴿إِمَّهَاتِكُم﴾: الكسائي. (وعند الابتداء يتفق الجميع على ضم الهمزة وفتح الميم).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "Al-Wafi states al-Kisai reads إمهاتكم with kasrah on the hamza and fatḥah on the mīm in waṣl.",
+        "url": "https://quranpedia.net/book/436/1/243"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P275-16-79-2-d6eea271",
+    "surah": 16,
+    "ayah": 79,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَرَوْا۟",
+    "variantText": "تَرَوْا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P275-16-79-2-d6eea271",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P275-R00741",
+        "variantId": "v-AUDIT-P275-16-79-2-d6eea271",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P275-R00741",
+        "sourceText": "﴿يَرَوْاْ﴾: بياء الغيب لنافع، وابن كثير، وأبي عمرو، وعاصم، والكسائي، وأبي جعفر؛ وبتاء الخطاب ﴿تَرَوْا﴾ للباقين.",
+        "verificationNotes": "طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P275-R00741-EXT-d6eea271",
+        "variantId": "v-AUDIT-P275-16-79-2-d6eea271",
+        "sourceName": "مرجع مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "At an-Nahl 16:79, Ibn Amir, Hamza, Yaqub, and Khalaf al-Ashir read with tāʾ of address; the other readings use yāʾ of absence.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿يَرَوْاْ﴾: بياء الغيب لنافع، وابن كثير، وأبي عمرو، وعاصم، والكسائي، وأبي جعفر؛ وبتاء الخطاب ﴿تَرَوْا﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مرجع مستقل في القراءات العشر",
+        "text": "At an-Nahl 16:79, Ibn Amir, Hamza, Yaqub, and Khalaf al-Ashir read with tāʾ of address; the other readings use yāʾ of absence.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
+  }
+]

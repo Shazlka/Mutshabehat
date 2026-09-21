@@ -555,6 +555,123 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                  'sourceReference':url,'sourceText':external_text,
                  'verificationNotes':'مرجع مستقل يثبت الوجه ومجموعة القراء.'}]
             v['evidence']=[{'source':'مصدر مستقل في القراءات العشر','text':external_text,'url':url}]
+    if page == 275:
+        p275_candidates=[
+            (75,'فَهُوَ',1,'فَهْوَ','DOCX-P275-R00736','HARAKAH',
+             {'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'},
+             'https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download',
+             'A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.'),
+            (76,'وَهُوَ',1,'وَهْوَ','DOCX-P275-R00736','HARAKAH',
+             {'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'},
+             'https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download',
+             'A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.'),
+            (76,'وَهُوَ',2,'وَهْوَ','DOCX-P275-R00736','HARAKAH',
+             {'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'},
+             'https://rsbcrsc.net/journals/issue/eyJpdiI6InBRNFFVeFFVTlhJZ29xOUErMGo0NGc9PSIsInZhbHVlIjoiUFE3ajhmdkVJUXAvZkdVcHRoMVJiUT09IiwibWFjIjoiYmEwZDEzY2I0MGJiNWE2NGM5NzczY2E5OTY1YWEyZjhkMGY3ZWZlZjAyM2RlNmRhMWUzZTI5YWI2NmViNjI0OCJ9/download',
+             'A Qiraat study documents sukūn of the hāʾ in huwa/hiyya when preceded by wāw, fāʾ, or lām, and names Qalun, Abu Amr, al-Kisai, and Abu Jaafar.'),
+            (76,'صِرَٰطٍ',1,'سِرَٰطٍۢ','DOCX-P275-R00737','LETTER',
+             {'Q02-R02','Q09-R01'},'https://jamharah.net/showthread.php?t=27567',
+             'The ten-reading collation records sīn for Qanbal and Ruways; the separately named Hamza transmission is an ishmaam performance face.'),
+            (76,'صِرَٰطٍ',1,'صِرَٰطٍۢ','DOCX-P275-R00737','LETTER',
+             {'Q06-R01'},'https://jamharah.net/showthread.php?t=27567',
+             'Khalaf from Hamza has ishmaam of ṣād toward zāy; the base text is retained and the sound-only face is recorded as a performance note.'),
+            (78,'أُمَّهَاتِكُمْ',1,'إِمِّهَاتِكُم','DOCX-P275-R00739','HARAKAH',
+             {'Q06-R01','Q06-R02'},'https://quranpedia.net/book/436/1/243',
+             'Al-Wafi states Hamza reads the hamza and mīm of إمهاتكم with kasrah in waṣl.'),
+            (78,'أُمَّهَاتِكُمْ',1,'إِمَّهَاتِكُم','DOCX-P275-R00740','HARAKAH',
+             {'Q07-R01','Q07-R02'},'https://quranpedia.net/book/436/1/243',
+             'Al-Wafi states al-Kisai reads إمهاتكم with kasrah on the hamza and fatḥah on the mīm in waṣl.'),
+            (79,'يَرَوْا',1,'تَرَوْا','DOCX-P275-R00741','LETTER',
+             {'Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'},
+             'https://jamharah.net/showthread.php?t=27567',
+             'At an-Nahl 16:79, Ibn Amir, Hamza, Yaqub, and Khalaf al-Ashir read with tāʾ of address; the other readings use yāʾ of absence.'),
+        ]
+        expected_lines={
+            'DOCX-P275-R00736':'﴿فَهُوَ﴾، ﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.',
+            'DOCX-P275-R00737':'﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.',
+            'DOCX-P275-R00741':'﴿يَرَوْاْ﴾: بياء الغيب لنافع، وابن كثير، وأبي عمرو، وعاصم، والكسائي، وأبي جعفر؛ وبتاء الخطاب ﴿تَرَوْا﴾ للباقين.',
+        }
+        rows={}
+        for rid,expected_line in expected_lines.items():
+            row=PACKAGE_RECORDS.get(rid)
+            if (row is None or row.get('page_no')!=275 or row.get('section')!='farsh' or
+                row.get('raw_text')!=expected_line or is_neg(expected_line) or is_univ(expected_line) or
+                has_bare_ambiguous_reader(expected_line)):
+                raise ValueError(f'page 275 audited source row failed exact source/safety check: {rid}')
+            rows[rid]=row
+        for rid in ('DOCX-P275-R00739','DOCX-P275-R00740'):
+            row=PACKAGE_RECORDS.get(rid)
+            if row is None or row.get('page_no')!=275 or row.get('section')!='farsh' or is_neg(row['raw_text']) or is_univ(row['raw_text']) or has_bare_ambiguous_reader(row['raw_text']):
+                raise ValueError(f'page 275 explicit Ummahat source row failed safety check: {rid}')
+            rows[rid]=row
+        for ayah,anchor,occurrence,alternate,rid,dtype,reader_ids,url,external_text in p275_candidates:
+            row=rows[rid]
+            if rid=='DOCX-P275-R00736':
+                named_clause=row['raw_text'].split(':',1)[1].split('؛',1)[0]
+                named_clause=(named_clause.replace('بإسكان الهاء ل','').replace('أبي عمرو','أبو عمرو')
+                              .replace('أبي جعفر','أبو جعفر').replace('وأبو','أبو').replace('وال','ال'))
+                actual=set()
+                for name in re.split(r'[،,]',named_clause):
+                    name=name.strip();resolved,unresolved=resolve_readers(name,set())
+                    if unresolved or not resolved: raise ValueError(f'p275 hāʾ reader unresolved: {name}')
+                    actual.update(resolved)
+                expected={'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}
+                if actual!=expected: raise ValueError('p275 hāʾ named reader group changed')
+            elif rid=='DOCX-P275-R00737':
+                if 'خلف عن حمزة' not in row['raw_text']: raise ValueError('p275 ṣirāt Hamza attribution changed')
+            elif rid=='DOCX-P275-R00739':
+                expected='بكسر الهمزة والميم ﴿إِمِّهَاتِكُم﴾: حمزة.'
+                if row['raw_text']!=expected: raise ValueError('p275 Hamza ummahat row changed')
+            elif rid=='DOCX-P275-R00740':
+                expected='بكسر الهمزة وفتح الميم ﴿إِمَّهَاتِكُم﴾: الكسائي. (وعند الابتداء يتفق الجميع على ضم الهمزة وفتح الميم).'
+                if row['raw_text']!=expected: raise ValueError('p275 Kisai ummahat row changed')
+            elif rid=='DOCX-P275-R00741':
+                named=set()
+                for name in ('نافع','ابن كثير','أبو عمرو','عاصم','الكسائي','أبو جعفر'):
+                    resolved,unresolved=resolve_readers(name,set())
+                    if unresolved: raise ValueError(f'p275 yaraw explicit reader unresolved: {name}')
+                    named.update(resolved)
+                if set(ALL20)-named != reader_ids: raise ValueError('p275 yaraw remainder group changed')
+            loc=T.find(page,anchor,occurrence=occurrence,ayah=ayah)
+            if loc['surah']!=16: raise ValueError('p275 audited anchor resolved outside an-Nahl')
+            if rid=='DOCX-P275-R00739': reader_ids={'Q06-R01','Q06-R02'}
+            if rid=='DOCX-P275-R00740': reader_ids={'Q07-R01','Q07-R02'}
+            if rid=='DOCX-P275-R00737' and dtype=='LETTER' and alternate=='سِرَٰطٍۢ':
+                # The source names exactly Qanbal and Ruways for the written sīn form.
+                if reader_ids!={'Q02-R02','Q09-R01'}: raise ValueError('p275 sīn reader group changed')
+            if rid=='DOCX-P275-R00741' and reader_ids!={'Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'}:
+                raise ValueError('p275 خطاب readers changed')
+            if rid=='DOCX-P275-R00737' and alternate==loc['baseText'] and reader_ids!={'Q06-R01'}:
+                raise ValueError('p275 ishmaam should be Khalaf from Hamza only')
+            if rid=='DOCX-P275-R00737' and alternate!=loc['baseText'] and alternate!='سِرَٰطٍۢ' and reader_ids!={'Q06-R01'}:
+                raise ValueError('p275 sound-only ṣirāt face reader changed')
+            overlap=set(reader_ids)
+            for old in existing_page+variants:
+                if (old.get('surah'),old.get('ayah'),old.get('startToken'))==(16,ayah,loc['startWord']):
+                    old_readers=set(old.get('readingIds',[]))
+                    if old_readers & overlap:
+                        if (old.get('variantText')==alternate and old_readers==overlap): break
+                        raise ValueError(f'p275 same-token reader conflict at {ayah}:{loc["startWord"]}')
+            else:
+                pass
+            if any((x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('variantText'),set(x.get('readingIds',[])))==(16,ayah,loc['startWord'],alternate,reader_ids) for x in existing_page+variants): continue
+            digest=hashlib.sha1((T.norm(alternate)+'|'+','.join(sorted(reader_ids))).encode()).hexdigest()[:8]
+            lid=f'AUDIT-P275-16-{ayah}-{loc["startWord"]}-{digest}'
+            performance=alternate==loc['baseText']
+            variant={'id':f'v-{lid}','surah':16,'ayah':ayah,'startToken':loc['startWord'],'endToken':loc['endWord'],
+                'operation':'REPLACE','hafsText':loc['baseText'],'variantText':alternate,'differenceType':dtype,
+                'verificationStatus':'REVIEWED','createdAt':TS,'updatedAt':TS,'readingIds':sorted(reader_ids),
+                'locusId':lid,'locusType':'performance_variant' if performance else 'word_variant',
+                'sources':[{'id':f's-{rid}','variantId':f'v-{lid}','sourceName':'استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)',
+                    'sourceType':'other','sourceReference':f'qiraat_records.jsonl، {rid}','sourceText':row['raw_text'],
+                    'verificationNotes':'طوبق الوجه والرواة مع مرجع مستقل ورمز المصحف.'},
+                    {'id':f's-{rid}-EXT-{digest}','variantId':f'v-{lid}','sourceName':'مرجع مستقل في القراءات العشر',
+                    'sourceType':'website','sourceReference':url,'sourceText':external_text,
+                    'verificationNotes':'مرجع مستقل يثبت الوجه ومجموعة القراء.'}],
+                'description':row['raw_text'],'wajhIndex':2,
+                'evidence':[{'source':'مرجع مستقل في القراءات العشر','text':external_text,'url':url}]}
+            if performance: variant['performanceNote']='إشمام الصاد زايًا'
+            variants.append(variant)
     if page == 253:
         source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
         if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
