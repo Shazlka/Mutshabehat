@@ -41,5 +41,56 @@
     "description": "بضم الياء وفتح الهاء مبنياً للمجهول ﴿لَا يُهْدَى﴾",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P271-16-40-10-f7690ba7",
+    "surah": 16,
+    "ayah": 40,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "فَيَكُونُ",
+    "variantText": "فَيَكُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P271-16-40-10-f7690ba7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P271-R00691",
+        "variantId": "v-AUDIT-P271-16-40-10-f7690ba7",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P271-R00691",
+        "sourceText": "بنصب النون ﴿فَيَكُونَ﴾: ابن عامر، الكسائي.",
+        "verificationNotes": "قوبل تعيين الرواة على المصدر المعالج مع مرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P271-R00691-EXT",
+        "variantId": "v-AUDIT-P271-16-40-10-f7690ba7",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "At an-Nahl 16:40, Ibn Amir and al-Kisai read فَيَكُونَ with naṣb; the rest read with rafʿ.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بنصب النون ﴿فَيَكُونَ﴾: ابن عامر، الكسائي.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "At an-Nahl 16:40, Ibn Amir and al-Kisai read فَيَكُونَ with naṣb; the rest read with rafʿ.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
   }
 ]

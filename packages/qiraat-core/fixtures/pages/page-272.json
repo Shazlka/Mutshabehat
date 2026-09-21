@@ -1,1 +1,213 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P272-16-43-7-9653e7fd",
+    "surah": 16,
+    "ayah": 43,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نُّوحِىٓ إِلَيْهِمْ ۚ",
+    "variantText": "يُوحَى إِلَيْهُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P272-16-43-7-9653e7fd",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P272-R00701",
+        "variantId": "v-AUDIT-P272-16-43-7-9653e7fd",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00701",
+        "sourceText": "بياء الغيب المضمومة مع ضم هاء ﴿إِلَيْهُم﴾: حمزة، يعقوب.",
+        "verificationNotes": "قوبل تعيين الرواة على المصدر المعالج مع مرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P272-R00701-EXT",
+        "variantId": "v-AUDIT-P272-16-43-7-9653e7fd",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "At an-Nahl 16:43, Hamza and Yaqub read يُوحَى إِلَيْهُم; the cited source row explicitly names both readers.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بياء الغيب المضمومة مع ضم هاء ﴿إِلَيْهُم﴾: حمزة، يعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "At an-Nahl 16:43, Hamza and Yaqub read يُوحَى إِلَيْهُم; the cited source row explicitly names both readers.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P272-16-44-10-93a5aad2",
+    "surah": 16,
+    "ayah": 44,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P272-16-44-10-93a5aad2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P272-R00703",
+        "variantId": "v-AUDIT-P272-16-44-10-93a5aad2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00703",
+        "sourceText": "﴿إِلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "قوبل تعيين الرواة على المصدر المعالج مع مرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P272-R00703-EXT",
+        "variantId": "v-AUDIT-P272-16-44-10-93a5aad2",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "At an-Nahl 16:44, Hamza and Yaqub read the hāʾ of إِلَيْهِمْ with ḍamma.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿إِلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "At an-Nahl 16:44, Hamza and Yaqub read the hāʾ of إِلَيْهِمْ with ḍamma.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P272-16-45-8-4e8b6c3d",
+    "surah": 16,
+    "ayah": 45,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "بِهِمُ ٱلْأَرْضَ",
+    "variantText": "بِهِمِ ٱلْأَرْضَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P272-16-45-8-4e8b6c3d",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P272-R00705",
+        "variantId": "v-AUDIT-P272-16-45-8-4e8b6c3d",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00705",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو، يعقوب.",
+        "verificationNotes": "قوبل تعيين الرواة على المصدر المعالج مع مرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P272-R00705-EXT",
+        "variantId": "v-AUDIT-P272-16-45-8-4e8b6c3d",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "At an-Nahl 16:45, Abu Amr and Yaqub read بِهِمِ الْأَرْضَ with kasrah on hāʾ and mīm.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً: أبو عمرو، يعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "At an-Nahl 16:45, Abu Amr and Yaqub read بِهِمِ الْأَرْضَ with kasrah on hāʾ and mīm.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P272-16-47-7-881976fc",
+    "surah": 16,
+    "ayah": 47,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "لَرَءُوفٌۭ",
+    "variantText": "لَرَؤُفٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P272-16-47-7-881976fc",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P272-R00707",
+        "variantId": "v-AUDIT-P272-16-47-7-881976fc",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00707",
+        "sourceText": "﴿لَرَءُوفٌ﴾: بالمد لحفص ونافع وابن كثير وابن عامر وأبي جعفر؛ وبالقصر للباقين.",
+        "verificationNotes": "قوبل تعيين الرواة على المصدر المعالج مع مرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P272-R00707-EXT",
+        "variantId": "v-AUDIT-P272-16-47-7-881976fc",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "At an-Nahl 16:47, Jamharah cites al-Nashr: qasr for Abu Amr, Hamza, al-Kisai, Shuʿbah (Abu Bakr), Khalaf, and Yaqub; the rest use madd.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿لَرَءُوفٌ﴾: بالمد لحفص ونافع وابن كثير وابن عامر وأبي جعفر؛ وبالقصر للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "At an-Nahl 16:47, Jamharah cites al-Nashr: qasr for Abu Amr, Hamza, al-Kisai, Shuʿbah (Abu Bakr), Khalaf, and Yaqub; the rest use madd.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
+  }
+]

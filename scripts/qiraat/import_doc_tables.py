@@ -387,6 +387,85 @@ def reconcile_audited_farsh(page, lines, variants, existing_page):
                  'sourceReference':url,'sourceText':external_text,
                  'verificationNotes':'مرجع مستقل يذكر الوجه والرواة صراحةً.'}]
             v['evidence']=[{'source':'موسوعة القراءات القرآنية — القراءات العشر','text':external_text,'url':url}]
+    if page in (271,272):
+        candidates=[
+            (271,40,'فَيَكُونُ','فَيَكُونَ','DOCX-P271-R00691',
+             'https://jamharah.net/showthread.php?t=27567',
+             'At an-Nahl 16:40, Ibn Amir and al-Kisai read فَيَكُونَ with naṣb; the rest read with rafʿ.',
+             (16,40,10,10),'HARAKAH'),
+            (272,43,'نُوحِي إِلَيْهِمْ','يُوحَى إِلَيْهُم','DOCX-P272-R00701',
+             'https://jamharah.net/showthread.php?t=27567',
+             'At an-Nahl 16:43, Hamza and Yaqub read يُوحَى إِلَيْهُم; the cited source row explicitly names both readers.',
+             (16,43,7,8),'LETTER'),
+            (272,44,'إِلَيْهِمْ','إِلَيْهُم','DOCX-P272-R00703',
+             'https://jamharah.net/showthread.php?t=27567',
+             'At an-Nahl 16:44, Hamza and Yaqub read the hāʾ of إِلَيْهِمْ with ḍamma.',
+             (16,44,10,10),'HARAKAH'),
+            (272,45,'بِهِمُ ٱلْأَرْضَ','بِهِمِ ٱلْأَرْضَ','DOCX-P272-R00705',
+             'https://jamharah.net/showthread.php?t=27567',
+             'At an-Nahl 16:45, Abu Amr and Yaqub read بِهِمِ الْأَرْضَ with kasrah on hāʾ and mīm.',
+             (16,45,8,9),'HARAKAH'),
+            (272,47,'لَرَءُوفٌ','لَرَؤُفٌ','DOCX-P272-R00707',
+             'https://jamharah.net/showthread.php?t=27567',
+             'At an-Nahl 16:47, Jamharah cites al-Nashr: qasr for Abu Amr, Hamza, al-Kisai, Shuʿbah (Abu Bakr), Khalaf, and Yaqub; the rest use madd.',
+             (16,47,7,7),'LETTER'),
+        ]
+        for p,ayah,anchor,alternate,record_id,url,external_text,expected,dtype in candidates:
+            if p!=page: continue
+            row=PACKAGE_RECORDS.get(record_id)
+            if (row is None or row.get('page_no')!=page or row.get('section')!='farsh' or
+                row.get('attribution_mode') not in ('explicit','remainder') or not row.get('raw_text') or
+                is_neg(row['raw_text']) or is_univ(row['raw_text'])):
+                raise ValueError(f'page {page} audited {ayah} processed-package row failed source/safety check')
+            if record_id=='DOCX-P272-R00707':
+                named_clause=row['raw_text'].split('؛',1)[0].split(':',1)[1]
+                named_clause=(named_clause.replace('بالمد','').replace('لحفص','حفص')
+                              .replace('وأبي جعفر','أبو جعفر'))
+                named,unresolved=resolve_readers(named_clause,set())
+            else:
+                names=[m['raw'] for m in row.get('authority_mentions',[]) if m.get('resolution')=='exact']
+                named,unresolved=resolve_readers('،'.join(names),set())
+            if unresolved or not named:
+                raise ValueError(f'page {page} audited {ayah} packaged reader mentions did not resolve')
+            readers=(ALL20-named) if record_id=='DOCX-P272-R00707' else named
+            expected_readers={
+                'DOCX-P271-R00691':{'Q04-R01','Q04-R02','Q07-R01','Q07-R02'},
+                'DOCX-P272-R00701':{'Q06-R01','Q06-R02','Q09-R01','Q09-R02'},
+                'DOCX-P272-R00703':{'Q06-R01','Q06-R02','Q09-R01','Q09-R02'},
+                'DOCX-P272-R00705':{'Q03-R01','Q03-R02','Q09-R01','Q09-R02'},
+                'DOCX-P272-R00707':{'Q03-R01','Q03-R02','Q05-R01','Q06-R01','Q06-R02',
+                                    'Q07-R01','Q07-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'},
+            }[record_id]
+            if readers!=expected_readers:
+                raise ValueError(f'page {page} audited {ayah} explicit source readers changed')
+            loc=T.find(page,anchor,ayah=ayah)
+            if (loc['surah'],loc['startAyah'],loc['startWord'],loc['endWord'])!=expected:
+                raise ValueError(f'page {page} audited {ayah} exact token/span changed')
+            matches=[x for x in existing_page if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'))==(loc['surah'],ayah,loc['startWord'])]
+            if any(x.get('hafsText')==loc['baseText'] and x.get('variantText')==alternate and
+                   set(x.get('readingIds',[]))==readers for x in matches):
+                continue
+            lid=f'AUDIT-P{page}-{loc["surah"]}-{ayah}-{loc["startWord"]}-{hashlib.sha1(T.norm(alternate).encode()).hexdigest()[:8]}'
+            before=len(variants)
+            yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+                                     (alternate,row['raw_text'],readers)],variants,ayah=ayah)
+            added=[x for x in variants[before:] if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('endToken')) ==
+                (loc['surah'],ayah,loc['startWord'],loc['endWord'])]
+            if len(added)!=1:
+                raise ValueError(f'page {page} audited {ayah} 20-reading variant could not be constructed')
+            v=added[0];v['id']=f'v-{lid}';v['locusId']=lid;v['differenceType']=dtype
+            v['description']=row['raw_text'];v['sources']=[
+                {'id':f's-{record_id}','variantId':v['id'],
+                 'sourceName':'استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)','sourceType':'other',
+                 'sourceReference':f'qiraat_records.jsonl، {record_id}','sourceText':row['raw_text'],
+                 'verificationNotes':'قوبل تعيين الرواة على المصدر المعالج مع مرجع مستقل للقراءات العشر.'},
+                {'id':f's-{record_id}-EXT','variantId':v['id'],
+                 'sourceName':'مصدر مستقل في القراءات العشر','sourceType':'website',
+                 'sourceReference':url,'sourceText':external_text,
+                 'verificationNotes':'مرجع مستقل يثبت الوجه ومجموعة القراء.'}]
+            v['evidence']=[{'source':'مصدر مستقل في القراءات العشر','text':external_text,'url':url}]
     if page == 253:
         source_line = '﴿قُرْءَانًا﴾: بنقل حركة الهمزة إلى الراء وحذف الهمزة ﴿قُرَانًا﴾ لابن كثير.'
         if [line.strip() for line in lines if line.strip() == source_line] != [source_line]:
