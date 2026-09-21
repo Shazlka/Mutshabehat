@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T22:20:00+04:00",
+  "updatedAt": "2026-09-21T23:50:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 1913,
-    "usulRulings": 9772,
+    "variants": 1932,
+    "usulRulings": 9783,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,31 +49,32 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Production-verified source-backed farsh slice on Mushaf pages 271-272: five targeted loci and 27 reader assignments. Page 271: ابن عامر/الكسائي نَصْب فَيَكُونَ at 16:40. Page 272: حمزة/يعقوب يُوحَى إِلَيْهُم at 16:43 and إِلَيْهُم at 16:44; أبو عمرو/يعقوب بِهِمِ الْأَرْضَ at 16:45; qasr لَرَؤُفٌ at 16:47. Commit 15bb6a0041f77f7e2d4726d66900d2126fa8dab4 deployed READY as dpl_A3DvyCbjrZfFM9hPuDdewdYsprvH. Production API smoke returned the exact new variant forms and reader IDs for both pages. Production-verified multi-face farsh import on pages 264 and 270: five targeted loci and 16 reader assignments. Importer dedup now permits different sourced forms at one token when reader sets do not overlap. Page 264: Abu Jaafar جُزٌّ alongside Shuʿbah’s جُزُءٌ at 15:44. Page 270: Yaqub hāʾ-dammah at 16:27 and Hamza/Khalaf al-Ashir yāʾ at 16:28/32. Ambiguous bare خلف remains excluded. Importer now preserves separately sourced, non-overlapping forms at one word. Five targeted loci (16 reader assignments) added: page 264, al-Hijr 15:44 Abu Jaafar جُزٌّ alongside Shuʿbah’s form; page 270, an-Nahl 16:27 Yaqub’s يُخْزِيهُمُ/فِيهُمُ and 16:28/32 Hamza+Khalaf al-Ashir يَتَوَفَّاهُمُ. Ambiguous خلف assignments remain excluded.  Final IKHFA slice pages 500-584 production-verified: 33 added loci across 27 pages; all 134 rule contexts in attached pages 225-584 are now covered (16 pre-existing, 118 newly added across four slices). Full external completeness review of other Qiraat families continues. External IKHFA rule audit complete for pages 225-584: all 134 valid adjacent-token contexts are covered (16 existed before audit; 118 added across four slices). Final slice adds 33 loci (66 reader assignments) on pages 505, 508, 510, 517, 518, 519, 522, 525, 530, 533, 534, 542, 544, 546, 548, 551, 556, 560, 563, 564, 566, 568, 573, 575, 579, 583, 584. All three cited exception verses are excluded. Full external review of the other Qiraat families remains in progress. External IKHFA rule sweep pages 400-499: added 37 Abu Ja'far loci (74 reader assignments) across 401, 403, 406, 409, 412, 413, 414, 415, 419, 422, 425, 427, 430, 434, 437, 438, 439, 440, 446, 461, 462, 473, 477, 478, 480, 481, 482, 488, 489, 493, 495; 33 valid contexts remain in pages 500-584. External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. Attached DOCX pages 225-584 are parsed, fixture-backed, and deployed; existing fixtures cover pages 1-224 from earlier sources. Targeted external checks corrected page 303, Ibrahim reader attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far spelling at 2:14 on page 3. Full page-by-page external completeness review continues. Pages 585-604 are outside the attached DOCX and need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. The hamzatan-family production verification is recorded in the preceding status. Latest IDGHAM_SAGHIR parser correction scopes reader groups to each anchor and imports six new plus two expanded loci (49 assignments) on pages 349, 362, 437, 449, 462, and 478; external corpus corroboration was targeted because the wider dump has anchor mismatches. Production verified: commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; production API smoke passed at 23:110 and 23:112. Latest WAQF_RASM reconciliation verified the source reader groups at pages 231, 236, 238, and 241; all reader IDs were already included, with four missing imalah qualifier notes added. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending. Latest inline farsh slice production-verified: 11 added variants and 34 reading assignments on pages 410, 411, 412, 422, 572, 573, 576, 580, and 584; current production debug API matched every token span and reader ID. The earlier six-variant slice on pages 268, 274, 287, and 296-298 was also confirmed on the same production release. Latest source-backed farsh slice prepared for Mushaf pages 271-272: five targeted loci and 27 reader assignments (Ibn Amir/al-Kisai at 16:40; Hamza/Yaqub at 16:43-44; Abu Amr/Yaqub at 16:45; qasr group at 16:47). Parser idempotent; local validation, tests, TypeScript, and build passed; deployment pending.",
+    "sourceCoverageStatus": "Pages 277-278 audited from processed record package: three farsh variants and four usul loci added; 12 usul reader assignments. Importer now reads qiraat_records.jsonl as its primary page source. Local validation, tests, TypeScript, and production build passed; deployment pending. Full page-by-page review continues.",
     "latestSourceCoverageNote": "Production-verified source-backed farsh slice on Mushaf pages 271-272: five targeted loci and 27 reader assignments. Page 271: ابن عامر/الكسائي نَصْب فَيَكُونَ at 16:40. Page 272: حمزة/يعقوب يُوحَى إِلَيْهُم at 16:43 and إِلَيْهُم at 16:44; أبو عمرو/يعقوب بِهِمِ الْأَرْضَ at 16:45; qasr لَرَؤُفٌ at 16:47. Commit 15bb6a0041f77f7e2d4726d66900d2126fa8dab4 deployed READY as dpl_A3DvyCbjrZfFM9hPuDdewdYsprvH. Production API smoke returned the exact new variant forms and reader IDs for both pages. Production-verified multi-face farsh import on pages 264 and 270: five targeted loci and 16 reader assignments. Importer dedup now permits different sourced forms at one token when reader sets do not overlap. Page 264: Abu Jaafar جُزٌّ alongside Shuʿbah’s جُزُءٌ at 15:44. Page 270: Yaqub hāʾ-dammah at 16:27 and Hamza/Khalaf al-Ashir yāʾ at 16:28/32. Ambiguous bare خلف remains excluded. Pages 271-272 prepared for deployment: five new source-backed farsh loci (27 reader assignments); no ambiguous reader attributions imported."
   },
   "sourceCoverageStatus": "Production-verified source-backed farsh slice on Mushaf pages 271-272: five targeted loci and 27 reader assignments. Page 271: ابن عامر/الكسائي نَصْب فَيَكُونَ at 16:40. Page 272: حمزة/يعقوب يُوحَى إِلَيْهُم at 16:43 and إِلَيْهُم at 16:44; أبو عمرو/يعقوب بِهِمِ الْأَرْضَ at 16:45; qasr لَرَؤُفٌ at 16:47. Commit 15bb6a0041f77f7e2d4726d66900d2126fa8dab4 deployed READY as dpl_A3DvyCbjrZfFM9hPuDdewdYsprvH. Production API smoke returned the exact new variant forms and reader IDs for both pages. Production-verified multi-face farsh import on pages 264 and 270: five targeted loci and 16 reader assignments. Importer dedup now permits different sourced forms at one token when reader sets do not overlap. Page 264: Abu Jaafar جُزٌّ alongside Shuʿbah’s جُزُءٌ at 15:44. Page 270: Yaqub hāʾ-dammah at 16:27 and Hamza/Khalaf al-Ashir yāʾ at 16:28/32. Ambiguous bare خلف remains excluded. Importer now preserves separately sourced, non-overlapping forms at one word. Five targeted loci (16 reader assignments) added: page 264, al-Hijr 15:44 Abu Jaafar جُزٌّ alongside Shuʿbah’s form; page 270, an-Nahl 16:27 Yaqub’s يُخْزِيهُمُ/فِيهُمُ and 16:28/32 Hamza+Khalaf al-Ashir يَتَوَفَّاهُمُ. Ambiguous خلف assignments remain excluded.  Hamzatan import production-verified for pages 265, 329, and 481: four token-backed rulings and 42 reader assignments. The external family completeness audit continues. Final IKHFA slice pages 500-584 production-verified: 33 added loci across 27 pages; all 134 rule contexts in attached pages 225-584 are now covered (16 pre-existing, 118 newly added across four slices). Full external completeness review of other Qiraat families continues. External IKHFA rule audit complete for pages 225-584: all 134 valid adjacent-token contexts are covered (16 existed before audit; 118 added across four slices). Final slice adds 33 loci (66 reader assignments) on pages 505, 508, 510, 517, 518, 519, 522, 525, 530, 533, 534, 542, 544, 546, 548, 551, 556, 560, 563, 564, 566, 568, 573, 575, 579, 583, 584. All three cited exception verses are excluded. Full external review of the other Qiraat families remains in progress. External IKHFA rule sweep pages 400-499: added 37 Abu Ja'far loci (74 reader assignments) across 401, 403, 406, 409, 412, 413, 414, 415, 419, 422, 425, 427, 430, 434, 437, 438, 439, 440, 446, 461, 462, 473, 477, 478, 480, 481, 482, 488, 489, 493, 495; 33 valid contexts remain in pages 500-584. External IKHFA rule sweep pages 300-399: added 34 Abu Ja'far loci (68 reader assignments) across 302, 304, 305, 312, 313, 314, 319, 323, 324, 326, 334, 339, 343, 344, 345, 348, 352, 353, 355, 362, 366, 368, 369, 377, 382, 383, 388, 389, 390, 394, 397; page 316 20:71 was already covered and skipped. 70 valid contexts remain in pages 400-584. External full-rule audit found 134 adjacent-word IKHFA contexts on attached pages 225-584 under the al-Nashr rule; 16 valid contexts were already covered. This production slice adds 14 on pages 227, 233, 257, 259, 260, 264, 274, 286, 288, 289, and 297; 104 eligible contexts remain for later slices. Four inherited IKHFA fixture rows on pages 227-228 point before waw rather than ghayn/kha and remain untouched under the additive-only fixture constraint. Attached DOCX pages 225-584 are reviewed, parsed, fixture-backed, and deployed. Existing fixtures cover pages 1-224 from earlier sources. Targeted independent-source audit corrected page 303, Baqarah Ibrahim/Hisham attribution on pages 19, 20, 43, and 44, Yaqub added-ya display on page 7, and Abu Ja'far مستهزون at 2:14 on page 3. These are targeted loci only; full page-by-page external completeness review continues. Pages 585-604 need separate source verification. Latest targeted YAAT_IDAFA source reconciliation covers pages 236, 308, and 313; page 236 retains a documented legacy source anomaly pending separate cleanup. Full page-by-page external completeness review continues. Full-family reader-ID coverage was audited across attached DOCX pages 225-584; three independently supported assignments were added on pages 326, 330, and 335, while one generalized Ibn Kathir claim on page 231 was withheld against the independent reading reference. Full page-by-page external completeness review continues. Latest IMALAH_TAQLIL reader reconciliation production verified for pages 226 and 230; independent reading references confirmed and deployed four explicit reader assignments, with the 11:72 action classified as taqlil. Latest IMALAH_TAQLIL reconciliation adds Q03-R01/R02 taqlil at 12:100 page 247, Q09-R01 imalah at 16:107 page 279, and eight Kisai waqf imalah loci on page 583; ambiguous bare-Khalaf lines were dropped and the resolver is now strict. Latest YAAT_IDAFA import adds seven source-named, token-anchored loci on pages 259, 307, 329, 429, 455, 462, and 564; two conflicting Hamza narrator assignments at 23:105 page 331 were withheld. Full page-by-page review remains pending. Latest YAAT_ZAWAID import adds 25 loci and 173 explicit reader assignments on pages 230, 246, 258, 260, 272, 288, 292, 295, 296, 298, 301, 429, 433, 437, 441, 448, 449, 460, 468, 470, 471, 487, 494, 497, 518, 520, 528, 529, 530. Five same-reader disagreements and three unmatched token anchors were withheld; full page-by-page review remains pending. Latest hamzatan-family pass appended 52 explicit reader/action assignments to 10 existing HAMZATAN_KALIMA loci on pages 288, 327, 328, 361, 440, 441, 453, 529, 544, and 563. No HAMZATAN_KALIMATAYN assignments were safe to add; 29 non-compatible source assignments plus two same-reader alternate conflicts at page 327 were withheld. Parenthetical بخلف and في وجهه الثاني are scoped to the named reader; ambiguous per-anchor alternate wording is dropped. Production verified: data commit fb68ed5b47cb2b04ca9e99a23ddecdcbe5643c39 is deployed READY as dpl_A2yHVvksjT6BNkzgtTqA9DJHax5W; Mushaf UI smoke passed at page 288, 17:61. Full page-by-page review remains pending. Latest IDGHAM_SAGHIR source pass adds six new loci and expands two existing loci with 49 assignments on pages 349, 362, 437, 449, 462, and 478. The official Quranpedia dump corroborated selected loci but has widespread wrong-verse/unmatched anchors, so only targeted records were used. Local validation passed; production commit 16623cdfebfa52193d6cfe883f2bc6cd2ed60f74 deployed READY as dpl_6FtCoqFBjvhkaRNaQD21RBMtgH3Z; API smoke passed at 23:110 and 23:112. Full page-by-page external completeness review remains pending. Latest WAQF_RASM reconciliation externally verified the explicit groups at pages 231, 236, 238, and 241; all readers were already present, and four imalah qualifiers were moved into additive notes without duplicate assignments. Production verified: commit a9bbe2fcbbe790b207686eac91a88e13606843dc deployed READY as dpl_f4VwuZ11d57YwWFfmAkTie8cjBvt; API smoke passed at 11:86 on page 231. Full page-by-page external completeness review remains pending. Latest WAQF_HAMZA reconciliation preserves three source action details at pages 228 and 234 in additive sourceNotes fields; all parsed Hamza/Hisham assignments at these loci were already covered, and external references corroborate the source details. Commit 61a4c4fa635513a95713a66669a595caa45bc0c9 was pushed to origin/main and deployed READY as dpl_9cxBLvRDMPdyjJd2fpgaHsVZQ35r; production API and Mushaf detail smoke passed at 11:54, 11:109, and 11:114. Full page-by-page external completeness review remains pending. Latest IDGHAM_SAGHIR correction adds the 13 source-named missing reader assignments at page 253, 13:32 ﴿أَخَذْتُهُمْ﴾, corroborated by Quranpedia per-ayah readings. Page 232 retains an inherited extra Hafs assignment under the additive-only rule; page 581 universal wording remains excluded. Full external review of other Qiraat families remains in progress. Production verified: data commit 2a030a8750eee52f8534564cc6d64db5d45693a4 is READY as Vercel deployment dpl_GBfGja1XD4Qs72g7wKGpc62L6U1R; page 253 debug API returned all 16 IDGHAM_SAGHIR reader IDs, exact token text, and #15803D. Full external review of other Qiraat families remains in progress. Latest YAAT source slice validated: YAAT_IDAFA page 494 (43:68, one new locus, 10 named reader assignments) and YAAT_ZAWAID page 563 (67:17–18, two loci, six assignments). Parser now keeps punctuation within quoted resulting forms and scopes Shu'ba’s «مع الفتح وصلاً» note to Q05-R01. Category-wide ambiguous/same-reader conflicts were withheld. Production verified: data commit 583d2221b4ac3ff4282653325a97c69c1c84e95b was pushed to origin/main and Vercel deployment dpl_5uu9hVF6EJ6FDB3ZTPnKXzByduhB reached READY for that exact SHA. Production API smoke remains unverified because the protected API URL redirected to Vercel SSO in the available fetch client. Latest inline farsh slice independently checked against Quranpedia: six explicit alternate forms across pages 268, 274, 287, 296, 297, and 298 (17 reader assignments). Only the audited source-fragment cases were enabled in the parser; exact page token anchors and reader IDs were verified. Production deployment pending. Inline farsh audit slice: 11 exact-token variants and 34 reader assignments added on pages 410, 411, 412, 422, 572, 573, 576, 580, and 584; this is targeted-locus coverage and does not assert new page-wide completion. Latest data piece prepared: pages 271-272, five farsh loci, 27 reader assignments; local checks passed, production deployment pending.",
   "currentBatch": {
-    "id": "audited-farsh-p275-p276",
+    "id": "audited-full-faces-p277-p278",
     "categories": [
-      "FARSH"
+      "FARSH",
+      "TAGHYIR_HAMZ",
+      "WAQF_HAMZA",
+      "WAQF_RASM"
     ],
     "pages": [
-      275,
-      276
+      277,
+      278
     ],
-    "status": "production_verified",
-    "variantsAdded": 8,
-    "readerAssignmentsAdded": 36,
-    "rulingsAdded": 0,
+    "status": "local_verified_deployment_pending",
+    "variantsAdded": 3,
+    "readerAssignmentsAdded": 12,
+    "rulingsAdded": 4,
     "rulingsMerged": 0,
-    "reference": "Processed records DOCX-P275-R00736/R00737/R00739/R00740/R00741; exact token spans plus independent Qiraat references. Page 276 processed rows R00744–R00752 cross-checked.",
-    "sourceAudit": "Page 275: sukun-hāʾ at 16:75 and twice at 16:76; sīn and Hamza/Khalaf ishmaam at 16:76; separate Hamza/Kisai forms at 16:78; tāʾ form of يرى at 16:79. Page 276: matching records are already present or excluded for ambiguous/conflicting source attribution.",
-    "validation": "Additive-only page-275 fixture; all same-token reader sets disjoint; importer idempotent; validator 1,929 variants / 9,779 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
-    "baseCommit": "ff5253f2e0bf2d5ccf682103f7052ca0695ca3f1",
-    "commit": "ef173ed872873245101ccda534b46f4c5594c357",
-    "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
-    "productionApiSmoke": "Production API page 275 returned all eight variant records including performance-only Q06-R01 ishmaam with exact base preserved; page 276 returned no variants and the five existing audited rulings."
+    "reference": "Processed records DOCX-P277-R00753/R00761/R00762 and DOCX-P278-R00765/R00766/R00774; exact token spans checked.",
+    "sourceAudit": "Page 277: Hamza/Yaqub 16:89 عَلَيْهُم, two hamza-change rules, second يَشَاءُ waqf locus. Page 278: Qalun/Abu Amr/Kisai/Abu Jaafar وَهْوَ, Ibn Kathir ٱلْقُرَانَ, and Ibn Kathir waqf-rasm بَاقِي. Ambiguous bare-Khalaf rows withheld.",
+    "validation": "Importer idempotent; additive fixture changes; validator 1,932 variants / 9,783 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
+    "deploymentId": null,
+    "productionApiSmoke": "pending"
   },
   "lastConfirmedDeployedDataCommit": "ef173ed872873245101ccda534b46f4c5594c357",
   "lastConfirmedVercelState": "READY",
@@ -1756,6 +1757,29 @@
       "deploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
       "deploymentUrl": "https://mutshabehat-v2-ii1xs4oa4-shazlka-s-projects.vercel.app",
       "productionApiSmoke": "Production API page 275 returned all eight variant records including performance-only Q06-R01 ishmaam with exact base preserved; page 276 returned no variants and the five existing audited rulings."
+    },
+    {
+      "id": "audited-full-faces-p277-p278",
+      "categories": [
+        "FARSH",
+        "TAGHYIR_HAMZ",
+        "WAQF_HAMZA",
+        "WAQF_RASM"
+      ],
+      "pages": [
+        277,
+        278
+      ],
+      "status": "local_verified_deployment_pending",
+      "variantsAdded": 3,
+      "readerAssignmentsAdded": 12,
+      "rulingsAdded": 4,
+      "rulingsMerged": 0,
+      "reference": "Processed records DOCX-P277-R00753/R00761/R00762 and DOCX-P278-R00765/R00766/R00774; exact token spans checked.",
+      "sourceAudit": "Page 277: Hamza/Yaqub 16:89 عَلَيْهُم, two hamza-change rules, second يَشَاءُ waqf locus. Page 278: Qalun/Abu Amr/Kisai/Abu Jaafar وَهْوَ, Ibn Kathir ٱلْقُرَانَ, and Ibn Kathir waqf-rasm بَاقِي. Ambiguous bare-Khalaf rows withheld.",
+      "validation": "Importer idempotent; additive fixture changes; validator 1,932 variants / 9,783 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
+      "deploymentId": null,
+      "productionApiSmoke": "pending"
     }
   ],
   "pages": [
@@ -9939,18 +9963,18 @@
         "farshLines": 2,
         "usulLines": 9
       },
-      "status": "processed_from_attached_doc",
+      "status": "audited_fixture_ready_for_deployment",
       "variantsChecked": true,
       "usulChecked": true,
-      "variantRecords": 0,
-      "usulRecords": 8,
+      "variantRecords": 1,
+      "usulRecords": 11,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
       "datasetValidation": "passed",
-      "committed": true,
-      "pushed": true,
-      "productionDeployed": true,
+      "committed": false,
+      "pushed": false,
+      "productionDeployed": false,
       "productionUiVerified": false
     },
     {
@@ -9968,18 +9992,18 @@
         "farshLines": 7,
         "usulLines": 7
       },
-      "status": "processed_from_attached_doc",
+      "status": "audited_fixture_ready_for_deployment",
       "variantsChecked": true,
       "usulChecked": true,
-      "variantRecords": 0,
-      "usulRecords": 5,
+      "variantRecords": 2,
+      "usulRecords": 6,
       "variantFixturePresent": true,
       "rulingFixturePresent": true,
       "databaseUpdated": false,
       "datasetValidation": "passed",
-      "committed": true,
-      "pushed": true,
-      "productionDeployed": true,
+      "committed": false,
+      "pushed": false,
+      "productionDeployed": false,
       "productionUiVerified": false
     },
     {
@@ -22491,5 +22515,5 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-ii1xs4oa4-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Production-verified audit of pages 275–276: eight source-backed page-275 variants (36 reading assignments), including the performance-only Hamza ishmaam face; page 276 had no safe missing records. Data commit ef173ed deployed READY as dpl_2Rm9ebCatS6uC9LfGt2EyPQzBCP9. Production API returned exact page-275 forms, spans, and readers and verified page-276 existing loci."
+  "latestSourceCoverageNote": "Locally verified source-backed import for pages 277-278: three variants and four usul loci (12 reader assignments). Importer now uses the supplied qiraat_records.jsonl package as primary input. Deployment pending; preceding confirmed production slice remains pages 275-276."
 }

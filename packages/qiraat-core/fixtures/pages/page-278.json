@@ -1,1 +1,75 @@
-[]
+[
+  {
+    "id": "v-D278-وهو-w2",
+    "surah": 16,
+    "ayah": 97,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D278-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D278-وهو-w2",
+        "variantId": "v-D278-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P278-R00765",
+        "verificationNotes": "المصدر يصرّح بالقراء، ورُبط الوجه برمز الكلمة المحقق في مصحف رواية حفص.",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء؛ قالون، أبو عمرو، الكسائي، أبو جعفر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D278-القرءان-w2",
+    "surah": 16,
+    "ayah": 98,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "ٱلْقُرَانَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D278-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D278-القرءان-w2",
+        "variantId": "v-D278-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P278-R00766",
+        "verificationNotes": "المصدر يصرّح بالقراء، ورُبط الوجه برمز الكلمة المحقق في مصحف رواية حفص.",
+        "sourceText": "﴿الْقُرْءَانَ﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة؛ ابن كثير",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

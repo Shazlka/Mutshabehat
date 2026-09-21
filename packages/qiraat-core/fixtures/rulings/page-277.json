@@ -615,5 +615,183 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p277-TAGHYIR_HAMZ-وجينا-2",
+    "pageNumber": 277,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 89,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 89,
+    "baseText": "وَجِئْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تغيير الهمز"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تغيير الهمز"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تغيير الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تغيير الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تغيير الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تغيير الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P277-R00761",
+        "sourceText": "تغيير الهمز: ﴿جِئْنَا﴾: السوسي، أبو جعفر. ﴿يَأْمُرُ﴾: ورش، السوسي، أبو جعفر.",
+        "verificationNotes": "وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف."
+      }
+    ]
+  },
+  {
+    "id": "r-p277-TAGHYIR_HAMZ-يامر-3",
+    "pageNumber": 277,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 90,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 90,
+    "baseText": "يَأْمُرُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تغيير الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تغيير الهمز"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "تغيير الهمز"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تغيير الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تغيير الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تغيير الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "تغيير الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تغيير الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P277-R00761",
+        "sourceText": "تغيير الهمز: ﴿جِئْنَا﴾: السوسي، أبو جعفر. ﴿يَأْمُرُ﴾: ورش، السوسي، أبو جعفر.",
+        "verificationNotes": "وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف."
+      }
+    ]
+  },
+  {
+    "id": "r-p277-WAQF_HAMZA-يشاء-4",
+    "pageNumber": 277,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 93,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 93,
+    "baseText": "يَشَآءُ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R01",
+        "action": "خمسة أوجه القياس؛ ويوافقه هشام"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "خمسة أوجه القياس؛ ويوافقه هشام"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "خمسة أوجه القياس؛ ويوافقه هشام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "خمسة أوجه القياس؛ ويوافقه هشام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "خمسة أوجه القياس؛ ويوافقه هشام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "خمسة أوجه القياس؛ ويوافقه هشام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "خمسة أوجه القياس؛ ويوافقه هشام",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P277-R00762",
+        "sourceText": "وقف حمزة: ﴿هَـٰٓؤُلَآءِ﴾: ١٣ وجهاً؛ ﴿يَشَآءُ﴾: خمسة القياس ويوافقه هشام.",
+        "verificationNotes": "وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف."
+      }
+    ]
   }
 ]

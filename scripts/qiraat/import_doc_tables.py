@@ -16,7 +16,7 @@ from import_surah_tables import resolve_readers, Unresolved, is_neg, is_univ, NA
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SC = '/tmp/claude-0/-home-user-Mutshabehat/e0ba1b96-dd1a-5b8a-886e-c95aefd540ed/scratchpad'
-DOC = json.load(open(SC + '/doc_pages.json', encoding='utf-8'))
+DOC = {}
 PACKAGE_PATH = os.environ.get('QIRAAT_IMPORT_PACKAGE', os.path.expanduser(
     '~/Downloads/mutshabehat_qiraat_import_225_584/qiraat_records.jsonl'))
 PACKAGE_RECORDS = {}
@@ -26,6 +26,34 @@ if os.path.isfile(PACKAGE_PATH):
             record = json.loads(package_line)
             if record.get('record_id'):
                 PACKAGE_RECORDS[record['record_id']] = record
+# Prefer the original page extraction when the historical scratchpad is unavailable. The
+# processed package preserves each source paragraph verbatim, so it can drive the same
+# fail-closed page parser without reopening the DOCX or inventing normalized prose.
+if PACKAGE_RECORDS:
+    packaged_pages=collections.defaultdict(lambda: {'page':None,'surah':None,'ayat':None,
+                                                     'farsh':[],'usul':[]})
+    for record in sorted(PACKAGE_RECORDS.values(),
+                         key=lambda r:(r.get('page_no',0),r.get('record_order',0))):
+        page=record.get('page_no')
+        raw=record.get('raw_text')
+        if not page or not raw:
+            continue
+        entry=packaged_pages[page]
+        entry['page']=page
+        entry['surah']=record.get('surah_number')
+        entry['ayat']=record.get('ayah_range')
+        section=record.get('section')
+        if section in ('farsh','mixed'):
+            entry['farsh'].append(raw)
+        if section in ('usul','mixed'):
+            entry['usul'].append(raw)
+    DOC={str(page):entry for page,entry in packaged_pages.items()}
+else:
+    doc_path=SC + '/doc_pages.json'
+    if os.path.isfile(doc_path):
+        DOC=json.load(open(doc_path,encoding='utf-8'))
+    else:
+        raise FileNotFoundError('Qiraat source unavailable: provide qiraat_records.jsonl or doc_pages.json')
 TS = '2026-09-20T12:00:00.000Z'
 ALL20 = set(A.ALL_READINGS)
 SRC = dict(sourceName='استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)', sourceType='other',
@@ -2022,6 +2050,52 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
     """Keep the independently confirmed al-Susi imalah addition isolated from a conflicting
     Warsh default/alternate status already stored at the same token.
     """
+    if page in (277,278):
+        audited=(
+            [('DOCX-P277-R00761','TAGHYIR_HAMZ','وَجِئْنَا',
+              {'Q03-R02','Q08-R01','Q08-R02'},'تغيير الهمز',1),
+             ('DOCX-P277-R00761','TAGHYIR_HAMZ','يَأْمُرُ',
+              {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'تغيير الهمز',1),
+             ('DOCX-P277-R00762','WAQF_HAMZA','يَشَآءُ',
+              {'Q04-R01','Q06-R01','Q06-R02'},'خمسة أوجه القياس؛ ويوافقه هشام',2)]
+            if page==277 else
+            [('DOCX-P278-R00774','WAQF_RASM','بَاقٍ',
+              {'Q02-R01','Q02-R02'},'إثبات الياء في الوقف: بَاقِي',1)])
+        for record_id,category,anchor,readers,action,occurrence in audited:
+            record=PACKAGE_RECORDS.get(record_id)
+            if (record is None or record.get('page_no')!=page or
+                    record.get('raw_text') not in lines):
+                raise ValueError(f'page {page} audited source record missing: {record_id}')
+            source_line=record['raw_text']
+            if is_neg(source_line) or is_univ(source_line) or has_bare_ambiguous_reader(source_line):
+                raise ValueError(f'page {page} audited source record failed safety check: {record_id}')
+            if not readers or not readers<=ALL20:
+                raise ValueError(f'page {page} audited reader IDs invalid: {record_id}')
+            loc=T.find(page,anchor,occurrence=occurrence)
+            if category=='WAQF_HAMZA' and (loc['surah'],loc['startAyah'],loc['startWord'])!=(16,93,13):
+                raise ValueError('page 277 second يشاء token no longer resolves to 16:93:13')
+            if category=='WAQF_RASM' and (loc['surah'],loc['startAyah'],loc['startWord'],loc['baseText'])!=(16,96,7,'بَاقٍۢ ۗ'):
+                raise ValueError('page 278 بَاقٍ token no longer resolves to 16:96:7')
+            if category=='TAGHYIR_HAMZ' and loc['surah']!=16:
+                raise ValueError(f'page {page} hamza source anchor is outside النحل')
+            key=(loc['surah'],loc['startAyah'],loc['startWord'],category)
+            in_old=[x for x in existing_page if
+                    (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key]
+            if in_old:
+                have={x.get('readingId') for x in in_old[0].get('readings',[])}
+                readers=readers-have
+            if not readers:
+                continue
+            emit_ruling(page,category,anchor,[(readers,action)],rulings,
+                        notes=action if category in ('WAQF_HAMZA','WAQF_RASM') else None,
+                        occurrence=occurrence)
+            candidates=[x for x in rulings if
+                (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key]
+            if not candidates:
+                raise ValueError(f'page {page} audited ruling failed to resolve: {record_id}')
+            candidates[-1]['sourceNotes']=[{'sourceReference':f"qiraat_records.jsonl، {record_id}",
+                'sourceText':source_line,
+                'verificationNotes':'وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف.'}]
     if page == 273:
         record=PACKAGE_RECORDS.get('DOCX-P273-R00716')
         expected='ترقيق الراءات وتغليظ اللامات: ورش يرقق الراء في ﴿بُشِّرَ﴾ و﴿يُؤَخِّرُهُمْ﴾؛ ويغلظ اللام في ﴿ظَلَّ﴾ وصلاً، وله وقفاً الوجهان.'
@@ -2574,6 +2648,50 @@ def collect_farsh(page, lines):
         i+=1
     out.extend(checked_page303_farsh(page, lines))
     out.extend(checked_inline_farsh(page, lines))
+    out.extend(checked_audited_p277_278_farsh(page, lines))
+    return out
+
+def checked_audited_p277_278_farsh(page, lines):
+    """Resolve reviewed inline source rows whose two forms are described, not quoted."""
+    cases={
+        277:[{'record_id':'DOCX-P277-R00753','anchor':'عَلَيْهِم','ayah':89,
+              'base':'عَلَيْهِم','variant':'عَلَيْهُم','readers':'حمزة ويعقوب',
+              'description':'بضم الهاء'}],
+        278:[{'record_id':'DOCX-P278-R00765','anchor':'وَهُوَ','ayah':97,
+              'base':'وَهُوَ','variant':'وَهْوَ','readers':'قالون، أبو عمرو، الكسائي، أبو جعفر',
+              'description':'بإسكان الهاء'},
+             {'record_id':'DOCX-P278-R00766','anchor':'الْقُرْءَانَ','ayah':98,
+              'base':'ٱلْقُرْءَانَ','variant':'ٱلْقُرَانَ','readers':'ابن كثير',
+              'description':'بنقل الهمزة'}],
+    }
+    out=[]
+    for case in cases.get(page,[]):
+        packaged=PACKAGE_RECORDS.get(case['record_id'])
+        if packaged is None or packaged.get('page_no')!=page or packaged.get('section')!='farsh':
+            raise ValueError(f"page {page} audited source record missing: {case['record_id']}")
+        source=packaged.get('raw_text','')
+        if source not in lines or is_neg(source) or is_univ(source) or has_bare_ambiguous_reader(source):
+            raise ValueError(f"page {page} audited source row failed safety/exact-text check: {case['record_id']}")
+        try:
+            readers,unresolved=resolve_readers(case['readers'],set())
+        except Unresolved as exc:
+            raise ValueError(f"page {page} audited reader group unresolved: {case['record_id']}") from exc
+        if unresolved.strip(' ،,؛.') or not readers or 'Q05-R02' in readers:
+            raise ValueError(f"page {page} audited reader group invalid: {case['record_id']}")
+        loc=T.find(page,case['anchor'],ayah=case['ayah'])
+        if loc['baseText']!=case['base'] or case['variant']==loc['baseText']:
+            raise ValueError(f"page {page} audited token/form mismatch: {case['record_id']}")
+        before=len(out)
+        yield_block(page,case['anchor'],[
+            (None,'وجه حفص المطابق لرسم المصحف',ALL20-readers),
+            (case['variant'],f"{case['description']}؛ {case['readers']}",readers),
+        ],out,ayah=case['ayah'])
+        if len(out)!=before+1:
+            raise ValueError(f"page {page} audited partition did not resolve: {case['record_id']}")
+        variant=out[-1]
+        variant['sources'][0].update({'sourceReference':f"qiraat_records.jsonl، {case['record_id']}",
+                                      'sourceText':source,
+                                      'verificationNotes':'المصدر يصرّح بالقراء، ورُبط الوجه برمز الكلمة المحقق في مصحف رواية حفص.'})
     return out
 
 def checked_page303_farsh(page, lines):
