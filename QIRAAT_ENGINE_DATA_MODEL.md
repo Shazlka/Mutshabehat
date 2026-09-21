@@ -70,12 +70,14 @@ For a target entity and matching anchor/context/framework:
 1. find direct annotations and ancestor annotations using `qiraat_entity_closure`;
 2. reject annotations whose context does not match;
 3. rank direct target before narrator before reader (shortest ancestor depth wins); ties use current annotation revision/time/UUID deterministically;
-4. an `EXCLUDE` at the most specific matching level suppresses inheritance; `OVERRIDE` replaces a broader match; `INHERIT` can apply to descendants only when explicitly enabled;
+4. a direct rule always wins; otherwise the nearest ancestor with `applies_to_descendants=true` wins. This applies identically to `INHERIT`, `OVERRIDE`, and `EXCLUDE`; a direct Tariq override may supersede an inherited exclusion. See `QIRAAT_INHERITANCE_POLICY.md`;
 5. write the effective result to the cache in the same transaction as the mutation.
 
 `resolved_qiraat_cache` stores the read projection: canonical key/word ID, page accelerator, target entity, corpus/framework, resolved annotation ID, face count, variant summary, resolved colour, reading context, source annotation version, cache revision, metadata and timestamp. Its semantic uniqueness centres on `(canonical_word_key, target_entity_id, framework_id, reading_context)`; page is indexed but never identity.
 
 The resolver calculates only affected descendants and anchors/pages. Normal page reads fetch cached rows by page and filter/status, with no recursive resolution. If cache projection fails, the whole annotation transaction fails; an observable health/query check reports cache revision lag.
+
+The cache trigger invalidates only descendants of the changed authority and the changed annotation's start/end canonical keys under its framework. The resolver suite verifies this branch/scope isolation and queries the cache directly; the page read path is `resolved_qiraat_cache` by page index, never a recursive hierarchy query.
 
 ## Batch model
 
