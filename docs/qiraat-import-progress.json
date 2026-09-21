@@ -61,7 +61,7 @@
     "pages": [
       246
     ],
-    "status": "validated_waiting_deploy",
+    "status": "production_verified",
     "variantsAdded": 0,
     "readerAssignmentsAdded": 10,
     "variantTextCorrections": 0,
@@ -75,9 +75,15 @@
     "baseCommit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "productionApiSmoke": "Pending deployment."
+    "commit": "1f764b9966255ab205bba70e493c7f29122a7038",
+    "followupCommit": "25b66724dd9cf0e3fe2ec945e5b57baf39260b9d",
+    "pushed": true,
+    "vercelState": "READY",
+    "deploymentId": "dpl_Fw9jYQfa4cH3iDXXsPBwGiiXvJwq",
+    "deploymentUrl": "https://mutshabehat-v2-721npnh7i-shazlka-s-projects.vercel.app",
+    "productionApiSmoke": "Stable production /api/mushaf-1441/qiraat?page=246&debug=1 returned one HAMZATAN_KALIMA ruling at Yusuf 12:90 tokens 2-3 with exact Hafs baseText, color #DC2626, all 10 expected reader IDs/actions, and six sourceNotes."
   },
-  "lastConfirmedDeployedDataCommit": "6e96747d5ac82eabc02327383f811e22792e1f8d",
+  "lastConfirmedDeployedDataCommit": "25b66724dd9cf0e3fe2ec945e5b57baf39260b9d",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -22447,7 +22453,7 @@
     "status": "passed",
     "reason": "The public production /api/mushaf-1441/qiraat?page=N&debug=1 endpoint returned all 11 exact variants, token spans, base texts, and reader IDs. The public Mushaf UI rendered page 410 and showed the new Ruways variant marker at 30:60."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_85QCsHCohjH1pZfZiKDqZ2YgJxKf",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5kzdkyea8-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Page 246 now has one explicit HAMZATAN_KALIMA ruling at Yusuf 12:90 with 10 named reader assignments; awaiting production verification. Page-by-page source reconciliation continues; importer zero-output is not treated as proof of coverage."
+  "lastConfirmedVercelDeploymentId": "dpl_Fw9jYQfa4cH3iDXXsPBwGiiXvJwq",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-721npnh7i-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Page 246 now has one production-verified HAMZATAN_KALIMA ruling at Yusuf 12:90 with 10 named reader assignments. Page-by-page source reconciliation continues; importer zero-output is not treated as proof of coverage."
 }
