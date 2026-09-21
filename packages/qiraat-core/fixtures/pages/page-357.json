@@ -216,5 +216,38 @@
         "text": "وَثَلَاثُ عَوْرَاتٍ شَفَا"
       }
     ]
+  },
+  {
+    "id": "v-D357-فان_تولوا-w2",
+    "surah": 24,
+    "ayah": 54,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "فَإِن تَوَلَّوْا۟",
+    "variantText": "فَإِن تَّوَلَّوْا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D357-فان_تولوا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D357-فان_تولوا-w2",
+        "variantId": "v-D357-فان_تولوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P357-R01683",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَإِن تَوَلَّوْاْ﴾: بتخفيف التاء للجمهور؛ وبتشديد التاء وصلاً ﴿فَإِن تَّوَلَّوْا﴾ للبزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
