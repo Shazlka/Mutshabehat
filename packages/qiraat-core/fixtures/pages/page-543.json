@@ -379,8 +379,7 @@
       "Q10-R02"
     ],
     "locusId": "AUDIT-P543-58-11-9-03444-1-المجالس-المجلس",
-    "locusType": "performance_variant",
-    "performanceNote": "بإسكان الجيم وحذف الألف",
+    "locusType": "word_variant",
     "sources": [
       {
         "id": "s-AUDIT-P543-58-11-9-03444-1-المجالس-المجلس-DOC",
@@ -491,8 +490,7 @@
       "Q10-R02"
     ],
     "locusId": "AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا",
-    "locusType": "performance_variant",
-    "performanceNote": "بكسر الشينين",
+    "locusType": "word_variant",
     "sources": [
       {
         "id": "s-AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا-DOC",
