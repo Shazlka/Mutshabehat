@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T12:40:00+04:00",
+  "updatedAt": "2026-09-21T17:41:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -61,7 +61,7 @@
     "pages": [
       456
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 2,
     "readerAssignmentsAdded": 8,
     "variantTextCorrections": 0,
@@ -75,11 +75,14 @@
     "baseCommit": "bc64ca8a7e55e4928910b01c4ab1fa5ed389b74e",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "pushed": false,
-    "vercelState": "pending",
-    "productionApiSmoke": "pending"
+    "commit": "0dee984a68748ccc7ad329cba3ec3da1b855ac8d",
+    "pushed": true,
+    "vercelState": "READY",
+    "deploymentId": "dpl_5Vy4nvd8VCpQQrV5P8a6noyc8gx7",
+    "deploymentUrl": "https://mutshabehat-v2-2acnywin9-shazlka-s-projects.vercel.app",
+    "productionApiSmoke": "Stable production debug API returned both variants at 38:45 token 2 and 38:58 token 1 with verbatim Hafs baseText and expected reader IDs."
   },
-  "lastConfirmedDeployedDataCommit": "196bb76e845d9e840215c9986fcca2a29669ba40",
+  "lastConfirmedDeployedDataCommit": "0dee984a68748ccc7ad329cba3ec3da1b855ac8d",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -22435,21 +22438,11 @@
     }
   },
   "lastProductionSmokeAttempt": {
-    "pages": [
-      410,
-      411,
-      412,
-      422,
-      572,
-      573,
-      576,
-      580,
-      584
-    ],
+    "pages": [456],
     "status": "passed",
-    "reason": "The public production /api/mushaf-1441/qiraat?page=N&debug=1 endpoint returned all 11 exact variants, token spans, base texts, and reader IDs. The public Mushaf UI rendered page 410 and showed the new Ruways variant marker at 30:60."
+    "reason": "The stable public production debug API returned both new audited variants at their exact Sad token spans, with verbatim Hafs base text and all eight expected reader assignments."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_852vcdDyPovt62jdo4iYJ3z5eKT8",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-mnqpdn1m9-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Page 456 adds two externally audited farsh variants (38:45 and 38:58, eight reader assignments); deployment pending. This is targeted-locus coverage, not full-page completeness. Page 247 remains production-verified at Yusuf 12:100 and 12:102; page-by-page reconciliation continues."
+  "lastConfirmedVercelDeploymentId": "dpl_5Vy4nvd8VCpQQrV5P8a6noyc8gx7",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-2acnywin9-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Page 456 production-verified: two audited farsh variants at 38:45 and 38:58, eight reader assignments. This is targeted-locus coverage, not full-page completeness. Page 247 remains production-verified at Yusuf 12:100 and 12:102; page-by-page reconciliation continues."
 }
