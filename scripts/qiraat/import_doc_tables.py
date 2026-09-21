@@ -58,7 +58,7 @@ def readers_from(text, claimed):
         exc,_=resolve_readers(re.sub(r'[اً]$','',m.group(1)).replace('نافعا','نافع'), set())
         if not exc: raise Unresolved('excepted empty')
         return set(ALL20)-exc
-    if 'الباقون' in t or 'للجمهور' in t or 'الجمهور' in t:
+    if any(x in t for x in ('الباقون','الباقين','للباقون','للباقين','للجمهور','الجمهور')):
         return set(ALL20)-claimed
     rs,_=resolve_readers(t, claimed)
     if not rs: raise Unresolved('no readers')
@@ -277,7 +277,7 @@ def resolve_explicit_group(text):
 
 def explicit_reader_clause(clause):
     """Return (action, readers, alternate, note) from one explicitly attributed clause."""
-    if any(x in clause for x in ('الباقون','الباقين','للجمهور','الجمهور')): return None
+    if any(x in clause for x in ('الباقون','الباقين','للباقون','للباقين','للجمهور','الجمهور')): return None
     notes=PARENS.findall(clause)
     flat=PARENS.sub('',clause)
     flat=re.sub(r'\s+',' ',flat).strip()
@@ -1522,6 +1522,52 @@ def checked_inline_farsh(page, lines):
             'readerGroup': 'نافع، ابن كثير، ابن عامر، أبو جعفر',
             'sourceFragment': 'وبالتثنية ﴿مِنْهُمَا﴾ لنافع، وابن كثير، وابن عامر، وأبي جعفر',
         }],
+        410: [{
+            'anchor': 'يَسْتَخِفَّنَّكَ', 'ayah': 60, 'variantText': 'يَسْتَخِفَّنكَ',
+            'readerGroup': 'رويس', 'sourceFragment': 'وبنون خفيفة مخففة ﴿يَسْتَخِفَّنكَ﴾ لرويس',
+        }],
+        411: [{
+            'anchor': 'أُذُنَيْهِ', 'ayah': 7, 'variantText': 'أُذْنَيْهِ',
+            'readerGroup': 'نافع', 'sourceFragment': 'وبإسكان الذال ﴿أُذْنَيْهِ﴾ لنافع',
+        }],
+        412: [{
+            'anchor': 'مِثْقَالَ', 'ayah': 16, 'variantText': 'مِثْقَالُ',
+            'readerGroup': 'نافع، أبو جعفر', 'sourceFragment': 'وبالرفع ﴿مِثْقَالُ﴾ لنافع وأبي جعفر',
+        }],
+        422: [{
+            'anchor': 'وَلَا تَبَرَّجْنَ', 'ayah': 33, 'variantText': 'وَلَا تَّبَرَّجْنَ',
+            'readerGroup': 'البزي', 'sourceFragment': 'وبتشديد التاء وصلاً ﴿وَلَا تَّبَرَّجْنَ﴾ للبزي',
+        }],
+        572: [{
+            'anchor': 'تَقُولَ', 'ayah': 5, 'variantText': 'تَقَوَّلَ',
+            'readerGroup': 'يعقوب', 'sourceFragment': 'بفتح التاء والقاف وتشديد الواو المفتوحة ﴿تَقَوَّلَ﴾ ليعقوب',
+        }],
+        573: [{
+            'anchor': 'لِبَدٗا', 'ayah': 19, 'variantText': 'لُبَدًا',
+            'readerGroup': 'هشام', 'condition': 'في وجهه الثاني',
+            'sourceFragment': 'بضم اللام ﴿لُبَدًا﴾ لهشام في وجهه الثاني',
+        }, {
+            'anchor': 'لِّيَعْلَمَ', 'ayah': 28, 'variantText': 'لِيُعْلَمَ',
+            'readerGroup': 'رويس', 'readerTail': 'لرويس',
+            'sourceFragment': 'بضم الياء مبنياً للمجهول ﴿لِيُعْلَمَ﴾ لرويس',
+        }],
+        576: [{
+            'anchor': 'تِسْعَةَ عَشَرَ', 'ayah': 30, 'variantText': 'تِسْعَةَ عْشَرَ',
+            'readerGroup': 'أبو جعفر', 'sourceFragment': 'بإسكان العين ﴿تِسْعَةَ عْشَرَ﴾ لأبي جعفر',
+        }],
+        580: [{
+            'anchor': 'عُذْرًا', 'ayah': 6, 'variantText': 'عُذُرًا',
+            'readerGroup': 'روح', 'sourceFragment': 'بضم الذال ﴿عُذُرًا﴾ لروح',
+        }, {
+            'anchor': 'نُذْرًا', 'ayah': 6, 'variantText': 'نُذُرًا',
+            'readerGroup': 'نافع، ابن كثير، ابن عامر، شعبة، أبو جعفر، يعقوب',
+            'sourceFragment': 'بضم الذال ﴿نُذُرًا﴾ لنافع، وابن كثير، وابن عامر، وشعبة، وأبي جعفر، ويعقوب',
+        }],
+        584: [{
+            'anchor': 'تَزَكَّىٰٓ', 'ayah': 18, 'variantText': 'تَزَّكَّى',
+            'readerGroup': 'نافع، ابن كثير، أبو جعفر، يعقوب',
+            'sourceFragment': 'بتشديد الزاي ﴿تَزَّكَّى﴾ لنافع، وابن كثير، وأبي جعفر، ويعقوب',
+        }],
     }
     out=[]
     for case in cases.get(page, []):
@@ -1539,18 +1585,33 @@ def checked_inline_farsh(page, lines):
             continue
         alternate_clauses=[x for x in clauses if case['sourceFragment'] in x]
         remainder_clauses=[x for x in clauses if any(
-            marker in x for marker in ('للجمهور','الباقون','الباقين'))]
+            marker in x for marker in ('للجمهور','الجمهور','الباقون','الباقين','للباقون','للباقين'))]
         if len(alternate_clauses) != 1 or len(remainder_clauses) != 1:
             continue
         alternate_clause=alternate_clauses[0]
         if BRACE.findall(alternate_clause) != [case['variantText']]:
             continue
-        parsed=explicit_reader_clause(alternate_clause)
+        condition=case.get('condition')
+        parse_clause=alternate_clause.replace(condition,'') if condition else alternate_clause
+        try:
+            parsed=explicit_reader_clause(parse_clause)
+        except Unresolved:
+            parsed=None
+        if not parsed and case.get('readerTail'):
+            tail=case['readerTail']
+            tail_at=parse_clause.rfind(tail)
+            suffix=parse_clause[tail_at+len(tail):] if tail_at>=0 else ''
+            readers,unresolved=resolve_readers(case['readerGroup'],set())
+            if tail_at>=0 and not suffix.strip(' .،,؛') and not unresolved.strip(' ،,؛.'):
+                description=parse_clause[:tail_at].strip(' و،,؛.')
+                parsed=(description,readers,False,None)
         if not parsed:
             continue
         description,reading_ids,alternate,note=parsed
         if alternate or note:
             continue
+        if condition:
+            description=f'{description}؛ {condition}'
         expected,unresolved=resolve_readers(case['readerGroup'],set())
         if unresolved.strip(' ،,؛.') or reading_ids != expected:
             continue
@@ -1561,7 +1622,7 @@ def checked_inline_farsh(page, lines):
             loc=T.find(page,case['anchor'],1,case['ayah'])
         except T.NoMatch:
             continue
-        if T.norm(case['variantText']) == T.norm(loc['baseText']):
+        if case['variantText'] == loc['baseText']:
             continue
         before=len(out)
         yield_block(page,case['anchor'],[
@@ -1581,10 +1642,13 @@ if __name__=='__main__':
     raw=sys.argv[1:]
     categories=None
     complete_ikhfa='--complete-ikhfa' in raw
+    variants_only='--variants-only' in raw
     if '--category' in raw:
         ix=raw.index('--category')
         if ix+1>=len(raw): raise SystemExit('--category needs a category name')
         categories={raw[ix+1]}
+    if variants_only and categories is not None:
+        raise SystemExit('--variants-only cannot be combined with --category')
     args=[a for a in raw if not a.startswith('--')]
     if categories is not None: args.remove(next(iter(categories)))
     if '-' in (args[0] if args else ''):
@@ -1594,6 +1658,9 @@ if __name__=='__main__':
     else:
         pages=list(range(268,305))
     vout,rout,vs,rs=build(pages,categories=categories,complete_ikhfa=complete_ikhfa)
+    if variants_only:
+        rout={}
+        rs=collections.Counter()
     print('pages touched:',sorted(set(vout)|set(rout)))
     print('variants added:',vs['added'])
     print('new ruling loci:',rs['added'],' merged ruling loci:',rs['merged'],

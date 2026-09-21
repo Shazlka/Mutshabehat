@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "id": "v-D422-ولا_تبرجن-w2",
+    "surah": 33,
+    "ayah": 33,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تَبَرَّجْنَ",
+    "variantText": "وَلَا تَّبَرَّجْنَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D422-ولا_تبرجن",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D422-ولا_تبرجن-w2",
+        "variantId": "v-D422-ولا_تبرجن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 422، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿وَلَا تَبَرَّجْنَ﴾: بتخفيف التاء للجمهور؛ وبتشديد التاء وصلاً ﴿وَلَا تَّبَرَّجْنَ﴾ للبزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً ﴿وَلَا تَّبَرَّجْنَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

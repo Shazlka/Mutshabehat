@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "v-D584-تزكا-w2",
+    "surah": 79,
+    "ayah": 18,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَزَكَّىٰ",
+    "variantText": "تَزَّكَّى",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D584-تزكا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D584-تزكا-w2",
+        "variantId": "v-D584-تزكا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 584، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿تَزَكَّىٰٓ﴾: بتشديد الزاي ﴿تَزَّكَّى﴾ لنافع، وابن كثير، وأبي جعفر، ويعقوب؛ بتخفيف الزاي للباقين."
+      }
+    ],
+    "description": "بتشديد الزاي ﴿تَزَّكَّى﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

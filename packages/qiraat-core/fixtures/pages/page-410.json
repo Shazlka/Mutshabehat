@@ -84,5 +84,38 @@
     "description": "بتاء التأنيث",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D410-يستخفنك-w2",
+    "surah": 30,
+    "ayah": 60,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يَسْتَخِفَّنَّكَ",
+    "variantText": "يَسْتَخِفَّنكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D410-يستخفنك",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D410-يستخفنك-w2",
+        "variantId": "v-D410-يستخفنك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 410، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿يَسْتَخِفَّنَّكَ﴾: بنون مشددة للجمهور؛ وبنون خفيفة مخففة ﴿يَسْتَخِفَّنكَ﴾ لرويس."
+      }
+    ],
+    "description": "بنون خفيفة مخففة ﴿يَسْتَخِفَّنكَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

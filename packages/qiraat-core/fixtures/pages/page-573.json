@@ -1,1 +1,68 @@
-[]
+[
+  {
+    "id": "v-D573-لبدا-w2",
+    "surah": 72,
+    "ayah": 19,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لِبَدًۭا",
+    "variantText": "لُبَدًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D573-لبدا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D573-لبدا-w2",
+        "variantId": "v-D573-لبدا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 573، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿لِبَدٗا﴾: بكسر اللام وفتح الباء للجمهور؛ بضم اللام ﴿لُبَدًا﴾ لهشام في وجهه الثاني."
+      }
+    ],
+    "description": "بضم اللام ﴿لُبَدًا﴾؛ في وجهه الثاني",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D573-ليعلم-w2",
+    "surah": 72,
+    "ayah": 28,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لِّيَعْلَمَ",
+    "variantText": "لِيُعْلَمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D573-ليعلم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D573-ليعلم-w2",
+        "variantId": "v-D573-ليعلم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 573، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿لِّيَعْلَمَ﴾: بفتح الياء مبنياً للفاعل للجمهور؛ بضم الياء مبنياً للمجهول ﴿لِيُعْلَمَ﴾ لرويس."
+      }
+    ],
+    "description": "بضم الياء مبنياً للمجهول ﴿لِيُعْلَمَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

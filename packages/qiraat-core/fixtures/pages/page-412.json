@@ -35,5 +35,41 @@
     "description": "بألف بعد الصاد وتخفيف العين",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D412-مثقال-w2",
+    "surah": 31,
+    "ayah": 16,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مِثْقَالَ",
+    "variantText": "مِثْقَالُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D412-مثقال",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D412-مثقال-w2",
+        "variantId": "v-D412-مثقال-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 412، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿مِثْقَالَ﴾: بالنصب للجمهور؛ وبالرفع ﴿مِثْقَالُ﴾ لنافع وأبي جعفر."
+      }
+    ],
+    "description": "بالرفع ﴿مِثْقَالُ﴾",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

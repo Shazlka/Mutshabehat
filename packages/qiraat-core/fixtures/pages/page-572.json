@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "v-D572-تقول-w2",
+    "surah": 72,
+    "ayah": 5,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَقُولَ",
+    "variantText": "تَقَوَّلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D572-تقول",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D572-تقول-w2",
+        "variantId": "v-D572-تقول-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 572، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿تَقُولَ﴾: بفتح التاء وضم القاف مخففة ﴿تَقُولَ﴾ للجمهور؛ بفتح التاء والقاف وتشديد الواو المفتوحة ﴿تَقَوَّلَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح التاء والقاف وتشديد الواو المفتوحة ﴿تَقَوَّلَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

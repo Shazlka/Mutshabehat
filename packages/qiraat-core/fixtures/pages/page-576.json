@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "v-D576-تسعه_عشر-w2",
+    "surah": 74,
+    "ayah": 30,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "تِسْعَةَ عَشَرَ",
+    "variantText": "تِسْعَةَ عْشَرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D576-تسعه_عشر",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D576-تسعه_عشر-w2",
+        "variantId": "v-D576-تسعه_عشر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 576، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿تِسْعَةَ عَشَرَ﴾: بفتح عين «عشر» للجمهور؛ بإسكان العين ﴿تِسْعَةَ عْشَرَ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بإسكان العين ﴿تِسْعَةَ عْشَرَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

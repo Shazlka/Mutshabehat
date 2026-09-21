@@ -1,1 +1,78 @@
-[]
+[
+  {
+    "id": "v-D580-عذرا-w2",
+    "surah": 77,
+    "ayah": 6,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "عُذْرًا",
+    "variantText": "عُذُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R02"
+    ],
+    "locusId": "D580-عذرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D580-عذرا-w2",
+        "variantId": "v-D580-عذرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 580، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿عُذْرًا﴾ (المرسلات): بضم الذال ﴿عُذُرًا﴾ لروح؛ بإسكان الذال ﴿عُذْرًا﴾ للباقين."
+      }
+    ],
+    "description": "بضم الذال ﴿عُذُرًا﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D580-نذرا-w2",
+    "surah": 77,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نُذْرًا",
+    "variantText": "نُذُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D580-نذرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D580-نذرا-w2",
+        "variantId": "v-D580-نذرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 580، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿نُذْرًا﴾: بضم الذال ﴿نُذُرًا﴾ لنافع، وابن كثير، وابن عامر، وشعبة، وأبي جعفر، ويعقوب؛ بإسكان الذال ﴿نُذْرًا﴾ للباقين."
+      }
+    ],
+    "description": "بضم الذال ﴿نُذُرًا﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
