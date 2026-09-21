@@ -61,7 +61,7 @@
     "pages": [
       247
     ],
-    "status": "validated_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 2,
     "readerAssignmentsAdded": 8,
     "variantTextCorrections": 0,
@@ -75,11 +75,14 @@
     "baseCommit": "3d1cc2097f9d420e40ddbc7d77955523142ef09c",
     "deploymentTarget": "production",
     "databaseMigration": "none",
-    "pushed": false,
-    "vercelState": "pending",
-    "productionApiSmoke": "pending"
+    "commit": "196bb76e845d9e840215c9986fcca2a29669ba40",
+    "pushed": true,
+    "vercelState": "READY",
+    "deploymentId": "dpl_852vcdDyPovt62jdo4iYJ3z5eKT8",
+    "deploymentUrl": "https://mutshabehat-v2-mnqpdn1m9-shazlka-s-projects.vercel.app",
+    "productionApiSmoke": "Stable production debug API returned both new page 247 variants at exact token 9 spans, with verbatim Hafs baseText and the expected four reader IDs for each."
   },
-  "lastConfirmedDeployedDataCommit": "25b66724dd9cf0e3fe2ec945e5b57baf39260b9d",
+  "lastConfirmedDeployedDataCommit": "196bb76e845d9e840215c9986fcca2a29669ba40",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -8964,7 +8967,7 @@
       "datasetValidation": "passed",
       "committed": true,
       "pushed": true,
-      "productionDeployed": false,
+      "productionDeployed": true,
       "productionUiVerified": false
     },
     {
@@ -22449,7 +22452,7 @@
     "status": "passed",
     "reason": "The public production /api/mushaf-1441/qiraat?page=N&debug=1 endpoint returned all 11 exact variants, token spans, base texts, and reader IDs. The public Mushaf UI rendered page 410 and showed the new Ruways variant marker at 30:60."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_Fw9jYQfa4cH3iDXXsPBwGiiXvJwq",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-721npnh7i-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Page 247 adds two externally audited farsh variants at Yusuf 12:100 and 12:102 (eight reader assignments); this is targeted-locus coverage, not full-page completeness. Deployment and production API smoke are pending. Page-by-page source reconciliation continues; importer zero-output is not treated as proof of coverage."
+  "lastConfirmedVercelDeploymentId": "dpl_852vcdDyPovt62jdo4iYJ3z5eKT8",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-mnqpdn1m9-shazlka-s-projects.vercel.app",
+  "latestSourceCoverageNote": "Page 247 production-verified with two externally audited farsh variants at Yusuf 12:100 and 12:102 (eight reader assignments); this is targeted-locus coverage, not full-page completeness. Page-by-page source reconciliation continues; importer zero-output is not treated as proof of coverage."
 }
