@@ -212,5 +212,39 @@
     "description": "بكسر اللام",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D448-المخلصين-w2",
+    "surah": 37,
+    "ayah": 74,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُخْلَصِينَ",
+    "variantText": "الْمُخْلِصِينَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D448-المخلصين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D448-المخلصين-w2",
+        "variantId": "v-D448-المخلصين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P448-R02557",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْمُخْلَصِينَ﴾: بفتح اللام لنافع، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ وبكسر اللام للباقين."
+      }
+    ],
+    "description": "بكسر اللام",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

@@ -305,5 +305,123 @@
     "description": "بتاء الخطاب الفوقية",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D444-شغل-w2",
+    "surah": 36,
+    "ayah": 55,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "شُغُلٍۢ",
+    "variantText": "شُغْلٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D444-شغل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D444-شغل-w2",
+        "variantId": "v-D444-شغل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P444-R02501",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿شُغُلٍ﴾: بضم الغين ﴿شُغُلٍ﴾ لابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ وبإسكان الغين ﴿شُغْلٍ﴾ للباقين."
+      }
+    ],
+    "description": "بإسكان الغين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D444-فاكهون-w2",
+    "surah": 36,
+    "ayah": 55,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "فَـٰكِهُونَ",
+    "variantText": "فَكِهُونَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D444-فاكهون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D444-فاكهون-w2",
+        "variantId": "v-D444-فاكهون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P444-R02502",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَـٰكِهُونَ﴾: بألف مدية بعد الفاء للجمهور؛ وبحذف الألف ﴿فَكِهُونَ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بحذف الألف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D444-وان_اعبدوني-w2",
+    "surah": 36,
+    "ayah": 61,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنِ ٱعْبُدُونِى ۚ",
+    "variantText": "وَأَنُ اعْبُدُونِي",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D444-وان_اعبدوني",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D444-وان_اعبدوني-w2",
+        "variantId": "v-D444-وان_اعبدوني-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P444-R02504",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَأَنِ ٱعْبُدُونِي﴾: بكسر النون وصلاً لأبي عمرو وعاصم وحمزة ويعقوب؛ وبضم النون وصلاً ﴿وَأَنُ اعْبُدُونِي﴾ للباقين."
+      }
+    ],
+    "description": "بضم النون وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

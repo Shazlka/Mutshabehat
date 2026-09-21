@@ -109,5 +109,109 @@
     "description": "بإسكان الياء وتخفيفها",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D435-فلا_تذهب_نفسك-w2",
+    "surah": 35,
+    "ayah": 8,
+    "startToken": 16,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَذْهَبْ نَفْسُكَ",
+    "variantText": "فَلَا تُذْهِبْ نَفْسَكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D435-فلا_تذهب_نفسك",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D435-فلا_تذهب_نفسك-w2",
+        "variantId": "v-D435-فلا_تذهب_نفسك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P435-R02411",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَلَا تَذْهَبْ نَفْسُكَ﴾: بفتح التاء والهاء ورفع نفسك فاعلاً للجمهور؛ وبضم التاء وكسر الهاء ونصب نفسك مفعولاً ﴿فَلَا تُذْهِبْ نَفْسَكَ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم التاء وكسر الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D435-عليهم-w2",
+    "surah": 35,
+    "ayah": 8,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D435-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D435-عليهم-w2",
+        "variantId": "v-D435-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P435-R02412",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D435-ولا_ينقص-w2",
+    "surah": 35,
+    "ayah": 11,
+    "startToken": 23,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يُنقَصُ",
+    "variantText": "وَلَا يَنْقُصُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D435-ولا_ينقص",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D435-ولا_ينقص-w2",
+        "variantId": "v-D435-ولا_ينقص-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P435-R02415",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَلَا يُنقَصُ﴾: بضم الياء وفتح القاف مبنياً للمجهول للجمهور؛ وبفتح الياء وضم القاف ﴿وَلَا يَنْقُصُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح الياء وضم القاف",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

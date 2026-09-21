@@ -68,5 +68,73 @@
     "description": "بفتح الياء وكسر الجيم مبنياً للفاعل",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D443-ذريتهم-w2",
+    "surah": 36,
+    "ayah": 41,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ذُرِّيَّتَهُمْ",
+    "variantText": "ذُرِّيَّاتِهِمْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D443-ذريتهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D443-ذريتهم-w2",
+        "variantId": "v-D443-ذريتهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P443-R02488",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ذُرِّيَّتَهُمْ﴾: بالمفرد ﴿ذُرِّيَّتَهُمْ﴾ لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ وبالجمع ﴿ذُرِّيَّاتِهِمْ﴾ للباقين."
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D443-صيحه_واحده-w2",
+    "surah": 36,
+    "ayah": 53,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "صَيْحَةًۭ وَٰحِدَةًۭ",
+    "variantText": "صَيْحَةٌ وَاحِدَةٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D443-صيحه_واحده",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D443-صيحه_واحده-w2",
+        "variantId": "v-D443-صيحه_واحده-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P443-R02498",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿صَيْحَةٗ وَٰحِدَةٗ﴾ (آية ٥٣): بنصب الكلمتين تنويناً للجمهور؛ وبرفعهما ﴿صَيْحَةٌ وَاحِدَةٌ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "برفع الكلمتين",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

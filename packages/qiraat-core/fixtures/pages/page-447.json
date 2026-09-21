@@ -141,5 +141,73 @@
     "description": "بكسر الزاي",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D447-لا_تناصرون-w2",
+    "surah": 37,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَا تَنَاصَرُونَ",
+    "variantText": "لَا تَّنَاصَرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D447-لا_تناصرون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D447-لا_تناصرون-w2",
+        "variantId": "v-D447-لا_تناصرون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P447-R02545",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَا تَنَاصَرُونَ﴾: بتخفيف التاء للجمهور؛ وبتشديد التاء وصلاً مع المد المشبع ﴿لَا تَّنَاصَرُونَ﴾ للبزي وأبي جعفر."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D447-المخلصين-w2",
+    "surah": 37,
+    "ayah": 40,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُخْلَصِينَ",
+    "variantText": "الْمُخْلِصِينَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D447-المخلصين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D447-المخلصين-w2",
+        "variantId": "v-D447-المخلصين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P447-R02547",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْمُخْلَصِينَ﴾: بفتح اللام لنافع، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ وبكسر اللام ﴿الْمُخْلِصِينَ﴾ للباقين."
+      }
+    ],
+    "description": "بكسر اللام",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

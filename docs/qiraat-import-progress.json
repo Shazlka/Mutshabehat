@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 1978,
-    "usulRulings": 9825,
+    "variants": 1996,
+    "usulRulings": 9835,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,44 +49,49 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Targeted additions prepared for Mushaf pages 387–397: 8 exact-token farsh variants and 8 new usul ruling loci, plus 1 merged ruling locus with 54 reader assignments total. Farsh additions are on pages 387–390 and 396–397; rulings are on pages 389–390 and 394–396. These are audited, non-exhaustive additions; independent audits found additional omissions and attribution conflicts, so no page-wide completeness is claimed. Validator, 38/38 Qiraat tests, TypeScript, and production build pass; deployment pending.",
+    "sourceCoverageStatus": "Targeted additions prepared for Mushaf pages 435–450: 18 source-linked exact-token farsh faces on pages 435, 437–438, 443–444, and 447–450; plus 10 new usul loci and 11 merged loci with 74 reader assignments on pages 435–436, 440, 444, 446, and 448–450. Four read-only audits covered pages 435–450. Other omissions and pre-existing disputed assignments remain; no page-wide completion is claimed. Validator, 38/38 Qiraat tests, TypeScript, and production build pass; deployment pending.",
     "latestSourceCoverageNote": "Production-verified source-backed farsh slice on Mushaf pages 271-272: five targeted loci and 27 reader assignments. Page 271: ابن عامر/الكسائي نَصْب فَيَكُونَ at 16:40. Page 272: حمزة/يعقوب يُوحَى إِلَيْهُم at 16:43 and إِلَيْهُم at 16:44; أبو عمرو/يعقوب بِهِمِ الْأَرْضَ at 16:45; qasr لَرَؤُفٌ at 16:47. Commit 15bb6a0041f77f7e2d4726d66900d2126fa8dab4 deployed READY as dpl_A3DvyCbjrZfFM9hPuDdewdYsprvH. Production API smoke returned the exact new variant forms and reader IDs for both pages. Production-verified multi-face farsh import on pages 264 and 270: five targeted loci and 16 reader assignments. Importer dedup now permits different sourced forms at one token when reader sets do not overlap. Page 264: Abu Jaafar جُزٌّ alongside Shuʿbah’s جُزُءٌ at 15:44. Page 270: Yaqub hāʾ-dammah at 16:27 and Hamza/Khalaf al-Ashir yāʾ at 16:28/32. Ambiguous bare خلف remains excluded. Pages 271-272 prepared for deployment: five new source-backed farsh loci (27 reader assignments); no ambiguous reader attributions imported."
   },
-  "sourceCoverageStatus": "Targeted additions prepared for Mushaf pages 387–397: 8 exact-token farsh variants and 8 new usul ruling loci, plus 1 merged ruling locus with 54 reader assignments total. Farsh additions are on pages 387–390 and 396–397; rulings are on pages 389–390 and 394–396. These are audited, non-exhaustive additions; independent audits found additional omissions and attribution conflicts, so no page-wide completeness is claimed. Validator, 38/38 Qiraat tests, TypeScript, and production build pass; deployment pending.",
+  "sourceCoverageStatus": "Targeted additions prepared for Mushaf pages 435–450: 18 source-linked exact-token farsh faces on pages 435, 437–438, 443–444, and 447–450; plus 10 new usul loci and 11 merged loci with 74 reader assignments on pages 435–436, 440, 444, 446, and 448–450. Four read-only audits covered pages 435–450. Other omissions and pre-existing disputed assignments remain; no page-wide completion is claimed. Validator, 38/38 Qiraat tests, TypeScript, and production build pass; deployment pending.",
   "currentBatch": {
-    "id": "audited-targeted-import-p387-p397",
+    "id": "audited-targeted-import-p435-p450",
     "categories": [
-      "YAAT_IDAFA",
-      "YAAT_ZAWAID",
-      "HAMZATAN_KALIMA",
-      "TAGHYIR_HAMZ"
+      "IMALAH_TAQLIL",
+      "TAGHYIR_HAMZ",
+      "HAMZATAN_KALIMATAYN",
+      "IDGHAM_SAGHIR"
     ],
     "pages": [
-      387,
-      388,
-      389,
-      390,
-      391,
-      392,
-      393,
-      394,
-      395,
-      396,
-      397
+      435,
+      436,
+      437,
+      438,
+      439,
+      440,
+      441,
+      442,
+      443,
+      444,
+      445,
+      446,
+      447,
+      448,
+      449,
+      450
     ],
     "status": "verified_pending_deploy",
-    "variantsAdded": 8,
-    "readerAssignmentsAdded": 54,
-    "rulingsAdded": 8,
-    "rulingsMerged": 1,
-    "reference": "Source records DOCX-P387-R01963, P388-R01974–R01975, P389-R01984, P390-R02003, P394–P396 explicit usul clauses, and P396-R02056/P02059 plus P397-R02063; exact token anchors resolved from page-word fixtures.",
-    "sourceAudit": "Read-only audits reviewed pages 387–402. Imported only exact-token, explicitly attributable forms/rules in the target slice. Additional omissions and assignment conflicts remain; no page-wide completion claimed.",
-    "validation": "Parser reruns idempotent; fixture changes additive; validator 1,978 variants / 9,825 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
+    "variantsAdded": 18,
+    "readerAssignmentsAdded": 74,
+    "rulingsAdded": 10,
+    "rulingsMerged": 11,
+    "reference": "Source records DOCX-P435-R02411/R02412/R02415; P437-R02424; P438-R02432; P443-R02488/R02498; P444-R02501/R02502/R02504; P447-R02545/R02547; P448-R02557; P449-R02568–R02570; P450-R02581/R02584. Exact token spans resolved from page-word fixtures.",
+    "sourceAudit": "Four read-only audits reviewed pages 435–450; only explicit, source-backed, exact-token faces and resolvable usul clauses were imported. Additional omissions and existing assignment disputes remain. No page-wide completion claimed.",
+    "validation": "Parser reruns idempotent; fixture additions only; validator 1,996 variants / 9,835 rulings / 20 one-colour categories; 38/38 Qiraat tests; TypeScript and production build passed.",
     "deploymentId": null,
     "productionApiSmoke": "pending",
     "commit": null
   },
-  "lastConfirmedDeployedDataCommit": "35faa8c5a15221420646e917e5393bb640ecaa24",
+  "lastConfirmedDeployedDataCommit": "239cc4bafa49a36ee45a8f06be34fd755f89230d",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -21236,7 +21241,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "db84c07",
+  "currentHeadCommit": "239cc4bafa49a36ee45a8f06be34fd755f89230d",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -22519,20 +22524,26 @@
   },
   "lastProductionSmokeAttempt": {
     "pages": [
-      277,
-      278
+      387,
+      388,
+      389,
+      390,
+      394,
+      395,
+      396,
+      397
     ],
     "status": "passed",
-    "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
-    "commit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144",
-    "variantsAdded": 3,
-    "rulingsAdded": 4,
-    "readerAssignmentsAdded": 12,
-    "api": "/api/mushaf-1441/qiraat?page={277,278}&debug=1",
-    "details": "Page 277 returned عَلَيْهُم for Hamza/Yaqub at 16:89, the two TAGHYIR_HAMZ loci at 16:89 and 16:90, and WAQF_HAMZA at the second 16:93 token with Hisham+Hamza. Page 278 returned وَهْوَ, ٱلْقُرَانَ, and Ibn Kathir WAQF_RASM at بَاقٍۢ."
+    "deploymentId": "dpl_6tqn1BGhrggLnucvcgKXijor1pjH",
+    "commit": "239cc4bafa49a36ee45a8f06be34fd755f89230d",
+    "variantsAdded": 8,
+    "rulingsAdded": 8,
+    "readerAssignmentsAdded": 54,
+    "api": "/api/mushaf-1441/qiraat?page={387,388,389,390,394,395,396,397}&debug=1",
+    "details": "Production API returned the exact new token-backed farsh records on pages 387, 388, 389, 390, 396, and 397, plus the new ruling records on pages 389, 390, 394, 395, and 396."
   },
-  "lastConfirmedVercelDeploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-32073n89k-shazlka-s-projects.vercel.app",
+  "lastConfirmedVercelDeploymentId": "dpl_6tqn1BGhrggLnucvcgKXijor1pjH",
+  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-l2x19iwd2-shazlka-s-projects.vercel.app",
   "latestSourceCoverageNote": "Production-verified source-backed import for pages 277-278: three variants, four usul loci, and 12 reader assignments. Production API confirmed exact tokens/forms/reading IDs on both pages. The parser now uses qiraat_records.jsonl as its primary source.",
   "latestLocalImportCycle": {
     "pagesReviewed": [
@@ -22612,5 +22623,19 @@
     "newVariants": 0,
     "status": "locally verified; deployment pending",
     "details": "Four read-only audits reviewed pages 279-294. Ten ruling loci were added and one existing locus gained an assignment. Other audited farsh candidates remain unimported; this is not page-wide completion."
+  },
+  "previousProductionSmokeAttempt": {
+    "pages": [
+      277,
+      278
+    ],
+    "status": "passed",
+    "deploymentId": "dpl_9UkbaSgEhcM1vCWLaYdpwtncBkzS",
+    "commit": "7950e3ad9f157c6f58554006c88f4fc9fbe2b144",
+    "variantsAdded": 3,
+    "rulingsAdded": 4,
+    "readerAssignmentsAdded": 12,
+    "api": "/api/mushaf-1441/qiraat?page={277,278}&debug=1",
+    "details": "Page 277 returned عَلَيْهُم for Hamza/Yaqub at 16:89, the two TAGHYIR_HAMZ loci at 16:89 and 16:90, and WAQF_HAMZA at the second 16:93 token with Hisham+Hamza. Page 278 returned وَهْوَ, ٱلْقُرَانَ, and Ibn Kathir WAQF_RASM at بَاقٍۢ."
   }
 }
