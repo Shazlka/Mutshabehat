@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2811,
-    "usulRulings": 9888,
+    "variants": 2838,
+    "usulRulings": 9889,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -23601,48 +23601,51 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Deep audited pages 303-306 and 515-518 against qiraat_records.jsonl and outside Quranpedia evidence; safe token-backed variants and usul loci imported, while pages 583-584 received bare-خلف attribution corrections.",
+  "latestSourceCoverageNote": "Deep audited pages 307-310 and 547-550; imported token-backed source faces and removed bare-خلف Q10 leakage on pages 507-510 and 547-550. User attribution rule remains enforced.",
   "latestLocalImportCycle": {
-    "id": "deep-audit-p303-p306-p515-p518-p583-p584",
+    "id": "deep-audit-p307-p310-p507-p510-p547-p550",
     "pages": [
-      303,
-      304,
-      305,
-      306,
-      515,
-      516,
-      517,
-      518,
-      583,
-      584
+      307,
+      308,
+      309,
+      310,
+      507,
+      508,
+      509,
+      510,
+      547,
+      548,
+      549,
+      550
     ],
-    "variantsAdded": 8,
-    "newRulingLoci": 2,
-    "correctedRulingLoci": 3,
-    "rulingRecordsNetChanged": 2,
+    "variantsAdded": 27,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 17,
     "perPageVariants": {
-      "303": 4,
-      "304": 2,
-      "305": 1,
-      "306": 1,
-      "515": 0,
-      "516": 0,
-      "517": 0,
-      "518": 0,
-      "583": 0,
-      "584": 0
+      "307": 3,
+      "308": 5,
+      "309": 1,
+      "310": 4,
+      "507": 0,
+      "508": 0,
+      "509": 0,
+      "510": 0,
+      "547": 2,
+      "548": 2,
+      "549": 6,
+      "550": 5
     },
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2811,
-      "usulRulings": 9888,
+      "variants": 2838,
+      "usulRulings": 9889,
       "validator": "passed",
       "tests": "38/38",
-      "tsc": "passed",
+      "tsc": "pending",
       "build": "pending",
       "importerIdempotent": true
     },
-    "details": "Pages 303-306 received eight net token-backed variants. Page 516 received two token-backed usul loci (WAQF_RASM and IMALAH_TAQLIL). Pages 583-584 had no missing variants; three existing ruling loci were corrected to remove Q10 from bare خلف assignments. External Quranpedia spot checks used."
+    "details": "Pages 307-310 added 13 faces. Pages 547-550 added 14 net faces and corrected bare-خلف imalah assignments. Pages 507-510 corrected 17 bare-خلف imalah loci. External source checks were used where available; all additions are token-backed."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -23839,5 +23842,47 @@
       "importerIdempotent": true
     },
     "details": "Pages 303-306 received eight net token-backed variants. Pages 583-584 had no missing variants; three existing ruling loci were corrected to remove Q10 from bare خلف assignments. External Quranpedia spot checks used for the 583-584 attribution correction."
+  },
+  "previousImportCycle303_306_515_518": {
+    "id": "deep-audit-p303-p306-p515-p518-p583-p584",
+    "pages": [
+      303,
+      304,
+      305,
+      306,
+      515,
+      516,
+      517,
+      518,
+      583,
+      584
+    ],
+    "variantsAdded": 8,
+    "newRulingLoci": 2,
+    "correctedRulingLoci": 3,
+    "rulingRecordsNetChanged": 2,
+    "perPageVariants": {
+      "303": 4,
+      "304": 2,
+      "305": 1,
+      "306": 1,
+      "515": 0,
+      "516": 0,
+      "517": 0,
+      "518": 0,
+      "583": 0,
+      "584": 0
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2811,
+      "usulRulings": 9888,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "passed",
+      "build": "pending",
+      "importerIdempotent": true
+    },
+    "details": "Pages 303-306 received eight net token-backed variants. Page 516 received two token-backed usul loci (WAQF_RASM and IMALAH_TAQLIL). Pages 583-584 had no missing variants; three existing ruling loci were corrected to remove Q10 from bare خلف assignments. External Quranpedia spot checks used."
   }
 }

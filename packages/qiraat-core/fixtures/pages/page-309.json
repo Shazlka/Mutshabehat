@@ -260,5 +260,38 @@
         "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
       }
     ]
+  },
+  {
+    "id": "v-D309-ابراهيم-w2",
+    "surah": 19,
+    "ayah": 58,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D309-ابراهيم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D309-ابراهيم-w2",
+        "variantId": "v-D309-ابراهيم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P309-R01157",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾: بياء بعد الهاء للجمهور؛ وبألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
+      }
+    ],
+    "description": "بألف بعد الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

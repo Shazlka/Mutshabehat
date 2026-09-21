@@ -52,9 +52,7 @@
       "Q06-R01",
       "Q06-R02",
       "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q07-R02"
     ],
     "locusId": "D547-لاخوانهم",
     "locusType": "word_variant",
@@ -72,5 +70,86 @@
     "description": "بضم الهاء والميم",
     "wajhIndex": 3,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P547_R03488",
+    "surah": 59,
+    "ayah": 14,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "جُدُرٍۭ ۚ",
+    "variantText": "جِدَارٍ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P547_R03488",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P547_R03488",
+        "variantId": "v-AUDIT-P547_R03488",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P547-R03488",
+        "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
+        "sourceText": "﴿جُدُرٍ﴾: بضم الجيم والدال بلا ألف جمعاً ﴿جُدُرٍ﴾ لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ بكسر الجيم وفتح الدال وألف بعدها مفرداً ﴿جِدَارٍ﴾ لابن كثير وأبي عمرو."
+      }
+    ],
+    "description": "﴿جُدُرٍ﴾: بضم الجيم والدال بلا ألف جمعاً ﴿جُدُرٍ﴾ لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ بكسر الجيم وفتح الدال وألف بعدها مفرداً ﴿جِدَارٍ﴾ لابن كثير وأبي عمرو.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P547_R03489",
+    "surah": 59,
+    "ayah": 14,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "تَحْسَبُهُمْ",
+    "variantText": "تَحْسَبُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P547_R03489",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P547_R03489",
+        "variantId": "v-AUDIT-P547_R03489",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P547-R03489",
+        "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
+        "sourceText": "﴿تَحْسَبُهُمْ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      }
+    ],
+    "description": "﴿تَحْسَبُهُمْ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "﴿تَحْسَبُهُمْ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
   }
 ]

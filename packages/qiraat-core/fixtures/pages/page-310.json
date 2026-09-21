@@ -508,5 +508,174 @@
         "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
       }
     ]
+  },
+  {
+    "id": "v-D310-اءذا-w1",
+    "surah": 19,
+    "ayah": 66,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَءِذَا",
+    "variantText": "أَءِذَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D310-اءذا",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D310-اءذا-w1",
+        "variantId": "v-D310-اءذا-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P310-R01164",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "بالاستفهام: جميع القراء عدا ابن ذكوان بخلف عنه."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "بالاستفهام"
+  },
+  {
+    "id": "v-D310-مت-w1",
+    "surah": 19,
+    "ayah": 66,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مِتُّ",
+    "variantText": "مِتُّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D310-مت",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D310-مت-w1",
+        "variantId": "v-D310-مت-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P310-R01166",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿مِتُّ﴾: بكسر الميم لنافع، وحفص، وحمزة، والكسائي، وخلف؛ وبضم الميم للباقين."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "بكسر الميم"
+  },
+  {
+    "id": "v-D310-يذكر-w1",
+    "surah": 19,
+    "ayah": 67,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَذْكُرُ",
+    "variantText": "يَذْكُرُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02"
+    ],
+    "locusId": "D310-يذكر",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D310-يذكر-w1",
+        "variantId": "v-D310-يذكر-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P310-R01167",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿يَذْكُرُ﴾: بتخفيف الذال والكاف وضم الكاف ﴿يَذْكُرُ﴾ لنافع، وابن عامر، وعاصم؛ وبتشديد الذال والكاف مفتوحتين ﴿يَذَّكَّرُ﴾ للباقين."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "بتخفيف الذال والكاف وضم الكاف"
+  },
+  {
+    "id": "v-D310-جثيا-w1",
+    "surah": 19,
+    "ayah": 68,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "جِثِيًّۭا",
+    "variantText": "جِثِيًّۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D310-جثيا",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D310-جثيا-w1",
+        "variantId": "v-D310-جثيا-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P310-R01168",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿جِثِيّٗا﴾ (معاً)، ﴿عِتِيّٗا﴾، ﴿صِلِيّٗا﴾: بكسر أوائل الحروف لحفص، وحمزة، والكسائي؛ وبضمها للباقين."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "بكسر أول الحروف"
   }
 ]

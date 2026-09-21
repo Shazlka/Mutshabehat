@@ -2876,6 +2876,88 @@ def collect_farsh(page, lines):
     out.extend(checked_page303_farsh(page, lines))
     out.extend(checked_inline_farsh(page, lines))
     out.extend(checked_audited_p277_278_farsh(page, lines))
+    out.extend(checked_audited_307_310_farsh(page, lines))
+    return out
+
+def checked_audited_307_310_farsh(page, lines):
+    """Recover explicit inline faces on pages 307--310.
+
+    These package rows put both faces on one prose line, so the generic block
+    parser cannot establish a safe partition. Every case requires the exact
+    packaged source row and a real Mushaf token. Bare ``خلف`` is resolved by
+    the project rule to Q06; no Q10 assignment is inferred.
+    """
+    cases={
+      307:[
+        ('DOCX-P307-R01129','نَبِيّٗا','نَبِيئًا','نافع',30,'بالهمز والمد المتصل'),
+        ('DOCX-P307-R01130','قَوْلَ الْحَقِّ','قَوْلَ الْحَقِّ','ابن عامر، عاصم، يعقوب',34,'بالنصب'),
+        ('DOCX-P307-R01132','وَإِنَّ اللَّهَ','وَإِنَّ اللَّهَ','ابن عامر، عاصم، حمزة، الكسائي، روح، خلف',36,'بكسر الهمزة'),
+      ],
+      308:[
+        ('DOCX-P308-R01141','يُرْجَعُونَ','يَرْجِعُونَ','يعقوب',40,'بفتح الياء'),
+        ('DOCX-P308-R01142','إِبْرَٰهِيمَ','إِبْرَاهَامَ','هشام',41,'بألف بعد الهاء'),
+        ('DOCX-P308-R01142','يَـٰٓإِبْرَٰهِيمُ','يَـٰٓإِبْرَاهَامُ','هشام',46,'بألف بعد الهاء'),
+        ('DOCX-P308-R01143','نَبِيًّا','نَبِيئًا','نافع',49,'بالهمز'),
+        ('DOCX-P308-R01146','مُخْلَصًا','مُخْلَصًا','عاصم، حمزة، الكسائي، خلف',51,'بفتح اللام'),
+      ],
+      309:[
+        ('DOCX-P309-R01157','إِبْرَٰهِيمَ','إِبْرَاهَامَ','هشام',58,'بألف بعد الهاء'),
+      ],
+      310:[
+        ('DOCX-P310-R01164','أَءِذَا','أَءِذَا','جميع القراء عدا ابن ذكوان بخلف عنه',66,'بالاستفهام'),
+        ('DOCX-P310-R01166','مِتُّ','مِتُّ','نافع، حفص، حمزة، الكسائي، خلف',66,'بكسر الميم'),
+        ('DOCX-P310-R01167','يَذْكُرُ','يَذْكُرُ','نافع، ابن عامر، عاصم',67,'بتخفيف الذال والكاف وضم الكاف'),
+        ('DOCX-P310-R01168','جِثِيّٗا','جِثِيّٗا','حفص، حمزة، الكسائي',68,'بكسر أول الحروف'),
+      ],
+    }
+    out=[]
+    for source_id,anchor,alternate,reader_text,ayah,description in cases.get(page,[]):
+        performance = source_id in {'DOCX-P307-R01130','DOCX-P307-R01132','DOCX-P308-R01146',
+                                    'DOCX-P310-R01164','DOCX-P310-R01166','DOCX-P310-R01167','DOCX-P310-R01168'}
+        row=PACKAGE_RECORDS.get(source_id)
+        if row is None or row.get('page_no')!=page or row.get('section')!='farsh' or row.get('raw_text') not in lines:
+            raise ValueError(f'page {page} audited source row missing: {source_id}')
+        source=row['raw_text']
+        if is_neg(source) or is_univ(source) or has_bare_ambiguous_reader(source):
+            raise ValueError(f'page {page} audited source row failed safety check: {source_id}')
+        if reader_text.startswith('جميع القراء عدا'):
+            readers=readers_from(reader_text,set())
+        else:
+            readers,unresolved=resolve_readers(reader_text,set())
+            if unresolved.strip(' ،,؛.'):
+                raise Unresolved(f'page {page} audited reader group unresolved: {source_id}: {unresolved}')
+        loc=T.find(page,anchor,ayah=ayah)
+        if alternate!=loc['baseText'] and alternate not in source and source_id!='DOCX-P308-R01142':
+            raise ValueError(f'page {page} audited form absent from source: {source_id}')
+        if not readers or ('Q05-R02' in readers and not performance):
+            raise ValueError(f'page {page} audited face includes Hafs: {source_id}')
+        if performance:
+            # Same-written-form wajh: keep the explicitly named transmissions
+            # directly instead of asking yield_block to model a textual split.
+            lid=f'D{page}-{T.norm(anchor).replace(" ","_")}'
+            vid=f'v-{lid}-w1'
+            variant={'id':vid,'surah':loc['surah'],'ayah':loc['startAyah'],
+                'startToken':loc['startWord'],'endToken':loc['endWord'],'operation':'REPLACE',
+                'hafsText':loc['baseText'],'variantText':loc['baseText'],'differenceType':'OTHER',
+                'verificationStatus':'REVIEWED','createdAt':TS,'updatedAt':TS,
+                'readingIds':sorted(readers),'locusId':lid,'locusType':'performance_variant',
+                'sources':[{'id':f's-{lid}-w1','variantId':vid,**SRC}],
+                'description':'وجه حفص المطابق لرسم المصحف','wajhIndex':1,'evidence':[]}
+            out.append(variant)
+        else:
+            before=len(out)
+            yield_block(page,anchor,[
+                (None,'وجه حفص المطابق لرسم المصحف',set(ALL20)-readers),
+                (alternate,description,readers),
+            ],out,ayah=ayah)
+            added=[x for x in out[before:] if x.get('surah')==loc['surah'] and x.get('ayah')==loc['startAyah'] and x.get('startToken')==loc['startWord']]
+            if len(added)!=1:
+                raise ValueError(f'page {page} audited partition failed: {source_id}')
+            variant=added[0]
+        variant['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، {source_id}','sourceText':source,
+            'verificationNotes':'إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.'})
+        if performance:
+            variant['locusType']='performance_variant'; variant['performanceNote']=description
     return out
 
 def checked_audited_p277_278_farsh(page, lines):
@@ -4592,15 +4674,14 @@ def checked_audited_inline_faces(page, lines):
              'بضم الحاء'),
         ],
         547: [
-            # Explicit forms in R03487. Bare «خلف» resolves to Q06-R01. The accepted
-            # ten-reader apparatus independently names Q10 (Idris/Ishaq) for this same form.
+            # Explicit forms in R03487. Bare «خلف» resolves to Q06-R01; Q10 is not inferred.
             ('DOCX-P547-R03487','لِّإِخْوَٰنِهِمُ','لِإِخْوَٰنِهِمِ',
              'أبو عمرو، يعقوب',11,'بكسر الهاء والميم'),
             ('DOCX-P547-R03487','لِّإِخْوَٰنِهِمُ','لِإِخْوَٰنِهِمُ',
              'نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',11,
              'بكسر الهاء وضم الميم وصلاً'),
             ('DOCX-P547-R03487','لِّإِخْوَٰنِهِمُ','لِإِخْوَٰنِهُمُ',
-             'حمزة، الكسائي، خلف، خلف العاشر',11,'بضم الهاء والميم'),
+             'حمزة، الكسائي، خلف',11,'بضم الهاء والميم'),
         ],
         549: [
             ('DOCX-P549-R03508','يَفْصِلُ','يُفْصَلُ',
@@ -4925,11 +5006,6 @@ def checked_audited_inline_faces(page, lines):
                 if match[0] in external_face_notes:
                     authority_url,authority_note=external_face_notes[match[0]]
                     variant['sources'][0]['verificationNotes']=authority_note+' المرجع: '+authority_url
-                if match[0]=='DOCX-P547-R03487' and 'Q10-R01' in variant['readingIds']:
-                    variant['sources'][0]['verificationNotes']=(
-                        'ينص المصدر على خلف؛ أُسند خلف عن حمزة وفق قاعدة المشروع، وأضيف خلف العاشر '
-                        'لأن جهاز القراءات العشر يذكر إدريس وإسحاق صراحةً لهذا الوجه: '
-                        'https://quranpedia.net/tafsir/al-hashr/11')
         expected_forms=sum(1 for _,form,readers,_,_,_ in groups if
                            face_key(form)!=face_key(loc['baseText']) and readers-conflicting)
         if len(emitted)!=expected_forms:

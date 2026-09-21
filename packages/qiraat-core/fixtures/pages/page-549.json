@@ -121,5 +121,184 @@
     "description": "بألف بعد الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P549_R03504_1",
+    "surah": 60,
+    "ayah": 1,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِم",
+    "variantText": "إِلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P549_R03504_1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P549_R03504_1",
+        "variantId": "v-AUDIT-P549_R03504_1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03504-1",
+        "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
+        "sourceText": "﴿إِلَيْهِمْ﴾ (معاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "﴿إِلَيْهِمْ﴾ (معاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P549_R03504_2",
+    "surah": 60,
+    "ayah": 1,
+    "startToken": 34,
+    "endToken": 34,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِم",
+    "variantText": "إِلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P549_R03504_2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P549_R03504_2",
+        "variantId": "v-AUDIT-P549_R03504_2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03504-2",
+        "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
+        "sourceText": "﴿إِلَيْهِمْ﴾ (معاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "﴿إِلَيْهِمْ﴾ (معاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P549_R03505",
+    "surah": 60,
+    "ayah": 1,
+    "startToken": 36,
+    "endToken": 37,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَا۠ أَعْلَمُ",
+    "variantText": "وَأَنَا۠ أَعْلَمُ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P549_R03505",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P549_R03505",
+        "variantId": "v-AUDIT-P549_R03505",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03505",
+        "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
+        "sourceText": "﴿وَأَنَا۠ أَعْلَمُ﴾: بإثبات الألف وصلاً ووقفاً لنافع وأبي جعفر؛ وبحذفها وصلاً للباقين."
+      }
+    ],
+    "description": "﴿وَأَنَا۠ أَعْلَمُ﴾: بإثبات الألف وصلاً ووقفاً لنافع وأبي جعفر؛ وبحذفها وصلاً للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "﴿وَأَنَا۠ أَعْلَمُ﴾: بإثبات الألف وصلاً ووقفاً لنافع وأبي جعفر؛ وبحذفها وصلاً للباقين."
+  },
+  {
+    "id": "v-AUDIT-P549_R03509",
+    "surah": 60,
+    "ayah": 3,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَفْصِلُ",
+    "variantText": "يُفَصِّلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "AUDIT-P549_R03509",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P549_R03509",
+        "variantId": "v-AUDIT-P549_R03509",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03509",
+        "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
+        "sourceText": "بضم الياء وفتح الفاء وتشديد الصاد المكسورة ﴿يُفَصِّلُ﴾: ابن عامر."
+      }
+    ],
+    "description": "بضم الياء وفتح الفاء وتشديد الصاد المكسورة ﴿يُفَصِّلُ﴾: ابن عامر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P549_R03510",
+    "surah": 60,
+    "ayah": 3,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَفْصِلُ",
+    "variantText": "يُفَصَّلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P549_R03510",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P549_R03510",
+        "variantId": "v-AUDIT-P549_R03510",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03510",
+        "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
+        "sourceText": "بضم الياء وفتح الصاد مشددة مبنياً للمجهول ﴿يُفَصَّلُ﴾: حمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بضم الياء وفتح الصاد مشددة مبنياً للمجهول ﴿يُفَصَّلُ﴾: حمزة، والكسائي، وخلف.",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
