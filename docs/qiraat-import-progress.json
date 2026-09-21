@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-21T23:16:00+04:00",
+  "updatedAt": "2026-09-21T23:45:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -49,10 +49,10 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Targeted source-backed additions prepared for Mushaf pages 499–530: 25 variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Four read-only audit slices for pages 531–546 are complete and identified further omissions/conflicts; none are claimed complete. A source line at 47:25 with ambiguous coverage for خلف العاشر remains unimported pending explicit source attribution. Validator, Qiraat tests, and TypeScript pass; production build and deployment pending.",
-    "latestSourceCoverageNote": "Production-verified source-backed farsh slice on Mushaf pages 271-272: five targeted loci and 27 reader assignments. Page 271: ابن عامر/الكسائي نَصْب فَيَكُونَ at 16:40. Page 272: حمزة/يعقوب يُوحَى إِلَيْهُم at 16:43 and إِلَيْهُم at 16:44; أبو عمرو/يعقوب بِهِمِ الْأَرْضَ at 16:45; qasr لَرَؤُفٌ at 16:47. Commit 15bb6a0041f77f7e2d4726d66900d2126fa8dab4 deployed READY as dpl_A3DvyCbjrZfFM9hPuDdewdYsprvH. Production API smoke returned the exact new variant forms and reader IDs for both pages. Production-verified multi-face farsh import on pages 264 and 270: five targeted loci and 16 reader assignments. Importer dedup now permits different sourced forms at one token when reader sets do not overlap. Page 264: Abu Jaafar جُزٌّ alongside Shuʿbah’s جُزُءٌ at 15:44. Page 270: Yaqub hāʾ-dammah at 16:27 and Hamza/Khalaf al-Ashir yāʾ at 16:28/32. Ambiguous bare خلف remains excluded. Pages 271-272 prepared for deployment: five new source-backed farsh loci (27 reader assignments); no ambiguous reader attributions imported."
+    "sourceCoverageStatus": "Production-verified targeted additions for Mushaf pages 499–530: 25 variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Audits of pages 531–578 identified more source omissions and legacy bare-«خلف» Q10 attribution conflicts; those pages and historical corrections are not claimed complete. Current import preserves all prior dataset records and reader assignments. Validator, 38/38 Qiraat tests, TypeScript, production build, and API smoke pass. Corrected two legacy bare-«خلف» variant assignments: pages 444 and 500 now assign Q06-R01 only, consistent with the processed source and resolver convention; Q10 is reserved for explicit «خلف العاشر». No full-page coverage is claimed for either page. Audits of pages 531–578 continue to identify new candidates and source discrepancies.",
+    "latestSourceCoverageNote": "Production-verified source-backed farsh slice on Mushaf pages 271-272: five targeted loci and 27 reader assignments. Page 271: ابن عامر/الكسائي نَصْب فَيَكُونَ at 16:40. Page 272: حمزة/يعقوب يُوحَى إِلَيْهُم at 16:43 and إِلَيْهُم at 16:44; أبو عمرو/يعقوب بِهِمِ الْأَرْضَ at 16:45; qasr لَرَؤُفٌ at 16:47. Commit 15bb6a0041f77f7e2d4726d66900d2126fa8dab4 deployed READY as dpl_A3DvyCbjrZfFM9hPuDdewdYsprvH. Production API smoke returned the exact new variant forms and reader IDs for both pages. Production-verified multi-face farsh import on pages 264 and 270: five targeted loci and 16 reader assignments. Importer dedup now permits different sourced forms at one token when reader sets do not overlap. Page 264: Abu Jaafar جُزٌّ alongside Shuʿbah’s جُزُءٌ at 15:44. Page 270: Yaqub hāʾ-dammah at 16:27 and Hamza/Khalaf al-Ashir yāʾ at 16:28/32. Ambiguous bare خلف remains excluded. Pages 271-272 prepared for deployment: five new source-backed farsh loci (27 reader assignments); no ambiguous reader attributions imported. Targeted correction: pages 444 and 500 now map source-labeled bare «خلف» to Q06-R01; Q10 is not inferred."
   },
-  "sourceCoverageStatus": "Targeted source-backed additions prepared for Mushaf pages 499–530: 25 variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Four read-only audit slices for pages 531–546 are complete and identified further omissions/conflicts; none are claimed complete. A source line at 47:25 with ambiguous coverage for خلف العاشر remains unimported pending explicit source attribution. Validator, Qiraat tests, and TypeScript pass; production build and deployment pending.",
+  "sourceCoverageStatus": "Production-verified targeted additions for Mushaf pages 499–530: 25 variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Audits of pages 531–578 identified more source omissions and legacy bare-«خلف» Q10 attribution conflicts; those pages and historical corrections are not claimed complete. Current import preserves all prior dataset records and reader assignments. Validator, 38/38 Qiraat tests, TypeScript, production build, and API smoke pass. Corrected two legacy bare-«خلف» variant assignments: pages 444 and 500 now assign Q06-R01 only, consistent with the processed source and resolver convention; Q10 is reserved for explicit «خلف العاشر». No full-page coverage is claimed for either page. Audits of pages 531–578 continue to identify new candidates and source discrepancies.",
   "currentBatch": {
     "id": "audited-targeted-import-p499-p530",
     "categories": [
@@ -101,19 +101,19 @@
       529,
       530
     ],
-    "status": "verified_pending_deploy",
+    "status": "production_verified",
     "variantsAdded": 25,
     "readerAssignmentsAdded": 57,
     "rulingsAdded": 9,
     "rulingsMerged": 2,
     "reference": "Processed qiraat_records.jsonl source rows on pages 499–530; exact token spans resolved through page-word fixtures. Audited face rows: DOCX-P499-R03030; P500-R03043–R03045; P501-R03050/R03052/R03054; P502-R03061; P504-R03081/R03084/R03087; P505-R03092; P506-R03103/R03104; P507-R03109; P508-R03114/R03115; P509-R03129–R03132/R03138; P512-R03164/R03165.",
     "sourceAudit": "Only explicit source-attributed faces imported; unsupported/incomplete reader splits remain excluded. Four new audit slices separately covered pages 531–546 and found additional source omissions and legacy conflicts, so page-wide completion is not claimed.",
-    "validation": "Parser preview and write completed; additive audit passes; validator passes (2,034 variants / 9,847 rulings / 20 one-colour categories); 38/38 Qiraat tests and TypeScript pass. Production build pending.",
-    "deploymentId": null,
-    "productionApiSmoke": "pending",
-    "commit": null
+    "validation": "Parser rerun writes 0 files; additive fixture audit passes; validator passes (2,034 variants / 9,847 rulings / 20 one-colour categories); 38/38 Qiraat tests, TypeScript, and production build pass.",
+    "deploymentId": "dpl_55MKdeALDjrCHpqmbr5zCikiwiuw",
+    "productionApiSmoke": "HTTP 200 on production pages 499, 500, 512, and 530; expected new variants on 499, 500, 512 and usul rulings on 530 confirmed.",
+    "commit": "876c972adc573bccd06dde1cf11f77bb265445b5"
   },
-  "lastConfirmedDeployedDataCommit": "fce6e5d2983c72831310a5a11f2c4509bfbdf54e",
+  "lastConfirmedDeployedDataCommit": "876c972adc573bccd06dde1cf11f77bb265445b5",
   "lastConfirmedVercelState": "READY",
   "lastProductionSmoke": {
     "pages": [
@@ -22566,7 +22566,7 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_6tqn1BGhrggLnucvcgKXijor1pjH",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-l2x19iwd2-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Production-verified source-backed import for pages 277-278: three variants, four usul loci, and 12 reader assignments. Production API confirmed exact tokens/forms/reading IDs on both pages. The parser now uses qiraat_records.jsonl as its primary source.",
+  "latestSourceCoverageNote": "Production-verified targeted import on pages 499–530: 25 source-backed variant fixture records across 11 pages and 9 new plus 2 merged usul loci with 57 reader assignments across 9 pages. Bare خلف remains Q06-R01; an under-specified reader split at 47:25 was dropped. Vercel commit 876c972 is READY as dpl_55MKdeALDjrCHpqmbr5zCikiwiuw; API smoke passed pages 499, 500, 512, 530. Audits for 531–578 found further omissions and legacy Q10 mappings from bare خلف; next imports/corrections remain pending.",
   "latestLocalImportCycle": {
     "pagesReviewed": [
       295,
@@ -22659,5 +22659,16 @@
     "readerAssignmentsAdded": 12,
     "api": "/api/mushaf-1441/qiraat?page={277,278}&debug=1",
     "details": "Page 277 returned عَلَيْهُم for Hamza/Yaqub at 16:89, the two TAGHYIR_HAMZ loci at 16:89 and 16:90, and WAQF_HAMZA at the second 16:93 token with Hisham+Hamza. Page 278 returned وَهْوَ, ٱلْقُرَانَ, and Ibn Kathir WAQF_RASM at بَاقٍۢ."
+  },
+  "latestProductionSmoke": {
+    "pages": [
+      499,
+      500,
+      512,
+      530
+    ],
+    "status": 200,
+    "deploymentId": "dpl_55MKdeALDjrCHpqmbr5zCikiwiuw",
+    "confirmed": "new variant forms on 499, 500, 512; usul rulings on 530"
   }
 }
