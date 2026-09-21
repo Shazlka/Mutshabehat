@@ -3074,6 +3074,73 @@ def checked_inline_farsh(page, lines):
     out.extend(checked_audited_inline_faces(page, lines))
     out.extend(checked_audited_507_510_farsh(page, lines))
     out.extend(checked_audited_515_518_farsh(page, lines))
+    out.extend(checked_audited_495_498_farsh(page, lines))
+    return out
+
+def checked_audited_495_498_farsh(page, lines):
+    """Recover compact farsh rows on pages 495--498 with explicit reader partitions."""
+    cases={
+      495:[
+       ('DOCX-P495-R02983','لَدَيْهِمْ','لَدَيْهُمُ','حمزة، يعقوب','بضم الهاء',1),
+       ('DOCX-P495-R02984','وَلَدٌ','وُلْدٌ','حمزة، الكسائي','بضم الواو وسكون اللام',1),
+       ('DOCX-P495-R02986','يُلَـٰقُواْ','يَلْقَوْا','أبو جعفر','بحذف الألف مع فتح الياء واللام',1),
+       ('DOCX-P495-R02987','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر','بإسكان الهاء',1),
+       ('DOCX-P495-R02987','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر','بإسكان الهاء',2),
+       ('DOCX-P495-R02990','تُرْجَعُونَ','يُرْجَعُونَ','ابن كثير، حمزة، الكسائي، خلف','بياء الغيب وضمها وفتح الجيم',1),
+       ('DOCX-P495-R02991','تُرْجَعُونَ','يَرْجِعُونَ','رويس','بياء الغيب وفتحها وكسر الجيم',1),
+       ('DOCX-P495-R02992','تُرْجَعُونَ','تَرْجِعُونَ','روح','بتاء الخطاب وفتحها وكسر الجيم',1),
+       ('DOCX-P495-R02993','وَقِيلِهِۦ','وَقِيلَهُۥ','عاصم، حمزة','بنصب اللام وضم الهاء',1),
+       ('DOCX-P495-R02994','يَعْلَمُونَ','تَعْلَمُونَ','الباقين','بتاء الخطاب',1),
+      ],
+      496:[
+       ('DOCX-P496-R02998','حمٓ','حمٓ','أبو جعفر','بالسكت',1),
+       ('DOCX-P496-R02999','رَبِّ السَّمَـٰوَٰتِ','رَبُّ السَّمَـٰوَٰتِ','الباقين','برفع الباء',1),
+       ('DOCX-P496-R03000','نَبْطِشُ','نَبْطُشُ','أبو جعفر','بضم الطاء',1),
+      ],
+      497:[
+       ('DOCX-P497-R03008','فَأَسْرِ','فَاسْرِ','الباقين','بهمزة وصل',1),
+       ('DOCX-P497-R03009','وَعُيُونٍ','وَعُيُونٍ','الباقين','بكسر العين',1),
+       ('DOCX-P497-R03010','فَـٰكِهِينَ','فَكِهِينَ','أبو جعفر','بحذف الألف',1),
+      ],
+      498:[
+       ('DOCX-P498-R03021','يَغْلِي','تَغْلِي','الباقين','بتاء التأنيث',1),
+       ('DOCX-P498-R03022','فَٱعْتِلُوهُ','فَاعْتُلُوهُ','الباقين','بضم التاء',1),
+       ('DOCX-P498-R03023','ذُقْ إِنَّكَ','ذُقْ أَنَّكَ','الكسائي','بفتح الهمزة المشددة',1),
+       ('DOCX-P498-R03024','مَقَامٍ أَمِينٍ','مُقَامٍ أَمِينٍ','الباقين','بضم الميم',1),
+       ('DOCX-P498-R03025','وَعُيُونٍ','وَعُيُونٍ','الباقين','بكسر العين',1),
+      ],
+    }
+    explicit={
+      (495,'DOCX-P495-R02994'):{'ابن كثير، أبو عمرو، عاصم، حمزة، الكسائي، يعقوب، خلف'},
+      (496,'DOCX-P495-R02999'):set(),
+      (496,'DOCX-P496-R02999'):{'عاصم، حمزة، الكسائي، خلف'},
+      (497,'DOCX-P497-R03008'):{'أبو عمرو، ابن عامر، عاصم، حمزة، الكسائي، يعقوب، خلف'},
+      (497,'DOCX-P497-R03009'):{'نافع، أبو عمرو، هشام، حفص، أبو جعفر، يعقوب، خلف'},
+      (498,'DOCX-P498-R03021'):{'ابن كثير، حفص، رويس'},
+      (498,'DOCX-P498-R03022'):{'أبو عمرو، عاصم، حمزة، الكسائي، أبو جعفر، خلف'},
+      (498,'DOCX-P498-R03024'):{'ابن كثير، أبو عمرو، عاصم، حمزة، الكسائي، يعقوب، خلف'},
+      (498,'DOCX-P498-R03025'):{'نافع، أبو عمرو، هشام، حفص، أبو جعفر، يعقوب، خلف'},
+    }
+    out=[]
+    for sid,anchor,variant,reader_text,desc,occ in cases.get(page,[]):
+      row=PACKAGE_RECORDS.get(sid)
+      if not row or row.get('page_no')!=page or row.get('raw_text') not in lines: continue
+      if is_neg(row['raw_text']) or is_univ(row['raw_text']): continue
+      try: loc=T.find(page,anchor,occ)
+      except T.NoMatch: continue
+      if reader_text=='الباقين':
+        claimed=set()
+        names=explicit.get((page,sid),set())
+        for name in names:
+          rs,_=resolve_readers(name,set()); claimed |= rs
+        readers=ALL20-claimed
+      else: readers,_=resolve_readers(reader_text,set())
+      if not readers or 'Q05-R02' in readers: continue
+      before=len(out); yield_block(page,anchor,[(None,'وجه حفص المطابق لرسم المصحف',ALL20-readers),(variant,desc,readers)],out,occurrence=occ)
+      if len(out)==before+1:
+        out[-1]['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، {sid}','sourceText':row['raw_text'],'verificationNotes':'إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف.'})
+        if variant==loc['baseText']:
+          out[-1]['locusType']='performance_variant';out[-1]['performanceNote']=desc
     return out
 
 def checked_audited_507_510_farsh(page, lines):

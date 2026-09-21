@@ -1,1 +1,174 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P487-42-33-4-DOCX-P487-R02907",
+    "surah": 42,
+    "ayah": 33,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيحَ",
+    "variantText": "الرِّيَاحَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P487-42-33-4-DOCX-P487-R02907",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P487-42-33-4-DOCX-P487-R02907",
+        "variantId": "v-AUDIT-P487-42-33-4-DOCX-P487-R02907",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02907",
+        "sourceText": "﴿الرِّيحَ﴾: بالإفراد للجمهور؛ وبالجمع ﴿الرِّيَاحَ﴾ لنافع وأبي جعفر.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/33"
+      }
+    ],
+    "description": "بالجمع",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/33"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P487-42-35-1-DOCX-P487-R02908",
+    "surah": 42,
+    "ayah": 35,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَيَعْلَمَ",
+    "variantText": "وَيَعْلَمَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P487-42-35-1-DOCX-P487-R02908",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P487-42-35-1-DOCX-P487-R02908",
+        "variantId": "v-AUDIT-P487-42-35-1-DOCX-P487-R02908",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02908",
+        "sourceText": "﴿وَيَعْلَمَ﴾: بنصب الميم ﴿وَيَعْلَمَ﴾ لنافع، وابن عامر، وأبي جعفر؛ برفع الميم ﴿وَيَعْلَمُ﴾ للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/35"
+      }
+    ],
+    "description": "بنصب الميم",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/35"
+      }
+    ],
+    "performanceNote": "نصب الميم للقراء المذكورين؛ وجه أداء مميز مع بقاء الرسم النصي."
+  },
+  {
+    "id": "v-AUDIT-P487-42-37-3-DOCX-P487-R02909",
+    "surah": 42,
+    "ayah": 37,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "كَبَـٰٓئِرَ",
+    "variantText": "كَبِيرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P487-42-37-3-DOCX-P487-R02909",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P487-42-37-3-DOCX-P487-R02909",
+        "variantId": "v-AUDIT-P487-42-37-3-DOCX-P487-R02909",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02909",
+        "sourceText": "﴿كَبَـٰٓئِرَ﴾: جمعاً وألف مدية بعد الباء وهمزة مكسورة ﴿كَبَائِرَ﴾ للجمهور؛ وبالمفرد بفتح الباء والياء بلا ألف ولا همز ﴿كَبِيرَ﴾ لحمزة والكسائي وخلف.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/37"
+      }
+    ],
+    "description": "بالمفرد بفتح الباء والياء بلا ألف ولا همز",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/37"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P487-42-41-7-DOCX-P487-R02910",
+    "surah": 42,
+    "ayah": 41,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهِم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P487-42-41-7-DOCX-P487-R02910",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P487-42-41-7-DOCX-P487-R02910",
+        "variantId": "v-AUDIT-P487-42-41-7-DOCX-P487-R02910",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02910",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/41"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/41"
+      }
+    ],
+    "performanceNote": "ضم هاء عليهم للقراء المذكورين."
+  }
+]

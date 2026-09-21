@@ -110,6 +110,46 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -117,11 +157,68 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": false
       }
     ],
-    "hasAlternate": false,
+    "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P499-R03035",
+        "sourceText": "﴿حم﴾: أمال الحاء ابن ذكوان، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو.",
+        "verificationNotes": "أُضيفت نسب القراء الصريحة بعد مقابلة المرجع المستقل https://quranpedia.net/qiraat/al-jathiyah/1."
+      }
+    ]
   },
   {
     "id": "r-p499-IMALAH_TAQLIL-والنهار-1",

@@ -1,1 +1,167 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P488-42-45-19-DOCX-P488-R02918",
+    "surah": 42,
+    "ayah": 45,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "وَأَهْلِيهِمْ",
+    "variantText": "وَأَهْلِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P488-42-45-19-DOCX-P488-R02918",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P488-42-45-19-DOCX-P488-R02918",
+        "variantId": "v-AUDIT-P488-42-45-19-DOCX-P488-R02918",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02918",
+        "sourceText": "﴿وَأَهْلِيهِمْ﴾، ﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿وَأَهْلِيهُمُ... أَيْدِيهُمُ﴾ ليعقوب.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/45"
+      }
+    ],
+    "description": "بضم الهاء ليعقوب",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/45"
+      }
+    ],
+    "performanceNote": "بضم الهاء ليعقوب."
+  },
+  {
+    "id": "v-AUDIT-P488-42-48-24-DOCX-P488-R02918",
+    "surah": 42,
+    "ayah": 48,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P488-42-48-24-DOCX-P488-R02918",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P488-42-48-24-DOCX-P488-R02918",
+        "variantId": "v-AUDIT-P488-42-48-24-DOCX-P488-R02918",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02918",
+        "sourceText": "﴿وَأَهْلِيهِمْ﴾، ﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿وَأَهْلِيهُمُ... أَيْدِيهُمُ﴾ ليعقوب.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/48"
+      }
+    ],
+    "description": "بضم الهاء ليعقوب",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/48"
+      }
+    ],
+    "performanceNote": "بضم الهاء ليعقوب."
+  },
+  {
+    "id": "v-AUDIT-P488-42-48-5-DOCX-P488-R02919",
+    "surah": 42,
+    "ayah": 48,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P488-42-48-5-DOCX-P488-R02919",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P488-42-48-5-DOCX-P488-R02919",
+        "variantId": "v-AUDIT-P488-42-48-5-DOCX-P488-R02919",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02919",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/48"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/48"
+      }
+    ],
+    "performanceNote": "ضم هاء عليهم للقراء المذكورين."
+  },
+  {
+    "id": "v-AUDIT-P488-42-51-13-DOCX-P488-R02920",
+    "surah": 42,
+    "ayah": 51,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "أَوْ يُرْسِلَ",
+    "variantText": "أَوْ يُرْسِلُ فَيُوحِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P488-42-51-13-DOCX-P488-R02920",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P488-42-51-13-DOCX-P488-R02920",
+        "variantId": "v-AUDIT-P488-42-51-13-DOCX-P488-R02920",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02920",
+        "sourceText": "﴿أَوْ يُرْسِلَ فَيُوحِيَ﴾: بنصب اللام والياء فيهما للجمهور؛ برفع اللام وإسكان الياء ﴿أَوْ يُرْسِلُ فَيُوحِي﴾ لنافع.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/51"
+      }
+    ],
+    "description": "برفع اللام وإسكان الياء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/ash-shura/51"
+      }
+    ]
+  }
+]

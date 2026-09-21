@@ -1,1 +1,396 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P490-43-11-10-DOCX-P490-R02934",
+    "surah": 43,
+    "ayah": 11,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "مَّيْتًۭا ۚ",
+    "variantText": "مَيِّتًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P490-43-11-10-DOCX-P490-R02934",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-11-10-DOCX-P490-R02934",
+        "variantId": "v-AUDIT-P490-43-11-10-DOCX-P490-R02934",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02934",
+        "sourceText": "﴿مَّيْتٗا﴾: بتخفيف الياء الساكنة للجمهور؛ وبتشديد الياء المكسورة ﴿مَيِّتًا﴾ لأبي جعفر.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/11"
+      }
+    ],
+    "description": "بتشديد الياء المكسورة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/11"
+      }
+    ],
+    "performanceNote": "بتشديد الياء المكسورة"
+  },
+  {
+    "id": "v-AUDIT-P490-43-11-12-DOCX-P490-R02935",
+    "surah": 43,
+    "ayah": 11,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "تُخْرَجُونَ",
+    "variantText": "تَخْرُجُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P490-43-11-12-DOCX-P490-R02935",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-11-12-DOCX-P490-R02935",
+        "variantId": "v-AUDIT-P490-43-11-12-DOCX-P490-R02935",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02935",
+        "sourceText": "﴿تُخْرَجُونَ﴾: بضم التاء وفتح الراء لنافع، وابن كثير، وأبي عمرو، وهشام، وعاصم، وأبي جعفر، ويعقوب؛ وبفتح التاء وضم الراء ﴿تَخْرُجُونَ﴾ للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/11"
+      }
+    ],
+    "description": "بفتح التاء وضم الراء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/11"
+      }
+    ],
+    "performanceNote": "بفتح التاء وضم الراء"
+  },
+  {
+    "id": "v-AUDIT-P490-43-15-5-DOCX-P490-R02936",
+    "surah": 43,
+    "ayah": 15,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "جُزْءًا ۚ",
+    "variantText": "جُزُءًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-P490-43-15-5-DOCX-P490-R02936",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-15-5-DOCX-P490-R02936",
+        "variantId": "v-AUDIT-P490-43-15-5-DOCX-P490-R02936",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02936",
+        "sourceText": "﴿جُزْءٗا﴾: بضم الجيم وسكون الزاي مهموزاً للجمهور؛ بضمتين مهموزاً ﴿جُزُءًا﴾ لشعبة؛ وبضم الجيم وتشديد الزاي بلا همز ﴿جُزًّا﴾ لأبي جعفر.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/15"
+      }
+    ],
+    "description": "بضمتين مهموزاً لشعبة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/15"
+      }
+    ],
+    "performanceNote": "بضمتين مهموزاً لشعبة."
+  },
+  {
+    "id": "v-AUDIT-P490-43-15-5-DOCX-P490-R02936",
+    "surah": 43,
+    "ayah": 15,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "جُزْءًا ۚ",
+    "variantText": "جُزًّا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P490-43-15-5-DOCX-P490-R02936",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-15-5-DOCX-P490-R02936",
+        "variantId": "v-AUDIT-P490-43-15-5-DOCX-P490-R02936",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02936",
+        "sourceText": "﴿جُزْءٗا﴾: بضم الجيم وسكون الزاي مهموزاً للجمهور؛ بضمتين مهموزاً ﴿جُزُءًا﴾ لشعبة؛ وبضم الجيم وتشديد الزاي بلا همز ﴿جُزًّا﴾ لأبي جعفر.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/15"
+      }
+    ],
+    "description": "بضم الجيم وتشديد الزاي بلا همز",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P490-43-17-11-DOCX-P490-R02937",
+    "surah": 43,
+    "ayah": 17,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P490-43-17-11-DOCX-P490-R02937",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-17-11-DOCX-P490-R02937",
+        "variantId": "v-AUDIT-P490-43-17-11-DOCX-P490-R02937",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02937",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/17"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/17"
+      }
+    ],
+    "performanceNote": "إسكان هاء وهو للقراء المذكورين."
+  },
+  {
+    "id": "v-AUDIT-P490-43-18-5-DOCX-P490-R02937",
+    "surah": 43,
+    "ayah": 18,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P490-43-18-5-DOCX-P490-R02937",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-18-5-DOCX-P490-R02937",
+        "variantId": "v-AUDIT-P490-43-18-5-DOCX-P490-R02937",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02937",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/18"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/18"
+      }
+    ],
+    "performanceNote": "إسكان هاء وهو للقراء المذكورين."
+  },
+  {
+    "id": "v-AUDIT-P490-43-18-2-DOCX-P490-R02938",
+    "surah": 43,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُنَشَّؤُا۟",
+    "variantText": "يُنَشَّأُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P490-43-18-2-DOCX-P490-R02938",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-18-2-DOCX-P490-R02938",
+        "variantId": "v-AUDIT-P490-43-18-2-DOCX-P490-R02938",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02938",
+        "sourceText": "﴿يُنَشَّؤُاْ﴾: بضم الياء وفتح النون وتشديد الشين ﴿يُنَشَّأُ﴾ لحفص، وحمزة، والكسائي، وخلف؛ وبفتح الياء وإسكان النون وتخفيف الشين ﴿يَنْشَأُ﴾ للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/18"
+      }
+    ],
+    "description": "بضم الياء وفتح النون وتشديد الشين",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/18"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P490-43-19-5-DOCX-P490-R02939",
+    "surah": 43,
+    "ayah": 19,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "عِبَـٰدُ ٱلرَّحْمَـٰنِ",
+    "variantText": "عِنْدَ الرَّحْمَنِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P490-43-19-5-DOCX-P490-R02939",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-19-5-DOCX-P490-R02939",
+        "variantId": "v-AUDIT-P490-43-19-5-DOCX-P490-R02939",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02939",
+        "sourceText": "﴿عِبَـٰدُ الرَّحْمَـٰنِ﴾: بكسر العين وفتح الباء وألف بعدها وخفض الدال مضافاً ﴿عِبَادُ الرَّحْمَنِ﴾ لأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ بنون ساكنة مفتوحة وفتح العين وضم الدال منونة ﴿عِنْدَ الرَّحْمَنِ﴾ للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/19"
+      }
+    ],
+    "description": "بنون ساكنة مفتوحة وفتح العين وضم الدال منونة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/19"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P490-43-19-8-DOCX-P490-R02940",
+    "surah": 43,
+    "ayah": 19,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَشَهِدُوا۟",
+    "variantText": "أُؤُشْهِدُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P490-43-19-8-DOCX-P490-R02940",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P490-43-19-8-DOCX-P490-R02940",
+        "variantId": "v-AUDIT-P490-43-19-8-DOCX-P490-R02940",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02940",
+        "sourceText": "﴿أَشَهِدُواْ﴾: بهمز واحد مفتوح وفتح الشين للجمهور؛ بهمزتين مفتوحة فمضمومة مسهلة مع سكون الشين ﴿أُؤُشْهِدُوا﴾ لنافع وأبي جعفر (مع الإدخال لقالون وأبي جعفر).",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/19"
+      }
+    ],
+    "description": "بهمزتين مفتوحة فمضمومة مسهلة مع سكون الشين (مع الإدخال لقالون وأبي جعفر)",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/19"
+      }
+    ]
+  }
+]

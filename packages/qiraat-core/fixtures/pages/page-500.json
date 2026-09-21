@@ -94,7 +94,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "D500-سواء",
     "locusType": "word_variant",
@@ -112,5 +114,109 @@
     "description": "بالرفع تنويناً",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P500-DOCX-P500-R03041-10-c8f9fdd5",
+    "surah": 45,
+    "ayah": 14,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "لِيَجْزِىَ قَوْمًۢا",
+    "variantText": "لِنَجْزِيَ قَوْمًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P500-DOCX-P500-R03041-10-c8f9fdd5",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P500-DOCX-P500-R03041-10-c8f9fdd5",
+        "variantId": "v-AUDIT-P500-DOCX-P500-R03041-10-c8f9fdd5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P500-R03041",
+        "sourceText": "بنون العظمة المفتوحة وكسر الزاي ونصب «قوماً» ﴿لِنَجْزِيَ قَوْمًا﴾: ابن عامر، حمزة، الكسائي، خلف.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/14"
+      },
+      {
+        "id": "s-AUDIT-P500-DOCX-P500-R03041-10-c8f9fdd5-EXT",
+        "variantId": "v-AUDIT-P500-DOCX-P500-R03041-10-c8f9fdd5",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/14",
+        "sourceText": "بنون العظمة المفتوحة وكسر الزاي ونصب قوماً",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بنون العظمة المفتوحة وكسر الزاي ونصب قوماً",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بنون العظمة المفتوحة وكسر الزاي ونصب قوماً",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/14"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P500-DOCX-P500-R03042-10-40e89785",
+    "surah": 45,
+    "ayah": 14,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "لِيَجْزِىَ قَوْمًۢا",
+    "variantText": "لِيُجْزَى قَوْمٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P500-DOCX-P500-R03042-10-40e89785",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P500-DOCX-P500-R03042-10-40e89785",
+        "variantId": "v-AUDIT-P500-DOCX-P500-R03042-10-40e89785",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P500-R03042",
+        "sourceText": "بياء الغيب المضمومة وفتح الزاي ورفع «قومٌ» نائباً عن الفاعل ﴿لِيُجْزَى قَوْمٌ﴾: أبو جعفر.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/14"
+      },
+      {
+        "id": "s-AUDIT-P500-DOCX-P500-R03042-10-40e89785-EXT",
+        "variantId": "v-AUDIT-P500-DOCX-P500-R03042-10-40e89785",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/14",
+        "sourceText": "بياء الغيب المضمومة وفتح الزاي ورفع قوم",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بياء الغيب المضمومة وفتح الزاي ورفع قوم",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب المضمومة وفتح الزاي ورفع قوم",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/14"
+      }
+    ]
   }
 ]

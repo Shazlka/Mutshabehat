@@ -152,7 +152,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P487-R02911",
+    "sourceText": "﴿الْجَوَارِ﴾: أمالها الدوري عن الكسائي (ولا تقليل فيها لورش).",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02911",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/32"
   },
   {
     "id": "r-p487-IMALAH_TAQLIL-صبار-1",
@@ -210,7 +214,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P487-R02912",
+    "sourceText": "﴿صَبَّارٍ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02912",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/33"
   },
   {
     "id": "r-p487-IMALAH_TAQLIL-الدنيا-2",
@@ -244,14 +252,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -278,16 +278,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -295,7 +285,12 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P487-R02913",
+    "sourceText": "﴿الدُّنْيَا﴾، ﴿وَأَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللهما ورش بخلف (وأبو عمرو في الدنيا).",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02913",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/36"
   },
   {
     "id": "r-p487-IMALAH_TAQLIL-وابقا-3",
@@ -329,14 +324,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -363,16 +350,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -380,7 +357,12 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P487-R02913",
+    "sourceText": "﴿الدُّنْيَا﴾، ﴿وَأَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللهما ورش بخلف (وأبو عمرو في الدنيا).",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02913",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/36"
   },
   {
     "id": "r-p487-IMALAH_TAQLIL-شورا-4",
@@ -422,14 +404,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -466,16 +440,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
@@ -483,7 +447,12 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P487-R02914",
+    "sourceText": "﴿شُورَىٰ﴾: أبو عمرو، حمزة، الكسائي، خلف، وقللها ورش.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02914",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/38"
   },
   {
     "id": "r-p487-TAGHYIR_HAMZ-يشا-5",
@@ -523,7 +492,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P487-R02916",
+    "sourceText": "تغيير الهمز: ﴿يَشَأْ﴾: تسهيل/إبدال لأبي جعفر.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02916",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/33"
   },
   {
     "id": "r-p487-YAAT_ZAWAID-الجوار-3",
@@ -635,6 +608,99 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P487-R02917",
+    "sourceText": "ياءات الزوائد: ﴿الْجَوَارِ﴾: إثبات الياء وصلاً لنافع وأبي عمرو وأبي جعفر؛ وفي الحالين لابن كثير ويعقوب ﴿الْجَوَارِي﴾.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02917",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/32"
+  },
+  {
+    "id": "r-p487-IMALAH_TAQLIL-وتري-5",
+    "pageNumber": 487,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 44,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 44,
+    "baseText": "وَتَرَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P487-R02915",
+    "sourceText": "﴿وَتَرَى﴾: وقفاً (أبو عمرو، حمزة، الكسائي، وخلف، وقللها ورش)؛ ووصلاً أمالها السوسي بخلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02915",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/44؛ «خلف» أُسند إلى Q06 وفق قاعدة المشروع."
   }
 ]

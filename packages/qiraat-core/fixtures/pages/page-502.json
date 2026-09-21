@@ -34,5 +34,326 @@
     "description": "بفتح الياء وضم الراء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P502-DOCX-P502-R03059-1-e94d01d3",
+    "surah": 45,
+    "ayah": 34,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P502-DOCX-P502-R03059-1-e94d01d3",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03059-1-e94d01d3",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03059-1-e94d01d3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P502-R03059",
+        "sourceText": "﴿وَقِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/34"
+      },
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03059-1-e94d01d3-EXT",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03059-1-e94d01d3",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/34",
+        "sourceText": "بالإشمام",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بالإشمام",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالإشمام",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/34"
+      }
+    ],
+    "performanceNote": "إشمام كسر القاف ضماً"
+  },
+  {
+    "id": "v-AUDIT-P502-DOCX-P502-R03060-6-69a3a95a",
+    "surah": 45,
+    "ayah": 35,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًۭا",
+    "variantText": "هُزْءًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P502-DOCX-P502-R03060-6-69a3a95a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03060-6-69a3a95a",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03060-6-69a3a95a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P502-R03060",
+        "sourceText": "﴿هُزُوًا﴾: كالمعتاد (حفص بضمتين مهموزاً؛ حمزة وخلف بضم فسكون مهموزاً؛ والباقون بضمتين بلا همز).",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/35"
+      },
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03060-6-69a3a95a-EXT",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03060-6-69a3a95a",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/35",
+        "sourceText": "بضم الزاي وسكون الهمز",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بضم الزاي وسكون الهمز",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الزاي وسكون الهمز",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/35"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P502-DOCX-P502-R03060-6-83beaf94",
+    "surah": 45,
+    "ayah": 35,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًۭا",
+    "variantText": "هُزُوًا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P502-DOCX-P502-R03060-6-83beaf94",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03060-6-83beaf94",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03060-6-83beaf94",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P502-R03060",
+        "sourceText": "﴿هُزُوًا﴾: كالمعتاد (حفص بضمتين مهموزاً؛ حمزة وخلف بضم فسكون مهموزاً؛ والباقون بضمتين بلا همز).",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/35"
+      },
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03060-6-83beaf94-EXT",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03060-6-83beaf94",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/35",
+        "sourceText": "بضمتين بلا همز",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بضمتين بلا همز",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضمتين بلا همز",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/35"
+      }
+    ],
+    "performanceNote": "بضمتين بلا همز"
+  },
+  {
+    "id": "v-AUDIT-P502-DOCX-P502-R03062-6-2457b9b3",
+    "surah": 45,
+    "ayah": 37,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P502-DOCX-P502-R03062-6-2457b9b3",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03062-6-2457b9b3",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03062-6-2457b9b3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P502-R03062",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/37"
+      },
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03062-6-2457b9b3-EXT",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03062-6-2457b9b3",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/37",
+        "sourceText": "بإسكان الهاء",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بإسكان الهاء",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/37"
+      }
+    ],
+    "performanceNote": "إسكان هاء وهو"
+  },
+  {
+    "id": "v-AUDIT-P502-DOCX-P502-R03066-11-0e95b58f",
+    "surah": 45,
+    "ayah": 33,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "يَسْتَهْزِءُونَ",
+    "variantText": "يَسْتَهْزِءُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P502-DOCX-P502-R03066-11-0e95b58f",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03066-11-0e95b58f",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03066-11-0e95b58f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P502-R03066",
+        "sourceText": "تغيير الهمز: ﴿يَسْتَهْزِءُونَ﴾: بحذف الهمزة لأبي جعفر. ﴿مَأْوَىٰكُمُ﴾: إبدال للسوسي وأبي جعفر. ﴿ٱئْتُونِي﴾ (وصلاً بما قبلها): إبدال لورش، السوسي، أبو جعفر (مع قصر ورش للياء المبدلة عند الابتداء قولاً واحداً).",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/33"
+      },
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03066-11-0e95b58f-EXT",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03066-11-0e95b58f",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/33",
+        "sourceText": "بحذف الهمزة",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بحذف الهمزة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بحذف الهمزة",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/33"
+      }
+    ],
+    "performanceNote": "حذف الهمزة"
+  },
+  {
+    "id": "v-AUDIT-P502-DOCX-P502-R03063-1-74e7e80f",
+    "surah": 46,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "حمٓ",
+    "variantText": "حمٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P502-DOCX-P502-R03063-1-74e7e80f",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03063-1-74e7e80f",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03063-1-74e7e80f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P502-R03063",
+        "sourceText": "﴿حمٓ﴾ (فاتحة الأحقاف): بالسكت لأبي جعفر؛ وبإدراجها للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-ahqaf/1"
+      },
+      {
+        "id": "s-AUDIT-P502-DOCX-P502-R03063-1-74e7e80f-EXT",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03063-1-74e7e80f",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/1",
+        "sourceText": "بالسكت",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بالسكت",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالسكت",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/1"
+      }
+    ],
+    "performanceNote": "السكت على ألف حم"
   }
 ]

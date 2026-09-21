@@ -39,14 +39,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -83,16 +75,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
@@ -100,7 +82,12 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P488-R02921",
+    "sourceText": "الممال والمقلل: ﴿وَتَرَىٰهُمْ﴾: أمالها أبو عمرو، وحمزة، والكسائي، وخلف، وقللها ورش. ﴿الْقِيَـٰمَةِ﴾: أمال هاء التأنيث وقفاً الكسائي.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02921",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/45"
   },
   {
     "id": "r-p488-TAGHYIR_HAMZ-ياتي-1",
@@ -158,7 +145,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P488-R02922",
+    "sourceText": "تغيير الهمز: ﴿يَأْتِيَ﴾: إبدال لورش، السوسي، أبو جعفر.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02922",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/47"
   },
   {
     "id": "r-p488-HAMZATAN_KALIMATAYN-يشاء_اناثا-2",
@@ -261,7 +252,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P488-R02923",
+    "sourceText": "الهمزتان من كلمتين: ﴿يَشَآءُ إِنَّـٰثًا﴾، ﴿يَشَآءُ إِنَّهُۥ﴾: تسهيل الثانية وإبدالها واواً مكسورة لنافع، ابن كثير، أبو عمرو، أبو جعفر، رويس؛ والتحقيق للباقين.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02923",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/49"
   },
   {
     "id": "r-p488-HAMZATAN_KALIMATAYN-يشاء_انهو-3",
@@ -364,7 +359,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P488-R02923",
+    "sourceText": "الهمزتان من كلمتين: ﴿يَشَآءُ إِنَّـٰثًا﴾، ﴿يَشَآءُ إِنَّهُۥ﴾: تسهيل الثانية وإبدالها واواً مكسورة لنافع، ابن كثير، أبو عمرو، أبو جعفر، رويس؛ والتحقيق للباقين.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02923",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/51"
   },
   {
     "id": "r-p488-IKHFA-rule-42-45-9",

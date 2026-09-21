@@ -1,1 +1,117 @@
-[]
+[
+  {
+    "id": "v-D496-نبطش-w2",
+    "surah": 44,
+    "ayah": 16,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "نَبْطِشُ",
+    "variantText": "نَبْطُشُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D496-نبطش",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D496-نبطش-w2",
+        "variantId": "v-D496-نبطش-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P496-R03000",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/ad-dukhan/1",
+        "sourceText": "﴿نَبْطِشُ﴾: بكسر الطاء للجمهور؛ وبضم الطاء ﴿نَبْطُشُ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم الطاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D496-حم-w2",
+    "surah": 44,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "حمٓ",
+    "variantText": "حمٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D496-حم",
+    "locusType": "performance_variant",
+    "performanceNote": "بالسكت",
+    "sources": [
+      {
+        "id": "s-D496-حم-w2",
+        "variantId": "v-D496-حم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P496-R02998",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/ad-dukhan/1",
+        "sourceText": "﴿حمٓ﴾: بالسكت لأبي جعفر؛ وبإدراجها للباقين."
+      }
+    ],
+    "description": "بالسكت",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D496-رب_السماوات-w2",
+    "surah": 44,
+    "ayah": 7,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّ ٱلسَّمَـٰوَٰتِ",
+    "variantText": "رَبُّ السَّمَـٰوَٰتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D496-رب_السماوات",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D496-رب_السماوات-w2",
+        "variantId": "v-D496-رب_السماوات-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P496-R02999",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/ad-dukhan/1",
+        "sourceText": "﴿رَبِّ السَّمَـٰوَٰتِ﴾: بخفض الباء ﴿رَبِّ﴾ لعاصم، وحمزة، والكسائي، وخلف؛ برفع الباء ﴿رَبُّ﴾ للباقين."
+      }
+    ],
+    "description": "برفع الباء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

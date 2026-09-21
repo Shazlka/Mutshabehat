@@ -74,5 +74,340 @@
     "description": "بنصب التاء منونة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P499-DOCX-P499-R03031-17-5a89fc97",
+    "surah": 45,
+    "ayah": 5,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيَـٰحِ",
+    "variantText": "ٱلرِّيحِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P499-DOCX-P499-R03031-17-5a89fc97",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03031-17-5a89fc97",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03031-17-5a89fc97",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P499-R03031",
+        "sourceText": "﴿الرِّيَـٰحِ﴾: بالجمع لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ وبالمفرد ﴿الرِّيحِ﴾ للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/5"
+      },
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03031-17-5a89fc97-EXT",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03031-17-5a89fc97",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/5",
+        "sourceText": "بالمفرد",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بالمفرد",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالمفرد",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/5"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P499-DOCX-P499-R03032-12-6a648e87",
+    "surah": 45,
+    "ayah": 6,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنُونَ",
+    "variantText": "تُؤْمِنُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P499-DOCX-P499-R03032-12-6a648e87",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03032-12-6a648e87",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03032-12-6a648e87",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P499-R03032",
+        "sourceText": "﴿يُؤْمِنُونَ﴾ (آية ٦): بياء الغيب لنافع، وابن كثير، وأبي عمرو، وحفص، وأبي جعفر، وروح؛ وبتاء الخطاب ﴿تُؤْمِنُونَ﴾ للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/6"
+      },
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03032-12-6a648e87-EXT",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03032-12-6a648e87",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/6",
+        "sourceText": "بتاء الخطاب",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بتاء الخطاب",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/6"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P499-DOCX-P499-R03033-7-c3176e3a",
+    "surah": 45,
+    "ayah": 9,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًا ۚ",
+    "variantText": "هُزْءًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P499-DOCX-P499-R03033-7-c3176e3a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03033-7-c3176e3a",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03033-7-c3176e3a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P499-R03033",
+        "sourceText": "﴿هُزُوًا﴾: كالمعتاد (حفص بضمتين مهموزاً؛ حمزة وخلف بضم فسكون مهموزاً؛ والباقون بضمتين بلا همز).",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/9"
+      },
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03033-7-c3176e3a-EXT",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03033-7-c3176e3a",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/9",
+        "sourceText": "بضم الزاي وسكون الهمزة مهموزاً",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بضم الزاي وسكون الهمزة مهموزاً",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الزاي وسكون الهمزة مهموزاً",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/9"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P499-DOCX-P499-R03033-7-83beaf94",
+    "surah": 45,
+    "ayah": 9,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًا ۚ",
+    "variantText": "هُزُوًا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P499-DOCX-P499-R03033-7-83beaf94",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03033-7-83beaf94",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03033-7-83beaf94",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P499-R03033",
+        "sourceText": "﴿هُزُوًا﴾: كالمعتاد (حفص بضمتين مهموزاً؛ حمزة وخلف بضم فسكون مهموزاً؛ والباقون بضمتين بلا همز).",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/9"
+      },
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03033-7-83beaf94-EXT",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03033-7-83beaf94",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/9",
+        "sourceText": "بضمتين بلا همز",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بضمتين بلا همز",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضمتين بلا همز",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/9"
+      }
+    ],
+    "performanceNote": "بضمتين بلا همز"
+  },
+  {
+    "id": "v-AUDIT-P499-DOCX-P499-R03034-11-fd03292a",
+    "surah": 45,
+    "ayah": 11,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "أَلِيمٌ",
+    "variantText": "أَلِيمٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P499-DOCX-P499-R03034-11-fd03292a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03034-11-fd03292a",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03034-11-fd03292a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P499-R03034",
+        "sourceText": "﴿أَلِيمٌ﴾ (آية ١١): بالرفع تنويناً ﴿أَلِيمٌ﴾ لابن كثير وحفص ويعقوب؛ وبالجر تنويناً ﴿أَلِيمٍ﴾ للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/11"
+      },
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03034-11-fd03292a-EXT",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03034-11-fd03292a",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/11",
+        "sourceText": "بالجر تنويناً",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بالجر تنويناً",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالجر تنويناً",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P499-DOCX-P499-R03029-1-74e7e80f",
+    "surah": 45,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "حمٓ",
+    "variantText": "حمٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P499-DOCX-P499-R03029-1-74e7e80f",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03029-1-74e7e80f",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03029-1-74e7e80f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P499-R03029",
+        "sourceText": "﴿حمٓ﴾: بالسكت لأبي جعفر؛ وبإدراجها للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/1"
+      },
+      {
+        "id": "s-AUDIT-P499-DOCX-P499-R03029-1-74e7e80f-EXT",
+        "variantId": "v-AUDIT-P499-DOCX-P499-R03029-1-74e7e80f",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/1",
+        "sourceText": "بالسكت",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بالسكت",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالسكت",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/1"
+      }
+    ],
+    "performanceNote": "السكت على ألف حم"
   }
 ]

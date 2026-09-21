@@ -37,6 +37,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   history/log of all changes for future reference.
 
 # Changelog
+- **Qiraat — four-agent audited import cycle, Mushaf pages 487–502:** added **66** source-backed farsh variants across the audited slices (p487=4, p488=4, p489=12, p490=9, p491=0, p492=0, p493=0, p494=0, p495=9, p496=3, p497=3, p498=5, p499=6, p500=2, p501=3, p502=6), plus **3** net ruling records/reader-assignment changes. Preserved exact source IDs/raw text and real-token anchors, retained distinct approved faces for different readers, and withheld ambiguous, generic, negated, contradictory, or unresolved rows. Bare «خلف» is Q06 (خلف عن حمزة); Q10 is used only when explicitly identified. **Verification:** importer rerun idempotent; validator clean (2,536 variants, 9,886 rulings, 20 one-colour categories); 38/38 Qiraat tests; TypeScript and production build passed. **Files:** `packages/qiraat-core/fixtures/pages/page-{487–490,495–502}.json`, `packages/qiraat-core/fixtures/rulings/page-{487–490,496–497,499,502}.json`, `scripts/qiraat/import_doc_tables.py`, `docs/qiraat-import-progress.json`, `CHANGELOG.md`, `CLAUDE.md`. **DB migration:** none — fixture-only.
 
 > Newest first. One dated entry per change (bug fix / feature / perf). Include the files touched
 > and any required DB migration. This log is the source of truth for "what changed and when".
