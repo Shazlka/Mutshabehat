@@ -1,1 +1,179 @@
-[]
+[
+  {
+    "id": "v-D471-فاطلع-w2",
+    "surah": 40,
+    "ayah": 37,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "فَأَطَّلِعَ",
+    "variantText": "فَأَطَّلِعُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D471-فاطلع",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D471-فاطلع-w2",
+        "variantId": "v-D471-فاطلع-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 471، الكلمات الفرشية (DOCX-P471-FARSH-FAATLI3)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "برفع العين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D471-وصد-w2",
+    "surah": 40,
+    "ayah": 37,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَصُدَّ",
+    "variantText": "وَصَدَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D471-وصد",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D471-وصد-w2",
+        "variantId": "v-D471-وصد-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 471، الكلمات الفرشية (DOCX-P471-FARSH-SUDD)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بفتح الصاد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D471-وهو-w2",
+    "surah": 40,
+    "ayah": 40,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D471-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D471-وهو-w2",
+        "variantId": "v-D471-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 471، الكلمات الفرشية (DOCX-P471-FARSH-WAHUWA)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D471-يدخلون-w2",
+    "surah": 40,
+    "ayah": 40,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "يَدْخُلُونَ",
+    "variantText": "يُدْخَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D471-يدخلون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D471-يدخلون-w2",
+        "variantId": "v-D471-يدخلون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 471، الكلمات الفرشية (DOCX-P471-FARSH-YADKHULUN)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بضم الياء وفتح الخاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

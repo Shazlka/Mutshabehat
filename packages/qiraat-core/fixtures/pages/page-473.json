@@ -1,1 +1,160 @@
-[]
+[
+  {
+    "id": "v-D473-رسلكم-w2",
+    "surah": 40,
+    "ayah": 50,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُكُم",
+    "variantText": "رُسْلُكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D473-رسلكم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D473-رسلكم-w2",
+        "variantId": "v-D473-رسلكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-RUSULUKUM)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D473-رسلنا-w2",
+    "surah": 40,
+    "ayah": 51,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلَنَا",
+    "variantText": "رُسْلَنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D473-رسلنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D473-رسلنا-w2",
+        "variantId": "v-D473-رسلنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-RUSULANA)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D473-ينفع-w2",
+    "surah": 40,
+    "ayah": 52,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَنفَعُ",
+    "variantText": "تَنفَعُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D473-ينفع",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D473-ينفع-w2",
+        "variantId": "v-D473-ينفع-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-LAYANFA)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بتاء التأنيث",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D473-تتذكرون-w2",
+    "surah": 40,
+    "ayah": 58,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "تَتَذَكَّرُونَ",
+    "variantText": "يَتَذَكَّرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D473-تتذكرون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D473-تتذكرون-w2",
+        "variantId": "v-D473-تتذكرون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-TATADHAKKARUN)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
