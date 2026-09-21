@@ -35,7 +35,7 @@ import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type Qiraa
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
 import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
-import QiraatEditor from './qiraat/QiraatEditor'
+import QiraatEditor, { canonicalKeyForWord } from './qiraat/QiraatEditor'
 import {
   comparisonMarkerForWord,
   markerPaintForWord,
@@ -560,6 +560,11 @@ export default function Mushaf1441Viewer({
   // silently resetting them to مقارنة القراءات.
   const [qiraatSubMode, setQiraatSubMode] = useState<Exclude<QiraatMode, 'normal'>>('comparison')
   const [qiraatEditorWord, setQiraatEditorWord] = useState<MushafWord | null>(null)
+  const [qiraatScopeMode, setQiraatScopeMode] = useState<'RANGE' | 'BOUNDARY' | null>(null)
+  const [qiraatScopeStart, setQiraatScopeStart] = useState<MushafWord | null>(null)
+  const [qiraatScopePreview, setQiraatScopePreview] = useState<{ startCanonicalKey: string; endCanonicalKey: string; scopeType: 'RANGE' | 'BOUNDARY' } | undefined>(undefined)
+  const qiraatScopeModeRef = useRef<'RANGE' | 'BOUNDARY' | null>(null)
+  const qiraatScopeStartRef = useRef<MushafWord | null>(null)
   // The single source of truth every render site reads: Qiraat is on only while it owns the layer,
   // so no code path can paint Qiraat colours over متشابهات or annotations.
   const qiraatMode: QiraatMode = readerLayer === 'qiraat' ? qiraatSubMode : 'normal'
@@ -2345,6 +2350,16 @@ export default function Mushaf1441Viewer({
           if (readerLayer === 'qiraat') {
             event.stopPropagation()
             updateHoveredQiraatWord(null)
+            if (qiraatScopeModeRef.current) {
+              if (!qiraatScopeStartRef.current) { qiraatScopeStartRef.current = word; setQiraatScopeStart(word); return }
+              const startKey = canonicalKeyForWord(qiraatScopeStartRef.current)
+              const endKey = canonicalKeyForWord(word)
+              setQiraatScopePreview({ startCanonicalKey: startKey, endCanonicalKey: endKey, scopeType: qiraatScopeModeRef.current })
+              setQiraatEditorWord(word)
+              qiraatScopeModeRef.current = null; qiraatScopeStartRef.current = null
+              setQiraatScopeMode(null); setQiraatScopeStart(null)
+              return
+            }
             setQiraatEditorWord(word)
             return
           }
@@ -3839,6 +3854,12 @@ export default function Mushaf1441Viewer({
             onIncludeReviewedChange={setQiraatIncludeReviewed}
             onOpenLegend={() => setQiraatLegendOpen(true)}
           />
+          <div className="mt-2 grid grid-cols-2 gap-2">
+            <button type="button" className={`min-h-9 rounded border px-2 text-xs font-bold ${qiraatScopeMode === 'RANGE' ? 'bg-[#eadfc9]' : ''}`} onClick={() => { const next = qiraatScopeMode === 'RANGE' ? null : 'RANGE'; qiraatScopeModeRef.current = next; qiraatScopeStartRef.current = null; setQiraatScopeMode(next); setQiraatScopeStart(null); setQiraatScopePreview(undefined) }}>تحديد نطاق</button>
+            <button type="button" className={`min-h-9 rounded border px-2 text-xs font-bold ${qiraatScopeMode === 'BOUNDARY' ? 'bg-[#eadfc9]' : ''}`} onClick={() => { const next = qiraatScopeMode === 'BOUNDARY' ? null : 'BOUNDARY'; qiraatScopeModeRef.current = next; qiraatScopeStartRef.current = null; setQiraatScopeMode(next); setQiraatScopeStart(null); setQiraatScopePreview(undefined) }}>تحديد حد فاصل</button>
+          </div>
+          {qiraatScopeMode ? <p className="mt-1 text-[11px] text-[#80662c]">اضغط الكلمة الأولى ثم الثانية لتحديد {qiraatScopeMode === 'RANGE' ? 'النطاق' : 'الحد الفاصل'}.</p> : null}
+          {qiraatScopePreview ? <p className="mt-1 rounded border border-[#d7c7a7] p-2 text-[11px]">النطاق المحدد: {qiraatScopePreview.startCanonicalKey} → {qiraatScopePreview.endCanonicalKey}</p> : null}
           {renderQiraatUsulPanel()}
           {renderQiraatRules()}
         </div>
@@ -4682,6 +4703,7 @@ export default function Mushaf1441Viewer({
               setToast('تم حفظ تعليق القراءات وتحديث القراءة المعروضة.')
             }}
             onNavigate={navigateQiraatEditorWord}
+            initialScope={qiraatScopePreview}
           />
         ) : null}
         {hoveredQiraatWord ? (
