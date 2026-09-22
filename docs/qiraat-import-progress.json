@@ -18,7 +18,7 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2996,
+    "variants": 2999,
     "usulRulings": 10007,
     "fixturePagesPresent": 584,
     "fixtureRange": [
@@ -49,23 +49,23 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Four-agent audit through Mushaf pages 308 with external Quranpedia checks. Bare خلف is Q06; explicit خلف العاشر or unambiguous source remainder retains Q10. Pages 293-308 are locally verified; p548 هُوَ remains the only unresolved occurrence-selection case.",
+    "sourceCoverageStatus": "Four-agent audit through Mushaf pages 320 with external Quranpedia checks. Bare خلف is Q06; explicit خلف العاشر or unambiguous source remainder retains Q10. Pages 309-320 are locally verified; p548 هُوَ remains the only unresolved occurrence-selection case.",
     "latestSourceCoverageNote": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending."
   },
-  "sourceCoverageStatus": "Four-agent audit through Mushaf pages 308 with external Quranpedia checks. Bare خلف is Q06; explicit خلف العاشر or unambiguous source remainder retains Q10. Pages 293-308 are locally verified; p548 هُوَ remains the only unresolved occurrence-selection case.",
+  "sourceCoverageStatus": "Four-agent audit through Mushaf pages 320 with external Quranpedia checks. Bare خلف is Q06; explicit خلف العاشر or unambiguous source remainder retains Q10. Pages 309-320 are locally verified; p548 هُوَ remains the only unresolved occurrence-selection case.",
   "currentBatch": {
-    "id": "four-agent-cycle-p293-p308",
+    "id": "four-agent-cycle-p309-p320",
     "pages": [
-      293,
-      308
+      309,
+      320
     ],
-    "variantsAdded": 17,
-    "newRulingLoci": 1,
+    "variantsAdded": 3,
+    "newRulingLoci": 0,
     "mergedRulingLoci": 0,
     "readerAssignmentsAdded": 0,
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2996,
+      "variants": 2999,
       "usulRulings": 10007,
       "validator": "passed",
       "importerIdempotent": true

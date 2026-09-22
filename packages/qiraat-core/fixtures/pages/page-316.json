@@ -369,5 +369,72 @@
     "description": "مصدراً",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P316-DOCX-P316-R01246-1",
+    "surah": 20,
+    "ayah": 75,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِهِۦ",
+    "variantText": "يَأْتِهِۦ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P316-DOCX-P316-R01246",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D316-ياتهي-w2",
+        "variantId": "v-D316-ياتهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P316-R01246",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي.",
+        "sourceText": "بإشباع صلة الهاء: نافع (بخلف عن قالون)، ابن كثير، الدوري عن أبي عمرو، ابن عامر، عاصم، حمزة، الكسائي، أبو جعفر، روح، خلف."
+      }
+    ],
+    "description": "قصر الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P316-DOCX-P316-R01246-2",
+    "surah": 20,
+    "ayah": 75,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِهِۦ",
+    "variantText": "يَأْتِهْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P316-DOCX-P316-R01246",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D316-ياتهي-w3",
+        "variantId": "v-D316-ياتهي-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P316-R01246",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي.",
+        "sourceText": "بإشباع صلة الهاء: نافع (بخلف عن قالون)، ابن كثير، الدوري عن أبي عمرو، ابن عامر، عاصم، حمزة، الكسائي، أبو جعفر، روح، خلف."
+      }
+    ],
+    "description": "إسكان الهاء",
+    "wajhIndex": 3,
+    "evidence": []
   }
 ]
