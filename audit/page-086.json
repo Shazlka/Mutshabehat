@@ -8,8 +8,13 @@
   "supported": 25,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p086-008-1",
     "r-p086-010-1",

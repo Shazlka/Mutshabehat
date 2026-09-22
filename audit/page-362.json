@@ -8,8 +8,13 @@
   "supported": 23,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p362-s25a29b0",
     "r-p362-YAAT_IDAFA-ياليتني_اتخذت-6",

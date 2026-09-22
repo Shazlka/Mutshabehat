@@ -8,8 +8,13 @@
   "supported": 15,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p453-s38a14b0",
     "r-p453-HAMZATAN_KALIMATAYN-هاولاء_الا-2"

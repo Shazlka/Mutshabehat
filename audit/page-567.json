@@ -8,8 +8,13 @@
   "supported": 30,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p567-IDGHAM_KABIR-فهي_يومئذ",
     "r-p567-TAGHYIR_HAMZ-لا_يومن-17"

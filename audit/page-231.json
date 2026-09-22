@@ -8,8 +8,13 @@
   "supported": 33,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p231-001-1",
     "r-p231-003-1",

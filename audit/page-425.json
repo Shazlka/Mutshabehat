@@ -8,8 +8,13 @@
   "supported": 11,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p425-HAMZATAN_KALIMATAYN-النبي_الا-5",
     "r-p425-IKHFA-rule-33-53-13"

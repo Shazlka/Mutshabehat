@@ -8,8 +8,13 @@
   "supported": 12,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p366-s25a74b1",
     "r-p366-IDGHAM_SAGHIR-يفعل_ذالك-0",

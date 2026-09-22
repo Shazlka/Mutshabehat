@@ -8,8 +8,13 @@
   "supported": 12,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p573-YAAT_IDAFA-ربي_امدا-2",
     "r-p573-IKHFA-rule-72-16-6",

@@ -8,8 +8,13 @@
   "supported": 14,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p394-IKHFA-rule-28-71-13",
     "r-p394-IKHFA-rule-28-72-13"

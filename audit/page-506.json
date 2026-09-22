@@ -8,8 +8,13 @@
   "supported": 11,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p506-IDGHAM_SAGHIR-واذ_صرفنا-5",
     "r-p506-IDGHAM_SAGHIR-يغفر_لكم-6",

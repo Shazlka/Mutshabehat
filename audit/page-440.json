@@ -8,8 +8,13 @@
   "supported": 19,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p440-s36a12b4",
     "r-p440-HAMZATAN_KALIMATAYN-جاء_اجلهم-5",

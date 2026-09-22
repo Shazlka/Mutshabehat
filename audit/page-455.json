@@ -8,8 +8,13 @@
   "supported": 15,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p455-YAAT_IDAFA-اني_احببت-4",
     "r-p455-YAAT_IDAFA-من_بعدي_انك-5",

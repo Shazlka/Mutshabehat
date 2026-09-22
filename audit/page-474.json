@@ -8,8 +8,13 @@
   "supported": 8,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p474-TAGHYIR_HAMZ-لا_يومنون-3",
     "r-p474-YAAT_IDAFA-ادعوني_استجب-6"

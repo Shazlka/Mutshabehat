@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-22 — Qiraat source-preserving attribution audit
+
+- Expanded the deterministic 604-page Qiraat audit to validate category labels,
+  reader-or-rawi authority IDs, authority-to-Riwayah expansion, and every raw
+  source-preserved attribution action. The inventory now contains all 307
+  distinct actions without rewriting their source wording.
+- Found 21 fixture rulings with 36 missing reader/rawi expansions on pages 226,
+  228, 242, 244, 319–322, and 334. Recorded them as association/mapping gaps;
+  no fixture or PostgreSQL Qiraat data was changed.
+
+## 2026-09-22 — Qiraat PostgreSQL reconciliation audit
+
+- Added `scripts/qiraat/audit_postgres_reconciliation.py`, a read-only,
+  fixture-key-level dry-run that detects import coverage lag, duplicate fixture
+  keys, conflicts, and database-only entries without modifying PostgreSQL.
+- Added `docs/qiraat-postgres-reconciliation.md` defining its classification
+  contract and the backup-first, explicit-approval repair boundary.
+
 All notable changes to **متشابهات V2 (Mutshabehat V2)** are recorded here, newest first.
 One dated entry per change (bug fix / feature / performance). Each entry lists the files touched
 and any required DB migration.

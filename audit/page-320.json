@@ -1,6 +1,6 @@
 {
   "page": 320,
-  "status": "PASS",
+  "status": "FAIL",
   "source": "fixture",
   "records": 33,
   "variants": 7,
@@ -8,8 +8,63 @@
   "supported": 33,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [
+    {
+      "id": "r-p320-013-1",
+      "expected": "Q10-R01"
+    },
+    {
+      "id": "r-p320-013-1",
+      "expected": "Q10-R02"
+    },
+    {
+      "id": "r-p320-016-1",
+      "expected": "Q10-R01"
+    },
+    {
+      "id": "r-p320-016-1",
+      "expected": "Q10-R02"
+    }
+  ],
+  "actionDetailDifferences": [
+    {
+      "id": "r-p320-013-1",
+      "readingId": "Q10-R01",
+      "attributionActions": [
+        "إمالة"
+      ],
+      "readingActions": []
+    },
+    {
+      "id": "r-p320-013-1",
+      "readingId": "Q10-R02",
+      "attributionActions": [
+        "إمالة"
+      ],
+      "readingActions": []
+    },
+    {
+      "id": "r-p320-016-1",
+      "readingId": "Q10-R01",
+      "attributionActions": [
+        "إمالة"
+      ],
+      "readingActions": []
+    },
+    {
+      "id": "r-p320-016-1",
+      "readingId": "Q10-R02",
+      "attributionActions": [
+        "إمالة"
+      ],
+      "readingActions": []
+    }
+  ],
   "contextualRules": [
     "r-p320-018-1",
     "r-p320-019-1",

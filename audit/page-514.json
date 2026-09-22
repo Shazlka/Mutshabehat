@@ -8,8 +8,13 @@
   "supported": 16,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p514-IDGHAM_SAGHIR-اذ_جعل-4",
     "r-p514-IDGHAM_SAGHIR-لقد_صدق-5"

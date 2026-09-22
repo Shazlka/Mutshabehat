@@ -8,8 +8,13 @@
   "supported": 11,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p549-HAMZATAN_KALIMATAYN-والبغضاء_ابدا-2"
   ]

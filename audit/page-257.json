@@ -8,8 +8,13 @@
   "supported": 15,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p257-IKHFA-rule-14-14-6",
     "r-p257-IKHFA-rule-14-17-15"

@@ -8,8 +8,13 @@
   "supported": 17,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p446-IDGHAM_KABIR-والصافات_صفا-2",
     "r-p446-IDGHAM_KABIR-فالزاجرات_زجرا-3",

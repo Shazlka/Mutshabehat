@@ -8,8 +8,13 @@
   "supported": 11,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p439-HAMZATAN_KALIMATAYN-السيي_الا-5",
     "r-p439-IKHFA-rule-35-41-18"

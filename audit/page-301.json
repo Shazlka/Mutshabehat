@@ -8,8 +8,13 @@
   "supported": 9,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p301-YAAT_IDAFA-معي_صبرا-1",
     "r-p301-YAAT_IDAFA-ستجدني_ان-2"

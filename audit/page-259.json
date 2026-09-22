@@ -8,8 +8,13 @@
   "supported": 17,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p259-004-1",
     "r-p259-HAMZATAN_KALIMATAYN-ماء_فاخرج-4",

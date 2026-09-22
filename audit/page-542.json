@@ -8,8 +8,13 @@
   "supported": 7,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p542-IKHFA-rule-58-2-22",
     "r-AUDIT-p542-IDGHAM_SAGHIR-qad-samia"

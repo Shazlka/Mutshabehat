@@ -8,8 +8,13 @@
   "supported": 7,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p379-s27a27b1",
     "r-p379-YAAT_IDAFA-اني_القي-1"

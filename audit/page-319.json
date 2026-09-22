@@ -1,6 +1,6 @@
 {
   "page": 319,
-  "status": "PASS",
+  "status": "FAIL",
   "source": "fixture",
   "records": 35,
   "variants": 7,
@@ -8,8 +8,39 @@
   "supported": 35,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [
+    {
+      "id": "r-p319-005-1",
+      "expected": "Q10-R01"
+    },
+    {
+      "id": "r-p319-005-1",
+      "expected": "Q10-R02"
+    }
+  ],
+  "actionDetailDifferences": [
+    {
+      "id": "r-p319-005-1",
+      "readingId": "Q10-R01",
+      "attributionActions": [
+        "إمالة"
+      ],
+      "readingActions": []
+    },
+    {
+      "id": "r-p319-005-1",
+      "readingId": "Q10-R02",
+      "attributionActions": [
+        "إمالة"
+      ],
+      "readingActions": []
+    }
+  ],
   "contextualRules": [
     "r-p319-001-1",
     "r-p319-003-1",

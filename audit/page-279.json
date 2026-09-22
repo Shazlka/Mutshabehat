@@ -8,8 +8,13 @@
   "supported": 9,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p279-TAGHYIR_HAMZ-لا_يومنون-3",
     "r-p279-TAGHYIR_HAMZ-لا_يومنون-4"

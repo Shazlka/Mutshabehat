@@ -8,8 +8,13 @@
   "supported": 19,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p265-IDGHAM_SAGHIR-اذ_دخلوا-1",
     "r-p265-YAAT_ZAWAID-فلا_تفضحون-4",

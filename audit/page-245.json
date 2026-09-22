@@ -8,8 +8,13 @@
   "supported": 23,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p245-IDGHAM_SAGHIR-بل_سولت-9",
     "r-p245-IDGHAM_KABIR-يوسف_فلن-10",

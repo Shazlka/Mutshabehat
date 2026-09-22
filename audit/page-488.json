@@ -8,8 +8,13 @@
   "supported": 9,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p488-HAMZATAN_KALIMATAYN-يشاء_اناثا-2",
     "r-p488-HAMZATAN_KALIMATAYN-يشاء_انهو-3",

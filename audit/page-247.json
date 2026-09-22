@@ -8,8 +8,13 @@
   "supported": 23,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p247-YAAT_IDAFA-اني_اعلم-16",
     "r-p247-YAAT_IDAFA-ربي_انهو-17",

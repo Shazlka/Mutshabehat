@@ -8,8 +8,13 @@
   "supported": 21,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p430-IDGHAM_SAGHIR-وهل_نجزي-4",
     "r-p430-IDGHAM_SAGHIR-ولقد_صدق-5",

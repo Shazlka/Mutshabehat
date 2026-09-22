@@ -8,8 +8,13 @@
   "supported": 8,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p299-IDGHAM_SAGHIR-لقد_جيتمونا-2",
     "r-p299-IDGHAM_SAGHIR-بل_زعمتم-3"

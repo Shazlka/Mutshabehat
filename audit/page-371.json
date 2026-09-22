@@ -8,8 +8,13 @@
   "supported": 9,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p371-YAAT_IDAFA-اجري_الا-2",
     "r-p371-YAAT_IDAFA-لابي_انهو-3"

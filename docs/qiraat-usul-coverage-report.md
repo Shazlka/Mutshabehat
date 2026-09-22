@@ -10,7 +10,16 @@ One report is generated for every Mushaf page at `audit/page-NNN.json`.
 - 584 pages have both Farsh and Usul fixture files; 20 pages (585–604) have no
   fixture and are `WARNING`, not “genuinely missing data”.
 - 12,788 fixture records were checked against the exact Mushaf-1441 token
-  fixtures: 0 unlinked words, 0 unknown Usul categories, and 0 unknown reader/rawi IDs.
+  fixtures: 0 unlinked words, 0 unknown Usul categories, labels, authorities,
+  or reading IDs, and 0 blank attribution actions. The inventory includes all 307
+  distinct source-preserved action strings; the detail panel renders those
+  strings verbatim rather than collapsing their scholarly qualifiers.
+- The authority-expansion audit found 21 existing rulings with 36 missing
+  reader/rawi expansions: Q04 attribution lacks Q04-R02 on pages 226, 228,
+  242, 244, and 334 (6 records), and Q10 attribution lacks both narrators on
+  pages 319–322 (15 records). These are classified as existing-data
+  association/mapping failures, not missing recitations; no fixture or DB data
+  was changed by this audit.
 - 2,601 records are contextual/multi-token spans. The renderer now evaluates
   `endAyah`, so both endpoints of a cross-ayah rule are visibly marked.
 
@@ -41,7 +50,9 @@ One report is generated for every Mushaf page at `audit/page-NNN.json`.
 
 ## Review queue
 
-No automated unknown rule, reader/rawi, or word-link failures remain in the
-fixture audit. The 20 absent page fixtures and the fixture-to-PostgreSQL export
-gap remain `I. UNKNOWN_REQUIRES_REVIEW` / `B. DATA_EXISTS_MAPPING_MISSING`;
-they must not be filled by inferred recitations.
+No unknown rule, reader/rawi ID, action, or word-link failures remain in the
+fixture audit. The 21 authority-expansion failures must be reconciled from
+their existing source notes before changing any attribution. The 20 absent page
+fixtures and the fixture-to-PostgreSQL export gap remain
+`I. UNKNOWN_REQUIRES_REVIEW` / `B. DATA_EXISTS_MAPPING_MISSING`; they must not
+be filled by inferred recitations.

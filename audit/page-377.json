@@ -8,8 +8,13 @@
   "supported": 22,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p377-IKHFA-rule-27-12-7",
     "r-p377-YAAT_IDAFA-اني_ءانست-5"

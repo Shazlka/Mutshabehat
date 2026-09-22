@@ -8,8 +8,13 @@
   "supported": 8,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p468-IMALAH_TAQLIL-لا_يخفا-2",
     "r-p468-IDGHAM_SAGHIR-اذ_تدعون-4"

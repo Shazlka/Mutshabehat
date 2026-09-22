@@ -1,6 +1,6 @@
 {
   "page": 244,
-  "status": "PASS",
+  "status": "FAIL",
   "source": "fixture",
   "records": 33,
   "variants": 4,
@@ -8,8 +8,27 @@
   "supported": 33,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [
+    {
+      "id": "r-p244-023-1",
+      "expected": "Q04-R02"
+    }
+  ],
+  "actionDetailDifferences": [
+    {
+      "id": "r-p244-023-1",
+      "readingId": "Q04-R02",
+      "attributionActions": [
+        "خمسة القياس"
+      ],
+      "readingActions": []
+    }
+  ],
   "contextualRules": [
     "r-p244-007-1",
     "r-p244-008-1",

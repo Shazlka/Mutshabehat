@@ -8,8 +8,13 @@
   "supported": 20,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p390-IKHFA-rule-28-38-9",
     "r-p390-YAAT_IDAFA-ربي_اعلم-8",

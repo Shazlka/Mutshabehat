@@ -8,8 +8,13 @@
   "supported": 16,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p562-IDGHAM_SAGHIR-هل_ترا-4",
     "r-p562-IDGHAM_SAGHIR-ولقد_زينا-5",

@@ -8,8 +8,13 @@
   "supported": 10,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p431-s34a28b2",
     "r-p431-TAGHYIR_HAMZ-لا_تستخرون-4"

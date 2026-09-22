@@ -8,8 +8,13 @@
   "supported": 14,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p563-HAMZATAN_KALIMATAYN-السماء_ان-3",
     "r-p563-IKHFA-rule-67-14-3",

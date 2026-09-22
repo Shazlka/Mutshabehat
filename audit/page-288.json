@@ -8,8 +8,13 @@
   "supported": 6,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p288-HAMZATAN_KALIMA-قال_ءاسجد-2",
     "r-p288-IKHFA-rule-17-61-11"

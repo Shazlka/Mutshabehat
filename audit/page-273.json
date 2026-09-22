@@ -8,8 +8,13 @@
   "supported": 22,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p273-HAMZATAN_KALIMATAYN-جاء_اجلهم-10"
   ]

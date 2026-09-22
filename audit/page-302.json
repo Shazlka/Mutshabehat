@@ -8,8 +8,13 @@
   "supported": 5,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p302-YAAT_IDAFA-معي_صبرا-0",
     "r-p302-IKHFA-rule-18-79-16"

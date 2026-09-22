@@ -37,6 +37,24 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   history/log of all changes for future reference.
 
 # Changelog
+
+## 2026-09-22 — Qiraat source-preserving attribution audit
+
+- Expanded the deterministic 604-page Qiraat audit to validate category labels,
+  reader-or-rawi authority IDs, authority-to-Riwayah expansion, and every raw
+  source-preserved attribution action. The inventory now contains all 307
+  distinct actions without rewriting their source wording.
+- Found 21 fixture rulings with 36 missing reader/rawi expansions on pages 226,
+  228, 242, 244, 319–322, and 334. Recorded them as association/mapping gaps;
+  no fixture or PostgreSQL Qiraat data was changed.
+
+## 2026-09-22 — Qiraat PostgreSQL reconciliation audit
+
+- Added a read-only fixture-to-PostgreSQL reconciliation preflight
+  (`scripts/qiraat/audit_postgres_reconciliation.py`) and its operating
+  contract in `docs/qiraat-postgres-reconciliation.md`; it reports coverage
+  lag, duplicate fixture keys, content conflicts, and database-only records
+  without mutating production data.
 - **Qiraat — four-agent audited attribution/import pass, Mushaf pages 571–582:** added **1** token-backed variant on p573 (`قُلْ` → `قَالَ`) and **1** token-backed `IDGHAM_SAGHIR` ruling on p571. Corrected remainder assignments on p572–574 and removed Q10 from **12** bare-«خلف» assignments on p579–582; explicit/remainder Q10 faces were preserved. **Verification:** importer idempotent; validator clean (2,863 variants, 9,897 rulings); 38/38 tests; TypeScript and production build pending this commit. **DB migration:** none — fixture-only.
 - **Qiraat — four-agent audited import/correction pass, Mushaf pages 563–570:** added **4** token-backed variants (p564=2, p568=2); p563/p565/p569/p570 had no safe missing faces. Corrected bare-«خلف» attribution to Q06 on p566 and p567, and added the explicitly sourced Abu Jaafar face on p567 `فَهْيَ`. Quranpedia checks were recorded for the new faces and corrections. **Verification:** importer idempotent; validator clean (2,862 variants, 9,896 rulings); 38/38 tests; TypeScript and production build passed. **DB migration:** none — fixture-only.
 - **Qiraat — deep audited attribution pass, Mushaf pages 551–554:** no new word variants; corrected **13** usul loci where the source uses bare «خلف», mapping them to Q06 (p551=2, p552=8, p553=1, p554=2). Explicit remainder faces retaining Q10 were preserved. **Verification:** importer idempotent; validator clean (2,858 variants, 9,896 rulings); 38/38 tests; TypeScript and production build passed. **DB migration:** none — fixture-only.

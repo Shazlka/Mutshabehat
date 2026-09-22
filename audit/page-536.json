@@ -8,8 +8,13 @@
   "supported": 22,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p536-s56a70b2",
     "r-p536-IDGHAM_SAGHIR-بل_نحن-1"

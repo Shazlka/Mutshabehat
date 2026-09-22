@@ -1,6 +1,6 @@
 {
   "page": 228,
-  "status": "PASS",
+  "status": "FAIL",
   "source": "fixture",
   "records": 37,
   "variants": 4,
@@ -8,8 +8,27 @@
   "supported": 37,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [
+    {
+      "id": "r-p228-027-1",
+      "expected": "Q04-R02"
+    }
+  ],
+  "actionDetailDifferences": [
+    {
+      "id": "r-p228-027-1",
+      "readingId": "Q04-R02",
+      "attributionActions": [
+        "النقل والإدغام (سكوناً وروماً)"
+      ],
+      "readingActions": []
+    }
+  ],
   "contextualRules": [
     "r-p228-001-1",
     "r-p228-021-1",

@@ -8,8 +8,13 @@
   "supported": 25,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p433-YAAT_IDAFA-اجري_الا-7",
     "r-p433-HAMZATAN_KALIMATAYN-اهاولاء_اياكم-7"

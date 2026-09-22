@@ -1,6 +1,6 @@
 {
   "page": 334,
-  "status": "PASS",
+  "status": "FAIL",
   "source": "fixture",
   "records": 25,
   "variants": 5,
@@ -8,8 +8,27 @@
   "supported": 25,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [
+    {
+      "id": "r-p334-010-1",
+      "expected": "Q04-R02"
+    }
+  ],
+  "actionDetailDifferences": [
+    {
+      "id": "r-p334-010-1",
+      "readingId": "Q04-R02",
+      "attributionActions": [
+        "خمسة القياس"
+      ],
+      "readingActions": []
+    }
+  ],
   "contextualRules": [
     "r-p334-IKHFA-rule-22-22-6"
   ]

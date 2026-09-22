@@ -8,8 +8,13 @@
   "supported": 10,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p422-s33a34b1",
     "r-p422-HAMZATAN_KALIMATAYN-النساء_ان-2",

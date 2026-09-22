@@ -8,8 +8,13 @@
   "supported": 8,
   "unsupported": 0,
   "unknownRules": [],
+  "unknownRuleLabels": [],
   "missingWordLinks": [],
   "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p472-YAAT_IDAFA-ما_لي_ادعوكم-5",
     "r-p472-YAAT_IDAFA-امري_الي_الله-6"
