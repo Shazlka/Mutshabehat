@@ -204,5 +204,41 @@
     "description": "بياء التذكير وتشديد العين",
     "wajhIndex": 4,
     "evidence": []
+  },
+  {
+    "id": "v-D421-عليهم-ضم",
+    "surah": 33,
+    "ayah": 24,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ ۚ",
+    "variantText": "عَلَيْهُم ۚ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-D421-عليهم-ضم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D421-عليهم-ضم",
+        "variantId": "v-D421-عليهم-ضم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P421-R02266",
+        "verificationNotes": "وجه صريح مع anchor حقيقي.",
+        "sourceText": "بضم الهاء لحمزة ويعقوب."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
