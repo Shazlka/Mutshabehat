@@ -2909,6 +2909,16 @@ def collect_farsh(page, lines):
     out.extend(checked_audited_307_310_farsh(page, lines))
     if page == 428:
         out = [v for v in out if not (v.get('variantText','').startswith('عَـٰلِم') and set(v.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
+    # p555's two-face inline row is already represented by the reviewed fixture
+    # with the source's explicit نافع وروح attribution; the generic block parser
+    # cannot safely split the prose tail and would recreate a duplicate face.
+    if page == 555:
+        out = [v for v in out if v.get('variantText') != 'لَوْوْا']
+    if page == 303:
+        # These two inline remainder faces are already represented by reviewed
+        # fixtures with corrected reader partitions; the generic parser sees
+        # only one prose clause and would recreate incomplete Q05-only faces.
+        out = [v for v in out if v.get('variantText') not in {'نُكُرًا', 'جَزَاءُ الْحُسْنَى'}]
     return out
 
 def checked_audited_307_310_farsh(page, lines):
@@ -3799,7 +3809,7 @@ def checked_audited_inline_faces(page, lines):
              'بياء الغيب'),
         ],
         386: [
-            ('DOCX-P386-R01959','وَحَزَنًا','وَحُزْنًا','حمزة، الكسائي، خلف العاشر',8,
+            ('DOCX-P386-R01959','وَحَزَنًا','وَحُزْنًا','حمزة، الكسائي، خلف',8,
              'بضم الحاء وسكون الزاي'),
         ],
         367: [
@@ -3918,12 +3928,6 @@ def checked_audited_inline_faces(page, lines):
         ],
         244: [
             ('DOCX-P244-R00325','نَرْفَعُ دَرَجَـٰتٍ مَّن نَّشَآءُ','يَرْفَعُ دَرَجَاتِ مَن يَشَاءُ','يعقوب',76,'بياء الغيب بغير تنوين'),
-        ],
-        399: [
-            ('DOCX-P399-R02073','مَّوَدَّةَ بَيْنِكُمْ','مَوَدَّةً بَيْنَكُمْ','نافع، ابن عامر، شعبة، أبو جعفر، خلف',25,'بنصب مودةً منونة ونصب بينكم'),
-            ('DOCX-P399-R02074','مَّوَدَّةَ بَيْنِكُمْ','مَوَدَّةٌ بَيْنَكُمْ','ابن كثير، أبو عمرو، الكسائي، رويس',25,'برفع مودة منونة ونصب بينكم'),
-            ('DOCX-P399-R02075','ٱلنُّبُوَّةَ','ٱلنُّبُوءَةَ','نافع',27,
-             'بالهمز والمد المتصل'),
         ],
         400: [
             ('DOCX-P400-R02084','إِبْرَٰهِيمَ','إِبْرَاهَامَ','هشام',31,
@@ -4976,6 +4980,11 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        269: [
+            ('DOCX-P269-R00666','عَلَيْهِمُ','نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',26,'بكسر الهاء وضم الميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','وجه المصدر للمذكورين.'),
+            ('DOCX-P269-R00667','عَلَيْهِمُ','أبو عمرو',26,'بكسر الهاء والميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','وجه أبي عمرو.'),
+            ('DOCX-P269-R00668','عَلَيْهِمُ','حمزة، الكسائي، يعقوب، خلف',26,'بضم الهاء والميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
         457: [
             ('DOCX-P457-R02640','سِخْرِيًّا','ابن كثير، ابن عامر، عاصم',63,'بضم السين','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
             ('DOCX-P457-R02641','سِخْرِيًّا','نافع، أبو جعفر',63,'بكسر السين','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
