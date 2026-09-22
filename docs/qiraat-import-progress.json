@@ -22298,7 +22298,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "b2263f8",
+  "currentHeadCommit": "ba244a9",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -23644,17 +23644,19 @@
       "270": 3,
       "271": 3
     },
-    "status": "locally verified; deployment pending",
+    "status": "pushed; Vercel deployment pending",
     "validation": {
       "variants": 2876,
       "usulRulings": 9898,
       "validator": "passed",
-      "tests": "pending",
-      "tsc": "pending",
-      "build": "pending",
+      "tests": "38/38",
+      "tsc": "passed",
+      "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Added three p261 performance faces and four reader assignments; corrected reader attribution on p265/p267/p268 and removed bare-Khalaf Q10 from nine p269-p271 imalah rulings."
+    "details": "Added three p261 performance faces and four reader assignments; corrected reader attribution on p265/p267/p268 and removed bare-Khalaf Q10 from nine p269-p271 imalah rulings.",
+    "commit": "ba244a9",
+    "deployment": "pending"
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
