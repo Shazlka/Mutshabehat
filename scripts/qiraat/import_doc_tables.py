@@ -4937,6 +4937,16 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        357: [
+            ('DOCX-P357-R01689','ثَلَـٰثُ عَوْرَٰتٍ','حمزة، الكسائي، خلف',58,'بنصب الثاء','https://quranpedia.net/qiraat/an-nur/58','وجه النصب للمذكورين؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
+            ('DOCX-P357-R01690','عَلَيْهِمْ','حمزة، يعقوب',58,'بضم الهاء','https://quranpedia.net/qiraat/an-nur/58','وجه الضم لحمزة ويعقوب.'),
+        ],
+        358: [
+            ('DOCX-P358-R01694','عَلَيْهِنَّ','يعقوب',60,'بضم الهاء','https://quranpedia.net/qiraat/an-nur/60','وجه الضم ليعقوب.'),
+        ],
+        360: [
+            ('DOCX-P360-R01705','فَهِىَ','قالون، أبو عمرو، الكسائي، أبو جعفر',5,'بإسكان الهاء','https://quranpedia.net/qiraat/al-furqan/5','وجه الإسكان للمذكورين.'),
+        ],
         343: [
             ('DOCX-P343-R01510','نُّسْقِيكُم','ابن كثير، أبو عمرو، حفص، حمزة، الكسائي، خلف',21,'بضم العين وكسر التنوين','https://quranpedia.net/qiraat/al-muminun/21','وجه المصدر بضم العين وكسر التنوين؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
             ('DOCX-P343-R01511','نُّسْقِيكُم','نافع، ابن عامر، شعبة، يعقوب',21,'بفتح التاء وضم التنوين','https://quranpedia.net/qiraat/al-muminun/21','وجه المصدر للمذكورين بضم التنوين.'),

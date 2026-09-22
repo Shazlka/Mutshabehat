@@ -104,5 +104,40 @@
         "text": "وَكَسْرُ بُيُوتٍ حِمَى فُزْ"
       }
     ]
+  },
+  {
+    "id": "v-D358-عليهن-performance1",
+    "surah": 24,
+    "ayah": 60,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِنَّ",
+    "variantText": "عَلَيْهِنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D358-عليهن",
+    "locusType": "performance_variant",
+    "performanceNote": "بضم الهاء",
+    "sources": [
+      {
+        "id": "s-D358-عليهن-performance1",
+        "variantId": "v-D358-عليهن-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P358-R01694",
+        "verificationNotes": "وجه الضم ليعقوب. المرجع المستقل: https://quranpedia.net/qiraat/an-nur/60.",
+        "sourceText": "﴿عَلَيْهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿عَلَيْهُنَّ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": []
   }
 ]
