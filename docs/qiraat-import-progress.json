@@ -54,21 +54,21 @@
   },
   "sourceCoverageStatus": "Global bare-Khalaf audit through page 584 plus cycle pages 245-260. Bare خلف is Q06; explicit خلف العاشر or unambiguous remainder retains Q10. Importer is idempotent; validator, 38/38 tests, TypeScript, and build pass.",
   "currentBatch": {
-    "id": "occurrence-safe-gap-audit-p256",
+    "id": "safe-span-gap-audit-p282",
     "pages": [
-      256
+      282
     ],
     "variantsAdded": 2,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
     "correctedRulingLoci": 0,
     "perPageVariants": {
-      "256": 2
+      "282": 2
     },
     "correctedByPage": {},
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2924,
+      "variants": 2926,
       "usulRulings": 9902,
       "validator": "passed",
       "tests": "39/39",
@@ -76,7 +76,7 @@
       "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Added both occurrence-specific Abu Amr performance faces for the single source row; p282 multiword/hamza family remains withheld pending a safe span model."
+    "details": "Added the explicit Abu Amr two-token form and Hamza/Yaqub single-token form. Withheld the conflicting three-way liyasuu family pending independent phonetic/performance reconciliation."
   },
   "lastConfirmedDeployedDataCommit": "271832f",
   "lastConfirmedVercelState": "success",
@@ -23573,23 +23573,23 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
-  "latestSourceCoverageNote": "Audited source pages 225-584 with targeted database gap review. Added 18 safe token-backed faces across p256, p269, p331, p470, p480, p493, p494, p557; p282 and other ambiguous families remain explicitly withheld.",
+  "latestSourceCoverageNote": "Audited source pages 225-584 with targeted database gap review. Added 20 safe token-backed faces across p256, p269, p282, p331, p470, p480, p493, p494, p557; conflicting or ambiguous forms remain explicitly withheld.",
   "latestLocalImportCycle": {
-    "id": "occurrence-safe-gap-audit-p256",
+    "id": "safe-span-gap-audit-p282",
     "pages": [
-      256
+      282
     ],
     "variantsAdded": 2,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
     "correctedRulingLoci": 0,
     "perPageVariants": {
-      "256": 2
+      "282": 2
     },
     "correctedByPage": {},
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2924,
+      "variants": 2926,
       "usulRulings": 9902,
       "validator": "passed",
       "tests": "39/39",
@@ -23597,7 +23597,7 @@
       "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Added both occurrence-specific Abu Amr performance faces for the single source row; p282 multiword/hamza family remains withheld pending a safe span model."
+    "details": "Added the explicit Abu Amr two-token form and Hamza/Yaqub single-token form. Withheld the conflicting three-way liyasuu family pending independent phonetic/performance reconciliation."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
