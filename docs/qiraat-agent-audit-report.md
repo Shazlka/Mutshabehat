@@ -61,7 +61,8 @@ These are `DATA_EXISTS_WRONG_ASSOCIATION`, `DATA_CONFLICT`, or `DATA_DUPLICATE`,
 - PostgreSQL preflight against `mutshabehat-db:5433` — read-only; 7,247 entries, 244 pages, 0 database-only rows, 64 conflicts.
 - `node scripts/qiraat/repair-q10-riwayah-attribution.mjs` — first run added 28 fixture assignments; second run added 0 and confirmed 28 unchanged.
 - `node scripts/qiraat/repair-q04-hisham-attribution.mjs` — first run narrowed 5 source-backed links; second run changed 0 and confirmed 5 unchanged.
+- Production deployment `dpl_C8F7mRAzxFaipTixuHmLV5XghCjh` — READY and aliased to `mutshabehat-v2.vercel.app`; live Qira'at browser checks passed (2/2).
 
 ## Reviewer conclusion
 
-All recognized fixture rules have working normalization, reader/rawi filtering, contextual endpoint handling, and frontend marker coverage. The deterministic fixture audit is now clean. Remaining scope is explicitly outside safe automatic repair: 62 historical DB association conflicts, 25 duplicate importer keys requiring a future approved migration, and absent authoritative source data for pages 585–604. Production data was not mutated and no deployment was performed.
+All recognized fixture rules have working normalization, reader/rawi filtering, contextual endpoint handling, and frontend marker coverage. The deterministic fixture audit is now clean. Remaining scope is explicitly outside safe automatic repair: 62 historical DB association conflicts, 25 duplicate importer keys requiring a future approved migration, and absent authoritative source data for pages 585–604. Production data was not mutated; the verified fixture release is live.
