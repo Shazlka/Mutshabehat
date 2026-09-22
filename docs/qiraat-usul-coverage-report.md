@@ -14,13 +14,12 @@ One report is generated for every Mushaf page at `audit/page-NNN.json`.
   or reading IDs, and 0 blank attribution actions. The inventory includes all 307
   distinct source-preserved action strings; the detail panel renders those
   strings verbatim rather than collapsing their scholarly qualifiers.
-- The authority-expansion audit now has 3 remaining missing reader/rawi
-  expansions: the page-334 Q04 link and the conflicting page-322 Q10 link.
-  Five source-backed Q04 links on pages 226, 228, 242, and 244 were narrowed to
-  Q04-R01 (Hisham), and fourteen source-backed Q10 records on pages 319–321
-  were repaired idempotently with 28 narrator assignments. The remaining items
-  are classified as existing-data association/conflict cases, not missing
-  recitations; no PostgreSQL data was changed.
+- The authority-expansion audit is clean: zero missing reader/rawi expansions.
+  Five source-backed Q04 links were narrowed to Q04-R01 (Hisham), fourteen
+  source-backed Q10 records gained 28 narrator assignments, page 322's bare
+  `خلف` was corrected to Q06-R01, and page 334's Hisham pause link was aligned
+  with its verified source correction. One composite source-action detail is
+  retained as a non-blocking note; no PostgreSQL data was changed.
 - 2,601 records are contextual/multi-token spans. The renderer now evaluates
   `endAyah`, so both endpoints of a cross-ayah rule are visibly marked.
 

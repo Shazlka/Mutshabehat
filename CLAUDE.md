@@ -58,6 +58,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-22 — Qiraat final source reconciliation
+
+- Corrected page 322 `فسـٔلوا` bare `خلف` attribution to Q06-R01 and aligned page 334 `يشاء` with the verified Hisham pause correction.
+- Added one valid Q06 narrator assignment and corrected one canonical association; no Qira’at records were invented and no PostgreSQL rows changed.
+- Verification: `npm run qiraat:audit` passes with zero attribution expansion, unknown-rule, reader, authority, or word-link failures.
+
 ## 2026-09-22 — Qiraat source-backed Hisham attribution repair
 
 - Added guarded idempotent `scripts/qiraat/repair-q04-hisham-attribution.mjs`, narrowing five explicit “وكذا هشام” links on pages 226, 228, 242, and 244 to Q04-R01.

@@ -751,7 +751,7 @@
         "action": "نقل حركة الهمزة وحذفها"
       },
       {
-        "authorityId": "Q10",
+        "authorityId": "Q06-R01",
         "action": "نقل حركة الهمزة وحذفها"
       }
     ],
@@ -773,6 +773,11 @@
       },
       {
         "readingId": "Q07-R02",
+        "action": "نقل حركة الهمزة وحذفها",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
         "action": "نقل حركة الهمزة وحذفها",
         "isDefault": true
       }

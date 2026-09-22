@@ -12,8 +12,8 @@
     "unknownReadings": 0,
     "unknownAuthorities": 0,
     "emptyActions": 0,
-    "attributionExpansionFailures": 3,
-    "actionDetailDifferences": 4,
+    "attributionExpansionFailures": 0,
+    "actionDetailDifferences": 1,
     "contextual": 2601
   },
   "registry": [
@@ -9569,7 +9569,6 @@
         "WAQF_HAMZA"
       ],
       "authorities": [
-        "Q04",
         "Q04-R01",
         "Q06",
         "Q06-R01",
@@ -11640,6 +11639,7 @@
       ],
       "authorities": [
         "Q02",
+        "Q06-R01",
         "Q07",
         "Q10"
       ],

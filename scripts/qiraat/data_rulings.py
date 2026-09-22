@@ -7453,7 +7453,9 @@ RULINGS[322] = [
     ('SAKT', 'الاولون', sakt_idris(), dict(alternate=[KHD, 'إدريس'])),
     ('MADD_BADAL', 'ءامنت', warsh('مد البدل'), {}),
     ('TAGHYIR_HAMZ', 'يومنون', hamz3(), {}),
-    ('TAGHYIR_HAMZ', 'فسـٔلوا', [('ابن كثير', 'نقل حركة الهمزة وحذفها'), ('الكسائي', 'نقل حركة الهمزة وحذفها'), (K10, 'نقل حركة الهمزة وحذفها')], {}),
+    # The supplied DOCX names bare «خلف» here; project convention resolves it
+    # to Q06-R01 (Khalaf عن Hamza), not the Q10 reader.
+    ('TAGHYIR_HAMZ', 'فسـٔلوا', [('ابن كثير', 'نقل حركة الهمزة وحذفها'), ('الكسائي', 'نقل حركة الهمزة وحذفها'), (KH, 'نقل حركة الهمزة وحذفها')], {}),
     ('TAGHYIR_HAMZ', 'ياكلون', hamz3(), {}),
     ('SILAT_HA', 'فيه ذكركم', ibnkathir(), {}),
     ('TARQIQ_RA', 'ذكركم', warsh('ترقيق الراء'), {}),
@@ -7709,7 +7711,8 @@ RULINGS[334] = [
     ('TAGHYIR_HAMZ', 'الارض', warsh('النقل'), dict(ayah=18)),
     ('SAKT', 'الارض', sakt_idris(), dict(ayah=18, alternate=[KHD, 'إدريس'])),
     ('IMALAH_TAQLIL', 'الناس', duri_amr(), dict(ayah=18)),
-    ('WAQF_HAMZA', 'يشاء', [('حمزة', 'خمسة القياس')], dict(ayah=18)),
+    # Verified terminal-hamza exception: Hisham shares Hamza's five القياس faces.
+    ('WAQF_HAMZA', 'يشاء', [('حمزة', 'خمسة القياس'), ('هشام', 'خمسة القياس')], dict(ayah=18)),
     ('IMALAH_TAQLIL', 'نار', imalah_nar(), dict(ayah=19)),
     ('TARQIQ_RA', 'الحريق', warsh('ترقيق الراء'), dict(ayah=22)),
     ('MADD_BADAL', 'ءامنوا', warsh('مد البدل'), dict(ayah=23)),
