@@ -1,1 +1,113 @@
-[]
+[
+  {
+    "id": "v-D470-او_ان_يظهر_في_الارض_الفساد-w2",
+    "surah": 40,
+    "ayah": 26,
+    "startToken": 13,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "أَوْ أَن يُظْهِرَ فِى ٱلْأَرْضِ ٱلْفَسَادَ",
+    "variantText": "وَأَنْ يُظْهِرَ فِي ٱلْأَرْضِ ٱلْفَسَادَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D470-او_ان_يظهر_في_الارض_الفساد",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D470-او_ان_يظهر_في_الارض_الفساد-w2",
+        "variantId": "v-D470-او_ان_يظهر_في_الارض_الفساد-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P470-R02753",
+        "verificationNotes": "جهاز غافر 26 يثبت وجه وَأَنْ يُظْهِرَ بالضم والنصب للمجموعة المذكورة. المرجع: https://quranpedia.net/qiraat/ghafir/26",
+        "sourceText": "بواو العطف «وَأَنْ»، وضم ياء «يُظْهِرَ»، ونصب «الفسادَ»: نافع، وأبو عمرو، وأبو جعفر."
+      }
+    ],
+    "description": "بواو العطف وضم ياء يظهر ونصب الفساد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D470-او_ان_يظهر_في_الارض_الفساد-w3",
+    "surah": 40,
+    "ayah": 26,
+    "startToken": 13,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "أَوْ أَن يُظْهِرَ فِى ٱلْأَرْضِ ٱلْفَسَادَ",
+    "variantText": "وَأَنْ يَظْهَرَ فِي ٱلْأَرْضِ ٱلْفَسَادُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D470-او_ان_يظهر_في_الارض_الفساد",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D470-او_ان_يظهر_في_الارض_الفساد-w3",
+        "variantId": "v-D470-او_ان_يظهر_في_الارض_الفساد-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P470-R02754",
+        "verificationNotes": "جهاز غافر 26 يثبت وجه يَظْهَرَ بالفتح ورفع الفساد لابن كثير وابن عامر. المرجع: https://quranpedia.net/qiraat/ghafir/26",
+        "sourceText": "بواو العطف «وَأَنْ»، وفتح ياء «يَظْهَرَ»، ورفع «الفسادُ» فاعلاً: ابن كثير، وابن عامر."
+      }
+    ],
+    "description": "بواو العطف وفتح ياء يظهر ورفع الفساد",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D470-او_ان_يظهر_في_الارض_الفساد-w4",
+    "surah": 40,
+    "ayah": 26,
+    "startToken": 13,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "أَوْ أَن يُظْهِرَ فِى ٱلْأَرْضِ ٱلْفَسَادَ",
+    "variantText": "أَوْ يَظْهَرَ فِي ٱلْأَرْضِ ٱلْفَسَادُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D470-او_ان_يظهر_في_الارض_الفساد",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D470-او_ان_يظهر_في_الارض_الفساد-w4",
+        "variantId": "v-D470-او_ان_يظهر_في_الارض_الفساد-w4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P470-R02755",
+        "verificationNotes": "جهاز غافر 26 يثبت وجه أَوْ يَظْهَرَ بالفتح ورفع الفساد؛ وخلف المجرد Q06. المرجع: https://quranpedia.net/qiraat/ghafir/26",
+        "sourceText": "بـ «أَوْ»، وفتح ياء «يَظْهَرَ»، ورفع «الفسادُ» فاعلاً: شعبة، وحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بأو وفتح ياء يظهر ورفع الفساد",
+    "wajhIndex": 4,
+    "evidence": []
+  }
+]

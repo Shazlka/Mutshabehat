@@ -54,27 +54,21 @@
   },
   "sourceCoverageStatus": "Global bare-Khalaf audit through page 584 plus cycle pages 245-260. Bare خلف is Q06; explicit خلف العاشر or unambiguous remainder retains Q10. Importer is idempotent; validator, 38/38 tests, TypeScript, and build pass.",
   "currentBatch": {
-    "id": "zero-fixture-gap-audit-p480-p557",
+    "id": "multi-token-gap-audit-p470",
     "pages": [
-      480,
-      493,
-      494,
-      557
+      470
     ],
-    "variantsAdded": 9,
+    "variantsAdded": 3,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
     "correctedRulingLoci": 0,
     "perPageVariants": {
-      "480": 3,
-      "493": 3,
-      "494": 2,
-      "557": 1
+      "470": 3
     },
     "correctedByPage": {},
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2919,
+      "variants": 2922,
       "usulRulings": 9902,
       "validator": "passed",
       "tests": "39/39",
@@ -82,7 +76,7 @@
       "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Zero-fixture source-gap audit. Added safe single-token and performance faces with external Quranpedia checks; p470 and p494 multi-face/occurrence rows withheld."
+    "details": "Added three contiguous token-span faces from the four-reading Ghafir 26 source row; Hafs baseline face remains canonical and Yaqub baseline-equivalent face is not duplicated."
   },
   "lastConfirmedDeployedDataCommit": "271832f",
   "lastConfirmedVercelState": "success",
@@ -23579,29 +23573,23 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
-  "latestSourceCoverageNote": "Audited source pages 225-584 with targeted database gap review. Added 13 safe token-backed faces across p269, p331, p480, p493, p494, p557; remaining ambiguous multi-token/performance families are explicitly withheld.",
+  "latestSourceCoverageNote": "Audited source pages 225-584 with targeted database gap review. Added 16 safe token-backed faces across p269, p331, p470, p480, p493, p494, p557; ambiguous multi-token/performance families remain explicitly withheld.",
   "latestLocalImportCycle": {
-    "id": "zero-fixture-gap-audit-p480-p557",
+    "id": "multi-token-gap-audit-p470",
     "pages": [
-      480,
-      493,
-      494,
-      557
+      470
     ],
-    "variantsAdded": 9,
+    "variantsAdded": 3,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
     "correctedRulingLoci": 0,
     "perPageVariants": {
-      "480": 3,
-      "493": 3,
-      "494": 2,
-      "557": 1
+      "470": 3
     },
     "correctedByPage": {},
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2919,
+      "variants": 2922,
       "usulRulings": 9902,
       "validator": "passed",
       "tests": "39/39",
@@ -23609,7 +23597,7 @@
       "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Zero-fixture source-gap audit. Added safe single-token and performance faces with external Quranpedia checks; p470 and p494 multi-face/occurrence rows withheld."
+    "details": "Added three contiguous token-span faces from the four-reading Ghafir 26 source row; Hafs baseline face remains canonical and Yaqub baseline-equivalent face is not duplicated."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
