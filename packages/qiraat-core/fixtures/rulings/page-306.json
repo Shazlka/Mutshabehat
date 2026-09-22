@@ -15,23 +15,50 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q03",
-        "action": "تقليل"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -50,21 +77,6 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
         "isDefault": true
       }
     ],
@@ -345,23 +357,32 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q03",
-        "action": "تقليل"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -380,21 +401,6 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
         "isDefault": true
       }
     ],
@@ -480,18 +486,18 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03-R01",
+        "authorityId": "Q03-R02",
         "action": "إمالة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q03-R01",
+        "readingId": "Q03-R02",
         "action": "إمالة",
-        "isDefault": false
+        "isDefault": true
       }
     ],
-    "hasAlternate": true,
+    "hasAlternate": false,
     "text": "الخلف للدوري عن أبي عمرو في «الناس» المجرورة.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"

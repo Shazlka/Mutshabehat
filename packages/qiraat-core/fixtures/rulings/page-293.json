@@ -1,5 +1,26 @@
 [
   {
+    "id": "r-p293-SAKT-awaja-0",
+    "pageNumber": 293,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 1,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 1,
+    "baseText": "عِوَجَاۜ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [{"authorityId": "Q05-R02", "action": "السكت اللطيف وصلاً"}],
+    "readings": [{"readingId": "Q05-R02", "action": "السكت اللطيف وصلاً", "isDefault": true}],
+    "hasAlternate": false,
+    "notes": "السكت على ألف عوجاً وصلاً قبل قَيِّمًا.",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
     "id": "r-p293-IMALAH_TAQLIL-يتلا-0",
     "pageNumber": 293,
     "category": "IMALAH_TAQLIL",

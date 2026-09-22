@@ -138,5 +138,39 @@
     "description": "بخطاب التاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P299-DOCX-P299-R01020-1",
+    "surah": 18,
+    "ayah": 52,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَيَوْمَ يَقُولُ",
+    "variantText": "نَقُولُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P299-DOCX-P299-R01020",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D299-ويوم_يقول-w2",
+        "variantId": "v-D299-ويوم_يقول-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P299-R01020",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي.",
+        "sourceText": "﴿وَيَوْمَ يَقُولُ﴾: بنون العظمة للجمهور؛ وبياء الغيب ﴿وَيَوْمَ يَقُولُ﴾ لحمزة بياء الغيب المضمومة أو المفتوحة (وقرأ حمزة بالنون ﴿نَقُولُ﴾)."
+      }
+    ],
+    "description": "بالنون لحمزة",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

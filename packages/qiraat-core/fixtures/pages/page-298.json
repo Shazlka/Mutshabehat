@@ -116,5 +116,195 @@
     "description": "بإسكان الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P298-DOCX-P298-R01004-1",
+    "surah": 18,
+    "ayah": 43,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَمْ تَكُن",
+    "variantText": "وَلَمْ يَكُن",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P298-DOCX-P298-R01004",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D298-ولم_تكن-w2",
+        "variantId": "v-D298-ولم_تكن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P298-R01004",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي. Bare خلف is Q06; Q10 omitted unless explicitly خلف العاشر.",
+        "sourceText": "﴿وَلَمْ تَكُن﴾: بتاء التأنيث للجمهور؛ وبياء التذكير ﴿وَلَمْ يَكُن﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بياء التذكير",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P298-DOCX-P298-R01005-1",
+    "surah": 18,
+    "ayah": 44,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْوَلَـٰيَةُ",
+    "variantText": "الْوِلَايَةُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P298-DOCX-P298-R01005",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D298-الولايه-w2",
+        "variantId": "v-D298-الولايه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P298-R01005",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي. Bare خلف is Q06; Q10 omitted unless explicitly خلف العاشر.",
+        "sourceText": "﴿الْوَلَـٰيَةُ﴾: بفتح الواو للجمهور؛ وبكسر الواو ﴿الْوِلَايَةُ﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بكسر الواو",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P298-DOCX-P298-R01006-1",
+    "surah": 18,
+    "ayah": 44,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْحَقِّ ۚ",
+    "variantText": "الْحَقِّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P298-DOCX-P298-R01006",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D298-الحق-w2",
+        "variantId": "v-D298-الحق-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P298-R01006",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي.",
+        "sourceText": "﴿الْحَقِّ﴾: بالرفع ﴿الْحَقُّ﴾ للجمهور؛ وبالخفض ﴿الْحَقِّ﴾ لأبي عمرو والكسائي."
+      }
+    ],
+    "description": "بالخفض",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P298-DOCX-P298-R01007-1",
+    "surah": 18,
+    "ayah": 44,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عُقْبًۭا",
+    "variantText": "عُقُبًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P298-DOCX-P298-R01007",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D298-عقبا-w2",
+        "variantId": "v-D298-عقبا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P298-R01007",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي.",
+        "sourceText": "﴿عُقْبٗا﴾: بسكون القاف لعاصم وحمزة وخلف؛ وبضم القاف ﴿عُقُبًا﴾ للباقين."
+      }
+    ],
+    "description": "بضم القاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P298-DOCX-P298-R01008-1",
+    "surah": 18,
+    "ayah": 45,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيَـٰحُ ۗ",
+    "variantText": "الرِّيحُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P298-DOCX-P298-R01008",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D298-الرياح-w2",
+        "variantId": "v-D298-الرياح-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P298-R01008",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي. Bare خلف is Q06; Q10 omitted unless explicitly خلف العاشر.",
+        "sourceText": "﴿الرِّيَـٰحُ﴾: بالجمع للجمهور؛ وبالإفراد ﴿الرِّيحُ﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بالإفراد",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

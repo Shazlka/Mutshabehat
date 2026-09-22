@@ -15,43 +15,85 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06",
-        "action": "إمالة الهاء والياء"
-      },
-      {
-        "authorityId": "Q07",
-        "action": "إمالة الهاء والياء"
-      },
-      {
         "authorityId": "Q01-R02",
-        "action": "إمالة الياء وتقليل الهاء"
+        "action": "تقليل الهاء والياء"
       },
       {
-        "authorityId": "Q03",
+        "authorityId": "Q03-R01",
+        "action": "إمالة الهاء وفتح الياء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة الهاء وفتح الياء"
+      },
+      {
+        "authorityId": "Q04-R01",
         "action": "إمالة الياء وفتح الهاء"
       },
       {
-        "authorityId": "Q04",
-        "action": "إمالة الهاء وفتح الياء"
+        "authorityId": "Q04-R02",
+        "action": "إمالة الياء وفتح الهاء"
       },
       {
         "authorityId": "Q05-R01",
-        "action": "إمالة الهاء وفتح الياء"
+        "action": "إمالة الهاء والياء"
       },
       {
-        "authorityId": "Q08",
-        "action": "إمالة الهاء وفتح الياء"
+        "authorityId": "Q06-R01",
+        "action": "إمالة الياء وفتح الهاء"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الياء وفتح الهاء"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة الهاء والياء"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة الهاء والياء"
       }
     ],
     "readings": [
       {
-        "readingId": "Q06-R01",
+        "readingId": "Q01-R02",
+        "action": "تقليل الهاء والياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة الهاء وفتح الياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة الهاء وفتح الياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إمالة الياء وفتح الهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة الياء وفتح الهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
         "action": "إمالة الهاء والياء",
         "isDefault": true
       },
       {
+        "readingId": "Q06-R01",
+        "action": "إمالة الياء وفتح الهاء",
+        "isDefault": true
+      },
+      {
         "readingId": "Q06-R02",
-        "action": "إمالة الهاء والياء",
+        "action": "إمالة الياء وفتح الهاء",
         "isDefault": true
       },
       {
@@ -63,49 +105,9 @@
         "readingId": "Q07-R02",
         "action": "إمالة الهاء والياء",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "إمالة الياء وتقليل الهاء",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "إمالة الياء وفتح الهاء",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "إمالة الياء وفتح الهاء",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q04-R01",
-        "action": "إمالة الهاء وفتح الياء",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q04-R02",
-        "action": "إمالة الهاء وفتح الياء",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q05-R01",
-        "action": "إمالة الهاء وفتح الياء",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q08-R01",
-        "action": "إمالة الهاء وفتح الياء",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q08-R02",
-        "action": "إمالة الهاء وفتح الياء",
-        "isDefault": true
       }
     ],
-    "hasAlternate": true,
+    "hasAlternate": false,
     "text": "وقرأ قالون وابن كثير وحفص ويعقوب بفتح الهاء والياء. ولورش في الهاء الفتح والتقليل مع إمالة الياء، ولابن وردان خلف في إمالة الهاء.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
@@ -126,13 +128,22 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06-R01",
+        "authorityId": "Q08-R01",
+        "action": "السكت على الحروف المقطعة"
+      },
+      {
+        "authorityId": "Q08-R02",
         "action": "السكت على الحروف المقطعة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q06-R01",
+        "readingId": "Q08-R01",
+        "action": "السكت على الحروف المقطعة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
         "action": "السكت على الحروف المقطعة",
         "isDefault": true
       }
@@ -158,7 +169,11 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03",
+        "authorityId": "Q03-R01",
+        "action": "إدغام الدال في الذال"
+      },
+      {
+        "authorityId": "Q03-R02",
         "action": "إدغام الدال في الذال"
       },
       {
@@ -166,15 +181,23 @@
         "action": "إدغام الدال في الذال"
       },
       {
-        "authorityId": "Q06",
+        "authorityId": "Q04-R02",
         "action": "إدغام الدال في الذال"
       },
       {
-        "authorityId": "Q07",
+        "authorityId": "Q06-R01",
         "action": "إدغام الدال في الذال"
       },
       {
-        "authorityId": "Q08-R01",
+        "authorityId": "Q06-R02",
+        "action": "إدغام الدال في الذال"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام الدال في الذال"
+      },
+      {
+        "authorityId": "Q07-R02",
         "action": "إدغام الدال في الذال"
       }
     ],
@@ -191,6 +214,11 @@
       },
       {
         "readingId": "Q04-R01",
+        "action": "إدغام الدال في الذال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
         "action": "إدغام الدال في الذال",
         "isDefault": true
       },
@@ -213,14 +241,9 @@
         "readingId": "Q07-R02",
         "action": "إدغام الدال في الذال",
         "isDefault": true
-      },
-      {
-        "readingId": "Q08-R01",
-        "action": "إدغام الدال في الذال",
-        "isDefault": false
       }
     ],
-    "hasAlternate": true,
+    "hasAlternate": false,
     "text": "وقرأ الباقون بالإظهار، ولابن وردان وجه ثانٍ بالإظهار.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
@@ -455,18 +478,6 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q01-R02",
-        "action": "إبدال الهمز"
-      },
-      {
-        "authorityId": "Q03-R02",
-        "action": "إبدال الهمز"
-      },
-      {
-        "authorityId": "Q08",
-        "action": "إبدال الهمز"
-      },
-      {
         "authorityId": "Q03-R02",
         "action": "إبدال الهمزة"
       },
@@ -480,26 +491,6 @@
       }
     ],
     "readings": [
-      {
-        "readingId": "Q01-R02",
-        "action": "إبدال الهمز",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "إبدال الهمز",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q08-R01",
-        "action": "إبدال الهمز",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q08-R02",
-        "action": "إبدال الهمز",
-        "isDefault": true
-      },
       {
         "readingId": "Q03-R02",
         "action": "إبدال الهمزة",
@@ -989,18 +980,6 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q03",
-        "action": "تقليل"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -1011,9 +990,40 @@
       {
         "authorityId": "Q03-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -1031,31 +1041,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
         "action": "إمالة",
         "isDefault": true
       }
@@ -1080,23 +1065,41 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q03",
-        "action": "تقليل"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -1115,21 +1118,6 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
         "isDefault": true
       }
     ],

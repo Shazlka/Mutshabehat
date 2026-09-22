@@ -301,7 +301,7 @@
       "Q06-R02"
     ],
     "locusId": "L306-تساقط-1",
-    "locusType": "word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
         "id": "s-L306-تساقط-1-w2",
@@ -311,6 +311,23 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      },
+      {
+        "id": "s-ext-p306-tasaq",
+        "variantId": "v-L306-تساقط-1-w2",
+        "sourceName": "Quranpedia",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "verificationNotes": "تظهر صفحة اختلاف القراءات الوجهين تَسَاقَطْ وتَسَّاقَطْ وتفصيل الرواة."
+      },
+      {
+        "id": "v-L306-تساقط-1-w2-QP",
+        "variantId": "v-L306-تساقط-1-w2",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "sourceText": "قراءة تساقط في مريم 25",
+        "verificationNotes": "مرجع مستقل للوجه والأداء."
       }
     ],
     "description": "بفتح التاء وتخفيف السين وفتح القاف",
@@ -319,6 +336,13 @@
       {
         "source": "SH",
         "text": "وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      }
+    ],
+    "performanceNote": "وجه خلف عن حمزة الموافق للرسم المنقول في المصدر",
+    "sourceNotes": [
+      {
+        "sourceReference": "DOCX-P306-R01116",
+        "sourceText": "فيها ٤ قراءات: حمزة يقرأ تَسَّاقَطْ، والمجموعة الأخرى تَسْقُطْ؛ وورد اسم خلف صراحة في المصدر وفق قاعدة المشروع."
       }
     ]
   },
@@ -330,7 +354,7 @@
     "endToken": 5,
     "operation": "REPLACE",
     "hafsText": "تُسَـٰقِطْ",
-    "variantText": "تَّسَّٰقَطْ",
+    "variantText": "تَسَّاقَطْ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -345,17 +369,15 @@
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
       "Q07-R01",
       "Q07-R02",
       "Q08-R01",
-      "Q08-R02",
-      "Q09-R01",
-      "Q09-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q08-R02"
     ],
     "locusId": "L306-تساقط-1",
-    "locusType": "word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
         "id": "s-L306-تساقط-1-w3",
@@ -365,6 +387,23 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      },
+      {
+        "id": "s-ext-p306-tasaq",
+        "variantId": "v-L306-تساقط-1-w3",
+        "sourceName": "Quranpedia",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "verificationNotes": "تظهر صفحة اختلاف القراءات الوجهين تَسَاقَطْ وتَسَّاقَطْ وتفصيل الرواة."
+      },
+      {
+        "id": "v-L306-تساقط-1-w3-QP",
+        "variantId": "v-L306-تساقط-1-w3",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "sourceText": "قراءة تساقط في مريم 25",
+        "verificationNotes": "مرجع مستقل للوجه والأداء."
       }
     ],
     "description": "بفتح التاء وتشديد السين وفتح القاف",
@@ -373,6 +412,13 @@
       {
         "source": "SH",
         "text": "وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      }
+    ],
+    "performanceNote": "وجه حمزة في المصدر بفتح التاء وتشديد السين",
+    "sourceNotes": [
+      {
+        "sourceReference": "DOCX-P306-R01116",
+        "sourceText": "فيها ٤ قراءات: حمزة يقرأ تَسَّاقَطْ، والمجموعة الأخرى تَسْقُطْ؛ وورد اسم خلف صراحة في المصدر وفق قاعدة المشروع."
       }
     ]
   },
