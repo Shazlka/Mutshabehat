@@ -2759,7 +2759,7 @@ export default function Mushaf1441Viewer({
     return (
       <div
         dir="rtl"
-        className={`relative select-none overflow-hidden ${currentThemeTokens.pageBorderClass} ${currentThemeTokens.pageShadowClass} [-webkit-touch-callout:none] sm:rounded-[10px] ${layout === 'right' ? 'sm:rounded-l-[3px]' : layout === 'left' ? 'sm:rounded-r-[3px]' : ''}`}
+        className={`relative select-none overflow-visible sm:overflow-hidden ${currentThemeTokens.pageBorderClass} ${currentThemeTokens.pageShadowClass} [-webkit-touch-callout:none] sm:rounded-[10px] ${layout === 'right' ? 'sm:rounded-l-[3px]' : layout === 'left' ? 'sm:rounded-r-[3px]' : ''}`}
         style={{
           backgroundColor: currentThemeTokens.pageBg,
           width: layout === 'single' ? MUSHAF_PAGE_WIDTH : MUSHAF_SPREAD_PAGE_WIDTH,
