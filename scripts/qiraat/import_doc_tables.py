@@ -3170,6 +3170,17 @@ def checked_inline_farsh(page, lines):
             'anchor': 'وَلَا تَبَرَّجْنَ', 'ayah': 33, 'variantText': 'وَلَا تَّبَرَّجْنَ',
             'readerGroup': 'البزي', 'sourceFragment': 'وبتشديد التاء وصلاً ﴿وَلَا تَّبَرَّجْنَ﴾ للبزي',
         }],
+        491: [{
+            'anchor': 'جِئْتُكُم', 'ayah': 24, 'variantText': 'جِئْنَاكُمْ',
+            'readerGroup': 'أبو جعفر', 'sourceFragment': 'بنون العظمة ﴿جِئْنَاكُمْ﴾ لأبي جعفر',
+        }],
+        492: [{
+            'anchor': 'نُقَيِّضْ', 'ayah': 36, 'variantText': 'يُقَيِّضْ',
+            'readerGroup': 'يعقوب', 'sourceFragment': 'وبياء الغيب ﴿يُقَيِّضْ﴾ ليعقوب',
+        }, {
+            'anchor': 'وَسْـَٔلْ', 'ayah': 45, 'variantText': 'وَسَلْ',
+            'readerGroup': 'ابن كثير، الكسائي، خلف', 'sourceFragment': 'بنقل الهمزة ﴿وَسَلْ﴾ لابن كثير، والكسائي، وخلف',
+        }],
         572: [{
             'anchor': 'تَقُولَ', 'ayah': 5, 'variantText': 'تَقَوَّلَ',
             'readerGroup': 'يعقوب', 'sourceFragment': 'بفتح التاء والقاف وتشديد الواو المفتوحة ﴿تَقَوَّلَ﴾ ليعقوب',

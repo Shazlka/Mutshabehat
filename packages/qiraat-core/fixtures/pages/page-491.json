@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "v-D491-جيتكم-w2",
+    "surah": 43,
+    "ayah": 24,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "جِئْتُكُم",
+    "variantText": "جِئْنَاكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D491-جيتكم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D491-جيتكم-w2",
+        "variantId": "v-D491-جيتكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 491، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿جِئْتُكُم﴾: بالتاء للمتكلم للجمهور (مع إبدال الهمزة للسوسي)؛ بنون العظمة ﴿جِئْنَاكُمْ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بنون العظمة ﴿جِئْنَاكُمْ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
