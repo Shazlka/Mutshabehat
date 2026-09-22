@@ -111,5 +111,39 @@
     "description": "بتقديم الألف على الهمزة مع المد المتصل",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D482-سنريهم",
+    "surah": 41,
+    "ayah": 53,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "سَنُرِيهِمْ",
+    "variantText": "سَنُرِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D482-سنريهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D482-سنريهم",
+        "variantId": "v-D482-سنريهم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P482-R02866",
+        "verificationNotes": "وجه صريح ليعقوب، anchor حقيقي.",
+        "sourceText": "سَنُرِيهِمْ ... بضم الهاء ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء ليعقوب",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
