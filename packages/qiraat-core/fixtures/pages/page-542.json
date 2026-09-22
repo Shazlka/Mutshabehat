@@ -75,9 +75,7 @@
       "Q07-R01",
       "Q07-R02",
       "Q08-R01",
-      "Q08-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q08-R02"
     ],
     "locusId": "AUDIT-DOCX-P542-R03434-18e50e231f",
     "locusType": "word_variant",
@@ -89,7 +87,7 @@
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P542-R03434",
         "sourceText": "بفتح التاء والظاء مشددة وتخفيف الهاء وألف بعد الظاء ﴿يَظَّاهَرُونَ﴾: ابن عامر، حمزة، الكسائي، أبو جعفر، خلف.",
-        "verificationNotes": "سطر المصدر يعيّن الوجه؛ طوبق مع التوكن ومع الجهاز المستقل."
+        "verificationNotes": "سطر المصدر يعيّن الوجه؛ طوبق مع التوكن ومع الجهاز المستقل. لفظ «خلف» أُسند إلى خلف عن حمزة وفق قاعدة المشروع."
       },
       {
         "id": "s-v-AUDIT-DOCX-P542-R03434-18e50e231f-QP",
@@ -110,5 +108,114 @@
         "url": "https://quranpedia.net/qiraat/al-mujadila/2"
       }
     ]
+  },
+  {
+    "surah": 58,
+    "ayah": 2,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "ٱلَّـٰٓـِٔى",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "locusType": "performance_variant",
+    "wajhIndex": 1,
+    "id": "v-AUDIT-DOCX-P542-R03435-a7eb56bb8b",
+    "variantText": "اللآءِ",
+    "differenceType": "LETTER",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P542-R03435-a7eb56bb8b",
+    "description": "تحقيق الهمز أو تسهيله مع حذف الياء بحسب الرواية؛ وهو وجه «اللآءِ».",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03435-a7eb56bb8b",
+        "variantId": "v-AUDIT-DOCX-P542-R03435-a7eb56bb8b",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P542-R03435",
+        "sourceText": "الأوجه الأربعة السابقة (تحقيق الهمز بإثبات الياء / تحقيق الهمز بحذف الياء / تسهيل الهمز بمد وقصر وحذف الياء / تسهيله بمد وقصر وحذف الياء مع وجه إبداله ياءً ساكنة).",
+        "verificationNotes": "أُسندت الأوجه إلى القراء والرواة من جهاز القراءات العشر المستقل؛ السطر يشير إلى الأوجه الأربعة السابقة في المصدر."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03435-a7eb56bb8b-QP",
+        "variantId": "v-AUDIT-DOCX-P542-R03435-a7eb56bb8b",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/2",
+        "sourceText": "اللآءِ: قالون، قنبل، روح، رويس، ورش، البزي، الدوري عن أبي عمرو، السوسي، ابن وردان، ابن جمّاز.",
+        "verificationNotes": "المرجع الخارجي يورد الوجه والرواة صراحةً للآية 2 من المجادلة."
+      }
+    ],
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "اللآءِ: القراءات ذات حذف الياء.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/2"
+      }
+    ],
+    "performanceNote": "وجه لفظي مستقل: اللآءِ"
+  },
+  {
+    "surah": 58,
+    "ayah": 2,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "ٱلَّـٰٓـِٔى",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "locusType": "performance_variant",
+    "wajhIndex": 1,
+    "id": "v-AUDIT-DOCX-P542-R03435-15f7ff6848",
+    "variantText": "اللآيْ",
+    "differenceType": "LETTER",
+    "readingIds": [
+      "Q02-R01",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P542-R03435-15f7ff6848",
+    "description": "وجه إبدال الهمزة ياءً ساكنة مع المد المشبع؛ وهو وجه «اللآيْ».",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03435-15f7ff6848",
+        "variantId": "v-AUDIT-DOCX-P542-R03435-15f7ff6848",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P542-R03435",
+        "sourceText": "الأوجه الأربعة السابقة (تحقيق الهمز بإثبات الياء / تحقيق الهمز بحذف الياء / تسهيل الهمز بمد وقصر وحذف الياء / تسهيله بمد وقصر وحذف الياء مع وجه إبداله ياءً ساكنة).",
+        "verificationNotes": "أُسندت الأوجه إلى القراء والرواة من جهاز القراءات العشر المستقل؛ السطر يشير إلى الأوجه الأربعة السابقة في المصدر."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P542-R03435-15f7ff6848-QP",
+        "variantId": "v-AUDIT-DOCX-P542-R03435-15f7ff6848",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/2",
+        "sourceText": "اللآيْ: البزي، الدوري عن أبي عمرو، السوسي.",
+        "verificationNotes": "المرجع الخارجي يورد الوجه والرواة صراحةً للآية 2 من المجادلة."
+      }
+    ],
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "اللآيْ: البزي والدوري عن أبي عمرو والسوسي.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/2"
+      }
+    ],
+    "performanceNote": "وجه لفظي مستقل: اللآيْ"
   }
 ]

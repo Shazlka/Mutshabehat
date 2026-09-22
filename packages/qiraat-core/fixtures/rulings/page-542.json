@@ -144,14 +144,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إدغام صغير"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إدغام صغير"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إدغام صغير"
       }
     ],
     "readings": [
@@ -189,16 +181,6 @@
         "readingId": "Q07-R02",
         "action": "إدغام صغير",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إدغام صغير",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إدغام صغير",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
@@ -211,7 +193,7 @@
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P542-R03437",
         "sourceText": "الإدغام الصغير: ﴿قَد سَّمِعَ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي، وخلف.",
-        "verificationNotes": "لفظ خلف أُسند إلى خلف عن حمزة وفق قاعدة المشروع؛ وأضيف إدريس وإسحاق عن خلف العاشر لأن الجهاز المستقل يسمّيهما صراحةً."
+        "verificationNotes": "لفظ خلف أُسند إلى خلف عن حمزة وفق قاعدة المشروع؛ وأضيف إدريس وإسحاق عن خلف العاشر لأن الجهاز المستقل يسمّيهما صراحةً. لفظ «خلف» أُسند إلى خلف عن حمزة وفق قاعدة المشروع."
       },
       {
         "id": "s-QP-P542-R03437",

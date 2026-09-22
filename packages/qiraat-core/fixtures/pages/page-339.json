@@ -52,20 +52,16 @@
     "endToken": 2,
     "operation": "REPLACE",
     "hafsText": "مُّدْخَلًۭا",
-    "variantText": "مُّدْخَلًۭا",
+    "variantText": "مَدْخَلًا",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
-      "Q02-R01",
-      "Q02-R02",
-      "Q03-R01",
-      "Q03-R02",
-      "Q04-R01",
-      "Q04-R02",
-      "Q09-R01",
-      "Q09-R02"
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
     ],
     "locusId": "L339-مدخلا-1",
     "locusType": "word_variant",
@@ -80,7 +76,7 @@
         "sourceText": "SH: وَمُدْخَلاً اضْمُمْ لِحِمىً حِمَارٍ"
       }
     ],
-    "description": "بضم الميم",
+    "description": "بفتح الميم",
     "wajhIndex": 2,
     "evidence": [
       {
@@ -109,11 +105,10 @@
       "Q02-R02",
       "Q04-R01",
       "Q04-R02",
-      "Q05-R01",
       "Q08-R01",
       "Q08-R02",
-      "Q09-R01",
-      "Q09-R02"
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "L339-يدعون-1",
     "locusType": "word_variant",
@@ -138,6 +133,51 @@
       {
         "source": "D",
         "text": "وَخَاطِبْ تَدْعُونَ احْوِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L339-لهو-1-w2",
+    "surah": 22,
+    "ayah": 58,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "لَهُوَ",
+    "variantText": "لَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L339-لهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L339-لهو-1-w2",
+        "variantId": "v-L339-لهو-1-w2",
+        "sourceName": "وثيقة استخراج القراءات العشر",
+        "sourceType": "manual_extraction",
+        "sourceReference": "DOCX-P339-R01479",
+        "verificationNotes": "ثبتت على الكلمة الحقيقية في صفحة المصحف 339؛ بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر.",
+        "sourceText": "﴿لَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "DOCX-P339-R01479",
+        "text": "﴿لَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
       }
     ]
   }
