@@ -68,5 +68,71 @@
     "description": "بقطع الهمزة مفتوحة وسكون التاء وتخفيف الباء",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D376-تنزل-1",
+    "surah": 26,
+    "ayah": 221,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَنَزَّلُ",
+    "variantText": "تَّنَزَّلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "v-D376-تنزل-1",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D376-تنزل-1",
+        "variantId": "v-D376-تنزل-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P376-R01866",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتشديد التاء وصلاً: البزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً: البزي.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D376-تنزل-2",
+    "surah": 26,
+    "ayah": 222,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَنَزَّلُ",
+    "variantText": "تَّنَزَّلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "v-D376-تنزل-2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D376-تنزل-2",
+        "variantId": "v-D376-تنزل-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P376-R01866",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتشديد التاء وصلاً: البزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً: البزي.",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
