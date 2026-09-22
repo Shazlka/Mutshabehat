@@ -1171,7 +1171,6 @@ export default function Mushaf1441Viewer({
       .filter((page) => page >= MIN_PAGE && page <= MAX_PAGE)
 
     void Promise.all(pages.map((page) => fetchQiraatForPage(page, qiraatIncludeReviewed)))
-      .then(() => Promise.all(pages.map((page) => fetchResolvedQiraatForPage(page))))
       .then(() => {
         if (cancelled) return
         // One state publication for the whole mounted window avoids rerendering every page slot as
@@ -1179,6 +1178,10 @@ export default function Mushaf1441Viewer({
         setQiraatVariantsByPage(qiraatVariantsByPageRef.current)
         setQiraatRulesByPage(qiraatRulesByPageRef.current)
         setQiraatRulingsByPage(qiraatRulingsByPageRef.current)
+        // Resolved annotations are an optional, mutable authoring/QA enhancement. They must never
+        // hold up immutable fixture-backed variants/rulings (or make their markers disappear when
+        // the supplemental endpoint is unavailable).
+        void Promise.all(pages.map((page) => fetchResolvedQiraatForPage(page))).catch(() => {})
       })
       .catch(() => {})
 

@@ -213,10 +213,18 @@ def test_qiraat_colours_do_not_wait_for_a_route_handler_round_trip() -> None:
         )
         page = context.new_page()
         qiraat_api_requests: list[str] = []
+        resolved_qiraat_requests: list[str] = []
 
         def reject_qiraat_api(route) -> None:
-            qiraat_api_requests.append(route.request.url)
-            route.abort()
+            # The immutable fixture payload is the critical reader path. The
+            # resolved endpoint is an optional mutable annotation enhancement
+            # sharing this URL prefix, and may fail without hiding fixtures.
+            if route.request.url.split("?", 1)[0].endswith("/qiraat-resolved"):
+                resolved_qiraat_requests.append(route.request.url)
+                route.abort()
+            else:
+                qiraat_api_requests.append(route.request.url)
+                route.abort()
 
         page.route("**/api/mushaf-1441/qiraat**", reject_qiraat_api)
         _open_mushaf(page, 62)
@@ -229,6 +237,7 @@ def test_qiraat_colours_do_not_wait_for_a_route_handler_round_trip() -> None:
 
         assert qiraat_words.count() > 0
         assert not qiraat_api_requests
+        assert resolved_qiraat_requests, "test must prove fixture markers survive an unavailable optional resolved endpoint"
 
         context.close()
         browser.close()

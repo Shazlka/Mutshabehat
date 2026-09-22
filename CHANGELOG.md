@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-09-22 — Qiraat frontend fixture-rendering resilience
+
+- Added a read-only corpus-wide frontend contract validator for all 584 available
+  fixture pages. It verifies reader and narrator filters, contextual Usul spans,
+  and multi-rule markers through the same view-layer functions used by the
+  Mushaf.
+- Decoupled optional `qiraat-resolved` annotation loading from immutable fixture
+  publication, so an unavailable supplemental endpoint cannot hide valid
+  Qiraat markers. Added browser coverage that aborts this optional endpoint and
+  still requires fixture markers to render.
+- Verification: `npm run qiraat:frontend:validate` (2,889 variants, 9,899
+  rulings, 73,326 ruling reader/rawi checks, 2,601 contextual rulings, 1,290
+  multi-rule token positions); `BASE=http://127.0.0.1:3000 python3 -m pytest -q
+  tests/test_mushaf_page_performance.py -k qiraat` (2 passed). No database or
+  Qiraat fixture data changed.
+
 ## 2026-09-22 — Qiraat source-preserving attribution audit
 
 - Expanded the deterministic 604-page Qiraat audit to validate category labels,
