@@ -19,7 +19,7 @@
       "Q09-R02"
     ],
     "locusId": "AUDIT-P272-16-43-7-9653e7fd",
-    "locusType": "multi_word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
         "id": "s-DOCX-P272-R00701",
@@ -38,6 +38,15 @@
         "sourceReference": "https://jamharah.net/showthread.php?t=27567",
         "sourceText": "At an-Nahl 16:43, Hamza and Yaqub read يُوحَى إِلَيْهُم; the cited source row explicitly names both readers.",
         "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      },
+      {
+        "id": "s-v-AUDIT-P272-16-43-7-9653e7fd-QP",
+        "variantId": "v-AUDIT-P272-16-43-7-9653e7fd",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/43",
+        "sourceText": "بياء الغيب المضمومة مع ضم هاء ﴿إِلَيْهُم﴾: حمزة، يعقوب.",
+        "verificationNotes": "مرجع مستقل للوجه."
       }
     ],
     "description": "بياء الغيب المضمومة مع ضم هاء ﴿إِلَيْهُم﴾: حمزة، يعقوب.",
@@ -48,7 +57,8 @@
         "text": "At an-Nahl 16:43, Hamza and Yaqub read يُوحَى إِلَيْهُم; the cited source row explicitly names both readers.",
         "url": "https://jamharah.net/showthread.php?t=27567"
       }
-    ]
+    ],
+    "performanceNote": "بياء الغيب المضمومة وضم هاء إليهم"
   },
   {
     "id": "v-AUDIT-P272-16-44-10-93a5aad2",
@@ -281,5 +291,122 @@
     "description": "بتاء التأنيث",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P272-16-43-7-FARSH",
+    "surah": 16,
+    "ayah": 43,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نُّوحِىٓ إِلَيْهِمْ ۚ",
+    "variantText": "يُوحَى إِلَيْهِم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P272-16-43-7-FARSH",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P272-16-43-7-FARSH",
+        "variantId": "v-AUDIT-P272-16-43-7-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00700",
+        "sourceText": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P272-16-43-7-FARSH-EXT",
+        "variantId": "v-AUDIT-P272-16-43-7-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/43",
+        "sourceText": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+        "url": "https://quranpedia.net/qiraat/an-nahl/43"
+      }
+    ],
+    "performanceNote": "بياء الغيب المضمومة وفتح الحاء"
+  },
+  {
+    "id": "v-AUDIT-P272-16-43-9-FARSH",
+    "surah": 16,
+    "ayah": 43,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فَسْـَٔلُوٓا۟",
+    "variantText": "فَسَلُوا",
+    "differenceType": "HAMZA_TRANSFER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P272-16-43-9-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P272-16-43-9-FARSH",
+        "variantId": "v-AUDIT-P272-16-43-9-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00702",
+        "sourceText": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P272-16-43-9-FARSH-EXT",
+        "variantId": "v-AUDIT-P272-16-43-9-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/43",
+        "sourceText": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+        "url": "https://quranpedia.net/qiraat/an-nahl/43"
+      }
+    ]
   }
 ]

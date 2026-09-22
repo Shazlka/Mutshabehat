@@ -316,5 +316,271 @@
     "notes": "مع الإمالة",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p276-IMALAH_TAQLIL-رءا_الذين-5",
+    "pageNumber": 276,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 85,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 85,
+    "baseText": "رَءَا ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "DOCX-P276-R00750؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/85 و/86؛ خلف المجرد = Q06."
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p276-IMALAH_TAQLIL-رءا_الذين-6",
+    "pageNumber": 276,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 86,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 86,
+    "baseText": "رَءَا ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "DOCX-P276-R00750؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/85 و/86؛ خلف المجرد = Q06."
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
