@@ -165,9 +165,7 @@
       "Q07-R01",
       "Q07-R02",
       "Q09-R01",
-      "Q09-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q09-R02"
     ],
     "locusId": "DOCX-P526-6-R03290-12-1",
     "locusType": "word_variant",
@@ -308,9 +306,7 @@
       "Q06-R01",
       "Q06-R02",
       "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q07-R02"
     ],
     "locusId": "DOCX-P526-6-R03295-23-23",
     "locusType": "performance_variant",

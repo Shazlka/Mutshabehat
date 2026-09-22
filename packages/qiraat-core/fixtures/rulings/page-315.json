@@ -23,10 +23,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -53,16 +49,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -139,10 +125,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -153,11 +135,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -190,10 +167,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -220,16 +193,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -308,10 +271,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -338,16 +297,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -395,10 +344,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q03",
         "action": "إمالة"
       },
@@ -425,16 +370,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -511,10 +446,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -525,11 +456,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -591,10 +517,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -605,11 +527,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -673,10 +590,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -703,16 +616,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -881,10 +784,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -895,11 +794,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -988,11 +882,6 @@
         "condition": "وقفًا"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل",
         "condition": "وقفًا"
@@ -1021,16 +910,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1112,11 +991,6 @@
         "condition": "وقفًا"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل",
         "condition": "وقفًا"
@@ -1145,16 +1019,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1203,10 +1067,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -1229,16 +1089,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1276,10 +1126,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -1306,16 +1152,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1363,10 +1199,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -1389,16 +1221,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1436,10 +1258,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q03",
         "action": "إمالة"
       },
@@ -1466,16 +1284,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1521,10 +1329,6 @@
       {
         "authorityId": "Q04-R01",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -1540,16 +1344,6 @@
       },
       {
         "readingId": "Q04-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       }
@@ -1582,10 +1376,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -1612,16 +1402,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1698,10 +1478,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -1712,11 +1488,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -1780,10 +1551,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -1810,16 +1577,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -1896,10 +1653,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -1910,11 +1663,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -1947,10 +1695,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       },
@@ -1977,16 +1721,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -2096,14 +1830,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -2126,16 +1852,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },

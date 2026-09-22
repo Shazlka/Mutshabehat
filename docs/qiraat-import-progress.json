@@ -23601,40 +23601,32 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Deep audited pages 311-314, 519-522, and 559-562; removed bare-خلف Q10 leakage, added the page-314 IDGHAM_SAGHIR locus, Yaqub WAQF_RASM loci on page 559, and the verified Susi performance face on page 562.",
+  "latestSourceCoverageNote": "Deep audited pages 315-318 and 523-526; no new variants were needed, and bare-خلف Q10 leakage was corrected to Q06 while preserving explicitly supported Q10 remainder faces.",
   "latestLocalImportCycle": {
-    "id": "deep-audit-p311-p314-p519-p522-p559-p562",
+    "id": "deep-audit-p315-p318-p523-p526",
     "pages": [
-      311,
-      312,
-      313,
-      314,
-      519,
-      520,
-      521,
-      522,
-      559,
-      560,
-      561,
-      562
+      315,
+      316,
+      317,
+      318,
+      523,
+      524,
+      525,
+      526
     ],
-    "variantsAdded": 1,
-    "newRulingLoci": 5,
-    "rulingRecordsNetChanged": 5,
-    "correctedRulingLoci": 40,
+    "variantsAdded": 0,
+    "newRulingLoci": 0,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 94,
     "perPageVariants": {
-      "311": 0,
-      "312": 0,
-      "313": 0,
-      "314": 0,
-      "519": 0,
-      "520": 0,
-      "521": 0,
-      "522": 0,
-      "559": 0,
-      "560": 0,
-      "561": 0,
-      "562": 1
+      "315": 0,
+      "316": 0,
+      "317": 0,
+      "318": 0,
+      "523": 0,
+      "524": 0,
+      "525": 0,
+      "526": 0
     },
     "status": "locally verified; deployment pending",
     "validation": {
@@ -23646,7 +23638,7 @@
       "build": "pending",
       "importerIdempotent": true
     },
-    "details": "Page 314 gained one IDGHAM_SAGHIR locus and a Q04-R02 merge; page 559 gained four Yaqub WAQF_RASM loci; page 562 gained one Susi performance face. Bare خلف Q10 leakage was corrected across pages 311-313 and 519-522."
+    "details": "Attribution corrections only. Bare خلف is Q06; Q10 remains only where independent source/remainder evidence supports it. All changes are additive-safe corrections with no duplicate loci."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -23930,5 +23922,51 @@
       "importerIdempotent": true
     },
     "details": "Pages 307-310 added 13 faces. Pages 547-550 added 14 net faces and corrected bare-خلف imalah assignments. Pages 507-510 corrected 17 bare-خلف imalah loci. External source checks were used where available; all additions are token-backed."
+  },
+  "previousImportCycle311_314_519_522_559_562": {
+    "id": "deep-audit-p311-p314-p519-p522-p559-p562",
+    "pages": [
+      311,
+      312,
+      313,
+      314,
+      519,
+      520,
+      521,
+      522,
+      559,
+      560,
+      561,
+      562
+    ],
+    "variantsAdded": 1,
+    "newRulingLoci": 5,
+    "rulingRecordsNetChanged": 5,
+    "correctedRulingLoci": 40,
+    "perPageVariants": {
+      "311": 0,
+      "312": 0,
+      "313": 0,
+      "314": 0,
+      "519": 0,
+      "520": 0,
+      "521": 0,
+      "522": 0,
+      "559": 0,
+      "560": 0,
+      "561": 0,
+      "562": 1
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2839,
+      "usulRulings": 9894,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "pending",
+      "build": "pending",
+      "importerIdempotent": true
+    },
+    "details": "Page 314 gained one IDGHAM_SAGHIR locus and a Q04-R02 merge; page 559 gained four Yaqub WAQF_RASM loci; page 562 gained one Susi performance face. Bare خلف Q10 leakage was corrected across pages 311-313 and 519-522."
   }
 }
