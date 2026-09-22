@@ -1,1 +1,262 @@
-[]
+[
+  {
+    "id": "r-p596-IDGHAM_SAGHIR-92-14-3",
+    "pageNumber": 596,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 92,
+    "ayah": 14,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 14,
+    "baseText": "تَلَظَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "إدغام صغير وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إدغام صغير وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  },
+  {
+    "id": "r-p596-TAGHYIR_HAMZ-92-18-2",
+    "pageNumber": 596,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 92,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 18,
+    "baseText": "يُؤْتِى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة واواً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة واواً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة واواً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة واواً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الهمزة واواً وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الهمزة واواً وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  },
+  {
+    "id": "r-p596-TAGHLIZ_LAM-92-15-2",
+    "pageNumber": 596,
+    "category": "TAGHLIZ_LAM",
+    "categoryAr": "تغليظ اللامات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 92,
+    "ayah": 15,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 15,
+    "baseText": "يَصْلَىٰهَآ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تغليظ اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تغليظ اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  },
+  {
+    "id": "r-p596-IMALAH_TAQLIL-93-1-1",
+    "pageNumber": 596,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 93,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "وَٱلضُّحَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  },
+  {
+    "id": "r-p596-TARQIQ_RA-94-2-3",
+    "pageNumber": 596,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 94,
+    "ayah": 2,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 2,
+    "baseText": "وِزْرَكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  }
+]

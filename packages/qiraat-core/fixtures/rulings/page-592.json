@@ -1,1 +1,96 @@
-[]
+[
+  {
+    "id": "r-sql592-taghliz-yusla",
+    "pageNumber": 592,
+    "category": "TAGHLIZ_LAM",
+    "categoryAr": "TAGHLIZ_LAM",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 87,
+    "ayah": 12,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 12,
+    "baseText": "يَصْلَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تغليظ اللام"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تغليظ اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تغليظ اللام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تغليظ اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  },
+  {
+    "id": "r-sql592-imala-kubra",
+    "pageNumber": 592,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "IMALAH_TAQLIL",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 87,
+    "ayah": 12,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 12,
+    "baseText": "ٱلْكُبْرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  }
+]

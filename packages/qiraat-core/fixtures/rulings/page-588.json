@@ -1,1 +1,446 @@
-[]
+[
+  {
+    "id": "r-SRC588-SAKT-14-2",
+    "pageNumber": 588,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 14,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 14,
+    "baseText": "بَلْ ۜ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q05",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R02",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "سكت حفص على اللام",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC588-IDGHAM_KABIR-14-2",
+    "pageNumber": 588,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 14,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 14,
+    "baseText": "بَلْ ۜ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q02",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q02",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q03",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q03",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q04",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q04",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q05",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q05",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q09",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q09",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إدغام اللام في الراء"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "الإدغام المحض حسب المصدر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC588-IMALAH_TAQLIL-14-3",
+    "pageNumber": 588,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 14,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 14,
+    "baseText": "رَانَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إمالة ألف ران",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC588-TAGHYIR_HAMZ-23-2",
+    "pageNumber": 588,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 23,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 23,
+    "baseText": "ٱلْأَرَآئِكِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "النقل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "النقل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "نقل ورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC588-SAKT-23-2",
+    "pageNumber": 588,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 23,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 23,
+    "baseText": "ٱلْأَرَآئِكِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "السكت لحمزة وإدريس",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC588-WAQF_HAMZA-23-2",
+    "pageNumber": 588,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 23,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 23,
+    "baseText": "ٱلْأَرَآئِكِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "تسهيل وإبدال"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "تسهيل وإبدال"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "تسهيل وإبدال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "تسهيل وإبدال",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "وقف حمزة",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  }
+]

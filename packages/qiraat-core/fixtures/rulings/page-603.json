@@ -1,1 +1,174 @@
-[]
+[
+  {
+    "id": "r-SQL603-IMALAH_TAQLIL-1-3",
+    "pageNumber": 603,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 109,
+    "ayah": 1,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 1,
+    "baseText": "ٱلْكَـٰفِرُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q03",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "إمالة/تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إمالة حمزة والكسائي وخلف وهشام وتقليل الدوري وورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL603-IMALAH_TAQLIL-1-2",
+    "pageNumber": 603,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 110,
+    "ayah": 1,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 1,
+    "baseText": "جَآءَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إمالة ابن ذكوان وحمزة وخلف العاشر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  }
+]

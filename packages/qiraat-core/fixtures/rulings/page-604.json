@@ -1,1 +1,107 @@
-[]
+[
+  {
+    "id": "r-SQL604-TAGHYIR_HAMZ-1-1",
+    "pageNumber": 604,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 112,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "قُلْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "النقل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "النقل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "النقل لورش في قل أعوذ",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL604-SAKT-1-1",
+    "pageNumber": 604,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 112,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "قُلْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "السكت لحمزة وخلف العاشر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL604-IMALAH_TAQLIL-1-4",
+    "pageNumber": 604,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 114,
+    "ayah": 1,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 1,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إمالة دوري أبي عمرو",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  }
+]

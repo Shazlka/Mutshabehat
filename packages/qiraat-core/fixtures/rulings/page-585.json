@@ -1,1 +1,243 @@
-[]
+[
+  {
+    "id": "r-SRC585-IMALAH_TAQLIL-1-2",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 1,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 1,
+    "baseText": "وَتَوَلَّىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "رؤوس آي سورة عبس حسب المصدر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC585-TARQIQ_RA-16-1",
+    "pageNumber": 585,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 16,
+    "baseText": "كِرَامٍۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "ترقيق الراء"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترقيق الراء لورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC585-TAGHYIR_HAMZ-34-3",
+    "pageNumber": 585,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 34,
+    "baseText": "ٱلْمَرْءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "النقل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "النقل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "نقل الهمزة لورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC585-SAKT-34-3",
+    "pageNumber": 585,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 34,
+    "baseText": "ٱلْمَرْءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "السكت لحمزة وإدريس كما في المصدر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC585-WAQF_HAMZA-34-3",
+    "pageNumber": 585,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 34,
+    "baseText": "ٱلْمَرْءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "النقل عند الوقف"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "النقل عند الوقف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "النقل عند الوقف",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "النقل عند الوقف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "وقف حمزة بالنقل",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  }
+]

@@ -1,1 +1,208 @@
-[]
+[
+  {
+    "id": "r-sql589-quran-naql",
+    "pageNumber": 589,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "TAGHYIR_HAMZ",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 21,
+    "baseText": "ٱلْقُرْءَانُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "نقل الهمزة"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "نقل الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "نقل الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "نقل الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  },
+  {
+    "id": "r-sql589-quri-badal",
+    "pageNumber": 589,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "TAGHYIR_HAMZ",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 21,
+    "baseText": "قُرِئَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  },
+  {
+    "id": "r-sql589-quran-sakt",
+    "pageNumber": 589,
+    "category": "SAKT",
+    "categoryAr": "SAKT",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 21,
+    "baseText": "ٱلْقُرْءَانُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  },
+  {
+    "id": "r-sql589-meem",
+    "pageNumber": 589,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 21,
+    "baseText": "عَلَيْهِمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "صلة ميم الجمع"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "صلة ميم الجمع"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "صلة ميم الجمع"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "صلة ميم الجمع"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  }
+]

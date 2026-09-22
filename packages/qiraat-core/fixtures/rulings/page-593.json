@@ -1,1 +1,354 @@
-[]
+[
+  {
+    "id": "r-p593-YAAT_ZAWAID-89-9-5",
+    "pageNumber": 593,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 89,
+    "ayah": 9,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 9,
+    "baseText": "بِٱلْوَادِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إثبات الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  },
+  {
+    "id": "r-p593-YAAT_IDAFA-89-15-10",
+    "pageNumber": 593,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 89,
+    "ayah": 15,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 15,
+    "baseText": "رَبِّىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "فتح ياء الإضافة وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "فتح ياء الإضافة وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "فتح ياء الإضافة وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "فتح ياء الإضافة وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "فتح ياء الإضافة وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "فتح ياء الإضافة وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "فتح ياء الإضافة وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "فتح ياء الإضافة وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "فتح ياء الإضافة وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "فتح ياء الإضافة وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  },
+  {
+    "id": "r-p593-YAAT_ZAWAID-89-15-11",
+    "pageNumber": 593,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 89,
+    "ayah": 15,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 15,
+    "baseText": "أَكْرَمَنِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q01-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إثبات الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  },
+  {
+    "id": "r-p593-YAAT_ZAWAID-89-16-10",
+    "pageNumber": 593,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 89,
+    "ayah": 16,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 16,
+    "baseText": "أَهَـٰنَنِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء وصلاً ووقفاً"
+      },
+      {
+        "authorityId": "Q01-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إثبات الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وصلاً ووقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T13:50:00.000Z",
+    "updatedAt": "2026-09-22T13:50:00.000Z",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.source.sql | usul record; source page labels mapped to actual Mushaf token page."
+    ]
+  }
+]

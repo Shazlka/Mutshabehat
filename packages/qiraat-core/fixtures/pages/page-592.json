@@ -114,5 +114,145 @@
     "description": "ضم الياء ورفع لَاغِيَةٌ",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-SQL-P592-87-16-yuthir",
+    "surah": 87,
+    "ayah": 16,
+    "startToken": 2,
+    "endToken": "2",
+    "operation": "REPLACE",
+    "hafsText": "تُؤْثِرُونَ",
+    "variantText": "يُؤْثِرُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "v-SQL-P592-87-16-yuthir",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-SQL-P592-87-16-yuthir-source",
+        "variantId": "v-SQL-P592-87-16-yuthir",
+        "sourceName": "qiraat_pages_585_604_full.source.sql",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "أبو عمرو وحده: بالياء.",
+        "verificationNotes": "موضع حقيقي وفق page-word fixture وإسناد قاعدة المصدر."
+      }
+    ],
+    "description": "الياء في تؤثرون لأبي عمرو",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SQL-P592-88-22-sin",
+    "surah": 88,
+    "ayah": 22,
+    "startToken": 3,
+    "endToken": "3",
+    "operation": "REPLACE",
+    "hafsText": "بِمُصَيْطِرٍ",
+    "variantText": "بِمُسَيْطِرٍ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q04-R01"
+    ],
+    "locusId": "v-SQL-P592-88-22-sin",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-SQL-P592-88-22-sin-source",
+        "variantId": "v-SQL-P592-88-22-sin",
+        "sourceName": "qiraat_pages_585_604_full.source.sql",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "قنبل وهشام: بالسين الخالصة.",
+        "verificationNotes": "موضع حقيقي وفق page-word fixture وإسناد قاعدة المصدر."
+      }
+    ],
+    "description": "السين الخالصة في مصيطر",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SQL-P592-88-4-tsla",
+    "surah": 88,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "تَصْلَىٰ",
+    "variantText": "تُصْلَىٰ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-SQL-P592-88-4-tsla",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-SQL-P592-88-4-tsla-source",
+        "variantId": "v-SQL-P592-88-4-tsla",
+        "sourceName": "qiraat_pages_585_604_full.source.sql",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "ضم التاء في تصلى لشعبة ويعقوب",
+        "verificationNotes": "موضع حقيقي في page-word fixture."
+      }
+    ],
+    "description": "ضم التاء في تصلى لشعبة ويعقوب",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SQL-P592-88-22-ishmam",
+    "surah": 88,
+    "ayah": 22,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "بِمُصَيْطِرٍ",
+    "variantText": "بِمُصَيْطِرٍ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-SQL-P592-88-22-ishmam",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-SQL-P592-88-22-ishmam-source",
+        "variantId": "v-SQL-P592-88-22-ishmam",
+        "sourceName": "qiraat_pages_585_604_full.source.sql",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "إشمام الصاد زايًا لحمزة ورويس وخلف العاشر",
+        "verificationNotes": "موضع حقيقي في page-word fixture."
+      }
+    ],
+    "description": "إشمام الصاد زايًا لحمزة ورويس وخلف العاشر",
+    "wajhIndex": 1,
+    "evidence": []
   }
 ]

@@ -29,8 +29,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 3081,
-    "usulRulings": 10036,
+    "variants": 3089,
+    "usulRulings": 10099,
     "fixturePagesPresent": 604,
     "fixtureRange": [
       1,
@@ -39,30 +39,30 @@
     "missingFixturePages": [],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Attached qiraat_pages_585_604.json imported across source pages 585-604. Added 24 source-backed wording/performance faces (including separate Hamza وصل/وقف faces on p604), mapped p593 ayah 89:25 to actual fixture page 594 and p598 ayah 98:6 to actual fixture page 599. All real-token anchors validated; validator passes. DB migration: none — fixture-only.",
-    "latestSourceCoverageNote": "Attached qiraat_pages_585_604.json imported across source pages 585-604. Added 24 source-backed wording/performance faces (including separate Hamza وصل/وقف faces on p604), mapped p593 ayah 89:25 to actual fixture page 594 and p598 ayah 98:6 to actual fixture page 599. All real-token anchors validated; validator passes. DB migration: none — fixture-only."
+    "sourceCoverageStatus": "Imported all safe, explicitly attributed usul rulings from qiraat_pages_585_604_full.sql for pages 585-604; additive fixture-only import with real Mushaf token anchors.",
+    "latestSourceCoverageNote": "Full SQL source import completed for pages 585-604: all safe explicit usul records were added and deduplicated. Universal or non-token performance statements without an existing category were not invented. Validator passes with 3089 variants and 10099 rulings."
   },
-  "sourceCoverageStatus": "Attached qiraat_pages_585_604.json imported across source pages 585-604. Added 24 source-backed wording/performance faces (including separate Hamza وصل/وقف faces on p604), mapped p593 ayah 89:25 to actual fixture page 594 and p598 ayah 98:6 to actual fixture page 599. All real-token anchors validated; validator passes. DB migration: none — fixture-only.",
+  "sourceCoverageStatus": "Imported all safe, explicitly attributed usul rulings from qiraat_pages_585_604_full.sql for pages 585-604; additive fixture-only import with real Mushaf token anchors.",
   "currentBatch": {
-    "id": "attached-pages-585-604",
+    "id": "sql-usul-pages-585-604",
     "pages": [
       585,
       604
     ],
-    "variantsAdded": 24,
-    "newRulingLoci": 0,
+    "variantsAdded": 8,
+    "newRulingLoci": 63,
     "mergedRulingLoci": 0,
     "readerAssignmentsAdded": 0,
     "status": "locally verified; deployment queued",
     "validation": {
-      "variants": 3081,
-      "usulRulings": 10036,
+      "variants": 3089,
+      "usulRulings": 10099,
       "validator": "passed",
       "importerIdempotent": false
     },
     "manualReview": {
       "remaining": [],
-      "notes": "No attached records were dropped; page labels 593 and 598 were mapped to actual Mushaf fixture pages 594 and 599 respectively."
+      "notes": "All safe explicit usul records imported; non-token performance text without an existing ruling category was not fabricated."
     }
   },
   "lastConfirmedDeployedDataCommit": "5c18daa",

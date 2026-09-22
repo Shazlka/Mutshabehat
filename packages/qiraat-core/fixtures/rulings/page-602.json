@@ -1,1 +1,84 @@
-[]
+[
+  {
+    "id": "r-SQL602-TAGHLIZ_LAM-5-4",
+    "pageNumber": 602,
+    "category": "TAGHLIZ_LAM",
+    "categoryAr": "تغليظ اللامات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 107,
+    "ayah": 5,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 5,
+    "baseText": "صَلَاتِهِمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "تغليظ اللام"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "تغليظ اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تغليظ اللام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تغليظ اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "تغليظ اللام لورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL602-WAQF_HAMZA-3-2",
+    "pageNumber": 602,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 108,
+    "ayah": 3,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 3,
+    "baseText": "شَانِئَكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "تغيير الهمز عند الوقف"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "تغيير الهمز عند الوقف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "تغيير الهمز عند الوقف",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "تغيير الهمز عند الوقف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "وقف حمزة على الهمز",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  }
+]

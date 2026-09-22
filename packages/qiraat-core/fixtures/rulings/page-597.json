@@ -1,1 +1,363 @@
-[]
+[
+  {
+    "id": "r-SQL597-MEEM_JAM-95-6-6-0",
+    "pageNumber": 597,
+    "category": "MEEM_JAM",
+    "categoryAr": "صلة ميم الجمع",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 95,
+    "ayah": 6,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 6,
+    "baseText": "فَلَهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "صلة ميم الجمع",
+        "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "صلة ميم الجمع",
+        "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "صلة ميم الجمع",
+        "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "صلة ميم الجمع",
+        "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "صلة ميم الجمع",
+        "condition": "وصلًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": "وصلًا",
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL597-SAKT-95-6-6-1",
+    "pageNumber": 597,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 95,
+    "ayah": 6,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 6,
+    "baseText": "فَلَهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "سكت",
+        "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "سكت",
+        "condition": "وصلًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "سكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "سكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": "وصلًا",
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL597-MADD_BADAL-95-6-3-2",
+    "pageNumber": 597,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 95,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 6,
+    "baseText": "ءَامَنُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل",
+        "condition": "بخلف عنه"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "condition": "بخلف عنه",
+    "notes": "تثليث البدل (2،4،6) لورش",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL597-WAQF_HAMZA-96-1-1-3",
+    "pageNumber": 597,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 96,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "ٱقْرَأْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إبدال الهمزة",
+        "condition": "وقفًا"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الهمزة",
+        "condition": "وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "condition": "وقفًا",
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL597-IMALAH_TAQLIL-96-7-2-4",
+    "pageNumber": 597,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 96,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 7,
+    "baseText": "رَّءَاهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL597-IMALAH_TAQLIL-96-7-2-5",
+    "pageNumber": 597,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 96,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 7,
+    "baseText": "رَّءَاهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL597-IMALAH_TAQLIL-96-7-2-6",
+    "pageNumber": 597,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 96,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 7,
+    "baseText": "رَّءَاهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  }
+]

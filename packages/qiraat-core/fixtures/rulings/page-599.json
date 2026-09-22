@@ -1,1 +1,132 @@
-[]
+[
+  {
+    "id": "r-SQL599-NAQL-99-1-3-0",
+    "pageNumber": 599,
+    "category": "NAQL",
+    "categoryAr": "نقل الهمز",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 99,
+    "ayah": 1,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 1,
+    "baseText": "ٱلْأَرْضُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "نقل الهمز",
+        "condition": "وصلًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "نقل الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": "وصلًا",
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL599-SAKT-99-1-3-1",
+    "pageNumber": 599,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 99,
+    "ayah": 1,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 1,
+    "baseText": "ٱلْأَرْضُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "سكت",
+        "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "سكت",
+        "condition": "وصلًا"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "سكت",
+        "condition": "وصلًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "سكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "سكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "سكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": "وصلًا",
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL599-TARQIQ_RA-100-2-1-2",
+    "pageNumber": 599,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 100,
+    "ayah": 2,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 2,
+    "baseText": "فَٱلْمُورِيَـٰتِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  }
+]
