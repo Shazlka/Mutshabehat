@@ -3794,7 +3794,7 @@ def checked_audited_inline_faces(page, lines):
         352: [
             ('DOCX-P352-R01610','يَأْتَلِ','يَتَأَلَّ','أبو جعفر',22,
              'بياء وتاء مفتوحة بعدها همزة مفتوحة ولام مشددة'),
-            ('DOCX-P352-R01612','تَشْهَدُ','يَشْهَدُ','حمزة، الكسائي، خلف العاشر',24,
+            ('DOCX-P352-R01612','تَشْهَدُ','يَشْهَدُ','حمزة، الكسائي، خلف',24,
              'بياء التذكير'),
         ],
         354: [
@@ -4937,6 +4937,10 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        343: [
+            ('DOCX-P343-R01510','نُّسْقِيكُم','ابن كثير، أبو عمرو، حفص، حمزة، الكسائي، خلف',21,'بضم العين وكسر التنوين','https://quranpedia.net/qiraat/al-muminun/21','وجه المصدر بضم العين وكسر التنوين؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
+            ('DOCX-P343-R01511','نُّسْقِيكُم','نافع، ابن عامر، شعبة، يعقوب',21,'بفتح التاء وضم التنوين','https://quranpedia.net/qiraat/al-muminun/21','وجه المصدر للمذكورين بضم التنوين.'),
+        ],
         293: [
             ('DOCX-P293-R00943','عَلَيْهِمْ','حمزة، يعقوب',107,'بضم الهاء','https://quranpedia.net/qiraat/al-isra/107','وجه الضم لحمزة ويعقوب.'),
         ],
