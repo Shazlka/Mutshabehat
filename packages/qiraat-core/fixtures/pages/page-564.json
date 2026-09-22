@@ -66,7 +66,8 @@
     "locusType": "performance_variant",
     "id": "v-DOCX-564-R03642-934bff72",
     "readingIds": [
-      "Q01-R02"
+      "Q01-R02",
+      "Q01-R01"
     ],
     "sources": [
       {
@@ -169,7 +170,8 @@
       "Q04-R01",
       "Q07-R01",
       "Q07-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q04-R02"
     ],
     "locusId": "DOCX-P564-R03643-27-8",
     "locusType": "performance_variant",
@@ -360,7 +362,8 @@
       "Q07-R01",
       "Q07-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q06-R02"
     ],
     "locusId": "DOCX-P564-R03647-1-1",
     "locusType": "performance_variant",

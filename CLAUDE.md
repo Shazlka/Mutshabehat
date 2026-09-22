@@ -37,6 +37,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   history/log of all changes for future reference.
 
 # Changelog
+- **Qiraat — four-agent audit, Mushaf pages 557–572:** added three usul assignments on p561–564 (including hamz changes and idgham), corrected p565 `يُبَدِّلَنَا/يُبْدِلَنَا`, and found p557–560 and p566–572 source-consistent with no safe new wording faces. **Verification:** validator clean (3,052 variants, 10,028 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 541–556:** added p546 `IMALAH_TAQLIL` for `خَصَاصَةٌ` and p547 independent `MADD` performance face for `رَءُوفٌ`; pages 541–545 and 548–556 were source-consistent with no safe additions. **Verification:** validator clean (3,052 variants, 10,025 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 525–540:** corrected/expanded p531–532 reader assignments for explicit Q10 and source groups; pages 525–530 and 533–540 were source-consistent with no safe new wording faces. **Verification:** validator clean (3,051 variants, 10,024 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 509–524:** completed p513 `صِرَاطًا` with the Rouيس narrator and corrected/expanded p520 `تَشَّقَّقُ` for Q10. Pages 509–512, 514–519, and 521–524 were source-consistent with no safe new wording faces. **Verification:** validator clean (3,051 variants, 10,024 rulings), DB migration: none — fixture-only.

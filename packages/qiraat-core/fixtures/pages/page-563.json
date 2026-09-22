@@ -152,7 +152,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
-      "Q06-R01"
+      "Q06-R01",
+      "Q06-R02"
     ],
     "locusId": "DOCX-P563-R03637-22-11",
     "locusType": "performance_variant",
@@ -202,7 +203,9 @@
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
       "Q02-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q02-R01",
+      "Q09-R02"
     ],
     "locusId": "DOCX-P563-R03637-22-11",
     "locusType": "word_variant",
