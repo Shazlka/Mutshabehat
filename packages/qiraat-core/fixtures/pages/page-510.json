@@ -81,9 +81,7 @@
     "readingIds": [
       "Q05-R01",
       "Q06-R01",
-      "Q06-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q06-R02"
     ],
     "locusId": "D510-السلم",
     "locusType": "word_variant",
@@ -126,9 +124,7 @@
       "Q07-R01",
       "Q07-R02",
       "Q09-R01",
-      "Q09-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q09-R02"
     ],
     "locusId": "AUDIT-P510-47-38-1-P4",
     "locusType": "performance_variant",

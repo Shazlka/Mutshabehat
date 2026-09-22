@@ -2004,10 +2004,6 @@
         "action": "الإدغام"
       },
       {
-        "authorityId": "Q10",
-        "action": "الإدغام"
-      },
-      {
         "authorityId": "Q04-R02",
         "action": "إدغام صغير"
       }
@@ -2065,16 +2061,6 @@
       },
       {
         "readingId": "Q09-R02",
-        "action": "الإدغام",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "الإدغام",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "الإدغام",
         "isDefault": true
       },

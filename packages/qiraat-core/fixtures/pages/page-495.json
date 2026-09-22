@@ -266,10 +266,10 @@
       "Q01-R02",
       "Q04-R01",
       "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
       "Q08-R01",
-      "Q08-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q08-R02"
     ],
     "locusId": "D495-يعلمون",
     "locusType": "word_variant",
@@ -324,6 +324,40 @@
       }
     ],
     "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-يعلمون-w2",
+    "surah": 43,
+    "ayah": 86,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يَعْلَمُونَ",
+    "variantText": "تَعْلَمُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D495-يعلمون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-يعلمون-w2",
+        "variantId": "v-D495-يعلمون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02994",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَعْلَمُونَ﴾ (الآية الأخيرة): بياء الغيب لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبتاء الخطاب ﴿تَعْلَمُونَ﴾ للباقين."
+      }
+    ],
+    "description": "بتاء الخطاب",
     "wajhIndex": 2,
     "evidence": []
   }

@@ -67,10 +67,10 @@
       "Q02-R02",
       "Q04-R01",
       "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
       "Q09-R01",
-      "Q09-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q09-R02"
     ],
     "locusId": "D498-فاعتلوه",
     "locusType": "word_variant",
@@ -141,10 +141,10 @@
       "Q01-R02",
       "Q04-R01",
       "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
       "Q08-R01",
-      "Q08-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q08-R02"
     ],
     "locusId": "D498-مقام_امين",
     "locusType": "multi_word_variant",
@@ -183,7 +183,107 @@
       "Q05-R01",
       "Q06-R02",
       "Q07-R01",
-      "Q07-R02",
+      "Q07-R02"
+    ],
+    "locusId": "D498-وعيون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D498-وعيون-w2",
+        "variantId": "v-D498-وعيون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P498-R03025",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/ad-dukhan/45",
+        "sourceText": "﴿وَعُيُونٍ﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين للباقين."
+      }
+    ],
+    "description": "بكسر العين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D498-فاعتلوه-w2",
+    "surah": 44,
+    "ayah": 47,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "فَٱعْتِلُوهُ",
+    "variantText": "فَاعْتُلُوهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D498-فاعتلوه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D498-فاعتلوه-w2",
+        "variantId": "v-D498-فاعتلوه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P498-R03022",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَٱعْتِلُوهُ﴾: بكسر التاء ﴿فَاعْتِلُوهُ﴾ لأبي عمرو، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ وبضم التاء ﴿فَاعْتُلُوهُ﴾ للباقين."
+      }
+    ],
+    "description": "بضم التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D498-مقام_امين-w2",
+    "surah": 44,
+    "ayah": 51,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مَقَامٍ أَمِينٍۢ",
+    "variantText": "مُقَامٍ أَمِينٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D498-مقام_امين",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D498-مقام_امين-w2",
+        "variantId": "v-D498-مقام_امين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P498-R03024",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مَقَامٍ أَمِينٍ﴾: بفتح الميم الأولى ﴿مَقَامٍ﴾ لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبضم الميم ﴿مُقَامٍ﴾ للباقين."
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D498-وعيون-w2",
+    "surah": 44,
+    "ayah": 52,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَعُيُونٍۢ",
+    "variantText": "وَعُيُونٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
       "Q10-R01",
       "Q10-R02"
     ],
@@ -196,7 +296,7 @@
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P498-R03025",
-        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/ad-dukhan/45",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف.",
         "sourceText": "﴿وَعُيُونٍ﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين للباقين."
       }
     ],

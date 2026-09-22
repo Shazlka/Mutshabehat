@@ -324,39 +324,5 @@
     "description": "بفتح الجيم والراء وهمزة مكسورة وحذف الياء",
     "wajhIndex": 3,
     "evidence": []
-  },
-  {
-    "id": "v-D560-وجبريل-w4",
-    "surah": 66,
-    "ayah": 4,
-    "startToken": 15,
-    "endToken": 15,
-    "operation": "REPLACE",
-    "hafsText": "وَجِبْرِيلُ",
-    "variantText": "وَجَبْرَئِيلَ",
-    "differenceType": "LETTER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q10-R01",
-      "Q10-R02"
-    ],
-    "locusId": "D560-وجبريل",
-    "locusType": "word_variant",
-    "sources": [
-      {
-        "id": "s-D560-وجبريل-w4",
-        "variantId": "v-D560-وجبريل-w4",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03613",
-        "verificationNotes": "أُضيف خلف العاشر هنا لأن جهاز الآية يسمي إسحاق وإدريس صراحةً مع حمزة والكسائي؛ أما «خلف» المجرد في سطر المصدر فخلف عن حمزة Q06-R01. المرجع: https://quranpedia.net/qiraat/at-tahrim/4",
-        "sourceText": "بفتح الجيم والراء وهمزة مكسورة بعدها ياء مدية ﴿جَبْرَئِيلَ﴾: حمزة، والكسائي، وخلف."
-      }
-    ],
-    "description": "بفتح الجيم والراء وهمزة مكسورة بعدها ياء مدية",
-    "wajhIndex": 4,
-    "evidence": []
   }
 ]
