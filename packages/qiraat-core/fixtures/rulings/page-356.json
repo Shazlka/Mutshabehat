@@ -496,11 +496,6 @@
         "condition": "وقفًا"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل",
         "condition": "وقفًا"
@@ -524,16 +519,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -875,11 +860,6 @@
         "condition": "وقفًا"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل",
         "condition": "وقفًا"
@@ -903,16 +883,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },

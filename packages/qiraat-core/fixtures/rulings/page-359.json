@@ -1011,5 +1011,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p359-IDGHAM_SAGHIR-واستغفر-لهم",
+    "pageNumber": 359,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 62,
+    "startToken": 33,
+    "endToken": 34,
+    "endAyah": 62,
+    "baseText": "وَٱسْتَغْفِرْ لَهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "أبو عمرو بخلف عن الدوري، وفق السطر المصدر الصريح.",
+    "sourceNotes": [
+      "DOCX-P359-R01703"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
   }
 ]

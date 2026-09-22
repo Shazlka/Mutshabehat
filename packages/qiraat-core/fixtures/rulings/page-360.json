@@ -648,5 +648,112 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p360-TAGHYIR_HAMZ-يأكل-منها",
+    "pageNumber": 360,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 8,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 8,
+    "baseText": "يَأْكُلُ مِنْهَا ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q08",
+        "action": "إبدال الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "إبدال الهمزة لورش والسوسي وأبي جعفر.",
+    "sourceNotes": [
+      "DOCX-P360-R01601"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-p360-WAQF_RASM-ما-هذا",
+    "pageNumber": 360,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 7,
+    "baseText": "مَالِ هَـٰذَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03",
+        "action": "الوقف على ما"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "الوقف على ما"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "الوقف على ما",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الوقف على ما",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "الوقف على ما",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "يقف أبو عمرو والكسائي بخلف على «ما».",
+    "sourceNotes": [
+      "DOCX-P360-R01714"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
   }
 ]
