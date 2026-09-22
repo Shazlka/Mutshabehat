@@ -19,7 +19,7 @@
   "dataset": {
     "mushafPages": 604,
     "variants": 3052,
-    "usulRulings": 10030,
+    "usulRulings": 10036,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,32 +49,30 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. Pages with no safe additions were recorded as source-consistent. One occurrence-selection case remains withheld: p548 هُوَ has six indistinguishable occurrences.",
-    "latestSourceCoverageNote": "Batched audits advanced through pages 584. Latest commit 9186a9f covers pages 573-584; totals are 3052 variants and 10030 usul rulings. Validator, Qiraat tests, TypeScript, and production build pass for each batch. Deployment status is subject to Vercel rate limiting."
+    "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. The p548 هُوَ waqf rule is now represented at all six exact هُوَ tokens on the page, based on the external general rule for Yaqub; وَهُوَ is kept separate.",
+    "latestSourceCoverageNote": "Latest commit 9186a9f covered pages 573-584; a follow-up p548 occurrence-safe WAQF_RASM expansion adds six real token anchors for Yaqub and brings totals to 3052 variants and 10036 rulings."
   },
-  "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. Pages with no safe additions were recorded as source-consistent. One occurrence-selection case remains withheld: p548 هُوَ has six indistinguishable occurrences.",
+  "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. The p548 هُوَ waqf rule is now represented at all six exact هُوَ tokens on the page, based on the external general rule for Yaqub; وَهُوَ is kept separate.",
   "currentBatch": {
-    "id": "targeted-cycle-p573-p584",
+    "id": "p548-occurrence-safe-waqf",
     "pages": [
-      573,
-      584
+      548,
+      548
     ],
     "variantsAdded": 0,
-    "newRulingLoci": 0,
+    "newRulingLoci": 6,
     "mergedRulingLoci": 0,
-    "readerAssignmentsAdded": 0,
+    "readerAssignmentsAdded": 12,
     "status": "locally verified; deployment pending",
     "validation": {
       "variants": 3052,
-      "usulRulings": 10030,
+      "usulRulings": 10036,
       "validator": "passed",
       "importerIdempotent": true
     },
     "manualReview": {
-      "remaining": [
-        548
-      ],
-      "notes": "p548 has six indistinguishable هُوَ occurrences; no safe occurrence selector."
+      "remaining": [],
+      "notes": "The former p548 occurrence-selection concern is resolved by exact token anchors and the external general rule for Yaqub."
     }
   },
   "lastConfirmedDeployedDataCommit": "9186a9f",

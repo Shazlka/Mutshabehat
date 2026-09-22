@@ -10,6 +10,7 @@ and any required DB migration.
 Live: https://mutshabehat-v2.vercel.app
 
 ## 2026-09-22
+- **Qiraat — p548 occurrence-safe completion:** added six `WAQF_RASM` loci for Yaqub on every exact `هُوَ` token in Mushaf page 548, using the external rule that Yaqub stops on `هو/هي` wherever they occur; `وَهُوَ` remains a separate source-backed wording face. **Verification:** validator clean (3,052 variants, 10,036 rulings), DB migration: none — fixture-only.
 - **Qiraat — final-page audit, Mushaf pages 573–584:** added p577 hamz substitution, completed p578 `وَقِيلَ`, p579 imalah/taqlil, and corrected/expanded p582–583 reader assignments including explicit Q10. Pages 573–576, 580–581, and 584 were source-consistent with no safe additions. **Verification:** validator clean (3,052 variants, 10,030 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 557–572:** added three usul assignments on p561–564 (including hamz changes and idgham), corrected p565 `يُبَدِّلَنَا/يُبْدِلَنَا`, and found p557–560 and p566–572 source-consistent with no safe new wording faces. **Verification:** validator clean (3,052 variants, 10,028 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 541–556:** added p546 `IMALAH_TAQLIL` for `خَصَاصَةٌ` and p547 independent `MADD` performance face for `رَءُوفٌ`; pages 541–545 and 548–556 were source-consistent with no safe additions. **Verification:** validator clean (3,052 variants, 10,025 rulings), DB migration: none — fixture-only.
