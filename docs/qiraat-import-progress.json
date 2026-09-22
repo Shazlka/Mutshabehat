@@ -23603,43 +23603,49 @@
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
   "latestSourceCoverageNote": "Audited through Mushaf page 584. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
   "latestLocalImportCycle": {
-    "id": "four-agent-audit-p369-p380",
+    "id": "four-agent-audit-p381-p396",
     "pages": [
-      369,
-      370,
-      371,
-      372,
-      373,
-      374,
-      375,
-      376,
-      377,
-      378,
-      379,
-      380
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396
     ],
     "variantsAdded": 0,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 7,
+    "correctedRulingLoci": 1,
     "perPageVariants": {
-      "369": 0,
-      "370": 0,
-      "371": 0,
-      "372": 0,
-      "373": 0,
-      "374": 0,
-      "375": 0,
-      "376": 0,
-      "377": 0,
-      "378": 0,
-      "379": 0,
-      "380": 0
+      "381": 0,
+      "382": 0,
+      "383": 0,
+      "384": 0,
+      "385": 0,
+      "386": 0,
+      "387": 0,
+      "388": 0,
+      "389": 0,
+      "390": 0,
+      "391": 0,
+      "392": 0,
+      "393": 0,
+      "394": 0,
+      "395": 0,
+      "396": 0
     },
     "correctedByPage": {
-      "373": 3,
-      "374": 1,
-      "375": 3
+      "386": 1
     },
     "status": "locally verified; deployment pending",
     "validation": {
@@ -23651,7 +23657,7 @@
       "build": "pending",
       "importerIdempotent": true
     },
-    "details": "Corrected p373-p375 reader partitions and preserved Q10 only for explicit remainder groups; no new safe records p369-p372 or p376-p380."
+    "details": "Corrected p386 وَحُزْنًا; no safe additions in p381-p385 or p387-p396."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
