@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2862,
-    "usulRulings": 9896,
+    "variants": 2873,
+    "usulRulings": 9898,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,10 +49,10 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending.",
+    "sourceCoverageStatus": "Global bare-Khalaf audit through page 584 plus cycle pages 245-260. Bare خلف is Q06; explicit خلف العاشر or unambiguous remainder retains Q10. Importer is idempotent; validator, 38/38 tests, TypeScript, and build pass.",
     "latestSourceCoverageNote": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending."
   },
-  "sourceCoverageStatus": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending.",
+  "sourceCoverageStatus": "Global bare-Khalaf audit through page 584 plus cycle pages 245-260. Bare خلف is Q06; explicit خلف العاشر or unambiguous remainder retains Q10. Importer is idempotent; validator, 38/38 tests, TypeScript, and build pass.",
   "currentBatch": {
     "id": "audited-import-p235-p250",
     "pages": [
@@ -22298,7 +22298,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "7a80f3b",
+  "currentHeadCommit": "b2263f8",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -23601,48 +23601,52 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
-  "latestSourceCoverageNote": "Four-agent audited through Mushaf pages 570. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
+  "latestSourceCoverageNote": "Audited through Mushaf page 584. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
   "latestLocalImportCycle": {
-    "id": "four-agent-audit-p563-p570",
+    "id": "four-agent-audit-p245-p260",
     "pages": [
-      563,
-      564,
-      565,
-      566,
-      567,
-      568,
-      569,
-      570
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      260
     ],
-    "variantsAdded": 4,
+    "variantsAdded": 1,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 3,
+    "correctedRulingLoci": 4,
     "perPageVariants": {
-      "563": 0,
-      "564": 2,
-      "565": 0,
-      "566": 0,
-      "567": 0,
-      "568": 2,
-      "569": 0,
-      "570": 0
+      "248": 1
     },
     "correctedByPage": {
-      "566": 1,
-      "567": 2
+      "249": 4,
+      "251": 1,
+      "252": 1
     },
-    "status": "locally verified; deployment pending",
+    "status": "pushed; deployment pending",
     "validation": {
-      "variants": 2862,
-      "usulRulings": 9896,
+      "variants": 2873,
+      "usulRulings": 9898,
       "validator": "passed",
       "tests": "38/38",
       "tsc": "passed",
       "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Pages 564 and 568 gained two token-backed faces each. Page 566 removed Q10 from one bare خلف usul locus. Page 567 added Q08 to the source face for فهي and corrected bare خلف to Q06 in one variant plus one usul locus. External Quranpedia checks were recorded for pages 564, 567, and 568."
+    "details": "Added p248 نُّوحِىٓ/يُوحَى for the explicitly named group. Corrected bare خلف attribution on p249, p251, and p252. Multiword unanchored candidates were withheld.",
+    "commit": "b2263f8",
+    "deployment": "pending"
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -24207,5 +24211,47 @@
       "deploy": "Vercel success"
     },
     "details": "All farsh rows were already represented or safely withheld. Removed Q10 from 13 usul loci whose source names bare خلف; Q06 remains. Explicit remainder faces retaining Q10 were preserved."
+  },
+  "previousImportCycle571_582": {
+    "id": "four-agent-audit-p563-p570",
+    "pages": [
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      569,
+      570
+    ],
+    "variantsAdded": 4,
+    "newRulingLoci": 0,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 3,
+    "perPageVariants": {
+      "563": 0,
+      "564": 2,
+      "565": 0,
+      "566": 0,
+      "567": 0,
+      "568": 2,
+      "569": 0,
+      "570": 0
+    },
+    "correctedByPage": {
+      "566": 1,
+      "567": 2
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2862,
+      "usulRulings": 9896,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "passed",
+      "build": "passed",
+      "importerIdempotent": true
+    },
+    "details": "Pages 564 and 568 gained two token-backed faces each. Page 566 removed Q10 from one bare خلف usul locus. Page 567 added Q08 to the source face for فهي and corrected bare خلف to Q06 in one variant plus one usul locus. External Quranpedia checks were recorded for pages 564, 567, and 568."
   }
 }

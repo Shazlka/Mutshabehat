@@ -29,10 +29,6 @@
       {
         "authorityId": "Q07",
         "action": "الإدغام"
-      },
-      {
-        "authorityId": "Q10",
-        "action": "الإدغام"
       }
     ],
     "readings": [
@@ -270,10 +266,6 @@
       {
         "authorityId": "Q08",
         "action": "الإدغام"
-      },
-      {
-        "authorityId": "Q10",
-        "action": "الإدغام"
       }
     ],
     "readings": [
@@ -361,10 +353,6 @@
       {
         "authorityId": "Q08",
         "action": "الإدغام"
-      },
-      {
-        "authorityId": "Q10",
-        "action": "الإدغام"
       }
     ],
     "readings": [
@@ -439,10 +427,6 @@
       },
       {
         "authorityId": "Q07",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10",
         "action": "إمالة"
       },
       {
@@ -724,10 +708,6 @@
       },
       {
         "authorityId": "Q04-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10",
         "action": "إمالة"
       }
     ],

@@ -104,7 +104,9 @@
       "Q03-R02",
       "Q05-R01",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-3-1-3",
     "locusType": "word_variant",
@@ -160,7 +162,9 @@
       "Q03-R02",
       "Q05-R01",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-4-1-4",
     "locusType": "word_variant",
@@ -215,8 +219,12 @@
       "Q03-R01",
       "Q03-R02",
       "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-6-1-5",
     "locusType": "word_variant",
@@ -274,7 +282,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-5-1-6",
     "locusType": "word_variant",
@@ -448,7 +458,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-9-1-9",
     "locusType": "word_variant",
@@ -506,7 +518,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-10-1-10",
     "locusType": "word_variant",
@@ -564,7 +578,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-11-1-11",
     "locusType": "word_variant",
@@ -622,7 +638,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-12-1-12",
     "locusType": "word_variant",
@@ -680,7 +698,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P572-72-13-1-13",
     "locusType": "word_variant",
