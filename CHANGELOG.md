@@ -10,6 +10,7 @@ and any required DB migration.
 Live: https://mutshabehat-v2.vercel.app
 
 ## 2026-09-22
+- **Qiraat — four-agent audit, Mushaf pages 541–556:** added p546 `IMALAH_TAQLIL` for `خَصَاصَةٌ` and p547 independent `MADD` performance face for `رَءُوفٌ`; pages 541–545 and 548–556 were source-consistent with no safe additions. **Verification:** validator clean (3,052 variants, 10,025 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 525–540:** corrected/expanded p531–532 reader assignments for explicit Q10 and source groups; pages 525–530 and 533–540 were source-consistent with no safe new wording faces. **Verification:** validator clean (3,051 variants, 10,024 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 509–524:** completed p513 `صِرَاطًا` with the Rouيس narrator and corrected/expanded p520 `تَشَّقَّقُ` for Q10. Pages 509–512, 514–519, and 521–524 were source-consistent with no safe new wording faces. **Verification:** validator clean (3,051 variants, 10,024 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 493–508:** added p499 Abu Jaafar `SAKT`, completed p500 and p503 reader assignments, and found p493–498, p501–502, and p504–508 source-consistent with no safe new wording faces. **Verification:** validator clean (3,051 variants, 10,024 rulings), DB migration: none — fixture-only.
