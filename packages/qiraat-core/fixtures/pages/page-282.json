@@ -68,5 +68,121 @@
     "description": "بضم الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D282-ليسووا-w2",
+    "surah": 17,
+    "ayah": 7,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لِيَسُـۥٓـُٔوا۟",
+    "variantText": "لِنَسُوءَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D282-ليسووا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D282-ليسووا-w2",
+        "variantId": "v-D282-ليسووا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P282-R00805",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿لِيَسُـۥٓـُٔواْ﴾: فيها ٣ قراءات:"
+      }
+    ],
+    "description": "بنون العظمة مفتوحة وضم الهمزة مع المد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D282-ليسووا-w3",
+    "surah": 17,
+    "ayah": 7,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لِيَسُـۥٓـُٔوا۟",
+    "variantText": "لِيَسُوؤُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D282-ليسووا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D282-ليسووا-w3",
+        "variantId": "v-D282-ليسووا-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P282-R00805",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿لِيَسُـۥٓـُٔواْ﴾: فيها ٣ قراءات:"
+      }
+    ],
+    "description": "بياء الغيب وضم الهمزة مع واو الجمع",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P282-LISUU-3",
+    "surah": 17,
+    "ayah": 7,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لِيَسُـۥٓـُٔوا۟",
+    "variantText": "لِيَسُوءَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P282-LISUU",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P282-LISUU-3",
+        "variantId": "v-AUDIT-P282-LISUU-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P282-R00808",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "بياء الغيب مفتوحة وسكون السين وهمزة مفتوحة بلا مد ﴿لِيَسُوءَ﴾: نافع، ابن كثير، أبو عمرو، حفص، أبو جعفر، يعقوب."
+      }
+    ],
+    "description": "بياء الغيب مفتوحة وسكون السين وهمزة مفتوحة بلا مد",
+    "wajhIndex": 3,
+    "evidence": []
   }
 ]

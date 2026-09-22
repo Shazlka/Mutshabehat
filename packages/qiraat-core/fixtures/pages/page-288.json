@@ -32,5 +32,170 @@
     "description": "بنقل الهمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P288-17-61-3-FARSH",
+    "surah": 17,
+    "ayah": 61,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِلْمَلَـٰٓئِكَةِ ٱسْجُدُوا۟",
+    "variantText": "لِلْمَلَائِكَةُ اسْجُدُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P288-17-61-3-FARSH",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P288-17-61-3-FARSH",
+        "variantId": "v-AUDIT-P288-17-61-3-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P288-R00886",
+        "sourceText": "لِلْمَلَائِكَةُ اسْجُدُوا",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P288-17-61-3-FARSH-EXT",
+        "variantId": "v-AUDIT-P288-17-61-3-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/61",
+        "sourceText": "لِلْمَلَائِكَةُ اسْجُدُوا",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "لِلْمَلَائِكَةُ اسْجُدُوا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "لِلْمَلَائِكَةُ اسْجُدُوا",
+        "url": "https://quranpedia.net/qiraat/al-isra/61"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P288-17-64-7-FARSH",
+    "surah": 17,
+    "ayah": 64,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P288-17-64-7-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P288-17-64-7-FARSH",
+        "variantId": "v-AUDIT-P288-17-64-7-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P288-R00888",
+        "sourceText": "عَلَيْهُمُ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P288-17-64-7-FARSH-EXT",
+        "variantId": "v-AUDIT-P288-17-64-7-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/64",
+        "sourceText": "عَلَيْهُمُ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "عَلَيْهُمُ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "عَلَيْهُمُ",
+        "url": "https://quranpedia.net/qiraat/al-isra/64"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P288-17-64-9-FARSH",
+    "surah": 17,
+    "ayah": 64,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَرَجِلِكَ",
+    "variantText": "وَرَجْلِكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P288-17-64-9-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P288-17-64-9-FARSH",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P288-R00889",
+        "sourceText": "وَرَجْلِكَ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P288-17-64-9-FARSH-EXT",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/64",
+        "sourceText": "وَرَجْلِكَ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "وَرَجْلِكَ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "وَرَجْلِكَ",
+        "url": "https://quranpedia.net/qiraat/al-isra/64"
+      }
+    ]
   }
 ]

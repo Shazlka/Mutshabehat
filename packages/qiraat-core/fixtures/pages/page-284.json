@@ -36,5 +36,160 @@
     "description": "على التثنية",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D284-وهو-w2",
+    "surah": 17,
+    "ayah": 19,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D284-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D284-وهو-w2",
+        "variantId": "v-D284-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P284-R00830",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D284-اف-w2",
+    "surah": 17,
+    "ayah": 23,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "أُفٍّۢ",
+    "variantText": "أُفٍّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D284-اف",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D284-اف-w2",
+        "variantId": "v-D284-اف-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P284-R00835",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06. تصحيح الإسناد: «خلف» المجرد = Q06؛ لم يُنسب Q10 لعدم ذكر «خلف العاشر».",
+        "sourceText": "﴿أُفٍّ﴾: فيها ٣ قراءات:"
+      }
+    ],
+    "description": "بكسر الفاء منونة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D284-اف-w3",
+    "surah": 17,
+    "ayah": 23,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "أُفٍّۢ",
+    "variantText": "أُفِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D284-اف",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D284-اف-w3",
+        "variantId": "v-D284-اف-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P284-R00835",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿أُفٍّ﴾: فيها ٣ قراءات:"
+      }
+    ],
+    "description": "بكسر الفاء بلا تنوين",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D284-محظورا_انظر-w2",
+    "surah": 17,
+    "ayah": 20,
+    "startToken": 12,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "مَحْظُورًا ٱنظُرْ",
+    "variantText": "مَحْظُورٍ ٱنظُرْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D284-محظورا_انظر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D284-محظورا_انظر-w2",
+        "variantId": "v-D284-محظورا_انظر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P284-R00831",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "بكسر التنوين وصلاً: أبو عمرو، ابن ذكوان، عاصم، حمزة، يعقوب."
+      }
+    ],
+    "description": "بكسر التنوين وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

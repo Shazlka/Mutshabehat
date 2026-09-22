@@ -324,5 +324,66 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p287-WAQF_RASM-هو-5",
+    "pageNumber": 287,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 51,
+    "startToken": 20,
+    "endToken": 20,
+    "endAyah": 51,
+    "baseText": "هُوَ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "يقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "يقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "يقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "يقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "note": "يقف يعقوب بهاء السكت: هُوْهْ.",
+    "sources": [
+      {
+        "id": "s-p287-WAQF_RASM-هو-5",
+        "rulingId": "r-p287-WAQF_RASM-هو-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P287-R00884",
+        "sourceText": "﴿هُوَ﴾: يقف عليها يعقوب بهاء السكت ﴿هُوْهْ﴾.",
+        "verificationNotes": "وجه صريح في المصدر."
+      },
+      {
+        "id": "s-p287-WAQF_RASM-هو-5-EXT",
+        "rulingId": "r-p287-WAQF_RASM-هو-5",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/51",
+        "sourceText": "وجه الوقف ليعقوب بهاء السكت.",
+        "verificationNotes": "مرجع مستقل."
+      }
+    ],
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
   }
 ]

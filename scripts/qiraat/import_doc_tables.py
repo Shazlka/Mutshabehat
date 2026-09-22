@@ -2538,6 +2538,26 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
                          ({'Q03-R01','Q03-R02'}, 'إمالة الهمزة وقفاً')],
                         rulings, occurrence=occurrence, source_notes=[source_note])
         return rulings
+    if page == 282:
+        record = PACKAGE_RECORDS.get('DOCX-P282-R00814')
+        expected = '﴿إِسْرَـٰٓءِيلَ﴾ (معاً): تسهيل الهمزة مع المد والقصر لأبي جعفر (مع قصر مد البدل لورش قولا واحداً).'
+        if (record is None or record.get('raw_text') != expected or expected not in lines
+                or is_neg(expected) or is_univ(expected) or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 282 Israil hamz source row failed exact source/safety check')
+        for occurrence in (1, 2):
+            emit_ruling(282, 'TAGHYIR_HAMZ', 'إِسْرَـٰٓءِيلَ',
+                        [({'Q08-R01','Q08-R02'}, 'تسهيل الهمزة مع المد والقصر')], rulings,
+                        occurrence=occurrence, source_notes=['DOCX-P282-R00814؛ تسهيل الهمزة لأبي جعفر، مع قصر مد البدل لورش؛ الوجه مربوط بالموضع الحقيقي.'])
+        record = PACKAGE_RECORDS.get('DOCX-P282-R00815')
+        expected = '﴿بَأْسٍ﴾، ﴿أَسَأْتُمْ﴾: إبدال للسوسي وأبي جعفر.'
+        if (record is None or record.get('raw_text') != expected or expected not in lines
+                or is_neg(expected) or is_univ(expected) or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 282 isolated hamz source row failed exact source/safety check')
+        for anchor in ('بَأْسٍ','أَسَأْتُمْ'):
+            emit_ruling(282, 'TAGHYIR_HAMZ', anchor,
+                        [({'Q03-R02','Q08-R01','Q08-R02'}, 'إبدال الهمزة')], rulings,
+                        source_notes=['DOCX-P282-R00815: إبدال للسوسي وأبي جعفر.'])
+        return rulings
     if page != 254:
         return rulings
     source_line = '﴿الْكَـٰفِرِينَ﴾: أبو عمرو، الدوري عن الكسائي، رويس، وقللها ورش.'
@@ -3087,6 +3107,7 @@ def collect_farsh(page, lines):
     out.extend(checked_audited_p277_278_farsh(page, lines))
     out.extend(checked_audited_307_310_farsh(page, lines))
     out.extend(checked_audited_late_explicit_farsh(page, lines))
+    out.extend(checked_audited_281_284_farsh(page, lines))
     if page == 428:
         out = [v for v in out if not (v.get('variantText','').startswith('عَـٰلِم') and set(v.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
     # p555's two-face inline row is already represented by the reviewed fixture
@@ -3099,6 +3120,43 @@ def collect_farsh(page, lines):
         # fixtures with corrected reader partitions; the generic parser sees
         # only one prose clause and would recreate incomplete Q05-only faces.
         out = [v for v in out if v.get('variantText') not in {'نُكُرًا', 'جَزَاءُ الْحُسْنَى'}]
+    return out
+
+def checked_audited_281_284_farsh(page, lines):
+    """Recover compact multi-face rows on pages 281--284.
+
+    These rows contain inline partitions (or three faces) that the generic block
+    parser cannot safely split.  Each case requires the exact packaged source row
+    and a real token span; bare خلف is resolved as Q06 by the project rule.
+    """
+    rows = {
+      281: ['DOCX-P281-R00794','DOCX-P281-R00795','DOCX-P281-R00796','DOCX-P281-R00797'],
+      282: ['DOCX-P282-R00805'],
+      284: ['DOCX-P284-R00830','DOCX-P284-R00831','DOCX-P284-R00832','DOCX-P284-R00835','DOCX-P284-R00836','DOCX-P284-R00837','DOCX-P284-R00838'],
+    }
+    out=[]
+    def ok(sid):
+        row=PACKAGE_RECORDS.get(sid)
+        return row and row.get('raw_text') in lines and not is_neg(row['raw_text']) and not is_univ(row['raw_text'])
+    def block(sid,anchor,faces,ayah=None,occ=1):
+        if not ok(sid): return
+        before=len(out); yield_block(page,anchor,faces,out,ayah=ayah,occurrence=occ)
+        for z in out[before:]:
+            z['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، {sid}','sourceText':PACKAGE_RECORDS[sid]['raw_text'],
+                'verificationNotes':'وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.'})
+    if page==281:
+        for occ in (1,2):
+            block('DOCX-P281-R00794','إِبْرَٰهِيمَ',[(None,'بياء بعد الهاء للجمهور',ALL20-{'Q04-R01','Q04-R02'}),('إِبْرَاهَامَ','بألف بعد الهاء لهشام',{'Q04-R01','Q04-R02'})],occ=occ)
+        block('DOCX-P281-R00795','صِرَٰطٍ',[(None,'بالصاد للجمهور',ALL20-{'Q02-R02','Q09-R01','Q06-R01'}),('سِرَٰطٍ','بالسين لقنبل ورويس',{'Q02-R02','Q09-R01'}),('صِرَٰطٍ','بإشمام الصاد زياً لخلف عن حمزة',{'Q06-R01'})],ayah=121)
+        for anchor in ('وَهُوَ','لَهُوَ'):
+            block('DOCX-P281-R00796',anchor,[(None,'بالفتح للباقين',ALL20-{'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}), (anchor.replace('هُوَ','هْوَ'),'بإسكان الهاء',{'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'})])
+        block('DOCX-P281-R00797','عَلَيْهِمْ',[(None,'بكسر الهاء للباقين',ALL20-{'Q06-R01','Q06-R02','Q09-R01','Q09-R02'}),('عَلَيْهُمُ','بضم الهاء لحمزة ويعقوب',{'Q06-R01','Q06-R02','Q09-R01','Q09-R02'})])
+    if page==282:
+        block('DOCX-P282-R00805','لِيَسُـۥٓـُٔواْ',[(None,'بياء الغيب مفتوحة وسكون السين وهمزة مفتوحة بلا مد',{'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q05-R02','Q08-R01','Q08-R02','Q09-R01','Q09-R02'}),('لِنَسُوءَ','بنون العظمة مفتوحة وضم الهمزة مع المد',{'Q07-R01','Q07-R02'}),('لِيَسُوؤُوا','بياء الغيب وضم الهمزة مع واو الجمع',{'Q04-R01','Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q10-R01','Q10-R02'})])
+    if page==284:
+        block('DOCX-P284-R00830','وَهُوَ',[(None,'بالفتح للباقين',ALL20-{'Q01-R01','Q03-R01','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}),('وَهْوَ','بإسكان الهاء',{'Q01-R01','Q03-R01','Q07-R01','Q07-R02','Q08-R01','Q08-R02'})])
+        block('DOCX-P284-R00831','مَّحْظُورًا ٱنظُرْ',[(None,'بضم التنوين وصلاً',{'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q04-R01','Q05-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02','Q10-R01','Q10-R02'}),('مَحْظُورٍ ٱنظُرْ','بكسر التنوين وصلاً',{'Q03-R01','Q03-R02','Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q09-R01','Q09-R02'})])
+        block('DOCX-P284-R00835','أُفٍّ',[(None,'بفتح الفاء بلا تنوين',{'Q01-R01','Q01-R02','Q05-R02','Q08-R01','Q08-R02'}),('أُفٍّ','بكسر الفاء منونة',{'Q03-R01','Q03-R02','Q05-R01','Q06-R01','Q06-R02','Q07-R01','Q07-R02'}),('أُفِّ','بكسر الفاء بلا تنوين',{'Q02-R01','Q02-R02','Q04-R01','Q04-R02','Q09-R01','Q09-R02'})])
     return out
 
 def checked_audited_late_explicit_farsh(page, lines):

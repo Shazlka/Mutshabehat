@@ -32,5 +32,268 @@
     "description": "بالهمز والمد المتصل ﴿النَّبِيئِينَ﴾",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P287-17-54-13-FARSH",
+    "surah": 17,
+    "ayah": 54,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P287-17-54-13-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P287-17-54-13-FARSH",
+        "variantId": "v-AUDIT-P287-17-54-13-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P287-R00873",
+        "sourceText": "عَلَيْهُمُ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P287-17-54-13-FARSH-EXT",
+        "variantId": "v-AUDIT-P287-17-54-13-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/54",
+        "sourceText": "عَلَيْهُمُ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "عَلَيْهُمُ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "عَلَيْهُمُ",
+        "url": "https://quranpedia.net/qiraat/al-isra/54"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P287-17-55-15-FARSH",
+    "surah": 17,
+    "ayah": 55,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "زَبُورًۭا",
+    "variantText": "زُبُورًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P287-17-55-15-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P287-17-55-15-FARSH",
+        "variantId": "v-AUDIT-P287-17-55-15-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P287-R00875",
+        "sourceText": "زُبُورًا",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P287-17-55-15-FARSH-EXT",
+        "variantId": "v-AUDIT-P287-17-55-15-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/55",
+        "sourceText": "زُبُورًا",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "زُبُورًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "زُبُورًا",
+        "url": "https://quranpedia.net/qiraat/al-isra/55"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P287-17-56-2-FARSH",
+    "surah": 17,
+    "ayah": 56,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱدْعُوا۟",
+    "variantText": "قُلُ ادْعُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P287-17-56-2-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P287-17-56-2-FARSH",
+        "variantId": "v-AUDIT-P287-17-56-2-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P287-R00876",
+        "sourceText": "قُلُ ادْعُوا",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P287-17-56-2-FARSH-EXT",
+        "variantId": "v-AUDIT-P287-17-56-2-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/56",
+        "sourceText": "قُلُ ادْعُوا",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "قُلُ ادْعُوا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "قُلُ ادْعُوا",
+        "url": "https://quranpedia.net/qiraat/al-isra/56"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P287-17-57-6-FARSH",
+    "surah": 17,
+    "ayah": 57,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّهِمُ",
+    "variantText": "رَبِّهِمِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P287-17-57-6-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P287-17-57-6-FARSH",
+        "variantId": "v-AUDIT-P287-17-57-6-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P287-R00878",
+        "sourceText": "رَبِّهِمِ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P287-17-57-6-FARSH-EXT",
+        "variantId": "v-AUDIT-P287-17-57-6-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/57",
+        "sourceText": "رَبِّهِمِ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "رَبِّهِمِ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "رَبِّهِمِ",
+        "url": "https://quranpedia.net/qiraat/al-isra/57"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P287-17-57-6-FARSH2",
+    "surah": 17,
+    "ayah": 57,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّهِمُ",
+    "variantText": "رَبِّهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P287-17-57-6-FARSH2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P287-17-57-6-FARSH2",
+        "variantId": "v-AUDIT-P287-17-57-6-FARSH2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P287-R00879",
+        "sourceText": "رَبِّهُمُ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P287-17-57-6-FARSH2-EXT",
+        "variantId": "v-AUDIT-P287-17-57-6-FARSH2",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/57",
+        "sourceText": "رَبِّهُمُ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "رَبِّهُمُ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "رَبِّهُمُ",
+        "url": "https://quranpedia.net/qiraat/al-isra/57"
+      }
+    ]
   }
 ]
