@@ -58,6 +58,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-22 — Qiraat source-backed Hisham attribution repair
+
+- Added guarded idempotent `scripts/qiraat/repair-q04-hisham-attribution.mjs`, narrowing five explicit “وكذا هشام” links on pages 226, 228, 242, and 244 to Q04-R01.
+- Left page 334 and the page-322 Q10 conflict unchanged; no PostgreSQL rows were modified.
+- Verification: first run changed 5 links; second run changed 0 and confirmed 5 unchanged; audit reduced attribution expansion failures from 8 to 3.
+
 ## 2026-09-22 — Qiraat tail-page and duplicate-key review
 
 - Added `docs/qiraat-tail-pages-review.md` and `docs/qiraat-duplicate-key-review.md` documenting that pages 585–604 have no reachable authoritative Qira'at source and that 25 duplicate importer-key rows represent distinct reading faces.

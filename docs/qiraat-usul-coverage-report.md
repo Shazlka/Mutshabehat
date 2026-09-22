@@ -14,10 +14,10 @@ One report is generated for every Mushaf page at `audit/page-NNN.json`.
   or reading IDs, and 0 blank attribution actions. The inventory includes all 307
   distinct source-preserved action strings; the detail panel renders those
   strings verbatim rather than collapsing their scholarly qualifiers.
-- The authority-expansion audit now has 8 remaining missing reader/rawi
-  expansions: Q04 attribution lacks Q04-R02 on pages 226, 228, 242, 244, and
-  334 (6 records), and the conflicting page-322 Q10 attribution lacks both
-  narrators (1 record). Fourteen source-backed Q10 records on pages 319–321
+- The authority-expansion audit now has 3 remaining missing reader/rawi
+  expansions: the page-334 Q04 link and the conflicting page-322 Q10 link.
+  Five source-backed Q04 links on pages 226, 228, 242, and 244 were narrowed to
+  Q04-R01 (Hisham), and fourteen source-backed Q10 records on pages 319–321
   were repaired idempotently with 28 narrator assignments. The remaining items
   are classified as existing-data association/conflict cases, not missing
   recitations; no PostgreSQL data was changed.

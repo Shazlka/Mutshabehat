@@ -12,8 +12,8 @@
     "unknownReadings": 0,
     "unknownAuthorities": 0,
     "emptyActions": 0,
-    "attributionExpansionFailures": 8,
-    "actionDetailDifferences": 9,
+    "attributionExpansionFailures": 3,
+    "actionDetailDifferences": 4,
     "contextual": 2601
   },
   "registry": [
@@ -14419,7 +14419,7 @@
         "WAQF_HAMZA"
       ],
       "authorities": [
-        "Q04"
+        "Q04-R01"
       ],
       "rendering": "SOURCE_PRESERVED_VERBATIM",
       "classification": "SUPPORTED_AS_SOURCE_PRESERVED_DETAIL",

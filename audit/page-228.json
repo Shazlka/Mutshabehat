@@ -1,6 +1,6 @@
 {
   "page": 228,
-  "status": "FAIL",
+  "status": "PASS",
   "source": "fixture",
   "records": 37,
   "variants": 4,
@@ -13,22 +13,8 @@
   "unknownReadings": [],
   "unknownAuthorities": [],
   "emptyActions": [],
-  "attributionExpansionFailures": [
-    {
-      "id": "r-p228-027-1",
-      "expected": "Q04-R02"
-    }
-  ],
-  "actionDetailDifferences": [
-    {
-      "id": "r-p228-027-1",
-      "readingId": "Q04-R02",
-      "attributionActions": [
-        "النقل والإدغام (سكوناً وروماً)"
-      ],
-      "readingActions": []
-    }
-  ],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
   "contextualRules": [
     "r-p228-001-1",
     "r-p228-021-1",

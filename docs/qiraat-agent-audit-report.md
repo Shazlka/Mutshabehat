@@ -21,6 +21,11 @@ reader assignments). The fifteenth Q10 event, page 322, remains a documented
 source conflict and was not changed. The repair is idempotent: rerunning it
 reported `added: 0, unchanged: 28`.
 
+It also narrowed five Q04 reader-level attributions on pages 226, 228, 242
+(two records), and 244 to Q04-R01 (Hisham), because each authoritative source
+note explicitly says “وكذا هشام”. The repair is idempotent and leaves page 334
+unchanged because its source names only Hamza.
+
 No agent inserted, updated, or deleted a Qira'at row. No page was added to the database.
 
 ## Deterministic inventory
@@ -47,10 +52,11 @@ These are `DATA_EXISTS_WRONG_ASSOCIATION`, `DATA_CONFLICT`, or `DATA_DUPLICATE`,
 - `npm run test:qiraat` — PASS (40 tests, including data and frontend validation).
 - `npm run typecheck` — PASS.
 - `python3 -m py_compile scripts/qiraat/audit_postgres_reconciliation.py` — PASS.
-- `npm run qiraat:audit` — expected non-zero status because it surfaces 36 attribution expansion failures and 37 source-detail differences; no unknown-rule failure.
+- `npm run qiraat:audit` — expected non-zero status because it surfaces 3 remaining attribution expansion failures and 4 source-detail differences; no unknown-rule failure.
 - PostgreSQL preflight against `mutshabehat-db:5433` — read-only; 7,247 entries, 244 pages, 0 database-only rows, 64 conflicts.
 - `node scripts/qiraat/repair-q10-riwayah-attribution.mjs` — first run added 28 fixture assignments; second run added 0 and confirmed 28 unchanged.
+- `node scripts/qiraat/repair-q04-hisham-attribution.mjs` — first run narrowed 5 source-backed links; second run changed 0 and confirmed 5 unchanged.
 
 ## Reviewer conclusion
 
-All recognized fixture rules have working normalization, reader/rawi filtering, contextual endpoint handling, and frontend marker coverage. The remaining work is not a safe blind import: it requires authoritative source review for the remaining 8 attribution expansion events (including the page-322 conflict), 62 association conflicts, 25 duplicate keys, and absent pages 585–604. Production data was not mutated and no deployment was performed from this incomplete review state.
+All recognized fixture rules have working normalization, reader/rawi filtering, contextual endpoint handling, and frontend marker coverage. The remaining work is not a safe blind import: it requires authoritative source review for the remaining 3 attribution expansion events (page 334 Q04 and page 322 Q10), 62 association conflicts, 25 duplicate keys, and absent pages 585–604. Production data was not mutated and no deployment was performed from this incomplete review state.
