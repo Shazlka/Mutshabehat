@@ -512,6 +512,8 @@ export default function Mushaf1441Viewer({
   // Preview of a Qiraat marker on hover (desktop) or first tap (mobile) — Part 20's "never rely on
   // color alone." A second tap/click on the SAME already-peeked word opens the full detail panel.
   const [hoveredQiraatWord, setHoveredQiraatWord] = useState<{ word: MushafWord; marker: WordMarker } | null>(null)
+  const [hoveredQiraatSelection, setHoveredQiraatSelection] = useState<QiraatSelection | null>(null)
+  const [hoveredQiraatFocusWord, setHoveredQiraatFocusWord] = useState<MushafWord | null>(null)
   // Word buttons live inside a memoized MushafPageSlot that intentionally does not re-render on
   // this state alone (only the sibling popup does) — so a word's own onClick closure can be stale.
   // This ref mirrors the state and is always read fresh, so the peek/open-detail decision in
@@ -520,6 +522,10 @@ export default function Mushaf1441Viewer({
   function updateHoveredQiraatWord(value: { word: MushafWord; marker: WordMarker } | null) {
     hoveredQiraatWordIdRef.current = value?.word.id ?? null
     setHoveredQiraatWord(value)
+    if (!value) {
+      setHoveredQiraatSelection(null)
+      setHoveredQiraatFocusWord(null)
+    }
   }
   const [toast, setToast] = useState<string | null>(null)
   const [pageSliderPreview, setPageSliderPreview] = useState<number | null>(null)
@@ -1899,14 +1905,7 @@ export default function Mushaf1441Viewer({
   // (Part 13's "tap a word/phrase → bottom sheet"), instead of the notes tab `selectWord` opens.
   // Returns false when the token carries no Qiraat data at all, so a press that would open an
   // empty panel simply does nothing (and plays no haptic).
-  function selectWordForQiraat(word: MushafWord): boolean {
-    setSelectedAyahKey(null)
-    setSelectedWord(null)
-    setSelectedWordRange(null)
-    if (qiraatSelection?.word.id === word.id) {
-      setQiraatSelection(null)
-      return true
-    }
+  function qiraatSelectionForWord(word: MushafWord): QiraatSelection | null {
     const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
       ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
       : qiraatView.filter
@@ -1921,8 +1920,21 @@ export default function Mushaf1441Viewer({
     const variants = effectiveFilter.kind === 'all'
       ? allVariants
       : allVariants.filter((variant) => matchesFilter(variant, effectiveFilter))
-    if (!rulings.length && !variants.length) return false
-    setQiraatSelection({ word, rulings, variants })
+    if (!rulings.length && !variants.length) return null
+    return { word, rulings, variants }
+  }
+
+  function selectWordForQiraat(word: MushafWord): boolean {
+    setSelectedAyahKey(null)
+    setSelectedWord(null)
+    setSelectedWordRange(null)
+    if (qiraatSelection?.word.id === word.id) {
+      setQiraatSelection(null)
+      return true
+    }
+    const selection = qiraatSelectionForWord(word)
+    if (!selection) return false
+    setQiraatSelection(selection)
     return true
   }
 
@@ -2462,12 +2474,21 @@ export default function Mushaf1441Viewer({
           // tap, which would otherwise clear a peek the instant after onClick just set it.
           if (event.pointerType !== 'mouse') return
           if (readerLayer !== 'qiraat') setHoveredAyahKey(word.ayahKey)
-          if (qiraatMarker) updateHoveredQiraatWord({ word, marker: qiraatMarker })
+          if (readerLayer === 'qiraat') {
+            const selection = qiraatSelectionForWord(word)
+            setHoveredQiraatFocusWord(word)
+            setHoveredQiraatSelection(selection)
+            if (qiraatMarker) updateHoveredQiraatWord({ word, marker: qiraatMarker })
+          }
         }}
         onPointerLeave={(event) => {
           if (event.pointerType !== 'mouse') return
           if (readerLayer !== 'qiraat') setHoveredAyahKey((current) => (current === word.ayahKey ? null : current))
-          if (hoveredQiraatWordIdRef.current === word.id) updateHoveredQiraatWord(null)
+          if (hoveredQiraatWordIdRef.current === word.id || readerLayer === 'qiraat') {
+            updateHoveredQiraatWord(null)
+            setHoveredQiraatSelection(null)
+            setHoveredQiraatFocusWord(null)
+          }
         }}
         onContextMenu={(event) => liveRef.current.openWordContextMenu(event, word)}
         onTouchStart={(event) => {
@@ -3786,15 +3807,15 @@ export default function Mushaf1441Viewer({
    * is read (the action, e.g. إمالة / تقليل / ترقيق الراء) and WHO reads it that way — grouped by
    * action, because one word routinely carries two different actions by two different groups.
    */
-  function renderQiraatSelection() {
-    if (!qiraatSelection) {
+  function renderQiraatSelection(selection: QiraatSelection | null = qiraatSelection) {
+    if (!selection) {
       return (
         <p className="rounded-lg border border-dashed border-[#d7c7a7] bg-[#fffdf8] p-3 text-xs leading-6 text-[#8b7f6a]">
           اضغط على أي كلمة ملوَّنة في الصفحة ليظهر هنا بيانُ حكمها: كيف تُقرأ، ولمن.
         </p>
       )
     }
-    const { word, rulings, variants } = qiraatSelection
+    const { word, rulings, variants } = selection
     return (
       <div className="space-y-2.5">
         <div className="flex items-baseline justify-between gap-2 border-b border-[#eadfc9] pb-2">
@@ -3931,10 +3952,10 @@ export default function Mushaf1441Viewer({
         </button>
         {/* The Qiraat peek lives here rather than floating over the page: an overlay on top of
             the lines swallowed the next word press and closed itself before it could be read. */}
-        {hoveredQiraatWord ? <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>{renderQiraatHoverCard('sidebar')}</div> : null}
+        {hoveredQiraatWord && !hoveredQiraatSelection ? <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>{renderQiraatHoverCard('sidebar')}</div> : null}
 
         <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
-          {renderQiraatSelection()}
+          {renderQiraatSelection(hoveredQiraatFocusWord ? hoveredQiraatSelection : qiraatSelection)}
         </div>
 
         <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
