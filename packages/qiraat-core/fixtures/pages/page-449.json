@@ -95,5 +95,128 @@
     "description": "بضم الياء",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D449-يابني-w2",
+    "surah": 37,
+    "ayah": 102,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰبُنَىَّ",
+    "variantText": "يَابُنَيِّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D449-يابني",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D449-يابني-w2",
+        "variantId": "v-D449-يابني-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P449-R02568",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَـٰبُنَيَّ﴾: بفتح الياء لحفص؛ وبكسر الياء ﴿يَابُنَيِّ﴾ للباقين."
+      }
+    ],
+    "description": "بكسر الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D449-ماذا_ترا-w2",
+    "surah": 37,
+    "ayah": 102,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "مَاذَا تَرَىٰ ۚ",
+    "variantText": "مَاذَا تُرِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D449-ماذا_ترا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D449-ماذا_ترا-w2",
+        "variantId": "v-D449-ماذا_ترا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P449-R02569",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مَاذَا تَرَىٰ﴾: بفتح التاء والراء للجمهور؛ وبضم التاء وكسر الراء ﴿مَاذَا تُرِي﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بضم التاء وكسر الراء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D449-ياابت-w2",
+    "surah": 37,
+    "ayah": 102,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰٓأَبَتِ",
+    "variantText": "يَـٰٓأَبَتَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D449-ياابت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D449-ياابت-w2",
+        "variantId": "v-D449-ياابت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P449-R02570",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَـٰٓأَبَتِ﴾: بالكسر للجمهور؛ وبالفتح ﴿يَـٰٓأَبَتَ﴾ لابن عامر وأبي جعفر (ويقف عليها بالهاء ابن كثير وابن عامر وأبو جعفر ويعقوب)."
+      }
+    ],
+    "description": "بالفتح",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

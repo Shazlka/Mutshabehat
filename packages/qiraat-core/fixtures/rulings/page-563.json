@@ -31,14 +31,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -65,16 +57,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -82,7 +64,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03638 — الممال والمقلل: ﴿أَهْدَىٰٓ﴾، ﴿مَتَىٰ﴾: حمزة، الكسائي، خلف، وقللهما ورش بخلف. ﴿الْأَفْـِٔدَةَ﴾: أمال هاء التأنيث وقفاً الكسائي."
+    ]
   },
   {
     "id": "r-p563-IMALAH_TAQLIL-متا-1",
@@ -116,14 +101,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -150,16 +127,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -167,7 +134,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03638 — الممال والمقلل: ﴿أَهْدَىٰٓ﴾، ﴿مَتَىٰ﴾: حمزة، الكسائي، خلف، وقللهما ورش بخلف. ﴿الْأَفْـِٔدَةَ﴾: أمال هاء التأنيث وقفاً الكسائي."
+    ]
   },
   {
     "id": "r-p563-HAMZATAN_KALIMA-ءامنتم-2",
@@ -349,7 +319,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03639 — الهمزتان من كلمة: ﴿ءَأَمِنتُم﴾: التسهيل مع الإدخال لقالون وأبي عمرو وهشام (بخلف) وأبي جعفر؛ والإبدال ألفاً مقصورة لورش (بخلف)؛ والتسهيل بلا إدخال لورش وابن كثير ورويس؛ والتحقيق مع الإدخال لهشام؛ والتحقيق بلا إدخال للباقين."
+    ]
   },
   {
     "id": "r-p563-HAMZATAN_KALIMATAYN-السماء_ان-3",
@@ -453,7 +426,10 @@
     "hasAlternate": false,
     "notes": "معاً",
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03640 — الهمزتان من كلمتين: ﴿السَّمَآءِ أَن﴾ (معاً): إبدال الهمزة الثانية ياءً لنافع، ابن كثير، أبو عمرو، أبو جعفر، رويس؛ والتحقيق للباقين."
+    ]
   },
   {
     "id": "r-p563-IKHFA-rule-67-14-3",
@@ -538,7 +514,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03641 — ياءات الزوائد: ﴿نَذِيرِ﴾، ﴿نَكِيرِ﴾: إثبات الياء وصلاً لورش ﴿نَذِيرِي... نَكِيرِي﴾؛ وفي الحالين ليعقوب."
+    ]
   },
   {
     "id": "r-p563-YAAT_ZAWAID-نكير-3",
@@ -587,6 +566,163 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03641 — ياءات الزوائد: ﴿نَذِيرِ﴾، ﴿نَكِيرِ﴾: إثبات الياء وصلاً لورش ﴿نَذِيرِي... نَكِيرِي﴾؛ وفي الحالين ليعقوب."
+    ]
+  },
+  {
+    "id": "r-p563-HAMZATAN_KALIMATAYN-السماء_ان-17",
+    "pageNumber": 563,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 67,
+    "ayah": 17,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 17,
+    "baseText": "ٱلسَّمَآءِ أَن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة الثانية ياءً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إبدال الهمزة الثانية ياءً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إبدال الهمزة الثانية ياءً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "معاً",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03640 — الهمزتان من كلمتين: ﴿السَّمَآءِ أَن﴾ (معاً): إبدال الهمزة الثانية ياءً لنافع، ابن كثير، أبو عمرو، أبو جعفر، رويس؛ والتحقيق للباقين."
+    ]
+  },
+  {
+    "id": "r-p563-IMALAH_TAQLIL-afidah-23",
+    "pageNumber": 563,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 67,
+    "ayah": 23,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 23,
+    "baseText": "وَٱلْأَفْـِٔدَةَ ۖ",
+    "verificationStatus": "REVIEWED",
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "condition": "وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true,
+        "condition": "وقفاً"
+      }
+    ],
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P563-R03638 — الممال والمقلل: ﴿أَهْدَىٰٓ﴾، ﴿مَتَىٰ﴾: حمزة، الكسائي، خلف، وقللهما ورش بخلف. ﴿الْأَفْـِٔدَةَ﴾: أمال هاء التأنيث وقفاً الكسائي."
+    ]
   }
 ]

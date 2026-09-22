@@ -1,1 +1,223 @@
-[]
+[
+  {
+    "id": "v-D568-سال-w2",
+    "surah": 70,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "سَأَلَ",
+    "variantText": "سَالَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D568-سال",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D568-سال-w2",
+        "variantId": "v-D568-سال-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03686؛ Quranpedia https://quranpedia.net/qiraat/al-maarij/1",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-maarij/1",
+        "sourceText": "﴿سَأَلَ﴾ (فاتحة المعارج): بهمزة مفتوحة للجمهور؛ بإبدال الهمزة ألفاً ﴿سَالَ﴾ لنافع، وابن عامر، وأبي جعفر."
+      }
+    ],
+    "description": "بإبدال الهمزة ألفاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D568-تعرج-w2",
+    "surah": 70,
+    "ayah": 4,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "تَعْرُجُ",
+    "variantText": "يَعْرُجُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D568-تعرج",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D568-تعرج-w2",
+        "variantId": "v-D568-تعرج-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03687؛ Quranpedia https://quranpedia.net/qiraat/al-maarij/4",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-maarij/4",
+        "sourceText": "﴿تَعْرُجُ﴾: بتاء التأنيث للجمهور؛ بياء التذكير ﴿يَعْرُجُ﴾ للكسائي."
+      }
+    ],
+    "description": "بياء التذكير",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D568-يسل-w2",
+    "surah": 70,
+    "ayah": 10,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَسْـَٔلُ",
+    "variantText": "يُسْأَلُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D568-يسل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D568-يسل-w2",
+        "variantId": "v-D568-يسل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03688؛ Quranpedia https://quranpedia.net/qiraat/al-maarij/10",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-maarij/10",
+        "sourceText": "﴿يَسْـَٔلُ﴾: بفتح الياء وسكون السين وفتح الهمزة للجمهور؛ بضم الياء وفتح السين والهمزة مبنياً للمجهول ﴿يُسْأَلُ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم الياء وفتح السين والهمزة مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D568-تومنون-w2",
+    "surah": 69,
+    "ayah": 41,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "تُؤْمِنُونَ",
+    "variantText": "يُؤْمِنُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D568-تومنون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D568-تومنون-w2",
+        "variantId": "v-D568-تومنون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03684؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/41",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-haaqqa/41 ضُبطت المجموعة على نص الآية: ابن ذكوان وهشام عن ابن عامر، راويا ابن كثير، ورويس وروح عن يعقوب.",
+        "sourceText": "بياء الغيب فيهما وتشديد الذال ﴿يُؤْمِنُونَ... يَذَّكَّرُونَ﴾: ابن كثير، وابن عامر (في وجهه الثاني)، ويعقوب."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D568-تومنون-w3",
+    "surah": 69,
+    "ayah": 41,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "تُؤْمِنُونَ",
+    "variantText": "تُومِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D568-تومنون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D568-تومنون-w3",
+        "variantId": "v-D568-تومنون-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03685؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/41",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-haaqqa/41 الوجه خاص بورش والسوسي وأبي جعفر كما تفصل ملاحظة المصدر والقائمة الدقيقة.",
+        "sourceText": "بتاء الخطاب وتخفيف الذال ﴿تُؤْمِنُونَ... تَذْكُرُونَ﴾: نافع، وأبو عمرو، وابن ذكوان (بخلف عنه)، وشعبة، وأبو جعفر."
+      }
+    ],
+    "description": "بتاء الخطاب وإبدال الهمزة واواً",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D568-تذكرون-w2",
+    "surah": 69,
+    "ayah": 42,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذَّكَّرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D568-تذكرون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D568-تذكرون-w2",
+        "variantId": "v-D568-تذكرون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03685؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/42",
+        "verificationNotes": "المجموعة ضُبطت على اختلاف الآية ٤٢ في Quranpedia: التاء مع التشديد تشمل هشامًا وابن ذكوان عن ابن عامر.",
+        "sourceText": "بتاء الخطاب وتخفيف الذال ﴿تُؤْمِنُونَ... تَذْكُرُونَ﴾: نافع، وأبو عمرو، وابن ذكوان (بخلف عنه)، وشعبة، وأبو جعفر."
+      }
+    ],
+    "description": "بتاء الخطاب وتشديد الذال",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

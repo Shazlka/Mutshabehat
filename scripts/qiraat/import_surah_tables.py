@@ -48,7 +48,9 @@ GROUPS = {
 }
 # longest-name-first so "خلف العاشر" wins over "خلف", "الدوري عن الكسائي" over "الدوري"
 NAR_DISAMBIG = {'الدوري عن أبي عمرو': N['الدوري عن أبي عمرو'],
-                'الدوري عن الكسائي': N['الدوري عن الكسائي']}
+                'الدوري عن الكسائي': N['الدوري عن الكسائي'],
+                'إسحاق عن خلف': A.NARRATOR_ALIASES['إسحاق عن خلف'],
+                'إدريس عن خلف': A.NARRATOR_ALIASES['إدريس عن خلف']}
 NAMED = {}
 for k,v in GROUPS.items(): NAMED[k]=set(v)
 for k,v in NAR_DISAMBIG.items(): NAMED[k]={v}
@@ -58,6 +60,8 @@ for nm,q in N.items():
 for nm,q in R.items():
     NAMED[nm]=set(A.readings_of(q))
 NAMED['خلف العاشر']=set(A.readings_of(R['خلف العاشر']))
+# Project convention: an unqualified «خلف» denotes خلف عن حمزة (Q06-R01).
+NAMED['خلف']={N['خلف عن حمزة']}
 # tokens that must never resolve from a bare form
 AMBIG = ('الدوري', )
 NAMES_BY_LEN = sorted(NAMED, key=len, reverse=True)
@@ -85,8 +89,6 @@ def resolve_readers(phrase, claimed):
     def guard(t):
         if t.startswith('الدوري') and not any(t.startswith(x) for x in NAR_DISAMBIG):
             raise Unresolved('bare «الدوري»')
-        if t.startswith('خلف') and not t.startswith('خلف العاشر') and not t.startswith('خلف عن'):
-            raise Unresolved('bare «خلف»')
     while s:
         s = s.lstrip(' \t،,')
         if not s: break

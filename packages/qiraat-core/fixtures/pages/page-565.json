@@ -1,1 +1,214 @@
-[]
+[
+  {
+    "id": "v-DOCX-565-R03653-4974406f",
+    "surah": 68,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَنِ ٱغْدُوا۟",
+    "variantText": "أَنِ ٱغْدُوا۟",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "DOCX-P565-R03653-22-1",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P565-R03653",
+        "variantId": "v-DOCX-565-R03653-4974406f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P565-R03653",
+        "sourceText": "﴿أَنِ ٱغْدُواْ﴾: بكسر النون وصلاً لأبي عمرو وعاصم وحمزة ويعقوب؛ وبضم النون وصلاً ﴿أَنُ اغْدُوا﴾ للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P565-R03653-4974406f-EXT",
+        "variantId": "v-DOCX-565-R03653-4974406f",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/22",
+        "sourceText": "ضم النون لقالون وورش وابن كثير وابن عامر والكسائي وأبي جعفر وخلف العاشر.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿أَنِ ٱغْدُواْ﴾: بكسر النون وصلاً لأبي عمرو وعاصم وحمزة ويعقوب؛ وبضم النون وصلاً ﴿أَنُ اغْدُوا﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم النون لقالون وورش وابن كثير وابن عامر والكسائي وأبي جعفر وخلف العاشر.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/22"
+      }
+    ],
+    "performanceNote": "ضم النون وصلاً"
+  },
+  {
+    "id": "v-DOCX-565-R03654-522b56dc",
+    "surah": 68,
+    "ayah": 32,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَن يُبْدِلَنَا",
+    "variantText": "أَن يُبْدِلَنَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "DOCX-P565-R03654-32-3",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P565-R03654",
+        "variantId": "v-DOCX-565-R03654-522b56dc",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P565-R03654",
+        "sourceText": "﴿يُبْدِلَنَا﴾: بتشديد الدال المفتوحة ﴿يُبَدِّلَنَا﴾ لنافع وأبي عمرو وأبي جعفر؛ وبتخفيف الدال وسكون الباء ﴿يُبْدِلَنَا﴾ للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P565-R03654-522b56dc-EXT",
+        "variantId": "v-DOCX-565-R03654-522b56dc",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/32",
+        "sourceText": "إدريس عن خلف يقرأ بإدغام النون في الياء بلا غنة مع إسكان الباء وتخفيف الدال.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿يُبْدِلَنَا﴾: بتشديد الدال المفتوحة ﴿يُبَدِّلَنَا﴾ لنافع وأبي عمرو وأبي جعفر؛ وبتخفيف الدال وسكون الباء ﴿يُبْدِلَنَا﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إدريس عن خلف يقرأ بإدغام النون في الياء بلا غنة مع إسكان الباء وتخفيف الدال.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/32"
+      }
+    ],
+    "performanceNote": "إدغام النون في الياء بلا غنة"
+  },
+  {
+    "id": "v-DOCX-565-R03654-bb76c41d",
+    "surah": 68,
+    "ayah": 32,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "يُبْدِلَنَا",
+    "variantText": "يُبْدِلَنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P565-R03654-32-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P565-R03654",
+        "variantId": "v-DOCX-565-R03654-bb76c41d",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P565-R03654",
+        "sourceText": "﴿يُبْدِلَنَا﴾: بتشديد الدال المفتوحة ﴿يُبَدِّلَنَا﴾ لنافع وأبي عمرو وأبي جعفر؛ وبتخفيف الدال وسكون الباء ﴿يُبْدِلَنَا﴾ للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P565-R03654-bb76c41d-EXT",
+        "variantId": "v-DOCX-565-R03654-bb76c41d",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/32",
+        "sourceText": "يبدلنا بفتح الباء وتشديد الدال: نافع، وأبو عمرو، وأبو جعفر.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿يُبْدِلَنَا﴾: بتشديد الدال المفتوحة ﴿يُبَدِّلَنَا﴾ لنافع وأبي عمرو وأبي جعفر؛ وبتخفيف الدال وسكون الباء ﴿يُبْدِلَنَا﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "يبدلنا بفتح الباء وتشديد الدال: نافع، وأبو عمرو، وأبو جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/32"
+      }
+    ],
+    "performanceNote": "فتح الباء وتشديد الدال"
+  },
+  {
+    "id": "v-DOCX-565-R03655-0b31d8d6",
+    "surah": 68,
+    "ayah": 38,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لَمَا تَخَيَّرُونَ",
+    "variantText": "لَمَا تَخَيَّرُونَ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "DOCX-P565-R03655-38-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P565-R03655",
+        "variantId": "v-DOCX-565-R03655-0b31d8d6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P565-R03655",
+        "sourceText": "﴿لَمَا تَخَيَّرُونَ﴾: بتخفيف التاء للجمهور؛ وبتشديد التاء وصلاً مع المد المشبع ﴿لَمَا تَّخَيَّرُونَ﴾ للبزي.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P565-R03655-0b31d8d6-EXT",
+        "variantId": "v-DOCX-565-R03655-0b31d8d6",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/38",
+        "sourceText": "البزي عن ابن كثير يقرأ لَمَآ تَّخَيَّرُونَ بمد الألف ست حركات وتشديد التاء.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿لَمَا تَخَيَّرُونَ﴾: بتخفيف التاء للجمهور؛ وبتشديد التاء وصلاً مع المد المشبع ﴿لَمَا تَّخَيَّرُونَ﴾ للبزي.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "البزي عن ابن كثير يقرأ لَمَآ تَّخَيَّرُونَ بمد الألف ست حركات وتشديد التاء.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/38"
+      }
+    ],
+    "performanceNote": "مد الألف ست حركات وتشديد التاء"
+  }
+]

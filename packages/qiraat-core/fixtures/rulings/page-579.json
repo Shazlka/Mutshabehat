@@ -31,14 +31,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -65,16 +57,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -82,7 +64,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P579-R03796 | الممال والمقلل: ﴿فَوَقَىٰهُمُ﴾، ﴿وَجَزَىٰهُم﴾، ﴿تُسَمَّىٰ﴾، ﴿سَقَىٰهُمْ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. | المصدر يذكر خلف مجرداً؛ أُسند إلى خلف عن حمزة (Q06)، ولم يُذكر خلف العاشر."
+    ]
   },
   {
     "id": "r-p579-IMALAH_TAQLIL-وجزاهم-1",
@@ -116,14 +101,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -150,16 +127,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -167,7 +134,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P579-R03796 | الممال والمقلل: ﴿فَوَقَىٰهُمُ﴾، ﴿وَجَزَىٰهُم﴾، ﴿تُسَمَّىٰ﴾، ﴿سَقَىٰهُمْ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. | المصدر يذكر خلف مجرداً؛ أُسند إلى خلف عن حمزة (Q06)، ولم يُذكر خلف العاشر."
+    ]
   },
   {
     "id": "r-p579-IMALAH_TAQLIL-تسما-2",
@@ -201,14 +171,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -235,16 +197,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -252,7 +204,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P579-R03796 | الممال والمقلل: ﴿فَوَقَىٰهُمُ﴾، ﴿وَجَزَىٰهُم﴾، ﴿تُسَمَّىٰ﴾، ﴿سَقَىٰهُمْ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. | المصدر يذكر خلف مجرداً؛ أُسند إلى خلف عن حمزة (Q06)، ولم يُذكر خلف العاشر."
+    ]
   },
   {
     "id": "r-p579-TAGHYIR_HAMZ-متكين-3",
@@ -378,5 +333,117 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p579-IDGHAM_SAGHIR--6",
+    "pageNumber": 579,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 76,
+    "ayah": 24,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 24,
+    "baseText": "فَٱصْبِرْ لِحُكْمِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام الراء في اللام، وله الإظهار بخلف"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إظهار الراء ساكنة",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P579-R03797 | الإدغام الصغير: ﴿فَٱصْبِرْ لِحُكْمِ﴾: أبو عمرو بخلف عن الدوري. | مصدر وثيقة الاستخراج؛ موضع الكلمة حُلّ من ملف كلمات المصحف.",
+      "https://quranpedia.net/qiraat/al-insan/24 | الإدغام: الدوري والسوسي عن أبي عمرو؛ والإظهار: الدوري عن أبي عمرو، وسائر الرواة المذكورون في مرجع الآية. | مرجع مستقل يعرض رواة القراءات العشر في الآية نفسها."
+    ],
+    "notes": "الدوري عن أبي عمرو له الخلاف، والسوسي عن أبي عمرو يدغم."
+  },
+  {
+    "id": "r-p579-TAGHYIR_HAMZ--7",
+    "pageNumber": 579,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 76,
+    "ayah": 19,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 19,
+    "baseText": "لُؤْلُؤًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R01",
+        "action": "إبدال الهمزة الأولى واواً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة الأولى واواً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة الأولى واواً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة الأولى واواً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R01",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P579-R03798 | تغيير الهمز: ﴿مُتَّكِـِٔينَ﴾: بحذف الهمزة لأبي جعفر. ﴿كَأْسٗا﴾: إبدال للسوسي وأبي جعفر. ﴿لُؤْلُؤٗا﴾: أبدل الهمزة الأولى واواً شعبة والسوسي وأبو جعفر. | مصدر وثيقة الاستخراج؛ موضع الكلمة حُلّ من ملف كلمات المصحف.",
+      "https://quranpedia.net/qiraat/al-insan/19 | إبدال الهمزة الأولى واواً ساكنة: ابن وردان عن أبي جعفر، شعبة عن عاصم، ابن جمّاز عن أبي جعفر، السوسي عن أبي عمرو. | مرجع مستقل يعرض رواة القراءات العشر في الآية نفسها."
+    ]
   }
 ]

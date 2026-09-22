@@ -59,7 +59,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P489-R02932",
+    "sourceText": "الممال والمقلل: ﴿حم﴾: أمال الحاء ابن ذكوان، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو. ﴿وَمَضَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02932",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/1"
   },
   {
     "id": "r-p489-IMALAH_TAQLIL-ومضا-1",
@@ -93,14 +97,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -127,16 +123,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -144,7 +130,12 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P489-R02932",
+    "sourceText": "الممال والمقلل: ﴿حم﴾: أمال الحاء ابن ذكوان، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو. ﴿وَمَضَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02932",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/8"
   },
   {
     "id": "r-p489-TAGHYIR_HAMZ-يستهزءون-2",
@@ -184,7 +175,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P489-R02933",
+    "sourceText": "تغيير الهمز: ﴿يَأْتِيهِم﴾: ورش، السوسي، أبو جعفر. ﴿يَسْتَهْزِءُونَ﴾: بحذف الهمزة لأبي جعفر.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02933",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/7"
   },
   {
     "id": "r-p489-IKHFA-rule-43-9-3",

@@ -1,1 +1,171 @@
-[]
+[
+  {
+    "id": "v-DOCX-566-R03659-1f48e4d0",
+    "surah": 68,
+    "ayah": 48,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P566-R03659-48-10",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P566-R03659",
+        "variantId": "v-DOCX-566-R03659-1f48e4d0",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P566-R03659",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "إسكان الهاء"
+  },
+  {
+    "id": "v-DOCX-566-R03659-5ada8c44",
+    "surah": 68,
+    "ayah": 49,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P566-R03659-49-9",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P566-R03659",
+        "variantId": "v-DOCX-566-R03659-5ada8c44",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P566-R03659",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "إسكان الهاء"
+  },
+  {
+    "id": "v-DOCX-566-R03660-ff94f576",
+    "surah": 68,
+    "ayah": 51,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لَيُزْلِقُونَكَ",
+    "variantText": "لَيُزْلِقُونَكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P566-R03660-51-5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P566-R03660",
+        "variantId": "v-DOCX-566-R03660-ff94f576",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P566-R03660",
+        "sourceText": "﴿لَيُزْلِقُونَكَ﴾: بفتح الياء ﴿لَيَزْلِقُونَكَ﴾ لنافع وأبي جعفر؛ بضم الياء ﴿لَيُزْلِقُونَكَ﴾ للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P566-R03660-ff94f576-EXT",
+        "variantId": "v-DOCX-566-R03660-ff94f576",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/51",
+        "sourceText": "فتح الياء لنافع وأبي جعفر في ليزلقونك.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿لَيُزْلِقُونَكَ﴾: بفتح الياء ﴿لَيَزْلِقُونَكَ﴾ لنافع وأبي جعفر؛ بضم الياء ﴿لَيُزْلِقُونَكَ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "فتح الياء لنافع وأبي جعفر في ليزلقونك.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/51"
+      }
+    ],
+    "performanceNote": "فتح الياء"
+  },
+  {
+    "id": "v-DOCX-566-R03661-cc9861f6",
+    "surah": 69,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P566-R03661-7-2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P566-R03661",
+        "variantId": "v-DOCX-566-R03661-cc9861f6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P566-R03661",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (الحاقة): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      }
+    ],
+    "description": "﴿عَلَيْهِمْ﴾ (الحاقة): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "ضم الهاء"
+  }
+]

@@ -274,5 +274,85 @@
         "text": "وَإِنَّ افْتَحِ ادْعُ حُزْ"
       }
     ]
+  },
+  {
+    "id": "v-D345-لديهم-w2",
+    "surah": 23,
+    "ayah": 53,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "لَدَيْهِمْ",
+    "variantText": "لَدَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D345-لديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D345-لديهم-w2",
+        "variantId": "v-D345-لديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P345-R01538",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D345-ايحسبون-w2",
+    "surah": 23,
+    "ayah": 55,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُونَ",
+    "variantText": "أَيَحْسِبُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D345-ايحسبون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D345-ايحسبون-w2",
+        "variantId": "v-D345-ايحسبون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P345-R01539",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَيَحْسَبُونَ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

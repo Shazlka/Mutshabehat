@@ -101,5 +101,166 @@
     "description": "بحذف الهمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P267-16-1-9-FARSH",
+    "surah": 16,
+    "ayah": 1,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يُشْرِكُونَ",
+    "variantText": "تُشْرِكُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P267-16-1-9-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P267-R00639",
+        "variantId": "v-AUDIT-P267-16-1-9-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P267-R00639",
+        "sourceText": "بياء الغيب: نافع، ابن كثير، أبو عمرو، ابن عامر، عاصم، أبو جعفر، يعقوب.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P267-R00640",
+        "variantId": "v-AUDIT-P267-16-1-9-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P267-R00640",
+        "sourceText": "بتاء الخطاب ﴿تُشْرِكُونَ﴾: حمزة، الكسائي، خلف العاشر.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P267-1-EXT",
+        "variantId": "v-AUDIT-P267-16-1-9-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/1",
+        "sourceText": "At an-Nahl 16:1: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.",
+        "verificationNotes": "مرجع مستقل يذكر الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بياء الغيب: نافع، ابن كثير، أبو عمرو، ابن عامر، عاصم، أبو جعفر، يعقوب. / بتاء الخطاب ﴿تُشْرِكُونَ﴾: حمزة، الكسائي، خلف العاشر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "At an-Nahl 16:1: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.",
+        "url": "https://quranpedia.net/qiraat/an-nahl/1"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P267-16-3-7-FARSH",
+    "surah": 16,
+    "ayah": 3,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يُشْرِكُونَ",
+    "variantText": "تُشْرِكُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P267-16-3-7-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P267-R00639",
+        "variantId": "v-AUDIT-P267-16-3-7-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P267-R00639",
+        "sourceText": "بياء الغيب: نافع، ابن كثير، أبو عمرو، ابن عامر، عاصم، أبو جعفر، يعقوب.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P267-R00640",
+        "variantId": "v-AUDIT-P267-16-3-7-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P267-R00640",
+        "sourceText": "بتاء الخطاب ﴿تُشْرِكُونَ﴾: حمزة، الكسائي، خلف العاشر.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P267-3-EXT",
+        "variantId": "v-AUDIT-P267-16-3-7-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/3",
+        "sourceText": "At an-Nahl 16:3: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.",
+        "verificationNotes": "مرجع مستقل يذكر الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بياء الغيب: نافع، ابن كثير، أبو عمرو، ابن عامر، عاصم، أبو جعفر، يعقوب. / بتاء الخطاب ﴿تُشْرِكُونَ﴾: حمزة، الكسائي، خلف العاشر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "At an-Nahl 16:3: address with tāʾ for Khalaf from Hamza, both al-Kisai narrators, and both Khalaf al-Ashir narrators; yāʾ for the other fourteen readings.",
+        "url": "https://quranpedia.net/qiraat/an-nahl/3"
+      }
+    ]
+  },
+  {
+    "id": "v-D267-ينزل_الملايكه-w2",
+    "surah": 16,
+    "ayah": 2,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُنَزِّلُ ٱلْمَلَـٰٓئِكَةَ",
+    "variantText": "يُنْزِلُ الْمَلَائِكَةَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D267-ينزل_الملايكه",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D267-ينزل_الملايكه-w2",
+        "variantId": "v-D267-ينزل_الملايكه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P267-R00643",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الياء وتخفيف الزاي ونصب الملائكة ﴿يُنْزِلُ الْمَلَائِكَةَ﴾: ابن كثير، أبو عمرو، رويس."
+      }
+    ],
+    "description": "بتخفيف الزاي",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

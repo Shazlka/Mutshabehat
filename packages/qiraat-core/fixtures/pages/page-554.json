@@ -1,1 +1,119 @@
-[]
+[
+  {
+    "id": "v-D554-يحسبون-w2",
+    "surah": 63,
+    "ayah": 4,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يَحْسَبُونَ",
+    "variantText": "يَحْسِبُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D554-يحسبون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D554-يحسبون-w2",
+        "variantId": "v-D554-يحسبون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P554-R03560",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَحْسَبُونَ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D554-عليهم-w2",
+    "surah": 63,
+    "ayah": 4,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ ۚ",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D554-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D554-عليهم-w2",
+        "variantId": "v-D554-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P554-R03561",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D554-خشب-w2",
+    "surah": 63,
+    "ayah": 4,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "خُشُبٌۭ",
+    "variantText": "خُشْبٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D554-خشب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D554-خشب-w2",
+        "variantId": "v-D554-خشب-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P554-R03559",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿خُشُبٌ﴾: بضم الشين ﴿خُشُبٌ﴾ لنافع، والبزي، وابن عامر، وعاصم، وحمزة، وأبي جعفر، ويعقوب، وخلف؛ بإسكان الشين ﴿خُشْبٌ﴾ لقنبل، وأبي عمرو، والكسائي."
+      }
+    ],
+    "description": "بإسكان الشين",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "id": "v-D247-ياابت-w2",
+    "surah": 12,
+    "ayah": 100,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰٓأَبَتِ",
+    "variantText": "يَـٰٓأَبَتَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D247-ياابت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D247-ياابت-w2",
+        "variantId": "v-D247-ياابت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 247، الكلمات الفرشية",
+        "verificationNotes": "المتغير ومجموعة القراء تأكدا بمقابلة مرجع مستقل؛ ثبتت الكلمة الأساس حرفياً من رمز الصفحة.",
+        "sourceText": "﴿يَـٰٓأَبَتِ﴾: بالكسر للجمهور؛ وبالفتح ﴿يَـٰٓأَبَتَ﴾ لابن عامر وأبي جعفر."
+      },
+      {
+        "id": "s-AUDIT-P247-100",
+        "variantId": "v-D247-ياابت-w2",
+        "sourceName": "النشر في القراءات العشر",
+        "sourceType": "printed-book",
+        "sourceReference": "https://www.islamweb.net/ar/library/content/70/241/",
+        "sourceText": "قرأ بفتح التاء في ياأبت حيث جاء أبو جعفر وابن عامر، والباقون بكسر التاء.",
+        "verificationNotes": "تحقق خارجي من صورة القراءة ومجموعة القراء الصريحة."
+      }
+    ],
+    "description": "بفتح التاء لابن عامر وأبي جعفر",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "النشر في القراءات العشر",
+        "text": "قرأ بفتح التاء في ياأبت حيث جاء أبو جعفر وابن عامر، والباقون بكسر التاء.",
+        "url": "https://www.islamweb.net/ar/library/content/70/241/"
+      }
+    ]
+  },
+  {
+    "id": "v-D247-لديهم-w2",
+    "surah": 12,
+    "ayah": 102,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "لَدَيْهِمْ",
+    "variantText": "لَدَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D247-لديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D247-لديهم-w2",
+        "variantId": "v-D247-لديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 247، الكلمات الفرشية",
+        "verificationNotes": "المتغير ومجموعة القراء تأكدا بمقابلة مرجع مستقل؛ ثبتت الكلمة الأساس حرفياً من رمز الصفحة.",
+        "sourceText": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب."
+      },
+      {
+        "id": "s-AUDIT-P247-102",
+        "variantId": "v-D247-لديهم-w2",
+        "sourceName": "إتحاف فضلاء البشر وغيث النفع، نقلاً في جمهرة العلوم",
+        "sourceType": "printed-book",
+        "sourceReference": "https://jamharah.net/showthread.php?p=176022",
+        "sourceText": "وضم هاء لديهم حمزة ويعقوب؛ وقراءة الباقين لديهم بكسر الهاء.",
+        "verificationNotes": "تحقق خارجي من صورة القراءة ومجموعة القراء الصريحة."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "إتحاف فضلاء البشر وغيث النفع، نقلاً في جمهرة العلوم",
+        "text": "وضم هاء لديهم حمزة ويعقوب؛ وقراءة الباقين لديهم بكسر الهاء.",
+        "url": "https://jamharah.net/showthread.php?p=176022"
+      }
+    ]
+  }
+]

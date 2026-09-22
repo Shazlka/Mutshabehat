@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "id": "v-D286-القرءان-w2",
+    "surah": 17,
+    "ayah": 41,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانِ",
+    "variantText": "الْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D286-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D286-القرءان-w2",
+        "variantId": "v-D286-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P286-R00856",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانِ﴾ (معاً)، ﴿الْقُرْءَانَ﴾: بنقل حركة الهمزة لابن كثير ﴿الْقُرَانِ﴾، ﴿الْقُرَانَ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D286-عما_يقولون-w2",
+    "surah": 17,
+    "ayah": 43,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَمَّا يَقُولُونَ",
+    "variantText": "عَمَّا تَقُولُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D286-عما_يقولون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D286-عما_يقولون-w2",
+        "variantId": "v-D286-عما_يقولون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P286-R00859",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَمَّا يَقُولُونَ﴾ (الثاني): بياء الغيب للجمهور؛ وبتاء الخطاب ﴿عَمَّا تَقُولُونَ﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D286-تسبح_له-w2",
+    "surah": 17,
+    "ayah": 44,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تُسَبِّحُ لَهُ",
+    "variantText": "يُسَبِّحُ لَهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D286-تسبح_له",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D286-تسبح_له-w2",
+        "variantId": "v-D286-تسبح_له-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P286-R00860",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تُسَبِّحُ لَهُ﴾: بتاء التأنيث لأبي عمرو وحفص وحمزة والكسائي ويعقوب وخلف؛ وبياء التذكير ﴿يُسَبِّحُ لَهُ﴾ للباقين."
+      }
+    ],
+    "description": "بياء التذكير",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D286-فيهن-w2",
+    "surah": 17,
+    "ayah": 44,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِنَّ ۚ",
+    "variantText": "فِيهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D286-فيهن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D286-فيهن-w2",
+        "variantId": "v-D286-فيهن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P286-R00861",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضم الهاء ﴿فِيهُنَّ﴾ ليعقوب (ويقف عليها بهاء السكت: ﴿فِيهُنَّهْ﴾)."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

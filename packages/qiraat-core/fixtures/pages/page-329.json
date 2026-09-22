@@ -89,5 +89,39 @@
         "text": "وَقُلْ زَكَرِيَّاءَ اثْبُتُوا بَعْدَ هَمْزِهِ كَمَا حَجَّ صَحْبٌ غَيْرَ شُعْبَةَ أَبْصَرَا"
       }
     ]
+  },
+  {
+    "id": "v-D329-نقدر-w2",
+    "surah": 21,
+    "ayah": 87,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "نَّقْدِرَ",
+    "variantText": "يُقْدَرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D329-نقدر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D329-نقدر-w2",
+        "variantId": "v-D329-نقدر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P329-R01376",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نَّقْدِرَ﴾: بنون العظمة مفتوحة وكسر الدال ﴿نَقْدِرَ﴾ للجمهور؛ وبياء الغيب مضمومة وفتح الدال مبنياً للمجهول ﴿يُقْدَرَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بياء الغيب مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

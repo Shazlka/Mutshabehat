@@ -1,1 +1,296 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P533-55-56-5-ab65fe62",
+    "surah": 55,
+    "ayah": 56,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَطْمِثْهُنَّ",
+    "variantText": "يَطْمُثْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P533-55-56-5-ab65fe62",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P533-R03359",
+        "variantId": "v-AUDIT-P533-55-56-5-ab65fe62",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03359",
+        "sourceText": "﴿يَطْمِثْهُنَّ﴾ (الموضع الأول): بكسر الميم للجمهور؛ وبضم الميم ﴿يَطْمُثْهُنَّ﴾ للكسائي في وجهه الثاني (وقاعدته: إذا كسر الموضع الأول ضم الثاني، وإذا ضم الأول كسر الثاني).",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P533-55-56-5-ab65fe62-QP",
+        "variantId": "v-AUDIT-P533-55-56-5-ab65fe62",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/56",
+        "sourceText": "الموضع 56 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿يَطْمِثْهُنَّ﴾ (الموضع الأول): بكسر الميم للجمهور؛ وبضم الميم ﴿يَطْمُثْهُنَّ﴾ للكسائي في وجهه الثاني (وقاعدته: إذا كسر الموضع الأول ضم الثاني، وإذا ضم الأول كسر الثاني).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 56 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/56"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P533-55-50-1-ac5f9073",
+    "surah": 55,
+    "ayah": 50,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِمَا",
+    "variantText": "فِيهُمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P533-55-50-1-ac5f9073",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P533-R03358",
+        "variantId": "v-AUDIT-P533-55-50-1-ac5f9073",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03358",
+        "sourceText": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P533-55-50-1-ac5f9073-QP",
+        "variantId": "v-AUDIT-P533-55-50-1-ac5f9073",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/50",
+        "sourceText": "الموضع 50 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 50 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/50"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P533-55-52-1-ac5f9073",
+    "surah": 55,
+    "ayah": 52,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِمَا",
+    "variantText": "فِيهُمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P533-55-52-1-ac5f9073",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P533-R03358",
+        "variantId": "v-AUDIT-P533-55-52-1-ac5f9073",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03358",
+        "sourceText": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P533-55-52-1-ac5f9073-QP",
+        "variantId": "v-AUDIT-P533-55-52-1-ac5f9073",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/52",
+        "sourceText": "الموضع 52 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 52 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/52"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P533-55-66-1-ac5f9073",
+    "surah": 55,
+    "ayah": 66,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِمَا",
+    "variantText": "فِيهُمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P533-55-66-1-ac5f9073",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P533-R03358",
+        "variantId": "v-AUDIT-P533-55-66-1-ac5f9073",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03358",
+        "sourceText": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P533-55-66-1-ac5f9073-QP",
+        "variantId": "v-AUDIT-P533-55-66-1-ac5f9073",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/66",
+        "sourceText": "الموضع 66 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 66 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/66"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P533-55-68-1-ac5f9073",
+    "surah": 55,
+    "ayah": 68,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِمَا",
+    "variantText": "فِيهُمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P533-55-68-1-ac5f9073",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P533-R03358",
+        "variantId": "v-AUDIT-P533-55-68-1-ac5f9073",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03358",
+        "sourceText": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P533-55-68-1-ac5f9073-QP",
+        "variantId": "v-AUDIT-P533-55-68-1-ac5f9073",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/68",
+        "sourceText": "الموضع 68 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿فِيهِمَا﴾ (جميعاً)، ﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا... فِيهُنَّ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 68 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/68"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P533-55-54-5-NAQL",
+    "surah": 55,
+    "ayah": 54,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مِنْ إِسْتَبْرَقٍۢ ۚ",
+    "variantText": "مِنِ اسْتَبْرَقٍ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P533-55-54-5-NAQL",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P533-R03362",
+        "variantId": "v-AUDIT-P533-55-54-5-NAQL",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03362",
+        "verificationNotes": "المصدر يثبت النقل لرويس وورش، وقائمة الرواة في القراءات العشر تطابق المجموعتين.",
+        "sourceText": "تنبيهات أداء: وافق رويس ورشاً في النقل في ﴿مِنْ إِسْتَبْرَقٍ﴾ وصلاً."
+      },
+      {
+        "id": "s-QP-P533-R03362",
+        "variantId": "v-AUDIT-P533-55-54-5-NAQL",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/54",
+        "sourceText": "النقل إلى النون لرويس عن يعقوب وورش عن نافع.",
+        "verificationNotes": "الجدول المستقل يذكر ورشاً ورويساً صراحةً ضمن وجه النقل."
+      }
+    ],
+    "description": "تنبيهات أداء: وافق رويس ورشاً في النقل في ﴿مِنْ إِسْتَبْرَقٍ﴾ وصلاً.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "النقل إلى النون لرويس عن يعقوب وورش عن نافع.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/54"
+      }
+    ]
+  }
+]

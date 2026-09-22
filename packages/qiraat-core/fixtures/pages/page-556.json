@@ -1,1 +1,223 @@
-[]
+[
+  {
+    "id": "v-D556-وهو-w2",
+    "surah": 64,
+    "ayah": 1,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D556-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D556-وهو-w2",
+        "variantId": "v-D556-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P556-R03573",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D556-تاتيهم-w2",
+    "surah": 64,
+    "ayah": 6,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَّأْتِيهِمْ",
+    "variantText": "تَأْتِيهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D556-تاتيهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D556-تاتيهم-w2",
+        "variantId": "v-D556-تاتيهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P556-R03574",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَأْتِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿تَأْتِيهُم﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D556-رسلهم-w2",
+    "surah": 64,
+    "ayah": 6,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُهُم",
+    "variantText": "رُسْلُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D556-رسلهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D556-رسلهم-w2",
+        "variantId": "v-D556-رسلهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P556-R03575",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿رُسُلُهُم﴾: بإسكان السين ﴿رُسْلُهُمْ﴾ لأبي عمرو؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D556-يجمعكم-w2",
+    "surah": 64,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَجْمَعُكُمْ",
+    "variantText": "نَجْمَعُكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D556-يجمعكم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D556-يجمعكم-w2",
+        "variantId": "v-D556-يجمعكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P556-R03576",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَجْمَعُكُمْ﴾: بياء الغيب للجمهور؛ بنون العظمة ﴿نَجْمَعُكُمْ﴾ ليعقوب."
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D556-يكفر-w2",
+    "surah": 64,
+    "ayah": 9,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يُكَفِّرْ",
+    "variantText": "نُكَفِّرْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D556-يكفر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D556-يكفر-w2",
+        "variantId": "v-D556-يكفر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P556-R03577",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُكَفِّرْ... وَيُدْخِلْهُ﴾: بياء الغيب وجزم الفعلين لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة وجزم الفعلين ﴿نُكَفِّرْ... وَنُدْخِلْهُ﴾ لنافع، وابن عامر، وأبي جعفر."
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D556-ويدخله-w2",
+    "surah": 64,
+    "ayah": 9,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "وَيُدْخِلْهُ",
+    "variantText": "وَنُدْخِلْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D556-ويدخله",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D556-ويدخله-w2",
+        "variantId": "v-D556-ويدخله-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P556-R03577",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُكَفِّرْ... وَيُدْخِلْهُ﴾: بياء الغيب وجزم الفعلين لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة وجزم الفعلين ﴿نُكَفِّرْ... وَنُدْخِلْهُ﴾ لنافع، وابن عامر، وأبي جعفر."
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -72,5 +72,72 @@
     "description": "برفع لام الجلالة وضم باء ربكم ورب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D450-نبيا-w2",
+    "surah": 37,
+    "ayah": 112,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نَبِيًّۭا",
+    "variantText": "نَبِيئًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D450-نبيا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D450-نبيا-w2",
+        "variantId": "v-D450-نبيا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P450-R02581",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نَبِيّٗا﴾: بالهمز لنافع ﴿نَبِيئًا﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D450-وان_الياس-w2",
+    "surah": 37,
+    "ayah": 123,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَإِنَّ إِلْيَاسَ",
+    "variantText": "وَإِنَّ الِيَاسَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "D450-وان_الياس",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D450-وان_الياس-w2",
+        "variantId": "v-D450-وان_الياس-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P450-R02584",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَإِنَّ إِلْيَاسَ﴾: بهمزة قطع مكسورة للجمهور؛ وبهمزة وصل مكسورة ابتداءً ﴿وَإِنَّ الِيَاسَ﴾ لابن ذكوان في وجهه الثاني."
+      }
+    ],
+    "description": "بهمزة وصل مكسورة ابتداءً",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

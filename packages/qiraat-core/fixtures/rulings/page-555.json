@@ -82,13 +82,22 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q07-R01",
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
         "action": "إدغام صغير"
       }
     ],
     "readings": [
       {
-        "readingId": "Q07-R01",
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
         "action": "إدغام صغير",
         "isDefault": true
       }
@@ -113,13 +122,22 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q07-R01",
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
         "action": "إدغام صغير"
       }
     ],
     "readings": [
       {
-        "readingId": "Q07-R01",
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
         "action": "إدغام صغير",
         "isDefault": true
       }
@@ -209,6 +227,50 @@
       {
         "authorityId": "Q09-R01",
         "action": "تسهيل الثانية"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q05-R02",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "تحقيق الهمزتين"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "تحقيق الهمزتين"
       }
     ],
     "readings": [
@@ -256,10 +318,251 @@
         "readingId": "Q09-R01",
         "action": "تسهيل الثانية",
         "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "تحقيق الهمزتين",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p555-TAGHYIR_HAMZ-وللمومنين-4",
+    "pageNumber": 555,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 63,
+    "ayah": 8,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 8,
+    "baseText": "وَلِلْمُؤْمِنِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03571",
+        "sourceText": "تغيير الهمز: ﴿وَالْمُؤْمِنِينَ﴾، ﴿يَأْتِيَ﴾: ورش، السوسي، أبو جعفر. ﴿يُؤَخِّرَ﴾: ورش، أبو جعفر.",
+        "verificationNotes": "مصدر وثيقة الاستخراج؛ الإسناد صريح."
+      }
+    ]
+  },
+  {
+    "id": "r-p555-TAGHYIR_HAMZ-ياتي-5",
+    "pageNumber": 555,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 63,
+    "ayah": 10,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 10,
+    "baseText": "يَأْتِىَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03571",
+        "sourceText": "تغيير الهمز: ﴿وَالْمُؤْمِنِينَ﴾، ﴿يَأْتِيَ﴾: ورش، السوسي، أبو جعفر. ﴿يُؤَخِّرَ﴾: ورش، أبو جعفر.",
+        "verificationNotes": "مصدر وثيقة الاستخراج؛ الإسناد صريح."
+      }
+    ]
+  },
+  {
+    "id": "r-p555-TAGHYIR_HAMZ-يوخر-6",
+    "pageNumber": 555,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 63,
+    "ayah": 11,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 11,
+    "baseText": "يُؤَخِّرَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03571",
+        "sourceText": "تغيير الهمز: ﴿وَالْمُؤْمِنِينَ﴾، ﴿يَأْتِيَ﴾: ورش، السوسي، أبو جعفر. ﴿يُؤَخِّرَ﴾: ورش، أبو جعفر.",
+        "verificationNotes": "مصدر وثيقة الاستخراج؛ الإسناد صريح."
+      }
+    ]
   }
 ]

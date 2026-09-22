@@ -1,1 +1,157 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P248-105-IBNKATHIR",
+    "surah": 12,
+    "ayah": 105,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَكَأَيِّن",
+    "variantText": "وَكَائِن",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P248-105",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P248-105-IBNKATHIR-1",
+        "variantId": "v-AUDIT-P248-105-IBNKATHIR",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة استخراج القراءات العشر، صفحة المصحف 248، الكلمات الفرشية",
+        "verificationNotes": "قوبل نص المصدر ومجموعة القراء الصريحة بمرجع مستقل، وثبت نص حفص حرفياً من رمز الصفحة.",
+        "sourceText": "بألف بعد الكاف وبعدها همزة مكسورة ممدودة مداً متصلاً ﴿وَكَائِن﴾: ابن كثير."
+      },
+      {
+        "id": "s-AL-BUDUR-P248-105-IBNKATHIR",
+        "variantId": "v-AUDIT-P248-105-IBNKATHIR",
+        "sourceName": "البدور الزاهرة في القراءات العشر المتواترة",
+        "sourceType": "printed-book",
+        "sourceReference": "https://quranpedia.net/book-attachment/19843/93433",
+        "sourceText": "قرأ ابن كثير وكائن بالمد والهمز، وأبو جعفر بالتسهيل، والباقون وكأين.",
+        "verificationNotes": "مرجع مستقل يثبت اختلاف صورة القراءة وتعيين القارئ."
+      }
+    ],
+    "description": "بالمد والتحقيق لابن كثير",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "البدور الزاهرة في القراءات العشر المتواترة",
+        "text": "قرأ ابن كثير وكائن بالمد والهمز، وأبو جعفر بالتسهيل، والباقون وكأين.",
+        "url": "https://quranpedia.net/book-attachment/19843/93433"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P248-105-ABUJAAFAR",
+    "surah": 12,
+    "ayah": 105,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَكَأَيِّن",
+    "variantText": "وَكَايِن",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P248-105",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P248-105-ABUJAAFAR-1",
+        "variantId": "v-AUDIT-P248-105-ABUJAAFAR",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة استخراج القراءات العشر، صفحة المصحف 248، الكلمات الفرشية",
+        "verificationNotes": "قوبل نص المصدر ومجموعة القراء الصريحة بمرجع مستقل، وثبت نص حفص حرفياً من رمز الصفحة.",
+        "sourceText": "بتسهيل الهمزة مع المد والقصر ﴿وَكَايِن﴾: أبو جعفر."
+      },
+      {
+        "id": "s-AL-BUDUR-P248-105-ABUJAAFAR",
+        "variantId": "v-AUDIT-P248-105-ABUJAAFAR",
+        "sourceName": "البدور الزاهرة في القراءات العشر المتواترة",
+        "sourceType": "printed-book",
+        "sourceReference": "https://quranpedia.net/book-attachment/19843/93433",
+        "sourceText": "قرأ ابن كثير وكائن بالمد والهمز، وأبو جعفر بالتسهيل، والباقون وكأين.",
+        "verificationNotes": "مرجع مستقل يثبت اختلاف صورة القراءة وتعيين القارئ."
+      }
+    ],
+    "description": "بتسهيل الهمزة مع المد والقصر لأبي جعفر",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "البدور الزاهرة في القراءات العشر المتواترة",
+        "text": "قرأ ابن كثير وكائن بالمد والهمز، وأبو جعفر بالتسهيل، والباقون وكأين.",
+        "url": "https://quranpedia.net/book-attachment/19843/93433"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P248-109-GHAIB",
+    "surah": 12,
+    "ayah": 109,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "تَعْقِلُونَ",
+    "variantText": "يَعْقِلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P248-109",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P248-109-GHAIB-1",
+        "variantId": "v-AUDIT-P248-109-GHAIB",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة استخراج القراءات العشر، صفحة المصحف 248، الكلمات الفرشية",
+        "verificationNotes": "قوبل نص المصدر ومجموعة القراء الصريحة بمرجع مستقل، وثبت نص حفص حرفياً من رمز الصفحة.",
+        "sourceText": "﴿تَعْقِلُونَ﴾: بتاء الخطاب لنافع، ابن عامر، عاصم، أبو جعفر، يعقوب؛ وبياء الغيب ﴿يَعْقِلُونَ﴾ للباقين."
+      },
+      {
+        "id": "s-AL-BUDUR-P248-109-GHAIB",
+        "variantId": "v-AUDIT-P248-109-GHAIB",
+        "sourceName": "البدور الزاهرة في القراءات العشر المتواترة",
+        "sourceType": "printed-book",
+        "sourceReference": "https://ar.wikisource.org/wiki/النشر_في_القراءات_العشر/الجزء_الثاني",
+        "sourceText": "وفي يعقلون بالتاء نافع وابن عامر وعاصم وأبو جعفر ويعقوب، والباقون بالياء.",
+        "verificationNotes": "مرجع مستقل يثبت اختلاف صورة القراءة وتعيين القارئ."
+      }
+    ],
+    "description": "بياء الغيب لمن عدا المذكورين في خطاب التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "البدور الزاهرة في القراءات العشر المتواترة",
+        "text": "وفي يعقلون بالتاء نافع وابن عامر وعاصم وأبو جعفر ويعقوب، والباقون بالياء.",
+        "url": "https://ar.wikisource.org/wiki/النشر_في_القراءات_العشر/الجزء_الثاني"
+      }
+    ]
+  }
+]

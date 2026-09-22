@@ -499,6 +499,19 @@ test('page 266 carries the supplied Al-Hijr colour coverage for 15:82 and 15:87'
   )
 })
 
+test('page 264 preserves distinct approved forms at 15:44 for Shu\'bah and Abu Jaafar', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(264, { includeUnpublished: true })
+  const faces = variants.filter((variant) => variant.surah === 15 && variant.ayah === 44 && variant.startToken === 7)
+  assert.equal(faces.length, 2, 'different sourced forms at one token remain separate records')
+  assert.deepEqual(new Set(faces.flatMap((variant) => variant.readingIds)), new Set(['Q05-R01', 'Q08-R01', 'Q08-R02']))
+  assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', 'Q05-R01', { includeUnpublished: true }).text, 'جُزُءٌ')
+  for (const readingId of ['Q08-R01', 'Q08-R02']) {
+    assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', readingId, { includeUnpublished: true }).text, 'جُزٌّ')
+  }
+  assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', BASE_READING, { includeUnpublished: true }).text, 'جُزْءٌۭ')
+})
+
 
 // ── رموز الشاطبية والدرة ──────────────────────────────────────────────────────
 // The reference prints its own عدد الروايات for every group symbol. These tests treat that column
@@ -517,7 +530,7 @@ test('every group symbol expands to exactly the reading count its source prints'
 test('page 303 imports only token-backed, explicitly attributable source variants', async () => {
   const repo = new FixtureQiraatRepository()
   const variants = await repo.getVariantsForPage(303, { includeUnpublished: true })
-  assert.equal(variants.length, 5)
+  assert.equal(variants.length, 11)
   assert.deepEqual(
     variants.map(({ surah, ayah, variantText }) => `${surah}:${ayah}:${variantText}`),
     [
@@ -526,6 +539,12 @@ test('page 303 imports only token-backed, explicitly attributable source variant
       '18:95:مَكَّنَنِي',
       '18:96:ائْتُونِي',
       '18:97:اسْطَّاعُوا',
+      '18:93:يُفْقِهُونَ',
+      '18:94:خَرَاجًا',
+      '18:87:نُكُرًا',
+      '18:88:جَزَاءُ الْحُسْنَى',
+      '18:96:قَالَ ائْتُونِي',
+      '18:97:فَمَا اسْطَّاعُوا',
     ],
   )
   assert.equal((await repo.getVariantsForPage(303)).length, 0, 'REVIEWED records remain hidden from the ordinary view')

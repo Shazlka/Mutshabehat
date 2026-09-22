@@ -118,7 +118,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P576-R03745: ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:27، أَدْرَىٰكَ explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+    ]
   },
   {
     "id": "r-p576-IMALAH_TAQLIL-النار-1",
@@ -279,7 +282,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P576-R03747: ﴿ذِكْرَىٰ﴾: أبو عمرو، حمزة، الكسائي، خلف، وقللها ورش. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:31، ذِكْرَىٰ explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+    ]
   },
   {
     "id": "r-p576-IMALAH_TAQLIL-لاحدي-3",
@@ -382,7 +388,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P576-R03748: ﴿لِإِحْدَى﴾ (وقفاً): حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:35، لَإِحْدَى explicitly records خلف العاشر reading the locus بالإمالة لدى الوقف; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+    ]
   },
   {
     "id": "r-p576-IMALAH_TAQLIL-شاء-4",
@@ -449,7 +458,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P576-R03749: ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿أَتَىٰنَا﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:37، شَآءَ explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+    ]
   },
   {
     "id": "r-p576-IMALAH_TAQLIL-اتانا-5",
@@ -534,7 +546,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P576-R03749: ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿أَتَىٰنَا﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:47، أَتَىٰنَا explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+    ]
   },
   {
     "id": "r-p576-TAGHYIR_HAMZ-يوثر-6",

@@ -5,7 +5,7 @@ Invariants enforced here, loudly (the build fails rather than emitting bad data)
   - every locus resolves to REAL Mushaf-1441 tokens; baseText is never hand-typed;
   - every variant locus partitions the 20 Riwayat exactly once (no gap, no overlap),
     unless the locus is explicitly marked as a known source defect;
-  - "خلف" is never resolved from a bare string (authorities.py refuses it).
+  - Bare "خلف" resolves to Q06-R01; explicit "خلف العاشر" resolves to Q10 (see authorities.py).
 """
 import json, os, sys, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

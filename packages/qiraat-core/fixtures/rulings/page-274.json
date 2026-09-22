@@ -348,5 +348,46 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p274-IMALAH_TAQLIL-لعبره-2",
+    "pageNumber": 274,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 66,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 66,
+    "baseText": "لَعِبْرَةًۭ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "إمالة هاء التأنيث وقفاً للكسائي."
   }
 ]

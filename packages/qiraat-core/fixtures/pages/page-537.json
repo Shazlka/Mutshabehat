@@ -1,1 +1,265 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P537-R03389-feef07f6",
+    "surah": 56,
+    "ayah": 77,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَقُرْءَانٌۭ",
+    "variantText": "لَقُرَانٌ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P537-R03389-feef07f6",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P537-R03389-feef07f6",
+        "variantId": "v-AUDIT-P537-R03389-feef07f6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03389",
+        "sourceText": "﴿لَقُرْءَانٌ﴾: بنقل الهمزة لابن كثير ﴿لَقُرَانٌ﴾.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿لَقُرْءَانٌ﴾: بنقل الهمزة لابن كثير ﴿لَقُرَانٌ﴾.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Open rāʾ and deletion of hamza: al-Bazzi and Qunbul.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/77"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P537-R03390-a3d9f2ec",
+    "surah": 56,
+    "ayah": 89,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَرَوْحٌۭ",
+    "variantText": "فَرُوحٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P537-R03390-a3d9f2ec",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P537-R03390-a3d9f2ec",
+        "variantId": "v-AUDIT-P537-R03390-a3d9f2ec",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03390",
+        "sourceText": "﴿فَرَوْحٌ﴾: بفتح الراء ﴿فَرَوْحٌ﴾ للجمهور؛ بضم الراء ﴿فَرُوحٌ﴾ لرويس.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿فَرَوْحٌ﴾: بفتح الراء ﴿فَرَوْحٌ﴾ للجمهور؛ بضم الراء ﴿فَرُوحٌ﴾ لرويس.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Dammah on rāʾ: Ruways from Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/89"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P537-R03392-PERF-b14c9461",
+    "surah": 57,
+    "ayah": 1,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P537-R03392-PERF-b14c9461",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان هاء الضمير في وهو",
+    "sources": [
+      {
+        "id": "s-AUDIT-P537-R03392-PERF-b14c9461",
+        "variantId": "v-AUDIT-P537-R03392-PERF-b14c9461",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
+        "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "سكون هاء الضمير في وهو/لهو: قالون، أبو جعفر، أبو عمرو، الكسائي؛ وغيرهم بالضم.",
+        "url": "https://quranpedia.net/book-attachment/18711/77129"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P537-R03392-PERF-bd0817c8",
+    "surah": 57,
+    "ayah": 2,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P537-R03392-PERF-bd0817c8",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان هاء الضمير في وهو",
+    "sources": [
+      {
+        "id": "s-AUDIT-P537-R03392-PERF-bd0817c8",
+        "variantId": "v-AUDIT-P537-R03392-PERF-bd0817c8",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
+        "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "سكون هاء الضمير في وهو/لهو: قالون، أبو جعفر، أبو عمرو، الكسائي؛ وغيرهم بالضم.",
+        "url": "https://quranpedia.net/book-attachment/18711/77129"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P537-R03392-PERF-830aa49a",
+    "surah": 57,
+    "ayah": 3,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P537-R03392-PERF-830aa49a",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان هاء الضمير في وهو",
+    "sources": [
+      {
+        "id": "s-AUDIT-P537-R03392-PERF-830aa49a",
+        "variantId": "v-AUDIT-P537-R03392-PERF-830aa49a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
+        "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "سكون هاء الضمير في وهو/لهو: قالون، أبو جعفر، أبو عمرو، الكسائي؛ وغيرهم بالضم.",
+        "url": "https://quranpedia.net/book-attachment/18711/77129"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P537-R03391-PERF-2cfcdcc1",
+    "surah": 56,
+    "ayah": 95,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَهُوَ",
+    "variantText": "لَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P537-R03391-PERF-2cfcdcc1",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان هاء الضمير في لهو",
+    "sources": [
+      {
+        "id": "s-AUDIT-P537-R03391-PERF-2cfcdcc1",
+        "variantId": "v-AUDIT-P537-R03391-PERF-2cfcdcc1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03391",
+        "sourceText": "﴿لَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      }
+    ],
+    "description": "﴿لَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "سكون هاء الضمير في وهو/لهو: قالون، أبو جعفر، أبو عمرو، الكسائي؛ وغيرهم بالضم.",
+        "url": "https://quranpedia.net/book-attachment/18711/77129"
+      }
+    ]
+  }
+]

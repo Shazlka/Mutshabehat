@@ -225,5 +225,39 @@
         "text": "أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
       }
     ]
+  },
+  {
+    "id": "v-D338-امنيتهي-w2",
+    "surah": 22,
+    "ayah": 52,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "أُمْنِيَّتِهِۦ",
+    "variantText": "أُمْنِيَتِهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D338-امنيتهي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D338-امنيتهي-w2",
+        "variantId": "v-D338-امنيتهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P338-R01473",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أُمْنِيَّتِهِۦ﴾: بتشديد الياء للجمهور؛ وبتخفيف الياء ﴿أُمْنِيَتِهِ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بتخفيف الياء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

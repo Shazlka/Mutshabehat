@@ -36,5 +36,190 @@
     "description": "بإسكان الهاء تخفيفاً",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D440-صراط-w2",
+    "surah": 36,
+    "ayah": 4,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "سِرَٰطٍ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R02"
+    ],
+    "locusId": "D440-صراط",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D440-صراط-w2",
+        "variantId": "v-D440-صراط-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P440-R02448",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة."
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D440-صراط-w2",
+    "surah": 36,
+    "ayah": 4,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "صِرَٰطٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D440-صراط",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام الصاد زياً",
+    "sources": [
+      {
+        "id": "s-D440-صراط-w2",
+        "variantId": "v-D440-صراط-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P440-R02448",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة."
+      }
+    ],
+    "description": "بإشمام الصاد زياً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D440-ايديهم-w2",
+    "surah": 36,
+    "ayah": 9,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D440-ايديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D440-ايديهم-w2",
+        "variantId": "v-D440-ايديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P440-R02451",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿أَيْدِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D440-سدا-w2",
+    "surah": 36,
+    "ayah": 9,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "سَدًّۭا",
+    "variantText": "سُدًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D440-سدا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D440-سدا-w2",
+        "variantId": "v-D440-سدا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P440-R02452",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿سَدّٗا﴾ (معاً): بفتح السين لحفص، وحمزة، والكسائي، وخلف؛ وبضم السين ﴿سُدًّا﴾ للباقين."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D440-عليهم-w2",
+    "surah": 36,
+    "ayah": 10,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D440-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D440-عليهم-w2",
+        "variantId": "v-D440-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج، DOCX-P440-R02453",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

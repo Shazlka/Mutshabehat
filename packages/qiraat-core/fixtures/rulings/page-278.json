@@ -396,5 +396,53 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p278-WAQF_RASM-باق-2",
+    "pageNumber": 278,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 96,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 96,
+    "baseText": "بَاقٍۢ ۗ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "إثبات الياء في الوقف: بَاقِي"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إثبات الياء في الوقف: بَاقِي"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء في الوقف: بَاقِي",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء في الوقف: بَاقِي",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "إثبات الياء في الوقف: بَاقِي",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P278-R00774",
+        "sourceText": "الوقف على مرسوم الخط: ﴿بَاقٍ﴾: يقف عليها ابن كثير بإثبات الياء ﴿بَاقِي﴾.",
+        "verificationNotes": "وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف."
+      }
+    ]
   }
 ]

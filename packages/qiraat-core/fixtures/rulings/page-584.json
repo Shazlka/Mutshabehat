@@ -29,14 +29,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -59,21 +51,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-تزكا-1",
@@ -105,14 +90,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -135,21 +112,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "https://quranpedia.net/qiraat/an-naziat/18 | جهاز الآية نفسه يسمي إسحاق وإدريس عن خلف؛ لذلك حُفظ Q10 مستقلاً عن «خلف» المجرد في مصدر الوثيقة."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-فتخشا-2",
@@ -181,14 +151,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -211,21 +173,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-يسعا-3",
@@ -257,14 +212,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -287,21 +234,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-فنادا-4",
@@ -333,14 +273,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -363,21 +295,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-الاعلا-5",
@@ -409,14 +334,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -439,21 +356,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-والاولا-6",
@@ -485,14 +395,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -515,21 +417,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-يخشا-7",
@@ -561,14 +456,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -591,21 +478,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-سعا-8",
@@ -637,14 +517,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -667,21 +539,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-الدنيا-10",
@@ -713,14 +578,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -743,21 +600,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-الماوا-11",
@@ -789,14 +639,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -819,21 +661,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-الهوا-12",
@@ -865,14 +700,6 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -895,21 +722,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-الكبرا-13",
@@ -927,6 +747,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "إمالة"
       },
@@ -949,21 +773,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R01",
         "action": "إمالة",
@@ -993,26 +810,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-يرا-14",
@@ -1030,6 +835,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "إمالة"
       },
@@ -1052,21 +861,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R01",
         "action": "إمالة",
@@ -1096,26 +898,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-فاراه-15",
@@ -1133,6 +923,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "إمالة"
       },
@@ -1155,21 +949,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R01",
         "action": "إمالة",
@@ -1199,26 +986,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-جاءت-16",
@@ -1246,14 +1021,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -1271,21 +1038,15 @@
         "readingId": "Q06-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "https://quranpedia.net/qiraat/an-naziat/34 | جهاز الآية يسند إمالة الألف إلى ابن ذكوان وإسحاق وإدريس عن خلف، والإمالة الأطول إلى خلف وخلاد عن حمزة؛ حُفظ Q10 مستقلاً عن Q06-R01."
+    ]
   },
   {
     "id": "r-p584-IMALAH_TAQLIL-خاف-17",
@@ -1343,6 +1104,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -1357,21 +1122,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -1391,26 +1149,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+    ]
   },
   {
     "id": "r-p584-IKHFA-rule-79-40-2",

@@ -1,1 +1,1186 @@
-[]
+[
+  {
+    "id": "v-D579-76-14-2--R03780-2",
+    "surah": 76,
+    "ayah": 14,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D579-76-14-al-yahim-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-14-2--R03780-2",
+        "variantId": "v-D579-76-14-2--R03780-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-14-2--R03780-2-qp",
+        "variantId": "v-D579-76-14-2--R03780-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/14",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "ضم الهاء وإسكان الميم",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "ضم الهاء وإسكان الميم"
+  },
+  {
+    "id": "v-D579-76-14-2--R03780-3",
+    "surah": 76,
+    "ayah": 14,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D579-76-14-al-yahim-3",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-14-2--R03780-3",
+        "variantId": "v-D579-76-14-2--R03780-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-14-2--R03780-3-qp",
+        "variantId": "v-D579-76-14-2--R03780-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/14",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الهاء وإسكان الميم",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "كسر الهاء وإسكان الميم",
+    "performanceNote": "سكون الميم عند الوصل، ومنه وجه قالون"
+  },
+  {
+    "id": "v-D579-76-14-2--R03780-4",
+    "surah": 76,
+    "ayah": 14,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D579-76-14-al-yahim-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-14-2--R03780-4",
+        "variantId": "v-D579-76-14-2--R03780-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-14-2--R03780-4-qp",
+        "variantId": "v-D579-76-14-2--R03780-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/14",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الهاء وصلة الميم",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "كسر الهاء وصلة الميم",
+    "performanceNote": "صلة الميم عند الوصل؛ لقالون وجهان في الميم"
+  },
+  {
+    "id": "v-D579-76-15-2--R03780-2",
+    "surah": 76,
+    "ayah": 15,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D579-76-15-al-yahim-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-15-2--R03780-2",
+        "variantId": "v-D579-76-15-2--R03780-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-15-2--R03780-2-qp",
+        "variantId": "v-D579-76-15-2--R03780-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/15",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "ضم الهاء وإسكان الميم",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "ضم الهاء وإسكان الميم"
+  },
+  {
+    "id": "v-D579-76-15-2--R03780-3",
+    "surah": 76,
+    "ayah": 15,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D579-76-15-al-yahim-3",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-15-2--R03780-3",
+        "variantId": "v-D579-76-15-2--R03780-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-15-2--R03780-3-qp",
+        "variantId": "v-D579-76-15-2--R03780-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/15",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الهاء وإسكان الميم",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "كسر الهاء وإسكان الميم",
+    "performanceNote": "سكون الميم عند الوصل، ومنه وجه قالون"
+  },
+  {
+    "id": "v-D579-76-15-2--R03780-4",
+    "surah": 76,
+    "ayah": 15,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D579-76-15-al-yahim-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-15-2--R03780-4",
+        "variantId": "v-D579-76-15-2--R03780-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-15-2--R03780-4-qp",
+        "variantId": "v-D579-76-15-2--R03780-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/15",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الهاء وصلة الميم",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "كسر الهاء وصلة الميم",
+    "performanceNote": "صلة الميم عند الوصل؛ لقالون وجهان في الميم"
+  },
+  {
+    "id": "v-D579-76-19-2--R03780-2",
+    "surah": 76,
+    "ayah": 19,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D579-76-19-al-yahim-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-19-2--R03780-2",
+        "variantId": "v-D579-76-19-2--R03780-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-19-2--R03780-2-qp",
+        "variantId": "v-D579-76-19-2--R03780-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/15",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "ضم الهاء وإسكان الميم",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "ضم الهاء وإسكان الميم"
+  },
+  {
+    "id": "v-D579-76-19-2--R03780-3",
+    "surah": 76,
+    "ayah": 19,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D579-76-19-al-yahim-3",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-19-2--R03780-3",
+        "variantId": "v-D579-76-19-2--R03780-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-19-2--R03780-3-qp",
+        "variantId": "v-D579-76-19-2--R03780-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/15",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الهاء وإسكان الميم",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "كسر الهاء وإسكان الميم",
+    "performanceNote": "سكون الميم عند الوصل، ومنه وجه قالون"
+  },
+  {
+    "id": "v-D579-76-19-2--R03780-4",
+    "surah": 76,
+    "ayah": 19,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D579-76-19-al-yahim-4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-19-2--R03780-4",
+        "variantId": "v-D579-76-19-2--R03780-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03780",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (جميعاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-v-D579-76-19-2--R03780-4-qp",
+        "variantId": "v-D579-76-19-2--R03780-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/15",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الهاء وصلة الميم",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "كسر الهاء وصلة الميم",
+    "performanceNote": "صلة الميم عند الوصل؛ لقالون وجهان في الميم"
+  },
+  {
+    "id": "v-D579-76-15-8--R03782-2",
+    "surah": 76,
+    "ayah": 15,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۠",
+    "variantText": "قَوَارِيرَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-15-8--R03782-2",
+        "variantId": "v-D579-76-15-8--R03782-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03782",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بحذف التنوين وصلاً، وبالألف وقفاً ﴿قَوَارِيرَا﴾: أبو عمرو، وابن عامر، وحفص، وروح."
+      },
+      {
+        "id": "s-v-D579-76-15-8--R03782-2-qp",
+        "variantId": "v-D579-76-15-8--R03782-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "حذف التنوين وصلاً؛ قوارير الأولى من الوجه المركب الخالي من التنوين في الكلمتين",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "في الوصل بلا تنوين؛ الألف عند الوقف حيث نص المصدر؛ هذه القراءة تقترن أيضاً بحذف التنوين في الموضع الثاني.",
+    "performanceNote": "حذف التنوين في الوصل؛ والوقف بالألف لهذا الوجه، بحسب الرواية"
+  },
+  {
+    "id": "v-D579-76-15-8--R03783-3",
+    "surah": 76,
+    "ayah": 15,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۠",
+    "variantText": "قَوَارِيرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-15-8--R03783-3",
+        "variantId": "v-D579-76-15-8--R03783-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03783",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بالتنوين وصلاً، وبالألف وقفاً ﴿قَوَارِيرًا﴾: نافع، وابن كثير، وشعبة، والكسائي، وأبو جعفر، وخلف."
+      },
+      {
+        "id": "s-v-D579-76-15-8--R03783-3-qp",
+        "variantId": "v-D579-76-15-8--R03783-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تنوين الأولى مع حذف التنوين في الموضع الثاني، للحرميين وخلف العاشر كما سمّاهما جهاز الآية",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "وجه مركب: تنوين الموضع الأول وعدم تنوين الثاني؛ أُثبت Q10 لأن الجهاز يسمّي إسحاق وإدريس صراحة."
+  },
+  {
+    "id": "v-D579-76-15-8--R03783-4",
+    "surah": 76,
+    "ayah": 15,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۠",
+    "variantText": "قَوَارِيرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-15-8--R03783-4",
+        "variantId": "v-D579-76-15-8--R03783-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03783",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بالتنوين وصلاً، وبالألف وقفاً ﴿قَوَارِيرًا﴾: نافع، وابن كثير، وشعبة، والكسائي، وأبو جعفر، وخلف."
+      },
+      {
+        "id": "s-v-D579-76-15-8--R03783-4-qp",
+        "variantId": "v-D579-76-15-8--R03783-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تنوين الموضعين لورش وشعبة والكسائي وأبي جعفر",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "وجه مركب: تنوين الموضعين."
+  },
+  {
+    "id": "v-D579-76-15-8--R03784-5",
+    "surah": 76,
+    "ayah": 15,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۠",
+    "variantText": "قَوَارِيرْ",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-15-8--R03784-5",
+        "variantId": "v-D579-76-15-8--R03784-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03784",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بحذف التنوين وصلاً، وبالراء الساكنة وقفاً ﴿قَوَارِيرْ﴾: حمزة، ورويس."
+      },
+      {
+        "id": "s-v-D579-76-15-8--R03784-5-qp",
+        "variantId": "v-D579-76-15-8--R03784-5",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "حذف التنوين وصلاً والوقف على الراء الساكنة بلا ألف",
+    "wajhIndex": 5,
+    "evidence": [],
+    "notes": "وجه الوقف بلا ألف لحمزة ورويس؛ لا يختلط بوجه الوقف بالألف لغيرهما.",
+    "performanceNote": "حذف التنوين وصلاً والوقف على الراء بالسكون دون ألف لحمزة ورويس"
+  },
+  {
+    "id": "v-D579-76-16-1--R03786-2",
+    "surah": 76,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۟",
+    "variantText": "قَوَارِيرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-16-1--R03786-2",
+        "variantId": "v-D579-76-16-1--R03786-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03786",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بحذف التنوين وصلاً، وبالراء الساكنة وقفاً ﴿قَوَارِيرْ﴾: ابن كثير، وأبو عمرو، وابن ذكوان، وحفص، وحمزة، ويعقوب، وخلف."
+      },
+      {
+        "id": "s-v-D579-76-16-1--R03786-2-qp",
+        "variantId": "v-D579-76-16-1--R03786-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "حذف التنوين في الموضعين، ووقف حمزة ورويس بلا ألف",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "وجه مركب خالٍ من التنوين في الكلمتين؛ في الوقف لحمزة ورويس بلا ألف.",
+    "performanceNote": "حذف التنوين في الوصل؛ ووجوه الوقف تختلف بالرواية، ولهشام الوقف بالألف"
+  },
+  {
+    "id": "v-D579-76-16-1--R03786-3",
+    "surah": 76,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۟",
+    "variantText": "قَوَارِيرَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-16-1--R03786-3",
+        "variantId": "v-D579-76-16-1--R03786-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03786",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بحذف التنوين وصلاً، وبالراء الساكنة وقفاً ﴿قَوَارِيرْ﴾: ابن كثير، وأبو عمرو، وابن ذكوان، وحفص، وحمزة، ويعقوب، وخلف."
+      },
+      {
+        "id": "s-v-D579-76-16-1--R03786-3-qp",
+        "variantId": "v-D579-76-16-1--R03786-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تنوين الأولى وحذف تنوين الثانية للحرميين وخلف العاشر",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "وجه مركب: تنوين الموضع الأول وعدم تنوين الثاني؛ الجهاز يذكر إدريس وإسحاق لخلف العاشر."
+  },
+  {
+    "id": "v-D579-76-16-1--R03787-4",
+    "surah": 76,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۟",
+    "variantText": "قَوَارِيرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-16-1--R03787-4",
+        "variantId": "v-D579-76-16-1--R03787-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03787",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بالتنوين وصلاً، وبالألف وقفاً ﴿قَوَارِيرًا﴾: نافع، وشعبة، والكسائي، وأبو جعفر."
+      },
+      {
+        "id": "s-v-D579-76-16-1--R03787-4-qp",
+        "variantId": "v-D579-76-16-1--R03787-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "تنوين الموضعين",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "وجه مركب بالتنوين في الموضعين؛ تقترن به الوجوه المقابلة للموضع الأول والثاني."
+  },
+  {
+    "id": "v-D579-76-16-1--R03788-5",
+    "surah": 76,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "قَوَارِيرَا۟",
+    "variantText": "قَوَارِيرَا",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D579-76-15-16-qawarir-pair",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-16-1--R03788-5",
+        "variantId": "v-D579-76-16-1--R03788-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03788",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بحذف التنوين وصلاً، وبالألف وقفاً ﴿قَوَارِيرَا﴾: هشام."
+      },
+      {
+        "id": "s-v-D579-76-16-1--R03788-5-qp",
+        "variantId": "v-D579-76-16-1--R03788-5",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/16",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "حذف التنوين وصلاً والوقف بالألف لهشام",
+    "wajhIndex": 5,
+    "evidence": [],
+    "notes": "وجه وقف بالألف لهشام، distinct from no-alif stop for other named readers.",
+    "performanceNote": "حذف التنوين وصلاً والوقف بالألف لهشام صلةً للفتحة"
+  },
+  {
+    "id": "v-D579-76-21-1--R03789-2",
+    "surah": 76,
+    "ayah": 21,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "عَـٰلِيَهُمْ",
+    "variantText": "عَالِيهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D579-76-21-alayhim",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-21-1--R03789-2",
+        "variantId": "v-D579-76-21-1--R03789-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03789",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَـٰلِيَهُمْ﴾: بنصب الياء وإسكان الهاء ﴿عَالِيَهُمْ﴾ لنافع وحمزة وأبي جعفر؛ بكسر الياء وضم الهاء ﴿عَالِيهِمُ﴾ للباقين."
+      },
+      {
+        "id": "s-v-D579-76-21-1--R03789-2-qp",
+        "variantId": "v-D579-76-21-1--R03789-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/21",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الياء والهاء مع إسكان الميم",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "تصحيح النسبة إلى وجه قراءة نافع وحمزة بحسب الجهاز؛ النص المصدر نسب الوجه المقابل خطأً.",
+    "performanceNote": "كسر الياء والهاء وإسكان الميم؛ هذا وجه قالون"
+  },
+  {
+    "id": "v-D579-76-21-1--R03789-3",
+    "surah": 76,
+    "ayah": 21,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "عَـٰلِيَهُمْ",
+    "variantText": "عَالِيهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D579-76-21-alayhim",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-21-1--R03789-3",
+        "variantId": "v-D579-76-21-1--R03789-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03789",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَـٰلِيَهُمْ﴾: بنصب الياء وإسكان الهاء ﴿عَالِيَهُمْ﴾ لنافع وحمزة وأبي جعفر؛ بكسر الياء وضم الهاء ﴿عَالِيهِمُ﴾ للباقين."
+      },
+      {
+        "id": "s-v-D579-76-21-1--R03789-3-qp",
+        "variantId": "v-D579-76-21-1--R03789-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/21",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "كسر الياء والهاء مع صلة الميم",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "قَالون له الوجهان؛ أُبقيت الصلة وجهًا مستقلاً.",
+    "performanceNote": "كسر الياء والهاء وصلة الميم؛ لقالون وجهان في الميم"
+  },
+  {
+    "id": "v-D579-76-21-1--R03789-4",
+    "surah": 76,
+    "ayah": 21,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "عَـٰلِيَهُمْ",
+    "variantText": "عَالِيَهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D579-76-21-alayhim",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-21-1--R03789-4",
+        "variantId": "v-D579-76-21-1--R03789-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03789",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿عَـٰلِيَهُمْ﴾: بنصب الياء وإسكان الهاء ﴿عَالِيَهُمْ﴾ لنافع وحمزة وأبي جعفر؛ بكسر الياء وضم الهاء ﴿عَالِيهِمُ﴾ للباقين."
+      },
+      {
+        "id": "s-v-D579-76-21-1--R03789-4-qp",
+        "variantId": "v-D579-76-21-1--R03789-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/21",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "فتح الياء وضم الهاء وإسكان الميم",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "الوجه الصحيح بحسب جهاز الآية؛ يتضمن حفص، ويشمل خلف العاشر المسمى بإسحاق وإدريس."
+  },
+  {
+    "id": "v-D579-76-21-4--R03791-2",
+    "surah": 76,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "خُضْرٌۭ وَإِسْتَبْرَقٌۭ ۖ",
+    "variantText": "خُضْرٌ وَإِسْتَبْرَقٌ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R02"
+    ],
+    "locusId": "D579-76-21-khudr-istabraq",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-21-4--R03791-2",
+        "variantId": "v-D579-76-21-4--R03791-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03791",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "برفع الكلمتين بالضمة تنويناً ﴿خُضْرٌ وَإِسْتَبْرَقٌ﴾: نافع، وحفص."
+      },
+      {
+        "id": "s-v-D579-76-21-4--R03791-2-qp",
+        "variantId": "v-D579-76-21-4--R03791-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/21",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "رفع الكلمتين",
+    "wajhIndex": 2,
+    "evidence": [],
+    "notes": "مجموع حركتي الإعراب مطابق لجهاز الآية؛ حفظت المجموعة ذات الرسم نفسه مع اختلاف موضع الحركة في سجلها الخاص."
+  },
+  {
+    "id": "v-D579-76-21-4--R03794-3",
+    "surah": 76,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "خُضْرٌۭ وَإِسْتَبْرَقٌۭ ۖ",
+    "variantText": "خُضْرٍ وَإِسْتَبْرَقٍ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D579-76-21-khudr-istabraq",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-21-4--R03794-3",
+        "variantId": "v-D579-76-21-4--R03794-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03794",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بجر الكلمتين بالكسرة تنويناً ﴿خُضْرٍ وَإِسْتَبْرَقٍ﴾: حمزة، والكسائي، وخلف."
+      },
+      {
+        "id": "s-v-D579-76-21-4--R03794-3-qp",
+        "variantId": "v-D579-76-21-4--R03794-3",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/21",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "جر الكلمتين؛ تشمل القراءات المسماة في الجهاز",
+    "wajhIndex": 3,
+    "evidence": [],
+    "notes": "مجموع حركتي الإعراب مطابق لجهاز الآية؛ حفظت المجموعة ذات الرسم نفسه مع اختلاف موضع الحركة في سجلها الخاص."
+  },
+  {
+    "id": "v-D579-76-21-4--R03792-4",
+    "surah": 76,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "خُضْرٌۭ وَإِسْتَبْرَقٌۭ ۖ",
+    "variantText": "خُضْرٍ وَإِسْتَبْرَقٌ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01"
+    ],
+    "locusId": "D579-76-21-khudr-istabraq",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-21-4--R03792-4",
+        "variantId": "v-D579-76-21-4--R03792-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03792",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "بجر الأول ورفع الثاني ﴿خُضْرٍ وَإِسْتَبْرَقٌ﴾: ابن كثير، وشعبة."
+      },
+      {
+        "id": "s-v-D579-76-21-4--R03792-4-qp",
+        "variantId": "v-D579-76-21-4--R03792-4",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/21",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "جر الأول ورفع الثاني",
+    "wajhIndex": 4,
+    "evidence": [],
+    "notes": "مجموع حركتي الإعراب مطابق لجهاز الآية؛ حفظت المجموعة ذات الرسم نفسه مع اختلاف موضع الحركة في سجلها الخاص."
+  },
+  {
+    "id": "v-D579-76-21-4--R03793-5",
+    "surah": 76,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "خُضْرٌۭ وَإِسْتَبْرَقٌۭ ۖ",
+    "variantText": "خُضْرٌ وَإِسْتَبْرَقٍ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D579-76-21-khudr-istabraq",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-21-4--R03793-5",
+        "variantId": "v-D579-76-21-4--R03793-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03793",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "برفع الأول وجر الثاني ﴿خُضْرٌ وَإِسْتَبْرَقٍ﴾: أبو عمرو، وابن عامر، وأبو جعفر، ويعقوب."
+      },
+      {
+        "id": "s-v-D579-76-21-4--R03793-5-qp",
+        "variantId": "v-D579-76-21-4--R03793-5",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/21",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "رفع الأول وجر الثاني",
+    "wajhIndex": 5,
+    "evidence": [],
+    "notes": "مجموع حركتي الإعراب مطابق لجهاز الآية؛ حفظت المجموعة ذات الرسم نفسه مع اختلاف موضع الحركة في سجلها الخاص."
+  },
+  {
+    "id": "v-D579-76-23-5--R03795-2",
+    "surah": 76,
+    "ayah": 23,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "الْقُرَانَ",
+    "differenceType": "NAQL",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D579-76-23-face",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D579-76-23-5--R03795-2",
+        "variantId": "v-D579-76-23-5--R03795-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P579-R03795",
+        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
+        "sourceText": "﴿الْقُرْءَانَ﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾."
+      },
+      {
+        "id": "s-v-D579-76-23-5--R03795-2-qp",
+        "variantId": "v-D579-76-23-5--R03795-2",
+        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/23",
+        "verificationNotes": "مطابقة مستقلة لجهاز الآية؛ استُعمل لتصحيح مجموعة الرواة أو حفظ الوجه المقترن وعدم دمج الأوجه المتمايزة."
+      }
+    ],
+    "description": "نقل حركة الهمزة إلى الراء وحذف الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

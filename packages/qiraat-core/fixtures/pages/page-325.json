@@ -52,7 +52,9 @@
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q06-R01",
-      "Q06-R02"
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "L325-هزوا-1",
     "locusType": "word_variant",
@@ -62,9 +64,9 @@
         "variantId": "v-L325-هزوا-1-w3",
         "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
         "sourceType": "other",
-        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
-        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَكُفْؤًا وَكُفْئًا فِي هُزُؤًا وَكُلَّهُ ... كَمَا حَبْسُ نَصْرٍ شَافِعٌ فَتَأَمَّلَا"
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01333",
+        "verificationNotes": "أُضيف خلف العاشر صراحةً كما ورد في السطر المصدر؛ المرجع المستقل: https://quranpedia.net/qiraat/al-anbiya/36.",
+        "sourceText": "بضم فسكون مهموزاً ﴿هُزْءًا﴾: حمزة، خلف العاشر."
       }
     ],
     "description": "بإسكان الزاي والهمز",
@@ -164,5 +166,39 @@
         "text": "وَيَرَوْنَ كُوفٍ غَيْرَ حَفْصٍ شَمَرْدَلَا"
       }
     ]
+  },
+  {
+    "id": "v-D325-تاتيهم-w2",
+    "surah": 21,
+    "ayah": 40,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِيهِم",
+    "variantText": "تَأْتِيهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D325-تاتيهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D325-تاتيهم-w2",
+        "variantId": "v-D325-تاتيهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01337",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَأْتِيهِم﴾: بكسر الهاء للجمهور؛ وبضمها ﴿تَأْتِيهُم﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

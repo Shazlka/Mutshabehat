@@ -1,1 +1,273 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P544-58-14-9-03449-1-عليهم-عليهم",
+    "surah": 58,
+    "ayah": 14,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P544-58-14-9-03449-1-عليهم-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P544-58-14-9-03449-1-عليهم-عليهم-DOC",
+        "variantId": "v-AUDIT-P544-58-14-9-03449-1-عليهم-عليهم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P544-R03449",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P544-58-14-9-03449-1-عليهم-عليهم-QP",
+        "variantId": "v-AUDIT-P544-58-14-9-03449-1-عليهم-عليهم",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/14",
+        "sourceText": "(عَلَيْهُمْ) بضم الهاء وإسكان الميم: روح ورويس عن يعقوب، وخلف وخلاد عن حمزة.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم الهاء وإسكان الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(عَلَيْهُمْ) بضم الهاء وإسكان الميم: روح ورويس عن يعقوب، وخلف وخلاد عن حمزة.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/14"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P544-58-18-10-03450-1-ويحسبون-ويحسبون",
+    "surah": 58,
+    "ayah": 18,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وَيَحْسَبُونَ",
+    "variantText": "وَيَحْسِبُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P544-58-18-10-03450-1-ويحسبون-ويحسبون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P544-58-18-10-03450-1-ويحسبون-ويحسبون-DOC",
+        "variantId": "v-AUDIT-P544-58-18-10-03450-1-ويحسبون-ويحسبون",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P544-R03450",
+        "sourceText": "﴿وَيَحْسَبُونَ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P544-58-18-10-03450-1-ويحسبون-ويحسبون-QP",
+        "variantId": "v-AUDIT-P544-58-18-10-03450-1-ويحسبون-ويحسبون",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/18",
+        "sourceText": "(وَيَحْسِبُونَ) بكسر السين: سائر القراء عدا ابن عامر وعاصم وحمزة وأبي جعفر.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(وَيَحْسِبُونَ) بكسر السين: سائر القراء عدا ابن عامر وعاصم وحمزة وأبي جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/18"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P544-58-19-2-03451-1-عليهم الشيطان-عليهم الشيطان",
+    "surah": 58,
+    "ayah": 19,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلشَّيْطَـٰنُ",
+    "variantText": "عَلَيْهِمُ الشَّيْطَـٰنُ",
+    "differenceType": "SILAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P544-58-19-2-03451-1-عليهم الشيطان-عليهم الشيطان",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر الهاء وصلة الميم",
+    "sources": [
+      {
+        "id": "s-AUDIT-P544-58-19-2-03451-1-عليهم الشيطان-عليهم الشيطان-DOC",
+        "variantId": "v-AUDIT-P544-58-19-2-03451-1-عليهم الشيطان-عليهم الشيطان",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P544-R03451",
+        "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل. استبعد ورش Q01-R02 لأن الجهاز الخاص بالآية يذكر قالون وحده من نافع في هذا الوجه."
+      },
+      {
+        "id": "s-AUDIT-P544-58-19-2-03451-1-عليهم الشيطان-عليهم الشيطان-QP",
+        "variantId": "v-AUDIT-P544-58-19-2-03451-1-عليهم الشيطان-عليهم الشيطان",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/19",
+        "sourceText": "(عَلَيْهِمُ) بكسر الهاء وصلة الميم: حفص وشعبة، قالون، ابن ذكوان وهشام، ابن وردان وابن جمّاز، قنبل والبزي، ورش.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الهاء وصلة الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(عَلَيْهِمُ) بكسر الهاء وصلة الميم: حفص وشعبة، قالون، ابن ذكوان وهشام، ابن وردان وابن جمّاز، قنبل والبزي، ورش.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/19"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P544-58-19-2-03452-1-عليهم الشيطان-عليهم الشيطان",
+    "surah": 58,
+    "ayah": 19,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلشَّيْطَـٰنُ",
+    "variantText": "عَلَيْهِمِ الشَّيْطَـٰنُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P544-58-19-2-03452-1-عليهم الشيطان-عليهم الشيطان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P544-58-19-2-03452-1-عليهم الشيطان-عليهم الشيطان-DOC",
+        "variantId": "v-AUDIT-P544-58-19-2-03452-1-عليهم الشيطان-عليهم الشيطان",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P544-R03452",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P544-58-19-2-03452-1-عليهم الشيطان-عليهم الشيطان-QP",
+        "variantId": "v-AUDIT-P544-58-19-2-03452-1-عليهم الشيطان-عليهم الشيطان",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/19",
+        "sourceText": "(عَلَيْهِمِ) بكسر الهاء والميم: الدوري والسوسي عن أبي عمرو.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الهاء والميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(عَلَيْهِمِ) بكسر الهاء والميم: الدوري والسوسي عن أبي عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/19"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P544-58-19-2-03453-1-عليهم الشيطان-عليهم الشيطان",
+    "surah": 58,
+    "ayah": 19,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلشَّيْطَـٰنُ",
+    "variantText": "عَلَيْهُمُ الشَّيْطَـٰنُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P544-58-19-2-03453-1-عليهم الشيطان-عليهم الشيطان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P544-58-19-2-03453-1-عليهم الشيطان-عليهم الشيطان-DOC",
+        "variantId": "v-AUDIT-P544-58-19-2-03453-1-عليهم الشيطان-عليهم الشيطان",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P544-R03453",
+        "sourceText": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف، ويعقوب.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P544-58-19-2-03453-1-عليهم الشيطان-عليهم الشيطان-QP",
+        "variantId": "v-AUDIT-P544-58-19-2-03453-1-عليهم الشيطان-عليهم الشيطان",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/19",
+        "sourceText": "(عَلَيْهُمُ) بضم الهاء والميم: خلف وخلاد عن حمزة، الدوري وأبو الحارث عن الكسائي، روح ورويس عن يعقوب، وإدريس وإسحاق عن خلف العاشر.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم الهاء والميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(عَلَيْهُمُ) بضم الهاء والميم: خلف وخلاد عن حمزة، الدوري وأبو الحارث عن الكسائي، روح ورويس عن يعقوب، وإدريس وإسحاق عن خلف العاشر.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/19"
+      }
+    ]
+  }
+]

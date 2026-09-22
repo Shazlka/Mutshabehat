@@ -1,1 +1,115 @@
-[]
+[
+  {
+    "id": "v-D518-ق_والقرءان-w2",
+    "surah": 50,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قٓ ۚ وَٱلْقُرْءَانِ",
+    "variantText": "قٓ ۚ وَٱلْقُرْءَانِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D518-ق_والقرءان",
+    "locusType": "performance_variant",
+    "performanceNote": "بالسكت",
+    "sources": [
+      {
+        "id": "s-D518-ق_والقرءان-w2",
+        "variantId": "v-D518-ق_والقرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P518-R03215",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/qaf/1",
+        "sourceText": "﴿قٓ وَالْقُرْءَانِ﴾: بالسكت لأبي جعفر؛ وبإدراجها للباقين (مع نقل همزة القرآن لابن كثير ﴿وَالْقُرَانِ﴾)."
+      }
+    ],
+    "description": "بالسكت",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D518-متنا-w2",
+    "surah": 50,
+    "ayah": 3,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "مِتْنَا",
+    "variantText": "مُتْنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D518-متنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D518-متنا-w2",
+        "variantId": "v-D518-متنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P518-R03216",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/qaf/1",
+        "sourceText": "﴿مِتْنَا﴾: بكسر الميم لنافع، وحفص، وحمزة، والكسائي، وخلف؛ بضم الميم ﴿مُتْنَا﴾ للباقين."
+      }
+    ],
+    "description": "بضم الميم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D518-ميتا-w2",
+    "surah": 50,
+    "ayah": 11,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مَّيْتًۭا ۚ",
+    "variantText": "مَيِّتًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D518-ميتا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D518-ميتا-w2",
+        "variantId": "v-D518-ميتا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P518-R03217",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/qaf/1",
+        "sourceText": "﴿مَّيْتٗا﴾: بتخفيف الياء الساكنة للجمهور؛ بتشديد الياء المكسورة ﴿مَيِّتًا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بتشديد الياء المكسورة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

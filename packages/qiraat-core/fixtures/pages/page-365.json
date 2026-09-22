@@ -177,5 +177,116 @@
     "description": "بفتح الياء وكسر التاء",
     "wajhIndex": 3,
     "evidence": []
+  },
+  {
+    "id": "v-D365-فسل-w2",
+    "surah": 25,
+    "ayah": 59,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "فَسْـَٔلْ",
+    "variantText": "فَسَلْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D365-فسل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D365-فسل-w2",
+        "variantId": "v-D365-فسل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P365-R01765",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَسْـَٔلْ﴾: بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلْ﴾ لابن كثير، والكسائي، وخلف؛ وبإسكان السين وتحقيق الهمزة للباقين."
+      }
+    ],
+    "description": "بنقل حركة الهمزة وحذفها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D365-تامرنا-w2",
+    "surah": 25,
+    "ayah": 60,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "تَأْمُرُنَا",
+    "variantText": "يَأْمُرُنَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D365-تامرنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D365-تامرنا-w2",
+        "variantId": "v-D365-تامرنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P365-R01767",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَأْمُرُنَا﴾: بتاء الخطاب للجمهور (مع إبدال الهمزة لورش والسوسي وأبي جعفر)؛ وبياء الغيب ﴿يَأْمُرُنَا﴾ لحمزة والكسائي."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D365-يقتروا-w2",
+    "surah": 25,
+    "ayah": 67,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يَقْتُرُوا۟",
+    "variantText": "يُقْتِرُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D365-يقتروا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D365-يقتروا-w2",
+        "variantId": "v-D365-يقتروا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P365-R01773",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الياء وكسر التاء ﴿يُقْتِرُوا﴾: نافع، وابن عامر، وأبو جعفر."
+      }
+    ],
+    "description": "بضم الياء وكسر التاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

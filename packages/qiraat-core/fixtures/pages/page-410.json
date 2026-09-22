@@ -117,5 +117,73 @@
     "description": "بنون خفيفة مخففة ﴿يَسْتَخِفَّنكَ﴾",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D410-ولا_تسمع_الصم-w2",
+    "surah": 30,
+    "ayah": 52,
+    "startToken": 5,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تُسْمِعُ ٱلصُّمَّ",
+    "variantText": "وَلَا يَسْمَعُ الصُّمُّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D410-ولا_تسمع_الصم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D410-ولا_تسمع_الصم-w2",
+        "variantId": "v-D410-ولا_تسمع_الصم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P410-R02173",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَلَا تُسْمِعُ الصُّمَّ﴾: بتاء الخطاب ونصب الصمَّ للجمهور؛ وبياء الغيب ورفع الصمُّ ﴿وَلَا يَسْمَعُ الصُّمُّ﴾ لابن كثير."
+      }
+    ],
+    "description": "بياء الغيب ورفع الصم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D410-القرءان-w2",
+    "surah": 30,
+    "ayah": 58,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانِ",
+    "variantText": "الْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D410-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D410-القرءان-w2",
+        "variantId": "v-D410-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P410-R02178",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانِ﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانِ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

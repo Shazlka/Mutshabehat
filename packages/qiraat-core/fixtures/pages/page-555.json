@@ -1,1 +1,211 @@
-[]
+[
+  {
+    "id": "v-D555-لووا-w2",
+    "surah": 63,
+    "ayah": 5,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "لَوَّوْا۟",
+    "variantText": "لَوْوْا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q09-R02"
+    ],
+    "locusId": "D555-لووا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D555-لووا-w2",
+        "variantId": "v-D555-لووا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03565",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَوَّوْاْ﴾: بتشديد الواو الأولى المفتوحة ﴿لَوَّوْا﴾ للجمهور؛ بتخفيف الواو الأولى ساكنة ﴿لَوْوْا﴾ لنافع وروح."
+      }
+    ],
+    "description": "بتخفيف الواو الأولى ساكنة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D555-عليهم-w2",
+    "surah": 63,
+    "ayah": 6,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D555-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D555-عليهم-w2",
+        "variantId": "v-D555-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03566",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D555-واكن-w2",
+    "surah": 63,
+    "ayah": 10,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "وَأَكُن",
+    "variantText": "وَأَكُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D555-واكن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D555-واكن-w2",
+        "variantId": "v-D555-واكن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03567",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَأَكُن﴾: بجزم النون وحذف الواو ﴿وَأَكُن﴾ لجميع القراء عدا أبا عمرو؛ بنصب النون وإثبات الواو ﴿وَأَكُونَ﴾ لأبي عمرو."
+      }
+    ],
+    "description": "بنصب النون وإثبات الواو",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D555-تعملون-w2",
+    "surah": 63,
+    "ayah": 11,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ",
+    "variantText": "يَعْمَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D555-تعملون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D555-تعملون-w2",
+        "variantId": "v-D555-تعملون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03568",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَعْمَلُونَ﴾ (الآية الأخيرة): بتاء الخطاب للجمهور؛ بياء الغيب ﴿يَعْمَلُونَ﴾ لشعبة."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D555-قيل-performance1",
+    "surah": 63,
+    "ayah": 5,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D555-قيل",
+    "locusType": "performance_variant",
+    "performanceNote": "بالإشمام",
+    "sources": [
+      {
+        "id": "s-D555-قيل-performance1",
+        "variantId": "v-D555-قيل-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03564",
+        "verificationNotes": "الإشمام لهشام والكسائي ورويس؛ رويس هو Q09-R02. المرجع المستقل: https://quranpedia.net/qiraat/al-munafiqun/5.",
+        "sourceText": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس."
+      }
+    ],
+    "description": "بالإشمام",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D555-قيل-performance2",
+    "surah": 63,
+    "ayah": 5,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "D555-قيل",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر خالص مع الإدغام الكبير",
+    "sources": [
+      {
+        "id": "s-D555-قيل-performance2",
+        "variantId": "v-D555-قيل-performance2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03564",
+        "verificationNotes": "السوسي عن أبي عمرو يقرأ بكسر خالص مع الإدغام الكبير. المرجع المستقل: https://quranpedia.net/qiraat/al-munafiqun/5.",
+        "sourceText": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس."
+      }
+    ],
+    "description": "كسر خالص مع الإدغام الكبير",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

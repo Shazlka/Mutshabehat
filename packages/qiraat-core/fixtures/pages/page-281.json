@@ -1,1 +1,69 @@
-[]
+[
+  {
+    "id": "v-D281-ابراهيم-w2",
+    "surah": 16,
+    "ayah": 120,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D281-ابراهيم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D281-ابراهيم-w2",
+        "variantId": "v-D281-ابراهيم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00794",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾ (معاً): بياء بعد الهاء للجمهور؛ وبألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
+      }
+    ],
+    "description": "بألف بعد الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D281-ضيق-w2",
+    "surah": 16,
+    "ayah": 127,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "ضَيْقٍۢ",
+    "variantText": "ضِيقٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D281-ضيق",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D281-ضيق-w2",
+        "variantId": "v-D281-ضيق-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00798",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ضَيْقٍ﴾: بفتح الضاد للجمهور؛ وبكسر الضاد ﴿ضِيقٍ﴾ لابن كثير."
+      }
+    ],
+    "description": "بكسر الضاد",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

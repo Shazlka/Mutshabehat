@@ -1,1 +1,262 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P273-16-58-8-a83fa80a",
+    "surah": 16,
+    "ayah": 58,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P273-16-58-8-a83fa80a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P273-R00712",
+        "variantId": "v-AUDIT-P273-16-58-8-a83fa80a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P273-R00712",
+        "sourceText": "﴿وَهُوَ﴾ (معاً)، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "طوبق الوجه والرواة مع مصدر مستقل للقراءات العشر ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P273-R00712-EXT",
+        "variantId": "v-AUDIT-P273-16-58-8-a83fa80a",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://books.rafed.net/view/3090/page/174",
+        "sourceText": "Al-Ithaf documents sukūn of the hāʾ in huwa/hiyya after wāw or fāʾ for Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (معاً)، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "Al-Ithaf documents sukūn of the hāʾ in huwa/hiyya after wāw or fāʾ for Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "url": "https://books.rafed.net/view/3090/page/174"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P273-16-60-10-a83fa80a",
+    "surah": 16,
+    "ayah": 60,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P273-16-60-10-a83fa80a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P273-R00712",
+        "variantId": "v-AUDIT-P273-16-60-10-a83fa80a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P273-R00712",
+        "sourceText": "﴿وَهُوَ﴾ (معاً)، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "طوبق الوجه والرواة مع مصدر مستقل للقراءات العشر ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P273-R00712-EXT",
+        "variantId": "v-AUDIT-P273-16-60-10-a83fa80a",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://books.rafed.net/view/3090/page/174",
+        "sourceText": "Al-Ithaf documents sukūn of the hāʾ in huwa/hiyya after wāw or fāʾ for Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (معاً)، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "Al-Ithaf documents sukūn of the hāʾ in huwa/hiyya after wāw or fāʾ for Qalun, Abu Amr, al-Kisai, and Abu Jaafar.",
+        "url": "https://books.rafed.net/view/3090/page/174"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P273-16-63-12-2f5a0459",
+    "surah": 16,
+    "ayah": 63,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P273-16-63-12-2f5a0459",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P273-R00712",
+        "variantId": "v-AUDIT-P273-16-63-12-2f5a0459",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P273-R00712",
+        "sourceText": "﴿وَهُوَ﴾ (معاً)، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "طوبق الوجه والرواة مع مصدر مستقل للقراءات العشر ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P273-R00712-EXT",
+        "variantId": "v-AUDIT-P273-16-63-12-2f5a0459",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://jamharah.net/showthread.php?t=27567",
+        "sourceText": "At an-Nahl 16:63, Abu Amr, al-Kisai, Abu Jaafar, and Qalun read فَهْوَ with a silent hāʾ; the rest read with ḍamma.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾ (معاً)، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "At an-Nahl 16:63, Abu Amr, al-Kisai, Abu Jaafar, and Qalun read فَهْوَ with a silent hāʾ; the rest read with ḍamma.",
+        "url": "https://jamharah.net/showthread.php?t=27567"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P273-16-62-17-6370561a",
+    "surah": 16,
+    "ayah": 62,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "مُّفْرَطُونَ",
+    "variantText": "مُفْرِطُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P273-16-62-17-6370561a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P273-R00714",
+        "variantId": "v-AUDIT-P273-16-62-17-6370561a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P273-R00714",
+        "sourceText": "بكسر الراء وتخفيفها ﴿مُفْرِطُونَ﴾: نافع.",
+        "verificationNotes": "طوبق الوجه والرواة مع مصدر مستقل للقراءات العشر ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P273-R00714-EXT",
+        "variantId": "v-AUDIT-P273-16-62-17-6370561a",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/tafsir/an-nahl/62",
+        "sourceText": "Quranpedia records Nafiʿ reading مُفْرِطُونَ with kasra on rāʾ and no gemination at an-Nahl 16:62.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بكسر الراء وتخفيفها ﴿مُفْرِطُونَ﴾: نافع.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "Quranpedia records Nafiʿ reading مُفْرِطُونَ with kasra on rāʾ and no gemination at an-Nahl 16:62.",
+        "url": "https://quranpedia.net/tafsir/an-nahl/62"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P273-16-62-17-99f4ecc3",
+    "surah": 16,
+    "ayah": 62,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "مُّفْرَطُونَ",
+    "variantText": "مُفَرِّطُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P273-16-62-17-99f4ecc3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P273-R00715",
+        "variantId": "v-AUDIT-P273-16-62-17-99f4ecc3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P273-R00715",
+        "sourceText": "بكسر الراء وتشديدها ﴿مُفَرِّطُونَ﴾: أبو جعفر.",
+        "verificationNotes": "طوبق الوجه والرواة مع مصدر مستقل للقراءات العشر ورمز المصحف."
+      },
+      {
+        "id": "s-DOCX-P273-R00715-EXT",
+        "variantId": "v-AUDIT-P273-16-62-17-99f4ecc3",
+        "sourceName": "مصدر مستقل في القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/tafsir/an-nahl/62",
+        "sourceText": "Quranpedia records Abu Jaafar reading مُفَرِّطُونَ with kasra on rāʾ and gemination at an-Nahl 16:62.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بكسر الراء وتشديدها ﴿مُفَرِّطُونَ﴾: أبو جعفر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "مصدر مستقل في القراءات العشر",
+        "text": "Quranpedia records Abu Jaafar reading مُفَرِّطُونَ with kasra on rāʾ and gemination at an-Nahl 16:62.",
+        "url": "https://quranpedia.net/tafsir/an-nahl/62"
+      }
+    ]
+  }
+]

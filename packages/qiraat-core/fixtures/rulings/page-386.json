@@ -248,5 +248,195 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p386-WAQF_RASM-امرات-2",
+    "pageNumber": 386,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 9,
+    "baseText": "ٱمْرَأَتُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بالهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "مع الإمالة بخلف",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p386-WAQF_RASM-قرت-3",
+    "pageNumber": 386,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 9,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 9,
+    "baseText": "قُرَّتُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بالهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "مع الإمالة بخلف",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

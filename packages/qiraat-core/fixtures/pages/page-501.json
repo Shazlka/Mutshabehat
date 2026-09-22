@@ -1,1 +1,263 @@
-[]
+[
+  {
+    "id": "v-D501-غشاوه-w2",
+    "surah": 45,
+    "ayah": 23,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "غِشَـٰوَةًۭ",
+    "variantText": "غَشْوَةً",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D501-غشاوه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D501-غشاوه-w2",
+        "variantId": "v-D501-غشاوه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03048",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿غِشَـٰوَةٗ﴾: بكسر الغين وألف مدية بعد الشين ﴿غِشَاوَةً﴾ للجمهور؛ وبفتح الغين وإسكان الشين وقصرها ﴿غَشْوَةً﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بفتح الغين وإسكان الشين وقصرها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D501-كل_امه_تدعا-w2",
+    "surah": 45,
+    "ayah": 28,
+    "startToken": 5,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "كُلُّ أُمَّةٍۢ تُدْعَىٰٓ",
+    "variantText": "كُلَّ أُمَّةٍ تُدْعَى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D501-كل_امه_تدعا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D501-كل_امه_تدعا-w2",
+        "variantId": "v-D501-كل_امه_تدعا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03051",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿كُلُّ أُمَّةٍ تُدْعَىٰ﴾ (الموضع الثاني): برفع كلُّ مبتدأ للجمهور؛ بنصب كلَّ مفعولاً به ﴿كُلَّ أُمَّةٍ تُدْعَى﴾ ليعقوب."
+      }
+    ],
+    "description": "بنصب كل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D501-والساعه_لا_ريب-w2",
+    "surah": 45,
+    "ayah": 32,
+    "startToken": 7,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلسَّاعَةُ لَا رَيْبَ",
+    "variantText": "وَالسَّاعَةَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D501-والساعه_لا_ريب",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D501-والساعه_لا_ريب-w2",
+        "variantId": "v-D501-والساعه_لا_ريب-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03053",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَالسَّاعَةُ لَا رَيْبَ﴾: برفع التاء ﴿وَالسَّاعَةُ﴾ للجمهور؛ بنصب التاء ﴿وَالسَّاعَةَ﴾ لحمزة."
+      }
+    ],
+    "description": "بنصب التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P501-DOCX-P501-R03049-24-d3cb81eb",
+    "surah": 45,
+    "ayah": 23,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذْكُرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P501-DOCX-P501-R03049-24-d3cb81eb",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P501-DOCX-P501-R03049-24-d3cb81eb",
+        "variantId": "v-AUDIT-P501-DOCX-P501-R03049-24-d3cb81eb",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03049",
+        "sourceText": "﴿تَذَكَّرُونَ﴾: بتخفيف الذال لحفص، وحمزة، والكسائي، وخلف؛ وبالتشديد للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/24"
+      },
+      {
+        "id": "s-AUDIT-P501-DOCX-P501-R03049-24-d3cb81eb-EXT",
+        "variantId": "v-AUDIT-P501-DOCX-P501-R03049-24-d3cb81eb",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/24",
+        "sourceText": "بتخفيف الذال",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بتخفيف الذال",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بتخفيف الذال",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P501-DOCX-P501-R03050-3-95ec0da8",
+    "surah": 45,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P501-DOCX-P501-R03050-3-95ec0da8",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P501-DOCX-P501-R03050-3-95ec0da8",
+        "variantId": "v-AUDIT-P501-DOCX-P501-R03050-3-95ec0da8",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03050",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (معاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/24"
+      },
+      {
+        "id": "s-AUDIT-P501-DOCX-P501-R03050-3-95ec0da8-EXT",
+        "variantId": "v-AUDIT-P501-DOCX-P501-R03050-3-95ec0da8",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/24",
+        "sourceText": "بضم الهاء",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الهاء",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/24"
+      }
+    ],
+    "performanceNote": "بضم هاء عليهم"
+  },
+  {
+    "id": "v-AUDIT-P501-DOCX-P501-R03052-2-8a33ee81",
+    "surah": 45,
+    "ayah": 32,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P501-DOCX-P501-R03052-2-8a33ee81",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P501-DOCX-P501-R03052-2-8a33ee81",
+        "variantId": "v-AUDIT-P501-DOCX-P501-R03052-2-8a33ee81",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P501-R03052",
+        "sourceText": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "وجه صريح، عُيّن على الرمز الحقيقي للكلمة، وقوبل بمرجع مستقل: https://quranpedia.net/qiraat/al-jathiyah/32"
+      },
+      {
+        "id": "s-AUDIT-P501-DOCX-P501-R03052-2-8a33ee81-EXT",
+        "variantId": "v-AUDIT-P501-DOCX-P501-R03052-2-8a33ee81",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/32",
+        "sourceText": "بالإشمام",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      }
+    ],
+    "description": "بالإشمام",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالإشمام",
+        "url": "https://quranpedia.net/qiraat/al-jathiyah/32"
+      }
+    ],
+    "performanceNote": "إشمام كسر القاف ضماً"
+  }
+]

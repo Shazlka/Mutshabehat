@@ -1,1 +1,247 @@
-[]
+[
+  {
+    "id": "v-AUDIT-DOCX-P541-R03424-1ed888d43f",
+    "surah": 57,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلَنَا",
+    "variantText": "رُسْلَنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P541-R03424-1ed888d43f",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03424-1ed888d43f",
+        "variantId": "v-AUDIT-DOCX-P541-R03424-1ed888d43f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P541-R03424",
+        "sourceText": "﴿رُسُلَنَا﴾، ﴿بِرُسُلِنَا﴾: بإسكان السين لأبي عمرو ﴿رُسْلَنَا... بِرُسْلِنَا﴾؛ وبضمها للباقين.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03424-1ed888d43f-EXT",
+        "variantId": "v-AUDIT-DOCX-P541-R03424-1ed888d43f",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/25",
+        "sourceText": "إسكان السين: أبو عمرو.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بإسكان السين لأبي عمرو ﴿رُسْلَنَا... بِرُسْلِنَا﴾؛ وبضمها للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إسكان السين: أبو عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/25"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P541-R03426-591c31c3dd",
+    "surah": 57,
+    "ayah": 26,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنُّبُوَّةَ",
+    "variantText": "النُّبُوءَةَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P541-R03426-591c31c3dd",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03426-591c31c3dd",
+        "variantId": "v-AUDIT-DOCX-P541-R03426-591c31c3dd",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P541-R03426",
+        "sourceText": "﴿النُّبُوَّةَ﴾: بالهمز لنافع ﴿النُّبُوءَةَ﴾؛ وبغير همز للباقين.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03426-591c31c3dd-EXT",
+        "variantId": "v-AUDIT-DOCX-P541-R03426-591c31c3dd",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/26",
+        "sourceText": "همز النبوة: نافع.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بالهمز لنافع ﴿النُّبُوءَةَ﴾؛ وبغير همز للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "همز النبوة: نافع.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/26"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P541-R03427-f4cd42eb95",
+    "surah": 57,
+    "ayah": 27,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P541-R03427-f4cd42eb95",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03427-f4cd42eb95",
+        "variantId": "v-AUDIT-DOCX-P541-R03427-f4cd42eb95",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P541-R03427",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03427-f4cd42eb95-EXT",
+        "variantId": "v-AUDIT-DOCX-P541-R03427-f4cd42eb95",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/27",
+        "sourceText": "ضم الهاء: حمزة ويعقوب.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الهاء: حمزة ويعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/27"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P541-R03428-229a0c9bc4",
+    "surah": 57,
+    "ayah": 27,
+    "startToken": 26,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "رِضْوَٰنِ",
+    "variantText": "رُضْوَانِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-DOCX-P541-R03428-229a0c9bc4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03428-229a0c9bc4",
+        "variantId": "v-AUDIT-DOCX-P541-R03428-229a0c9bc4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P541-R03428",
+        "sourceText": "﴿رِضْوَٰنِ﴾: بكسر الراء للجمهور؛ بضم الراء ﴿رُضْوَانِ﴾ لشعبة.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03428-229a0c9bc4-EXT",
+        "variantId": "v-AUDIT-DOCX-P541-R03428-229a0c9bc4",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/27",
+        "sourceText": "ضم الراء: شعبة عن عاصم.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بكسر الراء للجمهور؛ بضم الراء ﴿رُضْوَانِ﴾ لشعبة.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الراء: شعبة عن عاصم.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/27"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P541-R03425-75d51268ee",
+    "surah": 57,
+    "ayah": 26,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَإِبْرَٰهِيمَ",
+    "variantText": "وَإِبْرَاهَامَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "AUDIT-DOCX-P541-R03425-75d51268ee",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03425-75d51268ee",
+        "variantId": "v-AUDIT-DOCX-P541-R03425-75d51268ee",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P541-R03425",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾: بياء بعد الهاء للجمهور؛ بألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام.",
+        "verificationNotes": "سطر المصدر يعيّن الوجه والرواة؛ طوبق الشكل مع توكن المصحف والمرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P541-R03425-75d51268ee-EXT",
+        "variantId": "v-AUDIT-DOCX-P541-R03425-75d51268ee",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/26",
+        "sourceText": "إبراهيم: هشام عن ابن عامر بالألف بعد الهاء، وبالياء لسائر القراء.",
+        "verificationNotes": "جهاز القراءات العشر للآية يسند الوجه صراحةً."
+      }
+    ],
+    "description": "بياء بعد الهاء للجمهور؛ بألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إبراهيم: هشام عن ابن عامر بالألف بعد الهاء، وبالياء لسائر القراء.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/26"
+      }
+    ]
+  }
+]

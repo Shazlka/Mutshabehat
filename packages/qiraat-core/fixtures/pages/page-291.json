@@ -1,1 +1,79 @@
-[]
+[
+  {
+    "id": "v-D291-القرءان-w2",
+    "surah": 17,
+    "ayah": 88,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانِ",
+    "variantText": "الْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D291-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D291-القرءان-w2",
+        "variantId": "v-D291-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P291-R00920",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانِ﴾ (معاً): بنقل الهمزة لابن كثير ﴿الْقُرَانِ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D291-تفجر-w2",
+    "surah": 17,
+    "ayah": 90,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَفْجُرَ",
+    "variantText": "تُفَجِّرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D291-تفجر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D291-تفجر-w2",
+        "variantId": "v-D291-تفجر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P291-R00921",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَفْجُرَ﴾: بتخفيف الجيم لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبتشديد الجيم ﴿تُفَجِّرَ﴾ للباقين."
+      }
+    ],
+    "description": "بتشديد الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

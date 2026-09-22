@@ -117,7 +117,14 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P531-R03345",
+        "sourceText": "الممال والمقلل: ﴿كَالْفَخَّارِ﴾، ﴿نَّارٍ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p531-IMALAH_TAQLIL-نار-1",
@@ -175,6 +182,13 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P531-R03345",
+        "sourceText": "الممال والمقلل: ﴿كَالْفَخَّارِ﴾، ﴿نَّارٍ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   }
 ]

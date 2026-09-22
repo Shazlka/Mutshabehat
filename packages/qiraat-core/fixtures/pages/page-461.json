@@ -69,5 +69,110 @@
     "description": "بتخفيف الياء ساكنة في الموضعين",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D461-وقيل-w2-DOCX-P461-R02673",
+    "surah": 39,
+    "ayah": 24,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D461-وقيل-DOCX-P461-R02673",
+    "locusType": "performance_variant",
+    "performanceNote": "بالإشمام",
+    "sources": [
+      {
+        "id": "s-D461-وقيل-w2-DOCX-P461-R02673",
+        "variantId": "v-D461-وقيل-w2-DOCX-P461-R02673",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 461، DOCX-P461-R02673",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿وَقِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس."
+      }
+    ],
+    "description": "بالإشمام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D461-القرءان-w2-DOCX-P461-R02674",
+    "surah": 39,
+    "ayah": 27,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانِ",
+    "variantText": "الْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D461-القرءان-DOCX-P461-R02674",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D461-القرءان-w2-DOCX-P461-R02674",
+        "variantId": "v-D461-القرءان-w2-DOCX-P461-R02674",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 461، DOCX-P461-R02674",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿الْقُرْءَانِ﴾، ﴿قُرْءَانًا﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانِ﴾، ﴿قُرَانًا﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D461-قرءانا-w2-DOCX-P461-R02674",
+    "surah": 39,
+    "ayah": 28,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "قُرْءَانًا",
+    "variantText": "قُرَانًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D461-قرءانا-DOCX-P461-R02674",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D461-قرءانا-w2-DOCX-P461-R02674",
+        "variantId": "v-D461-قرءانا-w2-DOCX-P461-R02674",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 461، DOCX-P461-R02674",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿الْقُرْءَانِ﴾، ﴿قُرْءَانًا﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانِ﴾، ﴿قُرَانًا﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

@@ -31,5 +31,221 @@
     "description": "بكسر الحاء وإسكان الباء",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-L521-s51a15b5-w1-R03238",
+    "surah": 51,
+    "ayah": 15,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَعُيُونٍ",
+    "variantText": "وَعُيُونٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L521-s51a15b5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L521-s51a15b5-w1-R03238",
+        "variantId": "v-L521-s51a15b5-w1-R03238",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P521-R03238",
+        "sourceText": "﴿وَعُيُونٍ﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/15"
+      }
+    ],
+    "description": "بكسر العين",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿وَعُيُونٍ﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين للباقين.",
+        "url": "https://quranpedia.net/qiraat/51/15"
+      }
+    ],
+    "performanceNote": "بكسر العين"
+  },
+  {
+    "id": "v-L521-s51a23b6-w1-R03239",
+    "surah": 51,
+    "ayah": 23,
+    "startToken": 6,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "مِّثْلَ مَآ أَنَّكُمْ",
+    "variantText": "مِثْلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L521-s51a23b6",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L521-s51a23b6-w1-R03239",
+        "variantId": "v-L521-s51a23b6-w1-R03239",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P521-R03239",
+        "sourceText": "﴿مِّثْلَ مَآ أَنَّكُمْ﴾: بنصب اللام ﴿مِثْلَ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وحفص، وأبي جعفر، ويعقوب؛ برفع اللام ﴿مِثْلُ﴾ لشعبة، وحمزة، والكسائي، وخلف.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/23"
+      }
+    ],
+    "description": "برفع اللام",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿مِّثْلَ مَآ أَنَّكُمْ﴾: بنصب اللام ﴿مِثْلَ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وحفص، وأبي جعفر، ويعقوب؛ برفع اللام ﴿مِثْلُ﴾ لشعبة، وحمزة، والكسائي، وخلف.",
+        "url": "https://quranpedia.net/qiraat/51/23"
+      }
+    ]
+  },
+  {
+    "id": "v-L521-s51a24b5-w1-R03240",
+    "surah": 51,
+    "ayah": 24,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L521-s51a24b5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L521-s51a24b5-w1-R03240",
+        "variantId": "v-L521-s51a24b5-w1-R03240",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P521-R03240",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾: بياء بعد الهاء للجمهور؛ بألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/24"
+      }
+    ],
+    "description": "بألف بعد الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿إِبْرَٰهِيمَ﴾: بياء بعد الهاء للجمهور؛ بألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام.",
+        "url": "https://quranpedia.net/qiraat/51/24"
+      }
+    ]
+  },
+  {
+    "id": "v-L521-s51a25b6-w1-R03241",
+    "surah": 51,
+    "ayah": 25,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قَالَ سَلَـٰمٌۭ",
+    "variantText": "قَالَ سِلْمٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L521-s51a25b6",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L521-s51a25b6-w1-R03241",
+        "variantId": "v-L521-s51a25b6-w1-R03241",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P521-R03241",
+        "sourceText": "﴿قَالَ سَلَـٰمٌ﴾: بألف بعد اللام مع رفع الميم منونة ﴿سَلَامٌ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب، وخلف؛ بكسر السين وسكون اللام بلا ألف وخفض الميم ﴿قَالَ سِلْمٍ﴾ لحمزة والكسائي.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/25"
+      }
+    ],
+    "description": "بكسر السين وسكون اللام وخفض الميم",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿قَالَ سَلَـٰمٌ﴾: بألف بعد اللام مع رفع الميم منونة ﴿سَلَامٌ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب، وخلف؛ بكسر السين وسكون اللام بلا ألف وخفض الميم ﴿قَالَ سِلْمٍ﴾ لحمزة والكسائي.",
+        "url": "https://quranpedia.net/qiraat/51/25"
+      }
+    ]
+  },
+  {
+    "id": "v-L521-s51a27b2-w1-R03242",
+    "surah": 51,
+    "ayah": 27,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L521-s51a27b2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L521-s51a27b2-w1-R03242",
+        "variantId": "v-L521-s51a27b2-w1-R03242",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P521-R03242",
+        "sourceText": "﴿إِلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/27"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿إِلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "url": "https://quranpedia.net/qiraat/51/27"
+      }
+    ],
+    "performanceNote": "بضم الهاء"
   }
 ]

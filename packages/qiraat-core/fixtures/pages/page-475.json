@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "id": "v-D475-فيكون-w2",
+    "surah": 40,
+    "ayah": 68,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "فَيَكُونُ",
+    "variantText": "فَيَكُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D475-فيكون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D475-فيكون-w2",
+        "variantId": "v-D475-فيكون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P475-R02798",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَيَكُونُ﴾: برفع النون للجمهور؛ وبنصب النون ﴿فَيَكُونَ﴾ لابن عامر."
+      }
+    ],
+    "description": "بنصب النون",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D475-رسلنا-w2",
+    "surah": 40,
+    "ayah": 70,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلَنَا ۖ",
+    "variantText": "رُسْلَنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D475-رسلنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D475-رسلنا-w2",
+        "variantId": "v-D475-رسلنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P475-R02799",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿رُسُلَنَا﴾: بإسكان السين لأبي عمرو ﴿رُسْلَنَا﴾؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D475-يرجعون-w2",
+    "surah": 40,
+    "ayah": 77,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "يُرْجَعُونَ",
+    "variantText": "يَرْجِعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D475-يرجعون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D475-يرجعون-w2",
+        "variantId": "v-D475-يرجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P475-R02801",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُرْجَعُونَ﴾: بضم الياء للجمهور؛ وبفتح الياء ﴿يَرْجِعُونَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

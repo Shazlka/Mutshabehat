@@ -1,1 +1,91 @@
-[]
+[
+  {
+    "id": "v-D505-وابلغكم-w2",
+    "surah": 46,
+    "ayah": 23,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَأُبَلِّغُكُم",
+    "variantText": "وَأَبْلُغُكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D505-وابلغكم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D505-وابلغكم-w2",
+        "variantId": "v-D505-وابلغكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P505-R03092",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَأُبَلِّغُكُم﴾: بتشديد الباء ﴿وَأُبَلِّغُكُمْ﴾ للجمهور؛ وبتخفيف الباء ﴿وَأَبْلُغُكُمْ﴾ لأبي عمرو."
+      }
+    ],
+    "description": "بتخفيف الباء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P505-R03094-25-7",
+    "surah": 46,
+    "ayah": 25,
+    "startToken": 7,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُرَىٰٓ إِلَّا مَسَـٰكِنُهُمْ ۚ",
+    "variantText": "لَا تَرَى إِلَّا مَسَاكِنَهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "v-AUDIT-P505-R03094-25-7",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "v-AUDIT-P505-R03094-25-7-src",
+        "variantId": "v-AUDIT-P505-R03094-25-7",
+        "sourceName": "حزمة استخراج القراءات العشر",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P505-R03094",
+        "sourceText": "بتاء التأنيث المفتوحة ونصب «مَسَاكِنَهُمْ» مفعولاً ﴿لَا تَرَى إِلَّا مَسَاكِنَهُمْ﴾: نافع، وابن كثير، وأبي عمرو، وابن عامر، والكسائي، وأبي جعفر.",
+        "verificationNotes": "أُثبتت الكلمة الأساس حرفياً من رمز صفحة المصحف، وقوبلت مجموعة القراء بمرجع القراءات المستقل."
+      },
+      {
+        "id": "v-AUDIT-P505-R03094-25-7-ext",
+        "variantId": "v-AUDIT-P505-R03094-25-7",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/21",
+        "sourceText": "التحقق المستقل للوجه والرواة في الآية 25 من سورة الأحقاف.",
+        "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      }
+    ],
+    "description": "بتاء التأنيث المفتوحة ونصب مساكنهم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "التحقق المستقل للوجه والرواة في الآية 25 من سورة الأحقاف.",
+        "url": "https://quranpedia.net/qiraat/al-ahqaf/21"
+      }
+    ]
+  }
+]

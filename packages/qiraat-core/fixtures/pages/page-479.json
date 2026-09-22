@@ -1,1 +1,217 @@
-[]
+[
+  {
+    "id": "v-D479-ترجعون-w2",
+    "surah": 41,
+    "ayah": 21,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُونَ",
+    "variantText": "تَرْجِعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D479-ترجعون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D479-ترجعون-w2",
+        "variantId": "v-D479-ترجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P479-R02832",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تُرْجَعُونَ﴾: بضم التاء للجمهور؛ وبفتح التاء ﴿تَرْجِعُونَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D479-ايديهم-w2",
+    "surah": 41,
+    "ayah": 25,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D479-ايديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D479-ايديهم-w2",
+        "variantId": "v-D479-ايديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P479-R02833",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿أَيْدِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضمها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D479-القرءان-w2",
+    "surah": 41,
+    "ayah": 26,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانِ",
+    "variantText": "الْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D479-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D479-القرءان-w2",
+        "variantId": "v-D479-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P479-R02837",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانِ﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانِ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D479-ارنا-w2",
+    "surah": 41,
+    "ayah": 29,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَرِنَا",
+    "variantText": "أَرْنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D479-ارنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D479-ارنا-w2",
+        "variantId": "v-D479-ارنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P479-R02838",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَرِنَا﴾: بإسكان الراء ﴿أَرْنَا﴾ لابن كثير، والسوسي، وابن عامر، وشعبة، ويعقوب؛ وباختلاس كسرة الراء للدوري عن أبي عمرو؛ وبكسر الراء للباقين."
+      }
+    ],
+    "description": "بإسكان الراء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D479-الذين-w2",
+    "surah": 41,
+    "ayah": 29,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلَّذِينَ",
+    "variantText": "اللَّذَيْنِّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D479-الذين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D479-الذين-w2",
+        "variantId": "v-D479-الذين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P479-R02839",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الَّذَيْنِ﴾: بتخفيف الياء للجمهور؛ وبتشديد الياء مع المد المشبع ﴿اللَّذَيْنِّ﴾ لابن كثير."
+      }
+    ],
+    "description": "بتشديد الياء مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D479-وهو-w2",
+    "surah": 41,
+    "ayah": 21,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D479-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D479-وهو-w2",
+        "variantId": "v-D479-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P479-R02831",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,150 @@
-[]
+[
+  {
+    "id": "v-D485-وعليهم-w2",
+    "surah": 42,
+    "ayah": 16,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "وَعَلَيْهِمْ",
+    "variantText": "وَعَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D485-وعليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D485-وعليهم-w2",
+        "variantId": "v-D485-وعليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P485-R02890",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَعَلَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿وَعَلَيْهُمُ﴾ لحمزة ويعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D485-وهو-w2",
+    "surah": 42,
+    "ayah": 19,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D485-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D485-وهو-w2",
+        "variantId": "v-D485-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P485-R02891",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D485-نوتهي-w2",
+    "surah": 42,
+    "ayah": 20,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "نُؤْتِهِۦ",
+    "variantText": "نُؤْتِهِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D485-نوتهي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D485-نوتهي-w2",
+        "variantId": "v-D485-نوتهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P485-R02894",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بقصر الهاء (عدم الصلة) ﴿نُؤْتِهِ﴾: قالون، وهشام (في وجهه الثاني)، ويعقوب."
+      }
+    ],
+    "description": "بقصر الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D485-نوتهي-w3",
+    "surah": 42,
+    "ayah": 20,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "نُؤْتِهِۦ",
+    "variantText": "نُؤْتِهْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D485-نوتهي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D485-نوتهي-w3",
+        "variantId": "v-D485-نوتهي-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P485-R02895",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بإسكان الهاء ﴿نُؤْتِهْ﴾: أبو عمرو، وشعبة، وحمزة، وأبو جعفر (مع إبدال الهمزة للسوسي وأبي جعفر)."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 3,
+    "evidence": []
+  }
+]

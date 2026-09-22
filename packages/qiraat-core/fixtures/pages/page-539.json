@@ -1,1 +1,669 @@
-[]
+[
+  {
+    "id": "v-AUDIT-DOCX-P539-R03406-0605b3fc7d",
+    "surah": 57,
+    "ayah": 12,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03406-0605b3fc7d",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03406-0605b3fc7d",
+        "variantId": "v-AUDIT-DOCX-P539-R03406-0605b3fc7d",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03406",
+        "sourceText": "﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿أَيْدِيهُمُ﴾ ليعقوب.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03406-0605b3fc7d-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03406-0605b3fc7d",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/12",
+        "sourceText": "ضم الهاء وصلة الميم: رويس وروح عن يعقوب.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بكسر الهاء للجمهور؛ وبضمها ﴿أَيْدِيهُمُ﴾ ليعقوب.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الهاء وصلة الميم: رويس وروح عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/12"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03407-fcde42270e",
+    "surah": 57,
+    "ayah": 13,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱنظُرُونَا",
+    "variantText": "أَنْظِرُونَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03407-fcde42270e",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03407-fcde42270e",
+        "variantId": "v-AUDIT-DOCX-P539-R03407-fcde42270e",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03407",
+        "sourceText": "﴿ٱنظُرُونَا﴾: بهمز وصل يضم ابتداءً وسكون النون وضم الظاء للجمهور؛ بقطع الهمزة مفتوحة وكسر الظاء ﴿أَنْظِرُونَا﴾ لحمزة.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03407-fcde42270e-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03407-fcde42270e",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/13",
+        "sourceText": "القطع وفتح الهمزة وكسر الظاء: خلف وخلاد عن حمزة.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بهمز وصل يضم ابتداءً وسكون النون وضم الظاء للجمهور؛ بقطع الهمزة مفتوحة وكسر الظاء ﴿أَنْظِرُونَا﴾ لحمزة.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "القطع وفتح الهمزة وكسر الظاء: خلف وخلاد عن حمزة.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/13"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03408-82f84464a2",
+    "surah": 57,
+    "ayah": 13,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03408-82f84464a2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03408-82f84464a2",
+        "variantId": "v-AUDIT-DOCX-P539-R03408-82f84464a2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03408",
+        "sourceText": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03408-82f84464a2-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03408-82f84464a2",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/13",
+        "sourceText": "الإشمام: هشام عن ابن عامر، أبو الحارث والدوري عن الكسائي، ورويس عن يعقوب.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الإشمام: هشام عن ابن عامر، أبو الحارث والدوري عن الكسائي، ورويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/13"
+      }
+    ],
+    "performanceNote": "كسر خالص، وبالإشمام لهشام والكسائي ورويس."
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03409-fb43bc1ea1",
+    "surah": 57,
+    "ayah": 14,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْأَمَانِىُّ",
+    "variantText": "الْأَمَانِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03409-fb43bc1ea1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03409-fb43bc1ea1",
+        "variantId": "v-AUDIT-DOCX-P539-R03409-fb43bc1ea1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03409",
+        "sourceText": "﴿الْأَمَانِيُّ﴾: بتشديد الياء للجمهور؛ بتخفيف الياء ﴿الْأَمَانِي﴾ لأبي جعفر.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03409-fb43bc1ea1-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03409-fb43bc1ea1",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/14",
+        "sourceText": "تخفيف الياء وإسكانها: ابن وردان وابن جماز عن أبي جعفر.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بتشديد الياء للجمهور؛ بتخفيف الياء ﴿الْأَمَانِي﴾ لأبي جعفر.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "تخفيف الياء وإسكانها: ابن وردان وابن جماز عن أبي جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/14"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03410-114a9acb37",
+    "surah": 57,
+    "ayah": 15,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُؤْخَذُ",
+    "variantText": "لَا تُؤْخَذُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03410-114a9acb37",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03410-114a9acb37",
+        "variantId": "v-AUDIT-DOCX-P539-R03410-114a9acb37",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03410",
+        "sourceText": "﴿لَا يُؤْخَذُ﴾: بياء التذكير لنافع، وابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف (مع إبدال الهمزة لورش والسوسي)؛ بتاء التأنيث ﴿لَا تُؤْخَذُ﴾ لابن عامر، وأبي جعفر، ويعقوب (مع إبدال الهمزة لأبي جعفر).",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03410-114a9acb37-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03410-114a9acb37",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/15",
+        "sourceText": "التاء: هشام وابن ذكوان عن ابن عامر، وابن وردان وابن جماز عن أبي جعفر، وروح ورويس عن يعقوب؛ والهمز محقق لهشام وابن ذكوان وروح ورويس.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "﴿لَا يُؤْخَذُ﴾: بياء التذكير لنافع، وابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف (مع إبدال الهمزة لورش والسوسي)؛ بتاء التأنيث ﴿لَا تُؤْخَذُ﴾ لابن عامر، وأبي جعفر، ويعقوب (مع إبدال الهمزة لأبي جعفر). الوجه المثبت للهمز لهشام وابن ذكوان وروح ورويس.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "التاء: هشام وابن ذكوان عن ابن عامر، وابن وردان وابن جماز عن أبي جعفر، وروح ورويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03411-f992670672",
+    "surah": 57,
+    "ayah": 16,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "نَزَلَ",
+    "variantText": "نَزَّلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03411-f992670672",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03411-f992670672",
+        "variantId": "v-AUDIT-DOCX-P539-R03411-f992670672",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03411",
+        "sourceText": "﴿نَزَلَ﴾: بتخفيف الزاي لنافع وحفص؛ بتشديد الزاي ﴿نَزَّلَ﴾ للباقين.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03411-f992670672-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03411-f992670672",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/16",
+        "sourceText": "التشديد: سائر القراء عدا نافع وحفص.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بتخفيف الزاي لنافع وحفص؛ بتشديد الزاي ﴿نَزَّلَ﴾ للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "التشديد: سائر القراء عدا نافع وحفص.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/16"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03412-5888946b98",
+    "surah": 57,
+    "ayah": 16,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يَكُونُوا۟",
+    "variantText": "وَلَا تَكُونُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03412-5888946b98",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03412-5888946b98",
+        "variantId": "v-AUDIT-DOCX-P539-R03412-5888946b98",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03412",
+        "sourceText": "﴿وَلَا يَكُونُواْ﴾: بياء الغيب للجمهور؛ بتاء الخطاب ﴿وَلَا تَكُونُوا﴾ لرويس.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03412-5888946b98-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03412-5888946b98",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/16",
+        "sourceText": "التاء: رويس عن يعقوب.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بياء الغيب للجمهور؛ بتاء الخطاب ﴿وَلَا تَكُونُوا﴾ لرويس.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "التاء: رويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/16"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03413-f35511f643",
+    "surah": 57,
+    "ayah": 16,
+    "startToken": 22,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْأَمَدُ",
+    "variantText": "عَلَيْهِمِ الْأَمَدُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03413-f35511f643",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03413-f35511f643",
+        "variantId": "v-AUDIT-DOCX-P539-R03413-f35511f643",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03413",
+        "sourceText": "﴿عَلَيْهِمُ الْأَمَدُ﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو؛ بضم الهاء والميم لحمزة والكسائي وخلف ويعقوب.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03413-f35511f643-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03413-f35511f643",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/16",
+        "sourceText": "كسر الهاء والميم: الدوري والسوسي عن أبي عمرو.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو؛ بضم الهاء والميم لحمزة والكسائي وخلف ويعقوب.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "كسر الهاء والميم: الدوري والسوسي عن أبي عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/16"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03413-3482bc05c6",
+    "surah": 57,
+    "ayah": 16,
+    "startToken": 22,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْأَمَدُ",
+    "variantText": "عَلَيْهُمُ الْأَمَدُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03413-3482bc05c6",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03413-3482bc05c6",
+        "variantId": "v-AUDIT-DOCX-P539-R03413-3482bc05c6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03413",
+        "sourceText": "﴿عَلَيْهِمُ الْأَمَدُ﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو؛ بضم الهاء والميم لحمزة والكسائي وخلف ويعقوب.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي. لفظ «خلف» أُسند إلى خلف عن حمزة وفق قاعدة المشروع."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03413-3482bc05c6-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03413-3482bc05c6",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/16",
+        "sourceText": "ضم الهاء والميم: حمزة والكسائي ويعقوب وخلف العاشر (إسحاق وإدريس) بحسب جهاز الآية.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو؛ بضم الهاء والميم لحمزة والكسائي وخلف ويعقوب.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الهاء والميم: حمزة والكسائي ويعقوب وخلف العاشر (إسحاق وإدريس) بحسب جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/16"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03414-26c0169169",
+    "surah": 57,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُصَّدِّقِينَ وَٱلْمُصَّدِّقَـٰتِ",
+    "variantText": "الْمُصَدِّقِينَ وَالْمُصَدِّقَاتِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03414-26c0169169",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03414-26c0169169",
+        "variantId": "v-AUDIT-DOCX-P539-R03414-26c0169169",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03414",
+        "sourceText": "﴿الْمُصَّدِّقِينَ وَالْمُصَّدِّقَـٰتِ﴾: بتشديد الصاد فيهما للجمهور؛ بتخفيف الصاد ﴿الْمُصَدِّقِينَ وَالْمُصَدِّقَاتِ﴾ لابن كثير وشعبة.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03414-26c0169169-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03414-26c0169169",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/18",
+        "sourceText": "تخفيف الصاد: البزي وقنبل عن ابن كثير وشعبة عن عاصم.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بتشديد الصاد فيهما للجمهور؛ بتخفيف الصاد ﴿الْمُصَدِّقِينَ وَالْمُصَدِّقَاتِ﴾ لابن كثير وشعبة.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "تخفيف الصاد: البزي وقنبل عن ابن كثير وشعبة عن عاصم.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/18"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03415-519e3ebe93",
+    "surah": 57,
+    "ayah": 18,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يُضَـٰعَفُ",
+    "variantText": "يُضَعَّفُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03415-519e3ebe93",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03415-519e3ebe93",
+        "variantId": "v-AUDIT-DOCX-P539-R03415-519e3ebe93",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03415",
+        "sourceText": "﴿يُضَـٰعَفُ﴾: بألف مدية ﴿يُضَاعَفُ﴾ لنافع، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ بحذف الألف وتشديد العين المفتوحة ﴿يُضَعَّفُ﴾ للباقين.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03415-519e3ebe93-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03415-519e3ebe93",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/18",
+        "sourceText": "حذف الألف وتشديد العين: ابن عامر وأبو جعفر ويعقوب وابن كثير.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بألف مدية ﴿يُضَاعَفُ﴾ لنافع، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف؛ بحذف الألف وتشديد العين المفتوحة ﴿يُضَعَّفُ﴾ للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "حذف الألف وتشديد العين: ابن عامر وأبو جعفر ويعقوب وابن كثير.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/18"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03410-e77303ce64",
+    "surah": 57,
+    "ayah": 15,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُؤْخَذُ",
+    "variantText": "لَا يُوخَذُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R02",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03410-e77303ce64",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03410-e77303ce64",
+        "variantId": "v-AUDIT-DOCX-P539-R03410-e77303ce64",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03410",
+        "sourceText": "﴿لَا يُؤْخَذُ﴾: بياء التذكير لنافع، وابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف (مع إبدال الهمزة لورش والسوسي)؛ بتاء التأنيث ﴿لَا تُؤْخَذُ﴾ لابن عامر، وأبي جعفر، ويعقوب (مع إبدال الهمزة لأبي جعفر).",
+        "verificationNotes": "سطر المصدر يعيّن الوجه والرواة؛ طوبق الشكل مع توكن المصحف والمرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03410-e77303ce64-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03410-e77303ce64",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/15",
+        "sourceText": "إبدال الهمزة: ورش عن نافع والسوسي عن أبي عمرو.",
+        "verificationNotes": "جهاز القراءات العشر للآية يسند الوجه صراحةً."
+      }
+    ],
+    "description": "بياء التذكير لنافع، وابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف (مع إبدال الهمزة لورش والسوسي)؛ بتاء التأنيث ﴿لَا تُؤْخَذُ﴾ لابن عامر، وأبي جعفر، ويعقوب (مع إبدال الهمزة لأبي جعفر).",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إبدال الهمزة: ورش عن نافع والسوسي عن أبي عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/15"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P539-R03410-5035752546",
+    "surah": 57,
+    "ayah": 15,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُؤْخَذُ",
+    "variantText": "لَا تُوخَذُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P539-R03410-5035752546",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03410-5035752546",
+        "variantId": "v-AUDIT-DOCX-P539-R03410-5035752546",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P539-R03410",
+        "sourceText": "﴿لَا يُؤْخَذُ﴾: بياء التذكير لنافع، وابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف (مع إبدال الهمزة لورش والسوسي)؛ بتاء التأنيث ﴿لَا تُؤْخَذُ﴾ لابن عامر، وأبي جعفر، ويعقوب (مع إبدال الهمزة لأبي جعفر).",
+        "verificationNotes": "سطر المصدر يعيّن الوجه والرواة؛ طوبق الشكل مع توكن المصحف والمرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P539-R03410-5035752546-EXT",
+        "variantId": "v-AUDIT-DOCX-P539-R03410-5035752546",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/15",
+        "sourceText": "إبدال الهمزة مع التاء: ابن وردان وابن جماز عن أبي جعفر.",
+        "verificationNotes": "جهاز القراءات العشر للآية يسند الوجه صراحةً."
+      }
+    ],
+    "description": "بياء التذكير لنافع، وابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، وخلف (مع إبدال الهمزة لورش والسوسي)؛ بتاء التأنيث ﴿لَا تُؤْخَذُ﴾ لابن عامر، وأبي جعفر، ويعقوب (مع إبدال الهمزة لأبي جعفر).",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إبدال الهمزة مع التاء: ابن وردان وابن جماز عن أبي جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/15"
+      }
+    ]
+  }
+]

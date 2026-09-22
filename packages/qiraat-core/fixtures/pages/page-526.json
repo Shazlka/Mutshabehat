@@ -109,5 +109,221 @@
     "description": "",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-DOCX-P526-6-R03289-11-1-2",
+    "surah": 53,
+    "ayah": 11,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "مَا كَذَبَ",
+    "variantText": "مَا كَذَّبَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P526-6-R03289-11-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P526-6-R03289-11-1-2",
+        "variantId": "v-DOCX-P526-6-R03289-11-1-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P526-R03289",
+        "sourceText": "﴿مَا كَذَبَ﴾: بتخفيف الذال ﴿مَا كَذَبَ﴾ للجمهور؛ بتشديد الذال ﴿مَا كَذَّبَ﴾ لهشام وأبي جعفر.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بتخفيف الذال ﴿مَا كَذَبَ﴾ للجمهور؛ بتشديد الذال ﴿مَا كَذَّبَ﴾ لهشام وأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P526-6-R03290-12-1-2",
+    "surah": 53,
+    "ayah": 12,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَفَتُمَـٰرُونَهُۥ",
+    "variantText": "أَفَتَمْرُونَهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P526-6-R03290-12-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P526-6-R03290-12-1-2",
+        "variantId": "v-DOCX-P526-6-R03290-12-1-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P526-R03290",
+        "sourceText": "﴿أَفَتَمَـٰرُونَهُۥ﴾: بفتح التاء وألف مدية بعد الميم ﴿أَفَتُمَارُونَهُ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر؛ بفتح التاء وإسكان الميم بلا ألف ﴿أَفَتَمْرُونَهُ﴾ لحمزة والكسائي ويعقوب وخلف.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بفتح التاء وألف مدية بعد الميم ﴿أَفَتُمَارُونَهُ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر؛ بفتح التاء وإسكان الميم بلا ألف ﴿أَفَتَمْرُونَهُ﴾ لحمزة والكسائي ويعقوب وخلف.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P526-6-R03293-20-1-2",
+    "surah": 53,
+    "ayah": 20,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَمَنَوٰةَ",
+    "variantText": "وَمَنَاءَةَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "DOCX-P526-6-R03293-20-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P526-6-R03293-20-1-2",
+        "variantId": "v-DOCX-P526-6-R03293-20-1-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P526-R03293",
+        "sourceText": "﴿وَمَنَوٰةَ﴾: بغير همز للجمهور؛ بالهمز والمد المتصل ﴿وَمَنَاءَةَ﴾ لابن كثير.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بغير همز للجمهور؛ بالهمز والمد المتصل ﴿وَمَنَاءَةَ﴾ لابن كثير.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P526-6-R03294-22-4-2",
+    "surah": 53,
+    "ayah": 22,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ضِيزَىٰٓ",
+    "variantText": "ضِئْزَى",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "DOCX-P526-6-R03294-22-4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P526-6-R03294-22-4-2",
+        "variantId": "v-DOCX-P526-6-R03294-22-4-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P526-R03294",
+        "sourceText": "﴿ضِيزَىٰٓ﴾: بغير همز للجمهور؛ بهمز ساكن بعد الضاد ﴿ضِئْزَى﴾ لابن كثير.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بغير همز للجمهور؛ بهمز ساكن بعد الضاد ﴿ضِئْزَى﴾ لابن كثير.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P526-6-R03295-23-23-2",
+    "surah": 53,
+    "ayah": 23,
+    "startToken": 23,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "مِّن رَّبِّهِمُ ٱلْهُدَىٰٓ",
+    "variantText": "مِّن رَّبِّهِمُ ٱلْهُدَىٰٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P526-6-R03295-23-23",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P526-6-R03295-23-23-2",
+        "variantId": "v-DOCX-P526-6-R03295-23-23-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P526-R03295",
+        "sourceText": "﴿مِّن رَّبِّهِمُ الْهُدَىٰ﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم وصلاً لأبي عمرو ويعقوب؛ بضم الهاء والميم وصلاً لحمزة والكسائي وخلف.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم وصلاً لأبي عمرو ويعقوب؛ بضم الهاء والميم وصلاً لحمزة والكسائي وخلف.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "كسر الهاء والميم وصلاً"
+  },
+  {
+    "id": "v-DOCX-P526-6-R03295-23-23-3",
+    "surah": 53,
+    "ayah": 23,
+    "startToken": 23,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "مِّن رَّبِّهِمُ ٱلْهُدَىٰٓ",
+    "variantText": "مِّن رَّبِّهِمُ ٱلْهُدَىٰٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "DOCX-P526-6-R03295-23-23",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P526-6-R03295-23-23-3",
+        "variantId": "v-DOCX-P526-6-R03295-23-23-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P526-R03295",
+        "sourceText": "﴿مِّن رَّبِّهِمُ الْهُدَىٰ﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم وصلاً لأبي عمرو ويعقوب؛ بضم الهاء والميم وصلاً لحمزة والكسائي وخلف.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم وصلاً لأبي عمرو ويعقوب؛ بضم الهاء والميم وصلاً لحمزة والكسائي وخلف.",
+    "wajhIndex": 3,
+    "evidence": [],
+    "performanceNote": "ضم الهاء والميم وصلاً"
   }
 ]

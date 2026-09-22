@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "id": "v-D459-يرضه-w2-DOCX-P459-R02654",
+    "surah": 39,
+    "ayah": 7,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يَرْضَهُ",
+    "variantText": "يَرْضَهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01"
+    ],
+    "locusId": "D459-يرضه-DOCX-P459-R02654",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D459-يرضه-w2-DOCX-P459-R02654",
+        "variantId": "v-D459-يرضه-w2-DOCX-P459-R02654",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 459، DOCX-P459-R02654",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "بضم الهاء وإشباع صلتها ﴿يَرْضَهُۥ﴾: ابن كثير، والدوري عن أبي عمرو (بخلف عنه)، وابن ذكوان، والكسائي، وابن وردان، وخلف."
+      }
+    ],
+    "description": "بضم الهاء وإشباع صلتها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D459-يرضه-w2-DOCX-P459-R02655",
+    "surah": 39,
+    "ayah": 7,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يَرْضَهُ",
+    "variantText": "يَرْضَهُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02",
+      "Q04-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D459-يرضه-DOCX-P459-R02655",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D459-يرضه-w2-DOCX-P459-R02655",
+        "variantId": "v-D459-يرضه-w2-DOCX-P459-R02655",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 459، DOCX-P459-R02655",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "بإسكان الهاء ﴿يَرْضَهْ﴾: أبو عمرو (الوجه الثاني للدوري)، وهشام (الوجه الثاني له)، وابن جماز."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D459-ليضل-w2-DOCX-P459-R02656",
+    "surah": 39,
+    "ayah": 8,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "لِّيُضِلَّ",
+    "variantText": "لِيَضِلَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D459-ليضل-DOCX-P459-R02656",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D459-ليضل-w2-DOCX-P459-R02656",
+        "variantId": "v-D459-ليضل-w2-DOCX-P459-R02656",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 459، DOCX-P459-R02656",
+        "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
+        "sourceText": "﴿لِّيُضِلَّ﴾: بضم الياء للجمهور؛ وبفتح الياء ﴿لِيَضِلَّ﴾ لابن كثير وأبي عمرو ورويس."
+      }
+    ],
+    "description": "بفتح الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

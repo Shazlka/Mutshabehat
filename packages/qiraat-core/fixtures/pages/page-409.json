@@ -150,5 +150,83 @@
     "description": "بتخفيف الزاي مفتوحة وسكون النون",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D409-عليهم-w2",
+    "surah": 30,
+    "ayah": 49,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D409-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D409-عليهم-w2",
+        "variantId": "v-D409-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P409-R02164",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D409-ءاثار-w2",
+    "surah": 30,
+    "ayah": 50,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ءَاثَـٰرِ",
+    "variantText": "أَثَرِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D409-ءاثار",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D409-ءاثار-w2",
+        "variantId": "v-D409-ءاثار-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P409-R02165",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ءَاثَـٰرِ﴾: بالجمع وألف مدية بعد الثاء ﴿ءَاثَارِ﴾ لابن عامر، وحفص، وحمزة، والكسائي، وخلف؛ وبالمفرد ﴿أَثَرِ﴾ للباقين."
+      }
+    ],
+    "description": "بالمفرد",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

@@ -1,1 +1,488 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P578-75-20-3-2f492b0a",
+    "surah": 75,
+    "ayah": 20,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "تُحِبُّونَ",
+    "variantText": "يُحِبُّونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P578-75-20-3-2f492b0a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03764-v-AUDIT-P578-75-20-3-2f492b0a",
+        "variantId": "v-AUDIT-P578-75-20-3-2f492b0a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03764",
+        "sourceText": "﴿تُحِبُّونَ﴾، ﴿وَتَذَرُونَ﴾: بتاء الخطاب فيهما ﴿تُحِبُّونَ... وَتَذَرُونَ﴾ لنافع، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ بياء الغيب فيهما ﴿يُحِبُّونَ... وَيَذَرُونَ﴾ للباقين.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-75-20-3-2f492b0a",
+        "variantId": "v-AUDIT-P578-75-20-3-2f492b0a",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/20",
+        "sourceText": "Quranpedia: yāʾ for Ibn Kathir, Abu Amr, Ibn Amir, Yaqub; source pairs 75:20 with 75:21.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿تُحِبُّونَ﴾، ﴿وَتَذَرُونَ﴾: بتاء الخطاب فيهما ﴿تُحِبُّونَ... وَتَذَرُونَ﴾ لنافع، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ بياء الغيب فيهما ﴿يُحِبُّونَ... وَيَذَرُونَ﴾ للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: yāʾ for Ibn Kathir, Abu Amr, Ibn Amir, Yaqub; source pairs 75:20 with 75:21.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/20"
+      }
+    ],
+    "notes": "أضيف Q10 إلى وجه الباقين: لفظ «خلف» المجرد في السطر المصدر هو خلف عن حمزة Q06، ولا يُنسب إلى خلف العاشر إلا بالذكر الصريح."
+  },
+  {
+    "id": "v-AUDIT-P578-75-27-1-f0617b9e",
+    "surah": 75,
+    "ayah": 27,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P578-75-27-1-f0617b9e",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03765-v-AUDIT-P578-75-27-1-f0617b9e",
+        "variantId": "v-AUDIT-P578-75-27-1-f0617b9e",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03765",
+        "sourceText": "﴿وَقِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-75-27-1-f0617b9e",
+        "variantId": "v-AUDIT-P578-75-27-1-f0617b9e",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/27",
+        "sourceText": "Quranpedia: ishmaam of qāf for Hisham, al-Kisai, Ruways.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿وَقِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: ishmaam of qāf for Hisham, al-Kisai, Ruways.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/27"
+      }
+    ],
+    "performanceNote": "إشمام كسرة القاف ضَمًّا"
+  },
+  {
+    "id": "v-AUDIT-P578-75-27-2-18dd38ca",
+    "surah": 75,
+    "ayah": 27,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مَنْ ۜ رَاقٍۢ",
+    "variantText": "مَنْ ۜ رَاقٍۢ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q05-R02"
+    ],
+    "locusId": "AUDIT-P578-75-27-2-18dd38ca",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03766-v-AUDIT-P578-75-27-2-18dd38ca",
+        "variantId": "v-AUDIT-P578-75-27-2-18dd38ca",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03766",
+        "sourceText": "﴿مَنْۜ رَاقٍ﴾: بالسكت اللطيف على نون «مَنْ» وصلاً بلا إدغام لحفص؛ بإدغام النون في الراء بلا سكت للباقين.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-75-27-2-18dd38ca",
+        "variantId": "v-AUDIT-P578-75-27-2-18dd38ca",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/27",
+        "sourceText": "Quranpedia: Hafs alone has sakt on nūn; others assimilate without sakt.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿مَنْۜ رَاقٍ﴾: بالسكت اللطيف على نون «مَنْ» وصلاً بلا إدغام لحفص؛ بإدغام النون في الراء بلا سكت للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: Hafs alone has sakt on nūn; others assimilate without sakt.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/27"
+      }
+    ],
+    "performanceNote": "إظهار النون ساكنة مع السكت عليها حركتين"
+  },
+  {
+    "id": "v-AUDIT-P578-75-36-1-3cbfda8a",
+    "surah": 75,
+    "ayah": 36,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُ",
+    "variantText": "أَيَحْسِبُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P578-75-36-1-3cbfda8a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03767-v-AUDIT-P578-75-36-1-3cbfda8a",
+        "variantId": "v-AUDIT-P578-75-36-1-3cbfda8a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03767",
+        "sourceText": "﴿أَيَحْسَبُ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-75-36-1-3cbfda8a",
+        "variantId": "v-AUDIT-P578-75-36-1-3cbfda8a",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/36",
+        "sourceText": "Quranpedia: kasr sīn for Ibn Kathir, Abu Amr, Yaqub; fatḥ for the rest.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿أَيَحْسَبُ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: kasr sīn for Ibn Kathir, Abu Amr, Yaqub; fatḥ for the rest.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/36"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P578-75-37-6-57370c09",
+    "surah": 75,
+    "ayah": 37,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يُمْنَىٰ",
+    "variantText": "تُمْنَىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P578-75-37-6-57370c09",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03768-v-AUDIT-P578-75-37-6-57370c09",
+        "variantId": "v-AUDIT-P578-75-37-6-57370c09",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03768",
+        "sourceText": "﴿يُمْنَىٰ﴾: بياء التذكير ﴿يُمْنَى﴾ لحفص ويعقوب؛ بتاء التأنيث ﴿تُمْنَى﴾ للباقين.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-75-37-6-57370c09",
+        "variantId": "v-AUDIT-P578-75-37-6-57370c09",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/37",
+        "sourceText": "Quranpedia: yāʾ for Hafs and Yaqub; the remaining readers use tāʾ, with distinct imāla/taqlīl/ fatḥ details.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿يُمْنَىٰ﴾: بياء التذكير ﴿يُمْنَى﴾ لحفص ويعقوب؛ بتاء التأنيث ﴿تُمْنَى﴾ للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: yāʾ for Hafs and Yaqub; the remaining readers use tāʾ, with distinct imāla/taqlīl/ fatḥ details.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/37"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P578-76-4-4-dd315601",
+    "surah": 76,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سَلَـٰسِلَا۟",
+    "variantText": "سَلَـٰسِلَا۟",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q04-R02",
+      "Q05-R02"
+    ],
+    "locusId": "AUDIT-P578-76-4-4-dd315601",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03770-v-AUDIT-P578-76-4-4-dd315601",
+        "variantId": "v-AUDIT-P578-76-4-4-dd315601",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03770",
+        "sourceText": "بحذف التنوين وصلاً، وله في الوقف وجهان (إثبات الألف وحذفها): البزي، وابن ذكوان، وحفص.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-76-4-4-dd315601",
+        "variantId": "v-AUDIT-P578-76-4-4-dd315601",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
+        "sourceText": "Quranpedia: Bazzi, Ibn Dhakwan, Hafs have two waqf faces after tanwin deletion: with/without alif.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "بحذف التنوين وصلاً، وله في الوقف وجهان (إثبات الألف وحذفها): البزي، وابن ذكوان، وحفص.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: Bazzi, Ibn Dhakwan, Hafs have two waqf faces after tanwin deletion: with/without alif.",
+        "url": "https://quranpedia.net/qiraat/al-insan/4"
+      }
+    ],
+    "performanceNote": "وجه الوقف بإثبات الألف"
+  },
+  {
+    "id": "v-AUDIT-P578-76-4-4-90623940",
+    "surah": 76,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سَلَـٰسِلَا۟",
+    "variantText": "سَلَاسِلًا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P578-76-4-4-90623940",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03771-v-AUDIT-P578-76-4-4-90623940",
+        "variantId": "v-AUDIT-P578-76-4-4-90623940",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03771",
+        "sourceText": "بالتنوين وصلاً وإبداله ألفاً وقفاً ﴿سَلَاسِلًا﴾: نافع، وهشام، وشعبة، والكسائي، وأبو جعفر.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-76-4-4-90623940",
+        "variantId": "v-AUDIT-P578-76-4-4-90623940",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
+        "sourceText": "Quranpedia: tanwin in waṣl for Nafi, Hisham, Shuʿbah, al-Kisai, Abu Jafar.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "بالتنوين وصلاً وإبداله ألفاً وقفاً ﴿سَلَاسِلًا﴾: نافع، وهشام، وشعبة، والكسائي، وأبو جعفر.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: tanwin in waṣl for Nafi, Hisham, Shuʿbah, al-Kisai, Abu Jafar.",
+        "url": "https://quranpedia.net/qiraat/al-insan/4"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P578-76-4-4-bc096c6f",
+    "surah": 76,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سَلَـٰسِلَا۟",
+    "variantText": "سَلَـٰسِلَا۟",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P578-76-4-4-bc096c6f",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03772-v-AUDIT-P578-76-4-4-bc096c6f",
+        "variantId": "v-AUDIT-P578-76-4-4-bc096c6f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03772",
+        "sourceText": "بحذف التنوين وصلاً، وبالوقف على اللام الساكنة بلا ألف ﴿سَلَاسِلْ﴾: قنبل، وحمزة، ورويس، وخلف.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-76-4-4-bc096c6f",
+        "variantId": "v-AUDIT-P578-76-4-4-bc096c6f",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
+        "sourceText": "Source gives no-alif waqf for Qunbul, Hamza, Ruways, Khalaf; Quranpedia explicitly names Ishaq and Idris for same no-alif face, confirming Q10.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "بحذف التنوين وصلاً، وبالوقف على اللام الساكنة بلا ألف ﴿سَلَاسِلْ﴾: قنبل، وحمزة، ورويس، وخلف.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Source gives no-alif waqf for Qunbul, Hamza, Ruways, Khalaf; Quranpedia explicitly names Ishaq and Idris for same no-alif face, confirming Q10.",
+        "url": "https://quranpedia.net/qiraat/al-insan/4"
+      }
+    ],
+    "performanceNote": "وقف اللام ساكنة بلا ألف"
+  },
+  {
+    "id": "v-AUDIT-P578-76-4-4-e045cd28",
+    "surah": 76,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سَلَـٰسِلَا۟",
+    "variantText": "سَلَاسِلَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P578-76-4-4-e045cd28",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P578-R03773-v-AUDIT-P578-76-4-4-e045cd28",
+        "variantId": "v-AUDIT-P578-76-4-4-e045cd28",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03773",
+        "sourceText": "بحذف التنوين وصلاً، وبالألف وقفاً ﴿سَلَاسِلَا﴾: أبو عمرو، وروح.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-76-4-4-e045cd28",
+        "variantId": "v-AUDIT-P578-76-4-4-e045cd28",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
+        "sourceText": "Quranpedia: Abu Amr reads without tanwin in waṣl and alif at waqf.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "بحذف التنوين وصلاً، وبالألف وقفاً ﴿سَلَاسِلَا﴾: أبو عمرو، وروح.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: Abu Amr reads without tanwin in waṣl and alif at waqf.",
+        "url": "https://quranpedia.net/qiraat/al-insan/4"
+      }
+    ]
+  }
+]

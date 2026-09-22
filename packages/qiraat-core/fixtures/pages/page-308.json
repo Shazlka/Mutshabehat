@@ -325,5 +325,178 @@
         "text": "وَفِي كَافَ فَتْحُ اللَّامِ فِي مُخْلَصًا ثَوَى"
       }
     ]
+  },
+  {
+    "id": "v-D308-يرجعون-w2",
+    "surah": 19,
+    "ayah": 40,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يُرْجَعُونَ",
+    "variantText": "يَرْجِعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D308-يرجعون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D308-يرجعون-w2",
+        "variantId": "v-D308-يرجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P308-R01141",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿يُرْجَعُونَ﴾: بضم الياء للجمهور؛ وبفتح الياء ﴿يَرْجِعُونَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D308-ابراهيم-w2",
+    "surah": 19,
+    "ayah": 41,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ ۚ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D308-ابراهيم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D308-ابراهيم-w2",
+        "variantId": "v-D308-ابراهيم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P308-R01142",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾، ﴿يَـٰٓإِبْرَٰهِيمُ﴾: بياء بعد الهاء للجمهور؛ وبألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
+      }
+    ],
+    "description": "بألف بعد الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D308-ياابراهيم-w2",
+    "surah": 19,
+    "ayah": 46,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰٓإِبْرَٰهِيمُ ۖ",
+    "variantText": "يَـٰٓإِبْرَاهَامُ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D308-ياابراهيم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D308-ياابراهيم-w2",
+        "variantId": "v-D308-ياابراهيم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P308-R01142",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾، ﴿يَـٰٓإِبْرَٰهِيمُ﴾: بياء بعد الهاء للجمهور؛ وبألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
+      }
+    ],
+    "description": "بألف بعد الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D308-نبيا-w2",
+    "surah": 19,
+    "ayah": 49,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "نَبِيًّۭا",
+    "variantText": "نَبِيئًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D308-نبيا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D308-نبيا-w2",
+        "variantId": "v-D308-نبيا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P308-R01143",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿نَبِيًّا﴾ (جميعاً): بالهمز لنافع ﴿نَبِيئًا﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D308-مخلصا-w1",
+    "surah": 19,
+    "ayah": 51,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "مُخْلَصًۭا",
+    "variantText": "مُخْلَصًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D308-مخلصا",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D308-مخلصا-w1",
+        "variantId": "v-D308-مخلصا-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P308-R01146",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿مُخْلَصًا﴾: بفتح اللام لعاصم، وحمزة، والكسائي، وخلف؛ وبكسر اللام ﴿مُخْلِصًا﴾ للباقين."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "بفتح اللام"
   }
 ]

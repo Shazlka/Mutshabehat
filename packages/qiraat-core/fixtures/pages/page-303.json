@@ -187,5 +187,238 @@
     "description": "بتشديد الطاء لحمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D303-يفقهون-w2",
+    "surah": 18,
+    "ayah": 93,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يَفْقَهُونَ",
+    "variantText": "يُفْقِهُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-يفقهون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-يفقهون-w2",
+        "variantId": "v-D303-يفقهون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01067",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَفْقَهُونَ﴾: بفتح الياء والهاء للجمهور؛ وبضم الياء وكسر القاف ﴿يُفْقِهُونَ﴾ لحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بضم الياء وكسر القاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-خرجا-w2",
+    "surah": 18,
+    "ayah": 94,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "خَرْجًا",
+    "variantText": "خَرَاجًا",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-خرجا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-خرجا-w2",
+        "variantId": "v-D303-خرجا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01069",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿خَرْجٗا﴾: بفتح الخاء وسكون الراء بلا ألف للجمهور؛ وبألف بعد الراء مفتوحة ﴿خَرَاجًا﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بألف بعد الراء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-نكرا-w2",
+    "surah": 18,
+    "ayah": 87,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "نُّكْرًۭا",
+    "variantText": "نُكُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-نكرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-نكرا-w2",
+        "variantId": "v-D303-نكرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01062",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نُّكْرٗا﴾: بإسكان الكاف لابن كثير، وأبي عمرو، وهشام، وحفص، وحمزة، والكسائي، وخلف؛ وبضم الكاف للباقين."
+      }
+    ],
+    "description": "بضم الكاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-جزاء_الحسنا-w2",
+    "surah": 18,
+    "ayah": 88,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "جَزَآءً ٱلْحُسْنَىٰ ۖ",
+    "variantText": "جَزَاءُ الْحُسْنَى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-جزاء_الحسنا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D303-جزاء_الحسنا-w2",
+        "variantId": "v-D303-جزاء_الحسنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01063",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿جَزَآءً الْحُسْنَىٰ﴾: بنصب جزاء وتنوينها ﴿جَزَاءً الْحُسْنَى﴾ لحفص، وحمزة، والكسائي، ويعقوب، وخلف؛ وبرفع جزاء من غير تنوين على الإضافة ﴿جَزَاءُ الْحُسْنَى﴾ للباقين."
+      }
+    ],
+    "description": "برفع جزاء من غير تنوين على الإضافة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-قال_ءاتوني-w2",
+    "surah": 18,
+    "ayah": 96,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "قَالَ ءَاتُونِىٓ",
+    "variantText": "قَالَ ائْتُونِي",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D303-قال_ءاتوني",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D303-قال_ءاتوني-w2",
+        "variantId": "v-D303-قال_ءاتوني-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01076",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿قَالَ ءَاتُونِيٓ﴾: بهمزة قطع للجمهور؛ وبهمزة وصل ﴿قَالَ ائْتُونِي﴾ لحمزة وشعبة (في وجهه الثاني)."
+      }
+    ],
+    "description": "بهمزة وصل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-فما_اسطاعوا-w2",
+    "surah": 18,
+    "ayah": 97,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "فَمَا ٱسْطَـٰعُوٓا۟",
+    "variantText": "فَمَا اسْطَّاعُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D303-فما_اسطاعوا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D303-فما_اسطاعوا-w2",
+        "variantId": "v-D303-فما_اسطاعوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01077",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَمَا ٱسْطَـٰعُوٓاْ﴾: بتخفيف الطاء للجمهور؛ وبتشديد الطاء ﴿فَمَا اسْطَّاعُوا﴾ لحمزة."
+      }
+    ],
+    "description": "بتشديد الطاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

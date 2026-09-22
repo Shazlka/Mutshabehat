@@ -4,8 +4,8 @@
 Every row is (category, query, [(authority, action), ...], kwargs). These do NOT change the
 printed rasm — they colour the word so the reader can see at a glance that a ruling applies.
 
-"لخلف" inside ترك الغنة / وقف حمزة is the NARRATOR خلف عن حمزة (KHALAF_HAMZA, Q06-R01),
-never خلف العاشر. Where the source lists خلف beside حمزة as a separate reader it is KHALAF10.
+Bare "خلف" means the NARRATOR خلف عن حمزة (KHALAF_HAMZA, Q06-R01). Use KHALAF10 only
+when the source explicitly names خلف العاشر.
 """
 W = 'ورش'
 SUSI = 'السوسي'

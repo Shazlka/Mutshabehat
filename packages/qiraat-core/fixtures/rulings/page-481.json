@@ -924,6 +924,30 @@
       {
         "authorityId": "Q04-R01",
         "action": "بهمز واحد على الإخبار"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "تحقيق الهمزتين بلا إدخال"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "تحقيق الهمزتين بلا إدخال"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "تحقيق الهمزتين بلا إدخال"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "تحقيق الهمزتين بلا إدخال"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "تحقيق الهمزتين بلا إدخال"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "تحقيق الهمزتين بلا إدخال"
       }
     ],
     "readings": [
@@ -980,6 +1004,36 @@
       {
         "readingId": "Q04-R01",
         "action": "بهمز واحد على الإخبار",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "تحقيق الهمزتين بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "تحقيق الهمزتين بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "تحقيق الهمزتين بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "تحقيق الهمزتين بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "تحقيق الهمزتين بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "تحقيق الهمزتين بلا إدخال",
         "isDefault": true
       }
     ],

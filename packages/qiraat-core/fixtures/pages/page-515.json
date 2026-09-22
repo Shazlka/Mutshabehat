@@ -1,1 +1,344 @@
-[]
+[
+  {
+    "id": "v-D515-ورضوانا-w2",
+    "surah": 48,
+    "ayah": 29,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "وَرِضْوَٰنًۭا ۖ",
+    "variantText": "وَرُضْوَانًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D515-ورضوانا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D515-ورضوانا-w2",
+        "variantId": "v-D515-ورضوانا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03186",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿وَرِضْوَٰنٗا﴾: بكسر الراء للجمهور؛ بضم الراء ﴿وَرُضْوَانًا﴾ لشعبة."
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-شطهو-w2",
+    "surah": 48,
+    "ayah": 29,
+    "startToken": 34,
+    "endToken": 34,
+    "operation": "REPLACE",
+    "hafsText": "شَطْـَٔهُۥ",
+    "variantText": "شَطَاهُ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D515-شطهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D515-شطهو-w2",
+        "variantId": "v-D515-شطهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03187",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿شَطْـَٔهُۥ﴾: بسكون الطاء والهمز للجمهور؛ بفتح الطاء وألف بعدها بلا همز ﴿شَطَاهُ﴾ لابن كثير وابن ذكوان."
+      }
+    ],
+    "description": "بفتح الطاء وألف بعدها بلا همز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-فازرهو-w2",
+    "surah": 48,
+    "ayah": 29,
+    "startToken": 35,
+    "endToken": 35,
+    "operation": "REPLACE",
+    "hafsText": "فَـَٔازَرَهُۥ",
+    "variantText": "فَأَزَرَهُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "D515-فازرهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D515-فازرهو-w2",
+        "variantId": "v-D515-فازرهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03188",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿فَـَٔازَرَهُۥ﴾: بألف مدية بعد الهمزة للجمهور؛ بقصر الهمزة وسكون الهمزة ﴿فَأَزَرَهُ﴾ لابن ذكوان."
+      }
+    ],
+    "description": "بقصر الهمزة وسكون الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-سوقهي-w2",
+    "surah": 48,
+    "ayah": 29,
+    "startToken": 39,
+    "endToken": 39,
+    "operation": "REPLACE",
+    "hafsText": "سُوقِهِۦ",
+    "variantText": "سُؤْقِهِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "D515-سوقهي",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D515-سوقهي-w2",
+        "variantId": "v-D515-سوقهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-fath/29؛ qiraat_records.jsonl، DOCX-P515-R03189",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿سُوقِهِۦ﴾: بلا همز للجمهور؛ بهمز ساكن واواً ﴿سُؤْقِهِ﴾ لقنبل (وله فيها وجهان)."
+      }
+    ],
+    "description": "بهمز ساكن واواً",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "بهمز ساكن واواً؛ الوجه الأول لقنبل"
+  },
+  {
+    "id": "v-D515-بهم_الكفار-w2",
+    "surah": 48,
+    "ayah": 29,
+    "startToken": 43,
+    "endToken": 44,
+    "operation": "REPLACE",
+    "hafsText": "بِهِمُ ٱلْكُفَّارَ ۗ",
+    "variantText": "بِهِمِ الْكُفَّارَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D515-بهم_الكفار",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D515-بهم_الكفار-w2",
+        "variantId": "v-D515-بهم_الكفار-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03190",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿بِهِمُ الْكُفَّارَ﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو ويعقوب؛ بضم الهاء والميم لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بكسر الهاء والميم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-بهم_الكفار-w2",
+    "surah": 48,
+    "ayah": 29,
+    "startToken": 43,
+    "endToken": 44,
+    "operation": "REPLACE",
+    "hafsText": "بِهِمُ ٱلْكُفَّارَ ۗ",
+    "variantText": "بِهُمُ الْكُفَّارَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D515-بهم_الكفار",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D515-بهم_الكفار-w2",
+        "variantId": "v-D515-بهم_الكفار-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03190",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿بِهِمُ الْكُفَّارَ﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو ويعقوب؛ بضم الهاء والميم لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بضم الهاء والميم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-لا_تقدموا-w2",
+    "surah": 49,
+    "ayah": 1,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لَا تُقَدِّمُوا۟",
+    "variantText": "لَا تَقَدَّمُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D515-لا_تقدموا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D515-لا_تقدموا-w2",
+        "variantId": "v-D515-لا_تقدموا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03191",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿لَا تُقَدِّمُواْ﴾ (فاتحة الحجرات): بضم التاء وكسر الدال مشددة للجمهور؛ بفتح التاء والدال مشددة ﴿لَا تَقَدَّمُوا﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح التاء والدال مشددة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-النبي-w2",
+    "surah": 49,
+    "ayah": 2,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِىِّ",
+    "variantText": "النَّبِيءِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D515-النبي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D515-النبي-w2",
+        "variantId": "v-D515-النبي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03192",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿النَّبِيِّ﴾: بالهمز لنافع ﴿النَّبِيءِ﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-الحجرات-w2",
+    "surah": 49,
+    "ayah": 4,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْحُجُرَٰتِ",
+    "variantText": "الْحَجَرَاتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D515-الحجرات",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D515-الحجرات-w2",
+        "variantId": "v-D515-الحجرات-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P515-R03193",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿الْحُجُرَٰتِ﴾: بضم الجيم للجمهور؛ بفتح الجيم ﴿الْحَجَرَاتِ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بفتح الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D515-سوقهي-w3",
+    "surah": 48,
+    "ayah": 29,
+    "startToken": 39,
+    "endToken": 39,
+    "operation": "REPLACE",
+    "hafsText": "سُوقِهِۦ",
+    "variantText": "سُئُوقِهِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "D515-سوقهي",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D515-سوقهي-w3",
+        "variantId": "v-D515-سوقهي-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "https://quranpedia.net/qiraat/al-fath/29؛ qiraat_records.jsonl، DOCX-P515-R03189",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-fath/29 المرجع المستقل يثبت الوجهين لقنبل: https://quranpedia.net/qiraat/al-fath/29",
+        "sourceText": "﴿سُوقِهِۦ﴾: بلا همز للجمهور؛ بهمز ساكن واواً ﴿سُؤْقِهِ﴾ لقنبل (وله فيها وجهان)."
+      }
+    ],
+    "description": "بهمزة مضمومة بعد السين وبعدها واو ساكنة؛ الوجه الثاني لقنبل",
+    "wajhIndex": 3,
+    "evidence": [],
+    "performanceNote": "بهمزة مضمومة بعد السين وبعدها واو ساكنة؛ الوجه الثاني لقنبل"
+  }
+]

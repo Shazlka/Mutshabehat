@@ -1,1 +1,129 @@
-[]
+[
+  {
+    "id": "v-D570-ان_اعبدوا-w2",
+    "surah": 71,
+    "ayah": 3,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَنِ ٱعْبُدُوا۟",
+    "variantText": "أَنُ ٱعْبُدُوا۟",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D570-ان_اعبدوا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D570-ان_اعبدوا-w2",
+        "variantId": "v-D570-ان_اعبدوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P570-R03701",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي.",
+        "sourceText": "﴿أَنِ ٱعْبُدُواْ﴾: بكسر النون وصلاً لأبي عمرو وعاصم وحمزة ويعقوب؛ بضم النون وصلاً ﴿أَنُ اعْبُدُوا﴾ للباقين."
+      }
+    ],
+    "description": "بضم النون وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D570-يلاقوا-w2",
+    "surah": 70,
+    "ayah": 42,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يُلَـٰقُوا۟",
+    "variantText": "يَلْقَوْا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D570-يلاقوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D570-يلاقوا-w2",
+        "variantId": "v-D570-يلاقوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P570-R03699؛ Quranpedia https://quranpedia.net/qiraat/al-maarij/42",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-maarij/42",
+        "sourceText": "﴿يُلَـٰقُواْ﴾: بألف بعد اللام للجمهور؛ بفتح الياء واللام بلا ألف ﴿يَلْقَوْا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بفتح الياء واللام بلا ألف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D570-نصب-w2",
+    "surah": 70,
+    "ayah": 43,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نُصُبٍۢ",
+    "variantText": "نَصْبٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D570-نصب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D570-نصب-w2",
+        "variantId": "v-D570-نصب-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P570-R03700؛ Quranpedia https://quranpedia.net/book-attachment/19758/77831",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/book-attachment/19758/77831",
+        "sourceText": "﴿نُصُبٍ﴾: بضم النون والصاد ﴿نُصُبٍ﴾ لحفص وابن عامر؛ بفتح النون وإسكان الصاد ﴿نَصْبٍ﴾ للباقين."
+      }
+    ],
+    "description": "بفتح النون وإسكان الصاد",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -215,5 +215,148 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p374-YAAT_IDAFA-اجري_الا-1",
+    "pageNumber": 374,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 26,
+    "ayah": 164,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 164,
+    "baseText": "أَجْرِىَ إِلَّا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q05-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p374-YAAT_ZAWAID-واطيعون-0",
+    "pageNumber": 374,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 26,
+    "ayah": 163,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 163,
+    "baseText": "وَأَطِيعُونِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء في الحالين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

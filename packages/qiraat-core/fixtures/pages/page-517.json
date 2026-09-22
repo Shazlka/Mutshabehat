@@ -1,1 +1,207 @@
-[]
+[
+  {
+    "id": "v-D517-ولا_تجسسوا-w2",
+    "surah": 49,
+    "ayah": 12,
+    "startToken": 12,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تَجَسَّسُوا۟",
+    "variantText": "وَلَا تَّجَسَّسُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D517-ولا_تجسسوا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D517-ولا_تجسسوا-w2",
+        "variantId": "v-D517-ولا_تجسسوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P517-R03209",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/12",
+        "sourceText": "﴿وَلَا تَجَسَّسُواْ﴾، ﴿لِتَعَارَفُوٓاْ﴾: بتخفيف التاءين للجمهور؛ بتشديد التاءين وصلاً ﴿وَلَا تَّجَسَّسُوا... لِتَّعَارَفُوا﴾ للبزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D517-لتعارفوا-w2",
+    "surah": 49,
+    "ayah": 13,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "لِتَعَارَفُوٓا۟ ۚ",
+    "variantText": "لِتَّعَارَفُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D517-لتعارفوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D517-لتعارفوا-w2",
+        "variantId": "v-D517-لتعارفوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P517-R03209",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/12",
+        "sourceText": "﴿وَلَا تَجَسَّسُواْ﴾، ﴿لِتَعَارَفُوٓاْ﴾: بتخفيف التاءين للجمهور؛ بتشديد التاءين وصلاً ﴿وَلَا تَّجَسَّسُوا... لِتَّعَارَفُوا﴾ للبزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D517-ميتا-w2",
+    "surah": 49,
+    "ayah": 12,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "مَيْتًۭا",
+    "variantText": "مَيِّتًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D517-ميتا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D517-ميتا-w2",
+        "variantId": "v-D517-ميتا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P517-R03210",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/12",
+        "sourceText": "﴿مَّيْتٗا﴾: بتخفيف الياء الساكنة لابن كثير، وأبي عمرو، وابن عامر، وعاصم، وحمزة، والكسائي، وروح، وخلف؛ بتشديد الياء المكسورة ﴿مَيِّتًا﴾ لنافع، وأبي جعفر، ورويس."
+      }
+    ],
+    "description": "بتشديد الياء المكسورة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D517-لا_يلتكم-w2",
+    "surah": 49,
+    "ayah": 14,
+    "startToken": 19,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَلِتْكُم",
+    "variantText": "لَا يَأْلِتْكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D517-لا_يلتكم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D517-لا_يلتكم-w2",
+        "variantId": "v-D517-لا_يلتكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P517-R03211",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/12",
+        "sourceText": "﴿لَا يَلِتْكُم﴾: بياء مفتوحة ولام مكسورة بلا همز للجمهور؛ بهمز ساكن بعد الياء وكسر اللام ﴿لَا يَأْلِتْكُمْ﴾ لأبي عمرو ويعقوب (مع إبدال الهمزة للسوسي)."
+      }
+    ],
+    "description": "بهمز ساكن بعد الياء وكسر اللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D517-لا_يلتكم-w2",
+    "surah": 49,
+    "ayah": 14,
+    "startToken": 19,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَلِتْكُم",
+    "variantText": "لَا يَالِتْكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "D517-لا_يلتكم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D517-لا_يلتكم-w2",
+        "variantId": "v-D517-لا_يلتكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P517-R03211",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/12",
+        "sourceText": "﴿لَا يَلِتْكُم﴾: بياء مفتوحة ولام مكسورة بلا همز للجمهور؛ بهمز ساكن بعد الياء وكسر اللام ﴿لَا يَأْلِتْكُمْ﴾ لأبي عمرو ويعقوب (مع إبدال الهمزة للسوسي)."
+      }
+    ],
+    "description": "بإبدال الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D517-تعملون-w2",
+    "surah": 49,
+    "ayah": 18,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ",
+    "variantText": "يَعْمَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D517-تعملون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D517-تعملون-w2",
+        "variantId": "v-D517-تعملون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P517-R03212",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/12",
+        "sourceText": "﴿تَعْمَلُونَ﴾ (الآية الأخيرة): بتاء الخطاب للجمهور؛ بياء الغيب ﴿يَعْمَلُونَ﴾ لابن كثير."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

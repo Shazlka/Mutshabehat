@@ -31,5 +31,241 @@
     "description": "بنون مكسورة مخففة ﴿تُشَاقُّونِ﴾",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P270-16-27-4-FARSH",
+    "surah": 16,
+    "ayah": 27,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "يُخْزِيهِمْ",
+    "variantText": "يُخْزِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P270-16-27-4-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P270-R00672",
+        "variantId": "v-AUDIT-P270-16-27-4-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P270-R00672",
+        "sourceText": "﴿يُخْزِيهِمْ﴾، ﴿فِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يُخْزِيهُمُ﴾، ﴿فِيهُمُ﴾ ليعقوب.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P270-27-EXT",
+        "variantId": "v-AUDIT-P270-16-27-4-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/tafsir/an-nahl/27",
+        "sourceText": "At an-Nahl 16:27, dammah on hāʾ in يُخْزِيهُمْ is attributed to Rawh and Ruways from Yaqub.",
+        "verificationNotes": "مرجع مستقل يذكر الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "﴿يُخْزِيهِمْ﴾، ﴿فِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يُخْزِيهُمُ﴾، ﴿فِيهُمُ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "At an-Nahl 16:27, dammah on hāʾ in يُخْزِيهُمْ is attributed to Rawh and Ruways from Yaqub.",
+        "url": "https://quranpedia.net/tafsir/an-nahl/27"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P270-16-27-11-FARSH",
+    "surah": 16,
+    "ayah": 27,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِمْ ۚ",
+    "variantText": "فِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P270-16-27-11-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P270-R00672",
+        "variantId": "v-AUDIT-P270-16-27-11-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P270-R00672",
+        "sourceText": "﴿يُخْزِيهِمْ﴾، ﴿فِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يُخْزِيهُمُ﴾، ﴿فِيهُمُ﴾ ليعقوب.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P270-27-EXT",
+        "variantId": "v-AUDIT-P270-16-27-11-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/tafsir/an-nahl/27",
+        "sourceText": "At an-Nahl 16:27, dammah on hāʾ in فِيهُمْ is attributed to Rawh and Ruways from Yaqub.",
+        "verificationNotes": "مرجع مستقل يذكر الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "﴿يُخْزِيهِمْ﴾، ﴿فِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يُخْزِيهُمُ﴾، ﴿فِيهُمُ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "At an-Nahl 16:27, dammah on hāʾ in فِيهُمْ is attributed to Rawh and Ruways from Yaqub.",
+        "url": "https://quranpedia.net/tafsir/an-nahl/27"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P270-16-28-2-FARSH",
+    "surah": 16,
+    "ayah": 28,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَتَوَفَّىٰهُمُ",
+    "variantText": "يَتَوَفَّاهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P270-16-28-2-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P270-R00676",
+        "variantId": "v-AUDIT-P270-16-28-2-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P270-R00676",
+        "sourceText": "بياء التذكير مع فتح الفاء وألف ممالة ﴿يَتَوَفَّاهُمُ﴾: حمزة، خلف العاشر.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P270-28-EXT",
+        "variantId": "v-AUDIT-P270-16-28-2-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/ayahs/16/28/1/557",
+        "sourceText": "At an-Nahl 16:28 and the following occurrence, Hamza and Khalaf read يَتَوَفَّاهُمْ with yāʾ; the rest read تَتَوَفَّاهُمْ with tāʾ.",
+        "verificationNotes": "مرجع مستقل يذكر الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بياء التذكير مع فتح الفاء وألف ممالة ﴿يَتَوَفَّاهُمُ﴾: حمزة، خلف العاشر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "At an-Nahl 16:28 and the following occurrence, Hamza and Khalaf read يَتَوَفَّاهُمْ with yāʾ; the rest read تَتَوَفَّاهُمْ with tāʾ.",
+        "url": "https://quranpedia.net/ayahs/16/28/1/557"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P270-16-32-2-FARSH",
+    "surah": 16,
+    "ayah": 32,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَتَوَفَّىٰهُمُ",
+    "variantText": "يَتَوَفَّاهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P270-16-32-2-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P270-R00676",
+        "variantId": "v-AUDIT-P270-16-32-2-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P270-R00676",
+        "sourceText": "بياء التذكير مع فتح الفاء وألف ممالة ﴿يَتَوَفَّاهُمُ﴾: حمزة، خلف العاشر.",
+        "verificationNotes": "قوبل موضع الصفحة ومجموعة القراء بمرجع مستقل للقراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P270-32-EXT",
+        "variantId": "v-AUDIT-P270-16-32-2-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/ayahs/16/28/1/557",
+        "sourceText": "At an-Nahl 16:28 and the following occurrence, Hamza and Khalaf read يَتَوَفَّاهُمْ with yāʾ; the rest read تَتَوَفَّاهُمْ with tāʾ.",
+        "verificationNotes": "مرجع مستقل يذكر الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بياء التذكير مع فتح الفاء وألف ممالة ﴿يَتَوَفَّاهُمُ﴾: حمزة، خلف العاشر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "At an-Nahl 16:28 and the following occurrence, Hamza and Khalaf read يَتَوَفَّاهُمْ with yāʾ; the rest read تَتَوَفَّاهُمْ with tāʾ.",
+        "url": "https://quranpedia.net/ayahs/16/28/1/557"
+      }
+    ]
+  },
+  {
+    "id": "v-D270-تاتيهم-w2",
+    "surah": 16,
+    "ayah": 33,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِيَهُمُ",
+    "variantText": "يَأْتِيَهُمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D270-تاتيهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D270-تاتيهم-w2",
+        "variantId": "v-D270-تاتيهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P270-R00678",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَأْتِيَهُمُ﴾: بتاء التأنيث للجمهور؛ وبياء التذكير ﴿يَأْتِيَهُمُ﴾ لحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بياء التذكير",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

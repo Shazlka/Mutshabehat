@@ -1,256 +1,59 @@
 [
   {
-    "id": "r-p567-IMALAH_TAQLIL-طغا-0",
+    "id": "r-p567-TAGHYIR_HAMZ-والموتفكات-16",
     "pageNumber": 567,
-    "category": "IMALAH_TAQLIL",
-    "categoryAr": "الممال والمقلل",
-    "color": "#C026D3",
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
     "wordAnchored": true,
     "surah": 69,
-    "ayah": 11,
-    "startToken": 3,
-    "endToken": 3,
-    "endAyah": 11,
-    "baseText": "طَغَا",
+    "ayah": 9,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 9,
+    "baseText": "وَٱلْمُؤْتَفِكَـٰتُ",
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q06-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
-        "action": "تقليل"
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q06-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q06-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
       }
     ],
-    "hasAlternate": true,
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
-  },
-  {
-    "id": "r-p567-IMALAH_TAQLIL-اغنا-1",
-    "pageNumber": 567,
-    "category": "IMALAH_TAQLIL",
-    "categoryAr": "الممال والمقلل",
-    "color": "#C026D3",
-    "wordAnchored": true,
-    "surah": 69,
-    "ayah": 28,
-    "startToken": 2,
-    "endToken": 2,
-    "endAyah": 28,
-    "baseText": "أَغْنَىٰ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q06-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q06-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q06-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q06-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
-      }
-    ],
-    "hasAlternate": true,
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
-  },
-  {
-    "id": "r-p567-IMALAH_TAQLIL-تخفا-2",
-    "pageNumber": 567,
-    "category": "IMALAH_TAQLIL",
-    "categoryAr": "الممال والمقلل",
-    "color": "#C026D3",
-    "wordAnchored": true,
-    "surah": 69,
-    "ayah": 18,
-    "startToken": 4,
-    "endToken": 4,
-    "endAyah": 18,
-    "baseText": "تَخْفَىٰ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q06-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q06-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q06-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q06-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
-      }
-    ],
-    "hasAlternate": true,
+    "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
   },
@@ -287,6 +90,46 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p567-TAGHYIR_HAMZ-بالخاطيه-18",
+    "pageNumber": 567,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 9,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 9,
+    "baseText": "بِٱلْخَاطِئَةِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -333,6 +176,76 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p567-IMALAH_TAQLIL-طغا-0",
+    "pageNumber": 567,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 11,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 11,
+    "baseText": "طَغَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P567-R03678: ﴿طَغَا﴾ (وقفاً)، ﴿أَغْنَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-haaqqa/11; https://quranpedia.net/qiraat/al-haaqqa/28."
+    ]
   },
   {
     "id": "r-p567-IMALAH_TAQLIL-الجاريه-5",
@@ -455,6 +368,40 @@
     "updatedAt": "2026-09-20T12:00:00.000Z"
   },
   {
+    "id": "r-p567-IDGHAM_KABIR-فهي_يومئذ",
+    "pageNumber": 567,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 16,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 16,
+    "baseText": "فَهِىَ يَوْمَئِذٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الياء الأولى في الثانية إدغاماً كبيراً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الياء الأولى في الثانية إدغاماً كبيراً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "DOCX-P567-R03673: ﴿فَهِيَ﴾، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين. Quranpedia 69:16 explicitly specifies Susi idgham of the two yaas: https://quranpedia.net/qiraat/al-haaqqa/16"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
     "id": "r-p567-IMALAH_TAQLIL-واهيه-8",
     "pageNumber": 567,
     "category": "IMALAH_TAQLIL",
@@ -533,6 +480,94 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p567-IMALAH_TAQLIL-تخفا-2",
+    "pageNumber": 567,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 18,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 18,
+    "baseText": "تَخْفَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P567-R03679: ﴿تَخْفَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش بخلف. Bare «خلف» maps to Q06; Q10-R01/R02 are retained only because Quranpedia 69:18 explicitly lists Idris and Ishaq from Khalaf in the corresponding imala face: https://quranpedia.net/qiraat/al-haaqqa/18."
+    ]
   },
   {
     "id": "r-p567-IMALAH_TAQLIL-خافيه-10",
@@ -775,62 +810,74 @@
     "updatedAt": "2026-09-20T12:00:00.000Z"
   },
   {
-    "id": "r-p567-TAGHYIR_HAMZ-والموتفكات-16",
+    "id": "r-p567-IMALAH_TAQLIL-اغنا-1",
     "pageNumber": 567,
-    "category": "TAGHYIR_HAMZ",
-    "categoryAr": "تغيير الهمز",
-    "color": "#DC2626",
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
     "wordAnchored": true,
     "surah": 69,
-    "ayah": 9,
-    "startToken": 5,
-    "endToken": 5,
-    "endAyah": 9,
-    "baseText": "وَٱلْمُؤْتَفِكَـٰتُ",
+    "ayah": 28,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 28,
+    "baseText": "أَغْنَىٰ",
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
         "authorityId": "Q01-R02",
-        "action": "إبدال الهمزة"
-      },
-      {
-        "authorityId": "Q03-R02",
-        "action": "إبدال الهمزة"
-      },
-      {
-        "authorityId": "Q08-R01",
-        "action": "إبدال الهمزة"
-      },
-      {
-        "authorityId": "Q08-R02",
-        "action": "إبدال الهمزة"
+        "action": "تقليل"
       }
     ],
     "readings": [
       {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
         "readingId": "Q01-R02",
-        "action": "إبدال الهمزة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "إبدال الهمزة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q08-R01",
-        "action": "إبدال الهمزة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q08-R02",
-        "action": "إبدال الهمزة",
-        "isDefault": true
+        "action": "تقليل",
+        "isDefault": false
       }
     ],
-    "hasAlternate": false,
+    "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "DOCX-P567-R03678: ﴿طَغَا﴾ (وقفاً)، ﴿أَغْنَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-haaqqa/11; https://quranpedia.net/qiraat/al-haaqqa/28."
+    ]
   },
   {
     "id": "r-p567-TAGHYIR_HAMZ-لا_يومن-17",
@@ -875,46 +922,6 @@
         "action": "إبدال الهمزة",
         "isDefault": true
       },
-      {
-        "readingId": "Q08-R01",
-        "action": "إبدال الهمزة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q08-R02",
-        "action": "إبدال الهمزة",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
-  },
-  {
-    "id": "r-p567-TAGHYIR_HAMZ-بالخاطيه-18",
-    "pageNumber": 567,
-    "category": "TAGHYIR_HAMZ",
-    "categoryAr": "تغيير الهمز",
-    "color": "#DC2626",
-    "wordAnchored": true,
-    "surah": 69,
-    "ayah": 9,
-    "startToken": 6,
-    "endToken": 6,
-    "endAyah": 9,
-    "baseText": "بِٱلْخَاطِئَةِ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q08-R01",
-        "action": "إبدال الهمزة"
-      },
-      {
-        "authorityId": "Q08-R02",
-        "action": "إبدال الهمزة"
-      }
-    ],
-    "readings": [
       {
         "readingId": "Q08-R01",
         "action": "إبدال الهمزة",

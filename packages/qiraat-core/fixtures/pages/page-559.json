@@ -1,1 +1,258 @@
-[]
+[
+  {
+    "id": "v-D559-وجدكم-w2",
+    "surah": 65,
+    "ayah": 6,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وُجْدِكُمْ",
+    "variantText": "وِجْدِكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R02"
+    ],
+    "locusId": "D559-وجدكم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D559-وجدكم-w2",
+        "variantId": "v-D559-وجدكم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03595",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وُجْدِكُمْ﴾: بضم الواو للجمهور؛ بكسر الواو ﴿وِجْدِكُمْ﴾ لروح."
+      }
+    ],
+    "description": "بكسر الواو",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D559-عليهن-w2",
+    "surah": 65,
+    "ayah": 6,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِنَّ ۚ",
+    "variantText": "عَلَيْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D559-عليهن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D559-عليهن-w2",
+        "variantId": "v-D559-عليهن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03596",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِنَّ﴾ (معاً): بكسر الهاء للجمهور؛ وبضمها ﴿عَلَيْهُنَّ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D559-عليهن-w2",
+    "surah": 65,
+    "ayah": 6,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِنَّ",
+    "variantText": "عَلَيْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D559-عليهن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D559-عليهن-w2",
+        "variantId": "v-D559-عليهن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03596",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِنَّ﴾ (معاً): بكسر الهاء للجمهور؛ وبضمها ﴿عَلَيْهُنَّ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D559-عسر_يسرا-w2",
+    "surah": 65,
+    "ayah": 7,
+    "startToken": 24,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "عُسْرٍۢ يُسْرًۭا",
+    "variantText": "عُسُرٍ يُسُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D559-عسر_يسرا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D559-عسر_يسرا-w2",
+        "variantId": "v-D559-عسر_يسرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03597",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عُسْرٍ يُسْرٗا﴾: بإسكان السين في الكلمتين للجمهور؛ بضم السين فيهما ﴿عُسُرٍ يُسُرًا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم السين في الكلمتين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D559-نكرا-w2",
+    "surah": 65,
+    "ayah": 8,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "نُّكْرًۭا",
+    "variantText": "نُكُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D559-نكرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D559-نكرا-w2",
+        "variantId": "v-D559-نكرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03599",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نُّكْرٗا﴾: بإسكان الكاف لابن كثير، وأبي عمرو، وهشام، وحفص، وحمزة، والكسائي، وخلف؛ بضم الكاف للباقين."
+      }
+    ],
+    "description": "بضم الكاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D559-يدخله-w2",
+    "surah": 65,
+    "ayah": 11,
+    "startToken": 21,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "يُدْخِلْهُ",
+    "variantText": "نُدْخِلْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D559-يدخله",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D559-يدخله-w2",
+        "variantId": "v-D559-يدخله-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03601",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُدْخِلْهُ﴾: بياء الغيب لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نُدْخِلْهُ﴾ لنافع، وابن عامر، وأبي جعفر."
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D559-مبينات-w2",
+    "surah": 65,
+    "ayah": 11,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مُبَيِّنَـٰتٍۢ",
+    "variantText": "مُبَيَّنَاتٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D559-مبينات",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D559-مبينات-w2",
+        "variantId": "v-D559-مبينات-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03600",
+        "verificationNotes": "يصحح جهاز القراءات العشر المستقل توزيع السطر المقلوب: فتح الياء لقالون وورش وقنبل والبزي والدوري والسوسي وابن وردان وابن جماز وشعبة ورويس. https://quranpedia.net/qiraat/at-talaq/11",
+        "sourceText": "﴿مُّبَيِّنَـٰتٍ﴾: بفتح الياء المشددة لابن عامر، وحفص، وحمزة، والكسائي، وخلف؛ بكسر الياء المشددة للباقين."
+      }
+    ],
+    "description": "بفتح الياء المشددة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

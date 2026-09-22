@@ -42,5 +42,74 @@
     "description": "بالهمز الساكن بعد الجيم",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D425-لا_يحل-w2",
+    "surah": 33,
+    "ayah": 52,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَّا يَحِلُّ",
+    "variantText": "لَا تَحِلُّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D425-لا_يحل",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D425-لا_يحل-w2",
+        "variantId": "v-D425-لا_يحل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P425-R02305",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَا يَحِلُّ﴾: بياء التذكير للجمهور؛ وبتاء التأنيث ﴿لَا تَحِلُّ﴾ لأبي عمرو ويعقوب."
+      }
+    ],
+    "description": "بتاء التأنيث",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D425-ان_تبدل-w2",
+    "surah": 33,
+    "ayah": 52,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "أَن تَبَدَّلَ",
+    "variantText": "أَن تَّبَدَّلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D425-ان_تبدل",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D425-ان_تبدل-w2",
+        "variantId": "v-D425-ان_تبدل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P425-R02306",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَن تَبَدَّلَ﴾: بتخفيف التاء للجمهور؛ وبتشديد التاء وصلاً ﴿أَن تَّبَدَّلَ﴾ للبزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

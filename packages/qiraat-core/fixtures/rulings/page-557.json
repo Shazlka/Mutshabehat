@@ -230,5 +230,100 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p557-IMALAH_TAQLIL-فتنه-4",
+    "pageNumber": 557,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 64,
+    "ayah": 15,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 15,
+    "baseText": "فِتْنَةٌۭ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P557-R03581",
+        "sourceText": "الممال والمقلل: ﴿النَّارِ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿فِتْنَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي.",
+        "verificationNotes": "مصدر وثيقة الاستخراج؛ حكم الوقف صريح."
+      }
+    ]
+  },
+  {
+    "id": "r-p557-WAQF_RASM-هو-5",
+    "pageNumber": 557,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 64,
+    "ayah": 13,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 13,
+    "baseText": "هُوَ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "هاء السكت وقفاً: هُوْهْ"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "هاء السكت وقفاً: هُوْهْ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "هاء السكت وقفاً: هُوْهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "هاء السكت وقفاً: هُوْهْ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "هاء السكت وقفاً: هُوْهْ",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P557-R03584",
+        "sourceText": "الوقف على مرسوم الخط: ﴿هُوَ﴾: يقف عليها يعقوب بهاء السكت ﴿هُوْهْ﴾.",
+        "verificationNotes": "مصدر وثيقة الاستخراج؛ إسناد الوقف إلى يعقوب صريح."
+      }
+    ]
   }
 ]

@@ -470,6 +470,10 @@
       {
         "authorityId": "Q10-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -505,6 +509,11 @@
       },
       {
         "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
         "action": "إمالة",
         "isDefault": true
       }

@@ -362,5 +362,72 @@
         "text": "وَأَنَّ مَعْ غَضِبَ حُزْ"
       }
     ]
+  },
+  {
+    "id": "v-D350-المحصنات-w2",
+    "surah": 24,
+    "ayah": 4,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُحْصَنَـٰتِ",
+    "variantText": "الْمُحْصِنَاتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D350-المحصنات",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D350-المحصنات-w2",
+        "variantId": "v-D350-المحصنات-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P350-R01588",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْمُحْصَنَـٰتِ﴾: بفتح الصاد للجمهور؛ وبكسر الصاد ﴿الْمُحْصِنَاتِ﴾ للكسائي."
+      }
+    ],
+    "description": "بكسر الصاد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D350-اربع_شهادات-w1",
+    "surah": 24,
+    "ayah": 6,
+    "startToken": 12,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "أَرْبَعُ شَهَـٰدَٰتٍۭ",
+    "variantText": "أَرْبَعُ شَهَـٰدَٰتٍۭ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D350-اربع_شهادات",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D350-اربع_شهادات-w1",
+        "variantId": "v-D350-اربع_شهادات-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": []
   }
 ]

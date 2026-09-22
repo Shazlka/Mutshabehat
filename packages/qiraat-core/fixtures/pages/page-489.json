@@ -1,1 +1,509 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P489-42-52-26-DOCX-P489-R02924",
+    "surah": 42,
+    "ayah": 52,
+    "startToken": 26,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "سِرَٰطٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P489-42-52-26-DOCX-P489-R02924",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-42-52-26-DOCX-P489-R02924",
+        "variantId": "v-AUDIT-P489-42-52-26-DOCX-P489-R02924",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02924",
+        "sourceText": "﴿صِرَٰطٍ﴾، ﴿صِرَٰطِ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/52"
+      }
+    ],
+    "description": "بالسين لقنبل ورويس",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/52"
+      }
+    ],
+    "performanceNote": "بالسين لقنبل ورويس"
+  },
+  {
+    "id": "v-AUDIT-P489-42-52-26-DOCX-P489-R02924",
+    "surah": 42,
+    "ayah": 52,
+    "startToken": 26,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "صِرَٰطٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P489-42-52-26-DOCX-P489-R02924",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-42-52-26-DOCX-P489-R02924",
+        "variantId": "v-AUDIT-P489-42-52-26-DOCX-P489-R02924",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02924",
+        "sourceText": "﴿صِرَٰطٍ﴾، ﴿صِرَٰطِ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/52"
+      }
+    ],
+    "description": "بإشمام الصاد زياً لخلف عن حمزة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/52"
+      }
+    ],
+    "performanceNote": "إشمام الصاد زياً لخلف عن حمزة."
+  },
+  {
+    "id": "v-AUDIT-P489-42-53-1-DOCX-P489-R02924",
+    "surah": 42,
+    "ayah": 53,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطِ",
+    "variantText": "سِرَٰطِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P489-42-53-1-DOCX-P489-R02924",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-42-53-1-DOCX-P489-R02924",
+        "variantId": "v-AUDIT-P489-42-53-1-DOCX-P489-R02924",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02924",
+        "sourceText": "﴿صِرَٰطٍ﴾، ﴿صِرَٰطِ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/53"
+      }
+    ],
+    "description": "بالسين لقنبل ورويس",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/53"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P489-42-53-1-DOCX-P489-R02924",
+    "surah": 42,
+    "ayah": 53,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطِ",
+    "variantText": "صِرَٰطِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P489-42-53-1-DOCX-P489-R02924",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-42-53-1-DOCX-P489-R02924",
+        "variantId": "v-AUDIT-P489-42-53-1-DOCX-P489-R02924",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02924",
+        "sourceText": "﴿صِرَٰطٍ﴾، ﴿صِرَٰطِ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/53"
+      }
+    ],
+    "description": "بإشمام الصاد زياً لخلف عن حمزة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/53"
+      }
+    ],
+    "performanceNote": "إشمام الصاد زياً لخلف عن حمزة."
+  },
+  {
+    "id": "v-AUDIT-P489-43-1-1-DOCX-P489-R02925",
+    "surah": 43,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "حمٓ",
+    "variantText": "حمٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P489-43-1-1-DOCX-P489-R02925",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-1-1-DOCX-P489-R02925",
+        "variantId": "v-AUDIT-P489-43-1-1-DOCX-P489-R02925",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02925",
+        "sourceText": "﴿حمٓ﴾ (فاتحة الزخرف): بالسكت لأبي جعفر؛ وبإدراجها للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/1"
+      }
+    ],
+    "description": "بالسكت لأبي جعفر",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/1"
+      }
+    ],
+    "performanceNote": "السكت لأبي جعفر."
+  },
+  {
+    "id": "v-AUDIT-P489-43-3-3-DOCX-P489-R02926",
+    "surah": 43,
+    "ayah": 3,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "قُرْءَٰنًا",
+    "variantText": "قُرَانًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P489-43-3-3-DOCX-P489-R02926",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-3-3-DOCX-P489-R02926",
+        "variantId": "v-AUDIT-P489-43-3-3-DOCX-P489-R02926",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02926",
+        "sourceText": "﴿قُرْءَانًا﴾: بنقل الهمزة لابن كثير ﴿قُرَانًا﴾.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/3"
+      }
+    ],
+    "description": "بنقل الهمزة لابن كثير",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/3"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P489-43-4-2-DOCX-P489-R02927",
+    "surah": 43,
+    "ayah": 4,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "فِىٓ أُمِّ",
+    "variantText": "فِىٓ أُمِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P489-43-4-2-DOCX-P489-R02927",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-4-2-DOCX-P489-R02927",
+        "variantId": "v-AUDIT-P489-43-4-2-DOCX-P489-R02927",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02927",
+        "sourceText": "﴿فِيٓ أُمِّ﴾ (وصلاً بما قبلها): بضم الهمزة للجمهور؛ وبكسر الهمزة ﴿فِي إِمِّ﴾ لحمزة والكسائي.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/4"
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/4"
+      }
+    ],
+    "performanceNote": "بكسر الهمزة"
+  },
+  {
+    "id": "v-AUDIT-P489-43-5-5-DOCX-P489-R02928",
+    "surah": 43,
+    "ayah": 5,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَن كُنتُمْ",
+    "variantText": "أَن كُنتُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P489-43-5-5-DOCX-P489-R02928",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-5-5-DOCX-P489-R02928",
+        "variantId": "v-AUDIT-P489-43-5-5-DOCX-P489-R02928",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02928",
+        "sourceText": "﴿أَن كُنتُمْ﴾: بفتح الهمزة لابن كثير، وأبي عمرو، وابن عامر، وعاصم، ويعقوب؛ وبكسر الهمزة ﴿إِن كُنتُمْ﴾ للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/5"
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/5"
+      }
+    ],
+    "performanceNote": "بكسر الهمزة"
+  },
+  {
+    "id": "v-AUDIT-P489-43-6-4-DOCX-P489-R02929",
+    "surah": 43,
+    "ayah": 6,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "نَّبِىٍّۢ",
+    "variantText": "نَبِيءٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P489-43-6-4-DOCX-P489-R02929",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-6-4-DOCX-P489-R02929",
+        "variantId": "v-AUDIT-P489-43-6-4-DOCX-P489-R02929",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02929",
+        "sourceText": "﴿نَّبِيٍّ﴾ (معاً): بالهمز لنافع ﴿نَبِيءٍ﴾؛ وبغير همز للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/6"
+      }
+    ],
+    "description": "بالهمز لنافع",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/6"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P489-43-7-4-DOCX-P489-R02929",
+    "surah": 43,
+    "ayah": 7,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "نَّبِىٍّ",
+    "variantText": "نَبِيءٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P489-43-7-4-DOCX-P489-R02929",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-7-4-DOCX-P489-R02929",
+        "variantId": "v-AUDIT-P489-43-7-4-DOCX-P489-R02929",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02929",
+        "sourceText": "﴿نَّبِيٍّ﴾ (معاً): بالهمز لنافع ﴿نَبِيءٍ﴾؛ وبغير همز للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/7"
+      }
+    ],
+    "description": "بالهمز لنافع",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/7"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P489-43-7-2-DOCX-P489-R02930",
+    "surah": 43,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِيهِم",
+    "variantText": "يَأْتِيهِم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P489-43-7-2-DOCX-P489-R02930",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-7-2-DOCX-P489-R02930",
+        "variantId": "v-AUDIT-P489-43-7-2-DOCX-P489-R02930",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02930",
+        "sourceText": "﴿يَأْتِيهِم﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يَأْتِيهُم﴾ ليعقوب.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/7"
+      }
+    ],
+    "description": "بضم الهاء ليعقوب",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/7"
+      }
+    ],
+    "performanceNote": "بضم الهاء ليعقوب"
+  },
+  {
+    "id": "v-AUDIT-P489-43-10-5-DOCX-P489-R02931",
+    "surah": 43,
+    "ayah": 10,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مَهْدًۭا",
+    "variantText": "مِهَادًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P489-43-10-5-DOCX-P489-R02931",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P489-43-10-5-DOCX-P489-R02931",
+        "variantId": "v-AUDIT-P489-43-10-5-DOCX-P489-R02931",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02931",
+        "sourceText": "﴿مَهْدٗا﴾: بسكون الهاء لعاصم، وحمزة، والكسائي، وخلف؛ وبكسر الميم وفتح الهاء وألف بعدها ﴿مِهَادًا﴾ للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/10"
+      }
+    ],
+    "description": "بكسر الميم وفتح الهاء وألف بعدها",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تحقق مستقل لوجه القراءة والرواة.",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/10"
+      }
+    ]
+  }
+]

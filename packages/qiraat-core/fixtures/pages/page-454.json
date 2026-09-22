@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "v-D454-الصراط-w2",
+    "surah": 38,
+    "ayah": 22,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "ٱلصِّرَٰطِ",
+    "variantText": "السِّرَٰطِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D454-الصراط",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D454-الصراط-w2",
+        "variantId": "v-D454-الصراط-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P454-R02611",
+        "verificationNotes": "ينص السطر المصدر صراحة على وجهي السين وإشمام الصاد زايًا في الصراط؛ أُبقي الوجهين منفصلين بحسب القارئ. المرجع: https://quranpedia.net/qiraat/sad/22",
+        "sourceText": "﴿الصِّرَٰطِ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة."
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

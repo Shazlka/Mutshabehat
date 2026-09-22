@@ -320,5 +320,73 @@
         "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
       }
     ]
+  },
+  {
+    "id": "v-D346-مترفيهم-w2",
+    "surah": 23,
+    "ayah": 64,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مُتْرَفِيهِم",
+    "variantText": "مُتْرَفِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D346-مترفيهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D346-مترفيهم-w2",
+        "variantId": "v-D346-مترفيهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P346-R01546",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مُتْرَفِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿مُتْرَفِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D346-فيهن-w2",
+    "surah": 23,
+    "ayah": 71,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِنَّ ۚ",
+    "variantText": "فِيهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D346-فيهن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D346-فيهن-w2",
+        "variantId": "v-D346-فيهن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P346-R01548",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فِيهِنَّ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُنَّ﴾ ليعقوب (ويقف عليها بالسكت ﴿فِيهُنَّهْ﴾)."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

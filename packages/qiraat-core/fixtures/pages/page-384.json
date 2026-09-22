@@ -1,1 +1,154 @@
-[]
+[
+  {
+    "id": "v-D384-تسمع_الصم-w2",
+    "surah": 27,
+    "ayah": 80,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "تُسْمِعُ ٱلصُّمَّ",
+    "variantText": "يَسْمَعُ الصُّمُّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D384-تسمع_الصم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D384-تسمع_الصم-w2",
+        "variantId": "v-D384-تسمع_الصم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P384-R01941",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَلَا تُسْمِعُ الصُّمَّ﴾: بتاء الخطاب ونصب الصمَّ مفعولاً للجمهور؛ وبياء الغيب ورفع الصمُّ فاعلاً ﴿وَلَا يَسْمَعُ الصُّمُّ﴾ لابن كثير."
+      }
+    ],
+    "description": "بياء الغيب ورفع الصم فاعلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D384-بهادي_العمي-w2",
+    "surah": 27,
+    "ayah": 81,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "بِهَـٰدِى ٱلْعُمْىِ",
+    "variantText": "تَهْدِي الْعُمْيَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D384-بهادي_العمي",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D384-بهادي_العمي-w2",
+        "variantId": "v-D384-بهادي_العمي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P384-R01942",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿بِهَـٰدِي الْعُمْيِ﴾: باسم فاعل مضاف وخفض العمي للجمهور؛ وبفعل مضارع ونصب العمي ﴿تَهْدِي الْعُمْيَ﴾ لحمزة."
+      }
+    ],
+    "description": "بفعل مضارع ونصب العمي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D384-تفعلون-w2",
+    "surah": 27,
+    "ayah": 88,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "تَفْعَلُونَ",
+    "variantText": "يَفْعَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D384-تفعلون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D384-تفعلون-w2",
+        "variantId": "v-D384-تفعلون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P384-R01947",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَفْعَلُونَ﴾: بتاء الخطاب لنافع، وابن ذكوان، وعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ وبياء الغيب ﴿يَفْعَلُونَ﴾ للباقين."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D384-اتوه-w2",
+    "surah": 27,
+    "ayah": 87,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "أَتَوْهُ",
+    "variantText": "ءَاتَوْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D384-اتوه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D384-اتوه-w2",
+        "variantId": "v-D384-اتوه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P384-R01945",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ءَاتَوْهُ﴾: بقصر الهمزة وسكون التاء ﴿أَتَوْهُ﴾ لحفص، وحمزة، وخلف؛ وبمد الهمزة وفتح التاء ﴿ءَاتَوْهُ﴾ للباقين."
+      }
+    ],
+    "description": "بمد الهمزة وفتح التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

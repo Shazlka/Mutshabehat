@@ -94,5 +94,41 @@
         "text": "وَيَدْفَعُ كَأَصْلِهِ"
       }
     ]
+  },
+  {
+    "id": "v-D336-فتخطفه-w2",
+    "surah": 22,
+    "ayah": 31,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "فَتَخْطَفُهُ",
+    "variantText": "فَتَخَطَّفُهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D336-فتخطفه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D336-فتخطفه-w2",
+        "variantId": "v-D336-فتخطفه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P336-R01446",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَتَخْطَفُهُ﴾: بفتح التاء وإسكان الخاء وتخفيف الطاء ﴿فَتَخْطَفُهُ﴾ للجمهور؛ وبفتح الخاء وتشديد الطاء ﴿فَتَخَطَّفُهُ﴾ لنافع وأبي جعفر."
+      }
+    ],
+    "description": "بفتح الخاء وتشديد الطاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

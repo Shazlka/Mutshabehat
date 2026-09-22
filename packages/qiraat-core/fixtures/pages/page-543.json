@@ -1,1 +1,524 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P543-58-7-12-03438-1-ما يكون-ما تكون",
+    "surah": 58,
+    "ayah": 7,
+    "startToken": 12,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "مَا يَكُونُ",
+    "variantText": "مَا تَكُونُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P543-58-7-12-03438-1-ما يكون-ما تكون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-7-12-03438-1-ما يكون-ما تكون-DOC",
+        "variantId": "v-AUDIT-P543-58-7-12-03438-1-ما يكون-ما تكون",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03438",
+        "sourceText": "﴿مَا يَكُونُ﴾: بياء التذكير للجمهور؛ بتاء التأنيث ﴿مَا تَكُونُ﴾ لأبي جعفر.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-7-12-03438-1-ما يكون-ما تكون-QP",
+        "variantId": "v-AUDIT-P543-58-7-12-03438-1-ما يكون-ما تكون",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/7",
+        "sourceText": "(مَا تَكُونُ) بالتاء: ابن وردان وابن جمّاز عن أبي جعفر.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بتاء التأنيث لأبي جعفر",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(مَا تَكُونُ) بالتاء: ابن وردان وابن جمّاز عن أبي جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/7"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-7-29-03439-1-ولا اكثر-ولا اكثر",
+    "surah": 58,
+    "ayah": 7,
+    "startToken": 29,
+    "endToken": 30,
+    "operation": "REPLACE",
+    "hafsText": "وَلَآ أَكْثَرَ",
+    "variantText": "وَلَا أَكْثَرُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P543-58-7-29-03439-1-ولا اكثر-ولا اكثر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-7-29-03439-1-ولا اكثر-ولا اكثر-DOC",
+        "variantId": "v-AUDIT-P543-58-7-29-03439-1-ولا اكثر-ولا اكثر",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03439",
+        "sourceText": "﴿وَلَآ أَكْثَرَ﴾: بفتح الراء للجمهور؛ برفع الراء ﴿وَلَا أَكْثَرُ﴾ ليعقوب.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-7-29-03439-1-ولا اكثر-ولا اكثر-QP",
+        "variantId": "v-AUDIT-P543-58-7-29-03439-1-ولا اكثر-ولا اكثر",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/7",
+        "sourceText": "(أَكْثَرُ) برفع الراء: روح ورويس عن يعقوب.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "برفع الراء ليعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(أَكْثَرُ) برفع الراء: روح ورويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/7"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-8-13-03440-1-ويتناجون-وينتجون",
+    "surah": 58,
+    "ayah": 8,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَيَتَنَـٰجَوْنَ",
+    "variantText": "وَيَنْتَجُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P543-58-8-13-03440-1-ويتناجون-وينتجون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-8-13-03440-1-ويتناجون-وينتجون-DOC",
+        "variantId": "v-AUDIT-P543-58-8-13-03440-1-ويتناجون-وينتجون",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03440",
+        "sourceText": "﴿وَيَتَنَـٰجَوْنَ﴾: بفتح الياء والتاء والنون وألف بعدها وجيم مفتوحة ﴿وَيَتَنَاجَوْنَ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، والكسائي، وأبي جعفر، وروح، وخلف؛ بياء مفتوحة ونون ساكنة وفتح التاء وضم الجيم بلا ألف ﴿وَيَنْتَجُونَ﴾ لحمزة ورويس.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-8-13-03440-1-ويتناجون-وينتجون-QP",
+        "variantId": "v-AUDIT-P543-58-8-13-03440-1-ويتناجون-وينتجون",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/8",
+        "sourceText": "(وَيَنتَجُونَ): رويس عن يعقوب، خلف وخلاد عن حمزة.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بياء ونون ساكنة وضم الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(وَيَنتَجُونَ): رويس عن يعقوب، خلف وخلاد عن حمزة.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/8"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-9-6-03441-1-فلا تتناجوا-فلا تنتجوا",
+    "surah": 58,
+    "ayah": 9,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَتَنَـٰجَوْا۟",
+    "variantText": "فَلَا تَنْتَجُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P543-58-9-6-03441-1-فلا تتناجوا-فلا تنتجوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-9-6-03441-1-فلا تتناجوا-فلا تنتجوا-DOC",
+        "variantId": "v-AUDIT-P543-58-9-6-03441-1-فلا تتناجوا-فلا تنتجوا",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03441",
+        "sourceText": "﴿فَلَا تَتَنَـٰجَوْاْ﴾: بتاءين وألف بعد النون ﴿فَلَا تَتَنَاجَوْا﴾ للجمهور؛ بتاء واحدة ونون ساكنة وفتح التاء وضم الجيم ﴿فَلَا تَنْتَجُوا﴾ لرويس.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-9-6-03441-1-فلا تتناجوا-فلا تنتجوا-QP",
+        "variantId": "v-AUDIT-P543-58-9-6-03441-1-فلا تتناجوا-فلا تنتجوا",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/9",
+        "sourceText": "(فَلاَ تَنْتَجُوا): رويس عن يعقوب.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بتاء واحدة ونون ساكنة وضم الجيم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(فَلاَ تَنْتَجُوا): رويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/9"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-10-5-03442-1-ليحزن-ليحزن",
+    "surah": 58,
+    "ayah": 10,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لِيَحْزُنَ",
+    "variantText": "لِيُحْزِنَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P543-58-10-5-03442-1-ليحزن-ليحزن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-10-5-03442-1-ليحزن-ليحزن-DOC",
+        "variantId": "v-AUDIT-P543-58-10-5-03442-1-ليحزن-ليحزن",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03442",
+        "sourceText": "﴿لِيَحْزُنَ﴾: بفتح الياء وضم الزاي ﴿لِيَحْزُنَ﴾ للجمهور؛ بضم الياء وكسر الزاي ﴿لِيُحْزِنَ﴾ لنافع.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-10-5-03442-1-ليحزن-ليحزن-QP",
+        "variantId": "v-AUDIT-P543-58-10-5-03442-1-ليحزن-ليحزن",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/10",
+        "sourceText": "(لِيُحْزِنَ): ورش وقالون عن نافع.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بضم الياء وكسر الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(لِيُحْزِنَ): ورش وقالون عن نافع.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/10"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
+    "surah": 58,
+    "ayah": 11,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ لَكُمْ",
+    "variantText": "قِيلَ لَكُمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
+    "locusType": "performance_variant",
+    "performanceNote": "إدغام اللام في اللام مع إسكان الميم",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم-DOC",
+        "variantId": "v-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03443",
+        "sourceText": "﴿قِيلَ﴾ (معاً): كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم-QP",
+        "variantId": "v-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/11",
+        "sourceText": "بكسرة خالصة للقاف وإدغام اللام في اللام وإسكان الميم: السوسي عن أبي عمرو.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "إدغام اللام في اللام مع إسكان الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "بكسرة خالصة للقاف وإدغام اللام في اللام وإسكان الميم: السوسي عن أبي عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-11-5-03443-1-قيل-قيل",
+    "surah": 58,
+    "ayah": 11,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P543-58-11-5-03443-1-قيل-قيل",
+    "locusType": "performance_variant",
+    "performanceNote": "إشمام كسرة القاف ضمّاً",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-11-5-03443-1-قيل-قيل-DOC",
+        "variantId": "v-AUDIT-P543-58-11-5-03443-1-قيل-قيل",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03443",
+        "sourceText": "﴿قِيلَ﴾ (معاً): كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-11-5-03443-1-قيل-قيل-QP",
+        "variantId": "v-AUDIT-P543-58-11-5-03443-1-قيل-قيل",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/11",
+        "sourceText": "إشمام كسرة القاف ضمّاً: هشام، أبو الحارث والدوري عن الكسائي، رويس.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "إشمام كسرة القاف ضمّاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إشمام كسرة القاف ضمّاً: هشام، أبو الحارث والدوري عن الكسائي، رويس.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-11-9-03444-1-المجالس-المجلس",
+    "surah": 58,
+    "ayah": 11,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَجَـٰلِسِ",
+    "variantText": "الْمَجْلِسِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P543-58-11-9-03444-1-المجالس-المجلس",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-11-9-03444-1-المجالس-المجلس-DOC",
+        "variantId": "v-AUDIT-P543-58-11-9-03444-1-المجالس-المجلس",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03444",
+        "sourceText": "﴿الْمَجَـٰلِسِ﴾: بألف مدية جمعاً ﴿الْمَجَالِسِ﴾ لعاصم؛ بحذف الألف مفرداً ﴿الْمَجْلِسِ﴾ للباقين.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-11-9-03444-1-المجالس-المجلس-QP",
+        "variantId": "v-AUDIT-P543-58-11-9-03444-1-المجالس-المجلس",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/11",
+        "sourceText": "(الْمَجْلِسِ) بإسكان الجيم وحذف الألف: سائر القراء عدا شعبة وحفص عن عاصم.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بإسكان الجيم وحذف الألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "(الْمَجْلِسِ) بإسكان الجيم وحذف الألف: سائر القراء عدا شعبة وحفص عن عاصم.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-11-15-03443-2-قيل-قيل",
+    "surah": 58,
+    "ayah": 11,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P543-58-11-15-03443-2-قيل-قيل",
+    "locusType": "performance_variant",
+    "performanceNote": "إشمام كسرة القاف ضمّاً",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-11-15-03443-2-قيل-قيل-DOC",
+        "variantId": "v-AUDIT-P543-58-11-15-03443-2-قيل-قيل",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03443",
+        "sourceText": "﴿قِيلَ﴾ (معاً): كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-11-15-03443-2-قيل-قيل-QP",
+        "variantId": "v-AUDIT-P543-58-11-15-03443-2-قيل-قيل",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/11",
+        "sourceText": "إشمام كسرة القاف ضمّاً: هشام، أبو الحارث والدوري عن الكسائي، رويس.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "إشمام كسرة القاف ضمّاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إشمام كسرة القاف ضمّاً: هشام، أبو الحارث والدوري عن الكسائي، رويس.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا",
+    "surah": 58,
+    "ayah": 11,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "ٱنشُزُوا۟ فَٱنشُزُوا۟",
+    "variantText": "انْشِزُوا فَانْشِزُوا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا-DOC",
+        "variantId": "v-AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03445",
+        "sourceText": "﴿ٱنشُزُواْ فَٱنشُزُواْ﴾: بضم الشينين ﴿انْشُزُوا فَانْشُزُوا﴾ لنافع، وابن عامر، وعاصم (بخلف عن شعبة)، وأبي جعفر؛ بكسر الشينين ﴿انْشِزُوا فَانْشِزُوا﴾ للباقين.",
+        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
+      },
+      {
+        "id": "s-AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا-QP",
+        "variantId": "v-AUDIT-P543-58-11-16-03445-1-انشزوا فانشزوا-انشزوا فانشزوا",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/11",
+        "sourceText": "كسر الشين في الكلمتين: سائر القراء عدا من ضمها؛ وشعبة له الوجهان.",
+        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      }
+    ],
+    "description": "بكسر الشينين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "كسر الشين في الكلمتين: سائر القراء عدا من ضمها؛ وشعبة له الوجهان.",
+        "url": "https://quranpedia.net/qiraat/al-mujadila/11"
+      }
+    ]
+  }
+]

@@ -1,1 +1,203 @@
-[]
+[
+  {
+    "id": "v-AUDIT-DOCX-P540-R03419-b249c9a3af",
+    "surah": 57,
+    "ayah": 20,
+    "startToken": 33,
+    "endToken": 33,
+    "operation": "REPLACE",
+    "hafsText": "وَرِضْوَٰنٌۭ ۚ",
+    "variantText": "وَرُضْوَانٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-DOCX-P540-R03419-b249c9a3af",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03419-b249c9a3af",
+        "variantId": "v-AUDIT-DOCX-P540-R03419-b249c9a3af",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P540-R03419",
+        "sourceText": "﴿وَرِضْوَٰنٌ﴾: بكسر الراء للجمهور؛ بضم الراء ﴿وَرُضْوَانٌ﴾ لشعبة.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03419-b249c9a3af-EXT",
+        "variantId": "v-AUDIT-DOCX-P540-R03419-b249c9a3af",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/20",
+        "sourceText": "ضم الراء: شعبة عن عاصم.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بكسر الراء للجمهور؛ بضم الراء ﴿وَرُضْوَانٌ﴾ لشعبة.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الراء: شعبة عن عاصم.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/20"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P540-R03420-2e3f19606e",
+    "surah": 57,
+    "ayah": 23,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "ءَاتَىٰكُمْ ۗ",
+    "variantText": "ءَاتَاكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P540-R03420-2e3f19606e",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03420-2e3f19606e",
+        "variantId": "v-AUDIT-DOCX-P540-R03420-2e3f19606e",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P540-R03420",
+        "sourceText": "﴿ءَاتَىٰكُمْ﴾: بألف مدية بعد الهمزة للجمهور؛ بقصر الهمزة بلا ألف ﴿أَتَاكُمْ﴾ لأبي عمرو.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03420-2e3f19606e-EXT",
+        "variantId": "v-AUDIT-DOCX-P540-R03420-2e3f19606e",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/23",
+        "sourceText": "قصر الهمزة بلا ألف: أبو عمرو.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بألف مدية بعد الهمزة للجمهور؛ بقصر الهمزة بلا ألف ﴿أَتَاكُمْ﴾ لأبي عمرو.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "قصر الهمزة بلا ألف: أبو عمرو.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/23"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P540-R03421-3cebd35148",
+    "surah": 57,
+    "ayah": 24,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْبُخْلِ ۗ",
+    "variantText": "بِالْبَخَلِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P540-R03421-3cebd35148",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03421-3cebd35148",
+        "variantId": "v-AUDIT-DOCX-P540-R03421-3cebd35148",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P540-R03421",
+        "sourceText": "﴿بِالْبُخْلِ﴾: بضم الباء وإسكان الخاء ﴿بِالْبُخْلِ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ بفتح الباء والخاء ﴿بِالْبَخَلِ﴾ لحمزة والكسائي وخلف.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي. لفظ «خلف» أُسند إلى خلف عن حمزة وفق قاعدة المشروع."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03421-3cebd35148-EXT",
+        "variantId": "v-AUDIT-DOCX-P540-R03421-3cebd35148",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/24",
+        "sourceText": "فتح الباء والخاء: حمزة والكسائي وخلف العاشر كما يذكر جهاز الآية.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بضم الباء وإسكان الخاء ﴿بِالْبُخْلِ﴾ لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ بفتح الباء والخاء ﴿بِالْبَخَلِ﴾ لحمزة والكسائي وخلف.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "فتح الباء والخاء: حمزة والكسائي وخلف العاشر كما يذكر جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-DOCX-P540-R03422-dec0e7f68b",
+    "surah": 57,
+    "ayah": 24,
+    "startToken": 8,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "فَإِنَّ ٱللَّهَ هُوَ ٱلْغَنِىُّ",
+    "variantText": "فَإِنَّ اللَّهَ الْغَنِيُّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-DOCX-P540-R03422-dec0e7f68b",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03422-dec0e7f68b",
+        "variantId": "v-AUDIT-DOCX-P540-R03422-dec0e7f68b",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P540-R03422",
+        "sourceText": "﴿فَإِنَّ اللَّهَ هُوَ الْغَنِيُّ﴾: بإثبات لفظ «هُوَ» لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بحذف «هُوَ» ﴿فَإِنَّ اللَّهَ الْغَنِيُّ﴾ لنافع، وابن عامر، وأبي جعفر.",
+        "verificationNotes": "نُقل الوجه والرواة من صف المصدر، وثُبّت رمز الكلمة على توكن الصفحة؛ قوبل بالإسناد العشري في المرجع الخارجي."
+      },
+      {
+        "id": "s-v-AUDIT-DOCX-P540-R03422-dec0e7f68b-EXT",
+        "variantId": "v-AUDIT-DOCX-P540-R03422-dec0e7f68b",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hadid/24",
+        "sourceText": "حذف لفظ هو: نافع وابن عامر وأبو جعفر.",
+        "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      }
+    ],
+    "description": "بإثبات لفظ «هُوَ» لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بحذف «هُوَ» ﴿فَإِنَّ اللَّهَ الْغَنِيُّ﴾ لنافع، وابن عامر، وأبي جعفر.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "حذف لفظ هو: نافع وابن عامر وأبو جعفر.",
+        "url": "https://quranpedia.net/qiraat/al-hadid/24"
+      }
+    ]
+  }
+]

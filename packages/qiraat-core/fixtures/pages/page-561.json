@@ -1,1 +1,257 @@
-[]
+[
+  {
+    "id": "v-D561-نصوحا-w2",
+    "surah": 66,
+    "ayah": 8,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نَّصُوحًا",
+    "variantText": "نُصُوحًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D561-نصوحا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D561-نصوحا-w2",
+        "variantId": "v-D561-نصوحا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03618",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نَّصُوحًا﴾: بفتح النون ﴿نَصُوحًا﴾ للجمهور؛ بضم النون ﴿نُصُوحًا﴾ لشعبة."
+      }
+    ],
+    "description": "بضم النون",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D561-النبي-w2",
+    "surah": 66,
+    "ayah": 8,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِىَّ",
+    "variantText": "النَّبِيءَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D561-النبي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D561-النبي-w2",
+        "variantId": "v-D561-النبي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03619",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿النَّبِيَّ﴾، ﴿النَّبِيُّ﴾: بالهمز لنافع ﴿النَّبِيءَ... النَّبِيءُ﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D561-النبي-w2",
+    "surah": 66,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِىُّ",
+    "variantText": "النَّبِيءَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D561-النبي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D561-النبي-w2",
+        "variantId": "v-D561-النبي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03619",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿النَّبِيَّ﴾، ﴿النَّبِيُّ﴾: بالهمز لنافع ﴿النَّبِيءَ... النَّبِيءُ﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D561-ايديهم-w2",
+    "surah": 66,
+    "ayah": 8,
+    "startToken": 32,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "أَيْدِيهِمْ",
+    "variantText": "أَيْدِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D561-ايديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D561-ايديهم-w2",
+        "variantId": "v-D561-ايديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03620",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَيْدِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿أَيْدِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D561-عليهم-w2",
+    "surah": 66,
+    "ayah": 9,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ ۚ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D561-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D561-عليهم-w2",
+        "variantId": "v-D561-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03621",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D561-وكتبهي-w2",
+    "surah": 66,
+    "ayah": 12,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "وَكُتُبِهِۦ",
+    "variantText": "وَكِتَابِهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D561-وكتبهي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D561-وكتبهي-w2",
+        "variantId": "v-D561-وكتبهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03623",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَكُتُبِهِۦ﴾: جمعاً وضم التاءين ﴿وَكُتُبِهِ﴾ لأبي عمرو، وحفص، ويعقوب؛ بالمفرد وفتح الكاف وإسكان التاء وألف بعدها ﴿وَكِتَابِهِ﴾ للباقين."
+      }
+    ],
+    "description": "بالمفرد وفتح الكاف وإسكان التاء وألف بعدها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D561-وقيل-performance1",
+    "surah": 66,
+    "ayah": 10,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D561-وقيل",
+    "locusType": "performance_variant",
+    "performanceNote": "بالإشمام",
+    "sources": [
+      {
+        "id": "s-D561-وقيل-performance1",
+        "variantId": "v-D561-وقيل-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03622",
+        "verificationNotes": "الإشمام لهشام والكسائي ورويس؛ رويس هو Q09-R02. المرجع المستقل: https://quranpedia.net/qiraat/at-tahrim/10.",
+        "sourceText": "﴿وَقِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس."
+      }
+    ],
+    "description": "بالإشمام",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

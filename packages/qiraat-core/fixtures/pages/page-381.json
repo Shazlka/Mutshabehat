@@ -1,1 +1,197 @@
-[]
+[
+  {
+    "id": "v-D381-لنبيتنهو-w2",
+    "surah": 27,
+    "ayah": 49,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَنُبَيِّتَنَّهُۥ",
+    "variantText": "لَتُبَيِّتُنَّهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D381-لنبيتنهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D381-لنبيتنهو-w2",
+        "variantId": "v-D381-لنبيتنهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P381-R01913",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَنُبَيِّتَنَّهُۥ﴾، ﴿لَنَقُولَنَّ﴾: بتاء الخطاب وضم الياء والواو ﴿لَتُبَيِّتُنَّهُ... لَتَقُولُنَّ﴾ لحمزة والكسائي وخلف؛ وبنون العظمة وفتح الياء والواو للباقين."
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D381-مهلك-w2",
+    "surah": 27,
+    "ayah": 49,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مَهْلِكَ",
+    "variantText": "مَهْلَكِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D381-مهلك",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D381-مهلك-w2",
+        "variantId": "v-D381-مهلك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P381-R01915",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الميم واللام ﴿مَهْلَكِ﴾: شعبة."
+      }
+    ],
+    "description": "بفتح الميم واللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D381-مهلك-w3",
+    "surah": 27,
+    "ayah": 49,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مَهْلِكَ",
+    "variantText": "مُهْلَكِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D381-مهلك",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D381-مهلك-w3",
+        "variantId": "v-D381-مهلك-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P381-R01916",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الميم وفتح اللام ﴿مُهْلَكِ﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، الكسائي، أبو جعفر، يعقوب، خلف."
+      }
+    ],
+    "description": "بضم الميم وفتح اللام",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D381-انا_دمرناهم-w2",
+    "surah": 27,
+    "ayah": 51,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "أَنَّا دَمَّرْنَـٰهُمْ",
+    "variantText": "إِنَّا دَمَّرْنَـٰهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D381-انا_دمرناهم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D381-انا_دمرناهم-w2",
+        "variantId": "v-D381-انا_دمرناهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P381-R01917",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَنَّا دَمَّرْنَـٰهُمْ﴾: بفتح الهمزة المشددة ﴿أَنَّا﴾ لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبكسر الهمزة المشددة ﴿إِنَّا﴾ للباقين."
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D381-لنقولن-w2",
+    "surah": 27,
+    "ayah": 49,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "لَنَقُولَنَّ",
+    "variantText": "لَتَقُولُنَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D381-لنقولن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D381-لنقولن-w2",
+        "variantId": "v-D381-لنقولن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P381-R01913",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَنُبَيِّتَنَّهُۥ﴾، ﴿لَنَقُولَنَّ﴾: بتاء الخطاب وضم الياء والواو ﴿لَتُبَيِّتُنَّهُ... لَتَقُولُنَّ﴾ لحمزة والكسائي وخلف؛ وبنون العظمة وفتح الياء والواو للباقين."
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P530-alay-1",
+    "surah": 54,
+    "ayah": 31,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P530-alay",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P530-alay-1",
+        "variantId": "v-AUDIT-P530-alay-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P530-R03334",
+        "sourceText": "﴿عَلَيْهِمْ﴾ (معاً): بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P530-quran-2",
+    "surah": 54,
+    "ayah": 32,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "ٱلْقُرَانَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P530-quran",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P530-quran-2",
+        "variantId": "v-AUDIT-P530-quran-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P530-R03335",
+        "sourceText": "﴿الْقُرْءَانَ﴾ (معاً): بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,337 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P532-55-22-1-2f7aeefd",
+    "surah": 55,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "يَخْرُجُ",
+    "variantText": "يُخْرَجُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P532-55-22-1-2f7aeefd",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P532-R03347",
+        "variantId": "v-AUDIT-P532-55-22-1-2f7aeefd",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03347",
+        "sourceText": "﴿يَخْرُجُ﴾: بفتح الياء وضم الراء ﴿يَخْرُجُ﴾ لابن كثير، وابن عامر، وعاصم، وحمزة، والكسائي، وخلف؛ بضم الياء وفتح الراء مبنياً للمجهول ﴿يُخْرَجُ﴾ للباقين.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P532-55-22-1-2f7aeefd-QP",
+        "variantId": "v-AUDIT-P532-55-22-1-2f7aeefd",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/22",
+        "sourceText": "الموضع 22 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿يَخْرُجُ﴾: بفتح الياء وضم الراء ﴿يَخْرُجُ﴾ لابن كثير، وابن عامر، وعاصم، وحمزة، والكسائي، وخلف؛ بضم الياء وفتح الراء مبنياً للمجهول ﴿يُخْرَجُ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 22 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/22"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P532-55-24-3-96d76088",
+    "surah": 55,
+    "ayah": 24,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُنشَـَٔاتُ",
+    "variantText": "الْمُنْشِئَاتُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P532-55-24-3-96d76088",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P532-R03348",
+        "variantId": "v-AUDIT-P532-55-24-3-96d76088",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03348",
+        "sourceText": "﴿الْمُنشَـَٔاتُ﴾: بفتح الشين ﴿الْمُنْشَآتُ﴾ للجمهور؛ بكسر الشين ﴿الْمُنْشِئَاتُ﴾ لحمزة وشعبة (في وجهه الثاني).",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P532-55-24-3-96d76088-QP",
+        "variantId": "v-AUDIT-P532-55-24-3-96d76088",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/24",
+        "sourceText": "الموضع 24 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿الْمُنشَـَٔاتُ﴾: بفتح الشين ﴿الْمُنْشَآتُ﴾ للجمهور؛ بكسر الشين ﴿الْمُنْشِئَاتُ﴾ لحمزة وشعبة (في وجهه الثاني).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 24 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P532-55-31-1-61807e7c",
+    "surah": 55,
+    "ayah": 31,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "سَنَفْرُغُ",
+    "variantText": "سَيَفْرُغُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P532-55-31-1-61807e7c",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P532-R03349",
+        "variantId": "v-AUDIT-P532-55-31-1-61807e7c",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03349",
+        "sourceText": "﴿سَنَفْرُغُ﴾: بنون العظمة المفتوحة للجمهور؛ بياء الغيب المفتوحة ﴿سَيَفْرُغُ﴾ لحمزة، والكسائي، وخلف.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P532-55-31-1-61807e7c-QP",
+        "variantId": "v-AUDIT-P532-55-31-1-61807e7c",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/31",
+        "sourceText": "الموضع 31 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿سَنَفْرُغُ﴾: بنون العظمة المفتوحة للجمهور؛ بياء الغيب المفتوحة ﴿سَيَفْرُغُ﴾ لحمزة، والكسائي، وخلف.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 31 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/31"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P532-55-31-3-13ee6a45",
+    "surah": 55,
+    "ayah": 31,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَيُّهَ ٱلثَّقَلَانِ",
+    "variantText": "أَيُّهُ الثَّقَلَانِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "AUDIT-P532-55-31-3-13ee6a45",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P532-R03350",
+        "variantId": "v-AUDIT-P532-55-31-3-13ee6a45",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03350",
+        "sourceText": "﴿أَيُّهَ الثَّقَلَانِ﴾: بفتح الهاء للجمهور؛ بضم الهاء ﴿أَيُّهُ الثَّقَلَانِ﴾ لابن عامر (ويقف عليها بالألف أبو عمرو والكسائي ويعقوب).",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P532-55-31-3-13ee6a45-QP",
+        "variantId": "v-AUDIT-P532-55-31-3-13ee6a45",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/31",
+        "sourceText": "الموضع 31 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿أَيُّهَ الثَّقَلَانِ﴾: بفتح الهاء للجمهور؛ بضم الهاء ﴿أَيُّهُ الثَّقَلَانِ﴾ لابن عامر (ويقف عليها بالألف أبو عمرو والكسائي ويعقوب).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 31 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/31"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P532-55-35-3-ea997a5a",
+    "surah": 55,
+    "ayah": 35,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "شُوَاظٌۭ",
+    "variantText": "شِوَاظٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P532-55-35-3-ea997a5a",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P532-R03353",
+        "variantId": "v-AUDIT-P532-55-35-3-ea997a5a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03353",
+        "sourceText": "بكسر الشين ﴿شِوَاظٌ﴾ وجر السين ﴿وَنُحَاسٍ﴾: ابن كثير.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P532-55-35-3-ea997a5a-QP",
+        "variantId": "v-AUDIT-P532-55-35-3-ea997a5a",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/35",
+        "sourceText": "الموضع 35 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      },
+      {
+        "id": "s-DOCX-P532-R03352-v-AUDIT-P532-55-35-3-ea997a5a",
+        "variantId": "v-AUDIT-P532-55-35-3-ea997a5a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03352",
+        "sourceText": "بضم شين «شُوَاظٌ» ورفع سين «وَنُحَاسٌ»: نافع، ابن عامر، عاصم، حمزة، الكسائي، أبو جعفر، رويس، خلف.",
+        "verificationNotes": "نص المصدر المساند يحدد بقية القراءة في الموضع نفسه، لاستكمال تقسيم الرواة مع الوجه المخالف."
+      },
+      {
+        "id": "s-DOCX-P532-R03354-v-AUDIT-P532-55-35-3-ea997a5a",
+        "variantId": "v-AUDIT-P532-55-35-3-ea997a5a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03354",
+        "sourceText": "بضم الشين وجر السين ﴿وَنُحَاسٍ﴾: أبو عمرو، وروح.",
+        "verificationNotes": "نص المصدر المساند يحدد بقية القراءة في الموضع نفسه، لاستكمال تقسيم الرواة مع الوجه المخالف."
+      }
+    ],
+    "description": "بكسر الشين ﴿شِوَاظٌ﴾ وجر السين ﴿وَنُحَاسٍ﴾: ابن كثير.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 35 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/35"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P532-55-35-6-NAHAS-KASR",
+    "surah": 55,
+    "ayah": 35,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَنُحَاسٌۭ",
+    "variantText": "وَنُحَاسٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P532-55-35-6-NAHAS-KASR",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P532-R03353",
+        "variantId": "v-AUDIT-P532-55-35-6-NAHAS-KASR",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03353",
+        "sourceText": "بكسر الشين ﴿شِوَاظٌ﴾ وجر السين ﴿وَنُحَاسٍ﴾: ابن كثير.",
+        "verificationNotes": "حفظت الوجه المسمى صراحةً في المصدر، مع الرواة الذين يؤيده عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-DOCX-P532-R03354",
+        "variantId": "v-AUDIT-P532-55-35-6-NAHAS-KASR",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03354",
+        "sourceText": "بضم الشين وجر السين ﴿وَنُحَاسٍ﴾: أبو عمرو، وروح.",
+        "verificationNotes": "حفظت الوجه المسمى صراحةً في المصدر، مع الرواة الذين يؤيده عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-QP-P532-55-35-NAHAS",
+        "variantId": "v-AUDIT-P532-55-35-6-NAHAS-KASR",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/35",
+        "sourceText": "كسر سين نُحَاسٍ: قنبل والبزي عن ابن كثير، وروح عن يعقوب.",
+        "verificationNotes": "عرض مستقل يسمي قنبل والبزي وروح في وجه الكسر."
+      }
+    ],
+    "description": "بكسر الشين ﴿شِوَاظٌ﴾ وجر السين ﴿وَنُحَاسٍ﴾: ابن كثير. / بضم الشين وجر السين ﴿وَنُحَاسٍ﴾: أبو عمرو، وروح.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "كسر سين نُحَاسٍ: قنبل والبزي عن ابن كثير، وروح عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/35"
+      }
+    ]
+  }
+]

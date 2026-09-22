@@ -35,10 +35,299 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-DOCX-P535-R03375",
+        "variantId": "v-L535-s56a47b1-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03375",
+        "sourceText": "﴿مِتْنَا﴾: بكسر الميم لنافع، وحفص، وحمزة، والكسائي، وخلف؛ بضم الميم للباقين.",
+        "verificationNotes": "السطر الأصلي موصول بالوجه الموجود، وقوبل إسناد الرواة مع الجهاز المستقل."
       }
     ],
     "description": "بضم الميم",
     "wajhIndex": 2,
-    "evidence": []
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Ḍammah on mīm: both narrators of Ibn Kathir, Abu Amr, Ibn Amir, Shuba, Abu Jaafar and Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/47"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P535-R03368-4d53fa4e",
+    "surah": 56,
+    "ayah": 17,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P535-R03368-4d53fa4e",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P535-R03368-4d53fa4e",
+        "variantId": "v-AUDIT-P535-R03368-4d53fa4e",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03368",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Dammah on hāʾ: Khalaf and Khallad from Hamza; Rawh and Ruways from Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/17"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P535-R03370-56313781",
+    "surah": 56,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَحُورٌ عِينٌۭ",
+    "variantText": "وَحُورٍ عِينٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P535-R03370-56313781",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P535-R03370-56313781",
+        "variantId": "v-AUDIT-P535-R03370-56313781",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03370",
+        "sourceText": "﴿وَحُورٌ عِينٌ﴾: برفع الكلمتين وتنوينهما للجمهور؛ بخفض الكلمتين وتنوينهما ﴿وَحُورٍ عِينٍ﴾ لحمزة والكسائي وأبي جعفر.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿وَحُورٌ عِينٌ﴾: برفع الكلمتين وتنوينهما للجمهور؛ بخفض الكلمتين وتنوينهما ﴿وَحُورٍ عِينٍ﴾ لحمزة والكسائي وأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Kasra on both words is assigned to Hamza, al-Kisai, and Abu Jaafar.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/22"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P535-R03371-071b5238",
+    "surah": 56,
+    "ayah": 37,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "عُرُبًا",
+    "variantText": "عُرْبًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P535-R03371-071b5238",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P535-R03371-071b5238",
+        "variantId": "v-AUDIT-P535-R03371-071b5238",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03371",
+        "sourceText": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
+        "verificationNotes": "نص المصدر يسمي شعبة وحمزة وخلف، وأُسند «خلف» فيه إلى خلف عن حمزة (Q06) وفق توجيه المشروع؛ أُبقي الوجه على شعبة وخلف عن حمزة فقط، ولم تُنسب تسمية «خلف» المجردة إلى خلف العاشر."
+      },
+      {
+        "id": "s-AUDIT-P535-R03371-071b5238-QP",
+        "variantId": "v-AUDIT-P535-R03371-071b5238",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:37",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/37",
+        "sourceText": "سكون الراء الأولى دون سكت: إدريس وإسحاق عن خلف العاشر، خلاد عن حمزة، شعبة عن عاصم.",
+        "verificationNotes": "الجهاز المستقل يفرّق بين السكت وعدمه ويثبت مجموعة القارئين."
+      }
+    ],
+    "description": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Sukūn on the first rāʾ without sakt: Shuba, Khallad, Idris and Ishaq. Quranpedia independently distinguishes Q10 (Idris/Ishaq) from bare خلف; under the project attribution policy, the bare source name is Q06, so Q10 is withheld here.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/37"
+      }
+    ],
+    "performanceNote": "إسكان الراء مع تحقيق الهمزة دون سكت"
+  },
+  {
+    "id": "v-AUDIT-P535-R03374-d94b4de2",
+    "surah": 56,
+    "ayah": 47,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَءِنَّا",
+    "variantText": "إِنَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P535-R03374-d94b4de2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P535-R03374-d94b4de2",
+        "variantId": "v-AUDIT-P535-R03374-d94b4de2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03374",
+        "sourceText": "استفهام في الأول وإخبار في الثاني ﴿أَئِذَا... إِنَّا﴾: نافع، الكسائي، أبو جعفر، يعقوب.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "استفهام في الأول وإخبار في الثاني ﴿أَئِذَا... إِنَّا﴾: نافع، الكسائي، أبو جعفر، يعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Single hamza in the second position is read by Nafi, al-Kisai, Abu Jaafar, and Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/47"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P535-R03376-8434ceb5",
+    "surah": 56,
+    "ayah": 48,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَوَءَابَآؤُنَا",
+    "variantText": "أَوْ ءَابَآؤُنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P535-R03376-8434ceb5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P535-R03376-8434ceb5",
+        "variantId": "v-AUDIT-P535-R03376-8434ceb5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03376",
+        "sourceText": "﴿أَوَءَابَآؤُنَا﴾: بواو العطف المفتوحة ﴿أَوَآبَاؤُنَا﴾ لقالون، وابن عامر، وأبي جعفر؛ بإسكان الواو ﴿أَوْ آبَاؤُنَا﴾ للباقين.",
+        "verificationNotes": "نُقل نص سجل المصدر كما هو، وثبت الوجه ومجموعة الرواة من الجهاز المستقل المرتبط."
+      }
+    ],
+    "description": "﴿أَوَءَابَآؤُنَا﴾: بواو العطف المفتوحة ﴿أَوَآبَاؤُنَا﴾ لقالون، وابن عامر، وأبي جعفر؛ بإسكان الواو ﴿أَوْ آبَاؤُنَا﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Sukun on the conjunction waw: Hisham, Ibn Dhakwan, Qalun, Ibn Jammaz and Ibn Wardan.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/48"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
+    "surah": 56,
+    "ayah": 37,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "عُرُبًا",
+    "variantText": "عُرْبًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "AUDIT-P535-R03371-PERF-SAKT-Q06R01",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الراء مع السكت على الساكن قبل الهمزة",
+    "sources": [
+      {
+        "id": "s-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
+        "variantId": "v-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03371",
+        "sourceText": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
+        "verificationNotes": "فصل وجه السكت لخلَف عن حمزة عن وجه إسكان الراء بلا سكت، كما يثبت جهاز القراءات المستقل."
+      },
+      {
+        "id": "s-AUDIT-P535-R03371-PERF-SAKT-Q06R01-QP",
+        "variantId": "v-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:37",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/37",
+        "sourceText": "خلف عن حمزة: إسكان الراء مع السكت على الساكن قبل الهمزة.",
+        "verificationNotes": "الجهاز يصرح بهذا الوجه استقلالاً عن خلف عن حمزة."
+      }
+    ],
+    "description": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — الواقعة 56:37",
+        "text": "خلف عن حمزة: إسكان الراء مع السكت على الساكن قبل الهمزة.",
+        "url": "https://quranpedia.net/qiraat/al-waqia/37"
+      }
+    ]
   }
 ]

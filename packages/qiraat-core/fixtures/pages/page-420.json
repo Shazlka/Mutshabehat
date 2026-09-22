@@ -1,1 +1,85 @@
-[]
+[
+  {
+    "id": "v-D420-يسلون-w2",
+    "surah": 33,
+    "ayah": 20,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "يَسْـَٔلُونَ",
+    "variantText": "يَسَّاءَلُونَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D420-يسلون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D420-يسلون-w2",
+        "variantId": "v-D420-يسلون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P420-R02259",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَسْـَٔلُونَ﴾: بنقل الهمزة وحذفها مع فتح السين للجمهور (مع إبدالها لورش والسوسي)؛ وبألف بعد السين مشددة ﴿يَسَّاءَلُونَ﴾ لرويس."
+      }
+    ],
+    "description": "بألف بعد السين مشددة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D420-اسوه-w2",
+    "surah": 33,
+    "ayah": 21,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "أُسْوَةٌ",
+    "variantText": "إِسْوَةٌ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D420-اسوه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D420-اسوه-w2",
+        "variantId": "v-D420-اسوه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P420-R02260",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أُسْوَةٌ﴾: بضم الهمزة ﴿أُسْوَةٌ﴾ لعاصم؛ وبكسر الهمزة ﴿إِسْوَةٌ﴾ للباقين."
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,107 @@
-[]
+[
+  {
+    "id": "v-D285-خطا-w2",
+    "surah": 17,
+    "ayah": 31,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "خِطْـًۭٔا",
+    "variantText": "خِطَاءً",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D285-خطا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D285-خطا-w2",
+        "variantId": "v-D285-خطا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P285-R00846",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بكسر الخاء وفتح الطاء ممدوداً بعده همزة منونة ﴿خِطَاءً﴾ (مد متصل): ابن كثير."
+      }
+    ],
+    "description": "بفتح الطاء ومد الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D285-خطا-w3",
+    "surah": 17,
+    "ayah": 31,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "خِطْـًۭٔا",
+    "variantText": "خَطَأً",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D285-خطا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D285-خطا-w3",
+        "variantId": "v-D285-خطا-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P285-R00847",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الخاء والطاء مقصوراً مهموزاً منوناً ﴿خَطَأً﴾: ابن ذكوان، أبو جعفر."
+      }
+    ],
+    "description": "بفتح الخاء والطاء",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D285-فلا_يسرف-w2",
+    "surah": 17,
+    "ayah": 33,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا يُسْرِف",
+    "variantText": "فَلَا تُسْرِف",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D285-فلا_يسرف",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D285-فلا_يسرف-w2",
+        "variantId": "v-D285-فلا_يسرف-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P285-R00848",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَلَا يُسْرِف﴾: بياء الغيب للجمهور؛ وبتاء الخطاب ﴿فَلَا تُسْرِف﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

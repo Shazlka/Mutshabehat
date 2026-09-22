@@ -1,1 +1,313 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P513-48-17-17-64f53bf0",
+    "surah": 48,
+    "ayah": 17,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يُدْخِلْهُ",
+    "variantText": "يُدْخِلْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P513-48-17-17-64f53bf0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P513-R03169-64f53bf0",
+        "variantId": "v-AUDIT-P513-48-17-17-64f53bf0",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P513-R03169",
+        "sourceText": "﴿يُدْخِلْهُ﴾، ﴿يُعَذِّبْهُ﴾: بياء الغيب فيهما لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نُدْخِلْهُ... نُعَذِّبْهُ﴾ لنافع، وابن عامر، وأبي جعفر.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P513-48-17-25-78ced917",
+    "surah": 48,
+    "ayah": 17,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "يُعَذِّبْهُ",
+    "variantText": "يُعَذِّبْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P513-48-17-25-78ced917",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P513-R03169-78ced917",
+        "variantId": "v-AUDIT-P513-48-17-25-78ced917",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P513-R03169",
+        "sourceText": "﴿يُدْخِلْهُ﴾، ﴿يُعَذِّبْهُ﴾: بياء الغيب فيهما لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نُدْخِلْهُ... نُعَذِّبْهُ﴾ لنافع، وابن عامر، وأبي جعفر.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P513-48-17-17-88f9a700",
+    "surah": 48,
+    "ayah": 17,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يُدْخِلْهُ",
+    "variantText": "نُدْخِلْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P513-48-17-17-88f9a700",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P513-R03169-88f9a700",
+        "variantId": "v-AUDIT-P513-48-17-17-88f9a700",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P513-R03169",
+        "sourceText": "﴿يُدْخِلْهُ﴾، ﴿يُعَذِّبْهُ﴾: بياء الغيب فيهما لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نُدْخِلْهُ... نُعَذِّبْهُ﴾ لنافع، وابن عامر، وأبي جعفر.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بنون العظمة",
+        "url": "https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P513-48-17-25-817b29cc",
+    "surah": 48,
+    "ayah": 17,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "يُعَذِّبْهُ",
+    "variantText": "نُعَذِّبْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P513-48-17-25-817b29cc",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P513-R03169-817b29cc",
+        "variantId": "v-AUDIT-P513-48-17-25-817b29cc",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P513-R03169",
+        "sourceText": "﴿يُدْخِلْهُ﴾، ﴿يُعَذِّبْهُ﴾: بياء الغيب فيهما لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نُدْخِلْهُ... نُعَذِّبْهُ﴾ لنافع، وابن عامر، وأبي جعفر.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بنون العظمة",
+        "url": "https://quranpedia.net/qiraat/al-fath/17"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P513-48-18-16-ef98c170",
+    "surah": 48,
+    "ayah": 18,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P513-48-18-16-ef98c170",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P513-R03170-ef98c170",
+        "variantId": "v-AUDIT-P513-48-18-16-ef98c170",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P513-R03170",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/18"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الهاء",
+        "url": "https://quranpedia.net/qiraat/al-fath/18"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P513-48-20-17-8ccd192e",
+    "surah": 48,
+    "ayah": 20,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطًۭا",
+    "variantText": "سِرَٰطًۭا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "AUDIT-P513-48-20-17-8ccd192e",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P513-R03171-8ccd192e",
+        "variantId": "v-AUDIT-P513-48-20-17-8ccd192e",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P513-R03171",
+        "sourceText": "﴿صِرَٰطٗا﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/20"
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بالسين",
+        "url": "https://quranpedia.net/qiraat/al-fath/20"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P513-48-20-17-65ff11e7",
+    "surah": 48,
+    "ayah": 20,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطًۭا",
+    "variantText": "صِرَٰطًۭا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P513-48-20-17-65ff11e7",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P513-R03171-65ff11e7",
+        "variantId": "v-AUDIT-P513-48-20-17-65ff11e7",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P513-R03171",
+        "sourceText": "﴿صِرَٰطٗا﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/20"
+      }
+    ],
+    "description": "إشمام الصاد زياً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "إشمام الصاد زياً",
+        "url": "https://quranpedia.net/qiraat/al-fath/20"
+      }
+    ],
+    "performanceNote": "إشمام الصاد زياً"
+  }
+]

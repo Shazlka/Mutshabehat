@@ -68,7 +68,14 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03360",
+        "sourceText": "الممال والمقلل: ﴿خَافَ﴾: أمالها حمزة. ﴿وَجَنَى﴾ (وقفاً): حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p533-IMALAH_TAQLIL-وجني-1",
@@ -102,14 +109,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -136,16 +135,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -153,7 +142,14 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03360",
+        "sourceText": "الممال والمقلل: ﴿خَافَ﴾: أمالها حمزة. ﴿وَجَنَى﴾ (وقفاً): حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p533-TAGHYIR_HAMZ-متكين-2",
@@ -193,7 +189,14 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03361",
+        "sourceText": "تغيير الهمز: ﴿مُتَّكِـِٔينَ﴾: بحذف الهمزة لأبي جعفر.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p533-IKHFA-rule-55-46-1",

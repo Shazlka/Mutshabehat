@@ -1,1 +1,219 @@
-[]
+[
+  {
+    "id": "v-D456-عبادنا-w2",
+    "surah": 38,
+    "ayah": 45,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عِبَـٰدَنَآ",
+    "variantText": "عَبْدَنَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D456-عبادنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D456-عبادنا-w2",
+        "variantId": "v-D456-عبادنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة استخراج القراءات العشر، صفحة المصحف 456، الكلمات الفرشية",
+        "verificationNotes": "قوبل النص الخام من حزمة الاستخراج بالمرجع المستقل، وثبتت الكلمة الأساس حرفياً من رمز الصفحة.",
+        "sourceText": "﴿عِبَـٰدَنَآ﴾ (آية ٤٥): بالجمع للجمهور؛ وبالمفرد ﴿عَبْدَنَا﴾ لابن كثير."
+      },
+      {
+        "id": "s-AL-NASHR-P456-45",
+        "variantId": "v-D456-عبادنا-w2",
+        "sourceName": "النشر في القراءات العشر، سورة ص، الآية 45",
+        "sourceType": "printed-book",
+        "sourceReference": "https://islamweb.net/ar/library/content/70/267/",
+        "sourceText": "قرأ ابن كثير عَبْدَنَا بغير ألف على التوحيد، وقرأ الباقون بالألف على الجمع.",
+        "verificationNotes": "المرجع المستقل يؤكد صورة القراءة ومجموعة القراء."
+      }
+    ],
+    "description": "بالمفرد لابن كثير",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "النشر في القراءات العشر، سورة ص، الآية 45",
+        "text": "قرأ ابن كثير عَبْدَنَا بغير ألف على التوحيد، وقرأ الباقون بالألف على الجمع.",
+        "url": "https://islamweb.net/ar/library/content/70/267/"
+      }
+    ]
+  },
+  {
+    "id": "v-D456-وءاخر-w2",
+    "surah": 38,
+    "ayah": 58,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَءَاخَرُ",
+    "variantText": "وَأُخَرُ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D456-وءاخر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D456-وءاخر-w2",
+        "variantId": "v-D456-وءاخر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة استخراج القراءات العشر، صفحة المصحف 456، الكلمات الفرشية",
+        "verificationNotes": "قوبل النص الخام من حزمة الاستخراج بالمرجع المستقل، وثبتت الكلمة الأساس حرفياً من رمز الصفحة.",
+        "sourceText": "﴿وَءَاخَرُ﴾: جمعاً وألف مدية بعد الهمزة ﴿وَءَاخَرُ﴾ للجمهور؛ وبضم الهمزة وقصرها بلا ألف مفرداً ﴿وَأُخَرُ﴾ لأبي عمرو ويعقوب."
+      },
+      {
+        "id": "s-AL-NASHR-P456-58",
+        "variantId": "v-D456-وءاخر-w2",
+        "sourceName": "النشر في القراءات العشر، سورة ص، الآية 58",
+        "sourceType": "printed-book",
+        "sourceReference": "https://islamweb.net/ar/library/content/70/267/",
+        "sourceText": "قرأ البصريان بضم الهمزة من غير مد على الجمع، وقرأ الباقون بفتح الهمزة وألف بعدها على التوحيد.",
+        "verificationNotes": "المرجع المستقل يؤكد صورة القراءة ومجموعة القراء."
+      }
+    ],
+    "description": "بضم الهمزة وقصرها بلا ألف مفرداً لأبي عمرو ويعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "النشر في القراءات العشر، سورة ص، الآية 58",
+        "text": "قرأ البصريان بضم الهمزة من غير مد على الجمع، وقرأ الباقون بفتح الهمزة وألف بعدها على التوحيد.",
+        "url": "https://islamweb.net/ar/library/content/70/267/"
+      }
+    ]
+  },
+  {
+    "id": "v-D456-واليسع-w2",
+    "surah": 38,
+    "ayah": 48,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْيَسَعَ",
+    "variantText": "وَاللَّيْسَعَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D456-واليسع",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D456-واليسع-w2",
+        "variantId": "v-D456-واليسع-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P456-R02633",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَٱلْيَسَعَ﴾: بلام واحدة ساكنة وميم مفتوحة وميم مخففة للجمهور؛ بلامين وتشديد الياء ﴿وَاللَّيْسَعَ﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بلامين وتشديد الياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D456-توعدون-w2",
+    "surah": 38,
+    "ayah": 53,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "تُوعَدُونَ",
+    "variantText": "يُوعَدُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D456-توعدون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D456-توعدون-w2",
+        "variantId": "v-D456-توعدون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P456-R02634",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تُوعَدُونَ﴾: بتاء الخطاب لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ وبياء الغيب ﴿يُوعَدُونَ﴾ لابن كثير وأبي عمرو."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D456-وغساق-w2",
+    "surah": 38,
+    "ayah": 57,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَغَسَّاقٌۭ",
+    "variantText": "وَغَسَاقٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D456-وغساق",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D456-وغساق-w2",
+        "variantId": "v-D456-وغساق-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P456-R02635",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَغَسَّاقٌ﴾: بتشديد السين ﴿وَغَسَّاقٌ﴾ لحفص، وحمزة، والكسائي، وخلف؛ وبتخفيف السين ﴿وَغَسَاقٌ﴾ للباقين."
+      }
+    ],
+    "description": "بتخفيف السين",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,1 +1,115 @@
-[]
+[
+  {
+    "id": "v-D482-ثمرات-w2",
+    "surah": 41,
+    "ayah": 47,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ثَمَرَٰتٍۢ",
+    "variantText": "ثَمَرَةٍ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D482-ثمرات",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D482-ثمرات-w2",
+        "variantId": "v-D482-ثمرات-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P482-R02865",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ثَمَرَٰتٍ﴾: بالجمع وألف مدية بعد الراء ﴿ثَمَرَاتٍ﴾ لنافع، وابن عامر، وحفص، وأبي جعفر؛ وبالمفرد ﴿ثَمَرَةٍ﴾ للباقين (ويقف عليها بالهاء ابن كثير وأبو عمرو والكسائي بخلف ويعقوب)."
+      }
+    ],
+    "description": "بالمفرد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D482-يناديهم-w2",
+    "surah": 41,
+    "ayah": 47,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "يُنَادِيهِمْ",
+    "variantText": "يُنَادِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D482-يناديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D482-يناديهم-w2",
+        "variantId": "v-D482-يناديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P482-R02866",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُنَادِيهِمْ﴾، ﴿سَنُرِيهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿يُنَادِيهُمُ... سَنُرِيهُمُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D482-ونا-w2",
+    "surah": 41,
+    "ayah": 51,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَنَـَٔا",
+    "variantText": "وَنَاءَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D482-ونا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D482-ونا-w2",
+        "variantId": "v-D482-ونا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P482-R02867",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَنَـَٔا﴾: بفتح النون بعدها همزة مفتوحة ﴿وَنَأَى﴾ للجمهور؛ بتقديم الألف على الهمزة مع المد المتصل ﴿وَنَاءَ﴾ لابن ذكوان وأبي جعفر."
+      }
+    ],
+    "description": "بتقديم الألف على الهمزة مع المد المتصل",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

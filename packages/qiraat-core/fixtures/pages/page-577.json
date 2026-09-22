@@ -1,1 +1,315 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P577-74-50-3-69fd75c2",
+    "surah": 74,
+    "ayah": 50,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مُّسْتَنفِرَةٌۭ",
+    "variantText": "مُسْتَنفَرَةٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P577-74-50-3-69fd75c2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P577-R03752-v-AUDIT-P577-74-50-3-69fd75c2",
+        "variantId": "v-AUDIT-P577-74-50-3-69fd75c2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P577-R03752",
+        "sourceText": "﴿مُّسْتَنفِرَةٌ﴾: بكسر الفاء ﴿مُسْتَنفِرَةٌ﴾ لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بفتح الفاء ﴿مُسْتَنفَرَةٌ﴾ للباقين.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P577-74-50-3-69fd75c2",
+        "variantId": "v-AUDIT-P577-74-50-3-69fd75c2",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-muddaththir/50",
+        "sourceText": "Quranpedia lists the kasr-fāʾ form and explicitly names Ishaq and Idris from Khalaf; Q10 corroborated.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿مُّسْتَنفِرَةٌ﴾: بكسر الفاء ﴿مُسْتَنفِرَةٌ﴾ لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بفتح الفاء ﴿مُسْتَنفَرَةٌ﴾ للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia lists the kasr-fāʾ form and explicitly names Ishaq and Idris from Khalaf; Q10 corroborated.",
+        "url": "https://quranpedia.net/qiraat/al-muddaththir/50"
+      }
+    ],
+    "notes": "أضيف Q10 إلى وجه الباقين: لفظ «خلف» المجرد في السطر المصدر هو خلف عن حمزة Q06، ولا يُنسب إلى خلف العاشر إلا بالذكر الصريح."
+  },
+  {
+    "id": "v-AUDIT-P577-74-56-2-2155f5c4",
+    "surah": 74,
+    "ayah": 56,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَذْكُرُونَ",
+    "variantText": "تَذْكُرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P577-74-56-2-2155f5c4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P577-R03753-v-AUDIT-P577-74-56-2-2155f5c4",
+        "variantId": "v-AUDIT-P577-74-56-2-2155f5c4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P577-R03753",
+        "sourceText": "﴿يَذْكُرُونَ﴾ (خاتمة المدثر): بياء الغيب للجمهور؛ بتاء الخطاب ﴿تَذْكُرُونَ﴾ لنافع.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P577-74-56-2-2155f5c4",
+        "variantId": "v-AUDIT-P577-74-56-2-2155f5c4",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-muddaththir/56",
+        "sourceText": "Quranpedia: tāʾ for Qalun and Warsh.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿يَذْكُرُونَ﴾ (خاتمة المدثر): بياء الغيب للجمهور؛ بتاء الخطاب ﴿تَذْكُرُونَ﴾ لنافع.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: tāʾ for Qalun and Warsh.",
+        "url": "https://quranpedia.net/qiraat/al-muddaththir/56"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P577-75-1-1-d52525c6",
+    "surah": 75,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَآ أُقْسِمُ",
+    "variantText": "لَأُقْسِمُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P577-75-1-1-d52525c6",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P577-R03754-v-AUDIT-P577-75-1-1-d52525c6",
+        "variantId": "v-AUDIT-P577-75-1-1-d52525c6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P577-R03754",
+        "sourceText": "﴿لَآ أُقْسِمُ﴾ (معاً بفاتحة القيامة): بالمد المنفصل للجمهور؛ بقصر اللام وحذف الألف ﴿لَأُقْسِمُ﴾ لابن كثير (وهو الوجه الثاني للبزي).",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P577-75-1-1-d52525c6",
+        "variantId": "v-AUDIT-P577-75-1-1-d52525c6",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/1",
+        "sourceText": "Quranpedia: حذف الألف for al-Bazzi and Qunbul; source notes the second Bazzi wajh.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿لَآ أُقْسِمُ﴾ (معاً بفاتحة القيامة): بالمد المنفصل للجمهور؛ بقصر اللام وحذف الألف ﴿لَأُقْسِمُ﴾ لابن كثير (وهو الوجه الثاني للبزي).",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: حذف الألف for al-Bazzi and Qunbul; source notes the second Bazzi wajh.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/1"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P577-75-3-1-01ac7556",
+    "surah": 75,
+    "ayah": 3,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُ",
+    "variantText": "أَيَحْسِبُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P577-75-3-1-01ac7556",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P577-R03755-v-AUDIT-P577-75-3-1-01ac7556",
+        "variantId": "v-AUDIT-P577-75-3-1-01ac7556",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P577-R03755",
+        "sourceText": "﴿أَيَحْسَبُ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P577-75-3-1-01ac7556",
+        "variantId": "v-AUDIT-P577-75-3-1-01ac7556",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/3",
+        "sourceText": "Quranpedia: fatḥ sīn for Ibn Amir, Asim, Hamza, Abu Jafar; kasr for the rest.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿أَيَحْسَبُ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: fatḥ sīn for Ibn Amir, Asim, Hamza, Abu Jafar; kasr for the rest.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/3"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P577-75-7-2-19d4ead2",
+    "surah": 75,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "بَرِقَ",
+    "variantText": "بَرَقَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P577-75-7-2-19d4ead2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P577-R03756-v-AUDIT-P577-75-7-2-19d4ead2",
+        "variantId": "v-AUDIT-P577-75-7-2-19d4ead2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P577-R03756",
+        "sourceText": "﴿بَرِقَ﴾: بكسر الراء ﴿بَرِقَ﴾ لنافع وأبي جعفر؛ بفتح الراء ﴿بَرَقَ﴾ للباقين.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P577-75-7-2-19d4ead2",
+        "variantId": "v-AUDIT-P577-75-7-2-19d4ead2",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/7",
+        "sourceText": "Quranpedia: fatḥ rāʾ for Nafi and Abu Jafar; kasr for the rest.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿بَرِقَ﴾: بكسر الراء ﴿بَرِقَ﴾ لنافع وأبي جعفر؛ بفتح الراء ﴿بَرَقَ﴾ للباقين.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: fatḥ rāʾ for Nafi and Abu Jafar; kasr for the rest.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/7"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P577-75-17-4-e87e28d7",
+    "surah": 75,
+    "ayah": 17,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَقُرْءَانَهُۥ",
+    "variantText": "وَقُرَانَهُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P577-75-17-4-e87e28d7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P577-R03757-v-AUDIT-P577-75-17-4-e87e28d7",
+        "variantId": "v-AUDIT-P577-75-17-4-e87e28d7",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P577-R03757",
+        "sourceText": "﴿وَقُرْءَانَهُۥ﴾، ﴿قُرْءَانَهُۥ﴾: بنقل الهمزة لابن كثير ﴿وَقُرَانَهُ... قُرَانَهُ﴾.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P577-75-17-4-e87e28d7",
+        "variantId": "v-AUDIT-P577-75-17-4-e87e28d7",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/17",
+        "sourceText": "Quranpedia: hamza deletion for al-Bazzi and Qunbul from Ibn Kathir.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      }
+    ],
+    "description": "﴿وَقُرْءَانَهُۥ﴾، ﴿قُرْءَانَهُۥ﴾: بنقل الهمزة لابن كثير ﴿وَقُرَانَهُ... قُرَانَهُ﴾.",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Quranpedia: hamza deletion for al-Bazzi and Qunbul from Ibn Kathir.",
+        "url": "https://quranpedia.net/qiraat/al-qiyama/17"
+      }
+    ]
+  }
+]

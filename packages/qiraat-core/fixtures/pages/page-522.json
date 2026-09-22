@@ -57,12 +57,368 @@
         "variantId": "v-L522-s51a44b0-w1",
         "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
         "sourceType": "other",
-        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
-        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03252",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة؛ المرجع المستقل: https://quranpedia.net/qiraat/adh-dhariyat/44",
+        "sourceText": "﴿الصَّعِقَةُ﴾: بألف مدية بعد الصاد وكسر العين ﴿الصَّاعِقَةُ﴾ لجميع القراء عدا الكسائي؛ بحذف الألف وسكون العين ﴿الصَّعْقَةُ﴾ للكسائي."
       }
     ],
     "description": "بحذف الألف وسكون العين",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-L522-s51a33b2-w1-R03246",
+    "surah": 51,
+    "ayah": 33,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L522-s51a33b2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a33b2-w1-R03246",
+        "variantId": "v-L522-s51a33b2-w1-R03246",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03246",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/33"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "url": "https://quranpedia.net/qiraat/51/33"
+      }
+    ],
+    "performanceNote": "بضم الهاء"
+  },
+  {
+    "id": "v-L522-s51a40b6-w1-R03247",
+    "surah": 51,
+    "ayah": 40,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L522-s51a40b6",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a40b6-w1-R03247",
+        "variantId": "v-L522-s51a40b6-w1-R03247",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03247",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/40"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "url": "https://quranpedia.net/qiraat/51/40"
+      }
+    ],
+    "performanceNote": "بإسكان الهاء"
+  },
+  {
+    "id": "v-L522-s51a41b5-w1-R03248",
+    "surah": 51,
+    "ayah": 41,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلرِّيحَ",
+    "variantText": "عَلَيْهِمُ الرِّيحَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L522-s51a41b5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a41b5-w1-R03248",
+        "variantId": "v-L522-s51a41b5-w1-R03248",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03248",
+        "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.",
+        "url": "https://quranpedia.net/qiraat/51/41"
+      }
+    ],
+    "performanceNote": "بكسر الهاء وضم الميم وصلاً"
+  },
+  {
+    "id": "v-L522-s51a41b5-w2-R03249",
+    "surah": 51,
+    "ayah": 41,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلرِّيحَ",
+    "variantText": "عَلَيْهِمُ الرِّيحَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L522-s51a41b5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a41b5-w2-R03249",
+        "variantId": "v-L522-s51a41b5-w2-R03249",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03249",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "بكسر الهاء والميم وصلاً: أبو عمرو.",
+        "url": "https://quranpedia.net/qiraat/51/41"
+      }
+    ],
+    "performanceNote": "بكسر الهاء والميم وصلاً"
+  },
+  {
+    "id": "v-L522-s51a41b5-w3-R03250",
+    "surah": 51,
+    "ayah": 41,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلرِّيحَ",
+    "variantText": "عَلَيْهِمُ الرِّيحَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L522-s51a41b5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a41b5-w3-R03250",
+        "variantId": "v-L522-s51a41b5-w3-R03250",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03250",
+        "sourceText": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف، ويعقوب.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف، ويعقوب.",
+        "url": "https://quranpedia.net/qiraat/51/41"
+      }
+    ],
+    "performanceNote": "بضم الهاء والميم وصلاً"
+  },
+  {
+    "id": "v-L522-s51a46b1-w1-R03253",
+    "surah": 51,
+    "ayah": 46,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَقَوْمَ نُوحٍۢ",
+    "variantText": "وَقَوْمِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L522-s51a46b1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a46b1-w1-R03253",
+        "variantId": "v-L522-s51a46b1-w1-R03253",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03253",
+        "sourceText": "﴿وَقَوْمَ نُوحٍ﴾: بنصب الميم ﴿وَقَوْمَ﴾ لنافع، وابن كثير، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ بخفض الميم ﴿وَقَوْمِ﴾ لأبي عمرو، وحمزة، والكسائي، وخلف.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/46"
+      }
+    ],
+    "description": "بخفض الميم",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿وَقَوْمَ نُوحٍ﴾: بنصب الميم ﴿وَقَوْمَ﴾ لنافع، وابن كثير، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ بخفض الميم ﴿وَقَوْمِ﴾ لأبي عمرو، وحمزة، والكسائي، وخلف.",
+        "url": "https://quranpedia.net/qiraat/51/46"
+      }
+    ]
+  },
+  {
+    "id": "v-L522-s51a43b4-w1-R03251",
+    "surah": 51,
+    "ayah": 43,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "قِيلَ",
+    "variantText": "قِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L522-s51a43b4",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a43b4-w1-R03251",
+        "variantId": "v-L522-s51a43b4-w1-R03251",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03251",
+        "sourceText": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/ash-shura/43"
+      }
+    ],
+    "description": "بالإشمام",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "url": "https://quranpedia.net/qiraat/51/43"
+      }
+    ],
+    "performanceNote": "بالإشمام"
+  },
+  {
+    "id": "v-L522-s51a49b7-w1-R03254",
+    "surah": 51,
+    "ayah": 49,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذْكُرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L522-s51a49b7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-L522-s51a49b7-w1-R03254",
+        "variantId": "v-L522-s51a49b7-w1-R03254",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03254",
+        "sourceText": "﴿تَذَكَّرُونَ﴾: بتخفيف الذال لحفص، وحمزة، والكسائي، وخلف؛ وبالتشديد للباقين.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/adh-dhariyat/49"
+      }
+    ],
+    "description": "بتخفيف الذال",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "القراءات العشر",
+        "text": "﴿تَذَكَّرُونَ﴾: بتخفيف الذال لحفص، وحمزة، والكسائي، وخلف؛ وبالتشديد للباقين.",
+        "url": "https://quranpedia.net/qiraat/51/49"
+      }
+    ]
   }
 ]

@@ -309,5 +309,125 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p246-HAMZATAN_KALIMA-اءنك_لانت-7",
+    "pageNumber": 246,
+    "category": "HAMZATAN_KALIMA",
+    "categoryAr": "الهمزتان من كلمة",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 90,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 90,
+    "baseText": "أَءِنَّكَ لَأَنتَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الثانية مع الإدخال"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تسهيل الثانية مع الإدخال"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تسهيل الثانية مع الإدخال"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "تحقيق الثانية مع الإدخال وعدمه"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "بهمز واحد على الإخبار"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "بهمز واحد على الإخبار"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "بهمز واحد على الإخبار"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "بهمز واحد على الإخبار"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الثانية مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الثانية مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الثانية مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "تحقيق الثانية مع الإدخال وعدمه",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "بهمز واحد على الإخبار",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "بهمز واحد على الإخبار",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "بهمز واحد على الإخبار",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "بهمز واحد على الإخبار",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "نص المصدر: «الهمزتان من كلمة (في أَءِنَّكَ لَأَنتَ):»",
+      "نص المصدر: «تسهيل الثانية مع الإدخال: قالون، أبو عمرو.»",
+      "نص المصدر: «تسهيل الثانية بلا إدخال: ورش، رويس.»",
+      "نص المصدر: «تحقيق الثانية مع الإدخال وعدمه: هشام.»",
+      "نص المصدر: «تحقيق الثانية بلا إدخال: الباقون.»",
+      "نص المصدر: «(وقرأ ابن كثير وأبو جعفر بهمز واحد على الإخبار).»"
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

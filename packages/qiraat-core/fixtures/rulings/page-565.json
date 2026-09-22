@@ -31,14 +31,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -65,16 +57,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -82,7 +64,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P565-R03656 — الممال والمقلل: ﴿عَسَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف."
+    ]
   },
   {
     "id": "r-p565-IDGHAM_SAGHIR-بل_نحن-1",
@@ -122,7 +107,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P565-R03657 — الإدغام الصغير: ﴿بَل نَّحْنُ﴾: أدغمها الكسائي مع الغنة."
+    ]
   },
   {
     "id": "r-p565-TAGHYIR_HAMZ-فلياتوا-2",
@@ -180,6 +168,9 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P565-R03658 — تغيير الهمز: ﴿فَلْيَأْتُواْ﴾: إبدال لورش، السوسي، أبو جعفر."
+    ]
   }
 ]

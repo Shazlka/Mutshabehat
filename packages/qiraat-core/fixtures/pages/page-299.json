@@ -1,1 +1,142 @@
-[]
+[
+  {
+    "id": "v-D299-نسير_الجبال-w2",
+    "surah": 18,
+    "ayah": 47,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نُسَيِّرُ ٱلْجِبَالَ",
+    "variantText": "تُسَيَّرُ ٱلْجِبَالُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D299-نسير_الجبال",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D299-نسير_الجبال-w2",
+        "variantId": "v-D299-نسير_الجبال-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P299-R01016",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بياء الغيب المضمومة وفتح الياء ورفع الجبال ﴿تُسَيَّرُ الْجِبَالُ﴾: ابن كثير، أبو عمرو، ابن عامر."
+      }
+    ],
+    "description": "بالتاء والياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D299-للملايكه-w2",
+    "surah": 18,
+    "ayah": 50,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لِلْمَلَـٰٓئِكَةِ",
+    "variantText": "لِلْمَلَائِكَةُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D299-للملايكه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D299-للملايكه-w2",
+        "variantId": "v-D299-للملايكه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P299-R01017",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لِلْمَلَـٰٓئِكَةِ ٱسْجُدُواْ﴾: بضم التاء وصلاً لأبي جعفر؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D299-ما_اشهدتهم-w2",
+    "surah": 18,
+    "ayah": 51,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "۞ مَّآ أَشْهَدتُّهُمْ",
+    "variantText": "مَا أَشْهَدْنَاهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D299-ما_اشهدتهم",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D299-ما_اشهدتهم-w2",
+        "variantId": "v-D299-ما_اشهدتهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P299-R01018",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿مَّآ أَشْهَدتُّهُمْ﴾: بنون العظمة ﴿مَا أَشْهَدْنَاهُمْ﴾ لأبي جعفر؛ وبتاء المتكلم للباقين."
+      }
+    ],
+    "description": "بنون العظمة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D299-وما_كنت-w2",
+    "surah": 18,
+    "ayah": 51,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وَمَا كُنتُ",
+    "variantText": "وَمَا كُنْتَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D299-وما_كنت",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D299-وما_كنت-w2",
+        "variantId": "v-D299-وما_كنت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P299-R01019",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَمَا كُنتُ﴾: بفتح التاء خطاباً ﴿وَمَا كُنْتَ﴾ لأبي جعفر؛ وبضمها للمتكلم للباقين."
+      }
+    ],
+    "description": "بخطاب التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

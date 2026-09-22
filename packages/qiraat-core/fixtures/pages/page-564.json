@@ -1,1 +1,438 @@
-[]
+[
+  {
+    "surah": 67,
+    "ayah": 27,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سِيٓـَٔتْ",
+    "variantText": "سِيٓـَٔتْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "locusType": "performance_variant",
+    "id": "v-DOCX-564-R03642-78f422e4",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03642-4 حركات",
+        "variantId": "v-DOCX-564-R03642-78f422e4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03642",
+        "sourceText": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-QP-67-27-SIET-4 حركات",
+        "variantId": "v-DOCX-564-R03642-78f422e4",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
+        "sourceText": "في سيئت: الإشمام لابن عامر (هشام وابن ذكوان) والكسائي؛ مع مد المتصل أربع حركات.",
+        "verificationNotes": "تحقق آية 67:27؛ يحفظ أوجه الإشمام ومد المتصل للرواة المذكورين."
+      }
+    ],
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "في سيئت: الإشمام لابن عامر (هشام وابن ذكوان) والكسائي؛ مع مد المتصل أربع حركات.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/27"
+      }
+    ],
+    "performanceNote": "اشمام كسرة السين ضماً ومد المتصل 4 حركات",
+    "description": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس. اشمام كسرة السين ضماً ومد المتصل 4 حركات",
+    "wajhIndex": 2,
+    "locusId": "DOCX-P564-SIET-67-27"
+  },
+  {
+    "surah": 67,
+    "ayah": 27,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سِيٓـَٔتْ",
+    "variantText": "سِيٓـَٔتْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "locusType": "performance_variant",
+    "id": "v-DOCX-564-R03642-934bff72",
+    "readingIds": [
+      "Q01-R02"
+    ],
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03642-6 حركات",
+        "variantId": "v-DOCX-564-R03642-934bff72",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03642",
+        "sourceText": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-QP-67-27-SIET-6 حركات",
+        "variantId": "v-DOCX-564-R03642-934bff72",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
+        "sourceText": "في سيئت: الإشمام لورش عن نافع؛ مع مد المتصل ست حركات.",
+        "verificationNotes": "تحقق آية 67:27؛ يحفظ أوجه الإشمام ومد المتصل للرواة المذكورين."
+      }
+    ],
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "في سيئت: الإشمام لورش عن نافع؛ مع مد المتصل ست حركات.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/27"
+      }
+    ],
+    "performanceNote": "اشمام كسرة السين ضماً ومد المتصل 6 حركات",
+    "description": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس. اشمام كسرة السين ضماً ومد المتصل 6 حركات",
+    "wajhIndex": 2,
+    "locusId": "DOCX-P564-SIET-67-27"
+  },
+  {
+    "surah": 67,
+    "ayah": 27,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سِيٓـَٔتْ",
+    "variantText": "سِيٓـَٔتْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "locusType": "performance_variant",
+    "id": "v-DOCX-564-R03642-ec591abe",
+    "readingIds": [
+      "Q01-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03642-3 حركات",
+        "variantId": "v-DOCX-564-R03642-ec591abe",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03642",
+        "sourceText": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-QP-67-27-SIET-3 حركات",
+        "variantId": "v-DOCX-564-R03642-ec591abe",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
+        "sourceText": "في سيئت: الإشمام لنافع (قالون)، وأبي جعفر (ابن وردان وابن جماز)، ورويس؛ مع مد المتصل ثلاث حركات.",
+        "verificationNotes": "تحقق آية 67:27؛ يحفظ أوجه الإشمام ومد المتصل للرواة المذكورين."
+      }
+    ],
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "في سيئت: الإشمام لنافع (قالون)، وأبي جعفر (ابن وردان وابن جماز)، ورويس؛ مع مد المتصل ثلاث حركات.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/27"
+      }
+    ],
+    "performanceNote": "اشمام كسرة السين ضماً ومد المتصل 3 حركات",
+    "description": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس. اشمام كسرة السين ضماً ومد المتصل 3 حركات",
+    "wajhIndex": 2,
+    "locusId": "DOCX-P564-SIET-67-27"
+  },
+  {
+    "id": "v-DOCX-564-R03643-c6cdc533",
+    "surah": 67,
+    "ayah": 27,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلَ",
+    "variantText": "وَقِيلَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01"
+    ],
+    "locusId": "DOCX-P564-R03643-27-8",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03643",
+        "variantId": "v-DOCX-564-R03643-c6cdc533",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03643",
+        "sourceText": "﴿وَقِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P564-R03643-c6cdc533-EXT",
+        "variantId": "v-DOCX-564-R03643-c6cdc533",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
+        "sourceText": "في وقيل: الإشمام لهشام عن ابن عامر، والكسائي، ورويس عن يعقوب.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿وَقِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "في وقيل: الإشمام لهشام عن ابن عامر، والكسائي، ورويس عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/27"
+      }
+    ],
+    "performanceNote": "إشمام كسرة القاف ضماً"
+  },
+  {
+    "id": "v-DOCX-564-R03644-e870b08f",
+    "surah": 67,
+    "ayah": 27,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "تَدَّعُونَ",
+    "variantText": "تَدَّعُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P564-R03644-27-13",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03644",
+        "variantId": "v-DOCX-564-R03644-e870b08f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03644",
+        "sourceText": "﴿تَدَّعُونَ﴾: بتشديد الدال للجمهور؛ بتخفيف الدال ﴿تَدْعُونَ﴾ ليعقوب.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P564-R03644-e870b08f-EXT",
+        "variantId": "v-DOCX-564-R03644-e870b08f",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
+        "sourceText": "قرأ روح ورويس عن يعقوب تدعون بإسكان الدال.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿تَدَّعُونَ﴾: بتشديد الدال للجمهور؛ بتخفيف الدال ﴿تَدْعُونَ﴾ ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "قرأ روح ورويس عن يعقوب تدعون بإسكان الدال.",
+        "url": "https://quranpedia.net/qiraat/al-mulk/27"
+      }
+    ],
+    "performanceNote": "إسكان الدال وتخفيفها"
+  },
+  {
+    "id": "v-DOCX-564-R03646-7260adae",
+    "surah": 67,
+    "ayah": 29,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فَسَتَعْلَمُونَ",
+    "variantText": "فَسَيَعْلَمُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "DOCX-P564-R03646-29-8",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03646",
+        "variantId": "v-DOCX-564-R03646-7260adae",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03646",
+        "sourceText": "﴿فَسَتَعْلَمُونَ﴾ (آية ٢٩ - الملك): بتاء الخطاب للجمهور؛ بياء الغيب ﴿فَسَيَعْلَمُونَ﴾ للكسائي.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      }
+    ],
+    "description": "﴿فَسَتَعْلَمُونَ﴾ (آية ٢٩ - الملك): بتاء الخطاب للجمهور؛ بياء الغيب ﴿فَسَيَعْلَمُونَ﴾ للكسائي.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-564-R03647-3900e546",
+    "surah": 68,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "نٓ ۚ",
+    "variantText": "نٓ ۚ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P564-R03647-1-1",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03647",
+        "variantId": "v-DOCX-564-R03647-3900e546",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03647",
+        "sourceText": "﴿نٓ وَالْقَلَمِ﴾ (فاتحة القلم): بالسكت لأبي جعفر؛ وبإدراجها للباقين (مع إدغام نون «نون» في الواو وصلاً لورش بخلف عنه وابن عامر وشعبة والكسائي ويعقوب وخلف).",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P564-R03647-3900e546-EXT",
+        "variantId": "v-DOCX-564-R03647-3900e546",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/1",
+        "sourceText": "السكت على نون لأبي جعفر (ابن وردان وابن جماز).",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿نٓ وَالْقَلَمِ﴾ (فاتحة القلم): بالسكت لأبي جعفر؛ وبإدراجها للباقين (مع إدغام نون «نون» في الواو وصلاً لورش بخلف عنه وابن عامر وشعبة والكسائي ويعقوب وخلف).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "السكت على نون لأبي جعفر (ابن وردان وابن جماز).",
+        "url": "https://quranpedia.net/qiraat/al-qalam/1"
+      }
+    ],
+    "performanceNote": "السكت على نون"
+  },
+  {
+    "id": "v-DOCX-564-R03647-55e29aea",
+    "surah": 68,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "نٓ ۚ وَٱلْقَلَمِ",
+    "variantText": "نٓ ۚ وَٱلْقَلَمِ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P564-R03647-1-1",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03647",
+        "variantId": "v-DOCX-564-R03647-55e29aea",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03647",
+        "sourceText": "﴿نٓ وَالْقَلَمِ﴾ (فاتحة القلم): بالسكت لأبي جعفر؛ وبإدراجها للباقين (مع إدغام نون «نون» في الواو وصلاً لورش بخلف عنه وابن عامر وشعبة والكسائي ويعقوب وخلف).",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DOCX-P564-R03647-55e29aea-EXT",
+        "variantId": "v-DOCX-564-R03647-55e29aea",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/1",
+        "sourceText": "إدغام النون في الواو بغنة: ورش بخلف، وابن عامر، وشعبة، والكسائي، ويعقوب، وخلف عن حمزة.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      }
+    ],
+    "description": "﴿نٓ وَالْقَلَمِ﴾ (فاتحة القلم): بالسكت لأبي جعفر؛ وبإدراجها للباقين (مع إدغام نون «نون» في الواو وصلاً لورش بخلف عنه وابن عامر وشعبة والكسائي ويعقوب وخلف).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "إدغام النون في الواو بغنة: ورش بخلف، وابن عامر، وشعبة، والكسائي، ويعقوب، وخلف عن حمزة.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/1"
+      }
+    ],
+    "performanceNote": "إدغام النون في الواو بغنة؛ لورش بخلف"
+  },
+  {
+    "id": "v-DOCX-564-R03648-7c590bb6",
+    "surah": 68,
+    "ayah": 7,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P564-R03648-7-9",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03648",
+        "variantId": "v-DOCX-564-R03648-7c590bb6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03648",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      }
+    ],
+    "description": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "إسكان الهاء"
+  }
+]

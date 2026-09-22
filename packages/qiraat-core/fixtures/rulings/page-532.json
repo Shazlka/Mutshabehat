@@ -28,7 +28,14 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03355",
+        "sourceText": "الممال والمقلل: ﴿الْجَوَارِ﴾: أمالها الدوري عن الكسائي (ولا تقليل فيها لورش). ﴿وَيَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿نَّارٍ﴾، ﴿أَقْطَارِ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿بِسِيمَـٰهُمْ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p532-IMALAH_TAQLIL-ويبقا-1",
@@ -62,14 +69,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -96,16 +95,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -113,7 +102,19 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03355",
+        "sourceText": "الممال والمقلل: ﴿الْجَوَارِ﴾: أمالها الدوري عن الكسائي (ولا تقليل فيها لورش). ﴿وَيَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿نَّارٍ﴾، ﴿أَقْطَارِ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿بِسِيمَـٰهُمْ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      },
+      {
+        "sourceReference": "Attribution audit for DOCX-P532-R03355; https://www.hamdoun.info/wp-content/uploads/2022/01/%D9%82%D8%B7%D8%B1-%D9%85%D9%86-%D8%BA%D9%8A%D8%AB-%D8%A7%D9%84%D9%86%D9%81%D8%B9-%D9%81%D9%8A-%D8%A3%D8%B5%D9%88%D9%84-%D9%88%D9%83%D9%84%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D8%A1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D8%A8%D8%B9.pdf",
+        "sourceText": "ويبقى – وجه وقى. أمالها الأخوان وقللهما ورش بخلف عنه.",
+        "verificationNotes": "طبّقت توجيه المستخدم: «خلف» المجرد هنا لا يُسند إلى خلف العاشر؛ المرجع الموازي يسمّي الأخوين حمزة والكسائي ولا يذكر خلفاً العاشر، فحذفت إسناد Q10 غير المسند مستقلاً."
+      }
+    ]
   },
   {
     "id": "r-p532-IMALAH_TAQLIL-نار-2",
@@ -171,7 +172,14 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03355",
+        "sourceText": "الممال والمقلل: ﴿الْجَوَارِ﴾: أمالها الدوري عن الكسائي (ولا تقليل فيها لورش). ﴿وَيَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿نَّارٍ﴾، ﴿أَقْطَارِ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿بِسِيمَـٰهُمْ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p532-IMALAH_TAQLIL-اقطار-3",
@@ -229,7 +237,14 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03355",
+        "sourceText": "الممال والمقلل: ﴿الْجَوَارِ﴾: أمالها الدوري عن الكسائي (ولا تقليل فيها لورش). ﴿وَيَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿نَّارٍ﴾، ﴿أَقْطَارِ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿بِسِيمَـٰهُمْ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p532-IMALAH_TAQLIL-بسيماهم-4",
@@ -271,14 +286,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -315,16 +322,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -332,7 +329,14 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03355",
+        "sourceText": "الممال والمقلل: ﴿الْجَوَارِ﴾: أمالها الدوري عن الكسائي (ولا تقليل فيها لورش). ﴿وَيَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿نَّارٍ﴾، ﴿أَقْطَارِ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿بِسِيمَـٰهُمْ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p532-TAGHYIR_HAMZ-شان-5",
@@ -381,7 +385,14 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03356",
+        "sourceText": "تغيير الهمز: ﴿اللُّؤْلُؤُ﴾: أبدل الهمزة الأولى واواً شعبة، والسوسي، وأبو جعفر. ﴿شَأْنٍ﴾: إبدال للسوسي وأبي جعفر. ﴿فَيُؤْخَذُ﴾: إبدال لورش، السوسي، أبو جعفر.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
   },
   {
     "id": "r-p532-TAGHYIR_HAMZ-فيوخذ-6",
@@ -439,6 +450,181 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03356",
+        "sourceText": "تغيير الهمز: ﴿اللُّؤْلُؤُ﴾: أبدل الهمزة الأولى واواً شعبة، والسوسي، وأبو جعفر. ﴿شَأْنٍ﴾: إبدال للسوسي وأبي جعفر. ﴿فَيُؤْخَذُ﴾: إبدال لورش، السوسي، أبو جعفر.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p532-TAGHYIR_HAMZ-اللولو-0",
+    "pageNumber": 532,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 22,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 22,
+    "baseText": "ٱللُّؤْلُؤُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة الأولى واواً"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إبدال الهمزة الأولى واواً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة الأولى واواً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة الأولى واواً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة الأولى واواً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "القراءات العشر بالموضع تؤيد إبدال الهمزة الساكنة واواً لشعبة والسوسي وابني أبي جعفر.",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03356",
+        "sourceText": "تغيير الهمز: ﴿اللُّؤْلُؤُ﴾: أبدل الهمزة الأولى واواً شعبة، والسوسي، وأبو جعفر. ﴿شَأْنٍ﴾: إبدال للسوسي وأبي جعفر. ﴿فَيُؤْخَذُ﴾: إبدال لورش، السوسي، أبو جعفر.",
+        "verificationNotes": "القراءات العشر بالموضع تؤيد إبدال الهمزة الساكنة واواً لشعبة والسوسي وابني أبي جعفر."
+      },
+      {
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/22",
+        "sourceText": "قائمة الرواة في موضع اللؤلؤ تسند الإبدال إلى شعبة والسوسي وابني أبي جعفر.",
+        "verificationNotes": "مرجع مستقل للقراءات العشر؛ قارنت به مجموعة الرواة والموضع."
+      }
+    ]
+  },
+  {
+    "id": "r-p532-WAQF_RASM-الجوار-0",
+    "pageNumber": 532,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 24,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 24,
+    "baseText": "ٱلْجَوَارِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء وقفاً"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "النص المصدر يسند إثبات الياء وقفاً إلى يعقوب صراحة.",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03357",
+        "sourceText": "الوقف على مرسوم الخط: ﴿الْجَوَارِ﴾: أثبت الياء وقفاً يعقوب ﴿الْجَوَارِي﴾.",
+        "verificationNotes": "النص المصدر يسند إثبات الياء وقفاً إلى يعقوب صراحة."
+      },
+      {
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/24",
+        "sourceText": "الموضع: الجوار؛ وجه الوقف مثبت في المصدر المعالج.",
+        "verificationNotes": "مرجع مستقل للقراءات العشر؛ قارنت به مجموعة الرواة والموضع."
+      }
+    ]
+  },
+  {
+    "id": "r-p532-IMALAH_TAQLIL-والاكرام-0",
+    "pageNumber": 532,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 27,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 27,
+    "baseText": "وَٱلْإِكْرَامِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "ابن ذكوان عن ابن عامر له الإمالة بخلف عنه في الإكرام؛ أثبت هنا الوجه البديل فقط.",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P532-R03355",
+        "sourceText": "الممال والمقلل: ﴿الْجَوَارِ﴾: أمالها الدوري عن الكسائي (ولا تقليل فيها لورش). ﴿وَيَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿نَّارٍ﴾، ﴿أَقْطَارِ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿بِسِيمَـٰهُمْ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه.",
+        "verificationNotes": "ابن ذكوان عن ابن عامر له الإمالة بخلف عنه في الإكرام؛ أثبت هنا الوجه البديل فقط."
+      },
+      {
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/27",
+        "sourceText": "المصدر المستقل يذكر ابن ذكوان في وجه الإمالة للموضع، ويُظهر فرق الأداء في الكلمة.",
+        "verificationNotes": "مرجع مستقل للقراءات العشر؛ قارنت به مجموعة الرواة والموضع."
+      }
+    ]
   }
 ]

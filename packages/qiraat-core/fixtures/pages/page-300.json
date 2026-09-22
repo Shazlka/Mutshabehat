@@ -1,1 +1,227 @@
-[]
+[
+  {
+    "id": "v-D300-القرءان-w2",
+    "surah": 18,
+    "ayah": 54,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانِ",
+    "variantText": "ٱلْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D300-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-القرءان-w2",
+        "variantId": "v-D300-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P300-R01027",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانِ﴾: بنقل الهمزة لابن كثير ﴿الْقُرَانِ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D300-قبلا-w2",
+    "surah": 18,
+    "ayah": 55,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "قُبُلًۭا",
+    "variantText": "قِبَلًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D300-قبلا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-قبلا-w2",
+        "variantId": "v-D300-قبلا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P300-R01028",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿قُبُلًا﴾: بضمتين ﴿قُبُلًا﴾ لعاصم، وحمزة، والكسائي، وأبي جعفر، وخلف؛ وبكسر القاف وفتح الباء ﴿قِبَلًا﴾ للباقين."
+      }
+    ],
+    "description": "بكسر القاف وفتح الباء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D300-لمهلكهم-w2",
+    "surah": 18,
+    "ayah": 59,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "لِمَهْلِكِهِم",
+    "variantText": "لِمُهْلَكِهِم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D300-لمهلكهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-لمهلكهم-w2",
+        "variantId": "v-D300-لمهلكهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P300-R01031",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الميم وفتح اللام ﴿لِمُهْلَكِهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، الكسائي، أبو جعفر، يعقوب، خلف."
+      }
+    ],
+    "description": "بضم الميم وفتح اللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D300-لمهلكهم-w3",
+    "surah": 18,
+    "ayah": 59,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "لِمَهْلِكِهِم",
+    "variantText": "لِمَهْلَكِهِم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D300-لمهلكهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-لمهلكهم-w3",
+        "variantId": "v-D300-لمهلكهم-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P300-R01032",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الميم واللام ﴿لِمَهْلَكِهِم﴾: شعبة."
+      }
+    ],
+    "description": "بفتح اللام",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D300-قبلا-w1",
+    "surah": 18,
+    "ayah": 55,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "قُبُلًۭا",
+    "variantText": "قُبُلًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D300-قبلا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-قبلا-w1",
+        "variantId": "v-D300-قبلا-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D300-هزوا-w2",
+    "surah": 18,
+    "ayah": 56,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًۭا",
+    "variantText": "هُزْءًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D300-هزوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D300-هزوا-w2",
+        "variantId": "v-D300-هزوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P300-R01029",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿هُزُوًا﴾: بضمتين مهموزاً لحفص؛ بضمتين بلا همز ﴿هُزُوًا﴾ لنافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، يعقوب؛ بضم فسكون مهموزاً ﴿هُزْءًا﴾ لحمزة وخلف."
+      }
+    ],
+    "description": "بضم فسكون مهموزًا",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

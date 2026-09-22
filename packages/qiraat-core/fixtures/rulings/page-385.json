@@ -466,5 +466,117 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p385-HAMZATAN_KALIMA-ايمه-4",
+    "pageNumber": 385,
+    "category": "HAMZATAN_KALIMA",
+    "categoryAr": "الهمزتان من كلمة",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 5,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 5,
+    "baseText": "أَئِمَّةًۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "تسهيل الثانية مع الإدخال"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "تسهيل الثانية مع الإدخال"
+      },
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "تسهيل الثانية بلا إدخال"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "التحقيق مع الإدخال وعدمه"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "تسهيل الثانية مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "تسهيل الثانية مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "تسهيل الثانية بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "التحقيق مع الإدخال وعدمه",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

@@ -31,14 +31,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -61,16 +53,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -116,14 +98,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -146,16 +120,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -187,6 +151,14 @@
       {
         "authorityId": "Q04-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -194,11 +166,39 @@
         "readingId": "Q04-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sources": [
+      {
+        "id": "s-DOCX-P572-R03721",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P572-R03721",
+        "sourceText": "الممال والمقلل: ﴿تَعَالَىٰ﴾، ﴿الْهُدَىٰٓ﴾: حمزة، الكسائي، خلف، وقللهما ورش بخلف. ﴿فَزَادُوهُمْ﴾: ابن ذكوان بخلف، وحمزة.",
+        "verificationNotes": "حمزة قارئ مسمى صراحةً؛ لفظ خلف العاري يعني خلفاً عن حمزة."
+      },
+      {
+        "id": "s-QP-P572-R03721",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/6",
+        "sourceText": "إمالة الألف وإسكان الميم في فَزَادُوهُمْ: خلف وخلاد عن حمزة، وابن ذكوان عن ابن عامر.",
+        "verificationNotes": "جهاز الآية يسمي الرواة في وجه الإمالة."
+      }
+    ]
   },
   {
     "id": "r-p572-TAGHYIR_HAMZ-مليت-3",

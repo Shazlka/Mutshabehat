@@ -1,1 +1,330 @@
-[]
+[
+  {
+    "id": "v-D495-لديهم-w2",
+    "surah": 43,
+    "ayah": 80,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لَدَيْهِمْ",
+    "variantText": "لَدَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D495-لديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-لديهم-w2",
+        "variantId": "v-D495-لديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02983",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-ولد-w2",
+    "surah": 43,
+    "ayah": 81,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَلَدٌۭ",
+    "variantText": "وُلْدٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D495-ولد",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-ولد-w2",
+        "variantId": "v-D495-ولد-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02984",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "﴿وَلَدٌ﴾: بفتحتين للجمهور؛ وبضم الواو وسكون اللام ﴿وُلْدٌ﴾ لحمزة والكسائي."
+      }
+    ],
+    "description": "بضم الواو وسكون اللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-يلاقوا-w2",
+    "surah": 43,
+    "ayah": 83,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يُلَـٰقُوا۟",
+    "variantText": "يَلْقَوْا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D495-يلاقوا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-يلاقوا-w2",
+        "variantId": "v-D495-يلاقوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02986",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "﴿يُلَـٰقُواْ﴾: بألف مدية بعد اللام للجمهور؛ وبحذف الألف مع فتح الياء واللام ﴿يَلْقَوْا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بحذف الألف مع فتح الياء واللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-وهو-w2",
+    "surah": 43,
+    "ayah": 84,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D495-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-وهو-w2",
+        "variantId": "v-D495-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02987",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-ترجعون-w2",
+    "surah": 43,
+    "ayah": 85,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُونَ",
+    "variantText": "يُرْجَعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D495-ترجعون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-ترجعون-w2",
+        "variantId": "v-D495-ترجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02990",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "بياء الغيب وضمها وفتح الجيم ﴿يُرْجَعُونَ﴾: ابن كثير، وحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بياء الغيب وضمها وفتح الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-ترجعون-w2",
+    "surah": 43,
+    "ayah": 85,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُونَ",
+    "variantText": "يَرْجِعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D495-ترجعون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-ترجعون-w2",
+        "variantId": "v-D495-ترجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02991",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "بياء الغيب وفتحها وكسر الجيم ﴿يَرْجِعُونَ﴾: رويس."
+      }
+    ],
+    "description": "بياء الغيب وفتحها وكسر الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-ترجعون-w2",
+    "surah": 43,
+    "ayah": 85,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُونَ",
+    "variantText": "تَرْجِعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R02"
+    ],
+    "locusId": "D495-ترجعون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-ترجعون-w2",
+        "variantId": "v-D495-ترجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02992",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "بتاء الخطاب وفتحها وكسر الجيم ﴿تَرْجِعُونَ﴾: روح."
+      }
+    ],
+    "description": "بتاء الخطاب وفتحها وكسر الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-يعلمون-w2",
+    "surah": 43,
+    "ayah": 86,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يَعْلَمُونَ",
+    "variantText": "تَعْلَمُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D495-يعلمون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-يعلمون-w2",
+        "variantId": "v-D495-يعلمون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02994",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "﴿يَعْلَمُونَ﴾ (الآية الأخيرة): بياء الغيب لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبتاء الخطاب ﴿تَعْلَمُونَ﴾ للباقين."
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-وهو-w2",
+    "surah": 43,
+    "ayah": 84,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D495-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-وهو-w2",
+        "variantId": "v-D495-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02987",
+        "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/az-zukhruf/80",
+        "sourceText": "﴿وَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

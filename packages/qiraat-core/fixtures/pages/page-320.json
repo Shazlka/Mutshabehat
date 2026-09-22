@@ -196,5 +196,73 @@
         "text": "وَضَمُّكَ أُولَى السَّاكِنَيْنِ لِثَالِثٍ يُضَمُّ لُزُومًا"
       }
     ]
+  },
+  {
+    "id": "v-D320-بالقرءان-w2",
+    "surah": 20,
+    "ayah": 114,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْقُرْءَانِ",
+    "variantText": "بِالْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D320-بالقرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D320-بالقرءان-w2",
+        "variantId": "v-D320-بالقرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P320-R01284",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿بِالْقُرْءَانِ﴾: بنقل الهمزة لابن كثير ﴿بِالْقُرَانِ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D320-يقضا_اليك_وحيهو-w2",
+    "surah": 20,
+    "ayah": 114,
+    "startToken": 11,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يُقْضَىٰٓ إِلَيْكَ وَحْيُهُۥ ۖ",
+    "variantText": "نَقْضِيَ إِلَيْكَ وَحْيَهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D320-يقضا_اليك_وحيهو",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D320-يقضا_اليك_وحيهو-w2",
+        "variantId": "v-D320-يقضا_اليك_وحيهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P320-R01285",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُقْضَىٰٓ إِلَيْكَ وَحْيُهُۥ﴾: بياء الغيب المضمومة ورفع ﴿وَحْيُهُ﴾ للجمهور؛ وبنون العظمة المفتوحة ونصب الياء والهاء ﴿نَقْضِيَ إِلَيْكَ وَحْيَهُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بنون العظمة ونصب الياء والهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

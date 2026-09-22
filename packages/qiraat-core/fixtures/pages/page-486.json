@@ -1,1 +1,284 @@
-[]
+[
+  {
+    "id": "v-D486-يبشر-w1",
+    "surah": 42,
+    "ayah": 23,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُبَشِّرُ",
+    "variantText": "يُبَشِّرُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D486-يبشر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D486-يبشر-w1",
+        "variantId": "v-D486-يبشر-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D486-وهو-w2",
+    "surah": 42,
+    "ayah": 25,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D486-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D486-وهو-w2",
+        "variantId": "v-D486-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P486-R02899",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَهُوَ﴾ (جميعاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D486-تفعلون-w2",
+    "surah": 42,
+    "ayah": 25,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "تَفْعَلُونَ",
+    "variantText": "يَفْعَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D486-تفعلون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D486-تفعلون-w2",
+        "variantId": "v-D486-تفعلون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P486-R02900",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَفْعَلُونَ﴾: بتاء الخطاب لحفص، وحمزة، والكسائي، وخلف؛ وبياء الغيب ﴿يَفْعَلُونَ﴾ للباقين."
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D486-ينزل_بقدر-w2",
+    "surah": 42,
+    "ayah": 27,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "يُنَزِّلُ بِقَدَرٍۢ",
+    "variantText": "يُنْزِلُ بِقَدَرٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D486-ينزل_بقدر",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D486-ينزل_بقدر-w2",
+        "variantId": "v-D486-ينزل_بقدر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P486-R02901",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُنَزِّلُ بِقَدَرٍ﴾: بتشديد الزاي للجمهور؛ وبتخفيف الزاي ﴿يُنْزِلُ﴾ لابن كثير، وأبي عمرو، ويعقوب."
+      }
+    ],
+    "description": "بتخفيف الزاي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D486-ينزل_الغيث-w2",
+    "surah": 42,
+    "ayah": 28,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "يُنَزِّلُ ٱلْغَيْثَ",
+    "variantText": "يُنْزِلُ الْغَيْثَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D486-ينزل_الغيث",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D486-ينزل_الغيث-w2",
+        "variantId": "v-D486-ينزل_الغيث-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P486-R02902",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُنَزِّلُ الْغَيْثَ﴾: بتشديد الزاي لنافع، وابن عامر، وعاصم، وأبي جعفر؛ وبتخفيف الزاي ﴿يُنْزِلُ﴾ للباقين."
+      }
+    ],
+    "description": "بتخفيف الزاي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D486-فيهما-w2",
+    "surah": 42,
+    "ayah": 29,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فِيهِمَا",
+    "variantText": "فِيهُمَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D486-فيهما",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D486-فيهما-w2",
+        "variantId": "v-D486-فيهما-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P486-R02903",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فِيهِمَا﴾: بكسر الهاء للجمهور؛ وبضمها ﴿فِيهُمَا﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D486-فبما_كسبت-w2",
+    "surah": 42,
+    "ayah": 30,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "فَبِمَا كَسَبَتْ",
+    "variantText": "بِمَا كَسَبَتْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D486-فبما_كسبت",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D486-فبما_كسبت-w2",
+        "variantId": "v-D486-فبما_كسبت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P486-R02904",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَبِمَا كَسَبَتْ﴾: بالفاء ﴿فَبِمَا﴾ لابن كثير، وأبي عمرو، وعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبحذف الفاء ﴿بِمَا كَسَبَتْ﴾ لنافع، وابن عامر، وأبي جعفر."
+      }
+    ],
+    "description": "بحذف الفاء",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

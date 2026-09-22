@@ -1,1 +1,110 @@
-[]
+[
+  {
+    "id": "v-D388-ياابت-w2",
+    "surah": 28,
+    "ayah": 26,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰٓأَبَتِ",
+    "variantText": "يَـٰٓأَبَتَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D388-ياابت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D388-ياابت-w2",
+        "variantId": "v-D388-ياابت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P388-R01974",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَـٰٓأَبَتِ﴾: بالكسر للجمهور؛ وبالفتح ﴿يَـٰٓأَبَتَ﴾ لابن عامر وأبي جعفر (ويقف عليها بالهاء ابن كثير وابن عامر وأبو جعفر ويعقوب)."
+      }
+    ],
+    "description": "بالفتح",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D388-هاتين-w2",
+    "surah": 28,
+    "ayah": 27,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰتَيْنِ",
+    "variantText": "هَاتَيْنِّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D388-هاتين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D388-هاتين-w2",
+        "variantId": "v-D388-هاتين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P388-R01975",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿هَـٰتَيْنِ﴾: بتخفيف النون للجمهور؛ وبتشديد النون مع المد المشبع ﴿هَاتَيْنِّ﴾ لابن كثير."
+      }
+    ],
+    "description": "بتشديد النون مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D388-يصدر-w2",
+    "surah": 28,
+    "ayah": 23,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "يُصْدِرَ",
+    "variantText": "يَصْدُرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D388-يصدر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D388-يصدر-w2",
+        "variantId": "v-D388-يصدر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P388-R01972",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الياء وضم الدال ﴿يَصْدُرَ﴾: أبو عمرو، وابن عامر، وأبو جعفر."
+      }
+    ],
+    "description": "بفتح الياء وضم الدال",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

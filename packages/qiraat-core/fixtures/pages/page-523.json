@@ -1,1 +1,76 @@
-[]
+[
+  {
+    "id": "v-DOCX-P523-3-R03257-60-5-2",
+    "surah": 51,
+    "ayah": 60,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَوْمِهِمُ ٱلَّذِى",
+    "variantText": "يَوْمِهِمُ ٱلَّذِى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P523-3-R03257-60-5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P523-3-R03257-60-5-2",
+        "variantId": "v-DOCX-P523-3-R03257-60-5-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P523-R03257",
+        "sourceText": "﴿يَوْمِهِمُ الَّذِي﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو ويعقوب؛ بضم الهاء والميم لحمزة والكسائي وخلف.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو ويعقوب؛ بضم الهاء والميم لحمزة والكسائي وخلف.",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "كسر الهاء والميم وصلاً"
+  },
+  {
+    "id": "v-DOCX-P523-3-R03257-60-5-3",
+    "surah": 51,
+    "ayah": 60,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَوْمِهِمُ ٱلَّذِى",
+    "variantText": "يَوْمِهِمُ ٱلَّذِى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "DOCX-P523-3-R03257-60-5",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P523-3-R03257-60-5-3",
+        "variantId": "v-DOCX-P523-3-R03257-60-5-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P523-R03257",
+        "sourceText": "﴿يَوْمِهِمُ الَّذِي﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو ويعقوب؛ بضم الهاء والميم لحمزة والكسائي وخلف.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم لأبي عمرو ويعقوب؛ بضم الهاء والميم لحمزة والكسائي وخلف.",
+    "wajhIndex": 3,
+    "evidence": [],
+    "performanceNote": "ضم الهاء والميم وصلاً"
+  }
+]

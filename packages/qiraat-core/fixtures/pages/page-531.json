@@ -1,1 +1,169 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P531-55-2-2-1ea04bb3",
+    "surah": 55,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "الْقُرَانَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P531-55-2-2-1ea04bb3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P531-R03340",
+        "variantId": "v-AUDIT-P531-55-2-2-1ea04bb3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P531-R03340",
+        "sourceText": "﴿الْقُرْءَانَ﴾ (فاتحة الرحمن): بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P531-55-2-2-1ea04bb3-QP",
+        "variantId": "v-AUDIT-P531-55-2-2-1ea04bb3",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/2",
+        "sourceText": "الموضع 2 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      }
+    ],
+    "description": "﴿الْقُرْءَانَ﴾ (فاتحة الرحمن): بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 2 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/2"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P531-55-12-1-f22585be",
+    "surah": 55,
+    "ayah": 12,
+    "startToken": 1,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْحَبُّ ذُو ٱلْعَصْفِ وَٱلرَّيْحَانُ",
+    "variantText": "وَالْحَبَّ ذَا الْعَصْفِ وَالرَّيْحَانَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "AUDIT-P531-55-12-1-f22585be",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P531-R03343",
+        "variantId": "v-AUDIT-P531-55-12-1-f22585be",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P531-R03343",
+        "sourceText": "بنصب الكلمات الثلاث بالفتحة ﴿وَالْحَبَّ ذَا الْعَصْفِ وَالرَّيْحَانَ﴾: ابن عامر.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P531-55-12-1-f22585be-QP",
+        "variantId": "v-AUDIT-P531-55-12-1-f22585be",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/12",
+        "sourceText": "الموضع 12 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      },
+      {
+        "id": "s-DOCX-P531-R03342-v-AUDIT-P531-55-12-1-f22585be",
+        "variantId": "v-AUDIT-P531-55-12-1-f22585be",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P531-R03342",
+        "sourceText": "برفع الكلمات الثلاث بالضمة ﴿وَالْحَبُّ ذُو الْعَصْفِ وَالرَّيْحَانُ﴾: نافع، ابن كثير، أبو عمرو، عاصم، أبو جعفر، يعقوب.",
+        "verificationNotes": "نص المصدر المساند يحدد بقية القراءة في الموضع نفسه، لاستكمال تقسيم الرواة مع الوجه المخالف."
+      }
+    ],
+    "description": "بنصب الكلمات الثلاث بالفتحة ﴿وَالْحَبَّ ذَا الْعَصْفِ وَالرَّيْحَانَ﴾: ابن عامر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 12 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/12"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P531-55-12-1-00b73d4a",
+    "surah": 55,
+    "ayah": 12,
+    "startToken": 1,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْحَبُّ ذُو ٱلْعَصْفِ وَٱلرَّيْحَانُ",
+    "variantText": "وَالْحَبُّ ذُو الْعَصْفِ وَالرَّيْحَانِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P531-55-12-1-00b73d4a",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P531-R03344",
+        "variantId": "v-AUDIT-P531-55-12-1-00b73d4a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P531-R03344",
+        "sourceText": "برفع الأولين وجر الريحان بالكسرة عطفاً على العصف ﴿وَالْحَبُّ ذُو الْعَصْفِ وَالرَّيْحَانِ﴾: حمزة، والكسائي، وخلف.",
+        "verificationNotes": "حفظ نص المصدر كما ورد؛ طوبقت مجموعة الرواة والوجه مع عرض القراءات العشر المستقل."
+      },
+      {
+        "id": "s-AUDIT-P531-55-12-1-00b73d4a-QP",
+        "variantId": "v-AUDIT-P531-55-12-1-00b73d4a",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/12",
+        "sourceText": "الموضع 12 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "verificationNotes": "مرجع مستقل يذكر وجوه القراء والرواة في الموضع."
+      },
+      {
+        "id": "s-DOCX-P531-R03342-v-AUDIT-P531-55-12-1-00b73d4a",
+        "variantId": "v-AUDIT-P531-55-12-1-00b73d4a",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P531-R03342",
+        "sourceText": "برفع الكلمات الثلاث بالضمة ﴿وَالْحَبُّ ذُو الْعَصْفِ وَالرَّيْحَانُ﴾: نافع، ابن كثير، أبو عمرو، عاصم، أبو جعفر، يعقوب.",
+        "verificationNotes": "نص المصدر المساند يحدد بقية القراءة في الموضع نفسه، لاستكمال تقسيم الرواة مع الوجه المخالف."
+      }
+    ],
+    "description": "برفع الأولين وجر الريحان بالكسرة عطفاً على العصف ﴿وَالْحَبُّ ذُو الْعَصْفِ وَالرَّيْحَانِ﴾: حمزة، والكسائي، وخلف.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الموضع 12 من سورة الرحمن؛ مصدر القراءات يسند الوجه والرواة المذكورين.",
+        "url": "https://quranpedia.net/qiraat/ar-rahman/12"
+      }
+    ]
+  }
+]
