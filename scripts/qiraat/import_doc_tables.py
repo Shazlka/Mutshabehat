@@ -4962,6 +4962,11 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P304-R01079','يَحْسَبُونَ','يَحْسِبُونَ','نافع، ابن كثير، أبو عمرو، الكسائي، يعقوب، خلف العاشر',104,
              'بكسر السين'),
         ],
+        557: [
+            ('DOCX-P557-R03580','يُضَـٰعِفْهُ','يُضَعِّفْهُ',
+             'جميع القراء عدا نافع، أبو عمرو، عاصم، حمزة، الكسائي، خلف',17,
+             'بحذف الألف وتشديد العين المكسورة'),
+        ],
     }
     out=[]
     external_face_notes={
@@ -4980,6 +4985,11 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        480: [
+            ('DOCX-P480-R02842','عَلَيْهِمُ','نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',30,'بكسر الهاء وضم الميم وصلاً','https://quranpedia.net/qiraat/fussilat/30','وجه المصدر للمذكورين.'),
+            ('DOCX-P480-R02843','عَلَيْهِمُ','أبو عمرو',30,'بكسر الهاء والميم وصلاً','https://quranpedia.net/qiraat/fussilat/30','وجه أبي عمرو.'),
+            ('DOCX-P480-R02844','عَلَيْهِمُ','حمزة، الكسائي، يعقوب، خلف',30,'بضم الهاء والميم وصلاً','https://quranpedia.net/qiraat/fussilat/30','«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
         269: [
             ('DOCX-P269-R00666','عَلَيْهِمُ','نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',26,'بكسر الهاء وضم الميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','وجه المصدر للمذكورين.'),
             ('DOCX-P269-R00667','عَلَيْهِمُ','أبو عمرو',26,'بكسر الهاء والميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','وجه أبي عمرو.'),

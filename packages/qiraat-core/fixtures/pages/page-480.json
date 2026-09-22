@@ -1,1 +1,137 @@
-[]
+[
+  {
+    "id": "v-D480-عليهم-performance1",
+    "surah": 41,
+    "ayah": 30,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ",
+    "variantText": "عَلَيْهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D480-عليهم",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر الهاء وضم الميم وصلاً",
+    "sources": [
+      {
+        "id": "s-D480-عليهم-performance1",
+        "variantId": "v-D480-عليهم-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P480-R02842",
+        "verificationNotes": "وجه المصدر للمذكورين. المرجع المستقل: https://quranpedia.net/qiraat/fussilat/30.",
+        "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً",
+    "wajhIndex": 1,
+    "evidence": [
+      {
+        "source": "Quranpedia",
+        "url": "https://quranpedia.net/qiraat/fussilat/30",
+        "text": "مطابقة موضع الوجه وتقسيم القراء في جهاز القراءات العشر."
+      }
+    ]
+  },
+  {
+    "id": "v-D480-عليهم-performance2",
+    "surah": 41,
+    "ayah": 30,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ",
+    "variantText": "عَلَيْهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D480-عليهم",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر الهاء والميم وصلاً",
+    "sources": [
+      {
+        "id": "s-D480-عليهم-performance2",
+        "variantId": "v-D480-عليهم-performance2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P480-R02843",
+        "verificationNotes": "وجه أبي عمرو. المرجع المستقل: https://quranpedia.net/qiraat/fussilat/30.",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو."
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "Quranpedia",
+        "url": "https://quranpedia.net/qiraat/fussilat/30",
+        "text": "مطابقة موضع الوجه وتقسيم القراء في جهاز القراءات العشر."
+      }
+    ]
+  },
+  {
+    "id": "v-D480-عليهم-performance3",
+    "surah": 41,
+    "ayah": 30,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ",
+    "variantText": "عَلَيْهِمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D480-عليهم",
+    "locusType": "performance_variant",
+    "performanceNote": "بضم الهاء والميم وصلاً",
+    "sources": [
+      {
+        "id": "s-D480-عليهم-performance3",
+        "variantId": "v-D480-عليهم-performance3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P480-R02844",
+        "verificationNotes": "«خلف» المجرد هو خلف عن حمزة Q06. المرجع المستقل: https://quranpedia.net/qiraat/fussilat/30.",
+        "sourceText": "بضم الهاء والميم وصلاً: حمزة، الكسائي، يعقوب، خلف."
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "Quranpedia",
+        "url": "https://quranpedia.net/qiraat/fussilat/30",
+        "text": "مطابقة موضع الوجه وتقسيم القراء في جهاز القراءات العشر."
+      }
+    ]
+  }
+]
