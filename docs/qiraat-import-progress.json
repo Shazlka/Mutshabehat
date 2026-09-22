@@ -22298,7 +22298,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "7a80f3b",
+  "currentHeadCommit": "b2263f8",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -23634,17 +23634,19 @@
       "251": 1,
       "252": 1
     },
-    "status": "locally verified; deployment pending",
+    "status": "pushed; deployment pending",
     "validation": {
       "variants": 2873,
       "usulRulings": 9898,
       "validator": "passed",
       "tests": "38/38",
       "tsc": "passed",
-      "build": "pending",
+      "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Added p248 نُّوحِىٓ/يُوحَى for the explicitly named group. Corrected bare خلف attribution on p249, p251, and p252. Multiword unanchored candidates were withheld."
+    "details": "Added p248 نُّوحِىٓ/يُوحَى for the explicitly named group. Corrected bare خلف attribution on p249, p251, and p252. Multiword unanchored candidates were withheld.",
+    "commit": "b2263f8",
+    "deployment": "pending"
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
