@@ -283,5 +283,44 @@
     "description": "بحذف الفاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D486-يبشر-w1",
+    "surah": 42,
+    "ayah": 23,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُبَشِّرُ",
+    "variantText": "يُبَشِّرُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D486-يبشر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D486-يبشر-w1",
+        "variantId": "v-D486-يبشر-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": []
   }
 ]

@@ -174,5 +174,39 @@
     "description": "بضم الياء وفتح الخاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D471-يدخلون-w2",
+    "surah": 40,
+    "ayah": 40,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "يَدْخُلُونَ",
+    "variantText": "يُدْخَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D471-يدخلون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D471-يدخلون-w2",
+        "variantId": "v-D471-يدخلون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 471، الكلمات الفرشية (DOCX-P471-FARSH-YADKHULUN)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      }
+    ],
+    "description": "بضم الياء وفتح الخاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

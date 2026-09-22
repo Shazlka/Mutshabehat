@@ -248,6 +248,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -279,6 +283,11 @@
       {
         "readingId": "Q03-R01",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
