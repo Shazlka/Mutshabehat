@@ -969,5 +969,45 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p434-WAQF_RASM-huwa",
+    "pageNumber": 434,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 3,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 3,
+    "baseText": "هُوَ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09",
+        "action": "هاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "هاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "هاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "يقف عليها يعقوب بهاء السكت: هوهْ.",
+    "sourceNotes": [
+      "DOCX-P434-R02408"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
   }
 ]

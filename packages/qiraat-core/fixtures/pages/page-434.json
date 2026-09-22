@@ -113,5 +113,45 @@
     "description": "بخفض الراء",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D434-وهو",
+    "surah": 35,
+    "ayah": 2,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D434-وهو",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان هاء الضمير.",
+    "sources": [
+      {
+        "id": "s-D434-وهو",
+        "variantId": "v-D434-وهو",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P434-R02403",
+        "verificationNotes": "وجه صريح، anchor حقيقي.",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
