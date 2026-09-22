@@ -16,10 +16,7 @@
       "Q02-R01",
       "Q02-R02",
       "Q03-R01",
-      "Q03-R02",
-      "Q05-R01",
-      "Q09-R01",
-      "Q09-R02"
+      "Q03-R02"
     ],
     "locusId": "L528-s53a47b0",
     "locusType": "word_variant",
@@ -45,13 +42,14 @@
     "endToken": 4,
     "operation": "REPLACE",
     "hafsText": "تَتَمَارَىٰ",
-    "variantText": "فَبِأَيِّ آلَاءِ رَبِّكَ تَّتَمَارَىٰ",
+    "variantText": "تَّمَارَىٰ",
     "differenceType": "OTHER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
-      "Q02-R01"
+      "Q09-R01",
+      "Q09-R02"
     ],
     "locusId": "L528-s53a55b0",
     "locusType": "word_variant",
@@ -65,8 +63,227 @@
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
       }
     ],
-    "description": "عن ابن كثير وصلاً",
+    "description": "بإدغام التاء في التاء وصلاً مشددة",
     "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P528-aada-3-r1",
+    "surah": 53,
+    "ayah": 50,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَادًا ٱلْأُولَىٰ",
+    "variantText": "عَادًاِ ٱلْأُولَىٰ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P528-aada",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P528-aada-3-r1",
+        "variantId": "v-AUDIT-P528-aada-3-r1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P528-R03313",
+        "sourceText": "بإسكان اللام وتنوين «عاداً» مكسوراً ﴿عَادًاِ الْأُولَى﴾: ابن كثير، وابن عامر، وعاصم، وحمزة، والكسائي، وخلف.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بإسكان اللام وتنوين عاداً مكسوراً",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P528-aada-4-r2",
+    "surah": 53,
+    "ayah": 50,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَادًا ٱلْأُولَىٰ",
+    "variantText": "عَادًا لُّؤْلَىٰ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "AUDIT-P528-aada",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P528-aada-4-r2",
+        "variantId": "v-AUDIT-P528-aada-4-r2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P528-R03314",
+        "sourceText": "بنقل حركة الهمزة إلى اللام مع إدغام التنوين فيها وهمز الواو ساكنة ﴿عَادًا لُّؤْلَى﴾: قالون (وله عند الابتداء ثلاثة أوجه: ﴿الْأُولَى﴾، ﴿أَلُولَى﴾، ﴿لُولَى﴾).",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بنقل حركة الهمزة مع همز الواو",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P528-aada-5-r3",
+    "surah": 53,
+    "ayah": 50,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَادًا ٱلْأُولَىٰ",
+    "variantText": "عَادًا لُّولَىٰ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P528-aada",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P528-aada-5-r3",
+        "variantId": "v-AUDIT-P528-aada-5-r3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P528-R03315",
+        "sourceText": "بنقل حركة الهمزة إلى اللام مع إدغام التنوين فيها بلا همز ﴿عَادًا لُّولَى﴾: ورش، وأبو عمرو، وأبو جعفر، ويعقوب.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بنقل حركة الهمزة بلا همز",
+    "wajhIndex": 5,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P528-thamud-6",
+    "surah": 53,
+    "ayah": 51,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَثَمُودَا۟",
+    "variantText": "وَثَمُودَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P528-thamud",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P528-thamud-6",
+        "variantId": "v-AUDIT-P528-thamud-6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P528-R03316",
+        "sourceText": "﴿وَثَمُودَاْ﴾: بغير تنوين ﴿وَثَمُودَ﴾ لعاصم وحمزة ويعقوب؛ بالتنوين ﴿وَثَمُودًا﴾ للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بغير تنوين",
+    "wajhIndex": 6,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P528-must-7",
+    "surah": 54,
+    "ayah": 3,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مُّسْتَقِرٌّۭ",
+    "variantText": "مُسْتَقِرٍّۭ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P528-must",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P528-must-7",
+        "variantId": "v-AUDIT-P528-must-7",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P528-R03318",
+        "sourceText": "﴿مُّسْتَقِرٌّ﴾ (آية ٣ - القمر): بالرفع تنويناً ﴿مُسْتَقِرٌّ﴾ للجمهور؛ بالخفض تنويناً ﴿مُسْتَقِرٍّ﴾ لأبي جعفر.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بالخفض تنويناً",
+    "wajhIndex": 7,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P528-nukur-8",
+    "surah": 54,
+    "ayah": 6,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نُّكُرٍ",
+    "variantText": "نُكْرٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P528-nukur",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P528-nukur-8",
+        "variantId": "v-AUDIT-P528-nukur-8",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P528-R03319",
+        "sourceText": "﴿نُكُرٍ﴾: بضم الكاف ﴿نُكُرٍ﴾ للجمهور؛ بإسكان الكاف ﴿نُكْرٍ﴾ لابن كثير.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بإسكان الكاف",
+    "wajhIndex": 8,
     "evidence": []
   }
 ]

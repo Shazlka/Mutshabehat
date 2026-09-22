@@ -204,16 +204,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
@@ -409,10 +399,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -423,11 +409,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -500,16 +481,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -661,10 +632,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "السكت"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "السكت"
       }
     ],
     "readings": [
@@ -675,11 +642,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "السكت",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "السكت",
         "isDefault": false
       }
@@ -819,16 +781,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "نقل حركة الهمزة وحذفها",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "نقل حركة الهمزة وحذفها",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "نقل حركة الهمزة وحذفها",
         "isDefault": true
       }

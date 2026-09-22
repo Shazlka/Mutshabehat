@@ -3180,6 +3180,16 @@ def checked_inline_farsh(page, lines):
         576: [{
             'anchor': 'تِسْعَةَ عَشَرَ', 'ayah': 30, 'variantText': 'تِسْعَةَ عْشَرَ',
             'readerGroup': 'أبو جعفر', 'sourceFragment': 'بإسكان العين ﴿تِسْعَةَ عْشَرَ﴾ لأبي جعفر',
+        }, {
+            # R03744 gives the named group for «إِذْ أَدْبَرَ» and assigns the other
+            # attested face by remainder.  The source's bare «خلف» is Q06 by the
+            # project rule; Q10 is therefore in the remainder only as «خلف العاشر».
+            'anchor': 'إِذْ أَدْبَرَ', 'ayah': 33, 'variantText': 'إِذَا دَبَرَ',
+            'readerGroup': 'ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، خلف العاشر',
+            'readerIds': {'Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q04-R01','Q04-R02',
+                          'Q05-R01','Q07-R01','Q07-R02','Q08-R01','Q08-R02','Q10-R01','Q10-R02'},
+            'sourceFragment': 'بهمزة وصل تسقط وألف بعد الدال ﴿إِذَا دَبَرَ﴾ للباقين',
+            'sourceId': 'DOCX-P576-R03744',
         }],
         580: [{
             'anchor': 'عُذْرًا', 'ayah': 6, 'variantText': 'عُذُرًا',
@@ -3223,6 +3233,8 @@ def checked_inline_farsh(page, lines):
             parsed=explicit_reader_clause(parse_clause)
         except Unresolved:
             parsed=None
+        if not parsed and case.get('readerIds'):
+            parsed=(parse_clause.split('﴿',1)[0].strip(' ؛:'), case['readerIds'], False, None)
         if not parsed and case.get('readerTail'):
             tail=case['readerTail']
             tail_at=parse_clause.rfind(tail)
@@ -3262,6 +3274,19 @@ def checked_inline_farsh(page, lines):
             'sourceReference':f"وثيقة الاستخراج المبوّب، صفحة المصحف {page}، الكلمات الفرشية",
             'sourceText':source_text,
         })
+        if case.get('sourceId') == 'DOCX-P576-R03744':
+            variant['sources'][0].update({
+                'sourceReference':'qiraat_records.jsonl، DOCX-P576-R03744',
+                'verificationNotes':'استُخدم تقسيم الباقين الوارد في السطر المصدر؛ «خلف» المجرد عولج كخلف عن حمزة Q06، ولذلك أُدرج خلف العاشر Q10 في الباقين فقط.'
+            })
+            variant['sources'].append({
+                'id':f's-DOCX-P576-R03744-EXT','variantId':variant['id'],
+                'sourceName':'موسوعة القراءات القرآنية — القراءات العشر',
+                'sourceType':'website',
+                'sourceReference':'https://quranpedia.net/tafsir/al-muddaththir/33',
+                'sourceText':'تثبت الموسوعة وجهي «إِذْ أَدْبَرَ» و«إِذَا دَبَرَ» في الآية 33 من المدثر، مع إسناد الوجه الثاني إلى مجموعة من قراء مكة والكوفة.',
+                'verificationNotes':'قوبل الوجه مع المصدر المستقل.'
+            })
     out.extend(checked_audited_inline_faces(page, lines))
     out.extend(checked_audited_507_510_farsh(page, lines))
     out.extend(checked_audited_515_518_farsh(page, lines))
@@ -3813,11 +3838,11 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P320-R01287','وَأَنَّكَ لَا','وَإِنَّكَ لَا','نافع، شعبة',119,'بكسر الهمزة'),
         ],
         321: [
-            ('DOCX-P321-R01296','تَأْتِهِم','يَأْتِهِم','ابن كثير، ابن عامر، شعبة، حمزة، الكسائي، ابن وردان، خلف العاشر',133,'بياء التذكير'),
+            ('DOCX-P321-R01296','تَأْتِهِم','يَأْتِهِم','ابن كثير، ابن عامر، شعبة، حمزة، الكسائي، ابن وردان، خلف',133,'بياء التذكير'),
         ],
         322: [
             ('DOCX-P322-R01303','قَالَ رَبِّي','قُل رَّبِّي','نافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر، يعقوب',4,'بفعل أمر'),
-            ('DOCX-P322-R01308','فَسْـَٔلُوٓاْ','فَسَلُوا','ابن كثير، الكسائي، خلف العاشر',7,'بنقل الهمزة'),
+            ('DOCX-P322-R01308','فَسْـَٔلُوٓاْ','فَسَلُوا','ابن كثير، الكسائي، خلف',7,'بنقل الهمزة'),
         ],
         303: [
             ('DOCX-P303-R01061','حَمِئَةٍۢ','حَامِيَةٍ','ابن عامر، حمزة، الكسائي، أبو جعفر، خلف العاشر',86,'بالألف'),
@@ -4786,7 +4811,7 @@ def checked_audited_inline_faces(page, lines):
         321: [
             ('DOCX-P321-R01293','تَرْضَىٰ','تُرْضَى','شعبة، الكسائي',130,
              'بضم التاء مبنياً للمفعول'),
-            ('DOCX-P321-R01296','تَأْتِهِم','يَأْتِهِم','ابن كثير، ابن عامر، شعبة، حمزة، الكسائي، ابن وردان، خلف العاشر',133,'بياء التذكير'),
+            ('DOCX-P321-R01296','تَأْتِهِم','يَأْتِهِم','ابن كثير، ابن عامر، شعبة، حمزة، الكسائي، ابن وردان، خلف',133,'بياء التذكير'),
         ],
         322: [
             ('DOCX-P322-R01302','مَا يَأْتِيهِم','مَا يَأْتِيهُم','يعقوب',2,
@@ -4794,7 +4819,7 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P322-R01304','وَهُوَ','وَهْوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',4,
              'بإسكان الهاء'),
             ('DOCX-P322-R01303','قَالَ رَبِّي','قُل رَّبِّي','نافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر، يعقوب',4,'بفعل أمر'),
-            ('DOCX-P322-R01308','فَسْـَٔلُوٓاْ','فَسَلُوا','ابن كثير، الكسائي، خلف العاشر',7,'بنقل الهمزة'),
+            ('DOCX-P322-R01308','فَسْـَٔلُوٓاْ','فَسَلُوا','ابن كثير، الكسائي، خلف',7,'بنقل الهمزة'),
         ],
         323: [
             ('DOCX-P323-R01314','فِيهِمَآ','فِيهُمَا','يعقوب',22,
@@ -5035,6 +5060,14 @@ def checked_audited_inline_faces(page, lines):
                     'sourceReference':f"qiraat_records.jsonl، {match[0]}",
                     'sourceText':match[5],
                     'verificationNotes':'إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.'})
+                if match[0] == 'DOCX-P576-R03744':
+                    variant['sources'].append({
+                        'id':f's-{match[0]}-EXT','variantId':variant['id'],
+                        'sourceName':'موسوعة القراءات القرآنية — القراءات العشر',
+                        'sourceType':'website',
+                        'sourceReference':'https://quranpedia.net/tafsir/al-muddaththir/33',
+                        'sourceText':'تثبت الموسوعة وجهي «إِذْ أَدْبَرَ» و«إِذَا دَبَرَ» في الآية 33 من المدثر، مع إسناد الوجه الثاني إلى مجموعة من قراء مكة والكوفة.',
+                        'verificationNotes':'قوبل الوجه مع المصدر المستقل، واستُخدم تقسيم الباقين الوارد في السطر المصدر؛ «خلف» المجرد عولج كخلف عن حمزة Q06.'})
                 if match[0] in external_face_notes:
                     authority_url,authority_note=external_face_notes[match[0]]
                     variant['sources'][0]['verificationNotes']=authority_note+' المرجع: '+authority_url

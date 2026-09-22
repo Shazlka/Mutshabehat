@@ -1,1 +1,190 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P529-khusha-1",
+    "surah": 54,
+    "ayah": 7,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "خُشَّعًا",
+    "variantText": "خَاشِعًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P529-khusha",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P529-khusha-1",
+        "variantId": "v-AUDIT-P529-khusha-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P529-R03324",
+        "sourceText": "﴿خُشَّعًا﴾: بضم الخاء وتشديد الشين المفتوحة ﴿خُشَّعًا﴾ لنافع، وابن كثير، وابن عامر، وعاصم، وأبي جعفر؛ بكسر الخاء وألف بعدها وتخفيف الشين ﴿خَاشِعًا﴾ للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بكسر الخاء وألف بعدها وتخفيف الشين",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P529-fatah-2",
+    "surah": 54,
+    "ayah": 11,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَفَتَحْنَآ",
+    "variantText": "فَفَتَّحْنَآ",
+    "differenceType": "WORD_FORM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P529-fatah",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P529-fatah-2",
+        "variantId": "v-AUDIT-P529-fatah-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P529-R03325",
+        "sourceText": "﴿فَفَتَحْنَآ﴾: بتخفيف التاء ﴿فَفَتَحْنَا﴾ للجمهور؛ بتشديد التاء ﴿فَفَتَّحْنَا﴾ لابن عامر وأبي جعفر ويعقوب.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بتشديد التاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P529-uyun-3",
+    "surah": 54,
+    "ayah": 12,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عُيُونًۭا",
+    "variantText": "عِيُونًۭا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P529-uyun",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P529-uyun-3",
+        "variantId": "v-AUDIT-P529-uyun-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P529-R03326",
+        "sourceText": "﴿عُيُونٗا﴾: بضم العين لنافع، وأبي عمرو، وهشام، وحفص، وأبي جعفر، ويعقوب، وخلف؛ وبكسر العين للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بكسر العين",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P529-quran-4",
+    "surah": 54,
+    "ayah": 17,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانَ",
+    "variantText": "ٱلْقُرَانَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "AUDIT-P529-quran",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P529-quran-4",
+        "variantId": "v-AUDIT-P529-quran-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P529-R03327",
+        "sourceText": "﴿الْقُرْءَانَ﴾ (معاً): بنقل الهمزة لابن كثير ﴿الْقُرَانَ﴾.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P529-alay-5",
+    "surah": 54,
+    "ayah": 19,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P529-alay",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P529-alay-5",
+        "variantId": "v-AUDIT-P529-alay-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P529-R03328",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 5,
+    "evidence": []
+  }
+]

@@ -47,5 +47,65 @@
         "url": "https://quranpedia.net/qiraat/al-muddaththir/30"
       }
     ]
+  },
+  {
+    "id": "v-D576-اذ_ادبر-w2",
+    "surah": 74,
+    "ayah": 33,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِذْ أَدْبَرَ",
+    "variantText": "إِذَا دَبَرَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D576-اذ_ادبر",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D576-اذ_ادبر-w2",
+        "variantId": "v-D576-اذ_ادبر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P576-R03744",
+        "verificationNotes": "استُخدم تقسيم الباقين الوارد في السطر المصدر؛ «خلف» المجرد عولج كخلف عن حمزة Q06، ولذلك أُدرج خلف العاشر Q10 في الباقين فقط.",
+        "sourceText": "﴿إِذْ أَدْبَرَ﴾: بهمزة قطع مفتوحة وإسكان الدال ﴿إِذْ أَدْبَرَ﴾ لنافع، وحفص، وحمزة، ويعقوب، وخلف؛ بهمزة وصل تسقط وألف بعد الدال ﴿إِذَا دَبَرَ﴾ للباقين."
+      },
+      {
+        "id": "s-DOCX-P576-R03744-EXT",
+        "variantId": "v-D576-اذ_ادبر-w2",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/tafsir/al-muddaththir/33",
+        "sourceText": "تثبت الموسوعة وجهي «إِذْ أَدْبَرَ» و«إِذَا دَبَرَ» في الآية 33 من المدثر، مع إسناد الوجه الثاني إلى مجموعة من قراء مكة والكوفة.",
+        "verificationNotes": "قوبل الوجه مع المصدر المستقل."
+      }
+    ],
+    "description": "بهمزة وصل تسقط وألف بعد الدال",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "تثبت الموسوعة وجهي «إِذْ أَدْبَرَ» و«إِذَا دَبَرَ» في الآية 33 من المدثر، مع إسناد الوجه الثاني إلى مجموعة من قراء مكة والكوفة.",
+        "url": "https://quranpedia.net/tafsir/al-muddaththir/33"
+      }
+    ]
   }
 ]

@@ -20,7 +20,9 @@
       "Q04-R01",
       "Q04-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "AUDIT-P578-75-20-3-2f492b0a",
     "locusType": "word_variant",
@@ -52,7 +54,8 @@
         "text": "Quranpedia: yāʾ for Ibn Kathir, Abu Amr, Ibn Amir, Yaqub; source pairs 75:20 with 75:21.",
         "url": "https://quranpedia.net/qiraat/al-qiyama/20"
       }
-    ]
+    ],
+    "notes": "أضيف Q10 إلى وجه الباقين: لفظ «خلف» المجرد في السطر المصدر هو خلف عن حمزة Q06، ولا يُنسب إلى خلف العاشر إلا بالذكر الصريح."
   },
   {
     "id": "v-AUDIT-P578-75-27-1-f0617b9e",

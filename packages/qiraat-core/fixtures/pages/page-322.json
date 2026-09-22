@@ -25,7 +25,9 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "L322-قال_ربي-1",
     "locusType": "multi_word_variant",
@@ -79,9 +81,7 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q09-R02"
     ],
     "locusId": "L322-نوحي_اليهم-1",
     "locusType": "multi_word_variant",
@@ -239,10 +239,10 @@
     "readingIds": [
       "Q02-R01",
       "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
       "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q07-R02"
     ],
     "locusId": "D322-فسلوا",
     "locusType": "word_variant",

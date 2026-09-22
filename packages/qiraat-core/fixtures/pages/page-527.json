@@ -95,9 +95,7 @@
       "Q06-R01",
       "Q06-R02",
       "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q07-R02"
     ],
     "locusId": "L527-s53a32b0",
     "locusType": "multi_word_variant",
@@ -151,6 +149,108 @@
     ],
     "description": "",
     "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P527-ummah-5-q06",
+    "surah": 53,
+    "ayah": 32,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "أُمَّهَـٰتِكُمْ",
+    "variantText": "إِمِّهَاتِكُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "AUDIT-P527-ummah",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P527-ummah-5-q06",
+        "variantId": "v-AUDIT-P527-ummah-5-q06",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P527-R03304",
+        "sourceText": "﴿أُمَّهَـٰتِكُمْ﴾ (وصلاً بما قبلها): بضم الهمزة وفتح الميم للجمهور؛ بكسر الهمزة والميم لحمزة؛ بكسر الهمزة وفتح الميم للكسائي.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بكسر الهمزة والميم",
+    "wajhIndex": 5,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P527-ummah-6-q07",
+    "surah": 53,
+    "ayah": 32,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "أُمَّهَـٰتِكُمْ",
+    "variantText": "إِمَّهَاتِكُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P527-ummah",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P527-ummah-6-q07",
+        "variantId": "v-AUDIT-P527-ummah-6-q07",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P527-R03304",
+        "sourceText": "﴿أُمَّهَـٰتِكُمْ﴾ (وصلاً بما قبلها): بضم الهمزة وفتح الميم للجمهور؛ بكسر الهمزة والميم لحمزة؛ بكسر الهمزة وفتح الميم للكسائي.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بكسر الهمزة وفتح الميم",
+    "wajhIndex": 6,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P527-ibrahim-7",
+    "surah": 53,
+    "ayah": 37,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَإِبْرَٰهِيمَ",
+    "variantText": "وَإِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "AUDIT-P527-ibrahim",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P527-ibrahim-7",
+        "variantId": "v-AUDIT-P527-ibrahim-7",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P527-R03306",
+        "sourceText": "﴿وَإِبْرَٰهِيمَ﴾: بياء بعد الهاء للجمهور؛ بألف بعد الهاء ﴿وَإِبْرَاهَامَ﴾ لهشام.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      }
+    ],
+    "description": "بألف بعد الهاء",
+    "wajhIndex": 7,
     "evidence": []
   }
 ]

@@ -23601,36 +23601,44 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Deep audited pages 315-318 and 523-526; no new variants were needed, and bare-خلف Q10 leakage was corrected to Q06 while preserving explicitly supported Q10 remainder faces.",
+  "latestSourceCoverageNote": "Deep audited pages 319-322, 527-530, and 575-578; imported token-backed faces, removed one unsupported page-321 face, and enforced bare-خلف=Q06 while retaining Q10 only from explicit remainder evidence.",
   "latestLocalImportCycle": {
-    "id": "deep-audit-p315-p318-p523-p526",
+    "id": "deep-audit-p319-p322-p527-p530-p575-p578",
     "pages": [
-      315,
-      316,
-      317,
-      318,
-      523,
-      524,
-      525,
-      526
+      319,
+      320,
+      321,
+      322,
+      527,
+      528,
+      529,
+      530,
+      575,
+      576,
+      577,
+      578
     ],
-    "variantsAdded": 0,
+    "variantsAdded": 16,
+    "netVariantChange": 16,
     "newRulingLoci": 0,
-    "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 94,
+    "correctedRulingLoci": 100,
     "perPageVariants": {
-      "315": 0,
-      "316": 0,
-      "317": 0,
-      "318": 0,
-      "523": 0,
-      "524": 0,
-      "525": 0,
-      "526": 0
+      "319": 0,
+      "320": 0,
+      "321": -1,
+      "322": 0,
+      "527": 3,
+      "528": 6,
+      "529": 5,
+      "530": 2,
+      "575": 0,
+      "576": 1,
+      "577": 0,
+      "578": 0
     },
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2839,
+      "variants": 2855,
       "usulRulings": 9894,
       "validator": "passed",
       "tests": "38/38",
@@ -23638,7 +23646,7 @@
       "build": "pending",
       "importerIdempotent": true
     },
-    "details": "Attribution corrections only. Bare خلف is Q06; Q10 remains only where independent source/remainder evidence supports it. All changes are additive-safe corrections with no duplicate loci."
+    "details": "Pages 319-322 attribution corrections removed one unsupported face on p321. Pages 527-530 added 16 net faces. Page 576 added one token-backed face; p575/p577/p578 only gained Q10 on remainder faces under the project rule."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -23968,5 +23976,43 @@
       "importerIdempotent": true
     },
     "details": "Page 314 gained one IDGHAM_SAGHIR locus and a Q04-R02 merge; page 559 gained four Yaqub WAQF_RASM loci; page 562 gained one Susi performance face. Bare خلف Q10 leakage was corrected across pages 311-313 and 519-522."
+  },
+  "previousImportCycle315_318_523_526": {
+    "id": "deep-audit-p315-p318-p523-p526",
+    "pages": [
+      315,
+      316,
+      317,
+      318,
+      523,
+      524,
+      525,
+      526
+    ],
+    "variantsAdded": 0,
+    "newRulingLoci": 0,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 94,
+    "perPageVariants": {
+      "315": 0,
+      "316": 0,
+      "317": 0,
+      "318": 0,
+      "523": 0,
+      "524": 0,
+      "525": 0,
+      "526": 0
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2839,
+      "usulRulings": 9894,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "pending",
+      "build": "pending",
+      "importerIdempotent": true
+    },
+    "details": "Attribution corrections only. Bare خلف is Q06; Q10 remains only where independent source/remainder evidence supports it. All changes are additive-safe corrections with no duplicate loci."
   }
 }
