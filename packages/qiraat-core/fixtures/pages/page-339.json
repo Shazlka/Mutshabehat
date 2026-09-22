@@ -7,20 +7,14 @@
     "endToken": 7,
     "operation": "REPLACE",
     "hafsText": "قُتِلُوٓا۟",
-    "variantText": "قَـٰتَلُوا۟",
+    "variantText": "قُتِّلُوٓا۟",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q04-R01",
-      "Q04-R02",
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q04-R02"
     ],
     "locusId": "L339-قتلوا-1",
     "locusType": "word_variant",
@@ -35,7 +29,7 @@
         "sourceText": "SH: وَقَاتَلُوا اضْمُمْ وَاكْسِرِ التَّاءَ شَافِيًا"
       }
     ],
-    "description": "بفتح القاف وألف بعدها وتخفيف التاء مفتوحة",
+    "description": "بتشديد التاء المكسورة",
     "wajhIndex": 2,
     "evidence": [
       {

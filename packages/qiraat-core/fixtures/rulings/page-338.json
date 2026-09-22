@@ -149,16 +149,6 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": true,
@@ -222,16 +212,6 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": true,

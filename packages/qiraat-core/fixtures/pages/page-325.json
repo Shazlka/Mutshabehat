@@ -200,5 +200,77 @@
     "description": "بضم الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P325-WUJ-1",
+    "surah": 21,
+    "ayah": 39,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وُجُوهِهِمُ ٱلنَّارَ",
+    "variantText": "وُجُوهِهِمِ ٱلنَّارَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P325-WUJ",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D325-وجوههم_النار-w2",
+        "variantId": "v-D325-وجوههم_النار-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01336",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ bare خلف treated as Q06.",
+        "sourceText": "بضم الهاء والميم وصلاً ﴿وُجُوهِهُمُ﴾: حمزة، الكسائي، خلف."
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P325-WUJ-2",
+    "surah": 21,
+    "ayah": 39,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وُجُوهِهِمُ ٱلنَّارَ",
+    "variantText": "وُجُوهِهُمُ ٱلنَّارَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P325-WUJ",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D325-وجوههم_النار-w3",
+        "variantId": "v-D325-وجوههم_النار-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01336",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ bare خلف treated as Q06.",
+        "sourceText": "بضم الهاء والميم وصلاً ﴿وُجُوهِهُمُ﴾: حمزة، الكسائي، خلف."
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 3,
+    "evidence": []
   }
 ]
