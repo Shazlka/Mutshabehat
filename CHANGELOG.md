@@ -10,6 +10,7 @@ and any required DB migration.
 Live: https://mutshabehat-v2.vercel.app
 
 ## 2026-09-22
+- **Qiraat — source PDF manifest:** registered the 30 attached `مصحف القراءات العشر` PDFs with local provenance, page counts, and SHA-256 checksums in `docs/qiraat/source-pdf-manifest.json`; no fixture data was changed and no DB migration is required.
 - **Qiraat — complete usul backfill, pages 585–604:** imported all safe, explicitly attributed usul records from `qiraat_pages_585_604_full.sql`, including hamz, naql, sakt, imalah/taqlil, tarqiq/taghliz, silat al-ha, meem jam, madd badal, and yaat families. **Verification:** validator clean (3,089 variants, 10,099 rulings), DB migration: none — fixture-only.
 - **Qiraat — attached pages 585–604 import:** added 24 source-backed wording/performance faces from `qiraat_pages_585_604.json`, including all explicit reader groups and separate Hamza وصل/وقف faces on p604; mapped source labels p593 and p598 to actual Mushaf fixture pages 594 and 599. **Verification:** validator clean (3,081 variants, 10,036 rulings), DB migration: none — fixture-only.
 - **Qiraat — full source idempotency sweep, pages 225–584:** merged 5 remaining source-backed word variants and 72 reader assignments across pages 228, 230, 253, 259, 265, 341, 412, 439, 471, 472, 486, and 583. **Verification:** importer sweep, validator clean (3,057 variants, 10,036 rulings), DB migration: none — fixture-only.

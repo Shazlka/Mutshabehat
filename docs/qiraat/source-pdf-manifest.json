@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "sourceName": "مصحف القراءات العشر",
+  "sourceType": "printed-book",
+  "description": "Attached source PDFs for the ten-reading Mushaf. Binary files remain in the user source folders; this manifest records their provenance and integrity.",
+  "createdAt": "2026-09-22T12:00:00.000Z",
+  "volumes": [
+    {
+      "volume": 1,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged).pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged).pdf",
+      "pageCount": 20,
+      "sha256": "450016e27c22d29bdf1d733c246f01be04f2851ef4ff1ee358e82fa0d54ac04f",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 2,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 2.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 2.pdf",
+      "pageCount": 20,
+      "sha256": "57df2d8a150e4ba7584f183e6ebd8dc5b67303aeab13d97edcafd31940fe75cd",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 3,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 3.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 3.pdf",
+      "pageCount": 1,
+      "sha256": "f5d7881f64a63df86c0065536c1bcc592e84ef2ceb95797554a3b2114adb1c60",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 4,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 4.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 4.pdf",
+      "pageCount": 20,
+      "sha256": "1f00a1b9b025841e448f92b82ea1b322d6c058869271665709f2093662a06213",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 5,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 5.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 5.pdf",
+      "pageCount": 21,
+      "sha256": "e7ee224b0d679012369fbbd1ca5eaff76e32822b8f4c1db40b71a33da6f9a1ec",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 6,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 6.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 6.pdf",
+      "pageCount": 20,
+      "sha256": "630714e668e0e732341caf48882cc2f085c4299cc0e40db2b41e7492b27f47e6",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 7,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 7.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 7.pdf",
+      "pageCount": 24,
+      "sha256": "564ef78660947f4918c484eda8623942a31ac99496373b4868ef65abea2c9914",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 8,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 8.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 8.pdf",
+      "pageCount": 20,
+      "sha256": "c8399e41a5b082e309c1952b21b406b021242903b328ccf1e1fe141177ba99fa",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 9,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 9.pdf",
+      "localPath": "/Users/amrelshazly/Downloads/‎⁨مصحف القراءات العشر-1⁩ (dragged) 9.pdf",
+      "pageCount": 20,
+      "sha256": "4d06523f387a0d0135b83b144244173e0850d939203e56e0d07da8a6bb521e81",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 10,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 10.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 10.pdf",
+      "pageCount": 19,
+      "sha256": "450cacedeb65313b34fb9526be21a45099a5097b191b76d83f932e71a113e974",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 11,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 11.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 11.pdf",
+      "pageCount": 20,
+      "sha256": "b42d35aa35dca46551d47b5221632f6a9612fd14282679c3e1e6e9d085a03d58",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 12,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 12.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 12.pdf",
+      "pageCount": 20,
+      "sha256": "fd5bc9323cec68e27f042dd2cf2d6ebf04fba9a710cc01a6c2b21a03e945d458",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 13,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 13.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 13.pdf",
+      "pageCount": 20,
+      "sha256": "727b9c493907858a6c1a26f71effca4cc246eb52a88d37ee00f40cf12ac7703e",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 14,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 14.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 14.pdf",
+      "pageCount": 20,
+      "sha256": "b75f80ff81221028607ac9f9a1a60afac768c0ac0bd6ed9340b4d5b1021a5921",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 15,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 15.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 15.pdf",
+      "pageCount": 20,
+      "sha256": "15e9597200638eeba8a134c1e9a91b1b8f804d0153bf3da6fc1a15d146819e66",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 16,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 16.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 16.pdf",
+      "pageCount": 20,
+      "sha256": "82dbbc910fc217f5d09a9bc1860d2eca8efa46bdf4d71f0495dcbee206f447f7",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 17,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 17.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 17.pdf",
+      "pageCount": 20,
+      "sha256": "8c5485a7455c62504b39cc8330f108de4f8ac354ccf7b8525fc70af5500b7371",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 18,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 18.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 18.pdf",
+      "pageCount": 20,
+      "sha256": "22527c32fb9489257e958db63aeca001d6a9c58572116b733bbc63ed7fec76e8",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 19,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 19.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 19.pdf",
+      "pageCount": 20,
+      "sha256": "2298bfe026855216e641a563c195ceaab066d1cdd3f428e3c0c916d6c90d123a",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 20,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 20.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 20.pdf",
+      "pageCount": 40,
+      "sha256": "52c4414b4efc28c20152d322f586a00e83fdbb7d6ac00181f81190cc35d007dd",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 21,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 21.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 21.pdf",
+      "pageCount": 20,
+      "sha256": "aac9c34616c2a8a7482d50da8cb4a3e0de9c57fbce1259f03158906a9d1a33cc",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 22,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 22.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 22.pdf",
+      "pageCount": 20,
+      "sha256": "8c4f226f0af3777a4149a939f824d2259cd9451ed17e95d791ab4876e01cfd26",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 23,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 23.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 23.pdf",
+      "pageCount": 20,
+      "sha256": "c471c40465b010f3ee8b52b75ff8f89f26ae1a549d628985e49ab1a26e23e296",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 24,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 24.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 24.pdf",
+      "pageCount": 20,
+      "sha256": "6f8bf470156d33e8173fe3aac4b79dbdd6969b5b725960810c77ac53d75e91a3",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 25,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 25.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 25.pdf",
+      "pageCount": 20,
+      "sha256": "ecbfe2931264a6ab4b13096bf758bab530a6e74f9685360eac36c9a652985728",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 26,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 26.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 26.pdf",
+      "pageCount": 20,
+      "sha256": "36a230efeced8685e2fa42b83a60a0ce7d80164bfd21605704fb189cc0fa30f0",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 27,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 27.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 27.pdf",
+      "pageCount": 20,
+      "sha256": "be95d837e78f6d75ad18bd276d403f6781d37a5703379f137bcac9d9aa8c6045",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 28,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 28.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 28.pdf",
+      "pageCount": 20,
+      "sha256": "7227299e2db3d449700f24d5e12e49cd19324d5c11d8a1aebf6a99ff0d349942",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 29,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 29.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 29.pdf",
+      "pageCount": 20,
+      "sha256": "d1e937034c92e65b452216270c6ef5cd88b1309cec7a7a4b7c8e2816ff83306d",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    },
+    {
+      "volume": 30,
+      "filename": "‎⁨مصحف القراءات العشر-1⁩ (dragged) 30.pdf",
+      "localPath": "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/mushaf data/‎⁨مصحف القراءات العشر-1⁩ (dragged) 30.pdf",
+      "pageCount": 20,
+      "sha256": "137ded94aff9c75c1f0f2c1abc23805c6f42d06cab429151483a6d2966c93bc3",
+      "mappingStatus": "source-PDF sequence; Mushaf-page mapping pending"
+    }
+  ],
+  "totalPdfPages": 605,
+  "notes": [
+    "Volumes 1-9 were supplied from Downloads and volumes 10-30 from iCloud Drive.",
+    "The received PDFs have non-uniform page counts (including volume 3=1 page, 5=21, 7=24, 20=40); do not infer Mushaf-page offsets until the scans are reconciled."
+  ]
+}

@@ -21,7 +21,11 @@
         "recordCount": 20,
         "path": "attached user source"
       }
-    ]
+    ],
+    "pdfManifest": "docs/qiraat/source-pdf-manifest.json",
+    "pdfVolumeCount": 30,
+    "pdfTotalPages": 605,
+    "pdfMappingStatus": "manifested; Mushaf-page mapping pending"
   },
   "storage": {
     "qiraatData": "fixture-only",
