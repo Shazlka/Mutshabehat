@@ -2414,6 +2414,8 @@ def build(page_list, categories=None, complete_ikhfa=False):
         source_links_added=0
         if categories is None:
             v,source_links_added=reconcile_audited_farsh(page,pd['farsh'],v,ev)
+            if page == 428:
+                v = [x for x in v if not (x.get('variantText','').startswith('عَـٰلِم') and set(x.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
             vstats['sourceLinksAdded']+=source_links_added
         # A token can have multiple source-supported faces when their reader sets differ.
         # Track the form already assigned to each transmission: same-form readers may be
@@ -2430,6 +2432,8 @@ def build(page_list, categories=None, complete_ikhfa=False):
             form_key=(*token_key,face_key(e.get('variantText') or ''))
             seen_forms[form_key].update(e.get('readingIds',[]))
         for x in v:
+            if page == 428 and x.get('id') == 'v-D428-عالم_الغيب-w1':
+                continue
             token_key=(x['surah'],x['ayah'],x['startToken'])
             form=face_key(x.get('variantText') or '')
             form_key=(*token_key,form)
@@ -2903,6 +2907,8 @@ def collect_farsh(page, lines):
     out.extend(checked_inline_farsh(page, lines))
     out.extend(checked_audited_p277_278_farsh(page, lines))
     out.extend(checked_audited_307_310_farsh(page, lines))
+    if page == 428:
+        out = [v for v in out if not (v.get('variantText','').startswith('عَـٰلِم') and set(v.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
     return out
 
 def checked_audited_307_310_farsh(page, lines):
@@ -3293,6 +3299,11 @@ def checked_inline_farsh(page, lines):
     out.extend(checked_audited_495_498_farsh(page, lines))
     out.extend(checked_audited_471_474_farsh(page, lines))
     out.extend(checked_audited_459_462_farsh(page, lines))
+    # Page 428's processed source has an older generic row that incorrectly assigns
+    # the Mushaf spelling of عَالِمِ الغيب to Q10; the explicit three-way DOCX rows
+    # above are authoritative and map bare خلف to Q06.
+    if page == 428:
+        out = [v for v in out if not (v.get('variantText','').startswith('عَـٰلِم') and set(v.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
     return out
 
 def checked_audited_459_462_farsh(page, lines):
@@ -4234,6 +4245,10 @@ def checked_audited_inline_faces(page, lines):
              'بضم الهاء'),
             ('DOCX-P427-R02326','كَبِيرٗا','كَثِيرًا','نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، الكسائي، أبو جعفر، يعقوب، خلف العاشر',68,
              'بالثاء المثلثة'),
+        ],
+        428: [
+            ('DOCX-P428-R02331','عَـٰلِمِ الْغَيْبِ','عَالِمِ الْغَيْبِ','ابن كثير، أبو عمرو، عاصم، روح، خلف',3,'بخفض الميم منونة بعد ألف فاعل'),
+            ('DOCX-P428-R02332','عَـٰلِمِ الْغَيْبِ','عَالِمُ الْغَيْبِ','نافع، ابن عامر، أبو جعفر، رويس',3,'برفع الميم منونة'),
         ],
         429: [
             ('DOCX-P429-R02351','تَبَيَّنَتِ','تُبُيِّنَتِ','رويس',14,
