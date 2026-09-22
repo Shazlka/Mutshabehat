@@ -239,9 +239,7 @@
       "Q06-R01",
       "Q06-R02",
       "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q07-R02"
     ],
     "locusId": "AUDIT-P538-R03402-1713639d",
     "locusType": "word_variant",
@@ -253,7 +251,7 @@
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P538-R03402",
         "sourceText": "بحذف الألف وتشديد العين المكسورة ورفع الفاء ﴿فَيُضَعِّفُهُ﴾: نافع، وأبو عمرو، وحمزة، والكسائي، وخلف.",
-        "verificationNotes": "نص المصدر الخام محفوظ كما هو، لكن وصف الشكل فيه لا يوافق مجموعة القراء؛ رُبطت المجموعة بالشكل المطابق لجهاز القراءات المستقل: بالألف وتخفيف العين ورفع الفاء."
+        "verificationNotes": "نص المصدر الخام محفوظ كما هو؛ سُمّي «خلف» مجرداً، فحُمل على خلف عن حمزة (Q06) وفق توجيه المشروع، ولم يُضف خلف العاشر دون تسمية صريحة."
       }
     ],
     "description": "بحذف الألف وتشديد العين المكسورة ورفع الفاء ﴿فَيُضَعِّفُهُ﴾: نافع، وأبو عمرو، وحمزة، والكسائي، وخلف.",
@@ -261,7 +259,7 @@
     "evidence": [
       {
         "source": "موسوعة القراءات القرآنية — القراءات العشر",
-        "text": "With alif after ḍād, light ʿayn and rafʿ: Nafi, Abu Amr, Hamza, al-Kisai and Khalaf al-Ashir.",
+        "text": "With alif after ḍād, light ʿayn and rafʿ: Nafi, Abu Amr, Hamza, al-Kisai and Khalaf al-Ashir. External Quranpedia lists Khalaf al-Ashir for this form, but the supplied source says bare خلف; project policy maps bare خلف to Q06, so Q10 is withheld.",
         "url": "https://quranpedia.net/qiraat/al-hadid/11"
       }
     ]

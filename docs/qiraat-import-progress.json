@@ -23601,44 +23601,44 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Deep audited pages 323-326 and 531-534; corrected page-326 Ibn Amir token face to تُسْمِعُ, preserved source remainder Q10 assignments, and removed bare-خلف Q10 leakage.",
+  "latestSourceCoverageNote": "Deep audited pages 335-338 and 535-538; added two token-backed IDGHAM_SAGHIR loci, expanded usul assignments, and enforced bare-خلف=Q06 with external checks.",
   "latestLocalImportCycle": {
-    "id": "deep-audit-p323-p326-p531-p534",
+    "id": "deep-audit-p335-p338-p535-p538",
     "pages": [
-      323,
-      324,
-      325,
-      326,
-      531,
-      532,
-      533,
-      534
+      335,
+      336,
+      337,
+      338,
+      535,
+      536,
+      537,
+      538
     ],
     "variantsAdded": 0,
-    "newRulingLoci": 0,
-    "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 3,
+    "newRulingLoci": 2,
+    "rulingRecordsNetChanged": 2,
+    "correctedRulingLoci": 15,
     "perPageVariants": {
-      "323": 0,
-      "324": 0,
-      "325": 0,
-      "326": 0,
-      "531": 0,
-      "532": 0,
-      "533": 0,
-      "534": 0
+      "335": 0,
+      "336": 0,
+      "337": 0,
+      "338": 0,
+      "535": 0,
+      "536": 0,
+      "537": 0,
+      "538": 0
     },
     "status": "locally verified; deployment pending",
     "validation": {
       "variants": 2855,
-      "usulRulings": 9894,
+      "usulRulings": 9896,
       "validator": "passed",
       "tests": "38/38",
-      "tsc": "passed",
+      "tsc": "pending",
       "build": "pending",
       "importerIdempotent": true
     },
-    "details": "No new variant count; source remainder reader assignments were corrected and one existing page-326 Ibn Amir variant was corrected in place to avoid overlapping same-reading faces."
+    "details": "No farsh additions. Two new token-backed IDGHAM_SAGHIR loci and multiple corrected/expanded usul assignments; bare خلف remains Q06."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -24052,5 +24052,43 @@
       "importerIdempotent": true
     },
     "details": "Pages 319-322 attribution corrections removed one unsupported face on p321. Pages 527-530 added 16 net faces. Page 576 added one token-backed face; p575/p577/p578 only gained Q10 on remainder faces under the project rule."
+  },
+  "previousImportCycle323_326_531_534": {
+    "id": "deep-audit-p323-p326-p531-p534",
+    "pages": [
+      323,
+      324,
+      325,
+      326,
+      531,
+      532,
+      533,
+      534
+    ],
+    "variantsAdded": 0,
+    "newRulingLoci": 0,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 3,
+    "perPageVariants": {
+      "323": 0,
+      "324": 0,
+      "325": 0,
+      "326": 0,
+      "531": 0,
+      "532": 0,
+      "533": 0,
+      "534": 0
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2855,
+      "usulRulings": 9894,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "passed",
+      "build": "pending",
+      "importerIdempotent": true
+    },
+    "details": "No new variant count; source remainder reader assignments were corrected and one existing page-326 Ibn Amir variant was corrected in place to avoid overlapping same-reading faces."
   }
 }

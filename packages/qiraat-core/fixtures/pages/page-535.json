@@ -157,9 +157,7 @@
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
       "Q05-R01",
-      "Q06-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q06-R02"
     ],
     "locusId": "AUDIT-P535-R03371-071b5238",
     "locusType": "performance_variant",
@@ -171,7 +169,7 @@
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03371",
         "sourceText": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
-        "verificationNotes": "نص المصدر يسمي شعبة وحمزة وخلف، وأُسند «خلف» فيه إلى خلف عن حمزة (Q06) وفق توجيه المشروع؛ وأضاف الجهاز إدريس وإسحاق (Q10) صراحةً للوجه نفسه."
+        "verificationNotes": "نص المصدر يسمي شعبة وحمزة وخلف، وأُسند «خلف» فيه إلى خلف عن حمزة (Q06) وفق توجيه المشروع؛ أُبقي الوجه على شعبة وخلف عن حمزة فقط، ولم تُنسب تسمية «خلف» المجردة إلى خلف العاشر."
       },
       {
         "id": "s-AUDIT-P535-R03371-071b5238-QP",
@@ -188,7 +186,7 @@
     "evidence": [
       {
         "source": "موسوعة القراءات القرآنية — القراءات العشر",
-        "text": "Sukūn on the first rāʾ without sakt: Shuba, Khallad, Idris and Ishaq.",
+        "text": "Sukūn on the first rāʾ without sakt: Shuba, Khallad, Idris and Ishaq. Quranpedia independently distinguishes Q10 (Idris/Ishaq) from bare خلف; under the project attribution policy, the bare source name is Q06, so Q10 is withheld here.",
         "url": "https://quranpedia.net/qiraat/al-waqia/37"
       }
     ],
