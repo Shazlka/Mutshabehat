@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T00:00:00+04:00",
+  "updatedAt": "2026-09-22T23:59:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 3001,
-    "usulRulings": 10007,
+    "variants": 3052,
+    "usulRulings": 10030,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -49,24 +49,24 @@
     ],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Targeted audit through Mushaf pages 324 with external Quranpedia checks. Bare خلف is Q06; explicit خلف العاشر or unambiguous source remainder retains Q10. Pages 321-324 are locally verified; p548 هُوَ remains the only unresolved occurrence-selection case.",
-    "latestSourceCoverageNote": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending."
+    "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. Pages with no safe additions were recorded as source-consistent. One occurrence-selection case remains withheld: p548 هُوَ has six indistinguishable occurrences.",
+    "latestSourceCoverageNote": "Batched audits advanced through pages 584. Latest commit 9186a9f covers pages 573-584; totals are 3052 variants and 10030 usul rulings. Validator, Qiraat tests, TypeScript, and production build pass for each batch. Deployment status is subject to Vercel rate limiting."
   },
-  "sourceCoverageStatus": "Targeted audit through Mushaf pages 324 with external Quranpedia checks. Bare خلف is Q06; explicit خلف العاشر or unambiguous source remainder retains Q10. Pages 321-324 are locally verified; p548 هُوَ remains the only unresolved occurrence-selection case.",
+  "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. Pages with no safe additions were recorded as source-consistent. One occurrence-selection case remains withheld: p548 هُوَ has six indistinguishable occurrences.",
   "currentBatch": {
-    "id": "targeted-cycle-p321-p324",
+    "id": "targeted-cycle-p573-p584",
     "pages": [
-      321,
-      324
+      573,
+      584
     ],
-    "variantsAdded": 2,
+    "variantsAdded": 0,
     "newRulingLoci": 0,
-    "mergedRulingLoci": 5,
-    "readerAssignmentsAdded": 10,
+    "mergedRulingLoci": 0,
+    "readerAssignmentsAdded": 0,
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 3001,
-      "usulRulings": 10007,
+      "variants": 3052,
+      "usulRulings": 10030,
       "validator": "passed",
       "importerIdempotent": true
     },
@@ -77,8 +77,8 @@
       "notes": "p548 has six indistinguishable هُوَ occurrences; no safe occurrence selector."
     }
   },
-  "lastConfirmedDeployedDataCommit": "271832f",
-  "lastConfirmedVercelState": "success",
+  "lastConfirmedDeployedDataCommit": "9186a9f",
+  "lastConfirmedVercelState": "pending/rate-limited",
   "lastProductionSmoke": {
     "pages": [
       505,
