@@ -325,5 +325,52 @@
         "verificationNotes": "مصدر وثيقة الاستخراج؛ إسناد الوقف إلى يعقوب صريح."
       }
     ]
+  },
+  {
+    "id": "r-p557-IDGHAM_SAGHIR-ويغفر_لكم-4",
+    "pageNumber": 557,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 64,
+    "ayah": 17,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 17,
+    "baseText": "وَيَغْفِرْ لَكُمْ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P557-R03582",
+        "sourceText": "الإدغام الصغير: ﴿يَغْفِرْ لَكُمْ﴾: أبو عمرو بخلف عن الدوري.",
+        "verificationNotes": "إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري."
+      }
+    ]
   }
 ]

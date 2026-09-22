@@ -33,14 +33,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -66,16 +58,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
       }
@@ -115,12 +97,12 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
+        "authorityId": "Q03-R01",
+        "action": "تقليل لورش وأبي عمرو"
       },
       {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
+        "authorityId": "Q03-R02",
+        "action": "تقليل لورش وأبي عمرو"
       }
     ],
     "readings": [
@@ -140,13 +122,13 @@
         "isDefault": true
       },
       {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
+        "readingId": "Q03-R01",
+        "action": "تقليل لورش وأبي عمرو",
         "isDefault": true
       },
       {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "تقليل لورش وأبي عمرو",
         "isDefault": true
       }
     ],
@@ -236,14 +218,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -259,16 +233,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
       }
@@ -306,14 +270,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -329,16 +285,6 @@
       },
       {
         "readingId": "Q06-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
       }
