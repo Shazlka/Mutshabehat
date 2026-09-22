@@ -16,6 +16,7 @@ import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json
 import page228Rulings from './fixtures/rulings/page-228.json' with { type: 'json' }
 import page234Rulings from './fixtures/rulings/page-234.json' with { type: 'json' }
 import page007Variants from './fixtures/pages/page-007.json' with { type: 'json' }
+import page258Variants from './fixtures/pages/page-258.json' with { type: 'json' }
 import page266Rulings from './fixtures/rulings/page-266.json' with { type: 'json' }
 
 const ALL_READING_IDS = QIRAAT_READINGS.map((reading) => reading.id)
@@ -114,6 +115,16 @@ test('operations: REPLACE/INSERT/DELETE/MERGE/SPLIT/DIACRITIC_CHANGE all resolve
   assert.equal(resolveTokenForReading(VARIANTS, 999, 1, 4, 'SYN-B', 'Q03-R02').kind, 'suppressed') // MERGE tail token
   assert.equal(resolveTokenForReading(VARIANTS, 999, 1, 5, 'SYN-WHOLE', 'Q04-R01').text, 'SYN-PART1 SYN-PART2') // SPLIT
   assert.equal(resolveTokenForReading(VARIANTS, 999, 1, 6, 'SYN-WORD', 'Q05-R01').text, 'SYN-WORD (diacritic)') // DIACRITIC_CHANGE
+})
+
+test('page 258 multi-token replacement renders one alternate word per Mushaf token', () => {
+  const readingId = 'Q06-R01'
+  const first = resolveTokenForReading(page258Variants, 14, 19, 5, 'خَلَقَ', readingId, { includeUnpublished: true })
+  const second = resolveTokenForReading(page258Variants, 14, 19, 6, 'ٱلسَّمَـٰوَٰتِ', readingId, { includeUnpublished: true })
+  assert.equal(first.kind, 'variant')
+  assert.equal(second.kind, 'variant')
+  assert.equal(first.text, 'خَالِقُ')
+  assert.equal(second.text, 'ٱلسَّمَاوَاتِ')
 })
 
 test('renderToken() token-object wrapper matches resolveTokenForReading()', () => {
