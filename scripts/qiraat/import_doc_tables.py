@@ -3688,6 +3688,9 @@ def checked_audited_inline_faces(page, lines):
     different forms are dropped, while separate, non-overlapping forms are kept together.
     """
     cases = {
+        411: [
+            ('DOCX-P411-R02188','هُزُوًا','هُزْءًا','حمزة، خلف',6,'بهمز الواو، و«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
         464: [
             # The two Abu Ja'far faces are distinct: Ibn Wardān's alternate has the
             # fully extended final alif, while the other Abu Ja'far face has the
@@ -3993,6 +3996,8 @@ def checked_audited_inline_faces(page, lines):
              'بضم الهاء'),
         ],
         411: [
+            ('DOCX-P411-R02188','هُزُوًا','هُزْءًا','حمزة، خلف',6,
+             'بهمز الواو، و«خلف» المجرد هو خلف عن حمزة Q06.'),
             ('DOCX-P411-R02183','وَرَحْمَةً','وَرَحْمَةٌ','حمزة',3,
              'بالرفع'),
             ('DOCX-P411-R02184','لِّيُضِلَّ','لِيَضِلَّ','ابن كثير، أبو عمرو',6,

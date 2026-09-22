@@ -436,6 +436,10 @@
       {
         "authorityId": "Q08-R02",
         "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إدغام صغير"
       }
     ],
     "readings": [
@@ -486,6 +490,11 @@
       },
       {
         "readingId": "Q08-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
         "action": "إدغام صغير",
         "isDefault": true
       }
