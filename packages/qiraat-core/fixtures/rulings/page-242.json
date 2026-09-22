@@ -1378,5 +1378,125 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p242-WAQF_HAMZA-نفسي_ان-9",
+    "pageNumber": 242,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 53,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 53,
+    "baseText": "نَفْسِىٓ ۚ إِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p242-WAQF_HAMZA-ربي_ان-10",
+    "pageNumber": 242,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 53,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 53,
+    "baseText": "رَبِّىٓ ۚ إِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p242-WAQF_HAMZA-اني_اوفي-11",
+    "pageNumber": 242,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 59,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 59,
+    "baseText": "أَنِّىٓ أُوفِى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]

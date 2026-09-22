@@ -283,5 +283,99 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p464-YAAT_IDAFA-ياعبادي_الذين-4",
+    "pageNumber": 464,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 53,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 53,
+    "baseText": "يَـٰعِبَادِىَ ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الإسكان وصلاً"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الإسكان وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الإسكان وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
   }
 ]
