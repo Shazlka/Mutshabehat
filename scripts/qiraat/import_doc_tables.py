@@ -3049,6 +3049,11 @@ def checked_audited_late_explicit_farsh(page, lines):
     transmissions exactly once.  This keeps the import additive and occurrence-safe.
     """
     cases = {
+        519: [
+            ('DOCX-P519-R03221','يَوْمَ نَقُولُ','يَوْمَ يَقُولُ',
+             {'Q01-R01','Q01-R02','Q05-R01'},30,1,
+             'بياء الغيب المفتوحة لنافع وشعبة؛ ثبت الوجه في العرض الخارجي للقراءات'),
+        ],
         529: [
             ('DOCX-P529-R03329','سَيَعْلَمُونَ','سَتَعْلَمُونَ',
              {'Q04-R01','Q04-R02','Q06-R01','Q06-R02'},26,1,'بتاء الخطاب لابن عامر وحمزة'),
@@ -3100,6 +3105,39 @@ def checked_audited_late_explicit_farsh(page, lines):
             candidate['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، {sid}',
                 'sourceText':row['raw_text'],
                 'verificationNotes':'وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.'})
+            if page == 519:
+                candidate['sources'][0]['verificationNotes'] += ' وتؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/qaf/30؛ أُسقط وجه يُقَالُ لعدم تحقق مستقل.'
+    if page == 524:
+        # The four attested syntactic faces change two discontiguous spans in 52:21.
+        # Keep each span separate so the unchanged بِإِيمَانٍ أَلْحَقْنَا tokens are
+        # not swallowed into an imprecise whole-ayah variant.
+        loc_a=T.find(524,'وَٱتَّبَعَتْهُمْ ذُرِّيَّتُهُم',ayah=21)
+        loc_b=T.find(524,'بِهِمْ ذُرِّيَّتَهُمْ',ayah=21)
+        specs=[
+          ('DOCX-P524-R03263','وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ','بِهِمْ ذُرِّيَّتَهُمْ',
+           {'Q02-R01','Q02-R02','Q05-R01','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},'وجه مطابق للرسم للقراء المذكورين',True),
+          ('DOCX-P524-R03264','وَاتَّبَعَتْهُمْ ذُرِّيَّاتُهُمْ','بِهِمْ ذُرِّيَّاتِهِمْ',
+           {'Q01-R01','Q01-R02','Q08-R01','Q08-R02'},'جمع الكلمتين بالتاء لنافع وأبي جعفر',False),
+          ('DOCX-P524-R03265','وَأَتْبَعْنَاهُمْ ذُرِّيَّاتِهِمْ','بِهِمْ ذُرِّيَّاتِهِمْ',
+           {'Q03-R01','Q03-R02'},'بفعل ماضٍ ثلاثي لأبي عمرو',False),
+          ('DOCX-P524-R03266','وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُم','بِهِمْ ذُرِّيَّاتِهِمْ',
+           {'Q04-R01','Q04-R02','Q09-R01','Q09-R02'},'إفراد الأولى وجمع الثانية لابن عامر ويعقوب',False),
+        ]
+        for sid,va,vb,readers,desc,same in specs:
+            row=PACKAGE_RECORDS.get(sid)
+            if not row or row.get('raw_text') not in lines or is_neg(row['raw_text']) or is_univ(row['raw_text']):
+                continue
+            for idx,(loc,base,variant) in enumerate(((loc_a,loc_a['baseText'],va),(loc_b,loc_b['baseText'],vb)),1):
+                out.append({'id':f'v-{sid}-{idx}','surah':loc['surah'],'ayah':loc['startAyah'],
+                    'startToken':loc['startWord'],'endToken':loc['endWord'],'operation':'REPLACE',
+                    'hafsText':base,'variantText':base if same else variant,'differenceType':'LETTER',
+                    'verificationStatus':'REVIEWED','createdAt':TS,'updatedAt':TS,
+                    'readingIds':sorted(readers),'locusId':sid,'locusType':'performance_variant' if same else 'multi_word_variant',
+                    **({'performanceNote':desc} if same else {}),
+                    'sources':[{'id':f's-{sid}-{idx}','variantId':f'v-{sid}-{idx}',**SRC,
+                        'sourceReference':f'qiraat_records.jsonl، {sid}','sourceText':row['raw_text'],
+                        'verificationNotes':'وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.'}],
+                    'description':desc,'wajhIndex':idx,'evidence':[]})
     return out
 
 def checked_audited_307_310_farsh(page, lines):

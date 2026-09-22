@@ -104,5 +104,203 @@
     "description": "بالجمع",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P257-14-11-3-rs",
+    "surah": 14,
+    "ayah": 11,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُهُمْ",
+    "variantText": "رُسْلُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-11-3-rs",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-11-3-rs",
+        "variantId": "v-AUDIT-P257-14-11-3-rs",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00504",
+        "sourceText": "﴿رُسُلُهُمْ﴾، ﴿سُبُلَنَا﴾، ﴿لِرُسُلِهِمْ﴾: بإسكان السين والياء لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-11-3-rs-QP",
+        "variantId": "v-AUDIT-P257-14-11-3-rs",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/11",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      }
+    ],
+    "description": "إسكان السين لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P257-14-12-9-sbl",
+    "surah": 14,
+    "ayah": 12,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "سُبُلَنَا ۚ",
+    "variantText": "سُبْلَنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-12-9-sbl",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-12-9-sbl",
+        "variantId": "v-AUDIT-P257-14-12-9-sbl",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00504",
+        "sourceText": "﴿رُسُلُهُمْ﴾، ﴿سُبُلَنَا﴾، ﴿لِرُسُلِهِمْ﴾: بإسكان السين والياء لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-12-9-sbl-QP",
+        "variantId": "v-AUDIT-P257-14-12-9-sbl",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/12",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      }
+    ],
+    "description": "إسكان السين لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/12"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P257-14-13-4-lrs",
+    "surah": 14,
+    "ayah": 13,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِرُسُلِهِمْ",
+    "variantText": "لِرُسْلِهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-13-4-lrs",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-13-4-lrs",
+        "variantId": "v-AUDIT-P257-14-13-4-lrs",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00504",
+        "sourceText": "﴿رُسُلُهُمْ﴾، ﴿سُبُلَنَا﴾، ﴿لِرُسُلِهِمْ﴾: بإسكان السين والياء لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-13-4-lrs-QP",
+        "variantId": "v-AUDIT-P257-14-13-4-lrs",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/13",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      }
+    ],
+    "description": "إسكان السين لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/13"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P257-14-13-13-elyhm",
+    "surah": 14,
+    "ayah": 13,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-13-13-elyhm",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-13-13-elyhm",
+        "variantId": "v-AUDIT-P257-14-13-13-elyhm",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00505",
+        "sourceText": "﴿إِلَيْهِمْ﴾: بضم الهاء ﴿إِلَيْهُمُ﴾ لحمزة ويعقوب.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-13-13-elyhm-QP",
+        "variantId": "v-AUDIT-P257-14-13-13-elyhm",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/13",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/13"
+      }
+    ]
   }
 ]

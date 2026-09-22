@@ -4,10 +4,10 @@
     "surah": 52,
     "ayah": 21,
     "startToken": 3,
-    "endToken": 3,
+    "endToken": 4,
     "operation": "REPLACE",
-    "hafsText": "وَٱتَّبَعَتْهُمْ",
-    "variantText": "وَاتَّبَعْنَاهُمْ",
+    "hafsText": "وَٱتَّبَعَتْهُمْ ذُرِّيَّتُهُم",
+    "variantText": "وَأَتْبَعْنَاهُمْ ذُرِّيَّاتِهِمْ",
     "differenceType": "OTHER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-20T12:00:00.000Z",
@@ -17,18 +17,19 @@
       "Q03-R02"
     ],
     "locusId": "L524-s52a21b0",
-    "locusType": "word_variant",
+    "locusType": "multi_word_variant",
     "sources": [
       {
         "id": "s-L524-s52a21b0-w1",
         "variantId": "v-L524-s52a21b0-w1",
         "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
         "sourceType": "other",
-        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
-        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03265",
+        "verificationNotes": "تصحيح سجل قديم إلى المقطع الحقيقي ذي التوكنات 3–4؛ الوجه موثق صراحة في المصدر.",
+        "sourceText": "بقطع الهمزة ونون العظمة وكسر تاء ذريتهم الأولى جمعاً، ونصب ذريتهم الثانية جمعاً ﴿وَأَتْبَعْنَاهُمْ ذُرِّيَّاتِهِمْ... بِهِمْ ذُرِّيَّاتِهِمْ﴾: أبو عمرو."
       }
     ],
-    "description": "وحده",
+    "description": "بفعل ماضٍ ثلاثي لأبي عمرو",
     "wajhIndex": 1,
     "evidence": []
   },
@@ -71,10 +72,10 @@
     "surah": 52,
     "ayah": 21,
     "startToken": 3,
-    "endToken": 3,
+    "endToken": 4,
     "operation": "REPLACE",
-    "hafsText": "وَٱتَّبَعَتْهُمْ",
-    "variantText": "وَاتَّبَعَتْهُمْ",
+    "hafsText": "وَٱتَّبَعَتْهُمْ ذُرِّيَّتُهُم",
+    "variantText": "وَاتَّبَعَتْهُمْ ذُرِّيَّاتُهُمْ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-22T12:00:00.000Z",
@@ -86,7 +87,7 @@
       "Q08-R02"
     ],
     "locusId": "DOCX-P524-4-R03264-21-3",
-    "locusType": "word_variant",
+    "locusType": "multi_word_variant",
     "sources": [
       {
         "id": "s-DOCX-P524-4-R03264-21-3-2",
@@ -107,10 +108,10 @@
     "surah": 52,
     "ayah": 21,
     "startToken": 3,
-    "endToken": 3,
+    "endToken": 4,
     "operation": "REPLACE",
-    "hafsText": "وَٱتَّبَعَتْهُمْ",
-    "variantText": "وَاتَّبَعَتْهُمْ",
+    "hafsText": "وَٱتَّبَعَتْهُمْ ذُرِّيَّتُهُم",
+    "variantText": "وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُم",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-22T12:00:00.000Z",
@@ -122,7 +123,7 @@
       "Q09-R02"
     ],
     "locusId": "DOCX-P524-4-R03266-21-3",
-    "locusType": "word_variant",
+    "locusType": "multi_word_variant",
     "sources": [
       {
         "id": "s-DOCX-P524-4-R03266-21-3-4",
@@ -282,6 +283,192 @@
       }
     ],
     "description": "بكسر الهمزة ﴿إِنَّهُ﴾ للجمهور؛ بفتح الهمزة ﴿أَنَّهُ﴾ لنافع، والكسائي، وأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-R03263-1",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَٱتَّبَعَتْهُمْ ذُرِّيَّتُهُم",
+    "variantText": "وَٱتَّبَعَتْهُمْ ذُرِّيَّتُهُم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "DOCX-P524-R03263",
+    "locusType": "performance_variant",
+    "performanceNote": "وجه مطابق للرسم للقراء المذكورين",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-R03263-1",
+        "variantId": "v-DOCX-P524-R03263-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03263",
+        "verificationNotes": "وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.",
+        "sourceText": "بفعل ماضٍ ثلاثي ورفع التاء وضم ذريتهم الأولى ونصب ذريتهم الثانية مع إفرادهما ﴿وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ... بِهِمْ ذُرِّيَّتَهُمْ﴾: ابن كثير، وعاصم، وحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "وجه مطابق للرسم للقراء المذكورين",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-R03263-2",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بِهِمْ ذُرِّيَّتَهُمْ",
+    "variantText": "بِهِمْ ذُرِّيَّتَهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "DOCX-P524-R03263",
+    "locusType": "performance_variant",
+    "performanceNote": "وجه مطابق للرسم للقراء المذكورين",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-R03263-2",
+        "variantId": "v-DOCX-P524-R03263-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03263",
+        "verificationNotes": "وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.",
+        "sourceText": "بفعل ماضٍ ثلاثي ورفع التاء وضم ذريتهم الأولى ونصب ذريتهم الثانية مع إفرادهما ﴿وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ... بِهِمْ ذُرِّيَّتَهُمْ﴾: ابن كثير، وعاصم، وحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "وجه مطابق للرسم للقراء المذكورين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-R03264-2",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بِهِمْ ذُرِّيَّتَهُمْ",
+    "variantText": "بِهِمْ ذُرِّيَّاتِهِمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P524-R03264",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-R03264-2",
+        "variantId": "v-DOCX-P524-R03264-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03264",
+        "verificationNotes": "وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.",
+        "sourceText": "كالسابق مع جمع الكلمتين بالتاء ﴿ذُرِّيَّاتُهُمْ... ذُرِّيَّاتِهِمْ﴾: نافع، وأبو جعفر."
+      }
+    ],
+    "description": "جمع الكلمتين بالتاء لنافع وأبي جعفر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-R03265-2",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بِهِمْ ذُرِّيَّتَهُمْ",
+    "variantText": "بِهِمْ ذُرِّيَّاتِهِمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "DOCX-P524-R03265",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-R03265-2",
+        "variantId": "v-DOCX-P524-R03265-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03265",
+        "verificationNotes": "وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.",
+        "sourceText": "بقطع الهمزة ونون العظمة وكسر تاء ذريتهم الأولى جمعاً، ونصب ذريتهم الثانية جمعاً ﴿وَأَتْبَعْنَاهُمْ ذُرِّيَّاتِهِمْ... بِهِمْ ذُرِّيَّاتِهِمْ﴾: أبو عمرو."
+      }
+    ],
+    "description": "بفعل ماضٍ ثلاثي لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P524-R03266-2",
+    "surah": 52,
+    "ayah": 21,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بِهِمْ ذُرِّيَّتَهُمْ",
+    "variantText": "بِهِمْ ذُرِّيَّاتِهِمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "DOCX-P524-R03266",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P524-R03266-2",
+        "variantId": "v-DOCX-P524-R03266-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03266",
+        "verificationNotes": "وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.",
+        "sourceText": "بفعل ماضٍ ثلاثي مع إفراد ذريتهم الأولى مرفوعة، ونصب ذريتهم الثانية جمعاً بالتاء ﴿وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ... بِهِمْ ذُرِّيَّاتِهِمْ﴾: ابن عامر، ويعقوب."
+      }
+    ],
+    "description": "إفراد الأولى وجمع الثانية لابن عامر ويعقوب",
     "wajhIndex": 2,
     "evidence": []
   }
