@@ -186,5 +186,41 @@
     "description": "بضم الهاء",
     "wajhIndex": 5,
     "evidence": []
+  },
+  {
+    "id": "v-D529-سيعلمون-w2",
+    "surah": 54,
+    "ayah": 26,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "سَيَعْلَمُونَ",
+    "variantText": "سَتَعْلَمُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D529-سيعلمون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D529-سيعلمون-w2",
+        "variantId": "v-D529-سيعلمون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P529-R03329",
+        "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
+        "sourceText": "﴿سَيَعْلَمُونَ﴾: بياء الغيب ﴿سَيَعْلَمُونَ﴾ لنافع، وابن كثير، وأبي عمرو، وعاصم، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ بتاء الخطاب ﴿سَتَعْلَمُونَ﴾ لابن عامر وحمزة."
+      }
+    ],
+    "description": "بتاء الخطاب لابن عامر وحمزة",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

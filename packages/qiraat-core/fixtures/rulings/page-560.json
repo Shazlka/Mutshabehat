@@ -396,5 +396,53 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p560-WAQF_RASM-لم-5",
+    "pageNumber": 560,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 66,
+    "ayah": 1,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 1,
+    "baseText": "لِمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "هاء السكت وقفاً: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "هاء السكت وقفاً: لِمَهْ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "هاء السكت وقفاً: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "هاء السكت وقفاً: لِمَهْ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "هاء السكت وقفاً: لِمَهْ",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03617",
+        "sourceText": "الوقف على مرسوم الخط: ﴿لِمَ﴾: يقف عليها رويس والبزي (بخلف) بهاء السكت ﴿لِمَهْ﴾.",
+        "verificationNotes": "رويس والبزي بخلف كما في المصدر."
+      }
+    ]
   }
 ]

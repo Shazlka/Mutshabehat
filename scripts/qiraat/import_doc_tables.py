@@ -2246,6 +2246,34 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
                 'sourceText':source_line,
                 'verificationNotes':'وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف.'}]
     audited_page_rules = {
+        520: [
+            ('DOCX-P520-R03235','YAAT_ZAWAID','يُنَادِ',
+             {'Q02-R01','Q02-R02','Q09-R01','Q09-R02'},'إثبات الياء وقفاً: يُنَادِي',1,41,3,
+             'إسناد صريح؛ ابن كثير بخلف ويعقوب.'),
+        ],
+        530: [
+            ('DOCX-P530-R03337','IDGHAM_SAGHIR','وَلَقَد صَّبَّحَهُم',
+             {'Q03-R01','Q03-R02','Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
+             'إدغام صغير',1,38,1,'إسناد صريح في المصدر.'),
+        ],
+        557: [
+            ('DOCX-P557-R03582','IDGHAM_SAGHIR','وَيَغْفِرْ لَكُمْ',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,17,8,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        560: [
+            ('DOCX-P560-R03617','WAQF_RASM','لِمَ',
+             {'Q09-R01','Q02-R01'},'هاء السكت وقفاً: لِمَهْ',1,1,3,
+             'رويس والبزي بخلف كما في المصدر.'),
+        ],
+        561: [
+            ('DOCX-P561-R03625','IDGHAM_SAGHIR','وَٱغْفِرْ لَنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,8,39,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+            ('DOCX-P561-R03626','TAGHYIR_HAMZ','وَبِئْسَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,9,10,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
         495: [
             ('DOCX-P495-R02996','TAGHYIR_HAMZ','يُؤْفَكُونَ',
              {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,87,8,
@@ -2360,7 +2388,7 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
     for record_id,category,anchor,readers,action,occurrence,ayah,word,verification in audited_page_rules.get(page,[]):
         record=PACKAGE_RECORDS.get(record_id)
         source_text=record.get('raw_text','') if record else ''
-        explicit_duri_khilaf = record_id in {'DOCX-P508-R03125','DOCX-P512-R03167','DOCX-P555-R03570','DOCX-P525-R03286','DOCX-P547-R03491','DOCX-P549-R03514'} and 'أبو عمرو بخلف عن الدوري' in source_text
+        explicit_duri_khilaf = record_id in {'DOCX-P508-R03125','DOCX-P512-R03167','DOCX-P555-R03570','DOCX-P525-R03286','DOCX-P547-R03491','DOCX-P549-R03514','DOCX-P557-R03582','DOCX-P561-R03625'} and 'أبو عمرو بخلف عن الدوري' in source_text
         if (record is None or record.get('page_no')!=page or source_text not in lines or
                 is_neg(record['raw_text']) or is_univ(record['raw_text']) or
                 (has_bare_ambiguous_reader(record['raw_text']) and not explicit_duri_khilaf)):
@@ -2994,6 +3022,16 @@ def checked_audited_late_explicit_farsh(page, lines):
     transmissions exactly once.  This keeps the import additive and occurrence-safe.
     """
     cases = {
+        529: [
+            ('DOCX-P529-R03329','سَيَعْلَمُونَ','سَتَعْلَمُونَ',
+             {'Q04-R01','Q04-R02','Q06-R01','Q06-R02'},26,1,'بتاء الخطاب لابن عامر وحمزة'),
+        ],
+        535: [
+            ('DOCX-P535-R03369','وَلَا يُنزِفُونَ','وَلَا يُنْزِفُونَ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q04-R01','Q04-R02',
+              'Q08-R01','Q08-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'},19,1,
+             'بكسر الزاي للباقين'),
+        ],
         495: [
             ('DOCX-P495-R02981', 'يَحْسَبُونَ', 'يَحْسِبُونَ',
              {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
