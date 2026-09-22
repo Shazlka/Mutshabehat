@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-22 — Qiraat multi-agent audit review
+
+- Added `docs/qiraat-agent-audit-report.md` with per-agent record/page counts, deterministic inventory, association review queue, and validation results.
+- Documented that all agent work was read-only and that unresolved attribution/duplicate conflicts require authoritative source review.
+- Verification: `npm run qiraat:frontend:validate` (pass), `npm run test:qiraat` (40 pass), `npm run typecheck` (pass), PostgreSQL reconciliation preflight (read-only).
+
 ## 2026-09-22 — Qiraat frontend fixture-rendering resilience
 
 - Added a read-only corpus-wide frontend contract validator for all 584 available
