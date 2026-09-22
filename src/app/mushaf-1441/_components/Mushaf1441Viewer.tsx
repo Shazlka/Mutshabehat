@@ -561,6 +561,7 @@ export default function Mushaf1441Viewer({
   // leaving the layer and coming back returns the reader to the mode they were in, rather than
   // silently resetting them to مقارنة القراءات.
   const [qiraatSubMode, setQiraatSubMode] = useState<Exclude<QiraatMode, 'normal'>>('comparison')
+  const [qiraatEditMode, setQiraatEditMode] = useState(false)
   const [qiraatEditorWord, setQiraatEditorWord] = useState<MushafWord | null>(null)
   const [qiraatEditorDesktop, setQiraatEditorDesktop] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches)
   const [qiraatScopeMode, setQiraatScopeMode] = useState<'RANGE' | 'BOUNDARY' | null>(null)
@@ -829,6 +830,7 @@ export default function Mushaf1441Viewer({
   // at a panel belonging to a layer that is no longer on.
   function activateLayer(next: ReaderLayer) {
     setReaderLayer(next)
+    if (next !== 'qiraat') setQiraatEditMode(false)
     try {
       window.localStorage.setItem(READER_LAYER_STORAGE_KEY, next)
     } catch { /* ignore */ }
@@ -847,6 +849,12 @@ export default function Mushaf1441Viewer({
   // A press on an already-active button turns that layer off (plain mushaf, no colour system).
   function toggleLayer(layer: Exclude<ReaderLayer, 'none'>) {
     activateLayer(readerLayer === layer ? 'none' : layer)
+  }
+
+  function toggleQiraatEditMode() {
+    setQiraatEditMode((current) => !current)
+    setQiraatSelection(null)
+    updateHoveredQiraatWord(null)
   }
 
   // The burger panel's mode select. Choosing المصحف leaves the layer entirely; choosing either
@@ -2303,6 +2311,7 @@ export default function Mushaf1441Viewer({
   function renderQcfWord(word: MushafWord, wordOrder: Map<string, number>) {
     const isSelectedWord = readerLayer !== 'qiraat' && selectedWord?.id === word.id
     const isQiraatEditorSelected = qiraatEditorWord?.id === word.id
+    const isQiraatReadSelected = qiraatSelection?.word.id === word.id
     const isHighlightedAyah = readerLayer !== 'qiraat' && selectedAyahKey === word.ayahKey
     const mutshabehatHighlight = slotHighlightByAyahKey.get(word.ayahKey)
     const isMutshabehatHighlighted = Boolean(mutshabehatHighlight)
@@ -2400,7 +2409,8 @@ export default function Mushaf1441Viewer({
           if (event.pointerType === 'touch' && readerLayerRef.current === 'qiraat') {
             event.stopPropagation()
             updateHoveredQiraatWord(null)
-            setQiraatEditorWord(word)
+            if (qiraatEditMode || qiraatScopeModeRef.current) setQiraatEditorWord(word)
+            else selectWordForQiraat(word)
           }
         }}
         onClick={(event) => {
@@ -2430,7 +2440,8 @@ export default function Mushaf1441Viewer({
               setQiraatScopeMode(null); setQiraatScopeStart(null)
               return
             }
-            setQiraatEditorWord(word)
+            if (qiraatEditMode) setQiraatEditorWord(word)
+            else selectWordForQiraat(word)
             return
           }
           // متشابهات layer: an ayah that is in one of your groups opens its card, and a word that
@@ -2508,6 +2519,8 @@ export default function Mushaf1441Viewer({
         className={`relative z-10 inline rounded-[3px] px-0 py-0 align-baseline transition-colors select-none [-webkit-touch-callout:none] ${currentThemeTokens.wordActiveClass} focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
           isQiraatEditorSelected
             ? 'bg-[#eadfc9]/80 text-[#171717] outline outline-2 outline-offset-1 outline-[#b99b51]'
+            : isQiraatReadSelected
+            ? 'bg-[#f1e2b6]/70 text-[#171717] outline outline-2 outline-offset-1 outline-[#80662c]'
             : isSelectedWord
             ? currentThemeTokens.wordSelectedClass
             : highlightAnnotation
@@ -3907,6 +3920,15 @@ export default function Mushaf1441Viewer({
 
         {readerLayer === 'qiraat' ? (
         <>
+        <button
+          type="button"
+          aria-label={qiraatEditMode ? 'إيقاف وضع تعديل القراءات' : 'تفعيل وضع تعديل القراءات'}
+          aria-pressed={qiraatEditMode}
+          onClick={toggleQiraatEditMode}
+          className={`min-h-9 rounded border px-2 text-xs font-bold ${qiraatEditMode ? 'border-[#8c5f0a] bg-[#8c5f0a] text-white' : currentThemeTokens.headerBtnClass}`}
+        >
+          {qiraatEditMode ? 'وضع التعديل مفعّل' : 'تفعيل وضع التعديل'}
+        </button>
         {/* The Qiraat peek lives here rather than floating over the page: an overlay on top of
             the lines swallowed the next word press and closed itself before it could be read. */}
         {hoveredQiraatWord ? <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>{renderQiraatHoverCard('sidebar')}</div> : null}
@@ -4671,16 +4693,16 @@ export default function Mushaf1441Viewer({
           <button
             type="button"
             onClick={() => toggleLayer('qiraat')}
-            aria-label={qiraatMode === 'normal' ? 'وضع تحرير القراءات — تفعيل القراءات وإيقاف الملاحظات والمتشابهات' : 'إيقاف وضع تحرير القراءات — العودة إلى المصحف العادي'}
+            aria-label={qiraatMode === 'normal' ? 'تفعيل عرض القراءات — وإيقاف الملاحظات والمتشابهات' : 'إيقاف عرض القراءات — العودة إلى المصحف العادي'}
             aria-pressed={qiraatMode !== 'normal'}
-            title="وضع تحرير القراءات"
+            title="عرض القراءات"
             className={`flex min-h-10 items-center justify-center gap-1 rounded-md border px-2 text-sm font-black transition-colors ${
               qiraatMode !== 'normal'
                 ? (mushafTheme === 'dark' ? 'border-[#c8a86b] bg-[#c8a86b] text-[#18191d]' : 'border-[#171717] bg-[#171717] text-white')
                 : currentThemeTokens.headerBtnClass
             }`}
           >
-            <span aria-hidden="true">ق</span><span className="hidden text-[10px] sm:inline">تحرير</span>
+            <span aria-hidden="true">ق</span><span className="hidden text-[10px] sm:inline">قراءات</span>
           </button>
         </div>
       </header>
@@ -4743,7 +4765,7 @@ export default function Mushaf1441Viewer({
                       // `readerLayer` rides along because renderQcfWord's click/press
                       // routing reads it: without it a slot could keep a closure from the
                       // previous layer and answer a press the way that layer used to.
-                      selection={`${readerLayer}|${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}|${qiraatEditorWord?.id ?? ''}`}
+                      selection={`${readerLayer}|${qiraatEditMode ? 'edit' : 'read'}|${selectedAyahKey ?? ''}|${selectedWord?.id ?? ''}|${qiraatEditorWord?.id ?? ''}|${qiraatSelection?.word.id ?? ''}`}
                       loading={isCurrent && isPageLoading}
                       theme={mushafTheme}
                       render={() => renderLineWords(slotPage, no, slotMetadata, layout)}
@@ -4978,6 +5000,17 @@ export default function Mushaf1441Viewer({
                 onIncludeReviewedChange={setQiraatIncludeReviewed}
                 onOpenLegend={() => setQiraatLegendOpen(true)}
               />
+              {readerLayer === 'qiraat' ? (
+                <button
+                  type="button"
+                  aria-label={qiraatEditMode ? 'إيقاف وضع تعديل القراءات' : 'تفعيل وضع تعديل القراءات'}
+                  aria-pressed={qiraatEditMode}
+                  onClick={toggleQiraatEditMode}
+                  className={`mt-2 min-h-10 w-full rounded border px-3 text-xs font-bold ${qiraatEditMode ? 'border-[#8c5f0a] bg-[#8c5f0a] text-white' : currentThemeTokens.headerBtnClass}`}
+                >
+                  {qiraatEditMode ? 'وضع التعديل مفعّل — اضغط كلمة للتحرير' : 'تفعيل وضع تعديل القراءات'}
+                </button>
+              ) : null}
               {renderQiraatUsulPanel()}
               {renderQiraatRules()}
             </div>
