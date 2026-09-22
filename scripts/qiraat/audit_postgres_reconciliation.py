@@ -12,6 +12,7 @@ database operation is proposed.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from collections import Counter, defaultdict
@@ -33,6 +34,48 @@ def fixture_entry_id(kind: str, record: dict[str, Any]) -> str:
     return record["id"]
 
 
+def fixture_disambiguated_id(kind: str, record: dict[str, Any], page: int) -> str:
+    """Return a deterministic *proposed* identity for a new import.
+
+    The historical importer key is intentionally preserved in
+    :func:`fixture_entry_id` because it is also the key used by the existing
+    PostgreSQL rows.  Several later source rows reuse one source id for
+    multiple faces, however, so that legacy key is not sufficient for a new
+    import.  This helper is diagnostic only: it must not be used to rename
+    existing database entries without an approved migration.
+    """
+    if kind == "variant":
+        payload = {
+            "variantText": record.get("variantText"),
+            "readingIds": sorted(set(record.get("readingIds", []))),
+        }
+    else:
+        payload = {
+            "category": record.get("category"),
+            "text": record.get("text"),
+            "options": record.get("options"),
+            "readings": sorted(set(
+                item["readingId"] if isinstance(item, dict) else item
+                for item in record.get("readings", [])
+            )),
+        }
+    identity = {
+        "kind": kind,
+        "page": page,
+        "sourceId": record.get("id"),
+        "surah": record.get("surah"),
+        "ayah": record.get("ayah"),
+        "endAyah": record.get("endAyah"),
+        "startToken": record.get("startToken"),
+        "endToken": record.get("endToken"),
+        "payload": payload,
+    }
+    digest = hashlib.sha256(
+        json.dumps(identity, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()[:16]
+    return f"{fixture_entry_id(kind, record)}-h{digest}"
+
+
 def load_fixture_records() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
     records: dict[str, dict[str, Any]] = {}
     duplicate_keys: list[dict[str, Any]] = []
@@ -45,6 +88,7 @@ def load_fixture_records() -> tuple[dict[str, dict[str, Any]], list[dict[str, An
                 entry_id = fixture_entry_id(kind, raw)
                 value = {
                     "id": entry_id,
+                    "disambiguated_id": fixture_disambiguated_id(kind, raw, page),
                     "page": page,
                     "kind": kind,
                     "source_id": raw["id"],
@@ -82,6 +126,8 @@ def load_fixture_records() -> tuple[dict[str, dict[str, Any]], list[dict[str, An
                         "first": {key: records[entry_id][key] for key in ("page", "kind", "fixture_file", "fixture_index", "source_id")},
                         "duplicate": {key: value[key] for key in ("page", "kind", "fixture_file", "fixture_index", "source_id")},
                         "same_payload": records[entry_id]["payload"] == value["payload"],
+                        "first_disambiguated_id": records[entry_id]["disambiguated_id"],
+                        "duplicate_disambiguated_id": fixture_disambiguated_id(kind, raw, page),
                     })
                     continue
                 records[entry_id] = value

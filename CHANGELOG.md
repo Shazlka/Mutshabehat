@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-09-22 — Qiraat duplicate importer-key review
+
+- Added `docs/qiraat-duplicate-key-review.md` and fixture-only regression tests
+  proving the 25 non-identical legacy key collisions are intentional distinct
+  reading faces across 23 keys on pages 327–560.
+- Added a read-only SHA-256 disambiguation proposal to the reconciliation
+  preflight; all 12,788 fixture records receive unique candidate identities.
+- No database or fixture records were inserted, updated, or deleted.
+- Verification: `python3 -m pytest tests/test_qiraat_import_keys.py -q` (2
+  passed), `python3 -m py_compile scripts/qiraat/audit_postgres_reconciliation.py`,
+  and `git diff --check`.
+
 ## 2026-09-22 — Qiraat multi-agent audit review
 
 - Added `docs/qiraat-agent-audit-report.md` with per-agent record/page counts, deterministic inventory, association review queue, and validation results.

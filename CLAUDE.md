@@ -2,6 +2,18 @@
 
 # Project: متشابهات V2 (Mutshabehat V2)
 
+## 2026-09-22 — Qiraat duplicate importer-key review
+
+- The 25 reconciliation duplicate keys are non-identical reading faces, not
+  discardable duplicates: pages 327, 400, 440, 489, 490, 495, 496, 497, 498,
+  503, 504, 509, 515, 517, and 560. Do not let the legacy importer
+  `ON CONFLICT (id)` collapse them.
+- `scripts/qiraat/audit_postgres_reconciliation.py` now emits diagnostic
+  SHA-256 disambiguated IDs. They are planning identities only; do not rename
+  existing PostgreSQL IDs without a backup-first, source-approved migration.
+- See `docs/qiraat-duplicate-key-review.md`; no database or fixture mutation
+  was performed. Verification: `python3 -m pytest tests/test_qiraat_import_keys.py -q` (2 passed).
+
 Arabic Quran "mutashabihat" (similar verses) library. Next.js 16 (App Router, **Turbopack**),
 React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
