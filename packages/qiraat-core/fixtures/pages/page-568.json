@@ -243,17 +243,11 @@
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z",
     "readingIds": [
-      "Q01-R01",
-      "Q01-R02",
-      "Q03-R01",
-      "Q03-R02",
       "Q05-R02",
       "Q06-R01",
       "Q06-R02",
       "Q07-R01",
-      "Q07-R02",
-      "Q08-R01",
-      "Q08-R02"
+      "Q07-R02"
     ],
     "locusId": "D568-تذكرون",
     "locusType": "performance_variant",
