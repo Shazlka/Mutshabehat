@@ -75,7 +75,8 @@
       "Q08-R01",
       "Q08-R02",
       "Q10-R01",
-      "Q10-R02"
+      "Q10-R02",
+      "Q05-R01"
     ],
     "locusId": "D471-وصد",
     "locusType": "word_variant",
@@ -155,9 +156,7 @@
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q09-R02"
     ],
     "locusId": "D471-يدخلون",
     "locusType": "word_variant",
