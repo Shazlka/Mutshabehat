@@ -2361,7 +2361,11 @@ export default function Mushaf1441Viewer({
       )
       qiraatSuppressed = resolution.suppressed
       qiraatMarker = resolution.marker
-      if (!resolution.suppressed && resolution.text !== qiraatHafsBaseText) qiraatOverrideText = resolution.text
+      // A reading can describe deletion/suppression, but the canonical Mushaf layer must never
+      // disappear. Keep an empty alternate as a visual reading state and retain the Hafs text.
+      if (!resolution.suppressed && resolution.text && resolution.text !== qiraatHafsBaseText) {
+        qiraatOverrideText = resolution.text
+      }
     }
     // أصول rulings colour the word itself (إمالة/تقليل one colour, الإدغام another, الترقيق/التغليظ
     // another, السكت another …) so the KIND of ruling is legible without opening anything. They do
@@ -2383,7 +2387,9 @@ export default function Mushaf1441Viewer({
     // QCF glyphs only with this page's own loaded font, and only for the exact Hafs text they were
     // drawn for; a Riwayah substitution always falls back to flowing Unicode text (Part 21).
     const useGlyph = qiraatOverrideText === null && qcfFontStatus[word.pageNumber] === 'loaded' && Boolean(word.glyph)
-    const displayText = qiraatSuppressed ? '' : (qiraatOverrideText ?? (useGlyph ? word.glyph : qiraatHafsBaseText))
+    // Never hide a canonical word when a selected reading suppresses it. The alternate reading is
+    // an overlay/detail concern; the immutable Mushaf text remains readable on every viewport.
+    const displayText = qiraatOverrideText ?? (useGlyph ? word.glyph : qiraatHafsBaseText)
     const fontFamily = useGlyph
       ? `"${getQcfV2FontFamily(word.pageNumber)}", serif`
       : 'var(--font-amiri-quran), "Times New Roman", serif'
