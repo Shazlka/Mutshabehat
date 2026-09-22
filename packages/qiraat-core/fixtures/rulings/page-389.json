@@ -761,5 +761,494 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p389-WAQF_RASM-wadi",
+    "pageNumber": 389,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 30,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 30,
+    "baseText": "ٱلْوَادِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء وقفاً"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "يثبت يعقوب الياء وقفاً: الوادي.",
+    "sourceNotes": [
+      "DOCX-P389-R01997"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-p389-YAAT_IDAFA-inni-anast",
+    "pageNumber": 389,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 29,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 29,
+    "baseText": "إِنِّىٓ ءَانَسْتُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "فتح الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر.",
+    "sourceNotes": [
+      "DOCX-P389-R01999"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-p389-YAAT_IDAFA-inni-ana",
+    "pageNumber": 389,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 30,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 30,
+    "baseText": "إِنِّىٓ أَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "فتح الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر.",
+    "sourceNotes": [
+      "DOCX-P389-R01999"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-p389-YAAT_IDAFA-inni-akhaf",
+    "pageNumber": 389,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 34,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 34,
+    "baseText": "إِنِّىٓ أَخَافُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "فتح الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر.",
+    "sourceNotes": [
+      "DOCX-P389-R01999"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-p389-YAAT_IDAFA-lali-at",
+    "pageNumber": 389,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 29,
+    "startToken": 18,
+    "endToken": 19,
+    "endAyah": 29,
+    "baseText": "لَّعَلِّىٓ ءَاتِيكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "فتح الياء وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "فتح الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وابن عامر وأبي جعفر.",
+    "sourceNotes": [
+      "DOCX-P389-R02000"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-p389-YAAT_IDAFA-mai-rid",
+    "pageNumber": 389,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 34,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 34,
+    "baseText": "مَعِىَ رِدْءًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R01",
+        "action": "فتح الياء وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R01",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "الفتح وصلاً لحفص، والإسكان للباقين.",
+    "sourceNotes": [
+      "DOCX-P389-R02001"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
   }
 ]

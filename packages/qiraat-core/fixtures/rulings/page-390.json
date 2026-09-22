@@ -848,6 +848,42 @@
       {
         "authorityId": "Q04-R01",
         "action": "التحقيق مع الإدخال وعدمه"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "التحقيق مع الإدخال وعدمه"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "التحقيق بلا إدخال"
+      },
+      {
+        "authorityId": "Q05-R02",
+        "action": "التحقيق بلا إدخال"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "التحقيق بلا إدخال"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "التحقيق بلا إدخال"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "التحقيق بلا إدخال"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "التحقيق بلا إدخال"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "التحقيق بلا إدخال"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "التحقيق بلا إدخال"
       }
     ],
     "readings": [
@@ -899,6 +935,51 @@
       {
         "readingId": "Q04-R01",
         "action": "التحقيق مع الإدخال وعدمه",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "التحقيق مع الإدخال وعدمه",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "التحقيق بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R02",
+        "action": "التحقيق بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "التحقيق بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "التحقيق بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "التحقيق بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "التحقيق بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "التحقيق بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "التحقيق بلا إدخال",
         "isDefault": true
       }
     ],

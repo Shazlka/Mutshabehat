@@ -14,13 +14,7 @@
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
       "Q03-R01",
-      "Q03-R02",
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q03-R02"
     ],
     "locusId": "L393-s28a60b0",
     "locusType": "multi_word_variant",
