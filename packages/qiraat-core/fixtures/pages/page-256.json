@@ -1,1 +1,70 @@
-[]
+[
+  {
+    "id": "v-D256-رسلهم-w2",
+    "surah": 14,
+    "ayah": 9,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُهُم",
+    "variantText": "رُسْلُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D256-رسلهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D256-رسلهم-w2",
+        "variantId": "v-D256-رسلهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P256-R00496",
+        "verificationNotes": "جهاز إبراهيم يثبت إسكان السين لأبي عمرو في موضعي رُسُلُهُمْ في السطر المصدر. المرجع: https://quranpedia.net/qiraat/ibrahim/9",
+        "sourceText": "﴿رُسُلُهُمْ﴾ (معاً): بإسكان السين ﴿رُسْلُهُمْ﴾ لأبي عمرو؛ وبضمها للباقين."
+      }
+    ],
+    "description": "إسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D256-رسلهم-w2",
+    "surah": 14,
+    "ayah": 10,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُهُمْ",
+    "variantText": "رُسْلُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D256-رسلهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D256-رسلهم-w2",
+        "variantId": "v-D256-رسلهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P256-R00496",
+        "verificationNotes": "جهاز إبراهيم يثبت إسكان السين لأبي عمرو في موضعي رُسُلُهُمْ في السطر المصدر. المرجع: https://quranpedia.net/qiraat/ibrahim/9",
+        "sourceText": "﴿رُسُلُهُمْ﴾ (معاً): بإسكان السين ﴿رُسْلُهُمْ﴾ لأبي عمرو؛ وبضمها للباقين."
+      }
+    ],
+    "description": "إسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
