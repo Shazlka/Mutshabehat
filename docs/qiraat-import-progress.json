@@ -60,19 +60,22 @@
       505,
       508,
       512,
-      514
+      514,
+      525,
+      547,
+      549
     ],
     "variantsAdded": 4,
-    "newRulingLoci": 11,
-    "readerAssignmentsAdded": 30,
+    "newRulingLoci": 15,
+    "readerAssignmentsAdded": 46,
     "categories": {
       "TAGHYIR_HAMZ": {
         "new": 8,
         "assignments": 26
       },
       "IDGHAM_SAGHIR": {
-        "new": 2,
-        "assignments": 8
+        "new": 6,
+        "assignments": 16
       },
       "WAQF_RASM": {
         "new": 1,
