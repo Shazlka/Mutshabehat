@@ -2428,6 +2428,25 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
             'sourceReference':f'qiraat_records.jsonl، {record_id}',
             'sourceText':record['raw_text'],
             'verificationNotes':verification})
+    if page == 584:
+        # These extracted rows are labelled AYAH_COUNT, but their prose is explicitly
+        # reader-dependent imalah/taqlil at ayah endings. Import only the word faces.
+        r844=PACKAGE_RECORDS.get('DOCX-P584-R03844')
+        r846=PACKAGE_RECORDS.get('DOCX-P584-R03846')
+        if r844 and r844.get('raw_text') in lines and not is_neg(r844['raw_text']):
+            for anchor,occ in [('طَغَىٰ',1),('تَزَكَّىٰ',1),('فَتَخْشَىٰ',1),('يَسْعَىٰ',1),('فَنَادَىٰ',1),('الْأَعْلَىٰ',1),('وَالْأُولَىٰ',1),('يَخْشَىٰ',1),('سَعَىٰ',1),('الدُّنْيَا',1),('الْمَأْوَىٰ',1),('الْمَأْوَىٰ',2),('الْهَوَىٰ',1)]:
+                loc=T.find(page,anchor,occurrence=occ); key=(loc['surah'],loc['startAyah'],loc['startWord'],'IMALAH_TAQLIL')
+                have={z.get('readingId') for z in existing_page if (z.get('surah'),z.get('ayah'),z.get('startToken'),z.get('category'))==key for z in z.get('readings',[])}
+                add={'Q01-R02','Q03-R01','Q03-R02'}-have
+                if add: emit_ruling(page,'IMALAH_TAQLIL',anchor,[(add,'تقليل')],rulings,occurrence=occ)
+        if r846 and r846.get('raw_text') in lines and not is_neg(r846['raw_text']):
+            for anchor,occ in [('بَنَىٰهَا',1),('فَسَوَّىٰهَا',1),('ضُحَىٰهَا',1),('ضُحَىٰهَا',2),('دَحَىٰهَا',1),('وَمَرْعَىٰهَا',1),('أَرْسَىٰهَا',1),('مُرْسَىٰهَا',1),('ذِكْرَىٰهَا',1),('مُنتَهَىٰهَا',1),('يَخْشَىٰهَا',1)]:
+                loc=T.find(page,anchor,occurrence=occ); key=(loc['surah'],loc['startAyah'],loc['startWord'],'IMALAH_TAQLIL')
+                have={z.get('readingId') for z in existing_page if (z.get('surah'),z.get('ayah'),z.get('startToken'),z.get('category'))==key for z in z.get('readings',[])}
+                add={'Q06-R01','Q06-R02','Q07-R01','Q07-R02'}-have
+                if add: emit_ruling(page,'IMALAH_TAQLIL',anchor,[(add,'إمالة')],rulings,occurrence=occ)
+                add={'Q01-R02','Q03-R01','Q03-R02'}-have
+                if add: emit_ruling(page,'IMALAH_TAQLIL',anchor,[(add,'تقليل')],rulings,occurrence=occ)
     if page == 273:
         record=PACKAGE_RECORDS.get('DOCX-P273-R00716')
         expected='ترقيق الراءات وتغليظ اللامات: ورش يرقق الراء في ﴿بُشِّرَ﴾ و﴿يُؤَخِّرُهُمْ﴾؛ ويغلظ اللام في ﴿ظَلَّ﴾ وصلاً، وله وقفاً الوجهان.'

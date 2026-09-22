@@ -54,18 +54,19 @@
   },
   "sourceCoverageStatus": "Global bare-Khalaf audit through page 584 plus cycle pages 245-260. Bare خلف is Q06; explicit خلف العاشر or unambiguous remainder retains Q10. Importer is idempotent; validator, 38/38 tests, TypeScript, and build pass.",
   "currentBatch": {
-    "id": "final-safe-usul-p557-p583",
+    "id": "p584-imalah-taqlil-completion",
     "pages": [
-      557,
-      583
+      581,
+      584
     ],
     "variantsAdded": 0,
-    "newRulingLoci": 1,
-    "readerAssignmentsAdded": 4,
+    "newRulingLoci": 12,
+    "mergedRulingLoci": 12,
+    "readerAssignmentsAdded": 185,
     "status": "locally verified; deployment pending",
     "validation": {
       "variants": 2932,
-      "usulRulings": 9973,
+      "usulRulings": 9985,
       "validator": "passed",
       "importerIdempotent": true
     },
@@ -73,11 +74,9 @@
       "remaining": [
         519,
         524,
-        548,
-        581,
-        584
+        548
       ],
-      "notes": "p581 Khalaf imalah conflict and p584 AYAH_COUNT imalah groups require source-model decisions; p548 occurrence is ambiguous."
+      "notes": "p519 and p524 are multi-face spans requiring representation redesign; p548 has six indistinguishable هُوَ occurrences."
     }
   },
   "lastConfirmedDeployedDataCommit": "271832f",
