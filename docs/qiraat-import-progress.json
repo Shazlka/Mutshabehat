@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2862,
-    "usulRulings": 9896,
+    "variants": 2863,
+    "usulRulings": 9897,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -23601,48 +23601,61 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
-  "latestSourceCoverageNote": "Four-agent audited through Mushaf pages 570. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
+  "latestSourceCoverageNote": "Audited through Mushaf pages 582. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
   "latestLocalImportCycle": {
-    "id": "four-agent-audit-p563-p570",
+    "id": "four-agent-attribution-audit-p571-p582",
     "pages": [
-      563,
-      564,
-      565,
-      566,
-      567,
-      568,
-      569,
-      570
+      571,
+      572,
+      573,
+      574,
+      575,
+      576,
+      577,
+      578,
+      579,
+      580,
+      581,
+      582
     ],
-    "variantsAdded": 4,
-    "newRulingLoci": 0,
-    "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 3,
+    "variantsAdded": 1,
+    "newRulingLoci": 1,
+    "rulingRecordsNetChanged": 1,
+    "correctedRulingLoci": 21,
     "perPageVariants": {
-      "563": 0,
-      "564": 2,
-      "565": 0,
-      "566": 0,
-      "567": 0,
-      "568": 2,
-      "569": 0,
-      "570": 0
+      "571": 0,
+      "572": 0,
+      "573": 1,
+      "574": 0,
+      "575": 0,
+      "576": 0,
+      "577": 0,
+      "578": 0,
+      "579": 0,
+      "580": 0,
+      "581": 0,
+      "582": 0
     },
     "correctedByPage": {
-      "566": 1,
-      "567": 2
+      "572": 9,
+      "573": 2,
+      "574": 1,
+      "579": 3,
+      "580": 3,
+      "581": 2,
+      "582": 4
     },
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2862,
-      "usulRulings": 9896,
+      "variants": 2863,
+      "usulRulings": 9897,
       "validator": "passed",
       "tests": "38/38",
-      "tsc": "passed",
-      "build": "passed",
+      "tsc": "pending",
+      "build": "pending",
       "importerIdempotent": true
     },
-    "details": "Pages 564 and 568 gained two token-backed faces each. Page 566 removed Q10 from one bare خلف usul locus. Page 567 added Q08 to the source face for فهي and corrected bare خلف to Q06 in one variant plus one usul locus. External Quranpedia checks were recorded for pages 564, 567, and 568."
+    "details": "Added one token-backed قَالَ face on p573 and one IDGHAM_SAGHIR ruling on p571. Corrected remainder assignments on p572-p574 and removed Q10 from 12 bare خلف assignments on p579-p582; Q10 remains only when explicit or required by a remainder."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -24207,5 +24220,47 @@
       "deploy": "Vercel success"
     },
     "details": "All farsh rows were already represented or safely withheld. Removed Q10 from 13 usul loci whose source names bare خلف; Q06 remains. Explicit remainder faces retaining Q10 were preserved."
+  },
+  "previousImportCycle571_582": {
+    "id": "four-agent-audit-p563-p570",
+    "pages": [
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      569,
+      570
+    ],
+    "variantsAdded": 4,
+    "newRulingLoci": 0,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 3,
+    "perPageVariants": {
+      "563": 0,
+      "564": 2,
+      "565": 0,
+      "566": 0,
+      "567": 0,
+      "568": 2,
+      "569": 0,
+      "570": 0
+    },
+    "correctedByPage": {
+      "566": 1,
+      "567": 2
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2862,
+      "usulRulings": 9896,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "passed",
+      "build": "passed",
+      "importerIdempotent": true
+    },
+    "details": "Pages 564 and 568 gained two token-backed faces each. Page 566 removed Q10 from one bare خلف usul locus. Page 567 added Q08 to the source face for فهي and corrected bare خلف to Q06 in one variant plus one usul locus. External Quranpedia checks were recorded for pages 564, 567, and 568."
   }
 }

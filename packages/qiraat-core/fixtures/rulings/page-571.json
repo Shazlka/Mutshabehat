@@ -281,5 +281,42 @@
     "updatedAt": "2026-09-22T00:00:00.000Z",
     "sourceRecordId": "DOCX-P571-R03714",
     "sourceText": "تغيير الهمز: ﴿مُّؤْمِنًا﴾، ﴿لِّلْمُؤْمِنِينَ﴾، ﴿وَالْمُؤْمِنَـٰتِ﴾: إبدال لورش، السوسي، أبو جعفر."
+  },
+  {
+    "id": "r-p571-IDGHAM_SAGHIR-اغفر-4",
+    "pageNumber": 571,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 71,
+    "ayah": 28,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 28,
+    "baseText": "ٱغْفِرْ لِى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير",
+        "condition": "بخلف عن الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "الدوري عن أبي عمرو له الخلاف في الإدغام، وثبت الوجه في العبارة المصدرية.",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P571-R03713 | الإدغام الصغير: ﴿ٱغْفِر لِّي﴾: أبو عمرو بخلف عن الدوري.",
+      "https://quranpedia.net/qiraat/nuh/28"
+    ],
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
   }
 ]
