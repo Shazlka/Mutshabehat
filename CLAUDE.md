@@ -37,6 +37,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   history/log of all changes for future reference.
 
 # Changelog
+- **Qiraat — four-agent audit, Mushaf pages 493–508:** added p499 Abu Jaafar `SAKT`, completed p500 and p503 reader assignments, and found p493–498, p501–502, and p504–508 source-consistent with no safe new wording faces. **Verification:** validator clean (3,051 variants, 10,024 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 477–492:** added p482 Yaqub `سَنُرِيهُمُ` and p483 Abu Jaafar `SAKT`; corrected p486 `يُبَشِّرُ` attribution. Pages 477–481, 484–485, and 487–492 were source-consistent with no safe additions. **Verification:** validator clean (3,051 variants, 10,023 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 461–476:** added p466 `فُتِّحَتْ`, p467 three usul rulings (including Abu Jaafar `SAKT`), and corrected p471–472 reader partitions. Pages 461–465, 468–470, and 473–476 were source-consistent with no safe additions. **Verification:** validator clean (3,050 variants, 10,022 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 445–460:** added four p450 wording/performance faces and one p452 `WAQF_RASM` ruling; corrected p453, p455, and p456 reader partitions. Pages 445–449, 451, and 457–460 were source-consistent with no safe additions. **Verification:** validator clean (3,049 variants, 10,019 rulings), DB migration: none — fixture-only.
