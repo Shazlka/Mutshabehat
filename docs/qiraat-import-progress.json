@@ -106,8 +106,8 @@
       "importerIdempotent": true
     }
   },
-  "lastConfirmedDeployedDataCommit": "be507603bf8393d39dd0bc3a11d3ed71c38b2d4c",
-  "lastConfirmedVercelState": "READY",
+  "lastConfirmedDeployedDataCommit": "7a80f3b",
+  "lastConfirmedVercelState": "success",
   "lastProductionSmoke": {
     "pages": [
       505,
@@ -22298,7 +22298,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "pending-local-commit",
+  "currentHeadCommit": "7a80f3b",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -23600,7 +23600,7 @@
     "details": "Production API returned the exact new token-backed farsh records on pages 387, 388, 389, 390, 396, and 397, plus the new ruling records on pages 389, 390, 394, 395, and 396."
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
-  "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
+  "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
   "latestSourceCoverageNote": "Deep audited attribution pass through Mushaf pages 551-554. Bare خلف is Q06 (خلف عن حمزة); Q10 is retained only for explicit خلف العاشر or source remainder assignments.",
   "latestLocalImportCycle": {
     "id": "deep-audit-p551-p554",
@@ -23626,7 +23626,7 @@
       "553": 1,
       "554": 2
     },
-    "status": "locally verified; deployment pending",
+    "status": "deployed and verified",
     "validation": {
       "variants": 2858,
       "usulRulings": 9896,
@@ -23634,7 +23634,8 @@
       "tests": "38/38",
       "tsc": "passed",
       "build": "passed",
-      "importerIdempotent": true
+      "importerIdempotent": true,
+      "deploy": "Vercel success"
     },
     "details": "All farsh rows were already represented or safely withheld. Removed Q10 from 13 usul loci whose source names bare خلف; Q06 remains. Explicit remainder faces retaining Q10 were preserved."
   },
