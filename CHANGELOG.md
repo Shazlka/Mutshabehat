@@ -10,6 +10,7 @@ and any required DB migration.
 Live: https://mutshabehat-v2.vercel.app
 
 ## 2026-09-22
+- **Qiraat — four-agent audit, Mushaf pages 445–460:** added four p450 wording/performance faces and one p452 `WAQF_RASM` ruling; corrected p453, p455, and p456 reader partitions. Pages 445–449, 451, and 457–460 were source-consistent with no safe additions. **Verification:** validator clean (3,049 variants, 10,019 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 429–444:** added p434 `وَهُوَ` and `WAQF_RASM`, and corrected p438–440 reader partitions. Pages 429–433, 435–437, and 441–444 were source-consistent with no safe additions. **Verification:** validator clean (3,045 variants, 10,018 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 417–432:** added p421–424 source-backed wording and usul faces, corrected p425 `تُرْجِئُ` attribution, and found p417–420, p426–428 source-consistent. Pages 429–432 remain queued for the next cycle. **Verification:** validator clean (3,044 variants, 10,017 rulings), DB migration: none — fixture-only.
 - **Qiraat — four-agent audit, Mushaf pages 401–416:** added p406 `ٱلْمَيِّتِ/ٱلْمَيِّتَ` faces, p407 three `وَهُوَ` faces plus `WAQF_RASM`, p408 `لِيَرْبُوَ/لِتُرْبُوا` and related faces, and corrected p410/p412 reader partitions. Pages 401–405, 409, 411, and 413–416 were source-consistent with no safe additions. **Verification:** validator clean (3,035 variants, 10,017 rulings), DB migration: none — fixture-only.
