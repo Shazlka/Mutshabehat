@@ -32,5 +32,155 @@
     "description": "بكسر الهمزة المشددة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance1",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بضم السين",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance1",
+        "variantId": "v-D457-سخريا-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02640",
+        "verificationNotes": "الوجه المنقول عن المجموعة المذكورة. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بهمزة قطع مفتوحة مع كسر سين سخرياً: ابن كثير، وابن عامر، وعاصم."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance2",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر السين",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance2",
+        "variantId": "v-D457-سخريا-performance2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02641",
+        "verificationNotes": "الوجه المنقول عن المجموعة المذكورة. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بهمزة قطع مفتوحة مع ضم سين سُخرياً: نافع، وأبو جعفر."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance3",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بضم السين وكسر الراء",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance3",
+        "variantId": "v-D457-سخريا-performance3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02642",
+        "verificationNotes": "الوجه المنقول عن المجموعة المذكورة. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بوصل الهمزة مكسورة ابتداءً مع كسر سين سخرياً: أبو عمرو، ويعقوب."
+      }
+    ],
+    "description": "بضم السين وكسر الراء",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance4",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر السين وتشديد الياء",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance4",
+        "variantId": "v-D457-سخريا-performance4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02643",
+        "verificationNotes": "«خلف» المجرد هو خلف عن حمزة Q06. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بوصل الهمزة مكسورة ابتداءً مع ضم سين سُخرياً: حمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بكسر السين وتشديد الياء",
+    "wajhIndex": 4,
+    "evidence": []
   }
 ]

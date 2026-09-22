@@ -4965,6 +4965,12 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        457: [
+            ('DOCX-P457-R02640','سِخْرِيًّا','ابن كثير، ابن عامر، عاصم',63,'بضم السين','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
+            ('DOCX-P457-R02641','سِخْرِيًّا','نافع، أبو جعفر',63,'بكسر السين','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
+            ('DOCX-P457-R02642','سِخْرِيًّا','أبو عمرو، يعقوب',63,'بضم السين وكسر الراء','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
+            ('DOCX-P457-R02643','سِخْرِيًّا','حمزة، الكسائي، خلف',63,'بكسر السين وتشديد الياء','https://quranpedia.net/qiraat/sad/63','«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
         443: [
             ('DOCX-P443-R02492','يَخِصِّمُونَ','ابن ذكوان، عاصم، الكسائي، يعقوب، خلف',49,'بفتح الياء وكسر الخاء وتشديد الصاد','https://quranpedia.net/qiraat/ya-sin/49','وجه المصدر للمذكورين؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
             ('DOCX-P443-R02493','يَخِصِّمُونَ','قالون، أبو عمرو',49,'باختلاس فتحة الخاء وتشديد الصاد','https://quranpedia.net/qiraat/ya-sin/49','وجه الاختلاس للمذكورين.'),
