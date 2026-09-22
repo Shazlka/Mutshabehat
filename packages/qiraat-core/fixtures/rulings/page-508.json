@@ -1132,5 +1132,172 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p508-IDGHAM_SAGHIR-فقد_جاء-12",
+    "pageNumber": 508,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 18,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 18,
+    "baseText": "فَقَدْ جَآءَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03125",
+        "sourceText": "الإدغام الصغير: ﴿فَقَد جَّآءَ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي، وخلف. ﴿وَٱسْتَغْفِر لِّذَنۢبِكَ﴾: أبو عمرو بخلف عن الدوري.",
+        "verificationNotes": "إسناد صريح؛ الاسم المجرد خلف حُسم إلى Q06 حسب قاعدة المشروع."
+      }
+    ]
+  },
+  {
+    "id": "r-p508-WAQF_RASM-وكاين-13",
+    "pageNumber": 508,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 13,
+    "baseText": "وَكَأَيِّن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بالياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "الوقف بالياء",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03128",
+        "sourceText": "الوقف على مرسوم الخط: ﴿وَكَأَيِّن﴾: يقف عليها بالياء أبو عمرو ويعقوب؛ وبالنون للباقين.",
+        "verificationNotes": "وجه وقف صريح لأبي عمرو ويعقوب في المصدر."
+      }
+    ]
   }
 ]

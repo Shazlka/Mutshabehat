@@ -2246,6 +2246,70 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
                 'sourceText':source_line,
                 'verificationNotes':'وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف.'}]
     audited_page_rules = {
+        495: [
+            ('DOCX-P495-R02996','TAGHYIR_HAMZ','يُؤْفَكُونَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,87,8,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P495-R02996','TAGHYIR_HAMZ','لَّا يُؤْمِنُونَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,88,6,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P495-R02996','TAGHYIR_HAMZ','جِئْنَـٰكُم',
+             {'Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,78,2,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
+        505: [
+            ('DOCX-P505-R03101','TAGHYIR_HAMZ','أَجِئْتَنَا',
+             {'Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,22,2,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P505-R03101','TAGHYIR_HAMZ','لِتَأْفِكَنَا',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,22,3,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P505-R03101','TAGHYIR_HAMZ','فَأْتِنَا',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,22,6,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
+        514: [
+            ('DOCX-P514-R03185','TAGHYIR_HAMZ','مُّؤْمِنُونَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,25,15,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P514-R03185','TAGHYIR_HAMZ','الْمُؤْمِنِينَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,26,16,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
+        508: [
+            ('DOCX-P508-R03125','IDGHAM_SAGHIR','فَقَد جَّآءَ',
+             {'Q03-R01','Q03-R02','Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
+             'إدغام صغير',1,18,8,
+             'إسناد صريح؛ الاسم المجرد خلف حُسم إلى Q06 حسب قاعدة المشروع.'),
+            ('DOCX-P508-R03128','WAQF_RASM','وَكَأَيِّن',
+             {'Q03-R01','Q03-R02','Q09-R01','Q09-R02'},
+             'الوقف بالياء',1,13,1,
+             'وجه وقف صريح لأبي عمرو ويعقوب في المصدر.'),
+        ],
+        512: [
+            ('DOCX-P512-R03167','IDGHAM_SAGHIR','فَٱسْتَغْفِر لَّنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,11,9,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        525: [
+            ('DOCX-P525-R03286','IDGHAM_SAGHIR','وَٱصْبِرْ لِحُكْمِ',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,48,1,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        547: [
+            ('DOCX-P547-R03491','IDGHAM_SAGHIR','ٱغْفِرْ لَنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,10,7,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        549: [
+            ('DOCX-P549-R03514','IDGHAM_SAGHIR','فَقَد ضَّلَّ',
+             {'Q01-R01','Q01-R02','Q03-R01','Q03-R02','Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
+             'إدغام صغير',1,1,45,
+             'إسناد القراء صريح في المصدر.'),
+            ('DOCX-P549-R03514','IDGHAM_SAGHIR','وَٱغْفِرْ لَنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,5,7,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
         516: [
             ('DOCX-P516-R03204','IMALAH_TAQLIL','وَنِعْمَةًۭ',
              {'Q07-R01','Q07-R02'},'إمالة هاء التأنيث وقفاً',1,8,4,
@@ -2296,7 +2360,7 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
     for record_id,category,anchor,readers,action,occurrence,ayah,word,verification in audited_page_rules.get(page,[]):
         record=PACKAGE_RECORDS.get(record_id)
         source_text=record.get('raw_text','') if record else ''
-        explicit_duri_khilaf = record_id=='DOCX-P555-R03570' and 'أبو عمرو بخلف عن الدوري' in source_text
+        explicit_duri_khilaf = record_id in {'DOCX-P508-R03125','DOCX-P512-R03167','DOCX-P555-R03570','DOCX-P525-R03286','DOCX-P547-R03491','DOCX-P549-R03514'} and 'أبو عمرو بخلف عن الدوري' in source_text
         if (record is None or record.get('page_no')!=page or source_text not in lines or
                 is_neg(record['raw_text']) or is_univ(record['raw_text']) or
                 (has_bare_ambiguous_reader(record['raw_text']) and not explicit_duri_khilaf)):
@@ -2907,6 +2971,7 @@ def collect_farsh(page, lines):
     out.extend(checked_inline_farsh(page, lines))
     out.extend(checked_audited_p277_278_farsh(page, lines))
     out.extend(checked_audited_307_310_farsh(page, lines))
+    out.extend(checked_audited_late_explicit_farsh(page, lines))
     if page == 428:
         out = [v for v in out if not (v.get('variantText','').startswith('عَـٰلِم') and set(v.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
     # p555's two-face inline row is already represented by the reviewed fixture
@@ -2919,6 +2984,57 @@ def collect_farsh(page, lines):
         # fixtures with corrected reader partitions; the generic parser sees
         # only one prose clause and would recreate incomplete Q05-only faces.
         out = [v for v in out if v.get('variantText') not in {'نُكُرًا', 'جَزَاءُ الْحُسْنَى'}]
+    return out
+
+def checked_audited_late_explicit_farsh(page, lines):
+    """Import late-page farsh rows whose prose shape defeats the block parser.
+
+    These rows are fail-closed: the exact packaged source paragraph must be present,
+    every face is anchored through tokens.py, and the reader partition covers all 20
+    transmissions exactly once.  This keeps the import additive and occurrence-safe.
+    """
+    cases = {
+        495: [
+            ('DOCX-P495-R02981', 'يَحْسَبُونَ', 'يَحْسِبُونَ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
+              'Q07-R01','Q07-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'}, 80, 1,
+             'بكسر السين للباقين'),
+            ('DOCX-P495-R02982', 'وَرُسُلُنَا', 'وَرُسْلُنَا',
+             {'Q03-R01','Q03-R02'}, 80, 1, 'بإسكان السين لأبي عمرو'),
+            ('DOCX-P495-R02993', 'وَقِيلِهِۦ', 'وَقِيلَهُۥ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
+              'Q04-R01','Q04-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02',
+              'Q09-R01','Q09-R02','Q10-R01','Q10-R02'}, 88, 1,
+             'بنصب اللام وضم الهاء للباقين'),
+        ],
+        512: [
+            ('DOCX-P512-R03161', 'عَلَيْهُ ٱللَّهَ', 'عَلَيْهِ ٱللَّهَ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
+              'Q04-R01','Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q07-R01','Q07-R02',
+              'Q08-R01','Q08-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'}, 10, 1,
+             'بكسر الهاء وصلاً للباقين'),
+        ],
+    }
+    out=[]
+    for sid,anchor,variant,readers,ayah,occ,desc in cases.get(page,[]):
+        row=PACKAGE_RECORDS.get(sid)
+        if not row or row.get('page_no')!=page or row.get('raw_text') not in lines:
+            continue
+        if is_neg(row['raw_text']) or is_univ(row['raw_text']):
+            continue
+        try:
+            loc=T.find(page,anchor,occurrence=occ,ayah=ayah)
+        except T.NoMatch:
+            continue
+        if not readers or 'Q05-R02' in readers:
+            continue
+        base=ALL20-readers
+        yield_block(page,anchor,[(loc['baseText'], 'وجه حفص المطابق للرسم', base),
+                                 (variant, desc, readers)],out,ayah=ayah,occurrence=occ)
+        for candidate in out[-1:]:
+            candidate['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، {sid}',
+                'sourceText':row['raw_text'],
+                'verificationNotes':'وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.'})
     return out
 
 def checked_audited_307_310_farsh(page, lines):

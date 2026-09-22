@@ -358,5 +358,131 @@
     "description": "بتاء الخطاب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D495-يحسبون-w2",
+    "surah": 43,
+    "ayah": 80,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَحْسَبُونَ",
+    "variantText": "يَحْسِبُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D495-يحسبون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-يحسبون-w2",
+        "variantId": "v-D495-يحسبون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02981",
+        "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
+        "sourceText": "﴿يَحْسَبُونَ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      }
+    ],
+    "description": "بكسر السين للباقين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-ورسلنا-w2",
+    "surah": 43,
+    "ayah": 80,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَرُسُلُنَا",
+    "variantText": "وَرُسْلُنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D495-ورسلنا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-ورسلنا-w2",
+        "variantId": "v-D495-ورسلنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02982",
+        "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
+        "sourceText": "﴿رُسُلُنَا﴾: بإسكان السين لأبي عمرو ﴿رُسْلُنَا﴾؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بإسكان السين لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D495-وقيلهي-w2",
+    "surah": 43,
+    "ayah": 88,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَقِيلِهِۦ",
+    "variantText": "وَقِيلَهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D495-وقيلهي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D495-وقيلهي-w2",
+        "variantId": "v-D495-وقيلهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02993",
+        "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
+        "sourceText": "﴿وَقِيلِهِۦ﴾: بكسر اللام والهاء ﴿وَقِيلِهِۦ﴾ لعاصم وحمزة؛ بنصب اللام وضم الهاء ﴿وَقِيلَهُۥ﴾ للباقين."
+      }
+    ],
+    "description": "بنصب اللام وضم الهاء للباقين",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
