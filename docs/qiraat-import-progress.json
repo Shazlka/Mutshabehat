@@ -18,8 +18,8 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2839,
-    "usulRulings": 9894,
+    "variants": 2858,
+    "usulRulings": 9896,
     "fixturePagesPresent": 584,
     "fixtureRange": [
       1,
@@ -22298,7 +22298,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "3370ace",
+  "currentHeadCommit": "pending-local-commit",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -23601,32 +23601,30 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://mutshabehat-v2-5bogfqnaf-shazlka-s-projects.vercel.app",
-  "latestSourceCoverageNote": "Deep audited pages 339-342 and 539-542; added three token-backed faces total, corrected bare-خلف attribution, and left one pre-existing p339 conflict for separate source reconciliation.",
+  "latestSourceCoverageNote": "Deep audited attribution pass through Mushaf pages 551-554. Bare خلف is Q06 (خلف عن حمزة); Q10 is retained only for explicit خلف العاشر or source remainder assignments.",
   "latestLocalImportCycle": {
-    "id": "deep-audit-p339-p342-p539-p542",
+    "id": "deep-audit-p551-p554",
     "pages": [
-      339,
-      340,
-      341,
-      342,
-      539,
-      540,
-      541,
-      542
+      551,
+      552,
+      553,
+      554
     ],
-    "variantsAdded": 3,
+    "variantsAdded": 0,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 10,
+    "correctedRulingLoci": 13,
     "perPageVariants": {
-      "339": 1,
-      "340": 0,
-      "341": 0,
-      "342": 0,
-      "539": 0,
-      "540": 0,
-      "541": 0,
-      "542": 2
+      "551": 0,
+      "552": 0,
+      "553": 0,
+      "554": 0
+    },
+    "correctedRulingLociByPage": {
+      "551": 2,
+      "552": 8,
+      "553": 1,
+      "554": 2
     },
     "status": "locally verified; deployment pending",
     "validation": {
@@ -23634,11 +23632,11 @@
       "usulRulings": 9896,
       "validator": "passed",
       "tests": "38/38",
-      "tsc": "pending",
-      "build": "pending",
+      "tsc": "passed",
+      "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Three net token-backed faces added; multiple bare-خلف Q10 assignments corrected. Existing conflicting p339 قاتلوا face was not deleted."
+    "details": "All farsh rows were already represented or safely withheld. Removed Q10 from 13 usul loci whose source names bare خلف; Q06 remains. Explicit remainder faces retaining Q10 were preserved."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -24128,5 +24126,43 @@
       "importerIdempotent": true
     },
     "details": "No farsh additions. Two new token-backed IDGHAM_SAGHIR loci and multiple corrected/expanded usul assignments; bare خلف remains Q06."
+  },
+  "previousImportCycle551_554": {
+    "id": "deep-audit-p339-p342-p539-p542",
+    "pages": [
+      339,
+      340,
+      341,
+      342,
+      539,
+      540,
+      541,
+      542
+    ],
+    "variantsAdded": 3,
+    "newRulingLoci": 0,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 10,
+    "perPageVariants": {
+      "339": 1,
+      "340": 0,
+      "341": 0,
+      "342": 0,
+      "539": 0,
+      "540": 0,
+      "541": 0,
+      "542": 2
+    },
+    "status": "locally verified; deployment pending",
+    "validation": {
+      "variants": 2858,
+      "usulRulings": 9896,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "pending",
+      "build": "pending",
+      "importerIdempotent": true
+    },
+    "details": "Three net token-backed faces added; multiple bare-خلف Q10 assignments corrected. Existing conflicting p339 قاتلوا face was not deleted."
   }
 }
