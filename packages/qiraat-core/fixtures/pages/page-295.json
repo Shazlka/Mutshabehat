@@ -72,5 +72,86 @@
     "description": "بإسكان الراء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D295-فهو-performance1",
+    "surah": 18,
+    "ayah": 17,
+    "startToken": 26,
+    "endToken": 26,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهُوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D295-فهو",
+    "locusType": "performance_variant",
+    "performanceNote": "بإسكان الهاء",
+    "sources": [
+      {
+        "id": "s-D295-فهو-performance1",
+        "variantId": "v-D295-فهو-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00965",
+        "verificationNotes": "وجه الإسكان للمذكورين. المرجع المستقل: https://quranpedia.net/qiraat/al-kahf/17.",
+        "sourceText": "﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D295-وتحسبهم-performance2",
+    "surah": 18,
+    "ayah": 18,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَتَحْسَبُهُمْ",
+    "variantText": "وَتَحْسَبُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D295-وتحسبهم",
+    "locusType": "performance_variant",
+    "performanceNote": "بفتح السين",
+    "sources": [
+      {
+        "id": "s-D295-وتحسبهم-performance2",
+        "variantId": "v-D295-وتحسبهم-performance2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00966",
+        "verificationNotes": "وجه فتح السين للمذكورين. المرجع المستقل: https://quranpedia.net/qiraat/al-kahf/18.",
+        "sourceText": "﴿وَتَحْسَبُهُمْ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      }
+    ],
+    "description": "بفتح السين",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

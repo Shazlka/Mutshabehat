@@ -4937,6 +4937,17 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        293: [
+            ('DOCX-P293-R00943','عَلَيْهِمْ','حمزة، يعقوب',107,'بضم الهاء','https://quranpedia.net/qiraat/al-isra/107','وجه الضم لحمزة ويعقوب.'),
+        ],
+        294: [
+            ('DOCX-P294-R00953','عَلَيْهِم','حمزة، يعقوب',15,'بضم الهاء','https://quranpedia.net/qiraat/al-kahf/15','وجه الضم لحمزة ويعقوب.'),
+        ],
+        295: [
+            ('DOCX-P295-R00965','فَهُوَ','قالون، أبو عمرو، الكسائي، أبو جعفر',17,'بإسكان الهاء','https://quranpedia.net/qiraat/al-kahf/17','وجه الإسكان للمذكورين.'),
+            ('DOCX-P295-R00966','وَتَحْسَبُهُمْ','ابن عامر، عاصم، حمزة، أبو جعفر',18,'بفتح السين','https://quranpedia.net/qiraat/al-kahf/18','وجه فتح السين للمذكورين.'),
+            ('DOCX-P295-R00967','عَلَيْهِمْ','حمزة، يعقوب',18,'بضم الهاء','https://quranpedia.net/qiraat/al-kahf/18','وجه الضم لحمزة ويعقوب.'),
+        ],
         279: [
             ('DOCX-P279-R00777','لَا يَهْدِيهِمُ اللَّهُ','نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',104,'بكسر الهاء وضم الميم وصلاً','https://quranpedia.net/qiraat/an-nahl/104','وجه المصدر لأهل الكسر مع ضم الميم.'),
             ('DOCX-P279-R00778','لَا يَهْدِيهِمُ اللَّهُ','أبو عمرو',104,'بكسر الهاء والميم وصلاً','https://quranpedia.net/qiraat/an-nahl/104','وجه أبي عمرو بالكسر وصلاً.'),
