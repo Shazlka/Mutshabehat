@@ -7,7 +7,7 @@
     "endToken": 9,
     "operation": "REPLACE",
     "hafsText": "مَّوَدَّةَ بَيْنِكُمْ",
-    "variantText": "مَوَدَّةَ بَيْنِكُمْ",
+    "variantText": "مَوَدَّةٌ بَيْنَكُمْ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-20T12:00:00.000Z",
@@ -19,8 +19,7 @@
       "Q03-R02",
       "Q07-R01",
       "Q07-R02",
-      "Q09-R01",
-      "Q09-R02"
+      "Q09-R01"
     ],
     "locusId": "L399-s29a25b0",
     "locusType": "multi_word_variant",
@@ -30,11 +29,12 @@
         "variantId": "v-L399-s29a25b0-w1",
         "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
         "sourceType": "other",
-        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
-        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+        "sourceReference": "qiraat_records.jsonl، DOCX-P399-R02074",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "برفع مودةُ منونة ونصب بينَكم ﴿مَوَدَّةٌ بَيْنَكُمْ﴾: ابن كثير، ابن عمرو، الكسائي، ورويس."
       }
     ],
-    "description": "بنصب تاء مودة غير منونة وخفض نون بينكم مضافاً",
+    "description": "برفع مودة منونة ونصب بينكم",
     "wajhIndex": 1,
     "evidence": []
   },
@@ -46,33 +46,43 @@
     "endToken": 9,
     "operation": "REPLACE",
     "hafsText": "مَّوَدَّةَ بَيْنِكُمْ",
-    "variantText": "مَوَدَّةُ بَيْنِكُمْ",
+    "variantText": "مَوَدَّةَ بَيْنِكُمْ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
-      "Q05-R01",
+      "Q05-R02",
       "Q06-R01",
       "Q06-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q09-R02"
     ],
     "locusId": "L399-s29a25b0",
-    "locusType": "multi_word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
         "id": "s-L399-s29a25b0-w2",
         "variantId": "v-L399-s29a25b0-w2",
         "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
         "sourceType": "other",
-        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
-        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+        "sourceReference": "qiraat_records.jsonl، DOCX-P399-R02072",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "بنصب مودةَ بلا تنوين وخفض بينِكم ﴿مَوَدَّةَ بَيْنِكُمْ﴾: حفص، وحمزة، وروح."
+      },
+      {
+        "id": "v-L399-s29a25b0-w2-QP",
+        "variantId": "v-L399-s29a25b0-w2",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ankabut/25",
+        "sourceText": "وجه نصب مودة بلا تنوين وخفض بينكم للمنقولين في المصدر.",
+        "verificationNotes": "تحقق مستقل للوجه مع إبقاء الإسناد المصدرّي الأصلي."
       }
     ],
-    "description": "برفع تاء مودة غير منونة وخفض نون بينكم مضافاً",
+    "description": "بنصب مودة بلا تنوين وخفض بينكم",
     "wajhIndex": 2,
-    "evidence": []
+    "evidence": [],
+    "performanceNote": "وجه حفص وحمزة وروح: نصب مودة بلا تنوين وخفض بينكم"
   },
   {
     "id": "v-L399-s29a29b0-w1",
@@ -144,5 +154,56 @@
     "description": "بالهمز والمد المتصل",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-L399-s29a25b0-w3",
+    "surah": 29,
+    "ayah": 25,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "مَّوَدَّةَ بَيْنِكُمْ",
+    "variantText": "مَوَدَّةً بَيْنَكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L399-s29a25b0",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-L399-s29a25b0-w3",
+        "variantId": "v-L399-s29a25b0-w3",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P399-R02073",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "بنصب مودةً منونة ونصب بينَكم ﴿مَوَدَّةً بَيْنَكُمْ﴾: نافع، وابن عامر، وشعبة، وأبو جعفر، وخلف."
+      },
+      {
+        "id": "v-L399-s29a25b0-w3-QP",
+        "variantId": "v-L399-s29a25b0-w3",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-ankabut/25",
+        "sourceText": "وجه نصب مودة منونة ونصب بينكم للمجموعة المسماة في المصدر.",
+        "verificationNotes": "تحقق مستقل للوجه؛ خلف المجرد يعالج كخلف عن حمزة Q06."
+      }
+    ],
+    "description": "بنصب مودةً منونة ونصب بينكم",
+    "wajhIndex": 3,
+    "evidence": [],
+    "performanceNote": "وجه نافع وابن عامر وشعبة وأبي جعفر وخلف: نصب مودة منونة ونصب بينكم"
   }
 ]
