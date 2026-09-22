@@ -10,6 +10,7 @@ and any required DB migration.
 Live: https://mutshabehat-v2.vercel.app
 
 ## 2026-09-22
+- **Qiraat — attached pages 585–604 import:** added 24 source-backed wording/performance faces from `qiraat_pages_585_604.json`, including all explicit reader groups and separate Hamza وصل/وقف faces on p604; mapped source labels p593 and p598 to actual Mushaf fixture pages 594 and 599. **Verification:** validator clean (3,081 variants, 10,036 rulings), DB migration: none — fixture-only.
 - **Qiraat — full source idempotency sweep, pages 225–584:** merged 5 remaining source-backed word variants and 72 reader assignments across pages 228, 230, 253, 259, 265, 341, 412, 439, 471, 472, 486, and 583. **Verification:** importer sweep, validator clean (3,057 variants, 10,036 rulings), DB migration: none — fixture-only.
 - **Qiraat — p548 occurrence-safe completion:** added six `WAQF_RASM` loci for Yaqub on every exact `هُوَ` token in Mushaf page 548, using the external rule that Yaqub stops on `هو/هي` wherever they occur; `وَهُوَ` remains a separate source-backed wording face. **Verification:** validator clean (3,052 variants, 10,036 rulings), DB migration: none — fixture-only.
 - **Qiraat — final-page audit, Mushaf pages 573–584:** added p577 hamz substitution, completed p578 `وَقِيلَ`, p579 imalah/taqlil, and corrected/expanded p582–583 reader assignments including explicit Q10. Pages 573–576, 580–581, and 584 were source-consistent with no safe additions. **Verification:** validator clean (3,052 variants, 10,030 rulings), DB migration: none — fixture-only.

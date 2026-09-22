@@ -1,0 +1,42 @@
+[
+  {
+    "id": "v-SRC-P589-84-19-1",
+    "surah": 84,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لَتَرْكَبُنَّ",
+    "variantText": "لَتَرْكَبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-SRC-P589-84-19-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-SRC-P589-84-19-1-source",
+        "variantId": "v-SRC-P589-84-19-1",
+        "sourceName": "استخراج القراءات العشر — qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604.source.json",
+        "sourceText": "ابن كثير، حمزة، الكسائي، خلف العاشر: لَتَرْكَبَنَّ بفتح الباء.",
+        "verificationNotes": "مرتبط بموضع حقيقي في page-word fixture؛ إسناد صريح من ملف المصدر."
+      }
+    ],
+    "description": "فتح الباء في لَتَرْكَبَنَّ",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "v-D585-تصدى-w2",
+    "surah": 80,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "تَصَدَّىٰ",
+    "variantText": "تَصَّدَّىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D585-تصدى",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D585-تصدى-w2",
+        "variantId": "v-D585-تصدى-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: تصدى",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "تشديد الصاد لنافع وابن كثير وابن عامر وأبي جعفر"
+      }
+    ],
+    "description": "تشديد الصاد لنافع وابن كثير وابن عامر وأبي جعفر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D585-انا-w2",
+    "surah": 80,
+    "ayah": 25,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "اَنَّا",
+    "variantText": "أَنَّا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D585-انا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D585-انا-w2",
+        "variantId": "v-D585-انا-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: انا",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "فتح الهمزة للكوفيين الأربعة"
+      }
+    ],
+    "description": "فتح الهمزة للكوفيين الأربعة",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "v-D586-سجرت-w2",
+    "surah": 81,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "سُجِّرَتْ",
+    "variantText": "سُجِرَتْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D586-سجرت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D586-سجرت-w2",
+        "variantId": "v-D586-سجرت-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: سجرت",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "تخفيف الجيم لابن كثير وأبي عمرو ويعقوب"
+      }
+    ],
+    "description": "تخفيف الجيم لابن كثير وأبي عمرو ويعقوب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D586-بضنين-w2",
+    "surah": 81,
+    "ayah": 24,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِضَنِينٍۢ",
+    "variantText": "بِظَنِينٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D586-بضنين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D586-بضنين-w2",
+        "variantId": "v-D586-بضنين-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: بضنين",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "بالظاء لابن كثير وأبي عمرو والكسائي ورويس"
+      }
+    ],
+    "description": "بالظاء لابن كثير وأبي عمرو والكسائي ورويس",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -10,7 +10,18 @@
       225,
       584
     ],
-    "pageCount": 360
+    "pageCount": 360,
+    "additionalSources": [
+      {
+        "filename": "qiraat_pages_585_604.json",
+        "pageRange": [
+          585,
+          604
+        ],
+        "recordCount": 20,
+        "path": "attached user source"
+      }
+    ]
   },
   "storage": {
     "qiraatData": "fixture-only",
@@ -18,65 +29,44 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 3057,
+    "variants": 3081,
     "usulRulings": 10036,
-    "fixturePagesPresent": 584,
+    "fixturePagesPresent": 604,
     "fixtureRange": [
       1,
-      584
-    ],
-    "missingFixturePages": [
-      585,
-      586,
-      587,
-      588,
-      589,
-      590,
-      591,
-      592,
-      593,
-      594,
-      595,
-      596,
-      597,
-      598,
-      599,
-      600,
-      601,
-      602,
-      603,
       604
     ],
+    "missingFixturePages": [],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. The p548 هُوَ waqf rule is now represented at all six exact هُوَ tokens on the page, based on the external general rule for Yaqub; وَهُوَ is kept separate.",
-    "latestSourceCoverageNote": "Full importer idempotency sweep over source pages 225-584 merged 5 remaining source variants and 72 reader assignments across pages 228, 230, 253, 259, 265, 341, 412, 439, 471, 472, 486, and 583. Totals now 3057 variants and 10036 rulings; validator passes."
+    "sourceCoverageStatus": "Attached qiraat_pages_585_604.json imported across source pages 585-604. Added 24 source-backed wording/performance faces (including separate Hamza وصل/وقف faces on p604), mapped p593 ayah 89:25 to actual fixture page 594 and p598 ayah 98:6 to actual fixture page 599. All real-token anchors validated; validator passes. DB migration: none — fixture-only.",
+    "latestSourceCoverageNote": "Attached qiraat_pages_585_604.json imported across source pages 585-604. Added 24 source-backed wording/performance faces (including separate Hamza وصل/وقف faces on p604), mapped p593 ayah 89:25 to actual fixture page 594 and p598 ayah 98:6 to actual fixture page 599. All real-token anchors validated; validator passes. DB migration: none — fixture-only."
   },
-  "sourceCoverageStatus": "Targeted four-agent audit completed for Mushaf pages 225-584 with source DB and Quranpedia checks. Bare خلف is Q06; خلف العاشر is Q10 only when explicit or unambiguous remainder. The p548 هُوَ waqf rule is now represented at all six exact هُوَ tokens on the page, based on the external general rule for Yaqub; وَهُوَ is kept separate.",
+  "sourceCoverageStatus": "Attached qiraat_pages_585_604.json imported across source pages 585-604. Added 24 source-backed wording/performance faces (including separate Hamza وصل/وقف faces on p604), mapped p593 ayah 89:25 to actual fixture page 594 and p598 ayah 98:6 to actual fixture page 599. All real-token anchors validated; validator passes. DB migration: none — fixture-only.",
   "currentBatch": {
-    "id": "full-idempotency-sweep-225-584",
+    "id": "attached-pages-585-604",
     "pages": [
-      228,
-      583
+      585,
+      604
     ],
-    "variantsAdded": 5,
+    "variantsAdded": 24,
     "newRulingLoci": 0,
-    "mergedRulingLoci": 21,
-    "readerAssignmentsAdded": 72,
-    "status": "locally verified; deployment pending",
+    "mergedRulingLoci": 0,
+    "readerAssignmentsAdded": 0,
+    "status": "locally verified; deployment queued",
     "validation": {
-      "variants": 3057,
+      "variants": 3081,
       "usulRulings": 10036,
       "validator": "passed",
-      "importerIdempotent": true
+      "importerIdempotent": false
     },
     "manualReview": {
       "remaining": [],
-      "notes": "All source pages 225-584 have been swept; four legacy manual flags remain on early pages 12, 14, and 16 outside this source range."
+      "notes": "No attached records were dropped; page labels 593 and 598 were mapped to actual Mushaf fixture pages 594 and 599 respectively."
     }
   },
-  "lastConfirmedDeployedDataCommit": "9186a9f",
-  "lastConfirmedVercelState": "pending/rate-limited",
+  "lastConfirmedDeployedDataCommit": "5c18daa",
+  "lastConfirmedVercelState": "pending",
   "lastProductionSmoke": {
     "pages": [
       505,

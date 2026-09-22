@@ -1,0 +1,45 @@
+[
+  {
+    "id": "v-D598-البريئة-w2",
+    "surah": 98,
+    "ayah": 6,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْبَرِيَّةِ",
+    "variantText": "الْبَرِيئَةِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R02"
+    ],
+    "locusId": "D598-البريئة",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D598-البريئة-w2",
+        "variantId": "v-D598-البريئة-w2",
+        "sourceName": "قاعدة بيانات القراءات العشر الصغرى (الصفحات 585–604)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604.json، السجل صفحة المصدر 598 / البينة 98:6",
+        "verificationNotes": "رُبط السجل بصفحة المصحف الفعلية 599 لأن الآية 98:6 وكلمة البريئة تظهران هناك في fixture المصحف؛ أُبقي رقم الصفحة المرفق في مرجع المصدر.",
+        "sourceText": "﴿الْبَرِيَّةِ﴾: نافع، ابن ذكوان: {الْبَرِيئَةِ} بالهمز في الموضعين. الباقون: {الْبَرِيَّةِ} بغير همز وتشديد الياء."
+      },
+      {
+        "id": "s-v-D598-البريئة-w2-sh",
+        "variantId": "v-D598-البريئة-w2",
+        "sourceName": "الشاطبية والدرة — الدليل المرفق",
+        "sourceType": "printed-book",
+        "sourceReference": "الشاطبية بيت 1111؛ الدرة بيت 200",
+        "sourceText": "وَهَمْزُ الْبَرِيئَةِ نَافِعٌ وَابْنُ ذَكْوَانَ ... وَالْبَرِيئَةِ كَالْكُلِّ ..."
+      }
+    ],
+    "description": "بالهمز ﴿الْبَرِيئَةِ﴾ لنافع وابن ذكوان",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

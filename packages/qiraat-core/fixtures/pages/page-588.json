@@ -1,0 +1,36 @@
+[
+  {
+    "id": "v-D588-ختامه-w2",
+    "surah": 83,
+    "ayah": 26,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "خِتَـٰمُهُۥ",
+    "variantText": "خَتَامُهُۥ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D588-ختامه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D588-ختامه-w2",
+        "variantId": "v-D588-ختامه-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: ختامه",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "فتح الخاء وألف بعدها وفتح التاء للكسائي"
+      }
+    ],
+    "description": "فتح الخاء وألف بعدها وفتح التاء للكسائي",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

@@ -1,0 +1,81 @@
+[
+  {
+    "id": "v-SRC601-جمع-w2",
+    "surah": 104,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "جَمَعَ",
+    "variantText": "جَمَّعَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "SRC601-جمع",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC601-جمع-w2",
+        "variantId": "v-SRC601-جمع-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 601: جمع",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "بتشديد الميم لابن عامر وحمزة والكسائي وخلف العاشر"
+      }
+    ],
+    "description": "بتشديد الميم لابن عامر وحمزة والكسائي وخلف العاشر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SRC601-عمد-w2",
+    "surah": 104,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَمَدٍۢ",
+    "variantText": "عُمَدٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "SRC601-عمد",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC601-عمد-w2",
+        "variantId": "v-SRC601-عمد-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 601: عمد",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "بضمتين لشعبة وحمزة والكسائي وخلف العاشر"
+      }
+    ],
+    "description": "بضمتين لشعبة وحمزة والكسائي وخلف العاشر",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

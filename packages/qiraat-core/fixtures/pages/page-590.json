@@ -1,0 +1,74 @@
+[
+  {
+    "id": "v-SRC-P590-85-15-3",
+    "surah": 85,
+    "ayah": 15,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَجِيدُ",
+    "variantText": "ٱلْمَجِيدِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-SRC-P590-85-15-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-SRC-P590-85-15-3-source",
+        "variantId": "v-SRC-P590-85-15-3",
+        "sourceName": "استخراج القراءات العشر — qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604.source.json",
+        "sourceText": "حمزة، الكسائي، خلف العاشر: الْمَجِيدِ بالجر.",
+        "verificationNotes": "مرتبط بموضع حقيقي في page-word fixture؛ إسناد صريح من ملف المصدر."
+      }
+    ],
+    "description": "جر الميم في الْمَجِيدِ",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SRC-P590-85-22-3",
+    "surah": 85,
+    "ayah": 22,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مَّحْفُوظٍۭ",
+    "variantText": "مَّحْفُوظٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "v-SRC-P590-85-22-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-SRC-P590-85-22-3-source",
+        "variantId": "v-SRC-P590-85-22-3",
+        "sourceName": "استخراج القراءات العشر — qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604.source.json",
+        "sourceText": "نافع وحده: مَّحْفُوظٌ برفع الظاء.",
+        "verificationNotes": "مرتبط بموضع حقيقي في page-word fixture؛ إسناد صريح من ملف المصدر."
+      }
+    ],
+    "description": "رفع الظاء في مَّحْفُوظٌ",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

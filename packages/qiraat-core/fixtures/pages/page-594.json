@@ -1,0 +1,78 @@
+[
+  {
+    "id": "v-SRC593-89-25-3-YUADHAB",
+    "surah": 89,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُعَذِّبُ",
+    "variantText": "يُعَذَّبُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00Z",
+    "updatedAt": "2026-09-22T00:00:00Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "SRC593-89-25-3-YUADHAB",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC593-89-25-3-YUADHAB",
+        "variantId": "v-SRC593-89-25-3-YUADHAB",
+        "sourceName": "qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "source page 593 record for 89:25 (mapped to fixture page 594)",
+        "sourceText": "يُعَذَّبُ",
+        "verificationNotes": "Attached source record mapped to real Mushaf token."
+      }
+    ],
+    "description": "يُعَذَّبُ",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SRC594-90-13-1-FAKK",
+    "surah": 90,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "فَكُّ رَقَبَةٍ",
+    "variantText": "فَكَّ رَقَبَةً",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00Z",
+    "updatedAt": "2026-09-22T00:00:00Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "SRC594-90-13-1-FAKK",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC594-90-13-1-FAKK",
+        "variantId": "v-SRC594-90-13-1-FAKK",
+        "sourceName": "qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "source page 594 record R013",
+        "sourceText": "فَكَّ رَقَبَةً",
+        "verificationNotes": "Attached source record mapped to real Mushaf token."
+      }
+    ],
+    "description": "فَكَّ رَقَبَةً",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]
