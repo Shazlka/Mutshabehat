@@ -18,7 +18,7 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2858,
+    "variants": 2862,
     "usulRulings": 9896,
     "fixturePagesPresent": 584,
     "fixtureRange": [
@@ -23601,43 +23601,48 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
-  "latestSourceCoverageNote": "Deep audited attribution pass through Mushaf pages 551-554. Bare خلف is Q06 (خلف عن حمزة); Q10 is retained only for explicit خلف العاشر or source remainder assignments.",
+  "latestSourceCoverageNote": "Four-agent audited through Mushaf pages 570. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
   "latestLocalImportCycle": {
-    "id": "deep-audit-p551-p554",
+    "id": "four-agent-audit-p563-p570",
     "pages": [
-      551,
-      552,
-      553,
-      554
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      569,
+      570
     ],
-    "variantsAdded": 0,
+    "variantsAdded": 4,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 13,
+    "correctedRulingLoci": 3,
     "perPageVariants": {
-      "551": 0,
-      "552": 0,
-      "553": 0,
-      "554": 0
+      "563": 0,
+      "564": 2,
+      "565": 0,
+      "566": 0,
+      "567": 0,
+      "568": 2,
+      "569": 0,
+      "570": 0
     },
-    "correctedRulingLociByPage": {
-      "551": 2,
-      "552": 8,
-      "553": 1,
-      "554": 2
+    "correctedByPage": {
+      "566": 1,
+      "567": 2
     },
-    "status": "deployed and verified",
+    "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2858,
+      "variants": 2862,
       "usulRulings": 9896,
       "validator": "passed",
       "tests": "38/38",
       "tsc": "passed",
       "build": "passed",
-      "importerIdempotent": true,
-      "deploy": "Vercel success"
+      "importerIdempotent": true
     },
-    "details": "All farsh rows were already represented or safely withheld. Removed Q10 from 13 usul loci whose source names bare خلف; Q06 remains. Explicit remainder faces retaining Q10 were preserved."
+    "details": "Pages 564 and 568 gained two token-backed faces each. Page 566 removed Q10 from one bare خلف usul locus. Page 567 added Q08 to the source face for فهي and corrected bare خلف to Q06 in one variant plus one usul locus. External Quranpedia checks were recorded for pages 564, 567, and 568."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [
@@ -24165,5 +24170,42 @@
       "importerIdempotent": true
     },
     "details": "Three net token-backed faces added; multiple bare-خلف Q10 assignments corrected. Existing conflicting p339 قاتلوا face was not deleted."
+  },
+  "previousImportCycle563_570": {
+    "id": "deep-audit-p551-p554",
+    "pages": [
+      551,
+      552,
+      553,
+      554
+    ],
+    "variantsAdded": 0,
+    "newRulingLoci": 0,
+    "rulingRecordsNetChanged": 0,
+    "correctedRulingLoci": 13,
+    "perPageVariants": {
+      "551": 0,
+      "552": 0,
+      "553": 0,
+      "554": 0
+    },
+    "correctedRulingLociByPage": {
+      "551": 2,
+      "552": 8,
+      "553": 1,
+      "554": 2
+    },
+    "status": "deployed and verified",
+    "validation": {
+      "variants": 2858,
+      "usulRulings": 9896,
+      "validator": "passed",
+      "tests": "38/38",
+      "tsc": "passed",
+      "build": "passed",
+      "importerIdempotent": true,
+      "deploy": "Vercel success"
+    },
+    "details": "All farsh rows were already represented or safely withheld. Removed Q10 from 13 usul loci whose source names bare خلف; Q06 remains. Explicit remainder faces retaining Q10 were preserved."
   }
 }

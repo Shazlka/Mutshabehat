@@ -187,6 +187,56 @@
     "endToken": 6,
     "operation": "REPLACE",
     "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذْكُرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D568-تذكرون",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D568-تذكرون-w2",
+        "variantId": "v-D568-تذكرون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03685؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/42",
+        "verificationNotes": "الوجه المنصوص عليه في المصدر لنافع، وأبي عمرو، وابن ذكوان (بخلف عنه)، وشعبة، وأبي جعفر؛ إسناد ابن ذكوان هنا Q04-R02 فقط.",
+        "sourceText": "﴿تُؤْمِنُونَ﴾، ﴿تَذَكَّرُونَ﴾: بتاء الخطاب وتخفيف الذال ﴿تُؤْمِنُونَ... تَذْكُرُونَ﴾: نافع، وأبو عمرو، وابن ذكوان (بخلف عنه)، وشعبة، وأبو جعفر."
+      },
+      {
+        "id": "v-D568-تذكرون-w2-quranpedia",
+        "variantId": "v-D568-تذكرون-w2",
+        "sourceName": "Quranpedia",
+        "sourceType": "external",
+        "sourceReference": "https://quranpedia.net/qiraat/al-haaqqa/42",
+        "verificationNotes": "مصدر خارجي للتحقق من الوجه المستقل في الآية ٤٢.",
+        "sourceText": "الوجه القرائي المثبت في المصدر الخارجي."
+      }
+    ],
+    "description": "بتاء الخطاب وتخفيف الذال",
+    "wajhIndex": 3,
+    "evidence": [],
+    "performanceNote": "بتاء الخطاب وتخفيف الذال؛ الوجه المصاحب في الموضع نفسه مع قراءة تَذَكَّرُونَ لحفص وحمزة والكسائي وخلف."
+  },
+  {
+    "id": "v-D568-تذكرون-w3",
+    "surah": 69,
+    "ayah": 42,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
     "variantText": "تَذَّكَّرُونَ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
@@ -197,27 +247,87 @@
       "Q01-R02",
       "Q03-R01",
       "Q03-R02",
-      "Q04-R01",
-      "Q04-R02",
-      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
       "Q08-R01",
       "Q08-R02"
     ],
     "locusId": "D568-تذكرون",
-    "locusType": "word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
-        "id": "s-D568-تذكرون-w2",
-        "variantId": "v-D568-تذكرون-w2",
+        "id": "s-D568-تذكرون-w3",
+        "variantId": "v-D568-تذكرون-w3",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03685؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/42",
-        "verificationNotes": "المجموعة ضُبطت على اختلاف الآية ٤٢ في Quranpedia: التاء مع التشديد تشمل هشامًا وابن ذكوان عن ابن عامر.",
-        "sourceText": "بتاء الخطاب وتخفيف الذال ﴿تُؤْمِنُونَ... تَذْكُرُونَ﴾: نافع، وأبو عمرو، وابن ذكوان (بخلف عنه)، وشعبة، وأبو جعفر."
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03683؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/42",
+        "verificationNotes": "الوجه المنصوص عليه لحفص وحمزة والكسائي وخلف، ومع إبدال الهمز لورش والسوسي وأبي جعفر؛ خلف المجرد Q06.",
+        "sourceText": "﴿تُؤْمِنُونَ﴾، ﴿تَذَكَّرُونَ﴾: بتاء الخطاب في الفعلين وتشديد الذال ﴿تُؤْمِنُونَ... تَذَّكَّرُونَ﴾: حفص، وحمزة، والكسائي، وخلف (مع إبدال الهمز لورش والسوسي وأبي جعفر)."
+      },
+      {
+        "id": "v-D568-تذكرون-w3-quranpedia",
+        "variantId": "v-D568-تذكرون-w3",
+        "sourceName": "Quranpedia",
+        "sourceType": "external",
+        "sourceReference": "https://quranpedia.net/qiraat/al-haaqqa/42",
+        "verificationNotes": "مصدر خارجي للتحقق من الوجه القرائي في الآية ٤٢.",
+        "sourceText": "بتاء الخطاب وتخفيف الذال"
       }
     ],
     "description": "بتاء الخطاب وتشديد الذال",
     "wajhIndex": 2,
-    "evidence": []
+    "evidence": [],
+    "performanceNote": "بتاء الخطاب وتشديد الذال؛ مع إبدال الهمز لورش والسوسي وأبي جعفر في الموضع المصاحب."
+  },
+  {
+    "id": "v-D568-تذكرون-w4",
+    "surah": 69,
+    "ayah": 42,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "يَذَّكَّرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D568-تذكرون",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D568-تذكرون-w4",
+        "variantId": "v-D568-تذكرون-w4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P568-R03684؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/42",
+        "verificationNotes": "الوجه بالياء مع تشديد الذال كما ورد لابن كثير وابن عامر في وجهه الثاني ويعقوب.",
+        "sourceText": "﴿تُؤْمِنُونَ﴾، ﴿تَذَكَّرُونَ﴾: بياء الغيب فيهما وتشديد الذال ﴿يُؤْمِنُونَ... يَذَّكَّرُونَ﴾: ابن كثير، وابن عامر (في وجهه الثاني)، ويعقوب."
+      },
+      {
+        "id": "v-D568-تذكرون-w4-quranpedia",
+        "variantId": "v-D568-تذكرون-w4",
+        "sourceName": "Quranpedia",
+        "sourceType": "external",
+        "sourceReference": "https://quranpedia.net/qiraat/al-haaqqa/42",
+        "verificationNotes": "مصدر خارجي للتحقق من الوجه القرائي في الآية ٤٢.",
+        "sourceText": "بياء الغيب وتشديد الذال"
+      }
+    ],
+    "description": "بياء الغيب وتشديد الذال",
+    "wajhIndex": 2,
+    "evidence": [],
+    "performanceNote": "بياء الغيب وتشديد الذال؛ الوجه الثاني لابن عامر"
   }
 ]
