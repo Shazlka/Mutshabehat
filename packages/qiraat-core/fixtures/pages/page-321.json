@@ -289,5 +289,39 @@
     "description": "بياء التذكير",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D321-تاتهم-w3",
+    "surah": 20,
+    "ayah": 133,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِهِم",
+    "variantText": "تَاتِهِمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D321-تاتهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D321-تاتهم-w3",
+        "variantId": "v-D321-تاتهم-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P321-R01297",
+        "verificationNotes": "وجه صريح لرويس، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بياء التذكير وفتح الياء وإسقاط الهمزة ﴿تَاتِهِمْ﴾: رويس."
+      }
+    ],
+    "description": "بياء التذكير وفتح الياء وإسقاط الهمزة",
+    "wajhIndex": 3,
+    "evidence": []
   }
 ]
