@@ -46,7 +46,7 @@
     "endToken": 4,
     "operation": "REPLACE",
     "hafsText": "خَرْجًۭا فَخَرَاجُ",
-    "variantText": "خَرَاجًا فَخَرْجُ",
+    "variantText": "خَرَاجًا فَخَرَاجُ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -67,10 +67,10 @@
         "sourceType": "manual_extraction",
         "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
         "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
-        "sourceText": "SH: وَخَرْجًا شَفَا مَعْ دِمَشْقِيٍّ فَفَتْحُهُ وَفِي الثَّانِ قَصْرٌ شَاعَ"
+        "sourceText": "بألف بعد الراء في الكلمتين: حمزة، والكسائي، وخلف عن حمزة."
       }
     ],
-    "description": "بألف بعد الراء في الأولى وإسكان الراء بلا ألف في الثانية",
+    "description": "بألف بعد الراء في الكلمتين",
     "wajhIndex": 2,
     "evidence": [
       {
@@ -142,7 +142,8 @@
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
       "Q02-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q09-R02"
     ],
     "locusId": "L346-صرط-1",
     "locusType": "word_variant",
@@ -382,6 +383,40 @@
       }
     ],
     "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D346-خرجا-فخرج-ibnamir",
+    "surah": 23,
+    "ayah": 72,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "خَرْجًۭا فَخَرَاجُ",
+    "variantText": "خَرْجًۭا فَخَرْجُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "v-D346-خرجا-فخرج-ibnamir",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D346-خرجا-فخرج-ibnamir",
+        "variantId": "v-D346-خرجا-فخرج-ibnamir",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P346-R01531",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بفتح فسكون في الكلمتين: ابن عامر."
+      }
+    ],
+    "description": "بفتح فسكون في الكلمتين: ابن عامر.",
     "wajhIndex": 2,
     "evidence": []
   }

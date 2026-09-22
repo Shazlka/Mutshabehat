@@ -357,5 +357,39 @@
     "description": "بكسر السين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D345-رسلنا-تترى-abuamr",
+    "surah": 23,
+    "ayah": 44,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلَنَا تَتْرَا ۖ",
+    "variantText": "رُسْلَنَا تَتْرَىٰ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "v-D345-رسلنا-تترى-abuamr",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D345-رسلنا-تترى-abuamr",
+        "variantId": "v-D345-رسلنا-تترى-abuamr",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P345-R01519",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بسكون السين وبلا تنوين مع ألف ممالة أو مقللة: أبو عمرو."
+      }
+    ],
+    "description": "بسكون السين وبلا تنوين مع ألف ممالة أو مقللة: أبو عمرو.",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

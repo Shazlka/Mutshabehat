@@ -131,13 +131,13 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03-R01",
+        "authorityId": "Q03-R02",
         "action": "إمالة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q03-R01",
+        "readingId": "Q03-R02",
         "action": "إمالة",
         "isDefault": true
       }
@@ -343,11 +343,7 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
-      },
-      {
-        "authorityId": "Q03",
+        "authorityId": "Q01",
         "action": "تقليل"
       }
     ],
@@ -376,16 +372,6 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": true,
@@ -470,13 +456,13 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03-R01",
+        "authorityId": "Q03-R02",
         "action": "إمالة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q03-R01",
+        "readingId": "Q03-R02",
         "action": "إمالة",
         "isDefault": true
       }
@@ -509,11 +495,7 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
-      },
-      {
-        "authorityId": "Q03",
+        "authorityId": "Q01",
         "action": "تقليل"
       }
     ],
@@ -542,16 +524,6 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": true,
@@ -574,10 +546,6 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q06",
         "action": "إمالة"
       },
@@ -586,21 +554,11 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q01-R02",
+        "authorityId": "Q01",
         "action": "تقليل"
       }
     ],
     "readings": [
-      {
-        "readingId": "Q03-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -678,13 +636,13 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03-R01",
+        "authorityId": "Q03-R02",
         "action": "إمالة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q03-R01",
+        "readingId": "Q03-R02",
         "action": "إمالة",
         "isDefault": true
       }
@@ -709,31 +667,15 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06-R01",
+        "authorityId": "Q06",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q06-R02",
+        "authorityId": "Q07",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
+        "authorityId": "Q01",
         "action": "تقليل"
       }
     ],
@@ -755,16 +697,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
