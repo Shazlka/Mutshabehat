@@ -18,7 +18,7 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2873,
+    "variants": 2876,
     "usulRulings": 9898,
     "fixturePagesPresent": 584,
     "fixtureRange": [
@@ -23603,50 +23603,58 @@
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
   "latestSourceCoverageNote": "Audited through Mushaf page 584. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
   "latestLocalImportCycle": {
-    "id": "four-agent-audit-p245-p260",
+    "id": "four-agent-audit-p261-p272",
     "pages": [
-      245,
-      246,
-      247,
-      248,
-      249,
-      250,
-      251,
-      252,
-      253,
-      254,
-      255,
-      256,
-      257,
-      258,
-      259,
-      260
+      261,
+      262,
+      263,
+      264,
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272
     ],
-    "variantsAdded": 1,
+    "variantsAdded": 3,
     "newRulingLoci": 0,
     "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 4,
+    "correctedRulingLoci": 13,
     "perPageVariants": {
-      "248": 1
+      "261": 3,
+      "262": 0,
+      "263": 0,
+      "264": 0,
+      "265": 0,
+      "266": 0,
+      "267": 0,
+      "268": 0,
+      "269": 0,
+      "270": 0,
+      "271": 0,
+      "272": 0
     },
     "correctedByPage": {
-      "249": 4,
-      "251": 1,
-      "252": 1
+      "265": 1,
+      "267": 2,
+      "268": 2,
+      "269": 3,
+      "270": 3,
+      "271": 3
     },
-    "status": "pushed; deployment pending",
+    "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2873,
+      "variants": 2876,
       "usulRulings": 9898,
       "validator": "passed",
-      "tests": "38/38",
-      "tsc": "passed",
-      "build": "passed",
+      "tests": "pending",
+      "tsc": "pending",
+      "build": "pending",
       "importerIdempotent": true
     },
-    "details": "Added p248 نُّوحِىٓ/يُوحَى for the explicitly named group. Corrected bare خلف attribution on p249, p251, and p252. Multiword unanchored candidates were withheld.",
-    "commit": "b2263f8",
-    "deployment": "pending"
+    "details": "Added three p261 performance faces and four reader assignments; corrected reader attribution on p265/p267/p268 and removed bare-Khalaf Q10 from nine p269-p271 imalah rulings."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [

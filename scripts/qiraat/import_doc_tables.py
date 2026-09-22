@@ -4932,6 +4932,11 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        261: [
+            ('DOCX-P261-R00546','يَأْتِيهِمُ الْعَذَابُ','نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',44,'بكسر الهاء وضم الميم وصلاً','https://quranpedia.net/qiraat/ibrahim/44','وجه المصدر لأهل الكسر مع ضم الميم.'),
+            ('DOCX-P261-R00547','يَأْتِيهِمُ الْعَذَابُ','أبو عمرو، روح',44,'بكسر الهاء والميم وصلاً','https://quranpedia.net/qiraat/ibrahim/44','وجه أبي عمرو وروح بالكسر وصلاً.'),
+            ('DOCX-P261-R00548','يَأْتِيهِمُ الْعَذَابُ','حمزة، الكسائي، يعقوب، خلف',44,'بضم الهاء والميم وصلاً','https://quranpedia.net/qiraat/ibrahim/44','وجه الضم وصلاً؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
         555: [
             ('DOCX-P555-R03564','قِيلَ','هشام، الكسائي، رويس',5,'بالإشمام',
              'https://quranpedia.net/qiraat/al-munafiqun/5',
