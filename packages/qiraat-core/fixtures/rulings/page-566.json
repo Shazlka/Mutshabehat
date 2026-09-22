@@ -336,14 +336,6 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -391,24 +383,13 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03666 — ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش.",
-      "مرجع القراءات للآية 69:3 يسمّي إدريس وإسحاق عن خلف في إمالة الراء والألف في ﴿وما أدراك﴾؛ أُضيف Q10-R01 وQ10-R02 استناداً إلى هذا التعيين الصريح: https://quranpedia.net/qiraat/al-haaqqa/3"
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03666 — ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش."
     ]
   },
   {

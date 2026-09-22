@@ -434,5 +434,119 @@
     "wajhIndex": 2,
     "evidence": [],
     "performanceNote": "إسكان الهاء"
+  },
+  {
+    "surah": 68,
+    "ayah": 14,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَن كَانَ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "locusType": "performance_variant",
+    "locusId": "DOCX-P564-R03649-14-1",
+    "description": "﴿أَن كَانَ﴾: بهمز واحد مفتوح لنافع، وابن كثير، وأبي عمرو، وحفص، والكسائي، وخلف؛ بهمزتين على الاستفهام ﴿أَءَنْ كَانَ﴾ لابن عامر، وشعبة، وحمزة، وأبي جعفر، ويعقوب (مع التحقيق والتسهيل والإدخال حسب أصولهم).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "اختلاف القراءات في الآية ١٤ من سورة القلم، وفيها قراءة الهمزتين لخلف عن حمزة وسائر أئمة هذا الوجه.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/14"
+      }
+    ],
+    "id": "v-DOCX-564-R03649-single",
+    "variantText": "أَن كَانَ",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "performanceNote": "بهمز واحد مفتوح",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03649-single",
+        "variantId": "v-DOCX-564-R03649-single",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03649",
+        "sourceText": "﴿أَن كَانَ﴾: بهمز واحد مفتوح لنافع، وابن كثير، وأبي عمرو، وحفص، والكسائي، وخلف؛ بهمزتين على الاستفهام ﴿أَءَنْ كَانَ﴾ لابن عامر، وشعبة، وحمزة، وأبي جعفر، ويعقوب (مع التحقيق والتسهيل والإدخال حسب أصولهم).",
+        "verificationNotes": "رُبط بآية 68:14 وكلمة «أَن كَانَ» في كلمات الصفحة؛ أُدرجت الأوجه ذات القراء المسمّين فقط."
+      },
+      {
+        "id": "s-QP-DOCX-564-R03649-single",
+        "variantId": "v-DOCX-564-R03649-single",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/14",
+        "sourceText": "في ﴿أَنْ كَانَ﴾: أوجه الهمزة الواحدة والهمزتين منسوبة إلى الرواة المذكورين في صفحة الآية.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات للآية 68:14."
+      }
+    ]
+  },
+  {
+    "surah": 68,
+    "ayah": 14,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَن كَانَ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "locusType": "performance_variant",
+    "locusId": "DOCX-P564-R03649-14-1",
+    "description": "﴿أَن كَانَ﴾: بهمز واحد مفتوح لنافع، وابن كثير، وأبي عمرو، وحفص، والكسائي، وخلف؛ بهمزتين على الاستفهام ﴿أَءَنْ كَانَ﴾ لابن عامر، وشعبة، وحمزة، وأبي جعفر، ويعقوب (مع التحقيق والتسهيل والإدخال حسب أصولهم).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "اختلاف القراءات في الآية ١٤ من سورة القلم، وفيها قراءة الهمزتين لخلف عن حمزة وسائر أئمة هذا الوجه.",
+        "url": "https://quranpedia.net/qiraat/al-qalam/14"
+      }
+    ],
+    "id": "v-DOCX-564-R03649-double",
+    "variantText": "أَءَنْ كَانَ",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "performanceNote": "بهمزتين على الاستفهام؛ مع التحقيق والتسهيل والإدخال حسب أصولهم",
+    "sources": [
+      {
+        "id": "s-DOCX-P564-R03649-double",
+        "variantId": "v-DOCX-564-R03649-double",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03649",
+        "sourceText": "﴿أَن كَانَ﴾: بهمز واحد مفتوح لنافع، وابن كثير، وأبي عمرو، وحفص، والكسائي، وخلف؛ بهمزتين على الاستفهام ﴿أَءَنْ كَانَ﴾ لابن عامر، وشعبة، وحمزة، وأبي جعفر، ويعقوب (مع التحقيق والتسهيل والإدخال حسب أصولهم).",
+        "verificationNotes": "رُبط بآية 68:14 وكلمة «أَن كَانَ» في كلمات الصفحة؛ أُدرجت الأوجه ذات القراء المسمّين فقط."
+      },
+      {
+        "id": "s-QP-DOCX-564-R03649-double",
+        "variantId": "v-DOCX-564-R03649-double",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-qalam/14",
+        "sourceText": "في ﴿أَنْ كَانَ﴾: أوجه الهمزة الواحدة والهمزتين منسوبة إلى الرواة المذكورين في صفحة الآية.",
+        "verificationNotes": "تحقق مستقل من صفحة القراءات للآية 68:14."
+      }
+    ]
   }
 ]
