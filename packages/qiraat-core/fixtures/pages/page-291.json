@@ -75,5 +75,49 @@
     "description": "بتشديد الجيم",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D291-كسفا-w2",
+    "surah": 17,
+    "ayah": 92,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "كِسَفًا",
+    "variantText": "كِسْفًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D291-كسفا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D291-كسفا-w2",
+        "variantId": "v-D291-كسفا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P291-R00922",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿كِسَفًا﴾: بفتح السين لنافع، وابن عامر، وعاصم، وأبي جعفر؛ وبإسكان السين ﴿كِسْفًا﴾ للباقين."
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]
