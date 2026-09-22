@@ -1,0 +1,17 @@
+{
+  "page": 257,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 3,
+  "rulings": 12,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p257-IKHFA-rule-14-14-6",
+    "r-p257-IKHFA-rule-14-17-15"
+  ]
+}

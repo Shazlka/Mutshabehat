@@ -1,0 +1,18 @@
+{
+  "page": 462,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 4,
+  "rulings": 10,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p462-YAAT_IDAFA-ارادني_الله-1",
+    "r-p462-IDGHAM_SAGHIR-اذ_جاءهو-0",
+    "r-p462-IKHFA-rule-39-38-3"
+  ]
+}

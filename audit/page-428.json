@@ -1,0 +1,17 @@
+{
+  "page": 428,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 3,
+  "rulings": 11,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p428-IDGHAM_SAGHIR-هل_ندلكم-2",
+    "r-p428-TAGHYIR_HAMZ-لا_تاتينا-3"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 334,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 25,
+  "variants": 5,
+  "rulings": 20,
+  "supported": 25,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p334-IKHFA-rule-22-22-6"
+  ]
+}

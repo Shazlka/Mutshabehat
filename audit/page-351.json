@@ -1,0 +1,18 @@
+{
+  "page": 351,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 24,
+  "variants": 2,
+  "rulings": 22,
+  "supported": 24,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p351-004-1",
+    "r-p351-005-1",
+    "r-p351-IDGHAM_SAGHIR-اذ_سمعتموه-3"
+  ]
+}

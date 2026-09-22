@@ -1,0 +1,16 @@
+{
+  "page": 258,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 3,
+  "rulings": 9,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p258-YAAT_IDAFA-لي_عليكم-3"
+  ]
+}

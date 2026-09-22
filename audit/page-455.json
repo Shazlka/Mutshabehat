@@ -1,0 +1,18 @@
+{
+  "page": 455,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 4,
+  "rulings": 11,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p455-YAAT_IDAFA-اني_احببت-4",
+    "r-p455-YAAT_IDAFA-من_بعدي_انك-5",
+    "r-p455-YAAT_IDAFA-مسني_الشيطان-2"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "page": 566,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 23,
+  "variants": 4,
+  "rulings": 19,
+  "supported": 23,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p566-IDGHAM_SAGHIR-فاصبر_لحكم-9",
+    "r-p566-IDGHAM_SAGHIR-كذبت_ثمود-10",
+    "r-p566-IDGHAM_SAGHIR-فهل_ترا-11",
+    "r-p566-IKHFA-rule-69-7-14"
+  ]
+}

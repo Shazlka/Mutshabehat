@@ -1,0 +1,20 @@
+{
+  "page": 247,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 23,
+  "variants": 2,
+  "rulings": 21,
+  "supported": 23,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p247-YAAT_IDAFA-اني_اعلم-16",
+    "r-p247-YAAT_IDAFA-ربي_انهو-17",
+    "r-p247-YAAT_IDAFA-بي_اذ-18",
+    "r-p247-YAAT_IDAFA-اخوتي_ان-19",
+    "r-p247-HAMZATAN_KALIMATAYN-يشاء_انهو-16"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "page": 390,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 20,
+  "variants": 4,
+  "rulings": 16,
+  "supported": 20,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p390-IKHFA-rule-28-38-9",
+    "r-p390-YAAT_IDAFA-ربي_اعلم-8",
+    "r-p390-YAAT_IDAFA-لعلي_اطلع-9"
+  ]
+}

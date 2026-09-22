@@ -1,0 +1,16 @@
+{
+  "page": 285,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 6,
+  "variants": 3,
+  "rulings": 3,
+  "supported": 6,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p285-IDGHAM_SAGHIR-فقد_جعلنا-1"
+  ]
+}

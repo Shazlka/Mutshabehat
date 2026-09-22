@@ -1,0 +1,22 @@
+{
+  "page": 349,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 30,
+  "variants": 7,
+  "rulings": 23,
+  "supported": 30,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p349-011-1",
+    "r-p349-012-1",
+    "r-p349-013-1",
+    "r-p349-014-1",
+    "r-p349-015-1",
+    "r-p349-016-1",
+    "r-p349-YAAT_ZAWAID-ولا_تكلمون-2"
+  ]
+}

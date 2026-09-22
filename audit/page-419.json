@@ -1,0 +1,17 @@
+{
+  "page": 419,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 6,
+  "rulings": 11,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p419-s33a8b2",
+    "r-p419-IKHFA-rule-33-7-16"
+  ]
+}

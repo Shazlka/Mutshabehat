@@ -1,0 +1,16 @@
+{
+  "page": 476,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 7,
+  "variants": 1,
+  "rulings": 6,
+  "supported": 7,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p476-HAMZATAN_KALIMATAYN-جاء_امر-4"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "page": 242,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 36,
+  "variants": 4,
+  "rulings": 32,
+  "supported": 36,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p242-013-1",
+    "r-p242-014-1",
+    "r-p242-015-1",
+    "r-p242-016-1",
+    "r-p242-017-1",
+    "r-p242-018-1",
+    "r-p242-019-1",
+    "r-p242-021-1",
+    "r-p242-022-1",
+    "r-p242-023-1",
+    "r-p242-024-1",
+    "r-p242-028-1",
+    "r-p242-029-1",
+    "r-p242-030-1",
+    "r-p242-YAAT_ZAWAID-ولا_تقربون-10"
+  ]
+}

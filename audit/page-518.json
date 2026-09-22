@@ -1,0 +1,16 @@
+{
+  "page": 518,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 3,
+  "rulings": 6,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p518-IKHFA-rule-50-15-8"
+  ]
+}

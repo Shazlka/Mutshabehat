@@ -1,0 +1,16 @@
+{
+  "page": 454,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 1,
+  "rulings": 10,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p454-YAAT_IDAFA-ولي_نعجه-6"
+  ]
+}

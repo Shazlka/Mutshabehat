@@ -1,0 +1,17 @@
+{
+  "page": 380,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 3,
+  "rulings": 9,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p380-s27a41b0",
+    "r-p380-YAAT_IDAFA-ليبلوني_ااشكر-4"
+  ]
+}

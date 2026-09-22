@@ -1,0 +1,21 @@
+{
+  "page": 424,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 1,
+  "rulings": 15,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p424-s33a44b2",
+    "r-p424-s33a46b2",
+    "r-p424-s33a50b3",
+    "r-p424-HAMZATAN_KALIMATAYN-التي_ءاتيت-3",
+    "r-p424-HAMZATAN_KALIMATAYN-للنبيء_ان-4",
+    "r-p424-HAMZATAN_KALIMATAYN-النبيء_ان-5"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 277,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 1,
+  "rulings": 12,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p277-IDGHAM_SAGHIR-وقد_جعلتم-5"
+  ]
+}

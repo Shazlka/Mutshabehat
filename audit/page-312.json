@@ -1,0 +1,28 @@
+{
+  "page": 312,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 50,
+  "variants": 5,
+  "rulings": 45,
+  "supported": 50,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p312-004-1",
+    "r-p312-005-1",
+    "r-p312-006-1",
+    "r-p312-025-1",
+    "r-p312-026-1",
+    "r-p312-028-1",
+    "r-p312-031-1",
+    "r-p312-032-1",
+    "r-p312-035-1",
+    "r-p312-036-1",
+    "r-p312-037-1",
+    "r-p312-040-1",
+    "r-p312-IKHFA-rule-20-4-2"
+  ]
+}

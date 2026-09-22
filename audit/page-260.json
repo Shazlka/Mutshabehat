@@ -1,0 +1,17 @@
+{
+  "page": 260,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 20,
+  "variants": 5,
+  "rulings": 15,
+  "supported": 20,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p260-YAAT_IDAFA-اني_اسكنت-3",
+    "r-p260-IKHFA-rule-14-37-6"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "page": 519,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 2,
+  "rulings": 11,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p519-IKHFA-rule-50-33-1",
+    "r-p519-IDGHAM_SAGHIR-وجاءت_سكره-3"
+  ]
+}

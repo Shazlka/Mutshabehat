@@ -1,0 +1,16 @@
+{
+  "page": 436,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 0,
+  "rulings": 15,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p436-HAMZATAN_KALIMATAYN-الفقراء_الي-8"
+  ]
+}

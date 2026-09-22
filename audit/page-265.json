@@ -1,0 +1,20 @@
+{
+  "page": 265,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 19,
+  "variants": 7,
+  "rulings": 12,
+  "supported": 19,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p265-IDGHAM_SAGHIR-اذ_دخلوا-1",
+    "r-p265-YAAT_ZAWAID-فلا_تفضحون-4",
+    "r-p265-YAAT_ZAWAID-ولا_تخزون-5",
+    "r-p265-HAMZATAN_KALIMATAYN-جاء_ءال-4",
+    "r-p265-HAMZATAN_KALIMATAYN-وجاء_اهل-5"
+  ]
+}

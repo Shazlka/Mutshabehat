@@ -1,0 +1,16 @@
+{
+  "page": 296,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 6,
+  "rulings": 3,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p296-YAAT_IDAFA-قل_ربي_اعلم-1"
+  ]
+}

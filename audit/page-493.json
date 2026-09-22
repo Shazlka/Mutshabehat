@@ -1,0 +1,17 @@
+{
+  "page": 493,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 6,
+  "variants": 0,
+  "rulings": 6,
+  "supported": 6,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p493-YAAT_IDAFA-تحتي_افلا-0",
+    "r-p493-IKHFA-rule-43-58-13"
+  ]
+}

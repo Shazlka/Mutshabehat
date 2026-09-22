@@ -1,0 +1,25 @@
+{
+  "page": 245,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 23,
+  "variants": 2,
+  "rulings": 21,
+  "supported": 23,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p245-IDGHAM_SAGHIR-بل_سولت-9",
+    "r-p245-IDGHAM_KABIR-يوسف_فلن-10",
+    "r-p245-IDGHAM_KABIR-ياذن_لي-11",
+    "r-p245-IDGHAM_KABIR-انهو_هو-12",
+    "r-p245-IDGHAM_KABIR-واعلم_من-13",
+    "r-p245-TARK_GHUNNA-من_وجدنا-16",
+    "r-p245-TARK_GHUNNA-ان_ياتيني-17",
+    "r-p245-YAAT_IDAFA-لي_ابي-18",
+    "r-p245-YAAT_IDAFA-وحزني_الي-19",
+    "r-p245-WAQF_HAMZA-انفسكم_امرا-18"
+  ]
+}

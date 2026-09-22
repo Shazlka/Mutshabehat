@@ -1,0 +1,25 @@
+{
+  "page": 110,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 23,
+  "variants": 3,
+  "rulings": 20,
+  "supported": 23,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p110-001-1",
+    "r-p110-010-1",
+    "r-p110-010-2",
+    "r-p110-011-1",
+    "r-p110-012-1",
+    "r-p110-013-1",
+    "r-p110-014-1",
+    "r-p110-015-1",
+    "r-p110-016-1",
+    "r-p110-017-1"
+  ]
+}

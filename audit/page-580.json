@@ -1,0 +1,16 @@
+{
+  "page": 580,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 6,
+  "rulings": 5,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p580-IDGHAM_KABIR-فالملقيات_ذكرا-2"
+  ]
+}

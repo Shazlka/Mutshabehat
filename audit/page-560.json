@@ -1,0 +1,18 @@
+{
+  "page": 560,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 9,
+  "rulings": 7,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p560-IKHFA-rule-66-5-7",
+    "r-p560-IKHFA-rule-66-6-12",
+    "r-p560-IDGHAM_SAGHIR-فقد_صغت-4"
+  ]
+}

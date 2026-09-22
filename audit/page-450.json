@@ -1,0 +1,19 @@
+{
+  "page": 450,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 19,
+  "variants": 4,
+  "rulings": 15,
+  "supported": 19,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p450-s37a104b1",
+    "r-p450-s37a107b0",
+    "r-p450-s37a112b1",
+    "r-p450-IDGHAM_SAGHIR-قد_صدقت-2"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "page": 256,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 0,
+  "rulings": 11,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p256-IDGHAM_KABIR-ويستحيون_نساءكم-6",
+    "r-p256-IDGHAM_KABIR-تاذن_ربكم-7"
+  ]
+}

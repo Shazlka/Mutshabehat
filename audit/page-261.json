@@ -1,0 +1,17 @@
+{
+  "page": 261,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 19,
+  "variants": 8,
+  "rulings": 11,
+  "supported": 19,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p261-IDGHAM_KABIR-وتبين_لكم-5",
+    "r-p261-IDGHAM_KABIR-كيف_فعلنا-6"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "page": 415,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 4,
+  "rulings": 11,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p415-HAMZATAN_KALIMATAYN-السماء_الي-5",
+    "r-p415-IKHFA-rule-32-7-4"
+  ]
+}

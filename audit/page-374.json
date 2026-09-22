@@ -1,0 +1,19 @@
+{
+  "page": 374,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 10,
+  "variants": 1,
+  "rulings": 9,
+  "supported": 10,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p374-s26a161b2",
+    "r-p374-s26a166b2",
+    "r-p374-s26a177b2",
+    "r-p374-YAAT_IDAFA-اجري_الا-1"
+  ]
+}

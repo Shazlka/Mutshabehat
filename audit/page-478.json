@@ -1,0 +1,18 @@
+{
+  "page": 478,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 3,
+  "rulings": 14,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p478-s41a13b0",
+    "r-p478-IDGHAM_SAGHIR-اذ_جاءتهم-1",
+    "r-p478-IKHFA-rule-41-14-7"
+  ]
+}

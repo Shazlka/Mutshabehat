@@ -1,0 +1,18 @@
+{
+  "page": 417,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 19,
+  "variants": 4,
+  "rulings": 15,
+  "supported": 19,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p417-s32a26b2",
+    "r-p417-s32a28b1",
+    "r-p417-HAMZATAN_KALIMATAYN-الماء_الي-5"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 539,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 21,
+  "variants": 13,
+  "rulings": 8,
+  "supported": 21,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p539-HAMZATAN_KALIMATAYN-جاء_امر-7"
+  ]
+}

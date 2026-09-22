@@ -1,0 +1,32 @@
+{
+  "page": 227,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 35,
+  "variants": 8,
+  "rulings": 27,
+  "supported": 35,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p227-007-1",
+    "r-p227-008-1",
+    "r-p227-009-1",
+    "r-p227-012-1",
+    "r-p227-013-1",
+    "r-p227-014-1",
+    "r-p227-015-1",
+    "r-p227-016-1",
+    "r-p227-017-1",
+    "r-p227-019-1",
+    "r-p227-020-1",
+    "r-p227-021-1",
+    "r-p227-022-1",
+    "r-p227-023-1",
+    "r-p227-IKHFA-علم_والا-4",
+    "r-p227-IKHFA-مدرارا_ويزدكم-5",
+    "r-p227-IKHFA-rule-11-46-8"
+  ]
+}

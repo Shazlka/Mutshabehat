@@ -1,0 +1,18 @@
+{
+  "page": 422,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 10,
+  "variants": 2,
+  "rulings": 8,
+  "supported": 10,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p422-s33a34b1",
+    "r-p422-HAMZATAN_KALIMATAYN-النساء_ان-2",
+    "r-p422-IKHFA-rule-33-34-13"
+  ]
+}

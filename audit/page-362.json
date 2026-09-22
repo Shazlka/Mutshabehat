@@ -1,0 +1,21 @@
+{
+  "page": 362,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 23,
+  "variants": 5,
+  "rulings": 18,
+  "supported": 23,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p362-s25a29b0",
+    "r-p362-YAAT_IDAFA-ياليتني_اتخذت-6",
+    "r-p362-YAAT_IDAFA-قومي_اتخذوا-7",
+    "r-p362-IDGHAM_SAGHIR-اذ_جاءني-2",
+    "r-p362-IKHFA-rule-25-24-3",
+    "r-p362-IKHFA-rule-25-28-5"
+  ]
+}

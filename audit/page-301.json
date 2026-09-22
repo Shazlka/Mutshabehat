@@ -1,0 +1,17 @@
+{
+  "page": 301,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 5,
+  "rulings": 4,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p301-YAAT_IDAFA-معي_صبرا-1",
+    "r-p301-YAAT_IDAFA-ستجدني_ان-2"
+  ]
+}

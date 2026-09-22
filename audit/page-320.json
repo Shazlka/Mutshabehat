@@ -1,0 +1,19 @@
+{
+  "page": 320,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 33,
+  "variants": 7,
+  "rulings": 26,
+  "supported": 33,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p320-018-1",
+    "r-p320-019-1",
+    "r-p320-022-1",
+    "r-p320-YAAT_IDAFA-حشرتني_اعما-14"
+  ]
+}

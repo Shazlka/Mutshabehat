@@ -1,0 +1,17 @@
+{
+  "page": 571,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 10,
+  "variants": 4,
+  "rulings": 6,
+  "supported": 10,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p571-YAAT_IDAFA-بيتي_مومنا-3",
+    "r-p571-IDGHAM_SAGHIR-اغفر-4"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 549,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 8,
+  "rulings": 3,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p549-HAMZATAN_KALIMATAYN-والبغضاء_ابدا-2"
+  ]
+}

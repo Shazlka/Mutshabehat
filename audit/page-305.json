@@ -1,0 +1,31 @@
+{
+  "page": 305,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 47,
+  "variants": 8,
+  "rulings": 39,
+  "supported": 47,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p305-003-1",
+    "r-p305-004-1",
+    "r-p305-007-1",
+    "r-p305-007-2",
+    "r-p305-007-3",
+    "r-p305-010-1",
+    "r-p305-011-1",
+    "r-p305-013-1",
+    "r-p305-017-1",
+    "r-p305-018-1",
+    "r-p305-024-1",
+    "r-p305-YAAT_IDAFA-من_وراءي_وكانت-6",
+    "r-p305-YAAT_IDAFA-رب_اجعل_لي_ءايه-7",
+    "r-p305-HAMZATAN_KALIMATAYN-زكرياء_اذ-6",
+    "r-p305-HAMZATAN_KALIMATAYN-يازكرياء_انا-7",
+    "r-p305-IKHFA-rule-19-3-4"
+  ]
+}

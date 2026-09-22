@@ -1,0 +1,17 @@
+{
+  "page": 453,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 2,
+  "rulings": 13,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p453-s38a14b0",
+    "r-p453-HAMZATAN_KALIMATAYN-هاولاء_الا-2"
+  ]
+}

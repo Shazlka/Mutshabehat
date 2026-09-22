@@ -1,0 +1,14 @@
+{
+  "page": 459,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 3,
+  "rulings": 13,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": []
+}

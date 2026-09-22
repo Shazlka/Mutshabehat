@@ -1,0 +1,16 @@
+{
+  "page": 389,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 22,
+  "variants": 8,
+  "rulings": 14,
+  "supported": 22,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p389-IKHFA-rule-28-32-7"
+  ]
+}

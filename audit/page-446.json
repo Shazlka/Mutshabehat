@@ -1,0 +1,20 @@
+{
+  "page": 446,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 5,
+  "rulings": 12,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p446-IDGHAM_KABIR-والصافات_صفا-2",
+    "r-p446-IDGHAM_KABIR-فالزاجرات_زجرا-3",
+    "r-p446-IDGHAM_KABIR-فالتاليات_ذكرا-4",
+    "r-p446-IKHFA-rule-37-10-2",
+    "r-p446-IKHFA-rule-37-11-6"
+  ]
+}

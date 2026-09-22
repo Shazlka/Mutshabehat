@@ -1,0 +1,17 @@
+{
+  "page": 279,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 4,
+  "rulings": 5,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p279-TAGHYIR_HAMZ-لا_يومنون-3",
+    "r-p279-TAGHYIR_HAMZ-لا_يومنون-4"
+  ]
+}

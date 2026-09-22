@@ -1,0 +1,20 @@
+{
+  "page": 325,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 29,
+  "variants": 5,
+  "rulings": 24,
+  "supported": 29,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p325-006-1",
+    "r-p325-014-1",
+    "r-p325-020-1",
+    "r-p325-021-1",
+    "r-p325-IDGHAM_SAGHIR-بل_تاتيهم-4"
+  ]
+}

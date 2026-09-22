@@ -1,0 +1,16 @@
+{
+  "page": 556,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 6,
+  "rulings": 6,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p556-IKHFA-rule-64-2-11"
+  ]
+}

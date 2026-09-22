@@ -1,0 +1,24 @@
+{
+  "page": 307,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 35,
+  "variants": 8,
+  "rulings": 27,
+  "supported": 35,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p307-001-1",
+    "r-p307-011-1",
+    "r-p307-012-1",
+    "r-p307-014-1",
+    "r-p307-020-1",
+    "r-p307-022-1",
+    "r-p307-023-1",
+    "r-p307-YAAT_IDAFA-ءاتاني_الكتاب-4",
+    "r-p307-IDGHAM_SAGHIR-لقد_جيت-5"
+  ]
+}

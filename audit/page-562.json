@@ -1,0 +1,18 @@
+{
+  "page": 562,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 8,
+  "rulings": 8,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p562-IDGHAM_SAGHIR-هل_ترا-4",
+    "r-p562-IDGHAM_SAGHIR-ولقد_زينا-5",
+    "r-p562-IDGHAM_SAGHIR-قد_جاءنا-6"
+  ]
+}

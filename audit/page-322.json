@@ -1,0 +1,18 @@
+{
+  "page": 322,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 28,
+  "variants": 6,
+  "rulings": 22,
+  "supported": 28,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p322-007-1",
+    "r-p322-020-1",
+    "r-p322-TAGHYIR_HAMZ-لا_ياكلون-6"
+  ]
+}

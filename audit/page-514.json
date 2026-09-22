@@ -1,0 +1,17 @@
+{
+  "page": 514,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 5,
+  "rulings": 11,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p514-IDGHAM_SAGHIR-اذ_جعل-4",
+    "r-p514-IDGHAM_SAGHIR-لقد_صدق-5"
+  ]
+}

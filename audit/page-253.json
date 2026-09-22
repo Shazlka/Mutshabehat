@@ -1,0 +1,16 @@
+{
+  "page": 253,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 19,
+  "variants": 3,
+  "rulings": 16,
+  "supported": 19,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p253-IDGHAM_SAGHIR-بل_زين-6"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 568,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 8,
+  "rulings": 6,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p568-IKHFA-rule-69-36-4"
+  ]
+}

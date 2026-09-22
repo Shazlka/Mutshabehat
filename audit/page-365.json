@@ -1,0 +1,16 @@
+{
+  "page": 365,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 18,
+  "variants": 8,
+  "rulings": 10,
+  "supported": 18,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p365-s25a62b0"
+  ]
+}

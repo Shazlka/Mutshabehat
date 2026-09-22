@@ -1,0 +1,17 @@
+{
+  "page": 332,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 28,
+  "variants": 4,
+  "rulings": 24,
+  "supported": 28,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p332-013-1",
+    "r-p332-HAMZATAN_KALIMATAYN-ما_نشاء_الا-6"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "page": 304,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 3,
+  "rulings": 10,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p304-IDGHAM_SAGHIR-هل_ننبيكم-3",
+    "r-p304-YAAT_IDAFA-من_دوني_اولياء-4",
+    "r-p304-HAMZATAN_KALIMATAYN-اولياء_انا-4",
+    "r-p304-IKHFA-rule-18-107-10"
+  ]
+}

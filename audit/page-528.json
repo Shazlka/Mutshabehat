@@ -1,0 +1,17 @@
+{
+  "page": 528,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 24,
+  "variants": 8,
+  "rulings": 16,
+  "supported": 24,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p528-YAAT_ZAWAID-يدع_الداع-1",
+    "r-p528-IDGHAM_SAGHIR-ولقد_جاءهم-10"
+  ]
+}

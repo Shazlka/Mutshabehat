@@ -12,6 +12,7 @@ import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthori
 import { FixtureQiraatRepository } from './repository.ts'
 import { comparisonMarkerForWord, rulingMarkerForWord, markerPaintForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
+import page001Rulings from './fixtures/rulings/page-001.json' with { type: 'json' }
 import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
 import page228Rulings from './fixtures/rulings/page-228.json' with { type: 'json' }
 import page234Rulings from './fixtures/rulings/page-234.json' with { type: 'json' }
@@ -490,6 +491,17 @@ test('when filtering by reader or narrator, rulingMarkerForWord only marks and c
   // Reader filter Asim (Q05) must return null:
   const asimTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reader', readerId: 'Q05' })
   assert.equal(asimTarqiq, null, 'Asim must not see or color Warsh tarqiq ruling')
+})
+
+test('a contextual Usul ruling marks both endpoints when it spans an ayah boundary', () => {
+  // Page 1 explicitly stores the أبو عمرو الكبير span as 1:3:2 → 1:4:1.
+  // Both words must be visible in comparison mode; treating it as a single-ayah
+  // anchor silently lost the second endpoint.
+  const firstEndpoint = rulingMarkerForWord(page001Rulings, 1, 3, 2, { kind: 'reading', readingId: 'Q03-R02' })
+  const secondEndpoint = rulingMarkerForWord(page001Rulings, 1, 4, 1, { kind: 'reading', readingId: 'Q03-R02' })
+  assert.ok(firstEndpoint)
+  assert.ok(secondEndpoint)
+  assert.ok(secondEndpoint.rulings.some((ruling) => ruling.category === 'IDGHAM_KABIR'))
 })
 
 test('page 266 carries the supplied Al-Hijr colour coverage for 15:82 and 15:87', async () => {

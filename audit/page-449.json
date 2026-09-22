@@ -1,0 +1,20 @@
+{
+  "page": 449,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 24,
+  "variants": 6,
+  "rulings": 18,
+  "supported": 24,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p449-s37a94b1",
+    "r-p449-YAAT_IDAFA-اني_ارا-7",
+    "r-p449-YAAT_IDAFA-اني_اذبحك-8",
+    "r-p449-YAAT_IDAFA-ستجدني_ان-9",
+    "r-p449-IDGHAM_SAGHIR-اذ_جاء-1"
+  ]
+}

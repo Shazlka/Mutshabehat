@@ -1,0 +1,19 @@
+{
+  "page": 430,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 21,
+  "variants": 7,
+  "rulings": 14,
+  "supported": 21,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p430-IDGHAM_SAGHIR-وهل_نجزي-4",
+    "r-p430-IDGHAM_SAGHIR-ولقد_صدق-5",
+    "r-p430-IKHFA-rule-34-15-19",
+    "r-p430-IKHFA-rule-34-16-10"
+  ]
+}

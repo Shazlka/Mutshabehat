@@ -1,0 +1,16 @@
+{
+  "page": 582,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 8,
+  "rulings": 3,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p582-IDGHAM_SAGHIR--1"
+  ]
+}

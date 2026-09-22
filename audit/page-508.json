@@ -1,0 +1,19 @@
+{
+  "page": 508,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 23,
+  "variants": 3,
+  "rulings": 20,
+  "supported": 23,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p508-s47a16b2",
+    "r-p508-HAMZATAN_KALIMATAYN-جاء_اشراطها-14",
+    "r-p508-IKHFA-rule-47-15-9",
+    "r-p508-IKHFA-rule-47-15-19"
+  ]
+}

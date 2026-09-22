@@ -1,0 +1,17 @@
+{
+  "page": 544,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 5,
+  "rulings": 6,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p544-YAAT_IDAFA-انا_ورسلي-3",
+    "r-p544-IKHFA-rule-58-14-6"
+  ]
+}

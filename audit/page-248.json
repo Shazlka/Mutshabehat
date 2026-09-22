@@ -1,0 +1,16 @@
+{
+  "page": 248,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 4,
+  "rulings": 5,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p248-YAAT_IDAFA-سبيلي_ادعو-4"
+  ]
+}

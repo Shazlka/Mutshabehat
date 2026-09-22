@@ -1,0 +1,16 @@
+{
+  "page": 509,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 9,
+  "rulings": 8,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p509-IDGHAM_SAGHIR-انزلت_سوره-5"
+  ]
+}

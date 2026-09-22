@@ -1,0 +1,17 @@
+{
+  "page": 425,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 3,
+  "rulings": 8,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p425-HAMZATAN_KALIMATAYN-النبي_الا-5",
+    "r-p425-IKHFA-rule-33-53-13"
+  ]
+}

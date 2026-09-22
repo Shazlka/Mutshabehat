@@ -1,0 +1,17 @@
+{
+  "page": 527,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 26,
+  "variants": 7,
+  "rulings": 19,
+  "supported": 26,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p527-IMALAH_TAQLIL-من_تولا-15",
+    "r-p527-TAGHYIR_HAMZ-لا_يومنون-18"
+  ]
+}

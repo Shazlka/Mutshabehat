@@ -1,0 +1,27 @@
+{
+  "page": 239,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 45,
+  "variants": 7,
+  "rulings": 38,
+  "supported": 45,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p239-014-1",
+    "r-p239-015-1",
+    "r-p239-016-1",
+    "r-p239-020-1",
+    "r-p239-022-1",
+    "r-p239-025-1",
+    "r-p239-026-1",
+    "r-p239-027-1",
+    "r-p239-033-1",
+    "r-p239-034-1",
+    "r-p239-YAAT_IDAFA-اني_اراني_احمل-7",
+    "r-p239-YAAT_IDAFA-علمني_ربي_اني-8"
+  ]
+}

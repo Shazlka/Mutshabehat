@@ -1,0 +1,17 @@
+{
+  "page": 567,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 30,
+  "variants": 10,
+  "rulings": 20,
+  "supported": 30,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p567-IDGHAM_KABIR-فهي_يومئذ",
+    "r-p567-TAGHYIR_HAMZ-لا_يومن-17"
+  ]
+}

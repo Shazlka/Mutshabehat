@@ -1,0 +1,16 @@
+{
+  "page": 570,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 8,
+  "variants": 3,
+  "rulings": 5,
+  "supported": 8,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p570-YAAT_IDAFA-دعاءي_الا-4"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "page": 302,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 5,
+  "variants": 3,
+  "rulings": 2,
+  "supported": 5,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p302-YAAT_IDAFA-معي_صبرا-0",
+    "r-p302-IKHFA-rule-18-79-16"
+  ]
+}

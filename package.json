@@ -15,6 +15,7 @@
     "test:proxy": "tsx --test tests/proxy-autologin.test.mjs",
     "test:qiraat": "node packages/qiraat-core/validate.mjs && tsx --test packages/qiraat-core/engine.test.mjs && node scripts/validate-qiraat-data.mjs",
     "qiraat:validate": "node scripts/validate-qiraat-data.mjs",
+    "qiraat:audit": "node scripts/qiraat/audit-qiraat-pages.mjs",
     "qiraat:canonical-words:validate": "tsx scripts/qiraat/seed-canonical-words.ts --check",
     "test:qiraat:batch": "bash scripts/qiraat/test-batch-rollback.sh",
     "typecheck": "tsc --noEmit -p .",

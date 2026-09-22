@@ -1,0 +1,26 @@
+{
+  "page": 318,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 29,
+  "variants": 10,
+  "rulings": 19,
+  "supported": 29,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p318-002-1",
+    "r-p318-004-1",
+    "r-p318-005-1",
+    "r-p318-007-1",
+    "r-p318-008-1",
+    "r-p318-011-1",
+    "r-p318-013-1",
+    "r-p318-014-1",
+    "r-p318-IMALAH_TAQLIL-الينا_موسا-0",
+    "r-p318-IMALAH_TAQLIL-والاه_موسا-1",
+    "r-p318-YAAT_IDAFA-براسي_اني-3"
+  ]
+}

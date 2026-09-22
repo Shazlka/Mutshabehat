@@ -1,0 +1,19 @@
+{
+  "page": 292,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 2,
+  "rulings": 11,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p292-YAAT_IDAFA-ربي_اذا-6",
+    "r-p292-HAMZATAN_KALIMATAYN-هاولاء_الا-6",
+    "r-p292-IDGHAM_SAGHIR-خبت_زدناهم-4",
+    "r-p292-IDGHAM_SAGHIR-اذ_جاءهم-5"
+  ]
+}

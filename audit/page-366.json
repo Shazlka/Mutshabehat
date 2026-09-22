@@ -1,0 +1,18 @@
+{
+  "page": 366,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 4,
+  "rulings": 8,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p366-s25a74b1",
+    "r-p366-IDGHAM_SAGHIR-يفعل_ذالك-0",
+    "r-p366-IKHFA-rule-25-75-9"
+  ]
+}

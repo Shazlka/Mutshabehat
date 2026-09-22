@@ -1,0 +1,29 @@
+{
+  "page": 230,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 37,
+  "variants": 5,
+  "rulings": 32,
+  "supported": 37,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p230-001-1",
+    "r-p230-014-1",
+    "r-p230-015-1",
+    "r-p230-016-1",
+    "r-p230-017-1",
+    "r-p230-018-1",
+    "r-p230-020-1",
+    "r-p230-021-1",
+    "r-p230-022-1",
+    "r-p230-023-1",
+    "r-p230-024-1",
+    "r-p230-025-1",
+    "r-p230-030-1",
+    "r-p230-YAAT_ZAWAID-ولا_تخزون-2"
+  ]
+}

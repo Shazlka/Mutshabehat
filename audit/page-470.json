@@ -1,0 +1,18 @@
+{
+  "page": 470,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 0,
+  "rulings": 12,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p470-YAAT_IDAFA-ذروني_اقتل-8",
+    "r-p470-YAAT_IDAFA-اني_اخاف-9",
+    "r-p470-IDGHAM_SAGHIR-وقد_جاءكم-4"
+  ]
+}

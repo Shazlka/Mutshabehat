@@ -1,0 +1,17 @@
+{
+  "page": 340,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 29,
+  "variants": 7,
+  "rulings": 22,
+  "supported": 29,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p340-008-1",
+    "r-p340-HAMZATAN_KALIMATAYN-السماء_ان-4"
+  ]
+}

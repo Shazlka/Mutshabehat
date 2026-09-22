@@ -1,0 +1,20 @@
+{
+  "page": 460,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 18,
+  "variants": 3,
+  "rulings": 15,
+  "supported": 18,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p460-s39a11b1",
+    "r-p460-s39a12b0",
+    "r-p460-YAAT_IDAFA-اني_امرت-7",
+    "r-p460-YAAT_IDAFA-اني_اخاف-8",
+    "r-p460-YAAT_ZAWAID-فبشر_عباد-2"
+  ]
+}

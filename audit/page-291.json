@@ -1,0 +1,18 @@
+{
+  "page": 291,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 3,
+  "rulings": 14,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p291-TAGHYIR_HAMZ-لا_ياتون-7",
+    "r-p291-IDGHAM_SAGHIR-ولقد_صرفنا-6",
+    "r-p291-IDGHAM_SAGHIR-اذ_جاءهم-7"
+  ]
+}

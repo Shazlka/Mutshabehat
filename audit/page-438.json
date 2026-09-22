@@ -1,0 +1,17 @@
+{
+  "page": 438,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 5,
+  "rulings": 9,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p438-s35a31b2",
+    "r-p438-IKHFA-rule-35-37-7"
+  ]
+}

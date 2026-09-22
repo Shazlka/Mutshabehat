@@ -1,0 +1,19 @@
+{
+  "page": 441,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 18,
+  "variants": 2,
+  "rulings": 16,
+  "supported": 18,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p441-s36a18b1",
+    "r-p441-s36a20b2",
+    "r-p441-YAAT_IDAFA-اني_اذا-6",
+    "r-p441-YAAT_IDAFA-اني_ءامنت-7"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 489,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 12,
+  "rulings": 5,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p489-IKHFA-rule-43-9-3"
+  ]
+}

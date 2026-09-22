@@ -1,0 +1,18 @@
+{
+  "page": 461,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 5,
+  "rulings": 11,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p461-s39a22b2",
+    "r-p461-s39a29b1",
+    "r-p461-IKHFA-rule-39-28-2"
+  ]
+}

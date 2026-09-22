@@ -1,0 +1,18 @@
+{
+  "page": 413,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 6,
+  "rulings": 9,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p413-IDGHAM_SAGHIR-بل_نتبع-3",
+    "r-p413-IKHFA-rule-31-24-6",
+    "r-p413-IKHFA-rule-31-25-3"
+  ]
+}

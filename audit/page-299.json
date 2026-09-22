@@ -1,0 +1,17 @@
+{
+  "page": 299,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 8,
+  "variants": 4,
+  "rulings": 4,
+  "supported": 8,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p299-IDGHAM_SAGHIR-لقد_جيتمونا-2",
+    "r-p299-IDGHAM_SAGHIR-بل_زعمتم-3"
+  ]
+}

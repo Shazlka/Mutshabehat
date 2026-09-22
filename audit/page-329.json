@@ -1,0 +1,18 @@
+{
+  "page": 329,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 3,
+  "rulings": 11,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p329-002-1",
+    "r-p329-YAAT_IDAFA-مسني_الضر-1",
+    "r-p329-HAMZATAN_KALIMATAYN-وزكرياء_اذ-1"
+  ]
+}

@@ -56,3 +56,5 @@ __pycache__/
 apps/**/.build/
 scratch/
 
+# Superseded local output location from early Qiraat audit development.
+/artifacts/qiraat-audit/

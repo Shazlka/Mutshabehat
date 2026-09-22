@@ -1,0 +1,18 @@
+{
+  "page": 563,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 5,
+  "rulings": 9,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p563-HAMZATAN_KALIMATAYN-السماء_ان-3",
+    "r-p563-IKHFA-rule-67-14-3",
+    "r-p563-HAMZATAN_KALIMATAYN-السماء_ان-17"
+  ]
+}

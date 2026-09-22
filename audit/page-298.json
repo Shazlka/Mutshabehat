@@ -1,0 +1,20 @@
+{
+  "page": 298,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 3,
+  "rulings": 9,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p298-YAAT_ZAWAID-ان_ترن-4",
+    "r-p298-YAAT_ZAWAID-ان_يوتين-5",
+    "r-p298-YAAT_IDAFA-بربي_احدا-6",
+    "r-p298-YAAT_IDAFA-ربي_ان-7",
+    "r-p298-IDGHAM_SAGHIR-اذ_دخلت-3"
+  ]
+}

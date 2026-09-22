@@ -1,0 +1,17 @@
+{
+  "page": 471,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 4,
+  "rulings": 11,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p471-YAAT_IDAFA-لعلي_ابلغ-8",
+    "r-p471-IDGHAM_SAGHIR-ولقد_جاءكم-7"
+  ]
+}

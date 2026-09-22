@@ -1,0 +1,19 @@
+{
+  "page": 497,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 18,
+  "variants": 5,
+  "rulings": 13,
+  "supported": 18,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p497-s44a28b0",
+    "r-p497-s44a37b0",
+    "r-p497-YAAT_IDAFA-اني_ءاتيكم-5",
+    "r-p497-YAAT_IDAFA-تومنوا_لي-6"
+  ]
+}

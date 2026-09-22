@@ -1,0 +1,16 @@
+{
+  "page": 578,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 20,
+  "variants": 9,
+  "rulings": 11,
+  "supported": 20,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p578-IDGHAM_SAGHIR-بل_تحبون-9"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "page": 371,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 1,
+  "rulings": 8,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p371-YAAT_IDAFA-اجري_الا-2",
+    "r-p371-YAAT_IDAFA-لابي_انهو-3"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "page": 474,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 8,
+  "variants": 1,
+  "rulings": 7,
+  "supported": 8,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p474-TAGHYIR_HAMZ-لا_يومنون-3",
+    "r-p474-YAAT_IDAFA-ادعوني_استجب-6"
+  ]
+}

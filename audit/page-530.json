@@ -1,0 +1,19 @@
+{
+  "page": 530,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 2,
+  "rulings": 13,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p530-YAAT_ZAWAID-عذابي_ونذر-4",
+    "r-p530-HAMZATAN_KALIMATAYN-جاء_ءال-4",
+    "r-p530-IKHFA-rule-54-49-3",
+    "r-p530-IDGHAM_SAGHIR-ولقد_جاء-4"
+  ]
+}

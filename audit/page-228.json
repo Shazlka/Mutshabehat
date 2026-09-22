@@ -1,0 +1,25 @@
+{
+  "page": 228,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 37,
+  "variants": 4,
+  "rulings": 33,
+  "supported": 37,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p228-001-1",
+    "r-p228-021-1",
+    "r-p228-022-1",
+    "r-p228-023-1",
+    "r-p228-024-1",
+    "r-p228-025-1",
+    "r-p228-026-1",
+    "r-p228-029-1",
+    "r-p228-IKHFA-هودا_والذين-12",
+    "r-p228-IKHFA-لعنه_ويوم-13"
+  ]
+}

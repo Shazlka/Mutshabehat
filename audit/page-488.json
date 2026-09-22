@@ -1,0 +1,18 @@
+{
+  "page": 488,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 4,
+  "rulings": 5,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p488-HAMZATAN_KALIMATAYN-يشاء_اناثا-2",
+    "r-p488-HAMZATAN_KALIMATAYN-يشاء_انهو-3",
+    "r-p488-IKHFA-rule-42-45-9"
+  ]
+}

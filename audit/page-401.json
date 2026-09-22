@@ -1,0 +1,17 @@
+{
+  "page": 401,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 2,
+  "rulings": 11,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p401-s29a40b1",
+    "r-p401-IKHFA-rule-29-40-14"
+  ]
+}

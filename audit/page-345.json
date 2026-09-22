@@ -1,0 +1,20 @@
+{
+  "page": 345,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 32,
+  "variants": 8,
+  "rulings": 24,
+  "supported": 32,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p345-001-1",
+    "r-p345-002-1",
+    "r-p345-004-1",
+    "r-p345-007-1",
+    "r-p345-IKHFA-rule-23-57-4"
+  ]
+}

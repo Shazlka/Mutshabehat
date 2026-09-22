@@ -1,0 +1,16 @@
+{
+  "page": 410,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 5,
+  "rulings": 9,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p410-IDGHAM_SAGHIR-ولقد_ضربنا-3"
+  ]
+}

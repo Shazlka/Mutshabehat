@@ -1,0 +1,17 @@
+{
+  "page": 468,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 8,
+  "variants": 1,
+  "rulings": 7,
+  "supported": 8,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p468-IMALAH_TAQLIL-لا_يخفا-2",
+    "r-p468-IDGHAM_SAGHIR-اذ_تدعون-4"
+  ]
+}

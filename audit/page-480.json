@@ -1,0 +1,17 @@
+{
+  "page": 480,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 6,
+  "variants": 0,
+  "rulings": 6,
+  "supported": 6,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p480-s41a33b0",
+    "r-p480-IKHFA-rule-41-32-2"
+  ]
+}

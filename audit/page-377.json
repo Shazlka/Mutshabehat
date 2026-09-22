@@ -1,0 +1,17 @@
+{
+  "page": 377,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 22,
+  "variants": 2,
+  "rulings": 20,
+  "supported": 22,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p377-IKHFA-rule-27-12-7",
+    "r-p377-YAAT_IDAFA-اني_ءانست-5"
+  ]
+}

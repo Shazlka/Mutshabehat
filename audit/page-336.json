@@ -1,0 +1,16 @@
+{
+  "page": 336,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 3,
+  "rulings": 14,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p336-IDGHAM_SAGHIR-وجبت_جنوبها-4"
+  ]
+}

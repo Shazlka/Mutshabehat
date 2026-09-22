@@ -1,0 +1,21 @@
+{
+  "page": 259,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 3,
+  "rulings": 14,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p259-004-1",
+    "r-p259-HAMZATAN_KALIMATAYN-ماء_فاخرج-4",
+    "r-p259-HAMZATAN_KALIMATAYN-ما_يشاء_الم-5",
+    "r-p259-YAAT_IDAFA-قل_لعبادي_الذين-3",
+    "r-p259-IKHFA-rule-14-26-2",
+    "r-p259-IKHFA-rule-14-26-4"
+  ]
+}

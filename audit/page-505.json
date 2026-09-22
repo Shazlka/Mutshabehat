@@ -1,0 +1,18 @@
+{
+  "page": 505,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 2,
+  "rulings": 10,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p505-YAAT_IDAFA-اني_اخاف-5",
+    "r-p505-YAAT_IDAFA-ولاكني_اراكم-6",
+    "r-p505-IKHFA-rule-46-21-14"
+  ]
+}

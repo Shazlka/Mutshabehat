@@ -1,0 +1,16 @@
+{
+  "page": 355,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 26,
+  "variants": 6,
+  "rulings": 20,
+  "supported": 26,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p355-IKHFA-rule-24-43-16"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "page": 308,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 37,
+  "variants": 12,
+  "rulings": 25,
+  "supported": 37,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p308-007-1",
+    "r-p308-008-1",
+    "r-p308-011-1",
+    "r-p308-012-1",
+    "r-p308-013-1",
+    "r-p308-014-1",
+    "r-p308-016-1",
+    "r-p308-017-1",
+    "r-p308-019-1",
+    "r-p308-IDGHAM_SAGHIR-قد_جاءني-3"
+  ]
+}

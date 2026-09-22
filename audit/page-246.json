@@ -1,0 +1,18 @@
+{
+  "page": 246,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 10,
+  "variants": 1,
+  "rulings": 9,
+  "supported": 10,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p246-IDGHAM_KABIR-قال_لا-5",
+    "r-p246-YAAT_ZAWAID-من_يتق-5",
+    "r-p246-HAMZATAN_KALIMA-اءنك_لانت-7"
+  ]
+}

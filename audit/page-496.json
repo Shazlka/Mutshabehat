@@ -1,0 +1,17 @@
+{
+  "page": 496,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 4,
+  "rulings": 11,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p496-s44a18b0",
+    "r-p496-IDGHAM_SAGHIR-وقد_جاءهم-4"
+  ]
+}

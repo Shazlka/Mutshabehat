@@ -1,0 +1,17 @@
+{
+  "page": 534,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 3,
+  "rulings": 13,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p534-IKHFA-rule-55-76-3",
+    "r-p534-IKHFA-rule-56-2-3"
+  ]
+}

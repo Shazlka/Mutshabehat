@@ -1,0 +1,17 @@
+{
+  "page": 429,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 5,
+  "rulings": 8,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p429-s34a13b1",
+    "r-p429-YAAT_IDAFA-عبادي_الشكور-2"
+  ]
+}

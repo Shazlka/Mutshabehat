@@ -1,0 +1,16 @@
+{
+  "page": 289,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 5,
+  "variants": 1,
+  "rulings": 4,
+  "supported": 5,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p289-IKHFA-rule-17-70-15"
+  ]
+}

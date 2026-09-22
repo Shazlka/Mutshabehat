@@ -1,0 +1,19 @@
+{
+  "page": 434,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 18,
+  "variants": 3,
+  "rulings": 15,
+  "supported": 18,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p434-YAAT_IDAFA-الا_ربي_انهو-7",
+    "r-p434-HAMZATAN_KALIMATAYN-يشاء_ان-7",
+    "r-p434-IKHFA-rule-35-3-8",
+    "r-p434-IKHFA-rule-35-3-9"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 337,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 27,
+  "variants": 9,
+  "rulings": 18,
+  "supported": 27,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p337-IDGHAM_SAGHIR-لهدمت_صوامع-3"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "page": 269,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 5,
+  "variants": 0,
+  "rulings": 5,
+  "supported": 5,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p269-IKHFA-اموات_غير-4"
+  ]
+}

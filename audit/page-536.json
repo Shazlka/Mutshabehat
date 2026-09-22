@@ -1,0 +1,17 @@
+{
+  "page": 536,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 22,
+  "variants": 13,
+  "rulings": 9,
+  "supported": 22,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p536-s56a70b2",
+    "r-p536-IDGHAM_SAGHIR-بل_نحن-1"
+  ]
+}

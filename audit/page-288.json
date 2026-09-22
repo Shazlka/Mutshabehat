@@ -1,0 +1,17 @@
+{
+  "page": 288,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 6,
+  "variants": 1,
+  "rulings": 5,
+  "supported": 6,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p288-HAMZATAN_KALIMA-قال_ءاسجد-2",
+    "r-p288-IKHFA-rule-17-61-11"
+  ]
+}

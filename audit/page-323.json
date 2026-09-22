@@ -1,0 +1,21 @@
+{
+  "page": 323,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 20,
+  "variants": 1,
+  "rulings": 19,
+  "supported": 20,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p323-004-1",
+    "r-p323-008-1",
+    "r-p323-009-1",
+    "r-p323-017-1",
+    "r-p323-018-1",
+    "r-p323-IKHFA-rule-21-15-7"
+  ]
+}

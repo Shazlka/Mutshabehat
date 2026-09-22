@@ -1,0 +1,17 @@
+{
+  "page": 526,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 43,
+  "variants": 9,
+  "rulings": 34,
+  "supported": 43,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p526-IMALAH_TAQLIL-اذ_يغشي-26",
+    "r-p526-IDGHAM_SAGHIR-ولقد_جاءهم-30"
+  ]
+}

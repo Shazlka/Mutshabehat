@@ -1,0 +1,20 @@
+{
+  "page": 465,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 23,
+  "variants": 6,
+  "rulings": 17,
+  "supported": 23,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p465-s39a57b1",
+    "r-p465-s39a58b1",
+    "r-p465-s39a64b1",
+    "r-p465-s39a65b0",
+    "r-p465-YAAT_IDAFA-تامروني_اعبد-7"
+  ]
+}

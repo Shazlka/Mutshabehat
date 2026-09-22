@@ -1,0 +1,18 @@
+{
+  "page": 457,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 10,
+  "variants": 1,
+  "rulings": 9,
+  "supported": 10,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p457-s38a64b1",
+    "r-p457-s38a65b1",
+    "r-p457-YAAT_IDAFA-ما_كان_لي_من_علم-6"
+  ]
+}

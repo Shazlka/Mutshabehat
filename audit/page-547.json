@@ -1,0 +1,16 @@
+{
+  "page": 547,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 10,
+  "variants": 4,
+  "rulings": 6,
+  "supported": 10,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p547-YAAT_IDAFA-اني_اخاف-5"
+  ]
+}

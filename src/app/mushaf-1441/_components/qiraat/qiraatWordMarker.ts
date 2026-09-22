@@ -170,10 +170,7 @@ export function rulingMarkerForWord(
 ): RulingMarker | null {
   const matches = rulings.filter((ruling) => (
     ruling.wordAnchored
-    && ruling.surah === surah
-    && ruling.ayah === ayah
-    && token >= ruling.startToken
-    && token <= ruling.endToken
+    && rulingTouchesToken(ruling, surah, ayah, token)
     && (!enabledCategories || enabledCategories.has(ruling.category))
     && matchesRulingFilter(ruling, filter)
   ))
@@ -193,6 +190,34 @@ export function rulingMarkerForWord(
       return ruling.readings.some((r) => r.readingId === filter.readingId && !r.isDefault)
     }),
   }
+}
+
+/**
+ * A ruling may span the ayah boundary (for example, page 1's
+ * ﴿ٱلرَّحِيمِ مَـٰلِكِ﴾ إدغام كبير).  The historical matcher compared only
+ * `ruling.ayah`, which made the second anchored word silently disappear.
+ *
+ * Tokens remain single-word addresses; this predicate simply includes every
+ * endpoint-aware token in the declared span. Multi-ayah spans are deliberately
+ * not guessed: a record with an invalid reversed span is not rendered and is
+ * reported by the deterministic audit.
+ */
+export function rulingTouchesToken(
+  ruling: Pick<QiraatRuling, 'surah' | 'ayah' | 'startToken' | 'endAyah' | 'endToken'>,
+  surah: number,
+  ayah: number,
+  token: number,
+): boolean {
+  if (ruling.surah !== surah) return false
+  const endAyah = ruling.endAyah ?? ruling.ayah
+  if (endAyah < ruling.ayah) return false
+  if (ayah < ruling.ayah || ayah > endAyah) return false
+  if (ruling.ayah === endAyah) {
+    return ayah === ruling.ayah && token >= ruling.startToken && token <= ruling.endToken
+  }
+  if (ayah === ruling.ayah) return token >= ruling.startToken
+  if (ayah === endAyah) return token <= ruling.endToken
+  return true
 }
 
 export function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparisonFilter): boolean {

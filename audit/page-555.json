@@ -1,0 +1,19 @@
+{
+  "page": 555,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 6,
+  "rulings": 8,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p555-IDGHAM_SAGHIR-يستغفر_لكم-1",
+    "r-p555-IDGHAM_SAGHIR-تستغفر_لهم-2",
+    "r-p555-IDGHAM_SAGHIR-يفعل_ذالك-3",
+    "r-p555-HAMZATAN_KALIMATAYN-جاء_اجلها-4"
+  ]
+}

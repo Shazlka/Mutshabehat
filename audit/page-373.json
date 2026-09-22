@@ -1,0 +1,19 @@
+{
+  "page": 373,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 3,
+  "rulings": 11,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p373-s26a142b2",
+    "r-p373-s26a154b2",
+    "r-p373-IDGHAM_SAGHIR-كذبت_ثمود-0",
+    "r-p373-YAAT_IDAFA-اجري_الا-2"
+  ]
+}

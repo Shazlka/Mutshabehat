@@ -1,0 +1,17 @@
+{
+  "page": 579,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 33,
+  "variants": 25,
+  "rulings": 8,
+  "supported": 33,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p579-IKHFA-rule-76-21-3",
+    "r-p579-IDGHAM_SAGHIR--6"
+  ]
+}

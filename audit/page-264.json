@@ -1,0 +1,21 @@
+{
+  "page": 264,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 19,
+  "variants": 10,
+  "rulings": 9,
+  "supported": 19,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p264-001-1",
+    "r-p264-003-1",
+    "r-p264-004-1",
+    "r-p264-006-1",
+    "r-p264-IKHFA-rule-15-33-5",
+    "r-p264-IKHFA-rule-15-47-5"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "page": 506,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 2,
+  "rulings": 9,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p506-IDGHAM_SAGHIR-واذ_صرفنا-5",
+    "r-p506-IDGHAM_SAGHIR-يغفر_لكم-6",
+    "r-p506-HAMZATAN_KALIMATAYN-اولياء_اولايك-7"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "page": 573,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 12,
+  "variants": 7,
+  "rulings": 5,
+  "supported": 12,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p573-YAAT_IDAFA-ربي_امدا-2",
+    "r-p573-IKHFA-rule-72-16-6",
+    "r-p573-IKHFA-rule-72-27-11"
+  ]
+}

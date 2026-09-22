@@ -1,0 +1,23 @@
+{
+  "page": 310,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 39,
+  "variants": 15,
+  "rulings": 24,
+  "supported": 39,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p310-004-1",
+    "r-p310-006-1",
+    "r-p310-007-1",
+    "r-p310-012-1",
+    "r-p310-015-1",
+    "r-p310-016-1",
+    "r-p310-IDGHAM_SAGHIR-واصطبر_لعبادتهي-2",
+    "r-p310-IDGHAM_SAGHIR-هل_تعلم-3"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "page": 395,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 1,
+  "rulings": 12,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p395-s28a78b2",
+    "r-p395-YAAT_IDAFA-عندي_اولم-5"
+  ]
+}

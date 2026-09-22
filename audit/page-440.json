@@ -1,0 +1,18 @@
+{
+  "page": 440,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 19,
+  "variants": 6,
+  "rulings": 13,
+  "supported": 19,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p440-s36a12b4",
+    "r-p440-HAMZATAN_KALIMATAYN-جاء_اجلهم-5",
+    "r-p440-IKHFA-rule-36-9-6"
+  ]
+}

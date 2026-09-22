@@ -1,0 +1,16 @@
+{
+  "page": 443,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 13,
+  "variants": 4,
+  "rulings": 9,
+  "supported": 13,
+  "unsupported": 0,
+  "unknownRules": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "contextualRules": [
+    "r-p443-s36a44b0"
+  ]
+}
