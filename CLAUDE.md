@@ -1,5 +1,13 @@
 @AGENTS.md
 
+## 2026-09-22 — Qiraat tail-page provenance review
+
+- Added `docs/qiraat-tail-pages-review.md` documenting read-only evidence for
+  Qira'at pages 585–604. The pages have ordinary Mushaf word fixtures but no
+  Qira'at fixture/source/database records in the current project state.
+- Do not infer or import recitations for these pages without an approved
+  authoritative source package; no data was mutated.
+
 # Project: متشابهات V2 (Mutshabehat V2)
 
 ## 2026-09-22 — Qiraat duplicate importer-key review
@@ -49,6 +57,18 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   history/log of all changes for future reference.
 
 # Changelog
+
+## 2026-09-22 — Qiraat tail-page and duplicate-key review
+
+- Added `docs/qiraat-tail-pages-review.md` and `docs/qiraat-duplicate-key-review.md` documenting that pages 585–604 have no reachable authoritative Qira'at source and that 25 duplicate importer-key rows represent distinct reading faces.
+- Classified tail pages as `UNKNOWN_REQUIRES_REVIEW` and duplicate keys as source-approved migration work; no records or database rows were changed.
+- Verification: duplicate-key tests passed (2/2); tail-page database/source search found zero Qira'at rows for pages 585–604.
+
+## 2026-09-22 — Qiraat source-backed Q10 narrator repair
+
+- Added the guarded, idempotent `scripts/qiraat/repair-q10-riwayah-attribution.mjs` repair for 14 source-backed rulings on pages 319–321, adding 28 Q10 narrator assignments to fixtures.
+- Left the conflicting page-322 Q10 event and all Q04 cases unchanged pending scholarly/source review; no PostgreSQL rows were modified.
+- Verification: first repair run added 28 assignments; second run added 0 and confirmed 28 unchanged; `npm run test:qiraat` passed 40/40; audit reduced attribution expansion failures from 36 to 8.
 
 ## 2026-09-22 — Qiraat multi-agent audit review
 
