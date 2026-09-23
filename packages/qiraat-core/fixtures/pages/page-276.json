@@ -216,38 +216,6 @@
     "evidence": []
   },
   {
-    "id": "v-SUSI-016-81-19-1955-performance",
-    "surah": 16,
-    "ayah": 81,
-    "startToken": 19,
-    "endToken": 19,
-    "operation": "REPLACE",
-    "hafsText": "بَأْسَكُمْ ۚ",
-    "variantText": "بَأْسَكُمْ ۚ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-016-81-19-1955",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-016-81-19-1955",
-        "variantId": "v-SUSI-016-81-19-1955-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1955; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "بَأْسَكُمْ → بَاسَكُمْ | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
-  },
-  {
     "id": "v-SUSI-016-83-1-1956",
     "surah": 16,
     "ayah": 83,

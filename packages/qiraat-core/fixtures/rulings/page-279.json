@@ -295,7 +295,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً | user-supplied JSON row 1980; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p279-TAGHYIR_HAMZ-لا_يومنون-4",
@@ -353,7 +356,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً | user-supplied JSON row 1982; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-DURI-016-104-7-r1213-MEEM_JAM",
@@ -373,6 +379,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر الميم"
       }
     ],
     "readings": [
@@ -380,12 +390,18 @@
         "readingId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر الميم",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "لا يهديهمُ الله → لا يهديهمِ الله | كسر الدوري الميم وصلاً"
+      "لا يهديهمُ الله → لا يهديهمِ الله | كسر الدوري الميم وصلاً",
+      "يَهْدِيهِمُ اللَّهُ → يَهْدِيهِمِ اللَّهُ | كسر الميم | user-supplied JSON row 1981; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

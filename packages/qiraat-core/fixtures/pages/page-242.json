@@ -271,37 +271,5 @@
       }
     ],
     "description": "إبدال الهمزة ألفاً وصلاً"
-  },
-  {
-    "id": "v-SUSI-012-60-3-1662-performance",
-    "surah": 12,
-    "ayah": 60,
-    "startToken": 3,
-    "endToken": 3,
-    "operation": "REPLACE",
-    "hafsText": "تَأْتُونِى",
-    "variantText": "تَأْتُونِى",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-012-60-3-1662",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-012-60-3-1662",
-        "variantId": "v-SUSI-012-60-3-1662-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1662; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "تَأْتُونِي → تَاتُونِي | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
   }
 ]

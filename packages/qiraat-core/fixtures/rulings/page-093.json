@@ -687,7 +687,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لِمُؤْمِنٍ → لِمُومِنٍ | إبدال الهمزة واواً | user-supplied JSON row 416; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-014-1",
@@ -742,7 +745,10 @@
     "hasAlternate": false,
     "text": "مع فتح الميم في «مُؤْمَنًا» لابن وردان.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُؤْمِنًا (معاً) → مُومِنًا | إبدال الهمزة واواً (الموضعين) | user-supplied JSON row 417; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-014-2",
@@ -797,7 +803,10 @@
     "hasAlternate": false,
     "text": "مع فتح الميم في «مُؤْمَنًا» لابن وردان.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُؤْمِنًا (معاً) → مُومِنًا | إبدال الهمزة واواً (الموضعين) | user-supplied JSON row 417; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-014-3",
@@ -852,7 +861,10 @@
     "hasAlternate": false,
     "text": "مع فتح الميم في «مُؤْمَنًا» لابن وردان.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُؤْمِنًا → مُومِنًا | إبدال الهمزة واواً | user-supplied JSON row 423; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-014-4",
@@ -907,7 +919,10 @@
     "hasAlternate": false,
     "text": "مع فتح الميم في «مُؤْمَنًا» لابن وردان.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُؤْمِنًا → مُومِنًا | إبدال الهمزة واواً | user-supplied JSON row 424; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-015-1",
@@ -961,7 +976,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُّؤْمِنَةٍ (3 مواضع) → مُّومِنَةٍ | إبدال الهمزة واواً (3 مواضع) | user-supplied JSON row 418; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-015-2",
@@ -1015,7 +1033,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُّؤْمِنَةٍ (3 مواضع) → مُّومِنَةٍ | إبدال الهمزة واواً (3 مواضع) | user-supplied JSON row 418; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-015-3",
@@ -1069,7 +1090,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُّؤْمِنَةٍ (3 مواضع) → مُّومِنَةٍ | إبدال الهمزة واواً (3 مواضع) | user-supplied JSON row 418; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-016-1",
@@ -1123,7 +1147,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُؤْمِنٌ → مُومِنٌ | إبدال الهمزة واواً | user-supplied JSON row 420; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p093-017-1",

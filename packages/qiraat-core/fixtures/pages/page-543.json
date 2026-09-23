@@ -245,55 +245,6 @@
     ]
   },
   {
-    "id": "v-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
-    "surah": 58,
-    "ayah": 11,
-    "startToken": 5,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "قِيلَ لَكُمْ",
-    "variantText": "قِيلَ لَكُمْ",
-    "differenceType": "IDGHAM",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T00:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
-    "locusType": "performance_variant",
-    "performanceNote": "إدغام اللام في اللام مع إسكان الميم",
-    "sources": [
-      {
-        "id": "s-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم-DOC",
-        "variantId": "v-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P543-R03443",
-        "sourceText": "﴿قِيلَ﴾ (معاً): كسر خالص، وبالإشمام لهشام والكسائي ورويس.",
-        "verificationNotes": "نص المصدر محفوظ حرفياً؛ رُبط الوجه بموضعه في مصحف المدينة، وقوبل بجهاز قراءات الآية المستقل."
-      },
-      {
-        "id": "s-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم-QP",
-        "variantId": "v-AUDIT-P543-58-11-5-03443-1-قيل لكم-قيل لكم",
-        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
-        "sourceType": "website",
-        "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/11",
-        "sourceText": "بكسرة خالصة للقاف وإدغام اللام في اللام وإسكان الميم: السوسي عن أبي عمرو.",
-        "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
-      }
-    ],
-    "description": "إدغام اللام في اللام مع إسكان الميم",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "موسوعة القراءات القرآنية — القراءات العشر",
-        "text": "بكسرة خالصة للقاف وإدغام اللام في اللام وإسكان الميم: السوسي عن أبي عمرو.",
-        "url": "https://quranpedia.net/qiraat/al-mujadila/11"
-      }
-    ]
-  },
-  {
     "id": "v-AUDIT-P543-58-11-5-03443-1-قيل-قيل",
     "surah": 58,
     "ayah": 11,

@@ -196,7 +196,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْتُونَ → يُوتُونَ | إبدال الهمزة واواً | user-supplied JSON row 2654; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p346-004-1",
@@ -748,7 +751,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِ → يَاتِ | إبدال الهمزة ألفاً | user-supplied JSON row 2655; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p346-016-1",
@@ -1365,7 +1371,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً | user-supplied JSON row 2657; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p346-TAGHYIR_HAMZ-يومنون-4",

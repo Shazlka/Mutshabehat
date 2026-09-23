@@ -222,37 +222,5 @@
         "text": "اشْدُدْ مَعْ أُبَلِّغُكُمْ حَلَا"
       }
     ]
-  },
-  {
-    "id": "v-SUSI-007-59-15-0951-performance",
-    "surah": 7,
-    "ayah": 59,
-    "startToken": 15,
-    "endToken": 16,
-    "operation": "REPLACE",
-    "hafsText": "إِنِّىٓ أَخَافُ",
-    "variantText": "إِنِّىٓ أَخَافُ",
-    "differenceType": "OTHER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-007-59-15-0951",
-    "locusType": "performance_variant",
-    "performanceNote": "فتح الياء",
-    "sources": [
-      {
-        "id": "s-SUSI-007-59-15-0951",
-        "variantId": "v-SUSI-007-59-15-0951-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 951; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "إِنِّي أَخَافُ → إِنِّيَ أَخَافُ | فتح الياء"
-      }
-    ],
-    "description": "فتح الياء"
   }
 ]

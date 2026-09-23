@@ -339,37 +339,5 @@
         "text": "وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَى الْعَلَا"
       }
     ]
-  },
-  {
-    "id": "v-SUSI-005-108-4-0660-performance",
-    "surah": 5,
-    "ayah": 108,
-    "startToken": 4,
-    "endToken": 4,
-    "operation": "REPLACE",
-    "hafsText": "يَأْتُوا۟",
-    "variantText": "يَأْتُوا۟",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-005-108-4-0660",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-005-108-4-0660",
-        "variantId": "v-SUSI-005-108-4-0660-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 660; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يَأْتُوا → يَاتُوا | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
   }
 ]

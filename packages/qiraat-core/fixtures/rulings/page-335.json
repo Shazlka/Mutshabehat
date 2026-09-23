@@ -352,6 +352,10 @@
         "action": "فتح الياء وصلاً"
       },
       {
+        "authorityId": "Q03",
+        "action": "فتح الياء وصلاً"
+      },
+      {
         "authorityId": "Q04-R01",
         "action": "فتح الياء وصلاً"
       },
@@ -380,6 +384,11 @@
         "isDefault": true
       },
       {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
         "readingId": "Q04-R01",
         "action": "فتح الياء وصلاً",
         "isDefault": true
@@ -403,7 +412,10 @@
     "hasAlternate": false,
     "text": "فتح ياء الإضافة وصلاً لنافع وهشام وحفص، وإسكانها للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بَيْتِيَ → بَيْتِي | إسكان الياء | user-supplied JSON row 2564; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p335-009-1",
@@ -524,7 +536,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتُوكَ → يَاتُوكَ | إبدال الهمزة ألفاً | user-supplied JSON row 2565; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p335-011-1",
@@ -614,7 +629,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِينَ → يَاتِينَ | إبدال الهمزة ألفاً | user-supplied JSON row 2566; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p335-012-1",
@@ -1076,7 +1094,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "بَوَّأْنَا → بَوَّانَا | إبدال الهمزة ألفاً | user-supplied JSON row 2562; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-SUSI-022-25-13-2559-IDGHAM_KABIR",

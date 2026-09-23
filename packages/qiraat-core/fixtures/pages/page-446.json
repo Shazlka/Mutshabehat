@@ -13,7 +13,9 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
-      "Q05-R01"
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
     ],
     "locusId": "L446-s37a6b0",
     "locusType": "multi_word_variant",
@@ -25,6 +27,15 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-D446-بزينه_الكواكب-w2",
+        "variantId": "v-L446-s37a6b0-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P446-R02528",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بتنوين «بزينةٍ» ونصب «الكواكبَ» ﴿بِزِينَةٍ الْكَوَاكِبَ﴾: حفص، وحمزة."
       }
     ],
     "description": "بتنوين زينة وخفض الكواكب",
@@ -197,40 +208,6 @@
       }
     ],
     "description": "بضم الميم",
-    "wajhIndex": 2,
-    "evidence": []
-  },
-  {
-    "id": "v-D446-بزينه_الكواكب-w2",
-    "surah": 37,
-    "ayah": 6,
-    "startToken": 5,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "بِزِينَةٍ ٱلْكَوَاكِبِ",
-    "variantText": "بِزِينَةٍ الْكَوَاكِبِ",
-    "differenceType": "OTHER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02"
-    ],
-    "locusId": "D446-بزينه_الكواكب",
-    "locusType": "multi_word_variant",
-    "sources": [
-      {
-        "id": "s-D446-بزينه_الكواكب-w2",
-        "variantId": "v-D446-بزينه_الكواكب-w2",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P446-R02528",
-        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
-        "sourceText": "بتنوين «بزينةٍ» ونصب «الكواكبَ» ﴿بِزِينَةٍ الْكَوَاكِبَ﴾: حفص، وحمزة."
-      }
-    ],
-    "description": "بتنوين زينة وخفض الكواكب",
     "wajhIndex": 2,
     "evidence": []
   },

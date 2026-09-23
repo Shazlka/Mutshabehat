@@ -140,7 +140,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بَأْسَنَا → بَاسَنَا | إبدال الهمزة ألفاً | user-supplied JSON row 2491; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p323-004-1",
@@ -733,11 +736,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03",
+        "action": "فتح الياء وصلاً"
+      },
+      {
         "authorityId": "Q05-R02",
         "action": "فتح الياء وصلاً"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q05-R02",
         "action": "فتح الياء وصلاً",
@@ -747,7 +759,10 @@
     "hasAlternate": false,
     "text": "الفتح وصلاً لحفص، والإسكان للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مَعِيَ → مَعِي | إسكان الياء | user-supplied JSON row 2493; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p323-IKHFA-rule-21-15-7",

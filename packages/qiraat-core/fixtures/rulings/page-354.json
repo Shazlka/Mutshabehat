@@ -1236,6 +1236,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً مع ترقيق اللام في لفظ الجلالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر الميم مع ترقيق لام لفظ الجلالة"
       }
     ],
     "readings": [
@@ -1243,12 +1247,18 @@
         "readingId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً مع ترقيق اللام في لفظ الجلالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر الميم مع ترقيق لام لفظ الجلالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "يُغنـهمُ الله → يُغنـهمِ الله | كسر الدوري الميم وصلاً مع ترقيق اللام في لفظ الجلالة"
+      "يُغنـهمُ الله → يُغنـهمِ الله | كسر الدوري الميم وصلاً مع ترقيق اللام في لفظ الجلالة",
+      "يُغْنِهِمُ اللَّهُ → يُغْنِهِمِ اللَّهُ | كسر الميم مع ترقيق لام لفظ الجلالة | user-supplied JSON row 2733; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

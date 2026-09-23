@@ -148,38 +148,6 @@
     "description": "إمالة فتحة الراء والألف"
   },
   {
-    "id": "v-SUSI-003-93-19-0215-performance",
-    "surah": 3,
-    "ayah": 93,
-    "startToken": 19,
-    "endToken": 19,
-    "operation": "REPLACE",
-    "hafsText": "فَأْتُوا۟",
-    "variantText": "فَأْتُوا۟",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-003-93-19-0215",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-003-93-19-0215",
-        "variantId": "v-SUSI-003-93-19-0215-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 215; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "فَأْتُوا → فَاتُوا | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
-  },
-  {
     "id": "v-SUSI-003-93-20-0216",
     "surah": 3,
     "ayah": 93,

@@ -183,12 +183,20 @@
       "Q01-R02",
       "Q02-R01",
       "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
       "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
       "Q08-R01",
-      "Q08-R02"
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
     ],
     "locusId": "L522-s51a41b5",
     "locusType": "performance_variant",
@@ -200,6 +208,24 @@
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03248",
         "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
+      },
+      {
+        "id": "s-v-L522-s51a41b5-w2-R03249",
+        "variantId": "v-L522-s51a41b5-w1-R03248",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03249",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو.",
+        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
+      },
+      {
+        "id": "s-v-L522-s51a41b5-w3-R03250",
+        "variantId": "v-L522-s51a41b5-w1-R03248",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03250",
+        "sourceText": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف، ويعقوب.",
         "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
       }
     ],
@@ -213,92 +239,6 @@
       }
     ],
     "performanceNote": "بكسر الهاء وضم الميم وصلاً"
-  },
-  {
-    "id": "v-L522-s51a41b5-w2-R03249",
-    "surah": 51,
-    "ayah": 41,
-    "startToken": 5,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "عَلَيْهِمُ ٱلرِّيحَ",
-    "variantText": "عَلَيْهِمُ الرِّيحَ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R01",
-      "Q03-R02"
-    ],
-    "locusId": "L522-s51a41b5",
-    "locusType": "performance_variant",
-    "sources": [
-      {
-        "id": "s-v-L522-s51a41b5-w2-R03249",
-        "variantId": "v-L522-s51a41b5-w2-R03249",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03249",
-        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو.",
-        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
-      }
-    ],
-    "description": "بكسر الهاء والميم وصلاً",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "القراءات العشر",
-        "text": "بكسر الهاء والميم وصلاً: أبو عمرو.",
-        "url": "https://quranpedia.net/qiraat/51/41"
-      }
-    ],
-    "performanceNote": "بكسر الهاء والميم وصلاً"
-  },
-  {
-    "id": "v-L522-s51a41b5-w3-R03250",
-    "surah": 51,
-    "ayah": 41,
-    "startToken": 5,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "عَلَيْهِمُ ٱلرِّيحَ",
-    "variantText": "عَلَيْهِمُ الرِّيحَ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q09-R01",
-      "Q09-R02"
-    ],
-    "locusId": "L522-s51a41b5",
-    "locusType": "performance_variant",
-    "sources": [
-      {
-        "id": "s-v-L522-s51a41b5-w3-R03250",
-        "variantId": "v-L522-s51a41b5-w3-R03250",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03250",
-        "sourceText": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف، ويعقوب.",
-        "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/41"
-      }
-    ],
-    "description": "بضم الهاء والميم وصلاً",
-    "wajhIndex": 3,
-    "evidence": [
-      {
-        "source": "القراءات العشر",
-        "text": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف، ويعقوب.",
-        "url": "https://quranpedia.net/qiraat/51/41"
-      }
-    ],
-    "performanceNote": "بضم الهاء والميم وصلاً"
   },
   {
     "id": "v-L522-s51a46b1-w1-R03253",

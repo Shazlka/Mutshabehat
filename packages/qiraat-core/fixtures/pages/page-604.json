@@ -35,41 +35,6 @@
     "performanceNote": "إسكان الفاء والهمز وصلاً"
   },
   {
-    "id": "v-SRC604-كفوا-وقف-w2",
-    "surah": 112,
-    "ayah": 4,
-    "startToken": 4,
-    "endToken": 4,
-    "operation": "REPLACE",
-    "hafsText": "كُفُوًا",
-    "variantText": "كُفُوًا",
-    "differenceType": "LETTER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02"
-    ],
-    "locusId": "SRC604-كفوا-وقف",
-    "locusType": "performance_variant",
-    "sources": [
-      {
-        "id": "s-v-SRC604-كفوا-وقف-w2",
-        "variantId": "v-SRC604-كفوا-وقف-w2",
-        "sourceName": "qiraat_pages_585_604.json",
-        "sourceType": "other",
-        "sourceReference": "https://quranpedia.net/qiraat/112/4",
-        "verificationNotes": "Approved source record mapped to a real Quran token.",
-        "sourceText": "لحمزة بإبدال الهمزة واواً وقفاً"
-      }
-    ],
-    "description": "لحمزة بإبدال الهمزة واواً وقفاً",
-    "wajhIndex": 2,
-    "evidence": [],
-    "performanceNote": "إبدال الهمزة واواً وقفاً"
-  },
-  {
     "id": "v-SRC604-كفؤا-باقون-w2",
     "surah": 112,
     "ayah": 4,

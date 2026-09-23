@@ -276,6 +276,10 @@
         "action": "الفتح وصلاً"
       },
       {
+        "authorityId": "Q03-R02",
+        "action": "فتح الياء وصلاً"
+      },
+      {
         "authorityId": "Q04-R01",
         "action": "الفتح وصلاً"
       },
@@ -304,6 +308,11 @@
         "isDefault": true
       },
       {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
         "readingId": "Q04-R01",
         "action": "الفتح وصلاً",
         "isDefault": true
@@ -326,7 +335,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَرُسُلِي → وَرُسُلِيَ | فتح الياء وصلاً | user-supplied JSON row 4251; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p544-HAMZATAN_KALIMA-ءاشفقتم-3",
@@ -508,7 +520,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أَأَشْفَقْتُمْ → آأَشْفَقْتُمْ | تسهيل الهمزة الثانية مع الإدخال | user-supplied JSON row 4249; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p544-IKHFA-rule-58-14-6",

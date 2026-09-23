@@ -157,6 +157,7 @@
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
       "Q05-R01",
+      "Q06-R01",
       "Q06-R02"
     ],
     "locusId": "AUDIT-P535-R03371-071b5238",
@@ -179,6 +180,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-waqia/37",
         "sourceText": "سكون الراء الأولى دون سكت: إدريس وإسحاق عن خلف العاشر، خلاد عن حمزة، شعبة عن عاصم.",
         "verificationNotes": "الجهاز المستقل يفرّق بين السكت وعدمه ويثبت مجموعة القارئين."
+      },
+      {
+        "id": "s-AUDIT-P535-R03371-PERF-SAKT-Q06R01-QP",
+        "variantId": "v-AUDIT-P535-R03371-071b5238",
+        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:37",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/37",
+        "sourceText": "خلف عن حمزة: إسكان الراء مع السكت على الساكن قبل الهمزة.",
+        "verificationNotes": "الجهاز يصرح بهذا الوجه استقلالاً عن خلف عن حمزة."
       }
     ],
     "description": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
@@ -282,55 +292,6 @@
     ]
   },
   {
-    "id": "v-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
-    "surah": 56,
-    "ayah": 37,
-    "startToken": 1,
-    "endToken": 1,
-    "operation": "REPLACE",
-    "hafsText": "عُرُبًا",
-    "variantText": "عُرْبًا",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01"
-    ],
-    "locusId": "AUDIT-P535-R03371-PERF-SAKT-Q06R01",
-    "locusType": "performance_variant",
-    "performanceNote": "إسكان الراء مع السكت على الساكن قبل الهمزة",
-    "sources": [
-      {
-        "id": "s-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
-        "variantId": "v-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03371",
-        "sourceText": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
-        "verificationNotes": "فصل وجه السكت لخلَف عن حمزة عن وجه إسكان الراء بلا سكت، كما يثبت جهاز القراءات المستقل."
-      },
-      {
-        "id": "s-AUDIT-P535-R03371-PERF-SAKT-Q06R01-QP",
-        "variantId": "v-AUDIT-P535-R03371-PERF-SAKT-Q06R01",
-        "sourceName": "موسوعة القراءات القرآنية — الواقعة 56:37",
-        "sourceType": "website",
-        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/37",
-        "sourceText": "خلف عن حمزة: إسكان الراء مع السكت على الساكن قبل الهمزة.",
-        "verificationNotes": "الجهاز يصرح بهذا الوجه استقلالاً عن خلف عن حمزة."
-      }
-    ],
-    "description": "﴿عُرُبًا﴾: بضم الراء ﴿عُرُبًا﴾ للجمهور؛ بإسكان الراء ﴿عُرْبًا﴾ لشعبة وحمزة وخلف.",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "موسوعة القراءات القرآنية — الواقعة 56:37",
-        "text": "خلف عن حمزة: إسكان الراء مع السكت على الساكن قبل الهمزة.",
-        "url": "https://quranpedia.net/qiraat/al-waqia/37"
-      }
-    ]
-  },
-  {
     "id": "v-D535-ولا_ينزفون-w2",
     "surah": 56,
     "ayah": 19,
@@ -384,38 +345,6 @@
     "description": "بكسر الزاي للباقين",
     "wajhIndex": 2,
     "evidence": []
-  },
-  {
-    "id": "v-SUSI-056-23-2-4208-performance",
-    "surah": 56,
-    "ayah": 23,
-    "startToken": 2,
-    "endToken": 2,
-    "operation": "REPLACE",
-    "hafsText": "ٱللُّؤْلُؤِ",
-    "variantText": "ٱللُّؤْلُؤِ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-056-23-2-4208",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة الأولى الساكنة واواً",
-    "sources": [
-      {
-        "id": "s-SUSI-056-23-2-4208",
-        "variantId": "v-SUSI-056-23-2-4208-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 4208; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "اللُّؤْلُؤِ → اللُّولُؤِ | إبدال الهمزة الأولى الساكنة واواً"
-      }
-    ],
-    "description": "إبدال الهمزة الأولى الساكنة واواً"
   },
   {
     "id": "v-SUSI-056-47-3-4209-performance",

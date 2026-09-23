@@ -251,38 +251,6 @@
     "description": "إبدال الهمزة واواً"
   },
   {
-    "id": "v-SUSI-031-6-14-3262-performance",
-    "surah": 31,
-    "ayah": 6,
-    "startToken": 14,
-    "endToken": 14,
-    "operation": "REPLACE",
-    "hafsText": "هُزُوًا ۚ",
-    "variantText": "هُزُوًا ۚ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-031-6-14-3262",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الواو همزة",
-    "sources": [
-      {
-        "id": "s-SUSI-031-6-14-3262",
-        "variantId": "v-SUSI-031-6-14-3262-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 3262; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "هُزُوًا → هُزُؤًا | إبدال الواو همزة"
-      }
-    ],
-    "description": "إبدال الواو همزة"
-  },
-  {
     "id": "v-SUSI-031-9-6-3263-performance",
     "surah": 31,
     "ayah": 9,

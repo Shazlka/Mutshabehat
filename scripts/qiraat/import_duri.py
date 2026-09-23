@@ -24,6 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import tokens as T
+from merge_faces import merge_variant as shared_merge_variant, merge_ruling as shared_merge_ruling, merge_face as shared_merge_face
 
 from import_susi import find_hits, plain, strict_form, MATCHERS, write_json
 
@@ -303,52 +304,11 @@ def merge_sources(target: dict, candidate: dict) -> bool:
 
 
 def merge_variant(existing: list[dict], candidate: dict) -> str:
-    same = [v for v in existing if same_form(v, candidate)]
-    if same:
-        same_reading = [v for v in same if READING in v.get('readingIds', [])]
-        if same_reading:
-            return 'SOURCE_ADDED' if merge_sources(same_reading[0], candidate) else 'DEDUPLICATED'
-        target = same[0]
-        if target.get('locusType') != candidate.get('locusType'):
-            return 'CONFLICT_SKIPPED'
-        if (candidate.get('locusType') == 'performance_variant' and
-                target.get('performanceNote') != candidate.get('performanceNote')):
-            return 'CONFLICT_SKIPPED'
-        if any(READING in v.get('readingIds', []) and spans_overlap(v, candidate)
-               for v in existing if v not in same):
-            return 'CONFLICT_SKIPPED'
-        target.setdefault('readingIds', []).append(READING)
-        target['readingIds'] = sorted(set(target['readingIds']))
-        merge_sources(target, candidate)
-        return 'READING_ADDED'
-    if any(READING in v.get('readingIds', []) and spans_overlap(v, candidate) for v in existing):
-        return 'CONFLICT_SKIPPED'
-    existing.append(candidate)
-    return 'ADDED'
+    return shared_merge_variant(existing, candidate, READING, strict_form)
 
 
 def merge_ruling(existing: list[dict], candidate: dict) -> str:
-    key = (candidate['surah'], candidate['ayah'], candidate['startToken'], candidate['category'])
-    same = [r for r in existing if (r.get('surah'), r.get('ayah'), r.get('startToken'), r.get('category')) == key]
-    if not same:
-        candidate.pop('_sourceRow', None)
-        existing.append(candidate)
-        return 'ADDED'
-    target = same[0]
-    if READING in {x.get('readingId') for x in target.get('readings', [])}:
-        notes = target.setdefault('sourceNotes', [])
-        changed = False
-        for note in candidate.get('sourceNotes', []):
-            if note not in notes:
-                notes.append(note)
-                changed = True
-        return 'SOURCE_ADDED' if changed else 'DEDUPLICATED'
-    target.setdefault('readings', []).append(candidate['readings'][0])
-    target.setdefault('attribution', []).append(candidate['attribution'][0])
-    target.setdefault('sourceNotes', []).extend(candidate.get('sourceNotes', []))
-    target['readings'] = sorted(target['readings'], key=lambda x: x['readingId'])
-    target['attribution'] = sorted(target['attribution'], key=lambda x: x['authorityId'])
-    return 'READING_ADDED'
+    return shared_merge_ruling(existing, candidate, READING)
 
 
 def remove_prior_unsafe_variants(variants: dict[int, list[dict]]) -> set[int]:
@@ -484,7 +444,7 @@ def main() -> int:
                     kind = 'RULING_' + result
                 else:
                     candidate = make_performance_variant(row, row_index, span, sha)
-                    result = merge_variant(variants[span['page']], candidate)
+                    result = shared_merge_face(variants[span['page']], rulings[span['page']], candidate, READING, strict_form)
                     kind = 'PERFORMANCE_' + result
             stats[kind] += 1
             if result in ('ADDED', 'READING_ADDED', 'SOURCE_ADDED'):

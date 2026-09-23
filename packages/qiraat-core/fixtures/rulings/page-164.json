@@ -863,7 +863,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "جِئْتَ → جِيتَ | إبدال الهمزة ياء | user-supplied JSON row 1001; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p164-019-1",
@@ -917,7 +920,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فَأْتِ → فَاتِ | إبدال الهمزة ألفاً | user-supplied JSON row 1002; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p164-020-1",
@@ -971,7 +977,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تَأْمُرُونَ → تَامُرُونَ | إبدال الهمزة ألفاً | user-supplied JSON row 1003; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p164-021-1",
@@ -1025,7 +1034,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتُوكَ → يَاتُوكَ | إبدال الهمزة ألفاً | user-supplied JSON row 1005; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p164-022-1",
@@ -1079,7 +1091,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْفِكُونَ → يَافِكُونَ | إبدال الهمزة ألفاً | user-supplied JSON row 1011; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p164-023-1",
@@ -1418,12 +1433,21 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03",
+        "action": "فتح الياء وصلاً"
+      },
+      {
         "authorityId": "Q05-R02",
         "action": "فتح الياء وصلاً",
         "condition": "وصلاً"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q05-R02",
         "action": "فتح الياء وصلاً",
@@ -1434,7 +1458,10 @@
     "text": "الفتح وصلاً لحفص، والإسكان للباقين",
     "condition": "وصلاً",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مَعِيَ → مَعِي | إسكان الياء | user-supplied JSON row 1000; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-SUSI-007-105-10-0999-IDGHAM_KABIR",

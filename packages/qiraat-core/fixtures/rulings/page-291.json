@@ -464,7 +464,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتُونَ (معاً) → يَاتُونَ | إبدال الهمزة ألفاً (الموضعين) | user-supplied JSON row 2072; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p291-TAGHYIR_HAMZ-نومن-8",
@@ -580,7 +583,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تَأْتِيَ → تَاتِيَ | إبدال الهمزة ألفاً | user-supplied JSON row 2077; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p291-TAGHYIR_HAMZ-يومنوا-10",
@@ -638,7 +644,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْمِنُوا → يُومِنُوا | إبدال الهمزة واواً | user-supplied JSON row 2080; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p291-IDGHAM_SAGHIR-ولقد_صرفنا-6",

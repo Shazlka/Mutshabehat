@@ -124,7 +124,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِيَ → يَاتِيَ | إبدال الهمزة ألفاً | user-supplied JSON row 1763; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p253-003-1",
@@ -1165,6 +1168,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر الميم وصلاً"
       }
     ],
     "readings": [
@@ -1172,12 +1179,18 @@
         "readingId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر الميم وصلاً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "عليهـمُ الذي → عليهـمِ الذي | كسر الدوري الميم وصلاً"
+      "عليهـمُ الذي → عليهـمِ الذي | كسر الدوري الميم وصلاً",
+      "عَلَيْهِمُ الَّذِي → عَلَيْهِمِ الَّذِي | كسر الميم وصلاً | user-supplied JSON row 1759; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

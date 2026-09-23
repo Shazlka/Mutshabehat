@@ -211,7 +211,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُسْتَأْنِسِينَ → مُسْتَانِسِينَ | إبدال الهمزة ألفاً | user-supplied JSON row 3373; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p425-TAGHYIR_HAMZ-يوذي-3",
@@ -269,7 +272,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْذِي → يُوذِي | إبدال الهمزة واواً | user-supplied JSON row 3374; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p425-TAGHYIR_HAMZ-توذوا-4",

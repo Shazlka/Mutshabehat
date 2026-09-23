@@ -382,8 +382,14 @@
     "readingIds": [
       "Q01-R01",
       "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
       "Q08-R01",
-      "Q08-R02"
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
     ],
     "locusId": "DOCX-P524-R03264",
     "locusType": "multi_word_variant",
@@ -396,71 +402,19 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03264",
         "verificationNotes": "وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.",
         "sourceText": "كالسابق مع جمع الكلمتين بالتاء ﴿ذُرِّيَّاتُهُمْ... ذُرِّيَّاتِهِمْ﴾: نافع، وأبو جعفر."
-      }
-    ],
-    "description": "جمع الكلمتين بالتاء لنافع وأبي جعفر",
-    "wajhIndex": 2,
-    "evidence": []
-  },
-  {
-    "id": "v-DOCX-P524-R03265-2",
-    "surah": 52,
-    "ayah": 21,
-    "startToken": 7,
-    "endToken": 8,
-    "operation": "REPLACE",
-    "hafsText": "بِهِمْ ذُرِّيَّتَهُمْ",
-    "variantText": "بِهِمْ ذُرِّيَّاتِهِمْ",
-    "differenceType": "LETTER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R01",
-      "Q03-R02"
-    ],
-    "locusId": "DOCX-P524-R03265",
-    "locusType": "multi_word_variant",
-    "sources": [
+      },
       {
         "id": "s-DOCX-P524-R03265-2",
-        "variantId": "v-DOCX-P524-R03265-2",
+        "variantId": "v-DOCX-P524-R03264-2",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03265",
         "verificationNotes": "وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.",
         "sourceText": "بقطع الهمزة ونون العظمة وكسر تاء ذريتهم الأولى جمعاً، ونصب ذريتهم الثانية جمعاً ﴿وَأَتْبَعْنَاهُمْ ذُرِّيَّاتِهِمْ... بِهِمْ ذُرِّيَّاتِهِمْ﴾: أبو عمرو."
-      }
-    ],
-    "description": "بفعل ماضٍ ثلاثي لأبي عمرو",
-    "wajhIndex": 2,
-    "evidence": []
-  },
-  {
-    "id": "v-DOCX-P524-R03266-2",
-    "surah": 52,
-    "ayah": 21,
-    "startToken": 7,
-    "endToken": 8,
-    "operation": "REPLACE",
-    "hafsText": "بِهِمْ ذُرِّيَّتَهُمْ",
-    "variantText": "بِهِمْ ذُرِّيَّاتِهِمْ",
-    "differenceType": "LETTER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q04-R01",
-      "Q04-R02",
-      "Q09-R01",
-      "Q09-R02"
-    ],
-    "locusId": "DOCX-P524-R03266",
-    "locusType": "multi_word_variant",
-    "sources": [
+      },
       {
         "id": "s-DOCX-P524-R03266-2",
-        "variantId": "v-DOCX-P524-R03266-2",
+        "variantId": "v-DOCX-P524-R03264-2",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P524-R03266",
@@ -468,7 +422,7 @@
         "sourceText": "بفعل ماضٍ ثلاثي مع إفراد ذريتهم الأولى مرفوعة، ونصب ذريتهم الثانية جمعاً بالتاء ﴿وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ... بِهِمْ ذُرِّيَّاتِهِمْ﴾: ابن عامر، ويعقوب."
       }
     ],
-    "description": "إفراد الأولى وجمع الثانية لابن عامر ويعقوب",
+    "description": "جمع الكلمتين بالتاء لنافع وأبي جعفر",
     "wajhIndex": 2,
     "evidence": []
   },
@@ -502,38 +456,6 @@
       }
     ],
     "description": "تقليل فتحة التاء والألف"
-  },
-  {
-    "id": "v-SUSI-052-23-3-4121-performance",
-    "surah": 52,
-    "ayah": 23,
-    "startToken": 3,
-    "endToken": 3,
-    "operation": "REPLACE",
-    "hafsText": "كَأْسًۭا",
-    "variantText": "كَأْسًۭا",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-052-23-3-4121",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-052-23-3-4121",
-        "variantId": "v-SUSI-052-23-3-4121-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 4121; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "كَأْسًا → كَاسًا | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
   },
   {
     "id": "v-SUSI-052-24-6-4122-performance",

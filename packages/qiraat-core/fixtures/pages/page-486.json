@@ -1,48 +1,5 @@
 [
   {
-    "id": "v-D486-يبشر-w1",
-    "surah": 42,
-    "ayah": 23,
-    "startToken": 3,
-    "endToken": 3,
-    "operation": "REPLACE",
-    "hafsText": "يُبَشِّرُ",
-    "variantText": "يُبَشِّرُ",
-    "differenceType": "OTHER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q01-R01",
-      "Q01-R02",
-      "Q04-R01",
-      "Q04-R02",
-      "Q05-R01",
-      "Q05-R02",
-      "Q06-R01",
-      "Q06-R02",
-      "Q08-R01",
-      "Q08-R02",
-      "Q09-R01",
-      "Q09-R02"
-    ],
-    "locusId": "D486-يبشر",
-    "locusType": "word_variant",
-    "sources": [
-      {
-        "id": "s-D486-يبشر-w1",
-        "variantId": "v-D486-يبشر-w1",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
-        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
-      }
-    ],
-    "description": "وجه حفص المطابق لرسم المصحف",
-    "wajhIndex": 1,
-    "evidence": []
-  },
-  {
     "id": "v-D486-وهو-w2",
     "surah": 42,
     "ayah": 25,
@@ -309,63 +266,6 @@
     ],
     "description": "بحذف الفاء",
     "wajhIndex": 2,
-    "evidence": []
-  },
-  {
-    "id": "v-D486-يبشر-w1",
-    "surah": 42,
-    "ayah": 23,
-    "startToken": 3,
-    "endToken": 3,
-    "operation": "REPLACE",
-    "hafsText": "يُبَشِّرُ",
-    "variantText": "يُبَشِّرُ",
-    "differenceType": "OTHER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q02-R01",
-      "Q02-R02",
-      "Q03-R01",
-      "Q03-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q10-R01",
-      "Q10-R02"
-    ],
-    "locusId": "D486-يبشر",
-    "locusType": "word_variant",
-    "sources": [
-      {
-        "id": "s-D486-يبشر-w1",
-        "variantId": "v-D486-يبشر-w1",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
-        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
-      },
-      {
-        "id": "s-SUSI-042-23-3-3887",
-        "variantId": "v-D486-يبشر-w1",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 3887; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يُبَشِّرُ → يَبْشُرُ | فتح الياء وإسكان الباء وضم الشين وتخفيفها"
-      },
-      {
-        "id": "s-DURI-042-23-3-r2231",
-        "variantId": "v-D486-يبشر-w1",
-        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
-        "sourceType": "other",
-        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2231; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
-        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يُبَـشِّر → يَبْـشُرُ | فتح الدوري الياء وأسكن الباء وضم الشين مخففة"
-      }
-    ],
-    "description": "وجه حفص المطابق لرسم المصحف",
-    "wajhIndex": 1,
     "evidence": []
   },
   {

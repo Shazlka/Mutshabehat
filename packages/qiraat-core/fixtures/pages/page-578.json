@@ -300,8 +300,12 @@
     "updatedAt": "2026-09-22T00:00:00.000Z",
     "readingIds": [
       "Q02-R01",
+      "Q02-R02",
       "Q04-R02",
-      "Q05-R02"
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01"
     ],
     "locusId": "AUDIT-P578-76-4-4-dd315601",
     "locusType": "performance_variant",
@@ -322,6 +326,24 @@
         "sourceType": "website",
         "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
         "sourceText": "Quranpedia: Bazzi, Ibn Dhakwan, Hafs have two waqf faces after tanwin deletion: with/without alif.",
+        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      },
+      {
+        "id": "s-DOCX-P578-R03772-v-AUDIT-P578-76-4-4-bc096c6f",
+        "variantId": "v-AUDIT-P578-76-4-4-dd315601",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03772",
+        "sourceText": "بحذف التنوين وصلاً، وبالوقف على اللام الساكنة بلا ألف ﴿سَلَاسِلْ﴾: قنبل، وحمزة، ورويس، وخلف.",
+        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
+      },
+      {
+        "id": "s-QP-v-AUDIT-P578-76-4-4-bc096c6f",
+        "variantId": "v-AUDIT-P578-76-4-4-dd315601",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
+        "sourceText": "Source gives no-alif waqf for Qunbul, Hamza, Ruways, Khalaf; Quranpedia explicitly names Ishaq and Idris for same no-alif face, confirming Q10.",
         "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
       }
     ],
@@ -390,58 +412,6 @@
         "url": "https://quranpedia.net/qiraat/al-insan/4"
       }
     ]
-  },
-  {
-    "id": "v-AUDIT-P578-76-4-4-bc096c6f",
-    "surah": 76,
-    "ayah": 4,
-    "startToken": 4,
-    "endToken": 4,
-    "operation": "REPLACE",
-    "hafsText": "سَلَـٰسِلَا۟",
-    "variantText": "سَلَـٰسِلَا۟",
-    "differenceType": "OTHER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T00:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z",
-    "readingIds": [
-      "Q02-R02",
-      "Q06-R01",
-      "Q06-R02",
-      "Q09-R01"
-    ],
-    "locusId": "AUDIT-P578-76-4-4-bc096c6f",
-    "locusType": "performance_variant",
-    "sources": [
-      {
-        "id": "s-DOCX-P578-R03772-v-AUDIT-P578-76-4-4-bc096c6f",
-        "variantId": "v-AUDIT-P578-76-4-4-bc096c6f",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P578-R03772",
-        "sourceText": "بحذف التنوين وصلاً، وبالوقف على اللام الساكنة بلا ألف ﴿سَلَاسِلْ﴾: قنبل، وحمزة، ورويس، وخلف.",
-        "verificationNotes": "anchor resolved by tokens.py against page-word fixture; compared with independent exact-verse ten-readings apparatus."
-      },
-      {
-        "id": "s-QP-v-AUDIT-P578-76-4-4-bc096c6f",
-        "variantId": "v-AUDIT-P578-76-4-4-bc096c6f",
-        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
-        "sourceType": "website",
-        "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
-        "sourceText": "Source gives no-alif waqf for Qunbul, Hamza, Ruways, Khalaf; Quranpedia explicitly names Ishaq and Idris for same no-alif face, confirming Q10.",
-        "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
-      }
-    ],
-    "description": "بحذف التنوين وصلاً، وبالوقف على اللام الساكنة بلا ألف ﴿سَلَاسِلْ﴾: قنبل، وحمزة، ورويس، وخلف.",
-    "wajhIndex": 1,
-    "evidence": [
-      {
-        "source": "موسوعة القراءات القرآنية — القراءات العشر",
-        "text": "Source gives no-alif waqf for Qunbul, Hamza, Ruways, Khalaf; Quranpedia explicitly names Ishaq and Idris for same no-alif face, confirming Q10.",
-        "url": "https://quranpedia.net/qiraat/al-insan/4"
-      }
-    ],
-    "performanceNote": "وقف اللام ساكنة بلا ألف"
   },
   {
     "id": "v-AUDIT-P578-76-4-4-e045cd28",

@@ -233,7 +233,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمُؤْمِنَاتُ → الْمُومِنَاتُ | إبدال الهمزة واواً | user-supplied JSON row 4279; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p551-TAGHYIR_HAMZ-ياتين-4",
@@ -291,7 +294,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِينَ → يَاتِينَ | إبدال الهمزة ألفاً | user-supplied JSON row 4280; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p551-TAGHYIR_HAMZ-توذونني-5",
@@ -349,7 +355,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تُؤْذُونَنِي → تُوذُونَنِي | إبدال الهمزة واواً | user-supplied JSON row 4283; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p551-HAMZATAN_KALIMATAYN-النبيء_اذا-6",

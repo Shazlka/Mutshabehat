@@ -87,7 +87,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْمُرُ → يَامُرُ | إبدال الهمزة ألفاً | user-supplied JSON row 2713; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p352-002-1",
@@ -293,7 +296,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْتُوا → يُوتُوا | إبدال الهمزة واواً | user-supplied JSON row 2715; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p352-006-1",
@@ -497,7 +503,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمُؤْمِنَاتِ → الْمُومِنَاتِ | إبدال الهمزة واواً | user-supplied JSON row 2717; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p352-009-1",
@@ -860,7 +869,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تَسْتَأْنِسُوا → تَسْتَانِسُوا | إبدال الهمزة ألفاً | user-supplied JSON row 2721; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p352-IKHFA-rule-24-27-6",
@@ -951,6 +963,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر الميم وصلاً"
       }
     ],
     "readings": [
@@ -958,12 +974,18 @@
         "readingId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر الميم وصلاً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "يـوفّيهمُ الله → يوفيهمِ الله | كسر الدوري الميم وصلاً"
+      "يـوفّيهمُ الله → يوفيهمِ الله | كسر الدوري الميم وصلاً",
+      "يُوَفِّيهِمُ اللَّهُ → يُوَفِّيهِمِ اللَّهُ | كسر الميم وصلاً | user-supplied JSON row 2719; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

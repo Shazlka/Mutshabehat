@@ -328,6 +328,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "أبدل الدوري الهمزة الأولى"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة الأولى الساكنة واواً"
       }
     ],
     "readings": [
@@ -335,12 +339,18 @@
         "readingId": "Q03-R01",
         "action": "أبدل الدوري الهمزة الأولى",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة الأولى الساكنة واواً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "اللـؤلـؤ → اللـؤلـؤ | أبدل الدوري الهمزة الأولى"
+      "اللـؤلـؤ → اللـؤلـؤ | أبدل الدوري الهمزة الأولى",
+      "اللُّؤْلُؤِ → اللُّولُؤِ | إبدال الهمزة الأولى الساكنة واواً | user-supplied JSON row 4208; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

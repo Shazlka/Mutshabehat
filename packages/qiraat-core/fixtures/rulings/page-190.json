@@ -519,7 +519,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِيَ → يَاتِيَ | إبدال الهمزة ألفاً | user-supplied JSON row 1203; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p190-014-1",
@@ -573,7 +576,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمُؤْمِنِينَ → الْمُومِنِينَ | إبدال الهمزة واواً | user-supplied JSON row 1205; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p190-015-1",
@@ -661,7 +667,10 @@
     "hasAlternate": false,
     "text": "تسهيل الهمزة الثانية لنافع وابن كثير وأبي عمرو وأبي جعفر ورويس، والتحقيق للباقين",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَوْلِيَاءَ إِنِ → أَوْلِيَاءَ إِنِ | تسهيل الهمزة الثانية | user-supplied JSON row 1202; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p190-016-1",

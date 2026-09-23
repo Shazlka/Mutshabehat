@@ -38,6 +38,11 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-23 — Merge duplicate per-reader Qiraat faces
+- Reconciled duplicate fixture faces across all 604 pages and retained removed source records verbatim in `docs/qiraat-reader-dedupe-audit.json`. Page 11, 2:75 now shows the existing hamza-substitution ruling once for Warsh, Susi, and Abu Jaafar, with the Susi source citation appended.
+- Added shared Susi/Duri/future-importer merge logic and validator checks. Eighty-two same-reader/action or distinct-face conflicts remain documented for manual review. No database changes; no Susi/Duri importer-ID entries were found. Orchestrator review restored 24 reader assignments (23 merges, mostly al-Susi Q03-R02) that the final Codex rebuild had dropped from target rulings, using the reader's own source wording and rawi-level authorityId; merge_faces.py fixed to do the same.
+- Importer conventions and the explicit action/category mapping are documented in `docs/qiraat-reader-importers.md`.
+
 ## 2026-09-23 — Give shared Qiraat words one solid glyph color
 - Multi-reader variants now color the word glyph with the named shared-reader olive token; single-reader words keep their reader color. The underline still shows each reader's palette segment. User annotation colors remain highest priority.
 - Added a shared-reader swatch to the Qiraat legend, with a lime adaptation for the dark Mushaf theme. Removed all clipped gradient paint from word glyphs; gradient rendering remains only on the individual-reader underline marker.

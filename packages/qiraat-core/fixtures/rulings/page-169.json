@@ -853,7 +853,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِئْسَمَا → بِيسَمَا | إبدال الهمزة ياء | user-supplied JSON row 1055; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p169-017-1",
@@ -898,7 +901,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِرَأْسِ → بِرَاسِ | إبدال الهمزة ألفاً | user-supplied JSON row 1058; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p169-018-1",
@@ -943,7 +949,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "شِئْتَ → شِيتَ | إبدال الهمزة ياء | user-supplied JSON row 1066; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p169-019-1",
@@ -1250,7 +1259,10 @@
     "hasAlternate": false,
     "text": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر، والإسكان للباقين",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بَعْدِي → بَعْدِيَ | فتح الياء | user-supplied JSON row 1056; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-SUSI-007-150-3-1054-IMALAH_TAQLIL",

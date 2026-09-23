@@ -288,11 +288,14 @@
       "Q02-R02",
       "Q03-R01",
       "Q03-R02",
+      "Q05-R01",
       "Q05-R02",
       "Q06-R01",
       "Q06-R02",
       "Q07-R01",
-      "Q07-R02"
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
     ],
     "locusId": "D343-نسقيكم",
     "locusType": "performance_variant",
@@ -306,37 +309,10 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P343-R01510",
         "verificationNotes": "وجه المصدر بضم العين وكسر التنوين؛ «خلف» المجرد هو خلف عن حمزة Q06. المرجع المستقل: https://quranpedia.net/qiraat/al-muminun/21.",
         "sourceText": "بضم التاء ﴿تُسْقِيكُمْ﴾: ابن كثير، أبو عمرو، حفص، حمزة، الكسائي، خلف."
-      }
-    ],
-    "description": "بضم العين وكسر التنوين",
-    "wajhIndex": 1,
-    "evidence": []
-  },
-  {
-    "id": "v-D343-نسقيكم-performance2",
-    "surah": 23,
-    "ayah": 21,
-    "startToken": 6,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "نُّسْقِيكُم",
-    "variantText": "نُّسْقِيكُم",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q05-R01",
-      "Q09-R01",
-      "Q09-R02"
-    ],
-    "locusId": "D343-نسقيكم",
-    "locusType": "performance_variant",
-    "performanceNote": "بفتح التاء وضم التنوين",
-    "sources": [
+      },
       {
         "id": "s-D343-نسقيكم-performance2",
-        "variantId": "v-D343-نسقيكم-performance2",
+        "variantId": "v-D343-نسقيكم-performance1",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P343-R01511",
@@ -344,8 +320,8 @@
         "sourceText": "بفتح التاء ﴿تَسْقِيكُمْ﴾: نافع، ابن عامر، شعبة، يعقوب."
       }
     ],
-    "description": "بفتح التاء وضم التنوين",
-    "wajhIndex": 2,
+    "description": "بضم العين وكسر التنوين",
+    "wajhIndex": 1,
     "evidence": []
   },
   {
@@ -376,70 +352,6 @@
         "sourceReference": "user-supplied JSON row 2620; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "فَأَنشَأْنَا → فَأَنشَانَا | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
-  },
-  {
-    "id": "v-SUSI-023-19-13-2621-performance",
-    "surah": 23,
-    "ayah": 19,
-    "startToken": 13,
-    "endToken": 13,
-    "operation": "REPLACE",
-    "hafsText": "تَأْكُلُونَ",
-    "variantText": "تَأْكُلُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-023-19-13-2621",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-023-19-13-2621",
-        "variantId": "v-SUSI-023-19-13-2621-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 2621; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "تَأْكُلُونَ → تَاكُلُونَ | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
-  },
-  {
-    "id": "v-SUSI-023-21-15-2624-performance",
-    "surah": 23,
-    "ayah": 21,
-    "startToken": 15,
-    "endToken": 15,
-    "operation": "REPLACE",
-    "hafsText": "تَأْكُلُونَ",
-    "variantText": "تَأْكُلُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-023-21-15-2624",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-023-21-15-2624",
-        "variantId": "v-SUSI-023-21-15-2624-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 2624; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "تَأْكُلُونَ → تَاكُلُونَ | إبدال الهمزة ألفاً"
       }
     ],
     "description": "إبدال الهمزة ألفاً"

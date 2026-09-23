@@ -15,11 +15,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الياء"
+      },
+      {
         "authorityId": "Q05-R02",
         "action": "الفتح وصلاً"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الياء",
+        "isDefault": true
+      },
       {
         "readingId": "Q05-R02",
         "action": "الفتح وصلاً",
@@ -28,7 +37,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مَعِيَ → مَعِي | إسكان الياء | user-supplied JSON row 2197; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p302-IKHFA-rule-18-79-16",

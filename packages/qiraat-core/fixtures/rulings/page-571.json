@@ -183,7 +183,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَالْمُؤْمِنَاتِ → وَالْمُومِنَاتِ | إبدال الهمزة واواً | user-supplied JSON row 4372; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p571-YAAT_IDAFA-بيتي_مومنا-3",
@@ -201,6 +204,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الياء وصلاً لأبي عمرو وقرأ حفص بفتحها (بَيْتِيَ)"
+      },
+      {
         "authorityId": "Q04-R01",
         "action": "الفتح وصلاً"
       },
@@ -210,6 +217,11 @@
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الياء وصلاً لأبي عمرو وقرأ حفص بفتحها (بَيْتِيَ)",
+        "isDefault": true
+      },
       {
         "readingId": "Q04-R01",
         "action": "الفتح وصلاً",
@@ -223,7 +235,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "بَيْتِيَ → بَيْتِي | إسكان الياء وصلاً لأبي عمرو وقرأ حفص بفتحها (بَيْتِيَ) | user-supplied JSON row 4373; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-AUDIT-P571-71-28-9-TAGHYIR_HAMZ",
@@ -283,7 +298,10 @@
     "createdAt": "2026-09-22T00:00:00.000Z",
     "updatedAt": "2026-09-22T00:00:00.000Z",
     "sourceRecordId": "DOCX-P571-R03714",
-    "sourceText": "تغيير الهمز: ﴿مُّؤْمِنًا﴾، ﴿لِّلْمُؤْمِنِينَ﴾، ﴿وَالْمُؤْمِنَـٰتِ﴾: إبدال لورش، السوسي، أبو جعفر."
+    "sourceText": "تغيير الهمز: ﴿مُّؤْمِنًا﴾، ﴿لِّلْمُؤْمِنِينَ﴾، ﴿وَالْمُؤْمِنَـٰتِ﴾: إبدال لورش، السوسي، أبو جعفر.",
+    "sourceNotes": [
+      "وَلِلْمُؤْمِنِينَ → وَلِلْمُومِنِينَ | إبدال الهمزة واواً | user-supplied JSON row 4371; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p571-IDGHAM_SAGHIR-اغفر-4",

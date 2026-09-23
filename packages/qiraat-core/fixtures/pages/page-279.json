@@ -54,12 +54,20 @@
       "Q01-R02",
       "Q02-R01",
       "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
       "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
       "Q08-R01",
-      "Q08-R02"
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
     ],
     "locusId": "D279-لا_يهديهم_الله",
     "locusType": "performance_variant",
@@ -73,75 +81,19 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P279-R00777",
         "verificationNotes": "وجه المصدر لأهل الكسر مع ضم الميم. المرجع المستقل: https://quranpedia.net/qiraat/an-nahl/104.",
         "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر."
-      }
-    ],
-    "description": "بكسر الهاء وضم الميم وصلاً",
-    "wajhIndex": 1,
-    "evidence": []
-  },
-  {
-    "id": "v-D279-لا_يهديهم_الله-performance2",
-    "surah": 16,
-    "ayah": 104,
-    "startToken": 7,
-    "endToken": 9,
-    "operation": "REPLACE",
-    "hafsText": "لَا يَهْدِيهِمُ ٱللَّهُ",
-    "variantText": "لَا يَهْدِيهِمُ ٱللَّهُ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R01",
-      "Q03-R02"
-    ],
-    "locusId": "D279-لا_يهديهم_الله",
-    "locusType": "performance_variant",
-    "performanceNote": "بكسر الهاء والميم وصلاً",
-    "sources": [
+      },
       {
         "id": "s-D279-لا_يهديهم_الله-performance2",
-        "variantId": "v-D279-لا_يهديهم_الله-performance2",
+        "variantId": "v-D279-لا_يهديهم_الله-performance1",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P279-R00778",
         "verificationNotes": "وجه أبي عمرو بالكسر وصلاً. المرجع المستقل: https://quranpedia.net/qiraat/an-nahl/104.",
         "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو."
-      }
-    ],
-    "description": "بكسر الهاء والميم وصلاً",
-    "wajhIndex": 2,
-    "evidence": []
-  },
-  {
-    "id": "v-D279-لا_يهديهم_الله-performance3",
-    "surah": 16,
-    "ayah": 104,
-    "startToken": 7,
-    "endToken": 9,
-    "operation": "REPLACE",
-    "hafsText": "لَا يَهْدِيهِمُ ٱللَّهُ",
-    "variantText": "لَا يَهْدِيهِمُ ٱللَّهُ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q09-R01",
-      "Q09-R02"
-    ],
-    "locusId": "D279-لا_يهديهم_الله",
-    "locusType": "performance_variant",
-    "performanceNote": "بضم الهاء والميم وصلاً",
-    "sources": [
+      },
       {
         "id": "s-D279-لا_يهديهم_الله-performance3",
-        "variantId": "v-D279-لا_يهديهم_الله-performance3",
+        "variantId": "v-D279-لا_يهديهم_الله-performance1",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P279-R00779",
@@ -149,104 +101,8 @@
         "sourceText": "بضم الهاء والميم وصلاً ﴿لَا يَهْدِيهُمُ﴾: حمزة، الكسائي، يعقوب، خلف."
       }
     ],
-    "description": "بضم الهاء والميم وصلاً",
-    "wajhIndex": 3,
+    "description": "بكسر الهاء وضم الميم وصلاً",
+    "wajhIndex": 1,
     "evidence": []
-  },
-  {
-    "id": "v-SUSI-016-104-4-1980-performance",
-    "surah": 16,
-    "ayah": 104,
-    "startToken": 4,
-    "endToken": 4,
-    "operation": "REPLACE",
-    "hafsText": "يُؤْمِنُونَ",
-    "variantText": "يُؤْمِنُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-016-104-4-1980",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة واواً",
-    "sources": [
-      {
-        "id": "s-SUSI-016-104-4-1980",
-        "variantId": "v-SUSI-016-104-4-1980-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1980; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
-      }
-    ],
-    "description": "إبدال الهمزة واواً"
-  },
-  {
-    "id": "v-SUSI-016-104-8-1981-performance",
-    "surah": 16,
-    "ayah": 104,
-    "startToken": 8,
-    "endToken": 9,
-    "operation": "REPLACE",
-    "hafsText": "يَهْدِيهِمُ ٱللَّهُ",
-    "variantText": "يَهْدِيهِمُ ٱللَّهُ",
-    "differenceType": "OTHER",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-016-104-8-1981",
-    "locusType": "performance_variant",
-    "performanceNote": "كسر الميم",
-    "sources": [
-      {
-        "id": "s-SUSI-016-104-8-1981",
-        "variantId": "v-SUSI-016-104-8-1981-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1981; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يَهْدِيهِمُ اللَّهُ → يَهْدِيهِمِ اللَّهُ | كسر الميم"
-      }
-    ],
-    "description": "كسر الميم"
-  },
-  {
-    "id": "v-SUSI-016-105-6-1982-performance",
-    "surah": 16,
-    "ayah": 105,
-    "startToken": 6,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "يُؤْمِنُونَ",
-    "variantText": "يُؤْمِنُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-016-105-6-1982",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة واواً",
-    "sources": [
-      {
-        "id": "s-SUSI-016-105-6-1982",
-        "variantId": "v-SUSI-016-105-6-1982-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1982; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
-      }
-    ],
-    "description": "إبدال الهمزة واواً"
   }
 ]

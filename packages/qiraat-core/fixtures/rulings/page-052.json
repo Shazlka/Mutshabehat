@@ -700,7 +700,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْمُرُونَ → يَامُرُونَ | إبدال الهمزة ألفاً | user-supplied JSON row 130; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p052-016-1",
@@ -1041,6 +1044,10 @@
         "action": "فتح الياء وصلاً"
       },
       {
+        "authorityId": "Q03",
+        "action": "فتح الياء وصلاً"
+      },
+      {
         "authorityId": "Q04",
         "action": "فتح الياء وصلاً"
       },
@@ -1061,6 +1068,11 @@
       },
       {
         "readingId": "Q01-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
         "action": "فتح الياء وصلاً",
         "isDefault": true
       },
@@ -1093,7 +1105,10 @@
     "hasAlternate": false,
     "text": "وإسكانها وصلاً للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَجْهِيَ → وَجْهِي | إسكان الياء | user-supplied JSON row 127; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p052-024-1",

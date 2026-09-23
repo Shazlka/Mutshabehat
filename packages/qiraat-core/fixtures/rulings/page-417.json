@@ -678,7 +678,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أَئِمَّةً → أَيِمَّةً | تسهيل الهمزة الثانية | user-supplied JSON row 3310; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p417-HAMZATAN_KALIMATAYN-الماء_الي-5",
@@ -781,7 +784,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمَاءِ إِلَى → الْمَاءِ إِلَى | تسهيل الهمزة الثانية | user-supplied JSON row 3311; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-SUSI-032-21-7-3306-IDGHAM_KABIR",
