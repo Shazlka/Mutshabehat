@@ -27,7 +27,7 @@ import { SAMPLE_MUTSHABEHAT_LINK_SOURCE } from '../../../../packages/mutshabehat
 import { getQiraatVariantsByAyahKey } from '../../../../packages/qiraat-core/qiraatAdapter'
 import { defaultQiraatRepository, variantsForToken } from '../../../../packages/qiraat-core/repository'
 import { attributionLabelsAr, readingsNotIn } from '../../../../packages/qiraat-core/attribution'
-import { getReading, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
+import { getReading, getReadingOrNull, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
 import { getNarrator, narratorsOfReader } from '../../../../packages/qiraat-core/narrators'
 import { readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
@@ -2532,7 +2532,7 @@ export default function Mushaf1441Viewer({
               : ` — قراءات مختلفة: ${attributionLabelsAr(
                   Array.from(new Set(
                     (effectiveFilter.kind === 'reader'
-                      ? qiraatMarker.variants.flatMap((variant) => variant.readingIds).filter((id) => getReading(id).readerId === effectiveFilter.readerId)
+                      ? qiraatMarker.variants.flatMap((variant) => variant.readingIds).filter((id) => getReadingOrNull(id)?.readerId === effectiveFilter.readerId)
                       : effectiveFilter.kind === 'reading'
                         ? qiraatMarker.variants.flatMap((variant) => variant.readingIds).filter((id) => id === effectiveFilter.readingId)
                         : qiraatMarker.variants.flatMap((variant) => variant.readingIds)
@@ -3631,7 +3631,8 @@ export default function Mushaf1441Viewer({
                 {qiraatVariantsForSelectedAyah.map((variant) => {
                   const readerGroups = new Map<string, string[]>()
                   for (const readingId of variant.readingIds) {
-                    const reading = getReading(readingId)
+                    const reading = getReadingOrNull(readingId)
+                    if (!reading) continue
                     const reader = getReader(reading.readerId)
                     const narrator = getNarrator(reading.narratorId)
                     readerGroups.set(reader.nameAr, [...(readerGroups.get(reader.nameAr) ?? []), narrator.nameAr])
@@ -3767,11 +3768,12 @@ export default function Mushaf1441Viewer({
   // Labeled "الإمام {short name}" / "الراوي {name}" — narrator names are never shortened further
   // (the two "الدوري" narrators are only disambiguated by their full name).
   function readerPillsForReadingIds(readingIds: ReadingId[]): { key: string; name: string; color: string }[] {
-    const readerIds = Array.from(new Set(readingIds.map((id) => getReading(id).readerId)))
+    const knownReadingIds = readingIds.filter((id) => getReadingOrNull(id) !== null)
+    const readerIds = Array.from(new Set(knownReadingIds.map((id) => getReading(id).readerId)))
     const pills: { key: string; name: string; color: string }[] = []
     for (const readerId of readerIds) {
       const totalNarrators = narratorsOfReader(readerId).length
-      const presentForReader = readingIds.filter((id) => getReading(id).readerId === readerId)
+      const presentForReader = knownReadingIds.filter((id) => getReading(id).readerId === readerId)
       if (presentForReader.length >= totalNarrators) {
         pills.push({ key: readerId, name: `الإمام ${getReader(readerId).nameArShort}`, color: readerColor(readerId) })
       } else {
@@ -3799,10 +3801,15 @@ export default function Mushaf1441Viewer({
   /** One authority (reader OR narrator, whichever level the source used) as a coloured pill. */
   function renderAuthorityPill(authorityId: string, key: string) {
     const isNarrator = authorityId.includes('-')
-    const color = isNarrator ? narratorColor(authorityId as ReadingId) : readerColor(authorityId as never)
-    const name = isNarrator
-      ? `الراوي ${getNarrator(authorityId as ReadingId).nameAr}`
-      : `الإمام ${getReader(authorityId as never).nameArShort}`
+    const reading = isNarrator ? getReadingOrNull(authorityId) : null
+    const narrator = reading ? getNarrator(reading.narratorId) : null
+    const reader = isNarrator ? null : QIRAAT_READINGS.find((item) => item.readerId === authorityId)
+    const color = reading ? narratorColor(authorityId as ReadingId) : reader ? readerColor(reader.readerId) : '#8a7c5c'
+    const name = narrator
+      ? `الراوي ${narrator.nameAr}`
+      : reader
+        ? `الإمام ${getReader(reader.readerId).nameArShort}`
+        : 'نسبة غير معروفة'
     return (
       <span
         key={key}
@@ -3853,14 +3860,14 @@ export default function Mushaf1441Viewer({
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {readerPillsForReadingIds(
                   (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
-                    ? variant.readingIds.filter((id) => getReading(id).readerId === qiraatFilter.readerId)
+                    ? variant.readingIds.filter((id) => getReadingOrNull(id)?.readerId === qiraatFilter.readerId)
                     : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
                       ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
                       : qiraatMode === 'riwayah'
                         ? variant.readingIds.filter((id) => id === qiraatSelectedReadingId)
                         : variant.readingIds).length > 0
                     ? (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
-                        ? variant.readingIds.filter((id) => getReading(id).readerId === qiraatFilter.readerId)
+                        ? variant.readingIds.filter((id) => getReadingOrNull(id)?.readerId === qiraatFilter.readerId)
                         : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
                           ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
                           : qiraatMode === 'riwayah'
@@ -4253,7 +4260,7 @@ export default function Mushaf1441Viewer({
               // when this locus has one, otherwise the variant's own difference-type category.
               const rulingLabel = variant.performanceNote ?? DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]
               const displayedReadingIds = effectiveFilter.kind === 'reader'
-                ? variant.readingIds.filter((id) => getReading(id).readerId === effectiveFilter.readerId)
+                ? variant.readingIds.filter((id) => getReadingOrNull(id)?.readerId === effectiveFilter.readerId)
                 : effectiveFilter.kind === 'reading'
                   ? variant.readingIds.filter((id) => id === effectiveFilter.readingId)
                   : variant.readingIds

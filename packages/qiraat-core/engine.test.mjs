@@ -3,7 +3,7 @@ import test from 'node:test'
 
 import { QIRAAT_READERS } from './readers.ts'
 import { QIRAAT_NARRATORS, narratorsOfReader } from './narrators.ts'
-import { QIRAAT_READINGS, getReading } from './readings.ts'
+import { QIRAAT_READINGS, getReading, getReadingOrNull } from './readings.ts'
 import { readerColor, narratorColor, readerCssVar, narratorCssVar } from './colors.ts'
 import { computeAttribution, gradientCss, readingsNotIn } from './attribution.ts'
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
@@ -51,6 +51,18 @@ test('baseline is Hafs (Q05-R02) and is never duplicated', () => {
   assert.equal(BASE_READING, 'Q05-R02')
   assert.equal(getReading(BASE_READING).displayNameAr, 'حفص عن عاصم الكوفي')
   assert.equal(QIRAAT_READINGS.filter((r) => r.isBaseline).length, 1)
+})
+
+test('source-backed unknown reading IDs never crash marker resolution', () => {
+  assert.equal(getReadingOrNull('Q99-R99'), null)
+  const unknownVariant = {
+    ...findVariant('syn-ten-reader-segment'),
+    id: 'syn-unknown-reading',
+    readingIds: ['Q99-R99'],
+  }
+  assert.doesNotThrow(() => comparisonMarkerForWord([unknownVariant], 999, 1, 7, { kind: 'all' }))
+  assert.equal(comparisonMarkerForWord([unknownVariant], 999, 1, 7, { kind: 'all' })?.unresolved, true)
+  assert.equal(comparisonMarkerForWord([unknownVariant], 999, 1, 7, { kind: 'reader', readerId: 'Q01' }), null)
 })
 
 test('2:40 and 2:41 ياءات زوائد: Yaqub displays the added ya for both narrators, Hafs keeps the mushaf form', () => {
@@ -553,7 +565,7 @@ test('every group symbol expands to exactly the reading count its source prints'
 test('page 303 imports only token-backed, explicitly attributable source variants', async () => {
   const repo = new FixtureQiraatRepository()
   const variants = await repo.getVariantsForPage(303, { includeUnpublished: true })
-  assert.equal(variants.length, 11)
+  assert.equal(variants.length, 16)
   assert.deepEqual(
     variants.map(({ surah, ayah, variantText }) => `${surah}:${ayah}:${variantText}`),
     [
@@ -568,6 +580,11 @@ test('page 303 imports only token-backed, explicitly attributable source variant
       '18:88:جَزَاءُ الْحُسْنَى',
       '18:96:قَالَ ائْتُونِي',
       '18:97:فَمَا اسْطَّاعُوا',
+      '18:85:فَأَتْبَعَ',
+      '18:89:أَتْبَعَ',
+      '18:92:أَتْبَعَ',
+      '18:94:يَأْجُوجَ وَمَأْجُوجَ',
+      '18:96:ٱلصَّدَفَيْنِ',
     ],
   )
   assert.equal((await repo.getVariantsForPage(303)).length, 0, 'REVIEWED records remain hidden from the ordinary view')

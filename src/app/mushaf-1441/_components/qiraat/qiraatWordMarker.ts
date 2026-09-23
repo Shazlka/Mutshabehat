@@ -7,7 +7,7 @@ import {
 } from '../../../../../packages/qiraat-core/engine'
 import { computeAttribution, gradientCss } from '../../../../../packages/qiraat-core/attribution'
 import { narratorColor } from '../../../../../packages/qiraat-core/colors'
-import { getReading } from '../../../../../packages/qiraat-core/readings'
+import { getReadingOrNull } from '../../../../../packages/qiraat-core/readings'
 import type { QiraatVariant, ReadingId } from '../../../../../packages/qiraat-core/types'
 import type { QiraatComparisonFilter } from './types'
 
@@ -58,7 +58,7 @@ function isPerformanceOnlyVariant(variant: QiraatVariant): boolean {
 
 export function matchesFilter(variant: QiraatVariant, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
-  if (filter.kind === 'reader') return variant.readingIds.some((id) => getReading(id).readerId === filter.readerId)
+  if (filter.kind === 'reader') return variant.readingIds.some((id) => getReadingOrNull(id)?.readerId === filter.readerId)
   return variant.readingIds.includes(filter.readingId)
 }
 
@@ -76,6 +76,7 @@ export function comparisonMarkerForWord(
   if (filtered.length === 0) return null
 
   const allReadingIds = Array.from(new Set(filtered.flatMap((variant) => variant.readingIds)))
+    .filter((id) => getReadingOrNull(id) !== null)
   if (allReadingIds.length === 0) {
     // needs_manual_review placeholder(s) with no confident attribution yet (Part 29) — never guess
     // a reader/narrator color for this; computeAttribution requires at least one reading id.
@@ -89,7 +90,7 @@ export function comparisonMarkerForWord(
   // This ensures selecting a reader (e.g. Nafi) or narrator (e.g. Warsh) never draws other readers'
   // colors or a multi-reader gradient.
   const readingIds = filter.kind === 'reader'
-    ? allReadingIds.filter((id) => getReading(id).readerId === filter.readerId)
+    ? allReadingIds.filter((id) => getReadingOrNull(id)?.readerId === filter.readerId)
     : filter.kind === 'reading'
       ? allReadingIds.filter((id) => id === filter.readingId)
       : allReadingIds
@@ -184,7 +185,7 @@ export function rulingMarkerForWord(
       if (!ruling.hasAlternate) return false
       if (filter.kind === 'all') return true
       if (filter.kind === 'reader') {
-        return ruling.readings.some((r) => getReading(r.readingId).readerId === filter.readerId && !r.isDefault)
+        return ruling.readings.some((r) => getReadingOrNull(r.readingId)?.readerId === filter.readerId && !r.isDefault)
           || ruling.attribution.some((a) => a.authorityId === filter.readerId && a.condition?.includes('بخلف'))
       }
       return ruling.readings.some((r) => r.readingId === filter.readingId && !r.isDefault)
@@ -223,7 +224,7 @@ export function rulingTouchesToken(
 export function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
   if (filter.kind === 'reader') {
-    return ruling.readings.some((r) => getReading(r.readingId).readerId === filter.readerId)
+    return ruling.readings.some((r) => getReadingOrNull(r.readingId)?.readerId === filter.readerId)
   }
   return ruling.readings.some((r) => r.readingId === filter.readingId)
 }

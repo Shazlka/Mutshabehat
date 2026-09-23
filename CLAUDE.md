@@ -38,6 +38,11 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-23 — Qiraat hover crash hardening
+- Added runtime-safe reading lookups for source-backed data, filtering unknown reading IDs before attribution, reader filtering, and hover/sidebar pill rendering. Unknown imported IDs now render as an unresolved/neutral record instead of crashing the Mushaf page.
+- Added regression coverage for malformed source reading IDs and updated the page-303 fixture checksum assertion for the current 16 verified token-backed variants.
+- Verification: `NODE_OPTIONS=--max-old-space-size=4096 npm run typecheck` passed; `npm run test:qiraat` passed (41 engine tests plus corpus/frontend validation); targeted ESLint has only the existing Mushaf viewer baseline errors.
+
 ## 2026-09-23 — Qiraat code-review hardening
 - Removed the Mushaf's HTML injection sink for Qiraat/Hafs word display; QCF glyphs and alternate Arabic forms now render as escaped React text.
 - Prevented stale Qiraat editor catalog failures from being cached after transient network, 401, or 5xx responses, and ignored late responses after navigation.

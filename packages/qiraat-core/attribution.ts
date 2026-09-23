@@ -2,7 +2,7 @@
 import type { NarratorId, ReaderId, ReadingId } from './types'
 import { readerColor, narratorColor } from './colors'
 import { getNarrator } from './narrators'
-import { getReading } from './readings'
+import { getReading, getReadingOrNull } from './readings'
 import { QIRAAT_READERS } from './readers'
 import { narratorsOfReader } from './narrators'
 
@@ -21,7 +21,8 @@ export type Attribution =
  *   (never one underline per reader — Part 10/11).
  */
 export function computeAttribution(readingIds: ReadingId[]): Attribution {
-  const readerIds = Array.from(new Set(readingIds.map((id) => getReading(id).readerId)))
+  const knownReadingIds = readingIds.filter((id) => getReadingOrNull(id) !== null)
+  const readerIds = Array.from(new Set(knownReadingIds.map((id) => getReading(id).readerId)))
 
   if (readerIds.length === 0) {
     throw new Error('computeAttribution requires at least one reading id')
@@ -29,12 +30,12 @@ export function computeAttribution(readingIds: ReadingId[]): Attribution {
 
   if (readerIds.length === 1) {
     const readerId = readerIds[0]
-    const narratorsPresent = readingIds.length
+    const narratorsPresent = knownReadingIds.length
     const totalNarratorsOfReader = narratorsOfReader(readerId).length
     if (narratorsPresent >= totalNarratorsOfReader) {
       return { kind: 'reader', readerId, color: readerColor(readerId) }
     }
-    const narratorId = readingIds[0] as NarratorId
+    const narratorId = knownReadingIds[0] as NarratorId
     return { kind: 'single-narrator', narratorId, readerId, color: narratorColor(narratorId) }
   }
 
@@ -59,7 +60,10 @@ export function gradientCss(segments: AttributionSegment[]): string {
 
 /** Accessible label list (Part 20 — never rely on color alone). */
 export function attributionLabelsAr(readingIds: ReadingId[]): string[] {
-  return readingIds.map((id) => getNarrator(getReading(id).narratorId).nameAr)
+  return readingIds.flatMap((id) => {
+    const reading = getReadingOrNull(id)
+    return reading ? [getNarrator(reading.narratorId).nameAr] : []
+  })
 }
 
 /** The 20 readings NOT covered by this variant — they still read the Hafs baseline text. */
