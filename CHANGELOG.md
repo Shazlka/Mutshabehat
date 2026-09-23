@@ -9,6 +9,12 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-23 — Give shared Qiraat words one solid glyph color
+- Multi-reader variants now color the word glyph with the named shared-reader olive token; single-reader words keep their reader color. The underline still shows each reader's palette segment. User annotation colors remain highest priority.
+- Added a shared-reader swatch to the Qiraat legend, with a lime adaptation for the dark Mushaf theme. Removed all clipped gradient paint from word glyphs; gradient rendering remains only on the individual-reader underline marker.
+- Added a `data-qiraat-multi-reader` marker and regression checks for the shared color token, theme adaptation, and browser output. Tests scope to multi-reader words so single-reader/performance annotations on a facing page are excluded; the Mushaf validator rejects clipped glyph paint and still enforces escaped React text.
+- Verification: typecheck, `npm run test:qiraat` (44 engine tests plus data/frontend validation), Mushaf page-word validator (604 pages, 83,665 tokens), and iPhone-sized Chromium/WebKit browser checks passed. All multi-reader glyphs on page 1 used the same solid color with nonempty text, QCF font, and no clipped text paint. Database migration: none.
+
 ## 2026-09-23 — Full-key Qiraat duplicate reconciliation
 - Re-audited visible variants using page + surah/ayah/word span + exact diacritized reading text + variant type + trimmed Uthmani text, description, and performance note. Reader sets are excluded from identity and unioned. Marked 16 duplicate rows `REJECTED` after merging their readings, authorities, evidence links, and notes into the preferred canonical rows (VERIFIED/PUBLISHED, then REVIEWED, then oldest, then ID). No rows were deleted or reassigned to another locus/order.
 - Kept 28 same-word groups (65 rows) with distinct descriptions or performance notes separate, including page 48 (رفع/نصب الراء), page 261 (three performance faces), and page 522 (three distinct faces). Restored the page-536 Warsh row previously misclassified by the narrower audit; its separate performance note remains distinct.

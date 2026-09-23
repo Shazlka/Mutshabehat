@@ -2,14 +2,15 @@ import { QIRAAT_READERS } from './readers'
 import { QIRAAT_NARRATORS } from './narrators'
 import type { NarratorId, ReaderId } from './types'
 
-// Color belongs exclusively to reader/narrator IDENTITY (Part 10/12) — never to difference type.
-// This is the single source of truth; `src/app/globals.css` mirrors these same hex values as
-// `--q0N-*` custom properties (see docs/qiraat/02-color-system.md) so nothing scatters raw hex
-// through components.
+// Reader/narrator identity colors and the shared-reader word token live here, never in difference
+// types or UI-local literals. `src/app/globals.css` mirrors identity hex values as `--q0N-*` vars.
 
 export const READER_COLOR: Readonly<Record<ReaderId, string>> = Object.fromEntries(
   QIRAAT_READERS.map((reader) => [reader.id, reader.color])
 ) as Record<ReaderId, string>
+
+/** Shared by multiple readers; kept outside the single-reader palette. */
+export const QIRAAT_MULTI_READER_COLOR = '#3F6212'
 
 export const NARRATOR_COLOR: Readonly<Record<NarratorId, string>> = Object.fromEntries(
   QIRAAT_NARRATORS.map((narrator) => [narrator.id, narrator.color])

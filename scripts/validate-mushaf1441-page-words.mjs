@@ -142,6 +142,10 @@ if (viewer.includes('dangerouslySetInnerHTML')) {
   fail('viewer must render Quran/variant text through escaped React text nodes')
 }
 
+for (const removedPaint of ['backgroundImage:', 'WebkitBackgroundClip:', 'WebkitTextFillColor:']) {
+  if (viewer.includes(removedPaint)) fail(`Mushaf word glyphs must not use clipped text paint (${removedPaint})`)
+}
+
 for (const required of ['MUSHAF_PAGE_WIDTH', 'MUSHAF_PAGE_HEIGHT', 'MUSHAF_SPREAD_PAGE_WIDTH']) {
   if (!viewer.includes(required)) {
     fail(`viewer is missing page aspect sizing: ${required}`)

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { QIRAAT_READERS } from '../../../../../packages/qiraat-core/readers'
 import { narratorsOfReader } from '../../../../../packages/qiraat-core/narrators'
-import { readerColor, narratorColor } from '../../../../../packages/qiraat-core/colors'
+import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor } from '../../../../../packages/qiraat-core/colors'
 
 // Part 14: the ten readers, each an expandable accordion of its two narrators. Color is shown
 // as a swatch AND the name is always printed — never color alone (Part 20 accessibility).
@@ -12,6 +12,10 @@ export default function QiraatLegend() {
 
   return (
     <div className="space-y-1.5">
+      <div className="flex items-center gap-2 rounded-md border border-[#d7c7a7] bg-[#fffaf0] px-3 py-2 text-sm font-bold text-[#171717]">
+        <span aria-hidden className="inline-block size-3 rounded-full" style={{ backgroundColor: QIRAAT_MULTI_READER_COLOR }} />
+        قراءات مشتركة بين عدة قرّاء
+      </div>
       {QIRAAT_READERS.map((reader) => {
         const isOpen = openReaderId === reader.id
         const narrators = narratorsOfReader(reader.id)
