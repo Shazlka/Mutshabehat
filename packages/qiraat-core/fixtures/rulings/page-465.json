@@ -647,7 +647,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تَرَى → تَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+    ]
   },
   {
     "id": "r-p465-IMALAH_TAQLIL-جاءتك-5",
@@ -763,7 +766,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف"
+    ]
   },
   {
     "id": "r-p465-YAAT_IDAFA-تامروني_اعبد-7",
@@ -925,5 +931,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-039-59-2-3696-IDGHAM_KABIR",
+    "pageNumber": 465,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 59,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 59,
+    "baseText": "قَدْ جَآءَتْكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَتْكَ → قَد جَّاءَتْكَ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-039-60-3-3698-IMALAH_TAQLIL",
+    "pageNumber": 465,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 60,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 60,
+    "baseText": "تَرَى ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في التاء مع الإمالة وقفاً، ووصلاً وجهان: إمالة الراء والفتح"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في التاء مع الإمالة وقفاً، ووصلاً وجهان: إمالة الراء والفتح",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَرَى الَّذِينَ → تَرَى الَّذِينَ | إدغام التاء في التاء مع الإمالة وقفاً، ووصلاً وجهان: إمالة الراء والفتح"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-039-62-2-3700-IDGHAM_KABIR",
+    "pageNumber": 465,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 62,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 62,
+    "baseText": "خَـٰلِقُ كُلِّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "خَالِقُ كُلِّ → خَالِق كُّلِّ | إدغام القاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

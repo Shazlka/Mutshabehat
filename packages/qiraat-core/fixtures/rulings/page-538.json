@@ -224,5 +224,40 @@
         "verificationNotes": "تطبيق توجيه المستخدم: bare خلف = خلف عن حمزة؛ خلف العاشر لا يضاف إلا إذا صُرّح باسمه."
       }
     ]
+  },
+  {
+    "id": "r-SUSI-057-4-13-4218-IDGHAM_KABIR",
+    "pageNumber": 538,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 4,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 4,
+    "baseText": "يَعْلَمُ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

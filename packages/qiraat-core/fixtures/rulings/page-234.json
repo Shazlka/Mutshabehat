@@ -462,7 +462,10 @@
     "hasAlternate": true,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل وقفاً"
+    ]
   },
   {
     "id": "r-p234-012-1",
@@ -589,7 +592,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "ذِكْرَىٰ → ذِكْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p234-014-1",
@@ -662,7 +668,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p234-015-1",
@@ -693,7 +702,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فَاخْتُلِفَ فِيهِ → فَاخْتُلِف فِّيهِ | إدغام الفاء في الفاء"
+    ]
   },
   {
     "id": "r-p234-016-1",
@@ -896,5 +908,40 @@
     ],
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-011-114-3-1563-IMALAH_TAQLIL",
+    "pageNumber": 234,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 114,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 114,
+    "baseText": "طَرَفَىِ ٱلنَّهَارِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الهاء والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الهاء والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "طَرَفَيِ النَّهَارِ → طَرَفَيِ النَّهَارِ | إمالة فتحة الهاء والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

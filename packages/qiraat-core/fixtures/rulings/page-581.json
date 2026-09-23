@@ -243,5 +243,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-077-20-1-4409-IDGHAM_KABIR",
+    "pageNumber": 581,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 77,
+    "ayah": 20,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 20,
+    "baseText": "أَلَمْ نَخْلُقكُّم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف كامل أو ناقص للجميع"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف كامل أو ناقص للجميع",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَلَمْ نَخْلُقكُّم → أَلَمْ نَّخْلُقكُّم | إدغام القاف في الكاف كامل أو ناقص للجميع"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

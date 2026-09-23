@@ -151,5 +151,37 @@
         "url": "https://quranpedia.net/qiraat/an-nahl/36"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-016-37-8-1904-performance",
+    "surah": 16,
+    "ayah": 37,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَهْدِى",
+    "variantText": "يَهْدِى",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-37-8-1904",
+    "locusType": "performance_variant",
+    "performanceNote": "ضم الياء وفتح الدال وألف بعدها",
+    "sources": [
+      {
+        "id": "s-SUSI-016-37-8-1904",
+        "variantId": "v-SUSI-016-37-8-1904-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1904; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَهْدِي → يُهْدَى | ضم الياء وفتح الدال وألف بعدها"
+      }
+    ],
+    "description": "ضم الياء وفتح الدال وألف بعدها"
   }
 ]

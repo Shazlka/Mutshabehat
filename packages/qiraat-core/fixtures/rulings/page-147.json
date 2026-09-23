@@ -396,7 +396,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "افْتَرَىٰ → افْتَرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p147-008-1",
@@ -559,7 +562,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَظْلَمُ مِمَّنِ → أَظْلَم مِّمَّنِ | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p147-011-1",
@@ -983,5 +989,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-006-146-16-0857-IDGHAM_KABIR",
+    "pageNumber": 147,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 6,
+    "ayah": 146,
+    "startToken": 16,
+    "endToken": 17,
+    "endAyah": 146,
+    "baseText": "حَمَلَتْ ظُهُورُهُمَآ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الظاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الظاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "حَمَلَتْ ظُهُورُهُمَا → حَمَلَت ظُّهُورُهُمَا | إدغام التاء في الظاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

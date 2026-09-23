@@ -32,5 +32,161 @@
     "description": "بالجمع",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-017-68-3-2055",
+    "surah": 17,
+    "ayah": 68,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَخْسِفَ",
+    "variantText": "نَخْسِفَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-68-3-2055",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-017-68-3-2055",
+        "variantId": "v-SUSI-017-68-3-2055",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2055; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَخْسِفَ → نَخْسِفَ | بالنون بدل الياء"
+      }
+    ],
+    "description": "بالنون بدل الياء"
+  },
+  {
+    "id": "v-SUSI-017-68-8-2056",
+    "surah": 17,
+    "ayah": 68,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يُرْسِلَ",
+    "variantText": "نُرْسِلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-68-8-2056",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-017-68-8-2056",
+        "variantId": "v-SUSI-017-68-8-2056",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2056; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُرْسِلَ → نُرْسِلَ | بالنون بدل الياء"
+      }
+    ],
+    "description": "بالنون بدل الياء"
+  },
+  {
+    "id": "v-SUSI-017-69-4-2057",
+    "surah": 17,
+    "ayah": 69,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "يُعِيدَكُمْ",
+    "variantText": "نُعِيدَكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-69-4-2057",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-017-69-4-2057",
+        "variantId": "v-SUSI-017-69-4-2057",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2057; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُعِيدَكُمْ → نُعِيدَكُمْ | بالنون بدل الياء"
+      }
+    ],
+    "description": "بالنون بدل الياء"
+  },
+  {
+    "id": "v-SUSI-017-69-8-2059",
+    "surah": 17,
+    "ayah": 69,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "فَيُرْسِلَ",
+    "variantText": "فَنُرْسِلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-69-8-2059",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-017-69-8-2059",
+        "variantId": "v-SUSI-017-69-8-2059",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2059; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَيُرْسِلَ → فَنُرْسِلَ | بالنون بدل الياء"
+      }
+    ],
+    "description": "بالنون بدل الياء"
+  },
+  {
+    "id": "v-SUSI-017-72-6-2062-performance",
+    "surah": 17,
+    "ayah": 72,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-72-6-2062",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الهاء",
+    "sources": [
+      {
+        "id": "s-SUSI-017-72-6-2062",
+        "variantId": "v-SUSI-017-72-6-2062-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2062; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
+      }
+    ],
+    "description": "إسكان الهاء"
   }
 ]

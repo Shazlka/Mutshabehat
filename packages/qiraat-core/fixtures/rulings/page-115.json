@@ -825,5 +825,75 @@
     "text": "﴿وَٱخْشَوْنِ﴾: – إثبات الياء وصلاً: أبو عمرو، أبو جعفر. – إثبات الياء في الحالين: يعقوب",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-005-43-11-0574-IDGHAM_KABIR",
+    "pageNumber": 115,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 43,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 43,
+    "baseText": "بَعْدِ ذَٰلِكَ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الذال"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الذال",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بَعْدِ ذَٰلِكَ → بَعْد ذَّٰلِكَ | إدغام الدال في الذال"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-005-44-7-0577-IKHFA",
+    "pageNumber": 115,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 44,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 44,
+    "baseText": "يَحْكُمُ بِهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَحْكُمُ بِهَا → يَحْكُم بِهَا | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

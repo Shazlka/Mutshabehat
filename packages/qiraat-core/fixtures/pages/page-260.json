@@ -77,6 +77,15 @@
         "sourceType": "other",
         "sourceReference": "استخراج المستخدم، 2026-09-20",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-014-42-2-1828",
+        "variantId": "v-L260-تحسبن-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1828; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَحْسَبَنَّ → تَحْسِبَنَّ | كسر السين"
       }
     ],
     "description": "بكسر السين",
@@ -201,5 +210,99 @@
     "description": "بضم الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-014-34-8-1822",
+    "surah": 14,
+    "ayah": 34,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نِعْمَتَ",
+    "variantText": "نِعْمَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-014-34-8-1822",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-014-34-8-1822",
+        "variantId": "v-SUSI-014-34-8-1822",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1822; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نِعْمَتَ → نِعْمَه | بالهاء وقفاً"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-014-37-2-1823-performance",
+    "surah": 14,
+    "ayah": 37,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ",
+    "variantText": "إِنِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-014-37-2-1823",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-014-37-2-1823",
+        "variantId": "v-SUSI-014-37-2-1823-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1823; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِنِّي → إِنِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-014-40-9-1825",
+    "surah": 14,
+    "ayah": 40,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "دُعَآءِ",
+    "variantText": "دُعَائِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-014-40-9-1825",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-014-40-9-1825",
+        "variantId": "v-SUSI-014-40-9-1825",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1825; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "دُعَاءِ → دُعَائِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
   }
 ]

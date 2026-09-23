@@ -397,5 +397,131 @@
         "text": "وَفِي لَنُحَرِّقَنَّهُ افْتَحْ وَخَفِّفْ ضُمَّ رَاءً"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-020-93-1-2430",
+    "surah": 20,
+    "ayah": 93,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَلَّا تَتَّبِعَنِ ۖ",
+    "variantText": "أَلَّا تَتَّبِعَنِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-020-93-1-2430",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-020-93-1-2430",
+        "variantId": "v-SUSI-020-93-1-2430",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2430; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَلَّا تَتَّبِعَنِ → أَلَّا تَتَّبِعَنِي | بالياء وصلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-020-94-4-2431-performance",
+    "surah": 20,
+    "ayah": 94,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَأْخُذْ",
+    "variantText": "تَأْخُذْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-020-94-4-2431",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-020-94-4-2431",
+        "variantId": "v-SUSI-020-94-4-2431-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2431; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْخُذْ → تَاخُذْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-020-94-7-2432-performance",
+    "surah": 20,
+    "ayah": 94,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "بِرَأْسِىٓ ۖ",
+    "variantText": "بِرَأْسِىٓ ۖ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-020-94-7-2432",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً ثم فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-020-94-7-2432",
+        "variantId": "v-SUSI-020-94-7-2432-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2432; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِرَأْسِي → بِرَاسِيَ | إبدال الهمزة ألفاً ثم فتح الياء وصلاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً ثم فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-020-96-12-2433",
+    "surah": 20,
+    "ayah": 96,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "فَنَبَذْتُهَا",
+    "variantText": "فَنَبَتُّهَا",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-020-96-12-2433",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-020-96-12-2433",
+        "variantId": "v-SUSI-020-96-12-2433",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2433; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَنَبَذْتُهَا → فَنَبَتُّهَا | إدغام الذال في التاء"
+      }
+    ],
+    "description": "إدغام الذال في التاء"
   }
 ]

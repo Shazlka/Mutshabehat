@@ -356,5 +356,40 @@
         "verificationNotes": "إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري."
       }
     ]
+  },
+  {
+    "id": "r-SUSI-060-5-7-4271-IDGHAM_KABIR",
+    "pageNumber": 549,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 5,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 5,
+    "baseText": "وَٱغْفِرْ لَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَاغْفِرْ لَنَا → وَاغْفِر لَّنَا | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -33,6 +33,15 @@
         "sourceReference": "صفحة المصحف 182 · صفحة المصدر 187",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِيهِمَا الْعُدْوَةِ اكْسِرْ حَقًّا الضَّمَّ وَاعْدِلَا"
+      },
+      {
+        "id": "s-SUSI-008-42-3-1158",
+        "variantId": "v-L182-بالعدوه-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1158; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِالْعُدْوَةِ (معاً) → بِالْعِدْوَةِ | كسر العين في الموضعين"
       }
     ],
     "description": "بكسر العين",
@@ -78,6 +87,15 @@
         "sourceReference": "صفحة المصحف 182 · صفحة المصدر 187",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِيهِمَا الْعُدْوَةِ اكْسِرْ حَقًّا الضَّمَّ وَاعْدِلَا"
+      },
+      {
+        "id": "s-SUSI-008-42-6-1158",
+        "variantId": "v-L182-بالعدوه-2-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1158; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِالْعُدْوَةِ (معاً) → بِالْعِدْوَةِ | كسر العين في الموضعين"
       }
     ],
     "description": "بكسر العين",

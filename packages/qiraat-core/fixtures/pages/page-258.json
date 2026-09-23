@@ -105,5 +105,36 @@
     "description": "بكسر الياء المشددة ﴿بِمُصْرِخِيِّ﴾",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-014-22-37-1804",
+    "surah": 14,
+    "ayah": 22,
+    "startToken": 37,
+    "endToken": 37,
+    "operation": "REPLACE",
+    "hafsText": "أَشْرَكْتُمُونِ",
+    "variantText": "أَشْرَكْتُمُونِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-014-22-37-1804",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-014-22-37-1804",
+        "variantId": "v-SUSI-014-22-37-1804",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1804; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَشْرَكْتُمُونِ → أَشْرَكْتُمُونِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
   }
 ]

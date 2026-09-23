@@ -214,6 +214,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-isra/35",
         "sourceText": "بِالْقُسْطَاسِ",
         "verificationNotes": "مرجع مستقل يثبت الوجه."
+      },
+      {
+        "id": "s-SUSI-017-35-6-2026",
+        "variantId": "v-AUDIT-P285-17-35-6-FARSH",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2026; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِالْقِسْطَاسِ → بِالْقُسْطَاسِ | ضم القاف"
       }
     ],
     "description": "بِالْقُسْطَاسِ",
@@ -337,5 +346,37 @@
         "url": "https://quranpedia.net/qiraat/al-isra/38"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-017-35-11-2027-performance",
+    "surah": 17,
+    "ayah": 35,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "تَأْوِيلًۭا",
+    "variantText": "تَأْوِيلًۭا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-35-11-2027",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-017-35-11-2027",
+        "variantId": "v-SUSI-017-35-11-2027-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2027; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْوِيلًا → تَاوِيلًا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

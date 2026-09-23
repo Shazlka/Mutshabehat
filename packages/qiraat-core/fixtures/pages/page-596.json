@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "id": "v-SUSI-093-9-3-4541-performance",
+    "surah": 93,
+    "ayah": 9,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَقْهَرْ",
+    "variantText": "فَلَا تَقْهَرْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-093-9-3-4541",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-093-9-3-4541",
+        "variantId": "v-SUSI-093-9-3-4541-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4541; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَلَا تَقْهَرْ → فَلَا تَقْهَرْ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-093-10-3-4542-performance",
+    "surah": 93,
+    "ayah": 10,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَنْهَرْ",
+    "variantText": "فَلَا تَنْهَرْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-093-10-3-4542",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-093-10-3-4542",
+        "variantId": "v-SUSI-093-10-3-4542-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4542; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَلَا تَنْهَرْ → فَلَا تَنْهَرْ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-094-2-3-4543-performance",
+    "surah": 94,
+    "ayah": 2,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وِزْرَكَ",
+    "variantText": "وِزْرَكَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-094-2-3-4543",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-094-2-3-4543",
+        "variantId": "v-SUSI-094-2-3-4543-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4543; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وِزْرَكَ → وِزْرَكَ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  }
+]

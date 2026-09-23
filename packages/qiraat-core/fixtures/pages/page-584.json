@@ -90,5 +90,69 @@
     "description": "بتنوين ﴿مُنذِرٌ﴾ ونصب ﴿مَن﴾ مفعولاً لأبي جعفر",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-079-27-6-4429-performance",
+    "surah": 79,
+    "ayah": 27,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "بَنَىٰهَا",
+    "variantText": "بَنَىٰهَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-079-27-6-4429",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الألف لوجود هاء التأنيث",
+    "sources": [
+      {
+        "id": "s-SUSI-079-27-6-4429",
+        "variantId": "v-SUSI-079-27-6-4429-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4429; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بَنَاهَا → بَنَاهَا | فتح الألف لوجود هاء التأنيث"
+      }
+    ],
+    "description": "فتح الألف لوجود هاء التأنيث"
+  },
+  {
+    "id": "v-SUSI-079-44-3-4438-performance",
+    "surah": 79,
+    "ayah": 44,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مُنتَهَىٰهَآ",
+    "variantText": "مُنتَهَىٰهَآ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-079-44-3-4438",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الألف لاتصالها بهاء التأنيث",
+    "sources": [
+      {
+        "id": "s-SUSI-079-44-3-4438",
+        "variantId": "v-SUSI-079-44-3-4438-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4438; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُنتَهَاهَا → مُنتَهَاهَا | فتح الألف لاتصالها بهاء التأنيث"
+      }
+    ],
+    "description": "فتح الألف لاتصالها بهاء التأنيث"
   }
 ]

@@ -35,6 +35,15 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-034-52-6-3458",
+        "variantId": "v-L434-s34a52b0-w1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3458; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "التَّنَاوُشُ → التَّنَاؤُشُ | همزة مضمومة بدل الواو مع المد المتصل"
       }
     ],
     "description": "بالهمز مضموماً بعد الألف",
@@ -148,10 +157,114 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P434-R02403",
         "verificationNotes": "وجه صريح، anchor حقيقي.",
         "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر."
+      },
+      {
+        "id": "s-SUSI-035-2-17-3461",
+        "variantId": "v-D434-وهو",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3461; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-034-50-13-3456-performance",
+    "surah": 34,
+    "ayah": 50,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ ۚ",
+    "variantText": "رَبِّىٓ ۚ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-034-50-13-3456",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-034-50-13-3456",
+        "variantId": "v-SUSI-034-50-13-3456-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3456; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَبِّي → رَبِّيَ | فتح الياء"
+      }
+    ],
+    "description": "فتح الياء"
+  },
+  {
+    "id": "v-SUSI-035-3-4-3462",
+    "surah": 35,
+    "ayah": 3,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "نِعْمَتَ",
+    "variantText": "نِعْمَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-3-4-3462",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-035-3-4-3462",
+        "variantId": "v-SUSI-035-3-4-3462",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3462; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نِعْمَتَ → نِعْمَه | بالهاء وقفاً"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-035-3-21-3464-performance",
+    "surah": 35,
+    "ayah": 3,
+    "startToken": 21,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "تُؤْفَكُونَ",
+    "variantText": "تُؤْفَكُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-3-21-3464",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-035-3-21-3464",
+        "variantId": "v-SUSI-035-3-21-3464-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3464; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تُؤْفَكُونَ → تُوفَكُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

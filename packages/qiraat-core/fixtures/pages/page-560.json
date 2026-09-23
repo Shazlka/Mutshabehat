@@ -324,5 +324,100 @@
     "description": "بفتح الجيم والراء وهمزة مكسورة وحذف الياء",
     "wajhIndex": 3,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-066-4-14-4320",
+    "surah": 66,
+    "ayah": 4,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "مَوْلَىٰهُ",
+    "variantText": "مَوْلَىٰهُ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-066-4-14-4320",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-066-4-14-4320",
+        "variantId": "v-SUSI-066-4-14-4320",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4320; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَوْلَاهُ → مَوْلَىٰهُ | تقليل فتحة اللام والألف"
+      }
+    ],
+    "description": "تقليل فتحة اللام والألف"
+  },
+  {
+    "id": "v-SUSI-066-5-11-4322-performance",
+    "surah": 66,
+    "ayah": 5,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مُّؤْمِنَـٰتٍۢ",
+    "variantText": "مُّؤْمِنَـٰتٍۢ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-066-5-11-4322",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-066-5-11-4322",
+        "variantId": "v-SUSI-066-5-11-4322-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4322; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُّؤْمِنَاتٍ → مُّومِنَاتٍ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-066-6-22-4324-performance",
+    "surah": 66,
+    "ayah": 6,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمَرُونَ",
+    "variantText": "يُؤْمَرُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-066-6-22-4324",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-066-6-22-4324",
+        "variantId": "v-SUSI-066-6-22-4324-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4324; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمَرُونَ → يُومَرُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

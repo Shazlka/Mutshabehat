@@ -187,5 +187,36 @@
         "text": "يَعْمَلُوا خَاطِبْ طَرَى"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-008-38-14-1156",
+    "surah": 8,
+    "ayah": 38,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "مَضَتْ سُنَّتُ",
+    "variantText": "مَضَت سُّنَّه",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-008-38-14-1156",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-008-38-14-1156",
+        "variantId": "v-SUSI-008-38-14-1156",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1156; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَضَتْ سُنَّتُ → مَضَت سُّنَّه | إدغام التاء في السين، ويقف على سنت بالهاء"
+      }
+    ],
+    "description": "إدغام التاء في السين، ويقف على سنت بالهاء"
   }
 ]

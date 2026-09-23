@@ -132,5 +132,99 @@
         "text": "وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-006-76-5-0763",
+    "surah": 6,
+    "ayah": 76,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "رَءَا كَوْكَبًۭا ۖ",
+    "variantText": "رَاءَى كَوْكَبًا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-006-76-5-0763",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-006-76-5-0763",
+        "variantId": "v-SUSI-006-76-5-0763",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 763; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَأَىٰ كَوْكَبًا → رَاءَى كَوْكَبًا | إمالة فتحة الهمزة والألف"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة والألف"
+  },
+  {
+    "id": "v-SUSI-006-79-3-0768-performance",
+    "surah": 6,
+    "ayah": 79,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَجْهِىَ",
+    "variantText": "وَجْهِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-006-79-3-0768",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-006-79-3-0768",
+        "variantId": "v-SUSI-006-79-3-0768-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 768; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَجْهِيَ → وَجْهِي | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  },
+  {
+    "id": "v-SUSI-006-80-8-0769",
+    "surah": 6,
+    "ayah": 80,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "هَدَىٰنِ ۚ",
+    "variantText": "هَدَانِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-006-80-8-0769",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-006-80-8-0769",
+        "variantId": "v-SUSI-006-80-8-0769",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 769; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هَدَانِ → هَدَانِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
   }
 ]

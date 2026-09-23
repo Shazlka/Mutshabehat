@@ -112,6 +112,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
         "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-SUSI-057-1-7-4215",
+        "variantId": "v-AUDIT-P537-R03392-PERF-b14c9461",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4215; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
       }
     ],
     "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
@@ -158,6 +167,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
         "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-SUSI-057-2-7-4216",
+        "variantId": "v-AUDIT-P537-R03392-PERF-bd0817c8",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4216; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
       }
     ],
     "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
@@ -204,6 +222,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
         "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-SUSI-057-3-6-4217",
+        "variantId": "v-AUDIT-P537-R03392-PERF-830aa49a",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4217; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
       }
     ],
     "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",

@@ -82,7 +82,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+    ]
   },
   {
     "id": "r-p485-TAGHYIR_HAMZ-ياذن-1",
@@ -141,5 +144,145 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-042-17-4-3878-IDGHAM_KABIR",
+    "pageNumber": 485,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 17,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 17,
+    "baseText": "ٱلْكِتَـٰبَ بِٱلْحَقِّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الباء في الباء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الباء في الباء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْكِتَابَ بِالْحَقِّ → الْكِتَاب بِّالْحَقِّ | إدغام الباء في الباء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-042-21-15-3884-IDGHAM_KABIR",
+    "pageNumber": 485,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 21,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 21,
+    "baseText": "ٱلْفَصْلِ لَقُضِىَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْفَصْلِ لَقُضِيَ → الْفَصْل لَّقُضِيَ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-042-22-1-3885-IMALAH_TAQLIL",
+    "pageNumber": 485,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 22,
+    "baseText": "تَرَى ٱلظَّـٰلِمِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَرَى الظَّالِمِينَ → تَرَى الظَّالِمِينَ | وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-042-22-6-3886-IDGHAM_KABIR",
+    "pageNumber": 485,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 22,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 22,
+    "baseText": "وَهُوَ وَاقِعٌۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الهاء ثم إدغام الواو في الواو"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الهاء ثم إدغام الواو في الواو",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَهُوَ وَاقِعٌ → وَهْو وَّاقِعٌ | إسكان الهاء ثم إدغام الواو في الواو"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

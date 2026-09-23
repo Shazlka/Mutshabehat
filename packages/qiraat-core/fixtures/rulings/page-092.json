@@ -429,7 +429,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "حَيْثُ ثَقِفْتُمُوهُمْ → حَيْث ثَّقِفْتُمُوهُمْ | إدغام الثاء في الثاء"
+    ]
   },
   {
     "id": "r-p092-011-1",
@@ -770,5 +773,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-004-90-11-0412-IDGHAM_KABIR",
+    "pageNumber": 92,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 90,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 90,
+    "baseText": "حَصِرَتْ صُدُورُهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الصاد"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الصاد",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "حَصِرَتْ صُدُورُهُمْ → حَصِرَت صُّدُورُهُمْ | إدغام التاء في الصاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

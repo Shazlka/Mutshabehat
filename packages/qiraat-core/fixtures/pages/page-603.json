@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "id": "v-SUSI-109-6-3-4586-performance",
+    "surah": 109,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَلِىَ دِينِ",
+    "variantText": "وَلِىَ دِينِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-109-6-3-4586",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء وصلاً لنافع وأبي عمرو وقرأ حفص بفتحها (وَلِيَ)",
+    "sources": [
+      {
+        "id": "s-SUSI-109-6-3-4586",
+        "variantId": "v-SUSI-109-6-3-4586-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4586; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلِيَ دِينِ → وَلِي دِينِ | إسكان الياء وصلاً لنافع وأبي عمرو وقرأ حفص بفتحها (وَلِيَ)"
+      }
+    ],
+    "description": "إسكان الياء وصلاً لنافع وأبي عمرو وقرأ حفص بفتحها (وَلِيَ)"
+  },
+  {
+    "id": "v-SUSI-110-3-4-4588-performance",
+    "surah": 110,
+    "ayah": 3,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَٱسْتَغْفِرْهُ ۚ",
+    "variantText": "وَٱسْتَغْفِرْهُ ۚ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-110-3-4-4588",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-110-3-4-4588",
+        "variantId": "v-SUSI-110-3-4-4588-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4588; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَاسْتَغْفِرْهُ → وَاسْتَغْفِرْهُ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  }
+]

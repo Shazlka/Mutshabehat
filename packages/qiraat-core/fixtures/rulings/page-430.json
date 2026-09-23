@@ -268,7 +268,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقُرَى → الْقُرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+    ]
   },
   {
     "id": "r-p430-IMALAH_TAQLIL-قري-1",
@@ -353,7 +356,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "قُرًى → قُرًى | إمالة فتحة الراء والألف وقفاً"
+    ]
   },
   {
     "id": "r-p430-IMALAH_TAQLIL-اسفارنا-2",
@@ -411,7 +417,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أَسْفَارِنَا → أَسْفَارِنَا | إمالة فتحة الفاء والألف"
+    ]
   },
   {
     "id": "r-p430-IMALAH_TAQLIL-صبار-3",
@@ -469,7 +478,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "صَبَّارٍ → صَبَّارٍ | إمالة فتحة الباء والألف"
+    ]
   },
   {
     "id": "r-p430-IDGHAM_SAGHIR-وهل_نجزي-4",
@@ -667,5 +679,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-034-20-1-3422-IDGHAM_KABIR",
+    "pageNumber": 430,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 34,
+    "ayah": 20,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 20,
+    "baseText": "وَلَقَدْ صَدَّقَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الصاد وتخفيف شدة الدال: صَدَقَ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الصاد وتخفيف شدة الدال: صَدَقَ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَدْ صَدَّقَ → وَلَقَد صَّدَقَ | إدغام الدال في الصاد وتخفيف شدة الدال: صَدَقَ"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-034-21-8-3424-IDGHAM_KABIR",
+    "pageNumber": 430,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 34,
+    "ayah": 21,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 21,
+    "baseText": "لِنَعْلَمَ مَن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لِنَعْلَمَ مَن → لِنَعْلَم مَّن | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

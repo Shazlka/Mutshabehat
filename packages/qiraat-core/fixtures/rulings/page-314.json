@@ -70,7 +70,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُوحَىٰ → يُوحَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-002-1",
@@ -589,7 +592,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "طَغَىٰ → طَغَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-012-1",
@@ -662,7 +668,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَخْشَىٰ → يَخْشَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-013-1",
@@ -797,7 +806,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَطْغَىٰ → يَطْغَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-016-1",
@@ -870,7 +882,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَرَىٰ → وَأَرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p314-017-1",
@@ -1082,7 +1097,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْهُدَىٰ → الْهُدَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-021-1",
@@ -1266,7 +1284,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَتَوَلَّىٰ → وَتَوَلَّى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-025-1",
@@ -1615,7 +1636,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "هَدَىٰ → هَدَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-030-1",
@@ -1688,7 +1712,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْأُولَىٰ → الْأُولَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p314-031-1",
@@ -1757,7 +1784,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَلِتُصْنَعَ عَلَىٰ → وَلِتُصْنَع عَّلَىٰ | إدغام العين في العين"
+    ]
   },
   {
     "id": "r-p314-033-1",
@@ -2263,7 +2293,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لَا → قَال لَّا | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p314-044-1",
@@ -2532,5 +2565,145 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-40-1-2347-IDGHAM_KABIR",
+    "pageNumber": 314,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 40,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 40,
+    "baseText": "إِذْ تَمْشِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ تَمْشِي → إِذ تَّمْشِي | إدغام الذال في التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-40-12-2348-IDGHAM_KABIR",
+    "pageNumber": 314,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 40,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 40,
+    "baseText": "أُمِّكَ كَىْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أُمِّكَ كَيْ → أُمِّك كَّيْ | إدغام الكاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-47-12-2360-IDGHAM_KABIR",
+    "pageNumber": 314,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 47,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 47,
+    "baseText": "قَدْ جِئْنَـٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جِئْنَاكَ → قَد جِّينَاكَ | إدغام الدال في الجيم وإبدال الهمزة ياء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-50-1-2364-IDGHAM_KABIR",
+    "pageNumber": 314,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 50,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 50,
+    "baseText": "قَالَ رَبُّنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ رَبُّنَا → قَالَ رَّبُّنَا | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -591,5 +591,40 @@
         "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
       }
     ]
+  },
+  {
+    "id": "r-SUSI-043-78-1-3952-IDGHAM_KABIR",
+    "pageNumber": 495,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 78,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 78,
+    "baseText": "لَقَدْ جِئْنَـٰكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَقَدْ جِئْنَاكُم → لَقَد جِّينَاكُم | إدغام الدال في الجيم وإبدال الهمزة ياء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

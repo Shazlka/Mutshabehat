@@ -37,6 +37,15 @@
         "sourceReference": "صفحة المصحف 173 · صفحة المصدر 178",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَقْصُرُ ذُرِّيَّاتِ مَعْ فَتْحِ تَائِهِ وَفِي الطُّورِ فِي الثَّانِي ظَهِيرٌ تَحَمَّلَا"
+      },
+      {
+        "id": "s-SUSI-007-172-9-1099",
+        "variantId": "v-L173-ذريتهم-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1099; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ذُرِّيَّتَهُمْ → ذُرِّيَّاتِهِمْ | ألف بعد الياء وكسر التاء والهاء - بالجمع"
       }
     ],
     "description": "بالجمع وألف بعد الياء وكسر التاء",
@@ -220,6 +229,15 @@
         "sourceReference": "صفحة المصحف 173 · صفحة المصدر 178",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-007-178-4-1103",
+        "variantId": "v-L173-فهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1103; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -234,5 +252,99 @@
         "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-007-172-18-1100",
+    "surah": 7,
+    "ayah": 172,
+    "startToken": 18,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "أَن تَقُولُوا۟",
+    "variantText": "أَن يَّقُولُوا",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-007-172-18-1100",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-007-172-18-1100",
+        "variantId": "v-SUSI-007-172-18-1100",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1100; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَن تَقُولُوا → أَن يَّقُولُوا | بالياء بدل التاء مع الإدغام"
+      }
+    ],
+    "description": "بالياء بدل التاء مع الإدغام"
+  },
+  {
+    "id": "v-SUSI-007-173-1-1101",
+    "surah": 7,
+    "ayah": 173,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَوْ تَقُولُوٓا۟",
+    "variantText": "أَوْ يَقُولُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-007-173-1-1101",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-007-173-1-1101",
+        "variantId": "v-SUSI-007-173-1-1101",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1101; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَوْ تَقُولُوا → أَوْ يَقُولُوا | بالياء بدل التاء"
+      }
+    ],
+    "description": "بالياء بدل التاء"
+  },
+  {
+    "id": "v-SUSI-007-176-2-1102-performance",
+    "surah": 7,
+    "ayah": 176,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "شِئْنَا",
+    "variantText": "شِئْنَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-007-176-2-1102",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-007-176-2-1102",
+        "variantId": "v-SUSI-007-176-2-1102-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1102; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "شِئْنَا → شِينَا | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
   }
 ]

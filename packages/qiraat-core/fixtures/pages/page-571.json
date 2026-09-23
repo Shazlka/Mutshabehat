@@ -206,5 +206,165 @@
         "url": "https://quranpedia.net/qiraat/nuh/25"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-071-16-5-4367-performance",
+    "surah": 71,
+    "ayah": 16,
+    "startToken": 5,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَجَعَلَ ٱلشَّمْسَ سِرَاجًۭا",
+    "variantText": "وَجَعَلَ ٱلشَّمْسَ سِرَاجًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-071-16-5-4367",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-071-16-5-4367",
+        "variantId": "v-SUSI-071-16-5-4367-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4367; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَجَعَلَ الشَّمْسَ سِرَاجًا → وَجَعَلَ الشَّمْسَ سِرَاجًا | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-071-24-2-4368-performance",
+    "surah": 71,
+    "ayah": 24,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَضَلُّوا۟ كَثِيرًۭا ۖ",
+    "variantText": "أَضَلُّوا۟ كَثِيرًۭا ۖ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-071-24-2-4368",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-071-24-2-4368",
+        "variantId": "v-SUSI-071-24-2-4368-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4368; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَضَلُّوا كَثِيرًا → أَضَلُّوا كَثِيرًا | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-071-28-9-4371-performance",
+    "surah": 71,
+    "ayah": 28,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَلِلْمُؤْمِنِينَ",
+    "variantText": "وَلِلْمُؤْمِنِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-071-28-9-4371",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-071-28-9-4371",
+        "variantId": "v-SUSI-071-28-9-4371-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4371; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلِلْمُؤْمِنِينَ → وَلِلْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-071-28-10-4372-performance",
+    "surah": 71,
+    "ayah": 28,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْمُؤْمِنَـٰتِ",
+    "variantText": "وَٱلْمُؤْمِنَـٰتِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-071-28-10-4372",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-071-28-10-4372",
+        "variantId": "v-SUSI-071-28-10-4372-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4372; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْمُؤْمِنَاتِ → وَالْمُومِنَاتِ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-071-28-7-4373-performance",
+    "surah": 71,
+    "ayah": 28,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "بَيْتِىَ",
+    "variantText": "بَيْتِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-071-28-7-4373",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء وصلاً لأبي عمرو وقرأ حفص بفتحها (بَيْتِيَ)",
+    "sources": [
+      {
+        "id": "s-SUSI-071-28-7-4373",
+        "variantId": "v-SUSI-071-28-7-4373-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4373; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بَيْتِيَ → بَيْتِي | إسكان الياء وصلاً لأبي عمرو وقرأ حفص بفتحها (بَيْتِيَ)"
+      }
+    ],
+    "description": "إسكان الياء وصلاً لأبي عمرو وقرأ حفص بفتحها (بَيْتِيَ)"
   }
 ]

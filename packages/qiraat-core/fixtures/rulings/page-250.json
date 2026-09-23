@@ -137,7 +137,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُنثَىٰ → أُنثَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p250-004-1",
@@ -363,29 +366,41 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الهاء والألف وإدغام الراء في اللام"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
       {
         "readingId": "Q03-R01",
         "action": "إمالة",
         "isDefault": true
       },
       {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الهاء والألف وإدغام الراء في اللام",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِالنَّهَارِ لَهُ → بِالنَّهَار لَّهُ | إمالة فتحة الهاء والألف وإدغام الراء في اللام"
+    ]
   },
   {
     "id": "r-p250-TARQIQ_RA-الكبير-1",
@@ -536,7 +551,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "بِمِقْدَارٍ → بِمِقْدَارٍ | إمالة فتحة الدال والألف"
+    ]
   },
   {
     "id": "r-p250-IKHFA-ومن_خلفهي-7",
@@ -609,5 +627,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-8-2-1735-IDGHAM_KABIR",
+    "pageNumber": 250,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 8,
+    "baseText": "يَعْلَمُ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-13-9-1739-IDGHAM_KABIR",
+    "pageNumber": 250,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 13,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 13,
+    "baseText": "فَيُصِيبُ بِهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الباء في الباء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الباء في الباء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَيُصِيبُ بِهَا → فَيُصِيب بِّهَا | إدغام الباء في الباء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -185,7 +185,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p248-IMALAH_TAQLIL-يفترا-2",
@@ -288,7 +291,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يُفْتَرَىٰ → يُفْتَرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p248-IMALAH_TAQLIL-جاءهم-3",

@@ -301,7 +301,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَى → مُوسَى | بالتقليل وقفاً"
+    ]
   },
   {
     "id": "r-p008-008-1",
@@ -388,7 +391,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَالسَّلْوَى → وَالسَّلْوَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p008-009-1",
@@ -620,7 +626,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَيَسْتَحْيُونَ نِسَاءَكُمْ → وَيَسْتَحْيُون نِّسَاءَكُمْ | إدغام النون في النون"
+    ]
   },
   {
     "id": "r-p008-012-1",
@@ -652,7 +661,10 @@
     "hasAlternate": false,
     "text": "وله فيها الاختلاس.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بَعْدِ ذَلِكَ → بَعْد ذَّلِكَ | إدغام الدال في الذال"
+    ]
   },
   {
     "id": "r-p008-013-1",
@@ -683,7 +695,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إِنَّهُ هُوَ → إِنَّه هُّوَ | إدغام الهاء في الهاء"
+    ]
   },
   {
     "id": "r-p008-014-1",
@@ -714,7 +729,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نُؤْمِنَ لَكَ → نُومِن لَّكَ | إبدال الهمزة واواً وإدغام النون في اللام بلا غنة"
+    ]
   },
   {
     "id": "r-p008-015-1",
@@ -806,5 +824,145 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-002-51-3-0043-IMALAH_TAQLIL",
+    "pageNumber": 8,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 51,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 51,
+    "baseText": "مُوسَىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "مُوسَى → مُوسَى | بالتقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-002-54-3-0047-IMALAH_TAQLIL",
+    "pageNumber": 8,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 54,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 54,
+    "baseText": "مُوسَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "مُوسَى → مُوسَى | بالتقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-002-55-3-0050-IMALAH_TAQLIL",
+    "pageNumber": 8,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 55,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 55,
+    "baseText": "يَـٰمُوسَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَمُوسَى → يَمُوسَى | بالتقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-002-55-8-0052-IMALAH_TAQLIL",
+    "pageNumber": 8,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 55,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 55,
+    "baseText": "نَرَى ٱللَّهَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "وقفاً: إمالة وجهاً واحداً. وصلاً: 1- الفتح (كحفص وهو المقدم)، 2- الإمالة مع تفخيم لام لفظ الجلالة، 3- الإمالة مع ترقيق لام لفظ الجلالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "وقفاً: إمالة وجهاً واحداً. وصلاً: 1- الفتح (كحفص وهو المقدم)، 2- الإمالة مع تفخيم لام لفظ الجلالة، 3- الإمالة مع ترقيق لام لفظ الجلالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "نَرَى اللَّهَ → نَرَى اللَّهَ | وقفاً: إمالة وجهاً واحداً. وصلاً: 1- الفتح (كحفص وهو المقدم)، 2- الإمالة مع تفخيم لام لفظ الجلالة، 3- الإمالة مع ترقيق لام لفظ الجلالة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

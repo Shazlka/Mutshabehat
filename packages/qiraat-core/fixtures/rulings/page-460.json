@@ -210,7 +210,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+    ]
   },
   {
     "id": "r-p460-IMALAH_TAQLIL-البشرا-1",
@@ -295,7 +298,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْبُشْرَىٰ → الْبُشْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p460-IMALAH_TAQLIL-فتراه-2",
@@ -380,7 +386,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "فَتَرَاهُ → فَتَرَاهُ | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p460-IMALAH_TAQLIL-لذكرا-3",
@@ -465,7 +474,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لَذِكْرَىٰ → لَذِكْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p460-IMALAH_TAQLIL-هداهم-4",
@@ -815,5 +827,40 @@
     "notes": "وله الحذف وقفاً",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-039-19-10-3665-IMALAH_TAQLIL",
+    "pageNumber": 460,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 19,
+    "startToken": 10,
+    "endToken": 1,
+    "endAyah": 20,
+    "baseText": "ٱلنَّارِ لَـٰكِنِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف ثم إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف ثم إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّارِ لَٰكِنِ → النَّار لَّٰكِنِ | إمالة فتحة النون والألف ثم إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

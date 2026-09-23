@@ -80,6 +80,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01038",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿رُشْدًا﴾: بضم فسكون للجمهور؛ بفتحتين ﴿رَشَدًا﴾ لأبي عمرو ويعقوب."
+      },
+      {
+        "id": "s-SUSI-018-66-11-2190",
+        "variantId": "v-D301-رشدا-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2190; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُشْدًا → رَشَدًا | فتح الراء والشين"
       }
     ],
     "description": "بفتح الشين",
@@ -155,6 +164,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01044",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿زَكِيَّةَۢ﴾: بتخفيف الكاف مع ألف بعدها وتخفيف الياء ﴿زَاكِيَةً﴾ لنافع، ابن كثير، أبو عمرو، أبو جعفر، رويس؛ وبكسر الكاف وتشديد الياء ﴿زَكِيَّةً﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-018-74-10-2195",
+        "variantId": "v-D301-زكيه-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2195; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "زَكِيَّةً → زَاكِيَةً | ألف بعد الزاي وتخفيف الياء"
       }
     ],
     "description": "بالألف بعد الزاي",
@@ -202,5 +220,131 @@
     "description": "بضم الكاف",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-018-64-5-2185",
+    "surah": 18,
+    "ayah": 64,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "نَبْغِ ۚ",
+    "variantText": "نَبْغِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-64-5-2185",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-018-64-5-2185",
+        "variantId": "v-SUSI-018-64-5-2185",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2185; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَبْغِ → نَبْغِي | بالياء وصلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-018-66-8-2189",
+    "surah": 18,
+    "ayah": 66,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تُعَلِّمَنِ",
+    "variantText": "تُعَلِّمَنِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-66-8-2189",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-018-66-8-2189",
+        "variantId": "v-SUSI-018-66-8-2189",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2189; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تُعَلِّمَنِ → تُعَلِّمَنِي | بالياء وصلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-018-67-5-2191-performance",
+    "surah": 18,
+    "ayah": 67,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مَعِىَ",
+    "variantText": "مَعِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-67-5-2191",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-018-67-5-2191",
+        "variantId": "v-SUSI-018-67-5-2191-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2191; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَعِيَ → مَعِي | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  },
+  {
+    "id": "v-SUSI-018-72-7-2193-performance",
+    "surah": 18,
+    "ayah": 72,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "مَعِىَ",
+    "variantText": "مَعِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-72-7-2193",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-018-72-7-2193",
+        "variantId": "v-SUSI-018-72-7-2193-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2193; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَعِيَ → مَعِي | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
   }
 ]

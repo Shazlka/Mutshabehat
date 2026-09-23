@@ -177,5 +177,131 @@
         "text": "وَنَكْتَلْ بِيَا شَافٍ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-012-53-3-1653-performance",
+    "surah": 12,
+    "ayah": 53,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "نَفْسِىٓ ۚ إِنَّ",
+    "variantText": "نَفْسِىٓ ۚ إِنَّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-53-3-1653",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-012-53-3-1653",
+        "variantId": "v-SUSI-012-53-3-1653-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1653; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَفْسِي إِنَّ → نَفْسِيَ إِنَّ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-012-53-7-1654",
+    "surah": 12,
+    "ayah": 53,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلسُّوٓءِ إِلَّا",
+    "variantText": "بِالسُّو إِلَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-53-7-1654",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-012-53-7-1654",
+        "variantId": "v-SUSI-012-53-7-1654",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1654; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِالسُّوءِ إِلَّا → بِالسُّو إِلَّا | إسقاط الهمزة الأولى"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى"
+  },
+  {
+    "id": "v-SUSI-012-59-4-1661",
+    "surah": 12,
+    "ayah": 59,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "قَالَ ٱئْتُونِى",
+    "variantText": "قَالَ اتُونِي",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-59-4-1661",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-012-59-4-1661",
+        "variantId": "v-SUSI-012-59-4-1661",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1661; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قَالَ ائْتُونِي → قَالَ اتُونِي | إبدال الهمزة ألفاً وصلاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً وصلاً"
+  },
+  {
+    "id": "v-SUSI-012-60-3-1662-performance",
+    "surah": 12,
+    "ayah": 60,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتُونِى",
+    "variantText": "تَأْتُونِى",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-60-3-1662",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-012-60-3-1662",
+        "variantId": "v-SUSI-012-60-3-1662-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1662; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْتُونِي → تَاتُونِي | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

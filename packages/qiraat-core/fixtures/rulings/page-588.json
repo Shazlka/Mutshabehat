@@ -442,5 +442,75 @@
     "text": "وقف حمزة",
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-083-18-4-4460-IMALAH_TAQLIL",
+    "pageNumber": 588,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 18,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 18,
+    "baseText": "ٱلْأَبْرَارِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف لكسرة الراء المتطرفة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف لكسرة الراء المتطرفة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْأَبْرَارِ → الْأَبْرَارِ | إمالة فتحة الراء والألف لكسرة الراء المتطرفة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-083-22-2-4461-IMALAH_TAQLIL",
+    "pageNumber": 588,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 22,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 22,
+    "baseText": "ٱلْأَبْرَارَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف لكسرة الراء المتطرفة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف لكسرة الراء المتطرفة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْأَبْرَارِ → الْأَبْرَارِ | إمالة فتحة الراء والألف لكسرة الراء المتطرفة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

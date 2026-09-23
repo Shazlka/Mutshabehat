@@ -618,7 +618,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فَصَّلَ لَكُم → فُصِّل لَّكُم | ضم الفاء وكسر الصاد ثم إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p143-016-1",
@@ -1030,5 +1033,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-006-119-29-0830-IKHFA",
+    "pageNumber": 143,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 6,
+    "ayah": 119,
+    "startToken": 29,
+    "endToken": 30,
+    "endAyah": 119,
+    "baseText": "أَعْلَمُ بِٱلْمُعْتَدِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَعْلَمُ بِالْمُعْتَدِينَ → أَعْلَم بِالْمُعْتَدِينَ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-006-122-20-0832-IMALAH_TAQLIL",
+    "pageNumber": 143,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 6,
+    "ayah": 122,
+    "startToken": 20,
+    "endToken": 21,
+    "endAyah": 122,
+    "baseText": "زُيِّنَ لِلْكَـٰفِرِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام ثم إمالة فتحة الكاف والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام ثم إمالة فتحة الكاف والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "زُيِّنَ لِلْكَافِرِينَ → زُيِّن لِّلْكَافِرِينَ | إدغام النون في اللام ثم إمالة فتحة الكاف والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

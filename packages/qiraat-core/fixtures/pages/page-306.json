@@ -108,6 +108,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَهَمْزُ لِأَهَبْ بِالْيَا جَرَى حُلْوُ نَصْرِهِ — D: وَلِيَهَبْ حُزْ"
+      },
+      {
+        "id": "s-SUSI-019-19-6-2247",
+        "variantId": "v-L306-لاهب-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2247; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِأَهَبَ → لِيَهَبَ | بالياء المفتوحة بدل الهمزة"
       }
     ],
     "description": "بياء مفتوحة بدل الهمزة",
@@ -158,6 +167,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَفِي مَرْيَمٍ صَفْوٌ يُحَرِّكُ أُعْمِلَا"
+      },
+      {
+        "id": "s-SUSI-019-23-8-2250",
+        "variantId": "v-L306-مت-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2250; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتُّ → مُتُّ | ضم الميم"
       }
     ],
     "description": "بضم الميم",
@@ -212,6 +230,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي نَسْيًا افْتَحْ فَازَ"
+      },
+      {
+        "id": "s-SUSI-019-23-12-2251",
+        "variantId": "v-L306-نسيا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2251; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَسْيًا → نِسْيًا | كسر النون"
       }
     ],
     "description": "بكسر النون",
@@ -268,6 +295,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P306-R01115",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿مِن تَحْتِهَا﴾: بكسر الميم وخفض التاء ﴿مِن تَحْتِهَا﴾ لنافع، وحفص، وحمزة، والكسائي، وأبي جعفر، وروح، وخلف؛ وبفتح الميم ونصب التاء حرف جر ﴿مَنْ تَحْتَهَا﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-019-24-2-2252",
+        "variantId": "v-L306-من_تحتها-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2252; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِن تَحْتِهَا → مَن تَحْتَهَا | فتح الميم والتاء الثانية"
       }
     ],
     "description": "بفتح الميم ونصب التاء حرف جر",
@@ -457,5 +493,37 @@
     "description": "بضم الميم",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-019-18-2-2245-performance",
+    "surah": 19,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ",
+    "variantText": "إِنِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-18-2-2245",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-019-18-2-2245",
+        "variantId": "v-SUSI-019-18-2-2245-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2245; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِنِّي → إِنِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
   }
 ]

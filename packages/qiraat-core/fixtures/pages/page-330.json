@@ -125,6 +125,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَهَمْزُ يَأْجُوجَ وَمَأْجُوجَ شَفَا وَغَيْرُ صَحَابٍ فِيهِمَا أَبْدَلَ الْعُلَا"
+      },
+      {
+        "id": "s-SUSI-021-96-4-2527",
+        "variantId": "v-L330-ياجوج_وماجوج-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2527; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْجُوجُ وَمَأْجُوجُ → يَاجُوجُ وَمَاجُوجُ | إبدال الهمز ألفاً فيهما"
       }
     ],
     "description": "بإبدال الهمزة ألفًا فيهما",
@@ -135,5 +144,68 @@
         "text": "وَهَمْزُ يَأْجُوجَ وَمَأْجُوجَ شَفَا وَغَيْرُ صَحَابٍ فِيهِمَا أَبْدَلَ الْعُلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-021-94-6-2526-performance",
+    "surah": 21,
+    "ayah": 94,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مُؤْمِنٌۭ",
+    "variantText": "مُؤْمِنٌۭ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-94-6-2526",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-021-94-6-2526",
+        "variantId": "v-SUSI-021-94-6-2526-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2526; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُؤْمِنٌ → مُومِنٌ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-021-99-3-2528",
+    "surah": 21,
+    "ayah": 99,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓؤُلَآءِ ءَالِهَةًۭ",
+    "variantText": "هَٰؤُلَاءِ يَالِهَةً",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-99-3-2528",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-021-99-3-2528",
+        "variantId": "v-SUSI-021-99-3-2528",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2528; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هَٰؤُلَاءِ آلِهَةً → هَٰؤُلَاءِ يَالِهَةً | إبدال الهمزة الثانية ياء مفتوحة"
+      }
+    ],
+    "description": "إبدال الهمزة الثانية ياء مفتوحة"
   }
 ]

@@ -263,7 +263,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَصَارَىٰ → نَصَارَى | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p110-008-1",
@@ -652,7 +655,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُبَيِّنُ لَكُمْ → يُبَيِّن لَّكُمْ | إدغام النون في اللام"
+    ]
   },
   {
     "id": "r-p110-012-1",
@@ -683,7 +689,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "اللَّهَ هُوَ → اللَّه هُّوَ | إدغام الهاء في الهاء"
+    ]
   },
   {
     "id": "r-p110-013-1",
@@ -940,5 +949,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-005-15-3-0532-IDGHAM_KABIR",
+    "pageNumber": 110,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 15,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 15,
+    "baseText": "قَدْ جَآءَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَكُمْ (معاً) → قَد جَّاءَكُمْ | إدغام الدال في الجيم (الموضعين)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-005-15-17-0532-IDGHAM_KABIR",
+    "pageNumber": 110,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 15,
+    "startToken": 17,
+    "endToken": 18,
+    "endAyah": 15,
+    "baseText": "قَدْ جَآءَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَكُمْ (معاً) → قَد جَّاءَكُمْ | إدغام الدال في الجيم (الموضعين)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

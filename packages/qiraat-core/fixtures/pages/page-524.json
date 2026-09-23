@@ -471,5 +471,100 @@
     "description": "إفراد الأولى وجمع الثانية لابن عامر ويعقوب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-052-18-3-4119",
+    "surah": 52,
+    "ayah": 18,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ءَاتَىٰهُمْ",
+    "variantText": "آتَىٰهُمْ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-052-18-3-4119",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-052-18-3-4119",
+        "variantId": "v-SUSI-052-18-3-4119",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4119; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "آتَاهُمْ → آتَىٰهُمْ | تقليل فتحة التاء والألف"
+      }
+    ],
+    "description": "تقليل فتحة التاء والألف"
+  },
+  {
+    "id": "v-SUSI-052-23-3-4121-performance",
+    "surah": 52,
+    "ayah": 23,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "كَأْسًۭا",
+    "variantText": "كَأْسًۭا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-052-23-3-4121",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-052-23-3-4121",
+        "variantId": "v-SUSI-052-23-3-4121-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4121; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كَأْسًا → كَاسًا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-052-24-6-4122-performance",
+    "surah": 52,
+    "ayah": 24,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "لُؤْلُؤٌۭ",
+    "variantText": "لُؤْلُؤٌۭ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-052-24-6-4122",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة الأولى الساكنة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-052-24-6-4122",
+        "variantId": "v-SUSI-052-24-6-4122-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4122; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لُؤْلُؤٌ → لُولُؤٌ | إبدال الهمزة الأولى الساكنة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة الأولى الساكنة واواً"
   }
 ]

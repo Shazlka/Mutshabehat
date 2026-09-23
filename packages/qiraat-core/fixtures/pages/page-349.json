@@ -295,5 +295,98 @@
         "text": "وَتَرْجِعُ حُطْ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-023-110-1-2675",
+    "surah": 23,
+    "ayah": 110,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَٱتَّخَذْتُمُوهُمْ",
+    "variantText": "فَاتَّخَتُّمُوهُمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-023-110-1-2675",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-023-110-1-2675",
+        "variantId": "v-SUSI-023-110-1-2675",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2675; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَاتَّخَذْتُمُوهُمْ → فَاتَّخَتُّمُوهُمْ | إدغام الذال في التاء"
+      }
+    ],
+    "description": "إدغام الذال في التاء"
+  },
+  {
+    "id": "v-SUSI-023-112-3-2676",
+    "surah": 23,
+    "ayah": 112,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَبِثْتُمْ",
+    "variantText": "لَّبِتُّمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-023-112-3-2676",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-023-112-3-2676",
+        "variantId": "v-SUSI-023-112-3-2676",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2676; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَبِثْتُمْ → لَّبِتُّمْ | إدغام الثاء في التاء"
+      }
+    ],
+    "description": "إدغام الثاء في التاء"
+  },
+  {
+    "id": "v-SUSI-023-114-3-2678",
+    "surah": 23,
+    "ayah": 114,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَّبِثْتُمْ إِلَّا",
+    "variantText": "لَّبِتُّم لَّبِثْتُمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-023-114-3-2678",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-023-114-3-2678",
+        "variantId": "v-SUSI-023-114-3-2678",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2678; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَّبِثْتُمْ إِلَّا → لَّبِتُّم لَّبِثْتُمْ | إدغام الثاء في التاء"
+      }
+    ],
+    "description": "إدغام الثاء في التاء"
   }
 ]

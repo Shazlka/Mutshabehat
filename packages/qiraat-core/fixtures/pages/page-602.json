@@ -1,1 +1,96 @@
-[]
+[
+  {
+    "id": "v-SUSI-106-2-1-4582",
+    "surah": 106,
+    "ayah": 2,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "إِۦلَـٰفِهِمْ",
+    "variantText": "إِلَافِهِمْ",
+    "differenceType": "OMISSION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-106-2-1-4582",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-106-2-1-4582",
+        "variantId": "v-SUSI-106-2-1-4582",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4582; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِيلَافِهِمْ → إِلَافِهِمْ | حذف الياء لأبي جعفر وأبو عمرو بإثباتها كحفص"
+      }
+    ],
+    "description": "حذف الياء لأبي جعفر وأبو عمرو بإثباتها كحفص"
+  },
+  {
+    "id": "v-SUSI-107-1-1-4583",
+    "surah": 107,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَرَءَيْتَ",
+    "variantText": "أَرَيْتَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-107-1-1-4583",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-107-1-1-4583",
+        "variantId": "v-SUSI-107-1-1-4583",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4583; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَرَأَيْتَ → أَرَيْتَ | تسهيل الهمزة وحذفها"
+      }
+    ],
+    "description": "تسهيل الهمزة وحذفها"
+  },
+  {
+    "id": "v-SUSI-108-3-2-4584-performance",
+    "surah": 108,
+    "ayah": 3,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "شَانِئَكَ",
+    "variantText": "شَانِئَكَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-108-3-2-4584",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-108-3-2-4584",
+        "variantId": "v-SUSI-108-3-2-4584-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4584; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "شَانِئَكَ → شَانِيَكَ | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
+  }
+]

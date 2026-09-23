@@ -336,7 +336,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقَهَّارِ → الْقَهَّارِ | إمالة فتحة الهاء والألف"
+    ]
   },
   {
     "id": "r-p261-IMALAH_TAQLIL-وتغشا-3",
@@ -530,10 +533,24 @@
     "endAyah": 50,
     "baseText": "ٱلْأَصْفَادِ سَرَابِيلُهُم",
     "verificationStatus": "REVIEWED",
-    "attribution": [{"authorityId": "Q03-R02", "action": "إدغام كبير"}],
-    "readings": [{"readingId": "Q03-R02", "action": "إدغام كبير", "isDefault": true}],
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام كبير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام كبير",
+        "isDefault": true
+      }
+    ],
     "hasAlternate": false,
-    "sourceNotes": ["DOCX-P261-R00557؛ وتؤيده Quranpedia: https://quranpedia.net/ayahs/14/50/4"],
+    "sourceNotes": [
+      "DOCX-P261-R00557؛ وتؤيده Quranpedia: https://quranpedia.net/ayahs/14/50/4",
+      "الْأَصْفَادِ سَرَابِيلُهُم → الْأَصْفَاد سَّرَابِيلُهُم | إدغام الدال في السين"
+    ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
   },
@@ -551,11 +568,60 @@
     "endAyah": 51,
     "baseText": "ٱلنَّارُ لِيَجْزِىَ",
     "verificationStatus": "REVIEWED",
-    "attribution": [{"authorityId": "Q03-R02", "action": "إدغام كبير"}],
-    "readings": [{"readingId": "Q03-R02", "action": "إدغام كبير", "isDefault": true}],
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام كبير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام كبير",
+        "isDefault": true
+      }
+    ],
     "hasAlternate": false,
-    "sourceNotes": ["DOCX-P261-R00557"],
+    "sourceNotes": [
+      "DOCX-P261-R00557",
+      "النَّارُ لِيَجْزِيَ → النَّار لِّيَجْزِيَ | إدغام الراء في اللام"
+    ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-014-49-1-1834-IMALAH_TAQLIL",
+    "pageNumber": 261,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 49,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 49,
+    "baseText": "وَتَرَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

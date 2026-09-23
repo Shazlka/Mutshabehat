@@ -29,6 +29,15 @@
         "sourceReference": "صفحة المصحف 171 · صفحة المصدر 176",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَى الْعَلَا — D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا … وَقَبْلَ سَاكِنٍ أَتْبِعَا حُزْ غَيْرُهُ أَصْلَهُ تَلَا"
+      },
+      {
+        "id": "s-SUSI-007-160-27-1080",
+        "variantId": "v-L171-عليهم_الغمام-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1080; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عَلَيْهِمُ الْغَمَامَ → عَلَيْهِمِ الْغَمَامَ | كسر الميم وصلاً"
       }
     ],
     "description": "بكسر الهاء والميم وصلاً",
@@ -125,6 +134,15 @@
         "sourceReference": "صفحة المصحف 171 · صفحة المصدر 176",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمِنْ دُونِ وَصْلٍ ضَمُّهَا قَبْلَ سَاكِنٍ لِكُلٍّ وَبَعْدَ الْهَاءِ كَسْرُ فَتَى الْعَلَا — D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا … وَقَبْلَ سَاكِنٍ أَتْبِعَا حُزْ غَيْرُهُ أَصْلَهُ تَلَا"
+      },
+      {
+        "id": "s-SUSI-007-160-30-1081",
+        "variantId": "v-L171-عليهم_المن-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1081; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عَلَيْهِمُ الْمَنَّ → عَلَيْهِمِ الْمَنَّ | كسر الميم وصلاً"
       }
     ],
     "description": "بكسر الهاء والميم وصلاً",

@@ -153,5 +153,101 @@
         "text": "نَزَّلْ وَتِلْوَيْهِ سَمِّ حُمْ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-004-136-14-0469-performance",
+    "surah": 4,
+    "ayah": 136,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "أَنزَلَ",
+    "variantText": "أَنزَلَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-136-14-0469",
+    "locusType": "performance_variant",
+    "performanceNote": "ضم الهمزة وكسر الزاي",
+    "sources": [
+      {
+        "id": "s-SUSI-004-136-14-0469",
+        "variantId": "v-SUSI-004-136-14-0469-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 469; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَنزَلَ → أُنزِلَ | ضم الهمزة وكسر الزاي"
+      }
+    ],
+    "description": "ضم الهمزة وكسر الزاي"
+  },
+  {
+    "id": "v-SUSI-004-139-7-0473-performance",
+    "surah": 4,
+    "ayah": 139,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُؤْمِنِينَ ۚ",
+    "variantText": "ٱلْمُؤْمِنِينَ ۚ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-139-7-0473",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-139-7-0473",
+        "variantId": "v-SUSI-004-139-7-0473-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 473; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُؤْمِنِينَ → الْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-004-140-2-0474-performance",
+    "surah": 4,
+    "ayah": 140,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "نَزَّلَ",
+    "variantText": "نَزَّلَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-140-2-0474",
+    "locusType": "performance_variant",
+    "performanceNote": "ضم النون وكسر الزاي",
+    "sources": [
+      {
+        "id": "s-SUSI-004-140-2-0474",
+        "variantId": "v-SUSI-004-140-2-0474-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 474; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَزَّلَ → نُزِّلَ | ضم النون وكسر الزاي"
+      }
+    ],
+    "description": "ضم النون وكسر الزاي"
   }
 ]

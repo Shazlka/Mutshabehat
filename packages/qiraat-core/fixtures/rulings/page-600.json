@@ -266,5 +266,40 @@
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-101-10-3-4571-SAKT",
+    "pageNumber": 600,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 101,
+    "ayah": 10,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 10,
+    "baseText": "مَا هِيَهْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إثبات هاء السكت وصلاً ووقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إثبات هاء السكت وصلاً ووقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "مَا هِيَهْ → مَا هِيَهْ | إثبات هاء السكت وصلاً ووقفاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

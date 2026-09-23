@@ -71,10 +71,115 @@
         "sourceReference": "pages 585-588: بضنين",
         "verificationNotes": "Approved source record mapped to a real Quran token.",
         "sourceText": "بالظاء لابن كثير وأبي عمرو والكسائي ورويس"
+      },
+      {
+        "id": "s-SUSI-081-24-5-4455",
+        "variantId": "v-D586-بضنين-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4455; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِضَنِينٍ → بِظَنِينٍ | قرأ ابن كثير وأبو عمرو والكسائي ورويس (بِظَنِينٍ) بالظاء المشالة من الظنة (أي بمتهم) وقرأ حفص بالضاد (بِضَنِينٍ) أي ببخيل"
       }
     ],
     "description": "بالظاء لابن كثير وأبي عمرو والكسائي ورويس",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-080-42-3-4450-performance",
+    "surah": 80,
+    "ayah": 42,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْكَفَرَةُ ٱلْفَجَرَةُ",
+    "variantText": "ٱلْكَفَرَةُ ٱلْفَجَرَةُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-080-42-3-4450",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-080-42-3-4450",
+        "variantId": "v-SUSI-080-42-3-4450-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4450; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْكَفَرَةُ الْفَجَرَةُ → الْكَفَرَةُ الْفَجَرَةُ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-081-8-2-4452-performance",
+    "surah": 81,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَوْءُۥدَةُ",
+    "variantText": "ٱلْمَوْءُۥدَةُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-081-8-2-4452",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق الهمزة المضمومة",
+    "sources": [
+      {
+        "id": "s-SUSI-081-8-2-4452",
+        "variantId": "v-SUSI-081-8-2-4452-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4452; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمَوْءُودَةُ → الْمَوْءُودَةُ | تحقيق الهمزة المضمومة"
+      }
+    ],
+    "description": "تحقيق الهمزة المضمومة"
+  },
+  {
+    "id": "v-SUSI-081-12-3-4454-performance",
+    "surah": 81,
+    "ayah": 12,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "سُعِّرَتْ",
+    "variantText": "سُعِّرَتْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-081-12-3-4454",
+    "locusType": "performance_variant",
+    "performanceNote": "تخفيف العين لنافع وابن ذكوان وحفص بالتشديد كأبي عمرو",
+    "sources": [
+      {
+        "id": "s-SUSI-081-12-3-4454",
+        "variantId": "v-SUSI-081-12-3-4454-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4454; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سُعِّرَتْ → سُعِرَتْ | تخفيف العين لنافع وابن ذكوان وحفص بالتشديد كأبي عمرو"
+      }
+    ],
+    "description": "تخفيف العين لنافع وابن ذكوان وحفص بالتشديد كأبي عمرو"
   }
 ]

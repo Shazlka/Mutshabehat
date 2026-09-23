@@ -91,6 +91,15 @@
         "sourceReference": "صفحة المصحف 214 · صفحة المصدر 219",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَنَحْشُرُ مَعْ ثَانٍ بِيُونُسَ وَهْوَ فِي سَبَأَ مَعْ نَقُولُ الْيَا فِي الأَرْبَعِ عُمِّلَا"
+      },
+      {
+        "id": "s-SUSI-010-45-2-1378",
+        "variantId": "v-L214-يحشرهم-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1378; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَحْشُرُهُمْ → نَحْشُرُهُمْ | إبدال الياء نوناً"
       }
     ],
     "description": "بالنون على العظمة",
@@ -284,5 +293,100 @@
         "text": "وَاشْمِمَا طِلَا بِقِيلَ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-010-49-16-1380",
+    "surah": 10,
+    "ayah": 49,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "جَآءَ أَجَلُهُمْ",
+    "variantText": "جَا أَجَلُهُمْ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-49-16-1380",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-010-49-16-1380",
+        "variantId": "v-SUSI-010-49-16-1380",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1380; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جَاءَ أَجَلُهُمْ → جَا أَجَلُهُمْ | إسقاط الهمزة الأولى، وفي المد وجهان"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى، وفي المد وجهان"
+  },
+  {
+    "id": "v-SUSI-010-49-19-1381-performance",
+    "surah": 10,
+    "ayah": 49,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "يَسْتَـْٔخِرُونَ",
+    "variantText": "يَسْتَـْٔخِرُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-49-19-1381",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-010-49-19-1381",
+        "variantId": "v-SUSI-010-49-19-1381-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1381; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَسْتَأْخِرُونَ → يَسْتَاخِرُونَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-010-53-6-1383-performance",
+    "surah": 10,
+    "ayah": 53,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَرَبِّىٓ",
+    "variantText": "وَرَبِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-53-6-1383",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-010-53-6-1383",
+        "variantId": "v-SUSI-010-53-6-1383-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1383; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَرَبِّي → وَرَبِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
   }
 ]

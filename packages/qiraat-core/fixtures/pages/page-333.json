@@ -30,6 +30,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي لِيُضِلَّ افْتَحْ عَنِ الْحَقِّ — D: وَافْتَحْ لِيَضِلَّ حُزْ"
+      },
+      {
+        "id": "s-SUSI-022-9-3-2546",
+        "variantId": "v-L333-ليضل-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2546; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِيُضِلَّ → لِيَضِلَّ | فتح الياء"
       }
     ],
     "description": "بفتح الياء",
@@ -80,6 +89,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَكَسْرُ لِيَقْطَعْ عَمَّ فِي ثُمَّ لْيَقْضُوا انْجَلَى — D: وَسَاكِنُ ثُمَّ لِيَقْطَعْ حُزْ"
+      },
+      {
+        "id": "s-SUSI-022-15-16-2553",
+        "variantId": "v-L333-ليقطع-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2553; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِيَقْطَعْ → لِيَقْطِعْ | كسر اللام"
       }
     ],
     "description": "بإسكان اللام تخفيفاً",
@@ -133,5 +151,37 @@
     "description": "وجه حفص المطابق لرسم المصحف",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-022-13-7-2550-performance",
+    "surah": 22,
+    "ayah": 13,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "لَبِئْسَ",
+    "variantText": "لَبِئْسَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-022-13-7-2550",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء (الموضعين)",
+    "sources": [
+      {
+        "id": "s-SUSI-022-13-7-2550",
+        "variantId": "v-SUSI-022-13-7-2550-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2550; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَبِئْسَ (معاً) → لَبِيسَ | إبدال الهمزة ياء (الموضعين)"
+      }
+    ],
+    "description": "إبدال الهمزة ياء (الموضعين)"
   }
 ]

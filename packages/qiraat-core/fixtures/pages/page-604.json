@@ -112,6 +112,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/112/4",
         "verificationNotes": "الوجه الصريح للباقين التسعة في المصدر: ضم الفاء مع الهمزة المنونة؛ حُفظ منفصلاً عن وجه حفص وعن وجهي حمزة الوقف والوصل.",
         "sourceText": "الباقون: كُفُؤًا بضمتين وهمز."
+      },
+      {
+        "id": "s-SUSI-112-4-4-4592",
+        "variantId": "v-SRC604-كفؤا-باقون-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4592; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كُفُوًا → كُفْؤًا | إسكان الفاء وهمز الواو لأبي عمرو وحمزة، وقرأ حفص بضم الفاء والواو غير مهموزة (كُفُوًا)"
       }
     ],
     "description": "كُفُؤًا بضمتين وهمز للباقين التسعة",

@@ -76,6 +76,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَفِي مَرْيَمٍ صَفْوٌ يُحَرِّكُ أُعْمِلَا"
+      },
+      {
+        "id": "s-SUSI-019-66-5-2286",
+        "variantId": "v-L310-مت-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2286; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتُّ → مُتُّ | ضم الميم"
       }
     ],
     "description": "بضم الميم",
@@ -165,6 +174,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      },
+      {
+        "id": "s-SUSI-019-68-8-2288",
+        "variantId": "v-L310-جثيا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2288; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جِثِيًّا → جُثِيًّا | ضم الجيم"
       }
     ],
     "description": "بضم الجيم",
@@ -219,6 +237,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      },
+      {
+        "id": "s-SUSI-019-72-8-2292",
+        "variantId": "v-L310-جثيا-2-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2292; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جِثِيًّا → جُثِيًّا | ضم الجيم"
       }
     ],
     "description": "بضم الجيم",
@@ -273,6 +300,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      },
+      {
+        "id": "s-SUSI-019-69-10-2289",
+        "variantId": "v-L310-عتيا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2289; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عِتِيًّا → عُتِيًّا | ضم العين"
       }
     ],
     "description": "بضم العين",
@@ -327,6 +363,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      },
+      {
+        "id": "s-SUSI-019-70-8-2291",
+        "variantId": "v-L310-صليا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2291; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "صِلِيًّا → صُلِيًّا | ضم الصاد"
       }
     ],
     "description": "بضم الصاد",

@@ -110,10 +110,50 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P554-R03559",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿خُشُبٌ﴾: بضم الشين ﴿خُشُبٌ﴾ لنافع، والبزي، وابن عامر، وعاصم، وحمزة، وأبي جعفر، ويعقوب، وخلف؛ بإسكان الشين ﴿خُشْبٌ﴾ لقنبل، وأبي عمرو، والكسائي."
+      },
+      {
+        "id": "s-SUSI-063-4-10-4297",
+        "variantId": "v-D554-خشب-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4297; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "خُشُبٌ → خُشْبٌ | إسكان الشين"
       }
     ],
     "description": "بإسكان الشين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-063-4-2-4296",
+    "surah": 63,
+    "ayah": 4,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَأَيْتَهُمْ",
+    "variantText": "رَيْتَهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-063-4-2-4296",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-063-4-2-4296",
+        "variantId": "v-SUSI-063-4-2-4296",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4296; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَأَيْتَهُمْ → رَيْتَهُمْ | تسهيل الهمزة وحذفها"
+      }
+    ],
+    "description": "تسهيل الهمزة وحذفها"
   }
 ]

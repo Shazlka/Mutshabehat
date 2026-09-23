@@ -13,12 +13,35 @@
     "endAyah": 1,
     "baseText": "عِوَجَاۜ",
     "verificationStatus": "REVIEWED",
-    "attribution": [{"authorityId": "Q05-R02", "action": "السكت اللطيف وصلاً"}],
-    "readings": [{"readingId": "Q05-R02", "action": "السكت اللطيف وصلاً", "isDefault": true}],
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "وصلاً: بلا سكت مع الإخفاء"
+      },
+      {
+        "authorityId": "Q05-R02",
+        "action": "السكت اللطيف وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "وصلاً: بلا سكت مع الإخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R02",
+        "action": "السكت اللطيف وصلاً",
+        "isDefault": true
+      }
+    ],
     "hasAlternate": false,
     "notes": "السكت على ألف عوجاً وصلاً قبل قَيِّمًا.",
     "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z"
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "sourceNotes": [
+      "عِوَجًا قَيِّمًا → عِوَجًا قَيِّمًا | وصلاً: بلا سكت مع الإخفاء"
+    ]
   },
   {
     "id": "r-p293-IMALAH_TAQLIL-يتلا-0",
@@ -121,6 +144,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -143,13 +174,19 @@
       {
         "authorityId": "Q10-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -179,15 +216,48 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْحُسْنَىٰ → الْحُسْنَى | بالتقليل"
+    ]
+  },
+  {
+    "id": "r-SUSI-017-107-10-2099-IDGHAM_KABIR",
+    "pageNumber": 293,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 107,
+    "startToken": 10,
+    "endToken": 11,
+    "endAyah": 107,
+    "baseText": "ٱلْعِلْمَ مِن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْعِلْمَ مِن → الْعِلْم مِّن | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

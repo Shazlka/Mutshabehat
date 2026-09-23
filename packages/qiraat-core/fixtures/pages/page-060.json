@@ -39,6 +39,15 @@
         "sourceReference": "صفحة المصحف 60 · صفحة المصدر 65",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَحْسَبُ كَسْرُ السِّينِ مُسْتَقْبَلًا سَمَا رِضَاهُ وَلَمْ يَلْزَمْ قِيَاسًا مُوَصَّلَا — D: افْتَحًا كَيَحْسَبُ أُدْ وَاكْسِرْهُ فُزْ"
+      },
+      {
+        "id": "s-SUSI-003-78-7-0195",
+        "variantId": "v-L060-لتحسبوه-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 195; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِتَحْسَبُوهُ → لِتَحْسِبُوهُ | كسر السين"
       }
     ],
     "description": "بكسر السين",
@@ -362,6 +371,15 @@
         "sourceReference": "صفحة المصحف 60 · صفحة المصدر 65",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      },
+      {
+        "id": "s-SUSI-003-80-8-0201",
+        "variantId": "v-L060-ايامركم-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 201; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَيَأْمُرُكُم → أَيَامُرْكُم | إبدال الهمزة ألفاً وإسكان الراء"
       }
     ],
     "description": "بإسكان الراء",
@@ -621,6 +639,15 @@
         "sourceReference": "صفحة المصحف 60 · صفحة المصدر 65",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَبِالْغَيْبِ تُرْجَعُونَ عَادَ — D: وَقُلْ يَرْجِعُونَ حُمْ وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
+      },
+      {
+        "id": "s-SUSI-003-83-14-0206",
+        "variantId": "v-L060-يرجعون-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 206; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُرْجَعُونَ → تُرْجَعُونَ | إبدال الياء تاء"
       }
     ],
     "description": "بالتاء المضمومة وفتح الجيم",
@@ -680,5 +707,132 @@
         "text": "وَقُلْ يَرْجِعُونَ حُمْ وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-003-79-5-0196-performance",
+    "surah": 3,
+    "ayah": 79,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْتِيَهُ",
+    "variantText": "يُؤْتِيَهُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-79-5-0196",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-003-79-5-0196",
+        "variantId": "v-SUSI-003-79-5-0196-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 196; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْتِيَهُ → يُوتِيَهُ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-003-80-2-0200-performance",
+    "surah": 3,
+    "ayah": 80,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْمُرَكُمْ",
+    "variantText": "يَأْمُرَكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-80-2-0200",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً وإسكان الراء",
+    "sources": [
+      {
+        "id": "s-SUSI-003-80-2-0200",
+        "variantId": "v-SUSI-003-80-2-0200-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 200; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْمُرَكُمْ → يَامُرْكُمْ | إبدال الهمزة ألفاً وإسكان الراء"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً وإسكان الراء"
+  },
+  {
+    "id": "v-SUSI-003-81-17-0202-performance",
+    "surah": 3,
+    "ayah": 81,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "لَتُؤْمِنُنَّ",
+    "variantText": "لَتُؤْمِنُنَّ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-81-17-0202",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-003-81-17-0202",
+        "variantId": "v-SUSI-003-81-17-0202-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 202; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَتُؤْمِنُنَّ → لَتُومِنُنَّ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-003-81-22-0204",
+    "surah": 3,
+    "ayah": 81,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "وَأَخَذْتُمْ",
+    "variantText": "وَأَخَتُّمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-81-22-0204",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-003-81-22-0204",
+        "variantId": "v-SUSI-003-81-22-0204",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 204; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَأَخَذْتُمْ → وَأَخَتُّمْ | إدغام الذال في التاء"
+      }
+    ],
+    "description": "إدغام الذال في التاء"
   }
 ]

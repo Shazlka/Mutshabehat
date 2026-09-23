@@ -28,6 +28,15 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-053-47-3-4180",
+        "variantId": "v-L528-s53a47b0-w1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4180; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "النَّشْأَةَ → النَّشَاءَةَ | فتح الشين ومدها وألف بعدها وهمزة مفتوحة"
       }
     ],
     "description": "",
@@ -285,5 +294,68 @@
     "description": "بإسكان الكاف",
     "wajhIndex": 8,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-053-53-1-4189-performance",
+    "surah": 53,
+    "ayah": 53,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْمُؤْتَفِكَةَ",
+    "variantText": "وَٱلْمُؤْتَفِكَةَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-053-53-1-4189",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-053-53-1-4189",
+        "variantId": "v-SUSI-053-53-1-4189-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4189; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْمُؤْتَفِكَةَ → وَالْمُوتَفِكَةَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-054-6-3-4195",
+    "surah": 54,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَوْمَ يَدْعُ ٱلدَّاعِ",
+    "variantText": "يَوْمَ يَدْعُ الدَّاعِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-054-6-3-4195",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-054-6-3-4195",
+        "variantId": "v-SUSI-054-6-3-4195",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4195; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَوْمَ يَدْعُ الدَّاعِ → يَوْمَ يَدْعُ الدَّاعِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
   }
 ]

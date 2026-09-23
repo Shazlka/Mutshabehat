@@ -231,6 +231,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01336",
         "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ bare خلف treated as Q06.",
         "sourceText": "بضم الهاء والميم وصلاً ﴿وُجُوهِهُمُ﴾: حمزة، الكسائي، خلف."
+      },
+      {
+        "id": "s-SUSI-021-39-9-2502",
+        "variantId": "v-AUDIT-P325-WUJ-1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2502; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وُجُوهَهُمُ النَّارَ → وُجُوهَهِمِ النَّارَ | كسر الميم وصلاً"
       }
     ],
     "description": "بكسر الهاء والميم وصلاً",
@@ -272,5 +281,68 @@
     "description": "بضم الهاء والميم وصلاً",
     "wajhIndex": 3,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-021-36-2-2500",
+    "surah": 21,
+    "ayah": 36,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَءَاكَ",
+    "variantText": "رَاءَاكَ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-36-2-2500",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-021-36-2-2500",
+        "variantId": "v-SUSI-021-36-2-2500",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2500; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَآكَ → رَاءَاكَ | إمالة فتحة الهمزة"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة"
+  },
+  {
+    "id": "v-SUSI-021-44-12-2508-performance",
+    "surah": 21,
+    "ayah": 44,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "نَأْتِى",
+    "variantText": "نَأْتِى",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-44-12-2508",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-021-44-12-2508",
+        "variantId": "v-SUSI-021-44-12-2508-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2508; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَأْتِي → نَاتِي | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

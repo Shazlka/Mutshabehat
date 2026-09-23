@@ -79,6 +79,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيُقَاتَلُونَ افْتَحُوا عَمَّ كَامِلاً صَفَا — D: وَيُقَاتَلُونَ كَأَصْلِهِ"
+      },
+      {
+        "id": "s-SUSI-022-39-3-2574",
+        "variantId": "v-L337-يقاتلون-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2574; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُقَاتَلُونَ → يُقَاتِلُونَ | كسر التاء"
       }
     ],
     "description": "بكسر التاء مبنياً للفاعل",
@@ -217,6 +226,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-022-45-5-2583",
+        "variantId": "v-L337-وهي-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2583; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهِيَ → وَهْيَ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -265,6 +283,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-022-45-7-2584",
+        "variantId": "v-L337-فهي-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2584; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَهِيَ → فَهْيَ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -382,10 +409,82 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P337-R01460",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿أَهْلَكْنَـٰهَا﴾: بنون العظمة للجمهور؛ وبتاء المتكلم ﴿أَهْلَكْتُهَا﴾ لأبي عمرو ويعقوب."
+      },
+      {
+        "id": "s-SUSI-022-45-4-2582",
+        "variantId": "v-D337-اهلكناها-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2582; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَهْلَكْنَاهَا → أَهْلَكْتُهَا | تاء مضمومة بدل النون وحذف الألف"
       }
     ],
     "description": "بتاء المتكلم",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-022-44-8-2579",
+    "surah": 22,
+    "ayah": 44,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَخَذْتُهُمْ ۖ",
+    "variantText": "أَخَتُّهُمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-022-44-8-2579",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-022-44-8-2579",
+        "variantId": "v-SUSI-022-44-8-2579",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2579; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَخَذْتُهُمْ → أَخَتُّهُمْ | إدغام الذال في التاء"
+      }
+    ],
+    "description": "إدغام الذال في التاء"
+  },
+  {
+    "id": "v-SUSI-022-45-11-2585-performance",
+    "surah": 22,
+    "ayah": 45,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَبِئْرٍۢ",
+    "variantText": "وَبِئْرٍۢ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-022-45-11-2585",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-022-45-11-2585",
+        "variantId": "v-SUSI-022-45-11-2585-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2585; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَبِئْرٍ → وَبِيرٍ | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
   }
 ]

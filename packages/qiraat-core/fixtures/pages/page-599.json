@@ -15,6 +15,7 @@
     "readingIds": [
       "Q01-R01",
       "Q01-R02",
+      "Q03-R02",
       "Q04-R02"
     ],
     "locusId": "D598-البريئة",
@@ -36,10 +37,114 @@
         "sourceType": "printed-book",
         "sourceReference": "الشاطبية بيت 1111؛ الدرة بيت 200",
         "sourceText": "وَهَمْزُ الْبَرِيئَةِ نَافِعٌ وَابْنُ ذَكْوَانَ ... وَالْبَرِيئَةِ كَالْكُلِّ ..."
+      },
+      {
+        "id": "s-SUSI-098-6-16-4563",
+        "variantId": "v-D598-البريئة-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4563; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْبَرِيَّةِ → الْبَرِيئَةِ | بالهمز لنافع وابن ذكوان وأبو عمرو بلا همز كحفص (الْبَرِيَّةِ)"
       }
     ],
     "description": "بالهمز ﴿الْبَرِيئَةِ﴾ لنافع وابن ذكوان",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-098-7-9-4564",
+    "surah": 98,
+    "ayah": 7,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْبَرِيَّةِ",
+    "variantText": "الْبَرِيئَةِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-098-7-9-4564",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-098-7-9-4564",
+        "variantId": "v-SUSI-098-7-9-4564",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4564; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْبَرِيَّةِ → الْبَرِيئَةِ | بلا همز كحفص لأبي عمرو"
+      }
+    ],
+    "description": "بلا همز كحفص لأبي عمرو"
+  },
+  {
+    "id": "v-SUSI-099-7-6-4565-performance",
+    "surah": 99,
+    "ayah": 7,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَرَهُۥ",
+    "variantText": "يَرَهُۥ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-099-7-6-4565",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الهاء لهشام وأبو عمرو بضمها كحفص وصلاً مع القصر",
+    "sources": [
+      {
+        "id": "s-SUSI-099-7-6-4565",
+        "variantId": "v-SUSI-099-7-6-4565-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4565; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَرَهُ → يَرَهْ | إسكان الهاء لهشام وأبو عمرو بضمها كحفص وصلاً مع القصر"
+      }
+    ],
+    "description": "إسكان الهاء لهشام وأبو عمرو بضمها كحفص وصلاً مع القصر"
+  },
+  {
+    "id": "v-SUSI-099-8-6-4566-performance",
+    "surah": 99,
+    "ayah": 8,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَرَهُۥ",
+    "variantText": "يَرَهُۥ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-099-8-6-4566",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الهاء لهشام وأبو عمرو بضمها كحفص وصلاً مع القصر",
+    "sources": [
+      {
+        "id": "s-SUSI-099-8-6-4566",
+        "variantId": "v-SUSI-099-8-6-4566-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4566; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَرَهُ → يَرَهْ | إسكان الهاء لهشام وأبو عمرو بضمها كحفص وصلاً مع القصر"
+      }
+    ],
+    "description": "إسكان الهاء لهشام وأبو عمرو بضمها كحفص وصلاً مع القصر"
   }
 ]

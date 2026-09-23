@@ -79,6 +79,15 @@
         "sourceReference": "صفحة المصحف 131 · صفحة المصدر 136",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَعَمَّ عُلَا لَا يَعْقِلُونَ وَتَحْتَهَا خِطَابًا — D: يَعْقِلُو وَتَحْتُ خَاطِبْ كَيَاسِينَ"
+      },
+      {
+        "id": "s-SUSI-006-32-13-0716",
+        "variantId": "v-L131-تعقلون-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 716; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَعْقِلُونَ → يَعْقِلُونَ | إبدال التاء ياء"
       }
     ],
     "description": "بالتحتية على الغيبة",
@@ -185,5 +194,37 @@
         "text": "وَيُكْذِبُ أَصْلًا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-006-35-17-0719-performance",
+    "surah": 6,
+    "ayah": 35,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "فَتَأْتِيَهُم",
+    "variantText": "فَتَأْتِيَهُم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-006-35-17-0719",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-006-35-17-0719",
+        "variantId": "v-SUSI-006-35-17-0719-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 719; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَتَأْتِيَهُم → فَتَاتِيَهُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

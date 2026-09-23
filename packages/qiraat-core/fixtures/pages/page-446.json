@@ -70,6 +70,15 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-037-6-5-3543",
+        "variantId": "v-L446-s37a6b0-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3543; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِزِينَةٍ الْكَوَاكِبِ → بِزِينَةِ الْكَوَاكِبِ | كسر التاء دون تنوين وصلاً"
       }
     ],
     "description": "بغير تنوين وإضافة زينة إلى الكواكب مخفوضة",
@@ -158,6 +167,15 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-037-16-2-3546",
+        "variantId": "v-L446-s37a16b1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3546; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتْنَا → مُتْنَا | ضم الميم"
       }
     ],
     "description": "بضم الميم",
@@ -197,5 +215,37 @@
     "description": "بتنوين زينة وخفض الكواكب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-037-8-2-3544-performance",
+    "surah": 37,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَسَّمَّعُونَ",
+    "variantText": "يَسَّمَّعُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-037-8-2-3544",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان السين وتخفيف الميم",
+    "sources": [
+      {
+        "id": "s-SUSI-037-8-2-3544",
+        "variantId": "v-SUSI-037-8-2-3544-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3544; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَسَّمَّعُونَ → يَسْمَعُونَ | إسكان السين وتخفيف الميم"
+      }
+    ],
+    "description": "إسكان السين وتخفيف الميم"
   }
 ]

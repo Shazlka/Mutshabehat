@@ -64,7 +64,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف"
+    ]
   },
   {
     "id": "r-p251-002-1",
@@ -395,38 +398,50 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف"
       },
       {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
       {
         "readingId": "Q03-R01",
         "action": "إمالة",
         "isDefault": true
       },
       {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف",
         "isDefault": true
       },
       {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+    ]
   },
   {
     "id": "r-p251-IMALAH_TAQLIL-الحسنا-3",
@@ -746,5 +761,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-16-40-1744-IDGHAM_KABIR",
+    "pageNumber": 251,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 16,
+    "startToken": 40,
+    "endToken": 41,
+    "endAyah": 16,
+    "baseText": "خَـٰلِقُ كُلِّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "خَالِقُ كُلِّ → خَالِق كُّلِّ | إدغام القاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-17-42-1748-IDGHAM_KABIR",
+    "pageNumber": 251,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 17,
+    "startToken": 42,
+    "endToken": 1,
+    "endAyah": 18,
+    "baseText": "ٱلْأَمْثَالَ لِلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْأَمْثَالَ لِلَّذِينَ → الْأَمْثَال لِّلَّذِينَ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-18-3-1749-IMALAH_TAQLIL",
+    "pageNumber": 251,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 18,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 18,
+    "baseText": "لِرَبِّهِمُ ٱلْحُسْنَىٰ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر الميم، ثم التقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر الميم، ثم التقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لِرَبِّهِمُ الْحُسْنَىٰ → لِرَبِّهِمِ الْحُسْنَى | كسر الميم، ثم التقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

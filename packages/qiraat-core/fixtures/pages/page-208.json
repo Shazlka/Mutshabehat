@@ -79,6 +79,15 @@
         "sourceReference": "صفحة المصحف 208 · صفحة المصدر 213",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: سَاحِرٌ شَفَا"
+      },
+      {
+        "id": "s-SUSI-010-2-25-1329",
+        "variantId": "v-L208-لساحر-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1329; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَسَاحِرٌ → لَسِحْرٌ | كسر السين بلا ألف وإسكان الحاء"
       }
     ],
     "description": "بكسر السين وسكون الحاء بغير ألف اسم مصدر",

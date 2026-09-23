@@ -144,7 +144,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أَرَاكُمْ → أَرَاكُمْ | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p505-IMALAH_TAQLIL-القرا-1",
@@ -229,7 +232,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p505-IMALAH_TAQLIL-يرا-2",
@@ -751,5 +757,40 @@
         "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
       }
     ]
+  },
+  {
+    "id": "r-SUSI-046-25-4-4031-IDGHAM_KABIR",
+    "pageNumber": 505,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 46,
+    "ayah": 25,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 25,
+    "baseText": "بِأَمْرِ رَبِّهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بِأَمْرِ رَبِّهَا → بِأَمْر رَّبِّهَا | إدغام الراء في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

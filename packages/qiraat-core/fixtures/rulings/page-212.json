@@ -115,7 +115,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْحُسْنَىٰ → الْحُسْنَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p212-003-1",
@@ -321,7 +324,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+    ]
   },
   {
     "id": "r-p212-007-1",
@@ -616,7 +622,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَّقُولُ لِلَّذِينَ → نَّقُول لِّلَّذِينَ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p212-012-1",
@@ -647,7 +656,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَرْزُقُكُم → يَرْزُقكُّم | إدغام القاف في الكاف"
+    ]
   },
   {
     "id": "r-p212-013-1",
@@ -1075,5 +1087,40 @@
     "text": "يقف عليها بالهاء ابن كثير وأبو عمرو والكسائي (مع الإمالة) ويعقوب، والباقون بالتاء.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-010-27-4-1360-IDGHAM_KABIR",
+    "pageNumber": 212,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 27,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 27,
+    "baseText": "جَزَآءُ سَيِّئَةٍۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَزَاءُ سَيِّئَةٍ → جَزَاء سَّيِّئَةٍ | إدغام التاء في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -9,6 +9,9 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-23
+- **Qiraat — external al-Susi source integration:** added the source-driven, fixture-only importer scripts/qiraat/import_susi.py and retained the complete per-row audit in docs/qiraat-susi-import-audit.json (4,594 rows; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e). Added 1,458 source-backed performance/word variants and 987 usul rulings across the 604-page fixture set; canonical Mushaf token text was never replaced. Ambiguous, multi-face, unresolved, unsafe, cross-ayah, and conflict cases remain explicitly withheld for manual reconciliation. **Verification:** Qiraat validator clean (4,547 variants, 11,086 rulings); importer rerun is idempotent; DB migration: none — fixture-only.
+
 ## 2026-09-22
 - **Qiraat — source PDF manifest:** registered the 30 attached `مصحف القراءات العشر` PDFs with local provenance, page counts, and SHA-256 checksums in `docs/qiraat/source-pdf-manifest.json`; no fixture data was changed and no DB migration is required.
 - **Qiraat — complete usul backfill, pages 585–604:** imported all safe, explicitly attributed usul records from `qiraat_pages_585_604_full.sql`, including hamz, naql, sakt, imalah/taqlil, tarqiq/taghliz, silat al-ha, meem jam, madd badal, and yaat families. **Verification:** validator clean (3,089 variants, 10,099 rulings), DB migration: none — fixture-only.

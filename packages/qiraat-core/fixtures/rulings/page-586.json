@@ -207,5 +207,40 @@
     "text": "النقل لورش في الأفق",
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-081-7-2-4451-IDGHAM_KABIR",
+    "pageNumber": 586,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 81,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 7,
+    "baseText": "ٱلنُّفُوسُ زُوِّجَتْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام السين في الزاي (متقاربين كبير)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام السين في الزاي (متقاربين كبير)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "النُّفُوسُ زُوِّجَتْ → النُّفُوس زُّوِّجَتْ | إدغام السين في الزاي (متقاربين كبير)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

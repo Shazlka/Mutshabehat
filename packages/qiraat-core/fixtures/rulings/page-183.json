@@ -211,7 +211,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دِيَارِهِم → دِيَارِهِم | إمالة فتحة الياء والألف"
+    ]
   },
   {
     "id": "r-p183-007-1",
@@ -360,7 +363,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَرَىٰ → أَرَى | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p183-009-1",
@@ -447,7 +453,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تَرَىٰ → تَرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p183-010-1",
@@ -687,7 +696,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَقَالَ لَا → وَقَال لَّا | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p183-015-1",
@@ -718,7 +730,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْيَوْمَ مِنَ → الْيَوْم مِّنَ | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p183-016-1",
@@ -1123,5 +1138,75 @@
     "text": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر، والإسكان للباقين",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-008-48-1-1164-IDGHAM_KABIR",
+    "pageNumber": 183,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 8,
+    "ayah": 48,
+    "startToken": 1,
+    "endToken": 3,
+    "endAyah": 48,
+    "baseText": "وَإِذْ زَيَّنَ لَهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في الزاي ثم إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في الزاي ثم إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَإِذْ زَيَّنَ لَهُمُ → وَإِذ زَّيَّن لَّهُمُ | إدغام الذال في الزاي ثم إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-008-48-19-1167-IDGHAM_KABIR",
+    "pageNumber": 183,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 8,
+    "ayah": 48,
+    "startToken": 19,
+    "endToken": 21,
+    "endAyah": 48,
+    "baseText": "نَكَصَ عَلَىٰ عَقِبَيْهِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام العين في العين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام العين في العين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "نَكَصَ عَلَىٰ عَقِبَيْهِ → نَكَص عَّلَىٰ عَقِبَيْهِ | إدغام العين في العين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

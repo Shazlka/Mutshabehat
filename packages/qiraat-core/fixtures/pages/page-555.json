@@ -98,6 +98,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03567",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿وَأَكُن﴾: بجزم النون وحذف الواو ﴿وَأَكُن﴾ لجميع القراء عدا أبا عمرو؛ بنصب النون وإثبات الواو ﴿وَأَكُونَ﴾ لأبي عمرو."
+      },
+      {
+        "id": "s-SUSI-063-10-19-4303",
+        "variantId": "v-D555-واكن-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4303; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَأَكُن → وَأَكُونَ | بالواو ونصب النون"
       }
     ],
     "description": "بنصب النون وإثبات الواو",
@@ -207,5 +216,100 @@
     "description": "كسر خالص مع الإدغام الكبير",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-063-8-13-4301-performance",
+    "surah": 63,
+    "ayah": 8,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَلِلْمُؤْمِنِينَ",
+    "variantText": "وَلِلْمُؤْمِنِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-063-8-13-4301",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-063-8-13-4301",
+        "variantId": "v-SUSI-063-8-13-4301-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4301; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلِلْمُؤْمِنِينَ → وَلِلْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-063-10-8-4302-performance",
+    "surah": 63,
+    "ayah": 10,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِىَ",
+    "variantText": "يَأْتِىَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-063-10-8-4302",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-063-10-8-4302",
+        "variantId": "v-SUSI-063-10-8-4302-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4302; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْتِيَ → يَاتِيَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-063-11-6-4304",
+    "surah": 63,
+    "ayah": 11,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "جَآءَ أَجَلُهَا ۚ",
+    "variantText": "جَا أَجَلُهَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-063-11-6-4304",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-063-11-6-4304",
+        "variantId": "v-SUSI-063-11-6-4304",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4304; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جَاءَ أَجَلُهَا → جَا أَجَلُهَا | إسقاط الهمزة الأولى مع القصر والتوسط"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى مع القصر والتوسط"
   }
 ]

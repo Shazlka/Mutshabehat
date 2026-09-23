@@ -472,6 +472,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-insan/4",
         "sourceText": "Quranpedia: Abu Amr reads without tanwin in waṣl and alif at waqf.",
         "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      },
+      {
+        "id": "s-SUSI-076-4-4-4402",
+        "variantId": "v-AUDIT-P578-76-4-4-e045cd28",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4402; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سَلَاسِلَا → سَلَاسِلَا | إثبات الألف وقفاً وحذفها وصلاً بلا تنوين كحفص"
       }
     ],
     "description": "بحذف التنوين وصلاً، وبالألف وقفاً ﴿سَلَاسِلَا﴾: أبو عمرو، وروح.",

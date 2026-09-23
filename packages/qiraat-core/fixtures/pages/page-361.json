@@ -151,5 +151,130 @@
     "description": "بياء الغيب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-025-17-2-2795",
+    "surah": 25,
+    "ayah": 17,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَحْشُرُهُمْ",
+    "variantText": "نَحْشُرُهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-17-2-2795",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-025-17-2-2795",
+        "variantId": "v-SUSI-025-17-2-2795",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2795; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَحْشُرُهُمْ → نَحْشُرُهُمْ | إبدال الياء نوناً"
+      }
+    ],
+    "description": "إبدال الياء نوناً"
+  },
+  {
+    "id": "v-SUSI-025-17-12-2797",
+    "surah": 25,
+    "ayah": 17,
+    "startToken": 12,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓؤُلَآءِ أَمْ",
+    "variantText": "هَٰؤُلَاءِ يَمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-17-12-2797",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-025-17-12-2797",
+        "variantId": "v-SUSI-025-17-12-2797",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2797; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هَٰؤُلَاءِ أَمْ → هَٰؤُلَاءِ يَمْ | إبدال الهمزة الثانية ياء"
+      }
+    ],
+    "description": "إبدال الهمزة الثانية ياء"
+  },
+  {
+    "id": "v-SUSI-025-19-6-2798",
+    "surah": 25,
+    "ayah": 19,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَسْتَطِيعُونَ",
+    "variantText": "يَسْتَطِيعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-19-6-2798",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-025-19-6-2798",
+        "variantId": "v-SUSI-025-19-6-2798",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2798; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَسْتَطِيعُونَ → يَسْتَطِيعُونَ | إبدال التاء ياء"
+      }
+    ],
+    "description": "إبدال التاء ياء"
+  },
+  {
+    "id": "v-SUSI-025-20-8-2799-performance",
+    "surah": 25,
+    "ayah": 20,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "لَيَأْكُلُونَ",
+    "variantText": "لَيَأْكُلُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-20-8-2799",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-025-20-8-2799",
+        "variantId": "v-SUSI-025-20-8-2799-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2799; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَيَأْكُلُونَ → لَيَاكُلُونَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

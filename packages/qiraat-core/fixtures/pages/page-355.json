@@ -37,6 +37,15 @@
         "sourceReference": "جدول سورة النور (الآيات 1-64)",
         "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
         "sourceText": "SH: وَفِي يَحْسَبُ كَسْرُ لِشَافِعٍ — D: وَفِي يَحْسِبُ افْتَحْ حُزْ"
+      },
+      {
+        "id": "s-SUSI-024-39-6-2744",
+        "variantId": "v-L355-يحسبه-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2744; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَحْسَبُهُ → يَحْسِبُهُ | كسر السين"
       }
     ],
     "description": "بكسر السين",

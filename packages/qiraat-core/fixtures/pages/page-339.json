@@ -164,6 +164,15 @@
         "sourceReference": "DOCX-P339-R01479",
         "verificationNotes": "ثبتت على الكلمة الحقيقية في صفحة المصحف 339؛ بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر.",
         "sourceText": "﴿لَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-022-58-16-2595",
+        "variantId": "v-L339-لهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2595; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَهُوَ → لَهْوَ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء",

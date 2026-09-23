@@ -39,6 +39,15 @@
         "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَالِكِ يَوْمِ الدِّينِ رَاوِيهِ نَاصِرٌ — D: وَمَالِكِ حُزْ فُزْ"
+      },
+      {
+        "id": "s-SUSI-001-4-1-0002",
+        "variantId": "v-L001-مالك-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَالِكِ → مَلِكِ | دون ألف"
       }
     ],
     "description": "بلا ألف",

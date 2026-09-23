@@ -42,6 +42,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/2",
         "sourceText": "تشديد الظاء والهاء وحذف الألف: نافع وابن كثير وأبو عمرو ويعقوب.",
         "verificationNotes": "المرجع يذكر مجموعات الرواة لهذه الصورة صراحةً."
+      },
+      {
+        "id": "s-SUSI-058-2-2-4239",
+        "variantId": "v-AUDIT-DOCX-P542-R03432-fc7a3b2347",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4239; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُظَاهِرُونَ → يَظَّهَّرُونَ | فتح الياء وتشديد الظاء وتشديد الهاء مفتوحة دون ألف"
       }
     ],
     "description": "بضم التاء وكسر الهاء مخففة وألف بعد الظاء ﴿يُظَاهِرُونَ﴾: عاصم.",
@@ -217,5 +226,68 @@
       }
     ],
     "performanceNote": "وجه لفظي مستقل: اللآيْ"
+  },
+  {
+    "id": "v-SUSI-058-3-2-4240",
+    "surah": 58,
+    "ayah": 3,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُظَـٰهِرُونَ",
+    "variantText": "يَظَّهَّرُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-058-3-2-4240",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-058-3-2-4240",
+        "variantId": "v-SUSI-058-3-2-4240",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4240; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُظَاهِرُونَ → يَظَّهَّرُونَ | فتح الياء وتشديد الظاء وتشديد الهاء مفتوحة دون ألف"
+      }
+    ],
+    "description": "فتح الياء وتشديد الظاء وتشديد الهاء مفتوحة دون ألف"
+  },
+  {
+    "id": "v-SUSI-058-4-18-4241-performance",
+    "surah": 58,
+    "ayah": 4,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "لِتُؤْمِنُوا۟",
+    "variantText": "لِتُؤْمِنُوا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-058-4-18-4241",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-058-4-18-4241",
+        "variantId": "v-SUSI-058-4-18-4241-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4241; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِتُؤْمِنُوا → لِتُومِنُوا | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

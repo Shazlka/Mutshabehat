@@ -414,5 +414,165 @@
     "description": "بتشديد الطاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-018-85-1-2206-performance",
+    "surah": 18,
+    "ayah": 85,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَأَتْبَعَ",
+    "variantText": "فَأَتْبَعَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-85-1-2206",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل وتشديد التاء مفتوحة",
+    "sources": [
+      {
+        "id": "s-SUSI-018-85-1-2206",
+        "variantId": "v-SUSI-018-85-1-2206-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2206; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَأَتْبَعَ → فَاتَّبَعَ | همزة وصل وتشديد التاء مفتوحة"
+      }
+    ],
+    "description": "همزة وصل وتشديد التاء مفتوحة"
+  },
+  {
+    "id": "v-SUSI-018-89-2-2210-performance",
+    "surah": 18,
+    "ayah": 89,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَتْبَعَ",
+    "variantText": "أَتْبَعَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-89-2-2210",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل وتشديد التاء مفتوحة ويبدأ بها بهمزة مكسورة",
+    "sources": [
+      {
+        "id": "s-SUSI-018-89-2-2210",
+        "variantId": "v-SUSI-018-89-2-2210-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2210; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتْبَعَ → اتَّبَعَ | همزة وصل وتشديد التاء مفتوحة ويبدأ بها بهمزة مكسورة"
+      }
+    ],
+    "description": "همزة وصل وتشديد التاء مفتوحة ويبدأ بها بهمزة مكسورة"
+  },
+  {
+    "id": "v-SUSI-018-92-2-2212-performance",
+    "surah": 18,
+    "ayah": 92,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَتْبَعَ",
+    "variantText": "أَتْبَعَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-92-2-2212",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل وتشديد التاء مفتوحة",
+    "sources": [
+      {
+        "id": "s-SUSI-018-92-2-2212",
+        "variantId": "v-SUSI-018-92-2-2212-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2212; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتْبَعَ → اتَّبَعَ | همزة وصل وتشديد التاء مفتوحة"
+      }
+    ],
+    "description": "همزة وصل وتشديد التاء مفتوحة"
+  },
+  {
+    "id": "v-SUSI-018-94-5-2213-performance",
+    "surah": 18,
+    "ayah": 94,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَأْجُوجَ وَمَأْجُوجَ",
+    "variantText": "يَأْجُوجَ وَمَأْجُوجَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-94-5-2213",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمز ألفاً فيهما",
+    "sources": [
+      {
+        "id": "s-SUSI-018-94-5-2213",
+        "variantId": "v-SUSI-018-94-5-2213-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2213; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْجُوجَ وَمَأْجُوجَ → يَاجُوجَ وَمَاجُوجَ | إبدال الهمز ألفاً فيهما"
+      }
+    ],
+    "description": "إبدال الهمز ألفاً فيهما"
+  },
+  {
+    "id": "v-SUSI-018-96-8-2215-performance",
+    "surah": 18,
+    "ayah": 96,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱلصَّدَفَيْنِ",
+    "variantText": "ٱلصَّدَفَيْنِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-96-8-2215",
+    "locusType": "performance_variant",
+    "performanceNote": "ضم الصاد والدال",
+    "sources": [
+      {
+        "id": "s-SUSI-018-96-8-2215",
+        "variantId": "v-SUSI-018-96-8-2215-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2215; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الصَّدَفَيْنِ → الصُّدُفَيْنِ | ضم الصاد والدال"
+      }
+    ],
+    "description": "ضم الصاد والدال"
   }
 ]

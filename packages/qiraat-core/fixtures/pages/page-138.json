@@ -93,6 +93,15 @@
         "sourceReference": "صفحة المصحف 138 · صفحة المصدر 143",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَقُلْ زَكَرِيَّا دُونَ هَمْزٍ جَمِيعِهِ صِحَابٌ"
+      },
+      {
+        "id": "s-SUSI-006-85-1-0774",
+        "variantId": "v-L138-وزكريا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 774; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَزَكَرِيَّا → وَزَكَرِيَّاءَ | زيادة همزة مفتوحة في آخره مع المد"
       }
     ],
     "description": "بالمد والهمز",

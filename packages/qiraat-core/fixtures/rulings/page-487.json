@@ -218,7 +218,10 @@
     "sourceRecordId": "DOCX-P487-R02912",
     "sourceText": "﴿صَبَّارٍ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش.",
     "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02912",
-    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/33"
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/33",
+    "sourceNotes": [
+      "صَبَّارٍ → صَبَّارٍ | إمالة فتحة الباء والألف"
+    ]
   },
   {
     "id": "r-p487-IMALAH_TAQLIL-الدنيا-2",
@@ -236,6 +239,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -250,13 +261,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -276,11 +293,6 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
@@ -290,7 +302,10 @@
     "sourceRecordId": "DOCX-P487-R02913",
     "sourceText": "﴿الدُّنْيَا﴾، ﴿وَأَبْقَىٰ﴾: حمزة، الكسائي، خلف، وقللهما ورش بخلف (وأبو عمرو في الدنيا).",
     "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02913",
-    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/36"
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/36",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+    ]
   },
   {
     "id": "r-p487-IMALAH_TAQLIL-وابقا-3",
@@ -452,7 +467,10 @@
     "sourceRecordId": "DOCX-P487-R02914",
     "sourceText": "﴿شُورَىٰ﴾: أبو عمرو، حمزة، الكسائي، خلف، وقللها ورش.",
     "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02914",
-    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/38"
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/38",
+    "sourceNotes": [
+      "شُورَىٰ → شُورَى | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p487-TAGHYIR_HAMZ-يشا-5",
@@ -701,6 +719,9 @@
     "sourceRecordId": "DOCX-P487-R02915",
     "sourceText": "﴿وَتَرَى﴾: وقفاً (أبو عمرو، حمزة، الكسائي، وخلف، وقللها ورش)؛ ووصلاً أمالها السوسي بخلف.",
     "sourceReference": "qiraat_records.jsonl، DOCX-P487-R02915",
-    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/44؛ «خلف» أُسند إلى Q06 وفق قاعدة المشروع."
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/44؛ «خلف» أُسند إلى Q06 وفق قاعدة المشروع.",
+    "sourceNotes": [
+      "وَتَرَى الظَّالِمِينَ → وَتَرَى الظَّالِمِينَ | وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة"
+    ]
   }
 ]

@@ -37,6 +37,15 @@
         "sourceReference": "صفحة المصحف 115 · صفحة المصدر 120",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: فِي الضَّمِّ الإِسْكَانُ حُصِّلَا وَفِي كَلِمَاتِ السُّحْتِ عَمَّ نُهًى فَتًى — D: أَثْقِلَا … وَخُطُوَاتٍ سُحْتٍ شُغْلٍ رُحْمًا حَوَى الْعُلَا"
+      },
+      {
+        "id": "s-SUSI-005-42-4-0572",
+        "variantId": "v-L115-للسحت-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 572; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِلسُّحْتِ → لِلسُّحُتِ | ضم الحاء"
       }
     ],
     "description": "بضم السين والحاء",
@@ -304,6 +313,15 @@
         "sourceReference": "صفحة المصحف 115 · صفحة المصدر 120",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-005-45-20-0580",
+        "variantId": "v-L115-فهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 580; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -318,5 +336,162 @@
         "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-005-43-4-0573",
+    "surah": 5,
+    "ayah": 43,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلتَّوْرَىٰةُ",
+    "variantText": "التَّوْرَىةُ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-005-43-4-0573",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-005-43-4-0573",
+        "variantId": "v-SUSI-005-43-4-0573",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 573; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "التَّوْرَاةُ → التَّوْرَىةُ | إمالة فتحة الراء"
+      }
+    ],
+    "description": "إمالة فتحة الراء"
+  },
+  {
+    "id": "v-SUSI-005-43-15-0575-performance",
+    "surah": 5,
+    "ayah": 43,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْمُؤْمِنِينَ",
+    "variantText": "بِٱلْمُؤْمِنِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-005-43-15-0575",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-005-43-15-0575",
+        "variantId": "v-SUSI-005-43-15-0575-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 575; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِالْمُؤْمِنِينَ → بِالْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-005-44-3-0576",
+    "surah": 5,
+    "ayah": 44,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلتَّوْرَىٰةَ",
+    "variantText": "التَّوْرَىةُ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-005-44-3-0576",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-005-44-3-0576",
+        "variantId": "v-SUSI-005-44-3-0576",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 576; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "التَّوْرَاةُ → التَّوْرَىةُ | إمالة فتحة الراء"
+      }
+    ],
+    "description": "إمالة فتحة الراء"
+  },
+  {
+    "id": "v-SUSI-005-44-27-0578",
+    "surah": 5,
+    "ayah": 44,
+    "startToken": 27,
+    "endToken": 27,
+    "operation": "REPLACE",
+    "hafsText": "وَٱخْشَوْنِ",
+    "variantText": "وَاخْشَوْنِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-005-44-27-0578",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-005-44-27-0578",
+        "variantId": "v-SUSI-005-44-27-0578",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 578; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَاخْشَوْنِ → وَاخْشَوْنِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-005-45-15-0579-performance",
+    "surah": 5,
+    "ayah": 45,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْجُرُوحَ",
+    "variantText": "وَٱلْجُرُوحَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-005-45-15-0579",
+    "locusType": "performance_variant",
+    "performanceNote": "ضم الحاء",
+    "sources": [
+      {
+        "id": "s-SUSI-005-45-15-0579",
+        "variantId": "v-SUSI-005-45-15-0579-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 579; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْجُرُوحَ → وَالْجُرُوحُ | ضم الحاء"
+      }
+    ],
+    "description": "ضم الحاء"
   }
 ]

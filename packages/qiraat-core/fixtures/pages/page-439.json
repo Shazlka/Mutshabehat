@@ -75,5 +75,98 @@
     "description": "بالجمع",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-035-43-15-3495",
+    "surah": 35,
+    "ayah": 43,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "سُنَّتَ",
+    "variantText": "سُنَّه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-43-15-3495",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-035-43-15-3495",
+        "variantId": "v-SUSI-035-43-15-3495",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3495; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سُنَّتَ → سُنَّه | بالهاء وقفاً"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-035-43-19-3496",
+    "surah": 35,
+    "ayah": 43,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "لِسُنَّتِ",
+    "variantText": "لِسُنَّه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-43-19-3496",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-035-43-19-3496",
+        "variantId": "v-SUSI-035-43-19-3496",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3496; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِسُنَّتِ (معاً) → لِسُنَّه | بالهاء وقفاً (في الموضعين)"
+      }
+    ],
+    "description": "بالهاء وقفاً (في الموضعين)"
+  },
+  {
+    "id": "v-SUSI-035-43-24-3496",
+    "surah": 35,
+    "ayah": 43,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "لِسُنَّتِ",
+    "variantText": "لِسُنَّه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-43-24-3496",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-035-43-24-3496",
+        "variantId": "v-SUSI-035-43-24-3496",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3496; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِسُنَّتِ (معاً) → لِسُنَّه | بالهاء وقفاً (في الموضعين)"
+      }
+    ],
+    "description": "بالهاء وقفاً (في الموضعين)"
   }
 ]

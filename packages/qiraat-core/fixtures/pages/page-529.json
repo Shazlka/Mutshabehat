@@ -35,6 +35,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P529-R03324",
         "sourceText": "﴿خُشَّعًا﴾: بضم الخاء وتشديد الشين المفتوحة ﴿خُشَّعًا﴾ لنافع، وابن كثير، وابن عامر، وعاصم، وأبي جعفر؛ بكسر الخاء وألف بعدها وتخفيف الشين ﴿خَاشِعًا﴾ للباقين.",
         "verificationNotes": "إسناد صريح من السطر المصدر، وطوبق الوجه على رمز الكلمة الحقيقي في صفحة المصحف."
+      },
+      {
+        "id": "s-SUSI-054-7-1-4196",
+        "variantId": "v-AUDIT-P529-khusha-1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4196; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "خُشَّعًا → خَاشِعًا | بالألف على التوحيد"
       }
     ],
     "description": "بكسر الخاء وألف بعدها وتخفيف الشين",
@@ -222,5 +231,36 @@
     "description": "بتاء الخطاب لابن عامر وحمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-054-8-2-4198",
+    "surah": 54,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِلَى ٱلدَّاعِ ۖ",
+    "variantText": "إِلَى الدَّاعِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-054-8-2-4198",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-054-8-2-4198",
+        "variantId": "v-SUSI-054-8-2-4198",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4198; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِلَى الدَّاعِ → إِلَى الدَّاعِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
   }
 ]

@@ -186,6 +186,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-isra/64",
         "sourceText": "وَرَجْلِكَ",
         "verificationNotes": "مرجع مستقل يثبت الوجه."
+      },
+      {
+        "id": "s-SUSI-017-64-9-2053",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2053; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَرَجِلِكَ → وَرِجْلِكَ | إسكان الجيم مع القلقلة"
       }
     ],
     "description": "وَرَجْلِكَ",
@@ -197,5 +206,36 @@
         "url": "https://quranpedia.net/qiraat/al-isra/64"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-017-62-8-2051",
+    "surah": 17,
+    "ayah": 62,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَخَّرْتَنِ",
+    "variantText": "أَخَّرْتَنِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-62-8-2051",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-017-62-8-2051",
+        "variantId": "v-SUSI-017-62-8-2051",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2051; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَخَّرْتَنِ → أَخَّرْتَنِي | بالياء وصلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
   }
 ]

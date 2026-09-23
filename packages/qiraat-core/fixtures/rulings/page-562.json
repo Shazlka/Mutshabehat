@@ -203,6 +203,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -225,13 +233,19 @@
       {
         "authorityId": "Q10-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -261,16 +275,14 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "بَلَىٰ → بَلَى | تقليل الألف"
+    ]
   },
   {
     "id": "r-p562-IMALAH_TAQLIL-جاءنا-3",
@@ -763,5 +775,40 @@
         "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
       }
     ]
+  },
+  {
+    "id": "r-SUSI-067-3-15-4331-IMALAH_TAQLIL",
+    "pageNumber": 562,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 67,
+    "ayah": 3,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 3,
+    "baseText": "هَلْ تَرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل فتحة الراء والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل فتحة الراء والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "هَلْ تَرَىٰ → هَلْ تَرَى | تقليل فتحة الراء والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

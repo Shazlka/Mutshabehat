@@ -37,6 +37,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P276-R00745",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. تصحيح الباقين: خلف المجرد في الوجه المقابل = Q06، وخلف العاشر Q10 داخل الباقين.",
         "sourceText": "﴿ظَعْنِكُمْ﴾: بإسكان العين لابن عامر، عاصم، حمزة، الكسائي، خلف؛ وبفتح العين ﴿ظَعَنِكُمْ﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-016-80-15-1951",
+        "variantId": "v-D276-ظعنكم-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1951; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ظَعْنِكُمْ → ظَعَنِكُمْ | فتح العين"
       }
     ],
     "description": "بفتح العين",
@@ -196,5 +205,68 @@
     "description": "بضم الهاء والميم وصلاً لحمزة والكسائي ويعقوب وخلف",
     "wajhIndex": 4,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-016-81-19-1955-performance",
+    "surah": 16,
+    "ayah": 81,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "بَأْسَكُمْ ۚ",
+    "variantText": "بَأْسَكُمْ ۚ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-81-19-1955",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-81-19-1955",
+        "variantId": "v-SUSI-016-81-19-1955-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1955; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بَأْسَكُمْ → بَاسَكُمْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-016-83-1-1956",
+    "surah": 16,
+    "ayah": 83,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَعْرِفُونَ نِعْمَتَ",
+    "variantText": "يَعْرِفُون نِّعْمَه",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-83-1-1956",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-016-83-1-1956",
+        "variantId": "v-SUSI-016-83-1-1956",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1956; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَعْرِفُونَ نِعْمَتَ → يَعْرِفُون نِّعْمَه | إدغام النون في النون وبالهاء وقفاً"
+      }
+    ],
+    "description": "إدغام النون في النون وبالهاء وقفاً"
   }
 ]

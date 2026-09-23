@@ -182,5 +182,101 @@
     "description": "بكسر السين وتشديد الياء",
     "wajhIndex": 4,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-038-63-1-3634-performance",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَتَّخَذْنَـٰهُمْ",
+    "variantText": "أَتَّخَذْنَـٰهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-038-63-1-3634",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل تسقط عند الوصل بما قبلها وتكسر ابتداء",
+    "sources": [
+      {
+        "id": "s-SUSI-038-63-1-3634",
+        "variantId": "v-SUSI-038-63-1-3634-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3634; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتَّخَذْنَاهُمْ → اتَّخَذْنَاهُمْ | همزة وصل تسقط عند الوصل بما قبلها وتكسر ابتداء"
+      }
+    ],
+    "description": "همزة وصل تسقط عند الوصل بما قبلها وتكسر ابتداء"
+  },
+  {
+    "id": "v-SUSI-038-69-1-3637-performance",
+    "surah": 38,
+    "ayah": 69,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مَا كَانَ لِىَ",
+    "variantText": "مَا كَانَ لِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-038-69-1-3637",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-038-69-1-3637",
+        "variantId": "v-SUSI-038-69-1-3637-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3637; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَا كَانَ لِيَ → مَا كَانَ لِي | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  },
+  {
+    "id": "v-SUSI-038-83-4-3642-performance",
+    "surah": 38,
+    "ayah": 83,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُخْلَصِينَ",
+    "variantText": "ٱلْمُخْلَصِينَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-038-83-4-3642",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر اللام",
+    "sources": [
+      {
+        "id": "s-SUSI-038-83-4-3642",
+        "variantId": "v-SUSI-038-83-4-3642-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3642; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُخْلَصِينَ → الْمُخْلِصِينَ | كسر اللام"
+      }
+    ],
+    "description": "كسر اللام"
   }
 ]

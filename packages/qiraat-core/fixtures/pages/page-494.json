@@ -77,6 +77,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P494-R02975",
         "verificationNotes": "سطر مصدر صريح، وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "تَشْتَهِي للباقين"
+      },
+      {
+        "id": "s-SUSI-043-71-9-3948",
+        "variantId": "v-AUDIT-P494-TASHTAHI-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3948; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَشْتَهِيهِ → تَشْتَهِي | حذف الهاء من آخره"
       }
     ],
     "description": "تَشْتَهِي للباقين",
@@ -88,5 +97,100 @@
         "text": "مطابقة موضع الوجه وتقسيم القراء في جهاز القراءات العشر."
       }
     ]
+  },
+  {
+    "id": "v-SUSI-043-66-6-3946-performance",
+    "surah": 43,
+    "ayah": 66,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِيَهُم",
+    "variantText": "تَأْتِيَهُم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-043-66-6-3946",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-043-66-6-3946",
+        "variantId": "v-SUSI-043-66-6-3946-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3946; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْتِيَهُم → تَاتِيَهُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-043-72-4-3949",
+    "surah": 43,
+    "ayah": 72,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أُورِثْتُمُوهَا",
+    "variantText": "أُورِتُّوهَا",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-043-72-4-3949",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-043-72-4-3949",
+        "variantId": "v-SUSI-043-72-4-3949",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3949; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أُورِثْتُمُوهَا → أُورِتُّوهَا | إدغام الثاء في التاء"
+      }
+    ],
+    "description": "إدغام الثاء في التاء"
+  },
+  {
+    "id": "v-SUSI-043-73-6-3950-performance",
+    "surah": 43,
+    "ayah": 73,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَأْكُلُونَ",
+    "variantText": "تَأْكُلُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-043-73-6-3950",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-043-73-6-3950",
+        "variantId": "v-SUSI-043-73-6-3950-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3950; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْكُلُونَ → تَاكُلُونَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

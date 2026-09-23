@@ -35,6 +35,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَرَءُوفٌ قَصْرُ صُحْبَتِهِ حَلَا"
+      },
+      {
+        "id": "s-SUSI-022-65-26-2605",
+        "variantId": "v-L340-لرءوف-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2605; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَرَءُوفٌ → لَرَؤُفٌ | حذف الواو"
       }
     ],
     "description": "بالقصر",
@@ -79,6 +88,15 @@
         "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-022-66-1-2606",
+        "variantId": "v-L340-وهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2606; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء تخفيفاً",
@@ -307,5 +325,68 @@
     "description": "بضم الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-022-65-16-2603",
+    "surah": 22,
+    "ayah": 65,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "ٱلسَّمَآءَ أَن",
+    "variantText": "السَّمَا أَن",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-022-65-16-2603",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-022-65-16-2603",
+        "variantId": "v-SUSI-022-65-16-2603",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2603; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "السَّمَاءَ أَن → السَّمَا أَن | إسقاط الهمزة الأولى"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى"
+  },
+  {
+    "id": "v-SUSI-022-72-28-2612-performance",
+    "surah": 22,
+    "ayah": 72,
+    "startToken": 28,
+    "endToken": 28,
+    "operation": "REPLACE",
+    "hafsText": "وَبِئْسَ",
+    "variantText": "وَبِئْسَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-022-72-28-2612",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-022-72-28-2612",
+        "variantId": "v-SUSI-022-72-28-2612-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2612; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَبِئْسَ → وَبِيسَ | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
   }
 ]

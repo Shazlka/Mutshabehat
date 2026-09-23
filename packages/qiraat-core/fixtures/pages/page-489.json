@@ -494,6 +494,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02931",
         "sourceText": "﴿مَهْدٗا﴾: بسكون الهاء لعاصم، وحمزة، والكسائي، وخلف؛ وبكسر الميم وفتح الهاء وألف بعدها ﴿مِهَادًا﴾ للباقين.",
         "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/az-zukhruf/10"
+      },
+      {
+        "id": "s-SUSI-043-10-5-3912",
+        "variantId": "v-AUDIT-P489-43-10-5-DOCX-P489-R02931",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3912; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَهْدًا → مِهَادًا | كسر الميم وفتح الهاء وألف بعدها"
       }
     ],
     "description": "بكسر الميم وفتح الهاء وألف بعدها",

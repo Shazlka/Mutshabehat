@@ -217,5 +217,37 @@
         "url": "https://quranpedia.net/qiraat/al-muddaththir/5"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-073-20-73-4379-performance",
+    "surah": 73,
+    "ayah": 20,
+    "startToken": 73,
+    "endToken": 74,
+    "operation": "REPLACE",
+    "hafsText": "وَٱسْتَغْفِرُوا۟ ٱللَّهَ ۖ",
+    "variantText": "وَٱسْتَغْفِرُوا۟ ٱللَّهَ ۖ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-073-20-73-4379",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-073-20-73-4379",
+        "variantId": "v-SUSI-073-20-73-4379-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4379; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَاسْتَغْفِرُوا اللَّهَ → وَاسْتَغْفِرُوا اللَّهَ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
   }
 ]

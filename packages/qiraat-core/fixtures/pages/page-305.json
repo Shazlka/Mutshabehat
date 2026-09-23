@@ -182,6 +182,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      },
+      {
+        "id": "s-SUSI-019-8-14-2237",
+        "variantId": "v-L305-عتيا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2237; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عِتِيًّا → عُتِيًّا | ضم العين"
       }
     ],
     "description": "بضم العين",
@@ -316,5 +325,100 @@
     "description": "بفتح النون وضم الشين مخففة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-019-2-1-2227",
+    "surah": 19,
+    "ayah": 2,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ذِكْرُ رَحْمَتِ",
+    "variantText": "ذِكْر رَّحْمَه",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-2-1-2227",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-019-2-1-2227",
+        "variantId": "v-SUSI-019-2-1-2227",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2227; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ذِكْرُ رَحْمَتِ → ذِكْر رَّحْمَه | إدغام الراء في الراء وبالهاء وقفاً"
+      }
+    ],
+    "description": "إدغام الراء في الراء وبالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-019-6-2-2233-performance",
+    "surah": 19,
+    "ayah": 6,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَيَرِثُ",
+    "variantText": "وَيَرِثُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-6-2-2233",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الثاء",
+    "sources": [
+      {
+        "id": "s-SUSI-019-6-2-2233",
+        "variantId": "v-SUSI-019-6-2-2233-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2233; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَيَرِثُ → وَيَرِثْ | إسكان الثاء"
+      }
+    ],
+    "description": "إسكان الثاء"
+  },
+  {
+    "id": "v-SUSI-019-10-4-2241-performance",
+    "surah": 19,
+    "ayah": 10,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِّىٓ",
+    "variantText": "لِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-10-4-2241",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-019-10-4-2241",
+        "variantId": "v-SUSI-019-10-4-2241-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2241; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِي → لِيَ | فتح الياء"
+      }
+    ],
+    "description": "فتح الياء"
   }
 ]

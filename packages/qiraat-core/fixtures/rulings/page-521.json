@@ -206,7 +206,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَبِالْأَسْحَارِ → وَبِالْأَسْحَارِ | إمالة فتحة الحاء والألف"
+    ]
   },
   {
     "id": "r-p521-IMALAH_TAQLIL-ءاتاهم-2",
@@ -551,5 +554,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-051-25-1-4113-IDGHAM_KABIR",
+    "pageNumber": 521,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 51,
+    "ayah": 25,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 25,
+    "baseText": "إِذْ دَخَلُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في الدال"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في الدال",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذ دَّخَلُوا → إِذ دَّخَلُوا | إدغام الذال في الدال"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

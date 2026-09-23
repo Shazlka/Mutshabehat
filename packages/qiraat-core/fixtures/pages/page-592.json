@@ -254,5 +254,162 @@
     "description": "إشمام الصاد زايًا لحمزة ورويس وخلف العاشر",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-088-1-1-4488",
+    "surah": 88,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "هَلْ أَتَىٰكَ",
+    "variantText": "هَلْ أَتَىٰكَ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-088-1-1-4488",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-088-1-1-4488",
+        "variantId": "v-SUSI-088-1-1-4488",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4488; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هَلْ أَتَاكَ → هَلْ أَتَىٰكَ | تقليل فتحة التاء والألف"
+      }
+    ],
+    "description": "تقليل فتحة التاء والألف"
+  },
+  {
+    "id": "v-SUSI-088-4-1-4489-performance",
+    "surah": 88,
+    "ayah": 4,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "تَصْلَىٰ",
+    "variantText": "تَصْلَىٰ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-088-4-1-4489",
+    "locusType": "performance_variant",
+    "performanceNote": "ضم التاء لأبي عمرو وأبي بكر وقرأ حفص بفتحها (تَصْلَىٰ)",
+    "sources": [
+      {
+        "id": "s-SUSI-088-4-1-4489",
+        "variantId": "v-SUSI-088-4-1-4489-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4489; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَصْلَىٰ → تُصْلَى | ضم التاء لأبي عمرو وأبي بكر وقرأ حفص بفتحها (تَصْلَىٰ)"
+      }
+    ],
+    "description": "ضم التاء لأبي عمرو وأبي بكر وقرأ حفص بفتحها (تَصْلَىٰ)"
+  },
+  {
+    "id": "v-SUSI-088-11-1-4490",
+    "surah": 88,
+    "ayah": 11,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَّا تَسْمَعُ",
+    "variantText": "لَّا يُسْمَعُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-088-11-1-4490",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-088-11-1-4490",
+        "variantId": "v-SUSI-088-11-1-4490",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4490; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَّا تَسْمَعُ → لَّا يُسْمَعُ | ضم الياء مبنياً للمفعول لأبي عمرو وابن كثير وقرأ حفص بتاء مفتوحة (لَّا تَسْمَعُ)"
+      }
+    ],
+    "description": "ضم الياء مبنياً للمفعول لأبي عمرو وابن كثير وقرأ حفص بتاء مفتوحة (لَّا تَسْمَعُ)"
+  },
+  {
+    "id": "v-SUSI-088-11-4-4491-performance",
+    "surah": 88,
+    "ayah": 11,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَـٰغِيَةًۭ",
+    "variantText": "لَـٰغِيَةًۭ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-088-11-4-4491",
+    "locusType": "performance_variant",
+    "performanceNote": "رفع التاء على أنه نائب فاعل لأبي عمرو وابن كثير وقرأ حفص بالنصب (لَاغِيَةً)",
+    "sources": [
+      {
+        "id": "s-SUSI-088-11-4-4491",
+        "variantId": "v-SUSI-088-11-4-4491-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4491; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَاغِيَةً → لَاغِيَةٌ | رفع التاء على أنه نائب فاعل لأبي عمرو وابن كثير وقرأ حفص بالنصب (لَاغِيَةً)"
+      }
+    ],
+    "description": "رفع التاء على أنه نائب فاعل لأبي عمرو وابن كثير وقرأ حفص بالنصب (لَاغِيَةً)"
+  },
+  {
+    "id": "v-SUSI-088-22-3-4492",
+    "surah": 88,
+    "ayah": 22,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "بِمُصَيْطِرٍ",
+    "variantText": "بِمُسَيْطِرٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-088-22-3-4492",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-088-22-3-4492",
+        "variantId": "v-SUSI-088-22-3-4492",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4492; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِمُصَيْطِرٍ → بِمُسَيْطِرٍ | بالسين الخالصة لأبي عمرو وقرأ حفص بالصاد"
+      }
+    ],
+    "description": "بالسين الخالصة لأبي عمرو وقرأ حفص بالصاد"
   }
 ]

@@ -290,10 +290,83 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P512-R03161",
         "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
         "sourceText": "﴿عَلَيْهُ اللَّهَ﴾: بضم الهاء وصلاً لحفص؛ بكسر الهاء وصلاً ﴿عَلَيْهِ اللَّهَ﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-048-10-21-4070",
+        "variantId": "v-D512-عليه_الله-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4070; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عَلَيْهُ اللَّهَ → عَلَيْهِ اللَّهَ | كسر الهاء وصلاً ووقفاً"
       }
     ],
     "description": "بكسر الهاء وصلاً للباقين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-048-12-7-4074-performance",
+    "surah": 48,
+    "ayah": 12,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْمُؤْمِنُونَ",
+    "variantText": "وَٱلْمُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-048-12-7-4074",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-048-12-7-4074",
+        "variantId": "v-SUSI-048-12-7-4074-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4074; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْمُؤْمِنُونَ → وَالْمُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-048-13-3-4075-performance",
+    "surah": 48,
+    "ayah": 13,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنۢ",
+    "variantText": "يُؤْمِنۢ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-048-13-3-4075",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-048-13-3-4075",
+        "variantId": "v-SUSI-048-13-3-4075-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4075; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمِن → يُومِن | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

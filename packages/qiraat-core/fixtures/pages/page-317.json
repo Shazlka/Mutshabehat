@@ -176,6 +176,15 @@
         "sourceType": "other",
         "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-020-80-7-2418",
+        "variantId": "v-L317-وواعدناكم-1-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2418; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَوَاعَدْنَاكُمْ → وَوَعَدْنَاكُمْ | حذف الألف الأولى"
       }
     ],
     "description": "بحذف الألف بعد الواو",
@@ -434,6 +443,15 @@
         "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَكَسْرُ بِمَلْكِنَا ضَمَّ نَافِعٌ وَبِالْفَتْحِ صَحْبٌ"
+      },
+      {
+        "id": "s-SUSI-020-87-5-2425",
+        "variantId": "v-L317-بملكنا-1-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2425; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِمَلْكِنَا → بِمِلْكِنَا | كسر الميم"
       }
     ],
     "description": "بكسر الميم",

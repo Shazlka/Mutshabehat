@@ -32,6 +32,15 @@
         "sourceType": "other",
         "sourceReference": "استخراج المستخدم، 2026-09-20",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-013-33-30-1766",
+        "variantId": "v-L253-وصدوا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1766; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَصُدُّوا → وَصَدُّوا | فتح الصاد"
       }
     ],
     "description": "بفتح الصاد مبنياً للفاعل",
@@ -125,5 +134,100 @@
     "description": "وجه حفص المطابق لرسم المصحف",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-013-30-11-1759-performance",
+    "surah": 13,
+    "ayah": 30,
+    "startToken": 11,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلَّذِىٓ",
+    "variantText": "عَلَيْهِمُ ٱلَّذِىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-013-30-11-1759",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الميم وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-013-30-11-1759",
+        "variantId": "v-SUSI-013-30-11-1759-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1759; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عَلَيْهِمُ الَّذِي → عَلَيْهِمِ الَّذِي | كسر الميم وصلاً"
+      }
+    ],
+    "description": "كسر الميم وصلاً"
+  },
+  {
+    "id": "v-SUSI-013-31-44-1763-performance",
+    "surah": 13,
+    "ayah": 31,
+    "startToken": 44,
+    "endToken": 44,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِىَ",
+    "variantText": "يَأْتِىَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-013-31-44-1763",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-013-31-44-1763",
+        "variantId": "v-SUSI-013-31-44-1763-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1763; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْتِيَ → يَاتِيَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-013-32-10-1764",
+    "surah": 13,
+    "ayah": 32,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "أَخَذْتُهُمْ ۖ",
+    "variantText": "أَخَتُّهُمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-013-32-10-1764",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-013-32-10-1764",
+        "variantId": "v-SUSI-013-32-10-1764",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1764; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَخَذْتُهُمْ → أَخَتُّهُمْ | إدغام الذال في التاء"
+      }
+    ],
+    "description": "إدغام الذال في التاء"
   }
 ]

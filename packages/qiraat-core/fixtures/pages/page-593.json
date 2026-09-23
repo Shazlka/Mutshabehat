@@ -36,5 +36,131 @@
     "description": "وَٱلْوِتْرِ",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-088-25-3-4493-performance",
+    "surah": 88,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِيَابَهُمْ",
+    "variantText": "إِيَابَهُمْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-088-25-3-4493",
+    "locusType": "performance_variant",
+    "performanceNote": "تشديد الياء لأبي جعفر وأبو عمرو بالتخفيف كحفص",
+    "sources": [
+      {
+        "id": "s-SUSI-088-25-3-4493",
+        "variantId": "v-SUSI-088-25-3-4493-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4493; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِيَابَهُمْ → إِيَّابَهُمْ | تشديد الياء لأبي جعفر وأبو عمرو بالتخفيف كحفص"
+      }
+    ],
+    "description": "تشديد الياء لأبي جعفر وأبو عمرو بالتخفيف كحفص"
+  },
+  {
+    "id": "v-SUSI-089-16-5-4494-performance",
+    "surah": 89,
+    "ayah": 16,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "فَقَدَرَ",
+    "variantText": "فَقَدَرَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-089-16-5-4494",
+    "locusType": "performance_variant",
+    "performanceNote": "تشديد الدال لابن عامر وأبي جعفر وأبو عمرو بالتخفيف كحفص",
+    "sources": [
+      {
+        "id": "s-SUSI-089-16-5-4494",
+        "variantId": "v-SUSI-089-16-5-4494-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4494; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَقَدَرَ → فَقَدَّرَ | تشديد الدال لابن عامر وأبي جعفر وأبو عمرو بالتخفيف كحفص"
+      }
+    ],
+    "description": "تشديد الدال لابن عامر وأبي جعفر وأبو عمرو بالتخفيف كحفص"
+  },
+  {
+    "id": "v-SUSI-089-17-4-4495",
+    "surah": 89,
+    "ayah": 17,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تُكْرِمُونَ",
+    "variantText": "يُكْرِمُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-089-17-4-4495",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-089-17-4-4495",
+        "variantId": "v-SUSI-089-17-4-4495",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4495; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تُكْرِمُونَ → يُكْرِمُونَ | بالياء للغيب لأبي عمرو وعاصم بالتاء كحفص"
+      }
+    ],
+    "description": "بالياء للغيب لأبي عمرو وعاصم بالتاء كحفص"
+  },
+  {
+    "id": "v-SUSI-089-18-2-4496",
+    "surah": 89,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَحَـٰٓضُّونَ",
+    "variantText": "يَحُضُّونَ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-089-18-2-4496",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-089-18-2-4496",
+        "variantId": "v-SUSI-089-18-2-4496",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4496; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَحَاضُّونَ → يَحُضُّونَ | بالياء وفتح الحاء مخففة لأبي عمرو وقرأ حفص بالتاء والمد المشدد (تَحَاضُّونَ)"
+      }
+    ],
+    "description": "بالياء وفتح الحاء مخففة لأبي عمرو وقرأ حفص بالتاء والمد المشدد (تَحَاضُّونَ)"
   }
 ]

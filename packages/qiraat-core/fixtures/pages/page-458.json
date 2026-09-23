@@ -77,6 +77,15 @@
         "sourceType": "other",
         "sourceReference": "وثيقة الاستخراج المبوّب: الكلمات الفرشية والأصول لكل صفحة",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-038-84-2-3643",
+        "variantId": "v-D458-فالحق-w1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3643; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَالْحَقُّ → فَالْحَقَّ | فتح القاف"
       }
     ],
     "description": "وجه حفص المطابق لرسم المصحف",
