@@ -9,7 +9,7 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
-## 2026-09-23 — Qiraat Phase 4: review screen (API + UI), incident fix pending approval
+## 2026-09-23 — Qiraat Phase 4: review screen (API + UI) and VERSION_CONFLICT fix (applied)
 - **API** (Codex): `src/app/api/mushaf-1441/qiraat-review/route.ts` (GET page/overview/history, PATCH status/update/narrators/delete/restore, POST undo) through the user's session client only. `review-http.ts` holds pure request validation and DB-error → HTTP mapping (`npm run test:qiraat:review`, 12/12). Typed client `src/app/mushaf-1441/review/_lib/api.ts`.
 - **UI** (Antigravity): `/mushaf-1441/review?page=N`:
   - Hafs page on the right, rendered from `quran_words` (127/127 words on p3 identical to the DB in the DOM);
@@ -22,7 +22,7 @@ Live: https://mutshabehat-v2.vercel.app
   - `npm run typecheck` (8 GB heap), `test:qiraat` 44/44, `mushaf:validate` 7/7, `test:qiraat:review` 12/12;
   - `npm run build` passes with `NODE_OPTIONS=--max-old-space-size=8192` (the build worker runs out of heap at the default);
   - end-to-end on the built app against live, as the owner: page renders, 0 page errors, status write → undo restored `unreviewed`, D8 block 422 with the Arabic message, ← moves to page 4.
-- Database migration: 20260925130000 **not applied** (awaiting approval).
+- Database migration: 20260925130000 **applied to live 2026-09-23** after approval. Backup first: `pre-qiraat-phase4-1-apply-20260923T170004Z.dump` (12,826,872 bytes, 80 table-data sections); exit 0. Re-test of the exact call that looped: HTTP 409 `PT409` in 0.09 s, then 3 transactions in 5 s with the DB at 2.5% CPU; the test reading is unchanged (`unreviewed`).
 
 ## 2026-09-23 — Qiraat Phase 4: review API database layer (applied to live)
 - **Migration** `supabase/migrations/20260925120000_qiraat_phase4_review_api.sql` (+ rollback in `supabase/rollbacks/`):
