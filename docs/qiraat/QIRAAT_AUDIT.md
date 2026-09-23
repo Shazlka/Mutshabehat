@@ -1,6 +1,6 @@
 # Qiraat audit: Phase 1 of the database restructure (read-only)
 
-**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** Gate 1 answered (§9). Phase 2 complete (§10): Gate 2 approved and the DDL applied to live on 2026-09-23. Next: Phase 3 data migration.
+**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** Gate 1 answered (§9). Phase 2 and Phase 3 complete: DDL (+ Phase 2.1 undo fix) and the data migration applied to live on 2026-09-23 (see `docs/qiraat/PHASE3_MIGRATION_REPORT.md`). Next: Phase 4 review screen.
 
 Nothing was changed for this audit: no code, no fixture, no schema and no database row. The only new file is this document.
 

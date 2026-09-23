@@ -9602,3 +9602,9 @@ The migration rebuilds each touched canonical locus with qiraat_rebuild_locus_re
 - Fixture fidelity: rulings 11,318/11,318 identical narrator sets; فرش 3,556 identical text + narrators; 351 converted to أصول (TAGHYIR_HAMZ 238, YAAT_IDAFA 82, USUL_SAKT 13, HAMZATAN_KALIMA 5, HAMZATAN_KALIMATAYN 5, USUL_MIM_JAM 5, TARK_GHUNNA 2, SILAT_HA 1); 7 dropped.
 - Unchanged by the migration: editor annotations, resolved cache. Changed as expected: editor catalog (new source-document labels) and `qiraat_export_page` output (page content now from the fixtures).
 - Rollback: restore the pre-apply `pg_dump`. An edit-log undo of this migration is intentionally blocked by the D8 check, because the old data breaks D8.
+
+
+## Applied to live (2026-09-23)
+- Backup `pre-qiraat-phase3-apply-20260923T125433Z.dump`. Phase 2.1 then Phase 3 SQL (sha256 `9686f5b991d1a2f910f53b02f75bd1342f48d5ab2a69998527598369c36b098c`), each in one transaction, exit 0 (Phase 3 took 34 s).
+- Post-apply live checks are identical to the scratch verification above; `quran_words` checksum unchanged.
+- Rollback: restore `pre-qiraat-phase3-apply-20260923T125433Z.dump`.
