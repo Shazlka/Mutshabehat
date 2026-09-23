@@ -30,7 +30,7 @@ import { attributionLabelsAr, readingsNotIn } from '../../../../packages/qiraat-
 import { getReading, getReadingOrNull, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
 import { getNarrator, narratorsOfReader } from '../../../../packages/qiraat-core/narrators'
-import { readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
+import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatLegend from './qiraat/QiraatLegend'
@@ -38,7 +38,6 @@ import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
 import QiraatEditor, { canonicalKeyForWord } from './qiraat/QiraatEditor'
 import {
   comparisonMarkerForWord,
-  markerPaintForWord,
   riwayahResolutionForWord,
   rulingMarkerForWord,
   rulingCategoriesOnPage,
@@ -2413,10 +2412,11 @@ export default function Mushaf1441Viewer({
 
     const effectiveMarkerColor = qiraatMarker?.isPerformanceOnly
       ? (mushafTheme === 'dark' ? adaptColorForDark(PERFORMANCE_MARKER_COLOR) : PERFORMANCE_MARKER_COLOR)
-      : (qiraatMarker && !qiraatMarker.isGradient
-          ? (mushafTheme === 'dark' ? adaptColorForDark(qiraatMarker.color) : qiraatMarker.color)
-          : undefined)
-    const qiraatMarkerPaint = qiraatMarker?.isGradient ? markerPaintForWord(qiraatMarker) : undefined
+      : qiraatMarker
+        ? (qiraatMarker.isGradient
+            ? (mushafTheme === 'dark' ? adaptColorForDark(QIRAAT_MULTI_READER_COLOR) : QIRAAT_MULTI_READER_COLOR)
+            : (mushafTheme === 'dark' ? adaptColorForDark(qiraatMarker.color) : qiraatMarker.color))
+        : undefined
     const annotationTextColor = adaptedAnnotation?.textColor ?? highlightAnnotation?.textColor
 
     return (
@@ -2424,6 +2424,7 @@ export default function Mushaf1441Viewer({
         key={word.id}
         type="button"
         data-quran-word-id={word.id}
+        data-qiraat-multi-reader={qiraatMarker?.isGradient ? 'true' : undefined}
         id={word.wordIndexInAyah === 1 ? navigateToAyah(word.ayahKey).slice(1) : undefined}
         onPointerUp={(event) => {
           // Some mobile WebKit builds suppress the synthetic click after a touch gesture on the
@@ -2571,11 +2572,6 @@ export default function Mushaf1441Viewer({
             ?? effectiveMarkerColor
             ?? effectiveRulingColor
             ?? currentThemeTokens.textPrimaryHex,
-          // A gradient cannot be used as `color`; clip it to the glyph text. Explicit user
-          // annotation colours remain the highest-priority paint and deliberately override it.
-          backgroundImage: annotationTextColor ? undefined : qiraatMarkerPaint?.backgroundImage,
-          WebkitBackgroundClip: annotationTextColor ? undefined : qiraatMarkerPaint?.WebkitBackgroundClip,
-          WebkitTextFillColor: annotationTextColor ? undefined : qiraatMarkerPaint?.WebkitTextFillColor,
           // ذو وجهين («بخلف عنه») — two equally valid readings here; never silently pick one.
           textDecoration: rulingMarker?.hasAlternate ? 'underline dotted' : undefined,
           textDecorationColor: rulingMarker?.hasAlternate ? effectiveRulingColor : undefined,

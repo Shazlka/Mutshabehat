@@ -4,13 +4,14 @@ import test from 'node:test'
 import { QIRAAT_READERS } from './readers.ts'
 import { QIRAAT_NARRATORS, narratorsOfReader } from './narrators.ts'
 import { QIRAAT_READINGS, getReading, getReadingOrNull } from './readings.ts'
-import { readerColor, narratorColor, readerCssVar, narratorCssVar } from './colors.ts'
+import { QIRAAT_MULTI_READER_COLOR, READER_COLOR, NARRATOR_COLOR, readerColor, narratorColor, readerCssVar, narratorCssVar } from './colors.ts'
+import { adaptColorForDark } from '../../src/app/mushaf-1441/_components/mushafTheme.ts'
 import { computeAttribution, gradientCss, readingsNotIn } from './attribution.ts'
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
 import { BASE_READING } from './types.ts'
 import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
 import { FixtureQiraatRepository } from './repository.ts'
-import { comparisonMarkerForWord, rulingMarkerForWord, markerPaintForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
+import { comparisonMarkerForWord, rulingMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
 import page001Rulings from './fixtures/rulings/page-001.json' with { type: 'json' }
 import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
@@ -22,6 +23,16 @@ import page266Rulings from './fixtures/rulings/page-266.json' with { type: 'json
 
 const ALL_READING_IDS = QIRAAT_READINGS.map((reading) => reading.id)
 const VARIANTS = synthetic.variants
+
+function contrastRatio(foreground, background) {
+  const luminance = (hex) => {
+    const channels = hex.match(/[0-9a-f]{2}/gi).map((channel) => parseInt(channel, 16) / 255)
+      .map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
+    return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+  }
+  const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a)
+  return (values[0] + 0.05) / (values[1] + 0.05)
+}
 
 function findVariant(id) {
   const variant = VARIANTS.find((v) => v.id === id)
@@ -323,7 +334,7 @@ test('comparison marker: a performance-only variant (no text change) gets the fi
   })
 })
 
-test('multi-reader marker paint preserves its gradient for Mushaf text instead of falling back to ink', () => {
+test('multi-reader word color uses a distinct named solid token while its underline attribution stays segmented', () => {
   const marker = comparisonMarkerForWord(
     [{
       id: 'synthetic-multi-reader', surah: 999, ayah: 11, startToken: 1, endToken: 1,
@@ -334,10 +345,13 @@ test('multi-reader marker paint preserves its gradient for Mushaf text instead o
     999, 11, 1, { kind: 'all' }, { includeUnpublished: true },
   )
   assert.ok(marker?.isGradient, 'two readers must produce a segmented gradient marker')
-  const paint = markerPaintForWord(marker)
-  assert.match(paint.backgroundImage ?? '', /^linear-gradient\(/)
-  assert.equal(paint.WebkitBackgroundClip, 'text')
-  assert.equal(paint.WebkitTextFillColor, 'transparent')
+  assert.ok(!Object.values(READER_COLOR).includes(QIRAAT_MULTI_READER_COLOR))
+  assert.ok(!Object.values(NARRATOR_COLOR).includes(QIRAAT_MULTI_READER_COLOR))
+  assert.equal(QIRAAT_MULTI_READER_COLOR, '#3F6212')
+  const darkColor = adaptColorForDark(QIRAAT_MULTI_READER_COLOR)
+  assert.equal(darkColor, '#bef264')
+  assert.ok(contrastRatio(QIRAAT_MULTI_READER_COLOR, '#fffdf6') >= 4.5, 'shared color must be readable on the light page')
+  assert.ok(contrastRatio(darkColor, '#18191d') >= 4.5, 'dark-adapted shared color must be readable on the dark page')
 })
 
 test('a record with no confident attribution never crashes the marker builder (computeAttribution([]) throws)', () => {
@@ -532,6 +546,45 @@ test('page 266 carries the supplied Al-Hijr colour coverage for 15:82 and 15:87'
     page266Rulings.some((rule) => rule.ayah === 82 && rule.category === 'MADD_BADAL'),
     '15:82 آمِنِينَ must retain its Warsh-specific colour marker alongside the comparison locus',
   )
+})
+
+test('page 536 keeps distinct performance faces for the same word and reader', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(536, { includeUnpublished: true })
+  const repeatedFace = variants.filter((variant) =>
+    variant.surah === 56 && variant.ayah === 58 && variant.startToken === 1 &&
+    variant.variantText === 'أَفَرَءَيْتُم' && variant.readingIds.length === 1 &&
+    variant.readingIds[0] === 'Q01-R02'
+  )
+  assert.equal(repeatedFace.length, 2)
+  assert.deepEqual(new Set(repeatedFace.map((variant) => variant.performanceNote)), new Set([
+    'تسهيل الهمزة الثانية مع مد ست حركات',
+    'إبدال الهمزة الثانية ألفاً ممدودة ست حركات',
+  ]))
+})
+
+test('page 400 merges reader sets for the same face but keeps a different description separate', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(400, { includeUnpublished: true })
+  const locus = variants.filter((variant) => variant.surah === 29 && variant.ayah === 33 && variant.startToken === 17 && variant.variantText === 'مُنْجُوكَ')
+  const sharedFace = locus.filter((variant) => variant.description === 'بتخفيف الجيم')
+  const distinctFace = locus.filter((variant) => variant.description === 'بسكون النون وتخفيف الجيم')
+
+  assert.equal(sharedFace.length, 1)
+  assert.deepEqual(new Set(sharedFace[0].readingIds), new Set(['Q02-R01', 'Q02-R02', 'Q09-R01', 'Q09-R02']))
+  assert.equal(distinctFace.length, 1, 'a different Arabic face description must remain separate')
+})
+
+test('page 48 keeps different descriptions separate even when the word form matches', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(48, { includeUnpublished: true })
+  const faces = variants.filter((variant) => variant.surah === 2 && variant.ayah === 282 && variant.startToken === 69 && variant.variantText === 'فَتُذْكِرَ')
+
+  assert.equal(faces.length, 2)
+  assert.deepEqual(new Set(faces.map((variant) => variant.description)), new Set([
+    'بسكون الذال وتخفيف الكاف ورفع الراء',
+    'بسكون الذال وتخفيف الكاف ونصب الراء',
+  ]))
 })
 
 test('page 264 preserves distinct approved forms at 15:44 for Shu\'bah and Abu Jaafar', async () => {

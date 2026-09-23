@@ -413,6 +413,7 @@ export function adaptColorForDark(color: string): string {
     '#ea580c': '#fb923c', // orange -> orange-400
     '#c2410c': '#fb923c',
     '#4f46e5': '#818cf8', // indigo performance marker -> indigo-400
+    '#3f6212': '#bef264', // shared-reader olive -> lime-300
     '#b45309': '#fbbf24', // yaqub -> amber-400
     '#92400e': '#fbbf24',
     '#475569': '#94a3b8', // khalaf ashir -> slate-400
