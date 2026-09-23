@@ -1889,6 +1889,7 @@ export default function Mushaf1441Viewer({
     if (!qiraatEditorWord) return null
     return (
       <QiraatEditor
+        key={`${qiraatEditorWord.id}:${qiraatScopePreview?.startCanonicalKey ?? ''}:${qiraatScopePreview?.endCanonicalKey ?? ''}:${qiraatScopePreview?.scopeType ?? ''}`}
         word={qiraatEditorWord}
         inline={inline}
         onClose={() => { setQiraatEditorWord(null); setQiraatScopePreview(undefined) }}
@@ -2590,7 +2591,10 @@ export default function Mushaf1441Viewer({
         }}
       >
         <span style={{ position: 'relative', display: 'inline-block' }}>
-          <span dangerouslySetInnerHTML={{ __html: displayText ?? '' }} />
+          {/* Quran/Qiraat text is rendered as text, never HTML.  Besides being unnecessary for
+              private-use QCF glyphs, an HTML sink would allow a future DB-backed annotation or
+              imported variant to inject markup into the Mushaf. */}
+          <span>{displayText ?? ''}</span>
           {rulingMarker && rulingMarker.multiple ? (
             <span
               aria-hidden="true"

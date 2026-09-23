@@ -11,12 +11,18 @@ async function authenticatedClient() {
 }
 
 function databaseError(message: string) {
-  if (/VERSION_CONFLICT/i.test(message)) return NextResponse.json({ error: 'VERSION_CONFLICT', detail: message }, { status: 409 })
+  // Keep database/RPC diagnostics in server logs. Returning raw Postgres messages leaks schema
+  // details (and, for some providers, SQL fragments) to the browser.
+  if (/VERSION_CONFLICT/i.test(message)) {
+    console.error('[qiraat-editor] version conflict', message)
+    return NextResponse.json({ error: 'VERSION_CONFLICT' }, { status: 409 })
+  }
   if (/unauthorized/i.test(message)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
   if (/invalid canonical|missing taxonomy|invalid target|invalid source|scope requires|requires identical/i.test(message)) {
     return NextResponse.json({ error: message }, { status: 400 })
   }
-  return NextResponse.json({ error: 'Qiraat editor data is unavailable', detail: message }, { status: 503 })
+  console.error('[qiraat-editor] database failure', message)
+  return NextResponse.json({ error: 'Qiraat editor data is unavailable' }, { status: 503 })
 }
 
 export async function GET(request: NextRequest) {

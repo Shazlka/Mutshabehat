@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { MushafWord } from '../../../../../packages/quran-data/mushaf1441/types'
 
 type Entity = { id: string; parentId: string | null; type: string; nameAr: string; color: string | null }
@@ -20,7 +20,20 @@ const editorLoadRequests = new Map<string, Promise<{ response: Response; data: {
 function loadEditorData(key: string) {
   const cached = editorLoadRequests.get(key)
   if (cached) return cached
-  const request = fetch(`/api/mushaf-1441/qiraat-editor?canonicalKey=${encodeURIComponent(key)}`).then(async (response) => ({ response, data: await response.json().catch(() => null) }))
+  const request = fetch(`/api/mushaf-1441/qiraat-editor?canonicalKey=${encodeURIComponent(key)}`)
+    .then(async (response) => {
+      const result = { response, data: await response.json().catch(() => null) }
+      // A 401/4xx/5xx is not a usable catalog snapshot. Keep the cache only for successful
+      // responses so reopening after login/recovery retries instead of replaying a stale failure.
+      if (!response.ok) editorLoadRequests.delete(key)
+      return result
+    })
+    .catch((error) => {
+      // Do not poison the per-word request cache after a transient network/503 failure. The
+      // editor's retry/reopen path must be able to issue a fresh request.
+      editorLoadRequests.delete(key)
+      throw error
+    })
   editorLoadRequests.set(key, request)
   return request
 }
@@ -31,7 +44,9 @@ export function canonicalKeyForWord(word: MushafWord) {
 
 export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initialScope, inline = false }: { word: MushafWord; onClose(): void; onSaved(): void; onNavigate?(direction: 1 | -1): Promise<void>; initialScope?: { startCanonicalKey: string; endCanonicalKey: string; scopeType: 'RANGE' | 'BOUNDARY' }; inline?: boolean }) {
   const key = useMemo(() => canonicalKeyForWord(word), [word])
-  const openedAtRef = useRef(Date.now())
+  // Lazy initialization keeps the open timestamp stable without calling an impure function during
+  // every render (React's purity lint correctly rejects useRef(Date.now())).
+  const [openedAt] = useState(() => Date.now())
   const [startCanonicalKey, setStartCanonicalKey] = useState(initialScope?.startCanonicalKey ?? key)
   const [endCanonicalKey, setEndCanonicalKey] = useState(initialScope?.endCanonicalKey ?? key)
   const [entities, setEntities] = useState<Entity[]>([])
@@ -64,20 +79,17 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    let active = true
     void (async () => {
       setLoading(true); setError(null)
       const { response, data } = await loadEditorData(key)
+      if (!active) return
       if (!response.ok) { setError(data?.error === 'unauthorized' ? 'يلزم تسجيل الدخول لتحرير القراءات.' : (data?.error ?? 'تعذر تحميل محرر القراءات.')); setLoading(false); return }
       setEntities(data.catalog?.entities ?? []); setTaxonomies(data.catalog?.taxonomies ?? []); setSources(data.catalog?.sources ?? []); setCorpora(data.catalog?.corpora ?? []); setFrameworks(data.catalog?.frameworks ?? []); setExisting(data.annotations ?? [])
       setLoading(false)
-    })().catch(() => { setError('تعذر تحميل محرر القراءات.'); setLoading(false) })
+    })().catch(() => { if (active) { setError('تعذر تحميل محرر القراءات.'); setLoading(false) } })
+    return () => { active = false }
   }, [key])
-
-  useEffect(() => {
-    setStartCanonicalKey(initialScope?.startCanonicalKey ?? key)
-    setEndCanonicalKey(initialScope?.endCanonicalKey ?? key)
-    setScopeType(initialScope?.scopeType ?? 'WORD')
-  }, [initialScope?.startCanonicalKey, initialScope?.endCanonicalKey, key])
 
   const selectedEntity = entities.find((entity) => entity.id === entityId)
   function edit(item: Existing) {
@@ -167,7 +179,7 @@ export default function QiraatEditor({ word, onClose, onSaved, onNavigate, initi
 
   const shell = inline ? 'flex h-full min-h-0 w-[min(460px,42vw)] shrink-0 flex-col border-s border-[#d7c7a7] bg-[#fffdf8]' : 'fixed inset-0 z-[70] flex items-end bg-black/40 sm:items-stretch sm:justify-end'
   return <div className={shell} role="dialog" aria-modal={!inline} aria-label="محرر القراءات" data-qiraat-editor-pane="true">
-    {!inline ? <button className="absolute inset-0" aria-label="إغلاق محرر القراءات" onClick={() => { if (Date.now() - openedAtRef.current > 500) onClose() }} /> : null}
+    {!inline ? <button className="absolute inset-0" aria-label="إغلاق محرر القراءات" onClick={() => { if (Date.now() - openedAt > 500) onClose() }} /> : null}
     <section className={inline ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'relative flex max-h-[94dvh] w-full flex-col overflow-hidden rounded-t-2xl bg-[#fffdf8] shadow-2xl sm:max-h-none sm:w-[min(620px,48vw)] sm:rounded-none'} dir="rtl">
       <header className="flex shrink-0 items-center justify-between gap-2 border-b border-[#eadfc9] bg-[#fffaf0] px-3 py-2">
         <div className="min-w-0"><div className="flex items-center gap-2"><b className="text-xs text-[#80662c]">محرر القراءات</b><span className="rounded-full bg-[#f2e7c7] px-2 py-0.5 text-[10px]">{existing.length} تعليق · {existing.filter((a) => a.status === 'verified').length} موثق</span></div><div className="flex items-baseline gap-2"><span className="font-[family-name:var(--font-amiri-quran)] text-xl text-[#171717]">{word.textUthmani}</span><span className="truncate text-[11px] text-[#665b48]">{word.surahNumber}:{word.ayahNumber} · كلمة {word.wordIndexInAyah} · ص {word.pageNumber}</span></div><code className="text-[10px] text-[#80662c]">{key}</code></div>

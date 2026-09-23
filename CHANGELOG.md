@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-09-23 — Qiraat code-review hardening
+
+- Removed the Mushaf's HTML injection sink for Qiraat/Hafs word display; QCF glyphs and alternate
+  Arabic forms now render as escaped React text.
+- Prevented stale Qiraat editor catalog failures from being cached after transient network, 401, or
+  5xx responses, and ignored late responses after the user navigates to another word.
+- Stopped exposing raw database/RPC diagnostics from the authenticated editor API; diagnostics remain
+  in server logs while clients receive stable error codes/messages.
+- Verification: `npm run typecheck` passed; `npm run test:qiraat` passed (40 engine tests plus
+  corpus/frontend validation).
+
+## 2026-09-22 — Qiraat fixture corpus imported to Mushaf 1441 PostgreSQL
+
+- Added the missing committed Qiraat corpus to self-hosted PostgreSQL with the
+  insert-only `scripts/qiraat/import_to_postgres.py --reconcile` path: 5,541
+  entries (1,611 variants and 3,930 rulings), plus 14 missing evidence-label
+  catalog rows. Existing rows and the 64 same-key conflicts were preserved.
+- Added deterministic disambiguated IDs for all 25 non-identical legacy-key
+  collision faces, repaired the source-page namespace collision at pages
+  240–249, and verified all 584 available Qiraat pages. Pages 585–604 remain
+  unimported because no authoritative Qiraat source is available.
+- Backup: `qiraat-pre-reconciled-import-20260922_204540.dump` in the self-host
+  backup directory. Verification: database totals match all 12,788 fixture
+  records; zero missing/extra IDs under the disambiguated reconciliation;
+  zero duplicate page numbers or entry IDs; `qiraat_export_page` returned 12
+  entries for page 258 and 21 for page 584; `tests/test_qiraat_import_keys.py`
+  passed 2/2.
+
 ## 2026-09-22 — Qiraat final source reconciliation
 
 - Corrected page 322 `فسـٔلوا` bare `خلف` attribution to Q06-R01 and aligned page 334 `يشاء` with the verified Hisham pause correction.
