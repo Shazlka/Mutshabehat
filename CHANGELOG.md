@@ -9,6 +9,12 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-23 — Qiraat restructure Phases 2–4 deployed to production
+- Fast-forwarded `main` from `5fca1df` to `b960c9d` (branch `feature/qiraat-db-v2`, no conflicts). Vercel production deployment `dpl_FUaPu6znDgWzTKjrkKppkRrzyaz3` is Ready and aliased to https://mutshabehat-v2.vercel.app.
+- **Live check (headless Chromium, read-only):** `/mushaf-1441/review?page=3` 200 (127 Hafs words, 36 rows, API 200); `/mushaf-1441?page=3` 200; resolved-cache, annotation-editor and reader-qiraat APIs 200; 0 page errors, 0 console errors.
+- The review screen is reachable by anyone with the URL, because production auto-signs visitors in as the owner (accepted by the owner). Every edit is logged and can be undone.
+- Database migration: none in this step (all qiraat migrations were already applied).
+
 ## 2026-09-23 — Qiraat Phase 4: review screen (API + UI) and VERSION_CONFLICT fix (applied)
 - **API** (Codex): `src/app/api/mushaf-1441/qiraat-review/route.ts` (GET page/overview/history, PATCH status/update/narrators/delete/restore, POST undo) through the user's session client only. `review-http.ts` holds pure request validation and DB-error → HTTP mapping (`npm run test:qiraat:review`, 12/12). Typed client `src/app/mushaf-1441/review/_lib/api.ts`.
 - **UI** (Antigravity): `/mushaf-1441/review?page=N`:
