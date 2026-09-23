@@ -132,10 +132,14 @@ for (const pageNumber of [1, 2, 255, 604]) {
 }
 
 const viewer = readFileSync(VIEWER_PATH, 'utf8')
-for (const required of ['QCF V2', 'dangerouslySetInnerHTML', 'line-words', 'loadQcfFontForPage']) {
+for (const required of ['QCF V2', 'displayText', 'line-words', 'loadQcfFontForPage']) {
   if (!viewer.includes(required)) {
     fail(`viewer is missing ${required}`)
   }
+}
+
+if (viewer.includes('dangerouslySetInnerHTML')) {
+  fail('viewer must render Quran/variant text through escaped React text nodes')
 }
 
 for (const required of ['MUSHAF_PAGE_WIDTH', 'MUSHAF_PAGE_HEIGHT', 'MUSHAF_SPREAD_PAGE_WIDTH']) {
