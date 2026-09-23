@@ -76,5 +76,37 @@
     "description": "برفع الميم لابن كثير وأبي عمرو ويعقوب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-DURI-082-19-1-r2684-performance",
+    "surah": 82,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَوْمَ لَا",
+    "variantText": "يَوْمَ لَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-082-19-1-r2684",
+    "locusType": "performance_variant",
+    "performanceNote": "رفع الدوري الميم",
+    "sources": [
+      {
+        "id": "s-DURI-082-19-1-r2684",
+        "variantId": "v-DURI-082-19-1-r2684-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2684; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـومَ لا → يـومُ لا | رفع الدوري الميم"
+      }
+    ],
+    "description": "رفع الدوري الميم"
   }
 ]

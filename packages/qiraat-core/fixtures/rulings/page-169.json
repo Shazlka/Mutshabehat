@@ -251,7 +251,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَى → مُوسَى | بالتقليل وقفاً"
+      "مُوسَى → مُوسَى | بالتقليل وقفاً",
+      "مـوسى → مـوسِى | قللها الدوري وقفاً"
     ]
   },
   {
@@ -434,7 +435,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللهـا الدوري"
     ]
   },
   {
@@ -1266,11 +1268,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل",
@@ -1280,7 +1291,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → موسِـى | قللهـا الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -1336,11 +1348,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل",
@@ -1350,7 +1371,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → موسِـى | قللهـا الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

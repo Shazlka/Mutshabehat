@@ -129,6 +129,15 @@
         "sourceReference": "صفحة المصحف 179 · صفحة المصدر 184",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمُوهِنُ بِالتَّخْفِيفِ ذَاعَ وَفِيهِ لَمْ يُنَوَّنْ لِحَفْصٍ كَيْدَ بِالْخَفْضِ عَوَّلَا — D: مُوَهِّنُ وَاقْرَأْ يُغَشِّي انْصِبِ الْوِلَا حَلَا"
+      },
+      {
+        "id": "s-DURI-008-18-4-r0766",
+        "variantId": "v-L179-موهن_كيد-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 766; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "موهنُ كيد → موَهِّـنٌ كيـدَ | فتح الدوري الواو وشدد الهاء ونوَّن النون ونصب دال كيد"
       }
     ],
     "description": "بتخفيف الهاء وتنوين النون ونصب كيد مفعولاً",
@@ -242,6 +251,15 @@
         "sourceReference": "user-supplied JSON row 1145; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-008-19-8-r0768",
+        "variantId": "v-L179-فهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 768; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو → فهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",

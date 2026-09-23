@@ -216,7 +216,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف"
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "الكافـرين → الكٍـافرين | أمالـها الدوري"
     ]
   },
   {
@@ -495,7 +496,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "نَرَىٰ → نَرَى | إمالة فتحة الراء"
+      "نَرَىٰ → نَرَى | إمالة فتحة الراء",
+      "نـرى → نـرٍى | أمالـها الدوري"
     ]
   },
   {
@@ -1024,7 +1026,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "إذ جاءنـي → إذ جَّـاءنـي | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p362-IKHFA-rule-25-24-3",
@@ -1199,6 +1204,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "إِذْ جَاءَنِي → إِذ جَّاءَنِي | إدغام الذال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-025-22-4-r1607-IMALAH_TAQLIL",
+    "pageNumber": 362,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 22,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 22,
+    "baseText": "لَا بُشْرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "لا بشـرى → لا بشـرٍى | أمالـها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -206,6 +206,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-muddaththir/5",
         "sourceText": "Quranpedia: damm for Hafs, Abu Jafar and Yaqub; kasr for remaining narrators.",
         "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      },
+      {
+        "id": "s-DURI-074-5-1-r2632",
+        "variantId": "v-AUDIT-P575-74-5-1-0b9018db",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2632; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "والـرُّجز → والـرِّجـز | كسر الدوري الراء"
       }
     ],
     "description": "﴿وَالرُّجْزَ﴾ (المدثر): بضم الراء ﴿وَالرُّجْزَ﴾ لحفص، وأبي جعفر، ويعقوب؛ بكسر الراء ﴿وَالرِّجْزَ﴾ للباقين.",

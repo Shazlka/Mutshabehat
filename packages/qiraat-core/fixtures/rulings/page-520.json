@@ -206,7 +206,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لذكـرى → لذكـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p520-IMALAH_TAQLIL-القي-1",
@@ -586,11 +589,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الباء والألف لكسرة الراء المتطرفة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الباء والألف لكسرة الراء المتطرفة",
@@ -600,7 +612,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "بِجَبَّارٍ → بِجَبَّارٍ | إمالة فتحة الباء والألف لكسرة الراء المتطرفة"
+      "بِجَبَّارٍ → بِجَبَّارٍ | إمالة فتحة الباء والألف لكسرة الراء المتطرفة",
+      "بـجبَّـار → بـجبٍّار | أمالها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

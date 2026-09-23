@@ -407,7 +407,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "وَالتَّقْوَىٰ → وَالتَّقْوَى | بالتقليل"
+      "وَالتَّقْوَىٰ → وَالتَّقْوَى | بالتقليل",
+      "والتقـوى → والتقـوِى | قللهـا الدوري"
     ]
   },
   {
@@ -606,5 +607,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-005-2-31-r0432-TAGHYIR_HAMZ",
+    "pageNumber": 106,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "endAyah": 2,
+    "baseText": "أَن صَدُّوكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أن صـدوكم → إن صـدوكم | كسر الدوري الهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

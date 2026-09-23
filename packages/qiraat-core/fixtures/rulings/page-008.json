@@ -303,7 +303,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَى → مُوسَى | بالتقليل وقفاً"
+      "مُوسَى → مُوسَى | بالتقليل وقفاً",
+      "موسـى الكتاب → موسِى الكتاب | قلل الدوري موسى وقفاً"
     ]
   },
   {
@@ -393,7 +394,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "وَالسَّلْوَى → وَالسَّلْوَى | بالتقليل"
+      "وَالسَّلْوَى → وَالسَّلْوَى | بالتقليل",
+      "والسـلوى → والسـلوِى | قللها الدوري"
     ]
   },
   {
@@ -841,11 +843,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري وصلاً ووقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري وصلاً ووقفاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل",
@@ -855,7 +866,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مُوسَى → مُوسَى | بالتقليل"
+      "مُوسَى → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِى | قللها الدوري وصلاً ووقفاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -876,11 +888,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري وصلاً ووقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري وصلاً ووقفاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل",
@@ -890,7 +911,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مُوسَى → مُوسَى | بالتقليل"
+      "مُوسَى → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِى | قللها الدوري وصلاً ووقفاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -946,11 +968,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري نرى وقفاً ،"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "وقفاً: إمالة وجهاً واحداً. وصلاً: 1- الفتح (كحفص وهو المقدم)، 2- الإمالة مع تفخيم لام لفظ الجلالة، 3- الإمالة مع ترقيق لام لفظ الجلالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري نرى وقفاً ،",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "وقفاً: إمالة وجهاً واحداً. وصلاً: 1- الفتح (كحفص وهو المقدم)، 2- الإمالة مع تفخيم لام لفظ الجلالة، 3- الإمالة مع ترقيق لام لفظ الجلالة",
@@ -960,7 +991,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "نَرَى اللَّهَ → نَرَى اللَّهَ | وقفاً: إمالة وجهاً واحداً. وصلاً: 1- الفتح (كحفص وهو المقدم)، 2- الإمالة مع تفخيم لام لفظ الجلالة، 3- الإمالة مع ترقيق لام لفظ الجلالة"
+      "نَرَى اللَّهَ → نَرَى اللَّهَ | وقفاً: إمالة وجهاً واحداً. وصلاً: 1- الفتح (كحفص وهو المقدم)، 2- الإمالة مع تفخيم لام لفظ الجلالة، 3- الإمالة مع ترقيق لام لفظ الجلالة",
+      "نرى الله → نـرى الله | أمال الدوري نرى وقفاً ،"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-002-51-7-r0020-IDGHAM_KABIR",
+    "pageNumber": 8,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 51,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 51,
+    "baseText": "ٱتَّخَذْتُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "اتـخذتُـم → اتـخذتُّـم | أدغم الدوري الذال بالتاء"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

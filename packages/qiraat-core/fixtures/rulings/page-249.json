@@ -100,7 +100,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "المر → المر | إمالة فتحة الراء"
+      "المر → المر | إمالة فتحة الراء",
+      "المر → المرٍ | أمال الدوري الراء"
     ]
   },
   {
@@ -219,7 +220,10 @@
     "hasAlternate": true,
     "condition": "مجرورًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p249-005-1",
@@ -432,7 +436,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار → النٍّـار | أمالهـا الدوري"
     ]
   },
   {
@@ -695,6 +700,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "تَعْجَبْ فَعَجَبٌ → تَعْجَب فَّعَجَبٌ | إدغام الباء في الفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-013-5-2-r1084-IDGHAM_SAGHIR",
+    "pageNumber": 249,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 5,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 5,
+    "baseText": "تَعْجَبْ فَعَجَبٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "تعجبْ فعجـبٌ → تعجب فَّعجـبٌ | إدغام صغير للدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

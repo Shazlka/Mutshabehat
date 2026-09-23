@@ -312,7 +312,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "أَنصَارٍ → أَنصَارٍ | إمالة فتحة الصاد والألف"
+      "أَنصَارٍ → أَنصَارٍ | إمالة فتحة الصاد والألف",
+      "أنصـار → أنصٍـار | أمالـها الدوري"
     ]
   },
   {
@@ -407,6 +408,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قلل الدوري"
+      },
+      {
         "authorityId": "Q06",
         "action": "إمالة"
       },
@@ -417,13 +426,19 @@
       {
         "authorityId": "Q10",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قلل الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -453,16 +468,14 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أنّـى → أنِّـى | قلل الدوري"
+    ]
   },
   {
     "id": "r-p120-012-1",
@@ -563,7 +576,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قدْ ضـلوا → قـد ضَّـلوا | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p120-013-1",

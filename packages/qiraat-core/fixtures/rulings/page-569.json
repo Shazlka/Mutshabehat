@@ -15,6 +15,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -29,13 +37,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -55,18 +69,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18."
+      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18.",
+      "لظـى → لظِـى | قللها الدوري لأنها رأس آية"
     ]
   },
   {
@@ -85,6 +95,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -99,13 +117,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -125,18 +149,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18."
+      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18.",
+      "للشـوى → للشـوِى | قللها الدوري لأنها رأس آية"
     ]
   },
   {
@@ -155,6 +175,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -169,13 +197,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -195,18 +229,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18."
+      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18.",
+      "وتولـى → وتولِّـى | قللها الدوري لأنها رأس آية"
     ]
   },
   {
@@ -225,6 +255,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -239,13 +277,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري لأنها رأس آية",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -265,18 +309,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18."
+      "DOCX-P569-R03695: رؤوس الآي الممالة: ﴿لَظَىٰ﴾، ﴿لِلشَّوَىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿فَأَوْعَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/15; https://quranpedia.net/qiraat/al-maarij/16; https://quranpedia.net/qiraat/al-maarij/17; https://quranpedia.net/qiraat/al-maarij/18.",
+      "فأوعـى → فـأوعِـى | قللها الدوري لأنها رأس آية"
     ]
   },
   {

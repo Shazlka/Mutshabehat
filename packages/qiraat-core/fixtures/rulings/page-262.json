@@ -72,7 +72,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "الر → الر | إمالة فتحة الراء"
+      "الر → الر | إمالة فتحة الراء",
+      "الـر → الـرٍ | أمال الدوري الراء"
     ]
   },
   {
@@ -539,7 +540,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "خلتْ سنّـة → خلـت سُّنـة | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p262-SAKT-alr-1",
@@ -772,6 +776,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "خَلَتْ سُنَّةُ → خَلَت سُّنَّةُ | إدغام التاء في السين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-015-3-4-r1158-MEEM_JAM",
+    "pageNumber": 262,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 3,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 3,
+    "baseText": "وَيُلْهِهِمُ ٱلْأَمَلُ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ويلهـهِمُ الأمـل → ويلهـهمِ الأمل | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

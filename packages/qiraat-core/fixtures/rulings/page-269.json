@@ -256,7 +256,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أوزار → أوزٍار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p269-IKHFA-اموات_غير-4",
@@ -500,6 +503,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "أَوْزَارِهِمْ → أَوْزَارِهِمْ | إمالة فتحة الزاي والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-016-26-12-r1178-MEEM_JAM",
+    "pageNumber": 269,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 26,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 26,
+    "baseText": "عَلَيْهِمُ ٱلسَّقْفُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليـهمُ السقف → عليهمِ السقف | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

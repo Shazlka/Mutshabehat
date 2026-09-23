@@ -143,5 +143,37 @@
       }
     ],
     "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-DURI-008-48-26-r0783-performance",
+    "surah": 8,
+    "ayah": 48,
+    "startToken": 26,
+    "endToken": 27,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ أَرَىٰ",
+    "variantText": "إِنِّىٓ أَرَىٰ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-008-48-26-r0783",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء فيهما",
+    "sources": [
+      {
+        "id": "s-DURI-008-48-26-r0783",
+        "variantId": "v-DURI-008-48-26-r0783-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 783; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إنـي أرى – إنـي أخاف → إنـيَ أرٍى – إنـيَ أخاف | فتح الدوري الياء فيهما"
+      }
+    ],
+    "description": "فتح الدوري الياء فيهما"
   }
 ]

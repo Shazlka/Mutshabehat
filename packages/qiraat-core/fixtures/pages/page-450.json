@@ -67,6 +67,15 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-DURI-037-126-1-r2050",
+        "variantId": "v-L450-s37a126b0-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2050; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اللهَ ربَّكم وربَّ → اللهُ ربُّـكم وربُّ | رفع الدوري الكلمات الثلاث"
       }
     ],
     "description": "برفع لام الجلالة وضم باء ربكم ورب",
@@ -182,6 +191,15 @@
         "sourceReference": "user-supplied JSON row 3581; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "لَهُوَ → لَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-037-106-3-r2047",
+        "variantId": "v-D450-لهو",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2047; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لـهُـو → لـهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر.",
@@ -417,5 +435,36 @@
       }
     ],
     "description": "ضم الباء"
+  },
+  {
+    "id": "v-DURI-037-105-3-r2046",
+    "surah": 37,
+    "ayah": 105,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرُّءْيَآ ۚ",
+    "variantText": "الـرؤيِـا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-037-105-3-r2046",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-037-105-3-r2046",
+        "variantId": "v-DURI-037-105-3-r2046",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2046; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الـرؤيـا → الـرؤيِـا | قلل الدوري"
+      }
+    ],
+    "description": "قلل الدوري"
   }
 ]

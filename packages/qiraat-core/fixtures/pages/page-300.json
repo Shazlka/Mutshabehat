@@ -80,6 +80,15 @@
         "sourceReference": "user-supplied JSON row 2171; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "قُبُلًا → قِبَلًا | كسر القاف وفتح الباء"
+      },
+      {
+        "id": "s-DURI-018-55-19-r1316",
+        "variantId": "v-D300-قبلا-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1316; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قُـبُلاً → قِـبَلاً | كسر الدوري القاف وفتح الباء"
       }
     ],
     "description": "بكسر القاف وفتح الباء",
@@ -137,6 +146,15 @@
         "sourceReference": "user-supplied JSON row 2178; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "لِّمَهْلِكِهِم → لِّمَهْلَكِهِم | ضم الميم وفتح اللام الثانية"
+      },
+      {
+        "id": "s-DURI-018-59-7-r1319",
+        "variantId": "v-D300-لمهلكهم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1319; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لمَـهلِكِهم → لـمُهلَـكِهِم | ضم الدوري الميم وفتح اللام"
       }
     ],
     "description": "بضم الميم وفتح اللام",

@@ -35,6 +35,15 @@
         "sourceReference": "صفحة المصحف 41 · صفحة المصدر 46",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: غَرْفَةً ضَمَّ ذُو وِلَا — D: غَرْفَةَ يُضَمُّ دِفَاعُ حُزْ"
+      },
+      {
+        "id": "s-DURI-002-249-23-r0163",
+        "variantId": "v-L041-غرفه-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 163; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "غُـرفة → غَـرفة | فتح الدوري الغين"
       }
     ],
     "description": "بفتح الغين",
@@ -138,5 +147,37 @@
         "text": "دِفَاعُ حُزْ"
       }
     ]
+  },
+  {
+    "id": "v-DURI-002-249-19-r0162-performance",
+    "surah": 2,
+    "ayah": 249,
+    "startToken": 19,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "مِنِّىٓ إِلَّا",
+    "variantText": "مِنِّىٓ إِلَّا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-002-249-19-r0162",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-002-249-19-r0162",
+        "variantId": "v-DURI-002-249-19-r0162-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 162; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "منـي إلا → منـيَ إلا | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

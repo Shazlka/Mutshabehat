@@ -102,7 +102,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْأُولَىٰ → الْأُولَى | بالتقليل"
+      "الْأُولَىٰ → الْأُولَى | بالتقليل",
+      "الأولـى → الأولِـى | قللها الدوري"
     ]
   },
   {
@@ -366,7 +367,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقـدْ ضـلَّ → ولقـد ضَّـلَّ | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p448-s37a72b1",
@@ -573,7 +577,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "آثَارِهِمْ → آثَارِهِمْ | إمالة فتحة الثاء والألف"
+      "آثَارِهِمْ → آثَارِهِمْ | إمالة فتحة الثاء والألف",
+      "ءاثـارهم → ءاثٍـارهم | أمالـها الدوري"
     ]
   },
   {
@@ -808,6 +813,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "وَلَقَدْ ضَلَّ → وَلَقَد ضَّلَّ | إدغام الدال في الضاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-037-55-2-r2033-IMALAH_TAQLIL",
+    "pageNumber": 448,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 37,
+    "ayah": 55,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 55,
+    "baseText": "فَرَءَاهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "فـرءاه → فرءٍ اه | أمال الدوري الهمزة فقط"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

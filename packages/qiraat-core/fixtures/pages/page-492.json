@@ -128,5 +128,69 @@
       }
     ],
     "description": "إسكان السين"
+  },
+  {
+    "id": "v-DURI-043-36-9-r2262-performance",
+    "surah": 43,
+    "ayah": 36,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-043-36-9-r2262",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الهاء",
+    "sources": [
+      {
+        "id": "s-DURI-043-36-9-r2262",
+        "variantId": "v-DURI-043-36-9-r2262-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2262; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو → فهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "أسكن الدوري الهاء"
+  },
+  {
+    "id": "v-DURI-043-37-5-r2263-performance",
+    "surah": 43,
+    "ayah": 37,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَيَحْسَبُونَ",
+    "variantText": "وَيَحْسَبُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-043-37-5-r2263",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-043-37-5-r2263",
+        "variantId": "v-DURI-043-37-5-r2263-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2263; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ويـحسَبون → ويَحسِبـون | كسر الدوري السين"
+      }
+    ],
+    "description": "كسر الدوري السين"
   }
 ]

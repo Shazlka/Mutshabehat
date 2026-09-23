@@ -78,6 +78,15 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَرِثْنِي بِالْجَزْمِ حُزْ كَفِلَ شَفَا — D: وَيَرِثْ بِالْجَزْمِ حُزْ فُزْ"
+      },
+      {
+        "id": "s-DURI-019-6-1-r1352",
+        "variantId": "v-L305-يرثني_ويرث-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1352; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـرثُني ويـرثُ → يـرثْني ويـرثْ | قرأ الدوري بـجزم الفعلين"
       }
     ],
     "description": "بجزم الثاء فيهما جوابًا للطلب",
@@ -191,6 +200,15 @@
         "sourceReference": "user-supplied JSON row 2237; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "عِتِيًّا → عُتِيًّا | ضم العين"
+      },
+      {
+        "id": "s-DURI-019-8-14-r1356",
+        "variantId": "v-L305-عتيا-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1356; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عِتِيّـاً → عُتِيّـاً | ضم الدوري العين"
       }
     ],
     "description": "بضم العين",
@@ -420,5 +438,68 @@
       }
     ],
     "description": "فتح الياء"
+  },
+  {
+    "id": "v-DURI-019-2-2-r1350",
+    "surah": 19,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَحْمَتِ",
+    "variantText": "رحـمة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-019-2-2-r1350",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-019-2-2-r1350",
+        "variantId": "v-DURI-019-2-2-r1350",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1350; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رحمـت → رحـمة | ووقف الدوري بالهاء"
+      }
+    ],
+    "description": "ووقف الدوري بالهاء"
+  },
+  {
+    "id": "v-DURI-019-10-4-r1357-performance",
+    "surah": 19,
+    "ayah": 10,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لِّىٓ ءَايَةًۭ ۚ",
+    "variantText": "لِّىٓ ءَايَةًۭ ۚ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-019-10-4-r1357",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-019-10-4-r1357",
+        "variantId": "v-DURI-019-10-4-r1357-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1357; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لـي ءاية → لـيَ ءاية | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

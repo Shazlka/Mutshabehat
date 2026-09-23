@@ -214,5 +214,69 @@
       }
     ],
     "description": "تقليل فتحة التاء والألف"
+  },
+  {
+    "id": "v-DURI-078-37-1-r2662-performance",
+    "surah": 78,
+    "ayah": 37,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "رَّبِّ",
+    "variantText": "رَّبِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-078-37-1-r2662",
+    "locusType": "performance_variant",
+    "performanceNote": "رفع الدوري الباء والنون",
+    "sources": [
+      {
+        "id": "s-DURI-078-37-1-r2662",
+        "variantId": "v-DURI-078-37-1-r2662-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2662; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ربِّ - الرحمـنِ → ربُّ – الرحمـنُ | رفع الدوري الباء والنون"
+      }
+    ],
+    "description": "رفع الدوري الباء والنون"
+  },
+  {
+    "id": "v-DURI-078-37-6-r2662-performance",
+    "surah": 78,
+    "ayah": 37,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرَّحْمَـٰنِ ۖ",
+    "variantText": "ٱلرَّحْمَـٰنِ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-078-37-6-r2662",
+    "locusType": "performance_variant",
+    "performanceNote": "رفع الدوري الباء والنون",
+    "sources": [
+      {
+        "id": "s-DURI-078-37-6-r2662",
+        "variantId": "v-DURI-078-37-6-r2662-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2662; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ربِّ - الرحمـنِ → ربُّ – الرحمـنُ | رفع الدوري الباء والنون"
+      }
+    ],
+    "description": "رفع الدوري الباء والنون"
   }
 ]

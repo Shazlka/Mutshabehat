@@ -226,5 +226,36 @@
       }
     ],
     "description": "إثبات الياء وصلاً"
+  },
+  {
+    "id": "v-DURI-006-80-7-r0562",
+    "surah": 6,
+    "ayah": 80,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَقَدْ هَدَىٰنِ ۚ",
+    "variantText": "وقد هدانـي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-006-80-7-r0562",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-006-80-7-r0562",
+        "variantId": "v-DURI-006-80-7-r0562",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 562; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وقد هـدانِ → وقد هدانـي | أثبت الدوري الياء وصلاً فقط"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصلاً فقط"
   }
 ]

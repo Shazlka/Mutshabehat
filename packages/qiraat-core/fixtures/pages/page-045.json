@@ -43,6 +43,15 @@
         "sourceReference": "صفحة المصحف 45 · صفحة المصدر 50",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي رَبْوَةٍ فِي الْمُؤْمِنِينَ وَهُهُنَا عَلَى فَتْحِ ضَمِّ الرَّاءِ نَبَّهْتُ كُفَّلَا"
+      },
+      {
+        "id": "s-DURI-002-265-13-r0181",
+        "variantId": "v-L045-بربوه-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 181; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بـرَبـوة → بـرُبـوة | ضم الدوري الراء"
       }
     ],
     "description": "بضم الراء",
@@ -88,6 +97,15 @@
         "sourceReference": "صفحة المصحف 45 · صفحة المصدر 50",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: ضَمَّ الإِسْكَانَ صِفْ وَحَيْثُمَا أُكْلُهَا ذِكْرًا وَفِي الْغَيْرِ ذُو حُلَى — D: انْقُلَا … أُكْلَهَا الرُّعْبَ … حَوَى الْعُلَا"
+      },
+      {
+        "id": "s-DURI-002-265-17-r0182",
+        "variantId": "v-L045-اكلها-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 182; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أُكُـلَها → أُكْـلها | أسكن الدوري الكاف"
       }
     ],
     "description": "بإسكان الكاف",

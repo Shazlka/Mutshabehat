@@ -143,6 +143,7 @@
       "Q01-R02",
       "Q02-R01",
       "Q02-R02",
+      "Q03-R01",
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
@@ -171,6 +172,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-jinn/17",
         "sourceText": "النون: نافع وابن كثير وأبو عمرو وابن عامر وأبو جعفر؛ الياء تشمل الرواة الخمسة المسماة بالجهاز ومنهم خلف العاشر إسحاق وإدريس.",
         "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      },
+      {
+        "id": "s-DURI-072-17-8-r2624",
+        "variantId": "v-AUDIT-P573-72-17-8-4",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2624; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـسلُكُـه → نسلُكُـه | قرأ الدوري بنون العظمة"
       }
     ],
     "description": "﴿يَسْلُكْهُ﴾: بياء الغيب ﴿يَسْلُكْهُ﴾ لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نَسْلُكْهُ﴾ للباقين.",
@@ -333,6 +343,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-jinn/20",
         "sourceText": "اختلاف القراءات في الآية ٢٠ من سورة الجن؛ عُرضت كلمة الآية وأوجه القراء العشرة.",
         "verificationNotes": "رابط خارجي مستقل للآية؛ رُبط الوجه باللفظ المقابل في سجل المصدر."
+      },
+      {
+        "id": "s-DURI-072-20-1-r2625",
+        "variantId": "v-AUDIT-P573-72-20-1-7",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2625; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قُـل → قـالَ | قرأها الدوري بالماضي"
       }
     ],
     "description": "﴿قُلْ إِنَّمَآ أَدْعُواْ﴾: بلفظ الماضي ﴿قَالَ إِنَّمَا﴾ للباقين.",
@@ -344,5 +363,37 @@
         "url": "https://quranpedia.net/qiraat/al-jinn/20"
       }
     ]
+  },
+  {
+    "id": "v-DURI-072-25-10-r2626-performance",
+    "surah": 72,
+    "ayah": 25,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ أَمَدًا",
+    "variantText": "رَبِّىٓ أَمَدًا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-072-25-10-r2626",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-072-25-10-r2626",
+        "variantId": "v-DURI-072-25-10-r2626-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2626; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ربّـي أمداً → ربّـيَ أمداً | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

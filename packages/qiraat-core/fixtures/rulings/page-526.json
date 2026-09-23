@@ -840,6 +840,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الراء والهمزة والألف (رأس آية)"
       },
@@ -864,6 +868,11 @@
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط",
         "isDefault": true
       },
       {
@@ -896,7 +905,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "رَأَىٰ → رَأَى | إمالة فتحة الراء والهمزة والألف (رأس آية)"
+      "رَأَىٰ → رَأَى | إمالة فتحة الراء والهمزة والألف (رأس آية)",
+      "رأى → رَ أٍ ى | أمال الدوري الهمزة فقط"
     ]
   },
   {
@@ -2248,6 +2258,10 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط"
       }
     ],
     "readings": [
@@ -2255,11 +2269,19 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "رءاه → رَ ءٍ ا ه | أمال الدوري الهمزة فقط"
+    ]
   },
   {
     "id": "r-p526-IMALAH_TAQLIL-زاغ-29",
@@ -2482,7 +2504,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقـدْ جـاءهم → ولقـد جَّـاءهم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-SUSI-053-18-2-4143-IMALAH_TAQLIL",
@@ -2500,11 +2525,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الراء والهمزة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الراء والهمزة",
@@ -2514,7 +2548,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "رَأَىٰ → رَأَى | إمالة فتحة الراء والهمزة"
+      "رَأَىٰ → رَأَى | إمالة فتحة الراء والهمزة",
+      "رأى → رَ أٍ ى | أمال الدوري الهمزة فقط"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -2550,6 +2585,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "الْهُدَىٰ → الْهُدَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-053-23-24-r2412-MEEM_JAM",
+    "pageNumber": 526,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 23,
+    "startToken": 24,
+    "endToken": 25,
+    "endAyah": 23,
+    "baseText": "رَّبِّهِمُ ٱلْهُدَىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ربّـهمُ الـهدى → ربّهـمِ الـهدِى | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

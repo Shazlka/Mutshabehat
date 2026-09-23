@@ -341,7 +341,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْمَوْتَىٰ → الْمَوْتَى | بالتقليل"
+      "الْمَوْتَىٰ → الْمَوْتَى | بالتقليل",
+      "الـموتـى → الـموتِـى | قللها الدوري"
     ]
   },
   {
@@ -493,11 +494,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري وقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري وقفاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
@@ -507,7 +517,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+      "وتـرى الـجبالَ → وتـرى الجبال | أمال الدوري وقفاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-027-82-11-r1711-TAGHYIR_HAMZ",
+    "pageNumber": 384,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 82,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 82,
+    "baseText": "أَنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أنَّ → إنَّ | كسر الدوري الهمزة"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

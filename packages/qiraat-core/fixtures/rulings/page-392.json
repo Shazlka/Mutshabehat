@@ -431,7 +431,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف (الموضعين)"
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف (الموضعين)",
+      "القـرى ( معاً ) → القـرٍى | أمالهما الدوري"
     ]
   },
   {
@@ -671,11 +672,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالهما الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الراء والألف (الموضعين)"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالهما الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الراء والألف (الموضعين)",
@@ -685,7 +695,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف (الموضعين)"
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف (الموضعين)",
+      "القـرى ( معاً ) → القـرٍى | أمالهما الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

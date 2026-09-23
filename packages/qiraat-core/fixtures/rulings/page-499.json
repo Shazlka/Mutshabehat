@@ -200,7 +200,8 @@
         "sourceText": "﴿حم﴾: أمال الحاء ابن ذكوان، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو.",
         "verificationNotes": "أُضيفت نسب القراء الصريحة بعد مقابلة المرجع المستقل https://quranpedia.net/qiraat/al-jathiyah/1."
       },
-      "حم → حم | بالتقليل"
+      "حم → حم | بالتقليل",
+      "حـم → حِـم | قلل الدوري ( حا )"
     ]
   },
   {
@@ -553,6 +554,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "سَخَّرَ لَكُمُ → سَخَّر لَّكُمُ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-045-9-7-r2299-TAGHYIR_HAMZ",
+    "pageNumber": 499,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 45,
+    "ayah": 9,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 9,
+    "baseText": "هُزُوًا ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بالهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بالهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "هُـزُواً → هُـزُؤاً | قرأ الدوري بالهمز"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

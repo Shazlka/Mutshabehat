@@ -78,6 +78,15 @@
         "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَنُوِّنْ بِهَا وَالنَّازِعَاتِ طُوًى ذَكَا"
+      },
+      {
+        "id": "s-DURI-020-12-9-r1399",
+        "variantId": "v-L312-طوي-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1399; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "طـوىً → طـوى | ترك الدوري التنوين فيها"
       }
     ],
     "description": "بغير تنوين وصلًا",

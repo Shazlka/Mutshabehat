@@ -64,7 +64,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "للكـافرين → للكٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p568-IMALAH_TAQLIL-الكافرين-1",
@@ -131,7 +134,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الكـافرين → الكٍـافرين | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p568-IMALAH_TAQLIL-ونراه-2",
@@ -218,7 +224,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P568-R03689: الممال والمقلل: ﴿لِلْكَـٰفِرِينَ﴾، ﴿الْكَـٰفِرِينَ﴾: أبو عمرو، الدوري عن الكسائي، رويس، وقللها ورش. ﴿وَنَرَىٰهُ﴾: أبو عمرو، حمزة، الكسائي، خلف، وقللها ورش. ﴿سَنَةٍ﴾: أمال هاء التأنيث وقفاً الكسائي. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/7."
+      "DOCX-P568-R03689: الممال والمقلل: ﴿لِلْكَـٰفِرِينَ﴾، ﴿الْكَـٰفِرِينَ﴾: أبو عمرو، الدوري عن الكسائي، رويس، وقللها ورش. ﴿وَنَرَىٰهُ﴾: أبو عمرو، حمزة، الكسائي، خلف، وقللها ورش. ﴿سَنَةٍ﴾: أمال هاء التأنيث وقفاً الكسائي. User mapping applied: bare «خلف» = Q06-R01/R02; Q10 was not inferred from that name. Exact-verse apparatus reference(s) for independent cross-check: https://quranpedia.net/qiraat/al-maarij/7.",
+      "ونـراه → ونـرٍاه | أمالها الدوري"
     ]
   },
   {

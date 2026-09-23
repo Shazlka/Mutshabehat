@@ -195,6 +195,15 @@
         "sourceReference": "user-supplied JSON row 2053; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "وَرَجِلِكَ → وَرِجْلِكَ | إسكان الجيم مع القلقلة"
+      },
+      {
+        "id": "s-DURI-017-64-9-r1249",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1249; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ورجِـلك → ورَجْـلك | أسكن الدوري الجيم"
       }
     ],
     "description": "وَرَجْلِكَ",
@@ -237,5 +246,67 @@
       }
     ],
     "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-DURI-017-60-10-r1245",
+    "surah": 17,
+    "ayah": 60,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرُّءْيَا",
+    "variantText": "الرؤيِـا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-017-60-10-r1245",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-017-60-10-r1245",
+        "variantId": "v-DURI-017-60-10-r1245",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1245; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الرؤيـا → الرؤيِـا | قللها الدوري وقفاً"
+      }
+    ],
+    "description": "قللها الدوري وقفاً"
+  },
+  {
+    "id": "v-DURI-017-62-8-r1247",
+    "surah": 17,
+    "ayah": 62,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَخَّرْتَنِ",
+    "variantText": "أخـرتني",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-017-62-8-r1247",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-017-62-8-r1247",
+        "variantId": "v-DURI-017-62-8-r1247",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1247; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أخـرتنِ → أخـرتني | أثبت الدوري الياء وصلاً"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصلاً"
   }
 ]

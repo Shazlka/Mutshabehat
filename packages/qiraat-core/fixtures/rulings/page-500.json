@@ -201,7 +201,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمال الدوري"
+    ]
   },
   {
     "id": "r-p500-IMALAH_TAQLIL-وهدي-2",
@@ -452,6 +455,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "الصَّالِحَاتِ سَوَاءً → الصَّالِحَات سَّوَاءٌ | إدغام التاء في السين وتنوين ضم بدل تنوين الفتح"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-045-21-12-r2302-TAGHYIR_HAMZ",
+    "pageNumber": 500,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 45,
+    "ayah": 21,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 21,
+    "baseText": "سَوَآءًۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "رفع الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "رفع الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "سـواءً → سـواءٌ | رفع الدوري الهمزة"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

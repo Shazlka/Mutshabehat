@@ -300,7 +300,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "أَسْرَىٰ → أَسْرَى | إمالة فتحة الراء"
+      "أَسْرَىٰ → أَسْرَى | إمالة فتحة الراء",
+      "أسـرى → أسـرٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -390,7 +391,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنـيِا | قللها الدوري"
     ]
   },
   {
@@ -1365,6 +1367,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "اللَّهُ هُوَ → اللَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-008-68-8-r0792-IDGHAM_KABIR",
+    "pageNumber": 185,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 8,
+    "ayah": 68,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 68,
+    "baseText": "أَخَذْتُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أخـذتم → أخذتُّـم | أدغم الدوري الذال بالتاء"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

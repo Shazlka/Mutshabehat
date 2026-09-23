@@ -189,7 +189,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ديـاركم → ديٍـاركم | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p550-IMALAH_TAQLIL-الكفار-3",
@@ -566,11 +569,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الفاء والألف"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الفاء والألف",
@@ -580,7 +592,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "الْكُفَّارِ → الْكُفَّارِ | إمالة فتحة الفاء والألف"
+      "الْكُفَّارِ → الْكُفَّارِ | إمالة فتحة الفاء والألف",
+      "الكفـار → الكفٍّـار | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-060-6-5-r2521-TAGHYIR_HAMZ",
+    "pageNumber": 550,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 6,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 6,
+    "baseText": "أُسْوَةٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أسـوة → إسـوة | كسر الدوري الهمزة"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

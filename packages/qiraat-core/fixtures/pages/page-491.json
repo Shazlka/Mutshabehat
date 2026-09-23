@@ -47,6 +47,7 @@
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q03-R02"
     ],
     "locusId": "SUSI-043-24-1-3922",
@@ -60,6 +61,15 @@
         "sourceReference": "user-supplied JSON row 3922; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "قَالَ → قُلْ | بضم القاف وحذف الألف وإسكان اللام"
+      },
+      {
+        "id": "s-DURI-043-24-1-r2256",
+        "variantId": "v-SUSI-043-24-1-3922",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2256; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قـالَ → قـلْ | قرأ الدوري بالأمر"
       }
     ],
     "description": "بضم القاف وحذف الألف وإسكان اللام"
@@ -110,6 +120,7 @@
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q03-R02"
     ],
     "locusId": "SUSI-043-32-3-3924",
@@ -123,6 +134,15 @@
         "sourceReference": "user-supplied JSON row 3924; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "رَحْمَتَ (معاً) → رَحْمَه | بالهاء وقفاً (في الموضعين)"
+      },
+      {
+        "id": "s-DURI-043-32-3-r2257",
+        "variantId": "v-SUSI-043-32-3-3924",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2257; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رحمـت – ورحمت → رحمـة - ورحمـة | وقف الدوري بالهاء"
       }
     ],
     "description": "بالهاء وقفاً (في الموضعين)"
@@ -158,5 +178,36 @@
       }
     ],
     "description": "فتح السين وإسكان القاف مقلقلة"
+  },
+  {
+    "id": "v-DURI-043-32-21-r2257",
+    "surah": 43,
+    "ayah": 32,
+    "startToken": 21,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "وَرَحْمَتُ",
+    "variantText": "ورحمـة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-043-32-21-r2257",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-043-32-21-r2257",
+        "variantId": "v-DURI-043-32-21-r2257",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2257; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رحمـت – ورحمت → رحمـة - ورحمـة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "وقف الدوري بالهاء"
   }
 ]

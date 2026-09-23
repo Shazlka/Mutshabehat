@@ -559,7 +559,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → مـوسِـى | قللهـا الدوري"
     ]
   },
   {
@@ -781,6 +782,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري وقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل وقفاً"
       },
@@ -798,6 +803,11 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري وقفاً",
+        "isDefault": true
       },
       {
         "readingId": "Q03-R02",
@@ -829,7 +839,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَى → مُوسَى | بالتقليل وقفاً"
+      "مُوسَى → مُوسَى | بالتقليل وقفاً",
+      "مـوسى → مـوسِـى | قللها الدوري وقفاً"
     ]
   },
   {
@@ -1350,7 +1361,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "قَرَارٍ → قَرَارٍ | إمالة فتحة الراء والألف"
+      "قَرَارٍ → قَرَارٍ | إمالة فتحة الراء والألف",
+      "قـرار → قـرٍار | أمالها الدوري"
     ]
   },
   {
@@ -1548,6 +1560,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "وَبَنِينَ نُسَارِعُ → وَبَنِين نُّسَارِعُ | إدغام النون في النون"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-023-52-1-r1536-TAGHYIR_HAMZ",
+    "pageNumber": 345,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 23,
+    "ayah": 52,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 52,
+    "baseText": "وَإِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وإنّ → وأنّ | فتح الدوري الهمزة"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -518,7 +518,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف"
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "الـكافرين → الكٍـافرين | أمالهـا الدوري"
     ]
   },
   {
@@ -620,7 +621,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فقد ضـلَّ → فقد ضَّـل | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p100-011-1",
@@ -971,11 +975,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الكاف والألف"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالهـا الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الكاف والألف",
@@ -985,7 +998,78 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَالْكَافِرِينَ → وَالْكَافِرِينَ | إمالة فتحة الكاف والألف"
+      "وَالْكَافِرِينَ → وَالْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "والكـافرين → والكٍـافرين | أمالهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-004-136-9-r0403-TAGHYIR_HAMZ",
+    "pageNumber": 100,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 136,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 136,
+    "baseText": "نَزَّلَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "ضم الدوري نون نزل وهمزة أنزل وكسر الزاي منهمـا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "ضم الدوري نون نزل وهمزة أنزل وكسر الزاي منهمـا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "نـَزَّلَ – أَنْـزَل → نُـزِّل – أُنْـزِل | ضم الدوري نون نزل وهمزة أنزل وكسر الزاي منهمـا"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-004-136-14-r0403-TAGHYIR_HAMZ",
+    "pageNumber": 100,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 136,
+    "startToken": 14,
+    "endToken": 14,
+    "endAyah": 136,
+    "baseText": "أَنزَلَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "ضم الدوري نون نزل وهمزة أنزل وكسر الزاي منهمـا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "ضم الدوري نون نزل وهمزة أنزل وكسر الزاي منهمـا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "نـَزَّلَ – أَنْـزَل → نُـزِّل – أُنْـزِل | ضم الدوري نون نزل وهمزة أنزل وكسر الزاي منهمـا"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

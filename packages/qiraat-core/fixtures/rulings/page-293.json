@@ -148,6 +148,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       },
@@ -181,6 +185,11 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
       },
       {
         "readingId": "Q03-R02",
@@ -222,7 +231,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْحُسْنَىٰ → الْحُسْنَى | بالتقليل"
+      "الْحُسْنَىٰ → الْحُسْنَى | بالتقليل",
+      "الحسنـى → الحسنِـى | قللهـا الدوري"
     ]
   },
   {
@@ -256,6 +266,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "الْعِلْمَ مِن → الْعِلْم مِّن | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-017-106-5-r1272-IMALAH_TAQLIL",
+    "pageNumber": 293,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 106,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 106,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالهـا الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالهـا الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "النّـاس → النٍّـاس | أمالهـا الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

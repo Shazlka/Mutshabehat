@@ -74,5 +74,36 @@
       }
     ],
     "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-DURI-040-9-1-r2133",
+    "surah": 40,
+    "ayah": 9,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَقِهِمُ ٱلسَّيِّـَٔاتِ ۚ",
+    "variantText": "وقهِـمِ السّيّـئات",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-040-9-1-r2133",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-040-9-1-r2133",
+        "variantId": "v-DURI-040-9-1-r2133",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2133; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وقـهِمُ السّيئات → وقهِـمِ السّيّـئات | كسر الدوري الميم وصلاً"
+      }
+    ],
+    "description": "كسر الدوري الميم وصلاً"
   }
 ]

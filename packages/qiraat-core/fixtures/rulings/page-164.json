@@ -584,7 +584,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → موسِـى | قللها الدوري"
     ]
   },
   {
@@ -616,7 +617,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p164-014-1",
@@ -1448,11 +1452,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إدغام الدال في الجيم ثم إبدال الهمزة ياء"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إدغام الدال في الجيم ثم إبدال الهمزة ياء",
@@ -1462,7 +1475,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "قَدْ جِئْتُكُم → قَد جِّيتُكُم | إدغام الدال في الجيم ثم إبدال الهمزة ياء"
+      "قَدْ جِئْتُكُم → قَد جِّيتُكُم | إدغام الدال في الجيم ثم إبدال الهمزة ياء",
+      "قـدْ جئتـكم → قد جِّئتـكم | أدغم الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

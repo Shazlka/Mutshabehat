@@ -1146,11 +1146,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إدغام الذال في التاء ثم إبدال الهمزة ألفاً"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إدغام الذال في التاء ثم إبدال الهمزة ألفاً",
@@ -1160,7 +1169,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "إِذْ تَأْتِيهِمْ → إِذ تَّاتِيهِمْ | إدغام الذال في التاء ثم إبدال الهمزة ألفاً"
+      "إِذْ تَأْتِيهِمْ → إِذ تَّاتِيهِمْ | إدغام الذال في التاء ثم إبدال الهمزة ألفاً",
+      "إذْ تـأتيهم → إذ تَّـأتيهم | أدغم الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

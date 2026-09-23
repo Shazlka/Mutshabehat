@@ -585,7 +585,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "نَرَاكَ → نَرَاكَ | إمالة فتحة الراء"
+      "نَرَاكَ → نَرَاكَ | إمالة فتحة الراء",
+      "نـراك → نـرٍاك | أمالها الدوري"
     ]
   },
   {
@@ -1766,5 +1767,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-012-36-7-r1028-IMALAH_TAQLIL",
+    "pageNumber": 239,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 36,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 36,
+    "baseText": "إِنِّىٓ أَرَىٰنِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إنـي أرانـي ( معاً ) → إنـيَ أرٍانـيَ | فتح الدوري الياء منهما وأمال الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-012-36-13-r1028-IMALAH_TAQLIL",
+    "pageNumber": 239,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 36,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 36,
+    "baseText": "إِنِّىٓ أَرَىٰنِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إنـي أرانـي ( معاً ) → إنـيَ أرٍانـيَ | فتح الدوري الياء منهما وأمال الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

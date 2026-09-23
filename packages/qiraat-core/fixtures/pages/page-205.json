@@ -255,6 +255,15 @@
         "sourceReference": "صفحة المصحف 205 · صفحة المصدر 210",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: يَزِيغُ عَلَى فَصْلٍ — D: يَزِيغُ أَنِّثْ شَفَا"
+      },
+      {
+        "id": "s-DURI-009-117-16-r0848",
+        "variantId": "v-L205-كاد_يزيغ-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 848; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كادَ يـزيغ → كادَ تـزيغ | قرأ الدوري تزيغ بالتاء"
       }
     ],
     "description": "بالفوقية تأنيثًا",
@@ -365,6 +374,15 @@
         "sourceReference": "user-supplied JSON row 1314; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "رَءُوفٌ → رَؤُفٌ | حذف الواو"
+      },
+      {
+        "id": "s-DURI-009-117-26-r0849",
+        "variantId": "v-L205-رءوف-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 849; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رؤوف → رؤف | قرأها الدوري بحذف الواو"
       }
     ],
     "description": "بالقصر",

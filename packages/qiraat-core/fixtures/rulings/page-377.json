@@ -595,7 +595,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِى | قللها الدوري"
     ]
   },
   {
@@ -768,7 +769,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النّـار → النٍّـار | أمالـها الدوري"
     ]
   },
   {
@@ -1015,11 +1017,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الراء"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الراء",
@@ -1029,7 +1040,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَبُشْرَىٰ → وَبُشْرَى | إمالة فتحة الراء"
+      "وَبُشْرَىٰ → وَبُشْرَى | إمالة فتحة الراء",
+      "وبُشـرى → وبـشرٍى | أمالـها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

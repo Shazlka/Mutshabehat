@@ -195,6 +195,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/nuh/25",
         "sourceText": "خطاياهم للدوري والسوسي عن أبي عمرو.",
         "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      },
+      {
+        "id": "s-DURI-071-25-2-r2617",
+        "variantId": "v-AUDIT-P571-71-25-2-4",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2617; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "خَطيئـاتِهم → خَطـاياهـم | فتح الدوري الخاء والطاء وألف بعدها ، وبعد الألف ياء ثم ألف وضم الهاء"
       }
     ],
     "description": "﴿خَطِيٓـَٔـٰتِهِمْ﴾: جمعاً بألف مدية بعد الياء وهمزة مفتوحة بعدها ألف ﴿خَطِيئَاتِهِمْ﴾ للجمهور؛ بفتح الخاء والطاء وألف بعدها وياء مفتوحة بلا همز جمع خطايا ﴿خَطَايَاهُمْ﴾ لأبي عمرو.",

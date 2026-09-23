@@ -283,7 +283,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03665 — ﴿بِأَبْصَـٰرِهِمْ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش."
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03665 — ﴿بِأَبْصَـٰرِهِمْ﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش.",
+      "بأبصـارهم → بأبصٍـارهم | أمالـها الدوري"
     ]
   },
   {
@@ -500,7 +501,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03667 — ﴿فَتَرَى﴾: وقفاً أمالها أبو عمرو، وحمزة، والكسائي، وخلف، وقللها ورش (وصلاً أمالها السوسي بخلف)."
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03667 — ﴿فَتَرَى﴾: وقفاً أمالها أبو عمرو، وحمزة، والكسائي، وخلف، وقللها ورش (وصلاً أمالها السوسي بخلف).",
+      "فتـرى القوم → فترى القـوم | أمالها الدوري وقفاً"
     ]
   },
   {
@@ -588,7 +590,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03668 — ﴿صَرْعَىٰ﴾: حمزة، الكسائي، وخلف، وأبو عمرو، وقللها ورش بخلف."
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03668 — ﴿صَرْعَىٰ﴾: حمزة، الكسائي، وخلف، وأبو عمرو، وقللها ورش بخلف.",
+      "صـرعـى → صـرعِـى | قلل الدوري"
     ]
   },
   {
@@ -863,7 +866,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03670 — الإدغام الصغير: ﴿فَٱصْبِر لِّحُكْمِ﴾: أبو عمرو بخلف عن الدوري. ﴿كَذَّبَت ثَّمُودُ﴾، ﴿فَهَل تَّرَىٰ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي (وابن عامر في كذبت ثمود)."
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P566-R03670 — الإدغام الصغير: ﴿فَٱصْبِر لِّحُكْمِ﴾: أبو عمرو بخلف عن الدوري. ﴿كَذَّبَت ثَّمُودُ﴾، ﴿فَهَل تَّرَىٰ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي (وابن عامر في كذبت ثمود).",
+      "كذّبـتْ ثـمود → كذّبـت ثَّمـود | إدغام صغير للدوري"
     ]
   },
   {
@@ -1287,6 +1291,76 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "كَذَّبَتْ ثَمُودُ → كَذَّبَت ثَّمُودُ | إدغام التاء في الثاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-069-3-1-r2593-IMALAH_TAQLIL",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 3,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 3,
+    "baseText": "وَمَآ أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وما أدراك → ومـا أدرٍاك | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-069-8-1-r2597-IMALAH_TAQLIL",
+    "pageNumber": 566,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 69,
+    "ayah": 8,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 8,
+    "baseText": "فَهَلْ تَرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير وإمالة للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير وإمالة للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "فـهلْ تـرى → فـهل تَّـرٍى | إدغام صغير وإمالة للدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

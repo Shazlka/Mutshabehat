@@ -353,7 +353,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "طه → طه | إمالة فتحة الهاء"
+      "طه → طه | إمالة فتحة الهاء",
+      "طـه → طـهٍ | أمال الدوري هـا"
     ]
   },
   {
@@ -2365,7 +2366,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النَّـار → النٍّـار | أمالها الدوري"
     ]
   },
   {
@@ -2505,6 +2507,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "فَقَالَ لِأَهْلِهِ → فَقَال لِّأَهْلِهِ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-020-12-1-r1398-TAGHYIR_HAMZ",
+    "pageNumber": 312,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 12,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 12,
+    "baseText": "إِنِّىٓ أَنَا۠",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الهمزة والياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الهمزة والياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إنـي أنا → أنـيَ أنا | فتح الدوري الهمزة والياء"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -51,6 +51,7 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q03-R02",
       "Q09-R01",
       "Q09-R02"
@@ -75,6 +76,15 @@
         "sourceReference": "user-supplied JSON row 3446; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "يَحْشُرُهُمْ → نَحْشُرُهُمْ | إبدال الياء نوناً"
+      },
+      {
+        "id": "s-DURI-034-40-2-r1962",
+        "variantId": "v-D433-يحشرهم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1962; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـحشرهم → نَحـشرهـم | قرأ الدوري بنون العظمة"
       }
     ],
     "description": "بياء الغيب",
@@ -95,6 +105,7 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q09-R01",
       "Q09-R02"
     ],
@@ -109,6 +120,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P433-R02387",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿يَحْشُرُهُمْ﴾ - ﴿يَقُولُ﴾: بياء الغيب في الفعلين لحفص ويعقوب؛ وبنون العظمة فيهما ﴿نَحْشُرُهُمْ... نَقُولُ﴾ للباقين."
+      },
+      {
+        "id": "s-DURI-034-40-5-r1963",
+        "variantId": "v-D433-يقول-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1963; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يقـولُ → نـقولُ | قرأ الدوري بنون العظمة"
       }
     ],
     "description": "بياء الغيب",
@@ -262,6 +282,15 @@
         "sourceReference": "user-supplied JSON row 3454; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-034-47-6-r1967",
+        "variantId": "v-D433-فهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1967; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو – وهُـو → فهْـو - وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -310,6 +339,15 @@
         "sourceReference": "user-supplied JSON row 3455; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-034-47-13-r1967",
+        "variantId": "v-D433-وهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1967; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو – وهُـو → فهْـو - وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",

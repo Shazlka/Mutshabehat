@@ -365,6 +365,15 @@
         "sourceReference": "صفحة المصحف 236 · صفحة المصدر 241",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَنَرْتَعْ وَنَلْعَبْ يَاؤُهُ حِصْنٌ تَطَوَّلَا وَيَرْتَعْ سُكُونُ الْكَسْرِ فِي الْعَيْنِ ذُو حِمًى — D: وَنَرْتَعْ وَبَعْدُ يَا"
+      },
+      {
+        "id": "s-DURI-012-12-4-r1011",
+        "variantId": "v-L236-يرتع_ويلعب-1-w4",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1011; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـرتعْ ويـلعبْ → نـرتعْ ونـلعبْ | قرأهما الدوري بالنون والـجزم"
       }
     ],
     "description": "بالنون فيهما وسكون العين",
@@ -471,6 +480,7 @@
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q03-R02"
     ],
     "locusId": "SUSI-012-10-9-1583",
@@ -484,6 +494,15 @@
         "sourceReference": "user-supplied JSON row 1583; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "غَيَابَتِ → غَيَابَه | وقفاً بالهاء"
+      },
+      {
+        "id": "s-DURI-012-10-9-r1009",
+        "variantId": "v-SUSI-012-10-9-1583",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1009; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "غيابـت → غيـابة | وقف الدوري بالهاء"
       }
     ],
     "description": "وقفاً بالهاء"
@@ -614,5 +633,68 @@
       }
     ],
     "description": "إبدال الهمزة ياء"
+  },
+  {
+    "id": "v-DURI-012-5-5-r1008",
+    "surah": 12,
+    "ayah": 5,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "رُءْيَاكَ",
+    "variantText": "رؤيٍـاك",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-012-5-5-r1008",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-012-5-5-r1008",
+        "variantId": "v-DURI-012-5-5-r1008",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1008; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رؤيـاك → رؤيٍـاك | قلل الدوري"
+      }
+    ],
+    "description": "قلل الدوري"
+  },
+  {
+    "id": "v-DURI-012-11-5-r1010-performance",
+    "surah": 12,
+    "ayah": 11,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "لَا تَأْمَ۫نَّا",
+    "variantText": "لَا تَأْمَ۫نَّا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-012-11-5-r1010",
+    "locusType": "performance_variant",
+    "performanceNote": "للدوري في نون تأمنا الإشمام والاختلاس",
+    "sources": [
+      {
+        "id": "s-DURI-012-11-5-r1010",
+        "variantId": "v-DURI-012-11-5-r1010-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1010; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لا تـأمنا → لا تأمـنا | للدوري في نون تأمنا الإشمام والاختلاس"
+      }
+    ],
+    "description": "للدوري في نون تأمنا الإشمام والاختلاس"
   }
 ]

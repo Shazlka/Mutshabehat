@@ -533,11 +533,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بترك السكت"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بدون سكت"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بترك السكت",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بدون سكت",
@@ -547,7 +556,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مَّرْقَدِنَا ۜ هَٰذَا → مَّرْقَدِنَا هَٰذَا | بدون سكت"
+      "مَّرْقَدِنَا ۜ هَٰذَا → مَّرْقَدِنَا هَٰذَا | بدون سكت",
+      "مرقدنا هذا → مـرقدنا هذا | قرأ الدوري بترك السكت"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

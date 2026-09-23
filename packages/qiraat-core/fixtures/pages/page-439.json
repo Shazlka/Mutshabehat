@@ -168,5 +168,129 @@
       }
     ],
     "description": "بالهاء وقفاً (في الموضعين)"
+  },
+  {
+    "id": "v-DURI-035-40-24-r1994",
+    "surah": 35,
+    "ayah": 40,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "بَيِّنَتٍۢ",
+    "variantText": "بينـة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-035-40-24-r1994",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-035-40-24-r1994",
+        "variantId": "v-DURI-035-40-24-r1994",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1994; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بينـت → بينـة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "وقف الدوري بالهاء"
+  },
+  {
+    "id": "v-DURI-035-43-15-r1997",
+    "surah": 35,
+    "ayah": 43,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "سُنَّتَ",
+    "variantText": "سنـة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-035-43-15-r1997",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-035-43-15-r1997",
+        "variantId": "v-DURI-035-43-15-r1997",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1997; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سنَـت – لسنـت ( معاً ) → سنـة – لسـنة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "وقف الدوري بالهاء"
+  },
+  {
+    "id": "v-DURI-035-43-19-r1997",
+    "surah": 35,
+    "ayah": 43,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "لِسُنَّتِ",
+    "variantText": "لسـنة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-035-43-19-r1997",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-035-43-19-r1997",
+        "variantId": "v-DURI-035-43-19-r1997",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1997; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سنَـت – لسنـت ( معاً ) → سنـة – لسـنة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "وقف الدوري بالهاء"
+  },
+  {
+    "id": "v-DURI-035-43-24-r1997",
+    "surah": 35,
+    "ayah": 43,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "لِسُنَّتِ",
+    "variantText": "لسـنة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-035-43-24-r1997",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-035-43-24-r1997",
+        "variantId": "v-DURI-035-43-24-r1997",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1997; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سنَـت – لسنـت ( معاً ) → سنـة – لسـنة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "وقف الدوري بالهاء"
   }
 ]

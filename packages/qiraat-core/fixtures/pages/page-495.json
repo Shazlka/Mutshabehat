@@ -424,6 +424,15 @@
         "sourceReference": "user-supplied JSON row 3953; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "يَحْسَبُونَ → يَحْسِبُونَ | كسر السين"
+      },
+      {
+        "id": "s-DURI-043-80-2-r2277",
+        "variantId": "v-D495-يحسبون-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2277; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يحسَبـون → يحسِـبون | كسر الدوري السين"
       }
     ],
     "description": "بكسر السين للباقين",
@@ -458,6 +467,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P495-R02982",
         "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
         "sourceText": "﴿رُسُلُنَا﴾: بإسكان السين لأبي عمرو ﴿رُسْلُنَا﴾؛ وبضمها للباقين."
+      },
+      {
+        "id": "s-DURI-043-80-9-r2279",
+        "variantId": "v-D495-ورسلنا-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2279; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ورسـلنا → ورسْـلنا | أسكن الدوري السين"
       }
     ],
     "description": "بإسكان السين لأبي عمرو",

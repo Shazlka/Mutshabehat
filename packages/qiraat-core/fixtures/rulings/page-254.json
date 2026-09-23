@@ -296,7 +296,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "عُقْبَى (معاً) → عُقْبَى | بالتقليل وقفاً (الموضعين)"
+      "عُقْبَى (معاً) → عُقْبَى | بالتقليل وقفاً (الموضعين)",
+      "عقـبى - وعـقبى → عقبِـى - وعـقبِى | قللها الدوري وقفاً"
     ]
   },
   {
@@ -367,7 +368,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف"
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "الكـافرين → الكٍـافرين | أمالها الدوري"
     ]
   },
   {
@@ -473,7 +475,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الدَّارِ → الدَّارِ | إمالة فتحة الدال والألف"
+      "الدَّارِ → الدَّارِ | إمالة فتحة الدال والألف",
+      "الـدار → الـدٍّار | أمالها الدوري"
     ]
   },
   {
@@ -620,11 +623,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري وقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل وقفاً"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري وقفاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل وقفاً",
@@ -634,7 +646,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "عُقْبَى → عُقْبَى | بالتقليل وقفاً"
+      "عُقْبَى → عُقْبَى | بالتقليل وقفاً",
+      "عقـبى → عقبِـى | قللها الدوري وقفاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-013-35-17-r1112-IMALAH_TAQLIL",
+    "pageNumber": 254,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 35,
+    "startToken": 17,
+    "endToken": 17,
+    "endAyah": 35,
+    "baseText": "وَّعُقْبَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عقـبى - وعـقبى → عقبِـى - وعـقبِى | قللها الدوري وقفاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

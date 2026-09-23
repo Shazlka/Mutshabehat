@@ -158,5 +158,98 @@
       }
     ],
     "description": "إبدال الهمزة الثانية واواً مفتوحة"
+  },
+  {
+    "id": "v-DURI-012-38-3-r1032",
+    "surah": 12,
+    "ayah": 38,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ءَابَآءِىٓ",
+    "variantText": "ءابـائيَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-012-38-3-r1032",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-012-38-3-r1032",
+        "variantId": "v-DURI-012-38-3-r1032",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1032; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ءابائـي → ءابـائيَ | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
+  },
+  {
+    "id": "v-DURI-012-43-20-r1037",
+    "surah": 12,
+    "ayah": 43,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "رُءْيَـٰىَ",
+    "variantText": "رؤيِاي",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-012-43-20-r1037",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-012-43-20-r1037",
+        "variantId": "v-DURI-012-43-20-r1037",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1037; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رؤيـأي – للرؤيـا → رؤيِاي - للرؤيِا | قلل الدوري"
+      }
+    ],
+    "description": "قلل الدوري"
+  },
+  {
+    "id": "v-DURI-012-43-23-r1037",
+    "surah": 12,
+    "ayah": 43,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "لِلرُّءْيَا",
+    "variantText": "للرؤيِا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-012-43-23-r1037",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-012-43-23-r1037",
+        "variantId": "v-DURI-012-43-23-r1037",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1037; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رؤيـأي – للرؤيـا → رؤيِاي - للرؤيِا | قلل الدوري"
+      }
+    ],
+    "description": "قلل الدوري"
   }
 ]

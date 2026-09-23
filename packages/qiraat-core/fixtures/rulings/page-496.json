@@ -81,6 +81,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قلل الدوري الحاء"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
@@ -89,6 +93,11 @@
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قلل الدوري الحاء",
         "isDefault": true
       },
       {
@@ -101,7 +110,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "حم → حم | بالتقليل"
+      "حم → حم | بالتقليل",
+      "حـم → حِـم | قلل الدوري الحاء"
     ]
   },
   {
@@ -341,7 +351,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الذِّكْرَىٰ → الذِّكْرَى | إمالة فتحة الراء"
+      "الذِّكْرَىٰ → الذِّكْرَى | إمالة فتحة الراء",
+      "الذكـرى → الذكـرٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -429,7 +440,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْكُبْرَىٰ → الْكُبْرَى | إمالة فتحة الراء والألف"
+      "الْكُبْرَىٰ → الْكُبْرَى | إمالة فتحة الراء والألف",
+      "الكبـرى → الكبـرٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -680,7 +692,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وقـدْ جـاءهم → وقـد جَّـاءهم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-SUSI-044-4-2-3962-IDGHAM_KABIR",
@@ -748,6 +763,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "إِنَّهُ هُوَ → إِنَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-044-13-1-r2286-IMALAH_TAQLIL",
+    "pageNumber": 496,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 44,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 13,
+    "baseText": "أَنَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "انَّـى → أنِّـى | قللها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

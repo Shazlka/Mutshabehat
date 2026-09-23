@@ -43,6 +43,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P423-R02292",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿وَخَاتَمَ﴾: بفتح التاء ﴿وَخَاتَمَ﴾ لعاصم؛ وبكسر التاء ﴿وَخَاتِمَ﴾ للباقين."
+      },
+      {
+        "id": "s-DURI-033-40-11-r1915",
+        "variantId": "v-D423-وخاتم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1915; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وخـاتَم → وخـاتِم | كسر الدوري التاء"
       }
     ],
     "description": "بكسر التاء",
@@ -85,6 +94,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P423-R02290",
         "verificationNotes": "وجه صريح مع anchor حقيقي.",
         "sourceText": "بتاء التأنيث للباقين."
+      },
+      {
+        "id": "s-DURI-033-36-11-r1912",
+        "variantId": "v-D423-ان-تكون",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1912; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أن يـكون → أن تـكون | قرأها الدوري بالتاء الفوقية"
       }
     ],
     "description": "بتاء التأنيث للباقين.",

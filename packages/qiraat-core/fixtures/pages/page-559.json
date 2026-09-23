@@ -249,6 +249,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P559-R03600",
         "verificationNotes": "يصحح جهاز القراءات العشر المستقل توزيع السطر المقلوب: فتح الياء لقالون وورش وقنبل والبزي والدوري والسوسي وابن وردان وابن جماز وشعبة ورويس. https://quranpedia.net/qiraat/at-talaq/11",
         "sourceText": "﴿مُّبَيِّنَـٰتٍ﴾: بفتح الياء المشددة لابن عامر، وحفص، وحمزة، والكسائي، وخلف؛ بكسر الياء المشددة للباقين."
+      },
+      {
+        "id": "s-DURI-065-11-6-r2563",
+        "variantId": "v-D559-مبينات-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2563; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مبيِّـنات → مبيَّـنات | فتح الدوري الياء"
       }
     ],
     "description": "بفتح الياء المشددة",
@@ -286,5 +295,68 @@
       }
     ],
     "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-DURI-065-6-32-r2561-performance",
+    "surah": 65,
+    "ayah": 6,
+    "startToken": 32,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "أُخْرَىٰ",
+    "variantText": "أُخْرَىٰ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-065-6-32-r2561",
+    "locusType": "performance_variant",
+    "performanceNote": "أماهـا الدوري",
+    "sources": [
+      {
+        "id": "s-DURI-065-6-32-r2561",
+        "variantId": "v-DURI-065-6-32-r2561-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2561; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أخـرى → أخـرٍى | أماهـا الدوري"
+      }
+    ],
+    "description": "أماهـا الدوري"
+  },
+  {
+    "id": "v-DURI-065-8-1-r2562",
+    "surah": 65,
+    "ayah": 8,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَكَأَيِّن",
+    "variantText": "وكـأيٍّ",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-065-8-1-r2562",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-065-8-1-r2562",
+        "variantId": "v-DURI-065-8-1-r2562",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2562; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وكـأين → وكـأيٍّ | وقف الدوري عليها بالياء"
+      }
+    ],
+    "description": "وقف الدوري عليها بالياء"
   }
 ]

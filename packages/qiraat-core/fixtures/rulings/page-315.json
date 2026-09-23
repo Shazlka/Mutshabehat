@@ -1219,6 +1219,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       },
@@ -1236,6 +1240,11 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
       },
       {
         "readingId": "Q03-R02",
@@ -1267,7 +1276,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُّوسَىٰ → مُّوسَى | بالتقليل"
+      "مُّوسَىٰ → مُّوسَى | بالتقليل",
+      "موسـى → مـوسِى | قللها الدوري"
     ]
   },
   {
@@ -1979,6 +1989,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "قَالَ لَهُم → قَال لَّهُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-020-64-1-r1415-MEEM_JAM",
+    "pageNumber": 315,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 64,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 64,
+    "baseText": "فَأَجْمِعُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بهمزة وصل بعد الفاء وفتح الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بهمزة وصل بعد الفاء وفتح الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "فـأجْمِعوا → فـاجْمَعوا | قرأ الدوري بهمزة وصل بعد الفاء وفتح الميم"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

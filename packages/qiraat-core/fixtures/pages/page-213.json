@@ -76,6 +76,15 @@
         "sourceReference": "صفحة المصحف 213 · صفحة المصدر 218",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَا لَا يَهْدِي اكْسِرْ صَفِيًّا وَهَاهُ نَلْ وَأَخْفَى بَنُو حَمْدٍ وَخُفِّفَ سُلْسُلَا — D: يَهْدِي سُكُونُ الْهَاءِ إِذْ كَسْرُهَا حَوَى"
+      },
+      {
+        "id": "s-DURI-010-35-21-r0884",
+        "variantId": "v-L213-لا_يهدي-1-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 884; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لا يَـهِدِّي → لا يَـهَدّي | قرأ الدوري باختلاس فتحة الهاء وتشديد الدال"
       }
     ],
     "description": "بفتح الياء واختلاس فتحة الهاء وتشديد الدال",

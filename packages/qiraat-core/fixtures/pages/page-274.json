@@ -258,5 +258,67 @@
       }
     ],
     "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-DURI-016-69-18-r1195",
+    "surah": 16,
+    "ayah": 69,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "لِّلنَّاسِ ۗ",
+    "variantText": "النٍّـاس",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-016-69-18-r1195",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-016-69-18-r1195",
+        "variantId": "v-DURI-016-69-18-r1195",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1195; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "للنَّـاس → النٍّـاس | أمالـها الدوري"
+      }
+    ],
+    "description": "أمالـها الدوري"
+  },
+  {
+    "id": "v-DURI-016-72-18-r1196",
+    "surah": 16,
+    "ayah": 72,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "وَبِنِعْمَتِ",
+    "variantText": "وبـنعمة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-016-72-18-r1196",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-016-72-18-r1196",
+        "variantId": "v-DURI-016-72-18-r1196",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1196; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وبنعمت → وبـنعمة | وقف الدوري بالـهاء"
+      }
+    ],
+    "description": "وقف الدوري بالـهاء"
   }
 ]

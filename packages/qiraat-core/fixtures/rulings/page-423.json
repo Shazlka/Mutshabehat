@@ -394,7 +394,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "فقد ضـلَّ → فقد ضَّـل | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p423-IDGHAM_SAGHIR-واذ_تقول-4",
@@ -479,7 +482,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وإذ تـقول → وإذ تَّقـول | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-SUSI-033-36-21-3359-IDGHAM_KABIR",

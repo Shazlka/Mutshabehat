@@ -1182,11 +1182,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الياء وأمال الراء"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "فتح الياء وصلاً وإمالة فتحة الراء والألف"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الياء وأمال الراء",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "فتح الياء وصلاً وإمالة فتحة الراء والألف",
@@ -1196,7 +1205,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "إِنِّي أَرَاكَ → إِنِّيَ أَرَاكَ | فتح الياء وصلاً وإمالة فتحة الراء والألف"
+      "إِنِّي أَرَاكَ → إِنِّيَ أَرَاكَ | فتح الياء وصلاً وإمالة فتحة الراء والألف",
+      "إنّـي أراك → إنّـيَ أرٍاك | فتح الدوري الياء وأمال الراء"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

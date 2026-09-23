@@ -137,6 +137,15 @@
         "sourceReference": "user-supplied JSON row 898; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "عَلَيْهِمُ الضَّلَالَةُ → عَلَيْهِمِ الضَّلَالَةُ | كسر الميم وصلاً"
+      },
+      {
+        "id": "s-DURI-007-30-5-r0639",
+        "variantId": "v-L153-عليهم_الضلاله-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 639; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عليـهمُ الضلالة → عليـهمِ الضلالة | كسر الدوري الميم مصلاً"
       }
     ],
     "description": "بكسر الهاء والميم وصلًا",
@@ -252,6 +261,15 @@
         "sourceReference": "user-supplied JSON row 899; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "وَيَحْسَبُونَ → وَيَحْسِبُونَ | كسر السين"
+      },
+      {
+        "id": "s-DURI-007-30-14-r0640",
+        "variantId": "v-L153-ويحسبون-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 640; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ويـحسَبون → ويـحسِبون | كسر الدوري السين"
       }
     ],
     "description": "بكسر السين",

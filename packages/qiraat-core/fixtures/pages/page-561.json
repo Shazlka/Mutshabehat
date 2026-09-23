@@ -286,5 +286,129 @@
       }
     ],
     "description": "إبدال الهمزة ياء"
+  },
+  {
+    "id": "v-DURI-066-10-6-r2569",
+    "surah": 66,
+    "ayah": 10,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱمْرَأَتَ",
+    "variantText": "امـرأة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-066-10-6-r2569",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-066-10-6-r2569",
+        "variantId": "v-DURI-066-10-6-r2569",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2569; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "امـرأت – وامـرأت → امـرأة – وامـرأة | وقف الدوري عليها بالهاء"
+      }
+    ],
+    "description": "وقف الدوري عليها بالهاء"
+  },
+  {
+    "id": "v-DURI-066-10-8-r2569",
+    "surah": 66,
+    "ayah": 10,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَٱمْرَأَتَ",
+    "variantText": "وامـرأة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-066-10-8-r2569",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-066-10-8-r2569",
+        "variantId": "v-DURI-066-10-8-r2569",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2569; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "امـرأت – وامـرأت → امـرأة – وامـرأة | وقف الدوري عليها بالهاء"
+      }
+    ],
+    "description": "وقف الدوري عليها بالهاء"
+  },
+  {
+    "id": "v-DURI-066-11-6-r2570",
+    "surah": 66,
+    "ayah": 11,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱمْرَأَتَ",
+    "variantText": "امـرأة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-066-11-6-r2570",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-066-11-6-r2570",
+        "variantId": "v-DURI-066-11-6-r2570",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2570; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "امـرأت → امـرأة | وقف الدوري عليها بالهاء"
+      }
+    ],
+    "description": "وقف الدوري عليها بالهاء"
+  },
+  {
+    "id": "v-DURI-066-12-2-r2571",
+    "surah": 66,
+    "ayah": 12,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱبْنَتَ",
+    "variantText": "ابنـة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-066-12-2-r2571",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-066-12-2-r2571",
+        "variantId": "v-DURI-066-12-2-r2571",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2571; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ابنـت → ابنـة | وقف الدوري عليها بالهاء"
+      }
+    ],
+    "description": "وقف الدوري عليها بالهاء"
   }
 ]

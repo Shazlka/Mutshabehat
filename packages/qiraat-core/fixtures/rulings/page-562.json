@@ -118,6 +118,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -140,13 +148,19 @@
       {
         "authorityId": "Q10-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -176,16 +190,14 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p562-IMALAH_TAQLIL-بلا-2",
@@ -519,7 +531,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقـد زيّـنّا → ولقد زَّيّـنّا | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p562-IDGHAM_SAGHIR-قد_جاءنا-6",
@@ -604,7 +619,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "قـدْ جاءنا → قد جَّـاءنا | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p562-TAGHYIR_HAMZ-خاسيا-7",
@@ -792,11 +810,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغيـر وإمالة للدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "تقليل فتحة الراء والألف"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغيـر وإمالة للدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "تقليل فتحة الراء والألف",
@@ -806,7 +833,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "هَلْ تَرَىٰ → هَلْ تَرَى | تقليل فتحة الراء والألف"
+      "هَلْ تَرَىٰ → هَلْ تَرَى | تقليل فتحة الراء والألف",
+      "هـل تـرى → هـل تَّـرٍى | إدغام صغيـر وإمالة للدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-067-3-6-r2574-IMALAH_TAQLIL",
+    "pageNumber": 562,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 67,
+    "ayah": 3,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 3,
+    "baseText": "مَّا تَرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالهـا الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالهـا الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "مـا تـرى → مـا تـرٍى | أمالهـا الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

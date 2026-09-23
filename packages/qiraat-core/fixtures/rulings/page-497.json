@@ -239,7 +239,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْأُولَىٰ → الْأُولَى | بالتقليل"
+      "الْأُولَىٰ → الْأُولَى | بالتقليل",
+      "الأولـى → الأولِـى | قللها الدوري"
     ]
   },
   {
@@ -673,7 +674,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "عـذْت → عـذتُّ | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-SUSI-044-24-2-3973-IDGHAM_KABIR",
@@ -706,6 +710,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "الْبَحْرَ رَهْوًا → الْبَحْر رَّهْوًا | إدغام الراء في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-044-29-3-r2292-MEEM_JAM",
+    "pageNumber": 497,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 44,
+    "ayah": 29,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 29,
+    "baseText": "عَلَيْهِمُ ٱلسَّمَآءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليهـمُ السمـاء → عليهـمِ السماء | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

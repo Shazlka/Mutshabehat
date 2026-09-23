@@ -53,6 +53,15 @@
         "sourceReference": "user-supplied JSON row 4204; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "يَخْرُجُ → يُخْرَجُ | ضم الياء وفتح الراء مبنياً للمفعول"
+      },
+      {
+        "id": "s-DURI-055-22-1-r2429",
+        "variantId": "v-AUDIT-P532-55-22-1-2f7aeefd",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2429; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَـخْرُج → يُـخْرَج | ضم الدوري الياء وفتح الراء"
       }
     ],
     "description": "﴿يَخْرُجُ﴾: بفتح الياء وضم الراء ﴿يَخْرُجُ﴾ لابن كثير، وابن عامر، وعاصم، وحمزة، والكسائي، وخلف؛ بضم الياء وفتح الراء مبنياً للمجهول ﴿يُخْرَجُ﴾ للباقين.",
@@ -334,6 +343,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/ar-rahman/35",
         "sourceText": "كسر سين نُحَاسٍ: قنبل والبزي عن ابن كثير، وروح عن يعقوب.",
         "verificationNotes": "عرض مستقل يسمي قنبل والبزي وروح في وجه الكسر."
+      },
+      {
+        "id": "s-DURI-055-35-6-r2433",
+        "variantId": "v-AUDIT-P532-55-35-6-NAHAS-KASR",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2433; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ونـحـاسٌ → ونـحاسٍ | قرأ الدوري بجر السين منونة"
       }
     ],
     "description": "بكسر الشين ﴿شِوَاظٌ﴾ وجر السين ﴿وَنُحَاسٍ﴾: ابن كثير. / بضم الشين وجر السين ﴿وَنُحَاسٍ﴾: أبو عمرو، وروح.",
@@ -408,5 +426,36 @@
       }
     ],
     "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-DURI-055-31-3-r2430",
+    "surah": 55,
+    "ayah": 31,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَيُّهَ",
+    "variantText": "أيّـها",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-055-31-3-r2430",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-055-31-3-r2430",
+        "variantId": "v-DURI-055-31-3-r2430",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2430; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أيّـه → أيّـها | وقف الدوري بالألف"
+      }
+    ],
+    "description": "وقف الدوري بالألف"
   }
 ]

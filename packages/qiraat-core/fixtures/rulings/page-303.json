@@ -138,5 +138,145 @@
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-018-85-1-r1335-TAGHYIR_HAMZ",
+    "pageNumber": 303,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 85,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 85,
+    "baseText": "فَأَتْبَعَ سَبَبًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأها الدوري بهمزة وصل مع تشديد التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأها الدوري بهمزة وصل مع تشديد التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "فأتبع سـبباً → فاتَّبـع سبباً | قرأها الدوري بهمزة وصل مع تشديد التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-018-89-1-r1337-TAGHYIR_HAMZ",
+    "pageNumber": 303,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 89,
+    "startToken": 1,
+    "endToken": 3,
+    "endAyah": 89,
+    "baseText": "ثُمَّ أَتْبَعَ سَبَبًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأها الدوري بهمزة وصل مع تشديد التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأها الدوري بهمزة وصل مع تشديد التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ثـم أتبع سبباً → ثـم اتَّبـع سبباً | قرأها الدوري بهمزة وصل مع تشديد التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-018-92-1-r1338-TAGHYIR_HAMZ",
+    "pageNumber": 303,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 92,
+    "startToken": 1,
+    "endToken": 3,
+    "endAyah": 92,
+    "baseText": "ثُمَّ أَتْبَعَ سَبَبًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأها الدوري بهمزة وصل مع تشديد التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأها الدوري بهمزة وصل مع تشديد التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ثـم أتبع سبباً → ثـم اتَّبـع سبباً | قرأها الدوري بهمزة وصل مع تشديد التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-018-94-5-r1339-TAGHYIR_HAMZ",
+    "pageNumber": 303,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 94,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 94,
+    "baseText": "يَأْجُوجَ وَمَأْجُوجَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أبدل الدوري الهمز فيهما"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أبدل الدوري الهمز فيهما",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "يـأجوج ومـأجوج → يـاجوج ومـاجوج | أبدل الدوري الهمز فيهما"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -200,6 +200,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-qiyama/3",
         "sourceText": "Quranpedia: fatḥ sīn for Ibn Amir, Asim, Hamza, Abu Jafar; kasr for the rest.",
         "verificationNotes": "Exact verse and face/reader set checked against Quranpedia."
+      },
+      {
+        "id": "s-DURI-075-3-1-r2641",
+        "variantId": "v-AUDIT-P577-75-3-1-01ac7556",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2641; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أيـحسَب → أيـحسِـب | كسر الدوري السين"
       }
     ],
     "description": "﴿أَيَحْسَبُ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
@@ -311,5 +320,37 @@
         "url": "https://quranpedia.net/qiraat/al-qiyama/17"
       }
     ]
+  },
+  {
+    "id": "v-DURI-075-1-1-r2639-performance",
+    "surah": 75,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لَآ أُقْسِمُ بِيَوْمِ",
+    "variantText": "لَآ أُقْسِمُ بِيَوْمِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-075-1-1-r2639",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الميم وأخفاها",
+    "sources": [
+      {
+        "id": "s-DURI-075-1-1-r2639",
+        "variantId": "v-DURI-075-1-1-r2639-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2639; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لا أقسم بيوم → لا أقسمُ بيـوم | أسكن الدوري الميم وأخفاها"
+      }
+    ],
+    "description": "أسكن الدوري الميم وأخفاها"
   }
 ]

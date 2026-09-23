@@ -293,7 +293,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "بِالْكَافِرِينَ → بِالْكَافِرِينَ | إمالة فتحة الكاف والألف"
+      "بِالْكَافِرِينَ → بِالْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "بالكـافرين → بالكٍـافرين | أمالها الدوري"
     ]
   },
   {
@@ -370,7 +371,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "فـأنَّـى → فأنِّى | قلل الدوري"
+    ]
   },
   {
     "id": "r-p403-IMALAH_TAQLIL-فاحيا-4",
@@ -749,6 +753,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "وَيَقْدِرُ ۚ لَهُ → وَيَقْدِر لَّهُ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-029-56-1-r1811-WAQF_RASM",
+    "pageNumber": 403,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 56,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 56,
+    "baseText": "يَـٰعِبَادِىَ ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أسكن الدوري الياء وصلاً ووقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أسكن الدوري الياء وصلاً ووقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ياعباديَ الذيـن → ياعبادي الـذين | أسكن الدوري الياء وصلاً ووقفاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -50,6 +50,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قلل الدوري الحاء"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
@@ -58,6 +62,11 @@
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قلل الدوري الحاء",
         "isDefault": true
       },
       {
@@ -74,7 +83,8 @@
     "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02932",
     "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/1",
     "sourceNotes": [
-      "حم → حم | بالتقليل"
+      "حم → حم | بالتقليل",
+      "حـم → حِـم | قلل الدوري الحاء"
     ]
   },
   {

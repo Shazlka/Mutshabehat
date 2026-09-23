@@ -78,6 +78,15 @@
         "sourceReference": "user-supplied JSON row 4503; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "فَكُّ رَقَبَةٍ → فَكَّ رَقَبَةً | فتح الكاف فعلاً ماضياً ونصب رقبة مفعولاً به لأبي عمرو وابن كثير والكسائي وقرأ حفص برفع الكاف مضافاً وجر رقبة"
+      },
+      {
+        "id": "s-DURI-090-13-1-r2717",
+        "variantId": "v-SRC594-90-13-1-FAKK",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2717; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فـكُّ رقبـةٍ → فـكَّ رقبـةً | فـتح الدوري الكاف ونصب التاء"
       }
     ],
     "description": "فَكَّ رَقَبَةً",
@@ -162,6 +171,7 @@
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q03-R02"
     ],
     "locusId": "SUSI-090-14-1-4504",
@@ -175,6 +185,15 @@
         "sourceReference": "user-supplied JSON row 4504; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "أَوْ إِطْعَامٌ → أَوْ أَطْعَمَ | فعلاً ماضياً مفتوح الهمزة والعين لأبي عمرو وابن كثير وقرأ حفص مصدراً منوناً"
+      },
+      {
+        "id": "s-DURI-090-14-1-r2718",
+        "variantId": "v-SUSI-090-14-1-4504",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2718; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أو إطعـامٌ → أو أطعَـمَ | فتح الدوري الهمزة وحذف الألف بعد العين وفتح الميم"
       }
     ],
     "description": "فعلاً ماضياً مفتوح الهمزة والعين لأبي عمرو وابن كثير وقرأ حفص مصدراً منوناً"
@@ -274,5 +293,69 @@
       }
     ],
     "description": "تحقيق"
+  },
+  {
+    "id": "v-DURI-090-5-1-r2714-performance",
+    "surah": 90,
+    "ayah": 5,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُ",
+    "variantText": "أَيَحْسَبُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-090-5-1-r2714",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-090-5-1-r2714",
+        "variantId": "v-DURI-090-5-1-r2714-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2714; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أيـحسَب → أيـحسِب | كسر الدوري السين"
+      }
+    ],
+    "description": "كسر الدوري السين"
+  },
+  {
+    "id": "v-DURI-090-7-1-r2715-performance",
+    "surah": 90,
+    "ayah": 7,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُ",
+    "variantText": "أَيَحْسَبُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-090-7-1-r2715",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-090-7-1-r2715",
+        "variantId": "v-DURI-090-7-1-r2715-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2715; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أيـحسَب → أيـحسِب | كسر الدوري السين"
+      }
+    ],
+    "description": "كسر الدوري السين"
   }
 ]

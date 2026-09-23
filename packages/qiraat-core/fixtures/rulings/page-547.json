@@ -131,7 +131,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "قـرى → قـرٍى | أمالها الدوري وقفاً"
+    ]
   },
   {
     "id": "r-p547-IMALAH_TAQLIL-جدار-2",
@@ -258,7 +261,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "شَتَّىٰ → شَتَّى | تقليل الألف"
+      "شَتَّىٰ → شَتَّى | تقليل الألف",
+      "شتّـى → شـتِّى | قللها الدوري"
     ]
   },
   {
@@ -517,6 +521,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "قَالَ لِلْإِنسَانِ → قَال لِّلْإِنسَانِ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-059-11-7-r2505-MEEM_JAM",
+    "pageNumber": 547,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 11,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 11,
+    "baseText": "لِإِخْوَٰنِهِمُ ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "لإخوانـهمُ الـذين → لإخـوانـهمِ الذيـن | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

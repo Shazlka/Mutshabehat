@@ -164,7 +164,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللهـا الدوري"
     ]
   },
   {
@@ -381,7 +382,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِـى | قللهـا الدوري"
     ]
   },
   {
@@ -469,7 +471,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْأُولَىٰ → الْأُولَى | بالتقليل"
+      "الْأُولَىٰ → الْأُولَى | بالتقليل",
+      "الأولـى → الأولِـى | قللهـا الدوري"
     ]
   },
   {
@@ -557,7 +560,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مُفْتَرًى → مُفْتَرًى | إمالة فتحة الراء والألف وقفاً"
+      "مُفْتَرًى → مُفْتَرًى | إمالة فتحة الراء والألف وقفاً",
+      "مُفْتـرى → مفتَـرٍى | أمالـها الدوري وقفاً"
     ]
   },
   {
@@ -770,7 +774,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "الـنَّار → النٍّـار | أمالها الدوري"
     ]
   },
   {
@@ -1224,11 +1229,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل",
@@ -1238,7 +1252,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِـى | قللهـا الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -1294,11 +1309,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الدال والألف"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الدال والألف",
@@ -1308,7 +1332,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "الدَّارِ → الدَّارِ | إمالة فتحة الدال والألف"
+      "الدَّارِ → الدَّارِ | إمالة فتحة الدال والألف",
+      "الـدَّار → الـدٍّار | أمالها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -1329,11 +1354,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل",
@@ -1343,7 +1377,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِـى | قللهـا الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -1364,11 +1399,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري وقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل وقفاً"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري وقفاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل وقفاً",
@@ -1378,7 +1422,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "مُوسَى → مُوسَى | بالتقليل وقفاً"
+      "مُوسَى → مُوسَى | بالتقليل وقفاً",
+      "موسـى → مـوسِـى | قللهـا الدوري وقفاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -1414,6 +1459,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "بَصَائِرَ لِلنَّاسِ → بَصَائِر لِّلنَّاسِ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-028-43-12-r1762-IMALAH_TAQLIL",
+    "pageNumber": 390,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 43,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 43,
+    "baseText": "لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري للناس"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري للناس",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمال الدوري للناس"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -250,7 +250,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الكـافرين → الكٍـافرين | أمالـهـا الدوري"
+    ]
   },
   {
     "id": "r-p507-IMALAH_TAQLIL-مولي-2",
@@ -402,11 +405,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالـهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الكاف والألف"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـهـا الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الكاف والألف",
@@ -416,7 +428,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَلِلْكَافِرِينَ → وَلِلْكَافِرِينَ | إمالة فتحة الكاف والألف"
+      "وَلِلْكَافِرِينَ → وَلِلْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "وللكـافرين → وللكٍـافرين | أمالـهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-047-3-17-r2336-IMALAH_TAQLIL",
+    "pageNumber": 507,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 3,
+    "startToken": 17,
+    "endToken": 17,
+    "endAyah": 3,
+    "baseText": "لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالـها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

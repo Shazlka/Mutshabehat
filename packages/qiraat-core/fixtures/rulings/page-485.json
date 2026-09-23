@@ -84,7 +84,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
     ]
   },
   {
@@ -231,11 +232,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري وقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري وقفاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة",
@@ -245,7 +255,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "تَرَى الظَّالِمِينَ → تَرَى الظَّالِمِينَ | وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة"
+      "تَرَى الظَّالِمِينَ → تَرَى الظَّالِمِينَ | وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة",
+      "تـرى الظالـمين → تـرى الظالمين | أمالـها الدوري وقفاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -281,6 +292,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "وَهُوَ وَاقِعٌ → وَهْو وَّاقِعٌ | إسكان الهاء ثم إدغام الواو في الواو"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-042-22-6-r2230-TAGHYIR_HAMZ",
+    "pageNumber": 485,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 22,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 22,
+    "baseText": "وَهُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أسكن الدوري الهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أسكن الدوري الهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وهُـو → وهْـو | أسكن الدوري الهمز"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -241,7 +241,10 @@
     "hasAlternate": false,
     "text": "الإدغام المحض حسب المصدر",
     "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z"
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "sourceNotes": [
+      "بـلْ ران → بـل رَّان | قرأ الدوري بالإدراج وإدغام اللام بالراء"
+    ]
   },
   {
     "id": "r-SRC588-IMALAH_TAQLIL-14-3",
@@ -459,11 +462,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الراء والألف لكسرة الراء المتطرفة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الراء والألف لكسرة الراء المتطرفة",
@@ -473,7 +485,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "الْأَبْرَارِ → الْأَبْرَارِ | إمالة فتحة الراء والألف لكسرة الراء المتطرفة"
+      "الْأَبْرَارِ → الْأَبْرَارِ | إمالة فتحة الراء والألف لكسرة الراء المتطرفة",
+      "الأبرارِ → الأبـرٍارِ | أمال الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -509,6 +522,76 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "الْأَبْرَارِ → الْأَبْرَارِ | إمالة فتحة الراء والألف لكسرة الراء المتطرفة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-083-7-4-r2686-IMALAH_TAQLIL",
+    "pageNumber": 588,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 7,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 7,
+    "baseText": "ٱلْفُجَّارِ لَفِى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "الفـجّـارِ لفي → الفـجٍّارِ لفي | أمال الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-083-31-4-r2691-MEEM_JAM",
+    "pageNumber": 588,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 31,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 31,
+    "baseText": "أَهْلِهِمُ ٱنقَلَبُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أهلـهمُ انـقلبوا → أهلهمِ انـقلبوا | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

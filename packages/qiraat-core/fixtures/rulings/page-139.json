@@ -532,7 +532,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → موسِـى | قللهـا الدوري"
     ]
   },
   {
@@ -715,7 +716,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p139-017-1",
@@ -804,7 +808,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء"
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء",
+      "الـقرى → الـقرٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -894,7 +899,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "افْتَرَىٰ → افْتَرَى | إمالة فتحة الراء"
+      "افْتَرَىٰ → افْتَرَى | إمالة فتحة الراء",
+      "افـترى – تـرى → افـترٍى – تـرٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -984,7 +990,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "تَرَىٰ → تَرَى | إمالة فتحة الراء"
+      "تَرَىٰ → تَرَى | إمالة فتحة الراء",
+      "افـترى – تـرى → افـترٍى – تـرٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -1564,11 +1571,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إدغام الدال في الجيم ثم إبدال الهمزة ياء"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إدغام الدال في الجيم ثم إبدال الهمزة ياء",
@@ -1578,7 +1594,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَلَقَدْ جِئْتُمُونَا → وَلَقَد جِّيتُمُونَا | إدغام الدال في الجيم ثم إبدال الهمزة ياء"
+      "وَلَقَدْ جِئْتُمُونَا → وَلَقَد جِّيتُمُونَا | إدغام الدال في الجيم ثم إبدال الهمزة ياء",
+      "ولقدْ جئتمونا → ولقد جِّئتمونا | أدغم الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -1614,6 +1631,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "نَرَىٰ → نَرَى | إمالة فتحة الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-006-94-13-r0577-IMALAH_TAQLIL",
+    "pageNumber": 139,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 6,
+    "ayah": 94,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 94,
+    "baseText": "وَمَا نَرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالهـا الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالهـا الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وما نـرى → وما نـرٍى | أمالهـا الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

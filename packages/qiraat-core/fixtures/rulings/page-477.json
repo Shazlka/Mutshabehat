@@ -81,6 +81,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قلل الدوري الحاء"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
@@ -89,6 +93,11 @@
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قلل الدوري الحاء",
         "isDefault": true
       },
       {
@@ -101,7 +110,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "حم → حم | بالتقليل"
+      "حم → حم | بالتقليل",
+      "حـم → حِـم | قلل الدوري الحاء"
     ]
   },
   {

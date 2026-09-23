@@ -106,7 +106,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "قَرَارٍ → قَرَارٍ | إمالة فتحة الراء"
+      "قَرَارٍ → قَرَارٍ | إمالة فتحة الراء",
+      "قـرار → قـرٍار | أمالها الدوري"
     ]
   },
   {
@@ -182,7 +183,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
     ]
   },
   {
@@ -341,7 +343,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "النَّارِ → النَّارِ | إمالة فتحة النون والألف"
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار → النٍّـار | أمالها الدوري"
     ]
   },
   {
@@ -469,7 +472,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْبَوَارِ → الْبَوَارِ | إمالة فتحة الواو"
+      "الْبَوَارِ → الْبَوَارِ | إمالة فتحة الواو",
+      "البـوار → البـوٍار | أمالها الدوري"
     ]
   },
   {
@@ -996,6 +1000,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "يَأْتِيَ يَوْمٌ → يَاتِي يَّوْمٌ | إبدال الهمزة ألفاً ثم إدغام الياء في الياء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-014-25-10-r1135-IMALAH_TAQLIL",
+    "pageNumber": 259,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 25,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 25,
+    "baseText": "لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنـاس → للنِّـاس | أمال الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

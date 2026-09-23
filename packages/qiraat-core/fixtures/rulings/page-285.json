@@ -207,7 +207,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "فقدْ جـعلنا → فقد جَّـعلنا | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-SUSI-017-31-6-2024-IDGHAM_KABIR",
@@ -345,6 +348,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "ذَٰلِكَ كَانَ → ذَٰلِك كَّانَ | إدغام الكاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-017-38-4-r1235-TAGHYIR_HAMZ",
+    "pageNumber": 285,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 38,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 38,
+    "baseText": "سَيِّئُهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الهمزة وبعدها تاء تأنيث منصوبة منونة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الهمزة وبعدها تاء تأنيث منصوبة منونة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "سَيِّـئُـه → سَيِّـئةً | فتح الدوري الهمزة وبعدها تاء تأنيث منصوبة منونة"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

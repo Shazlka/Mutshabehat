@@ -84,7 +84,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللها الدوري"
     ]
   },
   {
@@ -304,11 +305,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري وقفا"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري وقفا",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
@@ -318,7 +328,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+      "وتـرى الأرض → وترى الأرض | أمالها الدوري وقفا"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -339,11 +350,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إدغام الدال في الجيم وإبدال الهمزة ياء"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إدغام الدال في الجيم وإبدال الهمزة ياء",
@@ -353,7 +373,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "لَّقَدْ جِئْتُمُونَا → لَّقَد جِّيتُمُونَا | إدغام الدال في الجيم وإبدال الهمزة ياء"
+      "لَّقَدْ جِئْتُمُونَا → لَّقَد جِّيتُمُونَا | إدغام الدال في الجيم وإبدال الهمزة ياء",
+      "لقـد جئتمونا → لقد جِّئتمونا | أدغم الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -409,11 +430,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري وقفا"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري وقفا",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
@@ -423,7 +453,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "فَتَرَى → فَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      "فَتَرَى → فَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+      "فتـرى المجرمين → فترى المجرمين | أمالها الدوري وقفا"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

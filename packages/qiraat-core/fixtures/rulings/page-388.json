@@ -450,7 +450,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "إِحْدَاهُمَا → إِحْدَاهُمَا | بالتقليل"
+      "إِحْدَاهُمَا → إِحْدَاهُمَا | بالتقليل",
+      "إحـداهـما → إحـدِا هما | قللهـا الدوري"
     ]
   },
   {
@@ -538,7 +539,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "إِحْدَى → إِحْدَى | بالتقليل وقفاً"
+      "إِحْدَى → إِحْدَى | بالتقليل وقفاً",
+      "إحْـدى → إحْـدِى | قللهـا الدوري وقفاً"
     ]
   },
   {
@@ -668,7 +670,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p388-TAGHYIR_HAMZ-استجره-8",
@@ -966,11 +971,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "بالتقليل",
@@ -980,7 +994,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "إِحْدَاهُمَا → إِحْدَاهُمَا | بالتقليل"
+      "إِحْدَاهُمَا → إِحْدَاهُمَا | بالتقليل",
+      "إحـداهـما → إحـدِا هما | قللهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-028-23-13-r1732-MEEM_JAM",
+    "pageNumber": 388,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 23,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 23,
+    "baseText": "دُونِهِمُ ٱمْرَأَتَيْنِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "دونِـهمُ امرأتين → دونِـهمِ امرأتين | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

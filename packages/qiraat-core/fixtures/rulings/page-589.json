@@ -164,6 +164,10 @@
         "action": "صلة ميم الجمع"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      },
+      {
         "authorityId": "Q08-R01",
         "action": "صلة ميم الجمع"
       },
@@ -181,6 +185,11 @@
       {
         "readingId": "Q02-R02",
         "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
         "isDefault": true
       },
       {
@@ -202,7 +211,8 @@
         "sourceReference": "qiraat_pages_585_604_full.source.sql",
         "sourceText": "SQL usul record",
         "verificationNotes": "Real page-word token anchor."
-      }
+      },
+      "عليهـمُ القرءان → عليـهمِ القرءان | كسر الدوري الميم وصلاً"
     ]
   },
   {
@@ -221,11 +231,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة فتحة الفاء والألف لكسرة الراء المتطرفة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة فتحة الفاء والألف لكسرة الراء المتطرفة",
@@ -235,7 +254,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "الْكُفَّارِ → الْكُفَّارِ | إمالة فتحة الفاء والألف لكسرة الراء المتطرفة"
+      "الْكُفَّارِ → الْكُفَّارِ | إمالة فتحة الفاء والألف لكسرة الراء المتطرفة",
+      "الكفَّـار → الكفٍّـار | أمالـها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

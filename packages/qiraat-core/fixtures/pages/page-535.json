@@ -370,6 +370,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03369",
         "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
         "sourceText": "﴿وَلَا يُنزِفُونَ﴾: بفتح الزاي لعاصم، وحمزة، والكسائي، وخلف؛ وبكسر الزاي ﴿وَلَا يُنْزِفُونَ﴾ للباقين."
+      },
+      {
+        "id": "s-DURI-056-19-4-r2435",
+        "variantId": "v-D535-ولا_ينزفون-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2435; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ولا يُنـزِفـون → ولا يُنْـزَفون | فتح الدوري الزاي"
       }
     ],
     "description": "بكسر الزاي للباقين",

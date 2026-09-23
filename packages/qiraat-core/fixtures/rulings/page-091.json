@@ -841,11 +841,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري ( مثال وحيد )"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إدغام التاء في الطاء"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري ( مثال وحيد )",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إدغام التاء في الطاء",
@@ -855,7 +864,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "بَيَّتَ طَائِفَةٌ → بَيَّت طَّائِفَةٌ | إدغام التاء في الطاء"
+      "بَيَّتَ طَائِفَةٌ → بَيَّت طَّائِفَةٌ | إدغام التاء في الطاء",
+      "بيَّـت طائـفة → بيَّـت طَّـائفة | أدغم الدوري ( مثال وحيد )"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

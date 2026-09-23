@@ -162,5 +162,98 @@
       }
     ],
     "description": "بالياء وفتح الحاء مخففة لأبي عمرو وقرأ حفص بالتاء والمد المشدد (تَحَاضُّونَ)"
+  },
+  {
+    "id": "v-DURI-089-4-3-r2705",
+    "surah": 89,
+    "ayah": 4,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَسْرِ",
+    "variantText": "يسـري",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-089-4-3-r2705",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-089-4-3-r2705",
+        "variantId": "v-DURI-089-4-3-r2705",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2705; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يسـرِ → يسـري | أثبت الدوري الياء وصلاً"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصلاً"
+  },
+  {
+    "id": "v-DURI-089-19-1-r2710",
+    "surah": 89,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَتَأْكُلُونَ",
+    "variantText": "ويـأكلون",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-089-19-1-r2710",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-089-19-1-r2710",
+        "variantId": "v-DURI-089-19-1-r2710",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2710; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وتـأكلون → ويـأكلون | قرأ الدوري بالياء وأبدل السوسي"
+      }
+    ],
+    "description": "قرأ الدوري بالياء وأبدل السوسي"
+  },
+  {
+    "id": "v-DURI-089-20-1-r2711",
+    "surah": 89,
+    "ayah": 20,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَتُحِبُّونَ",
+    "variantText": "ويـحبون",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-089-20-1-r2711",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-089-20-1-r2711",
+        "variantId": "v-DURI-089-20-1-r2711",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2711; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وتـحبـون → ويـحبون | قرأ الدوري بالياء فيهما"
+      }
+    ],
+    "description": "قرأ الدوري بالياء فيهما"
   }
 ]

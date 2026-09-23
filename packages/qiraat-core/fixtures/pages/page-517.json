@@ -131,6 +131,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P517-R03211",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/al-hujurat/12",
         "sourceText": "﴿لَا يَلِتْكُم﴾: بياء مفتوحة ولام مكسورة بلا همز للجمهور؛ بهمز ساكن بعد الياء وكسر اللام ﴿لَا يَأْلِتْكُمْ﴾ لأبي عمرو ويعقوب (مع إبدال الهمزة للسوسي)."
+      },
+      {
+        "id": "s-DURI-049-14-19-r2378",
+        "variantId": "v-D517-لا_يلتكم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2378; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لا يـلِتـكم → لا يـألتـكم | قرأ الدوري بهمزة ساكنة بعد الياء"
       }
     ],
     "description": "بهمز ساكن بعد الياء وكسر اللام",

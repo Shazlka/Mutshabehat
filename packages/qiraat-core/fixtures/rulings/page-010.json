@@ -308,7 +308,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "وَالنَّصَارَى → وَالنَّصَارَى | إمالة فتحة الراء والألف"
+      "وَالنَّصَارَى → وَالنَّصَارَى | إمالة فتحة الراء والألف",
+      "والنصـارى → والنصـارٍى | أمالها الدوري"
     ]
   },
   {
@@ -398,7 +399,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَى → مُوسَى | بالتقليل"
+      "مُوسَى → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِى | قللها الدوري وصلاً ووقفاً"
     ]
   },
   {
@@ -787,5 +789,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-002-67-13-r0034-TAGHYIR_HAMZ",
+    "pageNumber": 10,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 67,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 67,
+    "baseText": "هُزُوًۭا ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بالهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بالهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "هـزواً → هـزؤاً | قرأ الدوري بالهمز"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

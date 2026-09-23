@@ -79,6 +79,15 @@
         "sourceReference": "user-supplied JSON row 1521; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "رُسُلُنَا → رُسْلُنَا | إسكان السين"
+      },
+      {
+        "id": "s-DURI-011-77-3-r0973",
+        "variantId": "v-L230-رسلنا-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 973; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رسُـلنا → رسْـلنا | أسكن الدوري السين"
       }
     ],
     "description": "بإسكان السين",
@@ -253,6 +262,7 @@
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q03-R02"
     ],
     "locusId": "SUSI-011-73-6-1516",
@@ -266,6 +276,15 @@
         "sourceReference": "user-supplied JSON row 1516; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "رَحْمَتُ → رَحْمَه | بالهاء وقفاً"
+      },
+      {
+        "id": "s-DURI-011-73-6-r0969",
+        "variantId": "v-SUSI-011-73-6-1516",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 969; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رحمـت → رحـمة | وقف الدوري بالهاء"
       }
     ],
     "description": "بالهاء وقفاً"
@@ -315,6 +334,7 @@
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q03-R02"
     ],
     "locusId": "SUSI-011-78-20-1523",
@@ -328,6 +348,15 @@
         "sourceReference": "user-supplied JSON row 1523; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
         "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "تُخْزُونِ → تُخْزُونِي | بالياء وصلاً"
+      },
+      {
+        "id": "s-DURI-011-78-20-r0974",
+        "variantId": "v-SUSI-011-78-20-1523",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 974; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تـخزونِ → تـخزونـي | أثبت الدوري الياء وصـلاً"
       }
     ],
     "description": "بالياء وصلاً"

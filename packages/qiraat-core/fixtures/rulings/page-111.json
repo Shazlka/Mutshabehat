@@ -394,7 +394,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "وَالنَّصَارَىٰ → وَالنَّصَارَى | إمالة فتحة الراء والألف"
+      "وَالنَّصَارَىٰ → وَالنَّصَارَى | إمالة فتحة الراء والألف",
+      "والنصـارى → والنصـارٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -636,6 +637,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "بالتقليل"
       },
@@ -656,6 +661,11 @@
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
         "isDefault": true
       },
       {
@@ -698,7 +708,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → موسِـى | قللها الدوري"
     ]
   },
   {
@@ -913,7 +924,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "أَدْبَارِكُمْ → أَدْبَارِكُمْ | إمالة فتحة الباء والألف"
+      "أَدْبَارِكُمْ → أَدْبَارِكُمْ | إمالة فتحة الباء والألف",
+      "أدبـاركم → أدبٍـاركم | أمالها الدوري"
     ]
   },
   {
@@ -1037,7 +1049,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قد جاءكم - فقد جاءكم → قد جَّاءكم - فقد جَّاءكم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p111-019-1",
@@ -1082,7 +1097,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إذ جعـل → إذ جَّعـل | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p111-020-1",
@@ -1750,6 +1768,76 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "إِذْ جَعَلَ → إِذ جَّعَلَ | إدغام الذال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-005-19-20-r0444-IDGHAM_SAGHIR",
+    "pageNumber": 111,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 19,
+    "startToken": 20,
+    "endToken": 21,
+    "endAyah": 19,
+    "baseText": "فَقَدْ جَآءَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "قد جاءكم - فقد جاءكم → قد جَّاءكم - فقد جَّاءكم | إدغام صغير للدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-005-23-10-r0449-MEEM_JAM",
+    "pageNumber": 111,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 23,
+    "startToken": 10,
+    "endToken": 11,
+    "endAyah": 23,
+    "baseText": "عَلَيْهِمُ ٱلْبَابَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليهـمُ الباب → عليهـمِ الباب | كسر الدوري الميم وصلاً"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

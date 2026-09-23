@@ -364,6 +364,10 @@
         "action": "تقليل"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -384,6 +388,11 @@
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
         "isDefault": true
       },
       {
@@ -409,7 +418,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أنّـى → أنٍّـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p306-009-1",
@@ -492,11 +504,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إمالة",
@@ -506,7 +527,10 @@
     "hasAlternate": false,
     "text": "الخلف للدوري عن أبي عمرو في «الناس» المجرورة.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p306-012-1",
@@ -684,7 +708,10 @@
     "hasAlternate": false,
     "text": "وقرأ الباقون بالإظهار.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قـدْ جعل → قـد جَّعل | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p306-IMALAH_TAQLIL-انا-0",

@@ -222,7 +222,8 @@
         "sourceReference": "qiraat_records.jsonl، page 538",
         "sourceText": "النص المصدر يذكر «خلف» فقط، من غير «خلف العاشر» أو تسمية إسحاق/إدريس؛ أُبقي الإسناد لخلَف عن حمزة (Q06)، ولم يُنسب لخلف العاشر (Q10).",
         "verificationNotes": "تطبيق توجيه المستخدم: bare خلف = خلف عن حمزة؛ خلف العاشر لا يضاف إلا إذا صُرّح باسمه."
-      }
+      },
+      "الـحسنى → الـحسنِـى | قللها الدوري"
     ]
   },
   {
@@ -256,6 +257,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-057-8-11-r2454-TAGHYIR_HAMZ",
+    "pageNumber": 538,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 8,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 8,
+    "baseText": "أَخَذَ مِيثَـٰقَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بضم الهمزة وكسر الخاء ورفع ميثاقـكم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بضم الهمزة وكسر الخاء ورفع ميثاقـكم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أخَـذَ ميثـاقَكم → أُخِـذَ ميثاقُكم | قرأ الدوري بضم الهمزة وكسر الخاء ورفع ميثاقـكم"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

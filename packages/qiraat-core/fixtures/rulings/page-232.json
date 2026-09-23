@@ -385,7 +385,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "لَنَرَاكَ → لَنَرَاكَ | إمالة فتحة الراء"
+      "لَنَرَاكَ → لَنَرَاكَ | إمالة فتحة الراء",
+      "لنـراك → لنـرٍاك | أمالها الدوري"
     ]
   },
   {
@@ -487,7 +488,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "دِيَارِهِم → دِيَارِهِم | إمالة فتحة الياء والألف"
+      "دِيَارِهِم → دِيَارِهِم | إمالة فتحة الياء والألف",
+      "ديـارهم → ديٍـارهم | أمالها الدوري"
     ]
   },
   {
@@ -563,7 +565,8 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "sourceNotes": [
-      "مُوسَىٰ → مُوسَى | بالتقليل"
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسـى → مـوسِى | قللها الدوري"
     ]
   },
   {
@@ -786,7 +789,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بعِـدتْ ثـمود → بعـدت ثَّـمود | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p232-016-1",
@@ -1689,6 +1695,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "بَعِدَتْ ثَمُودُ → بَعِدَت ثَّمُودُ | إدغام التاء في الثاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-011-92-8-r0987-IDGHAM_KABIR",
+    "pageNumber": 232,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 92,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 92,
+    "baseText": "وَٱتَّخَذْتُمُوهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "واتخذْتـموه → واتـخذتُّـموه | أدغم الدوري الذال بالتاء"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -239,7 +239,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْمَوْتَىٰ → الْمَوْتَى | بالتقليل"
+      "الْمَوْتَىٰ → الْمَوْتَى | بالتقليل",
+      "الموتـى → الـموتِى | قللهـا الدوري"
     ]
   },
   {
@@ -271,7 +272,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "للنّـاس → للـنٍّاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p410-IDGHAM_SAGHIR-جيتهم-2",
@@ -504,7 +508,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقدْ ضـربنا → ولقد ضَّـربنا | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-SUSI-030-54-3-3249-IDGHAM_KABIR",
@@ -607,6 +614,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "وَلَقَد ضَّرَبْنَا → وَلَقَد ضَّرَبْنَا | إدغام الدال في الضاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-030-56-7-r1850-IDGHAM_SAGHIR",
+    "pageNumber": 410,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 30,
+    "ayah": 56,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 56,
+    "baseText": "لَبِثْتُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "لبثْـتم → لبثـتُّم | إدغام صغير للدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

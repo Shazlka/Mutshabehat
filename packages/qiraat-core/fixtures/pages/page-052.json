@@ -220,5 +220,68 @@
       }
     ],
     "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-DURI-003-20-5-r0218-performance",
+    "surah": 3,
+    "ayah": 20,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَجْهِىَ لِلَّهِ",
+    "variantText": "وَجْهِىَ لِلَّهِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-003-20-5-r0218",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-003-20-5-r0218",
+        "variantId": "v-DURI-003-20-5-r0218-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 218; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وجهيَ لله → وجهي لله | أسكن الدوري الياء"
+      }
+    ],
+    "description": "أسكن الدوري الياء"
+  },
+  {
+    "id": "v-DURI-003-20-8-r0219",
+    "surah": 3,
+    "ayah": 20,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱتَّبَعَنِ ۗ",
+    "variantText": "اتبعنـي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-003-20-8-r0219",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-003-20-8-r0219",
+        "variantId": "v-DURI-003-20-8-r0219",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 219; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اتبـعنِ → اتبعنـي | أثبت الدوري الياء وصـلاً"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصـلاً"
   }
 ]

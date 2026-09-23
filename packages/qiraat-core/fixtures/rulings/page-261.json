@@ -338,7 +338,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْقَهَّارِ → الْقَهَّارِ | إمالة فتحة الهاء والألف"
+      "الْقَهَّارِ → الْقَهَّارِ | إمالة فتحة الهاء والألف",
+      "القـهار → القهٍّـار | أمالها الدوري"
     ]
   },
   {
@@ -605,11 +606,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري وقفاً"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري وقفاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
@@ -619,7 +629,43 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+      "وتـرى الـمجرمين → وترى المجرمين | أمالها الدوري وقفاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-014-52-3-r1155-IMALAH_TAQLIL",
+    "pageNumber": 261,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 52,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 52,
+    "baseText": "لِّلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنّـاس → للـنٍّاس | أمالها الدوري"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

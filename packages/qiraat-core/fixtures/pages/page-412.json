@@ -238,5 +238,69 @@
       }
     ],
     "description": "ألف بعد الصاد وتخفيف العين"
+  },
+  {
+    "id": "v-DURI-031-13-7-r1861-performance",
+    "surah": 31,
+    "ayah": 13,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰبُنَىَّ",
+    "variantText": "يَـٰبُنَىَّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-031-13-7-r1861",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-031-13-7-r1861",
+        "variantId": "v-DURI-031-13-7-r1861-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1861; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـابُـنَيَّ → يـابُنَـيِّ | كسر الدوري الياء"
+      }
+    ],
+    "description": "كسر الدوري الياء"
+  },
+  {
+    "id": "v-DURI-031-16-1-r1864-performance",
+    "surah": 31,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰبُنَىَّ",
+    "variantText": "يَـٰبُنَىَّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-031-16-1-r1864",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-031-16-1-r1864",
+        "variantId": "v-DURI-031-16-1-r1864-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1864; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـابُـنَيَّ → يـابُنَـيِّ | كسر الدوري الياء"
+      }
+    ],
+    "description": "كسر الدوري الياء"
   }
 ]

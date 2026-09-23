@@ -271,7 +271,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p241-009-1",
@@ -776,6 +779,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أسكن الدوري الهمزة"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إبدال الهمز"
       },
@@ -785,6 +792,11 @@
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أسكن الدوري الهمزة",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إبدال الهمز",
@@ -803,7 +815,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دأَبـاً → دأْبـاً | أسكن الدوري الهمزة"
+    ]
   },
   {
     "id": "r-p241-018-1",

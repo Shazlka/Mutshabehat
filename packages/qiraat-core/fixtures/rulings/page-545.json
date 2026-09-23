@@ -57,7 +57,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "دِيَارِهِمْ → دِيَارِهِمْ | إمالة فتحة الياء والألف"
+      "دِيَارِهِمْ → دِيَارِهِمْ | إمالة فتحة الياء والألف",
+      "ديـارهم → ديٍـارهم | أمالـها الدوري"
     ]
   },
   {
@@ -174,7 +175,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـار → النٍّـار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p545-IMALAH_TAQLIL-فاتاهم-3",
@@ -362,7 +366,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p545-TAGHYIR_HAMZ-يومنون-5",
@@ -479,5 +486,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-058-22-25-r2493-MEEM_JAM",
+    "pageNumber": 545,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 58,
+    "ayah": 22,
+    "startToken": 25,
+    "endToken": 26,
+    "endAyah": 22,
+    "baseText": "قُلُوبِهِمُ ٱلْإِيمَـٰنَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "قلـوبهمُ الإيمان → قلـوبهمِ الإيمان | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-059-2-31-r2496-MEEM_JAM",
+    "pageNumber": 545,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 2,
+    "startToken": 31,
+    "endToken": 32,
+    "endAyah": 2,
+    "baseText": "قُلُوبِهِمُ ٱلرُّعْبَ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "قلوبـهمُ الرعب → قلوبـهمِ الرعب | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

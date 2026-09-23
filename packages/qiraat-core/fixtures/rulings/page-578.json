@@ -367,6 +367,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -389,13 +397,19 @@
       {
         "authorityId": "Q10-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -425,18 +439,14 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P578-R03774: رؤوس الآي: ﴿صَلَّىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿يَتَمَطَّىٰ﴾، ﴿فَأَوْلَىٰ﴾ (جميعاً)، ﴿سُدًى﴾ (وقفاً)، ﴿يُمْنَىٰ﴾ / ﴿تُمْنَىٰ﴾، ﴿فَسَوَّىٰ﴾، ﴿وَالْأُنثَىٰ﴾، ﴿الْمَوْتَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً (وشعبة يميل سدى وقفاً). User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 75:36، سُدًى explicitly records خلف العاشر reading the locus بالإمالة لدى الوقف; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+      "DOCX-P578-R03774: رؤوس الآي: ﴿صَلَّىٰ﴾، ﴿وَتَوَلَّىٰ﴾، ﴿يَتَمَطَّىٰ﴾، ﴿فَأَوْلَىٰ﴾ (جميعاً)، ﴿سُدًى﴾ (وقفاً)، ﴿يُمْنَىٰ﴾ / ﴿تُمْنَىٰ﴾، ﴿فَسَوَّىٰ﴾، ﴿وَالْأُنثَىٰ﴾، ﴿الْمَوْتَىٰ﴾: أمالها حمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو قولاً واحداً (وشعبة يميل سدى وقفاً). User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 75:36، سُدًى explicitly records خلف العاشر reading the locus بالإمالة لدى الوقف; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446",
+      "سُـدى → سـدِى | قللها الدوري"
     ]
   },
   {
@@ -897,5 +907,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-075-27-2-r2644-IDGHAM_KABIR",
+    "pageNumber": 578,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 75,
+    "ayah": 27,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 27,
+    "baseText": "مَنْ ۜ رَاقٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بترك السكت وإدغام النون بالراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بترك السكت وإدغام النون بالراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "مَـنْ راق → مَـن رَّاق | قرأ الدوري بترك السكت وإدغام النون بالراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

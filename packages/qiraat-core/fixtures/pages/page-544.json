@@ -97,6 +97,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-mujadila/18",
         "sourceText": "(وَيَحْسِبُونَ) بكسر السين: سائر القراء عدا ابن عامر وعاصم وحمزة وأبي جعفر.",
         "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      },
+      {
+        "id": "s-DURI-058-18-10-r2491",
+        "variantId": "v-AUDIT-P544-58-18-10-03450-1-ويحسبون-ويحسبون",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2491; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ويـحسَبـون → ويـحسِبـون | كسر الدوري السين"
       }
     ],
     "description": "بكسر السين",

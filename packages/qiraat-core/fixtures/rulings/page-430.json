@@ -270,7 +270,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "الْقُرَى → الْقُرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      "الْقُرَى → الْقُرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+      "القـرى التي → القـرى التي | أمالها الدوري وقفاً"
     ]
   },
   {
@@ -358,7 +359,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "قُرًى → قُرًى | إمالة فتحة الراء والألف وقفاً"
+      "قُرًى → قُرًى | إمالة فتحة الراء والألف وقفاً",
+      "قـرىً → قـرىً | أمالها الدوري وقفاً"
     ]
   },
   {
@@ -419,7 +421,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "أَسْفَارِنَا → أَسْفَارِنَا | إمالة فتحة الفاء والألف"
+      "أَسْفَارِنَا → أَسْفَارِنَا | إمالة فتحة الفاء والألف",
+      "أسفـارنا – صـبّار → أسفٍـارنا – صبٍّـار | أمالها الدوري"
     ]
   },
   {
@@ -480,7 +483,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "صَبَّارٍ → صَبَّارٍ | إمالة فتحة الباء والألف"
+      "صَبَّارٍ → صَبَّارٍ | إمالة فتحة الباء والألف",
+      "أسفـارنا – صـبّار → أسفٍـارنا – صبٍّـار | أمالها الدوري"
     ]
   },
   {
@@ -696,11 +700,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري الدال بالصاد وخفف دال صدق"
+      },
+      {
         "authorityId": "Q03-R02",
         "action": "إدغام الدال في الصاد وتخفيف شدة الدال: صَدَقَ"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري الدال بالصاد وخفف دال صدق",
+        "isDefault": true
+      },
       {
         "readingId": "Q03-R02",
         "action": "إدغام الدال في الصاد وتخفيف شدة الدال: صَدَقَ",
@@ -710,7 +723,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "وَلَقَدْ صَدَّقَ → وَلَقَد صَّدَقَ | إدغام الدال في الصاد وتخفيف شدة الدال: صَدَقَ"
+      "وَلَقَدْ صَدَّقَ → وَلَقَد صَّدَقَ | إدغام الدال في الصاد وتخفيف شدة الدال: صَدَقَ",
+      "ولقد صـدَّق → ولقد صَّـدَق | أدغم الدوري الدال بالصاد وخفف دال صدق"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -746,6 +760,41 @@
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
       "لِنَعْلَمَ مَن → لِنَعْلَم مَّن | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-034-15-3-r1940-TAGHYIR_HAMZ",
+    "pageNumber": 430,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 34,
+    "ayah": 15,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 15,
+    "baseText": "لِسَبَإٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الهمزة بدون تنوين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الهمزة بدون تنوين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "لِسـبأٍ → لسـبأَ | فتح الدوري الهمزة بدون تنوين"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
