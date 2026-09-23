@@ -9,6 +9,19 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-23 — Qiraat Phase 4: review API database layer (applied to live)
+- **Migration** `supabase/migrations/20260925120000_qiraat_phase4_review_api.sql` (+ rollback in `supabase/rollbacks/`):
+  - `qiraat_editors` allowlist, seeded with the owner account `ec34e9cc…` (confirmed by the owner);
+  - `qiraat_is_editor()` / `qiraat_require_editor()`;
+  - the annotation editor's create/update/soft-delete RPCs now require an allowlisted editor (they used to accept any signed-in user; sign-ups are open);
+  - `qiraat_norm()`, a SQL port of `tokens.py` norm() (parity 14,270/14,270 locations, 3,625/3,625 reading texts);
+  - flag changes captured in `edit_log`;
+  - review RPCs `qiraat_review_{is_editor,overview,page,set_status,update_entry,set_narrators,delete_entry,restore_entry,history,undo}`: editor-only, optimistic version check, device id and user recorded in `edit_log`; undo refuses transactions not made by an editor (e.g. the Phase 3 import).
+- **Phase 2 bug fixed:** the deferred rule-check trigger functions now run `SECURITY DEFINER`. They fire at COMMIT under the committing role (`authenticated` through PostgREST), so every review save would have failed with "permission denied". The Phase 2 tests ran as postgres and missed it.
+- **Contract** for the API/UI: `docs/qiraat/PHASE4_REVIEW_SPEC.md`; shared types `src/app/mushaf-1441/review/_lib/types.ts`.
+- **Verification:** scratch copy of post-Phase-3 live: idempotent, rollback gives an identical schema, re-apply identical; 26/26 Phase 4 tests (as anon, non-editor and editor roles) and 22/22 Phase 2 tests pass (`docs/qiraat/phase4-scratch-test-output.txt`).
+- Database migration: **applied to live 2026-09-23** after approval. Backup first: `pre-qiraat-phase4-apply-20260923T131207Z.dump` (12,774,411 bytes, 79 table-data sections); `--single-transaction -v ON_ERROR_STOP=1`, exit 0. Post-apply: read-only probe identical to before (checksum `52839d155fd0f90f999822a43e8198f5`, editor catalog/annotations, exports, cache, counts); 14 review functions; 4/4 rule functions definer; 3/3 editor RPCs gated; normaliser parity 0 mismatches; anon calls to the review RPCs through PostgREST return 401 permission denied; auth health 200.
+
 ## 2026-09-23 — Qiraat database restructure: Phase 3 data migration (applied to live)
 - **Generator** `scripts/qiraat/phase3/` (implemented by Codex from `docs/qiraat/PHASE3_SPEC.md`, reviewed by Claude): a pure planner (`plan.py`), a read-only snapshot loader, a deterministic SQL emitter, a CLI and 12 stdlib unit tests. It reuses the helpers in `import_to_postgres.py`. The Q6 classification of the 829 performance variants was cross-checked against an independent Antigravity classification (`artifacts/qiraat-phase3-q6-agy-classification.json`). A variant became أصول only when both agreed (351); the rest stay فرش and are flagged.
 - **Security:** removed the hard-coded Postgres superuser password from `scripts/qiraat/import_to_postgres.py` (it now uses `QIRAAT_DB_DSN` / libpq env vars). The password is still valid and still in git history since `2682af3`, so it must be rotated.

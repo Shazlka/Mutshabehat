@@ -1,6 +1,6 @@
 # Phase 4 review screen: contract
 
-Status: DB layer written and scratch-tested (`supabase/migrations/20260925120000_qiraat_phase4_review_api.sql`, 26/26 tests). **Not yet applied to live.** API + UI are built against this contract.
+Status: DB layer scratch-tested (26/26 tests) and **applied to live on 2026-09-23** (backup `pre-qiraat-phase4-apply-20260923T131207Z.dump`). API + UI are built against this contract.
 
 Decisions: D5 (rendered Hafs page, variant words highlighted), D7 (instant save, every edit logged), D9 (page text on the RIGHT, variant table on the LEFT), allowlist editors only, new route `/mushaf-1441/review?page=N`, full row editing in v1, marking reviewed resolves open flags with an optional note.
 
