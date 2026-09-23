@@ -8,7 +8,6 @@ qiraat_entry_count_schools, qiraat_evidence_texts, and qiraat_evidence_links,
 then re-enables triggers and verifies counts and integrity.
 """
 import argparse, hashlib, json, os, sys
-import psycopg2
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'scripts/qiraat'))
@@ -147,6 +146,7 @@ CATEGORY_INV = {
 }
 
 def main():
+    import psycopg2
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--reconcile', action='store_true',
@@ -154,13 +154,7 @@ def main():
     )
     args = parser.parse_args()
     print("Connecting to PostgreSQL at 127.0.0.1:5433...")
-    conn = psycopg2.connect(
-        host='127.0.0.1',
-        port=5433,
-        dbname='postgres',
-        user='postgres',
-        password='O6ih48Hy6Q1nh3AxElyC9HlHLFCzwfjJ'
-    )
+    conn = psycopg2.connect(os.environ['QIRAAT_DB_DSN']) if os.environ.get('QIRAAT_DB_DSN') else psycopg2.connect()
     cur = conn.cursor()
 
     existing_entry_ids = set()
