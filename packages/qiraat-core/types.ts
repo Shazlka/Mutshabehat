@@ -142,6 +142,8 @@ export interface QiraatVariant {
   operation: VariantOperation
   hafsText: string
   variantText: string
+  /** Source wording/action detail that distinguishes otherwise identical reading forms. */
+  description?: string
   /** Present when the variant text needs the Uthmani rasm distinct from a plain-Unicode rendering. */
   uthmaniText?: string
   differenceType: DifferenceType

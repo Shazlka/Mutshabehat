@@ -1286,8 +1286,36 @@ export class FixtureQiraatRepository implements QiraatRepository {
     if (!promise) return []
     const mod = await promise
     const all = mod.default
-    if (options?.includeUnpublished) return all
-    return all.filter((variant) => variant.verificationStatus === 'VERIFIED' || variant.verificationStatus === 'PUBLISHED')
+    const visible = options?.includeUnpublished
+      ? all
+      : all.filter((variant) => variant.verificationStatus === 'VERIFIED' || variant.verificationStatus === 'PUBLISHED')
+    // Source imports can contain the same face under different provenance-derived IDs.
+    // Keep one rendered face per full key (locus/text/type/Uthmani/description/performance
+    // note); reader sets and sources are unioned. Mirrors the importer's face key.
+    const trimmed = (value?: string) => value?.trim() ?? ''
+    const mergeText = (left?: string, right?: string) => [...new Set([left, right].filter((value): value is string => Boolean(value)))].join('؛ ') || undefined
+    const unique = new Map<string, QiraatVariant>()
+    for (const variant of visible) {
+      const key = JSON.stringify([
+        variant.surah, variant.ayah, variant.startToken,
+        variant.endToken < variant.startToken ? variant.ayah + 1 : variant.ayah,
+        variant.endToken, variant.variantText, variant.differenceType,
+        trimmed(variant.uthmaniText || variant.variantText), trimmed(variant.description), trimmed(variant.performanceNote),
+      ])
+      const current = unique.get(key)
+      if (!current) {
+        unique.set(key, variant)
+      } else {
+        const sources = new Map([...(current.sources ?? []), ...(variant.sources ?? [])].map((source) => [JSON.stringify(source), source]))
+        unique.set(key, {
+          ...current,
+          readingIds: [...new Set([...current.readingIds, ...variant.readingIds])].sort(),
+          notes: mergeText(current.notes, variant.notes),
+          sources: [...sources.values()],
+        })
+      }
+    }
+    return [...unique.values()]
   }
 
   async getRulingsForPage(pageNumber: number, options?: EngineOptions): Promise<QiraatRuling[]> {

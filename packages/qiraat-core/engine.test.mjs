@@ -534,6 +534,45 @@ test('page 266 carries the supplied Al-Hijr colour coverage for 15:82 and 15:87'
   )
 })
 
+test('page 536 keeps distinct performance faces for the same word and reader', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(536, { includeUnpublished: true })
+  const repeatedFace = variants.filter((variant) =>
+    variant.surah === 56 && variant.ayah === 58 && variant.startToken === 1 &&
+    variant.variantText === 'أَفَرَءَيْتُم' && variant.readingIds.length === 1 &&
+    variant.readingIds[0] === 'Q01-R02'
+  )
+  assert.equal(repeatedFace.length, 2)
+  assert.deepEqual(new Set(repeatedFace.map((variant) => variant.performanceNote)), new Set([
+    'تسهيل الهمزة الثانية مع مد ست حركات',
+    'إبدال الهمزة الثانية ألفاً ممدودة ست حركات',
+  ]))
+})
+
+test('page 400 merges reader sets for the same face but keeps a different description separate', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(400, { includeUnpublished: true })
+  const locus = variants.filter((variant) => variant.surah === 29 && variant.ayah === 33 && variant.startToken === 17 && variant.variantText === 'مُنْجُوكَ')
+  const sharedFace = locus.filter((variant) => variant.description === 'بتخفيف الجيم')
+  const distinctFace = locus.filter((variant) => variant.description === 'بسكون النون وتخفيف الجيم')
+
+  assert.equal(sharedFace.length, 1)
+  assert.deepEqual(new Set(sharedFace[0].readingIds), new Set(['Q02-R01', 'Q02-R02', 'Q09-R01', 'Q09-R02']))
+  assert.equal(distinctFace.length, 1, 'a different Arabic face description must remain separate')
+})
+
+test('page 48 keeps different descriptions separate even when the word form matches', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(48, { includeUnpublished: true })
+  const faces = variants.filter((variant) => variant.surah === 2 && variant.ayah === 282 && variant.startToken === 69 && variant.variantText === 'فَتُذْكِرَ')
+
+  assert.equal(faces.length, 2)
+  assert.deepEqual(new Set(faces.map((variant) => variant.description)), new Set([
+    'بسكون الذال وتخفيف الكاف ورفع الراء',
+    'بسكون الذال وتخفيف الكاف ونصب الراء',
+  ]))
+})
+
 test('page 264 preserves distinct approved forms at 15:44 for Shu\'bah and Abu Jaafar', async () => {
   const repo = new FixtureQiraatRepository()
   const variants = await repo.getVariantsForPage(264, { includeUnpublished: true })
