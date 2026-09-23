@@ -9,6 +9,9 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-23 — Qiraat database restructure: Phase 1 read-only audit
+- Added `docs/qiraat/QIRAAT_AUDIT.md`, covering the three current qiraat stores (JSON fixtures used in production, the stale Postgres V2 entries model, and the annotation engine), exact fixture counts (3,915 variants, 11,318 rulings, 604 pages), D8 violations (82 variant and 44 ruling records that list Hafs), duplicates and overlaps, Hafs-wujuh candidates, the existing `quran_words` table, an old→new mapping, and 14 numbered questions for STOP GATE 1. The database was not queried live (cloud session; database counts are the last recorded values). No code, fixture, schema, or database change. Database migration: none.
+
 ## 2026-09-23 — Merge duplicate per-reader Qiraat faces
 - Reconciled duplicate fixture faces across all 604 pages and retained each removed source record verbatim in `docs/qiraat-reader-dedupe-audit.json`. Page 11, 2:75 now shows the existing hamza-substitution ruling once for Warsh, Susi, and Abu Jaafar; the Susi-only performance row was removed with its citation appended to the ruling.
 - Added shared merge logic for Susi, Duri, and future importers, plus a fixture validator for unreviewed performance/ruling and exact variant duplicates. Eight same-reader/action or same-face conflicts remain for manual review.
