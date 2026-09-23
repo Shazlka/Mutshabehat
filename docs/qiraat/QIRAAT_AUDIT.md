@@ -245,3 +245,22 @@ These block Gate 2. The first four are also asked in the chat popup.
 - **Q12: Where to work.** This session can't reach the DB. Should Phases 2–3 SQL be written here and applied later on the Mac mini, or should the work move to a Mac mini session? Which branch name?
 - **Q13:** Model Hafs's wujuh (§5). Options: (a) allow `ASM-HAF` in `variant_reading_narrators` only with `wajh_order ≥ 2`, (b) a separate `hafs_wujuh` table, or (c) ignore them (Hafs = the printed wajh only).
 - **Q14:** Usul category list (§6): keep TARK_GHUNNA/IKHFA/WAQF_HAMZA/NAQL as their own categories? Merge the two الهمزتان categories?
+
+---
+
+## 9. Decisions recorded at Gate 1 (2026-09-23)
+
+| Q | Answer from Amr |
+|---|---|
+| Q1 | **Build on the existing V2 model** (`qiraat_loci` / `qiraat_entries` / `qiraat_entry_readings` …), not a parallel set of new tables. Add D8 enforcement, `edit_log`, `review_status`, sync columns and the review screen. New names such as `variant_locations` may be exposed as views. No `_legacy` renames. |
+| Q2 | **Migrate from the JSON fixtures, plus the ~48 rows that exist only in Postgres**, which go in as `flagged`. |
+| Q4 | **Drop the pure agrees-with-Hafs group rows automatically** and log each drop in the migration report. Hafs-positive أصول rows and mixed rows go to `flagged` for manual rewrite. |
+| Q5 | **Keep `Q01` / `Q01-R01` as the keys.** Add a display-code column (`NAF`, `NAF-QAL`, …). |
+
+Consequences of Q1 (these no longer need separate answers):
+
+- **Q9:** the existing `qiraat_evidence_texts`/`qiraat_evidence_links` and source tables stay, so citations and الشواهد are kept.
+- **Q10:** the annotation engine stays as it is.
+- **Q7:** `AYAH_COUNT` stays in the existing count-school tables and is outside the review table.
+
+Defaults I'll use unless told otherwise: **Q8** `NEEDS_MANUAL_REVIEW` → `flagged`; **Q11** biographical fields stay NULL; **Q14** keep the existing category codes and add the display grouping from §6.
