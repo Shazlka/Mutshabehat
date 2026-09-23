@@ -9,6 +9,23 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-23 — Qiraat database restructure: Phase 2 (DDL drafted, scratch-tested, STOP GATE 2)
+- **Live audit refresh (read-only):** `docs/qiraat/QIRAAT_AUDIT.md` §1.1 now has live counts for every qiraat table (0 route `-Tnn` authorities, 8 annotations with 1 live, 1 `resolved_qiraat_cache` row, 12,446 loci, 12,788 entries). A new §10 records the Phase 2 findings. `quran_words` checksum (77,429 rows): `52839d155fd0f90f999822a43e8198f5`.
+- **Reconciliation:** ran `scripts/qiraat/audit_postgres_reconciliation.py` read-only against the live DB. Fixture-only 2,517, DB-only 88 (up from 48), conflicts 604 (409 reader association, 191 category normalisation, 4 locator). Report: `artifacts/qiraat-postgres-reconciliation.json`. The script crashed on three fixtures that store `endToken` as a string (p589, p592 ×2); it now coerces them to integers. The fixtures themselves were not changed.
+- **Phase 2 DDL (not applied to live):** `supabase/migrations/20260924120000_qiraat_phase2_review_sync.sql` and rollback `supabase/rollbacks/20260924120000_qiraat_phase2_review_sync.down.sql`. All changes are additive to the V2 model:
+  - `review_status` / `legacy_ref` on loci and entries
+  - `updated_at` / `deleted_at` / `device_id` on 8 editable tables
+  - `wajh_order` / `wajh_note`
+  - `edit_log` with capture triggers and `edit_log_undo()` / `edit_log_undo_tx()`
+  - `display_code` on `qiraat_authorities` (NAF, NAF-QAL, …)
+  - deferred rule checks: D8/Q13 Hafs only as wajh ≥ 2 with a note, one narrator per location unless it is a separate wajh, and at least one reading per location
+  - page, ayah and category indexes
+  - views `variant_locations`, `variant_readings`, `variant_reading_narrators`, `v_page_variant_rows` and `qiraat_qa_phase2_violations`, plus `v_page_variants(page)`
+- Schema reference: `docs/qiraat/SCHEMA.md` (Mermaid ER + dictionary).
+- **Verification:** backup `pre-qiraat-phase2-20260923T112905Z.dump` (9,266,143 bytes, `pg_dump -Fc`, in `mutshabehat-selfhost/backups/`), restored into an isolated scratch container (`--network none`). Cycle: up → up (schema identical, idempotent) → 22/22 behaviour tests pass → down (schema identical to baseline, reversible) → down again → up (identical to first up). Editor RPCs, resolved cache and `qiraat_export_page` gave identical output before and after. Checksum was unchanged throughout. Scripts: `scripts/qiraat/phase2_scratch_{cycle.sh,tests.sql,regression.sql}`; output in `docs/qiraat/phase2-scratch-test-output.txt`. `npm run typecheck` passed (needs `NODE_OPTIONS=--max-old-space-size=8192`; it runs out of heap at the default), `npm run test:qiraat` passed (44 tests), and `npm run mushaf:validate` passed.
+- **Found:** 4,410 entries whose stored readings differ from what the rebuild trigger derives from their attributions (legacy importer; 4,406 differ in `action_ar` only). Existing rule breaches: D8 90, narrator twice 94, empty location 5.
+- Database migration: **none applied** (awaiting Gate 2 approval).
+
 ## 2026-09-23 — Qiraat database restructure: Phase 1 read-only audit
 - Added `docs/qiraat/QIRAAT_AUDIT.md`, covering the three current qiraat stores (JSON fixtures used in production, the stale Postgres V2 entries model, and the annotation engine), exact fixture counts (3,915 variants, 11,318 rulings, 604 pages), D8 violations (82 variant and 44 ruling records that list Hafs), duplicates and overlaps, Hafs-wujuh candidates, the existing `quran_words` table, an old→new mapping, and 14 numbered questions for STOP GATE 1. The database was not queried live (cloud session; database counts are the last recorded values). No code, fixture, schema, or database change. Database migration: none.
 

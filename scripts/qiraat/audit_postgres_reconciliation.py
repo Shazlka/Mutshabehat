@@ -85,6 +85,8 @@ def load_fixture_records() -> tuple[dict[str, dict[str, Any]], list[dict[str, An
             if not file.exists():
                 continue
             for index, raw in enumerate(json.loads(file.read_text(encoding="utf-8"))):
+                # A few fixtures store token numbers as strings (e.g. "4"); compare them as integers.
+                raw = {**raw, **{k: int(raw[k]) for k in ("ayah", "startToken", "endToken") if isinstance(raw.get(k), str)}}
                 entry_id = fixture_entry_id(kind, raw)
                 value = {
                     "id": entry_id,

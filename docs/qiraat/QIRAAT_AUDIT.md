@@ -1,6 +1,6 @@
 # Qiraat audit: Phase 1 of the database restructure (read-only)
 
-**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** Gate 1 answered (§9). Phase 2 continues in a Mac mini session.
+**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** Gate 1 answered (§9). Phase 2 done up to STOP GATE 2 (§10): live counts, reconciliation, checksum and scratch-tested DDL; nothing applied to the live DB.
 
 Nothing was changed for this audit: no code, no fixture, no schema and no database row. The only new file is this document.
 
@@ -21,32 +21,32 @@ There are **three separate stores** of qiraat data, and they do not agree with e
 | Store | What reads it | State |
 |---|---|---|
 | **A. JSON fixtures** `packages/qiraat-core/fixtures/{pages,rulings,rules}/page-NNN.json` | The live Mushaf reader (`FixtureQiraatRepository`) and `GET /api/mushaf-1441/qiraat` | **The source of truth in production.** 3,915 variants + 11,318 rulings on all 604 pages. Updated as recently as today. |
-| **B. Postgres "V2 entries" model** (`qiraat_pages`, `qiraat_loci`, `qiraat_entries`, …) | Nothing in the running app. Loaded by `scripts/qiraat/import_to_postgres.py`; audited by `audit_postgres_reconciliation.py` | **Stale.** Last recorded: 12,788 entries (2,889 variants + 9,899 rulings), pages 1–239 and 245–584. It has no Susi/Duri imports and no pages 585–604, and pages 240–244 are mis-paged. |
-| **C. Postgres "annotation engine"** (`quran_words`, `qiraat_annotations`, faces, variants, sources, revisions, `resolved_qiraat_cache`, batches) | The in-Mushaf editor (`/api/mushaf-1441/qiraat-editor`) and the indicator dots (`/api/mushaf-1441/qiraat-resolved`) | Live, but holds **manually entered** annotations only. The row count is not recorded in the repo. |
+| **B. Postgres "V2 entries" model** (`qiraat_pages`, `qiraat_loci`, `qiraat_entries`, …) | Nothing in the running app. Loaded by `scripts/qiraat/import_to_postgres.py`; audited by `audit_postgres_reconciliation.py` | **Stale.** Last recorded: 12,788 entries (2,889 variants + 9,899 rulings), pages 1–239 and 245–584. It has no Susi/Duri imports and no pages 585–604. (Live check 2026-09-23: 0 loci whose page disagrees with `quran_words.page_number`.) |
+| **C. Postgres "annotation engine"** (`quran_words`, `qiraat_annotations`, faces, variants, sources, revisions, `resolved_qiraat_cache`, batches) | The in-Mushaf editor (`/api/mushaf-1441/qiraat-editor`) and the indicator dots (`/api/mushaf-1441/qiraat-resolved`) | Live, but holds **manually entered** annotations only: 8 annotations (1 live), 1 cache row (live count 2026-09-23). |
 
 ### 1.1 Tables and views touching qiraat
 
-Row counts marked † are the last recorded values, not live. "?" means no count is recorded in the repo.
+**Refreshed with live counts on 2026-09-23 (Phase 2, Mac mini, read-only session).** Every number in the two tables below was queried from the live self-hosted Postgres; no † / ? values remain.
 
 **Store B: V2 entries model** (`20260917120000_qiraat_v2_schema.sql`, applied 2026-09-19)
 
 | Table / view | Purpose | Rows |
 |---|---|---|
-| `qiraat_authorities` | Readers + narrators (+ optional `-Tnn` routes) in one tree. IDs `Q01`…`Q10`, `Q01-R01`… | 30 (10 + 20)† |
-| `qiraat_source_documents` | Source catalogue | ? (≥1: `SRC-MUSHAF-10`) |
-| `qiraat_pages` | One row per **source** page, with `mushaf_page_number` | 579† |
-| `qiraat_loci` | Word span: surah, start/end ayah+word, `base_text` (Hafs) | ?† (7,038 at page 244; more since) |
-| `qiraat_entries` | One وجه (variant) or ruling at a locus. `kind`, `verification_status`, `attribution_mode` | **12,788†** |
-| `qiraat_variant_details` | reading_text, description, `variant_type`, **`is_baseline_reading`**, performance_note | 2,889† |
-| `qiraat_ruling_details` | category_code, rule_id, text_ar, options[] | 9,899† |
-| `qiraat_entry_authorities` | Verbatim attribution (may be reader-level, `is_exception` for «عدا») | 38,266† |
-| `qiraat_entry_readings` | Resolved narrator list (entry, narrator, action, is_default) | 44,843† |
+| `qiraat_authorities` | Readers + narrators (+ optional `-Tnn` routes) in one tree. IDs `Q01`…`Q10`, `Q01-R01`… | 30 (10 readers + 20 narrators; **0 route `-Tnn` rows**) |
+| `qiraat_source_documents` | Source catalogue | 20 |
+| `qiraat_pages` | One row per **source** page, with `mushaf_page_number` | 584 (Mushaf pages 1–584) |
+| `qiraat_loci` | Word span: surah, start/end ayah+word, `base_text` (Hafs) | 12,446 (all `mapping_status = verified`; every start/end word resolves to `quran_words`, and 0 page mismatches against `quran_words.page_number`) |
+| `qiraat_entries` | One وجه (variant) or ruling at a locus. `kind`, `verification_status`, `attribution_mode` | **12,788** (2,889 variant + 9,899 ruling; REVIEWED 12,768, NEEDS_MANUAL_REVIEW 4, REJECTED 16; all `explicit`) |
+| `qiraat_variant_details` | reading_text, description, `variant_type`, **`is_baseline_reading`**, performance_note | 2,889 (47 with `is_baseline_reading = true`) |
+| `qiraat_ruling_details` | category_code, rule_id, text_ar, options[] | 9,899 |
+| `qiraat_entry_authorities` | Verbatim attribution (may be reader-level, `is_exception` for «عدا») | 38,266 |
+| `qiraat_entry_readings` | Resolved narrator list (entry, narrator, action, is_default) | 44,843 (1,834 non-default; 90 list `Q05-R02`: 53 variant + 37 ruling entries) |
 | `qiraat_categories` | 24 category codes (§6) | 24 |
-| `qiraat_rules`, `qiraat_rule_authorities` | Canonical/global أصول statements | ? |
-| `qiraat_count_schools`, `qiraat_entry_count_schools` | عد الآي schools (not readers) | 7† |
-| `qiraat_evidence_texts`, `qiraat_evidence_links` | الشواهد (Shatibiyya/Durra lines) | 752† / 2,374† |
-| `qiraat_notes`, `qiraat_qa_flags`, `qiraat_extraction_raw` | Notes, QA flags, raw payload | 0† / ? / ? |
-| Views `qiraat_readings`, `qiraat_qa_partition`, `qiraat_qa_alternates`, `qiraat_qa_blocking`, `qiraat_qa_rule_divergence` | QA | — |
+| `qiraat_rules`, `qiraat_rule_authorities` | Canonical/global أصول statements | 6 / 2 |
+| `qiraat_count_schools`, `qiraat_entry_count_schools` | عد الآي schools (not readers) | 8 / 130 (51 AYAH_COUNT loci) |
+| `qiraat_evidence_texts`, `qiraat_evidence_links` | الشواهد (Shatibiyya/Durra lines) | 1,202 / 2,374 |
+| `qiraat_notes`, `qiraat_qa_flags`, `qiraat_extraction_raw` | Notes, QA flags, raw payload | 0 / 0 / 0 |
+| Views `qiraat_readings`, `qiraat_qa_partition`, `qiraat_qa_alternates`, `qiraat_qa_blocking`, `qiraat_qa_rule_divergence` | QA | 20 / 2,542 / 139 / 0 / 0 rows |
 | Function `qiraat_export_page(page, include_unpublished)` | Page export as fixture JSON | — |
 
 **Store C: annotation engine** (`20260921*` migrations, applied 2026-09-21)
@@ -54,18 +54,18 @@ Row counts marked † are the last recorded values, not live. "?" means no count
 | Table | Purpose | Rows |
 |---|---|---|
 | **`quran_words`** | **Verified word-level Hafs table** (§4) | **77,429** |
-| `qiraat_corpora`, `qiraat_frameworks`, `qiraat_framework_authorities` | Framework catalogues (Shatibiyya/Durra/…) | ? |
-| `qiraat_authority_closure`, `qiraat_authority_colors` | Ancestor closure, default colours | ? |
-| `qiraat_taxonomies` | Hierarchical taxonomy (USUL → groups → leaf rules) | ? |
+| `qiraat_corpora`, `qiraat_frameworks`, `qiraat_framework_authorities` | Framework catalogues (Shatibiyya/Durra/…) | 1 / 2 / 0 |
+| `qiraat_authority_closure`, `qiraat_authority_colors` | Ancestor closure, default colours | 50 / 30 |
+| `qiraat_taxonomies` | Hierarchical taxonomy (USUL → groups → leaf rules) | 40 |
 | `qiraat_groups`, `qiraat_group_members` | Scholarly reader groups (intentionally empty until verified) | 0 |
-| `qiraat_annotations` | Manual overlay: WORD/RANGE/BOUNDARY, target authority, INHERIT/OVERRIDE/EXCLUDE, `deleted_at`, `version` | ? |
-| `qiraat_annotation_faces` / `_variants` / `_sources` / `_revisions` | Faces, per-word forms, citations, full revision history | ? |
-| `resolved_qiraat_cache` | Page-indexed resolved projection | ? |
-| `qiraat_batches`, `qiraat_batch_changes` | Reversible batch ledger + `rollback_qiraat_batch()` | ? |
+| `qiraat_annotations` | Manual overlay: WORD/RANGE/BOUNDARY, target authority, INHERIT/OVERRIDE/EXCLUDE, `deleted_at`, `version` | **8 (1 live, 7 soft-deleted)** |
+| `qiraat_annotation_faces` / `_variants` / `_sources` / `_revisions` | Faces, per-word forms, citations, full revision history | 4 / 0 / 0 / 15 |
+| `resolved_qiraat_cache` | Page-indexed resolved projection | **1** (page 1) |
+| `qiraat_batches`, `qiraat_batch_changes` | Reversible batch ledger + `rollback_qiraat_batch()` | 0 / 0 |
 
 **Superseded, never applied:** `20260916120000_qiraat_ashr_schema.sql` (`qiraat_readers`, `qiraat_narrators`, `qiraat_variants`, …). On 2026-09-19 an older prototype set (`qiraat_attributions, qiraat_targets, qiraat_variants, qiraat_loci, qiraat_sources, qiraat_persons`) was dropped from the live DB after a `pg_dump`. **Name clash:** the prompt's new `qiraat_readers`, `qiraat_narrators` and `qiraat_sources` reuse these historical names. That is harmless, but worth knowing.
 
-**Not present:** `mushaf_pages`, `usul_categories`, `variant_locations`, `variant_readings`, `variant_reading_narrators` and `edit_log` do not exist. Page boundaries can be derived from `quran_words.page_number`. Edit history exists only for annotations (`qiraat_annotation_revisions`).
+**Not present (before Phase 2):** `mushaf_pages`, `usul_categories`, `variant_locations`, `variant_readings`, `variant_reading_narrators` and `edit_log` do not exist. The Phase 2 migration adds `edit_log` and the `variant_*` names as views (§10). Page boundaries can be derived from `quran_words.page_number`. Edit history exists only for annotations (`qiraat_annotation_revisions`).
 
 ### 1.2 Code paths that read or write them
 
@@ -286,3 +286,30 @@ Second round of answers:
    - a `display_code` column on `qiraat_authorities`
    - the D8 and Hafs-wajh constraints
    - `v_page_variants(page)`, plus `variant_locations`-style views
+
+---
+
+## 10. Phase 2 findings (2026-09-23, Mac mini, live DB read-only)
+
+**Live counts:** §1.1 now holds live values. Route (`-Tnn`) authorities: **0**. `qiraat_annotations`: 8 (1 live). `resolved_qiraat_cache`: 1.
+
+**`quran_words` checksum** (Q3): `md5(string_agg(canonical_key||text_uthmani,'|' ORDER BY canonical_key))` over 77,429 rows = **`52839d155fd0f90f999822a43e8198f5`**. Same value on the live DB, on the restored scratch copy, and after up → down → up on scratch.
+
+**Reconciliation** (`scripts/qiraat/audit_postgres_reconciliation.py`, run read-only against live; report in `artifacts/qiraat-postgres-reconciliation.json`):
+
+| Class | Count | Meaning |
+|---|---|---|
+| Fixture records (raw / unique import keys) | 15,233 / 15,217 on 604 pages (11,318 rulings + 3,899 variants by key) | — |
+| DB entries | 12,788 on 584 pages | — |
+| Fixture-only (`DATA_EXISTS_MAPPING_MISSING`) | **2,517** (1,419 rulings + 1,098 variants; 241 of them on pages 585–604) | Never loaded into the DB |
+| DB-only (`DATABASE_ONLY_REQUIRES_REVIEW`) | **88** (all variants, on 48 pages) | Up from 48 at Gate 1: the 2026-09-22/23 fixture dedupes changed import keys. Per Q2 they all go in as `flagged`. |
+| Duplicate fixture import keys | 16 | Same import key twice in the fixtures |
+| Conflicts on a shared key | **604** = 409 wrong reader/narrator association + 191 category normalisation + 4 locator/payload conflicts (`end_token`) | Fixtures win (Q2); DB side is logged in the Phase 3 report |
+
+The script crashed on current fixtures because three records store `endToken` as a string (`v-SQL-P589-84-21-quran` "4", `v-SQL-P592-87-16-yuthir` "2", `v-SQL-P592-88-22-sin` "3"). The script now coerces them to integers; the fixture files themselves were not changed and should be fixed at source.
+
+**Stored vs derived readings drift (new finding).** On a scratch copy, rebuilding every locus from `qiraat_entry_authorities` changes the readings of **4,410 entries** (2,854 variants, 1,556 rulings): 4,406 differ only in `action_ar` / `is_default` (the legacy importer wrote readings directly with an empty action), and 4 differ in their narrator set. Any edit that triggers a rebuild will rewrite them, which is one more reason Phase 3 reloads from the fixtures.
+
+**Existing rows that break the new Phase 2 rules** (`qiraat_qa_phase2_violations`, on scratch): D8 Hafs-as-main-reading **90**, same narrator twice at one location without a separate wajh **94**, locations with no live reading **5** (their only entries are REJECTED duplicates). The new rules check writes only, so these rows stay until Phase 3 rewrites or flags them.
+
+**Phase 2 DDL:** `supabase/migrations/20260924120000_qiraat_phase2_review_sync.sql` (up) and `supabase/rollbacks/20260924120000_qiraat_phase2_review_sync.down.sql` (down). Schema reference: `docs/qiraat/SCHEMA.md`. Scratch test output: `docs/qiraat/phase2-scratch-test-output.txt`. **Not applied to the live DB** (STOP GATE 2).
