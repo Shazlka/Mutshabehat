@@ -2129,6 +2129,20 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
     """Keep the independently confirmed al-Susi imalah addition isolated from a conflicting
     Warsh default/alternate status already stored at the same token.
     """
+    if page == 267:
+        src='﴿تُؤْمَرُ﴾، ﴿يَأْتِيَكَ﴾، ﴿تَأْكُلُونَ﴾: إبدال لورش، السوسي، أبو جعفر.'
+        if src in lines and not is_neg(src) and not is_univ(src):
+            readers={'Q01-R02','Q03-R02','Q08-R01','Q08-R02'}
+            for anchor in ('يَأْتِيَكَ','تَأْكُلُونَ'):
+                loc=T.find(page,anchor)
+                key=(loc['surah'],loc['startAyah'],loc['startWord'],'TAGHYIR_HAMZ')
+                old=next((x for x in existing_page if (x.get('surah'),x.get('ayah'),x.get('startToken'),x.get('category'))==key),None)
+                have={z.get('readingId') for z in old.get('readings',[])} if old else set()
+                add=readers-have
+                if add:
+                    emit_ruling(page,'TAGHYIR_HAMZ',anchor,[(add,'إبدال الهمزة')],rulings,
+                        source_notes=[{'sourceReference':'DOCX-P267-USUL-HAMZ','sourceText':src,
+                                       'verificationNotes':'إسناد صريح، والموضع مربوط بتوكن حقيقي.'}])
     if page == 551:
         record=PACKAGE_RECORDS.get('DOCX-P551-R03534')
         if record and record.get('raw_text') in lines and not is_neg(record['raw_text']) and not is_univ(record['raw_text']):
@@ -2246,6 +2260,103 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
                 'sourceText':source_line,
                 'verificationNotes':'وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف.'}]
     audited_page_rules = {
+        583: [
+            ('DOCX-P583-R03839','IMALAH_TAQLIL','طُوًى',
+             {'Q01-R02','Q03-R01','Q03-R02'},'تقليل لورش وأبي عمرو',1,16,6,
+             'إسناد صريح في فواصل الألف المقصورة؛ خلف المجرد حُسم إلى Q06 في الوجه الموجود.'),
+        ],
+        520: [
+            ('DOCX-P520-R03235','YAAT_ZAWAID','يُنَادِ',
+             {'Q02-R01','Q02-R02','Q09-R01','Q09-R02'},'إثبات الياء وقفاً: يُنَادِي',1,41,3,
+             'إسناد صريح؛ ابن كثير بخلف ويعقوب.'),
+        ],
+        530: [
+            ('DOCX-P530-R03337','IDGHAM_SAGHIR','وَلَقَد صَّبَّحَهُم',
+             {'Q03-R01','Q03-R02','Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
+             'إدغام صغير',1,38,1,'إسناد صريح في المصدر.'),
+        ],
+        557: [
+            ('DOCX-P557-R03582','IDGHAM_SAGHIR','وَيَغْفِرْ لَكُمْ',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,17,8,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        560: [
+            ('DOCX-P560-R03617','WAQF_RASM','لِمَ',
+             {'Q09-R01','Q02-R01'},'هاء السكت وقفاً: لِمَهْ',1,1,3,
+             'رويس والبزي بخلف كما في المصدر.'),
+        ],
+        561: [
+            ('DOCX-P561-R03625','IDGHAM_SAGHIR','وَٱغْفِرْ لَنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,8,39,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+            ('DOCX-P561-R03626','TAGHYIR_HAMZ','وَبِئْسَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,9,10,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
+        495: [
+            ('DOCX-P495-R02996','TAGHYIR_HAMZ','يُؤْفَكُونَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,87,8,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P495-R02996','TAGHYIR_HAMZ','لَّا يُؤْمِنُونَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,88,6,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P495-R02996','TAGHYIR_HAMZ','جِئْنَـٰكُم',
+             {'Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,78,2,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
+        505: [
+            ('DOCX-P505-R03101','TAGHYIR_HAMZ','أَجِئْتَنَا',
+             {'Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,22,2,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P505-R03101','TAGHYIR_HAMZ','لِتَأْفِكَنَا',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,22,3,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P505-R03101','TAGHYIR_HAMZ','فَأْتِنَا',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,22,6,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
+        514: [
+            ('DOCX-P514-R03185','TAGHYIR_HAMZ','مُّؤْمِنُونَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,25,15,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+            ('DOCX-P514-R03185','TAGHYIR_HAMZ','الْمُؤْمِنِينَ',
+             {'Q01-R02','Q03-R02','Q08-R01','Q08-R02'},'إبدال الهمزة',1,26,16,
+             'إسناد صريح تحت عنوان تغيير الهمز في المصدر.'),
+        ],
+        508: [
+            ('DOCX-P508-R03125','IDGHAM_SAGHIR','فَقَد جَّآءَ',
+             {'Q03-R01','Q03-R02','Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
+             'إدغام صغير',1,18,8,
+             'إسناد صريح؛ الاسم المجرد خلف حُسم إلى Q06 حسب قاعدة المشروع.'),
+            ('DOCX-P508-R03128','WAQF_RASM','وَكَأَيِّن',
+             {'Q03-R01','Q03-R02','Q09-R01','Q09-R02'},
+             'الوقف بالياء',1,13,1,
+             'وجه وقف صريح لأبي عمرو ويعقوب في المصدر.'),
+        ],
+        512: [
+            ('DOCX-P512-R03167','IDGHAM_SAGHIR','فَٱسْتَغْفِر لَّنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,11,9,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        525: [
+            ('DOCX-P525-R03286','IDGHAM_SAGHIR','وَٱصْبِرْ لِحُكْمِ',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,48,1,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        547: [
+            ('DOCX-P547-R03491','IDGHAM_SAGHIR','ٱغْفِرْ لَنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,10,7,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
+        549: [
+            ('DOCX-P549-R03514','IDGHAM_SAGHIR','فَقَد ضَّلَّ',
+             {'Q01-R01','Q01-R02','Q03-R01','Q03-R02','Q04-R01','Q04-R02','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},
+             'إدغام صغير',1,1,45,
+             'إسناد القراء صريح في المصدر.'),
+            ('DOCX-P549-R03514','IDGHAM_SAGHIR','وَٱغْفِرْ لَنَا',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,5,7,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
+        ],
         516: [
             ('DOCX-P516-R03204','IMALAH_TAQLIL','وَنِعْمَةًۭ',
              {'Q07-R01','Q07-R02'},'إمالة هاء التأنيث وقفاً',1,8,4,
@@ -2277,6 +2388,9 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
             ('DOCX-P557-R03581','IMALAH_TAQLIL','فِتْنَةٌ',
              {'Q07-R01','Q07-R02'},'إمالة هاء التأنيث وقفاً',1,15,4,
              'مصدر وثيقة الاستخراج؛ حكم الوقف صريح.'),
+            ('DOCX-P557-R03582','IDGHAM_SAGHIR','وَيَغْفِرْ لَكُمْ',
+             {'Q03-R01','Q03-R02'},'إدغام صغير؛ الدوري عن أبي عمرو بخلف',1,17,8,
+             'إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري.'),
             ('DOCX-P557-R03584','WAQF_RASM','هُوَ',
              {'Q09-R01','Q09-R02'},'هاء السكت وقفاً: هُوْهْ',1,13,5,
              'مصدر وثيقة الاستخراج؛ إسناد الوقف إلى يعقوب صريح.'),
@@ -2296,7 +2410,7 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
     for record_id,category,anchor,readers,action,occurrence,ayah,word,verification in audited_page_rules.get(page,[]):
         record=PACKAGE_RECORDS.get(record_id)
         source_text=record.get('raw_text','') if record else ''
-        explicit_duri_khilaf = record_id=='DOCX-P555-R03570' and 'أبو عمرو بخلف عن الدوري' in source_text
+        explicit_duri_khilaf = record_id in {'DOCX-P508-R03125','DOCX-P512-R03167','DOCX-P555-R03570','DOCX-P525-R03286','DOCX-P547-R03491','DOCX-P549-R03514','DOCX-P557-R03582','DOCX-P561-R03625'} and 'أبو عمرو بخلف عن الدوري' in source_text
         if (record is None or record.get('page_no')!=page or source_text not in lines or
                 is_neg(record['raw_text']) or is_univ(record['raw_text']) or
                 (has_bare_ambiguous_reader(record['raw_text']) and not explicit_duri_khilaf)):
@@ -2328,6 +2442,25 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
             'sourceReference':f'qiraat_records.jsonl، {record_id}',
             'sourceText':record['raw_text'],
             'verificationNotes':verification})
+    if page == 584:
+        # These extracted rows are labelled AYAH_COUNT, but their prose is explicitly
+        # reader-dependent imalah/taqlil at ayah endings. Import only the word faces.
+        r844=PACKAGE_RECORDS.get('DOCX-P584-R03844')
+        r846=PACKAGE_RECORDS.get('DOCX-P584-R03846')
+        if r844 and r844.get('raw_text') in lines and not is_neg(r844['raw_text']):
+            for anchor,occ in [('طَغَىٰ',1),('تَزَكَّىٰ',1),('فَتَخْشَىٰ',1),('يَسْعَىٰ',1),('فَنَادَىٰ',1),('الْأَعْلَىٰ',1),('وَالْأُولَىٰ',1),('يَخْشَىٰ',1),('سَعَىٰ',1),('الدُّنْيَا',1),('الْمَأْوَىٰ',1),('الْمَأْوَىٰ',2),('الْهَوَىٰ',1)]:
+                loc=T.find(page,anchor,occurrence=occ); key=(loc['surah'],loc['startAyah'],loc['startWord'],'IMALAH_TAQLIL')
+                have={z.get('readingId') for z in existing_page if (z.get('surah'),z.get('ayah'),z.get('startToken'),z.get('category'))==key for z in z.get('readings',[])}
+                add={'Q01-R02','Q03-R01','Q03-R02'}-have
+                if add: emit_ruling(page,'IMALAH_TAQLIL',anchor,[(add,'تقليل')],rulings,occurrence=occ)
+        if r846 and r846.get('raw_text') in lines and not is_neg(r846['raw_text']):
+            for anchor,occ in [('بَنَىٰهَا',1),('فَسَوَّىٰهَا',1),('ضُحَىٰهَا',1),('ضُحَىٰهَا',2),('دَحَىٰهَا',1),('وَمَرْعَىٰهَا',1),('أَرْسَىٰهَا',1),('مُرْسَىٰهَا',1),('ذِكْرَىٰهَا',1),('مُنتَهَىٰهَا',1),('يَخْشَىٰهَا',1)]:
+                loc=T.find(page,anchor,occurrence=occ); key=(loc['surah'],loc['startAyah'],loc['startWord'],'IMALAH_TAQLIL')
+                have={z.get('readingId') for z in existing_page if (z.get('surah'),z.get('ayah'),z.get('startToken'),z.get('category'))==key for z in z.get('readings',[])}
+                add={'Q06-R01','Q06-R02','Q07-R01','Q07-R02'}-have
+                if add: emit_ruling(page,'IMALAH_TAQLIL',anchor,[(add,'إمالة')],rulings,occurrence=occ)
+                add={'Q01-R02','Q03-R01','Q03-R02'}-have
+                if add: emit_ruling(page,'IMALAH_TAQLIL',anchor,[(add,'تقليل')],rulings,occurrence=occ)
     if page == 273:
         record=PACKAGE_RECORDS.get('DOCX-P273-R00716')
         expected='ترقيق الراءات وتغليظ اللامات: ورش يرقق الراء في ﴿بُشِّرَ﴾ و﴿يُؤَخِّرُهُمْ﴾؛ ويغلظ اللام في ﴿ظَلَّ﴾ وصلاً، وله وقفاً الوجهان.'
@@ -2358,6 +2491,72 @@ def reconcile_audited_rulings(page, lines, rulings, existing_page):
         if len(new)!=1:
             raise ValueError('page 274 Kisai waqf-imala locus did not resolve uniquely')
         new[0]['notes']='إمالة هاء التأنيث وقفاً للكسائي.'
+        # The source's bare anchor «النَّاسِ» is the printed token لِّلنَّاسِ
+        # (16:69:18).  Keep the explicit al-Duri-from-Abu-Amr face; the
+        # independent apparatus identifies this exact locus as alif imalah.
+        record = PACKAGE_RECORDS.get('DOCX-P274-R00734')
+        expected = '﴿النَّاسِ﴾: الدوري عن أبي عمرو.'
+        if (record is None or record.get('raw_text') != expected or expected not in lines
+                or is_neg(expected) or is_univ(expected) or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 274 al-Nas imalah source row failed exact source/safety check')
+        loc = T.find(274, 'لِّلنَّاسِ', ayah=69)
+        if (loc['surah'], loc['startAyah'], loc['startWord'], loc['baseText']) != (16, 69, 18, 'لِّلنَّاسِ ۗ'):
+            raise ValueError('page 274 al-Nas imalah token changed')
+        emit_ruling(274, 'IMALAH_TAQLIL', 'لِّلنَّاسِ', [({'Q03-R01'}, 'إمالة')], rulings,
+                    source_notes=['DOCX-P274-R00734: إمالة الألف للدوري عن أبي عمرو؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/69'])
+        record = PACKAGE_RECORDS.get('DOCX-P274-R00735')
+        expected = 'الوقف على مرسوم الخط: ﴿أَفَبِنِعْمَتِ﴾، ﴿وَبِنِعْمَتِ﴾: يقف عليهما بالهاء ابن كثير، أبو عمرو، الكسائي (مع الإمالة)، يعقوب؛ وبالتاء للباقين.'
+        if (record is None or record.get('raw_text') != expected or expected not in lines
+                or is_neg(expected) or is_univ(expected) or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 274 first ni3mat waqf source row failed exact source/safety check')
+        loc = T.find(274, 'أَفَبِنِعْمَةِ', ayah=71)
+        if (loc['surah'], loc['startAyah'], loc['startWord'], loc['baseText']) != (16, 71, 20, 'أَفَبِنِعْمَةِ'):
+            raise ValueError('page 274 first ni3mat waqf token changed')
+        emit_ruling(274, 'WAQF_RASM', 'أَفَبِنِعْمَةِ',
+                    [({'Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q09-R01','Q09-R02'}, 'الوقف بالهاء')],
+                    rulings, notes='مع الإمالة للكسائي؛ الوجه الثاني الوقف بالتاء للباقين.',
+                    source_notes=['DOCX-P274-R00735: الوقف على أَفَبِنِعْمَتِ بالهاء للحرميين والبصريين والكسائي ويعقوب؛ المصدر نفسه يذكر وَبِنِعْمَتِ.'])
+        return rulings
+    if page == 276:
+        # The two occurrences of رَءَا الَّذِينَ are explicitly marked (معاً).
+        # Preserve the connected-waqf distinction as separate actions and apply
+        # the project rule that a bare «خلف» means Q06 (not خلف العاشر/Q10).
+        record = PACKAGE_RECORDS.get('DOCX-P276-R00750')
+        expected = '﴿رَّءَا الَّذِينَ﴾ (معاً): وصلاً أمال الراء فقط شعبة، حمزة، خلف؛ ووقفاً أمال الهمزة والراء ابن ذكوان، شعبة، حمزة، الكسائي، خلف، وقللهما ورش، وأمال الهمزة فقط أبو عمرو.'
+        if (record is None or record.get('raw_text') != expected or expected not in lines
+                or is_neg(expected) or is_univ(expected) or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 276 raa-aa imalah source row failed exact source/safety check')
+        source_note = 'DOCX-P276-R00750؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/85 و/86؛ خلف المجرد = Q06.'
+        for occurrence in (1, 2):
+            loc = T.find(276, 'رَّءَا الَّذِينَ', occurrence=occurrence)
+            if (loc['surah'], loc['startAyah'], loc['startWord'], loc['baseText']) != (16, 85 if occurrence == 1 else 86, 2, 'رَءَا ٱلَّذِينَ'):
+                raise ValueError('page 276 raa-aa occurrence token changed')
+            emit_ruling(276, 'IMALAH_TAQLIL', 'رَّءَا الَّذِينَ',
+                        [({'Q05-R01','Q06-R01','Q06-R02'}, 'إمالة الراء وصلاً'),
+                         ({'Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q07-R01','Q07-R02'}, 'إمالة الهمزة والراء وقفاً'),
+                         ({'Q01-R02'}, 'تقليل الهمزة والراء وقفاً'),
+                         ({'Q03-R01','Q03-R02'}, 'إمالة الهمزة وقفاً')],
+                        rulings, occurrence=occurrence, source_notes=[source_note])
+        return rulings
+    if page == 282:
+        record = PACKAGE_RECORDS.get('DOCX-P282-R00814')
+        expected = '﴿إِسْرَـٰٓءِيلَ﴾ (معاً): تسهيل الهمزة مع المد والقصر لأبي جعفر (مع قصر مد البدل لورش قولا واحداً).'
+        if (record is None or record.get('raw_text') != expected or expected not in lines
+                or is_neg(expected) or is_univ(expected) or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 282 Israil hamz source row failed exact source/safety check')
+        for occurrence in (1, 2):
+            emit_ruling(282, 'TAGHYIR_HAMZ', 'إِسْرَـٰٓءِيلَ',
+                        [({'Q08-R01','Q08-R02'}, 'تسهيل الهمزة مع المد والقصر')], rulings,
+                        occurrence=occurrence, source_notes=['DOCX-P282-R00814؛ تسهيل الهمزة لأبي جعفر، مع قصر مد البدل لورش؛ الوجه مربوط بالموضع الحقيقي.'])
+        record = PACKAGE_RECORDS.get('DOCX-P282-R00815')
+        expected = '﴿بَأْسٍ﴾، ﴿أَسَأْتُمْ﴾: إبدال للسوسي وأبي جعفر.'
+        if (record is None or record.get('raw_text') != expected or expected not in lines
+                or is_neg(expected) or is_univ(expected) or has_bare_ambiguous_reader(expected)):
+            raise ValueError('page 282 isolated hamz source row failed exact source/safety check')
+        for anchor in ('بَأْسٍ','أَسَأْتُمْ'):
+            emit_ruling(282, 'TAGHYIR_HAMZ', anchor,
+                        [({'Q03-R02','Q08-R01','Q08-R02'}, 'إبدال الهمزة')], rulings,
+                        source_notes=['DOCX-P282-R00815: إبدال للسوسي وأبي جعفر.'])
         return rulings
     if page != 254:
         return rulings
@@ -2414,6 +2613,8 @@ def build(page_list, categories=None, complete_ikhfa=False):
         source_links_added=0
         if categories is None:
             v,source_links_added=reconcile_audited_farsh(page,pd['farsh'],v,ev)
+            if page == 428:
+                v = [x for x in v if not (x.get('variantText','').startswith('عَـٰلِم') and set(x.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
             vstats['sourceLinksAdded']+=source_links_added
         # A token can have multiple source-supported faces when their reader sets differ.
         # Track the form already assigned to each transmission: same-form readers may be
@@ -2430,6 +2631,8 @@ def build(page_list, categories=None, complete_ikhfa=False):
             form_key=(*token_key,face_key(e.get('variantText') or ''))
             seen_forms[form_key].update(e.get('readingIds',[]))
         for x in v:
+            if page == 428 and x.get('id') == 'v-D428-عالم_الغيب-w1':
+                continue
             token_key=(x['surah'],x['ayah'],x['startToken'])
             form=face_key(x.get('variantText') or '')
             form_key=(*token_key,form)
@@ -2903,6 +3106,195 @@ def collect_farsh(page, lines):
     out.extend(checked_inline_farsh(page, lines))
     out.extend(checked_audited_p277_278_farsh(page, lines))
     out.extend(checked_audited_307_310_farsh(page, lines))
+    out.extend(checked_audited_late_explicit_farsh(page, lines))
+    out.extend(checked_audited_281_284_farsh(page, lines))
+    if page == 428:
+        out = [v for v in out if not (v.get('variantText','').startswith('عَـٰلِم') and set(v.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
+    # p555's two-face inline row is already represented by the reviewed fixture
+    # with the source's explicit نافع وروح attribution; the generic block parser
+    # cannot safely split the prose tail and would recreate a duplicate face.
+    if page == 555:
+        out = [v for v in out if v.get('variantText') != 'لَوْوْا']
+    if page == 303:
+        # These two inline remainder faces are already represented by reviewed
+        # fixtures with corrected reader partitions; the generic parser sees
+        # only one prose clause and would recreate incomplete Q05-only faces.
+        out = [v for v in out if v.get('variantText') not in {'نُكُرًا', 'جَزَاءُ الْحُسْنَى'}]
+    return out
+
+def checked_audited_281_284_farsh(page, lines):
+    """Recover compact multi-face rows on pages 281--284.
+
+    These rows contain inline partitions (or three faces) that the generic block
+    parser cannot safely split.  Each case requires the exact packaged source row
+    and a real token span; bare خلف is resolved as Q06 by the project rule.
+    """
+    rows = {
+      281: ['DOCX-P281-R00794','DOCX-P281-R00795','DOCX-P281-R00796','DOCX-P281-R00797'],
+      282: ['DOCX-P282-R00805'],
+      284: ['DOCX-P284-R00830','DOCX-P284-R00831','DOCX-P284-R00832','DOCX-P284-R00835','DOCX-P284-R00836','DOCX-P284-R00837','DOCX-P284-R00838'],
+    }
+    out=[]
+    def ok(sid):
+        row=PACKAGE_RECORDS.get(sid)
+        return row and row.get('raw_text') in lines and not is_neg(row['raw_text']) and not is_univ(row['raw_text'])
+    def block(sid,anchor,faces,ayah=None,occ=1):
+        if not ok(sid): return
+        before=len(out); yield_block(page,anchor,faces,out,ayah=ayah,occurrence=occ)
+        for z in out[before:]:
+            z['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، {sid}','sourceText':PACKAGE_RECORDS[sid]['raw_text'],
+                'verificationNotes':'وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.'})
+    if page==281:
+        for occ in (1,2):
+            block('DOCX-P281-R00794','إِبْرَٰهِيمَ',[(None,'بياء بعد الهاء للجمهور',ALL20-{'Q04-R01','Q04-R02'}),('إِبْرَاهَامَ','بألف بعد الهاء لهشام',{'Q04-R01','Q04-R02'})],occ=occ)
+        block('DOCX-P281-R00795','صِرَٰطٍ',[(None,'بالصاد للجمهور',ALL20-{'Q02-R02','Q09-R01','Q06-R01'}),('سِرَٰطٍ','بالسين لقنبل ورويس',{'Q02-R02','Q09-R01'}),('صِرَٰطٍ','بإشمام الصاد زياً لخلف عن حمزة',{'Q06-R01'})],ayah=121)
+        for anchor in ('وَهُوَ','لَهُوَ'):
+            block('DOCX-P281-R00796',anchor,[(None,'بالفتح للباقين',ALL20-{'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}), (anchor.replace('هُوَ','هْوَ'),'بإسكان الهاء',{'Q01-R01','Q03-R01','Q03-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02'})])
+        block('DOCX-P281-R00797','عَلَيْهِمْ',[(None,'بكسر الهاء للباقين',ALL20-{'Q06-R01','Q06-R02','Q09-R01','Q09-R02'}),('عَلَيْهُمُ','بضم الهاء لحمزة ويعقوب',{'Q06-R01','Q06-R02','Q09-R01','Q09-R02'})])
+    if page==282:
+        block('DOCX-P282-R00805','لِيَسُـۥٓـُٔواْ',[(None,'بياء الغيب مفتوحة وسكون السين وهمزة مفتوحة بلا مد',{'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q05-R02','Q08-R01','Q08-R02','Q09-R01','Q09-R02'}),('لِنَسُوءَ','بنون العظمة مفتوحة وضم الهمزة مع المد',{'Q07-R01','Q07-R02'}),('لِيَسُوؤُوا','بياء الغيب وضم الهمزة مع واو الجمع',{'Q04-R01','Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q10-R01','Q10-R02'})])
+    if page==284:
+        block('DOCX-P284-R00830','وَهُوَ',[(None,'بالفتح للباقين',ALL20-{'Q01-R01','Q03-R01','Q07-R01','Q07-R02','Q08-R01','Q08-R02'}),('وَهْوَ','بإسكان الهاء',{'Q01-R01','Q03-R01','Q07-R01','Q07-R02','Q08-R01','Q08-R02'})])
+        block('DOCX-P284-R00831','مَّحْظُورًا ٱنظُرْ',[(None,'بضم التنوين وصلاً',{'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q04-R01','Q05-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02','Q10-R01','Q10-R02'}),('مَحْظُورٍ ٱنظُرْ','بكسر التنوين وصلاً',{'Q03-R01','Q03-R02','Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q09-R01','Q09-R02'})])
+        block('DOCX-P284-R00835','أُفٍّ',[(None,'بفتح الفاء بلا تنوين',{'Q01-R01','Q01-R02','Q05-R02','Q08-R01','Q08-R02'}),('أُفٍّ','بكسر الفاء منونة',{'Q03-R01','Q03-R02','Q05-R01','Q06-R01','Q06-R02','Q07-R01','Q07-R02'}),('أُفِّ','بكسر الفاء بلا تنوين',{'Q02-R01','Q02-R02','Q04-R01','Q04-R02','Q09-R01','Q09-R02'})])
+    return out
+
+def checked_audited_late_explicit_farsh(page, lines):
+    """Import late-page farsh rows whose prose shape defeats the block parser.
+
+    These rows are fail-closed: the exact packaged source paragraph must be present,
+    every face is anchored through tokens.py, and the reader partition covers all 20
+    transmissions exactly once.  This keeps the import additive and occurrence-safe.
+    """
+    cases = {
+        519: [
+            ('DOCX-P519-R03221','يَوْمَ نَقُولُ','يَوْمَ يَقُولُ',
+             {'Q01-R01','Q01-R02','Q05-R01'},30,1,
+             'بياء الغيب المفتوحة لنافع وشعبة؛ ثبت الوجه في العرض الخارجي للقراءات'),
+        ],
+        529: [
+            ('DOCX-P529-R03329','سَيَعْلَمُونَ','سَتَعْلَمُونَ',
+             {'Q04-R01','Q04-R02','Q06-R01','Q06-R02'},26,1,'بتاء الخطاب لابن عامر وحمزة'),
+        ],
+        535: [
+            ('DOCX-P535-R03369','وَلَا يُنزِفُونَ','وَلَا يُنْزِفُونَ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02','Q04-R01','Q04-R02',
+              'Q08-R01','Q08-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'},19,1,
+             'بكسر الزاي للباقين'),
+        ],
+        495: [
+            ('DOCX-P495-R02981', 'يَحْسَبُونَ', 'يَحْسِبُونَ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
+              'Q07-R01','Q07-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'}, 80, 1,
+             'بكسر السين للباقين'),
+            ('DOCX-P495-R02982', 'وَرُسُلُنَا', 'وَرُسْلُنَا',
+             {'Q03-R01','Q03-R02'}, 80, 1, 'بإسكان السين لأبي عمرو'),
+            ('DOCX-P495-R02993', 'وَقِيلِهِۦ', 'وَقِيلَهُۥ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
+              'Q04-R01','Q04-R02','Q07-R01','Q07-R02','Q08-R01','Q08-R02',
+              'Q09-R01','Q09-R02','Q10-R01','Q10-R02'}, 88, 1,
+             'بنصب اللام وضم الهاء للباقين'),
+        ],
+        512: [
+            ('DOCX-P512-R03161', 'عَلَيْهُ ٱللَّهَ', 'عَلَيْهِ ٱللَّهَ',
+             {'Q01-R01','Q01-R02','Q02-R01','Q02-R02','Q03-R01','Q03-R02',
+              'Q04-R01','Q04-R02','Q05-R01','Q06-R01','Q06-R02','Q07-R01','Q07-R02',
+              'Q08-R01','Q08-R02','Q09-R01','Q09-R02','Q10-R01','Q10-R02'}, 10, 1,
+             'بكسر الهاء وصلاً للباقين'),
+        ],
+    }
+    out=[]
+    for sid,anchor,variant,readers,ayah,occ,desc in cases.get(page,[]):
+        row=PACKAGE_RECORDS.get(sid)
+        if not row or row.get('page_no')!=page or row.get('raw_text') not in lines:
+            continue
+        if is_neg(row['raw_text']) or is_univ(row['raw_text']):
+            continue
+        try:
+            loc=T.find(page,anchor,occurrence=occ,ayah=ayah)
+        except T.NoMatch:
+            continue
+        if not readers or 'Q05-R02' in readers:
+            continue
+        base=ALL20-readers
+        yield_block(page,anchor,[(loc['baseText'], 'وجه حفص المطابق للرسم', base),
+                                 (variant, desc, readers)],out,ayah=ayah,occurrence=occ)
+        for candidate in out[-1:]:
+            candidate['sources'][0].update({'sourceReference':f'qiraat_records.jsonl، {sid}',
+                'sourceText':row['raw_text'],
+                'verificationNotes':'وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.'})
+            if page == 519:
+                candidate['sources'][0]['verificationNotes'] += ' وتؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/qaf/30؛ أُسقط وجه يُقَالُ لعدم تحقق مستقل.'
+    if page == 524:
+        # The four attested syntactic faces change two discontiguous spans in 52:21.
+        # Keep each span separate so the unchanged بِإِيمَانٍ أَلْحَقْنَا tokens are
+        # not swallowed into an imprecise whole-ayah variant.
+        loc_a=T.find(524,'وَٱتَّبَعَتْهُمْ ذُرِّيَّتُهُم',ayah=21)
+        loc_b=T.find(524,'بِهِمْ ذُرِّيَّتَهُمْ',ayah=21)
+        specs=[
+          ('DOCX-P524-R03263','وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُمْ','بِهِمْ ذُرِّيَّتَهُمْ',
+           {'Q02-R01','Q02-R02','Q05-R01','Q06-R01','Q06-R02','Q07-R01','Q07-R02'},'وجه مطابق للرسم للقراء المذكورين',True),
+          ('DOCX-P524-R03264','وَاتَّبَعَتْهُمْ ذُرِّيَّاتُهُمْ','بِهِمْ ذُرِّيَّاتِهِمْ',
+           {'Q01-R01','Q01-R02','Q08-R01','Q08-R02'},'جمع الكلمتين بالتاء لنافع وأبي جعفر',False),
+          ('DOCX-P524-R03265','وَأَتْبَعْنَاهُمْ ذُرِّيَّاتِهِمْ','بِهِمْ ذُرِّيَّاتِهِمْ',
+           {'Q03-R01','Q03-R02'},'بفعل ماضٍ ثلاثي لأبي عمرو',False),
+          ('DOCX-P524-R03266','وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُم','بِهِمْ ذُرِّيَّاتِهِمْ',
+           {'Q04-R01','Q04-R02','Q09-R01','Q09-R02'},'إفراد الأولى وجمع الثانية لابن عامر ويعقوب',False),
+        ]
+        for sid,va,vb,readers,desc,same in specs:
+            row=PACKAGE_RECORDS.get(sid)
+            if not row or row.get('raw_text') not in lines or is_neg(row['raw_text']) or is_univ(row['raw_text']):
+                continue
+            for idx,(loc,base,variant) in enumerate(((loc_a,loc_a['baseText'],va),(loc_b,loc_b['baseText'],vb)),1):
+                out.append({'id':f'v-{sid}-{idx}','surah':loc['surah'],'ayah':loc['startAyah'],
+                    'startToken':loc['startWord'],'endToken':loc['endWord'],'operation':'REPLACE',
+                    'hafsText':base,'variantText':base if same else variant,'differenceType':'LETTER',
+                    'verificationStatus':'REVIEWED','createdAt':TS,'updatedAt':TS,
+                    'readingIds':sorted(readers),'locusId':sid,'locusType':'performance_variant' if same else 'multi_word_variant',
+                    **({'performanceNote':desc} if same else {}),
+                    'sources':[{'id':f's-{sid}-{idx}','variantId':f'v-{sid}-{idx}',**SRC,
+                        'sourceReference':f'qiraat_records.jsonl، {sid}','sourceText':row['raw_text'],
+                        'verificationNotes':'وجه صريح مربوط بمقطع توكنات حقيقي؛ تؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/at-tur/21.'}],
+                    'description':desc,'wajhIndex':idx,'evidence':[]})
+    # Explicit orthographic faces whose prose is a single header followed by
+    # several reader clauses; the generic block parser cannot safely partition
+    # these rows because the alternate text is repeated in a later clause.
+    if page in (274,276):
+        def add_face(source_ref, source_text, anchor, variant, readers, desc, occ=1):
+            source_ok = source_text in lines
+            if source_ref == 'DOCX-P276-FARSH-ILAYHIM':
+                source_ok = all(x in lines for x in ('بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.',
+                                                     'بكسر الهاء والميم وصلاً: أبو عمرو.',
+                                                     'بضم الهاء والميم وصلاً ﴿إِلَيْهُمُ﴾: حمزة، الكسائي، يعقوب، خلف.'))
+            if not source_ok or is_neg(source_text) or is_univ(source_text):
+                return
+            try: loc=T.find(page,anchor,occurrence=occ)
+            except T.NoMatch: return
+            out.append({'id':f'v-AUDIT-P{page}-{loc["surah"]}-{loc["startAyah"]}-{loc["startWord"]}-{len(out)+1}',
+                'surah':loc['surah'],'ayah':loc['startAyah'],'startToken':loc['startWord'],'endToken':loc['endWord'],
+                'operation':'REPLACE','hafsText':loc['baseText'],'variantText':variant,'differenceType':'LETTER',
+                'verificationStatus':'REVIEWED','createdAt':TS,'updatedAt':TS,'readingIds':sorted(readers),
+                'locusId':f'AUDIT-P{page}-{loc["surah"]}-{loc["startAyah"]}-{loc["startWord"]}',
+                'locusType':'word_variant','sources':[{'id':f's-AUDIT-P{page}-{loc["startAyah"]}-{loc["startWord"]}',
+                    'variantId':f'v-AUDIT-P{page}-{loc["startAyah"]}-{loc["startWord"]}',**SRC,
+                    'sourceReference':source_ref,'sourceText':source_text,
+                    'verificationNotes':f'وجه صريح مربوط بتوكن المصحف الحقيقي؛ Quranpedia: {"https://quranpedia.net/qiraat/an-nahl/68" if page==274 else "https://quranpedia.net/qiraat/an-nahl/86"}.'}],
+                'description':desc,'wajhIndex':len(out)+1,'evidence':[]})
+        nonhafs_biyut={'Q01-R01','Q01-R02','Q03-R01','Q03-R02','Q05-R01','Q08-R01','Q08-R02','Q09-R01','Q09-R02'}
+        if page==274:
+            add_face('DOCX-P274-FARSH-BUYUT','﴿بُيُوتًا﴾: بكسر الباء ﴿بِيُوتًا﴾ لورش، وأبي عمرو، وحفص، وأبي جعفر، ويعقوب؛ وبضمها للباقين.','بُيُوتًا','بِيُوتًا',nonhafs_biyut,'بكسر الباء لورش وأبي عمرو وأبي جعفر ويعقوب وحفص')
+        else:
+            for anchor in ('بُيُوتِكُمْ','بُيُوتًا'):
+                add_face('DOCX-P276-FARSH-BUYUT','﴿بُيُوتِكُمْ﴾، ﴿بُيُوتًا﴾: بكسر الباء لورش، وأبي عمرو، وحفص، وأبي جعفر، ويعقوب؛ وبضمها للباقين.',anchor,'بِيُوتِكُمْ' if anchor=='بُيُوتِكُمْ' else 'بِيُوتًا',nonhafs_biyut,'بكسر الباء لورش وأبي عمرو وأبي جعفر ويعقوب وحفص')
+            locreaders=[({'Q03-R01','Q03-R02'},'إِلَيْهِمِ','بكسر الهاء والميم وصلاً لأبي عمرو'),
+                         ({'Q06-R01','Q06-R02','Q07-R01','Q07-R02','Q09-R01','Q09-R02'},'إِلَيْهُمُ','بضم الهاء والميم وصلاً لحمزة والكسائي ويعقوب وخلف')]
+            il_lines=['﴿إِلَيْهِمُ الْقَوْلَ﴾:',
+                      'بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.',
+                      'بكسر الهاء والميم وصلاً: أبو عمرو.',
+                      'بضم الهاء والميم وصلاً ﴿إِلَيْهُمُ﴾: حمزة، الكسائي، يعقوب، خلف.']
+            if all(x in lines for x in il_lines[1:]):
+                src='\n'.join(il_lines)
+                for readers,variant,desc in locreaders: add_face('DOCX-P276-FARSH-ILAYHIM',src,'إِلَيْهِمُ',variant,readers,desc)
     return out
 
 def checked_audited_307_310_farsh(page, lines):
@@ -3164,6 +3556,17 @@ def checked_inline_farsh(page, lines):
             'anchor': 'وَلَا تَبَرَّجْنَ', 'ayah': 33, 'variantText': 'وَلَا تَّبَرَّجْنَ',
             'readerGroup': 'البزي', 'sourceFragment': 'وبتشديد التاء وصلاً ﴿وَلَا تَّبَرَّجْنَ﴾ للبزي',
         }],
+        491: [{
+            'anchor': 'جِئْتُكُم', 'ayah': 24, 'variantText': 'جِئْنَاكُمْ',
+            'readerGroup': 'أبو جعفر', 'sourceFragment': 'بنون العظمة ﴿جِئْنَاكُمْ﴾ لأبي جعفر',
+        }],
+        492: [{
+            'anchor': 'نُقَيِّضْ', 'ayah': 36, 'variantText': 'يُقَيِّضْ',
+            'readerGroup': 'يعقوب', 'sourceFragment': 'وبياء الغيب ﴿يُقَيِّضْ﴾ ليعقوب',
+        }, {
+            'anchor': 'وَسْـَٔلْ', 'ayah': 45, 'variantText': 'وَسَلْ',
+            'readerGroup': 'ابن كثير، الكسائي، خلف', 'sourceFragment': 'بنقل الهمزة ﴿وَسَلْ﴾ لابن كثير، والكسائي، وخلف',
+        }],
         572: [{
             'anchor': 'تَقُولَ', 'ayah': 5, 'variantText': 'تَقَوَّلَ',
             'readerGroup': 'يعقوب', 'sourceFragment': 'بفتح التاء والقاف وتشديد الواو المفتوحة ﴿تَقَوَّلَ﴾ ليعقوب',
@@ -3293,6 +3696,11 @@ def checked_inline_farsh(page, lines):
     out.extend(checked_audited_495_498_farsh(page, lines))
     out.extend(checked_audited_471_474_farsh(page, lines))
     out.extend(checked_audited_459_462_farsh(page, lines))
+    # Page 428's processed source has an older generic row that incorrectly assigns
+    # the Mushaf spelling of عَالِمِ الغيب to Q10; the explicit three-way DOCX rows
+    # above are authoritative and map bare خلف to Q06.
+    if page == 428:
+        out = [v for v in out if not (v.get('variantText','').startswith('عَـٰلِم') and set(v.get('readingIds', [])) <= {'Q10-R01','Q10-R02'})]
     return out
 
 def checked_audited_459_462_farsh(page, lines):
@@ -3688,6 +4096,9 @@ def checked_audited_inline_faces(page, lines):
     different forms are dropped, while separate, non-overlapping forms are kept together.
     """
     cases = {
+        411: [
+            ('DOCX-P411-R02188','هُزُوًا','هُزْءًا','حمزة، خلف',6,'بهمز الواو، و«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
         464: [
             # The two Abu Ja'far faces are distinct: Ibn Wardān's alternate has the
             # fully extended final alif, while the other Abu Ja'far face has the
@@ -3774,7 +4185,7 @@ def checked_audited_inline_faces(page, lines):
              'بياء الغيب'),
         ],
         386: [
-            ('DOCX-P386-R01959','وَحَزَنًا','وَحُزْنًا','حمزة، الكسائي، خلف العاشر',8,
+            ('DOCX-P386-R01959','وَحَزَنًا','وَحُزْنًا','حمزة، الكسائي، خلف',8,
              'بضم الحاء وسكون الزاي'),
         ],
         367: [
@@ -3858,7 +4269,6 @@ def checked_audited_inline_faces(page, lines):
         305: [
             ('DOCX-P305-R01095','نُبَشِّرُكَ','نَبْشُرُكَ','حمزة',7,'بفتح النون وضم الشين مخففة'),
             ('DOCX-P305-R01097','خَلَقْتُكَ','خَلَقْنَاكَ','حمزة، الكسائي',9,'بنون العظمة'),
-            ('DOCX-P305-R01096','عِتِيّٗا','عُتِيًّا','نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، أبو جعفر، يعقوب، خلف العاشر',8,'بضم العين'),
         ],
         306: [
             ('DOCX-P306-R01112','لِأَهَبَ','لِيَهَبَ','أبو عمرو، يعقوب',19,'بياء الغيب'),
@@ -3893,10 +4303,6 @@ def checked_audited_inline_faces(page, lines):
         ],
         244: [
             ('DOCX-P244-R00325','نَرْفَعُ دَرَجَـٰتٍ مَّن نَّشَآءُ','يَرْفَعُ دَرَجَاتِ مَن يَشَاءُ','يعقوب',76,'بياء الغيب بغير تنوين'),
-        ],
-        399: [
-            ('DOCX-P399-R02075','ٱلنُّبُوَّةَ','ٱلنُّبُوءَةَ','نافع',27,
-             'بالهمز والمد المتصل'),
         ],
         400: [
             ('DOCX-P400-R02084','إِبْرَٰهِيمَ','إِبْرَاهَامَ','هشام',31,
@@ -3991,6 +4397,8 @@ def checked_audited_inline_faces(page, lines):
              'بضم الهاء'),
         ],
         411: [
+            ('DOCX-P411-R02188','هُزُوًا','هُزْءًا','حمزة، خلف',6,
+             'بهمز الواو، و«خلف» المجرد هو خلف عن حمزة Q06.'),
             ('DOCX-P411-R02183','وَرَحْمَةً','وَرَحْمَةٌ','حمزة',3,
              'بالرفع'),
             ('DOCX-P411-R02184','لِّيُضِلَّ','لِيَضِلَّ','ابن كثير، أبو عمرو',6,
@@ -4157,7 +4565,9 @@ def checked_audited_inline_faces(page, lines):
              'بضم الهاء'),
         ],
         276: [
-            ('DOCX-P276-R00745','ظَعْنِكُمْ','ظَعَنِكُمْ','نافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر، يعقوب',80,
+            # The printed face is «للباقين»: after explicit ابن عامر، عاصم، حمزة، الكسائي، خلف
+            # (bare خلف = Q06), the remainder includes خلف العاشر (Q10) and excludes Q04/Q05/Q06/Q07.
+            ('DOCX-P276-R00745','ظَعْنِكُمْ','ظَعَنِكُمْ','نافع، ابن كثير، أبو عمرو، أبو جعفر، يعقوب، خلف العاشر',80,
              'بفتح العين'),
         ],
         278: [
@@ -4227,6 +4637,10 @@ def checked_audited_inline_faces(page, lines):
              'بضم الهاء'),
             ('DOCX-P427-R02326','كَبِيرٗا','كَثِيرًا','نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، الكسائي، أبو جعفر، يعقوب، خلف العاشر',68,
              'بالثاء المثلثة'),
+        ],
+        428: [
+            ('DOCX-P428-R02331','عَـٰلِمِ الْغَيْبِ','عَالِمِ الْغَيْبِ','ابن كثير، أبو عمرو، عاصم، روح، خلف',3,'بخفض الميم منونة بعد ألف فاعل'),
+            ('DOCX-P428-R02332','عَـٰلِمِ الْغَيْبِ','عَالِمُ الْغَيْبِ','نافع، ابن عامر، أبو جعفر، رويس',3,'برفع الميم منونة'),
         ],
         429: [
             ('DOCX-P429-R02351','تَبَيَّنَتِ','تُبُيِّنَتِ','رويس',14,
@@ -4435,12 +4849,18 @@ def checked_audited_inline_faces(page, lines):
              'بياء الغيب ورفع كل'),
         ],
         443: [
+            ('DOCX-P443-R02495','يَخِصِّمُونَ','يَخْصِمُونَ','حمزة',49,
+             'بفتح الياء وإسكان الخاء وتخفيف الصاد'),
+            ('DOCX-P443-R02496','يَخِصِّمُونَ','يْخِصِّمُونَ','أبو جعفر',49,
+             'بإسكان الياء والخاء وتشديد الصاد'),
             ('DOCX-P443-R02488','ذُرِّيَّتَهُمْ','ذُرِّيَّاتِهِمْ','أبو جعفر',41,
              'بالجمع'),
             ('DOCX-P443-R02498','صَيْحَةٗ وَٰحِدَةٗ','صَيْحَةٌ وَاحِدَةٌ','أبو جعفر',53,
              'برفع الكلمتين'),
         ],
         444: [
+            ('DOCX-P444-R02507','جِبِلّٗا','جِبِلًّا','نافع، عاصم، أبو جعفر',62,
+             'بكسر الجيم وفتح اللام'),
             ('DOCX-P444-R02501','شُغُلٍ','شُغْلٍ','نافع، ابن كثير، أبو عمرو، خلف',55,
              'بإسكان الغين'),
             ('DOCX-P444-R02502','فَـٰكِهُونَ','فَكِهُونَ','أبو جعفر',55,
@@ -4919,9 +5339,45 @@ def checked_audited_inline_faces(page, lines):
             ('DOCX-P304-R01079','يَحْسَبُونَ','يَحْسِبُونَ','نافع، ابن كثير، أبو عمرو، الكسائي، يعقوب، خلف العاشر',104,
              'بكسر السين'),
         ],
+        470: [
+            ('DOCX-P470-R02753','أَوْ أَن يُظْهِرَ فِي ٱلْأَرْضِ ٱلْفَسَادَ',
+             'وَأَنْ يُظْهِرَ فِي ٱلْأَرْضِ ٱلْفَسَادَ',
+             'نافع، أبو عمرو، أبو جعفر',26,'بواو العطف وضم ياء يظهر ونصب الفساد'),
+            ('DOCX-P470-R02754','أَوْ أَن يُظْهِرَ فِي ٱلْأَرْضِ ٱلْفَسَادَ',
+             'وَأَنْ يَظْهَرَ فِي ٱلْأَرْضِ ٱلْفَسَادُ',
+             'ابن كثير، ابن عامر',26,'بواو العطف وفتح ياء يظهر ورفع الفساد'),
+            ('DOCX-P470-R02755','أَوْ أَن يُظْهِرَ فِي ٱلْأَرْضِ ٱلْفَسَادَ',
+             'أَوْ يَظْهَرَ فِي ٱلْأَرْضِ ٱلْفَسَادُ',
+             'شعبة، حمزة، الكسائي، خلف',26,'بأو وفتح ياء يظهر ورفع الفساد'),
+        ],
+        256: [
+            ('DOCX-P256-R00496','رُسُلُهُمْ','رُسْلُهُمْ','أبو عمرو',9,
+             'إسكان السين',1),
+            ('DOCX-P256-R00496','رُسُلُهُمْ','رُسْلُهُمْ','أبو عمرو',10,
+             'إسكان السين',1),
+        ],
+        282: [
+            ('DOCX-P282-R00803','أَلَّا تَتَّخِذُوا','أَلَّا يَتَّخِذُوا','أبو عمرو',2,
+             'بياء الغيب'),
+            ('DOCX-P282-R00804','عَلَيْهِمْ','عَلَيْهُمُ','حمزة، يعقوب',6,
+             'بضم الهاء'),
+        ],
+        557: [
+            ('DOCX-P557-R03580','يُضَـٰعِفْهُ','يُضَعِّفْهُ',
+             'جميع القراء عدا نافع، أبو عمرو، عاصم، حمزة، الكسائي، خلف',17,
+             'بحذف الألف وتشديد العين المكسورة'),
+        ],
     }
     out=[]
     external_face_notes={
+        'DOCX-P256-R00496':('https://quranpedia.net/qiraat/ibrahim/9',
+            'جهاز إبراهيم يثبت إسكان السين لأبي عمرو في موضعي رُسُلُهُمْ في السطر المصدر.'),
+        'DOCX-P470-R02753':('https://quranpedia.net/qiraat/ghafir/26',
+            'جهاز غافر 26 يثبت وجه وَأَنْ يُظْهِرَ بالضم والنصب للمجموعة المذكورة.'),
+        'DOCX-P470-R02754':('https://quranpedia.net/qiraat/ghafir/26',
+            'جهاز غافر 26 يثبت وجه يَظْهَرَ بالفتح ورفع الفساد لابن كثير وابن عامر.'),
+        'DOCX-P470-R02755':('https://quranpedia.net/qiraat/ghafir/26',
+            'جهاز غافر 26 يثبت وجه أَوْ يَظْهَرَ بالفتح ورفع الفساد؛ وخلف المجرد Q06.'),
         'DOCX-P454-R02611':('https://quranpedia.net/qiraat/sad/22',
             'ينص السطر المصدر صراحة على وجهي السين وإشمام الصاد زايًا في الصراط؛ أُبقي الوجهين منفصلين بحسب القارئ.'),
         'DOCX-P560-R03600':('https://quranpedia.net/qiraat/at-talaq/11',
@@ -4937,6 +5393,37 @@ def checked_audited_inline_faces(page, lines):
     # the word-variant fixture: the UI/API carries them as performance_variant records.
     # Reader-level distinctions below are supported by the cited ten-reader apparatus.
     performance_faces={
+        480: [
+            ('DOCX-P480-R02842','عَلَيْهِمُ','نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',30,'بكسر الهاء وضم الميم وصلاً','https://quranpedia.net/qiraat/fussilat/30','وجه المصدر للمذكورين.'),
+            ('DOCX-P480-R02843','عَلَيْهِمُ','أبو عمرو',30,'بكسر الهاء والميم وصلاً','https://quranpedia.net/qiraat/fussilat/30','وجه أبي عمرو.'),
+            ('DOCX-P480-R02844','عَلَيْهِمُ','حمزة، الكسائي، يعقوب، خلف',30,'بضم الهاء والميم وصلاً','https://quranpedia.net/qiraat/fussilat/30','«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
+        269: [
+            ('DOCX-P269-R00666','عَلَيْهِمُ','نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر',26,'بكسر الهاء وضم الميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','وجه المصدر للمذكورين.'),
+            ('DOCX-P269-R00667','عَلَيْهِمُ','أبو عمرو',26,'بكسر الهاء والميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','وجه أبي عمرو.'),
+            ('DOCX-P269-R00668','عَلَيْهِمُ','حمزة، الكسائي، يعقوب، خلف',26,'بضم الهاء والميم وصلاً','https://quranpedia.net/qiraat/an-nahl/26','«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
+        457: [
+            ('DOCX-P457-R02640','سِخْرِيًّا','ابن كثير، ابن عامر، عاصم',63,'بضم السين','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
+            ('DOCX-P457-R02641','سِخْرِيًّا','نافع، أبو جعفر',63,'بكسر السين','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
+            ('DOCX-P457-R02642','سِخْرِيًّا','أبو عمرو، يعقوب',63,'بضم السين وكسر الراء','https://quranpedia.net/qiraat/sad/63','الوجه المنقول عن المجموعة المذكورة.'),
+            ('DOCX-P457-R02643','سِخْرِيًّا','حمزة، الكسائي، خلف',63,'بكسر السين وتشديد الياء','https://quranpedia.net/qiraat/sad/63','«خلف» المجرد هو خلف عن حمزة Q06.'),
+        ],
+        443: [
+            ('DOCX-P443-R02492','يَخِصِّمُونَ','ابن ذكوان، عاصم، الكسائي، يعقوب، خلف',49,'بفتح الياء وكسر الخاء وتشديد الصاد','https://quranpedia.net/qiraat/ya-sin/49','وجه المصدر للمذكورين؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
+            ('DOCX-P443-R02493','يَخِصِّمُونَ','قالون، أبو عمرو',49,'باختلاس فتحة الخاء وتشديد الصاد','https://quranpedia.net/qiraat/ya-sin/49','وجه الاختلاس للمذكورين.'),
+            ('DOCX-P443-R02494','يَخِصِّمُونَ','ورش، ابن كثير، هشام',49,'بفتح الياء والخاء وتشديد الصاد','https://quranpedia.net/qiraat/ya-sin/49','وجه الفتح للمذكورين.'),
+        ],
+        357: [
+            ('DOCX-P357-R01689','ثَلَـٰثُ عَوْرَٰتٍ','حمزة، الكسائي، خلف',58,'بنصب الثاء','https://quranpedia.net/qiraat/an-nur/58','وجه النصب للمذكورين؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
+            ('DOCX-P357-R01690','عَلَيْهِمْ','حمزة، يعقوب',58,'بضم الهاء','https://quranpedia.net/qiraat/an-nur/58','وجه الضم لحمزة ويعقوب.'),
+        ],
+        358: [
+            ('DOCX-P358-R01694','عَلَيْهِنَّ','يعقوب',60,'بضم الهاء','https://quranpedia.net/qiraat/an-nur/60','وجه الضم ليعقوب.'),
+        ],
+        360: [
+            ('DOCX-P360-R01705','فَهِىَ','قالون، أبو عمرو، الكسائي، أبو جعفر',5,'بإسكان الهاء','https://quranpedia.net/qiraat/al-furqan/5','وجه الإسكان للمذكورين.'),
+        ],
         343: [
             ('DOCX-P343-R01510','نُّسْقِيكُم','ابن كثير، أبو عمرو، حفص، حمزة، الكسائي، خلف',21,'بضم العين وكسر التنوين','https://quranpedia.net/qiraat/al-muminun/21','وجه المصدر بضم العين وكسر التنوين؛ «خلف» المجرد هو خلف عن حمزة Q06.'),
             ('DOCX-P343-R01511','نُّسْقِيكُم','نافع، ابن عامر، شعبة، يعقوب',21,'بفتح التاء وضم التنوين','https://quranpedia.net/qiraat/al-muminun/21','وجه المصدر للمذكورين بضم التنوين.'),

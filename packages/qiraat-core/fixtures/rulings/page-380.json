@@ -344,7 +344,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "كَافِرِينَ → كَافِرِينَ | إمالة فتحة الكاف والألف",
+      "كـافريـن → كٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p380-YAAT_IDAFA-ليبلوني_ااشكر-4",
@@ -403,5 +407,250 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-027-37-6-2979-IDGHAM_KABIR",
+    "pageNumber": 380,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 37,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 37,
+    "baseText": "قِبَلَ لَهُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قِبَلَ لَّهُم → قِبَل لَّهُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-027-39-10-2983-IDGHAM_KABIR",
+    "pageNumber": 380,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 39,
+    "startToken": 10,
+    "endToken": 11,
+    "endAyah": 39,
+    "baseText": "تَقُومَ مِن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَقُومَ مِن → تَقُوم مِّن | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-027-40-22-2985-IDGHAM_KABIR",
+    "pageNumber": 380,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 40,
+    "startToken": 22,
+    "endToken": 23,
+    "endAyah": 40,
+    "baseText": "فَضْلِ رَبِّى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَضْلِ رَبِّي → فَضْل رَّبِّي | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-027-40-31-2987-IDGHAM_KABIR",
+    "pageNumber": 380,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 40,
+    "startToken": 31,
+    "endToken": 32,
+    "endAyah": 40,
+    "baseText": "يَشْكُرُ لِنَفْسِهِۦ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَشْكُرُ لِنَفْسِهِ → يَشْكُر لِّنَفْسِهِ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-027-42-6-2988-IDGHAM_KABIR",
+    "pageNumber": 380,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 42,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 42,
+    "baseText": "قَالَتْ كَأَنَّهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الكاف في القاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الكاف في القاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَتْ كَأَنَّهُ → قَالَت كَّأَنَّهُ | إدغام الكاف في القاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-027-42-7-2989-IDGHAM_KABIR",
+    "pageNumber": 380,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 42,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 42,
+    "baseText": "كَأَنَّهُۥ هُوَ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "كَأَنَّهُ هُوَ → كَأَنَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-027-44-1-2993-IDGHAM_KABIR",
+    "pageNumber": 380,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 27,
+    "ayah": 44,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 44,
+    "baseText": "قِيلَ لَهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قِيلَ لَهَا → قِيل لَّهَا | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

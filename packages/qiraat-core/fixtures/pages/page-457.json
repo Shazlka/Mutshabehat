@@ -32,5 +32,283 @@
     "description": "بكسر الهمزة المشددة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance1",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بضم السين",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance1",
+        "variantId": "v-D457-سخريا-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02640",
+        "verificationNotes": "الوجه المنقول عن المجموعة المذكورة. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بهمزة قطع مفتوحة مع كسر سين سخرياً: ابن كثير، وابن عامر، وعاصم."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance2",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر السين",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance2",
+        "variantId": "v-D457-سخريا-performance2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02641",
+        "verificationNotes": "الوجه المنقول عن المجموعة المذكورة. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بهمزة قطع مفتوحة مع ضم سين سُخرياً: نافع، وأبو جعفر."
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance3",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بضم السين وكسر الراء",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance3",
+        "variantId": "v-D457-سخريا-performance3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02642",
+        "verificationNotes": "الوجه المنقول عن المجموعة المذكورة. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بوصل الهمزة مكسورة ابتداءً مع كسر سين سخرياً: أبو عمرو، ويعقوب."
+      }
+    ],
+    "description": "بضم السين وكسر الراء",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D457-سخريا-performance4",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سِخْرِيًّا",
+    "variantText": "سِخْرِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D457-سخريا",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر السين وتشديد الياء",
+    "sources": [
+      {
+        "id": "s-D457-سخريا-performance4",
+        "variantId": "v-D457-سخريا-performance4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P457-R02643",
+        "verificationNotes": "«خلف» المجرد هو خلف عن حمزة Q06. المرجع المستقل: https://quranpedia.net/qiraat/sad/63.",
+        "sourceText": "بوصل الهمزة مكسورة ابتداءً مع ضم سين سُخرياً: حمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بكسر السين وتشديد الياء",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-038-63-1-3634-performance",
+    "surah": 38,
+    "ayah": 63,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَتَّخَذْنَـٰهُمْ",
+    "variantText": "أَتَّخَذْنَـٰهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-038-63-1-3634",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل تسقط عند الوصل بما قبلها وتكسر ابتداء",
+    "sources": [
+      {
+        "id": "s-SUSI-038-63-1-3634",
+        "variantId": "v-SUSI-038-63-1-3634-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3634; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتَّخَذْنَاهُمْ → اتَّخَذْنَاهُمْ | همزة وصل تسقط عند الوصل بما قبلها وتكسر ابتداء"
+      }
+    ],
+    "description": "همزة وصل تسقط عند الوصل بما قبلها وتكسر ابتداء"
+  },
+  {
+    "id": "v-SUSI-038-69-1-3637-performance",
+    "surah": 38,
+    "ayah": 69,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مَا كَانَ لِىَ",
+    "variantText": "مَا كَانَ لِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-038-69-1-3637",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-038-69-1-3637",
+        "variantId": "v-SUSI-038-69-1-3637-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3637; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَا كَانَ لِيَ → مَا كَانَ لِي | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  },
+  {
+    "id": "v-SUSI-038-83-4-3642-performance",
+    "surah": 38,
+    "ayah": 83,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُخْلَصِينَ",
+    "variantText": "ٱلْمُخْلَصِينَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-038-83-4-3642",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر اللام",
+    "sources": [
+      {
+        "id": "s-SUSI-038-83-4-3642",
+        "variantId": "v-SUSI-038-83-4-3642-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3642; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُخْلَصِينَ → الْمُخْلِصِينَ | كسر اللام"
+      }
+    ],
+    "description": "كسر اللام"
+  },
+  {
+    "id": "v-DURI-038-69-3-r2085-performance",
+    "surah": 38,
+    "ayah": 69,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "لِىَ",
+    "variantText": "لِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-038-69-3-r2085",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-038-69-3-r2085",
+        "variantId": "v-DURI-038-69-3-r2085-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2085; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لـيَ → لـي | أسكن الدوري الياء"
+      }
+    ],
+    "description": "أسكن الدوري الياء"
   }
 ]

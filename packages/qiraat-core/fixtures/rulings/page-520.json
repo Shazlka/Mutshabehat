@@ -206,7 +206,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لذكـرى → لذكـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p520-IMALAH_TAQLIL-القي-1",
@@ -304,7 +307,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَالذَّارِيَاتِ ذَرْوًا → وَالذَّارِيَات ذَّرْوًا | إدغام التاء في الذال"
+    ]
   },
   {
     "id": "r-p520-YAAT_ZAWAID-وعيد-3",
@@ -466,5 +472,150 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p520-YAAT_ZAWAID-يناد-3",
+    "pageNumber": 520,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 50,
+    "ayah": 41,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 41,
+    "baseText": "يُنَادِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "إثبات الياء وقفاً: يُنَادِي"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إثبات الياء وقفاً: يُنَادِي"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء وقفاً: يُنَادِي"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء وقفاً: يُنَادِي"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء وقفاً: يُنَادِي",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء وقفاً: يُنَادِي",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء وقفاً: يُنَادِي",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء وقفاً: يُنَادِي",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P520-R03235",
+        "sourceText": "﴿يُنَادِ﴾: إثبات الياء وقفاً لابن كثير (بخلف عنه) ويعقوب ﴿يُنَادِي﴾.",
+        "verificationNotes": "إسناد صريح؛ ابن كثير بخلف ويعقوب."
+      }
+    ]
+  },
+  {
+    "id": "r-SUSI-050-38-1-4108-IDGHAM_KABIR",
+    "pageNumber": 520,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 50,
+    "ayah": 38,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 38,
+    "baseText": "وَلَقَدْ خَلَقْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الخاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الخاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَدْ خَلَقْنَا → وَلَقَد خَّلَقْنَا | إدغام الدال في الخاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-050-45-8-4109-IMALAH_TAQLIL",
+    "pageNumber": 520,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 50,
+    "ayah": 45,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 45,
+    "baseText": "بِجَبَّارٍۢ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الباء والألف لكسرة الراء المتطرفة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الباء والألف لكسرة الراء المتطرفة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بِجَبَّارٍ → بِجَبَّارٍ | إمالة فتحة الباء والألف لكسرة الراء المتطرفة",
+      "بـجبَّـار → بـجبٍّار | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -36,6 +36,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-hadid/25",
         "sourceText": "إسكان السين: أبو عمرو.",
         "verificationNotes": "جهاز القراءات العشر للآية يورد هذا الوجه والرواة صراحةً."
+      },
+      {
+        "id": "s-DURI-057-25-3-r2467",
+        "variantId": "v-AUDIT-DOCX-P541-R03424-1ed888d43f",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2467; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُسُـلنا → رُسْـلنا | أسكن الدوري السين"
       }
     ],
     "description": "بإسكان السين لأبي عمرو ﴿رُسْلَنَا... بِرُسْلِنَا﴾؛ وبضمها للباقين.",
@@ -243,5 +252,133 @@
         "url": "https://quranpedia.net/qiraat/al-hadid/26"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-057-25-15-4235-performance",
+    "surah": 57,
+    "ayah": 25,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "بَأْسٌۭ",
+    "variantText": "بَأْسٌۭ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-057-25-15-4235",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-057-25-15-4235",
+        "variantId": "v-SUSI-057-25-15-4235-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4235; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بَأْسٌ → بَاسٌ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-057-28-8-4236-performance",
+    "surah": 57,
+    "ayah": 28,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْتِكُمْ",
+    "variantText": "يُؤْتِكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-057-28-8-4236",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-057-28-8-4236",
+        "variantId": "v-SUSI-057-28-8-4236-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4236; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْتِكُمْ → يُوتِكُمْ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-057-29-1-4237-performance",
+    "surah": 57,
+    "ayah": 29,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لِّئَلَّا",
+    "variantText": "لِّئَلَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-057-29-1-4237",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء مفتوحة",
+    "sources": [
+      {
+        "id": "s-SUSI-057-29-1-4237",
+        "variantId": "v-SUSI-057-29-1-4237-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4237; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِّئَلَّا → لِّيَلَّا | إبدال الهمزة ياء مفتوحة"
+      }
+    ],
+    "description": "إبدال الهمزة ياء مفتوحة"
+  },
+  {
+    "id": "v-DURI-057-27-5-r2470-performance",
+    "surah": 57,
+    "ayah": 27,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِرُسُلِنَا",
+    "variantText": "بِرُسُلِنَا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-057-27-5-r2470",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-057-27-5-r2470",
+        "variantId": "v-DURI-057-27-5-r2470-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2470; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "برُسُـلنا → برُسْـلنا | أسكن الدوري السين"
+      }
+    ],
+    "description": "أسكن الدوري السين"
   }
 ]

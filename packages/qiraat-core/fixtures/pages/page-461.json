@@ -31,6 +31,24 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-039-22-6-3668",
+        "variantId": "v-L461-s39a22b0-w1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3668; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-039-22-6-r2103",
+        "variantId": "v-L461-s39a22b0-w1",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2103; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو → فهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء تخفيفاً",
@@ -174,5 +192,46 @@
     "description": "بنقل الهمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-039-29-9-3673",
+    "surah": 39,
+    "ayah": 29,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "سَلَمًۭا",
+    "variantText": "سَالِمًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-039-29-9-3673",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-039-29-9-3673",
+        "variantId": "v-SUSI-039-29-9-3673",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3673; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سَلَمًا → سَالِمًا | ألف بعد السين وكسر اللام"
+      },
+      {
+        "id": "s-DURI-039-29-9-r2107",
+        "variantId": "v-SUSI-039-29-9-3673",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2107; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سَـلَمـاً → سـالِمـاً | قرأ الدوري بألف بعد السين وكسر اللام"
+      }
+    ],
+    "description": "ألف بعد السين وكسر اللام"
   }
 ]

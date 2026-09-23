@@ -326,7 +326,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "كَفَّارٍ → كَفَّارٍ | إمالة فتحة الفاء والألف",
+      "كفَّـار → كفٍّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p519-TAGHYIR_HAMZ-امتلات-3",
@@ -487,6 +491,114 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وجـاءت سكـرة → وجـاءت سَّكـرة | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-050-19-1-4104-IDGHAM_KABIR",
+    "pageNumber": 519,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 50,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 19,
+    "baseText": "وَجَآءَتْ سَكْرَةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في السين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في السين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَجَاءَتْ سَكْرَةُ → وَجَاءَت سَّكْرَةُ | إدغام التاء في السين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-050-28-1-4106-IDGHAM_KABIR",
+    "pageNumber": 519,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 50,
+    "ayah": 28,
+    "startToken": 1,
+    "endToken": 3,
+    "endAyah": 28,
+    "baseText": "قَالَ لَا تَخْتَصِمُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ لَا تَخْتَصِمُوا → قَال لَّا تَخْتَصِمُوا | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-050-30-2-4107-IDGHAM_KABIR",
+    "pageNumber": 519,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 50,
+    "ayah": 30,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 30,
+    "baseText": "نَقُولُ لِجَهَنَّمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "نَقُولُ لِجَهَنَّمَ → نَقُول لِّجَهَنَّمَ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -100,7 +100,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف",
+      "القـرى → القـرٍى | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p546-IMALAH_TAQLIL-القربا-1",
@@ -203,7 +207,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "القربـى → الـقربِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p546-IMALAH_TAQLIL-واليتاما-2",
@@ -516,7 +523,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "دِيَارِهِمْ → دِيَارِهِمْ | إمالة فتحة الياء والألف",
+      "ديـارهم → ديٍـارهم | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p546-TAGHYIR_HAMZ-ويوثرون-6",
@@ -611,5 +622,45 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p546-IMALAH_TAQLIL-خصاصة-7",
+    "pageNumber": 546,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 9,
+    "startToken": 24,
+    "endToken": 24,
+    "endAyah": 9,
+    "baseText": "خَصَاصَةٌۭ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
   }
 ]

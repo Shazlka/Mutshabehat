@@ -309,5 +309,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-056-23-2-r2436-TAGHYIR_HAMZ",
+    "pageNumber": 535,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 23,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 23,
+    "baseText": "ٱللُّؤْلُؤِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أبدل الدوري الهمزة الأولى"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أبدل الدوري الهمزة الأولى",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللـؤلـؤ → اللـؤلـؤ | أبدل الدوري الهمزة الأولى"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -121,7 +121,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النِّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p413-IMALAH_TAQLIL-هدي-1",
@@ -273,7 +276,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْوُثْقَىٰ → الْوُثْقَى | بالتقليل",
+      "الوثقـى → الوثقِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p413-IDGHAM_SAGHIR-بل_نتبع-3",
@@ -386,5 +393,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-031-20-5-3276-IDGHAM_KABIR",
+    "pageNumber": 413,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 31,
+    "ayah": 20,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 20,
+    "baseText": "سَخَّرَ لَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "سَخَّرَ لَكُم → سَخَّر لَّكُم | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-031-21-2-3277-IDGHAM_KABIR",
+    "pageNumber": 413,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 31,
+    "ayah": 21,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 21,
+    "baseText": "قِيلَ لَهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قِيلَ لَهُمُ → قِيل لَّهُمُ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-031-26-7-3280-IDGHAM_KABIR",
+    "pageNumber": 413,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 31,
+    "ayah": 26,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 26,
+    "baseText": "ٱللَّهَ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللَّهُ هُوَ → اللَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

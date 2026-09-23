@@ -79,5 +79,101 @@
         "text": "وَإِذْ يَتَوَفَّى أَنَّثُوهُ لَهُ مُلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-008-48-31-1170-performance",
+    "surah": 8,
+    "ayah": 48,
+    "startToken": 31,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ أَخَافُ",
+    "variantText": "إِنِّىٓ أَخَافُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-008-48-31-1170",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-008-48-31-1170",
+        "variantId": "v-SUSI-008-48-31-1170-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1170; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِنِّي أَخَافُ → إِنِّيَ أَخَافُ | فتح الياء"
+      }
+    ],
+    "description": "فتح الياء"
+  },
+  {
+    "id": "v-SUSI-008-52-1-1172-performance",
+    "surah": 8,
+    "ayah": 52,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "كَدَأْبِ",
+    "variantText": "كَدَأْبِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-008-52-1-1172",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-008-52-1-1172",
+        "variantId": "v-SUSI-008-52-1-1172-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1172; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كَدَأْبِ → كَدَابِ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-DURI-008-48-26-r0783-performance",
+    "surah": 8,
+    "ayah": 48,
+    "startToken": 26,
+    "endToken": 27,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ أَرَىٰ",
+    "variantText": "إِنِّىٓ أَرَىٰ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-008-48-26-r0783",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء فيهما",
+    "sources": [
+      {
+        "id": "s-DURI-008-48-26-r0783",
+        "variantId": "v-DURI-008-48-26-r0783-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 783; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إنـي أرى – إنـي أخاف → إنـيَ أرٍى – إنـيَ أخاف | فتح الدوري الياء فيهما"
+      }
+    ],
+    "description": "فتح الدوري الياء فيهما"
   }
 ]

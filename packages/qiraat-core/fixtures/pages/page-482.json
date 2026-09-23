@@ -37,6 +37,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P482-R02865",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿ثَمَرَٰتٍ﴾: بالجمع وألف مدية بعد الراء ﴿ثَمَرَاتٍ﴾ لنافع، وابن عامر، وحفص، وأبي جعفر؛ وبالمفرد ﴿ثَمَرَةٍ﴾ للباقين (ويقف عليها بالهاء ابن كثير وأبو عمرو والكسائي بخلف ويعقوب)."
+      },
+      {
+        "id": "s-SUSI-041-47-8-3859",
+        "variantId": "v-D482-ثمرات-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3859; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ثَمَرَاتٍ → ثَمَرَةٍ | بحذف الألف والوقف عليها بالهاء: ثَمَرَه"
+      },
+      {
+        "id": "s-DURI-041-47-8-r2214",
+        "variantId": "v-D482-ثمرات-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2214; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ثـمرات → ثـمرة | قرأها الدوري بالإفراد ووقف عليها بالهاء"
       }
     ],
     "description": "بالمفرد",
@@ -111,5 +129,103 @@
     "description": "بتقديم الألف على الهمزة مع المد المتصل",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D482-سنريهم",
+    "surah": 41,
+    "ayah": 53,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "سَنُرِيهِمْ",
+    "variantText": "سَنُرِيهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D482-سنريهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D482-سنريهم",
+        "variantId": "v-D482-سنريهم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P482-R02866",
+        "verificationNotes": "وجه صريح ليعقوب، anchor حقيقي.",
+        "sourceText": "سَنُرِيهِمْ ... بضم الهاء ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء ليعقوب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-041-50-19-3862-performance",
+    "surah": 41,
+    "ayah": 50,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ",
+    "variantText": "رَبِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-041-50-19-3862",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-041-50-19-3862",
+        "variantId": "v-SUSI-041-50-19-3862-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3862; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَبِّي → رَبِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-DURI-041-50-19-r2216-performance",
+    "surah": 41,
+    "ayah": 50,
+    "startToken": 19,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ إِنَّ",
+    "variantText": "رَبِّىٓ إِنَّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-041-50-19-r2216",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-041-50-19-r2216",
+        "variantId": "v-DURI-041-50-19-r2216-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2216; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ربّـي إنّ → ربـيَ إنَّ | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

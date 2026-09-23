@@ -182,6 +182,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -203,6 +219,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -239,7 +275,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النّـاس → النٍّـاس | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p327-007-1",
@@ -888,5 +927,40 @@
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-021-60-5-2514-IDGHAM_KABIR",
+    "pageNumber": 327,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 21,
+    "ayah": 60,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 60,
+    "baseText": "يُقَالُ لَهُۥٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يُقَالُ لَهُ → يُقَال لَّهُ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

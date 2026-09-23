@@ -217,23 +217,15 @@
     "attribution": [
       {
         "authorityId": "Q06",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
         "authorityId": "Q07",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل",
-        "condition": "وقفًا"
+        "authorityId": "Q01",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -254,16 +246,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -500,23 +482,15 @@
     "attribution": [
       {
         "authorityId": "Q06",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
         "authorityId": "Q07",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل",
-        "condition": "وقفًا"
+        "authorityId": "Q01",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -537,16 +511,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -783,39 +747,19 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03-R01",
+        "authorityId": "Q03",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q03-R02",
+        "authorityId": "Q06",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q06-R01",
+        "authorityId": "Q07",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q06-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
+        "authorityId": "Q01",
         "action": "تقليل"
       }
     ],
@@ -851,16 +795,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
@@ -868,7 +802,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "قَرَارٍ → قَرَارٍ | إمالة فتحة الراء والألف",
+      "قـرار → قـرٍار | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p342-TAGHYIR_HAMZ-انشاناه-5",
@@ -918,5 +856,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-023-16-4-2619-IDGHAM_KABIR",
+    "pageNumber": 342,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 23,
+    "ayah": 16,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 16,
+    "baseText": "ٱلْقِيَـٰمَةِ تُبْعَثُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْقِيَامَةِ تُبْعَثُونَ → الْقِيَامَة تُّبْعَثُونَ | إدغام التاء في التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

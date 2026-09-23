@@ -144,7 +144,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيٍـا | قللـها الدوري"
+    ]
   },
   {
     "id": "r-p480-IMALAH_TAQLIL-يلقاها-1",
@@ -306,5 +310,250 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-30-19-3838-IDGHAM_KABIR",
+    "pageNumber": 480,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 30,
+    "startToken": 19,
+    "endToken": 1,
+    "endAyah": 31,
+    "baseText": "تُوعَدُونَ نَحْنُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في النون"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في النون",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تُوعَدُونَ نَحْنُ → تُوعَدُون نَّحْنُ | إدغام النون في النون"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-31-16-3840-IDGHAM_KABIR",
+    "pageNumber": 480,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 31,
+    "startToken": 16,
+    "endToken": 1,
+    "endAyah": 32,
+    "baseText": "تَدَّعُونَ نُزُلًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في النون"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في النون",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَدَّعُونَ نُزُلًا → تَدَّعُون نُّزُلًا | إدغام النون في النون"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-36-2-3841-IDGHAM_KABIR",
+    "pageNumber": 480,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 36,
+    "startToken": 2,
+    "endToken": 4,
+    "endAyah": 36,
+    "baseText": "يَنزَغَنَّكَ مِنَ ٱلشَّيْطَـٰنِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في النون"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في النون",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَنزَغَنَّكَ مِنَ الشَّيْطَانِ → يَنزَغَنَّك مِّنَ الشَّيْطَانِ | إدغام النون في النون"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-36-8-3842-IDGHAM_KABIR",
+    "pageNumber": 480,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 36,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 36,
+    "baseText": "إِنَّهُۥ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِنَّهُ هُوَ → إِنَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-37-6-3843-IDGHAM_KABIR",
+    "pageNumber": 480,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 37,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 37,
+    "baseText": "وَٱلْقَمَرُ ۚ لَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَالْقَمَرِ ۚ لَا → وَالْقَمَر لَّا | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-041-30-9-r2205-MEEM_JAM",
+    "pageNumber": 480,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 30,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 30,
+    "baseText": "عَلَيْهِمُ ٱلْمَلَـٰٓئِكَةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "علـيهمُ الـملائكة → عليهـمِ الملائكة | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-041-38-9-r2207-IMALAH_TAQLIL",
+    "pageNumber": 480,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 38,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 38,
+    "baseText": "وَٱلنَّهَارِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "والنهـار → والنهٍـار | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

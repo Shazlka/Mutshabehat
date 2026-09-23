@@ -41,6 +41,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P498-R03021",
         "verificationNotes": "إسناد صريح، وربط بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة للآية: https://quranpedia.net/qiraat/ad-dukhan/45",
         "sourceText": "﴿يَغْلِي﴾: بياء التذكير ﴿يَغْلِي﴾ لابن كثير، وحفص، ورويس؛ وبتاء التأنيث ﴿تَغْلِي﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-044-45-2-3979",
+        "variantId": "v-D498-يغلي-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3979; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَغْلِي → تَغْلِي | إبدال الياء تاء"
+      },
+      {
+        "id": "s-DURI-044-45-2-r2295",
+        "variantId": "v-D498-يغلي-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2295; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـغلي → تـغلي | قرأ الدوري بتاء التأنيث"
       }
     ],
     "description": "بتاء التأنيث",
@@ -303,5 +321,78 @@
     "description": "بكسر العين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-044-43-2-3978",
+    "surah": 44,
+    "ayah": 43,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "شَجَرَتَ",
+    "variantText": "شَجَرَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-044-43-2-3978",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-044-43-2-3978",
+        "variantId": "v-SUSI-044-43-2-3978",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3978; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "شَجَرَتَ → شَجَرَه | بالهاء وقفاً"
+      },
+      {
+        "id": "s-DURI-044-43-2-r2294",
+        "variantId": "v-SUSI-044-43-2-3978",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2294; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "شـجرت → شـجرة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-044-48-4-3980-performance",
+    "surah": 44,
+    "ayah": 48,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "رَأْسِهِۦ",
+    "variantText": "رَأْسِهِۦ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-044-48-4-3980",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-044-48-4-3980",
+        "variantId": "v-SUSI-044-48-4-3980-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3980; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَأْسِهِ → رَاسِهِ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

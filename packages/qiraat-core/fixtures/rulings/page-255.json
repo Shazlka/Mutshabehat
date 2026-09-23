@@ -84,7 +84,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الر → الر | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p255-002-1",
@@ -340,7 +343,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "صَبَّارٍ → صَبَّارٍ | إمالة فتحة الباء والألف",
+      "صبّـار → صبٍّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p255-IMALAH_TAQLIL-الدنيا-3",
@@ -443,7 +450,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p255-IMALAH_TAQLIL-موسا-4",
@@ -546,6 +557,90 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → موسِـى | قللها الدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-014-2-11-1780-IMALAH_TAQLIL",
+    "pageNumber": 255,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 2,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 2,
+    "baseText": "لِّلْكَـٰفِرِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لِلْكَافِرِينَ → لِلْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "للكافـرين → للكٍـافرين | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-014-4-8-1782-IDGHAM_KABIR",
+    "pageNumber": 255,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 4,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 4,
+    "baseText": "لِيُبَيِّنَ لَهُمْ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لِيُبَيِّنَ لَهُمْ → لِيُبَيِّن لَّهُمْ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

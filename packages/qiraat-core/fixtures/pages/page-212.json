@@ -237,5 +237,110 @@
         "text": "وَقُلْ كَلِمَاتٌ دُونَ مَا أَلِفٍ ثَوَى وَفِي يُونُسَ وَالطَّوْلِ حَامِيهِ ظَلَّلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-010-31-14-1364-performance",
+    "surah": 10,
+    "ayah": 31,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "مِنَ ٱلْمَيِّتِ",
+    "variantText": "مِنَ ٱلْمَيِّتِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-31-14-1364",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-010-31-14-1364",
+        "variantId": "v-SUSI-010-31-14-1364-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1364; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِنَ الْمَيِّتِ → مِنَ الْمَيْتِ | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  },
+  {
+    "id": "v-SUSI-010-33-3-1366",
+    "surah": 10,
+    "ayah": 33,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "كَلِمَتُ",
+    "variantText": "كَلِمَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-33-3-1366",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-010-33-3-1366",
+        "variantId": "v-SUSI-010-33-3-1366",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1366; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كَلِمَتُ → كَلِمَه | بالهاء وقفاً"
+      },
+      {
+        "id": "s-DURI-010-33-3-r0882",
+        "variantId": "v-SUSI-010-33-3-1366",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 882; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كلمت → كلمة | وقف عليها الدوري بالهاء"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-010-33-10-1367-performance",
+    "surah": 10,
+    "ayah": 33,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنُونَ",
+    "variantText": "يُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-33-10-1367",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-010-33-10-1367",
+        "variantId": "v-SUSI-010-33-10-1367-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1367; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

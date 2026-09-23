@@ -423,7 +423,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمَوْتَىٰ → الْمَوْتَى | بالتقليل",
+      "الموتـى → الـموتِى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p253-009-1",
@@ -510,6 +514,10 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -527,11 +535,20 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دَارِهِمْ → دَارِهِمْ | إمالة فتحة الدال والألف",
+      "دارهـم → دٍارهـم | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p253-011-1",
@@ -559,6 +576,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -580,6 +613,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -688,7 +741,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p253-IDGHAM_SAGHIR-اخذتهم-5",
@@ -984,5 +1041,180 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-29-4-1758-IMALAH_TAQLIL",
+    "pageNumber": 253,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 29,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 29,
+    "baseText": "ٱلصَّـٰلِحَـٰتِ طُوبَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الطاء ثم التقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الطاء ثم التقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الصَّالِحَاتِ طُوبَىٰ → الصَّالِحَات طُّوبَىٰ | إدغام التاء في الطاء ثم التقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-31-12-1760-IKHFA",
+    "pageNumber": 253,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 31,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 31,
+    "baseText": "كُلِّمَ بِهِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "كُلِّمَ بِهِ → كُلِّم بِهِ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-33-26-1765-IDGHAM_KABIR",
+    "pageNumber": 253,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 33,
+    "startToken": 26,
+    "endToken": 27,
+    "endAyah": 33,
+    "baseText": "زُيِّنَ لِلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "زُيِّنَ لِلَّذِينَ → زُيِّن لِّلَّذِينَ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-013-30-11-r1105-MEEM_JAM",
+    "pageNumber": 253,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 30,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 30,
+    "baseText": "عَلَيْهِمُ ٱلَّذِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليهـمُ الذي → عليهـمِ الذي | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-013-32-10-r1108-IDGHAM_KABIR",
+    "pageNumber": 253,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 32,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 32,
+    "baseText": "أَخَذْتُهُمْ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أخذتـهم → أخذتُّـهم | أدغم الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

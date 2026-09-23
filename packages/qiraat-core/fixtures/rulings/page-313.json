@@ -70,7 +70,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُوحَىٰ → يُوحَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p313-002-1",
@@ -471,7 +474,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تَسْعَىٰ → تَسْعَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p313-008-2",
@@ -544,7 +550,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تَسْعَىٰ → تَسْعَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p313-009-1",
@@ -730,7 +739,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فَتَرْدَىٰ → فَتَرْدَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p313-012-1",
@@ -1094,7 +1106,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُخْرَىٰ → أُخْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p313-015-2",
@@ -1167,7 +1182,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُخْرَىٰ → أُخْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p313-015-3",
@@ -1240,7 +1258,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُخْرَىٰ → أُخْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p313-016-1",
@@ -1372,7 +1393,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْأُولَىٰ → الْأُولَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p313-018-1",
@@ -1716,7 +1740,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكُبْرَى → الْكُبْرَى | وقفاً إمالة فتحة الراء وصلاً فتح وإمالة"
+    ]
   },
   {
     "id": "r-p313-026-1",
@@ -1789,7 +1816,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "طَغَىٰ → طَغَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p313-027-1",
@@ -1820,7 +1850,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ رَبِّ → قَالَ رَّبِّ | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p313-028-1",
@@ -2012,7 +2045,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نُسَبِّحَكَ كَثِيرًا → نُسَبِّحَك كَّثِيرًا | إدغام الكاف في الكاف"
+    ]
   },
   {
     "id": "r-p313-032-1",
@@ -2641,5 +2677,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-26-1-2335-IDGHAM_KABIR",
+    "pageNumber": 313,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 26,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 26,
+    "baseText": "وَيَسِّرْ لِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام وفتح الياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام وفتح الياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَيَسِّرْ لِي → وَيَسِّر لِّيَ | إدغام الراء في اللام وفتح الياء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-35-1-2339-IDGHAM_KABIR",
+    "pageNumber": 313,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 35,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 35,
+    "baseText": "إِنَّكَ كُنتَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِنَّكَ كُنتَ → إِنَّك كُّنتَ | إدغام الكاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

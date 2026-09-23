@@ -71,5 +71,217 @@
     "description": "بضم الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D407-وهو-1",
+    "surah": 30,
+    "ayah": 27,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-D407-وهو-1",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D407-وهو-1",
+        "variantId": "v-D407-وهو-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P407-R02143",
+        "verificationNotes": "وجه صريح، وanchor حقيقي من fixture المصحف.",
+        "sourceText": "بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر."
+      },
+      {
+        "id": "s-SUSI-030-27-1-3225",
+        "variantId": "v-D407-وهو-1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3225; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ (3 مواضع) → وَهْوَ | إسكان الهاء في المواضع الثلاثة"
+      },
+      {
+        "id": "s-DURI-030-27-1-r1834",
+        "variantId": "v-D407-وهو-1",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1834; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو ( الثلاثة ) → وهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D407-وهو-2",
+    "surah": 30,
+    "ayah": 27,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-D407-وهو-2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D407-وهو-2",
+        "variantId": "v-D407-وهو-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P407-R02143",
+        "verificationNotes": "وجه صريح، وanchor حقيقي من fixture المصحف.",
+        "sourceText": "بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر."
+      },
+      {
+        "id": "s-SUSI-030-27-7-3225",
+        "variantId": "v-D407-وهو-2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3225; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ (3 مواضع) → وَهْوَ | إسكان الهاء في المواضع الثلاثة"
+      },
+      {
+        "id": "s-DURI-030-27-7-r1834",
+        "variantId": "v-D407-وهو-2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1834; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو ( الثلاثة ) → وهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D407-وهو-3",
+    "surah": 30,
+    "ayah": 27,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-D407-وهو-3",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D407-وهو-3",
+        "variantId": "v-D407-وهو-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P407-R02143",
+        "verificationNotes": "وجه صريح، وanchor حقيقي من fixture المصحف.",
+        "sourceText": "بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر."
+      },
+      {
+        "id": "s-SUSI-030-27-16-3225",
+        "variantId": "v-D407-وهو-3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3225; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ (3 مواضع) → وَهْوَ | إسكان الهاء في المواضع الثلاثة"
+      },
+      {
+        "id": "s-DURI-030-27-16-r1834",
+        "variantId": "v-D407-وهو-3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1834; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو ( الثلاثة ) → وهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-030-30-5-3226",
+    "surah": 30,
+    "ayah": 30,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "فِطْرَتَ",
+    "variantText": "فِطْرَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-030-30-5-3226",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-030-30-5-3226",
+        "variantId": "v-SUSI-030-30-5-3226",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3226; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فِطْرَتَ → فِطْرَه | بالهاء وقفاً"
+      },
+      {
+        "id": "s-DURI-030-30-5-r1832",
+        "variantId": "v-SUSI-030-30-5-3226",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1832; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فطـرت → فطـرة | وقف الدوري عليها بالهاء"
+      }
+    ],
+    "description": "بالهاء وقفاً"
   }
 ]

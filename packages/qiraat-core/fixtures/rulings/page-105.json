@@ -413,7 +413,11 @@
     "hasAlternate": true,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "عِيسَى → عِيسَى | تقليل وقفاً",
+      "عيسـى → عيسِـى | قللها الدوري وقفا"
+    ]
   },
   {
     "id": "r-p105-009-1",
@@ -1042,5 +1046,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-004-174-3-0513-IDGHAM_KABIR",
+    "pageNumber": 105,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 174,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 174,
+    "baseText": "قَدْ جَآءَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَكُم → قَد جَّاءَكُم | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

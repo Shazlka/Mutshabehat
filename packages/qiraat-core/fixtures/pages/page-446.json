@@ -70,6 +70,24 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-037-6-5-3543",
+        "variantId": "v-L446-s37a6b0-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3543; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِزِينَةٍ الْكَوَاكِبِ → بِزِينَةِ الْكَوَاكِبِ | كسر التاء دون تنوين وصلاً"
+      },
+      {
+        "id": "s-DURI-037-6-5-r2024",
+        "variantId": "v-L446-s37a6b0-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2024; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بزينةٍ الكواكبِ → بـزينةِ الكـواكبِ | ترك الدوري تنوين بزينة مع جر الكواكب"
       }
     ],
     "description": "بغير تنوين وإضافة زينة إلى الكواكب مخفوضة",
@@ -141,8 +159,12 @@
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "L446-s37a16b1",
     "locusType": "word_variant",
@@ -154,6 +176,24 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-037-16-2-3546",
+        "variantId": "v-L446-s37a16b1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3546; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتْنَا → مُتْنَا | ضم الميم"
+      },
+      {
+        "id": "s-DURI-037-16-2-r2027",
+        "variantId": "v-L446-s37a16b1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2027; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتـنا → مُتـنا | ضم الدوري الميم"
       }
     ],
     "description": "بضم الميم",
@@ -193,5 +233,37 @@
     "description": "بتنوين زينة وخفض الكواكب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-037-8-2-3544-performance",
+    "surah": 37,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَسَّمَّعُونَ",
+    "variantText": "يَسَّمَّعُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-037-8-2-3544",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان السين وتخفيف الميم",
+    "sources": [
+      {
+        "id": "s-SUSI-037-8-2-3544",
+        "variantId": "v-SUSI-037-8-2-3544-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3544; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَسَّمَّعُونَ → يَسْمَعُونَ | إسكان السين وتخفيف الميم"
+      }
+    ],
+    "description": "إسكان السين وتخفيف الميم"
   }
 ]

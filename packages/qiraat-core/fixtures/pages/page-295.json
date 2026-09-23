@@ -1,5 +1,235 @@
 [
   {
+    "id": "v-D295-mirfaqa-w2",
+    "surah": 18,
+    "ayah": 16,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "مِّرْفَقًۭا",
+    "variantText": "مَرْفِقًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D295-mirfaqa",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D295-mirfaqa-w2",
+        "variantId": "v-D295-mirfaqa-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00960",
+        "verificationNotes": "إسناد صريح؛ أضيفت القراءات ذات الأسماء الصريحة فقط.",
+        "sourceText": "﴿مِّرْفَقٗا﴾: ... ﴿مَرْفِقًا﴾ لنافع وابن عامر وأبي جعفر."
+      }
+    ],
+    "description": "بفتح الميم وكسر الفاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D295-tazawaru-w2",
+    "surah": 18,
+    "ayah": 17,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَّزَٰوَرُ",
+    "variantText": "تَزَاوَرُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D295-tazawaru",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D295-tazawaru-w2",
+        "variantId": "v-D295-tazawaru-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00962",
+        "verificationNotes": "إسناد صريح للقراءات عاصم وحمزة والكسائي؛ أُسقط خلف المجرّد لعدم تعيين راويه.",
+        "sourceText": "بتخفيف الزاي مع ألف بعدها ﴿تَزَاوَرُ﴾: عاصم، حمزة، الكسائي، خلف."
+      }
+    ],
+    "description": "بتخفيف الزاي مع ألف بعدها",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D295-tazzawaru-w2",
+    "surah": 18,
+    "ayah": 17,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَّزَٰوَرُ",
+    "variantText": "تَزَّاوَرُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D295-tazawaru",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D295-tazzawaru-w2",
+        "variantId": "v-D295-tazzawaru-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00963",
+        "verificationNotes": "إسناد صريح لنافع وابن كثير وأبي عمرو وأبي جعفر.",
+        "sourceText": "بتشديد الزاي مع ألف: ﴿تَزَّاوَرُ﴾: نافع، ابن كثير، أبو عمرو، أبو جعفر."
+      }
+    ],
+    "description": "بتشديد الزاي مع ألف",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D295-tazwarru-w2",
+    "surah": 18,
+    "ayah": 17,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَّزَٰوَرُ",
+    "variantText": "تَزْوَرُّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D295-tazawaru",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D295-tazwarru-w2",
+        "variantId": "v-D295-tazwarru-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00964",
+        "verificationNotes": "إسناد صريح لابن عامر ويعقوب.",
+        "sourceText": "بتشديد الراء بلا ألف ﴿تَزْوَرُّ﴾: ابن عامر، يعقوب."
+      }
+    ],
+    "description": "بتشديد الراء بلا ألف",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-D295-walumulita-w2",
+    "surah": 18,
+    "ayah": 18,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "وَلَمُلِئْتَ",
+    "variantText": "وَلَمُلِّئْتَ",
+    "differenceType": "SHADDA",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D295-walumulita",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D295-walumulita-w2",
+        "variantId": "v-D295-walumulita-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00968",
+        "verificationNotes": "إسناد صريح لنافع وابن كثير وأبي جعفر.",
+        "sourceText": "بتشديد اللام المكسورة ﴿وَلَمُلِّئْتَ﴾ لنافع، وابن كثير، وأبي جعفر."
+      }
+    ],
+    "description": "بتشديد اللام المكسورة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D295-ruuban-w2",
+    "surah": 18,
+    "ayah": 18,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "رُعْبًۭا",
+    "variantText": "رُعُبًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D295-ruuban",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D295-ruuban-w2",
+        "variantId": "v-D295-ruuban-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00969",
+        "verificationNotes": "إسناد صريح لابن عامر والكسائي وأبي جعفر ويعقوب.",
+        "sourceText": "بضم العين ﴿رُعُبًا﴾ لابن عامر، والكسائي، وأبي جعفر، ويعقوب."
+      }
+    ],
+    "description": "بضم العين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
     "id": "v-D295-عليهم-w2",
     "surah": 18,
     "ayah": 18,
@@ -67,6 +297,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00970",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿بِوَرِقِكُمْ﴾: بكسر الراء للجمهور؛ وبإسكان الراء ﴿بِوَرْقِكُمْ﴾ لأبي عمرو، وشعبة، وحمزة، وروح، وخلف."
+      },
+      {
+        "id": "s-SUSI-018-19-23-2123",
+        "variantId": "v-D295-بورقكم-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2123; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِوَرِقِكُمْ → بِوَرْقِكُمْ | إسكان الراء وتفخيمها"
+      },
+      {
+        "id": "s-DURI-018-19-23-r1285",
+        "variantId": "v-D295-بورقكم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1285; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بـورِقكم → بـورْقـكم | قرأ الدوري بإسكان الراء"
       }
     ],
     "description": "بإسكان الراء",
@@ -107,6 +355,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P295-R00965",
         "verificationNotes": "وجه الإسكان للمذكورين. المرجع المستقل: https://quranpedia.net/qiraat/al-kahf/17.",
         "sourceText": "﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-018-17-26-2117",
+        "variantId": "v-D295-فهو-performance1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2117; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-018-17-26-r1281",
+        "variantId": "v-D295-فهو-performance1",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1281; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو → فهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -153,5 +419,204 @@
     "description": "بفتح السين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-018-16-7-2113-performance",
+    "surah": 18,
+    "ayah": 16,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "فَأْوُۥٓا۟",
+    "variantText": "فَأْوُۥٓا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-16-7-2113",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-018-16-7-2113",
+        "variantId": "v-SUSI-018-16-7-2113-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2113; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَأْوُوا → فَاوُوا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-018-17-27-2118",
+    "surah": 18,
+    "ayah": 17,
+    "startToken": 27,
+    "endToken": 27,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُهْتَدِ ۖ",
+    "variantText": "الْمُهْتَدِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-17-27-2118",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-018-17-27-2118",
+        "variantId": "v-SUSI-018-17-27-2118",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2118; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُهْتَدِ → الْمُهْتَدِي | بالياء وصلاً"
+      },
+      {
+        "id": "s-DURI-018-17-27-r1282",
+        "variantId": "v-SUSI-018-17-27-2118",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1282; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "المهـتد → المهتـدي | أثبت الدوري الياء وصلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-018-19-9-2121",
+    "surah": 18,
+    "ayah": 19,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "لَبِثْتُمْ ۖ",
+    "variantText": "لَّبِتُّم",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-19-9-2121",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-018-19-9-2121",
+        "variantId": "v-SUSI-018-19-9-2121",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2121; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَبِثْتُمْ (معاً) → لَّبِتُّم | إدغام الثاء في التاء (الموضعين)"
+      }
+    ],
+    "description": "إدغام الثاء في التاء (الموضعين)"
+  },
+  {
+    "id": "v-SUSI-018-19-20-2121",
+    "surah": 18,
+    "ayah": 19,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "لَبِثْتُمْ",
+    "variantText": "لَّبِتُّم",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-19-20-2121",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-018-19-20-2121",
+        "variantId": "v-SUSI-018-19-20-2121",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2121; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَبِثْتُمْ (معاً) → لَّبِتُّم | إدغام الثاء في التاء (الموضعين)"
+      }
+    ],
+    "description": "إدغام الثاء في التاء (الموضعين)"
+  },
+  {
+    "id": "v-SUSI-018-19-31-2124-performance",
+    "surah": 18,
+    "ayah": 19,
+    "startToken": 31,
+    "endToken": 31,
+    "operation": "REPLACE",
+    "hafsText": "فَلْيَأْتِكُم",
+    "variantText": "فَلْيَأْتِكُم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-19-31-2124",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-018-19-31-2124",
+        "variantId": "v-SUSI-018-19-31-2124-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2124; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَلْيَأْتِكُم → فَلْيَاتِكُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-018-18-20-2120-performance",
+    "surah": 18,
+    "ayah": 18,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "وَلَمُلِئْتَ",
+    "variantText": "وَلَمُلِئْتَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-18-20-2120",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-018-18-20-2120",
+        "variantId": "v-SUSI-018-18-20-2120-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2120; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلَمُلِئْتَ → وَلَمُلِيتَ | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
   }
 ]

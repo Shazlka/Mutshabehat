@@ -616,7 +616,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إِبْرَاهِيمَ مَلَكُوتَ → إِبْرَاهِيم مَّلَكُوتَ | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p137-014-1",
@@ -678,7 +681,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لَا → قَال لَّا | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p137-016-1",
@@ -709,7 +715,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لَئِن → قَال لَّئِن | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p137-017-1",
@@ -1156,5 +1165,50 @@
     "text": "إثبات الياء وصلاً لأبي عمرو وأبي جعفر، وفي الحالين ليعقوب",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-006-74-9-0760-IMALAH_TAQLIL",
+    "pageNumber": 137,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 6,
+    "ayah": 74,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 74,
+    "baseText": "إِنِّىٓ أَرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الياء وأمال الراء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "فتح الياء وصلاً وإمالة فتحة الراء والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الياء وأمال الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً وإمالة فتحة الراء والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِنِّي أَرَاكَ → إِنِّيَ أَرَاكَ | فتح الياء وصلاً وإمالة فتحة الراء والألف",
+      "إنّـي أراك → إنّـيَ أرٍاك | فتح الدوري الياء وأمال الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

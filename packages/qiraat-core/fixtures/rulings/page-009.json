@@ -399,7 +399,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَى → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِى | قللها الدوري وصلاً ووقفاً"
+    ]
   },
   {
     "id": "r-p009-008-1",
@@ -467,7 +471,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "حَيْثُ شِئْتُمْ → حَيْث شِّيتُمْ | إدغام الثاء في الشين وإبدال الهمزة ياء"
+    ]
   },
   {
     "id": "r-p009-010-1",
@@ -498,7 +505,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قِيلَ لَهُمْ → قِيل لَّهُمْ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p009-011-1",
@@ -710,5 +720,75 @@
     "notes": "أشار المستخرج بعلامة ؟ إلى تردده بين ﴿سَأَلْتُمْ﴾ و﴿سَأَلْتُ﴾ لصغر الخط — يلزم الرجوع إلى الأصل الورقي.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-002-58-16-0055-IDGHAM_KABIR",
+    "pageNumber": 9,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 58,
+    "startToken": 16,
+    "endToken": 17,
+    "endAyah": 58,
+    "baseText": "نَّغْفِرْ لَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "نَّغْفِرْ لَكُمْ → نَّغْفِر لَّكُمْ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-002-61-3-0058-IMALAH_TAQLIL",
+    "pageNumber": 9,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 61,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 61,
+    "baseText": "يَـٰمُوسَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَمُوسَىٰ → يَمُوسَى | بالتقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

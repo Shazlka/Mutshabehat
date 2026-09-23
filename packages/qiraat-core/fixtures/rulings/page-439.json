@@ -73,7 +73,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكَافِرِينَ (معاً) → الْكَافِرِينَ | إمالة فتحة الكاف والألف (الموضعين)",
+      "الكـافرين ( معاً ) → الكٍـافرين | أمالهما الدوري"
+    ]
   },
   {
     "id": "r-p439-s35a40b1",
@@ -372,7 +376,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "إِحْدَى → إِحْدَى | بالتقليل وقفاً",
+      "إحـدى → إحـدى | قللها الدوري وقفاً"
+    ]
   },
   {
     "id": "r-p439-HAMZATAN_KALIMATAYN-السيي_الا-5",
@@ -702,5 +710,85 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-035-39-4-3490-IDGHAM_KABIR",
+    "pageNumber": 439,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 39,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 39,
+    "baseText": "خَلَـٰٓئِفَ فِى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "خَلَائِفَ فِي → خَلَائِف فِّي | إدغام الفاء في الفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-035-39-21-3491-IMALAH_TAQLIL",
+    "pageNumber": 439,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 39,
+    "startToken": 21,
+    "endToken": 21,
+    "endAyah": 39,
+    "baseText": "ٱلْكَـٰفِرِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالهما الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالهما الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْكَافِرِينَ (معاً) → الْكَافِرِينَ | إمالة فتحة الكاف والألف (الموضعين)",
+      "الكـافرين ( معاً ) → الكٍـافرين | أمالهما الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

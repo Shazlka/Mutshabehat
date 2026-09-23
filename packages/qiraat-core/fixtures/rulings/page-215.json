@@ -551,7 +551,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قـدْ جاءتكم → قد جَّـاءتكم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p215-013-1",
@@ -638,7 +641,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إذْ تـفيضون → إذ تُّـفيضون | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p215-014-1",
@@ -996,5 +1002,145 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-010-57-3-1384-IDGHAM_KABIR",
+    "pageNumber": 215,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 57,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 57,
+    "baseText": "قَدْ جَآءَتْكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَتْكُم → قَد جَّاءَتْكُم | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-010-59-15-1386-IDGHAM_KABIR",
+    "pageNumber": 215,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 59,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 59,
+    "baseText": "أَذِنَ لَكُمْ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَذِنَ لَكُمْ → أَذِن لَّكُمْ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-010-61-18-1388-IDGHAM_KABIR",
+    "pageNumber": 215,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 61,
+    "startToken": 18,
+    "endToken": 19,
+    "endAyah": 61,
+    "baseText": "إِذْ تُفِيضُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ تُفِيضُونَ → إِذ تُّفِيضُونَ | إدغام الذال في التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-010-60-15-r0892-IMALAH_TAQLIL",
+    "pageNumber": 215,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 60,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 60,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

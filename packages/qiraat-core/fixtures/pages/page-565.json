@@ -73,7 +73,20 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
-      "Q06-R01"
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "DOCX-P565-R03654-32-3",
     "locusType": "performance_variant",
@@ -149,6 +162,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-qalam/32",
         "sourceText": "يبدلنا بفتح الباء وتشديد الدال: نافع، وأبو عمرو، وأبو جعفر.",
         "verificationNotes": "تحقق مستقل من صفحة القراءات الخاصة بالآية نفسها."
+      },
+      {
+        "id": "s-DURI-068-32-4-r2588",
+        "variantId": "v-DOCX-565-R03654-bb76c41d",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2588; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُبْـدِلنـا → يُبَـدِّلنـا | فتح الدوري الباء وشدد الدال"
       }
     ],
     "description": "﴿يُبْدِلَنَا﴾: بتشديد الدال المفتوحة ﴿يُبَدِّلَنَا﴾ لنافع وأبي عمرو وأبي جعفر؛ وبتخفيف الدال وسكون الباء ﴿يُبْدِلَنَا﴾ للباقين.",

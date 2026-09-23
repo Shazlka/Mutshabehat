@@ -104,5 +104,321 @@
     "description": "بالجمع",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P257-14-11-3-rs",
+    "surah": 14,
+    "ayah": 11,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلُهُمْ",
+    "variantText": "رُسْلُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-11-3-rs",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-11-3-rs",
+        "variantId": "v-AUDIT-P257-14-11-3-rs",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00504",
+        "sourceText": "﴿رُسُلُهُمْ﴾، ﴿سُبُلَنَا﴾، ﴿لِرُسُلِهِمْ﴾: بإسكان السين والياء لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-11-3-rs-QP",
+        "variantId": "v-AUDIT-P257-14-11-3-rs",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/11",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      },
+      {
+        "id": "s-SUSI-014-11-3-1795",
+        "variantId": "v-AUDIT-P257-14-11-3-rs",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1795; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُسُلُهُمْ → رُسْلُهُمْ | إسكان السين"
+      },
+      {
+        "id": "s-DURI-014-11-3-r1128",
+        "variantId": "v-AUDIT-P257-14-11-3-rs",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1128; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رسُلـهم → رسْـلهم | أسكن الدوري السين"
+      }
+    ],
+    "description": "إسكان السين لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/11"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P257-14-12-9-sbl",
+    "surah": 14,
+    "ayah": 12,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "سُبُلَنَا ۚ",
+    "variantText": "سُبْلَنَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-12-9-sbl",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-12-9-sbl",
+        "variantId": "v-AUDIT-P257-14-12-9-sbl",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00504",
+        "sourceText": "﴿رُسُلُهُمْ﴾، ﴿سُبُلَنَا﴾، ﴿لِرُسُلِهِمْ﴾: بإسكان السين والياء لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-12-9-sbl-QP",
+        "variantId": "v-AUDIT-P257-14-12-9-sbl",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/12",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      },
+      {
+        "id": "s-SUSI-014-12-9-1798",
+        "variantId": "v-AUDIT-P257-14-12-9-sbl",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1798; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سُبُلَنَا → سُبْلَنَا | إسكان الباء"
+      },
+      {
+        "id": "s-DURI-014-12-9-r1129",
+        "variantId": "v-AUDIT-P257-14-12-9-sbl",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1129; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سبُـلنا → سبْـلنا | أسكن الدوري الباء"
+      }
+    ],
+    "description": "إسكان السين لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/12"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P257-14-13-4-lrs",
+    "surah": 14,
+    "ayah": 13,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِرُسُلِهِمْ",
+    "variantText": "لِرُسْلِهِمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-13-4-lrs",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-13-4-lrs",
+        "variantId": "v-AUDIT-P257-14-13-4-lrs",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00504",
+        "sourceText": "﴿رُسُلُهُمْ﴾، ﴿سُبُلَنَا﴾، ﴿لِرُسُلِهِمْ﴾: بإسكان السين والياء لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-13-4-lrs-QP",
+        "variantId": "v-AUDIT-P257-14-13-4-lrs",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/13",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      },
+      {
+        "id": "s-SUSI-014-13-4-1799",
+        "variantId": "v-AUDIT-P257-14-13-4-lrs",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1799; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِرُسُلِهِمْ → لِرُسْلِهِمْ | إسكان السين"
+      },
+      {
+        "id": "s-DURI-014-13-4-r1130",
+        "variantId": "v-AUDIT-P257-14-13-4-lrs",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1130; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لرسلـهم → لرسْـلهم | أسكن الدوري السين"
+      }
+    ],
+    "description": "إسكان السين لأبي عمرو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/13"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P257-14-13-13-elyhm",
+    "surah": 14,
+    "ayah": 13,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L-AUDIT-P257-14-13-13-elyhm",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P257-14-13-13-elyhm",
+        "variantId": "v-AUDIT-P257-14-13-13-elyhm",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P257-R00505",
+        "sourceText": "﴿إِلَيْهِمْ﴾: بضم الهاء ﴿إِلَيْهُمُ﴾ لحمزة ويعقوب.",
+        "verificationNotes": "إسناد صريح من سجل المصدر؛ رُبط اللفظ بموضع token حقيقي في page-words."
+      },
+      {
+        "id": "s-v-AUDIT-P257-14-13-13-elyhm-QP",
+        "variantId": "v-AUDIT-P257-14-13-13-elyhm",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/13",
+        "sourceText": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "verificationNotes": "مرجع خارجي مستقل للمقابلة."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "مطابقة لفظ الآية ووجه القراءة في جهاز الآية.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/13"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-014-11-21-1796-performance",
+    "surah": 14,
+    "ayah": 11,
+    "startToken": 21,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "نَّأْتِيَكُم",
+    "variantText": "نَّأْتِيَكُم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-014-11-21-1796",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-014-11-21-1796",
+        "variantId": "v-SUSI-014-11-21-1796-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1796; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَّأْتِيَكُم → نَّاتِيَكُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-014-11-29-1797-performance",
+    "surah": 14,
+    "ayah": 11,
+    "startToken": 29,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُؤْمِنُونَ",
+    "variantText": "ٱلْمُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-014-11-29-1797",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-014-11-29-1797",
+        "variantId": "v-SUSI-014-11-29-1797-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1797; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُؤْمِنُونَ → الْمُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

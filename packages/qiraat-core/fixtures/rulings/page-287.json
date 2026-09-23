@@ -243,7 +243,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لبثـتم → لبثتُّـم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p287-TAGHYIR_HAMZ-يشا-3",
@@ -324,5 +327,206 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p287-WAQF_RASM-هو-5",
+    "pageNumber": 287,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 51,
+    "startToken": 20,
+    "endToken": 20,
+    "endAyah": 51,
+    "baseText": "هُوَ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "يقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "يقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "يقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "يقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "note": "يقف يعقوب بهاء السكت: هُوْهْ.",
+    "sources": [
+      {
+        "id": "s-p287-WAQF_RASM-هو-5",
+        "rulingId": "r-p287-WAQF_RASM-هو-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P287-R00884",
+        "sourceText": "﴿هُوَ﴾: يقف عليها يعقوب بهاء السكت ﴿هُوْهْ﴾.",
+        "verificationNotes": "وجه صريح في المصدر."
+      },
+      {
+        "id": "s-p287-WAQF_RASM-هو-5-EXT",
+        "rulingId": "r-p287-WAQF_RASM-هو-5",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/51",
+        "sourceText": "وجه الوقف ليعقوب بهاء السكت.",
+        "verificationNotes": "مرجع مستقل."
+      }
+    ],
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-017-54-2-2043-IKHFA",
+    "pageNumber": 287,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 54,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 54,
+    "baseText": "أَعْلَمُ بِكُمْ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَعْلَمُ بِكُمْ → أَعْلَم بِكُمْ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-017-55-2-2044-IKHFA",
+    "pageNumber": 287,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 55,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 55,
+    "baseText": "أَعْلَمُ بِمَن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَعْلَمُ بِمَن → أَعْلَم بِمَن | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-017-57-16-2047-IDGHAM_KABIR",
+    "pageNumber": 287,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 57,
+    "startToken": 16,
+    "endToken": 17,
+    "endAyah": 57,
+    "baseText": "رَبِّكَ كَانَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "رَبِّكَ كَانَ → رَبِّك كَّانَ | إدغام الكاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-017-57-6-r1243-MEEM_JAM",
+    "pageNumber": 287,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 17,
+    "ayah": 57,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 57,
+    "baseText": "رَبِّهِمُ ٱلْوَسِيلَةَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ربـهمُ الوسيلة → ربـهمِ الوسيلة | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

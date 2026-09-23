@@ -395,5 +395,150 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p425-WAQF_RASM-وقلوبهن-6",
+    "pageNumber": 425,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 53,
+    "startToken": 49,
+    "endToken": 49,
+    "endAyah": 53,
+    "baseText": "وَقُلُوبِهِنَّ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-033-51-28-3370-IDGHAM_KABIR",
+    "pageNumber": 425,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 51,
+    "startToken": 28,
+    "endToken": 29,
+    "endAyah": 51,
+    "baseText": "يَعْلَمُ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-033-53-10-3372-IDGHAM_KABIR",
+    "pageNumber": 425,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 53,
+    "startToken": 10,
+    "endToken": 11,
+    "endAyah": 53,
+    "baseText": "يُؤْذَنَ لَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة واواً ثم إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة واواً ثم إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يُؤْذَنَ لَكُمْ → يُوذَن لَّكُمْ | إبدال الهمزة واواً ثم إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-033-53-47-3375-IDGHAM_KABIR",
+    "pageNumber": 425,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 53,
+    "startToken": 47,
+    "endToken": 48,
+    "endAyah": 53,
+    "baseText": "أَطْهَرُ لِقُلُوبِكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَطْهَرُ لِقُلُوبِكُمْ → أَطْهَر لِّقُلُوبِكُمْ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

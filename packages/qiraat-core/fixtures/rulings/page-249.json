@@ -98,7 +98,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "المر → المر | إمالة فتحة الراء",
+      "المر → المرٍ | أمال الدوري الراء"
+    ]
   },
   {
     "id": "r-p249-002-1",
@@ -216,7 +220,10 @@
     "hasAlternate": true,
     "condition": "مجرورًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p249-005-1",
@@ -387,38 +394,51 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف"
       },
       {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
       {
         "readingId": "Q03-R01",
         "action": "إمالة",
         "isDefault": true
       },
       {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف",
         "isDefault": true
       },
       {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار → النٍّـار | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p249-IMALAH_TAQLIL-استوا-2",
@@ -573,5 +593,150 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p249-s13a1-sakt",
+    "pageNumber": 249,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "الٓمٓر ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-3-11-1728-IDGHAM_KABIR",
+    "pageNumber": 249,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 3,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 3,
+    "baseText": "ٱلثَّمَرَٰتِ جَعَلَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الثَّمَرَاتِ جَعَلَ → الثَّمَرَات جَّعَلَ | إدغام التاء في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-5-2-1730-IDGHAM_KABIR",
+    "pageNumber": 249,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 5,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 5,
+    "baseText": "تَعْجَبْ فَعَجَبٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الباء في الفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الباء في الفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَعْجَبْ فَعَجَبٌ → تَعْجَب فَّعَجَبٌ | إدغام الباء في الفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-013-5-2-r1084-IDGHAM_SAGHIR",
+    "pageNumber": 249,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 5,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 5,
+    "baseText": "تَعْجَبْ فَعَجَبٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "تعجبْ فعجـبٌ → تعجب فَّعجـبٌ | إدغام صغير للدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

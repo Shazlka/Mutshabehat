@@ -1,1 +1,209 @@
-[]
+[
+  {
+    "id": "v-AUDIT-P493-ASWIRA-w2",
+    "surah": 43,
+    "ayah": 53,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَسْوِرَةٌۭ",
+    "variantText": "أُسْوَرَةٌۭ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P493-ASWIRA",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P493-ASWIRA-w2",
+        "variantId": "v-AUDIT-P493-ASWIRA-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P493-R02965",
+        "verificationNotes": "سطر مصدر صريح، وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "أُسْوَرَةٌ للباقين"
+      }
+    ],
+    "description": "أُسْوَرَةٌ للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "Quranpedia",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/53",
+        "text": "مطابقة موضع الوجه وتقسيم القراء في جهاز القراءات العشر."
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P493-SULUFA-w2",
+    "surah": 43,
+    "ayah": 56,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سَلَفًۭا",
+    "variantText": "سُلُفًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P493-SULUFA",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P493-SULUFA-w2",
+        "variantId": "v-AUDIT-P493-SULUFA-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P493-R02966",
+        "verificationNotes": "سطر مصدر صريح، وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "سُلُفًا لحمزة والكسائي"
+      }
+    ],
+    "description": "سُلُفًا لحمزة والكسائي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "Quranpedia",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/53",
+        "text": "مطابقة موضع الوجه وتقسيم القراء في جهاز القراءات العشر."
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P493-YASIDDUN-w2",
+    "surah": 43,
+    "ayah": 57,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يَصِدُّونَ",
+    "variantText": "يَصُدُّونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P493-YASIDDUN",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P493-YASIDDUN-w2",
+        "variantId": "v-AUDIT-P493-YASIDDUN-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P493-R02967",
+        "verificationNotes": "سطر مصدر صريح، وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "يَصُدُّونَ للباقين"
+      }
+    ],
+    "description": "يَصُدُّونَ للباقين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "Quranpedia",
+        "url": "https://quranpedia.net/qiraat/az-zukhruf/53",
+        "text": "مطابقة موضع الوجه وتقسيم القراء في جهاز القراءات العشر."
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-043-51-15-3936-performance",
+    "surah": 43,
+    "ayah": 51,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "تَحْتِىٓ ۖ",
+    "variantText": "تَحْتِىٓ ۖ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-043-51-15-3936",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-043-51-15-3936",
+        "variantId": "v-SUSI-043-51-15-3936-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3936; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَحْتِي → تَحْتِيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-DURI-043-49-2-r2266",
+    "surah": 43,
+    "ayah": 49,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰٓأَيُّهَ",
+    "variantText": "يـأيـها",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-043-49-2-r2266",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-043-49-2-r2266",
+        "variantId": "v-DURI-043-49-2-r2266",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2266; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـأيـه → يـأيـها | وقف عليها الدوري بالألف"
+      }
+    ],
+    "description": "وقف عليها الدوري بالألف"
+  }
+]

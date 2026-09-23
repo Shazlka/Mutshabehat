@@ -1,0 +1,294 @@
+[
+  {
+    "id": "r-SQL604-TAGHYIR_HAMZ-1-1",
+    "pageNumber": 604,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 112,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "قُلْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "النقل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "النقل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "النقل لورش في قل أعوذ",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL604-SAKT-1-1",
+    "pageNumber": 604,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 112,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "قُلْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "السكت لحمزة وخلف العاشر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL604-IMALAH_TAQLIL-1-4",
+    "pageNumber": 604,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 114,
+    "ayah": 1,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 1,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إمالة دوري أبي عمرو",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النِّـاس | أمالـها الدوري"
+    ]
+  },
+  {
+    "id": "r-DURI-112-4-4-r2737-TAGHYIR_HAMZ",
+    "pageNumber": 604,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 112,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 4,
+    "baseText": "كُفُوًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بالهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بالهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "كُـفُواً → كُـفُؤاً | قرأ الدوري بالهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-114-2-2-r2739-IMALAH_TAQLIL",
+    "pageNumber": 604,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 114,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 2,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّـاس → النِّـاس | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-114-3-2-r2740-IMALAH_TAQLIL",
+    "pageNumber": 604,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 114,
+    "ayah": 3,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 3,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّـاس → النِّـاس | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-114-5-5-r2741-IMALAH_TAQLIL",
+    "pageNumber": 604,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 114,
+    "ayah": 5,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 5,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّـاس → النِّـاس | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-114-6-3-r2742-IMALAH_TAQLIL",
+    "pageNumber": 604,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 114,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 6,
+    "baseText": "وَٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "والنّـاس → والنٍّـاس | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

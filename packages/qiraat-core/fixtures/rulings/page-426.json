@@ -237,7 +237,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p426-IMALAH_TAQLIL-ادنا-1",
@@ -493,6 +497,162 @@
     "endToken": 17,
     "endAyah": 59,
     "baseText": "يُؤْذَيْنَ ۗ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p426-WAQF_RASM-جلابيبهن-8",
+    "pageNumber": 426,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 59,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 59,
+    "baseText": "جَلَـٰبِيبِهِنَّ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p426-TAGHYIR_HAMZ-يوذون-3",
+    "pageNumber": 426,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 58,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 58,
+    "baseText": "يُؤْذُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p426-TAGHYIR_HAMZ-المومنين-5",
+    "pageNumber": 426,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 33,
+    "ayah": 59,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 59,
+    "baseText": "ٱلْمُؤْمِنِينَ",
     "verificationStatus": "REVIEWED",
     "attribution": [
       {

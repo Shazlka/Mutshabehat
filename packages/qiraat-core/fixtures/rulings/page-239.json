@@ -431,7 +431,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَرَانِي (في الموضعين) → أَرَانِيَ | إمالة فتحة الراء والألف وفتح الياء (في الموضعين)"
+    ]
   },
   {
     "id": "r-p239-012-2",
@@ -504,7 +507,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَرَانِي (في الموضعين) → أَرَانِيَ | إمالة فتحة الراء والألف وفتح الياء (في الموضعين)"
+    ]
   },
   {
     "id": "r-p239-013-1",
@@ -577,7 +583,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَرَاكَ → نَرَاكَ | إمالة فتحة الراء",
+      "نـراك → نـرٍاك | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p239-014-1",
@@ -608,7 +618,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ رَبِّ → قَالَ رَّبِّ | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p239-015-1",
@@ -639,7 +652,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إِنَّهُ هُوَ → إِنَّه هُّوَ | إدغام الهاء في الهاء"
+    ]
   },
   {
     "id": "r-p239-016-1",
@@ -670,7 +686,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لَا → قَال لَّا | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p239-017-1",
@@ -1708,5 +1727,115 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p239-WAQF_RASM-قالت-6",
+    "pageNumber": 239,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 32,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 32,
+    "baseText": "قَالَتْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-012-36-7-r1028-IMALAH_TAQLIL",
+    "pageNumber": 239,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 36,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 36,
+    "baseText": "إِنِّىٓ أَرَىٰنِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إنـي أرانـي ( معاً ) → إنـيَ أرٍانـيَ | فتح الدوري الياء منهما وأمال الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-012-36-13-r1028-IMALAH_TAQLIL",
+    "pageNumber": 239,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 36,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 36,
+    "baseText": "إِنِّىٓ أَرَىٰنِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الياء منهما وأمال الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إنـي أرانـي ( معاً ) → إنـيَ أرٍانـيَ | فتح الدوري الياء منهما وأمال الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

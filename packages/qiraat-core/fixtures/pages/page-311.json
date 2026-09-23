@@ -1,5 +1,43 @@
 [
   {
+    "id": "v-D311-takaad-yatafattarna-w2",
+    "surah": 19,
+    "ayah": 90,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "تَكَادُ ٱلسَّمَـٰوَٰتُ يَتَفَطَّرْنَ",
+    "variantText": "تَكَادُ ٱلسَّمَاوَاتُ يَتَفَطَّرْنَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D311-takaad-yatafattarna",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D311-takaad-yatafattarna-w2",
+        "variantId": "v-D311-takaad-yatafattarna-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P311-R01180",
+        "verificationNotes": "إسناد صريح لابن كثير وحفص وأبي جعفر.",
+        "sourceText": "بتاء التأنيث في الفعلين وتشديد الطاء ﴿تَكَادُ السَّمَاوَاتُ يَتَفَطَّرْنَ﴾ ابن كثير، حفص، أبو جعفر."
+      }
+    ],
+    "description": "بتاء التأنيث في الفعلين وتشديد الطاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
     "id": "v-L311-افرءيت-1-w2",
     "surah": 19,
     "ayah": 77,
@@ -305,6 +343,24 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَطَا يَتَفَطَّرْنَ اكْسِرُوا غَيْرَ أَثْقَلَا وَفِي التَّاءِ نُونٌ سَاكِنٌ حَجَّ فِي صَفَا"
+      },
+      {
+        "id": "s-SUSI-019-90-3-2298",
+        "variantId": "v-L311-يتفطرن-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2298; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَتَفَطَّرْنَ → يَنفَطِرْنَ | نون ساكنة مخفاة بدل التاء وكسر الطاء مخففة"
+      },
+      {
+        "id": "s-DURI-019-90-3-r1391",
+        "variantId": "v-L311-يتفطرن-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1391; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَتَـفَطَّـرن → يَنْفَـطِرن | قرأ الدوري بنون ساكنة بعد الياء التحتية مع كسر الطاء مخففة"
       }
     ],
     "description": "بنون ساكنة وكسر الطاء مخففة",

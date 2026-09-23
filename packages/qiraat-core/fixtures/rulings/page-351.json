@@ -266,6 +266,14 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -293,11 +301,25 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p351-008-1",
@@ -591,19 +613,42 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06",
         "action": "إمالة"
       },
       {
         "authorityId": "Q07",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -623,16 +668,15 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p351-016-1",
@@ -966,6 +1010,324 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "إذ سمعتـموه → إذ سَّمعتـموه | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-024-12-2-2697-IDGHAM_KABIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 12,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 12,
+    "baseText": "إِذْ سَمِعْتُمُوهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في السين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في السين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ سَمِعْتُمُوهُ → إِذ سَّمِعْتُمُوهُ | إدغام الذال في السين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-13-4-2700-IDGHAM_KABIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 13,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 13,
+    "baseText": "بِأَرْبَعَةِ شُهَدَآءَ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الشين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الشين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بِأَرْبَعَةِ شُهَدَاءَ → بِأَرْبَعَة شُّهَدَاءَ | إدغام التاء في الشين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-13-11-2702-IDGHAM_KABIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 13,
+    "startToken": 11,
+    "endToken": 13,
+    "endAyah": 13,
+    "baseText": "عِندَ ٱللَّهِ هُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "عِندَ اللَّهِ هُمُ → عِندَ اللَّه هُّمُ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-15-1-2704-IDGHAM_KABIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 15,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 15,
+    "baseText": "إِذْ تَلَقَّوْنَهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ تَلَقَّوْنَهُ → إِذ تَّلَقَّوْنَهُ | إدغام الذال في التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-15-11-2705-IDGHAM_KABIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 15,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 15,
+    "baseText": "وَتَحْسَبُونَهُۥ هَيِّنًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر السين ثم إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر السين ثم إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَتَحْسَبُونَهُ هَيِّنًا → وَتَحْسِبُونَه هَّيِّنًا | كسر السين ثم إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-16-2-2707-IDGHAM_KABIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 16,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 16,
+    "baseText": "إِذْ سَمِعْتُمُوهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في السين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في السين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ سَمِعْتُمُوهُ → إِذ سَّمِعْتُمُوهُ | إدغام الذال في السين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-16-9-2708-IKHFA",
+    "pageNumber": 351,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 16,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 16,
+    "baseText": "نَّتَكَلَّمَ بِهَـٰذَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "نَّتَكَلَّمَ بِهَٰذَا → نَّتَكَلَّم بِهَٰذَا | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-024-15-1-r1565-IDGHAM_SAGHIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 15,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 15,
+    "baseText": "إِذْ تَلَقَّوْنَهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إذ تلـقّونه → إذ تَّلقّـونه | إدغام صغير للدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-024-16-2-r1568-IDGHAM_SAGHIR",
+    "pageNumber": 351,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 16,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 16,
+    "baseText": "إِذْ سَمِعْتُمُوهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إذ سمعتـموه → إذ سَّمعتـموه | إدغام صغير للدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

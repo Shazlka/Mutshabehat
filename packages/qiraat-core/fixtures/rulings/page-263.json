@@ -167,7 +167,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نـار → نٍــار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p263-005-1",
@@ -399,5 +402,163 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p263-IDGHAM_SAGHIR-ولقد_جعلنا-2",
+    "pageNumber": 263,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 16,
+    "baseText": "وَلَقَدْ جَعَلْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقدْ جـعلنا → ولقد جَّـعلنا | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-015-16-1-1849-IDGHAM_KABIR",
+    "pageNumber": 263,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 16,
+    "baseText": "وَلَقَدْ جَعَلْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَدْ جَعَلْنَا → وَلَقَد جَّعَلْنَا | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-015-28-2-1853-IDGHAM_KABIR",
+    "pageNumber": 263,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 15,
+    "ayah": 28,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 28,
+    "baseText": "قَالَ رَبُّكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ رَبُّكَ → قَالَ رَّبُّكَ | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

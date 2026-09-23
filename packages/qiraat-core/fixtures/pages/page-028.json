@@ -219,6 +219,15 @@
         "sourceReference": "صفحة المصحف 28 · صفحة المصدر 33",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-DURI-002-184-23-r0110",
+        "variantId": "v-L028-فهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 110; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو → فهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -403,5 +412,67 @@
         "text": "اشْدُدْ لِتُكْمِلُوا كَمُوصٍ حِمًى"
       }
     ]
+  },
+  {
+    "id": "v-DURI-002-186-9-r0112",
+    "surah": 2,
+    "ayah": 186,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "ٱلدَّاعِ",
+    "variantText": "الداعي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-002-186-9-r0112",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-002-186-9-r0112",
+        "variantId": "v-DURI-002-186-9-r0112",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 112; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الـداع – دعـان → الداعي – دعـاني | أثبت الدوري ياء فيهما وصلاً"
+      }
+    ],
+    "description": "أثبت الدوري ياء فيهما وصلاً"
+  },
+  {
+    "id": "v-DURI-002-186-11-r0112",
+    "surah": 2,
+    "ayah": 186,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "دَعَانِ ۖ",
+    "variantText": "دعـاني",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-002-186-11-r0112",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-002-186-11-r0112",
+        "variantId": "v-DURI-002-186-11-r0112",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 112; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الـداع – دعـان → الداعي – دعـاني | أثبت الدوري ياء فيهما وصلاً"
+      }
+    ],
+    "description": "أثبت الدوري ياء فيهما وصلاً"
   }
 ]

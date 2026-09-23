@@ -38,6 +38,24 @@
         "sourceReference": "صفحة المصحف 108 · صفحة المصدر 113",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَأَرْجُلَكُمْ بِالنَّصْبِ عَمَّ رِضًا عُلَا — D: وَأَرْجُلَكُمْ فَانْصِبْ حَلَا الْخَفْضُ أُعْمِلَا"
+      },
+      {
+        "id": "s-SUSI-005-6-15-0521",
+        "variantId": "v-L108-وارجلكم-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 521; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَأَرْجُلَكُمْ → وَأَرْجُلِكُمْ | كسر اللام"
+      },
+      {
+        "id": "s-DURI-005-6-15-r0435",
+        "variantId": "v-L108-وارجلكم-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 435; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وأرجلَـكم → وأرجـلِكم | كسر الدوري اللام"
       }
     ],
     "description": "بخفض اللام",
@@ -145,5 +163,36 @@
         "text": "وَشَنْآنُ سَكِّنْ أَوْفِ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-005-6-29-0523",
+    "surah": 5,
+    "ayah": 6,
+    "startToken": 29,
+    "endToken": 30,
+    "operation": "REPLACE",
+    "hafsText": "جَآءَ أَحَدٌۭ",
+    "variantText": "جَا أَحَدٌ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-005-6-29-0523",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-005-6-29-0523",
+        "variantId": "v-SUSI-005-6-29-0523",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 523; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جَاءَ أَحَدٌ → جَا أَحَدٌ | إسقاط الهمزة الأولى، وفي المد وجهان"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى، وفي المد وجهان"
   }
 ]

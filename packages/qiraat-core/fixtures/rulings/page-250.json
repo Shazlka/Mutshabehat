@@ -137,7 +137,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُنثَىٰ → أُنثَى | بالتقليل",
+      "أنثـى → أُنثِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p250-004-1",
@@ -363,29 +367,42 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الهاء والألف وإدغام الراء في اللام"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
       {
         "readingId": "Q03-R01",
         "action": "إمالة",
         "isDefault": true
       },
       {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الهاء والألف وإدغام الراء في اللام",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِالنَّهَارِ لَهُ → بِالنَّهَار لَّهُ | إمالة فتحة الهاء والألف وإدغام الراء في اللام",
+      "بالنهار → بالنهٍـارِ | أمال الدوري"
+    ]
   },
   {
     "id": "r-p250-TARQIQ_RA-الكبير-1",
@@ -536,7 +553,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "بِمِقْدَارٍ → بِمِقْدَارٍ | إمالة فتحة الدال والألف",
+      "بـمقدار → بـمقدٍار | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p250-IKHFA-ومن_خلفهي-7",
@@ -609,5 +630,145 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-8-2-1735-IDGHAM_KABIR",
+    "pageNumber": 250,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 8,
+    "baseText": "يَعْلَمُ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-013-13-9-1739-IDGHAM_KABIR",
+    "pageNumber": 250,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 13,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 13,
+    "baseText": "فَيُصِيبُ بِهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الباء في الباء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الباء في الباء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَيُصِيبُ بِهَا → فَيُصِيب بِّهَا | إدغام الباء في الباء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-013-6-8-r1087-MEEM_JAM",
+    "pageNumber": 250,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 6,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 6,
+    "baseText": "قَبْلِهِمُ ٱلْمَثُلَـٰتُ ۗ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "قبلهـمُ المثُلات → قبلهـمِ المثلات | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-013-6-14-r1088-IMALAH_TAQLIL",
+    "pageNumber": 250,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 13,
+    "ayah": 6,
+    "startToken": 14,
+    "endToken": 14,
+    "endAyah": 6,
+    "baseText": "لِّلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالهـا الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالهـا الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنَّـاس → للـنٍّاس | أمالهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

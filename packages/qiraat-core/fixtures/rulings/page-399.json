@@ -246,7 +246,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النَّـار → النٍّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p399-IMALAH_TAQLIL-الدنيا-2",
@@ -331,6 +335,507 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللهـا الدوري"
+    ]
+  },
+  {
+    "id": "r-p399-YAAT_IDAFA-اني_مهاجر_الا_ربي_انهو-4",
+    "pageNumber": 399,
+    "category": "YAAT_IDAFA",
+    "categoryAr": "ياءات الإضافة",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 26,
+    "startToken": 5,
+    "endToken": 9,
+    "endAyah": 26,
+    "baseText": "إِنِّى مُهَاجِرٌ إِلَىٰ رَبِّىٓ ۖ إِنَّهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "الفتح وصلاً"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "الفتح وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "الفتح وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p399-IDGHAM_SAGHIR-اتخذتم-3",
+    "pageNumber": 399,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 25,
+    "baseText": "ٱتَّخَذْتُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-26-1-3156-IDGHAM_KABIR",
+    "pageNumber": 399,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 26,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 26,
+    "baseText": "۞ فَـَٔامَنَ لَهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَآمَنَ لَهُ → فَآمَن لَّهُ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-26-9-3158-IDGHAM_KABIR",
+    "pageNumber": 399,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 26,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 26,
+    "baseText": "إِنَّهُۥ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِنَّهُ هُوَ → إِنَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-27-13-3159-IMALAH_TAQLIL",
+    "pageNumber": 399,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 27,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 27,
+    "baseText": "ٱلدُّنْيَا ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-28-3-3160-IDGHAM_KABIR",
+    "pageNumber": 399,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 28,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 28,
+    "baseText": "قَالَ لِقَوْمِهِۦٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ لِقَوْمِهِ → قَال لِّقَوْمِهِ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-28-9-3163-IDGHAM_KABIR",
+    "pageNumber": 399,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 28,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 28,
+    "baseText": "سَبَقَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "سَبَقَكُم → سَبَقكُّم | إدغام القاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-30-1-3168-IDGHAM_KABIR",
+    "pageNumber": 399,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 30,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 30,
+    "baseText": "قَالَ رَبِّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ رَبِّ → قَالَ رَّبِّ | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-029-25-3-r1792-IDGHAM_KABIR",
+    "pageNumber": 399,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 25,
+    "baseText": "ٱتَّخَذْتُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "اتخذْتـم → اتـخذتُّـم | أدغم الدوري الذال بالتاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "v-D588-ختامه-w2",
+    "surah": 83,
+    "ayah": 26,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "خِتَـٰمُهُۥ",
+    "variantText": "خَتَامُهُۥ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D588-ختامه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D588-ختامه-w2",
+        "variantId": "v-D588-ختامه-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: ختامه",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "فتح الخاء وألف بعدها وفتح التاء للكسائي"
+      }
+    ],
+    "description": "فتح الخاء وألف بعدها وفتح التاء للكسائي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DURI-083-31-6-r2692",
+    "surah": 83,
+    "ayah": 31,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "فَكِهِينَ",
+    "variantText": "فـاكهين",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-083-31-6-r2692",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-083-31-6-r2692",
+        "variantId": "v-DURI-083-31-6-r2692",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2692; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَـكهين → فـاكهين | قرأ الدوري بألف بعد الفاء"
+      }
+    ],
+    "description": "قرأ الدوري بألف بعد الفاء"
+  }
+]

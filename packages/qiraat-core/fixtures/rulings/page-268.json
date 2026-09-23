@@ -188,7 +188,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَتَرَى → وَتَرَى | وقفاً إمالة فتحة الراء والألف، وصلاً وجهان",
+      "وتـرى الفلك → وترى الفلك | أمال الدوري الراء وقفاً"
+    ]
   },
   {
     "id": "r-p268-TAGHYIR_HAMZ-لتاكلوا-3",
@@ -247,5 +251,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-12-7-1877-IDGHAM_KABIR",
+    "pageNumber": 268,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 12,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 12,
+    "baseText": "وَٱلنُّجُومُ مُسَخَّرَٰتٌۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "فتح الميم (والنجومَ) وإدغام الميم في الميم ثم تنوين كسر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الميم (والنجومَ) وإدغام الميم في الميم ثم تنوين كسر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَالنُّجُومُ مُسَخَّرَاتٌ → وَالنُّجُومَ مُسَخَّرَاتٍ | فتح الميم (والنجومَ) وإدغام الميم في الميم ثم تنوين كسر"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

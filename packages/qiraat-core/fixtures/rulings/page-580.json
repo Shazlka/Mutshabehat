@@ -305,5 +305,40 @@
       "qiraat_records.jsonl، DOCX-P580-R03806 | الممال والمقلل: ﴿تَذْكِرَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي. ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش. | مصدر وثيقة الاستخراج؛ موضع الكلمة حُلّ من ملف كلمات المصحف."
     ],
     "notes": "عند الوقف على هاء التأنيث."
+  },
+  {
+    "id": "r-DURI-077-14-1-r2655-IMALAH_TAQLIL",
+    "pageNumber": 580,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 77,
+    "ayah": 14,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 14,
+    "baseText": "وَمَآ أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وما أدراك → وما أدرٍاك | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

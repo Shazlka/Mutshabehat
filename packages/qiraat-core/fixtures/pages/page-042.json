@@ -165,6 +165,15 @@
         "sourceReference": "صفحة المصحف 42 · صفحة المصدر 47",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-DURI-002-255-48-r0167",
+        "variantId": "v-L042-وهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 167; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",

@@ -103,5 +103,289 @@
     "description": "بتاء الخطاب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P285-17-31-12-FARSH",
+    "surah": 17,
+    "ayah": 31,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "خِطْـًۭٔا",
+    "variantText": "خِطْئًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P285-17-31-12-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P285-17-31-12-FARSH",
+        "variantId": "v-AUDIT-P285-17-31-12-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P285-R00845",
+        "sourceText": "خِطْئًا",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P285-17-31-12-FARSH-EXT",
+        "variantId": "v-AUDIT-P285-17-31-12-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/31",
+        "sourceText": "خِطْئًا",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "خِطْئًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "خِطْئًا",
+        "url": "https://quranpedia.net/qiraat/al-isra/31"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P285-17-35-6-FARSH",
+    "surah": 17,
+    "ayah": 35,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْقِسْطَاسِ",
+    "variantText": "بِالْقُسْطَاسِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02",
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-P285-17-35-6-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P285-17-35-6-FARSH",
+        "variantId": "v-AUDIT-P285-17-35-6-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P285-R00849",
+        "sourceText": "بِالْقُسْطَاسِ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P285-17-35-6-FARSH-EXT",
+        "variantId": "v-AUDIT-P285-17-35-6-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/35",
+        "sourceText": "بِالْقُسْطَاسِ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      },
+      {
+        "id": "s-SUSI-017-35-6-2026",
+        "variantId": "v-AUDIT-P285-17-35-6-FARSH",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2026; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِالْقِسْطَاسِ → بِالْقُسْطَاسِ | ضم القاف"
+      },
+      {
+        "id": "s-DURI-017-35-6-r1234",
+        "variantId": "v-AUDIT-P285-17-35-6-FARSH",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1234; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بالـقِسطاس → بالـقُسطاس | ضم الدوري القاف"
+      }
+    ],
+    "description": "بِالْقُسْطَاسِ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بِالْقُسْطَاسِ",
+        "url": "https://quranpedia.net/qiraat/al-isra/35"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P285-17-38-4-FARSH",
+    "surah": 17,
+    "ayah": 38,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سَيِّئُهُۥ",
+    "variantText": "سَيِّئَةً",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P285-17-38-4-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P285-17-38-4-FARSH",
+        "variantId": "v-AUDIT-P285-17-38-4-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P285-R00851",
+        "sourceText": "سَيِّئَةً",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P285-17-38-4-FARSH-EXT",
+        "variantId": "v-AUDIT-P285-17-38-4-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/38",
+        "sourceText": "سَيِّئَةً",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "سَيِّئَةً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "سَيِّئَةً",
+        "url": "https://quranpedia.net/qiraat/al-isra/38"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P285-17-38-4-FARSH2",
+    "surah": 17,
+    "ayah": 38,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "سَيِّئُهُۥ",
+    "variantText": "سَيِّئُهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P285-17-38-4-FARSH2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P285-17-38-4-FARSH2",
+        "variantId": "v-AUDIT-P285-17-38-4-FARSH2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P285-R00850",
+        "sourceText": "سَيِّئُهُ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P285-17-38-4-FARSH2-EXT",
+        "variantId": "v-AUDIT-P285-17-38-4-FARSH2",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/38",
+        "sourceText": "سَيِّئُهُ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "سَيِّئُهُ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "سَيِّئُهُ",
+        "url": "https://quranpedia.net/qiraat/al-isra/38"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-017-35-11-2027-performance",
+    "surah": 17,
+    "ayah": 35,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "تَأْوِيلًۭا",
+    "variantText": "تَأْوِيلًۭا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-35-11-2027",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-017-35-11-2027",
+        "variantId": "v-SUSI-017-35-11-2027-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2027; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْوِيلًا → تَاوِيلًا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

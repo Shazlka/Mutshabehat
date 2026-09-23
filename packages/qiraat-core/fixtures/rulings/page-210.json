@@ -675,7 +675,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَدْرَاكُم → أَدْرَاكُم | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p210-015-1",
@@ -762,7 +765,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "افْتَرَىٰ → افْتَرَى | إمالة فتحة الراء",
+      "افتـرى → افتـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p210-016-1",
@@ -854,7 +861,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لبثْـتُ → لبثـتُّ | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p210-017-1",
@@ -885,7 +895,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَظْلَمُ مِمَّنِ → أَظْلَم مِّمَّنِ | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p210-018-1",
@@ -916,7 +929,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "كَذَّبَ بِآيَاتِهِ → كَذَّب بِّآيَاتِهِ | إدغام الباء في الباء"
+    ]
   },
   {
     "id": "r-p210-019-1",
@@ -1410,5 +1426,40 @@
     "text": "والإسكان وصلًا للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-010-16-8-r0869-IMALAH_TAQLIL",
+    "pageNumber": 210,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 16,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 16,
+    "baseText": "وَلَآ أَدْرَىٰكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ولا أدراكم → ولا أدرٍاكم | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

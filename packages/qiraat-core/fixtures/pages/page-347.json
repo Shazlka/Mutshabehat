@@ -32,6 +32,24 @@
         "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
         "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-023-78-1-2658",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2658; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-023-78-1-r1539",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1539; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء تخفيفاً",
@@ -80,6 +98,24 @@
         "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
         "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-023-79-1-2659",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2659; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-023-79-1-r1540",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1540; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء تخفيفاً",
@@ -128,6 +164,24 @@
         "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
         "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-023-80-1-2660",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2660; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-023-80-1-r1541",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1541; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء تخفيفاً",
@@ -178,6 +232,24 @@
         "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
         "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
         "sourceText": "SH: وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَمَعْهُ أَبُو بَكْرٍ"
+      },
+      {
+        "id": "s-SUSI-023-82-3-2663",
+        "variantId": "v-L347-متنا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2663; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتْنَا → مُتْنَا | ضم الميم"
+      },
+      {
+        "id": "s-DURI-023-82-3-r1544",
+        "variantId": "v-L347-متنا-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1544; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتـنا → مُتـنا | ضم الدوري الميم"
       }
     ],
     "description": "بضم الميم",
@@ -314,6 +386,24 @@
         "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
         "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-023-88-7-2667",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2667; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-023-88-7-r1547",
+        "variantId": "v-L347-وهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1547; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء تخفيفاً",
@@ -373,5 +463,363 @@
         "text": "وَسَيَقُولُ اللَّهُ حُزْ"
       }
     ]
+  },
+  {
+    "id": "v-D347-استفهام-كلاهما-1",
+    "surah": 23,
+    "ayah": 82,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَءِذَا",
+    "variantText": "أَئِذَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "v-D347-استفهام-كلاهما-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D347-استفهام-كلاهما-1",
+        "variantId": "v-D347-استفهام-كلاهما-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P347-R01559",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "استفهام في الموضعين: ابن كثير وأبو عمرو وعاصم وحمزة وخلف عن حمزة."
+      }
+    ],
+    "description": "استفهام في الموضعين: ابن كثير وأبو عمرو وعاصم وحمزة وخلف عن حمزة.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D347-استفهام-كلاهما-2",
+    "surah": 23,
+    "ayah": 82,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "أَءِنَّا",
+    "variantText": "أَئِنَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "v-D347-استفهام-كلاهما-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D347-استفهام-كلاهما-2",
+        "variantId": "v-D347-استفهام-كلاهما-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P347-R01559",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "استفهام في الموضعين: ابن كثير وأبو عمرو وعاصم وحمزة وخلف عن حمزة."
+      }
+    ],
+    "description": "استفهام في الموضعين: ابن كثير وأبو عمرو وعاصم وحمزة وخلف عن حمزة.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D347-استفهام-اول-1",
+    "surah": 23,
+    "ayah": 82,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَءِذَا",
+    "variantText": "أَئِذَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-D347-استفهام-اول-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D347-استفهام-اول-1",
+        "variantId": "v-D347-استفهام-اول-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P347-R01559",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "استفهام في الأول وإخبار في الثاني: نافع والكسائي ويعقوب."
+      }
+    ],
+    "description": "استفهام في الأول وإخبار في الثاني: نافع والكسائي ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D347-استفهام-ثان-2",
+    "surah": 23,
+    "ayah": 82,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "أَءِنَّا",
+    "variantText": "إِنَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-D347-استفهام-ثان-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D347-استفهام-ثان-2",
+        "variantId": "v-D347-استفهام-ثان-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P347-R01559",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "استفهام في الأول وإخبار في الثاني: نافع والكسائي ويعقوب."
+      }
+    ],
+    "description": "استفهام في الأول وإخبار في الثاني: نافع والكسائي ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D347-اخبار-اول-1",
+    "surah": 23,
+    "ayah": 82,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَءِذَا",
+    "variantText": "إِذَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-D347-اخبار-اول-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D347-اخبار-اول-1",
+        "variantId": "v-D347-اخبار-اول-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P347-R01559",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "إخبار في الأول واستفهام في الثاني: ابن عامر وأبو جعفر."
+      }
+    ],
+    "description": "إخبار في الأول واستفهام في الثاني: ابن عامر وأبو جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D347-اخبار-ثان-2",
+    "surah": 23,
+    "ayah": 82,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "أَءِنَّا",
+    "variantText": "أَئِنَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-D347-اخبار-ثان-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D347-اخبار-ثان-2",
+        "variantId": "v-D347-اخبار-ثان-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P347-R01559",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "إخبار في الأول واستفهام في الثاني: ابن عامر وأبو جعفر."
+      }
+    ],
+    "description": "إخبار في الأول واستفهام في الثاني: ابن عامر وأبو جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D347-عليهم-ضم",
+    "surah": 23,
+    "ayah": 77,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-D347-عليهم-ضم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D347-عليهم-ضم",
+        "variantId": "v-D347-عليهم-ضم",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P347-R01552",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بضم الهاء لحمزة ويعقوب."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-023-87-1-2666",
+    "surah": 23,
+    "ayah": 87,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سَيَقُولُونَ لِلَّهِ ۚ",
+    "variantText": "سَيَقُولُونَ اللَّه",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-023-87-1-2666",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-023-87-1-2666",
+        "variantId": "v-SUSI-023-87-1-2666",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2666; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سَيَقُولُونَ لِلَّهِ → سَيَقُولُونَ اللَّه | همزة وصل بدل اللام وتفخيم لام اسم الجلالة وضم الهاء"
+      }
+    ],
+    "description": "همزة وصل بدل اللام وتفخيم لام اسم الجلالة وضم الهاء"
+  },
+  {
+    "id": "v-SUSI-023-89-1-2668",
+    "surah": 23,
+    "ayah": 89,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "سَيَقُولُونَ لِلَّهِ ۚ",
+    "variantText": "سَيَقُولُونَ اللَّه",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-023-89-1-2668",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-023-89-1-2668",
+        "variantId": "v-SUSI-023-89-1-2668",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2668; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سَيَقُولُونَ لِلَّهِ → سَيَقُولُونَ اللَّه | همزة وصل بدل اللام وتفخيم لام اسم الجلالة وضم الهاء"
+      }
+    ],
+    "description": "همزة وصل بدل اللام وتفخيم لام اسم الجلالة وضم الهاء"
+  },
+  {
+    "id": "v-SUSI-023-85-5-2665-performance",
+    "surah": 23,
+    "ayah": 85,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذَكَّرُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-023-85-5-2665",
+    "locusType": "performance_variant",
+    "performanceNote": "تشديد الذال",
+    "sources": [
+      {
+        "id": "s-SUSI-023-85-5-2665",
+        "variantId": "v-SUSI-023-85-5-2665-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2665; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَذَكَّرُونَ → تَذَّكَّرُونَ | تشديد الذال"
+      }
+    ],
+    "description": "تشديد الذال"
   }
 ]

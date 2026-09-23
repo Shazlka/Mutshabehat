@@ -112,6 +112,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
         "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-SUSI-057-1-7-4215",
+        "variantId": "v-AUDIT-P537-R03392-PERF-b14c9461",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4215; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-057-1-7-r2448",
+        "variantId": "v-AUDIT-P537-R03392-PERF-b14c9461",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2448; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
@@ -158,6 +176,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
         "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-SUSI-057-2-7-4216",
+        "variantId": "v-AUDIT-P537-R03392-PERF-bd0817c8",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4216; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-057-2-7-r2449",
+        "variantId": "v-AUDIT-P537-R03392-PERF-bd0817c8",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2449; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
@@ -204,6 +240,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03392",
         "sourceText": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-SUSI-057-3-6-4217",
+        "variantId": "v-AUDIT-P537-R03392-PERF-830aa49a",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4217; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-057-3-6-r2450",
+        "variantId": "v-AUDIT-P537-R03392-PERF-830aa49a",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2450; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "﴿وَهُوَ﴾ (جميعاً بفاتحة الحديد): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
@@ -250,6 +304,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P537-R03391",
         "sourceText": "﴿لَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "وجه أدائي مستقل عن ضبط حفص، موثق في جهاز القراءات العشر المرتبط."
+      },
+      {
+        "id": "s-DURI-056-95-3-r2447",
+        "variantId": "v-AUDIT-P537-R03391-PERF-2cfcdcc1",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2447; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لـهُـو → لـهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "﴿لَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
@@ -261,5 +324,36 @@
         "url": "https://quranpedia.net/book-attachment/18711/77129"
       }
     ]
+  },
+  {
+    "id": "v-DURI-056-89-3-r2446",
+    "surah": 56,
+    "ayah": 89,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "وَجَنَّتُ",
+    "variantText": "وجنَّـة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-056-89-3-r2446",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-056-89-3-r2446",
+        "variantId": "v-DURI-056-89-3-r2446",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2446; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وجنَّـت → وجنَّـة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "وقف الدوري بالهاء"
   }
 ]

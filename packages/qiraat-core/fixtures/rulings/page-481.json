@@ -144,7 +144,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تَرَى الْأَرْضَ → تَرَى الْأَرْضَ | وقفاً: إمالة فتحة الراء والألف، وصلاً وجهان: الفتح والإمالة",
+      "تـرى الأرض → تـرى الأرض | أمالها الدوري وقفا"
+    ]
   },
   {
     "id": "r-p481-IMALAH_TAQLIL-احياها-1",
@@ -278,7 +282,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمَوْتَىٰ → الْمَوْتَى | بالتقليل",
+      "الـموتى → الموتِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p481-IMALAH_TAQLIL-موسا-3",
@@ -363,7 +371,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَى → مُوسَى | بالتقليل وقفاً",
+      "مـوسى → مـوسِـى | قللها الدوري وقفاً"
+    ]
   },
   {
     "id": "r-p481-IMALAH_TAQLIL-يلقا-4",
@@ -622,7 +634,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النَّـار → النٍّـار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p481-IMALAH_TAQLIL-جاءهم-8",
@@ -914,5 +930,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-43-2-3852-IDGHAM_KABIR",
+    "pageNumber": 481,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 43,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 43,
+    "baseText": "يُقَالُ لَكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يُقَالُ لَكَ → يُقَال لَّكَ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-43-7-3853-IDGHAM_KABIR",
+    "pageNumber": 481,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 43,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 43,
+    "baseText": "قِيلَ لِلرُّسُلِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قِيلَ لِلرُّسُلِ → قِيل لِّلرُّسُلِ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-041-45-5-3858-IDGHAM_KABIR",
+    "pageNumber": 481,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 41,
+    "ayah": 45,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 45,
+    "baseText": "فَٱخْتُلِفَ فِيهِ ۗ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَاخْتُلِفَ فِيهِ → فَاخْتُلِف فِّيهِ | إدغام الفاء في الفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

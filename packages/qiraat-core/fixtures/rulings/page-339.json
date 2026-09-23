@@ -422,5 +422,215 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-56-4-2594-IKHFA",
+    "pageNumber": 339,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 56,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 56,
+    "baseText": "يَحْكُمُ بَيْنَهُمْ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَحْكُمُ بَيْنَهُمْ → يَحْكُم بَيْنَهُمْ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-60-3-2596-IDGHAM_KABIR",
+    "pageNumber": 339,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 60,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 60,
+    "baseText": "عَاقَبَ بِمِثْلِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الباء في الباء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الباء في الباء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "عَاقَبَ بِمِثْلِ → عَاقَب بِّمِثْلِ | إدغام الباء في الباء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-60-6-2597-IDGHAM_KABIR",
+    "pageNumber": 339,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 60,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 60,
+    "baseText": "عُوقِبَ بِهِۦ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الباء في الباء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الباء في الباء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "عُوقِبَ بِهِ → عُوقِب بِّهِ | إدغام الباء في الباء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-62-3-2599-IDGHAM_KABIR",
+    "pageNumber": 339,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 62,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 62,
+    "baseText": "ٱللَّهَ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللَّهَ هُوَ (معاً) → اللَّه هُّوَ | إدغام الهاء في الهاء (الموضعين)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-62-14-2599-IDGHAM_KABIR",
+    "pageNumber": 339,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 62,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 62,
+    "baseText": "ٱللَّهَ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللَّهَ هُوَ (معاً) → اللَّه هُّوَ | إدغام الهاء في الهاء (الموضعين)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-62-10-2600-IDGHAM_KABIR",
+    "pageNumber": 339,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 62,
+    "startToken": 10,
+    "endToken": 11,
+    "endAyah": 62,
+    "baseText": "دُونِهِۦ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "دُونِهِ هُوَ → دُونِه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -247,5 +247,68 @@
     "description": "بالإفراد",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-035-8-6-3467",
+    "surah": 35,
+    "ayah": 8,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "فَرَءَاهُ",
+    "variantText": "فَرَاءَاهُ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-8-6-3467",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-035-8-6-3467",
+        "variantId": "v-SUSI-035-8-6-3467",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3467; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَرَآهُ → فَرَاءَاهُ | إمالة فتحة الهمزة والألف"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة والألف"
+  },
+  {
+    "id": "v-SUSI-035-9-10-3468-performance",
+    "surah": 35,
+    "ayah": 9,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "مَّيِّتٍۢ",
+    "variantText": "مَّيِّتٍۢ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-9-10-3468",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-035-9-10-3468",
+        "variantId": "v-SUSI-035-9-10-3468-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3468; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَّيِّتٍ → مَّيْتٍ | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
   }
 ]

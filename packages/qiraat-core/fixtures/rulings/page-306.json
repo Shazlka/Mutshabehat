@@ -15,23 +15,50 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q03",
-        "action": "تقليل"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -50,21 +77,6 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
         "isDefault": true
       }
     ],
@@ -243,7 +255,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فَتَمَثَّلَ لَهَا → فَتَمَثَّل لَّهَا | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p306-007-1",
@@ -345,23 +360,41 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q03",
-        "action": "تقليل"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -381,26 +414,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q03-R01",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أنّـى → أنٍّـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p306-009-1",
@@ -462,7 +483,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ رَبُّكِ → قَالَ رَّبُّكِ | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p306-011-1",
@@ -481,20 +505,32 @@
     "attribution": [
       {
         "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
         "action": "إمالة"
       }
     ],
     "readings": [
       {
         "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
         "action": "إمالة",
-        "isDefault": false
+        "isDefault": true
       }
     ],
-    "hasAlternate": true,
+    "hasAlternate": false,
     "text": "الخلف للدوري عن أبي عمرو في «الناس» المجرورة.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p306-012-1",
@@ -672,7 +708,10 @@
     "hasAlternate": false,
     "text": "وقرأ الباقون بالإظهار.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قـدْ جعل → قـد جَّعل | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p306-IMALAH_TAQLIL-انا-0",
@@ -767,5 +806,180 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-019-12-3-2243-IDGHAM_KABIR",
+    "pageNumber": 306,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 12,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 12,
+    "baseText": "ٱلْكِتَـٰبَ بِقُوَّةٍۢ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الباء في الباء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الباء في الباء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْكِتَابَ بِقُوَّةٍ → الْكِتَاب بِّقُوَّةٍ | إدغام الباء في الباء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-019-19-4-2246-IDGHAM_KABIR",
+    "pageNumber": 306,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 19,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 19,
+    "baseText": "رَسُولُ رَبِّكِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "رَّسُولُ رَبِّكِ → رَّسُول رَّبِّكِ | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-019-21-1-2248-IDGHAM_KABIR",
+    "pageNumber": 306,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 21,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 21,
+    "baseText": "قَالَ كَذَٰلِكِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الكاف في القاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الكاف في القاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ كَذَٰلِكِ → قَال كَّذَٰلِكِ | إدغام الكاف في القاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-019-24-6-2253-IDGHAM_KABIR",
+    "pageNumber": 306,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 24,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 24,
+    "baseText": "قَدْ جَعَلَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَعَلَ → قَد جَّعَلَ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-019-24-7-2254-IDGHAM_KABIR",
+    "pageNumber": 306,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 24,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 24,
+    "baseText": "جَعَلَ رَبُّكِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَعَلَ رَبُّكِ → جَعَل رَّبُّكِ | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

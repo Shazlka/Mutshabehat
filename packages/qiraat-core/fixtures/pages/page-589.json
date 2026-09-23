@@ -1,0 +1,142 @@
+[
+  {
+    "id": "v-SRC-P589-84-19-1",
+    "surah": 84,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لَتَرْكَبُنَّ",
+    "variantText": "لَتَرْكَبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-SRC-P589-84-19-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-SRC-P589-84-19-1-source",
+        "variantId": "v-SRC-P589-84-19-1",
+        "sourceName": "استخراج القراءات العشر — qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604.source.json",
+        "sourceText": "ابن كثير، حمزة، الكسائي، خلف العاشر: لَتَرْكَبَنَّ بفتح الباء.",
+        "verificationNotes": "مرتبط بموضع حقيقي في page-word fixture؛ إسناد صريح من ملف المصدر."
+      }
+    ],
+    "description": "فتح الباء في لَتَرْكَبَنَّ",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SQL-P589-84-21-quran",
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": "4",
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانُ",
+    "variantText": "ٱلْقُرَانُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "v-SQL-P589-84-21-quran",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "v-SQL-P589-84-21-quran-source",
+        "variantId": "v-SQL-P589-84-21-quran",
+        "sourceName": "qiraat_pages_585_604_full.source.sql",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "ابن كثير: نقل حركة الهمزة في القرآن.",
+        "verificationNotes": "موضع حقيقي وفق page-word fixture وإسناد قاعدة المصدر."
+      }
+    ],
+    "description": "نقل همزة القرآن لابن كثير",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SQL-P589-84-21-quri",
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قُرِئَ",
+    "variantText": "قُرِيَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "v-SQL-P589-84-21-quri",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "v-SQL-P589-84-21-quri-source",
+        "variantId": "v-SQL-P589-84-21-quri",
+        "sourceName": "qiraat_pages_585_604_full.source.sql",
+        "sourceType": "other",
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "أبو جعفر: إبدال الهمزة ياءً محضة.",
+        "verificationNotes": "موضع حقيقي وفق page-word fixture وإسناد قاعدة المصدر."
+      }
+    ],
+    "description": "إبدال همز قرئ لأبي جعفر",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-084-20-3-4466-performance",
+    "surah": 84,
+    "ayah": 20,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُؤْمِنُونَ",
+    "variantText": "لَا يُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-084-20-3-4466",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-084-20-3-4466",
+        "variantId": "v-SUSI-084-20-3-4466-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4466; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَا يُؤْمِنُونَ → لَا يُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  }
+]

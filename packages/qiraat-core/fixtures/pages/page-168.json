@@ -312,5 +312,165 @@
         "text": "وَخَاطَبَ يَرْحَمْنَا وَيَغْفِرْ لَنَا شَذًا وَبَا رَبَّنَا رَفْعٌ لِغَيْرِهِمَا انْجَلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-007-144-3-1047-performance",
+    "surah": 7,
+    "ayah": 144,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّى",
+    "variantText": "إِنِّى",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-007-144-3-1047",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-007-144-3-1047",
+        "variantId": "v-SUSI-007-144-3-1047-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1047; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِنِّي → إِنِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-007-145-14-1048-performance",
+    "surah": 7,
+    "ayah": 145,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "وَأْمُرْ",
+    "variantText": "وَأْمُرْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-007-145-14-1048",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-007-145-14-1048",
+        "variantId": "v-SUSI-007-145-14-1048-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1048; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَأْمُرْ → وَامُرْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-007-145-16-1049-performance",
+    "surah": 7,
+    "ayah": 145,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "يَأْخُذُوا۟",
+    "variantText": "يَأْخُذُوا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-007-145-16-1049",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-007-145-16-1049",
+        "variantId": "v-SUSI-007-145-16-1049-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1049; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْخُذُوا → يَاخُذُوا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-007-146-15-1050-performance",
+    "surah": 7,
+    "ayah": 146,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنُوا۟",
+    "variantText": "يُؤْمِنُوا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-007-146-15-1050",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-007-146-15-1050",
+        "variantId": "v-SUSI-007-146-15-1050-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1050; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمِنُوا → يُومِنُوا | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-DURI-007-144-3-r0722-performance",
+    "surah": 7,
+    "ayah": 144,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّى ٱصْطَفَيْتُكَ",
+    "variantText": "إِنِّى ٱصْطَفَيْتُكَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-007-144-3-r0722",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-007-144-3-r0722",
+        "variantId": "v-DURI-007-144-3-r0722-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 722; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إنـي اصطفيتك → إنـيَ اصطفـيتك | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

@@ -19,7 +19,7 @@
       "Q09-R02"
     ],
     "locusId": "AUDIT-P272-16-43-7-9653e7fd",
-    "locusType": "multi_word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
         "id": "s-DOCX-P272-R00701",
@@ -38,6 +38,15 @@
         "sourceReference": "https://jamharah.net/showthread.php?t=27567",
         "sourceText": "At an-Nahl 16:43, Hamza and Yaqub read يُوحَى إِلَيْهُم; the cited source row explicitly names both readers.",
         "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      },
+      {
+        "id": "s-v-AUDIT-P272-16-43-7-9653e7fd-QP",
+        "variantId": "v-AUDIT-P272-16-43-7-9653e7fd",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/43",
+        "sourceText": "بياء الغيب المضمومة مع ضم هاء ﴿إِلَيْهُم﴾: حمزة، يعقوب.",
+        "verificationNotes": "مرجع مستقل للوجه."
       }
     ],
     "description": "بياء الغيب المضمومة مع ضم هاء ﴿إِلَيْهُم﴾: حمزة، يعقوب.",
@@ -48,7 +57,8 @@
         "text": "At an-Nahl 16:43, Hamza and Yaqub read يُوحَى إِلَيْهُم; the cited source row explicitly names both readers.",
         "url": "https://jamharah.net/showthread.php?t=27567"
       }
-    ]
+    ],
+    "performanceNote": "بياء الغيب المضمومة وضم هاء إليهم"
   },
   {
     "id": "v-AUDIT-P272-16-44-10-93a5aad2",
@@ -140,6 +150,15 @@
         "sourceReference": "https://jamharah.net/showthread.php?t=27567",
         "sourceText": "At an-Nahl 16:45, Abu Amr and Yaqub read بِهِمِ الْأَرْضَ with kasrah on hāʾ and mīm.",
         "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      },
+      {
+        "id": "s-SUSI-016-45-8-1911",
+        "variantId": "v-AUDIT-P272-16-45-8-4e8b6c3d",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1911; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِهِمُ الْأَرْضَ → بِهِمِ الْأَرْضَ | كسر الميم"
       }
     ],
     "description": "بكسر الهاء والميم وصلاً: أبو عمرو، يعقوب.",
@@ -198,6 +217,24 @@
         "sourceReference": "https://jamharah.net/showthread.php?t=27567",
         "sourceText": "At an-Nahl 16:47, Jamharah cites al-Nashr: qasr for Abu Amr, Hamza, al-Kisai, Shuʿbah (Abu Bakr), Khalaf, and Yaqub; the rest use madd.",
         "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      },
+      {
+        "id": "s-SUSI-016-47-7-1915",
+        "variantId": "v-AUDIT-P272-16-47-7-881976fc",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1915; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَرَءُوفٌ → لَرَؤُفٌ | حذف الواو"
+      },
+      {
+        "id": "s-DURI-016-47-7-r1186",
+        "variantId": "v-AUDIT-P272-16-47-7-881976fc",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1186; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لرؤوف → لرؤف | قصر الدوري الهمزة"
       }
     ],
     "description": "﴿لَرَءُوفٌ﴾: بالمد لحفص ونافع وابن كثير وابن عامر وأبي جعفر؛ وبالقصر للباقين.",
@@ -281,5 +318,250 @@
     "description": "بتاء التأنيث",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P272-16-43-7-FARSH",
+    "surah": 16,
+    "ayah": 43,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نُّوحِىٓ إِلَيْهِمْ ۚ",
+    "variantText": "يُوحَى إِلَيْهِم",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P272-16-43-7-FARSH",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P272-16-43-7-FARSH",
+        "variantId": "v-AUDIT-P272-16-43-7-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00700",
+        "sourceText": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P272-16-43-7-FARSH-EXT",
+        "variantId": "v-AUDIT-P272-16-43-7-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/43",
+        "sourceText": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب المضمومة وفتح الحاء ﴿يُوحَى إِلَيْهِم﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، شعبة، الكسائي، أبو جعفر، وخلف العاشر.",
+        "url": "https://quranpedia.net/qiraat/an-nahl/43"
+      }
+    ],
+    "performanceNote": "بياء الغيب المضمومة وفتح الحاء"
+  },
+  {
+    "id": "v-AUDIT-P272-16-43-9-FARSH",
+    "surah": 16,
+    "ayah": 43,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فَسْـَٔلُوٓا۟",
+    "variantText": "فَسَلُوا",
+    "differenceType": "HAMZA_TRANSFER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P272-16-43-9-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P272-16-43-9-FARSH",
+        "variantId": "v-AUDIT-P272-16-43-9-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P272-R00702",
+        "sourceText": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P272-16-43-9-FARSH-EXT",
+        "variantId": "v-AUDIT-P272-16-43-9-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/an-nahl/43",
+        "sourceText": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+        "verificationNotes": "مرجع مستقل يثبت الوجه ومجموعة القراء."
+      }
+    ],
+    "description": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بنقل حركة الهمزة إلى السين مع حذف الهمزة ﴿فَسَلُوا﴾: ابن كثير، الكسائي، وخلف (Q06).",
+        "url": "https://quranpedia.net/qiraat/an-nahl/43"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-016-45-11-1912-performance",
+    "surah": 16,
+    "ayah": 45,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِيَهُمُ",
+    "variantText": "يَأْتِيَهُمُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-45-11-1912",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-45-11-1912",
+        "variantId": "v-SUSI-016-45-11-1912-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1912; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْتِيَهُمُ → يَاتِيَهُمُ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-016-46-2-1913-performance",
+    "surah": 16,
+    "ayah": 46,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْخُذَهُمْ",
+    "variantText": "يَأْخُذَهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-46-2-1913",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-46-2-1913",
+        "variantId": "v-SUSI-016-46-2-1913-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1913; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْخُذَهُمْ → يَاخُذَهُمْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-016-47-2-1914-performance",
+    "surah": 16,
+    "ayah": 47,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْخُذَهُمْ",
+    "variantText": "يَأْخُذَهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-47-2-1914",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-47-2-1914",
+        "variantId": "v-SUSI-016-47-2-1914-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1914; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْخُذَهُمْ → يَاخُذَهُمْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-016-50-7-1917-performance",
+    "surah": 16,
+    "ayah": 50,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمَرُونَ ۩",
+    "variantText": "يُؤْمَرُونَ ۩",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-50-7-1917",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-50-7-1917",
+        "variantId": "v-SUSI-016-50-7-1917-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1917; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمَرُونَ → يُومَرُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

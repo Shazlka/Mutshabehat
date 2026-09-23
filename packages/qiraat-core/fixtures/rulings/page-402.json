@@ -402,7 +402,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَذِكْرَىٰ → وَذِكْرَى | إمالة فتحة الراء والألف",
+      "وذكـرى → وذكـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p402-TAGHYIR_HAMZ-يومنون-3",
@@ -519,5 +523,133 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p402-TAGHYIR_HAMZ-يومنون-4",
+    "pageNumber": 402,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 51,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 51,
+    "baseText": "يُؤْمِنُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-46-23-3185-IDGHAM_KABIR",
+    "pageNumber": 402,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 46,
+    "startToken": 23,
+    "endToken": 24,
+    "endAyah": 46,
+    "baseText": "وَنَحْنُ لَهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَنَحْنُ لَهُ → وَنَحْن لَّهُ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-029-52-7-3190-IDGHAM_KABIR",
+    "pageNumber": 402,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 29,
+    "ayah": 52,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 52,
+    "baseText": "يَعْلَمُ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -255,7 +255,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فـأنى → فأنِّى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p213-007-1",
@@ -415,7 +418,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُفْتَرَىٰ → يُفْتَرَى | إمالة فتحة الراء",
+      "يُفـترى → يُفتـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p213-009-1",
@@ -502,7 +509,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "افْتَرَاهُ → افْتَرَاهُ | إمالة فتحة الراء",
+      "افتـراه → افتـرٍاه | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p213-010-1",
@@ -533,7 +544,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "كَذَٰلِكَ كَذَّبَ → كَذَٰلِك كَّذَّبَ | إدغام الكاف في الكاف"
+    ]
   },
   {
     "id": "r-p213-011-1",
@@ -1245,5 +1259,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-010-40-11-1377-IKHFA",
+    "pageNumber": 213,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 40,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 40,
+    "baseText": "أَعْلَمُ بِٱلْمُفْسِدِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَعْلَمُ بِالْمُفْسِدِينَ → أَعْلَم بِالْمُفْسِدِينَ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

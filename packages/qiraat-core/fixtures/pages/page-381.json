@@ -110,6 +110,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P381-R01916",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "بضم الميم وفتح اللام ﴿مُهْلَكِ﴾: نافع، ابن كثير، أبو عمرو، ابن عامر، حمزة، الكسائي، أبو جعفر، يعقوب، خلف."
+      },
+      {
+        "id": "s-SUSI-027-49-11-2996",
+        "variantId": "v-D381-مهلك-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2996; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَهْلِكَ → مُهْلَكَ | ضم الميم وفتح اللام"
+      },
+      {
+        "id": "s-DURI-027-49-11-r1695",
+        "variantId": "v-D381-مهلك-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1695; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَـهْلِكَ → مُهْـلَكَ | ضم الدوري الميم وفتح اللام"
       }
     ],
     "description": "بضم الميم وفتح اللام",
@@ -193,5 +211,69 @@
     "description": "بتاء الخطاب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-027-54-5-2999-performance",
+    "surah": 27,
+    "ayah": 54,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَتَأْتُونَ",
+    "variantText": "أَتَأْتُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-027-54-5-2999",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-027-54-5-2999",
+        "variantId": "v-SUSI-027-54-5-2999-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2999; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتَأْتُونَ → أَتَاتُونَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-027-55-2-3001-performance",
+    "surah": 27,
+    "ayah": 55,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَتَأْتُونَ",
+    "variantText": "لَتَأْتُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-027-55-2-3001",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-027-55-2-3001",
+        "variantId": "v-SUSI-027-55-2-3001-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3001; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَتَأْتُونَ → لَتَاتُونَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

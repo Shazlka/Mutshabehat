@@ -68,6 +68,15 @@
         "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 459، DOCX-P459-R02655",
         "verificationNotes": "وجه صريح طوبق على رمز الصفحة، مع حل خلف إلى خلف عن حمزة (Q06).",
         "sourceText": "بإسكان الهاء ﴿يَرْضَهْ﴾: أبو عمرو (الوجه الثاني للدوري)، وهشام (الوجه الثاني له)، وابن جماز."
+      },
+      {
+        "id": "s-SUSI-039-7-13-3654",
+        "variantId": "v-D459-يرضه-w2-DOCX-P459-R02655",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3654; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَرْضَهُ → يَرْضَهْ | إسكان الهاء"
       }
     ],
     "description": "بإسكان الهاء",

@@ -84,6 +84,24 @@
         "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَرْجِعُ فِيهِ الضَّمُّ وَالْفَتْحُ إِذْ عَلَا — D: وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
+      },
+      {
+        "id": "s-SUSI-011-123-6-1572",
+        "variantId": "v-L235-يرجع-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1572; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُرْجَعُ → يَرْجِعُ | فتح الياء وكسر الجيم"
+      },
+      {
+        "id": "s-DURI-011-123-6-r1003",
+        "variantId": "v-L235-يرجع-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1003; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـُرجع → يَـرجِع | فتح الدوري الياء وكسر الجيم"
       }
     ],
     "description": "بفتح الياء وكسر الجيم",
@@ -138,6 +156,24 @@
         "sourceReference": "صفحة المصحف 235 · صفحة المصدر 240",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَخَاطَبَ عَمَّا يَعْمَلُونَ هُنَا وَآخِرَ النَّمْلِ عِلْمًا عَمَّ وَارْتَادَ مَنْزِلَا — D: وَمَا يَعْمَلُوا خَاطِبْ مَعَ النَّمْلِ حُفَّلَا"
+      },
+      {
+        "id": "s-SUSI-011-123-16-1573",
+        "variantId": "v-L235-تعملون-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1573; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَعْمَلُونَ → يَعْمَلُونَ | إبدال التاء ياء"
+      },
+      {
+        "id": "s-DURI-011-123-16-r1004",
+        "variantId": "v-L235-تعملون-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1004; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تـعملون → يـعملون | قرأها الدوري بياء الغيبة"
       }
     ],
     "description": "بالتحتية على الغيبة",
@@ -364,5 +400,69 @@
         "text": "وَعَيْنَ عَشَرَ أَلَا فَسَكِّنْ جَمِيعًا وَامْدُدِ اثْنَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-011-120-17-1570-performance",
+    "surah": 11,
+    "ayah": 120,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "لِلْمُؤْمِنِينَ",
+    "variantText": "لِلْمُؤْمِنِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-011-120-17-1570",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-011-120-17-1570",
+        "variantId": "v-SUSI-011-120-17-1570-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1570; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِلْمُؤْمِنِينَ → لِلْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-011-121-3-1571-performance",
+    "surah": 11,
+    "ayah": 121,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُؤْمِنُونَ",
+    "variantText": "لَا يُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-011-121-3-1571",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-011-121-3-1571",
+        "variantId": "v-SUSI-011-121-3-1571-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1571; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَا يُؤْمِنُونَ → لَا يُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

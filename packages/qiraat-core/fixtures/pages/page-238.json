@@ -160,6 +160,24 @@
         "sourceReference": "صفحة المصحف 238 · صفحة المصدر 243",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي كَافَ فَتْحُ اللَّامِ فِي مُخْلَصًا نَوَى وَفِي الْمُخْلِصِينَ الْكُلِّ حِصْنٌ تَجَمَّلَا"
+      },
+      {
+        "id": "s-SUSI-012-24-19-1603",
+        "variantId": "v-L238-المخلصين-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1603; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُخْلَصِينَ → الْمُخْلِصِينَ | كسر اللام"
+      },
+      {
+        "id": "s-DURI-012-24-19-r1020",
+        "variantId": "v-L238-المخلصين-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1020; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الـمخلَصين → الـمخلِصين | كسر الدوري اللام"
       }
     ],
     "description": "بكسر اللام اسم فاعل",
@@ -206,6 +224,24 @@
         "sourceReference": "صفحة المصحف 238 · صفحة المصدر 243",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-012-26-17-1605",
+        "variantId": "v-L238-وهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1605; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-012-26-17-r1021",
+        "variantId": "v-L238-وهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1021; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -256,6 +292,24 @@
         "sourceReference": "صفحة المصحف 238 · صفحة المصدر 243",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+      },
+      {
+        "id": "s-SUSI-012-27-8-1606",
+        "variantId": "v-L238-وهو-2-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1606; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-012-27-8-r1022",
+        "variantId": "v-L238-وهو-2-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1022; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -270,5 +324,172 @@
         "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-012-23-17-1600-performance",
+    "surah": 12,
+    "ayah": 23,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ",
+    "variantText": "رَبِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-23-17-1600",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-012-23-17-1600",
+        "variantId": "v-SUSI-012-23-17-1600-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1600; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَبِّي → رَبِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-012-24-8-1601",
+    "surah": 12,
+    "ayah": 24,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "رَّءَا",
+    "variantText": "رَّاءَى",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-24-8-1601",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-012-24-8-1601",
+        "variantId": "v-SUSI-012-24-8-1601",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1601; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَّأَىٰ → رَّاءَى | إمالة فتحة الهمزة والألف"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة والألف"
+  },
+  {
+    "id": "v-SUSI-012-24-15-1602-performance",
+    "surah": 12,
+    "ayah": 24,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْفَحْشَآءَ ۚ إِنَّهُۥ",
+    "variantText": "وَٱلْفَحْشَآءَ ۚ إِنَّهُۥ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-24-15-1602",
+    "locusType": "performance_variant",
+    "performanceNote": "تسهيل الهمزة الثانية",
+    "sources": [
+      {
+        "id": "s-SUSI-012-24-15-1602",
+        "variantId": "v-SUSI-012-24-15-1602-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1602; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْفَحْشَاءَ إِنَّهُ → وَالْفَحْشَاءَ إِنَّهُ | تسهيل الهمزة الثانية"
+      }
+    ],
+    "description": "تسهيل الهمزة الثانية"
+  },
+  {
+    "id": "v-SUSI-012-28-2-1607",
+    "surah": 12,
+    "ayah": 28,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَءَا",
+    "variantText": "رَاءَى",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-28-2-1607",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-012-28-2-1607",
+        "variantId": "v-SUSI-012-28-2-1607",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1607; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَأَىٰ → رَاءَى | إمالة فتحة الهمزة والألف"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة والألف"
+  },
+  {
+    "id": "v-SUSI-012-30-5-1609",
+    "surah": 12,
+    "ayah": 30,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ٱمْرَأَتُ",
+    "variantText": "امْرَأَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-012-30-5-1609",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-012-30-5-1609",
+        "variantId": "v-SUSI-012-30-5-1609",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1609; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "امْرَأَتُ → امْرَأَه | بالهاء وقفاً"
+      },
+      {
+        "id": "s-DURI-012-30-5-r1024",
+        "variantId": "v-SUSI-012-30-5-1609",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1024; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "امـرأت → امراة | وقف الدوري بالهاء فيها"
+      }
+    ],
+    "description": "بالهاء وقفاً"
   }
 ]

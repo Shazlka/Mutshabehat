@@ -246,7 +246,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "الكـافرين → الكٍـافرين | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p054-007-1",
@@ -499,7 +503,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُنثَىٰ → أُنثَى | بالتقليل",
+      "أنثـى – كالأنـثى → أنثِـى – كالأنثِـى | قللهما الدوري"
+    ]
   },
   {
     "id": "r-p054-011-1",
@@ -586,7 +594,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "كَالْأُنثَىٰ → كَالْأُنثَى | بالتقليل",
+      "أنثـى – كالأنـثى → أنثِـى – كالأنثِـى | قللهما الدوري"
+    ]
   },
   {
     "id": "r-p054-012-1",
@@ -1303,5 +1315,110 @@
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-31-9-0141-IDGHAM_KABIR",
+    "pageNumber": 54,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 31,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 31,
+    "baseText": "وَيَغْفِرْ لَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَيَغْفِرْ لَكُمْ → وَيَغْفِر لَّكُمْ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-36-9-0146-IKHFA",
+    "pageNumber": 54,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 36,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 36,
+    "baseText": "أَعْلَمُ بِمَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَعْلَمُ بِمَا → أَعْلَم بِمَا | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-003-37-20-r0234-IMALAH_TAQLIL",
+    "pageNumber": 54,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 37,
+    "startToken": 20,
+    "endToken": 20,
+    "endAyah": 37,
+    "baseText": "أَنَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أنـَّى → أنـِّى | قللها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

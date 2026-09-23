@@ -86,5 +86,68 @@
         "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-008-32-15-1151",
+    "surah": 8,
+    "ayah": 32,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "ٱلسَّمَآءِ أَوِ",
+    "variantText": "السَّمَاءِ يَوِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-008-32-15-1151",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-008-32-15-1151",
+        "variantId": "v-SUSI-008-32-15-1151",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1151; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "السَّمَاءِ أَوِ → السَّمَاءِ يَوِ | إبدال الهمزة الثانية ياء مفتوحة"
+      }
+    ],
+    "description": "إبدال الهمزة الثانية ياء مفتوحة"
+  },
+  {
+    "id": "v-SUSI-008-32-16-1152-performance",
+    "surah": 8,
+    "ayah": 32,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "أَوِ ٱئْتِنَا",
+    "variantText": "أَوِ ٱئْتِنَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-008-32-16-1152",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة الثانية ياء ساكنة وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-008-32-16-1152",
+        "variantId": "v-SUSI-008-32-16-1152-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1152; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَوِ ائْتِنَا → أَوِ ايتِنَا | إبدال الهمزة الثانية ياء ساكنة وصلاً"
+      }
+    ],
+    "description": "إبدال الهمزة الثانية ياء ساكنة وصلاً"
   }
 ]

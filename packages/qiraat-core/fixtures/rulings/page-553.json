@@ -73,7 +73,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "التـوراة → التـورٍاةَ | أمال الدوري"
+    ]
   },
   {
     "id": "r-p553-IMALAH_TAQLIL-الحمار-1",
@@ -140,7 +143,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الـحمار → الحمٍـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p553-IMALAH_TAQLIL-الناس-2",
@@ -171,7 +177,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p553-TAGHYIR_HAMZ-يوتيه-3",

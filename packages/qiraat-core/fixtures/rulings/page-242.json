@@ -465,7 +465,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نُصِيبُ بِرَحْمَتِنَا → نُصِيب بِّرَحْمَتِنَا | إدغام الباء في الباء"
+    ]
   },
   {
     "id": "r-p242-015-1",
@@ -527,7 +530,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "كَيْلَ لَكُمْ → كَيْل لَّكُمْ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p242-017-1",
@@ -558,7 +564,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَقَالَ لِفِتْيَانِهِ → وَقَال لِّفِتْيَانِهِ | إدغام اللام في اللام، ثم حذف الألف وإبدال النون تاء: لِفِتْيَتِهِ"
+    ]
   },
   {
     "id": "r-p242-018-1",
@@ -589,6 +598,22 @@
         "authorityId": "Q08",
         "action": "إبدال الهمز",
         "condition": "وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -610,6 +635,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -647,6 +692,22 @@
         "authorityId": "Q08",
         "action": "إبدال الهمز",
         "condition": "وصلاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -668,6 +729,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -702,6 +783,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -723,6 +820,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -1378,5 +1495,160 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p242-WAQF_HAMZA-نفسي_ان-9",
+    "pageNumber": 242,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 53,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 53,
+    "baseText": "نَفْسِىٓ ۚ إِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p242-WAQF_HAMZA-ربي_ان-10",
+    "pageNumber": 242,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 53,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 53,
+    "baseText": "رَبِّىٓ ۚ إِنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p242-WAQF_HAMZA-اني_اوفي-11",
+    "pageNumber": 242,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 59,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 59,
+    "baseText": "أَنِّىٓ أُوفِى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-012-58-4-1660-IDGHAM_KABIR",
+    "pageNumber": 242,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 58,
+    "startToken": 4,
+    "endToken": 6,
+    "endAyah": 58,
+    "baseText": "فَدَخَلُوا۟ عَلَيْهِ فَعَرَفَهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَدَخَلُوا عَلَيْهِ فَعَرَفَهُمْ → فَدَخَلُوا عَلَيْهِ فَعَرَفَهُمْ | إدغام الفاء في الفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

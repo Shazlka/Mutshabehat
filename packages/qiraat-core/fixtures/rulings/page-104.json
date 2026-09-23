@@ -232,6 +232,18 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06",
         "action": "إمالة"
       },
@@ -242,13 +254,24 @@
       {
         "authorityId": "Q10",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -278,16 +301,15 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَعِيسَىٰ → وَعِيسَى | بالتقليل",
+      "وعيسـى → وعيسِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p104-009-1",
@@ -305,6 +327,18 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06",
         "action": "إمالة"
       },
@@ -315,13 +349,24 @@
       {
         "authorityId": "Q10",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -351,16 +396,15 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → موسِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p104-010-1",
@@ -391,7 +435,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p104-011-1",
@@ -669,7 +716,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قد ضـلوا → قد ضَّـلوا | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p104-015-1",
@@ -756,7 +806,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قد جـاءكم → قد جَّـاءكم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p104-016-1",
@@ -787,7 +840,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إِلَيْكَ كَمَا → إِلَيْك كَّمَا | إدغام الكاف في الكاف"
+    ]
   },
   {
     "id": "r-p104-017-1",
@@ -818,7 +874,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لِيَغْفِرَ لَهُمْ → لِيَغْفِر لَّهُمْ | إدغام الراء في اللام"
+    ]
   },
   {
     "id": "r-p104-018-1",
@@ -948,5 +1007,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-004-167-8-0509-IDGHAM_KABIR",
+    "pageNumber": 104,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 167,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 167,
+    "baseText": "قَدْ ضَلُّوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الضاد"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الضاد",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ ضَلُّوا → قَد ضَّلُّوا | إدغام الدال في الضاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-004-170-3-0511-IDGHAM_KABIR",
+    "pageNumber": 104,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 170,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 170,
+    "baseText": "قَدْ جَآءَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَكُمُ → قَد جَّاءَكُمُ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

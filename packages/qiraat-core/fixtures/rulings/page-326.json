@@ -299,6 +299,14 @@
       {
         "authorityId": "Q03",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -336,11 +344,25 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → مـوسِى | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p326-007-1",
@@ -578,6 +600,18 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -599,6 +633,21 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -801,5 +850,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-021-52-2-2511-IDGHAM_KABIR",
+    "pageNumber": 326,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 21,
+    "ayah": 52,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 52,
+    "baseText": "قَالَ لِأَبِيهِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ لِأَبِيهِ → قَال لِّأَبِيهِ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-021-54-1-2512-IDGHAM_KABIR",
+    "pageNumber": 326,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 21,
+    "ayah": 54,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 54,
+    "baseText": "قَالَ لَقَدْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ لَقَدْ → قَال لَّقَدْ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

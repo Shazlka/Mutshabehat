@@ -120,10 +120,114 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P570-R03700؛ Quranpedia https://quranpedia.net/book-attachment/19758/77831",
         "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/book-attachment/19758/77831",
         "sourceText": "﴿نُصُبٍ﴾: بضم النون والصاد ﴿نُصُبٍ﴾ لحفص وابن عامر؛ بفتح النون وإسكان الصاد ﴿نَصْبٍ﴾ للباقين."
+      },
+      {
+        "id": "s-DURI-070-43-8-r2612",
+        "variantId": "v-D570-نصب-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2612; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نُصُـب → نَصْـب | قرأ الدوري بفتح النون وإسكان الصاد"
       }
     ],
     "description": "بفتح النون وإسكان الصاد",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-071-4-15-4364-performance",
+    "surah": 71,
+    "ayah": 4,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "يُؤَخَّرُ ۖ",
+    "variantText": "يُؤَخَّرُ ۖ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-071-4-15-4364",
+    "locusType": "performance_variant",
+    "performanceNote": "الهمزة مفتوحة فلا تبدل",
+    "sources": [
+      {
+        "id": "s-SUSI-071-4-15-4364",
+        "variantId": "v-SUSI-071-4-15-4364-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4364; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤَخَّرُ → يُؤَخَّرُ | الهمزة مفتوحة فلا تبدل"
+      }
+    ],
+    "description": "الهمزة مفتوحة فلا تبدل"
+  },
+  {
+    "id": "v-DURI-071-6-3-r2614",
+    "surah": 71,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "دُعَآءِىٓ",
+    "variantText": "دعـائيَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-071-6-3-r2614",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-071-6-3-r2614",
+        "variantId": "v-DURI-071-6-3-r2614",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2614; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "دعـائي → دعـائيَ | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
+  },
+  {
+    "id": "v-DURI-071-9-2-r2615-performance",
+    "surah": 71,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ",
+    "variantText": "إِنِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-071-9-2-r2615",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-071-9-2-r2615",
+        "variantId": "v-DURI-071-9-2-r2615-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2615; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إنّـي → إنّـيَ | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

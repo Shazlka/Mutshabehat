@@ -352,7 +352,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "افْتَرَاهُ → افْتَرَاهُ | إمالة فتحة الراء",
+      "افتـراه → افتـرٍاه | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p223-009-1",
@@ -439,7 +443,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "افْتَرَىٰ → افْتَرَى | إمالة فتحة الراء",
+      "افتـرى → افتـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p223-010-1",
@@ -526,7 +534,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p223-011-1",
@@ -613,7 +625,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "مـوسى → موسِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p223-012-1",
@@ -682,7 +698,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p223-014-1",
@@ -1109,5 +1128,40 @@
     "notes": "وقفًا: «إِلَّا هُوَهْ»",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-011-18-2-1453-IDGHAM_KABIR",
+    "pageNumber": 223,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 18,
+    "baseText": "أَظْلَمُ مِمَّنِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَظْلَمُ مِمَّنِ → أَظْلَم مِّمَّنِ | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

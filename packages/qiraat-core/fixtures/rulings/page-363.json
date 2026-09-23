@@ -516,7 +516,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَى → مُوسَى | بالتقليل وقفاً",
+      "مـوسى → مـوسِـى | قللها الدوري وقفاً"
+    ]
   },
   {
     "id": "r-p363-IMALAH_TAQLIL-هواه-1",
@@ -687,5 +691,215 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-025-35-7-2812-IDGHAM_KABIR",
+    "pageNumber": 363,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 35,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 35,
+    "baseText": "أَخَاهُ هَـٰرُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَخَاهُ هَارُونَ → أَخَاه هَّارُونَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-025-38-7-2814-IDGHAM_KABIR",
+    "pageNumber": 363,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 38,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 38,
+    "baseText": "ذَٰلِكَ كَثِيرًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الكاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "ذَٰلِكَ كَثِيرًا → ذَٰلِك كَّثِيرًا | إدغام الكاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-025-40-14-2816-IDGHAM_KABIR",
+    "pageNumber": 363,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 40,
+    "startToken": 14,
+    "endToken": 16,
+    "endAyah": 40,
+    "baseText": "لَا يَرْجُونَ نُشُورًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في النون"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في النون",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَا يَرْجُونَ نُشُورًا → لَا يَرْجُون نُّشُورًا | إدغام النون في النون"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-025-43-4-2818-IDGHAM_KABIR",
+    "pageNumber": 363,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 43,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 43,
+    "baseText": "إِلَـٰهَهُۥ هَوَىٰهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِلَٰهَهُ هَوَاهُ → إِلَٰهَه هَّوَاهُ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-025-37-8-r1614-IMALAH_TAQLIL",
+    "pageNumber": 363,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 37,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 37,
+    "baseText": "لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-025-41-6-r1617-TAGHYIR_HAMZ",
+    "pageNumber": 363,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 25,
+    "ayah": 41,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 41,
+    "baseText": "هُزُوًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأها الدوري بالهمز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأها الدوري بالهمز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "هُـزُواً → هُـزُؤاً | قرأها الدوري بالهمز"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

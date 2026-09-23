@@ -410,7 +410,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p240-012-1",
@@ -570,7 +573,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَرَىٰ → أَرَى | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p240-014-1",
@@ -734,7 +740,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَقَالَ لِلَّذِي → وَقَال لِّلَّذِي | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p240-017-1",
@@ -766,7 +775,10 @@
     "hasAlternate": false,
     "notes": "وله فيها الاختلاس",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "ذِكْرَ رَبِّهِ → ذِكْر رَّبِّهِ | إدغام الراء في الراء"
+    ]
   },
   {
     "id": "r-p240-018-1",
@@ -1378,6 +1390,10 @@
       {
         "authorityId": "Q06",
         "action": "النقل والإدغام"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "النقل والإدغام سكوناً وروماً"
       }
     ],
     "readings": [
@@ -1390,11 +1406,19 @@
         "readingId": "Q06-R02",
         "action": "النقل والإدغام",
         "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "النقل والإدغام سكوناً وروماً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نص المصدر لوقف حمزة: «النقل والإدغام سكوناً وروماً»"
+    ]
   },
   {
     "id": "r-p240-031-1",
@@ -1603,5 +1627,120 @@
     "text": "الفتح وصلاً لأهل سما وأبي جعفر، والإسكان للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p240-WAQF_HAMZA-ءاباءي_ابراهيم-11",
+    "pageNumber": 240,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 38,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 38,
+    "baseText": "ءَابَآءِىٓ إِبْرَٰهِيمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، ابن عامر، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p240-WAQF_HAMZA-اني_ارا-12",
+    "pageNumber": 240,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 43,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 43,
+    "baseText": "إِنِّىٓ أَرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، أبو جعفر"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، أبو جعفر"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، ابن كثير، أبو عمرو، أبو جعفر",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-012-43-3-r1035-IMALAH_TAQLIL",
+    "pageNumber": 240,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 43,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 43,
+    "baseText": "إِنِّىٓ أَرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الياء وأمال الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الياء وأمال الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إنـي أرى → إنـيَ أرٍى | فتح الدوري الياء وأمال الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

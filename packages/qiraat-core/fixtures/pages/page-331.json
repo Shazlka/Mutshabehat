@@ -118,6 +118,24 @@
         "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي الْكُتُبِ اكْسِرْ وَافْتَحِ التَّاءَ شَافِيًا وَمُدَّ كِتَابًا كَمْ نَصَا فَتَوَصَّلَا"
+      },
+      {
+        "id": "s-SUSI-021-104-6-2530",
+        "variantId": "v-L331-للكتب-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2530; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِلْكُتُبِ → لِلْكِتَابِ | كسر الكاف وفتح التاء وزيادة ألفاً بعدها على الإفراد"
+      },
+      {
+        "id": "s-DURI-021-104-6-r1466",
+        "variantId": "v-L331-للكتب-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1466; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "للكتُـب → للكِتـاب | قرأها الدوري بالإفراد"
       }
     ],
     "description": "بكسر الكاف وفتح التاء وألف على الإفراد",
@@ -219,5 +237,77 @@
         "text": "وَقُلْ قَالَ عَنْ شَهْدٍ وَآخِرُهَا عَلَا"
       }
     ]
+  },
+  {
+    "id": "v-D331-قال_رب-w2",
+    "surah": 21,
+    "ayah": 112,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قَـٰلَ رَبِّ",
+    "variantText": "قُل رَّبُّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D331-قال_رب",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D331-قال_رب-w2",
+        "variantId": "v-D331-قال_رب-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P331-R01402",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفعل أمر وضم الباء ﴿قُل رَّبُّ﴾: أبو جعفر."
+      }
+    ],
+    "description": "بفعل أمر وضم الباء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "Quranpedia",
+        "url": "https://quranpedia.net/qiraat/al-anbiya/112",
+        "text": "مطابقة موضع الكلمة وتقسيم القراء كما في صفحة اختلاف القراءات."
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-021-104-8-2531-performance",
+    "surah": 21,
+    "ayah": 104,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بَدَأْنَآ",
+    "variantText": "بَدَأْنَآ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-104-8-2531",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-021-104-8-2531",
+        "variantId": "v-SUSI-021-104-8-2531-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2531; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بَدَأْنَا → بَدَانَا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

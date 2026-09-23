@@ -275,7 +275,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p085-008-1",
@@ -473,7 +476,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "سُكَارَىٰ → سُكَارَى | إمالة فتحة الراء",
+      "سكـارى → سكـارٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p085-011-1",
@@ -560,7 +567,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مَّرْضَىٰ → مَّرْضَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p085-012-1",
@@ -681,7 +691,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الرَّسُولَ لَوْ → الرَّسُول لَّوْ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p085-015-1",
@@ -1266,5 +1279,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-004-40-4-0370-IDGHAM_KABIR",
+    "pageNumber": 85,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 40,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 40,
+    "baseText": "يَظْلِمُ مِثْقَالَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَظْلِمُ مِثْقَالَ → يَظْلِم مِّثْقَالَ | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-004-42-9-r0358-MEEM_JAM",
+    "pageNumber": 85,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 42,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 42,
+    "baseText": "بِهِمُ ٱلْأَرْضُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصـلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصـلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "بـهمُ الأرض → بـهمِ الأرض | كسر الدوري الميم وصـلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

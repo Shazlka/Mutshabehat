@@ -70,7 +70,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَنسَى → يَنسَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-002-1",
@@ -214,7 +217,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "شَتَّىٰ → شَتَّى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-005-1",
@@ -318,7 +324,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النُّهَىٰ → النُّهَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-007-1",
@@ -391,7 +400,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُخْرَىٰ → أُخْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p315-008-1",
@@ -637,7 +649,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَبَىٰ → وَأَبَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-014-1",
@@ -932,7 +947,10 @@
     "hasAlternate": false,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "سُوًى → سِوًى | كسر السين والتقليل (وقفاً)"
+    ]
   },
   {
     "id": "r-p315-019-1",
@@ -1041,7 +1059,10 @@
     "hasAlternate": false,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "ضُحًى → ضُحًى | بالتقليل (وقفاً)"
+    ]
   },
   {
     "id": "r-p315-021-1",
@@ -1173,7 +1194,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَتَىٰ → أَتَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-023-1",
@@ -1191,19 +1215,42 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06",
         "action": "إمالة"
       },
       {
         "authorityId": "Q07",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -1223,16 +1270,15 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُّوسَىٰ → مُّوسَى | بالتقليل",
+      "موسـى → مـوسِى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p315-024-1",
@@ -1305,7 +1351,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "افْتَرَىٰ → افْتَرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p315-025-1",
@@ -1423,7 +1472,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّجْوَىٰ → النَّجْوَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-027-1",
@@ -1598,7 +1650,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمُثْلَىٰ → الْمُثْلَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-031-1",
@@ -1742,7 +1797,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "اسْتَعْلَىٰ → اسْتَعْلَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p315-034-1",
@@ -1864,5 +1922,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-53-2-2368-IDGHAM_KABIR",
+    "pageNumber": 315,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 53,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 53,
+    "baseText": "جَعَلَ لَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَعَلَ لَكُمُ → جَعَل لَّكُمُ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-61-1-2380-IDGHAM_KABIR",
+    "pageNumber": 315,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 61,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 61,
+    "baseText": "قَالَ لَهُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ لَهُم → قَال لَّهُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-020-64-1-r1415-MEEM_JAM",
+    "pageNumber": 315,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 64,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 64,
+    "baseText": "فَأَجْمِعُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بهمزة وصل بعد الفاء وفتح الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بهمزة وصل بعد الفاء وفتح الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "فـأجْمِعوا → فـاجْمَعوا | قرأ الدوري بهمزة وصل بعد الفاء وفتح الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

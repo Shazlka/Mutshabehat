@@ -19,12 +19,12 @@
       "Q02-R02",
       "Q03-R01",
       "Q03-R02",
-      "Q04-R01",
-      "Q04-R02",
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "D276-ظعنكم",
     "locusType": "word_variant",
@@ -35,12 +35,247 @@
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P276-R00745",
-        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف. تصحيح الباقين: خلف المجرد في الوجه المقابل = Q06، وخلف العاشر Q10 داخل الباقين.",
         "sourceText": "﴿ظَعْنِكُمْ﴾: بإسكان العين لابن عامر، عاصم، حمزة، الكسائي، خلف؛ وبفتح العين ﴿ظَعَنِكُمْ﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-016-80-15-1951",
+        "variantId": "v-D276-ظعنكم-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1951; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ظَعْنِكُمْ → ظَعَنِكُمْ | فتح العين"
+      },
+      {
+        "id": "s-DURI-016-80-15-r1199",
+        "variantId": "v-D276-ظعنكم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1199; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ظعْنـكم → ظعَنـكم | فتح الدوري العين"
       }
     ],
     "description": "بفتح العين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P276-16-80-5-1",
+    "surah": 16,
+    "ayah": 80,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتِكُمْ",
+    "variantText": "بِيُوتِكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P276-16-80-5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P276-80-5",
+        "variantId": "v-AUDIT-P276-80-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "DOCX-P276-FARSH-BUYUT",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/86.",
+        "sourceText": "﴿بُيُوتِكُمْ﴾، ﴿بُيُوتًا﴾: بكسر الباء لورش، وأبي عمرو، وحفص، وأبي جعفر، ويعقوب؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بكسر الباء لورش وأبي عمرو وأبي جعفر ويعقوب وحفص",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P276-16-80-12-2",
+    "surah": 16,
+    "ayah": 80,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتًۭا",
+    "variantText": "بِيُوتًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P276-16-80-12",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P276-80-12",
+        "variantId": "v-AUDIT-P276-80-12",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "DOCX-P276-FARSH-BUYUT",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/86.",
+        "sourceText": "﴿بُيُوتِكُمْ﴾، ﴿بُيُوتًا﴾: بكسر الباء لورش، وأبي عمرو، وحفص، وأبي جعفر، ويعقوب؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بكسر الباء لورش وأبي عمرو وأبي جعفر ويعقوب وحفص",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P276-16-86-16-3",
+    "surah": 16,
+    "ayah": 86,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمُ",
+    "variantText": "إِلَيْهِمِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P276-16-86-16",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P276-86-16",
+        "variantId": "v-AUDIT-P276-86-16",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "DOCX-P276-FARSH-ILAYHIM",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/86.",
+        "sourceText": "﴿إِلَيْهِمُ الْقَوْلَ﴾:\nبكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.\nبكسر الهاء والميم وصلاً: أبو عمرو.\nبضم الهاء والميم وصلاً ﴿إِلَيْهُمُ﴾: حمزة، الكسائي، يعقوب، خلف."
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً لأبي عمرو",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P276-16-86-16-4",
+    "surah": 16,
+    "ayah": 86,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمُ",
+    "variantText": "إِلَيْهُمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P276-16-86-16",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P276-86-16",
+        "variantId": "v-AUDIT-P276-86-16",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "DOCX-P276-FARSH-ILAYHIM",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/86. تصحيح الإسناد: «خلف» المجرد = Q06، لا Q10.",
+        "sourceText": "﴿إِلَيْهِمُ الْقَوْلَ﴾:\nبكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر.\nبكسر الهاء والميم وصلاً: أبو عمرو.\nبضم الهاء والميم وصلاً ﴿إِلَيْهُمُ﴾: حمزة، الكسائي، يعقوب، خلف."
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً لحمزة والكسائي ويعقوب وخلف",
+    "wajhIndex": 4,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-016-81-19-1955-performance",
+    "surah": 16,
+    "ayah": 81,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "بَأْسَكُمْ ۚ",
+    "variantText": "بَأْسَكُمْ ۚ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-81-19-1955",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-81-19-1955",
+        "variantId": "v-SUSI-016-81-19-1955-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1955; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بَأْسَكُمْ → بَاسَكُمْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-016-83-1-1956",
+    "surah": 16,
+    "ayah": 83,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَعْرِفُونَ نِعْمَتَ",
+    "variantText": "يَعْرِفُون نِّعْمَه",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-83-1-1956",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-016-83-1-1956",
+        "variantId": "v-SUSI-016-83-1-1956",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1956; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَعْرِفُونَ نِعْمَتَ → يَعْرِفُون نِّعْمَه | إدغام النون في النون وبالهاء وقفاً"
+      }
+    ],
+    "description": "إدغام النون في النون وبالهاء وقفاً"
   }
 ]

@@ -97,6 +97,14 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمزة ياء"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -108,6 +116,16 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمزة ياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -141,6 +159,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -162,6 +196,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -195,6 +249,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -216,6 +286,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -360,6 +450,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -381,6 +487,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -414,6 +540,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -435,6 +577,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -628,6 +790,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -649,6 +827,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -918,5 +1116,145 @@
     "notes": "مع الإمالة",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-2-7-2682-IDGHAM_KABIR",
+    "pageNumber": 350,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 2,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 2,
+    "baseText": "مِا۟ئَةَ جَلْدَةٍۢ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "مِائَةَ جَلْدَةٍ → مِائَة جَّلْدَةٍ | إدغام التاء في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-4-3-2688-IDGHAM_KABIR",
+    "pageNumber": 350,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 4,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 4,
+    "baseText": "ٱلْمُحْصَنَـٰتِ ثُمَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الثاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الثاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْمُحْصَنَاتِ ثُمَّ → الْمُحْصَنَات ثُّمَّ | إدغام التاء في الثاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-4-7-2690-IDGHAM_KABIR",
+    "pageNumber": 350,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 4,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 4,
+    "baseText": "بِأَرْبَعَةِ شُهَدَآءَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الشين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الشين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بِأَرْبَعَةِ شُهَدَاءَ → بِأَرْبَعَة شُّهَدَاءَ | إدغام التاء في الشين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-024-5-5-2691-IDGHAM_KABIR",
+    "pageNumber": 350,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 24,
+    "ayah": 5,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 5,
+    "baseText": "بَعْدِ ذَٰلِكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الذال"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الذال",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بَعْدِ ذَٰلِكَ → بَعْد ذَّٰلِكَ | إدغام الدال في الذال"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

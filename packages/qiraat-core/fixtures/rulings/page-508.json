@@ -349,7 +349,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النَّـار → النٍّـار | أمالـهـا الدوري"
+    ]
   },
   {
     "id": "r-p508-IMALAH_TAQLIL-زادهم-4",
@@ -465,7 +469,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تقواهـم → تقـوِاهم | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p508-IMALAH_TAQLIL-جاء-6",
@@ -639,7 +646,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "فـأنَّـى → فـأنِّـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p508-IMALAH_TAQLIL-ذكراهم-9",
@@ -724,7 +734,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ذِكْرَاهُمْ → ذِكْرَاهُمْ | إمالة فتحة الراء والألف",
+      "ذكـراهم → ذكـرٍاهم | أمالـهـا الدوري"
+    ]
   },
   {
     "id": "r-p508-TAGHYIR_HAMZ-وياكلون-10",
@@ -1132,5 +1146,242 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p508-IDGHAM_SAGHIR-فقد_جاء-12",
+    "pageNumber": 508,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 18,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 18,
+    "baseText": "فَقَدْ جَآءَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03125",
+        "sourceText": "الإدغام الصغير: ﴿فَقَد جَّآءَ﴾: أدغمها أبو عمرو، وهشام، وحمزة، والكسائي، وخلف. ﴿وَٱسْتَغْفِر لِّذَنۢبِكَ﴾: أبو عمرو بخلف عن الدوري.",
+        "verificationNotes": "إسناد صريح؛ الاسم المجرد خلف حُسم إلى Q06 حسب قاعدة المشروع."
+      }
+    ]
+  },
+  {
+    "id": "r-p508-WAQF_RASM-وكاين-13",
+    "pageNumber": 508,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 13,
+    "baseText": "وَكَأَيِّن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بالياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "الوقف بالياء",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03128",
+        "sourceText": "الوقف على مرسوم الخط: ﴿وَكَأَيِّن﴾: يقف عليها بالياء أبو عمرو ويعقوب؛ وبالنون للباقين.",
+        "verificationNotes": "وجه وقف صريح لأبي عمرو ويعقوب في المصدر."
+      }
+    ]
+  },
+  {
+    "id": "r-SUSI-047-12-20-4048-IMALAH_TAQLIL",
+    "pageNumber": 508,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 12,
+    "startToken": 20,
+    "endToken": 20,
+    "endAyah": 12,
+    "baseText": "وَٱلنَّارُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَالنَّارُ → وَالنَّارُ | إمالة فتحة النون والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-047-19-7-4053-IDGHAM_KABIR",
+    "pageNumber": 508,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 19,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 19,
+    "baseText": "وَٱسْتَغْفِرْ لِذَنۢبِكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَاسْتَغْفِرْ لِذَنبِكَ → وَاسْتَغْفِر لِّذَنبِكَ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

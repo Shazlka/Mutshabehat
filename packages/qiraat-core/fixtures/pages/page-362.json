@@ -17,14 +17,15 @@
       "Q01-R02",
       "Q02-R01",
       "Q02-R02",
-      "Q03-R01",
-      "Q03-R02",
       "Q04-R01",
       "Q04-R02",
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q05-R01",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "L362-s25a25b0",
     "locusType": "word_variant",
@@ -182,5 +183,68 @@
     "description": "بنقل الهمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-025-27-8-2806",
+    "surah": 25,
+    "ayah": 27,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱتَّخَذْتُ",
+    "variantText": "اتَّخَتُّ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-27-8-2806",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-025-27-8-2806",
+        "variantId": "v-SUSI-025-27-8-2806",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2806; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اتَّخَذْتُ → اتَّخَتُّ | إدغام الذال في التاء"
+      }
+    ],
+    "description": "إدغام الذال في التاء"
+  },
+  {
+    "id": "v-SUSI-025-30-5-2808-performance",
+    "surah": 25,
+    "ayah": 30,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "قَوْمِى",
+    "variantText": "قَوْمِى",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-30-5-2808",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-025-30-5-2808",
+        "variantId": "v-SUSI-025-30-5-2808-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2808; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قَوْمِي → قَوْمِيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
   }
 ]

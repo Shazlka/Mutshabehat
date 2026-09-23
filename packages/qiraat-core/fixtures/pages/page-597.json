@@ -1,0 +1,96 @@
+[
+  {
+    "id": "v-SUSI-096-3-1-4546-performance",
+    "surah": 96,
+    "ayah": 3,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱقْرَأْ وَرَبُّكَ",
+    "variantText": "ٱقْرَأْ وَرَبُّكَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-096-3-1-4546",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة الساكنة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-096-3-1-4546",
+        "variantId": "v-SUSI-096-3-1-4546-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4546; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اقْرَأْ وَرَبُّكَ → اقْرَا وَرَبُّكَ | إبدال الهمزة الساكنة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة الساكنة ألفاً"
+  },
+  {
+    "id": "v-SUSI-096-9-1-4550",
+    "surah": 96,
+    "ayah": 9,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَرَءَيْتَ",
+    "variantText": "أَرَيْتَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-096-9-1-4550",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-096-9-1-4550",
+        "variantId": "v-SUSI-096-9-1-4550",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4550; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَرَأَيْتَ → أَرَيْتَ | تسهيل الهمزة وحذفها"
+      }
+    ],
+    "description": "تسهيل الهمزة وحذفها"
+  },
+  {
+    "id": "v-SUSI-096-11-1-4553",
+    "surah": 96,
+    "ayah": 11,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَرَءَيْتَ",
+    "variantText": "أَرَيْتَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-096-11-1-4553",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-096-11-1-4553",
+        "variantId": "v-SUSI-096-11-1-4553",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4553; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَرَأَيْتَ → أَرَيْتَ | تسهيل الهمزة وحذفها"
+      }
+    ],
+    "description": "تسهيل الهمزة وحذفها"
+  }
+]

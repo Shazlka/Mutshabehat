@@ -136,5 +136,268 @@
     "description": "برفع الكلمتين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D443-يخصمون-performance1",
+    "surah": 36,
+    "ayah": 49,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَخِصِّمُونَ",
+    "variantText": "يَخِصِّمُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D443-يخصمون",
+    "locusType": "performance_variant",
+    "performanceNote": "بفتح الياء وكسر الخاء وتشديد الصاد",
+    "sources": [
+      {
+        "id": "s-D443-يخصمون-performance1",
+        "variantId": "v-D443-يخصمون-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P443-R02492",
+        "verificationNotes": "وجه المصدر للمذكورين؛ «خلف» المجرد هو خلف عن حمزة Q06. المرجع المستقل: https://quranpedia.net/qiraat/ya-sin/49.",
+        "sourceText": "بفتح الياء وكسر الخاء وتشديد الصاد المكسورة ﴿يَخِصِّمُونَ﴾: ابن ذكوان، عاصم، الكسائي، يعقوب، خلف."
+      }
+    ],
+    "description": "بفتح الياء وكسر الخاء وتشديد الصاد",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D443-يخصمون-performance2",
+    "surah": 36,
+    "ayah": 49,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَخِصِّمُونَ",
+    "variantText": "يَخِصِّمُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "D443-يخصمون",
+    "locusType": "performance_variant",
+    "performanceNote": "باختلاس فتحة الخاء وتشديد الصاد",
+    "sources": [
+      {
+        "id": "s-D443-يخصمون-performance2",
+        "variantId": "v-D443-يخصمون-performance2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P443-R02493",
+        "verificationNotes": "وجه الاختلاس للمذكورين. المرجع المستقل: https://quranpedia.net/qiraat/ya-sin/49.",
+        "sourceText": "بفتح الياء واختلاس فتحة الخاء وتشديد الصاد ﴿يَخَصِّمُونَ﴾: قالون، وأبو عمرو (ولهما إسكان الخاء أيضاً)."
+      },
+      {
+        "id": "s-SUSI-036-49-8-3525",
+        "variantId": "v-D443-يخصمون-performance2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3525; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَخِصِّمُونَ → يَخَصِّمُونَ | فتح الخاء واختلاس الفتحة"
+      },
+      {
+        "id": "s-DURI-036-49-8-r2013",
+        "variantId": "v-D443-يخصمون-performance2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2013; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَـخِصِّـمون → يَـخَصِّـمون | اختلس الدوري فتحة الخاء"
+      }
+    ],
+    "description": "باختلاس فتحة الخاء وتشديد الصاد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D443-يخصمون-performance3",
+    "surah": 36,
+    "ayah": 49,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَخِصِّمُونَ",
+    "variantText": "يَخِصِّمُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01"
+    ],
+    "locusId": "D443-يخصمون",
+    "locusType": "performance_variant",
+    "performanceNote": "بفتح الياء والخاء وتشديد الصاد",
+    "sources": [
+      {
+        "id": "s-D443-يخصمون-performance3",
+        "variantId": "v-D443-يخصمون-performance3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P443-R02494",
+        "verificationNotes": "وجه الفتح للمذكورين. المرجع المستقل: https://quranpedia.net/qiraat/ya-sin/49.",
+        "sourceText": "بفتح الياء والخاء وتشديد الصاد ﴿يَخَصِّمُونَ﴾: ورش، وابن كثير، وهشام."
+      }
+    ],
+    "description": "بفتح الياء والخاء وتشديد الصاد",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D443-يخصمون-w2",
+    "surah": 36,
+    "ayah": 49,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَخِصِّمُونَ",
+    "variantText": "يَخْصِمُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R02"
+    ],
+    "locusId": "D443-يخصمون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D443-يخصمون-w2",
+        "variantId": "v-D443-يخصمون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P443-R02495",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الياء وإسكان الخاء وتخفيف الصاد ﴿يَخْصِمُونَ﴾: حمزة."
+      }
+    ],
+    "description": "بفتح الياء وإسكان الخاء وتخفيف الصاد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D443-يخصمون-w3",
+    "surah": 36,
+    "ayah": 49,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَخِصِّمُونَ",
+    "variantText": "يْخِصِّمُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D443-يخصمون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D443-يخصمون-w3",
+        "variantId": "v-D443-يخصمون-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P443-R02496",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بإسكان الياء والخاء وتشديد الصاد ﴿يْخِصِّمُونَ﴾: أبو جعفر."
+      }
+    ],
+    "description": "بإسكان الياء والخاء وتشديد الصاد",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-036-46-2-3520-performance",
+    "surah": 36,
+    "ayah": 46,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِيهِم",
+    "variantText": "تَأْتِيهِم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-036-46-2-3520",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-036-46-2-3520",
+        "variantId": "v-SUSI-036-46-2-3520-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3520; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْتِيهِم → تَاتِيهِم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-036-49-6-3524-performance",
+    "surah": 36,
+    "ayah": 49,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَأْخُذُهُمْ",
+    "variantText": "تَأْخُذُهُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-036-49-6-3524",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-036-49-6-3524",
+        "variantId": "v-SUSI-036-49-6-3524-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3524; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْخُذُهُمْ → تَاخُذُهُمْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

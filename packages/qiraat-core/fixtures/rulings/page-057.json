@@ -301,7 +301,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَٰعِيسَىٰ → يَٰعِيسَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p057-009-1",
@@ -388,7 +391,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "عِيسَىٰ → عِيسَى | بالتقليل",
+      "عيسـى → عيسِـى | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p057-010-1",
@@ -475,7 +482,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p057-011-1",
@@ -603,7 +614,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقِيَامَةِ ثُمَّ → الْقِيَامَة ثُّمَّ | إدغام التاء في الثاء"
+    ]
   },
   {
     "id": "r-p057-014-1",
@@ -665,7 +679,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لَهُ → قَالَ لَّهُ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p057-016-1",
@@ -790,5 +807,40 @@
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-55-25-0177-IKHFA",
+    "pageNumber": 57,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 55,
+    "startToken": 25,
+    "endToken": 26,
+    "endAyah": 55,
+    "baseText": "فَأَحْكُمُ بَيْنَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَأَحْكُمُ بَيْنَكُمْ → فَأَحْكُم بَيْنَكُمْ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

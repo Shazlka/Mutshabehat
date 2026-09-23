@@ -436,7 +436,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الكـافرين → الكٍـافرين | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p049-011-1",
@@ -1239,5 +1242,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-002-284-21-r0203-IDGHAM_KABIR",
+    "pageNumber": 49,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 284,
+    "startToken": 21,
+    "endToken": 22,
+    "endAyah": 284,
+    "baseText": "وَيُعَذِّبُ مَن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "جزم الدوري الفعل وأدغم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "جزم الدوري الفعل وأدغم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ويعذبُ من → ويعذب مَّـن | جزم الدوري الفعل وأدغم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

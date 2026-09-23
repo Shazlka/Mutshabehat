@@ -100,7 +100,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْأُولَىٰ → الْأُولَى | بالتقليل",
+      "الأولـى → الأولِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p448-s37a62b0",
@@ -363,7 +367,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقـدْ ضـلَّ → ولقـد ضَّـلَّ | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p448-s37a72b1",
@@ -568,7 +575,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "آثَارِهِمْ → آثَارِهِمْ | إمالة فتحة الثاء والألف",
+      "ءاثـارهم → ءاثٍـارهم | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p448-TAGHYIR_HAMZ-فمالون-3",
@@ -770,5 +781,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-037-71-1-3564-IDGHAM_KABIR",
+    "pageNumber": 448,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 37,
+    "ayah": 71,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 71,
+    "baseText": "وَلَقَدْ ضَلَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الضاد"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الضاد",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَدْ ضَلَّ → وَلَقَد ضَّلَّ | إدغام الدال في الضاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-037-55-2-r2033-IMALAH_TAQLIL",
+    "pageNumber": 448,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 37,
+    "ayah": 55,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 55,
+    "baseText": "فَرَءَاهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري الهمزة فقط",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "فـرءاه → فرءٍ اه | أمال الدوري الهمزة فقط"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

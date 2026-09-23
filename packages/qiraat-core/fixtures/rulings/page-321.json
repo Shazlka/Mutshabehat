@@ -29,6 +29,14 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -58,19 +66,22 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
+        "readingId": "Q03-R01",
+        "action": "تقليل",
         "isDefault": true
       },
       {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "تقليل",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تُنسَىٰ → تُنسَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-002-1",
@@ -360,6 +371,14 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -389,19 +408,22 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
+        "readingId": "Q03-R01",
+        "action": "تقليل",
         "isDefault": true
       },
       {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "تقليل",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَبْقَىٰ → وَأَبْقَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-010-1",
@@ -576,21 +598,14 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النُّهَىٰ → النُّهَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-014-1",
@@ -608,6 +623,15 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل",
+        "condition": "وقفًا"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "وقفاً تقليل"
+      },
+      {
         "authorityId": "Q06",
         "action": "إمالة",
         "condition": "وقفًا"
@@ -621,14 +645,19 @@
         "authorityId": "Q10",
         "action": "إمالة",
         "condition": "وقفًا"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل",
-        "condition": "وقفًا"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "وقفاً تقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -648,27 +677,15 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مُّسَمًّى → مُّسَمًّى | وقفاً تقليل"
+    ]
   },
   {
     "id": "r-p321-015-1",
@@ -794,6 +811,14 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -806,11 +831,25 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّهَارِ لَعَلَّكَ → النَّهَار لَّعَلَّكَ | إمالة فتحة الهاء والألف ثم إدغام الراء في اللام",
+      "النـهارِ → النـهٍار | أمال الدوري"
+    ]
   },
   {
     "id": "r-p321-019-1",
@@ -842,6 +881,14 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -871,19 +918,22 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
+        "readingId": "Q03-R01",
+        "action": "تقليل",
         "isDefault": true
       },
       {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "تقليل",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تَرْضَىٰ → تَرْضَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-020-1",
@@ -956,21 +1006,14 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-021-1",
@@ -1059,16 +1102,6 @@
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -1232,21 +1265,14 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لِلتَّقْوَىٰ → لِلتَّقْوَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-026-1",
@@ -1328,6 +1354,22 @@
       {
         "authorityId": "Q08",
         "action": "إبدال الهمز"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
       }
     ],
     "readings": [
@@ -1349,6 +1391,26 @@
       {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
         "isDefault": true
       }
     ],
@@ -1529,21 +1591,14 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْأُولَىٰ → الْأُولَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-032-1",
@@ -1606,6 +1661,14 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -1635,19 +1698,22 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
+        "readingId": "Q03-R01",
+        "action": "تقليل",
         "isDefault": true
       },
       {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "تقليل",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَنَخْزَىٰ → وَنَخْزَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-034-1",
@@ -1750,6 +1816,14 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -1779,19 +1853,22 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
+        "readingId": "Q03-R01",
+        "action": "تقليل",
         "isDefault": true
       },
       {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
+        "readingId": "Q03-R02",
+        "action": "تقليل",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "اهْتَدَىٰ → اهْتَدَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p321-037-1",
@@ -1853,6 +1930,79 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَّحْنُ نَرْزُقُكَ → نَّحْن نَّرْزُقُكَ | إدغام النون في النون"
+    ]
+  },
+  {
+    "id": "r-SUSI-020-130-7-2466-IDGHAM_KABIR",
+    "pageNumber": 321,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 130,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 130,
+    "baseText": "رَبِّكَ قَبْلَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الكاف في القاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الكاف في القاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "رَبِّكَ قَبْلَ → رَبِّك قَّبْلَ | إدغام الكاف في القاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-020-131-18-2470-IMALAH_TAQLIL",
+    "pageNumber": 321,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 20,
+    "ayah": 131,
+    "startToken": 18,
+    "endToken": 18,
+    "endAyah": 131,
+    "baseText": "وَأَبْقَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَأَبْقَىٰ → وَأَبْقَى | بالتقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

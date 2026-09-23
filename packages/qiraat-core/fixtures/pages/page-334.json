@@ -213,5 +213,70 @@
     "description": "بحذف الهمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D334-ولولوا-hamz-shuba",
+    "surah": 22,
+    "ayah": 22,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَلُؤْلُؤًۭا",
+    "variantText": "وَلُؤْلُؤًۭا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R02"
+    ],
+    "locusId": "إبدال الهمزة الأولى",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D334-ولولوا-hamz-shuba",
+        "variantId": "v-D334-ولولوا-hamz-shuba",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P334-R01432",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "إبدال الهمزة الأولى واوًا شعبةً وأبا جعفر؛ والوجه الخاص بشعبة مثبت هنا."
+      }
+    ],
+    "description": "إبدال الهمزة الأولى واوًا شعبةً وأبا جعفر؛ والوجه الخاص بشعبة مثبت هنا.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-022-19-16-2556-performance",
+    "surah": 22,
+    "ayah": 19,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "رُءُوسِهِمُ ٱلْحَمِيمُ",
+    "variantText": "رُءُوسِهِمُ ٱلْحَمِيمُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-022-19-16-2556",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الميم",
+    "sources": [
+      {
+        "id": "s-SUSI-022-19-16-2556",
+        "variantId": "v-SUSI-022-19-16-2556-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2556; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُءُوسِهِمُ الْحَمِيمُ → رُءُوسِهِمِ الْحَمِيمُ | كسر الميم"
+      }
+    ],
+    "description": "كسر الميم"
   }
 ]

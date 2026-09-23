@@ -32,5 +32,281 @@
     "description": "بنقل الهمزة",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P288-17-61-3-FARSH",
+    "surah": 17,
+    "ayah": 61,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِلْمَلَـٰٓئِكَةِ ٱسْجُدُوا۟",
+    "variantText": "لِلْمَلَائِكَةُ اسْجُدُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P288-17-61-3-FARSH",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P288-17-61-3-FARSH",
+        "variantId": "v-AUDIT-P288-17-61-3-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P288-R00886",
+        "sourceText": "لِلْمَلَائِكَةُ اسْجُدُوا",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P288-17-61-3-FARSH-EXT",
+        "variantId": "v-AUDIT-P288-17-61-3-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/61",
+        "sourceText": "لِلْمَلَائِكَةُ اسْجُدُوا",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "لِلْمَلَائِكَةُ اسْجُدُوا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "لِلْمَلَائِكَةُ اسْجُدُوا",
+        "url": "https://quranpedia.net/qiraat/al-isra/61"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P288-17-64-7-FARSH",
+    "surah": 17,
+    "ayah": 64,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِم",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P288-17-64-7-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P288-17-64-7-FARSH",
+        "variantId": "v-AUDIT-P288-17-64-7-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P288-R00888",
+        "sourceText": "عَلَيْهُمُ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P288-17-64-7-FARSH-EXT",
+        "variantId": "v-AUDIT-P288-17-64-7-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/64",
+        "sourceText": "عَلَيْهُمُ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "عَلَيْهُمُ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "عَلَيْهُمُ",
+        "url": "https://quranpedia.net/qiraat/al-isra/64"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P288-17-64-9-FARSH",
+    "surah": 17,
+    "ayah": 64,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَرَجِلِكَ",
+    "variantText": "وَرَجْلِكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P288-17-64-9-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P288-17-64-9-FARSH",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P288-R00889",
+        "sourceText": "وَرَجْلِكَ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P288-17-64-9-FARSH-EXT",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/64",
+        "sourceText": "وَرَجْلِكَ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      },
+      {
+        "id": "s-SUSI-017-64-9-2053",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2053; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَرَجِلِكَ → وَرِجْلِكَ | إسكان الجيم مع القلقلة"
+      },
+      {
+        "id": "s-DURI-017-64-9-r1249",
+        "variantId": "v-AUDIT-P288-17-64-9-FARSH",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1249; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ورجِـلك → ورَجْـلك | أسكن الدوري الجيم"
+      }
+    ],
+    "description": "وَرَجْلِكَ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "وَرَجْلِكَ",
+        "url": "https://quranpedia.net/qiraat/al-isra/64"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-017-62-8-2051",
+    "surah": 17,
+    "ayah": 62,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَخَّرْتَنِ",
+    "variantText": "أَخَّرْتَنِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-62-8-2051",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-017-62-8-2051",
+        "variantId": "v-SUSI-017-62-8-2051",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2051; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَخَّرْتَنِ → أَخَّرْتَنِي | بالياء وصلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-DURI-017-60-10-r1245",
+    "surah": 17,
+    "ayah": 60,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرُّءْيَا",
+    "variantText": "الرؤيِـا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-017-60-10-r1245",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-017-60-10-r1245",
+        "variantId": "v-DURI-017-60-10-r1245",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1245; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الرؤيـا → الرؤيِـا | قللها الدوري وقفاً"
+      }
+    ],
+    "description": "قللها الدوري وقفاً"
+  },
+  {
+    "id": "v-DURI-017-62-8-r1247",
+    "surah": 17,
+    "ayah": 62,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَخَّرْتَنِ",
+    "variantText": "أخـرتني",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-017-62-8-r1247",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-017-62-8-r1247",
+        "variantId": "v-DURI-017-62-8-r1247",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1247; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أخـرتنِ → أخـرتني | أثبت الدوري الياء وصلاً"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصلاً"
   }
 ]

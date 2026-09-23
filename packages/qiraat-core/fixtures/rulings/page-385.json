@@ -196,6 +196,14 @@
       {
         "authorityId": "Q03-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -233,11 +241,25 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → موسٍـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p385-IMALAH_TAQLIL-جاء-0",
@@ -344,7 +366,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النّـار → النًّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p385-IMALAH_TAQLIL-اهتدا-2",
@@ -524,5 +550,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-028-2-4-3035-IDGHAM_KABIR",
+    "pageNumber": 385,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 28,
+    "ayah": 2,
+    "startToken": 4,
+    "endToken": 1,
+    "endAyah": 3,
+    "baseText": "ٱلْمُبِينِ نَتْلُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في النون"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في النون",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْمُبِينِ نَتْلُو → الْمُبِين نَّتْلُو | إدغام النون في النون"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

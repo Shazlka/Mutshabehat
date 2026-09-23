@@ -72,6 +72,14 @@
       {
         "authorityId": "Q03-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -109,11 +117,25 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "السُّوأَىٰ → السُّوأَى | بالتقليل",
+      "السـوأى → السـوأِى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p405-s30a10b1",
@@ -304,7 +326,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p405-IMALAH_TAQLIL-الدنيا-2",
@@ -389,7 +414,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p405-IMALAH_TAQLIL-كافرين-4",
@@ -456,7 +485,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "كَافِرِينَ → كَافِرِينَ | إمالة فتحة الكاف والألف",
+      "كـافرين → كٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p405-TAGHYIR_HAMZ-يستهزءون-5",
@@ -497,5 +530,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-030-8-19-r1822-IMALAH_TAQLIL",
+    "pageNumber": 405,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 30,
+    "ayah": 8,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 8,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

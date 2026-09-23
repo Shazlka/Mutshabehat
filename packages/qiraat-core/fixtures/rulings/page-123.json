@@ -292,7 +292,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الصَّالِحَاتِ جُنَاحٌ → الصَّالِحَات جُّنَاحٌ | إدغام التاء في الجيم"
+    ]
   },
   {
     "id": "r-p123-007-1",
@@ -323,7 +326,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الصَّالِحَاتِ ثُمَّ → الصَّالِحَات ثُّمَّ | إدغام التاء في الثاء"
+    ]
   },
   {
     "id": "r-p123-008-1",
@@ -354,7 +360,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الصَّيْدِ تَنَالُهُ → الصَّيْد تَّنَالُهُ | إدغام الدال في التاء"
+    ]
   },
   {
     "id": "r-p123-009-1",
@@ -416,7 +425,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "طَعَامُ مَسَاكِينَ → طَعَام مَّسَاكِينَ | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p123-011-1",
@@ -586,5 +598,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-005-95-19-0645-IKHFA",
+    "pageNumber": 123,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 95,
+    "startToken": 19,
+    "endToken": 20,
+    "endAyah": 95,
+    "baseText": "يَحْكُمُ بِهِۦ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَحْكُمُ بِهِ → يَحْكُم بِهِ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

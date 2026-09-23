@@ -381,7 +381,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "بِشْرَاكُمُ → بِشْرَاكُمُ | إمالة فتحة الراء والألف",
+      "بشـراكم → بشـرٍاكم | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p539-IMALAH_TAQLIL-جاء-6",
@@ -534,5 +538,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-057-15-11-4230-IMALAH_TAQLIL",
+    "pageNumber": 539,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 15,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 15,
+    "baseText": "ٱلنَّارُ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّارُ → النَّارُ | إمالة فتحة النون والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-057-12-2-r2459-IMALAH_TAQLIL",
+    "pageNumber": 539,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 12,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 12,
+    "baseText": "تَرَى ٱلْمُؤْمِنِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "تـرى المـؤمنين → تـرى المؤمنين | أمالها الدوري وقفاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-057-16-22-r2463-MEEM_JAM",
+    "pageNumber": 539,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 16,
+    "startToken": 22,
+    "endToken": 23,
+    "endAyah": 16,
+    "baseText": "عَلَيْهِمُ ٱلْأَمَدُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليهـمُ الأمد → عليهـمِ الأمد | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

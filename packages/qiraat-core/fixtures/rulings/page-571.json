@@ -64,7 +64,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الكـافرين → الكٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p571-TAGHYIR_HAMZ-مومنا-1",
@@ -318,5 +321,40 @@
     ],
     "createdAt": "2026-09-22T00:00:00.000Z",
     "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-071-26-10-4370-IMALAH_TAQLIL",
+    "pageNumber": 571,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 71,
+    "ayah": 26,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 26,
+    "baseText": "دَيَّارًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الياء والألف لكسرة الراء المتطرفة وقفاً، ووصلاً منصوبة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الياء والألف لكسرة الراء المتطرفة وقفاً، ووصلاً منصوبة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "دَيَّارًا → دَيَّارًا | إمالة فتحة الياء والألف لكسرة الراء المتطرفة وقفاً، ووصلاً منصوبة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -436,7 +436,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "الكافريـن → الكٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p179-011-1",
@@ -620,7 +624,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فقدْ جـاءكم → فقد جَّـاءكم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p179-014-1",
@@ -935,5 +942,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-008-18-4-1141-IKHFA",
+    "pageNumber": 179,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 8,
+    "ayah": 18,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 18,
+    "baseText": "مُوهِنُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "فتح الواو وتشديد الهاء مع تنوين الضم والإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الواو وتشديد الهاء مع تنوين الضم والإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "مُوهِنُ → مُوَهِّنٌ | فتح الواو وتشديد الهاء مع تنوين الضم والإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-008-19-3-1144-IDGHAM_KABIR",
+    "pageNumber": 179,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 8,
+    "ayah": 19,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 19,
+    "baseText": "فَقَدْ جَآءَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَقَدْ جَاءَكُمُ → فَقَد جَّاءَكُمُ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-008-19-21-r0769-TAGHYIR_HAMZ",
+    "pageNumber": 179,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 8,
+    "ayah": 19,
+    "startToken": 21,
+    "endToken": 22,
+    "endAyah": 19,
+    "baseText": "وَأَنَّ ٱللَّهَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وأنَّ الله → وإنَّ الله | كسر الدوري الهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

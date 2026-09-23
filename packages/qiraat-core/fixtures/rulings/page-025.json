@@ -175,7 +175,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "والنهـار → والنهٍـار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p025-006-1",
@@ -229,7 +232,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النّـار → النٍّـار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p025-007-1",
@@ -399,7 +405,10 @@
     "text": "وأمّا وصلًا فأمالها السوسي (بخلف عنه).",
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يرى الذين → يرى الذين | أمالها الدوري وقفاً"
+    ]
   },
   {
     "id": "r-p025-010-1",
@@ -763,5 +772,145 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-002-165-2-r0097-IMALAH_TAQLIL",
+    "pageNumber": 25,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 165,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 165,
+    "baseText": "ٱلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّــاس → النٍّـاس | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-002-166-1-r0099-IDGHAM_KABIR",
+    "pageNumber": 25,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 166,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 166,
+    "baseText": "إِذْ تَبَرَّأَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغـير للدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغـير للدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إذْ تَبـرأ → إذ تَّبـرَّأ | إدغام صغـير للدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-002-166-11-r0100-MEEM_JAM",
+    "pageNumber": 25,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 166,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 166,
+    "baseText": "بِهِمُ ٱلْأَسْبَابُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً لالتقاء الساكنين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً لالتقاء الساكنين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "بـهمُ الأسباب → بـهمِ الأسباب | كسر الدوري الميم وصلاً لالتقاء الساكنين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-002-167-14-r0101-MEEM_JAM",
+    "pageNumber": 25,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 167,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 167,
+    "baseText": "يُرِيهِمُ ٱللَّهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً لالتقاء الساكنين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً لالتقاء الساكنين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "يريـهمُ الله → يريـهمِِ الله | كسر الدوري الميم وصلاً لالتقاء الساكنين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

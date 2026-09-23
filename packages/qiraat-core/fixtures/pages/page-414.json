@@ -13,12 +13,14 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
       "Q04-R01",
       "Q04-R02",
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
       "Q10-R01",
       "Q10-R02"
     ],
@@ -60,6 +62,8 @@
       "Q06-R02",
       "Q07-R01",
       "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
       "Q10-R01",
       "Q10-R02"
     ],
@@ -98,9 +102,7 @@
       "Q04-R01",
       "Q04-R02",
       "Q08-R01",
-      "Q08-R02",
-      "Q09-R01",
-      "Q09-R02"
+      "Q08-R02"
     ],
     "locusId": "D414-وينزل_الغيث",
     "locusType": "multi_word_variant",
@@ -118,5 +120,36 @@
     "description": "بتخفيف الزاي",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-DURI-031-31-8-r1873",
+    "surah": 31,
+    "ayah": 31,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "بِنِعْمَتِ",
+    "variantText": "بنعمـة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-031-31-8-r1873",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-031-31-8-r1873",
+        "variantId": "v-DURI-031-31-8-r1873",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1873; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بنعمـت → بنعمـة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "وقف الدوري بالهاء"
   }
 ]

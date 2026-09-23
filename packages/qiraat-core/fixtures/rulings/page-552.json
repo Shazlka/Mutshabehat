@@ -82,7 +82,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "عِيسَى → عِيسَى | بالتقليل",
+      "عيسـى → عيسِـى | قللها الدوري وقفاً"
+    ]
   },
   {
     "id": "r-p552-IMALAH_TAQLIL-التوراه-1",
@@ -158,7 +162,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "التـوراة → التـورٍاة | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p552-IMALAH_TAQLIL-جاءهم-2",
@@ -292,7 +299,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "افتـرى → افتـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p552-IMALAH_TAQLIL-واخرا-4",
@@ -377,7 +387,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "وأخـرى → وأخـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p552-IMALAH_TAQLIL-يدعا-5",
@@ -779,6 +792,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة وقفاً"
       },
@@ -796,6 +817,16 @@
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة وقفاً",
@@ -823,9 +854,81 @@
         "sourceReference": "NQuran، العشر الصغرى، الصف 14",
         "sourceText": "﴿عِيسَى﴾ (معاً وقفاً): حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف.",
         "verificationNotes": "المصدر المستقل يسمي حمزة والكسائي وخلف العاشر صراحة؛ السجل يقول عيسى (معاً وقفاً)."
-      }
+      },
+      "عِيسَى → عِيسَى | بالتقليل",
+      "عيسـى → عيسِـى | قللها الدوري وقفاً"
     ],
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-061-8-11-4288-IMALAH_TAQLIL",
+    "pageNumber": 552,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 8,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 8,
+    "baseText": "ٱلْكَـٰفِرُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْكَافِرُونَ → الْكَافِرُونَ | إمالة فتحة الكاف والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-061-12-1-4290-IDGHAM_KABIR",
+    "pageNumber": 552,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 12,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 12,
+    "baseText": "يَغْفِرْ لَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَغْفِرْ لَكُمْ → يَغْفِر لَّكُمْ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -46,6 +46,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -60,13 +68,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -86,16 +100,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْأُنثَىٰ → الْأُنثَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-الدنيا-1",
@@ -113,6 +125,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -127,13 +147,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -153,16 +179,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-اهتدا-2",
@@ -180,6 +204,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -194,13 +226,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -220,16 +258,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "اهْتَدَىٰ → اهْتَدَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-بالحسني-3",
@@ -247,6 +283,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -261,13 +305,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -287,16 +337,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "بِالْحُسْنَىٰ → بِالْحُسْنَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-تولا-4",
@@ -314,6 +362,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -328,13 +384,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -354,16 +416,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تَوَلَّىٰ → تَوَلَّى | تقليل الألف"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-موسا-5",
@@ -381,6 +441,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -395,13 +463,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -421,16 +495,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-وفا-6",
@@ -448,6 +520,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -462,13 +542,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -488,16 +574,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَفَّىٰ → وَفَّى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-سعا-7",
@@ -515,6 +599,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -529,13 +621,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -555,16 +653,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "سَعَىٰ → سَعَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-الاوفا-8",
@@ -582,6 +678,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -596,13 +700,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -622,16 +732,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْأَوْفَىٰ → الْأَوْفَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-المنتها-9",
@@ -649,6 +757,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -663,13 +779,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -689,16 +811,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمُنتَهَىٰ → الْمُنتَهَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-وابكا-10",
@@ -716,6 +836,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -730,13 +858,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -756,16 +890,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَبْكَىٰ → وَأَبْكَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-واحيا-11",
@@ -783,6 +915,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -797,13 +937,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -823,16 +969,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَحْيَا → وَأَحْيَا | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-يرا-12",
@@ -917,7 +1061,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يَرَىٰ → يَرَى | تقليل الألف (رأس آية)"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-اخرا-13",
@@ -1002,7 +1149,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أُخْرَىٰ → أُخْرَى | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p527-IMALAH_TAQLIL-من_تولا-15",
@@ -1262,5 +1412,215 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-053-32-31-4161-IMALAH_TAQLIL",
+    "pageNumber": 527,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 32,
+    "startToken": 31,
+    "endToken": 31,
+    "endAyah": 32,
+    "baseText": "ٱتَّقَىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اتَّقَىٰ → اتَّقَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-053-33-3-4163-IMALAH_TAQLIL",
+    "pageNumber": 527,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 33,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 33,
+    "baseText": "تَوَلَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَوَلَّىٰ → تَوَلَّى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-053-34-3-4164-IMALAH_TAQLIL",
+    "pageNumber": 527,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 34,
+    "baseText": "وَأَكْدَىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَأَكْدَىٰ → وَأَكْدَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-053-40-4-4171-IMALAH_TAQLIL",
+    "pageNumber": 527,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 40,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 40,
+    "baseText": "يُرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يُرَىٰ → يُرَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-053-43-1-4174-IDGHAM_KABIR",
+    "pageNumber": 527,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 43,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 43,
+    "baseText": "وَأَنَّهُۥ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَأَنَّهُ هُوَ → وَأَنَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-053-44-1-4176-IDGHAM_KABIR",
+    "pageNumber": 527,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 53,
+    "ayah": 44,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 44,
+    "baseText": "وَأَنَّهُۥ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَأَنَّهُ هُوَ → وَأَنَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

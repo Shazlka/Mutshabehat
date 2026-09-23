@@ -48,12 +48,30 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قلل الدوري الحاء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
       }
     ],
     "readings": [
       {
         "readingId": "Q01-R02",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قلل الدوري الحاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
         "isDefault": true
       }
     ],
@@ -63,7 +81,11 @@
     "sourceRecordId": "DOCX-P489-R02932",
     "sourceText": "الممال والمقلل: ﴿حم﴾: أمال الحاء ابن ذكوان، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو. ﴿وَمَضَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف.",
     "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02932",
-    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/1"
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/1",
+    "sourceNotes": [
+      "حم → حم | بالتقليل",
+      "حـم → حِـم | قلل الدوري الحاء"
+    ]
   },
   {
     "id": "r-p489-IMALAH_TAQLIL-ومضا-1",
@@ -216,5 +238,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-043-10-2-3911-IDGHAM_KABIR",
+    "pageNumber": 489,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 10,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 10,
+    "baseText": "جَعَلَ لَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَعَلَ لَكُمُ → جَعَل لَّكُمُ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-043-10-6-3913-IDGHAM_KABIR",
+    "pageNumber": 489,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 10,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 10,
+    "baseText": "وَجَعَلَ لَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَجَعَلَ لَكُم → وَجَعَل لَّكُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

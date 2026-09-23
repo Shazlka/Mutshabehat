@@ -143,6 +143,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P522-R03247",
         "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "قوبل الوجه بنص المصدر وربط بالرمز الحقيقي للكلمة في صفحة المصحف؛ المرجع المستقل: https://quranpedia.net/qiraat/51/40"
+      },
+      {
+        "id": "s-DURI-051-40-6-r2391",
+        "variantId": "v-L522-s51a40b6-w1-R03247",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2391; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -420,5 +429,37 @@
         "url": "https://quranpedia.net/qiraat/51/49"
       }
     ]
+  },
+  {
+    "id": "v-DURI-051-49-7-r2394-performance",
+    "surah": 51,
+    "ayah": 49,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "تَذَكَّرُونَ",
+    "variantText": "تَذَكَّرُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-051-49-7-r2394",
+    "locusType": "performance_variant",
+    "performanceNote": "شدد الدوري الذال",
+    "sources": [
+      {
+        "id": "s-DURI-051-49-7-r2394",
+        "variantId": "v-DURI-051-49-7-r2394-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2394; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تـذكّرون → تـذَّكّـرون | شدد الدوري الذال"
+      }
+    ],
+    "description": "شدد الدوري الذال"
   }
 ]

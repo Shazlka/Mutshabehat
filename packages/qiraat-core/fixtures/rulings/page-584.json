@@ -29,6 +29,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -51,13 +63,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "طَغَىٰ → طَغَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -90,6 +118,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -112,13 +152,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "https://quranpedia.net/qiraat/an-naziat/18 | جهاز الآية نفسه يسمي إسحاق وإدريس عن خلف؛ لذلك حُفظ Q10 مستقلاً عن «خلف» المجرد في مصدر الوثيقة."
+      "https://quranpedia.net/qiraat/an-naziat/18 | جهاز الآية نفسه يسمي إسحاق وإدريس عن خلف؛ لذلك حُفظ Q10 مستقلاً عن «خلف» المجرد في مصدر الوثيقة.",
+      "تَزَكَّىٰ → تَزَكَّى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -151,6 +207,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -173,13 +241,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "فَتَخْشَىٰ → فَتَخْشَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -212,6 +296,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -234,13 +330,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "يَسْعَىٰ → يَسْعَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -273,6 +385,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -295,13 +419,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "فَنَادَىٰ → فَنَادَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -334,6 +474,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -356,13 +508,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "الْأَعْلَىٰ → الْأَعْلَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -395,6 +563,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -417,13 +597,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "وَالْأُولَىٰ → وَالْأُولَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -456,6 +652,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -478,13 +686,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "يَخْشَىٰ → يَخْشَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -517,6 +741,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -539,13 +775,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "سَعَىٰ → سَعَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -578,6 +830,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -600,13 +864,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "الدُّنْيَا → الدُّنْيَا | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -639,6 +919,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -661,13 +953,30 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "الْمَأْوَىٰ → الْمَأْوَى | تحقيق الهمز (من الإيواء) وتقليل الألف (رأس آية)",
+      "الـمأوى → الـمأوِى | قلل الدوري وأبدل السوسي"
     ]
   },
   {
@@ -700,6 +1009,18 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -722,13 +1043,29 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "الْهَوَىٰ → الْهَوَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -816,7 +1153,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "الْكُبْرَىٰ → الْكُبْرَى | إمالة فتحة الراء والألف (رأس آية)"
     ]
   },
   {
@@ -904,7 +1242,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "يَرَىٰ → يَرَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -992,7 +1331,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "فـأراه → فـأرٍاه | أمالها الدوري"
     ]
   },
   {
@@ -1193,5 +1533,1063 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-الماوا-30",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 41,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 41,
+    "baseText": "ٱلْمَأْوَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمَأْوَىٰ → الْمَأْوَى | تحقيق الهمز (من الإيواء) وتقليل الألف (رأس آية)",
+      "الـمأوى → الـمأوِى | قلل الدوري وأبدل السوسي"
+    ]
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-بناها-32",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 27,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 27,
+    "baseText": "بَنَىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-فسواها-34",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 28,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 28,
+    "baseText": "فَسَوَّىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-ضحاها-36",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 29,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 29,
+    "baseText": "ضُحَىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-ضحاها-38",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 46,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 46,
+    "baseText": "ضُحَىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-دحاها-40",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 30,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 30,
+    "baseText": "دَحَىٰهَآ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-ومرعاها-42",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 31,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 31,
+    "baseText": "وَمَرْعَىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-ارساها-44",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 32,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 32,
+    "baseText": "أَرْسَىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-مرساها-46",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 42,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 42,
+    "baseText": "مُرْسَىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-ذكراها-48",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 43,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 43,
+    "baseText": "ذِكْرَىٰهَآ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-منتهاها-50",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 44,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 44,
+    "baseText": "مُنتَهَىٰهَآ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p584-IMALAH_TAQLIL-يخشاها-52",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 45,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 45,
+    "baseText": "يَخْشَىٰهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-079-21-2-4423-IMALAH_TAQLIL",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 21,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 21,
+    "baseText": "وَعَصَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَعَصَىٰ → وَعَصَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-079-37-3-4433-IMALAH_TAQLIL",
+    "pageNumber": 584,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 79,
+    "ayah": 37,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 37,
+    "baseText": "طَغَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "طَغَىٰ → طَغَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

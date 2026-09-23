@@ -668,7 +668,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P577-R03762: ﴿التَّقْوَىٰ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:56، ٱلتَّقْوَىٰ explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+      "DOCX-P577-R03762: ﴿التَّقْوَىٰ﴾: حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:56، ٱلتَّقْوَىٰ explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446",
+      "التـقوى → التقـوِى | قللها الدوري"
     ]
   },
   {
@@ -719,5 +720,70 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p577-TAGHYIR_HAMZ-yuta-hamz",
+    "pageNumber": 577,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 74,
+    "ayah": 52,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 52,
+    "baseText": "يُؤْتَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P577-R03763",
+        "sourceText": "يُؤْتَىٰ: ورش، السوسي، أبو جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز."
+      }
+    ]
   }
 ]

@@ -101,6 +101,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P547-R03488",
         "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
         "sourceText": "﴿جُدُرٍ﴾: بضم الجيم والدال بلا ألف جمعاً ﴿جُدُرٍ﴾ لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ بكسر الجيم وفتح الدال وألف بعدها مفرداً ﴿جِدَارٍ﴾ لابن كثير وأبي عمرو."
+      },
+      {
+        "id": "s-DURI-059-14-11-r2507",
+        "variantId": "v-AUDIT-P547_R03488",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2507; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جُـدُر → جِـدار | كسر الدوري الجيم وفتح الدال وألف بعدها"
       }
     ],
     "description": "﴿جُدُرٍ﴾: بضم الجيم والدال بلا ألف جمعاً ﴿جُدُرٍ﴾ لنافع، وابن عامر، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ بكسر الجيم وفتح الدال وألف بعدها مفرداً ﴿جِدَارٍ﴾ لابن كثير وأبي عمرو.",
@@ -145,11 +154,134 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P547-R03489",
         "verificationNotes": "وجه صريح من السجل المصدر، وربط بقاعدة كلمات المصحف. عولج «خلف» المجرد على أنه خلف عن حمزة Q06 حسب قاعدة المشروع.",
         "sourceText": "﴿تَحْسَبُهُمْ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      },
+      {
+        "id": "s-SUSI-059-14-15-4260",
+        "variantId": "v-AUDIT-P547_R03489",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4260; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَحْسَبُهُمْ → تَحْسِبُهُمْ | كسر السين"
+      },
+      {
+        "id": "s-DURI-059-14-15-r2508",
+        "variantId": "v-AUDIT-P547_R03489",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2508; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تـحسَبهم → تـحسِبهم | كسر الدوري السين"
       }
     ],
     "description": "﴿تَحْسَبُهُمْ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين.",
     "wajhIndex": 2,
     "evidence": [],
     "performanceNote": "﴿تَحْسَبُهُمْ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+  },
+  {
+    "id": "v-AUDIT-P547-59-10-22-R03486",
+    "surah": 59,
+    "ayah": 10,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "رَءُوفٌۭ",
+    "variantText": "رَءُوفٌۭ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P547-59-10-22-R03486",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P547-59-10-22-R03486-DOC",
+        "variantId": "v-AUDIT-P547-59-10-22-R03486",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P547-R03486",
+        "sourceText": "بالمد لحفص، ونافع، وابن كثير، وابن عامر، وأبي جعفر؛ وبالقصر للباقين.",
+        "verificationNotes": "وجه صريح من سجل المصدر، وربط بموضعه في مصحف المدينة."
+      }
+    ],
+    "description": "رَءُوفٌۭ: بالمد لحفص ونافع وابن كثير وابن عامر وأبي جعفر، وبالقصر للباقين.",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "المد والقصر في رَءُوفٌۭ."
+  },
+  {
+    "id": "v-DURI-059-10-22-r2504",
+    "surah": 59,
+    "ayah": 10,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "رَءُوفٌۭ",
+    "variantText": "رؤف",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-059-10-22-r2504",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-059-10-22-r2504",
+        "variantId": "v-DURI-059-10-22-r2504",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2504; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رؤوف → رؤف | قصر الدوري الهمزة"
+      }
+    ],
+    "description": "قصر الدوري الهمزة"
+  },
+  {
+    "id": "v-DURI-059-16-13-r2510-performance",
+    "surah": 59,
+    "ayah": 16,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ أَخَافُ",
+    "variantText": "إِنِّىٓ أَخَافُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-059-16-13-r2510",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-059-16-13-r2510",
+        "variantId": "v-DURI-059-16-13-r2510-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2510; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إنِّـي أخاف → إنِّـيَ أخاف | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

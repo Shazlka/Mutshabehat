@@ -378,7 +378,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p170-011-1",
@@ -465,7 +469,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "مـوسى → مـوسِى | قلل الدوري"
+    ]
   },
   {
     "id": "r-p170-012-1",
@@ -570,7 +577,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "التـوراة → التـورٍاة | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p170-013-1",
@@ -674,7 +684,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُصِيبُ بِهِ → أُصِيب بِّهِ | إدغام الباء في الباء"
+    ]
   },
   {
     "id": "r-p170-015-1",
@@ -705,7 +718,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَيَضَعُ عَنْهُمْ → وَيَضَع عَّنْهُمْ | إدغام العين في العين"
+    ]
   },
   {
     "id": "r-p170-016-1",
@@ -1224,5 +1240,75 @@
     "text": "الفتح وصلاً لنافع وأبي جعفر، والإسكان للباقين",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-007-159-2-1078-IMALAH_TAQLIL",
+    "pageNumber": 170,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 159,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 159,
+    "baseText": "قَوْمِ مُوسَىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم مع التقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم مع التقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَوْمِ مُوسَىٰ → قَوْم مُّوسَى | إدغام الميم في الميم مع التقليل"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-007-157-22-r0736-MEEM_JAM",
+    "pageNumber": 170,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 157,
+    "startToken": 22,
+    "endToken": 23,
+    "endAyah": 157,
+    "baseText": "عَلَيْهِمُ ٱلْخَبَـٰٓئِثَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليهـمُ الـخبائث → عليهـمِ الـخبائث | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

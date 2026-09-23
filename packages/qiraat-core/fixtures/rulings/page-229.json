@@ -475,7 +475,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دَارِكُمْ → دَارِكُمْ | إمالة فتحة الدال والألف",
+      "داركـم → دٍاركـم | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p229-014-1",
@@ -529,7 +533,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دِيَارِهِم → دِيَارِهِم | إمالة فتحة الياء والألف",
+      "ديـارهم → ديٍـارهم | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p229-015-1",
@@ -720,7 +728,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِالْبُشْرَىٰ → بِالْبُشْرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p229-017-1",
@@ -898,7 +909,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقدْ جـاءت → ولـقد جَّـاءت | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p229-019-1",
@@ -930,7 +944,10 @@
     "hasAlternate": false,
     "notes": "وله فيها الاختلاس",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "خِزْيِ يَوْمِئِذٍ → خِزْي يَّوْمِئِذٍ | إدغام الياء في الياء"
+    ]
   },
   {
     "id": "r-p229-020-1",
@@ -1503,5 +1520,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-011-69-1-1509-IDGHAM_KABIR",
+    "pageNumber": 229,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 69,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 69,
+    "baseText": "وَلَقَدْ جَآءَتْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَدْ جَاءَتْ → وَلَقَد جَّاءَتْ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

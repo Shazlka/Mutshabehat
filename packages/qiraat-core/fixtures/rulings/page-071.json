@@ -412,7 +412,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أنَّـى → أنِّـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p071-011-1",
@@ -512,7 +515,10 @@
     "hasAlternate": false,
     "text": "مع الاختلاس.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَبْلُ لَفِي → قَبْل لَّفِي | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p071-014-1",
@@ -881,5 +887,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-159-17-0280-IDGHAM_KABIR",
+    "pageNumber": 71,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 159,
+    "startToken": 17,
+    "endToken": 18,
+    "endAyah": 159,
+    "baseText": "وَٱسْتَغْفِرْ لَهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَاسْتَغْفِرْ لَهُمْ → وَاسْتَغْفِر لَّهُمْ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-161-12-0284-IDGHAM_KABIR",
+    "pageNumber": 71,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 161,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 161,
+    "baseText": "ٱلْقِيَـٰمَةِ ۚ ثُمَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الثاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الثاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْقِيَامَةِ ثُمَّ → الْقِيَامَة ثُّمَّ | إدغام التاء في الثاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -67,5 +67,316 @@
     "description": "بياء الغيب فيهما",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D422-النبيء",
+    "surah": 33,
+    "ayah": 32,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِىِّ",
+    "variantText": "ٱلنَّبِيءِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "v-D422-النبيء",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D422-النبيء",
+        "variantId": "v-D422-النبيء",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P422-R02284",
+        "verificationNotes": "وجه صريح مع anchor حقيقي.",
+        "sourceText": "بالهمز لنافع."
+      }
+    ],
+    "description": "بالهمز لنافع.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D422-وقرن",
+    "surah": 33,
+    "ayah": 33,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَقَرْنَ",
+    "variantText": "وَقِرْنَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "v-D422-وقرن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D422-وقرن",
+        "variantId": "v-D422-وقرن",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P422-R02285",
+        "verificationNotes": "وجه صريح مع anchor حقيقي.",
+        "sourceText": "بكسر القاف للباقين."
+      },
+      {
+        "id": "s-SUSI-033-33-1-3352",
+        "variantId": "v-D422-وقرن",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3352; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَقَرْنَ → وَقِرْنَ | كسر القاف"
+      },
+      {
+        "id": "s-DURI-033-33-1-r1910",
+        "variantId": "v-D422-وقرن",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1910; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وقَـرن → وقِـرن | كسر الدوري القاف"
+      }
+    ],
+    "description": "بكسر القاف للباقين.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D422-بيوتكن-1",
+    "surah": 33,
+    "ayah": 33,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتِكُنَّ",
+    "variantText": "بِيُوتِكُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-D422-بيوتكن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D422-بيوتكن-1",
+        "variantId": "v-D422-بيوتكن-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P422-R02286",
+        "verificationNotes": "وجه صريح مع anchor حقيقي.",
+        "sourceText": "بكسر الباء لورش وأبي عمرو وحفص وأبي جعفر ويعقوب."
+      }
+    ],
+    "description": "بكسر الباء لورش وأبي عمرو وحفص وأبي جعفر ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D422-بيوتكن-2",
+    "surah": 33,
+    "ayah": 34,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتِكُنَّ",
+    "variantText": "بِيُوتِكُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "v-D422-بيوتكن-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D422-بيوتكن-2",
+        "variantId": "v-D422-بيوتكن-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P422-R02286",
+        "verificationNotes": "وجه صريح مع anchor حقيقي.",
+        "sourceText": "بكسر الباء لورش وأبي عمرو وحفص وأبي جعفر ويعقوب."
+      }
+    ],
+    "description": "بكسر الباء لورش وأبي عمرو وحفص وأبي جعفر ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-033-31-8-3350-performance",
+    "surah": 33,
+    "ayah": 31,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نُّؤْتِهَآ",
+    "variantText": "نُّؤْتِهَآ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-033-31-8-3350",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-033-31-8-3350",
+        "variantId": "v-SUSI-033-31-8-3350-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3350; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نُّؤْتِهَا → نُّوتِهَا | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-033-32-6-3351",
+    "surah": 33,
+    "ayah": 32,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنِّسَآءِ ۚ إِنِ",
+    "variantText": "النِّسَا إِنِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-033-32-6-3351",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-033-32-6-3351",
+        "variantId": "v-SUSI-033-32-6-3351",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3351; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "النِّسَاءِ إِنِ → النِّسَا إِنِ | إسقاط الهمزة الأولى"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى"
+  },
+  {
+    "id": "v-SUSI-033-35-4-3354-performance",
+    "surah": 33,
+    "ayah": 35,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْمُؤْمِنِينَ",
+    "variantText": "وَٱلْمُؤْمِنِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-033-35-4-3354",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-033-35-4-3354",
+        "variantId": "v-SUSI-033-35-4-3354-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3354; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْمُؤْمِنِينَ → وَالْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-033-35-5-3355-performance",
+    "surah": 33,
+    "ayah": 35,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْمُؤْمِنَـٰتِ",
+    "variantText": "وَٱلْمُؤْمِنَـٰتِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-033-35-5-3355",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-033-35-5-3355",
+        "variantId": "v-SUSI-033-35-5-3355-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3355; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْمُؤْمِنَاتِ → وَالْمُومِنَاتِ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

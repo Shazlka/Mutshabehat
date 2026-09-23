@@ -66,7 +66,8 @@
     "locusType": "performance_variant",
     "id": "v-DOCX-564-R03642-934bff72",
     "readingIds": [
-      "Q01-R02"
+      "Q01-R02",
+      "Q01-R01"
     ],
     "sources": [
       {
@@ -169,7 +170,8 @@
       "Q04-R01",
       "Q07-R01",
       "Q07-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q04-R02"
     ],
     "locusId": "DOCX-P564-R03643-27-8",
     "locusType": "performance_variant",
@@ -360,7 +362,8 @@
       "Q07-R01",
       "Q07-R02",
       "Q09-R01",
-      "Q09-R02"
+      "Q09-R02",
+      "Q06-R02"
     ],
     "locusId": "DOCX-P564-R03647-1-1",
     "locusType": "performance_variant",
@@ -428,6 +431,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03648",
         "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
         "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
+      },
+      {
+        "id": "s-DURI-068-7-9-r2587",
+        "variantId": "v-DOCX-564-R03648-7c590bb6",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2587; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
@@ -548,5 +560,69 @@
         "verificationNotes": "تحقق مستقل من صفحة القراءات للآية 68:14."
       }
     ]
+  },
+  {
+    "id": "v-SUSI-067-27-2-4342-performance",
+    "surah": 67,
+    "ayah": 27,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَأَوْهُ",
+    "variantText": "رَأَوْهُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-067-27-2-4342",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-067-27-2-4342",
+        "variantId": "v-SUSI-067-27-2-4342-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4342; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَأَوْهُ → رَأَوْهُ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-067-30-8-4346-performance",
+    "surah": 67,
+    "ayah": 30,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِيكُم",
+    "variantText": "يَأْتِيكُم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-067-30-8-4346",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-067-30-8-4346",
+        "variantId": "v-SUSI-067-30-8-4346-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4346; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْتِيكُم → يَاتِيكُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

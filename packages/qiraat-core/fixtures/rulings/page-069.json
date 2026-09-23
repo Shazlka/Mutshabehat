@@ -463,7 +463,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أراكـم → أرٍاكـم | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p069-010-1",
@@ -550,7 +553,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُخْرَاكُمْ → أُخْرَاكُمْ | إمالة فتحة الراء والألف",
+      "أخـراكم → أخـرٍاكـم | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p069-011-1",
@@ -637,7 +644,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p069-012-1",
@@ -849,7 +860,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إذ تحسونـهم → إذ تَّحسونـهم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p069-015-1",
@@ -936,7 +950,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إذ تـصعدون → إذ تُّـصعدون | إدغام صغير للبصري"
+    ]
   },
   {
     "id": "r-p069-016-1",
@@ -968,7 +985,10 @@
     "hasAlternate": false,
     "text": "وله فيها الاختلاس.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الرُّعْبَ بِمَا → الرُّعْب بِّمَا | إدغام الباء في الباء"
+    ]
   },
   {
     "id": "r-p069-017-1",
@@ -999,7 +1019,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْآخِرَةِ ثُمَّ → الْآخِرَة ثُّمَّ | إدغام التاء في الثاء"
+    ]
   },
   {
     "id": "r-p069-018-1",
@@ -1389,5 +1412,155 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-152-1-0269-IDGHAM_KABIR",
+    "pageNumber": 69,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 152,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 152,
+    "baseText": "وَلَقَدْ صَدَقَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري الدال بالصاد"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الصاد وإدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري الدال بالصاد",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الصاد وإدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَدْ صَدَقَكُمُ → وَلَقَد صَّدَقكُّمُ | إدغام الدال في الصاد وإدغام القاف في الكاف",
+      "ولقـدْ صدقَـكم → ولقد صَّدقَـكم | أدغم الدوري الدال بالصاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-152-5-0270-IDGHAM_KABIR",
+    "pageNumber": 69,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 152,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 152,
+    "baseText": "إِذْ تَحُسُّونَهُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ تَحُسُّونَهُم → إِذ تَّحُسُّونَهُم | إدغام الذال في التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-152-17-0271-IMALAH_TAQLIL",
+    "pageNumber": 69,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 152,
+    "startToken": 17,
+    "endToken": 18,
+    "endAyah": 152,
+    "baseText": "مَآ أَرَىٰكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "مَا أَرَاكُم → مَا أَرَاكُم | إمالة فتحة الراء والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-153-1-0275-IDGHAM_KABIR",
+    "pageNumber": 69,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 153,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 153,
+    "baseText": "۞ إِذْ تُصْعِدُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ تُصْعِدُونَ → إِذ تُّصْعِدُونَ | إدغام الذال في التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

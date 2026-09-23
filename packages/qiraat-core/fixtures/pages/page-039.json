@@ -93,6 +93,15 @@
         "sourceReference": "صفحة المصحف 39 · صفحة المصدر 44",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: يُضَاعِفَهُ ٱرْفَعْ فِي ٱلْحَدِيدِ وَهٰهُنَا سَمَا شُكْرُهُ وَٱلْعَيْنُ فِي ٱلْكُلِّ ثُقِّلَا — D: يُضَاعِفَهُ ٱنْصِبْ حُزْ وَشَدِّدْهُ كَيْفَ جَا إِذًا حُمْ"
+      },
+      {
+        "id": "s-DURI-002-245-8-r0155",
+        "variantId": "v-L039-فيضعفهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 155; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فـيضاعفَه → فـيضاعفُه | قرأ الدوري برفع الفاء"
       }
     ],
     "description": "بالألف وتخفيف العين ورفع الفاء",

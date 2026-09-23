@@ -56,6 +56,18 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -73,11 +85,30 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَرَارٍ → قَرَارٍ | إمالة فتحة الراء",
+      "قـرار → قـرٍار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p259-003-1",
@@ -150,7 +181,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p259-004-1",
@@ -258,6 +293,18 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -275,11 +322,30 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار → النٍّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p259-007-1",
@@ -354,6 +420,10 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -391,11 +461,20 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْبَوَارِ → الْبَوَارِ | إمالة فتحة الواو",
+      "البـوار → البـوٍار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p259-HAMZATAN_KALIMATAYN-ماء_فاخرج-4",
@@ -854,5 +933,110 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-014-25-9-1808-IDGHAM_KABIR",
+    "pageNumber": 259,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 25,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 25,
+    "baseText": "ٱلْأَمْثَالَ لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْأَمْثَالَ لِلنَّاسِ → الْأَمْثَال لِّلنَّاسِ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-014-31-15-1817-IDGHAM_KABIR",
+    "pageNumber": 259,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 31,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 31,
+    "baseText": "يَأْتِىَ يَوْمٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة ألفاً ثم إدغام الياء في الياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة ألفاً ثم إدغام الياء في الياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَأْتِيَ يَوْمٌ → يَاتِي يَّوْمٌ | إبدال الهمزة ألفاً ثم إدغام الياء في الياء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-014-25-10-r1135-IMALAH_TAQLIL",
+    "pageNumber": 259,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 14,
+    "ayah": 25,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 25,
+    "baseText": "لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنـاس → للنِّـاس | أمال الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

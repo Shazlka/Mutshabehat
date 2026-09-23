@@ -1,1 +1,129 @@
-[]
+[
+  {
+    "id": "v-SUSI-004-20-10-0349-performance",
+    "surah": 4,
+    "ayah": 20,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَأْخُذُوا۟",
+    "variantText": "فَلَا تَأْخُذُوا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-20-10-0349",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-20-10-0349",
+        "variantId": "v-SUSI-004-20-10-0349-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 349; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَلَا تَأْخُذُوا → فَلَا تَاخُذُوا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-004-20-14-0350-performance",
+    "surah": 4,
+    "ayah": 20,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "أَتَأْخُذُونَهُۥ",
+    "variantText": "أَتَأْخُذُونَهُۥ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-20-14-0350",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-20-14-0350",
+        "variantId": "v-SUSI-004-20-14-0350-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 350; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتَأْخُذُونَهُ → أَتَاخُذُونَهُ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-004-21-2-0351-performance",
+    "surah": 4,
+    "ayah": 21,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَأْخُذُونَهُۥ",
+    "variantText": "تَأْخُذُونَهُۥ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-21-2-0351",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-21-2-0351",
+        "variantId": "v-SUSI-004-21-2-0351-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 351; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْخُذُونَهُ → تَاخُذُونَهُ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-004-22-7-0352",
+    "surah": 4,
+    "ayah": 22,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنِّسَآءِ إِلَّا",
+    "variantText": "النِّسَا إِلَّا",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-22-7-0352",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-004-22-7-0352",
+        "variantId": "v-SUSI-004-22-7-0352",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 352; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "النِّسَاءِ إِلَّا → النِّسَا إِلَّا | إسقاط الهمزة الأولى، وفي المد وجهان"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى، وفي المد وجهان"
+  }
+]

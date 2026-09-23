@@ -96,6 +96,15 @@
         "sourceReference": "https://quranpedia.net/tafsir/al-muddaththir/33",
         "sourceText": "تثبت الموسوعة وجهي «إِذْ أَدْبَرَ» و«إِذَا دَبَرَ» في الآية 33 من المدثر، مع إسناد الوجه الثاني إلى مجموعة من قراء مكة والكوفة.",
         "verificationNotes": "قوبل الوجه مع المصدر المستقل."
+      },
+      {
+        "id": "s-DURI-074-33-2-r2636",
+        "variantId": "v-D576-اذ_ادبر-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2636; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إذْ أدبـر → إذا دَبـر | قرأ الدوري بزيادة ألف على ( إذ ) وحذف همزة (أدبر ) وفتح الدال فيها"
       }
     ],
     "description": "بهمزة وصل تسقط وألف بعد الدال",

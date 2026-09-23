@@ -161,6 +161,15 @@
         "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: حَلَا وَإِسْكَانُ بَارِئْكُمْ وَيَأْمُرْكُمْ لَهُ وَيَأْمُرُهُمْ أَيْضًا وَتَأْمُرُهُمْ تَلَا — D: بَارِئْ بَابَ يَأْمُرْ أَتَمَّ حُمْ — SH: وَيَنْصُرْكُمْ أَيْضًا وَيُشْعِرْكُمْ وَكَمْ جَلِيلٍ عَنِ الدُّورِيِّ مُخْتَلِسًا جَلَا"
+      },
+      {
+        "id": "s-SUSI-002-67-7-0063",
+        "variantId": "v-L010-يامركم-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 63; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْمُرُكُمْ → يَامُرْكُمْ | إبدال الهمزة ألفاً وإسكان الراء"
       }
     ],
     "description": "بإسكان الراء",
@@ -272,6 +281,15 @@
         "sourceReference": "صفحة المصحف 10 · صفحة المصدر 15",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَهُزْؤًا وَكُفْؤًا فِي السَّوَاكِنِ فُصِّلَا — SH: وَضُمَّ لِبَاقِيهِمْ وَحَفْصٌ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَخَفْضٌ وَاقِفًا ثُمَّ مُوصِلَا"
+      },
+      {
+        "id": "s-SUSI-002-67-13-0064",
+        "variantId": "v-L010-هزوا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 64; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هُزُوًا → هُزُؤًا | إبدال الواو همزة"
       }
     ],
     "description": "بالهمز مع ضم الزاي",
@@ -333,5 +351,37 @@
         "text": "وَضُمَّ لِبَاقِيهِمْ وَحَفْصٌ وَحَمْزَةُ وَقْفُهُ بِوَاوٍ وَخَفْضٌ وَاقِفًا ثُمَّ مُوصِلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-002-68-23-0065-performance",
+    "surah": 2,
+    "ayah": 68,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "تُؤْمَرُونَ",
+    "variantText": "تُؤْمَرُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-002-68-23-0065",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-002-68-23-0065",
+        "variantId": "v-SUSI-002-68-23-0065-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 65; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تُؤْمَرُونَ → تُومَرُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

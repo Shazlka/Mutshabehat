@@ -185,5 +185,140 @@
         "url": "https://www.nquran.com/ar/index.php?ayano=68&group=tb1&sorano=16&tpath=2"
       }
     ]
+  },
+  {
+    "id": "v-AUDIT-P274-16-68-9-1",
+    "surah": 16,
+    "ayah": 68,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "بُيُوتًۭا",
+    "variantText": "بِيُوتًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P274-16-68-9",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P274-68-9",
+        "variantId": "v-AUDIT-P274-68-9",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "DOCX-P274-FARSH-BUYUT",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/68.",
+        "sourceText": "﴿بُيُوتًا﴾: بكسر الباء ﴿بِيُوتًا﴾ لورش، وأبي عمرو، وحفص، وأبي جعفر، ويعقوب؛ وبضمها للباقين."
+      }
+    ],
+    "description": "بكسر الباء لورش وأبي عمرو وأبي جعفر ويعقوب وحفص",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-016-72-17-1939-performance",
+    "surah": 16,
+    "ayah": 72,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنُونَ",
+    "variantText": "يُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-72-17-1939",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-72-17-1939",
+        "variantId": "v-SUSI-016-72-17-1939-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1939; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-DURI-016-69-18-r1195",
+    "surah": 16,
+    "ayah": 69,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "لِّلنَّاسِ ۗ",
+    "variantText": "النٍّـاس",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-016-69-18-r1195",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-016-69-18-r1195",
+        "variantId": "v-DURI-016-69-18-r1195",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1195; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "للنَّـاس → النٍّـاس | أمالـها الدوري"
+      }
+    ],
+    "description": "أمالـها الدوري"
+  },
+  {
+    "id": "v-DURI-016-72-18-r1196",
+    "surah": 16,
+    "ayah": 72,
+    "startToken": 18,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "وَبِنِعْمَتِ",
+    "variantText": "وبـنعمة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-016-72-18-r1196",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-016-72-18-r1196",
+        "variantId": "v-DURI-016-72-18-r1196",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1196; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وبنعمت → وبـنعمة | وقف الدوري بالـهاء"
+      }
+    ],
+    "description": "وقف الدوري بالـهاء"
   }
 ]

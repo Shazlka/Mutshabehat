@@ -1,0 +1,605 @@
+[
+  {
+    "id": "r-SRC585-IMALAH_TAQLIL-1-2",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 1,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 1,
+    "baseText": "وَتَوَلَّىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "رؤوس آي سورة عبس حسب المصدر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "sourceNotes": [
+      "وَتَوَلَّىٰ → وَتَوَلَّى | تقليل الألف (رأس آية)"
+    ]
+  },
+  {
+    "id": "r-SRC585-TARQIQ_RA-16-1",
+    "pageNumber": 585,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 16,
+    "baseText": "كِرَامٍۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "ترقيق الراء"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترقيق الراء لورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC585-TAGHYIR_HAMZ-34-3",
+    "pageNumber": 585,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 34,
+    "baseText": "ٱلْمَرْءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "النقل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "النقل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "نقل الهمزة لورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC585-SAKT-34-3",
+    "pageNumber": 585,
+    "category": "SAKT",
+    "categoryAr": "السكت",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 34,
+    "baseText": "ٱلْمَرْءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "السكت لحمزة وإدريس كما في المصدر",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC585-WAQF_HAMZA-34-3",
+    "pageNumber": 585,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 34,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 34,
+    "baseText": "ٱلْمَرْءُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "النقل عند الوقف"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "النقل عند الوقف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "النقل عند الوقف",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "النقل عند الوقف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "وقف حمزة بالنقل",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-2-3-4440-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 2,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 2,
+    "baseText": "ٱلْأَعْمَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْأَعْمَىٰ → الْأَعْمَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-3-4-4441-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 3,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 3,
+    "baseText": "يَزَّكَّىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَزَّكَّىٰ → يَزَّكَّى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-4-4-4442-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 4,
+    "baseText": "ٱلذِّكْرَىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الراء والألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الذِّكْرَىٰ → الذِّكْرَى | إمالة فتحة الراء والألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-5-3-4443-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 5,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 5,
+    "baseText": "ٱسْتَغْنَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اسْتَغْنَىٰ → اسْتَغْنَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-6-3-4444-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 6,
+    "baseText": "تَصَدَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَصَدَّىٰ → تَصَدَّى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-7-4-4445-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 7,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 7,
+    "baseText": "يَزَّكَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَزَّكَّىٰ → يَزَّكَّى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-8-4-4446-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 8,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 8,
+    "baseText": "يَسْعَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَسْعَىٰ → يَسْعَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-9-2-4448-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 9,
+    "baseText": "يَخْشَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَخْشَىٰ → يَخْشَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-080-10-3-4449-IMALAH_TAQLIL",
+    "pageNumber": 585,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 10,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 10,
+    "baseText": "تَلَهَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "تَلَهَّىٰ → تَلَهَّى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-080-25-1-r2675-TAGHYIR_HAMZ",
+    "pageNumber": 585,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 80,
+    "ayah": 25,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 25,
+    "baseText": "اَنَّا صَبَبْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أنّـا صببنـا → إنّـا صببنا | كسر الدوري الهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

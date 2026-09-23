@@ -122,7 +122,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النَّـار → النٍّـار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p548-IMALAH_TAQLIL-الباري-2",
@@ -238,7 +242,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الحسـنى → الحسـنِى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p548-TAGHYIR_HAMZ-المومن-4",
@@ -333,5 +340,331 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p548-WAQF_RASM-hu-22-1",
+    "pageNumber": 548,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 22,
+    "baseText": "هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "تطبيق قاعدة يعقوب العامة في الوقف بهاء السكت على هو/هي حيثما وقعا؛ المصدر DOCX-P548-R03503، والتحقق الخارجي من قواعد يعقوب.",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-p548-WAQF_RASM-hu-22-7",
+    "pageNumber": 548,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 22,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 22,
+    "baseText": "هُوَ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "تطبيق قاعدة يعقوب العامة في الوقف بهاء السكت على هو/هي حيثما وقعا؛ المصدر DOCX-P548-R03503، والتحقق الخارجي من قواعد يعقوب.",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-p548-WAQF_RASM-hu-22-11",
+    "pageNumber": 548,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 22,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 22,
+    "baseText": "هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "تطبيق قاعدة يعقوب العامة في الوقف بهاء السكت على هو/هي حيثما وقعا؛ المصدر DOCX-P548-R03503، والتحقق الخارجي من قواعد يعقوب.",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-p548-WAQF_RASM-hu-23-1",
+    "pageNumber": 548,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 23,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 23,
+    "baseText": "هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "تطبيق قاعدة يعقوب العامة في الوقف بهاء السكت على هو/هي حيثما وقعا؛ المصدر DOCX-P548-R03503، والتحقق الخارجي من قواعد يعقوب.",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-p548-WAQF_RASM-hu-23-7",
+    "pageNumber": 548,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 23,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 23,
+    "baseText": "هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "تطبيق قاعدة يعقوب العامة في الوقف بهاء السكت على هو/هي حيثما وقعا؛ المصدر DOCX-P548-R03503، والتحقق الخارجي من قواعد يعقوب.",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-p548-WAQF_RASM-hu-24-1",
+    "pageNumber": 548,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 24,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 24,
+    "baseText": "هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "تطبيق قاعدة يعقوب العامة في الوقف بهاء السكت على هو/هي حيثما وقعا؛ المصدر DOCX-P548-R03503، والتحقق الخارجي من قواعد يعقوب.",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-059-20-4-4264-IMALAH_TAQLIL",
+    "pageNumber": 548,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 20,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 20,
+    "baseText": "ٱلنَّارِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة النون والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النَّـار → النٍّـار | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-059-21-16-r2513-IMALAH_TAQLIL",
+    "pageNumber": 548,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 59,
+    "ayah": 21,
+    "startToken": 16,
+    "endToken": 16,
+    "endAyah": 21,
+    "baseText": "لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -175,7 +175,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "التقـوى → التقـوِى | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p514-IMALAH_TAQLIL-الرءيا-1",
@@ -523,7 +526,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "إذْ جـعل → إذ جَّـعل | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p514-IDGHAM_SAGHIR-لقد_صدق-5",
@@ -608,6 +614,209 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لقدْ صـدق → لقد صَّـدق | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-p514-TAGHYIR_HAMZ-مومنون-7",
+    "pageNumber": 514,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 48,
+    "ayah": 25,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 25,
+    "baseText": "مُّؤْمِنُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03185",
+        "sourceText": "تغيير الهمز: ﴿مُّؤْمِنُونَ﴾، ﴿مُّؤْمِنَةٌ﴾، ﴿الْمُؤْمِنِينَ﴾: ورش، السوسي، أبو جعفر. ﴿تَطَـُٔوهُمْ﴾: بحذف الهمزة ﴿تَطُوهُمْ﴾ لأبي جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
+      }
+    ]
+  },
+  {
+    "id": "r-p514-TAGHYIR_HAMZ-المومنين-8",
+    "pageNumber": 514,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 48,
+    "ayah": 26,
+    "startToken": 16,
+    "endToken": 16,
+    "endAyah": 26,
+    "baseText": "ٱلْمُؤْمِنِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03185",
+        "sourceText": "تغيير الهمز: ﴿مُّؤْمِنُونَ﴾، ﴿مُّؤْمِنَةٌ﴾، ﴿الْمُؤْمِنِينَ﴾: ورش، السوسي، أبو جعفر. ﴿تَطَـُٔوهُمْ﴾: بحذف الهمزة ﴿تَطُوهُمْ﴾ لأبي جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
+      }
+    ]
+  },
+  {
+    "id": "r-SUSI-048-27-1-4090-IDGHAM_KABIR",
+    "pageNumber": 514,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 48,
+    "ayah": 27,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 27,
+    "baseText": "لَّقَدْ صَدَقَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الصاد"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الصاد",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَقَدْ صَدَقَ → لَقَد صَّدَقَ | إدغام الدال في الصاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-048-26-6-r2364-MEEM_JAM",
+    "pageNumber": 514,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 48,
+    "ayah": 26,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 26,
+    "baseText": "قُلُوبِهِمُ ٱلْحَمِيَّةَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "قلوبهمُ الـحميّة → قلوبـهمِ الـحميّة | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

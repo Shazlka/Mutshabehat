@@ -229,7 +229,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "فـأنَّـى → فـأنِّى | قلل الدوري"
+    ]
   },
   {
     "id": "r-p434-IMALAH_TAQLIL-جاء-0",
@@ -363,7 +366,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تَرَى → تَرَى | إمالة فتحة الراء",
+      "تـرى → تـرٍى | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p434-IMALAH_TAQLIL-يوحا-2",
@@ -969,5 +976,220 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p434-WAQF_RASM-huwa",
+    "pageNumber": 434,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 3,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 3,
+    "baseText": "هُوَ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09",
+        "action": "هاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "هاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "هاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "يقف عليها يعقوب بهاء السكت: هوهْ.",
+    "sourceNotes": [
+      "DOCX-P434-R02408"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-035-2-13-3460-IDGHAM_KABIR",
+    "pageNumber": 434,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 2,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 2,
+    "baseText": "مُرْسِلَ لَهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "مُرْسِلَ لَهُ → مُرْسِل لَّهُ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-035-3-12-3463-IDGHAM_KABIR",
+    "pageNumber": 434,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 3,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 3,
+    "baseText": "يَرْزُقُكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَرْزُقُكُم → يَرْزُقكُّم | إدغام القاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-034-52-4-r1970-IMALAH_TAQLIL",
+    "pageNumber": 434,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 34,
+    "ayah": 52,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 52,
+    "baseText": "وَأَنَّىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وأنَّـى → وأنِّـى | قللها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-034-52-6-r1971-TAGHYIR_HAMZ",
+    "pageNumber": 434,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 34,
+    "ayah": 52,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 52,
+    "baseText": "ٱلتَّنَاوُشُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بالهمز فيكون المد متصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بالهمز فيكون المد متصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "التنـاوش → التنـاؤش | قرأ الدوري بالهمز فيكون المد متصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-035-2-4-r1973-IMALAH_TAQLIL",
+    "pageNumber": 434,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 35,
+    "ayah": 2,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 2,
+    "baseText": "لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "للنَّـاس → للنِّـاس | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

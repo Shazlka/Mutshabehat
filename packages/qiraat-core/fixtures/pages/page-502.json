@@ -243,6 +243,24 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-jathiyah/37",
         "sourceText": "بإسكان الهاء",
         "verificationNotes": "مرجع مستقل يثبت الوجه والرواة."
+      },
+      {
+        "id": "s-SUSI-045-37-6-4002",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03062-6-2457b9b3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4002; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-045-37-6-r2309",
+        "variantId": "v-AUDIT-P502-DOCX-P502-R03062-6-2457b9b3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2309; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -355,5 +373,68 @@
       }
     ],
     "performanceNote": "السكت على ألف حم"
+  },
+  {
+    "id": "v-SUSI-045-35-3-3999",
+    "surah": 45,
+    "ayah": 35,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱتَّخَذْتُمْ",
+    "variantText": "اتَّخَتُّمْ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-045-35-3-3999",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-045-35-3-3999",
+        "variantId": "v-SUSI-045-35-3-3999",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3999; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اتَّخَذْتُمْ → اتَّخَتُّمْ | إدغام الذال في التاء"
+      }
+    ],
+    "description": "إدغام الذال في التاء"
+  },
+  {
+    "id": "v-SUSI-046-4-17-4005-performance",
+    "surah": 46,
+    "ayah": 4,
+    "startToken": 17,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "ٱلسَّمَـٰوَٰتِ ۖ ٱئْتُونِى",
+    "variantText": "ٱلسَّمَـٰوَٰتِ ۖ ٱئْتُونِى",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-046-4-17-4005",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-046-4-17-4005",
+        "variantId": "v-SUSI-046-4-17-4005-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4005; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "السَّمَاوَاتِ ائْتُونِي → السَّمَاوَاتِ ايتُونِي | إبدال الهمزة ياء وصلاً"
+      }
+    ],
+    "description": "إبدال الهمزة ياء وصلاً"
   }
 ]

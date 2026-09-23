@@ -1,0 +1,98 @@
+[
+  {
+    "id": "v-SUSI-109-6-3-4586-performance",
+    "surah": 109,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَلِىَ دِينِ",
+    "variantText": "وَلِىَ دِينِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-109-6-3-4586",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء وصلاً لنافع وأبي عمرو وقرأ حفص بفتحها (وَلِيَ)",
+    "sources": [
+      {
+        "id": "s-SUSI-109-6-3-4586",
+        "variantId": "v-SUSI-109-6-3-4586-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4586; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلِيَ دِينِ → وَلِي دِينِ | إسكان الياء وصلاً لنافع وأبي عمرو وقرأ حفص بفتحها (وَلِيَ)"
+      }
+    ],
+    "description": "إسكان الياء وصلاً لنافع وأبي عمرو وقرأ حفص بفتحها (وَلِيَ)"
+  },
+  {
+    "id": "v-SUSI-110-3-4-4588-performance",
+    "surah": 110,
+    "ayah": 3,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "وَٱسْتَغْفِرْهُ ۚ",
+    "variantText": "وَٱسْتَغْفِرْهُ ۚ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-110-3-4-4588",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-110-3-4-4588",
+        "variantId": "v-SUSI-110-3-4-4588-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4588; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَاسْتَغْفِرْهُ → وَاسْتَغْفِرْهُ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-DURI-111-4-2-r2736-performance",
+    "surah": 111,
+    "ayah": 4,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "حَمَّالَةَ",
+    "variantText": "حَمَّالَةَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-111-4-2-r2736",
+    "locusType": "performance_variant",
+    "performanceNote": "رفع الدوري التاء",
+    "sources": [
+      {
+        "id": "s-DURI-111-4-2-r2736",
+        "variantId": "v-DURI-111-4-2-r2736-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2736; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "حمّـالةَ → حمَّـالةُ | رفع الدوري التاء"
+      }
+    ],
+    "description": "رفع الدوري التاء"
+  }
+]

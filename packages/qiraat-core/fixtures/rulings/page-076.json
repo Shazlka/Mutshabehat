@@ -115,7 +115,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُنثَىٰ → أُنثَى | بالتقليل",
+      "أنثـى → أنثِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p076-003-1",
@@ -169,7 +173,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دِيَارِهِمْ → دِيَارِهِمْ | إمالة فتحة الياء والألف",
+      "ديـارهم → ديٍـارهم | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p076-004-1",
@@ -329,7 +337,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لِلْأَبْرَارِ → لِلْأَبْرَارِ | إمالة فتحة الراء وترقيقها",
+      "للأبـرار → للأبـرٍار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p076-006-1",
@@ -625,5 +637,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-195-6-0325-IDGHAM_KABIR",
+    "pageNumber": 76,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 195,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 195,
+    "baseText": "أُضِيعُ عَمَلَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام العين في العين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام العين في العين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أُضِيعُ عَمَلَ → أُضِيع عَّمَلَ | إدغام العين في العين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

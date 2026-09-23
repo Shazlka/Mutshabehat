@@ -27,6 +27,24 @@
         "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-RUSULUKUM)",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      },
+      {
+        "id": "s-SUSI-040-50-5-3780",
+        "variantId": "v-D473-رسلكم-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3780; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُسُلُكُم → رُسْلُكُم | إسكان السين"
+      },
+      {
+        "id": "s-DURI-040-50-5-r2171",
+        "variantId": "v-D473-رسلكم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2171; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُسُلُـكم → رُسْـلُكم | أسكن الدوري السين"
       }
     ],
     "description": "بإسكان السين",
@@ -61,6 +79,15 @@
         "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-RUSULANA)",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      },
+      {
+        "id": "s-DURI-040-51-3-r2173",
+        "variantId": "v-D473-رسلنا-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2173; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رسُـلنا → رسْــلنا | أسكن الدوري السين"
       }
     ],
     "description": "بإسكان السين",
@@ -105,6 +132,15 @@
         "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-LAYANFA)",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      },
+      {
+        "id": "s-SUSI-040-52-3-3784",
+        "variantId": "v-D473-ينفع-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3784; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَنفَعُ → تَنفَعُ | بالتاء بدل الياء"
       }
     ],
     "description": "بتاء التأنيث",
@@ -151,10 +187,60 @@
         "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 473، الكلمات الفرشية (DOCX-P473-FARSH-TATADHAKKARUN)",
         "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "سطر صريح من استخراج القراءات العشر؛ حُفظت الأوجه المتعينة فقط."
+      },
+      {
+        "id": "s-SUSI-040-58-13-3792",
+        "variantId": "v-D473-تتذكرون-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3792; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَتَذَكَّرُونَ → يَتَذَكَّرُونَ | بالياء بدل التاء"
+      },
+      {
+        "id": "s-DURI-040-58-13-r2182",
+        "variantId": "v-D473-تتذكرون-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2182; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تـتذكّرون → يـتذكّرون | قرأها الدوري بياء الغيبة"
       }
     ],
     "description": "بياء الغيب",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-040-50-4-3779-performance",
+    "surah": 40,
+    "ayah": 50,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِيكُمْ",
+    "variantText": "تَأْتِيكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-040-50-4-3779",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-040-50-4-3779",
+        "variantId": "v-SUSI-040-50-4-3779-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3779; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَأْتِيكُمْ → تَاتِيكُمْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

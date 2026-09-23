@@ -224,7 +224,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "للنـاس → للنٍّـاس | أمال الدوري"
+    ]
   },
   {
     "id": "r-p060-008-1",
@@ -526,7 +529,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَالنُّبُوَّةَ ثُمَّ → وَالنُّبُوَّة ثُّمَّ | إدغام التاء في الثاء"
+    ]
   },
   {
     "id": "r-p060-012-1",
@@ -557,7 +563,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَقُولَ لِلنَّاسِ → يَقُول لِّلنَّاسِ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p060-013-1",
@@ -588,7 +597,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَسْلَمَ مَن → أَسْلَم مَّن | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p060-014-1",
@@ -1018,5 +1030,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-003-81-22-r0270-IDGHAM_KABIR",
+    "pageNumber": 60,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 81,
+    "startToken": 22,
+    "endToken": 22,
+    "endAyah": 81,
+    "baseText": "وَأَخَذْتُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري الذال بالتاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وأخذتـم → وأخـذتُّـم | أدغم الدوري الذال بالتاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

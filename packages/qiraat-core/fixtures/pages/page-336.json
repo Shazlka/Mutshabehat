@@ -128,5 +128,73 @@
     "description": "بفتح الخاء وتشديد الطاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-D336-لن-تنال",
+    "surah": 22,
+    "ayah": 37,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَن يَنَالَ",
+    "variantText": "لَن تَنَالَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "بتاء التأنيث",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D336-لن-تنال",
+        "variantId": "v-D336-لن-تنال",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P336-R01448",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتاء التأنيث: لن تنال ليعقوب."
+      }
+    ],
+    "description": "بتاء التأنيث: لن تنال ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D336-تناله",
+    "surah": 22,
+    "ayah": 37,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَنَالُهُ",
+    "variantText": "تَنَالُهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "بتاء التأنيث",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D336-تناله",
+        "variantId": "v-D336-تناله",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P336-R01448",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتاء التأنيث: تناله ليعقوب."
+      }
+    ],
+    "description": "بتاء التأنيث: تناله ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

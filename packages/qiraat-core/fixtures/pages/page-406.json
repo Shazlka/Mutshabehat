@@ -81,6 +81,24 @@
         "sourceType": "other",
         "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-030-22-13-3222",
+        "variantId": "v-L406-s30a22b0-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3222; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِّلْعَالِمِينَ → لِّلْعَالَمِينَ | فتح اللام بعد الألف"
+      },
+      {
+        "id": "s-DURI-030-22-13-r1829",
+        "variantId": "v-L406-s30a22b0-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1829; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "للعالِـمين → للعالَـمين | فتح الدوري اللام"
       }
     ],
     "description": "بفتح اللام",
@@ -122,5 +140,113 @@
     "description": "بتخفيف الزاي مكسورة وسكون النون",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D406-mayt-1",
+    "surah": 30,
+    "ayah": 19,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَيِّتِ",
+    "variantText": "ٱلْمَيْتِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "v-D406-mayt-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D406-mayt-1",
+        "variantId": "v-D406-mayt-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P406-R02138",
+        "verificationNotes": "وجه صريح، وanchor حقيقي من fixture المصحف.",
+        "sourceText": "بتخفيف الياء وإسكانها: الباقون."
+      }
+    ],
+    "description": "بتخفيف الياء وإسكانها: الباقون.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D406-mayt-2",
+    "surah": 30,
+    "ayah": 19,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَيِّتَ",
+    "variantText": "ٱلْمَيْتَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "v-D406-mayt-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D406-mayt-2",
+        "variantId": "v-D406-mayt-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P406-R02138",
+        "verificationNotes": "وجه صريح، وanchor حقيقي من fixture المصحف.",
+        "sourceText": "بتخفيف الياء وإسكانها: الباقون."
+      }
+    ],
+    "description": "بتخفيف الياء وإسكانها: الباقون.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-030-19-3-3219-performance",
+    "surah": 30,
+    "ayah": 19,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مِنَ ٱلْمَيِّتِ",
+    "variantText": "مِنَ ٱلْمَيِّتِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-030-19-3-3219",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-030-19-3-3219",
+        "variantId": "v-SUSI-030-19-3-3219-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3219; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِنَ الْمَيِّتِ → مِنَ الْمَيْتِ | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
   }
 ]

@@ -268,7 +268,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَذِكْرَىٰ → وَذِكْرَى | إمالة فتحة الراء",
+      "وذكـرى → وذكـرٍى | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p151-008-1",
@@ -355,7 +359,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دَعْوَاهُمْ → دَعْوَاهُمْ | بالتقليل",
+      "دعواهم → دعـوِاهـم | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p151-009-1",
@@ -518,7 +526,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إذ جـاءهم → إذ جَّـاءهم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p151-012-1",
@@ -884,5 +895,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-007-5-4-0883-IDGHAM_KABIR",
+    "pageNumber": 151,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 5,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 5,
+    "baseText": "إِذْ جَآءَهُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ جَاءَهُم → إِذ جَّاءَهُم | إدغام الذال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

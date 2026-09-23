@@ -263,7 +263,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ (معاً) → النَّارِ | إمالة فتحة النون والألف (الموضعين)"
+    ]
   },
   {
     "id": "r-p155-008-2",
@@ -317,7 +320,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ (معاً) → النَّارِ | إمالة فتحة النون والألف (الموضعين)"
+    ]
   },
   {
     "id": "r-p155-009-1",
@@ -404,7 +410,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُخْرَاهُمْ → أُخْرَاهُمْ | إمالة فتحة الراء",
+      "أخـراهم → أخـرٍاهـم | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p155-010-1",
@@ -491,7 +501,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لِأُخْرَاهُمْ → لِأُخْرَاهُمْ | إمالة فتحة الراء",
+      "لأخـراهم → لأخـرٍاهم | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p155-011-1",
@@ -578,7 +592,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لِأُولَاهُمْ → لِأُولَاهُمْ | بالتقليل",
+      "لأولاهـم → لأولاِهـم | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p155-012-1",
@@ -665,7 +683,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُولَاهُمْ → أُولَاهُمْ | بالتقليل",
+      "أولاهـم → أولاِهـم | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p155-013-1",
@@ -1026,7 +1048,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لِكُلٍّ → قَال لِّكُلٍّ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p155-019-1",
@@ -1057,7 +1082,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْعَذَابَ بِمَا → الْعَذَاب بِّمَا | إدغام الباء في الباء"
+    ]
   },
   {
     "id": "r-p155-020-1",
@@ -1088,7 +1116,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "جَهَنَّمَ مِهَادٌ → جَهَنَّم مِّهَادٌ | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p155-021-1",
@@ -1119,7 +1150,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "رُسُلُ رَبِّنَا → رُسُل رَّبِّنَا | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p155-022-1",
@@ -1418,5 +1452,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-007-43-24-0923-IDGHAM_KABIR",
+    "pageNumber": 155,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 43,
+    "startToken": 24,
+    "endToken": 25,
+    "endAyah": 43,
+    "baseText": "لَقَدْ جَآءَتْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَقَدْ جَاءَتْ → لَقَد جَّاءَتْ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-007-43-9-r0654-MEEM_JAM",
+    "pageNumber": 155,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 43,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 43,
+    "baseText": "تَحْتِهِمُ ٱلْأَنْهَـٰرُ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلا",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "تـحتهمُ الأنـهار → تـحتهمِ الأنـهار | كسر الدوري الميم وصلا"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

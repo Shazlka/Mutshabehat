@@ -83,6 +83,24 @@
         "sourceReference": "صفحة المصحف 62 · صفحة المصدر 67",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَبِالْكَسْرِ حِجُّ الْبَيْتِ عَنْ شَاهِدٍ — D: وَحَجُّ اكْسِرَنْ وَاقْرَأْ يَضُرُّكُمُ أَلَا"
+      },
+      {
+        "id": "s-SUSI-003-97-13-0219",
+        "variantId": "v-L062-حج-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 219; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "حِجُّ → حَجُّ | فتح الحاء"
+      },
+      {
+        "id": "s-DURI-003-97-13-r0280",
+        "variantId": "v-L062-حج-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 280; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "حِـج → حَـجُّ | فتح الدوري الحاء"
       }
     ],
     "description": "بفتح الحاء",
@@ -97,5 +115,99 @@
         "text": "وَحَجُّ اكْسِرَنْ وَاقْرَأْ يَضُرُّكُمُ أَلَا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-003-93-17-0214",
+    "surah": 3,
+    "ayah": 93,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "ٱلتَّوْرَىٰةُ ۗ",
+    "variantText": "التَّوْرَىةُ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-93-17-0214",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-003-93-17-0214",
+        "variantId": "v-SUSI-003-93-17-0214",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 214; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "التَّوْرَاةُ → التَّوْرَىةُ | إمالة فتحة الراء والألف"
+      }
+    ],
+    "description": "إمالة فتحة الراء والألف"
+  },
+  {
+    "id": "v-SUSI-003-93-19-0215-performance",
+    "surah": 3,
+    "ayah": 93,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "فَأْتُوا۟",
+    "variantText": "فَأْتُوا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-93-19-0215",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-003-93-19-0215",
+        "variantId": "v-SUSI-003-93-19-0215-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 215; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَأْتُوا → فَاتُوا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-003-93-20-0216",
+    "surah": 3,
+    "ayah": 93,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلتَّوْرَىٰةِ",
+    "variantText": "بِالتَّوْرَىةِ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-93-20-0216",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-003-93-20-0216",
+        "variantId": "v-SUSI-003-93-20-0216",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 216; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِالتَّوْرَاةِ → بِالتَّوْرَىةِ | إمالة فتحة الراء والألف"
+      }
+    ],
+    "description": "إمالة فتحة الراء والألف"
   }
 ]

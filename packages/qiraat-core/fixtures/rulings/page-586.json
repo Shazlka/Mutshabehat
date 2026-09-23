@@ -1,0 +1,246 @@
+[
+  {
+    "id": "r-SRC586-MADD_LIN-8-2",
+    "pageNumber": 586,
+    "category": "MADD_LIN",
+    "categoryAr": "مد اللين المهموز",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 81,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 8,
+    "baseText": "ٱلْمَوْءُۥدَةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "التوسط والطول"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "التوسط والطول"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "التوسط والطول",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "التوسط والطول",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "مد اللين المهموز لورش",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC586-WAQF_HAMZA-8-2",
+    "pageNumber": 586,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 81,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 8,
+    "baseText": "ٱلْمَوْءُۥدَةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "النقل والتسهيل"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "النقل والتسهيل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "النقل والتسهيل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "النقل والتسهيل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "وقف حمزة",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC586-IMALAH_TAQLIL-23-2",
+    "pageNumber": 586,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 81,
+    "ayah": 23,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 23,
+    "baseText": "رَءَاهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q06",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q07",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q10",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q01",
+        "action": "إمالة/تقليل"
+      },
+      {
+        "authorityId": "Q03",
+        "action": "إمالة/تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة/تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إمالة رآه وتقليل ورش وإمالة الدوري للراء",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SRC586-TAGHYIR_HAMZ-23-2",
+    "pageNumber": 586,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 81,
+    "ayah": 23,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 23,
+    "baseText": "رَءَاهُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01",
+        "action": "النقل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "النقل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "النقل لورش في الأفق",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-081-7-2-4451-IDGHAM_KABIR",
+    "pageNumber": 586,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 81,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 7,
+    "baseText": "ٱلنُّفُوسُ زُوِّجَتْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام السين في الزاي (متقاربين كبير)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام السين في الزاي (متقاربين كبير)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "النُّفُوسُ زُوِّجَتْ → النُّفُوس زُّوِّجَتْ | إدغام السين في الزاي (متقاربين كبير)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

@@ -68,5 +68,103 @@
     "description": "بقطع الهمزة مفتوحة وسكون التاء وتخفيف الباء",
     "wajhIndex": 1,
     "evidence": []
+  },
+  {
+    "id": "v-D376-تنزل-1",
+    "surah": 26,
+    "ayah": 221,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَنَزَّلُ",
+    "variantText": "تَّنَزَّلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "v-D376-تنزل-1",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D376-تنزل-1",
+        "variantId": "v-D376-تنزل-1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P376-R01866",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتشديد التاء وصلاً: البزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً: البزي.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D376-تنزل-2",
+    "surah": 26,
+    "ayah": 222,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "تَنَزَّلُ",
+    "variantText": "تَّنَزَّلُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "v-D376-تنزل-2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-v-D376-تنزل-2",
+        "variantId": "v-D376-تنزل-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P376-R01866",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتشديد التاء وصلاً: البزي."
+      }
+    ],
+    "description": "بتشديد التاء وصلاً: البزي.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-026-215-6-2942-performance",
+    "surah": 26,
+    "ayah": 215,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُؤْمِنِينَ",
+    "variantText": "ٱلْمُؤْمِنِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-026-215-6-2942",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-026-215-6-2942",
+        "variantId": "v-SUSI-026-215-6-2942-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2942; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُؤْمِنِينَ → الْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

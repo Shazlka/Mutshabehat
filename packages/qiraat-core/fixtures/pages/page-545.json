@@ -201,6 +201,15 @@
         "sourceReference": "https://quranpedia.net/surah/7/59/text",
         "sourceText": "مصحف قالون يثبت في الحشر 59:1 رسم «وَهْوَ»؛ وسطر المصدر يسمي قالون وأبا عمرو والكسائي وأبا جعفر.",
         "verificationNotes": "مطابقة مستقلة لوجه الآية ورُواته؛ عند التعارض قُدّم الجهاز الخاص بالآية على التعيين المختصر في السطر المصدر."
+      },
+      {
+        "id": "s-DURI-059-1-9-r2494",
+        "variantId": "v-AUDIT-P545-59-1-9-03460-1-وهو-وهو",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2494; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "إسكان الهاء وصلاً",
@@ -721,5 +730,37 @@
         "url": "https://quranpedia.net/qiraat/al-hashr/3"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-058-22-4-4252-performance",
+    "surah": 58,
+    "ayah": 22,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنُونَ",
+    "variantText": "يُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-058-22-4-4252",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-058-22-4-4252",
+        "variantId": "v-SUSI-058-22-4-4252-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4252; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

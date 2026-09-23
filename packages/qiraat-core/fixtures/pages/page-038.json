@@ -127,6 +127,15 @@
         "sourceReference": "صفحة المصحف 38 · صفحة المصدر 43",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: مَعًا قَدَرُ حَرِّكْ مِنْ صِحَابٍ — D: وَقَدْرُهُ فَحَرِّكْ إِذًا"
+      },
+      {
+        "id": "s-DURI-002-236-17-r0150",
+        "variantId": "v-L038-قدرهو-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 150; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قدَره ( معاً ) → قـدْرُه | أسكن الدوري الدال"
       }
     ],
     "description": "بإسكان الدال",
@@ -180,6 +189,15 @@
         "sourceReference": "صفحة المصحف 38 · صفحة المصدر 43",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: مَعًا قَدَرُ حَرِّكْ مِنْ صِحَابٍ — D: وَقَدْرُهُ فَحَرِّكْ إِذًا"
+      },
+      {
+        "id": "s-DURI-002-236-20-r0150",
+        "variantId": "v-L038-قدرهو-2-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 150; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قدَره ( معاً ) → قـدْرُه | أسكن الدوري الدال"
       }
     ],
     "description": "بإسكان الدال",

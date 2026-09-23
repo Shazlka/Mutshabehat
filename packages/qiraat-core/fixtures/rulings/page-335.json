@@ -1077,5 +1077,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-25-13-2559-IDGHAM_KABIR",
+    "pageNumber": 335,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 25,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 25,
+    "baseText": "سَوَآءً ٱلْعَـٰكِفُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام السين في السين ثم تنوين ضم: سَوَاءٌ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام السين في السين ثم تنوين ضم: سَوَاءٌ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "سَوَاءً الْعَاكِفُ → سَوَاءُ الْعَاكِفُ | إدغام السين في السين ثم تنوين ضم: سَوَاءٌ"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-25-14-2560-IDGHAM_KABIR",
+    "pageNumber": 335,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 25,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 25,
+    "baseText": "ٱلْعَـٰكِفُ فِيهِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الفاء في الفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْعَاكِفُ فِيهِ → الْعَاكِف فِّيهِ | إدغام الفاء في الفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

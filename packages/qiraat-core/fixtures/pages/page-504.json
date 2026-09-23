@@ -155,6 +155,24 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
         "sourceText": "التحقق المستقل للوجه والرواة في الآية 15 من سورة الأحقاف.",
         "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      },
+      {
+        "id": "s-SUSI-046-15-4-4013",
+        "variantId": "v-AUDIT-P504-R03079-15-4",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4013; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِحْسَانًا → حُسْنًا | دون همزة وضم الحاء وإسكان السين دون ألف بعدها"
+      },
+      {
+        "id": "s-DURI-046-15-4-r2315",
+        "variantId": "v-AUDIT-P504-R03079-15-4",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2315; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إحسـاناً → حُسـناً | حذف الدوري الهمزة وضم الحاء وأسكن السين"
       }
     ],
     "description": "بضم الحاء وسكون السين بلا ألف للباقين",
@@ -213,6 +231,24 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
         "sourceText": "التحقق المستقل للوجه والرواة في الآية 15 من سورة الأحقاف.",
         "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      },
+      {
+        "id": "s-SUSI-046-15-7-4014",
+        "variantId": "v-AUDIT-P504-R03080-15-7",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4014; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كُرْهًا (معاً) → كَرْهًا | فتح الكاف (في الموضعين)"
+      },
+      {
+        "id": "s-DURI-046-15-7-r2316",
+        "variantId": "v-AUDIT-P504-R03080-15-7",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2316; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كُـرهـاً ( معاً ) → كَـرهاً | فتح الدوري الكاف فيهما"
       }
     ],
     "description": "بفتح الكاف للباقين",
@@ -275,6 +311,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
         "sourceText": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
         "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      },
+      {
+        "id": "s-SUSI-046-16-3-4016",
+        "variantId": "v-AUDIT-P504-R03082-16-3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4016; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَتَقَبَّلُ → يُتَقَبَّلُ | إبدال النون ياء مضمومة"
       }
     ],
     "description": "بالغيب والبناء للمجهول للباقين",
@@ -337,6 +382,24 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
         "sourceText": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
         "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      },
+      {
+        "id": "s-SUSI-046-16-5-4017",
+        "variantId": "v-AUDIT-P504-R03082-16-5",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4017; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَحْسَنَ → أَحْسَنُ | ضم النون"
+      },
+      {
+        "id": "s-DURI-046-16-5-r2318",
+        "variantId": "v-AUDIT-P504-R03082-16-5",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2318; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أحـسنَ → أحسـنُ | ضم الدوري النون"
       }
     ],
     "description": "بالغيب والبناء للمجهول للباقين",
@@ -399,6 +462,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
         "sourceText": "التحقق المستقل للوجه والرواة في الآية 16 من سورة الأحقاف.",
         "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      },
+      {
+        "id": "s-SUSI-046-16-8-4018",
+        "variantId": "v-AUDIT-P504-R03082-16-8",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4018; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَنَتَجَاوَزُ → وَيُتَجَاوَزُ | إبدال النون ياء مضمومة"
       }
     ],
     "description": "بالغيب والبناء للمجهول للباقين",
@@ -453,6 +525,24 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
         "sourceText": "التحقق المستقل للوجه والرواة في الآية 17 من سورة الأحقاف.",
         "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      },
+      {
+        "id": "s-SUSI-046-17-4-4020",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4020; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أُفٍّ → أُفِّ | حذف التنوين وكسر الفاء"
+      },
+      {
+        "id": "s-DURI-046-17-4-r2319",
+        "variantId": "v-AUDIT-P504-R03083-17-4",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2319; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أفٍّ → أفِّ | حذف الدوري التنوين"
       }
     ],
     "description": "بكسر الفاء منونة",
@@ -609,6 +699,24 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-ahqaf/15",
         "sourceText": "التحقق المستقل للوجه والرواة في الآية 18 من سورة الأحقاف.",
         "verificationNotes": "مرجع مستقل لمقابلة الوجه ومجموعة الرواة."
+      },
+      {
+        "id": "s-SUSI-046-18-4-4021",
+        "variantId": "v-AUDIT-P504-R03085-18-4",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4021; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عَلَيْهِمُ الْقَوْلُ → عَلَيْهِمِ الْقَوْلُ | كسر الميم"
+      },
+      {
+        "id": "s-DURI-046-18-4-r2320",
+        "variantId": "v-AUDIT-P504-R03085-18-4",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2320; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عليهـمُ القول → عليهـمِ القول | كسر الدوري الميم"
       }
     ],
     "description": "بكسر الهاء والميم وصلاً لأبي عمرو",
@@ -732,5 +840,37 @@
         "url": "https://quranpedia.net/qiraat/al-ahqaf/15"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-046-15-9-4014-performance",
+    "surah": 46,
+    "ayah": 15,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "كُرْهًۭا ۖ",
+    "variantText": "كُرْهًۭا ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-046-15-9-4014",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الكاف (في الموضعين)",
+    "sources": [
+      {
+        "id": "s-SUSI-046-15-9-4014",
+        "variantId": "v-SUSI-046-15-9-4014-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4014; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كُرْهًا (معاً) → كَرْهًا | فتح الكاف (في الموضعين)"
+      }
+    ],
+    "description": "فتح الكاف (في الموضعين)"
   }
 ]

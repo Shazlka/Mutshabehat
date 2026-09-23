@@ -319,5 +319,164 @@
         "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-004-2-8-0334-performance",
+    "surah": 4,
+    "ayah": 2,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تَأْكُلُوٓا۟",
+    "variantText": "وَلَا تَأْكُلُوٓا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-2-8-0334",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-2-8-0334",
+        "variantId": "v-SUSI-004-2-8-0334-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 334; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلَا تَأْكُلُوا → وَلَا تَاكُلُوا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-004-5-1-0336-performance",
+    "surah": 4,
+    "ayah": 5,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تُؤْتُوا۟",
+    "variantText": "وَلَا تُؤْتُوا۟",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-5-1-0336",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-5-1-0336",
+        "variantId": "v-SUSI-004-5-1-0336-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 336; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلَا تُؤْتُوا → وَلَا تُوتُوا | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-004-5-3-0337",
+    "surah": 4,
+    "ayah": 5,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلسُّفَهَآءَ أَمْوَٰلَكُمُ",
+    "variantText": "السُّفَهَا أَمْوَالَكُمُ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-5-3-0337",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-004-5-3-0337",
+        "variantId": "v-SUSI-004-5-3-0337",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 337; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "السُّفَهَاءَ أَمْوَالَكُمُ → السُّفَهَا أَمْوَالَكُمُ | إسقاط الهمزة الأولى وصلاً، وفي المد وجهان: القصر وهو المقدم أو التوسط"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى وصلاً، وفي المد وجهان: القصر وهو المقدم أو التوسط"
+  },
+  {
+    "id": "v-SUSI-004-6-14-0338-performance",
+    "surah": 4,
+    "ayah": 6,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تَأْكُلُوهَآ",
+    "variantText": "وَلَا تَأْكُلُوهَآ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-6-14-0338",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-6-14-0338",
+        "variantId": "v-SUSI-004-6-14-0338-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 338; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلَا تَأْكُلُوهَا → وَلَا تَاكُلُوهَا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-004-6-27-0339-performance",
+    "surah": 4,
+    "ayah": 6,
+    "startToken": 27,
+    "endToken": 27,
+    "operation": "REPLACE",
+    "hafsText": "فَلْيَأْكُلْ",
+    "variantText": "فَلْيَأْكُلْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-6-27-0339",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-6-27-0339",
+        "variantId": "v-SUSI-004-6-27-0339-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 339; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَلْيَأْكُلْ → فَلْيَاكُلْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

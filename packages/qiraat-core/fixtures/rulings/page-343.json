@@ -96,23 +96,15 @@
     "attribution": [
       {
         "authorityId": "Q06",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
         "authorityId": "Q07",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل",
-        "condition": "وقفًا"
+        "authorityId": "Q01",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -133,16 +125,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -447,23 +429,15 @@
     "attribution": [
       {
         "authorityId": "Q06",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
         "authorityId": "Q07",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل",
-        "condition": "وقفًا"
+        "authorityId": "Q01",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -484,16 +458,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -761,23 +725,15 @@
     "attribution": [
       {
         "authorityId": "Q06",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
         "authorityId": "Q07",
-        "action": "إمالة",
-        "condition": "وقفًا"
+        "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل",
-        "condition": "وقفًا"
+        "authorityId": "Q01",
+        "action": "تقليل"
       }
     ],
     "readings": [
@@ -798,16 +754,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -851,7 +797,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ رَبِّ → قَالَ رَّبِّ | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p343-019-1",

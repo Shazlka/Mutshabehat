@@ -1,0 +1,217 @@
+[
+  {
+    "id": "v-D586-سجرت-w2",
+    "surah": 81,
+    "ayah": 6,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "سُجِّرَتْ",
+    "variantText": "سُجِرَتْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D586-سجرت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D586-سجرت-w2",
+        "variantId": "v-D586-سجرت-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: سجرت",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "تخفيف الجيم لابن كثير وأبي عمرو ويعقوب"
+      }
+    ],
+    "description": "تخفيف الجيم لابن كثير وأبي عمرو ويعقوب",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D586-بضنين-w2",
+    "surah": 81,
+    "ayah": 24,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِضَنِينٍۢ",
+    "variantText": "بِظَنِينٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D586-بضنين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D586-بضنين-w2",
+        "variantId": "v-D586-بضنين-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 585-588: بضنين",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "بالظاء لابن كثير وأبي عمرو والكسائي ورويس"
+      },
+      {
+        "id": "s-SUSI-081-24-5-4455",
+        "variantId": "v-D586-بضنين-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4455; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِضَنِينٍ → بِظَنِينٍ | قرأ ابن كثير وأبو عمرو والكسائي ورويس (بِظَنِينٍ) بالظاء المشالة من الظنة (أي بمتهم) وقرأ حفص بالضاد (بِضَنِينٍ) أي ببخيل"
+      }
+    ],
+    "description": "بالظاء لابن كثير وأبي عمرو والكسائي ورويس",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-080-42-3-4450-performance",
+    "surah": 80,
+    "ayah": 42,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْكَفَرَةُ ٱلْفَجَرَةُ",
+    "variantText": "ٱلْكَفَرَةُ ٱلْفَجَرَةُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-080-42-3-4450",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-080-42-3-4450",
+        "variantId": "v-SUSI-080-42-3-4450-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4450; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْكَفَرَةُ الْفَجَرَةُ → الْكَفَرَةُ الْفَجَرَةُ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-081-8-2-4452-performance",
+    "surah": 81,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَوْءُۥدَةُ",
+    "variantText": "ٱلْمَوْءُۥدَةُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-081-8-2-4452",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق الهمزة المضمومة",
+    "sources": [
+      {
+        "id": "s-SUSI-081-8-2-4452",
+        "variantId": "v-SUSI-081-8-2-4452-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4452; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمَوْءُودَةُ → الْمَوْءُودَةُ | تحقيق الهمزة المضمومة"
+      }
+    ],
+    "description": "تحقيق الهمزة المضمومة"
+  },
+  {
+    "id": "v-SUSI-081-12-3-4454-performance",
+    "surah": 81,
+    "ayah": 12,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "سُعِّرَتْ",
+    "variantText": "سُعِّرَتْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-081-12-3-4454",
+    "locusType": "performance_variant",
+    "performanceNote": "تخفيف العين لنافع وابن ذكوان وحفص بالتشديد كأبي عمرو",
+    "sources": [
+      {
+        "id": "s-SUSI-081-12-3-4454",
+        "variantId": "v-SUSI-081-12-3-4454-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4454; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "سُعِّرَتْ → سُعِرَتْ | تخفيف العين لنافع وابن ذكوان وحفص بالتشديد كأبي عمرو"
+      }
+    ],
+    "description": "تخفيف العين لنافع وابن ذكوان وحفص بالتشديد كأبي عمرو"
+  },
+  {
+    "id": "v-DURI-081-10-3-r2677-performance",
+    "surah": 81,
+    "ayah": 10,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نُشِرَتْ",
+    "variantText": "نُشِرَتْ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-081-10-3-r2677",
+    "locusType": "performance_variant",
+    "performanceNote": "شدد الدوري الشين",
+    "sources": [
+      {
+        "id": "s-DURI-081-10-3-r2677",
+        "variantId": "v-DURI-081-10-3-r2677-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2677; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نُشـرت → نُشِّـرت | شدد الدوري الشين"
+      }
+    ],
+    "description": "شدد الدوري الشين"
+  }
+]

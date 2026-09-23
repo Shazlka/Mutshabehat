@@ -360,7 +360,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِمُوسَىٰ → بِمُوسَى | بالتقليل",
+      "بـموسـى → بـموسِـى | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p166-010-1",
@@ -453,7 +457,10 @@
     "hasAlternate": true,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَٰمُوسَى → يَٰمُوسَى | بالتقليل وقفاً"
+    ]
   },
   {
     "id": "r-p166-011-1",
@@ -540,7 +547,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْحُسْنَىٰ → الْحُسْنَى | بالتقليل",
+      "الحسـنى → الـحسنِـى | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p166-012-1",
@@ -572,7 +583,10 @@
     "hasAlternate": false,
     "notes": "وله فيها الاختلاس",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَّحْنُ لَكَ → نَّحْن لَّكَ | إدغام النون في اللام"
+    ]
   },
   {
     "id": "r-p166-013-1",
@@ -603,7 +617,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَقَعَ عَلَيْهِمُ → وَقَع عَّلَيْهِمُ | إدغام العين في العين"
+    ]
   },
   {
     "id": "r-p166-014-1",
@@ -1056,5 +1073,75 @@
     "text": "في رسمها بالتاء خلاف بين المصاحف، ويقف عليها بالهاء ابن كثير، أبو عمرو، الكسائي (مع الإمالة)، يعقوب، والباقون بالتاء",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-007-133-2-r0708-MEEM_JAM",
+    "pageNumber": 166,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 133,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 133,
+    "baseText": "عَلَيْهِمُ ٱلطُّوفَانَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليهمُ الطوفان → عليهمِ الطوفان | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-007-134-3-r0709-MEEM_JAM",
+    "pageNumber": 166,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 134,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 134,
+    "baseText": "عَلَيْهِمُ ٱلرِّجْزُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "عليهمُ الرجز → عليهمِ الرجز | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

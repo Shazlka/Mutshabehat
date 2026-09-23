@@ -248,6 +248,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -279,6 +283,11 @@
       {
         "readingId": "Q03-R01",
         "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -534,7 +543,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْبُشْرَىٰ → الْبُشْرَى | إمالة فتحة الراء",
+      "البـشرى → الـبشرٍى | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p230-013-1",
@@ -657,7 +670,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قدْ جـاءَ → قد جَّـاءَ | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p230-015-1",
@@ -689,7 +705,10 @@
     "hasAlternate": false,
     "notes": "وله فيها الاختلاس",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَمْرُ رَبِّكَ → أَمْر رَّبِّكَ | إدغام الراء في الراء"
+    ]
   },
   {
     "id": "r-p230-016-1",
@@ -720,7 +739,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَطْهَرُ لَكُمْ → أَطْهَر لَّكُمْ | إدغام الراء في اللام"
+    ]
   },
   {
     "id": "r-p230-017-1",
@@ -751,7 +773,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لَوْ → قَال لَّوْ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p230-018-1",
@@ -782,7 +807,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "رُسُلُ رَبِّكَ → رُسُل رَّبِّكَ | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p230-019-1",
@@ -1535,5 +1563,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-011-76-6-1518-IDGHAM_KABIR",
+    "pageNumber": 230,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 76,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 76,
+    "baseText": "قَدْ جَآءَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَ → قَد جَّاءَ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-011-79-11-1525-IDGHAM_KABIR",
+    "pageNumber": 230,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 79,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 79,
+    "baseText": "لَتَعْلَمُ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَتَعْلَمُ مَا → لَتَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

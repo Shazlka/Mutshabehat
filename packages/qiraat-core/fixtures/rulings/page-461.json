@@ -411,7 +411,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p461-IMALAH_TAQLIL-للناس-3",
@@ -442,7 +446,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p461-IKHFA-rule-39-28-2",
@@ -479,5 +486,216 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p461-IDGHAM_SAGHIR-ولقد_ضربنا-4",
+    "pageNumber": 461,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 27,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 27,
+    "baseText": "وَلَقَدْ ضَرَبْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقدْ ضربـنا → ولقد ضَّـربنا | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-039-24-8-3669-IDGHAM_KABIR",
+    "pageNumber": 461,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 24,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 24,
+    "baseText": "وَقِيلَ لِلظَّـٰلِمِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَقِيلَ لِلظَّالِمِينَ → وَقِيل لِّلظَّالِمِينَ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-039-26-9-3671-IDGHAM_KABIR",
+    "pageNumber": 461,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 26,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 26,
+    "baseText": "أَكْبَرُ ۚ لَوْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَكْبَرُ ۚ لَوْ → أَكْبَر لَّوْ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-039-27-1-3672-IDGHAM_KABIR",
+    "pageNumber": 461,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 39,
+    "ayah": 27,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 27,
+    "baseText": "وَلَقَدْ ضَرَبْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الضاد"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الضاد",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَد ضَّرَبْنَا → وَلَقَد ضَّرَبْنَا | إدغام الدال في الضاد"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

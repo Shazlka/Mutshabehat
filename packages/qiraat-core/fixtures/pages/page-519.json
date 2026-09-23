@@ -87,5 +87,40 @@
       }
     ],
     "performanceNote": "بكسر التنوين وصلاً"
+  },
+  {
+    "id": "v-D519-يوم_نقول-w2",
+    "surah": 50,
+    "ayah": 30,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَوْمَ نَقُولُ",
+    "variantText": "يَوْمَ يَقُولُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R01"
+    ],
+    "locusId": "D519-يوم_نقول",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D519-يوم_نقول-w2",
+        "variantId": "v-D519-يوم_نقول-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P519-R03221",
+        "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي. وتؤيده بيانات Quranpedia: https://quranpedia.net/qiraat/qaf/30؛ أُسقط وجه يُقَالُ لعدم تحقق مستقل.",
+        "sourceText": "﴿يَوْمَ نَقُولُ﴾: بنون العظمة المفتوحة للجمهور؛ بياء الغيب المضمومة ﴿يَوْمَ يُقَالُ﴾ أو المفتوحة ﴿يَقُولُ﴾ لنافع وشعبة."
+      }
+    ],
+    "description": "بياء الغيب المفتوحة لنافع وشعبة؛ ثبت الوجه في العرض الخارجي للقراءات",
+    "wajhIndex": 2,
+    "evidence": []
   }
 ]

@@ -21,8 +21,6 @@
       "Q03-R02",
       "Q04-R01",
       "Q04-R02",
-      "Q07-R01",
-      "Q07-R02",
       "Q08-R01",
       "Q08-R02",
       "Q09-R01",
@@ -150,6 +148,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-muzzammil/6",
         "sourceText": "وطاء: الدوري والسوسي عن أبي عمرو وهشام وابن ذكوان عن ابن عامر؛ مع اختلاف تفاصيل الأداء.",
         "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      },
+      {
+        "id": "s-DURI-073-6-6-r2628",
+        "variantId": "v-AUDIT-P574-73-6-6-3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2628; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَطـأً → وِطـاءً | كسر الدوري الواو وفتح الطاء وألف بعدها"
       }
     ],
     "description": "﴿وَطْـٔٗا﴾: بفتح الواو وسكون الطاء مهموزاً ﴿وَطْئًا﴾ لنافع، وابن كثير، وعاصم، وحمزة، والكسائي، وأبي جعفر، ويعقوب، وخلف؛ بكسر الواو وألف مدية بعد الطاء ﴿وِطَاءً﴾ لأبي عمرو وابن عامر.",
@@ -178,6 +185,7 @@
     "readingIds": [
       "Q04-R01",
       "Q04-R02",
+      "Q05-R01",
       "Q06-R01",
       "Q06-R02",
       "Q07-R01",
@@ -218,5 +226,37 @@
         "url": "https://quranpedia.net/qiraat/al-muzzammil/9"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-073-15-9-4377-performance",
+    "surah": 73,
+    "ayah": 15,
+    "startToken": 9,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "إِلَىٰ فِرْعَوْنَ رَسُولًۭا",
+    "variantText": "إِلَىٰ فِرْعَوْنَ رَسُولًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-073-15-9-4377",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-073-15-9-4377",
+        "variantId": "v-SUSI-073-15-9-4377-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4377; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِلَىٰ فِرْعَوْنَ رَسُولًا → إِلَىٰ فِرْعَوْنَ رَسُولًا | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
   }
 ]

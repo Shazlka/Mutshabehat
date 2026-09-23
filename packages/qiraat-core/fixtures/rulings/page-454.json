@@ -407,7 +407,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لَزُلْفَىٰ → لَزُلْفَى | بالتقليل",
+      "لزلفـى → لـزلـفِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p454-IMALAH_TAQLIL-الناس-5",
@@ -438,7 +442,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → النٍّـاس | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p454-YAAT_IDAFA-ولي_نعجه-6",
@@ -470,5 +477,462 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p454-IDGHAM_SAGHIR-اذ_تسوروا-4",
+    "pageNumber": 454,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 21,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 21,
+    "baseText": "إِذْ تَسَوَّرُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "إذْ تسـوّروا → إذ تَّسـوّروا | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-p454-IDGHAM_SAGHIR-اذ_دخلوا-5",
+    "pageNumber": 454,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 22,
+    "baseText": "إِذْ دَخَلُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "إذْ دخـلوا → إذ دَّخـلوا | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-p454-IDGHAM_SAGHIR-لقد_ظلمك-6",
+    "pageNumber": 454,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 24,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 24,
+    "baseText": "لَقَدْ ظَلَمَكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لـقدْ ظلمك → لـقد ظَّلمك | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-038-21-5-3602-IDGHAM_KABIR",
+    "pageNumber": 454,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 21,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 21,
+    "baseText": "إِذْ تَسَوَّرُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في التاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في التاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ تَسَوَّرُوا → إِذ تَّسَوَّرُوا | إدغام الذال في التاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-038-22-1-3603-IDGHAM_KABIR",
+    "pageNumber": 454,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 22,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 22,
+    "baseText": "إِذْ دَخَلُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في الدال"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في الدال",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذ دَّخَلُوا → إِذ دَّخَلُوا | إدغام الذال في الدال"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-038-24-1-3606-IDGHAM_KABIR",
+    "pageNumber": 454,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 24,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 24,
+    "baseText": "قَالَ لَقَدْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَالَ لَقَدْ → قَال لَّقَدْ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-038-24-2-3607-IDGHAM_KABIR",
+    "pageNumber": 454,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 24,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 24,
+    "baseText": "لَقَدْ ظَلَمَكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الظاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الظاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَقَدْ ظَلَمَكَ → لَقَد ظَّلَمَكَ | إدغام الدال في الظاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-038-24-28-3608-IDGHAM_KABIR",
+    "pageNumber": 454,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 38,
+    "ayah": 24,
+    "startToken": 28,
+    "endToken": 29,
+    "endAyah": 24,
+    "baseText": "فَٱسْتَغْفَرَ رَبَّهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَاسْتَغْفَرَ رَبَّهُ → فَاسْتَغْفَر رَّبَّهُ | إدغام الراء في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

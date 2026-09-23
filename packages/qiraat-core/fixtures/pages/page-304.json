@@ -76,6 +76,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P304-R01078",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿دَكَّآءَ﴾: بالمد المتصل مع فتح الهمزة بلا تنوين ﴿دَكَّاءَ﴾ لعاصم، وحمزة، والكسائي، وخلف؛ وبقصر الهمزة وتنوينها ﴿دَكًّا﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-018-98-11-2216",
+        "variantId": "v-D304-دكاء-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2216; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "دَكَّاءَ → دَكًّا | تنوين الكاف دون همزة"
+      },
+      {
+        "id": "s-DURI-018-98-11-r1341",
+        "variantId": "v-D304-دكاء-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1341; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "دكَّـاء → دكّـاً | قرأ الدوري بتنوين الكاف من غير همز بعدها"
       }
     ],
     "description": "بقصر الهمزة وتنوينها",
@@ -120,10 +138,156 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P304-R01079",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿يَحْسَبُونَ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      },
+      {
+        "id": "s-SUSI-018-104-8-2222",
+        "variantId": "v-D304-يحسبون-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2222; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَحْسَبُونَ → يَحْسِبُونَ | كسر السين"
+      },
+      {
+        "id": "s-DURI-018-104-8-r1347",
+        "variantId": "v-D304-يحسبون-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1347; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـحسَبون → يـحسِبون | كسر الدوري السين"
       }
     ],
     "description": "بكسر السين",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-018-102-8-2218-performance",
+    "surah": 18,
+    "ayah": 102,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "دُونِىٓ",
+    "variantText": "دُونِىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-102-8-2218",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-018-102-8-2218",
+        "variantId": "v-SUSI-018-102-8-2218-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2218; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "دُونِي → دُونِيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-018-102-9-2219-performance",
+    "surah": 18,
+    "ayah": 102,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "أَوْلِيَآءَ ۚ إِنَّآ",
+    "variantText": "أَوْلِيَآءَ ۚ إِنَّآ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-102-9-2219",
+    "locusType": "performance_variant",
+    "performanceNote": "تسهيل الهمزة الثانية",
+    "sources": [
+      {
+        "id": "s-SUSI-018-102-9-2219",
+        "variantId": "v-SUSI-018-102-9-2219-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2219; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَوْلِيَاءَ إِنَّا → أَوْلِيَاءَ إِنَّا | تسهيل الهمزة الثانية"
+      }
+    ],
+    "description": "تسهيل الهمزة الثانية"
+  },
+  {
+    "id": "v-SUSI-018-106-9-2224-performance",
+    "surah": 18,
+    "ayah": 106,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًا",
+    "variantText": "هُزُوًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-106-9-2224",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الواو همزة",
+    "sources": [
+      {
+        "id": "s-SUSI-018-106-9-2224",
+        "variantId": "v-SUSI-018-106-9-2224-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2224; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هُزُوًا → هُزُؤًا | إبدال الواو همزة"
+      }
+    ],
+    "description": "إبدال الواو همزة"
+  },
+  {
+    "id": "v-SUSI-018-109-16-2225-performance",
+    "surah": 18,
+    "ayah": 109,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "جِئْنَا",
+    "variantText": "جِئْنَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-109-16-2225",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-018-109-16-2225",
+        "variantId": "v-SUSI-018-109-16-2225-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2225; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جِئْنَا → جِينَا | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
   }
 ]

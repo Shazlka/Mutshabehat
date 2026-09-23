@@ -80,6 +80,15 @@
         "sourceReference": "صفحة المصحف 3 · صفحة المصدر 8",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَمَا يَخْدَعُونَ الْفَتْحُ مِنْ قَبْلِ سَاكِنٍ وَبَعْدُ ذَكَا وَالْغَيْرُ كَالْحَرْفِ أَوَّلَا — D: يَخْدَعُونَ اعْلَمْ حِجَى"
+      },
+      {
+        "id": "s-SUSI-002-9-6-0010",
+        "variantId": "v-L003-يخدعون-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 10; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَخْدَعُونَ → يُخَادِعُونَ | ضم الياء وفتح الخاء وألف بعدها وكسر الدال"
       }
     ],
     "description": "بألف وضم الياء",
@@ -279,5 +288,132 @@
         "text": "أبو جعفر يحذف الهمز ويضم ما قبله من أجل الهمز نحو: ﴿مُسْتَهْزِئُونَ﴾ تقرأ: ﴿مُسْتَهْزُونَ﴾."
       }
     ]
+  },
+  {
+    "id": "v-SUSI-002-6-11-0007-performance",
+    "surah": 2,
+    "ayah": 6,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنُونَ",
+    "variantText": "يُؤْمِنُونَ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-002-6-11-0007",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً مدية",
+    "sources": [
+      {
+        "id": "s-SUSI-002-6-11-0007",
+        "variantId": "v-SUSI-002-6-11-0007-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 7; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً مدية"
+      }
+    ],
+    "description": "إبدال الهمزة واواً مدية"
+  },
+  {
+    "id": "v-SUSI-002-8-11-0009-performance",
+    "surah": 2,
+    "ayah": 8,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "بِمُؤْمِنِينَ",
+    "variantText": "بِمُؤْمِنِينَ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-002-8-11-0009",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً مدية",
+    "sources": [
+      {
+        "id": "s-SUSI-002-8-11-0009",
+        "variantId": "v-SUSI-002-8-11-0009-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 9; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِمُؤْمِنِينَ → بِمُومِنِينَ | إبدال الهمزة واواً مدية"
+      }
+    ],
+    "description": "إبدال الهمزة واواً مدية"
+  },
+  {
+    "id": "v-SUSI-002-13-9-0014-performance",
+    "surah": 2,
+    "ayah": 13,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "أَنُؤْمِنُ",
+    "variantText": "أَنُؤْمِنُ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-002-13-9-0014",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً مدية",
+    "sources": [
+      {
+        "id": "s-SUSI-002-13-9-0014",
+        "variantId": "v-SUSI-002-13-9-0014-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 14; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَنُؤْمِنُ → أَنُومِنُ | إبدال الهمزة واواً مدية"
+      }
+    ],
+    "description": "إبدال الهمزة واواً مدية"
+  },
+  {
+    "id": "v-SUSI-002-13-12-0015",
+    "surah": 2,
+    "ayah": 13,
+    "startToken": 12,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "ٱلسُّفَهَآءُ ۗ أَلَآ",
+    "variantText": "السُّفَهَاءُ وَلَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-002-13-12-0015",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-002-13-12-0015",
+        "variantId": "v-SUSI-002-13-12-0015",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 15; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "السُّفَهَاءُ أَلَا → السُّفَهَاءُ وَلَا | إبدال الهمزة الثانية واواً مفتوحة"
+      }
+    ],
+    "description": "إبدال الهمزة الثانية واواً مفتوحة"
   }
 ]

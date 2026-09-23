@@ -176,6 +176,24 @@
         "sourceType": "other",
         "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-020-80-7-2418",
+        "variantId": "v-L317-وواعدناكم-1-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2418; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَوَاعَدْنَاكُمْ → وَوَعَدْنَاكُمْ | حذف الألف الأولى"
+      },
+      {
+        "id": "s-DURI-020-80-7-r1420",
+        "variantId": "v-L317-وواعدناكم-1-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1420; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وواعدناكم → ووَعدناكم | حذف الدوري الألف بعد الواو"
       }
     ],
     "description": "بحذف الألف بعد الواو",
@@ -301,8 +319,6 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
-      "Q03-R01",
-      "Q03-R02",
       "Q09-R01",
       "Q09-R02"
     ],
@@ -375,10 +391,10 @@
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z",
     "readingIds": [
-      "Q01-R01",
-      "Q01-R02",
-      "Q08-R01",
-      "Q08-R02"
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
     ],
     "locusId": "L317-بملكنا-1",
     "locusType": "word_variant",
@@ -436,6 +452,24 @@
         "sourceReference": "جدولا الآيات المسلَّمان: مريم ٩٦–٩٨، وطه ١–١٣٥ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَكَسْرُ بِمَلْكِنَا ضَمَّ نَافِعٌ وَبِالْفَتْحِ صَحْبٌ"
+      },
+      {
+        "id": "s-SUSI-020-87-5-2425",
+        "variantId": "v-L317-بملكنا-1-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2425; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بِمَلْكِنَا → بِمِلْكِنَا | كسر الميم"
+      },
+      {
+        "id": "s-DURI-020-87-5-r1422",
+        "variantId": "v-L317-بملكنا-1-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1422; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بـمَلكنا → بـمِلكنا | كسر الدوري الميم"
       }
     ],
     "description": "بكسر الميم",

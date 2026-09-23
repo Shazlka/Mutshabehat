@@ -122,6 +122,24 @@
         "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: لِنُحْصِنَكُمْ نُونٌ صَفَا صَفْوَةٍ وَيَا حِمَى دِرْهَمٍ وَالتَّاءُ فِي غَيْرِهِمْ تَلَا"
+      },
+      {
+        "id": "s-SUSI-021-80-5-2519",
+        "variantId": "v-L328-لتحصنكم-1-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2519; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِتُحْصِنَكُم → لِيُحْصِنَكُم | بالياء بدل التاء"
+      },
+      {
+        "id": "s-DURI-021-80-5-r1459",
+        "variantId": "v-L328-لتحصنكم-1-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1459; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لتُحصنكم → ليُحصنكم | قرأ الدوري بياء الغيبة"
       }
     ],
     "description": "بالتحتية (الياء)",
@@ -166,5 +184,69 @@
     "description": "بالجمع",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-021-73-2-2518-performance",
+    "surah": 21,
+    "ayah": 73,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَئِمَّةًۭ",
+    "variantText": "أَئِمَّةًۭ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-73-2-2518",
+    "locusType": "performance_variant",
+    "performanceNote": "تسهيل الهمزة الثانية",
+    "sources": [
+      {
+        "id": "s-SUSI-021-73-2-2518",
+        "variantId": "v-SUSI-021-73-2-2518-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2518; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَئِمَّةً → أَيِمَّةً | تسهيل الهمزة الثانية"
+      }
+    ],
+    "description": "تسهيل الهمزة الثانية"
+  },
+  {
+    "id": "v-SUSI-021-80-7-2520-performance",
+    "surah": 21,
+    "ayah": 80,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "بَأْسِكُمْ ۖ",
+    "variantText": "بَأْسِكُمْ ۖ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-80-7-2520",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-021-80-7-2520",
+        "variantId": "v-SUSI-021-80-7-2520-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2520; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "بَأْسِكُم → بَاسِكُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

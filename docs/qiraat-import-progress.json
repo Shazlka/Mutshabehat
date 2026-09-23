@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T00:00:00+04:00",
+  "updatedAt": "2026-09-22T23:59:00+04:00",
   "project": "Shazlka/Mutshabehat",
   "branch": "main",
   "sourceDocument": {
@@ -10,7 +10,22 @@
       225,
       584
     ],
-    "pageCount": 360
+    "pageCount": 360,
+    "additionalSources": [
+      {
+        "filename": "qiraat_pages_585_604.json",
+        "pageRange": [
+          585,
+          604
+        ],
+        "recordCount": 20,
+        "path": "attached user source"
+      }
+    ],
+    "pdfManifest": "docs/qiraat/source-pdf-manifest.json",
+    "pdfVolumeCount": 30,
+    "pdfTotalPages": 605,
+    "pdfMappingStatus": "manifested; Mushaf-page mapping pending"
   },
   "storage": {
     "qiraatData": "fixture-only",
@@ -18,96 +33,44 @@
   },
   "dataset": {
     "mushafPages": 604,
-    "variants": 2889,
-    "usulRulings": 9899,
-    "fixturePagesPresent": 584,
+    "variants": 3089,
+    "usulRulings": 10099,
+    "fixturePagesPresent": 604,
     "fixtureRange": [
       1,
-      584
-    ],
-    "missingFixturePages": [
-      585,
-      586,
-      587,
-      588,
-      589,
-      590,
-      591,
-      592,
-      593,
-      594,
-      595,
-      596,
-      597,
-      598,
-      599,
-      600,
-      601,
-      602,
-      603,
       604
     ],
+    "missingFixturePages": [],
     "validation": "passed",
     "manualReviewFlags": 4,
-    "sourceCoverageStatus": "Global bare-Khalaf audit through page 584 plus cycle pages 245-260. Bare خلف is Q06; explicit خلف العاشر or unambiguous remainder retains Q10. Importer is idempotent; validator, 38/38 tests, TypeScript, and build pass.",
-    "latestSourceCoverageNote": "Locally verified targeted Qiraat import on Mushaf pages 547-562: 66 variant fixture records and a net increase of 13 ruling records, including three same-token performance variants. Corrected source attribution under the explicit convention that bare خلف is Q06-R01; Q10 appears only where independently named by the verse apparatus or in an unambiguous remainder. Quranpedia per-verse checks corrected conflicting assignments for مبينات, تظاهرا, and Shuba's Jibril form. Known source conflicts and unsupported rows remain withheld, so no page-wide completeness is claimed. Importer preview/write is idempotent; validator passes at 2100 variants, 9860 rulings, and 20 one-colour categories; 38/38 Qiraat tests, TypeScript, and production build pass. Deployment and API smoke are pending."
+    "sourceCoverageStatus": "Imported all safe, explicitly attributed usul rulings from qiraat_pages_585_604_full.sql for pages 585-604; additive fixture-only import with real Mushaf token anchors.",
+    "latestSourceCoverageNote": "Full SQL source import completed for pages 585-604: all safe explicit usul records were added and deduplicated. Universal or non-token performance statements without an existing category were not invented. Validator passes with 3089 variants and 10099 rulings."
   },
-  "sourceCoverageStatus": "Global bare-Khalaf audit through page 584 plus cycle pages 245-260. Bare خلف is Q06; explicit خلف العاشر or unambiguous remainder retains Q10. Importer is idempotent; validator, 38/38 tests, TypeScript, and build pass.",
+  "sourceCoverageStatus": "Imported all safe, explicitly attributed usul rulings from qiraat_pages_585_604_full.sql for pages 585-604; additive fixture-only import with real Mushaf token anchors.",
   "currentBatch": {
-    "id": "audited-import-p235-p250",
+    "id": "sql-usul-pages-585-604",
     "pages": [
-      235,
-      236,
-      237,
-      238,
-      239,
-      240,
-      241,
-      242,
-      243,
-      244,
-      245,
-      246,
-      247,
-      248,
-      249,
-      250
+      585,
+      604
     ],
-    "variantsAdded": 1,
-    "rulingRecordsNetChanged": 0,
-    "status": "locally_verified",
-    "deployment": "pending",
-    "perPageVariants": {
-      "235": 0,
-      "236": 0,
-      "237": 0,
-      "238": 0,
-      "239": 0,
-      "240": 0,
-      "241": 0,
-      "242": 0,
-      "243": 0,
-      "244": 0,
-      "245": 0,
-      "246": 0,
-      "247": 0,
-      "248": 0,
-      "249": 0,
-      "250": 1
-    },
-    "notes": "Four-agent audited slices with outside-source checks and exact-token provenance; page-248 remainder assertion corrected to include Q10 in الباقين. Spelling-only performance forms withheld. Bare خلف=Q06; Q10 explicit only. DB migration: none.",
+    "variantsAdded": 8,
+    "newRulingLoci": 63,
+    "mergedRulingLoci": 0,
+    "readerAssignmentsAdded": 0,
+    "status": "locally verified; deployment queued",
     "validation": {
-      "variants": 2803,
-      "rulings": 9886,
+      "variants": 3089,
+      "usulRulings": 10099,
       "validator": "passed",
-      "tests": "38/38",
-      "tsc": "passed",
-      "build": "passed",
-      "importerIdempotent": true
+      "importerIdempotent": false
+    },
+    "manualReview": {
+      "remaining": [],
+      "notes": "All safe explicit usul records imported; non-token performance text without an existing ruling category was not fabricated."
     }
   },
-  "lastConfirmedDeployedDataCommit": "7a80f3b",
-  "lastConfirmedVercelState": "success",
+  "lastConfirmedDeployedDataCommit": "5c18daa",
+  "lastConfirmedVercelState": "pending",
   "lastProductionSmoke": {
     "pages": [
       505,
@@ -22298,7 +22261,7 @@
       584
     ]
   ],
-  "currentHeadCommit": "ba244a9",
+  "currentHeadCommit": "pending-local-commit",
   "independentValidation": {
     "source": "Quranpedia official versioned Qiraat dump",
     "siteRelease": "2026-09-20",
@@ -23601,67 +23564,71 @@
   },
   "lastConfirmedVercelDeploymentId": "dpl_78QLhcBf2hNkMJdx9CMB1dQQHQdr",
   "lastConfirmedVercelDeploymentUrl": "https://vercel.com/shazlka-s-projects/mutshabehat-v2/CbPugvmFB8R9wBH4f6asmjHL5w7e",
-  "latestSourceCoverageNote": "Audited through Mushaf page 584. Bare خلف is Q06; Q10 only explicit خلف العاشر or source remainder.",
+  "latestSourceCoverageNote": "Audited source pages 225-584 with targeted database gap review. Added 20 safe token-backed faces and 26 usul ruling loci; ambiguous wording/performance rows remain explicitly withheld.",
   "latestLocalImportCycle": {
-    "id": "four-agent-audit-p341-p356",
+    "id": "usul-family-completion-p226-p464",
     "pages": [
-      341,
-      342,
-      343,
-      344,
-      345,
-      346,
-      347,
-      348,
-      349,
-      350,
-      351,
-      352,
+      226,
+      238,
+      239,
+      240,
+      242,
+      243,
+      245,
       353,
-      354,
-      355,
-      356
+      365,
+      367,
+      370,
+      399,
+      403,
+      425,
+      426,
+      455,
+      464
     ],
-    "variantsAdded": 2,
-    "newRulingLoci": 0,
-    "rulingRecordsNetChanged": 0,
-    "correctedRulingLoci": 12,
+    "variantsAdded": 0,
+    "newRulingLoci": 26,
+    "rulingRecordsNetChanged": 26,
+    "correctedRulingLoci": 0,
     "perPageVariants": {
-      "341": 0,
-      "342": 0,
-      "343": 2,
-      "344": 0,
-      "345": 0,
-      "346": 0,
-      "347": 0,
-      "348": 0,
-      "349": 0,
-      "350": 0,
-      "351": 0,
-      "352": 0,
+      "226": 0,
+      "238": 0,
+      "239": 0,
+      "240": 0,
+      "242": 0,
+      "243": 0,
+      "245": 0,
       "353": 0,
-      "354": 0,
-      "355": 0,
-      "356": 0
+      "365": 0,
+      "367": 0,
+      "370": 0,
+      "399": 0,
+      "403": 0,
+      "425": 0,
+      "426": 0,
+      "455": 0,
+      "464": 0
     },
-    "correctedByPage": {
-      "345": 2,
-      "346": 1,
-      "347": 1,
-      "349": 5,
-      "352": 1
+    "rulingLociByCategory": {
+      "YAAT_IDAFA": 5,
+      "YAAT_ZAWAID": 7,
+      "HAMZATAN_KALIMATAYN": 1,
+      "HAMZATAN_KALIMA": 0,
+      "WAQF_RASM": 6,
+      "WAQF_HAMZA": 7,
+      "IKHFA": 0
     },
     "status": "locally verified; deployment pending",
     "validation": {
-      "variants": 2889,
-      "usulRulings": 9899,
+      "variants": 2926,
+      "usulRulings": 9928,
       "validator": "passed",
-      "tests": "pending",
-      "tsc": "pending",
-      "build": "pending",
+      "tests": "39/39",
+      "tsc": "passed",
+      "build": "passed",
       "importerIdempotent": true
     },
-    "details": "Added two p343 performance faces and merged eight existing ruling assignments on p342/p344; corrected source partitions and bare-Khalaf Q10 leakage across p345-p352; no safe additions p341/p344 or p353-p356."
+    "details": "Completed additive usul-family write across all source pages. Remaining HAMZATAN_KALIMA assignments were merged into existing loci; no IKHFA additions remained."
   },
   "previousImportCycle279_294": {
     "pagesReviewed": [

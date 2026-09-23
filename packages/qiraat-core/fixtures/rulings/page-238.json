@@ -382,7 +382,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لَنَرَاهَا → لَنَرَاهَا | إمالة فتحة الراء",
+      "لنـراها → لنـرٍاها | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p238-006-1",
@@ -455,7 +459,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قـدْ شغفـها → قـد شَّغفـها | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p238-007-1",
@@ -517,7 +524,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إِنَّكِ كُنتِ → إِنَّك كُّنتِ | إدغام الكاف في الكاف"
+    ]
   },
   {
     "id": "r-p238-009-1",
@@ -1020,5 +1030,80 @@
     "text": "الفتح وصلاً لأهل سما وأبي جعفر، والإسكان للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-p238-WAQF_RASM-من_كيدكن-7",
+    "pageNumber": 238,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 28,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 28,
+    "baseText": "مِن كَيْدِكُنَّ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-012-30-11-1610-IDGHAM_KABIR",
+    "pageNumber": 238,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 30,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 30,
+    "baseText": "قَدْ شَغَفَهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الشين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الشين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ شَغَفَهَا → قَد شَّغَفَهَا | إدغام الدال في الشين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

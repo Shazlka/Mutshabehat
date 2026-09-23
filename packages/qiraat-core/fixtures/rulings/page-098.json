@@ -239,7 +239,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أُنثَىٰ → أُنثَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p098-007-1",
@@ -494,7 +497,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الصَّالِحَاتِ سَنُدْخِلُهُمْ → الصَّالِحَات سَّنُدْخِلُهُمْ | إدغام التاء في السين"
+    ]
   },
   {
     "id": "r-p098-011-1",
@@ -960,5 +966,75 @@
     "text": "إبدال الهمزة ألفًا مع القصر والتوسط والإشباع، وتسهيلها مع الروم إشباعًا وقصرًا؛ ويوافقه هشام عدا وجه التسهيل مع الإشباع فله فيه التوسط.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-004-124-15-0460-IDGHAM_KABIR",
+    "pageNumber": 98,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 124,
+    "startToken": 15,
+    "endToken": 16,
+    "endAyah": 124,
+    "baseText": "يُظْلَمُونَ نَقِيرًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في النون"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في النون",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يُظْلَمُونَ نَقِيرًا → يُظْلَمُون نَّقِيرًا | إدغام النون في النون"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-004-124-7-r0397-IMALAH_TAQLIL",
+    "pageNumber": 98,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 4,
+    "ayah": 124,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 124,
+    "baseText": "أَوْ أُنثَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أو أنثـى → أو أنـثِى | قللهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

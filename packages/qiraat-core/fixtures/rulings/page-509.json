@@ -385,7 +385,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أَدْبَارِهِمْ → أَدْبَارِهِمْ | إمالة فتحة الباء والألف",
+      "أدبـارهم → أدبٍـارهم | أمالـهـا الدوري"
+    ]
   },
   {
     "id": "r-p509-IDGHAM_SAGHIR-انزلت_سوره-5",
@@ -461,6 +465,114 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أنـزِلتْ سورة → أنـزِلت سُّـورة | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-047-25-13-4059-IDGHAM_KABIR",
+    "pageNumber": 509,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 25,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 25,
+    "baseText": "سَوَّلَ لَهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "سَوَّلَ لَهُمْ → سَوَّل لَّهُمْ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-047-25-15-r2349-TAGHYIR_HAMZ",
+    "pageNumber": 509,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 25,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 25,
+    "baseText": "وَأَمْلَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "ضم الدوري الهمزة وكسر اللام وفتح الياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "ضم الدوري الهمزة وكسر اللام وفتح الياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وأَمْـلى → وأُمْـلِيَ | ضم الدوري الهمزة وكسر اللام وفتح الياء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-047-26-15-r2350-TAGHYIR_HAMZ",
+    "pageNumber": 509,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 47,
+    "ayah": 26,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 26,
+    "baseText": "إِسْرَارَهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إسـرارهم → أسـرارهم | فتح الدوري الهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

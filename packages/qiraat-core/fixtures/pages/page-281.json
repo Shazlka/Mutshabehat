@@ -13,7 +13,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
-      "Q04-R01"
+      "Q04-R01",
+      "Q04-R02"
     ],
     "locusId": "D281-ابراهيم",
     "locusType": "word_variant",
@@ -25,6 +26,15 @@
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00794",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾ (معاً): بياء بعد الهاء للجمهور؛ وبألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
+      },
+      {
+        "id": "s-D281-ابراهيم-w2",
+        "variantId": "v-D281-ابراهيم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00794",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
         "sourceText": "﴿إِبْرَٰهِيمَ﴾ (معاً): بياء بعد الهاء للجمهور؛ وبألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
       }
     ],
@@ -63,6 +73,258 @@
       }
     ],
     "description": "بكسر الضاد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D281-ابراهيم-w2",
+    "surah": 16,
+    "ayah": 123,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "D281-ابراهيم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D281-ابراهيم-w2",
+        "variantId": "v-D281-ابراهيم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00794",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿إِبْرَٰهِيمَ﴾ (معاً): بياء بعد الهاء للجمهور؛ وبألف بعد الهاء ﴿إِبْرَاهَامَ﴾ لهشام."
+      }
+    ],
+    "description": "بألف بعد الهاء لهشام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D281-صراط-w2",
+    "surah": 16,
+    "ayah": 121,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "سِرَٰطٍ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D281-صراط",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D281-صراط-w2",
+        "variantId": "v-D281-صراط-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00795",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة."
+      }
+    ],
+    "description": "بالسين لقنبل ورويس",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D281-صراط-w3",
+    "surah": 16,
+    "ayah": 121,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٍۢ",
+    "variantText": "صِرَٰطٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "D281-صراط",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام الصاد زياً لخلف عن حمزة",
+    "sources": [
+      {
+        "id": "s-D281-صراط-w3",
+        "variantId": "v-D281-صراط-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00795",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿صِرَٰطٍ﴾: بالصاد للجمهور؛ بالسين لقنبل ورويس؛ بإشمام الصاد زياً لخلف عن حمزة."
+      }
+    ],
+    "description": "بإشمام الصاد زياً لخلف عن حمزة",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D281-وهو-w2",
+    "surah": 16,
+    "ayah": 125,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D281-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D281-وهو-w2",
+        "variantId": "v-D281-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00796",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿وَهُوَ﴾، ﴿لَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-016-125-20-1996",
+        "variantId": "v-D281-وهو-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1996; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-016-125-20-r1220",
+        "variantId": "v-D281-وهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1220; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D281-لهو-w2",
+    "surah": 16,
+    "ayah": 126,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لَهُوَ",
+    "variantText": "لَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D281-لهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D281-لهو-w2",
+        "variantId": "v-D281-لهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00796",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿وَهُوَ﴾، ﴿لَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-016-126-10-1998",
+        "variantId": "v-D281-لهو-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1998; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَهُوَ → لَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-016-126-10-r1221",
+        "variantId": "v-D281-لهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1221; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لـهُو → لـهْو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D281-عليهم-w2",
+    "surah": 16,
+    "ayah": 127,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D281-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D281-عليهم-w2",
+        "variantId": "v-D281-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P281-R00797",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ خلف المجرد = Q06.",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء لحمزة ويعقوب",
     "wajhIndex": 2,
     "evidence": []
   }

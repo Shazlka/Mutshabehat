@@ -280,7 +280,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَٰمُوسَىٰ → يَٰمُوسَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p112-006-1",
@@ -372,7 +375,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار → النٍّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p112-008-1",
@@ -476,7 +483,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ رَبِّ → قَالَ رَّبِّ | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p112-010-1",
@@ -538,7 +548,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لَأَقْتُلَنَّكَ → قَال لَّأَقْتُلَنَّكَ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p112-012-1",
@@ -569,7 +582,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لَأَقْتُلَنَّكَ قَالَ → لَأَقْتُلَنَّك قَّالَ | إدغام الكاف في القاف"
+    ]
   },
   {
     "id": "r-p112-013-1",
@@ -1100,5 +1116,40 @@
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-005-27-5-0552-IKHFA",
+    "pageNumber": 112,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 27,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 27,
+    "baseText": "ءَادَمَ بِٱلْحَقِّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "ءَادَمَ بِالْحَقِّ → ءَادَم بِالْحَقِّ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

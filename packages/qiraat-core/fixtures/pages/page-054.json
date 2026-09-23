@@ -38,6 +38,24 @@
         "sourceReference": "صفحة المصحف 54 · صفحة المصدر 59",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَرَا رَءُوفٌ قَصْرُ صُحْبَةٍ"
+      },
+      {
+        "id": "s-SUSI-003-30-25-0140",
+        "variantId": "v-L054-رءوف-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 140; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَءُوفٌ → رَؤُفٌ | حذف الواو"
+      },
+      {
+        "id": "s-DURI-003-30-25-r0226",
+        "variantId": "v-L054-رءوف-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 226; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رؤوف → رؤف | قصر الدوري الـهمزة"
       }
     ],
     "description": "بالقصر",
@@ -286,5 +304,78 @@
         "text": "وَفِي زَكَرِيَّا قَصْرُهُ وَسُكُونُهُ كَفَى صَحَّ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-003-35-3-0143",
+    "surah": 3,
+    "ayah": 35,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱمْرَأَتُ",
+    "variantText": "امْرَأَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-35-3-0143",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-003-35-3-0143",
+        "variantId": "v-SUSI-003-35-3-0143",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 143; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "امْرَأَتُ → امْرَأَه | بالهاء وقفاً"
+      },
+      {
+        "id": "s-DURI-003-35-3-r0229",
+        "variantId": "v-SUSI-003-35-3-0143",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 229; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "امـرأت → امـرأة | وقف الدوري عليها بالـهاء"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-003-35-14-0144-performance",
+    "surah": 3,
+    "ayah": 35,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "مِنِّىٓ ۖ إِنَّكَ",
+    "variantText": "مِنِّىٓ ۖ إِنَّكَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-35-14-0144",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-003-35-14-0144",
+        "variantId": "v-SUSI-003-35-14-0144-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 144; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِنِّي إِنَّكَ → مِنِّيَ إِنَّكَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
   }
 ]

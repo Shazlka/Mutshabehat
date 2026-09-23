@@ -32,6 +32,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P278-R00765",
         "verificationNotes": "المصدر يصرّح بالقراء، ورُبط الوجه برمز الكلمة المحقق في مصحف رواية حفص.",
         "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-016-97-8-1974",
+        "variantId": "v-D278-وهو-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1974; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-016-97-8-r1210",
+        "variantId": "v-D278-وهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1210; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء؛ قالون، أبو عمرو، الكسائي، أبو جعفر",
@@ -141,5 +159,131 @@
     "description": "بإسكان الدال",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-016-96-8-1972",
+    "surah": 16,
+    "ayah": 96,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَلَنَجْزِيَنَّ",
+    "variantText": "وَلَيَجْزِيَنَّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-96-8-1972",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-016-96-8-1972",
+        "variantId": "v-SUSI-016-96-8-1972",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1972; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلَنَجْزِيَنَّ → وَلَيَجْزِيَنَّ | بالياء بدل النون"
+      }
+    ],
+    "description": "بالياء بدل النون"
+  },
+  {
+    "id": "v-SUSI-016-97-9-1975-performance",
+    "surah": 16,
+    "ayah": 97,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "مُؤْمِنٌۭ",
+    "variantText": "مُؤْمِنٌۭ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-97-9-1975",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-97-9-1975",
+        "variantId": "v-SUSI-016-97-9-1975-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1975; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُؤْمِنٌ → مُومِنٌ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-016-98-2-1976-performance",
+    "surah": 16,
+    "ayah": 98,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قَرَأْتَ",
+    "variantText": "قَرَأْتَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-016-98-2-1976",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-016-98-2-1976",
+        "variantId": "v-SUSI-016-98-2-1976-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1976; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قَرَأْتَ → قَرَاتَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-DURI-016-96-8-r1208",
+    "surah": 16,
+    "ayah": 96,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَلَنَجْزِيَنَّ",
+    "variantText": "وليـجزيـن",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-016-96-8-r1208",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-016-96-8-r1208",
+        "variantId": "v-DURI-016-96-8-r1208",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1208; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ولنـجزيـنّ → وليـجزيـن | قرأها الدوري بالياء"
+      }
+    ],
+    "description": "قرأها الدوري بالياء"
   }
 ]

@@ -277,6 +277,15 @@
         "sourceReference": "صفحة المصحف 46 · صفحة المصدر 51",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَا وَنُكَفِّرْ عَنْ كِرَامٍ وَجَزْمُهُ أَتَى شَافِيًا وَالْغَيْرُ بِالرَّفْعِ وُكِّلَا"
+      },
+      {
+        "id": "s-DURI-002-271-13-r0187",
+        "variantId": "v-L046-ويكفر-1-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 187; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ويـكفِّر → ونـكفِّر | قرأها الدوري بالنون"
       }
     ],
     "description": "بالنون والرفع",
@@ -328,6 +337,15 @@
         "sourceReference": "صفحة المصحف 46 · صفحة المصدر 51",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَحْسَبُ كَسْرُ السِّينِ مُسْتَقْبَلًا سَمَا رِضَاهُ وَلَمْ يَلْزَمْ قِيَاسًا مُوَصَّلَا — D: افْتَحًا كَيَحْسَبُ أُدْ وَاكْسِرْهُ فُزْ"
+      },
+      {
+        "id": "s-DURI-002-273-12-r0188",
+        "variantId": "v-L046-يحسبهم-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 188; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يحسَـبهم → يحسِبـهم | كسر الدوري السين"
       }
     ],
     "description": "بكسر السين",

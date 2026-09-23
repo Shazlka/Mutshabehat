@@ -51,6 +51,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
       "Q09-R01",
       "Q09-R02"
     ],
@@ -65,6 +67,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P433-R02387",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿يَحْشُرُهُمْ﴾ - ﴿يَقُولُ﴾: بياء الغيب في الفعلين لحفص ويعقوب؛ وبنون العظمة فيهما ﴿نَحْشُرُهُمْ... نَقُولُ﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-034-40-2-3446",
+        "variantId": "v-D433-يحشرهم-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3446; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَحْشُرُهُمْ → نَحْشُرُهُمْ | إبدال الياء نوناً"
+      },
+      {
+        "id": "s-DURI-034-40-2-r1962",
+        "variantId": "v-D433-يحشرهم-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1962; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـحشرهم → نَحـشرهـم | قرأ الدوري بنون العظمة"
       }
     ],
     "description": "بياء الغيب",
@@ -85,6 +105,7 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "readingIds": [
+      "Q03-R01",
       "Q09-R01",
       "Q09-R02"
     ],
@@ -99,6 +120,15 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P433-R02387",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿يَحْشُرُهُمْ﴾ - ﴿يَقُولُ﴾: بياء الغيب في الفعلين لحفص ويعقوب؛ وبنون العظمة فيهما ﴿نَحْشُرُهُمْ... نَقُولُ﴾ للباقين."
+      },
+      {
+        "id": "s-DURI-034-40-5-r1963",
+        "variantId": "v-D433-يقول-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1963; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يقـولُ → نـقولُ | قرأ الدوري بنون العظمة"
       }
     ],
     "description": "بياء الغيب",
@@ -243,6 +273,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P433-R02390",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-034-47-6-3454",
+        "variantId": "v-D433-فهو-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3454; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَهُوَ → فَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-034-47-6-r1967",
+        "variantId": "v-D433-فهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1967; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو – وهُـو → فهْـو - وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
@@ -282,10 +330,122 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P433-R02390",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿فَهُوَ﴾، ﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-034-47-13-3455",
+        "variantId": "v-D433-وهو-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3455; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-034-47-13-r1967",
+        "variantId": "v-D433-وهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1967; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو – وهُـو → فهْـو - وهْـو | أسكن الدوري الهاء"
       }
     ],
     "description": "بإسكان الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-034-40-5-3447",
+    "surah": 34,
+    "ayah": 40,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يَقُولُ لِلْمَلَـٰٓئِكَةِ",
+    "variantText": "نَقُول لِّلْمَلَائِكَةِ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-034-40-5-3447",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-034-40-5-3447",
+        "variantId": "v-SUSI-034-40-5-3447",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3447; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَقُولُ لِلْمَلَائِكَةِ → نَقُول لِّلْمَلَائِكَةِ | إبدال الياء نوناً وإدغام اللام في اللام"
+      }
+    ],
+    "description": "إبدال الياء نوناً وإدغام اللام في اللام"
+  },
+  {
+    "id": "v-SUSI-034-40-7-3448",
+    "surah": 34,
+    "ayah": 40,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "أَهَـٰٓؤُلَآءِ إِيَّاكُمْ",
+    "variantText": "أَهَٰؤُلَا إِيَّاكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-034-40-7-3448",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-034-40-7-3448",
+        "variantId": "v-SUSI-034-40-7-3448",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3448; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَهَٰؤُلَاءِ إِيَّاكُمْ → أَهَٰؤُلَا إِيَّاكُمْ | إسقاط الهمزة الأولى"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى"
+  },
+  {
+    "id": "v-SUSI-034-41-13-3449-performance",
+    "surah": 34,
+    "ayah": 41,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "مُّؤْمِنُونَ",
+    "variantText": "مُّؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-034-41-13-3449",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-034-41-13-3449",
+        "variantId": "v-SUSI-034-41-13-3449-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3449; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُّؤْمِنُونَ → مُّومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

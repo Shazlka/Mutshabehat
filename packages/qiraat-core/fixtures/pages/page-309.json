@@ -122,6 +122,24 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَضَمُّ يَدْخُلُونَ وَفَتْحُ الضَّمِّ حَقٌّ صَرًى حَلَا"
+      },
+      {
+        "id": "s-SUSI-019-60-8-2280",
+        "variantId": "v-L309-يدخلون-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2280; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَدْخُلُونَ → يُدْخَلُونَ | ضم الياء وفتح الخاء"
+      },
+      {
+        "id": "s-DURI-019-60-8-r1381",
+        "variantId": "v-L309-يدخلون-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1381; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَـدخلون → يُـدخَلون | قرأ الدوري بضم الياء وفتح الخاء"
       }
     ],
     "description": "بضم الياء وفتح الخاء مبنيًّا للمفعول",
@@ -293,5 +311,69 @@
     "description": "بألف بعد الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-019-55-2-2279-performance",
+    "surah": 19,
+    "ayah": 55,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْمُرُ",
+    "variantText": "يَأْمُرُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-55-2-2279",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-019-55-2-2279",
+        "variantId": "v-SUSI-019-55-2-2279-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2279; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْمُرُ → يَامُرُ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-019-61-11-2281-performance",
+    "surah": 19,
+    "ayah": 61,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مَأْتِيًّۭا",
+    "variantText": "مَأْتِيًّۭا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-61-11-2281",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-019-61-11-2281",
+        "variantId": "v-SUSI-019-61-11-2281-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2281; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَأْتِيًّا → مَاتِيًّا | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

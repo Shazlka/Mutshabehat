@@ -100,7 +100,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أُنثَىٰ → أُنثَى | بالتقليل"
+    ]
   },
   {
     "id": "r-p278-IMALAH_TAQLIL-وهدي-1",
@@ -288,7 +291,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَبُشْرَىٰ → وَبُشْرَى | إمالة فتحة الراء",
+      "وبشـرى → وبشـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p278-TAGHYIR_HAMZ-مومن-3",
@@ -444,5 +451,110 @@
         "verificationNotes": "وجه صريح في السجل المعالج، ومرساته كلمة فعلية من ملف المصحف."
       }
     ]
+  },
+  {
+    "id": "r-SUSI-016-95-9-1971-IDGHAM_KABIR",
+    "pageNumber": 278,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 95,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 95,
+    "baseText": "ٱللَّهِ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللَّهُ هُوَ → اللَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-101-7-1977-IKHFA",
+    "pageNumber": 278,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 101,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 101,
+    "baseText": "أَعْلَمُ بِمَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَعْلَمُ بِمَا → أَعْلَم بِمَا | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-016-97-6-r1209-IMALAH_TAQLIL",
+    "pageNumber": 278,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 97,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 97,
+    "baseText": "أَوْ أُنثَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أو أنثـى → أو أنـثِـى | قللها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

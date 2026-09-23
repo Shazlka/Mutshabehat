@@ -746,7 +746,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الر → الر | إمالة فتحة الراء والألف",
+      "الر → الـرٍ | أمال الدوري الراء"
+    ]
   },
   {
     "id": "r-p221-016-1",
@@ -864,7 +868,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "هُوَ وَإِن → هُو وَّإِن | إدغام الواو في الواو"
+    ]
   },
   {
     "id": "r-p221-018-1",
@@ -895,7 +902,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُصِيبُ بِهِ → يُصِيب بِّهِ | إدغام الباء في الباء"
+    ]
   },
   {
     "id": "r-p221-019-1",
@@ -926,7 +936,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p221-020-1",
@@ -1252,5 +1265,40 @@
     "text": "والإسكان وصلًا للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-010-108-4-1437-IDGHAM_KABIR",
+    "pageNumber": 221,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 10,
+    "ayah": 108,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 108,
+    "baseText": "قَدْ جَآءَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ جَاءَكُمُ → قَد جَّاءَكُمُ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -594,7 +594,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْذَنَ لِي → يَاذَن لِّيَ | إبدال الهمزة ألفاً ثم إدغام النون في اللام ثم فتح الياء"
+    ]
   },
   {
     "id": "r-p245-IDGHAM_KABIR-انهو_هو-12",
@@ -625,7 +628,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "إِنَّهُ هُوَ → إِنَّه هُّوَ | إدغام الهاء في الهاء"
+    ]
   },
   {
     "id": "r-p245-IDGHAM_KABIR-واعلم_من-13",
@@ -656,7 +662,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَعْلَمُ مِنَ → وَأَعْلَم مِّنَ | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p245-TAGHYIR_HAMZ-ياذن-14",
@@ -1039,6 +1048,86 @@
       {
         "readingId": "Q06-R02",
         "action": "لخلف (السكت، التحقيق)، ولخلاد (التحقيق)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p245-WAQF_HAMZA-لي_ابي-19",
+    "pageNumber": 245,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 80,
+    "startToken": 29,
+    "endToken": 30,
+    "endAyah": 80,
+    "baseText": "لِىٓ أَبِىٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر؛ والإسكان للباقين"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر؛ والإسكان للباقين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر؛ والإسكان للباقين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، أبو جعفر؛ والإسكان للباقين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p245-WAQF_HAMZA-وحزني_الي-20",
+    "pageNumber": 245,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 86,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 86,
+    "baseText": "وَحُزْنِىٓ إِلَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، ابن عامر، أبو جعفر؛ والإسكان للباقين"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، ابن عامر، أبو جعفر؛ والإسكان للباقين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، ابن عامر، أبو جعفر؛ والإسكان للباقين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "الفتح وصلاً لنافع، أبو عمرو، ابن عامر، أبو جعفر؛ والإسكان للباقين",
         "isDefault": true
       }
     ],

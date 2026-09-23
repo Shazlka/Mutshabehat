@@ -248,7 +248,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "دَارِهِمْ → دَارِهِمْ | إمالة فتحة الدال والألف",
+      "دارهـم → دٍارهـم | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p160-007-1",
@@ -293,7 +297,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إذ جعلـكم → إذ جَّعلـكم | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p160-008-1",
@@ -325,7 +332,10 @@
     "hasAlternate": false,
     "notes": "وله فيها الاختلاس",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَمْرِ رَبِّهِمْ → أَمْر رَّبِّهِمْ | إدغام الراء في الراء"
+    ]
   },
   {
     "id": "r-p160-009-1",
@@ -356,7 +366,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ لِقَوْمِهِ → قَال لِّقَوْمِهِ | إدغام اللام في اللام"
+    ]
   },
   {
     "id": "r-p160-010-1",
@@ -387,7 +400,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "سَبَقَكُم → سَبَقكُّم | إدغام القاف في الكاف"
+    ]
   },
   {
     "id": "r-p160-011-1",
@@ -858,5 +874,40 @@
     "text": "إبدال الهمزة ألفًا مع القصر والتوسط والإشباع، وتسهيلها مع الروم إشباعًا وقصرًا؛ ويوافقه هشام عدا وجه التسهيل مع الإشباع فله فيه التوسط.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-007-74-2-0965-IDGHAM_KABIR",
+    "pageNumber": 160,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 74,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 74,
+    "baseText": "إِذْ جَعَلَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الذال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الذال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "إِذْ جَعَلَكُمْ → إِذ جَّعَلَكُمْ | إدغام الذال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

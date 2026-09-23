@@ -1,0 +1,507 @@
+[
+  {
+    "id": "r-SQL598-IMALAH_TAQLIL-97-2-2-0",
+    "pageNumber": 598,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 97,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 2,
+    "baseText": "أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q10-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL598-IMALAH_TAQLIL-97-2-2-1",
+    "pageNumber": 598,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 97,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 2,
+    "baseText": "أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL598-TAGHYIR_HAMZ-98-1-11-2",
+    "pageNumber": 598,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 98,
+    "ayah": 1,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 1,
+    "baseText": "تَأْتِيَهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL598-TAGHYIR_HAMZ-98-1-11-3",
+    "pageNumber": 598,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 98,
+    "ayah": 1,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 1,
+    "baseText": "تَأْتِيَهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إبدال الهمزة",
+        "condition": "وقفًا"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الهمزة",
+        "condition": "وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "condition": "وقفًا",
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL598-TAGHLIZ_LAM-98-5-11-4",
+    "pageNumber": 598,
+    "category": "TAGHLIZ_LAM",
+    "categoryAr": "تغليظ اللامات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 98,
+    "ayah": 5,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 5,
+    "baseText": "ٱلصَّلَوٰةَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تغليظ اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تغليظ اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL598-TAGHYIR_HAMZ-98-5-12-5",
+    "pageNumber": 598,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 98,
+    "ayah": 5,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 5,
+    "baseText": "وَيُؤْتُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "condition": null,
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SQL598-TAGHYIR_HAMZ-98-5-12-6",
+    "pageNumber": 598,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 98,
+    "ayah": 5,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 5,
+    "baseText": "وَيُؤْتُوا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إبدال الهمزة",
+        "condition": "وقفًا"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الهمزة",
+        "condition": "وقفًا"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "condition": "وقفًا",
+    "notes": "",
+    "sourceNotes": [
+      "qiraat_pages_585_604_full.sql"
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-096-13-4-4557-IMALAH_TAQLIL",
+    "pageNumber": 598,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 96,
+    "ayah": 13,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 13,
+    "baseText": "وَتَوَلَّىٰٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَتَوَلَّىٰ → وَتَوَلَّى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-096-14-5-4558-IMALAH_TAQLIL",
+    "pageNumber": 598,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 96,
+    "ayah": 14,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 14,
+    "baseText": "يَرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف (رأس آية)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَرَىٰ → يَرَى | تقليل الألف (رأس آية)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-097-2-1-r2728-IMALAH_TAQLIL",
+    "pageNumber": 598,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 97,
+    "ayah": 2,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 2,
+    "baseText": "وَمَآ أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمال الدوري الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمال الدوري الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "ومـا أدراك → ومـا أدرٍاك | أمال الدوري الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

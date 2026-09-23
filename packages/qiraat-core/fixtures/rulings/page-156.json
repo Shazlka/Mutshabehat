@@ -571,7 +571,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار → النٍّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p156-009-2",
@@ -625,7 +629,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار → النٍّـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p156-009-3",
@@ -679,7 +687,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النـار - الكافرين → النٍّـار – الكٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p156-010-1",
@@ -766,7 +778,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِسِيمَاهُمْ → بِسِيمَاهُمْ | بالتقليل",
+      "بسيمـاهم → بسيمِـاهم | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p156-010-2",
@@ -853,7 +869,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِسِيمَاهُمْ → بِسِيمَاهُمْ | بالتقليل",
+      "بسيمـاهم → بسيمِـاهم | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p156-011-1",
@@ -940,7 +960,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p156-012-1",
@@ -1003,7 +1027,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "النـار - الكافرين → النٍّـار – الكٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p156-013-1",
@@ -1457,5 +1485,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-007-50-13-0933-IDGHAM_KABIR",
+    "pageNumber": 156,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 7,
+    "ayah": 50,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 50,
+    "baseText": "رَزَقَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "رَزَقَكُمُ → رَزَقكُّمُ | إدغام القاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

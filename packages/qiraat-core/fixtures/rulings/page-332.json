@@ -191,7 +191,10 @@
     "hasAlternate": true,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+    ]
   },
   {
     "id": "r-p332-005-1",
@@ -337,7 +340,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِسُكَارَىٰ → بِسُكَارَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p332-007-1",
@@ -1001,7 +1007,10 @@
     "hasAlternate": true,
     "condition": "وقفًا",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+    ]
   },
   {
     "id": "r-p332-020-1",
@@ -1252,5 +1261,215 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-1-7-2534-IDGHAM_KABIR",
+    "pageNumber": 332,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 1,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 1,
+    "baseText": "ٱلسَّاعَةِ شَىْءٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في الشين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في الشين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "السَّاعَةِ شَيْءٌ → السَّاعَة شَّيْءٌ | إدغام التاء في الشين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-2-14-2536-IMALAH_TAQLIL",
+    "pageNumber": 332,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 2,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 2,
+    "baseText": "ٱلنَّاسَ سُكَـٰرَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام السين في السين ثم إمالة فتحة الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام السين في السين ثم إمالة فتحة الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "النَّاسَ سُكَارَىٰ → النَّاس سُّكَارَى | إدغام السين في السين ثم إمالة فتحة الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-5-25-2538-IDGHAM_KABIR",
+    "pageNumber": 332,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 5,
+    "startToken": 25,
+    "endToken": 26,
+    "endAyah": 5,
+    "baseText": "لِّنُبَيِّنَ لَكُمْ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لِنُبَيِّنَ لَكُمْ → لِنُبَيِّن لَّكُمْ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-5-29-2539-IDGHAM_KABIR",
+    "pageNumber": 332,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 5,
+    "startToken": 29,
+    "endToken": 30,
+    "endAyah": 5,
+    "baseText": "ٱلْأَرْحَامِ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْأَرْحَامِ مَا → الْأَرْحَام مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-5-49-2541-IDGHAM_KABIR",
+    "pageNumber": 332,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 5,
+    "startToken": 49,
+    "endToken": 50,
+    "endAyah": 5,
+    "baseText": "ٱلْعُمُرِ لِكَيْلَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْعُمُرِ لِكَيْلَا → الْعُمُر لِّكَيْلَا | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-022-5-51-2542-IDGHAM_KABIR",
+    "pageNumber": 332,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 22,
+    "ayah": 5,
+    "startToken": 51,
+    "endToken": 52,
+    "endAyah": 5,
+    "baseText": "يَعْلَمَ مِنۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمَ مِن → يَعْلَم مِّن | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -55,7 +55,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَوْبَارِهَا → وَأَوْبَارِهَا | إمالة فتحة الباء والألف",
+      "وأوبـارها – وأشعـارها → وأوبٍـارها – وأشعٍـارها | أمالهما الدوري"
+    ]
   },
   {
     "id": "r-p276-IMALAH_TAQLIL-واشعارها-1",
@@ -113,7 +117,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "وَأَشْعَارِهَا → وَأَشْعَارِهَا | إمالة فتحة العين والألف",
+      "وأوبـارها – وأشعـارها → وأوبٍـارها – وأشعٍـارها | أمالهما الدوري"
+    ]
   },
   {
     "id": "r-p276-TAGHYIR_HAMZ-باسكم-2",
@@ -316,5 +324,446 @@
     "notes": "مع الإمالة",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p276-IMALAH_TAQLIL-رءا_الذين-5",
+    "pageNumber": 276,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 85,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 85,
+    "baseText": "رَءَا ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "DOCX-P276-R00750؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/85 و/86؛ خلف المجرد = Q06."
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p276-IMALAH_TAQLIL-رءا_الذين-6",
+    "pageNumber": 276,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 86,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 86,
+    "baseText": "رَءَا ٱلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الراء وصلاً"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الراء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل الهمزة والراء وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة الهمزة وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "DOCX-P276-R00750؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/85 و/86؛ خلف المجرد = Q06."
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-80-2-1949-IDGHAM_KABIR",
+    "pageNumber": 276,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 80,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 80,
+    "baseText": "جَعَلَ لَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَعَلَ لَكُم → جَعَل لَّكُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-80-7-1950-IDGHAM_KABIR",
+    "pageNumber": 276,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 80,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 80,
+    "baseText": "وَجَعَلَ لَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَجَعَلَ لَكُم → وَجَعَل لَّكُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-81-2-1954-IDGHAM_KABIR",
+    "pageNumber": 276,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 81,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 81,
+    "baseText": "جَعَلَ لَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام (3 مواضع)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام (3 مواضع)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَعَلَ لَكُم (3 مواضع) → جَعَل لَّكُم | إدغام اللام في اللام (3 مواضع)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-84-9-1957-IDGHAM_KABIR",
+    "pageNumber": 276,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 84,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 84,
+    "baseText": "يُؤْذَنُ لِلَّذِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة واواً ثم إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة واواً ثم إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يُؤْذَنُ لِلَّذِينَ → يُوذَن لِّلَّذِينَ | إبدال الهمزة واواً ثم إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-016-86-16-r1203-MEEM_JAM",
+    "pageNumber": 276,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 86,
+    "startToken": 16,
+    "endToken": 17,
+    "endAyah": 86,
+    "baseText": "إِلَيْهِمُ ٱلْقَوْلَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إليهـمُ القول → إليهمِ القول | كسر الدوري الميم وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

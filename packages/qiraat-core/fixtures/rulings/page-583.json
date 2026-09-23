@@ -84,7 +84,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10."
+      "تعيين مصدر الوثيقة «خلف» المجرد: خلف عن حمزة Q06-R01 بحسب توجيه الاستيراد؛ لم يظهر في الجهاز المفتوح للآية نص صريح «إسحاق» أو «إدريس» يسند هذا الموضع إلى Q10.",
+      "مُوسَىٰ → مُوسَى | تقليل الألف (رأس آية)"
     ]
   },
   {
@@ -115,6 +116,14 @@
         "action": "إمالة"
       },
       {
+        "authorityId": "Q03-R01",
+        "action": "تقليل لورش وأبي عمرو"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل لورش وأبي عمرو"
+      },
+      {
         "authorityId": "Q07-R01",
         "action": "إمالة"
       },
@@ -140,6 +149,16 @@
         "isDefault": true
       },
       {
+        "readingId": "Q03-R01",
+        "action": "تقليل لورش وأبي عمرو",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل لورش وأبي عمرو",
+        "isDefault": true
+      },
+      {
         "readingId": "Q07-R01",
         "action": "إمالة",
         "isDefault": true
@@ -155,7 +174,9 @@
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
       "https://quranpedia.net/qiraat/an-naziat/17 | جهاز الآية نفسه يسمي إسحاق وإدريس عن خلف؛ لذلك حُفظ Q10 مستقلاً عن «خلف» المجرد في مصدر الوثيقة.",
-      "https://quranpedia.net/qiraat/an-naziat/17 يذكر إسحاق وإدريس في وجه التنوين لطوى عند الوصل، لا في حكم الإمالة وقفاً؛ لذلك لم يُبقَ Q10 في هذا الحكم."
+      "https://quranpedia.net/qiraat/an-naziat/17 يذكر إسحاق وإدريس في وجه التنوين لطوى عند الوصل، لا في حكم الإمالة وقفاً؛ لذلك لم يُبقَ Q10 في هذا الحكم.",
+      "طُوًى → طُوًى | تقليل الألف وقفاً (رأس آية)",
+      "طُـوىً → طـوِى | حذف الدوري التنوين وقللها"
     ]
   },
   {
@@ -372,6 +393,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -383,6 +412,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -412,6 +451,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -423,6 +470,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -452,6 +509,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -463,6 +528,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -492,6 +567,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -503,6 +586,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -532,6 +625,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -543,6 +644,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -572,6 +683,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -583,6 +702,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -612,6 +741,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -623,6 +760,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
@@ -652,6 +799,14 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة وقفاً"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -663,6 +818,16 @@
       {
         "readingId": "Q07-R02",
         "action": "إمالة وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],

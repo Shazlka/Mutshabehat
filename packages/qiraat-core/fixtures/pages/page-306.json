@@ -108,6 +108,24 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَهَمْزُ لِأَهَبْ بِالْيَا جَرَى حُلْوُ نَصْرِهِ — D: وَلِيَهَبْ حُزْ"
+      },
+      {
+        "id": "s-SUSI-019-19-6-2247",
+        "variantId": "v-L306-لاهب-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2247; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِأَهَبَ → لِيَهَبَ | بالياء المفتوحة بدل الهمزة"
+      },
+      {
+        "id": "s-DURI-019-19-6-r1360",
+        "variantId": "v-L306-لاهب-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1360; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لأهـبَ → ليهـبَ | قرأ الدوري بياء مفتوحة بدل الهمزة"
       }
     ],
     "description": "بياء مفتوحة بدل الهمزة",
@@ -158,6 +176,24 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي مِتَّ مِتْنَا مِتُّمُ اكْسِرْ لِشَافِعٍ وَفِي مَرْيَمٍ صَفْوٌ يُحَرِّكُ أُعْمِلَا"
+      },
+      {
+        "id": "s-SUSI-019-23-8-2250",
+        "variantId": "v-L306-مت-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2250; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِتُّ → مُتُّ | ضم الميم"
+      },
+      {
+        "id": "s-DURI-019-23-8-r1363",
+        "variantId": "v-L306-مت-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1363; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِـتُّ → مُـتُّ | ضم الدوري الميم"
       }
     ],
     "description": "بضم الميم",
@@ -212,6 +248,24 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَفِي نَسْيًا افْتَحْ فَازَ"
+      },
+      {
+        "id": "s-SUSI-019-23-12-2251",
+        "variantId": "v-L306-نسيا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2251; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَسْيًا → نِسْيًا | كسر النون"
+      },
+      {
+        "id": "s-DURI-019-23-12-r1364",
+        "variantId": "v-L306-نسيا-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1364; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَسـياً → نِسـياً | كسر الدوري النون"
       }
     ],
     "description": "بكسر النون",
@@ -268,6 +322,24 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P306-R01115",
         "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
         "sourceText": "﴿مِن تَحْتِهَا﴾: بكسر الميم وخفض التاء ﴿مِن تَحْتِهَا﴾ لنافع، وحفص، وحمزة، والكسائي، وأبي جعفر، وروح، وخلف؛ وبفتح الميم ونصب التاء حرف جر ﴿مَنْ تَحْتَهَا﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-019-24-2-2252",
+        "variantId": "v-L306-من_تحتها-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2252; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِن تَحْتِهَا → مَن تَحْتَهَا | فتح الميم والتاء الثانية"
+      },
+      {
+        "id": "s-DURI-019-24-2-r1365",
+        "variantId": "v-L306-من_تحتها-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1365; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِن تـحتِها → مَـن تـحتَها | فتح الدوري الميم ونصب تاء تحتها"
       }
     ],
     "description": "بفتح الميم ونصب التاء حرف جر",
@@ -301,7 +373,7 @@
       "Q06-R02"
     ],
     "locusId": "L306-تساقط-1",
-    "locusType": "word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
         "id": "s-L306-تساقط-1-w2",
@@ -311,6 +383,23 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      },
+      {
+        "id": "s-ext-p306-tasaq",
+        "variantId": "v-L306-تساقط-1-w2",
+        "sourceName": "Quranpedia",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "verificationNotes": "تظهر صفحة اختلاف القراءات الوجهين تَسَاقَطْ وتَسَّاقَطْ وتفصيل الرواة."
+      },
+      {
+        "id": "v-L306-تساقط-1-w2-QP",
+        "variantId": "v-L306-تساقط-1-w2",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "sourceText": "قراءة تساقط في مريم 25",
+        "verificationNotes": "مرجع مستقل للوجه والأداء."
       }
     ],
     "description": "بفتح التاء وتخفيف السين وفتح القاف",
@@ -319,6 +408,13 @@
       {
         "source": "SH",
         "text": "وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      }
+    ],
+    "performanceNote": "وجه خلف عن حمزة الموافق للرسم المنقول في المصدر",
+    "sourceNotes": [
+      {
+        "sourceReference": "DOCX-P306-R01116",
+        "sourceText": "فيها ٤ قراءات: حمزة يقرأ تَسَّاقَطْ، والمجموعة الأخرى تَسْقُطْ؛ وورد اسم خلف صراحة في المصدر وفق قاعدة المشروع."
       }
     ]
   },
@@ -330,7 +426,7 @@
     "endToken": 5,
     "operation": "REPLACE",
     "hafsText": "تُسَـٰقِطْ",
-    "variantText": "تَّسَّٰقَطْ",
+    "variantText": "تَسَّاقَطْ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
     "createdAt": "2026-09-17T12:00:00.000Z",
@@ -345,17 +441,15 @@
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
       "Q07-R01",
       "Q07-R02",
       "Q08-R01",
-      "Q08-R02",
-      "Q09-R01",
-      "Q09-R02",
-      "Q10-R01",
-      "Q10-R02"
+      "Q08-R02"
     ],
     "locusId": "L306-تساقط-1",
-    "locusType": "word_variant",
+    "locusType": "performance_variant",
     "sources": [
       {
         "id": "s-L306-تساقط-1-w3",
@@ -365,6 +459,23 @@
         "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
         "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      },
+      {
+        "id": "s-ext-p306-tasaq",
+        "variantId": "v-L306-تساقط-1-w3",
+        "sourceName": "Quranpedia",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "verificationNotes": "تظهر صفحة اختلاف القراءات الوجهين تَسَاقَطْ وتَسَّاقَطْ وتفصيل الرواة."
+      },
+      {
+        "id": "v-L306-تساقط-1-w3-QP",
+        "variantId": "v-L306-تساقط-1-w3",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/maryam/25",
+        "sourceText": "قراءة تساقط في مريم 25",
+        "verificationNotes": "مرجع مستقل للوجه والأداء."
       }
     ],
     "description": "بفتح التاء وتشديد السين وفتح القاف",
@@ -373,6 +484,13 @@
       {
         "source": "SH",
         "text": "وَتَسَّاقَطْ افْتَحْ سَاكِنًا خَفَّ فَاكْسِرَنْ وَضُمَّ لِحَفْصٍ وَاكْسِرِ الْقَافَ فَيْصَلَا"
+      }
+    ],
+    "performanceNote": "وجه حمزة في المصدر بفتح التاء وتشديد السين",
+    "sourceNotes": [
+      {
+        "sourceReference": "DOCX-P306-R01116",
+        "sourceText": "فيها ٤ قراءات: حمزة يقرأ تَسَّاقَطْ، والمجموعة الأخرى تَسْقُطْ؛ وورد اسم خلف صراحة في المصدر وفق قاعدة المشروع."
       }
     ]
   },
@@ -411,5 +529,69 @@
     "description": "بضم الميم",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-019-18-2-2245-performance",
+    "surah": 19,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ",
+    "variantText": "إِنِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-18-2-2245",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-019-18-2-2245",
+        "variantId": "v-SUSI-019-18-2-2245-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2245; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِنِّي → إِنِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-DURI-019-18-2-r1359-performance",
+    "surah": 19,
+    "ayah": 18,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ أَعُوذُ",
+    "variantText": "إِنِّىٓ أَعُوذُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-019-18-2-r1359",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-019-18-2-r1359",
+        "variantId": "v-DURI-019-18-2-r1359-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1359; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إنـي أعوذ → إنـيَ أعوذ | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
   }
 ]

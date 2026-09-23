@@ -485,7 +485,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَرَاكَ (معاً) → نَرَاكَ | إمالة فتحة الراء (الموضعين)"
+    ]
   },
   {
     "id": "r-p224-011-2",
@@ -572,7 +575,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَرَاكَ (معاً) → نَرَاكَ | إمالة فتحة الراء (الموضعين)"
+    ]
   },
   {
     "id": "r-p224-012-1",
@@ -659,7 +665,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "نَرَىٰ → نَرَى | إمالة فتحة الراء"
+    ]
   },
   {
     "id": "r-p224-013-1",
@@ -937,5 +946,40 @@
     "text": "والإسكان وصلًا للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-011-25-6-r0931-TAGHYIR_HAMZ",
+    "pageNumber": 224,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 11,
+    "ayah": 25,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 25,
+    "baseText": "إِنِّى لَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "فتح الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "فتح الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "إنـي لكم → أنـي لكم | فتح الدوري الهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

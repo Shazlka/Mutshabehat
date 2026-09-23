@@ -192,6 +192,24 @@
         "sourceReference": "صفحة المصحف 89 · صفحة المصدر 94",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: قُلِ ادْعُوا أَوِ انْقُصْ قَالَتِ اخْرُجْ أَنِ اعْبُدُوا وَمَحْظُورًا انْظُرْ مَعْ قَدِ اسْتُهْزِئَ اعْتَلَا — SH: سِوَى أَوْ وَقُلْ لِابْنِ الْعَلَا"
+      },
+      {
+        "id": "s-SUSI-004-66-8-0397",
+        "variantId": "v-L089-او_اخرجوا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 397; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَوِ اخْرُجُوا → أَوُ اخْرُجُوا | ضم الواو وصلاً"
+      },
+      {
+        "id": "s-DURI-004-66-8-r0369",
+        "variantId": "v-L089-او_اخرجوا-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 369; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أوِ اخرجوا → أوُ اخرجوا | ضم الدوري الواو وصلا"
       }
     ],
     "description": "بضم الواو",
@@ -435,6 +453,15 @@
         "sourceReference": "صفحة المصحف 89 · صفحة المصدر 94",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَأَنَّثَ يَكُنْ عَنْ دَارِمٍ — D: يَكُنْ فَأَنِّثْ وَأَشْمِمْ بَابَ أَصْدَقُ طِبْ"
+      },
+      {
+        "id": "s-SUSI-004-73-8-0399",
+        "variantId": "v-L089-لم_تكن-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 399; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَّمْ تَكُن → لَّمْ يَكُن | إبدال التاء ياء"
       }
     ],
     "description": "بالياء",
@@ -449,5 +476,37 @@
         "text": "يَكُنْ فَأَنِّثْ وَأَشْمِمْ بَابَ أَصْدَقُ طِبْ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-004-74-19-0402-performance",
+    "surah": 4,
+    "ayah": 74,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "نُؤْتِيهِ",
+    "variantText": "نُؤْتِيهِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-004-74-19-0402",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-004-74-19-0402",
+        "variantId": "v-SUSI-004-74-19-0402-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 402; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نُؤْتِيهِ → نُوتِيهِ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

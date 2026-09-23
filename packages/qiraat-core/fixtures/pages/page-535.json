@@ -329,5 +329,124 @@
         "url": "https://quranpedia.net/qiraat/al-waqia/37"
       }
     ]
+  },
+  {
+    "id": "v-D535-ولا_ينزفون-w2",
+    "surah": 56,
+    "ayah": 19,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يُنزِفُونَ",
+    "variantText": "وَلَا يُنْزِفُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D535-ولا_ينزفون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D535-ولا_ينزفون-w2",
+        "variantId": "v-D535-ولا_ينزفون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P535-R03369",
+        "verificationNotes": "وجه صريح من المصدر، والـanchor مربوط بالتوكن الحقيقي.",
+        "sourceText": "﴿وَلَا يُنزِفُونَ﴾: بفتح الزاي لعاصم، وحمزة، والكسائي، وخلف؛ وبكسر الزاي ﴿وَلَا يُنْزِفُونَ﴾ للباقين."
+      },
+      {
+        "id": "s-DURI-056-19-4-r2435",
+        "variantId": "v-D535-ولا_ينزفون-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2435; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ولا يُنـزِفـون → ولا يُنْـزَفون | فتح الدوري الزاي"
+      }
+    ],
+    "description": "بكسر الزاي للباقين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-056-23-2-4208-performance",
+    "surah": 56,
+    "ayah": 23,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱللُّؤْلُؤِ",
+    "variantText": "ٱللُّؤْلُؤِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-056-23-2-4208",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة الأولى الساكنة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-056-23-2-4208",
+        "variantId": "v-SUSI-056-23-2-4208-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4208; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اللُّؤْلُؤِ → اللُّولُؤِ | إبدال الهمزة الأولى الساكنة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة الأولى الساكنة واواً"
+  },
+  {
+    "id": "v-SUSI-056-47-3-4209-performance",
+    "surah": 56,
+    "ayah": 47,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "أَئِذَا",
+    "variantText": "أَئِذَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-056-47-3-4209",
+    "locusType": "performance_variant",
+    "performanceNote": "تسهيل الهمزة الثانية مع الإدخال",
+    "sources": [
+      {
+        "id": "s-SUSI-056-47-3-4209",
+        "variantId": "v-SUSI-056-47-3-4209-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4209; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَئِذَا → آئِذَا | تسهيل الهمزة الثانية مع الإدخال"
+      }
+    ],
+    "description": "تسهيل الهمزة الثانية مع الإدخال"
   }
 ]

@@ -136,5 +136,78 @@
         "text": "وَفِي الْوَصْلِ لِلْبَزِّيِّ شَدِّدْ تَيَمَّمُوا ... وَفِي آلِ عِمْرَانَ لَهُ لَا تَفَرَّقُوا"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-003-103-8-0221",
+    "surah": 3,
+    "ayah": 103,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نِعْمَتَ",
+    "variantText": "نِعْمَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-103-8-0221",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-003-103-8-0221",
+        "variantId": "v-SUSI-003-103-8-0221",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 221; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نِعْمَتَ → نِعْمَه | بالهاء وقفاً"
+      },
+      {
+        "id": "s-DURI-003-103-8-r0283",
+        "variantId": "v-SUSI-003-103-8-0221",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 283; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نعمـت → نعمـة | وقف الدوري بالهاء"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-003-104-7-0223-performance",
+    "surah": 3,
+    "ayah": 104,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَيَأْمُرُونَ",
+    "variantText": "وَيَأْمُرُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-104-7-0223",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-003-104-7-0223",
+        "variantId": "v-SUSI-003-104-7-0223-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 223; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَيَأْمُرُونَ → وَيَامُرُونَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

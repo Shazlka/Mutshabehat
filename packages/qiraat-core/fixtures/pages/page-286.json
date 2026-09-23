@@ -90,7 +90,9 @@
       "Q04-R01",
       "Q04-R02",
       "Q08-R01",
-      "Q08-R02"
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
     ],
     "locusId": "D286-تسبح_له",
     "locusType": "multi_word_variant",
@@ -142,5 +144,193 @@
     "description": "بضم الهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P286-17-41-6-FARSH2",
+    "surah": 17,
+    "ayah": 41,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "لِّيَذَّكَّرُوا۟",
+    "variantText": "لِيَذْكُرُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P286-17-41-6-FARSH2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P286-17-41-6-FARSH2",
+        "variantId": "v-AUDIT-P286-17-41-6-FARSH2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P286-R00857",
+        "sourceText": "لِيَذْكُرُوا",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P286-17-41-6-FARSH2-EXT",
+        "variantId": "v-AUDIT-P286-17-41-6-FARSH2",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/41",
+        "sourceText": "لِيَذْكُرُوا",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      }
+    ],
+    "description": "لِيَذْكُرُوا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "لِيَذْكُرُوا",
+        "url": "https://quranpedia.net/qiraat/al-isra/41"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P286-17-42-7-FARSH",
+    "surah": 17,
+    "ayah": 42,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يَقُولُونَ",
+    "variantText": "تَقُولُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02",
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-P286-17-42-7-FARSH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-AUDIT-P286-17-42-7-FARSH",
+        "variantId": "v-AUDIT-P286-17-42-7-FARSH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P286-R00858",
+        "sourceText": "تَقُولُونَ",
+        "verificationNotes": "قوبل الوجه مع مصدر مستقل للقراءات."
+      },
+      {
+        "id": "s-v-AUDIT-P286-17-42-7-FARSH-EXT",
+        "variantId": "v-AUDIT-P286-17-42-7-FARSH",
+        "sourceName": "موسوعة القراءات القرآنية",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-isra/42",
+        "sourceText": "تَقُولُونَ",
+        "verificationNotes": "مرجع مستقل يثبت الوجه."
+      },
+      {
+        "id": "s-SUSI-017-42-7-2033",
+        "variantId": "v-AUDIT-P286-17-42-7-FARSH",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2033; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَقُولُونَ → تَقُولُونَ | إبدال الياء تاء"
+      }
+    ],
+    "description": "تَقُولُونَ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "تَقُولُونَ",
+        "url": "https://quranpedia.net/qiraat/al-isra/42"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-017-45-2-2035-performance",
+    "surah": 17,
+    "ayah": 45,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "قَرَأْتَ",
+    "variantText": "قَرَأْتَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-45-2-2035",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-017-45-2-2035",
+        "variantId": "v-SUSI-017-45-2-2035-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2035; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قَرَأْتَ → قَرَاتَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-017-45-9-2036-performance",
+    "surah": 17,
+    "ayah": 45,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمِنُونَ",
+    "variantText": "يُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-017-45-9-2036",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-017-45-9-2036",
+        "variantId": "v-SUSI-017-45-9-2036-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2036; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
   }
 ]

@@ -238,7 +238,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "جَبَّارٍ → جَبَّارٍ | إمالة فتحة الباء والألف",
+      "جبَّـار → جبٍّـار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p471-IMALAH_TAQLIL-القرار-4",
@@ -296,7 +300,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقَرَارِ → الْقَرَارِ | إمالة فتحة الراء والألف",
+      "القـرار → القـرٍار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p471-IMALAH_TAQLIL-موسا-5",
@@ -381,7 +389,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → موسِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p471-IMALAH_TAQLIL-الدنيا-6",
@@ -466,7 +478,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p471-IMALAH_TAQLIL-انثا-7",
@@ -551,7 +567,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أُنثَىٰ → أُنثَى | بالتقليل",
+      "أنـثى → أنثِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p471-YAAT_IDAFA-لعلي_ابلغ-8",
@@ -851,6 +871,79 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "ولقـدْ جاءكم → ولقـد جَّاءكم | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-040-34-1-3752-IDGHAM_KABIR",
+    "pageNumber": 471,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 40,
+    "ayah": 34,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 34,
+    "baseText": "وَلَقَدْ جَآءَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلَقَدْ جَاءَكُمْ → وَلَقَد جَّاءَكُمْ | إدغام الدال في الجيم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-040-37-11-3759-IDGHAM_KABIR",
+    "pageNumber": 471,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 40,
+    "ayah": 37,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 37,
+    "baseText": "زُيِّنَ لِفِرْعَوْنَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "زُيِّنَ لِفِرْعَوْنَ → زُيِّن لِّفِرْعَوْنَ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

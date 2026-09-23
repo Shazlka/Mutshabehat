@@ -617,7 +617,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَالنَّهَارِ → وَالنَّهَارِ | إمالة فتحة الهاء والألف",
+      "والنهـار → والنهٍـار | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p347-014-1",
@@ -956,6 +960,10 @@
       {
         "authorityId": "Q03",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
       }
     ],
     "readings": [
@@ -993,10 +1001,18 @@
         "readingId": "Q03-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "فأنّـى → فـأنِّـى | قللها الدوري"
+    ]
   }
 ]

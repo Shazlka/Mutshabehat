@@ -82,7 +82,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "الدنيـا ( معاً ) → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p540-IMALAH_TAQLIL-فتراه-1",
@@ -167,7 +170,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-22T00:00:00.000Z"
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "فتـراه → فتـرٍاه | أمالهمـا الدوري"
+    ]
   },
   {
     "id": "r-p540-IMALAH_TAQLIL-ءاتاكم-2",
@@ -235,5 +241,75 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-057-24-9-4234-IDGHAM_KABIR",
+    "pageNumber": 540,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 24,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 24,
+    "baseText": "ٱللَّهَ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللَّهَ هُوَ → اللَّه هُّوَ | إدغام الهاء في الهاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-057-20-36-r2464-IMALAH_TAQLIL",
+    "pageNumber": 540,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 20,
+    "startToken": 36,
+    "endToken": 36,
+    "endAyah": 20,
+    "baseText": "ٱلدُّنْيَآ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قللها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "الدنيـا ( معاً ) → الدنيِـا | قللها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

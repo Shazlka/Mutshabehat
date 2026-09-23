@@ -203,6 +203,124 @@
         "sourceText": "إدغام الدال في السين: خلف عن حمزة، إدريس عن خلف، إسحاق عن خلف، الدوري عن الكسائي، أبو الحارث عن الكسائي، خلاد عن حمزة، هشام عن ابن عامر، السوسي عن أبي عمرو، الدوري عن أبي عمرو.",
         "verificationNotes": "جهاز الآية يسمّي خلف العاشر بروايتي إدريس وإسحاق صراحةً."
       }
+    ],
+    "sourceNotes": [
+      "قـدْ سـمع → قـد سَّـمع | إدغام صغير للدوري"
     ]
+  },
+  {
+    "id": "r-SUSI-058-1-1-4238-IDGHAM_KABIR",
+    "pageNumber": 542,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 58,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 1,
+    "baseText": "قَدْ سَمِعَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في السين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في السين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ سَمِعَ → قَد سَّمِعَ | إدغام الدال في السين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-058-4-24-4242-IMALAH_TAQLIL",
+    "pageNumber": 542,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 58,
+    "ayah": 4,
+    "startToken": 24,
+    "endToken": 24,
+    "endAyah": 4,
+    "baseText": "وَلِلْكَـٰفِرِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـهـا الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـهـا الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَلِلْكَافِرِينَ → وَلِلْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "وللكـافرين → وللكٍـافرين | أمالـهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-058-5-16-r2478-IMALAH_TAQLIL",
+    "pageNumber": 542,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 58,
+    "ayah": 5,
+    "startToken": 16,
+    "endToken": 16,
+    "endAyah": 5,
+    "baseText": "وَلِلْكَـٰفِرِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـهـا الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـهـا الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وللكـافرين → وللكٍـافرين | أمالـهـا الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

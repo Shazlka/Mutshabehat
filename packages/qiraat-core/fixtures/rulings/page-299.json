@@ -82,7 +82,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p299-IMALAH_TAQLIL-احصاها-1",
@@ -284,5 +288,210 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-018-47-4-2159-IMALAH_TAQLIL",
+    "pageNumber": 299,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 47,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 47,
+    "baseText": "وَتَرَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري وقفا"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري وقفا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَتَرَى → وَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+      "وتـرى الأرض → وترى الأرض | أمالها الدوري وقفا"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-018-48-5-2160-IDGHAM_KABIR",
+    "pageNumber": 299,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 48,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 48,
+    "baseText": "لَّقَدْ جِئْتُمُونَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَّقَدْ جِئْتُمُونَا → لَّقَد جِّيتُمُونَا | إدغام الدال في الجيم وإبدال الهمزة ياء",
+      "لقـد جئتمونا → لقد جِّئتمونا | أدغم الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-018-48-14-2161-IDGHAM_KABIR",
+    "pageNumber": 299,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 48,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 48,
+    "baseText": "نَّجْعَلَ لَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "نَّجْعَلَ لَكُم → نَّجْعَل لَّكُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-018-49-3-2162-IMALAH_TAQLIL",
+    "pageNumber": 299,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 49,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 49,
+    "baseText": "فَتَرَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري وقفا"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري وقفا",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَتَرَى → فَتَرَى | وقفاً إمالة الراء، وصلاً وجهان: الفتح والإمالة",
+      "فتـرى المجرمين → فترى المجرمين | أمالها الدوري وقفا"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-018-50-14-2163-IDGHAM_KABIR",
+    "pageNumber": 299,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 18,
+    "ayah": 50,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 50,
+    "baseText": "أَمْرِ رَبِّهِۦٓ ۗ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَمْرِ رَبِّهِ → أَمْر رَّبِّهِ | إدغام الراء في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

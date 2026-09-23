@@ -54,9 +54,7 @@
     "readingIds": [
       "Q01-R01",
       "Q01-R02",
-      "Q05-R01",
-      "Q08-R01",
-      "Q08-R02"
+      "Q05-R01"
     ],
     "locusId": "L320-وانك_لا_تظموا-1",
     "locusType": "multi_word_variant",
@@ -264,5 +262,37 @@
     "description": "بنون العظمة ونصب الياء والهاء",
     "wajhIndex": 2,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-020-123-9-2456-performance",
+    "surah": 20,
+    "ayah": 123,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِيَنَّكُم",
+    "variantText": "يَأْتِيَنَّكُم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-020-123-9-2456",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-020-123-9-2456",
+        "variantId": "v-SUSI-020-123-9-2456-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2456; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْتِيَنَّكُم → يَاتِيَنَّكُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
   }
 ]

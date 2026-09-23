@@ -125,5 +125,163 @@
         "text": "وَيَقْتُلُونَ الثَّانِي ضُمَّ وَافْتَحْ وَأَلِّفَا وَكَسْرًا فَزِدْ"
       }
     ]
+  },
+  {
+    "id": "v-SUSI-003-20-5-0127-performance",
+    "surah": 3,
+    "ayah": 20,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَجْهِىَ",
+    "variantText": "وَجْهِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-20-5-0127",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-003-20-5-0127",
+        "variantId": "v-SUSI-003-20-5-0127-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 127; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَجْهِيَ → وَجْهِي | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  },
+  {
+    "id": "v-SUSI-003-20-8-0128",
+    "surah": 3,
+    "ayah": 20,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱتَّبَعَنِ ۗ",
+    "variantText": "اتَّبَعَنِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-20-8-0128",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-003-20-8-0128",
+        "variantId": "v-SUSI-003-20-8-0128",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 128; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اتَّبَعَنِ → اتَّبَعَنِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-003-21-12-0130-performance",
+    "surah": 3,
+    "ayah": 21,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يَأْمُرُونَ",
+    "variantText": "يَأْمُرُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-21-12-0130",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-003-21-12-0130",
+        "variantId": "v-SUSI-003-21-12-0130-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 130; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْمُرُونَ → يَامُرُونَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-DURI-003-20-5-r0218-performance",
+    "surah": 3,
+    "ayah": 20,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَجْهِىَ لِلَّهِ",
+    "variantText": "وَجْهِىَ لِلَّهِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-003-20-5-r0218",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-003-20-5-r0218",
+        "variantId": "v-DURI-003-20-5-r0218-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 218; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وجهيَ لله → وجهي لله | أسكن الدوري الياء"
+      }
+    ],
+    "description": "أسكن الدوري الياء"
+  },
+  {
+    "id": "v-DURI-003-20-8-r0219",
+    "surah": 3,
+    "ayah": 20,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱتَّبَعَنِ ۗ",
+    "variantText": "اتبعنـي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-003-20-8-r0219",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-003-20-8-r0219",
+        "variantId": "v-DURI-003-20-8-r0219",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 219; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "اتبـعنِ → اتبعنـي | أثبت الدوري الياء وصـلاً"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصـلاً"
   }
 ]

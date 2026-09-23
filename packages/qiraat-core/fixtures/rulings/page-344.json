@@ -54,11 +54,7 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
+        "authorityId": "Q01",
         "action": "تقليل"
       }
     ],
@@ -80,16 +76,6 @@
       },
       {
         "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -302,7 +288,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p344-008-1",
@@ -619,19 +609,42 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قللهـا الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      },
+      {
         "authorityId": "Q06",
         "action": "إمالة"
       },
       {
         "authorityId": "Q07",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قللهـا الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -651,16 +664,15 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللهـا الدوري"
+    ]
   },
   {
     "id": "r-p344-016-1",
@@ -792,7 +804,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "افْتَرَىٰ → افْتَرَى | إمالة فتحة الراء والألف",
+      "افـترى → افتـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p344-018-1",
@@ -877,7 +893,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قَالَ رَبِّ → قَالَ رَّبِّ | إدغام اللام في الراء"
+    ]
   },
   {
     "id": "r-p344-020-1",
@@ -1052,5 +1071,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-023-38-10-2635-IDGHAM_KABIR",
+    "pageNumber": 344,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 23,
+    "ayah": 38,
+    "startToken": 10,
+    "endToken": 11,
+    "endAyah": 38,
+    "baseText": "نَحْنُ لَهُۥ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "نَّحْنُ لَهُ → نَّحْن لَّهُ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

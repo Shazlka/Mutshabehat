@@ -195,7 +195,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p124-007-1",
@@ -258,7 +261,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "كَافِرِينَ → كَافِرِينَ | إمالة فتحة الكاف والألف",
+      "كـافرين → كٍـافرين | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p124-008-1",
@@ -345,7 +352,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "قدْ سألـها → قد سَّألـها | إدغام صغير للدوري"
+    ]
   },
   {
     "id": "r-p124-009-1",
@@ -376,7 +386,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَالْقَلَائِدَ ذَٰلِكَ → وَالْقَلَائِد ذَّٰلِكَ | إدغام الدال في الذال"
+    ]
   },
   {
     "id": "r-p124-010-1",
@@ -407,7 +420,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p124-010-2",
@@ -438,7 +454,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ]
   },
   {
     "id": "r-p124-011-1",
@@ -469,7 +488,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَعْجَبَكَ كَثْرَةُ → أَعْجَبَك كَّثْرَةُ | إدغام الكاف في الكاف"
+    ]
   },
   {
     "id": "r-p124-012-1",
@@ -691,5 +713,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-005-102-1-0653-IDGHAM_KABIR",
+    "pageNumber": 124,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 5,
+    "ayah": 102,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 102,
+    "baseText": "قَدْ سَأَلَهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في السين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في السين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "قَدْ سَأَلَهَا → قَد سَّأَلَهَا | إدغام الدال في السين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

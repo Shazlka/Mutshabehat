@@ -201,7 +201,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمال الدوري"
+    ]
   },
   {
     "id": "r-p500-IMALAH_TAQLIL-وهدي-2",
@@ -385,5 +388,110 @@
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-045-20-2-3991-IDGHAM_KABIR",
+    "pageNumber": 500,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 45,
+    "ayah": 20,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 20,
+    "baseText": "بَصَـٰٓئِرُ لِلنَّاسِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بَصَائِرُ لِلنَّاسِ → بَصَائِر لِّلنَّاسِ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-045-21-11-3992-IDGHAM_KABIR",
+    "pageNumber": 500,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 45,
+    "ayah": 21,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 21,
+    "baseText": "ٱلصَّـٰلِحَـٰتِ سَوَآءًۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في السين وتنوين ضم بدل تنوين الفتح"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في السين وتنوين ضم بدل تنوين الفتح",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الصَّالِحَاتِ سَوَاءً → الصَّالِحَات سَّوَاءٌ | إدغام التاء في السين وتنوين ضم بدل تنوين الفتح"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-045-21-12-r2302-TAGHYIR_HAMZ",
+    "pageNumber": 500,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 45,
+    "ayah": 21,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 21,
+    "baseText": "سَوَآءًۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "رفع الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "رفع الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "سـواءً → سـواءٌ | رفع الدوري الهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

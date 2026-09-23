@@ -190,5 +190,242 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p549-IDGHAM_SAGHIR-فقد_ضل-3",
+    "pageNumber": 549,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 1,
+    "startToken": 45,
+    "endToken": 46,
+    "endAyah": 1,
+    "baseText": "فَقَدْ ضَلَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03514",
+        "sourceText": "الإدغام الصغير: ﴿فَقَد ضَّلَّ﴾: ورش، وأبو عمرو، وابن عامر، وحمزة، والكسائي، وخلف. ﴿وَٱغْفِرْ لَنَا﴾: أبو عمرو بخلف عن الدوري.",
+        "verificationNotes": "إسناد القراء صريح في المصدر."
+      },
+      "فقـدْ ضـلَّ → فقـد ضَّـل | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-p549-IDGHAM_SAGHIR-واغفر_لنا-4",
+    "pageNumber": 549,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 5,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 5,
+    "baseText": "وَٱغْفِرْ لَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P549-R03514",
+        "sourceText": "الإدغام الصغير: ﴿فَقَد ضَّلَّ﴾: ورش، وأبو عمرو، وابن عامر، وحمزة، والكسائي، وخلف. ﴿وَٱغْفِرْ لَنَا﴾: أبو عمرو بخلف عن الدوري.",
+        "verificationNotes": "إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري."
+      }
+    ]
+  },
+  {
+    "id": "r-SUSI-060-5-7-4271-IDGHAM_KABIR",
+    "pageNumber": 549,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 5,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 5,
+    "baseText": "وَٱغْفِرْ لَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَاغْفِرْ لَنَا → وَاغْفِر لَّنَا | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-060-4-4-r2518-TAGHYIR_HAMZ",
+    "pageNumber": 549,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 4,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 4,
+    "baseText": "أُسْوَةٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أسـوة → إسـوة | كسر الدوري الهمزة"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

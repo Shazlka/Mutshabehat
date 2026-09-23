@@ -262,7 +262,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الْكَافِرِينَ → الْكَافِرِينَ | إمالة فتحة الكاف والألف",
+      "الكافريـن → الكٍـافرين | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p311-007-1",
@@ -913,5 +917,85 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-019-77-6-2294-IDGHAM_KABIR",
+    "pageNumber": 311,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 77,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 77,
+    "baseText": "لَأُوتَيَنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَأُوتَيَنَّ → لَأُوتَيَنَّ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-019-89-1-2297-IDGHAM_KABIR",
+    "pageNumber": 311,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 19,
+    "ayah": 89,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 89,
+    "baseText": "لَّقَدْ جِئْتُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أدغم الدوري وأبدل السوسي"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أدغم الدوري وأبدل السوسي",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الدال في الجيم وإبدال الهمزة ياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لَّقَدْ جِئْتُمْ → لَّقَد جِّيتُمْ | إدغام الدال في الجيم وإبدال الهمزة ياء",
+      "لقـدْ جئتـم → لقد جِّئتـم | أدغم الدوري وأبدل السوسي"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

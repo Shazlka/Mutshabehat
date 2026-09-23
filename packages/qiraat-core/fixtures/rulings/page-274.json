@@ -80,14 +80,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -114,16 +106,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -131,7 +113,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
   },
   {
     "id": "r-p274-IMALAH_TAQLIL-يتوفاكم-2",
@@ -165,14 +150,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -199,16 +176,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -216,7 +183,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
   },
   {
     "id": "r-p274-WAQF_RASM-وبنعمت-3",
@@ -389,5 +359,347 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "notes": "إمالة هاء التأنيث وقفاً للكسائي."
+  },
+  {
+    "id": "r-p274-IMALAH_TAQLIL-للناس-5",
+    "pageNumber": 274,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 69,
+    "startToken": 18,
+    "endToken": 18,
+    "endAyah": 69,
+    "baseText": "لِّلنَّاسِ ۗ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "DOCX-P274-R00734: إمالة الألف للدوري عن أبي عمرو؛ Quranpedia: https://quranpedia.net/qiraat/an-nahl/69"
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p274-WAQF_RASM-افبنعمه-6",
+    "pageNumber": 274,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 71,
+    "startToken": 20,
+    "endToken": 20,
+    "endAyah": 71,
+    "baseText": "أَفَبِنِعْمَةِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بالهاء"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بالهاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بالهاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "مع الإمالة للكسائي؛ الوجه الثاني الوقف بالتاء للباقين.",
+    "sourceNotes": [
+      "DOCX-P274-R00735: الوقف على أَفَبِنِعْمَتِ بالهاء للحرميين والبصريين والكسائي ويعقوب؛ المصدر نفسه يذكر وَبِنِعْمَتِ."
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-69-7-1933-IDGHAM_KABIR",
+    "pageNumber": 274,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 69,
+    "startToken": 7,
+    "endToken": 8,
+    "endAyah": 69,
+    "baseText": "سُبُلَ رَبِّكِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "سُبُلَ رَبِّكِ → سُبُل رَّبِّكِ | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-70-2-1934-IDGHAM_KABIR",
+    "pageNumber": 274,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 70,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 70,
+    "baseText": "خَلَقَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "خَلَقَكُمْ → خَلَقكُّمْ | إدغام القاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-70-10-1935-IDGHAM_KABIR",
+    "pageNumber": 274,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 70,
+    "startToken": 10,
+    "endToken": 11,
+    "endAyah": 70,
+    "baseText": "ٱلْعُمُرِ لِكَىْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْعُمُرِ لِكَيْ → الْعُمُر لِّكَيْ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-70-13-1936-IKHFA",
+    "pageNumber": 274,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 70,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 70,
+    "baseText": "يَعْلَمَ بَعْدَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الميم مع الإخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمَ بَعْدَ → يَعْلَم بَعْدَ | إسكان الميم مع الإخفاء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-72-2-1937-IDGHAM_KABIR",
+    "pageNumber": 274,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 72,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 72,
+    "baseText": "جَعَلَ لَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَعَلَ لَكُم (معاً) → جَعَل لَّكُم | إدغام اللام في اللام (الموضعين)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-72-13-1938-IDGHAM_KABIR",
+    "pageNumber": 274,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 72,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 72,
+    "baseText": "وَرَزَقَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام القاف في الكاف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام القاف في الكاف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَرَزَقَكُم → وَرَزَقكُّم | إدغام القاف في الكاف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

@@ -15,6 +15,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -29,13 +37,19 @@
       {
         "authorityId": "Q07-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -55,18 +69,14 @@
         "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P565-R03656 — الممال والمقلل: ﴿عَسَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف."
+      "مصدر الحزمة: qiraat_records.jsonl، DOCX-P565-R03656 — الممال والمقلل: ﴿عَسَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+      "عَسَىٰ → عَسَى | تقليل الألف"
     ]
   },
   {

@@ -66,39 +66,6 @@
     "evidence": []
   },
   {
-    "id": "v-L363-s25a41b0-w3",
-    "surah": 25,
-    "ayah": 41,
-    "startToken": 6,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "هُزُوًا",
-    "variantText": "هُزُؤًا",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q10-R01",
-      "Q10-R02"
-    ],
-    "locusId": "L363-s25a41b0",
-    "locusType": "word_variant",
-    "sources": [
-      {
-        "id": "s-L363-s25a41b0-w3",
-        "variantId": "v-L363-s25a41b0-w3",
-        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
-        "sourceType": "other",
-        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
-        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
-      }
-    ],
-    "description": "بضم الزاي وهمزها وصلاً",
-    "wajhIndex": 3,
-    "evidence": []
-  },
-  {
     "id": "v-L363-s25a41b0-w4",
     "surah": 25,
     "ayah": 41,
@@ -143,5 +110,100 @@
     "description": "بإسكان الزاي والهمز",
     "wajhIndex": 4,
     "evidence": []
+  },
+  {
+    "id": "v-SUSI-025-33-2-2809-performance",
+    "surah": 25,
+    "ayah": 33,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتُونَكَ",
+    "variantText": "يَأْتُونَكَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-33-2-2809",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-025-33-2-2809",
+        "variantId": "v-SUSI-025-33-2-2809-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2809; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْتُونَكَ → يَاتُونَكَ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-025-33-5-2810-performance",
+    "surah": 25,
+    "ayah": 33,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "جِئْنَـٰكَ",
+    "variantText": "جِئْنَـٰكَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-025-33-5-2810",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-025-33-5-2810",
+        "variantId": "v-SUSI-025-33-5-2810-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2810; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جِئْنَاكَ → جِينَاكَ | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
+  },
+  {
+    "id": "v-DURI-025-38-2-r1615",
+    "surah": 25,
+    "ayah": 38,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَثَمُودَا۟",
+    "variantText": "وثـموداً",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-025-38-2-r1615",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-025-38-2-r1615",
+        "variantId": "v-DURI-025-38-2-r1615",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1615; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وثـمودَ → وثـموداً | قرأها الدوري بالتنوين"
+      }
+    ],
+    "description": "قرأها الدوري بالتنوين"
   }
 ]

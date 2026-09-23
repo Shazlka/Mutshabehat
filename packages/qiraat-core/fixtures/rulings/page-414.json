@@ -416,7 +416,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "صَبَّارٍ → صَبَّارٍ | إمالة فتحة الباء والألف",
+      "صبَّـار → صـبٍّار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p414-IMALAH_TAQLIL-ختار-2",
@@ -474,7 +478,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "خَتَّارٍ → خَتَّارٍ | إمالة فتحة التاء والألف",
+      "ختَّـار → ختٍّـار | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p414-IMALAH_TAQLIL-مسمي-3",
@@ -626,7 +634,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنيـا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p414-WAQF_RASM-بنعمت-6",
@@ -758,5 +770,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-031-30-3-3283-IDGHAM_KABIR",
+    "pageNumber": 414,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 31,
+    "ayah": 30,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 30,
+    "baseText": "ٱللَّهَ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللَّهَ هُوَ → اللَّه هُّوَ | إدغام الهاء في الهاء (الموضعين)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-031-30-13-3283-IDGHAM_KABIR",
+    "pageNumber": 414,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 31,
+    "ayah": 30,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 30,
+    "baseText": "ٱللَّهَ هُوَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الهاء في الهاء (الموضعين)",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "اللَّهَ هُوَ → اللَّه هُّوَ | إدغام الهاء في الهاء (الموضعين)"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

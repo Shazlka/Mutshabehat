@@ -185,7 +185,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء",
+      "القـرى → القـرٍى | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p248-IMALAH_TAQLIL-يفترا-2",
@@ -288,7 +292,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يُفْتَرَىٰ → يُفْتَرَى | إمالة فتحة الراء",
+      "يُفتـرى → يفتـرٍى | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p248-IMALAH_TAQLIL-جاءهم-3",
@@ -414,5 +422,66 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p248-WAQF_RASM-kain-1",
+    "pageNumber": 248,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 12,
+    "ayah": 105,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 105,
+    "baseText": "وَكَأَيِّن",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بالياء"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بالياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بالياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "sourceNotes": [
+      "المصدر DOCX-P248-R00408: يقف عليها بالياء لأبي عمرو ويعقوب، وبالنون للباقين."
+    ],
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z"
   }
 ]

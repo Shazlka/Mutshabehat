@@ -44,6 +44,24 @@
         "sourceReference": "صفحة المصحف 102 · صفحة المصدر 107",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَيَا سَوْفَ نُؤْتِيهِمْ عَزِيزٌ — D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      },
+      {
+        "id": "s-SUSI-004-152-12-0489",
+        "variantId": "v-L102-يوتيهم-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 489; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْتِيهِمْ → نُوتِيهِمْ | بالنون بدل الياء ثم إبدال الهمزة واواً"
+      },
+      {
+        "id": "s-DURI-004-152-12-r0415",
+        "variantId": "v-L102-يوتيهم-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 415; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـؤتيهم → نـؤتيهم | قرأ الدوري بالنون"
       }
     ],
     "description": "بالنون وكسر الهاء",
@@ -229,6 +247,15 @@
         "sourceReference": "صفحة المصحف 102 · صفحة المصدر 107",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَأَرْنَا وَأَرْنِي سَاكِنَا الْكَسْرِ دُمْ يَدًا"
+      },
+      {
+        "id": "s-SUSI-004-153-17-0493",
+        "variantId": "v-L102-ارنا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 493; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَرِنَا → أَرْنَا | إسكان الراء مفخمة"
       }
     ],
     "description": "بإسكان الراء",
@@ -270,6 +297,15 @@
         "sourceReference": "صفحة المصحف 102 · صفحة المصدر 107",
         "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
         "sourceText": "SH: وَأَرْنَا وَأَرْنِي سَاكِنَا الْكَسْرِ دُمْ يَدًا"
+      },
+      {
+        "id": "s-DURI-004-153-17-r0419",
+        "variantId": "v-L102-ارنا-1-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 419; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أرِنـا → أرِنـا | اختلس الدوري كسرة الراء"
       }
     ],
     "description": "باختلاس كسرة الراء",

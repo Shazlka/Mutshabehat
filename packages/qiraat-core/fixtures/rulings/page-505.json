@@ -144,7 +144,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "أَرَاكُمْ → أَرَاكُمْ | إمالة فتحة الراء والألف"
+    ]
   },
   {
     "id": "r-p505-IMALAH_TAQLIL-القرا-1",
@@ -229,7 +232,11 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْقُرَىٰ → الْقُرَى | إمالة فتحة الراء والألف",
+      "القـرى → القـرٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p505-IMALAH_TAQLIL-يرا-2",
@@ -565,5 +572,226 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p505-TAGHYIR_HAMZ-اجيتنا-7",
+    "pageNumber": 505,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 46,
+    "ayah": 22,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 22,
+    "baseText": "أَجِئْتَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P505-R03101",
+        "sourceText": "تغيير الهمز: ﴿أَجِئْتَنَا﴾: السوسي، أبو جعفر. ﴿لِتَأْفِكَنَا﴾، ﴿فَأْتِنَا﴾: ورش، السوسي، أبو جعفر. ﴿يَسْتَهْزِءُونَ﴾: بحذف الهمزة لأبي جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
+      }
+    ]
+  },
+  {
+    "id": "r-p505-TAGHYIR_HAMZ-لتافكنا-8",
+    "pageNumber": 505,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 46,
+    "ayah": 22,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 22,
+    "baseText": "لِتَأْفِكَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P505-R03101",
+        "sourceText": "تغيير الهمز: ﴿أَجِئْتَنَا﴾: السوسي، أبو جعفر. ﴿لِتَأْفِكَنَا﴾، ﴿فَأْتِنَا﴾: ورش، السوسي، أبو جعفر. ﴿يَسْتَهْزِءُونَ﴾: بحذف الهمزة لأبي جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
+      }
+    ]
+  },
+  {
+    "id": "r-p505-TAGHYIR_HAMZ-فاتنا-9",
+    "pageNumber": 505,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 46,
+    "ayah": 22,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 22,
+    "baseText": "فَأْتِنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P505-R03101",
+        "sourceText": "تغيير الهمز: ﴿أَجِئْتَنَا﴾: السوسي، أبو جعفر. ﴿لِتَأْفِكَنَا﴾، ﴿فَأْتِنَا﴾: ورش، السوسي، أبو جعفر. ﴿يَسْتَهْزِءُونَ﴾: بحذف الهمزة لأبي جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
+      }
+    ]
+  },
+  {
+    "id": "r-SUSI-046-25-4-4031-IDGHAM_KABIR",
+    "pageNumber": 505,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 46,
+    "ayah": 25,
+    "startToken": 4,
+    "endToken": 5,
+    "endAyah": 25,
+    "baseText": "بِأَمْرِ رَبِّهَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "بِأَمْرِ رَبِّهَا → بِأَمْر رَّبِّهَا | إدغام الراء في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

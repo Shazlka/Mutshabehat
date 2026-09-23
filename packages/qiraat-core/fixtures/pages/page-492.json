@@ -1,1 +1,196 @@
-[]
+[
+  {
+    "id": "v-D492-نقيض-w2",
+    "surah": 43,
+    "ayah": 36,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "نُقَيِّضْ",
+    "variantText": "يُقَيِّضْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D492-نقيض",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D492-نقيض-w2",
+        "variantId": "v-D492-نقيض-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 492، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿نُقَيِّضْ﴾: بنون العظمة للجمهور؛ وبياء الغيب ﴿يُقَيِّضْ﴾ ليعقوب."
+      }
+    ],
+    "description": "بياء الغيب ﴿يُقَيِّضْ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-043-35-5-3927-performance",
+    "surah": 43,
+    "ayah": 35,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لَمَّا",
+    "variantText": "لَمَّا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-043-35-5-3927",
+    "locusType": "performance_variant",
+    "performanceNote": "تخفيف الميم",
+    "sources": [
+      {
+        "id": "s-SUSI-043-35-5-3927",
+        "variantId": "v-SUSI-043-35-5-3927-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3927; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَمَّا → لَمَا | تخفيف الميم"
+      }
+    ],
+    "description": "تخفيف الميم"
+  },
+  {
+    "id": "v-SUSI-043-38-10-3931-performance",
+    "surah": 43,
+    "ayah": 38,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "فَبِئْسَ",
+    "variantText": "فَبِئْسَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-043-38-10-3931",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ياء",
+    "sources": [
+      {
+        "id": "s-SUSI-043-38-10-3931",
+        "variantId": "v-SUSI-043-38-10-3931-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3931; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَبِئْسَ → فَبِيسَ | إبدال الهمزة ياء"
+      }
+    ],
+    "description": "إبدال الهمزة ياء"
+  },
+  {
+    "id": "v-SUSI-043-45-7-3932-performance",
+    "surah": 43,
+    "ayah": 45,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "رُّسُلِنَآ",
+    "variantText": "رُّسُلِنَآ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-043-45-7-3932",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان السين",
+    "sources": [
+      {
+        "id": "s-SUSI-043-45-7-3932",
+        "variantId": "v-SUSI-043-45-7-3932-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3932; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُسُلِنَا → رُسْلِنَا | إسكان السين"
+      }
+    ],
+    "description": "إسكان السين"
+  },
+  {
+    "id": "v-DURI-043-36-9-r2262-performance",
+    "surah": 43,
+    "ayah": 36,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-043-36-9-r2262",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الهاء",
+    "sources": [
+      {
+        "id": "s-DURI-043-36-9-r2262",
+        "variantId": "v-DURI-043-36-9-r2262-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2262; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فهُـو → فهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "أسكن الدوري الهاء"
+  },
+  {
+    "id": "v-DURI-043-37-5-r2263-performance",
+    "surah": 43,
+    "ayah": 37,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَيَحْسَبُونَ",
+    "variantText": "وَيَحْسَبُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-043-37-5-r2263",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-043-37-5-r2263",
+        "variantId": "v-DURI-043-37-5-r2263-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2263; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ويـحسَبون → ويَحسِبـون | كسر الدوري السين"
+      }
+    ],
+    "description": "كسر الدوري السين"
+  }
+]

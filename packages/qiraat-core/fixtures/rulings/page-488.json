@@ -87,7 +87,11 @@
     "sourceRecordId": "DOCX-P488-R02921",
     "sourceText": "الممال والمقلل: ﴿وَتَرَىٰهُمْ﴾: أمالها أبو عمرو، وحمزة، والكسائي، وخلف، وقللها ورش. ﴿الْقِيَـٰمَةِ﴾: أمال هاء التأنيث وقفاً الكسائي.",
     "sourceReference": "qiraat_records.jsonl، DOCX-P488-R02921",
-    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/45"
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/ash-shura/45",
+    "sourceNotes": [
+      "وَتَرَاهُمْ → وَتَرَاهُمْ | إمالة فتحة الراء والألف",
+      "وتـراهم → وتـرٍاهم | أمالـها الدوري"
+    ]
   },
   {
     "id": "r-p488-TAGHYIR_HAMZ-ياتي-1",
@@ -400,5 +404,75 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-042-47-6-3905-IDGHAM_KABIR",
+    "pageNumber": 488,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 47,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 47,
+    "baseText": "يَأْتِىَ يَوْمٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة ألفاً ثم إدغام الياء في الياء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة ألفاً ثم إدغام الياء في الياء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَأْتِيَ يَوْمٌ → يَاتِي يَّوْمٌ | إبدال الهمزة ألفاً ثم إدغام الياء في الياء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-042-51-14-3907-IDGHAM_KABIR",
+    "pageNumber": 488,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 42,
+    "ayah": 51,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 51,
+    "baseText": "يُرْسِلَ رَسُولًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يُرْسِلَ رَسُولًا → يُرْسِل رَّسُولًا | إدغام اللام في الراء"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

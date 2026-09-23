@@ -179,7 +179,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "النّـار – ذكـرى → النٍّـار – ذكـرٍى | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p576-IMALAH_TAQLIL-ذكرا-2",
@@ -284,7 +287,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P576-R03747: ﴿ذِكْرَىٰ﴾: أبو عمرو، حمزة، الكسائي، خلف، وقللها ورش. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:31، ذِكْرَىٰ explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+      "DOCX-P576-R03747: ﴿ذِكْرَىٰ﴾: أبو عمرو، حمزة، الكسائي، خلف، وقللها ورش. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:31، ذِكْرَىٰ explicitly records خلف العاشر reading the locus بالإمالة; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446",
+      "النّـار – ذكـرى → النٍّـار – ذكـرٍى | أمالهـا الدوري"
     ]
   },
   {
@@ -390,7 +394,8 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "sourceNotes": [
-      "DOCX-P576-R03748: ﴿لِإِحْدَى﴾ (وقفاً): حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:35، لَإِحْدَى explicitly records خلف العاشر reading the locus بالإمالة لدى الوقف; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446"
+      "DOCX-P576-R03748: ﴿لِإِحْدَى﴾ (وقفاً): حمزة، الكسائي، خلف، وأبو عمرو، وقللها ورش بخلف. User mapping applied: bare «خلف» resolves to Q06-R01; explicit Hamza is Q06. Independent same-action verification: موسوعة القراءات القرآنية، قراءة خلف العاشر براوييه إسحاق الوراق وإدريس الحداد, table for 74:35، لَإِحْدَى explicitly records خلف العاشر reading the locus بالإمالة لدى الوقف; the book identifies its two Khalaf al-Ashar narrators as Ishaq al-Warraq (Q10-R01) and Idris al-Haddad (Q10-R02). https://quranpedia.net/book-attachment/19844/93446",
+      "لإحـدى → لإحـدِى | قللها الدوري وقفاً"
     ]
   },
   {
@@ -666,5 +671,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-074-27-1-r2634-IMALAH_TAQLIL",
+    "pageNumber": 576,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 74,
+    "ayah": 27,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 27,
+    "baseText": "وَمَآ أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وما أدراك → وما أدرٍاك | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

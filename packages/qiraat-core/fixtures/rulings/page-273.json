@@ -132,14 +132,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -176,16 +168,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -193,7 +175,12 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر».",
+      "بِالْأُنثَىٰ → بِالْأُنثَى | بالتقليل",
+      "بالأنـثى → بالأنـثِى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p273-IMALAH_TAQLIL-الحسنا-4",
@@ -235,14 +222,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -279,16 +258,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -296,7 +265,12 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر».",
+      "الْحُسْنَىٰ → الْحُسْنَى | بالتقليل",
+      "الحسـنى → الحسنِـى | قللها الدوري"
+    ]
   },
   {
     "id": "r-p273-IMALAH_TAQLIL-يتوارا-5",
@@ -338,14 +312,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -382,16 +348,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
@@ -399,7 +355,12 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر».",
+      "يَتَوَارَىٰ → يَتَوَارَى | إمالة فتحة الراء",
+      "يتـوارى → يتـوارٍى | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p273-IMALAH_TAQLIL-الاعلا-6",
@@ -433,14 +394,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -467,16 +420,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -484,7 +427,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
   },
   {
     "id": "r-p273-IMALAH_TAQLIL-مسمي-7",
@@ -518,14 +464,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -552,16 +490,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -569,7 +497,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
   },
   {
     "id": "r-p273-IMALAH_TAQLIL-وهدي-8",
@@ -603,14 +534,6 @@
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
-      },
-      {
         "authorityId": "Q01-R02",
         "action": "تقليل"
       }
@@ -637,16 +560,6 @@
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": false
@@ -654,7 +567,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
   },
   {
     "id": "r-p273-IMALAH_TAQLIL-جاء-9",
@@ -682,14 +598,6 @@
       {
         "authorityId": "Q06-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q10-R02",
-        "action": "إمالة"
       }
     ],
     "readings": [
@@ -707,21 +615,14 @@
         "readingId": "Q06-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q10-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q10-R02",
-        "action": "إمالة",
-        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تصحيح الإسناد: «خلف» المجرد في سطر المصدر = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
   },
   {
     "id": "r-p273-HAMZATAN_KALIMATAYN-جاء_اجلهم-10",
@@ -1130,5 +1031,145 @@
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z",
     "notes": "ترقيق الراء عن ورش في بُشِّرَ بالآية 59؛ تؤيده إحالة المصدر المستقل إلى حكم الآية السابقة."
+  },
+  {
+    "id": "r-SUSI-016-57-3-1919-IDGHAM_KABIR",
+    "pageNumber": 273,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 57,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 57,
+    "baseText": "ٱلْبَنَـٰتِ سُبْحَـٰنَهُۥ ۙ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام التاء في السين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام التاء في السين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْبَنَاتُ سُبْحَانَهُ → الْبَنَات سُّبْحَانَهُ | إدغام التاء في السين"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-63-8-1929-IDGHAM_KABIR",
+    "pageNumber": 273,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 63,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 63,
+    "baseText": "فَزَيَّنَ لَهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَزَيَّنَ لَهُمُ → فَزَيَّن لَّهُمُ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-63-12-1930-IDGHAM_KABIR",
+    "pageNumber": 273,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 63,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 63,
+    "baseText": "فَهُوَ وَلِيُّهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الهاء وإدغام الواو في الواو"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إسكان الهاء وإدغام الواو في الواو",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَهُوَ وَلِيُّهُمُ → فَهْو وَّلِيُّهُمُ | إسكان الهاء وإدغام الواو في الواو"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-016-64-6-1931-IDGHAM_KABIR",
+    "pageNumber": 273,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 16,
+    "ayah": 64,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 64,
+    "baseText": "لِتُبَيِّنَ لَهُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام النون في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام النون في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "لِتُبَيِّنَ لَهُمُ → لِتُبَيِّن لَّهُمُ | إدغام النون في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

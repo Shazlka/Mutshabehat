@@ -15,6 +15,14 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "تقليل الألف"
+      },
+      {
         "authorityId": "Q06-R01",
         "action": "إمالة"
       },
@@ -37,13 +45,19 @@
       {
         "authorityId": "Q10-R02",
         "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "تقليل الألف",
+        "isDefault": true
+      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
@@ -73,16 +87,14 @@
         "readingId": "Q10-R02",
         "action": "إمالة",
         "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": false
       }
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "عَسَىٰ → عَسَى | تقليل الألف"
+    ]
   },
   {
     "id": "r-p561-IMALAH_TAQLIL-يسعا-1",
@@ -484,5 +496,173 @@
     "notes": "مع الإمالة بخلف",
     "createdAt": "2026-09-20T12:00:00.000Z",
     "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p561-IDGHAM_SAGHIR-واغفر_لنا-3",
+    "pageNumber": 561,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 66,
+    "ayah": 8,
+    "startToken": 39,
+    "endToken": 40,
+    "endAyah": 8,
+    "baseText": "وَٱغْفِرْ لَنَآ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير؛ الدوري عن أبي عمرو بخلف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03625",
+        "sourceText": "الإدغام الصغير: ﴿وَٱغْفِرْ لَنَا﴾: أبو عمرو بخلف عن الدوري.",
+        "verificationNotes": "إسناد صريح في المصدر؛ أُبقي الراويين مع ملاحظة الخلاف للدوري."
+      }
+    ]
+  },
+  {
+    "id": "r-p561-TAGHYIR_HAMZ-وبيس-4",
+    "pageNumber": 561,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 66,
+    "ayah": 9,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 9,
+    "baseText": "وَبِئْسَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03626",
+        "sourceText": "تغيير الهمز: ﴿مَأْوَىٰهُمْ﴾: إبدال للسوسي وأبي جعفر. ﴿وَبِئْسَ﴾: ورش، السوسي، أبو جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
+      }
+    ]
+  },
+  {
+    "id": "r-p561-TAGHYIR_HAMZ-mawa-8",
+    "pageNumber": 561,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 66,
+    "ayah": 9,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 9,
+    "baseText": "وَمَأْوَىٰهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P561-R03626",
+        "sourceText": "مَأْوَىٰهُمْ: إبدال للسوسي وأبي جعفر.",
+        "verificationNotes": "إسناد صريح تحت عنوان تغيير الهمز في المصدر."
+      }
+    ]
   }
 ]

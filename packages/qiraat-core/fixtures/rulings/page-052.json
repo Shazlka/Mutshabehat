@@ -330,7 +330,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ → النَّارِ | إمالة فتحة النون والألف",
+      "النَّـار → النٍّـار | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p052-009-1",
@@ -384,7 +388,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "بِالْأَسْحَارِ → بِالْأَسْحَارِ | إمالة فتحة الحاء والألف",
+      "بالأسحـار → بالأسحٍـار | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p052-010-1",
@@ -474,7 +482,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّـاس → الـنٍّاس | أمالهـا الدوري"
+    ]
   },
   {
     "id": "r-p052-012-1",
@@ -561,7 +572,11 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "الدُّنْيَا → الدُّنْيَا | بالتقليل",
+      "الدنـيا → الدنيِـا | قللها الدوري"
+    ]
   },
   {
     "id": "r-p052-013-1",
@@ -628,7 +643,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "هُوَ وَالْمَلَائِكَةُ → هُو وَّالْمَلَائِكَةُ | إدغام الواو في الواو"
+    ]
   },
   {
     "id": "r-p052-015-1",
@@ -1155,5 +1173,40 @@
     "text": "وحذفها للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-16-6-0123-IDGHAM_KABIR",
+    "pageNumber": 52,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 16,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 16,
+    "baseText": "فَٱغْفِرْ لَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَاغْفِرْ لَنَا → فَاغْفِر لَّنَا | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]

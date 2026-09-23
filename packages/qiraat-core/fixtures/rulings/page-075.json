@@ -343,7 +343,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "للنَّـاس → للنٍّـاس | أمالها الدوري"
+    ]
   },
   {
     "id": "r-p075-012-1",
@@ -397,7 +400,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَالنَّهَارِ لَآيَاتٍ → وَالنَّهَار لَّآيَاتٍ | إمالة فتحة الهاء والألف ثم إدغام الراء في اللام"
+    ]
   },
   {
     "id": "r-p075-013-1",
@@ -451,7 +457,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "النَّارِ رَبَّنَا → النَّار رَّبَّنَا | إمالة فتحة النون والألف ثم إدغام الراء في الراء"
+    ]
   },
   {
     "id": "r-p075-013-2",
@@ -559,7 +568,10 @@
     ],
     "hasAlternate": true,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "أَنصَارٍ → أَنصَارٍ | إمالة فتحة الصاد والألف"
+    ]
   },
   {
     "id": "r-p075-015-1",
@@ -1207,5 +1219,40 @@
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
     "updatedAt": "2026-09-17T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-003-193-12-0323-IDGHAM_KABIR",
+    "pageNumber": 75,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 3,
+    "ayah": 193,
+    "startToken": 12,
+    "endToken": 13,
+    "endAyah": 193,
+    "baseText": "فَٱغْفِرْ لَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "فَاغْفِرْ لَنَا → فَاغْفِر لَّنَا | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
   }
 ]
