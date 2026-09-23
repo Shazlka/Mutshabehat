@@ -1,6 +1,6 @@
 # Qiraat database schema (V2 entries model + Phase 2)
 
-**Status:** Phase 2 DDL drafted and scratch-tested, **not applied to the live DB** (STOP GATE 2).
+**Status:** Phase 2 DDL scratch-tested, approved at Gate 2, and **applied to the live DB on 2026-09-23** (backup `pre-qiraat-phase2-apply-20260923T114613Z.dump`).
 Migration: `supabase/migrations/20260924120000_qiraat_phase2_review_sync.sql` · Rollback: `supabase/rollbacks/20260924120000_qiraat_phase2_review_sync.down.sql`
 Decisions: `docs/qiraat/QIRAAT_AUDIT.md` §9 (Q1 builds on the V2 model; no new parallel tables and no `_legacy` renames).
 

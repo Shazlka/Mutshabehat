@@ -1,6 +1,6 @@
 # Qiraat audit: Phase 1 of the database restructure (read-only)
 
-**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** Gate 1 answered (§9). Phase 2 done up to STOP GATE 2 (§10): live counts, reconciliation, checksum and scratch-tested DDL; nothing applied to the live DB.
+**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** Gate 1 answered (§9). Phase 2 complete (§10): Gate 2 approved and the DDL applied to live on 2026-09-23. Next: Phase 3 data migration.
 
 Nothing was changed for this audit: no code, no fixture, no schema and no database row. The only new file is this document.
 
@@ -312,4 +312,4 @@ The script crashed on current fixtures because three records store `endToken` as
 
 **Existing rows that break the new Phase 2 rules** (`qiraat_qa_phase2_violations`, on scratch): D8 Hafs-as-main-reading **90**, same narrator twice at one location without a separate wajh **94**, locations with no live reading **5** (their only entries are REJECTED duplicates). The new rules check writes only, so these rows stay until Phase 3 rewrites or flags them.
 
-**Phase 2 DDL:** `supabase/migrations/20260924120000_qiraat_phase2_review_sync.sql` (up) and `supabase/rollbacks/20260924120000_qiraat_phase2_review_sync.down.sql` (down). Schema reference: `docs/qiraat/SCHEMA.md`. Scratch test output: `docs/qiraat/phase2-scratch-test-output.txt`. **Not applied to the live DB** (STOP GATE 2).
+**Phase 2 DDL:** `supabase/migrations/20260924120000_qiraat_phase2_review_sync.sql` (up) and `supabase/rollbacks/20260924120000_qiraat_phase2_review_sync.down.sql` (down). Schema reference: `docs/qiraat/SCHEMA.md`. Scratch test output: `docs/qiraat/phase2-scratch-test-output.txt`. Approved at Gate 2 and **applied to the live DB on 2026-09-23** in one transaction, after backup `pre-qiraat-phase2-apply-20260923T114613Z.dump`. The post-apply read-only probe was identical to before, and the checksum is unchanged.
