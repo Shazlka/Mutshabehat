@@ -1,6 +1,6 @@
 # Qiraat audit: Phase 1 of the database restructure (read-only)
 
-**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** STOP GATE 1, waiting for Amr's answers
+**Date:** 2026-09-23 · **Base commit:** `5fca1df` (`origin/main`) · **Status:** Gate 1 answered (§9). Phase 2 continues in a Mac mini session.
 
 Nothing was changed for this audit: no code, no fixture, no schema and no database row. The only new file is this document.
 
@@ -264,3 +264,25 @@ Consequences of Q1 (these no longer need separate answers):
 - **Q7:** `AYAH_COUNT` stays in the existing count-school tables and is outside the review table.
 
 Defaults I'll use unless told otherwise: **Q8** `NEEDS_MANUAL_REVIEW` → `flagged`; **Q11** biographical fields stay NULL; **Q14** keep the existing category codes and add the display grouping from §6.
+
+Second round of answers:
+
+| Q | Answer from Amr |
+|---|---|
+| Q3 | **`quran_words` is the approved verified Hafs source.** It is the read-only word anchor. Take a checksum before and after every migration. |
+| Q6 | **Performance-only variants:** infer the أصول category from the description (إمالة → الإمالة والتقليل, …). Anything ambiguous stays فرش and is `flagged`. |
+| Q12 | **Phases 2–3 move to a Claude Code session on the Mac mini**, where the DB can be reached (live counts, `pg_dump`, scratch DB copy, apply). |
+| Q13 | **Hafs's own wujuh:** `Q05-R02` may appear in a reading only as `wajh_order ≥ 2`, with a `wajh_note`. The printed form stays the baseline, and a DB constraint enforces this. |
+
+### Handover to the Mac mini session (start of Phase 2)
+
+1. Pull `claude/qiraat-db-mushaf-review-avf11e`. It holds this audit only.
+2. Replace every † value in §1.1 with a live count, including the ? rows and route (`-Tnn`) authorities.
+3. Run `scripts/qiraat/audit_postgres_reconciliation.py` against the live DB to refresh the fixture-vs-DB diff. Compute the `quran_words` checksum (§4).
+4. Draft the Phase 2 DDL as **additive** changes to the V2 model (§9 Q1). Show it at STOP GATE 2 before applying anything. It covers:
+   - `review_status` + `legacy_ref` on loci/entries
+   - `updated_at` / `deleted_at` / `device_id` on editable tables
+   - an `edit_log` table + triggers
+   - a `display_code` column on `qiraat_authorities`
+   - the D8 and Hafs-wajh constraints
+   - `v_page_variants(page)`, plus `variant_locations`-style views
