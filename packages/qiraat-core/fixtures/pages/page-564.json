@@ -14,6 +14,8 @@
     "locusType": "performance_variant",
     "id": "v-DOCX-564-R03642-78f422e4",
     "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
       "Q04-R01",
       "Q04-R02",
       "Q07-R01",
@@ -37,6 +39,15 @@
         "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
         "sourceText": "في سيئت: الإشمام لابن عامر (هشام وابن ذكوان) والكسائي؛ مع مد المتصل أربع حركات.",
         "verificationNotes": "تحقق آية 67:27؛ يحفظ أوجه الإشمام ومد المتصل للرواة المذكورين."
+      },
+      {
+        "id": "s-QP-67-27-SIET-6 حركات",
+        "variantId": "v-DOCX-564-R03642-78f422e4",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
+        "sourceText": "في سيئت: الإشمام لورش عن نافع؛ مع مد المتصل ست حركات.",
+        "verificationNotes": "تحقق آية 67:27؛ يحفظ أوجه الإشمام ومد المتصل للرواة المذكورين."
       }
     ],
     "evidence": [
@@ -48,56 +59,6 @@
     ],
     "performanceNote": "اشمام كسرة السين ضماً ومد المتصل 4 حركات",
     "description": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس. اشمام كسرة السين ضماً ومد المتصل 4 حركات",
-    "wajhIndex": 2,
-    "locusId": "DOCX-P564-SIET-67-27"
-  },
-  {
-    "surah": 67,
-    "ayah": 27,
-    "startToken": 4,
-    "endToken": 4,
-    "operation": "REPLACE",
-    "hafsText": "سِيٓـَٔتْ",
-    "variantText": "سِيٓـَٔتْ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "locusType": "performance_variant",
-    "id": "v-DOCX-564-R03642-934bff72",
-    "readingIds": [
-      "Q01-R02",
-      "Q01-R01"
-    ],
-    "sources": [
-      {
-        "id": "s-DOCX-P564-R03642-6 حركات",
-        "variantId": "v-DOCX-564-R03642-934bff72",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P564-R03642",
-        "sourceText": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس.",
-        "verificationNotes": "أُخذ نص المصدر حرفياً من سجل الحزمة؛ رُبط بموضع المصحف الفعلي بعد المراجعة."
-      },
-      {
-        "id": "s-QP-67-27-SIET-6 حركات",
-        "variantId": "v-DOCX-564-R03642-934bff72",
-        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
-        "sourceType": "website",
-        "sourceReference": "https://quranpedia.net/qiraat/al-mulk/27",
-        "sourceText": "في سيئت: الإشمام لورش عن نافع؛ مع مد المتصل ست حركات.",
-        "verificationNotes": "تحقق آية 67:27؛ يحفظ أوجه الإشمام ومد المتصل للرواة المذكورين."
-      }
-    ],
-    "evidence": [
-      {
-        "source": "موسوعة القراءات القرآنية — القراءات العشر",
-        "text": "في سيئت: الإشمام لورش عن نافع؛ مع مد المتصل ست حركات.",
-        "url": "https://quranpedia.net/qiraat/al-mulk/27"
-      }
-    ],
-    "performanceNote": "اشمام كسرة السين ضماً ومد المتصل 6 حركات",
-    "description": "﴿سِيٓـَٔتْ﴾: كسر خالص، وبالإشمام لنافع وابن عامر والكسائي وأبي جعفر ورويس. اشمام كسرة السين ضماً ومد المتصل 6 حركات",
     "wajhIndex": 2,
     "locusId": "DOCX-P564-SIET-67-27"
   },
@@ -592,37 +553,5 @@
       }
     ],
     "description": "تحقيق"
-  },
-  {
-    "id": "v-SUSI-067-30-8-4346-performance",
-    "surah": 67,
-    "ayah": 30,
-    "startToken": 8,
-    "endToken": 8,
-    "operation": "REPLACE",
-    "hafsText": "يَأْتِيكُم",
-    "variantText": "يَأْتِيكُم",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-067-30-8-4346",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-067-30-8-4346",
-        "variantId": "v-SUSI-067-30-8-4346-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 4346; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يَأْتِيكُم → يَاتِيكُم | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
   }
 ]

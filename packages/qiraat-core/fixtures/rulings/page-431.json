@@ -343,7 +343,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تَسْتَأْخِرُونَ → تَسْتَاخِرُونَ | إبدال الهمزة ألفاً | user-supplied JSON row 3433; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p431-TAGHYIR_HAMZ-نومن-5",
@@ -401,7 +404,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "نُّؤْمِنَ → نُّومِنَ | إبدال الهمزة واواً | user-supplied JSON row 3434; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p431-TAGHYIR_HAMZ-مومنين-6",
@@ -459,7 +465,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "مُّؤْمِنِينَ → مُّومِنِينَ | إبدال الهمزة واواً | user-supplied JSON row 3436; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-SUSI-034-23-7-3427-IDGHAM_KABIR",

@@ -299,7 +299,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تُؤْمِنُوا → تُومِنُوا | إبدال الهمزة واواً | user-supplied JSON row 3972; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p497-TAGHYIR_HAMZ-فاتوا-2",
@@ -357,7 +360,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "فَأْتُوا → فَاتُوا | إبدال الهمزة ألفاً | user-supplied JSON row 3976; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p497-YAAT_ZAWAID-ترجمون-3",
@@ -732,6 +738,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر الميم وصلاً"
       }
     ],
     "readings": [
@@ -739,12 +749,18 @@
         "readingId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر الميم وصلاً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "عليهـمُ السمـاء → عليهـمِ السماء | كسر الدوري الميم وصلاً"
+      "عليهـمُ السمـاء → عليهـمِ السماء | كسر الدوري الميم وصلاً",
+      "عَلَيْهِمُ السَّمَاءُ → عَلَيْهِمِ السَّمَاءُ | كسر الميم وصلاً | user-supplied JSON row 3974; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

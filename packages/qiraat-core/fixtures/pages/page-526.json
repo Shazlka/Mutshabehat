@@ -286,6 +286,10 @@
     "readingIds": [
       "Q03-R01",
       "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
       "Q09-R01",
       "Q09-R02"
     ],
@@ -306,43 +310,6 @@
     "wajhIndex": 2,
     "evidence": [],
     "performanceNote": "كسر الهاء والميم وصلاً"
-  },
-  {
-    "id": "v-DOCX-P526-6-R03295-23-23-3",
-    "surah": 53,
-    "ayah": 23,
-    "startToken": 23,
-    "endToken": 25,
-    "operation": "REPLACE",
-    "hafsText": "مِّن رَّبِّهِمُ ٱلْهُدَىٰٓ",
-    "variantText": "مِّن رَّبِّهِمُ ٱلْهُدَىٰٓ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02"
-    ],
-    "locusId": "DOCX-P526-6-R03295-23-23",
-    "locusType": "performance_variant",
-    "sources": [
-      {
-        "id": "s-DOCX-P526-6-R03295-23-23-3",
-        "variantId": "v-DOCX-P526-6-R03295-23-23-3",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P526-R03295",
-        "sourceText": "﴿مِّن رَّبِّهِمُ الْهُدَىٰ﴾: بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم وصلاً لأبي عمرو ويعقوب؛ بضم الهاء والميم وصلاً لحمزة والكسائي وخلف.",
-        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
-      }
-    ],
-    "description": "بكسر الهاء وضم الميم وصلاً لنافع وابن كثير وابن عامر وعاصم وأبي جعفر؛ بكسر الهاء والميم وصلاً لأبي عمرو ويعقوب؛ بضم الهاء والميم وصلاً لحمزة والكسائي وخلف.",
-    "wajhIndex": 3,
-    "evidence": [],
-    "performanceNote": "ضم الهاء والميم وصلاً"
   },
   {
     "id": "v-SUSI-053-19-1-4145",

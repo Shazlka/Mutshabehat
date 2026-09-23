@@ -196,38 +196,6 @@
     "description": "ضم الهمزة وكسر الزاي"
   },
   {
-    "id": "v-SUSI-004-139-7-0473-performance",
-    "surah": 4,
-    "ayah": 139,
-    "startToken": 7,
-    "endToken": 7,
-    "operation": "REPLACE",
-    "hafsText": "ٱلْمُؤْمِنِينَ ۚ",
-    "variantText": "ٱلْمُؤْمِنِينَ ۚ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-004-139-7-0473",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة واواً",
-    "sources": [
-      {
-        "id": "s-SUSI-004-139-7-0473",
-        "variantId": "v-SUSI-004-139-7-0473-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 473; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "الْمُؤْمِنِينَ → الْمُومِنِينَ | إبدال الهمزة واواً"
-      }
-    ],
-    "description": "إبدال الهمزة واواً"
-  },
-  {
     "id": "v-SUSI-004-140-2-0474-performance",
     "surah": 4,
     "ayah": 140,

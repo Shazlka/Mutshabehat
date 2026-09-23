@@ -359,37 +359,5 @@
     "description": "إدغام الدال في التاء وصلاً بمد وقصر وتوسط",
     "wajhIndex": 1,
     "evidence": []
-  },
-  {
-    "id": "v-SUSI-067-6-6-4333-performance",
-    "surah": 67,
-    "ayah": 6,
-    "startToken": 6,
-    "endToken": 6,
-    "operation": "REPLACE",
-    "hafsText": "وَبِئْسَ",
-    "variantText": "وَبِئْسَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-067-6-6-4333",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ياء",
-    "sources": [
-      {
-        "id": "s-SUSI-067-6-6-4333",
-        "variantId": "v-SUSI-067-6-6-4333-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 4333; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "وَبِئْسَ → وَبِيسَ | إبدال الهمزة ياء"
-      }
-    ],
-    "description": "إبدال الهمزة ياء"
   }
 ]

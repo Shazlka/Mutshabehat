@@ -401,7 +401,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لَا تَأْتِينَا → لَا تَاتِينَا | إبدال الهمزة ألفاً | user-supplied JSON row 3399; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p428-TAGHYIR_HAMZ-لتاتينكم-4",
@@ -459,7 +462,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "لَتَأْتِيَنَّكُمْ → لَتَاتِيَنَّكُمْ | إبدال الهمزة ألفاً | user-supplied JSON row 3400; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-SUSI-034-2-1-3397-IDGHAM_KABIR",

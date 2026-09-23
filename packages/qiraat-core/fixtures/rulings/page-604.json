@@ -134,6 +134,14 @@
       {
         "authorityId": "Q03-R01",
         "action": "قرأ الدوري بالهمزة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إبدال الهمزة واواً وقفاً"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إبدال الهمزة واواً وقفاً"
       }
     ],
     "readings": [
@@ -141,12 +149,23 @@
         "readingId": "Q03-R01",
         "action": "قرأ الدوري بالهمزة",
         "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إبدال الهمزة واواً وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إبدال الهمزة واواً وقفاً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "كُـفُواً → كُـفُؤاً | قرأ الدوري بالهمزة"
+      "كُـفُواً → كُـفُؤاً | قرأ الدوري بالهمزة",
+      "لحمزة بإبدال الهمزة واواً وقفاً | https://quranpedia.net/qiraat/112/4"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

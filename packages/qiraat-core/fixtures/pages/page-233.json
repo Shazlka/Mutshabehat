@@ -178,70 +178,6 @@
     ]
   },
   {
-    "id": "v-SUSI-011-98-7-1548-performance",
-    "surah": 11,
-    "ayah": 98,
-    "startToken": 7,
-    "endToken": 7,
-    "operation": "REPLACE",
-    "hafsText": "وَبِئْسَ",
-    "variantText": "وَبِئْسَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-011-98-7-1548",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ياء",
-    "sources": [
-      {
-        "id": "s-SUSI-011-98-7-1548",
-        "variantId": "v-SUSI-011-98-7-1548-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1548; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "وَبِئْسَ → وَبِيسَ | إبدال الهمزة ياء"
-      }
-    ],
-    "description": "إبدال الهمزة ياء"
-  },
-  {
-    "id": "v-SUSI-011-99-7-1549-performance",
-    "surah": 11,
-    "ayah": 99,
-    "startToken": 7,
-    "endToken": 7,
-    "operation": "REPLACE",
-    "hafsText": "بِئْسَ",
-    "variantText": "بِئْسَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-011-99-7-1549",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ياء",
-    "sources": [
-      {
-        "id": "s-SUSI-011-99-7-1549",
-        "variantId": "v-SUSI-011-99-7-1549-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1549; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "بِئْسَ → بِيسَ | إبدال الهمزة ياء"
-      }
-    ],
-    "description": "إبدال الهمزة ياء"
-  },
-  {
     "id": "v-SUSI-011-101-18-1552",
     "surah": 11,
     "ayah": 101,
@@ -271,37 +207,5 @@
       }
     ],
     "description": "إسقاط الهمزة الأولى، وفي المد وجهان"
-  },
-  {
-    "id": "v-SUSI-011-105-2-1557-performance",
-    "surah": 11,
-    "ayah": 105,
-    "startToken": 2,
-    "endToken": 2,
-    "operation": "REPLACE",
-    "hafsText": "يَأْتِ",
-    "variantText": "يَأْتِ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-011-105-2-1557",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً وبالياء وصلاً",
-    "sources": [
-      {
-        "id": "s-SUSI-011-105-2-1557",
-        "variantId": "v-SUSI-011-105-2-1557-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1557; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يَأْتِ → يَاتِ | إبدال الهمزة ألفاً وبالياء وصلاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً وبالياء وصلاً"
   }
 ]

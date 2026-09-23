@@ -220,12 +220,20 @@
       "Q01-R02",
       "Q02-R01",
       "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
       "Q04-R01",
       "Q04-R02",
       "Q05-R01",
       "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
       "Q08-R01",
-      "Q08-R02"
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
     ],
     "locusId": "D261-ياتيهم_العذاب",
     "locusType": "performance_variant",
@@ -239,37 +247,10 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P261-R00546",
         "verificationNotes": "وجه المصدر لأهل الكسر مع ضم الميم. المرجع المستقل: https://quranpedia.net/qiraat/ibrahim/44.",
         "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر."
-      }
-    ],
-    "description": "بكسر الهاء وضم الميم وصلاً",
-    "wajhIndex": 1,
-    "evidence": []
-  },
-  {
-    "id": "v-D261-ياتيهم_العذاب-performance2",
-    "surah": 14,
-    "ayah": 44,
-    "startToken": 4,
-    "endToken": 5,
-    "operation": "REPLACE",
-    "hafsText": "يَأْتِيهِمُ ٱلْعَذَابُ",
-    "variantText": "يَأْتِيهِمُ ٱلْعَذَابُ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R01",
-      "Q03-R02",
-      "Q09-R02"
-    ],
-    "locusId": "D261-ياتيهم_العذاب",
-    "locusType": "performance_variant",
-    "performanceNote": "بكسر الهاء والميم وصلاً",
-    "sources": [
+      },
       {
         "id": "s-D261-ياتيهم_العذاب-performance2",
-        "variantId": "v-D261-ياتيهم_العذاب-performance2",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P261-R00547",
@@ -278,7 +259,7 @@
       },
       {
         "id": "s-SUSI-014-44-4-1829",
-        "variantId": "v-D261-ياتيهم_العذاب-performance2",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
         "sourceName": "farsh_susi_complete_quran.json",
         "sourceType": "other",
         "sourceReference": "user-supplied JSON row 1829; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
@@ -287,45 +268,16 @@
       },
       {
         "id": "s-DURI-014-44-4-r1151",
-        "variantId": "v-D261-ياتيهم_العذاب-performance2",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
         "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
         "sourceType": "other",
         "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1151; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
         "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
         "sourceText": "يـأتيهِمُ العـذاب → يأتيهمِ العذاب | كسر الدوري الميم"
-      }
-    ],
-    "description": "بكسر الهاء والميم وصلاً",
-    "wajhIndex": 2,
-    "evidence": []
-  },
-  {
-    "id": "v-D261-ياتيهم_العذاب-performance3",
-    "surah": 14,
-    "ayah": 44,
-    "startToken": 4,
-    "endToken": 5,
-    "operation": "REPLACE",
-    "hafsText": "يَأْتِيهِمُ ٱلْعَذَابُ",
-    "variantText": "يَأْتِيهِمُ ٱلْعَذَابُ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01",
-      "Q06-R02",
-      "Q07-R01",
-      "Q07-R02",
-      "Q09-R01"
-    ],
-    "locusId": "D261-ياتيهم_العذاب",
-    "locusType": "performance_variant",
-    "performanceNote": "بضم الهاء والميم وصلاً",
-    "sources": [
+      },
       {
         "id": "s-D261-ياتيهم_العذاب-performance3",
-        "variantId": "v-D261-ياتيهم_العذاب-performance3",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
         "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
         "sourceType": "other",
         "sourceReference": "qiraat_records.jsonl، DOCX-P261-R00548",
@@ -333,8 +285,8 @@
         "sourceText": "بضم الهاء والميم وصلاً: حمزة، الكسائي، يعقوب، خلف."
       }
     ],
-    "description": "بضم الهاء والميم وصلاً",
-    "wajhIndex": 3,
+    "description": "بكسر الهاء وضم الميم وصلاً",
+    "wajhIndex": 1,
     "evidence": []
   }
 ]

@@ -25,6 +25,36 @@ const wordsOf = (page) => {
   return d.lines.flatMap((l) => l.words).filter((w) => !w.charTypeName || w.charTypeName === 'word')
 }
 
+const actionFamily = (text = '') => {
+  const s = text.normalize('NFC').replace(/[أإآٱ]/g, 'ا')
+  if (s.includes('تسهيل') || s.includes('سهل')) return 'TASHIL'
+  if (s.includes('تقليل') || s.includes('قلل')) return 'TAQLIL'
+  if (s.includes('إمالة') || s.includes('امالة') || s.includes('امال')) return 'IMALAH'
+  if (s.includes('فتح الياء') || s.includes('اسكان الياء') || s.includes('تسكين الياء')) return 'YAAT_IDAFA'
+  if (s.includes('إبدال') && (s.includes('همز') || s.includes('همزة'))) return 'HAMZ'
+  if (s.includes('إدغام') || s.includes('ادغام')) return 'IDGHAM'
+  if (s.includes('سكت')) return 'SAKT'
+  if ((s.includes('صلة') && s.includes('ميم')) || s.includes('كسر الميم')) return 'MEEM_JAM'
+  if (s.includes('صلة') && (s.includes('هاء') || s.includes('كناية'))) return 'SILAT_HA'
+  if (s.includes('غنة')) return 'GHUNNA'
+  if (s.includes('إخفاء') || s.includes('اخفاء')) return 'IKHFA'
+  if (s.includes('ترقيق الراء') || s.includes('ترقيق الراءات')) return 'TARQIQ_RA'
+  if (s.includes('تغليظ اللام')) return 'TAGHLIZ_LAM'
+  if (s.includes('وقف')) return 'WAQF'
+  if (s.includes('مد')) return 'MADD'
+  return null
+}
+const ACTION_CATEGORIES = {
+  HAMZ: ['TAGHYIR_HAMZ'], IMALAH: ['IMALAH_TAQLIL'], TAQLIL: ['IMALAH_TAQLIL'],
+  IDGHAM: ['IDGHAM_KABIR', 'IDGHAM_SAGHIR'], SAKT: ['SAKT'],
+  SILAT_HA: ['SILAT_HA'], MEEM_JAM: ['MEEM_JAM'], GHUNNA: ['TARK_GHUNNA'],
+  IKHFA: ['IKHFA'], TARQIQ_RA: ['TARQIQ_RA'], TAGHLIZ_LAM: ['TAGHLIZ_LAM'],
+  WAQF: ['WAQF_RASM', 'WAQF_HAMZA'], MADD: ['MADD_BADAL'],
+  YAAT_IDAFA: ['YAAT_IDAFA'], TASHIL: ['HAMZATAN_KALIMA', 'HAMZATAN_KALIMATAYN'],
+}
+const dedupeAudit = read('docs/qiraat-reader-dedupe-audit.json')
+const reviewedConflictIds = new Set((dedupeAudit.conflicts ?? []).map((item) => item.duplicate?.id).filter(Boolean))
+
 for (const page of PAGES) {
   const pad = String(page).padStart(3, '0')
   const words = wordsOf(page)
@@ -76,6 +106,26 @@ for (const page of PAGES) {
   // ---- rulings ----
   const rs = read(`packages/qiraat-core/fixtures/rulings/page-${pad}.json`)
   rulings += rs.length
+  for (const v of vs) {
+    if (v.locusType !== 'performance_variant' || v.variantText !== v.hafsText) continue
+    const family = actionFamily(v.performanceNote)
+    const compatible = (ACTION_CATEGORIES[family] ?? []).filter((category) =>
+      rs.some((r) => r.surah === v.surah && r.ayah === v.ayah && r.startToken <= v.startToken &&
+        r.endToken >= v.endToken && r.category === category && r.readings.some((rd) => {
+          const existingFamily = actionFamily(rd.action)
+          return family === 'IMALAH' || family === 'TAQLIL'
+            ? existingFamily === family
+            : existingFamily === family
+        }))
+    )
+    if (compatible.length && !reviewedConflictIds.has(v.id)) fail(`p${page} ${v.id}: performance-only face duplicates ruling category ${compatible.join('/')}`)
+  }
+  const identicalFaces = new Map()
+  for (const v of vs) {
+    const key = JSON.stringify([v.surah, v.ayah, v.startToken, v.endToken, v.variantText, v.differenceType])
+    if (identicalFaces.has(key) && !reviewedConflictIds.has(v.id)) fail(`p${page} ${v.id}: duplicate variant face with ${identicalFaces.get(key)} on identical span/text/type`)
+    else identicalFaces.set(key, v.id)
+  }
   for (const r of rs) {
     if (r.pageNumber !== page) fail(`p${page} ${r.id}: pageNumber mismatch`)
     const anchor = byPos.get(`${r.surah}:${r.ayah}:${r.startToken}`)

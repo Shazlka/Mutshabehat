@@ -9,6 +9,11 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-23 — Merge duplicate per-reader Qiraat faces
+- Reconciled duplicate fixture faces across all 604 pages and retained each removed source record verbatim in `docs/qiraat-reader-dedupe-audit.json`. Page 11, 2:75 now shows the existing hamza-substitution ruling once for Warsh, Susi, and Abu Jaafar; the Susi-only performance row was removed with its citation appended to the ruling.
+- Added shared merge logic for Susi, Duri, and future importers, plus a fixture validator for unreviewed performance/ruling and exact variant duplicates. Eight same-reader/action or same-face conflicts remain for manual review.
+- Updated the page-303 Qiraat regression for the merged Susi hamza face. DB check found no Susi/Duri importer-ID rows; no database changes were made. Gates are recorded in the task report. Orchestrator review restored 24 reader assignments (23 merges, mostly al-Susi Q03-R02) that the final rebuild had dropped from target rulings, using the reader's own source wording and rawi-level authorityId; merge_faces.py fixed to do the same.
+
 ## 2026-09-23 — Give shared Qiraat words one solid glyph color
 - Multi-reader variants now color the word glyph with the named shared-reader olive token; single-reader words keep their reader color. The underline still shows each reader's palette segment. User annotation colors remain highest priority.
 - Added a shared-reader swatch to the Qiraat legend, with a lime adaptation for the dark Mushaf theme. Removed all clipped gradient paint from word glyphs; gradient rendering remains only on the individual-reader underline marker.

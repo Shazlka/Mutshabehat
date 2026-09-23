@@ -413,6 +413,10 @@
       {
         "authorityId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "كسر الميم"
       }
     ],
     "readings": [
@@ -420,12 +424,18 @@
         "readingId": "Q03-R01",
         "action": "كسر الدوري الميم وصلاً",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "كسر الميم",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "بـهـمُ الأرض → بـهمِ الأرض | كسر الدوري الميم وصلاً"
+      "بـهـمُ الأرض → بـهمِ الأرض | كسر الدوري الميم وصلاً",
+      "بِهِمُ الْأَرْضَ → بِهِمِ الْأَرْضَ | كسر الميم | user-supplied JSON row 3406; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"
@@ -446,6 +456,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03",
+        "action": "قرأ الدوري بإبدال الهمزة ألفاً"
+      },
+      {
         "authorityId": "Q03-R01",
         "action": "قرأ الدوري بإبدال الهمزة ألفاً"
       }
@@ -455,12 +469,18 @@
         "readingId": "Q03-R01",
         "action": "قرأ الدوري بإبدال الهمزة ألفاً",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "قرأ الدوري بإبدال الهمزة ألفاً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
     "sourceNotes": [
-      "منسـأته → منسـاته | قرأ الدوري بإبدال الهمزة ألفاً"
+      "منسـأته → منسـاته | قرأ الدوري بإبدال الهمزة ألفاً",
+      "مِنسَأَتَهُ → مِنسَاتَهُ | إبدال الهمزة ألفاً | user-supplied JSON row 3411; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

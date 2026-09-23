@@ -1449,6 +1449,9 @@
     "hasAlternate": false,
     "text": "وإسكانها وصلاً للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "لِي ءَايَةً → لِيَ ءَايَةً | فتح الياء وصلاً | user-supplied JSON row 156; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   }
 ]

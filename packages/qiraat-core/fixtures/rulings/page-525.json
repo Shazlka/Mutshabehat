@@ -282,6 +282,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q01",
+        "action": "إبدال الهمزة"
+      },
+      {
         "authorityId": "Q01-R02",
         "action": "إبدال الهمزة"
       },
@@ -299,6 +303,11 @@
       }
     ],
     "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
       {
         "readingId": "Q01-R02",
         "action": "إبدال الهمزة",
@@ -322,7 +331,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "بإسكان الهمزة وضم الراء للجمهور (مع إبدال الهمزة لورش وأبي جعفر). | qiraat_records.jsonl، DOCX-P525-R03276"
+    ]
   },
   {
     "id": "r-p525-IKHFA-rule-52-35-3",

@@ -305,38 +305,6 @@
     ]
   },
   {
-    "id": "v-SUSI-016-60-3-1924-performance",
-    "surah": 16,
-    "ayah": 60,
-    "startToken": 3,
-    "endToken": 3,
-    "operation": "REPLACE",
-    "hafsText": "يُؤْمِنُونَ",
-    "variantText": "يُؤْمِنُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-016-60-3-1924",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة واواً",
-    "sources": [
-      {
-        "id": "s-SUSI-016-60-3-1924",
-        "variantId": "v-SUSI-016-60-3-1924-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1924; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
-      }
-    ],
-    "description": "إبدال الهمزة واواً"
-  },
-  {
     "id": "v-SUSI-016-61-17-1926",
     "surah": 16,
     "ayah": 61,
@@ -366,69 +334,5 @@
       }
     ],
     "description": "إسقاط الهمزة الأولى"
-  },
-  {
-    "id": "v-SUSI-016-61-20-1927-performance",
-    "surah": 16,
-    "ayah": 61,
-    "startToken": 20,
-    "endToken": 20,
-    "operation": "REPLACE",
-    "hafsText": "يَسْتَـْٔخِرُونَ",
-    "variantText": "يَسْتَـْٔخِرُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-016-61-20-1927",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-016-61-20-1927",
-        "variantId": "v-SUSI-016-61-20-1927-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1927; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يَسْتَأْخِرُونَ → يَسْتَاخِرُونَ | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
-  },
-  {
-    "id": "v-SUSI-016-64-14-1932-performance",
-    "surah": 16,
-    "ayah": 64,
-    "startToken": 14,
-    "endToken": 14,
-    "operation": "REPLACE",
-    "hafsText": "يُؤْمِنُونَ",
-    "variantText": "يُؤْمِنُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-016-64-14-1932",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة واواً",
-    "sources": [
-      {
-        "id": "s-SUSI-016-64-14-1932",
-        "variantId": "v-SUSI-016-64-14-1932-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 1932; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً"
-      }
-    ],
-    "description": "إبدال الهمزة واواً"
   }
 ]

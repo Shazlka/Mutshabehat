@@ -15,6 +15,7 @@
     "readingIds": [
       "Q05-R01",
       "Q05-R02",
+      "Q06-R01",
       "Q06-R02",
       "Q07-R01",
       "Q07-R02"
@@ -338,48 +339,5 @@
     "description": "تشديد السين مع الإدغام بغير غنة لخلف عن حمزة",
     "wajhIndex": 4,
     "evidence": []
-  },
-  {
-    "id": "v-D582-78-19-1--R03821-4",
-    "surah": 78,
-    "ayah": 19,
-    "startToken": 1,
-    "endToken": 1,
-    "operation": "REPLACE",
-    "hafsText": "وَفُتِحَتِ",
-    "variantText": "وَفُتِحَتِ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z",
-    "readingIds": [
-      "Q06-R01"
-    ],
-    "locusId": "D582-78-19-face",
-    "locusType": "performance_variant",
-    "sources": [
-      {
-        "id": "s-v-D582-78-19-1--R03821-4",
-        "variantId": "v-D582-78-19-1--R03821-4",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P582-R03821",
-        "verificationNotes": "إسناد السطر المصدر قوبل بجهاز القراءات للآية، ورُبط باللفظ الأساس المستخرج حرفياً عبر scripts/qiraat/tokens.py.",
-        "sourceText": "﴿وَفُتِحَتِ﴾: بتخفيف التاء ﴿وَفُتِحَتِ﴾ لعاصم، وحمزة، والكسائي، وخلف؛ بتشديد التاء ﴿وَفُتِّحَتِ﴾ للباقين."
-      },
-      {
-        "id": "s-v-D582-78-19-1--R03821-4-qp",
-        "variantId": "v-D582-78-19-1--R03821-4",
-        "sourceName": "المصحف بالقراءات العشر - Quranpedia",
-        "sourceType": "other",
-        "sourceReference": "https://quranpedia.net/qiraat/an-naba/19",
-        "verificationNotes": "جهاز الآية يفرد خلفاً عن حمزة بالتخفيف وإدغام التنوين بلا غنة؛ المرجع: https://quranpedia.net/qiraat/an-naba/19"
-      }
-    ],
-    "description": "إدغام التنوين في الواو بلا غنة مع تخفيف التاء الأولى",
-    "wajhIndex": 4,
-    "evidence": [],
-    "notes": "الجهاز يميز إدريس وإسحاق لخلف العاشر، وخلف وخلاد عن حمزة؛ التخفيف face is one text form.",
-    "performanceNote": "إدغام التنوين في الواو بلا غنة مع تخفيف التاء الأولى"
   }
 ]

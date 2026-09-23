@@ -196,37 +196,5 @@
       }
     ],
     "description": "إبدال الهمزة واواً"
-  },
-  {
-    "id": "v-SUSI-042-21-10-3883-performance",
-    "surah": 42,
-    "ayah": 21,
-    "startToken": 10,
-    "endToken": 10,
-    "operation": "REPLACE",
-    "hafsText": "يَأْذَنۢ",
-    "variantText": "يَأْذَنۢ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-042-21-10-3883",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة ألفاً",
-    "sources": [
-      {
-        "id": "s-SUSI-042-21-10-3883",
-        "variantId": "v-SUSI-042-21-10-3883-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 3883; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يَأْذَن → يَاذَن | إبدال الهمزة ألفاً"
-      }
-    ],
-    "description": "إبدال الهمزة ألفاً"
   }
 ]

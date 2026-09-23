@@ -890,7 +890,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "كَدَأْبِ → كَدَابِ | إبدال الهمزة ألفاً | user-supplied JSON row 1172; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p183-020-1",
@@ -1146,7 +1149,10 @@
     "hasAlternate": false,
     "text": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر، والإسكان للباقين",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "إِنِّي أَخَافُ → إِنِّيَ أَخَافُ | فتح الياء | user-supplied JSON row 1170; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-SUSI-008-48-1-1164-IDGHAM_KABIR",

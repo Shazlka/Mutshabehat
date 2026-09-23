@@ -441,7 +441,8 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03571",
         "sourceText": "تغيير الهمز: ﴿وَالْمُؤْمِنِينَ﴾، ﴿يَأْتِيَ﴾: ورش، السوسي، أبو جعفر. ﴿يُؤَخِّرَ﴾: ورش، أبو جعفر.",
         "verificationNotes": "مصدر وثيقة الاستخراج؛ الإسناد صريح."
-      }
+      },
+      "وَلِلْمُؤْمِنِينَ → وَلِلْمُومِنِينَ | إبدال الهمزة واواً | user-supplied JSON row 4301; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ]
   },
   {
@@ -506,7 +507,8 @@
         "sourceReference": "qiraat_records.jsonl، DOCX-P555-R03571",
         "sourceText": "تغيير الهمز: ﴿وَالْمُؤْمِنِينَ﴾، ﴿يَأْتِيَ﴾: ورش، السوسي، أبو جعفر. ﴿يُؤَخِّرَ﴾: ورش، أبو جعفر.",
         "verificationNotes": "مصدر وثيقة الاستخراج؛ الإسناد صريح."
-      }
+      },
+      "يَأْتِيَ → يَاتِيَ | إبدال الهمزة ألفاً | user-supplied JSON row 4302; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ]
   },
   {
@@ -595,7 +597,8 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "قِيلَ لَهُمْ → قِيل لَّهُمْ | إدغام اللام في اللام"
+      "قِيلَ لَهُمْ → قِيل لَّهُمْ | إدغام اللام في اللام",
+      "﴿قِيلَ﴾: كسر خالص، وبالإشمام لهشام والكسائي ورويس. | qiraat_records.jsonl، DOCX-P555-R03564"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

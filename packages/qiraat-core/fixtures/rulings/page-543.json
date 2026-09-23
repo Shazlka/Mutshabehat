@@ -755,7 +755,9 @@
     "hasAlternate": false,
     "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
     "sourceNotes": [
-      "قِيلَ لَكُمْ → قِيل لَّكُمْ | إدغام اللام في اللام"
+      "قِيلَ لَكُمْ → قِيل لَّكُمْ | إدغام اللام في اللام",
+      "﴿قِيلَ﴾ (معاً): كسر خالص، وبالإشمام لهشام والكسائي ورويس. | qiraat_records.jsonl، DOCX-P543-R03443",
+      "بكسرة خالصة للقاف وإدغام اللام في اللام وإسكان الميم: السوسي عن أبي عمرو. | https://quranpedia.net/qiraat/al-mujadila/11"
     ],
     "createdAt": "2026-09-23T12:00:00.000Z",
     "updatedAt": "2026-09-23T12:00:00.000Z"

@@ -4733,7 +4733,7 @@ export default function Mushaf1441Viewer({
             aria-label={qiraatMode === 'normal' ? 'تفعيل عرض القراءات — وإيقاف الملاحظات والمتشابهات' : 'إيقاف عرض القراءات — العودة إلى المصحف العادي'}
             aria-pressed={qiraatMode !== 'normal'}
             title="عرض القراءات"
-            className={`flex min-h-10 items-center justify-center gap-1 rounded-md border px-2 text-sm font-black transition-colors ${
+            className={`flex min-h-11 items-center justify-center gap-1 rounded-md border px-2 text-sm font-black transition-colors ${
               qiraatMode !== 'normal'
                 ? (mushafTheme === 'dark' ? 'border-[#c8a86b] bg-[#c8a86b] text-[#18191d]' : 'border-[#171717] bg-[#171717] text-white')
                 : currentThemeTokens.headerBtnClass
@@ -5043,7 +5043,7 @@ export default function Mushaf1441Viewer({
                   aria-label={qiraatEditMode ? 'إيقاف وضع تعديل القراءات' : 'تفعيل وضع تعديل القراءات'}
                   aria-pressed={qiraatEditMode}
                   onClick={toggleQiraatEditMode}
-                  className={`mt-2 min-h-10 w-full rounded border px-3 text-xs font-bold ${qiraatEditMode ? 'border-[#8c5f0a] bg-[#8c5f0a] text-white' : currentThemeTokens.headerBtnClass}`}
+                  className={`mt-2 min-h-11 w-full rounded border px-3 text-xs font-bold ${qiraatEditMode ? 'border-[#8c5f0a] bg-[#8c5f0a] text-white' : currentThemeTokens.headerBtnClass}`}
                 >
                   {qiraatEditMode ? 'وضع التعديل مفعّل — اضغط كلمة للتحرير' : 'تفعيل وضع تعديل القراءات'}
                 </button>

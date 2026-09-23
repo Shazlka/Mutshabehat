@@ -1110,7 +1110,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "تَأْتِيَهُمُ → تَاتِيَهُمُ | إبدال الهمزة ألفاً | user-supplied JSON row 871; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p150-025-1",
@@ -1164,7 +1167,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِيَ (3 مواضع) → يَاتِيَ | إبدال الهمزة ألفاً (3 مواضع) | user-supplied JSON row 872; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p150-025-2",
@@ -1218,7 +1224,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِيَ (3 مواضع) → يَاتِيَ | إبدال الهمزة ألفاً (3 مواضع) | user-supplied JSON row 872; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p150-025-3",
@@ -1272,7 +1281,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِيَ (3 مواضع) → يَاتِيَ | إبدال الهمزة ألفاً (3 مواضع) | user-supplied JSON row 872; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p150-026-1",
@@ -1586,7 +1598,10 @@
     "text": "الفتح وصلاً لنافع وأبي عمرو وأبي جعفر، والإسكان للباقين",
     "condition": "وصلاً",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "رَبِّي إِلَىٰ → رَبِّيَ إِلَىٰ | فتح الياء | user-supplied JSON row 873; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p150-033-1",

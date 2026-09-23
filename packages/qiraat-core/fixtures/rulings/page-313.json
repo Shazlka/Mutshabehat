@@ -607,7 +607,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْمِنُ → يُومِنُ | إبدال الهمزة واواً | user-supplied JSON row 2323; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p313-010-1",
@@ -983,6 +986,10 @@
         "action": "الفتح وصلًا"
       },
       {
+        "authorityId": "Q03-R02",
+        "action": "إسكان الياء"
+      },
+      {
         "authorityId": "Q05-R02",
         "action": "الفتح وصلًا"
       }
@@ -994,6 +1001,11 @@
         "isDefault": true
       },
       {
+        "readingId": "Q03-R02",
+        "action": "إسكان الياء",
+        "isDefault": true
+      },
+      {
         "readingId": "Q05-R02",
         "action": "الفتح وصلًا",
         "isDefault": true
@@ -1002,7 +1014,10 @@
     "hasAlternate": false,
     "text": "والإسكان وصلًا للباقين.",
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "وَلِيَ → وَلِي | إسكان الياء | user-supplied JSON row 2326; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p313-014-1",
@@ -2270,11 +2285,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03",
+        "action": "إبدال الهمزة واوًا"
+      },
+      {
         "authorityId": "Q08",
         "action": "إبدال الهمزة واوًا"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة واوًا",
+        "isDefault": true
+      },
       {
         "readingId": "Q08-R01",
         "action": "إبدال الهمزة واوًا",
@@ -2288,7 +2312,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "سُؤْلَكَ → سُولَكَ | إبدال الهمزة واواً | user-supplied JSON row 2340; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p313-038-1",

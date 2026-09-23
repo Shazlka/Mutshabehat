@@ -422,6 +422,10 @@
       {
         "authorityId": "Q01-R02",
         "action": "النقل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة ألفاً"
       }
     ],
     "readings": [
@@ -429,11 +433,19 @@
         "readingId": "Q01-R02",
         "action": "النقل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة ألفاً",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-20T12:00:00.000Z",
-    "updatedAt": "2026-09-20T12:00:00.000Z"
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تَأْمُرُونِّي → تَامُرُونِّي | إبدال الهمزة ألفاً | user-supplied JSON row 3702; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p465-s39a65b0",

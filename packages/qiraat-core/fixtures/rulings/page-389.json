@@ -907,7 +907,8 @@
     "hasAlternate": false,
     "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر.",
     "sourceNotes": [
-      "DOCX-P389-R01999"
+      "DOCX-P389-R01999",
+      "إِنِّي → إِنِّيَ | فتح الياء وصلاً | user-supplied JSON row 3070; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
@@ -1005,7 +1006,8 @@
     "hasAlternate": false,
     "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر.",
     "sourceNotes": [
-      "DOCX-P389-R01999"
+      "DOCX-P389-R01999",
+      "إِنِّي → إِنِّيَ | فتح الياء وصلاً | user-supplied JSON row 3075; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
@@ -1103,7 +1105,8 @@
     "hasAlternate": false,
     "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وأبي جعفر.",
     "sourceNotes": [
-      "DOCX-P389-R01999"
+      "DOCX-P389-R01999",
+      "إِنِّي → إِنِّيَ | فتح الياء وصلاً | user-supplied JSON row 3083; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
@@ -1219,7 +1222,8 @@
     "hasAlternate": false,
     "notes": "الفتح وصلاً لنافع وابن كثير وأبي عمرو وابن عامر وأبي جعفر.",
     "sourceNotes": [
-      "DOCX-P389-R02000"
+      "DOCX-P389-R02000",
+      "لَّعَلِّي → لَّعَلِّيَ | فتح الياء وصلاً | user-supplied JSON row 3071; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
@@ -1240,11 +1244,20 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q03",
+        "action": "فتح الياء وصلاً"
+      },
+      {
         "authorityId": "Q05-R01",
         "action": "فتح الياء وصلاً"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "فتح الياء وصلاً",
+        "isDefault": true
+      },
       {
         "readingId": "Q05-R01",
         "action": "فتح الياء وصلاً",
@@ -1254,7 +1267,8 @@
     "hasAlternate": false,
     "notes": "الفتح وصلاً لحفص، والإسكان للباقين.",
     "sourceNotes": [
-      "DOCX-P389-R02001"
+      "DOCX-P389-R02001",
+      "مَعِيَ → مَعِي | إسكان الياء | user-supplied JSON row 3081; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"

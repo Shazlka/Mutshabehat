@@ -56,43 +56,6 @@
     "evidence": []
   },
   {
-    "id": "v-DOCX-P525-5-R03276-32-2-2",
-    "surah": 52,
-    "ayah": 32,
-    "startToken": 2,
-    "endToken": 2,
-    "operation": "REPLACE",
-    "hafsText": "تَأْمُرُهُمْ",
-    "variantText": "تَأْمُرُهُمْ",
-    "differenceType": "HARAKAH",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-22T12:00:00.000Z",
-    "updatedAt": "2026-09-22T12:00:00.000Z",
-    "readingIds": [
-      "Q01-R01",
-      "Q01-R02",
-      "Q08-R01",
-      "Q08-R02"
-    ],
-    "locusId": "DOCX-P525-5-R03276-32-2",
-    "locusType": "performance_variant",
-    "sources": [
-      {
-        "id": "s-DOCX-P525-5-R03276-32-2-2",
-        "variantId": "v-DOCX-P525-5-R03276-32-2-2",
-        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
-        "sourceType": "other",
-        "sourceReference": "qiraat_records.jsonl، DOCX-P525-R03276",
-        "sourceText": "بإسكان الهمزة وضم الراء للجمهور (مع إبدال الهمزة لورش وأبي جعفر).",
-        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
-      }
-    ],
-    "description": "بإسكان الهمزة وضم الراء للجمهور (مع إبدال الهمزة لورش وأبي جعفر).",
-    "wajhIndex": 2,
-    "evidence": [],
-    "performanceNote": "إبدال الهمزة لورش وأبي جعفر"
-  },
-  {
     "id": "v-DOCX-P525-5-R03277-32-2-3",
     "surah": 52,
     "ayah": 32,

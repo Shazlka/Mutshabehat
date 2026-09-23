@@ -159,7 +159,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْكُلُوا → يَاكُلُوا | إبدال الهمزة ألفاً | user-supplied JSON row 1839; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p262-004-1",
@@ -464,7 +467,10 @@
     ],
     "hasAlternate": false,
     "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "sourceNotes": [
+      "يُؤْمِنُونَ → يُومِنُونَ | إبدال الهمزة واواً | user-supplied JSON row 1847; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
   },
   {
     "id": "r-p262-IDGHAM_SAGHIR-خلت_سنه-0",
@@ -644,7 +650,8 @@
     ],
     "hasAlternate": false,
     "sourceNotes": [
-      "DOCX-P262-R00577؛ Quranpedia: https://quranpedia.net/tafsir/al-hijr/5"
+      "DOCX-P262-R00577؛ Quranpedia: https://quranpedia.net/tafsir/al-hijr/5",
+      "يَسْتَأْخِرُونَ → يَسْتَاخِرُونَ | إبدال الهمزة ألفاً | user-supplied JSON row 1841; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
@@ -705,7 +712,8 @@
     ],
     "hasAlternate": false,
     "sourceNotes": [
-      "DOCX-P262-R00577"
+      "DOCX-P262-R00577",
+      "تَأْتِينَا → تَاتِينَا | إبدال الهمزة ألفاً | user-supplied JSON row 1842; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
     ],
     "createdAt": "2026-09-22T12:00:00.000Z",
     "updatedAt": "2026-09-22T12:00:00.000Z"
