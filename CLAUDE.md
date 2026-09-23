@@ -38,6 +38,21 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-23 — Qiraat Phase 4: review screen (API + UI), incident fix pending approval
+- **API** (Codex): `src/app/api/mushaf-1441/qiraat-review/route.ts` (GET page/overview/history, PATCH status/update/narrators/delete/restore, POST undo) through the user's session client only. `review-http.ts` holds pure request validation and DB-error → HTTP mapping (`npm run test:qiraat:review`, 12/12). Typed client `src/app/mushaf-1441/review/_lib/api.ts`.
+- **UI** (Antigravity): `/mushaf-1441/review?page=N`:
+  - Hafs page on the right, rendered from `quran_words` (127/127 words on p3 identical to the DB in the DOM);
+  - variant table and row editor on the left, including narrators/wajh (Hafs only as wajh ≥ 2 with a note, also enforced in the UI);
+  - flags, status with resolve-on-review, delete/restore, history with undo, page navigation / next flagged or unreviewed page;
+  - keyboard shortcuts (← next page, the Arabic-mushaf convention; j/k rows; r/f status).
+- **Access decision (owner, 2026-09-23):** production auto-signs every visitor in as the owner (`src/proxy.ts`), so the editor allowlist cannot tell a visitor from the owner on the web. The owner chose to **accept this as-is** (the URL is treated as private). Every edit is in `edit_log` and can be undone.
+- **Incident (end-to-end test, 2026-09-23):** a stale-version save hung. `qiraat_review_begin` raised VERSION_CONFLICT with SQLSTATE 40001, and PostgREST retries 40001 in a loop (~4,000 tx/s, DB ~123% CPU). Stopped by restarting only `mutshabehat-rest`; no data or schema changed, and REST/auth returned 200 afterwards. Fix: `supabase/migrations/20260925130000_qiraat_review_version_conflict_code.sql` (SQLSTATE PT409 → HTTP 409, never retried; + rollback). Scratch: idempotent, reversible, 27/27 Phase 4 tests.
+- **Verification:**
+  - `npm run typecheck` (8 GB heap), `test:qiraat` 44/44, `mushaf:validate` 7/7, `test:qiraat:review` 12/12;
+  - `npm run build` passes with `NODE_OPTIONS=--max-old-space-size=8192` (the build worker runs out of heap at the default);
+  - end-to-end on the built app against live, as the owner: page renders, 0 page errors, status write → undo restored `unreviewed`, D8 block 422 with the Arabic message, ← moves to page 4.
+- Database migration: 20260925130000 **not applied** (awaiting approval).
+
 ## 2026-09-23 — Qiraat Phase 4: review API database layer (applied to live)
 - **Migration** `supabase/migrations/20260925120000_qiraat_phase4_review_api.sql` (+ rollback in `supabase/rollbacks/`):
   - `qiraat_editors` allowlist, seeded with the owner account `ec34e9cc…` (confirmed by the owner);

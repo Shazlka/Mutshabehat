@@ -189,3 +189,16 @@ SET ROLE authenticated;
 SELECT pg_temp.expect('U2 the Phase 3 import cannot be undone from the review screen',
   format('SELECT qiraat_review_undo(%s)', (SELECT txid FROM p3tx)), 'UNDO_REFUSED');
 RESET ROLE;
+
+-- Phase 4.1: VERSION_CONFLICT must use SQLSTATE PT409 (PostgREST retries 40001 forever).
+RESET ROLE;
+DO $$
+DECLARE v_state text;
+BEGIN
+  PERFORM qiraat_review_begin((SELECT id FROM qiraat_entries LIMIT 1), '2000-01-01'::timestamptz, 'scratch');
+  RAISE NOTICE 'FAIL V1 no conflict raised';
+EXCEPTION WHEN OTHERS THEN
+  GET STACKED DIAGNOSTICS v_state = RETURNED_SQLSTATE;
+  IF v_state = 'PT409' AND SQLERRM LIKE 'VERSION_CONFLICT%' THEN RAISE NOTICE 'PASS V1 VERSION_CONFLICT raised with SQLSTATE PT409';
+  ELSE RAISE NOTICE 'FAIL V1 sqlstate % message %', v_state, SQLERRM; END IF;
+END $$;
