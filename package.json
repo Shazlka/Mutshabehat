@@ -20,7 +20,7 @@
     "qiraat:frontend:validate": "tsx scripts/qiraat/validate-qiraat-frontend.mts",
     "qiraat:canonical-words:validate": "tsx scripts/qiraat/seed-canonical-words.ts --check",
     "test:qiraat:batch": "bash scripts/qiraat/test-batch-rollback.sh",
-    "typecheck": "tsc --noEmit -p .",
+    "typecheck": "tsc --noEmit -p . --incremental false",
     "test:quiz": "tsx --test tests/quiz/engine.test.ts tests/quiz/presentation.test.ts",
     "test:quiz:integration": "tsx --env-file=.env.local --test tests/quiz/database.test.ts",
     "test:quiz:e2e": "playwright test"
