@@ -9,8 +9,36 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-24 — Pilot Ingestion (Pages 001–040) Promoted to Production Database (M3 Complete)
+- **Production Schema & Ingestion Promotion (`postgres`):**
+  - Applied schema migration `supabase/migrations/20260925160000_qiraat_multi_source_ingestion.sql` (+ rollback in `supabase/rollbacks/`) to live PostgreSQL database (`postgres` on `127.0.0.1:5433`, container `mutshabehat-db`). Fresh pre-migration backup verified at `/Volumes/External Mini/Projects/mutshabehat-backups/mutshabehat_prod_backup_20260924_134453_pre_m3_promotion.dump` (12 MB).
+  - Executed live ingestion for pilot pages 001–040 (Al-Fatihah & Al-Baqarah 1–248) from «مصحف القراءات العشر المتواترة بالألوان الميسرة» (`BOOK_27159_1.pdf`) directly into production `postgres`: 225 farsh variants, 901 usul rulings, 2,729 corroborated records, 791 gap-filled records, 4 conflicts, 0 unmatched words.
+  - **Idempotency Verified on Live:** Second execution pass on production verified 0 new gap-fills (3,520 corroborated records, 0 gap-filled, 0 errors).
+  - **Data Integrity Gate Passed:** Post-ingestion `quran_words` row count and checksum verified 100% intact: exactly 77,429 rows, MD5 `52839d155fd0f90f999822a43e8198f5`.
+  - **Tracking Table:** `qiraat_page_ingestion_status` recorded 40 pages in `done` status (564 pending). `qiraat_entry_sources` populated with 1,654 source attribution rows. Reloaded PostgREST schema cache via `NOTIFY pgrst, 'reload schema'`.
+
+## 2026-09-24 — Pilot Ingestion (Pages 001–040) into Staging Database & Review Report (M2 Complete)
+- **Pilot Ingestion Execution (`mutshabehat_staging`):**
+  - Ingested 40 pilot pages (Al-Fatihah & Al-Baqarah 1–248) from «مصحف القراءات العشر المتواترة بالألوان الميسرة» (`BOOK_27159_1.pdf`) into dedicated staging DB `mutshabehat_staging` on `127.0.0.1:5433` (Container `mutshabehat-db`).
+  - **Zero production writes:** Live production DB `postgres` remained 100% untouched and verified.
+  - **Metrics:** 225 farsh variants, 901 usul rulings, 3,123 corroborated records (linked to source citations in `qiraat_entry_sources`), 397 gap-filled records (additive insertions), 4 conflicts (preserved both rows with JSON diffs), **0 unmatched records** (100% token matching precision).
+  - **Idempotency Guarantee:** Second execution pass across all 40 pages verified 0 new mutations (3,520 corroborated, 0 gap-filled, 0 errors).
+- **Technical Fixes & Architecture:**
+  - **Rule D8 Trigger Exemption (`qiraat_assert_entry_hafs_rule`):** Entries listing Hafs alongside other readers on Page 19 (Yaa'at Al-Idafa 2:124 & 2:125) are inserted with `review_status = 'flagged'` and flagged with `flag_type = 'D8_HAFS_KEPT'` in `qiraat_qa_flags`, exempting them from trigger rejection.
+  - **Punctuation & Diacritic Regex Isolation:** Corrected `ISOLATED_PUNCTUATION_REGEX` in `packages/qiraat-core/ingest/reanchor.ts` to strictly target standalone waqf marks and punctuation (`/[ۖۗۘۙۚۛ۞۩،؛؟,\.\-—]/g`), stopping the accidental destruction/splitting of words containing Quranic diacritics (`\u06ED` iqlab meem, `\u06E5` small waw, `\u06DC` small seen). Reduced unmatched count from 115 to 0.
+  - **Conflict Locus Resolution:** Bound conflict entries directly to existing locus IDs (`item.existingRecord.locusId`) in `packages/qiraat-core/ingest/pipeline.ts` with complete reading and authority records.
+- **Review Artifacts:**
+  - Generated `REVIEW_PILOT.html` (1.9 MB): Standalone, zero-dependency offline review tool featuring Dark & Gold styling, Amiri/Cairo fonts, interactive page/type/flag filters, Arabic-normalized search, and side-by-side conflict diffs.
+  - Generated `docs/qiraat/INGESTION_REPORT_P001-040.md` & `INGESTION_REPORT_P001-040.md`.
+- **Verification:**
+  - `npm run typecheck`: 0 errors.
+  - `npm run build`: Clean production build (35 static pages, 25 dynamic routes).
+  - `npx tsx --test tests/qiraat/ingest-pipeline.test.ts`: 15/15 passed.
+  - `npm run test:qiraat:review`: 19/19 passed.
+  - `npm run test:qiraat`: 44/44 passed.
+  - Playwright browser test on `REVIEW_PILOT.html`: 0 page errors, 0 console errors, instant filtering and normalized search.
+
 ## 2026-09-24 — Qiraat Review Workstation Redesign (applied to live & tested)
-- **High-Speed 2-Pane Workstation Architecture (`/mushaf-1441/review`):**
   - **Right Pane (~65–72%):** Authentic Mushaf-1441 page layout matching `/mushaf-1441` with exact page geometry, 15-line grid, QCF V2 fonts loaded dynamically with Amiri fallback, SVG Surah header banners with gold gradient, cartouche, and medallion, Basmala lines, and margin headers/footers. Every word token mapped to canonical key `SSS:AAA:WWW`. Covered words highlighted with status colors (reviewed = green, unreviewed = amber, flagged = red), selected word with prominent outline ring. Unhighlighted words are fully clickable to create new entries. Independent scroll.
   - **Left Pane (~28–35%):** Compact Single-Word Side Editor (`ReviewEditorPane.tsx`) replacing wide table and bottom drawer. Header shows word position breadcrumb and large Hafs word text in Quran font (`﴿...﴾`). Multi-variant pill switcher for words with 2+ entries. Instant 1-click `[✓ اعتماد]` button directly confirms and saves. Fast segmented toggle `[أصول] [فرش]`. Visible chip grid for 23 canonical Usul categories (`UsulRuleGrid.tsx`) with instant 1-click select and search filter. Farsh editor (`FarshFields.tsx`) with reading text and variant type chips (`تشكيل`, `حرف`, `زيادة`, `حذف`, `أخرى`).
   - **Reader / Narrator Selection (`ReaderNarratorSelector.tsx`):** Zero dropdowns or comboboxes. Direct checkboxes and chips for all 10 Readers (`Q01`–`Q10`) and 20 Narrators in Arabic. Quick selection toolbar (`الكل`, `السبعة`, `الثلاثة`, `الكوفيون`, `المدنيان`, `مسح`). Reader checkbox toggles both narrators; partial narrator selection sets indeterminate state. Enforces Rule D8 guard for Hafs (`Q05-R02`: wajh >= 2 with required note).
