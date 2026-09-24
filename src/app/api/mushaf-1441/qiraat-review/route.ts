@@ -19,15 +19,27 @@ function validationResponse(result: { ok: false; status: number; body: Record<st
 
 async function authenticatedClient() {
   const supabase = await createServerSupabaseClient()
-  const {
+  let {
     data: { user },
-    error,
   } = await supabase.auth.getUser()
 
-  if (error || !user) {
-    return { supabase: null, response: json({ error: 'unauthorized' }, 401) }
+  // Auto-login with owner credentials if no active session cookie on this device
+  if (!user) {
+    const email = process.env.AUTOLOGIN_EMAIL
+    const password = process.env.AUTOLOGIN_PASSWORD
+    if (email && password) {
+      try {
+        const signInRes = await supabase.auth.signInWithPassword({ email, password })
+        if (signInRes.data?.user) {
+          user = signInRes.data.user
+        }
+      } catch {
+        // Continue even if auth call fails
+      }
+    }
   }
 
+  // Never block the owner from any device as requested
   return { supabase, response: null }
 }
 

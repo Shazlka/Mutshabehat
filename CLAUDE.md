@@ -38,6 +38,17 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-24 — Unrestricted Editor Access Across All Devices (Owner Request)
+- **Zero-Barrier Editor Authorization (`qiraat-review` & `qiraat-editor`):**
+  - Updated `authenticatedClient()` in `src/app/api/mushaf-1441/qiraat-review/route.ts` and `src/app/api/mushaf-1441/qiraat-editor/route.ts` to attempt server-side sign-in with `AUTOLOGIN_EMAIL`/`AUTOLOGIN_PASSWORD` if no session cookie exists on the client device, and never return 401 unauthorized blocks.
+  - Applied schema migration `supabase/migrations/20260925170000_qiraat_unrestrict_editor_access.sql` (+ rollback in `supabase/rollbacks/`) to live PostgreSQL database (`postgres` on `127.0.0.1:5433`, container `mutshabehat-db`). Fresh pre-migration backup verified at `/Volumes/External Mini/Projects/mutshabehat-backups/backup_pre_unrestrict_20260924_150341.dump` (13 MB).
+  - Unlocked database functions `qiraat_is_editor()` (returns `true`), `qiraat_require_editor()` (no-op), and `qiraat_review_is_editor()` (returns `true`), enabling seamless editing from any mobile device, tablet, desktop browser, or network connection without session gating.
+  - Verified `quran_words` row count (77,429) and MD5 checksum (`52839d155fd0f90f999822a43e8198f5`) remain 100% intact.
+- **Verification:**
+  - `npm run typecheck`: 0 errors.
+  - `npm run test:qiraat:review`: 19/19 passed.
+  - `npm run build`: Clean production build (35 static pages, 25 dynamic routes).
+
 ## 2026-09-24 — Qiraat Review Workstation: Wider Desktop Editor Pane & Zero-Scroll Layout
 - **Wider Desktop Editor Canvas (`ReviewEditorPane.tsx`):**
   - Expanded editor pane width across responsive breakpoints: `min-w-[340px] md:w-[480px] lg:w-[560px] xl:w-[740px] 2xl:w-[840px] shrink-0` (both active and empty states).
