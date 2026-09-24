@@ -1,4 +1,5 @@
 import type {
+  CreateEntryInput,
   EntryFields,
   HistoryTransaction,
   NarratorInput,
@@ -158,6 +159,17 @@ export function restoreEntry(
   deviceId: string,
 ): Promise<ReviewResult<ReviewRow>> {
   return patch('restore', row, deviceId)
+}
+
+export function createEntry(
+  entry: CreateEntryInput,
+  deviceId: string,
+): Promise<ReviewResult<ReviewRow>> {
+  return request<ReviewRow>(API_PATH, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'create', entry, deviceId }),
+  })
 }
 
 export function undoTransaction(

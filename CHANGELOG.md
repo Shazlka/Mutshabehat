@@ -9,6 +9,21 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-24 — Qiraat Review Workstation Redesign (applied to live & tested)
+- **High-Speed 2-Pane Workstation Architecture (`/mushaf-1441/review`):**
+  - **Right Pane (~65–72%):** Authentic Mushaf-1441 page layout matching `/mushaf-1441` with exact page geometry, 15-line grid, QCF V2 fonts loaded dynamically with Amiri fallback, SVG Surah header banners with gold gradient, cartouche, and medallion, Basmala lines, and margin headers/footers. Every word token mapped to canonical key `SSS:AAA:WWW`. Covered words highlighted with status colors (reviewed = green, unreviewed = amber, flagged = red), selected word with prominent outline ring. Unhighlighted words are fully clickable to create new entries. Independent scroll.
+  - **Left Pane (~28–35%):** Compact Single-Word Side Editor (`ReviewEditorPane.tsx`) replacing wide table and bottom drawer. Header shows word position breadcrumb and large Hafs word text in Quran font (`﴿...﴾`). Multi-variant pill switcher for words with 2+ entries. Instant 1-click `[✓ اعتماد]` button directly confirms and saves. Fast segmented toggle `[أصول] [فرش]`. Visible chip grid for 23 canonical Usul categories (`UsulRuleGrid.tsx`) with instant 1-click select and search filter. Farsh editor (`FarshFields.tsx`) with reading text and variant type chips (`تشكيل`, `حرف`, `زيادة`, `حذف`, `أخرى`).
+  - **Reader / Narrator Selection (`ReaderNarratorSelector.tsx`):** Zero dropdowns or comboboxes. Direct checkboxes and chips for all 10 Readers (`Q01`–`Q10`) and 20 Narrators in Arabic. Quick selection toolbar (`الكل`, `السبعة`, `الثلاثة`, `الكوفيون`, `المدنيان`, `مسح`). Reader checkbox toggles both narrators; partial narrator selection sets indeterminate state. Enforces Rule D8 guard for Hafs (`Q05-R02`: wajh >= 2 with required note).
+  - **State C (Missing Word Creation):** Clicking any unhighlighted Quran word on the Mushaf page auto-populates surah, ayah, word position, and uthmani text in `ReviewEditorPane`, allowing 1-click reader/narrator and category selection, and creates the locus + entry + authorities via `qiraat_review_create_entry` RPC.
+- **Database & Backend API:**
+  - Applied migration `supabase/migrations/20260925150000_qiraat_review_create_entry.sql` (+ rollback) to live PostgreSQL (`mutshabehat-db:5433`). Backup taken: `pre-qiraat-create-entry-20260924T045446Z.dump` (12 MB). Intact checksum on `quran_words`: `52839d155fd0f90f999822a43e8198f5` (77,429 rows).
+  - Updated API route `src/app/api/mushaf-1441/qiraat-review/route.ts` and `review-http.ts` with `validatePostBody` and `validateNarrators` supporting `action: 'create'`.
+- **Verification:**
+  - `npm run test:qiraat:review`: 19/19 tests passed (13 HTTP + 6 workstation tests).
+  - `npm run test:qiraat`: 44/44 passed.
+  - `npm run typecheck`: 0 errors.
+  - `npm run build`: Clean production build (35 static pages, 25 dynamic routes).
+
 ## 2026-09-24 — Qiraat export determinism, heap exhaustion fix, full audit, review triage & credential runbook (applied & deployed)
 - **Task 1 (Fixtures):** Corrected `endToken` string-to-integer types in `packages/qiraat-core/fixtures/pages/page-589.json` and `page-592.json`. Verified all 604 pages have 0 remaining string mismatches; `node packages/qiraat-core/validate.mjs` and `npm run test:qiraat` pass. Quranic text unmodified.
 - **Task 2 (Deterministic Export Migration — applied to live):** `supabase/migrations/20260925140000_qiraat_export_page_deterministic_order.sql` (+ rollback in `supabase/rollbacks/`). Added deterministic tiebreaker ordering to `qiraat_export_page` across outer entries, readings, attributions, evidence, flags, and notes, with soft-deletion filtering. Backup taken before apply: `pre-qiraat-task2-export-order-20260924T043511Z.dump` (12 MB). Applied to live DB (`mutshabehat-db:5433`): exit 0. Live determinism verified: 5 consecutive calls on pages 1, 245, 584 return byte-identical MD5 hashes (`9f4aa459598f69314ffa9c78851920d4`, `d2fc8a8ea8267c6610f824fd61e3665d`, `9e604af97231725dcfb68bec8d2805e1`). `quran_words` checksum verified identical: `52839d155fd0f90f999822a43e8198f5` (77,429 rows).

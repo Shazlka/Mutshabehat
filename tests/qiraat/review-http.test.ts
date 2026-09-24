@@ -250,6 +250,50 @@ test('validatePostBody accepts undo and validates action, txid, and deviceId', (
   assert.equal(validatePostBody({ action: 'undo', txid: 1, deviceId: 1 }).ok, false)
 })
 
+test('validatePostBody accepts create action and validates all entry fields', () => {
+  const valid = validatePostBody({
+    action: 'create',
+    deviceId: 'device-1',
+    entry: {
+      surah: 2,
+      ayah: 6,
+      startWord: 1,
+      kind: 'farsh',
+      readingText: 'أَنَّ',
+      narrators: [{ id: 'Q01-R01', wajhOrder: 1 }],
+    },
+  })
+  assert.equal(valid.ok, true)
+  if (valid.ok) {
+    assert.equal(valid.value.action, 'create')
+    assert.equal(valid.value.entry.readingText, 'أَنَّ')
+  }
+
+  // Missing readingText for farsh
+  assert.equal(validatePostBody({
+    action: 'create',
+    entry: {
+      surah: 2,
+      ayah: 6,
+      startWord: 1,
+      kind: 'farsh',
+      narrators: [{ id: 'Q01-R01' }],
+    },
+  }).ok, false)
+
+  // Missing categoryCode for usul
+  assert.equal(validatePostBody({
+    action: 'create',
+    entry: {
+      surah: 2,
+      ayah: 6,
+      startWord: 1,
+      kind: 'usul',
+      narrators: [{ id: 'Q01-R01' }],
+    },
+  }).ok, false)
+})
+
 test('mapReviewDatabaseError maps every defined database error row', () => {
   const cases: Array<[string, number, Record<string, unknown>]> = [
     ['unauthorized editor', 403, { error: 'forbidden' }],

@@ -14,7 +14,7 @@
     "mushaf:supabase:crud": "PATH=\"/opt/homebrew/opt/node@22/bin:$PATH\" node scripts/verify-mushaf1441-supabase-crud.mjs",
     "test:proxy": "tsx --test tests/proxy-autologin.test.mjs",
     "test:qiraat": "node packages/qiraat-core/validate.mjs && tsx --test packages/qiraat-core/engine.test.mjs && node scripts/validate-qiraat-data.mjs && npm run qiraat:frontend:validate",
-    "test:qiraat:review": "tsx --test tests/qiraat/review-http.test.ts",
+    "test:qiraat:review": "tsx --test tests/qiraat/review-http.test.ts tests/qiraat/review-workstation.test.ts",
     "qiraat:validate": "node scripts/validate-qiraat-data.mjs",
     "qiraat:audit": "node scripts/qiraat/audit-qiraat-pages.mjs",
     "qiraat:frontend:validate": "tsx scripts/qiraat/validate-qiraat-frontend.mts",

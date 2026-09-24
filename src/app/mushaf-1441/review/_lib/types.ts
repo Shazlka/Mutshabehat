@@ -85,6 +85,23 @@ export type HistoryChange = { table: string; rowId: string; op: 'INSERT' | 'UPDA
 export type HistoryTransaction = { txid: number; at: string; deviceId: string | null; undone: boolean; entryId: string | null; changes: HistoryChange[] }
 
 export type NarratorInput = { id: string; action?: string | null; wajhOrder?: number; wajhNote?: string | null }
+export type CreateEntryInput = {
+  surah: number
+  ayah: number
+  startWord: number
+  endAyah?: number
+  endWord?: number
+  kind: 'farsh' | 'usul'
+  readingText?: string
+  uthmaniText?: string | null
+  description?: string | null
+  performanceNote?: string | null
+  variantType?: string
+  categoryCode?: string
+  rulingText?: string | null
+  notes?: string | null
+  narrators: NarratorInput[]
+}
 export type EntryFields = Partial<{
   notes: string | null
   readingText: string

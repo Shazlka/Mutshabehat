@@ -1,22 +1,22 @@
 'use client'
 
-// Client screen for the Phase 4 qiraat review route.
+// High-speed Quran Qiraat review and database editing workstation.
 //
-// D9 — page text on the RIGHT, variant table on the LEFT: enforced structurally by DOM order
-// inside a `dir="rtl"` flex row (the first child sits at the inline start, i.e. the right edge,
-// in RTL). PagePane renders first; the table+editor column renders second.
+// 2-Pane Workstation Architecture:
+// - RIGHT PANE (~65-72%): Authentic Mushaf-1441 page layout with QCF V2 fonts, 15-line grid,
+//   SVG Surah banners, Basmala, and status highlights. Interactive word selection.
+// - LEFT PANE (~28-35%): Compact Single-Word Side Editor with direct 1-click confirmation,
+//   chips-based reader/narrator grid (10 readers, 20 narrators), fast Usul/Farsh toggle,
+//   and missing-word creation mode.
 //
-// D7 — instant save lives in RowEditor/NarratorEditor; this component only owns page-level state
-// (which page, which row is selected, filters, history) and reloads the row/page after a write.
+// Both panes scroll independently.
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import type { CreateEntryInput, EntryFields, NarratorInput, ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
 import HistoryPanel from './HistoryPanel'
-import PagePane from './PagePane'
+import ReviewMushafPane, { canonicalKeyForWord } from './ReviewMushafPane'
+import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
 import ReviewNav from './ReviewNav'
-import RowEditor from './RowEditor'
-import { filterReviewRows, type KindFilter, type StatusFilter } from './statusMeta'
-import VariantTable from './VariantTable'
 import * as reviewApi from '../_lib/api'
 
 const MIN_PAGE = 1
@@ -40,16 +40,23 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   const [overview, setOverview] = useState<ReviewOverview | null>(null)
 
+  // Selection state
+  const [selectedWordKey, setSelectedWordKey] = useState<string | null>(null)
+  const [selectedWordMeta, setSelectedWordMeta] = useState<WordMeta | null>(null)
   const [selectedRowId, setSelectedRowId] = useState<string | null>(null)
   const [hoveredRowId, setHoveredRowId] = useState<string | null>(null)
 
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
-  const [kindFilter, setKindFilter] = useState<KindFilter>('all')
+  // New entry draft (for State C: unhighlighted words)
+  const [newEntryDraft, setNewEntryDraft] = useState<CreateEntryInput | null>(null)
+
+  // Feedback & saving state
+  const [isSaving, setIsSaving] = useState(false)
+  const [saveMessage, setSaveMessage] = useState<string | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [undoBanner, setUndoBanner] = useState<{ txid?: number; message: string } | null>(null)
 
   const [historyOpen, setHistoryOpen] = useState(false)
   const [deviceId, setDeviceId] = useState('')
-
-  const rowRefs = useRef(new Map<string, HTMLButtonElement>())
 
   useEffect(() => {
     setDeviceId(reviewApi.getDeviceId())
@@ -73,7 +80,6 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     if (result.ok) setOverview(result.data)
   }, [])
 
-  // Initial load.
   useEffect(() => {
     void loadPage(pageNumber)
     void loadOverview()
@@ -84,8 +90,13 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     (target: number) => {
       const clamped = clampPage(target)
       setPageNumber(clamped)
+      setSelectedWordKey(null)
+      setSelectedWordMeta(null)
       setSelectedRowId(null)
+      setNewEntryDraft(null)
       setHoveredRowId(null)
+      setErrorMessage(null)
+      setSaveMessage(null)
       void loadPage(clamped)
       if (typeof window !== 'undefined') {
         const url = new URL(window.location.href)
@@ -108,42 +119,225 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       const rows = exists
         ? current.rows.map((r) => (r.entryId === row.entryId ? row : r))
         : [...current.rows, row]
-      return { ...current, rows }
+
+      // Recompute stats
+      const total = rows.filter((r) => !r.deleted).length
+      const unreviewed = rows.filter((r) => !r.deleted && r.reviewStatus === 'unreviewed').length
+      const reviewed = rows.filter((r) => !r.deleted && r.reviewStatus === 'reviewed').length
+      const flagged = rows.filter((r) => !r.deleted && r.reviewStatus === 'flagged').length
+      const deleted = rows.filter((r) => r.deleted).length
+
+      return { ...current, rows, stats: { total, unreviewed, reviewed, flagged, deleted } }
     })
     void loadOverview()
   }
 
-  const filteredRows = useMemo(
-    () => (page ? filterReviewRows(page.rows, statusFilter, kindFilter) : []),
-    [page, statusFilter, kindFilter]
+  // Active rows for the currently selected word
+  const activeRowsForWord = useMemo(() => {
+    if (!page || !selectedWordKey) return []
+    return page.rows.filter(
+      (row) => !row.deleted && row.startKey <= selectedWordKey && selectedWordKey <= row.endKey
+    )
+  }, [page, selectedWordKey])
+
+  // Currently selected row
+  const selectedRow = useMemo(() => {
+    if (!page) return null
+    if (selectedRowId) {
+      return page.rows.find((row) => row.entryId === selectedRowId && !row.deleted) ?? null
+    }
+    return activeRowsForWord[0] ?? null
+  }, [page, selectedRowId, activeRowsForWord])
+
+  // Handle word selection on the authentic Mushaf
+  const handleSelectWord = useCallback(
+    (key: string, meta: WordMeta) => {
+      setSelectedWordKey(key)
+      setSelectedWordMeta(meta)
+      setErrorMessage(null)
+      setSaveMessage(null)
+
+      if (!page) return
+      const covering = page.rows.filter(
+        (r) => !r.deleted && r.startKey <= key && key <= r.endKey
+      )
+
+      if (covering.length > 0) {
+        // State A / B: Existing entry found
+        setSelectedRowId(covering[0].entryId)
+        setNewEntryDraft(null)
+      } else {
+        // State C: Normal unhighlighted word -> initialize Add New Entry mode
+        setSelectedRowId(null)
+        setNewEntryDraft({
+          surah: meta.surah,
+          ayah: meta.ayah,
+          startWord: meta.word,
+          endAyah: meta.ayah,
+          endWord: meta.word,
+          kind: 'farsh',
+          readingText: meta.text,
+          uthmaniText: meta.text,
+          narrators: [],
+        })
+      }
+    },
+    [page]
   )
 
-  const selectedRow = page?.rows.find((row) => row.entryId === selectedRowId) ?? null
+  // Start new entry for a word (even if other variants already exist on it)
+  const handleStartNewEntry = useCallback((meta: WordMeta) => {
+    setSelectedRowId(null)
+    setNewEntryDraft({
+      surah: meta.surah,
+      ayah: meta.ayah,
+      startWord: meta.word,
+      endAyah: meta.ayah,
+      endWord: meta.word,
+      kind: 'farsh',
+      readingText: meta.text,
+      uthmaniText: meta.text,
+      narrators: [],
+    })
+  }, [])
 
-  function selectRow(row: ReviewRow) {
-    setSelectedRowId(row.entryId)
-  }
+  const handleCancelNewEntry = useCallback(() => {
+    setNewEntryDraft(null)
+    if (activeRowsForWord.length > 0) {
+      setSelectedRowId(activeRowsForWord[0].entryId)
+    } else {
+      setSelectedWordKey(null)
+      setSelectedWordMeta(null)
+    }
+  }, [activeRowsForWord])
 
-  function selectWord(key: string) {
-    if (!page) return
-    const covering = page.rows.filter((row) => !row.deleted && row.startKey <= key && key <= row.endKey)
-    if (!covering.length) return
-    setSelectedRowId(covering[0].entryId)
-  }
+  // 1-Click Confirm Row
+  const handleConfirmRow = useCallback(
+    async (row: ReviewRow) => {
+      if (!deviceId) return
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
 
-  useEffect(() => {
-    if (!selectedRowId) return
-    const el = rowRefs.current.get(selectedRowId)
-    el?.scrollIntoView({ block: 'nearest' })
-  }, [selectedRowId])
+      const result = await reviewApi.setStatus(row, 'reviewed', null, deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        applyRowUpdate(result.data)
+        setSaveMessage('تم اعتماد الموضع بنجاح ✓')
+        setTimeout(() => setSaveMessage(null), 3000)
+      } else {
+        setErrorMessage(result.error.messageAr ?? result.error.message)
+      }
+    },
+    [deviceId]
+  )
 
-  // Keyboard shortcuts: <- -> pages, j/k rows, r = reviewed, f = flagged.
+  // Flag Row
+  const handleFlagRow = useCallback(
+    async (row: ReviewRow) => {
+      if (!deviceId) return
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
+
+      const result = await reviewApi.setStatus(row, 'flagged', null, deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        applyRowUpdate(result.data)
+        setSaveMessage('تم تعليم الموضع للمراجعة ⚑')
+        setTimeout(() => setSaveMessage(null), 3000)
+      } else {
+        setErrorMessage(result.error.messageAr ?? result.error.message)
+      }
+    },
+    [deviceId]
+  )
+
+  // Save Row Edits (fields + narrators)
+  const handleSaveRowEdits = useCallback(
+    async (row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]) => {
+      if (!deviceId) return
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
+
+      // 1. Update entry fields
+      const updateRes = await reviewApi.updateEntry(row, fields, deviceId)
+      if (!updateRes.ok) {
+        setIsSaving(false)
+        setErrorMessage(updateRes.error.messageAr ?? updateRes.error.message)
+        return
+      }
+
+      // 2. Update narrators
+      const updatedRow = updateRes.data
+      const narratorsRes = await reviewApi.setNarrators(updatedRow, narrators, deviceId)
+      setIsSaving(false)
+      if (!narratorsRes.ok) {
+        applyRowUpdate(updatedRow)
+        setErrorMessage(narratorsRes.error.messageAr ?? narratorsRes.error.message)
+        return
+      }
+
+      applyRowUpdate(narratorsRes.data)
+      setSaveMessage('تم حفظ التعديلات بنجاح ✓')
+      setTimeout(() => setSaveMessage(null), 3000)
+    },
+    [deviceId]
+  )
+
+  // Create New Entry (State C)
+  const handleCreateNewEntry = useCallback(
+    async (draft: CreateEntryInput) => {
+      if (!deviceId) return
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
+
+      const result = await reviewApi.createEntry(draft, deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        applyRowUpdate(result.data)
+        setSelectedRowId(result.data.entryId)
+        setNewEntryDraft(null)
+        setSaveMessage('تمت إضافة القراءة بنجاح إلى قاعدة البيانات ✓')
+        setTimeout(() => setSaveMessage(null), 4000)
+      } else {
+        setErrorMessage(result.error.messageAr ?? result.error.message)
+      }
+    },
+    [deviceId]
+  )
+
+  // Delete Row (Soft delete with undo)
+  const handleDeleteRow = useCallback(
+    async (row: ReviewRow) => {
+      if (!deviceId) return
+      if (!window.confirm('هل أنت متأكد من حذف هذا الموضع؟ يمكن التراجع بعد الحذف.')) return
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
+
+      const result = await reviewApi.deleteEntry(row, 'حذف من شاشة المراجعة', deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        applyRowUpdate(result.data)
+        setSelectedRowId(null)
+        setUndoBanner({ message: 'تم حذف الموضع بنجاح. يمكنك استرجاعه من سجل التعديلات.' })
+        setTimeout(() => setUndoBanner(null), 8000)
+      } else {
+        setErrorMessage(result.error.messageAr ?? result.error.message)
+      }
+    },
+    [deviceId]
+  )
+
+  // Keyboard shortcuts
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (isEditableTarget(event.target)) return
       if (event.metaKey || event.ctrlKey || event.altKey) return
 
-      // Arabic mushaf convention: the next page is to the left.
       if (event.key === 'ArrowLeft') {
         event.preventDefault()
         goToPage(pageNumber + 1)
@@ -154,28 +348,27 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         goToPage(pageNumber - 1)
         return
       }
-      if (event.key === 'j' || event.key === 'k') {
-        if (!filteredRows.length) return
+      if (event.key === 'r' && selectedRow && deviceId) {
         event.preventDefault()
-        const currentIndex = filteredRows.findIndex((row) => row.entryId === selectedRowId)
-        const nextIndex =
-          event.key === 'j'
-            ? Math.min(filteredRows.length - 1, currentIndex + 1)
-            : Math.max(0, currentIndex === -1 ? 0 : currentIndex - 1)
-        setSelectedRowId(filteredRows[nextIndex].entryId)
+        void handleConfirmRow(selectedRow)
         return
       }
-      if ((event.key === 'r' || event.key === 'f') && selectedRow && deviceId) {
+      if (event.key === 'f' && selectedRow && deviceId) {
         event.preventDefault()
-        const status = event.key === 'r' ? 'reviewed' : 'flagged'
-        void reviewApi.setStatus(selectedRow, status, null, deviceId).then((result) => {
-          if (result.ok) applyRowUpdate(result.data)
-        })
+        void handleFlagRow(selectedRow)
+        return
+      }
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setSelectedWordKey(null)
+        setSelectedWordMeta(null)
+        setSelectedRowId(null)
+        setNewEntryDraft(null)
       }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [pageNumber, goToPage, filteredRows, selectedRowId, selectedRow, deviceId])
+  }, [pageNumber, goToPage, selectedRow, deviceId, handleConfirmRow, handleFlagRow])
 
   return (
     <div dir="rtl" lang="ar" className="flex h-dvh flex-col bg-[var(--color-paper)]">
@@ -187,6 +380,20 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         onGoToPage={goToPage}
         onToggleHistory={() => setHistoryOpen((open) => !open)}
       />
+
+      {/* Undo Notification Banner */}
+      {undoBanner ? (
+        <div className="flex items-center justify-between bg-amber-500 px-4 py-1.5 text-xs font-bold text-white shadow-sm">
+          <span>{undoBanner.message}</span>
+          <button
+            type="button"
+            onClick={() => setHistoryOpen(true)}
+            className="rounded bg-white/20 px-2 py-0.5 hover:bg-white/30"
+          >
+            فتح سجل التعديلات
+          </button>
+        </div>
+      ) : null}
 
       <div className="flex min-h-0 flex-1 overflow-hidden">
         {pageLoading || !page ? (
@@ -204,42 +411,38 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
           </div>
         ) : (
           <>
-            <PagePane
+            {/* RIGHT PANE: Authentic Mushaf-1441 Layout */}
+            <ReviewMushafPane
               page={page}
+              selectedWordKey={selectedWordKey}
               selectedRow={selectedRow}
               hoveredRowId={hoveredRowId}
-              onSelectWord={selectWord}
+              onSelectWord={handleSelectWord}
               onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
             />
 
-            <div className="flex w-full max-w-[560px] shrink-0 flex-col overflow-hidden border-e border-[var(--color-border)]">
-              <VariantTable
-                page={page}
-                selectedRowId={selectedRowId}
-                hoveredRowId={hoveredRowId}
-                statusFilter={statusFilter}
-                kindFilter={kindFilter}
-                onStatusFilterChange={setStatusFilter}
-                onKindFilterChange={setKindFilter}
-                onSelectRow={selectRow}
-                onHoverRow={setHoveredRowId}
-                registerRowRef={(entryId, el) => {
-                  if (el) rowRefs.current.set(entryId, el)
-                  else rowRefs.current.delete(entryId)
-                }}
-              />
-              {selectedRow ? (
-                <RowEditor
-                  row={selectedRow}
-                  page={page}
-                  deviceId={deviceId}
-                  onRowUpdated={applyRowUpdate}
-                  onReloadPage={reloadCurrentPage}
-                  onClose={() => setSelectedRowId(null)}
-                />
-              ) : null}
-            </div>
+            {/* LEFT PANE: Compact High-Speed Single-Word Editor */}
+            <ReviewEditorPane
+              page={page}
+              selectedWordKey={selectedWordKey}
+              selectedWordMeta={selectedWordMeta}
+              selectedRow={selectedRow}
+              activeRowsForWord={activeRowsForWord}
+              newEntryDraft={newEntryDraft}
+              onSelectRow={(row) => setSelectedRowId(row.entryId)}
+              onStartNewEntry={handleStartNewEntry}
+              onCancelNewEntry={handleCancelNewEntry}
+              onConfirmRow={handleConfirmRow}
+              onFlagRow={handleFlagRow}
+              onSaveRowEdits={handleSaveRowEdits}
+              onDeleteRow={handleDeleteRow}
+              onCreateNewEntry={handleCreateNewEntry}
+              isSaving={isSaving}
+              saveMessage={saveMessage}
+              errorMessage={errorMessage}
+            />
 
+            {/* History & Undo Side Drawer */}
             {historyOpen ? (
               <HistoryPanel
                 page={pageNumber}

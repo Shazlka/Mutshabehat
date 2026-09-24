@@ -159,12 +159,24 @@ export async function POST(request: NextRequest) {
     const { supabase, response } = await authenticatedClient()
     if (response || !supabase) return response!
 
-    const result = await supabase.rpc('qiraat_review_undo', {
-      p_txid: body.value.txid,
-      p_device_id: body.value.deviceId,
+    if (body.value.action === 'undo') {
+      const result = await supabase.rpc('qiraat_review_undo', {
+        p_txid: body.value.txid,
+        p_device_id: body.value.deviceId,
+      })
+      if (result.error) return databaseError(result.error.message)
+      return json({ undone: Number(result.data ?? 0) })
+    }
+
+    // body.value.action === 'create'
+    const result = await supabase.rpc('qiraat_review_create_entry', {
+      p: {
+        ...body.value.entry,
+        deviceId: body.value.deviceId,
+      },
     })
     if (result.error) return databaseError(result.error.message)
-    return json({ undone: Number(result.data ?? 0) })
+    return json(result.data ?? {}, 201)
   } catch (error) {
     return databaseError(error instanceof Error ? error.message : 'unknown qiraat review error')
   }

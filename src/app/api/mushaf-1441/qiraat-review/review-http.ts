@@ -69,11 +69,40 @@ export type ValidatedPatch =
       deviceId?: string | null
     }
 
-export type ValidatedPost = {
-  action: 'undo'
-  txid: number
-  deviceId?: string | null
+export type CreateEntryPayload = {
+  surah: number
+  ayah: number
+  startWord: number
+  endAyah?: number
+  endWord?: number
+  kind: 'farsh' | 'usul'
+  readingText?: string
+  uthmaniText?: string | null
+  description?: string | null
+  performanceNote?: string | null
+  variantType?: string
+  categoryCode?: string
+  rulingText?: string | null
+  notes?: string | null
+  narrators: Array<{
+    id: string
+    action?: string | null
+    wajhOrder?: number
+    wajhNote?: string | null
+  }>
 }
+
+export type ValidatedPost =
+  | {
+      action: 'undo'
+      txid: number
+      deviceId?: string | null
+    }
+  | {
+      action: 'create'
+      entry: CreateEntryPayload
+      deviceId?: string | null
+    }
 
 const PATCH_ACTIONS = ['status', 'update', 'narrators', 'delete', 'restore'] as const
 const STATUSES = ['unreviewed', 'reviewed', 'flagged'] as const
@@ -209,6 +238,66 @@ export function validateGetQuery(input: GetQueryInput): ValidationResult<GetQuer
   }
 }
 
+function validateNarrators(
+  rawNarrators: unknown,
+): Array<{
+  id: string
+  action?: string | null
+  wajhOrder?: number
+  wajhNote?: string | null
+}> | ValidationFailure {
+  if (!Array.isArray(rawNarrators) || rawNarrators.length < 1 || rawNarrators.length > 20) {
+    return failure('narrators must contain between 1 and 20 items')
+  }
+
+  const narrators: Array<{
+    id: string
+    action?: string | null
+    wajhOrder?: number
+    wajhNote?: string | null
+  }> = []
+
+  for (const narrator of rawNarrators) {
+    if (!isPlainObject(narrator)) return failure('each narrator must be an object')
+
+    const id = validateNonEmptyString(narrator.id, 'narrator id', MAX_SHORT_CODE_LENGTH)
+    if (isFailure(id)) return id
+
+    let narratorAction: string | null | undefined
+    if (hasOwn(narrator, 'action')) {
+      const actionText = validateOptionalText(narrator.action, 'narrator action')
+      if (isFailure(actionText)) return actionText
+      narratorAction = actionText
+    }
+
+    if (hasOwn(narrator, 'wajhOrder')) {
+      if (
+        typeof narrator.wajhOrder !== 'number' ||
+        !Number.isInteger(narrator.wajhOrder) ||
+        narrator.wajhOrder < 1
+      ) {
+        return failure('wajhOrder must be a positive integer')
+      }
+    }
+
+    let wajhNote: string | null | undefined
+    if (hasOwn(narrator, 'wajhNote')) {
+      const wajhNoteResult = validateOptionalText(narrator.wajhNote, 'wajhNote')
+      if (isFailure(wajhNoteResult)) return wajhNoteResult
+      wajhNote = wajhNoteResult
+    }
+
+    narrators.push({
+      id,
+      ...(hasOwn(narrator, 'action') ? { action: narratorAction } : {}),
+      ...(hasOwn(narrator, 'wajhOrder') ? { wajhOrder: narrator.wajhOrder as number } : {}),
+      ...(hasOwn(narrator, 'wajhNote') ? { wajhNote } : {}),
+    })
+  }
+
+  return narrators
+}
+
 export function validatePatchBody(input: unknown): ValidationResult<ValidatedPatch> {
   if (!isPlainObject(input)) return failure('request body must be an object')
 
@@ -252,54 +341,8 @@ export function validatePatchBody(input: unknown): ValidationResult<ValidatedPat
   }
 
   if (action === 'narrators') {
-    if (!Array.isArray(input.narrators) || input.narrators.length < 1 || input.narrators.length > 20) {
-      return failure('narrators must contain between 1 and 20 items')
-    }
-
-    const narrators: Array<{
-      id: string
-      action?: string | null
-      wajhOrder?: number
-      wajhNote?: string | null
-    }> = []
-
-    for (const narrator of input.narrators) {
-      if (!isPlainObject(narrator)) return failure('each narrator must be an object')
-
-      const id = validateNonEmptyString(narrator.id, 'narrator id', MAX_SHORT_CODE_LENGTH)
-      if (isFailure(id)) return id
-
-      let narratorAction: string | null | undefined
-      if (hasOwn(narrator, 'action')) {
-        const actionText = validateOptionalText(narrator.action, 'narrator action')
-        if (isFailure(actionText)) return actionText
-        narratorAction = actionText
-      }
-
-      if (hasOwn(narrator, 'wajhOrder')) {
-        if (
-          typeof narrator.wajhOrder !== 'number' ||
-          !Number.isInteger(narrator.wajhOrder) ||
-          narrator.wajhOrder < 1
-        ) {
-          return failure('wajhOrder must be a positive integer')
-        }
-      }
-
-      let wajhNote: string | null | undefined
-      if (hasOwn(narrator, 'wajhNote')) {
-        const wajhNoteResult = validateOptionalText(narrator.wajhNote, 'wajhNote')
-        if (isFailure(wajhNoteResult)) return wajhNoteResult
-        wajhNote = wajhNoteResult
-      }
-
-      narrators.push({
-        id,
-        ...(hasOwn(narrator, 'action') ? { action: narratorAction } : {}),
-        ...(hasOwn(narrator, 'wajhOrder') ? { wajhOrder: narrator.wajhOrder as number } : {}),
-        ...(hasOwn(narrator, 'wajhNote') ? { wajhNote } : {}),
-      })
-    }
+    const narrators = validateNarrators(input.narrators)
+    if (isFailure(narrators)) return narrators
 
     return { ok: true, value: { action, entryId, version, deviceId, narrators } }
   }
@@ -314,26 +357,129 @@ export function validatePatchBody(input: unknown): ValidationResult<ValidatedPat
 }
 
 export function validatePostBody(input: unknown): ValidationResult<ValidatedPost> {
-  if (!isPlainObject(input) || input.action !== 'undo') {
-    return failure('action must be undo')
+  if (!isPlainObject(input)) {
+    return failure('body must be an object')
   }
 
-  const rawTxid = input.txid
-  const txid =
-    typeof rawTxid === 'number'
-      ? rawTxid
-      : typeof rawTxid === 'string' && rawTxid.trim() !== ''
-        ? Number(rawTxid)
-        : NaN
-
-  if (!Number.isSafeInteger(txid) || txid < 1) {
-    return failure('txid must be a positive integer')
+  const action = input.action
+  if (action !== 'undo' && action !== 'create') {
+    return failure('action must be undo or create')
   }
 
   const deviceId = validateDeviceId(input.deviceId)
   if (isFailure(deviceId)) return deviceId
 
-  return { ok: true, value: { action: 'undo', txid, deviceId } }
+  if (action === 'undo') {
+    const rawTxid = input.txid
+    const txid =
+      typeof rawTxid === 'number'
+        ? rawTxid
+        : typeof rawTxid === 'string' && rawTxid.trim() !== ''
+          ? Number(rawTxid)
+          : NaN
+
+    if (!Number.isSafeInteger(txid) || txid < 1) {
+      return failure('txid must be a positive integer')
+    }
+
+    return { ok: true, value: { action: 'undo', txid, deviceId } }
+  }
+
+  // action === 'create'
+  const entry = input.entry
+  if (!isPlainObject(entry)) {
+    return failure('entry must be an object')
+  }
+
+  const surah = Number(entry.surah)
+  if (!Number.isInteger(surah) || surah < 1 || surah > 114) {
+    return failure('surah must be an integer between 1 and 114')
+  }
+
+  const ayah = Number(entry.ayah)
+  if (!Number.isInteger(ayah) || ayah < 1) {
+    return failure('ayah must be a positive integer')
+  }
+
+  const startWord = Number(entry.startWord)
+  if (!Number.isInteger(startWord) || startWord < 1) {
+    return failure('startWord must be a positive integer')
+  }
+
+  const endAyah = entry.endAyah !== undefined ? Number(entry.endAyah) : ayah
+  if (!Number.isInteger(endAyah) || endAyah < ayah) {
+    return failure('endAyah must be an integer >= ayah')
+  }
+
+  const endWord = entry.endWord !== undefined ? Number(entry.endWord) : startWord
+  if (!Number.isInteger(endWord) || endWord < 1) {
+    return failure('endWord must be a positive integer')
+  }
+
+  const kind = entry.kind
+  if (kind !== 'farsh' && kind !== 'usul') {
+    return failure('kind must be farsh or usul')
+  }
+
+  let readingText: string | undefined
+  if (kind === 'farsh') {
+    const validatedReading = validateNonEmptyString(entry.readingText, 'readingText', MAX_FREE_TEXT_LENGTH)
+    if (isFailure(validatedReading)) return validatedReading
+    readingText = validatedReading
+  }
+
+  let categoryCode: string | undefined
+  if (kind === 'usul') {
+    const validatedCategory = validateNonEmptyString(entry.categoryCode, 'categoryCode', MAX_SHORT_CODE_LENGTH)
+    if (isFailure(validatedCategory)) return validatedCategory
+    categoryCode = validatedCategory
+  }
+
+  const validatedNarrators = validateNarrators(entry.narrators)
+  if (isFailure(validatedNarrators)) return validatedNarrators
+
+  const uthmaniText = validateOptionalText(entry.uthmaniText, 'uthmaniText')
+  if (isFailure(uthmaniText)) return uthmaniText
+
+  const description = validateOptionalText(entry.description, 'description')
+  if (isFailure(description)) return description
+
+  const performanceNote = validateOptionalText(entry.performanceNote, 'performanceNote')
+  if (isFailure(performanceNote)) return performanceNote
+
+  const variantType = entry.variantType !== undefined ? validateOptionalText(entry.variantType, 'variantType') : undefined
+  if (isFailure(variantType)) return variantType
+
+  const rulingText = validateOptionalText(entry.rulingText, 'rulingText')
+  if (isFailure(rulingText)) return rulingText
+
+  const notes = validateOptionalText(entry.notes, 'notes')
+  if (isFailure(notes)) return notes
+
+  return {
+    ok: true,
+    value: {
+      action: 'create',
+      deviceId,
+      entry: {
+        surah,
+        ayah,
+        startWord,
+        endAyah,
+        endWord,
+        kind,
+        readingText,
+        categoryCode,
+        narrators: validatedNarrators,
+        uthmaniText,
+        description,
+        performanceNote,
+        variantType: variantType ?? undefined,
+        rulingText,
+        notes,
+      },
+    },
+  }
 }
 
 export function mapReviewDatabaseError(message: string): {
