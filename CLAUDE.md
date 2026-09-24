@@ -71,11 +71,28 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   widened to ~840px by an earlier commit; not re-measured here), and the bulk-apply occurrence
   preview's 4-way تعارض/يحتاج مراجعة classification (implemented as a simpler 2-way
   add/exists check — see the implementation doc for why).
-- **DB migration: written, reviewed, NOT applied.** This sandbox has no connectivity to the
-  self-hosted Postgres; someone with Mac Mini/Docker access must back up and apply it per
-  `CLAUDE.md`, then walk `tests/qiraat_review_phase4_bulk.sql` by hand (includes the mandatory
-  `quran_words` checksum safety check). See `docs/qiraat/review-editor-phase4-implementation.md`
-  for the full feature-by-feature status and honest test/build results.
+- **DB migration: written, reviewed, functionally verified on a reconstructed scratch schema, NOT
+  applied to the live database.** This sandbox has no connectivity to the self-hosted Postgres, so
+  the migration could not be applied there; someone with Mac Mini/Docker access must back it up and
+  apply it per `CLAUDE.md`. It WAS, however, actually run: the full Phase 4 migration chain
+  (`20260917120000` through `20260925170000`) was replayed on a local scratch Postgres 16 to
+  reconstruct the real `qiraat_entries`/`qiraat_loci`/`quran_words` schema, this migration applied
+  cleanly on top, and every new RPC was exercised live with seeded data — `qiraat_review_bulk_delete`
+  (all-or-nothing on a deliberately stale version, then a clean two-row soft-delete),
+  `qiraat_review_find_same_word` / `qiraat_review_copy_entry` (found a prior VERIFIED occurrence of
+  الله, copied it onto a fresh word position as an independent `unreviewed`/`REVIEWED` entry, distinct
+  id), `qiraat_review_find_occurrences` / `qiraat_review_bulk_apply` (added 1, skipped 2 pre-existing,
+  then a second run skipped all 3 — idempotent), and the `applies_wasl`/`applies_waqf` CHECK
+  constraint (rejects both-false). `quran_words` count and checksum were confirmed byte-identical
+  before and after every step. Verification also caught and fixed two regressions in the original
+  subagent pass before this landed: one test assertion whose Arabic literal had its combining marks
+  (fatha/shadda) in a different Unicode order than the source string it compared against — passed
+  `tsc`, failed at runtime, invisible on screen — and one newly introduced
+  `react-hooks/set-state-in-effect` lint error (moved to a render-time reset per
+  https://react.dev/learn/you-might-not-need-an-effect; net lint delta vs. the pre-existing baseline
+  on these files is now zero new errors). `npm run typecheck`, `test:qiraat` (44 tests),
+  `test:qiraat:review` (19/19), all 7 `mushaf:validate` checks, and `npm run build` all pass. See
+  `docs/qiraat/review-editor-phase4-implementation.md` for the full feature-by-feature status.
 
 ## 2026-09-24 — Review Editor workflow (GPT-6 Codex)
 - Added transactional OCC-checked multi soft-delete, same-word verified lookup and safe bulk preview/apply through authenticated editor RPCs.

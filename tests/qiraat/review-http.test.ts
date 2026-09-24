@@ -265,7 +265,7 @@ test('validatePostBody accepts create action and validates all entry fields', ()
   })
   assert.equal(valid.ok, true)
   if (valid.ok && valid.value.action === 'create') {
-    assert.equal(valid.value.entry.readingText, 'أَنَّ')
+    assert.equal(valid.value.entry.readingText, 'أَنَّ')
   }
 
   // Missing readingText for farsh

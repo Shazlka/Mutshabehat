@@ -153,7 +153,11 @@ export default function ReviewEditorPane({
   }, [newEntryDraft])
 
   // Reset the transient bulk/copy panels whenever the selected word changes.
-  useEffect(() => {
+  // Adjusted during render (not in an effect) per https://react.dev/learn/you-might-not-need-an-effect
+  // — this avoids an extra commit and the react-hooks/set-state-in-effect lint rule.
+  const [resetForWordKey, setResetForWordKey] = useState(selectedWordKey)
+  if (resetForWordKey !== selectedWordKey) {
+    setResetForWordKey(selectedWordKey)
     setMultiSelectMode(false)
     setSelectedForDelete(new Set())
     setSameWordOpen(false)
@@ -161,7 +165,7 @@ export default function ReviewEditorPane({
     setBulkApplyOpen(false)
     setOccurrences(null)
     setSelectedOccurrences(new Set())
-  }, [selectedWordKey])
+  }
 
   // Context metadata
   const currentSurahNumber = selectedRow?.surah ?? selectedWordMeta?.surah ?? null
