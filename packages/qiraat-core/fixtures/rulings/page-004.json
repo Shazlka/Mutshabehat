@@ -1,77 +1,5 @@
 [
   {
-    "id": "r-p004-001-1",
-    "pageNumber": 4,
-    "category": "SILAT_HA",
-    "categoryAr": "صلة هاء الكناية",
-    "color": "#0D9488",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 19,
-    "startToken": 5,
-    "endToken": 5,
-    "endAyah": 19,
-    "baseText": "فِيهِ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q02",
-        "action": "صلة هاء الكناية"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q02-R01",
-        "action": "صلة هاء الكناية",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q02-R02",
-        "action": "صلة هاء الكناية",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-001-2",
-    "pageNumber": 4,
-    "category": "SILAT_HA",
-    "categoryAr": "صلة هاء الكناية",
-    "color": "#0D9488",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 20,
-    "startToken": 9,
-    "endToken": 9,
-    "endAyah": 20,
-    "baseText": "فِيهِ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q02",
-        "action": "صلة هاء الكناية"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q02-R01",
-        "action": "صلة هاء الكناية",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q02-R02",
-        "action": "صلة هاء الكناية",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
     "id": "r-p004-002-1",
     "pageNumber": 4,
     "category": "TARQIQ_RA",
@@ -99,163 +27,174 @@
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "createdAt": "2026-09-24T06:10:40.752934+00:00",
+    "updatedAt": "2026-09-24T06:10:40.752934+00:00"
   },
   {
-    "id": "r-p004-003-1",
+    "id": "r-p004-001-1",
     "pageNumber": 4,
-    "category": "TARQIQ_RA",
-    "categoryAr": "ترقيق الراءات",
-    "color": "#B45309",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 20,
-    "startToken": 25,
-    "endToken": 25,
-    "endAyah": 20,
-    "baseText": "قَدِيرٌۭ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q01-R02",
-        "action": "ترقيق الراء"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q01-R02",
-        "action": "ترقيق الراء",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-004-1",
-    "pageNumber": 4,
-    "category": "TARQIQ_RA",
-    "categoryAr": "ترقيق الراءات",
-    "color": "#B45309",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 22,
-    "startToken": 5,
-    "endToken": 5,
-    "endAyah": 22,
-    "baseText": "فِرَٰشًۭا",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q01-R02",
-        "action": "ترقيق الراء"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q01-R02",
-        "action": "ترقيق الراء",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-005-1",
-    "pageNumber": 4,
-    "category": "TAGHLIZ_LAM",
-    "categoryAr": "تغليظ اللامات",
-    "color": "#B45309",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 20,
-    "startToken": 11,
-    "endToken": 11,
-    "endAyah": 20,
-    "baseText": "أَظْلَمَ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q01-R02",
-        "action": "تغليظ اللام"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q01-R02",
-        "action": "تغليظ اللام",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-006-1",
-    "pageNumber": 4,
-    "category": "MADD_BADAL",
-    "categoryAr": "مد البدل",
-    "color": "#2563EB",
+    "category": "SILAT_HA",
+    "categoryAr": "صلة هاء الكناية",
+    "color": "#0D9488",
     "wordAnchored": true,
     "surah": 2,
     "ayah": 19,
-    "startToken": 12,
-    "endToken": 12,
+    "startToken": 5,
+    "endToken": 5,
     "endAyah": 19,
-    "baseText": "ءَاذَانِهِم",
+    "baseText": "فِيهِ",
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q01-R02",
-        "action": "مد البدل"
+        "authorityId": "Q02-R01",
+        "action": "صلة هاء الكناية"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "صلة هاء الكناية"
       }
     ],
     "readings": [
       {
-        "readingId": "Q01-R02",
-        "action": "مد البدل",
+        "readingId": "Q02-R01",
+        "action": "صلة هاء الكناية",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "صلة هاء الكناية",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "createdAt": "2026-09-24T06:10:33.364383+00:00",
+    "updatedAt": "2026-09-24T06:10:33.364383+00:00"
   },
   {
-    "id": "r-p004-007-1",
+    "id": "ent-r-p004-018-1-w6-Q06-R01",
     "pageNumber": 4,
-    "category": "MADD_LIN",
-    "categoryAr": "مد اللين المهموز",
-    "color": "#2563EB",
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
     "wordAnchored": true,
     "surah": 2,
-    "ayah": 20,
-    "startToken": 24,
-    "endToken": 24,
-    "endAyah": 20,
-    "baseText": "شَىْءٍۢ",
-    "verificationStatus": "REVIEWED",
+    "ayah": 19,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 19,
+    "baseText": "ظُلُمَـٰتٌۭ",
+    "verificationStatus": "EXTRACTED",
     "attribution": [
       {
-        "authorityId": "Q01-R02",
-        "action": "مد اللين المهموز"
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q01-R02",
-        "action": "مد اللين المهموز",
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:28:54.769077+00:00",
+    "updatedAt": "2026-09-24T11:28:54.769077+00:00"
+  },
+  {
+    "id": "ent-r-p004-018-1-w7-Q06-R01",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 19,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 19,
+    "baseText": "وَرَعْدٌۭ",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:28:59.751731+00:00",
+    "updatedAt": "2026-09-24T11:28:59.751731+00:00"
+  },
+  {
+    "id": "r-L-002-019-008-f926a4fe-f5e079",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 19,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 19,
+    "baseText": "وَبَرْقٌۭ",
+    "verificationStatus": "VERIFIED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:29:42.346935+00:00",
+    "updatedAt": "2026-09-24T11:29:42.346935+00:00"
+  },
+  {
+    "id": "r-L-002-019-009-492a0d26-5fd842",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 19,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 19,
+    "baseText": "يَجْعَلُونَ",
+    "verificationStatus": "VERIFIED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:30:04.982512+00:00",
+    "updatedAt": "2026-09-24T11:30:04.982512+00:00"
   },
   {
     "id": "r-p004-008-1",
@@ -285,8 +224,39 @@
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "createdAt": "2026-09-24T11:24:49.069316+00:00",
+    "updatedAt": "2026-09-24T11:24:49.069316+00:00"
+  },
+  {
+    "id": "r-p004-006-1",
+    "pageNumber": 4,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 19,
+    "startToken": 12,
+    "endToken": 12,
+    "endAyah": 19,
+    "baseText": "ءَاذَانِهِم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:24:50.872219+00:00",
+    "updatedAt": "2026-09-24T11:24:50.872219+00:00"
   },
   {
     "id": "r-p004-009-1",
@@ -304,11 +274,7 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
+        "authorityId": "Q03-R01",
         "action": "إمالة"
       },
       {
@@ -318,21 +284,19 @@
       {
         "authorityId": "Q01-R02",
         "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
       {
         "readingId": "Q03-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -345,82 +309,92 @@
         "readingId": "Q01-R02",
         "action": "تقليل",
         "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "بِالْكَافِرِينَ → بِالْكَافِرِينَ | إمالة فتحة الكاف والألف",
-      "بالكـافرين → بـالكٍافرين | أمالـها الدوري"
-    ]
+    "createdAt": "2026-09-24T11:25:24.013088+00:00",
+    "updatedAt": "2026-09-24T11:25:24.013088+00:00"
   },
   {
-    "id": "r-p004-010-1",
+    "id": "r-p004-001-2",
     "pageNumber": 4,
-    "category": "IMALAH_TAQLIL",
-    "categoryAr": "الممال والمقلل",
-    "color": "#C026D3",
+    "category": "SILAT_HA",
+    "categoryAr": "صلة هاء الكناية",
+    "color": "#0D9488",
     "wordAnchored": true,
     "surah": 2,
-    "ayah": 24,
-    "startToken": 13,
-    "endToken": 13,
-    "endAyah": 24,
-    "baseText": "لِلْكَـٰفِرِينَ",
+    "ayah": 20,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 20,
+    "baseText": "فِيهِ",
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q03",
-        "action": "إمالة"
+        "authorityId": "Q02-R01",
+        "action": "صلة هاء الكناية"
       },
       {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q09-R01",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
+        "authorityId": "Q02-R02",
+        "action": "صلة هاء الكناية"
       }
     ],
     "readings": [
       {
-        "readingId": "Q03-R01",
-        "action": "إمالة",
+        "readingId": "Q02-R01",
+        "action": "صلة هاء الكناية",
         "isDefault": true
       },
       {
-        "readingId": "Q03-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q09-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
+        "readingId": "Q02-R02",
+        "action": "صلة هاء الكناية",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "لِلْكَافِرِينَ → لِلْكَافِرِينَ | إمالة فتحة الكاف والألف",
-      "للكـافرين → للكٍـافرين | أمالـها الدوري"
-    ]
+    "createdAt": "2026-09-24T11:23:12.405828+00:00",
+    "updatedAt": "2026-09-24T11:23:12.405828+00:00"
+  },
+  {
+    "id": "r-p004-005-1",
+    "pageNumber": 4,
+    "category": "TAGHLIZ_LAM",
+    "categoryAr": "تغليظ اللامات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 20,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 20,
+    "baseText": "أَظْلَمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تغليظ اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تغليظ اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:24:28.488681+00:00",
+    "updatedAt": "2026-09-24T11:24:28.488681+00:00"
   },
   {
     "id": "r-p004-011-1",
@@ -438,36 +412,44 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q10-R01",
+        "action": "إمالة"
+      },
+      {
         "authorityId": "Q04-R02",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q06",
+        "authorityId": "Q06-R02",
         "action": "إمالة"
       },
       {
-        "authorityId": "Q10",
+        "authorityId": "Q10-R02",
         "action": "إمالة"
       }
     ],
     "readings": [
-      {
-        "readingId": "Q04-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
       {
         "readingId": "Q06-R01",
         "action": "إمالة",
         "isDefault": true
       },
       {
-        "readingId": "Q06-R02",
+        "readingId": "Q10-R01",
         "action": "إمالة",
         "isDefault": true
       },
       {
-        "readingId": "Q10-R01",
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
         "action": "إمالة",
         "isDefault": true
       },
@@ -478,104 +460,8 @@
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-012-1",
-    "pageNumber": 4,
-    "category": "IMALAH_TAQLIL",
-    "categoryAr": "الممال والمقلل",
-    "color": "#C026D3",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 20,
-    "startToken": 19,
-    "endToken": 19,
-    "endAyah": 20,
-    "baseText": "وَأَبْصَـٰرِهِمْ ۚ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q03",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q07-R02",
-        "action": "إمالة"
-      },
-      {
-        "authorityId": "Q01-R02",
-        "action": "تقليل"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q03-R01",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q03-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": true
-      },
-      {
-        "readingId": "Q01-R02",
-        "action": "تقليل",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "وَأَبْصَارِهِمْ → وَأَبْصَارِهِمْ | إمالة فتحة الصاد والألف",
-      "وأبصـارهم → وأبصٍـارهم | أمال الدوري الصاد"
-    ]
-  },
-  {
-    "id": "r-p004-013-1",
-    "pageNumber": 4,
-    "category": "IMALAH_TAQLIL",
-    "categoryAr": "الممال والمقلل",
-    "color": "#C026D3",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 24,
-    "startToken": 11,
-    "endToken": 11,
-    "endAyah": 24,
-    "baseText": "وَٱلْحِجَارَةُ ۖ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q07",
-        "action": "إمالة",
-        "condition": "وقفًا"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q07-R01",
-        "action": "إمالة",
-        "isDefault": false
-      },
-      {
-        "readingId": "Q07-R02",
-        "action": "إمالة",
-        "isDefault": false
-      }
-    ],
-    "hasAlternate": true,
-    "condition": "وقفًا",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "createdAt": "2026-09-24T11:25:54.250662+00:00",
+    "updatedAt": "2026-09-24T11:25:54.250662+00:00"
   },
   {
     "id": "r-p004-014-1",
@@ -606,11 +492,168 @@
     ],
     "hasAlternate": false,
     "text": "ووافقه فيها رويس بخلف عنه.",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "لَذَهَبَ بِسَمْعِهِمْ → لَذَهَب بِّسَمْعِهِمْ | إدغام الباء في الباء"
-    ]
+    "createdAt": "2026-09-24T11:27:29.30753+00:00",
+    "updatedAt": "2026-09-24T11:27:29.30753+00:00"
+  },
+  {
+    "id": "r-p004-012-1",
+    "pageNumber": 4,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 20,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 20,
+    "baseText": "وَأَبْصَـٰرِهِمْ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:26:07.648501+00:00",
+    "updatedAt": "2026-09-24T11:26:07.648501+00:00"
+  },
+  {
+    "id": "r-p004-022-1",
+    "pageNumber": 4,
+    "category": "WAQF_HAMZA",
+    "categoryAr": "وقف حمزة",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 20,
+    "startToken": 19,
+    "endToken": 19,
+    "endAyah": 20,
+    "baseText": "وَأَبْصَـٰرِهِمْ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "تحقيق الهمزة أو تسهيلها"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "تحقيق الهمزة أو تسهيلها"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "تحقيق الهمزة أو تسهيلها",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "تحقيق الهمزة أو تسهيلها",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:26:14.932093+00:00",
+    "updatedAt": "2026-09-24T11:26:14.932093+00:00"
+  },
+  {
+    "id": "r-p004-007-1",
+    "pageNumber": 4,
+    "category": "MADD_LIN",
+    "categoryAr": "مد اللين المهموز",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 20,
+    "startToken": 24,
+    "endToken": 24,
+    "endAyah": 20,
+    "baseText": "شَىْءٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد اللين المهموز"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد اللين المهموز",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:25:06.473996+00:00",
+    "updatedAt": "2026-09-24T11:25:06.473996+00:00"
+  },
+  {
+    "id": "r-p004-003-1",
+    "pageNumber": 4,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 20,
+    "startToken": 25,
+    "endToken": 25,
+    "endAyah": 20,
+    "baseText": "قَدِيرٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:23:36.074208+00:00",
+    "updatedAt": "2026-09-24T11:23:36.074208+00:00"
   },
   {
     "id": "r-p004-015-1",
@@ -640,14 +683,11 @@
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "خَلَقَكُمْ → خَلَقكُّمْ | إدغام القاف في الكاف إدغاماً كاملاً"
-    ]
+    "createdAt": "2026-09-24T11:27:49.763689+00:00",
+    "updatedAt": "2026-09-24T11:27:49.763689+00:00"
   },
   {
-    "id": "r-p004-016-1",
+    "id": "ent-r-p004-016-1-w2-Q03-R02",
     "pageNumber": 4,
     "category": "IDGHAM_KABIR",
     "categoryAr": "المدغم الكبير",
@@ -656,10 +696,10 @@
     "surah": 2,
     "ayah": 22,
     "startToken": 2,
-    "endToken": 3,
+    "endToken": 2,
     "endAyah": 22,
-    "baseText": "جَعَلَ لَكُمُ",
-    "verificationStatus": "REVIEWED",
+    "baseText": "جَعَلَ",
+    "verificationStatus": "EXTRACTED",
     "attribution": [
       {
         "authorityId": "Q03-R02",
@@ -674,11 +714,264 @@
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "جَعَلَ لَكُمُ → جَعَل لَّكُمُ | إدغام اللام في اللام"
-    ]
+    "text": "إدغام كبير",
+    "createdAt": "2026-09-24T11:27:56.34507+00:00",
+    "updatedAt": "2026-09-24T11:27:56.34507+00:00"
+  },
+  {
+    "id": "ent-r-p004-016-1-w3-Q03-R02",
+    "pageNumber": 4,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 22,
+    "baseText": "لَكُمُ",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام كبير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام كبير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "إدغام كبير",
+    "createdAt": "2026-09-24T11:28:05.989229+00:00",
+    "updatedAt": "2026-09-24T11:28:05.989229+00:00"
+  },
+  {
+    "id": "ent-r-p004-019-1-w5-Q06-R01",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 22,
+    "baseText": "فِرَٰشًۭا",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:24:05.219072+00:00",
+    "updatedAt": "2026-09-24T11:24:05.219072+00:00"
+  },
+  {
+    "id": "r-p004-004-1",
+    "pageNumber": 4,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 22,
+    "baseText": "فِرَٰشًۭا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-24T11:24:07.846859+00:00",
+    "updatedAt": "2026-09-24T11:24:07.846859+00:00"
+  },
+  {
+    "id": "ent-r-p004-019-1-w6-Q06-R01",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 22,
+    "baseText": "وَٱلسَّمَآءَ",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:24:18.032238+00:00",
+    "updatedAt": "2026-09-24T11:24:18.032238+00:00"
+  },
+  {
+    "id": "ent-r-p004-020-1-w7-Q06-R01",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 22,
+    "baseText": "بِنَآءًۭ",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:30:17.082723+00:00",
+    "updatedAt": "2026-09-24T11:30:17.082723+00:00"
+  },
+  {
+    "id": "ent-r-p004-020-1-w8-Q06-R01",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 22,
+    "baseText": "وَأَنزَلَ",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:30:21.361378+00:00",
+    "updatedAt": "2026-09-24T11:30:21.361378+00:00"
+  },
+  {
+    "id": "ent-r-p004-021-1-w21-Q06-R01",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 21,
+    "endToken": 21,
+    "endAyah": 22,
+    "baseText": "أَندَادًۭا",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:30:27.739517+00:00",
+    "updatedAt": "2026-09-24T11:30:27.739517+00:00"
+  },
+  {
+    "id": "ent-r-p004-021-1-w22-Q06-R01",
+    "pageNumber": 4,
+    "category": "TARK_GHUNNA",
+    "categoryAr": "ترك الغنة",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 2,
+    "ayah": 22,
+    "startToken": 22,
+    "endToken": 22,
+    "endAyah": 22,
+    "baseText": "وَأَنتُمْ",
+    "verificationStatus": "EXTRACTED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "ترك الغنة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "ترك الغنة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "text": "ترك الغنة",
+    "createdAt": "2026-09-24T11:30:37.377652+00:00",
+    "updatedAt": "2026-09-24T11:30:37.377652+00:00"
   },
   {
     "id": "r-p004-017-1",
@@ -696,6 +989,10 @@
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمز"
+      },
+      {
         "authorityId": "Q01-R02",
         "action": "إبدال الهمز"
       },
@@ -704,11 +1001,16 @@
         "action": "إبدال الهمز"
       },
       {
-        "authorityId": "Q08",
+        "authorityId": "Q08-R02",
         "action": "إبدال الهمز"
       }
     ],
     "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمز",
+        "isDefault": true
+      },
       {
         "readingId": "Q01-R02",
         "action": "إبدال الهمز",
@@ -720,181 +1022,120 @@
         "isDefault": true
       },
       {
-        "readingId": "Q08-R01",
-        "action": "إبدال الهمز",
-        "isDefault": true
-      },
-      {
         "readingId": "Q08-R02",
         "action": "إبدال الهمز",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "فَأْتُوا → فَاتُوا | إبدال الهمزة ألفاً | user-supplied JSON row 21; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
-    ]
+    "createdAt": "2026-09-24T11:28:22.464549+00:00",
+    "updatedAt": "2026-09-24T11:28:22.464549+00:00"
   },
   {
-    "id": "r-p004-018-1",
+    "id": "r-p004-013-1",
     "pageNumber": 4,
-    "category": "TARK_GHUNNA",
-    "categoryAr": "ترك الغنة",
-    "color": "#0891B2",
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
     "wordAnchored": true,
     "surah": 2,
-    "ayah": 19,
-    "startToken": 6,
-    "endToken": 7,
-    "endAyah": 19,
-    "baseText": "ظُلُمَـٰتٌۭ وَرَعْدٌۭ",
+    "ayah": 24,
+    "startToken": 11,
+    "endToken": 11,
+    "endAyah": 24,
+    "baseText": "وَٱلْحِجَارَةُ ۖ",
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06-R01",
-        "action": "ترك الغنة"
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q06-R01",
-        "action": "ترك الغنة",
-        "isDefault": true
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": false
       }
     ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "hasAlternate": true,
+    "createdAt": "2026-09-24T11:26:39.679031+00:00",
+    "updatedAt": "2026-09-24T11:26:39.679031+00:00"
   },
   {
-    "id": "r-p004-019-1",
+    "id": "r-p004-010-1",
     "pageNumber": 4,
-    "category": "TARK_GHUNNA",
-    "categoryAr": "ترك الغنة",
-    "color": "#0891B2",
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
     "wordAnchored": true,
     "surah": 2,
-    "ayah": 22,
-    "startToken": 5,
-    "endToken": 6,
-    "endAyah": 22,
-    "baseText": "فِرَٰشًۭا وَٱلسَّمَآءَ",
+    "ayah": 24,
+    "startToken": 13,
+    "endToken": 13,
+    "endAyah": 24,
+    "baseText": "لِلْكَـٰفِرِينَ",
     "verificationStatus": "REVIEWED",
     "attribution": [
       {
-        "authorityId": "Q06-R01",
-        "action": "ترك الغنة"
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
       }
     ],
     "readings": [
       {
-        "readingId": "Q06-R01",
-        "action": "ترك الغنة",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-020-1",
-    "pageNumber": 4,
-    "category": "TARK_GHUNNA",
-    "categoryAr": "ترك الغنة",
-    "color": "#0891B2",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 22,
-    "startToken": 7,
-    "endToken": 8,
-    "endAyah": 22,
-    "baseText": "بِنَآءًۭ وَأَنزَلَ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q06-R01",
-        "action": "ترك الغنة"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q06-R01",
-        "action": "ترك الغنة",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-021-1",
-    "pageNumber": 4,
-    "category": "TARK_GHUNNA",
-    "categoryAr": "ترك الغنة",
-    "color": "#0891B2",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 22,
-    "startToken": 21,
-    "endToken": 22,
-    "endAyah": 22,
-    "baseText": "أَندَادًۭا وَأَنتُمْ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q06-R01",
-        "action": "ترك الغنة"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q06-R01",
-        "action": "ترك الغنة",
-        "isDefault": true
-      }
-    ],
-    "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p004-022-1",
-    "pageNumber": 4,
-    "category": "WAQF_HAMZA",
-    "categoryAr": "وقف حمزة",
-    "color": "#EA580C",
-    "wordAnchored": true,
-    "surah": 2,
-    "ayah": 20,
-    "startToken": 19,
-    "endToken": 19,
-    "endAyah": 20,
-    "baseText": "وَأَبْصَـٰرِهِمْ ۚ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [
-      {
-        "authorityId": "Q06",
-        "action": "تحقيق الهمزة أو تسهيلها"
-      }
-    ],
-    "readings": [
-      {
-        "readingId": "Q06-R01",
-        "action": "تحقيق الهمزة أو تسهيلها",
+        "readingId": "Q03-R01",
+        "action": "إمالة",
         "isDefault": true
       },
       {
-        "readingId": "Q06-R02",
-        "action": "تحقيق الهمزة أو تسهيلها",
+        "readingId": "Q09-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
         "isDefault": true
       }
     ],
     "hasAlternate": false,
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
+    "createdAt": "2026-09-24T11:25:40.715213+00:00",
+    "updatedAt": "2026-09-24T11:25:40.715213+00:00"
   }
 ]

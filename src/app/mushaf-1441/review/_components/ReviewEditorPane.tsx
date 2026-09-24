@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type {
   CatalogNarrator,
   CreateEntryInput,
@@ -36,7 +36,7 @@ type Props = {
   onSelectRow(row: ReviewRow): void
   onStartNewEntry(meta: WordMeta): void
   onCancelNewEntry(): void
-  onConfirmRow(row: ReviewRow): Promise<void>
+  onConfirmRow(row: ReviewRow, pendingEdits?: { fields: EntryFields; narrators: NarratorInput[] }): Promise<void> | void
   onFlagRow(row: ReviewRow): Promise<void>
   onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]): Promise<void>
   onDeleteRow(row: ReviewRow): Promise<void>
@@ -77,6 +77,24 @@ export default function ReviewEditorPane({
 
   // New entry draft local state
   const isAddMode = Boolean(newEntryDraft)
+
+  // Track if current draft has unsaved changes compared to selectedRow
+  const isDirty = useMemo(() => {
+    if (!selectedRow || isAddMode) return false
+    const readingChanged = (readingText.trim() !== (selectedRow.readingText ?? selectedRow.hafsText ?? '').trim())
+    const kindChanged = kind !== selectedRow.kind
+    const catChanged = (categoryCode ?? null) !== (selectedRow.categoryCode ?? null)
+    const varTypeChanged = (variantType ?? null) !== (selectedRow.variantType ?? null)
+    const descChanged = (description?.trim() || null) !== (selectedRow.description?.trim() || null)
+    const perfChanged = (performanceNote?.trim() || null) !== (selectedRow.performanceNote?.trim() || null)
+    const rulingChanged = (rulingText?.trim() || null) !== (selectedRow.rulingText?.trim() || null)
+
+    const origNarratorIds = selectedRow.narrators.map((n) => n.id).sort().join(',')
+    const curNarratorIds = narrators.map((n) => n.id).sort().join(',')
+    const narratorsChanged = origNarratorIds !== curNarratorIds
+
+    return readingChanged || kindChanged || catChanged || varTypeChanged || descChanged || perfChanged || rulingChanged || narratorsChanged
+  }, [selectedRow, isAddMode, readingText, kind, categoryCode, variantType, description, performanceNote, rulingText, narrators])
 
   // Synchronize when selectedRow changes
   useEffect(() => {
@@ -134,6 +152,65 @@ export default function ReviewEditorPane({
     }
     void onSaveRowEdits(selectedRow, fields, narrators)
   }
+
+  function handleConfirm() {
+    if (!selectedRow) return
+    if (isDirty) {
+      const fields: EntryFields = {
+        readingText: kind === 'farsh' ? readingText.trim() : selectedRow.hafsText,
+        categoryCode: kind === 'usul' && categoryCode ? categoryCode : undefined,
+        variantType: kind === 'farsh' && variantType ? variantType : undefined,
+        rulingText: kind === 'usul' ? rulingText?.trim() || null : null,
+        description: description?.trim() || null,
+        performanceNote: performanceNote?.trim() || null,
+      }
+      void onConfirmRow(selectedRow, { fields, narrators })
+    } else {
+      void onConfirmRow(selectedRow)
+    }
+  }
+
+  // Ref tracking draft for unmount/switch auto-save
+  const currentDraftRef = useRef<{ row: ReviewRow; fields: EntryFields; narrators: NarratorInput[]; isDirty: boolean } | null>(null)
+
+  useEffect(() => {
+    if (selectedRow && !isAddMode) {
+      currentDraftRef.current = {
+        row: selectedRow,
+        fields: {
+          readingText: kind === 'farsh' ? readingText.trim() : selectedRow.hafsText,
+          categoryCode: kind === 'usul' && categoryCode ? categoryCode : undefined,
+          variantType: kind === 'farsh' && variantType ? variantType : undefined,
+          rulingText: kind === 'usul' ? rulingText?.trim() || null : null,
+          description: description?.trim() || null,
+          performanceNote: performanceNote?.trim() || null,
+        },
+        narrators,
+        isDirty,
+      }
+    } else {
+      currentDraftRef.current = null
+    }
+  }, [selectedRow, isAddMode, isDirty, kind, readingText, categoryCode, variantType, rulingText, description, performanceNote, narrators])
+
+  // Flush unsaved edits to DB when switching words/rows
+  useEffect(() => {
+    return () => {
+      if (currentDraftRef.current?.isDirty) {
+        const { row, fields, narrators: draftNarrators } = currentDraftRef.current
+        void onSaveRowEdits(row, fields, draftNarrators)
+      }
+    }
+  }, [selectedRow?.entryId])
+
+  // Debounced background auto-save (1500ms after user pauses editing)
+  useEffect(() => {
+    if (!isDirty || !selectedRow || isAddMode || isSaving) return
+    const timer = setTimeout(() => {
+      handleSaveExisting()
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [isDirty, selectedRow, isAddMode, isSaving])
 
   function handleCreate() {
     if (!newEntryDraft) return
@@ -261,17 +338,17 @@ export default function ReviewEditorPane({
             <div className="flex items-center gap-1.5 flex-wrap">
               <button
                 type="button"
-                onClick={() => onConfirmRow(selectedRow)}
+                onClick={handleConfirm}
                 disabled={isSaving}
                 className={cn(
                   'flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer',
-                  selectedRow.reviewStatus === 'reviewed'
+                  selectedRow.reviewStatus === 'reviewed' && !isDirty
                     ? 'bg-green-700 text-white ring-2 ring-green-500/50'
                     : 'bg-green-600 hover:bg-green-700 text-white'
                 )}
               >
                 <span>✓</span>
-                <span>{selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
+                <span>{selectedRow.reviewStatus === 'reviewed' && !isDirty ? 'مُعتمد' : 'اعتماد'}</span>
               </button>
 
               <button
@@ -293,9 +370,14 @@ export default function ReviewEditorPane({
                 type="button"
                 onClick={handleSaveExisting}
                 disabled={isSaving}
-                className="rounded-md bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-2.5 py-1 text-xs font-bold text-white shadow-xs disabled:opacity-50"
+                className={cn(
+                  'rounded-md px-2.5 py-1 text-xs font-bold text-white shadow-xs disabled:opacity-50 transition-all',
+                  isDirty
+                    ? 'bg-amber-600 hover:bg-amber-700 ring-2 ring-amber-400/50'
+                    : 'bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)]'
+                )}
               >
-                حفظ
+                {isDirty ? 'حفظ *' : 'حفظ'}
               </button>
 
               <button

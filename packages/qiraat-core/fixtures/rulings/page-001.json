@@ -1,57 +1,5 @@
 [
   {
-    "id": "r-p001-001-1",
-    "pageNumber": 1,
-    "category": "AYAH_COUNT",
-    "categoryAr": "عد الآي",
-    "color": "#64748B",
-    "wordAnchored": false,
-    "surah": 1,
-    "ayah": 1,
-    "startToken": 1,
-    "endToken": 4,
-    "endAyah": 1,
-    "baseText": "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [],
-    "readings": [],
-    "hasAlternate": false,
-    "text": "﴿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ﴾: عدّها المكي والكوفي آية",
-    "countSchools": [
-      "CS-MAKKI",
-      "CS-KUFI"
-    ],
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
-    "id": "r-p001-002-1",
-    "pageNumber": 1,
-    "category": "AYAH_COUNT",
-    "categoryAr": "عد الآي",
-    "color": "#64748B",
-    "wordAnchored": false,
-    "surah": 1,
-    "ayah": 7,
-    "startToken": 3,
-    "endToken": 4,
-    "endAyah": 7,
-    "baseText": "أَنْعَمْتَ عَلَيْهِمْ",
-    "verificationStatus": "REVIEWED",
-    "attribution": [],
-    "readings": [],
-    "hasAlternate": false,
-    "text": "﴿أَنْعَمْتَ عَلَيْهِمْ﴾: عدّها المدنيان والبصري والشامي رأس آية",
-    "countSchools": [
-      "CS-MADANI-1",
-      "CS-MADANI-2",
-      "CS-BASRI",
-      "CS-SHAMI"
-    ],
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z"
-  },
-  {
     "id": "r-p001-003-1",
     "pageNumber": 1,
     "category": "IDGHAM_KABIR",
@@ -80,10 +28,7 @@
     ],
     "hasAlternate": false,
     "notes": "إذا جاء حرف مدّ قبل الحرف المدغم إدغامًا كبيرًا جاز فيه القصر والتوسط والإشباع.",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
-    "sourceNotes": [
-      "الرَّحِيمِ مَلِكِ → الرَّحِيمِ مَّلِكِ | إدغام الميم في الميم (مثلين كبير)، ويجوز في حرف المد ثلاثة العارض للإدغام: 1- القصر 2- التوسط 3- الإشباع"
-    ]
+    "createdAt": "2026-09-24T11:13:35.180703+00:00",
+    "updatedAt": "2026-09-24T11:13:35.180703+00:00"
   }
 ]

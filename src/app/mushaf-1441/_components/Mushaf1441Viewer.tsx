@@ -1187,6 +1187,79 @@ export default function Mushaf1441Viewer({
     return () => { cancelled = true }
   }, [slotGroups, isSpread, qiraatMode, qiraatIncludeReviewed])
 
+  // Real-time synchronization: when a word/variant is edited or created in /mushaf-1441/review,
+  // this listener immediately purges the page's cached variants/rulings and re-renders with fresh data.
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const handleSync = (targetPage?: number) => {
+      if (typeof targetPage === 'number') {
+        delete qiraatVariantsByPageRef.current[`${targetPage}:0`]
+        delete qiraatVariantsByPageRef.current[`${targetPage}:1`]
+        delete qiraatRulesByPageRef.current[`${targetPage}:0`]
+        delete qiraatRulesByPageRef.current[`${targetPage}:1`]
+        delete qiraatRulingsByPageRef.current[`${targetPage}:0`]
+        delete qiraatRulingsByPageRef.current[`${targetPage}:1`]
+      } else {
+        qiraatVariantsByPageRef.current = {}
+        qiraatRulesByPageRef.current = {}
+        qiraatRulingsByPageRef.current = {}
+      }
+
+      if (qiraatMode === 'normal') return
+
+      const pages = slotGroups
+        .flatMap((group) => (isSpread ? [group, group + 1] : [group]))
+        .filter((page) => page >= MIN_PAGE && page <= MAX_PAGE)
+
+      if (!targetPage || pages.includes(targetPage)) {
+        void Promise.all(pages.map((p) => fetchQiraatForPage(p, qiraatIncludeReviewed))).then(() => {
+          setQiraatVariantsByPage({ ...qiraatVariantsByPageRef.current })
+          setQiraatRulesByPage({ ...qiraatRulesByPageRef.current })
+          setQiraatRulingsByPage({ ...qiraatRulingsByPageRef.current })
+        })
+      }
+    }
+
+    let channel: BroadcastChannel | null = null
+    try {
+      if ('BroadcastChannel' in window) {
+        channel = new BroadcastChannel('qiraat-sync')
+        channel.onmessage = (event) => {
+          if (event.data?.type === 'QIRAAT_PAGE_UPDATED') {
+            handleSync(event.data.page)
+          }
+        }
+      }
+    } catch {
+      // BroadcastChannel unsupported or blocked
+    }
+
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === 'qiraat_sync_event' && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue)
+          if (parsed.page) handleSync(parsed.page)
+        } catch {}
+      }
+    }
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        handleSync()
+      }
+    }
+
+    window.addEventListener('storage', onStorage)
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    return () => {
+      channel?.close()
+      window.removeEventListener('storage', onStorage)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+    }
+  }, [slotGroups, isSpread, qiraatMode, qiraatIncludeReviewed])
+
   // Restore/persist Qiraat preferences (mode, reading, study mode, diff toggle, filter) the same
   // way the swipe-nav setting and the last-page key do: read after mount, write on change.
   useEffect(() => {
@@ -1452,9 +1525,8 @@ export default function Mushaf1441Viewer({
     return metadata
   }
 
-  // Qiraat variants + page-level rules are shared immutable reference data (no auth), cached per
-  // page with the same in-flight dedup pattern as fetchPageMetadata. Loading their generated page
-  // chunks directly avoids a route-handler round trip while keeping non-Qiraat sessions lazy.
+  // Qiraat variants + page-level rules are fetched from /api/mushaf-1441/qiraat (backed by live PostgreSQL)
+  // with seamless fallback to static repository fixtures if the network/API is unreachable.
   async function fetchQiraatForPage(nextPage: number, includeUnpublished: boolean) {
     const cacheKey = `${nextPage}:${includeUnpublished ? 1 : 0}`
     const cachedVariants = qiraatVariantsByPageRef.current[cacheKey]
@@ -1468,9 +1540,27 @@ export default function Mushaf1441Viewer({
     if (inFlight) return inFlight
 
     const request = (async () => {
-      // Qiraat fixtures are immutable application assets. Load their page chunks directly in the
-      // browser instead of paying for a route-handler round trip and a second JSON serialization.
-      // Adjacent-page prefetch therefore warms the same module cache used by the page turn.
+      try {
+        const res = await fetch(`/api/mushaf-1441/qiraat?page=${nextPage}${includeUnpublished ? '&debug=1' : ''}`, {
+          headers: { 'Cache-Control': 'no-cache' },
+        })
+        if (res.ok) {
+          const data = await res.json()
+          if (data && Array.isArray(data.variants) && Array.isArray(data.rulings)) {
+            const variants = data.variants as QiraatVariant[]
+            const rules = (data.rules ?? []) as QiraatRule[]
+            const rulings = data.rulings as QiraatRuling[]
+            qiraatVariantsByPageRef.current = { ...qiraatVariantsByPageRef.current, [cacheKey]: variants }
+            qiraatRulesByPageRef.current = { ...qiraatRulesByPageRef.current, [cacheKey]: rules }
+            qiraatRulingsByPageRef.current = { ...qiraatRulingsByPageRef.current, [cacheKey]: rulings }
+            return { variants, rules, rulings }
+          }
+        }
+      } catch (err) {
+        console.warn(`[qiraat] fetch failed for page ${nextPage}, falling back to fixtures:`, err)
+      }
+
+      // Offline / fallback to static repository fixtures
       const options = { includeUnpublished }
       const [variants, rules, rulings] = await Promise.all([
         defaultQiraatRepository.getVariantsForPage(nextPage, options),

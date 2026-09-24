@@ -1,6 +1,6 @@
 [
   {
-    "id": "v-L005-ترجعون-1-w2",
+    "id": "v-L005-ترجعون-1-w2-a28-t13",
     "surah": 2,
     "ayah": 28,
     "startToken": 13,
@@ -8,40 +8,32 @@
     "operation": "REPLACE",
     "hafsText": "تُرْجَعُونَ",
     "variantText": "تَرْجِعُونَ",
+    "description": "بفتح التاء وكسر الجيم",
+    "uthmaniText": "تَرْجِعُونَ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T11:31:22.323651+00:00",
+    "updatedAt": "2026-09-24T11:31:22.323651+00:00",
     "readingIds": [
       "Q09-R01",
       "Q09-R02"
     ],
-    "locusId": "L005-ترجعون-1",
+    "locusId": "L005-ترجعون-1-a28-t13",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L005-ترجعون-1-w2",
-        "variantId": "v-L005-ترجعون-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L005-ترجعون-1-w2-a28-t13",
+        "variantId": "v-L005-ترجعون-1-w2-a28-t13",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 10,
-        "sourceReference": "صفحة المصحف 5 · صفحة المصدر 10",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "D: وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
-      }
-    ],
-    "description": "بفتح التاء وكسر الجيم",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "D",
-        "text": "وَيُرْجَعُ كَيْفَ جَا إِذَا كَانَ لِلْأُخْرَىٰ فَسَمِّ حُلًّا حَلَا"
+        "sourceReference": "صفحة المصحف 5",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L005-وهو-1-w2",
+    "id": "v-L005-وهو-1-w2-a29-t16",
     "surah": 2,
     "ayah": 29,
     "startToken": 16,
@@ -49,62 +41,32 @@
     "operation": "REPLACE",
     "hafsText": "وَهُوَ",
     "variantText": "وَهْوَ",
+    "description": "بإسكان الهاء",
+    "uthmaniText": "وَهْوَ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T11:31:33.434923+00:00",
+    "updatedAt": "2026-09-24T11:31:33.434923+00:00",
     "readingIds": [
       "Q01-R01",
       "Q03-R01",
-      "Q03-R02",
       "Q07-R01",
-      "Q07-R02",
       "Q08-R01",
+      "Q03-R02",
+      "Q07-R02",
       "Q08-R02"
     ],
-    "locusId": "L005-وهو-1",
+    "locusId": "L005-وهو-1-a29-t16",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L005-وهو-1-w2",
-        "variantId": "v-L005-وهو-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L005-وهو-1-w2-a29-t16",
+        "variantId": "v-L005-وهو-1-w2-a29-t16",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 10,
-        "sourceReference": "صفحة المصحف 5 · صفحة المصدر 10",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا — D: هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
-      },
-      {
-        "id": "s-SUSI-002-29-16-0023",
-        "variantId": "v-L005-وهو-1-w2",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 23; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
-      },
-      {
-        "id": "s-DURI-002-29-16-r0012",
-        "variantId": "v-L005-وهو-1-w2",
-        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
-        "sourceType": "other",
-        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 12; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
-        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "وهـُو → وهْـو | أسكن الدوري الهـاء"
-      }
-    ],
-    "description": "بإسكان الهاء",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَمَا هُوَ بَعْدَ الْوَاوِ وَالْفَا وَلَامِهَا وَهَا هِيَ أَسْكِنْ رَاضِيًا بَارِدًا حَلَا"
-      },
-      {
-        "source": "D",
-        "text": "هُوَ وَهِيَ يُبِلُّ هُوَ ثُمَّ هُوَ اسْكِنَا أُذْ وَحُمِّلَا فَحَرِّكْ"
+        "sourceReference": "صفحة المصحف 5",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   }

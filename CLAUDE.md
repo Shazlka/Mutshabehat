@@ -38,6 +38,28 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-24 — Live Review-to-Qiraat Auto-Save & Instant Cross-Tab Sync (Pages 1–5 Parity)
+- **Live Qiraat Data Pipeline (`/api/mushaf-1441/qiraat` & `qiraat-transformer.ts`):**
+  - Resolved root cause of non-rendering in Qiraat mode: `Mushaf1441Viewer.tsx` was reading static JSON fixtures instead of live review rows. Created `src/lib/qiraat-transformer.ts` to convert PostgreSQL `ReviewRow` objects into domain `QiraatVariant` (farsh) and `QiraatRuling` (usul) with full mapping for 24 Usul categories, colors, difference types, and performance variants.
+  - Rewired `/api/mushaf-1441/qiraat` to query live database via `qiraat_review_page(p_page, false)` first, serving reviewed variants and rulings dynamically with `Cache-Control: no-cache, no-store, must-revalidate`.
+  - Applied schema migration `supabase/migrations/20260925180000_qiraat_public_review_read.sql` (+ rollback script) granting public read execution on review page functions to `anon, authenticated`, and reloaded PostgREST schema cache.
+  - Added fixture sync script `scripts/qiraat/sync-fixtures-from-db.ts` to export reviewed database rows back into disk fixtures (`packages/qiraat-core/fixtures/pages/page-001..005.json` and `rulings/`) ensuring offline repository and core test parity.
+- **Instant Cross-Tab Real-Time Sync & Multi-Tier Auto-Save:**
+  - Added bidirectional `BroadcastChannel('qiraat-sync')` and `localStorage` storage events + `visibilitychange` listeners in `Mushaf1441Viewer.tsx` and `ReviewApp.tsx`.
+  - Saving, confirming, creating, or deleting any variant in review mode immediately broadcasts a sync event that purges page cache in any open Qiraat tabs and re-renders live data without page reload.
+  - Implemented 3-tier auto-save in `ReviewEditorPane.tsx`:
+    1. Debounced background auto-save (1.5s after pause).
+    2. Auto-save on word switch / component unmount (`currentDraftRef`).
+    3. Auto-save pending dirty fields when clicking `[✓ اعتماد]` (Confirm).
+- **Verification & Data Integrity:**
+  - `npm run test:qiraat`: 44/44 passed, 604 pages validated, all frontend checks passed.
+  - `npm run test:qiraat:review`: 19/19 passed.
+  - `npm run typecheck`: 0 errors.
+  - `npm run build`: Clean production build (34 static pages, 25 dynamic routes).
+  - Playwright E2E tests (`tests/quiz/e2e/qiraat-sync-and-review.spec.ts` & `mushaf-qiraat-rendering.spec.ts`): 3/3 tests passed.
+  - Verified live API endpoints on pages 1–5: `source: "database"` returning all user-reviewed variants (e.g. 2:26 `مثلا`, `يضل`, 2:28 `ترجعون`).
+  - `quran_words` row count (77,429) verified 100% intact.
+
 ## 2026-09-24 — Unrestricted Editor Access Across All Devices (Owner Request)
 - **Zero-Barrier Editor Authorization (`qiraat-review` & `qiraat-editor`):**
   - Updated `authenticatedClient()` in `src/app/api/mushaf-1441/qiraat-review/route.ts` and `src/app/api/mushaf-1441/qiraat-editor/route.ts` to attempt server-side sign-in with `AUTOLOGIN_EMAIL`/`AUTOLOGIN_PASSWORD` if no session cookie exists on the client device, and never return 401 unauthorized blocks.

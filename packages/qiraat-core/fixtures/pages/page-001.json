@@ -1,6 +1,6 @@
 [
   {
-    "id": "v-L001-مالك-1-w2",
+    "id": "v-L001-مالك-1-w2-a4-t1",
     "surah": 1,
     "ayah": 4,
     "startToken": 1,
@@ -8,72 +8,42 @@
     "operation": "REPLACE",
     "hafsText": "مَـٰلِكِ",
     "variantText": "مَلِكِ",
+    "description": "بلا ألف",
+    "uthmaniText": "مَلِكِ",
     "differenceType": "ORTHOGRAPHY",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-23T17:16:07.596788+00:00",
+    "updatedAt": "2026-09-23T17:16:07.596788+00:00",
     "readingIds": [
       "Q01-R01",
-      "Q01-R02",
       "Q02-R01",
-      "Q02-R02",
       "Q03-R01",
-      "Q03-R02",
       "Q04-R01",
-      "Q04-R02",
       "Q06-R01",
-      "Q06-R02",
       "Q08-R01",
+      "Q01-R02",
+      "Q02-R02",
+      "Q03-R02",
+      "Q04-R02",
+      "Q06-R02",
       "Q08-R02"
     ],
-    "locusId": "L001-مالك-1",
+    "locusId": "L001-مالك-1-a4-t1",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L001-مالك-1-w2",
-        "variantId": "v-L001-مالك-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L001-مالك-1-w2-a4-t1",
+        "variantId": "v-L001-مالك-1-w2-a4-t1",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 6,
-        "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَمَالِكِ يَوْمِ الدِّينِ رَاوِيهِ نَاصِرٌ — D: وَمَالِكِ حُزْ فُزْ"
-      },
-      {
-        "id": "s-SUSI-001-4-1-0002",
-        "variantId": "v-L001-مالك-1-w2",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 2; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "مَالِكِ → مَلِكِ | دون ألف"
-      },
-      {
-        "id": "s-DURI-001-4-1-r0002",
-        "variantId": "v-L001-مالك-1-w2",
-        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
-        "sourceType": "other",
-        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
-        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "مـالِك → مـَلِك | حذف الدوري الألف بعد الميم"
-      }
-    ],
-    "description": "بلا ألف",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَمَالِكِ يَوْمِ الدِّينِ رَاوِيهِ نَاصِرٌ"
-      },
-      {
-        "source": "D",
-        "text": "وَمَالِكِ حُزْ فُزْ"
+        "sourceReference": "صفحة المصحف 1",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L001-الصرط-1-w2",
+    "id": "v-L001-الصرط-1-w2-a6-t2",
     "surah": 1,
     "ayah": 6,
     "startToken": 2,
@@ -81,98 +51,66 @@
     "operation": "REPLACE",
     "hafsText": "ٱلصِّرَٰطَ",
     "variantText": "ٱلسِّرَاطَ",
+    "description": "بالسين",
+    "uthmaniText": "ٱلسِّرَاطَ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-23T17:09:24.921806+00:00",
+    "updatedAt": "2026-09-23T17:09:24.921806+00:00",
     "readingIds": [
-      "Q02-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q02-R02"
     ],
-    "locusId": "L001-الصرط-1",
+    "locusId": "L001-الصرط-1-a6-t2",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L001-الصرط-1-w2",
-        "variantId": "v-L001-الصرط-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L001-الصرط-1-w2-a6-t2",
+        "variantId": "v-L001-الصرط-1-w2-a6-t2",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 6,
-        "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا — D: وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ — SH: بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
-      }
-    ],
-    "description": "بالسين",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا"
-      },
-      {
-        "source": "D",
-        "text": "وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ"
-      },
-      {
-        "source": "SH",
-        "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+        "sourceReference": "صفحة المصحف 1",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L001-الصرط-1-w3",
+    "id": "v-L001-الصرط-1-w3-a6-t2",
     "surah": 1,
     "ayah": 6,
     "startToken": 2,
     "endToken": 2,
-    "operation": "REPLACE",
+    "operation": "KEEP",
     "hafsText": "ٱلصِّرَٰطَ",
     "variantText": "ٱلصِّرَٰطَ",
+    "description": "بإشمام الصاد زايًا",
+    "uthmaniText": "ٱلصِّرَٰطَ",
     "differenceType": "HARAKAH",
+    "performanceNote": "بإشمام الصاد زايًا",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T04:02:10.032684+00:00",
+    "updatedAt": "2026-09-24T04:02:10.032684+00:00",
     "readingIds": [
       "Q06-R01",
       "Q06-R02"
     ],
-    "locusId": "L001-الصرط-1",
+    "locusId": "L001-الصرط-1-a6-t2",
     "locusType": "performance_variant",
-    "performanceNote": "بإشمام الصاد زايًا",
     "sources": [
       {
-        "id": "s-L001-الصرط-1-w3",
-        "variantId": "v-L001-الصرط-1-w3",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L001-الصرط-1-w3-a6-t2",
+        "variantId": "v-L001-الصرط-1-w3-a6-t2",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 6,
-        "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا — D: وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ — SH: بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
-      }
-    ],
-    "description": "بإشمام الصاد زايًا",
-    "wajhIndex": 3,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا"
-      },
-      {
-        "source": "D",
-        "text": "وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ"
-      },
-      {
-        "source": "SH",
-        "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+        "sourceReference": "صفحة المصحف 1",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L001-صرط-1-w2",
+    "id": "v-L001-صرط-1-w2-a7-t1",
     "surah": 1,
     "ayah": 7,
     "startToken": 1,
@@ -180,69 +118,65 @@
     "operation": "REPLACE",
     "hafsText": "صِرَٰطَ",
     "variantText": "سِرَاطَ",
+    "description": "بالسين",
+    "uthmaniText": "سِرَاطَ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-23T17:15:59.849792+00:00",
+    "updatedAt": "2026-09-23T17:15:59.849792+00:00",
     "readingIds": [
-      "Q02-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q02-R02"
     ],
-    "locusId": "L001-صرط-1",
+    "locusId": "L001-صرط-1-a7-t1",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L001-صرط-1-w2",
-        "variantId": "v-L001-صرط-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L001-صرط-1-w2-a7-t1",
+        "variantId": "v-L001-صرط-1-w2-a7-t1",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 6,
-        "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+        "sourceReference": "صفحة المصحف 1",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
-    ],
-    "description": "بالسين",
-    "wajhIndex": 2,
-    "evidence": []
+    ]
   },
   {
-    "id": "v-L001-صرط-1-w3",
+    "id": "v-L001-صرط-1-w3-a7-t1",
     "surah": 1,
     "ayah": 7,
     "startToken": 1,
     "endToken": 1,
-    "operation": "REPLACE",
+    "operation": "KEEP",
     "hafsText": "صِرَٰطَ",
     "variantText": "صِرَٰطَ",
+    "description": "بإشمام الصاد زايًا",
+    "uthmaniText": "صِرَٰطَ",
     "differenceType": "HARAKAH",
+    "performanceNote": "بإشمام الصاد زايًا",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-23T17:15:19.425506+00:00",
+    "updatedAt": "2026-09-23T17:15:19.425506+00:00",
     "readingIds": [
       "Q06-R01"
     ],
-    "locusId": "L001-صرط-1",
+    "locusId": "L001-صرط-1-a7-t1",
     "locusType": "performance_variant",
-    "performanceNote": "بإشمام الصاد زايًا",
     "sources": [
       {
-        "id": "s-L001-صرط-1-w3",
-        "variantId": "v-L001-صرط-1-w3",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L001-صرط-1-w3-a7-t1",
+        "variantId": "v-L001-صرط-1-w3-a7-t1",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 6,
-        "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+        "sourceReference": "صفحة المصحف 1",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
-    ],
-    "description": "بإشمام الصاد زايًا",
-    "wajhIndex": 3,
-    "evidence": []
+    ]
   },
   {
-    "id": "v-L001-عليهم-1-w2",
+    "id": "v-L001-عليهم-1-w2-a7-t4",
     "surah": 1,
     "ayah": 7,
     "startToken": 4,
@@ -250,46 +184,34 @@
     "operation": "REPLACE",
     "hafsText": "عَلَيْهِمْ",
     "variantText": "عَلَيْهُمْ",
+    "description": "بضم الهاء",
+    "uthmaniText": "عَلَيْهُمْ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-23T17:15:50.771669+00:00",
+    "updatedAt": "2026-09-23T17:15:50.771669+00:00",
     "readingIds": [
       "Q06-R01",
-      "Q06-R02",
       "Q09-R01",
+      "Q06-R02",
       "Q09-R02"
     ],
-    "locusId": "L001-عليهم-1",
+    "locusId": "L001-عليهم-1-a7-t4",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L001-عليهم-1-w2",
-        "variantId": "v-L001-عليهم-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L001-عليهم-1-w2-a7-t4",
+        "variantId": "v-L001-عليهم-1-w2-a7-t4",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 6,
-        "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
-      }
-    ],
-    "description": "بضم الهاء",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
-      },
-      {
-        "source": "D",
-        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+        "sourceReference": "صفحة المصحف 1",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L001-عليهم-2-w2",
+    "id": "v-L001-عليهم-2-w2-a7-t7",
     "surah": 1,
     "ayah": 7,
     "startToken": 7,
@@ -297,41 +219,29 @@
     "operation": "REPLACE",
     "hafsText": "عَلَيْهِمْ",
     "variantText": "عَلَيْهُمْ",
+    "description": "بضم الهاء",
+    "uthmaniText": "عَلَيْهُمْ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-23T17:16:17.878803+00:00",
+    "updatedAt": "2026-09-23T17:16:17.878803+00:00",
     "readingIds": [
       "Q06-R01",
-      "Q06-R02",
       "Q09-R01",
+      "Q06-R02",
       "Q09-R02"
     ],
-    "locusId": "L001-عليهم-2",
+    "locusId": "L001-عليهم-2-a7-t7",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L001-عليهم-2-w2",
-        "variantId": "v-L001-عليهم-2-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L001-عليهم-2-w2-a7-t7",
+        "variantId": "v-L001-عليهم-2-w2-a7-t7",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 6,
-        "sourceReference": "صفحة المصحف 1 · صفحة المصدر 6",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
-      }
-    ],
-    "description": "بضم الهاء",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
-      },
-      {
-        "source": "D",
-        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+        "sourceReference": "صفحة المصحف 1",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   }

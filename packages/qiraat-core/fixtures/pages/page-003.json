@@ -1,6 +1,6 @@
 [
   {
-    "id": "v-L003-عليهم-1-w2",
+    "id": "v-L003-عليهم-1-w2-a6-t5",
     "surah": 2,
     "ayah": 6,
     "startToken": 5,
@@ -8,46 +8,34 @@
     "operation": "REPLACE",
     "hafsText": "عَلَيْهِمْ",
     "variantText": "عَلَيْهُمْ",
+    "description": "بضم الهاء",
+    "uthmaniText": "عَلَيْهُمْ",
     "differenceType": "HARAKAH",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T05:39:48.35653+00:00",
+    "updatedAt": "2026-09-24T05:39:48.35653+00:00",
     "readingIds": [
       "Q06-R01",
-      "Q06-R02",
       "Q09-R01",
+      "Q06-R02",
       "Q09-R02"
     ],
-    "locusId": "L003-عليهم-1",
+    "locusId": "L003-عليهم-1-a6-t5",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L003-عليهم-1-w2",
-        "variantId": "v-L003-عليهم-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L003-عليهم-1-w2-a6-t5",
+        "variantId": "v-L003-عليهم-1-w2-a6-t5",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 8,
-        "sourceReference": "صفحة المصحف 3 · صفحة المصدر 8",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
-      }
-    ],
-    "description": "بضم الهاء",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
-      },
-      {
-        "source": "D",
-        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+        "sourceReference": "صفحة المصحف 3",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L003-يخدعون-1-w2",
+    "id": "v-L003-يخدعون-1-w2-a9-t6",
     "surah": 2,
     "ayah": 9,
     "startToken": 6,
@@ -55,57 +43,36 @@
     "operation": "REPLACE",
     "hafsText": "يَخْدَعُونَ",
     "variantText": "يُخَادِعُونَ",
+    "description": "بألف وضم الياء",
+    "uthmaniText": "يُخَادِعُونَ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T05:37:50.03253+00:00",
+    "updatedAt": "2026-09-24T05:37:50.03253+00:00",
     "readingIds": [
       "Q01-R01",
-      "Q01-R02",
       "Q02-R01",
-      "Q02-R02",
       "Q03-R01",
+      "Q01-R02",
+      "Q02-R02",
       "Q03-R02"
     ],
-    "locusId": "L003-يخدعون-1",
+    "locusId": "L003-يخدعون-1-a9-t6",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L003-يخدعون-1-w2",
-        "variantId": "v-L003-يخدعون-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L003-يخدعون-1-w2-a9-t6",
+        "variantId": "v-L003-يخدعون-1-w2-a9-t6",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 8,
-        "sourceReference": "صفحة المصحف 3 · صفحة المصدر 8",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَمَا يَخْدَعُونَ الْفَتْحُ مِنْ قَبْلِ سَاكِنٍ وَبَعْدُ ذَكَا وَالْغَيْرُ كَالْحَرْفِ أَوَّلَا — D: يَخْدَعُونَ اعْلَمْ حِجَى"
-      },
-      {
-        "id": "s-SUSI-002-9-6-0010",
-        "variantId": "v-L003-يخدعون-1-w2",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 10; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "يَخْدَعُونَ → يُخَادِعُونَ | ضم الياء وفتح الخاء وألف بعدها وكسر الدال"
-      }
-    ],
-    "description": "بألف وضم الياء",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَمَا يَخْدَعُونَ الْفَتْحُ مِنْ قَبْلِ سَاكِنٍ وَبَعْدُ ذَكَا وَالْغَيْرُ كَالْحَرْفِ أَوَّلَا"
-      },
-      {
-        "source": "D",
-        "text": "يَخْدَعُونَ اعْلَمْ حِجَى"
+        "sourceReference": "صفحة المصحف 3",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L003-يكذبون-1-w2",
+    "id": "v-L003-يكذبون-1-w2-a10-t12",
     "surah": 2,
     "ayah": 10,
     "startToken": 12,
@@ -113,243 +80,110 @@
     "operation": "REPLACE",
     "hafsText": "يَكْذِبُونَ",
     "variantText": "يُكَذِّبُونَ",
+    "description": "بضم الياء وفتح الكاف وتشديد الذال",
+    "uthmaniText": "يُكَذِّبُونَ",
     "differenceType": "LETTER",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T05:39:00.116546+00:00",
+    "updatedAt": "2026-09-24T05:39:00.116546+00:00",
     "readingIds": [
       "Q01-R01",
-      "Q01-R02",
       "Q02-R01",
-      "Q02-R02",
       "Q03-R01",
-      "Q03-R02",
       "Q04-R01",
-      "Q04-R02",
       "Q08-R01",
-      "Q08-R02",
       "Q09-R01",
+      "Q01-R02",
+      "Q02-R02",
+      "Q03-R02",
+      "Q04-R02",
+      "Q08-R02",
       "Q09-R02"
     ],
-    "locusId": "L003-يكذبون-1",
+    "locusId": "L003-يكذبون-1-a10-t12",
     "locusType": "word_variant",
     "sources": [
       {
-        "id": "s-L003-يكذبون-1-w2",
-        "variantId": "v-L003-يكذبون-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L003-يكذبون-1-w2-a10-t12",
+        "variantId": "v-L003-يكذبون-1-w2-a10-t12",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 8,
-        "sourceReference": "صفحة المصحف 3 · صفحة المصدر 8",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَخَفَّفَ كُوفٍ يَكْذِبُونَ وَيَاؤُهُ بِفَتْحٍ وَلِلْبَاقِينَ ضُمَّ وَثُقِّلَا"
-      }
-    ],
-    "description": "بضم الياء وفتح الكاف وتشديد الذال",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَخَفَّفَ كُوفٍ يَكْذِبُونَ وَيَاؤُهُ بِفَتْحٍ وَلِلْبَاقِينَ ضُمَّ وَثُقِّلَا"
+        "sourceReference": "صفحة المصحف 3",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L003-قيل-1-w2",
+    "id": "v-L003-قيل-1-w2-a11-t2",
     "surah": 2,
     "ayah": 11,
     "startToken": 2,
     "endToken": 2,
-    "operation": "REPLACE",
+    "operation": "KEEP",
     "hafsText": "قِيلَ",
     "variantText": "قِيلَ",
+    "description": "بإشمام كسر القاف ضمًّا",
+    "uthmaniText": "قِيلَ",
     "differenceType": "HARAKAH",
+    "performanceNote": "بإشمام كسر القاف ضمًّا",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T05:39:17.907986+00:00",
+    "updatedAt": "2026-09-24T05:39:17.907986+00:00",
     "readingIds": [
       "Q04-R01",
       "Q07-R01",
-      "Q07-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q07-R02"
     ],
-    "locusId": "L003-قيل-1",
+    "locusId": "L003-قيل-1-a11-t2",
     "locusType": "performance_variant",
-    "performanceNote": "بإشمام كسر القاف ضمًّا",
     "sources": [
       {
-        "id": "s-L003-قيل-1-w2",
-        "variantId": "v-L003-قيل-1-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L003-قيل-1-w2-a11-t2",
+        "variantId": "v-L003-قيل-1-w2-a11-t2",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 8,
-        "sourceReference": "صفحة المصحف 3 · صفحة المصدر 8",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
-      }
-    ],
-    "description": "بإشمام كسر القاف ضمًّا",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
-      },
-      {
-        "source": "D",
-        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+        "sourceReference": "صفحة المصحف 3",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
   },
   {
-    "id": "v-L003-قيل-2-w2",
+    "id": "v-L003-قيل-2-w2-a13-t2",
     "surah": 2,
     "ayah": 13,
     "startToken": 2,
     "endToken": 2,
-    "operation": "REPLACE",
+    "operation": "KEEP",
     "hafsText": "قِيلَ",
     "variantText": "قِيلَ",
+    "description": "بإشمام كسر القاف ضمًّا",
+    "uthmaniText": "قِيلَ",
     "differenceType": "HARAKAH",
+    "performanceNote": "بإشمام كسر القاف ضمًّا",
     "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-17T12:00:00.000Z",
-    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "createdAt": "2026-09-24T10:48:08.130869+00:00",
+    "updatedAt": "2026-09-24T10:48:08.130869+00:00",
     "readingIds": [
       "Q04-R01",
       "Q07-R01",
-      "Q07-R02",
-      "Q09-R01"
+      "Q09-R01",
+      "Q07-R02"
     ],
-    "locusId": "L003-قيل-2",
+    "locusId": "L003-قيل-2-a13-t2",
     "locusType": "performance_variant",
-    "performanceNote": "بإشمام كسر القاف ضمًّا",
     "sources": [
       {
-        "id": "s-L003-قيل-2-w2",
-        "variantId": "v-L003-قيل-2-w2",
-        "sourceName": "مصحف القراءات العشر",
+        "id": "src-v-L003-قيل-2-w2-a13-t2",
+        "variantId": "v-L003-قيل-2-w2-a13-t2",
+        "sourceName": "مصحف القراءات العشر المتواترة",
         "sourceType": "pdf",
         "pdfFilename": "مصحف القراءات العشر-1.pdf",
-        "pdfPage": 8,
-        "sourceReference": "صفحة المصحف 3 · صفحة المصدر 8",
-        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
-        "sourceText": "SH: وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا — D: وَاشْمِمَا طِلَا بِقِيلَ"
-      }
-    ],
-    "description": "بإشمام كسر القاف ضمًّا",
-    "wajhIndex": 2,
-    "evidence": [
-      {
-        "source": "SH",
-        "text": "وَقِيلَ وَغِيضَ ثُمَّ جِيءَ يُشِمُّهَا لَدَىٰ كَسْرِهَا ضَمًّا رِجَالٌ لِتَكْمُلَا"
-      },
-      {
-        "source": "D",
-        "text": "وَاشْمِمَا طِلَا بِقِيلَ"
+        "sourceReference": "صفحة المصحف 3",
+        "verificationNotes": "معتمد ومراجع من قاعدة بيانات القراءات"
       }
     ]
-  },
-  {
-    "id": "v-L003-MUSTAHZUN-abu-jaafar",
-    "surah": 2,
-    "ayah": 14,
-    "startToken": 16,
-    "endToken": 16,
-    "operation": "REPLACE",
-    "hafsText": "مُسْتَهْزِءُونَ",
-    "variantText": "مُسْتَهْزُونَ",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-20T19:07:11.000Z",
-    "updatedAt": "2026-09-20T19:07:11.000Z",
-    "readingIds": [
-      "Q08-R01",
-      "Q08-R02"
-    ],
-    "locusId": "L003-MUSTAHZUN",
-    "locusType": "word_variant",
-    "sources": [
-      {
-        "id": "s-L003-MUSTAHZUN-abu-jaafar",
-        "variantId": "v-L003-MUSTAHZUN-abu-jaafar",
-        "sourceName": "اتباع الأثر في قراءة أبي جعفر بروايتي ابن جماز وابن وردان",
-        "sourceType": "printed-book",
-        "sourceReference": "باب الهمز المفرد، قاعدة الهمز المضموم بعد كسر إذا تلاه واو؛ مثال البقرة 2:14 (النص منشور عبر Quranpedia)",
-        "sourceText": "وإذا كان الهمز مضمومًا وما قبله مكسور وبعده واو فأبو جعفر يحذف الهمز ويضم ما قبله من أجل الهمز نحو: ﴿مُسْتَهْزِئُونَ﴾ تقرأ: ﴿مُسْتَهْزُونَ﴾.",
-        "verificationNotes": "ثبت موضع الكلمة في 2:14 ورقمها 16 من tokens.py. طوبق نص أبي جعفر المنشور على المصدر، مع إسناد الوجه إلى الروايتين ابن وردان وابن جماز؛ حُفظ نص حفص الأساسي دون تعديل."
-      }
-    ],
-    "description": "بحذف الهمزة وضم الزاي",
-    "evidence": [
-      {
-        "source": "اتباع الأثر في قراءة أبي جعفر",
-        "text": "أبو جعفر يحذف الهمز ويضم ما قبله من أجل الهمز نحو: ﴿مُسْتَهْزِئُونَ﴾ تقرأ: ﴿مُسْتَهْزُونَ﴾."
-      }
-    ]
-  },
-  {
-    "id": "v-SUSI-002-13-9-0014-performance",
-    "surah": 2,
-    "ayah": 13,
-    "startToken": 9,
-    "endToken": 9,
-    "operation": "REPLACE",
-    "hafsText": "أَنُؤْمِنُ",
-    "variantText": "أَنُؤْمِنُ",
-    "differenceType": "MADD",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-002-13-9-0014",
-    "locusType": "performance_variant",
-    "performanceNote": "إبدال الهمزة واواً مدية",
-    "sources": [
-      {
-        "id": "s-SUSI-002-13-9-0014",
-        "variantId": "v-SUSI-002-13-9-0014-performance",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 14; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "أَنُؤْمِنُ → أَنُومِنُ | إبدال الهمزة واواً مدية"
-      }
-    ],
-    "description": "إبدال الهمزة واواً مدية"
-  },
-  {
-    "id": "v-SUSI-002-13-12-0015",
-    "surah": 2,
-    "ayah": 13,
-    "startToken": 12,
-    "endToken": 13,
-    "operation": "REPLACE",
-    "hafsText": "ٱلسُّفَهَآءُ ۗ أَلَآ",
-    "variantText": "السُّفَهَاءُ وَلَا",
-    "differenceType": "HAMZ",
-    "verificationStatus": "REVIEWED",
-    "createdAt": "2026-09-23T12:00:00.000Z",
-    "updatedAt": "2026-09-23T12:00:00.000Z",
-    "readingIds": [
-      "Q03-R02"
-    ],
-    "locusId": "SUSI-002-13-12-0015",
-    "locusType": "multi_word_variant",
-    "sources": [
-      {
-        "id": "s-SUSI-002-13-12-0015",
-        "variantId": "v-SUSI-002-13-12-0015",
-        "sourceName": "farsh_susi_complete_quran.json",
-        "sourceType": "other",
-        "sourceReference": "user-supplied JSON row 15; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
-        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
-        "sourceText": "السُّفَهَاءُ أَلَا → السُّفَهَاءُ وَلَا | إبدال الهمزة الثانية واواً مفتوحة"
-      }
-    ],
-    "description": "إبدال الهمزة الثانية واواً مفتوحة"
   }
 ]

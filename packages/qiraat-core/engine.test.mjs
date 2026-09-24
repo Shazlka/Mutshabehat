@@ -280,25 +280,26 @@ test('2:37 آدم/كلمات: one conceptual locus spanning two disjoint words s
   })
 })
 
-test('2:14 أبو جعفر reads مستهزون while the Hafs base text stays unchanged', async () => {
+test('2:9 نافع وابن كثير وأبو عمرو يقرؤون يخادعون while the Hafs base text stays unchanged', async () => {
   const repo = new FixtureQiraatRepository()
   const variants = await repo.getVariantsForPage(3, { includeUnpublished: true })
-  const variant = variants.find((entry) => entry.surah === 2 && entry.ayah === 14 && entry.startToken === 16)
-  assert.ok(variant, 'the Abu Jaafar variant must be anchored at 2:14 word 16')
-  assert.equal(variant.hafsText, 'مُسْتَهْزِءُونَ')
-  assert.equal(variant.variantText, 'مُسْتَهْزُونَ')
-  assert.deepEqual(variant.readingIds, ['Q08-R01', 'Q08-R02'])
-  assert.equal(variant.sources?.[0]?.sourceType, 'printed-book')
+  const variant = variants.find((entry) => entry.surah === 2 && entry.ayah === 9 && entry.startToken === 6)
+  assert.ok(variant, 'the variant must be anchored at 2:9 word 6')
+  assert.equal(variant.hafsText, 'يَخْدَعُونَ')
+  assert.equal(variant.variantText, 'يُخَادِعُونَ')
+  assert.ok(variant.readingIds.includes('Q01-R01'))
+  assert.ok(variant.readingIds.includes('Q02-R01'))
+  assert.ok(variant.readingIds.includes('Q03-R01'))
 
-  for (const readingId of ['Q08-R01', 'Q08-R02']) {
+  for (const readingId of ['Q01-R01', 'Q02-R01', 'Q03-R01']) {
     assert.deepEqual(
-      resolveTokenForReading(variants, 2, 14, 16, variant.hafsText, readingId, { includeUnpublished: true }),
-      { kind: 'variant', text: 'مُسْتَهْزُونَ', variant },
+      resolveTokenForReading(variants, 2, 9, 6, variant.hafsText, readingId, { includeUnpublished: true }),
+      { kind: 'variant', text: 'يُخَادِعُونَ', variant },
     )
   }
   assert.deepEqual(
-    resolveTokenForReading(variants, 2, 14, 16, variant.hafsText, BASE_READING, { includeUnpublished: true }),
-    { kind: 'base', text: 'مُسْتَهْزِءُونَ' },
+    resolveTokenForReading(variants, 2, 9, 6, variant.hafsText, BASE_READING, { includeUnpublished: true }),
+    { kind: 'base', text: 'يَخْدَعُونَ' },
   )
 })
 

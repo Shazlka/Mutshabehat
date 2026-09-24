@@ -112,6 +112,21 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     await loadOverview()
   }, [loadPage, loadOverview, pageNumber])
 
+function broadcastSync(pageNo: number) {
+  try {
+    if (typeof window !== 'undefined') {
+      if ('BroadcastChannel' in window) {
+        const bc = new BroadcastChannel('qiraat-sync')
+        bc.postMessage({ type: 'QIRAAT_PAGE_UPDATED', page: pageNo, time: Date.now() })
+        bc.close()
+      }
+      localStorage.setItem('qiraat_sync_event', JSON.stringify({ page: pageNo, time: Date.now() }))
+    }
+  } catch {
+    // Best-effort only
+  }
+}
+
   function applyRowUpdate(row: ReviewRow) {
     setPage((current) => {
       if (!current) return current
@@ -130,6 +145,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       return { ...current, rows, stats: { total, unreviewed, reviewed, flagged, deleted } }
     })
     void loadOverview()
+    broadcastSync(pageNumber)
   }
 
   // Active rows for the currently selected word
@@ -211,19 +227,39 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     }
   }, [activeRowsForWord])
 
-  // 1-Click Confirm Row
+  // 1-Click Confirm Row (saves pending edits first if modified)
   const handleConfirmRow = useCallback(
-    async (row: ReviewRow) => {
+    async (row: ReviewRow, pendingEdits?: { fields: EntryFields; narrators: NarratorInput[] }) => {
       if (!deviceId) return
       setIsSaving(true)
       setErrorMessage(null)
       setSaveMessage(null)
 
-      const result = await reviewApi.setStatus(row, 'reviewed', null, deviceId)
+      let targetRow = row
+
+      if (pendingEdits) {
+        const updateRes = await reviewApi.updateEntry(targetRow, pendingEdits.fields, deviceId)
+        if (!updateRes.ok) {
+          setIsSaving(false)
+          setErrorMessage(updateRes.error.messageAr ?? updateRes.error.message)
+          return
+        }
+        targetRow = updateRes.data
+        const narratorsRes = await reviewApi.setNarrators(targetRow, pendingEdits.narrators, deviceId)
+        if (!narratorsRes.ok) {
+          setIsSaving(false)
+          applyRowUpdate(targetRow)
+          setErrorMessage(narratorsRes.error.messageAr ?? narratorsRes.error.message)
+          return
+        }
+        targetRow = narratorsRes.data
+      }
+
+      const result = await reviewApi.setStatus(targetRow, 'reviewed', null, deviceId)
       setIsSaving(false)
       if (result.ok) {
         applyRowUpdate(result.data)
-        setSaveMessage('تم اعتماد الموضع بنجاح ✓')
+        setSaveMessage('تم اعتماد وحفظ الموضع بنجاح ✓')
         setTimeout(() => setSaveMessage(null), 3000)
       } else {
         setErrorMessage(result.error.messageAr ?? result.error.message)
