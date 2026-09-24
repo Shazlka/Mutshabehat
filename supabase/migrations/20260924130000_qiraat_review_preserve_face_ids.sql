@@ -108,6 +108,9 @@ BEGIN
     AND qiraat_editor_face_signature(a.id)=face_signature
     AND qiraat_editor_variant_signature(a.id)=variant_signature LIMIT 1;
   IF existing_id IS NOT NULL THEN RETURN jsonb_build_object('annotations',qiraat_editor_annotations(key),'result','existing'); END IF;
+  IF source_id IS NOT NULL AND EXISTS(SELECT 1 FROM qiraat_annotations a WHERE a.deleted_at IS NULL
+    AND a.scope_type='WORD' AND a.start_canonical_key=key AND a.target_authority_id=(p->>'targetAuthorityId')
+    AND a.taxonomy_id=(p->>'taxonomyId')::uuid) THEN RAISE EXCEPTION 'COPY_CONFLICT'; END IF;
   created_rows:=qiraat_editor_create_annotation(p);
   IF source_id IS NULL THEN RETURN jsonb_build_object('annotations',created_rows,'result','created'); END IF;
   created_id:=(created_rows->0->>'id')::uuid;
