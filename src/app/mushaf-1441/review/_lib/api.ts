@@ -1,14 +1,18 @@
 import type {
+  BulkApplyResult,
+  BulkDeleteItem,
   CreateEntryInput,
   EntryFields,
   HistoryTransaction,
   NarratorInput,
+  OccurrenceCandidate,
   ReviewError,
   ReviewOverview,
   ReviewPage,
   ReviewResult,
   ReviewRow,
   ReviewStatus,
+  SameWordMatch,
 } from './types'
 
 const API_PATH = '/api/mushaf-1441/qiraat-review'
@@ -20,6 +24,7 @@ const REVIEW_ERROR_CODES = new Set<ReviewError['code']>([
   'RULE_D8',
   'RULE_NARRATOR_TWICE',
   'RULE_EMPTY_LOCATION',
+  'RULE_WASL_WAQF',
   'UNDO_CONFLICT',
   'UNDO_REFUSED',
   'not_found',
@@ -169,6 +174,60 @@ export function createEntry(
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action: 'create', entry, deviceId }),
+  })
+}
+
+export function bulkDeleteEntries(
+  items: BulkDeleteItem[],
+  note: string | null,
+  deviceId: string,
+): Promise<ReviewResult<{ deleted: ReviewRow[] }>> {
+  return request<{ deleted: ReviewRow[] }>(API_PATH, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'bulkDelete', items, note, deviceId }),
+  })
+}
+
+export function findSameWord(
+  target: { surah: number; ayah: number; word: number; excludeLocusId?: string | null },
+): Promise<ReviewResult<SameWordMatch[]>> {
+  return request<SameWordMatch[]>(API_PATH, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'findSameWord', ...target }),
+  })
+}
+
+export function copyEntryToOccurrence(
+  sourceEntryId: string,
+  target: { surah: number; ayah: number; startWord: number },
+  deviceId: string,
+): Promise<ReviewResult<ReviewRow>> {
+  return request<ReviewRow>(API_PATH, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'copyEntry', sourceEntryId, ...target, deviceId }),
+  })
+}
+
+export function findOccurrences(entryId: string): Promise<ReviewResult<OccurrenceCandidate[]>> {
+  return request<OccurrenceCandidate[]>(API_PATH, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'findOccurrences', entryId }),
+  })
+}
+
+export function bulkApply(
+  sourceEntryId: string,
+  targets: { surah: number; ayah: number; word: number }[],
+  deviceId: string,
+): Promise<ReviewResult<BulkApplyResult>> {
+  return request<BulkApplyResult>(API_PATH, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'bulkApply', sourceEntryId, targets, deviceId }),
   })
 }
 

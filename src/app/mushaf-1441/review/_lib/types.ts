@@ -25,6 +25,27 @@ export type ReviewFlag = {
   resolvedAt: string | null
 }
 
+// Structured Hamzah performance value for the تغيير الهمز / الهمزتان من كلمة / الهمزتان من كلمتين
+// Usul chapters. UI-defined shape; the database stores it as opaque jsonb and never interprets it.
+export type HamzahSingleTreatment = 'تحقيق' | 'تسهيل' | 'إبدال' | 'نقل' | 'حذف' | 'سكت قبل الهمز'
+export type HamzahDetail =
+  | { mode: 'single'; treatment: HamzahSingleTreatment }
+  | {
+      mode: 'kalima' // الهمزتان من كلمة واحدة
+      first: HamzahSingleTreatment
+      second: HamzahSingleTreatment
+      idkhalAlif?: boolean // إدخال ألف بين الهمزتين
+    }
+  | {
+      mode: 'kalimatayn' // الهمزتان من كلمتين
+      harakahRelation: 'متفقتان' | 'مختلفتان'
+      firstTreatment: HamzahSingleTreatment
+      secondTreatment: HamzahSingleTreatment
+      isqatFirst?: boolean // إسقاط الأولى
+      isqatSecond?: boolean // إسقاط الثانية
+      ibdalMadd?: boolean // إبدال حرف مد
+    }
+
 export type ReviewRow = {
   entryId: string
   locationId: string
@@ -55,6 +76,9 @@ export type ReviewRow = {
   legacyRef: string | null
   entryOrder: number
   deleted: boolean
+  appliesWasl: boolean
+  appliesWaqf: boolean
+  hamzahDetail: HamzahDetail | null
   narrators: ReviewNarrator[]
   flags: ReviewFlag[]
 }
@@ -111,11 +135,34 @@ export type EntryFields = Partial<{
   variantType: string
   categoryCode: string
   rulingText: string | null
+  appliesWasl: boolean
+  appliesWaqf: boolean
+  hamzahDetail: HamzahDetail | null
 }>
+
+export type BulkDeleteItem = { entryId: string; expectedVersion: string }
+export type SameWordMatch = ReviewRow
+export type OccurrenceCandidate = {
+  surah: number
+  ayah: number
+  word: number
+  page: number
+  canonicalKey: string
+  text: string
+  status: 'exists' | 'add'
+  existingEntryId: string | null
+}
+export type BulkApplyResult = {
+  sourceEntryId: string
+  added: { entryId: string; surah: number; ayah: number; word: number }[]
+  skipped: { surah: number; ayah: number; word: number; existingEntryId: string }[]
+  errors: { surah: number; ayah: number; word: number; message: string }[]
+}
 
 export type ReviewErrorCode =
   | 'unauthorized' | 'forbidden' | 'VERSION_CONFLICT' | 'RULE_D8' | 'RULE_NARRATOR_TWICE'
-  | 'RULE_EMPTY_LOCATION' | 'UNDO_CONFLICT' | 'UNDO_REFUSED' | 'not_found' | 'bad_request' | 'unavailable'
+  | 'RULE_EMPTY_LOCATION' | 'RULE_WASL_WAQF' | 'UNDO_CONFLICT' | 'UNDO_REFUSED' | 'not_found'
+  | 'bad_request' | 'unavailable'
 
 export type ReviewError = { code: ReviewErrorCode; status: number; message: string; messageAr?: string }
 export type ReviewResult<T> = { ok: true; data: T } | { ok: false; error: ReviewError }

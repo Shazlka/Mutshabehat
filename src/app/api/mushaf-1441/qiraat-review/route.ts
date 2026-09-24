@@ -180,6 +180,57 @@ export async function POST(request: NextRequest) {
       return json({ undone: Number(result.data ?? 0) })
     }
 
+    if (body.value.action === 'bulkDelete') {
+      const result = await supabase.rpc('qiraat_review_bulk_delete', {
+        p_items: body.value.items.map((item) => ({ entryId: item.entryId, expectedVersion: item.expectedVersion })),
+        p_note: body.value.note,
+        p_device_id: body.value.deviceId,
+      })
+      if (result.error) return databaseError(result.error.message)
+      return json(result.data ?? {})
+    }
+
+    if (body.value.action === 'findSameWord') {
+      const result = await supabase.rpc('qiraat_review_find_same_word', {
+        p_surah: body.value.surah,
+        p_ayah: body.value.ayah,
+        p_word: body.value.word,
+        p_exclude_locus_id: body.value.excludeLocusId ?? null,
+      })
+      if (result.error) return databaseError(result.error.message)
+      return json(result.data ?? [])
+    }
+
+    if (body.value.action === 'copyEntry') {
+      const result = await supabase.rpc('qiraat_review_copy_entry', {
+        p: {
+          sourceEntryId: body.value.sourceEntryId,
+          surah: body.value.surah,
+          ayah: body.value.ayah,
+          startWord: body.value.startWord,
+          deviceId: body.value.deviceId,
+        },
+      })
+      if (result.error) return databaseError(result.error.message)
+      return json(result.data ?? {}, 201)
+    }
+
+    if (body.value.action === 'findOccurrences') {
+      const result = await supabase.rpc('qiraat_review_find_occurrences', { p_entry_id: body.value.entryId })
+      if (result.error) return databaseError(result.error.message)
+      return json(result.data ?? [])
+    }
+
+    if (body.value.action === 'bulkApply') {
+      const result = await supabase.rpc('qiraat_review_bulk_apply', {
+        p_source_entry_id: body.value.sourceEntryId,
+        p_targets: body.value.targets,
+        p_device_id: body.value.deviceId,
+      })
+      if (result.error) return databaseError(result.error.message)
+      return json(result.data ?? {})
+    }
+
     // body.value.action === 'create'
     const result = await supabase.rpc('qiraat_review_create_entry', {
       p: {
