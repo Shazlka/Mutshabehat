@@ -38,6 +38,20 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-24 — Qiraat Review Workstation: Wider Desktop Editor Pane & Zero-Scroll Layout
+- **Wider Desktop Editor Canvas (`ReviewEditorPane.tsx`):**
+  - Expanded editor pane width across responsive breakpoints: `min-w-[340px] md:w-[480px] lg:w-[560px] xl:w-[740px] 2xl:w-[840px] shrink-0` (both active and empty states).
+  - Merged Hafs word box and action bar into a single streamlined top row (`flex-wrap items-center justify-between`), saving ~60px of vertical space.
+  - Implemented a 2-column responsive layout on desktop (`xl:grid xl:grid-cols-2 xl:gap-3`):
+    - **Column 1:** Kind segmented toggle (`فرش الحروف` / `أصول القراءات`) + Farsh/Usul sub-editor.
+    - **Column 2:** 10 Readers and 20 Narrators attribution grid (`ReaderNarratorSelector.tsx`).
+  - Compacted Reader cards (`p-1.5`, `py-0.5` buttons) and quick selection toolbar, fitting all 10 Readers in ~160px height.
+  - Completely eliminated vertical scrolling in the editor pane on desktop viewports (>= 1280px).
+- **Verification:**
+  - `npm run typecheck`: 0 errors.
+  - `npm run test:qiraat:review`: 19/19 passed.
+  - `npm run build`: Clean production build (35 static pages, 25 dynamic routes).
+
 ## 2026-09-24 — Pilot Ingestion (Pages 001–040) Promoted to Production Database (M3 Complete)
 - **Production Schema & Ingestion Promotion (`postgres`):**
   - Applied schema migration `supabase/migrations/20260925160000_qiraat_multi_source_ingestion.sql` (+ rollback in `supabase/rollbacks/`) to live PostgreSQL database (`postgres` on `127.0.0.1:5433`, container `mutshabehat-db`). Fresh pre-migration backup verified at `/Volumes/External Mini/Projects/mutshabehat-backups/mutshabehat_prod_backup_20260924_134453_pre_m3_promotion.dump` (12 MB).

@@ -157,7 +157,7 @@ export default function ReviewEditorPane({
       <aside
         dir="rtl"
         aria-label="محرر القراءات"
-        className="flex h-full w-full max-w-[480px] min-w-[340px] flex-col justify-between overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-right select-none"
+        className="flex h-full w-full min-w-[340px] md:w-[480px] lg:w-[560px] xl:w-[740px] 2xl:w-[840px] shrink-0 flex-col justify-between overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-4 sm:p-5 text-right select-none"
       >
         <div className="space-y-4">
           <div className="rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface-2)]/40 p-6 text-center">
@@ -212,12 +212,12 @@ export default function ReviewEditorPane({
     <aside
       dir="rtl"
       aria-label="محرر القراءات النشط"
-      className="flex h-full w-full max-w-[480px] min-w-[340px] flex-col overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-4 sm:p-5 text-right"
+      className="flex h-full w-full min-w-[340px] md:w-[480px] lg:w-[560px] xl:w-[740px] 2xl:w-[840px] shrink-0 flex-col overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-3 sm:p-4 text-right"
     >
-      {/* 1. Header & Hafs Word Display */}
-      <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)]/30 p-3.5 space-y-2">
+      {/* 1. Header & Hafs Word Display + Quick Actions */}
+      <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)]/30 p-2.5 sm:p-3 space-y-2">
         <div className="flex items-center justify-between text-xs text-[var(--color-ink-muted)] font-medium">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 flex-wrap">
             <span className="font-bold text-[var(--color-ink)]">{surahName}</span>
             <span>·</span>
             <span>الآية {currentAyahNumber}</span>
@@ -245,20 +245,94 @@ export default function ReviewEditorPane({
           )}
         </div>
 
-        {/* Big Hafs Word Box */}
-        <div className="flex items-center justify-between rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)] px-4 py-2">
-          <span className="font-quran text-3xl font-bold text-[var(--color-ink)]">
-            ﴿{currentHafsText}﴾
-          </span>
-          <span className="text-[11px] font-medium text-[var(--color-ink-muted)]">
-            رواية حفص عن عاصم
-          </span>
+        {/* Word Box & Action Bar Row */}
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)] px-3 py-1.5">
+          <div className="flex items-baseline gap-2">
+            <span className="font-quran text-2xl sm:text-3xl font-bold text-[var(--color-ink)]">
+              ﴿{currentHafsText}﴾
+            </span>
+            <span className="text-[10px] text-[var(--color-ink-muted)]">
+              رواية حفص عن عاصم
+            </span>
+          </div>
+
+          {/* Quick Actions in same row on desktop */}
+          {selectedRow && !isAddMode ? (
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <button
+                type="button"
+                onClick={() => onConfirmRow(selectedRow)}
+                disabled={isSaving}
+                className={cn(
+                  'flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer',
+                  selectedRow.reviewStatus === 'reviewed'
+                    ? 'bg-green-700 text-white ring-2 ring-green-500/50'
+                    : 'bg-green-600 hover:bg-green-700 text-white'
+                )}
+              >
+                <span>✓</span>
+                <span>{selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onFlagRow(selectedRow)}
+                disabled={isSaving}
+                className={cn(
+                  'rounded-md border px-2 py-1 text-xs font-bold transition-all disabled:opacity-50',
+                  selectedRow.reviewStatus === 'flagged'
+                    ? 'border-red-600 bg-red-600 text-white'
+                    : 'border-red-300 bg-red-50 text-red-700 hover:bg-red-100'
+                )}
+                title="تعليم للمراجعة"
+              >
+                ⚑
+              </button>
+
+              <button
+                type="button"
+                onClick={handleSaveExisting}
+                disabled={isSaving}
+                className="rounded-md bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-2.5 py-1 text-xs font-bold text-white shadow-xs disabled:opacity-50"
+              >
+                حفظ
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onDeleteRow(selectedRow)}
+                disabled={isSaving}
+                className="rounded-md border border-[var(--color-danger)]/40 px-2 py-1 text-xs font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)] disabled:opacity-50"
+                title="حذف الموضع"
+              >
+                🗑
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={handleCreate}
+                disabled={isSaving || (kind === 'farsh' && !readingText.trim()) || (kind === 'usul' && !categoryCode) || narrators.length === 0}
+                className="rounded-md bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-3 py-1 text-xs font-bold text-white shadow-sm disabled:opacity-40"
+              >
+                + إضافة للقاعدة
+              </button>
+              <button
+                type="button"
+                onClick={onCancelNewEntry}
+                className="rounded-md border border-[var(--color-border)] px-2.5 py-1 text-xs font-bold text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]"
+              >
+                إلغاء
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* 2. Multiple Variants Switcher (when word has >1 entries, or adding another) */}
+      {/* Multiple Variants Switcher (when word has >1 entries, or adding another) */}
       {!isAddMode && activeRowsForWord.length > 0 ? (
-        <div className="mt-3 flex flex-wrap items-center gap-1.5 border-b border-[var(--color-border-soft)] pb-2.5">
+        <div className="mt-2 flex flex-wrap items-center gap-1.5 border-b border-[var(--color-border-soft)] pb-2">
           <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">الأوجه المسجلة:</span>
           {activeRowsForWord.map((row, idx) => {
             const isSelected = selectedRow?.entryId === row.entryId
@@ -269,7 +343,7 @@ export default function ReviewEditorPane({
                 type="button"
                 onClick={() => onSelectRow(row)}
                 className={cn(
-                  'rounded-md px-2 py-1 text-xs font-bold transition-all',
+                  'rounded-md px-2 py-0.5 text-xs font-bold transition-all',
                   isSelected
                     ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-xs'
                     : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
@@ -285,87 +359,13 @@ export default function ReviewEditorPane({
             <button
               type="button"
               onClick={() => onStartNewEntry(selectedWordMeta)}
-              className="rounded-md border border-dashed border-[var(--color-border)] px-2 py-1 text-xs font-bold text-[var(--color-primary)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-soft)]/20"
+              className="rounded-md border border-dashed border-[var(--color-border)] px-2 py-0.5 text-xs font-bold text-[var(--color-primary)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-soft)]/20"
             >
-              + إضافة وجه آخر
+              + إضافة وجه
             </button>
           ) : null}
         </div>
       ) : null}
-
-      {/* 3. Action Bar - Instant 1-Click Confirm & Status Controls */}
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/40 p-2.5">
-        {selectedRow && !isAddMode ? (
-          <>
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={() => onConfirmRow(selectedRow)}
-                disabled={isSaving}
-                className={cn(
-                  'flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer',
-                  selectedRow.reviewStatus === 'reviewed'
-                    ? 'bg-green-700 text-white ring-2 ring-green-500/50'
-                    : 'bg-green-600 hover:bg-green-700 text-white'
-                )}
-              >
-                <span>✓</span>
-                <span>{selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد (إعادة الاعتماد)' : 'اعتماد (1-Click)'}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onFlagRow(selectedRow)}
-                disabled={isSaving}
-                className={cn(
-                  'rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all disabled:opacity-50',
-                  selectedRow.reviewStatus === 'flagged'
-                    ? 'border-red-600 bg-red-600 text-white'
-                    : 'border-red-300 bg-red-50 text-red-700 hover:bg-red-100'
-                )}
-              >
-                ⚑ تعليم
-              </button>
-
-              <button
-                type="button"
-                onClick={handleSaveExisting}
-                disabled={isSaving}
-                className="rounded-lg bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-3 py-1.5 text-xs font-bold text-white shadow-xs disabled:opacity-50"
-              >
-                حفظ التعديل
-              </button>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => onDeleteRow(selectedRow)}
-              disabled={isSaving}
-              className="rounded-lg border border-[var(--color-danger)]/40 px-2.5 py-1.5 text-xs font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)] disabled:opacity-50"
-            >
-              حذف 🗑
-            </button>
-          </>
-        ) : (
-          <div className="flex w-full items-center justify-between gap-2">
-            <button
-              type="button"
-              onClick={handleCreate}
-              disabled={isSaving || (kind === 'farsh' && !readingText.trim()) || (kind === 'usul' && !categoryCode) || narrators.length === 0}
-              className="flex-1 rounded-lg bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] py-2 text-xs font-bold text-white shadow-sm disabled:opacity-40"
-            >
-              + إضافة إلى قاعدة البيانات
-            </button>
-            <button
-              type="button"
-              onClick={onCancelNewEntry}
-              className="rounded-lg border border-[var(--color-border)] px-3 py-2 text-xs font-bold text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]"
-            >
-              إلغاء
-            </button>
-          </div>
-        )}
-      </div>
 
       {/* Status Messages */}
       {saveMessage ? (
@@ -379,68 +379,74 @@ export default function ReviewEditorPane({
         </div>
       ) : null}
 
-      {/* 4. Kind Segmented Toggle */}
-      <div className="mt-4 space-y-1.5">
-        <label className="text-xs font-bold text-[var(--color-ink)]">نوع الموضع:</label>
-        <div className="grid grid-cols-2 gap-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] p-1">
-          <button
-            type="button"
-            onClick={() => setKind('farsh')}
-            className={cn(
-              'rounded-md py-1.5 text-xs font-bold transition-all',
-              kind === 'farsh'
-                ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
-                : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+      {/* 2. Main 2-Column Responsive Layout on Desktop */}
+      <div className="mt-2.5 grid grid-cols-1 xl:grid-cols-2 gap-3 items-start">
+        {/* Column 1: Kind Toggle + Sub-editor (Farsh / Usul) */}
+        <div className="space-y-2">
+          {/* Kind Toggle */}
+          <div className="space-y-1">
+            <label className="text-xs font-bold text-[var(--color-ink)]">نوع الموضع:</label>
+            <div className="grid grid-cols-2 gap-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] p-0.5">
+              <button
+                type="button"
+                onClick={() => setKind('farsh')}
+                className={cn(
+                  'rounded-md py-1 text-xs font-bold transition-all',
+                  kind === 'farsh'
+                    ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
+                    : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                )}
+              >
+                فرش الحروف
+              </button>
+              <button
+                type="button"
+                onClick={() => setKind('usul')}
+                className={cn(
+                  'rounded-md py-1 text-xs font-bold transition-all',
+                  kind === 'usul'
+                    ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
+                    : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                )}
+              >
+                أصول القراءات
+              </button>
+            </div>
+          </div>
+
+          {/* Sub-Editor Container */}
+          <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-2xs">
+            {kind === 'usul' ? (
+              <UsulRuleGrid
+                selectedCategoryCode={categoryCode}
+                onSelectCategory={setCategoryCode}
+                rulingText={rulingText}
+                onChangeRulingText={setRulingText}
+                availableCategories={page.categories}
+              />
+            ) : (
+              <FarshFields
+                readingText={readingText}
+                onChangeReadingText={setReadingText}
+                variantType={variantType}
+                onChangeVariantType={setVariantType}
+                description={description}
+                onChangeDescription={setDescription}
+                performanceNote={performanceNote}
+                onChangePerformanceNote={setPerformanceNote}
+              />
             )}
-          >
-            فرش الحروف (تغيير رسم/نطق)
-          </button>
-          <button
-            type="button"
-            onClick={() => setKind('usul')}
-            className={cn(
-              'rounded-md py-1.5 text-xs font-bold transition-all',
-              kind === 'usul'
-                ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
-                : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
-            )}
-          >
-            أصول القراءات (قواعد عامة)
-          </button>
+          </div>
         </div>
-      </div>
 
-      {/* 5. Dynamic Kind Sub-Editor */}
-      <div className="mt-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3.5 shadow-2xs">
-        {kind === 'usul' ? (
-          <UsulRuleGrid
-            selectedCategoryCode={categoryCode}
-            onSelectCategory={setCategoryCode}
-            rulingText={rulingText}
-            onChangeRulingText={setRulingText}
-            availableCategories={page.categories}
+        {/* Column 2: Reader and Narrator Selector Grid */}
+        <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-2xs">
+          <ReaderNarratorSelector
+            narrators={narrators}
+            onChange={setNarrators}
+            disabled={isSaving}
           />
-        ) : (
-          <FarshFields
-            readingText={readingText}
-            onChangeReadingText={setReadingText}
-            variantType={variantType}
-            onChangeVariantType={setVariantType}
-            description={description}
-            onChangeDescription={setDescription}
-            performanceNote={performanceNote}
-            onChangePerformanceNote={setPerformanceNote}
-          />
-        )}
-      </div>
-
-      {/* 6. Reader and Narrator Selector Grid */}
-      <div className="mt-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3.5 shadow-2xs">
-        <ReaderNarratorSelector
-          narrators={narrators}
-          onChange={setNarrators}
-          disabled={isSaving}
-        />
+        </div>
       </div>
     </aside>
   )

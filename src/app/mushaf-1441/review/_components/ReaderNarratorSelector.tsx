@@ -350,7 +350,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
       </div>
 
       {/* Readers and Narrators Grid */}
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
         {CANONICAL_READERS.map((reader) => {
           const [n1, n2] = reader.narrators
           const s1 = selectedMap.has(n1.id)
@@ -362,7 +362,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
             <div
               key={reader.id}
               className={cn(
-                'rounded-lg border p-2 transition-colors',
+                'rounded-lg border p-1.5 transition-colors',
                 both
                   ? 'border-[var(--color-primary)] bg-[var(--color-primary-soft)]/20'
                   : indeterminate
@@ -371,7 +371,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
               )}
             >
               {/* Reader Header with Toggle */}
-              <div className="flex items-center justify-between gap-1.5 pb-1.5">
+              <div className="flex items-center justify-between gap-1 pb-1">
                 <label className="flex cursor-pointer items-center gap-1.5 select-none">
                   <IndeterminateCheckbox
                     checked={both}
@@ -381,7 +381,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                     ariaLabel={`اختيار راويي ${reader.nameAr}`}
                   />
                   <span
-                    className="h-2 w-2 rounded-full"
+                    className="h-2 w-2 rounded-full shrink-0"
                     style={{ backgroundColor: reader.color }}
                     aria-hidden="true"
                   />
@@ -392,7 +392,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
               </div>
 
               {/* Narrator Chips */}
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1">
                 {reader.narrators.map((narrator) => {
                   const isSelected = selectedMap.has(narrator.id)
                   return (
@@ -403,7 +403,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                       disabled={disabled}
                       aria-pressed={isSelected}
                       className={cn(
-                        'flex flex-1 items-center justify-center gap-1 rounded-md px-2 py-1 text-xs font-medium transition-all select-none',
+                        'flex flex-1 items-center justify-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-medium transition-all select-none',
                         isSelected
                           ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] font-bold text-white shadow-xs'
                           : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-surface-2)]'
