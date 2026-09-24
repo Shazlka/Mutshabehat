@@ -9,6 +9,11 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-24 — Review Editor workflow (GPT-6 Codex)
+- Added transactional OCC-checked multi soft-delete, same-word verified lookup and safe bulk preview/apply through authenticated editor RPCs.
+- Added inline face editing, structured Hamzah controls, Wasl/Waqf applicability, compact editor layout, corrected RTL navigation, and independent copied occurrence identities.
+- Added additive migrations and rollback-tested SQL coverage; no Quran text was changed. See `docs/qiraat/review-editor-implementation.md`.
+
 ## 2026-09-24 — Unrestricted Editor Access Across All Devices (Owner Request)
 - **Zero-Barrier Editor Authorization (`qiraat-review` & `qiraat-editor`):**
   - Updated `authenticatedClient()` in `src/app/api/mushaf-1441/qiraat-review/route.ts` and `src/app/api/mushaf-1441/qiraat-editor/route.ts` to attempt server-side sign-in with `AUTOLOGIN_EMAIL`/`AUTOLOGIN_PASSWORD` if no session cookie exists on the client device, and never return 401 unauthorized blocks.

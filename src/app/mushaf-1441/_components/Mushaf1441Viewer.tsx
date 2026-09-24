@@ -144,6 +144,7 @@ type Mushaf1441ViewerProps = {
   surahOptions: Mushaf1441SurahOption[]
   /** Every ayah → personal group link, loaded on the server; null = not available (client fetches). */
   initialMutshabehatHighlights?: MutshabehatAyahLink[] | null
+  initialReviewMode?: boolean
 }
 
 const MIN_PAGE = 1
@@ -453,6 +454,7 @@ export default function Mushaf1441Viewer({
   initialPageMetadata,
   surahOptions,
   initialMutshabehatHighlights = null,
+  initialReviewMode = false,
 }: Mushaf1441ViewerProps) {
   ReactDOM.preconnect('https://verses.quran.foundation', { crossOrigin: 'anonymous' })
   ReactDOM.preload(getQcfV2FontUrl(initialPage.pageNumber), {
@@ -536,7 +538,7 @@ export default function Mushaf1441Viewer({
   // Which of the three colour systems owns the page right now. `readReaderLayer` is not used as
   // the initial value: it touches localStorage, which the server render cannot, so it is read in
   // an effect after mount (same pattern as the other reader preferences below).
-  const [readerLayer, setReaderLayer] = useState<ReaderLayer>('mutshabehat')
+  const [readerLayer, setReaderLayer] = useState<ReaderLayer>(initialReviewMode ? 'qiraat' : 'mutshabehat')
   const readerLayerRef = useRef<ReaderLayer>('mutshabehat')
   useEffect(() => { readerLayerRef.current = readerLayer }, [readerLayer])
   const annotationsVisible = readerLayer === 'annotations'
@@ -566,7 +568,7 @@ export default function Mushaf1441Viewer({
   // leaving the layer and coming back returns the reader to the mode they were in, rather than
   // silently resetting them to مقارنة القراءات.
   const [qiraatSubMode, setQiraatSubMode] = useState<Exclude<QiraatMode, 'normal'>>('comparison')
-  const [qiraatEditMode, setQiraatEditMode] = useState(false)
+  const [qiraatEditMode, setQiraatEditMode] = useState(initialReviewMode)
   const [qiraatEditorWord, setQiraatEditorWord] = useState<MushafWord | null>(null)
   const [qiraatEditorDesktop, setQiraatEditorDesktop] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches)
   const [qiraatScopeMode, setQiraatScopeMode] = useState<'RANGE' | 'BOUNDARY' | null>(null)
@@ -612,7 +614,9 @@ export default function Mushaf1441Viewer({
   const [qiraatSelection, setQiraatSelection] = useState<QiraatSelection | null>(null)
   const [qiraatReview, setQiraatReview] = useState<Record<string, QiraatReviewVerdict>>({})
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
-  const isSpread = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
+  const spreadViewport = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
+  // The review editor needs one complete, proportioned sheet in its narrower page pane.
+  const isSpread = spreadViewport && !qiraatEditMode
   const lastTapRef = useRef(0)
 
   const pageStageRef = useRef<HTMLDivElement | null>(null)
@@ -722,6 +726,8 @@ export default function Mushaf1441Viewer({
         annotationMode: AnnotationEditorMode
       }>
       if (parsed.annotationDraft) {
+        // Restore a per-device draft after hydration; server rendering cannot read localStorage.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setAnnotationDraft((current) => ({
           ...current,
           ...parsed.annotationDraft,
@@ -826,9 +832,11 @@ export default function Mushaf1441Viewer({
   }, [contextMenu])
 
   useEffect(() => {
-    setReaderLayer(readReaderLayer())
+    // Restore the chosen layer and theme after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setReaderLayer(initialReviewMode ? 'qiraat' : readReaderLayer())
     setMushafTheme(readMushafTheme())
-  }, [])
+  }, [initialReviewMode])
 
   // The ONE place the active layer changes. Switching layers also drops whatever the previous one
   // had open — a متشابهات card, a notes sheet, a Qiraat peek — so the reader never ends up looking
@@ -879,6 +887,8 @@ export default function Mushaf1441Viewer({
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(QIRAAT_REVIEW_STORAGE_KEY)
+      // Per-device review verdicts are only available after hydration.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (raw) setQiraatReview(JSON.parse(raw) as Record<string, QiraatReviewVerdict>)
     } catch { /* storage unavailable — review simply starts empty */ }
   }, [])
@@ -1196,6 +1206,7 @@ export default function Mushaf1441Viewer({
       const prefs = JSON.parse(raw) as Partial<QiraatPrefs>
       // Restores only WHICH Qiraat mode, never whether Qiraat is on: that is the layer's call
       // (READER_LAYER_STORAGE_KEY), so restoring a preference can't quietly claim the page.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (prefs.mode && prefs.mode !== 'normal') setQiraatSubMode(prefs.mode)
       if (prefs.selectedReadingId) setQiraatSelectedReadingId(prefs.selectedReadingId)
       if (typeof prefs.studyMode === 'boolean') setQiraatStudyMode(prefs.studyMode)
@@ -4674,18 +4685,20 @@ export default function Mushaf1441Viewer({
             onClick={() => turnPage(-1)}
             disabled={pageNumber <= MIN_PAGE}
             aria-label="الصفحة السابقة"
+            title="الصفحة السابقة"
             className={`hidden size-10 items-center justify-center rounded-md border text-lg font-bold transition-colors disabled:opacity-40 sm:flex ${currentThemeTokens.headerBtnClass}`}
           >
-            →
+            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
           </button>
           <button
             type="button"
             onClick={() => turnPage(1)}
             disabled={pageNumber >= MAX_PAGE}
             aria-label="الصفحة التالية"
+            title="الصفحة التالية"
             className={`hidden size-10 items-center justify-center rounded-md border text-lg font-bold transition-colors disabled:opacity-40 sm:flex ${currentThemeTokens.headerBtnClass}`}
           >
-            ←
+            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg>
           </button>
           <Link
             href="/"
@@ -4848,7 +4861,7 @@ export default function Mushaf1441Viewer({
           </div>
         ) : null}
       </main>
-      {qiraatEditorWord ? <div className={qiraatEditorDesktop ? 'flex min-h-0' : 'contents'}>{renderQiraatEditor(qiraatEditorDesktop)}</div> : null}
+      {qiraatEditorWord ? <div className={qiraatEditorDesktop ? 'flex min-h-0 w-[60%] min-w-0 shrink-0' : 'contents'}>{renderQiraatEditor(qiraatEditorDesktop)}</div> : null}
       </div>
 
       {/* Bottom quick page slider — preview page + surah while dragging, navigate on release */}
