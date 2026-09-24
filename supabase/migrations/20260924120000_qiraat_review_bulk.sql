@@ -127,7 +127,7 @@ DECLARE src qiraat_annotations; source_word quran_words; target_word quran_words
   new_id uuid; face_row record; variant_row record; new_face_id uuid; face_map jsonb;
 BEGIN
   IF auth.uid() IS NULL THEN RAISE EXCEPTION 'unauthorized'; END IF;
-  IF p_keys IS NULL OR array_length(p_keys,1) IS NULL OR array_length(p_keys,1)>1000 THEN RAISE EXCEPTION 'invalid selection'; END IF;
+  IF p_keys IS NULL OR array_length(p_keys,1) IS NULL OR array_length(p_keys,1)>10000 THEN RAISE EXCEPTION 'invalid selection'; END IF;
   IF (SELECT count(DISTINCT x) FROM unnest(p_keys) x) <> array_length(p_keys,1) THEN RAISE EXCEPTION 'duplicate selection'; END IF;
   SELECT array_agg(x ORDER BY x) INTO p_keys FROM unnest(p_keys) x;
   SELECT * INTO src FROM qiraat_annotations WHERE id=p_source_id AND deleted_at IS NULL AND scope_type='WORD' FOR SHARE;

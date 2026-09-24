@@ -127,6 +127,15 @@ BEGIN
       AND a.source_annotation_id=source_id)<>1 THEN
     RAISE EXCEPTION 'selected face copy copied extra faces';
   END IF;
+  update_payload:=jsonb_set(jsonb_set(update_payload,'{startCanonicalKey}','"002:030:008"'::jsonb),
+    '{endCanonicalKey}','"002:030:008"'::jsonb);
+  BEGIN
+    PERFORM qiraat_editor_create_annotation_v2(update_payload);
+    RAISE EXCEPTION 'expected verified copy conflict';
+  EXCEPTION WHEN others THEN
+    IF SQLERRM='expected verified copy conflict' THEN RAISE; END IF;
+    IF SQLERRM<>'COPY_CONFLICT' THEN RAISE; END IF;
+  END;
   RAISE NOTICE 'verified lookup, copy isolation, dedup, conflict, Waqf and Quran text: passed';
 END $$;
 ROLLBACK;
