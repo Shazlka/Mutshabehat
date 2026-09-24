@@ -309,6 +309,75 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     [deviceId]
   )
 
+  // Multi-select delete (feature 1): all-or-nothing, version-checked per row.
+  const handleBulkDelete = useCallback(
+    async (rows: ReviewRow[], note: string | null) => {
+      if (!deviceId || rows.length === 0) return
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
+
+      const items = rows.map((r) => ({ entryId: r.entryId, expectedVersion: r.version }))
+      const result = await reviewApi.bulkDeleteEntries(items, note, deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        result.data.deleted.forEach(applyRowUpdate)
+        setSelectedRowId(null)
+        setUndoBanner({ message: `تم حذف ${result.data.deleted.length} أوجه. يمكن استرجاعها من سجل التعديلات.` })
+        setTimeout(() => setUndoBanner(null), 8000)
+      } else {
+        setErrorMessage(result.error.messageAr ?? result.error.message)
+        if (result.error.code === 'VERSION_CONFLICT') void reloadCurrentPage()
+      }
+    },
+    [deviceId, reloadCurrentPage]
+  )
+
+  // Copy a previously reviewed configuration onto this occurrence (feature 3). New copy always
+  // lands unreviewed -- never share a mutable row across two Quranic locations.
+  const handleCopyToOccurrence = useCallback(
+    async (sourceEntryId: string, target: { surah: number; ayah: number; startWord: number }) => {
+      if (!deviceId) return
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
+      const result = await reviewApi.copyEntryToOccurrence(sourceEntryId, target, deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        setSaveMessage('تم نسخ الوجه إلى هذا الموضع (غير معتمد بعد، بحاجة لمراجعة)')
+        setTimeout(() => setSaveMessage(null), 5000)
+        await reloadCurrentPage()
+        setSelectedRowId(result.data.entryId)
+      } else {
+        setErrorMessage(result.error.messageAr ?? result.error.message)
+      }
+    },
+    [deviceId, reloadCurrentPage]
+  )
+
+  // Apply-to-all-occurrences (feature 7): transactional; skips exact-equivalent matches.
+  const handleBulkApply = useCallback(
+    async (sourceEntryId: string, targets: { surah: number; ayah: number; word: number }[]) => {
+      if (!deviceId) return null
+      setIsSaving(true)
+      setErrorMessage(null)
+      const result = await reviewApi.bulkApply(sourceEntryId, targets, deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        setSaveMessage(
+          `تم تطبيق الوجه على ${result.data.added.length} موضعًا. موجود مسبقًا: ${result.data.skipped.length}.` +
+            (result.data.errors.length ? ` تعذّر على ${result.data.errors.length} مواضع.` : '')
+        )
+        setTimeout(() => setSaveMessage(null), 7000)
+        void reloadCurrentPage()
+        return result.data
+      }
+      setErrorMessage(result.error.messageAr ?? result.error.message)
+      return null
+    },
+    [deviceId, reloadCurrentPage]
+  )
+
   // Delete Row (Soft delete with undo)
   const handleDeleteRow = useCallback(
     async (row: ReviewRow) => {
@@ -436,6 +505,9 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
               onFlagRow={handleFlagRow}
               onSaveRowEdits={handleSaveRowEdits}
               onDeleteRow={handleDeleteRow}
+              onBulkDelete={handleBulkDelete}
+              onCopyToOccurrence={handleCopyToOccurrence}
+              onBulkApply={handleBulkApply}
               onCreateNewEntry={handleCreateNewEntry}
               isSaving={isSaving}
               saveMessage={saveMessage}

@@ -51,11 +51,12 @@ export default function ReviewNav({ pageNumber, page, overview, historyOpen, onG
         <button
           type="button"
           aria-label="الصفحة السابقة"
+          title="الصفحة السابقة"
           className="min-h-9 min-w-9 rounded-md border border-[var(--color-border)] text-sm disabled:opacity-40"
           disabled={pageNumber <= MIN_PAGE}
           onClick={() => onGoToPage(pageNumber - 1)}
         >
-          ←
+          →
         </button>
         <form onSubmit={submitJump} className="flex items-center gap-1">
           <label className="sr-only" htmlFor="qiraat-review-page-jump">
@@ -73,11 +74,12 @@ export default function ReviewNav({ pageNumber, page, overview, historyOpen, onG
         <button
           type="button"
           aria-label="الصفحة التالية"
+          title="الصفحة التالية"
           className="min-h-9 min-w-9 rounded-md border border-[var(--color-border)] text-sm disabled:opacity-40"
           disabled={pageNumber >= MAX_PAGE}
           onClick={() => onGoToPage(pageNumber + 1)}
         >
-          →
+          ←
         </button>
       </div>
 

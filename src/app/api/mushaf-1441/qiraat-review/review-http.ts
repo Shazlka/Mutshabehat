@@ -103,6 +103,39 @@ export type ValidatedPost =
       entry: CreateEntryPayload
       deviceId?: string | null
     }
+  | {
+      action: 'bulkDelete'
+      items: Array<{ entryId: string; expectedVersion: string }>
+      note?: string | null
+      deviceId?: string | null
+    }
+  | {
+      action: 'findSameWord'
+      surah: number
+      ayah: number
+      word: number
+      excludeLocusId?: string | null
+    }
+  | {
+      action: 'copyEntry'
+      sourceEntryId: string
+      surah: number
+      ayah: number
+      startWord: number
+      endAyah?: number
+      endWord?: number
+      deviceId?: string | null
+    }
+  | {
+      action: 'findOccurrences'
+      entryId: string
+    }
+  | {
+      action: 'bulkApply'
+      sourceEntryId: string
+      targets: Array<{ surah: number; ayah: number; word: number }>
+      deviceId?: string | null
+    }
 
 const PATCH_ACTIONS = ['status', 'update', 'narrators', 'delete', 'restore'] as const
 const STATUSES = ['unreviewed', 'reviewed', 'flagged'] as const
@@ -115,6 +148,9 @@ const ENTRY_FIELD_KEYS = [
   'variantType',
   'categoryCode',
   'rulingText',
+  'appliesWasl',
+  'appliesWaqf',
+  'hamzahDetail',
 ] as const
 
 function failure(error: string): ValidationFailure {
@@ -200,6 +236,20 @@ function validateEntryFields(fields: unknown): ValidationResult<Record<string, u
       }
       if (value.length > MAX_SHORT_CODE_LENGTH) {
         return failure(`${key} is too long`)
+      }
+      continue
+    }
+
+    if (key === 'appliesWasl' || key === 'appliesWaqf') {
+      if (typeof value !== 'boolean') {
+        return failure(`${key} must be a boolean`)
+      }
+      continue
+    }
+
+    if (key === 'hamzahDetail') {
+      if (value !== null && !isPlainObject(value)) {
+        return failure('hamzahDetail must be an object or null')
       }
       continue
     }
@@ -356,18 +406,100 @@ export function validatePatchBody(input: unknown): ValidationResult<ValidatedPat
   return { ok: true, value: { action: 'restore', entryId, version, deviceId } }
 }
 
+const POST_ACTIONS = ['undo', 'create', 'bulkDelete', 'findSameWord', 'copyEntry', 'findOccurrences', 'bulkApply'] as const
+
+function validatePositiveInt(value: unknown, field: string, min = 1): number | ValidationFailure {
+  const n = typeof value === 'number' ? value : typeof value === 'string' ? Number(value) : NaN
+  if (!Number.isInteger(n) || n < min) return failure(`${field} must be an integer >= ${min}`)
+  return n
+}
+
 export function validatePostBody(input: unknown): ValidationResult<ValidatedPost> {
   if (!isPlainObject(input)) {
     return failure('body must be an object')
   }
 
   const action = input.action
-  if (action !== 'undo' && action !== 'create') {
-    return failure('action must be undo or create')
+  if (!(POST_ACTIONS as readonly string[]).includes(String(action))) {
+    return failure('valid action is required')
   }
 
   const deviceId = validateDeviceId(input.deviceId)
   if (isFailure(deviceId)) return deviceId
+
+  if (action === 'findOccurrences') {
+    const entryId = validateNonEmptyString(input.entryId, 'entryId', MAX_ENTRY_ID_LENGTH)
+    if (isFailure(entryId)) return entryId
+    return { ok: true, value: { action, entryId } }
+  }
+
+  if (action === 'findSameWord') {
+    const surah = validatePositiveInt(input.surah, 'surah')
+    if (isFailure(surah)) return surah
+    const ayah = validatePositiveInt(input.ayah, 'ayah')
+    if (isFailure(ayah)) return ayah
+    const word = validatePositiveInt(input.word, 'word')
+    if (isFailure(word)) return word
+    let excludeLocusId: string | null | undefined
+    if (hasOwn(input, 'excludeLocusId')) {
+      const v = validateOptionalText(input.excludeLocusId, 'excludeLocusId')
+      if (isFailure(v)) return v
+      excludeLocusId = v
+    }
+    return { ok: true, value: { action, surah, ayah, word, excludeLocusId } }
+  }
+
+  if (action === 'bulkDelete') {
+    const rawItems = input.items
+    if (!Array.isArray(rawItems) || rawItems.length < 1 || rawItems.length > 200) {
+      return failure('items must contain between 1 and 200 entries')
+    }
+    const items: Array<{ entryId: string; expectedVersion: string }> = []
+    for (const raw of rawItems) {
+      if (!isPlainObject(raw)) return failure('each item must be an object')
+      const entryId = validateNonEmptyString(raw.entryId, 'entryId', MAX_ENTRY_ID_LENGTH)
+      if (isFailure(entryId)) return entryId
+      const expectedVersion = validateNonEmptyString(raw.expectedVersion, 'expectedVersion')
+      if (isFailure(expectedVersion)) return expectedVersion
+      items.push({ entryId, expectedVersion })
+    }
+    const note = validateOptionalText(input.note, 'note')
+    if (isFailure(note)) return note
+    return { ok: true, value: { action, items, note, deviceId } }
+  }
+
+  if (action === 'copyEntry') {
+    const sourceEntryId = validateNonEmptyString(input.sourceEntryId, 'sourceEntryId', MAX_ENTRY_ID_LENGTH)
+    if (isFailure(sourceEntryId)) return sourceEntryId
+    const surah = validatePositiveInt(input.surah, 'surah')
+    if (isFailure(surah)) return surah
+    const ayah = validatePositiveInt(input.ayah, 'ayah')
+    if (isFailure(ayah)) return ayah
+    const startWord = validatePositiveInt(input.startWord, 'startWord')
+    if (isFailure(startWord)) return startWord
+    return { ok: true, value: { action, sourceEntryId, surah, ayah, startWord, deviceId } }
+  }
+
+  if (action === 'bulkApply') {
+    const sourceEntryId = validateNonEmptyString(input.sourceEntryId, 'sourceEntryId', MAX_ENTRY_ID_LENGTH)
+    if (isFailure(sourceEntryId)) return sourceEntryId
+    const rawTargets = input.targets
+    if (!Array.isArray(rawTargets) || rawTargets.length < 1 || rawTargets.length > 500) {
+      return failure('targets must contain between 1 and 500 entries')
+    }
+    const targets: Array<{ surah: number; ayah: number; word: number }> = []
+    for (const raw of rawTargets) {
+      if (!isPlainObject(raw)) return failure('each target must be an object')
+      const surah = validatePositiveInt(raw.surah, 'target surah')
+      if (isFailure(surah)) return surah
+      const ayah = validatePositiveInt(raw.ayah, 'target ayah')
+      if (isFailure(ayah)) return ayah
+      const word = validatePositiveInt(raw.word, 'target word')
+      if (isFailure(word)) return word
+      targets.push({ surah, ayah, word })
+    }
+    return { ok: true, value: { action, sourceEntryId, targets, deviceId } }
+  }
 
   if (action === 'undo') {
     const rawTxid = input.txid
@@ -510,6 +642,15 @@ export function mapReviewDatabaseError(message: string): {
       body: {
         error: 'RULE_NARRATOR_TWICE',
         messageAr: 'راوٍ مكرر في هذا الموضع دون وجه مستقل',
+      },
+    }
+  }
+  if (/WASL_WAQF/i.test(rawMessage)) {
+    return {
+      status: 422,
+      body: {
+        error: 'RULE_WASL_WAQF',
+        messageAr: 'لا بد أن ينطبق الموضع على الوصل أو الوقف على الأقل',
       },
     }
   }

@@ -9,6 +9,62 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-24 — Review Editor (Phase 4) bulk workflow: correct-component port of the 8 features
+- The previous "Review Editor workflow (GPT-6 Codex)" entry below wired these 8 features into the
+  **wrong** component (`QiraatEditor.tsx`, the Phase 5 annotation editor reached only via the
+  `/mushaf-1441` reader's "وضع تعديل القراءات" toggle). This entry ports the same 8 features onto
+  the **actual** Review Page the features were meant for: `/mushaf-1441/review` →
+  `ReviewApp.tsx`/`ReviewEditorPane.tsx`/`ReviewMushafPane.tsx`/`ReviewNav.tsx`, backed by the
+  Phase 4 schema (`qiraat_entries`/`qiraat_loci`/`qiraat_review_*` RPCs). The Phase 5 editor and
+  its own RPCs are untouched — this is a parallel, schema-correct implementation, not a redirect.
+- **Migration** `supabase/migrations/20260926100000_qiraat_review_bulk_workflow.sql` (+ rollback):
+  additive `applies_wasl`/`applies_waqf`/`hamzah_detail` columns on `qiraat_entries` (CHECK: at
+  least one of Wasl/Waqf always true), and 5 new editor-gated RPCs —
+  `qiraat_review_bulk_delete` (all-or-nothing OCC-checked multi soft-delete),
+  `qiraat_review_find_same_word` (word-position-keyed lookup of prior REVIEWED configurations),
+  `qiraat_review_copy_entry` (copies a full configuration onto a new, independent entry, forced to
+  `unreviewed`/`REVIEWED`, never auto-verified), `qiraat_review_find_occurrences` and
+  `qiraat_review_bulk_apply` (preview-then-apply "apply to all occurrences of the same word",
+  skips exact-equivalent existing entries, per-target error isolation, capped at 500 targets, and
+  never writes `quran_words` — see the migration's own safety comment).
+- **API**: `src/app/api/mushaf-1441/qiraat-review/route.ts` + `review-http.ts` gain the 5 new POST
+  actions (`bulkDelete`, `findSameWord`, `copyEntry`, `findOccurrences`, `bulkApply`) and a
+  `RULE_WASL_WAQF` 422 error mapping, through the same authenticated/editor-gated path as every
+  existing action.
+- **UI** (`ReviewEditorPane.tsx` + new `HamzahDetailFields.tsx`): checkbox multi-select delete over
+  "الأوجه المسجلة" with a compact confirmation; a same-word "نسخ الوجه" panel; an
+  "تطبيق على جميع المواضع" preview/select/apply panel; a `[✓ الوصل] [✓ الوقف]` toggle (DB-enforced,
+  never both off); structured Hamzah chip controls for `TAGHYIR_HAMZ`/`HAMZATAN_KALIMA`/
+  `HAMZATAN_KALIMATAYN`, documented in `docs/qiraat/review-editor-phase4-implementation.md`.
+- **Fixed** `ReviewNav.tsx`'s previous/next page arrow glyphs, which were reversed relative to the
+  file's own existing keyboard-shortcut convention (`ArrowLeft` already meant next/page+1).
+- **Not done in this pass**: the 38/62 pane-width layout redesign (the editor pane was already
+  widened to ~840px by an earlier commit; not re-measured here), and the bulk-apply occurrence
+  preview's 4-way تعارض/يحتاج مراجعة classification (implemented as a simpler 2-way
+  add/exists check — see the implementation doc for why).
+- **DB migration: written, reviewed, functionally verified on a reconstructed scratch schema, NOT
+  applied to the live database.** This sandbox has no connectivity to the self-hosted Postgres, so
+  the migration could not be applied there; someone with Mac Mini/Docker access must back it up and
+  apply it per `CLAUDE.md`. It WAS, however, actually run: the full Phase 4 migration chain
+  (`20260917120000` through `20260925170000`) was replayed on a local scratch Postgres 16 to
+  reconstruct the real `qiraat_entries`/`qiraat_loci`/`quran_words` schema, this migration applied
+  cleanly on top, and every new RPC was exercised live with seeded data — `qiraat_review_bulk_delete`
+  (all-or-nothing on a deliberately stale version, then a clean two-row soft-delete),
+  `qiraat_review_find_same_word` / `qiraat_review_copy_entry` (found a prior VERIFIED occurrence of
+  الله, copied it onto a fresh word position as an independent `unreviewed`/`REVIEWED` entry, distinct
+  id), `qiraat_review_find_occurrences` / `qiraat_review_bulk_apply` (added 1, skipped 2 pre-existing,
+  then a second run skipped all 3 — idempotent), and the `applies_wasl`/`applies_waqf` CHECK
+  constraint (rejects both-false). `quran_words` count and checksum were confirmed byte-identical
+  before and after every step. Verification also caught and fixed two regressions in the original
+  subagent pass before this landed: one test assertion whose Arabic literal had its combining marks
+  (fatha/shadda) in a different Unicode order than the source string it compared against — passed
+  `tsc`, failed at runtime, invisible on screen — and one newly introduced
+  `react-hooks/set-state-in-effect` lint error (moved to a render-time reset per
+  https://react.dev/learn/you-might-not-need-an-effect; net lint delta vs. the pre-existing baseline
+  on these files is now zero new errors). `npm run typecheck`, `test:qiraat` (44 tests),
+  `test:qiraat:review` (19/19), all 7 `mushaf:validate` checks, and `npm run build` all pass. See
+  `docs/qiraat/review-editor-phase4-implementation.md` for the full feature-by-feature status.
+
 ## 2026-09-24 — Review Editor workflow (GPT-6 Codex)
 - Added transactional OCC-checked multi soft-delete, same-word verified lookup and safe bulk preview/apply through authenticated editor RPCs.
 - Added inline face editing, structured Hamzah controls, Wasl/Waqf applicability, compact editor layout, corrected RTL navigation, and independent copied occurrence identities.
