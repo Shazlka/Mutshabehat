@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-24 — Review Editor workflow (GPT-6 Codex)
+- Added transactional OCC checked multi soft-delete, conservative same-word verified lookup and bulk preview/apply through authenticated editor RPCs. Copies use new occurrence rows, retain provenance in `source_annotation_id`, skip equivalent metadata, and protect conflicts.
+- Added structured Hamzah controls and three chapters under the existing Usul taxonomy, Wasl/Waqf chips backed by `reading_context`, compact recorded-face rows, and a dedicated `/mushaf-1441/review` route reusing the viewer. Edit mode shows one scaled page beside a 60% editor; RTL arrow actions advance and reverse one page.
+- Migrations: `supabase/migrations/20260924120000_qiraat_review_bulk.sql` and `20260924130000_qiraat_review_preserve_face_ids.sql`, applied after a fresh 13 MB `pg_dump -Fc` at `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost/backups/pre-review-editor-20260924.dump`. The compatible PATCH RPC now retains child face IDs. PostgREST schema reloaded. No Quran text was changed. See `docs/qiraat/review-editor-implementation.md` for model, verification, and limits.
+- Verification: `tests/qiraat_review_bulk.sql` passed in a rolled-back transaction; `npm run typecheck` passed with Node 22 and a 4 GB heap. Browser, lint, and build results are recorded in the implementation report.
+
 ## 2026-09-23 — Merge duplicate per-reader Qiraat faces
 - Reconciled duplicate fixture faces across all 604 pages and retained removed source records verbatim in `docs/qiraat-reader-dedupe-audit.json`. Page 11, 2:75 now shows the existing hamza-substitution ruling once for Warsh, Susi, and Abu Jaafar, with the Susi source citation appended.
 - Added shared Susi/Duri/future-importer merge logic and validator checks. Eighty-two same-reader/action or distinct-face conflicts remain documented for manual review. No database changes; no Susi/Duri importer-ID entries were found. Orchestrator review restored 24 reader assignments (23 merges, mostly al-Susi Q03-R02) that the final Codex rebuild had dropped from target rulings, using the reader's own source wording and rawi-level authorityId; merge_faces.py fixed to do the same.
