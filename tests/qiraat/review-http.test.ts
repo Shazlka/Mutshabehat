@@ -117,6 +117,7 @@ test('validatePatchBody accepts update fields and validates every field rule', (
     entryId: 'entry-1',
     version: 'opaque-version',
     fields: {
+      kind: 'farsh',
       notes: null,
       readingText: 'قراءة',
       uthmaniText: '',
@@ -129,11 +130,24 @@ test('validatePatchBody accepts update fields and validates every field rule', (
   })
   assert.equal(valid.ok, true)
 
+  const validUsul = validatePatchBody({
+    action: 'update',
+    entryId: 'entry-1',
+    version: 'opaque-version',
+    fields: {
+      kind: 'usul',
+      categoryCode: 'MADD',
+    },
+  })
+  assert.equal(validUsul.ok, true)
+
   for (const fields of [
     null,
     [],
     {},
     { unknown: 'value' },
+    { kind: 'invalid' },
+    { kind: 123 },
     { notes: 1 },
     { readingText: null },
     { notes: 'x'.repeat(2001) },

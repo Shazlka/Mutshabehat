@@ -140,6 +140,7 @@ export type ValidatedPost =
 const PATCH_ACTIONS = ['status', 'update', 'narrators', 'delete', 'restore'] as const
 const STATUSES = ['unreviewed', 'reviewed', 'flagged'] as const
 const ENTRY_FIELD_KEYS = [
+  'kind',
   'notes',
   'readingText',
   'uthmaniText',
@@ -230,6 +231,13 @@ function validateEntryFields(fields: unknown): ValidationResult<Record<string, u
     }
 
     const value = fields[key]
+    if (key === 'kind') {
+      if (value !== 'farsh' && value !== 'usul') {
+        return failure('kind must be farsh or usul')
+      }
+      continue
+    }
+
     if (key === 'variantType' || key === 'categoryCode') {
       if (typeof value !== 'string' || value.trim().length === 0) {
         return failure(`${key} is required`)

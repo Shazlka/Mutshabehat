@@ -9,6 +9,22 @@ and any required DB migration.
 
 Live: https://mutshabehat-v2.vercel.app
 
+## 2026-09-25 — Qiraat Review: Lenient Entry Update & Kind Transition Fix
+- **Problem**: In editor mode on `/mushaf-1441/review`, modifying fields on an approved or existing variant and clicking "حفظ" (save) threw the error `"invalid field for farsh entry"` (or `"invalid field for usul entry"` on usul entries), preventing edits from being saved.
+- **Root Cause**: In PostgreSQL RPC `qiraat_review_update_entry(p jsonb)` (`20260926100000_qiraat_review_bulk_workflow.sql`), strict key-existence checks `IF p ?| ARRAY['categoryCode', 'rulingText']` rejected any payload where those keys existed even if their value was `null`. `ReviewEditorPane.tsx` routinely serialized `rulingText: null` for farsh entries and `readingText`/`description` for usul entries. In addition, transitioning an entry between Farsh and Usul was rejected.
+- **Database Migration**: `supabase/migrations/20260926110000_qiraat_review_update_lenient.sql` (+ rollback `supabase/rollbacks/20260926110000_qiraat_review_update_lenient.down.sql`):
+  - Made `qiraat_review_update_entry` lenient: updates only fields relevant to each entry's kind without throwing on extraneous or null keys.
+  - Added support for dynamic kind transitions (`p ? 'kind'`): transitioning between `farsh` (variant) and `usul` (ruling) cleans up child tables (`qiraat_variant_details` / `qiraat_ruling_details`) and updates `qiraat_entries.kind`.
+  - **Applied live to self-hosted Postgres 17** via docker compose with `--single-transaction -v ON_ERROR_STOP=1`. Pre-migration backup verified at `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost/backups/pre-lenient-update-20260925T032106Z.dump` (13 MB). PostgREST schema cache reloaded via `NOTIFY pgrst, 'reload schema'`.
+  - Verified `quran_words` count (77,429) and checksum (`9f89f2ec65f8c0af538372f017481422`) remain byte-identical before and after.
+- **UI & API Layer Updates**:
+  - `src/app/mushaf-1441/review/_lib/types.ts`: added `kind?: 'farsh' | 'usul'` to `EntryFields`.
+  - `src/app/api/mushaf-1441/qiraat-review/review-http.ts`: added `'kind'` to `ENTRY_FIELD_KEYS` and validated `kind` must be `'farsh' | 'usul'`.
+  - `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`: updated `handleSaveExisting` to pass `kind` and include only kind-relevant fields (preventing extraneous null fields in payloads).
+  - `src/app/mushaf-1441/review/_components/ReviewApp.tsx`: added guard in `handleSaveRowEdits` requiring at least one narrator before executing save to prevent partial updates.
+  - `tests/qiraat/review-http.test.ts`: added test coverage for `kind` validation in `validatePatchBody`.
+- **Verification**: `npm run typecheck` (0 errors), `npm run test:qiraat:review` (19/19 passed), `npm run test:qiraat` (44/44 passed).
+
 ## 2026-09-24 — Review Editor (Phase 4) bulk workflow: correct-component port of the 8 features
 - The previous "Review Editor workflow (GPT-6 Codex)" entry below wired these 8 features into the
   **wrong** component (`QiraatEditor.tsx`, the Phase 5 annotation editor reached only via the

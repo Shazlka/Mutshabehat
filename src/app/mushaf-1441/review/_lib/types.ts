@@ -127,6 +127,7 @@ export type CreateEntryInput = {
   narrators: NarratorInput[]
 }
 export type EntryFields = Partial<{
+  kind: 'farsh' | 'usul'
   notes: string | null
   readingText: string
   uthmaniText: string | null

@@ -178,16 +178,26 @@ export default function ReviewEditorPane({
 
   function handleSaveExisting() {
     if (!selectedRow) return
+    const isFarsh = kind === 'farsh'
+    if (isFarsh && !readingText.trim()) return
+    if (!isFarsh && !categoryCode) return
+
     const fields: EntryFields = {
-      readingText: kind === 'farsh' ? readingText.trim() : selectedRow.hafsText,
-      categoryCode: kind === 'usul' && categoryCode ? categoryCode : undefined,
-      variantType: kind === 'farsh' && variantType ? variantType : undefined,
-      rulingText: kind === 'usul' ? rulingText?.trim() || null : null,
-      description: description?.trim() || null,
-      performanceNote: performanceNote?.trim() || null,
+      kind,
+      ...(isFarsh
+        ? {
+            readingText: readingText.trim(),
+            variantType: variantType || undefined,
+            description: description?.trim() || null,
+            performanceNote: performanceNote?.trim() || null,
+          }
+        : {
+            categoryCode: categoryCode || undefined,
+            rulingText: rulingText?.trim() || null,
+          }),
       appliesWasl,
       appliesWaqf,
-      hamzahDetail: kind === 'usul' && isHamzahCategory(categoryCode) ? hamzahDetail : null,
+      hamzahDetail: !isFarsh && isHamzahCategory(categoryCode) ? hamzahDetail : null,
     }
     void onSaveRowEdits(selectedRow, fields, narrators)
   }

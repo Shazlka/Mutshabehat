@@ -257,6 +257,10 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const handleSaveRowEdits = useCallback(
     async (row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]) => {
       if (!deviceId) return
+      if (narrators.length === 0) {
+        setErrorMessage('يجب اختيار راوٍ واحد على الأقل')
+        return
+      }
       setIsSaving(true)
       setErrorMessage(null)
       setSaveMessage(null)
