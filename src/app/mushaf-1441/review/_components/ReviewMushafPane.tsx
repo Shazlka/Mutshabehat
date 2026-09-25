@@ -23,7 +23,7 @@ import type {
 } from '../../../../../packages/quran-data/mushaf1441/types'
 import { cn } from '@/lib/cn'
 
-type WordMeta = {
+export type WordMeta = {
   surah: number
   ayah: number
   word: number
@@ -38,6 +38,10 @@ type Props = {
   hoveredRowId: string | null
   onSelectWord(key: string, wordMeta: WordMeta): void
   onHoverWord(rowIds: string[] | null): void
+  isMobile?: boolean
+  zoom?: number
+  scrollContainerRef?: React.RefObject<HTMLDivElement | null>
+  onScroll?: (e: React.UIEvent<HTMLDivElement>) => void
 }
 
 const BASMALA_TEXT = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'
@@ -68,6 +72,10 @@ export default function ReviewMushafPane({
   hoveredRowId,
   onSelectWord,
   onHoverWord,
+  isMobile = false,
+  zoom = 1,
+  scrollContainerRef,
+  onScroll,
 }: Props) {
   const pageNo = page.page
   const [mushafPage, setMushafPage] = useState<MushafPage | null>(() => pageWordsCache.get(pageNo)?.pageData ?? null)
@@ -265,43 +273,51 @@ export default function ReviewMushafPane({
 
   return (
     <section
+      ref={scrollContainerRef}
+      onScroll={onScroll}
       dir="rtl"
       aria-label="مصحف المدينة — لوحة المراجعة"
-      className="flex min-w-0 flex-1 flex-col items-center justify-start overflow-y-auto bg-[var(--color-paper)] p-3 sm:p-6"
+      className={cn(
+        'flex min-w-0 flex-1 flex-col items-center justify-start overflow-y-auto bg-[var(--color-paper)]',
+        isMobile ? 'p-1 sm:p-2 pb-20' : 'p-3 sm:p-6'
+      )}
     >
-      {/* Top page info strip */}
-      <div className="mb-3 flex w-full max-w-[720px] items-center justify-between px-2 text-xs font-bold text-[var(--color-ink-muted)]">
-        <div className="flex items-center gap-2">
-          <span>الجزء {metadata?.juzNumber ?? '—'}</span>
-          <span>·</span>
-          <span>الحزب {metadata?.hizbNumber ?? '—'}</span>
-          {metadata?.surahNames && metadata.surahNames.length > 0 ? (
-            <>
-              <span>·</span>
-              <span className="text-[var(--color-ink)]">سورة {metadata.surahNames.join('، ')}</span>
-            </>
-          ) : null}
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="rounded-full bg-[#fef3c7] px-2 py-0.5 text-[11px] text-[#92400e]">
-            غير مراجَع: {page.stats.unreviewed}
-          </span>
-          <span className="rounded-full bg-[#dcfce7] px-2 py-0.5 text-[11px] text-[#166534]">
-            مُراجَع: {page.stats.reviewed}
-          </span>
-          {page.stats.flagged > 0 ? (
-            <span className="rounded-full bg-[#fee2e2] px-2 py-0.5 text-[11px] text-[#991b1b]">
-              معلَّم: {page.stats.flagged}
+      {/* Top page info strip on desktop */}
+      {!isMobile ? (
+        <div className="mb-3 flex w-full max-w-[720px] items-center justify-between px-2 text-xs font-bold text-[var(--color-ink-muted)]">
+          <div className="flex items-center gap-2">
+            <span>الجزء {metadata?.juzNumber ?? '—'}</span>
+            <span>·</span>
+            <span>الحزب {metadata?.hizbNumber ?? '—'}</span>
+            {metadata?.surahNames && metadata.surahNames.length > 0 ? (
+              <>
+                <span>·</span>
+                <span className="text-[var(--color-ink)]">سورة {metadata.surahNames.join('، ')}</span>
+              </>
+            ) : null}
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-[#fef3c7] px-2 py-0.5 text-[11px] text-[#92400e]">
+              غير مراجَع: {page.stats.unreviewed}
             </span>
-          ) : null}
+            <span className="rounded-full bg-[#dcfce7] px-2 py-0.5 text-[11px] text-[#166534]">
+              مُراجَع: {page.stats.reviewed}
+            </span>
+            {page.stats.flagged > 0 ? (
+              <span className="rounded-full bg-[#fee2e2] px-2 py-0.5 text-[11px] text-[#991b1b]">
+                معلَّم: {page.stats.flagged}
+              </span>
+            ) : null}
+          </div>
         </div>
-      </div>
+      ) : null}
 
       {/* The Mushaf Sheet */}
       <div
         className="relative select-none overflow-hidden rounded-[10px] border border-[#d8c9a3] bg-[#fbf7ee] shadow-lg transition-all"
         style={{
-          width: 'min(100%, 720px)',
+          width: zoom && zoom > 1 ? `${zoom * 100}%` : 'min(100%, 720px)',
+          maxWidth: zoom && zoom > 1 ? `${Math.round(zoom * 720)}px` : '720px',
           aspectRatio: '1994 / 2850',
           containerType: 'inline-size',
         }}
@@ -398,6 +414,7 @@ export default function ReviewMushafPane({
                           aria-label={`${word.textUthmani} — ${word.surahNumber}:${word.ayahNumber}:${word.wordIndexInAyah}`}
                           className={cn(
                             'relative inline-flex items-center justify-center rounded-[3px] px-0.5 py-0 select-none transition-all cursor-pointer focus:outline-none',
+                            isMobile && 'before:absolute before:-inset-y-1.5 before:-inset-x-1 before:content-[""] active:scale-95 active:bg-[#d8c9a3]/70',
                             isSelected && 'outline outline-2 outline-offset-1 outline-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/40 shadow-sm font-bold',
                             !isSelected && 'hover:bg-[#eadfc9]/60 hover:outline hover:outline-1 hover:outline-[#b99b51]/40'
                           )}
@@ -454,6 +471,7 @@ export default function ReviewMushafPane({
                         onClick={() => onSelectWord(word.key, wordMeta)}
                         className={cn(
                           'relative inline-flex items-center justify-center rounded-[3px] px-0.5 py-0 select-none transition-all cursor-pointer',
+                          isMobile && 'before:absolute before:-inset-y-1.5 before:-inset-x-1 before:content-[""] active:scale-95 active:bg-[#d8c9a3]/70',
                           isSelected && 'outline outline-2 outline-offset-1 outline-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/40',
                           status === 'reviewed' && 'bg-green-100/60 text-green-900',
                           status === 'unreviewed' && 'bg-amber-100/70 text-amber-900',
@@ -481,9 +499,11 @@ export default function ReviewMushafPane({
         </div>
       </div>
 
-      <p className="mt-4 max-w-[720px] text-center text-xs text-[var(--color-ink-muted)]">
-        اضغط على أي كلمة في الصفحة — الملوّنة لعرض واعتماد قراءاتها، والعادية لإضافة قراءة أو أصل جديد مباشرة.
-      </p>
+      {!isMobile ? (
+        <p className="mt-4 max-w-[720px] text-center text-xs text-[var(--color-ink-muted)]">
+          اضغط على أي كلمة في الصفحة — الملوّنة لعرض واعتماد قراءاتها، والعادية لإضافة قراءة أو أصل جديد مباشرة.
+        </p>
+      ) : null}
     </section>
   )
 }

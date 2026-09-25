@@ -11,12 +11,14 @@
 //
 // Both panes scroll independently.
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CreateEntryInput, EntryFields, NarratorInput, ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
 import HistoryPanel from './HistoryPanel'
 import ReviewMushafPane, { canonicalKeyForWord } from './ReviewMushafPane'
 import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
 import ReviewNav from './ReviewNav'
+import MobileReviewMushafView from './MobileReviewMushafView'
+import MobileReviewEditorView from './MobileReviewEditorView'
 import * as reviewApi from '../_lib/api'
 
 const MIN_PAGE = 1
@@ -30,6 +32,85 @@ function isEditableTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false
   const tag = target.tagName
   return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable
+}
+
+function findNextReviewWord(
+  page: ReviewPage | null,
+  currentWordKey: string | null
+): { key: string; meta: WordMeta } | null {
+  if (!page || page.words.length === 0) return null
+
+  // 1. Build a set of keys for rows needing review (unreviewed or flagged)
+  const rowsNeedingReview = page.rows.filter(
+    (r) => !r.deleted && (r.reviewStatus === 'unreviewed' || r.reviewStatus === 'flagged')
+  )
+
+  const wordsNeedingReview = page.words.filter((w) =>
+    rowsNeedingReview.some((r) => r.startKey <= w.key && w.key <= r.endKey)
+  )
+
+  if (wordsNeedingReview.length > 0) {
+    if (currentWordKey) {
+      const after = wordsNeedingReview.find((w) => w.key > currentWordKey)
+      if (after) {
+        return {
+          key: after.key,
+          meta: { surah: after.surah, ayah: after.ayah, word: after.word, text: after.text, page: page.page },
+        }
+      }
+      const first = wordsNeedingReview[0]
+      if (first.key !== currentWordKey) {
+        return {
+          key: first.key,
+          meta: { surah: first.surah, ayah: first.ayah, word: first.word, text: first.text, page: page.page },
+        }
+      }
+    } else {
+      const first = wordsNeedingReview[0]
+      return {
+        key: first.key,
+        meta: { surah: first.surah, ayah: first.ayah, word: first.word, text: first.text, page: page.page },
+      }
+    }
+  }
+
+  // 2. Fallback: find any word with existing variants
+  const activeRows = page.rows.filter((r) => !r.deleted)
+  const wordsWithVariants = page.words.filter((w) =>
+    activeRows.some((r) => r.startKey <= w.key && w.key <= r.endKey)
+  )
+  if (wordsWithVariants.length > 0) {
+    if (currentWordKey) {
+      const after = wordsWithVariants.find((w) => w.key > currentWordKey)
+      if (after) {
+        return {
+          key: after.key,
+          meta: { surah: after.surah, ayah: after.ayah, word: after.word, text: after.text, page: page.page },
+        }
+      }
+    }
+    const first = wordsWithVariants[0]
+    if (first.key !== currentWordKey) {
+      return {
+        key: first.key,
+        meta: { surah: first.surah, ayah: first.ayah, word: first.word, text: first.text, page: page.page },
+      }
+    }
+  }
+
+  // 3. Fallback: next word in sequence
+  if (currentWordKey) {
+    const currentIndex = page.words.findIndex((w) => w.key === currentWordKey)
+    if (currentIndex >= 0 && currentIndex < page.words.length - 1) {
+      const nextWord = page.words[currentIndex + 1]
+      return {
+        key: nextWord.key,
+        meta: { surah: nextWord.surah, ayah: nextWord.ayah, word: nextWord.word, text: nextWord.text, page: page.page },
+      }
+    }
+  }
+
+  return null
 }
 
 export default function ReviewApp({ initialPage }: { initialPage: number }) {
@@ -57,6 +138,39 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   const [historyOpen, setHistoryOpen] = useState(false)
   const [deviceId, setDeviceId] = useState('')
+
+  // Mobile review state & viewport
+  const [isMobile, setIsMobile] = useState(false)
+  const [mobileView, setMobileView] = useState<'mushaf' | 'editor'>('mushaf')
+  const mushafScrollRef = useRef<HTMLDivElement | null>(null)
+  const mushafScrollPosRef = useRef<number>(0)
+  const [zoom, setZoom] = useState<number>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('mushaf_review_mobile_zoom')
+      if (saved) {
+        const parsed = parseFloat(saved)
+        if (Number.isFinite(parsed) && parsed >= 1 && parsed <= 2) return parsed
+      }
+    }
+    return 1
+  })
+
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)')
+    setIsMobile(mql.matches)
+    const handler = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches)
+    }
+    mql.addEventListener('change', handler)
+    return () => mql.removeEventListener('change', handler)
+  }, [])
+
+  const handleChangeZoom = useCallback((newZoom: number) => {
+    setZoom(newZoom)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('mushaf_review_mobile_zoom', String(newZoom))
+    }
+  }, [])
 
   useEffect(() => {
     setDeviceId(reviewApi.getDeviceId())
@@ -90,6 +204,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     (target: number) => {
       const clamped = clampPage(target)
       setPageNumber(clamped)
+      setMobileView('mushaf')
       setSelectedWordKey(null)
       setSelectedWordMeta(null)
       setSelectedRowId(null)
@@ -101,6 +216,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       if (typeof window !== 'undefined') {
         const url = new URL(window.location.href)
         url.searchParams.set('page', String(clamped))
+        url.searchParams.delete('word')
         window.history.replaceState(window.history.state, '', url)
       }
     },
@@ -151,11 +267,24 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   // Handle word selection on the authentic Mushaf
   const handleSelectWord = useCallback(
-    (key: string, meta: WordMeta) => {
+    (key: string, meta: WordMeta, openEditorOnMobile = true) => {
+      if (mushafScrollRef.current) {
+        mushafScrollPosRef.current = mushafScrollRef.current.scrollTop
+      }
       setSelectedWordKey(key)
       setSelectedWordMeta(meta)
       setErrorMessage(null)
       setSaveMessage(null)
+
+      if (openEditorOnMobile && typeof window !== 'undefined') {
+        const isMobileScreen = window.matchMedia('(max-width: 767px)').matches
+        if (isMobileScreen) {
+          setMobileView('editor')
+          const url = new URL(window.location.href)
+          url.searchParams.set('word', key)
+          window.history.pushState({ mobileView: 'editor', wordKey: key, page: pageNumber }, '', url)
+        }
+      }
 
       if (!page) return
       const covering = page.rows.filter(
@@ -182,8 +311,57 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         })
       }
     },
-    [page]
+    [page, pageNumber]
   )
+
+  const handleMobileBack = useCallback(() => {
+    setMobileView('mushaf')
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('word')
+      window.history.replaceState(window.history.state, '', url)
+      requestAnimationFrame(() => {
+        if (mushafScrollRef.current) {
+          mushafScrollRef.current.scrollTop = mushafScrollPosRef.current
+        }
+      })
+    }
+  }, [])
+
+  const handleMobileSaveAndNext = useCallback(async () => {
+    if (!page) return
+    const next = findNextReviewWord(page, selectedWordKey)
+    if (next) {
+      handleSelectWord(next.key, next.meta, true)
+      setSaveMessage('تم الحفظ، والانتقال للموضع التالي ✓')
+      setTimeout(() => setSaveMessage(null), 3000)
+    } else {
+      setSaveMessage('تم الحفظ بنجاح — لا توجد مواضع أخرى بحاجة للمراجعة في هذه الصفحة ✓')
+      setTimeout(() => setSaveMessage(null), 4000)
+    }
+  }, [page, selectedWordKey, handleSelectWord])
+
+  // Browser history popstate handler (for mobile Back button)
+  useEffect(() => {
+    function onPopState(e: PopStateEvent) {
+      if (typeof window === 'undefined') return
+      const isMobileScreen = window.matchMedia('(max-width: 767px)').matches
+      if (!isMobileScreen) return
+
+      if (e.state && e.state.mobileView === 'editor' && e.state.wordKey) {
+        setMobileView('editor')
+      } else {
+        setMobileView('mushaf')
+        requestAnimationFrame(() => {
+          if (mushafScrollRef.current) {
+            mushafScrollRef.current.scrollTop = mushafScrollPosRef.current
+          }
+        })
+      }
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
   // Start new entry for a word (even if other variants already exist on it)
   const handleStartNewEntry = useCallback((meta: WordMeta) => {
@@ -465,18 +643,9 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   return (
     <div dir="rtl" lang="ar" className="flex h-dvh flex-col bg-[var(--color-paper)]">
-      <ReviewNav
-        pageNumber={pageNumber}
-        page={page}
-        overview={overview}
-        historyOpen={historyOpen}
-        onGoToPage={goToPage}
-        onToggleHistory={() => setHistoryOpen((open) => !open)}
-      />
-
-      {/* Undo Notification Banner */}
+      {/* Undo Notification Banner (Shared) */}
       {undoBanner ? (
-        <div className="flex items-center justify-between bg-amber-500 px-4 py-1.5 text-xs font-bold text-white shadow-sm">
+        <div className="flex items-center justify-between bg-amber-500 px-4 py-1.5 text-xs font-bold text-white shadow-sm z-50">
           <span>{undoBanner.message}</span>
           <button
             type="button"
@@ -488,57 +657,124 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         </div>
       ) : null}
 
-      <div className="flex min-h-0 flex-1 overflow-hidden">
-        {pageLoading || !page ? (
-          <div className="flex flex-1 items-center justify-center">
-            {pageError ? (
-              <p
-                className="rounded-md border border-[var(--color-danger)]/30 bg-[var(--color-danger-bg)] px-4 py-2 text-sm font-bold text-[var(--color-danger)]"
-                role="alert"
-              >
-                {pageError}
-              </p>
-            ) : (
-              <p className="text-sm text-[var(--color-ink-muted)]">جارٍ تحميل الصفحة…</p>
-            )}
+      {pageLoading || !page ? (
+        <div className="flex flex-1 items-center justify-center">
+          {pageError ? (
+            <p
+              className="rounded-md border border-[var(--color-danger)]/30 bg-[var(--color-danger-bg)] px-4 py-2 text-sm font-bold text-[var(--color-danger)]"
+              role="alert"
+            >
+              {pageError}
+            </p>
+          ) : (
+            <p className="text-sm text-[var(--color-ink-muted)]">جارٍ تحميل الصفحة…</p>
+          )}
+        </div>
+      ) : (
+        <>
+          {/* DESKTOP WORKSPACE (>= 768px): Side-by-side intact */}
+          <div className="hidden md:flex flex-col h-full min-h-0 flex-1">
+            <ReviewNav
+              pageNumber={pageNumber}
+              page={page}
+              overview={overview}
+              historyOpen={historyOpen}
+              onGoToPage={goToPage}
+              onToggleHistory={() => setHistoryOpen((open) => !open)}
+            />
+
+            <div className="flex min-h-0 flex-1 overflow-hidden">
+              {/* RIGHT PANE: Authentic Mushaf-1441 Layout */}
+              <ReviewMushafPane
+                page={page}
+                selectedWordKey={selectedWordKey}
+                selectedRow={selectedRow}
+                hoveredRowId={hoveredRowId}
+                onSelectWord={handleSelectWord}
+                onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
+              />
+
+              {/* LEFT PANE: Compact High-Speed Single-Word Editor */}
+              <ReviewEditorPane
+                page={page}
+                selectedWordKey={selectedWordKey}
+                selectedWordMeta={selectedWordMeta}
+                selectedRow={selectedRow}
+                activeRowsForWord={activeRowsForWord}
+                newEntryDraft={newEntryDraft}
+                onSelectRow={(row) => setSelectedRowId(row.entryId)}
+                onStartNewEntry={handleStartNewEntry}
+                onCancelNewEntry={handleCancelNewEntry}
+                onConfirmRow={handleConfirmRow}
+                onFlagRow={handleFlagRow}
+                onSaveRowEdits={handleSaveRowEdits}
+                onDeleteRow={handleDeleteRow}
+                onBulkDelete={handleBulkDelete}
+                onCopyToOccurrence={handleCopyToOccurrence}
+                onBulkApply={handleBulkApply}
+                onCreateNewEntry={handleCreateNewEntry}
+                isSaving={isSaving}
+                saveMessage={saveMessage}
+                errorMessage={errorMessage}
+              />
+
+              {/* History & Undo Side Drawer */}
+              {historyOpen ? (
+                <HistoryPanel
+                  page={pageNumber}
+                  deviceId={deviceId}
+                  onClose={() => setHistoryOpen(false)}
+                  onUndone={reloadCurrentPage}
+                />
+              ) : null}
+            </div>
           </div>
-        ) : (
-          <>
-            {/* RIGHT PANE: Authentic Mushaf-1441 Layout */}
-            <ReviewMushafPane
-              page={page}
-              selectedWordKey={selectedWordKey}
-              selectedRow={selectedRow}
-              hoveredRowId={hoveredRowId}
-              onSelectWord={handleSelectWord}
-              onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
-            />
 
-            {/* LEFT PANE: Compact High-Speed Single-Word Editor */}
-            <ReviewEditorPane
-              page={page}
-              selectedWordKey={selectedWordKey}
-              selectedWordMeta={selectedWordMeta}
-              selectedRow={selectedRow}
-              activeRowsForWord={activeRowsForWord}
-              newEntryDraft={newEntryDraft}
-              onSelectRow={(row) => setSelectedRowId(row.entryId)}
-              onStartNewEntry={handleStartNewEntry}
-              onCancelNewEntry={handleCancelNewEntry}
-              onConfirmRow={handleConfirmRow}
-              onFlagRow={handleFlagRow}
-              onSaveRowEdits={handleSaveRowEdits}
-              onDeleteRow={handleDeleteRow}
-              onBulkDelete={handleBulkDelete}
-              onCopyToOccurrence={handleCopyToOccurrence}
-              onBulkApply={handleBulkApply}
-              onCreateNewEntry={handleCreateNewEntry}
-              isSaving={isSaving}
-              saveMessage={saveMessage}
-              errorMessage={errorMessage}
-            />
+          {/* MOBILE INTERFACE (< 768px): View A (Mushaf) or View B (Dedicated Full-Screen Editor) */}
+          <div className="flex md:hidden flex-col h-full min-h-0 flex-1 overflow-hidden">
+            {mobileView === 'mushaf' ? (
+              <MobileReviewMushafView
+                page={page}
+                pageNumber={pageNumber}
+                overview={overview}
+                selectedWordKey={selectedWordKey}
+                selectedRow={selectedRow}
+                hoveredRowId={hoveredRowId}
+                onSelectWord={handleSelectWord}
+                onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
+                onGoToPage={goToPage}
+                onToggleHistory={() => setHistoryOpen((open) => !open)}
+                zoom={zoom}
+                onChangeZoom={handleChangeZoom}
+                scrollContainerRef={mushafScrollRef}
+              />
+            ) : (
+              <MobileReviewEditorView
+                page={page}
+                selectedWordKey={selectedWordKey}
+                selectedWordMeta={selectedWordMeta}
+                selectedRow={selectedRow}
+                activeRowsForWord={activeRowsForWord}
+                newEntryDraft={newEntryDraft}
+                onSelectRow={(row) => setSelectedRowId(row.entryId)}
+                onStartNewEntry={handleStartNewEntry}
+                onCancelNewEntry={handleCancelNewEntry}
+                onConfirmRow={handleConfirmRow}
+                onFlagRow={handleFlagRow}
+                onSaveRowEdits={handleSaveRowEdits}
+                onDeleteRow={handleDeleteRow}
+                onBulkDelete={handleBulkDelete}
+                onCopyToOccurrence={handleCopyToOccurrence}
+                onBulkApply={handleBulkApply}
+                onCreateNewEntry={handleCreateNewEntry}
+                isSaving={isSaving}
+                saveMessage={saveMessage}
+                errorMessage={errorMessage}
+                onBack={handleMobileBack}
+                onSaveAndNext={handleMobileSaveAndNext}
+              />
+            )}
 
-            {/* History & Undo Side Drawer */}
             {historyOpen ? (
               <HistoryPanel
                 page={pageNumber}
@@ -547,9 +783,9 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                 onUndone={reloadCurrentPage}
               />
             ) : null}
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }

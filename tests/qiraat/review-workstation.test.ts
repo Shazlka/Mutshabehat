@@ -26,6 +26,10 @@ import {
   TAQLIL_NARRATOR_IDS,
   WARSH_NARRATOR_ID,
 } from '../../src/app/mushaf-1441/review/_components/ImalahDetailFields'
+import {
+  validateEntryDraft,
+  serializeDraftSnapshot,
+} from '../../src/app/mushaf-1441/review/_components/useReviewEditorDraft'
 import type { ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
 
 test('CANONICAL_READERS defines exactly 10 readers and 20 distinct narrators', () => {
@@ -247,3 +251,83 @@ test('imalah face builder: extra faces for the same narrator get the next wajh n
   // D8: Hafs never takes wajh 1
   assert.equal(nextWajhOrder([], 'Q05-R02'), 2)
 })
+
+test('validateEntryDraft enforces Farsh, Usul, and narrator constraints', () => {
+  // Farsh requires non-empty reading text
+  assert.deepEqual(validateEntryDraft('farsh', '', null, 1), {
+    valid: false,
+    error: 'نص القراءة مطلوب لفرش الحروف',
+  })
+  assert.deepEqual(validateEntryDraft('farsh', '   ', null, 1), {
+    valid: false,
+    error: 'نص القراءة مطلوب لفرش الحروف',
+  })
+
+  // Farsh requires at least one narrator
+  assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 0), {
+    valid: false,
+    error: 'يجب اختيار راوٍ واحد على الأقل',
+  })
+
+  // Valid Farsh
+  assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 2), {
+    valid: true,
+  })
+
+  // Usul requires non-empty categoryCode
+  assert.deepEqual(validateEntryDraft('usul', '', null, 1), {
+    valid: false,
+    error: 'الباب / القاعدة مطلوبة لأصول القراءات',
+  })
+
+  // Usul requires at least one narrator
+  assert.deepEqual(validateEntryDraft('usul', '', 'TAGHYIR_HAMZ', 0), {
+    valid: false,
+    error: 'يجب اختيار راوٍ واحد على الأقل',
+  })
+
+  // Valid Usul
+  assert.deepEqual(validateEntryDraft('usul', '', 'TAGHYIR_HAMZ', 1), {
+    valid: true,
+  })
+})
+
+test('serializeDraftSnapshot accurately identifies dirty changes', () => {
+  const base = {
+    kind: 'farsh' as const,
+    categoryCode: null,
+    readingText: 'مَلِكِ',
+    variantType: 'تشكيل',
+    rulingText: null,
+    description: 'قراءة عاصم والكسائي',
+    performanceNote: null,
+    appliesWasl: true,
+    appliesWaqf: true,
+    hamzahDetail: null,
+    narrators: [{ id: 'Q05-R02', action: 'قراءة', wajhOrder: 1, wajhNote: null }],
+  }
+
+  const snap1 = serializeDraftSnapshot(base)
+  const snap2 = serializeDraftSnapshot({ ...base })
+  assert.equal(snap1, snap2, 'Identical objects should produce identical snapshots (not dirty)')
+
+  // Modifying text
+  const dirtyText = serializeDraftSnapshot({ ...base, readingText: 'مَالِكِ' })
+  assert.notEqual(snap1, dirtyText, 'Different readingText must produce dirty snapshot')
+
+  // Modifying appliesWasl
+  const dirtyWasl = serializeDraftSnapshot({ ...base, appliesWasl: false })
+  assert.notEqual(snap1, dirtyWasl, 'Toggling appliesWasl must produce dirty snapshot')
+
+  // Modifying kind
+  const dirtyKind = serializeDraftSnapshot({ ...base, kind: 'usul', categoryCode: 'USUL_MADD' })
+  assert.notEqual(snap1, dirtyKind, 'Changing kind must produce dirty snapshot')
+
+  // Adding narrator
+  const dirtyNarrators = serializeDraftSnapshot({
+    ...base,
+    narrators: [...base.narrators, { id: 'Q07-R01', action: 'قراءة', wajhOrder: 1, wajhNote: null }],
+  })
+  assert.notEqual(snap1, dirtyNarrators, 'Changing narrators must produce dirty snapshot')
+})
+

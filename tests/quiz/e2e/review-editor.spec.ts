@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 
-test('review editor keeps a single scaled page, a wider pane, and exact RTL navigation', async ({ page }) => {
+test('review editor keeps a single scaled page, a wider pane, and exact RTL navigation', async ({ page, isMobile }) => {
+  test.skip(Boolean(isMobile), 'Desktop workstation layout test')
   const errors: string[] = []
   page.on('pageerror', (error) => errors.push(error.message))
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()) })
@@ -37,7 +38,8 @@ test('review editor keeps a single scaled page, a wider pane, and exact RTL navi
   expect(errors).toEqual([])
 })
 
-test('recorded faces can be selected, edited, and previewed without a page reload', async ({ page }) => {
+test('recorded faces can be selected, edited, and previewed without a page reload', async ({ page, isMobile }) => {
+  test.skip(Boolean(isMobile), 'Desktop workstation layout test')
   const key = '002:006:001'
   const sourceKey = '002:011:007'
   const chapter = '11111111-1111-4111-8111-111111111111'
@@ -125,3 +127,102 @@ test('recorded faces can be selected, edited, and previewed without a page reloa
   await expect.poll(() => (capturedCopy()?.faces as unknown[] | undefined)?.length).toBe(1)
   expect(capturedCopy()?.sourceAnnotationId).toBe(sourceItem.id)
 })
+
+test('mobile review workflow: Mushaf page -> tap word -> dedicated full editor -> back to Mushaf', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'Mobile-only workflow test')
+  const errors: string[] = []
+  page.on('pageerror', (error) => errors.push(error.message))
+  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()) })
+
+  await page.goto('/mushaf-1441/review?page=3')
+
+  // View A: Mushaf view is visible, desktop editor pane is hidden
+  const mobileMushaf = page.locator('[data-mobile-mushaf-view="true"]')
+  await expect(mobileMushaf).toBeVisible()
+  const desktopEditor = page.locator('[data-qiraat-editor-pane="true"]')
+  await expect(desktopEditor).toBeHidden()
+
+  // Top bar shows page title and page 3 / 604
+  await expect(mobileMushaf.getByText('سورة البقرة')).toBeVisible()
+  await expect(mobileMushaf.getByText(/3 \/ 604/)).toBeVisible()
+
+  // Bottom navigation has RTL buttons
+  const prevBtn = mobileMushaf.getByRole('button', { name: /السابقة/ })
+  const nextBtn = mobileMushaf.getByRole('button', { name: /التالية/ })
+  await expect(prevBtn).toBeVisible()
+  await expect(nextBtn).toBeVisible()
+
+  // Tap a Quran word
+  const word = page.locator('[data-page-slot-current] [data-quran-word-id]').first()
+  await expect(word).toBeVisible()
+  await word.click()
+
+  // View B: Dedicated Full-Screen Editor is opened
+  const mobileEditor = page.locator('[data-mobile-review-editor="true"]')
+  await expect(mobileEditor).toBeVisible()
+  await expect(mobileMushaf).toBeHidden()
+
+  // Top header shows Back to Mushaf and metadata
+  const backBtn = mobileEditor.getByRole('button', { name: 'العودة إلى المصحف' })
+  await expect(backBtn).toBeVisible()
+  await expect(mobileEditor.getByText(/سورة البقرة/)).toBeVisible()
+
+  // Bottom action bar shows Save and Save & Next buttons
+  const saveBtn = mobileEditor.getByRole('button', { name: 'حفظ', exact: true })
+  const saveAndNextBtn = mobileEditor.getByRole('button', { name: /حفظ والتالي/ })
+  await expect(saveBtn).toBeVisible()
+  await expect(saveAndNextBtn).toBeVisible()
+
+  // Kind toggle allows switching between Farsh and Usul
+  const usulTab = mobileEditor.getByRole('button', { name: /أصول القراءات/ })
+  const farshTab = mobileEditor.getByRole('button', { name: /فرش الحروف/ })
+  await expect(usulTab).toBeVisible()
+  await expect(farshTab).toBeVisible()
+
+  // Click Back to return to View A
+  await backBtn.click()
+  await expect(mobileMushaf).toBeVisible()
+  await expect(mobileEditor).toBeHidden()
+
+  expect(errors).toEqual([])
+})
+
+test('mobile editor handles unsaved changes guard on back navigation', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'Mobile-only workflow test')
+
+  await page.goto('/mushaf-1441/review?page=3')
+  const word = page.locator('[data-page-slot-current] [data-quran-word-id]').first()
+  await expect(word).toBeVisible()
+  await word.click()
+
+  const mobileEditor = page.locator('[data-mobile-review-editor="true"]')
+  await expect(mobileEditor).toBeVisible()
+
+  // Switch to Usul al-Qira'at to make form dirty
+  const usulTab = mobileEditor.getByRole('button', { name: /أصول القراءات/ })
+  await usulTab.click()
+
+  // Tap Back button
+  const backBtn = mobileEditor.getByRole('button', { name: 'العودة إلى المصحف' })
+  await backBtn.click()
+
+  // Unsaved changes dialog should appear
+  await expect(page.getByText('تنبيه: توجد تعديلات غير محفوظة')).toBeVisible()
+
+  // Tapping "متابعة التعديل" dismisses modal and keeps editor open
+  const continueBtn = page.getByRole('button', { name: 'متابعة التعديل' })
+  await continueBtn.click()
+  await expect(mobileEditor).toBeVisible()
+  await expect(page.getByText('تنبيه: توجد تعديلات غير محفوظة')).toBeHidden()
+
+  // Tapping Back and then "تجاهل التعديلات" discards changes and returns to View A
+  await backBtn.click()
+  await expect(page.getByText('تنبيه: توجد تعديلات غير محفوظة')).toBeVisible()
+  const discardBtn = page.getByRole('button', { name: 'تجاهل التعديلات' })
+  await discardBtn.click()
+
+  const mobileMushaf = page.locator('[data-mobile-mushaf-view="true"]')
+  await expect(mobileMushaf).toBeVisible()
+  await expect(mobileEditor).toBeHidden()
+})
+
