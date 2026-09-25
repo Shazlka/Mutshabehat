@@ -304,8 +304,8 @@ function validateNarrators(
   wajhOrder?: number
   wajhNote?: string | null
 }> | ValidationFailure {
-  if (!Array.isArray(rawNarrators) || rawNarrators.length < 1 || rawNarrators.length > 20) {
-    return failure('narrators must contain between 1 and 20 items')
+  if (!Array.isArray(rawNarrators) || rawNarrators.length < 1 || rawNarrators.length > 50) {
+    return failure('narrators must contain between 1 and 50 items')
   }
 
   const narrators: Array<{

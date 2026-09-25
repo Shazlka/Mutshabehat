@@ -177,7 +177,7 @@ test('validatePatchBody accepts narrator inputs and enforces narrator rules', ()
   })
   assert.equal(valid.ok, true)
 
-  for (const narrators of [[], new Array(21).fill({ id: 'Q01-R01' }), null, 'bad']) {
+  for (const narrators of [[], new Array(51).fill({ id: 'Q01-R01' }), null, 'bad']) {
     assert.equal(validatePatchBody({
       action: 'narrators',
       entryId: 'entry-1',

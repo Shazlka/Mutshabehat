@@ -19,6 +19,8 @@ import {
 import {
   isImalahCategory,
   detectImalahType,
+  buildFaceActionText,
+  nextWajhOrder,
   buildImalahRulingText,
   IMALAH_NARRATOR_IDS,
   TAQLIL_NARRATOR_IDS,
@@ -228,3 +230,20 @@ test('Imalah and Taqlil narrator presets map to canonical authorities and action
   assert.equal(WARSH_NARRATOR_ID, 'Q01-R02')
 })
 
+
+test('imalah face builder: action text covers every type/performance/khulf combination', () => {
+  assert.equal(buildFaceActionText('تقليل', 'waqf_only', 'bikhulf'), 'تقليل وقفاً (بخلف عنه)')
+  assert.equal(buildFaceActionText('إمالة', 'wasl_only', 'qawlan_wahidan'), 'إمالة وصلاً')
+  assert.equal(buildFaceActionText('فتح', 'wasl_waqf', 'qawlan_wahidan'), 'فتح وصلاً ووقفاً')
+})
+
+test('imalah face builder: extra faces for the same narrator get the next wajh number', () => {
+  const faces = [
+    { id: 'Q01-R02', action: 'تقليل وقفاً (بخلف عنه)', wajhOrder: 1, wajhNote: 'بخلف عنه' },
+    { id: 'Q01-R02', action: 'فتح وقفاً (بخلف عنه)', wajhOrder: 3, wajhNote: 'بخلف عنه' },
+  ]
+  assert.equal(nextWajhOrder(faces, 'Q01-R02'), 4)
+  assert.equal(nextWajhOrder(faces, 'Q03-R01'), 1)
+  // D8: Hafs never takes wajh 1
+  assert.equal(nextWajhOrder([], 'Q05-R02'), 2)
+})

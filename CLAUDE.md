@@ -38,6 +38,13 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-25 — Imalah/Taqlil faces builder: multiple wajh per narrator (completes Antigravity's unfinished pass)
+- **Feature**: in `/mushaf-1441/review` → أصول القراءات → «الممال والمقلل», reviewers pick any reader, any single narrator, several of them, or a ready group; choose إمالة / تقليل / فتح / إمالة وتقليل, وصلاً / وقفاً / وصلاً ووقفاً, قولاً واحداً / بخلف عنه; and add that wajh to «تفاصيل الأداء والأوجه للرواة المحددين». The same narrator can take further wajh entries (e.g. تقليل وقفاً بخلف + فتح وقفاً بخلف + تقليل وصلاً بخلف), each numbered and editable/deletable, and saved with the entry.
+- **Fixes on top of the interrupted Antigravity work**: build was broken (`selectedMap` references left in `ReaderNarratorSelector.tsx`, stale `onApplyNarratorsPreset` prop in `ReviewEditorPane.tsx` — dead `handleApplyNarratorsPreset` removed); `ImalahDetailFields` called hooks after an early return (rules-of-hooks) — split into a gate + `ImalahFacesBuilder`; the general «تفاصيل الأداء والأوجه» editor keyed and edited faces by narrator id, so editing one wajh overwrote all of that narrator's wajh entries — now per-face by index; new `nextWajhOrder()` numbers after the highest existing wajh and never gives Hafs wajh 1 (D8), and Hafs faces always carry a note.
+- **DB**: none — `qiraat_entry_authorities` is already unique on `(entry, authority, action)`, so several wajh entries per narrator persist as long as their action text differs (the builder disambiguates identical text). API narrator cap raised 20 → 50 (`review-http.ts`).
+- **Verification**: `npx tsc --noEmit` clean; `npm run test:qiraat:review` 25/25 (2 new: action text + wajh numbering/D8); `npm run build` clean; Playwright on local dev (writes blocked): Warsh given 3 wajh entries → actions «تقليل وقفاً (بخلف عنه)»، «فتح وقفاً (بخلف عنه)»، «تقليل وصلاً (بخلف عنه)», wajh 1/2/3, shown in تفاصيل الأداء, 0 page errors.
+- Files: `src/app/mushaf-1441/review/_components/{ImalahDetailFields,ReaderNarratorSelector,ReviewEditorPane,UsulRuleGrid}.tsx`, `src/app/api/mushaf-1441/qiraat-review/review-http.ts`, `tests/qiraat/{review-http,review-workstation}.test.ts`.
+
 ## 2026-09-25 — Imalah & Taqlil Structured Selection and Wasl/Waqf Applicability
 - **Feature**:
   In `/mushaf-1441/review` editor, when selecting the "الممال والمقلل" (`IMALAH_TAQLIL`) category under Usul al-Qira'at ("أصول القراءات"), added a structured selection interface enabling reviewers to choose between "إمالة" (Imalah) and "تقليل" (Taqlil) from a list/buttons, and configure performance applicability ("وصل" Wasl and "وقف" Waqf).

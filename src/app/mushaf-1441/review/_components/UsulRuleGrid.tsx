@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import type { NarratorInput } from '../_lib/types'
 import { cn } from '@/lib/cn'
 import ImalahDetailFields, { isImalahCategory } from './ImalahDetailFields'
 
@@ -47,7 +48,8 @@ type Props = {
   onChangeAppliesWasl?(val: boolean): void
   appliesWaqf?: boolean
   onChangeAppliesWaqf?(val: boolean): void
-  onApplyNarratorsPreset?(preset: 'imalah' | 'taqlil' | 'warsh'): void
+  narrators?: NarratorInput[]
+  onChangeNarrators?(narrators: NarratorInput[]): void
   disabled?: boolean
 }
 
@@ -63,7 +65,8 @@ export default function UsulRuleGrid({
   onChangeAppliesWasl,
   appliesWaqf,
   onChangeAppliesWaqf,
-  onApplyNarratorsPreset,
+  narrators,
+  onChangeNarrators,
   disabled,
 }: Props) {
   const [filterQuery, setFilterQuery] = useState('')
@@ -149,7 +152,8 @@ export default function UsulRuleGrid({
           onChangeAppliesWasl={onChangeAppliesWasl ?? (() => {})}
           appliesWaqf={appliesWaqf ?? true}
           onChangeAppliesWaqf={onChangeAppliesWaqf ?? (() => {})}
-          onApplyNarrators={onApplyNarratorsPreset}
+          narrators={narrators}
+          onChangeNarrators={onChangeNarrators}
           disabled={disabled}
         />
       ) : null}

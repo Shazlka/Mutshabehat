@@ -121,7 +121,7 @@ export const CANONICAL_READERS: readonly CanonicalReaderInfo[] = [
   },
 ]
 
-const HAFS_ID = 'Q05-R02'
+export const HAFS_ID = 'Q05-R02'
 const ALL_NARRATOR_IDS = CANONICAL_READERS.flatMap((r) => r.narrators.map((n) => n.id))
 
 type Props = {
@@ -167,40 +167,46 @@ function IndeterminateCheckbox({
 export default function ReaderNarratorSelector({ narrators, onChange, disabled }: Props) {
   const [showAdvanced, setShowAdvanced] = useState(false)
 
-  const selectedMap = useMemo(() => {
-    const map = new Map<string, NarratorInput>()
+  const narratorFacesMap = useMemo(() => {
+    const map = new Map<string, NarratorInput[]>()
     for (const item of narrators) {
-      if (item.id) map.set(item.id, item)
+      if (!item.id) continue
+      const list = map.get(item.id) ?? []
+      list.push(item)
+      map.set(item.id, list)
     }
     return map
   }, [narrators])
 
-  const selectedCount = selectedMap.size
-  const hafsEntry = selectedMap.get(HAFS_ID)
+  const selectedCount = narratorFacesMap.size
+  const hafsEntry = (narratorFacesMap.get(HAFS_ID) ?? [])[0]
 
   function toggleNarrator(id: string) {
     if (disabled) return
-    const next = [...narrators]
-    const idx = next.findIndex((n) => n.id === id)
-
-    if (idx >= 0) {
-      next.splice(idx, 1)
+    const existing = narratorFacesMap.get(id) ?? []
+    if (existing.length > 0) {
+      // Remove all faces for this narrator
+      onChange(narrators.filter((n) => n.id !== id))
     } else {
       const isHafs = id === HAFS_ID
-      next.push({
-        id,
-        action: null,
-        wajhOrder: isHafs ? 2 : 1,
-        wajhNote: isHafs ? 'وجه ثانٍ لحفص' : null,
-      })
+      onChange([
+        ...narrators,
+        {
+          id,
+          action: null,
+          wajhOrder: isHafs ? 2 : 1,
+          wajhNote: isHafs ? 'وجه ثانٍ لحفص' : null,
+        },
+      ])
     }
-    onChange(next)
   }
 
   function toggleReader(reader: CanonicalReaderInfo) {
     if (disabled) return
     const [n1, n2] = reader.narrators
-    const bothSelected = selectedMap.has(n1.id) && selectedMap.has(n2.id)
+    const hasN1 = (narratorFacesMap.get(n1.id)?.length ?? 0) > 0
+    const hasN2 = (narratorFacesMap.get(n2.id)?.length ?? 0) > 0
+    const bothSelected = hasN1 && hasN2
 
     if (bothSelected) {
       // Remove both
@@ -208,10 +214,10 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
     } else {
       // Add missing ones
       const next = [...narrators]
-      if (!selectedMap.has(n1.id)) {
+      if (!hasN1) {
         next.push({ id: n1.id, wajhOrder: 1, action: null, wajhNote: null })
       }
-      if (!selectedMap.has(n2.id)) {
+      if (!hasN2) {
         const isHafs = n2.id === HAFS_ID
         next.push({
           id: n2.id,
@@ -286,6 +292,10 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
     onChange(next)
   }
 
+  function updateFaceAt(index: number, patch: Partial<NarratorInput>) {
+    onChange(narrators.map((n, i) => (i === index ? { ...n, ...patch } : n)))
+  }
+
   return (
     <div className="space-y-3" dir="rtl">
       {/* Quick selection toolbar */}
@@ -353,8 +363,8 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
       <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
         {CANONICAL_READERS.map((reader) => {
           const [n1, n2] = reader.narrators
-          const s1 = selectedMap.has(n1.id)
-          const s2 = selectedMap.has(n2.id)
+          const s1 = narratorFacesMap.has(n1.id)
+          const s2 = narratorFacesMap.has(n2.id)
           const both = s1 && s2
           const indeterminate = (s1 || s2) && !both
 
@@ -394,7 +404,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
               {/* Narrator Chips */}
               <div className="flex items-center gap-1">
                 {reader.narrators.map((narrator) => {
-                  const isSelected = selectedMap.has(narrator.id)
+                  const isSelected = narratorFacesMap.has(narrator.id)
                   return (
                     <button
                       key={narrator.id}
@@ -483,14 +493,14 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
 
           {showAdvanced ? (
             <div className="mt-2 space-y-2 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-2">
-              {narrators.map((item) => {
+              {narrators.map((item, index) => {
                 const reader = CANONICAL_READERS.find((r) =>
                   r.narrators.some((n) => n.id === item.id)
                 )
                 const narratorInfo = reader?.narrators.find((n) => n.id === item.id)
                 return (
                   <div
-                    key={item.id}
+                    key={`${item.id}-${index}`}
                     className="flex flex-wrap items-center gap-2 rounded border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-1.5 text-xs"
                   >
                     <span className="min-w-16 font-bold text-[var(--color-ink)]">
@@ -504,8 +514,8 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                         max={5}
                         value={item.wajhOrder ?? 1}
                         onChange={(e) =>
-                          updateNarratorField(item.id, {
-                            wajhOrder: Math.max(1, Number(e.target.value)),
+                          updateFaceAt(index, {
+                            wajhOrder: Math.max(item.id === HAFS_ID ? 2 : 1, Number(e.target.value)),
                           })
                         }
                         className="w-12 rounded border border-[var(--color-border)] px-1 py-0.5 text-center"
@@ -516,7 +526,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                       <input
                         type="text"
                         value={item.action ?? ''}
-                        onChange={(e) => updateNarratorField(item.id, { action: e.target.value })}
+                        onChange={(e) => updateFaceAt(index, { action: e.target.value })}
                         placeholder="نص الأداء (اختياري)"
                         className="flex-1 rounded border border-[var(--color-border)] px-1.5 py-0.5"
                       />
