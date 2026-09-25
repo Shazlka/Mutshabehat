@@ -42,10 +42,7 @@ Live: https://mutshabehat-v2.vercel.app
   widened to ~840px by an earlier commit; not re-measured here), and the bulk-apply occurrence
   preview's 4-way تعارض/يحتاج مراجعة classification (implemented as a simpler 2-way
   add/exists check — see the implementation doc for why).
-- **DB migration: written, reviewed, functionally verified on a reconstructed scratch schema, NOT
-  applied to the live database.** This sandbox has no connectivity to the self-hosted Postgres, so
-  the migration could not be applied there; someone with Mac Mini/Docker access must back it up and
-  apply it per `CLAUDE.md`. It WAS, however, actually run: the full Phase 4 migration chain
+- **DB migration: applied to the live self-hosted Postgres on 2026-09-25.** Backed up via `pg_dump -Fc` to `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost/backups/pre-review-editor-phase4-20260925T025708Z.dump` (13 MB) and applied inside a single transaction with `-v ON_ERROR_STOP=1`. PostgREST schema cache reloaded via `NOTIFY pgrst, 'reload schema'`. Verified live: `qiraat_entries` has all three columns (`applies_wasl`, `applies_waqf`, `hamzah_detail`) and the `qiraat_entries_wasl_waqf_chk` constraint; all five RPCs (`qiraat_review_bulk_delete`, `qiraat_review_find_same_word`, `qiraat_review_copy_entry`, `qiraat_review_find_occurrences`, `qiraat_review_bulk_apply`) are present in `public` with execute grants; `quran_words` table is completely untouched with count 77,429 and checksum `9f89f2ec65f8c0af538372f017481422` confirmed byte-identical before and after. Prior to live application, the full Phase 4 migration chain
   (`20260917120000` through `20260925170000`) was replayed on a local scratch Postgres 16 to
   reconstruct the real `qiraat_entries`/`qiraat_loci`/`quran_words` schema, this migration applied
   cleanly on top, and every new RPC was exercised live with seeded data — `qiraat_review_bulk_delete`
