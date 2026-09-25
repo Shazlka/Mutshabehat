@@ -299,14 +299,34 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       setSaveMessage(null)
 
       const result = await reviewApi.createEntry(draft, deviceId)
-      setIsSaving(false)
       if (result.ok) {
-        applyRowUpdate(result.data)
-        setSelectedRowId(result.data.entryId)
+        let finalRow = result.data
+        if (
+          (draft.appliesWasl !== undefined && draft.appliesWasl !== true) ||
+          (draft.appliesWaqf !== undefined && draft.appliesWaqf !== true) ||
+          draft.hamzahDetail
+        ) {
+          const updateRes = await reviewApi.updateEntry(
+            finalRow,
+            {
+              appliesWasl: draft.appliesWasl ?? true,
+              appliesWaqf: draft.appliesWaqf ?? true,
+              hamzahDetail: draft.hamzahDetail ?? null,
+            },
+            deviceId
+          )
+          if (updateRes.ok) {
+            finalRow = updateRes.data
+          }
+        }
+        setIsSaving(false)
+        applyRowUpdate(finalRow)
+        setSelectedRowId(finalRow.entryId)
         setNewEntryDraft(null)
         setSaveMessage('تمت إضافة القراءة بنجاح إلى قاعدة البيانات ✓')
         setTimeout(() => setSaveMessage(null), 4000)
       } else {
+        setIsSaving(false)
         setErrorMessage(result.error.messageAr ?? result.error.message)
       }
     },

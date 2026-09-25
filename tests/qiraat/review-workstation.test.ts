@@ -16,6 +16,14 @@ import {
   worstStatus,
   filterReviewRows,
 } from '../../src/app/mushaf-1441/review/_components/statusMeta'
+import {
+  isImalahCategory,
+  detectImalahType,
+  buildImalahRulingText,
+  IMALAH_NARRATOR_IDS,
+  TAQLIL_NARRATOR_IDS,
+  WARSH_NARRATOR_ID,
+} from '../../src/app/mushaf-1441/review/_components/ImalahDetailFields'
 import type { ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
 
 test('CANONICAL_READERS defines exactly 10 readers and 20 distinct narrators', () => {
@@ -167,3 +175,56 @@ test('filterReviewRows handles kind and status filtering correctly', () => {
   assert.equal(filterReviewRows(dummyRows, 'all', 'farsh').length, 1)
   assert.equal(filterReviewRows(dummyRows, 'all', 'usul').length, 1)
 })
+
+test('isImalahCategory recognizes IMALAH_TAQLIL correctly', () => {
+  assert.equal(isImalahCategory('IMALAH_TAQLIL'), true)
+  assert.equal(isImalahCategory('TARQIQ_RA'), false)
+  assert.equal(isImalahCategory('TAGHYIR_HAMZ'), false)
+  assert.equal(isImalahCategory(null), false)
+})
+
+test('detectImalahType parses Arabic ruling descriptions correctly', () => {
+  assert.equal(detectImalahType('إمالة الألف وصلاً ووقفاً'), 'إمالة')
+  assert.equal(detectImalahType('إمالة كبرى'), 'إمالة')
+  assert.equal(detectImalahType('تقليل الألف عند الوقف'), 'تقليل')
+  assert.equal(detectImalahType('بين بين (تقليل)'), 'تقليل')
+  assert.equal(detectImalahType('إمالة وتقليل الألف وصلاً ووقفاً'), 'إمالة وتقليل')
+  assert.equal(detectImalahType('نقل حركة الهمزة'), null)
+  assert.equal(detectImalahType(null), null)
+  assert.equal(detectImalahType(''), null)
+})
+
+test('buildImalahRulingText constructs accurate rulings for all wasl/waqf combinations', () => {
+  // Wasl & Waqf (both true)
+  assert.equal(buildImalahRulingText('إمالة', true, true), 'إمالة الألف وصلاً ووقفاً')
+  assert.equal(buildImalahRulingText('تقليل', true, true), 'تقليل الألف وصلاً ووقفاً')
+  assert.equal(buildImalahRulingText('إمالة وتقليل', true, true), 'إمالة وتقليل الألف وصلاً ووقفاً')
+
+  // Waqf only (wasl = false, waqf = true)
+  assert.equal(buildImalahRulingText('إمالة', false, true), 'إمالة الألف عند الوقف')
+  assert.equal(buildImalahRulingText('تقليل', false, true), 'تقليل الألف عند الوقف')
+
+  // Wasl only (wasl = true, waqf = false)
+  assert.equal(buildImalahRulingText('إمالة', true, false), 'إمالة الألف عند الوصل')
+  assert.equal(buildImalahRulingText('تقليل', true, false), 'تقليل الألف عند الوصل')
+})
+
+test('Imalah and Taqlil narrator presets map to canonical authorities and actions', () => {
+  // Imalah narrators: Hamzah (2), Kisai (2), Khalaf al-Ashir (2) = 6
+  assert.equal(IMALAH_NARRATOR_IDS.length, 6)
+  assert.ok(IMALAH_NARRATOR_IDS.includes('Q06-R01')) // خلف عن حمزة
+  assert.ok(IMALAH_NARRATOR_IDS.includes('Q06-R02')) // خلاد عن حمزة
+  assert.ok(IMALAH_NARRATOR_IDS.includes('Q07-R01')) // أبو الحارث عن الكسائي
+  assert.ok(IMALAH_NARRATOR_IDS.includes('Q07-R02')) // الدوري عن الكسائي
+  assert.ok(IMALAH_NARRATOR_IDS.includes('Q10-R01')) // إسحاق
+  assert.ok(IMALAH_NARRATOR_IDS.includes('Q10-R02')) // إدريس
+
+  // Taqlil narrators: Warsh (1), Abu Amr (2) = 3
+  assert.equal(TAQLIL_NARRATOR_IDS.length, 3)
+  assert.ok(TAQLIL_NARRATOR_IDS.includes('Q01-R02')) // ورش عن نافع
+  assert.ok(TAQLIL_NARRATOR_IDS.includes('Q03-R01')) // الدوري عن أبي عمرو
+  assert.ok(TAQLIL_NARRATOR_IDS.includes('Q03-R02')) // السوسي عن أبي عمرو
+
+  assert.equal(WARSH_NARRATOR_ID, 'Q01-R02')
+})
+

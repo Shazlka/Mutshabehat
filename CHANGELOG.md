@@ -7,6 +7,30 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
+## 2026-09-25 — Imalah & Taqlil Structured Selection and Wasl/Waqf Applicability
+- **Feature**:
+  In `/mushaf-1441/review` editor, when selecting the "الممال والمقلل" (`IMALAH_TAQLIL`) category under Usul al-Qira'at ("أصول القراءات"), added a structured selection interface enabling reviewers to choose between "إمالة" (Imalah) and "تقليل" (Taqlil) from a list/buttons, and configure performance applicability ("وصل" Wasl and "وقف" Waqf).
+- **Implementation**:
+  - `src/app/mushaf-1441/review/_components/ImalahDetailFields.tsx`:
+    - New dedicated component for `IMALAH_TAQLIL` chapter rules.
+    - Imalah / Taqlil type selection via dropdown `<select>` and quick-selection chips (`إمالة (كبرى)`, `تقليل (بين بين)`, `إمالة وتقليل (أوجه الجمع)`).
+    - Wasl and Waqf performance controls with 1-click presets (`وصلاً ووقفاً`, `وقفاً فقط`, `وصلاً فقط`) and individual toggles (`الوصل`, `الوقف`) enforcing the database constraint that at least one remains active.
+    - 1-click narrator assignment presets for canonical authorities with their appropriate actions (`إمالة`: حمزة، الكسائي، خلف العاشر; `تقليل`: ورش، أبو عمرو).
+    - Dynamic Arabic ruling formulation helper (`buildImalahRulingText`) and type detection (`detectImalahType`).
+  - `src/app/mushaf-1441/review/_components/UsulRuleGrid.tsx`:
+    - Integrated `ImalahDetailFields` directly beneath the category grid so it displays immediately upon selecting "الممال والمقلل".
+    - Connected `appliesWasl`, `appliesWaqf`, and `onApplyNarratorsPreset`.
+  - `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`:
+    - Wired Wasl & Waqf states and narrator preset handler (`handleApplyNarratorsPreset`) to `UsulRuleGrid`.
+    - Updated `handleCreate` to include `appliesWasl`, `appliesWaqf`, and `hamzahDetail`.
+  - `src/app/mushaf-1441/review/_components/ReviewApp.tsx`:
+    - Updated `handleCreateNewEntry` to persist non-default `appliesWasl`, `appliesWaqf`, and `hamzahDetail` on newly created entries.
+  - `src/app/mushaf-1441/review/_lib/types.ts`:
+    - Added `appliesWasl?: boolean`, `appliesWaqf?: boolean`, `hamzahDetail?: HamzahDetail | null` to `CreateEntryInput`.
+  - `tests/qiraat/review-workstation.test.ts`:
+    - Added comprehensive unit tests for `isImalahCategory`, `detectImalahType`, `buildImalahRulingText`, and narrator authority presets (23/23 tests passed).
+- **Verification**: `npm run typecheck` (0 errors), `npm run test:qiraat:review` (23/23 passed), `npm run test:qiraat` (44/44 passed), Next.js production build (`npm run build`) succeeded across all 35 routes.
+
 ## 2026-09-25 — Live Qiraat Synchronization to Mushaf Pages & Usul Reading Text Field
 - **Problem**:
   1. Modifying variants and adding readers/narrators in review editor mode (`/mushaf-1441/review`) did not reflect on the Mushaf page (`/mushaf-1441`). Hovering or tapping a word (e.g. Page 6 Ayah 31 `هَـٰٓؤُلَآءِ`) continued to show old static fixture data (only "Susi" for Farsh) because the Mushaf viewer loaded static JSON fixtures in the browser without fetching live database changes.

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { cn } from '@/lib/cn'
+import ImalahDetailFields, { isImalahCategory } from './ImalahDetailFields'
 
 export interface CategoryOption {
   code: string
@@ -42,6 +43,11 @@ type Props = {
   rulingText: string | null
   onChangeRulingText(text: string): void
   availableCategories?: CategoryOption[]
+  appliesWasl?: boolean
+  onChangeAppliesWasl?(val: boolean): void
+  appliesWaqf?: boolean
+  onChangeAppliesWaqf?(val: boolean): void
+  onApplyNarratorsPreset?(preset: 'imalah' | 'taqlil' | 'warsh'): void
   disabled?: boolean
 }
 
@@ -53,6 +59,11 @@ export default function UsulRuleGrid({
   rulingText,
   onChangeRulingText,
   availableCategories,
+  appliesWasl,
+  onChangeAppliesWasl,
+  appliesWaqf,
+  onChangeAppliesWaqf,
+  onApplyNarratorsPreset,
   disabled,
 }: Props) {
   const [filterQuery, setFilterQuery] = useState('')
@@ -127,6 +138,21 @@ export default function UsulRuleGrid({
           )
         })}
       </div>
+
+      {/* Structured Imalah & Taqlil controls */}
+      {isImalahCategory(selectedCategoryCode) ? (
+        <ImalahDetailFields
+          categoryCode={selectedCategoryCode}
+          rulingText={rulingText}
+          onChangeRulingText={onChangeRulingText}
+          appliesWasl={appliesWasl ?? true}
+          onChangeAppliesWasl={onChangeAppliesWasl ?? (() => {})}
+          appliesWaqf={appliesWaqf ?? true}
+          onChangeAppliesWaqf={onChangeAppliesWaqf ?? (() => {})}
+          onApplyNarrators={onApplyNarratorsPreset}
+          disabled={disabled}
+        />
+      ) : null}
 
       {/* Ruling statement / notes input */}
       <div>

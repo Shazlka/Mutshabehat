@@ -125,6 +125,9 @@ export type CreateEntryInput = {
   rulingText?: string | null
   notes?: string | null
   narrators: NarratorInput[]
+  appliesWasl?: boolean
+  appliesWaqf?: boolean
+  hamzahDetail?: HamzahDetail | null
 }
 export type EntryFields = Partial<{
   kind: 'farsh' | 'usul'

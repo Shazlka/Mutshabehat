@@ -20,6 +20,12 @@ import ReaderNarratorSelector, { CANONICAL_READERS } from './ReaderNarratorSelec
 import UsulRuleGrid from './UsulRuleGrid'
 import FarshFields from './FarshFields'
 import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
+import {
+  IMALAH_NARRATOR_IDS,
+  TAQLIL_NARRATOR_IDS,
+  WARSH_NARRATOR_ID,
+  isImalahCategory,
+} from './ImalahDetailFields'
 import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
 import * as reviewApi from '../_lib/api'
@@ -215,8 +221,46 @@ export default function ReviewEditorPane({
       description: description?.trim() || null,
       performanceNote: performanceNote?.trim() || null,
       narrators,
+      appliesWasl,
+      appliesWaqf,
+      hamzahDetail: kind === 'usul' && isHamzahCategory(categoryCode) ? hamzahDetail : null,
     }
     void onCreateNewEntry(draft)
+  }
+
+  function handleApplyNarratorsPreset(preset: 'imalah' | 'taqlil' | 'warsh') {
+    if (isSaving) return
+    const idsToApply: readonly string[] =
+      preset === 'imalah'
+        ? IMALAH_NARRATOR_IDS
+        : preset === 'taqlil'
+          ? TAQLIL_NARRATOR_IDS
+          : [WARSH_NARRATOR_ID]
+    const actionToSet = preset === 'imalah' ? 'إمالة' : 'تقليل'
+
+    const idSet = new Set<string>(idsToApply)
+    const next: NarratorInput[] = []
+
+    for (const item of narrators) {
+      if (idSet.has(item.id)) {
+        next.push({ ...item, action: actionToSet })
+      } else {
+        next.push(item)
+      }
+    }
+
+    for (const id of idsToApply) {
+      if (!next.some((n) => n.id === id)) {
+        next.push({
+          id,
+          action: actionToSet,
+          wajhOrder: 1,
+          wajhNote: null,
+        })
+      }
+    }
+
+    setNarrators(next)
   }
 
   // Feature 1: multi-select delete over "الأوجه المسجلة"
@@ -749,6 +793,12 @@ export default function ReviewEditorPane({
                 rulingText={rulingText}
                 onChangeRulingText={setRulingText}
                 availableCategories={page.categories}
+                appliesWasl={appliesWasl}
+                onChangeAppliesWasl={setAppliesWasl}
+                appliesWaqf={appliesWaqf}
+                onChangeAppliesWaqf={setAppliesWaqf}
+                onApplyNarratorsPreset={handleApplyNarratorsPreset}
+                disabled={isSaving}
               />
             ) : (
               <FarshFields
