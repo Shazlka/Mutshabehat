@@ -37,6 +37,8 @@ export const FALLBACK_USUL_CATEGORIES: readonly CategoryOption[] = [
 type Props = {
   selectedCategoryCode: string | null
   onSelectCategory(code: string): void
+  readingText: string
+  onChangeReadingText(text: string): void
   rulingText: string | null
   onChangeRulingText(text: string): void
   availableCategories?: CategoryOption[]
@@ -46,6 +48,8 @@ type Props = {
 export default function UsulRuleGrid({
   selectedCategoryCode,
   onSelectCategory,
+  readingText,
+  onChangeReadingText,
   rulingText,
   onChangeRulingText,
   availableCategories,
@@ -68,6 +72,23 @@ export default function UsulRuleGrid({
 
   return (
     <div className="space-y-3" dir="rtl">
+      {/* Reading Text Input */}
+      <div>
+        <label className="flex items-center justify-between text-xs font-bold text-[var(--color-ink)]">
+          <span>نص القراءة المقروء به:</span>
+          <span className="text-[11px] text-[var(--color-ink-muted)]">مع الضبط والشكل</span>
+        </label>
+        <input
+          type="text"
+          value={readingText}
+          onChange={(e) => onChangeReadingText(e.target.value)}
+          disabled={disabled}
+          placeholder="اكتب نص الكلمة في هذه القراءة..."
+          dir="rtl"
+          className="mt-1 w-full rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 font-quran text-2xl text-[var(--color-ink)] placeholder:font-sans placeholder:text-xs placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
+        />
+      </div>
+
       <div className="flex items-center justify-between gap-2">
         <label className="text-xs font-bold text-[var(--color-ink)]">
           باب الأصول ({categories.length} بابًا):

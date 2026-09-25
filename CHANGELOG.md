@@ -7,7 +7,20 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
-Live: https://mutshabehat-v2.vercel.app
+## 2026-09-25 — Live Qiraat Synchronization to Mushaf Pages & Usul Reading Text Field
+- **Problem**:
+  1. Modifying variants and adding readers/narrators in review editor mode (`/mushaf-1441/review`) did not reflect on the Mushaf page (`/mushaf-1441`). Hovering or tapping a word (e.g. Page 6 Ayah 31 `هَـٰٓؤُلَآءِ`) continued to show old static fixture data (only "Susi" for Farsh) because the Mushaf viewer loaded static JSON fixtures in the browser without fetching live database changes.
+  2. In the review editor ("أصول القراءات" tab), there was no "نص القراءة المقروء به" (reading text with diacritics / vocalization) input field, preventing editors from viewing and editing how the word is written and read when working with Usul rulings.
+- **Root Cause**:
+  1. `Mushaf1441Viewer.tsx` (`fetchQiraatForPage`) read directly from `defaultQiraatRepository` without hydrating from `/api/mushaf-1441/qiraat`. Furthermore, `/api/mushaf-1441/qiraat/route.ts` itself called `defaultQiraatRepository` rather than querying PostgreSQL's `qiraat_export_page`. In addition, `packages/qiraat-core/fixtures/pages/page-006.json` had only `"Q03-R02"` for `v-SUSI-002-31-12-0029`.
+  2. `UsulRuleGrid.tsx` lacked a `readingText` input field, and `ReviewEditorPane.tsx` did not pass or bind `readingText` for Usul mode.
+- **Changes**:
+  - `src/app/api/mushaf-1441/qiraat/route.ts`: connected to PostgreSQL via `createClient` calling `qiraat_export_page(page, true)` to return live variants and rulings with zero-stale cache (`Cache-Control: private, no-cache, no-store, must-revalidate`), falling back gracefully to static fixtures if offline.
+  - `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`: enhanced `fetchQiraatForPage` to return baseline fixtures instantly for snappy UX while simultaneously hydrating in the background from `/api/mushaf-1441/qiraat`, immediately updating state and active word selection cards with live database updates.
+  - `packages/qiraat-core/fixtures/pages/page-006.json`: synchronized `v-SUSI-002-31-12-0029` with the 9 narrators present in the database (`Q01-R01, Q01-R02, Q02-R01, Q02-R02, Q03-R01, Q03-R02, Q08-R01, Q08-R02, Q09-R01`).
+  - `src/app/mushaf-1441/review/_components/UsulRuleGrid.tsx`: added `readingText` and `onChangeReadingText` props and prominent Quranic vocalized text input box ("نص القراءة المقروء به: مع الضبط والشكل").
+  - `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`: wired `readingText` to `<UsulRuleGrid />`, and updated `handleSaveExisting` and `handleCreate` to include `readingText` when saving Usul entries.
+- **Verification**: `npm run typecheck` (0 errors), `npm run test:qiraat` (44/44 passed), `npm run test:qiraat:review` (19/19 passed), Next.js production build (`npm run build`) succeeded with all 35 routes. Verified `/api/mushaf-1441/qiraat?page=6&debug=1` returns all 7 variants, 41 rulings, and all 9 narrators for 2:31:12 directly from PostgreSQL.
 
 ## 2026-09-25 — Qiraat Review: Lenient Entry Update & Kind Transition Fix
 - **Problem**: In editor mode on `/mushaf-1441/review`, modifying fields on an approved or existing variant and clicking "حفظ" (save) threw the error `"invalid field for farsh entry"` (or `"invalid field for usul entry"` on usul entries), preventing edits from being saved.

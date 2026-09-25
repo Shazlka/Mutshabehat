@@ -192,6 +192,7 @@ export default function ReviewEditorPane({
             performanceNote: performanceNote?.trim() || null,
           }
         : {
+            readingText: readingText.trim() || undefined,
             categoryCode: categoryCode || undefined,
             rulingText: rulingText?.trim() || null,
           }),
@@ -207,7 +208,7 @@ export default function ReviewEditorPane({
     const draft: CreateEntryInput = {
       ...newEntryDraft,
       kind,
-      readingText: kind === 'farsh' ? readingText.trim() : undefined,
+      readingText: readingText.trim() || undefined,
       categoryCode: kind === 'usul' && categoryCode ? categoryCode : undefined,
       variantType: kind === 'farsh' && variantType ? variantType : undefined,
       rulingText: kind === 'usul' ? rulingText?.trim() || null : null,
@@ -743,6 +744,8 @@ export default function ReviewEditorPane({
               <UsulRuleGrid
                 selectedCategoryCode={categoryCode}
                 onSelectCategory={setCategoryCode}
+                readingText={readingText}
+                onChangeReadingText={setReadingText}
                 rulingText={rulingText}
                 onChangeRulingText={setRulingText}
                 availableCategories={page.categories}

@@ -1479,18 +1479,70 @@ export default function Mushaf1441Viewer({
     if (inFlight) return inFlight
 
     const request = (async () => {
-      // Qiraat fixtures are immutable application assets. Load their page chunks directly in the
-      // browser instead of paying for a route-handler round trip and a second JSON serialization.
-      // Adjacent-page prefetch therefore warms the same module cache used by the page turn.
       const options = { includeUnpublished }
-      const [variants, rules, rulings] = await Promise.all([
-        defaultQiraatRepository.getVariantsForPage(nextPage, options),
-        defaultQiraatRepository.getRulesForPage(nextPage, options),
-        defaultQiraatRepository.getRulingsForPage(nextPage, options),
-      ])
+      let variants: QiraatVariant[] = []
+      let rules: QiraatRule[] = []
+      let rulings: QiraatRuling[] = []
+
+      // 1. Initial baseline from default repository (instant and works offline)
+      try {
+        const [fVariants, fRules, fRulings] = await Promise.all([
+          defaultQiraatRepository.getVariantsForPage(nextPage, options),
+          defaultQiraatRepository.getRulesForPage(nextPage, options),
+          defaultQiraatRepository.getRulingsForPage(nextPage, options),
+        ])
+        variants = fVariants
+        rules = fRules
+        rulings = fRulings
+      } catch {
+        // Fallback
+      }
+
       qiraatVariantsByPageRef.current = { ...qiraatVariantsByPageRef.current, [cacheKey]: variants }
       qiraatRulesByPageRef.current = { ...qiraatRulesByPageRef.current, [cacheKey]: rules }
       qiraatRulingsByPageRef.current = { ...qiraatRulingsByPageRef.current, [cacheKey]: rulings }
+
+      // 2. Fetch live data from /api/mushaf-1441/qiraat in background to reflect live editor/DB updates
+      void fetch(`/api/mushaf-1441/qiraat?page=${nextPage}&debug=${includeUnpublished ? 1 : 0}`)
+        .then(async (res) => {
+          if (!res.ok) return
+          const apiData = (await res.json()) as {
+            variants?: QiraatVariant[]
+            rules?: QiraatRule[]
+            rulings?: QiraatRuling[]
+          }
+          let changed = false
+          if (Array.isArray(apiData.variants) && apiData.variants.length > 0) {
+            qiraatVariantsByPageRef.current = {
+              ...qiraatVariantsByPageRef.current,
+              [cacheKey]: apiData.variants,
+            }
+            changed = true
+          }
+          if (Array.isArray(apiData.rulings) && apiData.rulings.length > 0) {
+            qiraatRulingsByPageRef.current = {
+              ...qiraatRulingsByPageRef.current,
+              [cacheKey]: apiData.rulings,
+            }
+            changed = true
+          }
+          if (Array.isArray(apiData.rules) && apiData.rules.length > 0) {
+            qiraatRulesByPageRef.current = {
+              ...qiraatRulesByPageRef.current,
+              [cacheKey]: apiData.rules,
+            }
+            changed = true
+          }
+          if (changed) {
+            setQiraatVariantsByPage({ ...qiraatVariantsByPageRef.current })
+            setQiraatRulesByPage({ ...qiraatRulesByPageRef.current })
+            setQiraatRulingsByPage({ ...qiraatRulingsByPageRef.current })
+          }
+        })
+        .catch(() => {
+          // Live API fetch failed or offline; static fixtures remain active
+        })
+
       return { variants, rules, rulings }
     })()
     qiraatRequestsRef.current.set(cacheKey, request)
