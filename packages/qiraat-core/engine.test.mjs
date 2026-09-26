@@ -6,7 +6,7 @@ import { QIRAAT_NARRATORS, narratorsOfReader } from './narrators.ts'
 import { QIRAAT_READINGS, getReading, getReadingOrNull } from './readings.ts'
 import { QIRAAT_MULTI_READER_COLOR, READER_COLOR, NARRATOR_COLOR, readerColor, narratorColor, readerCssVar, narratorCssVar } from './colors.ts'
 import { adaptColorForDark } from '../../src/app/mushaf-1441/_components/mushafTheme.ts'
-import { computeAttribution, gradientCss, readingsNotIn } from './attribution.ts'
+import { computeAttribution, gradientCss, readingsNotIn, rollupAuthorityPills } from './attribution.ts'
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
 import { BASE_READING } from './types.ts'
 import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
@@ -175,6 +175,33 @@ test('attribution: both narrators of one reader (Case B) uses the parent reader 
   assert.equal(attribution.kind, 'reader')
   assert.equal(attribution.readerId, 'Q06')
   assert.equal(attribution.color, readerColor('Q06'))
+})
+
+test('rollupAuthorityPills: rolls up both narrators to Imam, preserves standalone narrators', () => {
+  // Hamzah: both narrators -> rollup to Imam Hamzah
+  const hamzahPills = rollupAuthorityPills(['Q06-R01', 'Q06-R02'])
+  assert.equal(hamzahPills.length, 1)
+  assert.equal(hamzahPills[0].key, 'Q06')
+  assert.equal(hamzahPills[0].name, 'الإمام حمزة')
+  assert.equal(hamzahPills[0].kind, 'reader')
+
+  // Warsh alone -> standalone narrator
+  const warshPill = rollupAuthorityPills(['Q01-R02'])
+  assert.equal(warshPill.length, 1)
+  assert.equal(warshPill[0].key, 'Q01-R02')
+  assert.equal(warshPill[0].name, 'الراوي ورش')
+  assert.equal(warshPill[0].kind, 'narrator')
+
+  // Both Hamzah narrators + Warsh alone -> 1 Imam + 1 narrator
+  const combined = rollupAuthorityPills(['Q06-R01', 'Q06-R02', 'Q01-R02'])
+  assert.equal(combined.length, 2)
+  assert.equal(combined[0].name, 'الراوي ورش')
+  assert.equal(combined[1].name, 'الإمام حمزة')
+
+  // Explicit reader ID -> rollup to Imam
+  const explicitReader = rollupAuthorityPills(['Q07'])
+  assert.equal(explicitReader.length, 1)
+  assert.equal(explicitReader[0].name, 'الإمام الكسائي')
 })
 
 test('attribution: multiple readers (Case C) builds one segmented marker, one slice per reader', () => {

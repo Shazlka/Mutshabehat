@@ -27,7 +27,7 @@ export type ReviewFlag = {
 
 // Structured Hamzah performance value for the تغيير الهمز / الهمزتان من كلمة / الهمزتان من كلمتين
 // Usul chapters. UI-defined shape; the database stores it as opaque jsonb and never interprets it.
-export type HamzahSingleTreatment = 'تحقيق' | 'تسهيل' | 'إبدال' | 'نقل' | 'حذف' | 'سكت قبل الهمز'
+export type HamzahSingleTreatment = 'تحقيق' | 'تسهيل' | 'إبدال' | 'نقل' | 'حذف' | 'إسقاط' | 'سكت قبل الهمز'
 export type HamzahDetail =
   | { mode: 'single'; treatment: HamzahSingleTreatment }
   | {

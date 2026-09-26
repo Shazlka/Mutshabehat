@@ -38,6 +38,23 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-26 — Hamzatān Structured Faces Builder & Mushaf Reader Rollup Attribution
+- **Feature 1 (Hamzatān & Hamzah Structured Faces Builder)**:
+  - Transformed "الهمزتان من كلمة واحدة" (`HAMZATAN_KALIMA`), "الهمزتان من كلمتين" (`HAMZATAN_KALIMATAYN`), and "تغيير الهمز المفرد" (`TAGHYIR_HAMZ`) into a complete structured faces builder mirroring `ImalahDetailFields` in `/mushaf-1441/review`.
+  - Enables reviewers to choose readers / narrators with 3 tabs: quick scholastic preset groups (أهل التسهيل مع الإدخال, أهل التسهيل بدون إدخال, أهل التحقيق, أبو عمرو إسقاط الأولى, قالون والبزي, ورش وقنبل وأبو جعفر ورويس, إلخ), 10 canonical readers with color badges, or 20 individual narrators.
+  - Allows selecting varieties for الهمزة الأولى (تحقيق، تسهيل، إبدال، إسقاط) and الهمزة الثانية (تسهيل بين بين، إبدال حرف مد، تحقيق، حذف/إسقاط), toggling إدخال ألف بين الهمزتين (مع الإدخال / بدون إدخال), performance conditions (وصلاً ووقفاً، عند الوقف فقط، عند الوصل فقط), and disagreement options (قولاً واحداً، بخلف عنه).
+  - Automatically synthesizes standard scholarly action text with manual override and 1-click restore.
+  - Adds configured faces via `➕ إضافة هذا الوجه إلى الرواة المحددين` with sequential wajh ordering (`nextWajhOrder`), persisting both `narrators` array and structured `hamzahDetail` JSONB.
+  - Includes a live faces manager ("تفاصيل الأداء والأوجه المسجلة حالياً") with inline editing, adding another face for the same narrator (`+ وجه آخر لنفس الراوي`), and deleting faces.
+  - Embedded directly inside `UsulRuleGrid.tsx` for desktop and mobile views.
+- **Feature 2 (Attribution Rollup in Mushaf App /mushaf-1441)**:
+  - Added `rollupAuthorityPills` to `@mutshabehat/qiraat-core/attribution.ts`.
+  - In Mushaf hover peek card (`renderQiraatHoverCard`) and selection card (`renderQiraatSelection`), when a reader is chosen with both of his narrators (e.g. Khalaf + Khallad for Hamzah), it displays the Imam's name (`الإمام حمزة`), instead of showing both narrators (`الراوي خلف` and `الراوي خلاد`).
+  - If a narrator has a variant alone (e.g. `الراوي ورش`), it displays that narrator individually.
+  - Extended Mushaf hover card to trigger and render Usul rulings (such as `الممال والمقلل` and Hamzah chapters) with rolled-up pills.
+- **Verification**: `npm run typecheck` (0 errors), `npm run test:qiraat` (45/45 passed + frontend validation clean), `npm run test:qiraat:review` (30/30 passed).
+- **Files**: `packages/qiraat-core/{attribution.ts,engine.test.mjs}`, `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`, `src/app/mushaf-1441/review/_components/{HamzahDetailFields.tsx,UsulRuleGrid.tsx,ReviewEditorPane.tsx,MobileReviewEditorView.tsx}`, `src/app/mushaf-1441/review/_lib/types.ts`, `tests/qiraat/review-workstation.test.ts`.
+
 ## 2026-09-25 — Mobile Redesign for Mushaf-1441 Review/Editor (/mushaf-1441/review)
 - **Feature**: Dedicated mobile UX for `/mushaf-1441/review` implementing the scholarly workflow: Mushaf Page (View A) → Tap Word → Dedicated Full-Screen Editor (View B) → Save / Back → Return to exact Mushaf page & scroll position.
 - **Architecture & Implementation**:

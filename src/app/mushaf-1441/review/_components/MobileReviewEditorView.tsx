@@ -588,6 +588,8 @@ export default function MobileReviewEditorView({
               onChangeAppliesWaqf={setAppliesWaqf}
               narrators={narrators}
               onChangeNarrators={setNarrators}
+              hamzahDetail={hamzahDetail}
+              onChangeHamzahDetail={setHamzahDetail}
               disabled={isSaving}
             />
           ) : (
@@ -604,18 +606,6 @@ export default function MobileReviewEditorView({
             />
           )}
         </section>
-
-        {/* Section D: Hamzah Structured Controls (if Usul chapter is Hamzah) */}
-        {kind === 'usul' && isHamzahCategory(categoryCode) ? (
-          <section className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-2xs">
-            <HamzahDetailFields
-              categoryCode={categoryCode}
-              value={hamzahDetail}
-              onChange={setHamzahDetail}
-              disabled={isSaving}
-            />
-          </section>
-        ) : null}
 
         {/* Section E: Waqf / Wasl Applicability */}
         <section className="flex items-center justify-between gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-2xs">

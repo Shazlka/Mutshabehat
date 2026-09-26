@@ -1,9 +1,10 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import type { NarratorInput } from '../_lib/types'
+import type { HamzahDetail, NarratorInput } from '../_lib/types'
 import { cn } from '@/lib/cn'
 import ImalahDetailFields, { isImalahCategory } from './ImalahDetailFields'
+import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
 
 export interface CategoryOption {
   code: string
@@ -50,6 +51,8 @@ type Props = {
   onChangeAppliesWaqf?(val: boolean): void
   narrators?: NarratorInput[]
   onChangeNarrators?(narrators: NarratorInput[]): void
+  hamzahDetail?: HamzahDetail | null
+  onChangeHamzahDetail?(val: HamzahDetail | null): void
   disabled?: boolean
 }
 
@@ -67,6 +70,8 @@ export default function UsulRuleGrid({
   onChangeAppliesWaqf,
   narrators,
   onChangeNarrators,
+  hamzahDetail,
+  onChangeHamzahDetail,
   disabled,
 }: Props) {
   const [filterQuery, setFilterQuery] = useState('')
@@ -154,6 +159,24 @@ export default function UsulRuleGrid({
           onChangeAppliesWaqf={onChangeAppliesWaqf ?? (() => {})}
           narrators={narrators}
           onChangeNarrators={onChangeNarrators}
+          disabled={disabled}
+        />
+      ) : null}
+
+      {/* Structured Hamzah controls */}
+      {isHamzahCategory(selectedCategoryCode) ? (
+        <HamzahDetailFields
+          categoryCode={selectedCategoryCode}
+          rulingText={rulingText}
+          onChangeRulingText={onChangeRulingText}
+          appliesWasl={appliesWasl ?? true}
+          onChangeAppliesWasl={onChangeAppliesWasl ?? (() => {})}
+          appliesWaqf={appliesWaqf ?? true}
+          onChangeAppliesWaqf={onChangeAppliesWaqf ?? (() => {})}
+          narrators={narrators}
+          onChangeNarrators={onChangeNarrators}
+          hamzahDetail={hamzahDetail}
+          onChangeHamzahDetail={onChangeHamzahDetail}
           disabled={disabled}
         />
       ) : null}

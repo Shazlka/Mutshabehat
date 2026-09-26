@@ -606,6 +606,8 @@ export default function ReviewEditorPane({
                 onChangeAppliesWaqf={setAppliesWaqf}
                 narrators={narrators}
                 onChangeNarrators={setNarrators}
+                hamzahDetail={hamzahDetail}
+                onChangeHamzahDetail={setHamzahDetail}
                 disabled={isSaving}
               />
             ) : (
@@ -621,16 +623,6 @@ export default function ReviewEditorPane({
               />
             )}
           </div>
-
-          {/* Hamzah structured controls (feature 4): only for the relevant Usul chapters */}
-          {kind === 'usul' ? (
-            <HamzahDetailFields
-              categoryCode={categoryCode}
-              value={hamzahDetail}
-              onChange={setHamzahDetail}
-              disabled={isSaving}
-            />
-          ) : null}
 
           {/* Wasl/Waqf applicability (feature 5) */}
           <div className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-2">

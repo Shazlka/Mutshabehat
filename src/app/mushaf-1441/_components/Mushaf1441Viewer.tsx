@@ -26,7 +26,7 @@ import {
 import { SAMPLE_MUTSHABEHAT_LINK_SOURCE } from '../../../../packages/mutshabehat-core/sampleMushafLinks'
 import { getQiraatVariantsByAyahKey } from '../../../../packages/qiraat-core/qiraatAdapter'
 import { defaultQiraatRepository, variantsForToken } from '../../../../packages/qiraat-core/repository'
-import { attributionLabelsAr, readingsNotIn } from '../../../../packages/qiraat-core/attribution'
+import { attributionLabelsAr, readingsNotIn, rollupAuthorityPills } from '../../../../packages/qiraat-core/attribution'
 import { getReading, getReadingOrNull, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
 import { getNarrator, narratorsOfReader } from '../../../../packages/qiraat-core/narrators'
@@ -2552,7 +2552,20 @@ export default function Mushaf1441Viewer({
             const selection = qiraatSelectionForWord(word)
             setHoveredQiraatFocusWord(word)
             setHoveredQiraatSelection(selection)
-            if (qiraatMarker) updateHoveredQiraatWord({ word, marker: qiraatMarker })
+            if (qiraatMarker) {
+              updateHoveredQiraatWord({ word, marker: qiraatMarker })
+            } else if (rulingMarker) {
+              updateHoveredQiraatWord({
+                word,
+                marker: {
+                  color: rulingMarker.color,
+                  isGradient: false,
+                  isPerformanceOnly: true,
+                  variants: [],
+                  unresolved: false,
+                },
+              })
+            }
           }
         }}
         onPointerLeave={(event) => {
@@ -3826,22 +3839,8 @@ export default function Mushaf1441Viewer({
   // individual narrator that IS present (narrator color — Case A). Never a plain black-text list.
   // Labeled "الإمام {short name}" / "الراوي {name}" — narrator names are never shortened further
   // (the two "الدوري" narrators are only disambiguated by their full name).
-  function readerPillsForReadingIds(readingIds: ReadingId[]): { key: string; name: string; color: string }[] {
-    const knownReadingIds = readingIds.filter((id) => getReadingOrNull(id) !== null)
-    const readerIds = Array.from(new Set(knownReadingIds.map((id) => getReading(id).readerId)))
-    const pills: { key: string; name: string; color: string }[] = []
-    for (const readerId of readerIds) {
-      const totalNarrators = narratorsOfReader(readerId).length
-      const presentForReader = knownReadingIds.filter((id) => getReading(id).readerId === readerId)
-      if (presentForReader.length >= totalNarrators) {
-        pills.push({ key: readerId, name: `الإمام ${getReader(readerId).nameArShort}`, color: readerColor(readerId) })
-      } else {
-        for (const narratorId of presentForReader) {
-          pills.push({ key: narratorId, name: `الراوي ${getNarrator(narratorId).nameAr}`, color: narratorColor(narratorId) })
-        }
-      }
-    }
-    return pills
+  function readerPillsForReadingIds(readingIds: readonly string[]): { key: string; name: string; color: string }[] {
+    return rollupAuthorityPills(readingIds)
   }
 
   function renderReaderPill(pill: { key: string; name: string; color: string }) {
@@ -3959,14 +3958,17 @@ export default function Mushaf1441Viewer({
                   <span className="text-[10px] font-bold text-[#8b7f6a]">{ruling.condition}</span>
                 ) : null}
               </div>
-              {Array.from(byAction.entries()).map(([action, list]) => (
-                <div key={action} className="mb-1.5 last:mb-0">
-                  <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {list.map((a, i) => renderAuthorityPill(a.authorityId, `${ruling.id}-${action}-${i}`))}
+              {Array.from(byAction.entries()).map(([action, list]) => {
+                const pills = rollupAuthorityPills(list.map((a) => a.authorityId))
+                return (
+                  <div key={action} className="mb-1.5 last:mb-0">
+                    <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {pills.map(renderReaderPill)}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
               {ruling.text ? <p className="mt-1.5 text-[11px] leading-6 text-[#665b48]">{ruling.text}</p> : null}
               {alternates.length > 0 ? (
                 <p className="mt-1.5 rounded bg-[#fdf3d8] px-2 py-1 text-[10px] font-bold text-[#7a5a10]">
@@ -4340,6 +4342,51 @@ export default function Mushaf1441Viewer({
                   <div className="flex flex-wrap gap-1.5">
                     {pills.map(renderReaderPill)}
                   </div>
+                </div>
+              )
+            })}
+            {shownVariants.length === 0 && (hoveredQiraatSelection?.rulings ?? []).map((ruling) => {
+              const byAction = new Map<string, typeof ruling.attribution>()
+              for (const a of ruling.attribution) {
+                const list = byAction.get(a.action) ?? []
+                list.push(a)
+                byAction.set(a.action, list)
+              }
+              return (
+                <div
+                  key={ruling.id}
+                  className="rounded-xl border p-3"
+                  style={{
+                    borderColor: ruling.color,
+                    background: `color-mix(in srgb, ${ruling.color} 5%, white)`,
+                  }}
+                >
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <span
+                      className="rounded-full px-2 py-0.5 text-[10px] font-bold text-white"
+                      style={{ background: ruling.color }}
+                    >
+                      {ruling.categoryAr}
+                    </span>
+                    {ruling.condition ? (
+                      <span className="text-[10px] font-bold text-[#8b7f6a]">{ruling.condition}</span>
+                    ) : null}
+                  </div>
+                  <p className="text-center font-[family-name:var(--font-amiri-quran)] text-3xl font-bold leading-relaxed text-[#7a1f1a]">
+                    {word.textUthmani}
+                  </p>
+                  {Array.from(byAction.entries()).map(([action, list]) => {
+                    const pills = rollupAuthorityPills(list.map((a) => a.authorityId))
+                    return (
+                      <div key={action} className="mt-2">
+                        <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {pills.map(renderReaderPill)}
+                        </div>
+                      </div>
+                    )
+                  })}
+                  {ruling.text ? <p className="mt-2 text-xs leading-6 text-[#665b48]">{ruling.text}</p> : null}
                 </div>
               )
             })}

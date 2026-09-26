@@ -30,6 +30,15 @@ import {
   validateEntryDraft,
   serializeDraftSnapshot,
 } from '../../src/app/mushaf-1441/review/_components/useReviewEditorDraft'
+import {
+  isHamzahCategory,
+  buildHamzahFaceActionText,
+  KALIMA_TASHIL_IDKHAL_IDS,
+  KALIMA_TASHIL_NO_IDKHAL_IDS,
+  KALIMA_TAHQIQ_IDS,
+  KALIMATAYN_ISQAT_FIRST_IDS,
+  KALIMATAYN_TASHIL_SECOND_IDS,
+} from '../../src/app/mushaf-1441/review/_components/HamzahDetailFields'
 import type { ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
 
 test('CANONICAL_READERS defines exactly 10 readers and 20 distinct narrators', () => {
@@ -250,6 +259,101 @@ test('imalah face builder: extra faces for the same narrator get the next wajh n
   assert.equal(nextWajhOrder(faces, 'Q03-R01'), 1)
   // D8: Hafs never takes wajh 1
   assert.equal(nextWajhOrder([], 'Q05-R02'), 2)
+})
+
+test('isHamzahCategory recognizes Hamzah chapters correctly', () => {
+  assert.equal(isHamzahCategory('HAMZATAN_KALIMA'), true)
+  assert.equal(isHamzahCategory('HAMZATAN_KALIMATAYN'), true)
+  assert.equal(isHamzahCategory('TAGHYIR_HAMZ'), true)
+  assert.equal(isHamzahCategory('IMALAH_TAQLIL'), false)
+  assert.equal(isHamzahCategory('TARQIQ_RA'), false)
+  assert.equal(isHamzahCategory(null), false)
+})
+
+test('buildHamzahFaceActionText generates standard scholarly action text', () => {
+  // HAMZATAN_KALIMA
+  assert.equal(
+    buildHamzahFaceActionText('HAMZATAN_KALIMA', {
+      kalimaFirst: 'تحقيق',
+      kalimaSecond: 'تسهيل',
+      kalimaIdkhal: true,
+      performance: 'wasl_waqf',
+      khulf: 'qawlan_wahidan',
+    }),
+    'تسهيل الثانية مع الإدخال وصلاً ووقفاً'
+  )
+  assert.equal(
+    buildHamzahFaceActionText('HAMZATAN_KALIMA', {
+      kalimaFirst: 'تحقيق',
+      kalimaSecond: 'إبدال',
+      kalimaIdkhal: false,
+      performance: 'wasl_waqf',
+      khulf: 'bikhulf',
+    }),
+    'إبدال الثانية حرف مد بدون إدخال وصلاً ووقفاً (بخلف عنه)'
+  )
+  assert.equal(
+    buildHamzahFaceActionText('HAMZATAN_KALIMA', {
+      kalimaFirst: 'تحقيق',
+      kalimaSecond: 'تحقيق',
+      kalimaIdkhal: false,
+      performance: 'wasl_waqf',
+      khulf: 'qawlan_wahidan',
+    }),
+    'تحقيق الهمزتين بدون إدخال وصلاً ووقفاً'
+  )
+
+  // HAMZATAN_KALIMATAYN
+  assert.equal(
+    buildHamzahFaceActionText('HAMZATAN_KALIMATAYN', {
+      kalimataynFirst: 'إسقاط',
+      kalimataynSecond: 'تحقيق',
+      performance: 'wasl_only',
+      khulf: 'qawlan_wahidan',
+    }),
+    'إسقاط الأولى وصلاً'
+  )
+  assert.equal(
+    buildHamzahFaceActionText('HAMZATAN_KALIMATAYN', {
+      kalimataynFirst: 'تحقيق',
+      kalimataynSecond: 'تسهيل',
+      performance: 'wasl_only',
+      khulf: 'bikhulf',
+    }),
+    'تسهيل الثانية بين بين وصلاً (بخلف عنه)'
+  )
+
+  // TAGHYIR_HAMZ
+  assert.equal(
+    buildHamzahFaceActionText('TAGHYIR_HAMZ', {
+      singleTreatment: 'إبدال',
+      performance: 'wasl_waqf',
+      khulf: 'qawlan_wahidan',
+    }),
+    'إبدال الهمزة وصلاً ووقفاً'
+  )
+  assert.equal(
+    buildHamzahFaceActionText('TAGHYIR_HAMZ', {
+      singleTreatment: 'تسهيل',
+      performance: 'waqf_only',
+      khulf: 'bikhulf',
+    }),
+    'تسهيل الهمزة وقفاً (بخلف عنه)'
+  )
+})
+
+test('Hamzah presets map accurately to canonical authorities', () => {
+  assert.ok(KALIMA_TASHIL_IDKHAL_IDS.includes('Q01-R01')) // قالون
+  assert.ok(KALIMA_TASHIL_IDKHAL_IDS.includes('Q03-R01')) // الدوري عن أبي عمرو
+  assert.ok(KALIMA_TASHIL_NO_IDKHAL_IDS.includes('Q01-R02')) // ورش
+  assert.ok(KALIMA_TASHIL_NO_IDKHAL_IDS.includes('Q02-R01')) // البزي
+  assert.ok(KALIMA_TAHQIQ_IDS.includes('Q05-R02')) // حفص
+  assert.ok(KALIMA_TAHQIQ_IDS.includes('Q06-R01')) // خلف عن حمزة
+
+  assert.ok(KALIMATAYN_ISQAT_FIRST_IDS.includes('Q03-R01')) // الدوري عن أبي عمرو
+  assert.ok(KALIMATAYN_ISQAT_FIRST_IDS.includes('Q03-R02')) // السوسي عن أبي عمرو
+  assert.ok(KALIMATAYN_TASHIL_SECOND_IDS.includes('Q01-R02')) // ورش
+  assert.ok(KALIMATAYN_TASHIL_SECOND_IDS.includes('Q02-R02')) // قنبل
 })
 
 test('validateEntryDraft enforces Farsh, Usul, and narrator constraints', () => {
