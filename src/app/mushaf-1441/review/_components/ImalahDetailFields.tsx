@@ -322,8 +322,8 @@ function ImalahFacesBuilder({
         </span>
       </div>
 
-      {/* 2-Column Responsive Grid: Step 1 (Right) and Step 2 (Left) to avoid scrolling */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 items-start">
+      {/* 3-Column Responsive Grid: Step 1, Step 2, Step 3 side-by-side to avoid scrolling */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 items-start">
         {/* STEP 1: Select Readers / Narrators */}
         <div className="space-y-1.5 rounded-lg border border-fuchsia-200/80 dark:border-fuchsia-900/60 bg-[var(--color-surface)] p-2">
           <div className="flex items-center justify-between gap-2">
@@ -441,7 +441,7 @@ function ImalahFacesBuilder({
 
           {/* Tab 2: Readers (10 Readers) */}
           {selectorTab === 'readers' ? (
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 pt-1">
+            <div className="grid grid-cols-2 gap-1 pt-1 max-h-56 overflow-y-auto">
               {CANONICAL_READERS.map((reader) => {
                 const [n1, n2] = reader.narrators
                 const bothSelected = selectedNarratorIds.has(n1.id) && selectedNarratorIds.has(n2.id)
@@ -453,7 +453,7 @@ function ImalahFacesBuilder({
                     onClick={() => toggleReader(reader)}
                     disabled={disabled}
                     className={cn(
-                      'flex flex-col items-center justify-center rounded-lg border p-1 text-center text-xs font-bold transition-all select-none',
+                      'flex flex-col items-center justify-center rounded border p-1 text-center text-[11px] font-bold transition-all select-none',
                       bothSelected
                         ? 'border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs'
                         : partiallySelected
@@ -462,11 +462,11 @@ function ImalahFacesBuilder({
                     )}
                   >
                     <span className="flex items-center gap-1">
-                      <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: reader.color }} />
+                      <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: reader.color }} />
                       <span>{reader.nameShort}</span>
                       {bothSelected ? <span>✓</span> : partiallySelected ? <span>~</span> : null}
                     </span>
-                    <span className="text-[10px] opacity-75">
+                    <span className="text-[9px] opacity-75">
                       {reader.narrators.map((n) => n.nameShort).join(' / ')}
                     </span>
                   </button>
@@ -477,7 +477,7 @@ function ImalahFacesBuilder({
 
           {/* Tab 3: Individual Narrators (20 Narrators) */}
           {selectorTab === 'narrators' ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-h-40 overflow-y-auto p-1 rounded-md border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)]">
+            <div className="grid grid-cols-2 gap-1 max-h-56 overflow-y-auto p-0.5 rounded-md border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)]">
               {CANONICAL_READERS.map((reader) =>
                 reader.narrators.map((n) => {
                   const isSelected = selectedNarratorIds.has(n.id)
@@ -643,174 +643,174 @@ function ImalahFacesBuilder({
             ) : null}
           </div>
         </div>
-      </div>
 
-      {/* STEP 3: Live Faces Manager (تفاصيل الأداء والأوجه للرواة المحددين) */}
-      <div className="border-t border-fuchsia-200 dark:border-fuchsia-900/60 pt-2 space-y-2">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <label className="text-xs font-bold text-[var(--color-ink)]">
-            ٣. تفاصيل الأداء والأوجه للرواة المحددين ({narrators.length} وجهاً):
-          </label>
-          {/* Quick Target Dropdown and Button */}
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">إضافة وجه لـ:</span>
-            <select
-              value={quickTarget}
-              onChange={(e) => setQuickTarget(e.target.value)}
-              disabled={disabled}
-              className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs font-bold text-[var(--color-ink)]"
-            >
-              <optgroup label="القراء (العشرة)">
-                {CANONICAL_READERS.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    قارئ: {r.nameAr} ({r.narrators.map((n) => n.nameShort).join(' و')})
-                  </option>
-                ))}
-              </optgroup>
-              <optgroup label="الرواة (العشرون)">
-                {CANONICAL_READERS.flatMap((r) =>
-                  r.narrators.map((n) => (
-                    <option key={n.id} value={n.id}>
-                      راوٍ: {n.nameAr} ({r.nameShort})
+        {/* STEP 3: Live Faces Manager (تفاصيل الأداء والأوجه للرواة المحددين) */}
+        <div className="space-y-1.5 rounded-lg border border-fuchsia-200/80 dark:border-fuchsia-900/60 bg-[var(--color-surface)] p-2">
+          <div className="flex flex-wrap items-center justify-between gap-1 pb-1 border-b border-[var(--color-border-soft)]">
+            <label className="text-xs font-bold text-[var(--color-ink)]">
+              ٣. الأوجه المسجلة ({narrators.length} وجهاً):
+            </label>
+            {/* Quick Target Dropdown and Button */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">إضافة وجه لـ:</span>
+              <select
+                value={quickTarget}
+                onChange={(e) => setQuickTarget(e.target.value)}
+                disabled={disabled}
+                className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs font-bold text-[var(--color-ink)]"
+              >
+                <optgroup label="القراء (العشرة)">
+                  {CANONICAL_READERS.map((r) => (
+                    <option key={r.id} value={r.id}>
+                      قارئ: {r.nameAr} ({r.narrators.map((n) => n.nameShort).join(' و')})
                     </option>
-                  ))
-                )}
-              </optgroup>
-            </select>
-            <button
-              type="button"
-              onClick={handleQuickAddFace}
-              disabled={disabled}
-              className="rounded bg-fuchsia-600 hover:bg-fuchsia-700 px-2.5 py-0.5 text-xs font-bold text-white shadow-2xs disabled:opacity-40 cursor-pointer"
-            >
-              + إضافة وجه
-            </button>
+                  ))}
+                </optgroup>
+                <optgroup label="الرواة (العشرون)">
+                  {CANONICAL_READERS.flatMap((r) =>
+                    r.narrators.map((n) => (
+                      <option key={n.id} value={n.id}>
+                        راوٍ: {n.nameAr} ({r.nameShort})
+                      </option>
+                    ))
+                  )}
+                </optgroup>
+              </select>
+              <button
+                type="button"
+                onClick={handleQuickAddFace}
+                disabled={disabled}
+                className="rounded bg-fuchsia-600 hover:bg-fuchsia-700 px-2.5 py-0.5 text-xs font-bold text-white shadow-2xs disabled:opacity-40 cursor-pointer"
+              >
+                + إضافة وجه
+              </button>
+            </div>
           </div>
-        </div>
 
-        {narrators.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-[var(--color-border)] p-3 text-center text-xs text-[var(--color-ink-muted)]">
-            لم يُضف أي وجه بعد. اختر الرواة من الأعلى ثم اضغط على زر الإضافة أعلاه.
-          </div>
-        ) : (
-          <div className="space-y-1.5 max-h-56 overflow-y-auto p-1 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)]">
-            {narrators.map((face, index) => {
-              const reader = CANONICAL_READERS.find((r) =>
-                r.narrators.some((n) => n.id === face.id)
-              )
-              const narratorInfo = reader?.narrators.find((n) => n.id === face.id)
-              return (
-                <div
-                  key={`${face.id}-${index}`}
-                  className="rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-2 text-xs shadow-2xs space-y-1.5"
-                >
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <div className="flex items-center gap-1.5">
-                      <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: reader?.color ?? '#888' }} />
-                      <span className="font-bold text-[var(--color-ink)]">
-                        {narratorInfo?.nameAr ?? face.id}
-                      </span>
-                      <span className="text-[10px] text-[var(--color-ink-muted)]">
-                        ({reader?.nameShort})
-                      </span>
-                      <span
-                        className={cn(
-                          'rounded px-1.5 py-0.2 text-[10px] font-bold',
-                          (face.wajhOrder ?? 1) > 1
-                            ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300'
-                            : 'bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-950/40 dark:text-fuchsia-300'
-                        )}
-                      >
-                        وجه {face.wajhOrder ?? 1}
-                        {(face.wajhOrder ?? 1) > 1 ? ' (بخلف)' : ''}
-                      </span>
-                    </div>
+          {narrators.length === 0 ? (
+            <div className="rounded-lg border border-dashed border-[var(--color-border)] p-3 text-center text-xs text-[var(--color-ink-muted)]">
+              لم يُضف أي وجه بعد. اختر الرواة من الأعلى ثم اضغط على زر الإضافة أعلاه.
+            </div>
+          ) : (
+            <div className="space-y-1 max-h-60 overflow-y-auto p-0.5 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)]">
+              {narrators.map((face, index) => {
+                const reader = CANONICAL_READERS.find((r) =>
+                  r.narrators.some((n) => n.id === face.id)
+                )
+                const narratorInfo = reader?.narrators.find((n) => n.id === face.id)
+                return (
+                  <div
+                    key={`${face.id}-${index}`}
+                    className="rounded border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-1 text-[11px] shadow-2xs space-y-1"
+                  >
+                    <div className="flex items-center justify-between gap-1 flex-wrap">
+                      <div className="flex items-center gap-1">
+                        <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: reader?.color ?? '#888' }} />
+                        <span className="font-bold text-[var(--color-ink)]">
+                          {narratorInfo?.nameAr ?? face.id}
+                        </span>
+                        <span className="text-[9px] text-[var(--color-ink-muted)]">
+                          ({reader?.nameShort})
+                        </span>
+                        <span
+                          className={cn(
+                            'rounded px-1 py-0.2 text-[9px] font-bold',
+                            (face.wajhOrder ?? 1) > 1
+                              ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300'
+                              : 'bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-950/40 dark:text-fuchsia-300'
+                          )}
+                        >
+                          وجه {face.wajhOrder ?? 1}
+                          {(face.wajhOrder ?? 1) > 1 ? ' (بخلف)' : ''}
+                        </span>
+                      </div>
 
-                    <div className="flex items-center gap-1 flex-wrap">
-                      <button
-                        type="button"
-                        onClick={() => handleAddAnotherFaceForNarrator(face.id)}
-                        disabled={disabled}
-                        className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-2 py-0.5 text-[10px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
-                        title="إضافة وجه آخر لنفس الراوي"
-                      >
-                        + وجه آخر للراوي
-                      </button>
-                      {reader ? (
+                      <div className="flex items-center gap-0.5 flex-wrap">
                         <button
                           type="button"
-                          onClick={() => handleAddAnotherFaceForReader(reader.id)}
+                          onClick={() => handleAddAnotherFaceForNarrator(face.id)}
                           disabled={disabled}
-                          className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-2 py-0.5 text-[10px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
-                          title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
+                          className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-1 py-0.2 text-[9px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
+                          title="إضافة وجه آخر لنفس الراوي"
                         >
-                          + وجه آخر للقارئ ({reader.nameShort})
+                          + للراوي
                         </button>
-                      ) : null}
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveFaceAtIndex(index)}
-                        disabled={disabled}
-                        className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1.5 py-0.5 text-[10px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100 cursor-pointer"
-                        title="حذف هذا الوجه"
-                      >
-                        ✕ حذف
-                      </button>
+                        {reader ? (
+                          <button
+                            type="button"
+                            onClick={() => handleAddAnotherFaceForReader(reader.id)}
+                            disabled={disabled}
+                            className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-1 py-0.2 text-[9px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
+                            title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
+                          >
+                            + للقارئ
+                          </button>
+                        ) : null}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveFaceAtIndex(index)}
+                          disabled={disabled}
+                          className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1 py-0.2 text-[9px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100 cursor-pointer"
+                          title="حذف هذا الوجه"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Inline edit inputs */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pt-0.5">
-                    <div>
-                      <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                        رقم الوجه:
-                      </label>
-                      <input
-                        type="number"
-                        min={face.id === HAFS_ID ? 2 : 1}
-                        max={9}
-                        value={face.wajhOrder ?? 1}
-                        onChange={(e) =>
-                          handleUpdateFaceAtIndex(index, {
-                            wajhOrder: Math.max(face.id === HAFS_ID ? 2 : 1, Number(e.target.value) || 1),
-                          })
-                        }
-                        disabled={disabled}
-                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.5 text-center text-xs"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                        الأداء:
-                      </label>
-                      <input
-                        type="text"
-                        value={face.action ?? ''}
-                        onChange={(e) => handleUpdateFaceAtIndex(index, { action: e.target.value })}
-                        disabled={disabled}
-                        placeholder="مثال: إمالة وصلاً..."
-                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs font-medium"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                        الملاحظة / الخلاف:
-                      </label>
-                      <input
-                        type="text"
-                        value={face.wajhNote ?? ''}
-                        onChange={(e) => handleUpdateFaceAtIndex(index, { wajhNote: e.target.value })}
-                        disabled={disabled}
-                        placeholder="مثال: بخلف عنه، وقفاً..."
-                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs"
-                      />
+                    {/* Inline edit inputs */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 pt-0.5">
+                      <div>
+                        <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                          الوجه:
+                        </label>
+                        <input
+                          type="number"
+                          min={face.id === HAFS_ID ? 2 : 1}
+                          max={9}
+                          value={face.wajhOrder ?? 1}
+                          onChange={(e) =>
+                            handleUpdateFaceAtIndex(index, {
+                              wajhOrder: Math.max(face.id === HAFS_ID ? 2 : 1, Number(e.target.value) || 1),
+                            })
+                          }
+                          disabled={disabled}
+                          className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1 py-0.2 text-center text-xs"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                          الأداء:
+                        </label>
+                        <input
+                          type="text"
+                          value={face.action ?? ''}
+                          onChange={(e) => handleUpdateFaceAtIndex(index, { action: e.target.value })}
+                          disabled={disabled}
+                          placeholder="الأداء..."
+                          className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[11px] font-medium"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                          الخلاف:
+                        </label>
+                        <input
+                          type="text"
+                          value={face.wajhNote ?? ''}
+                          onChange={(e) => handleUpdateFaceAtIndex(index, { wajhNote: e.target.value })}
+                          disabled={disabled}
+                          placeholder="الملاحظة..."
+                          className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[11px]"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              )
-            })}
-          </div>
-        )}
+                )
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

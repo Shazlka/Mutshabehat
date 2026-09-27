@@ -348,20 +348,20 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
   }
 
   return (
-    <div className="space-y-3" dir="rtl">
+    <div className="space-y-2" dir="rtl">
       {/* Quick selection toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-1.5 border-b border-[var(--color-border-soft)] pb-2">
+      <div className="flex flex-wrap items-center justify-between gap-1 border-b border-[var(--color-border-soft)] pb-1.5">
         <div className="flex items-center gap-1">
-          <span className="text-xs font-bold text-[var(--color-ink)]">
+          <span className="text-[11px] font-bold text-[var(--color-ink)]">
             نسبة القراءة ({selectedCount}/20):
           </span>
         </div>
-        <div className="flex flex-wrap items-center gap-1 text-[11px]">
+        <div className="flex flex-wrap items-center gap-0.5 text-[10px]">
           <button
             type="button"
             onClick={selectAll}
             disabled={disabled || selectedCount === 20}
-            className="rounded border border-[var(--color-border)] px-1.5 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
+            className="rounded border border-[var(--color-border)] px-1 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
           >
             الكل (عشرة)
           </button>
@@ -369,7 +369,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
             type="button"
             onClick={selectSabah}
             disabled={disabled}
-            className="rounded border border-[var(--color-border)] px-1.5 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
+            className="rounded border border-[var(--color-border)] px-1 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
           >
             السبعة
           </button>
@@ -377,7 +377,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
             type="button"
             onClick={selectThalatha}
             disabled={disabled}
-            className="rounded border border-[var(--color-border)] px-1.5 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
+            className="rounded border border-[var(--color-border)] px-1 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
           >
             الثلاثة
           </button>
@@ -385,7 +385,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
             type="button"
             onClick={selectKufis}
             disabled={disabled}
-            className="rounded border border-[var(--color-border)] px-1.5 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
+            className="rounded border border-[var(--color-border)] px-1 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
           >
             الكوفيون
           </button>
@@ -393,7 +393,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
             type="button"
             onClick={selectMadaniyan}
             disabled={disabled}
-            className="rounded border border-[var(--color-border)] px-1.5 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
+            className="rounded border border-[var(--color-border)] px-1 py-0.5 font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
           >
             المدنيان
           </button>
@@ -402,7 +402,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
               type="button"
               onClick={clearAll}
               disabled={disabled}
-              className="rounded border border-[var(--color-danger)]/30 px-1.5 py-0.5 font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)]"
+              className="rounded border border-[var(--color-danger)]/30 px-1 py-0.5 font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)]"
             >
               مسح
             </button>
@@ -411,7 +411,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
       </div>
 
       {/* Readers and Narrators Grid */}
-      <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
         {CANONICAL_READERS.map((reader) => {
           const [n1, n2] = reader.narrators
           const s1 = narratorFacesMap.has(n1.id)
@@ -423,7 +423,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
             <div
               key={reader.id}
               className={cn(
-                'rounded-lg border p-1.5 transition-colors',
+                'rounded-md border p-1 transition-colors',
                 both
                   ? 'border-[var(--color-primary)] bg-[var(--color-primary-soft)]/20'
                   : indeterminate
@@ -432,8 +432,8 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
               )}
             >
               {/* Reader Header with Toggle */}
-              <div className="flex items-center justify-between gap-1 pb-1">
-                <label className="flex cursor-pointer items-center gap-1.5 select-none">
+              <div className="flex items-center justify-between gap-1 pb-0.5">
+                <label className="flex cursor-pointer items-center gap-1 select-none">
                   <IndeterminateCheckbox
                     checked={both}
                     indeterminate={indeterminate}
@@ -442,11 +442,11 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                     ariaLabel={`اختيار راويي ${reader.nameAr}`}
                   />
                   <span
-                    className="h-2 w-2 rounded-full shrink-0"
+                    className="h-1.5 w-1.5 rounded-full shrink-0"
                     style={{ backgroundColor: reader.color }}
                     aria-hidden="true"
                   />
-                  <span className="text-xs font-bold text-[var(--color-ink)]">
+                  <span className="text-[11px] font-bold text-[var(--color-ink)]">
                     {reader.nameAr}
                   </span>
                 </label>
@@ -464,13 +464,13 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                       disabled={disabled}
                       aria-pressed={isSelected}
                       className={cn(
-                        'flex flex-1 items-center justify-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-medium transition-all select-none',
+                        'flex flex-1 items-center justify-center gap-0.5 rounded px-1 py-0.5 text-[11px] font-medium transition-all select-none',
                         isSelected
                           ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] font-bold text-white shadow-xs'
                           : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-surface-2)]'
                       )}
                     >
-                      <span className="text-[10px]">{isSelected ? '✓' : ''}</span>
+                      <span className="text-[9px]">{isSelected ? '✓' : ''}</span>
                       <span>{narrator.nameShort}</span>
                     </button>
                   )
@@ -483,48 +483,48 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
 
       {/* Hafs Rule D8 Special Guard */}
       {hafsEntry ? (
-        <div className="rounded-lg border border-[var(--color-warn)] bg-[var(--color-warn-bg)]/50 p-2.5 text-xs text-[var(--color-ink)]">
-          <div className="flex items-center justify-between gap-2">
+        <div className="rounded-md border border-[var(--color-warn)] bg-[var(--color-warn-bg)]/50 p-1.5 text-[11px] text-[var(--color-ink)] space-y-1">
+          <div className="flex items-center justify-between gap-1">
             <span className="font-bold text-[var(--color-warn)]">
               ⚠️ قاعدة د٨ (حفص هو الأصل):
             </span>
-            <span className="text-[11px] text-[var(--color-ink-muted)]">
+            <span className="text-[10px] text-[var(--color-ink-muted)]">
               يلزم وجه ثانٍ وملاحظة
             </span>
           </div>
-          <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <div>
-              <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                رقم الوجه لحفص:
-              </label>
-              <div className="mt-0.5 flex gap-1">
+          <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+            <div className="flex items-center gap-1">
+              <span className="text-[10px] font-bold text-[var(--color-ink-muted)] shrink-0">
+                الوجه:
+              </span>
+              <div className="flex flex-1 gap-0.5">
                 {[2, 3, 4].map((order) => (
                   <button
                     key={order}
                     type="button"
                     onClick={() => updateNarratorField(HAFS_ID, { wajhOrder: order })}
                     className={cn(
-                      'flex-1 rounded border py-0.5 text-xs font-bold',
+                      'flex-1 rounded border py-0.2 text-[10px] font-bold',
                       hafsEntry.wajhOrder === order
                         ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white'
                         : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)]'
                     )}
                   >
-                    وجه {order}
+                    {order}
                   </button>
                 ))}
               </div>
             </div>
-            <div>
-              <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                ملاحظة الوجه (مطلوبة):
-              </label>
+            <div className="flex items-center gap-1">
+              <span className="text-[10px] font-bold text-[var(--color-ink-muted)] shrink-0">
+                الملاحظة:
+              </span>
               <input
                 type="text"
                 value={hafsEntry.wajhNote ?? ''}
                 onChange={(e) => updateNarratorField(HAFS_ID, { wajhNote: e.target.value })}
-                placeholder="مثال: بخلف عنه، أو وجه التوسط"
-                className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs"
+                placeholder="مثال: بخلف عنه"
+                className="w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[11px]"
               />
             </div>
           </div>
@@ -533,20 +533,20 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
 
       {/* Advanced Details Toggle (for action text / wajh notes for other narrators) */}
       {selectedCount > 0 ? (
-        <div className="pt-1">
+        <div className="pt-0.5">
           <button
             type="button"
             onClick={() => setShowAdvanced((v) => !v)}
-            className="text-[11px] font-bold text-[var(--color-primary)] hover:underline"
+            className="text-[10px] font-bold text-[var(--color-primary)] hover:underline"
           >
             {showAdvanced ? '− إخفاء تفاصيل الأداء والأوجه' : '+ تفاصيل الأداء والأوجه للرواة المحددين'}
           </button>
 
           {showAdvanced ? (
-            <div className="mt-2 space-y-2 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-2">
+            <div className="mt-1 space-y-1.5 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-1.5">
               {/* Header with Quick Add Target */}
-              <div className="flex flex-wrap items-center justify-between gap-1.5 border-b border-[var(--color-border-soft)] pb-1.5">
-                <span className="text-[11px] font-bold text-[var(--color-ink)]">
+              <div className="flex flex-wrap items-center justify-between gap-1 border-b border-[var(--color-border-soft)] pb-1">
+                <span className="text-[10px] font-bold text-[var(--color-ink)]">
                   الأوجه المسجلة ({narrators.length}):
                 </span>
                 <div className="flex items-center gap-1 flex-wrap">
@@ -554,7 +554,7 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                     value={quickTarget}
                     onChange={(e) => setQuickTarget(e.target.value)}
                     disabled={disabled}
-                    className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.5 text-xs font-bold"
+                    className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1 py-0.2 text-[10px] font-bold"
                   >
                     <optgroup label="القراء (العشرة)">
                       {CANONICAL_READERS.map((r) => (
@@ -577,114 +577,116 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                     type="button"
                     onClick={handleQuickAddFace}
                     disabled={disabled}
-                    className="rounded bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-2 py-0.5 text-xs font-bold text-white shadow-2xs disabled:opacity-40 cursor-pointer"
+                    className="rounded bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-1.5 py-0.2 text-[10px] font-bold text-white shadow-2xs disabled:opacity-40 cursor-pointer"
                   >
-                    + إضافة وجه
+                    + وجه
                   </button>
                 </div>
               </div>
 
               {/* Narrator Face Rows */}
-              {narrators.map((item, index) => {
-                const reader = CANONICAL_READERS.find((r) =>
-                  r.narrators.some((n) => n.id === item.id)
-                )
-                const narratorInfo = reader?.narrators.find((n) => n.id === item.id)
-                return (
-                  <div
-                    key={`${item.id}-${index}`}
-                    className="rounded border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-1.5 text-xs space-y-1"
-                  >
-                    <div className="flex items-center justify-between gap-1.5 flex-wrap">
-                      <div className="flex items-center gap-1.5">
-                        <span
-                          className="h-2 w-2 rounded-full shrink-0"
-                          style={{ backgroundColor: reader?.color ?? '#888' }}
-                        />
-                        <span className="font-bold text-[var(--color-ink)]">
-                          {narratorInfo?.nameAr ?? item.id}
-                        </span>
-                        <span className="text-[10px] text-[var(--color-ink-muted)]">
-                          ({reader?.nameShort})
-                        </span>
-                        <span className="rounded bg-amber-100 px-1.5 py-0.2 text-[10px] font-bold text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
-                          وجه {item.wajhOrder ?? 1}
-                        </span>
-                      </div>
+              <div className="max-h-36 overflow-y-auto space-y-1 p-0.5">
+                {narrators.map((item, index) => {
+                  const reader = CANONICAL_READERS.find((r) =>
+                    r.narrators.some((n) => n.id === item.id)
+                  )
+                  const narratorInfo = reader?.narrators.find((n) => n.id === item.id)
+                  return (
+                    <div
+                      key={`${item.id}-${index}`}
+                      className="rounded border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-1 text-[11px] space-y-0.5"
+                    >
+                      <div className="flex items-center justify-between gap-1 flex-wrap">
+                        <div className="flex items-center gap-1">
+                          <span
+                            className="h-1.5 w-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: reader?.color ?? '#888' }}
+                          />
+                          <span className="font-bold text-[var(--color-ink)]">
+                            {narratorInfo?.nameAr ?? item.id}
+                          </span>
+                          <span className="text-[9px] text-[var(--color-ink-muted)]">
+                            ({reader?.nameShort})
+                          </span>
+                          <span className="rounded bg-amber-100 px-1 py-0.2 text-[9px] font-bold text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
+                            وجه {item.wajhOrder ?? 1}
+                          </span>
+                        </div>
 
-                      <div className="flex items-center gap-1 flex-wrap">
-                        <button
-                          type="button"
-                          onClick={() => handleAddFaceForNarrator(item.id)}
-                          disabled={disabled}
-                          className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] cursor-pointer"
-                          title="إضافة وجه آخر لنفس الراوي"
-                        >
-                          + وجه للراوي
-                        </button>
-                        {reader ? (
+                        <div className="flex items-center gap-0.5 flex-wrap">
                           <button
                             type="button"
-                            onClick={() => handleAddFaceForReader(reader.id)}
+                            onClick={() => handleAddFaceForNarrator(item.id)}
                             disabled={disabled}
-                            className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] cursor-pointer"
-                            title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
+                            className="rounded border border-[var(--color-border)] px-1 py-0.2 text-[9px] font-bold hover:bg-[var(--color-surface-2)] cursor-pointer"
+                            title="إضافة وجه آخر لنفس الراوي"
                           >
-                            + وجه للقارئ ({reader.nameShort})
+                            + وجه للراوي
                           </button>
-                        ) : null}
-                        <button
-                          type="button"
-                          onClick={() => removeFaceAt(index)}
-                          disabled={disabled}
-                          className="rounded border border-red-200 bg-red-50 px-1.5 py-0.5 text-[10px] font-bold text-red-700 hover:bg-red-100 cursor-pointer"
-                          title="حذف هذا الوجه"
-                        >
-                          ✕
-                        </button>
+                          {reader ? (
+                            <button
+                              type="button"
+                              onClick={() => handleAddFaceForReader(reader.id)}
+                              disabled={disabled}
+                              className="rounded border border-[var(--color-border)] px-1 py-0.2 text-[9px] font-bold hover:bg-[var(--color-surface-2)] cursor-pointer"
+                              title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
+                            >
+                              + وجه للقارئ
+                            </button>
+                          ) : null}
+                          <button
+                            type="button"
+                            onClick={() => removeFaceAt(index)}
+                            disabled={disabled}
+                            className="rounded border border-red-200 bg-red-50 px-1 py-0.2 text-[9px] font-bold text-red-700 hover:bg-red-100 cursor-pointer"
+                            title="حذف هذا الوجه"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-1">
+                        <label className="flex items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
+                          <span>الوجه:</span>
+                          <input
+                            type="number"
+                            min={item.id === HAFS_ID ? 2 : 1}
+                            max={9}
+                            value={item.wajhOrder ?? 1}
+                            onChange={(e) =>
+                              updateFaceAt(index, {
+                                wajhOrder: Math.max(item.id === HAFS_ID ? 2 : 1, Number(e.target.value) || 1),
+                              })
+                            }
+                            className="w-8 rounded border border-[var(--color-border)] px-0.5 py-0.2 text-center"
+                          />
+                        </label>
+                        <label className="flex flex-1 items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
+                          <span>الأداء:</span>
+                          <input
+                            type="text"
+                            value={item.action ?? ''}
+                            onChange={(e) => updateFaceAt(index, { action: e.target.value })}
+                            placeholder="نص الأداء"
+                            className="flex-1 rounded border border-[var(--color-border)] px-1 py-0.2"
+                          />
+                        </label>
+                        <label className="flex items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
+                          <span>الخلاف:</span>
+                          <input
+                            type="text"
+                            value={item.wajhNote ?? ''}
+                            onChange={(e) => updateFaceAt(index, { wajhNote: e.target.value })}
+                            placeholder="ملاحظة"
+                            className="w-16 rounded border border-[var(--color-border)] px-1 py-0.2"
+                          />
+                        </label>
                       </div>
                     </div>
-
-                    <div className="flex items-center gap-1.5">
-                      <label className="flex items-center gap-1 text-[11px] text-[var(--color-ink-muted)]">
-                        <span>الوجه:</span>
-                        <input
-                          type="number"
-                          min={item.id === HAFS_ID ? 2 : 1}
-                          max={9}
-                          value={item.wajhOrder ?? 1}
-                          onChange={(e) =>
-                            updateFaceAt(index, {
-                              wajhOrder: Math.max(item.id === HAFS_ID ? 2 : 1, Number(e.target.value) || 1),
-                            })
-                          }
-                          className="w-12 rounded border border-[var(--color-border)] px-1 py-0.5 text-center"
-                        />
-                      </label>
-                      <label className="flex flex-1 items-center gap-1 text-[11px] text-[var(--color-ink-muted)]">
-                        <span>الأداء:</span>
-                        <input
-                          type="text"
-                          value={item.action ?? ''}
-                          onChange={(e) => updateFaceAt(index, { action: e.target.value })}
-                          placeholder="نص الأداء (اختياري)"
-                          className="flex-1 rounded border border-[var(--color-border)] px-1.5 py-0.5"
-                        />
-                      </label>
-                      <label className="flex items-center gap-1 text-[11px] text-[var(--color-ink-muted)]">
-                        <span>الخلاف:</span>
-                        <input
-                          type="text"
-                          value={item.wajhNote ?? ''}
-                          onChange={(e) => updateFaceAt(index, { wajhNote: e.target.value })}
-                          placeholder="ملاحظة الوجه"
-                          className="w-24 rounded border border-[var(--color-border)] px-1.5 py-0.5"
-                        />
-                      </label>
-                    </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
           ) : null}
         </div>

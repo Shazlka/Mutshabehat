@@ -95,42 +95,46 @@ export default function UsulRuleGrid({
   }, [categories, filterQuery])
 
   return (
-    <div className="space-y-2" dir="rtl">
-      {/* Reading Text Input */}
-      <div>
-        <label className="flex items-center justify-between text-xs font-bold text-[var(--color-ink)]">
-          <span>نص القراءة المقروء به:</span>
-          <span className="text-[11px] text-[var(--color-ink-muted)]">مع الضبط والشكل</span>
-        </label>
-        <input
-          type="text"
-          value={readingText}
-          onChange={(e) => onChangeReadingText(e.target.value)}
-          disabled={disabled}
-          placeholder="اكتب نص الكلمة في هذه القراءة..."
-          dir="rtl"
-          className="mt-1 w-full rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1.5 font-quran text-xl text-[var(--color-ink)] placeholder:font-sans placeholder:text-xs placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
-        />
+    <div className="space-y-1.5" dir="rtl">
+      {/* Reading Text & Selected Category Row */}
+      <div className="flex flex-wrap items-end gap-2">
+        <div className="flex-1 min-w-[200px]">
+          <label className="flex items-center justify-between text-xs font-bold text-[var(--color-ink)]">
+            <span>نص القراءة المقروء به:</span>
+            <span className="text-[10px] text-[var(--color-ink-muted)]">مع الضبط والشكل</span>
+          </label>
+          <input
+            type="text"
+            value={readingText}
+            onChange={(e) => onChangeReadingText(e.target.value)}
+            disabled={disabled}
+            placeholder="اكتب نص الكلمة في هذه القراءة..."
+            dir="rtl"
+            className="mt-0.5 w-full rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 font-quran text-lg text-[var(--color-ink)] placeholder:font-sans placeholder:text-xs placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none"
+          />
+        </div>
+
+        {selectedCategory && !showAllCategories ? (
+          <div className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/20 px-2.5 py-1 text-xs h-[38px] shrink-0">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">الباب:</span>
+              <span className="font-bold text-[var(--color-primary)]">{selectedCategory.nameAr}</span>
+              <span className="rounded bg-green-100 dark:bg-green-950/40 text-green-800 dark:text-green-300 px-1 text-[9px] font-bold">✓</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowAllCategories(true)}
+              disabled={disabled}
+              className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]"
+            >
+              تغيير ▾
+            </button>
+          </div>
+        ) : null}
       </div>
 
-      {/* Category selector: Collapsed pill when selected, expandable grid */}
-      {selectedCategory && !showAllCategories ? (
-        <div className="flex items-center justify-between rounded-lg border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/20 px-2.5 py-1 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">الباب المختار:</span>
-            <span className="font-bold text-[var(--color-primary)]">{selectedCategory.nameAr}</span>
-            <span className="rounded bg-green-100 dark:bg-green-950/40 text-green-800 dark:text-green-300 px-1 text-[10px] font-bold">✓</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => setShowAllCategories(true)}
-            disabled={disabled}
-            className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-[11px] font-bold text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]"
-          >
-            تغيير الباب ▾
-          </button>
-        </div>
-      ) : (
+      {/* Expandable Category Picker Grid when changing */}
+      {(!selectedCategory || showAllCategories) && (
         <div className="space-y-1">
           <div className="flex items-center justify-between gap-2">
             <label className="text-xs font-bold text-[var(--color-ink)]">

@@ -496,8 +496,8 @@ function HamzahFacesBuilder({
         </span>
       </div>
 
-      {/* 2-Column Responsive Grid: Step 1 (Right) and Step 2 (Left) to avoid scrolling */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 items-start">
+      {/* 3-Column Responsive Grid: Step 1, Step 2, Step 3 side-by-side to avoid scrolling */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 items-start">
         {/* STEP 1: Select Readers / Narrators */}
         <div className="space-y-1.5 rounded-lg border border-amber-200/80 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
           <div className="flex items-center justify-between gap-2">
@@ -727,7 +727,7 @@ function HamzahFacesBuilder({
 
           {/* Tab 2: Readers (10 Readers) */}
           {selectorTab === 'readers' ? (
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 pt-1">
+            <div className="grid grid-cols-2 gap-1 pt-1 max-h-56 overflow-y-auto">
               {CANONICAL_READERS.map((reader) => {
                 const [n1, n2] = reader.narrators
                 const bothSelected =
@@ -741,7 +741,7 @@ function HamzahFacesBuilder({
                     onClick={() => toggleReader(reader)}
                     disabled={disabled}
                     className={cn(
-                      'flex flex-col items-center justify-center rounded-lg border p-1 text-center text-xs font-bold transition-all select-none',
+                      'flex flex-col items-center justify-center rounded border p-1 text-center text-[11px] font-bold transition-all select-none',
                       bothSelected
                         ? 'border-amber-600 bg-amber-600 text-white shadow-xs'
                         : partiallySelected
@@ -751,13 +751,13 @@ function HamzahFacesBuilder({
                   >
                     <span className="flex items-center gap-1">
                       <span
-                        className="inline-block h-2 w-2 rounded-full"
+                        className="inline-block h-1.5 w-1.5 rounded-full"
                         style={{ backgroundColor: reader.color }}
                       />
                       <span>{reader.nameShort}</span>
                       {bothSelected ? <span>✓</span> : partiallySelected ? <span>~</span> : null}
                     </span>
-                    <span className="text-[10px] opacity-75">
+                    <span className="text-[9px] opacity-75">
                       {reader.narrators.map((n) => n.nameShort).join(' / ')}
                     </span>
                   </button>
@@ -768,7 +768,7 @@ function HamzahFacesBuilder({
 
           {/* Tab 3: Individual Narrators (20 Narrators) */}
           {selectorTab === 'narrators' ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-h-40 overflow-y-auto p-1 rounded-md border border-amber-200 dark:border-amber-900 bg-[var(--color-surface)]">
+            <div className="grid grid-cols-2 gap-1 max-h-56 overflow-y-auto p-0.5 rounded-md border border-amber-200 dark:border-amber-900 bg-[var(--color-surface)]">
               {CANONICAL_READERS.map((reader) =>
                 reader.narrators.map((n) => {
                   const isSelected = selectedNarratorIds.has(n.id)
@@ -1129,15 +1129,14 @@ function HamzahFacesBuilder({
             ) : null}
           </div>
         </div>
-      </div>
 
-      {/* STEP 3: Live Faces Manager (تفاصيل الأداء والأوجه للرواة المحددين) */}
-      <div className="border-t border-amber-200 dark:border-amber-900/60 pt-2 space-y-2">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <label className="text-xs font-bold text-[var(--color-ink)]">
-            ٣. تفاصيل الأداء والأوجه للرواة المحددين ({narrators.length} وجهاً):
-          </label>
-          {/* Quick Target Dropdown and Button */}
+        {/* STEP 3: Live Faces Manager (تفاصيل الأداء والأوجه للرواة المحددين) */}
+        <div className="space-y-1.5 rounded-lg border border-amber-200/80 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+          <div className="flex flex-wrap items-center justify-between gap-1 pb-1 border-b border-[var(--color-border-soft)]">
+            <label className="text-xs font-bold text-[var(--color-ink)]">
+              ٣. الأوجه المسجلة ({narrators.length} وجهاً):
+            </label>
+            {/* Quick Target Dropdown and Button */}
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">إضافة وجه لـ:</span>
             <select
@@ -1179,7 +1178,7 @@ function HamzahFacesBuilder({
             لم يُضف أي وجه بعد. اختر الرواة من الأعلى ثم اضغط على زر الإضافة أعلاه.
           </div>
         ) : (
-          <div className="space-y-1.5 max-h-56 overflow-y-auto p-1 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)]">
+          <div className="space-y-1 max-h-60 overflow-y-auto p-0.5 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)]">
             {narrators.map((face, index) => {
               const reader = CANONICAL_READERS.find((r) =>
                 r.narrators.some((n) => n.id === face.id)
@@ -1188,23 +1187,23 @@ function HamzahFacesBuilder({
               return (
                 <div
                   key={`${face.id}-${index}`}
-                  className="rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-2 text-xs shadow-2xs space-y-1.5"
+                  className="rounded border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-1 text-[11px] shadow-2xs space-y-1"
                 >
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <div className="flex items-center gap-1.5">
+                  <div className="flex items-center justify-between gap-1 flex-wrap">
+                    <div className="flex items-center gap-1">
                       <span
-                        className="inline-block h-2.5 w-2.5 rounded-full"
+                        className="inline-block h-2 w-2 rounded-full"
                         style={{ backgroundColor: reader?.color ?? '#888' }}
                       />
                       <span className="font-bold text-[var(--color-ink)]">
                         {narratorInfo?.nameAr ?? face.id}
                       </span>
-                      <span className="text-[10px] text-[var(--color-ink-muted)]">
+                      <span className="text-[9px] text-[var(--color-ink-muted)]">
                         ({reader?.nameShort})
                       </span>
                       <span
                         className={cn(
-                          'rounded px-1.5 py-0.2 text-[10px] font-bold',
+                          'rounded px-1 py-0.2 text-[9px] font-bold',
                           (face.wajhOrder ?? 1) > 1
                             ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300'
                             : 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300'
@@ -1215,44 +1214,44 @@ function HamzahFacesBuilder({
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-1 flex-wrap">
+                    <div className="flex items-center gap-0.5 flex-wrap">
                       <button
                         type="button"
                         onClick={() => handleAddAnotherFaceForNarrator(face.id)}
                         disabled={disabled}
-                        className="rounded border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-bold text-amber-800 dark:text-amber-300 hover:bg-amber-100 cursor-pointer"
+                        className="rounded border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-1 py-0.2 text-[9px] font-bold text-amber-800 dark:text-amber-300 hover:bg-amber-100 cursor-pointer"
                         title="إضافة وجه آخر لنفس الراوي"
                       >
-                        + وجه آخر للراوي
+                        + للراوي
                       </button>
                       {reader ? (
                         <button
                           type="button"
                           onClick={() => handleAddAnotherFaceForReader(reader.id)}
                           disabled={disabled}
-                          className="rounded border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-bold text-amber-800 dark:text-amber-300 hover:bg-amber-100 cursor-pointer"
+                          className="rounded border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-1 py-0.2 text-[9px] font-bold text-amber-800 dark:text-amber-300 hover:bg-amber-100 cursor-pointer"
                           title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
                         >
-                          + وجه آخر للقارئ ({reader.nameShort})
+                          + للقارئ
                         </button>
                       ) : null}
                       <button
                         type="button"
                         onClick={() => handleRemoveFaceAtIndex(index)}
                         disabled={disabled}
-                        className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1.5 py-0.5 text-[10px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100 cursor-pointer"
+                        className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1 py-0.2 text-[9px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100 cursor-pointer"
                         title="حذف هذا الوجه"
                       >
-                        ✕ حذف
+                        ✕
                       </button>
                     </div>
                   </div>
 
                   {/* Inline edit inputs */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pt-0.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 pt-0.5">
                     <div>
-                      <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                        رقم الوجه:
+                      <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                        الوجه:
                       </label>
                       <input
                         type="number"
@@ -1268,11 +1267,11 @@ function HamzahFacesBuilder({
                           })
                         }
                         disabled={disabled}
-                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.5 text-center text-xs"
+                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1 py-0.2 text-center text-xs"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+                      <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
                         الأداء:
                       </label>
                       <input
@@ -1280,13 +1279,13 @@ function HamzahFacesBuilder({
                         value={face.action ?? ''}
                         onChange={(e) => handleUpdateFaceAtIndex(index, { action: e.target.value })}
                         disabled={disabled}
-                        placeholder="مثال: تسهيل الثانية..."
-                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs font-medium"
+                        placeholder="الأداء..."
+                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[11px] font-medium"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                        الملاحظة / الخلاف:
+                      <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                        الخلاف:
                       </label>
                       <input
                         type="text"
@@ -1295,8 +1294,8 @@ function HamzahFacesBuilder({
                           handleUpdateFaceAtIndex(index, { wajhNote: e.target.value })
                         }
                         disabled={disabled}
-                        placeholder="مثال: بخلف عنه، وقفاً..."
-                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs"
+                        placeholder="الملاحظة..."
+                        className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[11px]"
                       />
                     </div>
                   </div>
@@ -1307,5 +1306,6 @@ function HamzahFacesBuilder({
         )}
       </div>
     </div>
-  )
+  </div>
+)
 }
