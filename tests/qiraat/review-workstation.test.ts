@@ -83,6 +83,8 @@ test('CANONICAL_VARIANT_TYPES covers standard Farsh changes', () => {
   assert.ok(CANONICAL_VARIANT_TYPES.some((t) => t.code === 'حرف'))
   assert.ok(CANONICAL_VARIANT_TYPES.some((t) => t.code === 'زيادة'))
   assert.ok(CANONICAL_VARIANT_TYPES.some((t) => t.code === 'حذف'))
+  assert.equal(CANONICAL_VARIANT_TYPES.find((t) => t.code === 'تشكيل')?.dbEnum, 'vowel')
+  assert.equal(CANONICAL_VARIANT_TYPES.find((t) => t.code === 'حرف')?.dbEnum, 'consonant')
 })
 
 test('canonicalKeyForWord formats zero-padded SSS:AAA:WWW key', () => {
@@ -434,4 +436,38 @@ test('serializeDraftSnapshot accurately identifies dirty changes', () => {
   })
   assert.notEqual(snap1, dirtyNarrators, 'Changing narrators must produce dirty snapshot')
 })
+
+test('multi-face logic correctly increments wajhOrder for readers and individual narrators', () => {
+  // Initial narrators: Warsh has wajh 1, Hafs has wajh 2
+  const initial = [
+    { id: 'Q01-R02', action: 'تقليل الألف', wajhOrder: 1, wajhNote: null },
+    { id: 'Q05-R02', action: 'فتح', wajhOrder: 2, wajhNote: 'وجه ثانٍ لحفص' },
+  ]
+
+  // Adding another face for Warsh
+  assert.equal(nextWajhOrder(initial, 'Q01-R02'), 2, 'Next wajh for Warsh should be 2')
+
+  // Adding another face for Qalun (who currently has 0 faces)
+  assert.equal(nextWajhOrder(initial, 'Q01-R01'), 1, 'First wajh for Qalun should be 1')
+
+  // Adding another face for Hafs (who already has wajh 2)
+  assert.equal(nextWajhOrder(initial, 'Q05-R02'), 3, 'Next wajh for Hafs should be 3')
+
+  // Reader face addition test:
+  // For Reader Q01 (Nafi: Qalun and Warsh)
+  const nafi = CANONICAL_READERS.find((r) => r.id === 'Q01')!
+  const addedForNafi = nafi.narrators.map((n) => ({
+    id: n.id,
+    action: 'إمالة (وجه ثانٍ)',
+    wajhOrder: nextWajhOrder(initial, n.id),
+    wajhNote: 'بخلف عنه',
+  }))
+
+  assert.equal(addedForNafi.length, 2)
+  assert.equal(addedForNafi[0].id, 'Q01-R01')
+  assert.equal(addedForNafi[0].wajhOrder, 1, 'Qalun gets wajh 1')
+  assert.equal(addedForNafi[1].id, 'Q01-R02')
+  assert.equal(addedForNafi[1].wajhOrder, 2, 'Warsh gets wajh 2')
+})
+
 

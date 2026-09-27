@@ -683,40 +683,44 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
               onToggleHistory={() => setHistoryOpen((open) => !open)}
             />
 
-            <div className="flex min-h-0 flex-1 overflow-hidden">
-              {/* RIGHT PANE: Authentic Mushaf-1441 Layout */}
-              <ReviewMushafPane
-                page={page}
-                selectedWordKey={selectedWordKey}
-                selectedRow={selectedRow}
-                hoveredRowId={hoveredRowId}
-                onSelectWord={handleSelectWord}
-                onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
-              />
+            <div className="flex min-h-0 flex-1 overflow-hidden" dir="rtl">
+              {/* RIGHT PANE: Authentic Mushaf-1441 Layout (25% width) */}
+              <div className="w-1/4 min-w-[260px] max-w-[32%] flex flex-col h-full overflow-hidden shrink-0 border-l border-[var(--color-border)]">
+                <ReviewMushafPane
+                  page={page}
+                  selectedWordKey={selectedWordKey}
+                  selectedRow={selectedRow}
+                  hoveredRowId={hoveredRowId}
+                  onSelectWord={handleSelectWord}
+                  onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
+                />
+              </div>
 
-              {/* LEFT PANE: Compact High-Speed Single-Word Editor */}
-              <ReviewEditorPane
-                page={page}
-                selectedWordKey={selectedWordKey}
-                selectedWordMeta={selectedWordMeta}
-                selectedRow={selectedRow}
-                activeRowsForWord={activeRowsForWord}
-                newEntryDraft={newEntryDraft}
-                onSelectRow={(row) => setSelectedRowId(row.entryId)}
-                onStartNewEntry={handleStartNewEntry}
-                onCancelNewEntry={handleCancelNewEntry}
-                onConfirmRow={handleConfirmRow}
-                onFlagRow={handleFlagRow}
-                onSaveRowEdits={handleSaveRowEdits}
-                onDeleteRow={handleDeleteRow}
-                onBulkDelete={handleBulkDelete}
-                onCopyToOccurrence={handleCopyToOccurrence}
-                onBulkApply={handleBulkApply}
-                onCreateNewEntry={handleCreateNewEntry}
-                isSaving={isSaving}
-                saveMessage={saveMessage}
-                errorMessage={errorMessage}
-              />
+              {/* LEFT PANE: Compact High-Speed Single-Word Editor (75% width) */}
+              <div className="w-3/4 flex-1 min-w-0 h-full overflow-hidden flex flex-col">
+                <ReviewEditorPane
+                  page={page}
+                  selectedWordKey={selectedWordKey}
+                  selectedWordMeta={selectedWordMeta}
+                  selectedRow={selectedRow}
+                  activeRowsForWord={activeRowsForWord}
+                  newEntryDraft={newEntryDraft}
+                  onSelectRow={(row) => setSelectedRowId(row.entryId)}
+                  onStartNewEntry={handleStartNewEntry}
+                  onCancelNewEntry={handleCancelNewEntry}
+                  onConfirmRow={handleConfirmRow}
+                  onFlagRow={handleFlagRow}
+                  onSaveRowEdits={handleSaveRowEdits}
+                  onDeleteRow={handleDeleteRow}
+                  onBulkDelete={handleBulkDelete}
+                  onCopyToOccurrence={handleCopyToOccurrence}
+                  onBulkApply={handleBulkApply}
+                  onCreateNewEntry={handleCreateNewEntry}
+                  isSaving={isSaving}
+                  saveMessage={saveMessage}
+                  errorMessage={errorMessage}
+                />
+              </div>
 
               {/* History & Undo Side Drawer */}
               {historyOpen ? (

@@ -75,6 +75,7 @@ export default function UsulRuleGrid({
   disabled,
 }: Props) {
   const [filterQuery, setFilterQuery] = useState('')
+  const [showAllCategories, setShowAllCategories] = useState(!selectedCategoryCode)
 
   const categories = useMemo(() => {
     if (availableCategories && availableCategories.length > 0) {
@@ -83,6 +84,10 @@ export default function UsulRuleGrid({
     return FALLBACK_USUL_CATEGORIES
   }, [availableCategories])
 
+  const selectedCategory = useMemo(() => {
+    return categories.find((c) => c.code === selectedCategoryCode)
+  }, [categories, selectedCategoryCode])
+
   const filteredCategories = useMemo(() => {
     const q = filterQuery.trim().toLowerCase()
     if (!q) return categories
@@ -90,7 +95,7 @@ export default function UsulRuleGrid({
   }, [categories, filterQuery])
 
   return (
-    <div className="space-y-3" dir="rtl">
+    <div className="space-y-2" dir="rtl">
       {/* Reading Text Input */}
       <div>
         <label className="flex items-center justify-between text-xs font-bold text-[var(--color-ink)]">
@@ -104,48 +109,82 @@ export default function UsulRuleGrid({
           disabled={disabled}
           placeholder="اكتب نص الكلمة في هذه القراءة..."
           dir="rtl"
-          className="mt-1 w-full rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 font-quran text-2xl text-[var(--color-ink)] placeholder:font-sans placeholder:text-xs placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
+          className="mt-1 w-full rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1.5 font-quran text-xl text-[var(--color-ink)] placeholder:font-sans placeholder:text-xs placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
         />
       </div>
 
-      <div className="flex items-center justify-between gap-2">
-        <label className="text-xs font-bold text-[var(--color-ink)]">
-          باب الأصول ({categories.length} بابًا):
-        </label>
-        {categories.length > 8 ? (
-          <input
-            type="search"
-            value={filterQuery}
-            onChange={(e) => setFilterQuery(e.target.value)}
-            placeholder="تصفية الأبواب..."
-            className="h-7 w-32 rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 text-[11px] text-[var(--color-ink)] focus:w-44 focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
-          />
-        ) : null}
-      </div>
+      {/* Category selector: Collapsed pill when selected, expandable grid */}
+      {selectedCategory && !showAllCategories ? (
+        <div className="flex items-center justify-between rounded-lg border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/20 px-2.5 py-1 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">الباب المختار:</span>
+            <span className="font-bold text-[var(--color-primary)]">{selectedCategory.nameAr}</span>
+            <span className="rounded bg-green-100 dark:bg-green-950/40 text-green-800 dark:text-green-300 px-1 text-[10px] font-bold">✓</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowAllCategories(true)}
+            disabled={disabled}
+            className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-[11px] font-bold text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]"
+          >
+            تغيير الباب ▾
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-1">
+          <div className="flex items-center justify-between gap-2">
+            <label className="text-xs font-bold text-[var(--color-ink)]">
+              اختر باب الأصول ({categories.length} بابًا):
+            </label>
+            <div className="flex items-center gap-1.5">
+              {categories.length > 8 ? (
+                <input
+                  type="search"
+                  value={filterQuery}
+                  onChange={(e) => setFilterQuery(e.target.value)}
+                  placeholder="تصفية الأبواب..."
+                  className="h-6 w-32 rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 text-[11px] text-[var(--color-ink)] focus:w-40 focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
+                />
+              ) : null}
+              {selectedCategory ? (
+                <button
+                  type="button"
+                  onClick={() => setShowAllCategories(false)}
+                  className="text-[11px] font-bold text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+                >
+                  إلغاء
+                </button>
+              ) : null}
+            </div>
+          </div>
 
-      {/* Grid of Category Chips */}
-      <div className="grid grid-cols-2 gap-1.5 max-h-48 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
-        {filteredCategories.map((category) => {
-          const isSelected = selectedCategoryCode === category.code
-          return (
-            <button
-              key={category.code}
-              type="button"
-              onClick={() => onSelectCategory(category.code)}
-              disabled={disabled}
-              className={cn(
-                'flex items-center justify-between gap-1 rounded-md px-2.5 py-1.5 text-right text-xs font-medium transition-all select-none',
-                isSelected
-                  ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] font-bold text-white shadow-xs'
-                  : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-surface-2)]'
-              )}
-            >
-              <span className="truncate">{category.nameAr}</span>
-              {isSelected ? <span className="text-[11px]">✓</span> : null}
-            </button>
-          )
-        })}
-      </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 max-h-32 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
+            {filteredCategories.map((category) => {
+              const isSelected = selectedCategoryCode === category.code
+              return (
+                <button
+                  key={category.code}
+                  type="button"
+                  onClick={() => {
+                    onSelectCategory(category.code)
+                    setShowAllCategories(false)
+                  }}
+                  disabled={disabled}
+                  className={cn(
+                    'flex items-center justify-between gap-1 rounded px-2 py-1 text-right text-xs font-medium transition-all select-none',
+                    isSelected
+                      ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] font-bold text-white shadow-xs'
+                      : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-surface-2)]'
+                  )}
+                >
+                  <span className="truncate">{category.nameAr}</span>
+                  {isSelected ? <span className="text-[10px]">✓</span> : null}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Structured Imalah & Taqlil controls */}
       {isImalahCategory(selectedCategoryCode) ? (
@@ -181,20 +220,22 @@ export default function UsulRuleGrid({
         />
       ) : null}
 
-      {/* Ruling statement / notes input */}
-      <div>
-        <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-          بيان الحكم أو الملاحظة (اختياري):
-        </label>
-        <textarea
-          value={rulingText ?? ''}
-          onChange={(e) => onChangeRulingText(e.target.value)}
-          disabled={disabled}
-          placeholder="مثال: إمالة الألف، أو نقل حركة الهمزة..."
-          rows={2}
-          className="mt-1 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1.5 text-xs text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none"
-        />
-      </div>
+      {/* Ruling statement / notes input for non-specialized categories */}
+      {!isImalahCategory(selectedCategoryCode) && !isHamzahCategory(selectedCategoryCode) ? (
+        <div>
+          <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+            بيان الحكم أو الملاحظة (اختياري):
+          </label>
+          <input
+            type="text"
+            value={rulingText ?? ''}
+            onChange={(e) => onChangeRulingText(e.target.value)}
+            disabled={disabled}
+            placeholder="مثال: إمالة الألف، أو نقل حركة الهمزة..."
+            className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none"
+          />
+        </div>
+      ) : null}
     </div>
   )
 }

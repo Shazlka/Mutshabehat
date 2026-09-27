@@ -121,6 +121,7 @@ function ImalahFacesBuilder({
   const [faceKhulf, setFaceKhulf] = useState<KhulfOption>('qawlan_wahidan')
   const [customActionText, setCustomActionText] = useState('')
   const [addedMessage, setAddedMessage] = useState<string | null>(null)
+  const [quickTarget, setQuickTarget] = useState<string>('Q01')
 
   // Computed preview of face action
   const computedAction = useMemo(() => {
@@ -246,7 +247,7 @@ function ImalahFacesBuilder({
   function handleAddAnotherFaceForNarrator(narratorId: string) {
     if (disabled || !onChangeNarrators) return
     const nextOrder = nextWajhOrder(narrators, narratorId)
-    const nextAction = `وجه ${nextOrder} (بخلف عنه)`
+    const nextAction = computedAction || `وجه ${nextOrder} (بخلف عنه)`
 
     const next = [
       ...narrators,
@@ -258,6 +259,38 @@ function ImalahFacesBuilder({
       },
     ]
     onChangeNarrators(next)
+    setAddedMessage('تمت إضافة وجه جديد للراوي ✓')
+    setTimeout(() => setAddedMessage(null), 3500)
+  }
+
+  // Add another face for a reader (both of their narrators)
+  function handleAddAnotherFaceForReader(readerId: string) {
+    if (disabled || !onChangeNarrators) return
+    const reader = CANONICAL_READERS.find((r) => r.id === readerId)
+    if (!reader) return
+    const current = [...narrators]
+    for (const n of reader.narrators) {
+      const nextOrder = nextWajhOrder(current, n.id)
+      const nextAction = computedAction || `وجه ${nextOrder} (بخلف عنه)`
+      current.push({
+        id: n.id,
+        action: nextAction,
+        wajhOrder: nextOrder,
+        wajhNote: 'بخلف عنه',
+      })
+    }
+    onChangeNarrators(current)
+    setAddedMessage(`تمت إضافة وجه جديد للقارئ ${reader.nameShort} (بروايتيه) ✓`)
+    setTimeout(() => setAddedMessage(null), 3500)
+  }
+
+  function handleQuickAddFace() {
+    if (disabled || !quickTarget) return
+    if (quickTarget.includes('-')) {
+      handleAddAnotherFaceForNarrator(quickTarget)
+    } else {
+      handleAddAnotherFaceForReader(quickTarget)
+    }
   }
 
   // Update a face at a specific index
@@ -289,336 +322,370 @@ function ImalahFacesBuilder({
         </span>
       </div>
 
-      {/* STEP 1: Select Readers / Narrators */}
-      <div className="space-y-1.5">
-        <div className="flex items-center justify-between gap-2">
-          <label className="text-xs font-bold text-[var(--color-ink)]">
-            ١. اختر القراء أو الرواة المستهدفين:
-          </label>
-          <div className="flex items-center gap-1 text-[11px]">
-            <span className="font-bold text-fuchsia-800 dark:text-fuchsia-300">
-              المحدد: {selectedNarratorIds.size}/20 راوٍ
-            </span>
-            <button
-              type="button"
-              onClick={selectAllNarrators}
-              disabled={disabled || selectedNarratorIds.size === 20}
-              className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
-            >
-              الكل
-            </button>
-            <button
-              type="button"
-              onClick={clearSelection}
-              disabled={disabled || selectedNarratorIds.size === 0}
-              className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40 text-red-600"
-            >
-              مسح
-            </button>
-          </div>
-        </div>
-
-        {/* Selector mode tabs */}
-        <div className="flex rounded-lg border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)] p-0.5 text-[11px] font-bold">
-          <button
-            type="button"
-            onClick={() => setSelectorTab('presets')}
-            className={cn(
-              'flex-1 rounded-md py-1 transition-all text-center',
-              selectorTab === 'presets'
-                ? 'bg-fuchsia-600 text-white shadow-2xs'
-                : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
-            )}
-          >
-            مجموعات جاهزة سريعة
-          </button>
-          <button
-            type="button"
-            onClick={() => setSelectorTab('readers')}
-            className={cn(
-              'flex-1 rounded-md py-1 transition-all text-center',
-              selectorTab === 'readers'
-                ? 'bg-fuchsia-600 text-white shadow-2xs'
-                : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
-            )}
-          >
-            حسب القراء (العشرة)
-          </button>
-          <button
-            type="button"
-            onClick={() => setSelectorTab('narrators')}
-            className={cn(
-              'flex-1 rounded-md py-1 transition-all text-center',
-              selectorTab === 'narrators'
-                ? 'bg-fuchsia-600 text-white shadow-2xs'
-                : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
-            )}
-          >
-            حسب الرواة (العشرون)
-          </button>
-        </div>
-
-        {/* Tab 1: Presets */}
-        {selectorTab === 'presets' ? (
-          <div className="flex flex-wrap gap-1.5 pt-1">
-            <button
-              type="button"
-              onClick={() => selectPresetGroup(IMALAH_NARRATOR_IDS)}
-              disabled={disabled}
-              className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 dark:bg-fuchsia-900/40 px-2 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100 hover:bg-fuchsia-200 transition-colors"
-            >
-              + أهل الإمالة (حمزة، الكسائي، خلف العاشر)
-            </button>
-            <button
-              type="button"
-              onClick={() => selectPresetGroup(TAQLIL_NARRATOR_IDS)}
-              disabled={disabled}
-              className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 dark:bg-fuchsia-900/40 px-2 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100 hover:bg-fuchsia-200 transition-colors"
-            >
-              + أهل التقليل (ورش، أبو عمرو)
-            </button>
-            <button
-              type="button"
-              onClick={() => selectPresetGroup([WARSH_NARRATOR_ID])}
-              disabled={disabled}
-              className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-xs font-bold hover:bg-[var(--color-surface-2)]"
-            >
-              + ورش فقط
-            </button>
-            <button
-              type="button"
-              onClick={() => selectPresetGroup(['Q06-R01', 'Q06-R02', 'Q07-R01', 'Q07-R02'])}
-              disabled={disabled}
-              className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-xs font-bold hover:bg-[var(--color-surface-2)]"
-            >
-              + الأخوان (حمزة والكسائي)
-            </button>
-            <button
-              type="button"
-              onClick={() => selectPresetGroup(['Q03-R01', 'Q03-R02'])}
-              disabled={disabled}
-              className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-xs font-bold hover:bg-[var(--color-surface-2)]"
-            >
-              + أبو عمرو البصري
-            </button>
-          </div>
-        ) : null}
-
-        {/* Tab 2: Readers (10 Readers) */}
-        {selectorTab === 'readers' ? (
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 pt-1">
-            {CANONICAL_READERS.map((reader) => {
-              const [n1, n2] = reader.narrators
-              const bothSelected = selectedNarratorIds.has(n1.id) && selectedNarratorIds.has(n2.id)
-              const partiallySelected = (selectedNarratorIds.has(n1.id) || selectedNarratorIds.has(n2.id)) && !bothSelected
-              return (
-                <button
-                  key={reader.id}
-                  type="button"
-                  onClick={() => toggleReader(reader)}
-                  disabled={disabled}
-                  className={cn(
-                    'flex flex-col items-center justify-center rounded-lg border p-1.5 text-center text-xs font-bold transition-all select-none',
-                    bothSelected
-                      ? 'border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs'
-                      : partiallySelected
-                        ? 'border-fuchsia-400 bg-fuchsia-100 text-fuchsia-950 dark:bg-fuchsia-950/60 dark:text-fuchsia-200'
-                        : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-fuchsia-400 hover:bg-[var(--color-surface-2)]'
-                  )}
-                >
-                  <span className="flex items-center gap-1">
-                    <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: reader.color }} />
-                    <span>{reader.nameShort}</span>
-                    {bothSelected ? <span>✓</span> : partiallySelected ? <span>~</span> : null}
-                  </span>
-                  <span className="text-[10px] opacity-75">
-                    {reader.narrators.map((n) => n.nameShort).join(' / ')}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-        ) : null}
-
-        {/* Tab 3: Individual Narrators (20 Narrators) */}
-        {selectorTab === 'narrators' ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-h-48 overflow-y-auto p-1 rounded-md border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)]">
-            {CANONICAL_READERS.map((reader) =>
-              reader.narrators.map((n) => {
-                const isSelected = selectedNarratorIds.has(n.id)
-                const existingCount = narratorFacesCount.get(n.id) ?? 0
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => toggleNarratorId(n.id)}
-                    disabled={disabled}
-                    className={cn(
-                      'flex items-center justify-between gap-1 rounded-md px-2 py-1 text-right text-xs font-bold transition-all select-none',
-                      isSelected
-                        ? 'border border-fuchsia-600 bg-fuchsia-600 text-white shadow-2xs'
-                        : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-fuchsia-400 hover:bg-[var(--color-surface-2)]'
-                    )}
-                  >
-                    <span className="whitespace-nowrap">{n.nameShort}</span>
-                    <div className="flex items-center gap-1 text-[10px]">
-                      {existingCount > 0 ? (
-                        <span className={cn('rounded px-1 py-0.2', isSelected ? 'bg-fuchsia-800 text-white' : 'bg-amber-100 text-amber-900')}>
-                          {existingCount} وجه
-                        </span>
-                      ) : null}
-                      <span>{isSelected ? '✓' : ''}</span>
-                    </div>
-                  </button>
-                )
-              })
-            )}
-          </div>
-        ) : null}
-      </div>
-
-      {/* STEP 2: Configure Face Details (Action, Performance, Khulf) */}
-      <div className="space-y-2 border-t border-fuchsia-200 dark:border-fuchsia-900/60 pt-2.5">
-        <label className="text-xs font-bold text-[var(--color-ink)]">
-          ٢. حدد صيغة الوجه المراد إضافته (نوع الحكم والأداء والخلاف):
-        </label>
-
-        {/* 2a. Action type */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-16">الحكم:</span>
-          {(['إمالة', 'تقليل', 'فتح', 'إمالة وتقليل'] as const).map((t) => (
-            <button
-              key={t}
-              type="button"
-              onClick={() => {
-                setFaceType(t)
-                setCustomActionText('')
-              }}
-              disabled={disabled}
-              className={cn(
-                'rounded-md border px-2.5 py-1 text-xs font-bold transition-all',
-                faceType === t && !customActionText
-                  ? 'border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs'
-                  : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-fuchsia-400'
-              )}
-            >
-              {faceType === t && !customActionText ? '✓ ' : ''}{t}
-            </button>
-          ))}
-        </div>
-
-        {/* 2b. Performance condition (وصل / وقف / كلاهما) */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-16">الأداء:</span>
-          {[
-            { id: 'wasl_waqf', label: 'وصلاً ووقفاً' },
-            { id: 'waqf_only', label: 'عند الوقف فقط' },
-            { id: 'wasl_only', label: 'عند الوصل فقط' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => {
-                setFacePerformance(item.id as PerformanceOption)
-                setCustomActionText('')
-              }}
-              disabled={disabled}
-              className={cn(
-                'rounded-md border px-2.5 py-1 text-xs font-bold transition-all',
-                facePerformance === item.id && !customActionText
-                  ? 'border-green-600 bg-green-50 text-green-800 shadow-2xs dark:bg-green-950/40 dark:text-green-300'
-                  : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
-              )}
-            >
-              {facePerformance === item.id && !customActionText ? '✓ ' : ''}{item.label}
-            </button>
-          ))}
-        </div>
-
-        {/* 2c. Khulf option */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-16">الخلاف:</span>
-          {[
-            { id: 'qawlan_wahidan', label: 'قولاً واحداً (الأصل)' },
-            { id: 'bikhulf', label: 'بخلف عنه (ذو وجهين)' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => {
-                setFaceKhulf(item.id as KhulfOption)
-                setCustomActionText('')
-              }}
-              disabled={disabled}
-              className={cn(
-                'rounded-md border px-2.5 py-1 text-xs font-bold transition-all',
-                faceKhulf === item.id && !customActionText
-                  ? 'border-amber-600 bg-amber-50 text-amber-800 shadow-2xs dark:bg-amber-950/40 dark:text-amber-300'
-                  : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
-              )}
-            >
-              {faceKhulf === item.id && !customActionText ? '✓ ' : ''}{item.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Live action text preview and custom edit */}
-        <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2">
+      {/* 2-Column Responsive Grid: Step 1 (Right) and Step 2 (Left) to avoid scrolling */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 items-start">
+        {/* STEP 1: Select Readers / Narrators */}
+        <div className="space-y-1.5 rounded-lg border border-fuchsia-200/80 dark:border-fuchsia-900/60 bg-[var(--color-surface)] p-2">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-              صيغة الأداء الناتجة للوجه (قابلة للتعديل):
-            </span>
-            {customActionText ? (
+            <label className="text-xs font-bold text-[var(--color-ink)]">
+              ١. اختر القراء أو الرواة المستهدفين:
+            </label>
+            <div className="flex items-center gap-1 text-[11px]">
+              <span className="font-bold text-fuchsia-800 dark:text-fuchsia-300">
+                المحدد: {selectedNarratorIds.size}/20 راوٍ
+              </span>
               <button
                 type="button"
-                onClick={() => setCustomActionText('')}
-                className="text-[10px] font-bold text-fuchsia-600 hover:underline"
+                onClick={selectAllNarrators}
+                disabled={disabled || selectedNarratorIds.size === 20}
+                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
               >
-                استعادة التوليد التلقائي ⟳
+                الكل
               </button>
+              <button
+                type="button"
+                onClick={clearSelection}
+                disabled={disabled || selectedNarratorIds.size === 0}
+                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40 text-red-600"
+              >
+                مسح
+              </button>
+            </div>
+          </div>
+
+          {/* Selector mode tabs */}
+          <div className="flex rounded-lg border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)] p-0.5 text-[11px] font-bold">
+            <button
+              type="button"
+              onClick={() => setSelectorTab('presets')}
+              className={cn(
+                'flex-1 rounded-md py-1 transition-all text-center',
+                selectorTab === 'presets'
+                  ? 'bg-fuchsia-600 text-white shadow-2xs'
+                  : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+              )}
+            >
+              مجموعات جاهزة سريعة
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectorTab('readers')}
+              className={cn(
+                'flex-1 rounded-md py-1 transition-all text-center',
+                selectorTab === 'readers'
+                  ? 'bg-fuchsia-600 text-white shadow-2xs'
+                  : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+              )}
+            >
+              حسب القراء (العشرة)
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectorTab('narrators')}
+              className={cn(
+                'flex-1 rounded-md py-1 transition-all text-center',
+                selectorTab === 'narrators'
+                  ? 'bg-fuchsia-600 text-white shadow-2xs'
+                  : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+              )}
+            >
+              حسب الرواة (العشرون)
+            </button>
+          </div>
+
+          {/* Tab 1: Presets */}
+          {selectorTab === 'presets' ? (
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              <button
+                type="button"
+                onClick={() => selectPresetGroup(IMALAH_NARRATOR_IDS)}
+                disabled={disabled}
+                className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 dark:bg-fuchsia-900/40 px-2 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100 hover:bg-fuchsia-200 transition-colors"
+              >
+                + أهل الإمالة (حمزة، الكسائي، خلف العاشر)
+              </button>
+              <button
+                type="button"
+                onClick={() => selectPresetGroup(TAQLIL_NARRATOR_IDS)}
+                disabled={disabled}
+                className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 dark:bg-fuchsia-900/40 px-2 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100 hover:bg-fuchsia-200 transition-colors"
+              >
+                + أهل التقليل (ورش، أبو عمرو)
+              </button>
+              <button
+                type="button"
+                onClick={() => selectPresetGroup([WARSH_NARRATOR_ID])}
+                disabled={disabled}
+                className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-xs font-bold hover:bg-[var(--color-surface-2)]"
+              >
+                + ورش فقط
+              </button>
+              <button
+                type="button"
+                onClick={() => selectPresetGroup(['Q06-R01', 'Q06-R02', 'Q07-R01', 'Q07-R02'])}
+                disabled={disabled}
+                className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-xs font-bold hover:bg-[var(--color-surface-2)]"
+              >
+                + الأخوان (حمزة والكسائي)
+              </button>
+              <button
+                type="button"
+                onClick={() => selectPresetGroup(['Q03-R01', 'Q03-R02'])}
+                disabled={disabled}
+                className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-xs font-bold hover:bg-[var(--color-surface-2)]"
+              >
+                + أبو عمرو البصري
+              </button>
+            </div>
+          ) : null}
+
+          {/* Tab 2: Readers (10 Readers) */}
+          {selectorTab === 'readers' ? (
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 pt-1">
+              {CANONICAL_READERS.map((reader) => {
+                const [n1, n2] = reader.narrators
+                const bothSelected = selectedNarratorIds.has(n1.id) && selectedNarratorIds.has(n2.id)
+                const partiallySelected = (selectedNarratorIds.has(n1.id) || selectedNarratorIds.has(n2.id)) && !bothSelected
+                return (
+                  <button
+                    key={reader.id}
+                    type="button"
+                    onClick={() => toggleReader(reader)}
+                    disabled={disabled}
+                    className={cn(
+                      'flex flex-col items-center justify-center rounded-lg border p-1 text-center text-xs font-bold transition-all select-none',
+                      bothSelected
+                        ? 'border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs'
+                        : partiallySelected
+                          ? 'border-fuchsia-400 bg-fuchsia-100 text-fuchsia-950 dark:bg-fuchsia-950/60 dark:text-fuchsia-200'
+                          : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-fuchsia-400 hover:bg-[var(--color-surface-2)]'
+                    )}
+                  >
+                    <span className="flex items-center gap-1">
+                      <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: reader.color }} />
+                      <span>{reader.nameShort}</span>
+                      {bothSelected ? <span>✓</span> : partiallySelected ? <span>~</span> : null}
+                    </span>
+                    <span className="text-[10px] opacity-75">
+                      {reader.narrators.map((n) => n.nameShort).join(' / ')}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          ) : null}
+
+          {/* Tab 3: Individual Narrators (20 Narrators) */}
+          {selectorTab === 'narrators' ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-h-40 overflow-y-auto p-1 rounded-md border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)]">
+              {CANONICAL_READERS.map((reader) =>
+                reader.narrators.map((n) => {
+                  const isSelected = selectedNarratorIds.has(n.id)
+                  const existingCount = narratorFacesCount.get(n.id) ?? 0
+                  return (
+                    <button
+                      key={n.id}
+                      type="button"
+                      onClick={() => toggleNarratorId(n.id)}
+                      disabled={disabled}
+                      className={cn(
+                        'flex items-center justify-between gap-1 rounded-md px-2 py-1 text-right text-xs font-bold transition-all select-none',
+                        isSelected
+                          ? 'border border-fuchsia-600 bg-fuchsia-600 text-white shadow-2xs'
+                          : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-fuchsia-400 hover:bg-[var(--color-surface-2)]'
+                      )}
+                    >
+                      <span className="whitespace-nowrap">{n.nameShort}</span>
+                      <div className="flex items-center gap-1 text-[10px]">
+                        {existingCount > 0 ? (
+                          <span className={cn('rounded px-1 py-0.2', isSelected ? 'bg-fuchsia-800 text-white' : 'bg-amber-100 text-amber-900')}>
+                            {existingCount} وجه
+                          </span>
+                        ) : null}
+                        <span>{isSelected ? '✓' : ''}</span>
+                      </div>
+                    </button>
+                  )
+                })
+              )}
+            </div>
+          ) : null}
+        </div>
+
+        {/* STEP 2: Configure Face Details & Add Button */}
+        <div className="space-y-2 rounded-lg border border-fuchsia-200/80 dark:border-fuchsia-900/60 bg-[var(--color-surface)] p-2">
+          <label className="text-xs font-bold text-[var(--color-ink)]">
+            ٢. حدد صيغة الوجه المراد إضافته (نوع الحكم والأداء والخلاف):
+          </label>
+
+          {/* 2a. Action type */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-16">الحكم:</span>
+            {(['إمالة', 'تقليل', 'فتح', 'إمالة وتقليل'] as const).map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => {
+                  setFaceType(t)
+                  setCustomActionText('')
+                }}
+                disabled={disabled}
+                className={cn(
+                  'rounded-md border px-2.5 py-0.5 text-xs font-bold transition-all',
+                  faceType === t && !customActionText
+                    ? 'border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs'
+                    : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-fuchsia-400'
+                )}
+              >
+                {faceType === t && !customActionText ? '✓ ' : ''}{t}
+              </button>
+            ))}
+          </div>
+
+          {/* 2b. Performance condition (وصل / وقف / كلاهما) */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-16">الأداء:</span>
+            {[
+              { id: 'wasl_waqf', label: 'وصلاً ووقفاً' },
+              { id: 'waqf_only', label: 'عند الوقف فقط' },
+              { id: 'wasl_only', label: 'عند الوصل فقط' },
+            ].map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => {
+                  setFacePerformance(item.id as PerformanceOption)
+                  setCustomActionText('')
+                }}
+                disabled={disabled}
+                className={cn(
+                  'rounded-md border px-2.5 py-0.5 text-xs font-bold transition-all',
+                  facePerformance === item.id && !customActionText
+                    ? 'border-green-600 bg-green-50 text-green-800 shadow-2xs dark:bg-green-950/40 dark:text-green-300'
+                    : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
+                )}
+              >
+                {facePerformance === item.id && !customActionText ? '✓ ' : ''}{item.label}
+              </button>
+            ))}
+          </div>
+
+          {/* 2c. Khulf option */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-16">الخلاف:</span>
+            {[
+              { id: 'qawlan_wahidan', label: 'قولاً واحداً (الأصل)' },
+              { id: 'bikhulf', label: 'بخلف عنه (ذو وجهين)' },
+            ].map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => {
+                  setFaceKhulf(item.id as KhulfOption)
+                  setCustomActionText('')
+                }}
+                disabled={disabled}
+                className={cn(
+                  'rounded-md border px-2.5 py-0.5 text-xs font-bold transition-all',
+                  faceKhulf === item.id && !customActionText
+                    ? 'border-amber-600 bg-amber-50 text-amber-800 shadow-2xs dark:bg-amber-950/40 dark:text-amber-300'
+                    : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
+                )}
+              >
+                {faceKhulf === item.id && !customActionText ? '✓ ' : ''}{item.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Live action text preview and custom edit */}
+          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-1.5">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+                صيغة الأداء الناتجة للوجه (قابلة للتعديل):
+              </span>
+              {customActionText ? (
+                <button
+                  type="button"
+                  onClick={() => setCustomActionText('')}
+                  className="text-[10px] font-bold text-fuchsia-600 hover:underline"
+                >
+                  استعادة التوليد التلقائي ⟳
+                </button>
+              ) : null}
+            </div>
+            <input
+              type="text"
+              value={computedAction}
+              onChange={(e) => setCustomActionText(e.target.value)}
+              disabled={disabled}
+              className="mt-1 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100"
+              placeholder="نص الأداء..."
+            />
+          </div>
+
+          {/* Add Configured Face Button right inside Column 2 */}
+          <div className="pt-1">
+            <button
+              type="button"
+              onClick={handleAddConfiguredFace}
+              disabled={disabled || selectedNarratorIds.size === 0}
+              className="flex w-full items-center justify-center gap-2 rounded-lg border border-fuchsia-600 bg-fuchsia-600 px-3 py-1.5 text-center text-xs font-black text-white shadow-xs hover:bg-fuchsia-700 disabled:opacity-50 transition-all select-none cursor-pointer"
+            >
+              <span>➕</span>
+              <span>
+                إضافة هذا الوجه ({computedAction}) إلى الرواة المحددين ({selectedNarratorIds.size})
+              </span>
+            </button>
+            {addedMessage ? (
+              <p className="mt-1 text-center text-xs font-bold text-green-700 dark:text-green-400 animate-fade-in">
+                {addedMessage}
+              </p>
             ) : null}
           </div>
-          <input
-            type="text"
-            value={computedAction}
-            onChange={(e) => setCustomActionText(e.target.value)}
-            disabled={disabled}
-            className="mt-1 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100"
-            placeholder="نص الأداء..."
-          />
         </div>
       </div>
 
-      {/* STEP 3: Add Face Action Button */}
-      <div className="pt-1">
-        <button
-          type="button"
-          onClick={handleAddConfiguredFace}
-          disabled={disabled || selectedNarratorIds.size === 0}
-          className="flex w-full items-center justify-center gap-2 rounded-lg border border-fuchsia-600 bg-fuchsia-600 px-3 py-2 text-center text-xs font-black text-white shadow-xs hover:bg-fuchsia-700 disabled:opacity-50 transition-all select-none"
-        >
-          <span>➕</span>
-          <span>
-            إضافة هذا الوجه ({computedAction}) إلى الرواة المحددين ({selectedNarratorIds.size})
-          </span>
-        </button>
-
-        {addedMessage ? (
-          <p className="mt-1.5 text-center text-xs font-bold text-green-700 dark:text-green-400 animate-fade-in">
-            {addedMessage}
-          </p>
-        ) : null}
-      </div>
-
-      {/* STEP 4: Live Faces Manager (All configured faces for this entry) */}
-      <div className="border-t border-fuchsia-200 dark:border-fuchsia-900/60 pt-2.5 space-y-2">
-        <div className="flex items-center justify-between gap-2">
+      {/* STEP 3: Live Faces Manager (تفاصيل الأداء والأوجه للرواة المحددين) */}
+      <div className="border-t border-fuchsia-200 dark:border-fuchsia-900/60 pt-2 space-y-2">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <label className="text-xs font-bold text-[var(--color-ink)]">
-            ٣. تفاصيل الأداء والأوجه المسجلة حالياً ({narrators.length} وجهاً):
+            ٣. تفاصيل الأداء والأوجه للرواة المحددين ({narrators.length} وجهاً):
           </label>
-          <span className="text-[11px] text-[var(--color-ink-muted)]">
-            يمكنك إضافة وجه آخر لنفس القارئ أو تعديل أي وجه
-          </span>
+          {/* Quick Target Dropdown and Button */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">إضافة وجه لـ:</span>
+            <select
+              value={quickTarget}
+              onChange={(e) => setQuickTarget(e.target.value)}
+              disabled={disabled}
+              className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-xs font-bold text-[var(--color-ink)]"
+            >
+              <optgroup label="القراء (العشرة)">
+                {CANONICAL_READERS.map((r) => (
+                  <option key={r.id} value={r.id}>
+                    قارئ: {r.nameAr} ({r.narrators.map((n) => n.nameShort).join(' و')})
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="الرواة (العشرون)">
+                {CANONICAL_READERS.flatMap((r) =>
+                  r.narrators.map((n) => (
+                    <option key={n.id} value={n.id}>
+                      راوٍ: {n.nameAr} ({r.nameShort})
+                    </option>
+                  ))
+                )}
+              </optgroup>
+            </select>
+            <button
+              type="button"
+              onClick={handleQuickAddFace}
+              disabled={disabled}
+              className="rounded bg-fuchsia-600 hover:bg-fuchsia-700 px-2.5 py-0.5 text-xs font-bold text-white shadow-2xs disabled:opacity-40 cursor-pointer"
+            >
+              + إضافة وجه
+            </button>
+          </div>
         </div>
 
         {narrators.length === 0 ? (
@@ -626,7 +693,7 @@ function ImalahFacesBuilder({
             لم يُضف أي وجه بعد. اختر الرواة من الأعلى ثم اضغط على زر الإضافة أعلاه.
           </div>
         ) : (
-          <div className="space-y-1.5 max-h-64 overflow-y-auto p-1 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)]">
+          <div className="space-y-1.5 max-h-56 overflow-y-auto p-1 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)]">
             {narrators.map((face, index) => {
               const reader = CANONICAL_READERS.find((r) =>
                 r.narrators.some((n) => n.id === face.id)
@@ -637,7 +704,7 @@ function ImalahFacesBuilder({
                   key={`${face.id}-${index}`}
                   className="rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface)] p-2 text-xs shadow-2xs space-y-1.5"
                 >
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
                     <div className="flex items-center gap-1.5">
                       <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: reader?.color ?? '#888' }} />
                       <span className="font-bold text-[var(--color-ink)]">
@@ -659,21 +726,32 @@ function ImalahFacesBuilder({
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 flex-wrap">
                       <button
                         type="button"
                         onClick={() => handleAddAnotherFaceForNarrator(face.id)}
                         disabled={disabled}
-                        className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-2 py-0.5 text-[10px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100"
-                        title="إضافة وجه آخر لنفس الراوي (مثلاً: وقفا بخلف عنه، أو وصلا بخلف عنه)"
+                        className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-2 py-0.5 text-[10px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
+                        title="إضافة وجه آخر لنفس الراوي"
                       >
-                        + وجه آخر لنفس الراوي
+                        + وجه آخر للراوي
                       </button>
+                      {reader ? (
+                        <button
+                          type="button"
+                          onClick={() => handleAddAnotherFaceForReader(reader.id)}
+                          disabled={disabled}
+                          className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-2 py-0.5 text-[10px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
+                          title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
+                        >
+                          + وجه آخر للقارئ ({reader.nameShort})
+                        </button>
+                      ) : null}
                       <button
                         type="button"
                         onClick={() => handleRemoveFaceAtIndex(index)}
                         disabled={disabled}
-                        className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1.5 py-0.5 text-[10px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100"
+                        className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1.5 py-0.5 text-[10px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100 cursor-pointer"
                         title="حذف هذا الوجه"
                       >
                         ✕ حذف

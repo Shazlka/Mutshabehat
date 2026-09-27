@@ -154,6 +154,92 @@ const ENTRY_FIELD_KEYS = [
   'hamzahDetail',
 ] as const
 
+export const VALID_VARIANT_TYPE_ENUMS = [
+  'orthography', 'vowel', 'consonant', 'hamza', 'madd', 'idgham', 'ishmam',
+  'imalah', 'taqlil', 'sakt', 'naql', 'ikhfa', 'ghunnah', 'pronoun',
+  'grammar', 'addition', 'omission', 'word_form', 'other'
+] as const
+
+export function toDbVariantType(input: unknown): string {
+  if (typeof input !== 'string') return 'other'
+  const trimmed = input.trim().toLowerCase()
+  switch (trimmed) {
+    case 'vowel':
+    case 'harakah':
+    case 'تشكيل':
+    case 'تشكيل / حركة':
+    case 'حركة':
+      return 'vowel'
+    case 'consonant':
+    case 'letter':
+    case 'حرف':
+    case 'إبدال حرف':
+    case 'إبدال':
+      return 'consonant'
+    case 'addition':
+    case 'زيادة':
+    case 'زيادة حرف/كلمة':
+    case 'زيادة حرف':
+      return 'addition'
+    case 'omission':
+    case 'حذف':
+    case 'حذف حرف/كلمة':
+    case 'حذف حرف':
+      return 'omission'
+    case 'word_form':
+    case 'تقديم وتأخير':
+    case 'تقديم وتأخير / بنية الكلمة':
+    case 'بنية الكلمة':
+      return 'word_form'
+    case 'orthography':
+    case 'رسم':
+      return 'orthography'
+    case 'hamza':
+    case 'hamz':
+    case 'همز':
+    case 'همزة':
+      return 'hamza'
+    case 'madd':
+    case 'مد':
+      return 'madd'
+    case 'idgham':
+    case 'إدغام':
+      return 'idgham'
+    case 'ishmam':
+    case 'إشمام':
+      return 'ishmam'
+    case 'imalah':
+    case 'إمالة':
+      return 'imalah'
+    case 'taqlil':
+    case 'تقليل':
+      return 'taqlil'
+    case 'sakt':
+    case 'سكت':
+      return 'sakt'
+    case 'naql':
+    case 'نقل':
+      return 'naql'
+    case 'ikhfa':
+    case 'إخفاء':
+      return 'ikhfa'
+    case 'ghunnah':
+    case 'غنة':
+      return 'ghunnah'
+    case 'pronoun':
+    case 'ضمير':
+      return 'pronoun'
+    case 'grammar':
+    case 'إعراب':
+      return 'grammar'
+    case 'other':
+    case 'أخرى':
+      return 'other'
+    default:
+      return (VALID_VARIANT_TYPE_ENUMS as readonly string[]).includes(trimmed) ? trimmed : 'other'
+  }
+}
+
 function failure(error: string): ValidationFailure {
   return { ok: false, status: 400, body: { error } }
 }
@@ -238,12 +324,23 @@ function validateEntryFields(fields: unknown): ValidationResult<Record<string, u
       continue
     }
 
-    if (key === 'variantType' || key === 'categoryCode') {
+    if (key === 'variantType') {
       if (typeof value !== 'string' || value.trim().length === 0) {
-        return failure(`${key} is required`)
+        return failure('variantType is required')
       }
       if (value.length > MAX_SHORT_CODE_LENGTH) {
-        return failure(`${key} is too long`)
+        return failure('variantType is too long')
+      }
+      (fields as Record<string, unknown>).variantType = toDbVariantType(value)
+      continue
+    }
+
+    if (key === 'categoryCode') {
+      if (typeof value !== 'string' || value.trim().length === 0) {
+        return failure('categoryCode is required')
+      }
+      if (value.length > MAX_SHORT_CODE_LENGTH) {
+        return failure('categoryCode is too long')
       }
       continue
     }
@@ -587,8 +684,9 @@ export function validatePostBody(input: unknown): ValidationResult<ValidatedPost
   const performanceNote = validateOptionalText(entry.performanceNote, 'performanceNote')
   if (isFailure(performanceNote)) return performanceNote
 
-  const variantType = entry.variantType !== undefined ? validateOptionalText(entry.variantType, 'variantType') : undefined
-  if (isFailure(variantType)) return variantType
+  const rawVariantType = entry.variantType !== undefined ? validateOptionalText(entry.variantType, 'variantType') : undefined
+  if (isFailure(rawVariantType)) return rawVariantType
+  const variantType = rawVariantType !== undefined ? (rawVariantType ? toDbVariantType(rawVariantType) : undefined) : undefined
 
   const rulingText = validateOptionalText(entry.rulingText, 'rulingText')
   if (isFailure(rulingText)) return rulingText

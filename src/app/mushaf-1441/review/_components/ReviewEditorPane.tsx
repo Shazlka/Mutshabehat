@@ -20,6 +20,7 @@ import ReaderNarratorSelector, { CANONICAL_READERS } from './ReaderNarratorSelec
 import UsulRuleGrid from './UsulRuleGrid'
 import FarshFields from './FarshFields'
 import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
+import { isImalahCategory } from './ImalahDetailFields'
 import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
 import * as reviewApi from '../_lib/api'
@@ -163,7 +164,7 @@ export default function ReviewEditorPane({
       <aside
         dir="rtl"
         aria-label="محرر القراءات"
-        className="flex h-full w-full min-w-[340px] md:w-[480px] lg:w-[560px] xl:w-[740px] 2xl:w-[840px] shrink-0 flex-col justify-between overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-4 sm:p-5 text-right select-none"
+        className="flex h-full w-full min-w-0 flex-1 flex-col justify-between overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-3 sm:p-4 text-right select-none"
       >
         <div className="space-y-4">
           <div className="rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface-2)]/40 p-6 text-center">
@@ -218,7 +219,7 @@ export default function ReviewEditorPane({
     <aside
       dir="rtl"
       aria-label="محرر القراءات النشط"
-      className="flex h-full w-full min-w-[340px] md:w-[480px] lg:w-[560px] xl:w-[740px] 2xl:w-[840px] shrink-0 flex-col overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-3 sm:p-4 text-right"
+      className="flex h-full w-full min-w-0 flex-1 flex-col overflow-y-auto border-s border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 sm:p-3 text-right"
     >
       {/* 1. Header & Hafs Word Display + Quick Actions */}
       <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)]/30 p-2.5 sm:p-3 space-y-2">
@@ -554,91 +555,50 @@ export default function ReviewEditorPane({
         </div>
       ) : null}
 
-      {/* 2. Main 2-Column Responsive Layout on Desktop */}
-      <div className="mt-2.5 grid grid-cols-1 xl:grid-cols-2 gap-3 items-start">
-        {/* Column 1: Kind Toggle + Sub-editor (Farsh / Usul) */}
-        <div className="space-y-2">
-          {/* Kind Toggle */}
-          <div className="space-y-1">
-            <label className="text-xs font-bold text-[var(--color-ink)]">نوع الموضع:</label>
-            <div className="grid grid-cols-2 gap-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] p-0.5">
-              <button
-                type="button"
-                onClick={() => setKind('farsh')}
-                className={cn(
-                  'rounded-md py-1 text-xs font-bold transition-all',
-                  kind === 'farsh'
-                    ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
-                    : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
-                )}
-              >
-                فرش الحروف
-              </button>
-              <button
-                type="button"
-                onClick={() => setKind('usul')}
-                className={cn(
-                  'rounded-md py-1 text-xs font-bold transition-all',
-                  kind === 'usul'
-                    ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
-                    : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
-                )}
-              >
-                أصول القراءات
-              </button>
+      {/* 2. Main Responsive Layout on Desktop */}
+      {kind === 'usul' && (isHamzahCategory(categoryCode) || isImalahCategory(categoryCode)) ? (
+        <div className="mt-2 space-y-2">
+          {/* Kind Toggle & Performance status in one compact header row */}
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)]/40 px-2.5 py-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-[var(--color-ink)]">نوع الموضع:</span>
+              <div className="inline-flex rounded-md border border-[var(--color-border)] bg-[var(--color-surface-2)] p-0.5">
+                <button
+                  type="button"
+                  onClick={() => setKind('farsh')}
+                  className={cn(
+                    'rounded px-2.5 py-0.5 text-xs font-bold transition-all',
+                    (kind as string) === 'farsh' ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs' : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                  )}
+                >
+                  فرش الحروف
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setKind('usul')}
+                  className={cn(
+                    'rounded px-2.5 py-0.5 text-xs font-bold transition-all',
+                    (kind as string) === 'usul' ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs' : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                  )}
+                >
+                  أصول القراءات
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* Sub-Editor Container */}
-          <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-2xs">
-            {kind === 'usul' ? (
-              <UsulRuleGrid
-                selectedCategoryCode={categoryCode}
-                onSelectCategory={setCategoryCode}
-                readingText={readingText}
-                onChangeReadingText={setReadingText}
-                rulingText={rulingText}
-                onChangeRulingText={setRulingText}
-                availableCategories={page.categories}
-                appliesWasl={appliesWasl}
-                onChangeAppliesWasl={setAppliesWasl}
-                appliesWaqf={appliesWaqf}
-                onChangeAppliesWaqf={setAppliesWaqf}
-                narrators={narrators}
-                onChangeNarrators={setNarrators}
-                hamzahDetail={hamzahDetail}
-                onChangeHamzahDetail={setHamzahDetail}
-                disabled={isSaving}
-              />
-            ) : (
-              <FarshFields
-                readingText={readingText}
-                onChangeReadingText={setReadingText}
-                variantType={variantType}
-                onChangeVariantType={setVariantType}
-                description={description}
-                onChangeDescription={setDescription}
-                performanceNote={performanceNote}
-                onChangePerformanceNote={setPerformanceNote}
-              />
-            )}
-          </div>
-
-          {/* Wasl/Waqf applicability (feature 5) */}
-          <div className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-2">
-            <span className="text-[11px] font-bold text-[var(--color-ink)]">حالة الأداء:</span>
-            <div className="flex gap-1.5">
+            {/* Wasl / Waqf Quick Badges */}
+            <div className="flex items-center gap-1.5 text-xs">
+              <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">حالة الأداء:</span>
               <button
                 type="button"
                 aria-pressed={appliesWasl}
                 disabled={isSaving}
                 onClick={() => {
-                  // Never allow both to end up unchecked.
                   if (appliesWasl && !appliesWaqf) return
                   setAppliesWasl((v) => !v)
                 }}
                 className={cn(
-                  'rounded-md border px-2.5 py-0.5 text-[11px] font-bold',
+                  'rounded px-2 py-0.5 text-xs font-bold border transition-all',
                   appliesWasl ? 'border-green-600 bg-green-50 text-green-800' : 'border-[var(--color-border)] text-[var(--color-ink-muted)]'
                 )}
               >
@@ -653,7 +613,7 @@ export default function ReviewEditorPane({
                   setAppliesWaqf((v) => !v)
                 }}
                 className={cn(
-                  'rounded-md border px-2.5 py-0.5 text-[11px] font-bold',
+                  'rounded px-2 py-0.5 text-xs font-bold border transition-all',
                   appliesWaqf ? 'border-green-600 bg-green-50 text-green-800' : 'border-[var(--color-border)] text-[var(--color-ink-muted)]'
                 )}
               >
@@ -661,17 +621,146 @@ export default function ReviewEditorPane({
               </button>
             </div>
           </div>
-        </div>
 
-        {/* Column 2: Reader and Narrator Selector Grid */}
-        <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-2xs">
-          <ReaderNarratorSelector
-            narrators={narrators}
-            onChange={setNarrators}
-            disabled={isSaving}
-          />
+          {/* Specialized Usul Builder (Hamzah or Imalah) */}
+          <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 shadow-2xs">
+            <UsulRuleGrid
+              selectedCategoryCode={categoryCode}
+              onSelectCategory={setCategoryCode}
+              readingText={readingText}
+              onChangeReadingText={setReadingText}
+              rulingText={rulingText}
+              onChangeRulingText={setRulingText}
+              availableCategories={page.categories}
+              appliesWasl={appliesWasl}
+              onChangeAppliesWasl={setAppliesWasl}
+              appliesWaqf={appliesWaqf}
+              onChangeAppliesWaqf={setAppliesWaqf}
+              narrators={narrators}
+              onChangeNarrators={setNarrators}
+              hamzahDetail={hamzahDetail}
+              onChangeHamzahDetail={setHamzahDetail}
+              disabled={isSaving}
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="mt-2.5 grid grid-cols-1 md:grid-cols-2 gap-2.5 items-start">
+          {/* Column 1: Kind Toggle + Sub-editor (Farsh / standard Usul) */}
+          <div className="space-y-2">
+            <div className="space-y-1">
+              <label className="text-xs font-bold text-[var(--color-ink)]">نوع الموضع:</label>
+              <div className="grid grid-cols-2 gap-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] p-0.5">
+                <button
+                  type="button"
+                  onClick={() => setKind('farsh')}
+                  className={cn(
+                    'rounded-md py-1 text-xs font-bold transition-all',
+                    kind === 'farsh'
+                      ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
+                      : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                  )}
+                >
+                  فرش الحروف
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setKind('usul')}
+                  className={cn(
+                    'rounded-md py-1 text-xs font-bold transition-all',
+                    kind === 'usul'
+                      ? 'bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs'
+                      : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                  )}
+                >
+                  أصول القراءات
+                </button>
+              </div>
+            </div>
+
+            {/* Sub-Editor Container */}
+            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 shadow-2xs">
+              {kind === 'usul' ? (
+                <UsulRuleGrid
+                  selectedCategoryCode={categoryCode}
+                  onSelectCategory={setCategoryCode}
+                  readingText={readingText}
+                  onChangeReadingText={setReadingText}
+                  rulingText={rulingText}
+                  onChangeRulingText={setRulingText}
+                  availableCategories={page.categories}
+                  appliesWasl={appliesWasl}
+                  onChangeAppliesWasl={setAppliesWasl}
+                  appliesWaqf={appliesWaqf}
+                  onChangeAppliesWaqf={setAppliesWaqf}
+                  narrators={narrators}
+                  onChangeNarrators={setNarrators}
+                  hamzahDetail={hamzahDetail}
+                  onChangeHamzahDetail={setHamzahDetail}
+                  disabled={isSaving}
+                />
+              ) : (
+                <FarshFields
+                  readingText={readingText}
+                  onChangeReadingText={setReadingText}
+                  variantType={variantType}
+                  onChangeVariantType={setVariantType}
+                  description={description}
+                  onChangeDescription={setDescription}
+                  performanceNote={performanceNote}
+                  onChangePerformanceNote={setPerformanceNote}
+                />
+              )}
+            </div>
+
+            {/* Wasl/Waqf applicability */}
+            <div className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-1.5">
+              <span className="text-[11px] font-bold text-[var(--color-ink)]">حالة الأداء:</span>
+              <div className="flex gap-1.5">
+                <button
+                  type="button"
+                  aria-pressed={appliesWasl}
+                  disabled={isSaving}
+                  onClick={() => {
+                    if (appliesWasl && !appliesWaqf) return
+                    setAppliesWasl((v) => !v)
+                  }}
+                  className={cn(
+                    'rounded px-2.5 py-0.5 text-[11px] font-bold border',
+                    appliesWasl ? 'border-green-600 bg-green-50 text-green-800' : 'border-[var(--color-border)] text-[var(--color-ink-muted)]'
+                  )}
+                >
+                  {appliesWasl ? '✓ ' : ''}الوصل
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={appliesWaqf}
+                  disabled={isSaving}
+                  onClick={() => {
+                    if (appliesWaqf && !appliesWasl) return
+                    setAppliesWaqf((v) => !v)
+                  }}
+                  className={cn(
+                    'rounded px-2.5 py-0.5 text-[11px] font-bold border',
+                    appliesWaqf ? 'border-green-600 bg-green-50 text-green-800' : 'border-[var(--color-border)] text-[var(--color-ink-muted)]'
+                  )}
+                >
+                  {appliesWaqf ? '✓ ' : ''}الوقف
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2: Reader and Narrator Selector Grid */}
+          <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 shadow-2xs">
+            <ReaderNarratorSelector
+              narrators={narrators}
+              onChange={setNarrators}
+              disabled={isSaving}
+            />
+          </div>
+        </div>
+      )}
     </aside>
   )
 }

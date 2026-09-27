@@ -3,6 +3,7 @@ import test from 'node:test'
 
 import {
   mapReviewDatabaseError,
+  toDbVariantType,
   validateGetQuery,
   validatePatchBody,
   validatePostBody,
@@ -338,3 +339,51 @@ test('mapReviewDatabaseError is case-insensitive for prefixes and hides unknown 
     body: { error: 'Qiraat review data is unavailable' },
   })
 })
+
+test('toDbVariantType normalizes Arabic codes, English names, and unknown values', () => {
+  assert.equal(toDbVariantType('تشكيل'), 'vowel')
+  assert.equal(toDbVariantType('حرف'), 'consonant')
+  assert.equal(toDbVariantType('زيادة'), 'addition')
+  assert.equal(toDbVariantType('حذف'), 'omission')
+  assert.equal(toDbVariantType('تقديم وتأخير'), 'word_form')
+  assert.equal(toDbVariantType('أخرى'), 'other')
+  assert.equal(toDbVariantType('HARAKAH'), 'vowel')
+  assert.equal(toDbVariantType('unknown_something'), 'other')
+  assert.equal(toDbVariantType(null), 'other')
+})
+
+test('validatePostBody normalizes Arabic variantType on create to valid database enum', () => {
+  const result = validatePostBody({
+    action: 'create',
+    deviceId: 'device-1',
+    entry: {
+      surah: 2,
+      ayah: 6,
+      startWord: 1,
+      kind: 'farsh',
+      readingText: 'أَنَّ',
+      variantType: 'تشكيل',
+      narrators: [{ id: 'Q01-R01' }],
+    },
+  })
+  assert.equal(result.ok, true)
+  if (result.ok && result.value.action === 'create') {
+    assert.equal(result.value.entry.variantType, 'vowel')
+  }
+})
+
+test('validatePatchBody normalizes Arabic variantType on update to valid database enum', () => {
+  const result = validatePatchBody({
+    action: 'update',
+    entryId: 'entry-1',
+    version: 'opaque-v',
+    fields: {
+      variantType: 'حرف',
+    },
+  })
+  assert.equal(result.ok, true)
+  if (result.ok && result.value.action === 'update') {
+    assert.equal(result.value.fields.variantType, 'consonant')
+  }
+})
+

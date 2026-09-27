@@ -278,33 +278,33 @@ export default function ReviewMushafPane({
       dir="rtl"
       aria-label="مصحف المدينة — لوحة المراجعة"
       className={cn(
-        'flex min-w-0 flex-1 flex-col items-center justify-start overflow-y-auto bg-[var(--color-paper)]',
-        isMobile ? 'p-1 sm:p-2 pb-20' : 'p-3 sm:p-6'
+        'flex min-w-0 w-full flex-1 flex-col items-center justify-start overflow-y-auto bg-[var(--color-paper)]',
+        isMobile ? 'p-1 sm:p-2 pb-20' : 'p-1.5 sm:p-2'
       )}
     >
       {/* Top page info strip on desktop */}
       {!isMobile ? (
-        <div className="mb-3 flex w-full max-w-[720px] items-center justify-between px-2 text-xs font-bold text-[var(--color-ink-muted)]">
-          <div className="flex items-center gap-2">
-            <span>الجزء {metadata?.juzNumber ?? '—'}</span>
+        <div className="mb-2 flex w-full items-center justify-between px-1 text-[10px] sm:text-[11px] font-bold text-[var(--color-ink-muted)]">
+          <div className="flex items-center gap-1.5 truncate">
+            <span>جـ {metadata?.juzNumber ?? '—'}</span>
             <span>·</span>
-            <span>الحزب {metadata?.hizbNumber ?? '—'}</span>
+            <span>حـ {metadata?.hizbNumber ?? '—'}</span>
             {metadata?.surahNames && metadata.surahNames.length > 0 ? (
               <>
                 <span>·</span>
-                <span className="text-[var(--color-ink)]">سورة {metadata.surahNames.join('، ')}</span>
+                <span className="text-[var(--color-ink)] truncate">سورة {metadata.surahNames.join('، ')}</span>
               </>
             ) : null}
           </div>
-          <div className="flex items-center gap-2">
-            <span className="rounded-full bg-[#fef3c7] px-2 py-0.5 text-[11px] text-[#92400e]">
+          <div className="flex items-center gap-1 shrink-0">
+            <span className="rounded-full bg-[#fef3c7] px-1.5 py-0.5 text-[10px] text-[#92400e]">
               غير مراجَع: {page.stats.unreviewed}
             </span>
-            <span className="rounded-full bg-[#dcfce7] px-2 py-0.5 text-[11px] text-[#166534]">
+            <span className="rounded-full bg-[#dcfce7] px-1.5 py-0.5 text-[10px] text-[#166534]">
               مُراجَع: {page.stats.reviewed}
             </span>
             {page.stats.flagged > 0 ? (
-              <span className="rounded-full bg-[#fee2e2] px-2 py-0.5 text-[11px] text-[#991b1b]">
+              <span className="rounded-full bg-[#fee2e2] px-1.5 py-0.5 text-[10px] text-[#991b1b]">
                 معلَّم: {page.stats.flagged}
               </span>
             ) : null}
@@ -316,8 +316,8 @@ export default function ReviewMushafPane({
       <div
         className="relative select-none overflow-hidden rounded-[10px] border border-[#d8c9a3] bg-[#fbf7ee] shadow-lg transition-all"
         style={{
-          width: zoom && zoom > 1 ? `${zoom * 100}%` : 'min(100%, 720px)',
-          maxWidth: zoom && zoom > 1 ? `${Math.round(zoom * 720)}px` : '720px',
+          width: zoom && zoom > 1 ? `${zoom * 100}%` : '100%',
+          maxWidth: zoom && zoom > 1 ? `${Math.round(zoom * 720)}px` : '100%',
           aspectRatio: '1994 / 2850',
           containerType: 'inline-size',
         }}

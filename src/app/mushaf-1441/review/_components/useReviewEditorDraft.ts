@@ -12,6 +12,7 @@ import type {
   SameWordMatch,
 } from '../_lib/types'
 import { isHamzahCategory } from './HamzahDetailFields'
+import { normalizeVariantType } from './FarshFields'
 import * as reviewApi from '../_lib/api'
 
 export type WordMeta = {
@@ -124,7 +125,7 @@ export function useReviewEditorDraft({
       const nextKind = selectedRow.kind
       const nextCategoryCode = selectedRow.categoryCode
       const nextReadingText = selectedRow.readingText ?? selectedRow.hafsText ?? ''
-      const nextVariantType = selectedRow.variantType
+      const nextVariantType = selectedRow.variantType ? normalizeVariantType(selectedRow.variantType) : null
       const nextRulingText = selectedRow.rulingText
       const nextDescription = selectedRow.description
       const nextPerformanceNote = selectedRow.performanceNote
@@ -172,7 +173,7 @@ export function useReviewEditorDraft({
       const nextKind = newEntryDraft.kind
       const nextCategoryCode = newEntryDraft.categoryCode ?? null
       const nextReadingText = newEntryDraft.readingText ?? newEntryDraft.uthmaniText ?? ''
-      const nextVariantType = newEntryDraft.variantType ?? 'تشكيل'
+      const nextVariantType = newEntryDraft.variantType ? normalizeVariantType(newEntryDraft.variantType) : 'vowel'
       const nextRulingText = newEntryDraft.rulingText ?? null
       const nextDescription = newEntryDraft.description ?? null
       const nextPerformanceNote = newEntryDraft.performanceNote ?? null
@@ -270,7 +271,7 @@ export function useReviewEditorDraft({
       ...(isFarsh
         ? {
             readingText: readingText.trim(),
-            variantType: variantType || undefined,
+            variantType: variantType ? normalizeVariantType(variantType) : undefined,
             description: description?.trim() || null,
             performanceNote: performanceNote?.trim() || null,
           }
@@ -311,7 +312,7 @@ export function useReviewEditorDraft({
       kind,
       readingText: readingText.trim() || undefined,
       categoryCode: kind === 'usul' && categoryCode ? categoryCode : undefined,
-      variantType: kind === 'farsh' && variantType ? variantType : undefined,
+      variantType: kind === 'farsh' && variantType ? normalizeVariantType(variantType) : undefined,
       rulingText: kind === 'usul' ? rulingText?.trim() || null : null,
       description: description?.trim() || null,
       performanceNote: performanceNote?.trim() || null,
