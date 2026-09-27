@@ -38,6 +38,15 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-27 — Add Tahqiq, Naql, and Ibdal to Usul Categories in 2-Column Grid
+- **Feature & Scholarly Taxonomy**:
+  - Added **تحقيق** (`USUL_TAHQIQ`), **النقل** (`USUL_NAQL`), and **الإبدال** (`USUL_IBDAL`) to Usul categories list, positioned prominently at the top with sort orders 15, 16, and 17.
+  - Reorganized the Usul category selection container into a balanced **2-column grid** (`grid-cols-2`) in both `UsulRuleGrid.tsx` and `ReviewEditorPane.tsx`, eliminating vertical page scrolling and keeping the entire rule picker compact within the 75% editor pane.
+  - Enhanced category search with Arabic text normalization (`normalizeArabic` from `@/lib/arabic`), allowing flexible 1-tap filtering regardless of alef wasla or hamza variations (e.g., `الابدال` vs `الإبدال`, `تحقيق`, `نقل`).
+  - Added category definitions and aliases to `packages/qiraat-core/ingest/classify.ts` and created database migration `supabase/migrations/20260927120000_add_tahqiq_ibdal_categories.sql`.
+- **Verification**: `npm run typecheck` (0 errors), `npm run test:qiraat:review` (34/34 passed), `npm run test:qiraat` (45/45 passed + frontend validation clean).
+- **Files**: `supabase/migrations/20260927120000_add_tahqiq_ibdal_categories.sql`, `packages/qiraat-core/ingest/classify.ts`, `src/app/mushaf-1441/review/_components/{ReviewEditorPane.tsx,UsulRuleGrid.tsx}`, `tests/qiraat/review-workstation.test.ts`.
+
 ## 2026-09-27 — Qira’at Review Workstation Compact 3-Column No-Scroll Layout & Multi-Face Production Deploy
 - **Feature & UI Architecture**:
   - Redesigned `/mushaf-1441/review` desktop editor workspace (75% editor / 25% Mushaf split) into a balanced, side-by-side **3-box layout** eliminating vertical scrolling across standard desktop viewports (700px–900px):

@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import type { HamzahDetail, NarratorInput } from '../_lib/types'
 import { cn } from '@/lib/cn'
+import { normalizeArabic } from '@/lib/arabic'
 import ImalahDetailFields, { isImalahCategory } from './ImalahDetailFields'
 import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
 
@@ -12,6 +13,9 @@ export interface CategoryOption {
 }
 
 export const FALLBACK_USUL_CATEGORIES: readonly CategoryOption[] = [
+  { code: 'USUL_TAHQIQ', nameAr: 'تحقيق' },
+  { code: 'USUL_NAQL', nameAr: 'النقل' },
+  { code: 'USUL_IBDAL', nameAr: 'الإبدال' },
   { code: 'SILAT_HA', nameAr: 'صلة هاء الكناية' },
   { code: 'TARQIQ_RA', nameAr: 'ترقيق الراءات' },
   { code: 'TAGHLIZ_LAM', nameAr: 'تغليظ اللامات' },
@@ -33,7 +37,6 @@ export const FALLBACK_USUL_CATEGORIES: readonly CategoryOption[] = [
   { code: 'MADD_QABL_IDGHAM', nameAr: 'المد قبل الإدغام الكبير' },
   { code: 'USUL_MADD', nameAr: 'أصول المد' },
   { code: 'USUL_MIM_JAM', nameAr: 'ميم الجمع' },
-  { code: 'USUL_NAQL', nameAr: 'النقل' },
   { code: 'USUL_SAKT', nameAr: 'السكت' },
 ]
 
@@ -89,9 +92,15 @@ export default function UsulRuleGrid({
   }, [categories, selectedCategoryCode])
 
   const filteredCategories = useMemo(() => {
-    const q = filterQuery.trim().toLowerCase()
+    const q = filterQuery.trim()
     if (!q) return categories
-    return categories.filter((c) => c.nameAr.includes(q) || c.code.toLowerCase().includes(q))
+    const normQ = normalizeArabic(q).toLowerCase()
+    return categories.filter(
+      (c) =>
+        c.nameAr.includes(q) ||
+        normalizeArabic(c.nameAr).toLowerCase().includes(normQ) ||
+        c.code.toLowerCase().includes(q.toLowerCase())
+    )
   }, [categories, filterQuery])
 
   return (
@@ -162,7 +171,7 @@ export default function UsulRuleGrid({
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 max-h-32 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
+          <div className="grid grid-cols-2 gap-1 max-h-48 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
             {filteredCategories.map((category) => {
               const isSelected = selectedCategoryCode === category.code
               return (

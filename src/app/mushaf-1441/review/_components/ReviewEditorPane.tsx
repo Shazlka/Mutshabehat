@@ -23,6 +23,7 @@ import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
 import { isImalahCategory } from './ImalahDetailFields'
 import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
+import { normalizeArabic } from '@/lib/arabic'
 import * as reviewApi from '../_lib/api'
 
 import { useReviewEditorDraft } from './useReviewEditorDraft'
@@ -169,9 +170,15 @@ export default function ReviewEditorPane({
   }, [categories, categoryCode])
 
   const filteredCategories = useMemo(() => {
-    const q = usulSearchQuery.trim().toLowerCase()
+    const q = usulSearchQuery.trim()
     if (!q) return categories
-    return categories.filter((c) => c.nameAr.includes(q) || c.code.toLowerCase().includes(q))
+    const normQ = normalizeArabic(q).toLowerCase()
+    return categories.filter(
+      (c) =>
+        c.nameAr.includes(q) ||
+        normalizeArabic(c.nameAr).toLowerCase().includes(normQ) ||
+        c.code.toLowerCase().includes(q.toLowerCase())
+    )
   }, [categories, usulSearchQuery])
 
   const surahName = currentSurahNumber
@@ -753,7 +760,7 @@ export default function ReviewEditorPane({
                         placeholder="بحث في الأبواب..."
                         className="h-6 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 text-[11px] text-[var(--color-ink)] focus:ring-1 focus:ring-[var(--color-primary)]"
                       />
-                      <div className="grid grid-cols-1 gap-1 max-h-36 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
+                      <div className="grid grid-cols-2 gap-1 max-h-48 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
                         {filteredCategories.map((c) => {
                           const isSel = categoryCode === c.code
                           return (
