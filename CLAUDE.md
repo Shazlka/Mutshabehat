@@ -38,6 +38,23 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-27 — Qira’at Review Workstation Compact 3-Column No-Scroll Layout & Multi-Face Production Deploy
+- **Feature & UI Architecture**:
+  - Redesigned `/mushaf-1441/review` desktop editor workspace (75% editor / 25% Mushaf split) into a balanced, side-by-side **3-box layout** eliminating vertical scrolling across standard desktop viewports (700px–900px):
+    - **Box 1 (Column 1 — نوع الموضع والضابط وحالة الأداء)**: Compact segmented toggle between Farsh and Usul, canonical variant type chips (`CANONICAL_VARIANT_TYPES`: تشكيل، حرف، زيادة، حذف، تقديم وتأخير، أخرى) in Farsh mode, searchable Usul category badge in Usul mode, and Wasl/Waqf performance toggles (`✓ الوصل`, `✓ الوقف`).
+    - **Box 2 (Column 2 — نص القراءة والبيان والملاحظات)**: Prominent Uthmani Quran font input for word variant, with compact inputs for description (`بيان الفرق`) and performance note (`ملاحظة الأداء`) in Farsh, or ruling text (`بيان الحكم أو الضابط`) in Usul.
+    - **Box 3 (Column 3 — القراء والرواة والأوجه)**: Compact 10-reader grid in 2 columns with 1-click presets toolbar (`الكل`, `السبعة`, `الثلاثة`, `الكوفيون`, `المدنيان`, `مسح`), Hafs D8 rule box, and live scrollable Registered Faces / Wajh Manager (`max-h-36`).
+  - Redesigned specialized Usul builders (`HamzahDetailFields.tsx` and `ImalahDetailFields.tsx`) into matching 3-column side-by-side grids (Step 1: Who → Step 2: How & Add Face → Step 3: Registered Faces Manager).
+  - Condensed the top header strip (Hafs word ﴿...﴾, surah/ayah/word metadata, status badge, and action buttons `✓ اعتماد`, `⚑`, `حفظ`, `🗑`, `تطبيق على جميع المواضع`) and multiple variants switcher into tight single rows.
+  - Fixed database enum mapping bug where Arabic variant type strings caused `invalid input value for enum qiraat_variant_type` on inserting new entries by normalizing all input types via `toDbVariantType` before PostgreSQL execution.
+  - Enabled adding multiple faces for the same reader or narrator (`+ وجه آخر للراوي` / `+ وجه آخر للقارئ`) with automatic sequential wajh ordering.
+- **Verification & Deployment**:
+  - `npm run typecheck` (0 errors).
+  - `npm run test:qiraat:review` (34/34 passed).
+  - `npm run test:qiraat` (45/45 passed + full frontend validation green).
+  - Production deployment verified live at `https://mutshabehat-v2.vercel.app/mushaf-1441/review` via headless Playwright browser test (0 console errors, 0 page errors, 72 interactive words verified).
+- **Files**: `src/app/mushaf-1441/review/_components/{HamzahDetailFields.tsx,ImalahDetailFields.tsx,ReaderNarratorSelector.tsx,ReviewEditorPane.tsx,UsulRuleGrid.tsx,FarshFields.tsx}`, `tests/qiraat/review-workstation.test.ts`.
+
 ## 2026-09-26 — Hamzatān Structured Faces Builder & Mushaf Reader Rollup Attribution
 - **Feature 1 (Hamzatān & Hamzah Structured Faces Builder)**:
   - Transformed "الهمزتان من كلمة واحدة" (`HAMZATAN_KALIMA`), "الهمزتان من كلمتين" (`HAMZATAN_KALIMATAYN`), and "تغيير الهمز المفرد" (`TAGHYIR_HAMZ`) into a complete structured faces builder mirroring `ImalahDetailFields` in `/mushaf-1441/review`.
