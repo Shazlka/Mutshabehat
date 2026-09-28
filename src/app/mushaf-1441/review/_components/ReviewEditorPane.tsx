@@ -37,7 +37,6 @@ import {
   resolveDifferenceGroups,
   type NquranAyahEntry,
   type NquranDecisionStatus,
-  type NquranDifference,
   type ResolvedNquranGroup,
 } from '../_lib/nquranReference'
 
@@ -233,45 +232,33 @@ export default function ReviewEditorPane({
     return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text) }
   }, [selectedWordMeta, nquranEntries])
 
-  // "Add to editor": clicking a resolved nquran.com group always starts a brand-new face for the
-  // currently selected word (never overwrites whatever row/draft happens to be open), pre-filled
-  // with that group's narrators and its reading description. `onStartNewEntry` replaces the
-  // parent's `newEntryDraft` with a fresh object every time it's called (even to the same word),
-  // so the pending apply below fires off that object's identity change rather than off `kind`,
-  // which the sibling sync effect inside useReviewEditorDraft hasn't necessarily updated yet in
-  // the same tick.
-  const [pendingNquranApply, setPendingNquranApply] = useState<{
-    resolved: ResolvedNquranGroup
-    difference: NquranDifference
-  } | null>(null)
+  // "Add to editor": clicking a resolved nquran.com group creates and SAVES a brand-new face for
+  // the currently selected word directly -- via the same `onCreateNewEntry` (qiraat_review_create_
+  // entry RPC) path every other save in this editor goes through -- pre-filled with that group's
+  // narrators and its reading description. It never touches `newEntryDraft`/`onStartNewEntry` or
+  // whatever row is currently open, so it can never overwrite an already-reviewed entry's data or
+  // a still-unsaved edit the reviewer was mid-way through; the created row shows up in "٣. الأوجه
+  // المسجلة" the moment `onCreateNewEntry` resolves, the same way every other new face does.
+  const [nquranSavingKey, setNquranSavingKey] = useState<string | null>(null)
   const [nquranAppliedKey, setNquranAppliedKey] = useState<string | null>(null)
 
-  // This MUST stay an effect (not a render-time adjustment) so it runs after
-  // useReviewEditorDraft's own `[newEntryDraft]` sync effect within the same post-commit flush --
-  // that sibling effect resets narrators/rulingText/description to the fresh (empty) draft's own
-  // values, and effects registered earlier in the same component run first, so this one applying
-  // second is what makes the override actually stick.
-  /* eslint-disable react-hooks/set-state-in-effect */
-  useEffect(() => {
-    if (!newEntryDraft || !pendingNquranApply) return
-    const { resolved, difference } = pendingNquranApply
-    setNarrators(resolved.narratorIds.map((id) => ({ id, action: null, wajhOrder: 1, wajhNote: null })))
-    if (newEntryDraft.kind === 'usul') {
-      setRulingText(`${difference.location}: ${resolved.group.reading}`)
-    } else {
-      setDescription(resolved.group.reading)
-    }
-    setPendingNquranApply(null)
-    // Only the arrival of a fresh newEntryDraft (from onStartNewEntry below) should fire this --
-    // not every keystroke in the fields it just populated.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newEntryDraft])
-  /* eslint-enable react-hooks/set-state-in-effect */
-
-  function handleApplyNquranGroup(resolved: ResolvedNquranGroup, difference: NquranDifference, badgeKey: string) {
+  async function handleApplyNquranGroup(resolved: ResolvedNquranGroup, badgeKey: string) {
     if (resolved.narratorIds.length === 0 || !selectedWordMeta) return
-    setPendingNquranApply({ resolved, difference })
-    onStartNewEntry(selectedWordMeta)
+    setNquranSavingKey(badgeKey)
+    try {
+      await onCreateNewEntry({
+        surah: selectedWordMeta.surah,
+        ayah: selectedWordMeta.ayah,
+        startWord: selectedWordMeta.word,
+        kind: 'farsh',
+        readingText: selectedWordMeta.text,
+        uthmaniText: selectedWordMeta.text,
+        description: resolved.group.reading,
+        narrators: resolved.narratorIds.map((id) => ({ id, action: null, wajhOrder: 1, wajhNote: null })),
+      })
+    } finally {
+      setNquranSavingKey((k) => (k === badgeKey ? null : k))
+    }
     setNquranAppliedKey(badgeKey)
     window.setTimeout(() => setNquranAppliedKey((k) => (k === badgeKey ? null : k)), 2000)
   }
@@ -1138,12 +1125,16 @@ export default function ReviewEditorPane({
                                   {canApply ? (
                                     <button
                                       type="button"
-                                      disabled={isSaving}
-                                      onClick={() => handleApplyNquranGroup(resolved, difference, badgeKey)}
-                                      title="ينشئ وجهًا جديدًا لهذه الكلمة بهذا القارئ/الراوي والبيان، دون حفظ"
+                                      disabled={isSaving || nquranSavingKey === badgeKey}
+                                      onClick={() => void handleApplyNquranGroup(resolved, badgeKey)}
+                                      title="ينشئ وجهًا جديدًا لهذه الكلمة بهذا القارئ/الراوي والبيان ويحفظه في قاعدة البيانات فورًا"
                                       className="rounded border border-amber-500 bg-white px-1 py-px text-[9px] font-bold text-amber-800 hover:bg-amber-100 disabled:opacity-50 dark:bg-transparent dark:text-amber-300"
                                     >
-                                      {nquranAppliedKey === badgeKey ? '✓ أُضيف' : '➕ إضافة كوجه'}
+                                      {nquranSavingKey === badgeKey
+                                        ? '… جارٍ الحفظ'
+                                        : nquranAppliedKey === badgeKey
+                                          ? '✓ أُضيف وحُفظ'
+                                          : '➕ إضافة كوجه'}
                                     </button>
                                   ) : null}
                                 </div>
