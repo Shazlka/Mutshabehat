@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, memo, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, memo, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import ReactDOM from 'react-dom'
 import Link from 'next/link'
 import PageCurlOverlay, { type PageCurlHandle, type PageCurlRect } from './PageCurlOverlay'
@@ -12,9 +12,10 @@ import type {
   MushafWord,
 } from '../../../../packages/quran-data/mushaf1441/types'
 import { MUSHAF_1441_PAGE_COUNT } from '../../../../packages/quran-data/mushaf1441/constants'
-import type {
-  Mushaf1441PageMetadata,
-  Mushaf1441SurahOption,
+import {
+  getMushaf1441PageMetadata,
+  type Mushaf1441PageMetadata,
+  type Mushaf1441SurahOption,
 } from '../../../../packages/quran-data/mushaf1441/pageMetadata'
 import {
   getHighlightsForPage,
@@ -4996,11 +4997,17 @@ export default function Mushaf1441Viewer({
       {qiraatEditorWord ? <div className={qiraatEditorDesktop ? 'flex min-h-0 w-[60%] min-w-0 shrink-0' : 'contents'}>{renderQiraatEditor(qiraatEditorDesktop)}</div> : null}
       </div>
 
-      {/* Bottom quick page slider — preview page + surah while dragging, navigate on release */}
+      {/* Bottom quick page slider — preview page + surah/juz/hizb while dragging, navigate on
+          release. The thumb is drawn explicitly via CSS variable + ::-webkit-/::-moz- pseudo
+          rules (see below) rather than the `accentColor` inline style: once a thumb pseudo gets
+          `appearance-none` (required to size/round it consistently), desktop WebKit/Blink/Firefox
+          all stop honouring `accent-color` on it, so with no explicit fill the handle renders
+          fully transparent -- invisible, though still draggable. That is the bug this fixes. */}
       {(() => {
         const sliderValue = pageSliderPreview ?? pageNumber
         const previewSurah = surahStartForPage(sliderValue)
         const previewName = previewSurah?.name ?? ''
+        const previewMeta = getMushaf1441PageMetadata(sliderValue)
         // RTL slider: page 1 sits on the right, the last page on the left.
         const leftPct = 100 - ((sliderValue - 1) / (MUSHAF_1441_PAGE_COUNT - 1)) * 100
         const commit = () => {
@@ -5016,11 +5023,14 @@ export default function Mushaf1441Viewer({
           >
             {pageSliderPreview !== null ? (
               <div
-                className={`pointer-events-none absolute -top-12 z-50 -translate-x-1/2 rounded-xl border px-4 py-2 text-center shadow-[0_10px_30px_rgba(0,0,0,0.3)] ${currentThemeTokens.sliderPreviewClass}`}
-                style={{ left: `clamp(60px, ${leftPct}%, calc(100% - 60px))` }}
+                className={`pointer-events-none absolute -top-16 z-50 -translate-x-1/2 rounded-xl border px-4 py-2 text-center shadow-[0_10px_30px_rgba(0,0,0,0.3)] ${currentThemeTokens.sliderPreviewClass}`}
+                style={{ left: `clamp(70px, ${leftPct}%, calc(100% - 70px))` }}
               >
                 <p className={`text-base font-black tabular-nums ${currentThemeTokens.sliderPreviewTextClass}`}>ص {sliderValue}</p>
                 <p className={`text-[10px] font-bold ${currentThemeTokens.sliderPreviewSubClass}`}>{previewName}</p>
+                <p className={`tabular-nums text-[10px] font-bold ${currentThemeTokens.sliderPreviewSubClass}`}>
+                  الجزء {previewMeta?.juzNumber ?? '—'} · الحزب {previewMeta?.hizbNumber ?? '—'}
+                </p>
               </div>
             ) : null}
             <span className={`w-24 shrink-0 truncate text-xs font-black ${currentThemeTokens.sliderTextClass}`}>
@@ -5039,8 +5049,14 @@ export default function Mushaf1441Viewer({
               onPointerCancel={() => setPageSliderPreview(null)}
               onKeyUp={commit}
               onBlur={() => setPageSliderPreview(null)}
-              className={`h-3 flex-1 cursor-pointer appearance-none rounded-full ${currentThemeTokens.sliderTrackClass} [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full`}
-              style={{ accentColor: currentThemeTokens.sliderThumbColor }}
+              className={`h-3 flex-1 cursor-pointer appearance-none rounded-full ${currentThemeTokens.sliderTrackClass}
+                [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:rounded-full
+                [&::-webkit-slider-thumb]:bg-[var(--slider-thumb-color)] [&::-webkit-slider-thumb]:border-[3px] [&::-webkit-slider-thumb]:border-white
+                [&::-webkit-slider-thumb]:shadow-[0_1px_5px_rgba(0,0,0,0.45)] [&::-webkit-slider-thumb]:cursor-pointer
+                [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:size-6 [&::-moz-range-thumb]:rounded-full
+                [&::-moz-range-thumb]:bg-[var(--slider-thumb-color)] [&::-moz-range-thumb]:border-[3px] [&::-moz-range-thumb]:border-white
+                [&::-moz-range-thumb]:shadow-[0_1px_5px_rgba(0,0,0,0.45)] [&::-moz-range-thumb]:cursor-pointer`}
+              style={{ '--slider-thumb-color': currentThemeTokens.sliderThumbColor } as CSSProperties}
             />
           </div>
         )
