@@ -28,6 +28,13 @@ import * as reviewApi from '../_lib/api'
 import { describeNarratorGroup } from './narratorDisplay'
 import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
+import {
+  findNquranEntryForAyah,
+  hasNquranReferenceForSurah,
+  loadNquranBaqarahReference,
+  rankDifferencesForWord,
+  type NquranAyahEntry,
+} from '../_lib/nquranReference'
 
 import { useReviewEditorDraft } from './useReviewEditorDraft'
 
@@ -187,6 +194,29 @@ export default function ReviewEditorPane({
 
   const [usulSearchQuery, setUsulSearchQuery] = useState('')
   const [showAllUsulCategories, setShowAllUsulCategories] = useState(false)
+
+  // External reference (nquran.com), currently Baqarah-only -- display only, never written into
+  // any saved field. Lazily loaded so its ~1.6 MB fixture is never in the editor's initial bundle.
+  const [nquranEntries, setNquranEntries] = useState<NquranAyahEntry[] | null>(null)
+  const [nquranPanelOpen, setNquranPanelOpen] = useState(true)
+  useEffect(() => {
+    if (!selectedWordMeta || !hasNquranReferenceForSurah(selectedWordMeta.surah)) return
+    if (nquranEntries) return
+    let cancelled = false
+    loadNquranBaqarahReference().then((entries) => {
+      if (!cancelled) setNquranEntries(entries)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [selectedWordMeta, nquranEntries])
+
+  const nquranRanked = useMemo(() => {
+    if (!selectedWordMeta || !nquranEntries || !hasNquranReferenceForSurah(selectedWordMeta.surah)) return null
+    const entry = findNquranEntryForAyah(nquranEntries, selectedWordMeta.ayah)
+    if (!entry || entry.differences.length === 0) return null
+    return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text) }
+  }, [selectedWordMeta, nquranEntries])
 
   const categories = useMemo(() => {
     if (page.categories && page.categories.length > 0) {
@@ -988,6 +1018,63 @@ export default function ReviewEditorPane({
                 className="mt-1 w-full rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 font-quran text-xl text-[var(--color-ink)] placeholder:font-sans placeholder:text-xs placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]"
               />
             </div>
+
+            {nquranRanked ? (
+              <div className="rounded-lg border border-amber-300 bg-amber-50/60 dark:bg-amber-950/20">
+                <button
+                  type="button"
+                  onClick={() => setNquranPanelOpen((v) => !v)}
+                  className="flex w-full items-center justify-between gap-2 px-2 py-1"
+                >
+                  <span className="text-[11px] font-bold text-amber-900 dark:text-amber-300">
+                    📖 مرجع خارجي (nquran.com) — فروق القراءات في هذه الآية
+                  </span>
+                  <span className="text-[10px] text-amber-800 dark:text-amber-400">
+                    {nquranPanelOpen ? 'إخفاء ▲' : `عرض (${nquranRanked.ranked.length}) ▼`}
+                  </span>
+                </button>
+                {nquranPanelOpen ? (
+                  <div className="flex flex-col gap-1.5 border-t border-amber-200 px-2 pb-2 pt-1.5 max-h-64 overflow-y-auto">
+                    <p className="text-[9px] text-amber-800/80 dark:text-amber-400/80">
+                      مرجع للاطّلاع فقط — غير معتمد تلقائيًا، ولا يُنسخ إلى الحقول أعلاه إلا بمراجعة يدوية.
+                    </p>
+                    {nquranRanked.ranked.map(({ difference, matchesWord }, idx) => (
+                      <div
+                        key={idx}
+                        className={cn(
+                          'rounded-md border p-1.5',
+                          matchesWord
+                            ? 'border-amber-500 bg-amber-100/80 dark:bg-amber-900/30'
+                            : 'border-amber-200/70 bg-white/60 dark:bg-transparent'
+                        )}
+                      >
+                        <p className="font-quran text-base text-[var(--color-ink)]" dir="rtl">
+                          ﴿{difference.location}﴾
+                        </p>
+                        <div className="mt-1 flex flex-col gap-1">
+                          {difference.groups.map((group, gIdx) => (
+                            <div key={gIdx} className="text-[10px] leading-snug">
+                              <span className="font-bold text-amber-900 dark:text-amber-300">
+                                {group.readers.join('، ')}:{' '}
+                              </span>
+                              <span className="text-[var(--color-ink-muted)]">{group.reading}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <a
+                      href={nquranRanked.entry.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="text-[9px] text-amber-700 underline dark:text-amber-500"
+                    >
+                      المصدر: nquran.com ↗
+                    </a>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
 
             {kind === 'farsh' ? (
               <>
