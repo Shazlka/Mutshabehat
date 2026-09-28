@@ -57,6 +57,11 @@ type Props = {
   hamzahDetail?: HamzahDetail | null
   onChangeHamzahDetail?(val: HamzahDetail | null): void
   disabled?: boolean
+  // Feature 2: the two endpoints of an active Ctrl-click span on the Mushaf pane (anchor word +
+  // extended word), so the الهمزتان من كلمتين builder can let the reviewer assign which literal
+  // word carries الهمزة الأولى vs الهمزة الثانية.
+  spanStart?: { key: string; text: string } | null
+  spanEnd?: { key: string; text: string } | null
 }
 
 export default function UsulRuleGrid({
@@ -76,6 +81,8 @@ export default function UsulRuleGrid({
   hamzahDetail,
   onChangeHamzahDetail,
   disabled,
+  spanStart,
+  spanEnd,
 }: Props) {
   const [filterQuery, setFilterQuery] = useState('')
   const [showAllCategories, setShowAllCategories] = useState(!selectedCategoryCode)
@@ -230,6 +237,8 @@ export default function UsulRuleGrid({
           hamzahDetail={hamzahDetail}
           onChangeHamzahDetail={onChangeHamzahDetail}
           disabled={disabled}
+          spanStart={spanStart}
+          spanEnd={spanEnd}
         />
       ) : null}
 

@@ -44,6 +44,10 @@ export type HamzahDetail =
       isqatFirst?: boolean // إسقاط الأولى
       isqatSecond?: boolean // إسقاط الثانية
       ibdalMadd?: boolean // إبدال حرف مد
+      // Which literal Mushaf word (by canonical "SSS:AAA:WWW" key, from a Ctrl-click span on
+      // the review Mushaf pane) carries الهمزة الأولى vs الهمزة الثانية when the two hamzahs sit
+      // in two different words -- distinct from the single-word first/second treatment above.
+      wordKeys?: { first: string; second: string }
     }
 
 export type ReviewRow = {

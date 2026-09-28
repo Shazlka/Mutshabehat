@@ -43,6 +43,9 @@ type Props = {
   selectedRow: ReviewRow | null
   activeRowsForWord: ReviewRow[]
   newEntryDraft: CreateEntryInput | null
+  // Feature 1/2: the second endpoint of an active Ctrl-click span (see ReviewMushafPane).
+  spanEndKey?: string | null
+  spanEndMeta?: WordMeta | null
   onSelectRow(row: ReviewRow): void
   onStartNewEntry(meta: WordMeta): void
   onCancelNewEntry(): void
@@ -69,6 +72,8 @@ export default function ReviewEditorPane({
   selectedRow,
   activeRowsForWord,
   newEntryDraft,
+  spanEndKey = null,
+  spanEndMeta = null,
   onSelectRow,
   onStartNewEntry,
   onCancelNewEntry,
@@ -84,6 +89,20 @@ export default function ReviewEditorPane({
   saveMessage,
   errorMessage,
 }: Props) {
+  // Feature 2: the two spanned words, in canonical-key order, for word-role assignment inside
+  // the الهمزتان من كلمتين builder. `selectedWordKey`/`selectedWordMeta` is the anchor.
+  const spanStart = useMemo(() => {
+    if (!spanEndKey || !spanEndMeta || !selectedWordKey || !selectedWordMeta) return null
+    return selectedWordKey <= spanEndKey
+      ? { key: selectedWordKey, text: selectedWordMeta.text }
+      : { key: spanEndKey, text: spanEndMeta.text }
+  }, [spanEndKey, spanEndMeta, selectedWordKey, selectedWordMeta])
+  const spanEnd = useMemo(() => {
+    if (!spanEndKey || !spanEndMeta || !selectedWordKey || !selectedWordMeta) return null
+    return selectedWordKey <= spanEndKey
+      ? { key: spanEndKey, text: spanEndMeta.text }
+      : { key: selectedWordKey, text: selectedWordMeta.text }
+  }, [spanEndKey, spanEndMeta, selectedWordKey, selectedWordMeta])
   const {
     kind,
     setKind,
@@ -118,6 +137,8 @@ export default function ReviewEditorPane({
     setSelectedForDelete,
     toggleDeleteSelection,
     confirmBulkDelete,
+    deleteAllForWord,
+    activeRowsSummary,
     sameWordOpen,
     setSameWordOpen,
     sameWordLoading,
@@ -367,7 +388,16 @@ export default function ReviewEditorPane({
 
       {/* Multiple Variants Switcher (Compact Single Strip) */}
       {!isAddMode && activeRowsForWord.length > 0 ? (
-        <div className="mt-1 flex flex-wrap items-center justify-between gap-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 px-2 py-1 text-xs">
+        <div className="mt-1 space-y-1">
+          {/* Feature 4: live summary of everything currently recorded for this word,
+              updating immediately after every add/edit/delete. */}
+          {activeRowsSummary ? (
+            <p className="rounded-md bg-[var(--color-primary-soft)]/15 px-2 py-1 text-[10px] font-medium leading-relaxed text-[var(--color-ink-soft)]">
+              <span className="font-bold text-[var(--color-ink)]">٣. الأوجه المسجلة — </span>
+              {activeRowsSummary}
+            </p>
+          ) : null}
+        <div className="flex flex-wrap items-center justify-between gap-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 px-2 py-1 text-xs">
           <div className="flex flex-wrap items-center gap-1">
             <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">
               الأوجه:{multiSelectMode ? ` (${selectedForDelete.size})` : ''}
@@ -438,6 +468,17 @@ export default function ReviewEditorPane({
           </div>
 
           <div className="flex items-center gap-1">
+            {!multiSelectMode ? (
+              <button
+                type="button"
+                onClick={deleteAllForWord}
+                disabled={isSaving}
+                title="حذف كل الأوجه المسجلة على هذه الكلمة دفعة واحدة، ثم إضافتها من جديد"
+                className="rounded border border-[var(--color-danger)]/40 px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)] disabled:opacity-50"
+              >
+                حذف الكل
+              </button>
+            ) : null}
             <button
               type="button"
               onClick={() => {
@@ -458,6 +499,7 @@ export default function ReviewEditorPane({
               </button>
             ) : null}
           </div>
+        </div>
         </div>
       ) : null}
 
@@ -656,6 +698,8 @@ export default function ReviewEditorPane({
               hamzahDetail={hamzahDetail}
               onChangeHamzahDetail={setHamzahDetail}
               disabled={isSaving}
+              spanStart={spanStart}
+              spanEnd={spanEnd}
             />
           </div>
         </div>

@@ -13,6 +13,7 @@ import type {
 } from '../_lib/types'
 import { isHamzahCategory } from './HamzahDetailFields'
 import { normalizeVariantType } from './FarshFields'
+import { summarizeActiveRows } from './facesSummary'
 import * as reviewApi from '../_lib/api'
 
 export type WordMeta = {
@@ -335,8 +336,7 @@ export function useReviewEditorDraft({
     })
   }
 
-  async function confirmBulkDelete() {
-    const rows = activeRowsForWord.filter((r) => selectedForDelete.has(r.entryId))
+  async function performBulkDelete(rows: ReviewRow[], note: string) {
     if (rows.length === 0) return
     const narratorSummary = rows
       .map(
@@ -354,10 +354,28 @@ export function useReviewEditorDraft({
       return
     }
 
-    await onBulkDelete(rows, 'حذف جماعي من شاشة المراجعة')
+    await onBulkDelete(rows, note)
     setMultiSelectMode(false)
     setSelectedForDelete(new Set())
   }
+
+  async function confirmBulkDelete() {
+    const rows = activeRowsForWord.filter((r) => selectedForDelete.has(r.entryId))
+    await performBulkDelete(rows, 'حذف جماعي من شاشة المراجعة')
+  }
+
+  // Feature 3: one-click "delete all" for every face currently recorded on the selected word --
+  // a thin wrapper reusing the exact same confirmation copy and the same qiraat_review_bulk_delete
+  // path the checkbox multi-select flow above already uses, without requiring multi-select mode
+  // to be entered first.
+  async function deleteAllForWord() {
+    await performBulkDelete(activeRowsForWord, 'حذف الكل من شاشة المراجعة')
+  }
+
+  // Feature 4: pure derived, live summary of everything currently recorded for the selected
+  // word, shown above "٣. الأوجه المسجلة" -- recomputes on every render from activeRowsForWord,
+  // so it reflects add/edit/delete immediately with no extra state or request.
+  const activeRowsSummary = useMemo(() => summarizeActiveRows(activeRowsForWord), [activeRowsForWord])
 
   async function openSameWordPanel() {
     if (!currentSurahNumber || !currentAyahNumber || !currentWordNumber) return
@@ -457,6 +475,8 @@ export function useReviewEditorDraft({
     setSelectedForDelete,
     toggleDeleteSelection,
     confirmBulkDelete,
+    deleteAllForWord,
+    activeRowsSummary,
     sameWordOpen,
     setSameWordOpen,
     sameWordLoading,

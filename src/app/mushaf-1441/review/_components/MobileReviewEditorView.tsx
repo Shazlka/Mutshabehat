@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import type {
   BulkApplyResult,
   CreateEntryInput,
@@ -26,6 +26,9 @@ type Props = {
   selectedRow: ReviewRow | null
   activeRowsForWord: ReviewRow[]
   newEntryDraft: CreateEntryInput | null
+  // Feature 1/2: the second endpoint of an active span selection (see ReviewMushafPane).
+  spanEndKey?: string | null
+  spanEndMeta?: WordMeta | null
   onSelectRow(row: ReviewRow): void
   onStartNewEntry(meta: WordMeta): void
   onCancelNewEntry(): void
@@ -57,6 +60,8 @@ export default function MobileReviewEditorView({
   selectedRow,
   activeRowsForWord,
   newEntryDraft,
+  spanEndKey = null,
+  spanEndMeta = null,
   onSelectRow,
   onStartNewEntry,
   onCancelNewEntry,
@@ -109,6 +114,8 @@ export default function MobileReviewEditorView({
     setSelectedForDelete,
     toggleDeleteSelection,
     confirmBulkDelete,
+    deleteAllForWord,
+    activeRowsSummary,
     sameWordOpen,
     setSameWordOpen,
     sameWordLoading,
@@ -138,6 +145,20 @@ export default function MobileReviewEditorView({
   })
 
   const [unsavedModalOpen, setUnsavedModalOpen] = useState(false)
+
+  // Feature 2: the two spanned words, in canonical-key order, for word-role assignment.
+  const spanStart = useMemo(() => {
+    if (!spanEndKey || !spanEndMeta || !selectedWordKey || !selectedWordMeta) return null
+    return selectedWordKey <= spanEndKey
+      ? { key: selectedWordKey, text: selectedWordMeta.text }
+      : { key: spanEndKey, text: spanEndMeta.text }
+  }, [spanEndKey, spanEndMeta, selectedWordKey, selectedWordMeta])
+  const spanEnd = useMemo(() => {
+    if (!spanEndKey || !spanEndMeta || !selectedWordKey || !selectedWordMeta) return null
+    return selectedWordKey <= spanEndKey
+      ? { key: spanEndKey, text: spanEndMeta.text }
+      : { key: selectedWordKey, text: selectedWordMeta.text }
+  }, [spanEndKey, spanEndMeta, selectedWordKey, selectedWordMeta])
 
   const surahName = currentSurahNumber
     ? getMushaf1441SurahOption(currentSurahNumber)?.name ?? `سورة ${currentSurahNumber}`
@@ -305,11 +326,26 @@ export default function MobileReviewEditorView({
             aria-label="الأوجه المسجلة"
             className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 space-y-2 shadow-2xs"
           >
+            {activeRowsSummary ? (
+              <p className="rounded-lg bg-[var(--color-primary-soft)]/15 px-2 py-1.5 text-[11px] font-medium leading-relaxed text-[var(--color-ink-soft)]">
+                {activeRowsSummary}
+              </p>
+            ) : null}
             <div className="flex flex-wrap items-center justify-between gap-1.5 border-b border-[var(--color-border-soft)] pb-2">
               <span className="text-xs font-bold text-[var(--color-ink)]">
                 الأوجه المسجلة ({activeRowsForWord.length}):
               </span>
               <div className="flex items-center gap-1.5">
+                {!multiSelectMode ? (
+                  <button
+                    type="button"
+                    onClick={deleteAllForWord}
+                    disabled={isSaving}
+                    className="rounded-lg border border-[var(--color-danger)]/40 px-2 py-1 text-[11px] font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)]"
+                  >
+                    حذف الكل
+                  </button>
+                ) : null}
                 <button
                   type="button"
                   onClick={() => {
@@ -591,6 +627,8 @@ export default function MobileReviewEditorView({
               hamzahDetail={hamzahDetail}
               onChangeHamzahDetail={setHamzahDetail}
               disabled={isSaving}
+              spanStart={spanStart}
+              spanEnd={spanEnd}
             />
           ) : (
             <FarshFields

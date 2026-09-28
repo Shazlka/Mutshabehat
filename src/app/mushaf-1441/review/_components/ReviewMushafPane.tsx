@@ -36,12 +36,22 @@ type Props = {
   selectedWordKey: string | null
   selectedRow: ReviewRow | null
   hoveredRowId: string | null
-  onSelectWord(key: string, wordMeta: WordMeta): void
+  // `extend` is true on a Ctrl/Cmd-click (desktop) -- or, on mobile, when `extendNextSelection`
+  // ("ربط بالكلمة التالية") is armed -- meaning "extend the current selection into a span
+  // ending at this word" rather than "select this word instead".
+  onSelectWord(key: string, wordMeta: WordMeta, extend?: boolean): void
   onHoverWord(rowIds: string[] | null): void
   isMobile?: boolean
   zoom?: number
   scrollContainerRef?: React.RefObject<HTMLDivElement | null>
   onScroll?: (e: React.UIEvent<HTMLDivElement>) => void
+  // The second endpoint of an active Ctrl-click span (feature 1). Every word whose canonical
+  // key lies between `selectedWordKey` and `spanEndKey` (inclusive) is highlighted as part of
+  // the span, not just the two endpoints.
+  spanEndKey?: string | null
+  // Mobile touch equivalent of holding Ctrl: when true, the next word tap extends the span
+  // instead of replacing the selection.
+  extendNextSelection?: boolean
 }
 
 const BASMALA_TEXT = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'
@@ -76,8 +86,20 @@ export default function ReviewMushafPane({
   zoom = 1,
   scrollContainerRef,
   onScroll,
+  spanEndKey = null,
+  extendNextSelection = false,
 }: Props) {
   const pageNo = page.page
+
+  // Feature 1: the inclusive [min,max] canonical-key range of the active Ctrl-click span, if
+  // any. Canonical keys are zero-padded "SSS:AAA:WWW" strings, so plain string comparison
+  // already reflects Quran reading order -- no need to walk `page.words` to find the range.
+  const spanRange = useMemo(() => {
+    if (!spanEndKey || !selectedWordKey || spanEndKey === selectedWordKey) return null
+    return selectedWordKey <= spanEndKey
+      ? { min: selectedWordKey, max: spanEndKey }
+      : { min: spanEndKey, max: selectedWordKey }
+  }, [selectedWordKey, spanEndKey])
   const [mushafPage, setMushafPage] = useState<MushafPage | null>(() => pageWordsCache.get(pageNo)?.pageData ?? null)
   const [metadata, setMetadata] = useState<Mushaf1441PageMetadata | null>(() => pageWordsCache.get(pageNo)?.metadata ?? getMushaf1441PageMetadata(pageNo))
   const [fontLoaded, setFontLoaded] = useState(false)
@@ -371,6 +393,9 @@ export default function ReviewMushafPane({
                       const covering = wordRowsMap.get(key)
                       const status = covering ? worstStatus(covering.map((r) => r.reviewStatus)) : null
                       const isSelected = selectedWordKey === key
+                      const isSpanEnd = spanEndKey === key && !isSelected
+                      const isInSpan =
+                        !!spanRange && key >= spanRange.min && key <= spanRange.max && !isSelected && !isSpanEnd
                       const isHovered = covering?.some((r) => r.entryId === hoveredRowId) ?? false
 
                       const wordMeta: WordMeta = {
@@ -399,6 +424,8 @@ export default function ReviewMushafPane({
 
                       if (isSelected) {
                         ringStyle = '2px solid #b99b51'
+                      } else if (isSpanEnd) {
+                        ringStyle = '2px dashed #2563eb'
                       } else if (isHovered) {
                         ringStyle = '1.5px dashed #b99b51'
                       }
@@ -407,16 +434,25 @@ export default function ReviewMushafPane({
                         <button
                           key={word.id}
                           type="button"
-                          onClick={() => onSelectWord(key, wordMeta)}
+                          onClick={(e) =>
+                            onSelectWord(key, wordMeta, Boolean(e.ctrlKey || e.metaKey) || extendNextSelection)
+                          }
                           onMouseEnter={() => covering && onHoverWord(covering.map((r) => r.entryId))}
                           onMouseLeave={() => onHoverWord(null)}
                           data-word-key={key}
                           aria-label={`${word.textUthmani} — ${word.surahNumber}:${word.ayahNumber}:${word.wordIndexInAyah}`}
+                          title={
+                            isMobile
+                              ? undefined
+                              : 'اضغط مع Ctrl (أو Cmd) لربط هذه الكلمة بالكلمة المحددة في موضع واحد يمتد بينهما'
+                          }
                           className={cn(
                             'relative inline-flex items-center justify-center rounded-[3px] px-0.5 py-0 select-none transition-all cursor-pointer focus:outline-none',
                             isMobile && 'before:absolute before:-inset-y-1.5 before:-inset-x-1 before:content-[""] active:scale-95 active:bg-[#d8c9a3]/70',
                             isSelected && 'outline outline-2 outline-offset-1 outline-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/40 shadow-sm font-bold',
-                            !isSelected && 'hover:bg-[#eadfc9]/60 hover:outline hover:outline-1 hover:outline-[#b99b51]/40'
+                            isSpanEnd && 'outline outline-2 outline-dashed outline-offset-1 outline-[#2563eb] ring-2 ring-[#2563eb]/30 shadow-sm font-bold',
+                            isInSpan && 'bg-[#2563eb]/10 outline outline-1 outline-dashed outline-[#2563eb]/50',
+                            !isSelected && !isSpanEnd && !isInSpan && 'hover:bg-[#eadfc9]/60 hover:outline hover:outline-1 hover:outline-[#b99b51]/40'
                           )}
                           style={{
                             fontFamily,

@@ -16,7 +16,7 @@ type Props = {
   selectedWordKey: string | null
   selectedRow: ReviewRow | null
   hoveredRowId: string | null
-  onSelectWord(key: string, wordMeta: WordMeta): void
+  onSelectWord(key: string, wordMeta: WordMeta, extend?: boolean): void
   onHoverWord(rowIds: string[] | null): void
   onGoToPage(page: number): void
   onToggleHistory(): void
@@ -24,6 +24,11 @@ type Props = {
   onChangeZoom(zoom: number): void
   scrollContainerRef: React.RefObject<HTMLDivElement | null>
   onScroll?: (e: React.UIEvent<HTMLDivElement>) => void
+  // Feature 1/2 touch equivalent of Ctrl-click: the second span endpoint (for highlighting) and
+  // an "armed" one-shot toggle -- tap "ربط بالكلمة التالية" then tap the second word.
+  spanEndKey?: string | null
+  linkModeActive?: boolean
+  onToggleLinkMode?(): void
 }
 
 function findNextPageWith(
@@ -54,6 +59,9 @@ export default function MobileReviewMushafView({
   onChangeZoom,
   scrollContainerRef,
   onScroll,
+  spanEndKey = null,
+  linkModeActive = false,
+  onToggleLinkMode,
 }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [jumpDialogOpen, setJumpDialogOpen] = useState(false)
@@ -113,6 +121,26 @@ export default function MobileReviewMushafView({
             <span>{Math.round(zoom * 100)}%</span>
             <span className="text-[10px] text-[var(--color-ink-muted)]">🔍</span>
           </button>
+
+          {/* Feature 1/2: mobile touch equivalent of Ctrl-click -- arm this, then tap the
+              second word to extend the current selection into one span. */}
+          {onToggleLinkMode && selectedWordKey ? (
+            <button
+              type="button"
+              onClick={onToggleLinkMode}
+              aria-pressed={linkModeActive}
+              aria-label="ربط بالكلمة التالية لتكوين موضع واحد يمتد بين كلمتين"
+              title="ربط بالكلمة التالية"
+              className={cn(
+                'flex h-9 items-center gap-1 rounded-lg border px-2.5 text-xs font-bold active:scale-95 transition-transform',
+                linkModeActive
+                  ? 'border-[#2563eb] bg-[#2563eb] text-white shadow-xs'
+                  : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
+              )}
+            >
+              <span aria-hidden="true">🔗</span>
+            </button>
+          ) : null}
         </div>
 
         {/* Center: Surah & Page info */}
@@ -178,6 +206,8 @@ export default function MobileReviewMushafView({
           zoom={zoom}
           scrollContainerRef={scrollContainerRef}
           onScroll={onScroll}
+          spanEndKey={spanEndKey}
+          extendNextSelection={linkModeActive}
         />
       </main>
 

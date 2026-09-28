@@ -127,6 +127,25 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const [selectedRowId, setSelectedRowId] = useState<string | null>(null)
   const [hoveredRowId, setHoveredRowId] = useState<string | null>(null)
 
+  // Feature 1: Ctrl/Cmd-click (desktop) or "ربط بالكلمة التالية" (mobile) multi-word span
+  // selection -- `selectedWordKey`/`selectedWordMeta` above stay the anchor; these two track
+  // the span's second endpoint, an ordered pair by canonical key.
+  const [spanEndKey, setSpanEndKey] = useState<string | null>(null)
+  const [spanEndMeta, setSpanEndMeta] = useState<WordMeta | null>(null)
+  // Mobile touch equivalent of holding Ctrl while clicking: a one-shot "armed" toggle that the
+  // next word tap consumes and then clears.
+  const [linkModeActive, setLinkModeActive] = useState(false)
+
+  const clearSpanSelection = useCallback(() => {
+    setSpanEndKey(null)
+    setSpanEndMeta(null)
+    setLinkModeActive(false)
+  }, [])
+
+  const toggleLinkMode = useCallback(() => {
+    setLinkModeActive((v) => !v)
+  }, [])
+
   // New entry draft (for State C: unhighlighted words)
   const [newEntryDraft, setNewEntryDraft] = useState<CreateEntryInput | null>(null)
 
@@ -212,6 +231,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       setHoveredRowId(null)
       setErrorMessage(null)
       setSaveMessage(null)
+      clearSpanSelection()
       void loadPage(clamped)
       if (typeof window !== 'undefined') {
         const url = new URL(window.location.href)
@@ -220,7 +240,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         window.history.replaceState(window.history.state, '', url)
       }
     },
-    [loadPage]
+    [loadPage, clearSpanSelection]
   )
 
   const reloadCurrentPage = useCallback(async () => {
@@ -267,10 +287,43 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   // Handle word selection on the authentic Mushaf
   const handleSelectWord = useCallback(
-    (key: string, meta: WordMeta, openEditorOnMobile = true) => {
+    (key: string, meta: WordMeta, extend = false, openEditorOnMobile = true) => {
       if (mushafScrollRef.current) {
         mushafScrollPosRef.current = mushafScrollRef.current.scrollTop
       }
+
+      // Feature 1: Ctrl/Cmd-click (or mobile "ربط بالكلمة التالية") on a second word extends
+      // the current selection into a two-word span instead of replacing it. The anchor word
+      // (selectedWordKey/selectedWordMeta) never changes here; only the span end does. When a
+      // new-entry draft is open, its span (surah/ayah/startWord .. endAyah/endWord) is kept
+      // ordered by canonical key so it never matters which word was clicked first.
+      if (extend && selectedWordKey && selectedWordMeta && key !== selectedWordKey) {
+        setSpanEndKey(key)
+        setSpanEndMeta(meta)
+        setLinkModeActive(false)
+        setErrorMessage(null)
+        setSaveMessage(null)
+
+        const anchorKey = selectedWordKey
+        const anchorMeta = selectedWordMeta
+        const [startMeta, endMeta] = anchorKey <= key ? [anchorMeta, meta] : [meta, anchorMeta]
+
+        setNewEntryDraft((current) =>
+          current
+            ? {
+                ...current,
+                surah: startMeta.surah,
+                ayah: startMeta.ayah,
+                startWord: startMeta.word,
+                endAyah: endMeta.ayah,
+                endWord: endMeta.word,
+              }
+            : current
+        )
+        return
+      }
+
+      clearSpanSelection()
       setSelectedWordKey(key)
       setSelectedWordMeta(meta)
       setErrorMessage(null)
@@ -311,7 +364,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         })
       }
     },
-    [page, pageNumber]
+    [page, pageNumber, selectedWordKey, selectedWordMeta, clearSpanSelection]
   )
 
   const handleMobileBack = useCallback(() => {
@@ -332,7 +385,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     if (!page) return
     const next = findNextReviewWord(page, selectedWordKey)
     if (next) {
-      handleSelectWord(next.key, next.meta, true)
+      handleSelectWord(next.key, next.meta, false, true)
       setSaveMessage('تم الحفظ، والانتقال للموضع التالي ✓')
       setTimeout(() => setSaveMessage(null), 3000)
     } else {
@@ -363,31 +416,49 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
-  // Start new entry for a word (even if other variants already exist on it)
-  const handleStartNewEntry = useCallback((meta: WordMeta) => {
-    setSelectedRowId(null)
-    setNewEntryDraft({
-      surah: meta.surah,
-      ayah: meta.ayah,
-      startWord: meta.word,
-      endAyah: meta.ayah,
-      endWord: meta.word,
-      kind: 'farsh',
-      readingText: meta.text,
-      uthmaniText: meta.text,
-      narrators: [],
-    })
-  }, [])
+  // Start new entry for a word (even if other variants already exist on it). If a Ctrl-click
+  // span is currently active for the anchor word, the new entry starts pre-populated with that
+  // span's ordered end point.
+  const handleStartNewEntry = useCallback(
+    (meta: WordMeta) => {
+      setSelectedRowId(null)
+
+      // If a Ctrl-click span is active for this word (i.e. `meta` is the current anchor),
+      // pre-populate the new entry with the span's ordered end point instead of a single word.
+      let endAyah = meta.ayah
+      let endWord = meta.word
+      if (spanEndKey && spanEndMeta && selectedWordKey) {
+        const anchorIsEarlier = selectedWordKey <= spanEndKey
+        const endMeta = anchorIsEarlier ? spanEndMeta : meta
+        endAyah = endMeta.ayah
+        endWord = endMeta.word
+      }
+
+      setNewEntryDraft({
+        surah: meta.surah,
+        ayah: meta.ayah,
+        startWord: meta.word,
+        endAyah,
+        endWord,
+        kind: 'farsh',
+        readingText: meta.text,
+        uthmaniText: meta.text,
+        narrators: [],
+      })
+    },
+    [spanEndKey, spanEndMeta, selectedWordKey]
+  )
 
   const handleCancelNewEntry = useCallback(() => {
     setNewEntryDraft(null)
+    clearSpanSelection()
     if (activeRowsForWord.length > 0) {
       setSelectedRowId(activeRowsForWord[0].entryId)
     } else {
       setSelectedWordKey(null)
       setSelectedWordMeta(null)
     }
-  }, [activeRowsForWord])
+  }, [activeRowsForWord, clearSpanSelection])
 
   // 1-Click Confirm Row
   const handleConfirmRow = useCallback(
@@ -635,11 +706,12 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         setSelectedWordMeta(null)
         setSelectedRowId(null)
         setNewEntryDraft(null)
+        clearSpanSelection()
       }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [pageNumber, goToPage, selectedRow, deviceId, handleConfirmRow, handleFlagRow])
+  }, [pageNumber, goToPage, selectedRow, deviceId, handleConfirmRow, handleFlagRow, clearSpanSelection])
 
   return (
     <div dir="rtl" lang="ar" className="flex h-dvh flex-col bg-[var(--color-paper)]">
@@ -693,6 +765,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   hoveredRowId={hoveredRowId}
                   onSelectWord={handleSelectWord}
                   onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
+                  spanEndKey={spanEndKey}
                 />
               </div>
 
@@ -705,6 +778,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   selectedRow={selectedRow}
                   activeRowsForWord={activeRowsForWord}
                   newEntryDraft={newEntryDraft}
+                  spanEndKey={spanEndKey}
+                  spanEndMeta={spanEndMeta}
                   onSelectRow={(row) => setSelectedRowId(row.entryId)}
                   onStartNewEntry={handleStartNewEntry}
                   onCancelNewEntry={handleCancelNewEntry}
@@ -751,6 +826,9 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                 zoom={zoom}
                 onChangeZoom={handleChangeZoom}
                 scrollContainerRef={mushafScrollRef}
+                spanEndKey={spanEndKey}
+                linkModeActive={linkModeActive}
+                onToggleLinkMode={toggleLinkMode}
               />
             ) : (
               <MobileReviewEditorView
@@ -760,6 +838,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                 selectedRow={selectedRow}
                 activeRowsForWord={activeRowsForWord}
                 newEntryDraft={newEntryDraft}
+                spanEndKey={spanEndKey}
+                spanEndMeta={spanEndMeta}
                 onSelectRow={(row) => setSelectedRowId(row.entryId)}
                 onStartNewEntry={handleStartNewEntry}
                 onCancelNewEntry={handleCancelNewEntry}

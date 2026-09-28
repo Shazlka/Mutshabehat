@@ -30,6 +30,8 @@ import {
   validateEntryDraft,
   serializeDraftSnapshot,
 } from '../../src/app/mushaf-1441/review/_components/useReviewEditorDraft'
+import { summarizeActiveRows } from '../../src/app/mushaf-1441/review/_components/facesSummary'
+import type { ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
 import {
   isHamzahCategory,
   buildHamzahFaceActionText,
@@ -471,6 +473,80 @@ test('multi-face logic correctly increments wajhOrder for readers and individual
   assert.equal(addedForNafi[0].wajhOrder, 1, 'Qalun gets wajh 1')
   assert.equal(addedForNafi[1].id, 'Q01-R02')
   assert.equal(addedForNafi[1].wajhOrder, 2, 'Warsh gets wajh 2')
+})
+
+function makeRow(overrides: Partial<ReviewRow>): ReviewRow {
+  return {
+    entryId: 'entry-1',
+    locationId: 'loc-1',
+    version: '1',
+    kind: 'farsh',
+    categoryCode: null,
+    categoryNameAr: null,
+    surah: 1,
+    ayah: 4,
+    startWord: 4,
+    endAyah: 4,
+    endWord: 4,
+    startKey: '001:004:004',
+    endKey: '001:004:004',
+    page: 1,
+    hafsText: 'مَـٰلِكِ',
+    readingText: 'مَلِكِ',
+    uthmaniText: null,
+    description: null,
+    performanceNote: null,
+    variantType: null,
+    rulingText: null,
+    options: null,
+    notes: null,
+    reviewStatus: 'unreviewed',
+    locationReviewStatus: 'unreviewed',
+    verificationStatus: 'REVIEWED',
+    legacyRef: null,
+    entryOrder: 1,
+    deleted: false,
+    appliesWasl: true,
+    appliesWaqf: true,
+    hamzahDetail: null,
+    narrators: [{ id: 'Q05-R02', code: null, nameAr: 'حفص', action: null, wajhOrder: 1, wajhNote: null }],
+    flags: [],
+    ...overrides,
+  }
+}
+
+test('summarizeActiveRows: feature 4 -- empty for no rows', () => {
+  assert.equal(summarizeActiveRows([]), '')
+})
+
+test('summarizeActiveRows: feature 4 -- summarizes farsh + usul rows compactly, skips deleted', () => {
+  const rows: ReviewRow[] = [
+    makeRow({
+      entryId: 'a',
+      kind: 'farsh',
+      readingText: 'مَلِكِ',
+      narrators: [{ id: 'Q05-R02', code: null, nameAr: 'نافع', action: null, wajhOrder: 1, wajhNote: null }],
+    }),
+    makeRow({
+      entryId: 'b',
+      kind: 'usul',
+      categoryCode: 'IDGHAM_KABIR',
+      categoryNameAr: 'إدغام كبير',
+      startKey: '001:004:004',
+      endKey: '001:005:001', // spans into the next word
+      narrators: [
+        { id: 'Q03-R01', code: null, nameAr: 'أبو عمرو', action: null, wajhOrder: 1, wajhNote: null },
+        { id: 'Q01-R02', code: null, nameAr: 'ورش', action: null, wajhOrder: 1, wajhNote: null },
+      ],
+    }),
+    makeRow({ entryId: 'c', deleted: true }),
+  ]
+
+  const summary = summarizeActiveRows(rows)
+  assert.match(summary, /^وجهان: /)
+  assert.match(summary, /مَلِكِ \(نافع\)/)
+  assert.match(summary, /إدغام كبير \(أبو عمرو، ورش\) مع الكلمة التالية/)
+  assert.doesNotMatch(summary, /\bc\b/)
 })
 
 

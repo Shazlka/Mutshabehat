@@ -185,6 +185,12 @@ export type HamzahDetailFieldsProps = {
   hamzahDetail?: HamzahDetail | null
   onChangeHamzahDetail?(value: HamzahDetail | null): void
   disabled?: boolean
+  // Feature 2: the two endpoints of an active Ctrl-click span on the Mushaf pane, letting the
+  // reviewer assign which literal word carries الهمزة الأولى vs الهمزة الثانية for
+  // الهمزتان من كلمتين (two different words) -- distinct from the first/second treatment
+  // fields above, which are about two hamzahs inside one word.
+  spanStart?: { key: string; text: string } | null
+  spanEnd?: { key: string; text: string } | null
 }
 
 export default function HamzahDetailFields(props: HamzahDetailFieldsProps) {
@@ -205,6 +211,8 @@ function HamzahFacesBuilder({
   hamzahDetail,
   onChangeHamzahDetail,
   disabled,
+  spanStart = null,
+  spanEnd = null,
 }: HamzahDetailFieldsProps) {
   const currentCategory = categoryCode ?? 'HAMZATAN_KALIMA'
   const activeDetail = hamzahDetail ?? value ?? null
@@ -235,6 +243,11 @@ function HamzahFacesBuilder({
   const [customActionText, setCustomActionText] = useState('')
   const [addedMessage, setAddedMessage] = useState<string | null>(null)
   const [quickTarget, setQuickTarget] = useState<string>('Q01')
+
+  // Feature 2: which of the two spanned words (from a Ctrl-click span on the Mushaf pane)
+  // carries الهمزة الأولى -- only meaningful for HAMZATAN_KALIMATAYN with a real span.
+  const [firstWordIsSpanStart, setFirstWordIsSpanStart] = useState(true)
+  const hasWordSpan = currentCategory === 'HAMZATAN_KALIMATAYN' && !!spanStart && !!spanEnd
 
   // Computed action text preview
   const computedAction = useMemo(() => {
@@ -383,6 +396,12 @@ function HamzahFacesBuilder({
         isqatFirst: kalimataynFirst === 'إسقاط',
         isqatSecond: kalimataynSecond === 'حذف',
         ibdalMadd: kalimataynSecond === 'إبدال',
+        wordKeys:
+          hasWordSpan && spanStart && spanEnd
+            ? firstWordIsSpanStart
+              ? { first: spanStart.key, second: spanEnd.key }
+              : { first: spanEnd.key, second: spanStart.key }
+            : undefined,
       })
     } else {
       setDetail({
@@ -905,6 +924,50 @@ function HamzahFacesBuilder({
             </div>
           ) : currentCategory === 'HAMZATAN_KALIMATAYN' ? (
             <div className="space-y-2 rounded-lg border border-amber-200 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+              {/* Feature 2: word-role assignment when a Ctrl-click span picked two distinct
+                  words on the Mushaf pane -- الهمزتان من كلمتين, one hamzah per word. */}
+              {hasWordSpan && spanStart && spanEnd ? (
+                <div className="space-y-1 rounded-md border border-blue-300 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/30 p-1.5">
+                  <span className="text-[11px] font-bold text-blue-800 dark:text-blue-300">
+                    موضعان مرتبطان — أي كلمة هي الأولى؟
+                  </span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => setFirstWordIsSpanStart(true)}
+                      disabled={disabled}
+                      className={cn(
+                        'rounded-md border px-2 py-0.5 font-quran text-sm font-bold transition-all',
+                        firstWordIsSpanStart
+                          ? 'border-blue-600 bg-blue-600 text-white shadow-xs'
+                          : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-blue-400'
+                      )}
+                      title="اجعل هذه الكلمة الأولى (الهمزة الأولى)"
+                    >
+                      {firstWordIsSpanStart ? '✓ ' : ''}١. {spanStart.text}
+                    </button>
+                    <span className="text-[10px] text-[var(--color-ink-muted)]">←</span>
+                    <button
+                      type="button"
+                      onClick={() => setFirstWordIsSpanStart(false)}
+                      disabled={disabled}
+                      className={cn(
+                        'rounded-md border px-2 py-0.5 font-quran text-sm font-bold transition-all',
+                        !firstWordIsSpanStart
+                          ? 'border-blue-600 bg-blue-600 text-white shadow-xs'
+                          : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-blue-400'
+                      )}
+                      title="اجعل هذه الكلمة الأولى (الهمزة الأولى)"
+                    >
+                      {!firstWordIsSpanStart ? '✓ ' : ''}١. {spanEnd.text}
+                    </button>
+                  </div>
+                  <p className="text-[10px] text-[var(--color-ink-muted)]">
+                    الكلمة الأخرى تُسجَّل تلقائيًا بوصفها الثانية (الهمزة الثانية).
+                  </p>
+                </div>
+              ) : null}
+
               {/* Harakah relation */}
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-20">
