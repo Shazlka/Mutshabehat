@@ -2703,31 +2703,27 @@ export default function Mushaf1441Viewer({
             />
           ) : null}
           {resolvedAnnotations.length ? <span aria-hidden="true" title={`${resolvedAnnotations.length} تعليقات محفوظة`} style={{ position: 'absolute', insetInlineEnd: -4, top: -5, minWidth: 7, height: 7, paddingInline: resolvedFaceCount > 1 ? 2 : 0, borderRadius: 9999, background: resolvedAnnotations[0].resolved_color ?? '#80662c', color: 'white', fontSize: 7, lineHeight: '7px', textAlign: 'center' }}>{resolvedFaceCount > 1 ? resolvedFaceCount : ''}</span> : null}
-          {/* إمالة/تقليل dots: filled = إمالة, hollow ring = تقليل, one per reader (or one
-              family-coloured filled dot when all 10 readers agree). Bottom-LEFT of the word —
-              literal `left`/`bottom` so the position is unambiguous under `dir="rtl"`. Purely
-              additive to rulingMarker's own text-colour tint above; positioned clear of the
-              existing bottom underline band (qiraatMarker) and the top-right family dot. */}
+          {/* إمالة/تقليل: ONE small circle, filled when إمالة is present, a hollow ring when only
+              تقليل is present -- never one dot per reader (tap the word for the full
+              reader/narrator breakdown). Bottom-LEFT of the word — literal `left`/`bottom` so the
+              position is unambiguous under `dir="rtl"`. Purely additive to rulingMarker's own
+              text-colour tint above; positioned clear of the existing bottom underline band
+              (qiraatMarker) and the top-right family dot. */}
           {imalahTaqlilMarker ? (
-            <span aria-hidden="true" style={{ position: 'absolute', bottom: -8, left: -2, display: 'flex', flexDirection: 'row-reverse', gap: 1 }}>
-              {imalahTaqlilMarker.dots.map((dot, index) => {
-                const dotColor = mushafTheme === 'dark' ? adaptColorForDark(dot.color) : dot.color
-                const dotTitle = imalahTaqlilMarker.mode === 'unanimous'
-                  ? (dot.filled ? 'إمالة' : 'تقليل')
-                  : `${getReader(dot.readerId).nameArShort ?? getReader(dot.readerId).nameAr}: ${dot.filled ? 'إمالة' : 'تقليل'}`
-                return (
-                  <span
-                    key={`${dot.readerId}-${index}`}
-                    title={dotTitle}
-                    style={{
-                      width: 4, height: 4, borderRadius: 9999,
-                      background: dot.filled ? dotColor : 'transparent',
-                      border: dot.filled ? undefined : `1.5px solid ${dotColor}`,
-                    }}
-                  />
-                )
-              })}
-            </span>
+            <span
+              aria-hidden="true"
+              title={imalahTaqlilMarker.filled ? 'إمالة' : 'تقليل'}
+              style={{
+                position: 'absolute', bottom: -8, left: -2,
+                width: 5, height: 5, borderRadius: 9999,
+                background: imalahTaqlilMarker.filled
+                  ? (mushafTheme === 'dark' ? adaptColorForDark(imalahTaqlilMarker.color) : imalahTaqlilMarker.color)
+                  : 'transparent',
+                border: imalahTaqlilMarker.filled
+                  ? undefined
+                  : `1.5px solid ${mushafTheme === 'dark' ? adaptColorForDark(imalahTaqlilMarker.color) : imalahTaqlilMarker.color}`,
+              }}
+            />
           ) : null}
         </span>
       </button>

@@ -308,6 +308,13 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         const anchorKey = selectedWordKey
         const anchorMeta = selectedWordMeta
         const [startMeta, endMeta] = anchorKey <= key ? [anchorMeta, meta] : [meta, anchorMeta]
+        // A brand-new word (State C) auto-opens the draft with just its own single-word text
+        // (see the `setNewEntryDraft` call below, and the mirror in `handleStartNewEntry`).
+        // Extending that draft into a two-word span must recompute the reading text from BOTH
+        // words -- this is the actual live path a Ctrl-click span goes through in practice
+        // (select an unhighlighted word, then Ctrl-click its neighbour); the position-only merge
+        // below previously left "نص القراءة المقروء به:" stuck on the first word alone.
+        const combinedText = `${startMeta.text} ${endMeta.text}`
 
         setNewEntryDraft((current) =>
           current
@@ -318,6 +325,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                 startWord: startMeta.word,
                 endAyah: endMeta.ayah,
                 endWord: endMeta.word,
+                readingText: combinedText,
+                uthmaniText: combinedText,
               }
             : current
         )

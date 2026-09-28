@@ -8,8 +8,7 @@ import {
 import { computeAttribution, gradientCss } from '../../../../../packages/qiraat-core/attribution'
 import { narratorColor } from '../../../../../packages/qiraat-core/colors'
 import { getReadingOrNull } from '../../../../../packages/qiraat-core/readings'
-import { QIRAAT_READERS, getReader } from '../../../../../packages/qiraat-core/readers'
-import type { QiraatVariant, ReadingId, ReaderId } from '../../../../../packages/qiraat-core/types'
+import type { QiraatVariant, ReadingId } from '../../../../../packages/qiraat-core/types'
 import type { QiraatComparisonFilter } from './types'
 
 export interface WordMarker {
@@ -213,27 +212,24 @@ export function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparis
   return ruling.readings.some((r) => r.readingId === filter.readingId)
 }
 
-// ── إمالة/تقليل dot markers ─────────────────────────────────────────────────
+// ── إمالة/تقليل dot marker ──────────────────────────────────────────────────
 
-export interface ImalahTaqlilDot {
-  readerId: ReaderId
+export interface ImalahTaqlilMarker {
+  /** The ruling family's own fixed colour (never reader-specific -- see below). */
   color: string
+  /** true = filled circle (إمالة present), false = hollow ring (تقليل only, no إمالة anywhere). */
   filled: boolean
 }
 
-export interface ImalahTaqlilMarker {
-  mode: 'per-reader' | 'unanimous'
-  dots: ImalahTaqlilDot[]
-}
-
 /**
- * Small circle dot markers for a word carrying an IMALAH_TAQLIL ruling — filled for إمالة, hollow
- * (ring only) for تقليل, one dot per distinct reader (a reader's two narrators collapse to one
- * dot, matching the reader-collapsing convention the review editor's narratorDisplay.ts uses).
- * When every one of the 10 canonical readers agrees on the SAME action, a single filled dot in the
- * ruling family's own colour is returned instead of ten identical dots. Returns null when no
- * matched ruling carries a classifiable إمالة/تقليل action (e.g. a baseline "فتح"-only ruling, or
- * no IMALAH_TAQLIL ruling touching this token at all) — no noise.
+ * ONE small circle marker for a word carrying an IMALAH_TAQLIL ruling -- deliberately never
+ * one-dot-per-reader (a reviewer taps the word for the full reader/narrator breakdown; this dot
+ * only needs to answer "is there an إمالة/تقليل note here, and which of the two". Filled when at
+ * least one matched reading is إمالة (إمالة takes precedence over a co-occurring تقليل on the same
+ * word, e.g. ﴿بِٱلْهُدَىٰ﴾: حمزة/الكسائي إمالة, ورش تقليل -- filled); hollow ring when only تقليل
+ * readings are present. Returns null when no matched ruling carries a classifiable إمالة/تقليل
+ * action (e.g. a baseline "فتح"-only ruling, or no IMALAH_TAQLIL ruling touching this token at
+ * all) -- no noise.
  */
 export function imalahTaqlilMarkerForWord(
   rulings: readonly QiraatRuling[],
@@ -250,42 +246,17 @@ export function imalahTaqlilMarkerForWord(
   ))
   if (matches.length === 0) return null
 
-  const actionByReader = new Map<ReaderId, 'imalah' | 'taqlil'>()
+  let sawImalah = false
+  let sawTaqlil = false
   for (const ruling of matches) {
     for (const reading of ruling.readings) {
-      const readerId = getReadingOrNull(reading.readingId)?.readerId
-      if (!readerId) continue
-      if (actionByReader.has(readerId)) continue // first-seen action wins per reader
-      const classified = reading.action.includes('إمالة')
-        ? 'imalah'
-        : reading.action.includes('تقليل')
-          ? 'taqlil'
-          : null
-      if (classified) actionByReader.set(readerId, classified)
+      if (reading.action.includes('إمالة')) sawImalah = true
+      else if (reading.action.includes('تقليل')) sawTaqlil = true
     }
   }
-  if (actionByReader.size === 0) return null
+  if (!sawImalah && !sawTaqlil) return null
 
-  const unanimousAction = actionByReader.size === QIRAAT_READERS.length
-    && new Set(actionByReader.values()).size === 1
-    ? Array.from(actionByReader.values())[0]
-    : null
-
-  if (unanimousAction) {
-    return {
-      mode: 'unanimous',
-      dots: [{ readerId: QIRAAT_READERS[0].id, color: matches[0].color, filled: true }],
-    }
-  }
-
-  const dots: ImalahTaqlilDot[] = QIRAAT_READERS
-    .filter((reader) => actionByReader.has(reader.id))
-    .map((reader) => ({
-      readerId: reader.id,
-      color: getReader(reader.id).color,
-      filled: actionByReader.get(reader.id) === 'imalah',
-    }))
-  return { mode: 'per-reader', dots }
+  return { color: matches[0].color, filled: sawImalah }
 }
 
 /** Distinct usul families present on a page, for the legend/panel. */

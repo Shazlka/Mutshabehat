@@ -772,7 +772,7 @@ function makeImalahTaqlilRuling(id, readings, overrides = {}) {
   }
 }
 
-test('imalahTaqlilMarkerForWord: mixed reader group returns one dot per reader, filled for إمالة and hollow for تقليل', () => {
+test('imalahTaqlilMarkerForWord: mixed group with an إمالة reading anywhere returns one filled dot in the family colour', () => {
   const ruling = makeImalahTaqlilRuling('r1', [
     { readingId: 'Q06-R01', action: 'إمالة', isDefault: true }, // Hamzah
     { readingId: 'Q06-R02', action: 'إمالة', isDefault: true }, // Hamzah's other narrator, same reader
@@ -780,20 +780,11 @@ test('imalahTaqlilMarkerForWord: mixed reader group returns one dot per reader, 
   ])
   const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
   assert.ok(marker)
-  assert.equal(marker.mode, 'per-reader')
-  // Two narrators of the same reader collapse to one dot.
-  assert.equal(marker.dots.length, 2)
-  const hamzahDot = marker.dots.find((d) => d.readerId === 'Q06')
-  const nafiDot = marker.dots.find((d) => d.readerId === 'Q01')
-  assert.ok(hamzahDot)
-  assert.ok(nafiDot)
-  assert.equal(hamzahDot.filled, true)
-  assert.equal(hamzahDot.color, '#DC2626') // Hamzah's own reader colour, not the family colour
-  assert.equal(nafiDot.filled, false)
-  assert.equal(nafiDot.color, '#2563EB') // Nafi's own reader colour
+  assert.equal(marker.filled, true) // إمالة takes precedence -- always ONE dot, never per-reader
+  assert.equal(marker.color, '#DB2777') // the ruling's own fixed family colour, never a reader colour
 })
 
-test('imalahTaqlilMarkerForWord: all 10 readers agreeing on the same action collapses to one filled dot in the family colour', () => {
+test('imalahTaqlilMarkerForWord: تقليل-only readings return one hollow (unfilled) dot', () => {
   const allReaderReadings = QIRAAT_READERS.map((reader) => {
     const reading = QIRAAT_READINGS.find((r) => r.readerId === reader.id)
     return { readingId: reading.id, action: 'تقليل', isDefault: true }
@@ -801,22 +792,16 @@ test('imalahTaqlilMarkerForWord: all 10 readers agreeing on the same action coll
   const ruling = makeImalahTaqlilRuling('r2', allReaderReadings, { color: '#DB2777' })
   const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
   assert.ok(marker)
-  assert.equal(marker.mode, 'unanimous')
-  assert.equal(marker.dots.length, 1)
-  assert.equal(marker.dots[0].filled, true)
-  assert.equal(marker.dots[0].color, '#DB2777') // ruling's own fixed family colour, not a reader colour
+  assert.equal(marker.filled, false)
+  assert.equal(marker.color, '#DB2777')
 })
 
-test('imalahTaqlilMarkerForWord: all 10 readers present but split between إمالة and تقليل stays per-reader, not unanimous', () => {
-  const allReaderReadings = QIRAAT_READERS.map((reader, index) => {
-    const reading = QIRAAT_READINGS.find((r) => r.readerId === reader.id)
-    return { readingId: reading.id, action: index === 0 ? 'إمالة' : 'تقليل', isDefault: true }
-  })
-  const ruling = makeImalahTaqlilRuling('r3', allReaderReadings)
-  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+test('imalahTaqlilMarkerForWord: multiple matched rulings still collapse to exactly one dot', () => {
+  const rulingA = makeImalahTaqlilRuling('r3a', [{ readingId: 'Q07-R01', action: 'تقليل', isDefault: true }])
+  const rulingB = makeImalahTaqlilRuling('r3b', [{ readingId: 'Q07-R02', action: 'إمالة', isDefault: true }])
+  const marker = imalahTaqlilMarkerForWord([rulingA, rulingB], 1, 1, 1, { kind: 'all' })
   assert.ok(marker)
-  assert.equal(marker.mode, 'per-reader')
-  assert.equal(marker.dots.length, 10)
+  assert.equal(marker.filled, true)
 })
 
 test('imalahTaqlilMarkerForWord: a word with no IMALAH_TAQLIL ruling returns null', () => {
