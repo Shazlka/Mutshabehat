@@ -25,7 +25,8 @@ import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
 import { normalizeArabic } from '@/lib/arabic'
 import * as reviewApi from '../_lib/api'
-import { describeNarratorGroup, describeNarratorGroupText } from './narratorDisplay'
+import { describeNarratorGroup } from './narratorDisplay'
+import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
 
 import { useReviewEditorDraft } from './useReviewEditorDraft'
@@ -427,7 +428,6 @@ export default function ReviewEditorPane({
               const isSelected = selectedRow?.entryId === row.entryId
               const narratorDisplay = describeNarratorGroup(row.narrators)
               const narratorNames = narratorDisplay.map((n) => n.label).join('، ')
-              const distinctColors = Array.from(new Set(narratorDisplay.map((n) => n.color)))
               return (
                 <span key={row.entryId} className="inline-flex items-center gap-0.5">
                   {multiSelectMode ? (
@@ -443,20 +443,16 @@ export default function ReviewEditorPane({
                     type="button"
                     onClick={() => (multiSelectMode ? toggleDeleteSelection(row.entryId) : onSelectRow(row))}
                     className={cn(
-                      'inline-flex items-center gap-1 rounded px-1.5 py-0.2 text-[11px] font-bold transition-all',
+                      'inline-flex flex-wrap items-center gap-1 rounded px-1.5 py-0.2 text-[11px] font-bold transition-all',
                       isSelected && !multiSelectMode
                         ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-xs'
                         : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
                     )}
                     title={narratorNames}
                   >
-                    <span className="inline-flex items-center gap-0.5">
-                      {distinctColors.map((color) => (
-                        <span key={color} className="h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
-                      ))}
-                    </span>
                     <span>{idx + 1}. </span>
                     <span>{row.kind === 'usul' ? row.categoryNameAr ?? 'أصل' : row.readingText}</span>
+                    <NarratorBadges items={narratorDisplay} />
                   </button>
                 </span>
               )
@@ -574,11 +570,11 @@ export default function ReviewEditorPane({
                   return list.map((m) => (
                     <div
                       key={m.entryId}
-                      className="flex items-center justify-between gap-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-[11px]"
+                      className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-[11px]"
                     >
-                      <span>
-                        ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} · {labelForRow(m)} ·{' '}
-                        {describeNarratorGroupText(m.narrators)}
+                      <span className="inline-flex flex-wrap items-center gap-1">
+                        ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} · {labelForRow(m)} ·
+                        <NarratorBadges items={describeNarratorGroup(m.narrators)} />
                       </span>
                       <button
                         type="button"
@@ -602,8 +598,8 @@ export default function ReviewEditorPane({
                     <p>
                       <span className="font-bold">{KIND_LABEL_AR[previewMatch.kind]}</span> · {labelForRow(previewMatch)}
                     </p>
-                    <p className="text-[var(--color-ink-muted)]">
-                      الرواة: {describeNarratorGroupText(previewMatch.narrators)}
+                    <p className="inline-flex flex-wrap items-center gap-1 text-[var(--color-ink-muted)]">
+                      الرواة: <NarratorBadges items={describeNarratorGroup(previewMatch.narrators)} />
                     </p>
                     {!(previewMatch.appliesWasl && previewMatch.appliesWaqf) ? (
                       <p className="text-[var(--color-ink-muted)]">

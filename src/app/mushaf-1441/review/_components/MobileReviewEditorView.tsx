@@ -17,7 +17,8 @@ import FarshFields from './FarshFields'
 import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
 import { STATUS_LABEL_AR } from './statusMeta'
 import { useReviewEditorDraft, type WordMeta } from './useReviewEditorDraft'
-import { describeNarratorGroup, describeNarratorGroupText } from './narratorDisplay'
+import { describeNarratorGroup } from './narratorDisplay'
+import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
 import { cn } from '@/lib/cn'
 
@@ -381,8 +382,6 @@ export default function MobileReviewEditorView({
               {activeRowsForWord.map((row, idx) => {
                 const isSelected = selectedRow?.entryId === row.entryId
                 const narratorDisplay = describeNarratorGroup(row.narrators)
-                const narratorNames = narratorDisplay.map((n) => n.label).join('، ')
-                const distinctColors = Array.from(new Set(narratorDisplay.map((n) => n.color)))
                 return (
                   <div
                     key={row.entryId}
@@ -414,17 +413,12 @@ export default function MobileReviewEditorView({
                         <p className="truncate text-xs font-bold text-[var(--color-ink)]">
                           {row.kind === 'usul' ? row.categoryNameAr ?? 'أصل' : row.readingText}
                         </p>
-                        <p className="flex items-center gap-1 truncate text-[10px] text-[var(--color-ink-muted)]">
-                          <span className="inline-flex shrink-0 items-center gap-0.5">
-                            {distinctColors.map((color) => (
-                              <span
-                                key={color}
-                                className="h-1.5 w-1.5 rounded-full shrink-0"
-                                style={{ backgroundColor: color }}
-                              />
-                            ))}
-                          </span>
-                          <span className="truncate">{narratorNames || 'لم يُحدد راوٍ'}</span>
+                        <p className="flex flex-wrap items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
+                          {narratorDisplay.length ? (
+                            <NarratorBadges items={narratorDisplay} />
+                          ) : (
+                            <span>لم يُحدد راوٍ</span>
+                          )}
                         </p>
                       </div>
                     </div>
@@ -544,8 +538,8 @@ export default function MobileReviewEditorView({
                             <p className="font-bold text-[var(--color-ink)]">
                               ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} · {labelForRow(m)}
                             </p>
-                            <p className="text-[10px] text-[var(--color-ink-muted)]">
-                              {describeNarratorGroupText(m.narrators)}
+                            <p className="flex flex-wrap items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
+                              <NarratorBadges items={describeNarratorGroup(m.narrators)} />
                             </p>
                           </div>
                           <button
@@ -571,8 +565,8 @@ export default function MobileReviewEditorView({
                         <span className="font-bold">{previewMatch.kind === 'usul' ? 'أصول' : 'فرش'}</span> ·{' '}
                         {labelForRow(previewMatch)}
                       </p>
-                      <p className="text-[var(--color-ink-muted)]">
-                        الرواة: {describeNarratorGroupText(previewMatch.narrators)}
+                      <p className="flex flex-wrap items-center gap-1 text-[var(--color-ink-muted)]">
+                        الرواة: <NarratorBadges items={describeNarratorGroup(previewMatch.narrators)} />
                       </p>
                       {previewMatch.hamzahDetail ? (
                         <p className="text-[var(--color-ink-muted)]">بيانات همز مفصّلة مرفقة</p>

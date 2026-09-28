@@ -11,7 +11,7 @@ import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKey
 import { BASE_READING } from './types.ts'
 import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
 import { FixtureQiraatRepository } from './repository.ts'
-import { comparisonMarkerForWord, rulingMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
+import { comparisonMarkerForWord, rulingMarkerForWord, imalahTaqlilMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
 import page001Rulings from './fixtures/rulings/page-001.json' with { type: 'json' }
 import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
@@ -744,4 +744,92 @@ test('the symbol tables cover every reader and narrator the app knows', () => {
   for (const narrator of QIRAAT_NARRATORS) assert.ok(covered.has(narrator.id), `no symbol for ${narrator.id}`)
   // 10 readers + 20 narrators, each once.
   assert.equal(AUTHORITY_SYMBOLS.length, 30)
+})
+
+// ── إمالة/تقليل dot markers ─────────────────────────────────────────────────
+
+function makeImalahTaqlilRuling(id, readings, overrides = {}) {
+  return {
+    id,
+    pageNumber: 1,
+    category: 'IMALAH_TAQLIL',
+    categoryAr: 'الممال والمقلل',
+    color: '#DB2777',
+    wordAnchored: true,
+    surah: 1,
+    ayah: 1,
+    startToken: 1,
+    endToken: 1,
+    endAyah: 1,
+    baseText: 'تجربة',
+    verificationStatus: 'REVIEWED',
+    attribution: [],
+    readings,
+    hasAlternate: false,
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: '2026-01-01T00:00:00Z',
+    ...overrides,
+  }
+}
+
+test('imalahTaqlilMarkerForWord: mixed reader group returns one dot per reader, filled for إمالة and hollow for تقليل', () => {
+  const ruling = makeImalahTaqlilRuling('r1', [
+    { readingId: 'Q06-R01', action: 'إمالة', isDefault: true }, // Hamzah
+    { readingId: 'Q06-R02', action: 'إمالة', isDefault: true }, // Hamzah's other narrator, same reader
+    { readingId: 'Q01-R02', action: 'تقليل', isDefault: true }, // Warsh (Nafi)
+  ])
+  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+  assert.ok(marker)
+  assert.equal(marker.mode, 'per-reader')
+  // Two narrators of the same reader collapse to one dot.
+  assert.equal(marker.dots.length, 2)
+  const hamzahDot = marker.dots.find((d) => d.readerId === 'Q06')
+  const nafiDot = marker.dots.find((d) => d.readerId === 'Q01')
+  assert.ok(hamzahDot)
+  assert.ok(nafiDot)
+  assert.equal(hamzahDot.filled, true)
+  assert.equal(hamzahDot.color, '#DC2626') // Hamzah's own reader colour, not the family colour
+  assert.equal(nafiDot.filled, false)
+  assert.equal(nafiDot.color, '#2563EB') // Nafi's own reader colour
+})
+
+test('imalahTaqlilMarkerForWord: all 10 readers agreeing on the same action collapses to one filled dot in the family colour', () => {
+  const allReaderReadings = QIRAAT_READERS.map((reader) => {
+    const reading = QIRAAT_READINGS.find((r) => r.readerId === reader.id)
+    return { readingId: reading.id, action: 'تقليل', isDefault: true }
+  })
+  const ruling = makeImalahTaqlilRuling('r2', allReaderReadings, { color: '#DB2777' })
+  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+  assert.ok(marker)
+  assert.equal(marker.mode, 'unanimous')
+  assert.equal(marker.dots.length, 1)
+  assert.equal(marker.dots[0].filled, true)
+  assert.equal(marker.dots[0].color, '#DB2777') // ruling's own fixed family colour, not a reader colour
+})
+
+test('imalahTaqlilMarkerForWord: all 10 readers present but split between إمالة and تقليل stays per-reader, not unanimous', () => {
+  const allReaderReadings = QIRAAT_READERS.map((reader, index) => {
+    const reading = QIRAAT_READINGS.find((r) => r.readerId === reader.id)
+    return { readingId: reading.id, action: index === 0 ? 'إمالة' : 'تقليل', isDefault: true }
+  })
+  const ruling = makeImalahTaqlilRuling('r3', allReaderReadings)
+  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+  assert.ok(marker)
+  assert.equal(marker.mode, 'per-reader')
+  assert.equal(marker.dots.length, 10)
+})
+
+test('imalahTaqlilMarkerForWord: a word with no IMALAH_TAQLIL ruling returns null', () => {
+  const otherRuling = makeImalahTaqlilRuling('r4', [{ readingId: 'Q01-R02', action: 'ترقيق', isDefault: true }], { category: 'TARQIQ_RA', categoryAr: 'ترقيق الراءات' })
+  const marker = imalahTaqlilMarkerForWord([otherRuling], 1, 1, 1, { kind: 'all' })
+  assert.equal(marker, null)
+})
+
+test('imalahTaqlilMarkerForWord: a baseline-only ("فتح") ruling with no إمالة/تقليل action anywhere returns null', () => {
+  const ruling = makeImalahTaqlilRuling('r5', [
+    { readingId: 'Q05-R02', action: 'فتح', isDefault: true },
+    { readingId: 'Q02-R01', action: 'فتح', isDefault: true },
+  ])
+  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+  assert.equal(marker, null)
 })

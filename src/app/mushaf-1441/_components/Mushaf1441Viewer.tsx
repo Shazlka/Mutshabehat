@@ -43,9 +43,11 @@ import {
   rulingCategoriesOnPage,
   matchesFilter,
   matchesRulingFilter,
+  imalahTaqlilMarkerForWord,
   PERFORMANCE_MARKER_COLOR,
   type WordMarker,
   type RulingMarker,
+  type ImalahTaqlilMarker,
 } from './qiraat/qiraatWordMarker'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
@@ -2446,6 +2448,15 @@ export default function Mushaf1441Viewer({
             .map((c) => c.category).filter((c) => !qiraatView.disabledCategories.includes(c)))
           : undefined,
       )
+    // إمالة/تقليل dot markers — additive to rulingMarker's own text-colour tint, never a
+    // replacement for it. Same gating as rulingMarker (normal mode / non-word tokens / أصول
+    // hidden never compute this either).
+    const imalahTaqlilMarker: ImalahTaqlilMarker | null = (qiraatView.mode === 'normal' || !isRealWordToken || !qiraatView.showUsul)
+      ? null
+      : imalahTaqlilMarkerForWord(
+        qiraatRulingsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
+        effectiveFilter,
+      )
     const resolvedAnnotations = (resolvedQiraatByPage[word.pageNumber] ?? []).filter((annotation) => annotation.canonical_word_key === canonicalKeyForWord(word))
     const resolvedFaceCount = resolvedAnnotations.reduce((count, annotation) => Math.max(count, annotation.resolved_face_count), 0)
     const hasQiraatData = Boolean(qiraatMarker) || Boolean(rulingMarker) || qiraatOverrideText !== null || qiraatSuppressed || resolvedAnnotations.length > 0
@@ -2692,6 +2703,32 @@ export default function Mushaf1441Viewer({
             />
           ) : null}
           {resolvedAnnotations.length ? <span aria-hidden="true" title={`${resolvedAnnotations.length} تعليقات محفوظة`} style={{ position: 'absolute', insetInlineEnd: -4, top: -5, minWidth: 7, height: 7, paddingInline: resolvedFaceCount > 1 ? 2 : 0, borderRadius: 9999, background: resolvedAnnotations[0].resolved_color ?? '#80662c', color: 'white', fontSize: 7, lineHeight: '7px', textAlign: 'center' }}>{resolvedFaceCount > 1 ? resolvedFaceCount : ''}</span> : null}
+          {/* إمالة/تقليل dots: filled = إمالة, hollow ring = تقليل, one per reader (or one
+              family-coloured filled dot when all 10 readers agree). Bottom-LEFT of the word —
+              literal `left`/`bottom` so the position is unambiguous under `dir="rtl"`. Purely
+              additive to rulingMarker's own text-colour tint above; positioned clear of the
+              existing bottom underline band (qiraatMarker) and the top-right family dot. */}
+          {imalahTaqlilMarker ? (
+            <span aria-hidden="true" style={{ position: 'absolute', bottom: -8, left: -2, display: 'flex', flexDirection: 'row-reverse', gap: 1 }}>
+              {imalahTaqlilMarker.dots.map((dot, index) => {
+                const dotColor = mushafTheme === 'dark' ? adaptColorForDark(dot.color) : dot.color
+                const dotTitle = imalahTaqlilMarker.mode === 'unanimous'
+                  ? (dot.filled ? 'إمالة' : 'تقليل')
+                  : `${getReader(dot.readerId).nameArShort ?? getReader(dot.readerId).nameAr}: ${dot.filled ? 'إمالة' : 'تقليل'}`
+                return (
+                  <span
+                    key={`${dot.readerId}-${index}`}
+                    title={dotTitle}
+                    style={{
+                      width: 4, height: 4, borderRadius: 9999,
+                      background: dot.filled ? dotColor : 'transparent',
+                      border: dot.filled ? undefined : `1.5px solid ${dotColor}`,
+                    }}
+                  />
+                )
+              })}
+            </span>
+          ) : null}
         </span>
       </button>
     )
