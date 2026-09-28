@@ -10,7 +10,8 @@ import {
 } from '../../src/app/mushaf-1441/review/_lib/nquranReference'
 import type { ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
 
-function row(overrides: Partial<ReviewRow> & { narrators: { id: string }[] }): ReviewRow {
+function row(overrides: Partial<Omit<ReviewRow, 'narrators'>> & { narrators: { id: string }[] }): ReviewRow {
+  const { narrators: narratorIds, ...rest } = overrides
   return {
     entryId: 'e1',
     locationId: 'l1',
@@ -45,8 +46,8 @@ function row(overrides: Partial<ReviewRow> & { narrators: { id: string }[] }): R
     appliesWaqf: true,
     hamzahDetail: null,
     flags: [],
-    narrators: overrides.narrators.map((n) => ({ id: n.id, code: null, nameAr: n.id, action: null, wajhOrder: 1, wajhNote: null })),
-    ...overrides,
+    narrators: narratorIds.map((n) => ({ id: n.id, code: null, nameAr: n.id, action: null, wajhOrder: 1, wajhNote: null })),
+    ...rest,
   }
 }
 

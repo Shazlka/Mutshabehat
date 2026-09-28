@@ -37,6 +37,8 @@ import {
   resolveDifferenceGroups,
   type NquranAyahEntry,
   type NquranDecisionStatus,
+  type NquranDifference,
+  type ResolvedNquranGroup,
 } from '../_lib/nquranReference'
 
 import { useReviewEditorDraft } from './useReviewEditorDraft'
@@ -230,6 +232,49 @@ export default function ReviewEditorPane({
     if (!entry || entry.differences.length === 0) return null
     return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text) }
   }, [selectedWordMeta, nquranEntries])
+
+  // "Add to editor": clicking a resolved nquran.com group always starts a brand-new face for the
+  // currently selected word (never overwrites whatever row/draft happens to be open), pre-filled
+  // with that group's narrators and its reading description. `onStartNewEntry` replaces the
+  // parent's `newEntryDraft` with a fresh object every time it's called (even to the same word),
+  // so the pending apply below fires off that object's identity change rather than off `kind`,
+  // which the sibling sync effect inside useReviewEditorDraft hasn't necessarily updated yet in
+  // the same tick.
+  const [pendingNquranApply, setPendingNquranApply] = useState<{
+    resolved: ResolvedNquranGroup
+    difference: NquranDifference
+  } | null>(null)
+  const [nquranAppliedKey, setNquranAppliedKey] = useState<string | null>(null)
+
+  // This MUST stay an effect (not a render-time adjustment) so it runs after
+  // useReviewEditorDraft's own `[newEntryDraft]` sync effect within the same post-commit flush --
+  // that sibling effect resets narrators/rulingText/description to the fresh (empty) draft's own
+  // values, and effects registered earlier in the same component run first, so this one applying
+  // second is what makes the override actually stick.
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    if (!newEntryDraft || !pendingNquranApply) return
+    const { resolved, difference } = pendingNquranApply
+    setNarrators(resolved.narratorIds.map((id) => ({ id, action: null, wajhOrder: 1, wajhNote: null })))
+    if (newEntryDraft.kind === 'usul') {
+      setRulingText(`${difference.location}: ${resolved.group.reading}`)
+    } else {
+      setDescription(resolved.group.reading)
+    }
+    setPendingNquranApply(null)
+    // Only the arrival of a fresh newEntryDraft (from onStartNewEntry below) should fire this --
+    // not every keystroke in the fields it just populated.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newEntryDraft])
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  function handleApplyNquranGroup(resolved: ResolvedNquranGroup, difference: NquranDifference, badgeKey: string) {
+    if (resolved.narratorIds.length === 0 || !selectedWordMeta) return
+    setPendingNquranApply({ resolved, difference })
+    onStartNewEntry(selectedWordMeta)
+    setNquranAppliedKey(badgeKey)
+    window.setTimeout(() => setNquranAppliedKey((k) => (k === badgeKey ? null : k)), 2000)
+  }
 
   const categories = useMemo(() => {
     if (page.categories && page.categories.length > 0) {
@@ -1049,7 +1094,7 @@ export default function ReviewEditorPane({
                 {nquranPanelOpen ? (
                   <div className="flex flex-col gap-1.5 border-t border-amber-200 px-2 pb-2 pt-1.5 max-h-64 overflow-y-auto">
                     <p className="text-[9px] text-amber-800/80 dark:text-amber-400/80">
-                      مرجع للاطّلاع فقط — غير معتمد تلقائيًا، ولا يُنسخ إلى الحقول أعلاه إلا بمراجعة يدوية.
+                      مرجع للاطّلاع — غير معتمد تلقائيًا؛ زر «إضافة كوجه» ينشئ وجهًا جديدًا مُعبَّأً مسبقًا بالقراء/الرواة والبيان دون حفظه، فيبقى قابلًا للتعديل والمراجعة قبل «حفظ».
                     </p>
                     {nquranRanked.ranked.map(({ difference, matchesWord }, idx) => (
                       <div
@@ -1070,6 +1115,8 @@ export default function ReviewEditorPane({
                               ? proposeNquranDecision(resolved, activeRowsForWord)
                               : null
                             const badge = decision ? NQURAN_DECISION_BADGES[decision.status] : null
+                            const badgeKey = `${idx}-${gIdx}`
+                            const canApply = matchesWord && resolved.narratorIds.length > 0
                             return (
                               <div key={gIdx} className="text-[10px] leading-snug">
                                 <div className="flex flex-wrap items-center gap-1">
@@ -1087,6 +1134,17 @@ export default function ReviewEditorPane({
                                     >
                                       {badge.label}
                                     </span>
+                                  ) : null}
+                                  {canApply ? (
+                                    <button
+                                      type="button"
+                                      disabled={isSaving}
+                                      onClick={() => handleApplyNquranGroup(resolved, difference, badgeKey)}
+                                      title="ينشئ وجهًا جديدًا لهذه الكلمة بهذا القارئ/الراوي والبيان، دون حفظ"
+                                      className="rounded border border-amber-500 bg-white px-1 py-px text-[9px] font-bold text-amber-800 hover:bg-amber-100 disabled:opacity-50 dark:bg-transparent dark:text-amber-300"
+                                    >
+                                      {nquranAppliedKey === badgeKey ? '✓ أُضيف' : '➕ إضافة كوجه'}
+                                    </button>
                                   ) : null}
                                 </div>
                                 <span className="text-[var(--color-ink-muted)]">{resolved.group.reading}</span>
