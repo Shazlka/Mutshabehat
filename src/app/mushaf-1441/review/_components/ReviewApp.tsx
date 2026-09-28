@@ -425,14 +425,19 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       setSelectedRowId(null)
 
       // If a Ctrl-click span is active for this word (i.e. `meta` is the current anchor),
-      // pre-populate the new entry with the span's ordered end point instead of a single word.
+      // pre-populate the new entry with the span's ordered end point instead of a single word --
+      // and the reading/uthmani text must carry BOTH spanned words, in Quran reading order, not
+      // just the anchor's own text (a two-word entry like إدغام كبير/الهمزتان من كلمتين needs the
+      // whole span's text to start from, not half of it).
       let endAyah = meta.ayah
       let endWord = meta.word
+      let combinedText = meta.text
       if (spanEndKey && spanEndMeta && selectedWordKey) {
         const anchorIsEarlier = selectedWordKey <= spanEndKey
         const endMeta = anchorIsEarlier ? spanEndMeta : meta
         endAyah = endMeta.ayah
         endWord = endMeta.word
+        combinedText = anchorIsEarlier ? `${meta.text} ${spanEndMeta.text}` : `${spanEndMeta.text} ${meta.text}`
       }
 
       setNewEntryDraft({
@@ -442,8 +447,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         endAyah,
         endWord,
         kind: 'farsh',
-        readingText: meta.text,
-        uthmaniText: meta.text,
+        readingText: combinedText,
+        uthmaniText: combinedText,
         narrators: [],
       })
     },
