@@ -511,6 +511,8 @@ export default function Mushaf1441Viewer({
   const [isSurahPickerOpen, setIsSurahPickerOpen] = useState(false)
   const [surahPickerSearch, setSurahPickerSearch] = useState('')
   const currentSurahItemRef = useRef<HTMLButtonElement | null>(null)
+  const surahListRef = useRef<HTMLDivElement | null>(null)
+  const lastSurahScrollHapticRef = useRef(0)
   const [needsSignIn, setNeedsSignIn] = useState(false)
   const [hoveredAyahKey, setHoveredAyahKey] = useState<string | null>(null)
   // Preview of a Qiraat marker on hover (desktop) or first tap (mobile) — Part 20's "never rely on
@@ -706,6 +708,46 @@ export default function Mushaf1441Viewer({
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [isSurahPickerOpen])
+
+  // A soft haptic tick while scrolling the surah list, throttled so it reads as a rolling texture
+  // (like a picker wheel) rather than a buzz on every pixel of scroll.
+  function handleSurahListScroll() {
+    const now = performance.now()
+    if (now - lastSurahScrollHapticRef.current < 80) return
+    lastSurahScrollHapticRef.current = now
+    impactHaptic()
+  }
+
+  // The browser's own pinch-zoom is left enabled (no maximum-scale/user-scalable lock — that would
+  // also block pinch-zooming the Mushaf page itself), but once the user lets go the page should
+  // settle back to its normal, non-zoomed layout rather than staying zoomed in. `visualViewport`
+  // fires `resize` continuously while a pinch gesture is in progress; wait for it to go quiet, then
+  // if the page is still zoomed, force a reset by briefly re-asserting `maximum-scale=1` on the
+  // viewport meta tag -- mobile browsers snap the scale back to 1 the instant that's set, and
+  // restoring the original content right after leaves pinch-zoom itself usable again next time.
+  useEffect(() => {
+    const vv = typeof window !== 'undefined' ? window.visualViewport : null
+    if (!vv) return
+    let settleTimer: ReturnType<typeof setTimeout> | null = null
+    const resetZoom = () => {
+      const meta = document.querySelector('meta[name="viewport"]')
+      if (!meta) return
+      const original = meta.getAttribute('content') ?? 'width=device-width, initial-scale=1'
+      meta.setAttribute('content', `${original}, maximum-scale=1`)
+      requestAnimationFrame(() => meta.setAttribute('content', original))
+    }
+    const onResize = () => {
+      if (settleTimer) clearTimeout(settleTimer)
+      settleTimer = setTimeout(() => {
+        if (vv.scale > 1.02) resetZoom()
+      }, 300)
+    }
+    vv.addEventListener('resize', onResize)
+    return () => {
+      vv.removeEventListener('resize', onResize)
+      if (settleTimer) clearTimeout(settleTimer)
+    }
+  }, [])
 
   async function selectSurahFromPicker(surah: Mushaf1441SurahOption) {
     setIsSurahPickerOpen(false)
@@ -4442,15 +4484,34 @@ export default function Mushaf1441Viewer({
     const close = () => { setIsSurahPickerOpen(false); setSurahPickerSearch('') }
     return (
       <>
-        {/* Click-away catcher; the panel sits above it. */}
+        {/* Click-away catcher; the panel sits above it. On mobile the panel is full-screen and
+            covers this entirely -- the header's own close button is what dismisses it there. */}
         <button type="button" aria-label="إغلاق قائمة السور" onClick={close} className="fixed inset-0 z-40 cursor-default" />
         <div
           dir="rtl"
           role="dialog"
           aria-label="فهرس السور"
-          className="absolute right-0 top-full z-50 mt-1 flex max-h-[min(60vh,420px)] w-[17rem] sm:w-[19rem] flex-col overflow-hidden rounded-xl border border-[#d7c7a7] bg-[#fffdf8] shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
+          className="fixed inset-0 z-50 flex touch-manipulation flex-col overflow-hidden bg-[#fffdf8] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-1 sm:max-h-[min(60vh,420px)] sm:w-[19rem] sm:rounded-xl sm:border sm:border-[#d7c7a7] sm:shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
+          style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
-            <div className="border-b border-[#eadfc9] bg-[#fffaf0] p-2.5">
+            {/* Full-screen header — only meaningful affordance to close on mobile, since the
+                click-away catcher is hidden behind the full-bleed panel there. */}
+            <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#eadfc9] bg-[#fffaf0] px-3 py-2 sm:hidden">
+              <button
+                type="button"
+                onClick={close}
+                aria-label="رجوع"
+                className="flex size-9 shrink-0 touch-manipulation items-center justify-center rounded-lg text-[#80662c] hover:bg-[#f0e4cc] active:bg-[#ebdcc0]"
+              >
+                <svg className="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <p className="text-sm font-black text-[#171717]">فهرس السور</p>
+              <span className="size-9" aria-hidden="true" />
+            </div>
+
+            <div className="shrink-0 border-b border-[#eadfc9] bg-[#fffaf0] p-2 sm:p-2.5">
               <div className="relative">
                 <input
                   type="text"
@@ -4466,7 +4527,7 @@ export default function Mushaf1441Viewer({
                     type="button"
                     onClick={() => setSurahPickerSearch('')}
                     aria-label="مسح البحث"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded p-1 text-xs text-[#80662c] hover:bg-[#f0e4cc]"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 touch-manipulation rounded p-1 text-xs text-[#80662c] hover:bg-[#f0e4cc]"
                   >
                     ✕
                   </button>
@@ -4474,7 +4535,13 @@ export default function Mushaf1441Viewer({
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto divide-y divide-[#f0e4cc] p-2">
+            {/* Compact rows on mobile -- smaller padding/avatar/text -- so more surahs are visible
+                before scrolling; sm: restores the roomier desktop dropdown sizing. */}
+            <div
+              ref={surahListRef}
+              onScroll={handleSurahListScroll}
+              className="flex-1 overflow-y-auto divide-y divide-[#f0e4cc] p-1.5 sm:p-2"
+            >
               {filteredSurahOptions.length === 0 ? (
                 <p className="p-6 text-center text-xs font-bold text-[#8a7c5c]">
                   لا توجد سورة مطابقة للبحث
@@ -4489,29 +4556,29 @@ export default function Mushaf1441Viewer({
                       type="button"
                       ref={isCurrent ? currentSurahItemRef : null}
                       onClick={() => void selectSurahFromPicker(surah)}
-                      className={`flex w-full items-center justify-between px-3 py-2.5 rounded-lg text-right transition-colors ${
+                      className={`flex w-full touch-manipulation items-center justify-between rounded-lg px-2.5 py-1.5 text-right transition-colors sm:px-3 sm:py-2.5 ${
                         isCurrent
                           ? 'bg-[#171717] text-white shadow-sm'
                           : 'hover:bg-[#f7f0e0] active:bg-[#ebdcc0] text-[#171717]'
                       }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <span className={`flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums ${
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <span className={`flex size-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:size-8 sm:text-xs ${
                           isCurrent ? 'bg-white/20 text-white' : 'bg-[#f0e4cc] text-[#80662c]'
                         }`}>
                           {surah.surahNumber}
                         </span>
                         <div>
-                          <p className="text-base font-black font-[family-name:var(--font-amiri-quran)] leading-tight">
+                          <p className="text-sm font-black font-[family-name:var(--font-amiri-quran)] leading-tight sm:text-base">
                             سورة {surah.name}
                           </p>
-                          <p className={`text-[11px] font-bold ${isCurrent ? 'text-white/80' : 'text-[#80662c]'}`}>
+                          <p className={`text-[10px] font-bold sm:text-[11px] ${isCurrent ? 'text-white/80' : 'text-[#80662c]'}`}>
                             {surah.ayahCount} آية
                           </p>
                         </div>
                       </div>
                       <div className="text-left">
-                        <span className={`inline-block rounded px-2 py-0.5 text-xs font-bold tabular-nums ${
+                        <span className={`inline-block rounded px-1.5 py-0.5 text-[11px] font-bold tabular-nums sm:px-2 sm:text-xs ${
                           isCurrent ? 'bg-white/20 text-white' : 'bg-[#fffaf0] border border-[#d7c7a7] text-[#80662c]'
                         }`}>
                           ص {surah.firstPage ?? '—'}
@@ -4784,7 +4851,7 @@ export default function Mushaf1441Viewer({
             aria-label="اختيار السورة من القائمة"
             aria-haspopup="dialog"
             aria-expanded={isSurahPickerOpen}
-            className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 text-right transition-colors hover:brightness-95 active:brightness-90"
+            className="flex min-w-0 touch-manipulation items-center gap-1 rounded-lg px-2 py-1 text-right transition-colors hover:brightness-95 active:brightness-90"
           >
             <div className="min-w-0">
               <div className="flex items-center gap-1">
