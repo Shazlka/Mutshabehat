@@ -32,11 +32,24 @@ import {
   findNquranEntryForAyah,
   hasNquranReferenceForSurah,
   loadNquranBaqarahReference,
+  proposeNquranDecision,
   rankDifferencesForWord,
+  resolveDifferenceGroups,
   type NquranAyahEntry,
+  type NquranDecisionStatus,
 } from '../_lib/nquranReference'
 
 import { useReviewEditorDraft } from './useReviewEditorDraft'
+
+// Labels/colors for the nquran.com reconciliation badges -- see proposeNquranDecision() for what
+// each status means. Kept as a plain lookup (not JSX) so it can sit at module scope.
+const NQURAN_DECISION_BADGES: Record<NquranDecisionStatus, { label: string; className: string }> = {
+  matched: { label: '✓ مطابق لوجه معتمد', className: 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300' },
+  recorded_unreviewed: { label: '🔎 مسجَّل، بانتظار الاعتماد', className: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300' },
+  partial: { label: '⚠ تعارض جزئي في القراء', className: 'bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300' },
+  missing: { label: '➕ غير مسجَّل — يُقترح إضافته', className: 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300' },
+  unresolved: { label: '❔ تعذّر التعرّف على القارئ', className: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300' },
+}
 
 export type WordMeta = {
   surah: number
@@ -1052,14 +1065,34 @@ export default function ReviewEditorPane({
                           ﴿{difference.location}﴾
                         </p>
                         <div className="mt-1 flex flex-col gap-1">
-                          {difference.groups.map((group, gIdx) => (
-                            <div key={gIdx} className="text-[10px] leading-snug">
-                              <span className="font-bold text-amber-900 dark:text-amber-300">
-                                {group.readers.join('، ')}:{' '}
-                              </span>
-                              <span className="text-[var(--color-ink-muted)]">{group.reading}</span>
-                            </div>
-                          ))}
+                          {resolveDifferenceGroups(difference).map((resolved, gIdx) => {
+                            const decision = matchesWord
+                              ? proposeNquranDecision(resolved, activeRowsForWord)
+                              : null
+                            const badge = decision ? NQURAN_DECISION_BADGES[decision.status] : null
+                            return (
+                              <div key={gIdx} className="text-[10px] leading-snug">
+                                <div className="flex flex-wrap items-center gap-1">
+                                  <span className="font-bold text-amber-900 dark:text-amber-300">
+                                    {resolved.group.readers.join('، ')}:
+                                  </span>
+                                  {badge ? (
+                                    <span
+                                      title={
+                                        decision?.matchedRow
+                                          ? `مقارنةً بوجه ${STATUS_LABEL_AR[decision.matchedRow.reviewStatus]} مسجّل لهذه الكلمة`
+                                          : undefined
+                                      }
+                                      className={cn('rounded px-1 py-px text-[9px] font-bold', badge.className)}
+                                    >
+                                      {badge.label}
+                                    </span>
+                                  ) : null}
+                                </div>
+                                <span className="text-[var(--color-ink-muted)]">{resolved.group.reading}</span>
+                              </div>
+                            )
+                          })}
                         </div>
                       </div>
                     ))}
