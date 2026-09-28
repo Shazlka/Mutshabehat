@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react'
 import type { ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
 import { getMushaf1441PageMetadata } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
 import ReviewMushafPane, { type WordMeta } from './ReviewMushafPane'
+import ReviewStatsBar from './ReviewStatsBar'
 import { cn } from '@/lib/cn'
 
 const MIN_PAGE = 1
@@ -210,6 +211,9 @@ export default function MobileReviewMushafView({
           extendNextSelection={linkModeActive}
         />
       </main>
+
+      {/* 2b. Verified/remaining stats -- page and whole-mushaf */}
+      <ReviewStatsBar pageStats={page.stats} overview={overview} />
 
       {/* 3. Mobile Minimal Page Navigation Bar (Bottom) */}
       <footer

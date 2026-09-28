@@ -5,8 +5,9 @@
 // `activeRowsForWord`, so it updates immediately after every add/edit/delete.
 
 import type { ReviewRow } from '../_lib/types'
+import { describeNarratorGroupText } from './narratorDisplay'
 
-function labelForRow(row: ReviewRow): string {
+export function labelForRow(row: ReviewRow): string {
   if (row.kind === 'usul') {
     return row.categoryNameAr?.trim() || 'أصل'
   }
@@ -14,10 +15,7 @@ function labelForRow(row: ReviewRow): string {
 }
 
 function narratorNamesForRow(row: ReviewRow): string {
-  return row.narrators
-    .map((n) => n.nameAr)
-    .filter(Boolean)
-    .join('، ')
+  return describeNarratorGroupText(row.narrators)
 }
 
 /**

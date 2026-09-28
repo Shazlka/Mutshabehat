@@ -15,6 +15,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CreateEntryInput, EntryFields, NarratorInput, ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
 import HistoryPanel from './HistoryPanel'
 import ReviewMushafPane, { canonicalKeyForWord } from './ReviewMushafPane'
+import ReviewStatsBar from './ReviewStatsBar'
 import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
 import ReviewNav from './ReviewNav'
 import MobileReviewMushafView from './MobileReviewMushafView'
@@ -767,6 +768,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
                   spanEndKey={spanEndKey}
                 />
+                <ReviewStatsBar pageStats={page.stats} overview={overview} />
               </div>
 
               {/* LEFT PANE: Compact High-Speed Single-Word Editor (75% width) */}

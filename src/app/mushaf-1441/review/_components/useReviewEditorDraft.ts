@@ -111,6 +111,12 @@ export function useReviewEditorDraft({
   const [sameWordOpen, setSameWordOpen] = useState(false)
   const [sameWordLoading, setSameWordLoading] = useState(false)
   const [sameWordMatches, setSameWordMatches] = useState<SameWordMatch[] | null>(null)
+  // The match the reviewer picked to copy, awaiting a preview/confirm step before the actual
+  // copy RPC fires. Whether the "verified-only, same category" filter is applied to the match
+  // list, defaulted per which entry point opened the panel (owner request: "check for verified
+  // data" should default to that filter; the plain "نسخ الوجه" copy button shows everything).
+  const [previewMatch, setPreviewMatch] = useState<SameWordMatch | null>(null)
+  const [verifiedOnlyFilter, setVerifiedOnlyFilter] = useState(false)
 
   // Apply-to-all-occurrences (feature 7)
   const [bulkApplyOpen, setBulkApplyOpen] = useState(false)
@@ -217,6 +223,8 @@ export function useReviewEditorDraft({
     setSelectedForDelete(new Set())
     setSameWordOpen(false)
     setSameWordMatches(null)
+    setPreviewMatch(null)
+    setVerifiedOnlyFilter(false)
     setBulkApplyOpen(false)
     setOccurrences(null)
     setSelectedOccurrences(new Set())
@@ -377,10 +385,12 @@ export function useReviewEditorDraft({
   // so it reflects add/edit/delete immediately with no extra state or request.
   const activeRowsSummary = useMemo(() => summarizeActiveRows(activeRowsForWord), [activeRowsForWord])
 
-  async function openSameWordPanel() {
+  async function openSameWordPanel(verifiedOnlyDefault = false) {
     if (!currentSurahNumber || !currentAyahNumber || !currentWordNumber) return
     setSameWordOpen(true)
     setSameWordLoading(true)
+    setPreviewMatch(null)
+    setVerifiedOnlyFilter(verifiedOnlyDefault)
     const result = await reviewApi.findSameWord({
       surah: currentSurahNumber,
       ayah: currentAyahNumber,
@@ -391,13 +401,43 @@ export function useReviewEditorDraft({
     setSameWordMatches(result.ok ? result.data : [])
   }
 
-  async function copyFromMatch(match: SameWordMatch) {
-    if (!currentSurahNumber || !currentAyahNumber || !currentWordNumber) return
-    await onCopyToOccurrence(match.entryId, {
+  // The server already scopes findSameWord to reviewStatus === 'reviewed' (this app's
+  // "verified"/"معتمد" concept). Narrow further, client-side only, to the same kind and (for
+  // usul) the same category as the selected row -- so "check for verified data" only offers
+  // configurations that are actually safe to copy in as-is. If the row has no category yet
+  // (an unreviewed usul row the reviewer hasn't classified), don't filter by category so a
+  // pick can set it for them.
+  const verifiedSameCategoryMatches = useMemo(() => {
+    if (!sameWordMatches) return []
+    const targetKind = selectedRow?.kind
+    return sameWordMatches.filter((m) => {
+      if (targetKind && m.kind !== targetKind) return false
+      if (m.kind === 'usul' && selectedRow?.categoryCode && m.categoryCode !== selectedRow.categoryCode) {
+        return false
+      }
+      return true
+    })
+  }, [sameWordMatches, selectedRow])
+
+  // Selecting a match no longer copies immediately -- it stages a preview the reviewer must
+  // confirm (owner request: "before applying from verified data I should see what will be
+  // copied into the new word").
+  function selectMatchForPreview(match: SameWordMatch) {
+    setPreviewMatch(match)
+  }
+
+  function cancelPreview() {
+    setPreviewMatch(null)
+  }
+
+  async function confirmCopyFromMatch() {
+    if (!previewMatch || !currentSurahNumber || !currentAyahNumber || !currentWordNumber) return
+    await onCopyToOccurrence(previewMatch.entryId, {
       surah: currentSurahNumber,
       ayah: currentAyahNumber,
       startWord: currentWordNumber,
     })
+    setPreviewMatch(null)
     setSameWordOpen(false)
   }
 
@@ -481,8 +521,14 @@ export function useReviewEditorDraft({
     setSameWordOpen,
     sameWordLoading,
     sameWordMatches,
+    verifiedSameCategoryMatches,
+    verifiedOnlyFilter,
+    setVerifiedOnlyFilter,
     openSameWordPanel,
-    copyFromMatch,
+    previewMatch,
+    selectMatchForPreview,
+    cancelPreview,
+    confirmCopyFromMatch,
     bulkApplyOpen,
     setBulkApplyOpen,
     bulkApplyLoading,

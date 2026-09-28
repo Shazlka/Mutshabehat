@@ -17,6 +17,8 @@ import FarshFields from './FarshFields'
 import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
 import { STATUS_LABEL_AR } from './statusMeta'
 import { useReviewEditorDraft, type WordMeta } from './useReviewEditorDraft'
+import { describeNarratorGroup, describeNarratorGroupText } from './narratorDisplay'
+import { labelForRow } from './facesSummary'
 import { cn } from '@/lib/cn'
 
 type Props = {
@@ -120,8 +122,14 @@ export default function MobileReviewEditorView({
     setSameWordOpen,
     sameWordLoading,
     sameWordMatches,
+    verifiedSameCategoryMatches,
+    verifiedOnlyFilter,
+    setVerifiedOnlyFilter,
     openSameWordPanel,
-    copyFromMatch,
+    previewMatch,
+    selectMatchForPreview,
+    cancelPreview,
+    confirmCopyFromMatch,
     bulkApplyOpen,
     setBulkApplyOpen,
     bulkApplyLoading,
@@ -372,7 +380,9 @@ export default function MobileReviewEditorView({
             <div className="space-y-1.5">
               {activeRowsForWord.map((row, idx) => {
                 const isSelected = selectedRow?.entryId === row.entryId
-                const narratorNames = row.narrators.map((n) => n.nameAr).join('، ')
+                const narratorDisplay = describeNarratorGroup(row.narrators)
+                const narratorNames = narratorDisplay.map((n) => n.label).join('، ')
+                const distinctColors = Array.from(new Set(narratorDisplay.map((n) => n.color)))
                 return (
                   <div
                     key={row.entryId}
@@ -404,8 +414,17 @@ export default function MobileReviewEditorView({
                         <p className="truncate text-xs font-bold text-[var(--color-ink)]">
                           {row.kind === 'usul' ? row.categoryNameAr ?? 'أصل' : row.readingText}
                         </p>
-                        <p className="truncate text-[10px] text-[var(--color-ink-muted)]">
-                          {narratorNames || 'لم يُحدد راوٍ'}
+                        <p className="flex items-center gap-1 truncate text-[10px] text-[var(--color-ink-muted)]">
+                          <span className="inline-flex shrink-0 items-center gap-0.5">
+                            {distinctColors.map((color) => (
+                              <span
+                                key={color}
+                                className="h-1.5 w-1.5 rounded-full shrink-0"
+                                style={{ backgroundColor: color }}
+                              />
+                            ))}
+                          </span>
+                          <span className="truncate">{narratorNames || 'لم يُحدد راوٍ'}</span>
                         </p>
                       </div>
                     </div>
@@ -447,7 +466,7 @@ export default function MobileReviewEditorView({
                 <>
                   <button
                     type="button"
-                    onClick={openSameWordPanel}
+                    onClick={() => openSameWordPanel(false)}
                     className="flex-1 rounded-lg border border-[var(--color-border)] py-1.5 text-center text-xs font-bold text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]"
                   >
                     نسخ من كلمة موثقة
@@ -461,6 +480,15 @@ export default function MobileReviewEditorView({
                   </button>
                 </>
               ) : null}
+              {selectedRow && selectedRow.reviewStatus !== 'reviewed' ? (
+                <button
+                  type="button"
+                  onClick={() => openSameWordPanel(true)}
+                  className="w-full rounded-lg border border-[var(--color-success)]/40 py-1.5 text-center text-xs font-bold text-[var(--color-success)] hover:bg-[var(--color-success-bg)]"
+                >
+                  ✓ تحقق من بيانات معتمدة
+                </button>
+              ) : null}
             </div>
 
             {/* Panel: Same-word verified-config copy */}
@@ -468,7 +496,11 @@ export default function MobileReviewEditorView({
               <div className="mt-2 space-y-2 rounded-xl border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-2.5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[var(--color-ink)]">
-                    {sameWordLoading ? 'جارٍ البحث…' : 'نسخ الأوجه من مواضع موثقة سابقة:'}
+                    {sameWordLoading
+                      ? 'جارٍ البحث…'
+                      : previewMatch
+                      ? 'معاينة قبل النسخ'
+                      : 'نسخ الأوجه من مواضع موثقة سابقة:'}
                   </span>
                   <button
                     type="button"
@@ -478,35 +510,93 @@ export default function MobileReviewEditorView({
                     إغلاق
                   </button>
                 </div>
-                {!sameWordLoading && sameWordMatches && sameWordMatches.length === 0 ? (
-                  <p className="text-xs text-[var(--color-ink-muted)]">
-                    لا توجد مواضع مراجَعة سابقًا لنفس الكلمة.
-                  </p>
+
+                {!sameWordLoading && !previewMatch ? (
+                  <label className="flex items-center gap-1.5 text-[11px] font-bold text-[var(--color-ink-muted)]">
+                    <input
+                      type="checkbox"
+                      checked={verifiedOnlyFilter}
+                      onChange={(e) => setVerifiedOnlyFilter(e.target.checked)}
+                      className="h-3.5 w-3.5"
+                    />
+                    معتمدة فقط لنفس الباب
+                  </label>
                 ) : null}
-                {sameWordMatches?.map((m) => (
-                  <div
-                    key={m.entryId}
-                    className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2 text-xs"
-                  >
-                    <div>
-                      <p className="font-bold text-[var(--color-ink)]">
-                        ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} ·{' '}
-                        {m.kind === 'usul' ? m.categoryNameAr ?? 'أصل' : m.readingText}
+
+                {!sameWordLoading && !previewMatch
+                  ? (() => {
+                      const list = verifiedOnlyFilter ? verifiedSameCategoryMatches : sameWordMatches ?? []
+                      if (list.length === 0) {
+                        return (
+                          <p className="text-xs text-[var(--color-ink-muted)]">
+                            {verifiedOnlyFilter
+                              ? 'لا توجد بيانات معتمدة لنفس الكلمة ونفس الباب.'
+                              : 'لا توجد مواضع مراجَعة سابقًا لنفس الكلمة.'}
+                          </p>
+                        )
+                      }
+                      return list.map((m) => (
+                        <div
+                          key={m.entryId}
+                          className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2 text-xs"
+                        >
+                          <div>
+                            <p className="font-bold text-[var(--color-ink)]">
+                              ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} · {labelForRow(m)}
+                            </p>
+                            <p className="text-[10px] text-[var(--color-ink-muted)]">
+                              {describeNarratorGroupText(m.narrators)}
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => selectMatchForPreview(m)}
+                            className="shrink-0 rounded-lg bg-[var(--color-primary)] px-2.5 py-1 text-xs font-bold text-white shadow-xs"
+                          >
+                            نسخ الوجه
+                          </button>
+                        </div>
+                      ))
+                    })()
+                  : null}
+
+                {previewMatch ? (
+                  <div className="space-y-1.5 rounded-lg border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/10 p-2 text-xs">
+                    <p className="font-bold text-[var(--color-ink)]">
+                      سيتم نسخها إلى: {currentSurahNumber}:{currentAyahNumber}:{currentWordNumber} ·{' '}
+                      {currentHafsText}
+                    </p>
+                    <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2">
+                      <p>
+                        <span className="font-bold">{previewMatch.kind === 'usul' ? 'أصول' : 'فرش'}</span> ·{' '}
+                        {labelForRow(previewMatch)}
                       </p>
-                      <p className="text-[10px] text-[var(--color-ink-muted)]">
-                        {m.narrators.map((n) => n.nameAr).join('، ')}
+                      <p className="text-[var(--color-ink-muted)]">
+                        الرواة: {describeNarratorGroupText(previewMatch.narrators)}
                       </p>
+                      {previewMatch.hamzahDetail ? (
+                        <p className="text-[var(--color-ink-muted)]">بيانات همز مفصّلة مرفقة</p>
+                      ) : null}
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => copyFromMatch(m)}
-                      disabled={isSaving}
-                      className="shrink-0 rounded-lg bg-[var(--color-primary)] px-2.5 py-1 text-xs font-bold text-white shadow-xs disabled:opacity-50"
-                    >
-                      نسخ الوجه
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={confirmCopyFromMatch}
+                        disabled={isSaving}
+                        className="rounded-lg bg-[var(--color-primary)] px-3 py-1.5 text-xs font-bold text-white shadow-xs disabled:opacity-50"
+                      >
+                        تأكيد النسخ
+                      </button>
+                      <button
+                        type="button"
+                        onClick={cancelPreview}
+                        className="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-bold text-[var(--color-ink-muted)]"
+                      >
+                        رجوع
+                      </button>
+                    </div>
                   </div>
-                ))}
+                ) : null}
               </div>
             ) : null}
 

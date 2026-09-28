@@ -25,6 +25,8 @@ import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
 import { normalizeArabic } from '@/lib/arabic'
 import * as reviewApi from '../_lib/api'
+import { describeNarratorGroup, describeNarratorGroupText } from './narratorDisplay'
+import { labelForRow } from './facesSummary'
 
 import { useReviewEditorDraft } from './useReviewEditorDraft'
 
@@ -143,8 +145,14 @@ export default function ReviewEditorPane({
     setSameWordOpen,
     sameWordLoading,
     sameWordMatches,
+    verifiedSameCategoryMatches,
+    verifiedOnlyFilter,
+    setVerifiedOnlyFilter,
     openSameWordPanel,
-    copyFromMatch,
+    previewMatch,
+    selectMatchForPreview,
+    cancelPreview,
+    confirmCopyFromMatch,
     bulkApplyOpen,
     setBulkApplyOpen,
     bulkApplyLoading,
@@ -417,7 +425,9 @@ export default function ReviewEditorPane({
             ) : null}
             {activeRowsForWord.map((row, idx) => {
               const isSelected = selectedRow?.entryId === row.entryId
-              const narratorNames = row.narrators.map((n) => n.nameAr).join('، ')
+              const narratorDisplay = describeNarratorGroup(row.narrators)
+              const narratorNames = narratorDisplay.map((n) => n.label).join('، ')
+              const distinctColors = Array.from(new Set(narratorDisplay.map((n) => n.color)))
               return (
                 <span key={row.entryId} className="inline-flex items-center gap-0.5">
                   {multiSelectMode ? (
@@ -433,13 +443,18 @@ export default function ReviewEditorPane({
                     type="button"
                     onClick={() => (multiSelectMode ? toggleDeleteSelection(row.entryId) : onSelectRow(row))}
                     className={cn(
-                      'rounded px-1.5 py-0.2 text-[11px] font-bold transition-all',
+                      'inline-flex items-center gap-1 rounded px-1.5 py-0.2 text-[11px] font-bold transition-all',
                       isSelected && !multiSelectMode
                         ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-xs'
                         : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
                     )}
                     title={narratorNames}
                   >
+                    <span className="inline-flex items-center gap-0.5">
+                      {distinctColors.map((color) => (
+                        <span key={color} className="h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+                      ))}
+                    </span>
                     <span>{idx + 1}. </span>
                     <span>{row.kind === 'usul' ? row.categoryNameAr ?? 'أصل' : row.readingText}</span>
                   </button>
@@ -492,10 +507,20 @@ export default function ReviewEditorPane({
             {selectedRow ? (
               <button
                 type="button"
-                onClick={openSameWordPanel}
+                onClick={() => openSameWordPanel(false)}
                 className="rounded border border-[var(--color-border)] px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]"
               >
                 نسخ الوجه
+              </button>
+            ) : null}
+            {selectedRow && selectedRow.reviewStatus !== 'reviewed' ? (
+              <button
+                type="button"
+                onClick={() => openSameWordPanel(true)}
+                title="البحث عن بيانات معتمدة لنفس الكلمة ونفس الباب لنسخها بدلاً من إعادة إدخالها"
+                className="rounded border border-[var(--color-success)]/40 px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-success)] hover:bg-[var(--color-success-bg)]"
+              >
+                ✓ تحقق من بيانات معتمدة
               </button>
             ) : null}
           </div>
@@ -507,32 +532,107 @@ export default function ReviewEditorPane({
             <div className="rounded-lg border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 p-2 space-y-1.5">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-[var(--color-ink)]">
-                  {sameWordLoading ? 'جارٍ البحث…' : 'تمت مراجعة هذه الكلمة سابقًا: نسخ الأوجه من موضع سابق'}
+                  {sameWordLoading
+                    ? 'جارٍ البحث…'
+                    : previewMatch
+                    ? 'معاينة قبل النسخ'
+                    : 'تمت مراجعة هذه الكلمة سابقًا: نسخ الأوجه من موضع سابق'}
                 </span>
-                <button type="button" onClick={() => setSameWordOpen(false)} className="text-xs text-[var(--color-ink-muted)]">
+                <button
+                  type="button"
+                  onClick={() => setSameWordOpen(false)}
+                  className="text-xs text-[var(--color-ink-muted)]"
+                >
                   إغلاق
                 </button>
               </div>
-              {!sameWordLoading && sameWordMatches && sameWordMatches.length === 0 ? (
-                <p className="text-[11px] text-[var(--color-ink-muted)]">لا توجد مواضع مراجَعة سابقًا لنفس الكلمة.</p>
+
+              {!sameWordLoading && !previewMatch ? (
+                <label className="flex items-center gap-1.5 text-[10px] font-bold text-[var(--color-ink-muted)]">
+                  <input
+                    type="checkbox"
+                    checked={verifiedOnlyFilter}
+                    onChange={(e) => setVerifiedOnlyFilter(e.target.checked)}
+                    className="h-3 w-3"
+                  />
+                  معتمدة فقط لنفس الباب
+                </label>
               ) : null}
-              {sameWordMatches?.map((m) => (
-                <div key={m.entryId} className="flex items-center justify-between gap-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-[11px]">
-                  <span>
-                    ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} ·{' '}
-                    {m.kind === 'usul' ? m.categoryNameAr ?? 'أصل' : m.readingText} ·{' '}
-                    {m.narrators.map((n) => n.nameAr).join('، ')}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => copyFromMatch(m)}
-                    disabled={isSaving}
-                    className="shrink-0 rounded-md bg-[var(--color-primary)] px-2 py-0.5 font-bold text-white disabled:opacity-50"
-                  >
-                    نسخ إلى هذا الموضع
-                  </button>
+
+              {!sameWordLoading && !previewMatch ? (
+                (() => {
+                  const list = verifiedOnlyFilter ? verifiedSameCategoryMatches : sameWordMatches ?? []
+                  if (list.length === 0) {
+                    return (
+                      <p className="text-[11px] text-[var(--color-ink-muted)]">
+                        {verifiedOnlyFilter
+                          ? 'لا توجد بيانات معتمدة لنفس الكلمة ونفس الباب.'
+                          : 'لا توجد مواضع مراجَعة سابقًا لنفس الكلمة.'}
+                      </p>
+                    )
+                  }
+                  return list.map((m) => (
+                    <div
+                      key={m.entryId}
+                      className="flex items-center justify-between gap-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-[11px]"
+                    >
+                      <span>
+                        ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} · {labelForRow(m)} ·{' '}
+                        {describeNarratorGroupText(m.narrators)}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => selectMatchForPreview(m)}
+                        className="shrink-0 rounded-md bg-[var(--color-primary)] px-2 py-0.5 font-bold text-white"
+                      >
+                        نسخ إلى هذا الموضع
+                      </button>
+                    </div>
+                  ))
+                })()
+              ) : null}
+
+              {previewMatch ? (
+                <div className="space-y-1.5 rounded-md border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/10 p-2 text-[11px]">
+                  <p className="font-bold text-[var(--color-ink)]">
+                    سيتم نسخها إلى: {selectedWordMeta ? `ص${selectedWordMeta.page} · ` : ''}
+                    {currentSurahNumber}:{currentAyahNumber}:{currentWordNumber} · {currentHafsText}
+                  </p>
+                  <div className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] p-1.5">
+                    <p>
+                      <span className="font-bold">{KIND_LABEL_AR[previewMatch.kind]}</span> · {labelForRow(previewMatch)}
+                    </p>
+                    <p className="text-[var(--color-ink-muted)]">
+                      الرواة: {describeNarratorGroupText(previewMatch.narrators)}
+                    </p>
+                    {!(previewMatch.appliesWasl && previewMatch.appliesWaqf) ? (
+                      <p className="text-[var(--color-ink-muted)]">
+                        {previewMatch.appliesWasl ? 'الوصل فقط' : previewMatch.appliesWaqf ? 'الوقف فقط' : ''}
+                      </p>
+                    ) : null}
+                    {previewMatch.hamzahDetail ? (
+                      <p className="text-[var(--color-ink-muted)]">بيانات همز مفصّلة مرفقة</p>
+                    ) : null}
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={confirmCopyFromMatch}
+                      disabled={isSaving}
+                      className="rounded-md bg-[var(--color-primary)] px-2 py-1 font-bold text-white disabled:opacity-50"
+                    >
+                      تأكيد النسخ
+                    </button>
+                    <button
+                      type="button"
+                      onClick={cancelPreview}
+                      className="rounded-md border border-[var(--color-border)] px-2 py-1 font-bold text-[var(--color-ink-muted)]"
+                    >
+                      رجوع
+                    </button>
+                  </div>
                 </div>
-              ))}
+              ) : null}
             </div>
           ) : null}
 
