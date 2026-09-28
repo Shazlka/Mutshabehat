@@ -554,10 +554,13 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     [deviceId]
   )
 
-  // Create New Entry (State C)
+  // Create New Entry (State C). Returns whether the save actually succeeded, so callers that
+  // need to know (e.g. the nquran.com reference panel's "أُضيف" confirmation) don't have to guess
+  // from stale props -- most callers still just fire-and-forget it, which remains fine since a
+  // resolved boolean is simply a value they can ignore.
   const handleCreateNewEntry = useCallback(
-    async (draft: CreateEntryInput) => {
-      if (!deviceId) return
+    async (draft: CreateEntryInput): Promise<boolean> => {
+      if (!deviceId) return false
       setIsSaving(true)
       setErrorMessage(null)
       setSaveMessage(null)
@@ -589,9 +592,11 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         setNewEntryDraft(null)
         setSaveMessage('تمت إضافة القراءة بنجاح إلى قاعدة البيانات ✓')
         setTimeout(() => setSaveMessage(null), 4000)
+        return true
       } else {
         setIsSaving(false)
         setErrorMessage(result.error.messageAr ?? result.error.message)
+        return false
       }
     },
     [deviceId]

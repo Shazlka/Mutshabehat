@@ -48,7 +48,7 @@ type Props = {
     sourceEntryId: string,
     targets: { surah: number; ayah: number; word: number }[]
   ): Promise<BulkApplyResult | null>
-  onCreateNewEntry(entry: CreateEntryInput): Promise<void>
+  onCreateNewEntry(entry: CreateEntryInput): Promise<boolean>
   isSaving: boolean
   saveMessage: string | null
   errorMessage: string | null

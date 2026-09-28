@@ -16,11 +16,11 @@ import type {
 import {
   getMushaf1441SurahOption,
 } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
-import ReaderNarratorSelector, { CANONICAL_READERS } from './ReaderNarratorSelector'
+import ReaderNarratorSelector, { CANONICAL_READERS, HAFS_ID } from './ReaderNarratorSelector'
 import UsulRuleGrid, { FALLBACK_USUL_CATEGORIES } from './UsulRuleGrid'
 import FarshFields, { CANONICAL_VARIANT_TYPES, normalizeVariantType } from './FarshFields'
 import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
-import { isImalahCategory } from './ImalahDetailFields'
+import { isImalahCategory, nextWajhOrder } from './ImalahDetailFields'
 import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
 import { normalizeArabic } from '@/lib/arabic'
@@ -83,7 +83,7 @@ type Props = {
     sourceEntryId: string,
     targets: { surah: number; ayah: number; word: number }[]
   ): Promise<BulkApplyResult | null>
-  onCreateNewEntry(entry: CreateEntryInput): Promise<void>
+  onCreateNewEntry(entry: CreateEntryInput): Promise<boolean>
   isSaving: boolean
   saveMessage: string | null
   errorMessage: string | null
@@ -245,8 +245,30 @@ export default function ReviewEditorPane({
   async function handleApplyNquranGroup(resolved: ResolvedNquranGroup, badgeKey: string) {
     if (resolved.narratorIds.length === 0 || !selectedWordMeta) return
     setNquranSavingKey(badgeKey)
+    let succeeded = false
     try {
-      await onCreateNewEntry({
+      // Two DB-enforced rules (deferred triggers on qiraat_entries/qiraat_entry_readings) reject a
+      // plain wajhOrder:1 for every narrator here, and did so silently from this panel's point of
+      // view (onCreateNewEntry never threw -- it just set the shared error banner and left the row
+      // unsaved, which is why the badge kept reverting to "missing" with nothing added):
+      //  - QIRAAT_D8: Hafs (Q05-R02) may only appear with wajhOrder >= 2 and a non-empty wajhNote --
+      //    and a nquran "remainder/باقي الرواة" group almost always includes Hafs, since he is
+      //    exactly the baseline reader such groups are defined as everyone-but.
+      //  - QIRAAT_NARRATOR_TWICE: at most one active farsh row per narrator at this word may carry
+      //    wajhOrder 1; a group overlapping an already-recorded reader (any status but "missing")
+      //    needs wajhOrder >= 2 for that narrator instead.
+      // Both are satisfied the same way the manual Hamzah/Imalah "+ وجه آخر" builders already do it:
+      // wajhOrder is one past whatever this narrator's highest existing wajh at this word already
+      // is (via the same `nextWajhOrder` helper), which also floors Hafs at 2 unconditionally.
+      const existingNarrators = activeRowsForWord
+        .filter((row) => !row.deleted && row.kind === 'farsh')
+        .flatMap((row) => row.narrators.map((n) => ({ id: n.id, wajhOrder: n.wajhOrder ?? 1 })))
+      const narrators = resolved.narratorIds.map((id) => {
+        const wajhOrder = nextWajhOrder(existingNarrators, id)
+        const wajhNote = id === HAFS_ID ? resolved.group.reading || 'مستورد من مرجع nquran.com' : null
+        return { id, action: null, wajhOrder, wajhNote }
+      })
+      succeeded = await onCreateNewEntry({
         surah: selectedWordMeta.surah,
         ayah: selectedWordMeta.ayah,
         startWord: selectedWordMeta.word,
@@ -254,13 +276,15 @@ export default function ReviewEditorPane({
         readingText: selectedWordMeta.text,
         uthmaniText: selectedWordMeta.text,
         description: resolved.group.reading,
-        narrators: resolved.narratorIds.map((id) => ({ id, action: null, wajhOrder: 1, wajhNote: null })),
+        narrators,
       })
     } finally {
       setNquranSavingKey((k) => (k === badgeKey ? null : k))
     }
-    setNquranAppliedKey(badgeKey)
-    window.setTimeout(() => setNquranAppliedKey((k) => (k === badgeKey ? null : k)), 2000)
+    if (succeeded) {
+      setNquranAppliedKey(badgeKey)
+      window.setTimeout(() => setNquranAppliedKey((k) => (k === badgeKey ? null : k)), 2000)
+    }
   }
 
   const categories = useMemo(() => {
