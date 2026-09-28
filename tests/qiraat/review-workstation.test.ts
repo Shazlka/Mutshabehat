@@ -41,7 +41,6 @@ import {
   KALIMATAYN_ISQAT_FIRST_IDS,
   KALIMATAYN_TASHIL_SECOND_IDS,
 } from '../../src/app/mushaf-1441/review/_components/HamzahDetailFields'
-import type { ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
 
 test('CANONICAL_READERS defines exactly 10 readers and 20 distinct narrators', () => {
   assert.equal(CANONICAL_READERS.length, 10, 'Must have exactly 10 readers')
