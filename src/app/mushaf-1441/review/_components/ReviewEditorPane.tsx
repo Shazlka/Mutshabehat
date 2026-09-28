@@ -83,7 +83,7 @@ type Props = {
     sourceEntryId: string,
     targets: { surah: number; ayah: number; word: number }[]
   ): Promise<BulkApplyResult | null>
-  onCreateNewEntry(entry: CreateEntryInput): Promise<boolean>
+  onCreateNewEntry(entry: CreateEntryInput, options?: { autoVerify?: boolean }): Promise<boolean>
   isSaving: boolean
   saveMessage: string | null
   errorMessage: string | null
@@ -268,16 +268,21 @@ export default function ReviewEditorPane({
         const wajhNote = id === HAFS_ID ? resolved.group.reading || 'مستورد من مرجع nquran.com' : null
         return { id, action: null, wajhOrder, wajhNote }
       })
-      succeeded = await onCreateNewEntry({
-        surah: selectedWordMeta.surah,
-        ayah: selectedWordMeta.ayah,
-        startWord: selectedWordMeta.word,
-        kind: 'farsh',
-        readingText: selectedWordMeta.text,
-        uthmaniText: selectedWordMeta.text,
-        description: resolved.group.reading,
-        narrators,
-      })
+      succeeded = await onCreateNewEntry(
+        {
+          surah: selectedWordMeta.surah,
+          ayah: selectedWordMeta.ayah,
+          startWord: selectedWordMeta.word,
+          kind: 'farsh',
+          readingText: selectedWordMeta.text,
+          uthmaniText: selectedWordMeta.text,
+          description: resolved.group.reading,
+          narrators,
+        },
+        // Per the owner's explicit choice: an nquran.com face is marked reviewed/verified in the
+        // same click that creates it, rather than needing a separate manual "✓ اعتماد" afterwards.
+        { autoVerify: true }
+      )
     } finally {
       setNquranSavingKey((k) => (k === badgeKey ? null : k))
     }

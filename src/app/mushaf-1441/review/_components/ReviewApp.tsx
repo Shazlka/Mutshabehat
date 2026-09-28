@@ -557,9 +557,12 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   // Create New Entry (State C). Returns whether the save actually succeeded, so callers that
   // need to know (e.g. the nquran.com reference panel's "أُضيف" confirmation) don't have to guess
   // from stale props -- most callers still just fire-and-forget it, which remains fine since a
-  // resolved boolean is simply a value they can ignore.
+  // resolved boolean is simply a value they can ignore. `options.autoVerify` marks the freshly
+  // created row reviewed/verified in the same round trip (used by the nquran.com "إضافة كوجه"
+  // button, per the owner's explicit request -- every other caller leaves the new row unreviewed,
+  // same as before).
   const handleCreateNewEntry = useCallback(
-    async (draft: CreateEntryInput): Promise<boolean> => {
+    async (draft: CreateEntryInput, options?: { autoVerify?: boolean }): Promise<boolean> => {
       if (!deviceId) return false
       setIsSaving(true)
       setErrorMessage(null)
@@ -586,12 +589,23 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
             finalRow = updateRes.data
           }
         }
+        if (options?.autoVerify) {
+          const statusRes = await reviewApi.setStatus(finalRow, 'reviewed', null, deviceId)
+          if (statusRes.ok) {
+            finalRow = statusRes.data
+          }
+        }
         setIsSaving(false)
         applyRowUpdate(finalRow)
         setSelectedRowId(finalRow.entryId)
         setNewEntryDraft(null)
         setSaveMessage('تمت إضافة القراءة بنجاح إلى قاعدة البيانات ✓')
         setTimeout(() => setSaveMessage(null), 4000)
+        // Re-fetch the page from the server rather than trusting the optimistic
+        // applyRowUpdate() alone -- guarantees "٣. الأوجه المسجلة" reflects the row that was
+        // actually just committed, even if some other client-side state (a stale selection, a
+        // half-updated draft) would otherwise have kept the optimistic update from showing.
+        void reloadCurrentPage()
         return true
       } else {
         setIsSaving(false)
@@ -599,7 +613,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         return false
       }
     },
-    [deviceId]
+    [deviceId, reloadCurrentPage]
   )
 
   // Multi-select delete (feature 1): all-or-nothing, version-checked per row.

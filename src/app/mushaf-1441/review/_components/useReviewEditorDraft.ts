@@ -64,7 +64,7 @@ type UseReviewEditorDraftProps = {
   newEntryDraft: CreateEntryInput | null
   selectedWordMeta: WordMeta | null
   onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]): Promise<void>
-  onCreateNewEntry(entry: CreateEntryInput): Promise<boolean>
+  onCreateNewEntry(entry: CreateEntryInput, options?: { autoVerify?: boolean }): Promise<boolean>
   onBulkDelete(rows: ReviewRow[], note: string | null): Promise<void>
   onCopyToOccurrence(
     sourceEntryId: string,
