@@ -250,6 +250,12 @@ export async function GET(request: NextRequest) {
         p_include_unpublished: includeUnpublished,
       })
 
+    if (error) {
+      console.error(
+        `[qiraat-api] qiraat_export_page failed for page ${page}, using static fixtures:`,
+        error.message
+      )
+    }
     if (
       !error &&
       data &&
