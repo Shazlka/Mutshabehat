@@ -38,10 +38,17 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Mushaf: an entry re-added after deleting the earlier one was invisible on the Mushaf (needs DB migration)
+- **Owner report:** ميم الجمع on 2:3 رَزَقْنَـٰهُمْ saved in the editor but not coloured on the Mushaf nor listed in the sidebar, even after the word-anchored fix.
+- **Cause (verified on live):** the entry was VERIFIED, on page 2, `USUL_MIM_JAM`, anchored — but its locus `l-2-3-7` was soft-deleted. Deleting the earlier two-word versions soft-deleted the now-empty locus; `qiraat_review_create_entry` then re-used that locus by position without checking `deleted_at`, and `qiraat_export_page` skips entries on deleted loci, so the reader never received it.
+- **Fix:** migration `supabase/migrations/20260929150000_qiraat_entry_insert_revives_locus.sql` adds an AFTER INSERT trigger on `qiraat_entries` that revives the entry's locus, and repairs every already-hidden locus that still has a live entry. Rollback in `supabase/rollbacks/`. **Not yet applied to live.**
+- **Also:** `/api/mushaf-1441/qiraat` now logs `qiraat_export_page` RPC errors instead of silently falling back to fixtures.
+- **Files:** the two SQL files, `src/app/api/mushaf-1441/qiraat/route.ts`.
+
 ## 2026-09-29 — Mushaf: ميم الجمع / أصول المد / السكت entered in the editor now show on the word (needs DB migration)
 - **Owner report:** a face saved in the review editor on 2:3 «رَزَقْنَـٰهُمْ يُنفِقُونَ» (ميم الجمع) did not colour the words in the Mushaf nor appear in the sidebar.
 - **Cause:** the categories `USUL_MIM_JAM`, `USUL_MADD`, `USUL_SAKT` were seeded with `is_word_anchored = false` ("panel only"), and the reader draws markers only for word-anchored rulings — yet the editor lets the reviewer attach them to a specific word. (`USUL_NAQL/TAHQIQ/IBDAL` were already anchored.) They also had no colour, so they would have fallen back to grey.
-- **Fix:** migration `supabase/migrations/20260929140000_qiraat_usul_categories_word_anchored.sql` sets the three to word-anchored (rollback in `supabase/rollbacks/`), and `/api/mushaf-1441/qiraat` now colours the `USUL_*` categories (ميم الجمع pink, المد blue, السكت violet, النقل/التحقيق/الإبدال red). **Not yet applied to live** — run on the Mac Mini, then hard-refresh the Mushaf.
+- **Fix:** migration `supabase/migrations/20260929140000_qiraat_usul_categories_word_anchored.sql` sets the three to word-anchored (rollback in `supabase/rollbacks/`), and `/api/mushaf-1441/qiraat` now colours the `USUL_*` categories (ميم الجمع pink, المد blue, السكت violet, النقل/التحقيق/الإبدال red). ****DB migration: applied to live 2026-09-29** (`UPDATE 3`).
 - **Files:** the two SQL files, `src/app/api/mushaf-1441/qiraat/route.ts`.
 
 ## 2026-09-29 — Review Editor: fixed «Qiraat review data is unavailable» when adding a missing nquran item (needs DB migration)
@@ -71,7 +78,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 ## 2026-09-29 — Mushaf Qiraat cards: wajh number and «الخلاف» note now shown under each reader (needs DB migration)
 - **Owner request:** after the per-reader performance text, also show the وجه number and the الخلاف note entered in تفاصيل الأداء والأوجه.
-- **DB:** `qiraat_export_page` now also exports `wajhOrder` and `wajhNote` for each attribution (two keys added; everything else identical to `20260925140000`). Migration `supabase/migrations/20260929120000_qiraat_export_page_wajh_details.sql`, rollback `supabase/rollbacks/20260929120000_qiraat_export_page_wajh_details.down.sql`. **Not yet applied to live** — until it is, the cards look exactly as before (the new fields are simply absent), so deploying the code first is safe.
+- **DB:** `qiraat_export_page` now also exports `wajhOrder` and `wajhNote` for each attribution (two keys added; everything else identical to `20260925140000`). Migration `supabase/migrations/20260929120000_qiraat_export_page_wajh_details.sql`, rollback `supabase/rollbacks/20260929120000_qiraat_export_page_wajh_details.down.sql`. **DB migration: applied to live 2026-09-29.**
 - **UI:** `renderReaderPerformance()` shows a «وجه N» badge (only when the ruling has more than one wajh, so single-face rulings stay clean) and a «الخلاف: …» line, below the reader pills in the selection card and hover peek. Empty fields render nothing. Wired through `QiraatRulingAttribution.wajhOrder/wajhNote` (`types.ts`) and `mapExportRuling` in `route.ts`.
 - **Verification:** `npm run typecheck` clean.
 - **Files:** `supabase/migrations/20260929120000_qiraat_export_page_wajh_details.sql` (new), `supabase/rollbacks/20260929120000_qiraat_export_page_wajh_details.down.sql` (new), `packages/qiraat-core/types.ts`, `src/app/api/mushaf-1441/qiraat/route.ts`, `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`.
