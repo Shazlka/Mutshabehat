@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Review Editor: nquran.com «إضافة» now adds into «تفاصيل الأداء والأوجه للرواة المحددين» of the open face (no separate entry)
+- **Owner request:** clicking the add button on an nquran.com reader group must add that group's narrators, with the nquran text as «نص الأداء», inside the current face's «تفاصيل الأداء والأوجه للرواة المحددين» — not create a separate face in «الأوجه».
+- **Change:** `handleApplyNquranGroup` no longer calls `onCreateNewEntry`. It appends each resolved narrator to the editor's narrators draft with `action` = nquran reading (skipping an identical narrator+text), wajh order computed with `nextWajhOrder` over this face and the word's other active farsh rows, Hafs floored at 2 with a note. Button reads «➕ إضافة للأداء» then «✓ أُضيف — اضغط حفظ»; persistence is via the normal «حفظ».
+- **Verification:** `npm run typecheck`. **DB migration:** none.
+- **Files:** `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`.
+
 ## 2026-09-29 — Review Editor: nquran.com «إضافة كوجه» now writes the description into each reader's «الأداء» (single source of comments)
 - **Owner request:** when a group is added from nquran.com, its description must go to «الأداء» so comments come from one source only.
 - **Change:** `handleApplyNquranGroup` now sets each narrator's `action` (→ `action_ar`, the «الأداء» field) to the nquran reading text and no longer also writes it to «بيان الفرق» (`description`), so it shows once on the Mushaf card and is editable in تفاصيل الأداء والأوجه.

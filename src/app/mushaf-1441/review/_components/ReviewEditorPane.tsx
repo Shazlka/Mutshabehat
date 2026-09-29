@@ -239,57 +239,29 @@ export default function ReviewEditorPane({
   // whatever row is currently open, so it can never overwrite an already-reviewed entry's data or
   // a still-unsaved edit the reviewer was mid-way through; the created row shows up in "٣. الأوجه
   // المسجلة" the moment `onCreateNewEntry` resolves, the same way every other new face does.
-  const [nquranSavingKey, setNquranSavingKey] = useState<string | null>(null)
   const [nquranAppliedKey, setNquranAppliedKey] = useState<string | null>(null)
 
-  async function handleApplyNquranGroup(resolved: ResolvedNquranGroup, badgeKey: string) {
-    if (resolved.narratorIds.length === 0 || !selectedWordMeta) return
-    setNquranSavingKey(badgeKey)
-    let succeeded = false
-    try {
-      // Two DB-enforced rules (deferred triggers on qiraat_entries/qiraat_entry_readings) reject a
-      // plain wajhOrder:1 for every narrator here, and did so silently from this panel's point of
-      // view (onCreateNewEntry never threw -- it just set the shared error banner and left the row
-      // unsaved, which is why the badge kept reverting to "missing" with nothing added):
-      //  - QIRAAT_D8: Hafs (Q05-R02) may only appear with wajhOrder >= 2 and a non-empty wajhNote --
-      //    and a nquran "remainder/باقي الرواة" group almost always includes Hafs, since he is
-      //    exactly the baseline reader such groups are defined as everyone-but.
-      //  - QIRAAT_NARRATOR_TWICE: at most one active farsh row per narrator at this word may carry
-      //    wajhOrder 1; a group overlapping an already-recorded reader (any status but "missing")
-      //    needs wajhOrder >= 2 for that narrator instead.
-      // Both are satisfied the same way the manual Hamzah/Imalah "+ وجه آخر" builders already do it:
-      // wajhOrder is one past whatever this narrator's highest existing wajh at this word already
-      // is (via the same `nextWajhOrder` helper), which also floors Hafs at 2 unconditionally.
-      const existingNarrators = activeRowsForWord
-        .filter((row) => !row.deleted && row.kind === 'farsh')
-        .flatMap((row) => row.narrators.map((n) => ({ id: n.id, wajhOrder: n.wajhOrder ?? 1 })))
-      const narrators = resolved.narratorIds.map((id) => {
-        const wajhOrder = nextWajhOrder(existingNarrators, id)
-        const wajhNote = id === HAFS_ID ? resolved.group.reading || 'مستورد من مرجع nquran.com' : null
-        // Single source of comments: the nquran description goes into each narrator's «الأداء».
-        return { id, action: resolved.group.reading || null, wajhOrder, wajhNote }
-      })
-      succeeded = await onCreateNewEntry(
-        {
-          surah: selectedWordMeta.surah,
-          ayah: selectedWordMeta.ayah,
-          startWord: selectedWordMeta.word,
-          kind: 'farsh',
-          readingText: selectedWordMeta.text,
-          uthmaniText: selectedWordMeta.text,
-          narrators,
-        },
-        // Per the owner's explicit choice: an nquran.com face is marked reviewed/verified in the
-        // same click that creates it, rather than needing a separate manual "✓ اعتماد" afterwards.
-        { autoVerify: true }
-      )
-    } finally {
-      setNquranSavingKey((k) => (k === badgeKey ? null : k))
+  // Adds the nquran group's readers to the CURRENT entry's «تفاصيل الأداء والأوجه للرواة المحددين»
+  // (narrators draft): each narrator gets the nquran description as its «الأداء». Nothing is created
+  // as a separate entry; the reviewer presses «حفظ» to persist it with the entry.
+  function handleApplyNquranGroup(resolved: ResolvedNquranGroup, badgeKey: string) {
+    if (resolved.narratorIds.length === 0) return
+    const performance = resolved.group.reading || null
+    // wajh numbering must also respect the other active farsh rows at this word (DB rule
+    // QIRAAT_NARRATOR_TWICE), and Hafs is floored at wajh 2 with a note (rule D8).
+    const others = activeRowsForWord
+      .filter((row) => !row.deleted && row.kind === 'farsh' && row.entryId !== selectedRow?.entryId)
+      .flatMap((row) => row.narrators.map((n) => ({ id: n.id, wajhOrder: n.wajhOrder ?? 1 })))
+    const next = [...narrators]
+    for (const id of resolved.narratorIds) {
+      if (next.some((n) => n.id === id && (n.action ?? null) === performance)) continue
+      const wajhOrder = nextWajhOrder([...others, ...next], id)
+      const wajhNote = id === HAFS_ID ? performance || 'مستورد من مرجع nquran.com' : null
+      next.push({ id, action: performance, wajhOrder, wajhNote })
     }
-    if (succeeded) {
-      setNquranAppliedKey(badgeKey)
-      window.setTimeout(() => setNquranAppliedKey((k) => (k === badgeKey ? null : k)), 2000)
-    }
+    setNarrators(next)
+    setNquranAppliedKey(badgeKey)
+    window.setTimeout(() => setNquranAppliedKey((k) => (k === badgeKey ? null : k)), 2500)
   }
 
   const categories = useMemo(() => {
@@ -1154,16 +1126,12 @@ export default function ReviewEditorPane({
                                   {canApply ? (
                                     <button
                                       type="button"
-                                      disabled={isSaving || nquranSavingKey === badgeKey}
+                                      disabled={isSaving}
                                       onClick={() => void handleApplyNquranGroup(resolved, badgeKey)}
-                                      title="ينشئ وجهًا جديدًا لهذه الكلمة بهذا القارئ/الراوي والبيان ويحفظه في قاعدة البيانات فورًا"
+                                      title="يضيف القراء/الرواة مع نص الأداء إلى «تفاصيل الأداء والأوجه للرواة المحددين» في هذا الوجه (ثم اضغط حفظ)"
                                       className="rounded border border-amber-500 bg-white px-1 py-px text-[9px] font-bold text-amber-800 hover:bg-amber-100 disabled:opacity-50 dark:bg-transparent dark:text-amber-300"
                                     >
-                                      {nquranSavingKey === badgeKey
-                                        ? '… جارٍ الحفظ'
-                                        : nquranAppliedKey === badgeKey
-                                          ? '✓ أُضيف وحُفظ'
-                                          : '➕ إضافة كوجه'}
+                                      {nquranAppliedKey === badgeKey ? '✓ أُضيف — اضغط حفظ' : '➕ إضافة للأداء'}
                                     </button>
                                   ) : null}
                                 </div>
