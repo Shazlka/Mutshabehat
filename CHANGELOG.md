@@ -7,6 +7,11 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
+## 2026-09-29 — Review Editor: fixed «Qiraat review data is unavailable» when adding a missing nquran item (needs DB migration)
+- **Cause (Vercel runtime log `[qiraat-review] database failure column p.page_number does not exist`):** `qiraat_review_create_entry` looked up `qiraat_pages.page_number`, but the column is `mushaf_page_number`. It only runs for a word with no locus yet (a genuinely missing item), so it never showed before.
+- **Fix:** migration `supabase/migrations/20260929130000_qiraat_review_create_entry_fix_page_column.sql` (page lookups use `mushaf_page_number`; rest identical), rollback `supabase/rollbacks/20260929130000_qiraat_review_create_entry_fix_page_column.down.sql`. **Not yet applied to live** — must be run on the Mac Mini, then `NOTIFY pgrst, 'reload schema'`.
+- **Files:** the two SQL files above.
+
 ## 2026-09-29 — Review Editor: nquran.com «إضافة» now adds into «تفاصيل الأداء والأوجه للرواة المحددين» of the open face (no separate entry)
 - **Owner request:** clicking the add button on an nquran.com reader group must add that group's narrators, with the nquran text as «نص الأداء», inside the current face's «تفاصيل الأداء والأوجه للرواة المحددين» — not create a separate face in «الأوجه».
 - **Change:** `handleApplyNquranGroup` no longer calls `onCreateNewEntry`. It appends each resolved narrator to the editor's narrators draft with `action` = nquran reading (skipping an identical narrator+text), wajh order computed with `nextWajhOrder` over this face and the word's other active farsh rows, Hafs floored at 2 with a note. Button reads «➕ إضافة للأداء» then «✓ أُضيف — اضغط حفظ»; persistence is via the normal «حفظ».
