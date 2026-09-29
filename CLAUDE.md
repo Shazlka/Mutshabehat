@@ -38,6 +38,14 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Mushaf Qiraat cards: one source per comment (per-reader «الأداء»), duplicate ruling text removed, editor fields labelled
+- **Owner request:** the same sentence appeared twice on a card (e.g. 2:118 «إبدال الهمزة وصلاً ووقفاً» bold and again grey); comments must come from a single, identifiable source in the editor.
+- **Source map:** bold line under the reader pills = per-reader **«الأداء»** (`action_ar`, in تفاصيل الأداء والأوجه) — now the single source of truth. Grey line = **«بيان الحكم»** (`text_ar`), which the Hamzah/Imalah builders auto-fill with the same synthesized sentence.
+- **Change:** `distinctRulingText()` hides the grey ruling text when, after Arabic normalization, it equals/contains (or is contained in) the category name or any displayed action; otherwise it still shows (extra information is kept). Applied in the selection card and hover peek for all categories.
+- **Editor:** the «الأداء» input is highlighted amber and labelled «يظهر في المصحف»; the «بيان الحكم» labels now say it shows on the Mushaf only when different from the reader's «الأداء».
+- **Verification:** `npm run typecheck` clean. **DB migration:** none.
+- **Files:** `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`, `src/app/mushaf-1441/review/_components/{ReaderNarratorSelector,UsulRuleGrid,ReviewEditorPane}.tsx`.
+
 ## 2026-09-29 — Mushaf Qiraat cards: wajh number and «الخلاف» note now shown under each reader (needs DB migration)
 - **Owner request:** after the per-reader performance text, also show the وجه number and the الخلاف note entered in تفاصيل الأداء والأوجه.
 - **DB:** `qiraat_export_page` now also exports `wajhOrder` and `wajhNote` for each attribution (two keys added; everything else identical to `20260925140000`). Migration `supabase/migrations/20260929120000_qiraat_export_page_wajh_details.sql`, rollback `supabase/rollbacks/20260929120000_qiraat_export_page_wajh_details.down.sql`. **Not yet applied to live** — until it is, the cards look exactly as before (the new fields are simply absent), so deploying the code first is safe.

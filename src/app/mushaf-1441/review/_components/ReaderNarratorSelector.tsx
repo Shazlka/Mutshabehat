@@ -662,8 +662,8 @@ export default function ReaderNarratorSelector({ narrators, onChange, disabled }
                             className="w-8 rounded border border-[var(--color-border)] px-0.5 py-0.2 text-center"
                           />
                         </label>
-                        <label className="flex flex-1 items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
-                          <span>الأداء:</span>
+                        <label className="flex flex-1 items-center gap-0.5 rounded bg-amber-100/70 px-1 text-[10px] font-bold text-amber-900 ring-1 ring-amber-400" title="هذا الحقل هو المصدر الوحيد للتعليق الظاهر تحت القارئ في المصحف">
+                          <span>الأداء (يظهر في المصحف):</span>
                           <input
                             type="text"
                             value={item.action ?? ''}

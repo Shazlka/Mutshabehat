@@ -246,7 +246,7 @@ export default function UsulRuleGrid({
       {!isImalahCategory(selectedCategoryCode) && !isHamzahCategory(selectedCategoryCode) ? (
         <div>
           <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-            بيان الحكم أو الملاحظة (اختياري):
+            بيان الحكم أو الملاحظة (اختياري): ‏(يظهر في المصحف فقط إذا اختلف عن «الأداء» المكتوب للقارئ)
           </label>
           <input
             type="text"

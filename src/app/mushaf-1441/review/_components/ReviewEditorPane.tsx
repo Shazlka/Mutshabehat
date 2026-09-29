@@ -1223,7 +1223,7 @@ export default function ReviewEditorPane({
               /* Usul Ruling Text */
               <div>
                 <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                  بيان الحكم أو الضابط (اختياري):
+                  بيان الحكم أو الضابط (اختياري): ‏(يظهر في المصحف فقط إذا اختلف عن «الأداء» المكتوب للقارئ)
                 </label>
                 <textarea
                   rows={4}

@@ -487,6 +487,25 @@ function renderReaderPerformance(
   )
 }
 
+/** One source per comment: the per-reader الأداء (action) is the source of truth. The general
+ *  ruling text («بيان الحكم») is shown only when it adds something -- i.e. it is not the category
+ *  name and not the same sentence as (or contained in) an action already displayed. */
+function distinctRulingText(
+  text: string | null | undefined,
+  categoryAr: string,
+  actions: ReadonlyArray<string | null | undefined>,
+): string | null {
+  const norm = (v: string) => v.replace(/[\u064B-\u065F\u0670\u0640]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/[\s.،:؛-]+/g, ' ').trim()
+  const t = norm(text ?? '')
+  if (!t) return null
+  if (t === norm(categoryAr)) return null
+  for (const a of actions) {
+    const n = norm(a ?? '')
+    if (n && (t === n || t.includes(n) || n.includes(t))) return null
+  }
+  return (text ?? '').trim()
+}
+
 /** The action line only earns its place when it says something the category badge does not
  *  (e.g. "إمالة وقفاً" under "الممال والمقلل"); "ترك الغنة" under "ترك الغنة" is pure repetition. */
 function isRedundantActionLabel(action: string | null | undefined, categoryAr: string): boolean {
@@ -4089,7 +4108,7 @@ export default function Mushaf1441Viewer({
                   </div>
                 )
               })}
-              {ruling.text ? <p className="mt-1.5 text-[11px] leading-6 text-[#665b48]">{ruling.text}</p> : null}
+              {(() => { const t = distinctRulingText(ruling.text, ruling.categoryAr, ruling.attribution.map((a) => a.action)); return t ? <p className="mt-1.5 text-[11px] leading-6 text-[#665b48]">{t}</p> : null })()}
               {alternates.length > 0 ? (
                 <p className="mt-1.5 rounded bg-[#fdf3d8] px-2 py-1 text-[10px] font-bold text-[#7a5a10]">
                   ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا
@@ -4506,7 +4525,7 @@ export default function Mushaf1441Viewer({
                       </div>
                     )
                   })}
-                  {ruling.text ? <p className="mt-2 text-xs leading-6 text-[#665b48]">{ruling.text}</p> : null}
+                  {(() => { const t = distinctRulingText(ruling.text, ruling.categoryAr, ruling.attribution.map((a) => a.action)); return t ? <p className="mt-2 text-xs leading-6 text-[#665b48]">{t}</p> : null })()}
                 </div>
               )
             })}
