@@ -452,6 +452,26 @@ async function readPreviewApiError(response: Response, fallback: string) {
   return parts.join(' - ')
 }
 
+/** How the readers above actually read it: the recorded performance text (الأداء) and any
+ *  qualifier (وقفاً / بخلف عنه), shown BELOW their pills. Nothing is rendered when the entry has
+ *  only the category's own name -- that is already known by the rule. */
+function renderReaderPerformance(
+  action: string,
+  list: ReadonlyArray<{ condition?: string }>,
+  categoryAr: string,
+) {
+  const showAction = !isRedundantActionLabel(action, categoryAr)
+  const conditions = Array.from(new Set(list.map((a) => a.condition?.trim()).filter((c): c is string => Boolean(c))))
+  if (!showAction && conditions.length === 0) return null
+  return (
+    <p className="mt-1 text-[11px] font-bold leading-5 text-[#3f3629]">
+      {showAction ? action : null}
+      {showAction && conditions.length > 0 ? ' — ' : null}
+      {conditions.length > 0 ? <span className="font-normal text-[#8b7f6a]">{conditions.join('، ')}</span> : null}
+    </p>
+  )
+}
+
 /** The action line only earns its place when it says something the category badge does not
  *  (e.g. "إمالة وقفاً" under "الممال والمقلل"); "ترك الغنة" under "ترك الغنة" is pure repetition. */
 function isRedundantActionLabel(action: string | null | undefined, categoryAr: string): boolean {
@@ -4047,10 +4067,10 @@ export default function Mushaf1441Viewer({
                 const pills = rollupAuthorityPills(list.map((a) => a.authorityId))
                 return (
                   <div key={action} className="mb-1.5 last:mb-0">
-                    {isRedundantActionLabel(action, ruling.categoryAr) ? null : <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>}
                     <div className="flex flex-wrap gap-1.5">
                       {pills.map(renderReaderPill)}
                     </div>
+                    {renderReaderPerformance(action, list, ruling.categoryAr)}
                   </div>
                 )
               })}
@@ -4464,10 +4484,10 @@ export default function Mushaf1441Viewer({
                     const pills = rollupAuthorityPills(list.map((a) => a.authorityId))
                     return (
                       <div key={action} className="mt-2">
-                        {isRedundantActionLabel(action, ruling.categoryAr) ? null : <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>}
                         <div className="flex flex-wrap gap-1.5">
                           {pills.map(renderReaderPill)}
                         </div>
+                        {renderReaderPerformance(action, list, ruling.categoryAr)}
                       </div>
                     )
                   })}

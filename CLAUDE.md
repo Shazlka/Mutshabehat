@@ -38,6 +38,13 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Mushaf Qiraat cards: per-reader performance details now sit below each reader's pills
+- **Owner request:** the details entered in the review editor's «تفاصيل الأداء والأوجه للرواة المحددين» (نص الأداء / qualifier) should be visible under each reader so the reader of the Mushaf knows how to read.
+- **Change:** in the selection card and hover peek, each action group now renders its reader pills first and, directly beneath them, the recorded performance text (e.g. «إمالة وقفاً») plus any qualifier (وقفاً / بخلف عنه) via `renderReaderPerformance()`. Nothing is rendered when the text only repeats the category name, so empty stays empty.
+- **Not included:** the editor's «الخلاف» (`wajh_note`) and wajh number are not part of `qiraat_export_page`, so they are not shown yet; adding them needs an export-function migration.
+- **Verification:** `npm run typecheck` clean. **DB migration:** none.
+- **Files:** `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`.
+
 ## 2026-09-29 — Mushaf Qiraat detail cards: removed the repeated category line (e.g. "ترك الغنة" shown twice)
 - **Owner report:** in the word detail/hover cards the أصول category appeared as a coloured badge and again as a bold line directly under it ("ترك الغنة", "مد البدل", …), on every word.
 - **Fix:** the bold action line under the badge is now omitted when it is empty or merely repeats the category name (diacritics/tatweel-insensitive) via `isRedundantActionLabel()` in `Mushaf1441Viewer.tsx`, in both the selection card and the hover peek. Genuinely different actions (e.g. "إمالة وقفاً" under "الممال والمقلل") are kept, since they are what separates one reader group from another. Detail text (ruling text / notes) is still shown only when the entry has it; empty stays empty.
