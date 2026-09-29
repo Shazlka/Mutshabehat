@@ -34,7 +34,7 @@ async function loadInitialMutshabehatHighlights() {
   }
 }
 
-export async function renderMushafPage(searchParams: SP, initialReviewMode = false) {
+export async function renderMushafPage(searchParams: SP) {
   const { page } = await searchParams
   const requestedPage = Number.parseInt(page ?? '1', 10)
   const initialPageNumber = isValidMushaf1441PageNumber(requestedPage) ? requestedPage : 1
@@ -60,7 +60,6 @@ export async function renderMushafPage(searchParams: SP, initialReviewMode = fal
       initialPageMetadata={initialPageMetadata}
       surahOptions={MUSHAF_1441_SURAH_OPTIONS}
       initialMutshabehatHighlights={initialMutshabehatHighlights}
-      initialReviewMode={initialReviewMode}
     />
   )
 }

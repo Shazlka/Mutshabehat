@@ -10,15 +10,10 @@ interface QiraatToolbarProps {
   onModeChange: (mode: QiraatMode) => void
   selectedReadingId: ReadingId
   onReadingChange: (id: ReadingId) => void
-  studyMode: boolean
-  onStudyModeChange: (value: boolean) => void
   showDifferenceFromHafs: boolean
   onShowDifferenceFromHafsChange: (value: boolean) => void
   filter: QiraatComparisonFilter
   onFilterChange: (filter: QiraatComparisonFilter) => void
-  includeReviewed: boolean
-  onIncludeReviewedChange: (value: boolean) => void
-  onOpenLegend: () => void
 }
 
 const MODE_OPTIONS: { id: QiraatMode; label: string }[] = [
@@ -30,11 +25,8 @@ const MODE_OPTIONS: { id: QiraatMode; label: string }[] = [
 export default function QiraatToolbar({
   mode, onModeChange,
   selectedReadingId, onReadingChange,
-  studyMode, onStudyModeChange,
   showDifferenceFromHafs, onShowDifferenceFromHafsChange,
   filter, onFilterChange,
-  includeReviewed, onIncludeReviewedChange,
-  onOpenLegend,
 }: QiraatToolbarProps) {
   return (
     <div className="space-y-3">
@@ -131,39 +123,6 @@ export default function QiraatToolbar({
             </select>
           ) : null}
         </div>
-      ) : null}
-
-      {mode !== 'normal' ? (
-        <div className="flex items-center justify-between gap-3 rounded-md border border-[#d7c7a7] bg-white px-3 py-2 text-[11px]">
-          <label className="flex items-center gap-2 font-bold text-[#3a3326]">
-            <input
-              type="checkbox"
-              checked={studyMode}
-              onChange={(event) => onStudyModeChange(event.target.checked)}
-              className="size-4 accent-[#171717]"
-            />
-            وضع الدراسة (تمييز أوضح)
-          </label>
-          <button type="button" onClick={onOpenLegend} className="font-bold text-[#80662c] underline underline-offset-2">
-            مفتاح القراءات
-          </button>
-        </div>
-      ) : (
-        <button type="button" onClick={onOpenLegend} className="text-[11px] font-bold text-[#80662c] underline underline-offset-2">
-          مفتاح القراءات
-        </button>
-      )}
-
-      {mode !== 'normal' ? (
-        <label className="flex items-center justify-between gap-3 text-[10px] text-[#8a7c5c]">
-          <span>عرض بيانات قيد المراجعة (غير معتمدة بعد) — لأغراض التطوير</span>
-          <input
-            type="checkbox"
-            checked={includeReviewed}
-            onChange={(event) => onIncludeReviewedChange(event.target.checked)}
-            className="size-3.5 accent-[#a16207]"
-          />
-        </label>
       ) : null}
 
       <p className="text-[11px] leading-6 text-[#665b48]">

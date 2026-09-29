@@ -258,15 +258,3 @@ export function imalahTaqlilMarkerForWord(
 
   return { color: matches[0].color, filled: sawImalah }
 }
-
-/** Distinct usul families present on a page, for the legend/panel. */
-export function rulingCategoriesOnPage(rulings: readonly QiraatRuling[]) {
-  const seen = new Map<string, { category: string; categoryAr: string; color: string; count: number }>()
-  for (const ruling of rulings) {
-    if (!ruling.wordAnchored) continue
-    const entry = seen.get(ruling.category)
-    if (entry) entry.count += 1
-    else seen.set(ruling.category, { category: ruling.category, categoryAr: ruling.categoryAr, color: ruling.color, count: 1 })
-  }
-  return Array.from(seen.values())
-}

@@ -14,7 +14,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CreateEntryInput, EntryFields, NarratorInput, ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
 import HistoryPanel from './HistoryPanel'
-import ReviewMushafPane, { canonicalKeyForWord } from './ReviewMushafPane'
+import ReviewMushafPane from './ReviewMushafPane'
 import ReviewStatsBar from './ReviewStatsBar'
 import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
 import ReviewNav from './ReviewNav'

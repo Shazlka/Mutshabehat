@@ -1,14 +1,9 @@
 'use client'
 
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { ReviewPage, ReviewRow } from '../_lib/types'
 import {
-  STATUS_BG_VAR,
-  STATUS_COLOR_VAR,
   worstStatus,
-  type StatusFilter,
-  type KindFilter,
-  filterReviewRows,
 } from './statusMeta'
 import {
   getMushaf1441PageMetadata,
@@ -16,7 +11,6 @@ import {
   type Mushaf1441PageMetadata,
 } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
 import type {
-  MushafLine,
   MushafLineDecoration,
   MushafPage,
   MushafWord,

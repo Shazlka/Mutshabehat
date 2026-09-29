@@ -3,28 +3,23 @@
 import { useEffect, useMemo, useState } from 'react'
 import type {
   BulkApplyResult,
-  CatalogNarrator,
   CreateEntryInput,
   EntryFields,
-  HamzahDetail,
   NarratorInput,
-  OccurrenceCandidate,
   ReviewPage,
   ReviewRow,
-  SameWordMatch,
 } from '../_lib/types'
 import {
   getMushaf1441SurahOption,
 } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
-import ReaderNarratorSelector, { CANONICAL_READERS, HAFS_ID } from './ReaderNarratorSelector'
+import ReaderNarratorSelector, { HAFS_ID } from './ReaderNarratorSelector'
 import UsulRuleGrid, { FALLBACK_USUL_CATEGORIES } from './UsulRuleGrid'
-import FarshFields, { CANONICAL_VARIANT_TYPES, normalizeVariantType } from './FarshFields'
-import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
+import { CANONICAL_VARIANT_TYPES, normalizeVariantType } from './FarshFields'
+import { isHamzahCategory } from './HamzahDetailFields'
 import { isImalahCategory, nextWajhOrder } from './ImalahDetailFields'
 import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
 import { normalizeArabic } from '@/lib/arabic'
-import * as reviewApi from '../_lib/api'
 import { describeNarratorGroup } from './narratorDisplay'
 import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'

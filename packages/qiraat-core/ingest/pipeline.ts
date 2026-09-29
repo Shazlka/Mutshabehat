@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import { DbAdapter } from './dbAdapter'
-import { reanchorWord, type AyahWordToken, type ReanchorMatch } from './reanchor'
-import { expandAlBaqoon, isValidAuthorityId } from './expand'
+import { reanchorWord, type AyahWordToken } from './reanchor'
+import { isValidAuthorityId } from './expand'
 import { classifyRuling, splitMultiWordRuleSpan, DB_CATEGORY_CODES } from './classify'
 import { planMerges, type IngestItem, type PlannedMergeItem } from './mergePlan'
 

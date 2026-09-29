@@ -38,6 +38,14 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Cleanup: legacy Mushaf Qiraat controls removed; app shell no longer blocks first paint
+- **Owner request:** the review editor page replaces the in-reader editing tools, so drop them; clean dead code; speed up loading.
+- **Removed from the Mushaf reader (desktop sidebar and mobile menu):** «تفعيل وضع التعديل» and the inline `QiraatEditor`; «تحديد نطاق» / «تحديد حد فاصل»; «وضع الدراسة» and «مفتاح القراءات» (+ legend modal); «عرض بيانات قيد المراجعة»; the أصول colour chips («تلوين الأصول على الكلمات»); «مراجعة المواضع المستوردة» (per-device review rings/verdicts). Behaviour now equals the old defaults: study mode off, unreviewed data included, أصول colouring on for every category. Kept: mode selector, riwayah/filter controls, hover peek, selection card, page rules, المرجع sheet, متشابهات and notes layers.
+- **Speed:** `src/app/(app)/layout.tsx` awaited the user + group-count queries before rendering, so the CSS/JS links reached the browser only after them (~1.3 s on warm visits). The layout now renders the shell immediately and streams the sidebar/topbar data behind `<Suspense>` (one shared cached fetch).
+- **Dead code:** unused imports/locals removed in `review/_components/*`, `packages/qiraat-core/ingest/pipeline.ts`, `(app)/page.tsx`; deleted `QiraatEditor.tsx`, `QiraatLegend.tsx`, unused qiraat types/helpers.
+- **Left in place (now uncalled by the reader):** `/api/mushaf-1441/qiraat-editor` and `/qiraat-resolved` routes (only the old inline editor used them).
+- **Verification:** typecheck, `test:qiraat:review` 53/53, `test:qiraat`, `mushaf:validate`, `test:proxy`, `next build`; lint errors unchanged (55), warnings 65 → 38; browser check of the reader on desktop and mobile. **DB migration:** none.
+
 ## 2026-09-29 — Review Editor: nquran.com reference now covers all 114 surahs (was Baqarah only)
 - **Owner request:** add the remaining nquran.com «فروقات القراء» data for every other surah (supplied as `quran-qiraat-20-page-sections.zip`: 31 page sections, 6,236 ayahs).
 - **Data:** `scripts/qiraat/build_nquran_reference.py` splits the export into one compact file per surah, `src/app/mushaf-1441/review/_lib/reference/nquran/surah-001…114.json` (same `NquranAyahEntry` shape; `ayahText`/`sourceOption`/`pageNumber` dropped as unused). The zip's Baqarah section is byte-identical (differences + source URLs) to the file it replaces, `baqarah-nquran-differences.json`, which is removed. 279 ayahs have no documented differences and simply show no panel.

@@ -5,7 +5,6 @@ import type {
   BulkApplyResult,
   CreateEntryInput,
   EntryFields,
-  HamzahDetail,
   NarratorInput,
   ReviewPage,
   ReviewRow,
@@ -14,10 +13,9 @@ import { getMushaf1441SurahOption } from '../../../../../packages/quran-data/mus
 import ReaderNarratorSelector from './ReaderNarratorSelector'
 import UsulRuleGrid from './UsulRuleGrid'
 import FarshFields from './FarshFields'
-import HamzahDetailFields, { isHamzahCategory } from './HamzahDetailFields'
+import { describeNarratorGroup } from './narratorDisplay'
 import { STATUS_LABEL_AR } from './statusMeta'
 import { useReviewEditorDraft, type WordMeta } from './useReviewEditorDraft'
-import { describeNarratorGroup } from './narratorDisplay'
 import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
 import { cn } from '@/lib/cn'

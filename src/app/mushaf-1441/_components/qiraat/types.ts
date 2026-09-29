@@ -12,7 +12,6 @@ export const QIRAAT_PREFS_STORAGE_KEY = 'mushaf1441:qiraat-prefs:v1'
 export interface QiraatPrefs {
   mode: QiraatMode
   selectedReadingId: ReadingId
-  studyMode: boolean
   showDifferenceFromHafs: boolean
   filter: QiraatComparisonFilter
 }

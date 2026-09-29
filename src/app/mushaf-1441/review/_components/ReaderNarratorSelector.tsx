@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useMemo, useRef, useEffect, useState } from 'react'
+import { useMemo, useRef, useEffect, useState } from 'react'
 import type { NarratorInput } from '../_lib/types'
 import { cn } from '@/lib/cn'
 
