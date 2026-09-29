@@ -457,18 +457,33 @@ async function readPreviewApiError(response: Response, fallback: string) {
  *  only the category's own name -- that is already known by the rule. */
 function renderReaderPerformance(
   action: string,
-  list: ReadonlyArray<{ condition?: string }>,
+  list: ReadonlyArray<{ condition?: string; wajhOrder?: number; wajhNote?: string }>,
   categoryAr: string,
+  multiWajh = false,
 ) {
   const showAction = !isRedundantActionLabel(action, categoryAr)
   const conditions = Array.from(new Set(list.map((a) => a.condition?.trim()).filter((c): c is string => Boolean(c))))
-  if (!showAction && conditions.length === 0) return null
+  const notes = Array.from(new Set(list.map((a) => a.wajhNote?.trim()).filter((c): c is string => Boolean(c))))
+  const wajhs = multiWajh
+    ? Array.from(new Set(list.map((a) => a.wajhOrder).filter((n): n is number => typeof n === 'number'))).sort((a, b) => a - b)
+    : []
+  if (!showAction && conditions.length === 0 && notes.length === 0 && wajhs.length === 0) return null
   return (
-    <p className="mt-1 text-[11px] font-bold leading-5 text-[#3f3629]">
-      {showAction ? action : null}
-      {showAction && conditions.length > 0 ? ' — ' : null}
-      {conditions.length > 0 ? <span className="font-normal text-[#8b7f6a]">{conditions.join('، ')}</span> : null}
-    </p>
+    <div className="mt-1 space-y-0.5 text-[11px] leading-5">
+      {showAction || conditions.length > 0 || wajhs.length > 0 ? (
+        <p className="font-bold text-[#3f3629]">
+          {wajhs.map((n) => (
+            <span key={n} className="ml-1 rounded-full bg-[#f1e2b6] px-1.5 py-px text-[10px] font-bold text-[#7a5a10]">وجه {n}</span>
+          ))}
+          {showAction ? action : null}
+          {showAction && conditions.length > 0 ? ' — ' : null}
+          {conditions.length > 0 ? <span className="font-normal text-[#8b7f6a]">{conditions.join('، ')}</span> : null}
+        </p>
+      ) : null}
+      {notes.map((n) => (
+        <p key={n} className="text-[#8b7f6a]">الخلاف: {n}</p>
+      ))}
+    </div>
   )
 }
 
@@ -4070,7 +4085,7 @@ export default function Mushaf1441Viewer({
                     <div className="flex flex-wrap gap-1.5">
                       {pills.map(renderReaderPill)}
                     </div>
-                    {renderReaderPerformance(action, list, ruling.categoryAr)}
+                    {renderReaderPerformance(action, list, ruling.categoryAr, ruling.attribution.some((a) => (a.wajhOrder ?? 1) > 1))}
                   </div>
                 )
               })}
@@ -4487,7 +4502,7 @@ export default function Mushaf1441Viewer({
                         <div className="flex flex-wrap gap-1.5">
                           {pills.map(renderReaderPill)}
                         </div>
-                        {renderReaderPerformance(action, list, ruling.categoryAr)}
+                        {renderReaderPerformance(action, list, ruling.categoryAr, ruling.attribution.some((a) => (a.wajhOrder ?? 1) > 1))}
                       </div>
                     )
                   })}

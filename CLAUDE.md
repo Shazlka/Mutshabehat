@@ -38,6 +38,13 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Mushaf Qiraat cards: wajh number and «الخلاف» note now shown under each reader (needs DB migration)
+- **Owner request:** after the per-reader performance text, also show the وجه number and the الخلاف note entered in تفاصيل الأداء والأوجه.
+- **DB:** `qiraat_export_page` now also exports `wajhOrder` and `wajhNote` for each attribution (two keys added; everything else identical to `20260925140000`). Migration `supabase/migrations/20260929120000_qiraat_export_page_wajh_details.sql`, rollback `supabase/rollbacks/20260929120000_qiraat_export_page_wajh_details.down.sql`. **Not yet applied to live** — until it is, the cards look exactly as before (the new fields are simply absent), so deploying the code first is safe.
+- **UI:** `renderReaderPerformance()` shows a «وجه N» badge (only when the ruling has more than one wajh, so single-face rulings stay clean) and a «الخلاف: …» line, below the reader pills in the selection card and hover peek. Empty fields render nothing. Wired through `QiraatRulingAttribution.wajhOrder/wajhNote` (`types.ts`) and `mapExportRuling` in `route.ts`.
+- **Verification:** `npm run typecheck` clean.
+- **Files:** `supabase/migrations/20260929120000_qiraat_export_page_wajh_details.sql` (new), `supabase/rollbacks/20260929120000_qiraat_export_page_wajh_details.down.sql` (new), `packages/qiraat-core/types.ts`, `src/app/api/mushaf-1441/qiraat/route.ts`, `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`.
+
 ## 2026-09-29 — Mushaf Qiraat cards: per-reader performance details now sit below each reader's pills
 - **Owner request:** the details entered in the review editor's «تفاصيل الأداء والأوجه للرواة المحددين» (نص الأداء / qualifier) should be visible under each reader so the reader of the Mushaf knows how to read.
 - **Change:** in the selection card and hover peek, each action group now renders its reader pills first and, directly beneath them, the recorded performance text (e.g. «إمالة وقفاً») plus any qualifier (وقفاً / بخلف عنه) via `renderReaderPerformance()`. Nothing is rendered when the text only repeats the category name, so empty stays empty.

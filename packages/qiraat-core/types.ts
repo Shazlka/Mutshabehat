@@ -239,6 +239,10 @@ export interface QiraatRulingAttribution {
   action: string
   /** "وقفًا" / "وصلًا" / "بخلف عنه" — the source's own qualifier, verbatim. */
   condition?: string
+  /** Wajh number (1 = first face); >1 marks a further valid face for the same authority. */
+  wajhOrder?: number
+  /** «الخلاف» — the reviewer's note on where the faces differ. */
+  wajhNote?: string
 }
 
 export interface QiraatRulingReading {

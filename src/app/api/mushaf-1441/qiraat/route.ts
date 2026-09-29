@@ -94,6 +94,8 @@ interface ExportAttribution {
   condition?: string
   isException?: boolean
   isDefault?: boolean
+  wajhOrder?: number
+  wajhNote?: string
 }
 
 interface ExportEntry {
@@ -175,6 +177,8 @@ function mapExportRuling(entry: ExportEntry, pageNumber: number): QiraatRuling {
       authorityId: a.authorityId,
       action: a.action ?? categoryAr,
       condition: a.condition ?? undefined,
+      wajhOrder: a.wajhOrder ?? undefined,
+      wajhNote: a.wajhNote?.trim() || undefined,
     })
   )
 
