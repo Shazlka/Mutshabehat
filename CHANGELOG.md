@@ -7,6 +7,15 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
+## 2026-09-29 — Review Editor: nquran.com reference now covers all 114 surahs (was Baqarah only)
+- **Owner request:** add the remaining nquran.com «فروقات القراء» data for every other surah (supplied as `quran-qiraat-20-page-sections.zip`: 31 page sections, 6,236 ayahs).
+- **Data:** `scripts/qiraat/build_nquran_reference.py` splits the export into one compact file per surah, `src/app/mushaf-1441/review/_lib/reference/nquran/surah-001…114.json` (same `NquranAyahEntry` shape; `ayahText`/`sourceOption`/`pageNumber` dropped as unused). The zip's Baqarah section is byte-identical (differences + source URLs) to the file it replaces, `baqarah-nquran-differences.json`, which is removed. 279 ayahs have no documented differences and simply show no panel.
+- **Code:** `loadNquranBaqarahReference()` → `loadNquranReference(surah)` (lazy dynamic import, cached per surah, so each surah is its own chunk and nothing is in the editor's initial bundle); `hasNquranReferenceForSurah` accepts 1..114; the editor keeps the loaded entries keyed by surah so switching surah reloads correctly.
+- **Reader labels:** the whole dataset uses 30 distinct labels; all resolve to narrator IDs (including «كل الرواة», which the resolver already handled). Still reference-only: nothing is written automatically.
+- **Tests:** 3 new cases in `tests/qiraat/nquran-reference.test.ts` (114 files / 6,236 contiguous ayahs / correct surah numbers; every reader label in the dataset resolves and every group maps to ≥1 narrator).
+- **Verification:** `npm run typecheck`, `npm run test:qiraat:review`, `npm run build` (clean). **DB migration:** none.
+- **Files:** `scripts/qiraat/build_nquran_reference.py` (new), `src/app/mushaf-1441/review/_lib/reference/nquran/*.json` (114 new), `src/app/mushaf-1441/review/_lib/nquranReference.ts`, `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`, `tests/qiraat/nquran-reference.test.ts`.
+
 ## 2026-09-29 — Mushaf: an entry re-added after deleting the earlier one was invisible on the Mushaf (needs DB migration)
 - **Owner report:** ميم الجمع on 2:3 رَزَقْنَـٰهُمْ saved in the editor but not coloured on the Mushaf nor listed in the sidebar, even after the word-anchored fix.
 - **Cause (verified on live):** the entry was VERIFIED, on page 2, `USUL_MIM_JAM`, anchored — but its locus `l-2-3-7` was soft-deleted. Deleting the earlier two-word versions soft-deleted the now-empty locus; `qiraat_review_create_entry` then re-used that locus by position without checking `deleted_at`, and `qiraat_export_page` skips entries on deleted loci, so the reader never received it.

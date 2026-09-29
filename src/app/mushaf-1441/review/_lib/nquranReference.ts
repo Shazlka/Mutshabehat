@@ -3,9 +3,10 @@
 // a source like nquran.com informs a reviewer's own judgement while they fill in "٢. نص القراءة
 // والبيان" and "٣. القراء والرواة والأوجه"; it is displayed, never written into any field or record.
 //
-// Currently covers only سورة البقرة (surahNumber 2) -- the one supplied dataset. Looking up any
-// other surah returns an empty list, which callers treat as "no reference available" rather than
-// an error.
+// Covers all 114 surahs (6,236 ayahs), one lazily-loaded JSON file per surah under
+// `reference/nquran/` (built by scripts/qiraat/build_nquran_reference.py from the nquran.com
+// page-section export). A surah outside 1..114 has no reference, which callers treat as
+// "no reference available" rather than an error.
 
 import { normalizeArabic } from '@/lib/arabic'
 import { CANONICAL_READERS } from '../_components/ReaderNarratorSelector'
@@ -25,27 +26,31 @@ export interface NquranAyahEntry {
   surah: string
   surahNumber: number
   ayah: number
-  ayahText: string
+  ayahText?: string
   sourceUrl: string
   differences: NquranDifference[]
 }
 
-let baqarahEntriesPromise: Promise<NquranAyahEntry[]> | null = null
+const surahEntriesPromises = new Map<number, Promise<NquranAyahEntry[]>>()
 
-/** Lazily loads the ~1.6 MB Baqarah reference file as its own chunk, only when a reviewer is
- * actually looking at a Baqarah word -- never bundled into the editor's initial load. */
-export function loadNquranBaqarahReference(): Promise<NquranAyahEntry[]> {
-  if (!baqarahEntriesPromise) {
-    baqarahEntriesPromise = import('./reference/baqarah-nquran-differences.json').then(
+/** Lazily loads one surah's reference file as its own chunk, only when a reviewer is actually
+ * looking at a word of that surah -- never bundled into the editor's initial load. */
+export function loadNquranReference(surahNumber: number): Promise<NquranAyahEntry[]> {
+  if (!hasNquranReferenceForSurah(surahNumber)) return Promise.resolve([])
+  let promise = surahEntriesPromises.get(surahNumber)
+  if (!promise) {
+    const file = String(surahNumber).padStart(3, '0')
+    promise = import(`./reference/nquran/surah-${file}.json`).then(
       (mod) => (mod.default ?? mod) as unknown as NquranAyahEntry[],
     )
+    surahEntriesPromises.set(surahNumber, promise)
   }
-  return baqarahEntriesPromise
+  return promise
 }
 
-/** Surahs this reference dataset currently covers. */
+/** Surahs this reference dataset covers: all 114. */
 export function hasNquranReferenceForSurah(surahNumber: number): boolean {
-  return surahNumber === 2
+  return Number.isInteger(surahNumber) && surahNumber >= 1 && surahNumber <= 114
 }
 
 export function findNquranEntryForAyah(entries: NquranAyahEntry[], ayah: number): NquranAyahEntry | null {

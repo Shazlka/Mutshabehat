@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import {
   ALL_NARRATOR_IDS,
@@ -6,6 +7,8 @@ import {
   rankDifferencesForWord,
   resolveDifferenceGroups,
   resolveNquranReaderLabel,
+  hasNquranReferenceForSurah,
+  type NquranAyahEntry,
   type NquranDifference,
 } from '../../src/app/mushaf-1441/review/_lib/nquranReference'
 import type { ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
@@ -118,4 +121,55 @@ test('rankDifferencesForWord: a difference whose location contains the word sort
   assert.equal(ranked[0].difference.location, 'فيه هدى')
   assert.equal(ranked[0].matchesWord, true)
   assert.equal(ranked[1].matchesWord, false)
+})
+
+// ── Full dataset (all 114 surahs) ───────────────────────────────────────────────────────────────
+
+const REFERENCE_DIR = new URL('../../src/app/mushaf-1441/review/_lib/reference/nquran/', import.meta.url)
+
+function loadSurah(n: number): NquranAyahEntry[] {
+  return JSON.parse(readFileSync(new URL(`surah-${String(n).padStart(3, '0')}.json`, REFERENCE_DIR), 'utf8'))
+}
+
+test('nquran reference covers exactly surahs 1..114', () => {
+  assert.equal(hasNquranReferenceForSurah(1), true)
+  assert.equal(hasNquranReferenceForSurah(114), true)
+  assert.equal(hasNquranReferenceForSurah(0), false)
+  assert.equal(hasNquranReferenceForSurah(115), false)
+})
+
+test('every surah file is complete: 6236 ayahs, contiguous, right surah number', () => {
+  let total = 0
+  for (let n = 1; n <= 114; n += 1) {
+    const entries = loadSurah(n)
+    assert.ok(entries.length > 0, `surah ${n} empty`)
+    entries.forEach((entry, i) => {
+      assert.equal(entry.surahNumber, n, `surah ${n} ayah ${i + 1} wrong surahNumber`)
+      assert.equal(entry.ayah, i + 1, `surah ${n}: ayah gap at index ${i}`)
+      assert.match(entry.sourceUrl, /^https:\/\/www\.nquran\.com\//)
+    })
+    total += entries.length
+  }
+  assert.equal(total, 6236)
+})
+
+test('every reader label in the whole dataset resolves, and every group maps to narrators', () => {
+  const unresolved = new Set<string>()
+  let emptyGroups = 0
+  for (let n = 1; n <= 114; n += 1) {
+    for (const entry of loadSurah(n)) {
+      for (const difference of entry.differences) {
+        for (const group of difference.groups) {
+          for (const label of group.readers) {
+            if (resolveNquranReaderLabel(label).kind === 'unresolved') unresolved.add(label)
+          }
+        }
+        for (const resolved of resolveDifferenceGroups(difference)) {
+          if (resolved.narratorIds.length === 0) emptyGroups += 1
+        }
+      }
+    }
+  }
+  assert.deepEqual([...unresolved], [], 'unresolved reader labels')
+  assert.equal(emptyGroups, 0, 'groups that resolve to no narrators')
 })

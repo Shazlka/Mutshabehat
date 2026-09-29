@@ -31,7 +31,7 @@ import { labelForRow } from './facesSummary'
 import {
   findNquranEntryForAyah,
   hasNquranReferenceForSurah,
-  loadNquranBaqarahReference,
+  loadNquranReference,
   proposeNquranDecision,
   rankDifferencesForWord,
   resolveDifferenceGroups,
@@ -209,28 +209,29 @@ export default function ReviewEditorPane({
   const [usulSearchQuery, setUsulSearchQuery] = useState('')
   const [showAllUsulCategories, setShowAllUsulCategories] = useState(false)
 
-  // External reference (nquran.com), currently Baqarah-only -- display only, never written into
-  // any saved field. Lazily loaded so its ~1.6 MB fixture is never in the editor's initial bundle.
-  const [nquranEntries, setNquranEntries] = useState<NquranAyahEntry[] | null>(null)
+  // External reference (nquran.com), all 114 surahs -- display only, never written into any saved
+  // field. Lazily loaded one surah at a time so no reference JSON is in the editor's initial bundle.
+  const [nquranLoaded, setNquranLoaded] = useState<{ surah: number; entries: NquranAyahEntry[] } | null>(null)
   const [nquranPanelOpen, setNquranPanelOpen] = useState(true)
+  const nquranSurah = selectedWordMeta?.surah ?? null
   useEffect(() => {
-    if (!selectedWordMeta || !hasNquranReferenceForSurah(selectedWordMeta.surah)) return
-    if (nquranEntries) return
+    if (nquranSurah === null || !hasNquranReferenceForSurah(nquranSurah)) return
+    if (nquranLoaded?.surah === nquranSurah) return
     let cancelled = false
-    loadNquranBaqarahReference().then((entries) => {
-      if (!cancelled) setNquranEntries(entries)
+    loadNquranReference(nquranSurah).then((entries) => {
+      if (!cancelled) setNquranLoaded({ surah: nquranSurah, entries })
     })
     return () => {
       cancelled = true
     }
-  }, [selectedWordMeta, nquranEntries])
+  }, [nquranSurah, nquranLoaded])
 
   const nquranRanked = useMemo(() => {
-    if (!selectedWordMeta || !nquranEntries || !hasNquranReferenceForSurah(selectedWordMeta.surah)) return null
-    const entry = findNquranEntryForAyah(nquranEntries, selectedWordMeta.ayah)
+    if (!selectedWordMeta || !nquranLoaded || nquranLoaded.surah !== selectedWordMeta.surah) return null
+    const entry = findNquranEntryForAyah(nquranLoaded.entries, selectedWordMeta.ayah)
     if (!entry || entry.differences.length === 0) return null
     return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text) }
-  }, [selectedWordMeta, nquranEntries])
+  }, [selectedWordMeta, nquranLoaded])
 
   // "Add to editor": clicking a resolved nquran.com group creates and SAVES a brand-new face for
   // the currently selected word directly -- via the same `onCreateNewEntry` (qiraat_review_create_
