@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Review Editor: nquran.com «إضافة كوجه» now writes the description into each reader's «الأداء» (single source of comments)
+- **Owner request:** when a group is added from nquran.com, its description must go to «الأداء» so comments come from one source only.
+- **Change:** `handleApplyNquranGroup` now sets each narrator's `action` (→ `action_ar`, the «الأداء» field) to the nquran reading text and no longer also writes it to «بيان الفرق» (`description`), so it shows once on the Mushaf card and is editable in تفاصيل الأداء والأوجه.
+- **Verification:** `npm run typecheck`. **DB migration:** none.
+- **Files:** `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`.
+
 ## 2026-09-29 — Mushaf Qiraat cards: one source per comment (per-reader «الأداء»), duplicate ruling text removed, editor fields labelled
 - **Owner request:** the same sentence appeared twice on a card (e.g. 2:118 «إبدال الهمزة وصلاً ووقفاً» bold and again grey); comments must come from a single, identifiable source in the editor.
 - **Source map:** bold line under the reader pills = per-reader **«الأداء»** (`action_ar`, in تفاصيل الأداء والأوجه) — now the single source of truth. Grey line = **«بيان الحكم»** (`text_ar`), which the Hamzah/Imalah builders auto-fill with the same synthesized sentence.

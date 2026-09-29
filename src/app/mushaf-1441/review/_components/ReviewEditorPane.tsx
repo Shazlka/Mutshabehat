@@ -266,7 +266,8 @@ export default function ReviewEditorPane({
       const narrators = resolved.narratorIds.map((id) => {
         const wajhOrder = nextWajhOrder(existingNarrators, id)
         const wajhNote = id === HAFS_ID ? resolved.group.reading || 'مستورد من مرجع nquran.com' : null
-        return { id, action: null, wajhOrder, wajhNote }
+        // Single source of comments: the nquran description goes into each narrator's «الأداء».
+        return { id, action: resolved.group.reading || null, wajhOrder, wajhNote }
       })
       succeeded = await onCreateNewEntry(
         {
@@ -276,7 +277,6 @@ export default function ReviewEditorPane({
           kind: 'farsh',
           readingText: selectedWordMeta.text,
           uthmaniText: selectedWordMeta.text,
-          description: resolved.group.reading,
           narrators,
         },
         // Per the owner's explicit choice: an nquran.com face is marked reviewed/verified in the
