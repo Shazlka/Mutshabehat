@@ -50,7 +50,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 ## 2026-09-29 — Mushaf: an entry re-added after deleting the earlier one was invisible on the Mushaf (needs DB migration)
 - **Owner report:** ميم الجمع on 2:3 رَزَقْنَـٰهُمْ saved in the editor but not coloured on the Mushaf nor listed in the sidebar, even after the word-anchored fix.
 - **Cause (verified on live):** the entry was VERIFIED, on page 2, `USUL_MIM_JAM`, anchored — but its locus `l-2-3-7` was soft-deleted. Deleting the earlier two-word versions soft-deleted the now-empty locus; `qiraat_review_create_entry` then re-used that locus by position without checking `deleted_at`, and `qiraat_export_page` skips entries on deleted loci, so the reader never received it.
-- **Fix:** migration `supabase/migrations/20260929150000_qiraat_entry_insert_revives_locus.sql` adds an AFTER INSERT trigger on `qiraat_entries` that revives the entry's locus, and repairs every already-hidden locus that still has a live entry. Rollback in `supabase/rollbacks/`. **Not yet applied to live.**
+- **Fix:** migration `supabase/migrations/20260929150000_qiraat_entry_insert_revives_locus.sql` adds an AFTER INSERT trigger on `qiraat_entries` that revives the entry's locus, and repairs every already-hidden locus that still has a live entry. Rollback in `supabase/rollbacks/`. **Applied to live 2026-09-29** (backup `pre-locus-revive-20260929T164058Z.dump`; repair updated 0 rows, 2:3 locus already live).
 - **Also:** `/api/mushaf-1441/qiraat` now logs `qiraat_export_page` RPC errors instead of silently falling back to fixtures.
 - **Files:** the two SQL files, `src/app/api/mushaf-1441/qiraat/route.ts`.
 

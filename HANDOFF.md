@@ -16,7 +16,7 @@ If `next build/dev` says "Supabase URL and API key are required": `env -u __NEXT
 | USUL_MIM_JAM / USUL_MADD / USUL_SAKT word-anchored + coloured (`20260929140000`) | applied to live |
 | `qiraat_review_create_entry` page-column fix (`20260929130000`) | applied to live |
 | Wajh number + «الخلاف» on Mushaf cards (`20260929120000`) | applied to live |
-| **Locus revival trigger + repair (`20260929150000`)** | **NOT APPLIED YET** |
+| Locus revival trigger + repair (`20260929150000`) | applied to live 2026-09-29 |
 | `/api/mushaf-1441/qiraat` logs `qiraat_export_page` errors instead of silent fixture fallback | deployed |
 | nquran.com reference for all 114 surahs (6,236 ayahs, lazy per-surah JSON, `scripts/qiraat/build_nquran_reference.py`) | deployed; not browser-checked |
 
