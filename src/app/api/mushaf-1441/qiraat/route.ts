@@ -36,6 +36,12 @@ const CATEGORY_COLORS: Record<string, string> = {
   YAAT_IDAFA: '#CA8A04',
   YAAT_ZAWAID: '#CA8A04',
   BAYN_SURATAYN: '#64748B',
+  USUL_MIM_JAM: '#DB2777',
+  USUL_MADD: '#2563EB',
+  USUL_SAKT: '#7C3AED',
+  USUL_NAQL: '#DC2626',
+  USUL_TAHQIQ: '#DC2626',
+  USUL_IBDAL: '#DC2626',
 }
 
 function mapDifferenceType(variantType?: string | null): DifferenceType {

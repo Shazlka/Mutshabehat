@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Mushaf: ميم الجمع / أصول المد / السكت entered in the editor now show on the word (needs DB migration)
+- **Owner report:** a face saved in the review editor on 2:3 «رَزَقْنَـٰهُمْ يُنفِقُونَ» (ميم الجمع) did not colour the words in the Mushaf nor appear in the sidebar.
+- **Cause:** the categories `USUL_MIM_JAM`, `USUL_MADD`, `USUL_SAKT` were seeded with `is_word_anchored = false` ("panel only"), and the reader draws markers only for word-anchored rulings — yet the editor lets the reviewer attach them to a specific word. (`USUL_NAQL/TAHQIQ/IBDAL` were already anchored.) They also had no colour, so they would have fallen back to grey.
+- **Fix:** migration `supabase/migrations/20260929140000_qiraat_usul_categories_word_anchored.sql` sets the three to word-anchored (rollback in `supabase/rollbacks/`), and `/api/mushaf-1441/qiraat` now colours the `USUL_*` categories (ميم الجمع pink, المد blue, السكت violet, النقل/التحقيق/الإبدال red). **Not yet applied to live** — run on the Mac Mini, then hard-refresh the Mushaf.
+- **Files:** the two SQL files, `src/app/api/mushaf-1441/qiraat/route.ts`.
+
 ## 2026-09-29 — Review Editor: fixed «Qiraat review data is unavailable» when adding a missing nquran item (needs DB migration)
 - **Cause (Vercel runtime log `[qiraat-review] database failure column p.page_number does not exist`):** `qiraat_review_create_entry` looked up `qiraat_pages.page_number`, but the column is `mushaf_page_number`. It only runs for a word with no locus yet (a genuinely missing item), so it never showed before.
 - **Fix:** migration `supabase/migrations/20260929130000_qiraat_review_create_entry_fix_page_column.sql` (page lookups use `mushaf_page_number`; rest identical), rollback `supabase/rollbacks/20260929130000_qiraat_review_create_entry_fix_page_column.down.sql`. **DB migration: applied to live 2026-09-29** (`CREATE FUNCTION` + `NOTIFY` completed with no error).
