@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-29 — Mushaf Qiraat detail cards: removed the repeated category line (e.g. "ترك الغنة" shown twice)
+- **Owner report:** in the word detail/hover cards the أصول category appeared as a coloured badge and again as a bold line directly under it ("ترك الغنة", "مد البدل", …), on every word.
+- **Fix:** the bold action line under the badge is now omitted when it is empty or merely repeats the category name (diacritics/tatweel-insensitive) via `isRedundantActionLabel()` in `Mushaf1441Viewer.tsx`, in both the selection card and the hover peek. Genuinely different actions (e.g. "إمالة وقفاً" under "الممال والمقلل") are kept, since they are what separates one reader group from another. Detail text (ruling text / notes) is still shown only when the entry has it; empty stays empty.
+- **Verification:** `npm run typecheck` clean. **DB migration:** none.
+- **Files:** `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`.
+
 ## 2026-09-28 — Review Editor: found and fixed the THIRD bug in the same cascade (`qiraat_to_variant_type(text)` didn't exist live, despite an earlier migration claiming to define it)
 - **Owner report:** same "Qiraat review data is unavailable" banner, immediately after applying the `qiraat_entry_narrators` fix below.
 - **Root cause, found in Vercel runtime logs (`[qiraat-review] database failure function qiraat_to_variant_type(text) does not exist`):** `qiraat_review_create_entry`'s step 5 (create details) calls `qiraat_to_variant_type(v_variant_type)` for every farsh/variant entry — a function `20260927100000_qiraat_review_safe_variant_type.sql` is supposed to have created, but which simply does not exist on the live database. Exactly the same blind spot as the previous two bugs: PL/pgSQL does not validate a called function's existence at `CREATE FUNCTION` time, only when that code path actually executes — and this path had never executed live before today, again because the earlier duplicate-check bug always short-circuited before reaching it. Whatever happened to `20260927100000` on live (partial apply that rolled back before this statement, or it was simply never run) is now moot.

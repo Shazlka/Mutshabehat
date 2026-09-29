@@ -452,6 +452,15 @@ async function readPreviewApiError(response: Response, fallback: string) {
   return parts.join(' - ')
 }
 
+/** The action line only earns its place when it says something the category badge does not
+ *  (e.g. "إمالة وقفاً" under "الممال والمقلل"); "ترك الغنة" under "ترك الغنة" is pure repetition. */
+function isRedundantActionLabel(action: string | null | undefined, categoryAr: string): boolean {
+  const a = (action ?? '').replace(/[\u064B-\u065F\u0670\u0640]/g, '').replace(/\s+/g, ' ').trim()
+  if (!a) return true
+  const c = categoryAr.replace(/[\u064B-\u065F\u0670\u0640]/g, '').replace(/\s+/g, ' ').trim()
+  return a === c
+}
+
 export default function Mushaf1441Viewer({
   initialPage,
   initialPageMetadata,
@@ -4038,7 +4047,7 @@ export default function Mushaf1441Viewer({
                 const pills = rollupAuthorityPills(list.map((a) => a.authorityId))
                 return (
                   <div key={action} className="mb-1.5 last:mb-0">
-                    <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>
+                    {isRedundantActionLabel(action, ruling.categoryAr) ? null : <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>}
                     <div className="flex flex-wrap gap-1.5">
                       {pills.map(renderReaderPill)}
                     </div>
@@ -4455,7 +4464,7 @@ export default function Mushaf1441Viewer({
                     const pills = rollupAuthorityPills(list.map((a) => a.authorityId))
                     return (
                       <div key={action} className="mt-2">
-                        <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>
+                        {isRedundantActionLabel(action, ruling.categoryAr) ? null : <p className="mb-1 text-xs font-black text-[#171717]">{action}</p>}
                         <div className="flex flex-wrap gap-1.5">
                           {pills.map(renderReaderPill)}
                         </div>
