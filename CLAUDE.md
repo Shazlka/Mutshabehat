@@ -40,7 +40,7 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 ## 2026-09-29 — Review Editor: fixed «Qiraat review data is unavailable» when adding a missing nquran item (needs DB migration)
 - **Cause (Vercel runtime log `[qiraat-review] database failure column p.page_number does not exist`):** `qiraat_review_create_entry` looked up `qiraat_pages.page_number`, but the column is `mushaf_page_number`. It only runs for a word with no locus yet (a genuinely missing item), so it never showed before.
-- **Fix:** migration `supabase/migrations/20260929130000_qiraat_review_create_entry_fix_page_column.sql` (page lookups use `mushaf_page_number`; rest identical), rollback `supabase/rollbacks/20260929130000_qiraat_review_create_entry_fix_page_column.down.sql`. **Not yet applied to live** — must be run on the Mac Mini, then `NOTIFY pgrst, 'reload schema'`.
+- **Fix:** migration `supabase/migrations/20260929130000_qiraat_review_create_entry_fix_page_column.sql` (page lookups use `mushaf_page_number`; rest identical), rollback `supabase/rollbacks/20260929130000_qiraat_review_create_entry_fix_page_column.down.sql`. **DB migration: applied to live 2026-09-29** (`CREATE FUNCTION` + `NOTIFY` completed with no error).
 - **Files:** the two SQL files above.
 
 ## 2026-09-29 — Review Editor: nquran.com «إضافة» now adds into «تفاصيل الأداء والأوجه للرواة المحددين» of the open face (no separate entry)
