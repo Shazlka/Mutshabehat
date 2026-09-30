@@ -31,6 +31,7 @@ project:
 
 data-test:
 	python3 $(REPO)/scripts/ios/test_build_mushaf_db.py -v
+	python3 $(REPO)/scripts/ios/test_fetch_qcf_fonts.py -v
 
 core-test: data fonts
 	swift test --package-path MushafCore

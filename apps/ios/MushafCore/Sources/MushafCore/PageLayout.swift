@@ -22,9 +22,14 @@ public struct PageLayoutConstants: Sendable {
     /// A single page may grow up to 18% taller than the print aspect to fill a tall phone (web rule).
     public static let maxHeightStretch: CGFloat = 1.18
 
+    /// Which edge of its area a spread page's spine is on. A lone page has none.
+    public enum SpineSide: Sendable { case none, left, right }
+
     /// The page rectangle inside `area` (the safe area): as wide as possible at the print aspect,
-    /// then — single pages only — up to 18% taller if there is room. Centred in `area`.
-    public static func fittedPageRect(in area: CGRect, stretch: Bool) -> CGRect {
+    /// then — single pages only — up to 18% taller if there is room. Centred vertically; centred
+    /// horizontally too, except that a spread page is set against its spine so the two pages of a
+    /// spread meet in the middle like a book (the web places them side by side the same way).
+    public static func fittedPageRect(in area: CGRect, stretch: Bool, spine: SpineSide = .none) -> CGRect {
         var width = area.width
         var height = width / pageAspect
         if height > area.height {
@@ -33,7 +38,13 @@ public struct PageLayoutConstants: Sendable {
         } else if stretch {
             height = min(area.height, height * maxHeightStretch)
         }
-        return CGRect(x: area.midX - width / 2, y: area.midY - height / 2, width: width, height: height)
+        let x: CGFloat
+        switch spine {
+        case .none: x = area.midX - width / 2
+        case .left: x = area.minX
+        case .right: x = area.maxX - width
+        }
+        return CGRect(x: x, y: area.midY - height / 2, width: width, height: height)
     }
 }
 

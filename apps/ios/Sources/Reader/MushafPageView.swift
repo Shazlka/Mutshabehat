@@ -45,9 +45,13 @@ final class MushafPageView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        guard let layout, let context = UIGraphicsGetCurrentContext(),
-              let font = try? library.fonts.font(page: page.number, size: layout.fontSize) else { return }
+        guard let layout, let context = UIGraphicsGetCurrentContext() else { return }
         drawMargins()
+        guard let font = try? library.fonts.font(page: page.number, size: layout.fontSize) else {
+            // Never a blank page: say which page's font is missing (a damaged or partial install).
+            drawCentred("تعذّر تحميل خط الصفحة \(page.number)", in: bounds, size: layout.fontSize * 0.8, weight: .semibold)
+            return
+        }
         for line in layout.lines {
             switch line.content {
             case let .words(boxes, _):

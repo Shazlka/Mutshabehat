@@ -39,12 +39,17 @@ final class PageController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let area = view.bounds.inset(by: view.safeAreaInsets)
-        pageView.frame = PageLayoutConstants.fittedPageRect(in: area, stretch: !isSpreadHalf).integral
+        // In a spread the odd page is the right-hand one, so its spine is on its left edge.
+        let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
+        pageView.frame = PageLayoutConstants.fittedPageRect(in: area, stretch: !isSpreadHalf, spine: spine).integral
     }
 
     @objc private func tapped(_ recognizer: UITapGestureRecognizer) {
         let x = recognizer.location(in: view).x / max(view.bounds.width, 1)
-        // Outer 15% on each side belongs to page turning.
-        if x > 0.15 && x < 0.85 { onTapCentre() }
+        // The outer 15% of the book belongs to page turning. A lone page has an outer edge on both
+        // sides; a spread page only on the side away from the spine (the spine is the reader's).
+        let leftIsOuter = !isSpreadHalf || !page.isRightHandPage
+        let rightIsOuter = !isSpreadHalf || page.isRightHandPage
+        if (!leftIsOuter || x > 0.15) && (!rightIsOuter || x < 0.85) { onTapCentre() }
     }
 }

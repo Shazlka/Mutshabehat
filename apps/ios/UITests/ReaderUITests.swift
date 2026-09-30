@@ -88,6 +88,7 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(49, in: app).waitForExistence(timeout: 10))
         XCTAssertTrue(page(50, in: app).exists)
         XCTAssertLessThan(page(50, in: app).frame.midX, page(49, in: app).frame.midX, "odd page on the right")
+        XCTAssertEqual(page(50, in: app).frame.maxX, page(49, in: app).frame.minX, accuracy: 1, "pages meet at the spine")
         saveScreenshot(named: "ipad-spread-49-50")
 
         let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.02, dy: 0.6))
@@ -100,6 +101,34 @@ final class ReaderUITests: XCTestCase {
         XCUIDevice.shared.orientation = .portrait  // back to a single page, same place
         XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 5))
         XCTAssertFalse(page(52, in: app).exists)
+    }
+
+    /// Several slider jumps in a row land on a page without crashing. XCUITest waits for the app to
+    /// go idle between gestures, so this cannot overlap two curls; that case is still unverified.
+    func testSeveralSliderJumpsInARowLandOnAPage() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        let slider = app.sliders["page-slider"]
+        XCTAssertTrue(slider.waitForExistence(timeout: 3))
+        slider.adjust(toNormalizedSliderPosition: 0.3)
+        slider.adjust(toNormalizedSliderPosition: 0.6)
+        slider.adjust(toNormalizedSliderPosition: 0.1)
+        XCTAssertEqual(app.state, .runningForeground)
+        let shown = app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH 'mushaf-page-'"))
+        XCTAssertTrue(shown.firstMatch.waitForExistence(timeout: 5))
+        XCTAssertEqual(app.state, .runningForeground)
+    }
+
+    func testTappingTheMiddleOfASpreadShowsTheChrome() throws {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
+        XCUIDevice.shared.orientation = .landscapeLeft
+        defer { XCUIDevice.shared.orientation = .portrait }
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(49, in: app).waitForExistence(timeout: 10))
+        // The middle of the screen is the spine: it belongs to the reader, not to page turning.
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 3))
     }
 
     /// Keeps a screenshot with the test result (and in SCREENSHOT_DIR when the runner sets it).

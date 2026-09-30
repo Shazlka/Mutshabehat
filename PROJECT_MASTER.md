@@ -504,7 +504,9 @@ make -C apps/ios run           # build, install and launch on the iPhone simulat
 make -C apps/ios open          # open the generated project in Xcode
 ```
 
-Xcode 27 ships **no `Simulator.app`**; watch a run in Xcode or the agent's Simulator panel.
+Xcode 27 ships **no `Simulator.app`**; watch a run in Xcode or the agent's Simulator panel. When iterating
+on a failing UI test, pass `-collect-test-diagnostics never` to xcodebuild: otherwise it spends 600 s
+collecting simulator diagnostics after the failure.
 
 ### 14.2 What is committed and what is generated
 
@@ -518,7 +520,10 @@ Xcode 27 ships **no `Simulator.app`**; watch a run in Xcode or the agent's Simul
 | `apps/ios/Generated/Fonts/p1…p604.woff2` | QCF V2 fonts from the same CDN the web uses, via `scripts/ios/fetch_qcf_fonts.sh` (93.2 MB) | no (licence) |
 | `apps/ios/Config.xcconfig` | Supabase anon key for Phase 2 | no |
 
-The build fails with a readable error if the database or any of the 604 fonts is missing.
+The build fails with a readable error if the database or any of the 604 fonts is missing. `fetch_qcf_fonts.sh`
+checks every woff2 against the total length stored in its own header, so a truncated download is
+re-fetched instead of shipped; a page whose font still cannot load draws its margins and
+«تعذّر تحميل خط الصفحة N», never a blank page.
 
 ### 14.3 Rules that carry over from the web reader (do not break)
 
@@ -535,6 +540,9 @@ The build fails with a readable error if the database or any of the 604 fonts is
 - **Page curl mapping** (`MushafPager.swift`): spine on the right, UIKit's "before" page = the NEXT
   page (`n+1`); a spread is `[right+1, right]` with the odd page on the right. Verified to hold with
   the app running RTL in an Arabic locale.
+- **Spread pages sit against the spine** (`fittedPageRect(…, spine:)`), so the two pages meet in the
+  middle on every iPad, and only a page's outer edge is reserved for turning; the spine side toggles
+  the chrome.
 - Resume key is shared with the web: `mushaf1441:last-page:v1`, always clamped to 1–604.
 
 ### 14.4 Performance

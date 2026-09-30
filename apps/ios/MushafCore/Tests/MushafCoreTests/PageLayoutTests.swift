@@ -92,4 +92,15 @@ import Testing
         #expect(rect.height <= area.height + 0.001 && rect.width <= area.width + 0.001)
         #expect(abs(rect.width / rect.height - PageLayoutConstants.pageAspect) < 0.0001)
     }
+
+    @Test func spreadPagesMeetAtTheSpineOnANarrowerIPad() {
+        // iPad Air 11" landscape: 1180×820, safe area 24 pt top / 20 pt bottom, halves 590 wide.
+        let right = CGRect(x: 590, y: 24, width: 590, height: 776)   // odd page: spine on its left
+        let left = CGRect(x: 0, y: 24, width: 590, height: 776)      // even page: spine on its right
+        let odd = PageLayoutConstants.fittedPageRect(in: right, stretch: false, spine: .left)
+        let even = PageLayoutConstants.fittedPageRect(in: left, stretch: false, spine: .right)
+        #expect(odd.width < 590, "height-limited, so each page is narrower than its half")
+        #expect(abs(odd.minX - 590) < 0.001 && abs(even.maxX - 590) < 0.001, "both pages touch the spine")
+        #expect(abs(odd.midY - right.midY) < 0.001 && abs(even.midY - left.midY) < 0.001)
+    }
 }
