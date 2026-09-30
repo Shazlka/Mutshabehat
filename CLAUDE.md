@@ -49,6 +49,11 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 - **Change:** regenerated all `_lib/reference/nquran/surah-001…114.json` with `scripts/qiraat/build_nquran_reference.py` (old files overwritten, so nothing stale remains; still 114 files / 6,236 ayahs; 104 of 114 files differ). The export's own changes: «ابن كثير» added to the صلة ميم الجمع reader groups (6,181 locations, 2,958 ayahs), and the searchable synonym «صلة هاء الكناية» added beside the source's «صلة هاء الضمير» (982 locations). Source rescan reported 0 unparsed ayahs.
 - **Verification:** `npm run test:qiraat:review` 53/53 (includes the all-114-surahs completeness and every-reader-label-resolves tests). **Code / DB migration:** none.
 - **Files:** `src/app/mushaf-1441/review/_lib/reference/nquran/surah-*.json`.
+
+## 2026-09-30 — Mushaf Qiraat sidebar: toolbar on top, coloured reader/riwayah lists, explanatory note removed
+- **Owner request:** the mode/filter section should sit at the top of the sidebar; the قارئ and رواية dropdowns should be lists coloured by reader; drop the note under them.
+- **Change:** `QiraatToolbar.tsx` — the قارئ filter is a 2-column list of the ten readers (each in its own reader colour); the رواية filter and the «القراءة برواية» mode show the twenty riwayat grouped under their reader (reader colour on the group, narrator colour on the selected chip, names wrap instead of truncating). The mode-dependent explanatory paragraph is removed. `Mushaf1441Viewer.tsx` — desktop sidebar order is now toolbar → hover peek → selection card (+ page rules). The mobile menu shares the same toolbar. **DB migration:** none.
+
 ## 2026-09-30 — Fix: sidebar group-count badge flashed "0" while the shell streamed in
 - **Cause:** the streaming app shell (2026-09-29) renders `Sidebar`/`MobileTopbar` with a placeholder count before the real one arrives.
 - **Fix:** `groupCount` is now `number | null`; the fallback passes `null` and the badge renders `invisible` (keeps its width, so nothing jumps). Files: `src/app/(app)/layout.tsx`, `src/components/Sidebar.tsx`, `src/components/MobileTopbar.tsx`. **DB migration:** none.

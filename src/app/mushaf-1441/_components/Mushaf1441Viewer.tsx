@@ -3956,14 +3956,6 @@ export default function Mushaf1441Viewer({
 
         {readerLayer === 'qiraat' ? (
         <>
-        {/* The Qiraat peek lives here rather than floating over the page: an overlay on top of
-            the lines swallowed the next word press and closed itself before it could be read. */}
-        {hoveredQiraatWord && !hoveredQiraatSelection ? <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>{renderQiraatHoverCard('sidebar')}</div> : null}
-
-        <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
-          {renderQiraatSelection(hoveredQiraatFocusWord ? hoveredQiraatSelection : qiraatSelection)}
-        </div>
-
         <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
           <QiraatToolbar
             mode={qiraatMode}
@@ -3975,6 +3967,14 @@ export default function Mushaf1441Viewer({
             filter={qiraatFilter}
             onFilterChange={setQiraatFilter}
           />
+        </div>
+
+        {/* The Qiraat peek lives here rather than floating over the page: an overlay on top of
+            the lines swallowed the next word press and closed itself before it could be read. */}
+        {hoveredQiraatWord && !hoveredQiraatSelection ? <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>{renderQiraatHoverCard('sidebar')}</div> : null}
+
+        <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
+          {renderQiraatSelection(hoveredQiraatFocusWord ? hoveredQiraatSelection : qiraatSelection)}
           {renderQiraatRules()}
         </div>
         </>
