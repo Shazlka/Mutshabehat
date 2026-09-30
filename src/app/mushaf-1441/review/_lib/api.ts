@@ -12,6 +12,7 @@ import type {
   ReviewResult,
   ReviewRow,
   ReviewStatus,
+  ReviewSuggestion,
   SameWordMatch,
 } from './types'
 
@@ -196,6 +197,16 @@ export function findSameWord(
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action: 'findSameWord', ...target }),
+  })
+}
+
+export function getSuggestions(
+  target: { surah: number; ayah: number; word: number },
+): Promise<ReviewResult<ReviewSuggestion[]>> {
+  return request<ReviewSuggestion[]>(API_PATH, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'suggest', ...target }),
   })
 }
 

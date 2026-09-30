@@ -22,6 +22,7 @@ import { cn } from '@/lib/cn'
 import { normalizeArabic } from '@/lib/arabic'
 import { describeNarratorGroup } from './narratorDisplay'
 import { NarratorBadges } from './NarratorBadges'
+import SuggestionsPanel from './SuggestionsPanel'
 import { labelForRow } from './facesSummary'
 import {
   findNquranEntryForAyah,
@@ -1191,6 +1192,11 @@ export default function ReviewEditorPane({
           </div>
         </div>
       )}
+
+      {/* Learned suggestions from previously approved entries: one click adds an unreviewed وجه. */}
+      {!spanEndKey ? (
+        <SuggestionsPanel word={selectedWordMeta} activeRows={activeRowsForWord} onAdd={onCreateNewEntry} />
+      ) : null}
     </aside>
   )
 }

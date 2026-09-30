@@ -148,6 +148,36 @@ export type EntryFields = Partial<{
   hamzahDetail: HamzahDetail | null
 }>
 
+/** One learned suggestion from qiraat_review_suggestions (built from approved entries only). */
+export type ReviewSuggestion = {
+  key: string
+  tier: 'exact' | 'pattern'
+  /** How many approved entries share exactly this configuration. */
+  support: number
+  /** Pattern tier: how many approved entries have the same word ending (the ratio's denominator). */
+  shapeTotal: number | null
+  /** Pattern tier: the shared word ending (normalised). */
+  shape: string | null
+  sourceEntryId: string
+  /** Up to three "surah:ayah:word" references to where it was approved. */
+  sources: string[]
+  config: {
+    kind: 'farsh' | 'usul'
+    categoryCode?: string
+    categoryNameAr?: string
+    variantType?: string
+    rulingText?: string
+    description?: string
+    performanceNote?: string
+    readingText?: string
+    uthmaniText?: string
+    appliesWasl?: boolean
+    appliesWaqf?: boolean
+    hamzahDetail?: HamzahDetail
+    narrators: Array<{ id: string; nameAr: string; action?: string; wajhOrder?: number; wajhNote?: string }>
+  }
+}
+
 export type BulkDeleteItem = { entryId: string; expectedVersion: string }
 export type SameWordMatch = ReviewRow
 export type OccurrenceCandidate = {

@@ -18,6 +18,7 @@ import { STATUS_LABEL_AR } from './statusMeta'
 import { useReviewEditorDraft, type WordMeta } from './useReviewEditorDraft'
 import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
+import SuggestionsPanel from './SuggestionsPanel'
 import { cn } from '@/lib/cn'
 
 type Props = {
@@ -780,6 +781,10 @@ export default function MobileReviewEditorView({
             disabled={isSaving}
           />
         </section>
+
+        {!spanEndKey ? (
+          <SuggestionsPanel word={selectedWordMeta} activeRows={activeRowsForWord} onAdd={onCreateNewEntry} />
+        ) : null}
       </main>
 
       {/* 3. Fixed Bottom Action Bar */}

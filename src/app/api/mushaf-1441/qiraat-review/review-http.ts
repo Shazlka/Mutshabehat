@@ -117,6 +117,12 @@ export type ValidatedPost =
       excludeLocusId?: string | null
     }
   | {
+      action: 'suggest'
+      surah: number
+      ayah: number
+      word: number
+    }
+  | {
       action: 'copyEntry'
       sourceEntryId: string
       surah: number
@@ -511,7 +517,7 @@ export function validatePatchBody(input: unknown): ValidationResult<ValidatedPat
   return { ok: true, value: { action: 'restore', entryId, version, deviceId } }
 }
 
-const POST_ACTIONS = ['undo', 'create', 'bulkDelete', 'findSameWord', 'copyEntry', 'findOccurrences', 'bulkApply'] as const
+const POST_ACTIONS = ['undo', 'create', 'bulkDelete', 'findSameWord', 'suggest', 'copyEntry', 'findOccurrences', 'bulkApply'] as const
 
 function validatePositiveInt(value: unknown, field: string, min = 1): number | ValidationFailure {
   const n = typeof value === 'number' ? value : typeof value === 'string' ? Number(value) : NaN
@@ -552,6 +558,16 @@ export function validatePostBody(input: unknown): ValidationResult<ValidatedPost
       excludeLocusId = v
     }
     return { ok: true, value: { action, surah, ayah, word, excludeLocusId } }
+  }
+
+  if (action === 'suggest') {
+    const surah = validatePositiveInt(input.surah, 'surah')
+    if (isFailure(surah)) return surah
+    const ayah = validatePositiveInt(input.ayah, 'ayah')
+    if (isFailure(ayah)) return ayah
+    const word = validatePositiveInt(input.word, 'word')
+    if (isFailure(word)) return word
+    return { ok: true, value: { action, surah, ayah, word } }
   }
 
   if (action === 'bulkDelete') {

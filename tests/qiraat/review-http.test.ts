@@ -387,3 +387,16 @@ test('validatePatchBody normalizes Arabic variantType on update to valid databas
   }
 })
 
+
+test('validatePostBody accepts a suggest request for one word', () => {
+  assert.deepEqual(validatePostBody({ action: 'suggest', surah: 2, ayah: 7, word: 10 }), {
+    ok: true,
+    value: { action: 'suggest', surah: 2, ayah: 7, word: 10 },
+  })
+})
+
+test('validatePostBody rejects a suggest request with a missing or invalid position', () => {
+  assert.equal(validatePostBody({ action: 'suggest', surah: 2, ayah: 7 }).ok, false)
+  assert.equal(validatePostBody({ action: 'suggest', surah: 0, ayah: 7, word: 1 }).ok, false)
+  assert.equal(validatePostBody({ action: 'suggest', surah: 2, ayah: 7, word: 1.5 }).ok, false)
+})

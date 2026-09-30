@@ -201,6 +201,22 @@ export async function POST(request: NextRequest) {
       return json(result.data ?? [])
     }
 
+    if (body.value.action === 'suggest') {
+      const result = await supabase.rpc('qiraat_review_suggestions', {
+        p_surah: body.value.surah,
+        p_ayah: body.value.ayah,
+        p_word: body.value.word,
+        p_limit: 8,
+      })
+      // Suggestions are a convenience: never let them break the editor (e.g. before the
+      // 20260930120000 migration is applied the function simply does not exist yet).
+      if (result.error) {
+        console.error('qiraat_review_suggestions failed:', result.error.message)
+        return json([])
+      }
+      return json(result.data ?? [])
+    }
+
     if (body.value.action === 'copyEntry') {
       const result = await supabase.rpc('qiraat_review_copy_entry', {
         p: {
