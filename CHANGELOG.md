@@ -7,6 +7,11 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
+## 2026-09-30 — Review Editor: nquran.com reference data replaced with the refreshed export
+- **Owner request:** replace the nquran.com «فروقات القراء» files with the newly supplied `quran-qiraat-20-page-sections.zip` (rescanned 2026-09-29) and remove the old ones.
+- **Change:** regenerated all `_lib/reference/nquran/surah-001…114.json` with `scripts/qiraat/build_nquran_reference.py` (old files overwritten, so nothing stale remains; still 114 files / 6,236 ayahs; 104 of 114 files differ). The export's own changes: «ابن كثير» added to the صلة ميم الجمع reader groups (6,181 locations, 2,958 ayahs), and the searchable synonym «صلة هاء الكناية» added beside the source's «صلة هاء الضمير» (982 locations). Source rescan reported 0 unparsed ayahs.
+- **Verification:** `npm run test:qiraat:review` 53/53 (includes the all-114-surahs completeness and every-reader-label-resolves tests). **Code / DB migration:** none.
+- **Files:** `src/app/mushaf-1441/review/_lib/reference/nquran/surah-*.json`.
 ## 2026-09-30 — Fix: sidebar group-count badge flashed "0" while the shell streamed in
 - **Cause:** the streaming app shell (2026-09-29) renders `Sidebar`/`MobileTopbar` with a placeholder count before the real one arrives.
 - **Fix:** `groupCount` is now `number | null`; the fallback passes `null` and the badge renders `invisible` (keeps its width, so nothing jumps). Files: `src/app/(app)/layout.tsx`, `src/components/Sidebar.tsx`, `src/components/MobileTopbar.tsx`. **DB migration:** none.
