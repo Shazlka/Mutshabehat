@@ -225,7 +225,8 @@ export default function ReviewEditorPane({
     if (!selectedWordMeta || !nquranLoaded || nquranLoaded.surah !== selectedWordMeta.surah) return null
     const entry = findNquranEntryForAyah(nquranLoaded.entries, selectedWordMeta.ayah)
     if (!entry || entry.differences.length === 0) return null
-    return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text) }
+    // Only the differences about the clicked word -- the rest of the ayah's differences are hidden.
+    return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text).filter((r) => r.matchesWord) }
   }, [selectedWordMeta, nquranLoaded])
 
   // "Add to editor": clicking a resolved nquran.com group creates and SAVES a brand-new face for
@@ -1069,10 +1070,10 @@ export default function ReviewEditorPane({
                   className="flex w-full items-center justify-between gap-2 px-2 py-1"
                 >
                   <span className="text-[11px] font-bold text-amber-900 dark:text-amber-300">
-                    📖 مرجع خارجي (nquran.com) — فروق القراءات في هذه الآية
+                    📖 مرجع خارجي (nquran.com) — فروق القراءات في هذه الكلمة
                   </span>
                   <span className="text-[10px] text-amber-800 dark:text-amber-400">
-                    {nquranPanelOpen ? 'إخفاء ▲' : `عرض (${nquranRanked.ranked.length}) ▼`}
+                    {nquranPanelOpen ? 'إخفاء ▲' : nquranRanked.ranked.length > 0 ? `عرض (${nquranRanked.ranked.length}) ▼` : 'لا فروق لهذه الكلمة'}
                   </span>
                 </button>
                 {nquranPanelOpen ? (
@@ -1080,6 +1081,11 @@ export default function ReviewEditorPane({
                     <p className="text-[9px] text-amber-800/80 dark:text-amber-400/80">
                       مرجع للاطّلاع — غير معتمد تلقائيًا؛ زر «إضافة كوجه» ينشئ وجهًا جديدًا مُعبَّأً مسبقًا بالقراء/الرواة والبيان دون حفظه، فيبقى قابلًا للتعديل والمراجعة قبل «حفظ».
                     </p>
+                    {nquranRanked.ranked.length === 0 ? (
+                      <p className="text-[10px] text-amber-800 dark:text-amber-400">
+                        لا توجد فروق قراءات موثقة في nquran.com لهذه الكلمة تحديدًا (توجد فروق في كلمات أخرى من الآية).
+                      </p>
+                    ) : null}
                     {nquranRanked.ranked.map(({ difference, matchesWord }, idx) => (
                       <div
                         key={idx}

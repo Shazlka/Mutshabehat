@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-30 — Review Editor: nquran.com panel shows only the differences for the clicked word
+- **Owner request:** clicking a word in the editor listed every difference of the whole ayah; only the clicked word's differences should show.
+- **Change:** `nquranRanked` in `ReviewEditorPane.tsx` now keeps only the differences whose location matches the selected word (same Arabic-normalized containment used before); the rest of the ayah's differences are hidden. When the ayah has differences but none for this word, the panel says so instead of listing others. Header text now reads «في هذه الكلمة».
+- **Verification:** `npm run typecheck`. **DB migration:** none.
+- **Files:** `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`.
+
 ## 2026-09-30 — Review Editor: nquran.com reference data replaced with the refreshed export
 - **Owner request:** replace the nquran.com «فروقات القراء» files with the newly supplied `quran-qiraat-20-page-sections.zip` (rescanned 2026-09-29) and remove the old ones.
 - **Change:** regenerated all `_lib/reference/nquran/surah-001…114.json` with `scripts/qiraat/build_nquran_reference.py` (old files overwritten, so nothing stale remains; still 114 files / 6,236 ayahs; 104 of 114 files differ). The export's own changes: «ابن كثير» added to the صلة ميم الجمع reader groups (6,181 locations, 2,958 ayahs), and the searchable synonym «صلة هاء الكناية» added beside the source's «صلة هاء الضمير» (982 locations). Source rescan reported 0 unparsed ayahs.
