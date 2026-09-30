@@ -30,6 +30,14 @@ type Stats = {
 export default async function StatsPage() {
   const supabase = await createServerSupabaseClient()
 
+  // Both RPCs are independent and each costs a full network round trip to the database host, so
+  // the test-answer totals are requested now and awaited further down instead of after the main
+  // stats finished (saves one round trip, ~1 s). A failure just hides that section.
+  const testStatsRequest = Promise.resolve(supabase.rpc('get_test_answer_stats')).then(
+    (result) => result,
+    () => ({ data: null, error: new Error('unavailable') }),
+  )
+
   // ── Primary path: one aggregate RPC (see supabase-stats-aggregates.sql) ──
   // Replaces 12 queries + 4 full-table transfers. Falls back to per-row
   // aggregation in JS when the function isn't deployed yet — so this is safe to
@@ -117,7 +125,7 @@ export default async function StatsPage() {
   // ── Test-mode right/wrong totals (table from 20260915180000_test_answers.sql) ──
   let testStats: TestAnswerStatsData | null = null
   try {
-    const { data, error } = await supabase.rpc('get_test_answer_stats')
+    const { data, error } = await testStatsRequest
     if (!error && data) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const d = data as any

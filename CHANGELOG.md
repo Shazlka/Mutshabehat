@@ -7,6 +7,13 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
+## 2026-09-30 — Open audit items: /stats round trip, 24px controls in the editor, taller word tap area
+- **`/stats` (performance):** the page awaited `get_dashboard_stats` and then `get_test_answer_stats`, two independent database round trips (~1.2 s each from Vercel; the SQL itself takes ~27 ms). The second is now started up front and awaited later, so the two overlap (`stats/page.tsx`); a failure still just hides the test-answer section and cannot raise an unhandled rejection.
+- **Review editor controls (accessibility):** every control in the editor pane, desktop included, now meets the 24 px minimum target (WCAG 2.5.8): buttons/selects/inputs `min-height: 24px`, links `inline-flex` 24 px, reader checkboxes 16 → 24 px, scoped to `aside[aria-label^="محرر القراءات"]` in `globals.css`. Measured on the real screen: 44 controls under 24 px → 0.
+- **Mushaf word buttons (touch):** on touch devices each word button (reader and review pane, `[data-quran-word-id]` / `[data-word-key]`, already `position: relative`) gets an invisible 6 px vertical hit margin via `::after`, taking a 20 px tap target to ~32 px. Nothing moves; it only enlarges the hit area. Measured with `elementFromPoint` on tappable words: 41/41 hit 4 and 6 px above, 41/41 hit 4 px below.
+- **Not changed:** inline Quran words remain under 44 px (WCAG exempts inline targets and the paper layout fixes their size); `/stats` still depends on the database round trip (~1.2 s) for its first data.
+- **Verification:** typecheck, `test:qiraat:review` 55/55, lint 55 errors (unchanged), production builds, desktop review screenshot (layout intact). **DB migration:** none.
+
 ## 2026-09-30 — Audit fixes: contrast, touch targets, type floor, tokens, headings, focus, light-only bug, motion
 - **Source:** the `/impeccable audit` of the shell, reader and review editor (13/20). Re-measured after the fixes on a local production build.
 - **Contrast (typeset):** sepia reader header text `#9a7b35` → `#7a5e22` (3.5:1 → 5.4:1) and the «يُمنى/يُسرى» tab background `#b8871d` → `#8a6212` (3.2:1 → 5.5:1) in `mushafTheme.ts`; both reader contrast failures are gone.

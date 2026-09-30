@@ -322,4 +322,14 @@ html, body {
   /* The editor is dense (20 narrators, variant chips): every control gets at least a 32px target
      (WCAG 2.5.8 asks for 24px); primary actions are already 40px+. */
   [data-mobile-review-editor] :is(button, select, input:not([type="checkbox"]):not([type="radio"])):not([data-word-key]) { min-height: 32px; }
+  /* Mushaf words: an invisible 6px vertical margin above and below each word button (they are
+     already position: relative), so a fingertip between two lines still lands on the nearer word.
+     Purely a larger hit area: nothing moves on the page. */
+  [data-quran-word-id]::after, [data-word-key]::after { content: ""; position: absolute; inset: -6px 0; }
 }
+
+/* Review editor, all pointers: every control meets the 24px minimum target (WCAG 2.5.8). The
+   chips and toggles were 20-23px; the reader checkboxes were 16px. */
+aside[aria-label^="محرر القراءات"] :is(button, select, textarea, input:not([type="checkbox"]):not([type="radio"])) { min-height: 24px; }
+aside[aria-label^="محرر القراءات"] a[href] { display: inline-flex; align-items: center; min-height: 24px; }
+aside[aria-label^="محرر القراءات"] input[type="checkbox"] { width: 24px; height: 24px; }
