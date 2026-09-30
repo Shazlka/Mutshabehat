@@ -7,12 +7,12 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
-## 2026-09-30 — Review Editor: learned suggestions from approved entries, added in one click (needs DB migration)
+## 2026-09-30 — Review Editor: learned suggestions from approved entries, added in one click (migration applied to live)
 - **Owner request:** when clicking a word, show suggestions built from previously approved variations, so a repeated one is added with a single click (no picking readers, narrators, أصول/فرش or options), then reviewed and approved by hand.
 - **Learning logic (server, read-only):** `supabase/migrations/20260930120000_qiraat_review_suggestions.sql` adds `qiraat_suggestion_config` and `qiraat_review_suggestions(surah, ayah, word, limit)`. Source = entries with `review_status = 'reviewed'` only. Tier **exact**: approved single-word entries on the same normalised word (`qiraat_norm`) anywhere in the Mushaf, full configuration incl. reading text. Tier **pattern**: approved single-word أصول entries on words with the same ending (last 3 normalised letters), rule only (category, ruling text, narrators + actions, wasl/waqf; never reading text, never hamzah word-position links), ranked by `support / shapeTotal`. Identical configurations are grouped (`support` = how many approved entries share it); anything the locus already carries is left out; the same configuration found by both tiers appears once, as exact. ~200 ms per word in SQL. Rollback: `supabase/rollbacks/20260930120000_qiraat_review_suggestions.down.sql`.
 - **API:** POST action `suggest` (`review-http.ts`, `route.ts`); an RPC error (e.g. migration not yet applied) returns `[]` and is logged, so the editor never breaks. `reviewApi.getSuggestions`, `ReviewSuggestion` type.
 - **UI:** new `SuggestionsPanel.tsx` at the bottom of the desktop editor and the mobile editor: cards with tier badge, أصول/فرش + باب, reading/ruling text, reader-coloured narrator chips, wasl/waqf note and the evidence («اعتُمد N مرات (مثل 2:25:28)» / «كلمات تنتهي بـ «…لهم» — 2 من 12 موضعًا معتمدًا»). «➕ إضافة» creates an ordinary UNREVIEWED entry through the instant optimistic save queue; the card disappears at once. A farsh suggestion whose narrator is already on another farsh وجه of this word is disabled (server rule `RULE_NARRATOR_TWICE`). Requests are debounced (250 ms) and ignore in-flight placeholder rows. Hidden while a two-word span is selected.
-- **Tests:** 2 new validator cases (55/55). Browser test with the suggest/create endpoints mocked (real function output as fixture): panel shows 4 cards, one click → «جارٍ الحفظ (1)» → «✓ تم الحفظ», create payload carries the suggestion's category, narrators and wasl/waqf. Function tested read-only inside a rolled-back transaction on the live DB. **DB migration: `20260930120000` NOT YET APPLIED to live** (until it is, the panel simply does not appear).
+- **Tests:** 2 new validator cases (55/55). Browser test with the suggest/create endpoints mocked (real function output as fixture): panel shows 4 cards, one click → «جارٍ الحفظ (1)» → «✓ تم الحفظ», create payload carries the suggestion's category, narrators and wasl/waqf. Function tested read-only inside a rolled-back transaction on the live DB. **DB migration `20260930120000` applied to live 2026-09-30** (backup `pre-suggestions-20260930T101340Z.dump`).
 
 ## 2026-09-30 — Review Editor: instant saving with a background queue and a save-status bar
 - **Owner report:** adding a وجه or saving took long, locked the editor, and the page refreshed before the reviewer could go to the next word.
@@ -67,20 +67,20 @@ and any required DB migration.
 - **Verification:** `npm run typecheck`, `npm run test:qiraat:review`, `npm run build` (clean). **DB migration:** none.
 - **Files:** `scripts/qiraat/build_nquran_reference.py` (new), `src/app/mushaf-1441/review/_lib/reference/nquran/*.json` (114 new), `src/app/mushaf-1441/review/_lib/nquranReference.ts`, `src/app/mushaf-1441/review/_components/ReviewEditorPane.tsx`, `tests/qiraat/nquran-reference.test.ts`.
 
-## 2026-09-29 — Mushaf: an entry re-added after deleting the earlier one was invisible on the Mushaf (needs DB migration)
+## 2026-09-29 — Mushaf: an entry re-added after deleting the earlier one was invisible on the Mushaf (migration applied to live)
 - **Owner report:** ميم الجمع on 2:3 رَزَقْنَـٰهُمْ saved in the editor but not coloured on the Mushaf nor listed in the sidebar, even after the word-anchored fix.
 - **Cause (verified on live):** the entry was VERIFIED, on page 2, `USUL_MIM_JAM`, anchored — but its locus `l-2-3-7` was soft-deleted. Deleting the earlier two-word versions soft-deleted the now-empty locus; `qiraat_review_create_entry` then re-used that locus by position without checking `deleted_at`, and `qiraat_export_page` skips entries on deleted loci, so the reader never received it.
 - **Fix:** migration `supabase/migrations/20260929150000_qiraat_entry_insert_revives_locus.sql` adds an AFTER INSERT trigger on `qiraat_entries` that revives the entry's locus, and repairs every already-hidden locus that still has a live entry. Rollback in `supabase/rollbacks/`. **Applied to live 2026-09-29** (backup `pre-locus-revive-20260929T164058Z.dump`; repair updated 0 rows, 2:3 locus already live).
 - **Also:** `/api/mushaf-1441/qiraat` now logs `qiraat_export_page` RPC errors instead of silently falling back to fixtures.
 - **Files:** the two SQL files, `src/app/api/mushaf-1441/qiraat/route.ts`.
 
-## 2026-09-29 — Mushaf: ميم الجمع / أصول المد / السكت entered in the editor now show on the word (needs DB migration)
+## 2026-09-29 — Mushaf: ميم الجمع / أصول المد / السكت entered in the editor now show on the word (migration applied to live)
 - **Owner report:** a face saved in the review editor on 2:3 «رَزَقْنَـٰهُمْ يُنفِقُونَ» (ميم الجمع) did not colour the words in the Mushaf nor appear in the sidebar.
 - **Cause:** the categories `USUL_MIM_JAM`, `USUL_MADD`, `USUL_SAKT` were seeded with `is_word_anchored = false` ("panel only"), and the reader draws markers only for word-anchored rulings — yet the editor lets the reviewer attach them to a specific word. (`USUL_NAQL/TAHQIQ/IBDAL` were already anchored.) They also had no colour, so they would have fallen back to grey.
 - **Fix:** migration `supabase/migrations/20260929140000_qiraat_usul_categories_word_anchored.sql` sets the three to word-anchored (rollback in `supabase/rollbacks/`), and `/api/mushaf-1441/qiraat` now colours the `USUL_*` categories (ميم الجمع pink, المد blue, السكت violet, النقل/التحقيق/الإبدال red). ****DB migration: applied to live 2026-09-29** (`UPDATE 3`).
 - **Files:** the two SQL files, `src/app/api/mushaf-1441/qiraat/route.ts`.
 
-## 2026-09-29 — Review Editor: fixed «Qiraat review data is unavailable» when adding a missing nquran item (needs DB migration)
+## 2026-09-29 — Review Editor: fixed «Qiraat review data is unavailable» when adding a missing nquran item (migration applied to live)
 - **Cause (Vercel runtime log `[qiraat-review] database failure column p.page_number does not exist`):** `qiraat_review_create_entry` looked up `qiraat_pages.page_number`, but the column is `mushaf_page_number`. It only runs for a word with no locus yet (a genuinely missing item), so it never showed before.
 - **Fix:** migration `supabase/migrations/20260929130000_qiraat_review_create_entry_fix_page_column.sql` (page lookups use `mushaf_page_number`; rest identical), rollback `supabase/rollbacks/20260929130000_qiraat_review_create_entry_fix_page_column.down.sql`. **DB migration: applied to live 2026-09-29** (`CREATE FUNCTION` + `NOTIFY` completed with no error).
 - **Files:** the two SQL files above.
@@ -105,7 +105,7 @@ and any required DB migration.
 - **Verification:** `npm run typecheck` clean. **DB migration:** none.
 - **Files:** `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`, `src/app/mushaf-1441/review/_components/{ReaderNarratorSelector,UsulRuleGrid,ReviewEditorPane}.tsx`.
 
-## 2026-09-29 — Mushaf Qiraat cards: wajh number and «الخلاف» note now shown under each reader (needs DB migration)
+## 2026-09-29 — Mushaf Qiraat cards: wajh number and «الخلاف» note now shown under each reader (migration applied to live)
 - **Owner request:** after the per-reader performance text, also show the وجه number and the الخلاف note entered in تفاصيل الأداء والأوجه.
 - **DB:** `qiraat_export_page` now also exports `wajhOrder` and `wajhNote` for each attribution (two keys added; everything else identical to `20260925140000`). Migration `supabase/migrations/20260929120000_qiraat_export_page_wajh_details.sql`, rollback `supabase/rollbacks/20260929120000_qiraat_export_page_wajh_details.down.sql`. **DB migration: applied to live 2026-09-29.**
 - **UI:** `renderReaderPerformance()` shows a «وجه N» badge (only when the ruling has more than one wajh, so single-face rulings stay clean) and a «الخلاف: …» line, below the reader pills in the selection card and hover peek. Empty fields render nothing. Wired through `QiraatRulingAttribution.wajhOrder/wajhNote` (`types.ts`) and `mapExportRuling` in `route.ts`.
