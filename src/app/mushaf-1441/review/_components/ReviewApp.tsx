@@ -1059,12 +1059,21 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       {pageLoading || !page ? (
         <div className="flex flex-1 items-center justify-center">
           {pageError ? (
-            <p
-              className="rounded-md border border-[var(--color-danger)]/30 bg-[var(--color-danger-bg)] px-4 py-2 text-sm font-bold text-[var(--color-danger)]"
-              role="alert"
-            >
-              {pageError}
-            </p>
+            <div className="flex flex-col items-center gap-3">
+              <p
+                className="rounded-md border border-[var(--color-danger)]/30 bg-[var(--color-danger-bg)] px-4 py-2 text-sm font-bold text-[var(--color-danger)]"
+                role="alert"
+              >
+                {pageError}
+              </p>
+              <button
+                type="button"
+                onClick={() => void loadPage(pageNumber)}
+                className="min-h-11 rounded-lg bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-paper)] hover:bg-[var(--color-primary-hover)]"
+              >
+                إعادة المحاولة
+              </button>
+            </div>
           ) : (
             <p className="text-sm text-[var(--color-ink-muted)]">جارٍ تحميل الصفحة…</p>
           )}

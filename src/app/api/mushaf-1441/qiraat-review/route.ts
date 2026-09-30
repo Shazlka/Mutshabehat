@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { getSessionUser } from '@/lib/session-user'
 import {
   mapReviewDatabaseError,
   validateGetQuery,
@@ -19,9 +20,10 @@ function validationResponse(result: { ok: false; status: number; body: Record<st
 
 async function authenticatedClient() {
   const supabase = await createServerSupabaseClient()
-  let {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // Read the user from the session cookie (no GoTrue round trip). `auth.getUser()` called the auth
+  // server on EVERY review request, adding a full network hop to each page load, save and
+  // suggestion; every database call below is still verified by PostgREST from the same JWT.
+  let user: { id: string } | null = await getSessionUser(supabase)
 
   // Auto-login with owner credentials if no active session cookie on this device
   if (!user) {

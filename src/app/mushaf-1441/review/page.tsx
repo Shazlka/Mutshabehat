@@ -9,6 +9,8 @@
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import { preload } from 'react-dom'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { getSessionUser } from '@/lib/session-user'
 import ReviewApp from './_components/ReviewApp'
@@ -67,18 +69,36 @@ export default async function QiraatReviewPage({ searchParams }: { searchParams:
     )
   }
 
-  const { data: isEditor, error } = await supabase.rpc('qiraat_review_is_editor')
+  // Start the two reads the screen needs as soon as the HTML starts arriving, instead of after the
+  // JavaScript has loaded and hydrated (same URLs as reviewApi.getReviewPage / getReviewOverview,
+  // so the browser reuses these responses).
+  preload(`/api/mushaf-1441/qiraat-review?page=${initialPage}&includeDeleted=1`, { as: 'fetch', crossOrigin: 'anonymous' })
+  preload('/api/mushaf-1441/qiraat-review?overview=1', { as: 'fetch', crossOrigin: 'anonymous' })
 
-  if (error || !isEditor) {
-    return (
+  // The editor allow-list check no longer blocks the first paint. Every review API call is enforced
+  // again inside the database, so this only decides whether to cover the screen with the notice.
+  return (
+    <>
+      <ReviewApp initialPage={initialPage} />
+      <Suspense fallback={null}>
+        <EditorGate />
+      </Suspense>
+    </>
+  )
+}
+
+async function EditorGate() {
+  const supabase = await createServerSupabaseClient()
+  const { data: isEditor, error } = await supabase.rpc('qiraat_review_is_editor')
+  if (!error && isEditor) return null
+  return (
+    <div className="fixed inset-0 z-[100] bg-[var(--color-paper)]">
       <GateShell>
         <p className="text-lg font-bold text-[var(--color-danger)]">غير مصرح</p>
         <p className="mt-2 text-sm text-[var(--color-ink-soft)]">
           هذا الحساب غير مدرَج ضمن محرري القراءات العشر. تواصل مع مسؤول المشروع إن كنت تتوقع صلاحية الوصول.
         </p>
       </GateShell>
-    )
-  }
-
-  return <ReviewApp initialPage={initialPage} />
+    </div>
+  )
 }

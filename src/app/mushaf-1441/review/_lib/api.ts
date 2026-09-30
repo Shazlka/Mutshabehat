@@ -59,9 +59,15 @@ function errorFromPayload(status: number, payload: unknown, fallback: string): R
   }
 }
 
+// A request that never answers (dropped connection, overloaded host) must not leave the screen
+// waiting forever: give up after this long and let the reviewer retry.
+const REQUEST_TIMEOUT_MS = 30_000
+
 async function request<T>(input: RequestInfo | URL, init?: RequestInit): Promise<ReviewResult<T>> {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
   try {
-    const response = await fetch(input, init)
+    const response = await fetch(input, { ...init, signal: controller.signal })
     const text = await response.text()
     let payload: unknown
 
@@ -83,10 +89,18 @@ async function request<T>(input: RequestInfo | URL, init?: RequestInit): Promise
 
     return { ok: true, data: payload as T }
   } catch {
+    const timedOut = controller.signal.aborted
     return {
       ok: false,
-      error: errorFromPayload(0, undefined, 'Qiraat review request failed'),
+      error: {
+        ...errorFromPayload(0, undefined, 'Qiraat review request failed'),
+        messageAr: timedOut
+          ? 'انتهت مهلة الاتصال بالخادم — تحقق من الاتصال ثم أعد المحاولة'
+          : 'تعذّر الاتصال بالخادم — تحقق من الاتصال ثم أعد المحاولة',
+      },
     }
+  } finally {
+    clearTimeout(timer)
   }
 }
 
