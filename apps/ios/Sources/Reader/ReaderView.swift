@@ -1,25 +1,69 @@
 import MushafCore
 import SwiftUI
 
-/// First cut: shows the stored page, no turning yet. Task 9 replaces this with the paging reader.
 struct ReaderView: View {
     let library: MushafLibrary
+    @State private var page = ReadingPosition().page
+    @State private var chromeVisible = false
+    @State private var showingIndex = false
+    @State private var sliderPage = 1.0
 
     var body: some View {
-        SinglePage(library: library, number: ReadingPosition().page)
-            .ignoresSafeArea()
-            .background(Color(uiColor: .mushafDesk))
+        GeometryReader { geometry in
+            let spread = Spread.isSpread(width: geometry.size.width, height: geometry.size.height)
+            ZStack {
+                Color(uiColor: .mushafDesk).ignoresSafeArea()
+                MushafPager(library: library, page: $page, spread: spread) {
+                    withAnimation(.easeInOut(duration: 0.2)) { chromeVisible.toggle() }
+                }
+                .id(spread)  // single ↔ spread needs a different spine: rebuild the pager, keep the page
+                .ignoresSafeArea()
+                if chromeVisible { chrome.transition(.opacity) }
+            }
+        }
+        .onChange(of: page) { _, newPage in ReadingPosition().page = newPage }
+        .sheet(isPresented: $showingIndex) {
+            IndexSheet(library: library, currentPage: page) { selected in
+                page = selected
+                showingIndex = false
+            }
+        }
     }
-}
 
-private struct SinglePage: UIViewControllerRepresentable {
-    let library: MushafLibrary
-    let number: Int
+    private var metadata: PageMetadata? { library.page(page)?.metadata }
 
-    func makeUIViewController(context: Context) -> PageController {
-        // `number` is already clamped by ReadingPosition, so the page always exists.
-        PageController(page: library.page(number)!, library: library, isSpreadHalf: false) {}
+    private var chrome: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text(metadata?.surahNames.joined(separator: " · ") ?? "")
+                Spacer()
+                Text("الجزء \(metadata?.juz ?? 0)")
+            }
+            .font(.headline)
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            .background(.regularMaterial)
+
+            Spacer()
+
+            VStack(spacing: 8) {
+                // RTL environment: page 1 at the right end, like the book.
+                Slider(value: $sliderPage, in: 1...Double(mushafPageCount), step: 1) { editing in
+                    if !editing { page = Int(sliderPage) }
+                }
+                .accessibilityIdentifier("page-slider")
+                HStack {
+                    Button { showingIndex = true } label: { Label("الفهرس", systemImage: "list.bullet") }
+                        .accessibilityIdentifier("open-index")
+                    Spacer()
+                    Text("ص \(Int(sliderPage))").monospacedDigit().accessibilityIdentifier("page-number")
+                }
+            }
+            .padding()
+            .background(.regularMaterial)
+        }
+        .environment(\.layoutDirection, .rightToLeft)
+        .onAppear { sliderPage = Double(page) }
+        .onChange(of: page) { _, newPage in sliderPage = Double(newPage) }
     }
-
-    func updateUIViewController(_ controller: PageController, context: Context) {}
 }
