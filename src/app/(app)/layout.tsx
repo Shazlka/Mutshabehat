@@ -31,11 +31,11 @@ async function TopbarWithData() {
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="h-screen overflow-hidden flex bg-[var(--color-paper)]">
-      <Suspense fallback={<Sidebar email="" groupCount={0} />}>
+      <Suspense fallback={<Sidebar email="" groupCount={null} />}>
         <SidebarWithData />
       </Suspense>
       <div className="flex-1 min-w-0 flex flex-col h-full">
-        <Suspense fallback={<MobileTopbar email="" groupCount={0} />}>
+        <Suspense fallback={<MobileTopbar email="" groupCount={null} />}>
           <TopbarWithData />
         </Suspense>
         <main id="main-content" tabIndex={-1} className="flex-1 min-w-0 overflow-y-auto focus:outline-none">

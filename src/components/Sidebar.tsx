@@ -18,7 +18,8 @@ const NAV = [
 
 interface Props {
   email: string
-  groupCount: number
+  /** null while the count is still streaming in: the badge keeps its space but stays hidden. */
+  groupCount: number | null
 }
 
 export default function Sidebar({ email, groupCount }: Props) {
@@ -65,9 +66,10 @@ export default function Sidebar({ email, groupCount }: Props) {
                       'text-[11px] font-mono tabular-nums px-1.5 py-0.5 rounded-md transition-colors',
                       active
                         ? 'bg-white/20 text-[var(--color-paper)]'
-                        : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]'
+                        : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]',
+                      groupCount === null && 'invisible'
                     )}>
-                      {groupCount}
+                      {groupCount ?? 0}
                     </span>
                   )}
                 </Link>

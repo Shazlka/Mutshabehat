@@ -38,6 +38,10 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-30 — Fix: sidebar group-count badge flashed "0" while the shell streamed in
+- **Cause:** the streaming app shell (2026-09-29) renders `Sidebar`/`MobileTopbar` with a placeholder count before the real one arrives.
+- **Fix:** `groupCount` is now `number | null`; the fallback passes `null` and the badge renders `invisible` (keeps its width, so nothing jumps). Files: `src/app/(app)/layout.tsx`, `src/components/Sidebar.tsx`, `src/components/MobileTopbar.tsx`. **DB migration:** none.
+
 ## 2026-09-29 — Cleanup: legacy Mushaf Qiraat controls removed; app shell no longer blocks first paint
 - **Owner request:** the review editor page replaces the in-reader editing tools, so drop them; clean dead code; speed up loading.
 - **Removed from the Mushaf reader (desktop sidebar and mobile menu):** «تفعيل وضع التعديل» and the inline `QiraatEditor`; «تحديد نطاق» / «تحديد حد فاصل»; «وضع الدراسة» and «مفتاح القراءات» (+ legend modal); «عرض بيانات قيد المراجعة»; the أصول colour chips («تلوين الأصول على الكلمات»); «مراجعة المواضع المستوردة» (per-device review rings/verdicts). Behaviour now equals the old defaults: study mode off, unreviewed data included, أصول colouring on for every category. Kept: mode selector, riwayah/filter controls, hover peek, selection card, page rules, المرجع sheet, متشابهات and notes layers.

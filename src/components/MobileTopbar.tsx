@@ -19,7 +19,8 @@ const NAV = [
 
 interface Props {
   email: string
-  groupCount: number
+  /** null while the count is still streaming in: the badge keeps its space but stays hidden. */
+  groupCount: number | null
 }
 
 export default function MobileTopbar({ email, groupCount }: Props) {
@@ -69,8 +70,8 @@ export default function MobileTopbar({ email, groupCount }: Props) {
           </Link>
         </div>
 
-        <span className="px-2 py-1 rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary)] text-[11px] font-bold font-mono tabular-nums">
-          {groupCount}
+        <span className={cn('px-2 py-1 rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary)] text-[11px] font-bold font-mono tabular-nums', groupCount === null && 'invisible')}>
+          {groupCount ?? 0}
         </span>
       </header>
 
@@ -142,9 +143,10 @@ export default function MobileTopbar({ email, groupCount }: Props) {
                         'text-[11px] font-mono tabular-nums px-1.5 py-0.5 rounded-md transition-colors',
                         active
                           ? 'bg-white/20 text-[var(--color-paper)]'
-                          : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]'
+                          : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]',
+                        groupCount === null && 'invisible'
                       )}>
-                        {groupCount}
+                        {groupCount ?? 0}
                       </span>
                     )}
                   </Link>
