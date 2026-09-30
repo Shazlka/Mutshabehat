@@ -12,7 +12,16 @@
 // Both panes scroll independently.
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { CreateEntryInput, EntryFields, NarratorInput, ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
+import type {
+  CatalogNarrator,
+  CreateEntryInput,
+  EntryFields,
+  NarratorInput,
+  ReviewNarrator,
+  ReviewOverview,
+  ReviewPage,
+  ReviewRow,
+} from '../_lib/types'
 import HistoryPanel from './HistoryPanel'
 import ReviewMushafPane from './ReviewMushafPane'
 import ReviewStatsBar from './ReviewStatsBar'
@@ -20,6 +29,7 @@ import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
 import ReviewNav from './ReviewNav'
 import MobileReviewMushafView from './MobileReviewMushafView'
 import MobileReviewEditorView from './MobileReviewEditorView'
+import ReviewSaveStatusBar, { type SaveFailure } from './ReviewSaveStatusBar'
 import * as reviewApi from '../_lib/api'
 
 const MIN_PAGE = 1
@@ -114,6 +124,119 @@ function findNextReviewWord(
   return null
 }
 
+// ── Optimistic saves ────────────────────────────────────────────────────────────────────────────
+// A save shows its result at once and finishes in the background (see submitSave); these build the
+// row the reviewer sees in the meantime. The server's row replaces it when the request returns.
+
+const TEMP_ROW_PREFIX = 'tmp-'
+const isPendingRow = (row: { entryId: string }) => row.entryId.startsWith(TEMP_ROW_PREFIX)
+const pad3 = (n: number) => String(n).padStart(3, '0')
+const wordKey = (surah: number, ayah: number, word: number) => `${pad3(surah)}:${pad3(ayah)}:${pad3(word)}`
+
+function toReviewNarrators(inputs: NarratorInput[], catalog: CatalogNarrator[]): ReviewNarrator[] {
+  return inputs.map((input) => {
+    const known = catalog.find((c) => c.id === input.id)
+    return {
+      id: input.id,
+      code: known?.code ?? null,
+      nameAr: known?.nameAr ?? input.id,
+      action: input.action ?? null,
+      wajhOrder: input.wajhOrder ?? 1,
+      wajhNote: input.wajhNote ?? null,
+    }
+  })
+}
+
+function applyFieldsToRow(
+  row: ReviewRow,
+  fields: EntryFields,
+  narrators: NarratorInput[],
+  page: ReviewPage,
+): ReviewRow {
+  const next: ReviewRow = { ...row, narrators: toReviewNarrators(narrators, page.narrators) }
+  if (fields.kind !== undefined) next.kind = fields.kind
+  if (fields.readingText !== undefined) next.readingText = fields.readingText
+  if (fields.uthmaniText !== undefined) next.uthmaniText = fields.uthmaniText
+  if (fields.description !== undefined) next.description = fields.description
+  if (fields.performanceNote !== undefined) next.performanceNote = fields.performanceNote
+  if (fields.variantType !== undefined) next.variantType = fields.variantType
+  if (fields.rulingText !== undefined) next.rulingText = fields.rulingText
+  if (fields.appliesWasl !== undefined) next.appliesWasl = fields.appliesWasl
+  if (fields.appliesWaqf !== undefined) next.appliesWaqf = fields.appliesWaqf
+  if (fields.hamzahDetail !== undefined) next.hamzahDetail = fields.hamzahDetail
+  if (fields.categoryCode !== undefined) {
+    next.categoryCode = fields.categoryCode
+    next.categoryNameAr = page.categories.find((c) => c.code === fields.categoryCode)?.nameAr ?? row.categoryNameAr
+  }
+  return next
+}
+
+function buildTempRow(tempId: string, draft: CreateEntryInput, page: ReviewPage): ReviewRow {
+  const endAyah = draft.endAyah ?? draft.ayah
+  const endWord = draft.endWord ?? draft.startWord
+  const startKey = wordKey(draft.surah, draft.ayah, draft.startWord)
+  const endKey = wordKey(draft.surah, endAyah, endWord)
+  const hafsText = page.words.filter((w) => w.key >= startKey && w.key <= endKey).map((w) => w.text).join(' ')
+  return {
+    entryId: tempId,
+    locationId: '',
+    version: '',
+    kind: draft.kind,
+    categoryCode: draft.categoryCode ?? null,
+    categoryNameAr: page.categories.find((c) => c.code === draft.categoryCode)?.nameAr ?? null,
+    surah: draft.surah,
+    ayah: draft.ayah,
+    startWord: draft.startWord,
+    endAyah,
+    endWord,
+    startKey,
+    endKey,
+    page: page.page,
+    hafsText,
+    readingText: draft.readingText ?? null,
+    uthmaniText: draft.uthmaniText ?? null,
+    description: draft.description ?? null,
+    performanceNote: draft.performanceNote ?? null,
+    variantType: draft.variantType ?? null,
+    rulingText: draft.rulingText ?? null,
+    options: null,
+    notes: draft.notes ?? null,
+    reviewStatus: 'unreviewed',
+    locationReviewStatus: 'unreviewed',
+    verificationStatus: 'REVIEWED',
+    legacyRef: null,
+    entryOrder: 9999,
+    deleted: false,
+    appliesWasl: draft.appliesWasl ?? true,
+    appliesWaqf: draft.appliesWaqf ?? true,
+    hamzahDetail: draft.hamzahDetail ?? null,
+    narrators: toReviewNarrators(draft.narrators, page.narrators),
+    flags: [],
+  }
+}
+
+function pageStats(rows: ReviewRow[]): ReviewPage['stats'] {
+  const live = rows.filter((r) => !r.deleted)
+  return {
+    total: live.length,
+    unreviewed: live.filter((r) => r.reviewStatus === 'unreviewed').length,
+    reviewed: live.filter((r) => r.reviewStatus === 'reviewed').length,
+    flagged: live.filter((r) => r.reviewStatus === 'flagged').length,
+    deleted: rows.length - live.length,
+  }
+}
+
+type SaveJob = {
+  label: string
+  /** Jobs sharing a key run one after another (same entry / same locus); others run in parallel. */
+  chainKey: string
+  run(): Promise<{ ok: true } | { ok: false; message: string }>
+  /** Undo the optimistic change after `run` failed (the page is also re-read from the server). */
+  onFail(): void
+  /** Put the optimistic change back before a retry. */
+  redo(): void
+}
+
 export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const [pageNumber, setPageNumber] = useState(() => clampPage(initialPage))
   const [page, setPage] = useState<ReviewPage | null>(null)
@@ -122,10 +245,22 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   const [overview, setOverview] = useState<ReviewOverview | null>(null)
 
+  // Latest page/pageNumber for background save jobs, which outlive the render that started them.
+  const pageRef = useRef<ReviewPage | null>(null)
+  const pageNumberRef = useRef(pageNumber)
+  const selectedWordKeyRef = useRef<string | null>(null)
+  useEffect(() => {
+    pageRef.current = page
+    pageNumberRef.current = pageNumber
+  }, [page, pageNumber])
+
   // Selection state
   const [selectedWordKey, setSelectedWordKey] = useState<string | null>(null)
   const [selectedWordMeta, setSelectedWordMeta] = useState<WordMeta | null>(null)
   const [selectedRowId, setSelectedRowId] = useState<string | null>(null)
+  useEffect(() => {
+    selectedWordKeyRef.current = selectedWordKey
+  }, [selectedWordKey])
   const [hoveredRowId, setHoveredRowId] = useState<string | null>(null)
 
   // Feature 1: Ctrl/Cmd-click (desktop) or "ربط بالكلمة التالية" (mobile) multi-word span
@@ -249,25 +384,123 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     await loadOverview()
   }, [loadPage, loadOverview, pageNumber])
 
-  function applyRowUpdate(row: ReviewRow) {
+  // The overview is a 39 KB / ~1 s request; a burst of saves refreshes it once, not once per save.
+  const overviewTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const scheduleOverviewRefresh = useCallback(() => {
+    if (overviewTimerRef.current) clearTimeout(overviewTimerRef.current)
+    overviewTimerRef.current = setTimeout(() => {
+      overviewTimerRef.current = null
+      void loadOverview()
+    }, 1500)
+  }, [loadOverview])
+
+  // Insert or replace a row (optionally replacing `replaceId`, the optimistic placeholder). Rows of
+  // another page are ignored: a save can finish after the reviewer has turned the page.
+  function upsertRow(row: ReviewRow, replaceId?: string) {
+    if (row.page !== pageNumberRef.current) return
     setPage((current) => {
       if (!current) return current
-      const exists = current.rows.some((r) => r.entryId === row.entryId)
-      const rows = exists
-        ? current.rows.map((r) => (r.entryId === row.entryId ? row : r))
-        : [...current.rows, row]
-
-      // Recompute stats
-      const total = rows.filter((r) => !r.deleted).length
-      const unreviewed = rows.filter((r) => !r.deleted && r.reviewStatus === 'unreviewed').length
-      const reviewed = rows.filter((r) => !r.deleted && r.reviewStatus === 'reviewed').length
-      const flagged = rows.filter((r) => !r.deleted && r.reviewStatus === 'flagged').length
-      const deleted = rows.filter((r) => r.deleted).length
-
-      return { ...current, rows, stats: { total, unreviewed, reviewed, flagged, deleted } }
+      const at = current.rows.findIndex((r) => r.entryId === (replaceId ?? row.entryId))
+      const existing = current.rows.findIndex((r) => r.entryId === row.entryId)
+      let rows: ReviewRow[]
+      if (at >= 0) {
+        rows = current.rows.map((r, i) => (i === at ? row : r))
+        if (existing >= 0 && existing !== at) rows = rows.filter((r, i) => i !== existing)
+      } else if (existing >= 0) {
+        rows = current.rows.map((r, i) => (i === existing ? row : r))
+      } else {
+        rows = [...current.rows, row]
+      }
+      return { ...current, rows, stats: pageStats(rows) }
     })
-    void loadOverview()
+    scheduleOverviewRefresh()
   }
+
+  function applyRowUpdate(row: ReviewRow) {
+    upsertRow(row)
+  }
+
+  function removeRow(entryId: string) {
+    setPage((current) => {
+      if (!current) return current
+      const rows = current.rows.filter((r) => r.entryId !== entryId)
+      return { ...current, rows, stats: pageStats(rows) }
+    })
+  }
+
+  // Re-read the current page without blanking it (loadPage shows the loading screen).
+  const reloadSilent = useCallback(async () => {
+    const target = pageNumberRef.current
+    const result = await reviewApi.getReviewPage(target, true)
+    if (result.ok && target === pageNumberRef.current) setPage(result.data)
+    scheduleOverviewRefresh()
+  }, [scheduleOverviewRefresh])
+
+  // ── Background save queue ────────────────────────────────────────────────────────────────────
+  const chainsRef = useRef(new Map<string, Promise<void>>())
+  const pendingRef = useRef(0)
+  const failureSeqRef = useRef(0)
+  const tempSeqRef = useRef(0)
+  const [pendingSaves, setPendingSaves] = useState(0)
+  const [lastSavedAt, setLastSavedAt] = useState<number | null>(null)
+  const [saveFailures, setSaveFailures] = useState<SaveFailure[]>([])
+  const submitSaveRef = useRef<(job: SaveJob) => void>(() => {})
+
+  const submitSave = useCallback(
+    (job: SaveJob) => {
+      pendingRef.current += 1
+      setPendingSaves(pendingRef.current)
+      const previous = chainsRef.current.get(job.chainKey) ?? Promise.resolve()
+      const next = previous.then(async () => {
+        let outcome: { ok: true } | { ok: false; message: string }
+        try {
+          outcome = await job.run()
+        } catch {
+          outcome = { ok: false, message: 'تعذّر الاتصال بالخادم' }
+        }
+        pendingRef.current -= 1
+        setPendingSaves(pendingRef.current)
+        if (outcome.ok) {
+          setLastSavedAt(Date.now())
+        } else {
+          job.onFail()
+          const id = ++failureSeqRef.current
+          const dismiss = () => setSaveFailures((list) => list.filter((f) => f.id !== id))
+          setSaveFailures((list) => [
+            ...list,
+            {
+              id,
+              label: job.label,
+              message: outcome.message,
+              dismiss,
+              retry: () => {
+                dismiss()
+                job.redo()
+                submitSaveRef.current(job)
+              },
+            },
+          ])
+        }
+        // Once the queue is empty, reconcile with the server in the background.
+        if (pendingRef.current === 0) void reloadSilent()
+      })
+      chainsRef.current.set(job.chainKey, next)
+    },
+    [reloadSilent],
+  )
+  useEffect(() => {
+    submitSaveRef.current = submitSave
+  }, [submitSave])
+
+  // Leaving with a save still in flight would lose it.
+  useEffect(() => {
+    if (pendingSaves === 0) return
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault()
+    }
+    window.addEventListener('beforeunload', warn)
+    return () => window.removeEventListener('beforeunload', warn)
+  }, [pendingSaves])
 
   // Active rows for the currently selected word
   const activeRowsForWord = useMemo(() => {
@@ -479,6 +712,10 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const handleConfirmRow = useCallback(
     async (row: ReviewRow) => {
       if (!deviceId) return
+      if (isPendingRow(row)) {
+        setErrorMessage('هذا الوجه ما زال قيد الحفظ — انتظر لحظة')
+        return
+      }
       setIsSaving(true)
       setErrorMessage(null)
       setSaveMessage(null)
@@ -500,6 +737,10 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const handleFlagRow = useCallback(
     async (row: ReviewRow) => {
       if (!deviceId) return
+      if (isPendingRow(row)) {
+        setErrorMessage('هذا الوجه ما زال قيد الحفظ — انتظر لحظة')
+        return
+      }
       setIsSaving(true)
       setErrorMessage(null)
       setSaveMessage(null)
@@ -517,7 +758,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     [deviceId]
   )
 
-  // Save Row Edits (fields + narrators)
+  // Save Row Edits (fields + narrators). Optimistic: the row updates at once and the two requests
+  // (fields, then narrators) run in the background; progress and failures show in the status bar.
   const handleSaveRowEdits = useCallback(
     async (row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]) => {
       if (!deviceId) return
@@ -525,33 +767,43 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         setErrorMessage('يجب اختيار راوٍ واحد على الأقل')
         return
       }
-      setIsSaving(true)
+      if (isPendingRow(row)) {
+        setErrorMessage('هذا الوجه ما زال قيد الحفظ — انتظر لحظة ثم عدّله')
+        return
+      }
+      const current = pageRef.current
+      if (!current) return
       setErrorMessage(null)
       setSaveMessage(null)
 
-      // 1. Update entry fields
-      const updateRes = await reviewApi.updateEntry(row, fields, deviceId)
-      if (!updateRes.ok) {
-        setIsSaving(false)
-        setErrorMessage(updateRes.error.messageAr ?? updateRes.error.message)
-        return
+      const optimistic = () => {
+        const base = pageRef.current?.rows.find((r) => r.entryId === row.entryId) ?? row
+        upsertRow(applyFieldsToRow(base, fields, narrators, pageRef.current ?? current))
       }
+      optimistic()
 
-      // 2. Update narrators
-      const updatedRow = updateRes.data
-      const narratorsRes = await reviewApi.setNarrators(updatedRow, narrators, deviceId)
-      setIsSaving(false)
-      if (!narratorsRes.ok) {
-        applyRowUpdate(updatedRow)
-        setErrorMessage(narratorsRes.error.messageAr ?? narratorsRes.error.message)
-        return
-      }
-
-      applyRowUpdate(narratorsRes.data)
-      setSaveMessage('تم حفظ التعديلات بنجاح ✓')
-      setTimeout(() => setSaveMessage(null), 3000)
+      submitSave({
+        label: 'حفظ التعديلات',
+        chainKey: `entry:${row.entryId}`,
+        run: async () => {
+          // Read the version at run time: an earlier queued save of this entry may have bumped it.
+          const latest = pageRef.current?.rows.find((r) => r.entryId === row.entryId) ?? row
+          const updateRes = await reviewApi.updateEntry(latest, fields, deviceId)
+          if (!updateRes.ok) return { ok: false, message: updateRes.error.messageAr ?? updateRes.error.message }
+          const narratorsRes = await reviewApi.setNarrators(updateRes.data, narrators, deviceId)
+          if (!narratorsRes.ok) {
+            upsertRow(updateRes.data)
+            return { ok: false, message: narratorsRes.error.messageAr ?? narratorsRes.error.message }
+          }
+          upsertRow(narratorsRes.data)
+          return { ok: true }
+        },
+        onFail: () => void reloadSilent(),
+        redo: optimistic,
+      })
     },
-    [deviceId]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [deviceId, submitSave, reloadSilent]
   )
 
   // Create New Entry (State C). Returns whether the save actually succeeded, so callers that
@@ -564,62 +816,99 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const handleCreateNewEntry = useCallback(
     async (draft: CreateEntryInput, options?: { autoVerify?: boolean }): Promise<boolean> => {
       if (!deviceId) return false
-      setIsSaving(true)
+      const current = pageRef.current
+      if (!current) return false
       setErrorMessage(null)
       setSaveMessage(null)
 
-      const result = await reviewApi.createEntry(draft, deviceId)
-      if (result.ok) {
-        let finalRow = result.data
-        if (
-          (draft.appliesWasl !== undefined && draft.appliesWasl !== true) ||
-          (draft.appliesWaqf !== undefined && draft.appliesWaqf !== true) ||
-          draft.hamzahDetail
-        ) {
-          const updateRes = await reviewApi.updateEntry(
-            finalRow,
-            {
-              appliesWasl: draft.appliesWasl ?? true,
-              appliesWaqf: draft.appliesWaqf ?? true,
-              hamzahDetail: draft.hamzahDetail ?? null,
-            },
-            deviceId
-          )
-          if (updateRes.ok) {
-            finalRow = updateRes.data
+      // Optimistic: the new وجه appears (and the draft closes) immediately; the requests run in the
+      // background. A placeholder row stands in until the server's row replaces it.
+      const tempId = `${TEMP_ROW_PREFIX}${++tempSeqRef.current}`
+      const tempRow = buildTempRow(tempId, draft, current)
+      let created: ReviewRow | null = null
+      upsertRow(tempRow)
+      setSelectedRowId(tempId)
+      setNewEntryDraft(null)
+
+      submitSave({
+        label: 'إضافة وجه',
+        chainKey: `loc:${draft.surah}:${draft.ayah}:${draft.startWord}`,
+        run: async () => {
+          let row = created
+          if (!row) {
+            const result = await reviewApi.createEntry(draft, deviceId)
+            if (!result.ok) return { ok: false, message: result.error.messageAr ?? result.error.message }
+            row = result.data
+            created = row
+            upsertRow(row, tempId)
           }
-        }
-        if (options?.autoVerify) {
-          const statusRes = await reviewApi.setStatus(finalRow, 'reviewed', null, deviceId)
-          if (statusRes.ok) {
-            finalRow = statusRes.data
+          const needsUpdate =
+            (draft.appliesWasl !== undefined && draft.appliesWasl !== true) ||
+            (draft.appliesWaqf !== undefined && draft.appliesWaqf !== true) ||
+            draft.hamzahDetail
+          if (needsUpdate) {
+            const updateRes = await reviewApi.updateEntry(
+              row,
+              {
+                appliesWasl: draft.appliesWasl ?? true,
+                appliesWaqf: draft.appliesWaqf ?? true,
+                hamzahDetail: draft.hamzahDetail ?? null,
+              },
+              deviceId
+            )
+            if (updateRes.ok) {
+              row = updateRes.data
+              created = row
+              upsertRow(row)
+            }
           }
-        }
-        setIsSaving(false)
-        applyRowUpdate(finalRow)
-        setSelectedRowId(finalRow.entryId)
-        setNewEntryDraft(null)
-        setSaveMessage('تمت إضافة القراءة بنجاح إلى قاعدة البيانات ✓')
-        setTimeout(() => setSaveMessage(null), 4000)
-        // Re-fetch the page from the server rather than trusting the optimistic
-        // applyRowUpdate() alone -- guarantees "٣. الأوجه المسجلة" reflects the row that was
-        // actually just committed, even if some other client-side state (a stale selection, a
-        // half-updated draft) would otherwise have kept the optimistic update from showing.
-        void reloadCurrentPage()
-        return true
-      } else {
-        setIsSaving(false)
-        setErrorMessage(result.error.messageAr ?? result.error.message)
-        return false
-      }
+          if (options?.autoVerify) {
+            const statusRes = await reviewApi.setStatus(row, 'reviewed', null, deviceId)
+            if (statusRes.ok) {
+              row = statusRes.data
+              created = row
+              upsertRow(row)
+            }
+          }
+          setSelectedRowId((selected) => (selected === tempId ? row.entryId : selected))
+          return { ok: true }
+        },
+        onFail: () => {
+          if (created) {
+            // Created on the server; only a follow-up step failed. Keep it (the reload shows the truth).
+            void reloadSilent()
+            return
+          }
+          removeRow(tempId)
+          setSelectedRowId((selected) => (selected === tempId ? null : selected))
+          // Give the reviewer their inputs back if they are still on the same word.
+          if (selectedWordKeyRef.current === wordKey(draft.surah, draft.ayah, draft.startWord)) {
+            setNewEntryDraft((existing) => existing ?? draft)
+          }
+          void reloadSilent()
+        },
+        redo: () => {
+          if (!created) {
+            upsertRow(tempRow)
+            setSelectedRowId(tempId)
+            setNewEntryDraft(null)
+          }
+        },
+      })
+      return true
     },
-    [deviceId, reloadCurrentPage]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [deviceId, submitSave, reloadSilent]
   )
 
   // Multi-select delete (feature 1): all-or-nothing, version-checked per row.
   const handleBulkDelete = useCallback(
     async (rows: ReviewRow[], note: string | null) => {
       if (!deviceId || rows.length === 0) return
+      if (rows.some(isPendingRow)) {
+        setErrorMessage('هذا الوجه ما زال قيد الحفظ — انتظر لحظة')
+        return
+      }
       setIsSaving(true)
       setErrorMessage(null)
       setSaveMessage(null)
@@ -689,6 +978,10 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const handleDeleteRow = useCallback(
     async (row: ReviewRow) => {
       if (!deviceId) return
+      if (isPendingRow(row)) {
+        setErrorMessage('هذا الوجه ما زال قيد الحفظ — انتظر لحظة')
+        return
+      }
       if (!window.confirm('هل أنت متأكد من حذف هذا الموضع؟ يمكن التراجع بعد الحذف.')) return
       setIsSaving(true)
       setErrorMessage(null)
@@ -905,6 +1198,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
           </div>
         </>
       )}
+
+      <ReviewSaveStatusBar pending={pendingSaves} lastSavedAt={lastSavedAt} failures={saveFailures} />
     </div>
   )
 }
