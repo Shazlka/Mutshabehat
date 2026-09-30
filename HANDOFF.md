@@ -25,6 +25,7 @@ without being asked.
 | DB backups | `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost/backups/*.dump` |
 | DB shell | `docker exec -it mutshabehat-db psql -U postgres -d postgres` |
 | Changelog | `CHANGELOG.md` **and** the `# Changelog` section of `CLAUDE.md` — dated entry, newest first, required for every change |
+| iOS app | `apps/ios` (app name **Qiraat**), built on the **MacBook Air** with Xcode 27 + simulators: `make -C apps/ios test`. Everything about it: `PROJECT_MASTER.md` §14 |
 
 Stack: Next.js 16 (App Router, Turbopack; middleware is `src/proxy.ts`), React 19, Tailwind v4.
 
@@ -68,6 +69,10 @@ Known lint baseline (pre-existing, not regressions): `Mushaf1441Viewer.tsx` has 
 and `stats/page.tsx` have `no-explicit-any` errors.
 
 ## 4. What was done in the 2026-09-16 / 17 sessions (newest first)
+
+**2026-09-30 (MacBook Air):** iOS app Phase 1, an offline Mushaf 1441 reader, on branch
+`ios/phase1-reader` (plan `docs/superpowers/plans/2026-09-30-ios-mushaf-1441-app.md`,
+`PROJECT_MASTER.md` §14). No web code or DB change.
 
 | Commit | Change |
 |---|---|
@@ -122,6 +127,16 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 - The 2026-09-17 production verification was done against a **local** production build; the live page
   itself was never loaded from the sandbox (proxy blocks `*.vercel.app`). Deploy state came from the
   Vercel API.
+
+### 5.2b iOS app — next steps
+
+- **Phase 2 (account, notes, متشابهات, reader layers)** needs its own plan; the outline and the
+  already-tested `ReaderLayer`/`PressRouter` code are in the plan's Appendix A. Default layer on a new
+  device: **متشابهات** (user, 2026-09-30).
+- **To run on a real iPhone**, the user adds Apple ID `amr.eshazly@icloud.com` in Xcode → Settings →
+  Accounts (an agent must not sign in). TestFlight needs the paid Apple Developer Program: not decided.
+- Phase 4 open items: app icon (needs a source logo), QCF font licence for distribution, privacy manifest.
+- The surah header is plain text for now; the ornamental banner is Phase 2 polish.
 
 ### 5.3 Older, still open
 
