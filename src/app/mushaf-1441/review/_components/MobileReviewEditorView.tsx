@@ -84,6 +84,8 @@ export default function MobileReviewEditorView({
     kind,
     setKind,
     categoryCode,
+    selectedCategoryCodes,
+    toggleCategory,
     setCategoryCode,
     readingText,
     setReadingText,
@@ -695,6 +697,8 @@ export default function MobileReviewEditorView({
             <UsulRuleGrid
               selectedCategoryCode={categoryCode}
               onSelectCategory={setCategoryCode}
+              selectedCategoryCodes={selectedCategoryCodes}
+              onToggleCategory={toggleCategory}
               readingText={readingText}
               onChangeReadingText={setReadingText}
               rulingText={rulingText}

@@ -127,6 +127,8 @@ export default function ReviewEditorPane({
     setKind,
     categoryCode,
     setCategoryCode,
+    selectedCategoryCodes,
+    toggleCategory,
     readingText,
     setReadingText,
     variantType,
@@ -202,7 +204,6 @@ export default function ReviewEditorPane({
   }
 
   const [usulSearchQuery, setUsulSearchQuery] = useState('')
-  const [showAllUsulCategories, setShowAllUsulCategories] = useState(false)
 
   // External reference (nquran.com), all 114 surahs -- display only, never written into any saved
   // field. Lazily loaded one surah at a time so no reference JSON is in the editor's initial bundle.
@@ -267,10 +268,6 @@ export default function ReviewEditorPane({
     }
     return FALLBACK_USUL_CATEGORIES
   }, [page.categories])
-
-  const selectedCategory = useMemo(() => {
-    return categories.find((c) => c.code === categoryCode)
-  }, [categories, categoryCode])
 
   const filteredCategories = useMemo(() => {
     const q = usulSearchQuery.trim()
@@ -853,6 +850,8 @@ export default function ReviewEditorPane({
             <UsulRuleGrid
               selectedCategoryCode={categoryCode}
               onSelectCategory={setCategoryCode}
+              selectedCategoryCodes={selectedCategoryCodes}
+              onToggleCategory={toggleCategory}
               readingText={readingText}
               onChangeReadingText={setReadingText}
               rulingText={rulingText}
@@ -942,63 +941,47 @@ export default function ReviewEditorPane({
                   </div>
                 </div>
               ) : (
-                /* Standard Usul Category Picker */
+                /* Standard Usul Category Picker: every باب listed (no inner scroll), several can be ticked */
                 <div className="space-y-1">
-                  <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-bold text-[var(--color-ink)]">باب الأصول:</label>
-                    {categoryCode && !showAllUsulCategories ? (
-                      <button
-                        type="button"
-                        onClick={() => setShowAllUsulCategories(true)}
-                        className="text-[10px] font-bold text-[var(--color-primary)] hover:underline"
-                      >
-                        تغيير ▾
-                      </button>
-                    ) : null}
+                  <div className="flex items-center justify-between gap-2">
+                    <label className="text-[11px] font-bold text-[var(--color-ink)]">أبواب الأصول:</label>
+                    <span className="text-[10px] text-[var(--color-ink-muted)]">
+                      {selectedCategoryCodes.length > 1
+                        ? `${selectedCategoryCodes.length} أبواب — يُنشأ وجه مستقل لكل باب عند الحفظ`
+                        : 'يمكن اختيار أكثر من باب'}
+                    </span>
                   </div>
-
-                  {categoryCode && !showAllUsulCategories ? (
-                    <div className="flex items-center justify-between rounded-lg border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/20 px-2 py-1 text-xs">
-                      <span className="font-bold text-[var(--color-primary)] truncate">
-                        {selectedCategory?.nameAr ?? categoryCode}
-                      </span>
-                      <span className="text-green-700 font-bold text-[10px]">✓</span>
-                    </div>
-                  ) : (
-                    <div className="space-y-1">
-                      <input
-                        type="search"
-                        value={usulSearchQuery}
-                        onChange={(e) => setUsulSearchQuery(e.target.value)}
-                        placeholder="بحث في الأبواب..."
-                        className="h-6 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 text-[11px] text-[var(--color-ink)] focus:ring-1 focus:ring-[var(--color-primary)]"
-                      />
-                      <div className="grid grid-cols-2 gap-1 max-h-48 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
-                        {filteredCategories.map((c) => {
-                          const isSel = categoryCode === c.code
-                          return (
-                            <button
-                              key={c.code}
-                              type="button"
-                              onClick={() => {
-                                setCategoryCode(c.code)
-                                setShowAllUsulCategories(false)
-                              }}
-                              className={cn(
-                                'flex items-center justify-between rounded px-1.5 py-0.5 text-right text-[11px] truncate',
-                                isSel
-                                  ? 'bg-[var(--color-primary)] font-bold text-white'
-                                  : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
-                              )}
-                            >
-                              <span className="truncate">{c.nameAr}</span>
-                              {isSel ? <span className="text-[10px]">✓</span> : null}
-                            </button>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )}
+                  <input
+                    type="search"
+                    value={usulSearchQuery}
+                    onChange={(e) => setUsulSearchQuery(e.target.value)}
+                    placeholder="بحث في الأبواب..."
+                    className="h-6 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 text-[11px] text-[var(--color-ink)] focus:ring-1 focus:ring-[var(--color-primary)]"
+                  />
+                  <div className="grid grid-cols-2 gap-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20 p-1">
+                    {filteredCategories.map((c) => {
+                      const isSel = selectedCategoryCodes.includes(c.code)
+                      return (
+                        <button
+                          key={c.code}
+                          type="button"
+                          role="checkbox"
+                          aria-checked={isSel}
+                          disabled={isSaving}
+                          onClick={() => toggleCategory(c.code)}
+                          className={cn(
+                            'flex items-center justify-between rounded px-1.5 py-0.5 text-right text-[11px]',
+                            isSel
+                              ? 'bg-[var(--color-primary)] font-bold text-white'
+                              : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
+                          )}
+                        >
+                          <span>{c.nameAr}</span>
+                          {isSel ? <span className="text-[10px]">✓</span> : null}
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
               )}
             </div>
@@ -1077,7 +1060,7 @@ export default function ReviewEditorPane({
                   </span>
                 </button>
                 {nquranPanelOpen ? (
-                  <div className="flex flex-col gap-1.5 border-t border-amber-200 px-2 pb-2 pt-1.5 max-h-64 overflow-y-auto">
+                  <div className="flex flex-col gap-1.5 border-t border-amber-200 px-2 pb-2 pt-1.5">
                     <p className="text-[9px] text-amber-800/80 dark:text-amber-400/80">
                       مرجع للاطّلاع — غير معتمد تلقائيًا؛ زر «إضافة كوجه» ينشئ وجهًا جديدًا مُعبَّأً مسبقًا بالقراء/الرواة والبيان دون حفظه، فيبقى قابلًا للتعديل والمراجعة قبل «حفظ».
                     </p>
@@ -1189,22 +1172,7 @@ export default function ReviewEditorPane({
                   />
                 </div>
               </>
-            ) : (
-              /* Usul Ruling Text */
-              <div>
-                <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-                  بيان الحكم أو الضابط (اختياري): ‏(يظهر في المصحف فقط إذا اختلف عن «الأداء» المكتوب للقارئ)
-                </label>
-                <textarea
-                  rows={4}
-                  value={rulingText ?? ''}
-                  onChange={(e) => setRulingText(e.target.value)}
-                  disabled={isSaving}
-                  placeholder="مثال: صلة هاء الكناية بحركتين، نقل حركة الهمزة..."
-                  className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-xs text-[var(--color-ink)] focus:border-[var(--color-primary)] focus:outline-none resize-none"
-                />
-              </div>
-            )}
+            ) : null}
           </div>
 
           {/* BOX 3: Readers, Narrators & Multi-Wajh Management */}

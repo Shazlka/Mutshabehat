@@ -43,6 +43,9 @@ export const FALLBACK_USUL_CATEGORIES: readonly CategoryOption[] = [
 type Props = {
   selectedCategoryCode: string | null
   onSelectCategory(code: string): void
+  /** Multi-select: every ticked باب (primary first) and the toggle that adds/removes one. */
+  selectedCategoryCodes?: string[]
+  onToggleCategory?(code: string): void
   readingText: string
   onChangeReadingText(text: string): void
   rulingText: string | null
@@ -67,6 +70,8 @@ type Props = {
 export default function UsulRuleGrid({
   selectedCategoryCode,
   onSelectCategory,
+  selectedCategoryCodes,
+  onToggleCategory,
   readingText,
   onChangeReadingText,
   rulingText,
@@ -97,6 +102,9 @@ export default function UsulRuleGrid({
   const selectedCategory = useMemo(() => {
     return categories.find((c) => c.code === selectedCategoryCode)
   }, [categories, selectedCategoryCode])
+
+  const ticked = selectedCategoryCodes ?? (selectedCategoryCode ? [selectedCategoryCode] : [])
+  const selectedNames = ticked.map((code) => categories.find((c) => c.code === code)?.nameAr ?? code).join('، ')
 
   const filteredCategories = useMemo(() => {
     const q = filterQuery.trim()
@@ -134,7 +142,7 @@ export default function UsulRuleGrid({
           <div className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/20 px-2.5 py-1 text-xs h-[38px] shrink-0">
             <div className="flex items-center gap-1.5">
               <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">الباب:</span>
-              <span className="font-bold text-[var(--color-primary)]">{selectedCategory.nameAr}</span>
+              <span className="font-bold text-[var(--color-primary)]">{selectedNames}</span>
               <span className="rounded bg-green-100 dark:bg-green-950/40 text-green-800 dark:text-green-300 px-1 text-[9px] font-bold">✓</span>
             </div>
             <button
@@ -178,16 +186,20 @@ export default function UsulRuleGrid({
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-1 max-h-48 overflow-y-auto p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
+          <div className="grid grid-cols-2 gap-1 p-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/20">
             {filteredCategories.map((category) => {
-              const isSelected = selectedCategoryCode === category.code
+              const isSelected = ticked.includes(category.code)
               return (
                 <button
                   key={category.code}
                   type="button"
+                  role="checkbox"
+                  aria-checked={isSelected}
                   onClick={() => {
-                    onSelectCategory(category.code)
-                    setShowAllCategories(false)
+                    if (onToggleCategory) onToggleCategory(category.code)
+                    else onSelectCategory(category.code)
+                    // Stay open while ticking plain أبواب; collapse once a structured (همزة/إمالة) one is chosen.
+                    if (!onToggleCategory || isHamzahCategory(category.code) || isImalahCategory(category.code)) setShowAllCategories(false)
                   }}
                   disabled={disabled}
                   className={cn(
@@ -197,7 +209,7 @@ export default function UsulRuleGrid({
                       : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-surface-2)]'
                   )}
                 >
-                  <span className="truncate">{category.nameAr}</span>
+                  <span>{category.nameAr}</span>
                   {isSelected ? <span className="text-[10px]">✓</span> : null}
                 </button>
               )
@@ -240,23 +252,6 @@ export default function UsulRuleGrid({
           spanStart={spanStart}
           spanEnd={spanEnd}
         />
-      ) : null}
-
-      {/* Ruling statement / notes input for non-specialized categories */}
-      {!isImalahCategory(selectedCategoryCode) && !isHamzahCategory(selectedCategoryCode) ? (
-        <div>
-          <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
-            بيان الحكم أو الملاحظة (اختياري): ‏(يظهر في المصحف فقط إذا اختلف عن «الأداء» المكتوب للقارئ)
-          </label>
-          <input
-            type="text"
-            value={rulingText ?? ''}
-            onChange={(e) => onChangeRulingText(e.target.value)}
-            disabled={disabled}
-            placeholder="مثال: إمالة الألف، أو نقل حركة الهمزة..."
-            className="mt-0.5 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)]/60 focus:border-[var(--color-primary)] focus:outline-none"
-          />
-        </div>
       ) : null}
     </div>
   )

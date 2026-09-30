@@ -12,6 +12,7 @@ import type {
   SameWordMatch,
 } from '../_lib/types'
 import { isHamzahCategory } from './HamzahDetailFields'
+import { isImalahCategory } from './ImalahDetailFields'
 import { normalizeVariantType } from './FarshFields'
 import { summarizeActiveRows } from './facesSummary'
 import * as reviewApi from '../_lib/api'
@@ -90,6 +91,9 @@ export function useReviewEditorDraft({
   // Local edit draft for existing row or new entry
   const [kind, setKind] = useState<'farsh' | 'usul'>('farsh')
   const [categoryCode, setCategoryCode] = useState<string | null>(null)
+  // Extra أصول أبواب ticked next to the primary one. The database holds one category per entry, so
+  // each extra becomes its own sibling entry (same word, reading, narrators) when the draft is saved.
+  const [extraCategoryCodes, setExtraCategoryCodes] = useState<string[]>([])
   const [readingText, setReadingText] = useState('')
   const [variantType, setVariantType] = useState<string | null>(null)
   const [rulingText, setRulingText] = useState<string | null>(null)
@@ -148,6 +152,7 @@ export function useReviewEditorDraft({
 
       setKind(nextKind)
       setCategoryCode(nextCategoryCode)
+      setExtraCategoryCodes([])
       setReadingText(nextReadingText)
       setVariantType(nextVariantType)
       setRulingText(nextRulingText)
@@ -191,6 +196,7 @@ export function useReviewEditorDraft({
 
       setKind(nextKind)
       setCategoryCode(nextCategoryCode)
+      setExtraCategoryCodes([])
       setReadingText(nextReadingText)
       setVariantType(nextVariantType)
       setRulingText(nextRulingText)
@@ -246,8 +252,9 @@ export function useReviewEditorDraft({
       hamzahDetail,
       narrators,
     })
-    return current !== initialSnapshotRef.current
+    return current !== initialSnapshotRef.current || extraCategoryCodes.length > 0
   }, [
+    extraCategoryCodes,
     selectedRow,
     newEntryDraft,
     kind,
@@ -268,6 +275,25 @@ export function useReviewEditorDraft({
   const currentAyahNumber = selectedRow?.ayah ?? selectedWordMeta?.ayah ?? null
   const currentWordNumber = selectedRow?.startWord ?? selectedWordMeta?.word ?? null
   const currentHafsText = selectedRow?.hafsText ?? selectedWordMeta?.text ?? ''
+
+  // Ticking a باب adds it to the selection; ticking a ticked one removes it. همزة and إمالة أبواب
+  // carry their own structured details, so they stay single-choice (choosing one replaces the rest).
+  function toggleCategory(code: string) {
+    const isSpecial = (c: string | null) => isHamzahCategory(c) || isImalahCategory(c)
+    if (!categoryCode || isSpecial(code) || isSpecial(categoryCode)) {
+      setCategoryCode(code)
+      setExtraCategoryCodes([])
+      return
+    }
+    if (code === categoryCode) {
+      const [promoted, ...rest] = extraCategoryCodes
+      setCategoryCode(promoted ?? null)
+      setExtraCategoryCodes(rest)
+      return
+    }
+    setExtraCategoryCodes((current) => (current.includes(code) ? current.filter((c) => c !== code) : [...current, code]))
+  }
+  const selectedCategoryCodes = categoryCode ? [categoryCode, ...extraCategoryCodes] : []
 
   async function handleSaveExisting(): Promise<boolean> {
     if (!selectedRow) return false
@@ -295,6 +321,28 @@ export function useReviewEditorDraft({
     }
 
     await onSaveRowEdits(selectedRow, fields, narrators)
+    if (!isFarsh && extraCategoryCodes.length > 0) {
+      let allCreated = true
+      for (const code of extraCategoryCodes) {
+        const created = await onCreateNewEntry({
+          surah: selectedRow.surah,
+          ayah: selectedRow.ayah,
+          startWord: selectedRow.startWord,
+          endAyah: selectedRow.endAyah,
+          endWord: selectedRow.endWord,
+          kind: 'usul',
+          readingText: readingText.trim() || undefined,
+          uthmaniText: selectedRow.uthmaniText,
+          categoryCode: code,
+          rulingText: rulingText?.trim() || null,
+          narrators,
+          appliesWasl,
+          appliesWaqf,
+        })
+        if (!created) { allCreated = false; break }
+      }
+      if (allCreated) setExtraCategoryCodes([])
+    }
     initialSnapshotRef.current = serializeDraftSnapshot({
       kind,
       categoryCode,
@@ -332,6 +380,13 @@ export function useReviewEditorDraft({
     }
 
     await onCreateNewEntry(draft)
+    if (kind === 'usul') {
+      let allCreated = true
+      for (const code of extraCategoryCodes) {
+        if (!(await onCreateNewEntry({ ...draft, categoryCode: code, hamzahDetail: null }))) { allCreated = false; break }
+      }
+      if (allCreated) setExtraCategoryCodes([])
+    }
     return true
   }
 
@@ -485,6 +540,8 @@ export function useReviewEditorDraft({
     setKind,
     categoryCode,
     setCategoryCode,
+    selectedCategoryCodes,
+    toggleCategory,
     readingText,
     setReadingText,
     variantType,

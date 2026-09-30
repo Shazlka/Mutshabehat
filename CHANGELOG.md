@@ -7,6 +7,13 @@ and any required DB migration.
 > This file mirrors the `# Changelog` section in `CLAUDE.md` — keep both in sync. Every bug fix,
 > feature, or performance improvement **must** be logged here, dated, before the work is done.
 
+## 2026-09-30 — Review Editor: أبواب الأصول multi-select, no inner scrolling, ruling-note box removed
+- **Owner request:** show the whole أصول القراءات list without scrolling, allow ticking several أبواب, remove the «بيان الحكم أو الضابط» box, and stop the nquran panel from scrolling.
+- **Multi-select:** `useReviewEditorDraft.ts` gains `selectedCategoryCodes` / `toggleCategory` / `extraCategoryCodes`. The database keeps one category per entry, so saving creates one sibling entry per extra باب on the same word (same reading text, narrators, wasl/waqf, ruling text). For a new draft the primary is created first, then each extra; for an existing entry it is saved first, then the extras are created. Creation stops at the first failure and keeps the ticks. همزة/إمالة أبواب stay single-choice (they carry structured details): ticking one replaces the selection. Used by the desktop picker (`ReviewEditorPane.tsx`), `UsulRuleGrid.tsx` and the mobile editor.
+- **Layout:** the باب list is fully expanded (no `max-h`/scroll, no collapsed «تغيير» state in the standard picker); the nquran panel drops its `max-h-64` scroll.
+- **Removed:** the ruling/ضابط textarea (desktop) and the equivalent one-line input in `UsulRuleGrid` (mobile). Existing `rulingText` values are untouched and still saved as they were; they just have no input box.
+- **Verification:** typecheck, `test:qiraat:review` 53/53, lint clean on touched files, browser check of the desktop editor (25 أبواب visible, 3 ticked, no scrolling ancestors, no textarea). **The multi-باب save path was not exercised against the database.** **DB migration:** none.
+
 ## 2026-09-30 — Review Editor: nquran.com panel shows only the differences for the clicked word
 - **Owner request:** clicking a word in the editor listed every difference of the whole ayah; only the clicked word's differences should show.
 - **Change:** `nquranRanked` in `ReviewEditorPane.tsx` now keeps only the differences whose location matches the selected word (same Arabic-normalized containment used before); the rest of the ayah's differences are hidden. When the ayah has differences but none for this word, the panel says so instead of listing others. Header text now reads «في هذه الكلمة».
