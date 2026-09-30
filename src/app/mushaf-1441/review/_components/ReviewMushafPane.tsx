@@ -300,7 +300,7 @@ export default function ReviewMushafPane({
     >
       {/* Top page info strip on desktop */}
       {!isMobile ? (
-        <div className="mb-2 flex w-full items-center justify-between px-1 text-[10px] sm:text-[11px] font-bold text-[var(--color-ink-muted)]">
+        <div className="mb-2 flex w-full items-center justify-between px-1 text-[11px] sm:text-[11px] font-bold text-[var(--color-ink-muted)]">
           <div className="flex items-center gap-1.5 truncate">
             <span>جـ {metadata?.juzNumber ?? '—'}</span>
             <span>·</span>
@@ -313,14 +313,14 @@ export default function ReviewMushafPane({
             ) : null}
           </div>
           <div className="flex items-center gap-1 shrink-0">
-            <span className="rounded-full bg-[#fef3c7] px-1.5 py-0.5 text-[10px] text-[#92400e]">
+            <span className="rounded-full bg-[#fef3c7] px-1.5 py-0.5 text-[11px] text-[#92400e]">
               غير مراجَع: {page.stats.unreviewed}
             </span>
-            <span className="rounded-full bg-[#dcfce7] px-1.5 py-0.5 text-[10px] text-[#166534]">
+            <span className="rounded-full bg-[#dcfce7] px-1.5 py-0.5 text-[11px] text-[#166534]">
               مُراجَع: {page.stats.reviewed}
             </span>
             {page.stats.flagged > 0 ? (
-              <span className="rounded-full bg-[#fee2e2] px-1.5 py-0.5 text-[10px] text-[#991b1b]">
+              <span className="rounded-full bg-[#fee2e2] px-1.5 py-0.5 text-[11px] text-[#991b1b]">
                 معلَّم: {page.stats.flagged}
               </span>
             ) : null}
@@ -340,8 +340,8 @@ export default function ReviewMushafPane({
       >
         {/* Top margin header */}
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between pt-[1.8%] px-[7.2%] text-[11px] font-bold text-[#80662c]"
-          style={{ fontSize: 'clamp(9px, 2cqw, 13px)' }}
+          className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between pt-[1.8%] px-[7.2%] text-[11px] font-bold text-[var(--mushaf-gold-ink)]"
+          style={{ fontSize: 'clamp(10px, 2cqw, 13px)' }}
         >
           <span>{metadata?.surahNames?.[0] ? `سورة ${metadata.surahNames[0]}` : ''}</span>
           <span>{metadata?.juzNumber ? `الجزء ${metadata.juzNumber}` : ''}</span>
@@ -446,7 +446,7 @@ export default function ReviewMushafPane({
                             isSelected && 'outline outline-2 outline-offset-1 outline-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/40 shadow-sm font-bold',
                             isSpanEnd && 'outline outline-2 outline-dashed outline-offset-1 outline-[#2563eb] ring-2 ring-[#2563eb]/30 shadow-sm font-bold',
                             isInSpan && 'bg-[#2563eb]/10 outline outline-1 outline-dashed outline-[#2563eb]/50',
-                            !isSelected && !isSpanEnd && !isInSpan && 'hover:bg-[#eadfc9]/60 hover:outline hover:outline-1 hover:outline-[#b99b51]/40'
+                            !isSelected && !isSpanEnd && !isInSpan && 'hover:bg-[var(--mushaf-rule-soft)]/60 hover:outline hover:outline-1 hover:outline-[var(--mushaf-gold)]/40'
                           )}
                           style={{
                             fontFamily,
@@ -459,7 +459,7 @@ export default function ReviewMushafPane({
                           <span>{fontLoaded && word.glyph ? word.glyph : word.textUthmani}</span>
                           {covering && covering.length > 1 ? (
                             <span
-                              className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[var(--color-primary)] text-[8px] font-bold text-white shadow-xs"
+                              className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[var(--color-primary)] text-[11px] font-bold text-white shadow-xs"
                               title={`${covering.length} قراءات مسجلة`}
                             >
                               {covering.length}
@@ -506,7 +506,7 @@ export default function ReviewMushafPane({
                           status === 'reviewed' && 'bg-green-100/60 text-green-900',
                           status === 'unreviewed' && 'bg-amber-100/70 text-amber-900',
                           status === 'flagged' && 'bg-red-100/70 text-red-900',
-                          !status && 'hover:bg-[#eadfc9]/50'
+                          !status && 'hover:bg-[var(--mushaf-rule-soft)]/50'
                         )}
                         style={{ fontFamily: 'var(--font-amiri-quran), serif' }}
                       >
@@ -522,8 +522,8 @@ export default function ReviewMushafPane({
 
         {/* Bottom margin footer with page number */}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center pb-[1.4%] font-black text-[#80662c]"
-          style={{ fontSize: 'clamp(9px, 2cqw, 13px)' }}
+          className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center pb-[1.4%] font-black text-[var(--mushaf-gold-ink)]"
+          style={{ fontSize: 'clamp(10px, 2cqw, 13px)' }}
         >
           <span className="tabular-nums">{pageNo}</span>
         </div>

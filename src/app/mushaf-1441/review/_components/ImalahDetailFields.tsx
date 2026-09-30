@@ -308,16 +308,16 @@ function ImalahFacesBuilder({
   }
 
   return (
-    <div className="space-y-3 rounded-xl border border-fuchsia-300 dark:border-fuchsia-900 bg-fuchsia-50/60 dark:bg-fuchsia-950/20 p-3 shadow-xs" dir="rtl">
+    <div className="space-y-3 rounded-xl border border-fuchsia-300 bg-fuchsia-50/60 p-3 shadow-xs" dir="rtl">
       {/* Header */}
-      <div className="flex items-center justify-between gap-2 border-b border-fuchsia-200 dark:border-fuchsia-900/60 pb-2">
+      <div className="flex items-center justify-between gap-2 border-b border-fuchsia-200 pb-2">
         <div className="flex items-center gap-1.5">
           <span className="text-base">🔤</span>
-          <span className="text-xs font-black text-fuchsia-900 dark:text-fuchsia-100">
+          <span className="text-xs font-black text-fuchsia-900">
             مُنشئ أوجه الممال والمقلل وتفاصيل الأداء
           </span>
         </div>
-        <span className="rounded-full bg-fuchsia-200/70 dark:bg-fuchsia-900/60 px-2 py-0.5 text-[10px] font-bold text-fuchsia-900 dark:text-fuchsia-200">
+        <span className="rounded-full bg-fuchsia-200/70 px-2 py-0.5 text-[11px] font-bold text-fuchsia-900">
           أصول القراءات
         </span>
       </div>
@@ -325,20 +325,20 @@ function ImalahFacesBuilder({
       {/* 3-Column Responsive Grid: Step 1, Step 2, Step 3 side-by-side to avoid scrolling */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 items-start">
         {/* STEP 1: Select Readers / Narrators */}
-        <div className="space-y-1.5 rounded-lg border border-fuchsia-200/80 dark:border-fuchsia-900/60 bg-[var(--color-surface)] p-2">
+        <div className="space-y-1.5 rounded-lg border border-fuchsia-200/80 bg-[var(--color-surface)] p-2">
           <div className="flex items-center justify-between gap-2">
             <label className="text-xs font-bold text-[var(--color-ink)]">
               ١. اختر القراء أو الرواة المستهدفين:
             </label>
             <div className="flex items-center gap-1 text-[11px]">
-              <span className="font-bold text-fuchsia-800 dark:text-fuchsia-300">
+              <span className="font-bold text-fuchsia-800">
                 المحدد: {selectedNarratorIds.size}/20 راوٍ
               </span>
               <button
                 type="button"
                 onClick={selectAllNarrators}
                 disabled={disabled || selectedNarratorIds.size === 20}
-                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
+                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[11px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
               >
                 الكل
               </button>
@@ -346,7 +346,7 @@ function ImalahFacesBuilder({
                 type="button"
                 onClick={clearSelection}
                 disabled={disabled || selectedNarratorIds.size === 0}
-                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40 text-red-600"
+                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[11px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40 text-red-600"
               >
                 مسح
               </button>
@@ -354,7 +354,7 @@ function ImalahFacesBuilder({
           </div>
 
           {/* Selector mode tabs */}
-          <div className="flex rounded-lg border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)] p-0.5 text-[11px] font-bold">
+          <div className="flex rounded-lg border border-fuchsia-200 bg-[var(--color-surface)] p-0.5 text-[11px] font-bold">
             <button
               type="button"
               onClick={() => setSelectorTab('presets')}
@@ -400,7 +400,7 @@ function ImalahFacesBuilder({
                 type="button"
                 onClick={() => selectPresetGroup(IMALAH_NARRATOR_IDS)}
                 disabled={disabled}
-                className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 dark:bg-fuchsia-900/40 px-2 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100 hover:bg-fuchsia-200 transition-colors"
+                className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 px-2 py-1 text-xs font-bold text-fuchsia-950 hover:bg-fuchsia-200 transition-colors"
               >
                 + أهل الإمالة (حمزة، الكسائي، خلف العاشر)
               </button>
@@ -408,7 +408,7 @@ function ImalahFacesBuilder({
                 type="button"
                 onClick={() => selectPresetGroup(TAQLIL_NARRATOR_IDS)}
                 disabled={disabled}
-                className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 dark:bg-fuchsia-900/40 px-2 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100 hover:bg-fuchsia-200 transition-colors"
+                className="rounded-md border border-fuchsia-400 bg-fuchsia-100/70 px-2 py-1 text-xs font-bold text-fuchsia-950 hover:bg-fuchsia-200 transition-colors"
               >
                 + أهل التقليل (ورش، أبو عمرو)
               </button>
@@ -457,7 +457,7 @@ function ImalahFacesBuilder({
                       bothSelected
                         ? 'border-fuchsia-600 bg-fuchsia-600 text-white shadow-xs'
                         : partiallySelected
-                          ? 'border-fuchsia-400 bg-fuchsia-100 text-fuchsia-950 dark:bg-fuchsia-950/60 dark:text-fuchsia-200'
+                          ? 'border-fuchsia-400 bg-fuchsia-100 text-fuchsia-950'
                           : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-fuchsia-400 hover:bg-[var(--color-surface-2)]'
                     )}
                   >
@@ -466,7 +466,7 @@ function ImalahFacesBuilder({
                       <span>{reader.nameShort}</span>
                       {bothSelected ? <span>✓</span> : partiallySelected ? <span>~</span> : null}
                     </span>
-                    <span className="text-[9px] opacity-75">
+                    <span className="text-[11px] opacity-75">
                       {reader.narrators.map((n) => n.nameShort).join(' / ')}
                     </span>
                   </button>
@@ -477,7 +477,7 @@ function ImalahFacesBuilder({
 
           {/* Tab 3: Individual Narrators (20 Narrators) */}
           {selectorTab === 'narrators' ? (
-            <div className="grid grid-cols-2 gap-1 max-h-56 overflow-y-auto p-0.5 rounded-md border border-fuchsia-200 dark:border-fuchsia-900 bg-[var(--color-surface)]">
+            <div className="grid grid-cols-2 gap-1 max-h-56 overflow-y-auto p-0.5 rounded-md border border-fuchsia-200 bg-[var(--color-surface)]">
               {CANONICAL_READERS.map((reader) =>
                 reader.narrators.map((n) => {
                   const isSelected = selectedNarratorIds.has(n.id)
@@ -496,7 +496,7 @@ function ImalahFacesBuilder({
                       )}
                     >
                       <span className="whitespace-nowrap">{n.nameShort}</span>
-                      <div className="flex items-center gap-1 text-[10px]">
+                      <div className="flex items-center gap-1 text-[11px]">
                         {existingCount > 0 ? (
                           <span className={cn('rounded px-1 py-0.2', isSelected ? 'bg-fuchsia-800 text-white' : 'bg-amber-100 text-amber-900')}>
                             {existingCount} وجه
@@ -513,7 +513,7 @@ function ImalahFacesBuilder({
         </div>
 
         {/* STEP 2: Configure Face Details & Add Button */}
-        <div className="space-y-2 rounded-lg border border-fuchsia-200/80 dark:border-fuchsia-900/60 bg-[var(--color-surface)] p-2">
+        <div className="space-y-2 rounded-lg border border-fuchsia-200/80 bg-[var(--color-surface)] p-2">
           <label className="text-xs font-bold text-[var(--color-ink)]">
             ٢. حدد صيغة الوجه المراد إضافته (نوع الحكم والأداء والخلاف):
           </label>
@@ -561,7 +561,7 @@ function ImalahFacesBuilder({
                 className={cn(
                   'rounded-md border px-2.5 py-0.5 text-xs font-bold transition-all',
                   facePerformance === item.id && !customActionText
-                    ? 'border-green-600 bg-green-50 text-green-800 shadow-2xs dark:bg-green-950/40 dark:text-green-300'
+                    ? 'border-green-600 bg-green-50 text-green-800 shadow-2xs'
                     : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
                 )}
               >
@@ -588,7 +588,7 @@ function ImalahFacesBuilder({
                 className={cn(
                   'rounded-md border px-2.5 py-0.5 text-xs font-bold transition-all',
                   faceKhulf === item.id && !customActionText
-                    ? 'border-amber-600 bg-amber-50 text-amber-800 shadow-2xs dark:bg-amber-950/40 dark:text-amber-300'
+                    ? 'border-amber-600 bg-amber-50 text-amber-800 shadow-2xs'
                     : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
                 )}
               >
@@ -600,14 +600,14 @@ function ImalahFacesBuilder({
           {/* Live action text preview and custom edit */}
           <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-1.5">
             <div className="flex items-center justify-between gap-2">
-              <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+              <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                 صيغة الأداء الناتجة للوجه (قابلة للتعديل):
               </span>
               {customActionText ? (
                 <button
                   type="button"
                   onClick={() => setCustomActionText('')}
-                  className="text-[10px] font-bold text-fuchsia-600 hover:underline"
+                  className="text-[11px] font-bold text-fuchsia-600 hover:underline"
                 >
                   استعادة التوليد التلقائي ⟳
                 </button>
@@ -618,7 +618,7 @@ function ImalahFacesBuilder({
               value={computedAction}
               onChange={(e) => setCustomActionText(e.target.value)}
               disabled={disabled}
-              className="mt-1 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs font-bold text-fuchsia-950 dark:text-fuchsia-100"
+              className="mt-1 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs font-bold text-fuchsia-950"
               placeholder="نص الأداء..."
             />
           </div>
@@ -637,7 +637,7 @@ function ImalahFacesBuilder({
               </span>
             </button>
             {addedMessage ? (
-              <p className="mt-1 text-center text-xs font-bold text-green-700 dark:text-green-400 animate-fade-in">
+              <p className="mt-1 text-center text-xs font-bold text-green-700 animate-fade-in">
                 {addedMessage}
               </p>
             ) : null}
@@ -645,7 +645,7 @@ function ImalahFacesBuilder({
         </div>
 
         {/* STEP 3: Live Faces Manager (تفاصيل الأداء والأوجه للرواة المحددين) */}
-        <div className="space-y-1.5 rounded-lg border border-fuchsia-200/80 dark:border-fuchsia-900/60 bg-[var(--color-surface)] p-2">
+        <div className="space-y-1.5 rounded-lg border border-fuchsia-200/80 bg-[var(--color-surface)] p-2">
           <div className="flex flex-wrap items-center justify-between gap-1 pb-1 border-b border-[var(--color-border-soft)]">
             <label className="text-xs font-bold text-[var(--color-ink)]">
               ٣. الأوجه المسجلة ({narrators.length} وجهاً):
@@ -709,15 +709,15 @@ function ImalahFacesBuilder({
                         <span className="font-bold text-[var(--color-ink)]">
                           {narratorInfo?.nameAr ?? face.id}
                         </span>
-                        <span className="text-[9px] text-[var(--color-ink-muted)]">
+                        <span className="text-[11px] text-[var(--color-ink-muted)]">
                           ({reader?.nameShort})
                         </span>
                         <span
                           className={cn(
-                            'rounded px-1 py-0.2 text-[9px] font-bold',
+                            'rounded px-1 py-0.2 text-[11px] font-bold',
                             (face.wajhOrder ?? 1) > 1
-                              ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300'
-                              : 'bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-950/40 dark:text-fuchsia-300'
+                              ? 'bg-amber-100 text-amber-800'
+                              : 'bg-fuchsia-100 text-fuchsia-800'
                           )}
                         >
                           وجه {face.wajhOrder ?? 1}
@@ -730,7 +730,7 @@ function ImalahFacesBuilder({
                           type="button"
                           onClick={() => handleAddAnotherFaceForNarrator(face.id)}
                           disabled={disabled}
-                          className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-1 py-0.2 text-[9px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
+                          className="rounded border border-fuchsia-300 bg-fuchsia-50 px-1 py-0.2 text-[11px] font-bold text-fuchsia-800 hover:bg-fuchsia-100 cursor-pointer"
                           title="إضافة وجه آخر لنفس الراوي"
                         >
                           + للراوي
@@ -740,7 +740,7 @@ function ImalahFacesBuilder({
                             type="button"
                             onClick={() => handleAddAnotherFaceForReader(reader.id)}
                             disabled={disabled}
-                            className="rounded border border-fuchsia-300 dark:border-fuchsia-800 bg-fuchsia-50 dark:bg-fuchsia-950/40 px-1 py-0.2 text-[9px] font-bold text-fuchsia-800 dark:text-fuchsia-300 hover:bg-fuchsia-100 cursor-pointer"
+                            className="rounded border border-fuchsia-300 bg-fuchsia-50 px-1 py-0.2 text-[11px] font-bold text-fuchsia-800 hover:bg-fuchsia-100 cursor-pointer"
                             title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
                           >
                             + للقارئ
@@ -750,7 +750,7 @@ function ImalahFacesBuilder({
                           type="button"
                           onClick={() => handleRemoveFaceAtIndex(index)}
                           disabled={disabled}
-                          className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1 py-0.2 text-[9px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100 cursor-pointer"
+                          className="rounded border border-red-200 bg-red-50 px-1 py-0.2 text-[11px] font-bold text-red-700 hover:bg-red-100 cursor-pointer"
                           title="حذف هذا الوجه"
                         >
                           ✕
@@ -761,7 +761,7 @@ function ImalahFacesBuilder({
                     {/* Inline edit inputs */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 pt-0.5">
                       <div>
-                        <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                        <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                           الوجه:
                         </label>
                         <input
@@ -779,7 +779,7 @@ function ImalahFacesBuilder({
                         />
                       </div>
                       <div>
-                        <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                        <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                           الأداء:
                         </label>
                         <input
@@ -792,7 +792,7 @@ function ImalahFacesBuilder({
                         />
                       </div>
                       <div>
-                        <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                        <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                           الخلاف:
                         </label>
                         <input

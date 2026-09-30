@@ -99,7 +99,7 @@ export default function NewGroupForm() {
 
       {/* Preview */}
       <div className="p-5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border-soft)]">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-3 font-bold">
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-3 font-bold">
           معاينة
         </p>
         <div className="flex items-baseline gap-3">

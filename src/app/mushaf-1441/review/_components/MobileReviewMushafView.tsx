@@ -120,7 +120,7 @@ export default function MobileReviewMushafView({
             className="flex h-9 items-center gap-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 text-xs font-bold text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)] active:scale-95 transition-transform"
           >
             <span>{Math.round(zoom * 100)}%</span>
-            <span className="text-[10px] text-[var(--color-ink-muted)]">🔍</span>
+            <span className="text-[11px] text-[var(--color-ink-muted)]">🔍</span>
           </button>
 
           {/* Feature 1/2: mobile touch equivalent of Ctrl-click -- arm this, then tap the
@@ -154,11 +154,11 @@ export default function MobileReviewMushafView({
               {pageNumber} / {MAX_PAGE}
             </span>
             {page.stats.unreviewed > 0 ? (
-              <span className="rounded-full bg-[#fef3c7] px-1.5 py-0.2 text-[10px] font-bold text-[#92400e]">
+              <span className="rounded-full bg-[#fef3c7] px-1.5 py-0.2 text-[11px] font-bold text-[#92400e]">
                 {page.stats.unreviewed} غير مراجع
               </span>
             ) : (
-              <span className="rounded-full bg-[#dcfce7] px-1.5 py-0.2 text-[10px] font-bold text-[#166534]">
+              <span className="rounded-full bg-[#dcfce7] px-1.5 py-0.2 text-[11px] font-bold text-[#166534]">
                 مكتمل ✓
               </span>
             )}
@@ -249,7 +249,7 @@ export default function MobileReviewMushafView({
           <span className="text-sm font-black tabular-nums text-[var(--color-ink)]">
             {pageNumber} / {MAX_PAGE}
           </span>
-          <span className="text-[10px] text-[var(--color-ink-muted)]">اضغط للانتقال</span>
+          <span className="text-[11px] text-[var(--color-ink-muted)]">اضغط للانتقال</span>
         </button>
 
         {/* Left Button (RTL): Next Page (‹ التالي) */}

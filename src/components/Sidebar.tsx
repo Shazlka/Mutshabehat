@@ -35,10 +35,10 @@ export default function Sidebar({ email, groupCount }: Props) {
             ق
           </div>
           <div>
-            <h1 className="text-[15px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
+            <p className="text-[15px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
               متشابهات القرآن
-            </h1>
-            <p className="text-[9px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
+            </p>
+            <p className="text-[11px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
               Similarity Explorer
             </p>
           </div>

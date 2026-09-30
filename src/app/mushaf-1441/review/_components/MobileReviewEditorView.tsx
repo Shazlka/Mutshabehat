@@ -406,7 +406,7 @@ export default function MobileReviewEditorView({
                           className="h-4 w-4 rounded accent-[var(--color-danger)]"
                         />
                       ) : (
-                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-surface-2)] text-[10px] font-bold text-[var(--color-ink)]">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-surface-2)] text-[11px] font-bold text-[var(--color-ink)]">
                           {idx + 1}
                         </span>
                       )}
@@ -414,7 +414,7 @@ export default function MobileReviewEditorView({
                         <p className="truncate text-xs font-bold text-[var(--color-ink)]">
                           {row.kind === 'usul' ? row.categoryNameAr ?? 'أصل' : row.readingText}
                         </p>
-                        <p className="flex flex-wrap items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
+                        <p className="flex flex-wrap items-center gap-0.5 text-[11px] text-[var(--color-ink-muted)]">
                           {narratorDisplay.length ? (
                             <NarratorBadges items={narratorDisplay} />
                           ) : (
@@ -427,7 +427,7 @@ export default function MobileReviewEditorView({
                     <div className="flex shrink-0 items-center gap-1.5">
                       <span
                         className={cn(
-                          'rounded-full px-2 py-0.2 text-[10px] font-bold',
+                          'rounded-full px-2 py-0.2 text-[11px] font-bold',
                           row.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
                           row.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
                           row.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
@@ -539,7 +539,7 @@ export default function MobileReviewEditorView({
                             <p className="font-bold text-[var(--color-ink)]">
                               ص{m.page} · {m.surah}:{m.ayah}:{m.startWord} · {labelForRow(m)}
                             </p>
-                            <p className="flex flex-wrap items-center gap-0.5 text-[10px] text-[var(--color-ink-muted)]">
+                            <p className="flex flex-wrap items-center gap-0.5 text-[11px] text-[var(--color-ink-muted)]">
                               <NarratorBadges items={describeNarratorGroup(m.narrators)} />
                             </p>
                           </div>
@@ -640,7 +640,7 @@ export default function MobileReviewEditorView({
                               ص{o.page} · {o.surah}:{o.ayah}:{o.word} · {o.text}
                             </span>
                           </span>
-                          <span className="text-[10px] font-bold">
+                          <span className="text-[11px] font-bold">
                             {o.status === 'exists' ? 'موجود' : 'سيُضاف'}
                           </span>
                         </label>

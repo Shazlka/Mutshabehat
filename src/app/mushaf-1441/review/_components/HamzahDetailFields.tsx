@@ -499,18 +499,18 @@ function HamzahFacesBuilder({
 
   return (
     <div
-      className="space-y-3 rounded-xl border border-amber-300 dark:border-amber-900 bg-amber-50/60 dark:bg-amber-950/20 p-3 shadow-xs"
+      className="space-y-3 rounded-xl border border-amber-300 bg-amber-50/60 p-3 shadow-xs"
       dir="rtl"
     >
       {/* Header */}
-      <div className="flex items-center justify-between gap-2 border-b border-amber-200 dark:border-amber-900/60 pb-2">
+      <div className="flex items-center justify-between gap-2 border-b border-amber-200 pb-2">
         <div className="flex items-center gap-1.5">
           <span className="text-base">🎯</span>
-          <span className="text-xs font-black text-amber-950 dark:text-amber-100">
+          <span className="text-xs font-black text-amber-950">
             {categoryTitle}
           </span>
         </div>
-        <span className="rounded-full bg-amber-200/70 dark:bg-amber-900/60 px-2 py-0.5 text-[10px] font-bold text-amber-900 dark:text-amber-200">
+        <span className="rounded-full bg-amber-200/70 px-2 py-0.5 text-[11px] font-bold text-amber-900">
           أصول القراءات
         </span>
       </div>
@@ -518,20 +518,20 @@ function HamzahFacesBuilder({
       {/* 3-Column Responsive Grid: Step 1, Step 2, Step 3 side-by-side to avoid scrolling */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 items-start">
         {/* STEP 1: Select Readers / Narrators */}
-        <div className="space-y-1.5 rounded-lg border border-amber-200/80 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+        <div className="space-y-1.5 rounded-lg border border-amber-200/80 bg-[var(--color-surface)] p-2">
           <div className="flex items-center justify-between gap-2">
             <label className="text-xs font-bold text-[var(--color-ink)]">
               ١. اختر القراء أو الرواة المستهدفين:
             </label>
             <div className="flex items-center gap-1 text-[11px]">
-              <span className="font-bold text-amber-900 dark:text-amber-300">
+              <span className="font-bold text-amber-900">
                 المحدد: {selectedNarratorIds.size}/20 راوٍ
               </span>
               <button
                 type="button"
                 onClick={selectAllNarrators}
                 disabled={disabled || selectedNarratorIds.size === 20}
-                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
+                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[11px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40"
               >
                 الكل
               </button>
@@ -539,7 +539,7 @@ function HamzahFacesBuilder({
                 type="button"
                 onClick={clearSelection}
                 disabled={disabled || selectedNarratorIds.size === 0}
-                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40 text-red-600"
+                className="rounded border border-[var(--color-border)] px-1.5 py-0.5 text-[11px] font-bold hover:bg-[var(--color-surface-2)] disabled:opacity-40 text-red-600"
               >
                 مسح
               </button>
@@ -547,7 +547,7 @@ function HamzahFacesBuilder({
           </div>
 
           {/* Mode tabs */}
-          <div className="flex rounded-lg border border-amber-200 dark:border-amber-900 bg-[var(--color-surface)] p-0.5 text-[11px] font-bold">
+          <div className="flex rounded-lg border border-amber-200 bg-[var(--color-surface)] p-0.5 text-[11px] font-bold">
             <button
               type="button"
               onClick={() => setSelectorTab('presets')}
@@ -599,7 +599,7 @@ function HamzahFacesBuilder({
                       setKalimaIdkhal(true)
                     }}
                     disabled={disabled}
-                    className="rounded-md border border-amber-400 bg-amber-100/70 dark:bg-amber-900/40 px-2 py-1 text-xs font-bold text-amber-950 dark:text-amber-100 hover:bg-amber-200 transition-colors"
+                    className="rounded-md border border-amber-400 bg-amber-100/70 px-2 py-1 text-xs font-bold text-amber-950 hover:bg-amber-200 transition-colors"
                   >
                     + أهل التسهيل مع الإدخال (قالون، أبو عمرو، هشام، أبو جعفر)
                   </button>
@@ -611,7 +611,7 @@ function HamzahFacesBuilder({
                       setKalimaIdkhal(false)
                     }}
                     disabled={disabled}
-                    className="rounded-md border border-amber-400 bg-amber-100/70 dark:bg-amber-900/40 px-2 py-1 text-xs font-bold text-amber-950 dark:text-amber-100 hover:bg-amber-200 transition-colors"
+                    className="rounded-md border border-amber-400 bg-amber-100/70 px-2 py-1 text-xs font-bold text-amber-950 hover:bg-amber-200 transition-colors"
                   >
                     + أهل التسهيل بدون إدخال (ورش، ابن كثير، رويس)
                   </button>
@@ -650,7 +650,7 @@ function HamzahFacesBuilder({
                       setKalimataynSecond('تحقيق')
                     }}
                     disabled={disabled}
-                    className="rounded-md border border-amber-400 bg-amber-100/70 dark:bg-amber-900/40 px-2 py-1 text-xs font-bold text-amber-950 dark:text-amber-100 hover:bg-amber-200 transition-colors"
+                    className="rounded-md border border-amber-400 bg-amber-100/70 px-2 py-1 text-xs font-bold text-amber-950 hover:bg-amber-200 transition-colors"
                   >
                     + أبو عمرو البصري (إسقاط الأولى وصلاً)
                   </button>
@@ -662,7 +662,7 @@ function HamzahFacesBuilder({
                       setKalimataynSecond('تحقيق')
                     }}
                     disabled={disabled}
-                    className="rounded-md border border-amber-400 bg-amber-100/70 dark:bg-amber-900/40 px-2 py-1 text-xs font-bold text-amber-950 dark:text-amber-100 hover:bg-amber-200 transition-colors"
+                    className="rounded-md border border-amber-400 bg-amber-100/70 px-2 py-1 text-xs font-bold text-amber-950 hover:bg-amber-200 transition-colors"
                   >
                     + قالون والبزي (تسهيل / إسقاط الأولى وصلاً)
                   </button>
@@ -674,7 +674,7 @@ function HamzahFacesBuilder({
                       setKalimataynSecond('تسهيل')
                     }}
                     disabled={disabled}
-                    className="rounded-md border border-amber-400 bg-amber-100/70 dark:bg-amber-900/40 px-2 py-1 text-xs font-bold text-amber-950 dark:text-amber-100 hover:bg-amber-200 transition-colors"
+                    className="rounded-md border border-amber-400 bg-amber-100/70 px-2 py-1 text-xs font-bold text-amber-950 hover:bg-amber-200 transition-colors"
                   >
                     + ورش وقنبل وأبو جعفر ورويس (تسهيل / إبدال الثانية وصلاً)
                   </button>
@@ -701,7 +701,7 @@ function HamzahFacesBuilder({
                       setSingleTreatment('إبدال')
                     }}
                     disabled={disabled}
-                    className="rounded-md border border-amber-400 bg-amber-100/70 dark:bg-amber-900/40 px-2 py-1 text-xs font-bold text-amber-950 dark:text-amber-100 hover:bg-amber-200 transition-colors"
+                    className="rounded-md border border-amber-400 bg-amber-100/70 px-2 py-1 text-xs font-bold text-amber-950 hover:bg-amber-200 transition-colors"
                   >
                     + ورش (إبدال الفاء الساكنة)
                   </button>
@@ -712,7 +712,7 @@ function HamzahFacesBuilder({
                       setSingleTreatment('إبدال')
                     }}
                     disabled={disabled}
-                    className="rounded-md border border-amber-400 bg-amber-100/70 dark:bg-amber-900/40 px-2 py-1 text-xs font-bold text-amber-950 dark:text-amber-100 hover:bg-amber-200 transition-colors"
+                    className="rounded-md border border-amber-400 bg-amber-100/70 px-2 py-1 text-xs font-bold text-amber-950 hover:bg-amber-200 transition-colors"
                   >
                     + أبو جعفر (إبدال الهمز الساكن ومفتوح بعد ضم)
                   </button>
@@ -764,7 +764,7 @@ function HamzahFacesBuilder({
                       bothSelected
                         ? 'border-amber-600 bg-amber-600 text-white shadow-xs'
                         : partiallySelected
-                          ? 'border-amber-400 bg-amber-100 text-amber-950 dark:bg-amber-950/60 dark:text-amber-200'
+                          ? 'border-amber-400 bg-amber-100 text-amber-950'
                           : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink)] hover:border-amber-400 hover:bg-[var(--color-surface-2)]'
                     )}
                   >
@@ -776,7 +776,7 @@ function HamzahFacesBuilder({
                       <span>{reader.nameShort}</span>
                       {bothSelected ? <span>✓</span> : partiallySelected ? <span>~</span> : null}
                     </span>
-                    <span className="text-[9px] opacity-75">
+                    <span className="text-[11px] opacity-75">
                       {reader.narrators.map((n) => n.nameShort).join(' / ')}
                     </span>
                   </button>
@@ -787,7 +787,7 @@ function HamzahFacesBuilder({
 
           {/* Tab 3: Individual Narrators (20 Narrators) */}
           {selectorTab === 'narrators' ? (
-            <div className="grid grid-cols-2 gap-1 max-h-56 overflow-y-auto p-0.5 rounded-md border border-amber-200 dark:border-amber-900 bg-[var(--color-surface)]">
+            <div className="grid grid-cols-2 gap-1 max-h-56 overflow-y-auto p-0.5 rounded-md border border-amber-200 bg-[var(--color-surface)]">
               {CANONICAL_READERS.map((reader) =>
                 reader.narrators.map((n) => {
                   const isSelected = selectedNarratorIds.has(n.id)
@@ -806,7 +806,7 @@ function HamzahFacesBuilder({
                       )}
                     >
                       <span className="whitespace-nowrap">{n.nameShort}</span>
-                      <div className="flex items-center gap-1 text-[10px]">
+                      <div className="flex items-center gap-1 text-[11px]">
                         {existingCount > 0 ? (
                           <span
                             className={cn(
@@ -828,14 +828,14 @@ function HamzahFacesBuilder({
         </div>
 
         {/* STEP 2: Configure Face Details & Add Button */}
-        <div className="space-y-2 rounded-lg border border-amber-200/80 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+        <div className="space-y-2 rounded-lg border border-amber-200/80 bg-[var(--color-surface)] p-2">
           <label className="text-xs font-bold text-[var(--color-ink)]">
             ٢. حدد معالجة الهمزة وصيغة الوجه (نوع المعالجة للأولى والثانية والخلاف):
           </label>
 
           {/* 2a. Category-specific treatments */}
           {currentCategory === 'HAMZATAN_KALIMA' ? (
-            <div className="space-y-2 rounded-lg border border-amber-200 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+            <div className="space-y-2 rounded-lg border border-amber-200 bg-[var(--color-surface)] p-2">
               {/* First Hamzah */}
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-20">
@@ -913,7 +913,7 @@ function HamzahFacesBuilder({
                     className={cn(
                       'rounded-md border px-2 py-0.5 text-xs font-bold transition-all',
                       kalimaIdkhal === item.val && !customActionText
-                        ? 'border-blue-600 bg-blue-50 text-blue-800 dark:bg-blue-950/40 dark:text-blue-300 shadow-2xs'
+                        ? 'border-blue-600 bg-blue-50 text-blue-800 shadow-2xs'
                         : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
                     )}
                   >
@@ -923,12 +923,12 @@ function HamzahFacesBuilder({
               </div>
             </div>
           ) : currentCategory === 'HAMZATAN_KALIMATAYN' ? (
-            <div className="space-y-2 rounded-lg border border-amber-200 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+            <div className="space-y-2 rounded-lg border border-amber-200 bg-[var(--color-surface)] p-2">
               {/* Feature 2: word-role assignment when a Ctrl-click span picked two distinct
                   words on the Mushaf pane -- الهمزتان من كلمتين, one hamzah per word. */}
               {hasWordSpan && spanStart && spanEnd ? (
-                <div className="space-y-1 rounded-md border border-blue-300 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/30 p-1.5">
-                  <span className="text-[11px] font-bold text-blue-800 dark:text-blue-300">
+                <div className="space-y-1 rounded-md border border-blue-300 bg-blue-50 p-1.5">
+                  <span className="text-[11px] font-bold text-blue-800">
                     موضعان مرتبطان — أي كلمة هي الأولى؟
                   </span>
                   <div className="flex flex-wrap items-center gap-1.5">
@@ -946,7 +946,7 @@ function HamzahFacesBuilder({
                     >
                       {firstWordIsSpanStart ? '✓ ' : ''}١. {spanStart.text}
                     </button>
-                    <span className="text-[10px] text-[var(--color-ink-muted)]">←</span>
+                    <span className="text-[11px] text-[var(--color-ink-muted)]">←</span>
                     <button
                       type="button"
                       onClick={() => setFirstWordIsSpanStart(false)}
@@ -962,7 +962,7 @@ function HamzahFacesBuilder({
                       {!firstWordIsSpanStart ? '✓ ' : ''}١. {spanEnd.text}
                     </button>
                   </div>
-                  <p className="text-[10px] text-[var(--color-ink-muted)]">
+                  <p className="text-[11px] text-[var(--color-ink-muted)]">
                     الكلمة الأخرى تُسجَّل تلقائيًا بوصفها الثانية (الهمزة الثانية).
                   </p>
                 </div>
@@ -1061,7 +1061,7 @@ function HamzahFacesBuilder({
             </div>
           ) : (
             // TAGHYIR_HAMZ (single hamzah)
-            <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-amber-200 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+            <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-amber-200 bg-[var(--color-surface)] p-2">
               <span className="text-[11px] font-bold text-[var(--color-ink-muted)] min-w-20">
                 نوع المعالجة:
               </span>
@@ -1108,7 +1108,7 @@ function HamzahFacesBuilder({
                 className={cn(
                   'rounded-md border px-2 py-0.5 text-xs font-bold transition-all',
                   facePerformance === item.id && !customActionText
-                    ? 'border-green-600 bg-green-50 text-green-800 shadow-2xs dark:bg-green-950/40 dark:text-green-300'
+                    ? 'border-green-600 bg-green-50 text-green-800 shadow-2xs'
                     : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
                 )}
               >
@@ -1137,7 +1137,7 @@ function HamzahFacesBuilder({
                 className={cn(
                   'rounded-md border px-2 py-0.5 text-xs font-bold transition-all',
                   faceKhulf === item.id && !customActionText
-                    ? 'border-amber-600 bg-amber-50 text-amber-800 shadow-2xs dark:bg-amber-950/40 dark:text-amber-300'
+                    ? 'border-amber-600 bg-amber-50 text-amber-800 shadow-2xs'
                     : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
                 )}
               >
@@ -1149,14 +1149,14 @@ function HamzahFacesBuilder({
           {/* Live action text preview and custom edit */}
           <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-1.5">
             <div className="flex items-center justify-between gap-2">
-              <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+              <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                 صيغة الأداء الناتجة للوجه (قابلة للتعديل):
               </span>
               {customActionText ? (
                 <button
                   type="button"
                   onClick={() => setCustomActionText('')}
-                  className="text-[10px] font-bold text-amber-600 hover:underline"
+                  className="text-[11px] font-bold text-amber-600 hover:underline"
                 >
                   استعادة التوليد التلقائي ⟳
                 </button>
@@ -1167,7 +1167,7 @@ function HamzahFacesBuilder({
               value={computedAction}
               onChange={(e) => setCustomActionText(e.target.value)}
               disabled={disabled}
-              className="mt-1 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs font-bold text-amber-950 dark:text-amber-100"
+              className="mt-1 w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs font-bold text-amber-950"
               placeholder="نص الأداء..."
             />
           </div>
@@ -1186,7 +1186,7 @@ function HamzahFacesBuilder({
               </span>
             </button>
             {addedMessage ? (
-              <p className="mt-1 text-center text-xs font-bold text-green-700 dark:text-green-400 animate-fade-in">
+              <p className="mt-1 text-center text-xs font-bold text-green-700 animate-fade-in">
                 {addedMessage}
               </p>
             ) : null}
@@ -1194,7 +1194,7 @@ function HamzahFacesBuilder({
         </div>
 
         {/* STEP 3: Live Faces Manager (تفاصيل الأداء والأوجه للرواة المحددين) */}
-        <div className="space-y-1.5 rounded-lg border border-amber-200/80 dark:border-amber-900/60 bg-[var(--color-surface)] p-2">
+        <div className="space-y-1.5 rounded-lg border border-amber-200/80 bg-[var(--color-surface)] p-2">
           <div className="flex flex-wrap items-center justify-between gap-1 pb-1 border-b border-[var(--color-border-soft)]">
             <label className="text-xs font-bold text-[var(--color-ink)]">
               ٣. الأوجه المسجلة ({narrators.length} وجهاً):
@@ -1261,15 +1261,15 @@ function HamzahFacesBuilder({
                       <span className="font-bold text-[var(--color-ink)]">
                         {narratorInfo?.nameAr ?? face.id}
                       </span>
-                      <span className="text-[9px] text-[var(--color-ink-muted)]">
+                      <span className="text-[11px] text-[var(--color-ink-muted)]">
                         ({reader?.nameShort})
                       </span>
                       <span
                         className={cn(
-                          'rounded px-1 py-0.2 text-[9px] font-bold',
+                          'rounded px-1 py-0.2 text-[11px] font-bold',
                           (face.wajhOrder ?? 1) > 1
-                            ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300'
-                            : 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300'
+                            ? 'bg-amber-100 text-amber-800'
+                            : 'bg-amber-100 text-amber-800'
                         )}
                       >
                         وجه {face.wajhOrder ?? 1}
@@ -1282,7 +1282,7 @@ function HamzahFacesBuilder({
                         type="button"
                         onClick={() => handleAddAnotherFaceForNarrator(face.id)}
                         disabled={disabled}
-                        className="rounded border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-1 py-0.2 text-[9px] font-bold text-amber-800 dark:text-amber-300 hover:bg-amber-100 cursor-pointer"
+                        className="rounded border border-amber-300 bg-amber-50 px-1 py-0.2 text-[11px] font-bold text-amber-800 hover:bg-amber-100 cursor-pointer"
                         title="إضافة وجه آخر لنفس الراوي"
                       >
                         + للراوي
@@ -1292,7 +1292,7 @@ function HamzahFacesBuilder({
                           type="button"
                           onClick={() => handleAddAnotherFaceForReader(reader.id)}
                           disabled={disabled}
-                          className="rounded border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-1 py-0.2 text-[9px] font-bold text-amber-800 dark:text-amber-300 hover:bg-amber-100 cursor-pointer"
+                          className="rounded border border-amber-300 bg-amber-50 px-1 py-0.2 text-[11px] font-bold text-amber-800 hover:bg-amber-100 cursor-pointer"
                           title={`إضافة وجه آخر للقارئ (${reader.nameShort}) بروايتيه`}
                         >
                           + للقارئ
@@ -1302,7 +1302,7 @@ function HamzahFacesBuilder({
                         type="button"
                         onClick={() => handleRemoveFaceAtIndex(index)}
                         disabled={disabled}
-                        className="rounded border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/40 px-1 py-0.2 text-[9px] font-bold text-red-700 dark:text-red-300 hover:bg-red-100 cursor-pointer"
+                        className="rounded border border-red-200 bg-red-50 px-1 py-0.2 text-[11px] font-bold text-red-700 hover:bg-red-100 cursor-pointer"
                         title="حذف هذا الوجه"
                       >
                         ✕
@@ -1313,7 +1313,7 @@ function HamzahFacesBuilder({
                   {/* Inline edit inputs */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 pt-0.5">
                     <div>
-                      <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                      <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                         الوجه:
                       </label>
                       <input
@@ -1334,7 +1334,7 @@ function HamzahFacesBuilder({
                       />
                     </div>
                     <div>
-                      <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                      <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                         الأداء:
                       </label>
                       <input
@@ -1347,7 +1347,7 @@ function HamzahFacesBuilder({
                       />
                     </div>
                     <div>
-                      <label className="text-[9px] font-bold text-[var(--color-ink-muted)]">
+                      <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                         الخلاف:
                       </label>
                       <input

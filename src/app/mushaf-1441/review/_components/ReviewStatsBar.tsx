@@ -35,7 +35,7 @@ export default function ReviewStatsBar({ pageStats, overview }: Props) {
   return (
     <div
       dir="rtl"
-      className="shrink-0 flex flex-wrap items-center gap-x-3 gap-y-0.5 border-t border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-[10px] sm:text-[11px] font-bold text-[var(--color-ink-muted)]"
+      className="shrink-0 flex flex-wrap items-center gap-x-3 gap-y-0.5 border-t border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-[11px] sm:text-[11px] font-bold text-[var(--color-ink-muted)]"
     >
       <span className="inline-flex items-center gap-1">
         <span className="text-[var(--color-ink)]">هذه الصفحة:</span>

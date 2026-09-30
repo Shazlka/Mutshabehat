@@ -397,7 +397,7 @@ export default function EditForm({
                   <div className="text-[12px] font-bold text-[var(--color-primary)]">{v.surah || '—'}</div>
                   <div className="text-[11px] font-mono text-[var(--color-ink-muted)]">{v.ayah}</div>
                   {v.label && (
-                    <div className="text-[10px] text-[var(--color-ink-muted)] mt-0.5 leading-tight">
+                    <div className="text-[11px] text-[var(--color-ink-muted)] mt-0.5 leading-tight">
                       {v.label}
                     </div>
                   )}
@@ -424,21 +424,21 @@ export default function EditForm({
                   {/* Surah + ayah + label */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
-                      <label className="block text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1">
                         السورة
                       </label>
                       <input value={v.surah} onChange={(e) => updateVerse(vi, { surah: e.target.value })}
                         className="w-full px-3 py-1.5 text-[14px] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-primary)] focus:outline-none transition-colors" />
                     </div>
                     <div>
-                      <label className="block text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1">
                         رقم الآية
                       </label>
                       <input type="number" min="1" value={v.ayah} onChange={(e) => updateVerse(vi, { ayah: parseInt(e.target.value, 10) || 1 })}
                         className="w-full px-3 py-1.5 text-[14px] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-primary)] focus:outline-none tabular-nums transition-colors" />
                     </div>
                     <div>
-                      <label className="block text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1">
                         ملاحظة
                       </label>
                       <input value={v.label || ''} onChange={(e) => updateVerse(vi, { label: e.target.value })}
@@ -449,7 +449,7 @@ export default function EditForm({
                   {/* Parts editor */}
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider">
+                      <span className="text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider">
                         أجزاء النص
                       </span>
                       <button onClick={() => addPart(vi)}
@@ -472,11 +472,11 @@ export default function EditForm({
                             dir="rtl" />
                           <div className="grid grid-cols-2 gap-0.5">
                             <button onClick={() => movePart(vi, pi, -1)} disabled={pi === 0}
-                              className="px-2 text-[10px] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] disabled:opacity-30">↑</button>
+                              className="px-2 text-[11px] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] disabled:opacity-30">↑</button>
                             <button onClick={() => movePart(vi, pi, 1)} disabled={pi === v.parts.length - 1}
-                              className="px-2 text-[10px] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] disabled:opacity-30">↓</button>
+                              className="px-2 text-[11px] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] disabled:opacity-30">↓</button>
                             <button onClick={() => removePart(vi, pi)}
-                              className="col-span-2 px-2 text-[10px] text-[var(--color-ink-muted)] hover:text-[var(--color-danger)] transition-colors">✕</button>
+                              className="col-span-2 px-2 text-[11px] text-[var(--color-ink-muted)] hover:text-[var(--color-danger)] transition-colors">✕</button>
                           </div>
                         </li>
                       ))}
@@ -546,7 +546,7 @@ export default function EditForm({
           <div role="alertdialog" aria-labelledby="del-label"
                className="flex items-center gap-3 animate-fade-rise">
             <span id="del-label" className="text-[13px] text-[var(--color-ink-soft)]">
-              تأكيد الحذف؟ <kbd className="text-[10px] font-mono text-[var(--color-ink-muted)]">ESC للإلغاء</kbd>
+              تأكيد الحذف؟ <kbd className="text-[11px] font-mono text-[var(--color-ink-muted)]">ESC للإلغاء</kbd>
             </span>
             <button ref={confirmDeleteBtnRef} onClick={handleDelete} disabled={isPending}
               className={cn(

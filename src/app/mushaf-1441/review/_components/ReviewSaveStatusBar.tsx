@@ -34,7 +34,7 @@ export default function ReviewSaveStatusBar({ pending, lastSavedAt, failures }: 
       className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-1 border-t border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs font-bold"
     >
       {pending > 0 ? (
-        <span className="flex items-center gap-1.5 text-amber-800 dark:text-amber-300">
+        <span className="flex items-center gap-1.5 text-amber-800">
           <span
             aria-hidden="true"
             className="size-3 animate-spin rounded-full border-2 border-amber-600 border-t-transparent"
@@ -42,7 +42,7 @@ export default function ReviewSaveStatusBar({ pending, lastSavedAt, failures }: 
           جارٍ الحفظ… ({pending})
         </span>
       ) : failures.length === 0 && lastSavedAt !== null ? (
-        <span className="text-green-700 dark:text-green-400">
+        <span className="text-green-700">
           ✓ تم الحفظ في قاعدة البيانات · {formatTime(lastSavedAt)}
         </span>
       ) : null}

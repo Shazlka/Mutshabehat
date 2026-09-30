@@ -170,7 +170,7 @@ export default function FarshFields({
       {/* Description & Performance Note */}
       <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
         <div>
-          <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+          <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
             بيان الفرق (اختياري):
           </label>
           <input
@@ -183,7 +183,7 @@ export default function FarshFields({
           />
         </div>
         <div>
-          <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+          <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
             ملاحظة الأداء (اختياري):
           </label>
           <input

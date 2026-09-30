@@ -2,7 +2,7 @@
 export default function Mushaf1441Loading() {
   return (
     <div dir="rtl" className="flex h-[100dvh] flex-col overflow-hidden bg-[#efe7d6]" aria-busy="true" aria-label="جارٍ تحميل المصحف">
-      <div className="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-[#d7c7a7] bg-[#f7f0e0] px-3">
+      <div className="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-[var(--mushaf-rule)] bg-[#f7f0e0] px-3">
         <div className="space-y-1.5">
           <div className="h-3.5 w-24 animate-pulse rounded bg-[#e6d8b6]" />
           <div className="h-2.5 w-16 animate-pulse rounded bg-[#eee3c8]" />
@@ -28,7 +28,7 @@ export default function Mushaf1441Loading() {
           ))}
         </div>
       </div>
-      <div className="h-12 shrink-0 border-t border-[#d7c7a7] bg-[#f7f0e0]" />
+      <div className="h-12 shrink-0 border-t border-[var(--mushaf-rule)] bg-[#f7f0e0]" />
     </div>
   )
 }

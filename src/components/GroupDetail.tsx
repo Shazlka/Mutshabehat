@@ -110,7 +110,7 @@ export default function GroupDetail({ group }: { group: Group }) {
       {/* Master picker (only shown in master-slave mode) */}
       {view === 'master-slave' && (
         <div className="mb-6">
-          <label className="block text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1.5 font-bold">
+          <label className="block text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1.5 font-bold">
             الآية المرجع
           </label>
           <select value={masterIdx} onChange={(e) => setMasterIdx(parseInt(e.target.value, 10))}
@@ -157,12 +157,12 @@ export default function GroupDetail({ group }: { group: Group }) {
                   {ayahToArabic(v.ayah)}
                 </span>
                 {v.label && (
-                  <span className="text-[10px] md:text-[11px] text-[var(--color-ink-muted)] md:mt-1.5 leading-snug md:block">
+                  <span className="text-[11px] md:text-[11px] text-[var(--color-ink-muted)] md:mt-1.5 leading-snug md:block">
                     {v.label}
                   </span>
                 )}
                 {view === 'master-slave' && vi === masterIdx && (
-                  <span className="text-[9px] md:text-[10px] md:mt-2 font-bold uppercase tracking-wider px-1.5 py-0.5 rounded md:inline-block"
+                  <span className="text-[11px] md:text-[11px] md:mt-2 font-bold uppercase tracking-wider px-1.5 py-0.5 rounded md:inline-block"
                        style={{ color: 'var(--color-primary)', background: 'var(--color-primary-soft)' }}>
                     مرجع
                   </span>
@@ -181,7 +181,7 @@ export default function GroupDetail({ group }: { group: Group }) {
         <div className="mt-12 space-y-6">
           {group.note && (
             <div>
-              <h2 className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-2 font-bold">
+              <h2 className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-2 font-bold">
                 ملاحظة
               </h2>
               <div className="rich-content text-[14px] leading-[1.9] text-[var(--color-ink)] p-4 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border-soft)]"
@@ -190,7 +190,7 @@ export default function GroupDetail({ group }: { group: Group }) {
           )}
           {group.unote && (
             <div>
-              <h2 className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-2 font-bold">
+              <h2 className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-2 font-bold">
                 <span className="inline-block w-2.5 h-2.5 rounded-sm align-middle ml-1.5"
                       style={{ background: 'var(--color-diff2)' }} aria-hidden="true" />
                 فائدة فريدة

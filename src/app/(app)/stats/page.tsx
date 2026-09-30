@@ -178,7 +178,7 @@ export default async function StatsPage() {
   return (
     <div className="max-w-3xl mx-auto px-5 md:px-8 py-8 md:py-14 animate-fade-in">
       <header className="mb-10">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Dashboard</p>
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Dashboard</p>
         <h1 className="text-[28px] md:text-[36px] font-bold tracking-tight leading-none">إحصائيات</h1>
         <p className="mt-2 text-[13px] text-[var(--color-ink-muted)]">نظرة عامة على مكتبتك</p>
       </header>
@@ -189,7 +189,7 @@ export default async function StatsPage() {
              className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-25 blur-3xl"
              style={{ background: 'oklch(0.70 0.20 50)' }} />
         <div className="relative">
-          <div className="text-[10px] tracking-widest opacity-70 uppercase mb-2">إجمالي المجموعات</div>
+          <div className="text-[11px] tracking-widest opacity-70 uppercase mb-2">إجمالي المجموعات</div>
           <div className="text-[80px] md:text-[120px] font-bold tracking-tight leading-none tabular-nums">
             <CountUp to={groupsRes.count ?? 0} />
           </div>
@@ -209,7 +209,7 @@ export default async function StatsPage() {
         ].map((s, i) => (
           <div key={i} className="p-5 rounded-xl border animate-fade-rise"
             style={{ background: `var(${s.bg})`, borderColor: `oklch(from var(${s.fg}) l c h / 0.2)`, animationDelay: `${i * 80}ms` }}>
-            <div className="text-[10px] tracking-widest uppercase mb-2 font-bold" style={{ color: `var(${s.fg})` }}>{s.label}</div>
+            <div className="text-[11px] tracking-widest uppercase mb-2 font-bold" style={{ color: `var(${s.fg})` }}>{s.label}</div>
             <div className="text-[36px] font-bold tabular-nums leading-none" style={{ color: `var(${s.fg})` }}>
               <CountUp to={s.value} duration={700 + i * 120} />
             </div>
@@ -262,7 +262,7 @@ export default async function StatsPage() {
                        style={{ width: `${pct}%`, background: `var(${meta.varName})` }} />
                 </div>
                 <span className="text-[12px] tabular-nums font-mono text-[var(--color-ink-muted)] w-20 text-left">
-                  {count} <span className="text-[10px]">({pct.toFixed(0)}%)</span>
+                  {count} <span className="text-[11px]">({pct.toFixed(0)}%)</span>
                 </span>
               </li>
             )

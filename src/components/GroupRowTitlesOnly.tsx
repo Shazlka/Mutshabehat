@@ -39,7 +39,7 @@ export default function GroupRowTitlesOnly({ group, index }: Props) {
               style={{ background: group.color }} />
       )}
       <span aria-hidden="true"
-            className="text-[10px] md:text-[11px] font-mono text-[var(--color-ink-muted)] tabular-nums shrink-0 mt-0.5">
+            className="text-[11px] md:text-[11px] font-mono text-[var(--color-ink-muted)] tabular-nums shrink-0 mt-0.5">
         {String(index).padStart(3, '0')}
       </span>
       <div className="ml-auto flex items-center gap-1 md:gap-2 shrink-0 order-1 md:order-none" onClick={(e) => e.stopPropagation()}>

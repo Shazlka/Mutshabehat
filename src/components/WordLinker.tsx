@@ -113,7 +113,7 @@ export default function WordLinker({ verses, onApply, onClose }: Props) {
                 color:      `var(--color-${t.key}, var(--color-ink))`,
                 boxShadow:  activeType === t.key ? `0 0 0 2px var(--color-${t.key}, var(--color-ink))` : 'none',
               }}>
-              <kbd className="text-[9px] font-mono opacity-60">{i + 1}</kbd>
+              <kbd className="text-[11px] font-mono opacity-60">{i + 1}</kbd>
               {t.label}
             </button>
           ))}

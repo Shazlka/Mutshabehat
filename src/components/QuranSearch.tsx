@@ -135,7 +135,7 @@ export default function QuranSearch({ onAdd }: Props) {
                       {r.approximate && (
                         <span
                           title="نتيجة تقريبية — اختلاف في رسم الألف"
-                          className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--color-addition-bg)] text-[var(--color-addition)]">
+                          className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--color-addition-bg)] text-[var(--color-addition)]">
                           ≈ تقريبي
                         </span>
                       )}

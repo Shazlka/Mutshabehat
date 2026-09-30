@@ -119,9 +119,9 @@ export const THEME_TOKENS: Record<MushafTheme, MushafThemeTokens> = {
     textPrimaryClass: 'text-[#171717]',
     textPrimaryHex: '#171717',
 
-    marginMetaClass: 'text-[#9a7b35]',
+    marginMetaClass: 'text-[#7a5e22]',
     marginPageNoClass: 'text-[#59461d]',
-    sideTabClass: 'bg-[#b8871d] text-white',
+    sideTabClass: 'bg-[#8a6212] text-white',
 
     wordDefaultTextClass: 'text-[#171717]',
     wordHoverClass: 'hover:bg-[#f3ecd9]',

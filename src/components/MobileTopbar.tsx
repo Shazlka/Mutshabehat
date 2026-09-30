@@ -63,8 +63,8 @@ export default function MobileTopbar({ email, groupCount }: Props) {
           </button>
           
           <Link href="/" className="hover:opacity-80 transition-opacity block select-none">
-            <h1 className="text-[15px] font-bold tracking-tight text-[var(--color-ink)]">متشابهات القرآن</h1>
-            <p className="text-[9px] tracking-wider text-[var(--color-ink-muted)] uppercase mt-0.5">
+            <p className="text-[15px] font-bold tracking-tight text-[var(--color-ink)]">متشابهات القرآن</p>
+            <p className="text-[11px] tracking-wider text-[var(--color-ink-muted)] uppercase mt-0.5">
               Similarity Explorer
             </p>
           </Link>
@@ -103,7 +103,7 @@ export default function MobileTopbar({ email, groupCount }: Props) {
               <h2 className="text-[14px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
                 متشابهات القرآن
               </h2>
-              <p className="text-[8px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
+              <p className="text-[11px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
                 Similarity Explorer
               </p>
             </div>

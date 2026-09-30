@@ -60,7 +60,7 @@ export default function GroupRow({ group, index }: Props) {
               style={{ background: group.color }} />
       )}
       <span aria-hidden="true"
-            className="text-[10px] md:text-[11px] font-mono text-[var(--color-ink-muted)] tabular-nums shrink-0 mt-0.5">
+            className="text-[11px] md:text-[11px] font-mono text-[var(--color-ink-muted)] tabular-nums shrink-0 mt-0.5">
         {String(index).padStart(3, '0')}
       </span>
       <div className="ml-auto flex items-center gap-1 md:gap-2 shrink-0 order-1 md:order-none" onClick={(e) => e.stopPropagation()}>
@@ -99,7 +99,7 @@ export default function GroupRow({ group, index }: Props) {
               {ayahToArabic(v.ayah)}
             </span>
             {v.label && (
-              <span className="text-[10px] md:text-[11px] text-[var(--color-ink-muted)] md:mt-1.5 leading-snug md:block">
+              <span className="text-[11px] md:text-[11px] text-[var(--color-ink-muted)] md:mt-1.5 leading-snug md:block">
                 {v.label}
               </span>
             )}
@@ -137,7 +137,7 @@ export default function GroupRow({ group, index }: Props) {
             {titleRow(`group-${group.id}-title-mobile`)}
             {surahNames.length > 0 && (
               <div className="mt-2 text-[12.5px] font-bold text-[var(--color-primary)] select-none flex flex-wrap items-center leading-relaxed">
-                <span className="text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider ml-1.5">السور:</span>
+                <span className="text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider ml-1.5">السور:</span>
                 {surahNames.map((name, i) => (
                   <span key={name} className="flex items-center">
                     {i > 0 && <span className="mx-2 text-[var(--color-border)] select-none">·</span>}
@@ -156,12 +156,12 @@ export default function GroupRow({ group, index }: Props) {
             <div className="mt-5 flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
               <Link
                 href={`/groups/${group.id}`}
-                className="flex-1 text-center rounded-md bg-[var(--color-primary)] text-[var(--color-paper)] px-3 py-2 text-[12px] font-bold tap-shrink">
+                className="flex min-h-11 flex-1 items-center justify-center text-center rounded-md bg-[var(--color-primary)] text-[var(--color-paper)] px-3 py-2 text-[12px] font-bold tap-shrink">
                 فتح المجموعة
               </Link>
               <Link
                 href={`/groups/${group.id}/edit`}
-                className="px-3 py-2 rounded-md border border-[var(--color-border)] text-[12px] font-bold text-[var(--color-primary)] tap-shrink">
+                className="inline-flex min-h-11 items-center px-3 py-2 rounded-md border border-[var(--color-border)] text-[12px] font-bold text-[var(--color-primary)] tap-shrink">
                 تعديل
               </Link>
             </div>

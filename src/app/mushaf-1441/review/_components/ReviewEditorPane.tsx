@@ -41,11 +41,11 @@ import { useReviewEditorDraft } from './useReviewEditorDraft'
 // Labels/colors for the nquran.com reconciliation badges -- see proposeNquranDecision() for what
 // each status means. Kept as a plain lookup (not JSX) so it can sit at module scope.
 const NQURAN_DECISION_BADGES: Record<NquranDecisionStatus, { label: string; className: string }> = {
-  matched: { label: '✓ مطابق لوجه معتمد', className: 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300' },
-  recorded_unreviewed: { label: '🔎 مسجَّل، بانتظار الاعتماد', className: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300' },
-  partial: { label: '⚠ تعارض جزئي في القراء', className: 'bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300' },
-  missing: { label: '➕ غير مسجَّل — يُقترح إضافته', className: 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300' },
-  unresolved: { label: '❔ تعذّر التعرّف على القارئ', className: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300' },
+  matched: { label: '✓ مطابق لوجه معتمد', className: 'bg-green-100 text-green-800' },
+  recorded_unreviewed: { label: '🔎 مسجَّل، بانتظار الاعتماد', className: 'bg-blue-100 text-blue-800' },
+  partial: { label: '⚠ تعارض جزئي في القراء', className: 'bg-orange-100 text-orange-800' },
+  missing: { label: '➕ غير مسجَّل — يُقترح إضافته', className: 'bg-red-100 text-red-800' },
+  unresolved: { label: '❔ تعذّر التعرّف على القارئ', className: 'bg-gray-100 text-gray-700' },
 }
 
 export type WordMeta = {
@@ -368,7 +368,7 @@ export default function ReviewEditorPane({
           {selectedRow ? (
             <span
               className={cn(
-                'rounded-full px-2 py-0.2 text-[10px] font-bold',
+                'rounded-full px-2 py-0.2 text-[11px] font-bold',
                 selectedRow.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
                 selectedRow.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
                 selectedRow.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
@@ -377,7 +377,7 @@ export default function ReviewEditorPane({
               {STATUS_LABEL_AR[selectedRow.reviewStatus]}
             </span>
           ) : (
-            <span className="rounded-full bg-blue-100 px-2 py-0.2 text-[10px] font-bold text-blue-800">
+            <span className="rounded-full bg-blue-100 px-2 py-0.2 text-[11px] font-bold text-blue-800">
               + موضع جديد
             </span>
           )}
@@ -472,14 +472,14 @@ export default function ReviewEditorPane({
           {/* Feature 4: live summary of everything currently recorded for this word,
               updating immediately after every add/edit/delete. */}
           {activeRowsSummary ? (
-            <p className="rounded-md bg-[var(--color-primary-soft)]/15 px-2 py-1 text-[10px] font-medium leading-relaxed text-[var(--color-ink-soft)]">
+            <p className="rounded-md bg-[var(--color-primary-soft)]/15 px-2 py-1 text-[11px] font-medium leading-relaxed text-[var(--color-ink-soft)]">
               <span className="font-bold text-[var(--color-ink)]">٣. الأوجه المسجلة — </span>
               {activeRowsSummary}
             </p>
           ) : null}
         <div className="flex flex-wrap items-center justify-between gap-1 rounded-md border border-[var(--color-border-soft)] bg-[var(--color-surface-2)]/30 px-2 py-1 text-xs">
           <div className="flex flex-wrap items-center gap-1">
-            <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+            <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">
               الأوجه:{multiSelectMode ? ` (${selectedForDelete.size})` : ''}
             </span>
             {multiSelectMode ? (
@@ -490,7 +490,7 @@ export default function ReviewEditorPane({
                     prev.size === activeRowsForWord.length ? new Set() : new Set(activeRowsForWord.map((r) => r.entryId))
                   )
                 }
-                className="rounded border border-dashed border-[var(--color-border)] px-1 py-0.2 text-[10px] font-bold text-[var(--color-ink-muted)]"
+                className="rounded border border-dashed border-[var(--color-border)] px-1 py-0.2 text-[11px] font-bold text-[var(--color-ink-muted)]"
               >
                 {selectedForDelete.size === activeRowsForWord.length ? 'إلغاء' : 'الكل'}
               </button>
@@ -542,7 +542,7 @@ export default function ReviewEditorPane({
                 type="button"
                 onClick={confirmBulkDelete}
                 disabled={isSaving}
-                className="rounded bg-[var(--color-danger)] px-2 py-0.2 text-[10px] font-bold text-white shadow-xs disabled:opacity-50"
+                className="rounded bg-[var(--color-danger)] px-2 py-0.2 text-[11px] font-bold text-white shadow-xs disabled:opacity-50"
               >
                 حذف ({selectedForDelete.size})
               </button>
@@ -556,7 +556,7 @@ export default function ReviewEditorPane({
                 onClick={deleteAllForWord}
                 disabled={isSaving}
                 title="حذف كل الأوجه المسجلة على هذه الكلمة دفعة واحدة، ثم إضافتها من جديد"
-                className="rounded border border-[var(--color-danger)]/40 px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)] disabled:opacity-50"
+                className="rounded border border-[var(--color-danger)]/40 px-1.5 py-0.2 text-[11px] font-bold text-[var(--color-danger)] hover:bg-[var(--color-danger-bg)] disabled:opacity-50"
               >
                 حذف الكل
               </button>
@@ -567,7 +567,7 @@ export default function ReviewEditorPane({
                 setMultiSelectMode((v) => !v)
                 setSelectedForDelete(new Set())
               }}
-              className="rounded border border-[var(--color-border)] px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]"
+              className="rounded border border-[var(--color-border)] px-1.5 py-0.2 text-[11px] font-bold text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]"
             >
               {multiSelectMode ? 'إلغاء' : 'تحديد للحذف'}
             </button>
@@ -575,7 +575,7 @@ export default function ReviewEditorPane({
               <button
                 type="button"
                 onClick={() => openSameWordPanel(false)}
-                className="rounded border border-[var(--color-border)] px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]"
+                className="rounded border border-[var(--color-border)] px-1.5 py-0.2 text-[11px] font-bold text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]"
               >
                 نسخ الوجه
               </button>
@@ -585,7 +585,7 @@ export default function ReviewEditorPane({
                 type="button"
                 onClick={() => openSameWordPanel(true)}
                 title="البحث عن بيانات معتمدة لنفس الكلمة ونفس الباب لنسخها بدلاً من إعادة إدخالها"
-                className="rounded border border-[var(--color-success)]/40 px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-success)] hover:bg-[var(--color-success-bg)]"
+                className="rounded border border-[var(--color-success)]/40 px-1.5 py-0.2 text-[11px] font-bold text-[var(--color-success)] hover:bg-[var(--color-success-bg)]"
               >
                 ✓ تحقق من بيانات معتمدة
               </button>
@@ -615,7 +615,7 @@ export default function ReviewEditorPane({
               </div>
 
               {!sameWordLoading && !previewMatch ? (
-                <label className="flex items-center gap-1.5 text-[10px] font-bold text-[var(--color-ink-muted)]">
+                <label className="flex items-center gap-1.5 text-[11px] font-bold text-[var(--color-ink-muted)]">
                   <input
                     type="checkbox"
                     checked={verifiedOnlyFilter}
@@ -880,7 +880,7 @@ export default function ReviewEditorPane({
             <div className="space-y-1.5">
               <div className="flex items-center justify-between border-b border-[var(--color-border-soft)] pb-1">
                 <span className="text-xs font-bold text-[var(--color-ink)]">١. نوع الموضع والضابط</span>
-                <span className="rounded bg-[var(--color-surface-2)] px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-ink-muted)]">
+                <span className="rounded bg-[var(--color-surface-2)] px-1.5 py-0.2 text-[11px] font-bold text-[var(--color-ink-muted)]">
                   {kind === 'farsh' ? 'فرش' : 'أصول'}
                 </span>
               </div>
@@ -946,7 +946,7 @@ export default function ReviewEditorPane({
                 <div className="space-y-1">
                   <div className="flex items-center justify-between gap-2">
                     <label className="text-[11px] font-bold text-[var(--color-ink)]">أبواب الأصول:</label>
-                    <span className="text-[10px] text-[var(--color-ink-muted)]">
+                    <span className="text-[11px] text-[var(--color-ink-muted)]">
                       {selectedCategoryCodes.length > 1
                         ? `${selectedCategoryCodes.length} أبواب — يُنشأ وجه مستقل لكل باب عند الحفظ`
                         : 'يمكن اختيار أكثر من باب'}
@@ -978,7 +978,7 @@ export default function ReviewEditorPane({
                           )}
                         >
                           <span>{c.nameAr}</span>
-                          {isSel ? <span className="text-[10px]">✓</span> : null}
+                          {isSel ? <span className="text-[11px]">✓</span> : null}
                         </button>
                       )
                     })}
@@ -1029,7 +1029,7 @@ export default function ReviewEditorPane({
           <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2 shadow-2xs flex flex-col gap-2 min-h-[260px]">
             <div className="flex items-center justify-between border-b border-[var(--color-border-soft)] pb-1">
               <span className="text-xs font-bold text-[var(--color-ink)]">٢. نص القراءة والبيان</span>
-              <span className="text-[10px] text-[var(--color-ink-muted)]">مع الضبط والشكل</span>
+              <span className="text-[11px] text-[var(--color-ink-muted)]">مع الضبط والشكل</span>
             </div>
 
             {/* Reading Text */}
@@ -1047,26 +1047,26 @@ export default function ReviewEditorPane({
             </div>
 
             {nquranRanked ? (
-              <div className="rounded-lg border border-amber-300 bg-amber-50/60 dark:bg-amber-950/20">
+              <div className="rounded-lg border border-amber-300 bg-amber-50/60">
                 <button
                   type="button"
                   onClick={() => setNquranPanelOpen((v) => !v)}
                   className="flex w-full items-center justify-between gap-2 px-2 py-1"
                 >
-                  <span className="text-[11px] font-bold text-amber-900 dark:text-amber-300">
+                  <span className="text-[11px] font-bold text-amber-900">
                     📖 مرجع خارجي (nquran.com) — فروق القراءات في هذه الكلمة
                   </span>
-                  <span className="text-[10px] text-amber-800 dark:text-amber-400">
+                  <span className="text-[11px] text-amber-800">
                     {nquranPanelOpen ? 'إخفاء ▲' : nquranRanked.ranked.length > 0 ? `عرض (${nquranRanked.ranked.length}) ▼` : 'لا فروق لهذه الكلمة'}
                   </span>
                 </button>
                 {nquranPanelOpen ? (
                   <div className="flex flex-col gap-1.5 border-t border-amber-200 px-2 pb-2 pt-1.5">
-                    <p className="text-[9px] text-amber-800/80 dark:text-amber-400/80">
+                    <p className="text-[11px] text-amber-800/80">
                       مرجع للاطّلاع — غير معتمد تلقائيًا؛ زر «إضافة كوجه» ينشئ وجهًا جديدًا مُعبَّأً مسبقًا بالقراء/الرواة والبيان دون حفظه، فيبقى قابلًا للتعديل والمراجعة قبل «حفظ».
                     </p>
                     {nquranRanked.ranked.length === 0 ? (
-                      <p className="text-[10px] text-amber-800 dark:text-amber-400">
+                      <p className="text-[11px] text-amber-800">
                         لا توجد فروق قراءات موثقة في nquran.com لهذه الكلمة تحديدًا (توجد فروق في كلمات أخرى من الآية).
                       </p>
                     ) : null}
@@ -1076,8 +1076,8 @@ export default function ReviewEditorPane({
                         className={cn(
                           'rounded-md border p-1.5',
                           matchesWord
-                            ? 'border-amber-500 bg-amber-100/80 dark:bg-amber-900/30'
-                            : 'border-amber-200/70 bg-white/60 dark:bg-transparent'
+                            ? 'border-amber-500 bg-amber-100/80'
+                            : 'border-amber-200/70 bg-white/60'
                         )}
                       >
                         <p className="font-quran text-base text-[var(--color-ink)]" dir="rtl">
@@ -1092,9 +1092,9 @@ export default function ReviewEditorPane({
                             const badgeKey = `${idx}-${gIdx}`
                             const canApply = matchesWord && resolved.narratorIds.length > 0
                             return (
-                              <div key={gIdx} className="text-[10px] leading-snug">
+                              <div key={gIdx} className="text-[11px] leading-snug">
                                 <div className="flex flex-wrap items-center gap-1">
-                                  <span className="font-bold text-amber-900 dark:text-amber-300">
+                                  <span className="font-bold text-amber-900">
                                     {resolved.group.readers.join('، ')}:
                                   </span>
                                   {badge ? (
@@ -1104,7 +1104,7 @@ export default function ReviewEditorPane({
                                           ? `مقارنةً بوجه ${STATUS_LABEL_AR[decision.matchedRow.reviewStatus]} مسجّل لهذه الكلمة`
                                           : undefined
                                       }
-                                      className={cn('rounded px-1 py-px text-[9px] font-bold', badge.className)}
+                                      className={cn('rounded px-1 py-px text-[11px] font-bold', badge.className)}
                                     >
                                       {badge.label}
                                     </span>
@@ -1115,7 +1115,7 @@ export default function ReviewEditorPane({
                                       disabled={isSaving}
                                       onClick={() => void handleApplyNquranGroup(resolved, badgeKey)}
                                       title="يضيف القراء/الرواة مع نص الأداء إلى «تفاصيل الأداء والأوجه للرواة المحددين» في هذا الوجه (ثم اضغط حفظ)"
-                                      className="rounded border border-amber-500 bg-white px-1 py-px text-[9px] font-bold text-amber-800 hover:bg-amber-100 disabled:opacity-50 dark:bg-transparent dark:text-amber-300"
+                                      className="rounded border border-amber-500 bg-white px-1 py-px text-[11px] font-bold text-amber-800 hover:bg-amber-100 disabled:opacity-50"
                                     >
                                       {nquranAppliedKey === badgeKey ? '✓ أُضيف — اضغط حفظ' : '➕ إضافة للأداء'}
                                     </button>
@@ -1132,7 +1132,7 @@ export default function ReviewEditorPane({
                       href={nquranRanked.entry.sourceUrl}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="text-[9px] text-amber-700 underline dark:text-amber-500"
+                      className="text-[11px] text-amber-700 underline"
                     >
                       المصدر: nquran.com ↗
                     </a>
@@ -1145,7 +1145,7 @@ export default function ReviewEditorPane({
               <>
                 {/* Description */}
                 <div>
-                  <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+                  <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                     بيان الفرق (اختياري):
                   </label>
                   <input
@@ -1160,7 +1160,7 @@ export default function ReviewEditorPane({
 
                 {/* Performance note */}
                 <div>
-                  <label className="text-[10px] font-bold text-[var(--color-ink-muted)]">
+                  <label className="text-[11px] font-bold text-[var(--color-ink-muted)]">
                     ملاحظة الأداء (اختياري):
                   </label>
                   <input
@@ -1180,7 +1180,7 @@ export default function ReviewEditorPane({
           <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2 shadow-2xs flex flex-col gap-1.5 min-h-[260px]">
             <div className="flex items-center justify-between border-b border-[var(--color-border-soft)] pb-1">
               <span className="text-xs font-bold text-[var(--color-ink)]">٣. القراء والرواة والأوجه</span>
-              <span className="text-[10px] font-bold text-amber-900 dark:text-amber-300">
+              <span className="text-[11px] font-bold text-amber-900">
                 {narrators.length} منسوب لهم
               </span>
             </div>

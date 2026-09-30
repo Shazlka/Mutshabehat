@@ -31,17 +31,17 @@ export default function JuzHeatmap({ juzCounts }: Props) {
               className="aspect-square rounded-md flex flex-col items-center justify-center text-center transition-transform hover:scale-110 cursor-default"
               style={{ background: LEVELS[lvl] }}
               title={`الجزء ${i + 1} — ${count} مجموعة`}>
-              <span className={`text-[10px] font-bold tabular-nums ${lvl >= 3 ? 'text-white' : 'text-[var(--color-ink-soft)]'}`}>
+              <span className={`text-[11px] font-bold tabular-nums ${lvl >= 3 ? 'text-white' : 'text-[var(--color-ink-soft)]'}`}>
                 {i + 1}
               </span>
-              <span className={`text-[9px] font-mono tabular-nums opacity-80 ${lvl >= 3 ? 'text-white' : 'text-[var(--color-ink-muted)]'}`}>
+              <span className={`text-[11px] font-mono tabular-nums opacity-80 ${lvl >= 3 ? 'text-white' : 'text-[var(--color-ink-muted)]'}`}>
                 {count}
               </span>
             </div>
           )
         })}
       </div>
-      <div className="flex items-center gap-2 text-[10px] text-[var(--color-ink-muted)] justify-end">
+      <div className="flex items-center gap-2 text-[11px] text-[var(--color-ink-muted)] justify-end">
         <span>أقل</span>
         {LEVELS.map((c, i) => (
           <span key={i} className="w-3 h-3 rounded-sm" style={{ background: c }} aria-hidden="true" />

@@ -60,7 +60,7 @@ export default function AutoColorPicker({ verses, verseTextProvider, onApply, on
           {/* Verse pickers */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1 font-bold">
+              <label className="block text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1 font-bold">
                 الآية الأولى (المرجع)
               </label>
               <select value={a} onChange={(e) => setA(parseInt(e.target.value, 10))}
@@ -73,7 +73,7 @@ export default function AutoColorPicker({ verses, verseTextProvider, onApply, on
               </select>
             </div>
             <div>
-              <label className="block text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1 font-bold">
+              <label className="block text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-1 font-bold">
                 الآية الثانية (المقارنة)
               </label>
               <select value={b} onChange={(e) => setB(parseInt(e.target.value, 10))}
@@ -98,7 +98,7 @@ export default function AutoColorPicker({ verses, verseTextProvider, onApply, on
           {preview && (
             <div className="space-y-4">
               <div>
-                <div className="text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-2 font-bold">
+                <div className="text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-2 font-bold">
                   معاينة الآية {a + 1}
                 </div>
                 <p className="font-quran text-[20px] leading-[2.3] p-3 bg-[var(--color-surface)] rounded-lg" dir="rtl">
@@ -108,7 +108,7 @@ export default function AutoColorPicker({ verses, verseTextProvider, onApply, on
                 </p>
               </div>
               <div>
-                <div className="text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-2 font-bold">
+                <div className="text-[11px] text-[var(--color-ink-muted)] uppercase tracking-wider mb-2 font-bold">
                   معاينة الآية {b + 1}
                 </div>
                 <p className="font-quran text-[20px] leading-[2.3] p-3 bg-[var(--color-surface)] rounded-lg" dir="rtl">

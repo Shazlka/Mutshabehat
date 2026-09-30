@@ -59,7 +59,7 @@ function RiwayahList({ value, onChange }: { value: ReadingId; onChange: (id: Rea
     <div role="radiogroup" aria-label="الرواية" className="space-y-1">
       {QIRAAT_READERS.map((reader) => (
         <div key={reader.id} className="flex items-center gap-1.5">
-          <span className="flex w-[74px] shrink-0 items-center gap-1 text-[10px] font-black" style={{ color: reader.color }}>
+          <span className="flex w-[74px] shrink-0 items-center gap-1 text-[11px] font-black" style={{ color: reader.color }}>
             <span aria-hidden="true" className="size-2 shrink-0 rounded-full" style={{ background: reader.color }} />
             <span className="truncate">{reader.nameArShort}</span>
           </span>
@@ -100,14 +100,14 @@ export default function QiraatToolbar({
 }: QiraatToolbarProps) {
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-3 gap-1 rounded-md border border-[#d7c7a7] bg-[#fffaf0] p-1 text-[11px] font-bold">
+      <div className="grid grid-cols-3 gap-1 rounded-md border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-2)] p-1 text-[11px] font-bold">
         {MODE_OPTIONS.map((option) => (
           <button
             key={option.id}
             type="button"
             onClick={() => onModeChange(option.id)}
             className={`min-h-9 rounded-[5px] px-2 transition-colors ${
-              mode === option.id ? 'bg-[#171717] text-white' : 'text-[#59461d] hover:bg-[#fff1cf]'
+              mode === option.id ? 'bg-[var(--mushaf-ink)] text-white' : 'text-[var(--mushaf-gold-deep)] hover:bg-[#fff1cf]'
             }`}
           >
             {option.label}
@@ -116,23 +116,23 @@ export default function QiraatToolbar({
       </div>
 
       {mode === 'riwayah' ? (
-        <div className="space-y-2 rounded-md border border-[#d7c7a7] bg-white p-2">
+        <div className="space-y-2 rounded-md border border-[var(--mushaf-rule)] bg-white p-2">
           <RiwayahList value={selectedReadingId} onChange={onReadingChange} />
-          <label className="flex items-center justify-between gap-3 pt-1 text-[11px] text-[#3a3326]">
+          <label className="flex items-center justify-between gap-3 pt-1 text-[11px] text-[var(--mushaf-ink-2)]">
             <span>إظهار الاختلاف عن حفص</span>
             <input
               type="checkbox"
               disabled={selectedReadingId === BASE_READING}
               checked={showDifferenceFromHafs}
               onChange={(event) => onShowDifferenceFromHafsChange(event.target.checked)}
-              className="size-4 accent-[#171717] disabled:opacity-40"
+              className="size-4 accent-[var(--mushaf-ink)] disabled:opacity-40"
             />
           </label>
         </div>
       ) : null}
 
       {mode === 'comparison' ? (
-        <div className="space-y-2 rounded-md border border-[#d7c7a7] bg-white p-2">
+        <div className="space-y-2 rounded-md border border-[var(--mushaf-rule)] bg-white p-2">
           <div className="grid grid-cols-3 gap-1 text-[11px] font-bold">
             {(['all', 'reader', 'reading'] as const).map((kind) => (
               <button
@@ -144,7 +144,7 @@ export default function QiraatToolbar({
                   else onFilterChange({ kind: 'reading', readingId: selectedReadingId !== BASE_READING ? selectedReadingId : 'Q01-R01' })
                 }}
                 className={`min-h-8 rounded-md border px-2 transition-colors ${
-                  filter.kind === kind ? 'border-[#171717] bg-[#171717] text-white' : 'border-[#d7c7a7] text-[#59461d] hover:bg-[#fff1cf]'
+                  filter.kind === kind ? 'border-[var(--mushaf-ink)] bg-[var(--mushaf-ink)] text-white' : 'border-[var(--mushaf-rule)] text-[var(--mushaf-gold-deep)] hover:bg-[#fff1cf]'
                 }`}
               >
                 {kind === 'all' ? 'الكل' : kind === 'reader' ? 'قارئ' : 'رواية'}

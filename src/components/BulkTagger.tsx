@@ -89,7 +89,7 @@ export default function BulkTagger({ groups, tags }: Props) {
 
       {/* Tag picker */}
       <div className="mb-6">
-        <div className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-2 font-bold">
+        <div className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-2 font-bold">
           الوسوم ({pickedTags.size} مختار)
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -121,7 +121,7 @@ export default function BulkTagger({ groups, tags }: Props) {
       {/* Group picker */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2 gap-3 flex-wrap">
-          <span className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold">
+          <span className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold">
             المجموعات ({pickedGroups.size} مختار من {filtered.length})
           </span>
           <div className="flex items-center gap-2 text-[11px]">

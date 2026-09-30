@@ -101,22 +101,22 @@ export default function SuggestionsPanel({ word, activeRows, onAdd }: Props) {
   return (
     <section
       aria-label="اقتراحات من الأوجه المعتمدة"
-      className="mt-2 rounded-xl border border-emerald-300 bg-emerald-50/50 shadow-2xs dark:border-emerald-800 dark:bg-emerald-950/20"
+      className="mt-2 rounded-xl border border-emerald-300 bg-emerald-50/50 shadow-2xs"
     >
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-center justify-between gap-2 px-3 py-1.5"
       >
-        <span className="text-xs font-bold text-emerald-900 dark:text-emerald-300">
+        <span className="text-xs font-bold text-emerald-900">
           💡 اقتراحات من الأوجه المعتمدة سابقًا ({suggestions.length})
         </span>
-        <span className="text-[10px] text-emerald-800 dark:text-emerald-400">{open ? 'إخفاء ▲' : 'عرض ▼'}</span>
+        <span className="text-[11px] text-emerald-800">{open ? 'إخفاء ▲' : 'عرض ▼'}</span>
       </button>
 
       {open ? (
-        <div className="flex flex-col gap-1.5 border-t border-emerald-200 px-3 pb-2.5 pt-2 dark:border-emerald-900">
-          <p className="text-[10px] text-emerald-900/80 dark:text-emerald-300/80">
+        <div className="flex flex-col gap-1.5 border-t border-emerald-200 px-3 pb-2.5 pt-2">
+          <p className="text-[11px] text-emerald-900/80">
             تُبنى الاقتراحات من الأوجه التي اعتمدتها فقط. الإضافة بنقرة واحدة تُنشئ وجهًا «غير معتمد» تراجعه وتعتمده بنفسك.
           </p>
           <ul className="grid grid-cols-1 gap-1.5 lg:grid-cols-2">
@@ -133,7 +133,7 @@ export default function SuggestionsPanel({ word, activeRows, onAdd }: Props) {
                       <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-bold text-[var(--color-ink)]">
                         <span
                           className={cn(
-                            'rounded px-1.5 py-px text-[9px]',
+                            'rounded px-1.5 py-px text-[11px]',
                             s.tier === 'exact' ? 'bg-emerald-600 text-white' : 'bg-amber-500 text-white',
                           )}
                         >
@@ -163,11 +163,11 @@ export default function SuggestionsPanel({ word, activeRows, onAdd }: Props) {
                   </div>
                   <NarratorBadges items={describeNarratorGroup(s.config.narrators)} />
                   {s.config.appliesWasl === false || s.config.appliesWaqf === false ? (
-                    <span className="text-[10px] text-[var(--color-ink-muted)]">
+                    <span className="text-[11px] text-[var(--color-ink-muted)]">
                       {s.config.appliesWasl === false ? 'وقفًا فقط' : 'وصلًا فقط'}
                     </span>
                   ) : null}
-                  <span className="text-[10px] text-[var(--color-ink-muted)]">{evidenceText(s)}</span>
+                  <span className="text-[11px] text-[var(--color-ink-muted)]">{evidenceText(s)}</span>
                 </li>
               )
             })}

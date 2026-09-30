@@ -444,15 +444,15 @@ function renderReaderPerformance(
       {showAction || conditions.length > 0 || wajhs.length > 0 ? (
         <p className="font-bold text-[#3f3629]">
           {wajhs.map((n) => (
-            <span key={n} className="ml-1 rounded-full bg-[#f1e2b6] px-1.5 py-px text-[10px] font-bold text-[#7a5a10]">وجه {n}</span>
+            <span key={n} className="ml-1 rounded-full bg-[#f1e2b6] px-1.5 py-px text-[11px] font-bold text-[#7a5a10]">وجه {n}</span>
           ))}
           {showAction ? action : null}
           {showAction && conditions.length > 0 ? ' — ' : null}
-          {conditions.length > 0 ? <span className="font-normal text-[#8b7f6a]">{conditions.join('، ')}</span> : null}
+          {conditions.length > 0 ? <span className="font-normal text-[var(--mushaf-muted)]">{conditions.join('، ')}</span> : null}
         </p>
       ) : null}
       {notes.map((n) => (
-        <p key={n} className="text-[#8b7f6a]">الخلاف: {n}</p>
+        <p key={n} className="text-[var(--mushaf-muted)]">الخلاف: {n}</p>
       ))}
     </div>
   )
@@ -2270,10 +2270,10 @@ export default function Mushaf1441Viewer({
         onTouchEnd={() => { cancelLongPress(); recentTouchRef.current = Date.now() }}
         className={`mx-1 inline-flex size-7 items-center justify-center rounded-full border align-middle text-xs font-black transition-colors hover:bg-[#f5d77b] ${
           hasFavorite
-            ? 'border-[#8c5f0a] bg-[#fff3c4] text-[#59461d]'
+            ? 'border-[#8c5f0a] bg-[#fff3c4] text-[var(--mushaf-gold-deep)]'
             : hasBookmark
-              ? 'border-[#b8871d] bg-[#fff9e9] text-[#59461d]'
-              : 'border-[#b99b51] bg-[#fff9e9] text-[#59461d]'
+              ? 'border-[#b8871d] bg-[#fff9e9] text-[var(--mushaf-gold-deep)]'
+              : 'border-[var(--mushaf-gold)] bg-[#fff9e9] text-[var(--mushaf-gold-deep)]'
         }`}
         aria-label={`اختيار الآية ${word.ayahKey}`}
       >
@@ -2544,7 +2544,7 @@ export default function Mushaf1441Viewer({
         // page-turn invariant on every touch.
         className={`relative z-10 inline rounded-[3px] px-0 py-0 align-baseline transition-colors select-none [-webkit-touch-callout:none] ${currentThemeTokens.wordActiveClass} focus:outline-none focus:ring-2 focus:ring-[#d4af37]/30 ${
           isQiraatReadSelected
-            ? 'bg-[#f1e2b6]/70 text-[#171717] outline outline-2 outline-offset-1 outline-[#80662c]'
+            ? 'bg-[#f1e2b6]/70 text-[var(--mushaf-ink)] outline outline-2 outline-offset-1 outline-[var(--mushaf-gold-ink)]'
             : isSelectedWord
             ? currentThemeTokens.wordSelectedClass
             : highlightAnnotation
@@ -2760,7 +2760,7 @@ export default function Mushaf1441Viewer({
     const isPageReady = Boolean(page)
     const decorations = page ? getLineDecorations(page) : new Map<number, LineDecoration>()
     const isRightPage = pageNo % 2 === 1
-    const marginFontSize = 'clamp(8px, 2cqw, 13px)'
+    const marginFontSize = 'clamp(10px, 2cqw, 13px)'
     // Al-Fatihah and the start of Al-Baqarah are set as a short centred block in a framed
     // middle area; every other page uses the full 15-line grid.
     const lines = !page
@@ -2816,7 +2816,7 @@ export default function Mushaf1441Viewer({
         {/* Left / right page indicator tab on the outer edge */}
         <span
           className={`pointer-events-none absolute top-[3.5%] rounded-md px-2 py-0.5 font-bold ${currentThemeTokens.sideTabClass} ${isRightPage ? 'right-0 rounded-r-none' : 'left-0 rounded-l-none'}`}
-          style={{ fontSize: 'clamp(7px,1.7cqw,11px)' }}
+          style={{ fontSize: 'clamp(9px,1.7cqw,11px)' }}
         >
           {isRightPage ? 'يُمنى' : 'يُسرى'}
         </span>
@@ -2894,7 +2894,7 @@ export default function Mushaf1441Viewer({
         </div>
 
         {fontFailed ? (
-          <p className="absolute inset-x-2 bottom-6 rounded-md border border-[#c07662] bg-[#fff1ed] px-3 py-1 text-center text-[10px] font-bold text-[#8a2f1b]">
+          <p className="absolute inset-x-2 bottom-6 rounded-md border border-[#c07662] bg-[#fff1ed] px-3 py-1 text-center text-[11px] font-bold text-[#8a2f1b]">
             تعذّر تحميل خط المصحف لهذه الصفحة، يُعرض النص بخط بديل.
           </p>
         ) : null}
@@ -2910,14 +2910,14 @@ export default function Mushaf1441Viewer({
     return (
         <div className="space-y-2 overflow-y-auto px-4 py-4">
           {groupIds.length === 0 ? (
-            <p className="py-6 text-center text-sm text-[#665b48]">لا توجد مجموعة مرتبطة بهذه الآية.</p>
+            <p className="py-6 text-center text-sm text-[var(--mushaf-brown)]">لا توجد مجموعة مرتبطة بهذه الآية.</p>
           ) : groupIds.map((groupId) => {
             const link = links.find((candidate) => candidate.groupId === groupId)
             const detail = groupDetails[groupId]
             const isExpanded = Boolean(expandedPopupGroups[groupId])
             const detailsId = `mutshabehat-group-${groupId}`
             return (
-              <article key={groupId} className="overflow-hidden rounded-xl border border-[#eadfc9] bg-[#fffdf8]">
+              <article key={groupId} className="overflow-hidden rounded-xl border border-[var(--mushaf-rule-soft)] bg-[var(--mushaf-cream-3)]">
                 <h3>
                   <button
                     type="button"
@@ -2926,7 +2926,7 @@ export default function Mushaf1441Viewer({
                     aria-controls={detailsId}
                     className="flex min-h-12 w-full items-center justify-between gap-3 px-3 py-2.5 text-right transition-colors hover:bg-[#fbf5e6]"
                   >
-                    <span className="flex min-w-0 items-center gap-2 text-[15px] font-black leading-snug text-[#171717]">
+                    <span className="flex min-w-0 items-center gap-2 text-[15px] font-black leading-snug text-[var(--mushaf-ink)]">
                       <span
                         aria-hidden="true"
                         className="block flex-none rounded-full"
@@ -2939,7 +2939,7 @@ export default function Mushaf1441Viewer({
                       />
                       <span className="min-w-0">{link?.title ?? 'مجموعة متشابهات'}</span>
                     </span>
-                    <span className="flex shrink-0 items-center gap-2 text-[11px] font-bold tabular-nums text-[#80662c]">
+                    <span className="flex shrink-0 items-center gap-2 text-[11px] font-bold tabular-nums text-[var(--mushaf-gold-ink)]">
                       {((link?.similarAyat?.length ?? 0) + 1).toLocaleString('ar-EG')} مواضع
                       <svg
                         width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
@@ -2952,7 +2952,7 @@ export default function Mushaf1441Viewer({
                   </button>
                 </h3>
                 {isExpanded ? (
-                <div id={detailsId} className="space-y-3 border-t border-[#eadfc9] px-3 pb-3 pt-3">
+                <div id={detailsId} className="space-y-3 border-t border-[var(--mushaf-rule-soft)] px-3 pb-3 pt-3">
                 {link?.tags && link.tags.length > 0 ? (
                   <div className="flex flex-wrap gap-1.5">
                     {link.tags.map((tag) => (
@@ -2989,7 +2989,7 @@ export default function Mushaf1441Viewer({
                           }}
                         >
                           <div className="mb-1 flex items-center justify-between gap-2 text-xs font-bold">
-                            <span className="text-[#59461d]">
+                            <span className="text-[var(--mushaf-gold-deep)]">
                               سورة {verse.surah} · {verse.ayah.toLocaleString('ar-EG')}
                               {isCurrent ? <span style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}> · هذه الآية</span> : null}
                             </span>
@@ -2997,7 +2997,7 @@ export default function Mushaf1441Viewer({
                               <button
                                 type="button"
                                 onClick={() => { close(); void goToAyah(verseSurahNo, verse.ayah) }}
-                                className="min-h-9 rounded-md px-2 text-[#80662c] transition-colors hover:bg-[#fff1cf]"
+                                className="min-h-9 rounded-md px-2 text-[var(--mushaf-gold-ink)] transition-colors hover:bg-[#fff1cf]"
                               >
                                 انتقل إليها ←
                               </button>
@@ -3013,13 +3013,13 @@ export default function Mushaf1441Viewer({
                 <div className="flex gap-2">
                   <Link
                     href={`/groups/${groupId}`}
-                    className="flex min-h-11 flex-1 items-center justify-center rounded-md bg-[#171717] px-4 text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
+                    className="flex min-h-11 flex-1 items-center justify-center rounded-md bg-[var(--mushaf-ink)] px-4 text-sm font-bold text-white transition-colors hover:bg-[var(--mushaf-ink-2)]"
                   >
                     فتح المجموعة
                   </Link>
                   <Link
                     href={`/groups/${groupId}/edit`}
-                    className="flex min-h-11 items-center justify-center rounded-md border border-[#b99b51] px-4 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
+                    className="flex min-h-11 items-center justify-center rounded-md border border-[var(--mushaf-gold)] px-4 text-sm font-bold text-[#3f3215] transition-colors hover:bg-[#fff9e9]"
                   >
                     تعديل
                   </Link>
@@ -3038,17 +3038,17 @@ export default function Mushaf1441Viewer({
     const [surahNo, ayahNo] = ayahKey.split(':').map(Number)
     return (
       <div>
-        <div className="mb-2 flex items-start justify-between gap-2 border-b border-[#eadfc9] pb-2">
+        <div className="mb-2 flex items-start justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
           <div className="min-w-0">
-            <p className="text-[10px] font-bold" style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}>من متشابهاتك</p>
-            <p className="text-sm font-black leading-snug text-[#171717]">
+            <p className="text-[11px] font-bold" style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}>من متشابهاتك</p>
+            <p className="text-sm font-black leading-snug text-[var(--mushaf-ink)]">
               سورة {surahNameByNumber.get(surahNo) ?? ''} · الآية {Number.isFinite(ayahNo) ? ayahNo.toLocaleString('ar-EG') : ''}
             </p>
           </div>
           <button
             type="button"
             onClick={() => setMutshabehatPanelAyahKey(null)}
-            className="shrink-0 rounded border border-[#d7c7a7] px-2 py-0.5 text-[11px] font-bold text-[#80662c] hover:bg-[#fff7df]"
+            className="shrink-0 rounded border border-[var(--mushaf-rule)] px-2 py-0.5 text-[11px] font-bold text-[var(--mushaf-gold-ink)] hover:bg-[var(--mushaf-cream)]"
           >
             مسح التحديد
           </button>
@@ -3070,13 +3070,13 @@ export default function Mushaf1441Viewer({
       <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="mutshabehat-popup-title">
         <button type="button" aria-label="إغلاق" onClick={close} className="absolute inset-0 cursor-default bg-[#2a2111]/40" />
         <section
-          className="relative flex max-h-[86dvh] w-full max-w-xl flex-col overflow-hidden rounded-t-2xl border border-[#d7c7a7] bg-[#fffdf8] shadow-[0_24px_60px_-12px_rgba(42,33,17,0.45)] sm:rounded-2xl"
+          className="relative flex max-h-[86dvh] w-full max-w-xl flex-col overflow-hidden rounded-t-2xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] shadow-[0_24px_60px_-12px_rgba(42,33,17,0.45)] sm:rounded-2xl"
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
-          <header className="flex items-start justify-between gap-3 border-b border-[#eadfc9] px-4 py-3">
+          <header className="flex items-start justify-between gap-3 border-b border-[var(--mushaf-rule-soft)] px-4 py-3">
             <div className="min-w-0">
               <p className="text-[11px] font-bold" style={{ color: PERSONAL_AYAH_HIGHLIGHT.text }}>من متشابهاتك</p>
-              <h2 id="mutshabehat-popup-title" className="text-base font-black leading-snug text-[#171717]">
+              <h2 id="mutshabehat-popup-title" className="text-base font-black leading-snug text-[var(--mushaf-ink)]">
                 سورة {surahName} · الآية {Number.isFinite(ayahNo) ? ayahNo.toLocaleString('ar-EG') : ''}
               </h2>
             </div>
@@ -3085,7 +3085,7 @@ export default function Mushaf1441Viewer({
               autoFocus
               onClick={close}
               aria-label="إغلاق البطاقة"
-              className="flex size-11 shrink-0 items-center justify-center rounded-md border border-[#d7c7a7] text-xl font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+              className="flex size-11 shrink-0 items-center justify-center rounded-md border border-[var(--mushaf-rule)] text-xl font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
             >
               ×
             </button>
@@ -3133,22 +3133,22 @@ export default function Mushaf1441Viewer({
           className="absolute inset-0 bg-transparent"
         />
         <div
-          className="absolute w-[280px] max-w-[86%] rounded-xl border border-[#d7c7a7] bg-[#fffdf8] p-2 shadow-[0_18px_60px_rgba(23,23,23,0.2)]"
+          className="absolute w-[280px] max-w-[86%] rounded-xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] p-2 shadow-[0_18px_60px_rgba(23,23,23,0.2)]"
           style={{
             left: Math.max(12, Math.min(contextMenu.x, typeof window !== 'undefined' ? window.innerWidth - 300 : contextMenu.x)),
             top: Math.max(12, Math.min(contextMenu.y, typeof window !== 'undefined' ? window.innerHeight - 260 : contextMenu.y)),
           }}
           onContextMenu={(event) => event.preventDefault()}
         >
-          <div className="mb-2 border-b border-[#eadfc9] pb-2">
-            <p className="text-[11px] font-bold text-[#80662c]">الاختيار الحالي</p>
-            <p className="mt-1 truncate text-sm font-black text-[#171717]">{targetLabel}</p>
+          <div className="mb-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
+            <p className="text-[11px] font-bold text-[var(--mushaf-gold-ink)]">الاختيار الحالي</p>
+            <p className="mt-1 truncate text-sm font-black text-[var(--mushaf-ink)]">{targetLabel}</p>
           </div>
           <div className="space-y-1.5">
-            <div className="rounded-lg border border-[#eadfc9] bg-[#fffaf0] p-1.5">
+            <div className="rounded-lg border border-[var(--mushaf-rule-soft)] bg-[var(--mushaf-cream-2)] p-1.5">
               <div className="flex items-center justify-between px-1 pb-1">
-                <span className="flex items-center gap-1.5 text-xs font-bold text-[#59461d]">
-                  <IconHighlight className="text-[#80662c]" />تمييز
+                <span className="flex items-center gap-1.5 text-xs font-bold text-[var(--mushaf-gold-deep)]">
+                  <IconHighlight className="text-[var(--mushaf-gold-ink)]" />تمييز
                 </span>
                 {existingHighlightOnTarget ? (
                   <button
@@ -3169,7 +3169,7 @@ export default function Mushaf1441Viewer({
                       setAnnotationMode('highlight')
                       setContextMenu(null)
                     }}
-                    className="text-[11px] font-bold text-[#80662c] hover:underline"
+                    className="text-[11px] font-bold text-[var(--mushaf-gold-ink)] hover:underline"
                   >
                     مخصص…
                   </button>
@@ -3205,10 +3205,10 @@ export default function Mushaf1441Viewer({
                 setAnnotationMode('note')
                 setContextMenu(null)
               }}
-              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
             >
-              <span className="flex items-center gap-2"><IconNote className="text-[#80662c]" />ملاحظة</span>
-              <span className="text-[11px] text-[#80662c]">Note</span>
+              <span className="flex items-center gap-2"><IconNote className="text-[var(--mushaf-gold-ink)]" />ملاحظة</span>
+              <span className="text-[11px] text-[var(--mushaf-gold-ink)]">Note</span>
             </button>
             {rangeTarget ? (
               <button
@@ -3218,10 +3218,10 @@ export default function Mushaf1441Viewer({
                   setAnnotationMode('highlight')
                   setContextMenu(null)
                 }}
-                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
               >
                 <span>تمييز نطاق الكلمات</span>
-                <span className="text-[11px] text-[#80662c]">Range</span>
+                <span className="text-[11px] text-[var(--mushaf-gold-ink)]">Range</span>
               </button>
             ) : null}
             <button
@@ -3230,10 +3230,10 @@ export default function Mushaf1441Viewer({
                 void toggleBookmark(ayahTargetForMenu)
                 setContextMenu(null)
               }}
-              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
             >
-              <span className="flex items-center gap-2"><IconBookmark className={hasBookmarkOnTarget ? 'text-[#8c5f0a]' : 'text-[#80662c]'} />{hasBookmarkOnTarget ? 'إزالة الإشارة' : 'إشارة مرجعية'}</span>
-              <span className="text-[11px] text-[#80662c]">Bookmark</span>
+              <span className="flex items-center gap-2"><IconBookmark className={hasBookmarkOnTarget ? 'text-[#8c5f0a]' : 'text-[var(--mushaf-gold-ink)]'} />{hasBookmarkOnTarget ? 'إزالة الإشارة' : 'إشارة مرجعية'}</span>
+              <span className="text-[11px] text-[var(--mushaf-gold-ink)]">Bookmark</span>
             </button>
             <button
               type="button"
@@ -3241,10 +3241,10 @@ export default function Mushaf1441Viewer({
                 void toggleFavorite(ayahTargetForMenu)
                 setContextMenu(null)
               }}
-              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+              className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-right text-sm font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
             >
-              <span className="flex items-center gap-2"><IconStar filled={hasFavoriteOnTarget} className={hasFavoriteOnTarget ? 'text-[#b8871d]' : 'text-[#80662c]'} />{hasFavoriteOnTarget ? 'إزالة المفضلة' : 'مفضلة'}</span>
-              <span className="text-[11px] text-[#80662c]">Favorite</span>
+              <span className="flex items-center gap-2"><IconStar filled={hasFavoriteOnTarget} className={hasFavoriteOnTarget ? 'text-[#b8871d]' : 'text-[var(--mushaf-gold-ink)]'} />{hasFavoriteOnTarget ? 'إزالة المفضلة' : 'مفضلة'}</span>
+              <span className="text-[11px] text-[var(--mushaf-gold-ink)]">Favorite</span>
             </button>
           </div>
         </div>
@@ -3260,22 +3260,22 @@ export default function Mushaf1441Viewer({
 
     return (
       <div className="space-y-4">
-        <div className="border-b border-[#eadfc9] pb-4">
-          <p className="text-xs font-bold text-[#80662c]">الآية المحددة</p>
+        <div className="border-b border-[var(--mushaf-rule-soft)] pb-4">
+          <p className="text-xs font-bold text-[var(--mushaf-gold-ink)]">الآية المحددة</p>
           {selectedAyahKey ? (
             <p className="mt-1 text-xl font-black">
               {surahNameByNumber.get(Number(selectedAyahKey.split(':')[0])) ?? ''}
-              <span className="text-[#80662c]"> — آية {selectedAyahKey.split(':')[1]}</span>
+              <span className="text-[var(--mushaf-gold-ink)]"> — آية {selectedAyahKey.split(':')[1]}</span>
             </p>
           ) : (
-            <p className="mt-1 text-base text-[#665b48]">لم يتم اختيار آية بعد.</p>
+            <p className="mt-1 text-base text-[var(--mushaf-brown)]">لم يتم اختيار آية بعد.</p>
           )}
           {selectedWordRange ? (
-            <p className="mt-2 font-[family-name:var(--font-amiri-quran)] text-2xl leading-relaxed text-[#171717]">
+            <p className="mt-2 font-[family-name:var(--font-amiri-quran)] text-2xl leading-relaxed text-[var(--mushaf-ink)]">
               {selectedWordRange.startWord.textUthmani} … {selectedWordRange.endWord.textUthmani}
             </p>
           ) : selectedWord ? (
-            <p className="mt-2 font-[family-name:var(--font-amiri-quran)] text-2xl leading-relaxed text-[#171717]">
+            <p className="mt-2 font-[family-name:var(--font-amiri-quran)] text-2xl leading-relaxed text-[var(--mushaf-ink)]">
               {selectedWord.textUthmani}
             </p>
           ) : null}
@@ -3284,7 +3284,7 @@ export default function Mushaf1441Viewer({
         {/* Was a three-way tab bar. The layer decides now, so this is a label, not a choice — the
             sheet shows one layer's data and switching means switching layer in the top bar. */}
         <div className="rounded-lg bg-[#f4efe6] p-1">
-          <p className="min-h-11 rounded-md bg-[#171717] px-2 py-3 text-center text-xs font-black text-white">
+          <p className="min-h-11 rounded-md bg-[var(--mushaf-ink)] px-2 py-3 text-center text-xs font-black text-white">
             {activeDetailTab === 'qiraat'
               ? 'القراءات العشر'
               : activeDetailTab === 'mutshabehat' ? 'المتشابهات' : 'الملاحظات والتمييز'}
@@ -3293,11 +3293,11 @@ export default function Mushaf1441Viewer({
 
         {activeDetailTab === 'notes' ? (
           <div className="space-y-3">
-            <div className="rounded-lg border border-[#d7c7a7] bg-[#fffaf0] p-3">
+            <div className="rounded-lg border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-2)] p-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs font-bold text-[#80662c]">التعليقات والتمييز</p>
-                  <p className="text-xs text-[#665b48]">
+                  <p className="text-xs font-bold text-[var(--mushaf-gold-ink)]">التعليقات والتمييز</p>
+                  <p className="text-xs text-[var(--mushaf-brown)]">
                     {annotationSyncAvailable ? 'الحفظ والمزامنة عبر Supabase.' : 'المزامنة غير متاحة حالياً.'}
                   </p>
                 </div>
@@ -3305,7 +3305,7 @@ export default function Mushaf1441Viewer({
                   <button
                     type="button"
                     onClick={cancelEdit}
-                    className="min-h-11 rounded-md border border-[#b99b51] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-white"
+                    className="min-h-11 rounded-md border border-[var(--mushaf-gold)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-white"
                   >
                     إلغاء التعديل
                   </button>
@@ -3313,7 +3313,7 @@ export default function Mushaf1441Viewer({
               </div>
 
               {annotationStatus ? (
-                <p className="mt-3 rounded-md border border-[#b99b51] bg-white px-3 py-2 text-xs font-bold text-[#59461d]">
+                <p className="mt-3 rounded-md border border-[var(--mushaf-gold)] bg-white px-3 py-2 text-xs font-bold text-[var(--mushaf-gold-deep)]">
                   {annotationStatus}
                 </p>
               ) : null}
@@ -3337,7 +3337,7 @@ export default function Mushaf1441Viewer({
                         type="button"
                         onClick={() => setAnnotationMode(mode as AnnotationEditorMode)}
                         className={`min-h-11 rounded-md px-3 text-xs font-black transition-colors ${
-                          annotationMode === mode ? 'bg-[#171717] text-white' : 'bg-white text-[#59461d] hover:bg-[#fff7df]'
+                          annotationMode === mode ? 'bg-[var(--mushaf-ink)] text-white' : 'bg-white text-[var(--mushaf-gold-deep)] hover:bg-[var(--mushaf-cream)]'
                         }`}
                       >
                         {label}
@@ -3349,28 +3349,28 @@ export default function Mushaf1441Viewer({
                     <button
                       type="button"
                       onClick={() => void createHighlight(getSelectedTarget() ?? { targetType: 'ayah', ayahKey: selectedAyahKey, pageNumber })}
-                      className="min-h-11 rounded-md border border-[#b99b51] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-white"
+                      className="min-h-11 rounded-md border border-[var(--mushaf-gold)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-white"
                     >
                       حفظ التمييز
                     </button>
                     <button
                       type="button"
                       onClick={() => void toggleBookmark(getSelectedAyahTarget() ?? { targetType: 'ayah', ayahKey: selectedAyahKey, pageNumber })}
-                      className="min-h-11 rounded-md border border-[#b99b51] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-white"
+                      className="min-h-11 rounded-md border border-[var(--mushaf-gold)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-white"
                     >
                       {bookmarksForSelectedAyah.length > 0 ? 'إزالة الإشارة' : 'إضافة إشارة'}
                     </button>
                     <button
                       type="button"
                       onClick={() => void toggleFavorite(getSelectedAyahTarget() ?? { targetType: 'ayah', ayahKey: selectedAyahKey, pageNumber })}
-                      className="min-h-11 rounded-md border border-[#b99b51] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-white"
+                      className="min-h-11 rounded-md border border-[var(--mushaf-gold)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-white"
                     >
                       {favoritesForSelectedAyah.length > 0 ? 'إزالة المفضلة' : 'إضافة مفضلة'}
                     </button>
                   </div>
 
                   {annotationMode === 'highlight' ? (
-                    <div className="space-y-3 rounded-md border border-[#eadfc9] bg-white p-3">
+                    <div className="space-y-3 rounded-md border border-[var(--mushaf-rule-soft)] bg-white p-3">
                       <div className="flex flex-wrap gap-2">
                         {HIGHLIGHT_COLOR_PRESETS.map((preset) => (
                           <button
@@ -3381,7 +3381,7 @@ export default function Mushaf1441Viewer({
                               textColor: preset.textColor,
                               backgroundColor: preset.backgroundColor,
                             }))}
-                            className="flex min-h-11 items-center gap-2 rounded-md border border-[#d7c7a7] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+                            className="flex min-h-11 items-center gap-2 rounded-md border border-[var(--mushaf-rule)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
                           >
                             <span
                               className="inline-block size-4 rounded-full border border-black/10"
@@ -3392,22 +3392,22 @@ export default function Mushaf1441Viewer({
                         ))}
                       </div>
                       <div className="grid grid-cols-2 gap-3">
-                        <label className="space-y-1 text-xs font-bold text-[#665b48]">
+                        <label className="space-y-1 text-xs font-bold text-[var(--mushaf-brown)]">
                           <span>لون النص</span>
                           <input
                             type="color"
                             value={annotationDraft.textColor}
                             onChange={(event) => setAnnotationDraft((current) => ({ ...current, textColor: event.target.value }))}
-                            className="h-11 w-full rounded-md border border-[#d7c7a7] bg-white p-1"
+                            className="h-11 w-full rounded-md border border-[var(--mushaf-rule)] bg-white p-1"
                           />
                         </label>
-                        <label className="space-y-1 text-xs font-bold text-[#665b48]">
+                        <label className="space-y-1 text-xs font-bold text-[var(--mushaf-brown)]">
                           <span>لون الخلفية</span>
                           <input
                             type="color"
                             value={annotationDraft.backgroundColor}
                             onChange={(event) => setAnnotationDraft((current) => ({ ...current, backgroundColor: event.target.value }))}
-                            className="h-11 w-full rounded-md border border-[#d7c7a7] bg-white p-1"
+                            className="h-11 w-full rounded-md border border-[var(--mushaf-rule)] bg-white p-1"
                           />
                         </label>
                       </div>
@@ -3415,53 +3415,53 @@ export default function Mushaf1441Viewer({
                   ) : null}
 
                   {annotationMode === 'bookmark' || annotationMode === 'favorite' ? (
-                    <p className="rounded-md border border-[#eadfc9] bg-white px-3 py-2 text-xs leading-6 text-[#665b48]">
+                    <p className="rounded-md border border-[var(--mushaf-rule-soft)] bg-white px-3 py-2 text-xs leading-6 text-[var(--mushaf-brown)]">
                       هذه الآية جاهزة كإشارة مرجعية أو مفضلة عبر الأزرار أعلاه.
                     </p>
                   ) : null}
 
                   <form onSubmit={saveNote} className="space-y-3">
                     <div>
-                      <label htmlFor={titleId} className="mb-1 block text-xs font-bold text-[#665b48]">
+                      <label htmlFor={titleId} className="mb-1 block text-xs font-bold text-[var(--mushaf-brown)]">
                         العنوان
                       </label>
                       <input
                         id={titleId}
                         value={annotationDraft.title}
                         onChange={(event) => setAnnotationDraft((current) => ({ ...current, title: event.target.value }))}
-                        className="h-11 w-full rounded-md border border-[#d7c7a7] bg-white px-3 text-sm outline-none transition-shadow focus:ring-4 focus:ring-[#d4af37]/30"
+                        className="h-11 w-full rounded-md border border-[var(--mushaf-rule)] bg-white px-3 text-sm outline-none transition-shadow focus:ring-4 focus:ring-[#d4af37]/30"
                         placeholder="اختياري"
                       />
                     </div>
                     <div>
-                      <label htmlFor={bodyId} className="mb-1 block text-xs font-bold text-[#665b48]">
+                      <label htmlFor={bodyId} className="mb-1 block text-xs font-bold text-[var(--mushaf-brown)]">
                         نص الملاحظة
                       </label>
                       <textarea
                         id={bodyId}
                         value={annotationDraft.body}
                         onChange={(event) => setAnnotationDraft((current) => ({ ...current, body: event.target.value }))}
-                        className="min-h-28 w-full resize-y rounded-md border border-[#d7c7a7] bg-white px-3 py-2 text-sm leading-7 outline-none transition-shadow focus:ring-4 focus:ring-[#d4af37]/30"
+                        className="min-h-28 w-full resize-y rounded-md border border-[var(--mushaf-rule)] bg-white px-3 py-2 text-sm leading-7 outline-none transition-shadow focus:ring-4 focus:ring-[#d4af37]/30"
                         placeholder="اكتب ملاحظة لهذه الآية أو الكلمة"
                         required={annotationMode === 'note'}
                       />
                     </div>
                     <div>
-                      <label htmlFor={tagsId} className="mb-1 block text-xs font-bold text-[#665b48]">
+                      <label htmlFor={tagsId} className="mb-1 block text-xs font-bold text-[var(--mushaf-brown)]">
                         الوسوم
                       </label>
                       <input
                         id={tagsId}
                         value={annotationDraft.tags}
                         onChange={(event) => setAnnotationDraft((current) => ({ ...current, tags: event.target.value }))}
-                        className="h-11 w-full rounded-md border border-[#d7c7a7] bg-white px-3 text-sm outline-none transition-shadow focus:ring-4 focus:ring-[#d4af37]/30"
+                        className="h-11 w-full rounded-md border border-[var(--mushaf-rule)] bg-white px-3 text-sm outline-none transition-shadow focus:ring-4 focus:ring-[#d4af37]/30"
                         placeholder="افصل الوسوم بفواصل"
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={isAnnotationSaving}
-                      className="min-h-11 w-full rounded-md bg-[#171717] px-4 text-sm font-bold text-white transition-colors hover:bg-[#3a3326] disabled:cursor-not-allowed disabled:opacity-60"
+                      className="min-h-11 w-full rounded-md bg-[var(--mushaf-ink)] px-4 text-sm font-bold text-white transition-colors hover:bg-[var(--mushaf-ink-2)] disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       {isAnnotationSaving
                         ? 'جاري الحفظ...'
@@ -3478,7 +3478,7 @@ export default function Mushaf1441Viewer({
                   </form>
                 </div>
               ) : (
-                <p className="mt-3 rounded-md bg-white px-3 py-4 text-sm leading-7 text-[#665b48]">
+                <p className="mt-3 rounded-md bg-white px-3 py-4 text-sm leading-7 text-[var(--mushaf-brown)]">
                   اختر آية أو كلمة من أعلى الصفحة لفتح لوحة التعليقات.
                 </p>
               )}
@@ -3486,8 +3486,8 @@ export default function Mushaf1441Viewer({
 
             <div className="space-y-2">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-xs font-bold text-[#80662c]">الملاحظات المحفوظة</p>
-                <p className="text-xs text-[#665b48]">
+                <p className="text-xs font-bold text-[var(--mushaf-gold-ink)]">الملاحظات المحفوظة</p>
+                <p className="text-xs text-[var(--mushaf-brown)]">
                   {notesForSelectedAyah.length} ملاحظة
                 </p>
               </div>
@@ -3495,17 +3495,17 @@ export default function Mushaf1441Viewer({
                 notesForSelectedAyah.map((annotation) => {
                   const note = toAyahNote(annotation)
                   return (
-                  <article key={note.id} className="rounded-lg border border-[#eadfc9] bg-white p-3">
+                  <article key={note.id} className="rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-3">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <h3 className="text-sm font-black text-[#171717]">{note.title || 'ملاحظة بدون عنوان'}</h3>
-                        <p className="mt-1 text-[11px] text-[#80662c]">{new Date(note.updatedAt).toLocaleDateString('ar')}</p>
+                        <h3 className="text-sm font-black text-[var(--mushaf-ink)]">{note.title || 'ملاحظة بدون عنوان'}</h3>
+                        <p className="mt-1 text-[11px] text-[var(--mushaf-gold-ink)]">{new Date(note.updatedAt).toLocaleDateString('ar')}</p>
                       </div>
                       <div className="flex shrink-0 gap-1">
                         <button
                           type="button"
                           onClick={() => editNote(annotation)}
-                          className="min-h-11 rounded-md border border-[#d7c7a7] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+                          className="min-h-11 rounded-md border border-[var(--mushaf-rule)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
                         >
                           تعديل
                         </button>
@@ -3518,11 +3518,11 @@ export default function Mushaf1441Viewer({
                         </button>
                       </div>
                     </div>
-                    <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-[#3a3326]">{note.body}</p>
+                    <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-[var(--mushaf-ink-2)]">{note.body}</p>
                     {note.tags.length > 0 ? (
                       <div className="mt-3 flex flex-wrap gap-1">
                         {note.tags.map((tag) => (
-                          <span key={tag} className="rounded-full bg-[#f4efe6] px-2 py-1 text-[11px] font-bold text-[#665b48]">
+                          <span key={tag} className="rounded-full bg-[#f4efe6] px-2 py-1 text-[11px] font-bold text-[var(--mushaf-brown)]">
                             {tag}
                           </span>
                         ))}
@@ -3532,7 +3532,7 @@ export default function Mushaf1441Viewer({
                   )
                 })
               ) : (
-                <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[#665b48]">
+                <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[var(--mushaf-brown)]">
                   لا توجد ملاحظات لهذه الآية بعد.
                 </p>
               )}
@@ -3541,18 +3541,18 @@ export default function Mushaf1441Viewer({
         ) : null}
 
         {activeDetailTab === 'mutshabehat' ? (
-          <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
+          <div className="rounded-lg border border-[var(--mushaf-rule)] bg-white p-3">
             <div className="mb-3 flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-bold text-[#80662c]">ربط المتشابهات</p>
-                <p className="text-xs text-[#665b48]">
+                <p className="text-xs font-bold text-[var(--mushaf-gold-ink)]">ربط المتشابهات</p>
+                <p className="text-xs text-[var(--mushaf-brown)]">
                   {mutshabehatLinkEnabled ? 'مفعل في وضع المعاينة.' : 'معطل افتراضيا عبر feature flag.'}
                 </p>
               </div>
               {mutshabehatPanelAyahKey ? (
                 <a
                   href={navigateToAyah(mutshabehatPanelAyahKey)}
-                  className="min-h-11 rounded-md border border-[#d7c7a7] px-3 py-2 text-xs font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+                  className="min-h-11 rounded-md border border-[var(--mushaf-rule)] px-3 py-2 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
                 >
                   موضع الآية
                 </a>
@@ -3569,37 +3569,37 @@ export default function Mushaf1441Viewer({
               mutshabehatPanelLinks.length > 0 ? (
                 <div className="space-y-2">
                   {mutshabehatPanelLinks.map((link) => (
-                    <article key={`${link.ayahKey}-${link.groupId ?? 'ungrouped'}`} className="rounded-md bg-[#fffaf0] p-3 text-sm">
+                    <article key={`${link.ayahKey}-${link.groupId ?? 'ungrouped'}`} className="rounded-md bg-[var(--mushaf-cream-2)] p-3 text-sm">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <p className="font-black text-[#171717]">{link.title ?? 'مجموعة متشابهات تجريبية'}</p>
-                          <p className="mt-1 font-mono text-xs text-[#80662c]" dir="ltr">{link.ayahKey}</p>
+                          <p className="font-black text-[var(--mushaf-ink)]">{link.title ?? 'مجموعة متشابهات تجريبية'}</p>
+                          <p className="mt-1 font-mono text-xs text-[var(--mushaf-gold-ink)]" dir="ltr">{link.ayahKey}</p>
                         </div>
                         {link.groupId ? (
-                          <span className="rounded-full bg-[#171717] px-2 py-1 text-[11px] font-bold text-white" dir="ltr">
+                          <span className="rounded-full bg-[var(--mushaf-ink)] px-2 py-1 text-[11px] font-bold text-white" dir="ltr">
                             {link.groupId}
                           </span>
                         ) : null}
                       </div>
                       {link.category ? (
-                        <p className="mt-2 text-xs font-bold text-[#665b48]">التصنيف: {link.category}</p>
+                        <p className="mt-2 text-xs font-bold text-[var(--mushaf-brown)]">التصنيف: {link.category}</p>
                       ) : null}
                       {link.similarAyat && link.similarAyat.length > 0 ? (
-                        <p className="mt-2 text-xs text-[#665b48]" dir="ltr">
+                        <p className="mt-2 text-xs text-[var(--mushaf-brown)]" dir="ltr">
                           similarAyat: {link.similarAyat.join(', ')}
                         </p>
                       ) : null}
                       {link.tags && link.tags.length > 0 ? (
                         <div className="mt-3 flex flex-wrap gap-1">
                           {link.tags.map((tag) => (
-                            <span key={tag} className="rounded-full bg-[#f4efe6] px-2 py-1 text-[11px] font-bold text-[#665b48]">
+                            <span key={tag} className="rounded-full bg-[#f4efe6] px-2 py-1 text-[11px] font-bold text-[var(--mushaf-brown)]">
                               {tag}
                             </span>
                           ))}
                         </div>
                       ) : null}
                       {link.notes && link.notes.length > 0 ? (
-                        <ul className="mt-3 space-y-1 text-xs leading-6 text-[#3a3326]">
+                        <ul className="mt-3 space-y-1 text-xs leading-6 text-[var(--mushaf-ink-2)]">
                           {link.notes.map((note) => (
                             <li key={note}>{note}</li>
                           ))}
@@ -3609,12 +3609,12 @@ export default function Mushaf1441Viewer({
                   ))}
                 </div>
               ) : (
-                <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[#665b48]">
+                <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[var(--mushaf-brown)]">
                   لا توجد بيانات متشابهات محملة لهذه الآية.
                 </p>
               )
             ) : (
-              <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[#665b48]">
+              <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[var(--mushaf-brown)]">
                 الربط مع قاعدة متشابهات جاهز بنيويا لكنه غير مفعل الآن.
               </p>
             )}
@@ -3622,11 +3622,11 @@ export default function Mushaf1441Viewer({
         ) : null}
 
         {activeDetailTab === 'qiraat' ? (
-          <div className="rounded-lg border border-[#d7c7a7] bg-white p-3">
+          <div className="rounded-lg border border-[var(--mushaf-rule)] bg-white p-3">
             <div className="mb-3">
-              <p className="text-xs font-bold text-[#80662c]">القراءات في هذا الموضع</p>
+              <p className="text-xs font-bold text-[var(--mushaf-gold-ink)]">القراءات في هذا الموضع</p>
               {selectedAyahKey ? (
-                <p className="text-xs text-[#665b48]">
+                <p className="text-xs text-[var(--mushaf-brown)]">
                   سورة {surahNameByNumber.get(Number(selectedAyahKey.split(':')[0])) ?? ''} · الآية {selectedAyahKey.split(':')[1]}
                 </p>
               ) : null}
@@ -3647,22 +3647,22 @@ export default function Mushaf1441Viewer({
                   const needsManualReview = variant.verificationStatus === 'NEEDS_MANUAL_REVIEW'
                   const isPerformanceOnly = variant.variantText === variant.hafsText && Boolean(variant.performanceNote)
                   return (
-                    <article key={variant.id} className="rounded-md bg-[#fffaf0] p-3 text-sm">
+                    <article key={variant.id} className="rounded-md bg-[var(--mushaf-cream-2)] p-3 text-sm">
                       {needsManualReview ? (
-                        <p className="mb-2 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">
+                        <p className="mb-2 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[11px] font-bold text-[#8a2f10]">
                           تحتاج مراجعة يدوية — غير مؤكدة من المصدر الأصلي
                         </p>
                       ) : null}
                       {isPerformanceOnly ? (
-                        <p className="text-sm leading-8 text-[#3a3326]" dir="rtl">
-                          <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.hafsText}</span>
+                        <p className="text-sm leading-8 text-[var(--mushaf-ink-2)]" dir="rtl">
+                          <span className="font-bold text-[var(--mushaf-ink)]">{variant.uthmaniText ?? variant.hafsText}</span>
                           <span className="mr-2 text-xs text-[#8a7c5c]">(اختلاف أداء لا يغيّر الرسم)</span>
                         </p>
                       ) : (
-                        <p className="text-sm leading-8 text-[#3a3326]" dir="rtl">
+                        <p className="text-sm leading-8 text-[var(--mushaf-ink-2)]" dir="rtl">
                           <span className="text-[#8a7c5c] line-through decoration-1">{variant.hafsText}</span>
                           {' ← '}
-                          <span className="font-bold text-[#171717]">{variant.uthmaniText ?? variant.variantText}</span>
+                          <span className="font-bold text-[var(--mushaf-ink)]">{variant.uthmaniText ?? variant.variantText}</span>
                         </p>
                       )}
                       {variant.performanceNote ? (
@@ -3677,8 +3677,8 @@ export default function Mushaf1441Viewer({
                           <div className="mt-2 space-y-1.5 border-t border-dashed border-[#e3d6b4] pt-2">
                             {Array.from(readerGroups.entries()).map(([readerName, narrators]) => (
                               <div key={readerName}>
-                                <p className="font-black text-[#171717]">{readerName}</p>
-                                <p className="text-xs text-[#665b48]">{narrators.join(' · ')}</p>
+                                <p className="font-black text-[var(--mushaf-ink)]">{readerName}</p>
+                                <p className="text-xs text-[var(--mushaf-brown)]">{narrators.join(' · ')}</p>
                               </div>
                             ))}
                           </div>
@@ -3687,7 +3687,7 @@ export default function Mushaf1441Viewer({
                           </p>
                         </>
                       )}
-                      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#80662c]">
+                      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[var(--mushaf-gold-ink)]">
                         <span>نوع الاختلاف: {DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]}</span>
                         <span>حالة التحقق: {variant.verificationStatus}</span>
                       </div>
@@ -3699,14 +3699,14 @@ export default function Mushaf1441Viewer({
                         </div>
                       ) : null}
                       {variant.notes ? (
-                        <p className="mt-2 text-xs leading-6 text-[#665b48]">{variant.notes}</p>
+                        <p className="mt-2 text-xs leading-6 text-[var(--mushaf-brown)]">{variant.notes}</p>
                       ) : null}
                     </article>
                   )
                 })}
               </div>
             ) : (
-              <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[#665b48]">
+              <p className="rounded-md bg-[#f4efe6] px-3 py-4 text-sm leading-7 text-[var(--mushaf-brown)]">
                 {qiraatMode === 'normal'
                   ? 'فعّل وضع المقارنة أو القراءة برواية من القائمة لعرض اختلافات القراءات على هذه الصفحة.'
                   : 'لا توجد قراءات مختلفة موثقة عند هذه الآية (أو أنها مستبعدة بحسب المرشِّح الحالي).'}
@@ -3734,30 +3734,30 @@ export default function Mushaf1441Viewer({
     const ayahNo = hoveredAyahKey.split(':')[1]
 
     return (
-      <div className="pointer-events-none absolute left-1/2 top-3 z-20 hidden w-[320px] max-w-[92%] -translate-x-1/2 rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] lg:block">
-        <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
-          <span className="text-sm font-black text-[#171717]">{surahName} — آية {ayahNo}</span>
+      <div className="pointer-events-none absolute left-1/2 top-3 z-20 hidden w-[320px] max-w-[92%] -translate-x-1/2 rounded-xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)]/97 p-3 text-right shadow-[0_14px_50px_rgba(23,23,23,0.22)] lg:block">
+        <div className="flex items-center justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
+          <span className="text-sm font-black text-[var(--mushaf-ink)]">{surahName} — آية {ayahNo}</span>
           <span className="flex items-center gap-1.5">
             {hasBookmark ? <IconBookmark className="text-[#8c5f0a]" /> : null}
             {hasFavorite ? <IconStar filled className="text-[#b8871d]" /> : null}
           </span>
         </div>
         {highlight ? (
-          <div className="mt-2 flex items-center gap-2 text-xs font-bold text-[#665b48]">
+          <div className="mt-2 flex items-center gap-2 text-xs font-bold text-[var(--mushaf-brown)]">
             <span className="inline-block size-4 rounded-full border border-black/10" style={{ backgroundColor: highlight.backgroundColor ?? '#ece2c8' }} />
             <span>تمييز مطبّق</span>
           </div>
         ) : null}
         {notes.length > 0 ? (
           <div className="mt-2 space-y-1">
-            <p className="text-[11px] font-bold text-[#80662c]">{notes.length} ملاحظة</p>
+            <p className="text-[11px] font-bold text-[var(--mushaf-gold-ink)]">{notes.length} ملاحظة</p>
             {notes.slice(0, 2).map((note) => (
-              <p key={note.id} className="truncate text-xs text-[#3a3326]">• {note.title || note.body || 'ملاحظة'}</p>
+              <p key={note.id} className="truncate text-xs text-[var(--mushaf-ink-2)]">• {note.title || note.body || 'ملاحظة'}</p>
             ))}
           </div>
         ) : null}
         {mutshabehat ? (
-          <div className="mt-2 border-t border-[#eadfc9] pt-2 text-xs text-[#665b48]">
+          <div className="mt-2 border-t border-[var(--mushaf-rule-soft)] pt-2 text-xs text-[var(--mushaf-brown)]">
             <span className="font-bold text-[#8c5f0a]">متشابهات: </span>
             {mutshabehat.similarAyat && mutshabehat.similarAyat.length > 0
               ? <span dir="ltr">{mutshabehat.similarAyat.join('، ')}</span>
@@ -3822,7 +3822,7 @@ export default function Mushaf1441Viewer({
   function renderQiraatSelection(selection: QiraatSelection | null = qiraatSelection) {
     if (!selection) {
       return (
-        <p className="rounded-lg border border-dashed border-[#d7c7a7] bg-[#fffdf8] p-3 text-xs leading-6 text-[#8b7f6a]">
+        <p className="rounded-lg border border-dashed border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] p-3 text-xs leading-6 text-[var(--mushaf-muted)]">
           اضغط على أي كلمة ملوَّنة في الصفحة ليظهر هنا بيانُ حكمها: كيف تُقرأ، ولمن.
         </p>
       )
@@ -3830,9 +3830,9 @@ export default function Mushaf1441Viewer({
     const { word, rulings, variants } = selection
     return (
       <div className="space-y-2.5">
-        <div className="flex items-baseline justify-between gap-2 border-b border-[#eadfc9] pb-2">
-          <span className="text-[11px] font-bold text-[#8b7f6a]" dir="ltr">{word.ayahKey}</span>
-          <span className="font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#171717]">
+        <div className="flex items-baseline justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
+          <span className="text-[11px] font-bold text-[var(--mushaf-muted)]" dir="ltr">{word.ayahKey}</span>
+          <span className="font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[var(--mushaf-ink)]">
             {word.textUthmani}
           </span>
         </div>
@@ -3843,8 +3843,8 @@ export default function Mushaf1441Viewer({
           return (
             <div key={variant.id} className="rounded-lg border border-[#e3d6b4] bg-white p-2.5">
               <div className="mb-1.5 flex items-center justify-between gap-2">
-                <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">{label}</span>
-                <span className="text-[10px] font-bold text-[#8b7f6a]">خلاف في الرسم</span>
+                <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[11px] font-bold text-[#7a5a10]">{label}</span>
+                <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">خلاف في الرسم</span>
               </div>
               <p className="text-center font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#7a1f1a]">
                 {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
@@ -3885,11 +3885,11 @@ export default function Mushaf1441Viewer({
           return (
             <div key={ruling.id} className="rounded-lg border p-2.5" style={{ borderColor: ruling.color, background: `color-mix(in srgb, ${ruling.color} 5%, white)` }}>
               <div className="mb-1.5 flex items-center justify-between gap-2">
-                <span className="rounded-full px-2 py-0.5 text-[10px] font-bold text-white" style={{ background: ruling.color }}>
+                <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: ruling.color }}>
                   {ruling.categoryAr}
                 </span>
                 {ruling.condition ? (
-                  <span className="text-[10px] font-bold text-[#8b7f6a]">{ruling.condition}</span>
+                  <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">{ruling.condition}</span>
                 ) : null}
               </div>
               {Array.from(byAction.entries()).map(([action, list]) => {
@@ -3903,25 +3903,25 @@ export default function Mushaf1441Viewer({
                   </div>
                 )
               })}
-              {(() => { const t = distinctRulingText(ruling.text, ruling.categoryAr, ruling.attribution.map((a) => a.action)); return t ? <p className="mt-1.5 text-[11px] leading-6 text-[#665b48]">{t}</p> : null })()}
+              {(() => { const t = distinctRulingText(ruling.text, ruling.categoryAr, ruling.attribution.map((a) => a.action)); return t ? <p className="mt-1.5 text-[11px] leading-6 text-[var(--mushaf-brown)]">{t}</p> : null })()}
               {alternates.length > 0 ? (
-                <p className="mt-1.5 rounded bg-[#fdf3d8] px-2 py-1 text-[10px] font-bold text-[#7a5a10]">
+                <p className="mt-1.5 rounded bg-[#fdf3d8] px-2 py-1 text-[11px] font-bold text-[#7a5a10]">
                   ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا
                 </p>
               ) : null}
-              {ruling.notes ? <p className="mt-1.5 text-[11px] leading-6 text-[#8b7f6a]">{ruling.notes}</p> : null}
+              {ruling.notes ? <p className="mt-1.5 text-[11px] leading-6 text-[var(--mushaf-muted)]">{ruling.notes}</p> : null}
               {ruling.sourceNotes?.map((note, i) => (
-                <p key={`${ruling.id}-source-note-${i}`} className="mt-1.5 text-[11px] leading-6 text-[#8b7f6a]">{note}</p>
+                <p key={`${ruling.id}-source-note-${i}`} className="mt-1.5 text-[11px] leading-6 text-[var(--mushaf-muted)]">{note}</p>
               ))}
               {ruling.verificationStatus === 'NEEDS_MANUAL_REVIEW' ? (
-                <p className="mt-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
+                <p className="mt-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[11px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
               ) : null}
             </div>
           )
         })}
 
         {variants.length === 0 && rulings.length === 0 ? (
-          <p className="text-xs text-[#8b7f6a]">لا توجد أحكام مسجَّلة على هذه الكلمة.</p>
+          <p className="text-xs text-[var(--mushaf-muted)]">لا توجد أحكام مسجَّلة على هذه الكلمة.</p>
         ) : null}
       </div>
     )
@@ -4010,7 +4010,7 @@ export default function Mushaf1441Viewer({
           <a
             href={SIGN_IN_HREF}
             className={`block min-h-11 rounded-md px-4 py-3 text-center text-sm font-bold transition-colors ${
-              mushafTheme === 'dark' ? 'bg-[#c8a86b] text-[#18191d] hover:bg-[#d6ba80]' : 'bg-[#171717] text-white hover:bg-[#3a3326]'
+              mushafTheme === 'dark' ? 'bg-[var(--mushaf-gold-light)] text-[#18191d] hover:bg-[#d6ba80]' : 'bg-[var(--mushaf-ink)] text-white hover:bg-[var(--mushaf-ink-2)]'
             }`}
           >
             سجّل الدخول لحفظ التمييز والملاحظات
@@ -4032,28 +4032,28 @@ export default function Mushaf1441Viewer({
   function renderQiraatRules() {
     if (qiraatRulesForCurrentPage.length === 0) return null
     return (
-      <div className="mt-3 space-y-2 border-t border-[#eadfc9] pt-3">
-        <p className="text-xs font-bold text-[#80662c]">قواعد ذات صلة بهذه الصفحة</p>
+      <div className="mt-3 space-y-2 border-t border-[var(--mushaf-rule-soft)] pt-3">
+        <p className="text-xs font-bold text-[var(--mushaf-gold-ink)]">قواعد ذات صلة بهذه الصفحة</p>
         {qiraatRulesForCurrentPage.map((rule) => {
           const pills = rule.readingIds ? readerPillsForReadingIds(rule.readingIds) : []
           const needsManualReview = rule.verificationStatus === 'NEEDS_MANUAL_REVIEW'
           return (
-            <div key={rule.id} className="rounded-lg border border-[#e3d6b4] bg-[#fffdf8] p-2.5 text-xs">
+            <div key={rule.id} className="rounded-lg border border-[#e3d6b4] bg-[var(--mushaf-cream-3)] p-2.5 text-xs">
               <div className="mb-1 flex items-center justify-between gap-2">
-                <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold text-[#7a5a10]">{rule.category}</span>
+                <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[11px] font-bold text-[#7a5a10]">{rule.category}</span>
                 {needsManualReview ? (
-                  <span className="rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</span>
+                  <span className="rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[11px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</span>
                 ) : null}
               </div>
-              {rule.text ? <p className="font-bold text-[#171717]" dir="rtl">{rule.text}</p> : null}
-              {rule.reading ? <p className="mt-0.5 text-[#3a3326]">الوجه: <span className="font-bold">{rule.reading}</span></p> : null}
+              {rule.text ? <p className="font-bold text-[var(--mushaf-ink)]" dir="rtl">{rule.text}</p> : null}
+              {rule.reading ? <p className="mt-0.5 text-[var(--mushaf-ink-2)]">الوجه: <span className="font-bold">{rule.reading}</span></p> : null}
               {rule.options && rule.options.length > 0 ? (
-                <p className="mt-0.5 text-[#3a3326]">الأوجه: {rule.options.join('، ')}</p>
+                <p className="mt-0.5 text-[var(--mushaf-ink-2)]">الأوجه: {rule.options.join('، ')}</p>
               ) : null}
               {pills.length > 0 ? (
                 <div className="mt-1.5 flex flex-wrap gap-1">{pills.map(renderReaderPill)}</div>
               ) : rule.attributionLabel ? (
-                <p className="mt-1 text-[11px] text-[#665b48]">{rule.attributionLabel}</p>
+                <p className="mt-1 text-[11px] text-[var(--mushaf-brown)]">{rule.attributionLabel}</p>
               ) : null}
               {rule.notes ? <p className="mt-1 text-[11px] leading-5 text-[#8a7c5c]">{rule.notes}</p> : null}
             </div>
@@ -4084,7 +4084,7 @@ export default function Mushaf1441Viewer({
     // with him (no "الباقون"/baseline group here; that stays a full-detail-panel-only concept).
     const shellClass = placement === 'sidebar'
       ? 'block cursor-pointer text-right'
-      : 'fixed inset-x-2 bottom-2 z-30 mx-auto block max-h-[52vh] w-auto max-w-lg cursor-pointer overflow-y-auto rounded-xl border border-[#d7c7a7] bg-[#fffdf8]/98 p-3 text-right shadow-[0_-14px_50px_rgba(23,23,23,0.28)] backdrop-blur-sm'
+      : 'fixed inset-x-2 bottom-2 z-30 mx-auto block max-h-[52vh] w-auto max-w-lg cursor-pointer overflow-y-auto rounded-xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)]/98 p-3 text-right shadow-[0_-14px_50px_rgba(23,23,23,0.28)] backdrop-blur-sm'
 
     return (
       <div
@@ -4094,10 +4094,10 @@ export default function Mushaf1441Viewer({
         dir="rtl"
         onClick={() => updateHoveredQiraatWord(null)}
       >
-        <div className="flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
+        <div className="flex items-center justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
           <div className="flex items-center gap-2">
             <span className="rounded-full bg-[#f1e2b6] px-2.5 py-1 text-[11px] font-bold text-[#7a5a10]">خلاف في الكلمة</span>
-            <span className="text-sm font-black text-[#171717]">{surahName} — آية {word.ayahNumber}</span>
+            <span className="text-sm font-black text-[var(--mushaf-ink)]">{surahName} — آية {word.ayahNumber}</span>
           </div>
           <button
             type="button"
@@ -4106,7 +4106,7 @@ export default function Mushaf1441Viewer({
               e.stopPropagation()
               updateHoveredQiraatWord(null)
             }}
-            className="rounded px-1.5 py-0.5 text-xs font-bold text-[#8b7f6a] hover:bg-[#ebdcc0] hover:text-[#171717]"
+            className="rounded px-1.5 py-0.5 text-xs font-bold text-[var(--mushaf-muted)] hover:bg-[#ebdcc0] hover:text-[var(--mushaf-ink)]"
           >
             ✕
           </button>
@@ -4131,16 +4131,16 @@ export default function Mushaf1441Viewer({
               return (
                 <div key={variant.id} className="rounded-xl border border-[#e3d6b4] bg-white p-3">
                   <div className="mb-2 flex items-center justify-between gap-2">
-                    <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[10px] font-bold leading-relaxed text-[#7a5a10]">{rulingLabel}</span>
-                    {showWajhNumbers ? <span className="rounded-full bg-[#171717] px-2 py-0.5 text-[10px] font-bold text-white">الوجه {index + 1}</span> : null}
+                    <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[11px] font-bold leading-relaxed text-[#7a5a10]">{rulingLabel}</span>
+                    {showWajhNumbers ? <span className="rounded-full bg-[var(--mushaf-ink)] px-2 py-0.5 text-[11px] font-bold text-white">الوجه {index + 1}</span> : null}
                   </div>
                   {needsManualReview ? (
-                    <p className="mb-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[10px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
+                    <p className="mb-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[11px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
                   ) : null}
                   <p className="text-center text-3xl font-bold leading-relaxed text-[#7a1f1a] font-[family-name:var(--font-amiri-quran)]">
                     {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
                   </p>
-                  <p className="mb-1.5 mt-2 text-[10px] font-bold text-[#8a7c5c]">القرّاء والرواة:</p>
+                  <p className="mb-1.5 mt-2 text-[11px] font-bold text-[#8a7c5c]">القرّاء والرواة:</p>
                   <div className="flex flex-wrap gap-1.5">
                     {pills.map(renderReaderPill)}
                   </div>
@@ -4165,13 +4165,13 @@ export default function Mushaf1441Viewer({
                 >
                   <div className="mb-2 flex items-center justify-between gap-2">
                     <span
-                      className="rounded-full px-2 py-0.5 text-[10px] font-bold text-white"
+                      className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white"
                       style={{ background: ruling.color }}
                     >
                       {ruling.categoryAr}
                     </span>
                     {ruling.condition ? (
-                      <span className="text-[10px] font-bold text-[#8b7f6a]">{ruling.condition}</span>
+                      <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">{ruling.condition}</span>
                     ) : null}
                   </div>
                   <p className="text-center font-[family-name:var(--font-amiri-quran)] text-3xl font-bold leading-relaxed text-[#7a1f1a]">
@@ -4188,7 +4188,7 @@ export default function Mushaf1441Viewer({
                       </div>
                     )
                   })}
-                  {(() => { const t = distinctRulingText(ruling.text, ruling.categoryAr, ruling.attribution.map((a) => a.action)); return t ? <p className="mt-2 text-xs leading-6 text-[#665b48]">{t}</p> : null })()}
+                  {(() => { const t = distinctRulingText(ruling.text, ruling.categoryAr, ruling.attribution.map((a) => a.action)); return t ? <p className="mt-2 text-xs leading-6 text-[var(--mushaf-brown)]">{t}</p> : null })()}
                 </div>
               )
             })}
@@ -4197,7 +4197,7 @@ export default function Mushaf1441Viewer({
             ) : null}
           </div>
         )}
-        <p className="mt-2.5 text-[10px] text-[#a8987a]">اضغط في أي مكان للإغلاق</p>
+        <p className="mt-2.5 text-[11px] text-[#a8987a]">اضغط في أي مكان للإغلاق</p>
       </div>
     )
   }
@@ -4217,27 +4217,27 @@ export default function Mushaf1441Viewer({
           dir="rtl"
           role="dialog"
           aria-label="فهرس السور"
-          className="fixed inset-0 z-50 flex touch-manipulation flex-col overflow-hidden bg-[#fffdf8] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-1 sm:max-h-[min(60vh,420px)] sm:w-[19rem] sm:rounded-xl sm:border sm:border-[#d7c7a7] sm:shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
+          className="fixed inset-0 z-50 flex touch-manipulation flex-col overflow-hidden bg-[var(--mushaf-cream-3)] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-1 sm:max-h-[min(60vh,420px)] sm:w-[19rem] sm:rounded-xl sm:border sm:border-[var(--mushaf-rule)] sm:shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
           style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
             {/* Full-screen header — only meaningful affordance to close on mobile, since the
                 click-away catcher is hidden behind the full-bleed panel there. */}
-            <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#eadfc9] bg-[#fffaf0] px-3 py-2 sm:hidden">
+            <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] bg-[var(--mushaf-cream-2)] px-3 py-2 sm:hidden">
               <button
                 type="button"
                 onClick={close}
                 aria-label="رجوع"
-                className="flex size-9 shrink-0 touch-manipulation items-center justify-center rounded-lg text-[#80662c] hover:bg-[#f0e4cc] active:bg-[#ebdcc0]"
+                className="flex size-9 shrink-0 touch-manipulation items-center justify-center rounded-lg text-[var(--mushaf-gold-ink)] hover:bg-[#f0e4cc] active:bg-[#ebdcc0]"
               >
                 <svg className="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clipRule="evenodd" />
                 </svg>
               </button>
-              <p className="text-sm font-black text-[#171717]">فهرس السور</p>
+              <p className="text-sm font-black text-[var(--mushaf-ink)]">فهرس السور</p>
               <span className="size-9" aria-hidden="true" />
             </div>
 
-            <div className="shrink-0 border-b border-[#eadfc9] bg-[#fffaf0] p-2 sm:p-2.5">
+            <div className="shrink-0 border-b border-[var(--mushaf-rule-soft)] bg-[var(--mushaf-cream-2)] p-2 sm:p-2.5">
               <div className="relative">
                 <input
                   type="text"
@@ -4245,7 +4245,7 @@ export default function Mushaf1441Viewer({
                   onChange={(e) => setSurahPickerSearch(e.target.value)}
                   placeholder="ابحث باسم السورة أو رقمها…"
                   aria-label="بحث في السور"
-                  className="w-full rounded-lg border border-[#d7c7a7] bg-white px-3 py-2 text-sm text-[#171717] placeholder:text-[#a8987a] focus:border-[#171717] focus:outline-none"
+                  className="w-full rounded-lg border border-[var(--mushaf-rule)] bg-white px-3 py-2 text-sm text-[var(--mushaf-ink)] placeholder:text-[#a8987a] focus:border-[var(--mushaf-ink)] focus:outline-none"
                   autoFocus
                 />
                 {surahPickerSearch ? (
@@ -4253,7 +4253,7 @@ export default function Mushaf1441Viewer({
                     type="button"
                     onClick={() => setSurahPickerSearch('')}
                     aria-label="مسح البحث"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 touch-manipulation rounded p-1 text-xs text-[#80662c] hover:bg-[#f0e4cc]"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 touch-manipulation rounded p-1 text-xs text-[var(--mushaf-gold-ink)] hover:bg-[#f0e4cc]"
                   >
                     ✕
                   </button>
@@ -4284,13 +4284,13 @@ export default function Mushaf1441Viewer({
                       onClick={() => void selectSurahFromPicker(surah)}
                       className={`flex w-full touch-manipulation items-center justify-between rounded-lg px-2.5 py-1.5 text-right transition-colors sm:px-3 sm:py-2.5 ${
                         isCurrent
-                          ? 'bg-[#171717] text-white shadow-sm'
-                          : 'hover:bg-[#f7f0e0] active:bg-[#ebdcc0] text-[#171717]'
+                          ? 'bg-[var(--mushaf-ink)] text-white shadow-sm'
+                          : 'hover:bg-[#f7f0e0] active:bg-[#ebdcc0] text-[var(--mushaf-ink)]'
                       }`}
                     >
                       <div className="flex items-center gap-2 sm:gap-3">
                         <span className={`flex size-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:size-8 sm:text-xs ${
-                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#f0e4cc] text-[#80662c]'
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#f0e4cc] text-[var(--mushaf-gold-ink)]'
                         }`}>
                           {surah.surahNumber}
                         </span>
@@ -4298,14 +4298,14 @@ export default function Mushaf1441Viewer({
                           <p className="text-sm font-black font-[family-name:var(--font-amiri-quran)] leading-tight sm:text-base">
                             سورة {surah.name}
                           </p>
-                          <p className={`text-[10px] font-bold sm:text-[11px] ${isCurrent ? 'text-white/80' : 'text-[#80662c]'}`}>
+                          <p className={`text-[11px] font-bold sm:text-[11px] ${isCurrent ? 'text-white/80' : 'text-[var(--mushaf-gold-ink)]'}`}>
                             {surah.ayahCount} آية
                           </p>
                         </div>
                       </div>
                       <div className="text-left">
                         <span className={`inline-block rounded px-1.5 py-0.5 text-[11px] font-bold tabular-nums sm:px-2 sm:text-xs ${
-                          isCurrent ? 'bg-white/20 text-white' : 'bg-[#fffaf0] border border-[#d7c7a7] text-[#80662c]'
+                          isCurrent ? 'bg-white/20 text-white' : 'bg-[var(--mushaf-cream-2)] border border-[var(--mushaf-rule)] text-[var(--mushaf-gold-ink)]'
                         }`}>
                           ص {surah.firstPage ?? '—'}
                         </span>
@@ -4385,17 +4385,17 @@ export default function Mushaf1441Viewer({
           className={`relative z-10 flex max-h-[92vh] w-full max-w-xl flex-col rounded-t-2xl border shadow-2xl transition-all sm:rounded-2xl ${
             isDark
               ? 'border-[#2d2f36] bg-[#18191d] text-[#f1f5f9]'
-              : 'border-[#d7c7a7] bg-[#fffdf8] text-[#1f2937]'
+              : 'border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] text-[#1f2937]'
           }`}
           style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
         >
           {/* Header */}
           <div className={`flex items-center justify-between border-b px-5 py-4 ${
-            isDark ? 'border-[#2d2f36] bg-[#1f2127]' : 'border-[#eadfc9] bg-[#faf4e6]'
+            isDark ? 'border-[#2d2f36] bg-[#1f2127]' : 'border-[var(--mushaf-rule-soft)] bg-[#faf4e6]'
           }`}>
             <div className="flex items-center gap-2.5">
               <span className={`flex size-9 items-center justify-center rounded-lg border text-base ${
-                isDark ? 'border-[#3b3d45] bg-[#18191d] text-[#c8a86b]' : 'border-[#d7c7a7] bg-white text-[#80662c]'
+                isDark ? 'border-[#3b3d45] bg-[#18191d] text-[var(--mushaf-gold-light)]' : 'border-[var(--mushaf-rule)] bg-white text-[var(--mushaf-gold-ink)]'
               }`}>
                 ⚙
               </span>
@@ -4403,7 +4403,7 @@ export default function Mushaf1441Viewer({
                 <h2 id="mushaf-settings-title" className="text-base font-black sm:text-lg">
                   مظهر المصحف وقراءة الصفحات
                 </h2>
-                <p className={`text-xs ${isDark ? 'text-[#9ca3af]' : 'text-[#80662c]'}`}>
+                <p className={`text-xs ${isDark ? 'text-[#9ca3af]' : 'text-[var(--mushaf-gold-ink)]'}`}>
                   اختر الطابع البصري الملائم لبيئة قراءتك
                 </p>
               </div>
@@ -4414,7 +4414,7 @@ export default function Mushaf1441Viewer({
               className={`size-9 rounded-lg border text-sm font-bold transition-colors ${
                 isDark
                   ? 'border-[#3b3d45] text-[#9ca3af] hover:bg-[#2d2f36] hover:text-white'
-                  : 'border-[#d7c7a7] text-[#59461d] hover:bg-[#f3ebd7]'
+                  : 'border-[var(--mushaf-rule)] text-[var(--mushaf-gold-deep)] hover:bg-[#f3ebd7]'
               }`}
               aria-label="إغلاق النافذة"
             >
@@ -4437,11 +4437,11 @@ export default function Mushaf1441Viewer({
                     className={`group relative flex w-full flex-col gap-3 rounded-xl border p-3.5 text-right transition-all sm:flex-row sm:items-center sm:p-4 ${
                       isSelected
                         ? isDark
-                          ? 'border-[#c8a86b] bg-[#22242a] shadow-[0_0_0_2px_#c8a86b]'
-                          : 'border-[#80662c] bg-[#fffaf0] shadow-[0_0_0_2px_#80662c]'
+                          ? 'border-[var(--mushaf-gold-light)] bg-[#22242a] shadow-[0_0_0_2px_#c8a86b]'
+                          : 'border-[var(--mushaf-gold-ink)] bg-[var(--mushaf-cream-2)] shadow-[0_0_0_2px_#80662c]'
                         : isDark
                           ? 'border-[#2d2f36] bg-[#1a1c22] hover:border-[#3b3d45] hover:bg-[#22242a]'
-                          : 'border-[#eadfc9] bg-white hover:border-[#d7c7a7] hover:bg-[#fcf8ed]'
+                          : 'border-[var(--mushaf-rule-soft)] bg-white hover:border-[var(--mushaf-rule)] hover:bg-[#fcf8ed]'
                     }`}
                   >
                     {/* Visual Preview Card */}
@@ -4454,17 +4454,17 @@ export default function Mushaf1441Viewer({
                       }}
                     >
                       <div className="flex items-center justify-between border-b pb-1" style={{ borderColor: theme.previewBorder }}>
-                        <span className="text-[9px] font-black" style={{ color: theme.previewAccent }}>
+                        <span className="text-[11px] font-black" style={{ color: theme.previewAccent }}>
                           سورة الفاتحة
                         </span>
-                        <span className="text-[9px] tabular-nums opacity-60">١</span>
+                        <span className="text-[11px] tabular-nums opacity-60">١</span>
                       </div>
                       <div className="my-auto text-center font-serif text-sm font-bold tracking-wide">
                         ﴿ بِسْمِ ٱللَّهِ ﴾
                       </div>
                       <div className="flex items-center justify-between pt-1" style={{ borderColor: theme.previewBorder }}>
                         <span className="h-1 w-6 rounded-full" style={{ backgroundColor: theme.previewAccent }} />
-                        <span className="text-[8px] opacity-70">١٤٤١ هـ</span>
+                        <span className="text-[11px] opacity-70">١٤٤١ هـ</span>
                       </div>
                     </div>
 
@@ -4474,8 +4474,8 @@ export default function Mushaf1441Viewer({
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-black sm:text-base">{theme.title}</span>
                           {isSelected ? (
-                            <span className={`rounded-full px-2 py-0.5 text-[10px] font-black ${
-                              isDark ? 'bg-[#c8a86b] text-[#18191d]' : 'bg-[#80662c] text-white'
+                            <span className={`rounded-full px-2 py-0.5 text-[11px] font-black ${
+                              isDark ? 'bg-[var(--mushaf-gold-light)] text-[#18191d]' : 'bg-[var(--mushaf-gold-ink)] text-white'
                             }`}>
                               المظهر النشط ✓
                             </span>
@@ -4486,8 +4486,8 @@ export default function Mushaf1441Viewer({
                           className={`flex size-5 shrink-0 items-center justify-center rounded-full border transition-colors ${
                             isSelected
                               ? isDark
-                                ? 'border-[#c8a86b] bg-[#c8a86b] text-[#18191d]'
-                                : 'border-[#80662c] bg-[#80662c] text-white'
+                                ? 'border-[var(--mushaf-gold-light)] bg-[var(--mushaf-gold-light)] text-[#18191d]'
+                                : 'border-[var(--mushaf-gold-ink)] bg-[var(--mushaf-gold-ink)] text-white'
                               : isDark
                                 ? 'border-[#4b5563] bg-transparent'
                                 : 'border-[#c2b291] bg-transparent'
@@ -4498,7 +4498,7 @@ export default function Mushaf1441Viewer({
                           ) : null}
                         </span>
                       </div>
-                      <p className={`mt-0.5 text-xs font-medium ${isDark ? 'text-[#c8a86b]' : 'text-[#80662c]'}`}>
+                      <p className={`mt-0.5 text-xs font-medium ${isDark ? 'text-[var(--mushaf-gold-light)]' : 'text-[var(--mushaf-gold-ink)]'}`}>
                         {theme.subtitle}
                       </p>
                       <p className={`mt-1 text-[11px] leading-relaxed ${isDark ? 'text-[#9ca3af]' : 'text-[#6b7280]'}`}>
@@ -4514,7 +4514,7 @@ export default function Mushaf1441Viewer({
             <div className={`mt-4 rounded-xl border p-3 text-xs leading-relaxed ${
               isDark
                 ? 'border-[#2d2f36] bg-[#1a1c22] text-[#9ca3af]'
-                : 'border-[#eadfc9] bg-[#fbf7ee] text-[#786438]'
+                : 'border-[var(--mushaf-rule-soft)] bg-[#fbf7ee] text-[#786438]'
             }`}>
               <div className="flex items-start gap-2">
                 <span className="text-sm">✦</span>
@@ -4527,15 +4527,15 @@ export default function Mushaf1441Viewer({
 
           {/* Footer */}
           <div className={`flex items-center justify-end gap-2 border-t px-5 py-3 ${
-            isDark ? 'border-[#2d2f36] bg-[#1f2127]' : 'border-[#eadfc9] bg-[#faf4e6]'
+            isDark ? 'border-[#2d2f36] bg-[#1f2127]' : 'border-[var(--mushaf-rule-soft)] bg-[#faf4e6]'
           }`}>
             <button
               type="button"
               onClick={() => setIsSettingsOpen(false)}
               className={`min-h-11 rounded-lg px-6 text-sm font-black transition-colors ${
                 isDark
-                  ? 'bg-[#c8a86b] text-[#18191d] hover:bg-[#dfbe7f]'
-                  : 'bg-[#80662c] text-white hover:bg-[#59461d]'
+                  ? 'bg-[var(--mushaf-gold-light)] text-[#18191d] hover:bg-[#dfbe7f]'
+                  : 'bg-[var(--mushaf-gold-ink)] text-white hover:bg-[var(--mushaf-gold-deep)]'
               }`}
             >
               تم الحفظ والتطبيق
@@ -4552,6 +4552,7 @@ export default function Mushaf1441Viewer({
       className={`flex h-[100dvh] flex-col overflow-hidden ${currentThemeTokens.viewerBgClass}`}
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
+      <h1 className="sr-only">المصحف الشريف — الصفحة {pageNumber}</h1>
       {/* Slim top bar — the main screen is the mushaf itself */}
       <header className={`flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2 ${currentThemeTokens.headerBgClass}`}>
         <div className="flex min-w-0 items-center gap-2">
@@ -4601,7 +4602,7 @@ export default function Mushaf1441Viewer({
             className={`flex shrink-0 flex-col items-center justify-center rounded-md border px-2.5 py-1 leading-none ${currentThemeTokens.headerPageFrameClass}`}
             title={`الصفحة ${pageNumber} من ${MUSHAF_1441_PAGE_COUNT}`}
           >
-            <span className={`text-[9px] font-bold ${currentThemeTokens.headerPageFrameLabelClass}`}>صفحة</span>
+            <span className={`text-[11px] font-bold ${currentThemeTokens.headerPageFrameLabelClass}`}>صفحة</span>
             <span className={`text-sm font-black tabular-nums ${currentThemeTokens.headerPageFrameNumClass}`} dir="ltr">{pageNumber}</span>
           </span>
         </div>
@@ -4674,11 +4675,11 @@ export default function Mushaf1441Viewer({
             title="عرض القراءات"
             className={`flex min-h-11 items-center justify-center gap-1 rounded-md border px-2 text-sm font-black transition-colors ${
               qiraatMode !== 'normal'
-                ? (mushafTheme === 'dark' ? 'border-[#c8a86b] bg-[#c8a86b] text-[#18191d]' : 'border-[#171717] bg-[#171717] text-white')
+                ? (mushafTheme === 'dark' ? 'border-[var(--mushaf-gold-light)] bg-[var(--mushaf-gold-light)] text-[#18191d]' : 'border-[var(--mushaf-ink)] bg-[var(--mushaf-ink)] text-white')
                 : currentThemeTokens.headerBtnClass
             }`}
           >
-            <span aria-hidden="true">ق</span><span className="hidden text-[10px] sm:inline">قراءات</span>
+            <span aria-hidden="true">ق</span><span className="hidden text-[11px] sm:inline">قراءات</span>
           </button>
         </div>
       </header>
@@ -4783,7 +4784,7 @@ export default function Mushaf1441Viewer({
         ) : (readerLayer === 'qiraat' ? null : renderHoverCard())}
         {isPageLoading ? (
           <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center">
-            <span className="rounded-full bg-[#171717]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
+            <span className="rounded-full bg-[var(--mushaf-ink)]/85 px-3 py-1 text-xs font-bold text-white">جاري التحميل…</span>
           </div>
         ) : null}
       </main>
@@ -4819,8 +4820,8 @@ export default function Mushaf1441Viewer({
                 style={{ left: `clamp(70px, ${leftPct}%, calc(100% - 70px))` }}
               >
                 <p className={`text-base font-black tabular-nums ${currentThemeTokens.sliderPreviewTextClass}`}>ص {sliderValue}</p>
-                <p className={`text-[10px] font-bold ${currentThemeTokens.sliderPreviewSubClass}`}>{previewName}</p>
-                <p className={`tabular-nums text-[10px] font-bold ${currentThemeTokens.sliderPreviewSubClass}`}>
+                <p className={`text-[11px] font-bold ${currentThemeTokens.sliderPreviewSubClass}`}>{previewName}</p>
+                <p className={`tabular-nums text-[11px] font-bold ${currentThemeTokens.sliderPreviewSubClass}`}>
                   الجزء {previewMeta?.juzNumber ?? '—'} · الحزب {previewMeta?.hizbNumber ?? '—'}
                 </p>
               </div>
@@ -4870,7 +4871,7 @@ export default function Mushaf1441Viewer({
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className={`text-[10px] font-bold uppercase tracking-[0.18em] ${currentThemeTokens.drawerHeaderSubClass}`}>Mushaf 1441</p>
+                <p className={`text-[11px] font-bold uppercase tracking-[0.18em] ${currentThemeTokens.drawerHeaderSubClass}`}>Mushaf 1441</p>
                 <h2 className={`text-lg font-black ${currentThemeTokens.drawerTitleClass}`}>القائمة</h2>
               </div>
               <div className="flex items-center gap-2">
@@ -4943,7 +4944,7 @@ export default function Mushaf1441Viewer({
                   <a
                     href={SIGN_IN_HREF}
                     className={`mt-2 block min-h-11 rounded-md px-4 py-3 text-center text-sm font-bold transition-colors ${
-                      mushafTheme === 'dark' ? 'bg-[#c8a86b] text-[#18191d] hover:bg-[#d6ba80]' : 'bg-[#171717] text-white hover:bg-[#3a3326]'
+                      mushafTheme === 'dark' ? 'bg-[var(--mushaf-gold-light)] text-[#18191d] hover:bg-[#d6ba80]' : 'bg-[var(--mushaf-ink)] text-white hover:bg-[var(--mushaf-ink-2)]'
                     }`}
                   >
                     تسجيل الدخول
@@ -5011,7 +5012,7 @@ export default function Mushaf1441Viewer({
 
       {toast ? (
         <div className="pointer-events-none fixed inset-x-0 bottom-24 z-50 flex justify-center px-4">
-          <span className="rounded-full bg-[#171717] px-4 py-2 text-xs font-bold text-white shadow-[0_8px_30px_rgba(0,0,0,0.3)]">{toast}</span>
+          <span className="rounded-full bg-[var(--mushaf-ink)] px-4 py-2 text-xs font-bold text-white shadow-[0_8px_30px_rgba(0,0,0,0.3)]">{toast}</span>
         </div>
       ) : null}
 
@@ -5032,12 +5033,12 @@ export default function Mushaf1441Viewer({
             role="dialog"
             aria-modal="true"
             aria-labelledby="qiraat-reference-title"
-            className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-t-2xl border-t border-[#d7c7a7] bg-[#fffdf8] p-4 shadow-[0_-18px_70px_rgba(23,23,23,0.22)] lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[440px] lg:max-h-none lg:rounded-none lg:border-l lg:border-t-0"
+            className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-t-2xl border-t border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] p-4 shadow-[0_-18px_70px_rgba(23,23,23,0.22)] lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[440px] lg:max-h-none lg:rounded-none lg:border-l lg:border-t-0"
             style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
           >
             <div className="mb-3 flex items-start justify-between gap-3">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#80662c]">مرجع</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--mushaf-gold-ink)]">مرجع</p>
                 <h2 id="qiraat-reference-title" className="text-lg font-black leading-snug">
                   القرّاء العشرة ورموز الشاطبية والدرة
                 </h2>
@@ -5045,7 +5046,7 @@ export default function Mushaf1441Viewer({
               <button
                 type="button"
                 onClick={() => setQiraatReferenceOpen(false)}
-                className="min-h-11 shrink-0 rounded-md border border-[#d7c7a7] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+                className="min-h-11 shrink-0 rounded-md border border-[var(--mushaf-rule)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
               >
                 إغلاق
               </button>
@@ -5068,17 +5069,17 @@ export default function Mushaf1441Viewer({
             className="fixed inset-0 bg-black/25 backdrop-blur-[1px] transition-opacity"
           />
           <div
-            className="relative z-10 mx-auto w-full max-w-lg cursor-pointer rounded-2xl border border-[#d7c7a7] bg-[#fffdf8]/98 p-3.5 shadow-[0_-12px_45px_rgba(23,23,23,0.22)] backdrop-blur-md"
+            className="relative z-10 mx-auto w-full max-w-lg cursor-pointer rounded-2xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)]/98 p-3.5 shadow-[0_-12px_45px_rgba(23,23,23,0.22)] backdrop-blur-md"
             style={{ paddingBottom: 'calc(0.875rem + env(safe-area-inset-bottom))' }}
             onClick={() => {
               setQiraatSelection(null)
               updateHoveredQiraatWord(null)
             }}
           >
-            <div className="mb-2.5 flex items-center justify-between gap-2 border-b border-[#eadfc9] pb-2">
+            <div className="mb-2.5 flex items-center justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-[#171717] px-2.5 py-0.5 text-[11px] font-black text-white">القراءات العشر</span>
-                <span className="text-xs font-bold text-[#80662c]">
+                <span className="rounded-full bg-[var(--mushaf-ink)] px-2.5 py-0.5 text-[11px] font-black text-white">القراءات العشر</span>
+                <span className="text-xs font-bold text-[var(--mushaf-gold-ink)]">
                   {surahNameByNumber.get(qiraatSelection.word.surahNumber) ?? ''} — آية {qiraatSelection.word.ayahNumber}
                 </span>
               </div>
@@ -5090,7 +5091,7 @@ export default function Mushaf1441Viewer({
                   setQiraatSelection(null)
                   updateHoveredQiraatWord(null)
                 }}
-                className="rounded-md border border-[#d7c7a7] bg-white px-2.5 py-1 text-xs font-bold text-[#80662c] shadow-sm transition-colors hover:bg-[#fff7df]"
+                className="rounded-md border border-[var(--mushaf-rule)] bg-white px-2.5 py-1 text-xs font-bold text-[var(--mushaf-gold-ink)] shadow-sm transition-colors hover:bg-[var(--mushaf-cream)]"
               >
                 مسح التحديد ✕
               </button>
@@ -5098,7 +5099,7 @@ export default function Mushaf1441Viewer({
             <div className="max-h-[48vh] overflow-y-auto pr-0.5">
               {renderQiraatSelection()}
             </div>
-            <p className="mt-2 text-center text-[10px] text-[#a8987a]">اضغط في أي مكان داخل البطاقة أو خارجها للإغلاق</p>
+            <p className="mt-2 text-center text-[11px] text-[#a8987a]">اضغط في أي مكان داخل البطاقة أو خارجها للإغلاق</p>
           </div>
         </div>
       ) : null}
@@ -5113,15 +5114,15 @@ export default function Mushaf1441Viewer({
             className="absolute inset-0 bg-black/30"
           />
           <section
-            className="absolute inset-x-0 bottom-0 max-h-[82vh] overflow-y-auto rounded-t-2xl border-t border-[#d7c7a7] bg-[#fffdf8] p-4 shadow-[0_-18px_70px_rgba(23,23,23,0.22)] lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[400px] lg:max-h-none lg:rounded-none lg:border-l lg:border-t-0"
+            className="absolute inset-x-0 bottom-0 max-h-[82vh] overflow-y-auto rounded-t-2xl border-t border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] p-4 shadow-[0_-18px_70px_rgba(23,23,23,0.22)] lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[400px] lg:max-h-none lg:rounded-none lg:border-l lg:border-t-0"
             style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
           >
             <div className="mb-3 flex items-center justify-between gap-3">
-              <div className="h-1.5 w-12 rounded-full bg-[#d7c7a7] lg:hidden" />
+              <div className="h-1.5 w-12 rounded-full bg-[var(--mushaf-rule)] lg:hidden" />
               <button
                 type="button"
                 onClick={() => setIsMobileNotesOpen(false)}
-                className="min-h-11 rounded-md border border-[#d7c7a7] px-3 text-xs font-bold text-[#59461d] transition-colors hover:bg-[#fff7df]"
+                className="min-h-11 rounded-md border border-[var(--mushaf-rule)] px-3 text-xs font-bold text-[var(--mushaf-gold-deep)] transition-colors hover:bg-[var(--mushaf-cream)]"
               >
                 إغلاق
               </button>
@@ -5129,7 +5130,7 @@ export default function Mushaf1441Viewer({
             {needsSignIn ? (
               <a
                 href={SIGN_IN_HREF}
-                className="mb-3 block min-h-11 rounded-md bg-[#171717] px-4 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-[#3a3326]"
+                className="mb-3 block min-h-11 rounded-md bg-[var(--mushaf-ink)] px-4 py-3 text-center text-sm font-bold text-white transition-colors hover:bg-[var(--mushaf-ink-2)]"
               >
                 سجّل الدخول لحفظ التمييز والملاحظات
               </a>

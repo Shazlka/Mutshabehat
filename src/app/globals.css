@@ -115,6 +115,22 @@
   --q10-khalaf-ashir: #475569;
   --q10-ishaq: #94A3B8;
   --q10-idris: #334155;
+
+  /* Mushaf reader / review palette (warm paper and gold). Values are the ones that were
+     hard-coded in class names; naming them keeps the screens consistent and themeable. */
+  --mushaf-ink: #171717;
+  --mushaf-gold-ink: #80662c;
+  --mushaf-gold-deep: #59461d;
+  --mushaf-brown: #665b48;
+  --mushaf-rule: #d7c7a7;
+  --mushaf-rule-soft: #eadfc9;
+  --mushaf-cream: #fff7df;
+  --mushaf-cream-2: #fffaf0;
+  --mushaf-cream-3: #fffdf8;
+  --mushaf-gold-light: #c8a86b;
+  --mushaf-ink-2: #3a3326;
+  --mushaf-gold: #b99b51;
+  --mushaf-muted: #8b7f6a;
 }
 
 :root {
@@ -149,7 +165,15 @@ html, body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* A spinner is a status indicator, not decoration: keep it moving (slowly) so «جارٍ الحفظ…»
+     still reads as in progress. */
+  .animate-spin {
+    animation-duration: 1.6s !important;
+    animation-iteration-count: infinite !important;
   }
 }
 
@@ -288,4 +312,14 @@ html, body {
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0;
   margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Touch comfort: on touch devices small controls grow to a 44px target where the layout allows.
+   The Mushaf words themselves are excluded (they are inline text on a paper page). */
+@media (pointer: coarse) {
+  .touch-target-sm { min-width: 44px; min-height: 44px; }
+  [data-mobile-mushaf-view] button:not([data-word-key]) { min-height: 44px; min-width: 44px; }
+  /* The editor is dense (20 narrators, variant chips): every control gets at least a 32px target
+     (WCAG 2.5.8 asks for 24px); primary actions are already 40px+. */
+  [data-mobile-review-editor] :is(button, select, input:not([type="checkbox"]):not([type="radio"])):not([data-word-key]) { min-height: 32px; }
 }

@@ -97,7 +97,7 @@ export default function FilterBar() {
         )}
         <kbd aria-hidden="true"
              className={cn(
-               'hidden md:inline-flex absolute left-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded text-[10px] font-mono pointer-events-none transition-opacity',
+               'hidden md:inline-flex absolute left-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded text-[11px] font-mono pointer-events-none transition-opacity',
                value || focused
                  ? 'opacity-0'
                  : 'opacity-100 text-[var(--color-ink-muted)] bg-[var(--color-surface-2)] border border-[var(--color-border-soft)]'

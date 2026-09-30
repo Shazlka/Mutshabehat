@@ -125,7 +125,7 @@ export default function UsulRuleGrid({
         <div className="flex-1 min-w-[200px]">
           <label className="flex items-center justify-between text-xs font-bold text-[var(--color-ink)]">
             <span>نص القراءة المقروء به:</span>
-            <span className="text-[10px] text-[var(--color-ink-muted)]">مع الضبط والشكل</span>
+            <span className="text-[11px] text-[var(--color-ink-muted)]">مع الضبط والشكل</span>
           </label>
           <input
             type="text"
@@ -141,15 +141,15 @@ export default function UsulRuleGrid({
         {selectedCategory && !showAllCategories ? (
           <div className="flex items-center justify-between gap-2 rounded-lg border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)]/20 px-2.5 py-1 text-xs h-[38px] shrink-0">
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] font-bold text-[var(--color-ink-muted)]">الباب:</span>
+              <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">الباب:</span>
               <span className="font-bold text-[var(--color-primary)]">{selectedNames}</span>
-              <span className="rounded bg-green-100 dark:bg-green-950/40 text-green-800 dark:text-green-300 px-1 text-[9px] font-bold">✓</span>
+              <span className="rounded bg-green-100 text-green-800 px-1 text-[11px] font-bold">✓</span>
             </div>
             <button
               type="button"
               onClick={() => setShowAllCategories(true)}
               disabled={disabled}
-              className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[10px] font-bold text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]"
+              className="rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.2 text-[11px] font-bold text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]"
             >
               تغيير ▾
             </button>
@@ -210,7 +210,7 @@ export default function UsulRuleGrid({
                   )}
                 >
                   <span>{category.nameAr}</span>
-                  {isSelected ? <span className="text-[10px]">✓</span> : null}
+                  {isSelected ? <span className="text-[11px]">✓</span> : null}
                 </button>
               )
             })}

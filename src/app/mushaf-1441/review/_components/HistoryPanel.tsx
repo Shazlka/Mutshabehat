@@ -96,9 +96,9 @@ export default function HistoryPanel({ page, deviceId, onClose, onUndone }: Prop
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="font-bold text-[var(--color-ink)]">{formatDateTime(transaction.at)}</span>
-                <span className="text-[10px] text-[var(--color-ink-muted)]">#{transaction.txid}</span>
+                <span className="text-[11px] text-[var(--color-ink-muted)]">#{transaction.txid}</span>
               </div>
-              <p className="mt-0.5 text-[10px] text-[var(--color-ink-muted)]">
+              <p className="mt-0.5 text-[11px] text-[var(--color-ink-muted)]">
                 جهاز {transaction.deviceId ?? '—'}
                 {transaction.entryId ? ` · سطر ${transaction.entryId}` : ''}
               </p>

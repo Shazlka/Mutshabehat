@@ -11,7 +11,7 @@ export function NarratorBadges({ items, className }: { items: NarratorDisplayIte
       {items.map((item) => (
         <span
           key={item.key}
-          className="inline-flex items-center rounded px-1 py-[1px] text-[9px] font-bold leading-tight text-white shadow-xs"
+          className="inline-flex items-center rounded px-1 py-[1px] text-[11px] font-bold leading-tight text-white shadow-xs"
           style={{ background: item.color }}
         >
           {item.label}

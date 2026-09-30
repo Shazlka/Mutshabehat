@@ -6,7 +6,7 @@ export default function NewGroupPage() {
   return (
     <div className="max-w-2xl mx-auto px-5 md:px-8 py-8 md:py-14">
       <header className="mb-10">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">
           New
         </p>
         <h1 className="text-[28px] md:text-[32px] font-bold tracking-tight leading-none">
