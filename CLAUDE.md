@@ -38,6 +38,10 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-09-30 — Mushaf Qiraat sidebar: toolbar on top, coloured reader/riwayah lists, explanatory note removed
+- **Owner request:** the mode/filter section should sit at the top of the sidebar; the قارئ and رواية dropdowns should be lists coloured by reader; drop the note under them.
+- **Change:** `QiraatToolbar.tsx` — the قارئ filter is a 2-column list of the ten readers (each in its own reader colour); the رواية filter and the «القراءة برواية» mode show the twenty riwayat grouped under their reader (reader colour on the group, narrator colour on the selected chip, names wrap instead of truncating). The mode-dependent explanatory paragraph is removed. `Mushaf1441Viewer.tsx` — desktop sidebar order is now toolbar → hover peek → selection card (+ page rules). The mobile menu shares the same toolbar. **DB migration:** none.
+
 ## 2026-09-30 — Fix: sidebar group-count badge flashed "0" while the shell streamed in
 - **Cause:** the streaming app shell (2026-09-29) renders `Sidebar`/`MobileTopbar` with a placeholder count before the real one arrives.
 - **Fix:** `groupCount` is now `number | null`; the fallback passes `null` and the badge renders `invisible` (keeps its width, so nothing jumps). Files: `src/app/(app)/layout.tsx`, `src/components/Sidebar.tsx`, `src/components/MobileTopbar.tsx`. **DB migration:** none.

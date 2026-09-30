@@ -1,7 +1,7 @@
 'use client'
 
 import { QIRAAT_READERS } from '../../../../../packages/qiraat-core/readers'
-import { readingsOfReader, getReading } from '../../../../../packages/qiraat-core/readings'
+import { QIRAAT_NARRATORS } from '../../../../../packages/qiraat-core/narrators'
 import { BASE_READING, type ReaderId, type ReadingId } from '../../../../../packages/qiraat-core/types'
 import type { QiraatComparisonFilter, QiraatMode } from './types'
 
@@ -21,6 +21,76 @@ const MODE_OPTIONS: { id: QiraatMode; label: string }[] = [
   { id: 'comparison', label: 'مقارنة القراءات' },
   { id: 'riwayah', label: 'القراءة برواية' },
 ]
+
+const tint = (color: string) => `color-mix(in srgb, ${color} 14%, white)`
+
+/** The ten readers as a coloured list; the colour is the reader's own (same as the page underline). */
+function ReaderList({ value, onChange }: { value: ReaderId; onChange: (id: ReaderId) => void }) {
+  return (
+    <div role="radiogroup" aria-label="القارئ" className="grid grid-cols-2 gap-1">
+      {QIRAAT_READERS.map((reader) => {
+        const active = reader.id === value
+        return (
+          <button
+            key={reader.id}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={() => onChange(reader.id)}
+            className="flex min-h-8 items-center gap-1.5 rounded-md border px-2 text-right text-[11px] font-bold transition-colors"
+            style={{
+              borderColor: active ? reader.color : '#e3d6b4',
+              background: active ? tint(reader.color) : 'transparent',
+              color: reader.color,
+            }}
+          >
+            <span aria-hidden="true" className="size-2 shrink-0 rounded-full" style={{ background: reader.color }} />
+            <span className="truncate">{reader.nameArShort}</span>
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+/** The twenty riwayat grouped under their reader, each coloured like its marker on the page. */
+function RiwayahList({ value, onChange }: { value: ReadingId; onChange: (id: ReadingId) => void }) {
+  return (
+    <div role="radiogroup" aria-label="الرواية" className="space-y-1">
+      {QIRAAT_READERS.map((reader) => (
+        <div key={reader.id} className="flex items-center gap-1.5">
+          <span className="flex w-[74px] shrink-0 items-center gap-1 text-[10px] font-black" style={{ color: reader.color }}>
+            <span aria-hidden="true" className="size-2 shrink-0 rounded-full" style={{ background: reader.color }} />
+            <span className="truncate">{reader.nameArShort}</span>
+          </span>
+          <div className="grid min-w-0 flex-1 grid-cols-2 gap-1">
+            {QIRAAT_NARRATORS.filter((narrator) => narrator.readerId === reader.id).map((narrator) => {
+              const active = narrator.id === value
+              return (
+                <button
+                  key={narrator.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => onChange(narrator.id)}
+                  className="min-h-8 rounded-md border px-1.5 py-1 text-[11px] font-bold leading-tight transition-colors"
+                  style={{
+                    borderColor: active ? narrator.color : '#e3d6b4',
+                    background: active ? tint(narrator.color) : 'transparent',
+                    color: reader.color,
+                  }}
+                  title={narrator.nameAr}
+                >
+                  {narrator.nameAr}{narrator.id === BASE_READING ? ' ✓' : ''}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function QiraatToolbar({
   mode, onModeChange,
@@ -47,22 +117,7 @@ export default function QiraatToolbar({
 
       {mode === 'riwayah' ? (
         <div className="space-y-2 rounded-md border border-[#d7c7a7] bg-white p-2">
-          <label className="block text-[11px] font-bold text-[#80662c]">الرواية</label>
-          <select
-            value={selectedReadingId}
-            onChange={(event) => onReadingChange(event.target.value as ReadingId)}
-            className="w-full rounded-md border border-[#d7c7a7] bg-white px-2 py-2 text-sm"
-          >
-            {QIRAAT_READERS.map((reader) => (
-              <optgroup key={reader.id} label={reader.nameAr}>
-                {readingsOfReader(reader.id).map((reading) => (
-                  <option key={reading.id} value={reading.id}>
-                    {reading.displayNameAr}{reading.isBaseline ? ' (الأساس)' : ''}
-                  </option>
-                ))}
-              </optgroup>
-            ))}
-          </select>
+          <RiwayahList value={selectedReadingId} onChange={onReadingChange} />
           <label className="flex items-center justify-between gap-3 pt-1 text-[11px] text-[#3a3326]">
             <span>إظهار الاختلاف عن حفص</span>
             <input
@@ -97,39 +152,13 @@ export default function QiraatToolbar({
             ))}
           </div>
           {filter.kind === 'reader' ? (
-            <select
-              value={filter.readerId}
-              onChange={(event) => onFilterChange({ kind: 'reader', readerId: event.target.value as ReaderId })}
-              className="w-full rounded-md border border-[#d7c7a7] bg-white px-2 py-2 text-sm"
-            >
-              {QIRAAT_READERS.map((reader) => (
-                <option key={reader.id} value={reader.id}>{reader.nameAr}</option>
-              ))}
-            </select>
+            <ReaderList value={filter.readerId} onChange={(readerId) => onFilterChange({ kind: 'reader', readerId })} />
           ) : null}
           {filter.kind === 'reading' ? (
-            <select
-              value={filter.readingId}
-              onChange={(event) => onFilterChange({ kind: 'reading', readingId: event.target.value as ReadingId })}
-              className="w-full rounded-md border border-[#d7c7a7] bg-white px-2 py-2 text-sm"
-            >
-              {QIRAAT_READERS.map((reader) => (
-                <optgroup key={reader.id} label={reader.nameAr}>
-                  {readingsOfReader(reader.id).map((reading) => (
-                    <option key={reading.id} value={reading.id}>{reading.displayNameAr}</option>
-                  ))}
-                </optgroup>
-              ))}
-            </select>
+            <RiwayahList value={filter.readingId} onChange={(readingId) => onFilterChange({ kind: 'reading', readingId })} />
           ) : null}
         </div>
       ) : null}
-
-      <p className="text-[11px] leading-6 text-[#665b48]">
-        {mode === 'normal' && 'وضع المصحف العادي: النص برواية حفص عن عاصم بلا أي رموز قراءات.'}
-        {mode === 'comparison' && 'مقارنة القراءات: النص المعروض هو حفص، وتظهر خطوط ملوّنة أسفل الكلمات التي لها قراءات مختلفة. اضغط على الكلمة لعرض التفاصيل.'}
-        {mode === 'riwayah' && `القراءة الحالية: ${getReading(selectedReadingId).displayNameAr}.`}
-      </p>
     </div>
   )
 }
