@@ -24,9 +24,9 @@ $(GEN)/mushaf.sqlite: $(REPO)/scripts/ios/build_mushaf_db.py $(FIXTURES)/page-me
 fonts:
 	$(REPO)/scripts/ios/fetch_qcf_fonts.sh $(GEN)/Fonts
 
-project: Mutshabehat.xcodeproj
-
-Mutshabehat.xcodeproj: project.yml
+# Always regenerate: XcodeGen lists source files explicitly, so a new .swift file needs a new
+# project even when project.yml is unchanged. Generation takes under a second.
+project:
 	xcodegen generate --quiet
 
 data-test:
@@ -49,7 +49,6 @@ test-ipad: all
 
 run: build
 	xcrun simctl boot "$(SIM)" 2>/dev/null || true
-	open -a Simulator
 	xcrun simctl install "$(SIM)" $(APP)
 	xcrun simctl launch "$(SIM)" com.shazlka.qiraat
 

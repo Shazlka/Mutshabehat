@@ -1,0 +1,66 @@
+name: Mutshabehat
+options:
+  bundleIdPrefix: com.shazlka
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    CODE_SIGN_STYLE: Automatic
+packages:
+  MushafCore:
+    path: MushafCore
+targets:
+  Mutshabehat:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: Generated/mushaf.sqlite
+        buildPhase: resources
+      - path: Generated/Fonts
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - package: MushafCore
+    preBuildScripts:
+      - name: Check generated Mushaf data
+        basedOnDependencyAnalysis: false
+        script: |
+          GEN="$SRCROOT/Generated"
+          test -s "$GEN/mushaf.sqlite" || { echo "error: $GEN/mushaf.sqlite missing — run: make -C apps/ios data"; exit 1; }
+          count=$(find "$GEN/Fonts" -name 'p*.woff2' -size +0 2>/dev/null | wc -l | tr -d ' ')
+          test "$count" = "604" || { echo "error: $count/604 QCF fonts — run: make -C apps/ios fonts"; exit 1; }
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleDisplayName: Qiraat
+        CFBundleDevelopmentRegion: ar
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown,
+           UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+  MutshabehatUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [UITests]
+    dependencies:
+      - target: Mutshabehat
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.uitests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  Mutshabehat:
+    build:
+      targets:
+        Mutshabehat: all
+    test:
+      targets: [MutshabehatUITests]
