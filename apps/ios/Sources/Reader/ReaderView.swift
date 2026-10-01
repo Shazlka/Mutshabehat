@@ -52,6 +52,16 @@ struct ReaderView: View {
                     if !editing { page = Int(sliderPage) }
                 }
                 .accessibilityIdentifier("page-slider")
+                .accessibilityLabel("الصفحة")
+                .accessibilityValue(Text(verbatim: String(Int(sliderPage))))
+                .accessibilityAdjustableAction { direction in
+                    switch direction {
+                    case .increment: page = clampPage(page + 1)
+                    case .decrement: page = clampPage(page - 1)
+                    @unknown default: return
+                    }
+                    sliderPage = Double(page)
+                }
                 HStack {
                     Button { showingIndex = true } label: { Label("الفهرس", systemImage: "list.bullet") }
                         .accessibilityIdentifier("open-index")

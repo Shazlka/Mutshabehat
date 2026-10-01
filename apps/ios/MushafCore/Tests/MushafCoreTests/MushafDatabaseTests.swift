@@ -1,7 +1,52 @@
+import Foundation
+import SQLite3
 import Testing
 @testable import MushafCore
 
 @Suite struct MushafDatabaseTests {
+    // Run with Guard Malloc to make a second close of the freed handle fail reliably.
+    @Test func failedOpenThrowsWithoutClosingTheHandleTwice() throws {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString)
+            .appendingPathComponent("missing.sqlite")
+        #expect(throws: (any Error).self) {
+            do {
+                _ = try MushafDatabase(url: url)
+            } catch let error as MushafDatabaseError {
+                guard case .openFailed(let message) = error else {
+                    Issue.record("Expected openFailed, got \(error)")
+                    throw error
+                }
+                #expect(!message.isEmpty)
+                throw error
+            }
+        }
+    }
+
+    @Test func malformedFirstAyahKeyThrows() throws {
+        try withTemporaryDatabase(pageRow: "(1, 'invalid', '1:7', 'test', 1, 1, 1)") { db in
+            #expect(throws: MushafDatabaseError.queryFailed("Invalid first ayah key 'invalid' on page 1")) {
+                try db.page(1)
+            }
+        }
+    }
+
+    @Test func malformedLastAyahKeyThrows() throws {
+        try withTemporaryDatabase(pageRow: "(1, '1:1', '2:0', 'test', 1, 1, 1)") { db in
+            #expect(throws: MushafDatabaseError.queryFailed("Invalid last ayah key '2:0' on page 1")) {
+                try db.page(1)
+            }
+        }
+    }
+
+    @Test func missingPageRowThrows() throws {
+        try withTemporaryDatabase { db in
+            #expect(throws: MushafDatabaseError.queryFailed("Missing metadata for page 1")) {
+                try db.page(1)
+            }
+        }
+    }
+
     @Test func everyPageHasFifteenLineSlotsAndTheTokenTotalMatchesTheManifest() throws {
         let db = try openDatabase()
         var tokens = 0
@@ -64,4 +109,33 @@ import Testing
         #expect(AyahKey("2:0") == nil)
         #expect(AyahKey("hello") == nil)
     }
+}
+
+private func withTemporaryDatabase(
+    pageRow: String? = nil, _ body: (MushafDatabase) throws -> Void
+) throws {
+    let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+    try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+    defer { try? FileManager.default.removeItem(at: directory) }
+    let url = directory.appendingPathComponent("mushaf.sqlite")
+    var handle: OpaquePointer?
+    do {
+        defer { sqlite3_close(handle) }
+        try #require(sqlite3_open(url.path, &handle) == SQLITE_OK)
+        let schema = """
+            CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
+            INSERT INTO meta VALUES ('schema_version', '1');
+            CREATE TABLE pages (number INTEGER PRIMARY KEY, first_ayah_key TEXT, last_ayah_key TEXT,
+                                surah_names TEXT, juz INTEGER, hizb INTEGER, rub_in_juz INTEGER);
+            CREATE TABLE decorations (page INTEGER, line INTEGER, surah_header INTEGER, basmala INTEGER);
+            CREATE TABLE words (id TEXT, page INTEGER, line INTEGER, index_in_line INTEGER,
+                                surah INTEGER, ayah INTEGER, index_in_ayah INTEGER,
+                                char_type TEXT, glyph TEXT, text_uthmani TEXT);
+            """
+        try #require(sqlite3_exec(handle, schema, nil, nil, nil) == SQLITE_OK)
+        if let pageRow {
+            try #require(sqlite3_exec(handle, "INSERT INTO pages VALUES \(pageRow)", nil, nil, nil) == SQLITE_OK)
+        }
+    }
+    try body(MushafDatabase(url: url))
 }
