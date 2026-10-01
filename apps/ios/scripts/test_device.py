@@ -25,11 +25,23 @@ class ChooseTeamTest(unittest.TestCase):
             {"teamID": "ABCDE12345", "teamName": "Amr (Personal Team)", "isFreeProvisioningTeam": True}]}}
         self.assertEqual(device.choose_team(prefs), "ABCDE12345")
 
-    def test_reads_the_older_key_and_prefers_a_paid_team(self):
-        prefs = {"IDEProvisioningTeams": {"someone": [
-            {"teamID": "FREE000001", "teamType": "Individual", "isFreeProvisioningTeam": True},
-            {"teamID": "PAID000002", "teamType": "Individual", "isFreeProvisioningTeam": False}]}}
-        self.assertEqual(device.choose_team(prefs), "PAID000002")
+    def test_reads_the_older_key(self):
+        prefs = {"IDEProvisioningTeams": {"someone": [{"teamID": "FREE000001", "teamType": "Individual"}]}}
+        self.assertEqual(device.choose_team(prefs), "FREE000001")
+
+    def test_several_teams_are_never_guessed_between(self):
+        # A personal team and an employer's paid team: picking either silently could sign with the wrong one.
+        prefs = {"IDEProvisioningTeamByIdentifier": {
+            "me": [{"teamID": "MINE000001", "isFreeProvisioningTeam": True}],
+            "work": [{"teamID": "WORK000002", "isFreeProvisioningTeam": False}]}}
+        with self.assertRaises(device.Ambiguous) as caught:
+            device.choose_team(prefs)
+        self.assertEqual(caught.exception.choices, ["MINE000001", "WORK000002"])
+
+    def test_the_same_team_under_two_keys_is_one_team(self):
+        team = {"teamID": "MINE000001"}
+        self.assertEqual(device.choose_team({"IDEProvisioningTeamByIdentifier": {"a": [team]},
+                                             "IDEProvisioningTeams": {"b": [team]}}), "MINE000001")
 
 
 class ChooseDeviceTest(unittest.TestCase):
@@ -48,6 +60,17 @@ class ChooseDeviceTest(unittest.TestCase):
     def test_an_unpaired_iphone_or_none_at_all_is_not_used(self):
         self.assertIsNone(device.choose_device({"result": {"devices": [phone("X", pairing="unpaired")]}}))
         self.assertIsNone(device.choose_device({"result": {"devices": []}}))
+
+    def test_an_ipad_is_not_chosen_without_being_named(self):
+        listing = {"result": {"devices": [phone("PAD-1", name="iPad", kind="iPad"), phone("PH-1", name="iPhone")]}}
+        self.assertEqual(device.choose_device(listing)["udid"], "PH-1")
+        self.assertEqual(device.choose_device(listing, wanted="iPad")["udid"], "PAD-1")
+
+    def test_two_connected_iphones_are_never_guessed_between(self):
+        listing = {"result": {"devices": [phone("A1", name="Work iPhone"), phone("B2", name="Amr's iPhone")]}}
+        with self.assertRaises(device.Ambiguous) as caught:
+            device.choose_device(listing)
+        self.assertEqual(caught.exception.choices, ["Work iPhone", "Amr's iPhone"])
 
     def test_a_name_or_udid_picks_that_device(self):
         listing = {"result": {"devices": [phone("A1", name="Work iPhone"), phone("B2", name="Amr's iPhone")]}}
