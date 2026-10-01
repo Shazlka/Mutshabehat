@@ -79,7 +79,22 @@ connects the iPhone, trusts the Mac, and turns on Settings → Privacy & Securit
 `make device` then finds the personal team, writes it to the gitignored `Signing.xcconfig`, builds with
 automatic signing and installs. A free personal team's install expires after 7 days; re-run `make device`.
 
-## 7. User decisions
+## 7. Delegating to Codex
+
+Codex CLI is installed and signed in with a ChatGPT account. Its configured default model
+(`gpt-6-sol`) is refused on that account, so pass `-m gpt-6-astra`. Give each task its own worktree
+branched from `ios/main`, a brief with exact files and tests, `-s workspace-write`, and "do not commit".
+Then review the diff, run the tests yourself, commit, and merge:
+
+```bash
+git worktree add -b ios/<task> ~/Projects/qiraat-ios-codex-<task> ios/main
+codex exec -m gpt-6-astra -s workspace-write -C ~/Projects/qiraat-ios-codex-<task> - < brief.txt
+```
+
+`codex exec review --base` does not accept custom instructions. For a focused review, run
+`codex exec -s read-only` with a prompt that diffs the branch itself.
+
+## 8. User decisions
 
 - App name **Qiraat**; internal target/scheme names stay `Mutshabehat`.
 - القراءات العشر is the app's main goal (2026-10-01). The متشابهات layer (needs an account) comes later.

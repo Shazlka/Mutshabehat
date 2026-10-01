@@ -4,6 +4,34 @@
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
 ## 2026-10-01
+- **Feature — القراءات العشر in the iOS reader, from the web app's live data:** `scripts/fetch_qiraat.py` (`make qiraat`) snapshots the web API `GET /api/mushaf-1441/qiraat?page=N` for all 604 pages. That API reads the database first and falls back to its fixtures, so the app gets exactly what the web shows: 3,819 variants, 12,391 أصول rulings and 8 page rules on 2026-10-01. They go to `Generated/Qiraat/` (13 MB, gitignored, bundled), with a `catalog.json` whose readers, narrators and fixed colours are parsed from `packages/qiraat-core`. The web proxy's auto-login cookie stays in memory and never reaches disk or logs. `make qiraat-offline` builds the same snapshot from the repo fixtures instead. `MushafCore` decodes a page and ports the web's marker rules (`qiraatWordMarker.ts`, `attribution.ts`):
+  - reader or narrator colour (a reader takes his own colour when both his narrators read the word);
+  - one equal segment per reader when several readers share a variant;
+  - the performance-only colour;
+  - a neutral grey when no reading id is known;
+  - أصول family colours, with a dot at the top-left when a word has more than one family;
+  - a dotted underline for ذو وجهين;
+  - a filled or ring dot for إمالة or تقليل;
+  - rulings that cross an ayah end, such as page 1's إدغام كبير ﴿ٱلرَّحِيمِ ۝ مَـٰلِكِ﴾, mark both words.
+  
+  In the reader, 16,045 words take these marks. A «ق» button toggles the layer, and a filter narrows it to all readers, one reader, or one narrator. Both choices are kept per device under the web's keys `mushaf1441:reader-layer:v1` and `mushaf1441:qiraat-filter:v1`; a new install starts with Qiraat on. A tap on a marked word opens a card like the web's: the word in its own page font; one card per variant with who reads it; and one card per ruling, grouped by action, with وجه numbers, conditions, «ذو وجهين» and «تحتاج مراجعة يدوية».
+  
+  Marked words are accessibility elements (`qiraat-word-<surah>:<ayah>:<token>`). Their tap waits on nothing else, but the page curl's tap waits for it: the first build let the curl claim the tap and turn the page back, which the simulator showed and a recognizer that begins only on marked words fixed. The build refuses an incomplete snapshot.
+  
+  `make device` builds, installs and launches on the user's iPhone once their Apple ID is in Xcode. It reads the team Xcode has and the paired iPhone, writes the gitignored `Signing.xcconfig` (optionally included by `Base.xcconfig`), and never guesses between several teams or several iPhones: a Codex review caught both cases.
+  
+  Codex also wrote `fetch_qiraat.py` with its 19 tests, and the Phase 1 deferred fixes:
+  - `MushafDatabase` throws instead of force-unwrapping a malformed page and closes a failed handle once;
+  - the index marks the current surah and juz and shows Western digits on every locale;
+  - VoiceOver can move the page slider.
+  
+  Verification:
+  - 8 + 19 + 12 script tests;
+  - 65 `MushafCore` tests, including every snapshot page decoding and marking against the real page database;
+  - UI tests: 12 passed and 2 iPad-only skipped on the iPhone 18 Pro Max, and 14/14 on the iPad Pro 13-inch.
+  
+  The paging tests now run with the layer off, because a tap on a marked word opens its card.
+
 - **Change — the iOS app is now a separate, isolated app on its own branch and folder:** the long-lived branch `ios/main` lives in its own worktree, `~/Projects/qiraat-ios`; the web folder `~/Projects/mutshabehat-v2` is back on `main`. `ios/main` is never merged into `main`; data flows one way, from the web app and its database into the app. Everything iOS moved under `apps/ios`: the generator scripts (`scripts/ios` → `apps/ios/scripts`), the Phase 1 plan (`apps/ios/docs/plans/`), and the docs that had been added to the root `CHANGELOG.md`, `CLAUDE.md`, `HANDOFF.md` and `PROJECT_MASTER.md`. Those root files are restored to the web app's own versions; the iOS rules are now in `apps/ios/AGENTS.md`, with `apps/ios/CLAUDE.md` pointing to it, and this changelog. `.vercelignore` was removed, because it was the only root file the branch still added. New `scripts/check_isolation.sh` (`make check-isolation`, part of `make test`) fails if the branch differs from `origin/main` outside `apps/ios`.
 
 ## 2026-09-30

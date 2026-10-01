@@ -19,20 +19,31 @@ DERIVED = os.path.join(APP_DIR, "DerivedData")
 APP = os.path.join(DERIVED, "Build/Products/Debug-iphoneos/Mutshabehat.app")
 
 
+class Ambiguous(Exception):
+    """More than one team or device fits; the person must name one (TEAM=… / DEVICE=…)."""
+
+    def __init__(self, choices):
+        super().__init__(", ".join(choices))
+        self.choices = choices
+
+
 def choose_team(prefs):
-    """The team Xcode has for the signed-in account; a paid team over a free personal one."""
+    """The one team Xcode has for the signed-in Apple ID. Several teams are never guessed between:
+    signing with an employer's team instead of one's own (or the reverse) is not a safe default."""
     teams = []
     for key in ("IDEProvisioningTeamByIdentifier", "IDEProvisioningTeams"):
         for account_teams in (prefs.get(key) or {}).values():
-            teams += [t for t in account_teams if isinstance(t, dict) and t.get("teamID")]
-    if not teams:
-        return None
-    teams.sort(key=lambda t: bool(t.get("isFreeProvisioningTeam")))
-    return teams[0]["teamID"]
+            for t in account_teams:
+                if isinstance(t, dict) and t.get("teamID") and t["teamID"] not in teams:
+                    teams.append(t["teamID"])
+    if len(teams) > 1:
+        raise Ambiguous(teams)
+    return teams[0] if teams else None
 
 
 def choose_device(listing, wanted=None):
-    """A physical, paired iOS device from `devicectl list devices` JSON; connected ones first."""
+    """The paired physical iPhone from `devicectl list devices` JSON (any iOS device when `wanted`
+    names it). A connected one wins over an asleep one; two equally good ones are never guessed between."""
     found = []
     for d in listing.get("result", {}).get("devices", []):
         hw, conn, props = d.get("hardwareProperties", {}), d.get("connectionProperties", {}), d.get("deviceProperties", {})
@@ -40,11 +51,17 @@ def choose_device(listing, wanted=None):
             continue
         entry = {"udid": hw.get("udid"), "identifier": d.get("identifier"), "name": props.get("name", ""),
                  "connected": conn.get("tunnelState") == "connected"}
-        if wanted and wanted not in (entry["udid"], entry["identifier"], entry["name"]):
+        if wanted:
+            if wanted not in (entry["udid"], entry["identifier"], entry["name"]):
+                continue
+        elif hw.get("deviceType") != "iPhone":
             continue
         found.append(entry)
-    found.sort(key=lambda e: not e["connected"])
-    return found[0] if found else None
+    connected = [e for e in found if e["connected"]]
+    pool = connected or found
+    if len(pool) > 1:
+        raise Ambiguous([e["name"] for e in pool])
+    return pool[0] if pool else None
 
 
 def write_signing(path, team):
@@ -74,7 +91,10 @@ def run(*args):
 def main():
     prefs = plistlib.loads(subprocess.run(["defaults", "export", "com.apple.dt.Xcode", "-"],
                                           capture_output=True, check=True).stdout)
-    team = os.environ.get("TEAM") or choose_team(prefs)
+    try:
+        team = os.environ.get("TEAM") or choose_team(prefs)
+    except Ambiguous as several:
+        fail(f"Xcode has several signing teams ({several}). Run: make device TEAM=<one of them>")
     if not team:
         fail("Xcode has no Apple ID. Open Xcode → Settings → Accounts, add your Apple ID, then run make device again.")
 
@@ -82,7 +102,10 @@ def main():
         subprocess.run(["xcrun", "devicectl", "list", "devices", "--json-output", out.name],
                        capture_output=True, check=True)
         listing = json.load(open(out.name))
-    target = choose_device(listing, os.environ.get("DEVICE"))
+    try:
+        target = choose_device(listing, os.environ.get("DEVICE"))
+    except Ambiguous as several:
+        fail(f"Several devices are paired ({several}). Run: make device DEVICE=\"<name>\"")
     if not target:
         fail("No paired iPhone found. Connect it with a cable, unlock it, tap Trust, and turn on "
              "Settings → Privacy & Security → Developer Mode; then run make device again.")
