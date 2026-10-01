@@ -15,6 +15,9 @@ targets:
   Mutshabehat:
     type: application
     platform: iOS
+    configFiles:
+      Debug: Base.xcconfig
+      Release: Base.xcconfig
     sources:
       - path: Sources
       - path: Generated/mushaf.sqlite

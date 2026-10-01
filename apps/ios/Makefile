@@ -12,7 +12,7 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline project data-test core-test perf build test test-ipad run open clean check-isolation
+.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline project data-test core-test perf build test test-ipad run open device clean check-isolation
 
 all: data fonts qiraat project
 
@@ -45,6 +45,7 @@ data-test:
 	python3 scripts/test_build_mushaf_db.py -v
 	python3 scripts/test_fetch_qcf_fonts.py -v
 	python3 scripts/test_fetch_qiraat.py -v
+	python3 scripts/test_device.py -v
 
 core-test: data fonts qiraat
 	swift test --package-path MushafCore
@@ -65,6 +66,10 @@ run: build
 	xcrun simctl boot "$(SIM)" 2>/dev/null || true
 	xcrun simctl install "$(SIM)" $(APP)
 	xcrun simctl launch "$(SIM)" com.shazlka.qiraat
+
+# On the person's iPhone: needs their Apple ID in Xcode → Settings → Accounts (see AGENTS.md §6).
+device: all
+	python3 scripts/device.py
 
 open: all
 	open Mutshabehat.xcodeproj

@@ -1,0 +1,2 @@
+// Shared build settings. Signing.xcconfig is written by scripts/device.py (make device) and never committed.
+#include? "Signing.xcconfig"
