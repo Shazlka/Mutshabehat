@@ -238,3 +238,21 @@ private func marks(_ variants: [QiraatVariant] = [], _ rulings: [QiraatRuling] =
         #expect(r.attributionByAction[0].entries.map(\.authorityId) == ["Q06-R01", "Q06-R02"])
     }
 }
+
+@Suite struct QiraatSettingsTests {
+    @Test func filterRoundTripsThroughItsStoredValue() {
+        for filter in [QiraatFilter.all, .reader("Q06"), .reading("Q03-R01")] {
+            #expect(QiraatFilter(storageValue: filter.storageValue) == filter)
+        }
+        #expect(QiraatFilter.reading("Q03-R01").storageValue == "reading:Q03-R01")
+        #expect(QiraatFilter(storageValue: "reader:") == nil)
+        #expect(QiraatFilter(storageValue: "nonsense") == nil)
+    }
+
+    @Test func differenceTypesUseTheWebsArabicLabels() {
+        #expect(differenceTypeLabelAr("HARAKAH") == "تشكيل")
+        #expect(differenceTypeLabelAr("ORTHOGRAPHY") == "رسم")
+        #expect(differenceTypeLabelAr(nil) == "أخرى")
+        #expect(differenceTypeLabelAr("SOMETHING_NEW") == "أخرى")
+    }
+}

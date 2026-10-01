@@ -12,10 +12,17 @@ extension UIColor {
 
 /// Draws one Mushaf page with CoreText from a `PageLayout`: one draw pass per page, no view per word,
 /// so a page turn stays cheap. Words are positioned by `PageLayout` (right to left), never by CoreText.
+/// With the Qiraat layer on, marked words take their colours and marks (see `WordMarks`) and each one
+/// is also an accessibility element ("qiraat-word-<surah>:<ayah>:<token>").
 final class MushafPageView: UIView {
     let page: MushafPage
     private let library: MushafLibrary
     private(set) var layout: PageLayout?
+    /// The Qiraat layer as the reader set it; marks are recomputed only when this or the layout changes.
+    var qiraat: QiraatDisplay = .off {
+        didSet { if qiraat != oldValue { refreshQiraatMarks() } }
+    }
+    private(set) var marks: [String: WordMarks] = [:]
 
     init(page: MushafPage, library: MushafLibrary) {
         self.page = page
@@ -23,25 +30,68 @@ final class MushafPageView: UIView {
         super.init(frame: .zero)
         backgroundColor = .mushafPaper
         contentMode = .redraw
-        isAccessibilityElement = true
-        accessibilityLabel = "صفحة \(page.number)"
-        accessibilityIdentifier = "mushaf-page-\(page.number)"
+        isAccessibilityElement = false
         layer.shadowColor = UIColor(red: 0.25, green: 0.19, blue: 0.08, alpha: 1).cgColor
         layer.shadowOpacity = 0.12
         layer.shadowRadius = 12
         layer.shadowOffset = CGSize(width: 0, height: 6)
+        updateAccessibilityElements()
     }
 
     required init?(coder: NSCoder) { fatalError("not used") }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    private func layoutPage() {
         guard bounds.width > 0, layout?.pageSize != bounds.size else { return }
         let fonts = library.fonts, number = page.number
         layout = PageLayout(page: page, pageSize: bounds.size, surahAyahCounts: library.surahAyahCounts) { word, size in
             (try? fonts.advance(of: word.glyph, page: number, size: size)) ?? 0
         }
+        refreshQiraatMarks()
+    }
+
+    private func refreshQiraatMarks() {
+        var next: [String: WordMarks] = [:]
+        if qiraat.enabled, let layout, let pageMarks = library.qiraat?.marks(page: page.number) {
+            for box in layout.lines.flatMap(\.boxes) {
+                if let m = pageMarks.wordMarks(for: box.word, filter: qiraat.filter) { next[box.word.id] = m }
+            }
+        }
+        marks = next
+        updateAccessibilityElements()
         setNeedsDisplay()
+    }
+
+    /// The page itself, then every Qiraat-marked word (so VoiceOver and UI tests can reach them).
+    private func updateAccessibilityElements() {
+        let pageElement = UIAccessibilityElement(accessibilityContainer: self)
+        pageElement.accessibilityLabel = "صفحة \(page.number)"
+        pageElement.accessibilityIdentifier = "mushaf-page-\(page.number)"
+        pageElement.accessibilityFrameInContainerSpace = bounds
+        var elements: [Any] = [pageElement]
+        for box in layout?.lines.flatMap(\.boxes) ?? [] where marks[box.word.id] != nil {
+            let word = box.word
+            let element = UIAccessibilityElement(accessibilityContainer: self)
+            element.accessibilityLabel = "\(word.textUthmani)، فيها قراءات"
+            element.accessibilityIdentifier = "qiraat-word-\(word.ayahKey.surah):\(word.ayahKey.ayah):\(word.indexInAyah)"
+            element.accessibilityTraits = .button
+            element.accessibilityFrameInContainerSpace = box.frame
+            elements.append(element)
+        }
+        accessibilityElements = elements
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutPage()
+    }
+
+    /// The marked word under `point` (page coordinates), with a little slop around its glyph box.
+    func markedWord(at point: CGPoint) -> MushafWord? {
+        guard let layout, !marks.isEmpty else { return nil }
+        let slop = layout.fontSize * 0.2
+        return layout.lines.flatMap(\.boxes).first {
+            marks[$0.word.id] != nil && $0.frame.insetBy(dx: -slop, dy: -slop).contains(point)
+        }?.word
     }
 
     override func draw(_ rect: CGRect) {
@@ -68,15 +118,64 @@ final class MushafPageView: UIView {
     }
 
     private func drawWord(_ box: WordBox, font: CTFont, in context: CGContext) {
-        let line = QCFFontStore.line(box.word.glyph, font: font)
+        let mark = marks[box.word.id]
+        let line = QCFFontStore.line(box.word.glyph, font: font,
+                                     color: mark.map { UIColor(qiraatHex: $0.textColor).cgColor } ?? UIColor.mushafInk.cgColor)
         let natural = CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))
         context.saveGState()
         // UIKit is y-down, CoreText y-up. A condensed line (PageLayout squeeze) scales the glyph to its box.
         context.translateBy(x: box.frame.minX, y: box.frame.maxY)
         context.scaleBy(x: natural > 0 ? box.frame.width / natural : 1, y: -1)
         context.textPosition = CGPoint(x: 0, y: box.frame.height * 0.28)
-        context.setFillColor(UIColor.mushafInk.cgColor)
         CTLineDraw(line, context)
+        context.restoreGState()
+        if let mark, let layout { drawQiraatMarks(mark, around: box.frame, fontSize: layout.fontSize, in: context) }
+    }
+
+    /// The web's marks, scaled to the glyph size: the variant bar under the word (one equal segment per
+    /// reader, left to right in reader order), a dotted underline for ذو وجهين, a dot at the top-left for
+    /// more than one usul family, and the إمالة/تقليل dot (filled / ring) at the bottom-left.
+    private func drawQiraatMarks(_ mark: WordMarks, around frame: CGRect, fontSize: CGFloat, in context: CGContext) {
+        let thickness = max(1.2, fontSize * 0.06)
+        let dot = max(3, fontSize * 0.16)
+        context.saveGState()
+        switch mark.underline {
+        case .solid(let hex):
+            context.setFillColor(UIColor(qiraatHex: hex).cgColor)
+            context.fill(CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness))
+        case .segments(let colors):
+            let width = frame.width / CGFloat(max(colors.count, 1))
+            for (i, hex) in colors.enumerated() {
+                context.setFillColor(UIColor(qiraatHex: hex).cgColor)
+                context.fill(CGRect(x: frame.minX + CGFloat(i) * width, y: frame.maxY, width: width, height: thickness))
+            }
+        case nil:
+            break
+        }
+        if let hex = mark.dottedUnderlineColor {
+            let y = frame.maxY + thickness * 2.6
+            context.setStrokeColor(UIColor(qiraatHex: hex).cgColor)
+            context.setLineWidth(thickness * 0.9)
+            context.setLineDash(phase: 0, lengths: [thickness, thickness * 1.3])
+            context.strokeLineSegments(between: [CGPoint(x: frame.minX, y: y), CGPoint(x: frame.maxX, y: y)])
+            context.setLineDash(phase: 0, lengths: [])
+        }
+        if let hex = mark.familyDotColor {
+            context.setFillColor(UIColor(qiraatHex: hex).cgColor)
+            context.fillEllipse(in: CGRect(x: frame.minX - dot * 0.7, y: frame.minY, width: dot, height: dot))
+        }
+        if let imalah = mark.imalahDot {
+            let rect = CGRect(x: frame.minX - dot * 0.7, y: frame.maxY + thickness * 3.6, width: dot, height: dot)
+            let color = UIColor(qiraatHex: imalah.color).cgColor
+            if imalah.filled {
+                context.setFillColor(color)
+                context.fillEllipse(in: rect)
+            } else {
+                context.setStrokeColor(color)
+                context.setLineWidth(max(1, dot * 0.28))
+                context.strokeEllipse(in: rect.insetBy(dx: dot * 0.14, dy: dot * 0.14))
+            }
+        }
         context.restoreGState()
     }
 

@@ -42,6 +42,15 @@ public final class QCFFontStore: @unchecked Sendable {
         return CTLineCreateWithAttributedString(attributed)
     }
 
+    /// Same, filled with `color` (the Qiraat layer colours words; CTLineDraw honours the attribute).
+    public static func line(_ glyph: String, font: CTFont, color: CGColor) -> CTLine {
+        let attributed = NSAttributedString(string: glyph, attributes: [
+            NSAttributedString.Key(kCTFontAttributeName as String): font,
+            NSAttributedString.Key(kCTForegroundColorAttributeName as String): color,
+        ])
+        return CTLineCreateWithAttributedString(attributed)
+    }
+
     /// Advance width of one token at `size`.
     public func advance(of glyph: String, page: Int, size: CGFloat) throws -> CGFloat {
         CGFloat(CTLineGetTypographicBounds(try line(for: glyph, page: page, size: size), nil, nil, nil))

@@ -61,6 +61,14 @@ public enum LaidOutLineContent: Hashable, Sendable {
     case empty
 }
 
+extension LaidOutLine {
+    /// The word boxes of a text line; empty for headers, basmalas and empty slots.
+    public var boxes: [WordBox] {
+        if case let .words(boxes, _) = content { return boxes }
+        return []
+    }
+}
+
 public struct LaidOutLine: Hashable, Sendable {
     public let number: Int
     public let rect: CGRect

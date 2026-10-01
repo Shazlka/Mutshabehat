@@ -13,7 +13,9 @@ struct MushafPager: UIViewControllerRepresentable {
     let library: MushafLibrary
     @Binding var page: Int
     let spread: Bool
+    let qiraat: QiraatDisplay
     let onTapCentre: () -> Void
+    let onTapWord: (MushafPage, MushafWord) -> Void
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
 
@@ -32,6 +34,7 @@ struct MushafPager: UIViewControllerRepresentable {
 
     func updateUIViewController(_ pager: UIPageViewController, context: Context) {
         context.coordinator.parent = self
+        for controller in pager.viewControllers ?? [] { (controller as? PageController)?.apply(qiraat) }
         context.coordinator.show(page, in: pager, animated: true)
     }
 
@@ -42,9 +45,9 @@ struct MushafPager: UIViewControllerRepresentable {
 
         func controller(for number: Int) -> PageController? {
             guard (1...mushafPageCount).contains(number), let page = parent.library.page(number) else { return nil }
-            return PageController(page: page, library: parent.library, isSpreadHalf: parent.spread) { [weak self] in
-                self?.parent.onTapCentre()
-            }
+            return PageController(page: page, library: parent.library, isSpreadHalf: parent.spread, qiraat: parent.qiraat,
+                                  onTapCentre: { [weak self] in self?.parent.onTapCentre() },
+                                  onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) })
         }
 
         /// The page the pager shows: the single page, or the right-hand (odd) page of a spread.

@@ -99,3 +99,44 @@ extension QiraatRuling {
     /// More than one وجه is recorded, so each attribution shows its wajh number.
     public var hasSeveralWajhs: Bool { attribution.contains { ($0.wajhOrder ?? 1) > 1 } }
 }
+
+/// packages/qiraat-core/types.ts `DIFFERENCE_TYPE_LABELS_AR`; anything unknown reads «أخرى».
+public func differenceTypeLabelAr(_ type: String?) -> String {
+    switch type {
+    case "HARAKAH": "تشكيل"
+    case "LETTER": "حرف"
+    case "ADDITION": "زيادة"
+    case "OMISSION": "حذف"
+    case "MADD": "مد"
+    case "HAMZ": "همز"
+    case "IMALAH": "إمالة"
+    case "IDGHAM": "إدغام"
+    case "WAQF": "وقف"
+    case "NAQL": "نقل"
+    case "SILAH": "صلة"
+    case "ORTHOGRAPHY": "رسم"
+    default: "أخرى"
+    }
+}
+
+extension QiraatFilter {
+    /// "all", "reader:Q06" or "reading:Q03-R01" — what the app keeps in UserDefaults.
+    public var storageValue: String {
+        switch self {
+        case .all: "all"
+        case .reader(let id): "reader:\(id)"
+        case .reading(let id): "reading:\(id)"
+        }
+    }
+
+    public init?(storageValue: String) {
+        if storageValue == "all" { self = .all; return }
+        let parts = storageValue.split(separator: ":", maxSplits: 1).map(String.init)
+        guard parts.count == 2, !parts[1].isEmpty else { return nil }
+        switch parts[0] {
+        case "reader": self = .reader(parts[1])
+        case "reading": self = .reading(parts[1])
+        default: return nil
+        }
+    }
+}

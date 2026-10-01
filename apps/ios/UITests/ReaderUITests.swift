@@ -10,7 +10,9 @@ final class ReaderUITests: XCTestCase {
     /// Launches with the stored reading position forced through the argument domain.
     private func launch(atPage page: Int, arabic: Bool = false) -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)"]
+        // Paging tests run on the plain mushaf: with the Qiraat layer on, a tap on a marked word
+        // opens its card instead of the chrome.
+        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:reader-layer:v1", "none"]
         if arabic { app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA"] }
         app.launch()
         return app

@@ -18,6 +18,8 @@ final class MushafLibrary {
     let juzStartPages: [Int: Int]
     let surahAyahCounts: [Int: Int]
     let surahNames: [Int: String]
+    /// The bundled snapshot of the web app's Qiraat data; nil only if the build shipped without it.
+    let qiraat: QiraatStore?
 
     init(bundle: Bundle = .main) throws {
         guard let databaseURL = bundle.url(forResource: "mushaf", withExtension: "sqlite") else {
@@ -32,6 +34,7 @@ final class MushafLibrary {
         juzStartPages = try database.juzStartPages()
         surahAyahCounts = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.ayahCount) })
         surahNames = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.name) })
+        qiraat = bundle.url(forResource: "Qiraat", withExtension: nil).flatMap { try? QiraatStore(directory: $0) }
     }
 
     static func load() -> Result<MushafLibrary, Error> {

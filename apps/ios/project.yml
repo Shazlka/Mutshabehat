@@ -22,6 +22,9 @@ targets:
       - path: Generated/Fonts
         type: folder
         buildPhase: resources
+      - path: Generated/Qiraat
+        type: folder
+        buildPhase: resources
     dependencies:
       - package: MushafCore
     preBuildScripts:
@@ -32,6 +35,8 @@ targets:
           test -s "$GEN/mushaf.sqlite" || { echo "error: $GEN/mushaf.sqlite missing — run: make -C apps/ios data"; exit 1; }
           count=$(find "$GEN/Fonts" -name 'p*.woff2' -size +0 2>/dev/null | wc -l | tr -d ' ')
           test "$count" = "604" || { echo "error: $count/604 QCF fonts — run: make -C apps/ios fonts"; exit 1; }
+          pages=$(find "$GEN/Qiraat" -name 'page-*.json' -size +0 2>/dev/null | wc -l | tr -d ' ')
+          test "$pages" = "604" -a -s "$GEN/Qiraat/catalog.json" || { echo "error: Qiraat snapshot incomplete ($pages/604 pages) — run: make -C apps/ios qiraat"; exit 1; }
     info:
       path: Sources/Info.plist
       properties:
