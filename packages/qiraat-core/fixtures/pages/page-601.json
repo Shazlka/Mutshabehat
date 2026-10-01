@@ -1,0 +1,209 @@
+[
+  {
+    "id": "v-SRC601-جمع-w2",
+    "surah": 104,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "جَمَعَ",
+    "variantText": "جَمَّعَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "SRC601-جمع",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC601-جمع-w2",
+        "variantId": "v-SRC601-جمع-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 601: جمع",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "بتشديد الميم لابن عامر وحمزة والكسائي وخلف العاشر"
+      }
+    ],
+    "description": "بتشديد الميم لابن عامر وحمزة والكسائي وخلف العاشر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SRC601-عمد-w2",
+    "surah": 104,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَمَدٍۢ",
+    "variantText": "عُمَدٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "SRC601-عمد",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC601-عمد-w2",
+        "variantId": "v-SRC601-عمد-w2",
+        "sourceName": "qiraat_pages_585_604.json",
+        "sourceType": "other",
+        "sourceReference": "pages 601: عمد",
+        "verificationNotes": "Approved source record mapped to a real Quran token.",
+        "sourceText": "بضمتين لشعبة وحمزة والكسائي وخلف العاشر"
+      }
+    ],
+    "description": "بضمتين لشعبة وحمزة والكسائي وخلف العاشر",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-103-1-1-4574-performance",
+    "surah": 103,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْعَصْرِ",
+    "variantText": "وَٱلْعَصْرِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-103-1-1-4574",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-103-1-1-4574",
+        "variantId": "v-SUSI-103-1-1-4574-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4574; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَالْعَصْرِ → وَالْعَصْرِ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-104-2-2-4576-performance",
+    "surah": 104,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "جَمَعَ مَالًۭا",
+    "variantText": "جَمَعَ مَالًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-104-2-2-4576",
+    "locusType": "performance_variant",
+    "performanceNote": "تشديد الميم لابن عامر وحمزة والكسائي وأبو عمرو بتخفيفها كحفص (جَمَعَ)",
+    "sources": [
+      {
+        "id": "s-SUSI-104-2-2-4576",
+        "variantId": "v-SUSI-104-2-2-4576-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4576; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جَمَعَ مَالًا → جَمَّعَ مَالًا | تشديد الميم لابن عامر وحمزة والكسائي وأبو عمرو بتخفيفها كحفص (جَمَعَ)"
+      }
+    ],
+    "description": "تشديد الميم لابن عامر وحمزة والكسائي وأبو عمرو بتخفيفها كحفص (جَمَعَ)"
+  },
+  {
+    "id": "v-SUSI-104-8-3-4577-performance",
+    "surah": 104,
+    "ayah": 8,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مُّؤْصَدَةٌۭ",
+    "variantText": "مُّؤْصَدَةٌۭ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-104-8-3-4577",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة الساكنة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-104-8-3-4577",
+        "variantId": "v-SUSI-104-8-3-4577-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4577; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُّؤْصَدَةٌ → مُّوصَدَةٌ | إبدال الهمزة الساكنة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة الساكنة واواً"
+  },
+  {
+    "id": "v-DURI-104-3-1-r2733-performance",
+    "surah": 104,
+    "ayah": 3,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "يَحْسَبُ",
+    "variantText": "يَحْسَبُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-104-3-1-r2733",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-104-3-1-r2733",
+        "variantId": "v-DURI-104-3-1-r2733-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2733; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـحسَب → يـحسِب | كسر الدوري السين"
+      }
+    ],
+    "description": "كسر الدوري السين"
+  }
+]

@@ -1,0 +1,392 @@
+[
+  {
+    "id": "r-p490-s43a18b1",
+    "pageNumber": 490,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 18,
+    "startToken": 8,
+    "endToken": 9,
+    "endAyah": 18,
+    "baseText": "غَيْرُ مُبِينٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p490-s43a21b0",
+    "pageNumber": 490,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 21,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 21,
+    "baseText": "ءَاتَيْنَـٰهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p490-s43a22b1",
+    "pageNumber": 490,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 22,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 22,
+    "baseText": "ءَابَآءَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p490-IMALAH_TAQLIL-واصفاكم-0",
+    "pageNumber": 490,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 16,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 16,
+    "baseText": "وَأَصْفَىٰكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P490-R02941",
+    "sourceText": "الممال والمقلل: ﴿وَأَصْفَىٰكُم﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿ءَاثَـٰرِهِم﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02941",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/16"
+  },
+  {
+    "id": "r-p490-IMALAH_TAQLIL-ءاثارهم-1",
+    "pageNumber": 490,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 22,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 22,
+    "baseText": "ءَاثَـٰرِهِم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P490-R02941",
+    "sourceText": "الممال والمقلل: ﴿وَأَصْفَىٰكُم﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿ءَاثَـٰرِهِم﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02941",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/22",
+    "sourceNotes": [
+      "آثَارِهِم → آثَارِهِم | إمالة فتحة الثاء والألف",
+      "ءاثـارهم → ءاثٍـارهم | أمالها الدوري"
+    ]
+  },
+  {
+    "id": "r-p490-IMALAH_TAQLIL-شاء-2",
+    "pageNumber": 490,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 20,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 20,
+    "baseText": "شَآءَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P490-R02941",
+    "sourceText": "الممال والمقلل: ﴿وَأَصْفَىٰكُم﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف. ﴿ءَاثَـٰرِهِم﴾: أبو عمرو، الدوري عن الكسائي، وقللها ورش. ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P490-R02941",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/20"
+  },
+  {
+    "id": "r-SUSI-043-12-5-3914-IDGHAM_KABIR",
+    "pageNumber": 490,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 12,
+    "startToken": 5,
+    "endToken": 6,
+    "endAyah": 12,
+    "baseText": "وَجَعَلَ لَكُم",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَجَعَلَ لَكُم → وَجَعَل لَّكُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-043-12-9-3915-IDGHAM_KABIR",
+    "pageNumber": 490,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 12,
+    "startToken": 9,
+    "endToken": 10,
+    "endAyah": 12,
+    "baseText": "وَٱلْأَنْعَـٰمِ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَالْأَنْعَامِ مَا → وَالْأَنْعَام مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-043-13-14-3916-IDGHAM_KABIR",
+    "pageNumber": 490,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 13,
+    "startToken": 14,
+    "endToken": 15,
+    "endAyah": 13,
+    "baseText": "سَخَّرَ لَنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "سَخَّرَ لَنَا → سَخَّر لَّنَا | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

@@ -1,0 +1,173 @@
+[
+  {
+    "id": "v-D291-القرءان-w2",
+    "surah": 17,
+    "ayah": 88,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْقُرْءَانِ",
+    "variantText": "الْقُرَانِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D291-القرءان",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D291-القرءان-w2",
+        "variantId": "v-D291-القرءان-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P291-R00920",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الْقُرْءَانِ﴾ (معاً): بنقل الهمزة لابن كثير ﴿الْقُرَانِ﴾."
+      }
+    ],
+    "description": "بنقل الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D291-تفجر-w2",
+    "surah": 17,
+    "ayah": 90,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "تَفْجُرَ",
+    "variantText": "تُفَجِّرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D291-تفجر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D291-تفجر-w2",
+        "variantId": "v-D291-تفجر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P291-R00921",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَفْجُرَ﴾: بتخفيف الجيم لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ وبتشديد الجيم ﴿تُفَجِّرَ﴾ للباقين."
+      }
+    ],
+    "description": "بتشديد الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D291-كسفا-w2",
+    "surah": 17,
+    "ayah": 92,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "كِسَفًا",
+    "variantText": "كِسْفًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D291-كسفا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D291-كسفا-w2",
+        "variantId": "v-D291-كسفا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P291-R00922",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿كِسَفًا﴾: بفتح السين لنافع، وابن عامر، وعاصم، وأبي جعفر؛ وبإسكان السين ﴿كِسْفًا﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-017-92-7-2076",
+        "variantId": "v-D291-كسفا-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2076; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كِسَفًا → كِسْفًا | تسكين السين"
+      },
+      {
+        "id": "s-DURI-017-92-7-r1261",
+        "variantId": "v-D291-كسفا-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1261; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "كِسَـفاً → كِسْـفاً | أسكن الدوري السين"
+      }
+    ],
+    "description": "بإسكان السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DURI-017-93-15-r1262-performance",
+    "surah": 17,
+    "ayah": 93,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "تُنَزِّلَ",
+    "variantText": "تُنَزِّلَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-017-93-15-r1262",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري النون وخفف الزاي",
+    "sources": [
+      {
+        "id": "s-DURI-017-93-15-r1262",
+        "variantId": "v-DURI-017-93-15-r1262-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1262; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تُنَـزِّل → تُنْـزِل | أسكن الدوري النون وخفف الزاي"
+      }
+    ],
+    "description": "أسكن الدوري النون وخفف الزاي"
+  }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "id": "v-L217-عليهم-1-w2",
+    "surah": 10,
+    "ayah": 71,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L217-عليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L217-عليهم-1-w2",
+        "variantId": "v-L217-عليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 222,
+        "sourceReference": "صفحة المصحف 217 · صفحة المصدر 222",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L217-فاجمعوا-1-w2",
+    "surah": 10,
+    "ayah": 71,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "فَأَجْمِعُوٓا۟",
+    "variantText": "فَٱجْمَعُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "L217-فاجمعوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L217-فاجمعوا-1-w2",
+        "variantId": "v-L217-فاجمعوا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 222,
+        "sourceReference": "صفحة المصحف 217 · صفحة المصدر 222",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَوَصْلٌ فَاجْمَعُوا افْتَحْ طَوَى"
+      }
+    ],
+    "description": "بهمزة وصل وسكون الجيم وفتح الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَوَصْلٌ فَاجْمَعُوا افْتَحْ طَوَى"
+      }
+    ]
+  },
+  {
+    "id": "v-L217-وشركاءكم-1-w2",
+    "surah": 10,
+    "ayah": 71,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "وَشُرَكَآءَكُمْ",
+    "variantText": "وَشُرَكَآؤُكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L217-وشركاءكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L217-وشركاءكم-1-w2",
+        "variantId": "v-L217-وشركاءكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 222,
+        "sourceReference": "صفحة المصحف 217 · صفحة المصدر 222",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: أَصْغَرَ ارْفَعْ حَقَّ مَعْ شُرَكَاءَكُمْ"
+      }
+    ],
+    "description": "برفع الهمزة عطفًا على الضمير",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "أَصْغَرَ ارْفَعْ حَقَّ مَعْ شُرَكَاءَكُمْ"
+      }
+    ]
+  }
+]

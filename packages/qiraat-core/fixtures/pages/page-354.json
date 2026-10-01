@@ -1,0 +1,387 @@
+[
+  {
+    "id": "v-L354-مبينت-1-w2",
+    "surah": 24,
+    "ayah": 34,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "مُّبَيِّنَـٰتٍۢ",
+    "variantText": "مُّبَيَّنَـٰتٍۢ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L354-مبينت-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-مبينت-1-w2",
+        "variantId": "v-L354-مبينت-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَفِي مُبَيَّنَاتٍ كَسْرُ حَقٍّ كَفَى صَفَا — D: وَافْتَحْ مُبَيَّنَةٍ فُزْ"
+      },
+      {
+        "id": "s-SUSI-024-34-5-2737",
+        "variantId": "v-L354-مبينت-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2737; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُّبَيِّنَاتٍ → مُّبَيَّنَاتٍ | فتح الياء"
+      },
+      {
+        "id": "s-DURI-024-34-5-r1582",
+        "variantId": "v-L354-مبينت-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1582; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مبيِّنـات → مبيَّنـات | فتح الدوري الياء"
+      }
+    ],
+    "description": "بفتح الياء المشددة اسم مفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مُبَيَّنَاتٍ كَسْرُ حَقٍّ كَفَى صَفَا"
+      },
+      {
+        "source": "D",
+        "text": "وَافْتَحْ مُبَيَّنَةٍ فُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-دري-1-w2",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "دُرِّىٌّۭ",
+    "variantText": "دِرِّيٓءٌۭ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L354-دري-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-دري-1-w2",
+        "variantId": "v-L354-دري-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      },
+      {
+        "id": "s-SUSI-024-35-16-2738",
+        "variantId": "v-L354-دري-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2738; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "دُرِّيٌّ → دِرِّيءٌ | كسر الدال ومد الياء وهمزة بعدها"
+      },
+      {
+        "id": "s-DURI-024-35-16-r1583",
+        "variantId": "v-L354-دري-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1583; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "دُرِّيٌّ → دِرِّيءٌ | قرأ الدوري بتخفيف الياء وهمزة بعدها وكسر الدال"
+      }
+    ],
+    "description": "بكسر الدال وبعد الراء ياء مدية وهمزة منونة من درأ",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-دري-1-w3",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "دُرِّىٌّۭ",
+    "variantText": "دُرِّيٓءٌۭ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L354-دري-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-دري-1-w3",
+        "variantId": "v-L354-دري-1-w3",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      }
+    ],
+    "description": "بضم الدال وبعد الراء ياء مدية وهمزة منونة",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكَوْكَبٌ دُرِّيٌّ اكْسِرْ ضَمَّهُ غَالِبًا وَمُدَّ وَهَمْزٌ عَنْهُمَا وَاضْمُمْ صُحْبَةً دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-يوقد-1-w2",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يُوقَدُ",
+    "variantText": "تُوقَدُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L354-يوقد-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-يوقد-1-w2",
+        "variantId": "v-L354-يوقد-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      }
+    ],
+    "description": "بالتاء مضمومة وتخفيف القاف لتأنيث الزجاجة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-يوقد-1-w3",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "يُوقَدُ",
+    "variantText": "تَوَقَّدُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L354-يوقد-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-يوقد-1-w3",
+        "variantId": "v-L354-يوقد-1-w3",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      },
+      {
+        "id": "s-SUSI-024-35-17-2739",
+        "variantId": "v-L354-يوقد-1-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2739; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُوقَدُ → تَوَقَّدَ | تاء مفتوحة وفتح الواو وتشديد القاف وفتح الدال"
+      },
+      {
+        "id": "s-DURI-024-35-17-r1584",
+        "variantId": "v-L354-يوقد-1-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1584; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـوقَـدُ → تَـوَقَّـدَ | قرأ الدوري بالتاء : بفتحها وفتح الواو وتشديد القاف مفتوحة وفتح الدال"
+      }
+    ],
+    "description": "بالتاء مفتوحة وتشديد القاف فعلاً ماضياً",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتُوقَدُ فَاكْسِرْ فِي انْتِمَاءٍ وَضُمَّ فِي حَلَا كَمَا شَاعَ وَالتَّذْكِيرُ شَامٍ كَفَى دَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L354-يسبح-1-w2",
+    "surah": 24,
+    "ayah": 36,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يُسَبِّحُ",
+    "variantText": "يُسَبَّحُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L354-يسبح-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L354-يسبح-1-w2",
+        "variantId": "v-L354-يسبح-1-w2",
+        "sourceName": "سورة النور — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة النور (الآيات 1-64)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة النور.",
+        "sourceText": "SH: وَيُسَبَّحُ فَتْحُ الْبَا كَذَا صِفْ"
+      }
+    ],
+    "description": "بفتح الباء مبنياً للمفعول ونائب الفاعل الجار والمجرور (له)",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُسَبَّحُ فَتْحُ الْبَا كَذَا صِفْ"
+      }
+    ]
+  },
+  {
+    "id": "v-D354-دري_يوقد-w2",
+    "surah": 24,
+    "ayah": 35,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "دُرِّىٌّۭ يُوقَدُ",
+    "variantText": "دُرِّيٌّ تَوَقَّدُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D354-دري_يوقد",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D354-دري_يوقد-w2",
+        "variantId": "v-D354-دري_يوقد-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P354-R01637",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بضم الدال وتشديد الراء والياء بلا همز، مع تاء التأنيث وفتح الواو والقاف مشددة ﴿دُرِّيٌّ تَوَقَّدُ﴾: ابن كثير، أبو جعفر، يعقوب."
+      }
+    ],
+    "description": "بتاء التأنيث وفتح الواو والقاف مشددة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-024-33-32-2735",
+    "surah": 24,
+    "ayah": 33,
+    "startToken": 32,
+    "endToken": 33,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْبِغَآءِ إِنْ",
+    "variantText": "الْبِغَا إِنْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-024-33-32-2735",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-024-33-32-2735",
+        "variantId": "v-SUSI-024-33-32-2735",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2735; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْبِغَاءِ إِنْ → الْبِغَا إِنْ | حذف الهمزة الأولى"
+      }
+    ],
+    "description": "حذف الهمزة الأولى"
+  }
+]

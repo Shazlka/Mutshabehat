@@ -1,0 +1,22 @@
+{
+  "page": 356,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 26,
+  "variants": 7,
+  "rulings": 19,
+  "supported": 26,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p356-011-1",
+    "r-p356-HAMZATAN_KALIMATAYN-يشاء_ان-5"
+  ]
+}

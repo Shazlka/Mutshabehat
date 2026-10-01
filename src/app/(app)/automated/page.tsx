@@ -39,7 +39,7 @@ export default async function AutomatedPage({ searchParams }: { searchParams: SP
   return (
     <div className="max-w-3xl mx-auto px-5 md:px-8 py-8 md:py-14">
       <header className="mb-8">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Automated DB</p>
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Automated DB</p>
         <h1 className="text-[28px] md:text-[32px] font-bold tracking-tight leading-none">
           القاعدة الآلية
         </h1>

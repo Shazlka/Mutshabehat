@@ -1,0 +1,109 @@
+[
+  {
+    "id": "v-L392-s28a57b0-w1",
+    "surah": 28,
+    "ayah": 57,
+    "startToken": 14,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "يُجْبَىٰٓ إِلَيْهِ",
+    "variantText": "تُجْبَىٰ إِلَيْهِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L392-s28a57b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L392-s28a57b0-w1",
+        "variantId": "v-L392-s28a57b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتاء التأنيث",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D392-في_امها-w2",
+    "surah": 28,
+    "ayah": 59,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "فِىٓ أُمِّهَا",
+    "variantText": "فِي إِمِّهَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D392-في_امها",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D392-في_امها-w2",
+        "variantId": "v-D392-في_امها-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P392-R02023",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فِيٓ أُمِّهَا﴾ (وصلاً بما قبلها): بضم الهمزة للجمهور؛ وبكسر الهمزة ﴿فِي إِمِّهَا﴾ لحمزة والكسائي (وعند الابتداء يضم الجميع)."
+      }
+    ],
+    "description": "بكسر الهمزة وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-028-56-11-3112-performance",
+    "surah": 28,
+    "ayah": 56,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهُوَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-028-56-11-3112",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الهاء",
+    "sources": [
+      {
+        "id": "s-SUSI-028-56-11-3112",
+        "variantId": "v-SUSI-028-56-11-3112-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3112; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      }
+    ],
+    "description": "إسكان الهاء"
+  }
+]

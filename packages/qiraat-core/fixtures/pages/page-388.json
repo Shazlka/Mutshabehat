@@ -1,0 +1,192 @@
+[
+  {
+    "id": "v-D388-ياابت-w2",
+    "surah": 28,
+    "ayah": 26,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰٓأَبَتِ",
+    "variantText": "يَـٰٓأَبَتَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D388-ياابت",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D388-ياابت-w2",
+        "variantId": "v-D388-ياابت-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P388-R01974",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَـٰٓأَبَتِ﴾: بالكسر للجمهور؛ وبالفتح ﴿يَـٰٓأَبَتَ﴾ لابن عامر وأبي جعفر (ويقف عليها بالهاء ابن كثير وابن عامر وأبو جعفر ويعقوب)."
+      }
+    ],
+    "description": "بالفتح",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D388-هاتين-w2",
+    "surah": 28,
+    "ayah": 27,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰتَيْنِ",
+    "variantText": "هَاتَيْنِّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D388-هاتين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D388-هاتين-w2",
+        "variantId": "v-D388-هاتين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P388-R01975",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿هَـٰتَيْنِ﴾: بتخفيف النون للجمهور؛ وبتشديد النون مع المد المشبع ﴿هَاتَيْنِّ﴾ لابن كثير."
+      }
+    ],
+    "description": "بتشديد النون مع المد المشبع",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D388-يصدر-w2",
+    "surah": 28,
+    "ayah": 23,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "يُصْدِرَ",
+    "variantText": "يَصْدُرَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D388-يصدر",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D388-يصدر-w2",
+        "variantId": "v-D388-يصدر-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P388-R01972",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الياء وضم الدال ﴿يَصْدُرَ﴾: أبو عمرو، وابن عامر، وأبو جعفر."
+      },
+      {
+        "id": "s-SUSI-028-23-23-3059",
+        "variantId": "v-D388-يصدر-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3059; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُصْدِرَ → يَصْدُرَ | فتح الياء وضم الدال"
+      },
+      {
+        "id": "s-DURI-028-23-23-r1733",
+        "variantId": "v-D388-يصدر-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1733; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُـصْدِرَ → يَـصْدُرَ | فتح الدوري الياء وضمّ الدال"
+      }
+    ],
+    "description": "بفتح الياء وضم الدال",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-028-22-7-3057-performance",
+    "surah": 28,
+    "ayah": 22,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ",
+    "variantText": "رَبِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-028-22-7-3057",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-028-22-7-3057",
+        "variantId": "v-SUSI-028-22-7-3057-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3057; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَبِّي → رَبِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-028-23-12-3058-performance",
+    "surah": 28,
+    "ayah": 23,
+    "startToken": 12,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "مِن دُونِهِمُ ٱمْرَأَتَيْنِ",
+    "variantText": "مِن دُونِهِمُ ٱمْرَأَتَيْنِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-028-23-12-3058",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الميم",
+    "sources": [
+      {
+        "id": "s-SUSI-028-23-12-3058",
+        "variantId": "v-SUSI-028-23-12-3058-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3058; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مِن دُونِهِمُ امْرَأتَيْنِ → مِن دُونِهِمِ امْرَأَتَيْنِ | كسر الميم"
+      }
+    ],
+    "description": "كسر الميم"
+  }
+]

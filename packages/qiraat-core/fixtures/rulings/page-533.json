@@ -1,0 +1,237 @@
+[
+  {
+    "id": "r-p533-s55a44b0",
+    "pageNumber": 533,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 44,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 44,
+    "baseText": "ءَانٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p533-IMALAH_TAQLIL-خاف-0",
+    "pageNumber": 533,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 46,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 46,
+    "baseText": "خَافَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03360",
+        "sourceText": "الممال والمقلل: ﴿خَافَ﴾: أمالها حمزة. ﴿وَجَنَى﴾ (وقفاً): حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p533-IMALAH_TAQLIL-وجني-1",
+    "pageNumber": 533,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 54,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 54,
+    "baseText": "وَجَنَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03360",
+        "sourceText": "الممال والمقلل: ﴿خَافَ﴾: أمالها حمزة. ﴿وَجَنَى﴾ (وقفاً): حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p533-TAGHYIR_HAMZ-متكين-2",
+    "pageNumber": 533,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 54,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 54,
+    "baseText": "مُتَّكِـِٔينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "حذف الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "حذف الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P533-R03361",
+        "sourceText": "تغيير الهمز: ﴿مُتَّكِـِٔينَ﴾: بحذف الهمزة لأبي جعفر.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p533-IKHFA-rule-55-46-1",
+    "pageNumber": 533,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 46,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 46,
+    "baseText": "وَلِمَنْ خَافَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  }
+]

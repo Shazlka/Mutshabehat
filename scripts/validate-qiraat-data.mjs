@@ -1,4 +1,4 @@
-// Dataset linter for the Qiraat pages 1-20 import. Pure node, no build step, no dev deps —
+// Dataset linter for the imported Qiraat pages. Pure node, no build step, no dev deps —
 // it reads the generated fixtures and the real Mushaf-1441 word fixtures and checks that the
 // two actually agree. Run: node scripts/validate-qiraat-data.mjs
 import { readFileSync } from 'node:fs'
@@ -15,12 +15,47 @@ let failures = 0
 const fail = (msg) => { failures++; console.error('  FAIL', msg) }
 
 let variants = 0, rulings = 0, flagged = 0
+// Every page the repository actually loads, read from the loader table itself.
+const REPO = readFileSync(join(ROOT, 'packages/qiraat-core/repository.ts'), 'utf8')
+const PAGES = [...new Set([...REPO.matchAll(/fixtures\/pages\/page-(\d{3})\.json/g)]
+  .map((m) => Number(m[1])))].sort((a, b) => a - b)
+if (!PAGES.length) { console.error('FAIL: no Qiraat pages wired into the repository'); process.exit(1) }
 const wordsOf = (page) => {
   const d = read(`packages/quran-data/mushaf1441/fixtures/page-words/page-${String(page).padStart(3, '0')}.json`)
   return d.lines.flatMap((l) => l.words).filter((w) => !w.charTypeName || w.charTypeName === 'word')
 }
 
-for (let page = 1; page <= 20; page++) {
+const actionFamily = (text = '') => {
+  const s = text.normalize('NFC').replace(/[أإآٱ]/g, 'ا')
+  if (s.includes('تسهيل') || s.includes('سهل')) return 'TASHIL'
+  if (s.includes('تقليل') || s.includes('قلل')) return 'TAQLIL'
+  if (s.includes('إمالة') || s.includes('امالة') || s.includes('امال')) return 'IMALAH'
+  if (s.includes('فتح الياء') || s.includes('اسكان الياء') || s.includes('تسكين الياء')) return 'YAAT_IDAFA'
+  if (s.includes('إبدال') && (s.includes('همز') || s.includes('همزة'))) return 'HAMZ'
+  if (s.includes('إدغام') || s.includes('ادغام')) return 'IDGHAM'
+  if (s.includes('سكت')) return 'SAKT'
+  if ((s.includes('صلة') && s.includes('ميم')) || s.includes('كسر الميم')) return 'MEEM_JAM'
+  if (s.includes('صلة') && (s.includes('هاء') || s.includes('كناية'))) return 'SILAT_HA'
+  if (s.includes('غنة')) return 'GHUNNA'
+  if (s.includes('إخفاء') || s.includes('اخفاء')) return 'IKHFA'
+  if (s.includes('ترقيق الراء') || s.includes('ترقيق الراءات')) return 'TARQIQ_RA'
+  if (s.includes('تغليظ اللام')) return 'TAGHLIZ_LAM'
+  if (s.includes('وقف')) return 'WAQF'
+  if (s.includes('مد')) return 'MADD'
+  return null
+}
+const ACTION_CATEGORIES = {
+  HAMZ: ['TAGHYIR_HAMZ'], IMALAH: ['IMALAH_TAQLIL'], TAQLIL: ['IMALAH_TAQLIL'],
+  IDGHAM: ['IDGHAM_KABIR', 'IDGHAM_SAGHIR'], SAKT: ['SAKT'],
+  SILAT_HA: ['SILAT_HA'], MEEM_JAM: ['MEEM_JAM'], GHUNNA: ['TARK_GHUNNA'],
+  IKHFA: ['IKHFA'], TARQIQ_RA: ['TARQIQ_RA'], TAGHLIZ_LAM: ['TAGHLIZ_LAM'],
+  WAQF: ['WAQF_RASM', 'WAQF_HAMZA'], MADD: ['MADD_BADAL'],
+  YAAT_IDAFA: ['YAAT_IDAFA'], TASHIL: ['HAMZATAN_KALIMA', 'HAMZATAN_KALIMATAYN'],
+}
+const dedupeAudit = read('docs/qiraat-reader-dedupe-audit.json')
+const reviewedConflictIds = new Set((dedupeAudit.conflicts ?? []).map((item) => item.duplicate?.id).filter(Boolean))
+
+for (const page of PAGES) {
   const pad = String(page).padStart(3, '0')
   const words = wordsOf(page)
   const byPos = new Map(words.map((w) => [`${w.surahNumber}:${w.ayahNumber}:${w.wordIndexInAyah}`, w]))
@@ -43,17 +78,54 @@ for (let page = 1; page <= 20; page++) {
     if (!byLocus.has(key)) byLocus.set(key, [])
     byLocus.get(key).push(v)
   }
-  // No reading may be claimed by two أوجه of the same locus (an overlap = a contradiction).
+  // A reading cannot be assigned to two lexical alternatives. Explicitly sourced, named
+  // performance variants are the exception: a riwaya can have more than one approved way
+  // (e.g. إسكان/اختلاس or two waqf options) at the same token. Keep this exception narrow so
+  // a same-reader split never silently becomes a conflicting word form.
   for (const [locus, group] of byLocus) {
     const seen = new Map()
     for (const v of group) for (const r of v.readingIds) seen.set(r, (seen.get(r) ?? 0) + 1)
     const dup = [...seen].filter(([, c]) => c > 1).map(([r]) => r)
-    if (dup.length) fail(`p${page} token ${locus}: reading(s) ${dup.join(',')} claimed by two أوجه`)
+    const unsupported = dup.filter((readingId) => {
+      const faces = group.filter((v) => v.readingIds.includes(readingId))
+      const notes = faces.map((v) => v.performanceNote?.trim() ?? '')
+      const allHaveIndependentEvidence = faces.every((v) => (
+        Array.isArray(v.sources) && v.sources.some((s) => (
+          /^https?:\/\/(?:www\.)?(?:quranpedia\.net\/qiraat\/|nquran\.com\/)/i.test(s.sourceReference ?? '')
+        ))
+      ))
+      return faces.length < 2
+        || faces.some((v) => v.locusType !== 'performance_variant')
+        || notes.some((note) => !note)
+        || new Set(notes).size !== notes.length
+        || !allHaveIndependentEvidence
+    })
+    if (unsupported.length) fail(`p${page} token ${locus}: reading(s) ${unsupported.join(',')} overlap without distinct, source-verified performance notes`)
   }
 
   // ---- rulings ----
   const rs = read(`packages/qiraat-core/fixtures/rulings/page-${pad}.json`)
   rulings += rs.length
+  for (const v of vs) {
+    if (v.locusType !== 'performance_variant' || v.variantText !== v.hafsText) continue
+    const family = actionFamily(v.performanceNote)
+    const compatible = (ACTION_CATEGORIES[family] ?? []).filter((category) =>
+      rs.some((r) => r.surah === v.surah && r.ayah === v.ayah && r.startToken <= v.startToken &&
+        r.endToken >= v.endToken && r.category === category && r.readings.some((rd) => {
+          const existingFamily = actionFamily(rd.action)
+          return family === 'IMALAH' || family === 'TAQLIL'
+            ? existingFamily === family
+            : existingFamily === family
+        }))
+    )
+    if (compatible.length && !reviewedConflictIds.has(v.id)) fail(`p${page} ${v.id}: performance-only face duplicates ruling category ${compatible.join('/')}`)
+  }
+  const identicalFaces = new Map()
+  for (const v of vs) {
+    const key = JSON.stringify([v.surah, v.ayah, v.startToken, v.endToken, v.variantText, v.differenceType])
+    if (identicalFaces.has(key) && !reviewedConflictIds.has(v.id)) fail(`p${page} ${v.id}: duplicate variant face with ${identicalFaces.get(key)} on identical span/text/type`)
+    else identicalFaces.set(key, v.id)
+  }
   for (const r of rs) {
     if (r.pageNumber !== page) fail(`p${page} ${r.id}: pageNumber mismatch`)
     const anchor = byPos.get(`${r.surah}:${r.ayah}:${r.startToken}`)
@@ -82,7 +154,7 @@ for (let page = 1; page <= 20; page++) {
 
 // One usul FAMILY must have exactly one colour across the whole dataset.
 const colourOf = new Map()
-for (let page = 1; page <= 20; page++) {
+for (const page of PAGES) {
   for (const r of read(`packages/qiraat-core/fixtures/rulings/page-${String(page).padStart(3, '0')}.json`)) {
     const prev = colourOf.get(r.category)
     if (prev && prev !== r.color) fail(`category ${r.category} has two colours: ${prev} and ${r.color}`)
@@ -90,7 +162,7 @@ for (let page = 1; page <= 20; page++) {
   }
 }
 
-console.log(`Qiraat data: ${variants} variants, ${rulings} rulings across 20 pages, ${flagged} flagged NEEDS_MANUAL_REVIEW`)
+console.log(`Qiraat data: ${variants} variants, ${rulings} rulings across ${PAGES.length} pages (${PAGES[0]}-${PAGES[PAGES.length - 1]}), ${flagged} flagged NEEDS_MANUAL_REVIEW`)
 console.log(`${colourOf.size} usul categories, each with one colour`)
 if (failures) { console.error(`\n${failures} failures`); process.exit(1) }
 console.log('all checks passed')

@@ -1,0 +1,298 @@
+[
+  {
+    "id": "r-sql589-quran-naql",
+    "pageNumber": 589,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "TAGHYIR_HAMZ",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 21,
+    "baseText": "ٱلْقُرْءَانُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "نقل الهمزة"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "نقل الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "نقل الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "نقل الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  },
+  {
+    "id": "r-sql589-quri-badal",
+    "pageNumber": 589,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "TAGHYIR_HAMZ",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 21,
+    "baseText": "قُرِئَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  },
+  {
+    "id": "r-sql589-quran-sakt",
+    "pageNumber": 589,
+    "category": "SAKT",
+    "categoryAr": "SAKT",
+    "color": "#7C3AED",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 21,
+    "baseText": "ٱلْقُرْءَانُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "السكت"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "السكت"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "السكت",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "السكت",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      }
+    ]
+  },
+  {
+    "id": "r-sql589-meem",
+    "pageNumber": 589,
+    "category": "MEEM_JAM",
+    "categoryAr": "MEEM_JAM",
+    "color": "#DB2777",
+    "wordAnchored": true,
+    "surah": 84,
+    "ayah": 21,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 21,
+    "baseText": "عَلَيْهِمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "صلة ميم الجمع"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "صلة ميم الجمع"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "صلة ميم الجمع"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "صلة ميم الجمع"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "كسر الدوري الميم وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "صلة ميم الجمع",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_pages_585_604_full.source.sql",
+        "sourceText": "SQL usul record",
+        "verificationNotes": "Real page-word token anchor."
+      },
+      "عليهـمُ القرءان → عليـهمِ القرءان | كسر الدوري الميم وصلاً"
+    ]
+  },
+  {
+    "id": "r-SUSI-083-34-5-4463-IMALAH_TAQLIL",
+    "pageNumber": 589,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 34,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 34,
+    "baseText": "ٱلْكُفَّارِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالـها الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الفاء والألف لكسرة الراء المتطرفة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالـها الدوري",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الفاء والألف لكسرة الراء المتطرفة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْكُفَّارِ → الْكُفَّارِ | إمالة فتحة الفاء والألف لكسرة الراء المتطرفة",
+      "الكفَّـار → الكفٍّـار | أمالـها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-083-36-3-4464-IMALAH_TAQLIL",
+    "pageNumber": 589,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 83,
+    "ayah": 36,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 36,
+    "baseText": "ٱلْكُفَّارُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "مرفوعة فلا إمالة وصلاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "مرفوعة فلا إمالة وصلاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْكُفَّارُ → الْكُفَّارُ | مرفوعة فلا إمالة وصلاً"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

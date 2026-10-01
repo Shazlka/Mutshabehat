@@ -1,0 +1,316 @@
+[
+  {
+    "id": "v-L325-هزوا-1-w2",
+    "surah": 21,
+    "ayah": 36,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًا",
+    "variantText": "هُزُؤًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L325-هزوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L325-هزوا-1-w2",
+        "variantId": "v-L325-هزوا-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَكُفْؤًا وَكُفْئًا فِي هُزُؤًا وَكُلَّهُ ... كَمَا حَبْسُ نَصْرٍ شَافِعٌ فَتَأَمَّلَا"
+      }
+    ],
+    "description": "بضم الزاي والهمز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكُفْؤًا وَكُفْئًا فِي هُزُؤًا وَكُلَّهُ ... كَمَا حَبْسُ نَصْرٍ شَافِعٌ فَتَأَمَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L325-هزوا-1-w3",
+    "surah": 21,
+    "ayah": 36,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "هُزُوًا",
+    "variantText": "هُزْءًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L325-هزوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L325-هزوا-1-w3",
+        "variantId": "v-L325-هزوا-1-w3",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01333",
+        "verificationNotes": "أُضيف خلف العاشر صراحةً كما ورد في السطر المصدر؛ المرجع المستقل: https://quranpedia.net/qiraat/al-anbiya/36.",
+        "sourceText": "بضم فسكون مهموزاً ﴿هُزْءًا﴾: حمزة، خلف العاشر."
+      }
+    ],
+    "description": "بإسكان الزاي والهمز",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَكُفْؤًا وَكُفْئًا فِي هُزُؤًا وَكُلَّهُ ... كَمَا حَبْسُ نَصْرٍ شَافِعٌ فَتَأَمَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L325-عليهم_العمر-1-w2",
+    "surah": 21,
+    "ayah": 44,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمُ ٱلْعُمُرُ ۗ",
+    "variantText": "عَلَيْهُمُ ٱلْعُمُرُ ۗ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L325-عليهم_العمر-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L325-عليهم_العمر-1-w2",
+        "variantId": "v-L325-عليهم_العمر-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L325-افلا_يرون-1-w2",
+    "surah": 21,
+    "ayah": 44,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "أَفَلَا يَرَوْنَ",
+    "variantText": "أَفَلَا تَرَوْنَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L325-افلا_يرون-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L325-افلا_يرون-1-w2",
+        "variantId": "v-L325-افلا_يرون-1-w2",
+        "sourceName": "جدول فرش سورة الأنبياء ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الأنبياء ١–١١٢ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَرَوْنَ كُوفٍ غَيْرَ حَفْصٍ شَمَرْدَلَا"
+      }
+    ],
+    "description": "بالفوقية على الخطاب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَرَوْنَ كُوفٍ غَيْرَ حَفْصٍ شَمَرْدَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-D325-تاتيهم-w2",
+    "surah": 21,
+    "ayah": 40,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَأْتِيهِم",
+    "variantText": "تَأْتِيهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D325-تاتيهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D325-تاتيهم-w2",
+        "variantId": "v-D325-تاتيهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01337",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿تَأْتِيهِم﴾: بكسر الهاء للجمهور؛ وبضمها ﴿تَأْتِيهُم﴾ ليعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P325-WUJ-1",
+    "surah": 21,
+    "ayah": 39,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وُجُوهِهِمُ ٱلنَّارَ",
+    "variantText": "وُجُوهِهِمِ ٱلنَّارَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P325-WUJ",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D325-وجوههم_النار-w2",
+        "variantId": "v-D325-وجوههم_النار-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01336",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ bare خلف treated as Q06.",
+        "sourceText": "بضم الهاء والميم وصلاً ﴿وُجُوهِهُمُ﴾: حمزة، الكسائي، خلف."
+      },
+      {
+        "id": "s-SUSI-021-39-9-2502",
+        "variantId": "v-AUDIT-P325-WUJ-1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2502; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وُجُوهَهُمُ النَّارَ → وُجُوهَهِمِ النَّارَ | كسر الميم وصلاً"
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P325-WUJ-2",
+    "surah": 21,
+    "ayah": 39,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "وُجُوهِهِمُ ٱلنَّارَ",
+    "variantText": "وُجُوهِهُمُ ٱلنَّارَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P325-WUJ",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D325-وجوههم_النار-w3",
+        "variantId": "v-D325-وجوههم_النار-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P325-R01336",
+        "verificationNotes": "وجه صريح مربوط بتوكن المصحف الحقيقي؛ bare خلف treated as Q06.",
+        "sourceText": "بضم الهاء والميم وصلاً ﴿وُجُوهِهُمُ﴾: حمزة، الكسائي، خلف."
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-021-36-2-2500",
+    "surah": 21,
+    "ayah": 36,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَءَاكَ",
+    "variantText": "رَاءَاكَ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-021-36-2-2500",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-021-36-2-2500",
+        "variantId": "v-SUSI-021-36-2-2500",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2500; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَآكَ → رَاءَاكَ | إمالة فتحة الهمزة"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة"
+  }
+]

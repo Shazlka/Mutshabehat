@@ -42,3 +42,23 @@ next-env.d.ts
 
 # graphify output
 graphify-out/
+
+# Python bytecode from the Qiraat generators (committed by accident in 7b54c40)
+__pycache__/
+*.pyc
+
+# Local browser verification artifacts
+/playwright-report/
+/test-results/
+REVIEW_PILOT*.html
+
+# Local build & experimentation artifacts
+.ai/
+apps/**/.build/
+scratch/
+
+# Superseded local output location from early Qiraat audit development.
+/artifacts/qiraat-audit/
+
+# Agent worktrees (isolated background-agent checkouts, not part of this repo)
+.claude/worktrees/

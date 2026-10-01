@@ -1,0 +1,129 @@
+[
+  {
+    "id": "v-L084-بما_حفظ_الله-1-w2",
+    "surah": 4,
+    "ayah": 34,
+    "startToken": 19,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "بِمَا حَفِظَ ٱللَّهُ ۚ",
+    "variantText": "بِمَا حَفِظَ ٱللَّهَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L084-بما_حفظ_الله-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L084-بما_حفظ_الله-1-w2",
+        "variantId": "v-L084-بما_حفظ_الله-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 89,
+        "sourceReference": "صفحة المصحف 84 · صفحة المصدر 89",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَنَصْبَ اللهَ وَاللَّاتِ أُدْ"
+      }
+    ],
+    "description": "بنصب اسم الجلالة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَنَصْبَ اللهَ وَاللَّاتِ أُدْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L084-عليهن-1-w2",
+    "surah": 4,
+    "ayah": 34,
+    "startToken": 34,
+    "endToken": 34,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِنَّ",
+    "variantText": "عَلَيْهُنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L084-عليهن-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L084-عليهن-1-w2",
+        "variantId": "v-L084-عليهن-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 89,
+        "sourceReference": "صفحة المصحف 84 · صفحة المصدر 89",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L084-بالبخل-1-w2",
+    "surah": 4,
+    "ayah": 37,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "بِٱلْبُخْلِ",
+    "variantText": "بِٱلْبَخَلِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L084-بالبخل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L084-بالبخل-1-w2",
+        "variantId": "v-L084-بالبخل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 89,
+        "sourceReference": "صفحة المصحف 84 · صفحة المصدر 89",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمَعْ فِي حَدِيدٍ فَتْحُ سُكْنِ الْبُخْلِ وَالضَّمِّ شَمْلَلَا"
+      }
+    ],
+    "description": "بفتح الباء والخاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمَعْ فِي حَدِيدٍ فَتْحُ سُكْنِ الْبُخْلِ وَالضَّمِّ شَمْلَلَا"
+      }
+    ]
+  }
+]

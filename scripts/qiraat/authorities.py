@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """Arabic authority name -> canonical Q-ID.
 
-The single most dangerous string in this whole dataset is the bare word "خلف". It is TWO
-different people:
+The word "خلف" can denote two authorities:
     خلف عن حمزة  = Q06-R01 (a narrator)
     خلف العاشر   = Q10     (a reader, one of the ten)
-The source writes both as "خلف" and relies on context. This module therefore refuses to
-resolve a bare "خلف" at all — the data must say KHALAF10 or KHALAF_HAMZA explicitly.
+Project convention: bare "خلف" means Q06-R01. Q10 can also be identified by its named
+narrators (إسحاق/إدريس), including the explicit compounds "إسحاق عن خلف" and "إدريس عن خلف".
 """
 
 READERS = {
@@ -28,6 +27,14 @@ NARRATORS = {
     'إسحاق': 'Q10-R01', 'إدريس': 'Q10-R02',
 }
 
+# Explicit reader-narrator compounds found in the verse apparatus. The word «خلف»
+# here is governed by the named narrator, so these whole-name matches refer to Q10;
+# an unqualified standalone «خلف» still resolves to Q06-R01 below.
+NARRATOR_ALIASES = {
+    'إسحاق عن خلف': 'Q10-R01',
+    'إدريس عن خلف': 'Q10-R02',
+}
+
 # Explicit, unambiguous aliases used by the data files.
 ALIAS = {
     'KHALAF10': 'Q10',          # خلف العاشر — the reader
@@ -39,6 +46,7 @@ ALIAS = {
 ALL = {}
 ALL.update(READERS)
 ALL.update(NARRATORS)
+ALL.update(NARRATOR_ALIASES)
 ALL.update(ALIAS)
 
 READER_OF = {n: r for n, r in
@@ -54,9 +62,7 @@ class BadAuthority(Exception):
 def resolve(name: str) -> str:
     name = name.strip()
     if name == 'خلف':
-        raise BadAuthority(
-            'Bare "خلف" is ambiguous (Q06-R01 خلف عن حمزة vs Q10 خلف العاشر). '
-            'Use KHALAF10 or KHALAF_HAMZA.')
+        return NARRATORS['خلف عن حمزة']
     if name == 'الدوري':
         raise BadAuthority(
             'Bare "الدوري" is ambiguous (Q03-R01 عن أبي عمرو vs Q07-R02 عن الكسائي). '

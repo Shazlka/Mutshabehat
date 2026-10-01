@@ -142,6 +142,8 @@ export interface QiraatVariant {
   operation: VariantOperation
   hafsText: string
   variantText: string
+  /** Source wording/action detail that distinguishes otherwise identical reading forms. */
+  description?: string
   /** Present when the variant text needs the Uthmani rasm distinct from a plain-Unicode rendering. */
   uthmaniText?: string
   differenceType: DifferenceType
@@ -237,6 +239,10 @@ export interface QiraatRulingAttribution {
   action: string
   /** "وقفًا" / "وصلًا" / "بخلف عنه" — the source's own qualifier, verbatim. */
   condition?: string
+  /** Wajh number (1 = first face); >1 marks a further valid face for the same authority. */
+  wajhOrder?: number
+  /** «الخلاف» — the reviewer's note on where the faces differ. */
+  wajhNote?: string
 }
 
 export interface QiraatRulingReading {
@@ -273,6 +279,8 @@ export interface QiraatRuling {
   /** عد الآي only: ayah-counting schools, a taxonomy unrelated to the ten readers. */
   countSchools?: string[]
   notes?: string
+  /** Exact source refinements kept separately so additive imports never rewrite prior notes. */
+  sourceNotes?: string[]
   createdAt: string
   updatedAt: string
 }

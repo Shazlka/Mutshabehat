@@ -1,14 +1,75 @@
-# Handoff — Mutshabehat V2 (state as of 2026-09-17)
+# Handoff — Mutshabehat V2 (latest update: 2026-09-29, see §0 first)
+
+## 0. Session state 2026-09-29 (Review Editor + Mushaf Qiraat fixes) — START HERE
+
+### Start a session over SSH
+```bash
+ssh <your-user>@youssefs-mac-mini          # Tailscale name/IP; DB migrations must run on the Mini
+cd ~/Projects/mutshabehat-v2 && git pull origin main && claude
+```
+Prompt: "Read HANDOFF.md §0, PROJECT_MASTER.md, CLAUDE.md, top 3 CHANGELOG entries; continue from Open items."
+If `next build/dev` says "Supabase URL and API key are required": `env -u __NEXT_PROCESSED_ENV npm run build`.
+
+### Done and pushed to `main` (Vercel auto-deploys)
+| Item | Status |
+|---|---|
+| USUL_MIM_JAM / USUL_MADD / USUL_SAKT word-anchored + coloured (`20260929140000`) | applied to live |
+| `qiraat_review_create_entry` page-column fix (`20260929130000`) | applied to live |
+| Wajh number + «الخلاف» on Mushaf cards (`20260929120000`) | applied to live |
+| Locus revival trigger + repair (`20260929150000`) | applied to live 2026-09-29 |
+| `/api/mushaf-1441/qiraat` logs `qiraat_export_page` errors instead of silent fixture fallback | deployed |
+| nquran.com reference for all 114 surahs (6,236 ayahs, lazy per-surah JSON, `scripts/qiraat/build_nquran_reference.py`) | deployed; not browser-checked |
+
+Root cause of the invisible 2:3 رَزَقْنَـٰهُمْ entry: its locus `l-2-3-7` was soft-deleted (deleting the earlier
+two-word versions soft-deleted the empty locus; `qiraat_review_create_entry` re-used it by position without
+checking `deleted_at`; `qiraat_export_page` skips entries on deleted loci).
+
+### Open items
+1. **Apply `20260929150000_qiraat_entry_insert_revives_locus.sql` on the Mac Mini** (backup first):
+   ```bash
+   cd "/Volumes/External Mini/Projects/apps/mutshabehat-selfhost"
+   docker compose exec -T db pg_dump -U postgres -Fc postgres > backups/pre-locus-revive-$(date +%Y%m%dT%H%M%SZ).dump
+   docker compose exec -T db psql -U postgres -d postgres -v ON_ERROR_STOP=1 --single-transaction \
+     < ~/Projects/mutshabehat-v2/supabase/migrations/20260929150000_qiraat_entry_insert_revives_locus.sql
+   docker compose exec -T db psql -U postgres -d postgres -c "NOTIFY pgrst, 'reload schema';"
+   ```
+   Rollback: `supabase/rollbacks/20260929150000_qiraat_entry_insert_revives_locus.down.sql`.
+2. **Verify:** `SELECT e.id, e.verification_status, l.deleted_at FROM qiraat_entries e JOIN qiraat_loci l ON l.id=e.locus_id
+   WHERE l.surah_number=2 AND l.start_ayah=3 AND l.start_word=7 AND e.deleted_at IS NULL;` → `deleted_at` NULL.
+   Then hard-refresh `/mushaf-1441` page 2, «مقارنة القراءات» + «عرض بيانات قيد المراجعة»: word 7 (not يُنفِقُونَ)
+   must be pink and listed in the sidebar.
+3. After confirmation: change "Not yet applied to live" → "applied to live 2026-09-29" for `20260929150000` in both
+   `CHANGELOG.md` and the `# Changelog` of `CLAUDE.md`; commit + push.
+4. Optional: open `/mushaf-1441/review` on a non-Baqarah surah (e.g. 36, 112) and switch surahs to confirm the nquran panel loads/reloads.
+
+### Facts worth remembering
+- Soft-delete chain: deleting the last live entry soft-deletes the locus → export hides it → API falls back to static fixtures on RPC error/empty.
+- Mushaf draws markers only for rulings whose `qiraat_categories.is_word_anchored` is true.
+- nquran data is display-only, never authoritative; files in `src/app/mushaf-1441/review/_lib/reference/nquran/surah-NNN.json`, loader `_lib/nquranReference.ts`.
+- Cloud sessions can't reach production/live DB; live diagnosis relies on SQL the owner runs and pastes back. Wide-window Vercel log queries time out.
+- Checks: `npm run typecheck`, `npm run test:qiraat:review` (53/53), `npm run build`.
+
+The sections below are the older 2026-09-20 handoff (Qiraat import status, user rules, older open items); still valid unless §0 contradicts.
+
+---
+
 
 For the next agent picking up this project. Read this first, then `PROJECT_MASTER.md` (full reference:
 locations, backend, architecture, troubleshooting) and `CLAUDE.md` (gotchas + mandatory changelog).
 
-**Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/17
-— pages 1–20 of «مصحف القراءات العشر» are imported and live, the أصول rulings colour the words, and the
-three colour systems on the page (notes / متشابهات / قراءات) are now mutually exclusive.
-**The user's stated next activity is visually reviewing those 20 imported pages, one by one**, against
+**Where the project is right now:** the Mushaf reader gained a full Qiraat Ashr layer over 2026-09-16/20
+— pages 1–244, 249–267, and 305–537 (non-contiguous — surahs 25–56 bulk-imported) are imported
+(1,850 variants, 8,044 أصول rulings across 479 pages, 125 pages remaining),
+the أصول rulings colour the words, and the three colour systems on the page (notes / متشابهات / قراءات)
+are now mutually exclusive.
+**The user's stated next activity is visually reviewing the imported pages, one by one**, against
 the paper original, using the built-in review mode. Do not start new feature work ahead of that
 without being asked.
+
+**Colouring invariant (2026-09-20):** pages 249–267 have been audited twice for reader-specific
+colour coverage, including 15:82 ﴿بُيُوتًا﴾ and 15:87 ﴿وَٱلْقُرْءَانَ﴾. New imports must retain the
+data → fixture → repository loader → `rulingMarkerForWord` path documented in
+`docs/qiraat/05-ui-ux.md`; validate generated anchors and direct fixture loads before release.
 
 ---
 
@@ -71,6 +132,7 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 | Commit | Change |
 |---|---|
+| (2026-09-20) | **Qiraat pages 249–267 imported**: Ar-Ra'd, Ibrahim and Al-Hijr from the supplied ayah tables; +57 variants and +52 reader-specific أصول rulings. All fixtures are loader-wired and token-anchored; universal tajwid and contradictory/self-questioning source rows were deliberately omitted. Fixture-only; no DB write. |
 | `8a0fe08` | **One reader layer at a time** + long-press haptic. `ReaderLayer` enum replaces three independent booleans; a press is answered by the active layer only; `haptics.ts` (new). See `PROJECT_MASTER.md` §13. |
 | `5b02897` | **Annotations on/off switch** ("ن"), auto-cleared when the Qiraat layer came on (that auto-off is now subsumed by the exclusivity rule above). Fixed the memo-identity bug that made the first cut of the toggle do nothing. |
 | `05bc02b` | **Permanent Qiraat sidebar** (desktop / iPad landscape, 330px), a متشابهات toggle ("م"), and per-word أصول explanation grouped **by action** (﴿تَرْضَىٰ﴾ → «إمالة → حمزة/الكسائي/خلف العاشر» and «تقليل → ورش»). `PROJECT_MASTER.md` §12 written. |
@@ -86,13 +148,28 @@ and `stats/page.tsx` have `no-explicit-any` errors.
 
 ### 5.1 Qiraat — the live thread
 
-- **Visual review of pages 1–20 is the user's next activity.** Open the reader in مقارنة القراءات,
+- **Visual review of the imported pages (1–244 and 305–359) is the user's next activity.** Open the reader in مقارنة القراءات,
   then burger/sidebar → «مراجعة المواضع المستوردة». Every imported locus gets a ring (amber unchecked,
   green confirmed, red wrong), with a «بقي N من M» counter and a JSON export of the verdicts.
   Verdicts live in `localStorage` (`mushaf1441:qiraat-review:v1`) — **per device, not synced**.
   Feeding the exported verdicts back into the dataset is not built yet.
-- **584 pages left to import** (21–604). The recipe, the five non-negotiable rules and the six
-  generator invariants are in `PROJECT_MASTER.md` §12. Do not improvise around it.
+- **210 pages left to import** (225–304, 313–358, and 538–604). The page table is deliberately **not**
+  contiguous now — 224 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
+- **305 pages left to import** (245–304 and 360–604). The page table is deliberately **not**
+  contiguous now — 244 → 305 is a legal jump and nothing assumes a dense range. The recipe, the five
+  non-negotiable rules, the six generator invariants, the four anchor shapes that cost 23 rejections
+  Surahs 25–56 (pages 359–537) were bulk-imported by `scripts/qiraat/import_surah_tables.py`,
+  which drops anything it cannot prove clean (see `docs/qiraat/surahs-25-56-dropped.md`); coverage
+  there is intentionally partial.
+  in the 22–41 batch and the classification rules for an ayah-by-ayah source are in
+  `PROJECT_MASTER.md` §12 (§12.4b for the anchor shapes, §12.5 for سورة مريم). Do not improvise around it.
+- **سور مريم وطه والأنبياء والحج والمؤمنون والنور came from different sources** — user-supplied ayah-by-ayah tables, not the PDF —
+  so their records carry their own `src` instead of a PDF page. Source cautions and omissions are
+  listed in `PROJECT_MASTER.md` §12.5 and are the first things to check on the paper original. ميم
+  الجمع and universal tajwid rows were left out: this dataset records differences, not agreed rules.
+- **Pages 22–41 carry their own source defects**, all in `PROJECT_MASTER.md` §12.5: three corrected
+  slips (page 34 كثير→كبير، page 38 خير→خبير، page 41 إني→مني) and eight `؟`-marked entries omitted
+  rather than guessed. Resolve these against the paper original first.
 - **3 loci held at `NEEDS_MANUAL_REVIEW`**, each with the defect recorded: 2:83 تعبدون (حمزة والكسائي
   in both أوجه, يعقوب unaccounted for), 2:93 قلوبهم العجل (خلف in two of three), 2:105 ينزل (the
   source omits أبو جعفر entirely).
@@ -166,6 +243,11 @@ changing anything about what a tap or long-press on a word does.
   before the state change.
 - Measuring: a prefetched turn is ~1 ms render→commit, 0 slot renders. Re-check after reader changes
   (instrument a render counter locally, don't ship it).
+- Qiraat page fixtures are loaded directly in the browser through `FixtureQiraatRepository` and
+  prefetched from `slotGroups`; in spread mode every group contributes both page leaves. The loaded
+  window is published to React state once, after all its chunks resolve. Keep `/api/mushaf-1441/qiraat`
+  for external/API consumers, but do not put it back in the reader's flip path. Performance tests
+  block the route and require both pages of the mounted next spread to be colored before a turn.
 
 ## 6. Key files map (recently touched)
 

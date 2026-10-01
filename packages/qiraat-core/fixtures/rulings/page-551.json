@@ -1,0 +1,635 @@
+[
+  {
+    "id": "r-p551-IMALAH_TAQLIL-جاءك-0",
+    "pageNumber": 551,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 12,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 12,
+    "baseText": "جَآءَكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "r-p551-IMALAH_TAQLIL-موسا-1",
+    "pageNumber": 551,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 5,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 5,
+    "baseText": "مُوسَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "مُوسَىٰ → مُوسَى | بالتقليل",
+      "موسـى → موسِـى | قللها الدوري"
+    ]
+  },
+  {
+    "id": "r-p551-IMALAH_TAQLIL-زاغوا-2",
+    "pageNumber": 551,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 5,
+    "startToken": 15,
+    "endToken": 15,
+    "endAyah": 5,
+    "baseText": "زَاغُوٓا۟",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-TAGHYIR_HAMZ-المومنات-3",
+    "pageNumber": 551,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 12,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 12,
+    "baseText": "ٱلْمُؤْمِنَـٰتُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "الْمُؤْمِنَاتُ → الْمُومِنَاتُ | إبدال الهمزة واواً | user-supplied JSON row 4279; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
+  },
+  {
+    "id": "r-p551-TAGHYIR_HAMZ-ياتين-4",
+    "pageNumber": 551,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 12,
+    "startToken": 21,
+    "endToken": 21,
+    "endAyah": 12,
+    "baseText": "يَأْتِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "يَأْتِينَ → يَاتِينَ | إبدال الهمزة ألفاً | user-supplied JSON row 4280; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
+  },
+  {
+    "id": "r-p551-TAGHYIR_HAMZ-توذونني-5",
+    "pageNumber": 551,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 5,
+    "startToken": 7,
+    "endToken": 7,
+    "endAyah": 5,
+    "baseText": "تُؤْذُونَنِى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "تُؤْذُونَنِي → تُوذُونَنِي | إبدال الهمزة واواً | user-supplied JSON row 4283; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e"
+    ]
+  },
+  {
+    "id": "r-p551-HAMZATAN_KALIMATAYN-النبيء_اذا-6",
+    "pageNumber": 551,
+    "category": "HAMZATAN_KALIMATAYN",
+    "categoryAr": "الهمزتان من كلمتين",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 12,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 12,
+    "baseText": "ٱلنَّبِىُّ إِذَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "تسهيل الهمزة الثانية أو إبدالها واواً"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تسهيل الهمزة الثانية أو إبدالها واواً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "تسهيل الهمزة الثانية أو إبدالها واواً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تسهيل الهمزة الثانية أو إبدالها واواً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-IKHFA-rule-60-13-6",
+    "pageNumber": 551,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 13,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 13,
+    "baseText": "قَوْمًا غَضِبَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-IDGHAM_SAGHIR-واستغفر-7",
+    "pageNumber": 551,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 12,
+    "startToken": 32,
+    "endToken": 32,
+    "endAyah": 12,
+    "baseText": "وَٱسْتَغْفِرْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير",
+        "condition": "بخلف عن الدوري"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير",
+        "condition": "إدغام بلا خلاف عن السوسي"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "بين وَٱسْتَغْفِرْ ولَهُنَّ؛ الدوري بخلف، والسوسي بلا خلاف.",
+    "sourceNotes": [
+      {
+        "sourceReference": "NQuran، العشر الصغرى، الممتحنة 12",
+        "sourceText": "الإدغام الصغير: ﴿وَٱسْتَغْفِرْ لَهُنَّ﴾: أبو عمرو بخلف عن الدوري."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-WAQF_RASM-لم-9",
+    "pageNumber": 551,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 2,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 2,
+    "baseText": "لِمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "البزي عن ابن كثير بخلف، ويعقوب؛ المصدر ذكر رويس والبزي، والمصدر المحقق يثبت يعقوب في الموضعين.",
+    "sourceNotes": [
+      {
+        "sourceReference": "NQuran، العشر الصغرى، الصف 2",
+        "sourceText": "الوقف على مرسوم الخط: ﴿لِمَ﴾ (معاً): يقف عليها رويس والبزي (بخلف) بهاء السكت ﴿لِمَهْ﴾."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p551-WAQF_RASM-لم-10",
+    "pageNumber": 551,
+    "category": "WAQF_RASM",
+    "categoryAr": "الوقف على مرسوم الخط",
+    "color": "#EA580C",
+    "wordAnchored": true,
+    "surah": 61,
+    "ayah": 5,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 5,
+    "baseText": "لِمَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q02-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "الوقف بهاء السكت: لِمَهْ",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "البزي عن ابن كثير بخلف، ويعقوب؛ المصدر ذكر رويس والبزي، والمصدر المحقق يثبت يعقوب في الموضعين.",
+    "sourceNotes": [
+      {
+        "sourceReference": "NQuran، العشر الصغرى، الصف 2",
+        "sourceText": "الوقف على مرسوم الخط: ﴿لِمَ﴾ (معاً): يقف عليها رويس والبزي (بخلف) بهاء السكت ﴿لِمَهْ﴾."
+      }
+    ],
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-060-12-32-4281-IDGHAM_KABIR",
+    "pageNumber": 551,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 60,
+    "ayah": 12,
+    "startToken": 32,
+    "endToken": 33,
+    "endAyah": 12,
+    "baseText": "وَٱسْتَغْفِرْ لَهُنَّ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الراء في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الراء في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَاسْتَغْفِرْ لَهُنَّ → وَاسْتَغْفِر لَّهُنَّ | إدغام الراء في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

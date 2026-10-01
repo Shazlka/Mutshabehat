@@ -30,6 +30,14 @@ type Stats = {
 export default async function StatsPage() {
   const supabase = await createServerSupabaseClient()
 
+  // Both RPCs are independent and each costs a full network round trip to the database host, so
+  // the test-answer totals are requested now and awaited further down instead of after the main
+  // stats finished (saves one round trip, ~1 s). A failure just hides that section.
+  const testStatsRequest = Promise.resolve(supabase.rpc('get_test_answer_stats')).then(
+    (result) => result,
+    () => ({ data: null, error: new Error('unavailable') }),
+  )
+
   // ── Primary path: one aggregate RPC (see supabase-stats-aggregates.sql) ──
   // Replaces 12 queries + 4 full-table transfers. Falls back to per-row
   // aggregation in JS when the function isn't deployed yet — so this is safe to
@@ -117,7 +125,7 @@ export default async function StatsPage() {
   // ── Test-mode right/wrong totals (table from 20260915180000_test_answers.sql) ──
   let testStats: TestAnswerStatsData | null = null
   try {
-    const { data, error } = await supabase.rpc('get_test_answer_stats')
+    const { data, error } = await testStatsRequest
     if (!error && data) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const d = data as any
@@ -178,7 +186,7 @@ export default async function StatsPage() {
   return (
     <div className="max-w-3xl mx-auto px-5 md:px-8 py-8 md:py-14 animate-fade-in">
       <header className="mb-10">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Dashboard</p>
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Dashboard</p>
         <h1 className="text-[28px] md:text-[36px] font-bold tracking-tight leading-none">إحصائيات</h1>
         <p className="mt-2 text-[13px] text-[var(--color-ink-muted)]">نظرة عامة على مكتبتك</p>
       </header>
@@ -189,7 +197,7 @@ export default async function StatsPage() {
              className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-25 blur-3xl"
              style={{ background: 'oklch(0.70 0.20 50)' }} />
         <div className="relative">
-          <div className="text-[10px] tracking-widest opacity-70 uppercase mb-2">إجمالي المجموعات</div>
+          <div className="text-[11px] tracking-widest opacity-70 uppercase mb-2">إجمالي المجموعات</div>
           <div className="text-[80px] md:text-[120px] font-bold tracking-tight leading-none tabular-nums">
             <CountUp to={groupsRes.count ?? 0} />
           </div>
@@ -209,7 +217,7 @@ export default async function StatsPage() {
         ].map((s, i) => (
           <div key={i} className="p-5 rounded-xl border animate-fade-rise"
             style={{ background: `var(${s.bg})`, borderColor: `oklch(from var(${s.fg}) l c h / 0.2)`, animationDelay: `${i * 80}ms` }}>
-            <div className="text-[10px] tracking-widest uppercase mb-2 font-bold" style={{ color: `var(${s.fg})` }}>{s.label}</div>
+            <div className="text-[11px] tracking-widest uppercase mb-2 font-bold" style={{ color: `var(${s.fg})` }}>{s.label}</div>
             <div className="text-[36px] font-bold tabular-nums leading-none" style={{ color: `var(${s.fg})` }}>
               <CountUp to={s.value} duration={700 + i * 120} />
             </div>
@@ -262,7 +270,7 @@ export default async function StatsPage() {
                        style={{ width: `${pct}%`, background: `var(${meta.varName})` }} />
                 </div>
                 <span className="text-[12px] tabular-nums font-mono text-[var(--color-ink-muted)] w-20 text-left">
-                  {count} <span className="text-[10px]">({pct.toFixed(0)}%)</span>
+                  {count} <span className="text-[11px]">({pct.toFixed(0)}%)</span>
                 </span>
               </li>
             )

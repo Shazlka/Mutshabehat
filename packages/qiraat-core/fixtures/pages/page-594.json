@@ -1,0 +1,361 @@
+[
+  {
+    "id": "v-SRC593-89-25-3-YUADHAB",
+    "surah": 89,
+    "ayah": 25,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُعَذِّبُ",
+    "variantText": "يُعَذَّبُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00Z",
+    "updatedAt": "2026-09-22T00:00:00Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "SRC593-89-25-3-YUADHAB",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC593-89-25-3-YUADHAB",
+        "variantId": "v-SRC593-89-25-3-YUADHAB",
+        "sourceName": "qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "source page 593 record for 89:25 (mapped to fixture page 594)",
+        "sourceText": "يُعَذَّبُ",
+        "verificationNotes": "Attached source record mapped to real Mushaf token."
+      }
+    ],
+    "description": "يُعَذَّبُ",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SRC594-90-13-1-FAKK",
+    "surah": 90,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "فَكُّ رَقَبَةٍ",
+    "variantText": "فَكَّ رَقَبَةً",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00Z",
+    "updatedAt": "2026-09-22T00:00:00Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "SRC594-90-13-1-FAKK",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-SRC594-90-13-1-FAKK",
+        "variantId": "v-SRC594-90-13-1-FAKK",
+        "sourceName": "qiraat_pages_585_604.source.json",
+        "sourceType": "other",
+        "sourceReference": "source page 594 record R013",
+        "sourceText": "فَكَّ رَقَبَةً",
+        "verificationNotes": "Attached source record mapped to real Mushaf token."
+      },
+      {
+        "id": "s-SUSI-090-13-1-4503",
+        "variantId": "v-SRC594-90-13-1-FAKK",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4503; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَكُّ رَقَبَةٍ → فَكَّ رَقَبَةً | فتح الكاف فعلاً ماضياً ونصب رقبة مفعولاً به لأبي عمرو وابن كثير والكسائي وقرأ حفص برفع الكاف مضافاً وجر رقبة"
+      },
+      {
+        "id": "s-DURI-090-13-1-r2717",
+        "variantId": "v-SRC594-90-13-1-FAKK",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2717; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فـكُّ رقبـةٍ → فـكَّ رقبـةً | فـتح الدوري الكاف ونصب التاء"
+      }
+    ],
+    "description": "فَكَّ رَقَبَةً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-089-23-1-4499-performance",
+    "surah": 89,
+    "ayah": 23,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَجِا۟ىٓءَ",
+    "variantText": "وَجِا۟ىٓءَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-089-23-1-4499",
+    "locusType": "performance_variant",
+    "performanceNote": "إشمام الكسر ضماً لهشام والكسائي ورويس، وأبو عمرو بالكسر الخالص كحفص",
+    "sources": [
+      {
+        "id": "s-SUSI-089-23-1-4499",
+        "variantId": "v-SUSI-089-23-1-4499-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4499; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَجِيءَ → وَجِيءَ | إشمام الكسر ضماً لهشام والكسائي ورويس، وأبو عمرو بالكسر الخالص كحفص"
+      }
+    ],
+    "description": "إشمام الكسر ضماً لهشام والكسائي ورويس، وأبو عمرو بالكسر الخالص كحفص"
+  },
+  {
+    "id": "v-SUSI-089-26-2-4502-performance",
+    "surah": 89,
+    "ayah": 26,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يُوثِقُ",
+    "variantText": "يُوثِقُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-089-26-2-4502",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الثاء للكسائي ويعقوب، وأبو عمرو بكسرها كحفص",
+    "sources": [
+      {
+        "id": "s-SUSI-089-26-2-4502",
+        "variantId": "v-SUSI-089-26-2-4502-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4502; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُوثِقُ → يُوثَقُ | فتح الثاء للكسائي ويعقوب، وأبو عمرو بكسرها كحفص"
+      }
+    ],
+    "description": "فتح الثاء للكسائي ويعقوب، وأبو عمرو بكسرها كحفص"
+  },
+  {
+    "id": "v-SUSI-090-14-1-4504",
+    "surah": 90,
+    "ayah": 14,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَوْ إِطْعَـٰمٌۭ",
+    "variantText": "أَوْ أَطْعَمَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-090-14-1-4504",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-090-14-1-4504",
+        "variantId": "v-SUSI-090-14-1-4504",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4504; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَوْ إِطْعَامٌ → أَوْ أَطْعَمَ | فعلاً ماضياً مفتوح الهمزة والعين لأبي عمرو وابن كثير وقرأ حفص مصدراً منوناً"
+      },
+      {
+        "id": "s-DURI-090-14-1-r2718",
+        "variantId": "v-SUSI-090-14-1-4504",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2718; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أو إطعـامٌ → أو أطعَـمَ | فتح الدوري الهمزة وحذف الألف بعد العين وفتح الميم"
+      }
+    ],
+    "description": "فعلاً ماضياً مفتوح الهمزة والعين لأبي عمرو وابن كثير وقرأ حفص مصدراً منوناً"
+  },
+  {
+    "id": "v-SUSI-090-15-1-4505-performance",
+    "surah": 90,
+    "ayah": 15,
+    "startToken": 1,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يَتِيمًۭا ذَا مَقْرَبَةٍ",
+    "variantText": "يَتِيمًۭا ذَا مَقْرَبَةٍ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-090-15-1-4505",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-090-15-1-4505",
+        "variantId": "v-SUSI-090-15-1-4505-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4505; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَتِيمًا ذَا مَقْرَبَةٍ → يَتِيمًا ذَا مَقْرَبَةٍ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-090-17-5-4506-performance",
+    "surah": 90,
+    "ayah": 17,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ءَامَنُوا۟",
+    "variantText": "ءَامَنُوا۟",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-090-17-5-4506",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-090-17-5-4506",
+        "variantId": "v-SUSI-090-17-5-4506-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4506; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "آمَنُوا → آمَنُوا | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-SUSI-090-18-3-4507-performance",
+    "surah": 90,
+    "ayah": 18,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمَيْمَنَةِ",
+    "variantText": "ٱلْمَيْمَنَةِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-090-18-3-4507",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-090-18-3-4507",
+        "variantId": "v-SUSI-090-18-3-4507-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4507; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمَيْمَنَةِ → الْمَيْمَنَةِ | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  },
+  {
+    "id": "v-DURI-090-5-1-r2714-performance",
+    "surah": 90,
+    "ayah": 5,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُ",
+    "variantText": "أَيَحْسَبُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-090-5-1-r2714",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-090-5-1-r2714",
+        "variantId": "v-DURI-090-5-1-r2714-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2714; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أيـحسَب → أيـحسِب | كسر الدوري السين"
+      }
+    ],
+    "description": "كسر الدوري السين"
+  },
+  {
+    "id": "v-DURI-090-7-1-r2715-performance",
+    "surah": 90,
+    "ayah": 7,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُ",
+    "variantText": "أَيَحْسَبُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-090-7-1-r2715",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الدوري السين",
+    "sources": [
+      {
+        "id": "s-DURI-090-7-1-r2715",
+        "variantId": "v-DURI-090-7-1-r2715-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2715; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أيـحسَب → أيـحسِب | كسر الدوري السين"
+      }
+    ],
+    "description": "كسر الدوري السين"
+  }
+]

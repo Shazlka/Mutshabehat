@@ -1,0 +1,21 @@
+{
+  "page": 500,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 5,
+  "rulings": 9,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p500-s45a15b0"
+  ]
+}

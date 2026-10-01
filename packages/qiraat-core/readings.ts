@@ -27,6 +27,16 @@ export function getReading(readingId: ReadingId): QiraatReading {
   return QIRAAT_READING_BY_ID[readingId]
 }
 
+/**
+ * Runtime-safe lookup for imported/source-backed data.  Reading IDs are a closed
+ * master-data set, but an annotation can outlive a seed update or contain a
+ * malformed source value.  Presentation code must not crash the Mushaf while
+ * showing such a record.
+ */
+export function getReadingOrNull(readingId: string): QiraatReading | null {
+  return QIRAAT_READING_BY_ID[readingId as ReadingId] ?? null
+}
+
 export function readingsOfReader(readerId: string): QiraatReading[] {
   return QIRAAT_READINGS.filter((reading) => reading.readerId === readerId)
 }

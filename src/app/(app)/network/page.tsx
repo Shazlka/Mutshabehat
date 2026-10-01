@@ -38,7 +38,7 @@ export default async function NetworkPage() {
   return (
     <div className="h-full flex flex-col px-3 md:px-6 pt-5 md:pt-6">
       <header className="shrink-0 mb-4 px-2">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Network</p>
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Network</p>
         <h1 className="text-[22px] md:text-[26px] font-bold tracking-tight leading-none">
           شبكة السور
         </h1>

@@ -1,0 +1,226 @@
+[
+  {
+    "id": "v-L158-لا_يخرج-1-w2",
+    "surah": 7,
+    "ayah": 58,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَخْرُجُ",
+    "variantText": "لَا يُخْرَجُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01"
+    ],
+    "locusId": "L158-لا_يخرج-1",
+    "locusType": "multi_word_variant",
+    "notes": "لابن وردان وجهان: فتح الياء وضم الراء كالجماعة، وضم الياء وفتح الراء (بخلف عنه وهو من مفردات الدرة).",
+    "sources": [
+      {
+        "id": "s-L158-لا_يخرج-1-w2",
+        "variantId": "v-L158-لا_يخرج-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 163,
+        "sourceReference": "صفحة المصحف 158 · صفحة المصدر 163",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَلَا يَخْرُجُ اضْمُمْ وَافْتَحِ الْخُلْفُ بُجِّلَا"
+      }
+    ],
+    "description": "بضم الياء وفتح الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَلَا يَخْرُجُ اضْمُمْ وَافْتَحِ الْخُلْفُ بُجِّلَا"
+      }
+    ],
+    "alternateOf": [
+      "Q08-R01"
+    ]
+  },
+  {
+    "id": "v-L158-نكدا-1-w2",
+    "surah": 7,
+    "ayah": 58,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "نَكِدًۭا ۚ",
+    "variantText": "نَكَدًۭا ۚ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L158-نكدا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L158-نكدا-1-w2",
+        "variantId": "v-L158-نكدا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 163,
+        "sourceReference": "صفحة المصحف 158 · صفحة المصدر 163",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: نَكَدًا أَلَا افْتَحَنْ"
+      }
+    ],
+    "description": "بفتح النون والكاف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "نَكَدًا أَلَا افْتَحَنْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L158-من_اله_غيرهو-1-w2",
+    "surah": 7,
+    "ayah": 59,
+    "startToken": 12,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "مِّنْ إِلَـٰهٍ غَيْرُهُۥٓ",
+    "variantText": "مِّنْ إِلَـٰهٍ غَيْرِهِۦٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L158-من_اله_غيرهو-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L158-من_اله_غيرهو-1-w2",
+        "variantId": "v-L158-من_اله_غيرهو-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 163,
+        "sourceReference": "صفحة المصحف 158 · صفحة المصدر 163",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرَا مِنْ إِلَٰهٍ غَيْرُهُ خَفْضُ رَفْعِهِ بِكُلٍّ رَسَا — D: وَخَفْضُ إِلَٰهٍ غَيْرُهُ نَكَدًا أَلَا"
+      }
+    ],
+    "description": "بخفض الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرَا مِنْ إِلَٰهٍ غَيْرُهُ خَفْضُ رَفْعِهِ بِكُلٍّ رَسَا"
+      },
+      {
+        "source": "D",
+        "text": "وَخَفْضُ إِلَٰهٍ غَيْرُهُ نَكَدًا أَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L158-من_اله_غيرهو-2-w2",
+    "surah": 7,
+    "ayah": 65,
+    "startToken": 11,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "مِّنْ إِلَـٰهٍ غَيْرُهُۥٓ ۚ",
+    "variantText": "مِّنْ إِلَـٰهٍ غَيْرِهِۦٓ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L158-من_اله_غيرهو-2",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L158-من_اله_غيرهو-2-w2",
+        "variantId": "v-L158-من_اله_غيرهو-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 163,
+        "sourceReference": "صفحة المصحف 158 · صفحة المصدر 163",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَرَا مِنْ إِلَٰهٍ غَيْرُهُ خَفْضُ رَفْعِهِ بِكُلٍّ رَسَا — D: وَخَفْضُ إِلَٰهٍ غَيْرُهُ نَكَدًا أَلَا"
+      }
+    ],
+    "description": "بخفض الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَرَا مِنْ إِلَٰهٍ غَيْرُهُ خَفْضُ رَفْعِهِ بِكُلٍّ رَسَا"
+      },
+      {
+        "source": "D",
+        "text": "وَخَفْضُ إِلَٰهٍ غَيْرُهُ نَكَدًا أَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L158-ابلغكم-1-w2",
+    "surah": 7,
+    "ayah": 62,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أُبَلِّغُكُمْ",
+    "variantText": "أُبْلِغُكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L158-ابلغكم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L158-ابلغكم-1-w2",
+        "variantId": "v-L158-ابلغكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 163,
+        "sourceReference": "صفحة المصحف 158 · صفحة المصدر 163",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَالْخِفُّ أُبْلِغُكُمْ حَلَا — D: اشْدُدْ مَعْ أُبَلِّغُكُمْ حَلَا"
+      }
+    ],
+    "description": "بالتخفيف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَالْخِفُّ أُبْلِغُكُمْ حَلَا"
+      },
+      {
+        "source": "D",
+        "text": "اشْدُدْ مَعْ أُبَلِّغُكُمْ حَلَا"
+      }
+    ]
+  }
+]

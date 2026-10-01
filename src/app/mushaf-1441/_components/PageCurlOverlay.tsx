@@ -35,6 +35,7 @@ type Props = {
   /** That incoming page's rect, measured before the turn (so no layout is forced here). */
   backRect: PageCurlRect | null
   onFinish: (committed: boolean) => void
+  paperColor?: string
 }
 
 type Point = { x: number; y: number }
@@ -83,7 +84,7 @@ function restoreStyles(el: HTMLElement | null, props: string[]) {
 }
 
 const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverlay(
-  { leaf, peelFrom, travel, mode, front, still, resolveBack, backRect, onFinish },
+  { leaf, peelFrom, travel, mode, front, still, resolveBack, backRect, onFinish, paperColor },
   ref,
 ) {
   const revealRef = useRef<SVGSVGElement>(null)
@@ -304,7 +305,7 @@ const PageCurlOverlay = forwardRef<PageCurlHandle, Props>(function PageCurlOverl
         </defs>
         <g ref={flapShadeGroupRef}>
           {/* A single page has nothing printed on its back: blank paper. */}
-          <polygon ref={flapPaperRef} fill="#fffdf6" style={{ display: still === null ? undefined : 'none' }} />
+          <polygon ref={flapPaperRef} fill={paperColor ?? '#fffdf6'} style={{ display: still === null ? undefined : 'none' }} />
           <polygon ref={flapShadePolygonRef} fill={`url(#${gradientId}-flap)`} />
         </g>
       </svg>

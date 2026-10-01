@@ -1,0 +1,610 @@
+[
+  {
+    "id": "r-p529-s54a11b1",
+    "pageNumber": 529,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 11,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 11,
+    "baseText": "مُّنْهَمِرٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p529-s54a15b1",
+    "pageNumber": 529,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 15,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 15,
+    "baseText": "ءَايَةًۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p529-s54a25b2",
+    "pageNumber": 529,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 25,
+    "startToken": 9,
+    "endToken": 9,
+    "endAyah": 25,
+    "baseText": "أَشِرٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p529-s54a26b1",
+    "pageNumber": 529,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 26,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 26,
+    "baseText": "ٱلْأَشِرُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p529-IMALAH_TAQLIL-فالتقي-0",
+    "pageNumber": 529,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 12,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 12,
+    "baseText": "فَٱلْتَقَى",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p529-IDGHAM_SAGHIR-كذبت_ثمود-1",
+    "pageNumber": 529,
+    "category": "IDGHAM_SAGHIR",
+    "categoryAr": "المدغم الصغير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 23,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 23,
+    "baseText": "كَذَّبَتْ ثَمُودُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إدغام صغير"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إدغام صغير"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إدغام صغير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إدغام صغير",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      "كذّبتْ ثـمود → كذّبت ثَّـمود | إدغام صغير للدوري"
+    ]
+  },
+  {
+    "id": "r-p529-HAMZATAN_KALIMA-اءلقي-2",
+    "pageNumber": 529,
+    "category": "HAMZATAN_KALIMA",
+    "categoryAr": "الهمزتان من كلمة",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 25,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 25,
+    "baseText": "أَءُلْقِىَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R01",
+        "action": "التسهيل مع الإدخال",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "التسهيل مع الإدخال",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "التسهيل مع الإدخال",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "التسهيل مع الإدخال",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "التسهيل مع الإدخال",
+        "condition": "بخلف عنه"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "التسهيل بلا إدخال"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "التسهيل بلا إدخال"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "التسهيل بلا إدخال"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "التسهيل بلا إدخال"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "التسهيل بلا إدخال"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "التسهيل بلا إدخال"
+      },
+      {
+        "authorityId": "Q04-R01",
+        "action": "التحقيق مع الإدخال وعدمه"
+      },
+      {
+        "authorityId": "Q01-R01",
+        "action": "التسهيل مع الإدخال"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "التسهيل مع الإدخال"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "التسهيل مع الإدخال"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "التسهيل بلا إدخال",
+        "condition": "في وجهه الثاني"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "التسهيل بلا إدخال",
+        "condition": "في وجهه الثاني"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R01",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R01",
+        "action": "التحقيق مع الإدخال وعدمه",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R01",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "التسهيل مع الإدخال",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "التسهيل بلا إدخال",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "في وجهه الثاني",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p529-YAAT_ZAWAID-عذابي_ونذر-2",
+    "pageNumber": 529,
+    "category": "YAAT_ZAWAID",
+    "categoryAr": "ياءات الزوائد",
+    "color": "#CA8A04",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 16,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 16,
+    "baseText": "عَذَابِى وَنُذُرِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "إثبات الياء وصلاً"
+      },
+      {
+        "authorityId": "Q02-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q02-R02",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q09-R01",
+        "action": "إثبات الياء في الحالين"
+      },
+      {
+        "authorityId": "Q09-R02",
+        "action": "إثبات الياء في الحالين"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "إثبات الياء وصلاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q02-R02",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R01",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q09-R02",
+        "action": "إثبات الياء في الحالين",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-054-7-2-4197-IMALAH_TAQLIL",
+    "pageNumber": 529,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 7,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 7,
+    "baseText": "أَبْصَـٰرُهُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الصاد والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الصاد والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "أَبْصَارُهُمْ → أَبْصَارُهُمْ | إمالة فتحة الصاد والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-054-8-5-4199-IMALAH_TAQLIL",
+    "pageNumber": 529,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 54,
+    "ayah": 8,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 8,
+    "baseText": "ٱلْكَـٰفِرُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة فتحة الكاف والألف",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "الْكَافِرُونَ → الْكَافِرُونَ | إمالة فتحة الكاف والألف"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

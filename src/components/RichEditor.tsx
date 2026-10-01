@@ -68,7 +68,7 @@ export default function RichEditor({ value, onChange, placeholder }: Props) {
         data-placeholder={placeholder ?? ''}
         onInput={(e) => onChange((e.target as HTMLDivElement).innerHTML)}
         dir="rtl"
-        className="min-h-[100px] px-4 py-3 text-[14px] leading-[1.9] text-[var(--color-ink)] outline-none empty:before:content-[attr(data-placeholder)] empty:before:text-[var(--color-ink-muted)] empty:before:pointer-events-none" />
+        className="min-h-[100px] px-4 py-3 text-[14px] leading-[1.9] text-[var(--color-ink)] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--color-primary)] empty:before:content-[attr(data-placeholder)] empty:before:text-[var(--color-ink-muted)] empty:before:pointer-events-none" />
     </div>
   )
 }

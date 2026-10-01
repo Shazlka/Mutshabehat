@@ -1,0 +1,23 @@
+{
+  "page": 564,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 11,
+  "rulings": 6,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p564-YAAT_IDAFA-معي_او-3",
+    "r-p564-YAAT_IDAFA-اهلكني_الله-1",
+    "r-p564-IKHFA-rule-68-3-3"
+  ]
+}

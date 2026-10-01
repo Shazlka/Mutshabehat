@@ -72,7 +72,7 @@ export default function SurahFilter({ surahCounts }: Props) {
 
             {!filter.trim() && withGroups.length > 0 && (
               <>
-                <div className="px-3 pt-3 pb-1 text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold">
+                <div className="px-3 pt-3 pb-1 text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold">
                   الأكثر استخداماً
                 </div>
                 <ul className="px-2 pb-2">
@@ -94,7 +94,7 @@ export default function SurahFilter({ surahCounts }: Props) {
               </>
             )}
 
-            <div className="px-3 pt-2 pb-1 text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold border-t border-[var(--color-border-soft)]">
+            <div className="px-3 pt-2 pb-1 text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold border-t border-[var(--color-border-soft)]">
               كل السور
             </div>
             <ul className="px-2 pb-3">
@@ -110,7 +110,7 @@ export default function SurahFilter({ surahCounts }: Props) {
                           : 'hover:bg-[var(--color-primary-soft)] hover:text-[var(--color-primary)]'
                     )}>
                     <span className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono tabular-nums opacity-50">{s.no}.</span>
+                      <span className="text-[11px] font-mono tabular-nums opacity-50">{s.no}.</span>
                       {s.name}
                     </span>
                     {s.count > 0 && (

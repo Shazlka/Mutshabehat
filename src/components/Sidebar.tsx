@@ -8,7 +8,7 @@ const NAV = [
   { href: '/',          label: 'المتشابهات',  count: 'groups' as const },
   { href: '/automated', label: 'الآلية',      count: null },
   { href: '/surahs',    label: 'السور',       count: null },
-  { href: '/test',      label: 'اختبار',      count: null },
+  { href: '/test',      label: 'اختبر حفظك',      count: null },
   { href: '/mushaf-1441', label: 'المصحف',   count: null },
   { href: '/network',   label: 'شبكة السور',  count: null },
   { href: '/stats',     label: 'إحصائيات',   count: null },
@@ -18,7 +18,8 @@ const NAV = [
 
 interface Props {
   email: string
-  groupCount: number
+  /** null while the count is still streaming in: the badge keeps its space but stays hidden. */
+  groupCount: number | null
 }
 
 export default function Sidebar({ email, groupCount }: Props) {
@@ -34,10 +35,10 @@ export default function Sidebar({ email, groupCount }: Props) {
             ق
           </div>
           <div>
-            <h1 className="text-[15px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
+            <p className="text-[15px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
               متشابهات القرآن
-            </h1>
-            <p className="text-[9px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
+            </p>
+            <p className="text-[11px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
               Similarity Explorer
             </p>
           </div>
@@ -65,9 +66,10 @@ export default function Sidebar({ email, groupCount }: Props) {
                       'text-[11px] font-mono tabular-nums px-1.5 py-0.5 rounded-md transition-colors',
                       active
                         ? 'bg-white/20 text-[var(--color-paper)]'
-                        : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]'
+                        : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]',
+                      groupCount === null && 'invisible'
                     )}>
-                      {groupCount}
+                      {groupCount ?? 0}
                     </span>
                   )}
                 </Link>

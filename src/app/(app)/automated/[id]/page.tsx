@@ -41,7 +41,7 @@ export default async function AutomatedDetailPage({ params }: { params: Promise<
       </Link>
 
       <header className="mb-8">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Automated #{row.id}</p>
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Automated #{row.id}</p>
         <div className="flex items-baseline gap-2.5">
           {row.color && (
             <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full shrink-0"

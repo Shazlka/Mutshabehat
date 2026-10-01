@@ -1,0 +1,22 @@
+{
+  "page": 552,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 14,
+  "variants": 2,
+  "rulings": 12,
+  "supported": 14,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p552-YAAT_IDAFA-من_بعدي_اسمهو-9",
+    "r-p552-YAAT_IDAFA-انصاري_الي_الله-10"
+  ]
+}

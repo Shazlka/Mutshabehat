@@ -1,0 +1,178 @@
+[
+  {
+    "id": "v-L065-هاانتم-1-w2",
+    "surah": 3,
+    "ayah": 119,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓأَنتُمْ",
+    "variantText": "هَـٰٓأَنتُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L065-هاانتم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L065-هاانتم-1-w2",
+        "variantId": "v-L065-هاانتم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 70,
+        "sourceReference": "صفحة المصحف 65 · صفحة المصدر 70",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَلَا أَلِفٌ فِي هَا أَنْتُمْ زَكَا جَنًى وَسَهِّلْ أَخَا حَمْدٍ وَكَمْ مُبْدِلٍ جَلَا — D: وَسَهِّلَا أَرَأَيْتَ وَإِسْرَائِيلَ كَائِنْ وَمَدَّ أُدْ ... وَحَقِّقْهُمَا مَعَ الطُّولِ حَلَا"
+      }
+    ],
+    "description": "إثبات الألف وتسهيل الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَلَا أَلِفٌ فِي هَا أَنْتُمْ زَكَا جَنًى وَسَهِّلْ أَخَا حَمْدٍ وَكَمْ مُبْدِلٍ جَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَسَهِّلَا أَرَأَيْتَ وَإِسْرَائِيلَ كَائِنْ وَمَدَّ أُدْ ... وَحَقِّقْهُمَا مَعَ الطُّولِ حَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L065-هاانتم-1-w4",
+    "surah": 3,
+    "ayah": 119,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "هَـٰٓأَنتُمْ",
+    "variantText": "هَأَنتُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02"
+    ],
+    "locusId": "L065-هاانتم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L065-هاانتم-1-w4",
+        "variantId": "v-L065-هاانتم-1-w4",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 70,
+        "sourceReference": "صفحة المصحف 65 · صفحة المصدر 70",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَلَا أَلِفٌ فِي هَا أَنْتُمْ زَكَا جَنًى وَسَهِّلْ أَخَا حَمْدٍ وَكَمْ مُبْدِلٍ جَلَا — D: وَسَهِّلَا أَرَأَيْتَ وَإِسْرَائِيلَ كَائِنْ وَمَدَّ أُدْ ... وَحَقِّقْهُمَا مَعَ الطُّولِ حَلَا"
+      }
+    ],
+    "description": "حذف الألف وتحقيق الهمزة",
+    "wajhIndex": 4,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَلَا أَلِفٌ فِي هَا أَنْتُمْ زَكَا جَنًى وَسَهِّلْ أَخَا حَمْدٍ وَكَمْ مُبْدِلٍ جَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَسَهِّلَا أَرَأَيْتَ وَإِسْرَائِيلَ كَائِنْ وَمَدَّ أُدْ ... وَحَقِّقْهُمَا مَعَ الطُّولِ حَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L065-يضركم-1-w2",
+    "surah": 3,
+    "ayah": 120,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "يَضُرُّكُمْ",
+    "variantText": "يَضِرْكُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L065-يضركم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L065-يضركم-1-w2",
+        "variantId": "v-L065-يضركم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 70,
+        "sourceReference": "صفحة المصحف 65 · صفحة المصدر 70",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: يَضِرْكُمْ بِكَسْرِ الضَّادِ مَعْ جَزْمِ رَائِهِ سَمَا وَيَضُمُّ الْغَيْرُ وَالرَّاءَ ثَقَّلَا — D: وَاقْرَأْ يَضُرُّكُمْ أَلَا"
+      }
+    ],
+    "description": "بكسر الضاد وجزم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "يَضِرْكُمْ بِكَسْرِ الضَّادِ مَعْ جَزْمِ رَائِهِ سَمَا وَيَضُمُّ الْغَيْرُ وَالرَّاءَ ثَقَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاقْرَأْ يَضُرُّكُمْ أَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-003-118-9-0240-performance",
+    "surah": 3,
+    "ayah": 118,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لَا يَأْلُونَكُمْ",
+    "variantText": "لَا يَأْلُونَكُمْ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-003-118-9-0240",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-003-118-9-0240",
+        "variantId": "v-SUSI-003-118-9-0240-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 240; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَا يَأْلُونَكُمْ → لَا يَالُونَكُمْ | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  }
+]

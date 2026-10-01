@@ -1,0 +1,200 @@
+[
+  {
+    "id": "v-L336-منسكا-1-w2",
+    "surah": 22,
+    "ayah": 34,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مَنسَكًۭا",
+    "variantText": "مَنسِكًۭا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L336-منسكا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L336-منسكا-1-w2",
+        "variantId": "v-L336-منسكا-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي مَنْسَكًا كَسْرُ السِّينِ شَفَا — D: وَفِي مَنْسَكٍ كَأَصْلِهِ"
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مَنْسَكًا كَسْرُ السِّينِ شَفَا"
+      },
+      {
+        "source": "D",
+        "text": "وَفِي مَنْسَكٍ كَأَصْلِهِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L336-يدافع-1-w2",
+    "surah": 22,
+    "ayah": 38,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُدَٰفِعُ",
+    "variantText": "يَدْفَعُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L336-يدافع-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L336-يدافع-1-w2",
+        "variantId": "v-L336-يدافع-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَدْفَعُ فِي الْحَجِّ حَقٌّ — D: وَيَدْفَعُ كَأَصْلِهِ"
+      }
+    ],
+    "description": "بفتح الياء وسكون الدال وفتح الفاء بغير ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَدْفَعُ فِي الْحَجِّ حَقٌّ"
+      },
+      {
+        "source": "D",
+        "text": "وَيَدْفَعُ كَأَصْلِهِ"
+      }
+    ]
+  },
+  {
+    "id": "v-D336-فتخطفه-w2",
+    "surah": 22,
+    "ayah": 31,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "فَتَخْطَفُهُ",
+    "variantText": "فَتَخَطَّفُهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D336-فتخطفه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D336-فتخطفه-w2",
+        "variantId": "v-D336-فتخطفه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P336-R01446",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَتَخْطَفُهُ﴾: بفتح التاء وإسكان الخاء وتخفيف الطاء ﴿فَتَخْطَفُهُ﴾ للجمهور؛ وبفتح الخاء وتشديد الطاء ﴿فَتَخَطَّفُهُ﴾ لنافع وأبي جعفر."
+      }
+    ],
+    "description": "بفتح الخاء وتشديد الطاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D336-لن-تنال",
+    "surah": 22,
+    "ayah": 37,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "لَن يَنَالَ",
+    "variantText": "لَن تَنَالَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "بتاء التأنيث",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D336-لن-تنال",
+        "variantId": "v-D336-لن-تنال",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P336-R01448",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتاء التأنيث: لن تنال ليعقوب."
+      }
+    ],
+    "description": "بتاء التأنيث: لن تنال ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D336-تناله",
+    "surah": 22,
+    "ayah": 37,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَنَالُهُ",
+    "variantText": "تَنَالُهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "بتاء التأنيث",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D336-تناله",
+        "variantId": "v-D336-تناله",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P336-R01448",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بتاء التأنيث: تناله ليعقوب."
+      }
+    ],
+    "description": "بتاء التأنيث: تناله ليعقوب.",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

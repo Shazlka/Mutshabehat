@@ -1,0 +1,95 @@
+[
+  {
+    "id": "v-L094-غير_اولي-1-w2",
+    "surah": 4,
+    "ayah": 95,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "غَيْرُ أُو۟لِى",
+    "variantText": "غَيْرَ أُو۟لِى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L094-غير_اولي-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L094-غير_اولي-1-w2",
+        "variantId": "v-L094-غير_اولي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 99,
+        "sourceReference": "صفحة المصحف 94 · صفحة المصدر 99",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَغَيْرَ أُولِي بِالرَّفْعِ فِي حَقِّ نَهْشَلَا — D: وَغَيْرُ انْصِبَا"
+      }
+    ],
+    "description": "بالنصب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَغَيْرَ أُولِي بِالرَّفْعِ فِي حَقِّ نَهْشَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَغَيْرُ انْصِبَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L094-توفيهم-1-w2",
+    "surah": 4,
+    "ayah": 97,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "تَوَفَّىٰهُمُ",
+    "variantText": "تَّوَفَّاهُمُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "L094-توفيهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L094-توفيهم-1-w2",
+        "variantId": "v-L094-توفيهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 99,
+        "sourceReference": "صفحة المصحف 94 · صفحة المصدر 99",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي الْوَصْلِ لِلْبَزِّيِّ شَدِّدْ تَيَمَّمُوا وَتَاءَ تَوَفَّى فِي النِّسَا عَنْهُ مُجْمِلَا"
+      }
+    ],
+    "description": "بتشديد التاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي الْوَصْلِ لِلْبَزِّيِّ شَدِّدْ تَيَمَّمُوا وَتَاءَ تَوَفَّى فِي النِّسَا عَنْهُ مُجْمِلَا"
+      }
+    ]
+  }
+]

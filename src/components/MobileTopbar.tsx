@@ -9,7 +9,7 @@ const NAV = [
   { href: '/',          label: 'المتشابهات',  count: 'groups' as const },
   { href: '/automated', label: 'الآلية',      count: null },
   { href: '/surahs',    label: 'السور',       count: null },
-  { href: '/test',      label: 'اختبار',      count: null },
+  { href: '/test',      label: 'اختبر حفظك',      count: null },
   { href: '/mushaf-1441', label: 'المصحف',   count: null },
   { href: '/network',   label: 'شبكة السور',  count: null },
   { href: '/stats',     label: 'إحصائيات',   count: null },
@@ -19,7 +19,8 @@ const NAV = [
 
 interface Props {
   email: string
-  groupCount: number
+  /** null while the count is still streaming in: the badge keeps its space but stays hidden. */
+  groupCount: number | null
 }
 
 export default function MobileTopbar({ email, groupCount }: Props) {
@@ -62,15 +63,15 @@ export default function MobileTopbar({ email, groupCount }: Props) {
           </button>
           
           <Link href="/" className="hover:opacity-80 transition-opacity block select-none">
-            <h1 className="text-[15px] font-bold tracking-tight text-[var(--color-ink)]">متشابهات القرآن</h1>
-            <p className="text-[9px] tracking-wider text-[var(--color-ink-muted)] uppercase mt-0.5">
+            <p className="text-[15px] font-bold tracking-tight text-[var(--color-ink)]">متشابهات القرآن</p>
+            <p className="text-[11px] tracking-wider text-[var(--color-ink-muted)] uppercase mt-0.5">
               Similarity Explorer
             </p>
           </Link>
         </div>
 
-        <span className="px-2 py-1 rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary)] text-[11px] font-bold font-mono tabular-nums">
-          {groupCount}
+        <span className={cn('px-2 py-1 rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary)] text-[11px] font-bold font-mono tabular-nums', groupCount === null && 'invisible')}>
+          {groupCount ?? 0}
         </span>
       </header>
 
@@ -102,7 +103,7 @@ export default function MobileTopbar({ email, groupCount }: Props) {
               <h2 className="text-[14px] font-bold tracking-tight text-[var(--color-ink)] leading-none">
                 متشابهات القرآن
               </h2>
-              <p className="text-[8px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
+              <p className="text-[11px] mt-1 text-[var(--color-ink-muted)] tracking-widest uppercase">
                 Similarity Explorer
               </p>
             </div>
@@ -142,9 +143,10 @@ export default function MobileTopbar({ email, groupCount }: Props) {
                         'text-[11px] font-mono tabular-nums px-1.5 py-0.5 rounded-md transition-colors',
                         active
                           ? 'bg-white/20 text-[var(--color-paper)]'
-                          : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]'
+                          : 'bg-[var(--color-primary-soft)] text-[var(--color-primary)]',
+                        groupCount === null && 'invisible'
                       )}>
-                        {groupCount}
+                        {groupCount ?? 0}
                       </span>
                     )}
                   </Link>

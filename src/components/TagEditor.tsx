@@ -80,7 +80,7 @@ export default function TagEditor({ groupId }: Props) {
       {/* Available tags to add */}
       {allTags.filter((t) => !groupTags.some((g) => g.id === t.id)).length > 0 && (
         <div>
-          <div className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold mb-1.5">
+          <div className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold mb-1.5">
             وسوم متاحة
           </div>
           <div className="flex flex-wrap gap-1.5">

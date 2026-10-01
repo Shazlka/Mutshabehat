@@ -1,0 +1,312 @@
+[
+  {
+    "id": "r-p489-s43a5b2",
+    "pageNumber": 489,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 5,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 5,
+    "baseText": "ٱلذِّكْرَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p489-IMALAH_TAQLIL-حم-0",
+    "pageNumber": 489,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 1,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 1,
+    "baseText": "حمٓ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      },
+      {
+        "authorityId": "Q03-R01",
+        "action": "قلل الدوري الحاء"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "بالتقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R01",
+        "action": "قلل الدوري الحاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "بالتقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P489-R02932",
+    "sourceText": "الممال والمقلل: ﴿حم﴾: أمال الحاء ابن ذكوان، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو. ﴿وَمَضَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02932",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/1",
+    "sourceNotes": [
+      "حم → حم | بالتقليل",
+      "حـم → حِـم | قلل الدوري الحاء"
+    ]
+  },
+  {
+    "id": "r-p489-IMALAH_TAQLIL-ومضا-1",
+    "pageNumber": 489,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 8,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 8,
+    "baseText": "وَمَضَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "notes": "المصدر يذكر «خلف» مجرداً؛ أُسند إلى خلف عن حمزة (Q06) وفق قاعدة المشروع، ولا يُفترض خلف العاشر دون تصريح مستقل.",
+    "sourceRecordId": "DOCX-P489-R02932",
+    "sourceText": "الممال والمقلل: ﴿حم﴾: أمال الحاء ابن ذكوان، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش وأبو عمرو. ﴿وَمَضَىٰ﴾: حمزة، الكسائي، خلف، وقللها ورش بخلف.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02932",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/8"
+  },
+  {
+    "id": "r-p489-TAGHYIR_HAMZ-يستهزءون-2",
+    "pageNumber": 489,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 7,
+    "startToken": 8,
+    "endToken": 8,
+    "endAyah": 7,
+    "baseText": "يَسْتَهْزِءُونَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "حذف الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "حذف الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceRecordId": "DOCX-P489-R02933",
+    "sourceText": "تغيير الهمز: ﴿يَأْتِيهِم﴾: ورش، السوسي، أبو جعفر. ﴿يَسْتَهْزِءُونَ﴾: بحذف الهمزة لأبي جعفر.",
+    "sourceReference": "qiraat_records.jsonl، DOCX-P489-R02933",
+    "verificationNotes": "قوبل نص الأصل بمرجع القراءات المستقل: https://quranpedia.net/qiraat/az-zukhruf/7"
+  },
+  {
+    "id": "r-p489-IKHFA-rule-43-9-3",
+    "pageNumber": 489,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 9,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 9,
+    "baseText": "مَّنْ خَلَقَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-043-10-2-3911-IDGHAM_KABIR",
+    "pageNumber": 489,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 10,
+    "startToken": 2,
+    "endToken": 3,
+    "endAyah": 10,
+    "baseText": "جَعَلَ لَكُمُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "جَعَلَ لَكُمُ → جَعَل لَّكُمُ | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-SUSI-043-10-6-3913-IDGHAM_KABIR",
+    "pageNumber": 489,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 43,
+    "ayah": 10,
+    "startToken": 6,
+    "endToken": 7,
+    "endAyah": 10,
+    "baseText": "وَجَعَلَ لَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام اللام في اللام"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام اللام في اللام",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "وَجَعَلَ لَكُم → وَجَعَل لَّكُم | إدغام اللام في اللام"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

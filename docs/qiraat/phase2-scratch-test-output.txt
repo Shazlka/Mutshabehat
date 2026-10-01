@@ -1,0 +1,122 @@
+
+=== 0. reset scratch from backup ===
+entries|12788
+checksum|52839d155fd0f90f999822a43e8198f5
+
+=== 0b. regression probe BEFORE migration ===
+t
+catalog deda6b5cab58173de2e704f2b15706f7
+catalog entities 30
+annotations 001:002:002 0
+export p1 54db67ee476a37f711f47adc590819f3
+export p245 ca46f38366e900d7f39c6960ddb88bcc
+export p584 cb5280984d390072b8cf070ca2fb99cb
+cache rows before 1
+created, faces 1
+cache rows for new annotation 1
+updated version 2
+
+cache rows after soft delete 0
+revisions for test annotation 3
+cache rows end 1
+quran_words checksum 52839d155fd0f90f999822a43e8198f5
+
+=== 1. apply UP (single transaction) ===
+UP ok
+
+=== 2. apply UP again (idempotency) ===
+UP (2nd) ok
+IDEMPOTENT: schema after 2nd UP identical to 1st
+
+=== 3. regression probe AFTER migration ===
+t
+catalog deda6b5cab58173de2e704f2b15706f7
+catalog entities 30
+annotations 001:002:002 0
+export p1 54db67ee476a37f711f47adc590819f3
+export p245 ca46f38366e900d7f39c6960ddb88bcc
+export p584 cb5280984d390072b8cf070ca2fb99cb
+cache rows before 1
+created, faces 1
+cache rows for new annotation 1
+updated version 2
+
+cache rows after soft delete 0
+revisions for test annotation 3
+cache rows end 1
+quran_words checksum 52839d155fd0f90f999822a43e8198f5
+--- diff before/after (only the new annotation uuid-dependent lines may differ):
+NO DIFFERENCES
+
+=== 4. behaviour tests ===
+   info   |                     e1                     |                 e2                 |                    l1                    |           l2           |                e2b                 |   n2b   
+----------+--------------------------------------------+------------------------------------+------------------------------------------+------------------------+------------------------------------+---------
+ fixtures | v-AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 | v-AUDIT-P248-105-ABUJAAFAR-a105-t1 | AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 | AUDIT-P248-105-a105-t1 | v-AUDIT-P248-105-IBNKATHIR-a105-t1 | Q02-R01
+NOTICE:  PASS T1 D8 Hafs as main reading is rejected: rejected (QIRAAT_D8: entry v-AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 lists Hafs (Q05-R02) as a main reading; Hafs is th)
+NOTICE:  PASS T2 D8 reader-level Asim (expands to Hafs) is rejected: rejected (QIRAAT_D8: entry v-AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 lists Hafs (Q05-R02) as a main reading; Hafs is th)
+NOTICE:  PASS T3 Q13 Hafs as wajh 2 without a note is rejected: rejected (QIRAAT_D8: entry v-AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 lists Hafs (Q05-R02) as a main reading; Hafs is th)
+NOTICE:  PASS T4 Q13 Hafs as wajh 2 with a note is accepted: accepted
+NOTICE:  PASS T5 wajh_order/is_default mismatch is rejected: rejected (new row for relation "qiraat_entry_authorities" violates check constraint "qiraat_entry_authorities_wajh_order)
+NOTICE:  PASS T6 flagged entry may keep Hafs (quarantine): accepted
+NOTICE:  PASS T7 un-flagging an entry that lists Hafs is rejected: rejected (QIRAAT_D8: entry v-AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 lists Hafs (Q05-R02) as a main reading; Hafs is th)
+NOTICE:  PASS T8 same narrator in two readings at one location is rejected: rejected (QIRAAT_NARRATOR_TWICE: locus AUDIT-P248-105-a105-t1 has a narrator in two readings without a separate wajh: Q0)
+NOTICE:  PASS T9 same narrator as a separate wajh is accepted: accepted
+NOTICE:  PASS T10 removing every reading of a location is rejected: rejected (QIRAAT_EMPTY_LOCUS: location AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 has no reading)
+NOTICE:  PASS T11 soft-deleting the only entry of a location is rejected: rejected (QIRAAT_EMPTY_LOCUS: location AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 has no reading)
+NOTICE:  PASS T12 soft-deleting the entry and its location together is accepted: accepted
+NOTICE:  PASS T13 a new location with no reading is rejected: rejected (QIRAAT_EMPTY_LOCUS: location TEST-EMPTY has no reading)
+NOTICE:  PASS T14 remainder rebuild: 19 narrators, Hafs implied
+             2
+     info      |   op   |        table_name        |     field      |    device_id    |                            value                             
+---------------+--------+--------------------------+----------------+-----------------+--------------------------------------------------------------
+ edit_log rows | UPDATE | qiraat_entries           | notes          | scratch-ipad-01 | "edited in test"
+ edit_log rows | UPDATE | qiraat_entries           | review_status  | scratch-ipad-01 | "reviewed"
+ edit_log rows | UPDATE | qiraat_variant_details   | description_ar | scratch-ipad-01 | "وصف تجريبي"
+ edit_log rows | INSERT | qiraat_entry_authorities |                | scratch-ipad-01 | {"id": 129786, "entry_id": "v-AUDIT-DOCX-P539-R03406-0605b3f
+ edit_log rows | DELETE | qiraat_evidence_links    |                | scratch-ipad-01 | {"id": 13038, "page_id": 3133, "locus_id": "AUDIT-DOCX-P539-
+NOTICE:  PASS T15 every edit wrote edit_log rows with device_id
+ undone_rows 
+           5
+NOTICE:  PASS T16 undo of the whole transaction restored entry, detail, readings and evidence exactly
+NOTICE:  PASS T17 original edit_log rows marked undone; undo rows written: 5
+NOTICE:  PASS T18 undo of a field that changed again is refused: rejected (UNDO_CONFLICT qiraat_entries.notes on v-AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 changed since edit_log 59)
+NOTICE:  PASS T19 undo newest then oldest restores the original value
+NOTICE:  PASS T20 anon cannot read edit_log: rejected (permission denied for table edit_log)
+NOTICE:  PASS T21 anon sees no unpublished rows through the review view (RLS kept)
+NOTICE:  PASS T22 anon cannot run undo: rejected (permission denied for function edit_log_undo)
+        info        | surah | ayah | start_word | kind  |  category_code  |  hafs_text  | reading_text |                                    narrators                                    | review_status 
+--------------------+-------+------+------------+-------+-----------------+-------------+--------------+---------------------------------------------------------------------------------+---------------
+ v_page_variants(3) |     2 |    6 |          5 | farsh |                 | عَلَيْهِمْ       | عَلَيْهُمْ        | HAM-KHL HAM-KLD YAQ-RWS YAQ-RWH                                                 | unreviewed
+ v_page_variants(3) |     2 |    6 |          6 | usul  | HAMZATAN_KALIMA | ءَأَنذَرْتَهُمْ    |              | NAF-QAL NAF-WAR IKT-BAZ IKT-QUN ABA-DUR ABA-SUS IAM-HSH AJF-IWR AJF-IJM YAQ-RWS | unreviewed
+ v_page_variants(3) |     2 |    6 |         11 | usul  | TAGHYIR_HAMZ    | يُؤْمِنُونَ      |              | NAF-WAR ABA-SUS AJF-IWR AJF-IJM                                                 | unreviewed
+ v_page_variants(3) |     2 |    6 |         11 | usul  | WAQF_HAMZA      | يُؤْمِنُونَ      |              | HAM-KHL HAM-KLD                                                                 | unreviewed
+ v_page_variants(3) |     2 |    7 |          8 | usul  | IMALAH_TAQLIL   | أَبْصَـٰرِهِمْ     |              | NAF-WAR ABA-DUR ABA-SUS KIS-DUR                                                 | unreviewed
+ v_page_variants(3) |     2 |    7 |          9 | usul  | IMALAH_TAQLIL   | غِشَـٰوَةٌۭ ۖ      |              | KIS-ABH KIS-DUR                                                                 | unreviewed
+ v_page_variants(3) |     2 |    7 |          9 | usul  | TARK_GHUNNA     | غِشَـٰوَةٌۭ ۖ وَلَهُمْ |              | HAM-KHL                                                                         | unreviewed
+ v_page_variants(3) |     2 |    8 |          2 | usul  | IMALAH_TAQLIL   | ٱلنَّاسِ       |              | ABA-DUR                                                                         | unreviewed
+ v_page_variants(3) |     2 |    8 |          3 | usul  | TARK_GHUNNA     | مَن يَقُولُ     |              | HAM-KHL                                                                         | unreviewed
+ v_page_variants(3) |     2 |    8 |          5 | usul  | MADD_BADAL      | ءَامَنَّا       |              | NAF-WAR                                                                         | unreviewed
+ v_page_variants(3) |     2 |    8 |          8 | usul  | MADD_BADAL      | ٱلْـَٔاخِرِ      |              | NAF-WAR                                                                         | unreviewed
+ v_page_variants(3) |     2 |    8 |         11 | usul  | TAGHYIR_HAMZ    | بِمُؤْمِنِينَ     |              | NAF-WAR ABA-SUS AJF-IWR AJF-IJM                                                 | unreviewed
+    info     | rows  | pages | no_hafs_text | farsh | usul 
+-------------+-------+-------+--------------+-------+------
+ review rows | 12721 |   584 |            0 |  2873 | 9848
+               info                |         rule         | count 
+-----------------------------------+----------------------+-------
+ phase2 violations (existing data) | D8_HAFS_MAIN_READING |    90
+ phase2 violations (existing data) | EMPTY_LOCATION       |     5
+ phase2 violations (existing data) | NARRATOR_TWICE       |    94
+
+=== 5. apply DOWN ===
+DOWN ok
+REVERSIBLE: schema after DOWN identical to baseline
+
+=== 6. apply DOWN again (idempotency) ===
+DOWN (2nd) ok
+
+=== 7. re-apply UP ===
+UP (3rd) ok
+RE-APPLY: schema identical to first UP
+
+=== 8. quran_words checksum ===
+77429|52839d155fd0f90f999822a43e8198f5

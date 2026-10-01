@@ -1,0 +1,505 @@
+[
+  {
+    "id": "v-L305-زكريا-1-w2",
+    "surah": 19,
+    "ayah": 2,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "زَكَرِيَّآ",
+    "variantText": "زَكَرِيَّآءَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L305-زكريا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L305-زكريا-1-w2",
+        "variantId": "v-L305-زكريا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ زَكَرِيَّاءَ اثْبُتُوا بَعْدَ هَمْزِهِ كَمَا حَجَّ صَحْبٌ غَيْرَ شُعْبَةَ أَبْدَلَا"
+      }
+    ],
+    "description": "بهمزة ممدودة مفتوحة بعد الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ زَكَرِيَّاءَ اثْبُتُوا بَعْدَ هَمْزِهِ كَمَا حَجَّ صَحْبٌ غَيْرَ شُعْبَةَ أَبْدَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L305-يرثني_ويرث-1-w2",
+    "surah": 19,
+    "ayah": 6,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "يَرِثُنِى وَيَرِثُ",
+    "variantText": "يَرِثْنِى وَيَرِثْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L305-يرثني_ويرث-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L305-يرثني_ويرث-1-w2",
+        "variantId": "v-L305-يرثني_ويرث-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيَرِثْنِي بِالْجَزْمِ حُزْ كَفِلَ شَفَا — D: وَيَرِثْ بِالْجَزْمِ حُزْ فُزْ"
+      },
+      {
+        "id": "s-DURI-019-6-1-r1352",
+        "variantId": "v-L305-يرثني_ويرث-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1352; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـرثُني ويـرثُ → يـرثْني ويـرثْ | قرأ الدوري بـجزم الفعلين"
+      }
+    ],
+    "description": "بجزم الثاء فيهما جوابًا للطلب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيَرِثْنِي بِالْجَزْمِ حُزْ كَفِلَ شَفَا"
+      },
+      {
+        "source": "D",
+        "text": "وَيَرِثْ بِالْجَزْمِ حُزْ فُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L305-يازكريا-1-w2",
+    "surah": 19,
+    "ayah": 7,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "يَـٰزَكَرِيَّآ",
+    "variantText": "يَٰزَكَرِيَّآءُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L305-يازكريا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L305-يازكريا-1-w2",
+        "variantId": "v-L305-يازكريا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ زَكَرِيَّاءَ اثْبُتُوا بَعْدَ هَمْزِهِ كَمَا حَجَّ صَحْبٌ غَيْرَ شُعْبَةَ أَبْدَلَا"
+      }
+    ],
+    "description": "بهمزة ممدودة مضمومة بعد الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ زَكَرِيَّاءَ اثْبُتُوا بَعْدَ هَمْزِهِ كَمَا حَجَّ صَحْبٌ غَيْرَ شُعْبَةَ أَبْدَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L305-عتيا-1-w2",
+    "surah": 19,
+    "ayah": 8,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "عِتِيًّۭا",
+    "variantText": "عُتِيًّا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L305-عتيا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L305-عتيا-1-w2",
+        "variantId": "v-L305-عتيا-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا — D: وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      },
+      {
+        "id": "s-SUSI-019-8-14-2237",
+        "variantId": "v-L305-عتيا-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2237; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عِتِيًّا → عُتِيًّا | ضم العين"
+      },
+      {
+        "id": "s-DURI-019-8-14-r1356",
+        "variantId": "v-L305-عتيا-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1356; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "عِتِيّـاً → عُتِيّـاً | ضم الدوري العين"
+      }
+    ],
+    "description": "بضم العين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقُلْ عِتِيًّا صِلِيًّا مَعْ جِثِيًّا شَذًا عَلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاضْمُمْ عَتِيًّا وَبَابَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L305-خلقتك-1-w2",
+    "surah": 19,
+    "ayah": 9,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "خَلَقْتُكَ",
+    "variantText": "خَلَقْنَٰكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L305-خلقتك-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L305-خلقتك-1-w2",
+        "variantId": "v-L305-خلقتك-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي مَرْيَمٍ نُونٌ كَمَا صَحْبٌ أَعْمَلَا"
+      }
+    ],
+    "description": "بنون العظمة والألف بعدها",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مَرْيَمٍ نُونٌ كَمَا صَحْبٌ أَعْمَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L305-اليهم-1-w2",
+    "surah": 19,
+    "ayah": 11,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L305-اليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L305-اليهم-1-w2",
+        "variantId": "v-L305-اليهم-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-D305-نبشرك-w2",
+    "surah": 19,
+    "ayah": 7,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "نُبَشِّرُكَ",
+    "variantText": "نَبْشُرُكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D305-نبشرك",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D305-نبشرك-w2",
+        "variantId": "v-D305-نبشرك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P305-R01095",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نُبَشِّرُكَ﴾: بضم النون وكسر الشين مشددة للجمهور؛ وبفتح النون وضم الشين مخففة ﴿نَبْشُرُكَ﴾ لحمزة."
+      }
+    ],
+    "description": "بفتح النون وضم الشين مخففة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-019-2-1-2227",
+    "surah": 19,
+    "ayah": 2,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ذِكْرُ رَحْمَتِ",
+    "variantText": "ذِكْر رَّحْمَه",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-2-1-2227",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-019-2-1-2227",
+        "variantId": "v-SUSI-019-2-1-2227",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2227; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ذِكْرُ رَحْمَتِ → ذِكْر رَّحْمَه | إدغام الراء في الراء وبالهاء وقفاً"
+      }
+    ],
+    "description": "إدغام الراء في الراء وبالهاء وقفاً"
+  },
+  {
+    "id": "v-SUSI-019-6-2-2233-performance",
+    "surah": 19,
+    "ayah": 6,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَيَرِثُ",
+    "variantText": "وَيَرِثُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-6-2-2233",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الثاء",
+    "sources": [
+      {
+        "id": "s-SUSI-019-6-2-2233",
+        "variantId": "v-SUSI-019-6-2-2233-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2233; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَيَرِثُ → وَيَرِثْ | إسكان الثاء"
+      }
+    ],
+    "description": "إسكان الثاء"
+  },
+  {
+    "id": "v-SUSI-019-10-4-2241-performance",
+    "surah": 19,
+    "ayah": 10,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لِّىٓ",
+    "variantText": "لِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-019-10-4-2241",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-019-10-4-2241",
+        "variantId": "v-SUSI-019-10-4-2241-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2241; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِي → لِيَ | فتح الياء"
+      }
+    ],
+    "description": "فتح الياء"
+  },
+  {
+    "id": "v-DURI-019-2-2-r1350",
+    "surah": 19,
+    "ayah": 2,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "رَحْمَتِ",
+    "variantText": "رحـمة",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-019-2-2-r1350",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-019-2-2-r1350",
+        "variantId": "v-DURI-019-2-2-r1350",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1350; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رحمـت → رحـمة | ووقف الدوري بالهاء"
+      }
+    ],
+    "description": "ووقف الدوري بالهاء"
+  },
+  {
+    "id": "v-DURI-019-10-4-r1357-performance",
+    "surah": 19,
+    "ayah": 10,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "لِّىٓ ءَايَةًۭ ۚ",
+    "variantText": "لِّىٓ ءَايَةًۭ ۚ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-019-10-4-r1357",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-019-10-4-r1357",
+        "variantId": "v-DURI-019-10-4-r1357-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1357; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لـي ءاية → لـيَ ءاية | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
+  }
+]

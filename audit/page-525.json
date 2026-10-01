@@ -1,0 +1,22 @@
+{
+  "page": 525,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 7,
+  "rulings": 9,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p525-IKHFA-rule-52-35-3",
+    "r-p525-IKHFA-rule-52-43-3"
+  ]
+}

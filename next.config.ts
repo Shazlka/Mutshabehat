@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['127.0.0.1', 'localhost'],
   env: {
     // Expose the commit SHA so the UI can display the deployed build id.
     // Vercel sets VERCEL_GIT_COMMIT_SHA automatically on every deploy.

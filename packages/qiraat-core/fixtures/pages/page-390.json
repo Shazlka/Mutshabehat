@@ -1,0 +1,208 @@
+[
+  {
+    "id": "v-L390-s28a37b0-w1",
+    "surah": 28,
+    "ayah": 37,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَقَالَ مُوسَىٰ",
+    "variantText": "قَالَ مُوسَىٰ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L390-s28a37b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L390-s28a37b0-w1",
+        "variantId": "v-L390-s28a37b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بحذف الواو",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L390-s28a39b0-w1",
+    "surah": 28,
+    "ayah": 39,
+    "startToken": 11,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُرْجَعُونَ",
+    "variantText": "لَا يَرْجِعُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L390-s28a39b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L390-s28a39b0-w1",
+        "variantId": "v-L390-s28a39b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح الياء وكسر الجيم مبنياً للفاعل",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D390-ومن_تكون-w2",
+    "surah": 28,
+    "ayah": 37,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَمَن تَكُونُ",
+    "variantText": "وَمَن يَكُونُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D390-ومن_تكون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D390-ومن_تكون-w2",
+        "variantId": "v-D390-ومن_تكون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P390-R02003",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَمَن تَكُونُ﴾: بتاء التأنيث لنافع، وابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ وبياء التذكير ﴿وَمَن يَكُونُ﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بياء التذكير",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D390-لا_يرجعون-w2",
+    "surah": 28,
+    "ayah": 39,
+    "startToken": 11,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لَا يُرْجَعُونَ",
+    "variantText": "لَا يَرْجِعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D390-لا_يرجعون",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D390-لا_يرجعون-w2",
+        "variantId": "v-D390-لا_يرجعون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P390-R02004",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَا يُرْجَعُونَ﴾: بضم الياء وفتح الجيم لابن كثير، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر؛ وبفتح الياء وكسر الجيم ﴿لَا يَرْجِعُونَ﴾ للباقين."
+      }
+    ],
+    "description": "بفتح الياء وكسر الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-028-37-3-3088-performance",
+    "surah": 28,
+    "ayah": 37,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ",
+    "variantText": "رَبِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-028-37-3-3088",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-028-37-3-3088",
+        "variantId": "v-SUSI-028-37-3-3088-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3088; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَبِّي → رَبِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-028-38-19-3091-performance",
+    "surah": 28,
+    "ayah": 38,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "لَّعَلِّىٓ",
+    "variantText": "لَّعَلِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-028-38-19-3091",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-028-38-19-3091",
+        "variantId": "v-SUSI-028-38-19-3091-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3091; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَّعَلِّي → لَّعَلِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  }
+]

@@ -1,0 +1,299 @@
+[
+  {
+    "id": "r-p538-IMALAH_TAQLIL-استوا-0",
+    "pageNumber": 538,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 4,
+    "startToken": 10,
+    "endToken": 10,
+    "endAyah": 4,
+    "baseText": "ٱسْتَوَىٰ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceName": "تصحيح إسناد وفق قاعدة المشروع المعتمدة لخلف",
+        "sourceReference": "qiraat_records.jsonl، page 538",
+        "sourceText": "النص المصدر يذكر «خلف» فقط، من غير «خلف العاشر» أو تسمية إسحاق/إدريس؛ أُبقي الإسناد لخلَف عن حمزة (Q06)، ولم يُنسب لخلف العاشر (Q10).",
+        "verificationNotes": "تطبيق توجيه المستخدم: bare خلف = خلف عن حمزة؛ خلف العاشر لا يضاف إلا إذا صُرّح باسمه."
+      }
+    ]
+  },
+  {
+    "id": "r-p538-IMALAH_TAQLIL-النهار-1",
+    "pageNumber": 538,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 6,
+    "startToken": 4,
+    "endToken": 4,
+    "endAyah": 6,
+    "baseText": "ٱلنَّهَارِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p538-IMALAH_TAQLIL-الحسنا-2",
+    "pageNumber": 538,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 10,
+    "startToken": 33,
+    "endToken": 33,
+    "endAyah": 10,
+    "baseText": "ٱلْحُسْنَىٰ ۚ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceName": "تصحيح إسناد وفق قاعدة المشروع المعتمدة لخلف",
+        "sourceReference": "qiraat_records.jsonl، page 538",
+        "sourceText": "النص المصدر يذكر «خلف» فقط، من غير «خلف العاشر» أو تسمية إسحاق/إدريس؛ أُبقي الإسناد لخلَف عن حمزة (Q06)، ولم يُنسب لخلف العاشر (Q10).",
+        "verificationNotes": "تطبيق توجيه المستخدم: bare خلف = خلف عن حمزة؛ خلف العاشر لا يضاف إلا إذا صُرّح باسمه."
+      },
+      "الـحسنى → الـحسنِـى | قللها الدوري"
+    ]
+  },
+  {
+    "id": "r-SUSI-057-4-13-4218-IDGHAM_KABIR",
+    "pageNumber": 538,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 4,
+    "startToken": 13,
+    "endToken": 14,
+    "endAyah": 4,
+    "baseText": "يَعْلَمُ مَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام الميم في الميم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام الميم في الميم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied complete al-Susi source; source row retained verbatim.",
+    "sourceNotes": [
+      "يَعْلَمُ مَا → يَعْلَم مَّا | إدغام الميم في الميم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  },
+  {
+    "id": "r-DURI-057-8-11-r2454-TAGHYIR_HAMZ",
+    "pageNumber": 538,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 57,
+    "ayah": 8,
+    "startToken": 11,
+    "endToken": 12,
+    "endAyah": 8,
+    "baseText": "أَخَذَ مِيثَـٰقَكُمْ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "قرأ الدوري بضم الهمزة وكسر الخاء ورفع ميثاقـكم"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "قرأ الدوري بضم الهمزة وكسر الخاء ورفع ميثاقـكم",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "أخَـذَ ميثـاقَكم → أُخِـذَ ميثاقُكم | قرأ الدوري بضم الهمزة وكسر الخاء ورفع ميثاقـكم"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "id": "v-L334-والصابين-1-w2",
+    "surah": 22,
+    "ayah": 17,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلصَّـٰبِـِٔينَ",
+    "variantText": "وَٱلصَّـٰبِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L334-والصابين-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L334-والصابين-1-w2",
+        "variantId": "v-L334-والصابين-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَالصَّابِئُونَ خُذْ وَالصَّابِئِينَ انْقُلْ رِضىً وَفِي كِلَاهُمَا نَافِعٌ بِلَا هَمْزٍ تَلَا"
+      }
+    ],
+    "description": "بحذف الهمزة وياء ساكنة مدية بعد الباء المكسورة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَالصَّابِئُونَ خُذْ وَالصَّابِئِينَ انْقُلْ رِضىً وَفِي كِلَاهُمَا نَافِعٌ بِلَا هَمْزٍ تَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L334-هاذان-1-w2",
+    "surah": 22,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "۞ هَـٰذَانِ",
+    "variantText": "۞ هَـٰذَانِّ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L334-هاذان-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L334-هاذان-1-w2",
+        "variantId": "v-L334-هاذان-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَهَذَانِ حَقٌّ عَنْهُ فِي النَّمْلِ كُفِّلاَ — D: وَشَدِّدْ مَعًا حُزْ"
+      }
+    ],
+    "description": "بتشديد النون مع المد المشبع ست حركات",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَهَذَانِ حَقٌّ عَنْهُ فِي النَّمْلِ كُفِّلاَ"
+      },
+      {
+        "source": "D",
+        "text": "وَشَدِّدْ مَعًا حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L334-يخرجوا-1-w2",
+    "surah": 22,
+    "ayah": 22,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "يَخْرُجُوا۟",
+    "variantText": "يُخْرَجُوا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L334-يخرجوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L334-يخرجوا-1-w2",
+        "variantId": "v-L334-يخرجوا-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي يَخْرُجُوا ضُمَّ افْتَحَنْ كَمَا رَسَا ... وَشُعْبَةُ مَعْهُمْ فِي الأَخِيرَيْنِ حُصِّلاَ"
+      }
+    ],
+    "description": "بضم الياء وفتح الراء مبنياً للمجهول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي يَخْرُجُوا ضُمَّ افْتَحَنْ كَمَا رَسَا ... وَشُعْبَةُ مَعْهُمْ فِي الأَخِيرَيْنِ حُصِّلاَ"
+      }
+    ]
+  },
+  {
+    "id": "v-L334-ولولوا-1-w2",
+    "surah": 22,
+    "ayah": 23,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "وَلُؤْلُؤًۭا ۖ",
+    "variantText": "وَلُؤْلُؤٍ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L334-ولولوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L334-ولولوا-1-w2",
+        "variantId": "v-L334-ولولوا-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَلُؤْلُؤًا انْصِبْ فِي الْحَجِّ صَفْوُ كَمَالِهِ — D: وَلُؤْلُؤًا انْصِبْ حُزْ فُزْ"
+      }
+    ],
+    "description": "بجر الهمزة الثانية وتنوينها بغير ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَلُؤْلُؤًا انْصِبْ فِي الْحَجِّ صَفْوُ كَمَالِهِ"
+      },
+      {
+        "source": "D",
+        "text": "وَلُؤْلُؤًا انْصِبْ حُزْ فُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-D334-والصابين-w2",
+    "surah": 22,
+    "ayah": 17,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلصَّـٰبِـِٔينَ",
+    "variantText": "وَالصَّابِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D334-والصابين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D334-والصابين-w2",
+        "variantId": "v-D334-والصابين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P334-R01422",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَالصَّـٰبِـِٔينَ﴾: بالهمز للجمهور؛ وبحذف الهمزة وياء خالصة مفتوحة ﴿وَالصَّابِينَ﴾ لنافع وأبي جعفر."
+      }
+    ],
+    "description": "بحذف الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D334-ولولوا-hamz-shuba",
+    "surah": 22,
+    "ayah": 22,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "وَلُؤْلُؤًۭا",
+    "variantText": "وَلُؤْلُؤًۭا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R02"
+    ],
+    "locusId": "إبدال الهمزة الأولى",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-v-D334-ولولوا-hamz-shuba",
+        "variantId": "v-D334-ولولوا-hamz-shuba",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P334-R01432",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "إبدال الهمزة الأولى واوًا شعبةً وأبا جعفر؛ والوجه الخاص بشعبة مثبت هنا."
+      }
+    ],
+    "description": "إبدال الهمزة الأولى واوًا شعبةً وأبا جعفر؛ والوجه الخاص بشعبة مثبت هنا.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-022-19-16-2556-performance",
+    "surah": 22,
+    "ayah": 19,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "رُءُوسِهِمُ ٱلْحَمِيمُ",
+    "variantText": "رُءُوسِهِمُ ٱلْحَمِيمُ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-022-19-16-2556",
+    "locusType": "performance_variant",
+    "performanceNote": "كسر الميم",
+    "sources": [
+      {
+        "id": "s-SUSI-022-19-16-2556",
+        "variantId": "v-SUSI-022-19-16-2556-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2556; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُءُوسِهِمُ الْحَمِيمُ → رُءُوسِهِمِ الْحَمِيمُ | كسر الميم"
+      }
+    ],
+    "description": "كسر الميم"
+  }
+]

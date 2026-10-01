@@ -1,0 +1,22 @@
+{
+  "page": 542,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 7,
+  "variants": 4,
+  "rulings": 3,
+  "supported": 7,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p542-IKHFA-rule-58-2-22",
+    "r-AUDIT-p542-IDGHAM_SAGHIR-qad-samia"
+  ]
+}

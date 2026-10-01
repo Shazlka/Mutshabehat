@@ -1,0 +1,441 @@
+[
+  {
+    "id": "v-D301-انسانيه-w2",
+    "surah": 18,
+    "ayah": 63,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "أَنسَىٰنِيهُ",
+    "variantText": "أَنسَانِيهِ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D301-انسانيه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-انسانيه-w2",
+        "variantId": "v-D301-انسانيه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01037",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَنسَىٰنِيهُ﴾: بضم الهاء لحفص؛ وبكسر الهاء ﴿أَنسَانِيهِ﴾ للباقين."
+      }
+    ],
+    "description": "بكسر الهاء وحذف ألف الوسط",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D301-رشدا-w2",
+    "surah": 18,
+    "ayah": 66,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "رُشْدًۭا",
+    "variantText": "رَشَدًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D301-رشدا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-رشدا-w2",
+        "variantId": "v-D301-رشدا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01038",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿رُشْدًا﴾: بضم فسكون للجمهور؛ بفتحتين ﴿رَشَدًا﴾ لأبي عمرو ويعقوب."
+      },
+      {
+        "id": "s-SUSI-018-66-11-2190",
+        "variantId": "v-D301-رشدا-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2190; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُشْدًا → رَشَدًا | فتح الراء والشين"
+      },
+      {
+        "id": "s-DURI-018-66-11-r1326",
+        "variantId": "v-D301-رشدا-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1326; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رُشْـداً → رَشَـداً | فتح الدوري الراء والشين"
+      }
+    ],
+    "description": "بفتح الشين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D301-عسرا-w2",
+    "surah": 18,
+    "ayah": 73,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عُسْرًۭا",
+    "variantText": "عُسُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D301-عسرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-عسرا-w2",
+        "variantId": "v-D301-عسرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01043",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عُسْرًا﴾: بإسكان السين للجمهور؛ وبضم السين ﴿عُسُرًا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D301-زكيه-w2",
+    "surah": 18,
+    "ayah": 74,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "زَكِيَّةًۢ",
+    "variantText": "زَاكِيَةً",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "D301-زكيه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-زكيه-w2",
+        "variantId": "v-D301-زكيه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01044",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿زَكِيَّةَۢ﴾: بتخفيف الكاف مع ألف بعدها وتخفيف الياء ﴿زَاكِيَةً﴾ لنافع، ابن كثير، أبو عمرو، أبو جعفر، رويس؛ وبكسر الكاف وتشديد الياء ﴿زَكِيَّةً﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-018-74-10-2195",
+        "variantId": "v-D301-زكيه-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2195; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "زَكِيَّةً → زَاكِيَةً | ألف بعد الزاي وتخفيف الياء"
+      },
+      {
+        "id": "s-DURI-018-74-10-r1330",
+        "variantId": "v-D301-زكيه-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1330; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "زكـيّة → زا كـية | قرأ الدوري بألف بعد الزاي وخفف الياء"
+      }
+    ],
+    "description": "بالألف بعد الزاي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D301-نكرا-w2",
+    "surah": 18,
+    "ayah": 74,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "نُّكْرًۭا",
+    "variantText": "نُكُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D301-نكرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D301-نكرا-w2",
+        "variantId": "v-D301-نكرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P301-R01045",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نُّكْرًا﴾: بإسكان الكاف لابن كثير، وأبي عمرو، وهشام، وحفص، وحمزة، والكسائي، وخلف؛ وبضم الكاف ﴿نُكُرًا﴾ للباقين."
+      }
+    ],
+    "description": "بضم الكاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-018-64-5-2185",
+    "surah": 18,
+    "ayah": 64,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "نَبْغِ ۚ",
+    "variantText": "نَبْغِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-64-5-2185",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-018-64-5-2185",
+        "variantId": "v-SUSI-018-64-5-2185",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2185; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَبْغِ → نَبْغِي | بالياء وصلاً"
+      },
+      {
+        "id": "s-DURI-018-64-5-r1322",
+        "variantId": "v-SUSI-018-64-5-2185",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1322; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نبـغِ → نبغـي | أثبت الدوري الياء وصـلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-018-66-8-2189",
+    "surah": 18,
+    "ayah": 66,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تُعَلِّمَنِ",
+    "variantText": "تُعَلِّمَنِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-66-8-2189",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-018-66-8-2189",
+        "variantId": "v-SUSI-018-66-8-2189",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2189; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تُعَلِّمَنِ → تُعَلِّمَنِي | بالياء وصلاً"
+      }
+    ],
+    "description": "بالياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-018-72-7-2193-performance",
+    "surah": 18,
+    "ayah": 72,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "مَعِىَ",
+    "variantText": "مَعِىَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-72-7-2193",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-018-72-7-2193",
+        "variantId": "v-SUSI-018-72-7-2193-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2193; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَعِيَ → مَعِي | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  },
+  {
+    "id": "v-DURI-018-66-8-r1325",
+    "surah": 18,
+    "ayah": 66,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "تُعَلِّمَنِ",
+    "variantText": "تعلمنـي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-018-66-8-r1325",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-018-66-8-r1325",
+        "variantId": "v-DURI-018-66-8-r1325",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1325; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تعلمـنِ → تعلمنـي | أثبت الدوري الياء وصـلاً"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصـلاً"
+  },
+  {
+    "id": "v-DURI-018-67-5-r1327-performance",
+    "surah": 18,
+    "ayah": 67,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "مَعِىَ صَبْرًۭا",
+    "variantText": "مَعِىَ صَبْرًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-018-67-5-r1327",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-018-67-5-r1327",
+        "variantId": "v-DURI-018-67-5-r1327-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1327; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "معـيَ صبرا → معـي صبـراً | أسكن الدوري الياء"
+      }
+    ],
+    "description": "أسكن الدوري الياء"
+  },
+  {
+    "id": "v-DURI-018-72-7-r1329-performance",
+    "surah": 18,
+    "ayah": 72,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "مَعِىَ صَبْرًۭا",
+    "variantText": "مَعِىَ صَبْرًۭا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-018-72-7-r1329",
+    "locusType": "performance_variant",
+    "performanceNote": "أسكن الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-018-72-7-r1329",
+        "variantId": "v-DURI-018-72-7-r1329-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1329; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "معـيَ صبرا → معـي صبـراً | أسكن الدوري الياء"
+      }
+    ],
+    "description": "أسكن الدوري الياء"
+  }
+]

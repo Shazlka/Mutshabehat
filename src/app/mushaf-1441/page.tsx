@@ -34,7 +34,7 @@ async function loadInitialMutshabehatHighlights() {
   }
 }
 
-export default async function Mushaf1441Page({ searchParams }: { searchParams: SP }) {
+export async function renderMushafPage(searchParams: SP) {
   const { page } = await searchParams
   const requestedPage = Number.parseInt(page ?? '1', 10)
   const initialPageNumber = isValidMushaf1441PageNumber(requestedPage) ? requestedPage : 1
@@ -62,4 +62,8 @@ export default async function Mushaf1441Page({ searchParams }: { searchParams: S
       initialMutshabehatHighlights={initialMutshabehatHighlights}
     />
   )
+}
+
+export default async function Mushaf1441Page({ searchParams }: { searchParams: SP }) {
+  return renderMushafPage(searchParams)
 }

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "v-L109-قاسيه-1-w2",
+    "surah": 5,
+    "ayah": 13,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قَـٰسِيَةًۭ ۖ",
+    "variantText": "قَسِيَّةً",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L109-قاسيه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L109-قاسيه-1-w2",
+        "variantId": "v-L109-قاسيه-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 114,
+        "sourceReference": "صفحة المصحف 109 · صفحة المصدر 114",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: مَعَ الْقَصْرِ شَدِّدْ يَاءَ قَاسِيَةً شَفَا — D: وَقَاسِيَةً عَبْدُ وَطَاغُوتَ وَلْيَحْكُمْ كَشُعْبَةَ فَضْلًا"
+      }
+    ],
+    "description": "بحذف الألف وتشديد الياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "مَعَ الْقَصْرِ شَدِّدْ يَاءَ قَاسِيَةً شَفَا"
+      },
+      {
+        "source": "D",
+        "text": "وَقَاسِيَةً عَبْدُ وَطَاغُوتَ وَلْيَحْكُمْ كَشُعْبَةَ فَضْلًا"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-005-11-5-0526",
+    "surah": 5,
+    "ayah": 11,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "نِعْمَتَ",
+    "variantText": "نِعْمَه",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-005-11-5-0526",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-005-11-5-0526",
+        "variantId": "v-SUSI-005-11-5-0526",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 526; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نِعْمَتَ → نِعْمَه | بالهاء وقفاً"
+      }
+    ],
+    "description": "بالهاء وقفاً"
+  }
+]

@@ -1,0 +1,314 @@
+[
+  {
+    "id": "v-L435-s35a4b0-w1",
+    "surah": 35,
+    "ayah": 4,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "تُرْجَعُ ٱلْأُمُورُ",
+    "variantText": "تَرْجِعُ الْأُمُورُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L435-s35a4b0",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L435-s35a4b0-w1",
+        "variantId": "v-L435-s35a4b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح التاء وكسر الجيم",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L435-s35a9b0-w1",
+    "surah": 35,
+    "ayah": 9,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيَـٰحَ",
+    "variantText": "الرِّيحَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L435-s35a9b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L435-s35a9b0-w1",
+        "variantId": "v-L435-s35a9b0-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالإفراد بغير ألف",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L435-s35a9b1-w1",
+    "surah": 35,
+    "ayah": 9,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "مَّيِّتٍۢ",
+    "variantText": "مَّيْتٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L435-s35a9b1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L435-s35a9b1-w1",
+        "variantId": "v-L435-s35a9b1-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإسكان الياء وتخفيفها",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-D435-فلا_تذهب_نفسك-w2",
+    "surah": 35,
+    "ayah": 8,
+    "startToken": 16,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "فَلَا تَذْهَبْ نَفْسُكَ",
+    "variantText": "فَلَا تُذْهِبْ نَفْسَكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D435-فلا_تذهب_نفسك",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D435-فلا_تذهب_نفسك-w2",
+        "variantId": "v-D435-فلا_تذهب_نفسك-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P435-R02411",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَلَا تَذْهَبْ نَفْسُكَ﴾: بفتح التاء والهاء ورفع نفسك فاعلاً للجمهور؛ وبضم التاء وكسر الهاء ونصب نفسك مفعولاً ﴿فَلَا تُذْهِبْ نَفْسَكَ﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم التاء وكسر الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D435-عليهم-w2",
+    "surah": 35,
+    "ayah": 8,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D435-عليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D435-عليهم-w2",
+        "variantId": "v-D435-عليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P435-R02412",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D435-ولا_ينقص-w2",
+    "surah": 35,
+    "ayah": 11,
+    "startToken": 23,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا يُنقَصُ",
+    "variantText": "وَلَا يَنْقُصُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D435-ولا_ينقص",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D435-ولا_ينقص-w2",
+        "variantId": "v-D435-ولا_ينقص-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P435-R02415",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَلَا يُنقَصُ﴾: بضم الياء وفتح القاف مبنياً للمجهول للجمهور؛ وبفتح الياء وضم القاف ﴿وَلَا يَنْقُصُ﴾ ليعقوب."
+      }
+    ],
+    "description": "بفتح الياء وضم القاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D435-الرياح-w2",
+    "surah": 35,
+    "ayah": 9,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرِّيَـٰحَ",
+    "variantText": "الرِّيحَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D435-الرياح",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D435-الرياح-w2",
+        "variantId": "v-D435-الرياح-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P435-R02413",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الرِّيَـٰحَ﴾: بالجمع لنافع، وأبي عمرو، وابن عامر، وعاصم، وأبي جعفر، ويعقوب؛ وبالمفرد ﴿الرِّيحَ﴾ للباقين."
+      }
+    ],
+    "description": "بالإفراد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-035-8-6-3467",
+    "surah": 35,
+    "ayah": 8,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "فَرَءَاهُ",
+    "variantText": "فَرَاءَاهُ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-8-6-3467",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-035-8-6-3467",
+        "variantId": "v-SUSI-035-8-6-3467",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3467; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَرَآهُ → فَرَاءَاهُ | إمالة فتحة الهمزة والألف"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة والألف"
+  },
+  {
+    "id": "v-SUSI-035-9-10-3468-performance",
+    "surah": 35,
+    "ayah": 9,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "مَّيِّتٍۢ",
+    "variantText": "مَّيِّتٍۢ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-035-9-10-3468",
+    "locusType": "performance_variant",
+    "performanceNote": "إسكان الياء",
+    "sources": [
+      {
+        "id": "s-SUSI-035-9-10-3468",
+        "variantId": "v-SUSI-035-9-10-3468-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3468; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَّيِّتٍ → مَّيْتٍ | إسكان الياء"
+      }
+    ],
+    "description": "إسكان الياء"
+  }
+]

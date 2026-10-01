@@ -1,0 +1,126 @@
+[
+  {
+    "id": "v-L104-والنبيين-1-w2",
+    "surah": 4,
+    "ayah": 163,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلنَّبِيِّـۧنَ",
+    "variantText": "وَٱلنَّبِيئِينَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L104-والنبيين-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L104-والنبيين-1-w2",
+        "variantId": "v-L104-والنبيين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 109,
+        "sourceReference": "صفحة المصحف 104 · صفحة المصدر 109",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا"
+      }
+    ],
+    "description": "بالهمز مع المد المتصل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L104-ابرهيم-1-w2",
+    "surah": 4,
+    "ayah": 163,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَٰهَامَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "L104-ابرهيم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L104-ابرهيم-1-w2",
+        "variantId": "v-L104-ابرهيم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 109,
+        "sourceReference": "صفحة المصحف 104 · صفحة المصدر 109",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      }
+    ],
+    "description": "بالألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L104-زبورا-1-w2",
+    "surah": 4,
+    "ayah": 163,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "زَبُورًۭا",
+    "variantText": "زُبُورًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L104-زبورا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L104-زبورا-1-w2",
+        "variantId": "v-L104-زبورا-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 109,
+        "sourceReference": "صفحة المصحف 104 · صفحة المصدر 109",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي يَسٓ وَالإِسْرَاءِ زُبُورًا وَهَهُنَا ظِبَى شَاعَ"
+      }
+    ],
+    "description": "بضم الزاي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي يَسٓ وَالإِسْرَاءِ زُبُورًا وَهَهُنَا ظِبَى شَاعَ"
+      }
+    ]
+  }
+]

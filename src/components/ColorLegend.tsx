@@ -11,7 +11,7 @@ export default function ColorLegend() {
   return (
     <aside aria-label="دليل ألوان أنواع النصوص"
       className="flex flex-wrap items-center gap-x-5 gap-y-2 px-4 py-3 mb-6 bg-[var(--color-surface)] border border-[var(--color-border-soft)] rounded-xl animate-fade-rise">
-      <span className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase shrink-0 font-bold">
+      <span className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase shrink-0 font-bold">
         الألوان
       </span>
       <span className="hidden sm:block w-px h-3 bg-[var(--color-border)]" aria-hidden="true" />

@@ -1,0 +1,21 @@
+{
+  "page": 220,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 28,
+  "variants": 5,
+  "rulings": 23,
+  "supported": 28,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p220-015-1"
+  ]
+}

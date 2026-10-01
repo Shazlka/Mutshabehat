@@ -7,7 +7,7 @@ import {
 } from '../../../../../packages/qiraat-core/engine'
 import { computeAttribution, gradientCss } from '../../../../../packages/qiraat-core/attribution'
 import { narratorColor } from '../../../../../packages/qiraat-core/colors'
-import { getReading } from '../../../../../packages/qiraat-core/readings'
+import { getReadingOrNull } from '../../../../../packages/qiraat-core/readings'
 import type { QiraatVariant, ReadingId } from '../../../../../packages/qiraat-core/types'
 import type { QiraatComparisonFilter } from './types'
 
@@ -39,9 +39,9 @@ function isPerformanceOnlyVariant(variant: QiraatVariant): boolean {
   return variant.variantText === variant.hafsText
 }
 
-function matchesFilter(variant: QiraatVariant, filter: QiraatComparisonFilter): boolean {
+export function matchesFilter(variant: QiraatVariant, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
-  if (filter.kind === 'reader') return variant.readingIds.some((id) => getReading(id).readerId === filter.readerId)
+  if (filter.kind === 'reader') return variant.readingIds.some((id) => getReadingOrNull(id)?.readerId === filter.readerId)
   return variant.readingIds.includes(filter.readingId)
 }
 
@@ -58,8 +58,9 @@ export function comparisonMarkerForWord(
   const filtered = matches.filter((variant) => matchesFilter(variant, filter))
   if (filtered.length === 0) return null
 
-  const readingIds = Array.from(new Set(filtered.flatMap((variant) => variant.readingIds)))
-  if (readingIds.length === 0) {
+  const allReadingIds = Array.from(new Set(filtered.flatMap((variant) => variant.readingIds)))
+    .filter((id) => getReadingOrNull(id) !== null)
+  if (allReadingIds.length === 0) {
     // needs_manual_review placeholder(s) with no confident attribution yet (Part 29) — never guess
     // a reader/narrator color for this; computeAttribution requires at least one reading id.
     return { color: UNRESOLVED_MARKER_COLOR, isGradient: false, variants: filtered, unresolved: true }
@@ -67,6 +68,18 @@ export function comparisonMarkerForWord(
   if (filtered.every(isPerformanceOnlyVariant)) {
     return { color: PERFORMANCE_MARKER_COLOR, isGradient: false, variants: filtered, isPerformanceOnly: true }
   }
+
+  // When filtered by a specific reader or narrator, scope attribution exclusively to that authority.
+  // This ensures selecting a reader (e.g. Nafi) or narrator (e.g. Warsh) never draws other readers'
+  // colors or a multi-reader gradient.
+  const readingIds = filter.kind === 'reader'
+    ? allReadingIds.filter((id) => getReadingOrNull(id)?.readerId === filter.readerId)
+    : filter.kind === 'reading'
+      ? allReadingIds.filter((id) => id === filter.readingId)
+      : allReadingIds
+
+  if (readingIds.length === 0) return null
+
   const attribution = computeAttribution(readingIds)
   return {
     color: attribution.kind === 'multi-reader' ? gradientCss(attribution.segments) : attribution.color,
@@ -141,10 +154,7 @@ export function rulingMarkerForWord(
 ): RulingMarker | null {
   const matches = rulings.filter((ruling) => (
     ruling.wordAnchored
-    && ruling.surah === surah
-    && ruling.ayah === ayah
-    && token >= ruling.startToken
-    && token <= ruling.endToken
+    && rulingTouchesToken(ruling, surah, ayah, token)
     && (!enabledCategories || enabledCategories.has(ruling.category))
     && matchesRulingFilter(ruling, filter)
   ))
@@ -154,26 +164,97 @@ export function rulingMarkerForWord(
     color: matches[0].color,
     rulings: matches,
     multiple: families.size > 1,
-    hasAlternate: matches.some((ruling) => ruling.hasAlternate),
+    hasAlternate: matches.some((ruling) => {
+      if (!ruling.hasAlternate) return false
+      if (filter.kind === 'all') return true
+      if (filter.kind === 'reader') {
+        return ruling.readings.some((r) => getReadingOrNull(r.readingId)?.readerId === filter.readerId && !r.isDefault)
+          || ruling.attribution.some((a) => a.authorityId === filter.readerId && a.condition?.includes('بخلف'))
+      }
+      return ruling.readings.some((r) => r.readingId === filter.readingId && !r.isDefault)
+    }),
   }
 }
 
-function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparisonFilter): boolean {
+/**
+ * A ruling may span the ayah boundary (for example, page 1's
+ * ﴿ٱلرَّحِيمِ مَـٰلِكِ﴾ إدغام كبير).  The historical matcher compared only
+ * `ruling.ayah`, which made the second anchored word silently disappear.
+ *
+ * Tokens remain single-word addresses; this predicate simply includes every
+ * endpoint-aware token in the declared span. Multi-ayah spans are deliberately
+ * not guessed: a record with an invalid reversed span is not rendered and is
+ * reported by the deterministic audit.
+ */
+export function rulingTouchesToken(
+  ruling: Pick<QiraatRuling, 'surah' | 'ayah' | 'startToken' | 'endAyah' | 'endToken'>,
+  surah: number,
+  ayah: number,
+  token: number,
+): boolean {
+  if (ruling.surah !== surah) return false
+  const endAyah = ruling.endAyah ?? ruling.ayah
+  if (endAyah < ruling.ayah) return false
+  if (ayah < ruling.ayah || ayah > endAyah) return false
+  if (ruling.ayah === endAyah) {
+    return ayah === ruling.ayah && token >= ruling.startToken && token <= ruling.endToken
+  }
+  if (ayah === ruling.ayah) return token >= ruling.startToken
+  if (ayah === endAyah) return token <= ruling.endToken
+  return true
+}
+
+export function matchesRulingFilter(ruling: QiraatRuling, filter: QiraatComparisonFilter): boolean {
   if (filter.kind === 'all') return true
   if (filter.kind === 'reader') {
-    return ruling.readings.some((r) => getReading(r.readingId).readerId === filter.readerId)
+    return ruling.readings.some((r) => getReadingOrNull(r.readingId)?.readerId === filter.readerId)
   }
   return ruling.readings.some((r) => r.readingId === filter.readingId)
 }
 
-/** Distinct usul families present on a page, for the legend/panel. */
-export function rulingCategoriesOnPage(rulings: readonly QiraatRuling[]) {
-  const seen = new Map<string, { category: string; categoryAr: string; color: string; count: number }>()
-  for (const ruling of rulings) {
-    if (!ruling.wordAnchored) continue
-    const entry = seen.get(ruling.category)
-    if (entry) entry.count += 1
-    else seen.set(ruling.category, { category: ruling.category, categoryAr: ruling.categoryAr, color: ruling.color, count: 1 })
+// ── إمالة/تقليل dot marker ──────────────────────────────────────────────────
+
+export interface ImalahTaqlilMarker {
+  /** The ruling family's own fixed colour (never reader-specific -- see below). */
+  color: string
+  /** true = filled circle (إمالة present), false = hollow ring (تقليل only, no إمالة anywhere). */
+  filled: boolean
+}
+
+/**
+ * ONE small circle marker for a word carrying an IMALAH_TAQLIL ruling -- deliberately never
+ * one-dot-per-reader (a reviewer taps the word for the full reader/narrator breakdown; this dot
+ * only needs to answer "is there an إمالة/تقليل note here, and which of the two". Filled when at
+ * least one matched reading is إمالة (إمالة takes precedence over a co-occurring تقليل on the same
+ * word, e.g. ﴿بِٱلْهُدَىٰ﴾: حمزة/الكسائي إمالة, ورش تقليل -- filled); hollow ring when only تقليل
+ * readings are present. Returns null when no matched ruling carries a classifiable إمالة/تقليل
+ * action (e.g. a baseline "فتح"-only ruling, or no IMALAH_TAQLIL ruling touching this token at
+ * all) -- no noise.
+ */
+export function imalahTaqlilMarkerForWord(
+  rulings: readonly QiraatRuling[],
+  surah: number,
+  ayah: number,
+  token: number,
+  filter: QiraatComparisonFilter,
+): ImalahTaqlilMarker | null {
+  const matches = rulings.filter((ruling) => (
+    ruling.category === 'IMALAH_TAQLIL'
+    && ruling.wordAnchored
+    && rulingTouchesToken(ruling, surah, ayah, token)
+    && matchesRulingFilter(ruling, filter)
+  ))
+  if (matches.length === 0) return null
+
+  let sawImalah = false
+  let sawTaqlil = false
+  for (const ruling of matches) {
+    for (const reading of ruling.readings) {
+      if (reading.action.includes('إمالة')) sawImalah = true
+      else if (reading.action.includes('تقليل')) sawTaqlil = true
+    }
   }
-  return Array.from(seen.values())
+  if (!sawImalah && !sawTaqlil) return null
+
+  return { color: matches[0].color, filled: sawImalah }
 }

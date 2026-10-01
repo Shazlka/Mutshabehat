@@ -1,0 +1,24 @@
+{
+  "page": 266,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 20,
+  "variants": 3,
+  "rulings": 17,
+  "supported": 20,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p266-005-1",
+    "r-p266-006-1",
+    "r-p266-014-1",
+    "r-p266-TAGHYIR_HAMZ-لايه_للمومنين-2"
+  ]
+}

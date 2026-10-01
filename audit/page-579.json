@@ -1,0 +1,34 @@
+{
+  "page": 579,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 33,
+  "variants": 25,
+  "rulings": 8,
+  "supported": 33,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [
+    {
+      "id": "r-p579-IDGHAM_SAGHIR--6",
+      "readingId": "Q03-R01",
+      "attributionActions": [
+        "إدغام الراء في اللام، وله الإظهار بخلف"
+      ],
+      "readingActions": [
+        "إدغام الراء في اللام",
+        "إظهار الراء ساكنة"
+      ]
+    }
+  ],
+  "contextualRules": [
+    "r-p579-IKHFA-rule-76-21-3",
+    "r-p579-IDGHAM_SAGHIR--6"
+  ]
+}

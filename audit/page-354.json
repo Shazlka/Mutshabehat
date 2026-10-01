@@ -1,0 +1,21 @@
+{
+  "page": 354,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 33,
+  "variants": 7,
+  "rulings": 26,
+  "supported": 33,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p354-011-1"
+  ]
+}

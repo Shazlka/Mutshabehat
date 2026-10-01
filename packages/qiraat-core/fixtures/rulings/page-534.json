@@ -1,0 +1,571 @@
+[
+  {
+    "id": "r-p534-s55a70b0",
+    "pageNumber": 534,
+    "category": "TARQIQ_RA",
+    "categoryAr": "ترقيق الراءات",
+    "color": "#B45309",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 70,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 70,
+    "baseText": "خَيْرَٰتٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "ترقيق الراء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "ترقيق الراء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p534-s56a14b0",
+    "pageNumber": 534,
+    "category": "MADD_BADAL",
+    "categoryAr": "مد البدل",
+    "color": "#2563EB",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 14,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 14,
+    "baseText": "ٱلْـَٔاخِرِينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q01-R02",
+        "action": "مد البدل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q01-R02",
+        "action": "مد البدل",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p534-IMALAH_TAQLIL-كاذبه-0",
+    "pageNumber": 534,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 2,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 2,
+    "baseText": "كَاذِبَةٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03366",
+        "sourceText": "الممال والمقلل: ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه. ﴿الْوَاقِعَةُ﴾، ﴿رَافِعَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي بخلف عنه. ﴿كَاذِبَةٌ﴾، ﴿ثَلَـٰثَةً﴾، ﴿الْمَيْمَنَةِ﴾، ﴿الْمَشْـَٔمَةِ﴾، ﴿مَّوْضُونَةٍ﴾: أمالها الكسائي وقفاً.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-IMALAH_TAQLIL-ثلاثه-1",
+    "pageNumber": 534,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 7,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 7,
+    "baseText": "ثَلَـٰثَةًۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03366",
+        "sourceText": "الممال والمقلل: ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه. ﴿الْوَاقِعَةُ﴾، ﴿رَافِعَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي بخلف عنه. ﴿كَاذِبَةٌ﴾، ﴿ثَلَـٰثَةً﴾، ﴿الْمَيْمَنَةِ﴾، ﴿الْمَشْـَٔمَةِ﴾، ﴿مَّوْضُونَةٍ﴾: أمالها الكسائي وقفاً.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-IMALAH_TAQLIL-الميمنه-2",
+    "pageNumber": 534,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 8,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 8,
+    "baseText": "ٱلْمَيْمَنَةِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03366",
+        "sourceText": "الممال والمقلل: ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه. ﴿الْوَاقِعَةُ﴾، ﴿رَافِعَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي بخلف عنه. ﴿كَاذِبَةٌ﴾، ﴿ثَلَـٰثَةً﴾، ﴿الْمَيْمَنَةِ﴾، ﴿الْمَشْـَٔمَةِ﴾، ﴿مَّوْضُونَةٍ﴾: أمالها الكسائي وقفاً.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-IMALAH_TAQLIL-المشمه-3",
+    "pageNumber": 534,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 9,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 9,
+    "baseText": "ٱلْمَشْـَٔمَةِ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03366",
+        "sourceText": "الممال والمقلل: ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه. ﴿الْوَاقِعَةُ﴾، ﴿رَافِعَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي بخلف عنه. ﴿كَاذِبَةٌ﴾، ﴿ثَلَـٰثَةً﴾، ﴿الْمَيْمَنَةِ﴾، ﴿الْمَشْـَٔمَةِ﴾، ﴿مَّوْضُونَةٍ﴾: أمالها الكسائي وقفاً.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-IMALAH_TAQLIL-موضونه-4",
+    "pageNumber": 534,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 15,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 15,
+    "baseText": "مَّوْضُونَةٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03366",
+        "sourceText": "الممال والمقلل: ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه. ﴿الْوَاقِعَةُ﴾، ﴿رَافِعَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي بخلف عنه. ﴿كَاذِبَةٌ﴾، ﴿ثَلَـٰثَةً﴾، ﴿الْمَيْمَنَةِ﴾، ﴿الْمَشْـَٔمَةِ﴾، ﴿مَّوْضُونَةٍ﴾: أمالها الكسائي وقفاً.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-TAGHYIR_HAMZ-متكين-5",
+    "pageNumber": 534,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 76,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 76,
+    "baseText": "مُتَّكِـِٔينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "حذف الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "حذف الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03367",
+        "sourceText": "تغيير الهمز: ﴿مُتَّكِـِٔينَ﴾ (معاً): بحذف الهمزة لأبي جعفر.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-IKHFA-rule-55-76-3",
+    "pageNumber": 534,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 55,
+    "ayah": 76,
+    "startToken": 3,
+    "endToken": 4,
+    "endAyah": 76,
+    "baseText": "رَفْرَفٍ خُضْرٍۢ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p534-IKHFA-rule-56-2-3",
+    "pageNumber": 534,
+    "category": "IKHFA",
+    "categoryAr": "الإخفاء",
+    "color": "#0891B2",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 2,
+    "startToken": 3,
+    "endToken": 1,
+    "endAyah": 3,
+    "baseText": "كَاذِبَةٌ خَافِضَةٌۭ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08",
+        "action": "إخفاء"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "إخفاء",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إخفاء",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p534-TAGHYIR_HAMZ-متكين-6",
+    "pageNumber": 534,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 16,
+    "startToken": 1,
+    "endToken": 1,
+    "endAyah": 16,
+    "baseText": "مُّتَّكِـِٔينَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q08-R01",
+        "action": "حذف الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "حذف الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q08-R01",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "حذف الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03367",
+        "sourceText": "تغيير الهمز: ﴿مُتَّكِـِٔينَ﴾ (معاً): بحذف الهمزة لأبي جعفر.",
+        "verificationNotes": "نص المصدر المعالج محفوظ مرجعاً لهذا الوجه في موضعه."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-IMALAH_TAQLIL-الواقعه-0",
+    "pageNumber": 534,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 1,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 1,
+    "baseText": "ٱلْوَاقِعَةُ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "إمالة هاء التأنيث وقفاً للكسائي بخلف عنه؛ الوجه البديل محفوظ.",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03366",
+        "sourceText": "الممال والمقلل: ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه. ﴿الْوَاقِعَةُ﴾، ﴿رَافِعَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي بخلف عنه. ﴿كَاذِبَةٌ﴾، ﴿ثَلَـٰثَةً﴾، ﴿الْمَيْمَنَةِ﴾، ﴿الْمَشْـَٔمَةِ﴾، ﴿مَّوْضُونَةٍ﴾: أمالها الكسائي وقفاً.",
+        "verificationNotes": "إمالة هاء التأنيث وقفاً للكسائي بخلف عنه؛ الوجه البديل محفوظ."
+      },
+      {
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/1",
+        "sourceText": "النص المعالج يثبت الوجه الوقفي للكسائي بخلف عنه.",
+        "verificationNotes": "مرجع مستقل للقراءات العشر؛ قارنت به مجموعة الرواة والموضع."
+      }
+    ]
+  },
+  {
+    "id": "r-p534-IMALAH_TAQLIL-رافعه-0",
+    "pageNumber": 534,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 56,
+    "ayah": 3,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 3,
+    "baseText": "رَّافِعَةٌ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": false
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "notes": "إمالة هاء التأنيث وقفاً للكسائي بخلف عنه؛ الوجه البديل محفوظ.",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "sourceNotes": [
+      {
+        "sourceReference": "qiraat_records.jsonl، DOCX-P534-R03366",
+        "sourceText": "الممال والمقلل: ﴿الْإِكْرَامِ﴾: أمالها ابن ذكوان بخلف عنه. ﴿الْوَاقِعَةُ﴾، ﴿رَافِعَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي بخلف عنه. ﴿كَاذِبَةٌ﴾، ﴿ثَلَـٰثَةً﴾، ﴿الْمَيْمَنَةِ﴾، ﴿الْمَشْـَٔمَةِ﴾، ﴿مَّوْضُونَةٍ﴾: أمالها الكسائي وقفاً.",
+        "verificationNotes": "إمالة هاء التأنيث وقفاً للكسائي بخلف عنه؛ الوجه البديل محفوظ."
+      },
+      {
+        "sourceReference": "https://quranpedia.net/qiraat/al-waqia/3",
+        "sourceText": "النص المعالج يثبت الوجه الوقفي للكسائي بخلف عنه.",
+        "verificationNotes": "مرجع مستقل للقراءات العشر؛ قارنت به مجموعة الرواة والموضع."
+      }
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+entries|15294
+checksum|52839d155fd0f90f999822a43e8198f5
+up ok
+up2 ok
+IDEMPOTENT
+down ok
+REVERSIBLE: identical to baseline
+down2 ok
+up3 ok
+RE-APPLY identical
+phase4 tests PASS: 26  FAIL: 0
+phase2 tests PASS: 22
+52839d155fd0f90f999822a43e8198f5
+PASS N1 qiraat_norm matches Python norm on 14270 locations
+PASS N2 qiraat_norm matches on 3625 reading texts
+PASS A1 anon cannot call review RPCs (permission denied for function qiraat_review_page)
+PASS A2 non-editor refused: review page (unauthorized)
+PASS A3 non-editor refused: annotation editor create (unauthorized)
+PASS A4 non-editor refused: undo (unauthorized)
+PASS A5 is_editor false for non-editor
+PASS A6 non-editor cannot read allowlist (permission denied for table qiraat_editors)
+PASS A7 is_editor true for owner
+PASS A8 editor can use annotation editor catalog
+PASS P1 page 3: 127 words, 36 rows
+PASS P3 overview covers 604 pages
+PASS P2 invalid page rejected (invalid page 605)
+PASS W1 stale version rejected (VERSION_CONFLICT entry v-AUDIT-DOCX-P539-R03408-82f84464a2-a13-t11)
+PASS W2 un-flagging a Hafs-positive reading is blocked by D8 (QIRAAT_D8: entry r-SQL600-SAKT-101-10-4-2 lists Hafs (Q05-R02) as a main reading; Hafs is )
+PASS W3 adding Hafs as a main reading is blocked by D8 (QIRAAT_D8: entry v-AUDIT-DOCX-P539-R03406-0605b3fc7d-a12-t8 lists Hafs (Q05-R02) as a main)
+PASS W4 non-narrator id rejected (invalid narrator or wajh order)
+PASS W5 farsh entry rejects usul fields (invalid field for farsh entry)
+PASS W6 reviewed → flags verified with note, location reviewed
+PASS W7 manual flag raised, edit logged with device+actor, review → corrected
+PASS W8 second wajh saved and derived into readings
+PASS W9a deleting the last reading soft-deletes its location
+PASS W9b restore brings back reading and location
+PASS H1 history lists 7 review transactions
+PASS U1 undoing the review transactions restores status, narrators and text
+PASS U2 the Phase 3 import cannot be undone from the review screen (UNDO_REFUSED transaction 10550 was not made by an editor)

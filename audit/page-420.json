@@ -1,0 +1,21 @@
+{
+  "page": 420,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 11,
+  "variants": 2,
+  "rulings": 9,
+  "supported": 11,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p420-s33a17b0"
+  ]
+}

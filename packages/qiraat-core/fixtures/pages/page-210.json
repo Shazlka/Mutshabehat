@@ -1,0 +1,338 @@
+[
+  {
+    "id": "v-L210-عليهم-1-w2",
+    "surah": 10,
+    "ayah": 15,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L210-عليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L210-عليهم-1-w2",
+        "variantId": "v-L210-عليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 215,
+        "sourceReference": "صفحة المصحف 210 · صفحة المصدر 215",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L210-بقرءان-1-w2",
+    "surah": 10,
+    "ayah": 15,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "بِقُرْءَانٍ",
+    "variantText": "بِقُرَانٍ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L210-بقرءان-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L210-بقرءان-1-w2",
+        "variantId": "v-L210-بقرءان-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 215,
+        "sourceReference": "صفحة المصحف 210 · صفحة المصدر 215",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ],
+    "description": "بلا همز",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَنَقْلُ قُرَانٍ وَالْقُرَانِ دَوَاؤُنَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L210-ولا_ادريكم-1-w2",
+    "surah": 10,
+    "ayah": 16,
+    "startToken": 8,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَلَآ أَدْرَىٰكُم",
+    "variantText": "وَلَأَدْرَىٰكُم",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L210-ولا_ادريكم-1",
+    "locusType": "multi_word_variant",
+    "notes": "للبزي وجهان: المد كالجماعة، والقصر كقنبل بخلف عنه.",
+    "sources": [
+      {
+        "id": "s-L210-ولا_ادريكم-1-w2",
+        "variantId": "v-L210-ولا_ادريكم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 215,
+        "sourceReference": "صفحة المصحف 210 · صفحة المصدر 215",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَصْرُ وَلَا هَادٍ بِخُلْفٍ زَكَا"
+      }
+    ],
+    "description": "بقصر اللام على أنها لام الابتداء التوكيدية",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَصْرُ وَلَا هَادٍ بِخُلْفٍ زَكَا"
+      }
+    ],
+    "alternateOf": [
+      "Q02-R01"
+    ]
+  },
+  {
+    "id": "v-L210-عما_يشركون-1-w2",
+    "surah": 10,
+    "ayah": 18,
+    "startToken": 28,
+    "endToken": 29,
+    "operation": "REPLACE",
+    "hafsText": "عَمَّا يُشْرِكُونَ",
+    "variantText": "عَمَّا تُشْرِكُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L210-عما_يشركون-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L210-عما_يشركون-1-w2",
+        "variantId": "v-L210-عما_يشركون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 215,
+        "sourceReference": "صفحة المصحف 210 · صفحة المصدر 215",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَاطَبَ عَمَّا يُشْرِكُونَ هُنَا شَذًا"
+      }
+    ],
+    "description": "بالفوقية على الخطاب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَاطَبَ عَمَّا يُشْرِكُونَ هُنَا شَذًا"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-010-15-10-1342",
+    "surah": 10,
+    "ayah": 15,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "لِقَآءَنَا ٱئْتِ",
+    "variantText": "لِقَاءَنَا اتِ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-15-10-1342",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-010-15-10-1342",
+        "variantId": "v-SUSI-010-15-10-1342",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1342; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِقَاءَنَا ائْتِ → لِقَاءَنَا اتِ | وصلاً: إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "وصلاً: إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-010-15-20-1343-performance",
+    "surah": 10,
+    "ayah": 15,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "لِىٓ",
+    "variantText": "لِىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-15-20-1343",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-010-15-20-1343",
+        "variantId": "v-SUSI-010-15-20-1343-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1343; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لِي → لِيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-010-15-25-1344-performance",
+    "surah": 10,
+    "ayah": 15,
+    "startToken": 25,
+    "endToken": 25,
+    "operation": "REPLACE",
+    "hafsText": "نَفْسِىٓ ۖ",
+    "variantText": "نَفْسِىٓ ۖ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-15-25-1344",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-010-15-25-1344",
+        "variantId": "v-SUSI-010-15-25-1344-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1344; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "نَفْسِي → نَفْسِيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-010-15-32-1345-performance",
+    "surah": 10,
+    "ayah": 15,
+    "startToken": 32,
+    "endToken": 32,
+    "operation": "REPLACE",
+    "hafsText": "إِنِّىٓ",
+    "variantText": "إِنِّىٓ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-15-32-1345",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الياء وصلاً",
+    "sources": [
+      {
+        "id": "s-SUSI-010-15-32-1345",
+        "variantId": "v-SUSI-010-15-32-1345-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1345; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "إِنِّي → إِنِّيَ | فتح الياء وصلاً"
+      }
+    ],
+    "description": "فتح الياء وصلاً"
+  },
+  {
+    "id": "v-SUSI-010-16-12-1347",
+    "surah": 10,
+    "ayah": 16,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "لَبِثْتُ",
+    "variantText": "لَّبِتُّ",
+    "differenceType": "IDGHAM",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-010-16-12-1347",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-010-16-12-1347",
+        "variantId": "v-SUSI-010-16-12-1347",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1347; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَبِثْتُ → لَّبِتُّ | إدغام الثاء في التاء"
+      }
+    ],
+    "description": "إدغام الثاء في التاء"
+  }
+]

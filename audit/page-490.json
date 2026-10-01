@@ -1,0 +1,21 @@
+{
+  "page": 490,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 15,
+  "variants": 9,
+  "rulings": 6,
+  "supported": 15,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p490-s43a18b1"
+  ]
+}

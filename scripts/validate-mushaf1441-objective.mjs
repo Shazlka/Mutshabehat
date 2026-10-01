@@ -64,13 +64,12 @@ mustInclude(pageLoader, 'MUSHAF_1441_PAGE_COUNT = 604', 'page loader')
 mustInclude(pageLoader, 'per-page QCF V2 word fixtures', 'page loader')
 
 for (const token of [
-  'submitAyahJump',
-  'jumpToSelectedAyah',
+  'renderSurahPicker',
+  'selectSurahFromPicker',
   'selectedSurahNumber',
-  'selectedSurahAyahCount',
-  'renderNavControls',
+  'async function goToAyah(',
 ]) {
-  mustInclude(viewer, token, 'surah/ayah navigation')
+  mustInclude(viewer, token, 'surah navigation')
 }
 mustInclude(pageMetadataApi, 'ayahKey', 'page metadata API')
 mustInclude(pageMetadataApi, 'getMushaf1441PageForAyahKey', 'page metadata API')
@@ -103,6 +102,27 @@ for (const token of [
 ]) {
   mustInclude(viewer, token, 'Mutshabehat viewer link')
 }
+// The side rail serves whichever layer is active, not Qiraat alone.
+for (const token of [
+  "const showReaderSidebar = isSpread && readerLayer !== 'none'",
+  'function renderReaderSidebar()',
+  'function renderSidebarLayerBody()',
+]) {
+  mustInclude(viewer, token, 'reader sidebar')
+}
+
+// The Qiraat peek must never float over the lines: with a rail it lives in the rail, and without
+// one it is pinned to the bottom edge. Floating over the page swallowed the next word's press and
+// closed itself before it could be read.
+for (const token of [
+  "function renderQiraatHoverCard(placement: 'sidebar' | 'overlay' = 'overlay')",
+  'data-qiraat-peek={placement}',
+  "{showReaderSidebar ? null : renderQiraatHoverCard('overlay')}",
+  'fixed inset-x-2 bottom-2',
+]) {
+  mustInclude(viewer, token, 'qiraat peek placement')
+}
+
 // One colour system at a time (annotations / Mutshabehat / Qiraat). The layer is a single enum
 // rather than independent booleans precisely so two of them can never be on together; if
 // these disappear, that guarantee has been unpicked somewhere.
@@ -187,9 +207,9 @@ for (const token of [
 
 for (const token of [
   'visiblePageMetadata?.surahNames',
-  'visiblePageMetadata?.juzNumber',
-  'visiblePageMetadata.rubInJuz',
-  'ص {pageNumber}',
+  "metadata?.juzNumber ?? '—'",
+  'metadata.rubInJuz',
+  '{pageNumber}</span>',
 ]) {
   mustInclude(viewer, token, 'page header/footer')
 }

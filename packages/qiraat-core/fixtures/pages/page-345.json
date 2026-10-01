@@ -1,0 +1,431 @@
+[
+  {
+    "id": "v-L345-تسبق_اجلها-w2",
+    "surah": 23,
+    "ayah": 43,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "مَا تَسْبِقُ",
+    "variantText": "مَا يَسْبِقُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L345-تسبق_اجلها",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L345-تسبق_اجلها-w2",
+        "variantId": "v-L345-تسبق_اجلها-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "D: وَتَسْبِقُ ذَكِّرْ حُزْ"
+      }
+    ],
+    "description": "بياء التذكير للفصل ولأن تأنيث الأمة مجازي",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَتَسْبِقُ ذَكِّرْ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L345-تسبق_اجلها-w2",
+    "surah": 23,
+    "ayah": 43,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أَجَلَهَا",
+    "variantText": "أَجَلُهَا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L345-تسبق_اجلها",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L345-تسبق_اجلها-w2",
+        "variantId": "v-L345-تسبق_اجلها-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفِي أُمَّةٍ فَارْفَعْ مَعَ النَّحْلِ أَجْلَهَا كَمَا حَقَّ"
+      }
+    ],
+    "description": "برفع اللام فاعلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي أُمَّةٍ فَارْفَعْ مَعَ النَّحْلِ أَجْلَهَا كَمَا حَقَّ"
+      }
+    ]
+  },
+  {
+    "id": "v-L345-تترا-1-w2",
+    "surah": 23,
+    "ayah": 44,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "تَتْرَا ۖ",
+    "variantText": "تَتْرَىٰ ۖ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L345-تترا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L345-تترا-1-w2",
+        "variantId": "v-L345-تترا-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَتَتْرَى نَوِّنْ دَنَا حَقًّا كَفَى صَفَا"
+      }
+    ],
+    "description": "بغير تنوين وصلاً (مع إمالة الكسائي وتقليل ورش وحمزة وخلف العاشر وقفاً)",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَتَتْرَى نَوِّنْ دَنَا حَقًّا كَفَى صَفَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L345-ربوه-1-w2",
+    "surah": 23,
+    "ayah": 50,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "رَبْوَةٍۢ",
+    "variantText": "رُبْوَةٍۢ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L345-ربوه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L345-ربوه-1-w2",
+        "variantId": "v-L345-ربوه-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَفِي رَبْوَةٍ فَافْتَحْ صَفَا حَقَّهُ كَذَا"
+      },
+      {
+        "id": "s-SUSI-023-50-8-2648",
+        "variantId": "v-L345-ربوه-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2648; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَبْوَةٍ → رُبْوَةٍ | ضم الراء"
+      },
+      {
+        "id": "s-DURI-023-50-8-r1534",
+        "variantId": "v-L345-ربوه-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1534; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَبـوة → رُبْـوة | ضم الدوري الراء"
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي رَبْوَةٍ فَافْتَحْ صَفَا حَقَّهُ كَذَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L345-وان_هاذهي-1-w2",
+    "surah": 23,
+    "ayah": 52,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَإِنَّ هَـٰذِهِۦٓ",
+    "variantText": "وَأَنَّ هَـٰذِهِۦٓ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L345-وان_هاذهي-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L345-وان_هاذهي-1-w2",
+        "variantId": "v-L345-وان_هاذهي-1-w2",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَأَنَّ افْتَحُوا عَمَّ كِلَا صَحْبٍ وَفِي هَذِهِ اكْسِرْ نُونَ إِنْ خَفَّ صُحْبَةٌ — D: وَإِنَّ افْتَحِ ادْعُ حُزْ"
+      }
+    ],
+    "description": "بفتح الهمزة وتشديد النون",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَنَّ افْتَحُوا عَمَّ كِلَا صَحْبٍ وَفِي هَذِهِ اكْسِرْ نُونَ إِنْ خَفَّ صُحْبَةٌ"
+      },
+      {
+        "source": "D",
+        "text": "وَإِنَّ افْتَحِ ادْعُ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L345-وان_هاذهي-1-w3",
+    "surah": 23,
+    "ayah": 52,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَإِنَّ هَـٰذِهِۦٓ",
+    "variantText": "وَإِنْ هَـٰذِهِۦٓ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L345-وان_هاذهي-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L345-وان_هاذهي-1-w3",
+        "variantId": "v-L345-وان_هاذهي-1-w3",
+        "sourceName": "سورة المؤمنون — جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد",
+        "sourceType": "manual_extraction",
+        "sourceReference": "جدول سورة المؤمنون (الآيات 1-118)",
+        "verificationNotes": "مستخرج من جدول فرش الكلمات ومذاهب القراء العشرة والأصول المطردة والشواهد لسورة المؤمنون.",
+        "sourceText": "SH: وَأَنَّ افْتَحُوا عَمَّ كِلَا صَحْبٍ وَفِي هَذِهِ اكْسِرْ نُونَ إِنْ خَفَّ صُحْبَةٌ — D: وَإِنَّ افْتَحِ ادْعُ حُزْ"
+      }
+    ],
+    "description": "بكسر الهمزة وتخفيف النون ساكنة",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَأَنَّ افْتَحُوا عَمَّ كِلَا صَحْبٍ وَفِي هَذِهِ اكْسِرْ نُونَ إِنْ خَفَّ صُحْبَةٌ"
+      },
+      {
+        "source": "D",
+        "text": "وَإِنَّ افْتَحِ ادْعُ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-D345-لديهم-w2",
+    "surah": 23,
+    "ayah": 53,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "لَدَيْهِمْ",
+    "variantText": "لَدَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D345-لديهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D345-لديهم-w2",
+        "variantId": "v-D345-لديهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P345-R01538",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D345-ايحسبون-w2",
+    "surah": 23,
+    "ayah": 55,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "أَيَحْسَبُونَ",
+    "variantText": "أَيَحْسِبُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D345-ايحسبون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D345-ايحسبون-w2",
+        "variantId": "v-D345-ايحسبون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P345-R01539",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿أَيَحْسَبُونَ﴾: بفتح السين لابن عامر، وعاصم، وحمزة، وأبي جعفر؛ وبكسر السين للباقين."
+      },
+      {
+        "id": "s-SUSI-023-55-1-2651",
+        "variantId": "v-D345-ايحسبون-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2651; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَيَحْسَبُونَ → أَيَحْسِبُونَ | كسر السين"
+      },
+      {
+        "id": "s-DURI-023-55-1-r1537",
+        "variantId": "v-D345-ايحسبون-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1537; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أيـحسَبون → أيـحسِبون | كسر الدوري السين"
+      }
+    ],
+    "description": "بكسر السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D345-رسلنا-تترى-abuamr",
+    "surah": 23,
+    "ayah": 44,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "رُسُلَنَا تَتْرَا ۖ",
+    "variantText": "رُسْلَنَا تَتْرَىٰ ۖ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "v-D345-رسلنا-تترى-abuamr",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-v-D345-رسلنا-تترى-abuamr",
+        "variantId": "v-D345-رسلنا-تترى-abuamr",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P345-R01519",
+        "verificationNotes": "وجه صريح في المصدر، وثُبّت على token حقيقي في صفحة المصحف.",
+        "sourceText": "بسكون السين وبلا تنوين مع ألف ممالة أو مقللة: أبو عمرو."
+      }
+    ],
+    "description": "بسكون السين وبلا تنوين مع ألف ممالة أو مقللة: أبو عمرو.",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

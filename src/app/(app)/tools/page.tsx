@@ -11,7 +11,7 @@ export default async function ToolsPage() {
   return (
     <div className="max-w-3xl mx-auto px-5 md:px-8 py-8 md:py-14">
       <header className="mb-10">
-        <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Tools</p>
+        <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase mb-1">Tools</p>
         <h1 className="text-[28px] md:text-[32px] font-bold tracking-tight leading-none">أدوات</h1>
         <p className="mt-2 text-[13px] text-[var(--color-ink-muted)]">عمليات جماعية على المجموعات</p>
       </header>

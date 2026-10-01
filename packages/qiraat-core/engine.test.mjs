@@ -3,17 +3,36 @@ import test from 'node:test'
 
 import { QIRAAT_READERS } from './readers.ts'
 import { QIRAAT_NARRATORS, narratorsOfReader } from './narrators.ts'
-import { QIRAAT_READINGS, getReading } from './readings.ts'
-import { readerColor, narratorColor, readerCssVar, narratorCssVar } from './colors.ts'
-import { computeAttribution, gradientCss, readingsNotIn } from './attribution.ts'
+import { QIRAAT_READINGS, getReading, getReadingOrNull } from './readings.ts'
+import { QIRAAT_MULTI_READER_COLOR, READER_COLOR, NARRATOR_COLOR, readerColor, narratorColor, readerCssVar, narratorCssVar } from './colors.ts'
+import { adaptColorForDark } from '../../src/app/mushaf-1441/_components/mushafTheme.ts'
+import { computeAttribution, gradientCss, readingsNotIn, rollupAuthorityPills } from './attribution.ts'
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
 import { BASE_READING } from './types.ts'
+import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
 import { FixtureQiraatRepository } from './repository.ts'
-import { comparisonMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
+import { comparisonMarkerForWord, rulingMarkerForWord, imalahTaqlilMarkerForWord, PERFORMANCE_MARKER_COLOR } from '../../src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts'
 import synthetic from './fixtures/synthetic/engine-fixtures.json' with { type: 'json' }
+import page001Rulings from './fixtures/rulings/page-001.json' with { type: 'json' }
+import page002Rulings from './fixtures/rulings/page-002.json' with { type: 'json' }
+import page228Rulings from './fixtures/rulings/page-228.json' with { type: 'json' }
+import page234Rulings from './fixtures/rulings/page-234.json' with { type: 'json' }
+import page007Variants from './fixtures/pages/page-007.json' with { type: 'json' }
+import page258Variants from './fixtures/pages/page-258.json' with { type: 'json' }
+import page266Rulings from './fixtures/rulings/page-266.json' with { type: 'json' }
 
 const ALL_READING_IDS = QIRAAT_READINGS.map((reading) => reading.id)
 const VARIANTS = synthetic.variants
+
+function contrastRatio(foreground, background) {
+  const luminance = (hex) => {
+    const channels = hex.match(/[0-9a-f]{2}/gi).map((channel) => parseInt(channel, 16) / 255)
+      .map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
+    return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+  }
+  const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a)
+  return (values[0] + 0.05) / (values[1] + 0.05)
+}
 
 function findVariant(id) {
   const variant = VARIANTS.find((v) => v.id === id)
@@ -43,6 +62,34 @@ test('baseline is Hafs (Q05-R02) and is never duplicated', () => {
   assert.equal(BASE_READING, 'Q05-R02')
   assert.equal(getReading(BASE_READING).displayNameAr, 'حفص عن عاصم الكوفي')
   assert.equal(QIRAAT_READINGS.filter((r) => r.isBaseline).length, 1)
+})
+
+test('source-backed unknown reading IDs never crash marker resolution', () => {
+  assert.equal(getReadingOrNull('Q99-R99'), null)
+  const unknownVariant = {
+    ...findVariant('syn-ten-reader-segment'),
+    id: 'syn-unknown-reading',
+    readingIds: ['Q99-R99'],
+  }
+  assert.doesNotThrow(() => comparisonMarkerForWord([unknownVariant], 999, 1, 7, { kind: 'all' }))
+  assert.equal(comparisonMarkerForWord([unknownVariant], 999, 1, 7, { kind: 'all' })?.unresolved, true)
+  assert.equal(comparisonMarkerForWord([unknownVariant], 999, 1, 7, { kind: 'reader', readerId: 'Q01' }), null)
+})
+
+test('2:40 and 2:41 ياءات زوائد: Yaqub displays the added ya for both narrators, Hafs keeps the mushaf form', () => {
+  for (const [ayah, token, baseText, variantText] of [
+    [40, 13, 'فَٱرْهَبُونِ', 'فَٱرْهَبُونِي'],
+    [41, 18, 'فَٱتَّقُونِ', 'فَٱتَّقُونِي'],
+  ]) {
+    for (const readingId of ['Q09-R01', 'Q09-R02']) {
+      const resolution = resolveTokenForReading(page007Variants, 2, ayah, token, baseText, readingId, { includeUnpublished: true })
+      assert.equal(resolution.kind, 'variant', `${readingId} must receive the Yaqub form at 2:${ayah}`)
+      assert.equal(resolution.text, variantText)
+    }
+    const hafs = resolveTokenForReading(page007Variants, 2, ayah, token, baseText, BASE_READING, { includeUnpublished: true })
+    assert.equal(hafs.kind, 'base')
+    assert.equal(hafs.text, baseText)
+  }
 })
 
 test('the two "الدوري" narrators are distinct people, never conflated', () => {
@@ -94,6 +141,16 @@ test('operations: REPLACE/INSERT/DELETE/MERGE/SPLIT/DIACRITIC_CHANGE all resolve
   assert.equal(resolveTokenForReading(VARIANTS, 999, 1, 6, 'SYN-WORD', 'Q05-R01').text, 'SYN-WORD (diacritic)') // DIACRITIC_CHANGE
 })
 
+test('page 258 multi-token replacement renders one alternate word per Mushaf token', () => {
+  const readingId = 'Q06-R01'
+  const first = resolveTokenForReading(page258Variants, 14, 19, 5, 'خَلَقَ', readingId, { includeUnpublished: true })
+  const second = resolveTokenForReading(page258Variants, 14, 19, 6, 'ٱلسَّمَـٰوَٰتِ', readingId, { includeUnpublished: true })
+  assert.equal(first.kind, 'variant')
+  assert.equal(second.kind, 'variant')
+  assert.equal(first.text, 'خَالِقُ')
+  assert.equal(second.text, 'ٱلسَّمَاوَاتِ')
+})
+
 test('renderToken() token-object wrapper matches resolveTokenForReading()', () => {
   const result = renderToken({ surah: 999, ayah: 1, wordIndexInAyah: 1, text: 'SYN-BASE' }, 'Q01-R02', VARIANTS)
   assert.equal(result.kind, 'variant')
@@ -118,6 +175,33 @@ test('attribution: both narrators of one reader (Case B) uses the parent reader 
   assert.equal(attribution.kind, 'reader')
   assert.equal(attribution.readerId, 'Q06')
   assert.equal(attribution.color, readerColor('Q06'))
+})
+
+test('rollupAuthorityPills: rolls up both narrators to Imam, preserves standalone narrators', () => {
+  // Hamzah: both narrators -> rollup to Imam Hamzah
+  const hamzahPills = rollupAuthorityPills(['Q06-R01', 'Q06-R02'])
+  assert.equal(hamzahPills.length, 1)
+  assert.equal(hamzahPills[0].key, 'Q06')
+  assert.equal(hamzahPills[0].name, 'الإمام حمزة')
+  assert.equal(hamzahPills[0].kind, 'reader')
+
+  // Warsh alone -> standalone narrator
+  const warshPill = rollupAuthorityPills(['Q01-R02'])
+  assert.equal(warshPill.length, 1)
+  assert.equal(warshPill[0].key, 'Q01-R02')
+  assert.equal(warshPill[0].name, 'الراوي ورش')
+  assert.equal(warshPill[0].kind, 'narrator')
+
+  // Both Hamzah narrators + Warsh alone -> 1 Imam + 1 narrator
+  const combined = rollupAuthorityPills(['Q06-R01', 'Q06-R02', 'Q01-R02'])
+  assert.equal(combined.length, 2)
+  assert.equal(combined[0].name, 'الراوي ورش')
+  assert.equal(combined[1].name, 'الإمام حمزة')
+
+  // Explicit reader ID -> rollup to Imam
+  const explicitReader = rollupAuthorityPills(['Q07'])
+  assert.equal(explicitReader.length, 1)
+  assert.equal(explicitReader[0].name, 'الإمام الكسائي')
 })
 
 test('attribution: multiple readers (Case C) builds one segmented marker, one slice per reader', () => {
@@ -166,6 +250,39 @@ test('page 1: REVIEWED variants are excluded from the public view and only appea
   })
 })
 
+test('Surah al-Baqarah: Hisham reads إبراهام at all 15 Ibrahim loci, with the verse case ending preserved', async () => {
+  const repo = new FixtureQiraatRepository()
+  const cases = [
+    [19, 124, 3, 'إِبْرَاهَامَ'],
+    [19, 125, 10, 'إِبْرَاهَامَ'],
+    [19, 125, 14, 'إِبْرَاهَامَ'],
+    [19, 126, 3, 'إِبْرَاهَامُ'],
+    [20, 127, 3, 'إِبْرَاهَامُ'],
+    [20, 130, 5, 'إِبْرَاهَامَ'],
+    [20, 132, 3, 'إِبْرَاهَامُ'],
+    [20, 133, 20, 'إِبْرَاهَامَ'],
+    [21, 135, 10, 'إِبْرَٰهَامَ'],
+    [21, 136, 10, 'إِبْرَٰهَامَ'],
+    [21, 140, 4, 'إِبْرَٰهَامَ'],
+    [43, 258, 6, 'إِبْرَاهَامَ'],
+    [43, 258, 15, 'إِبْرَاهَامُ'],
+    [43, 258, 25, 'إِبْرَاهَامُ'],
+    [44, 260, 3, 'إِبْرَاهَامُ'],
+  ]
+
+  const byPage = new Map()
+  for (const [page] of cases) {
+    if (!byPage.has(page)) byPage.set(page, await repo.getVariantsForPage(page, { includeUnpublished: true }))
+  }
+  for (const [page, ayah, startToken, expectedText] of cases) {
+    const variant = byPage.get(page).find((entry) => entry.surah === 2 && entry.ayah === ayah && entry.startToken === startToken)
+    assert.ok(variant, `missing Ibrahim variant at page ${page}, 2:${ayah}:${startToken}`)
+    assert.equal(variant.variantText, expectedText, `wrong case ending at 2:${ayah}:${startToken}`)
+    assert.ok(variant.readingIds.includes('Q04-R01'), `Hisham must read إبراهام at 2:${ayah}:${startToken}`)
+    assert.ok(variant.readingIds.includes('Q04-R02'), `Ibn Dhakwan's alternate face must remain at 2:${ayah}:${startToken}`)
+  }
+})
+
 test('tokenKey/ayahKeyOf produce the canonical surah:ayah[:token] identity', () => {
   assert.equal(tokenKey(1, 4, 1), '1:4:1')
   assert.equal(ayahKeyOf(1, 4), '1:4')
@@ -188,6 +305,28 @@ test('2:37 آدم/كلمات: one conceptual locus spanning two disjoint words s
     assert.ok(variantsForToken(variants, 2, 37, adam.startToken, options).some((v) => v.id === adam.id))
     assert.ok(variantsForToken(variants, 2, 37, kalimat.startToken, options).some((v) => v.id === kalimat.id))
   })
+})
+
+test('2:14 أبو جعفر reads مستهزون while the Hafs base text stays unchanged', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(3, { includeUnpublished: true })
+  const variant = variants.find((entry) => entry.surah === 2 && entry.ayah === 14 && entry.startToken === 16)
+  assert.ok(variant, 'the Abu Jaafar variant must be anchored at 2:14 word 16')
+  assert.equal(variant.hafsText, 'مُسْتَهْزِءُونَ')
+  assert.equal(variant.variantText, 'مُسْتَهْزُونَ')
+  assert.deepEqual(variant.readingIds, ['Q08-R01', 'Q08-R02'])
+  assert.equal(variant.sources?.[0]?.sourceType, 'printed-book')
+
+  for (const readingId of ['Q08-R01', 'Q08-R02']) {
+    assert.deepEqual(
+      resolveTokenForReading(variants, 2, 14, 16, variant.hafsText, readingId, { includeUnpublished: true }),
+      { kind: 'variant', text: 'مُسْتَهْزُونَ', variant },
+    )
+  }
+  assert.deepEqual(
+    resolveTokenForReading(variants, 2, 14, 16, variant.hafsText, BASE_READING, { includeUnpublished: true }),
+    { kind: 'base', text: 'مُسْتَهْزِءُونَ' },
+  )
 })
 
 test('a performance-only variant keeps variantText === hafsText and carries a performanceNote', () => {
@@ -220,6 +359,26 @@ test('comparison marker: a performance-only variant (no text change) gets the fi
     assert.notEqual(textualMarker.color, PERFORMANCE_MARKER_COLOR)
     assert.ok(!textualMarker.isPerformanceOnly)
   })
+})
+
+test('multi-reader word color uses a distinct named solid token while its underline attribution stays segmented', () => {
+  const marker = comparisonMarkerForWord(
+    [{
+      id: 'synthetic-multi-reader', surah: 999, ayah: 11, startToken: 1, endToken: 1,
+      operation: 'REPLACE', hafsText: 'SYN-BASE', variantText: 'SYN-VARIANT', differenceType: 'LETTER',
+      verificationStatus: 'REVIEWED', createdAt: '', updatedAt: '',
+      readingIds: ['Q01-R01', 'Q02-R01'],
+    }],
+    999, 11, 1, { kind: 'all' }, { includeUnpublished: true },
+  )
+  assert.ok(marker?.isGradient, 'two readers must produce a segmented gradient marker')
+  assert.ok(!Object.values(READER_COLOR).includes(QIRAAT_MULTI_READER_COLOR))
+  assert.ok(!Object.values(NARRATOR_COLOR).includes(QIRAAT_MULTI_READER_COLOR))
+  assert.equal(QIRAAT_MULTI_READER_COLOR, '#3F6212')
+  const darkColor = adaptColorForDark(QIRAAT_MULTI_READER_COLOR)
+  assert.equal(darkColor, '#bef264')
+  assert.ok(contrastRatio(QIRAAT_MULTI_READER_COLOR, '#fffdf6') >= 4.5, 'shared color must be readable on the light page')
+  assert.ok(contrastRatio(darkColor, '#18191d') >= 4.5, 'dark-adapted shared color must be readable on the dark page')
 })
 
 test('a record with no confident attribution never crashes the marker builder (computeAttribution([]) throws)', () => {
@@ -317,4 +476,345 @@ test('page-1 rules (عد الآي/الإدغام الكبير/أوجه الوص�
     assert.deepEqual(maddOptions.options, ['القصر', 'التوسط', 'الإشباع'])
     assert.equal(maddOptions.readingIds, undefined, 'an unattributed enumerated-options rule must carry no reader attribution at all')
   })
+})
+
+test('when filtering by reader or narrator, comparisonMarkerForWord only marks what belongs to him with his color', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(1, { includeUnpublished: true })
+
+  // 1:4:1 (مالك/ملك): 6 readers read ملك (Nafi Q01, Ibn Kathir Q02, Abu Amr Q03, Ibn Amir Q04, Abu Ja'far Q08, Ya'qub Q09).
+  // When filter is 'all', it produces a multi-reader gradient:
+  const allMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'all' }, { includeUnpublished: true })
+  assert.ok(allMarker)
+  assert.equal(allMarker.isGradient, true)
+
+  // When filtered by Reader Nafi (Q01), it MUST return Nafi's solid reader color, never a multi-reader gradient:
+  const nafiMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reader', readerId: 'Q01' }, { includeUnpublished: true })
+  assert.ok(nafiMarker)
+  assert.equal(nafiMarker.isGradient, false)
+  assert.equal(nafiMarker.color, readerColor('Q01'))
+
+  // When filtered by Narrator Warsh (Q01-R02), it MUST return Warsh's solid narrator color:
+  const warshMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reading', readingId: 'Q01-R02' }, { includeUnpublished: true })
+  assert.ok(warshMarker)
+  assert.equal(warshMarker.isGradient, false)
+  assert.equal(warshMarker.color, narratorColor('Q01-R02'))
+
+  // When filtered by Reader Asim (Q05), who reads the baseline (مالك) and does not differ:
+  // It MUST return null — nothing colored or marked for Asim!
+  const asimMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reader', readerId: 'Q05' }, { includeUnpublished: true })
+  assert.equal(asimMarker, null, 'word must not be marked or colored when it does not differ for this reader')
+
+  // When filtered by Narrator Hafs (Q05-R02):
+  const hafsMarker = comparisonMarkerForWord(variants, 1, 4, 1, { kind: 'reading', readingId: 'Q05-R02' }, { includeUnpublished: true })
+  assert.equal(hafsMarker, null, 'word must not be marked or colored for Hafs baseline')
+})
+
+test('when filtering by reader or narrator, rulingMarkerForWord only marks and colors usul rulings related to him', () => {
+  // On Page 2, 2:2:5 (فيه): صلة هاء الكناية belongs exclusively to Ibn Kathir (Q02, Al-Bazzi Q02-R01 & Qunbul Q02-R02).
+  const allSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'all' })
+  assert.ok(allSilat)
+
+  // Reader filter Ibn Kathir matches:
+  const ibnKathirSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'reader', readerId: 'Q02' })
+  assert.ok(ibnKathirSilat)
+  assert.equal(ibnKathirSilat.color, '#0D9488')
+
+  // Reader filter Nafi (Q01) must return null:
+  const nafiSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'reader', readerId: 'Q01' })
+  assert.equal(nafiSilat, null, 'Nafi must not see or color Ibn Kathir usul ruling')
+
+  // Narrator filter Warsh (Q01-R02) must return null:
+  const warshSilat = rulingMarkerForWord(page002Rulings, 2, 2, 5, { kind: 'reading', readingId: 'Q01-R02' })
+  assert.equal(warshSilat, null, 'Warsh must not see or color Ibn Kathir usul ruling')
+
+  // On Page 2, 2:4:10 (وبالآخرة): ترقيق الراءات belongs exclusively to Warsh (Q01-R02).
+  // Reader filter Nafi (Q01) matches (Warsh is a narrator of Nafi):
+  const nafiTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reader', readerId: 'Q01' })
+  assert.ok(nafiTarqiq)
+
+  // Narrator filter Warsh (Q01-R02) matches:
+  const warshTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reading', readingId: 'Q01-R02' })
+  assert.ok(warshTarqiq)
+
+  // Narrator filter Qalun (Q01-R01) must return null:
+  const qalunTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reading', readingId: 'Q01-R01' })
+  assert.equal(qalunTarqiq, null, 'Qalun must not see or color Warsh-only tarqiq ruling')
+
+  // Reader filter Asim (Q05) must return null:
+  const asimTarqiq = rulingMarkerForWord(page002Rulings, 2, 4, 10, { kind: 'reader', readerId: 'Q05' })
+  assert.equal(asimTarqiq, null, 'Asim must not see or color Warsh tarqiq ruling')
+})
+
+test('a contextual Usul ruling marks both endpoints when it spans an ayah boundary', () => {
+  // Page 1 explicitly stores the أبو عمرو الكبير span as 1:3:2 → 1:4:1.
+  // Both words must be visible in comparison mode; treating it as a single-ayah
+  // anchor silently lost the second endpoint.
+  const firstEndpoint = rulingMarkerForWord(page001Rulings, 1, 3, 2, { kind: 'reading', readingId: 'Q03-R02' })
+  const secondEndpoint = rulingMarkerForWord(page001Rulings, 1, 4, 1, { kind: 'reading', readingId: 'Q03-R02' })
+  assert.ok(firstEndpoint)
+  assert.ok(secondEndpoint)
+  assert.ok(secondEndpoint.rulings.some((ruling) => ruling.category === 'IDGHAM_KABIR'))
+})
+
+test('page 266 carries the supplied Al-Hijr colour coverage for 15:82 and 15:87', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(266, { includeUnpublished: true })
+
+  assert.ok(
+    variants.some((variant) => variant.ayah === 82 && variant.hafsText.includes('بُيُوتًا')),
+    '15:82 بُيُوتًا must be a loadable reader-specific comparison locus',
+  )
+  assert.ok(
+    variants.some((variant) => variant.ayah === 87 && variant.hafsText.includes('ٱلْقُرْءَانَ')),
+    '15:87 ٱلْقُرْءَانَ must be a loadable reader-specific comparison locus',
+  )
+  assert.ok(
+    page266Rulings.some((rule) => rule.ayah === 82 && rule.category === 'MADD_BADAL'),
+    '15:82 آمِنِينَ must retain its Warsh-specific colour marker alongside the comparison locus',
+  )
+})
+
+test('page 536 keeps distinct performance faces for the same word and reader', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(536, { includeUnpublished: true })
+  const repeatedFace = variants.filter((variant) =>
+    variant.surah === 56 && variant.ayah === 58 && variant.startToken === 1 &&
+    variant.variantText === 'أَفَرَءَيْتُم' && variant.readingIds.length === 1 &&
+    variant.readingIds[0] === 'Q01-R02'
+  )
+  assert.equal(repeatedFace.length, 2)
+  assert.deepEqual(new Set(repeatedFace.map((variant) => variant.performanceNote)), new Set([
+    'تسهيل الهمزة الثانية مع مد ست حركات',
+    'إبدال الهمزة الثانية ألفاً ممدودة ست حركات',
+  ]))
+})
+
+test('page 400 merges reader sets for the same face but keeps a different description separate', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(400, { includeUnpublished: true })
+  const locus = variants.filter((variant) => variant.surah === 29 && variant.ayah === 33 && variant.startToken === 17 && variant.variantText === 'مُنْجُوكَ')
+  const sharedFace = locus.filter((variant) => variant.description === 'بتخفيف الجيم')
+  const distinctFace = locus.filter((variant) => variant.description === 'بسكون النون وتخفيف الجيم')
+
+  assert.equal(sharedFace.length, 1)
+  assert.deepEqual(new Set(sharedFace[0].readingIds), new Set(['Q02-R01', 'Q02-R02', 'Q09-R01', 'Q09-R02']))
+  assert.equal(distinctFace.length, 1, 'a different Arabic face description must remain separate')
+})
+
+test('page 48 keeps different descriptions separate even when the word form matches', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(48, { includeUnpublished: true })
+  const faces = variants.filter((variant) => variant.surah === 2 && variant.ayah === 282 && variant.startToken === 69 && variant.variantText === 'فَتُذْكِرَ')
+
+  assert.equal(faces.length, 2)
+  assert.deepEqual(new Set(faces.map((variant) => variant.description)), new Set([
+    'بسكون الذال وتخفيف الكاف ورفع الراء',
+    'بسكون الذال وتخفيف الكاف ونصب الراء',
+  ]))
+})
+
+test('page 264 preserves distinct approved forms at 15:44 for Shu\'bah and Abu Jaafar', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(264, { includeUnpublished: true })
+  const faces = variants.filter((variant) => variant.surah === 15 && variant.ayah === 44 && variant.startToken === 7)
+  assert.equal(faces.length, 2, 'different sourced forms at one token remain separate records')
+  assert.deepEqual(new Set(faces.flatMap((variant) => variant.readingIds)), new Set(['Q05-R01', 'Q08-R01', 'Q08-R02']))
+  assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', 'Q05-R01', { includeUnpublished: true }).text, 'جُزُءٌ')
+  for (const readingId of ['Q08-R01', 'Q08-R02']) {
+    assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', readingId, { includeUnpublished: true }).text, 'جُزٌّ')
+  }
+  assert.equal(resolveTokenForReading(variants, 15, 44, 7, 'جُزْءٌۭ', BASE_READING, { includeUnpublished: true }).text, 'جُزْءٌۭ')
+})
+
+
+// ── رموز الشاطبية والدرة ──────────────────────────────────────────────────────
+// The reference prints its own عدد الروايات for every group symbol. These tests treat that column
+// as a checksum against the app's authority model: if a group was mis-transcribed, the count and
+// the expansion disagree and the build fails rather than teaching the reader wrongly.
+test('every group symbol expands to exactly the reading count its source prints', () => {
+  for (const symbol of GROUP_SYMBOLS) {
+    const readings = readingsOfGroupSymbol(symbol)
+    assert.equal(readings.length, symbol.readingCountInSource,
+      `${symbol.symbol}: expanded to ${readings.length} riwayat but the source says ${symbol.readingCountInSource}`)
+    assert.equal(new Set(readings).size, readings.length, `${symbol.symbol}: duplicate riwayah in the expansion`)
+    for (const r of readings) assert.ok(ALL_READING_IDS.includes(r), `${symbol.symbol}: unknown reading ${r}`)
+  }
+})
+
+test('page 303 imports only token-backed, explicitly attributable source variants', async () => {
+  const repo = new FixtureQiraatRepository()
+  const variants = await repo.getVariantsForPage(303, { includeUnpublished: true })
+  assert.equal(variants.length, 15)
+  assert.deepEqual(
+    variants.map(({ surah, ayah, variantText }) => `${surah}:${ayah}:${variantText}`),
+    [
+      '18:86:حَامِيَةٍ',
+      '18:88:يُسُرًا',
+      '18:95:مَكَّنَنِي',
+      '18:96:ائْتُونِي',
+      '18:97:اسْطَّاعُوا',
+      '18:93:يُفْقِهُونَ',
+      '18:94:خَرَاجًا',
+      '18:87:نُكُرًا',
+      '18:88:جَزَاءُ الْحُسْنَى',
+      '18:96:قَالَ ائْتُونِي',
+      '18:97:فَمَا اسْطَّاعُوا',
+      '18:85:فَأَتْبَعَ',
+      '18:89:أَتْبَعَ',
+      '18:92:أَتْبَعَ',
+      '18:96:ٱلصَّدَفَيْنِ',
+    ],
+  )
+  assert.equal((await repo.getVariantsForPage(303)).length, 0, 'REVIEWED records remain hidden from the ordinary view')
+
+  const hamiah = variants.find((variant) => variant.ayah === 86)
+  assert.ok(hamiah)
+  assert.equal(hamiah.hafsText, 'حَمِئَةٍۢ')
+  assert.deepEqual(hamiah.readingIds, ['Q04-R01', 'Q04-R02', 'Q05-R01', 'Q06-R01', 'Q06-R02', 'Q07-R01', 'Q07-R02', 'Q08-R01', 'Q08-R02', 'Q10-R01', 'Q10-R02'])
+  assert.ok(hamiah.sources?.[0]?.sourceText?.includes('حَامِيَةٍ'), 'keep the exact source row with the token-backed variant')
+  assert.deepEqual(
+    resolveTokenForReading(variants, 18, 86, 10, hamiah.hafsText, 'Q06-R01', { includeUnpublished: true }),
+    { kind: 'variant', text: 'حَامِيَةٍ', variant: hamiah },
+  )
+
+  const ituni = variants.find((variant) => variant.ayah === 96)
+  assert.ok(ituni)
+  assert.deepEqual(ituni.readingIds, ['Q05-R01', 'Q06-R01', 'Q06-R02'])
+  assert.ok(ituni.sources?.some((source) => source.sourceName.startsWith('Quranpedia official Qiraat dump')))
+  for (const readingId of ['Q06-R01', 'Q06-R02']) {
+    assert.deepEqual(
+      resolveTokenForReading(variants, 18, 96, 1, ituni.hafsText, readingId, { includeUnpublished: true }),
+      { kind: 'variant', text: 'ائْتُونِي', variant: ituni },
+    )
+  }
+})
+
+test('WAQF_HAMZA source details are additive and preserve existing reader notes', async () => {
+  const repo = new FixtureQiraatRepository()
+  const page228 = await repo.getRulingsForPage(228, { includeUnpublished: true })
+  const bisuu = page228.find((r) => r.category === 'WAQF_HAMZA' && r.surah === 11 && r.ayah === 54)
+  assert.ok(bisuu)
+  assert.equal(bisuu.notes, 'وكذا هشام وقفًا')
+  assert.deepEqual(bisuu.sourceNotes, ['نص المصدر لوقف حمزة: «النقل والإدغام (سكوناً وروماً)»'])
+  assert.deepEqual(bisuu.readings.map((r) => r.readingId), ['Q06-R01', 'Q06-R02', 'Q04-R01'])
+
+  const page234 = await repo.getRulingsForPage(234, { includeUnpublished: true })
+  const haula = page234.find((r) => r.category === 'WAQF_HAMZA' && r.surah === 11 && r.ayah === 109)
+  const sayyiat = page234.find((r) => r.category === 'WAQF_HAMZA' && r.surah === 11 && r.ayah === 114)
+  assert.ok(haula)
+  assert.ok(sayyiat)
+  assert.deepEqual(haula.sourceNotes, ['نص المصدر لوقف حمزة: «١٣ وجهاً»'])
+  assert.deepEqual(sayyiat.sourceNotes, ['نص المصدر لوقف حمزة: «إبدال الهمزة ياءً»'])
+})
+
+test('صحبة carries شعبة and صحاب carries حفص — never the other way round', () => {
+  const sohba = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'صَحْبَة'))
+  const sihab = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'صِحَاب'))
+  assert.ok(sohba.includes('Q05-R01') && !sohba.includes('Q05-R02'))
+  assert.ok(sihab.includes('Q05-R02') && !sihab.includes('Q05-R01'))
+  // Both share الأخوان, and neither may quietly acquire خلف العاشر (a Durrah reader).
+  for (const group of [sohba, sihab]) {
+    for (const r of ['Q06-R01', 'Q06-R02', 'Q07-R01', 'Q07-R02']) assert.ok(group.includes(r))
+    assert.ok(!group.includes('Q10-R01') && !group.includes('Q10-R02'))
+  }
+})
+
+test('خ is the seven minus نافع, so it never contains a Nafi riwayah', () => {
+  const kha = readingsOfGroupSymbol(GROUP_SYMBOLS.find((s) => s.symbol === 'خ'))
+  assert.equal(kha.length, 12)
+  assert.ok(!kha.includes('Q01-R01') && !kha.includes('Q01-R02'))
+})
+
+test('the same letter resolves to different people in each matn, and never without one', () => {
+  // أ: نافع in the Shatibiyyah, أبو جعفر in the Durrah.
+  assert.equal(resolveAuthoritySymbol('shatibiyyah', 'أ').readerId, 'Q01')
+  assert.equal(resolveAuthoritySymbol('durrah', 'أ').readerId, 'Q08')
+  // ض: the narrator خلف عن حمزة there, إسحاق عن خلف العاشر here — the exact collision the
+  // project's Q-ID space exists to keep apart.
+  assert.equal(resolveAuthoritySymbol('shatibiyyah', 'ض').narratorId, 'Q06-R01')
+  assert.equal(resolveAuthoritySymbol('durrah', 'ض').narratorId, 'Q10-R01')
+  // A letter that belongs to the other matn does not resolve.
+  assert.equal(resolveAuthoritySymbol('durrah', 'ن'), undefined)
+})
+
+test('the symbol tables cover every reader and narrator the app knows', () => {
+  const covered = new Set(AUTHORITY_SYMBOLS.flatMap((a) => [a.readerId, a.narratorId].filter(Boolean)))
+  for (const reader of QIRAAT_READERS) assert.ok(covered.has(reader.id), `no symbol for ${reader.id}`)
+  for (const narrator of QIRAAT_NARRATORS) assert.ok(covered.has(narrator.id), `no symbol for ${narrator.id}`)
+  // 10 readers + 20 narrators, each once.
+  assert.equal(AUTHORITY_SYMBOLS.length, 30)
+})
+
+// ── إمالة/تقليل dot markers ─────────────────────────────────────────────────
+
+function makeImalahTaqlilRuling(id, readings, overrides = {}) {
+  return {
+    id,
+    pageNumber: 1,
+    category: 'IMALAH_TAQLIL',
+    categoryAr: 'الممال والمقلل',
+    color: '#DB2777',
+    wordAnchored: true,
+    surah: 1,
+    ayah: 1,
+    startToken: 1,
+    endToken: 1,
+    endAyah: 1,
+    baseText: 'تجربة',
+    verificationStatus: 'REVIEWED',
+    attribution: [],
+    readings,
+    hasAlternate: false,
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: '2026-01-01T00:00:00Z',
+    ...overrides,
+  }
+}
+
+test('imalahTaqlilMarkerForWord: mixed group with an إمالة reading anywhere returns one filled dot in the family colour', () => {
+  const ruling = makeImalahTaqlilRuling('r1', [
+    { readingId: 'Q06-R01', action: 'إمالة', isDefault: true }, // Hamzah
+    { readingId: 'Q06-R02', action: 'إمالة', isDefault: true }, // Hamzah's other narrator, same reader
+    { readingId: 'Q01-R02', action: 'تقليل', isDefault: true }, // Warsh (Nafi)
+  ])
+  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+  assert.ok(marker)
+  assert.equal(marker.filled, true) // إمالة takes precedence -- always ONE dot, never per-reader
+  assert.equal(marker.color, '#DB2777') // the ruling's own fixed family colour, never a reader colour
+})
+
+test('imalahTaqlilMarkerForWord: تقليل-only readings return one hollow (unfilled) dot', () => {
+  const allReaderReadings = QIRAAT_READERS.map((reader) => {
+    const reading = QIRAAT_READINGS.find((r) => r.readerId === reader.id)
+    return { readingId: reading.id, action: 'تقليل', isDefault: true }
+  })
+  const ruling = makeImalahTaqlilRuling('r2', allReaderReadings, { color: '#DB2777' })
+  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+  assert.ok(marker)
+  assert.equal(marker.filled, false)
+  assert.equal(marker.color, '#DB2777')
+})
+
+test('imalahTaqlilMarkerForWord: multiple matched rulings still collapse to exactly one dot', () => {
+  const rulingA = makeImalahTaqlilRuling('r3a', [{ readingId: 'Q07-R01', action: 'تقليل', isDefault: true }])
+  const rulingB = makeImalahTaqlilRuling('r3b', [{ readingId: 'Q07-R02', action: 'إمالة', isDefault: true }])
+  const marker = imalahTaqlilMarkerForWord([rulingA, rulingB], 1, 1, 1, { kind: 'all' })
+  assert.ok(marker)
+  assert.equal(marker.filled, true)
+})
+
+test('imalahTaqlilMarkerForWord: a word with no IMALAH_TAQLIL ruling returns null', () => {
+  const otherRuling = makeImalahTaqlilRuling('r4', [{ readingId: 'Q01-R02', action: 'ترقيق', isDefault: true }], { category: 'TARQIQ_RA', categoryAr: 'ترقيق الراءات' })
+  const marker = imalahTaqlilMarkerForWord([otherRuling], 1, 1, 1, { kind: 'all' })
+  assert.equal(marker, null)
+})
+
+test('imalahTaqlilMarkerForWord: a baseline-only ("فتح") ruling with no إمالة/تقليل action anywhere returns null', () => {
+  const ruling = makeImalahTaqlilRuling('r5', [
+    { readingId: 'Q05-R02', action: 'فتح', isDefault: true },
+    { readingId: 'Q02-R01', action: 'فتح', isDefault: true },
+  ])
+  const marker = imalahTaqlilMarkerForWord([ruling], 1, 1, 1, { kind: 'all' })
+  assert.equal(marker, null)
 })

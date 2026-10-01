@@ -224,7 +224,7 @@ export default function NetworkGraph({ nodes: nodesIn, edges: edgesIn }: Props) 
           <div className="flex items-center gap-2">
             {hasSaved && (
               <button onClick={resetLayout}
-                className="text-[11px] px-2.5 py-1 rounded-lg border border-red-300 dark:border-red-800 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors">
+                className="text-[11px] px-2.5 py-1 rounded-lg border border-red-300 text-red-500 hover:bg-red-50 transition-colors">
                 مسح المواضع
               </button>
             )}
@@ -247,7 +247,7 @@ export default function NetworkGraph({ nodes: nodesIn, edges: edgesIn }: Props) 
         </div>
 
         {/* Heat legend bar */}
-        <div className="flex items-center gap-2 px-4 py-2 text-[10px] text-[var(--color-ink-muted)] border-b border-[var(--color-border-soft)]"
+        <div className="flex items-center gap-2 px-4 py-2 text-[11px] text-[var(--color-ink-muted)] border-b border-[var(--color-border-soft)]"
              dir="ltr">
           <span className="shrink-0">أقل ارتباطاً</span>
           <div className="flex-1 h-2 rounded-full"
@@ -258,7 +258,7 @@ export default function NetworkGraph({ nodes: nodesIn, edges: edgesIn }: Props) 
         {/* SVG canvas — fills remaining panel height */}
         <svg ref={svgRef} className="w-full flex-1 min-h-0 block" />
 
-        <p className="text-center text-[10px] text-[var(--color-ink-muted)] py-2 border-t border-[var(--color-border-soft)]">
+        <p className="text-center text-[11px] text-[var(--color-ink-muted)] py-2 border-t border-[var(--color-border-soft)]">
           اسحب الخلفية للتحريك · عجلة الماوس للتكبير · اسحب عقدة لتثبيت موضعها
         </p>
       </div>
@@ -268,7 +268,7 @@ export default function NetworkGraph({ nodes: nodesIn, edges: edgesIn }: Props) 
 
         {/* Color key */}
         <div>
-          <p className="text-[10px] font-bold tracking-widest text-[var(--color-ink-muted)] uppercase mb-2">
+          <p className="text-[11px] font-bold tracking-widest text-[var(--color-ink-muted)] uppercase mb-2">
             مفتاح الألوان
           </p>
           <div className="space-y-1.5">
@@ -302,7 +302,7 @@ export default function NetworkGraph({ nodes: nodesIn, edges: edgesIn }: Props) 
         {/* Selected node detail */}
         {selected ? (
           <div>
-            <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold mb-1">
+            <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold mb-1">
               السورة المختارة
             </p>
             <h3 className="text-[20px] font-bold text-[var(--color-primary)] mb-0.5">{selected.id}</h3>
@@ -315,7 +315,7 @@ export default function NetworkGraph({ nodes: nodesIn, edges: edgesIn }: Props) 
               <strong className="text-[var(--color-ink)]">{selected.degree}</strong> سورة
             </p>
 
-            <p className="text-[10px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold mb-2">
+            <p className="text-[11px] tracking-widest text-[var(--color-ink-muted)] uppercase font-bold mb-2">
               السور المرتبطة ({selected.neighbours.length})
             </p>
             <ul className="space-y-1.5 max-h-[360px] overflow-y-auto pr-1">

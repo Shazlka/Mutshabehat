@@ -1,0 +1,406 @@
+[
+  {
+    "id": "v-L389-s28a29b0-w2",
+    "surah": 28,
+    "ayah": 29,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "جَذْوَةٍۢ",
+    "variantText": "جُذْوَةٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L389-s28a29b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L389-s28a29b0-w2",
+        "variantId": "v-L389-s28a29b0-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الجيم",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L389-s28a29b0-w3",
+    "surah": 28,
+    "ayah": 29,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "جَذْوَةٍۢ",
+    "variantText": "جِذْوَةٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L389-s28a29b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L389-s28a29b0-w3",
+        "variantId": "v-L389-s28a29b0-w3",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-028-29-23-3072",
+        "variantId": "v-L389-s28a29b0-w3",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3072; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جَذْوَةٍ → جِذْوَةٍ | كسر الجيم"
+      },
+      {
+        "id": "s-DURI-028-29-23-r1740",
+        "variantId": "v-L389-s28a29b0-w3",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1740; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جَـذْوة → جِـذوة | كسر الدوري الـجيم"
+      }
+    ],
+    "description": "بكسر الجيم",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-L389-s28a32b1-w1",
+    "surah": 28,
+    "ayah": 32,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "فَذَٰنِكَ",
+    "variantText": "فَذَانِّكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L389-s28a32b1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L389-s28a32b1-w1",
+        "variantId": "v-L389-s28a32b1-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بتشديد النون",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L389-s28a34b1-w1",
+    "surah": 28,
+    "ayah": 34,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "رِدْءًۭا",
+    "variantText": "رِدًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L389-s28a34b1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L389-s28a34b1-w1",
+        "variantId": "v-L389-s28a34b1-w1",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإبدال الهمزة ألفاً مع نقل حركتها وحذفها وصلاً ووقفاً",
+    "wajhIndex": 1,
+    "evidence": []
+  },
+  {
+    "id": "v-L389-s28a34b2-w2",
+    "surah": 28,
+    "ayah": 34,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "يُصَدِّقُنِىٓ ۖ",
+    "variantText": "يُصَدِّقْنِي",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L389-s28a34b2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L389-s28a34b2-w2",
+        "variantId": "v-L389-s28a34b2-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-028-34-10-3082",
+        "variantId": "v-L389-s28a34b2-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3082; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُصَدِّقُنِي → يُصَدِّقْنِي | إسكان القاف مع القلقلة"
+      },
+      {
+        "id": "s-DURI-028-34-10-r1750",
+        "variantId": "v-L389-s28a34b2-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1750; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُصَـدِّقُنـي → يُصدِّقْـني | أسكن الدوري القاف"
+      }
+    ],
+    "description": "بجزم القاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L389-s28a35b0-w2",
+    "surah": 28,
+    "ayah": 35,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "عَضُدَكَ",
+    "variantText": "عُضْدَكَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L389-s28a35b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L389-s28a35b0-w2",
+        "variantId": "v-L389-s28a35b0-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم العين وسكون الضاد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D389-لاهله_امكثوا-w2",
+    "surah": 28,
+    "ayah": 29,
+    "startToken": 13,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "لِأَهْلِهِ ٱمْكُثُوٓا۟",
+    "variantText": "لِأَهْلِهُ امْكُثُوا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D389-لاهله_امكثوا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D389-لاهله_امكثوا-w2",
+        "variantId": "v-D389-لاهله_امكثوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P389-R01984",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿لِّأَهْلِهِ ٱمْكُثُوٓاْ﴾: بكسر الهاء وصلاً للجمهور؛ وبضم الهاء وصلاً ﴿لِأَهْلِهُ امْكُثُوا﴾ لحمزة."
+      }
+    ],
+    "description": "بضم الهاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D389-الرهب-w2",
+    "surah": 28,
+    "ayah": 32,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرَّهْبِ ۖ",
+    "variantText": "الرَّهَبِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D389-الرهب",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D389-الرهب-w2",
+        "variantId": "v-D389-الرهب-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P389-R01986",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿الرَّهْبِ﴾: بفتح الراء وسكون الهاء ﴿الرَّهْبِ﴾ لحفص؛ بفتحتين ﴿الرَّهَبِ﴾ لنافع، وابن كثير، وأبي عمرو، وأبي جعفر، ويعقوب؛ بضم الراء وسكون الهاء ﴿الرُّهْبِ﴾ للباقين."
+      },
+      {
+        "id": "s-SUSI-028-32-14-3078",
+        "variantId": "v-D389-الرهب-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3078; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الرَّهْبِ → الرَّهَبِ | فتح الهاء"
+      },
+      {
+        "id": "s-DURI-028-32-14-r1746",
+        "variantId": "v-D389-الرهب-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1746; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الرَّهْـب → الرَّهَـب | وفتح الدوري الراء والهاء"
+      }
+    ],
+    "description": "بفتحتين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-028-31-5-3076",
+    "surah": 28,
+    "ayah": 31,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "رَءَاهَا",
+    "variantText": "رَاءَاهَا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-028-31-5-3076",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-028-31-5-3076",
+        "variantId": "v-SUSI-028-31-5-3076",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 3076; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَآهَا → رَاءَاهَا | إمالة فتحة الهمزة"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة"
+  }
+]

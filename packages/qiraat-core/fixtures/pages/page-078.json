@@ -1,0 +1,272 @@
+[
+  {
+    "id": "v-L078-عليهم-1-w2",
+    "surah": 4,
+    "ayah": 9,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L078-عليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L078-عليهم-1-w2",
+        "variantId": "v-L078-عليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 83,
+        "sourceReference": "صفحة المصحف 78 · صفحة المصدر 83",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L078-وسيصلون-1-w2",
+    "surah": 4,
+    "ayah": 10,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "وَسَيَصْلَوْنَ",
+    "variantText": "وَسَيُصْلَوْنَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L078-وسيصلون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L078-وسيصلون-1-w2",
+        "variantId": "v-L078-وسيصلون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 83,
+        "sourceReference": "صفحة المصحف 78 · صفحة المصدر 83",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَسَيَصْلَوْنَ ضُمَّ كَمْ صَفَا"
+      }
+    ],
+    "description": "بضم الياء مبني للمفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَسَيَصْلَوْنَ ضُمَّ كَمْ صَفَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L078-واحده-1-w2",
+    "surah": 4,
+    "ayah": 11,
+    "startToken": 20,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "وَٰحِدَةًۭ",
+    "variantText": "وَٰحِدَةٌۭ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L078-واحده-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L078-واحده-1-w2",
+        "variantId": "v-L078-واحده-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 83,
+        "sourceReference": "صفحة المصحف 78 · صفحة المصدر 83",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: نَافِعٌ بِالرَّفْعِ وَاحِدَةٌ جَلَا"
+      }
+    ],
+    "description": "بالرفع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "نَافِعٌ بِالرَّفْعِ وَاحِدَةٌ جَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L078-فلامه-1-w2",
+    "surah": 4,
+    "ayah": 11,
+    "startToken": 41,
+    "endToken": 41,
+    "operation": "REPLACE",
+    "hafsText": "فَلِأُمِّهِ",
+    "variantText": "فَلِإِمِّهِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L078-فلامه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L078-فلامه-1-w2",
+        "variantId": "v-L078-فلامه-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 83,
+        "sourceReference": "صفحة المصحف 78 · صفحة المصدر 83",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي أُمٍّ مَعْ فِي أُمِّهَا فَلِأُمِّهِ لَدَى الْوَصْلِ ضَمُّ الْهَمْزِ بِالْكَسْرِ شَمْلَلَا — D: أُمَّ كُلِّ كَحَفْصٍ فُقْ"
+      }
+    ],
+    "description": "بكسر اللام والهمزة اتباعًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي أُمٍّ مَعْ فِي أُمِّهَا فَلِأُمِّهِ لَدَى الْوَصْلِ ضَمُّ الْهَمْزِ بِالْكَسْرِ شَمْلَلَا"
+      },
+      {
+        "source": "D",
+        "text": "أُمَّ كُلِّ كَحَفْصٍ فُقْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L078-فلامه-2-w2",
+    "surah": 4,
+    "ayah": 11,
+    "startToken": 47,
+    "endToken": 47,
+    "operation": "REPLACE",
+    "hafsText": "فَلِأُمِّهِ",
+    "variantText": "فَلِإِمِّهِ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L078-فلامه-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L078-فلامه-2-w2",
+        "variantId": "v-L078-فلامه-2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 83,
+        "sourceReference": "صفحة المصحف 78 · صفحة المصدر 83",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي أُمٍّ مَعْ فِي أُمِّهَا فَلِأُمِّهِ لَدَى الْوَصْلِ ضَمُّ الْهَمْزِ بِالْكَسْرِ شَمْلَلَا — D: أُمَّ كُلِّ كَحَفْصٍ فُقْ"
+      }
+    ],
+    "description": "بكسر اللام والهمزة اتباعًا",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي أُمٍّ مَعْ فِي أُمِّهَا فَلِأُمِّهِ لَدَى الْوَصْلِ ضَمُّ الْهَمْزِ بِالْكَسْرِ شَمْلَلَا"
+      },
+      {
+        "source": "D",
+        "text": "أُمَّ كُلِّ كَحَفْصٍ فُقْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L078-يوصي-1-w2",
+    "surah": 4,
+    "ayah": 11,
+    "startToken": 52,
+    "endToken": 52,
+    "operation": "REPLACE",
+    "hafsText": "يُوصِى",
+    "variantText": "يُوصَىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01"
+    ],
+    "locusId": "L078-يوصي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L078-يوصي-1-w2",
+        "variantId": "v-L078-يوصي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 83,
+        "sourceReference": "صفحة المصحف 78 · صفحة المصدر 83",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيُوصِي بِفَتْحِ الصَّادِ صَحَّ كَمَا دَنَا"
+      }
+    ],
+    "description": "بفتح الصاد مبني للمفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُوصِي بِفَتْحِ الصَّادِ صَحَّ كَمَا دَنَا"
+      }
+    ]
+  }
+]

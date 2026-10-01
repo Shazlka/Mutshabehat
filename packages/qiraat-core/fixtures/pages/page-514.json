@@ -1,0 +1,294 @@
+[
+  {
+    "id": "v-AUDIT-P514-48-24-1-09516b8f",
+    "surah": 48,
+    "ayah": 24,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P514-48-24-1-09516b8f",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03174-09516b8f",
+        "variantId": "v-AUDIT-P514-48-24-1-09516b8f",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03174",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/24"
+      },
+      {
+        "id": "s-SUSI-048-24-1-4085",
+        "variantId": "v-AUDIT-P514-48-24-1-09516b8f",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4085; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَهُوَ → وَهْوَ | إسكان الهاء"
+      },
+      {
+        "id": "s-DURI-048-24-1-r2361",
+        "variantId": "v-AUDIT-P514-48-24-1-09516b8f",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2361; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بإسكان الهاء",
+        "url": "https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-24-14-b4186a64",
+    "surah": 48,
+    "ayah": 24,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ ۚ",
+    "variantText": "عَلَيْهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P514-48-24-14-b4186a64",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03175-b4186a64",
+        "variantId": "v-AUDIT-P514-48-24-14-b4186a64",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03175",
+        "sourceText": "﴿عَلَيْهِم﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الهاء",
+        "url": "https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-24-18-bb93ca33",
+    "surah": 48,
+    "ayah": 24,
+    "startToken": 18,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "تَعْمَلُونَ بَصِيرًا",
+    "variantText": "يَعْمَلُونَ بَصِيرًا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "AUDIT-P514-48-24-18-bb93ca33",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03176-bb93ca33",
+        "variantId": "v-AUDIT-P514-48-24-18-bb93ca33",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03176",
+        "sourceText": "﴿تَعْمَلُونَ بَصِيرًا﴾: بتاء الخطاب للجمهور؛ بياء الغيب ﴿يَعْمَلُونَ﴾ لأبي عمرو.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ],
+    "description": "بياء الغيب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بياء الغيب",
+        "url": "https://quranpedia.net/qiraat/al-fath/24"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-26-6-95770810",
+    "surah": 48,
+    "ayah": 26,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْحَمِيَّةَ",
+    "variantText": "قُلُوبِهِمِ ٱلْحَمِيَّةَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P514-48-26-6-95770810",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03178-95770810",
+        "variantId": "v-AUDIT-P514-48-26-6-95770810",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03178",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو، ويعقوب.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ],
+    "description": "بكسر الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بكسر الهاء والميم وصلاً",
+        "url": "https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P514-48-26-6-43766619",
+    "surah": 48,
+    "ayah": 26,
+    "startToken": 6,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قُلُوبِهِمُ ٱلْحَمِيَّةَ",
+    "variantText": "قُلُوبُهُمُ ٱلْحَمِيَّةَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "AUDIT-P514-48-26-6-43766619",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P514-R03179-43766619",
+        "variantId": "v-AUDIT-P514-48-26-6-43766619",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P514-R03179",
+        "sourceText": "بضم الهاء والميم وصلاً: حمزة، والكسائي، وخلف.",
+        "verificationNotes": "إسناد صريح من السطر المصدر، وربط الوجه بالرمز الحقيقي في صفحة المصحف. المراجعة المستقلة: https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ],
+    "description": "بضم الهاء والميم وصلاً",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية",
+        "text": "بضم الهاء والميم وصلاً",
+        "url": "https://quranpedia.net/qiraat/al-fath/26"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-048-25-17-4087-performance",
+    "surah": 48,
+    "ayah": 25,
+    "startToken": 17,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "مُّؤْمِنَـٰتٌۭ",
+    "variantText": "مُّؤْمِنَـٰتٌۭ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-048-25-17-4087",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-048-25-17-4087",
+        "variantId": "v-SUSI-048-25-17-4087-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4087; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُّؤْمِنَاتٌ → مُّومِنَاتٌ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-DURI-048-27-5-r2367",
+    "surah": 48,
+    "ayah": 27,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ٱلرُّءْيَا",
+    "variantText": "الـرؤيِـا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-048-27-5-r2367",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-048-27-5-r2367",
+        "variantId": "v-DURI-048-27-5-r2367",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2367; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الـرؤيـا → الـرؤيِـا | قلل الدوري"
+      }
+    ],
+    "description": "قلل الدوري"
+  }
+]

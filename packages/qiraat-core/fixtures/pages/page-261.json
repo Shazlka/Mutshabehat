@@ -1,0 +1,292 @@
+[
+  {
+    "id": "v-L261-لتزول-1-w2",
+    "surah": 14,
+    "ayah": 46,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لِتَزُولَ",
+    "variantText": "لَتَزُولُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "L261-لتزول-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L261-لتزول-1-w2",
+        "variantId": "v-L261-لتزول-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بفتح اللام ورفع الفعل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L261-قطران-1-w2",
+    "surah": 14,
+    "ayah": 50,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "قَطِرَانٍۢ",
+    "variantText": "قِطْرَانٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L261-قطران-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L261-قطران-1-w2",
+        "variantId": "v-L261-قطران-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر القاف وإسكان الطاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L261-ليجزي-1-w2",
+    "surah": 14,
+    "ayah": 51,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لِيَجْزِىَ",
+    "variantText": "لِيُجْزَىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L261-ليجزي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L261-ليجزي-1-w2",
+        "variantId": "v-L261-ليجزي-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة إبراهيم — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالبناء للمفعول ورفع كل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P261-14-47-2-HARAKAH",
+    "surah": 14,
+    "ayah": 47,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَحْسَبَنَّ",
+    "variantText": "تَحْسِبَنَّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P261-14-47-2-HARAKAH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P261-47-1",
+        "variantId": "v-AUDIT-P261-14-47-2-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، Mushaf page 261",
+        "verificationNotes": "تعيين القراء والوجه قوبل بمرجع مستقل للقراءات العشر.",
+        "sourceText": "﴿فَلَا تَحْسَبَنَّ﴾: بفتح السين لابن عامر، عاصم، حمزة، أبو جعفر؛ وبكسرها للباقين."
+      },
+      {
+        "id": "s-AUDIT-P261-47-EXT",
+        "variantId": "v-AUDIT-P261-14-47-2-HARAKAH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/ibrahim/47",
+        "sourceText": "الفتح: ابن جمّاز عن أبي جعفر، هشام وابن ذكوان عن ابن عامر، شعبة وحفص عن عاصم، خلف وخلاد عن حمزة؛ والكسر لسائر الرواة.",
+        "verificationNotes": "مرجع مستقل يذكر الرواة صراحةً ويثبت الوجه المخالف لحفص."
+      },
+      {
+        "id": "s-SUSI-014-47-2-1832",
+        "variantId": "v-AUDIT-P261-14-47-2-HARAKAH",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1832; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "تَحْسَبَنَّ → تَحْسِبَنَّ | كسر السين"
+      }
+    ],
+    "description": "﴿فَلَا تَحْسَبَنَّ﴾: بفتح السين لابن عامر، عاصم، حمزة، أبو جعفر؛ وبكسرها للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "الفتح: ابن جمّاز عن أبي جعفر، هشام وابن ذكوان عن ابن عامر، شعبة وحفص عن عاصم، خلف وخلاد عن حمزة؛ والكسر لسائر الرواة.",
+        "url": "https://quranpedia.net/qiraat/ibrahim/47"
+      }
+    ]
+  },
+  {
+    "id": "v-D261-اليهم-w2",
+    "surah": 14,
+    "ayah": 43,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "إِلَيْهِمْ",
+    "variantText": "إِلَيْهُمُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D261-اليهم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D261-اليهم-w2",
+        "variantId": "v-D261-اليهم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P261-R00545",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿إِلَيْهِمْ﴾: بضم الهاء لحمزة ويعقوب؛ وبكسرها للباقين."
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D261-ياتيهم_العذاب-performance1",
+    "surah": 14,
+    "ayah": 44,
+    "startToken": 4,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "يَأْتِيهِمُ ٱلْعَذَابُ",
+    "variantText": "يَأْتِيهِمُ ٱلْعَذَابُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D261-ياتيهم_العذاب",
+    "locusType": "performance_variant",
+    "performanceNote": "بكسر الهاء وضم الميم وصلاً",
+    "sources": [
+      {
+        "id": "s-D261-ياتيهم_العذاب-performance1",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P261-R00546",
+        "verificationNotes": "وجه المصدر لأهل الكسر مع ضم الميم. المرجع المستقل: https://quranpedia.net/qiraat/ibrahim/44.",
+        "sourceText": "بكسر الهاء وضم الميم وصلاً: نافع، ابن كثير، ابن عامر، عاصم، أبو جعفر."
+      },
+      {
+        "id": "s-D261-ياتيهم_العذاب-performance2",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P261-R00547",
+        "verificationNotes": "وجه أبي عمرو وروح بالكسر وصلاً. المرجع المستقل: https://quranpedia.net/qiraat/ibrahim/44.",
+        "sourceText": "بكسر الهاء والميم وصلاً: أبو عمرو."
+      },
+      {
+        "id": "s-SUSI-014-44-4-1829",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1829; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يَأْتِيهِمُ الْعَذَابُ → يَاتِيهِمِ الْعَذَابُ | إبدال الهمزة ألفاً وكسر الميم وصلاً"
+      },
+      {
+        "id": "s-DURI-014-44-4-r1151",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1151; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـأتيهِمُ العـذاب → يأتيهمِ العذاب | كسر الدوري الميم"
+      },
+      {
+        "id": "s-D261-ياتيهم_العذاب-performance3",
+        "variantId": "v-D261-ياتيهم_العذاب-performance1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P261-R00548",
+        "verificationNotes": "وجه الضم وصلاً؛ «خلف» المجرد هو خلف عن حمزة Q06. المرجع المستقل: https://quranpedia.net/qiraat/ibrahim/44.",
+        "sourceText": "بضم الهاء والميم وصلاً: حمزة، الكسائي، يعقوب، خلف."
+      }
+    ],
+    "description": "بكسر الهاء وضم الميم وصلاً",
+    "wajhIndex": 1,
+    "evidence": []
+  }
+]

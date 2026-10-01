@@ -1,0 +1,183 @@
+[
+  {
+    "id": "v-L041-غرفه-1-w2",
+    "surah": 2,
+    "ayah": 249,
+    "startToken": 23,
+    "endToken": 23,
+    "operation": "REPLACE",
+    "hafsText": "غُرْفَةًۢ",
+    "variantText": "غَرْفَةً",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L041-غرفه-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L041-غرفه-1-w2",
+        "variantId": "v-L041-غرفه-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 46,
+        "sourceReference": "صفحة المصحف 41 · صفحة المصدر 46",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: غَرْفَةً ضَمَّ ذُو وِلَا — D: غَرْفَةَ يُضَمُّ دِفَاعُ حُزْ"
+      },
+      {
+        "id": "s-DURI-002-249-23-r0163",
+        "variantId": "v-L041-غرفه-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 163; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "غُـرفة → غَـرفة | فتح الدوري الغين"
+      }
+    ],
+    "description": "بفتح الغين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "غَرْفَةً ضَمَّ ذُو وِلَا"
+      },
+      {
+        "source": "D",
+        "text": "غَرْفَةَ يُضَمُّ دِفَاعُ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L041-بيدهي-1-w2",
+    "surah": 2,
+    "ayah": 249,
+    "startToken": 24,
+    "endToken": 24,
+    "operation": "REPLACE",
+    "hafsText": "بِيَدِهِۦ ۚ",
+    "variantText": "بِيَدِهِ",
+    "differenceType": "MADD",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "L041-بيدهي-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L041-بيدهي-1-w2",
+        "variantId": "v-L041-بيدهي-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 46,
+        "sourceReference": "صفحة المصحف 41 · صفحة المصدر 46",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَفِي يَدِهِ اقْصُرْ طُلْ"
+      }
+    ],
+    "description": "بقصر الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَفِي يَدِهِ اقْصُرْ طُلْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L041-دفع-1-w2",
+    "surah": 2,
+    "ayah": 251,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "دَفْعُ",
+    "variantText": "دِفَاعُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L041-دفع-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L041-دفع-1-w2",
+        "variantId": "v-L041-دفع-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 46,
+        "sourceReference": "صفحة المصحف 41 · صفحة المصدر 46",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: دِفَاعُ بِهَا وَٱلْحَجِّ فَتْحٌ وَسَاكِنٌ وَقَصْرٌ خُصُوصًا — D: دِفَاعُ حُزْ"
+      }
+    ],
+    "description": "بكسر الدال وألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "دِفَاعُ بِهَا وَٱلْحَجِّ فَتْحٌ وَسَاكِنٌ وَقَصْرٌ خُصُوصًا"
+      },
+      {
+        "source": "D",
+        "text": "دِفَاعُ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-DURI-002-249-19-r0162-performance",
+    "surah": 2,
+    "ayah": 249,
+    "startToken": 19,
+    "endToken": 20,
+    "operation": "REPLACE",
+    "hafsText": "مِنِّىٓ إِلَّا",
+    "variantText": "مِنِّىٓ إِلَّا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-002-249-19-r0162",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-002-249-19-r0162",
+        "variantId": "v-DURI-002-249-19-r0162-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 162; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "منـي إلا → منـيَ إلا | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
+  }
+]

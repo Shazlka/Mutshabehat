@@ -1,0 +1,344 @@
+[
+  {
+    "id": "r-p580-IMALAH_TAQLIL-شاء-0",
+    "pageNumber": 580,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 76,
+    "ayah": 29,
+    "startToken": 5,
+    "endToken": 5,
+    "endAyah": 29,
+    "baseText": "شَآءَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P580-R03806 | الممال والمقلل: ﴿تَذْكِرَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي. ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش. | Q10 محفوظ هنا لورود إسحاق وإدريس عن خلف صراحة في مرجع الآية؛ اللفظ المجرد في المصدر لا يكفي وحده. | تصحيح الإسناد: «خلف» المجرد = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر».",
+      "https://quranpedia.net/qiraat/al-insan/29 | إمالة الألف مع المد ست حركات: خلف عن حمزة وخلاد عن حمزة؛ وإمالة مع المد أربع حركات: إسحاق عن خلف وإدريس عن خلف وابن ذكوان عن ابن عامر. | مرجع مستقل يعرض رواة القراءات العشر في الآية نفسها. | تصحيح الإسناد: «خلف» المجرد = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
+  },
+  {
+    "id": "r-p580-IMALAH_TAQLIL-ادراك-1",
+    "pageNumber": 580,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 77,
+    "ayah": 14,
+    "startToken": 2,
+    "endToken": 2,
+    "endAyah": 14,
+    "baseText": "أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q03-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q04-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q05-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة"
+      },
+      {
+        "authorityId": "Q01-R02",
+        "action": "تقليل"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q03-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q04-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q05-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q01-R02",
+        "action": "تقليل",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P580-R03806 | الممال والمقلل: ﴿تَذْكِرَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي. ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش. | خلف العاشر لم يضف اعتماداً على لفظ خلف المجرد؛ أُبقي Q10 لأن مرجع الآية نفسه يسمي إسحاقاً وإدريساً عن خلف. | تصحيح الإسناد: «خلف» المجرد = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر».",
+      "https://quranpedia.net/qiraat/al-mursalat/14 | إمالة الراء والألف: إدريس عن خلف، إسحاق عن خلف، الدوري عن الكسائي، الدوري عن أبي عمرو، السوسي عن أبي عمرو، أبو الحارث عن الكسائي، ابن ذكوان عن ابن عامر، خلاد عن حمزة، شعبة عن عاصم، خلف عن حمزة. | مرجع مستقل يعرض رواة القراءات العشر في الآية نفسها. | تصحيح الإسناد: «خلف» المجرد = خلف عن حمزة Q06؛ لا يُنشأ Q10 إلا بذكر «خلف العاشر»."
+    ]
+  },
+  {
+    "id": "r-p580-IDGHAM_KABIR-فالملقيات_ذكرا-2",
+    "pageNumber": 580,
+    "category": "IDGHAM_KABIR",
+    "categoryAr": "المدغم الكبير",
+    "color": "#15803D",
+    "wordAnchored": true,
+    "surah": 77,
+    "ayah": 5,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 5,
+    "baseText": "فَٱلْمُلْقِيَـٰتِ ذِكْرًا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إدغام كبير"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إدغام التاء في الذال مع المد المشبع"
+      },
+      {
+        "authorityId": "Q06-R02",
+        "action": "إظهار التاء مكسورة، وله الإدغام بخلف"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إدغام كبير",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إدغام التاء في الذال مع المد المشبع",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q06-R02",
+        "action": "إظهار التاء مكسورة",
+        "isDefault": false
+      }
+    ],
+    "hasAlternate": true,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "notes": "الإدغام للسوسي وخلاد؛ ولخلاد الإظهار أيضاً.",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P580-R03807 | الإدغام الكبير: ﴿فَالْمُلْقِيَـٰتِ ذِكْرًا﴾: بالإدغام المحض مع المد المشبع للسوسي وخلاد (وله الإظهار أيضاً). | مصدر وثيقة الاستخراج؛ نص على السوسي وخلاد، وعلى أن لخلاد الإظهار أيضاً.",
+      "https://quranpedia.net/qiraat/al-mursalat/5 | الإدغام المحض وتفخيم الراء: السوسي عن أبي عمرو وخلاد عن حمزة. | مرجع مستقل يعرض رواة القراءات العشر في الآية نفسها."
+    ]
+  },
+  {
+    "id": "r-p580-TAGHYIR_HAMZ-شينا-3",
+    "pageNumber": 580,
+    "category": "TAGHYIR_HAMZ",
+    "categoryAr": "تغيير الهمز",
+    "color": "#DC2626",
+    "wordAnchored": true,
+    "surah": 76,
+    "ayah": 28,
+    "startToken": 6,
+    "endToken": 6,
+    "endAyah": 28,
+    "baseText": "شِئْنَا",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R02",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R01",
+        "action": "إبدال الهمزة"
+      },
+      {
+        "authorityId": "Q08-R02",
+        "action": "إبدال الهمزة"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R01",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q08-R02",
+        "action": "إبدال الهمزة",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z"
+  },
+  {
+    "id": "r-p580-IMALAH_TAQLIL--4",
+    "pageNumber": 580,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 76,
+    "ayah": 29,
+    "startToken": 3,
+    "endToken": 3,
+    "endAyah": 29,
+    "baseText": "تَذْكِرَةٌۭ ۖ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً"
+      },
+      {
+        "authorityId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q07-R01",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      },
+      {
+        "readingId": "Q07-R02",
+        "action": "إمالة هاء التأنيث وقفاً",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "sourceNotes": [
+      "qiraat_records.jsonl، DOCX-P580-R03806 | الممال والمقلل: ﴿تَذْكِرَةٌ﴾: أمال هاء التأنيث وقفاً الكسائي. ﴿شَآءَ﴾: ابن ذكوان، حمزة، خلف. ﴿أَدْرَىٰكَ﴾: أبو عمرو، وابن ذكوان (بخلف)، وشعبة، وحمزة، والكسائي، وخلف، وقللها ورش. | مصدر وثيقة الاستخراج؛ موضع الكلمة حُلّ من ملف كلمات المصحف."
+    ],
+    "notes": "عند الوقف على هاء التأنيث."
+  },
+  {
+    "id": "r-DURI-077-14-1-r2655-IMALAH_TAQLIL",
+    "pageNumber": 580,
+    "category": "IMALAH_TAQLIL",
+    "categoryAr": "الممال والمقلل",
+    "color": "#C026D3",
+    "wordAnchored": true,
+    "surah": 77,
+    "ayah": 14,
+    "startToken": 1,
+    "endToken": 2,
+    "endAyah": 14,
+    "baseText": "وَمَآ أَدْرَىٰكَ",
+    "verificationStatus": "REVIEWED",
+    "attribution": [
+      {
+        "authorityId": "Q03-R01",
+        "action": "أمالها الدوري"
+      }
+    ],
+    "readings": [
+      {
+        "readingId": "Q03-R01",
+        "action": "أمالها الدوري",
+        "isDefault": true
+      }
+    ],
+    "hasAlternate": false,
+    "notes": "Imported from the user-supplied al-Duri source; source row retained verbatim.",
+    "sourceNotes": [
+      "وما أدراك → وما أدرٍاك | أمالها الدوري"
+    ],
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z"
+  }
+]

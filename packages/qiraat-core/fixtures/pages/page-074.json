@@ -1,0 +1,242 @@
+[
+  {
+    "id": "v-L074-SAYUKTABU-w2",
+    "surah": 3,
+    "ayah": 181,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "سَنَكْتُبُ",
+    "variantText": "سَيُكْتَبُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L074-SAYUKTABU",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L074-SAYUKTABU-w2",
+        "variantId": "v-L074-SAYUKTABU-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 79,
+        "sourceReference": "صفحة المصحف 74 · صفحة المصدر 79",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: سَنَكْتُبُ يَاءٌ ضُمَّ مَعْ فَتْحِ ضَمِّهِ وَقَتْلَ ارْفَعْ مَعْ يَقُولُ فَيَكْمُلَا — D: سَنُكْتَبُ مَعْ مَا بَعْدُ كَالْبَصْرِ فُزْ"
+      }
+    ],
+    "description": "بالياء المضمومة وفتح التاء مبني للمفعول",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "سَنَكْتُبُ يَاءٌ ضُمَّ مَعْ فَتْحِ ضَمِّهِ وَقَتْلَ ارْفَعْ مَعْ يَقُولُ فَيَكْمُلَا"
+      },
+      {
+        "source": "D",
+        "text": "سَنُكْتَبُ مَعْ مَا بَعْدُ كَالْبَصْرِ فُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L074-SAYUKTABU-w2",
+    "surah": 3,
+    "ayah": 181,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَقَتْلَهُمُ",
+    "variantText": "وَقَتْلُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L074-SAYUKTABU",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L074-SAYUKTABU-w2",
+        "variantId": "v-L074-SAYUKTABU-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 79,
+        "sourceReference": "صفحة المصحف 74 · صفحة المصدر 79",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "برفع اللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L074-SAYUKTABU-w2",
+    "surah": 3,
+    "ayah": 181,
+    "startToken": 19,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "وَنَقُولُ",
+    "variantText": "وَيَقُولُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "L074-SAYUKTABU",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L074-SAYUKTABU-w2",
+        "variantId": "v-L074-SAYUKTABU-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 79,
+        "sourceReference": "صفحة المصحف 74 · صفحة المصدر 79",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L074-الانبياء-1-w2",
+    "surah": 3,
+    "ayah": 181,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْأَنۢبِيَآءَ",
+    "variantText": "ٱلْأَنۢبِئَآءَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "L074-الانبياء-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L074-الانبياء-1-w2",
+        "variantId": "v-L074-الانبياء-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 79,
+        "sourceReference": "صفحة المصحف 74 · صفحة المصدر 79",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا — D: أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
+      }
+    ],
+    "description": "بالهمز مع المد المتصل",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَجَمْعًا وَفَرْدًا فِي النَّبِيءِ وَفِي النُّبُوءَةِ الْهَمْزُ كُلٌّ غَيْرَ نَافِعٍ ابْدَلَا"
+      },
+      {
+        "source": "D",
+        "text": "أَجِدْ بَابَ النُّبُوءَةِ وَالنَّبِيءِ أَبْدِلْ لَهُ"
+      }
+    ]
+  },
+  {
+    "id": "v-L074-والزبر_والكتاب-1-w2",
+    "surah": 3,
+    "ayah": 184,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلزُّبُرِ وَٱلْكِتَـٰبِ",
+    "variantText": "وَبِٱلزُّبُرِ وَبِٱلْكِتَـٰبِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "L074-والزبر_والكتاب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L074-والزبر_والكتاب-1-w2",
+        "variantId": "v-L074-والزبر_والكتاب-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 79,
+        "sourceReference": "صفحة المصحف 74 · صفحة المصدر 79",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبِالزُّبُرِ الشَّامِي كَذَا رَسْمُهُمْ وَبِالْكِتَابِ هِشَامٌ وَاكْشِفِ الرَّسْمَ مُجْمَلَا"
+      }
+    ],
+    "description": "بالباء فيهما",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبِالزُّبُرِ الشَّامِي كَذَا رَسْمُهُمْ وَبِالْكِتَابِ هِشَامٌ وَاكْشِفِ الرَّسْمَ مُجْمَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L074-والزبر_والكتاب-1-w3",
+    "surah": 3,
+    "ayah": 184,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلزُّبُرِ وَٱلْكِتَـٰبِ",
+    "variantText": "وَبِٱلزُّبُرِ وَٱلْكِتَـٰبِ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R02"
+    ],
+    "locusId": "L074-والزبر_والكتاب-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L074-والزبر_والكتاب-1-w3",
+        "variantId": "v-L074-والزبر_والكتاب-1-w3",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 79,
+        "sourceReference": "صفحة المصحف 74 · صفحة المصدر 79",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَبِالزُّبُرِ الشَّامِي كَذَا رَسْمُهُمْ وَبِالْكِتَابِ هِشَامٌ وَاكْشِفِ الرَّسْمَ مُجْمَلَا"
+      }
+    ],
+    "description": "بالباء في الزبر فقط",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَبِالزُّبُرِ الشَّامِي كَذَا رَسْمُهُمْ وَبِالْكِتَابِ هِشَامٌ وَاكْشِفِ الرَّسْمَ مُجْمَلَا"
+      }
+    ]
+  }
+]

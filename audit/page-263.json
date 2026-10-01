@@ -1,0 +1,22 @@
+{
+  "page": 263,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 10,
+  "variants": 2,
+  "rulings": 8,
+  "supported": 10,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p263-005-1",
+    "r-p263-006-1"
+  ]
+}

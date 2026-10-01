@@ -315,6 +315,24 @@ key is server-only.
 
 ## 12. Qiraat Ashr: the import process for the remaining Mushaf pages
 
+### 12.0 2026-09-20 import status
+
+The fixture corpus includes pages 249–267 (الرعد، إبراهيم، الحجر): 57 new fully partitioned
+variant loci and 52 token-anchored, reader-specific أصول rulings. This keeps the current total at
+1,613 variants and 7,190 rulings across 318 active pages. This batch is fixture-only: no migration
+or database population was performed. Source rows that were universal, self-questioning, or
+inconsistent with the Hafs Mushaf-1441 baseline were omitted rather than inferred.
+
+### 12.0a Colouring and fixture-loading invariant
+
+New Qiraat pages must preserve the existing colour language. Variant records create the
+reader/narrator underline (and study-mode tint); reader-specific أصول records create the existing
+per-family word colour. Both generated fixture types must be loader-registered in
+`packages/qiraat-core/repository.ts`, which the Mushaf reads directly for every mounted leaf.
+Never substitute universal tajwid for a reader-specific rule or invent a page-specific palette.
+The required completion gate is: both generators, `npm run qiraat:validate`, and a runtime fixture
+load with `includeUnpublished: true` for each newly imported page.
+
 **Read this before importing any page beyond 20.** Pages 1–20 are done and live; this section is the
 repeatable recipe for 21–604, written so the next session does not have to rediscover it. The
 architecture behind it is `docs/qiraat/10-v2-architecture-plan.md`; this is the operating procedure.
@@ -380,7 +398,27 @@ architecture behind it is `docs/qiraat/10-v2-architecture-plan.md`; this is the 
 | One usul family = exactly one colour, dataset-wide | Keeps the page legible as categories grow |
 | `hasAlternate` must agree with its readings | Keeps the ذو وجهين marker honest |
 
-### 12.5 Known defects carried from the pages 1–20 source
+### 12.4b What the pages 22–41 batch cost in anchor fixes (read before the next batch)
+
+The generators rejected **23 anchors** on the first run of this batch. None was a data error on
+my side — every one was the source spelling a word differently from the mushaf. The four shapes,
+because they will recur on every remaining batch:
+
+| Shape | Example | Fix |
+|---|---|---|
+| A small high **ۥ / ۦ** expands to و / ي in `norm()` | `قوله` ✗ → `قولهو` ✓ (قَوْلُهُۥ); `بيده` ✗ → `بيدهي` ✓ | write the expansion letter, as page 20's `فامتعهو` already did |
+| The source quotes the **variant**, the anchor needs the **rasm** | `حتى يقتلوكم` ✗ → `حتى يقاتلوكم` ✓; `كثير ومنفع` ✗ → `كبير ومنافع` ✓ | anchor on what Hafs prints, never on the وجه |
+| Final long aa written `ىٰ` | `واليتمى` ✗ → `واليتاما` ✓ | the fold tier usually catches this; spell it as the mushaf does |
+| A neighbouring word is part of the token | `شيء` ✗ → `بشيء` ✓; `العذاب بالمغفرة` ✗ → `والعذاب بالمغفرة` ✓ | copy the span from the page dump |
+
+The fastest way to resolve a rejection is to dump the page and read it, not to guess:
+
+```python
+import sys; sys.path.insert(0, 'scripts/qiraat'); import tokens as T
+print(' '.join(T.norm(w['textUthmani']) for w in T.page_words(34)))
+```
+
+### 12.5 Known defects carried from the sources
 
 Held at `NEEDS_MANUAL_REVIEW` with the reason recorded; resolve against the paper original:
 2:83 تعبدون، 2:93 قلوبهم العجل، 2:105 ينزل (أبو جعفر unattributed), plus ~15 `؟` markers the
@@ -388,12 +426,289 @@ extractor flagged on pages 9, 11, 16 and 19, and page 8's corrupted ﴿وَعَ�
 The extraction was made visually at 150 dpi with a scrambled text layer — treat every page as
 suspect until checked.
 
-### 12.6 Moving to Postgres (Phase A, not yet done)
+**Pages 22–41** (the Juz' 2 batch). Three source slips were corrected against the mushaf, because
+the word the source printed does not exist on that page at all:
 
-Fixtures are the serving layer and should stay that way (zero round-trip page turns, works when the
-Mac Mini is offline). Postgres becomes the authoring/QA source of truth: apply the migration after a
-`pg_dump` backup, then generate the same fixtures from `qiraat_export_page()`. See
-`docs/qiraat/10-v2-architecture-plan.md` §4 and §8.
+| Page | Source printed | The mushaf prints | Why the correction is safe |
+|---|---|---|---|
+| 34 | ﴿كَثِيرٌ وَمَنَٰفِعُ﴾ | ﴿كَبِيرٌ وَمَنَٰفِعُ﴾ | كثير is the حمزة/الكسائي **reading**, recorded separately as a variant on the same page; a ترك الغنة anchor must sit on the rasm |
+| 38 | ﴿خَيْرٌ﴾ (ترقيق الراءات) | ﴿خَبِيرٌ﴾ (2:234) | page 38 has no ﴿خَيْرٌ﴾; خبير is the ر-final word the ruling is about |
+| 41 | ﴿إِنِّىٓ إِلَّا﴾ (ياءات الإضافة) | ﴿مِنِّىٓ إِلَّا﴾ (2:249) | إني does not occur on the page; the attribution given is the standard one for مِنِّىٓ |
+
+Eight `؟`-marked or impossible entries were **omitted rather than guessed**, and are the first
+thing to resolve against the paper original: page 27 ﴿ٱلْمَشْرِقِ﴾؟ and ﴿ٱلتَّأْنِيبِ؟/ٱلنَّأْىِ﴾
+(ٱلنَّأْىِ is in الإسراء, not on page 27); page 29 ﴿يُبَيِّنُ ٱللَّهُ؟/يُبَيِّنَ لَكُمْ﴾; page 33
+﴿زُيِّنَ﴾؟ (in both الممال and ترك الغنة); page 36 ﴿أَنفُسِهِمَا؟﴾; page 37 ﴿يَعْمَلْ ذَٰلِكَ﴾؟.
+
+**Page 21 (2:135–141)** was missing from the batch that supplied 22–41 and was imported separately
+straight afterwards; **pages 1–41 are now contiguous**. It went through both generators with zero
+anchor rejections — the first batch to do so, which is what §12.4b is for.
+
+Two modelling decisions in this batch worth knowing before they recur:
+- **page 25 ﴿يَأْمُرُكُم﴾** — الدوري عن أبي عمرو has the إسكان *and* the اختلاس. Two أوجه
+  overlapping on one Riwayah cannot partition the 20, so the إسكان وجه carries both السوسي and
+  الدوري, `alternate_of=['DURI_AMR']` marks الدوري ذو وجهين, and the اختلاس is kept in the note.
+- **page 39 ﴿وَيَبْصُۜطُ﴾** — the baseline text must be the mushaf's own rasm (صاد with the small
+  seen), with the description naming السين; writing `وَيَبْسُطُ` fails the baseline invariant.
+
+**Pages 82–101** (the Juz' 5 batch, An-Nisa 24–147). 36 new variant loci (+83 variants, 292 total) and +509 أصول rulings (1,402 total) across 61 active pages.
+- Corrected source slips:
+  - Page 96: source cited ﴿بَرِيئًا وَإِثْمًا﴾; the actual verse 4:112 text in Hafs is ﴿بُهْتَـٰنًۭا وَإِثْمًۭا﴾.
+  - Page 93: source had typo `'فتتبينوا'`; corrected to rasm `'فتبينوا'` (4:94).
+- Normalizations aligned with §12.4b:
+  - Dagger alefs: page 85 ﴿سُكَـٰرَىٰ﴾ (`'سكارى'`), page 86 ﴿هَـٰٓؤُلَآءِ أَهْدَىٰ﴾ (`'هاولاء اهدا'`), page 87 ﴿وَءَاتَيْنَـٰهُم﴾ (`'وءاتيناهم'`), page 98 ﴿يَتَـٰمَى﴾ (`'يتامى'`).
+  - Small high letters (`ۥ` / `ۧ` / `ۦ`): page 89 ﴿ٱلنَّبِيِّـۧنَ﴾ (`'النبيين'`), page 94 ﴿بَيْتِهِۦ﴾ (`'بيتهي'`), page 97 ﴿نُوَلِّهِۦ﴾ / ﴿وَنُصْلِهِۦ﴾ (`'نولهي'` / `'ونصلهي'`), page 100 ﴿تَلْوُۥٓا۟﴾ (`'تلووا'`), page 100 ﴿حَدِيثٍ غَيْرِهِۦٓ﴾ (`'حديث غيرهي'`).
+  - Multi-word rasm anchors: page 94 ﴿ٱلْمَلَـٰٓئِكَةُ ظَالِمِىٓ﴾ (`'الملايكه ظالمي'`), page 95 ﴿قِيَـٰمًۭا وَقُعُودًۭا وَعَلَىٰ﴾ (`'قياما وقعودا وعلا'`), page 100 ﴿نَزَّلَ عَلَىٰ رَسُولِهِۦ وَٱلْكِتَـٰبِ ٱلَّذِىٓ أَنزَلَ﴾ (`'نزل علا رسولهي والكتاب الذي انزل'`).
+- All 36 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Surah Maryam (19), Mushaf pages 305-312.** The first batch that did **not** come from the
+«مصحف القراءات العشر» PDF: the user supplied an ayah-by-ayah table (فرش الكلمات + الأصول المطردة +
+الشواهد) for 19:1-98. Two things follow from that and are now permanent:
+
+- The page spec may carry `src=` (name / kind / ref / note) and then every record says where it
+  really came from, instead of borrowing a PDF page number nobody read. `build_variants.source_of()`
+  keeps the old PDF shape for every page that came from it.
+- **The page table is no longer contiguous.** 245-304 are unimported, so 244 → 305 is a legal jump;
+  the loader table, the linter and `build_rulings` are all data-driven and none of them assumes a
+  dense range.
+
+The classification rules used on that table, so the next ayah-by-ayah batch repeats them:
+
+| The source row says | What was done |
+|---|---|
+| A rule that holds for all ten readers (مقادير المد، القلقلة، الإدغام الشمسي، الإقلاب، كسر الساكن للساكنين، إبدال التنوين ألفًا وقفًا، صلة الهاء بين متحركين، حذف ألف ﴿أنا﴾ وصلًا) | **not imported** — the أصول layer marks who *differs*; a universal rule colours half the page and tells the reader nothing |
+| ميم الجمع | **not imported** — this dataset has no such family, and one surah does not justify a 19th colour |
+| سكت وصلًا | `SAKT` (the category existed but had never been used); **وقف حمزة** stays `WAQF_HAMZA` |
+| ورش's النقل | `TAGHYIR_HAMZ` with `action='النقل'` — it is a تغيير همز, and needs no new family |
+| إمالة / ياءات / صلة / إدغام / ترقيق, even where the source printed them in the فرش column | a **ruling**, not a variant — classify by nature, not by which column the source used |
+
+Dropped rather than guessed, and the first thing to resolve against the paper original:
+
+| Locus | Why |
+|---|---|
+| 19:2 إمالة ﴿زَكَرِيَّا﴾ | the row is headed «لمن قرأ بالقصر» and then lists ورش, who reads it بالهمز والمد |
+| 19:4 ترقيق الراء في ﴿ٱلرَّأْسُ﴾ | the source asks and answers itself: «؟ بل الراء مفتوحة فلا تُرقَّق» |
+| 19:25 الإدغام الكبير | the row ends «لا إدغام هنا لعدم توفر الشروط» |
+| 19:46 غنة النون عند اللام | «بغنة لخلف بخلفه» — النون عند اللام بغير غنة للعشرة جميعًا |
+| 19:38 ﴿وَأَبْصِرْ﴾ · 19:62 ﴿رِزْقُهُمْ﴾ | the source itself says «لجميع القراء» — universal, not a خلاف |
+
+Two loci were imported **against** the source's own aside, because the aside contradicts the row:
+19:1 ﴿كهيعص﴾ names الدوري عن الكسائي in a group that already holds الكسائي whole and then retracts it
+(«والمشهور عن الكسائي إمالتهما معًا كحمزة») — imported على المشهور, which is also the only reading
+under which the five إمالة groups partition the twenty exactly once, with the aside kept in the row's
+note; and 19:21 ﴿لِّلنَّاسِ﴾ is `؟`-marked but the source then supplies «وَخُلْفُهُ فِي النَّاسِ فِي
+الْجَرِّ حُصِّلَا», so it is imported with the خلف rather than dropped.
+
+Still to check on the paper original: 19:1's «السكت على الحروف المقطعة لخلف عن حمزة من طريق السكت
+العام», and the two شواهد the source prints in garbled form (19:23 ﴿نَسْيًا﴾, 19:42 ﴿يَا أَبَتِ﴾ —
+transcribed as given; they are citations, not attributions).
+
+**Surah Taha (20), Mushaf pages 312-321.** Imported from the same kind of user-supplied
+ayah-by-ayah table as Maryam, not from the PDF: **62 variant records and 322 أصول rulings**. Page
+312 is a real transition page (Maryam 96-98 + Taha 1-12); its source metadata therefore names both
+tables, while every generated record remains anchored to its actual surah/ayah/token. The batch
+uses the Maryam classification rules above unchanged: universal tajwid and ordinary madd amounts,
+ميم الجمع, agreed صلة/وقف, and statements that explicitly say «جميع القراء» are not imported;
+فرش الكلمات become variants, while إمالة/تقليل، ياءات، صلة، إدغام، نقل، سكت، and وقف become rulings.
+
+Source cautions to verify against the paper original before promoting anything above `REVIEWED`:
+
+- the supplied table contains self-corrections and contradictory prose (notably 20:52, 20:69 and
+  20:111); the universal or internally contradicted clauses were omitted instead of guessed;
+- 20:13 was modeled as the established two-way locus ﴿وَأَنَا ٱخْتَرْتُكَ﴾ / ﴿وَأَنَّا
+  ٱخْتَرْنَـٰكَ﴾ for Hamza; 20:58 ﴿سِوًى﴾ keeps the Hafs baseline despite the source presenting the
+  ضم row first; and 20:71 ﴿ءَامَنتُمْ﴾ keeps the detailed performance differences in the note while
+  the written one-hamza/two-hamza split forms the variant;
+- the variant generator rejected ten initial query anchors and six baseline spellings, and the
+  ruling generator rejected fourteen anchors, because of the standard §12.4b shapes (small high
+  ۥ/ۦ, joined ﴿يَـٰمُوسَىٰ﴾, and rasm spellings such as ﴿رَءَا﴾); every one was resolved from the
+  page-word fixture, with no hand-written `baseText` and no new review flag.
+
+The combined fixture state after this batch is **1,392 variants and 6,459 rulings across 261 active
+pages** (1-244 and 305-321). PostgreSQL remains intentionally populated only through page 244;
+Maryam and Taha are fixture-only until a database population is explicitly requested.
+
+**Surah Al-Anbiya (21), Mushaf pages 322-331.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 21:1–112), not from the PDF: **35 variant records (across 31 loci) and 157 أصول rulings**.
+
+Source cautions & slips corrected during ingestion:
+- 21:4 ﴿قَالَ رَبِّى﴾ (page 322): Hafs, Hamza, Kisai, Khalaf 10 read `قَالَ` (ماضي); the remaining 16 Riwayat (`REST`) read `قُل` (أمر).
+- 21:7 ﴿نُّوحِىٓ إِلَيْهِمْ ۖ﴾ (page 322): The raw source conflated 21:7 (إليهم) with 21:25 (إليه). Under Shatibiyyah 887 (*وَيُوحَى إِلَيْهِمْ كَسْرُ حَاءِ جَمِيعِهَا وَنُونٌ عُلًا*), Hafs alone (`عُلاً`) reads `نُّوحِىٓ إِلَيْهِمْ` (بالنون وكسر الحاء); all other 19 Riwayat (`REST`) read `يُوحَىٰٓ إِلَيْهِمْ` (بالياء وفتح الحاء).
+- 21:25 ﴿نُوحِىٓ إِلَيْهِ﴾ (page 324): Under Shatibiyyah 887 (*يُوحَى إِلَيْهِ شَذًا عَلَا*), Hafs + Hamza + Kisai + Khalaf 10 read `نُوحِىٓ إِلَيْهِ` (4 readers / 7 Riwayat); all other 13 Riwayat read `يُوحَىٰٓ إِلَيْهِ`.
+- 21:67 ﴿أُفٍّۢ لَّكُمْ﴾ (page 327): Clean 3-way partition:
+  - `أُفٍّۢ` (كسر وتنوين): Nafi, Hafs, Abu Ja'far (5 Riwayat).
+  - `أُفَّ` (فتح بغير تنوين): Ibn Kathir, Ibn Amir, Ya'qub (6 Riwayat).
+  - `أُفِّ` (كسر بغير تنوين): Abu Amr, Shu'bah, Hamzah, Al-Kisa'i, Khalaf 10 (9 Riwayat). Total = 20 Riwayat.
+- 21:112 ﴿قَـٰلَ رَبِّ ٱحْكُم﴾ (page 331): Under Shatibiyyah (*وَآخِرُهَا عَلَا*), Hafs alone (`عَلَا`) reads `قَـٰلَ` (ماضي, 1 Riwayat); all other 19 Riwayat (`REST`) read `قُل` (أمر).
+- Normalizations aligned with §12.4b:
+  - 21:41 ﴿ٱسْتُهْزِئَ﴾ (`'استهزئ'`).
+  - 21:62 ﴿يَـٰٓإِبْرَٰهِيمُ﴾ (`'يابراهيم'`).
+  - 21:63 ﴿بَلْ فَعَلَهُۥ﴾ (`'بل فعلهو'`).
+  - 21:84 ﴿وَذِكْرَىٰ﴾ (`'وذكرى'`).
+  - 21:88 ﴿نُـۨجِى﴾ (`'نجي'` matching small high nun in rasm).
+  - 21:110 ﴿وَيَعْلَمُ مَا﴾ (`'ويعلم ما'`).
+  - 21:111 ﴿وَمَتَـٰعٌ إِلَىٰ﴾ (`'ومتاع الى'`).
+
+The combined fixture state after this batch is **1,427 variants and 6,616 rulings across 271 active pages** (1–244 and 305–331). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, and Al-Anbiya are fixture-only until a database population is explicitly requested.
+
+**Surah Al-Hajj (22), Mushaf pages 332–341.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 22:1–78), not from the PDF: **37 variant records and 173 أصول rulings**.
+
+Source cautions, swaps & slips corrected during ingestion:
+- 22:62 and 22:73 (`يَدْعُونَ` vs `تَدْعُونَ`): The raw source accidentally inverted the Farsh rows. In 22:62 (page 339), Hafs baseline is `يَدْعُونَ` (الغيب, read by Abu Amr, Hafs, Hamza, Kisai, Khalaf 10); variant is `تَدْعُونَ` (الخطاب, read by Nafi, Ibn Kathir, Ibn Amir, Shubah, Abu Ja'far, Ya'qub). In 22:73 (page 341), Hafs baseline is `تَدْعُونَ` (الخطاب, read by Nafi, Asim, Abu Ja'far); variant is `يَدْعُونَ` (الغيب, read by Ibn Kathir, Abu Amr, Ibn Amir, Hamza, Kisai, Ya'qub, Khalaf 10). Both loci partition 20 Riwayat cleanly.
+- Strict majroor condition for Duri an Abi Amr imalah in `ٱلنَّاسِ`: Enforced strictly on majroor instances (22:3, 8, 11, 18, 25, 27, 65, 75, 78); excluded on marfoo'/mansoob instances (22:1, 2, 5, 40, 49, 73).
+- 22:39 ﴿لَقَدِيرٌ﴾ (page 337): Clean 3-way partition for rulings across Warsh, Hamza, and Khalaf 10.
+- Normalizations aligned with §12.4b & token queries:
+  - 22:4 ﴿فَأَنَّهُۥ﴾ (`'فانهۥ'`).
+  - 22:25 ﴿لِلنَّاسِ﴾ (`'للناس'`), 22:26 ﴿بَيْتِىَ لِلطَّآئِفِينَ﴾ (`'بيتي للطـٓئفين'`).
+  - 22:30 ﴿ٱلْأَوْثَـٰنِ﴾ (`'الاوثـٰن'`) and ﴿يُتْلَىٰ﴾ (`'يتلى'`).
+  - 22:32 ﴿تَقْوَى﴾ (`'تقوى'`), 22:34 ﴿وَبَشِّرِ﴾ (`'وبشر'`).
+  - 22:37 ﴿ٱلتَّقْوَىٰ﴾ (`'التقوى'`) and ﴿هَدَىٰكُمْ﴾ (`'هدىكم'`).
+  - 22:46 ﴿تَعْمَى﴾ (`'تعمى'`, occurrences 1 and 2).
+  - 22:52 ﴿ءَايَـٰتِهِۦ﴾ (`'ءايـٰتهۦ'`), 22:54 ﴿أُوتُوا۟﴾ (`'اوتوا'`).
+  - 22:55 ﴿تَأْتِيَهُمُ﴾ / ﴿يَأْتِيَهُمْ﴾ (`'تاتيهم'` / `'ياتيهم'`).
+  - 22:57 ﴿بِـَٔايَـٰتِنَا﴾ (`'باياتنا'`), 22:64 ﴿فِى ٱلْأَرْضِ﴾ (`'الارض'`).
+  - 22:65 ﴿بِٱلنَّاسِ﴾ (`'بالناس'`).
+  - 22:72 ﴿ءَايَـٰتُنَا﴾ / ﴿ءَايَـٰتِنَا﴾ (`all_occurrences=True` on `'ءايـٰتنا'`).
+
+The combined fixture state after this batch is **1,464 variants and 6,789 rulings across 281 active pages** (1–244 and 305–341). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, and Al-Hajj are fixture-only until a database population is explicitly requested.
+
+**Surah Al-Mu'minun (23), Mushaf pages 342–349.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 23:1–118), not from the PDF: **44 variant records and 171 أصول rulings**.
+
+Source cautions, slips & query normalizations resolved during ingestion:
+- 23:52 ﴿وَإِنَّ هَـٰذِهِۦٓ﴾ (page 345): The raw source stated that Hafs read with fat-h (`وَأَنَّ هَٰذِهِ`), but in Hafs Mushaf-1441 rasm it is with kasrah (`وَإِنَّ`). Aligned baseline (`is_base=True`) to `وَإِنَّ هَـٰذِهِۦٓ` (Hafs, Hamza, Kisai, Khalaf 10), variant 1 `وَأَنَّ هَـٰذِهِۦٓ` (Nafi, Abu Amr), and variant 2 `وَإِنْ هَـٰذِهِۦٓ` (REST: Ibn Kathir, Ibn Amir, Shubah, Abu Ja'far, Ya'qub). Clean 20-Riwayat partition (7 + 4 + 9 = 20).
+- 23:85 ﴿تَذَكَّرُونَ﴾ (page 347): Source description claimed Hafs read with takhfeef (`تَذْكُرُونَ`). Hafs reads with tashdeed `تَذَكَّرُونَ` (matching Mushaf-1441 fixture). Aligned baseline to `تَذَكَّرُونَ` (`EXCEPT(['حمزة', 'الكسائي', K10])`), variant `تَذْكُرُونَ` (`['حمزة', 'الكسائي', K10]`).
+- 23:92 ﴿عَـٰلِمِ﴾ (page 348): Source description claimed Asim read by raf' (`عَالِمُ`). Hafs reads by khafd `عَـٰلِمِ` (matching Mushaf-1441 fixture). Baseline (`is_base=True`) is `عَـٰلِمِ` (Ibn Kathir, Abu Amr, Ibn Amir, Hafs, Ya'qub - 9 Riwayat), variant is `عَـٰلِمُ` (REST - 11 Riwayat). Sum = 20 Riwayat.
+- 23:106 ﴿شِقْوَتُنَا﴾ (page 349): Source description grouped Hafs in `شَقَاوَتُنَا`. Hafs reads `شِقْوَتُنَا` (Shatibiyyah: «وَفَتْحُ شِقْوَتُنَا وَامْدُدْ وَحَرِّكْهُ شُلْشُلَا» — شُلْشُلَا = Hamza and Kisai only). Baseline is `شِقْوَتُنَا` (`EXCEPT(['حمزة', 'الكسائي', K10])`), variant `شَقَـٰوَتُنَا` (`['حمزة', 'الكسائي', K10]`).
+- Normalizations aligned with §12.4b & token queries:
+  - 23:36 ﴿۞ هَيْهَاتَ هَيْهَاتَ﴾: query `'هيهات هيهات'` with rub' al-hizb symbol `۞` on page 344.
+  - 23:50 ﴿وَءَاوَيْنَـٰهُمَآ﴾ (`'وءاوينـٰهما'`), 23:50 ﴿مَّعِينٍۢ﴾ (`'معين'`).
+  - 23:56 ﴿نُسَارِعُ﴾ (`'نسارع'`).
+  - 23:66 ﴿ءَايَـٰتِى﴾ (`'ءايـٰتي'`).
+  - 23:72 ﴿أَمْ تَسْـَٔلُهُمْ﴾ (`'ام تسـٔلهم'`).
+  - 23:78 ﴿وَٱلْأَفْـِٔدَةَ﴾ (`'والافـٔدة'`).
+  - 23:83 ﴿وَءَابَآؤُنَا﴾ (`'وءاباؤنا'`).
+  - 23:91 ﴿فَتَعَـٰلَى﴾ (`'فتعالى'`).
+  - 23:112 ﴿قَـٰلَ كَمْ﴾ (`'قال كم'`), 23:114 ﴿قَـٰلَ إِن لَّبِثْتُمْ﴾ (`'قال ان لبثتم'`).
+
+The combined fixture state after this batch is **1,508 variants and 6,960 rulings across 289 active pages** (1–244 and 305–349). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, Al-Hajj, and Al-Mu'minun are fixture-only until a database population is explicitly requested.
+
+**Surah An-Nur (24), Mushaf pages 350–359.** Imported from the user-supplied ayah-by-ayah table (فرش الكلمات ومذاهب القراء العشرة + الأصول المطردة + الشواهد for 24:1–64), not from the PDF: **48 variant records and 178 أصول rulings** (page 359 spans An-Nur 62–64 and Al-Furqan 1–2: `surah=24, af=62, at=2`).
+
+Source cautions, slips & query normalizations resolved during ingestion:
+- 24:6 & 24:8 ﴿أَرْبَعُ / أَرْبَعَ﴾ (page 350): Shatibiyyah 912 (*«وَأَرْبَعُ أَوَّلًا صِحَابٌ»*). The prompt table inverted raf' and nasb, claiming Hafs read with nasb. In truth, Hafs reads with raf' ﴿أَرْبَعُ﴾ in 24:6 (`['حفص', 'حمزة', 'الكسائي', K10]`), matching Medina Mushaf-1441 fixture, while `REST` read with nasb ﴿أَرْبَعَ﴾. In 24:8, all 10 readers agree on nasb ﴿أَرْبَعَ﴾ by consensus.
+- 24:7 & 24:9 ﴿الْخَامِسَةُ / الْخَامِسَةَ﴾ (page 350): Shatibiyyah 913 (*«وَغَيْرُ الْحَفْصِ خَامِسَةُ الْأَخِيرُ»*). In 24:7, all 10 readers read with raf' ﴿وَٱلْخَـٰمِسَةُ﴾; the khilaf is in ﴿أَنَّ لَعْنَتَ﴾ (Nafi and Ya'qub read ﴿أَنْ لَّعْنَتُ﴾ takhfeef & raf'). In 24:9, Hafs alone reads with nasb ﴿وَٱلْخَـٰمِسَةَ﴾, while the remaining 19 Riwayat (`REST`) read with raf' ﴿وَٱلْخَـٰمِسَةُ﴾; in ﴿أَنَّ غَضَبَ﴾ Nafi and Ya'qub read ﴿أَنْ غَضِبَ﴾ (takhfeef & past verb).
+- 24:20 ﴿رَءُوفٌۭ﴾ (page 351): Prompt claimed Hafs, Ibn Kathir, Abu Ja'far read by qasr. In truth, Shatibiyyah 512 (*«وَرَءُوفٌ قَصْرُ صُحْبَتِهِ حَلَا»*) assigns qasr to Suhbah (Shu'ba, Hamza, Kisai) and Abu Amr (+ Ya'qub, Khalaf 10 in Durrah), while Hafs, Nafi, Ibn Kathir, Ibn Amir, Abu Ja'far read with madd ﴿رَءُوفٌۭ﴾ verbatim matching the Medina Mushaf fixture.
+- 24:21 ﴿خُطُوَٰتِ﴾ (page 352): Prompt claimed Hamza and Khalaf 10 read with damm; in truth, they read with sukun ﴿خُطْوَٰتِ﴾, while damm ﴿خُطُوَٰتِ﴾ belongs to Qunbul, Ibn Amir, Hafs, Kisai, Abu Ja'far, Ya'qub. Handled with `all_occurrences=True`.
+- 24:24 ﴿تَشْهَدُ / يَشْهَدُ﴾ (page 352): Shatibiyyah 914 (*«وَيَرْفَعُ بَعْدَ الْجَرِّ يَشْهَدُ شَائِعٌ»*); Hamza, Kisai, Khalaf 10 read with yaa ﴿يَشْهَدُ﴾, while Hafs and `REST` read with taa ﴿تَشْهَدُ﴾.
+- 24:31 ﴿جُيُوبِهِنَّ﴾, ﴿غَيْرِ﴾, ﴿أَيُّهَ﴾ (page 353):
+  - ﴿جُيُوبِهِنَّ﴾: Shatibiyyah (*«جُيُوبٍ مُنِيرٌ دُونَ شَكٍّ»*) assigns kasr to Ibn Dhakwan, Ibn Kathir, Hamza, Kisai, Khalaf 10; Hafs and `REST` read with damm ﴿جُيُوبِهِنَّ﴾.
+  - ﴿غَيْرِ﴾: Shatibiyyah 914 (*«وَغَيْرُ أُولِي بِالنَّصْبِ صَاحِبُهُ كَلَا»*) + Durrah (*«وَانْصِبْ غَيْرَ أَلَا»*); only Ibn Amir, Shu'ba, Abu Ja'far read with nasb ﴿غَيْرَ﴾, while Hafs and `REST` read with kasr ﴿غَيْرِ﴾ matching fixture.
+  - ﴿أَيُّهَ﴾: 3-way partition: Ibn Amir damm on haa وصلاً (`أَيُّهُ`), Abu Amr, Kisai, Ya'qub alif وقفاً (`أَيُّهَا`), Hafs and `REST` fat-h وصلاً and haa وقفاً (`أَيُّهَ`).
+- 24:40 ﴿سَحَابٌ ظُلُمَاتٌ﴾ (page 355): Shatibiyyah 917 (*«وَمَا نَوَّنَ الْبَزِّي سَحَابٌ وَرَفْعُهُمْ لَدَى ظُلُمَاتٍ جَرَّ دَارٍ وَأَوْصَلَا»*). Aligned clean 3-way partition: Al-Bazzi idafa without tanween ﴿سَحَابُ ظُلُمَـٰتٍۢ﴾; Qunbul tanween and jar ﴿سَحَابٌۭ ۚ ظُلُمَـٰتٍۢ﴾; Hafs and `REST` tanween and raf' ﴿سَحَابٌۭ ۚ ظُلُمَـٰتٌۢ﴾.
+- 24:41 & 24:53: Prompt claimed khilaf in ﴿بِمَا يَفْعَلُونَ﴾ and ﴿بِمَا تَعْمَلُونَ﴾; verified by consensus and classical Qiraat books that all 10 readers agree on ghayb in 41 and khitab in 53; omitted hallucinated prompt entries.
+- 24:51 ﴿قَوْلَ﴾: Verified that raf' is a grammatical/shazzah reading not part of the 10 Minor Readings; consensus of the 10 on nasb ﴿قَوْلَ﴾ maintained.
+- 24:55 ﴿ٱسْتَخْلَفَ﴾ & ﴿وَلَيُبَدِّلَنَّهُم﴾ (page 357): Shu'ba alone reads ﴿ٱسْتُخْلِفَ﴾ (19 vs 1 partition); Ibn Kathir, Shu'ba, Ya'qub read ﴿وَلَيُبْدِلَنَّهُم﴾ takhfeef.
+- 24:57 ﴿تَحْسَبَنَّ﴾: 3-way partition: Ibn Amir & Hamza yaa/fat-h ﴿يَحْسَبَنَّ﴾; Asim & Abu Ja'far taa/fat-h ﴿تَحْسَبَنَّ﴾ (Hafs baseline); `REST` taa/kasr ﴿تَحْسِبَنَّ﴾.
+- 24:58 ﴿ثَلَـٰثُ عَوْرَٰتٍۢ﴾: Disambiguated occurrence 2 query `'ثلث عورت'`; Shu'ba, Hamza, Kisai, Khalaf 10 read with nasb, Hafs & `REST` with raf'.
+- 24:61 ﴿بُيُوتِكُمْ﴾ & ﴿بُيُوتًا﴾ (page 358): Modeled with `all_occurrences=True` for buyutikum; verified that ﴿مَفَاتِحَهُۥٓ﴾ has no khilaf in An-Nur (consensus).
+- 24:64 ﴿يُرْجَعُونَ﴾ (page 359): Ibn Kathir, Abu Amr, Shu'ba, Ya'qub read ﴿يَرْجِعُونَ﴾; Hafs and `REST` read ﴿يُرْجَعُونَ﴾.
+
+The combined fixture state after this batch is **1,556 variants and 7,138 rulings across 299 active pages** (1–244 and 305–359; 305 pages remaining of 604). PostgreSQL remains intentionally populated only through page 244; Maryam, Taha, Al-Anbiya, Al-Hajj, Al-Mu'minun, and An-Nur are fixture-only until a database population is explicitly requested.
+
+**Pages 42–61** (the Juz' 3 batch, Al-Baqarah 253 to Ali 'Imran 91). 52 new variant loci (+121 variants, 413 total) and +552 أصول rulings (1,954 total) across 81 active pages. Pages 1–61 (Juz' 1, 2, and 3) are now fully contiguous.
+- Corrected source slips & query alignments:
+  - Page 53: source cited ﴿نَفْسَهُۥ وَيُحَذِّرُكُمُ﴾; actual verse 3:28 rasm is ﴿نَفْسَهُۥ ۗ وَإِلَى ٱللَّهِ ٱلْمَصِيرُ﴾ (`'نفسهۥ والى'`).
+  - Page 60: source cited ﴿عَلَيْكُمْ إِصْرِى﴾; actual verse 3:81 rasm is ﴿عَلَىٰ ذَٰلِكُمْ إِصْرِى﴾ (`'اصري'`).
+- Normalizations aligned with §12.4b:
+  - Dagger alefs & rasm bases: page 43 ﴿نُنشِزُهَا﴾ (`'ننشزها'`), page 45 ﴿وَيَأْمُرُكُم﴾ (`'وَيَأْمُرُكُم'`), page 46 ﴿وَيُكَفِّرُ﴾ (`'ويكفر'`), page 56 ﴿أَنِّىٓ أَخْلُقُ﴾ (`'انى اخلق'`).
+  - Small high letters (`ۥ` / `ۧ` / `ۦ`): page 42 ﴿تَأْخُذُهُۥ﴾ (`'تاخذهو'`) and ﴿بِإِذْنِهِۦ﴾ (`'باذنهي'`), page 52 ﴿ٱلنَّبِيِّـۧنَ﴾ (`'النبيين'`), page 60 ﴿لَفَرِيقًا يَلْوُۥنَ﴾ (`'لفريقا يلوون'`).
+  - Multi-way splits cleanly partitioned: page 48 ﴿فَتُذَكِّرَ﴾ 2:282 (3-way partition: 12-6-2 = 20), page 56 ﴿صِرَٰطٌ﴾ 3:51 (17-2-1 = 20), page 57 ﴿فَيُوَفِّيهِمْ﴾ 3:57 (4-way split: 1-17-1-1 = 20).
+**Pages 62–81** (the Juz' 4 batch, Ali 'Imran 92 to An-Nisa 23). 84 new variant loci (+107 variants, 520 total) and +405 أصول rulings (2,359 total) across 101 active pages. Pages 1–101 (Juz' 1, 2, 3, 4, and 5) are now 100% contiguous.
+- Corrected source slips & domain alignments:
+  - Page 77 ﴿تَسَآءَلُونَ﴾ (4:1): Shatibiyyah baseline (*وَكُوفِيُّهُمْ تَسَاءَلُونَ مُخَفَّفًا*) for Kufis (Asim, Hamza, Kisai, Khalaf 10) is تخفيف السين (`تَسَآءَلُونَ`), matching Hafs baseline; Harami+Shami+Basri+Madani read تشديد ﴿تَسَّآءَلُونَ﴾.
+  - Page 72 ﴿أَلَّا خَوْفٌ عَلَيْهِمْ﴾ (3:170): rasm query `'الا خوف عليهم'` matching 3:170 w17-19.
+  - Page 78 صلة هاء الكناية: resolved to 4:8 ﴿مِنْهُ﴾ and 4:11 ﴿وَلِأَبَوَيْهِ﴾.
+  - Page 79 صلة هاء الكناية: resolved to 4:13 and 4:14 ﴿يُدْخِلْهُ﴾.
+  - Page 80 صلة هاء الكناية: resolved to 4:19 ﴿فِيهِ خَيْرًا كَثِيرًا﴾.
+  - Page 81: separated Abu Ja'far ikhfa (4:21 ﴿مِّيثَـٰقًا غَلِيظًۭا﴾) from Khalaf tark al-ghunna (4:20 ﴿بُهْتَـٰنًۭا وَإِثْمًۭا﴾, 4:21 ﴿بَعْضٍ وَأَخَذْنَ﴾, 4:22 ﴿فَـٰحِشَةًۭ وَمَقْتًۭا﴾).
+- All 84 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Pages 102–125** (Juz' 6 & early Juz' 7, An-Nisa 148 to Al-Ma'idah 108). 108 new variant loci (+108 variants, 628 total across 125 pages) and +569 أصول rulings (2,928 total) across 125 active pages. Pages 1–125 (Juz' 1 through early Juz' 7) are now 100% contiguous.
+- Corrected glyph spacing defect in source fixture:
+  - Page 117 token 5:2 (ayah 52): fixed split glyph `"دَآئِرَ ةٌۭ ۚ"` -> `"دَآئِرَةٌۭ ۚ"`. Verified clean with `npm run mushaf:validate`.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word queries: page 115 ﴿وَٱلْعَيْنَ بِٱلْعَيْنِ...﴾ (5:45 token span 7-15), page 117 ﴿وَيَقُولُ ٱلَّذِينَ ءَامَنُوٓا۟﴾ (5:53), page 118 ﴿وَأَكْلِهِمُ ٱلسُّحْتَ﴾ (5:62,63), page 125 ﴿عَلَيْهِمُ ٱلْأَوْلَيَـٰنِ﴾ (5:107).
+  - Dagger alefs & rasm bases: page 119 ﴿رِسَالَتَهُۥ﴾ (5:67), page 119 ﴿وَٱلصَّـٰبِـُٔونَ﴾ (5:69), page 124 ﴿قِيَـٰمًا﴾ (5:97), page 124 ﴿يُنَزَّلُ﴾ (5:101).
+- All 108 loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Pages 126–145** (Juz' 7 & early Juz' 8, Al-Ma'idah 109 to Al-An'am 137). 155 new variant records (783 total across 145 pages) and +527 أصول rulings (3,455 total) across 145 active pages. Pages 1–145 (Juz' 1 through early Juz' 8) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 126 ﴿هَلْ يَسْتَطِيعُ رَبُّكَ﴾ (5:112); page 129 ﴿ٱسْتُهْزِئَ﴾ (6:10); page 133 ﴿أَقُولُ لَكُمْ﴾ (6:50); page 134 ﴿أَنَّهُۥ مَنْ﴾ and ﴿فَأَنَّهُۥ﴾ (6:54); page 139 ﴿تَجْعَلُونَهُۥ﴾ (6:91); page 143 ﴿رِسَالَتَهُۥ﴾ (6:124).
+  - Baseline alignments: page 138 ﴿دَرَجَـٰتٍۢ مَّن نَّشَآءُ﴾ (6:83) aligned to Hafs tanween baseline; page 140 ﴿وَجَعَلَ ٱلَّيْلَ﴾ baseline vs variant ﴿وَجَاعِلُ ٱلَّيْلِ﴾.
+  - Locus grouping: page 145 ﴿زَيَّنَ﴾ and ﴿قَتْلَ أَوْلَـٰدِهِمْ شُرَكَآؤُهُمْ﴾ (6:137) linked via shared locus group `L145-زين_قتل_اولادهم`.
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Pages 146–165** (Juz' 8, Al-An'am 138 to Al-A'raf 130). 117 new variant records (900 total across 165 pages) and +513 أصول rulings (3,968 total) across 165 active pages. Pages 1–165 (Juz' 1 through Juz' 8) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 146 ﴿شُرَكَٰٓؤُاْ﴾ aligned to Hafs rasm ﴿شُرَكَآءُ ۚ﴾ (6:139); page 147 ﴿ٱلْحَوَايَآ﴾ (6:146); page 148 pure usul (0 variants) with 26 rulings, including ﴿كَذَٰلِكَ كَذَّبَ﴾ (6:148); page 149 ﴿بِـَٔايَـٰتِ﴾ and ﴿ءَايَـٰتِنَا﴾ (6:157), ﴿ٱلْعَذَابِ بِمَا﴾ (6:157); page 150 ﴿إِلَىٰ صِرَٰطٍۢ مُّسْتَقِيمٍۢ﴾ (6:161), ﴿أَن تَأْتِيَهُمُ﴾ (6:158).
+  - Usul disambiguation & small letters: page 151 ﴿الٓمٓصٓ﴾, disambiguated Abu Ja'far ikhfa ﴿وَمَنْ خَفَّتْ﴾ (7:9) and Khalaf tark al-ghunna ﴿بِعِلْمٍۢ ۖ وَمَا﴾ (7:7); page 152 ﴿وَيَـٰٓـَٔادَمُ﴾ (7:19), ﴿نَّارٍۢ وَخَلَقْتَهُۥ﴾ (7:12); page 153 ﴿بِٱلْفَحْشَآءِ ۖ أَتَقُولُونَ﴾ (7:28), ﴿مُسْتَقَرٌّۭ وَمَتَـٰعٌ﴾ (7:24); page 154 ﴿كَذَّبَ بِـَٔايَـٰتِهِۦٓ﴾ (7:37); page 155 ﴿رُسُلُ رَبِّنَا﴾ (7:43); page 156 ﴿عِوَجًۭا وَهُم﴾ (7:45), ﴿نَنسَىٰهُمْ﴾ (7:51); page 159 ﴿فَٱنتَظِرُوٓا۟﴾ (7:71), ﴿وَءَابَآؤُكُم﴾ (7:71), ﴿بَصْۜطَةًۭ ۖ﴾ (7:69); page 160 ﴿إِنَّكُمْ﴾ (7:81); page 163 ﴿أَوَأَمِنَ﴾ (7:98); page 164 ﴿أَرْجِهْ﴾ (7:111), ﴿نَّكُونَ نَحْنُ﴾ (7:115), ﴿يَدَهُۥ﴾ (7:108); page 165 ﴿مَكَرْتُمُوهُ﴾ (7:123).
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Pages 166–184** (Juz' 9 & early Juz' 10, Al-A'raf 131 to Al-Anfal 61). 101 new variant records (1,001 total across 184 pages) and +469 أصول rulings (4,437 total) across 184 active pages. Pages 1–184 (Juz' 1 through Juz' 9 and start of Juz' 10) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 166 ﴿أَنجَيْنَـٰكُم﴾ (7:141); page 168 ﴿حُلِيِّهِمْ﴾ (7:148) and Yaqub ضم الهاء on ﴿يَهْدِيهِمْ﴾ and ﴿أَيْدِيهِمْ﴾; page 170 disambiguated multiple occurrences of `عليهم` in 7:157 (occurrence 1 ﴿عَلَيْهِمُ ٱلْخَبَـٰٓئِثَ﴾ before sakin vs occurrence 2 ﴿عَلَيْهِمْ ۚ﴾ before mutaharrik); page 172 ﴿ذُرِّيَّتَهُمْ﴾ (7:172) Hafs singular baseline vs plural; page 173 ﴿تَقُولُوا۟﴾ (7:172) and ﴿تَقُولُوٓا۟﴾ (7:173); page 175 ﴿طَـٰٓئِفٌۭ﴾ (7:201) Hafs baseline vs ﴿طَيْفٌ﴾; page 178 ﴿وَرِئَآءَ﴾ (8:47).
+  - Cross-ayah multi-word spans resolved: page 86 4:49–50 ﴿فَتِيلًا ٱنظُرْ﴾ and page 160 7:74–75 ﴿مُفْسِدِينَ قَالَ﴾.
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Pages 185–204** (Juz' 10 & early Juz' 11, Al-Anfal 62 to At-Tawbah 111). 72 new variant records (1,073 total across 204 pages) and +441 أصول rulings (4,878 total) across 204 active pages. Pages 1–204 (Juz' 1 through Juz' 10 and start of Juz' 11) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 185 ﴿بِنَصْرِهِۦ وَبِٱلْمُؤْمِنِينَ﴾ (8:62) `'بنصرهي'`; page 186 ﴿ٱلۡأَسۡرَىٰ﴾ (8:70) combined Abu Amr's variant `الأسارى` with base imalah on `الاسرى`, ﴿ٱلْمُؤْمِنُونَ﴾ (8:74); page 188 ﴿ذِمَّةًۭ ۚ وَأُو۟لَـٰٓئِكَ﴾ (9:10); page 189 At-Tawbah 14–20 omitted duplicate ﴿تُطَهِّرُهُمْ﴾ (belongs to 9:103 on page 203); page 190 ﴿مِّنْهُ﴾ (9:21), ﴿عَلَىٰ رَسُولِهِۦ وَعَلَى ٱلْمُؤْمِنِينَ﴾ (9:26) anchored to `'المؤمنين'`, ﴿بِأَمْرِهِۦ ۗ﴾ (9:24) `'بامرهي'`; page 192 ﴿بِٱلْهُدَىٰ﴾ (9:33); page 193 ﴿وَكَلِمَةُ ٱللَّهِ﴾ (9:40); page 195 ﴿ٱئْذَن لِّى وَلَا﴾ (9:49) assigned all ten readers for agreed ya'at idafa; page 196 ﴿هُوَ أُذُنٌۭ﴾ and ﴿قُلْ أُذُنُ خَيْرٍۢ﴾ (9:61) modeled as two distinct loci; page 197 ﴿وَءَايَـٰتِهِۦ﴾ (9:65) `'وءايتهۦ'`, ﴿إِن نَّعْفُ﴾ (9:66) `'ان نعف'` with note for Hamzah on reading `إن يُعف`; page 199 ﴿وَٱغْلُظْ عَلَيْهِمْ﴾ (9:73); page 200 pure usul (0 variants) with 17 rulings, ﴿ٱسْتَـْٔذَنَكَ﴾ (9:86); page 202 ﴿نُّؤْمِنَ لَكُمْ﴾ (9:94); page 203 ﴿صَلَوٰتَكَ﴾ (9:103) baseline text aligned with Mushaf-1441 rasm; page 204 ﴿أَسَّسَ بُنْيَـٰنَهُۥ﴾ (9:109 occurrences 1 and 2 under locus group `L204-اسس_بنيانه`).
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Pages 205–224** (Juz' 11 & early Juz' 12, At-Tawbah 112 to Hud 28). 107 new variant records (1,180 total across 224 pages) and +498 أصول rulings (5,376 total) across 224 active pages. Pages 1–224 (Juz' 1 through Juz' 11 and start of Juz' 12) are now 100% contiguous.
+- Normalizations aligned with §12.4b & token queries:
+  - Multi-word & phrase queries: page 205 ﴿لِلنَّبِىِّ – ٱلنَّبِىِّ﴾ (9:113, 117) Nafi with hamza & madd muttasil, ﴿إِبْرَٰهِيمَ﴾ (9:114) Hisham with alef, ﴿ٱلْعُسْرَةِ﴾ (9:117) Abu Ja'far damma on seen, ﴿كَادَ يَزِيغُ﴾ (9:117) Hamzah, Hafs, Ibn Kathir with taa `تَزِيغُ`; page 207 ﴿يَلُونَكُم﴾ (9:123) damma on laam for Ibn Kathir, ﴿يَفْقَهُونَ﴾ (9:127) Abu Ja'far with taa `تَفْقَهُونَ`; page 208 Yunus 1–6: ﴿الٓر ۚ﴾ (10:1) Abu Ja'far sakt on huruf tahajji, ﴿لَسَـٰحِرٌ﴾ (10:2) Sahir vs Sihr, ﴿فَصَّلَ ٱلْـَٔايَـٰتِ﴾ (10:5) Nafi, Abu Amr, Hafs, Abu Ja'far with nun `نُفَصِّلُ`; page 212 omitted Hud table artifacts ﴿ٱلْأَخْسَرُونَ﴾ and ﴿يَسْتَغْشُونَ﴾ accidentally included in Yunus extraction; page 213 ﴿لَّا يَهِدِّىٓ﴾ (10:35) Hafs baseline aligned with rasm `لَّا يَهِدِّىٓ`, ﴿يَعْزُبُ﴾ (10:61) Hamzah, Kisai, Khalaf 10 kasr on zaay; page 215 ﴿قِطَعًا﴾ (10:27) Ibn Kathir, Kisai sukun on taa `قِطْعًا`, ﴿أَصْغَرَ﴾ and ﴿أَكْبَرَ﴾ (10:61) Hamzah, Khalaf 10 rafa'; page 216 ﴿مَتَـٰعُ﴾ (10:23) Hafs nasb `مَتَـٰعَ`; page 219 ﴿وَلَا تَتَّبِعَآنِّ﴾ (10:89) corrected prompt inversion: Hafs and majority read `وَلَا تَتَّبِعَآنِّ` (tashdeed nun maksoorah + madd mushabba') matching rasm baseline, Ibn Dhakwan alone reads `وَلَا تَتَّبِعَانِ` (takhfeef); page 220 ﴿نُنَجِّى﴾ (10:103) Kisa'i, Ya'qub with single nun and sukun `نُنْجِ`; page 221 transition page spanning Surah 10 (Yunus 107–109) and Surah 11 (Hud 1–5): `PAGES[221]` defined with `surah=10, af=107, at=5`, modeled ﴿وَهُوَ﴾ with `all_occurrences=True` matching all 3 positions (10:107, 10:109, 11:4); page 222 ﴿سِحْرٌۭ﴾ (11:7) Hamzah, Kisai, Khalaf 10 read `سَـٰحِرٌۭ`; page 224 ﴿يُضَـٰعَفُ﴾ (11:20) Ibn Kathir, Ibn Amir, Abu Ja'far, Ya'qub read `يُضَعَّفُ` without alef and with tashdeed on 'ayn.
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags.
+
+**Surahs 25–56 (الفرقان–الواقعة), Mushaf pages 359–537 — the bulk parser.** 2,220 ayat across
+5 workbooks arrived in the same ayah-by-ayah table shape as Maryam, too many to hand-encode.
+`scripts/qiraat/import_surah_tables.py` reads the extracted JSON and writes fixtures directly
+(it does NOT go through `data_variants.py`/`data_rulings.py`), enforcing the same two hard
+invariants in code: a variant ships only if its أوجه partition the 20 Riwayat exactly once and
+the حفص وجه matches the rasm at a real token. Everything else is **dropped and logged** to
+`docs/qiraat/surahs-25-56-dropped.md`, never guessed. أصول rulings — which have no partition
+checkpoint — are parsed only for deterministic/explicitly-listed families and only when the
+bullet is free of the negation markers («غير وارد», «لا يدغم», «فتفخم», …) and universal markers
+(«للجميع», «لجميع القراء») that share the same leading phrase; the universal families (ميم الجمع،
+المد المنفصل/المتصل/العارض/اللازم، الإخفاء العام) are skipped exactly as §12.5 (Maryam) prescribes.
+Yield was 215 variant loci (235 records) + 772 rulings; the rest is catalogued for the paper
+original. **Two lessons for the next parser run:** (1) the reader resolver must match a whole
+name before treating a leading و as a connector, or every و-initial name (ورش، وروح…) is silently
+eaten — this bug hid until ﴿الموتى﴾'s تقليل group came out empty; (2) coverage from a parser is
+intentionally partial — it is the price of never shipping a guessed attribution, and it is the
+right trade for a 2,220-ayah volume that cannot be hand-verified in one pass.
+**Pages 225–244** (Juz' 12, Hud 29 to Yusuf 78). 98 new variant records (1,278 total across 244 pages) and +593 أصول rulings (5,969 total) across 244 active pages. Pages 1–244 (Juz' 1 through Juz' 11 and most of Juz' 12) are now 100% contiguous.
+- Normalizations and source reconciliation aligned with §12.4b:
+  - Page 240 is correctly represented as an أصول-only page (0 فرش variants, 35 rulings).
+  - Page 242 extends through Yusuf 63, not 62 as its supplied heading stated; both ﴿أَبِيهِمْ﴾ and ﴿نَكْتَلْ﴾ are in 12:63 and resolve to real page-242 tokens.
+  - Page 244 ﴿نَرْفَعُ دَرَجَـٰتٍ مَّن نَّشَاءُ﴾ keeps the Hafs/Aasim row on the Mushaf's tanween baseline; the non-tanween idafa is the alternate Nafi/Ibn Kathir/Abu Amr/Ibn Amir/Abu Ja'far reading, and Ya'qub's yā' reading keeps tanween.
+  - Question-marked source artifacts were omitted rather than guessed: page 225 ﴿قَوْمًا تَجْهَلُونَ؟﴾ under ترك الغنة, and page 239 ﴿رَءَايَةً؟﴾ / ﴿نَبِّئْتُكُمَا؟﴾. The unambiguous page-239 entries ﴿رَأَوُا۟﴾, ﴿ٱلْـَٔايَـٰتِ﴾ and ﴿نَبِّئْنَا﴾ remain imported.
+- All loci partition the 20 Riwayat cleanly with zero gaps or overlaps and zero new review flags (4 total unchanged).
+
+### 12.6 Postgres V2 Migration & Ingestion (Phase A completed 2026-09-19)
+
+Fixtures remain the client serving layer (zero round-trip page turns, offline-capable). Postgres is the authoring, relational query, and QA source of truth.
+- **Migration**: Applied `supabase/migrations/20260917120000_qiraat_v2_schema.sql` (19 tables, enums, triggers, and export functions) after full binary `pg_dump -Fc` backup (`backups/pre-qiraat-v2-20260919091434.dump`).
+- **Data Ingestion**: Populated all 244 pages into Postgres via `scripts/qiraat/import_to_postgres.py`:
+  - `qiraat_pages`: 244 rows
+  - `qiraat_loci`: 7,038 rows
+  - `qiraat_entries`: 7,247 rows (1,278 variants, 5,969 rulings)
+  - `qiraat_entry_readings`: 22,224 rows
+  - `qiraat_evidence_texts`: 752 rows
+  - `qiraat_evidence_links`: 1,696 rows
+- **Schema Enhancements**:
+  - Added `CS-HIMSI` and `CS-DIMASHQI` into `qiraat_count_schools`.
+  - Replaced restrictive `ayah_to >= ayah_from` check on `qiraat_pages` with `CHECK (ayah_to >= 1)` to support transition pages spanning surah boundaries (e.g. page 106: 4:176 -> 5:2; page 221: 10:107 -> 11:5).
+- Verified `qiraat_export_page(1::smallint, true)` and `qiraat_export_page(244::smallint, true)` on Postgres 17; reloaded PostgREST cache (`NOTIFY pgrst, 'reload schema'`).
 
 ---
 
@@ -438,6 +753,17 @@ const qiraatMode: QiraatMode      = readerLayer === 'qiraat' ? qiraatSubMode : '
   cannot disagree about whether القراءات is on.
 - `scripts/validate-mushaf1441-objective.mjs` has an exclusivity block that **fails the build** if
   the enum or the derived flags are replaced by independent on/off state again.
+
+### 13.2a Qiraat marker paint invariant (do not regress)
+
+A single reader-group Qiraat marker uses a solid text colour. A multi-reader difference uses a
+segmented CSS gradient. Since a gradient cannot be assigned to `color`, render it with
+`markerPaintForWord()` as clipped text (`backgroundImage`, `WebkitBackgroundClip: 'text'`, and
+`WebkitTextFillColor: 'transparent'`) and use the same gradient on the underline. Retain an
+annotation's explicit text colour over either Qiraat paint. Do not judge this from the detail
+sheet alone: a marker can still open correct details while silently falling back to normal Mushaf
+ink. The engine test and browser regression use page 249's multi-reader words as the permanent
+check.
 
 ### 13.3 Routing a press
 

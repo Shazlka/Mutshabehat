@@ -1,0 +1,432 @@
+[
+  {
+    "id": "v-D560-النبي-w2",
+    "surah": 66,
+    "ayah": 1,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِىُّ",
+    "variantText": "النَّبِيءُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D560-النبي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-النبي-w2",
+        "variantId": "v-D560-النبي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03605",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿النَّبِيُّ﴾ (معاً): بالهمز والمد لنافع ﴿النَّبِيءُ﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز والمد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-النبي-w2",
+    "surah": 66,
+    "ayah": 3,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "ٱلنَّبِىُّ",
+    "variantText": "النَّبِيءُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D560-النبي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-النبي-w2",
+        "variantId": "v-D560-النبي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03605",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿النَّبِيُّ﴾ (معاً): بالهمز والمد لنافع ﴿النَّبِيءُ﴾؛ وبغير همز للباقين."
+      }
+    ],
+    "description": "بالهمز والمد",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-وهو-w2",
+    "surah": 66,
+    "ayah": 2,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَهُوَ",
+    "variantText": "وَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D560-وهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-وهو-w2",
+        "variantId": "v-D560-وهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03606",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-DURI-066-2-9-r2564",
+        "variantId": "v-D560-وهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2564; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وهُـو → وهْـو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-عرف-w2",
+    "surah": 66,
+    "ayah": 3,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "عَرَّفَ",
+    "variantText": "عَرَفَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D560-عرف",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-عرف-w2",
+        "variantId": "v-D560-عرف-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03607",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿عَرَّفَ﴾: بتشديد الراء للجمهور؛ بتخفيف الراء ﴿عَرَفَ﴾ للكسائي."
+      }
+    ],
+    "description": "بتخفيف الراء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-تظاهرا-w2",
+    "surah": 66,
+    "ayah": 4,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "تَظَـٰهَرَا",
+    "variantText": "تَظَّاهَرَا",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D560-تظاهرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-تظاهرا-w2",
+        "variantId": "v-D560-تظاهرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03608",
+        "verificationNotes": "التقسيم المستقل يجعل التشديد لنافع وابن كثير وأبي عمرو وابن عامر وأبي جعفر ويعقوب؛ ويجعل خلف العاشر مع حفص وشعبة وحمزة والكسائي في وجه التخفيف. https://quranpedia.net/qiraat/at-tahrim/4",
+        "sourceText": "﴿تَظَـٰهَرَا﴾: بتخفيف الظاء وألف بعدها ﴿تَظَاهَرَا﴾ لعاصم، وحمزة، والكسائي، وخلف؛ بتشديد الظاء بلا ألف ﴿تَظَّهَّرَا﴾ للباقين."
+      }
+    ],
+    "description": "بتشديد الظاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-وجبريل-w2",
+    "surah": 66,
+    "ayah": 4,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَجِبْرِيلُ",
+    "variantText": "وَجَبْرِيلَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D560-وجبريل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-وجبريل-w2",
+        "variantId": "v-D560-وجبريل-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03611",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الجيم وكسر الراء بلا همز ﴿جَبْرِيلَ﴾: ابن كثير."
+      }
+    ],
+    "description": "بفتح الجيم وكسر الراء بلا همز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-وجبريل-w3",
+    "surah": 66,
+    "ayah": 4,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَجِبْرِيلُ",
+    "variantText": "وَجَبْرَئِيلَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D560-وجبريل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-وجبريل-w3",
+        "variantId": "v-D560-وجبريل-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03613",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "بفتح الجيم والراء وهمزة مكسورة بعدها ياء مدية ﴿جَبْرَئِيلَ﴾: حمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بفتح الجيم والراء وهمزة مكسورة بعدها ياء مدية",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-يبدلهو-w2",
+    "surah": 66,
+    "ayah": 5,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "يُبْدِلَهُۥٓ",
+    "variantText": "يُبَدِّلَهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D560-يبدلهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-يبدلهو-w2",
+        "variantId": "v-D560-يبدلهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03614",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يُبَدِّلَهُۥٓ﴾: بتشديد الدال المفتوحة لنافع، وأبي عمرو، وأبي جعفر؛ بتخفيف الدال وسكون الباء ﴿يُبْدِلَهُ﴾ للباقين."
+      }
+    ],
+    "description": "بتشديد الدال المفتوحة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D560-وجبريل-w3",
+    "surah": 66,
+    "ayah": 4,
+    "startToken": 15,
+    "endToken": 15,
+    "operation": "REPLACE",
+    "hafsText": "وَجِبْرِيلُ",
+    "variantText": "وَجَبْرَئِلُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "D560-وجبريل",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D560-وجبريل-w3",
+        "variantId": "v-D560-وجبريل-w3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P560-R03612",
+        "verificationNotes": "يصحح هذا الإسناد المستقل قراءة شعبة: وَجَبْرَئِلُ، بفتح الجيم والراء والهمز مع حذف الياء. المرجع: https://quranpedia.net/qiraat/at-tahrim/4",
+        "sourceText": "بفتح الجيم والراء بلا همز ﴿جَبْرَيلَ﴾: شعبة."
+      }
+    ],
+    "description": "بفتح الجيم والراء وهمزة مكسورة وحذف الياء",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-066-4-14-4320",
+    "surah": 66,
+    "ayah": 4,
+    "startToken": 14,
+    "endToken": 14,
+    "operation": "REPLACE",
+    "hafsText": "مَوْلَىٰهُ",
+    "variantText": "مَوْلَىٰهُ",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-066-4-14-4320",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-066-4-14-4320",
+        "variantId": "v-SUSI-066-4-14-4320",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4320; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مَوْلَاهُ → مَوْلَىٰهُ | تقليل فتحة اللام والألف"
+      }
+    ],
+    "description": "تقليل فتحة اللام والألف"
+  },
+  {
+    "id": "v-SUSI-066-5-11-4322-performance",
+    "surah": 66,
+    "ayah": 5,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "مُّؤْمِنَـٰتٍۢ",
+    "variantText": "مُّؤْمِنَـٰتٍۢ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-066-5-11-4322",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-066-5-11-4322",
+        "variantId": "v-SUSI-066-5-11-4322-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4322; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "مُّؤْمِنَاتٍ → مُّومِنَاتٍ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-SUSI-066-6-22-4324-performance",
+    "surah": 66,
+    "ayah": 6,
+    "startToken": 22,
+    "endToken": 22,
+    "operation": "REPLACE",
+    "hafsText": "يُؤْمَرُونَ",
+    "variantText": "يُؤْمَرُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-066-6-22-4324",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-066-6-22-4324",
+        "variantId": "v-SUSI-066-6-22-4324-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4324; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُؤْمَرُونَ → يُومَرُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  }
+]

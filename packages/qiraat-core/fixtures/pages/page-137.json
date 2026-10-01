@@ -1,0 +1,229 @@
+[
+  {
+    "id": "v-L137-ءازر-1-w2",
+    "surah": 6,
+    "ayah": 74,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "ءَازَرَ",
+    "variantText": "ءَازَرُ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L137-ءازر-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L137-ءازر-1-w2",
+        "variantId": "v-L137-ءازر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 142,
+        "sourceReference": "صفحة المصحف 137 · صفحة المصدر 142",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالرَّفْعُ آزَرُ حُصِّلَا"
+      }
+    ],
+    "description": "بضم الراء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالرَّفْعُ آزَرُ حُصِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L137-اتحجوني-1-w2",
+    "surah": 6,
+    "ayah": 80,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "أَتُحَـٰٓجُّوٓنِّى",
+    "variantText": "أَتُحَـٰٓجُّونِى",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L137-اتحجوني-1",
+    "locusType": "word_variant",
+    "notes": "لهشام وجهان: تشديد النون وتخفيفها (بخلف عنه).",
+    "sources": [
+      {
+        "id": "s-L137-اتحجوني-1-w2",
+        "variantId": "v-L137-اتحجوني-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 142,
+        "sourceReference": "صفحة المصحف 137 · صفحة المصدر 142",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَخَفَّفَ نُونًا قَبْلُ فِي اللَّهِ مَنْ لَهُ بِخُلْفٍ أَتَى وَالْحَذْفُ لَمْ يَكُ أَوَّلَا"
+      }
+    ],
+    "description": "بتخفيف النون مكسورة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَخَفَّفَ نُونًا قَبْلُ فِي اللَّهِ مَنْ لَهُ بِخُلْفٍ أَتَى وَالْحَذْفُ لَمْ يَكُ أَوَّلَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R01"
+    ]
+  },
+  {
+    "id": "v-L137-ينزل-1-w2",
+    "surah": 6,
+    "ayah": 81,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يُنَزِّلْ",
+    "variantText": "يُنْزِلْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L137-ينزل-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L137-ينزل-1-w2",
+        "variantId": "v-L137-ينزل-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 142,
+        "sourceReference": "صفحة المصحف 137 · صفحة المصدر 142",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
+      }
+    ],
+    "description": "بالتخفيف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَيُنْزِلُ خَفَّفَهُ وَتُنْزِلُ مِثْلَهُ وَنُنْزِلُ حَقٌّ وَهْوَ فِي الْحِجْرِ ثُقِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-SUSI-006-76-5-0763",
+    "surah": 6,
+    "ayah": 76,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "رَءَا كَوْكَبًۭا ۖ",
+    "variantText": "رَاءَى كَوْكَبًا",
+    "differenceType": "IMALAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-006-76-5-0763",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-006-76-5-0763",
+        "variantId": "v-SUSI-006-76-5-0763",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 763; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "رَأَىٰ كَوْكَبًا → رَاءَى كَوْكَبًا | إمالة فتحة الهمزة والألف"
+      }
+    ],
+    "description": "إمالة فتحة الهمزة والألف"
+  },
+  {
+    "id": "v-SUSI-006-80-8-0769",
+    "surah": 6,
+    "ayah": 80,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "هَدَىٰنِ ۚ",
+    "variantText": "هَدَانِي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-006-80-8-0769",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-006-80-8-0769",
+        "variantId": "v-SUSI-006-80-8-0769",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 769; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هَدَانِ → هَدَانِي | إثبات الياء وصلاً"
+      }
+    ],
+    "description": "إثبات الياء وصلاً"
+  },
+  {
+    "id": "v-DURI-006-80-7-r0562",
+    "surah": 6,
+    "ayah": 80,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "وَقَدْ هَدَىٰنِ ۚ",
+    "variantText": "وقد هدانـي",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-006-80-7-r0562",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-006-80-7-r0562",
+        "variantId": "v-DURI-006-80-7-r0562",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 562; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وقد هـدانِ → وقد هدانـي | أثبت الدوري الياء وصلاً فقط"
+      }
+    ],
+    "description": "أثبت الدوري الياء وصلاً فقط"
+  }
+]

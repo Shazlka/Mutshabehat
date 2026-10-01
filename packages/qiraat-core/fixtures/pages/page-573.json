@@ -1,0 +1,399 @@
+[
+  {
+    "id": "v-D573-لبدا-w2",
+    "surah": 72,
+    "ayah": 19,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "لِبَدًۭا",
+    "variantText": "لُبَدًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "D573-لبدا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D573-لبدا-w2",
+        "variantId": "v-D573-لبدا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 573، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿لِبَدٗا﴾: بكسر اللام وفتح الباء للجمهور؛ بضم اللام ﴿لُبَدًا﴾ لهشام في وجهه الثاني."
+      }
+    ],
+    "description": "بضم اللام ﴿لُبَدًا﴾؛ في وجهه الثاني",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D573-ليعلم-w2",
+    "surah": 72,
+    "ayah": 28,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "لِّيَعْلَمَ",
+    "variantText": "لِيُعْلَمَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q09-R01"
+    ],
+    "locusId": "D573-ليعلم",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D573-ليعلم-w2",
+        "variantId": "v-D573-ليعلم-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03731",
+        "verificationNotes": "النص المصدر يسمّي رويس صراحةً؛ رُبط بروايته Q09-R01، مع التحقق من رمز كلمة المصحف.",
+        "sourceText": "﴿لِّيَعْلَمَ﴾: بفتح الياء مبنياً للفاعل للجمهور؛ بضم الياء مبنياً للمجهول ﴿لِيُعْلَمَ﴾ لرويس."
+      }
+    ],
+    "description": "بضم الياء مبنياً للمجهول ﴿لِيُعْلَمَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P573-72-14-1-3",
+    "surah": 72,
+    "ayah": 14,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَّا",
+    "variantText": "وَإِنَّا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P573-72-14-1-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-14-1-3-DOCX",
+        "variantId": "v-AUDIT-P573-72-14-1-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03723",
+        "sourceText": "﴿وَأَنَّا مِنَّا﴾: بفتح الهمزة لابن عامر، وحفص، وحمزة، والكسائي، وخلف؛ بكسر الهمزة للباقين.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-14-1-3-QP",
+        "variantId": "v-AUDIT-P573-72-14-1-3",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/14",
+        "sourceText": "فتح الهمزة يشمل إسحاق وإدريس عن خلف؛ والكسر للرواة الآخرين.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      }
+    ],
+    "description": "﴿وَأَنَّا مِنَّا﴾: بفتح الهمزة لابن عامر، وحفص، وحمزة، والكسائي، وخلف؛ بكسر الهمزة للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "فتح الهمزة يشمل إسحاق وإدريس عن خلف؛ والكسر للرواة الآخرين.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/14"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P573-72-17-8-4",
+    "surah": 72,
+    "ayah": 17,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَسْلُكْهُ",
+    "variantText": "نَسْلُكْهُ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P573-72-17-8-4",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-17-8-4-DOCX",
+        "variantId": "v-AUDIT-P573-72-17-8-4",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03724",
+        "sourceText": "﴿يَسْلُكْهُ﴾: بياء الغيب ﴿يَسْلُكْهُ﴾ لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نَسْلُكْهُ﴾ للباقين.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-17-8-4-QP",
+        "variantId": "v-AUDIT-P573-72-17-8-4",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/17",
+        "sourceText": "النون: نافع وابن كثير وأبو عمرو وابن عامر وأبو جعفر؛ الياء تشمل الرواة الخمسة المسماة بالجهاز ومنهم خلف العاشر إسحاق وإدريس.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      },
+      {
+        "id": "s-DURI-072-17-8-r2624",
+        "variantId": "v-AUDIT-P573-72-17-8-4",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2624; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يـسلُكُـه → نسلُكُـه | قرأ الدوري بنون العظمة"
+      }
+    ],
+    "description": "﴿يَسْلُكْهُ﴾: بياء الغيب ﴿يَسْلُكْهُ﴾ لعاصم، وحمزة، والكسائي، ويعقوب، وخلف؛ بنون العظمة ﴿نَسْلُكْهُ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "النون: نافع وابن كثير وأبو عمرو وابن عامر وأبو جعفر؛ الياء تشمل الرواة الخمسة المسماة بالجهاز ومنهم خلف العاشر إسحاق وإدريس.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/17"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P573-72-19-1-5",
+    "surah": 72,
+    "ayah": 19,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَّهُۥ",
+    "variantText": "وَإِنَّهُ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q05-R01"
+    ],
+    "locusId": "AUDIT-P573-72-19-1-5",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-19-1-5-DOCX",
+        "variantId": "v-AUDIT-P573-72-19-1-5",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03725",
+        "sourceText": "﴿وَأَنَّهُۥ لَمَّا قَامَ﴾: بفتح الهمزة للجمهور؛ بكسر الهمزة ﴿وَإِنَّهُ﴾ لنافع وشعبة.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-19-1-5-QP",
+        "variantId": "v-AUDIT-P573-72-19-1-5",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/19",
+        "sourceText": "كسر الهمزة: شعبة وورش وقالون؛ والفتح لسائر الرواة.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      }
+    ],
+    "description": "﴿وَأَنَّهُۥ لَمَّا قَامَ﴾: بفتح الهمزة للجمهور؛ بكسر الهمزة ﴿وَإِنَّهُ﴾ لنافع وشعبة.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "كسر الهمزة: شعبة وورش وقالون؛ والفتح لسائر الرواة.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/19"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P573-72-28-9-6",
+    "surah": 72,
+    "ayah": 28,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "لَدَيْهِمْ",
+    "variantText": "لَدَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P573-72-28-9-6",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-28-9-6-DOCX",
+        "variantId": "v-AUDIT-P573-72-28-9-6",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03729",
+        "sourceText": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب.",
+        "verificationNotes": "نص سجل المصدر محفوظ حرفياً؛ قوبل الوجه بجهاز القراءات ورسم الكلمة."
+      },
+      {
+        "id": "s-AUDIT-P573-72-28-9-6-QP",
+        "variantId": "v-AUDIT-P573-72-28-9-6",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/28",
+        "sourceText": "ضم الهاء: خلف وخلاد عن حمزة ورويس وروح عن يعقوب.",
+        "verificationNotes": "مطابقة تعيين الرواة بصفحة الآية؛ أضيف خلف العاشر فقط حيث سمّى الجهاز إسحاقاً وإدريس."
+      }
+    ],
+    "description": "﴿لَدَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها ﴿لَدَيْهُمُ﴾ لحمزة ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "ضم الهاء: خلف وخلاد عن حمزة ورويس وروح عن يعقوب.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/28"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P573-72-20-1-7",
+    "surah": 72,
+    "ayah": 20,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "قُلْ",
+    "variantText": "قَالَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T00:00:00.000Z",
+    "updatedAt": "2026-09-22T00:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "AUDIT-P573-72-20-1-7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-AUDIT-P573-72-20-1-7-DOCX",
+        "variantId": "v-AUDIT-P573-72-20-1-7",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P573-R03727",
+        "sourceText": "﴿قُلْ إِنَّمَآ أَدْعُواْ﴾: بلفظ الأمر ﴿قُلْ﴾ لعاصم، وحمزة، وأبي جعفر؛ بلفظ الماضي ﴿قَالَ إِنَّمَا﴾ للباقين.",
+        "verificationNotes": "الوجه مثبت على أول كلمة حقيقية من العبارة؛ قوبل بجهاز القراءات المستقل."
+      },
+      {
+        "id": "s-AUDIT-P573-72-20-1-7-QP",
+        "variantId": "v-AUDIT-P573-72-20-1-7",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-jinn/20",
+        "sourceText": "اختلاف القراءات في الآية ٢٠ من سورة الجن؛ عُرضت كلمة الآية وأوجه القراء العشرة.",
+        "verificationNotes": "رابط خارجي مستقل للآية؛ رُبط الوجه باللفظ المقابل في سجل المصدر."
+      },
+      {
+        "id": "s-DURI-072-20-1-r2625",
+        "variantId": "v-AUDIT-P573-72-20-1-7",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2625; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "قُـل → قـالَ | قرأها الدوري بالماضي"
+      }
+    ],
+    "description": "﴿قُلْ إِنَّمَآ أَدْعُواْ﴾: بلفظ الماضي ﴿قَالَ إِنَّمَا﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "اختلاف القراءات في الآية ٢٠ من سورة الجن؛ عُرضت كلمة الآية وأوجه القراء العشرة.",
+        "url": "https://quranpedia.net/qiraat/al-jinn/20"
+      }
+    ]
+  },
+  {
+    "id": "v-DURI-072-25-10-r2626-performance",
+    "surah": 72,
+    "ayah": 25,
+    "startToken": 10,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "رَبِّىٓ أَمَدًا",
+    "variantText": "رَبِّىٓ أَمَدًا",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-072-25-10-r2626",
+    "locusType": "performance_variant",
+    "performanceNote": "فتح الدوري الياء",
+    "sources": [
+      {
+        "id": "s-DURI-072-25-10-r2626",
+        "variantId": "v-DURI-072-25-10-r2626-performance",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2626; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "ربّـي أمداً → ربّـيَ أمداً | فتح الدوري الياء"
+      }
+    ],
+    "description": "فتح الدوري الياء"
+  }
+]

@@ -69,7 +69,7 @@ export default function ClearCacheButton() {
           )}
           {busy ? 'جارٍ المسح…' : 'مسح وإعادة التحميل'}
         </button>
-        <span className="text-[10px] font-mono text-[var(--color-ink-muted)] tabular-nums" dir="ltr">
+        <span className="text-[11px] font-mono text-[var(--color-ink-muted)] tabular-nums" dir="ltr">
           build: {BUILD_ID.slice(0, 8)}
         </span>
       </div>

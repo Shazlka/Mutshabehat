@@ -1,0 +1,27 @@
+{
+  "page": 160,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 22,
+  "variants": 3,
+  "rulings": 19,
+  "supported": 22,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p160-007-1",
+    "r-p160-008-1",
+    "r-p160-009-1",
+    "r-p160-010-1",
+    "r-p160-012-1",
+    "r-p160-016-1",
+    "r-p160-017-1"
+  ]
+}

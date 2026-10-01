@@ -1,0 +1,440 @@
+[
+  {
+    "id": "v-L264-وان_عذابي-1-w2",
+    "surah": 15,
+    "ayah": 50,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَأَنَّ عَذَابِى",
+    "variantText": "وَإِنَّ عَذَابِي",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L264-وان_عذابي-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L264-وان_عذابي-1-w2",
+        "variantId": "v-L264-وان_عذابي-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L264-ابرهيم-1-w2",
+    "surah": 15,
+    "ayah": 51,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "إِبْرَٰهِيمَ",
+    "variantText": "إِبْرَاهَامَ",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01"
+    ],
+    "locusId": "L264-ابرهيم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L264-ابرهيم-1-w2",
+        "variantId": "v-L264-ابرهيم-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      }
+    ],
+    "description": "بالألف بعد الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِيهَا وَفِي نَصِّ النِّسَاءِ ثَلَاثَةٌ أَوَاخِرُ إِبْرَاهَامَ لَاحَ وَجَمَّلَا"
+      }
+    ],
+    "alternateOf": [
+      "Q04-R01"
+    ]
+  },
+  {
+    "id": "v-L264-المخلصين-1-w2",
+    "surah": 15,
+    "ayah": 40,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُخْلَصِينَ",
+    "variantText": "ٱلْمُخْلَصِينَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L264-المخلصين-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L264-المخلصين-1-w2",
+        "variantId": "v-L264-المخلصين-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-SUSI-015-40-4-1857",
+        "variantId": "v-L264-المخلصين-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 1857; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُخْلَصِينَ → الْمُخْلِصِينَ | كسر اللام"
+      },
+      {
+        "id": "s-DURI-015-40-4-r1163",
+        "variantId": "v-L264-المخلصين-1-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 1163; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الـمخلَصين → الـمخلِصين | كسر الدوري اللام"
+      }
+    ],
+    "description": "بفتح اللام",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L264-صراط-1-w2",
+    "surah": 15,
+    "ayah": 41,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٌ",
+    "variantText": "سِرَاطٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L264-صراط-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L264-صراط-1-w2",
+        "variantId": "v-L264-صراط-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L264-صراط-1-w3",
+    "surah": 15,
+    "ayah": 41,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٌ",
+    "variantText": "صِرَٰطٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "L264-صراط-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام الصاد زايًا",
+    "sources": [
+      {
+        "id": "s-L264-صراط-1-w3",
+        "variantId": "v-L264-صراط-1-w3",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بإشمام الصاد زايًا",
+    "wajhIndex": 3,
+    "evidence": []
+  },
+  {
+    "id": "v-L264-جزء-1-w2",
+    "surah": 15,
+    "ayah": 44,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "جُزْءٌۭ",
+    "variantText": "جُزُءٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01"
+    ],
+    "locusId": "L264-جزء-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L264-جزء-1-w2",
+        "variantId": "v-L264-جزء-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بضم الزاي",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L264-وعيون-1-w2",
+    "surah": 15,
+    "ayah": 45,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "وَعُيُونٍ",
+    "variantText": "وَعِيُونٍ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L264-وعيون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L264-وعيون-1-w2",
+        "variantId": "v-L264-وعيون-1-w2",
+        "sourceName": "جدول القراءات العشر لسورة الحجر — الأصول والفرش والشواهد",
+        "sourceType": "other",
+        "sourceReference": "استخراج المستخدم، 2026-09-20",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بكسر العين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-AUDIT-P264-15-41-4-HARAKAH",
+    "surah": 15,
+    "ayah": 41,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "عَلَىَّ",
+    "variantText": "عَلِيٌّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P264-15-41-4-HARAKAH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P264-R00591",
+        "variantId": "v-AUDIT-P264-15-41-4-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P264-R00591",
+        "sourceText": "بالسين وضم اللام وتنوين الياء الساكنة المرفوعة اسماً ﴿سِرَاطٌ عَلِيٌّ﴾: رويس.",
+        "verificationNotes": "نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر."
+      },
+      {
+        "id": "s-DOCX-P264-R00592",
+        "variantId": "v-AUDIT-P264-15-41-4-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P264-R00592",
+        "sourceText": "بالصاد ورفع الياء منونة ﴿صِرَاطٌ عَلِيٌّ﴾: روح.",
+        "verificationNotes": "نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P264-41-EXT",
+        "variantId": "v-AUDIT-P264-15-41-4-HARAKAH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hijr/41",
+        "sourceText": "Yaqub: Ruways and Rawh read عَلِيٌّ with kasra on the lam and nominative tanwin; the token 3 الصراط alternates are represented separately.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والراويين صراحةً."
+      }
+    ],
+    "description": "بالسين وضم اللام وتنوين الياء الساكنة المرفوعة اسماً ﴿سِرَاطٌ عَلِيٌّ﴾: رويس. / بالصاد ورفع الياء منونة ﴿صِرَاطٌ عَلِيٌّ﴾: روح.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Yaqub: Ruways and Rawh read عَلِيٌّ with kasra on the lam and nominative tanwin; the token 3 الصراط alternates are represented separately.",
+        "url": "https://quranpedia.net/qiraat/al-hijr/41"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P264-15-42-5-HARAKAH",
+    "surah": 15,
+    "ayah": 42,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "AUDIT-P264-15-42-5-HARAKAH",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P264-R00593",
+        "variantId": "v-AUDIT-P264-15-42-5-HARAKAH",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P264-R00593",
+        "sourceText": "﴿عَلَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها لحمزة ويعقوب.",
+        "verificationNotes": "نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P264-42-EXT",
+        "variantId": "v-AUDIT-P264-15-42-5-HARAKAH",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hijr/42",
+        "sourceText": "Dammah on hāʾ: Khalaf and Khallād from Hamza, Rawh and Ruways from Yaqub.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والراويين صراحةً."
+      }
+    ],
+    "description": "﴿عَلَيْهِمْ﴾: بكسر الهاء للجمهور؛ وبضمها لحمزة ويعقوب.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Dammah on hāʾ: Khalaf and Khallād from Hamza, Rawh and Ruways from Yaqub.",
+        "url": "https://quranpedia.net/qiraat/al-hijr/42"
+      }
+    ]
+  },
+  {
+    "id": "v-AUDIT-P264-15-44-7-HARAKAH-ALT-ac04ff3e",
+    "surah": 15,
+    "ayah": 44,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "جُزْءٌۭ",
+    "variantText": "جُزٌّ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "AUDIT-P264-15-44-7-HARAKAH-ALT-ac04ff3e",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P264-R00596",
+        "variantId": "v-AUDIT-P264-15-44-7-HARAKAH-ALT-ac04ff3e",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P264-R00596",
+        "sourceText": "بضم الجيم وتشديد الزاي بلا همز ﴿جُزٌّ﴾: أبو جعفر.",
+        "verificationNotes": "نُقلت مجموعة الراوي من صف السجل المعالج، وقوبلت مستقلاً مع القراءات العشر."
+      },
+      {
+        "id": "s-AUDIT-P264-44-EXT",
+        "variantId": "v-AUDIT-P264-15-44-7-HARAKAH-ALT-ac04ff3e",
+        "sourceName": "موسوعة القراءات القرآنية — القراءات العشر",
+        "sourceType": "website",
+        "sourceReference": "https://quranpedia.net/qiraat/al-hijr/44",
+        "sourceText": "Abu Jaafar (Ibn Jammaz and Ibn Wardan): doubled zay with tanwin and deletion of hamza.",
+        "verificationNotes": "مرجع مستقل يثبت الوجه والراويين صراحةً."
+      }
+    ],
+    "description": "بضم الجيم وتشديد الزاي بلا همز ﴿جُزٌّ﴾: أبو جعفر.",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "موسوعة القراءات القرآنية — القراءات العشر",
+        "text": "Abu Jaafar (Ibn Jammaz and Ibn Wardan): doubled zay with tanwin and deletion of hamza.",
+        "url": "https://quranpedia.net/qiraat/al-hijr/44"
+      }
+    ]
+  }
+]

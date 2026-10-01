@@ -1,0 +1,21 @@
+{
+  "page": 583,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 17,
+  "variants": 3,
+  "rulings": 14,
+  "supported": 17,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p583-IKHFA-rule-79-12-4"
+  ]
+}

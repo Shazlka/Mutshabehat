@@ -1,0 +1,546 @@
+[
+  {
+    "id": "v-D303-18-86-10-w2",
+    "surah": 18,
+    "ayah": 86,
+    "startToken": 10,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "حَمِئَةٍۢ",
+    "variantText": "حَامِيَةٍ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-18-86-10",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-86-10-w2",
+        "variantId": "v-D303-18-86-10-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿حَمِئَةٍ﴾: مهموزاً بغير ألف لنافع، وابن كثير، وأبي عمرو، وحفص، ويعقوب؛ وبألف بعد الحاء مع كسر الميم وهمزة ياء ﴿حَامِيَةٍ﴾ للباقين."
+      }
+    ],
+    "description": "بألف بعد الحاء مع كسر الميم وهمزة ياء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-88-13-w2",
+    "surah": 18,
+    "ayah": 88,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "يُسْرًۭا",
+    "variantText": "يُسُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D303-18-88-13",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-88-13-w2",
+        "variantId": "v-D303-18-88-13-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿يُسْرٗا﴾: بإسكان السين للجمهور؛ وبضم السين ﴿يُسُرًا﴾ لأبي جعفر."
+      }
+    ],
+    "description": "بضم السين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-95-3-w2",
+    "surah": 18,
+    "ayah": 95,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "مَكَّنِّى",
+    "variantText": "مَكَّنَنِي",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D303-18-95-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-95-3-w2",
+        "variantId": "v-D303-18-95-3-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي. رُبط باللفظ المطبوع للمصحف المذكور في سطر الباقين؛ عنوان الكتلة هو وجه ابن كثير.",
+        "sourceText": "﴿مَكَّنَنِي﴾: بنونين مظهرتين ﴿مَكَّنَنِي﴾ لابن كثير؛ وبنون واحدة مشددة ﴿مَكَّنِّي﴾ للباقين."
+      }
+    ],
+    "description": "بنونين مظهرتين",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-96-1-w2",
+    "surah": 18,
+    "ayah": 96,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "ءَاتُونِى",
+    "variantText": "ائْتُونِي",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D303-18-96-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-96-1-w2",
+        "variantId": "v-D303-18-96-1-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿رَدْمًا ءَاتُونِي﴾: بهمزة قطع للجمهور؛ وبهمزة وصل ﴿رَدْمًا ائْتُونِي﴾ لشعبة."
+      },
+      {
+        "id": "s-D303-18-96-1-quranpedia-20260920",
+        "variantId": "v-D303-18-96-1-w2",
+        "sourceName": "Quranpedia official Qiraat dump (release 2026-09-20; file version 2026-09-19)",
+        "sourceType": "other",
+        "sourceReference": "Surah 18, ayah 96, locus قَالَ ءَاتُونِى; dump SHA-256 d4d4ef4fefa54f2fe9db0a377cf2d15744effe39c6436f0c9509dd21ea6f2a5f",
+        "sourceText": "(قَالَ ائْتُونى) بهمزة وصل بعدها همزة ساكنة: شعبة، خلف عن حمزة، خلاد عن حمزة.",
+        "verificationNotes": "Independent reader assignments cross-checked against the versioned Quranpedia dump; rawi grouped under qari حمزة resolves to Q06 narrators, not the tenth reader خلف."
+      }
+    ],
+    "description": "بهمزة وصل لشعبة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-18-97-2-w2",
+    "surah": 18,
+    "ayah": 97,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "ٱسْطَـٰعُوٓا۟",
+    "variantText": "اسْطَّاعُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D303-18-97-2",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-18-97-2-w2",
+        "variantId": "v-D303-18-97-2-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "وثيقة الاستخراج المبوّب، صفحة المصحف 303، الكلمات الفرشية",
+        "verificationNotes": "بيانات مسلَّمة نصًّا صفحةً صفحة. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "﴿فَمَا ٱسْطَـٰعُوٓاْ﴾: بتخفيف الطاء للجمهور؛ وبتشديد الطاء ﴿فَمَا اسْطَّاعُوا﴾ لحمزة."
+      }
+    ],
+    "description": "بتشديد الطاء لحمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-يفقهون-w2",
+    "surah": 18,
+    "ayah": 93,
+    "startToken": 12,
+    "endToken": 12,
+    "operation": "REPLACE",
+    "hafsText": "يَفْقَهُونَ",
+    "variantText": "يُفْقِهُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D303-يفقهون",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-يفقهون-w2",
+        "variantId": "v-D303-يفقهون-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01067",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿يَفْقَهُونَ﴾: بفتح الياء والهاء للجمهور؛ وبضم الياء وكسر القاف ﴿يُفْقِهُونَ﴾ لحمزة، والكسائي، وخلف."
+      }
+    ],
+    "description": "بضم الياء وكسر القاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-خرجا-w2",
+    "surah": 18,
+    "ayah": 94,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "خَرْجًا",
+    "variantText": "خَرَاجًا",
+    "differenceType": "ORTHOGRAPHY",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D303-خرجا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-خرجا-w2",
+        "variantId": "v-D303-خرجا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01069",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿خَرْجٗا﴾: بفتح الخاء وسكون الراء بلا ألف للجمهور؛ وبألف بعد الراء مفتوحة ﴿خَرَاجًا﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بألف بعد الراء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-نكرا-w2",
+    "surah": 18,
+    "ayah": 87,
+    "startToken": 13,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "نُّكْرًۭا",
+    "variantText": "نُكُرًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-نكرا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D303-نكرا-w2",
+        "variantId": "v-D303-نكرا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01062",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿نُّكْرٗا﴾: بإسكان الكاف لابن كثير، وأبي عمرو، وهشام، وحفص، وحمزة، والكسائي، وخلف؛ وبضم الكاف للباقين."
+      }
+    ],
+    "description": "بضم الكاف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-جزاء_الحسنا-w2",
+    "surah": 18,
+    "ayah": 88,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "جَزَآءً ٱلْحُسْنَىٰ ۖ",
+    "variantText": "جَزَاءُ الْحُسْنَى",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "D303-جزاء_الحسنا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D303-جزاء_الحسنا-w2",
+        "variantId": "v-D303-جزاء_الحسنا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01063",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿جَزَآءً الْحُسْنَىٰ﴾: بنصب جزاء وتنوينها ﴿جَزَاءً الْحُسْنَى﴾ لحفص، وحمزة، والكسائي، ويعقوب، وخلف؛ وبرفع جزاء من غير تنوين على الإضافة ﴿جَزَاءُ الْحُسْنَى﴾ للباقين."
+      }
+    ],
+    "description": "برفع جزاء من غير تنوين على الإضافة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-قال_ءاتوني-w2",
+    "surah": 18,
+    "ayah": 96,
+    "startToken": 15,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "قَالَ ءَاتُونِىٓ",
+    "variantText": "قَالَ ائْتُونِي",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q05-R01",
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D303-قال_ءاتوني",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D303-قال_ءاتوني-w2",
+        "variantId": "v-D303-قال_ءاتوني-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01076",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿قَالَ ءَاتُونِيٓ﴾: بهمزة قطع للجمهور؛ وبهمزة وصل ﴿قَالَ ائْتُونِي﴾ لحمزة وشعبة (في وجهه الثاني)."
+      }
+    ],
+    "description": "بهمزة وصل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D303-فما_اسطاعوا-w2",
+    "surah": 18,
+    "ayah": 97,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "فَمَا ٱسْطَـٰعُوٓا۟",
+    "variantText": "فَمَا اسْطَّاعُوا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "D303-فما_اسطاعوا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D303-فما_اسطاعوا-w2",
+        "variantId": "v-D303-فما_اسطاعوا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P303-R01077",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿فَمَا ٱسْطَـٰعُوٓاْ﴾: بتخفيف الطاء للجمهور؛ وبتشديد الطاء ﴿فَمَا اسْطَّاعُوا﴾ لحمزة."
+      }
+    ],
+    "description": "بتشديد الطاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-018-85-1-2206-performance",
+    "surah": 18,
+    "ayah": 85,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَأَتْبَعَ",
+    "variantText": "فَأَتْبَعَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-85-1-2206",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل وتشديد التاء مفتوحة",
+    "sources": [
+      {
+        "id": "s-SUSI-018-85-1-2206",
+        "variantId": "v-SUSI-018-85-1-2206-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2206; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فَأَتْبَعَ → فَاتَّبَعَ | همزة وصل وتشديد التاء مفتوحة"
+      }
+    ],
+    "description": "همزة وصل وتشديد التاء مفتوحة"
+  },
+  {
+    "id": "v-SUSI-018-89-2-2210-performance",
+    "surah": 18,
+    "ayah": 89,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَتْبَعَ",
+    "variantText": "أَتْبَعَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-89-2-2210",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل وتشديد التاء مفتوحة ويبدأ بها بهمزة مكسورة",
+    "sources": [
+      {
+        "id": "s-SUSI-018-89-2-2210",
+        "variantId": "v-SUSI-018-89-2-2210-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2210; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتْبَعَ → اتَّبَعَ | همزة وصل وتشديد التاء مفتوحة ويبدأ بها بهمزة مكسورة"
+      }
+    ],
+    "description": "همزة وصل وتشديد التاء مفتوحة ويبدأ بها بهمزة مكسورة"
+  },
+  {
+    "id": "v-SUSI-018-92-2-2212-performance",
+    "surah": 18,
+    "ayah": 92,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "أَتْبَعَ",
+    "variantText": "أَتْبَعَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-92-2-2212",
+    "locusType": "performance_variant",
+    "performanceNote": "همزة وصل وتشديد التاء مفتوحة",
+    "sources": [
+      {
+        "id": "s-SUSI-018-92-2-2212",
+        "variantId": "v-SUSI-018-92-2-2212-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2212; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَتْبَعَ → اتَّبَعَ | همزة وصل وتشديد التاء مفتوحة"
+      }
+    ],
+    "description": "همزة وصل وتشديد التاء مفتوحة"
+  },
+  {
+    "id": "v-SUSI-018-96-8-2215-performance",
+    "surah": 18,
+    "ayah": 96,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "ٱلصَّدَفَيْنِ",
+    "variantText": "ٱلصَّدَفَيْنِ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-018-96-8-2215",
+    "locusType": "performance_variant",
+    "performanceNote": "ضم الصاد والدال",
+    "sources": [
+      {
+        "id": "s-SUSI-018-96-8-2215",
+        "variantId": "v-SUSI-018-96-8-2215-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2215; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الصَّدَفَيْنِ → الصُّدُفَيْنِ | ضم الصاد والدال"
+      }
+    ],
+    "description": "ضم الصاد والدال"
+  }
+]

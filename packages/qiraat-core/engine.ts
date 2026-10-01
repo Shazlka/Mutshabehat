@@ -99,6 +99,17 @@ export function resolveTokenForReading(
     return { kind: 'suppressed', variant }
   }
 
+  // A multi-token REPLACE stores the alternate phrase once, but each Mushaf token still owns
+  // its own DOM slot. Split a word-for-word phrase across that span so mobile and desktop never
+  // duplicate the phrase into one slot or leave the neighbouring variant word blank.
+  if (variant.operation === 'REPLACE' && variant.endToken > variant.startToken) {
+    const parts = variant.variantText.trim().split(/\s+/).filter(Boolean)
+    const spanLength = variant.endToken - variant.startToken + 1
+    if (parts.length === spanLength) {
+      return { kind: 'variant', text: parts[token - variant.startToken] ?? hafsText, variant }
+    }
+  }
+
   return { kind: 'variant', text: applyOperation(variant.operation, hafsText, variant.variantText), variant }
 }
 

@@ -1,0 +1,368 @@
+[
+  {
+    "id": "v-D567-قبلهو-w2",
+    "surah": 69,
+    "ayah": 9,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "قَبْلَهُۥ",
+    "variantText": "قِبَلَهُۥ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D567-قبلهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-قبلهو-w2",
+        "variantId": "v-D567-قبلهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03671؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/9",
+        "verificationNotes": "القائمة الدقيقة في الآية ٩ تسند هذا الوجه لرويس وروح عن يعقوب، والدوري والسوسي عن أبي عمرو، وأبي الحارث والدوري عن الكسائي.",
+        "sourceText": "﴿قَبْلَهُۥ﴾: بفتح القاف وإسكان الباء ﴿قَبْلَهُ﴾ للجمهور؛ بكسر القاف وفتح الباء ﴿قِبَلَهُ﴾ لأبي عمرو والكسائي ويعقوب."
+      }
+    ],
+    "description": "بكسر القاف وفتح الباء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-اذن-w2",
+    "surah": 69,
+    "ayah": 12,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "أُذُنٌۭ",
+    "variantText": "أُذْنٌ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D567-اذن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-اذن-w2",
+        "variantId": "v-D567-اذن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03672؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/12",
+        "verificationNotes": "جهاز الآية ١٢ يسند إسكان الذال إلى قالون وورش عن نافع.",
+        "sourceText": "﴿أُذُنٌ﴾: بضم الذال للجمهور؛ بإسكان الذال ﴿أُذْنٌ﴾ لنافع."
+      }
+    ],
+    "description": "بإسكان الذال",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-فهي-w2",
+    "surah": 69,
+    "ayah": 16,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "فَهِىَ",
+    "variantText": "فَهْيَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D567-فهي",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-فهي-w2",
+        "variantId": "v-D567-فهي-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03673؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/16",
+        "verificationNotes": "المطابقة على الآية ١٦ تسند سكون الهاء وإظهار الياء لقالون والدوري عن أبي عمرو والكسائي؛ السوسي له وجه إدغام كبير مستقل، وأبو جعفر غير مذكور في هذا الوجه.",
+        "sourceText": "﴿فَهِيَ﴾، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-لا_تخفا-w2",
+    "surah": 69,
+    "ayah": 18,
+    "startToken": 3,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "لَا تَخْفَىٰ",
+    "variantText": "لَا يَخْفَىٰ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02"
+    ],
+    "locusId": "D567-لا_تخفا",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-D567-لا_تخفا-w2",
+        "variantId": "v-D567-لا_تخفا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03674؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/18",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-haaqqa/18 قائمة الصفحة تسمي خلفًا عن حمزة؛ وبحسب قاعدة المشروع فالإسناد هو Q06 فقط، دون Q10.",
+        "sourceText": "﴿لَا تَخْفَىٰ﴾: بتاء التأنيث للجمهور؛ بياء التذكير ﴿لَا يَخْفَى﴾ لحمزة والكسائي وخلف."
+      }
+    ],
+    "description": "بياء التذكير مع إمالة الألف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-كتابيه-w2",
+    "surah": 69,
+    "ayah": 19,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "كِتَـٰبِيَهْ",
+    "variantText": "كِتَابِيَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D567-كتابيه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-كتابيه-w2",
+        "variantId": "v-D567-كتابيه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03675؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/25",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-haaqqa/25",
+        "sourceText": "﴿كِتَـٰبِيَهْ﴾، ﴿حِسَابِيَهْ﴾ (معاً): بإثبات هاء السكت وصلاً ووقفاً للجمهور؛ بحذف الهاء وصلاً ﴿كِتَابِيَ... حِسَابِيَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بحذف هاء السكت وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-حسابيه-w2",
+    "surah": 69,
+    "ayah": 20,
+    "startToken": 5,
+    "endToken": 5,
+    "operation": "REPLACE",
+    "hafsText": "حِسَابِيَهْ",
+    "variantText": "حِسَابِيَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D567-حسابيه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-حسابيه-w2",
+        "variantId": "v-D567-حسابيه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03675؛ Quranpedia https://quranpedia.net/qiraat/al-haaqqa/26",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/qiraat/al-haaqqa/26",
+        "sourceText": "﴿كِتَـٰبِيَهْ﴾، ﴿حِسَابِيَهْ﴾ (معاً): بإثبات هاء السكت وصلاً ووقفاً للجمهور؛ بحذف الهاء وصلاً ﴿كِتَابِيَ... حِسَابِيَ﴾ ليعقوب."
+      }
+    ],
+    "description": "بحذف هاء السكت وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-فهو-w2",
+    "surah": 69,
+    "ayah": 21,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "فَهُوَ",
+    "variantText": "فَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "D567-فهو",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-فهو-w2",
+        "variantId": "v-D567-فهو-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03673",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي.",
+        "sourceText": "﴿فَهِيَ﴾، ﴿فَهُوَ﴾: بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-DURI-069-21-1-r2600",
+        "variantId": "v-D567-فهو-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2600; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "فـهُو → فـهْو | أسكن الدوري الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-ماليه-w2",
+    "surah": 69,
+    "ayah": 28,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مَالِيَهْ ۜ",
+    "variantText": "مَالِيَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D567-ماليه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-ماليه-w2",
+        "variantId": "v-D567-ماليه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03676؛ Quranpedia https://quranpedia.net/book-attachment/19173/77555",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/book-attachment/19173/77555",
+        "sourceText": "بحذف الهاء وصلاً فيهما: حمزة، ويعقوب."
+      }
+    ],
+    "description": "بحذف الهاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D567-سلطانيه-w2",
+    "surah": 69,
+    "ayah": 29,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "سُلْطَـٰنِيَهْ",
+    "variantText": "سُلْطَانِيَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D567-سلطانيه",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D567-سلطانيه-w2",
+        "variantId": "v-D567-سلطانيه-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P567-R03676؛ Quranpedia https://quranpedia.net/book-attachment/19173/77555",
+        "verificationNotes": "إسناد المصدر المنقول رُبط بموضع المصحف من رمز الكلمة الحقيقي. راجع المطابقة اللفظية على الصفحة الدقيقة: https://quranpedia.net/book-attachment/19173/77555",
+        "sourceText": "بحذف الهاء وصلاً فيهما: حمزة، ويعقوب."
+      }
+    ],
+    "description": "بحذف الهاء وصلاً",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-069-19-7-4355-performance",
+    "surah": 69,
+    "ayah": 19,
+    "startToken": 7,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "هَآؤُمُ ٱقْرَءُوا۟",
+    "variantText": "هَآؤُمُ ٱقْرَءُوا۟",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-069-19-7-4355",
+    "locusType": "performance_variant",
+    "performanceNote": "تحقيق",
+    "sources": [
+      {
+        "id": "s-SUSI-069-19-7-4355",
+        "variantId": "v-SUSI-069-19-7-4355-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4355; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "هَاؤُمُ اقْرَءُوا → هَاؤُمُ اقْرَءُوا | تحقيق"
+      }
+    ],
+    "description": "تحقيق"
+  }
+]

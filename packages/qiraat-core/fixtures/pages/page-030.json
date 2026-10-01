@@ -1,0 +1,125 @@
+[
+  {
+    "id": "v-L030-QITAL-w2",
+    "surah": 2,
+    "ayah": 191,
+    "startToken": 12,
+    "endToken": 13,
+    "operation": "REPLACE",
+    "hafsText": "وَلَا تُقَـٰتِلُوهُمْ",
+    "variantText": "وَلَا تَقْتُلُوهُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L030-QITAL",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L030-QITAL-w2",
+        "variantId": "v-L030-QITAL-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 35,
+        "sourceReference": "صفحة المصحف 30 · صفحة المصدر 35",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَلَا تَقْتُلُوهُمْ بَعْدَهُ يَقْتُلُوكُمُ فَإِنْ قَتَلُوكُمْ قَصْرُهَا شَاعَ وَٱنْجَلَىٰ"
+      }
+    ],
+    "description": "بلا ألف",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَلَا تَقْتُلُوهُمْ بَعْدَهُ يَقْتُلُوكُمُ فَإِنْ قَتَلُوكُمْ قَصْرُهَا شَاعَ وَٱنْجَلَىٰ"
+      }
+    ]
+  },
+  {
+    "id": "v-L030-QITAL2-w2",
+    "surah": 2,
+    "ayah": 191,
+    "startToken": 17,
+    "endToken": 18,
+    "operation": "REPLACE",
+    "hafsText": "حَتَّىٰ يُقَـٰتِلُوكُمْ",
+    "variantText": "حَتَّىٰ يَقْتُلُوكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L030-QITAL2",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L030-QITAL2-w2",
+        "variantId": "v-L030-QITAL2-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 35,
+        "sourceReference": "صفحة المصحف 30 · صفحة المصدر 35",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بلا ألف",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-L030-QITAL3-w2",
+    "surah": 2,
+    "ayah": 191,
+    "startToken": 20,
+    "endToken": 21,
+    "operation": "REPLACE",
+    "hafsText": "فَإِن قَـٰتَلُوكُمْ",
+    "variantText": "فَإِن قَتَلُوكُمْ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L030-QITAL3",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L030-QITAL3-w2",
+        "variantId": "v-L030-QITAL3-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 35,
+        "sourceReference": "صفحة المصحف 30 · صفحة المصدر 35",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي."
+      }
+    ],
+    "description": "بلا ألف",
+    "wajhIndex": 2,
+    "evidence": []
+  }
+]

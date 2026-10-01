@@ -1,0 +1,22 @@
+{
+  "page": 558,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 9,
+  "variants": 4,
+  "rulings": 5,
+  "supported": 9,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p558-IDGHAM_SAGHIR-فقد_ظلم-0",
+    "r-p558-IDGHAM_SAGHIR-قد_جعل-1"
+  ]
+}

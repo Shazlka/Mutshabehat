@@ -1,0 +1,355 @@
+[
+  {
+    "id": "v-L307-قول_الحق-1-w2",
+    "surah": 19,
+    "ayah": 34,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "قَوْلَ ٱلْحَقِّ",
+    "variantText": "قَوْلُ ٱلْحَقِّ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L307-قول_الحق-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L307-قول_الحق-1-w2",
+        "variantId": "v-L307-قول_الحق-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَوْلَ انْصِبُوا كَمْ نَصَّ — D: وَقَوْلَ انْصِبَنَّ حُطْ"
+      }
+    ],
+    "description": "برفع اللام",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَوْلَ انْصِبُوا كَمْ نَصَّ"
+      },
+      {
+        "source": "D",
+        "text": "وَقَوْلَ انْصِبَنَّ حُطْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L307-فيكون-1-w2",
+    "surah": 19,
+    "ayah": 35,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "فَيَكُونُ",
+    "variantText": "فَيَكُونَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L307-فيكون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L307-فيكون-1-w2",
+        "variantId": "v-L307-فيكون-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي مَرْيَمٍ نَصْبٌ كَفَى وَابْنُ عَامِرٍ"
+      }
+    ],
+    "description": "بنصب النون",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مَرْيَمٍ نَصْبٌ كَفَى وَابْنُ عَامِرٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L307-وان_الله-1-w2",
+    "surah": 19,
+    "ayah": 36,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَإِنَّ ٱللَّهَ",
+    "variantText": "وَأَنَّ ٱللَّهَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L307-وان_الله-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L307-وان_الله-1-w2",
+        "variantId": "v-L307-وان_الله-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي مَرْيَمٍ كَسْرٌ لِصَحْبٍ تَرَتَّلَا — D: وَإِنَّ افْتَحِ ادْعُ حُزْ"
+      }
+    ],
+    "description": "بفتح الهمزة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي مَرْيَمٍ كَسْرٌ لِصَحْبٍ تَرَتَّلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَإِنَّ افْتَحِ ادْعُ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L307-صراط-1-w2",
+    "surah": 19,
+    "ayah": 36,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٌۭ",
+    "variantText": "سِرَٰطٌ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q09-R01"
+    ],
+    "locusId": "L307-صراط-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L307-صراط-1-w2",
+        "variantId": "v-L307-صراط-1-w2",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا — D: وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ — SH: بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ],
+    "description": "بالسين",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ"
+      },
+      {
+        "source": "SH",
+        "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L307-صراط-1-w3",
+    "surah": 19,
+    "ayah": 36,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "صِرَٰطٌۭ",
+    "variantText": "صِرَٰطٌۭ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01"
+    ],
+    "locusId": "L307-صراط-1",
+    "locusType": "performance_variant",
+    "performanceNote": "بإشمام الصاد زايًا",
+    "sources": [
+      {
+        "id": "s-L307-صراط-1-w3",
+        "variantId": "v-L307-صراط-1-w3",
+        "sourceName": "جدول فرش سورة مريم ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم (سورة مريم ١–٩٨): فرش الكلمات، الأصول المطردة، الشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا — D: وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ — SH: بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ],
+    "description": "بإشمام الصاد زايًا",
+    "wajhIndex": 3,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَعِنْدَ سِرَاطٍ وَالسِّرَاطِ لِقُنْبُلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَالصِّرَاطَ فِهِ اسْجَلَا وَبِالسِّينِ طِبْ"
+      },
+      {
+        "source": "SH",
+        "text": "بِحَيْثُ أَتَىٰ وَالصَّادَ زَايًا أَشِمَّهَا لَدَىٰ خَلَفٍ وَاشْمِمْ لِخَلَّادٍ الأُوَّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-D307-نبيا-w2",
+    "surah": 19,
+    "ayah": 30,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "نَبِيًّۭا",
+    "variantText": "نَبِيئًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02"
+    ],
+    "locusId": "D307-نبيا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D307-نبيا-w2",
+        "variantId": "v-D307-نبيا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P307-R01129",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿نَبِيّٗا﴾: بغير همز للجمهور؛ وبالهمز والمد المتصل ﴿نَبِيئًا﴾ لنافع."
+      }
+    ],
+    "description": "بالهمز والمد المتصل",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D307-قول_الحق-w1",
+    "surah": 19,
+    "ayah": 34,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "قَوْلَ ٱلْحَقِّ",
+    "variantText": "قَوْلَ ٱلْحَقِّ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "D307-قول_الحق",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D307-قول_الحق-w1",
+        "variantId": "v-D307-قول_الحق-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P307-R01130",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿قَوْلَ الْحَقِّ﴾: بنصب اللام ﴿قَوْلَ الْحَقِّ﴾ لابن عامر، وعاصم، ويعقوب؛ وبرفع اللام ﴿قَوْلُ الْحَقِّ﴾ للباقين."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "بالنصب"
+  },
+  {
+    "id": "v-D307-وان_الله-w1",
+    "surah": 19,
+    "ayah": 36,
+    "startToken": 1,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "وَإِنَّ ٱللَّهَ",
+    "variantText": "وَإِنَّ ٱللَّهَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q09-R02"
+    ],
+    "locusId": "D307-وان_الله",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-D307-وان_الله-w1",
+        "variantId": "v-D307-وان_الله-w1",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P307-R01132",
+        "verificationNotes": "إسناد صريح من صف المصدر وربط الوجه برمز الكلمة الحقيقي في صفحة المصحف؛ أُبقيت الأوجه المتوافقة فقط.",
+        "sourceText": "﴿وَإِنَّ اللَّهَ﴾: بكسر الهمزة لابن عامر، وعاصم، وحمزة، والكسائي، وروح، وخلف؛ وبفتح الهمزة ﴿وَأَنَّ اللَّهَ﴾ للباقين."
+      }
+    ],
+    "description": "وجه حفص المطابق لرسم المصحف",
+    "wajhIndex": 1,
+    "evidence": [],
+    "performanceNote": "بكسر الهمزة"
+  }
+]

@@ -1,0 +1,187 @@
+[
+  {
+    "id": "v-L339-قتلوا-1-w2",
+    "surah": 22,
+    "ayah": 58,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "قُتِلُوٓا۟",
+    "variantText": "قُتِّلُوٓا۟",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L339-قتلوا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L339-قتلوا-1-w2",
+        "variantId": "v-L339-قتلوا-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَقَاتَلُوا اضْمُمْ وَاكْسِرِ التَّاءَ شَافِيًا"
+      }
+    ],
+    "description": "بتشديد التاء المكسورة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَقَاتَلُوا اضْمُمْ وَاكْسِرِ التَّاءَ شَافِيًا"
+      }
+    ]
+  },
+  {
+    "id": "v-L339-مدخلا-1-w2",
+    "surah": 22,
+    "ayah": 59,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "مُّدْخَلًۭا",
+    "variantText": "مَدْخَلًا",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L339-مدخلا-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L339-مدخلا-1-w2",
+        "variantId": "v-L339-مدخلا-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمُدْخَلاً اضْمُمْ لِحِمىً حِمَارٍ"
+      }
+    ],
+    "description": "بفتح الميم",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمُدْخَلاً اضْمُمْ لِحِمىً حِمَارٍ"
+      }
+    ]
+  },
+  {
+    "id": "v-L339-يدعون-1-w2",
+    "surah": 22,
+    "ayah": 62,
+    "startToken": 8,
+    "endToken": 8,
+    "operation": "REPLACE",
+    "hafsText": "يَدْعُونَ",
+    "variantText": "تَدْعُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L339-يدعون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L339-يدعون-1-w2",
+        "variantId": "v-L339-يدعون-1-w2",
+        "sourceName": "جدول فرش سورة الحج ومذاهب القراء العشرة",
+        "sourceType": "other",
+        "sourceReference": "جدول الآيات المسلَّم: الحج ١–٧٨ (فرش الكلمات، الأصول المطردة، الشواهد)",
+        "verificationNotes": "استُخرجت هذه البيانات من جدول فرش سورة الحج ومذاهب القراء العشرة المسلَّم نصًّا آيةً آية. لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَالأَوَّلُ مَعْ لُقْمَانَ يَدْعُونَ غَيَّبُوا سِوَى شُعْبَةٍ — D: وَخَاطِبْ تَدْعُونَ احْوِ"
+      }
+    ],
+    "description": "بتاء الخطاب",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَالأَوَّلُ مَعْ لُقْمَانَ يَدْعُونَ غَيَّبُوا سِوَى شُعْبَةٍ"
+      },
+      {
+        "source": "D",
+        "text": "وَخَاطِبْ تَدْعُونَ احْوِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L339-لهو-1-w2",
+    "surah": 22,
+    "ayah": 58,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "لَهُوَ",
+    "variantText": "لَهْوَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "L339-لهو-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L339-لهو-1-w2",
+        "variantId": "v-L339-لهو-1-w2",
+        "sourceName": "وثيقة استخراج القراءات العشر",
+        "sourceType": "manual_extraction",
+        "sourceReference": "DOCX-P339-R01479",
+        "verificationNotes": "ثبتت على الكلمة الحقيقية في صفحة المصحف 339؛ بإسكان الهاء لقالون وأبي عمرو والكسائي وأبي جعفر.",
+        "sourceText": "﴿لَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      },
+      {
+        "id": "s-SUSI-022-58-16-2595",
+        "variantId": "v-L339-لهو-1-w2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 2595; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَهُوَ → لَهْوَ | إسكان الهاء"
+      }
+    ],
+    "description": "بإسكان الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "DOCX-P339-R01479",
+        "text": "﴿لَهُوَ﴾ (معاً): بإسكان الهاء لقالون، وأبي عمرو، والكسائي، وأبي جعفر؛ وبالفتح للباقين."
+      }
+    ]
+  }
+]

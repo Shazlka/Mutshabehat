@@ -1,0 +1,272 @@
+[
+  {
+    "id": "v-L203-والانصار_والذين-1-w2",
+    "surah": 9,
+    "ayah": 100,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَٱلْأَنصَارِ وَٱلَّذِينَ",
+    "variantText": "وَٱلْأَنصَارُ وَٱلَّذِينَ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L203-والانصار_والذين-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L203-والانصار_والذين-1-w2",
+        "variantId": "v-L203-والانصار_والذين-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 208,
+        "sourceReference": "صفحة المصحف 203 · صفحة المصدر 208",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالأَنْصَارِ فَارْفَعْ حُزْ"
+      }
+    ],
+    "description": "بالرفع",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالأَنْصَارِ فَارْفَعْ حُزْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L203-جنت_تجري_تحتها_الانهر-1-w2",
+    "surah": 9,
+    "ayah": 100,
+    "startToken": 16,
+    "endToken": 19,
+    "operation": "REPLACE",
+    "hafsText": "جَنَّـٰتٍۢ تَجْرِى تَحْتَهَا ٱلْأَنْهَـٰرُ",
+    "variantText": "جَنَّـٰتٍۢ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَـٰرُ",
+    "differenceType": "ADDITION",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "L203-جنت_تجري_تحتها_الانهر-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L203-جنت_تجري_تحتها_الانهر-1-w2",
+        "variantId": "v-L203-جنت_تجري_تحتها_الانهر-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 208,
+        "sourceReference": "صفحة المصحف 203 · صفحة المصدر 208",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَمِنْ تَحْتِهَا الْمَكِّيُّ يَجْرُّ وَزَادَ مِنْ"
+      }
+    ],
+    "description": "بزيادة من خافضة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَمِنْ تَحْتِهَا الْمَكِّيُّ يَجْرُّ وَزَادَ مِنْ"
+      }
+    ]
+  },
+  {
+    "id": "v-L203-عليهم-1-w2",
+    "surah": 9,
+    "ayah": 103,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "عَلَيْهِمْ ۖ",
+    "variantText": "عَلَيْهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L203-عليهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L203-عليهم-1-w2",
+        "variantId": "v-L203-عليهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 208,
+        "sourceReference": "صفحة المصحف 203 · صفحة المصدر 208",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا — D: وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ جَمِيعًا بِضَمِّ الْهَاءِ وَقْفًا وَمَوْصِلَا"
+      },
+      {
+        "source": "D",
+        "text": "وَاكْسِرْ عَلَيْهِمْ إِلَيْهِمْ لَدَيْهِمْ فَتًى وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L203-وتزكيهم-1-w2",
+    "surah": 9,
+    "ayah": 103,
+    "startToken": 6,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "وَتُزَكِّيهِم",
+    "variantText": "وَتُزَكِّيهُم",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L203-وتزكيهم-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L203-وتزكيهم-1-w2",
+        "variantId": "v-L203-وتزكيهم-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 208,
+        "sourceReference": "صفحة المصحف 203 · صفحة المصدر 208",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "D: وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ],
+    "description": "بضم الهاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "D",
+        "text": "وَالضَّمُّ فِي الْهَاءِ حُلَّلَا عَنِ الْيَاءِ إِنْ تَسْكُنْ سِوَى الْفَرْدِ"
+      }
+    ]
+  },
+  {
+    "id": "v-L203-صلوتك-1-w2",
+    "surah": 9,
+    "ayah": 103,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "صَلَوٰتَكَ",
+    "variantText": "صَلَوَٰتِكَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L203-صلوتك-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L203-صلوتك-1-w2",
+        "variantId": "v-L203-صلوتك-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 208,
+        "sourceReference": "صفحة المصحف 203 · صفحة المصدر 208",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: صَلَاتَكَ وَحِّدْ وَافْتَحِ التَّا شَذًا عَلَا"
+      }
+    ],
+    "description": "بالجمع وألف بعد الواو وكسر التاء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "صَلَاتَكَ وَحِّدْ وَافْتَحِ التَّا شَذًا عَلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L203-مرجون-1-w2",
+    "surah": 9,
+    "ayah": 106,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "مُرْجَوْنَ",
+    "variantText": "مُرْجَـُٔونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q09-R01",
+      "Q09-R02"
+    ],
+    "locusId": "L203-مرجون-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L203-مرجون-1-w2",
+        "variantId": "v-L203-مرجون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 208,
+        "sourceReference": "صفحة المصحف 203 · صفحة المصدر 208",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: تُرْجِئُ هَمْزُهُ صَفَا نَفَرٍ مَعْ مُرْجَئُونَ وَقَدْ حَلَا"
+      }
+    ],
+    "description": "بهمزة مضمومة بعد الجيم ثم واو",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "تُرْجِئُ هَمْزُهُ صَفَا نَفَرٍ مَعْ مُرْجَئُونَ وَقَدْ حَلَا"
+      }
+    ]
+  }
+]

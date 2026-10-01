@@ -104,6 +104,8 @@ export default async function GroupDetailPage({ params }: { params: Promise<{ id
         </Link>
       </div>
 
+      <Link href={`/test?group=${group.id}`} className="inline-flex min-h-12 items-center mb-4 text-[var(--color-primary)] font-bold underline underline-offset-4">اختبر حفظك في هذه المجموعة</Link>
+
       {/* On mobile: wrap GroupDetail in swipe-to-navigate (left=next, right=prev in RTL) */}
       <SwipeNavWrapper prevGroupId={prevGroupId} nextGroupId={nextGroupId}>
         <GroupDetail group={group} />

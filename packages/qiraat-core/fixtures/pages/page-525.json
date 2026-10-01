@@ -1,0 +1,275 @@
+[
+  {
+    "id": "v-L525-s52a45b0-w2",
+    "surah": 52,
+    "ayah": 45,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يُصْعَقُونَ",
+    "variantText": "يُصْعَقُونَ",
+    "differenceType": "OTHER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q01-R01",
+      "Q01-R02",
+      "Q02-R01",
+      "Q02-R02",
+      "Q03-R01",
+      "Q03-R02",
+      "Q06-R01",
+      "Q06-R02",
+      "Q07-R01",
+      "Q07-R02",
+      "Q08-R01",
+      "Q08-R02",
+      "Q09-R01",
+      "Q09-R02",
+      "Q10-R01",
+      "Q10-R02"
+    ],
+    "locusId": "L525-s52a45b0",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L525-s52a45b0-w2",
+        "variantId": "v-L525-s52a45b0-w2",
+        "sourceName": "جداول فرش القراءات العشر (سور ٢٥–٥٦)",
+        "sourceType": "other",
+        "sourceReference": "جداول الآيات المسلَّمة: فرش الكلمات والأصول المطردة والشواهد",
+        "verificationNotes": "بيانات مسلَّمة نصًّا آيةً آية (ليست استخراجًا بصريًّا). لم تُراجع بعدُ على الأصل الورقي."
+      },
+      {
+        "id": "s-DURI-052-45-7-r2403",
+        "variantId": "v-L525-s52a45b0-w2",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2403; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "يُـصعقون → يَصـعقون | فتح الدوري الياء"
+      }
+    ],
+    "description": "",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P525-5-R03277-32-2-3",
+    "surah": 52,
+    "ayah": 32,
+    "startToken": 2,
+    "endToken": 2,
+    "operation": "REPLACE",
+    "hafsText": "تَأْمُرُهُمْ",
+    "variantText": "تَأْمُرُهُمْ",
+    "differenceType": "HARAKAH",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "DOCX-P525-5-R03277-32-2",
+    "locusType": "performance_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P525-5-R03277-32-2-3",
+        "variantId": "v-DOCX-P525-5-R03277-32-2-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P525-R03277",
+        "sourceText": "بإسكان الراء ﴿تَأْمُرْهُمْ﴾ لأبي عمرو بخلف عن الدوري (مع إبدال الهمزة للسوسي).",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بإسكان الراء ﴿تَأْمُرْهُمْ﴾ لأبي عمرو بخلف عن الدوري (مع إبدال الهمزة للسوسي).",
+    "wajhIndex": 3,
+    "evidence": [],
+    "performanceNote": "إسكان الراء لأبي عمرو بخلف عن الدوري"
+  },
+  {
+    "id": "v-DOCX-P525-5-R03281-37-7-2",
+    "surah": 52,
+    "ayah": 37,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُصَۣيْطِرُونَ",
+    "variantText": "ٱلْمُسَيْطِرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R02",
+      "Q03-R02",
+      "Q04-R01",
+      "Q05-R02"
+    ],
+    "locusId": "DOCX-P525-5-R03281-37-7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P525-5-R03281-37-7-2",
+        "variantId": "v-DOCX-P525-5-R03281-37-7-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P525-R03281",
+        "sourceText": "بالسين الخالصة ﴿الْمُسَيْطِرُونَ﴾: قنبل، وهشام، وحفص (في وجهه الثاني).",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      },
+      {
+        "id": "s-SUSI-052-37-7-4124",
+        "variantId": "v-DOCX-P525-5-R03281-37-7-2",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4124; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "الْمُصَيْطِرُونَ → الْمُسَيْطِرُونَ | بالسين الخالصة"
+      }
+    ],
+    "description": "بالسين الخالصة ﴿الْمُسَيْطِرُونَ﴾",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P525-5-R03282-37-7-3",
+    "surah": 52,
+    "ayah": 37,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "ٱلْمُصَۣيْطِرُونَ",
+    "variantText": "ٱلْمُصَيْطِرُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q06-R01",
+      "Q06-R02"
+    ],
+    "locusId": "DOCX-P525-5-R03282-37-7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P525-5-R03282-37-7-3",
+        "variantId": "v-DOCX-P525-5-R03282-37-7-3",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P525-R03282",
+        "sourceText": "بإشمام الصاد زياً: حمزة (وهو الوجه الثاني لخلاد).",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بإشمام الصاد زياً",
+    "wajhIndex": 3,
+    "evidence": [],
+    "performanceNote": "إشمام الصاد زايًا"
+  },
+  {
+    "id": "v-DOCX-P525-5-R03283-45-3-2",
+    "surah": 52,
+    "ayah": 45,
+    "startToken": 3,
+    "endToken": 3,
+    "operation": "REPLACE",
+    "hafsText": "يُلَـٰقُوا۟",
+    "variantText": "يَلْقَوْا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q08-R01",
+      "Q08-R02"
+    ],
+    "locusId": "DOCX-P525-5-R03283-45-3",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P525-5-R03283-45-3-2",
+        "variantId": "v-DOCX-P525-5-R03283-45-3-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P525-R03283",
+        "sourceText": "﴿يُلَـٰقُواْ﴾: بألف بعد اللام ﴿يُلَاقُوا﴾ لجميع القراء عدا أبا جعفر؛ بحذف الألف وفتح الياء واللام ﴿يَلْقَوْا﴾ لأبي جعفر.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بألف بعد اللام ﴿يُلَاقُوا﴾ لجميع القراء عدا أبا جعفر؛ بحذف الألف وفتح الياء واللام ﴿يَلْقَوْا﴾ لأبي جعفر.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-DOCX-P525-5-R03284-45-7-2",
+    "surah": 52,
+    "ayah": 45,
+    "startToken": 7,
+    "endToken": 7,
+    "operation": "REPLACE",
+    "hafsText": "يُصْعَقُونَ",
+    "variantText": "يَصْعَقُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-22T12:00:00.000Z",
+    "updatedAt": "2026-09-22T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02",
+      "Q05-R01",
+      "Q05-R02"
+    ],
+    "locusId": "DOCX-P525-5-R03284-45-7",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DOCX-P525-5-R03284-45-7-2",
+        "variantId": "v-DOCX-P525-5-R03284-45-7-2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P525-R03284",
+        "sourceText": "﴿يُصْعَقُونَ﴾: بضم الياء ﴿يُصْعَقُونَ﴾ لابن عامر وعاصم؛ بفتح الياء ﴿يَصْعَقُونَ﴾ للباقين.",
+        "verificationNotes": "إسناد صريح من سجل المصدر، وربط بموضع المصحف الفعلي عبر page-words."
+      }
+    ],
+    "description": "بضم الياء ﴿يُصْعَقُونَ﴾ لابن عامر وعاصم؛ بفتح الياء ﴿يَصْعَقُونَ﴾ للباقين.",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-052-33-5-4123-performance",
+    "surah": 52,
+    "ayah": 33,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "لَّا يُؤْمِنُونَ",
+    "variantText": "لَّا يُؤْمِنُونَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-052-33-5-4123",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-052-33-5-4123",
+        "variantId": "v-SUSI-052-33-5-4123-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4123; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "لَّا يُؤْمِنُونَ → لَّا يُومِنُونَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "page": 495,
+  "status": "PASS",
+  "source": "fixture",
+  "records": 16,
+  "variants": 10,
+  "rulings": 6,
+  "supported": 16,
+  "unsupported": 0,
+  "unknownRules": [],
+  "unknownRuleLabels": [],
+  "missingWordLinks": [],
+  "unknownReadings": [],
+  "unknownAuthorities": [],
+  "emptyActions": [],
+  "attributionExpansionFailures": [],
+  "actionDetailDifferences": [],
+  "contextualRules": [
+    "r-p495-HAMZATAN_KALIMATAYN-السماء_الاه-3",
+    "r-p495-IKHFA-rule-43-87-3"
+  ]
+}

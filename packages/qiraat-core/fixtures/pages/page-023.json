@@ -1,0 +1,88 @@
+[
+  {
+    "id": "v-L023-موليها-1-w2",
+    "surah": 2,
+    "ayah": 148,
+    "startToken": 4,
+    "endToken": 4,
+    "operation": "REPLACE",
+    "hafsText": "مُوَلِّيهَا ۖ",
+    "variantText": "مُوَلَّىٰهَا",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q04-R01",
+      "Q04-R02"
+    ],
+    "locusId": "L023-موليها-1",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-L023-موليها-1-w2",
+        "variantId": "v-L023-موليها-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 28,
+        "sourceReference": "صفحة المصحف 23 · صفحة المصدر 28",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَلَامُ مُوَلِّيهَا عَلَى الْفَتْحِ كُمِّلَا"
+      }
+    ],
+    "description": "بفتح اللام مشددة وألف مقصورة",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَلَامُ مُوَلِّيهَا عَلَى الْفَتْحِ كُمِّلَا"
+      }
+    ]
+  },
+  {
+    "id": "v-L023-عما_تعملون-1-w2",
+    "surah": 2,
+    "ayah": 149,
+    "startToken": 16,
+    "endToken": 17,
+    "operation": "REPLACE",
+    "hafsText": "عَمَّا تَعْمَلُونَ",
+    "variantText": "عَمَّا يَعْمَلُونَ",
+    "differenceType": "LETTER",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-17T12:00:00.000Z",
+    "updatedAt": "2026-09-17T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01",
+      "Q03-R02"
+    ],
+    "locusId": "L023-عما_تعملون-1",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-L023-عما_تعملون-1-w2",
+        "variantId": "v-L023-عما_تعملون-1-w2",
+        "sourceName": "مصحف القراءات العشر",
+        "sourceType": "pdf",
+        "pdfFilename": "مصحف القراءات العشر-1.pdf",
+        "pdfPage": 28,
+        "sourceReference": "صفحة المصحف 23 · صفحة المصدر 28",
+        "verificationNotes": "استُخرجت هذه البيانات بصريًا من صور «مصحف القراءات العشر» بدقة ١٥٠ نقطة/بوصة (طبقة النص مشوّشة الترتيب، استُعملت للمقابلة فقط). لم تُراجع بعدُ على الأصل الورقي.",
+        "sourceText": "SH: وَفِي يَعْمَلُونَ الْغَيْبُ حَلَّ — D: خِطَابَ يَقُولُو طِبْ وَقَبْلَ وَمِنْ حَلَا"
+      }
+    ],
+    "description": "بالياء",
+    "wajhIndex": 2,
+    "evidence": [
+      {
+        "source": "SH",
+        "text": "وَفِي يَعْمَلُونَ الْغَيْبُ حَلَّ"
+      },
+      {
+        "source": "D",
+        "text": "خِطَابَ يَقُولُو طِبْ وَقَبْلَ وَمِنْ حَلَا"
+      }
+    ]
+  }
+]

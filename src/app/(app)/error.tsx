@@ -20,7 +20,7 @@ export default function AppError({
         {error.message || 'لم نستطع إكمال طلبك. حاول مرة أخرى أو عُد إلى الرئيسية.'}
       </p>
       {error.digest && (
-        <p className="text-[10px] font-mono text-[var(--color-ink-muted)] mt-3" dir="ltr">
+        <p className="text-[11px] font-mono text-[var(--color-ink-muted)] mt-3" dir="ltr">
           {error.digest}
         </p>
       )}

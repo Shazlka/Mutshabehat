@@ -1,0 +1,229 @@
+[
+  {
+    "id": "v-D508-وكاين-w2",
+    "surah": 47,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَكَأَيِّن",
+    "variantText": "وَكَائِن",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D508-وكاين",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D508-وكاين-w2",
+        "variantId": "v-D508-وكاين-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03114",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿وَكَأَيِّن﴾: بالهمز والتنوين للجمهور؛ بالمد والهمز لابن كثير ﴿وَكَائِن﴾؛ بالتسهيل لأبي جعفر."
+      }
+    ],
+    "description": "بالمد والهمز",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D508-ءاسن-w2",
+    "surah": 47,
+    "ayah": 15,
+    "startToken": 11,
+    "endToken": 11,
+    "operation": "REPLACE",
+    "hafsText": "ءَاسِنٍۢ",
+    "variantText": "أَسِنٍ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01",
+      "Q02-R02"
+    ],
+    "locusId": "D508-ءاسن",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D508-ءاسن-w2",
+        "variantId": "v-D508-ءاسن-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03115",
+        "verificationNotes": "إسناد صريح من السطر المصدر، ورُبط الوجه برمز الكلمة الحقيقي في صفحة المصحف.",
+        "sourceText": "﴿ءَاسِنٍ﴾: بمد الهمزة ﴿ءَاسِنٍ﴾ للجمهور؛ بقصر الهمزة ﴿أَسِنٍ﴾ لابن كثير."
+      }
+    ],
+    "description": "بقصر الهمزة",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-D508-ءانفا-w2",
+    "surah": 47,
+    "ayah": 16,
+    "startToken": 16,
+    "endToken": 16,
+    "operation": "REPLACE",
+    "hafsText": "ءَانِفًا ۚ",
+    "variantText": "أَنِفًا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-20T12:00:00.000Z",
+    "updatedAt": "2026-09-20T12:00:00.000Z",
+    "readingIds": [
+      "Q02-R01"
+    ],
+    "locusId": "D508-ءانفا",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-D508-ءانفا-w2",
+        "variantId": "v-D508-ءانفا-w2",
+        "sourceName": "استخراج القراءات العشر صفحةً صفحة (٢٢٥–٥٨٤)",
+        "sourceType": "other",
+        "sourceReference": "qiraat_records.jsonl، DOCX-P508-R03116",
+        "verificationNotes": "إسناد صريح من المصدر، وربط بالرمز الحقيقي للكلمة؛ راجع جهاز القراءات المستقل: https://quranpedia.net/qiraat/muhammad/16",
+        "sourceText": "﴿ءَانِفًا﴾: بمد الهمزة للجمهور؛ وبقصر الهمزة ﴿أَنِفًا﴾ للبزي بخلف عنه (والمعتمد له المد)."
+      }
+    ],
+    "description": "بقصر الهمزة؛ للبزي بخلف عنه",
+    "wajhIndex": 2,
+    "evidence": []
+  },
+  {
+    "id": "v-SUSI-047-18-5-4050-performance",
+    "surah": 47,
+    "ayah": 18,
+    "startToken": 5,
+    "endToken": 6,
+    "operation": "REPLACE",
+    "hafsText": "أَن تَأْتِيَهُم",
+    "variantText": "أَن تَأْتِيَهُم",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-047-18-5-4050",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة ألفاً",
+    "sources": [
+      {
+        "id": "s-SUSI-047-18-5-4050",
+        "variantId": "v-SUSI-047-18-5-4050-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4050; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "أَن تَأْتِيَهُم → أَن تَاتِيَهُم | إبدال الهمزة ألفاً"
+      }
+    ],
+    "description": "إبدال الهمزة ألفاً"
+  },
+  {
+    "id": "v-SUSI-047-18-9-4051",
+    "surah": 47,
+    "ayah": 18,
+    "startToken": 9,
+    "endToken": 10,
+    "operation": "REPLACE",
+    "hafsText": "جَآءَ أَشْرَاطُهَا ۚ",
+    "variantText": "جَا أَشْرَاطُهَا",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-047-18-9-4051",
+    "locusType": "multi_word_variant",
+    "sources": [
+      {
+        "id": "s-SUSI-047-18-9-4051",
+        "variantId": "v-SUSI-047-18-9-4051",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4051; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "جَاءَ أَشْرَاطُهَا → جَا أَشْرَاطُهَا | إسقاط الهمزة الأولى مع القصر والتوسط في الألف"
+      }
+    ],
+    "description": "إسقاط الهمزة الأولى مع القصر والتوسط في الألف"
+  },
+  {
+    "id": "v-SUSI-047-19-9-4054-performance",
+    "surah": 47,
+    "ayah": 19,
+    "startToken": 9,
+    "endToken": 9,
+    "operation": "REPLACE",
+    "hafsText": "وَلِلْمُؤْمِنِينَ",
+    "variantText": "وَلِلْمُؤْمِنِينَ",
+    "differenceType": "HAMZ",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R02"
+    ],
+    "locusId": "SUSI-047-19-9-4054",
+    "locusType": "performance_variant",
+    "performanceNote": "إبدال الهمزة واواً",
+    "sources": [
+      {
+        "id": "s-SUSI-047-19-9-4054",
+        "variantId": "v-SUSI-047-19-9-4054-performance",
+        "sourceName": "farsh_susi_complete_quran.json",
+        "sourceType": "other",
+        "sourceReference": "user-supplied JSON row 4054; SHA-256 f9f223e4f5b1ac52f22c612def7f45c31f43131e1347470638cd920fc880c96e",
+        "verificationNotes": "Mapped additively to the canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وَلِلْمُؤْمِنِينَ → وَلِلْمُومِنِينَ | إبدال الهمزة واواً"
+      }
+    ],
+    "description": "إبدال الهمزة واواً"
+  },
+  {
+    "id": "v-DURI-047-13-1-r2339",
+    "surah": 47,
+    "ayah": 13,
+    "startToken": 1,
+    "endToken": 1,
+    "operation": "REPLACE",
+    "hafsText": "وَكَأَيِّن",
+    "variantText": "وكـأيٍّ",
+    "differenceType": "WAQF",
+    "verificationStatus": "REVIEWED",
+    "createdAt": "2026-09-23T12:00:00.000Z",
+    "updatedAt": "2026-09-23T12:00:00.000Z",
+    "readingIds": [
+      "Q03-R01"
+    ],
+    "locusId": "DURI-047-13-1-r2339",
+    "locusType": "word_variant",
+    "sources": [
+      {
+        "id": "s-DURI-047-13-1-r2339",
+        "variantId": "v-DURI-047-13-1-r2339",
+        "sourceName": "رواية_الدوري_عن_أبي_عمرو_مستخرجة (1).gsheet",
+        "sourceType": "other",
+        "sourceReference": "https://docs.google.com/spreadsheets/d/1yqf72YZqqUJBHs16cgp74dyGOkdbabzGgtsS-Vcx7tQ/edit · exported TSV row 2339; SHA-256 f4ab71a4c53b6a5399d19c59f5d72f98784c6af464feab6c4b352effbf39f4d3",
+        "verificationNotes": "Mapped additively to canonical Mushaf-1441 token fixtures; source text retained verbatim.",
+        "sourceText": "وكـأيّن → وكـأيٍّ | وقف الدوري عليها بالياء"
+      }
+    ],
+    "description": "وقف الدوري عليها بالياء"
+  }
+]
