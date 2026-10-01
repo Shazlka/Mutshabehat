@@ -12,9 +12,9 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts project data-test core-test perf build test test-ipad run open clean check-isolation
+.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline project data-test core-test perf build test test-ipad run open clean check-isolation
 
-all: data fonts project
+all: data fonts qiraat project
 
 data: $(GEN)/mushaf.sqlite
 
@@ -25,6 +25,17 @@ $(GEN)/mushaf.sqlite: scripts/build_mushaf_db.py $(FIXTURES)/page-metadata.json 
 fonts:
 	scripts/fetch_qcf_fonts.sh $(GEN)/Fonts
 
+# Qiraat data: a snapshot of the live web app (its database), the only source. Skips pages
+# already present; qiraat-refresh re-downloads every page; qiraat-offline uses the repo fixtures.
+qiraat:
+	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat
+
+qiraat-refresh:
+	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --refresh
+
+qiraat-offline:
+	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --source fixtures --refresh
+
 # Always regenerate: XcodeGen lists source files explicitly, so a new .swift file needs a new
 # project even when project.yml is unchanged. Generation takes under a second.
 project:
@@ -33,11 +44,12 @@ project:
 data-test:
 	python3 scripts/test_build_mushaf_db.py -v
 	python3 scripts/test_fetch_qcf_fonts.py -v
+	python3 scripts/test_fetch_qiraat.py -v
 
-core-test: data fonts
+core-test: data fonts qiraat
 	swift test --package-path MushafCore
 
-perf: data fonts
+perf: data fonts qiraat
 	swift test -c release --package-path MushafCore --filter PerformanceTests
 
 build: all

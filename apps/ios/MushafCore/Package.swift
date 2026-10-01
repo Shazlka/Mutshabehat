@@ -11,7 +11,8 @@ let package = Package(
         .target(name: "MushafCore", linkerSettings: [.linkedLibrary("sqlite3")]),
         .testTarget(
             name: "MushafCoreTests",
-            dependencies: ["MushafCore"]
+            dependencies: ["MushafCore"],
+            resources: [.copy("Fixtures")]
         ),
     ]
 )

@@ -1,0 +1,229 @@
+{
+ "schemaVersion": 1,
+ "source": "test",
+ "sourceUrl": null,
+ "fetchedAt": "2026-10-01T00:00:00Z",
+ "pageCount": 604,
+ "counts": {
+  "variants": 0,
+  "rulings": 0,
+  "rules": 0
+ },
+ "readers": [
+  {
+   "id": "Q01",
+   "nameAr": "نافع المدني",
+   "nameArShort": "نافع",
+   "color": "#2563EB",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q02",
+   "nameAr": "ابن كثير المكي",
+   "nameArShort": "ابن كثير",
+   "color": "#16A34A",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q03",
+   "nameAr": "أبو عمرو البصري",
+   "nameArShort": "أبو عمرو",
+   "color": "#0891B2",
+   "sortOrder": 3
+  },
+  {
+   "id": "Q04",
+   "nameAr": "ابن عامر الشامي",
+   "nameArShort": "ابن عامر",
+   "color": "#7C3AED",
+   "sortOrder": 4
+  },
+  {
+   "id": "Q05",
+   "nameAr": "عاصم الكوفي",
+   "nameArShort": "عاصم",
+   "color": "#EA580C",
+   "sortOrder": 5
+  },
+  {
+   "id": "Q06",
+   "nameAr": "حمزة الكوفي",
+   "nameArShort": "حمزة",
+   "color": "#DC2626",
+   "sortOrder": 6
+  },
+  {
+   "id": "Q07",
+   "nameAr": "الكسائي الكوفي",
+   "nameArShort": "الكسائي",
+   "color": "#DB2777",
+   "sortOrder": 7
+  },
+  {
+   "id": "Q08",
+   "nameAr": "أبو جعفر المدني",
+   "nameArShort": "أبو جعفر",
+   "color": "#CA8A04",
+   "sortOrder": 8
+  },
+  {
+   "id": "Q09",
+   "nameAr": "يعقوب الحضرمي",
+   "nameArShort": "يعقوب",
+   "color": "#B45309",
+   "sortOrder": 9
+  },
+  {
+   "id": "Q10",
+   "nameAr": "خلف العاشر",
+   "nameArShort": "خلف العاشر",
+   "color": "#475569",
+   "sortOrder": 10
+  }
+ ],
+ "narrators": [
+  {
+   "id": "Q01-R01",
+   "readerId": "Q01",
+   "nameAr": "قالون",
+   "color": "#60A5FA",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q01-R02",
+   "readerId": "Q01",
+   "nameAr": "ورش",
+   "color": "#1D4ED8",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q02-R01",
+   "readerId": "Q02",
+   "nameAr": "البزي",
+   "color": "#4ADE80",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q02-R02",
+   "readerId": "Q02",
+   "nameAr": "قنبل",
+   "color": "#15803D",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q03-R01",
+   "readerId": "Q03",
+   "nameAr": "الدوري عن أبي عمرو",
+   "color": "#67E8F9",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q03-R02",
+   "readerId": "Q03",
+   "nameAr": "السوسي",
+   "color": "#0E7490",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q04-R01",
+   "readerId": "Q04",
+   "nameAr": "هشام",
+   "color": "#A78BFA",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q04-R02",
+   "readerId": "Q04",
+   "nameAr": "ابن ذكوان",
+   "color": "#6D28D9",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q05-R01",
+   "readerId": "Q05",
+   "nameAr": "شعبة",
+   "color": "#FB923C",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q05-R02",
+   "readerId": "Q05",
+   "nameAr": "حفص",
+   "color": "#C2410C",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q06-R01",
+   "readerId": "Q06",
+   "nameAr": "خلف",
+   "color": "#F87171",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q06-R02",
+   "readerId": "Q06",
+   "nameAr": "خلاد",
+   "color": "#B91C1C",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q07-R01",
+   "readerId": "Q07",
+   "nameAr": "أبو الحارث",
+   "color": "#F472B6",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q07-R02",
+   "readerId": "Q07",
+   "nameAr": "الدوري عن الكسائي",
+   "color": "#BE185D",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q08-R01",
+   "readerId": "Q08",
+   "nameAr": "ابن وردان",
+   "color": "#FACC15",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q08-R02",
+   "readerId": "Q08",
+   "nameAr": "ابن جماز",
+   "color": "#A16207",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q09-R01",
+   "readerId": "Q09",
+   "nameAr": "رويس",
+   "color": "#F59E0B",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q09-R02",
+   "readerId": "Q09",
+   "nameAr": "روح",
+   "color": "#92400E",
+   "sortOrder": 2
+  },
+  {
+   "id": "Q10-R01",
+   "readerId": "Q10",
+   "nameAr": "إسحاق",
+   "color": "#94A3B8",
+   "sortOrder": 1
+  },
+  {
+   "id": "Q10-R02",
+   "readerId": "Q10",
+   "nameAr": "إدريس",
+   "color": "#334155",
+   "sortOrder": 2
+  }
+ ],
+ "multiReaderColor": "#3F6212",
+ "performanceColor": "#4F46E5",
+ "unresolvedColor": "#8a8a8a"
+}
