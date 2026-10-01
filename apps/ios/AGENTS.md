@@ -74,7 +74,7 @@ The repository is public: never commit keys, data or fonts.
 
 ## 6. Running on the user's iPhone
 
-The user adds Apple ID `amr.eshazly@icloud.com` in Xcode → Settings → Accounts (an agent never does),
+The user adds Apple ID `Amr.eshazly@gmail.com` in Xcode → Settings → Accounts (an agent never does),
 connects the iPhone, trusts the Mac, and turns on Settings → Privacy & Security → Developer Mode.
 `make device` then finds the personal team, writes it to the gitignored `Signing.xcconfig`, builds with
 automatic signing and installs. A free personal team's install expires after 7 days; re-run `make device`.
