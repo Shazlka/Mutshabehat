@@ -9,7 +9,7 @@ public enum MushafDatabaseError: Error, Equatable {
 }
 
 /// Read-only access to the bundled mushaf.sqlite (built by scripts/build_mushaf_db.py).
-/// Not thread-safe by itself; `MushafRepository` serialises access.
+/// Not thread-safe; callers must serialise access (the app uses the main actor).
 public final class MushafDatabase {
     public static let supportedSchemaVersion = 1
     private var handle: OpaquePointer?
@@ -19,6 +19,7 @@ public final class MushafDatabase {
         guard sqlite3_open_v2(url.path, &handle, flags, nil) == SQLITE_OK else {
             let message = handle.map { String(cString: sqlite3_errmsg($0)) } ?? "no handle"
             sqlite3_close(handle)
+            handle = nil
             throw MushafDatabaseError.openFailed(message)
         }
         let version = Int(try scalar("SELECT value FROM meta WHERE key = 'schema_version'") ?? "0") ?? 0
@@ -35,13 +36,22 @@ public final class MushafDatabase {
 
     public func page(_ number: Int) throws -> MushafPage {
         guard (1...mushafPageCount).contains(number) else { throw MushafDatabaseError.pageOutOfRange(number) }
-        let metadata = try rows("""
+        let metadataRows = try rows("""
             SELECT first_ayah_key, last_ayah_key, surah_names, juz, hizb, rub_in_juz FROM pages WHERE number = ?
             """, bind: [number]) { s in
-            PageMetadata(page: number, firstAyah: AyahKey(s.text(0))!, lastAyah: AyahKey(s.text(1))!,
+            guard let firstAyah = AyahKey(s.text(0)) else {
+                throw MushafDatabaseError.queryFailed("Invalid first ayah key '\(s.text(0))' on page \(number)")
+            }
+            guard let lastAyah = AyahKey(s.text(1)) else {
+                throw MushafDatabaseError.queryFailed("Invalid last ayah key '\(s.text(1))' on page \(number)")
+            }
+            return PageMetadata(page: number, firstAyah: firstAyah, lastAyah: lastAyah,
                          surahNames: s.text(2).split(separator: "|").map(String.init),
                          juz: s.int(3), hizb: s.int(4), rubInJuz: s.int(5))
-        }.first!
+        }
+        guard let metadata = metadataRows.first else {
+            throw MushafDatabaseError.queryFailed("Missing metadata for page \(number)")
+        }
         var decorations: [Int: LineDecoration] = [:]
         for (line, deco) in try rows("SELECT line, surah_header, basmala FROM decorations WHERE page = ?", bind: [number], { s in
             (s.int(0), LineDecoration(surahHeader: s.optionalInt(1), basmala: s.int(2) == 1))
