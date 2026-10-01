@@ -1,7 +1,7 @@
 import Foundation
 @testable import MushafCore
 
-/// apps/ios/Generated — built by scripts/ios/build_mushaf_db.py and scripts/ios/fetch_qcf_fonts.sh.
+/// apps/ios/Generated — built by scripts/build_mushaf_db.py and scripts/fetch_qcf_fonts.sh.
 let generatedDirectory = URL(fileURLWithPath: #filePath)
     .deletingLastPathComponent()  // MushafCoreTests
     .deletingLastPathComponent()  // Tests

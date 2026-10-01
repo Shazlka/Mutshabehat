@@ -8,7 +8,7 @@ public enum MushafDatabaseError: Error, Equatable {
     case unsupportedSchema(Int)
 }
 
-/// Read-only access to the bundled mushaf.sqlite (built by scripts/ios/build_mushaf_db.py).
+/// Read-only access to the bundled mushaf.sqlite (built by scripts/build_mushaf_db.py).
 /// Not thread-safe by itself; `MushafRepository` serialises access.
 public final class MushafDatabase {
     public static let supportedSchemaVersion = 1

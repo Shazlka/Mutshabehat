@@ -3,7 +3,7 @@
 # same CDN the web reader loads them from at runtime. Output is gitignored (public repo; the fonts
 # are the King Fahd Complex's QCF glyph fonts, not ours to redistribute in source control).
 #
-# Usage: scripts/ios/fetch_qcf_fonts.sh <output_dir>
+# Usage: apps/ios/scripts/fetch_qcf_fonts.sh <output_dir>
 # Idempotent: complete fonts already present are skipped; a truncated one is fetched again; a
 # failed or incomplete download fails the run and leaves nothing behind.
 set -euo pipefail

@@ -1,4 +1,4 @@
-"""Tests for build_mushaf_db.py. Stdlib only: python3 scripts/ios/test_build_mushaf_db.py -v"""
+"""Tests for build_mushaf_db.py. Stdlib only: python3 apps/ios/scripts/test_build_mushaf_db.py -v"""
 import os
 import sqlite3
 import sys
@@ -8,7 +8,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_mushaf_db  # noqa: E402
 
-REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 
 
 class BuildMushafDbTest(unittest.TestCase):

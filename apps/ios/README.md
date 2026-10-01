@@ -1,4 +1,7 @@
-# Qiraat — iOS app for the Mushaf 1441 reader (متشابهات)
+# Qiraat — iOS app for the Mushaf 1441 reader and القراءات العشر
+
+> Lives on branch `ios/main` in its own folder (`~/Projects/qiraat-ios`), never merged into the web
+> app's `main`. **Rules for agents and people: [`AGENTS.md`](AGENTS.md). History: [`CHANGELOG.md`](CHANGELOG.md).**
 
 Native SwiftUI + UIKit app for iPhone and iPad. Phase 1 is an **offline** Mushaf 1441 reader:
 all 604 pages drawn with the exact QCF V2 page fonts, iBooks-style page curl (right-to-left),
@@ -25,8 +28,8 @@ make open                      # open the generated project in Xcode
 | `Sources/` | the app (SwiftUI shell, UIKit page curl, CoreText page view) | yes |
 | `UITests/` | XCUITest end-to-end checks | yes |
 | `MushafCore/` | Swift package: data, fonts, page layout, navigation — no UIKit, unit-tested with `swift test` | yes |
-| `Generated/mushaf.sqlite` | built from `packages/quran-data/mushaf1441/fixtures` by `scripts/ios/build_mushaf_db.py` | **no** |
-| `Generated/Fonts/p1…p604.woff2` | QCF V2 fonts, fetched by `scripts/ios/fetch_qcf_fonts.sh` | **no** (licence) |
+| `Generated/mushaf.sqlite` | built from `packages/quran-data/mushaf1441/fixtures` by `scripts/build_mushaf_db.py` | **no** |
+| `Generated/Fonts/p1…p604.woff2` | QCF V2 fonts, fetched by `scripts/fetch_qcf_fonts.sh` | **no** (licence) |
 | `Config.xcconfig` | local Supabase keys (Phase 2) | **no** |
 
 ## Rules that carry over from the web reader

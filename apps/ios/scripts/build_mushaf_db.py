@@ -5,7 +5,7 @@ Source of truth: packages/quran-data/mushaf1441/fixtures (the same fixtures the 
 serves). Output: one SQLite file with pages, lines, words, surahs and the surah-header /
 basmala decorations precomputed exactly as pageDecorations.ts computes them at request time.
 
-Usage: python3 scripts/ios/build_mushaf_db.py <repo_root> <output.sqlite>
+Usage: python3 apps/ios/scripts/build_mushaf_db.py <repo_root> <output.sqlite>
 Idempotent: the output is deleted and rebuilt on every run.
 """
 import json

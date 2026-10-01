@@ -1,5 +1,5 @@
 """Tests for fetch_qcf_fonts.sh against a local file:// source of synthetic woff2 files.
-Stdlib only, no network: python3 scripts/ios/test_fetch_qcf_fonts.py -v"""
+Stdlib only, no network: python3 apps/ios/scripts/test_fetch_qcf_fonts.py -v"""
 import os
 import shutil
 import struct
