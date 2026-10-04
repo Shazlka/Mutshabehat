@@ -6,6 +6,7 @@
 // by scripts/qiraat/build_shamil_reference.py. Coverage comes from index.json (not "1..114"): a
 // dynamic import of a missing file would fail at runtime.
 
+import { nquranGroupsForDifference, type NquranDifference } from './nquranReference'
 import { normalizeArabic } from '@/lib/arabic'
 import { CANONICAL_READERS } from '../_components/ReaderNarratorSelector'
 import { describeNarratorGroupText } from '../_components/narratorDisplay'
@@ -30,8 +31,10 @@ export interface ShamilEntry {
   page: number
   ayahs: number[]
   words: string[]
-  type: 'usul' | 'farsh'
-  category: string
+  type?: 'usul' | 'farsh'
+  category?: string
+  sourceDifference?: NquranDifference
+  sourceUrl?: string
   scope: 'this_word' | 'all_quran'
   sourceText: string
   flags: string[]
@@ -245,6 +248,7 @@ const NARRATOR_NAME_BY_ID = new Map(CANONICAL_READERS.flatMap((r) => r.narrators
 
 /** One group per wajh, ready for the shared reference panel. */
 export function shamilGroupsForEntry(entry: ShamilEntry): ReferenceGroup[] {
+  if (entry.sourceDifference) return nquranGroupsForDifference(entry.sourceDifference)
   return entry.wajhs.map((w) => {
     const narratorIds = w.narrators.map((id) => SHAMIL_NARRATOR_TO_ID[id]).filter((id): id is string => Boolean(id))
     return {

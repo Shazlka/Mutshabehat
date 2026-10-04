@@ -340,7 +340,7 @@ export default function ReferencePanel({
               )}
             </div>
             <details className="mt-1 text-[11px] text-amber-900">
-              <summary className="cursor-pointer font-bold">نص الكتاب</summary>
+              <summary className="cursor-pointer font-bold">{entry.sourceDifference ? 'نص المصدر' : 'نص الكتاب'}</summary>
               <p className="mt-1 whitespace-pre-line leading-relaxed" dir="rtl">
                 {entry.sourceText}
               </p>

@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-04 — Replace الشامل Baqarah sample with the supplied full-surah JSON
+- Replaced only the review editor's الشامل Baqarah reference: 220 sample entries on pages 2–13 → 1,026 locations / 1,701 reader groups on pages 2–49, from the owner-supplied `الشامل database.json` (286 ayahs).
+- The importer supports the supplied ayah/differences format, preserving reader labels, reading prose and source URLs. The الشامل loader uses the existing reader-label resolver for these groups; no categories, reading-text fields or wasl/waqf conditions are inferred from prose. Legacy structured-format coverage remains in test fixtures only.
+- Exact comparison against the source confirms every location and group is preserved. nquran reference files and saved database readings are unchanged; no database migration.
+
+
 ## 2026-10-04 — Review editor: «الشامل» added as a second reference source (switch with nquran, same reconciliation and add flow)
 - **Owner request:** import the «الشامل في قراءات الأئمة العشر» database like nquran, choose between the two in the editor, see what is already recorded, and add from it into the editor and the qiraat database. Pilot with two sample files (Baqarah, Mushaf pages 2–13) before importing the whole Mushaf.
 - **Data:** `scripts/qiraat/build_shamil_reference.py FILE [FILE …]` merges الشامل JSON extracts by id (later file wins on a conflict, conflicting ids printed; overlapping page ranges are fine) and writes `review/_lib/reference/shamil/surah-NNN.json` plus `index.json`. It fails on an unknown narrator id, a record whose entry is missing, an entry with no records, or a record with no narrators. The two samples merge to **220 entries / 738 wajhs** (the p002–008 file is an exact subset of p002–013). **To add more pages: run the script with just the new files; it merges into the existing output (an input entry replaces the one with the same id), so earlier pages are kept; `--fresh` rebuilds from the inputs only and reports what it dropped. No code change.**

@@ -108,8 +108,52 @@ def build_index(out):
         surah = int(name[len('surah-'):-len('.json')])
         pages = [x['page'] for x in items]
         index[str(surah)] = {'pages': [min(pages), max(pages)], 'entries': len(items),
-                             'records': sum(len(x['wajhs']) for x in items)}
+                             'records': sum(len(x.get('sourceDifference', {}).get('groups', x['wajhs'])) for x in items)}
     return index
+
+
+def build_ayah_export(data, out, fresh):
+    # This format supplies prose and reader labels, not structured rulings. Preserve them exactly.
+    ayahs = data['ayahs']
+    if len(ayahs) != data['ayahCount']:
+        fail('ayahCount does not match ayahs')
+    by_surah = collections.defaultdict(list)
+    seen = set()
+    for a in ayahs:
+        key = (a['surahNumber'], a['ayah'])
+        if key in seen:
+            fail(f'duplicate ayah {key}')
+        seen.add(key)
+        by_surah[a['surahNumber']].append(a)
+    if sum(len(a['differences']) for a in ayahs) != data['differenceLocationCount']:
+        fail('differenceLocationCount mismatch')
+    if sum(len(d['groups']) for a in ayahs for d in a['differences']) != data['readingGroupCount']:
+        fail('readingGroupCount mismatch')
+    prepared = {}
+    for surah, rows in by_surah.items():
+        items = []
+        for a in sorted(rows, key=lambda a: a['ayah']):
+            for i, d in enumerate(a['differences'], 1):
+                if not d['location'] or not d['groups'] or any(not g['readers'] or not g['reading'] for g in d['groups']):
+                    fail(f'incomplete difference in {surah}:{a["ayah"]}')
+                items.append({'entryId': f's{surah}_a{a["ayah"]}_d{i}',
+                              'page': a['pageNumber'], 'ayahs': [a['ayah']],
+                              'words': [d['location']], 'scope': 'this_word',
+                              'sourceText': '\n'.join('، '.join(g['readers']) + ': ' + g['reading'] for g in d['groups']),
+                              'sourceUrl': a.get('sourceUrl'), 'flags': [], 'wajhs': [],
+                              'sourceDifference': d})
+        prepared[surah] = items
+    os.makedirs(out, exist_ok=True)
+    for surah, incoming in prepared.items():
+        current = load_existing(out, surah)
+        merged = {} if fresh else current
+        merged.update({e['entryId']: e for e in incoming})
+        items = sorted(merged.values(), key=lambda e: (e['page'], e['entryId']))
+        with open(os.path.join(out, f'surah-{surah:03d}.json'), 'w', encoding='utf-8') as fh:
+            json.dump(items, fh, ensure_ascii=False, separators=(',', ':'))
+        print(f'surah {surah}: {len(incoming)} differences; replaced {len(current)} existing entries' if fresh else f'surah {surah}: {len(items)} entries')
+    with open(os.path.join(out, 'index.json'), 'w', encoding='utf-8') as fh:
+        json.dump({'surahs': build_index(out)}, fh, ensure_ascii=False, indent=1, sort_keys=True)
 
 
 def main():
@@ -118,6 +162,14 @@ def main():
     ap.add_argument('--fresh', action='store_true', help='rebuild from the inputs only, dropping existing entries')
     ap.add_argument('files', nargs='+')
     args = ap.parse_args()
+
+    with open(args.files[0], encoding='utf-8') as fh:
+        first = json.load(fh)
+    if 'ayahs' in first:
+        if len(args.files) != 1:
+            fail('ayah exports must be imported one file at a time')
+        build_ayah_export(first, args.out, args.fresh)
+        return
 
     entries, records = merge(args.files)
     validate(entries, records)
@@ -144,7 +196,7 @@ def main():
         with open(os.path.join(args.out, f'surah-{surah:03d}.json'), 'w', encoding='utf-8') as fh:
             json.dump(items, fh, ensure_ascii=False, separators=(',', ':'))
         print(f"surah {surah}: {len(items)} entries ({len(incoming)} from the inputs), "
-              f"{sum(len(x['wajhs']) for x in items)} records")
+              f"{sum(len(x.get('sourceDifference', {}).get('groups', x['wajhs'])) for x in items)} records")
     index = build_index(args.out)
     with open(os.path.join(args.out, 'index.json'), 'w', encoding='utf-8') as fh:
         json.dump({'surahs': index}, fh, ensure_ascii=False, indent=1, sort_keys=True)

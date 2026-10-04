@@ -162,9 +162,9 @@ test('--fresh rebuilds from the inputs only and says what it dropped', () => {
   assert.match(r.stdout + r.stderr, /dropp\w+ 2/i)
 })
 
-test('committed surah-002.json has 220 entries / 738 wajhs and index lists pages [2,13]', () => {
+test('committed surah-002.json has 1026 differences / 1701 groups and index lists pages [2,49]', () => {
   const surah = readSurah(new URL('surah-002.json', COMMITTED).pathname)
-  assert.equal(surah.length, 220)
-  assert.equal(surah.reduce((n, e) => n + e.wajhs.length, 0), 738)
-  assert.deepEqual(readIndex(new URL('index.json', COMMITTED).pathname).surahs['2'], { pages: [2, 13], entries: 220, records: 738 })
+  assert.equal(surah.length, 1026)
+  assert.equal(surah.reduce((n, e) => n + (e.sourceDifference as { groups: unknown[] }).groups.length, 0), 1701)
+  assert.deepEqual(readIndex(new URL('index.json', COMMITTED).pathname).surahs['2'], { pages: [2, 49], entries: 1026, records: 1701 })
 })

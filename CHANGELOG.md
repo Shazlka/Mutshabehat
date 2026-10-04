@@ -1,3 +1,8 @@
+## 2026-10-04 — Replace الشامل Baqarah sample with the supplied full-surah JSON
+- Replaced only the review editor's الشامل Baqarah reference: 220 sample entries on pages 2–13 → 1,026 locations / 1,701 reader groups on pages 2–49, from the owner-supplied `الشامل database.json` (286 ayahs).
+- The importer supports the supplied ayah/differences format, preserving reader labels, reading prose and source URLs. The الشامل loader uses the existing reader-label resolver for these groups; no categories, reading-text fields or wasl/waqf conditions are inferred from prose. Legacy structured-format coverage remains in test fixtures only.
+- Exact comparison against the source confirms every location and group is preserved. nquran reference files and saved database readings are unchanged; no database migration.
+
 # Changelog
 
 All notable changes to **متشابهات V2 (Mutshabehat V2)** are recorded here, newest first.

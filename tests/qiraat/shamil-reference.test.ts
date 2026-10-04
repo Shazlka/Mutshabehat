@@ -15,7 +15,7 @@ import {
 } from '../../src/app/mushaf-1441/review/_lib/shamilReference'
 
 const SHAMIL_DIR = new URL('../../src/app/mushaf-1441/review/_lib/reference/shamil/', import.meta.url)
-const entries: ShamilEntry[] = JSON.parse(readFileSync(new URL('surah-002.json', SHAMIL_DIR), 'utf8'))
+const entries: ShamilEntry[] = JSON.parse(readFileSync(new URL('./_helpers/shamil-legacy.json', import.meta.url), 'utf8'))
 const byId = (id: string): ShamilEntry => entries.find((e) => e.entryId === id)!
 
 // Real Mushaf words of surah 2, by ayah (textUthmani), from the bundled page-word fixtures.
@@ -220,4 +220,19 @@ test('suggestShamilCategory over all 738 real wajhs only returns known codes; re
   }
   console.log(`category suggestions: ${mapped}/${usul} usul wajhs mapped, ${usul - mapped} left unsuggested`)
   assert.ok(mapped / usul >= 0.8, `only ${mapped}/${usul} mapped`)
+})
+
+
+test('replacement Baqarah data preserves prose groups without inventing structured rulings', () => {
+  const replacement: ShamilEntry[] = JSON.parse(readFileSync(new URL('surah-002.json', SHAMIL_DIR), 'utf8'))
+  assert.equal(replacement.length, 1026)
+  assert.equal(replacement.reduce((n, e) => n + shamilGroupsForEntry(e).length, 0), 1701)
+  assert.ok(replacement.every((e) => !e.entryId.startsWith('p') && e.sourceDifference && e.wajhs.length === 0))
+  const entry = replacement.find((e) => e.ayahs[0] === 2 && e.words[0] === 'فيه هدى')!
+  const groups = shamilGroupsForEntry(entry)
+  assert.deepEqual(groups.map((g) => g.readersLabel), ['ابن كثير', 'السوسي عن أبي عمرو', 'باقي الرواة'])
+  assert.deepEqual(groups.map((g) => g.narratorIds.length), [2, 1, 17])
+  assert.deepEqual(groups.map((g) => g.performanceText), entry.sourceDifference!.groups.map((g) => g.reading))
+  assert.ok(groups.every((g) => g.suggestion === undefined && g.condition === undefined))
+  assert.ok(replacement.some((e) => e.ayahs[0] === 286 && e.page === 49))
 })
