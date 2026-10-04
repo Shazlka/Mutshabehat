@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import type {
   BulkApplyResult,
   CreateEntryInput,
@@ -12,11 +12,11 @@ import type {
 import {
   getMushaf1441SurahOption,
 } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
-import ReaderNarratorSelector, { HAFS_ID } from './ReaderNarratorSelector'
+import ReaderNarratorSelector from './ReaderNarratorSelector'
 import UsulRuleGrid, { FALLBACK_USUL_CATEGORIES } from './UsulRuleGrid'
 import { CANONICAL_VARIANT_TYPES, normalizeVariantType } from './FarshFields'
 import { isHamzahCategory } from './HamzahDetailFields'
-import { isImalahCategory, nextWajhOrder } from './ImalahDetailFields'
+import { isImalahCategory } from './ImalahDetailFields'
 import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
 import { cn } from '@/lib/cn'
 import { normalizeArabic } from '@/lib/arabic'
@@ -24,29 +24,11 @@ import { describeNarratorGroup } from './narratorDisplay'
 import { NarratorBadges } from './NarratorBadges'
 import SuggestionsPanel from './SuggestionsPanel'
 import { labelForRow } from './facesSummary'
-import {
-  findNquranEntryForAyah,
-  hasNquranReferenceForSurah,
-  loadNquranReference,
-  proposeNquranDecision,
-  rankDifferencesForWord,
-  resolveDifferenceGroups,
-  type NquranAyahEntry,
-  type NquranDecisionStatus,
-  type ResolvedNquranGroup,
-} from '../_lib/nquranReference'
+import ReferencePanel from './ReferencePanel'
+import { planApplyReferenceGroup, type ReferenceSourceId } from '../_lib/referenceApply'
+import type { ReferenceGroup, ReferenceSuggestion } from '../_lib/referenceGroup'
 
 import { useReviewEditorDraft } from './useReviewEditorDraft'
-
-// Labels/colors for the nquran.com reconciliation badges -- see proposeNquranDecision() for what
-// each status means. Kept as a plain lookup (not JSX) so it can sit at module scope.
-const NQURAN_DECISION_BADGES: Record<NquranDecisionStatus, { label: string; className: string }> = {
-  matched: { label: '✓ مطابق لوجه معتمد', className: 'bg-green-100 text-green-800' },
-  recorded_unreviewed: { label: '🔎 مسجَّل، بانتظار الاعتماد', className: 'bg-blue-100 text-blue-800' },
-  partial: { label: '⚠ تعارض جزئي في القراء', className: 'bg-orange-100 text-orange-800' },
-  missing: { label: '➕ غير مسجَّل — يُقترح إضافته', className: 'bg-red-100 text-red-800' },
-  unresolved: { label: '❔ تعذّر التعرّف على القارئ', className: 'bg-gray-100 text-gray-700' },
-}
 
 export type WordMeta = {
   surah: number
@@ -206,61 +188,52 @@ export default function ReviewEditorPane({
 
   const [usulSearchQuery, setUsulSearchQuery] = useState('')
 
-  // External reference (nquran.com), all 114 surahs -- display only, never written into any saved
-  // field. Lazily loaded one surah at a time so no reference JSON is in the editor's initial bundle.
-  const [nquranLoaded, setNquranLoaded] = useState<{ surah: number; entries: NquranAyahEntry[] } | null>(null)
-  const [nquranPanelOpen, setNquranPanelOpen] = useState(true)
-  const nquranSurah = selectedWordMeta?.surah ?? null
-  useEffect(() => {
-    if (nquranSurah === null || !hasNquranReferenceForSurah(nquranSurah)) return
-    if (nquranLoaded?.surah === nquranSurah) return
-    let cancelled = false
-    loadNquranReference(nquranSurah).then((entries) => {
-      if (!cancelled) setNquranLoaded({ surah: nquranSurah, entries })
+  // External references (nquran.com, الشامل) live in <ReferencePanel>; ➕ on a group fills THIS draft
+  // (never creates or saves anything -- the reviewer presses «حفظ»). The rules for what is filled
+  // and what is left alone are in planApplyReferenceGroup().
+  const [referenceAppliedKey, setReferenceAppliedKey] = useState<string | null>(null)
+
+  function handleApplyReferenceGroup(group: ReferenceGroup, source: ReferenceSourceId, appliedKey: string) {
+    if (group.narratorIds.length === 0) return
+    const plan = planApplyReferenceGroup(source, group, {
+      narrators,
+      readingText,
+      kind,
+      categoryCode,
+      isFreshDraft: isAddMode && narrators.length === 0,
+      otherFarshNarrators: activeRowsForWord
+        .filter((row) => !row.deleted && row.kind === 'farsh' && row.entryId !== selectedRow?.entryId)
+        .flatMap((row) => row.narrators.map((n) => ({ id: n.id, wajhOrder: n.wajhOrder ?? 1 }))),
     })
-    return () => {
-      cancelled = true
-    }
-  }, [nquranSurah, nquranLoaded])
+    setNarrators(plan.narrators)
+    if (plan.readingText !== undefined) setReadingText(plan.readingText)
+    if (plan.kind !== undefined) setKind(plan.kind)
+    if (plan.appliesWasl !== undefined) setAppliesWasl(plan.appliesWasl)
+    if (plan.appliesWaqf !== undefined) setAppliesWaqf(plan.appliesWaqf)
+    if (plan.categoryCode !== undefined) setCategoryCode(plan.categoryCode)
+    setReferenceAppliedKey(appliedKey)
+    window.setTimeout(() => setReferenceAppliedKey((k) => (k === appliedKey ? null : k)), 2500)
+  }
 
-  const nquranRanked = useMemo(() => {
-    if (!selectedWordMeta || !nquranLoaded || nquranLoaded.surah !== selectedWordMeta.surah) return null
-    const entry = findNquranEntryForAyah(nquranLoaded.entries, selectedWordMeta.ayah)
-    if (!entry || entry.differences.length === 0) return null
-    // Only the differences about the clicked word -- the rest of the ayah's differences are hidden.
-    return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text).filter((r) => r.matchesWord) }
-  }, [selectedWordMeta, nquranLoaded])
+  // The suggestion chip on a group: sets the kind and باب the reference proposed.
+  function handleApplyReferenceSuggestion(suggestion: ReferenceSuggestion) {
+    setKind(suggestion.kind)
+    if (suggestion.kind === 'usul' && suggestion.categoryCode) setCategoryCode(suggestion.categoryCode)
+  }
 
-  // "Add to editor": clicking a resolved nquran.com group creates and SAVES a brand-new face for
-  // the currently selected word directly -- via the same `onCreateNewEntry` (qiraat_review_create_
-  // entry RPC) path every other save in this editor goes through -- pre-filled with that group's
-  // narrators and its reading description. It never touches `newEntryDraft`/`onStartNewEntry` or
-  // whatever row is currently open, so it can never overwrite an already-reviewed entry's data or
-  // a still-unsaved edit the reviewer was mid-way through; the created row shows up in "٣. الأوجه
-  // المسجلة" the moment `onCreateNewEntry` resolves, the same way every other new face does.
-  const [nquranAppliedKey, setNquranAppliedKey] = useState<string | null>(null)
-
-  // Adds the nquran group's readers to the CURRENT entry's «تفاصيل الأداء والأوجه للرواة المحددين»
-  // (narrators draft): each narrator gets the nquran description as its «الأداء». Nothing is created
-  // as a separate entry; the reviewer presses «حفظ» to persist it with the entry.
-  function handleApplyNquranGroup(resolved: ResolvedNquranGroup, badgeKey: string) {
-    if (resolved.narratorIds.length === 0) return
-    const performance = resolved.group.reading || null
-    // wajh numbering must also respect the other active farsh rows at this word (DB rule
-    // QIRAAT_NARRATOR_TWICE), and Hafs is floored at wajh 2 with a note (rule D8).
-    const others = activeRowsForWord
-      .filter((row) => !row.deleted && row.kind === 'farsh' && row.entryId !== selectedRow?.entryId)
-      .flatMap((row) => row.narrators.map((n) => ({ id: n.id, wajhOrder: n.wajhOrder ?? 1 })))
-    const next = [...narrators]
-    for (const id of resolved.narratorIds) {
-      if (next.some((n) => n.id === id && (n.action ?? null) === performance)) continue
-      const wajhOrder = nextWajhOrder([...others, ...next], id)
-      const wajhNote = id === HAFS_ID ? performance || 'مستورد من مرجع nquran.com' : null
-      next.push({ id, action: performance, wajhOrder, wajhNote })
-    }
-    setNarrators(next)
-    setNquranAppliedKey(badgeKey)
-    window.setTimeout(() => setNquranAppliedKey((k) => (k === badgeKey ? null : k)), 2500)
+  // The same panel is shown in both layouts (the Hamzah/Imalah builder replaces the standard
+  // «٢. نص القراءة والبيان» box, and the reviewer still needs the reference there).
+  function renderReferencePanel() {
+    return (
+      <ReferencePanel
+        selectedWordMeta={selectedWordMeta}
+        activeRowsForWord={activeRowsForWord}
+        isSaving={isSaving}
+        appliedKey={referenceAppliedKey}
+        onApply={handleApplyReferenceGroup}
+        onApplySuggestion={handleApplyReferenceSuggestion}
+      />
+    )
   }
 
   const categories = useMemo(() => {
@@ -846,6 +819,8 @@ export default function ReviewEditorPane({
             </div>
           </div>
 
+          {renderReferencePanel()}
+
           {/* Specialized Usul Builder (Hamzah or Imalah) */}
           <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2 shadow-2xs">
             <UsulRuleGrid
@@ -1046,100 +1021,7 @@ export default function ReviewEditorPane({
               />
             </div>
 
-            {nquranRanked ? (
-              <div className="rounded-lg border border-amber-300 bg-amber-50/60">
-                <button
-                  type="button"
-                  onClick={() => setNquranPanelOpen((v) => !v)}
-                  className="flex w-full items-center justify-between gap-2 px-2 py-1"
-                >
-                  <span className="text-[11px] font-bold text-amber-900">
-                    📖 مرجع خارجي (nquran.com) — فروق القراءات في هذه الكلمة
-                  </span>
-                  <span className="text-[11px] text-amber-800">
-                    {nquranPanelOpen ? 'إخفاء ▲' : nquranRanked.ranked.length > 0 ? `عرض (${nquranRanked.ranked.length}) ▼` : 'لا فروق لهذه الكلمة'}
-                  </span>
-                </button>
-                {nquranPanelOpen ? (
-                  <div className="flex flex-col gap-1.5 border-t border-amber-200 px-2 pb-2 pt-1.5">
-                    <p className="text-[11px] text-amber-800/80">
-                      مرجع للاطّلاع — غير معتمد تلقائيًا؛ زر «إضافة كوجه» ينشئ وجهًا جديدًا مُعبَّأً مسبقًا بالقراء/الرواة والبيان دون حفظه، فيبقى قابلًا للتعديل والمراجعة قبل «حفظ».
-                    </p>
-                    {nquranRanked.ranked.length === 0 ? (
-                      <p className="text-[11px] text-amber-800">
-                        لا توجد فروق قراءات موثقة في nquran.com لهذه الكلمة تحديدًا (توجد فروق في كلمات أخرى من الآية).
-                      </p>
-                    ) : null}
-                    {nquranRanked.ranked.map(({ difference, matchesWord }, idx) => (
-                      <div
-                        key={idx}
-                        className={cn(
-                          'rounded-md border p-1.5',
-                          matchesWord
-                            ? 'border-amber-500 bg-amber-100/80'
-                            : 'border-amber-200/70 bg-white/60'
-                        )}
-                      >
-                        <p className="font-quran text-base text-[var(--color-ink)]" dir="rtl">
-                          ﴿{difference.location}﴾
-                        </p>
-                        <div className="mt-1 flex flex-col gap-1">
-                          {resolveDifferenceGroups(difference).map((resolved, gIdx) => {
-                            const decision = matchesWord
-                              ? proposeNquranDecision(resolved, activeRowsForWord)
-                              : null
-                            const badge = decision ? NQURAN_DECISION_BADGES[decision.status] : null
-                            const badgeKey = `${idx}-${gIdx}`
-                            const canApply = matchesWord && resolved.narratorIds.length > 0
-                            return (
-                              <div key={gIdx} className="text-[11px] leading-snug">
-                                <div className="flex flex-wrap items-center gap-1">
-                                  <span className="font-bold text-amber-900">
-                                    {resolved.group.readers.join('، ')}:
-                                  </span>
-                                  {badge ? (
-                                    <span
-                                      title={
-                                        decision?.matchedRow
-                                          ? `مقارنةً بوجه ${STATUS_LABEL_AR[decision.matchedRow.reviewStatus]} مسجّل لهذه الكلمة`
-                                          : undefined
-                                      }
-                                      className={cn('rounded px-1 py-px text-[11px] font-bold', badge.className)}
-                                    >
-                                      {badge.label}
-                                    </span>
-                                  ) : null}
-                                  {canApply ? (
-                                    <button
-                                      type="button"
-                                      disabled={isSaving}
-                                      onClick={() => void handleApplyNquranGroup(resolved, badgeKey)}
-                                      title="يضيف القراء/الرواة مع نص الأداء إلى «تفاصيل الأداء والأوجه للرواة المحددين» في هذا الوجه (ثم اضغط حفظ)"
-                                      className="rounded border border-amber-500 bg-white px-1 py-px text-[11px] font-bold text-amber-800 hover:bg-amber-100 disabled:opacity-50"
-                                    >
-                                      {nquranAppliedKey === badgeKey ? '✓ أُضيف — اضغط حفظ' : '➕ إضافة للأداء'}
-                                    </button>
-                                  ) : null}
-                                </div>
-                                <span className="text-[var(--color-ink-muted)]">{resolved.group.reading}</span>
-                              </div>
-                            )
-                          })}
-                        </div>
-                      </div>
-                    ))}
-                    <a
-                      href={nquranRanked.entry.sourceUrl}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="text-[11px] text-amber-700 underline"
-                    >
-                      المصدر: nquran.com ↗
-                    </a>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
+            {renderReferencePanel()}
 
             {kind === 'farsh' ? (
               <>

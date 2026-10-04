@@ -34,8 +34,15 @@ function run(out: string, files: string[]) {
   return spawnSync('python3', [SCRIPT, '--out', out, ...files], { encoding: 'utf8' })
 }
 
-function readJson(path: string): any {
-  return JSON.parse(readFileSync(path, 'utf8'))
+type OutEntry = { words: string[]; wajhs: Record<string, unknown>[]; [key: string]: unknown }
+type OutIndex = { surahs: Record<string, unknown> }
+
+function readSurah(path: string): OutEntry[] {
+  return JSON.parse(readFileSync(path, 'utf8')) as OutEntry[]
+}
+
+function readIndex(path: string): OutIndex {
+  return JSON.parse(readFileSync(path, 'utf8')) as OutIndex
 }
 
 test('merges overlapping files by id', () => {
@@ -45,9 +52,9 @@ test('merges overlapping files by id', () => {
   const out = join(dir, 'out')
   const r = run(out, [a, b])
   assert.equal(r.status, 0, r.stderr)
-  const surah = readJson(join(out, 'surah-002.json'))
+  const surah = readSurah(join(out, 'surah-002.json'))
   assert.equal(surah.length, 2)
-  assert.deepEqual(readJson(join(out, 'index.json')).surahs['2'], { pages: [3, 3], entries: 2, records: 2 })
+  assert.deepEqual(readIndex(join(out, 'index.json')).surahs['2'], { pages: [3, 3], entries: 2, records: 2 })
 })
 
 test('later file wins on conflict and the id is reported', () => {
@@ -57,7 +64,7 @@ test('later file wins on conflict and the id is reported', () => {
   const out = join(dir, 'out')
   const r = run(out, [a, b])
   assert.equal(r.status, 0, r.stderr)
-  assert.equal(readJson(join(out, 'surah-002.json'))[0].wajhs[0].description, 'جديد')
+  assert.equal(readSurah(join(out, 'surah-002.json'))[0].wajhs[0].description, 'جديد')
   assert.match(r.stdout + r.stderr, /e1_w1/)
 })
 
@@ -66,10 +73,10 @@ test('emits the documented entry shape with wajhs sorted by wajh', () => {
   const src = writeSource(dir, 'a.json', [entry('e1', { flags: ['f'] })], [record('e1', 2, { reading_text: 'ر' }), record('e1', 1)])
   const out = join(dir, 'out')
   assert.equal(run(out, [src]).status, 0)
-  const [e] = readJson(join(out, 'surah-002.json'))
+  const [e] = readSurah(join(out, 'surah-002.json'))
   assert.deepEqual(Object.keys(e).sort(), ['ayahs', 'category', 'entryId', 'flags', 'page', 'scope', 'sourceText', 'type', 'wajhs', 'words'])
   assert.deepEqual(e.words, ['يَخْدَعُونَ'])
-  assert.deepEqual(e.wajhs.map((w: { wajh: number }) => w.wajh), [1, 2])
+  assert.deepEqual(e.wajhs.map((w) => w.wajh), [1, 2])
   assert.deepEqual(Object.keys(e.wajhs[1]).sort(), ['category', 'condition', 'conditionBasis', 'description', 'id', 'narrators', 'readingText', 'type', 'wajh'])
   assert.equal(e.wajhs[1].readingText, 'ر')
 })
@@ -119,8 +126,8 @@ test('is idempotent', () => {
 })
 
 test('committed surah-002.json has 220 entries / 738 wajhs and index lists pages [2,13]', () => {
-  const surah = readJson(new URL('surah-002.json', COMMITTED).pathname)
+  const surah = readSurah(new URL('surah-002.json', COMMITTED).pathname)
   assert.equal(surah.length, 220)
-  assert.equal(surah.reduce((n: number, e: { wajhs: unknown[] }) => n + e.wajhs.length, 0), 738)
-  assert.deepEqual(readJson(new URL('index.json', COMMITTED).pathname).surahs['2'], { pages: [2, 13], entries: 220, records: 738 })
+  assert.equal(surah.reduce((n, e) => n + e.wajhs.length, 0), 738)
+  assert.deepEqual(readIndex(new URL('index.json', COMMITTED).pathname).surahs['2'], { pages: [2, 13], entries: 220, records: 738 })
 })
