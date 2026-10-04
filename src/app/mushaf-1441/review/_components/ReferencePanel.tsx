@@ -23,6 +23,7 @@ import {
   type ShamilEntry,
 } from '../_lib/shamilReference'
 import {
+  isGroupInDraft,
   proposeReferenceDecision,
   type ReferenceCondition,
   type ReferenceDecisionStatus,
@@ -96,6 +97,10 @@ function suggestionLabel(s: ReferenceSuggestion): string {
 type Props = {
   selectedWordMeta: WordMeta | null
   activeRowsForWord: ReviewRow[]
+  /** The words of the selected word's ayah that the page shows (1-based `word`), for phrase matching. */
+  ayahWords: { word: number; text: string }[]
+  /** Narrators already in the open draft. */
+  draftNarratorIds: string[]
   isSaving: boolean
   /** Key of the group whose ➕ was just pressed (drives the «✓ أُضيف» flash). */
   appliedKey: string | null
@@ -106,6 +111,8 @@ type Props = {
 export default function ReferencePanel({
   selectedWordMeta,
   activeRowsForWord,
+  ayahWords,
+  draftNarratorIds,
   isSaving,
   appliedKey,
   onApply,
@@ -163,8 +170,11 @@ export default function ReferencePanel({
 
   const shamilEntries = useMemo(() => {
     if (!selectedWordMeta || !shamilLoaded || shamilLoaded.surah !== selectedWordMeta.surah) return null
-    return findShamilEntriesForWord(shamilLoaded.entries, selectedWordMeta.ayah, selectedWordMeta.text)
-  }, [selectedWordMeta, shamilLoaded])
+    return findShamilEntriesForWord(shamilLoaded.entries, selectedWordMeta.ayah, selectedWordMeta.text, {
+      wordIndex: selectedWordMeta.word,
+      ayahWords,
+    })
+  }, [selectedWordMeta, shamilLoaded, ayahWords])
 
   if (!selectedWordMeta) return null
 
@@ -173,13 +183,22 @@ export default function ReferencePanel({
 
   function renderGroupRow(group: ReferenceGroup, matchesWord: boolean, badgeKey: string, withDetails: boolean) {
     const decision = matchesWord ? proposeReferenceDecision(group, activeRowsForWord) : null
-    const badge = decision ? DECISION_BADGES[decision.status] : null
+    const inDraft = matchesWord && isGroupInDraft(group, draftNarratorIds)
+    const badge = decision && !inDraft ? DECISION_BADGES[decision.status] : null
     const canApply = matchesWord && group.narratorIds.length > 0
     const suggestion = withDetails ? group.suggestion : undefined
     return (
       <div key={group.key} className="text-[11px] leading-snug">
         <div className="flex flex-wrap items-center gap-1">
           <span className="font-bold text-amber-900">{group.readersLabel}:</span>
+          {inDraft ? (
+            <span
+              title="هؤلاء الرواة في المسودة الحالية بالفعل"
+              className="rounded bg-purple-100 px-1 py-px text-[11px] font-bold text-purple-800"
+            >
+              ✎ في المسودة
+            </span>
+          ) : null}
           {badge ? (
             <span
               title={
@@ -217,10 +236,14 @@ export default function ReferencePanel({
               type="button"
               disabled={isSaving}
               onClick={() => onApply(group, source, badgeKey)}
-              title="يضيف القراء/الرواة مع نص الأداء إلى «تفاصيل الأداء والأوجه للرواة المحددين» في هذا الوجه (ثم اضغط حفظ)"
+              title={
+                inDraft
+                  ? 'هؤلاء الرواة في المسودة بالفعل — الإضافة تنشئ لهم وجهًا آخر بنص أداء مختلف'
+                  : 'يضيف القراء/الرواة مع نص الأداء إلى «تفاصيل الأداء والأوجه للرواة المحددين» في هذا الوجه (ثم اضغط حفظ)'
+              }
               className="rounded border border-amber-500 bg-white px-1 py-px text-[11px] font-bold text-amber-800 hover:bg-amber-100 disabled:opacity-50"
             >
-              {appliedKey === badgeKey ? '✓ أُضيف — اضغط حفظ' : '➕ إضافة للأداء'}
+              {appliedKey === badgeKey ? '✓ أُضيف — اضغط حفظ' : inDraft ? '➕ إضافة وجه آخر' : '➕ إضافة للأداء'}
             </button>
           ) : null}
         </div>

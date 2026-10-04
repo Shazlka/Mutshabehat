@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
-import { proposeReferenceDecision } from '../../src/app/mushaf-1441/review/_lib/referenceGroup'
+import { isGroupInDraft, proposeReferenceDecision } from '../../src/app/mushaf-1441/review/_lib/referenceGroup'
 import { ALL_NARRATOR_IDS, nquranGroupsForDifference, type NquranAyahEntry } from '../../src/app/mushaf-1441/review/_lib/nquranReference'
 import { row } from './_helpers/review-row'
 
@@ -51,4 +51,11 @@ test('nquranGroupsForDifference: 2:2 «فيه هدى» gives three disjoint grou
   assert.equal(groups[0].readersLabel, 'ابن كثير')
   assert.equal(groups[0].performanceText, difference.groups[0].reading)
   assert.equal(new Set(groups.map((g) => g.key)).size, 3)
+})
+
+test('isGroupInDraft: true only when every narrator of a non-empty group is already in the open draft', () => {
+  assert.equal(isGroupInDraft({ narratorIds: ['Q01-R01', 'Q01-R02'] }, ['Q01-R02', 'Q01-R01', 'Q02-R01']), true)
+  assert.equal(isGroupInDraft({ narratorIds: ['Q01-R01', 'Q01-R02'] }, ['Q01-R01']), false)
+  assert.equal(isGroupInDraft({ narratorIds: ['Q01-R01'] }, []), false)
+  assert.equal(isGroupInDraft({ narratorIds: [] }, ['Q01-R01']), false)
 })

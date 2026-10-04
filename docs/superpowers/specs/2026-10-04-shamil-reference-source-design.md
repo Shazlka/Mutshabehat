@@ -197,6 +197,6 @@ Changed: `_lib/nquranReference.ts` (generalised decision function, alias kept),
 
 ## 8. Next steps after the pilot
 
-Importing the remaining pages = run the build script with the new JSON files; no code change
-expected. If the keyword rules for «الأصول/فرش» prove too weak on later pages, tune them in
+Importing the remaining pages = run the build script with the new JSON files (it merges into the
+existing per-surah output; `--fresh` rebuilds from the inputs only); no code change expected. If the keyword rules for «الأصول/فرش» prove too weak on later pages, tune them in
 `shamilReference.ts` with new pinned test cases.

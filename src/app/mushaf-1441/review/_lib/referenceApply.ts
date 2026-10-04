@@ -11,6 +11,8 @@ export type ReferenceSourceId = 'nquran' | 'shamil'
 export interface ApplyContext {
   narrators: NarratorInput[]
   readingText: string
+  /** The Hafs word the editor pre-fills into a new draft's reading field; it counts as "not typed yet". */
+  defaultReadingText: string
   kind: 'farsh' | 'usul'
   categoryCode: string | null
   /** An add-mode draft with no narrators yet: nothing the reviewer typed can be overwritten. */
@@ -50,7 +52,11 @@ export function planApplyReferenceGroup(source: ReferenceSourceId, group: Refere
 
   const plan: ApplyPlan = { narrators, pendingSuggestion: null }
 
-  if (group.readingText && ctx.readingText.trim() === '') plan.readingText = group.readingText
+  // Never overwrite what the reviewer typed. A new draft starts with the Hafs word in the field, which
+  // is not their input, so on a fresh draft that default is replaced too.
+  const typed = ctx.readingText.trim()
+  const readingIsUntouched = typed === '' || (ctx.isFreshDraft && typed === ctx.defaultReadingText.trim())
+  if (group.readingText && readingIsUntouched) plan.readingText = group.readingText
 
   const suggestion = group.suggestion
   if (ctx.isFreshDraft) {

@@ -6,7 +6,10 @@ Input : one or more extracts (keys: entries, records, ...). Files are merged by 
 Output: <out>/surah-NNN.json  (array of entries, the shape `ShamilEntry` in `_lib/shamilReference.ts`
         reads) and <out>/index.json  ({"surahs": {"2": {"pages": [min, max], "entries": n, "records": n}}}).
         Dropped: justification, type_basis, poetry, indexes, the reader/narrator tables.
-Usage : python3 scripts/qiraat/build_shamil_reference.py [--out DIR] FILE [FILE ...]
+        Existing output is MERGED with the inputs (an input entry replaces the output entry with the
+        same id), so adding new pages never drops earlier ones. `--fresh` rebuilds from the inputs only
+        and prints how many existing entries it dropped.
+Usage : python3 scripts/qiraat/build_shamil_reference.py [--out DIR] [--fresh] FILE [FILE ...]
 Exit 1 (message on stderr) on: an unknown narrator id, a record whose entry is missing, an entry with
 no records, a record with no narrators.
 """
@@ -87,9 +90,32 @@ def entry_of(e, wajhs):
     }
 
 
+def load_existing(out, surah):
+    path = os.path.join(out, f'surah-{surah:03d}.json')
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding='utf-8') as fh:
+        return {e['entryId']: e for e in json.load(fh)}
+
+
+def build_index(out):
+    index = {}
+    for name in sorted(os.listdir(out)):
+        if not (name.startswith('surah-') and name.endswith('.json')):
+            continue
+        with open(os.path.join(out, name), encoding='utf-8') as fh:
+            items = json.load(fh)
+        surah = int(name[len('surah-'):-len('.json')])
+        pages = [x['page'] for x in items]
+        index[str(surah)] = {'pages': [min(pages), max(pages)], 'entries': len(items),
+                             'records': sum(len(x['wajhs']) for x in items)}
+    return index
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', default=DEFAULT_OUT)
+    ap.add_argument('--fresh', action='store_true', help='rebuild from the inputs only, dropping existing entries')
     ap.add_argument('files', nargs='+')
     args = ap.parse_args()
 
@@ -99,20 +125,27 @@ def main():
     by_entry = collections.defaultdict(list)
     for r in records.values():
         by_entry[r['entry_id']].append(wajh_of(r))
-    by_surah = collections.defaultdict(list)
+    by_surah = collections.defaultdict(dict)
     for e in entries.values():
-        by_surah[e['surah']].append(entry_of(e, by_entry[e['entry_id']]))
+        by_surah[e['surah']][e['entry_id']] = entry_of(e, by_entry[e['entry_id']])
 
     os.makedirs(args.out, exist_ok=True)
-    index = {}
-    for surah, items in sorted(by_surah.items()):
-        items.sort(key=lambda x: (x['page'], x['entryId']))
+    for surah, incoming in sorted(by_surah.items()):
+        current = load_existing(args.out, surah)
+        existing = {} if args.fresh else current
+        dropped = [i for i in current if args.fresh and i not in incoming]
+        if dropped:
+            print(f'surah {surah}: dropped {len(dropped)} existing entries not in the inputs')
+        replaced = [i for i in incoming if i in existing and existing[i] != incoming[i]]
+        if replaced:
+            print(f'surah {surah}: replaced {len(replaced)} existing entries: {", ".join(replaced[:10])}')
+        merged = {**existing, **incoming}
+        items = sorted(merged.values(), key=lambda x: (x['page'], x['entryId']))
         with open(os.path.join(args.out, f'surah-{surah:03d}.json'), 'w', encoding='utf-8') as fh:
             json.dump(items, fh, ensure_ascii=False, separators=(',', ':'))
-        pages = [x['page'] for x in items]
-        index[str(surah)] = {'pages': [min(pages), max(pages)], 'entries': len(items),
-                             'records': sum(len(x['wajhs']) for x in items)}
-        print(f"surah {surah}: {len(items)} entries, {index[str(surah)]['records']} records")
+        print(f"surah {surah}: {len(items)} entries ({len(incoming)} from the inputs), "
+              f"{sum(len(x['wajhs']) for x in items)} records")
+    index = build_index(args.out)
     with open(os.path.join(args.out, 'index.json'), 'w', encoding='utf-8') as fh:
         json.dump({'surahs': index}, fh, ensure_ascii=False, indent=1, sort_keys=True)
 

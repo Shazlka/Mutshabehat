@@ -94,23 +94,86 @@ export function loadShamilReference(surah: number): Promise<ShamilEntry[]> {
   return promise
 }
 
+/** The clicked word's place in its ayah, as the editor knows it (1-based word numbers). */
+export interface ShamilAyahContext {
+  wordIndex: number
+  ayahWords: readonly { word: number; text: string }[]
+}
+
+/** Context is only trusted when it covers the ayah from its first word and contains the clicked word. */
+function isCompleteContext(context: ShamilAyahContext): boolean {
+  const words = context.ayahWords
+  return (
+    words.length > 0 &&
+    words.every((w, i) => w.word === i + 1) &&
+    context.wordIndex >= 1 &&
+    context.wordIndex <= words.length
+  )
+}
+
 /**
- * Entries about the clicked word: the ayah is one the entry lists AND the word equals one of the
- * entry's words (split into tokens) by `matchKey`. Whole-token equality, never substring: it already
- * matches every sample entry to a real Mushaf word and avoids false hits on short words.
+ * Does `phrase` (tokens) cover the clicked word in this ayah? Either it occurs contiguously here, or it
+ * straddles an ayah boundary the entry lists («عظيم وإذ» = end of 2:49 + start of 2:50): then its head
+ * must close this ayah, or its tail must open it, with the neighbouring ayah also listed.
  */
-export function findShamilEntriesForWord(entries: readonly ShamilEntry[], ayah: number, wordText: string): ShamilEntry[] {
+function phraseCoversWord(
+  phrase: readonly string[],
+  keys: readonly string[],
+  wordIndex: number,
+  neighbours: { previousListed: boolean; nextListed: boolean },
+): boolean {
+  const at = wordIndex - 1
+  for (let start = 0; start + phrase.length <= keys.length; start += 1) {
+    if (at < start || at >= start + phrase.length) continue
+    if (phrase.every((token, offset) => keys[start + offset] === token)) return true
+  }
+  for (let split = 1; split < phrase.length; split += 1) {
+    if (neighbours.nextListed) {
+      const head = phrase.slice(0, split)
+      const start = keys.length - head.length
+      if (start >= 0 && at >= start && head.every((token, offset) => keys[start + offset] === token)) return true
+    }
+    if (neighbours.previousListed) {
+      const tail = phrase.slice(split)
+      if (at < tail.length && tail.every((token, offset) => keys[offset] === token)) return true
+    }
+  }
+  return false
+}
+
+/**
+ * Entries about the clicked word. The ayah must be one the entry lists, and one of the entry's words
+ * (a word or a phrase, split into tokens) must match by `matchKey` -- whole tokens, never substrings.
+ * With the ayah's words (`context`) a phrase must also occur contiguously in THIS ayah around the
+ * clicked word: a multi-ayah entry does not say which phrase belongs to which ayah, and `matchKey`
+ * makes إنّ/أن and مَن/مِن equal, so token equality alone offered entries on unrelated words. Without
+ * (or with only part of) the ayah, it falls back to token equality.
+ */
+export function findShamilEntriesForWord(
+  entries: readonly ShamilEntry[],
+  ayah: number,
+  wordText: string,
+  context?: ShamilAyahContext,
+): ShamilEntry[] {
   const wanted = matchKey(wordText)
   if (!wanted) return []
-  return entries.filter(
-    (entry) =>
-      entry.ayahs.includes(ayah) &&
-      entry.words.some((word) =>
-        matchKey(word)
-          .split(/\s+/)
-          .some((token) => token === wanted),
-      ),
-  )
+  const keys = context && isCompleteContext(context) ? context.ayahWords.map((w) => matchKey(w.text)) : null
+  return entries.filter((entry) => {
+    if (!entry.ayahs.includes(ayah)) return false
+    return entry.words.some((word) => {
+      const tokens = matchKey(word).split(/\s+/).filter(Boolean)
+      if (keys && context) {
+        return (
+          keys[context.wordIndex - 1] === wanted &&
+          phraseCoversWord(tokens, keys, context.wordIndex, {
+            previousListed: entry.ayahs.includes(ayah - 1),
+            nextListed: entry.ayahs.includes(ayah + 1),
+          })
+        )
+      }
+      return tokens.includes(wanted)
+    })
+  })
 }
 
 const n = normalizeArabic

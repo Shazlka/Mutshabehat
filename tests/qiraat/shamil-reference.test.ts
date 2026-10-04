@@ -39,6 +39,21 @@ function mushafWord(ayah: number, key: string): string {
   return found
 }
 
+// Full-ayah context the editor passes for a clicked word (1-based word numbers, like the review page).
+function ayahContext(ayah: number, key: string) {
+  const texts = mushafWords.get(ayah) ?? []
+  const index = texts.findIndex((t) => matchKey(t) === key)
+  assert.ok(index >= 0, `no word ${key} in 2:${ayah}`)
+  return { wordText: texts[index], context: { wordIndex: index + 1, ayahWords: texts.map((text, i) => ({ word: i + 1, text })) } }
+}
+
+function hits(ayah: number, key: string): ShamilEntry[] {
+  const { wordText, context } = ayahContext(ayah, key)
+  return findShamilEntriesForWord(entries, ayah, wordText, context)
+}
+
+const hasPhrase = (list: ShamilEntry[], phrase: string) => list.some((e) => e.words.some((w) => matchKey(w) === matchKey(phrase)))
+
 function wajh(category: string, description: string, type: 'usul' | 'farsh' = 'usul'): Pick<ShamilWajh, 'type' | 'category' | 'description'> {
   return { type, category, description }
 }
@@ -58,11 +73,40 @@ test('hasShamilReferenceForSurah follows the generated index, not 1..114', () =>
   for (const s of [0, 1, 3, 115, 2.5]) assert.equal(hasShamilReferenceForSurah(s), false, String(s))
 })
 
-test('every entry matches at least one real Mushaf word in at least one of its ayahs', () => {
+test('every entry matches at least one real Mushaf word in at least one of its ayahs, with full-ayah context', () => {
   const unmatched = entries.filter(
-    (e) => !e.ayahs.some((ayah) => (mushafWords.get(ayah) ?? []).some((t) => findShamilEntriesForWord([e], ayah, t).length > 0)),
+    (e) =>
+      !e.ayahs.some((ayah) => {
+        const texts = mushafWords.get(ayah) ?? []
+        const ayahWords = texts.map((text, i) => ({ word: i + 1, text }))
+        return texts.some((t, i) => findShamilEntriesForWord([e], ayah, t, { wordIndex: i + 1, ayahWords }).length > 0)
+      }),
   )
   assert.deepEqual(unmatched.map((e) => e.entryId), [])
+})
+
+test('a phrase entry is offered only where the whole phrase occurs around the clicked word', () => {
+  // The phrase belongs to another ayah of a multi-ayah entry, or the clicked word is a different word
+  // that merely normalises to the same letters (إنّ/أن, مَن/مِن).
+  assert.equal(hasPhrase(hits(62, 'ان'), 'أَنْ أَكُونَ'), false, '2:62 إِنَّ via «أَنْ أَكُونَ» (2:67)')
+  assert.equal(hasPhrase(hits(49, 'من'), 'مِّنۢ بَعْدِ'), false, '2:49 مِّنْ via «مِّنۢ بَعْدِ» (2:52)')
+  assert.equal(hasPhrase(hits(30, 'من'), 'ءَادَمُ مِن'), false, '2:30 مَن via «ءَادَمُ مِن» (2:37)')
+  assert.equal(hasPhrase(hits(25, 'ان'), 'أَن يَضْرِبَ'), false, '2:25 أَنَّ via «أَن يَضْرِبَ» (2:26)')
+})
+
+test('a phrase that straddles two listed ayahs is offered at the end of the first and the start of the second', () => {
+  // «عظيم وإذ» = last word of 2:49 + first word of 2:50
+  assert.ok(hits(49, 'عظيم').some((e) => e.entryId === 'p008_e14'))
+  assert.ok(hits(50, 'واذ').some((e) => e.entryId === 'p008_e14'))
+  assert.ok(!hits(49, 'واذ').some((e) => e.entryId === 'p008_e14'), '2:49 starts with «وإذ» but the phrase needs «عظيم» before it')
+})
+
+test('with context, a word inside the entry phrase still finds the entry; a partial context falls back to token matching', () => {
+  assert.ok(hits(9, 'يخدعون').some((e) => e.entryId === 'p003_e08'))
+  assert.ok(hits(9, 'وما').some((e) => e.entryId === 'p003_e08'), 'the phrase «وما يخدعون» includes the word «وما»')
+  const { wordText, context } = ayahContext(9, 'يخدعون')
+  const partial = { wordIndex: context.wordIndex, ayahWords: context.ayahWords.filter((w) => w.word >= 5) }
+  assert.ok(findShamilEntriesForWord(entries, 9, wordText, partial).some((e) => e.entryId === 'p003_e08'))
 })
 
 test('2:9 «يَخْدَعُونَ» finds p003_e08 whose two groups cover 6 and 14 narrators', () => {

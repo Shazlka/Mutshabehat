@@ -6,7 +6,7 @@ import type { ReferenceGroup } from '../../src/app/mushaf-1441/review/_lib/refer
 const HAFS = 'Q05-R02'
 
 function ctx(over: Partial<ApplyContext> = {}): ApplyContext {
-  return { narrators: [], readingText: '', kind: 'farsh', categoryCode: null, isFreshDraft: false, otherFarshNarrators: [], ...over }
+  return { narrators: [], readingText: '', defaultReadingText: 'الكلمة', kind: 'farsh', categoryCode: null, isFreshDraft: false, otherFarshNarrators: [], ...over }
 }
 
 function group(over: Partial<ReferenceGroup> = {}): ReferenceGroup {
@@ -57,6 +57,18 @@ test('reading text is filled only when the field is empty', () => {
   assert.equal(planApplyReferenceGroup('shamil', g, ctx({ readingText: '  ' })).readingText, 'يُخَادِعُونَ')
   assert.equal(planApplyReferenceGroup('shamil', g, ctx({ readingText: 'كتبه المراجع' })).readingText, undefined)
   assert.equal(planApplyReferenceGroup('shamil', group({ readingText: null }), ctx()).readingText, undefined)
+})
+
+test('the Hafs word pre-filled into a fresh draft counts as empty and is replaced by the reference reading', () => {
+  const g = group({ readingText: 'يُخَادِعُونَ' })
+  const plan = planApplyReferenceGroup('shamil', g, ctx({ readingText: 'الكلمة', defaultReadingText: 'الكلمة', isFreshDraft: true }))
+  assert.equal(plan.readingText, 'يُخَادِعُونَ')
+})
+
+test('on a face that already exists, a reading equal to the Hafs word is left alone', () => {
+  const g = group({ readingText: 'يُخَادِعُونَ' })
+  assert.equal(planApplyReferenceGroup('shamil', g, ctx({ readingText: 'الكلمة', defaultReadingText: 'الكلمة', isFreshDraft: false })).readingText, undefined)
+  assert.equal(planApplyReferenceGroup('shamil', g, ctx({ readingText: '', defaultReadingText: 'الكلمة', isFreshDraft: false })).readingText, 'يُخَادِعُونَ')
 })
 
 test('a fresh draft takes kind, wasl/waqf and category from the group', () => {

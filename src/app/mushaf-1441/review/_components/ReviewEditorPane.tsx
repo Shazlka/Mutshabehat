@@ -198,6 +198,7 @@ export default function ReviewEditorPane({
     const plan = planApplyReferenceGroup(source, group, {
       narrators,
       readingText,
+      defaultReadingText: currentHafsText,
       kind,
       categoryCode,
       isFreshDraft: isAddMode && narrators.length === 0,
@@ -224,10 +225,18 @@ export default function ReviewEditorPane({
   // The same panel is shown in both layouts (the Hamzah/Imalah builder replaces the standard
   // «٢. نص القراءة والبيان» box, and the reviewer still needs the reference there).
   function renderReferencePanel() {
+    const ayahWords = selectedWordMeta
+      ? page.words
+          .filter((w) => w.surah === selectedWordMeta.surah && w.ayah === selectedWordMeta.ayah)
+          .map((w) => ({ word: w.word, text: w.text }))
+          .sort((a, b) => a.word - b.word)
+      : []
     return (
       <ReferencePanel
         selectedWordMeta={selectedWordMeta}
         activeRowsForWord={activeRowsForWord}
+        ayahWords={ayahWords}
+        draftNarratorIds={narrators.map((n) => n.id)}
         isSaving={isSaving}
         appliedKey={referenceAppliedKey}
         onApply={handleApplyReferenceGroup}

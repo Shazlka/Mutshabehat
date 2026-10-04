@@ -78,3 +78,14 @@ export function proposeReferenceDecision(
   }
   return { status: 'partial', matchedRow: best.row }
 }
+
+/**
+ * Whether the open draft already carries every narrator of this group. The decision badge compares
+ * against SAVED rows only, so without this the other source keeps offering a reading the reviewer has
+ * just added, and a second ➕ creates a false second wajh (the action texts of the two sources differ).
+ */
+export function isGroupInDraft(group: { narratorIds: readonly string[] }, draftNarratorIds: readonly string[]): boolean {
+  if (group.narratorIds.length === 0) return false
+  const inDraft = new Set(draftNarratorIds)
+  return group.narratorIds.every((id) => inDraft.has(id))
+}
