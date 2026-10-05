@@ -25,6 +25,9 @@ final class ReviewTestServer: @unchecked Sendable {
     var historyStatus = 200
     var undoError: ReviewErrorCode?
     private var undoneTransactions: Set<Int> = []
+    /// Optional scripted replies for suggestion, copy and occurrence requests.
+    var bulkResponses: [String: String] = [:]
+    var bulkStatus = 200
     var patchStatus = 200
     var postStatus = 200
     /// Bodies of every create received.
@@ -84,6 +87,12 @@ final class ReviewTestServer: @unchecked Sendable {
             }
         }
         if request.httpMethod == "POST" {
+            if let action = body["action"] as? String,
+               ["suggest", "findSameWord", "copyEntry", "findOccurrences", "bulkApply"].contains(action) {
+                if bulkStatus != 200 { return (bulkStatus, #"{"error":"unavailable"}"#) }
+                if let reply = bulkResponses[action] { return (200, reply) }
+                return (200, "[]")
+            }
             if body["action"] as? String == "undo" {
                 if let undoError { return (409, "{\"error\":\"\(undoError.rawValue)\"}") }
                 return lock.withLock {
