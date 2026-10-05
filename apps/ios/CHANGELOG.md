@@ -4,6 +4,7 @@
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
 ## [Unreleased] — 2026-10-05 — Developer review editor (milestones 1–4: engine, page screen, review and approve, add and edit)
+- **History and undo:** the developer page toolbar opens an Arabic native history sheet with transaction summaries, time, device, refresh and undo. Successful undo reloads the page and history and refreshes the live layer; conflicts and refused undo preserve the list and show the server’s Arabic message. Added summary, store and stub UI coverage; already-undone transactions cannot be submitted again.
 - **Why:** the owner wants to review and approve every Qiraat variant from the phone, word by word, the way the web editor (`/mushaf-1441/review`) does, and have each save update the live database. Spec: `docs/specs/2026-10-05-review-editor-design.md`; plan: `docs/plans/2026-10-05-review-editor.md`.
 - **Decision (2026-10-05):** a developer-only editor may write to the web database, only through the web app's own review API (`/api/mushaf-1441/qiraat-review`), so the server's rules, version checks and edit log apply unchanged. `AGENTS.md` §1 is updated accordingly. DEBUG builds only.
 - **Where:** Settings → المطور → «محرر القراءات» (one added row inside the existing `#if DEBUG` Developer section of `ReaderView.swift`; nothing else in the reader, the Qiraat layer or Mutshabehat was changed). All new code is under `Sources/ReviewEditor` (DEBUG) and `MushafCore/Sources/MushafCore/Review`.
