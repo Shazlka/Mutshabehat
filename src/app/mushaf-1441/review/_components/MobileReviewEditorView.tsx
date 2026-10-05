@@ -15,7 +15,7 @@ import UsulRuleGrid from './UsulRuleGrid'
 import FarshFields from './FarshFields'
 import { describeNarratorGroup } from './narratorDisplay'
 import { STATUS_LABEL_AR } from './statusMeta'
-import { useReviewEditorDraft, type WordMeta } from './useReviewEditorDraft'
+import { useReviewEditorDraft, type SaveRowOptions, type WordMeta } from './useReviewEditorDraft'
 import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
 import SuggestionsPanel from './SuggestionsPanel'
@@ -36,7 +36,7 @@ type Props = {
   onCancelNewEntry(): void
   onConfirmRow(row: ReviewRow): Promise<void>
   onFlagRow(row: ReviewRow): Promise<void>
-  onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]): Promise<void>
+  onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[], options?: SaveRowOptions): Promise<void>
   onDeleteRow(row: ReviewRow): Promise<void>
   onBulkDelete(rows: ReviewRow[], note: string | null): Promise<void>
   onCopyToOccurrence(
@@ -248,7 +248,7 @@ export default function MobileReviewEditorView({
 
                 <button
                   type="button"
-                  onClick={() => onConfirmRow(selectedRow)}
+                  onClick={() => (isDirty ? void handleSaveExisting({ approve: true }) : onConfirmRow(selectedRow))}
                   disabled={isSaving}
                   className={cn(
                     'flex min-h-9 items-center gap-1 rounded-lg px-2.5 text-xs font-bold transition-all shadow-xs disabled:opacity-50 active:scale-95',
@@ -258,7 +258,7 @@ export default function MobileReviewEditorView({
                   )}
                 >
                   <span>✓</span>
-                  <span>{selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
+                  <span>{isDirty ? 'حفظ واعتماد' : selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
                 </button>
 
                 <button
