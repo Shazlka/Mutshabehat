@@ -16,11 +16,16 @@ XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -deriv
 
 all: data fonts qiraat project
 
-data: $(GEN)/mushaf.sqlite
+data: $(GEN)/mushaf.sqlite $(GEN)/mutshabehat.sqlite
 
 $(GEN)/mushaf.sqlite: scripts/build_mushaf_db.py $(FIXTURES)/page-metadata.json $(wildcard $(FIXTURES)/page-words/*.json)
 	@mkdir -p $(GEN)
-	python3 scripts/build_mushaf_db.py $(REPO) $@
+	@mkdir -p Reports
+	python3 scripts/build_mushaf_db.py $(REPO) $@ Reports/quran-search-collisions.json
+
+$(GEN)/mutshabehat.sqlite: scripts/build_mutshabehat_db.py $(GEN)/mutshabehat_seed.json
+	@mkdir -p $(GEN)
+	python3 scripts/build_mutshabehat_db.py
 
 fonts:
 	scripts/fetch_qcf_fonts.sh $(GEN)/Fonts
@@ -35,6 +40,10 @@ qiraat-refresh:
 
 qiraat-offline:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --source fixtures --refresh
+
+# Sync all databases from web app to iCloud Drive Mushaf_Qiraat folder
+sync-icloud:
+	python3 scripts/sync_webapp_to_icloud.py --update-generated
 
 # Always regenerate: XcodeGen lists source files explicitly, so a new .swift file needs a new
 # project even when project.yml is unchanged. Generation takes under a second.

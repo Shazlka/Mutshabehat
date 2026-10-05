@@ -66,6 +66,34 @@ public struct Surah: Hashable, Sendable, Identifiable {
     public let lastPage: Int
 }
 
+public struct AyahSearchResult: Hashable, Sendable, Identifiable {
+    public var id: String { matchedWordIDs.first ?? ayah.description }
+    public let ayah: AyahKey
+    public let page: Int
+    public let text: String
+    public let matchedWordIDs: [String]
+    public let wordIndex: Int
+    public let uthmaniWord: String
+    public let matchedText: String
+    public let matchType: QuranSearchMatchType
+    public let score: Int
+
+    public init(ayah: AyahKey, page: Int, text: String, matchedWordIDs: [String] = [],
+                wordIndex: Int = 0, uthmaniWord: String = "",
+                matchedText: String = "",
+                matchType: QuranSearchMatchType = .plain, score: Int = 95) {
+        self.ayah = ayah
+        self.page = page
+        self.text = text
+        self.matchedWordIDs = matchedWordIDs
+        self.wordIndex = wordIndex
+        self.uthmaniWord = uthmaniWord
+        self.matchedText = matchedText.isEmpty ? uthmaniWord : matchedText
+        self.matchType = matchType
+        self.score = score
+    }
+}
+
 public struct MushafPage: Hashable, Sendable {
     public let number: Int
     /// Always 15 slots, in order; empty slots are kept so geometry matches the printed page.

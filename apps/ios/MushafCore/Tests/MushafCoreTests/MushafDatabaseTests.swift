@@ -99,6 +99,15 @@ import Testing
         #expect(try db.page(of: AyahKey(surah: 2, ayah: 999)) == nil)
     }
 
+    @Test func searchesAyaatByUnvocalizedArabicText() throws {
+        let results = try openDatabase().searchAyaat(matching: "الله لا اله الا هو", limit: 20)
+        #expect(results.contains { $0.ayah == AyahKey(surah: 2, ayah: 255) && $0.page == 42 })
+    }
+
+    @Test func emptyAyahSearchReturnsNoResults() throws {
+        #expect(try openDatabase().searchAyaat(matching: "   ").isEmpty)
+    }
+
     @Test(arguments: [0, 605, -1]) func outOfRangePagesThrow(_ n: Int) throws {
         #expect(throws: MushafDatabaseError.pageOutOfRange(n)) { try openDatabase().page(n) }
     }
@@ -124,7 +133,7 @@ private func withTemporaryDatabase(
         try #require(sqlite3_open(url.path, &handle) == SQLITE_OK)
         let schema = """
             CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
-            INSERT INTO meta VALUES ('schema_version', '1');
+            INSERT INTO meta VALUES ('schema_version', '2');
             CREATE TABLE pages (number INTEGER PRIMARY KEY, first_ayah_key TEXT, last_ayah_key TEXT,
                                 surah_names TEXT, juz INTEGER, hizb INTEGER, rub_in_juz INTEGER);
             CREATE TABLE decorations (page INTEGER, line INTEGER, surah_header INTEGER, basmala INTEGER);

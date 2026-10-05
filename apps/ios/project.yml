@@ -1,6 +1,7 @@
 name: Mutshabehat
 options:
   bundleIdPrefix: com.shazlka
+  developmentLanguage: ar
   deploymentTarget:
     iOS: "18.0"
   createIntermediateGroups: true
@@ -22,6 +23,8 @@ targets:
       - path: Sources
       - path: Generated/mushaf.sqlite
         buildPhase: resources
+      - path: Generated/mutshabehat.sqlite
+        buildPhase: resources
       - path: Generated/Fonts
         type: folder
         buildPhase: resources
@@ -36,15 +39,19 @@ targets:
         script: |
           GEN="$SRCROOT/Generated"
           test -s "$GEN/mushaf.sqlite" || { echo "error: $GEN/mushaf.sqlite missing — run: make -C apps/ios data"; exit 1; }
+          test -s "$GEN/mutshabehat.sqlite" || { echo "error: $GEN/mutshabehat.sqlite missing — run: make -C apps/ios data"; exit 1; }
           count=$(find "$GEN/Fonts" -name 'p*.woff2' -size +0 2>/dev/null | wc -l | tr -d ' ')
           test "$count" = "604" || { echo "error: $count/604 QCF fonts — run: make -C apps/ios fonts"; exit 1; }
           pages=$(find "$GEN/Qiraat" -name 'page-*.json' -size +0 2>/dev/null | wc -l | tr -d ' ')
           test "$pages" = "604" -a -s "$GEN/Qiraat/catalog.json" || { echo "error: Qiraat snapshot incomplete ($pages/604 pages) — run: make -C apps/ios qiraat"; exit 1; }
+          test -s "$GEN/Fonts/KFGQPC Uthmanic Script HAFS Regular.otf" || { echo "error: KFGQPC Uthmanic Script HAFS Regular.otf missing from $GEN/Fonts"; exit 1; }
     info:
       path: Sources/Info.plist
       properties:
         CFBundleDisplayName: Qiraat
         CFBundleDevelopmentRegion: ar
+        UIAppFonts:
+          - Fonts/KFGQPC Uthmanic Script HAFS Regular.otf
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         UISupportedInterfaceOrientations~ipad:
@@ -52,9 +59,21 @@ targets:
            UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
     settings:
       base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_EMIT_LOC_STRINGS: YES
         PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat
         TARGETED_DEVICE_FAMILY: "1,2"
         ENABLE_USER_SCRIPT_SANDBOXING: NO
+  MutshabehatTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests]
+    dependencies:
+      - target: Mutshabehat
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.tests
+        GENERATE_INFOPLIST_FILE: YES
   MutshabehatUITests:
     type: bundle.ui-testing
     platform: iOS
@@ -71,4 +90,4 @@ schemes:
       targets:
         Mutshabehat: all
     test:
-      targets: [MutshabehatUITests]
+      targets: [MutshabehatTests, MutshabehatUITests]

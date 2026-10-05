@@ -1,0 +1,1468 @@
+{
+  "sourceLanguage" : "ar",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "— آية %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "— Verse %@"
+          }
+        }
+      }
+    },
+    "— آية %lld" : {
+
+    },
+    "(%@ : %lld)" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "(%1$@ : %2$lld)"
+          }
+        }
+      }
+    },
+    "(%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "(%@)"
+          }
+        }
+      }
+    },
+    "(%lld)" : {
+
+    },
+    "%@ - Ayah %lld (Page %lld)" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - Ayah %2$lld (Page %3$lld)"
+          }
+        }
+      }
+    },
+    "%@ - آية %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - آية %2$@"
+          }
+        }
+      }
+    },
+    "%@ - آية %lld (صفحة %lld)" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - آية %2$lld (صفحة %3$lld)"
+          }
+        }
+      }
+    },
+    "%@، %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@، %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld / 114" : {
+
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "%lld آية" : {
+
+    },
+    "%lld د" : {
+
+    },
+    "%lld دقيقة" : {
+
+    },
+    "%lld مجموعة شخصية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعات شخصية"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              },
+              "two" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعتان شخصيتان"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld personal group"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld personal groups"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld personal groups"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld مجموعة في عرض المجلة" : {
+
+    },
+    "%lld مجموعة مرشحة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعات مرشحة"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              },
+              "two" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعتان مرشحتان"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld candidate group"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld candidate groups"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld candidate groups"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld مواضع" : {
+
+    },
+    "%lld نتيجة بحث" : {
+
+    },
+    "%lld يوم" : {
+
+    },
+    "%lld يوم مداومة" : {
+
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@"
+          }
+        }
+      }
+    },
+    "%lld. %@ — %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@ — %3$lld"
+          }
+        }
+      }
+    },
+    "%lld. %@ — آية %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@ — آية %3$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld • المتبقي: %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld • المتبقي: %3$lld"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+
+    },
+    "•" : {
+
+    },
+    "• %@ ص • %@ آية" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• %1$@ ص • %2$@ آية"
+          }
+        }
+      }
+    },
+    "+ %lld مواضع أخرى" : {
+
+    },
+    "Advanced Search Examples:" : {
+
+    },
+    "Appearance" : {
+
+    },
+    "Bookmark Ayah" : {
+
+    },
+    "Bookmark Options" : {
+
+    },
+    "Bookmark Page" : {
+
+    },
+    "Bookmarks" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Choose Reader or Narrator" : {
+
+    },
+    "Cloud Synchronization" : {
+
+    },
+    "Done" : {
+
+    },
+    "English" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "English"
+          }
+        }
+      }
+    },
+    "Expected Result:" : {
+
+    },
+    "How to use advanced search:" : {
+
+    },
+    "iCloud Sync (Mushaf_Qiraat)" : {
+
+    },
+    "Keep Screen Awake" : {
+
+    },
+    "Language" : {
+
+    },
+    "Preferences" : {
+
+    },
+    "Quran Reading & Khatma" : {
+
+    },
+    "Reading Statistics & Khatma" : {
+
+    },
+    "Remove Ayah Bookmark" : {
+
+    },
+    "Remove Page Bookmark" : {
+
+    },
+    "Search in Quran" : {
+
+    },
+    "Search Query:" : {
+
+    },
+    "Search the Holy Quran..." : {
+
+    },
+    "Ten Qira'at" : {
+
+    },
+    "Total verses in search results: %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Total verses in search results: %lld"
+          }
+        }
+      }
+    },
+    "آية" : {
+
+    },
+    "آية %@" : {
+
+    },
+    "آية %lld" : {
+
+    },
+    "آية: %lld" : {
+
+    },
+    "أجزاء الآية" : {
+
+    },
+    "أضف جلسة" : {
+
+    },
+    "أضف جلسة قراءة" : {
+
+    },
+    "أطول مدة مداومة: %lld يوم" : {
+
+    },
+    "أمثلة على البحث المتقدم:" : {
+
+    },
+    "أيام التلاوة" : {
+
+    },
+    "إبقاء الشاشة مضاءة أثناء القراءة" : {
+
+    },
+    "إجمالي الآيات في نتائج البحث: %lld" : {
+
+    },
+    "إجمالي وقت التلاوة (تراكمي)" : {
+
+    },
+    "إحصائيات القراءة والختمة" : {
+
+    },
+    "إخفاء تفاصيل المجموعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Hide Group Details"
+          }
+        }
+      }
+    },
+    "إزالة فاصل الآية" : {
+
+    },
+    "إزالة فاصل الصفحة" : {
+
+    },
+    "إزالة من المفضلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Remove from Favorites"
+          }
+        }
+      }
+    },
+    "إضافة" : {
+
+    },
+    "إضافة آيات من القرآن" : {
+
+    },
+    "إضافة آية" : {
+
+    },
+    "إضافة إلى المفضلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add to Favorites"
+          }
+        }
+      }
+    },
+    "إضافة للمجموعة" : {
+
+    },
+    "إضافة من القرآن" : {
+
+    },
+    "إظهار تفاصيل المجموعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Show Group Details"
+          }
+        }
+      }
+    },
+    "إظهار علامات القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Show Qira’at Marks"
+          }
+        }
+      }
+    },
+    "إعادة تعيين" : {
+
+    },
+    "إغلاق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "إغلاق التفاصيل" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Close Details"
+          }
+        }
+      }
+    },
+    "إلغاء" : {
+
+    },
+    "إلى صفحة" : {
+
+    },
+    "ابحث عن آية أو كلمة من القرآن..." : {
+
+    },
+    "ابحث في القرآن الكريم..." : {
+
+    },
+    "اختر السورة لتسجيلها كاملة:" : {
+
+    },
+    "اختر القارئ أو الراوي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Choose a Reader or Narrator"
+          }
+        }
+      }
+    },
+    "اختر نوع التلوين ثم اضغط على الكلمات لتلوينها:" : {
+
+    },
+    "اختيار القارئ أو الراوي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Reader or Narrator Selection"
+          }
+        }
+      }
+    },
+    "اختياري" : {
+
+    },
+    "استعلام البحث:" : {
+
+    },
+    "استيراد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Import"
+          }
+        }
+      }
+    },
+    "استيراد القاعدة الآلية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Import Automation Rules"
+          }
+        }
+      }
+    },
+    "استيراد ملف الآلية (JSON)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Import Automation File (JSON)"
+          }
+        }
+      }
+    },
+    "اسم السورة" : {
+
+    },
+    "الآلية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Automation"
+          }
+        }
+      }
+    },
+    "الآيات (%lld)" : {
+
+    },
+    "الآية الأولى" : {
+
+    },
+    "الآية الأولى (المرجع)" : {
+
+    },
+    "الآية الثانية" : {
+
+    },
+    "الآية الثانية (المقارنة)" : {
+
+    },
+    "الأجزاء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Juz"
+          }
+        }
+      }
+    },
+    "الألوان:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Colors:"
+          }
+        }
+      }
+    },
+    "الإعدادات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "الإمام %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Imam %@"
+          }
+        }
+      }
+    },
+    "البحث في القرآن" : {
+
+    },
+    "التفضيلات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Preferences"
+          }
+        }
+      }
+    },
+    "التلوين التلقائي للفروقات" : {
+
+    },
+    "التوقيت والمدة" : {
+
+    },
+    "الحالة" : {
+
+    },
+    "الحالة والفرز" : {
+
+    },
+    "الْحَمْدُ لِلَّهِ" : {
+
+    },
+    "الختم على حسب السورة" : {
+
+    },
+    "الختمات المكتملة" : {
+
+    },
+    "الختمة الحالية (#%lld) • %lld من %lld آية" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "الختمة الحالية (#%1$lld) • %2$lld من %3$lld آية"
+          }
+        }
+      }
+    },
+    "الختمة رقم %lld" : {
+
+    },
+    "السور" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Surahs"
+          }
+        }
+      }
+    },
+    "السورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Surah"
+          }
+        }
+      }
+    },
+    "الشخصية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Personal"
+          }
+        }
+      }
+    },
+    "العربية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Arabic"
+          }
+        }
+      }
+    },
+    "الفهرس" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Index"
+          }
+        }
+      }
+    },
+    "الفواصل" : {
+
+    },
+    "الفواصل والعلامات" : {
+
+    },
+    "القراءات العشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The Ten Qira’at"
+          }
+        }
+      }
+    },
+    "اللغة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
+    "اللون المميّز" : {
+
+    },
+    "المتبقي: %lld آية" : {
+
+    },
+    "المتشابهات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Mutashabihat"
+          }
+        }
+      }
+    },
+    "المجموع: %lld آية" : {
+
+    },
+    "المجموع: %lld صفحة" : {
+
+    },
+    "المظهر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "الملاحظات والفوائد" : {
+
+    },
+    "المواضع والآيات المتشابهة" : {
+
+    },
+    "الموضع المقروء" : {
+
+    },
+    "النتيجة المتوقعة:" : {
+
+    },
+    "النوع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Type"
+          }
+        }
+      }
+    },
+    "انتهاء عند:" : {
+
+    },
+    "بحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "بحث في الفواصل..." : {
+
+    },
+    "بحث في القرآن..." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search the Quran…"
+          }
+        }
+      }
+    },
+    "بحث في المجموعات أو الآيات..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search groups or verses…"
+          }
+        }
+      }
+    },
+    "بدء ختمة جديدة" : {
+
+    },
+    "بدء من:" : {
+
+    },
+    "بيانات المجموعة" : {
+
+    },
+    "تأكيد الحذف" : {
+
+    },
+    "تأكيد وتسجيل الجلسة" : {
+
+    },
+    "تابع القراءة" : {
+
+    },
+    "تاريخ ووقت القراءة" : {
+
+    },
+    "تحديد كامل السورة (%lld آية)" : {
+
+    },
+    "تصفية" : {
+
+    },
+    "تصفية حسب الاسم أو الرقم..." : {
+
+    },
+    "تطبيق" : {
+
+    },
+    "تطبيق التلوين" : {
+
+    },
+    "تعديل" : {
+
+    },
+    "تعديل المجموعة" : {
+
+    },
+    "تعذّر فتح بيانات المصحف\n%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Couldn’t open the Mushaf data\n%@"
+          }
+        }
+      }
+    },
+    "تلقائي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Automatic"
+          }
+        }
+      }
+    },
+    "تلوتُ عن ظهر قلب (من الذاكرة)" : {
+
+    },
+    "تلوين تلقائي" : {
+
+    },
+    "تم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "تم النسخ" : {
+
+    },
+    "تم تحديد %lld آية" : {
+
+    },
+    "تَمَّتْ خَتْمَةُ الْقُرْآنِ الْكَرِيمِ بِحَمْدِ اللَّهِ وَتَوْفِيقِهِ" : {
+
+    },
+    "تنبيه" : {
+
+    },
+    "جارٍ البحث في القرآن الكريم..." : {
+
+    },
+    "جرّب البحث الموسع أو راجع كتابة الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Try Broad Search or check the spelling"
+          }
+        }
+      }
+    },
+    "جزء" : {
+
+    },
+    "جلسة" : {
+
+    },
+    "حذف" : {
+
+    },
+    "حذف هذه المجموعة نهائياً" : {
+
+    },
+    "حسناً" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "حفظ" : {
+
+    },
+    "حفظ أو مراجعة بدون الاستعانة بالمصحف" : {
+
+    },
+    "حفظ فاصل للآية" : {
+
+    },
+    "حفظ فاصل للصفحة" : {
+
+    },
+    "ختم القرآن" : {
+
+    },
+    "خلاف في الرسم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Orthographic difference"
+          }
+        }
+      }
+    },
+    "خيارات الفواصل" : {
+
+    },
+    "داكن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "ذكي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Smart"
+          }
+        }
+      }
+    },
+    "ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Two readings (with a transmitted variant) — the other reading is also permissible"
+          }
+        }
+      }
+    },
+    "ربط الكلمات" : {
+
+    },
+    "ربط وتلوين الكلمات" : {
+
+    },
+    "رقم الآية" : {
+
+    },
+    "سجل القراءة اليومي" : {
+
+    },
+    "سورة %@، آية %lld • ص %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "سورة %1$@، آية %2$lld • ص %3$lld"
+          }
+        }
+      }
+    },
+    "ص %lld" : {
+
+    },
+    "صفحة %@" : {
+
+    },
+    "صفحة %lld" : {
+
+    },
+    "صفحة بيضاء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "White page"
+          }
+        }
+      }
+    },
+    "صفحة سوداء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Black page"
+          }
+        }
+      }
+    },
+    "طريقة التلاوة" : {
+
+    },
+    "عادي" : {
+
+    },
+    "عرض الإحصائيات" : {
+
+    },
+    "عرض كامل التفاصيل" : {
+
+    },
+    "عرض مجلّاتي" : {
+
+    },
+    "عنوان المتشابه" : {
+
+    },
+    "فائدة فريدة / إضافية" : {
+
+    },
+    "فاتح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "قاعدة آلية" : {
+
+    },
+    "قاعدة آلية رسمية" : {
+
+    },
+    "قراءة القرآن والختمة" : {
+
+    },
+    "كل السور" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "All surahs"
+          }
+        }
+      }
+    },
+    "كيفية استخدام البحث المتقدم:" : {
+
+    },
+    "لا توجد آيات مضافة حتى الآن. يمكنك إضافة آيات من القرآن الكريم أو كتابتها يدوياً." : {
+
+    },
+    "لا توجد سور مطابقة للتصفية" : {
+
+    },
+    "لا توجد فواصل محفوظة" : {
+
+    },
+    "لا توجد مجموعات آلية مخزنة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No saved automatic groups"
+          }
+        }
+      }
+    },
+    "لا توجد مجموعات تطابق البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No groups match your search"
+          }
+        }
+      }
+    },
+    "لا توجد نتائج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No results"
+          }
+        }
+      }
+    },
+    "لا توجد نتائج مطابقة" : {
+
+    },
+    "لحفظ فاصل، اضغط مطولاً على رقم الآية في المصحف" : {
+
+    },
+    "لم تُقرأ بعد • المتبقي: %lld آية" : {
+
+    },
+    "متابعة إنجاز كل سورة والمتبقي منها" : {
+
+    },
+    "متوقفة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Off"
+          }
+        }
+      }
+    },
+    "مثال: الرجفة / الصيحة" : {
+
+    },
+    "مجموع الآيات المقروءة (تراكمي)" : {
+
+    },
+    "مجموعة جديدة" : {
+
+    },
+    "مخصص" : {
+
+    },
+    "مدة الجلسة" : {
+
+    },
+    "مَدَنِيَّة" : {
+
+    },
+    "مزامنة iCloud (مصحف وقراءات)" : {
+
+    },
+    "مزامنة السحابة" : {
+
+    },
+    "مسودة" : {
+
+    },
+    "مطابق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Exact"
+          }
+        }
+      }
+    },
+    "معاينة الآية %lld" : {
+
+    },
+    "مغلقة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Closed"
+          }
+        }
+      }
+    },
+    "مفتوحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Open"
+          }
+        }
+      }
+    },
+    "مفضّلة" : {
+
+    },
+    "مفعّلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
+    "مقفلة" : {
+
+    },
+    "مكتملة" : {
+
+    },
+    "مكتملة • %lld%%" : {
+
+    },
+    "مكتملة • لم يبقَ شيء" : {
+
+    },
+    "مَكِّيَّة" : {
+
+    },
+    "ملاحظة" : {
+
+    },
+    "ملاحظة عامة" : {
+
+    },
+    "ملاحظة: سيتم استبدال الأجزاء الحالية للآيتين بنتيجة المقارنة." : {
+
+    },
+    "من صفحة" : {
+
+    },
+    "منسوخة إلى الشخصية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Copied to Personal"
+          }
+        }
+      }
+    },
+    "منشورة" : {
+
+    },
+    "موسع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Broad"
+          }
+        }
+      }
+    },
+    "نسخ إلى الشخصية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Copy to Personal"
+          }
+        }
+      }
+    },
+    "نسخ إلى مجموعاتي الخاصة" : {
+
+    },
+    "نسخ للمجموعات الخاصة" : {
+
+    },
+    "نص الجزء..." : {
+
+    },
+    "نمط البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search Mode"
+          }
+        }
+      }
+    },
+    "نمط التحديد" : {
+
+    },
+    "هل أنت متأكد من حذف هذه المجموعة نهائياً؟ لا يمكن التراجع عن هذا الإجراء." : {
+
+    },
+    "يرجى اختيار آيتين مختلفتين للمقارنة" : {
+
+    },
+    "يقارن آيتين كلمةً كلمة ويعيّن أنواع الفروقات (مشترك، اختلاف، زيادة، فريد) تلقائياً." : {
+
+    },
+    "يمكنك استيراد ملف بيانات الآلية (JSON) بالضغط على زر استيراد في الأعلى." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "You can import an automation data file (JSON) by tapping Import above."
+          }
+        }
+      }
+    },
+    "يوم" : {
+
+    }
+  },
+  "version" : "1.3"
+}

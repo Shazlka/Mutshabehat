@@ -1,6 +1,7 @@
 import CoreText
 import MushafCore
 import SwiftUI
+import UIKit
 
 /// A tapped word and what the Qiraat layer knows about it.
 struct QiraatWordSelection: Identifiable {
@@ -37,7 +38,6 @@ struct QiraatSheet: View {
                 }
             }
         }
-        .environment(\.layoutDirection, .rightToLeft)
         .presentationDetents([.medium, .large])
     }
 
@@ -80,7 +80,7 @@ struct QiraatSheet: View {
                 Text("خلاف في الرسم").font(.caption2.bold()).foregroundStyle(.secondary)
             }
             Text(verbatim: text)
-                .font(.system(size: 28, weight: .bold))
+                .font(variantFont)
                 .foregroundStyle(Color(qiraatHex: "#7a1f1a"))
                 .frame(maxWidth: .infinity)
             pills(rollupAuthorityPills(scopedReadingIds(variant), catalog: catalog))
@@ -89,6 +89,16 @@ struct QiraatSheet: View {
         .padding(10)
         .background(RoundedRectangle(cornerRadius: 10).fill(.white))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(qiraatHex: "#e3d6b4")))
+    }
+
+    /// QCF page fonts encode complete page-specific word glyphs in the private-use area, so a
+    /// changed Unicode spelling cannot be shaped by them. The KFGQPC Unicode Mushaf face shapes
+    /// the changed reading and its harakat without reusing the original word's incorrect QCF glyph.
+    private var variantFont: Font {
+        let font = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 40)
+            ?? UIFont(name: "DamascusBold", size: 40)
+            ?? UIFont.systemFont(ofSize: 40, weight: .bold)
+        return Font(font)
     }
 
     // MARK: أصول rulings
