@@ -38,6 +38,14 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-05 — Review editor: nquran differences match whole words in their own ayah (no more «آل» on «البحر»), ميم الجمع only on its own word
+- **Owner report:** on «ٱلْبَحْرَ» and «ذَٰلِكُم» the panel offered the nquran difference «آل»; on «وَفِى» it offered «نساءكم وفي» with صلة ميم الجمع, which belongs to «نساءكم» only. Repeated all over the Mushaf.
+- **Cause:** `rankDifferencesForWord` matched by substring after normalising (the location «ال» is inside «البحر» and «ذالكم»), without looking at the ayah, and a two-word location applied to both words.
+- **Fix:** `findNquranDifferencesForWord` (`_lib/nquranReference.ts`) replaces it. A location matches by whole words and must occur in THIS ayah around the clicked word (the editor passes the ayah's words), so a word repeated in the ayah only gets the occurrence the location is about; phrases that run into the next ayah («عظيم ومن») are offered on the words closing the ayah. Spelling differences are bridged (hamza, alef, then a consonant-skeleton second tier for «الصلاة» = «ٱلصَّلَوٰةَ»). Differences whose text says «ميم الجمع» or «هاء الضمير» are offered on the first word of the phrase only (checked: all 6,236 ميم الجمع locations have the ميم on the first word, all 990 multi-word هاء الضمير locations have the ها on the first word). Without the ayah's words it falls back to whole-token equality.
+- **Measured on all 33,603 nquran differences against the Mushaf page words:** 12 locations (0.04%) match no word of their ayah (e.g. «ويبسط»، «اللائي»، «ننجي»); every other one is reachable. Previously 83.8% located by exact phrase; now 99.96% with the two tiers.
+- **Not changed:** other two-word locations (e.g. «الرحيم مالك»، «غشاوة ولهم») are still offered on both words, as the rule can sit on either; say if some category should be first-word-only too.
+- **Verification:** 7 new tests in `nquran-reference.test.ts` using real Mushaf ayah words, `test:qiraat:review` 113/113, typecheck and eslint clean on touched files. Not exercised against the real review page/database. **DB migration:** none.
+
 ## 2026-10-05 — Review editor: a reference group already saved as a wajh shows its saved status, not «✎ في المسودة»
 - **Owner report:** in the nquran / الشامل panel, groups that were already added as a wajh (and approved) still read «✎ في المسودة».
 - **Cause:** the open draft is usually the saved row being edited, so its narrators are "in the draft" too, and the draft badge replaced the saved-status badge (`ReferencePanel.tsx`).

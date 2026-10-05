@@ -12,7 +12,7 @@ import {
   hasNquranReferenceForSurah,
   loadNquranReference,
   nquranGroupsForDifference,
-  rankDifferencesForWord,
+  findNquranDifferencesForWord,
   type NquranAyahEntry,
 } from '../_lib/nquranReference'
 import {
@@ -166,8 +166,14 @@ export default function ReferencePanel({
     const entry = findNquranEntryForAyah(nquranLoaded.entries, selectedWordMeta.ayah)
     if (!entry || entry.differences.length === 0) return null
     // Only the differences about the clicked word -- the rest of the ayah's differences are hidden.
-    return { entry, ranked: rankDifferencesForWord(entry.differences, selectedWordMeta.text).filter((r) => r.matchesWord) }
-  }, [selectedWordMeta, nquranLoaded])
+    return {
+      entry,
+      differences: findNquranDifferencesForWord(entry.differences, selectedWordMeta.text, {
+        wordIndex: selectedWordMeta.word,
+        ayahWords,
+      }),
+    }
+  }, [selectedWordMeta, nquranLoaded, ayahWords])
 
   const shamilEntries = useMemo(() => {
     if (!selectedWordMeta || !shamilLoaded || shamilLoaded.surah !== selectedWordMeta.surah) return null
@@ -268,25 +274,22 @@ export default function ReferencePanel({
         <p className="text-[11px] text-amber-800/80">
           مرجع للاطّلاع — غير معتمد تلقائيًا؛ زر «إضافة كوجه» ينشئ وجهًا جديدًا مُعبَّأً مسبقًا بالقراء/الرواة والبيان دون حفظه، فيبقى قابلًا للتعديل والمراجعة قبل «حفظ».
         </p>
-        {nquranRanked.ranked.length === 0 ? (
+        {nquranRanked.differences.length === 0 ? (
           <p className="text-[11px] text-amber-800">
             لا توجد فروق قراءات موثقة في nquran.com لهذه الكلمة تحديدًا (توجد فروق في كلمات أخرى من الآية).
           </p>
         ) : null}
-        {nquranRanked.ranked.map(({ difference, matchesWord }, idx) => (
+        {nquranRanked.differences.map((difference, idx) => (
           <div
             key={idx}
-            className={cn(
-              'rounded-md border p-1.5',
-              matchesWord ? 'border-amber-500 bg-amber-100/80' : 'border-amber-200/70 bg-white/60',
-            )}
+            className="rounded-md border border-amber-500 bg-amber-100/80 p-1.5"
           >
             <p className="font-quran text-base text-[var(--color-ink)]" dir="rtl">
               ﴿{difference.location}﴾
             </p>
             <div className="mt-1 flex flex-col gap-1">
               {nquranGroupsForDifference(difference).map((group) =>
-                renderGroupRow(group, matchesWord, `nquran:${idx}-${group.key}`, false),
+                renderGroupRow(group, true, `nquran:${idx}-${group.key}`, false),
               )}
             </div>
           </div>

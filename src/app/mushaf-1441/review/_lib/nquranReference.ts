@@ -63,25 +63,109 @@ export function findNquranEntryForAyah(entries: NquranAyahEntry[], ayah: number)
 }
 
 /**
- * Ranks an ayah's differences by relevance to the currently selected word, so the one difference
- * about that exact word surfaces first instead of a reviewer scanning the whole ayah. A location
- * "matches" the word when either text contains the other after Arabic normalization (locations are
- * often multi-word phrases, e.g. "فيه هدى", and a word can be a substring of one).
+ * Key two spellings are compared by: `normalizeArabic`, then the hamza letter and every alef dropped.
+ * nquran writes «أأنذرتهم», «يا أيها», «آل» where the Mushaf writes «ءَأَنذَرْتَهُمْ», «يَـٰٓأَيُّهَا»,
+ * «ءَالَ»; without dropping alefs 16% of the locations found no matching Mushaf word, with it 9%
+ * (what remains is mostly phrases that run into the next ayah).
  */
-export function rankDifferencesForWord(
+function phraseKey(text: string): string {
+  return normalizeArabic(text.replace(/[ئ]/g, '')).replace(/[ءا]/g, '')
+}
+
+/**
+ * Looser second tier for spellings that differ in a long vowel («الصلاة» vs the Mushaf's «ٱلصَّلَوٰةَ»,
+ * «النبيين»): the consonant skeleton. Only tried in the ayah's own words after the exact key found
+ * the location nowhere in them.
+ */
+function skeletonKey(text: string): string {
+  return phraseKey(text).replace(/[وي]/g, '')
+}
+
+/** The clicked word's place in its ayah, as the editor knows it (1-based word numbers). */
+export interface NquranAyahContext {
+  wordIndex: number
+  ayahWords: readonly { word: number; text: string }[]
+}
+
+function isCompleteContext(context: NquranAyahContext): boolean {
+  const words = context.ayahWords
+  return words.length > 0 && words.every((w, i) => w.word === i + 1) && context.wordIndex >= 1 && context.wordIndex <= words.length
+}
+
+/**
+ * Word ranges (0-based, inclusive) of the ayah that spell `phrase` (its keys concatenated, so «يا أيها»
+ * also finds the single Mushaf word «يَـٰٓأَيُّهَا»). A range must start and end on word boundaries, so a
+ * short phrase never matches inside a longer word. A phrase that begins at the end of this ayah and
+ * continues into the next one is returned as the words that close the ayah.
+ */
+function phraseRanges(keys: readonly string[], phrase: string): { first: number; last: number }[] {
+  if (!phrase) return []
+  const starts: number[] = []
+  let concat = ''
+  for (const key of keys) {
+    starts.push(concat.length)
+    concat += key
+  }
+  const wordAt = new Map(starts.map((offset, index) => [offset, index]))
+  const ends = new Map(starts.map((offset, index) => [offset + keys[index].length, index]))
+  const ranges: { first: number; last: number }[] = []
+  for (let from = concat.indexOf(phrase); from !== -1; from = concat.indexOf(phrase, from + 1)) {
+    const first = wordAt.get(from)
+    const last = ends.get(from + phrase.length)
+    if (first !== undefined && last !== undefined && last >= first) ranges.push({ first, last })
+  }
+  for (let head = 1; head < phrase.length; head += 1) {
+    const first = wordAt.get(concat.length - head)
+    if (first !== undefined && concat.endsWith(phrase.slice(0, head))) ranges.push({ first, last: keys.length - 1 })
+  }
+  return ranges
+}
+
+/**
+ * The rule of these differences sits on the first word of the phrase; the second word only decides
+ * how it is read (صلة ميم الجمع before a vowel, صلة هاء الضمير). Every such location in the data has the
+ * ميم/هاء on its first word, so offering it on the neighbour too was a wrong-word suggestion.
+ */
+function ruleSitsOnFirstWord(difference: NquranDifference): boolean {
+  const text = normalizeArabic(difference.groups.map((g) => g.reading).join(' '))
+  return text.includes(normalizeArabic('ميم الجمع')) || text.includes(normalizeArabic('هاء الضمير'))
+}
+
+/**
+ * The differences about the clicked word. A location matches by whole words, never by substring (a
+ * location «آل» used to be offered on «ٱلْبَحْرَ» and «ذَٰلِكُم» because both contain «ال»). With the
+ * ayah's words (`context`), the location must also occur in THIS ayah around the clicked word, so a
+ * word that appears twice only gets the occurrence the location is about. Without the ayah (or when
+ * the location's spelling cannot be found in it) it falls back to whole-token equality.
+ */
+export function findNquranDifferencesForWord(
   differences: readonly NquranDifference[],
   wordText: string,
-): { difference: NquranDifference; matchesWord: boolean }[] {
-  const normWord = normalizeArabic(wordText)
-  return differences
-    .map((difference) => {
-      const normLocation = normalizeArabic(difference.location)
-      const matchesWord = normWord.length > 0 && (
-        normLocation.includes(normWord) || normWord.includes(normLocation)
-      )
-      return { difference, matchesWord }
+  context?: NquranAyahContext,
+): NquranDifference[] {
+  const wanted = phraseKey(wordText)
+  if (!wanted) return []
+  const complete = context && isCompleteContext(context) ? context : null
+  const keys = complete ? complete.ayahWords.map((w) => phraseKey(w.text)) : null
+  const skeletons = complete ? complete.ayahWords.map((w) => skeletonKey(w.text)) : null
+  return differences.filter((difference) => {
+    const firstOnly = ruleSitsOnFirstWord(difference)
+    return difference.location.split(/\s+-\s+/).some((segment) => {
+      const tokens = segment.split(/\s+/).map(phraseKey).filter(Boolean)
+      if (tokens.length === 0) return false
+      const onlyFirst = firstOnly && tokens.length > 1
+      if (keys && skeletons && context) {
+        const at = context.wordIndex - 1
+        const exact = phraseRanges(keys, tokens.join(''))
+        const ranges = exact.length > 0 ? exact : phraseRanges(skeletons, tokens.map(skeletonKey).join(''))
+        if (ranges.length > 0) {
+          return ranges.some((r) => (onlyFirst ? at === r.first : at >= r.first && at <= r.last))
+        }
+      }
+      if (tokens.join('') === wanted) return true
+      return onlyFirst ? tokens[0] === wanted : tokens.includes(wanted)
     })
-    .sort((a, b) => Number(b.matchesWord) - Number(a.matchesWord))
+  })
 }
 
 // ── Reconciliation: nquran.com reader labels → this app's narrator IDs ──────────────────────────
