@@ -288,6 +288,49 @@ async function draft() {
   console.log(`draft: ${variantTypes.length} variant types, ${rowCases.length} face summaries`)
 }
 
+async function builders() {
+  const imalah = await webImport(`${reviewUi}ImalahDetailFields.tsx`)
+  const hamzah = await webImport(`${reviewUi}HamzahDetailFields.tsx`)
+  const performances = ['wasl_waqf', 'waqf_only', 'wasl_only']
+  const khulfs = ['qawlan_wahidan', 'bikhulf']
+  const imalahFaces = []
+  for (const type of ['إمالة', 'تقليل', 'فتح', 'إمالة وتقليل']) for (const p of performances) for (const k of khulfs) {
+    imalahFaces.push([type, p, k, imalah.buildFaceActionText(type, p, k)])
+  }
+  const imalahRuling = []
+  for (const type of ['إمالة', 'تقليل', 'إمالة وتقليل']) for (const wasl of [true, false]) for (const waqf of [true, false]) {
+    imalahRuling.push([type, wasl, waqf, imalah.buildImalahRulingText(type, wasl, waqf)])
+  }
+  const detect = ['', null, 'إمالة', 'تقليل', 'فتح', 'إمالة وتقليل', ' تقليل الألف ', 'نص آخر', 'فتح وإمالة', 'تقليل وإمالة'].map((t) => [t, imalah.detectImalahType(t)])
+  const hamzahFaces = []
+  const treatments = ['تحقيق', 'تسهيل', 'إبدال', 'نقل', 'حذف', 'إسقاط', 'سكت قبل الهمز']
+  for (const p of performances) for (const k of khulfs) {
+    for (const first of treatments) for (const second of treatments) for (const idkhal of [true, false]) {
+      hamzahFaces.push(['HAMZATAN_KALIMA', { kalimaFirst: first, kalimaSecond: second, kalimaIdkhal: idkhal, performance: p, khulf: k },
+        hamzah.buildHamzahFaceActionText('HAMZATAN_KALIMA', { kalimaFirst: first, kalimaSecond: second, kalimaIdkhal: idkhal, performance: p, khulf: k })])
+      hamzahFaces.push(['HAMZATAN_KALIMATAYN', { kalimataynFirst: first, kalimataynSecond: second, performance: p, khulf: k },
+        hamzah.buildHamzahFaceActionText('HAMZATAN_KALIMATAYN', { kalimataynFirst: first, kalimataynSecond: second, performance: p, khulf: k })])
+    }
+    for (const t of treatments) {
+      hamzahFaces.push(['TAGHYIR_HAMZ', { singleTreatment: t, performance: p, khulf: k },
+        hamzah.buildHamzahFaceActionText('TAGHYIR_HAMZ', { singleTreatment: t, performance: p, khulf: k })])
+    }
+  }
+  // Defaults: every parameter left out.
+  const defaults = ['HAMZATAN_KALIMA', 'HAMZATAN_KALIMATAYN', 'TAGHYIR_HAMZ'].map((c) => [c, hamzah.buildHamzahFaceActionText(c, { performance: 'wasl_waqf', khulf: 'qawlan_wahidan' })])
+  fs.writeFileSync(path.join(out, 'builders.json'), JSON.stringify({
+    imalahFaces, imalahRuling, detect, hamzahFaces, defaults,
+    presets: {
+      imalahNarrators: imalah.IMALAH_NARRATOR_IDS, taqlilNarrators: imalah.TAQLIL_NARRATOR_IDS,
+      kalimaTashilIdkhal: hamzah.KALIMA_TASHIL_IDKHAL_IDS, kalimaTashilNoIdkhal: hamzah.KALIMA_TASHIL_NO_IDKHAL_IDS,
+      kalimaTahqiq: hamzah.KALIMA_TAHQIQ_IDS, kalimataynIsqatFirst: hamzah.KALIMATAYN_ISQAT_FIRST_IDS,
+      kalimataynTashilFirst: hamzah.KALIMATAYN_TASHIL_FIRST_IDS, kalimataynTashilSecond: hamzah.KALIMATAYN_TASHIL_SECOND_IDS,
+      kalimataynTahqiq: hamzah.KALIMATAYN_TAHQIQ_IDS,
+    },
+  }))
+  console.log(`builders: ${imalahFaces.length} imalah faces, ${hamzahFaces.length} hamzah faces`)
+}
+
 const pages = loadPages()
 if (wants('nquran')) await nquran(pages)
 if (wants('shamil')) await shamil(pages)
@@ -295,3 +338,4 @@ if (wants('narrators')) await narrators()
 if (wants('decision')) await decisions()
 if (wants('apply')) await apply()
 if (wants('draft')) await draft()
+if (wants('builders')) await builders()

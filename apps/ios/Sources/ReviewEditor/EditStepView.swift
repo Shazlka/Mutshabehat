@@ -34,6 +34,18 @@ struct EditStepView: View {
                 } else {
                     CategoryPickerSection(store: store)
                 }
+                if draft.kind == .usul, let code = draft.categoryCode, CategoryRules.isSpecial(code) {
+                    Section {
+                        NavigationLink {
+                            FaceBuilderView(store: store, category: code)
+                        } label: {
+                            Label(CategoryRules.isImalah(code) ? "منشئ أوجه الممال والمقلل" : "منشئ أوجه الهمز", systemImage: "wand.and.stars.inverse")
+                        }
+                        .accessibilityIdentifier("review-open-builder")
+                    } footer: {
+                        Text("يضيف الوجه بالقراء والأداء والخلاف دفعة واحدة، ويحفظ تفاصيله مع الوجه.")
+                    }
+                }
                 Section("الوصل والوقف") {
                     Toggle("وصلاً", isOn: waslBinding(draft))
                     Toggle("وقفًا", isOn: waqfBinding(draft))
@@ -217,7 +229,7 @@ private struct ReaderNarratorPickerSection: View {
 
 // MARK: تفاصيل الأداء والأوجه
 
-private struct NarratorFacesSection: View {
+struct NarratorFacesSection: View {
     let store: ReviewStore
 
     private var narrators: [NarratorInput] { store.session?.draft.narrators ?? [] }

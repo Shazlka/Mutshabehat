@@ -107,6 +107,36 @@ final class ReviewEditorUITests: XCTestCase {
         XCTAssertTrue(created.waitForExistence(timeout: 10))
     }
 
+    /// Scrolls the edit list (or the builder list) until the element can be tapped.
+    private func reveal(_ id: String, in app: XCUIApplication, listID: String) -> XCUIElement {
+        let target = element(id, in: app)
+        var tries = 0
+        while !target.isHittable && tries < 10 { element(listID, in: app).swipeUp(); tries += 1 }
+        return target
+    }
+
+    func testAnImalahFaceIsBuiltWithThePresetAndSaved() {
+        let app = launch()
+        openEditorPage(app)
+        element("review-word-002:049:008", in: app).tap()
+        XCTAssertTrue(app.buttons["review-new-face"].waitForExistence(timeout: 5))
+        app.buttons["review-new-face"].tap()
+        XCTAssertTrue(element("review-edit-step", in: app).waitForExistence(timeout: 5))
+        element("review-sheet-word", in: app).swipeUp()                       // the sheet to full height
+        app.buttons["أصول القراءات"].tap()
+        reveal("review-category-IMALAH_TAQLIL", in: app, listID: "review-edit-step").tap()
+        reveal("review-open-builder", in: app, listID: "review-edit-step").tap()
+        let warshOnly = app.buttons["ورش فقط"]
+        XCTAssertTrue(warshOnly.waitForExistence(timeout: 5))
+        warshOnly.tap()
+        reveal("review-builder-add", in: app, listID: "review-edit-step").tap()
+        XCTAssertTrue(app.staticTexts["تمت إضافة الوجه لـ (1) رواة ✓"].waitForExistence(timeout: 5))
+        let approve = app.buttons["review-approve"]
+        XCTAssertTrue(approve.waitForExistence(timeout: 5))
+        approve.tap()
+        XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
+    }
+
     func testTheSettingsRowsThatExistedBeforeAreAllStillThere() {
         let app = launch()
         openSettings(app)
