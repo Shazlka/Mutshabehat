@@ -9,6 +9,7 @@ final class StubReviewServer: @unchecked Sendable {
     private let lock = NSLock()
     private let database: MushafDatabase
     private var pages: [Int: [ReviewRow]] = [:]
+    private var undoneTransactions: Set<Int> = [82]
     private var counter = 1
     private var received: [String] = []
 
@@ -96,7 +97,14 @@ final class StubReviewServer: @unchecked Sendable {
             let query = request.url?.query ?? ""
             if request.httpMethod == "GET" {
                 if query.contains("overview=1") { return overview(json) }
-                if query.contains("history=1") { return (200, "[]") }
+                if query.contains("history=1") {
+                    return (200, """
+                    [{"txid":81,"at":"2026-10-05T10:00:00Z","deviceId":"review-stub-device","undone":\(undoneTransactions.contains(81)),
+                      "changes":[{"table":"qiraat_entries","op":"UPDATE","field":"review_status","old":"unreviewed","new":"reviewed"}]},
+                     {"txid":82,"at":"2026-10-05T09:00:00Z","deviceId":"review-stub-device","undone":true,
+                      "changes":[{"table":"qiraat_entries","op":"INSERT"}]}]
+                    """)
+                }
                 let number = query.split(separator: "&").compactMap { $0.hasPrefix("page=") ? Int($0.dropFirst(5)) : nil }.first ?? 1
                 let live = rows(number)
                 let page = ReviewPage(page: number, words: words(number), rows: live, stats: ReviewPageEditing.stats(for: live),
@@ -192,7 +200,12 @@ final class StubReviewServer: @unchecked Sendable {
             ReviewPageEditing.upsert(row, into: &page)
             pages[number] = page.rows
             return json(row)
-        case "undo": return (200, #"{"undone":1}"#)
+        case "undo":
+            guard let txid = body["txid"] as? Int, txid == 81, !undoneTransactions.contains(txid) else {
+                return (409, #"{"error":"UNDO_REFUSED"}"#)
+            }
+            undoneTransactions.insert(txid)
+            return (200, #"{"undone":1}"#)
         case "bulkDelete": return (200, #"{"deleted":[]}"#)
         case "findOccurrences", "suggest", "findSameWord": return (200, "[]")
         default: return (400, #"{"error":"bad_request"}"#)

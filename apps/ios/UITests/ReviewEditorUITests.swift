@@ -137,6 +137,19 @@ final class ReviewEditorUITests: XCTestCase {
         XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
     }
 
+    func testHistoryShowsBothStubTransactions() {
+        let app = launch()
+        openEditorPage(app)
+        let history = app.buttons["review-history-button"]
+        XCTAssertTrue(history.waitForExistence(timeout: 5))
+        history.tap()
+        XCTAssertTrue(app.staticTexts["تعديل الحالة: غير مراجَع ← مُراجَع"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["إضافة وجه"].exists)
+        XCTAssertTrue(app.staticTexts["تم التراجع"].exists)
+        XCTAssertTrue(app.buttons["review-history-undo-81"].isEnabled)
+        XCTAssertFalse(app.buttons["review-history-undo-82"].isEnabled)
+    }
+
     func testTheSettingsRowsThatExistedBeforeAreAllStillThere() {
         let app = launch()
         openSettings(app)

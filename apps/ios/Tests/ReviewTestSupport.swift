@@ -21,6 +21,10 @@ final class ReviewTestServer: @unchecked Sendable {
     private let lock = NSLock()
     private var specs: [Spec]
     private var counter = 1
+    var historyTransactions: [HistoryTransaction] = []
+    var historyStatus = 200
+    var undoError: ReviewErrorCode?
+    private var undoneTransactions: Set<Int> = []
     var patchStatus = 200
     var postStatus = 200
     /// Bodies of every create received.
@@ -80,6 +84,13 @@ final class ReviewTestServer: @unchecked Sendable {
             }
         }
         if request.httpMethod == "POST" {
+            if body["action"] as? String == "undo" {
+                if let undoError { return (409, "{\"error\":\"\(undoError.rawValue)\"}") }
+                return lock.withLock {
+                    if let txid = body["txid"] as? Int { undoneTransactions.insert(txid) }
+                    return (200, #"{"undone":1}"#)
+                }
+            }
             guard (body["action"] as? String) == "create", let entry = body["entry"] as? [String: Any] else { return (200, "[]") }
             if postStatus != 200 { return (postStatus, #"{"error":"unavailable"}"#) }
             return lock.withLock {
@@ -92,6 +103,18 @@ final class ReviewTestServer: @unchecked Sendable {
                                 kind: entry["kind"] as? String ?? "usul", narrators: ids)
                 specs.append(spec)
                 return (200, rowJSON(spec))
+            }
+        }
+        if request.url?.query?.contains("history=1") == true {
+            if historyStatus != 200 { return (historyStatus, #"{"error":"unavailable"}"#) }
+            return lock.withLock {
+                let data = (try? JSONEncoder().encode(historyTransactions)) ?? Data("[]".utf8)
+                var objects = (try? JSONSerialization.jsonObject(with: data) as? [[String: Any]]) ?? []
+                for index in objects.indices {
+                    if let txid = objects[index]["txid"] as? Int, undoneTransactions.contains(txid) { objects[index]["undone"] = true }
+                }
+                let result = (try? JSONSerialization.data(withJSONObject: objects)) ?? Data("[]".utf8)
+                return (200, String(decoding: result, as: UTF8.self))
             }
         }
         if request.url?.query?.contains("overview") == true {

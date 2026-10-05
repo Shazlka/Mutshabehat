@@ -9,6 +9,8 @@ struct ReviewPageScreen: View {
     let initialPage: Int
     @AppStorage("review:last-page:v1") private var lastPage = 1
 
+    @State private var showingHistory = false
+
     private var selectedKeys: Set<String> {
         var keys: Set<String> = []
         if let a = store.selectedKey { keys.insert(a) }
@@ -54,6 +56,15 @@ struct ReviewPageScreen: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button { showingHistory = true } label: {
+                    Label("سجل التعديلات", systemImage: "clock.arrow.circlepath")
+                }
+                .accessibilityIdentifier("review-history-button")
+            }
+        }
+        .sheet(isPresented: $showingHistory) { ReviewHistoryView(store: store) }
         .task(id: initialPage) {
             lastPage = initialPage
             await store.load(page: initialPage)

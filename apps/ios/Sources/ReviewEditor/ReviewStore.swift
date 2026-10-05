@@ -28,6 +28,9 @@ final class ReviewStore {
     private(set) var keyIndex: [String: MushafWord] = [:]
     private(set) var statuses: [String: WordStatus] = [:]
     private(set) var overview: ReviewOverview?
+    var history: [HistoryTransaction] = []
+    var historyState: LoadState = .idle
+    var undoingTransaction: Int?
     private(set) var loadState: LoadState = .idle
     private(set) var saveStatus: SaveStatus = .idle
     private(set) var failures: [SaveFailure] = []
@@ -61,7 +64,7 @@ final class ReviewStore {
     @ObservationIgnored let api: ReviewAPI
     @ObservationIgnored private let queue: ReviewQueue
     @ObservationIgnored private let mushafPage: (Int) -> MushafPage?
-    @ObservationIgnored private let liveRefresh: (Int) -> Void
+    @ObservationIgnored let liveRefresh: (Int) -> Void
     @ObservationIgnored private var subscription: Task<Void, Never>?
     @ObservationIgnored private var jobs: [UUID: JobInfo] = [:]
     @ObservationIgnored private var pending = 0
@@ -116,7 +119,7 @@ final class ReviewStore {
         let target = min(mushafPageCount, max(1, number))
         let changed = target != pageNumber
         pageNumber = target
-        if changed { selectedKey = nil; spanEndKey = nil }
+        if changed { selectedKey = nil; spanEndKey = nil; history = []; historyState = .idle }
         loadState = .loading
         switch await api.page(target, includeDeleted: true) {
         case .success(let loaded):
