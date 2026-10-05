@@ -225,6 +225,30 @@ public struct ReviewRow: Codable, Hashable, Sendable, Identifiable {
     public var narrators: [ReviewNarrator]
     public var flags: [ReviewFlag]
 
+    public init(entryId: String, locationId: String = "", version: String = "", kind: ReadingKind,
+                categoryCode: String? = nil, categoryNameAr: String? = nil, surah: Int, ayah: Int, startWord: Int,
+                endAyah: Int? = nil, endWord: Int? = nil, startKey: String = "", endKey: String = "", page: Int = 0,
+                hafsText: String = "", readingText: String? = nil, uthmaniText: String? = nil,
+                description: String? = nil, performanceNote: String? = nil, variantType: String? = nil,
+                rulingText: String? = nil, options: [String]? = nil, notes: String? = nil,
+                reviewStatus: ReviewStatus = .unreviewed, locationReviewStatus: ReviewStatus = .unreviewed,
+                verificationStatus: String = "", legacyRef: String? = nil, entryOrder: Int = 0, deleted: Bool = false,
+                appliesWasl: Bool = true, appliesWaqf: Bool = true, hamzahDetail: HamzahDetail? = nil,
+                narrators: [ReviewNarrator] = [], flags: [ReviewFlag] = []) {
+        self.entryId = entryId; self.locationId = locationId; self.version = version; self.kind = kind
+        self.categoryCode = categoryCode; self.categoryNameAr = categoryNameAr
+        self.surah = surah; self.ayah = ayah; self.startWord = startWord
+        self.endAyah = endAyah ?? ayah; self.endWord = endWord ?? startWord
+        self.startKey = startKey; self.endKey = endKey; self.page = page; self.hafsText = hafsText
+        self.readingText = readingText; self.uthmaniText = uthmaniText; self.description = description
+        self.performanceNote = performanceNote; self.variantType = variantType; self.rulingText = rulingText
+        self.options = options; self.notes = notes; self.reviewStatus = reviewStatus
+        self.locationReviewStatus = locationReviewStatus; self.verificationStatus = verificationStatus
+        self.legacyRef = legacyRef; self.entryOrder = entryOrder; self.deleted = deleted
+        self.appliesWasl = appliesWasl; self.appliesWaqf = appliesWaqf; self.hamzahDetail = hamzahDetail
+        self.narrators = narrators; self.flags = flags
+    }
+
     public var isActive: Bool { !deleted }
 
     /// True when `word` of `ayah` lies inside the span this entry covers (one word, two words, or
@@ -332,6 +356,11 @@ public struct PageStats: Codable, Hashable, Sendable {
     }
 
     enum CodingKeys: String, CodingKey { case total, unreviewed, reviewed, flagged, deleted }
+
+    public init(total: Int, unreviewed: Int, reviewed: Int, flagged: Int, deleted: Int) {
+        self.total = total; self.unreviewed = unreviewed; self.reviewed = reviewed
+        self.flagged = flagged; self.deleted = deleted
+    }
 }
 
 public struct ReviewPage: Codable, Hashable, Sendable {
@@ -350,11 +379,18 @@ public struct PageProgress: Codable, Hashable, Sendable {
     public let unreviewed: Int
     public let reviewed: Int
     public let flagged: Int
+
+    public init(page: Int, total: Int, unreviewed: Int, reviewed: Int, flagged: Int) {
+        self.page = page; self.total = total; self.unreviewed = unreviewed
+        self.reviewed = reviewed; self.flagged = flagged
+    }
 }
 
 public struct ReviewOverview: Codable, Hashable, Sendable {
     public let isEditor: Bool
     public let pages: [PageProgress]
+
+    public init(isEditor: Bool, pages: [PageProgress]) { self.isEditor = isEditor; self.pages = pages }
 }
 
 public struct HistoryChange: Codable, Hashable, Sendable {
