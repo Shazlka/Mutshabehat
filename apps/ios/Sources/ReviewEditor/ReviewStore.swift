@@ -33,10 +33,28 @@ final class ReviewStore {
     private(set) var failures: [SaveFailure] = []
     /// A short message to show once (a guard or a refused action); the view clears it.
     var notice: String?
+    /// The face just deleted, so the sheet can offer «تراجع».
+    var lastDeleted: ReviewRow?
 
     var selectedKey: String?
     /// The end of a two-word span, when the reviewer linked the next word.
     var spanEndKey: String?
+
+    /// The face being edited (an existing row or a new entry for the selected word).
+    struct EditSession: Equatable {
+        var draft: ReviewDraftFields
+        var original: ReviewDraftFields
+        var rowId: String?
+        var newEntry: CreateEntryInput?
+    }
+    var session: EditSession?
+    /// A move (word, page or closing the sheet) the reviewer asked for while edits are unsaved; it waits for
+    /// a confirmation.
+    var pendingSelection: String?
+    var pendingPage: Int?
+    var pendingClose = false
+    /// The part of a reference's suggestion that was not applied; offered as a tap-to-apply chip.
+    var pendingSuggestion: ReferenceSuggestion?
 
     // MARK: Plumbing
 
@@ -157,22 +175,25 @@ final class ReviewStore {
         overview.flatMap { ReviewNavigation.nextPage(in: $0, after: pageNumber, needing: .flagged) }
     }
 
+    /// Moves the selection and drops any edit session (the guard against losing edits is `requestSelect`).
     func select(key: String?, extendingSpan: Bool = false) {
         if extendingSpan, let anchor = selectedKey, let key, key != anchor { spanEndKey = key; return }
         selectedKey = key
         spanEndKey = nil
+        session = nil
+        pendingSuggestion = nil
     }
 
     // MARK: Saving
 
-    private func upsert(_ row: ReviewRow, replacing placeholder: String? = nil) {
+    func upsert(_ row: ReviewRow, replacing placeholder: String? = nil) {
         guard var current = page else { return }
         ReviewPageEditing.upsert(row, replacing: placeholder, into: &current)
         page = current
     }
 
     /// Refuses edits of a row whose first save has not finished (its id is still a placeholder).
-    private func canEdit(_ row: ReviewRow) -> Bool {
+    func canEdit(_ row: ReviewRow) -> Bool {
         if ReviewPageEditing.isPlaceholder(row) {
             notice = "هذا الوجه ما زال قيد الحفظ — انتظر لحظة ثم أعد المحاولة"
             return false
@@ -214,6 +235,7 @@ final class ReviewStore {
 
     func delete(_ row: ReviewRow) {
         guard canEdit(row) else { return }
+        lastDeleted = row
         var optimistic = row
         optimistic.deleted = true
         submit(SaveJobPlan(label: "حذف", chainKey: "entry:\(row.entryId)", steps: [.delete(note: nil)]), row: row) { [weak self] in
@@ -223,6 +245,7 @@ final class ReviewStore {
 
     func restore(_ row: ReviewRow) {
         guard canEdit(row) else { return }
+        if lastDeleted?.entryId == row.entryId { lastDeleted = nil }
         var optimistic = row
         optimistic.deleted = false
         submit(SaveJobPlan(label: "استرجاع", chainKey: "entry:\(row.entryId)", steps: [.restore]), row: row) { [weak self] in
