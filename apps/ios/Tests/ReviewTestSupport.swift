@@ -22,6 +22,9 @@ final class ReviewTestServer: @unchecked Sendable {
     private var specs: [Spec]
     private var counter = 1
     var patchStatus = 200
+    var postStatus = 200
+    /// Bodies of every create received.
+    private(set) var created: [[String: Any]] = []
     /// `action` of every write, in order.
     private(set) var actions: [String] = []
 
@@ -78,7 +81,9 @@ final class ReviewTestServer: @unchecked Sendable {
         }
         if request.httpMethod == "POST" {
             guard (body["action"] as? String) == "create", let entry = body["entry"] as? [String: Any] else { return (200, "[]") }
+            if postStatus != 200 { return (postStatus, #"{"error":"unavailable"}"#) }
             return lock.withLock {
+                created.append(entry)
                 counter += 1
                 let start = entry["startWord"] as? Int ?? 1
                 let end = entry["endWord"] as? Int ?? start
@@ -96,10 +101,11 @@ final class ReviewTestServer: @unchecked Sendable {
     }
 
     @MainActor
-    static func makeStore(_ specs: [Spec], patchStatus: Int = 200,
+    static func makeStore(_ specs: [Spec], patchStatus: Int = 200, postStatus: Int = 200,
                           refresh: @escaping (Int) -> Void = { _ in }) throws -> (ReviewStore, StubReviewTransport, ReviewTestServer) {
         let server = ReviewTestServer(specs)
         server.patchStatus = patchStatus
+        server.postStatus = postStatus
         let transport = StubReviewTransport { server.handle($0) }
         let library = try MushafLibrary()
         let api = ReviewAPI(baseURL: URL(string: "https://example.test")!, transport: transport, deviceId: "dev")
