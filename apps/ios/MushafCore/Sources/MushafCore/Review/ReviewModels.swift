@@ -54,6 +54,10 @@ public struct ReviewWord: Codable, Hashable, Sendable, Identifiable {
     public let word: Int
     public let line: Int
     public let text: String
+
+    public init(key: String, surah: Int, ayah: Int, word: Int, line: Int, text: String) {
+        self.key = key; self.surah = surah; self.ayah = ayah; self.word = word; self.line = line; self.text = text
+    }
 }
 
 public struct ReviewNarrator: Codable, Hashable, Sendable, Identifiable {
@@ -320,6 +324,10 @@ public struct CatalogNarrator: Codable, Hashable, Sendable, Identifiable {
     public let type: Kind
     public let color: String?
 
+    public init(id: String, code: String? = nil, nameAr: String, parentId: String? = nil, type: Kind, color: String? = nil) {
+        self.id = id; self.code = code; self.nameAr = nameAr; self.parentId = parentId; self.type = type; self.color = color
+    }
+
     enum CodingKeys: String, CodingKey { case id, code, nameAr, parentId, type, color }
 
     public init(from decoder: Decoder) throws {
@@ -337,6 +345,8 @@ public struct ReviewCategory: Codable, Hashable, Sendable, Identifiable {
     public var id: String { code }
     public let code: String
     public let nameAr: String
+
+    public init(code: String, nameAr: String) { self.code = code; self.nameAr = nameAr }
 }
 
 public struct PageStats: Codable, Hashable, Sendable {
@@ -371,6 +381,12 @@ public struct ReviewPage: Codable, Hashable, Sendable {
     public var narrators: [CatalogNarrator]
     public var categories: [ReviewCategory]
     public var variantTypes: [String]
+
+    public init(page: Int, words: [ReviewWord], rows: [ReviewRow], stats: PageStats, narrators: [CatalogNarrator],
+                categories: [ReviewCategory], variantTypes: [String]) {
+        self.page = page; self.words = words; self.rows = rows; self.stats = stats
+        self.narrators = narrators; self.categories = categories; self.variantTypes = variantTypes
+    }
 }
 
 public struct PageProgress: Codable, Hashable, Sendable {
