@@ -47,7 +47,11 @@ final class MushafPageView: UIView {
     private(set) var layout: PageLayout?
     /// The Qiraat layer as the reader set it; marks are recomputed only when this or the layout changes.
     var qiraat: QiraatDisplay = .off {
-        didSet { if qiraat != oldValue { refreshQiraatMarks() } }
+        didSet {
+            guard qiraat != oldValue else { return }
+            refreshQiraatMarks()
+            if qiraat.enabled { refreshLiveQiraat(force: true) }
+        }
     }
     var highlightedWordIDs: Set<String> = [] {
         didSet {
@@ -115,6 +119,53 @@ final class MushafPageView: UIView {
             (try? fonts.advance(of: word.glyph, page: number, size: size)) ?? 0
         }
         refreshQiraatMarks()
+    }
+
+    // MARK: Live Qiraat data (the web app's database is the source of truth)
+
+    private static let liveRefreshInterval: TimeInterval = 10
+    private var liveTimer: Timer?
+    private var liveObservers: [NSObjectProtocol] = []
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil { startLiveQiraat() } else { stopLiveQiraat() }
+    }
+
+    /// While this page is on screen: fetch it now, on returning to the app, and every few seconds, so a
+    /// face saved in the web review editor shows here without relaunching or syncing.
+    private func startLiveQiraat() {
+        guard liveTimer == nil else { return }
+        let center = NotificationCenter.default
+        liveObservers = [
+            center.addObserver(forName: .qiraatPageDidChange, object: nil, queue: .main) { [weak self] note in
+                let changedPage = note.userInfo?["page"] as? Int
+                MainActor.assumeIsolated {
+                    guard let self, changedPage == self.page.number else { return }
+                    self.refreshQiraatMarks()
+                }
+            },
+            center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
+                MainActor.assumeIsolated { self?.refreshLiveQiraat(force: true) }
+            },
+        ]
+        liveTimer = Timer.scheduledTimer(withTimeInterval: Self.liveRefreshInterval, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated { self?.refreshLiveQiraat(force: false) }
+        }
+        refreshLiveQiraat(force: true)
+    }
+
+    private func stopLiveQiraat() {
+        liveTimer?.invalidate()
+        liveTimer = nil
+        liveObservers.forEach(NotificationCenter.default.removeObserver)
+        liveObservers = []
+    }
+
+    private func refreshLiveQiraat(force: Bool) {
+        guard qiraat.enabled, window != nil else { return }
+        let number = page.number, store = library.qiraat
+        Task { await QiraatLiveSync.shared.refresh(page: number, store: store, force: force) }
     }
 
     private func refreshQiraatMarks() {

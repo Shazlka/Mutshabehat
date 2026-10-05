@@ -42,6 +42,63 @@ import Testing
         #expect(store.page(605) == nil)
     }
 
+    // MARK: Live pages (the web app is the source of truth; a fetched page is kept next to the snapshot)
+
+    private let liveVariantPage = #"{"pageNumber":7,"variants":[{"id":"v-live","surah":2,"ayah":51,"startToken":11,"hafsText":"a","variantText":"b","verificationStatus":"REVIEWED","readingIds":["Q06-R01"]}],"rulings":[],"rules":[]}"#
+
+    @Test func aLivePageReplacesTheSnapshotPageAndSurvivesARelaunch() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: #"{"pageNumber":7,"variants":[],"rulings":[],"rules":[]}"#])
+        let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: dir); try? FileManager.default.removeItem(at: overlay) }
+        let store = try QiraatStore(directory: dir, overlayDirectory: overlay)
+        #expect(store.page(7)?.variants.isEmpty == true)
+
+        #expect(try store.applyLivePage(Data(liveVariantPage.utf8), number: 7) == true)
+        #expect(store.page(7)?.variants.map(\.id) == ["v-live"])
+        #expect(store.marks(page: 7) != nil)
+        // Same bytes again: nothing changed, so nothing needs redrawing.
+        #expect(try store.applyLivePage(Data(liveVariantPage.utf8), number: 7) == false)
+
+        let relaunched = try QiraatStore(directory: dir, overlayDirectory: overlay)
+        #expect(relaunched.page(7)?.variants.map(\.id) == ["v-live"])
+        // The snapshot itself is untouched.
+        #expect(try QiraatStore(directory: dir).page(7)?.variants.isEmpty == true)
+    }
+
+    @Test func aLivePageForAPageTheSnapshotLacksIsShown() throws {
+        let dir = try temporaryStoreDirectory(pages: [:])
+        let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: dir); try? FileManager.default.removeItem(at: overlay) }
+        let store = try QiraatStore(directory: dir, overlayDirectory: overlay)
+        #expect(store.page(7) == nil)
+        #expect(try store.applyLivePage(Data(liveVariantPage.utf8), number: 7))
+        #expect(store.page(7)?.variants.count == 1)
+    }
+
+    /// A bad response (another page, truncated, wrong shape) must never replace good data.
+    @Test func anInvalidLivePageIsRejectedAndKeepsWhatWasThere() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: #"{"pageNumber":7,"variants":[],"rulings":[],"rules":[]}"#])
+        let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: dir); try? FileManager.default.removeItem(at: overlay) }
+        let store = try QiraatStore(directory: dir, overlayDirectory: overlay)
+        try store.applyLivePage(Data(liveVariantPage.utf8), number: 7)
+
+        #expect(throws: QiraatStore.LiveFailure.invalidPage) { try store.applyLivePage(Data(liveVariantPage.utf8), number: 8) }
+        #expect(throws: QiraatStore.LiveFailure.invalidPage) { try store.applyLivePage(Data("{ truncated".utf8), number: 7) }
+        #expect(throws: QiraatStore.LiveFailure.invalidPage) { try store.applyLivePage(Data(liveVariantPage.utf8), number: 0) }
+        #expect(store.page(7)?.variants.map(\.id) == ["v-live"])
+    }
+
+    @Test func clearingTheOverlayGoesBackToTheSnapshot() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: #"{"pageNumber":7,"variants":[],"rulings":[],"rules":[]}"#])
+        let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: dir); try? FileManager.default.removeItem(at: overlay) }
+        let store = try QiraatStore(directory: dir, overlayDirectory: overlay)
+        try store.applyLivePage(Data(liveVariantPage.utf8), number: 7)
+        store.clearOverlay()
+        #expect(store.page(7)?.variants.isEmpty == true)
+    }
+
     @Test func aMissingCatalogIsAnError() throws {
         let dir = try temporaryStoreDirectory(pages: [:], catalog: false)
         defer { try? FileManager.default.removeItem(at: dir) }

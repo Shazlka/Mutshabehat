@@ -38,8 +38,9 @@ final class MushafLibrary {
         surahAyahCounts = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.ayahCount) })
         surahNames = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.name) })
         let imported = QiraatBackupService.importedDirectory
-        qiraat = (try? QiraatStore(directory: imported))
-            ?? bundle.url(forResource: "Qiraat", withExtension: nil).flatMap { try? QiraatStore(directory: $0) }
+        let live = QiraatLiveSync.overlayDirectory
+        qiraat = (try? QiraatStore(directory: imported, overlayDirectory: live))
+            ?? bundle.url(forResource: "Qiraat", withExtension: nil).flatMap { try? QiraatStore(directory: $0, overlayDirectory: live) }
     }
 
     private static var didRegisterHafsFont = false
@@ -93,6 +94,9 @@ final class MushafLibrary {
     }
 
     func installQiraatBackup(_ data: Data) throws {
-        qiraat = try QiraatBackupService.install(data)
+        // A backup replaces the snapshot; pages fetched live earlier were laid over the old one.
+        try? FileManager.default.removeItem(at: QiraatLiveSync.overlayDirectory)
+        let installed = try QiraatBackupService.install(data)
+        qiraat = try QiraatStore(directory: installed.directory, overlayDirectory: QiraatLiveSync.overlayDirectory)
     }
 }
