@@ -10,6 +10,10 @@ struct ReviewPageScreen: View {
     @AppStorage("review:last-page:v1") private var lastPage = 1
 
     @State private var showingHistory = false
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    /// Regular width (iPad): the word's steps sit beside the page instead of in a sheet over it.
+    private var sideBySide: Bool { horizontalSizeClass == .regular }
 
     private var selectedKeys: Set<String> {
         var keys: Set<String> = []
@@ -24,6 +28,54 @@ struct ReviewPageScreen: View {
     }
 
     var body: some View {
+        Group {
+            if sideBySide {
+                HStack(spacing: 0) {
+                    pageColumn
+                    Divider()
+                    sidePanel.frame(width: 440)
+                }
+            } else {
+                pageColumn
+            }
+        }
+        .navigationTitle(title)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button { showingHistory = true } label: {
+                    Label("سجل التعديلات", systemImage: "clock.arrow.circlepath")
+                }
+                .accessibilityIdentifier("review-history-button")
+            }
+        }
+        .sheet(isPresented: $showingHistory) { ReviewHistoryView(store: store) }
+        .task(id: initialPage) {
+            lastPage = initialPage
+            await store.load(page: initialPage)
+        }
+        .sheet(isPresented: Binding(get: { !sideBySide && store.selectedKey != nil },
+                                    set: { if !$0 { store.requestSelect(key: nil) } })) {
+            ReviewWordSheet(store: store)
+                .presentationDetents([.medium, .large])
+                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                .presentationDragIndicator(.visible)
+                .environment(\.layoutDirection, .rightToLeft)
+        }
+    }
+
+    @ViewBuilder private var sidePanel: some View {
+        if store.selectedKey != nil {
+            ReviewWordSheet(store: store, embedded: true)
+                .environment(\.layoutDirection, .rightToLeft)
+        } else {
+            ContentUnavailableView("اختر كلمة من الصفحة", systemImage: "hand.tap",
+                                   description: Text("تظهر هنا أوجهها والمراجع وخطوات التحرير."))
+                .accessibilityIdentifier("review-side-placeholder")
+        }
+    }
+
+    private var pageColumn: some View {
         VStack(spacing: 0) {
             pageHeader
             ZStack {
@@ -53,28 +105,6 @@ struct ReviewPageScreen: View {
             ReviewStatsBar(store: store)
             ReviewSaveStatusBar(store: store)
             actionBar
-        }
-        .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button { showingHistory = true } label: {
-                    Label("سجل التعديلات", systemImage: "clock.arrow.circlepath")
-                }
-                .accessibilityIdentifier("review-history-button")
-            }
-        }
-        .sheet(isPresented: $showingHistory) { ReviewHistoryView(store: store) }
-        .task(id: initialPage) {
-            lastPage = initialPage
-            await store.load(page: initialPage)
-        }
-        .sheet(isPresented: Binding(get: { store.selectedKey != nil }, set: { if !$0 { store.requestSelect(key: nil) } })) {
-            ReviewWordSheet(store: store)
-                .presentationDetents([.medium, .large])
-                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
-                .presentationDragIndicator(.visible)
-                .environment(\.layoutDirection, .rightToLeft)
         }
     }
 

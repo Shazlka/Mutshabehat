@@ -26,7 +26,8 @@ struct ReviewEditorEntry: View {
         } else {
             transport = URLSessionReviewTransport()
         }
-        let api = ReviewAPI(baseURL: QiraatLiveSync.baseURL, transport: transport, deviceId: DeviceID.current())
+        let api = ReviewAPI(baseURL: QiraatLiveSync.baseURL, path: ReviewEndpoint.path, transport: transport,
+                           deviceId: DeviceID.current(key: ReviewEndpoint.deviceKey))
         return ReviewStore(api: api, mushafPage: { library.page($0) }, liveRefresh: { page in
             Task { @MainActor in _ = await QiraatLiveSync.shared.refresh(page: page, store: library.qiraat, force: true) }
         })

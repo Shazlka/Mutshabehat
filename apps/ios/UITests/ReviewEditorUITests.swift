@@ -81,6 +81,39 @@ final class ReviewEditorUITests: XCTestCase {
         XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
     }
 
+    /// iPad: the word's steps sit beside the page, not in a sheet over it.
+    func testReviewEditorOnIPadShowsSideBySide() throws {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
+        let app = launch()
+        openEditorPage(app)
+        XCTAssertTrue(element("review-side-placeholder", in: app).waitForExistence(timeout: 5))
+        element("review-word-002:049:001", in: app).tap()
+        let panel = element("review-sheet-word", in: app)
+        XCTAssertTrue(panel.waitForExistence(timeout: 5))
+        let canvas = element("review-page-canvas", in: app)
+        XCTAssertTrue(canvas.isHittable, "the page stays usable while the word panel is open")
+        XCTAssertFalse(panel.frame.intersects(canvas.frame), "panel and page sit side by side")
+        XCTAssertFalse(element("review-side-placeholder", in: app).exists)
+    }
+
+    /// Every button the editor shows says what it does to VoiceOver.
+    func testEveryReviewControlHasAccessibilityLabel() {
+        let app = launch()
+        openEditorPage(app)
+        element("review-word-002:049:001", in: app).tap()
+        XCTAssertTrue(element("review-face-r-8-1", in: app).waitForExistence(timeout: 5))
+        var unlabeled: [String] = []
+        for step in ["", "٢ المراجع", "٣ التحرير"] {
+            if !step.isEmpty { app.buttons[step].tap() }
+            for button in app.buttons.allElementsBoundByIndex where button.exists && button.isHittable {
+                if button.label.trimmingCharacters(in: .whitespaces).isEmpty {
+                    unlabeled.append("\(step)/\(button.identifier)")
+                }
+            }
+        }
+        XCTAssertEqual(unlabeled, [], "buttons without an accessibility label")
+    }
+
     func testAddingAFaceByHandCreatesItAndShowsItOnTheWord() {
         let app = launch()
         openEditorPage(app)

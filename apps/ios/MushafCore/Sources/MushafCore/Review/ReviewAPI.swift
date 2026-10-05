@@ -21,12 +21,11 @@ public struct URLSessionReviewTransport: ReviewTransport {
 
 /// A random id per install, written into every edit so the web's edit log shows which device made it.
 public enum DeviceID {
-    public static let defaultsKey = "qiraat-review-device-id"
-
-    public static func current(defaults: UserDefaults = .standard) -> String {
-        if let existing = defaults.string(forKey: defaultsKey), !existing.isEmpty { return existing }
+    /// `key` is supplied by the DEBUG-only editor so the Release binary carries no review-editor strings.
+    public static func current(key: String, defaults: UserDefaults = .standard) -> String {
+        if let existing = defaults.string(forKey: key), !existing.isEmpty { return existing }
         let id = UUID().uuidString
-        defaults.set(id, forKey: defaultsKey)
+        defaults.set(id, forKey: key)
         return id
     }
 }
@@ -35,15 +34,17 @@ public enum DeviceID {
 /// (`src/app/mushaf-1441/review/_lib/api.ts`) and sends exactly the JSON the route accepts, so the
 /// server's validation, rules and edit log apply unchanged.
 public final class ReviewAPI: Sendable {
-    public static let path = "api/mushaf-1441/qiraat-review"
     public static let timeout: TimeInterval = 30
 
     private let baseURL: URL
+    private let path: String
     private let transport: any ReviewTransport
     private let deviceId: String
 
-    public init(baseURL: URL, transport: any ReviewTransport, deviceId: String) {
+    /// `path` is the route of the web review API, given by the DEBUG-only editor (see `ReviewEndpoint`).
+    public init(baseURL: URL, path: String, transport: any ReviewTransport, deviceId: String) {
         self.baseURL = baseURL
+        self.path = path
         self.transport = transport
         self.deviceId = deviceId
     }
@@ -149,7 +150,7 @@ public final class ReviewAPI: Sendable {
     // MARK: Plumbing
 
     private func url(_ query: [URLQueryItem]) -> URL {
-        var components = URLComponents(url: baseURL.appendingPathComponent(Self.path), resolvingAgainstBaseURL: false)!
+        var components = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: false)!
         if !query.isEmpty { components.queryItems = query }
         return components.url!
     }

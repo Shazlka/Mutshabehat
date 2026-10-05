@@ -37,7 +37,7 @@ private let rowBody = """
 @Suite struct ReviewAPITests {
     private let base = URL(string: "https://example.test")!
     private func api(_ transport: StubTransport) -> ReviewAPI {
-        ReviewAPI(baseURL: base, transport: transport, deviceId: "dev-1")
+        ReviewAPI(baseURL: base, path: "api/mushaf-1441/qiraat-review", transport: transport, deviceId: "dev-1")
     }
     private func row() throws -> ReviewRow {
         try JSONDecoder().decode(ReviewRow.self, from: Data(rowBody.utf8).replacingVersion("v1"))
@@ -201,9 +201,9 @@ private let rowBody = """
 
     @Test func deviceIdIsStableAcrossCalls() {
         let defaults = UserDefaults(suiteName: "review-device-\(UUID().uuidString)")!
-        let first = DeviceID.current(defaults: defaults)
+        let first = DeviceID.current(key: "device-key", defaults: defaults)
         #expect(!first.isEmpty)
-        #expect(DeviceID.current(defaults: defaults) == first)
+        #expect(DeviceID.current(key: "device-key", defaults: defaults) == first)
     }
 }
 

@@ -6,6 +6,9 @@ import SwiftUI
 /// the sticky action at the bottom.
 struct ReviewWordSheet: View {
     let store: ReviewStore
+    /// Beside the page (iPad): the editor's own navigation stack is used, and close / next sit in the header
+    /// (a second stack nested inside the pushed page pops it).
+    var embedded = false
 
     enum Step: Int, CaseIterable, Identifiable {
         case faces, references, edit
@@ -24,8 +27,37 @@ struct ReviewWordSheet: View {
     private var word: ReviewWord? { store.selectedKey.flatMap(store.word(forKey:)) }
 
     var body: some View {
-        NavigationStack {
+        if embedded {
+            panel.modifier(WordSheetBehaviour(store: store, step: $step))
+        } else {
+            NavigationStack { panel.navigationBarTitleDisplayMode(.inline).toolbar { toolbarItems } }
+                .modifier(WordSheetBehaviour(store: store, step: $step))
+        }
+    }
+
+    @ToolbarContentBuilder private var toolbarItems: some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) { closeButton }
+        ToolbarItem(placement: .topBarTrailing) { nextButton }
+    }
+
+    private var closeButton: some View {
+        Button { store.requestSelect(key: nil) } label: { Image(systemName: "xmark.circle.fill") }
+            .accessibilityLabel("إغلاق").accessibilityIdentifier("review-sheet-close")
+    }
+
+    private var nextButton: some View {
+        Button {
+            if let key = store.nextReviewKey(after: store.selectedKey) { store.requestSelect(key: key) }
+        } label: { Label("التالي", systemImage: "forward.end") }
+            .disabled(store.nextReviewKey(after: store.selectedKey) == nil)
+            .accessibilityIdentifier("review-sheet-next")
+    }
+
+    private var panel: some View {
             VStack(spacing: 0) {
+                if embedded {
+                    HStack { closeButton; Spacer(); nextButton }.padding(.horizontal, 16).padding(.top, 8)
+                }
                 header
                 Picker("الخطوة", selection: $step) {
                     ForEach(Step.allCases) { Text($0.title).tag($0) }
@@ -43,30 +75,6 @@ struct ReviewWordSheet: View {
                 .frame(maxHeight: .infinity)
             }
             .safeAreaInset(edge: .bottom) { ApproveBar(store: store) }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { store.requestSelect(key: nil) } label: { Image(systemName: "xmark.circle.fill") }
-                        .accessibilityLabel("إغلاق").accessibilityIdentifier("review-sheet-close")
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        if let key = store.nextReviewKey(after: store.selectedKey) { store.requestSelect(key: key) }
-                    } label: { Label("التالي", systemImage: "forward.end") }
-                        .disabled(store.nextReviewKey(after: store.selectedKey) == nil)
-                        .accessibilityIdentifier("review-sheet-next")
-                }
-            }
-        }
-        .interactiveDismissDisabled(store.hasUnsavedEdits)
-        .confirmationDialog("عندك تعديلات غير محفوظة", isPresented: Binding(
-            get: { store.hasPendingConfirmation }, set: { if !$0 { store.cancelPendingSelection() } }), titleVisibility: .visible) {
-            Button("تجاهل التعديلات والمتابعة", role: .destructive) { store.confirmPendingSelection() }
-            Button("العودة", role: .cancel) { store.cancelPendingSelection() }
-        } message: {
-            Text("ستضيع إن انتقلت الآن. هل تريد المتابعة بدون حفظ؟")
-        }
-        .onChange(of: store.selectedKey) { step = .faces }
     }
 
     private var header: some View {
@@ -83,6 +91,25 @@ struct ReviewWordSheet: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
+    }
+}
+
+/// Dismissal guard, the unsaved-edits confirmation and the reset to step ١ when the word changes.
+private struct WordSheetBehaviour: ViewModifier {
+    let store: ReviewStore
+    @Binding var step: ReviewWordSheet.Step
+
+    func body(content: Content) -> some View {
+        content
+            .interactiveDismissDisabled(store.hasUnsavedEdits)
+            .confirmationDialog("عندك تعديلات غير محفوظة", isPresented: Binding(
+                get: { store.hasPendingConfirmation }, set: { if !$0 { store.cancelPendingSelection() } }), titleVisibility: .visible) {
+                Button("تجاهل التعديلات والمتابعة", role: .destructive) { store.confirmPendingSelection() }
+                Button("العودة", role: .cancel) { store.cancelPendingSelection() }
+            } message: {
+                Text("ستضيع إن انتقلت الآن. هل تريد المتابعة بدون حفظ؟")
+            }
+            .onChange(of: store.selectedKey) { step = .faces }
     }
 }
 
