@@ -1,23 +1,16 @@
 import MushafCore
 import SwiftUI
 
-/// The «ق» button in the top bar: turns the Qiraat layer on and off (like the web's).
+/// Native Settings switch for the Qiraat layer.
 struct QiraatToggle: View {
     @Binding var isOn: Bool
 
     var body: some View {
-        Button { isOn.toggle() } label: {
-            Text(verbatim: "ق")
-                .font(.system(size: 17, weight: .bold))
-                .frame(width: 32, height: 32)
-                .foregroundStyle(isOn ? Color.white : Color(uiColor: .mushafBrown))
-                .background(Circle().fill(isOn ? Color(uiColor: .mushafGold) : Color.clear))
-                .overlay(Circle().stroke(Color(uiColor: .mushafGold), lineWidth: 1.5))
-        }
-        .buttonStyle(.plain)
+        Toggle("إظهار علامات القراءات", isOn: $isOn)
+            .toggleStyle(.switch)
+            .tint(.green)
         .accessibilityLabel("القراءات العشر")
         .accessibilityValue(isOn ? "مفعّلة" : "متوقفة")
-        .accessibilityAddTraits(isOn ? .isSelected : [])
         .accessibilityIdentifier("qiraat-toggle")
     }
 }

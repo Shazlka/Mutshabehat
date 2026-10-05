@@ -1,11 +1,15 @@
-# Qiraat — iOS app for the Mushaf 1441 reader and القراءات العشر
+# Qiraat — iOS app for the Mushaf 1441 reader and القراءات العشر (v1.0)
 
 > Lives on branch `ios/main` in its own folder (`~/Projects/qiraat-ios`), never merged into the web
-> app's `main`. **Rules for agents and people: [`AGENTS.md`](AGENTS.md). History: [`CHANGELOG.md`](CHANGELOG.md).**
+> app's `main`. **Reference Milestone: `iOS v1.0` (Tag: `ios-v1.0`). Rules: [`AGENTS.md`](AGENTS.md). Handoff: [`HANDOFF.md`](HANDOFF.md). History: [`CHANGELOG.md`](CHANGELOG.md).**
 
-Native SwiftUI + UIKit app for iPhone and iPad. Phase 1 is an **offline** Mushaf 1441 reader:
-all 604 pages drawn with the exact QCF V2 page fonts, iBooks-style page curl (right-to-left),
-two-page spreads on iPad landscape, resume where you left off, surah/juz index.
+Native SwiftUI + UIKit app for iPhone and iPad:
+- **Offline & Cloud Mushaf 1441 reader:** all 604 pages drawn with exact QCF page fonts, iBooks page curl, single-slot top header, full-stretched line spacing, large bottom page numbers.
+- **Ten Qira'at (القراءات العشر):** complete Ashr layer with reader/narrator picker and variants sheet.
+- **Mutshabehat (المتشابهات القرآنية):** magazine view, full-page card expansion, custom group editor, and live Arabic diff.
+- **Advanced Quran Search:** AST query engine with boolean logic, morphology lexicon, and interactive tutorials.
+- **Quran Reading & Khatma:** accumulative reading time, daily streaks, 30s dwell progress, and manual full-surah session logging.
+- **iCloud Sync (`Mushaf_Qiraat`):** two-way sync with production PostgreSQL Colima backend.
 
 ## First run (MacBook Air, Xcode 27, iOS 27 simulators)
 

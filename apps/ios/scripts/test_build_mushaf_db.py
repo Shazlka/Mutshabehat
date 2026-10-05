@@ -38,7 +38,21 @@ class BuildMushafDbTest(unittest.TestCase):
         self.assertEqual(self.count("SELECT COUNT(*) FROM surahs"), 114)
         self.assertEqual(self.count("SELECT COUNT(*) FROM decorations"), 226)
         self.assertEqual(self.count("SELECT COUNT(DISTINCT page) FROM decorations"), 116)
-        self.assertEqual(self.count("SELECT value FROM meta WHERE key = 'schema_version'"), "1")
+        self.assertEqual(self.count("SELECT value FROM meta WHERE key = 'schema_version'"), "2")
+        self.assertEqual(self.count("SELECT COUNT(*) FROM quran_word_search"), 77429)
+        self.assertEqual(self.count("SELECT value FROM meta WHERE key = 'search_word_count'"), "77429")
+
+    def test_search_index_keeps_authoritative_text_and_indexes_imlai_forms(self):
+        self.assertEqual(self.count("SELECT COUNT(*) FROM words WHERE text_uthmani = ''"), 0)
+        for query in ("الصلاه", "الزكاه", "الحياه"):
+            self.assertGreater(self.db.execute(
+                "SELECT COUNT(*) FROM quran_word_search WHERE imlai_text = ?", (query,)).fetchone()[0], 0)
+
+    def test_search_columns_and_aliases_have_indexes(self):
+        indexes = {row[1] for row in self.db.execute("PRAGMA index_list(quran_word_search)")}
+        self.assertTrue({"quran_search_plain", "quran_search_canonical", "quran_search_imlai",
+                         "quran_search_rasm", "quran_search_location"}.issubset(indexes))
+        self.assertGreater(self.count("SELECT COUNT(*) FROM quran_search_aliases"), 77429)
 
     def test_every_word_has_a_glyph_and_every_ayah_ends_once(self):
         self.assertEqual(self.count("SELECT COUNT(*) FROM words WHERE glyph = ''"), 0)

@@ -48,10 +48,16 @@ final class QiraatUITests: XCTestCase {
         let app = launch(atPage: 1)
         XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 10))
         saveScreenshot(named: "qiraat-page-1", app: app)
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.97)).tap()  // below the text: chrome
-        let toggle = app.buttons["qiraat-toggle"]
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()  // margin tap to toggle chrome safely
+        let settingsButton = app.buttons["settings-button"]
+        XCTAssertTrue(settingsButton.waitForExistence(timeout: 5))
+        settingsButton.tap()
+
+        let toggle = app.switches["qiraat-toggle"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 5))
         toggle.tap()
+        app.buttons["تم"].tap()
+
         XCTAssertFalse(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 2))
         app.terminate()
 
@@ -62,8 +68,10 @@ final class QiraatUITests: XCTestCase {
         XCTAssertFalse(element("qiraat-word-1:4:1", in: relaunched).exists)
 
         // Leave the device as a new install would be, so the other tests start from the default.
-        relaunched.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.97)).tap()
-        relaunched.buttons["qiraat-toggle"].tap()
+        relaunched.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        relaunched.buttons["settings-button"].tap()
+        relaunched.switches["qiraat-toggle"].tap()
+        relaunched.buttons["تم"].tap()
         XCTAssertTrue(element("qiraat-word-1:4:1", in: relaunched).waitForExistence(timeout: 5))
     }
 

@@ -13,9 +13,15 @@ struct MushafPager: UIViewControllerRepresentable {
     let library: MushafLibrary
     @Binding var page: Int
     let spread: Bool
+    let appearance: MushafAppearance
     let qiraat: QiraatDisplay
+    let highlightedWordIDs: Set<String>
+    let bookmarkedAyahs: (Int) -> Set<AyahKey>
+    let isPageBookmarked: (Int) -> Bool
+    let chromeVisible: Bool
     let onTapCentre: () -> Void
     let onTapWord: (MushafPage, MushafWord) -> Void
+    let onLongPressAyah: (MushafPage, AyahKey) -> Void
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
 
@@ -24,18 +30,36 @@ struct MushafPager: UIViewControllerRepresentable {
         let pager = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal,
                                          options: [.spineLocation: NSNumber(value: spine.rawValue)])
         pager.view.semanticContentAttribute = .forceLeftToRight
-        pager.view.backgroundColor = .mushafDesk
+        pager.view.backgroundColor = appearance.desk(for: pager.traitCollection)
         pager.isDoubleSided = spread
         pager.dataSource = context.coordinator
         pager.delegate = context.coordinator
+        disableTapToTurn(in: pager)
         context.coordinator.show(page, in: pager, animated: false)
         return pager
     }
 
     func updateUIViewController(_ pager: UIPageViewController, context: Context) {
         context.coordinator.parent = self
-        for controller in pager.viewControllers ?? [] { (controller as? PageController)?.apply(qiraat) }
+        pager.view.backgroundColor = appearance.desk(for: pager.traitCollection)
+        disableTapToTurn(in: pager)
+        for controller in pager.viewControllers ?? [] {
+            if let pc = controller as? PageController {
+                let p = pc.page.number
+                pc.apply(qiraat, highlightedWordIDs: highlightedWordIDs,
+                         bookmarkedAyahs: bookmarkedAyahs(p),
+                         isPageBookmarked: isPageBookmarked(p),
+                         appearance: appearance,
+                         chromeVisible: chromeVisible)
+            }
+        }
         context.coordinator.show(page, in: pager, animated: true)
+    }
+
+    private func disableTapToTurn(in pager: UIPageViewController) {
+        for recognizer in pager.gestureRecognizers where recognizer is UITapGestureRecognizer {
+            recognizer.isEnabled = false
+        }
     }
 
     @MainActor
@@ -45,9 +69,15 @@ struct MushafPager: UIViewControllerRepresentable {
 
         func controller(for number: Int) -> PageController? {
             guard (1...mushafPageCount).contains(number), let page = parent.library.page(number) else { return nil }
-            return PageController(page: page, library: parent.library, isSpreadHalf: parent.spread, qiraat: parent.qiraat,
+            return PageController(page: page, library: parent.library, isSpreadHalf: parent.spread,
+                                  appearance: parent.appearance, qiraat: parent.qiraat,
+                                  highlightedWordIDs: parent.highlightedWordIDs,
+                                  bookmarkedAyahs: parent.bookmarkedAyahs(number),
+                                  isPageBookmarked: parent.isPageBookmarked(number),
+                                  chromeVisible: parent.chromeVisible,
                                   onTapCentre: { [weak self] in self?.parent.onTapCentre() },
-                                  onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) })
+                                  onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) },
+                                  onLongPressAyah: { [weak self] page, ayah in self?.parent.onLongPressAyah(page, ayah) })
         }
 
         /// The page the pager shows: the single page, or the right-hand (odd) page of a spread.

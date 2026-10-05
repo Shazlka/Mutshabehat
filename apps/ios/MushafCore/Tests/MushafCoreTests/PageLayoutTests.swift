@@ -33,7 +33,7 @@ import Testing
         let (boxes, gaps) = PageLayout.placeWords(words, in: rect, fontSize: 20, centred: false) { _, _ in 50 }
         #expect(boxes.last!.frame.minX >= rect.minX - 0.001)
         #expect(boxes.first!.frame.maxX <= rect.maxX + 0.001)
-        #expect(gaps.allSatisfy { $0.width >= 20 * 0.06 - 0.001 })
+        #expect(gaps.allSatisfy { $0.width >= 20 * PageLayoutConstants.minimumGapEm - 0.001 })
     }
 
     @Test func realPageFifteenRowsWithDecorations() throws {
@@ -56,6 +56,16 @@ import Testing
             #expect(!layout.lines.contains { $0.content == .empty }, "page \(n)")
             #expect(layout.lines.first!.rect.minY >= size.height * 0.22 - 0.001)
         }
+    }
+
+    @Test func regularPagesRespectVerticalPrintInsets() throws {
+        let db = try openDatabase()
+        let counts = Dictionary(uniqueKeysWithValues: try db.surahs().map { ($0.number, $0.ayahCount) })
+        let layout = PageLayout(page: try db.page(50), pageSize: size, surahAyahCounts: counts) { _, s in s }
+        let printInset = size.width * PageLayoutConstants.paddingYRatioOfWidth
+
+        #expect(layout.lines.first!.rect.minY >= printInset - 0.001)
+        #expect(layout.lines.last!.rect.maxY <= size.height - printInset + 0.001)
     }
 
     @Test func shortLastLineOfASurahIsCentred() throws {

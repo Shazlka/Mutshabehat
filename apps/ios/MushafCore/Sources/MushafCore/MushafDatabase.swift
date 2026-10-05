@@ -11,7 +11,7 @@ public enum MushafDatabaseError: Error, Equatable {
 /// Read-only access to the bundled mushaf.sqlite (built by scripts/build_mushaf_db.py).
 /// Not thread-safe; callers must serialise access (the app uses the main actor).
 public final class MushafDatabase {
-    public static let supportedSchemaVersion = 1
+    public static let supportedSchemaVersion = 2
     private var handle: OpaquePointer?
 
     public init(url: URL) throws {
@@ -83,6 +83,166 @@ public final class MushafDatabase {
         }.first ?? nil
     }
 
+    /// Indexed offline Quran search. All matching happens against derived columns; authoritative
+    /// `words.text_uthmani` is returned unchanged for display.
+    public func searchAyaat(matching text: String, mode: QuranSearchMode = .smart,
+                            limit: Int = 50, surah: Int? = nil) throws -> [AyahSearchResult] {
+        if let handle = handle, isAdvancedQuery(text) {
+            let engine = AdvancedQuranSearchEngine(database: handle)
+            return try engine.search(query: text, limit: limit)
+        }
+
+        let query = QuranSearchNormalizer.query(text)
+        guard !query.tokens.isEmpty, limit > 0 else { return [] }
+        if query.tokens.count > 1 {
+            return try phraseSearch(query, mode: mode, limit: limit, surah: surah)
+        }
+        let token = query.tokens[0]
+        var results = try exactWordSearch(token, original: query.original, mode: mode, limit: limit, surah: surah)
+        if results.isEmpty, mode != .exact {
+            results = try fuzzyWordSearch(token, includeRasm: mode == .broad, limit: limit, surah: surah)
+        }
+        return results
+    }
+
+    private func isAdvancedQuery(_ text: String) -> Bool {
+        let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        return t.contains(":") || t.contains(">") || t.contains("\"") || t.contains("”") ||
+               t.contains("“") || t.contains("«") || t.contains("»") || t.contains("{") ||
+               t.contains("[") || t.contains("*") || t.contains(" و ") || t.contains(" أو ") ||
+               t.contains(" او ") || t.contains("ليس") || t.contains("(") || t.contains(")") ||
+               t.contains("الم المص")
+    }
+
+    private func exactWordSearch(_ token: QuranSearchToken, original: String, mode: QuranSearchMode,
+                                 limit: Int, surah: Int?) throws -> [AyahSearchResult] {
+        let scope = surah.map { " AND w.surah = \($0)" } ?? ""
+        let whereClause = mode == .exact
+            ? "(w.uthmani_text=? OR w.plain_text=?)"
+            : "(w.uthmani_text=? OR w.plain_text=? OR w.imlai_text=? OR w.canonical_text=? OR EXISTS (SELECT 1 FROM quran_search_aliases a WHERE a.word_id=w.word_id AND a.alias=?))"
+        let sql = """
+            SELECT w.word_id,w.surah,w.ayah,w.page,w.word_index,w.uthmani_text,y.ayah_text,
+              CASE WHEN w.uthmani_text=? THEN 'exact' WHEN w.plain_text=? THEN 'plain'
+                   WHEN w.imlai_text=? THEN 'imlai' WHEN w.canonical_text=? THEN 'canonical'
+                   ELSE 'alias' END,
+              CASE WHEN w.uthmani_text=? THEN 100 WHEN w.plain_text=? THEN 95
+                   WHEN w.imlai_text=? THEN 90 WHEN w.canonical_text=? THEN 85 ELSE 75 END
+            FROM quran_word_search w JOIN quran_ayah_search y ON y.surah=w.surah AND y.ayah=w.ayah
+            WHERE \(whereClause)\(scope)
+            ORDER BY 9 DESC,w.surah,w.ayah,w.word_index LIMIT ?
+            """
+        var binds = [original, token.plain, token.imlai, token.canonical,
+                     original, token.plain, token.imlai, token.canonical]
+        if mode == .exact {
+            binds += [original, token.plain]
+        } else {
+            binds += [original, token.plain, token.imlai, token.canonical, token.imlai]
+        }
+        binds.append(String(limit))
+        return try searchRows(sql, binds: binds)
+    }
+
+    private func phraseSearch(_ query: QuranSearchQuery, mode: QuranSearchMode,
+                              limit: Int, surah: Int?) throws -> [AyahSearchResult] {
+        let tokens = query.tokens
+        let joins = (1..<tokens.count).map { "JOIN quran_word_search w\($0) ON w\($0).token_position=w0.token_position+\($0)" }.joined(separator: " ")
+        let ids = (0..<tokens.count).map { "w\($0).word_id" }.joined(separator: "||'|'||")
+        let texts = (0..<tokens.count).map { "w\($0).uthmani_text" }.joined(separator: "||' '||")
+        let predicates = tokens.indices.map { index in
+            if mode == .exact { return "w\(index).plain_text=?" }
+            return "(w\(index).plain_text=? OR w\(index).canonical_text=? OR w\(index).imlai_text=? OR EXISTS (SELECT 1 FROM quran_search_aliases a\(index) WHERE a\(index).word_id=w\(index).word_id AND a\(index).alias=?))"
+        }.joined(separator: " AND ")
+        let scope = surah.map { " AND w0.surah = \($0)" } ?? ""
+        let sql = """
+            SELECT w0.word_id,w0.surah,w0.ayah,w0.page,w0.word_index,w0.uthmani_text,y.ayah_text,
+                   'imlai',90,\(ids),\(texts)
+            FROM quran_word_search w0 \(joins) JOIN quran_ayah_search y ON y.surah=w0.surah AND y.ayah=w0.ayah
+            WHERE \(predicates)\(scope) AND \((1..<tokens.count).map { "w\($0).surah=w0.surah AND w\($0).ayah=w0.ayah" }.joined(separator: " AND "))
+            ORDER BY w0.surah,w0.ayah,w0.word_index LIMIT ?
+            """
+        var binds: [String] = []
+        for token in tokens {
+            if mode == .exact { binds.append(token.plain) }
+            else { binds += [token.plain, token.canonical, token.imlai, token.imlai] }
+        }
+        binds.append(String(limit))
+        return try searchRows(sql, binds: binds, idsColumn: 9, textColumn: 10)
+    }
+
+    private func fuzzyWordSearch(_ token: QuranSearchToken, includeRasm: Bool,
+                                 limit: Int, surah: Int?) throws -> [AyahSearchResult] {
+        // A repeated/extra character is the common mobile typo. Deleting one character produces a
+        // small bounded set and keeps this first fallback on the canonical B-tree index.
+        let characters = Array(token.canonical)
+        let deletionForms = Set(characters.indices.map { index in
+            String(characters.enumerated().compactMap { $0.offset == index ? nil : $0.element })
+        }).filter { $0.count >= 3 }
+        if !deletionForms.isEmpty {
+            let placeholders = Array(repeating: "?", count: deletionForms.count).joined(separator: ",")
+            let scope = surah.map { " AND w.surah = \($0)" } ?? ""
+            let deletionMatches = try searchRows("""
+                SELECT w.word_id,w.surah,w.ayah,w.page,w.word_index,w.uthmani_text,y.ayah_text,'fuzzy',70
+                FROM quran_word_search w JOIN quran_ayah_search y ON y.surah=w.surah AND y.ayah=w.ayah
+                WHERE w.canonical_text IN (\(placeholders))\(scope)
+                ORDER BY w.surah,w.ayah,w.word_index LIMIT ?
+                """, binds: Array(deletionForms) + [String(limit)])
+            if !deletionMatches.isEmpty { return deletionMatches }
+        }
+        if includeRasm, token.rasmKey.count >= 3 {
+            let scope = surah.map { " AND w.surah = \($0)" } ?? ""
+            let rasm = try searchRows("""
+                SELECT w.word_id,w.surah,w.ayah,w.page,w.word_index,w.uthmani_text,y.ayah_text,'rasm',50
+                FROM quran_word_search w JOIN quran_ayah_search y ON y.surah=w.surah AND y.ayah=w.ayah
+                WHERE w.rasm_key=?\(scope)
+                ORDER BY surah,ayah,word_index LIMIT ?
+                """, binds: [token.rasmKey, String(limit)])
+            if !rasm.isEmpty { return rasm }
+        }
+        let length = token.canonical.count
+        let forms = try textRows("""
+            SELECT DISTINCT canonical_text FROM quran_word_search
+            WHERE length(canonical_text) BETWEEN ? AND ?
+            """, binds: [String(max(1, length - 2)), String(length + 2)])
+        let threshold = length <= 4 ? 0.84 : 0.72
+        let candidates = forms.map { ($0, QuranSearchNormalizer.similarity(token.canonical, $0)) }
+            .filter { $0.1 >= threshold }.sorted { $0.1 > $1.1 }.prefix(512)
+        guard !candidates.isEmpty else { return [] }
+        let values = candidates.map(\.0)
+        let placeholders = Array(repeating: "?", count: values.count).joined(separator: ",")
+        let scope = surah.map { " AND w.surah = \($0)" } ?? ""
+        var matches = try searchRows("""
+            SELECT w.word_id,w.surah,w.ayah,w.page,w.word_index,w.uthmani_text,y.ayah_text,'fuzzy',65
+            FROM quran_word_search w JOIN quran_ayah_search y ON y.surah=w.surah AND y.ayah=w.ayah
+            WHERE w.canonical_text IN (\(placeholders))\(scope)
+            ORDER BY surah,ayah,word_index LIMIT ?
+            """, binds: values + [String(limit)])
+        let scores = Dictionary(uniqueKeysWithValues: candidates.map { ($0.0, Int(($0.1 * 20).rounded()) + 55) })
+        matches = matches.map { result in
+            let form = QuranSearchNormalizer.canonical(result.uthmaniWord)
+            return AyahSearchResult(ayah: result.ayah, page: result.page, text: result.text,
+                                    matchedWordIDs: result.matchedWordIDs, wordIndex: result.wordIndex,
+                                    uthmaniWord: result.uthmaniWord, matchedText: result.matchedText,
+                                    matchType: .fuzzy, score: scores[form] ?? 65)
+        }
+        return matches.sorted { $0.score == $1.score ? $0.ayah.description < $1.ayah.description : $0.score > $1.score }
+    }
+
+    private func searchRows(_ sql: String, binds: [String], idsColumn: Int32? = nil,
+                            textColumn: Int32? = nil) throws -> [AyahSearchResult] {
+        try textBoundRows(sql, binds: binds) { row in
+            let type = QuranSearchMatchType(rawValue: row.text(7)) ?? .canonical
+            let ids = idsColumn.map { row.text($0).split(separator: "|").map(String.init) } ?? [row.text(0)]
+            return AyahSearchResult(ayah: AyahKey(surah: row.int(1), ayah: row.int(2)), page: row.int(3),
+                                    text: row.text(6), matchedWordIDs: ids, wordIndex: row.int(4),
+                                    uthmaniWord: row.text(5), matchedText: textColumn.map { row.text($0) } ?? row.text(5),
+                                    matchType: type, score: row.int(8))
+        }
+    }
+
+    private func textRows(_ sql: String, binds: [String]) throws -> [String] {
+        try textBoundRows(sql, binds: binds) { $0.text(0) }
+    }
+
     // MARK: - Minimal statement helpers
 
     struct Row {
@@ -104,6 +264,30 @@ public final class MushafDatabase {
             let rc = sqlite3_step(stmt)
             if rc == SQLITE_DONE { break }
             guard rc == SQLITE_ROW else { throw MushafDatabaseError.queryFailed(String(cString: sqlite3_errmsg(handle))) }
+            result.append(try map(Row(stmt: stmt)))
+        }
+        return result
+    }
+
+    private func textBoundRows<T>(_ sql: String, binds: [String], _ map: (Row) throws -> T) throws -> [T] {
+        var stmt: OpaquePointer?
+        guard sqlite3_prepare_v2(handle, sql, -1, &stmt, nil) == SQLITE_OK, let stmt else {
+            throw MushafDatabaseError.queryFailed(String(cString: sqlite3_errmsg(handle)))
+        }
+        defer { sqlite3_finalize(stmt) }
+        let transient = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+        for (index, value) in binds.enumerated() {
+            guard sqlite3_bind_text(stmt, Int32(index + 1), value, -1, transient) == SQLITE_OK else {
+                throw MushafDatabaseError.queryFailed(String(cString: sqlite3_errmsg(handle)))
+            }
+        }
+        var result: [T] = []
+        while true {
+            let code = sqlite3_step(stmt)
+            if code == SQLITE_DONE { break }
+            guard code == SQLITE_ROW else {
+                throw MushafDatabaseError.queryFailed(String(cString: sqlite3_errmsg(handle)))
+            }
             result.append(try map(Row(stmt: stmt)))
         }
         return result

@@ -6,17 +6,17 @@ import CoreGraphics
 public struct PageLayoutConstants: Sendable {
     /// Page aspect of the printed Madinah 1441 page (1994 × 2850).
     public static let pageAspect: CGFloat = 1994.0 / 2850.0
-    /// Glyph size as a fraction of page width (web: 4.35cqw).
-    public static let fontSizeRatio: CGFloat = 0.0435
-    /// Print margins. CSS percentage padding is relative to the WIDTH on both axes.
-    public static let paddingXRatio: CGFloat = 0.072
-    public static let paddingYRatioOfWidth: CGFloat = 0.058
+    /// Glyph size as a fraction of page width to fill the page line comfortably.
+    public static let fontSizeRatio: CGFloat = 0.057
+    /// Print margins: tuned to fill the screen while maintaining 1441 Madinah rasm proportions.
+    public static let paddingXRatio: CGFloat = 0.038
+    public static let paddingYRatioOfWidth: CGFloat = 0.032
     /// Pages 1–2: a centred block inset 22% (top/bottom, of height) and 13% (sides, of width).
     public static let openingInsetYRatio: CGFloat = 0.22
     public static let openingInsetXRatio: CGFloat = 0.13
     /// Gaps between words, in em.
     public static let centredGapEm: CGFloat = 0.12
-    public static let minimumGapEm: CGFloat = 0.06
+    public static let minimumGapEm: CGFloat = 0.04
     /// A surah-ending line with fewer words than 70% of the page's 75th-percentile line is centred.
     public static let shortLineRatio: CGFloat = 0.7
     /// A single page may grow up to 18% taller than the print aspect to fill a tall phone (web rule).
@@ -88,8 +88,6 @@ public struct PageLayout: Sendable {
                 advance: (MushafWord, CGFloat) -> CGFloat) {
         typealias K = PageLayoutConstants
         self.pageSize = pageSize
-        let fontSize = pageSize.width * K.fontSizeRatio
-        self.fontSize = fontSize
         let isOpening = page.number <= 2
 
         let visible = isOpening
@@ -106,6 +104,12 @@ public struct PageLayout: Sendable {
         let counts = page.lines.map(\.words.count).filter { $0 > 0 }.sorted()
         let typical = counts.isEmpty ? 0 : counts[Int(Double(counts.count) * 0.75)]
         let rowHeight = visible.isEmpty ? 0 : body.height / CGFloat(visible.count)
+
+        // Fit font size to body width so lines fill the page comfortably without large empty gaps,
+        // bounded by row height so glyphs never overlap vertically.
+        let targetFontSize = min(body.width / 16.2, rowHeight * 0.74)
+        let fontSize = max(pageSize.width * K.fontSizeRatio, targetFontSize)
+        self.fontSize = fontSize
 
         lines = visible.enumerated().map { row, line in
             let rect = CGRect(x: body.minX, y: body.minY + CGFloat(row) * rowHeight, width: body.width, height: rowHeight)
@@ -149,7 +153,7 @@ public struct PageLayout: Sendable {
             gap = max(minGap, (rect.width - natural) / gapCount)
             x = rect.maxX
         }
-        let height = fontSize * 1.04
+        let height = fontSize * 1.15
         let y = rect.midY - height / 2
         var boxes: [WordBox] = []
         var gaps: [CGRect] = []
