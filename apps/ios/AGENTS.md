@@ -12,7 +12,9 @@ The native iPhone/iPad app «Qiraat» (`com.shazlka.qiraat`) for the Mushaf 1441
   nothing iOS ever goes there.
 - **The web app and its database are the only source of data and improvements.** Data flows one way:
   `main` → `ios/main` (`git merge origin/main`), and the live web API → the app's generated data.
-  The iOS app never writes to the web app's database and never changes web code.
+  The iOS app never writes to the web app's database and never changes web code (one exception,
+  user decision 2026-10-05: the developer review editor in DEBUG builds may write to the live
+  database through the web review API `/api/mushaf-1441/qiraat-review`; Release builds never contain it).
 - **Every file this branch adds or changes is under `apps/ios/`.** `make check-isolation` fails if
   the branch differs from `origin/main` anywhere else; it runs in `make test`. That is what keeps
   `git merge origin/main` conflict-free.
@@ -29,6 +31,9 @@ make run                       # build, install and launch on the iPhone simulat
 make open                      # open the generated project in Xcode
 make device                    # build, install and launch on a connected iPhone (needs signing, §6)
 make qiraat-refresh            # re-download the Qiraat data from the live web app
+make review-data               # copy web nquran / الشامل reference data into Generated/Review/reference
+make review-golden             # generate golden files in Generated/Review/golden via web TypeScript
+make release-guard             # build Release and verify no review editor code or reference data leaked
 ```
 
 Xcode 27 ships no `Simulator.app`. When iterating on a failing UI test, pass
@@ -46,6 +51,7 @@ Xcode 27 ships no `Simulator.app`. When iterating on a failing UI test, pass
 | `Generated/mushaf.sqlite` | built from `packages/quran-data/mushaf1441/fixtures` (the web's data) | no |
 | `Generated/Fonts/p1…p604.woff2` | QCF V2 fonts from the CDN the web uses | no (licence) |
 | `Generated/qiraat/page-NNN.json` | snapshot of the live web API `/api/mushaf-1441/qiraat?page=N` | no |
+| `Generated/Review/**` | nquran / الشامل reference data and golden files | no |
 | `Config.xcconfig`, `Signing.xcconfig` | Supabase anon key; signing team | no |
 
 The repository is public: never commit keys, data or fonts.
@@ -100,3 +106,7 @@ codex exec -m gpt-6-astra -s workspace-write -C ~/Projects/qiraat-ios-codex-<tas
 - القراءات العشر is the app's main goal (2026-10-01). The متشابهات layer (needs an account) comes later.
 - TestFlight needs the paid Apple Developer Program: not decided. Open for release: app icon, QCF font
   licence, privacy manifest.
+- Developer review editor write access (2026-10-05): the developer editor in the DEBUG iOS app may
+  write to the live database through the web review API (`/api/mushaf-1441/qiraat-review`). This is
+  the one exception to the read-only stance the app otherwise keeps toward the web backend;
+  Release builds never contain it.

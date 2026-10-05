@@ -140,7 +140,7 @@ final class ReviewTestServer: @unchecked Sendable {
         server.postStatus = postStatus
         let transport = StubReviewTransport { server.handle($0) }
         let library = try MushafLibrary()
-        let api = ReviewAPI(baseURL: URL(string: "https://example.test")!, transport: transport, deviceId: "dev")
+        let api = ReviewAPI(baseURL: URL(string: "https://example.test")!, path: "api/mushaf-1441/qiraat-review", transport: transport, deviceId: "dev")
         let store = ReviewStore(api: api, mushafPage: { library.page($0) }, liveRefresh: refresh)
         return (store, transport, server)
     }
