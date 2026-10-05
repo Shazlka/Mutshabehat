@@ -1,6 +1,7 @@
 #if DEBUG
 import Foundation
 import MushafCore
+import SwiftUI
 
 /// Editing a face: the draft, the guard against losing edits, saving (and approving) it, and adding a
 /// reference group to it.
@@ -39,6 +40,12 @@ extension ReviewStore {
         guard var current = session else { return }
         change(&current.draft)
         session = current
+    }
+
+    /// A two-way binding to one field of the open draft (reads a default when no draft is open).
+    func draftBinding<T>(_ keyPath: WritableKeyPath<ReviewDraftFields, T>, default fallback: T) -> Binding<T> {
+        Binding(get: { self.session?.draft[keyPath: keyPath] ?? fallback },
+                set: { value in self.updateDraft { $0[keyPath: keyPath] = value } })
     }
 
     func discardDraft() {
@@ -99,7 +106,13 @@ extension ReviewStore {
                 let tempId = nextTempId()
                 var temp = ReviewPageEditing.placeholderRow(id: tempId, for: entry, in: page)
                 if approve && index == 0 { temp.reviewStatus = .reviewed; temp.locationReviewStatus = .reviewed }
-                submit(plan, row: nil, placeholderId: tempId) { [weak self] in self?.upsert(temp) }
+                // If the create fails the reviewer gets the inputs back, as long as they are still on this word.
+                let snapshot = EditSession(draft: session.draft, original: session.original, rowId: nil, newEntry: session.newEntry)
+                let wordKey = selectedKey
+                submit(plan, row: nil, placeholderId: tempId, onFail: { [weak self] in
+                    guard let self, index == 0, selectedKey == wordKey, self.session == nil else { return }
+                    self.session = snapshot
+                }) { [weak self] in self?.upsert(temp) }
             } else if let row {
                 var optimistic = ReviewPageEditing.applying(ReviewDraft.entryFields(draft), narrators: draft.narrators, to: row, in: page)
                 if approve { optimistic.reviewStatus = .reviewed; optimistic.locationReviewStatus = .reviewed }

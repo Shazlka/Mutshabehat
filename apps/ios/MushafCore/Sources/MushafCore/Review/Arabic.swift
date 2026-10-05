@@ -30,7 +30,7 @@ public enum Arabic {
         }
     }
 
-    static func trimJS(_ text: String) -> String {
+    public static func trimJS(_ text: String) -> String {
         var scalars = Array(text.unicodeScalars)
         while let last = scalars.last, isJSWhitespace(last.value) { scalars.removeLast() }
         var start = 0

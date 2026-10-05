@@ -81,6 +81,32 @@ final class ReviewEditorUITests: XCTestCase {
         XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
     }
 
+    func testAddingAFaceByHandCreatesItAndShowsItOnTheWord() {
+        let app = launch()
+        openEditorPage(app)
+        element("review-word-002:049:008", in: app).tap()
+        XCTAssertTrue(app.buttons["review-new-face"].waitForExistence(timeout: 5))
+        app.buttons["review-new-face"].tap()
+        XCTAssertTrue(element("review-edit-step", in: app).waitForExistence(timeout: 5))
+        // The sheet opens half-height: drag it up so the readers are in view.
+        element("review-sheet-word", in: app).swipeUp()
+        let narrator = element("review-narrator-Q01-R02", in: app)
+        var tries = 0
+        while !narrator.isHittable && tries < 8 { element("review-edit-step", in: app).swipeUp(); tries += 1 }
+        narrator.tap()
+        let approve = app.buttons["review-approve"]
+        XCTAssertTrue(approve.waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-unsaved", in: app).exists)
+        approve.tap()
+        XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
+        // The sheet moved on to the next unreviewed word; close it and look at the word again.
+        app.buttons["review-sheet-close"].tap()
+        XCTAssertTrue(element("review-word-002:049:008", in: app).waitForExistence(timeout: 5))
+        element("review-word-002:049:008", in: app).tap()
+        let created = app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH 'review-face-r-new'")).firstMatch
+        XCTAssertTrue(created.waitForExistence(timeout: 10))
+    }
+
     func testTheSettingsRowsThatExistedBeforeAreAllStillThere() {
         let app = launch()
         openSettings(app)

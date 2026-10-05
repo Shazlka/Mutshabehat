@@ -16,7 +16,7 @@ public enum ReviewErrorCode: String, Sendable, Hashable, CaseIterable {
     case unavailable
 
     /// The message shown when the server did not send its own `messageAr`.
-    var defaultMessageAr: String {
+    public var defaultMessageAr: String {
         switch self {
         case .unauthorized: "غير مصرح"
         case .forbidden: "غير مصرح لك بالتعديل"

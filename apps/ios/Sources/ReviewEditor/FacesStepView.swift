@@ -22,14 +22,14 @@ struct FacesStepView: View {
                 }
             }
             Section {
+                Button { store.startNewDraft(); openEditor() } label: { Label("وجه جديد", systemImage: "plus.circle.fill") }
+                    .accessibilityIdentifier("review-new-face")
+            }
+            Section {
                 let rows = store.rows(forKey: key)
                 if rows.isEmpty {
-                    ContentUnavailableView {
-                        Label("لا وجه مسجّل", systemImage: "text.badge.plus")
-                    } description: {
-                        Text("أضف وجهًا من المرجع، أو ابدأ وجهًا جديدًا لهذه الكلمة.")
-                    }
-                    .listRowBackground(Color.clear)
+                    Label("لا وجه مسجّل لهذه الكلمة — أضف وجهًا من «المراجع» أو ابدأ وجهًا جديدًا.", systemImage: "text.badge.plus")
+                        .font(.footnote).foregroundStyle(.secondary)
                 } else {
                     ForEach(rows) { row in
                         FaceRow(row: row, catalog: store.page?.narrators ?? [])
@@ -49,10 +49,6 @@ struct FacesStepView: View {
                 }
             } header: {
                 Text(FacesSummary.summarize(store.rows(forKey: key)).isEmpty ? "الأوجه المسجلة" : FacesSummary.summarize(store.rows(forKey: key)))
-            }
-            Section {
-                Button { store.startNewDraft(); openEditor() } label: { Label("وجه جديد", systemImage: "plus.circle.fill") }
-                    .accessibilityIdentifier("review-new-face")
             }
         }
         .listStyle(.insetGrouped)

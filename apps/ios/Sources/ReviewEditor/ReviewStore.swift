@@ -74,6 +74,8 @@ final class ReviewStore {
         let label: String
         /// Puts the optimistic change back before a retry.
         let redo: () -> Void
+        /// Runs when the job fails for good (e.g. gives a new face's inputs back).
+        let onFail: (() -> Void)?
     }
 
     init(api: ReviewAPI, mushafPage: @escaping (Int) -> MushafPage?, liveRefresh: @escaping (Int) -> Void) {
@@ -202,9 +204,10 @@ final class ReviewStore {
     }
 
     /// Applies `redo` (the optimistic change) now and runs `plan` in the background.
-    func submit(_ plan: SaveJobPlan, row: ReviewRow?, placeholderId: String? = nil, redo: @escaping () -> Void) {
+    func submit(_ plan: SaveJobPlan, row: ReviewRow?, placeholderId: String? = nil, onFail: (() -> Void)? = nil,
+                redo: @escaping () -> Void) {
         let job = SaveJob(plan: plan, initialRow: row, placeholderId: placeholderId)
-        jobs[job.id] = JobInfo(label: plan.label, redo: redo)
+        jobs[job.id] = JobInfo(label: plan.label, redo: redo, onFail: onFail)
         pending += 1
         saveStatus = .saving(pending)
         redo()
@@ -289,6 +292,7 @@ final class ReviewStore {
         case .failed(let id, let error, _):
             pending -= 1
             let label = jobs[id]?.label ?? "حفظ"
+            jobs[id]?.onFail?()
             failures.append(SaveFailure(id: id, label: label, message: error.messageAr))
             saveStatus = pending > 0 ? .saving(pending) : .failed(error.messageAr)
             settleIfIdle()
